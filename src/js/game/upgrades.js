@@ -1,7 +1,5 @@
-import { createSimpleShape, enumSubShape, ShapeDefinition } from "./shape_definition";
-import { enumColors } from "./colors";
 import { findNiceIntegerValue } from "../core/utils";
-import { globalConfig } from "../core/config";
+import { ShapeDefinition } from "./shape_definition";
 
 export const TIER_LABELS = [
     "I",
