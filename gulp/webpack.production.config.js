@@ -42,7 +42,6 @@ module.exports = ({
 
     return {
         mode: "production",
-        devtool: false,
         entry: {
             "bundle.js": [path.resolve(__dirname, "..", "src", "js", "main.js")],
         },
@@ -60,6 +59,7 @@ module.exports = ({
             // Display bailout reasons
             optimizationBailout: true,
         },
+        devtool: "source-map",
         resolve: {
             alias: {
                 "global-compression": path.resolve(__dirname, "..", "src", "js", "core", "lzstring.js"),
