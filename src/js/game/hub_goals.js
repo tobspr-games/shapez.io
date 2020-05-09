@@ -319,7 +319,7 @@ export class HubGoals extends BasicSerializableObject {
             case enumItemProcessorTypes.painter:
                 return (
                     (1 / globalConfig.beltSpeedItemsPerSecond) *
-                    this.upgradeImprovements.processor *
+                    this.upgradeImprovements.processors *
                     globalConfig.buildingSpeeds[processorType]
                 );
 
