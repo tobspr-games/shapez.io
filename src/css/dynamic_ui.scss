@@ -1,0 +1,43 @@
+// Removes the unit (px, %, etc) from a value
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+// Helper method to scale a value, for use in calc() etc
+@function D($v) {
+    $baseValue: strip-unit($v) * 1px;
+    @return calc(#{$baseValue} * var(--ui-scale));
+}
+
+// Helper method to scale the font size
+@mixin ScaleFont($fontSize, $lineHeight) {
+    font-size: D($fontSize * $mainFontScale);
+    line-height: D($lineHeight * $mainFontScale);
+}
+
+// Helper method to scale a property value
+@mixin S($propName, $v1, $v2: "", $v3: "", $v4: "", $important: false) {
+    $impSuffix: "";
+    @if $important == true {
+        $impSuffix: "!important";
+    }
+
+    $v1: D($v1);
+
+    @if $v2 != "" {
+        $v2: D($v2);
+    }
+
+    @if $v3 != "" {
+        $v3: D($v3);
+    }
+    @if $v4 != "" {
+        $v4: D($v4);
+    }
+
+    #{$propName}: #{$v1} #{$v2} #{$v3} #{$v4} #{$impSuffix};
+}

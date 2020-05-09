@@ -1,0 +1,50 @@
+// Control here whether to inline all resources or instead load them
+@function uiResource($pth) {
+    @if (str-index($string: $pth, $substring: ".noinline")) {
+        @return resolve($pth);
+    }
+    @return inline($pth);
+}
+
+@import "icons";
+@import "trigonometry";
+@import "material_colors";
+@import "dynamic_ui";
+@import "variables";
+
+@import "mixins";
+@import "common";
+@import "animations";
+@import "game_state";
+@import "application_error";
+@import "textual_game_state";
+@import "adinplay";
+
+@import "states/preload";
+@import "states/main_menu";
+@import "states/ingame";
+
+@import "ingame_hud/buildings_toolbar";
+@import "ingame_hud/building_placer";
+@import "ingame_hud/beta_overlay";
+@import "ingame_hud/keybindings_overlay";
+@import "ingame_hud/unlock_notification";
+@import "ingame_hud/shop";
+@import "ingame_hud/game_menu";
+@import "ingame_hud/blur_overlay";
+@import "ingame_hud/dialogs";
+
+// Z-Index
+$elements: ingame_Canvas, ingame_HUD_building_placer_overlay, ingame_HUD_building_placer,
+    ingame_HUD_buildings_toolbar, ingame_HUD_GameMenu, ingame_HUD_KeybindingOverlay, ingame_HUD_Shop,
+    ingame_HUD_BetaOverlay, ingame_HUD_UnlockNotification;
+
+$zindex: 100;
+
+@each $elem in $elements {
+    ##{$elem} {
+        z-index: $zindex;
+    }
+
+    $zindex: $zindex + 10;
+}

@@ -1,0 +1,27 @@
+#state_MainMenuState {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background: uiResource("menu_bg.noinline.jpg") center center / cover no-repeat !important;
+
+    .logo {
+        img {
+            @include S(width, 350px);
+        }
+    }
+
+    .mainContainer {
+        @include S(margin-top, 40px);
+        display: flex;
+
+        .playButton {
+            @include SuperHeading;
+            @include S(width, 150px);
+            @include S(padding, 15px, 20px);
+            color: #fff;
+            background-color: $accentColorDark;
+        }
+    }
+}

@@ -1,0 +1,379 @@
+// ----------------------------------------
+/* Forces an element to get rendered on its own layer, increasing
+the performance when animated. Use only transform and opacity in animations! */
+@mixin FastAnimation {
+    // will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+// Helper which includes the translateZ webkit fix, use together with Fast animation
+// $hardwareAcc: translateZ(0);
+$hardwareAcc: null;
+
+// ----------------------------------------
+/** Increased click area for this element, helpful on mobile */
+@mixin IncreasedClickArea($size) {
+    &::after {
+        content: "";
+        position: absolute;
+        top: #{D(-$size)};
+        bottom: #{D(-$size)};
+        left: #{D(-$size)};
+        right: #{D(-$size)};
+        // background: rgba(255, 0, 0, 0.3);
+    }
+}
+button,
+.increasedClickArea {
+    position: relative;
+    @include IncreasedClickArea(15px);
+}
+
+// ----------------------------------------
+/* Duplicates an animation and adds two classes .<classPrefix>Even and .<classPrefix>Odd which uses the
+  animation. This can be used to replay the animation by toggling between the classes, because
+  it is not possible to restart a css animation */
+@mixin MakeAnimationWrappedEvenOdd($duration, $classPrefix: "anim", $childSelector: "") {
+    $animName: autogen_anim_#{unique-id()};
+
+    @at-root {
+        @keyframes #{$animName}_even {
+            @content;
+        }
+
+        @keyframes #{$animName}_odd {
+            @content;
+        }
+    }
+
+    &.#{$classPrefix}Even #{$childSelector} {
+        animation: #{$animName}_even $duration;
+    }
+
+    &.#{$classPrefix}Odd #{$childSelector} {
+        animation: #{$animName}_odd $duration;
+    }
+}
+
+// ----------------------------------------
+/* Allows to use and define an animation without specifying its name */
+@mixin InlineAnimation($duration) {
+    $animName: autogen_anim_#{unique-id()};
+
+    @at-root {
+        @keyframes #{$animName} {
+            @content;
+        }
+    }
+
+    animation: $animName $duration !important;
+}
+
+// ----------------------------------------
+/* Animation prefab for a double bounce pop-in animation, useful for dialogs */
+@mixin DoubleBounceAnim($duration: 0.5s ease-in-out, $amount: 0.2, $initialOpacity: 0) {
+    @include InlineAnimation($duration) {
+        0% {
+            opacity: $initialOpacity;
+            transform: scale(0) $hardwareAcc;
+        }
+
+        25% {
+            opacity: 0.5;
+            transform: scale(1 + $amount) $hardwareAcc;
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1 - $amount * 0.5) $hardwareAcc;
+        }
+
+        75% {
+            transform: scale(1 + $amount * 0.25) $hardwareAcc;
+        }
+
+        100% {
+            transform: scale(1) $hardwareAcc;
+        }
+    }
+
+    opacity: 1;
+}
+
+// ----------------------------------------
+/* Define a style which is only applied in horizontal mode */
+@mixin HorizontalStyle {
+    @include AppendGlobal(".h") {
+        @content;
+    }
+}
+
+// ----------------------------------------
+/* Define a style which is only applied in vertical mode */
+@mixin VerticalStyle {
+    @include AppendGlobal(".v") {
+        @content;
+    }
+}
+
+// ----------------------------------------
+/* Define a style which is only while the hardware keyboard is open */
+@mixin AndroidHwKeyboardOpen {
+    @include AppendGlobal(".kb") {
+        @content;
+    }
+}
+
+// ----------------------------------------
+/* Automatically transforms the game state if a hardware keyboard is open */
+@mixin TransformToMatchKeyboard {
+    transition: transform 0.2s ease-in-out;
+    @include AndroidHwKeyboardOpen {
+        @include VerticalStyle {
+            transform: translateY(#{D(-125px)}) $hardwareAcc;
+        }
+        @include HorizontalStyle {
+            transform: translateY(#{D(-100px)}) $hardwareAcc;
+        }
+    }
+}
+
+// ----------------------------------------
+/* Define a style which is only applied when the viewport is at least X pixels wide */
+@mixin StyleAtWidth($minW) {
+    @media (min-width: #{$minW}) {
+        @content;
+    }
+}
+
+// ----------------------------------------
+/* Define a style which is only applied when the viewport is at least X pixels height */
+@mixin StyleAtHeight($minH) {
+    @media (min-height: #{$minH}) {
+        @content;
+    }
+}
+
+// ----------------------------------------
+/* Define a style which is only applied when the viewport has at least the given dimensions */
+@mixin StyleAtDims($minW, $minH) {
+    @media (min-height: #{$minH}) and (min-width: #{$minW}) {
+        @content;
+    }
+}
+
+// ----------------------------------------
+/* Define a style which is only applied when the viewport has at maximum the given dimensions */
+@mixin StyleBelowDims($maxW, $maxH) {
+    @media (max-height: #{$maxH}) and (max-width: #{$maxW}) {
+        @content;
+    }
+}
+
+// ----------------------------------------
+/* Define a style which is only applied when the viewport has at maximum the given height */
+@mixin StyleBelowHeight($maxH) {
+    @media (max-height: #{$maxH}) {
+        @content;
+    }
+}
+// ----------------------------------------
+/* Define a style which is only applied when the viewport has at maximum the given width */
+@mixin StyleBelowWidth($maxW) {
+    @media (max-width: #{$maxW}) {
+        @content;
+    }
+}
+
+// ----------------------------------------
+// Dynamic graphics quality styles
+
+@mixin BoxShadow3D($bgColor, $size: 3px, $pressEffect: true) {
+    background-color: $bgColor;
+
+    $borderSize: 1.5px;
+    $borderColor: rgb(18, 20, 24);
+
+    // box-shadow: 0 0 0 D($borderSize) $borderColor, 0 D($size) 0 0px rgba(mix(darken($bgColor, 9), #b0e2ff, 95%), 1),
+    //     0 D($size) 0 D($borderSize) $borderColor;
+
+    // box-shadow: 0 0 0 D($borderSize) $borderColor, 0 D($size) 0 D($borderSize) $borderColor,
+    //     D(-$size * 1.5) D($size * 2) 0 D($borderSize) rgba(0, 0, 0, 0.1);
+
+    // transition: box-shadow 0.1s ease-in-out;
+
+    // @if $pressEffect {
+    //     &.pressed {
+    //         transform: none !important;
+    //         $pSize: max(0, $size - 1.5px);
+    //         transition: none !important;
+    //         box-shadow: 0 0 0 D($borderSize) $borderColor, 0 D($pSize) 0 0px rgba(mix(darken($bgColor, 9), #b0e2ff, 95%), 1),
+    //             0 D($pSize) 0 D($borderSize) $borderColor;
+    //         top: D($size - $pSize);
+    //     }
+    // }
+}
+
+@mixin BorderRadius($v1: 2px, $v2: "", $v3: "", $v4: "") {
+    @include S(border-radius, $v1, $v2, $v3, $v4);
+}
+
+@mixin BoxShadow($x, $y, $blur, $offset, $color) {
+    box-shadow: D($x) D($y) D($blur) D($offset) $color;
+}
+
+@mixin DropShadow($yOffset: 2px, $blur: 2px, $amount: 0.2) {
+    @include BoxShadow(0, $yOffset, $blur, 0, rgba(#000, $amount));
+}
+
+@mixin TextShadow($yOffset: 2px, $blur: 1px, $amount: 0.6) {
+    text-shadow: 0 D($yOffset) D($blur) rgba(#000, $amount);
+}
+
+@mixin Button3D($bgColor, $pressEffect: true) {
+    @include BoxShadow3D($bgColor, 2px, $pressEffect);
+}
+
+@mixin ButtonDisabled3D($bgColor) {
+    @include BoxShadow3D($bgColor, 0.5px, false);
+}
+
+@mixin BoxShadowInset($bgColor, $size: 3px) {
+    background-color: $bgColor;
+
+    $borderSize: 1px;
+    $borderColor: rgb(15, 19, 24);
+    box-shadow: 0 0 0 D($borderSize) $borderColor, 0 D($size) 0 rgba(#fff, 0.07);
+    border-top: D($size) solid rgba(#000, 0.1);
+
+    //, 0 D($size) 0 0px rgba(mix(darken($bgColor, 9), #b0e2ff, 95%), 1),
+    // 0 D($size + $borderSize) 0 0 $borderColor;
+}
+
+@mixin TextShadow3D($color: rgb(222, 234, 238), $borderColor: #000) {
+    // @if $borderColor != #000 {
+    //   @include TextShadow3DImpl($color: $color, $borderColor: $borderColor);
+    // }
+    color: $color;
+}
+
+@mixin TextShadow3DImpl(
+    $color: rgb(222, 234, 238),
+    $scale: 1,
+    $additionalShadowAlpha: 1,
+    $borderColor: #222428
+) {
+    // color: $text3dColor;
+
+    $borderColor: rgba(15, 18, 23, 0.9);
+
+    // $shadowColor: darken($color, 40%);
+
+    $border: 0.07em;
+    $borderMid: $border * 1.14;
+
+    $drop1: $borderMid + 0.02;
+    $drop2: $borderMid + 0.06em;
+
+    // text-shadow: #{$border} #{$border} 0 $borderColor, #{-$border} #{$border} 0 $borderColor, #{$border} #{-$border} 0 $borderColor,
+    //     #{-$border} #{-$border} 0 $borderColor, 0 #{$borderMid} 0 $borderColor, 0 #{-$borderMid} 0 $borderColor,
+    //     #{$borderMid} 0 0 $borderColor, #{-$borderMid} 0 0 $borderColor, 0 #{$drop1} 0 $borderColor, #{$borderMid} #{$drop1} 0 $borderColor,
+    //     #{-$borderMid} #{$drop1} 0 $borderColor, 0 #{$drop2} 0 $borderColor, #{$borderMid} #{$drop2} 0 $borderColor,
+    //     #{-$borderMid} #{$drop2} 0 $borderColor, -0.2em 0.13em 0 rgba(#111, 0.25); // 0px 0.07em 0px $shadowColor,
+    // 0px 0.15em 0.09em rgba(#333539, $additionalShadowAlpha);;
+}
+
+// ----------------------------------------
+/* Shine animation prefab, useful for buttons etc. Adds a bright shine which moves over
+  the button like a reflection. Performance heavy. */
+@mixin ShineAnimation($duration, $bgColor, $w: 200px, $shineAlpha: 0.25, $lightenAmount: 7, $bgAnim: true) {
+    $bgBase: darken($bgColor, 5);
+    background-color: $bgBase;
+
+    @include HighQualityOrMore {
+        position: relative;
+        // overflow: hidden;
+        // overflow: visible;
+
+        &:before {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: uiResource("misc/shine_bg.png") 0px center / 100% 100% no-repeat;
+
+            @include InlineAnimation($duration ease-in-out infinite) {
+                0% {
+                    background-position-x: #{D(-$w)};
+                }
+                100% {
+                    background-position-x: #{D($w)};
+                }
+            }
+        }
+
+        @if ($bgAnim) {
+            @include InlineAnimation($duration ease-in-out infinite) {
+                0% {
+                    background-color: $bgBase;
+                }
+                50% {
+                    background-color: lighten($bgBase, $lightenAmount);
+                }
+                100% {
+                    background-color: $bgBase;
+                }
+            }
+        }
+    }
+}
+
+// ----------------------------------------
+/* String replacement */
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace +
+            str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@mixin BounceInFromSide($mul, $duration: 0.18s ease-in-out) {
+    @include InlineAnimation($duration) {
+        0% {
+            transform: translateY(#{D(-100px * $mul)}) scale(0.9);
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+    opacity: 1;
+    transform: none;
+}
+
+@mixin BreakText {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-all;
+}
+
+@mixin SupportsAndroidNotchQuery {
+    @supports (color: constant(--notch-inset-left)) {
+        @content;
+    }
+}
+@mixin SupportsiOsNotchQuery {
+    @supports (color: env(safe-area-inset-left, 0px)) {
+        @content;
+    }
+}

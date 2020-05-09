@@ -1,0 +1,78 @@
+#ingame_HUD_KeybindingOverlay {
+    position: absolute;
+    @include S(top, 10px);
+    @include S(left, 10px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    > .binding {
+        display: inline-grid;
+        @include PlainText;
+        align-items: center;
+        @include S(margin-bottom, 3px);
+        grid-auto-flow: column;
+        @include S(grid-gap, 2px);
+
+        i {
+            display: inline-block;
+            @include S(height, 10px);
+            width: 1px;
+            @include S(margin, 0, 3px);
+            background-color: #ccc;
+            transform: rotate(10deg);
+            // @include S(margin, 0, 3px);
+        }
+
+        code {
+            position: relative;
+            top: unset;
+            left: unset;
+            margin: 0;
+            &.rightMouse {
+                background: #fff uiResource("icons/mouse_right.png") center center / 85% no-repeat;
+            }
+
+            &.leftMouse {
+                background: #fff uiResource("icons/mouse_left.png") center center / 85% no-repeat;
+            }
+        }
+        label {
+            color: $accentColorDark;
+            @include SuperSmallText;
+            text-transform: uppercase;
+            @include S(margin-left, 5px);
+        }
+    }
+
+    &:not(.placementActive) .binding.placementOnly {
+        display: none;
+    }
+    &.placementActive .binding.noPlacementOnly {
+        display: none;
+    }
+
+    .binding.placementOnly,
+    &:not(.placementActive) .binding.noPlacementOnly {
+        transform-origin: 0% 50%;
+        @include InlineAnimation(0.3s ease-in-out) {
+            0% {
+                color: $colorRedBright;
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    .shift .keybinding {
+        transition: all 0.1s ease-in-out;
+        transition-property: background-color, color, border-color;
+        background: $colorRedBright;
+        border-color: $colorRedBright;
+        color: #fff;
+    }
+
+    &.shiftDown .shift .keybinding {
+        border-color: darken($colorRedBright, 40);
+    }
+}

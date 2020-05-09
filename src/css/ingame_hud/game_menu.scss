@@ -1,0 +1,59 @@
+#ingame_HUD_GameMenu {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: grid;
+    transform: translateX(-50%);
+    @include S(grid-gap, 3px);
+    grid-auto-flow: column;
+
+    button {
+        background: $colorGreenBright;
+        @include PlainText;
+        color: #fff;
+        border-color: rgba(0, 0, 0, 0.1);
+        @include S(padding, 5px, 5px, 5px);
+        transition: all 0.12s ease-in-out;
+        transition-property: opacity, transform;
+
+        &:hover {
+            opacity: 0.9;
+            transform: translateY(3px);
+        }
+
+        @include IncreasedClickArea(10px);
+        @include ButtonText;
+        border: #{D(2px)} solid rgba(0, 10, 20, 0.2);
+        @include S(border-width, 2px);
+        border-radius: 0 0 #{D(4px)} #{D(4px)};
+        @include S(border-top-width, 10px);
+        @include S(padding-left, 30px);
+        @include S(margin-top, -5px);
+        @include S(letter-spacing, 1px, $important: true);
+        background: center #{D(10px)} / #{D(20px)} no-repeat;
+        @include S(min-height, 47px);
+
+        &[data-button-id="shop"] {
+            background-color: rgb(141, 70, 223);
+            background-image: uiResource("icons/shop.png");
+        }
+        &[data-button-id="stats"] {
+            background-color: rgb(53, 235, 113);
+            background-image: uiResource("icons/statistics.png");
+        }
+
+        .keybinding {
+            border: 0;
+            color: #fff;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            bottom: unset;
+            // background: rgba(0, 10, 20, 0.5);
+            background: transparent;
+            @include S(top, -5px);
+            right: unset;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}

@@ -1,0 +1,107 @@
+#aip_gdpr {
+    &,
+    * {
+        text-shadow: none !important;
+        pointer-events: all;
+        color: #111 !important;
+    }
+
+    #aip_gdpr_banner {
+        padding: 5px 0;
+    }
+
+    #aip_gdpr_message {
+        padding: 0px 15px;
+    }
+}
+
+#adinplayVideoContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20000;
+    background: rgba($mainBgColor, 0.9);
+    pointer-events: all;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    *,
+    & {
+        pointer-events: all;
+    }
+
+    &:not(.visible) {
+        display: none;
+    }
+
+    &.waitingForFinish {
+        .videoInner {
+            @include BorderRadius(4px);
+            overflow: hidden;
+
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba($mainBgColor, 0.9) uiResource("loading.svg") center center / #{D(60px)} no-repeat;
+                @include InlineAnimation(0.2s ease-in-out) {
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    @include InlineAnimation(1s ease-in-out) {
+        0% {
+            background: rgba($mainBgColor, 0.1);
+        }
+        100% {
+            background: rgba($mainBgColor, 0.9);
+        }
+    }
+
+    .adInner {
+        @include BoxShadow3D(lighten($mainBgColor, 15));
+        @include BorderRadius(4px);
+        @include S(padding, 15px);
+        // max-width: 960px;
+        display: block !important;
+
+        .topbar {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            @include S(margin-bottom, 15px);
+            @include S(grid-column-gap, 10px);
+
+            .desc {
+                @include TextShadow3D(#fff);
+                @include PlainText;
+            }
+
+            button.getOnSteam {
+                @include Text;
+            }
+        }
+
+        .videoInner {
+            // width: 960px;
+            // height: 570px;
+            // min-width: 960px;
+            // min-height: 570px;
+            background: darken($mainBgColor, 1);
+            display: block !important;
+        }
+    }
+}

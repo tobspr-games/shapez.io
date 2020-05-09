@@ -1,0 +1,16 @@
+#state_InGameState {
+    .gameLoadingOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        pointer-events: all;
+        display: flex;
+        background: $mainBgColor;
+        flex-direction: column;
+    }
+}

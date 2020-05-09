@@ -1,0 +1,662 @@
+// Common classes and style
+
+* {
+    margin: 0;
+    padding: 0;
+    touch-action: pan-x pan-y !important;
+    pointer-events: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+html,
+body {
+    overscroll-behavior: contain;
+    overflow: hidden;
+    font-family: $mainFont;
+    font-synthesis: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+html {
+    position: fixed;
+    // scroll-behavior: smooth;
+    background: $mainBgColor;
+
+    // Disable zooming and thus
+    -ms-touch-action: pan-x, pan-y;
+    touch-action: pan-x, pan-y;
+    -ms-content-zooming: none;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background: #dee1ea;
+}
+
+body {
+    color: #555;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background: inherit !important;
+
+    text-transform: none;
+    white-space: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: break-word;
+    font-style: normal;
+    line-break: auto;
+    font-stretch: 100%;
+    text-rendering: optimizeLegibility;
+    text-decoration: none;
+    text-size-adjust: 100%;
+    letter-spacing: normal;
+    scrollbar-width: 6px;
+    -webkit-font-smoothing: antialiased;
+    // -webkit-overflow-scrolling: touch; /* stop scrolling immediately */
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+
+    // Internet explorer
+    scrollbar-face-color: #888;
+    scrollbar-track-color: rgba(255, 255, 255, 0.1);
+
+    overflow: hidden;
+    @include Text;
+
+    // For recording the bg video
+
+    // filter: blur(5px);
+    // &::after {
+    //   position: fixed;
+    //   top: 0;
+    //   left: 0;
+    //   right: 0;
+    //   bottom: 0;
+    //   z-index: 9999;
+    //   content: " ";
+    //   background: rgba($ingameHudBg, 0.5);
+    // }
+}
+
+// Dirty hack
+* {
+    @include TextShadow3DImpl;
+}
+
+img {
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+}
+
+i {
+    font-style: normal;
+}
+b,
+strong {
+    font-weight: normal;
+}
+u,
+a {
+    text-decoration: none;
+}
+input,
+textarea,
+select {
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    line-height: inherit;
+}
+
+button {
+    background: transparent;
+    border: 0;
+    pointer-events: all;
+    cursor: pointer;
+    position: relative;
+    @include TextShadow3D;
+
+    &.prefab_BuyButtonWithResources {
+        display: flex;
+        box-sizing: border-box;
+        @include S(padding, 6px, 4px);
+        // letter-spacing: 0;
+        background-color: color($cyan, 400);
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        @include S(width, 85px);
+
+        &.tooExpensive {
+            color: $colorRedBright;
+            background-color: #555;
+            cursor: default;
+        }
+
+        .cost_entry {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        b {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &.tooExpensive {
+            cursor: default !important;
+            background-color: #565859 !important;
+            b {
+                color: $colorRedBright !important;
+            }
+            .cost_entry {
+                opacity: 0.6;
+            }
+        }
+    }
+}
+
+.styledButton {
+    background: $themeColor;
+    text-transform: uppercase;
+    box-sizing: content-box;
+    @include S(padding, 3px, 10px);
+    @include IncreasedClickArea(10px);
+    @include BorderRadius(4px);
+    @include TextShadow3D(#fff, $borderColor: #28292a);
+    @include ButtonText;
+    @include Button3D($accentColorBright);
+    border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
+    @include S(border-bottom-width, 2px);
+    color: $accentColorDark;
+    letter-spacing: 0.05em !important;
+    box-shadow: 0 #{D(1px)} #{D(2px)} 0 rgba(0, 10, 20, 0.2);
+
+    .keybinding {
+        @include S(bottom, -2.5px);
+        @include S(right, -2px);
+    }
+}
+
+::selection {
+    background: $colorGreenBright; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: $colorGreenBright; /* Gecko Browsers */
+}
+
+input[type="text"],
+input[type="email"] {
+    @include S(padding, 11px, 12px);
+    @include S(margin, 10px, 0);
+    border: 0;
+    cursor: text;
+    display: block;
+    text-align: left;
+    box-sizing: border-box;
+    background: lighten($mainBgColor, 8);
+    color: #eee;
+    text-align: left;
+
+    user-select: text !important;
+    pointer-events: all !important;
+
+    @include Text;
+    @include IncreasedClickArea(15px);
+    @include BorderRadius(4px);
+
+    &::placeholder {
+        color: #fff;
+        opacity: 0.4;
+    }
+
+    transition: background-color 0.4s ease-in-out !important;
+    @include TextShadow3D(#fff);
+    @include BoxShadow3D(lighten($mainBgColor, 30));
+
+    &:focus {
+        @include BoxShadow3D(lighten($mainBgColor, 35));
+    }
+
+    &.errored {
+        @include BoxShadow3D(mix(lighten($mainBgColor, 30), #f77, 25%));
+
+        &:focus {
+            @include BoxShadow3D(mix(lighten($mainBgColor, 50), #f77, 25%));
+        }
+    }
+
+    &.input-token {
+        @include SuperHeading;
+        text-align: center;
+        @include S(letter-spacing, 30px);
+        @include S(padding-left, 30px);
+    }
+}
+
+a {
+    color: $themeColor;
+}
+
+button,
+input,
+select,
+textarea,
+a {
+    &:focus {
+        outline: none;
+    }
+    font-family: inherit;
+    font-weight: inherit;
+    pointer-events: all;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+i {
+    font-style: normal;
+}
+
+input {
+    user-select: text;
+    -moz-user-select: text;
+    pointer-events: all;
+    cursor: text;
+    border-radius: 0;
+}
+
+canvas {
+    pointer-events: all;
+    image-rendering: auto;
+    // &.smoothed {
+    // }
+    // &.unsmoothed {
+    // }
+    letter-spacing: 0 !important;
+
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.fontPreload {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+    @include S(width, 6px);
+    @include S(height, 6px);
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(#000, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #cdd0d4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d8dce0;
+}
+
+#uiTestPlaybackCursor {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    z-index: 9999;
+    border-radius: 50%;
+    background: rgba(255, 255, 0, 0.4);
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    margin-top: -12px;
+    margin-left: -12px;
+    box-sizing: border-box;
+}
+
+.pressed {
+    transform: scale(0.95) !important;
+    animation: none !important;
+}
+
+.pressedSmallElement {
+    transform: scale(0.88) !important;
+    animation: none !important;
+}
+
+.spritesheetImage {
+    display: block;
+    position: absolute;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.inlineTextIconSprite {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.badged {
+    color: color($purple, 300);
+}
+
+.prefab_LoadingTextWithAnim,
+.prefab_LoadingTextWithAnimDelayed {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+
+    @include Text;
+    @include TextShadow3D;
+    opacity: 1;
+    z-index: 20;
+    color: #393747;
+
+    &::after {
+        content: " ";
+        background: uiResource("loading.svg") center center / contain no-repeat;
+        @include S(width, 15px);
+        @include S(height, 15px);
+        @include S(margin-top, 1px);
+        @include S(margin-left, 5px);
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.prefab_LoadingTextWithAnimDelayed {
+    @include InlineAnimation(0.6s ease-in-out) {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+.prefab_FeatureComingSoon {
+    position: relative;
+
+    &::after {
+        @include S(top, -5px);
+        @include S(left, -5px);
+        @include S(right, -5px);
+        @include S(bottom, -5px);
+        content: "Coming soon!";
+        z-index: 10000;
+        background: rgba(lighten($mainBgColor, 0), 0.4);
+        @include BorderRadius(4px);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: all;
+        @include PlainText;
+        text-transform: uppercase;
+    }
+
+    opacity: 0.6;
+
+    > * {
+        opacity: 0.5 !important;
+    }
+}
+
+.prefab_InfoIcon {
+    @include S(width, 25px);
+    @include S(height, 25px);
+    // background: uiResource("icons_small/info.png") center center / contain no-repeat;
+    z-index: 100;
+    opacity: 0.8;
+    cursor: pointer;
+    pointer-events: all;
+    display: inline-block;
+    position: relative;
+    @include IncreasedClickArea(10px);
+}
+
+.gameState.prefab_LoadingState {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .loadingImage {
+        background: uiResource("loading.svg") center center / #{D(60px)} no-repeat;
+        width: 100%;
+        display: flex;
+        flex-grow: 1;
+    }
+
+    .loadingStatus {
+        position: absolute;
+        @include S(left, 20px);
+        @include S(right, 20px);
+        @include S(bottom, 30px);
+        @include Text;
+        @include TextShadow3D(#aaa);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        > .bar {
+            display: none;
+            @include S(margin-top, 15px);
+            width: 80vw;
+            @include BoxShadow3D(lighten($mainBgColor, 10), $size: 1px);
+            position: relative;
+            @include TextShadow3D(#fff);
+            height: 2px;
+
+            .inner {
+                position: absolute !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                z-index: 1;
+                @include BoxShadow3D($themeColor, $size: 1px);
+                @include BorderRadius(4px);
+
+                transform-origin: 0% 50%;
+
+                @include InlineAnimation(1.3s ease-in-out infinite) {
+                    0% {
+                        background-color: darken($themeColor, 5);
+                        transform: none;
+                    }
+                    50% {
+                        background-color: lighten($themeColor, 10);
+                        transform: scale(1.01);
+                    }
+                    100% {
+                        background-color: darken($themeColor, 5);
+                        transform: none;
+                    }
+                }
+            }
+
+            .status {
+                display: none;
+                position: relative;
+                z-index: 2;
+                display: inline-flex;
+                @include S(padding, 5px);
+                @include PlainText;
+            }
+        }
+    }
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+.checkbox {
+    $bgColor: darken($mainBgColor, 0);
+    background-color: $bgColor;
+    @include S(width, 45px);
+    @include S(height, 20px);
+    display: flex;
+    @include S(padding, 3px);
+    box-sizing: content-box;
+    cursor: pointer;
+    pointer-events: all;
+    transition: opacity 0.2s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out !important;
+    position: relative;
+    @include BorderRadius(20px);
+    @include IncreasedClickArea(10px);
+    @include BoxShadow3D($bgColor, $size: 2px);
+    &.loading {
+        opacity: 0.2;
+    }
+
+    .knob {
+        @include S(width, 20px);
+        @include S(height, 20px);
+        display: inline-block;
+        transition: margin-left 0.4s ease-in-out !important;
+        background: #fff;
+        position: relative;
+        @include BorderRadius(20px);
+        @include BoxShadow3D(#fff, $size: 1px);
+    }
+
+    &.checked {
+        background-color: $themeColor;
+        @include BoxShadow3D($themeColor, $size: 2px);
+        .knob {
+            @include S(margin-left, 25px);
+        }
+    }
+}
+
+.keybinding {
+    background: #fff;
+    text-transform: uppercase;
+    @include S(padding, 2px, 1px, 2px);
+    @include PlainText;
+    @include BorderRadius(2px);
+    &,
+    > span {
+        @include S(font-size, 9px);
+        @include S(line-height, 11px);
+        font-weight: bold !important;
+        text-shadow: none !important;
+        // font-family: Arial, sans-serif !important;
+    }
+
+    font-weight: bold;
+    color: $accentColorDark;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    @include S(min-width, 12px);
+    display: inline-flex;
+    position: absolute;
+    @include S(bottom, 0px);
+    @include S(right, 0px);
+    z-index: 999;
+    box-sizing: border-box;
+    @include S(height, 12px);
+    overflow: hidden;
+    border: #{D(1px)} solid $accentColorDark;
+
+    .keybinding_space {
+        @include S(font-size, 17px);
+        @include S(line-height, 11px);
+        @include S(margin-top, -12px);
+    }
+}
+
+.xpaystation-widget-lightbox {
+    z-index: 19999;
+    .xpaystation-widget-lightbox-overlay {
+        background: rgba($mainBgColor, 0.94);
+    }
+
+    &,
+    iframe {
+        pointer-events: all;
+        user-select: all;
+    }
+}
+
+iframe {
+    pointer-events: all;
+    user-select: all;
+}
+
+// Steam overlay fiy
+#steamOverlayCanvasFix {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.01;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.sentry-error-embed-wrapper {
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.9);
+    * {
+        text-shadow: none !important;
+        pointer-events: all;
+    }
+}
+
+.cpmsrendertarget {
+    &,
+    * {
+        pointer-events: all;
+    }
+
+    background: rgba($mainBgColor, 0.94) !important;
+
+    .cpmsvideoclosebanner {
+        font-family: GameFont !important;
+        font-size: 16px !important;
+        border-radius: 2px !important;
+        background: $themeColor !important;
+        @include BoxShadow3D(darken($mainBgColor, 12));
+        color: #eee !important;
+        &:active {
+            @include BoxShadow3D(darken($mainBgColor, 12), $size: 1px);
+            transform: translateY(2px);
+        }
+    }
+}

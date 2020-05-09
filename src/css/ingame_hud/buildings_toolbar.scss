@@ -1,0 +1,181 @@
+#ingame_HUD_buildings_toolbar {
+    position: fixed;
+    @include S(bottom, 0px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    $toolbarBg: rgba($accentColorBright, 0.9);
+    display: flex;
+    flex-direction: column;
+    background-color: $toolbarBg;
+    // border: $ingameHudBorder;
+    border-bottom-width: 0;
+
+    @include S(border-radius, 4px, 4px, 0, 0);
+    // box-shadow: 0 0 0 #{D(2px)} rgba(darken($toolbarBg, 20), 0.5);
+    transition: transform 0.12s ease-in-out;
+
+    &:not(.visible) {
+        transform: translateX(-50%) translateY(#{D(100px)});
+    }
+
+    .buildings {
+        display: grid;
+        grid-auto-flow: column;
+        @include S(padding, 0, 5px);
+
+        .building {
+            color: $accentColorDark;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            @include S(padding, 5px);
+            @include S(padding-bottom, 7px);
+            $buildingIconSize: 32px;
+
+            &:not(.unlocked) {
+                @include S(width, 30px);
+                .tooltip {
+                    display: none !important;
+                }
+                .keybinding,
+                .iconWrap {
+                    opacity: 0.01;
+                }
+                &::before {
+                    opacity: 0.5;
+                    content: " ";
+                    background: uiResource("locked_building.png") center center / #{D(20px)} #{D(20px)}
+                        no-repeat;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 4;
+                }
+            }
+
+            // &:first-child .tooltip {
+            //     display: flex;
+            // }
+
+            pointer-events: all;
+            transition: background-color 0.1s ease-in-out;
+            &.unlocked:hover {
+                background: rgba($accentColorDark, 0.1);
+                cursor: pointer;
+            }
+
+            .iconWrap {
+                position: relative;
+                @include S(width, $buildingIconSize);
+                @include S(height, $buildingIconSize);
+                @include S(margin-top, 3px);
+                @include S(margin-bottom, 6px);
+            }
+
+            .label {
+                @include SuperSmallText;
+                display: none;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .keybinding {
+                // position: relative;
+                right: 50%;
+                transform: translateX(50%);
+                background: transparent;
+                border: 0;
+                @include S(bottom, 2pxpx);
+            }
+
+            &[data-tilewidth="2"] {
+                .iconWrap {
+                    @include S(width, 2 * $buildingIconSize);
+                }
+            }
+
+            &:last-child {
+                border: none;
+            }
+
+            .tooltip {
+                position: absolute;
+                pointer-events: none;
+                background: #333;
+                @include S(padding, 7px);
+                bottom: calc(100% + #{D(10px)});
+                left: 50%;
+                transform: translateX(-50%);
+                box-sizing: content-box;
+                @include SuperSmallText;
+                @include S(width, 200px);
+                @include S(border-radius, 4px);
+
+                box-shadow: #{D(1px)} #{D(1px)} 0 0 rgba(0, 10, 25, 0.2);
+
+                display: none;
+                z-index: 9999;
+
+                flex-direction: column;
+
+                .title {
+                    color: #fff;
+                    @include PlainText;
+                    text-transform: uppercase;
+                    margin-bottom: 5px;
+                }
+
+                .desc {
+                    color: #aaa;
+                    @include SuperSmallText;
+                    margin-bottom: 10px;
+                    strong {
+                        color: #fff;
+                    }
+                }
+
+                .tutorialImage {
+                    display: inline-block;
+                    @include S(width, 200px);
+                    @include S(height, 200px);
+                    @include S(border-radius, 4px);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+
+                &::after {
+                    top: 100%;
+                    left: 50%;
+                    border: solid transparent;
+                    content: " ";
+                    height: 0;
+                    width: 0;
+                    position: absolute;
+                    pointer-events: none;
+                    border-top-color: #333;
+                    @include S(border-width, 5px);
+                    transform: translateX(-50%);
+                }
+            }
+
+            &:hover .tooltip {
+                display: flex;
+
+                @include InlineAnimation(0.5s ease-in-out) {
+                    90% {
+                        opacity: 0;
+                    }
+                    0% {
+                        transform: translate(-50%, 5%) scale(0.9);
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+}

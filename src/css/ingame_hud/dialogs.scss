@@ -1,0 +1,63 @@
+.ingameDialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: all;
+    background: $modalDialogBg;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.visible {
+        .dialogInner {
+            opacity: 1;
+        }
+    }
+
+    .dialogInner {
+        transition: opacity 0.2s ease-in-out;
+        opacity: 0;
+    }
+
+    > .dialogInner {
+        background: #fff;
+        @include S(min-width, 500px);
+        max-width: calc(100vw - #{D(50px)});
+        max-height: calc(100vh - #{D(50px)});
+        @include S(border-radius, 4px);
+        display: flex;
+        flex-direction: column;
+        @include S(padding, 15px);
+        pointer-events: all;
+
+        > .title {
+            @include Heading;
+            margin: 0;
+            text-transform: uppercase;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            @include S(margin-bottom, 10px);
+
+            > .closeButton {
+                opacity: 0.7;
+                @include S(width, 20px);
+                @include S(height, 20px);
+                background: uiResource("icons/close.png") center center / 60% no-repeat;
+                cursor: pointer;
+                pointer-events: all;
+                transition: opacity 0.2s ease-in-out;
+                &:hover {
+                    opacity: 0.4;
+                }
+            }
+        }
+
+        > .content {
+            overflow-y: auto;
+            pointer-events: all;
+        }
+    }
+}

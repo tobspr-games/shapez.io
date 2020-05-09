@@ -1,0 +1,13 @@
+{
+    "name": "shape_generator",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "http-server": "^0.12.3"
+    },
+    "scripts": {
+        "serve": "http-server . -p 9000 -g --cors -o -c-1"
+    }
+}

@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/build": true,
+			"**/node_modules": true,
+			"**/typedefs_gen": true
+		},
+		"vetur.format.defaultFormatter.js": "vscode-typescript",
+		"vetur.format.defaultFormatter.ts": "vscode-typescript",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	}
+}

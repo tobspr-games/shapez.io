@@ -1,0 +1,31 @@
+$gameStateTransition: 0.2s ease-out;
+
+@mixin StateAnim($properties...) {
+    transition: all $gameStateTransition;
+    transition-property: $properties;
+}
+
+.gameState {
+    display: block;
+    // background: $mainBgColor;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden !important;
+    @include Text;
+
+    @include StateAnim(opacity, transform, filter);
+    opacity: 0;
+    // transform: scaleX(0.99) skewX(1deg) translate(1%, 0.5%);
+
+    &.arrived {
+        opacity: 1;
+        filter: none !important;
+        transform: none;
+    }
+}

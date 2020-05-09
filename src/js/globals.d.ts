@@ -1,0 +1,191 @@
+// Globals defined by webpack
+
+declare const G_IS_DEV: boolean;
+declare const G_IS_PROD: boolean;
+declare function assert(condition: boolean | object | string, ...errorMessage: string[]): void;
+declare function assertAlways(condition: boolean | object | string, ...errorMessage: string[]): void;
+
+declare const abstract: void;
+
+declare const G_API_ENDPOINT: string;
+declare const G_APP_ENVIRONMENT: string;
+declare const G_HAVE_ASSERT: boolean;
+declare const G_BUILD_TIME: number;
+declare const G_IS_STANDALONE: boolean;
+declare const G_IS_BROWSER: boolean;
+declare const G_IS_MOBILE_APP: boolean;
+
+declare const G_BUILD_COMMIT_HASH: string;
+declare const G_TRACKING_ENDPOINT: string;
+declare const G_BUILD_VERSION: string;
+declare const G_ALL_UI_IMAGES: Array<string>;
+declare const G_IS_RELEASE: boolean;
+
+// Node require
+declare function require(...args): any;
+
+// Polyfills
+declare interface String {
+    replaceAll(search: string, replacement: string): string;
+}
+
+declare interface CanvasRenderingContext2D {
+    beginRoundedRect(x: number, y: number, w: number, h: number, r: number): void;
+    beginCircle(x: number, y: number, r: number): void;
+
+    msImageSmoothingEnabled: boolean;
+    mozImageSmoothingEnabled: boolean;
+    webkitImageSmoothingEnabled: boolean;
+}
+
+declare interface HTMLCanvasElement {
+    opaque: boolean;
+    webkitOpaque: boolean;
+}
+
+// Just for compatibility with the shared code
+declare interface Logger {
+    log(...args);
+    warn(...args);
+    info(...args);
+    error(...args);
+}
+
+// Cordova
+declare interface Device {
+    uuid: string;
+    platform: string;
+    available: boolean;
+    version: string;
+    cordova: string;
+    model: string;
+    manufacturer: string;
+    isVirtual: boolean;
+    serial: string;
+}
+
+declare interface MobileAccessibility {
+    usePreferredTextZoom(boolean);
+}
+
+declare interface Window {
+    // Cordova
+    device: Device;
+    StatusBar: any;
+    AndroidFullScreen: any;
+    AndroidNotch: any;
+    plugins: any;
+
+    // Adinplay
+    aiptag: any;
+    adPlayer: any;
+    aipPlayer: any;
+    MobileAccessibility: MobileAccessibility;
+    LocalFileSystem: any;
+
+    // Debugging
+    activeClickDetectors: Array<any>;
+
+    // Experimental/Newer apis
+    FontFace: any;
+    TouchEvent: undefined | TouchEvent;
+
+    // Thirdparty
+    XPayStationWidget: any;
+    Sentry: any;
+    LogRocket: any;
+    grecaptcha: any;
+    gtag: any;
+    cpmstarAPI: any;
+
+    // Mods
+    registerMod: any;
+    anyModLoaded: any;
+
+    webkitRequestAnimationFrame();
+
+    assert(condition: boolean, failureMessage: string);
+
+    coreThreadLoadedCb();
+
+    gameanalytics: typeof import("./game_analytics");
+}
+
+declare interface Navigator {
+    app: any;
+    device: any;
+    splashscreen: any;
+}
+
+// FontFace
+declare interface Document {
+    fonts: any;
+}
+
+// Webpack
+declare interface WebpackContext {
+    keys(): Array<string>;
+}
+
+declare interface NodeRequire {
+    context(src: string, flag: boolean, regexp: RegExp): WebpackContext;
+}
+
+// HTML Element
+declare interface Element {
+    style: any;
+    innerText: string;
+    innerHTML: string;
+}
+
+declare interface Math {
+    radians(number): number;
+    degrees(number): number;
+}
+
+declare interface String {
+    padStart(size: number, fill: string): string;
+    padEnd(size: number, fill: string): string;
+}
+
+declare interface FactoryTemplate<T> {
+    entries: Array<new (...args: any[]) => T>;
+    entryIds: Array<string>;
+    idToEntry: any;
+
+    getId(): string;
+    getAllIds(): Array<string>;
+    register(entry: new (...args: any[]) => T): void;
+    hasId(id: string): boolean;
+    findById(id: string): new (...args: any[]) => T;
+    getEntries(): Array<new (...args: any[]) => T>;
+    getNumEntries(): number;
+}
+
+declare interface SingletonFactoryTemplate<T> {
+    entries: Array<T>;
+    idToEntry: any;
+
+    register(classHandle: new (...args: any[]) => T): void;
+    hasId(id: string): boolean;
+    findById(id: string): T;
+    findByClass(classHandle: new (...args: any[]) => T): T;
+    getEntries(): Array<T>;
+    getNumEntries(): number;
+}
+
+declare interface SignalTemplate0 {
+    add(receiver: () => string | void, scope: null | any);
+    dispatch(): string | void;
+    remove(receiver: () => string | void);
+    removeAll();
+}
+
+declare class TypedTrackedState<T> {
+    constructor(callbackMethod?: (value: T) => void, callbackScope?: any);
+
+    set(value: T, changeHandler?: (value: T) => void, changeScope?: any): void;
+
+    setSilent(value: any): void;
+    get(): T;
+}

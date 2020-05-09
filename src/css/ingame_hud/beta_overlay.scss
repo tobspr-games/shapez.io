@@ -1,0 +1,8 @@
+#ingame_HUD_BetaOverlay {
+    position: fixed;
+    @include S(top, 10px);
+    @include S(right, 15px);
+    color: $colorRedBright;
+    @include Heading;
+    text-transform: uppercase;
+}

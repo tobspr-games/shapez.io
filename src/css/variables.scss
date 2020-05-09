@@ -1,0 +1,195 @@
+// When to reduce control elements size for small devices
+$layoutExpandMinWidth: 340px;
+
+// Font sizes and line heights
+$superHeadingFontSize: 25px;
+$superHeadingLineHeight: 24px;
+
+$breakTooltipShowStatsPx: 1023px;
+
+$headingFontSize: 19px;
+$headingLineHeight: 21px;
+
+$textFontSize: 16px;
+$textLineHeight: 21px;
+
+$plainTextFontSize: 13px;
+$plainTextLineHeight: 17px;
+
+$supersmallTextFontSize: 10px;
+$supersmallTextLineHeight: 13px;
+
+$buttonFontSize: 14px;
+$buttonLineHeight: 18px;
+
+// Main background color
+$mainBgColor: #dee1ea;
+
+// Accent colors
+
+$accentColorBright: #e1e4ed;
+$accentColorDark: #7d808a;
+$colorGreenBright: #66bb6a;
+$colorRedBright: #ef5072;
+$themeColor: #393747;
+$ingameHudBg: rgba($accentColorBright, 0.9);
+$ingameHudBorder: #{D(1.5px)} solid $accentColorDark;
+
+$text3dColor: #f4ffff;
+
+// Dialog properties
+$modalDialogBg: rgba(#666a73, 0.8);
+$dialogBgColor: lighten($mainBgColor, 10);
+
+$lightFontWeight: normal;
+$boldFontWeight: 600;
+
+$iconSizeSmall: 30px;
+$iconSizeMedium: 40px;
+$iconSizeLarge: 60px;
+
+// Poppins 500
+// Rubik 400
+// Cairo 400
+// Viga 400
+// Sniglet 400
+
+$mainFont: "GameFont", sans-serif;
+// $mainFont: "DK Canoodle";
+// $mainFont: "MADE Florence Sans";
+$numberFont: $mainFont;
+$textFont: $mainFont;
+
+$mainFontWeight: 400;
+$mainFontSpacing: 0.04em;
+$mainFontScale: 1;
+
+@mixin DebugText($color) {
+    // font-size: 3px;
+    // &,
+    // * {
+    //   color: $color !important;
+    // }
+}
+
+@mixin SuperSmallText {
+    @include ScaleFont($supersmallTextFontSize, $supersmallTextLineHeight);
+    font-weight: $mainFontWeight;
+    font-family: $mainFont;
+    letter-spacing: $mainFontSpacing;
+    @include DebugText(green);
+}
+
+@mixin PlainText {
+    @include ScaleFont($plainTextFontSize, $plainTextLineHeight);
+    font-weight: $mainFontWeight;
+    font-family: $mainFont;
+    letter-spacing: $mainFontSpacing;
+
+    @include DebugText(red);
+}
+
+@mixin Text {
+    @include ScaleFont($textFontSize, $textLineHeight);
+    font-weight: $mainFontWeight;
+    font-family: $mainFont;
+
+    letter-spacing: $mainFontSpacing;
+
+    @include DebugText(blue);
+}
+
+@mixin Heading {
+    @include ScaleFont($headingFontSize, $headingLineHeight);
+    font-weight: $mainFontWeight;
+    font-family: $mainFont;
+    letter-spacing: $mainFontSpacing;
+
+    @include DebugText(yellow);
+}
+
+@mixin SuperHeading {
+    @include ScaleFont($superHeadingFontSize, $superHeadingLineHeight);
+    font-weight: $mainFontWeight;
+    font-family: $mainFont;
+    letter-spacing: $mainFontSpacing;
+
+    @include DebugText(orange);
+}
+
+@mixin ButtonText {
+    @include ScaleFont($buttonFontSize, $buttonLineHeight);
+    font-weight: $mainFontWeight;
+    font-family: $mainFont;
+    letter-spacing: $mainFontSpacing;
+    @include DebugText(purple);
+}
+
+@function str-split($string, $separator) {
+    // empty array/list
+    $split-arr: ();
+    // first index of separator in string
+    $index: str-index($string, $separator);
+    // loop through string
+    @while $index != null {
+        // get the substring from the first character to the separator
+        $item: str-slice($string, 1, $index - 1);
+        // push item to array
+        $split-arr: append($split-arr, $item);
+        // remove item and separator from string
+        $string: str-slice($string, $index + 1);
+        // find new index of separator
+        $index: str-index($string, $separator);
+    }
+    // add the remaining string to list (the last item)
+    $split-arr: append($split-arr, $string);
+
+    @return $split-arr;
+}
+
+@function _first-index($string, $direction: "left") {
+    @for $i from 1 through str-length($string) {
+        $index: if($direction == "left", $i, -$i);
+
+        @if str-slice($string, $index, $index) != " " {
+            @return $index;
+        }
+    }
+
+    @return 0;
+}
+
+@function trim($string) {
+    @return str-slice($string, _first-index($string, "left"), _first-index($string, "right"));
+}
+
+@mixin AppendGlobal($prefix) {
+    $strSelector: quote(&);
+    $selectors: str-split($strSelector, ",");
+
+    $builtSelector: null;
+
+    @if (& == null) {
+        $builtSelector: "html" + $prefix;
+    } @else {
+        $builtSelector: ();
+        // @debug ($strSelector, "->>>", $selectors);
+        @each $srcSelector in $selectors {
+            $srcSelector: trim($srcSelector);
+            // @debug ("___", $srcSelector);
+            $selector: "html" + $prefix + " " + $srcSelector;
+            @if str-index($srcSelector, "html.") {
+                $selector: "html" +
+                    $prefix +
+                    "." +
+                    str-slice($srcSelector, str-index($srcSelector, "html.") + 5);
+            }
+            // @debug ("_______", $selector);
+            $builtSelector: append($builtSelector, $selector, comma);
+        }
+    }
+
+    @at-root #{$builtSelector} {
+        @content;
+    }
+}

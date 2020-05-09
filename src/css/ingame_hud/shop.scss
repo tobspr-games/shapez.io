@@ -1,0 +1,180 @@
+#ingame_HUD_Shop {
+    .content {
+        @include S(padding-right, 10px);
+        display: flex;
+        flex-direction: column;
+        .upgrade {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            background: #eee;
+            @include S(border-radius, 3px);
+            @include S(margin-bottom, 4px);
+            @include S(padding, 5px, 10px);
+            @include S(grid-row-gap, 5px);
+            @include S(height, 95px);
+            grid-template-rows: #{D(20px)} auto;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .title {
+                grid-column: 2 / 3;
+                grid-row: 1 / 2;
+                @include Heading;
+                display: flex;
+                align-items: center;
+
+                .tier {
+                    @include S(margin-left, 5px);
+                    background: $colorGreenBright;
+                    @include S(border-radius, 4px);
+                    text-transform: uppercase;
+                    @include PlainText;
+                    color: #fff;
+                    font-weight: bold;
+                    @include S(margin-top, 1px);
+
+                    @include S(padding, 0px, 5px);
+
+                    &[data-tier="0"] {
+                        background-color: rgb(73, 186, 190);
+                    }
+                    &[data-tier="1"] {
+                        background-color: rgb(73, 94, 190);
+                    }
+                    &[data-tier="2"] {
+                        background-color: rgb(186, 73, 190);
+                    }
+                    &[data-tier="3"] {
+                        background-color: rgb(96, 190, 73);
+                    }
+                    &[data-tier="4"] {
+                        background-color: rgb(190, 91, 73);
+                    }
+                    &[data-tier="5"] {
+                        background-color: rgb(219, 184, 29);
+                    }
+                    &[data-tier="6"] {
+                        background-color: rgb(190, 73, 73);
+                    }
+                }
+            }
+
+            .icon {
+                @include S(width, 40px);
+                @include S(height, 40px);
+                background: center center / contain no-repeat;
+                align-self: center;
+                justify-self: center;
+                grid-column: 1 / 2;
+                grid-row: 1 / 4;
+                @include S(margin-right, 20px);
+                opacity: 0.2;
+            }
+
+            .description {
+                grid-column: 3 / 4;
+                grid-row: 1 / 2;
+                @include PlainText;
+                color: #aaa;
+                align-self: start;
+                justify-self: end;
+            }
+
+            .requirements {
+                grid-column: 2 / 3;
+                grid-row: 3 / 4;
+                display: grid;
+                grid-auto-flow: column;
+                @include S(grid-gap, 15px);
+                justify-content: start;
+
+                .requirement {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    canvas {
+                        @include S(width, 40px);
+                        @include S(height, 40px);
+                    }
+
+                    .amount {
+                        @include S(margin-top, 4px);
+                        z-index: 10;
+                        @include SuperSmallText;
+                        letter-spacing: 0;
+                        background: #e2e4e6;
+
+                        @include S(line-height, 13px);
+                        @include S(border-radius, 2px);
+                        @include S(padding, 0, 2px, 3px);
+                        position: relative;
+                        text-align: center;
+                        @include S(min-width, 50px);
+                        overflow: hidden;
+
+                        .progressBar {
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            top: 0;
+                            @include S(border-radius, 2px);
+                            position: absolute;
+                            display: inline-block;
+                            z-index: -1;
+                            transition: all 0.2s ease-in-out;
+                            transition-property: width, background-color;
+                            background: #bdbfca;
+
+                            &.complete {
+                                background-color: $colorGreenBright;
+                            }
+                        }
+                    }
+                }
+            }
+
+            button.buy {
+                grid-column: 3 / 4;
+                grid-row: 3 / 4;
+                align-self: end;
+                justify-self: end;
+                // @include S(padding, 4px, 5px);
+                // @include PlainText;
+                background-color: $colorGreenBright;
+                color: #fff;
+
+                transition: all 0.2s ease-in-out;
+                transition-property: background-color, opacity;
+
+                &:not(.buyable) {
+                    background-color: #aaa;
+                    cursor: default;
+                    pointer-events: none;
+                    opacity: 0.3;
+                }
+            }
+
+            &.maxLevel {
+                button.buy {
+                    opacity: 0 !important;
+                }
+                .requirements {
+                    display: none;
+                }
+                .description {
+                    // grid-column: 2 / 4;
+                    // grid-row: 2 / 3;
+                    align-self: end;
+                    justify-self: center;
+                    color: $colorGreenBright;
+                    text-transform: uppercase;
+                    @include S(margin-top, 20px);
+                }
+            }
+        }
+    }
+}

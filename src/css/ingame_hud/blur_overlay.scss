@@ -1,0 +1,8 @@
+body.ingameDialogOpen {
+    #ingame_Canvas,
+    #ingame_HUD_GameMenu,
+    #ingame_HUD_KeybindingOverlay,
+    #ingame_HUD_buildings_toolbar {
+        filter: blur(5px);
+    }
+}

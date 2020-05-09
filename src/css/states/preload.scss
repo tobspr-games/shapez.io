@@ -1,0 +1,100 @@
+#state_PreloadState {
+    &.failure {
+        .loadingImage,
+        .loadingStatus {
+            display: none;
+        }
+    }
+
+    .failureBox {
+        .logo {
+            img {
+                @include S(width, 240px);
+            }
+
+            @include S(margin-bottom, 30px);
+        }
+
+        @include InlineAnimation(0.3s ease-in-out) {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .failureInner {
+            // background: darken($mainBgColor, 6);
+            @include S(max-width, 350px);
+            margin: 0 20px;
+            text-align: left;
+
+            @include BoxShadow3D(#fff);
+            @include S(padding, 15px);
+            @include BorderRadius(4px);
+            @include DropShadow;
+
+            .errorHeader {
+                color: #ef5072;
+            }
+
+            .errorMessage {
+                @include PlainText;
+                display: block;
+                color: #666;
+                text-align: left;
+                @include BreakText;
+                hyphens: auto;
+                // border: dotted #666;
+                // @include S(border-width, 1px, 0);
+                @include S(padding, 10px, 0);
+                @include S(margin-top, 10px);
+            }
+
+            .supportHelp {
+                @include S(margin-top, 10px);
+                @include PlainText;
+
+                .email {
+                    color: $themeColor;
+                    cursor: pointer;
+                    pointer-events: all;
+                }
+            }
+
+            .lower {
+                display: flex;
+                align-items: center;
+                @include S(margin-top, 16px);
+
+                i {
+                    flex-grow: 1;
+                    text-align: right;
+                    color: #777;
+                    @include PlainText;
+                }
+
+                button.resetApp {
+                    @include Button3D($colorRedBright);
+                    @include PlainText;
+                    @include S(padding, 5px, 8px, 4px);
+                }
+            }
+        }
+    }
+
+    /* Animations */
+    .status {
+        transform: scale(0.7) $hardwareAcc;
+        opacity: 0;
+        @include StateAnim(transform, opacity);
+    }
+
+    &.arrived {
+        .status {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}
