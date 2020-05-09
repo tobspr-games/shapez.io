@@ -308,6 +308,7 @@ export class HubGoals extends BasicSerializableObject {
     getProcessorBaseSpeed(processorType) {
         switch (processorType) {
             case enumItemProcessorTypes.trash:
+            case enumItemProcessorTypes.hub:
                 return 1e30;
             case enumItemProcessorTypes.splitter:
                 return (2 / globalConfig.beltSpeedItemsPerSecond) * this.upgradeImprovements.splitter;
@@ -321,8 +322,9 @@ export class HubGoals extends BasicSerializableObject {
                     this.upgradeImprovements.processor *
                     globalConfig.buildingSpeeds[processorType]
                 );
+
             default:
-                assertAlways(false, "invalid processor type");
+                assertAlways(false, "invalid processor type: " + processorType);
         }
 
         return 1 / globalConfig.beltSpeedItemsPerSecond;
