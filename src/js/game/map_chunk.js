@@ -158,37 +158,32 @@ export class MapChunk {
 
         let weights = {};
 
-        if (distanceToOriginInChunks < 3) {
-            // In the beginning, there are just circles
-            weights = {
-                [enumSubShape.circle]: 100,
-            };
-        } else if (distanceToOriginInChunks < 6) {
-            // Later there come rectangles
-            if (Math_random() > 0.4) {
-                weights = {
-                    [enumSubShape.circle]: 100,
-                };
-            } else {
-                weights = {
-                    [enumSubShape.rect]: 100,
-                };
-            }
+        // Later there is a mix of everything
+        weights = {
+            [enumSubShape.rect]: 100,
+            [enumSubShape.circle]: Math_round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
+            [enumSubShape.star]: Math_round(20 + clamp(distanceToOriginInChunks * 2, 0, 30)),
+            [enumSubShape.windmill]: Math_round(5 + clamp(distanceToOriginInChunks * 2, 0, 20)),
+        };
+
+        if (distanceToOriginInChunks < 7) {
+            // Initial chunk patches always have the same shape
+            const subShape = this.internalGenerateRandomSubShape(weights);
+            subShapes = [subShape, subShape, subShape, subShape];
+        } else if (distanceToOriginInChunks < 12) {
+            // Later patches can also have mixed ones
+            const subShapeA = this.internalGenerateRandomSubShape(weights);
+            const subShapeB = this.internalGenerateRandomSubShape(weights);
+            subShapes = [subShapeA, subShapeA, subShapeB, subShapeB];
         } else {
             // Finally there is a mix of everything
-            weights = {
-                [enumSubShape.rect]: 100,
-                [enumSubShape.circle]: Math_round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
-                [enumSubShape.star]: Math_round(20 + clamp(distanceToOriginInChunks * 2, 0, 30)),
-                [enumSubShape.windmill]: Math_round(5 + clamp(distanceToOriginInChunks * 2, 0, 20)),
-            };
+            subShapes = [
+                this.internalGenerateRandomSubShape(weights),
+                this.internalGenerateRandomSubShape(weights),
+                this.internalGenerateRandomSubShape(weights),
+                this.internalGenerateRandomSubShape(weights),
+            ];
         }
-        subShapes = [
-            this.internalGenerateRandomSubShape(weights),
-            this.internalGenerateRandomSubShape(weights),
-            this.internalGenerateRandomSubShape(weights),
-            this.internalGenerateRandomSubShape(weights),
-        ];
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
         this.internalGeneratePatch(shapePatchSize, new ShapeItem(definition));
