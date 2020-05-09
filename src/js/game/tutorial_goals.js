@@ -1,5 +1,4 @@
-import { enumSubShape, ShapeDefinition, createSimpleShape } from "./shape_definition";
-import { enumColors } from "./colors";
+import { ShapeDefinition } from "./shape_definition";
 
 /**
  * @enum {string}
@@ -116,13 +115,13 @@ export const tutorialGoals = [
     },
 
     {
-        shape: "CgCgRgRg",
+        shape: "RgCwRgCw:CpCpCpCp",
         required: 6000,
         reward: enumHubGoalRewards.no_reward,
     },
 
     {
-        shape: "CwSwCwSw",
+        shape: "CwSwCwSw:CpCrCpCr",
         required: 6000,
         reward: enumHubGoalRewards.no_reward,
     },
@@ -140,13 +139,13 @@ export const tutorialGoals = [
     },
 
     {
-        shape: "WyRgWyCg:CbCpCbCp:CwCwCwCw",
+        shape: "WyRgWyRg:CbCpCbCp:CpCgCpCg",
         required: 9000,
         reward: enumHubGoalRewards.no_reward,
     },
 
     {
-        shape: "CwRrWbSp:WcWrCpCw",
+        shape: "CwRrCbRy:ScSrSpSb:CwCwCwCw:RgRgRgRg",
         required: 15000,
         reward: enumHubGoalRewards.no_reward,
     },

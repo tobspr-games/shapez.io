@@ -22,19 +22,23 @@
                 justify-content: center;
             }
 
-            #result {
+            #resultWrapper {
                 border: 1px solid #ccc;
                 margin-top: 10px;
                 background: #fff;
+                padding: 40px;
+            }
+
+            #resultWrapper #result {
             }
 
             #code {
                 width: 600px;
                 font-family: monospace;
-                padding: 10px;
+                padding: 30px;
                 border: 1px solid #ccc;
                 background: #fff;
-                font-size: 15px;
+                font-size: 17px;
             }
 
             #code:focus {
@@ -57,7 +61,9 @@
         </style>
     </head>
     <body>
+        <h2>Shape generator</h2>
         <input
+            value="CuCuCuCu"
             id="code"
             placeholder="shape code"
             onkeypress="debounce(generate)"
@@ -67,6 +73,9 @@
         />
         <div id="error">Error</div>
         <br />
-        <canvas id="result" width="512" height="512"></canvas>
+
+        <div id="resultWrapper">
+            <canvas id="result" width="256" height="256"></canvas>
+        </div>
     </body>
 </html>
