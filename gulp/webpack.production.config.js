@@ -83,7 +83,7 @@ module.exports = ({
             minimizer: [
                 new TerserPlugin({
                     parallel: true,
-                    sourceMap: false,
+                    sourceMap: true,
                     cache: false,
                     terserOptions: {
                         ecma: es6 ? 6 : 5,
