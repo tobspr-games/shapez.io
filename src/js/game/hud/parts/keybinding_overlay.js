@@ -6,6 +6,11 @@ import { TrackedState } from "../../../core/tracked_state";
 export class HUDKeybindingOverlay extends BaseHUDPart {
     initialize() {
         this.shiftDownTracker = new TrackedState(this.onShiftStateChanged, this);
+
+        this.root.hud.signals.selectedPlacementBuildingChanged.add(
+            this.onSelectedBuildingForPlacementChanged,
+            this
+        );
     }
 
     onShiftStateChanged(shiftDown) {
@@ -56,8 +61,13 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             </div>
 
             <div class="binding placementOnly shift">
-                <code class="keybinding">SHIFT</code>
+                <code class="keybinding">⇧ SHIFT</code>
                 <label>Place Multiple</label>
+            </div>
+
+            <div class="binding placementOnly shift">
+                <code class="keybinding">ALT</code>
+                <label>Reverse orientation</label>
             </div>
         `
         );

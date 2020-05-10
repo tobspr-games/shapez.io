@@ -87,9 +87,9 @@ export class BeltSystem extends GameSystemWithFilter {
                             } = metaBelt.computeOptimalDirectionAndRotationVariantAtTile(
                                 this.root,
                                 new Vector(x, y),
-                                targetStaticComp.rotationDegrees
+                                targetStaticComp.originalRotation
                             );
-                            targetStaticComp.rotationDegrees = rotation;
+                            targetStaticComp.rotation = rotation;
                             metaBelt.updateRotationVariant(targetEntity, rotationVariant);
                         }
                     }

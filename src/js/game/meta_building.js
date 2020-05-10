@@ -98,18 +98,20 @@ export class MetaBuilding {
 
     /**
      * Creates the entity at the given location
-     * @param {GameRoot} root
-     * @param {Vector} origin Origin tile
-     * @param {number=} rotation Rotation
-     * @param {number=} rotationVariant Rotation variant
+     * @param {object} param0
+     * @param {GameRoot} param0.root
+     * @param {Vector} param0.origin Origin tile
+     * @param {number=} param0.rotation Rotation
+     * @param {number=} param0.rotationVariant Rotation variant
      */
-    createAndPlaceEntity(root, origin, rotation = 0, rotationVariant = 0) {
+    createAndPlaceEntity({ root, origin, rotation = 0, rotationVariant = 0 }) {
         const entity = new Entity(root);
         entity.addComponent(
             new StaticMapEntityComponent({
                 spriteKey: "sprites/buildings/" + this.id + ".png",
                 origin: new Vector(origin.x, origin.y),
-                rotationDegrees: rotation,
+                rotation,
+                originalRotation: rotation,
                 tileSize: this.getDimensions().copy(),
                 silhouetteColor: this.getSilhouetteColor(),
             })

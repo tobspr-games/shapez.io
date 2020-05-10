@@ -176,6 +176,7 @@ export class InputDistributor {
      */
     handleBlur() {
         this.shiftIsDown = false;
+        this.altIsDown = false;
         this.forwardToReceiver("pageBlur", {});
         this.forwardToReceiver("shiftUp", {});
     }
@@ -186,6 +187,9 @@ export class InputDistributor {
     handleKeydown(event) {
         if (event.keyCode === 16) {
             this.shiftIsDown = true;
+        }
+        if (event.keyCode === 18) {
+            this.altIsDown = true;
         }
 
         if (
@@ -224,6 +228,10 @@ export class InputDistributor {
         if (event.keyCode === 16) {
             this.shiftIsDown = false;
             this.forwardToReceiver("shiftUp", {});
+        }
+        if (event.keyCode === 18) {
+            this.altIsDown = false;
+            this.forwardToReceiver("altUp", {});
         }
 
         this.forwardToReceiver("keyup", {

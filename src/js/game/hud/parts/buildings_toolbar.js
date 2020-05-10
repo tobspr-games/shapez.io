@@ -33,8 +33,8 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
     constructor(root) {
         super(root);
 
-        /** @type {Object.<string, { metaBuilding: MetaBuilding, status: boolean, element: HTMLElement}>} */
-        this.buildingUnlockStates = {};
+        /** @type {Object.<string, { metaBuilding: MetaBuilding, unlocked: boolean, selected: boolean, element: HTMLElement}>} */
+        this.buildingHandles = {};
 
         this.sigBuildingSelected = new Signal();
 
@@ -92,29 +92,50 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
 
             this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {});
 
-            this.buildingUnlockStates[metaBuilding.id] = {
+            this.buildingHandles[metaBuilding.id] = {
                 metaBuilding,
                 element: itemContainer,
-                status: false,
+                unlocked: false,
+                selected: false,
             };
         }
+
+        this.root.hud.signals.selectedPlacementBuildingChanged.add(
+            this.onSelectedPlacementBuildingChanged,
+            this
+        );
     }
 
     update() {
         this.trackedIsVisisible.set(!this.root.camera.getIsMapOverlayActive());
 
-        for (const buildingId in this.buildingUnlockStates) {
-            const handle = this.buildingUnlockStates[buildingId];
+        for (const buildingId in this.buildingHandles) {
+            const handle = this.buildingHandles[buildingId];
             const newStatus = handle.metaBuilding.getIsUnlocked(this.root);
-            if (handle.status !== newStatus) {
-                handle.status = newStatus;
+            if (handle.unlocked !== newStatus) {
+                handle.unlocked = newStatus;
                 handle.element.classList.toggle("unlocked", newStatus);
             }
         }
     }
 
     /**
-     *
+     * @param {MetaBuilding} metaBuilding
+     */
+    onSelectedPlacementBuildingChanged(metaBuilding) {
+        for (const buildingId in this.buildingHandles) {
+            const handle = this.buildingHandles[buildingId];
+            const newStatus = handle.metaBuilding === metaBuilding;
+            if (handle.selected !== newStatus) {
+                handle.selected = newStatus;
+                handle.element.classList.toggle("selected", newStatus);
+            }
+        }
+
+        this.element.classList.toggle("buildingSelected", !!metaBuilding);
+    }
+
+    /**
      * @param {MetaBuilding} metaBuilding
      */
     selectBuildingForPlacement(metaBuilding) {
@@ -124,5 +145,6 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
         }
 
         this.sigBuildingSelected.dispatch(metaBuilding);
+        this.onSelectedPlacementBuildingChanged(metaBuilding);
     }
 }

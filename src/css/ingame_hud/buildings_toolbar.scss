@@ -58,12 +58,17 @@
                 }
             }
 
-            // &:first-child .tooltip {
-            //     display: flex;
-            // }
+            &.selected {
+                background: rgb(140, 229, 140) !important;
+                transform: scale(1.05);
+                .keybinding {
+                    color: #111;
+                }
+            }
 
             pointer-events: all;
-            transition: background-color 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+            transition-property: background-color, transform;
             &.unlocked:hover {
                 background: rgba($accentColorDark, 0.1);
                 cursor: pointer;

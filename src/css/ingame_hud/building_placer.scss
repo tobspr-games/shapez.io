@@ -1,19 +1,17 @@
 #ingame_HUD_building_placer {
     position: fixed;
-    @include S(bottom, 60px);
-    left: 50%;
-    transform: translateX(-50%);
+    @include S(top, 5q0px);
+    @include S(right, 10px);
 
     display: flex;
     flex-direction: column;
 
     @include S(padding, 6px);
     justify-content: center;
-    align-items: center;
-    background-color: $ingameHudBg;
+    align-items: flex-start;
     @include S(border-radius, 4px);
-    background: #333;
-    @include S(width, 300px);
+    background: rgba(#333, 0.5);
+    @include S(width, 200px);
 
     .buildingLabel {
         @include PlainText;
@@ -24,8 +22,8 @@
 
     .instructions,
     .description {
-        text-align: center;
-        color: mix($accentColorDark, $accentColorBright, 50%);
+        color: #fff;
+        opacity: 0.8;
         @include SuperSmallText;
     }
 
