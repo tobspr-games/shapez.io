@@ -109,12 +109,12 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                 const undergroundComp = contents.components.UndergroundBelt;
                 if (undergroundComp) {
                     const staticComp = contents.components.StaticMapEntity;
-                    if (staticComp.rotationDegrees === targetRotation) {
+                    if (staticComp.rotation === targetRotation) {
                         if (undergroundComp.mode !== enumUndergroundBeltMode.sender) {
                             // If we encounter an underground receiver on our way which is also faced in our direction, we don't accept that
                             break;
                         }
-                        // console.log("GOT IT! rotation is", rotation, "and target is", staticComp.rotationDegrees);
+                        // console.log("GOT IT! rotation is", rotation, "and target is", staticComp.rotation);
 
                         return {
                             rotation: targetRotation,

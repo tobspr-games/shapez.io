@@ -58,7 +58,7 @@ export class GameLogic {
         const checker = new StaticMapEntityComponent({
             origin,
             tileSize: building.getDimensions(),
-            rotationDegrees: rotation,
+            rotation,
         });
 
         const rect = checker.getTileSpaceBounds();
@@ -106,7 +106,7 @@ export class GameLogic {
         const beltComp = original.components.Belt;
         if (beltComp) {
             // Its a belt, check if it differs in either rotation or rotation variant
-            if (staticComp.rotationDegrees !== rotation) {
+            if (staticComp.rotation !== rotation) {
                 return true;
             }
             if (beltComp.direction !== arrayBeltVariantToRotation[rotationVariant]) {
@@ -150,7 +150,7 @@ export class GameLogic {
             const checker = new StaticMapEntityComponent({
                 origin,
                 tileSize: building.getDimensions(),
-                rotationDegrees: rotation,
+                rotation,
             });
 
             const rect = checker.getTileSpaceBounds();
@@ -167,7 +167,12 @@ export class GameLogic {
                 }
             }
 
-            building.createAndPlaceEntity(this.root, origin, rotation, rotationVariant);
+            building.createAndPlaceEntity({
+                root: this.root,
+                origin,
+                rotation,
+                rotationVariant,
+            });
             return true;
         }
         return false;

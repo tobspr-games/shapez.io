@@ -99,6 +99,11 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 const angleDeg = Math_degrees(delta.angle());
                 this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
 
+                // Holding alt inverts the placement
+                if (this.root.app.inputMgr.altIsDown) {
+                    this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
+                }
+
                 // - Using bresenhams algorithmus
 
                 let x0 = oldPos.x;
@@ -172,7 +177,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             this.fakeEntity.addComponent(
                 new StaticMapEntityComponent({
                     origin: new Vector(0, 0),
-                    rotationDegrees: 0,
+                    rotation: 0,
                     tileSize: metaBuilding.getDimensions().copy(),
                 })
             );
@@ -190,7 +195,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         if (selectedBuilding) {
             this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
             const staticComp = this.fakeEntity.components.StaticMapEntity;
-            staticComp.rotationDegrees = this.currentBaseRotation;
+            staticComp.rotation = this.currentBaseRotation;
         }
     }
 
@@ -350,7 +355,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         // Synchronize rotation and origin
         const staticComp = this.fakeEntity.components.StaticMapEntity;
         staticComp.origin = tile;
-        staticComp.rotationDegrees = rotation;
+        staticComp.rotation = rotation;
         metaBuilding.updateRotationVariant(this.fakeEntity, rotationVariant);
 
         // Check if we could place the buildnig

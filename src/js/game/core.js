@@ -132,15 +132,17 @@ export class GameCore {
 
     /**
      * Initializes a new game, this means creating a new map and centering on the
-     * plaerbase
+     * playerbase
      * */
     initNewGame() {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
 
-        gMetaBuildingRegistry
-            .findByClass(MetaHubBuilding)
-            .createAndPlaceEntity(this.root, new Vector(-2, -2), 0);
+        gMetaBuildingRegistry.findByClass(MetaHubBuilding).createAndPlaceEntity({
+            root: this.root,
+            origin: new Vector(-2, -2),
+            rotation: 0,
+        });
     }
 
     /**
