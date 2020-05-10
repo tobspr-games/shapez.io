@@ -45,7 +45,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             
             <div class="binding noPlacementOnly">
                 <code class="keybinding rightMouse"></code><i></i>
-                <code class="keybinding shift">ALT</code>+
+                <code class="keybinding shift">CTRL</code>+
                 <code class="keybinding leftMouse"></code>
                 <label>Delete</label>
             </div>
