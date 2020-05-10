@@ -104,7 +104,7 @@ export class GameLogic {
         const staticComp = original.components.StaticMapEntity;
         assert(staticComp, "Building is not static");
         const beltComp = original.components.Belt;
-        if (beltComp) {
+        if (beltComp && building instanceof MetaBeltBaseBuilding) {
             // Its a belt, check if it differs in either rotation or rotation variant
             if (staticComp.rotation !== rotation) {
                 return true;
@@ -114,7 +114,7 @@ export class GameLogic {
             }
         }
 
-        return false;
+        return true;
     }
 
     /**
