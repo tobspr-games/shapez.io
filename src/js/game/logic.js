@@ -141,10 +141,11 @@ export class GameLogic {
      * @param {object} param0
      * @param {Vector} param0.origin
      * @param {number} param0.rotation
+     * @param {number} param0.originalRotation
      * @param {number} param0.rotationVariant
      * @param {MetaBuilding} param0.building
      */
-    tryPlaceBuilding({ origin, rotation, rotationVariant, building }) {
+    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, building }) {
         if (this.checkCanPlaceBuilding({ origin, rotation, rotationVariant, building })) {
             // Remove any removeable entities below
             const checker = new StaticMapEntityComponent({
@@ -172,6 +173,7 @@ export class GameLogic {
                 origin,
                 rotation,
                 rotationVariant,
+                originalRotation,
             });
             return true;
         }

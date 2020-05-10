@@ -270,6 +270,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 origin: tile,
                 rotation,
                 rotationVariant,
+                originalRotation: this.currentBaseRotation,
                 building: this.currentMetaBuilding.get(),
             })
         ) {
