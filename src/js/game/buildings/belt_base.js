@@ -169,7 +169,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             // do a curve from the left to the top
 
             if (hasRightEjector && !hasLeftEjector) {
-                console.log("e - connect right");
                 return {
                     rotation: (rotation + 270) % 360,
                     rotationVariant: 2,
@@ -179,7 +178,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             // When something ejects to us from the right and nothing from the left,
             // do a curve from the right to the top
             if (hasLeftEjector && !hasRightEjector) {
-                console.log("e - connect left");
                 return {
                     rotation: (rotation + 90) % 360,
                     rotationVariant: 1,
@@ -193,7 +191,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             // When there is an acceptor to the right but no acceptor to the left,
             // do a turn to the right
             if (hasRightAcceptor && !hasLeftAcceptor) {
-                console.log("a - connect right");
                 return {
                     rotation,
                     rotationVariant: 2,
@@ -203,7 +200,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             // When there is an acceptor to the left but no acceptor to the right,
             // do a turn to the left
             if (hasLeftAcceptor && !hasRightAcceptor) {
-                console.log("a - connect left");
                 return {
                     rotation,
                     rotationVariant: 1,
