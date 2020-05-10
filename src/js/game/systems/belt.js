@@ -8,6 +8,8 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
 import { MapChunkView } from "../map_chunk_view";
+import { gMetaBuildingRegistry } from "../../core/global_registries";
+import { MetaBeltBaseBuilding } from "../buildings/belt_base";
 
 const BELT_ANIM_COUNT = 6;
 
@@ -51,6 +53,49 @@ export class BeltSystem extends GameSystemWithFilter {
                 Loader.getSprite("sprites/belt/right_5.png"),
             ],
         };
+
+        this.root.signals.entityAdded.add(this.updateSurroundingBeltPlacement, this);
+        this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
+    }
+
+    /**
+     * Updates the belt placement after an entity has been added / deleted
+     * @param {Entity} entity
+     */
+    updateSurroundingBeltPlacement(entity) {
+        const staticComp = entity.components.StaticMapEntity;
+        if (!staticComp) {
+            return;
+        }
+
+        const metaBelt = gMetaBuildingRegistry.findByClass(MetaBeltBaseBuilding);
+
+        // Compute affected area
+        const originalRect = staticComp.getTileSpaceBounds();
+        const affectedArea = originalRect.expandedInAllDirections(1);
+        for (let x = affectedArea.x; x < affectedArea.right(); ++x) {
+            for (let y = affectedArea.y; y < affectedArea.bottom(); ++y) {
+                if (!originalRect.containsPoint(x, y)) {
+                    const targetEntity = this.root.map.getTileContentXY(x, y);
+                    if (targetEntity) {
+                        const targetBeltComp = targetEntity.components.Belt;
+                        if (targetBeltComp) {
+                            const targetStaticComp = targetEntity.components.StaticMapEntity;
+                            const {
+                                rotation,
+                                rotationVariant,
+                            } = metaBelt.computeOptimalDirectionAndRotationVariantAtTile(
+                                this.root,
+                                new Vector(x, y),
+                                targetStaticComp.rotationDegrees
+                            );
+                            targetStaticComp.rotationDegrees = rotation;
+                            metaBelt.updateRotationVariant(targetEntity, rotationVariant);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     draw(parameters) {

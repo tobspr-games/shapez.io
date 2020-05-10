@@ -66,6 +66,14 @@ export class MetaBuilding {
     }
 
     /**
+     * Returns a sprite for blueprints
+     * @returns {AtlasSprite}
+     */
+    getBlueprintSprite(rotationVariant = 0) {
+        return Loader.getSprite("sprites/blueprints/" + this.id + ".png");
+    }
+
+    /**
      * Returns whether this building is rotateable
      * @returns {boolean}
      */
@@ -110,8 +118,8 @@ export class MetaBuilding {
         this.setupEntityComponents(entity, root);
         this.updateRotationVariant(entity, rotationVariant);
 
-        root.entityMgr.registerEntity(entity);
         root.map.placeStaticEntity(entity);
+        root.entityMgr.registerEntity(entity);
         return entity;
     }
 
