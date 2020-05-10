@@ -13,6 +13,7 @@ import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
 import { HUDShop } from "./parts/shop";
 import { IS_MOBILE } from "../../core/config";
+import { HUDMassSelector } from "./parts/mass_selector";
 
 export class GameHUD {
     /**
@@ -39,6 +40,8 @@ export class GameHUD {
             unlockNotification: new HUDUnlockNotification(this.root),
 
             gameMenu: new HUDGameMenu(this.root),
+
+            massSelector: new HUDMassSelector(this.root),
 
             shop: new HUDShop(this.root),
 
@@ -149,7 +152,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        const partsOrder = ["buildingPlacer"];
+        const partsOrder = ["massSelector", "buildingPlacer"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {
