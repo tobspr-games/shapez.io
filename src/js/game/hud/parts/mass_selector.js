@@ -79,7 +79,7 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {Vector} pos
      */
     onMouseDown(pos) {
-        if (!this.root.app.inputMgr.altIsDown) {
+        if (!this.root.app.inputMgr.ctrlIsDown) {
             return;
         }
 

@@ -28,8 +28,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.fakeEntity = null;
 
         const keyActionMapper = this.root.gameState.keyActionMapper;
-        keyActionMapper.getBinding("building_abort_placement").add(() => this.currentMetaBuilding.set(null));
-        keyActionMapper.getBinding("back").add(() => this.currentMetaBuilding.set(null));
+        keyActionMapper.getBinding("building_abort_placement").add(this.abortPlacement, this);
+        keyActionMapper.getBinding("back").add(this.abortPlacement, this);
 
         keyActionMapper.getBinding("rotate_while_placing").add(this.tryRotate, this);
 
@@ -59,6 +59,13 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
         this.buildingLabel = makeDiv(this.element, null, ["buildingLabel"], "Extract");
         this.buildingDescription = makeDiv(this.element, null, ["description"], "");
+    }
+
+    abortPlacement() {
+        if (this.currentMetaBuilding.get()) {
+            this.currentMetaBuilding.set(null);
+            return STOP_PROPAGATION;
+        }
     }
 
     /**
