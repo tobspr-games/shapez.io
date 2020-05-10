@@ -66,7 +66,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        fastGameEnter: true,
+        fastGameEnter: false,
         noArtificialDelays: true,
         disableSavegameWrite: false,
         showEntityBounds: false,

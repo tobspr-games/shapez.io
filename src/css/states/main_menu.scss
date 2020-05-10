@@ -1,12 +1,15 @@
 #state_MainMenuState {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
 
     background: uiResource("menu_bg.noinline.jpg") center center / cover no-repeat !important;
 
     .logo {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
         img {
             @include S(width, 350px);
         }
@@ -15,13 +18,64 @@
     .mainContainer {
         @include S(margin-top, 40px);
         display: flex;
-
+        flex-grow: 1;
+        align-items: flex-start;
+        justify-content: center;
         .playButton {
             @include SuperHeading;
             @include S(width, 150px);
             @include S(padding, 15px, 20px);
             color: #fff;
             background-color: $accentColorDark;
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+
+        @include S(padding, 15px);
+        > a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            justify-content: center;
+            background: #eee;
+            @include S(padding, 5px);
+            @include S(border-radius, 4px);
+            @include S(margin-left, 10px);
+            @include SuperSmallText();
+            border: #{D(1px)} solid #aaa;
+            border-bottom: #{D(3px)} solid #aaa;
+            box-shadow: #{D(1px)} #{D(2px)} #{D(3px)} 0 rgba(0, 10, 20, 0.1);
+
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #999da3;
+
+            transition: background-color 0.12s ease-in-out;
+            pointer-events: all;
+            @include S(width, 50px);
+            @include S(height, 50px);
+            cursor: pointer;
+            &:hover {
+                background-color: #fafafa;
+            }
+
+            .thirdpartyLogo {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                background: center center / 85% no-repeat;
+                &.githubLogo {
+                    background-image: uiResource("main_menu/github.png");
+                }
+                &.discordLogo {
+                    background-image: uiResource("main_menu/discord.png");
+                    background-size: 100%;
+                }
+            }
         }
     }
 }
