@@ -142,6 +142,8 @@ export class GameCore {
             root: this.root,
             origin: new Vector(-2, -2),
             rotation: 0,
+            originalRotation: 0,
+            rotationVariant: 0,
         });
     }
 
