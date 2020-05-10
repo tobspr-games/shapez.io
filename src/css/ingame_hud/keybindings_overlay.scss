@@ -64,7 +64,7 @@
         }
     }
 
-    .shift .keybinding {
+    .keybinding.shift {
         transition: all 0.1s ease-in-out;
         transition-property: background-color, color, border-color;
         background: $colorRedBright;
@@ -72,7 +72,7 @@
         color: #fff;
     }
 
-    &.shiftDown .shift .keybinding {
+    &.shiftDown .keybinding.shift {
         border-color: darken($colorRedBright, 40);
     }
 }

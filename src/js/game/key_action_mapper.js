@@ -29,6 +29,8 @@ export const defaultKeybindings = {
 
         menu_open_shop: { keyCode: key("F") },
         menu_open_stats: { keyCode: key("G") },
+
+        confirm_mass_delete: { keyCode: 46 }, // DEL
     },
 
     toolbar: {

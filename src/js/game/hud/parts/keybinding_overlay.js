@@ -44,7 +44,9 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             </div>               
             
             <div class="binding noPlacementOnly">
-                <code class="keybinding rightMouse"></code>
+                <code class="keybinding rightMouse"></code><i></i>
+                <code class="keybinding shift">ALT</code>+
+                <code class="keybinding leftMouse"></code>
                 <label>Delete</label>
             </div>
             
@@ -60,13 +62,13 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 <label>Rotate Building</label>
             </div>
 
-            <div class="binding placementOnly shift">
-                <code class="keybinding">⇧ SHIFT</code>
+            <div class="binding placementOnly">
+                <code class="keybinding shift">⇧ SHIFT</code>
                 <label>Place Multiple</label>
             </div>
 
-            <div class="binding placementOnly shift">
-                <code class="keybinding">ALT</code>
+            <div class="binding placementOnly">
+                <code class="keybinding shift">ALT</code>
                 <label>Reverse orientation</label>
             </div>
         `

@@ -400,6 +400,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
 	"sourceSize": {"w":3,"h":3}
 },
+"sprites/misc/deletion_marker.png":
+{
+	"frame": {"x":107,"y":95,"w":10,"h":10},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
+	"sourceSize": {"w":10,"h":10}
+},
 "sprites/misc/slot_bad_arrow.png":
 {
 	"frame": {"x":107,"y":95,"w":10,"h":10},
@@ -423,6 +431,6 @@
 	"format": "RGBA8888",
 	"size": {"w":121,"h":240},
 	"scale": "0.1",
-	"smartupdate": "$TexturePacker:SmartUpdate:80df730947c1d83df455c7645ebd4dbd:29979cacc85be7fc1c890b96110d9771:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e1aa43844bd41a62665cbb0c503ebb65:4482f83c3403490091eed64b07ce6591:f159918d23e5952766c6d23ab52278c6$"
 }
 }
