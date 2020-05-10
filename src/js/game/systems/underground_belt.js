@@ -77,7 +77,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                         const receiverUndergroundComp = contents.components.UndergroundBelt;
                         if (receiverUndergroundComp) {
                             const receiverStaticComp = contents.components.StaticMapEntity;
-                            if (receiverStaticComp.rotationDegrees === targetRotation) {
+                            if (receiverStaticComp.rotation === targetRotation) {
                                 if (receiverUndergroundComp.mode === enumUndergroundBeltMode.receiver) {
                                     // Try to pass over the item to the receiver
                                     if (

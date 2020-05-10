@@ -152,10 +152,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 continue;
             }
 
-            const realPosition = slot.pos.rotateFastMultipleOf90(staticComp.rotationDegrees);
+            const realPosition = slot.pos.rotateFastMultipleOf90(staticComp.rotation);
             const realDirection = Vector.transformDirectionFromMultipleOf90(
                 slot.direction,
-                staticComp.rotationDegrees
+                staticComp.rotation
             );
             const realDirectionVector = enumDirectionToVector[realDirection];
 
