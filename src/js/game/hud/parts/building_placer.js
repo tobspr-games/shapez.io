@@ -97,18 +97,21 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             return;
         }
 
-        if (this.currentMetaBuilding.get() && this.lastDragTile) {
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (metaBuilding && this.lastDragTile) {
             const oldPos = this.lastDragTile;
             const newPos = this.root.camera.screenToWorld(pos).toTileSpace();
 
             if (!oldPos.equals(newPos)) {
-                const delta = newPos.sub(oldPos);
-                const angleDeg = Math_degrees(delta.angle());
-                this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
+                if (metaBuilding.getRotateAutomaticallyWhilePlacing()) {
+                    const delta = newPos.sub(oldPos);
+                    const angleDeg = Math_degrees(delta.angle());
+                    this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
 
-                // Holding alt inverts the placement
-                if (this.root.app.inputMgr.altIsDown) {
-                    this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
+                    // Holding alt inverts the placement
+                    if (this.root.app.inputMgr.altIsDown) {
+                        this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
+                    }
                 }
 
                 // - Using bresenhams algorithmus

@@ -58,6 +58,13 @@ export class MetaBuilding {
     }
 
     /**
+     * Whether to rotate automatically in the dragging direction while placing
+     */
+    getRotateAutomaticallyWhilePlacing() {
+        return false;
+    }
+
+    /**
      * Returns a preview sprite
      * @returns {AtlasSprite}
      */

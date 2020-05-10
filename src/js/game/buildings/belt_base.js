@@ -65,6 +65,10 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return true;
     }
 
+    getRotateAutomaticallyWhilePlacing() {
+        return true;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
