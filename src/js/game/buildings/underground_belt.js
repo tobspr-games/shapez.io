@@ -51,6 +51,17 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         }
     }
 
+    getBlueprintSprite(rotationVariant) {
+        switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
+            case enumUndergroundBeltMode.sender:
+                return Loader.getSprite("sprites/blueprints/underground_belt_entry.png");
+            case enumUndergroundBeltMode.receiver:
+                return Loader.getSprite("sprites/blueprints/underground_belt_exit.png");
+            default:
+                assertAlways(false, "Invalid rotation variant");
+        }
+    }
+
     /**
      * @param {GameRoot} root
      */

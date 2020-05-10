@@ -19,6 +19,52 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return "#777";
     }
 
+    getName() {
+        return "Belt";
+    }
+
+    getDescription() {
+        return "Transports items, hold and drag to place multiple, press 'R' to rotate.";
+    }
+
+    getPreviewSprite(rotationVariant) {
+        switch (arrayBeltVariantToRotation[rotationVariant]) {
+            case enumDirection.top: {
+                return Loader.getSprite("sprites/buildings/belt_top.png");
+            }
+            case enumDirection.left: {
+                return Loader.getSprite("sprites/buildings/belt_left.png");
+            }
+            case enumDirection.right: {
+                return Loader.getSprite("sprites/buildings/belt_right.png");
+            }
+            default: {
+                assertAlways(false, "Invalid belt rotation variant");
+            }
+        }
+    }
+
+    getBlueprintSprite(rotationVariant) {
+        switch (arrayBeltVariantToRotation[rotationVariant]) {
+            case enumDirection.top: {
+                return Loader.getSprite("sprites/blueprints/belt_top.png");
+            }
+            case enumDirection.left: {
+                return Loader.getSprite("sprites/blueprints/belt_left.png");
+            }
+            case enumDirection.right: {
+                return Loader.getSprite("sprites/blueprints/belt_right.png");
+            }
+            default: {
+                assertAlways(false, "Invalid belt rotation variant");
+            }
+        }
+    }
+
+    getStayInPlacementMode() {
+        return true;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
@@ -140,65 +186,29 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
         // When there is a top acceptor, ignore sides
         // NOTICE: This makes the belt prefer side turns *way* too much!
-        // if (!hasTopAcceptor) {
-        //     // When there is an acceptor to the right but no acceptor to the left,
-        //     // do a turn to the right
-        //     if (hasRightAcceptor && !hasLeftAcceptor) {
-        //         return {
-        //             rotation,
-        //             rotationVariant: 2,
-        //         };
-        //     }
+        if (!hasTopAcceptor) {
+            // When there is an acceptor to the right but no acceptor to the left,
+            // do a turn to the right
+            if (hasRightAcceptor && !hasLeftAcceptor) {
+                return {
+                    rotation,
+                    rotationVariant: 2,
+                };
+            }
 
-        //     // When there is an acceptor to the left but no acceptor to the right,
-        //     // do a turn to the left
-        //     if (hasLeftAcceptor && !hasRightAcceptor) {
-        //         return {
-        //             rotation,
-        //             rotationVariant: 1,
-        //         };
-        //     }
-        // }
+            // When there is an acceptor to the left but no acceptor to the right,
+            // do a turn to the left
+            if (hasLeftAcceptor && !hasRightAcceptor) {
+                return {
+                    rotation,
+                    rotationVariant: 1,
+                };
+            }
+        }
 
         return {
             rotation,
             rotationVariant: 0,
         };
-    }
-
-    getName() {
-        return "Belt";
-    }
-
-    getDescription() {
-        return "Transports items, hold and drag to place multiple, press 'R' to rotate.";
-    }
-
-    getPreviewSprite(rotationVariant) {
-        switch (arrayBeltVariantToRotation[rotationVariant]) {
-            case enumDirection.top: {
-                return Loader.getSprite("sprites/belt/forward_0.png");
-            }
-            case enumDirection.left: {
-                return Loader.getSprite("sprites/belt/left_0.png");
-            }
-            case enumDirection.right: {
-                return Loader.getSprite("sprites/belt/right_0.png");
-            }
-            default: {
-                assertAlways(false, "Invalid belt rotation variant");
-            }
-        }
-    }
-
-    getStayInPlacementMode() {
-        return true;
-    }
-
-    /**
-     * Can be overridden
-     */
-    internalGetBeltDirection(rotationVariant) {
-        return enumDirection.top;
     }
 }

@@ -6,6 +6,7 @@ import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Math_abs } from "../core/builtins";
 import { Rectangle } from "../core/rectangle";
 import { createLogger } from "../core/logging";
+import { MetaBeltBaseBuilding, arrayBeltVariantToRotation } from "./buildings/belt_base";
 
 const logger = createLogger("ingame/logic");
 
@@ -46,12 +47,14 @@ export class GameLogic {
     }
 
     /**
-     *
-     * @param {Vector} origin
-     * @param {number} rotation
-     * @param {MetaBuilding} building
+     * @param {object} param0
+     * @param {Vector} param0.origin
+     * @param {number} param0.rotation
+     * @param {number} param0.rotationVariant
+     * @param {MetaBuilding} param0.building
+     * @returns {boolean}
      */
-    isAreaFreeToBuild(origin, rotation, building) {
+    isAreaFreeToBuild({ origin, rotation, rotationVariant, building }) {
         const checker = new StaticMapEntityComponent({
             origin,
             tileSize: building.getDimensions(),
@@ -63,8 +66,19 @@ export class GameLogic {
         for (let x = rect.x; x < rect.x + rect.w; ++x) {
             for (let y = rect.y; y < rect.y + rect.h; ++y) {
                 const contents = this.root.map.getTileContentXY(x, y);
-                if (contents && !contents.components.ReplaceableMapEntity) {
-                    return false;
+                if (contents) {
+                    if (
+                        !this.checkCanReplaceBuilding({
+                            original: contents,
+                            origin,
+                            building,
+                            rotation,
+                            rotationVariant,
+                        })
+                    ) {
+                        // Content already has same rotation
+                        return false;
+                    }
                 }
             }
         }
@@ -72,16 +86,54 @@ export class GameLogic {
     }
 
     /**
-     *
-     * @param {Vector} origin
-     * @param {number} rotation
-     * @param {MetaBuilding} building
+     * Checks if the given building can be replaced by another
+     * @param {object} param0
+     * @param {Entity} param0.original
+     * @param {Vector} param0.origin
+     * @param {number} param0.rotation
+     * @param {number} param0.rotationVariant
+     * @param {MetaBuilding} param0.building
+     * @returns {boolean}
      */
-    checkCanPlaceBuilding(origin, rotation, building) {
+    checkCanReplaceBuilding({ original, origin, building, rotation, rotationVariant }) {
+        if (!original.components.ReplaceableMapEntity) {
+            // Can not get replaced at all
+            return false;
+        }
+
+        const staticComp = original.components.StaticMapEntity;
+        assert(staticComp, "Building is not static");
+        const beltComp = original.components.Belt;
+        if (beltComp) {
+            // Its a belt, check if it differs in either rotation or rotation variant
+            if (staticComp.rotationDegrees !== rotation) {
+                return true;
+            }
+            if (beltComp.direction !== arrayBeltVariantToRotation[rotationVariant]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param {object} param0
+     * @param {Vector} param0.origin
+     * @param {number} param0.rotation
+     * @param {number} param0.rotationVariant
+     * @param {MetaBuilding} param0.building
+     */
+    checkCanPlaceBuilding({ origin, rotation, rotationVariant, building }) {
         if (!building.getIsUnlocked(this.root)) {
             return false;
         }
-        return this.isAreaFreeToBuild(origin, rotation, building);
+        return this.isAreaFreeToBuild({
+            origin,
+            rotation,
+            rotationVariant,
+            building,
+        });
     }
 
     /**
@@ -93,7 +145,7 @@ export class GameLogic {
      * @param {MetaBuilding} param0.building
      */
     tryPlaceBuilding({ origin, rotation, rotationVariant, building }) {
-        if (this.checkCanPlaceBuilding(origin, rotation, building)) {
+        if (this.checkCanPlaceBuilding({ origin, rotation, rotationVariant, building })) {
             // Remove any removeable entities below
             const checker = new StaticMapEntityComponent({
                 origin,
@@ -106,7 +158,7 @@ export class GameLogic {
             for (let x = rect.x; x < rect.x + rect.w; ++x) {
                 for (let y = rect.y; y < rect.y + rect.h; ++y) {
                     const contents = this.root.map.getTileContentXY(x, y);
-                    if (contents && contents.components.ReplaceableMapEntity) {
+                    if (contents) {
                         if (!this.tryDeleteBuilding(contents)) {
                             logger.error("Building has replaceable component but is also unremovable");
                             return false;

@@ -13,7 +13,7 @@ import {
 import { pulseAnimation, makeDiv } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { TrackedState } from "../../../core/tracked_state";
-import { Math_abs, Math_radians } from "../../../core/builtins";
+import { Math_abs, Math_radians, Math_degrees } from "../../../core/builtins";
 import { Loader } from "../../../core/loader";
 import { drawRotatedSprite } from "../../../core/draw_utils";
 import { Entity } from "../../entity";
@@ -96,6 +96,9 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
             if (!oldPos.equals(newPos)) {
                 const delta = newPos.sub(oldPos);
+                const angleDeg = Math_degrees(delta.angle());
+                this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
+
                 // - Using bresenhams algorithmus
 
                 let x0 = oldPos.x;
@@ -351,36 +354,49 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         metaBuilding.updateRotationVariant(this.fakeEntity, rotationVariant);
 
         // Check if we could place the buildnig
-        const canBuild = this.root.logic.checkCanPlaceBuilding(tile, rotation, metaBuilding);
+        const canBuild = this.root.logic.checkCanPlaceBuilding({
+            origin: tile,
+            rotation,
+            rotationVariant,
+            building: metaBuilding,
+        });
+
+        // Fade in / out
+        parameters.context.lineWidth = 1;
+        // parameters.context.globalAlpha = 0.3 + pulseAnimation(this.root.time.realtimeNow(), 0.9) * 0.7;
 
         // Determine the bounds and visualize them
         const entityBounds = staticComp.getTileSpaceBounds();
-        const drawBorder = 2;
-        parameters.context.globalAlpha = 0.5;
+        const drawBorder = -3;
         if (canBuild) {
-            parameters.context.fillStyle = "rgba(0, 255, 0, 0.2)";
+            parameters.context.strokeStyle = "rgba(56, 235, 111, 0.5)";
+            parameters.context.fillStyle = "rgba(56, 235, 111, 0.2)";
         } else {
+            parameters.context.strokeStyle = "rgba(255, 0, 0, 0.2)";
             parameters.context.fillStyle = "rgba(255, 0, 0, 0.2)";
         }
-        parameters.context.fillRect(
+
+        parameters.context.beginRoundedRect(
             entityBounds.x * globalConfig.tileSize - drawBorder,
             entityBounds.y * globalConfig.tileSize - drawBorder,
             entityBounds.w * globalConfig.tileSize + 2 * drawBorder,
-            entityBounds.h * globalConfig.tileSize + 2 * drawBorder
+            entityBounds.h * globalConfig.tileSize + 2 * drawBorder,
+            4
         );
+        parameters.context.stroke();
+        // parameters.context.fill();
+        parameters.context.globalAlpha = 1;
+
+        // HACK to draw the entity sprite
+        const previewSprite = metaBuilding.getBlueprintSprite(rotationVariant);
+        staticComp.origin = worldPos.divideScalar(globalConfig.tileSize).subScalars(0.5, 0.5);
+        staticComp.drawSpriteOnFullEntityBounds(parameters, previewSprite);
+        staticComp.origin = tile;
 
         // Draw ejectors
         if (canBuild) {
             this.drawMatchingAcceptorsAndEjectors(parameters);
         }
-
-        // HACK to draw the entity sprite
-        const previewSprite = metaBuilding.getPreviewSprite(rotationVariant);
-        parameters.context.globalAlpha = 0.8 + pulseAnimation(this.root.time.realtimeNow(), 1) * 0.1;
-        staticComp.origin = worldPos.divideScalar(globalConfig.tileSize).subScalars(0.5, 0.5);
-        staticComp.drawSpriteOnFullEntityBounds(parameters, previewSprite);
-        staticComp.origin = tile;
-        parameters.context.globalAlpha = 1;
     }
 
     /**
@@ -396,6 +412,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         const badArrowSprite = Loader.getSprite("sprites/misc/slot_bad_arrow.png");
 
         // Just ignore this code ...
+
+        const offsetShift = 10;
 
         if (acceptorComp) {
             const slots = acceptorComp.slots;
@@ -437,7 +455,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                         y: acceptorSlotWsPos.y,
                         angle: Math_radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
                         size: 13,
-                        offsetY: 15,
+                        offsetY: offsetShift + 13,
                     });
                     parameters.context.globalAlpha = 1;
                 }
@@ -483,7 +501,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                     y: ejectorSLotWsPos.y,
                     angle: Math_radians(enumDirectionToAngle[ejectorSlotWsDirection]),
                     size: 13,
-                    offsetY: 15,
+                    offsetY: offsetShift,
                 });
                 parameters.context.globalAlpha = 1;
             }
