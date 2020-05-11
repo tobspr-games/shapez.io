@@ -1,6 +1,6 @@
 #ingame_HUD_building_placer {
     position: fixed;
-    @include S(top, 5q0px);
+    @include S(top, 50px);
     @include S(right, 10px);
 
     display: flex;

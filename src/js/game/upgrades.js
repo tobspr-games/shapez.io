@@ -76,7 +76,7 @@ export const UPGRADES = {
         description: improvement => "Speed +" + Math.floor(improvement * 100.0) + "%",
         tiers: [
             {
-                required: [{ shape: "RuRuRuRu", amount: 200 }],
+                required: [{ shape: "SuSuSuSu", amount: 200 }],
                 improvement: 1,
             },
             {
@@ -99,7 +99,7 @@ export const UPGRADES = {
         description: improvement => "Speed +" + Math.floor(improvement * 100.0) + "%",
         tiers: [
             {
-                required: [{ shape: "RuRuRuRu", amount: 200 }],
+                required: [{ shape: "WuWuWuWu", amount: 200 }],
                 improvement: 1,
             },
             {

@@ -33,5 +33,11 @@ export class HUDGameMenu extends BaseHUDPart {
                 binding.appendLabelToElement(button);
             }
         });
+
+        const menuButtons = makeDiv(this.element, null, ["menuButtons"]);
+
+        this.musicButton = makeDiv(menuButtons, null, ["button", "music"]);
+        this.sfxButton = makeDiv(menuButtons, null, ["button", "sfx"]);
+        this.settingsButton = makeDiv(menuButtons, null, ["button", "settings"]);
     }
 }
