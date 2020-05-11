@@ -39,7 +39,7 @@ export const globalConfig = {
     undergroundBeltMaxTiles: 5,
 
     buildingSpeeds: {
-        cutter: 1 / 2,
+        cutter: 1 / 4,
         rotater: 1 / 1,
         painter: 1 / 3,
         mixer: 1 / 2,
