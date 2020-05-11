@@ -133,7 +133,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         const images = buildUtils.getAllResourceImages();
 
                         // Preload essentials
-                        const preloads = ["fonts/LouisGeorgeCafe.woff2"];
+                        const preloads = ["fonts/GameFont.woff2"];
 
                         // for (let i = 0; i < images.length; ++i) {
                         //     if (preloads.indexOf(images[i]) < 0) {
@@ -180,7 +180,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         font-style: normal;
                         font-weight: normal;
                         font-display: swap;
-                        src: url('${cachebust("res/fonts/LouisGeorgeCafe.woff2")}') format('woff2');
+                        src: url('${cachebust("res/fonts/GameFont.woff2")}') format('woff2');
                     }
             
                     #ll_fp {

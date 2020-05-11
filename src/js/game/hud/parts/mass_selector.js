@@ -19,7 +19,7 @@ export class HUDMassSelector extends BaseHUDPart {
             [],
             `
             Press <code class="keybinding">DEL</code> to remove selected buildings
-            and <code class="keybinding">ESCAPE</code> to cancel.
+            and <code class="keybinding">ESC</code> to cancel.
         `
         );
     }

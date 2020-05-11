@@ -3,10 +3,9 @@
     @include S(top, 50px);
     left: 50%;
     transform: translateX(-50%);
-    @include S(width, 300px);
-    background: #f77;
+    background: rgba(#f77, 0.8);
     @include S(border-radius, 4px);
-    @include S(padding, 10px);
+    @include S(padding, 9px);
     @include PlainText;
     color: #fff;
 

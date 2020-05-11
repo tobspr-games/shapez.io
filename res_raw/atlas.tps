@@ -284,6 +284,9 @@
             <key type="filename">sprites/belt/right_3.png</key>
             <key type="filename">sprites/belt/right_4.png</key>
             <key type="filename">sprites/belt/right_5.png</key>
+            <key type="filename">sprites/blueprints/belt_left.png</key>
+            <key type="filename">sprites/blueprints/belt_right.png</key>
+            <key type="filename">sprites/blueprints/belt_top.png</key>
             <key type="filename">sprites/buildings/belt_left.png</key>
             <key type="filename">sprites/buildings/belt_right.png</key>
             <key type="filename">sprites/buildings/belt_top.png</key>
@@ -298,6 +301,46 @@
                 <rect>32,32,63,63</rect>
                 <key>scale9Paddings</key>
                 <rect>32,32,63,63</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/blueprints/cutter.png</key>
+            <key type="filename">sprites/blueprints/mixer.png</key>
+            <key type="filename">sprites/blueprints/painter.png</key>
+            <key type="filename">sprites/blueprints/splitter.png</key>
+            <key type="filename">sprites/blueprints/stacker.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>96,48,192,96</rect>
+                <key>scale9Paddings</key>
+                <rect>96,48,192,96</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/blueprints/miner.png</key>
+            <key type="filename">sprites/blueprints/rotater.png</key>
+            <key type="filename">sprites/blueprints/trash.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>48,48,96,96</rect>
+                <key>scale9Paddings</key>
+                <rect>48,48,96,96</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -335,22 +378,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/buildings/underground_belt_entry.png</key>
-            <key type="filename">sprites/buildings/underground_belt_exit.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>48,48,96,96</rect>
-                <key>scale9Paddings</key>
-                <rect>48,48,96,96</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">sprites/debug/acceptor_slot.png</key>
             <key type="filename">sprites/debug/ejector_slot.png</key>
             <key type="filename">sprites/map_overview/belt_forward.png</key>
@@ -370,6 +397,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/misc/deletion_marker.png</key>
             <key type="filename">sprites/misc/slot_bad_arrow.png</key>
             <key type="filename">sprites/misc/slot_good_arrow.png</key>
             <struct type="IndividualSpriteSettings">
