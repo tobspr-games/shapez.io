@@ -127,7 +127,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 var sy = y0 < y1 ? 1 : -1;
                 var err = dx - dy;
 
-                while (true) {
+                while (this.currentMetaBuilding.get()) {
                     this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
                     if (x0 === x1 && y0 === y1) break;
                     var e2 = 2 * err;
