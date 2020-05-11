@@ -21,11 +21,13 @@ export class MainMenuState extends GameState {
             <div class="footer">
 
                 <a href="https://github.com/tobspr/shapez.io" target="_blank">
+                    This game is open source!
                     <span class="thirdpartyLogo githubLogo"></span>
                 </a>    
 
                 <a href="https://discord.gg/HN7EVzV" target="_blank">
-                    <span class="thirdpartyLogo  discordLogo"></span>
+                Official discord server
+                <span class="thirdpartyLogo  discordLogo"></span>
                 </a>    
 
             </div>

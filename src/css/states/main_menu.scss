@@ -3,7 +3,8 @@
     justify-content: center;
     flex-direction: column;
 
-    background: uiResource("menu_bg.noinline.jpg") center center / cover no-repeat !important;
+    background: $colorGreenBright uiResource("main_menu/bg_pattern.png") top left / #{D(10px)} !important;
+    // background: $colorGreenBright !important;
 
     .logo {
         display: flex;
@@ -21,46 +22,49 @@
         flex-grow: 1;
         align-items: flex-start;
         justify-content: center;
+
         .playButton {
             @include SuperHeading;
-            @include S(width, 150px);
-            @include S(padding, 15px, 20px);
+            @include S(width, 130px);
+            @include S(padding, 15px, 20px, 10px);
+            letter-spacing: 0.3em !important;
             color: #fff;
-            background-color: $accentColorDark;
+            background-color: #55585a;
+            text-shadow: #{D(1px)} #{D(2px)} 0 rgba(0, 0, 0, 0.1);
         }
     }
 
     .footer {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
 
         @include S(padding, 15px);
         > a {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
 
             justify-content: center;
-            background: #eee;
+            background: lighten(#44484a, 55);
             @include S(padding, 5px);
             @include S(border-radius, 4px);
             @include S(margin-left, 10px);
             @include SuperSmallText();
-            border: #{D(1px)} solid #aaa;
-            border-bottom: #{D(3px)} solid #aaa;
+            border: #{D(1px)} solid #44484a;
+            border-bottom: #{D(3px)} solid #44484a;
             box-shadow: #{D(1px)} #{D(2px)} #{D(3px)} 0 rgba(0, 10, 20, 0.1);
 
             font-weight: bold;
             text-transform: uppercase;
-            color: #999da3;
+            color: #616266;
 
             transition: background-color 0.12s ease-in-out;
             pointer-events: all;
-            @include S(width, 50px);
+            @include S(width, 120px);
             @include S(height, 50px);
             cursor: pointer;
             &:hover {
-                background-color: #fafafa;
+                background-color: lighten(#44484a, 65);
             }
 
             .thirdpartyLogo {
