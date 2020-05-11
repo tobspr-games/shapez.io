@@ -162,8 +162,8 @@ export class MapChunk {
         weights = {
             [enumSubShape.rect]: 100,
             [enumSubShape.circle]: Math_round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
-            [enumSubShape.star]: Math_round(5 + clamp(distanceToOriginInChunks, 0, 30)),
-            [enumSubShape.windmill]: Math_round(3 + clamp(distanceToOriginInChunks / 2, 0, 20)),
+            [enumSubShape.star]: Math_round(9 + clamp(distanceToOriginInChunks, 0, 30)),
+            [enumSubShape.windmill]: Math_round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
         };
 
         if (distanceToOriginInChunks < 5) {
