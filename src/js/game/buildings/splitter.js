@@ -18,7 +18,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
     }
 
     getName() {
-        return "Distribute";
+        return "Balancer";
     }
 
     getSilhouetteColor() {
@@ -26,7 +26,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
     }
 
     getDescription() {
-        return "Accepts up to two inputs and evenly distributes them on the outputs. Can also be used to merge two inputs into one output.";
+        return "Multifunctional - Evenly distributes all inputs onto all outputs.";
     }
 
     /**

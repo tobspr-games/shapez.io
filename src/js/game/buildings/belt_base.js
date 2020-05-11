@@ -24,7 +24,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
     }
 
     getDescription() {
-        return "Transports items, hold and drag to place multiple, press 'R' to rotate.";
+        return "Transports items, hold and drag to place multiple.";
     }
 
     getPreviewSprite(rotationVariant) {
