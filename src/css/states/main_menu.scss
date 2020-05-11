@@ -1,9 +1,10 @@
 #state_MainMenuState {
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    background: $colorGreenBright uiResource("main_menu/bg_pattern.png") top left / #{D(10px)} !important;
+    background: rgb(99, 212, 169) uiResource("main_menu/bg.noinline.jpg") center center / cover !important;
     // background: $colorGreenBright !important;
 
     .logo {
@@ -19,9 +20,23 @@
     .mainContainer {
         @include S(margin-top, 40px);
         display: flex;
-        flex-grow: 1;
-        align-items: flex-start;
-        justify-content: center;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        background: #fafafa;
+        @include S(padding, 20px);
+        @include S(border-radius, 4px);
+        // border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
+
+        .betaWarning {
+            @include S(width, 400px);
+            @include PlainText;
+            background: $colorRedBright;
+            @include S(padding, 10px);
+            @include S(border-radius, 4px);
+            color: #fff;
+            @include S(margin-bottom, 10px);
+        }
 
         .playButton {
             @include SuperHeading;
@@ -36,7 +51,9 @@
 
     .footer {
         display: flex;
+        flex-grow: 1;
         justify-content: center;
+        align-items: flex-end;
 
         @include S(padding, 15px);
         > a {
@@ -45,7 +62,7 @@
             align-items: center;
 
             justify-content: center;
-            background: lighten(#44484a, 55);
+            background: #fafafa;
             @include S(padding, 5px);
             @include S(border-radius, 4px);
             @include S(margin-left, 10px);
@@ -58,13 +75,15 @@
             text-transform: uppercase;
             color: #616266;
 
-            transition: background-color 0.12s ease-in-out;
+            transition: all 0.12s ease-in-out;
+            transition-property: background-color, transform;
             pointer-events: all;
             @include S(width, 120px);
             @include S(height, 50px);
             cursor: pointer;
             &:hover {
-                background-color: lighten(#44484a, 65);
+                background-color: #fff;
+                transform: scale(1.01);
             }
 
             .thirdpartyLogo {

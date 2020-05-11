@@ -15,6 +15,10 @@ export class MainMenuState extends GameState {
 
 
             <div class="mainContainer">
+                <div class="betaWarning">
+                    This game is still in BETA - Please report any issues!
+                </div>
+
                   <button class="playButton styledButton">Play</button>
             </div>
 
