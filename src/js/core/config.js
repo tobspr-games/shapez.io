@@ -23,7 +23,7 @@ export const globalConfig = {
     physicsDeltaSeconds: 0,
 
     // Update physics at N fps, independent of rendering
-    physicsUpdateRate: 60,
+    physicsUpdateRate: 55,
 
     // Map
     mapChunkSize: 32,
@@ -39,8 +39,8 @@ export const globalConfig = {
     undergroundBeltMaxTiles: 5,
 
     buildingSpeeds: {
-        cutter: 1 / 6,
-        rotater: 1 / 2,
+        cutter: 1 / 2,
+        rotater: 1 / 1,
         painter: 1 / 3,
         mixer: 1 / 2,
         stacker: 1 / 5,
@@ -66,7 +66,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        fastGameEnter: false,
+        fastGameEnter: true,
         noArtificialDelays: true,
         disableSavegameWrite: false,
         showEntityBounds: false,
