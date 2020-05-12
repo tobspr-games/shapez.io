@@ -186,14 +186,9 @@ export class SavegameManager extends ReadWriteProxy {
      * Helper method to generate a new internal savegame id
      */
     generateInternalId() {
-        const timestamp = ("" + Math_floor(Date.now() / 1000.0 - 1565641619)).padStart(10, "0");
-        return (
-            timestamp +
-            "." +
-            Rusha.createHash()
-                .update(Date.now() + "/" + Math.random())
-                .digest("hex")
-        );
+        return Rusha.createHash()
+            .update(Date.now() + "/" + Math.random())
+            .digest("hex");
     }
 
     // End
