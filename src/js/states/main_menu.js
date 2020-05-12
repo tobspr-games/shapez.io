@@ -9,15 +9,20 @@ export class MainMenuState extends GameState {
 
     getInnerHTML() {
         return `
+
+            <video autoplay muted loop class="fullscreenBackgroundVideo">
+                <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
+            </video>
+
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
             </div>
-
+        
+            <div class="betaWarning">
+                This game is still under development - Please report any issues!
+            </div>
 
             <div class="mainContainer">
-                <div class="betaWarning">
-                    This game is still in BETA - Please report any issues!
-                </div>
 
                   <button class="playButton styledButton">Play</button>
             </div>
@@ -52,6 +57,17 @@ export class MainMenuState extends GameState {
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             this.onPlayButtonClicked();
+        }
+
+        // Initialize video
+        this.videoElement = this.htmlElement.querySelector("video");
+        if (this.videoElement) {
+            this.videoElement.playbackRate = 0.9;
+            this.videoElement.addEventListener("canplay", () => {
+                if (this.videoElement) {
+                    this.videoElement.classList.add("loaded");
+                }
+            });
         }
     }
 

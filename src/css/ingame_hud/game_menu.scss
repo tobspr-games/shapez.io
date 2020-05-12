@@ -22,9 +22,11 @@
             cursor: pointer;
             transition: all 0.12s ease-in-out;
             transition-property: opacity, transform;
+            opacity: 0.9;
+            @include S(margin-left, 5px);
 
             &:hover {
-                opacity: 0.9;
+                opacity: 0.8;
                 transform: translateY(3px);
             }
             &.music {
