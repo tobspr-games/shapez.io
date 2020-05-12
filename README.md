@@ -1,8 +1,13 @@
 # shapez.io
 
+<img src="https://i.imgur.com/dzvAhEY.png" alt="shapez.io Logo" width="500">
+
 This is the source code for shapez.io, an open source base building game inspired by factorio.
 
 Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
+
+<img src="https://i.imgur.com/WzypmaG.png" alt="gameplay screenshot" width="800">
+
 
 ## Playing
 
@@ -19,13 +24,20 @@ You can already play it on https://beta.shapez.io
 
 ## Contributing
 
-Since this game is in the more or less early development, I will only accept high-quality pull requests which add an immediate benefit. Please understand that low quality PR's might be closed by me with a short comment explaining why.
+Since this game is in the more or less early development, I will only accept pull requests which add an immediate benefit. Please understand that low quality PR's might be closed by me with a short comment explaining why.
+
+If you want to add a new feature or in generally contribute I recommend to get in touch with me on discord:
+
+<a href="https://discord.com/invite/HN7EVzV" target="_blank">
+<img src="https://i.imgur.com/SoawBhW.png" alt="discord logo" width="100">
+</a>
+
 
 ### Code
 
-The game is based on a custom engine which itself is based on the YORG.io 3 game egine (Actually its almost the same core).
-Most code in the engine is clean with some code for the actual game on top being hacky.
+The game is based on a custom engine which itself is based on the YORG.io 3 game egine (Actually it shares almost the same core).
+The code within the engine is relatively clean with some code for the actual game on top being hacky.
 
 ### Assets
 
-You will need a texture packer license in order to regenerate the atlas. If you don't have one but you want to contribute assets, let me know and I might compile it for you.
+You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">texture packer</a> license in order to regenerate the atlas. If you don't have one but you want to contribute assets, let me know and I might compile it for you.
