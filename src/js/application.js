@@ -27,7 +27,7 @@ import { AnalyticsInterface } from "./platform/analytics";
 import { GoogleAnalyticsImpl } from "./platform/browser/google_analytics";
 import { Loader } from "./core/loader";
 import { GameAnalyticsInterface } from "./platform/game_analytics";
-import { GameAnalyticsDotCom } from "./platform/browser/game_analytics";
+import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 
 const logger = createLogger("application");
 
@@ -121,7 +121,7 @@ export class Application {
         this.sound = new SoundImplBrowser(this);
         this.platformWrapper = new PlatformWrapperImplBrowser(this);
         this.analytics = new GoogleAnalyticsImpl(this);
-        this.gameAnalytics = new GameAnalyticsDotCom(this);
+        this.gameAnalytics = new ShapezGameAnalytics(this);
     }
 
     /**
