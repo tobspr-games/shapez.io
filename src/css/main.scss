@@ -34,11 +34,12 @@
 @import "ingame_hud/blur_overlay";
 @import "ingame_hud/dialogs";
 @import "ingame_hud/mass_selector";
+@import "ingame_hud/vignette_overlay";
 
 // Z-Index
-$elements: ingame_Canvas, ingame_HUD_building_placer, ingame_HUD_buildings_toolbar, ingame_HUD_GameMenu,
-    ingame_HUD_KeybindingOverlay, ingame_HUD_Shop, ingame_HUD_BetaOverlay, ingame_HUD_MassSelector,
-    ingame_HUD_UnlockNotification;
+$elements: ingame_Canvas, ingame_VignetteOverlay, ingame_HUD_building_placer, ingame_HUD_buildings_toolbar,
+    ingame_HUD_GameMenu, ingame_HUD_KeybindingOverlay, ingame_HUD_Shop, ingame_HUD_BetaOverlay,
+    ingame_HUD_MassSelector, ingame_HUD_UnlockNotification;
 
 $zindex: 100;
 

@@ -57,8 +57,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     createElements(parent) {
         this.element = makeDiv(parent, "ingame_HUD_building_placer", [], ``);
 
-        this.buildingLabel = makeDiv(this.element, null, ["buildingLabel"], "Extract");
-        this.buildingDescription = makeDiv(this.element, null, ["description"], "");
+        this.buildingInfoElements = {};
+        this.buildingInfoElements.label = makeDiv(this.element, null, ["buildingLabel"], "Extract");
+        this.buildingInfoElements.desc = makeDiv(this.element, null, ["description"], "");
+        this.buildingInfoElements.descText = makeDiv(this.buildingInfoElements.desc, null, ["text"], "");
+        this.buildingInfoElements.hotkey = makeDiv(this.buildingInfoElements.desc, null, ["hotkey"], "");
+        this.buildingInfoElements.tutorialImage = makeDiv(this.element, null, ["buildingImage"]);
     }
 
     abortPlacement() {
@@ -179,8 +183,14 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     onSelectedMetaBuildingChanged(metaBuilding) {
         this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
         if (metaBuilding) {
-            this.buildingLabel.innerHTML = metaBuilding.getName();
-            this.buildingDescription.innerHTML = metaBuilding.getDescription();
+            this.buildingInfoElements.label.innerHTML = metaBuilding.getName();
+            this.buildingInfoElements.descText.innerHTML = metaBuilding.getDescription();
+
+            const binding = this.root.gameState.keyActionMapper.getBinding(
+                "building_" + metaBuilding.getId()
+            );
+
+            this.buildingInfoElements.hotkey.innerHTML = "Hotkey: " + binding.getKeyCodeString();
 
             this.fakeEntity = new Entity(null);
             metaBuilding.setupEntityComponents(this.fakeEntity, null);
@@ -190,6 +200,11 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                     rotation: 0,
                     tileSize: metaBuilding.getDimensions().copy(),
                 })
+            );
+
+            this.buildingInfoElements.tutorialImage.setAttribute(
+                "data-icon",
+                "building_tutorials/" + metaBuilding.getId() + ".png"
             );
         } else {
             this.currentlyDragging = false;

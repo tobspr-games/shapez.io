@@ -7,13 +7,13 @@
     $toolbarBg: rgba($accentColorBright, 0.9);
     display: flex;
     flex-direction: column;
-    background-color: $toolbarBg;
-    // border: $ingameHudBorder;
+    background-color: rgb(255, 255, 255);
+    background: transparent;
     border-bottom-width: 0;
-
-    @include S(border-radius, 4px, 4px, 0, 0);
-    // box-shadow: 0 0 0 #{D(2px)} rgba(darken($toolbarBg, 20), 0.5);
     transition: transform 0.12s ease-in-out;
+
+    background: uiResource("toolbar_bg.lossless.png") center center / 100% 100% no-repeat;
+    @include S(padding, 20px, 100px, 0);
 
     &:not(.visible) {
         transform: translateX(-50%) translateY(#{D(100px)});
@@ -32,7 +32,7 @@
             align-items: center;
             justify-content: center;
             @include S(padding, 5px);
-            @include S(padding-bottom, 7px);
+            @include S(padding-bottom, 1px);
             $buildingIconSize: 32px;
 
             &:not(.unlocked) {
@@ -59,7 +59,7 @@
             }
 
             &.selected {
-                background: rgb(173, 221, 253) !important;
+                background: rgba(74, 163, 223, 0.3) !important;
                 transform: scale(1.05);
                 .keybinding {
                     color: #111;
@@ -67,7 +67,7 @@
             }
 
             pointer-events: all;
-            transition: all 0.1s ease-in-out;
+            transition: all 0.05s ease-in-out;
             transition-property: background-color, transform;
             &.unlocked:hover {
                 background: rgba($accentColorDark, 0.1);
@@ -89,15 +89,6 @@
                 text-transform: uppercase;
             }
 
-            .keybinding {
-                // position: relative;
-                right: 50%;
-                transform: translateX(50%);
-                background: transparent;
-                border: 0;
-                @include S(bottom, 2pxpx);
-            }
-
             &[data-tilewidth="2"] {
                 .iconWrap {
                     @include S(width, 2 * $buildingIconSize);
@@ -106,80 +97,6 @@
 
             &:last-child {
                 border: none;
-            }
-
-            .tooltip {
-                position: absolute;
-                pointer-events: none;
-                background: #333;
-                @include S(padding, 7px);
-                bottom: calc(100% + #{D(10px)});
-                left: 50%;
-                transform: translateX(-50%);
-                box-sizing: content-box;
-                @include SuperSmallText;
-                @include S(width, 200px);
-                @include S(border-radius, 4px);
-
-                box-shadow: #{D(1px)} #{D(1px)} 0 0 rgba(0, 10, 25, 0.2);
-
-                display: none;
-                z-index: 9999;
-
-                flex-direction: column;
-
-                .title {
-                    color: #fff;
-                    @include PlainText;
-                    text-transform: uppercase;
-                    margin-bottom: 5px;
-                }
-
-                .desc {
-                    color: #aaa;
-                    @include SuperSmallText;
-                    margin-bottom: 10px;
-                    strong {
-                        color: #fff;
-                    }
-                }
-
-                .tutorialImage {
-                    display: inline-block;
-                    @include S(width, 200px);
-                    @include S(height, 200px);
-                    @include S(border-radius, 4px);
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                }
-
-                &::after {
-                    top: 100%;
-                    left: 50%;
-                    border: solid transparent;
-                    content: " ";
-                    height: 0;
-                    width: 0;
-                    position: absolute;
-                    pointer-events: none;
-                    border-top-color: #333;
-                    @include S(border-width, 5px);
-                    transform: translateX(-50%);
-                }
-            }
-
-            &:hover .tooltip {
-                display: flex;
-
-                @include InlineAnimation(0.5s ease-in-out) {
-                    90% {
-                        opacity: 0;
-                    }
-                    0% {
-                        transform: translate(-50%, 5%) scale(0.9);
-                        opacity: 0;
-                    }
-                }
             }
         }
     }

@@ -28,6 +28,8 @@ import { GoogleAnalyticsImpl } from "./platform/browser/google_analytics";
 import { Loader } from "./core/loader";
 import { GameAnalyticsInterface } from "./platform/game_analytics";
 import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
+import { queryParamOptions } from "./core/query_parameters";
+import { NoGameAnalytics } from "./platform/browser/no_game_analytics";
 
 const logger = createLogger("application");
 
@@ -121,7 +123,12 @@ export class Application {
         this.sound = new SoundImplBrowser(this);
         this.platformWrapper = new PlatformWrapperImplBrowser(this);
         this.analytics = new GoogleAnalyticsImpl(this);
-        this.gameAnalytics = new ShapezGameAnalytics(this);
+
+        if (queryParamOptions.betaMode) {
+            this.gameAnalytics = new NoGameAnalytics(this);
+        } else {
+            this.gameAnalytics = new ShapezGameAnalytics(this);
+        }
     }
 
     /**
