@@ -14,7 +14,7 @@ const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.sha
 
 // Be sure to increment the ID whenever it changes to make sure all
 // users are tracked
-const analyticsLocalFile = "analytics_token.2.bin";
+const analyticsLocalFile = "analytics_token.3.bin";
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     /**
