@@ -3,6 +3,7 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { MinerComponent } from "../components/miner";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
+import { ShapeItem } from "../items/shape_item";
 
 export class MinerSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -34,6 +35,11 @@ export class MinerSystem extends GameSystemWithFilter {
                 if (!lowerLayerItem) {
                     // Nothing below;
                     continue;
+                }
+
+                // Analytics hook
+                if (lowerLayerItem instanceof ShapeItem) {
+                    this.root.signals.shapeProduced.dispatch(lowerLayerItem.definition);
                 }
 
                 // Try actually ejecting

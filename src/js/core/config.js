@@ -18,6 +18,9 @@ export const globalConfig = {
     assetsSharpness: 1.2,
     shapesSharpness: 1.4,
 
+    statisticsGraphDpi: 2.5,
+    statisticsGraphSlices: 100,
+
     // [Calculated] physics step size
     physicsDeltaMs: 0,
     physicsDeltaSeconds: 0,
@@ -37,6 +40,8 @@ export const globalConfig = {
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
     undergroundBeltMaxTiles: 5,
+
+    analyticsSliceDurationSeconds: 10,
 
     buildingSpeeds: {
         cutter: 1 / 4,

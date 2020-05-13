@@ -138,6 +138,10 @@ declare interface Element {
     innerHTML: string;
 }
 
+declare interface Object {
+    entries(obj: object): Array<[string, any]>;
+}
+
 declare interface Math {
     radians(number): number;
     degrees(number): number;

@@ -30,6 +30,7 @@ import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
+import { ProductionAnalytics } from "./production_analytics";
 
 const logger = createLogger("ingame/core");
 
@@ -109,12 +110,10 @@ export class GameCore {
         root.entityMgr = new EntityManager(root);
         root.systemMgr = new GameSystemManager(root);
         root.shapeDefinitionMgr = new ShapeDefinitionManager(root);
-        root.mapNoiseGenerator = new PerlinNoise(Math.random()); // TODO: Save seed
         root.hubGoals = new HubGoals(root);
+        root.productionAnalytics = new ProductionAnalytics(root);
+        root.mapNoiseGenerator = new PerlinNoise(Math.random()); // TODO: Save seed
         root.buffers = new BufferMaintainer(root);
-
-        // root.particleMgr = new ParticleManager(root);
-        // root.uiParticleMgr = new ParticleManager(root);
 
         // Initialize the hud once everything is loaded
         this.root.hud.initialize();
@@ -259,6 +258,9 @@ export class GameCore {
             this.uiTimeBudget -= globalConfig.physicsDeltaMs;
             // root.uiParticleMgr.update();
         }
+
+        // Update analytics
+        root.productionAnalytics.update();
 
         // Update automatic save after everything finished
         root.automaticSave.update();

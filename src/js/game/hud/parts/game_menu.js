@@ -16,7 +16,7 @@ export class HUDGameMenu extends BaseHUDPart {
             {
                 id: "stats",
                 label: "Stats",
-                handler: () => null,
+                handler: () => this.root.hud.parts.statistics.show(),
                 keybinding: "menu_open_stats",
             },
         ];
