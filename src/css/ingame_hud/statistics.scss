@@ -1,0 +1,163 @@
+#ingame_HUD_Statistics {
+    .filterHeader {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        justify-items: end;
+
+        .filtersDataSource {
+        }
+
+        .filtersDisplayMode {
+        }
+
+        button {
+            @include S(height, 20px);
+            @include S(padding, 1px, 10px);
+            border: 0;
+            box-shadow: none;
+            border-radius: 0;
+            @include IncreasedClickArea(1px);
+            @include S(min-width, 30px);
+            color: #fff;
+            opacity: 0.25;
+            @include S(margin-left, 1px);
+
+            &.displayIcons,
+            &.displayDetailed {
+                background: uiResource("icons/display_list.png") center center / #{D(15px)} no-repeat;
+                &.displayIcons {
+                    background-image: uiResource("icons/display_icons.png");
+                    background-size: #{D(11.5px)};
+                }
+            }
+
+            background-color: #44484a !important;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .filtersDataSource,
+        .filtersDisplayMode {
+            display: flex;
+            padding: 0;
+            margin: 0;
+
+            :first-child {
+                border-radius: #{D(2px)} 0 0 #{D(2px)} !important;
+                margin-left: 0 !important;
+            }
+            :last-child {
+                margin-right: 0 !important;
+                border-radius: 0 #{D(2px)} #{D(2px)} 0 !important;
+            }
+        }
+    }
+
+    .content {
+        @include S(margin-top, 10px);
+        @include S(height, 350px);
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+
+        justify-content: flex-start;
+
+        @include S(padding-right, 4px);
+
+        > .noEntries {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include PlainText;
+            color: #aaa;
+        }
+
+        > div {
+            background: #f4f4f4;
+            @include S(border-radius, 2px);
+            @include S(margin-bottom, 4px);
+            display: grid;
+
+            grid-template-columns: 1fr auto;
+            @include S(padding, 5px);
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            canvas.icon {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+                @include S(width, 40px);
+                @include S(height, 40px);
+            }
+
+            .counter {
+                @include SuperSmallText;
+
+                @include S(border-radius, 2px);
+                @include S(padding, 0, 3px);
+            }
+        }
+    }
+
+    .dialogInner {
+        &[data-displaymode="detailed"] .displayDetailed,
+        &[data-displaymode="icons"] .displayIcons,
+        &[data-datasource="produced"] .modeProduced,
+        &[data-datasource="delivered"] .modeDelivered,
+        &[data-datasource="stored"] .modeStored {
+            opacity: 1;
+        }
+
+        &[data-displaymode="icons"] .content.hasEntries {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: #{D(73px)};
+            align-items: flex-start;
+            @include S(grid-column-gap, 3px);
+            > div {
+                @include S(grid-row-gap, 5px);
+                @include S(height, 60px);
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr auto;
+                justify-items: center;
+                align-items: center;
+
+                .counter {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                    background: rgba(0, 10, 20, 0.05);
+                    justify-self: end;
+                }
+            }
+        }
+        &[data-displaymode="detailed"] .content.hasEntries {
+            > div {
+                @include S(padding, 10px);
+                @include S(height, 40px);
+                grid-template-columns: auto 1fr auto;
+                @include S(grid-column-gap, 15px);
+
+                .counter {
+                    grid-column: 3 / 4;
+                    grid-row: 1 / 2;
+                    @include Heading;
+                    color: #55595a;
+                }
+
+                canvas.graph {
+                    @include S(width, 300px);
+                    @include S(height, 40px);
+                    @include S(border-radius, 0, 0, 2px, 2px);
+                    $color: rgba(0, 10, 20, 0.04);
+                    // background: $color;
+                    border: #{D(4px)} solid transparent;
+                    // @include S(border-width, 1px, 0, 1px, 0);
+                    @include S(margin-top, -3px);
+                }
+            }
+        }
+    }
+}

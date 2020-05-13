@@ -27,6 +27,19 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     }
 
     /**
+     *
+     * @param {string} hash
+     * @returns {ShapeDefinition}
+     */
+    getShapeFromShortKey(hash) {
+        const cached = this.shapeKeyToDefinition[hash];
+        if (cached) {
+            return cached;
+        }
+        return (this.shapeKeyToDefinition[hash] = ShapeDefinition.fromShortKey(hash));
+    }
+
+    /**
      * Registers a new shape definition
      * @param {ShapeDefinition} definition
      */

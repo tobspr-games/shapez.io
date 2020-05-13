@@ -15,6 +15,7 @@ import { HUDShop } from "./parts/shop";
 import { IS_MOBILE } from "../../core/config";
 import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
+import { HUDStatistics } from "./parts/statistics";
 
 export class GameHUD {
     /**
@@ -45,6 +46,7 @@ export class GameHUD {
             massSelector: new HUDMassSelector(this.root),
 
             shop: new HUDShop(this.root),
+            statistics: new HUDStatistics(this.root),
 
             vignetteOverlay: new HUDVignetteOverlay(this.root),
 

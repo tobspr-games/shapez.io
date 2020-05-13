@@ -27,6 +27,7 @@ import { CanvasClickInterceptor } from "./canvas_click_interceptor";
 import { PerlinNoise } from "../core/perlin_noise";
 import { HubGoals } from "./hub_goals";
 import { BufferMaintainer } from "../core/buffer_maintainer";
+import { ProductionAnalytics } from "./production_analytics";
 /* typehints:end */
 
 const logger = createLogger("game/root");
@@ -125,6 +126,9 @@ export class GameRoot {
         /** @type {ShapeDefinitionManager} */
         this.shapeDefinitionMgr = null;
 
+        /** @type {ProductionAnalytics} */
+        this.productionAnalytics = null;
+
         this.signals = {
             // Entities
             entityAdded: new Signal(/* entity */),
@@ -150,6 +154,9 @@ export class GameRoot {
 
             // Can be used to trigger an async task
             performAsync: new Signal(),
+
+            shapeDelivered: new Signal(/* definition */),
+            shapeProduced: new Signal(/* definition */),
         };
 
         // RNG's

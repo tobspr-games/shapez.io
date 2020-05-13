@@ -197,7 +197,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * Generates this shape as a canvas
      * @param {number} size
      */
-    generateAsCanvas(size = 20) {
+    generateAsCanvas(size = 120) {
         const [canvas, context] = makeOffscreenBuffer(size, size, {
             smooth: true,
             label: "definition-canvas-cache-" + this.getHash(),

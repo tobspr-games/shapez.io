@@ -88,9 +88,7 @@ export class HUDShop extends BaseHUDPart {
             tierHandle.required.forEach(({ shape, amount }) => {
                 const requireDiv = makeDiv(handle.elemRequirements, null, ["requirement"]);
 
-                const shapeDef = this.root.shapeDefinitionMgr.registerOrReturnHandle(
-                    ShapeDefinition.fromShortKey(shape)
-                );
+                const shapeDef = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
                 const shapeCanvas = shapeDef.generateAsCanvas(120);
                 shapeCanvas.classList.add();
                 requireDiv.appendChild(shapeCanvas);

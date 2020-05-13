@@ -726,6 +726,23 @@ export function makeDiv(parent, id = null, classes = [], innerHTML = "") {
 }
 
 /**
+ * Helper method to create a new button
+ * @param {Element} parent
+ * @param {Array<string>=} classes
+ * @param {string=} innerHTML
+ */
+export function makeButton(parent, classes = [], innerHTML = "") {
+    const element = document.createElement("button");
+    for (let i = 0; i < classes.length; ++i) {
+        element.classList.add(classes[i]);
+    }
+    element.classList.add("styledButton");
+    element.innerHTML = innerHTML;
+    parent.appendChild(element);
+    return element;
+}
+
+/**
  * Removes all children of the given element
  * @param {Element} elem
  */

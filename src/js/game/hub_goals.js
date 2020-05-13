@@ -1,7 +1,7 @@
 import { BasicSerializableObject } from "../savegame/serialization";
 import { GameRoot } from "./root";
 import { ShapeDefinition, enumSubShape } from "./shape_definition";
-import { enumColors } from "./colors";
+import { enumColors, enumShortcodeToColor, enumColorToShortcode } from "./colors";
 import { randomChoice, clamp, randomInt, findNiceIntegerValue } from "../core/utils";
 import { tutorialGoals, enumHubGoalRewards } from "./tutorial_goals";
 import { createLogger } from "../core/logging";
@@ -114,6 +114,8 @@ export class HubGoals extends BasicSerializableObject {
         const hash = definition.getHash();
         this.storedShapes[hash] = (this.storedShapes[hash] || 0) + 1;
 
+        this.root.signals.shapeDelivered.dispatch(definition);
+
         // Check if we have enough for the next level
         const targetHash = this.currentGoal.definition.getHash();
         if (
@@ -133,9 +135,7 @@ export class HubGoals extends BasicSerializableObject {
             const { shape, required, reward } = tutorialGoals[storyIndex];
             this.currentGoal = {
                 /** @type {ShapeDefinition} */
-                definition: this.root.shapeDefinitionMgr.registerOrReturnHandle(
-                    ShapeDefinition.fromShortKey(shape)
-                ),
+                definition: this.root.shapeDefinitionMgr.getShapeFromShortKey(shape),
                 required,
                 reward,
             };
@@ -320,14 +320,14 @@ export class HubGoals extends BasicSerializableObject {
             case enumItemProcessorTypes.hub:
                 return 1e30;
             case enumItemProcessorTypes.splitter:
-                return (2 / globalConfig.beltSpeedItemsPerSecond) * this.upgradeImprovements.belt;
+                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
             case enumItemProcessorTypes.cutter:
             case enumItemProcessorTypes.rotater:
             case enumItemProcessorTypes.stacker:
             case enumItemProcessorTypes.mixer:
             case enumItemProcessorTypes.painter:
                 return (
-                    (1 / globalConfig.beltSpeedItemsPerSecond) *
+                    globalConfig.beltSpeedItemsPerSecond *
                     this.upgradeImprovements.processors *
                     globalConfig.buildingSpeeds[processorType]
                 );
