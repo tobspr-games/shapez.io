@@ -36,9 +36,9 @@
 @import "ingame_hud/mass_selector";
 
 // Z-Index
-$elements: ingame_Canvas, ingame_HUD_building_placer_overlay, ingame_HUD_building_placer,
-    ingame_HUD_buildings_toolbar, ingame_HUD_GameMenu, ingame_HUD_KeybindingOverlay, ingame_HUD_Shop,
-    ingame_HUD_BetaOverlay, ingame_HUD_MassSelector, ingame_HUD_UnlockNotification;
+$elements: ingame_Canvas, ingame_HUD_building_placer, ingame_HUD_buildings_toolbar, ingame_HUD_GameMenu,
+    ingame_HUD_KeybindingOverlay, ingame_HUD_Shop, ingame_HUD_BetaOverlay, ingame_HUD_MassSelector,
+    ingame_HUD_UnlockNotification;
 
 $zindex: 100;
 
@@ -48,4 +48,13 @@ $zindex: 100;
     }
 
     $zindex: $zindex + 10;
+}
+
+body.uiHidden {
+    #ingame_HUD_buildings_toolbar,
+    #ingame_HUD_building_placer,
+    #ingame_HUD_GameMenu,
+    #ingame_HUD_MassSelector {
+        display: none !important;
+    }
 }

@@ -76,3 +76,7 @@
         border-color: darken($colorRedBright, 40);
     }
 }
+
+body.uiHidden #ingame_HUD_KeybindingOverlay .binding:not(.hudToggle) {
+    display: none;
+}
