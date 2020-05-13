@@ -71,23 +71,10 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
             const label = makeDiv(itemContainer, null, ["label"]);
             label.innerText = metaBuilding.getName();
 
-            const tooltip = makeDiv(
-                itemContainer,
-                null,
-                ["tooltip"],
-                `
-                <span class="title">${metaBuilding.getName()}</span>
-                <span class="desc">${metaBuilding.getDescription()}</span>
-                <span class="tutorialImage" data-icon="building_tutorials/${metaBuilding.getId()}.png"></span>
-            `
-            );
-
             const sprite = metaBuilding.getPreviewSprite(0);
 
             const spriteWrapper = makeDiv(itemContainer, null, ["iconWrap"]);
             spriteWrapper.innerHTML = sprite.getAsHTML(iconSize * dimensions.x, iconSize * dimensions.y);
-
-            binding.appendLabelToElement(itemContainer);
             binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
             this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {});

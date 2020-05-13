@@ -563,7 +563,7 @@ canvas {
 .keybinding {
     background: #fff;
     text-transform: uppercase;
-    @include S(padding, 2px, 1px, 2px);
+    @include S(padding, 1.5px, 3px, 2px);
     @include PlainText;
     @include BorderRadius(2px);
     &,
@@ -589,7 +589,7 @@ canvas {
     box-sizing: border-box;
     @include S(height, 12px);
     overflow: hidden;
-    border: #{D(1px)} solid $accentColorDark;
+    border: #{D(0px)} solid $accentColorDark;
 
     .keybinding_space {
         @include S(font-size, 17px);

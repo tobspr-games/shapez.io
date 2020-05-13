@@ -38,6 +38,7 @@
                 background: #fff uiResource("icons/mouse_left.png") center center / 85% no-repeat;
             }
         }
+
         label {
             color: $accentColorDark;
             @include SuperSmallText;
@@ -49,6 +50,7 @@
     &:not(.placementActive) .binding.placementOnly {
         display: none;
     }
+
     &.placementActive .binding.noPlacementOnly {
         display: none;
     }
