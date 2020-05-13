@@ -9,8 +9,12 @@ import { GameRoot } from "../../game/root";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
 
 const logger = createLogger("game_analytics");
+
 const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.shapez.io";
-const analyticsLocalFile = "analytics_token.bin";
+
+// Be sure to increment the ID whenever it changes to make sure all
+// users are tracked
+const analyticsLocalFile = "analytics_token.2.bin";
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     /**
@@ -115,6 +119,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         }
 
         const savegameId = savegame.internalId;
+        if (!gameState.core) {
+            logger.warn("Game state has no core");
+            return;
+        }
         const root = gameState.core.root;
         if (!root) {
             logger.warn("Root is not initialized");
