@@ -23,7 +23,6 @@ export const defaultKeybindings = {
         map_move_right: { keyCode: key("D") },
         map_move_down: { keyCode: key("S") },
         map_move_left: { keyCode: key("A") },
-        toggle_hud: { keyCode: 113 },
 
         center_map: { keyCode: 32 },
 
@@ -31,6 +30,7 @@ export const defaultKeybindings = {
         menu_open_stats: { keyCode: key("G") },
 
         confirm_mass_delete: { keyCode: 46 }, // DEL
+        toggle_hud: { keyCode: 113 }, // F2
     },
 
     toolbar: {

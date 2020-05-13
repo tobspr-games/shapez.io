@@ -16,6 +16,7 @@ import { GameRoot } from "./root";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { clickDetectorGlobals } from "../core/click_detector";
 import { createLogger } from "../core/logging";
+import { queryParamOptions } from "../core/query_parameters";
 
 const logger = createLogger("camera");
 
@@ -685,6 +686,9 @@ export class Camera extends BasicSerializableObject {
      */
     clampZoomLevel() {
         if (G_IS_DEV && globalConfig.debug.disableZoomLimits) {
+            return;
+        }
+        if (queryParamOptions.betaMode) {
             return;
         }
 

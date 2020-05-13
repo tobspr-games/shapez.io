@@ -2,6 +2,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
 import { getStringForKeyCode } from "../../key_action_mapper";
 import { TrackedState } from "../../../core/tracked_state";
+import { queryParamOptions } from "../../../core/query_parameters";
 
 export class HUDKeybindingOverlay extends BaseHUDPart {
     initialize() {
@@ -71,7 +72,15 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 <code class="keybinding shift">ALT</code>
                 <label>Reverse orientation</label>
             </div>
+        ` +
+                (queryParamOptions.betaMode
+                    ? `
+            <div class="binding hudToggle">
+                <code class="keybinding">F2</code>
+                <label>Toggle HUD</label>
+            </div>
         `
+                    : "")
         );
     }
 
