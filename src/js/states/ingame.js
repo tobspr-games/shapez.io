@@ -92,7 +92,7 @@ export class InGameState extends GameState {
 
     getThemeMusic() {
         // set later
-        return MUSIC.gameBg;
+        return MUSIC.mainMenu;
     }
 
     onBeforeExit() {
@@ -115,7 +115,7 @@ export class InGameState extends GameState {
     }
 
     getPauseOnFocusLost() {
-        return !this.isMultiplayer();
+        return false;
     }
 
     getHasUnloadConfirmation() {
@@ -407,7 +407,6 @@ export class InGameState extends GameState {
         return;
 
         if (!this.savegame || !this.savegame.isSaveable()) {
-            // Can not save in multiplayer
             return Promise.resolve();
         }
 

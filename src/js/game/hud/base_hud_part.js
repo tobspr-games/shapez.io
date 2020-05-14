@@ -91,18 +91,6 @@ export class BaseHUDPart {
     // Helpers
 
     /**
-     * Calls closeMethod if an overlay is opened
-     * @param {function=} closeMethod
-     */
-    closeOnOverlayOpen(closeMethod = null) {
-        this.root.hud.signals.overlayOpened.add(overlay => {
-            if (overlay !== this) {
-                (closeMethod || this.close).call(this);
-            }
-        }, this);
-    }
-
-    /**
      * Helper method to construct a new click detector
      * @param {Element} element The element to listen on
      * @param {function} handler The handler to call on this object

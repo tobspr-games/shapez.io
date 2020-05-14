@@ -1,6 +1,8 @@
 import { GameRoot } from "./root";
 import { ShapeDefinition } from "./shape_definition";
 import { globalConfig } from "../core/config";
+import { BaseItem } from "./base_item";
+import { ShapeItem } from "./items/shape_item";
 
 /** @enum {string} */
 export const enumAnalyticsDataSource = {
@@ -27,7 +29,7 @@ export class ProductionAnalytics {
         }
 
         this.root.signals.shapeDelivered.add(this.onShapeDelivered, this);
-        this.root.signals.shapeProduced.add(this.onShapeProduced, this);
+        this.root.signals.itemProduced.add(this.onItemProduced, this);
 
         this.lastAnalyticsSlice = 0;
     }
@@ -42,12 +44,15 @@ export class ProductionAnalytics {
     }
 
     /**
-     * @param {ShapeDefinition} definition
+     * @param {BaseItem} item
      */
-    onShapeProduced(definition) {
-        const key = definition.getHash();
-        const entry = this.history[enumAnalyticsDataSource.produced];
-        entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + 1;
+    onItemProduced(item) {
+        if (item instanceof ShapeItem) {
+            const definition = item.definition;
+            const key = definition.getHash();
+            const entry = this.history[enumAnalyticsDataSource.produced];
+            entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + 1;
+        }
     }
 
     /**
