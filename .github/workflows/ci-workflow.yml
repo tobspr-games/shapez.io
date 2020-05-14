@@ -9,13 +9,11 @@ jobs:
             node-version: [10.x]
         steps:
             - uses: actions/checkout@v1
-
             - name: Lint
               uses: mooyoul/tslint-actions@v1.1.1
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   project: ${{ env.GITHUB_WORKSPACE }}/src/js
-
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
