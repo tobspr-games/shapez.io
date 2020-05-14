@@ -1,6 +1,8 @@
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { enumDirection, Vector } from "../../core/vector";
+import { types } from "../../savegame/serialization";
+import { gItemRegistry } from "../../core/global_registries";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
@@ -21,7 +23,37 @@ export class ItemProcessorComponent extends Component {
 
     static getSchema() {
         return {
-            // TODO
+            nextOutputSlot: types.uint,
+            type: types.enum(enumItemProcessorTypes),
+            inputsPerCharge: types.uint,
+            beltUnderlays: types.array(
+                types.structured({
+                    pos: types.vector,
+                    direction: types.enum(enumDirection),
+                })
+            ),
+            inputSlots: types.array(
+                types.structured({
+                    item: types.obj(gItemRegistry),
+                    sourceSlot: types.uint,
+                })
+            ),
+            itemsToEject: types.array(
+                types.structured({
+                    item: types.obj(gItemRegistry),
+                    requiredSlot: types.nullable(types.uint),
+                    preferredSlot: types.nullable(types.uint),
+                })
+            ),
+            secondsUntilEject: types.ufloat,
+            itemConsumptionAnimations: types.array(
+                types.structured({
+                    item: types.obj(gItemRegistry),
+                    slotIndex: types.uint,
+                    animProgress: types.ufloat,
+                    direction: types.enum(enumDirection),
+                })
+            ),
         };
     }
 

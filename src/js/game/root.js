@@ -2,7 +2,6 @@
 
 import { Signal } from "../core/signal";
 import { RandomNumberGenerator } from "../core/rng";
-// import { gFactionRegistry } from "./global_registries";
 import { createLogger } from "../core/logging";
 
 // Type hints
@@ -11,12 +10,9 @@ import { GameTime } from "./time/game_time";
 import { EntityManager } from "./entity_manager";
 import { GameSystemManager } from "./game_system_manager";
 import { GameHUD } from "./hud/hud";
-// import { GameLogic } from "./game_logic";
 import { MapView } from "./map_view";
 import { Camera } from "./camera";
-// import { ParticleManager } from "../particles/particle_manager";
 import { InGameState } from "../states/ingame";
-// import { CanvasClickInterceptor } from "/canvas_click_interceptor";
 import { AutomaticSave } from "./automatic_save";
 import { Application } from "../application";
 import { SoundProxy } from "./sound_proxy";
@@ -99,20 +95,11 @@ export class GameRoot {
         /** @type {GameTime} */
         this.time = null;
 
-        /** @type {PerlinNoise} */
-        this.mapNoiseGenerator = null;
-
         /** @type {HubGoals} */
         this.hubGoals = null;
 
         /** @type {BufferMaintainer} */
         this.buffers = null;
-
-        // /** @type {ParticleManager} */
-        // this.particleMgr = null;
-
-        // /** @type {ParticleManager} */
-        // this.uiParticleMgr = null;
 
         /** @type {CanvasClickInterceptor} */
         this.canvasClickInterceptor = null;
@@ -122,9 +109,6 @@ export class GameRoot {
 
         /** @type {SoundProxy} */
         this.soundProxy = null;
-
-        // /** @type {MinimapRenderer} */
-        // this.minimapRenderer = null;
 
         /** @type {ShapeDefinitionManager} */
         this.shapeDefinitionMgr = null;
@@ -147,7 +131,6 @@ export class GameRoot {
             // Game Hooks
             gameSaved: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got saved
             gameRestored: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got restored
-            gameOver: /** @type {TypedSignal<[]>} */ (new Signal()), // Game over
 
             storyGoalCompleted: /** @type {TypedSignal<[number, string]>} */ (new Signal()),
             upgradePurchased: /** @type {TypedSignal<[string]>} */ (new Signal()),
@@ -180,20 +163,6 @@ export class GameRoot {
         this.signals.aboutToDestruct.dispatch();
 
         this.reset();
-    }
-
-    /**
-     * Prepares the root for game over, this sets the right flags and
-     * detaches all signals so no bad stuff happens
-     */
-    prepareGameOver() {
-        this.gameInitialized = false;
-        this.logicInitialized = false;
-        // for (const key in this.signals) {
-        //     if (key !== "aboutToDestruct") {
-        //         this.signals[key].removeAll();
-        //     }
-        // }
     }
 
     /**

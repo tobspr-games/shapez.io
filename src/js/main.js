@@ -9,6 +9,7 @@ import { initComponentRegistry } from "./game/component_registry";
 import { initDrawUtils } from "./core/draw_utils";
 import { initItemRegistry } from "./game/item_registry";
 import { initMetaBuildingRegistry } from "./game/meta_building_registry";
+import { initGameSpeedRegistry } from "./game/game_speed_registry";
 
 const logger = createLogger("main");
 
@@ -49,6 +50,7 @@ initDrawUtils();
 initComponentRegistry();
 initItemRegistry();
 initMetaBuildingRegistry();
+initGameSpeedRegistry();
 
 let app = null;
 

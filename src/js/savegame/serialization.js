@@ -21,6 +21,7 @@ import {
     TypeVector,
     TypeClassFromMetaclass,
     TypeClassData,
+    TypeStructuredObject,
 } from "./serialization_data_types";
 import { createLogger } from "../core/logging";
 
@@ -61,7 +62,7 @@ export const types = {
     },
 
     /**
-     * @param {Array<string>} values
+     * @param {Object<string, any>} values
      */
     enum(values) {
         return new TypeEnum(values);
@@ -100,6 +101,13 @@ export const types = {
      */
     classRef(registry) {
         return new TypeMetaClass(registry);
+    },
+
+    /**
+     * @param {Object.<string, BaseDataType>} descriptor
+     */
+    structured(descriptor) {
+        return new TypeStructuredObject(descriptor);
     },
 
     /**
@@ -215,7 +223,7 @@ export function serializeSchema(obj, schema, mergeWith = {}) {
             );
         }
         if (!schema[key]) {
-            assert(false, "Invalid schema: " + JSON_stringify(schema) + " / " + key);
+            assert(false, "Invalid schema (bad key '" + key + "'): " + JSON_stringify(schema));
         }
 
         if (G_IS_DEV) {

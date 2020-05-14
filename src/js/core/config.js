@@ -73,11 +73,11 @@ export const globalConfig = {
         /* dev:start */
         // fastGameEnter: true,
         noArtificialDelays: true,
-        disableSavegameWrite: false,
+        // disableSavegameWrite: true,
         showEntityBounds: false,
         showAcceptorEjectors: false,
         usePlainShapeIds: true,
-        // disableMusic: true,
+        disableMusic: true,
         doNotRenderStatics: false,
         disableZoomLimits: false,
         showChunkBorders: false,

@@ -2,21 +2,21 @@ import {
     Math_abs,
     Math_ceil,
     Math_floor,
+    Math_max,
     Math_min,
     Math_random,
     performanceNow,
-    Math_max,
 } from "../core/builtins";
-import { Rectangle } from "../core/rectangle";
-import { Signal, STOP_PROPAGATION } from "../core/signal";
-import { clamp, lerp } from "../core/utils";
-import { mixVector, Vector } from "../core/vector";
-import { globalConfig } from "../core/config";
-import { GameRoot } from "./root";
-import { BasicSerializableObject, types } from "../savegame/serialization";
 import { clickDetectorGlobals } from "../core/click_detector";
+import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { queryParamOptions } from "../core/query_parameters";
+import { Rectangle } from "../core/rectangle";
+import { Signal, STOP_PROPAGATION } from "../core/signal";
+import { clamp } from "../core/utils";
+import { mixVector, Vector } from "../core/vector";
+import { BasicSerializableObject, types } from "../savegame/serialization";
+import { GameRoot } from "./root";
 
 const logger = createLogger("camera");
 

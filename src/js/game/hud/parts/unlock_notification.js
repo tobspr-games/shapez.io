@@ -1,20 +1,18 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv } from "../../../core/utils";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { gMetaBuildingRegistry } from "../../../core/global_registries";
-import { MetaBuilding } from "../../meta_building";
-import { MetaSplitterBuilding } from "../../buildings/splitter";
-import { MetaCutterBuilding } from "../../buildings/cutter";
-import { enumHubGoalRewards } from "../../tutorial_goals";
-import { MetaTrashBuilding } from "../../buildings/trash";
-import { MetaMinerBuilding } from "../../buildings/miner";
-import { MetaPainterBuilding } from "../../buildings/painter";
-import { MetaMixerBuilding } from "../../buildings/mixer";
-import { MetaRotaterBuilding } from "../../buildings/rotater";
-import { MetaStackerBuilding } from "../../buildings/stacker";
-import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { globalConfig } from "../../../core/config";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
+import { makeDiv } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
+import { MetaCutterBuilding } from "../../buildings/cutter";
+import { MetaMixerBuilding } from "../../buildings/mixer";
+import { MetaPainterBuilding } from "../../buildings/painter";
+import { MetaRotaterBuilding } from "../../buildings/rotater";
+import { MetaSplitterBuilding } from "../../buildings/splitter";
+import { MetaStackerBuilding } from "../../buildings/stacker";
+import { MetaTrashBuilding } from "../../buildings/trash";
+import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
+import { enumHubGoalRewards, enumHubGoalRewardToString } from "../../tutorial_goals";
+import { BaseHUDPart } from "../base_hud_part";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
 
 export class HUDUnlockNotification extends BaseHUDPart {
     initialize() {
@@ -58,10 +56,14 @@ export class HUDUnlockNotification extends BaseHUDPart {
         this.trackClicks(this.btnClose, this.close);
     }
 
+    /**
+     * @param {number} level
+     * @param {enumHubGoalRewards} reward
+     */
     showForLevel(level, reward) {
         this.elemTitle.innerText = "Level " + ("" + level).padStart(2, "0");
 
-        let html = `<span class='reward'>Unlocked ${reward}!</span>`;
+        let html = `<span class='reward'>Unlocked ${enumHubGoalRewardToString[reward]}!</span>`;
 
         const addBuildingExplanation = metaBuildingClass => {
             const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);

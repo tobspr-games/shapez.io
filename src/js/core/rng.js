@@ -91,6 +91,15 @@ export class RandomNumberGenerator {
     }
 
     /**
+     * Random choice of an array
+     * @param {array} array
+     */
+    choice(array) {
+        const index = this.nextIntRange(0, array.length);
+        return array[index];
+    }
+
+    /**
      * @param {number} min
      * @param {number} max
      * @returns {number} Integer in range [min, max[

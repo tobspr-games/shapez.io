@@ -1,13 +1,9 @@
-import { DrawParameters } from "../../core/draw_parameters";
-import { createLogger } from "../../core/logging";
-import { extendSchema } from "../../savegame/serialization";
-import { BaseItem } from "../base_item";
-import { enumColorsToHexCode, enumColors } from "../colors";
-import { makeOffscreenBuffer } from "../../core/buffer_utils";
 import { globalConfig } from "../../core/config";
-import { round1Digit } from "../../core/utils";
-import { Math_max, Math_round } from "../../core/builtins";
 import { smoothenDpi } from "../../core/dpi_manager";
+import { DrawParameters } from "../../core/draw_parameters";
+import { types } from "../../savegame/serialization";
+import { BaseItem } from "../base_item";
+import { enumColors, enumColorsToHexCode } from "../colors";
 
 /** @enum {string} */
 const enumColorToMapBackground = {
@@ -22,9 +18,15 @@ export class ColorItem extends BaseItem {
     }
 
     static getSchema() {
-        return extendSchema(BaseItem.getCachedSchema(), {
-            // TODO
-        });
+        return types.enum(enumColors);
+    }
+
+    serialize() {
+        return this.color;
+    }
+
+    deserialize(data) {
+        this.color = data;
     }
 
     /**
@@ -33,7 +35,6 @@ export class ColorItem extends BaseItem {
     constructor(color) {
         super();
         this.color = color;
-
         this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
     }
 

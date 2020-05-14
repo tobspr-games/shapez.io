@@ -1,6 +1,7 @@
 import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
 import { globalConfig } from "../core/config";
+import { makeDiv, formatSecondsToTimeAgo } from "../core/utils";
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -69,6 +70,45 @@ export class MainMenuState extends GameState {
                 }
             });
         }
+
+        this.renderSavegames();
+    }
+
+    renderSavegames() {
+        const games = this.app.savegameMgr.getSavegamesMetaData();
+        if (games.length > 0) {
+            const parent = makeDiv(this.htmlElement.querySelector(".mainContainer"), null, ["savegames"]);
+
+            for (let i = 0; i < games.length; ++i) {
+                const elem = makeDiv(parent, null, ["savegame"]);
+
+                makeDiv(elem, null, ["internalId"], games[i].internalId.substr(0, 15));
+                makeDiv(
+                    elem,
+                    null,
+                    ["updateTime"],
+                    formatSecondsToTimeAgo((new Date().getTime() - games[i].lastUpdate) / 1000.0)
+                );
+
+                const resumeBtn = document.createElement("button");
+                resumeBtn.classList.add("styledButton", "resumeGame");
+                elem.appendChild(resumeBtn);
+
+                this.trackClicks(resumeBtn, () => this.resumeGame(games[i]));
+            }
+        }
+    }
+
+    /**
+     * @param {object} game
+     */
+    resumeGame(game) {
+        const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
+        savegame.readAsync().then(() => {
+            this.moveToState("InGameState", {
+                savegame,
+            });
+        });
     }
 
     onPlayButtonClicked() {

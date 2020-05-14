@@ -4,7 +4,7 @@ import { BasicSerializableObject } from "./serialization";
 /* typehints:end */
 
 import { Vector } from "../core/vector";
-import { round4Digits, schemaObject } from "../core/utils";
+import { round4Digits, schemaObject, accessNestedPropertyReverse } from "../core/utils";
 import { JSON_stringify } from "../core/builtins";
 
 export const globalJsonSchemaDefs = {};
@@ -458,11 +458,11 @@ export class TypePositiveNumber extends BaseDataType {
 
 export class TypeEnum extends BaseDataType {
     /**
-     * @param {Array<string>} availableValues
+     * @param {Object.<string, any>} enumeration
      */
-    constructor(availableValues = []) {
+    constructor(enumeration = {}) {
         super();
-        this.availableValues = availableValues;
+        this.availableValues = Object.keys(enumeration);
     }
 
     serialize(value) {
@@ -664,7 +664,7 @@ export class TypeClass extends BaseDataType {
         }
 
         if (!this.registry.hasId(value.$)) {
-            return "Invalid class id: " + value.$;
+            return "Invalid class id: " + value.$ + " (factory is " + this.registry.getId() + ")";
         }
     }
 
@@ -709,7 +709,7 @@ export class TypeClassData extends BaseDataType {
      * @returns {string|void} String error code or null on success
      */
     deserialize(value, targetObject, targetKey, root) {
-        assert(false, "can not deserialize class data");
+        assert(false, "can not deserialize class data of type " + this.registry.getId());
     }
 
     verifySerializedValue(value) {
@@ -785,7 +785,7 @@ export class TypeClassFromMetaclass extends BaseDataType {
         }
 
         if (!this.registry.hasId(value.$)) {
-            return "Invalid class id: " + value.$;
+            return "Invalid class id: " + value.$ + " (factory is " + this.registry.getId() + ")";
         }
     }
 
@@ -841,7 +841,7 @@ export class TypeMetaClass extends BaseDataType {
         }
 
         if (!this.registry.hasId(value)) {
-            return "Invalid class id: " + value;
+            return "Invalid class id: " + value + " (factory is " + this.registry.getId() + ")";
         }
     }
 
@@ -1100,12 +1100,11 @@ export class TypePair extends BaseDataType {
     deserialize(value, targetObject, targetKey, root) {
         const result = [undefined, undefined];
 
-        let errorCode = this.type1.deserialize(value, result, 0, root);
+        let errorCode = this.type1.deserialize(value[0], result, 0, root);
         if (errorCode) {
             return errorCode;
         }
-
-        errorCode = this.type2.deserialize(value, result, 1, root);
+        errorCode = this.type2.deserialize(value[1], result, 1, root);
         if (errorCode) {
             return errorCode;
         }
@@ -1200,5 +1199,81 @@ export class TypeNullable extends BaseDataType {
 
     getCacheKey() {
         return "nullable." + this.wrapped.getCacheKey();
+    }
+}
+
+export class TypeStructuredObject extends BaseDataType {
+    /**
+     * @param {Object.<string, BaseDataType>} descriptor
+     */
+    constructor(descriptor) {
+        super();
+        this.descriptor = descriptor;
+    }
+
+    serialize(value) {
+        assert(typeof value === "object", "not an object");
+        let result = {};
+        for (const key in this.descriptor) {
+            // assert(value.hasOwnProperty(key), "Serialization: Object does not have", key, "property!");
+            result[key] = this.descriptor[key].serialize(value[key]);
+        }
+        return result;
+    }
+
+    /**
+     * @see BaseDataType.deserialize
+     * @param {any} value
+     * @param {GameRoot} root
+     * @param {object} targetObject
+     * @param {string|number} targetKey
+     * @returns {string|void} String error code or null on success
+     */
+    deserialize(value, targetObject, targetKey, root) {
+        let result = {};
+        for (const key in value) {
+            const valueType = this.descriptor[key];
+            const errorCode = valueType.deserializeWithVerify(value[key], result, key, root);
+            if (errorCode) {
+                return errorCode;
+            }
+        }
+        targetObject[targetKey] = result;
+    }
+
+    getAsJsonSchemaUncached() {
+        let properties = {};
+        for (const key in this.descriptor) {
+            properties[key] = this.descriptor[key].getAsJsonSchema();
+        }
+
+        return {
+            type: "object",
+            required: Object.keys(this.descriptor),
+            properties,
+        };
+    }
+
+    verifySerializedValue(value) {
+        if (typeof value !== "object") {
+            return "structured object is not an object";
+        }
+        for (const key in this.descriptor) {
+            if (!value.hasOwnProperty(key)) {
+                return "structured object is missing key " + key;
+            }
+            const subError = this.descriptor[key].verifySerializedValue(value[key]);
+            if (subError) {
+                return "structured object::" + subError;
+            }
+        }
+    }
+
+    getCacheKey() {
+        let props = [];
+        for (const key in this.descriptor) {
+            props.push(key + "=" + this.descriptor[key].getCacheKey());
+        }
+        return "structured[" + props.join(",") + "]";
     }
 }

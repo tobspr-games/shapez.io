@@ -58,7 +58,7 @@
     }
 
     .mainContainer {
-        @include S(margin-top, 40px);
+        @include S(margin-top, 10px);
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -79,6 +79,50 @@
             transition: transform 0.12s ease-in-out;
             &:hover {
                 transform: scale(1.02);
+            }
+        }
+
+        .savegames {
+            @include S(max-height, 92px);
+            overflow-y: auto;
+            @include S(width, 200px);
+            pointer-events: all;
+            @include S(padding-right, 5px);
+            display: grid;
+            grid-auto-flow: row;
+            @include S(grid-gap, 5px);
+            @include S(margin-top, 10px);
+            .savegame {
+                background: #eee;
+                @include BorderRadius(4px);
+                @include S(padding, 5px);
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: auto auto;
+                @include S(grid-column-gap, 15px);
+
+                .internalId {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                    @include SuperSmallText;
+                    opacity: 0.5;
+                }
+
+                .updateTime {
+                    grid-column: 1 / 2;
+                    grid-row: 1 / 2;
+                    @include PlainText;
+                }
+
+                button.resumeGame {
+                    grid-column: 2 / 3;
+                    grid-row: 1 / 3;
+                    @include S(width, 30px);
+                    @include S(height, 30px);
+                    padding: 0;
+                    align-self: center;
+                    background: #44484a uiResource("icons/play.png") center center / 40% no-repeat;
+                }
             }
         }
     }

@@ -9,16 +9,31 @@ import { Math_floor } from "../core/builtins";
 import { createLogger } from "../core/logging";
 import { BaseItem } from "./base_item";
 import { MapChunkView } from "./map_chunk_view";
+import { randomInt } from "../core/utils";
+import { BasicSerializableObject, types } from "../savegame/serialization";
 
 const logger = createLogger("map");
 
-export class BaseMap {
+export class BaseMap extends BasicSerializableObject {
+    static getId() {
+        return "Map";
+    }
+
+    static getSchema() {
+        return {
+            seed: types.uint,
+        };
+    }
+
     /**
      *
      * @param {GameRoot} root
      */
     constructor(root) {
+        super();
         this.root = root;
+
+        this.seed = 0;
 
         /**
          * Mapping of 'X|Y' to chunk

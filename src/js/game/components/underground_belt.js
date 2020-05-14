@@ -1,6 +1,8 @@
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { globalConfig } from "../../core/config";
+import { types } from "../../savegame/serialization";
+import { gItemRegistry } from "../../core/global_registries";
 
 /** @enum {string} */
 export const enumUndergroundBeltMode = {
@@ -11,6 +13,13 @@ export const enumUndergroundBeltMode = {
 export class UndergroundBeltComponent extends Component {
     static getId() {
         return "UndergroundBelt";
+    }
+
+    static getSchema() {
+        return {
+            mode: types.enum(enumUndergroundBeltMode),
+            pendingItems: types.array(types.pair(types.obj(gItemRegistry), types.number)),
+        };
     }
 
     /**
