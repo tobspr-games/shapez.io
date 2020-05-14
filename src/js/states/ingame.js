@@ -198,10 +198,10 @@ export class InGameState extends GameState {
             this.core.initializeRoot(this, this.savegame);
 
             if (this.savegame.hasGameDump()) {
-                this.app.gameAnalytics.handleGameStarted(this.savegame);
+                this.app.gameAnalytics.handleGameStarted();
                 this.stage4bResumeGame();
             } else {
-                this.app.gameAnalytics.handleGameStarted(this.savegame);
+                this.app.gameAnalytics.handleGameStarted();
                 this.stage4aInitEmptyGame();
             }
         }

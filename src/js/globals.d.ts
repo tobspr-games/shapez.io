@@ -148,7 +148,7 @@ declare interface Math {
 }
 
 declare interface String {
-    padStart(size: number, fill: string): string;
+    padStart(size: number, fill?: string): string;
     padEnd(size: number, fill: string): string;
 }
 
@@ -170,6 +170,8 @@ declare interface SingletonFactoryTemplate<T> {
     entries: Array<T>;
     idToEntry: any;
 
+    getId(): string;
+    getAllIds(): Array<string>;
     register(classHandle: new (...args: any[]) => T): void;
     hasId(id: string): boolean;
     findById(id: string): T;

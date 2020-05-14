@@ -1,9 +1,19 @@
+import { createLogger } from "./logging";
+
+const logger = createLogger("singleton_factory");
+
 // simple factory pattern
 export class SingletonFactory {
-    constructor() {
+    constructor(id) {
+        this.id = id;
+
         // Store array as well as dictionary, to speed up lookups
         this.entries = [];
         this.idToEntry = {};
+    }
+
+    getId() {
+        return this.id;
     }
 
     register(classHandle) {
@@ -39,6 +49,7 @@ export class SingletonFactory {
     findById(id) {
         const entry = this.idToEntry[id];
         if (!entry) {
+            logger.error("Object with id", id, "is not registered!");
             assert(false, "Factory: Object with id '" + id + "' is not registered!");
             return null;
         }
@@ -66,6 +77,14 @@ export class SingletonFactory {
      */
     getEntries() {
         return this.entries;
+    }
+
+    /**
+     * Returns all registered ids
+     * @returns {Array<string>}
+     */
+    getAllIds() {
+        return Object.keys(this.idToEntry);
     }
 
     /**

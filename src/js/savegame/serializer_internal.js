@@ -6,6 +6,7 @@ import { Vector } from "../core/vector";
 import { createLogger } from "../core/logging";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { Entity } from "../game/entity";
+import { MapResourcesSystem } from "../game/systems/map_resources";
 
 const logger = createLogger("serializer_internal");
 
@@ -80,61 +81,6 @@ export class SerializerInternal {
         return null;
     }
 
-    /**
-     * Deserializes a building
-     * @param {GameRoot} root
-     * @param {{ $: string, data: any }} payload
-     */
-    deserializeBuilding(root, payload) {
-        const data = payload.data;
-        const id = payload.$;
-        if (!gMetaBuildingRegistry.hasId(id)) {
-            return "Metaclass not found for building: '" + id + "'";
-        }
-        const meta = gMetaBuildingRegistry.findById(id);
-        if (!meta) {
-            return "Metaclass not found for building: '" + id + "'";
-        }
-
-        const tile = new Vector(data.x, data.y).toTileSpace();
-        const instance = root.logic.internalPlaceBuildingLocalClientOnly({
-            tile: tile,
-            metaBuilding: meta,
-            uid: data.uid,
-        });
-
-        // Apply component specific properties
-        const errorStatus = this.deserializeComponents(instance, data.components);
-        if (errorStatus) {
-            return errorStatus;
-        }
-
-        // Apply enhancements
-        instance.updateEnhancements();
-    }
-
-    /**
-     * Deserializes a blueprint
-     * @param {GameRoot} root
-     * @param {any} data
-     * @returns {string|void}
-     */
-    deserializeBlueprint(root, data) {
-        const id = data.meta;
-        const metaClass = gMetaBuildingRegistry.findById(id);
-        if (!metaClass) {
-            return "Metaclass not found for blueprint: '" + id + "'";
-        }
-
-        const tile = new Vector(data.x, data.y).toTileSpace();
-        const instance = root.logic.internalPlaceBlueprintLocalClientOnly({
-            tile: tile,
-            metaBuilding: metaClass,
-            uid: data.uid,
-        });
-        return this.deserializeComponents(instance, data.components);
-    }
-
     /////// COMPONENTS ////
 
     /**
@@ -160,21 +106,5 @@ export class SerializerInternal {
                 return errorStatus;
             }
         }
-    }
-
-    /**
-     * Deserializes a resource
-     * @param {GameRoot} root
-     * @param {object} data
-     * @returns {string|void}
-     */
-    deserializeResource(root, data) {
-        const id = data.key;
-        const instance = new MapResource(root, this.neutralFaction, id);
-        root.logic.internalPlaceMapEntityLocalClientOnly(
-            new Vector(data.x, data.y).toTileSpace(),
-            instance,
-            data.uid
-        );
     }
 }

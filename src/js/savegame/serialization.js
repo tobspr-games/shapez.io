@@ -270,8 +270,7 @@ export function deserializeSchema(obj, schema, data, baseclassErrorResult = null
 
         const errorStatus = schema[key].deserializeWithVerify(data[key], obj, key, obj.root);
         if (errorStatus) {
-            error(
-                "serialization",
+            logger.error(
                 "Deserialization failed with error '" + errorStatus + "' on object",
                 obj,
                 "and key",
@@ -294,17 +293,17 @@ export function deserializeSchema(obj, schema, data, baseclassErrorResult = null
 export function verifySchema(schema, data) {
     for (const key in schema) {
         if (!data.hasOwnProperty(key)) {
-            error("verify", "Data", data, "does not contain", key, "(schema:", schema, ")");
+            logger.error("Data", data, "does not contain", key, "(schema:", schema, ")");
             return "verify: missing key required by schema in stored data: " + key;
         }
         if (!schema[key].allowNull() && (data[key] === null || data[key] === undefined)) {
-            error("verify", "Data", data, "has null value for", key, "(schema:", schema, ")");
+            logger.error("Data", data, "has null value for", key, "(schema:", schema, ")");
             return "verify: non-nullable entry is null: " + key;
         }
 
         const errorStatus = schema[key].verifySerializedValue(data[key]);
         if (errorStatus) {
-            error("verify", errorStatus);
+            logger.error(errorStatus);
             return "verify: " + errorStatus;
         }
     }

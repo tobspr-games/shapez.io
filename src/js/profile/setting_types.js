@@ -30,7 +30,7 @@ export class BaseSetting {
     /**
      * @param {Application} app
      * @param {Element} element
-     * @param {HUDModalDialogs} dialogs
+     * @param {any} dialogs
      */
     bind(app, element, dialogs) {
         this.app = app;

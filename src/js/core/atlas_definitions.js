@@ -22,17 +22,10 @@ export class AtlasDefinition {
     }
 }
 
-// @ts-ignore
 export const atlasFiles = require
+    // @ts-ignore
     .context("../../../res_built/atlas/", false, /.*\.json/i)
     .keys()
     .map(f => f.replace(/^\.\//gi, ""))
     .map(f => require("../../../res_built/atlas/" + f))
     .map(data => new AtlasDefinition(data));
-
-// export const atlasDefinitions = {
-//     qualityPreload: atlasFiles.filter((atlas) => atlas.meta.image.indexOf("_preload") >= 0),
-//     qualityLow: atlasFiles.filter((atlas) => atlas.meta.image.indexOf("_low") >= 0),
-//     qualityMedium: atlasFiles.filter((atlas) => atlas.meta.image.indexOf("_medium") >= 0),
-//     qualityHigh: atlasFiles.filter((atlas) => atlas.meta.image.indexOf("_high") >= 0),
-// };

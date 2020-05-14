@@ -141,24 +141,6 @@ export class SavegameSerializer {
         // entities
         errorReason = errorReason || root.entityMgr.deserialize(savegame.entityMgr);
 
-        // resources
-        errorReason =
-            errorReason ||
-            this.internal.deserializeEntityArrayFixedType(
-                root,
-                savegame.entities.resources,
-                this.internal.deserializeResource
-            );
-
-        // buildings
-        errorReason =
-            errorReason ||
-            this.internal.deserializeEntityArray(
-                root,
-                savegame.entities.buildings,
-                this.internal.deserializeBuilding
-            );
-
         // other stuff
         errorReason = errorReason || root.time.deserialize(savegame.time);
         errorReason = errorReason || root.camera.deserialize(savegame.camera);
