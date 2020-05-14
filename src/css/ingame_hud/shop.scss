@@ -160,6 +160,19 @@
                     pointer-events: none;
                     opacity: 0.3;
                 }
+
+                &.buyable {
+                    @include InlineAnimation(1s ease-in-out infinite) {
+                        0% {
+                        }
+
+                        50% {
+                            background-color: lighten($colorGreenBright, 10);
+                        }
+                        100% {
+                        }
+                    }
+                }
             }
 
             &.maxLevel {

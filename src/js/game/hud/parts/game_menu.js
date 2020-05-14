@@ -1,5 +1,5 @@
 import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv } from "../../../core/utils";
+import { makeDiv, randomInt } from "../../../core/utils";
 
 export class HUDGameMenu extends BaseHUDPart {
     initialize() {}
@@ -12,6 +12,7 @@ export class HUDGameMenu extends BaseHUDPart {
                 label: "Upgrades",
                 handler: () => this.root.hud.parts.shop.show(),
                 keybinding: "menu_open_shop",
+                badge: () => this.root.hubGoals.getAvailableUpgradeCount(),
             },
             {
                 id: "stats",
@@ -21,7 +22,10 @@ export class HUDGameMenu extends BaseHUDPart {
             },
         ];
 
-        buttons.forEach(({ id, label, handler, keybinding }) => {
+        /** @type {Array<{ badge: function, button: HTMLElement, badgeElement: HTMLElement, lastRenderAmount: number }>} */
+        this.badgesToUpdate = [];
+
+        buttons.forEach(({ id, label, handler, keybinding, badge }) => {
             const button = document.createElement("button");
             button.setAttribute("data-button-id", id);
             this.element.appendChild(button);
@@ -32,6 +36,16 @@ export class HUDGameMenu extends BaseHUDPart {
                 binding.add(handler);
                 binding.appendLabelToElement(button);
             }
+
+            if (badge) {
+                const badgeElement = makeDiv(button, null, ["badge"]);
+                this.badgesToUpdate.push({
+                    badge,
+                    lastRenderAmount: 0,
+                    button,
+                    badgeElement,
+                });
+            }
         });
 
         const menuButtons = makeDiv(this.element, null, ["menuButtons"]);
@@ -39,5 +53,19 @@ export class HUDGameMenu extends BaseHUDPart {
         this.musicButton = makeDiv(menuButtons, null, ["button", "music"]);
         this.sfxButton = makeDiv(menuButtons, null, ["button", "sfx"]);
         this.settingsButton = makeDiv(menuButtons, null, ["button", "settings"]);
+    }
+
+    update() {
+        for (let i = 0; i < this.badgesToUpdate.length; ++i) {
+            const { badge, button, badgeElement, lastRenderAmount } = this.badgesToUpdate[i];
+            const amount = badge();
+            if (lastRenderAmount !== amount) {
+                if (amount > 0) {
+                    badgeElement.innerText = amount;
+                }
+                this.badgesToUpdate[i].lastRenderAmount = amount;
+                button.classList.toggle("hasBadge", amount > 0);
+            }
+        }
     }
 }
