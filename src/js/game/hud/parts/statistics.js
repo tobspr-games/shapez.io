@@ -7,6 +7,13 @@ import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumDisplayMode, HUDShapeStatisticsHandle } from "./statistics_handle";
 
+const enumDataSourceToText = {
+    [enumAnalyticsDataSource.stored]: "Displaying amount of stored shapes in your central building.",
+    [enumAnalyticsDataSource.produced]:
+        "Displaying all shapes your whole factory produces, including intermediate products.",
+    [enumAnalyticsDataSource.delivered]: "Displaying shapes which are delivered to your central building.",
+};
+
 export class HUDStatistics extends BaseHUDPart {
     createElements(parent) {
         this.background = makeDiv(parent, "ingame_HUD_Statistics", ["ingameDialog"]);
@@ -18,6 +25,7 @@ export class HUDStatistics extends BaseHUDPart {
         this.trackClicks(this.closeButton, this.close);
 
         this.filterHeader = makeDiv(this.dialogInner, null, ["filterHeader"]);
+        this.sourceExplanation = makeDiv(this.dialogInner, null, ["sourceExplanation"]);
 
         this.filtersDataSource = makeDiv(this.filterHeader, null, ["filtersDataSource"]);
         this.filtersDisplayMode = makeDiv(this.filterHeader, null, ["filtersDisplayMode"]);
@@ -45,6 +53,8 @@ export class HUDStatistics extends BaseHUDPart {
     setDataSource(source) {
         this.dataSource = source;
         this.dialogInner.setAttribute("data-datasource", source);
+
+        this.sourceExplanation.innerText = enumDataSourceToText[source];
         if (this.visible) {
             this.rerenderFull();
         }
@@ -146,7 +156,22 @@ export class HUDStatistics extends BaseHUDPart {
         removeAllChildren(this.contentDiv);
 
         // Now, attach new ones
-        const entries = Object.entries(this.root.hubGoals.storedShapes);
+
+        let entries = null;
+        switch (this.dataSource) {
+            case enumAnalyticsDataSource.stored: {
+                entries = Object.entries(this.root.hubGoals.storedShapes);
+                break;
+            }
+            case enumAnalyticsDataSource.produced:
+            case enumAnalyticsDataSource.delivered: {
+                entries = Object.entries(this.root.productionAnalytics.getCurrentShapeRates(this.dataSource));
+                break;
+            }
+        }
+
+        // const entries = Object.entries(this.root.hubGoals.storedShapes);
+
         entries.sort((a, b) => b[1] - a[1]);
 
         let rendered = new Set();
@@ -155,9 +180,6 @@ export class HUDStatistics extends BaseHUDPart {
             const entry = entries[i];
             const shapeKey = entry[0];
             const amount = entry[1];
-            if (amount < 1) {
-                continue;
-            }
 
             let handle = this.activeHandles[shapeKey];
             if (!handle) {
