@@ -35,7 +35,24 @@ export class HubGoals extends BasicSerializableObject {
             return errorCode;
         }
 
-        console.error("TODO: HubGoals deserialize() properly");
+        // Compute gained rewards
+        for (let i = 0; i < this.level; ++i) {
+            if (i < tutorialGoals.length) {
+                const reward = tutorialGoals[i].reward;
+                this.gainedRewards[reward] = (this.gainedRewards[reward] || 0) + 1;
+            }
+        }
+
+        // Compute upgrade improvements
+        for (const upgradeId in UPGRADES) {
+            const upgradeHandle = UPGRADES[upgradeId];
+            const level = this.upgradeLevels[upgradeId] || 0;
+            let totalImprovement = upgradeHandle.baseValue || 1;
+            for (let i = 0; i < level; ++i) {
+                totalImprovement += upgradeHandle.tiers[i].improvement;
+            }
+            this.upgradeImprovements[upgradeId] = totalImprovement;
+        }
     }
 
     /**

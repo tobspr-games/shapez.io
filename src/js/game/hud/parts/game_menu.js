@@ -80,7 +80,6 @@ export class HUDGameMenu extends BaseHUDPart {
     }
 
     onGameSaved() {
-        console.log("ON GAME SAVED");
         this.saveButton.classList.toggle("animEven");
         this.saveButton.classList.toggle("animOdd");
     }
