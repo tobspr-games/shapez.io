@@ -193,3 +193,14 @@ declare class TypedTrackedState<T> {
     setSilent(value: any): void;
     get(): T;
 }
+
+declare const STOP_PROPAGATION = "stop_propagation";
+
+declare interface TypedSignal<T extends Array<any>> {
+    add(receiver: (...args: T) => typeof STOP_PROPAGATION | void, scope?: object);
+    remove(receiver: (...args: T) => typeof STOP_PROPAGATION | void);
+
+    dispatch(...args: T): typeof STOP_PROPAGATION | void;
+
+    removeAll();
+}

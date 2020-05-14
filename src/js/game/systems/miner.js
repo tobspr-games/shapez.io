@@ -38,9 +38,7 @@ export class MinerSystem extends GameSystemWithFilter {
                 }
 
                 // Analytics hook
-                if (lowerLayerItem instanceof ShapeItem) {
-                    this.root.signals.shapeProduced.dispatch(lowerLayerItem.definition);
-                }
+                this.root.signals.itemProduced.dispatch(lowerLayerItem);
 
                 // Try actually ejecting
                 if (!ejectComp.tryEject(0, lowerLayerItem)) {

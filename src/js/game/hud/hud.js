@@ -16,6 +16,7 @@ import { IS_MOBILE } from "../../core/config";
 import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
+import { MetaBuilding } from "../meta_building";
 
 export class GameHUD {
     /**
@@ -29,10 +30,6 @@ export class GameHUD {
      * Initializes the hud parts
      */
     initialize() {
-        this.signals = {
-            overlayOpened: new Signal(/* overlay */),
-        };
-
         this.parts = {
             processingOverlay: new HUDProcessingOverlay(this.root),
 
@@ -54,7 +51,7 @@ export class GameHUD {
         };
 
         this.signals = {
-            selectedPlacementBuildingChanged: new Signal(/* metaBuilding|null */),
+            selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {

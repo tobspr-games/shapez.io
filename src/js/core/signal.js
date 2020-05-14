@@ -8,7 +8,7 @@ export class Signal {
 
     /**
      * Adds a new signal listener
-     * @param {object} receiver
+     * @param {function} receiver
      * @param {object} scope
      */
     add(receiver, scope = null) {
@@ -40,7 +40,7 @@ export class Signal {
 
     /**
      * Removes a receiver
-     * @param {object} receiver
+     * @param {function} receiver
      */
     remove(receiver) {
         let index = null;

@@ -28,6 +28,9 @@ import { PerlinNoise } from "../core/perlin_noise";
 import { HubGoals } from "./hub_goals";
 import { BufferMaintainer } from "../core/buffer_maintainer";
 import { ProductionAnalytics } from "./production_analytics";
+import { Entity } from "./entity";
+import { ShapeDefinition } from "./shape_definition";
+import { BaseItem } from "./base_item";
 /* typehints:end */
 
 const logger = createLogger("game/root");
@@ -131,32 +134,32 @@ export class GameRoot {
 
         this.signals = {
             // Entities
-            entityAdded: new Signal(/* entity */),
-            entityGotNewComponent: new Signal(/* entity */),
-            entityQueuedForDestroy: new Signal(/* entity */),
-            entityDestroyed: new Signal(/* entity */),
+            entityAdded: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+            entityGotNewComponent: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+            entityQueuedForDestroy: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+            entityDestroyed: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
 
             // Global
-            resized: new Signal(/* w, h */), // Game got resized,
-            readyToRender: new Signal(),
-            aboutToDestruct: new Signal(),
+            resized: /** @type {TypedSignal<[number, number]>} */ (new Signal()),
+            readyToRender: /** @type {TypedSignal<[]>} */ (new Signal()),
+            aboutToDestruct: /** @type {TypedSignal<[]>} */ new Signal(),
 
             // Game Hooks
-            gameSaved: new Signal(), // Game got saved
-            gameRestored: new Signal(), // Game got restored
-            gameOver: new Signal(), // Game over
+            gameSaved: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got saved
+            gameRestored: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got restored
+            gameOver: /** @type {TypedSignal<[]>} */ (new Signal()), // Game over
 
-            storyGoalCompleted: new Signal(/* level, reward */),
-            upgradePurchased: new Signal(),
+            storyGoalCompleted: /** @type {TypedSignal<[number, string]>} */ (new Signal()),
+            upgradePurchased: /** @type {TypedSignal<[string]>} */ (new Signal()),
 
             // Called right after game is initialized
-            postLoadHook: new Signal(),
+            postLoadHook: /** @type {TypedSignal<[]>} */ (new Signal()),
 
             // Can be used to trigger an async task
-            performAsync: new Signal(),
+            performAsync: /** @type {TypedSignal<[function]>} */ (new Signal()),
 
-            shapeDelivered: new Signal(/* definition */),
-            shapeProduced: new Signal(/* definition */),
+            shapeDelivered: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            itemProduced: /** @type {TypedSignal<[BaseItem]>} */ (new Signal()),
         };
 
         // RNG's

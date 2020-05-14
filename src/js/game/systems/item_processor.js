@@ -157,11 +157,9 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         item: new ShapeItem(cutDefinition1),
                         requiredSlot: 0,
                     });
-                    this.root.signals.shapeProduced.dispatch(cutDefinition1);
                 }
 
                 if (!cutDefinition2.isEntirelyEmpty()) {
-                    this.root.signals.shapeProduced.dispatch(cutDefinition2);
                     outItems.push({
                         item: new ShapeItem(cutDefinition2),
                         requiredSlot: 1,
@@ -178,7 +176,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 const inputDefinition = inputItem.definition;
 
                 const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCW(inputDefinition);
-                this.root.signals.shapeProduced.dispatch(rotatedDefinition);
                 outItems.push({
                     item: new ShapeItem(rotatedDefinition),
                 });
@@ -200,7 +197,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     lowerItem.definition,
                     upperItem.definition
                 );
-                this.root.signals.shapeProduced.dispatch(stackedDefinition);
                 outItems.push({
                     item: new ShapeItem(stackedDefinition),
                 });
@@ -253,7 +249,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     colorItem.color
                 );
 
-                this.root.signals.shapeProduced.dispatch(colorizedDefinition);
                 outItems.push({
                     item: new ShapeItem(colorizedDefinition),
                 });
@@ -275,6 +270,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             default:
                 assertAlways(false, "Unkown item processor type: " + processorComp.type);
+        }
+
+        // Track produced items
+        for (let i = 0; i < outItems.length; ++i) {
+            this.root.signals.itemProduced.dispatch(outItems[i].item);
         }
 
         processorComp.itemsToEject = outItems;
