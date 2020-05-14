@@ -7,6 +7,7 @@ import { ReplaceableMapEntityComponent } from "../components/replaceable_map_ent
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { SOUNDS } from "../../platform/sound";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
@@ -67,6 +68,10 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
     getRotateAutomaticallyWhilePlacing() {
         return true;
+    }
+
+    getPlacementSound() {
+        return SOUNDS.placeBelt;
     }
 
     /**

@@ -10,7 +10,6 @@ class SoundInstance extends SoundInstanceInterface {
     constructor(key, url) {
         super(key, url);
         this.howl = null;
-        this.instance = null;
     }
 
     load() {
@@ -25,6 +24,7 @@ class SoundInstance extends SoundInstanceInterface {
                     loop: false,
                     volume: 0,
                     preload: true,
+                    pool: 20,
                     onload: () => {
                         resolve();
                     },
@@ -43,13 +43,8 @@ class SoundInstance extends SoundInstanceInterface {
 
     play(volume) {
         if (this.howl) {
-            if (!this.instance) {
-                this.instance = this.howl.play();
-            } else {
-                this.howl.play(this.instance);
-                this.howl.seek(0, this.instance);
-            }
-            this.howl.volume(volume, this.instance);
+            const instance = this.howl.play();
+            this.howl.volume(volume, instance);
         }
     }
 
@@ -57,7 +52,6 @@ class SoundInstance extends SoundInstanceInterface {
         if (this.howl) {
             this.howl.unload();
             this.howl = null;
-            this.instance = null;
         }
     }
 }
@@ -80,7 +74,7 @@ class MusicInstance extends MusicInstanceInterface {
                     autoplay: false,
                     loop: true,
                     html5: true,
-                    volume: 1,
+                    volume: 0.3,
                     preload: true,
                     pool: 2,
 
@@ -133,6 +127,12 @@ class MusicInstance extends MusicInstanceInterface {
 
 export class SoundImplBrowser extends SoundInterface {
     constructor(app) {
+        Howler.mobileAutoEnable = true;
+        Howler.autoUnlock = true;
+        Howler.autoSuspend = false;
+        Howler.html5PoolSize = 20;
+        Howler.pos(0, 0, 0);
+
         super(app, SoundInstance, MusicInstance);
     }
 

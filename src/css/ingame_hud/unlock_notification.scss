@@ -4,10 +4,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(#333538, 0.95) uiResource("dialog_bg_pattern.png") top left / #{D(10px)} repeat;
+    background: rgba(#333538, 0.98) uiResource("dialog_bg_pattern.png") top left / #{D(10px)} repeat;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     pointer-events: all;
     @include InlineAnimation(0.1s ease-in-out) {
         0% {
@@ -16,7 +16,8 @@
     }
 
     .dialog {
-        background: rgba(#333539, 0.5);
+        background: rgba(#222428, 0.5);
+        @include S(border-radius, 4px);
         @include S(padding, 30px);
 
         @include InlineAnimation(0.5s ease-in-out) {
@@ -117,15 +118,12 @@
 
         button.close {
             border: 0;
-            @include InlineAnimation(0.5s ease-in-out) {
+            @include InlineAnimation(2s ease-in-out) {
                 0% {
-                    transform: translateY(50vh);
+                    opacity: 0;
                 }
-                50% {
-                    transform: translateY(-5vh);
-                }
-                75% {
-                    transform: translateY(2vh);
+                95% {
+                    opacity: 0;
                 }
             }
             @include S(margin-top, 30px);

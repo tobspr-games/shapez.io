@@ -19,6 +19,7 @@ function gulptasksSounds($, gulp, buildFolder) {
     gulp.task("sounds.encodeMusic", () => {
         return gulp
             .src([path.join(soundsDir, "music", "**", "*.wav"), path.join(soundsDir, "music", "**", "*.mp3")])
+            .pipe($.plumber())
             .pipe(
                 $.cache(
                     $.fluentFfmpeg("mp3", function (cmd) {
@@ -42,6 +43,7 @@ function gulptasksSounds($, gulp, buildFolder) {
     gulp.task("sounds.encodeUi", () => {
         return gulp
             .src([path.join(soundsDir, "ui", "**", "*.wav"), path.join(soundsDir, "ui", "**", "*.mp3")])
+            .pipe($.plumber())
             .pipe(
                 $.cache(
                     $.fluentFfmpeg("mp3", function (cmd) {
@@ -64,7 +66,9 @@ function gulptasksSounds($, gulp, buildFolder) {
     // Encodes the game sounds
     gulp.task("sounds.encodeGame", () => {
         return gulp
+
             .src([path.join(soundsDir, "game", "**", "*.wav"), path.join(soundsDir, "game", "**", "*.mp3")])
+            .pipe($.plumber())
             .pipe(
                 $.cache(
                     $.fluentFfmpeg("mp3", function (cmd) {
@@ -87,6 +91,7 @@ function gulptasksSounds($, gulp, buildFolder) {
     gulp.task("sounds.copy", () => {
         return gulp
             .src(path.join(builtSoundsDir, "**", "*.mp3"))
+            .pipe($.plumber())
             .pipe($.cached("sounds.copy"))
             .pipe(gulp.dest(path.join(buildFolder, "res", "sounds")));
     });

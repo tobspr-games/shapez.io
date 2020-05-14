@@ -4,9 +4,9 @@ import { Vector, enumDirectionToVector, enumDirection } from "../core/vector";
 import { MetaBuilding } from "./meta_building";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Math_abs } from "../core/builtins";
-import { Rectangle } from "../core/rectangle";
 import { createLogger } from "../core/logging";
 import { MetaBeltBaseBuilding, arrayBeltVariantToRotation } from "./buildings/belt_base";
+import { SOUNDS } from "../platform/sound";
 
 const logger = createLogger("ingame/logic");
 
@@ -175,6 +175,9 @@ export class GameLogic {
                 rotationVariant,
                 originalRotation,
             });
+
+            this.root.soundProxy.playUi(building.getPlacementSound());
+
             return true;
         }
         return false;

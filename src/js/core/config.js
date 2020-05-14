@@ -77,14 +77,14 @@ export const globalConfig = {
         showEntityBounds: false,
         showAcceptorEjectors: false,
         usePlainShapeIds: true,
-        disableMusic: true,
+        // disableMusic: true,
         doNotRenderStatics: false,
         disableZoomLimits: false,
         showChunkBorders: false,
         rewardsInstant: false,
         allBuildingsUnlocked: true,
         upgradesNoCost: true,
-        disableUnlockDialog: true,
+        disableUnlockDialog: false,
         /* dev:end */
     },
 
