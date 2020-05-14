@@ -163,6 +163,10 @@ export class ShapeDefinition extends BasicSerializableObject {
                     id += "--";
                 }
             }
+
+            if (layerIndex < this.layers.length - 1) {
+                id += ":";
+            }
         }
         this.cachedHash = id;
         return id;
