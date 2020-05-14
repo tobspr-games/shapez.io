@@ -1,5 +1,5 @@
 name: workflow
-on: [push]
+on: [push, pull_request]
 jobs:
     job:
         runs-on: ubuntu-latest
@@ -11,3 +11,4 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   pattern: "src/js/**/*.js"
+                  config: "../../src/js/tslint.json"
