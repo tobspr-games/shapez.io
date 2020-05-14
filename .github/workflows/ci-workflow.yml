@@ -1,8 +1,5 @@
 name: workflow
 on: [push, pull_request]
-defaults:
-    run:
-        working-directory: ./src/js
 jobs:
     job:
         runs-on: ubuntu-latest
@@ -13,4 +10,4 @@ jobs:
               uses: mooyoul/tslint-actions@v1.1.1
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  project: "."
+                  project: "$GITHUB_WORKSPACE/src/js"
