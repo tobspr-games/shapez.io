@@ -56,7 +56,7 @@ export class GameHUD {
 
         this.signals = {
             selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
-            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition, number]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {

@@ -2,6 +2,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, removeAllChildren, formatBigNumber } from "../../../core/utils";
 import { ClickDetector } from "../../../core/click_detector";
 import { ShapeDefinition } from "../../shape_definition";
+import { Math_max } from "../../../core/builtins";
 
 export class HUDPinnedShapes extends BaseHUDPart {
     createElements(parent) {
@@ -9,6 +10,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
     }
 
     initialize() {
+        /** @type {Array<{ key: string, goal: number }>} */
         this.pinnedShapes = [];
 
         /** @type {Array<{key: string, amountLabel: HTMLElement, lastRenderedValue: number, element: HTMLElement, detector?: ClickDetector}>} */
@@ -27,13 +29,20 @@ export class HUDPinnedShapes extends BaseHUDPart {
         if (!this.pinnedShapes) {
             return false;
         }
-        return (
-            this.pinnedShapes.indexOf(key) >= 0 || key === this.root.hubGoals.currentGoal.definition.getHash()
-        );
+        if (key === this.root.hubGoals.currentGoal.definition.getHash()) {
+            return true;
+        }
+        for (let i = 0; i < this.pinnedShapes.length; ++i) {
+            if (this.pinnedShapes[i].key === key) {
+                return true;
+            }
+        }
+        return false;
     }
 
     rerenderFull() {
-        const currentGoal = this.root.hubGoals.currentGoal.definition.getHash();
+        const currentGoal = this.root.hubGoals.currentGoal;
+        const currentKey = currentGoal.definition.getHash();
 
         // First, remove old ones
         for (let i = 0; i < this.handles.length; ++i) {
@@ -45,12 +54,12 @@ export class HUDPinnedShapes extends BaseHUDPart {
         }
         this.handles = [];
 
-        this.internalPinShape(currentGoal, false);
+        this.internalPinShape(currentKey, currentGoal.required, false);
 
         for (let i = 0; i < this.pinnedShapes.length; ++i) {
-            const key = this.pinnedShapes[i];
-            if (key !== currentGoal) {
-                this.internalPinShape(key);
+            const key = this.pinnedShapes[i].key;
+            if (key !== currentKey) {
+                this.internalPinShape(key, this.pinnedShapes[i].goal);
             }
         }
     }
@@ -58,9 +67,10 @@ export class HUDPinnedShapes extends BaseHUDPart {
     /**
      * Pins a shape
      * @param {string} key
+     * @param {number} goal
      * @param {boolean} canUnpin
      */
-    internalPinShape(key, canUnpin = true) {
+    internalPinShape(key, goal, canUnpin = true) {
         const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(key);
 
         const element = makeDiv(this.element, null, ["shape"]);
@@ -79,7 +89,8 @@ export class HUDPinnedShapes extends BaseHUDPart {
             element.classList.add("marked");
         }
 
-        const amountLabel = makeDiv(element, null, ["amountLabel"], "123");
+        const amountLabel = makeDiv(element, null, ["amountLabel"], "");
+        const goalLabel = makeDiv(element, null, ["goalLabel"], "/" + formatBigNumber(goal));
 
         this.handles.push({
             key,
@@ -101,28 +112,39 @@ export class HUDPinnedShapes extends BaseHUDPart {
         }
     }
 
+    /**
+     * Unpins a shape
+     * @param {string} key
+     */
     unpinShape(key) {
-        const index = this.pinnedShapes.indexOf(key);
-        if (index >= 0) {
-            const key = this.pinnedShapes[index];
-            this.pinnedShapes.splice(index, 1);
-            this.rerenderFull();
+        for (let i = 0; i < this.pinnedShapes.length; ++i) {
+            if (this.pinnedShapes[i].key === key) {
+                this.pinnedShapes.splice(i, 1);
+                this.rerenderFull();
+                return;
+            }
         }
     }
 
     /**
      * @param {ShapeDefinition} definition
+     * @param {number} goal
      */
-    pinNewShape(definition) {
+    pinNewShape(definition, goal) {
         const key = definition.getHash();
         if (key === this.root.hubGoals.currentGoal.definition.getHash()) {
             // Can not pin current goal
             return;
         }
-        if (this.pinnedShapes.indexOf(key) < 0) {
-            // Pin
-            this.pinnedShapes.push(key);
-            this.rerenderFull();
+        for (let i = 0; i < this.pinnedShapes.length; ++i) {
+            if (this.pinnedShapes[i].key === key) {
+                // Already pinned
+                this.pinnedShapes[i].goal = Math_max(this.pinnedShapes[i].goal, goal);
+                return;
+            }
         }
+
+        this.pinnedShapes.push({ key, goal });
+        this.rerenderFull();
     }
 }

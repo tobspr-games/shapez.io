@@ -121,7 +121,7 @@ export class HUDShop extends BaseHUDPart {
                     preventDefault: true,
                 });
                 pinDetector.click.add(() => {
-                    this.root.hud.signals.shapePinRequested.dispatch(shapeDef);
+                    this.root.hud.signals.shapePinRequested.dispatch(shapeDef, amount);
                     pinButton.classList.add("pinned");
                 });
 
