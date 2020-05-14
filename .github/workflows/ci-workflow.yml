@@ -13,7 +13,7 @@ jobs:
               uses: mooyoul/tslint-actions@v1.1.1
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  project: ${{ env.GITHUB_WORKSPACE }}/src/js
+                  project: $GITHUB_WORKSPACE/src/js
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
