@@ -33,12 +33,8 @@ export class SerializerInternal {
      */
     deserializeEntityArray(root, array) {
         for (let i = 0; i < array.length; ++i) {
-            const errorState = this.deserializeEntity(root, array[i]);
-            if (errorState) {
-                return errorState;
-            }
+            this.deserializeEntity(root, array[i]);
         }
-        return null;
     }
 
     /**

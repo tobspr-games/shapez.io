@@ -26,7 +26,7 @@ export class MetaMinerBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        entity.addComponent(new MinerComponent({}));
+        entity.addComponent(new MinerComponent());
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],

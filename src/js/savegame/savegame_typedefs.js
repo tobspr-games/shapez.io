@@ -18,10 +18,9 @@
  *   camera: any,
  *   time: any,
  *   entityMgr: any,
- *   entities: {
- *     resources: Array<SerializedMapResource>,
- *     buildings: Array<any>
- *   }
+ *   map: any,
+ *   hubGoals: any,
+ *   entities: Array<any>
  * }} SerializedGame
  */
 

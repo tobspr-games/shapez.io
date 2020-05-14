@@ -128,7 +128,6 @@ export class SavegameSerializer {
         if (!verifyResult.result) {
             return ExplainedResult.bad(verifyResult.reason);
         }
-        console.log("SAVEGAME:", savegame);
         let errorReason = null;
 
         errorReason = errorReason || root.entityMgr.deserialize(savegame.entityMgr);
