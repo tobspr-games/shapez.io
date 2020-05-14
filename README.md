@@ -1,12 +1,10 @@
 # shapez.io
 
-<img src="https://i.imgur.com/dzvAhEY.png" alt="shapez.io Logo" width="500">
+<img src="https://i.imgur.com/Y5Z2iqQ.png" alt="shapez.io Logo" width="500">
 
 This is the source code for shapez.io, an open source base building game inspired by factorio.
 
 Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
-
-<img src="https://i.imgur.com/WzypmaG.png" alt="gameplay screenshot" width="800">
 
 ## Playing
 
