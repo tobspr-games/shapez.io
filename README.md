@@ -1,5 +1,7 @@
 # shapez.io
 
+![](https://github.com/tobspr/shapez.io/workflows/ci-workflow/badge.svg)
+
 <img src="https://i.imgur.com/dzvAhEY.png" alt="shapez.io Logo" width="500">
 
 This is the source code for shapez.io, an open source base building game inspired by factorio.
@@ -7,7 +9,6 @@ This is the source code for shapez.io, an open source base building game inspire
 Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
 
 <img src="https://i.imgur.com/WzypmaG.png" alt="gameplay screenshot" width="800">
-
 
 ## Playing
 
@@ -31,7 +32,6 @@ If you want to add a new feature or in generally contribute I recommend to get i
 <a href="https://discord.com/invite/HN7EVzV" target="_blank">
 <img src="https://i.imgur.com/SoawBhW.png" alt="discord logo" width="100">
 </a>
-
 
 ### Code
 
