@@ -6,6 +6,7 @@ import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { InputReceiver } from "../../../core/input_receiver";
 import { KeyActionMapper } from "../../key_action_mapper";
 import { Math_min } from "../../../core/builtins";
+import { ClickDetector } from "../../../core/click_detector";
 
 export class HUDShop extends BaseHUDPart {
     createElements(parent) {
@@ -61,7 +62,6 @@ export class HUDShop extends BaseHUDPart {
         for (const upgradeId in this.upgradeToElements) {
             const handle = this.upgradeToElements[upgradeId];
             const { description, tiers } = UPGRADES[upgradeId];
-            // removeAllChildren(handle.elem);
 
             const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
             const tierHandle = tiers[currentTier];
@@ -70,9 +70,15 @@ export class HUDShop extends BaseHUDPart {
             handle.elemTierLabel.innerText = "Tier " + TIER_LABELS[currentTier];
             handle.elemTierLabel.setAttribute("data-tier", currentTier);
 
+            // Cleanup detectors
+            for (let i = 0; i < handle.requireIndexToElement.length; ++i) {
+                const requiredHandle = handle.requireIndexToElement[i];
+                requiredHandle.container.remove();
+                requiredHandle.pinDetector.cleanup();
+            }
+
             // Cleanup
             handle.requireIndexToElement = [];
-            removeAllChildren(handle.elemRequirements);
 
             handle.elem.classList.toggle("maxLevel", !tierHandle);
 
@@ -86,14 +92,14 @@ export class HUDShop extends BaseHUDPart {
             handle.elemDescription.innerText = description(tierHandle.improvement);
 
             tierHandle.required.forEach(({ shape, amount }) => {
-                const requireDiv = makeDiv(handle.elemRequirements, null, ["requirement"]);
+                const container = makeDiv(handle.elemRequirements, null, ["requirement"]);
 
                 const shapeDef = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
                 const shapeCanvas = shapeDef.generateAsCanvas(120);
                 shapeCanvas.classList.add();
-                requireDiv.appendChild(shapeCanvas);
+                container.appendChild(shapeCanvas);
 
-                const progressContainer = makeDiv(requireDiv, null, ["amount"]);
+                const progressContainer = makeDiv(container, null, ["amount"]);
                 const progressBar = document.createElement("label");
                 progressBar.classList.add("progressBar");
                 progressContainer.appendChild(progressBar);
@@ -101,11 +107,31 @@ export class HUDShop extends BaseHUDPart {
                 const progressLabel = document.createElement("label");
                 progressContainer.appendChild(progressLabel);
 
+                const pinButton = document.createElement("button");
+                pinButton.classList.add("pin");
+                container.appendChild(pinButton);
+
+                if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
+                    console.log("ALREADY PINNED:", shape);
+                    pinButton.classList.add("alreadyPinned");
+                }
+
+                const pinDetector = new ClickDetector(pinButton, {
+                    consumeEvents: true,
+                    preventDefault: true,
+                });
+                pinDetector.click.add(() => {
+                    this.root.hud.signals.shapePinRequested.dispatch(shapeDef);
+                    pinButton.classList.add("pinned");
+                });
+
                 handle.requireIndexToElement.push({
+                    container,
                     progressLabel,
                     progressBar,
                     definition: shapeDef,
                     required: amount,
+                    pinDetector,
                 });
             });
         }
@@ -148,6 +174,17 @@ export class HUDShop extends BaseHUDPart {
 
     cleanup() {
         document.body.classList.remove("ingameDialogOpen");
+
+        // Cleanup detectors
+        for (const upgradeId in this.upgradeToElements) {
+            const handle = this.upgradeToElements[upgradeId];
+            for (let i = 0; i < handle.requireIndexToElement.length; ++i) {
+                const requiredHandle = handle.requireIndexToElement[i];
+                requiredHandle.container.remove();
+                requiredHandle.pinDetector.cleanup();
+            }
+            handle.requireIndexToElement = [];
+        }
     }
 
     show() {
@@ -155,7 +192,7 @@ export class HUDShop extends BaseHUDPart {
         document.body.classList.add("ingameDialogOpen");
         // this.background.classList.add("visible");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
-        this.update();
+        this.rerenderFull();
     }
 
     close() {

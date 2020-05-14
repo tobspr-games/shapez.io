@@ -20,7 +20,7 @@
             @include S(height, 10px);
             width: 1px;
             @include S(margin, 0, 3px);
-            background-color: #ccc;
+            background-color: #888;
             transform: rotate(10deg);
             // @include S(margin, 0, 3px);
         }
