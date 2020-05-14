@@ -4,15 +4,30 @@ import { ShapeDefinition } from "./shape_definition";
  * @enum {string}
  */
 export const enumHubGoalRewards = {
-    reward_cutter_and_trash: "Cutting Shapes",
-    reward_rotater: "Rotating",
-    reward_painter: "Painting",
-    reward_mixer: "Color Mixing",
-    reward_stacker: "Combiner",
-    reward_splitter: "Splitter/Merger",
-    reward_tunnel: "Tunnel",
+    reward_cutter_and_trash: "reward_cutter_and_trash",
+    reward_rotater: "reward_rotater",
+    reward_painter: "reward_painter",
+    reward_mixer: "reward_mixer",
+    reward_stacker: "reward_stacker",
+    reward_splitter: "reward_splitter",
+    reward_tunnel: "reward_tunnel",
 
-    no_reward: "Next level",
+    no_reward: "no_reward",
+};
+
+/**
+ * @enum {string}
+ */
+export const enumHubGoalRewardToString = {
+    [enumHubGoalRewards.reward_cutter_and_trash]: "Cutting Shapes",
+    [enumHubGoalRewards.reward_rotater]: "Rotating",
+    [enumHubGoalRewards.reward_painter]: "Painting",
+    [enumHubGoalRewards.reward_mixer]: "Color Mixing",
+    [enumHubGoalRewards.reward_stacker]: "Combiner",
+    [enumHubGoalRewards.reward_splitter]: "Splitter/Merger",
+    [enumHubGoalRewards.reward_tunnel]: "Tunnel",
+
+    [enumHubGoalRewards.no_reward]: "Next level",
 };
 
 export const tutorialGoals = [

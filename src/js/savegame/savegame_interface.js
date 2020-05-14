@@ -98,7 +98,7 @@ export class BaseSavegameInterface {
     //////// ANTICHEAT ///////
 
     /**
-     * Detects cheats in the savegmae - returns false if the game looks cheated
+     * Detects cheats in the savegame - returns false if the game looks cheated
      */
     performAnticheatCheck() {
         // TODO

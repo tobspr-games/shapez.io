@@ -79,6 +79,7 @@
                     @include Button3D($colorRedBright);
                     @include PlainText;
                     @include S(padding, 5px, 8px, 4px);
+                    color: #fff;
                 }
             }
         }

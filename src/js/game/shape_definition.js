@@ -5,7 +5,7 @@ import { smoothenDpi } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
-import { BasicSerializableObject } from "../savegame/serialization";
+import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
 
 const rusha = require("rusha");
@@ -72,6 +72,23 @@ export function createSimpleShape(layers) {
 export class ShapeDefinition extends BasicSerializableObject {
     static getId() {
         return "ShapeDefinition";
+    }
+
+    static getSchema() {
+        return {};
+    }
+
+    deserialize(data) {
+        const errorCode = super.deserialize(data);
+        if (errorCode) {
+            return errorCode;
+        }
+        const definition = ShapeDefinition.fromShortKey(data);
+        this.layers = definition.layers;
+    }
+
+    serialize() {
+        return this.getHash();
     }
 
     /**

@@ -1,21 +1,41 @@
-import { BasicSerializableObject } from "../savegame/serialization";
-import { GameRoot } from "./root";
-import { ShapeDefinition, enumSubShape } from "./shape_definition";
-import { enumColors, enumShortcodeToColor, enumColorToShortcode } from "./colors";
-import { randomChoice, clamp, randomInt, findNiceIntegerValue } from "../core/utils";
-import { tutorialGoals, enumHubGoalRewards } from "./tutorial_goals";
-import { createLogger } from "../core/logging";
-import { globalConfig } from "../core/config";
 import { Math_random } from "../core/builtins";
-import { UPGRADES } from "./upgrades";
-import { enumItemProcessorTypes } from "./components/item_processor";
+import { globalConfig } from "../core/config";
 import { queryParamOptions } from "../core/query_parameters";
-
-const logger = createLogger("hub_goals");
+import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/utils";
+import { BasicSerializableObject, types } from "../savegame/serialization";
+import { enumColors } from "./colors";
+import { enumItemProcessorTypes } from "./components/item_processor";
+import { GameRoot } from "./root";
+import { enumSubShape, ShapeDefinition } from "./shape_definition";
+import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
+import { UPGRADES } from "./upgrades";
 
 export class HubGoals extends BasicSerializableObject {
     static getId() {
         return "HubGoals";
+    }
+
+    static getSchema() {
+        return {
+            level: types.uint,
+            storedShapes: types.keyValueMap(types.uint),
+            upgradeLevels: types.keyValueMap(types.uint),
+
+            currentGoal: types.structured({
+                definition: types.knownType(ShapeDefinition),
+                required: types.uint,
+                reward: types.nullable(types.enum(enumHubGoalRewards)),
+            }),
+        };
+    }
+
+    deserialize(data) {
+        const errorCode = super.deserialize(data);
+        if (errorCode) {
+            return errorCode;
+        }
+
+        console.error("TODO: HubGoals deserialize() properly");
     }
 
     /**
@@ -30,6 +50,7 @@ export class HubGoals extends BasicSerializableObject {
 
         /**
          * Which story rewards we already gained
+         * @type {Object.<string, number>}
          */
         this.gainedRewards = {};
 

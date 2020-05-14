@@ -3,6 +3,7 @@ import { Vector, enumDirection, enumDirectionToAngle, enumInvertedDirections } f
 import { BaseItem } from "../base_item";
 import { ShapeItem } from "../items/shape_item";
 import { ColorItem } from "../items/color_item";
+import { types } from "../../savegame/serialization";
 
 /**
  * @enum {string?}
@@ -26,7 +27,13 @@ export class ItemAcceptorComponent extends Component {
 
     static getSchema() {
         return {
-            // slots: "TODO",
+            slots: types.array(
+                types.structured({
+                    pos: types.vector,
+                    directions: types.array(types.enum(enumDirection)),
+                    filter: types.nullable(types.enum(enumItemAcceptorItemFilter)),
+                })
+            ),
         };
     }
 
@@ -35,7 +42,7 @@ export class ItemAcceptorComponent extends Component {
      * @param {object} param0
      * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemAcceptorItemFilter}>} param0.slots The slots from which we accept items
      */
-    constructor({ slots }) {
+    constructor({ slots = [] }) {
         super();
 
         this.setSlots(slots);

@@ -13,7 +13,14 @@ export class StaticMapEntityComponent extends Component {
     }
 
     static getSchema() {
-        return {};
+        return {
+            origin: types.tileVector,
+            tileSize: types.tileVector,
+            rotation: types.float,
+            originalRotation: types.float,
+            spriteKey: types.nullable(types.string),
+            silhouetteColor: types.nullable(types.string),
+        };
     }
 
     /**

@@ -5,14 +5,13 @@ import { Component } from "./component";
 /* typehints:end */
 
 import { globalConfig } from "../core/config";
-import { Vector, enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
+import { enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { EntityComponentStorage } from "./entity_components";
 import { Loader } from "../core/loader";
 import { drawRotatedSprite } from "../core/draw_utils";
 import { Math_radians } from "../core/builtins";
-// import { gFactionRegistry, gComponentRegistry } from "../core/global_registries";
-// import { EntityComponentStorage } from "./entity_components";
+import { gComponentRegistry } from "../core/global_registries";
 
 export class Entity extends BasicSerializableObject {
     /**
@@ -78,7 +77,7 @@ export class Entity extends BasicSerializableObject {
     static getSchema() {
         return {
             uid: types.uint,
-            // components: types.keyValueMap(types.objData(gComponentRegistry), false)
+            components: types.keyValueMap(types.objData(gComponentRegistry), false),
         };
     }
 

@@ -825,3 +825,37 @@ export function fastRotateMultipleOf90(x, y, deg) {
         }
     }
 }
+
+/**
+ * Formats an amount of seconds into something like "5s ago"
+ * @param {number} secs Seconds
+ * @returns {string}
+ */
+export function formatSecondsToTimeAgo(secs) {
+    const seconds = Math_floor(secs);
+    const minutes = Math_floor(seconds / 60);
+    const hours = Math_floor(minutes / 60);
+    const days = Math_floor(hours / 24);
+
+    if (seconds <= 60) {
+        if (seconds <= 1) {
+            return "one second ago";
+        }
+        return seconds + " seconds ago";
+    } else if (minutes <= 60) {
+        if (minutes <= 1) {
+            return "one minute ago";
+        }
+        return minutes + " minutes ago";
+    } else if (hours <= 60) {
+        if (hours <= 1) {
+            return "one hour ago";
+        }
+        return hours + " hour ago";
+    } else {
+        if (days <= 1) {
+            return "one day ago";
+        }
+        return days + " days ago";
+    }
+}

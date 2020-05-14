@@ -31,13 +31,6 @@ function performJob(job, data) {
         case "compressX64": {
             return compressX64(data);
         }
-        case "compressWithChecksum": {
-            const checksum = rusha
-                .createHash()
-                .update(data + encryptKey)
-                .digest("hex");
-            return compressX64(checksum + data);
-        }
         case "compressFile": {
             const checksum = sha1(data.text + salt);
             return data.compressionPrefix + compressX64(checksum + data.text);

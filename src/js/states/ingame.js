@@ -67,6 +67,10 @@ export class InGameState extends GameState {
         this.savegame;
 
         this.boundInputFilter = this.filterInput.bind(this);
+
+        if (G_IS_DEV) {
+            window.performSave = this.doSave.bind(this);
+        }
     }
 
     /**
@@ -96,7 +100,7 @@ export class InGameState extends GameState {
 
     onBeforeExit() {
         logger.log("Saving before quitting");
-        return this.doSave(true, true).then(() => {
+        return this.doSave().then(() => {
             logger.log(this, "Successfully saved");
             // this.stageDestroyed();
         });
@@ -105,7 +109,7 @@ export class InGameState extends GameState {
     onAppPause() {
         if (this.stage === stages.s10_gameRunning) {
             logger.log("Saving because app got paused");
-            this.doSave(true, true);
+            this.doSave();
         }
     }
 
@@ -397,14 +401,9 @@ export class InGameState extends GameState {
 
     /**
      * Saves the game
-     * @param {boolean=} syncWithServer
-     * @param {boolean} force
      */
 
-    doSave(syncWithServer = true, force = false) {
-        // TODO
-        return;
-
+    doSave() {
         if (!this.savegame || !this.savegame.isSaveable()) {
             return Promise.resolve();
         }
@@ -424,19 +423,9 @@ export class InGameState extends GameState {
         }
 
         // First update the game data
-
         logger.log("Starting to save game ...");
         this.savegame.updateData(this.core.root);
-
-        let savePromise = this.savegame.writeSavegameAndMetadata();
-
-        if (syncWithServer) {
-            // Sync in parallel
-            // @ts-ignore
-            savePromise = savePromise.then(() => this.syncer.sync(this.core, this.savegame, force));
-        }
-
-        return savePromise.catch(err => {
+        return this.savegame.writeSavegameAndMetadata().catch(err => {
             logger.warn("Failed to save:", err);
         });
     }

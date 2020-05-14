@@ -14,9 +14,8 @@ export class MinerComponent extends Component {
     }
 
     /**
-     * @param {object} param0
      */
-    constructor({}) {
+    constructor() {
         super();
         this.lastMiningTime = 0;
     }

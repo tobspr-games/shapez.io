@@ -2,16 +2,10 @@
 import { GameRoot } from "./root";
 /* typehints:end */
 
-import { Math_ceil, Math_max, Math_min, Math_random, Math_round } from "../core/builtins";
+import { Math_ceil, Math_max, Math_min, Math_round } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
-import {
-    clamp,
-    fastArrayDeleteValueIfContained,
-    make2DUndefinedArray,
-    randomChoice,
-    randomInt,
-} from "../core/utils";
+import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { enumColors } from "./colors";
@@ -19,6 +13,7 @@ import { Entity } from "./entity";
 import { ColorItem } from "./items/color_item";
 import { ShapeItem } from "./items/shape_item";
 import { enumSubShape } from "./shape_definition";
+import { RandomNumberGenerator } from "../core/rng";
 
 const logger = createLogger("map_chunk");
 
@@ -64,17 +59,18 @@ export class MapChunk {
 
     /**
      * Generates a patch filled with the given item
+     * @param {RandomNumberGenerator} rng
      * @param {number} patchSize
      * @param {BaseItem} item
      * @param {number=} overrideX Override the X position of the patch
      * @param {number=} overrideY Override the Y position of the patch
      */
-    internalGeneratePatch(patchSize, item, overrideX = null, overrideY = null) {
+    internalGeneratePatch(rng, patchSize, item, overrideX = null, overrideY = null) {
         const border = Math_ceil(patchSize / 2 + 3);
 
         // Find a position within the chunk which is not blocked
-        let patchX = randomInt(border, globalConfig.mapChunkSize - border - 1);
-        let patchY = randomInt(border, globalConfig.mapChunkSize - border - 1);
+        let patchX = rng.nextIntRange(border, globalConfig.mapChunkSize - border - 1);
+        let patchY = rng.nextIntRange(border, globalConfig.mapChunkSize - border - 1);
 
         if (overrideX !== null) {
             patchX = overrideX;
@@ -89,7 +85,6 @@ export class MapChunk {
 
         // Each patch consists of multiple circles
         const numCircles = patchSize;
-        // const numCircles = 1;
 
         for (let i = 0; i <= numCircles; ++i) {
             // Determine circle parameters
@@ -98,11 +93,11 @@ export class MapChunk {
             const circleOffsetRadius = (numCircles - i) / 2 + 2;
 
             // We draw an elipsis actually
-            const circleScaleY = 1 + (Math_random() * 2 - 1) * 0.1;
-            const circleScaleX = 1 + (Math_random() * 2 - 1) * 0.1;
+            const circleScaleX = rng.nextRange(0.9, 1.1);
+            const circleScaleY = rng.nextRange(0.9, 1.1);
 
-            const circleX = patchX + randomInt(-circleOffsetRadius, circleOffsetRadius);
-            const circleY = patchY + randomInt(-circleOffsetRadius, circleOffsetRadius);
+            const circleX = patchX + rng.nextIntRange(-circleOffsetRadius, circleOffsetRadius);
+            const circleY = patchY + rng.nextIntRange(-circleOffsetRadius, circleOffsetRadius);
 
             for (let dx = -circleRadius * circleScaleX - 2; dx <= circleRadius * circleScaleX + 2; ++dx) {
                 for (let dy = -circleRadius * circleScaleY - 2; dy <= circleRadius * circleScaleY + 2; ++dy) {
@@ -135,24 +130,26 @@ export class MapChunk {
 
     /**
      * Generates a color patch
+     * @param {RandomNumberGenerator} rng
      * @param {number} colorPatchSize
      * @param {number} distanceToOriginInChunks
      */
-    internalGenerateColorPatch(colorPatchSize, distanceToOriginInChunks) {
+    internalGenerateColorPatch(rng, colorPatchSize, distanceToOriginInChunks) {
         // First, determine available colors
         let availableColors = [enumColors.red, enumColors.green];
         if (distanceToOriginInChunks > 2) {
             availableColors.push(enumColors.blue);
         }
-        this.internalGeneratePatch(colorPatchSize, new ColorItem(randomChoice(availableColors)));
+        this.internalGeneratePatch(rng, colorPatchSize, new ColorItem(rng.choice(availableColors)));
     }
 
     /**
      * Generates a shape patch
+     * @param {RandomNumberGenerator} rng
      * @param {number} shapePatchSize
      * @param {number} distanceToOriginInChunks
      */
-    internalGenerateShapePatch(shapePatchSize, distanceToOriginInChunks) {
+    internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks) {
         /** @type {[enumSubShape, enumSubShape, enumSubShape, enumSubShape]} */
         let subShapes = null;
 
@@ -174,37 +171,38 @@ export class MapChunk {
 
         if (distanceToOriginInChunks < 7) {
             // Initial chunk patches always have the same shape
-            const subShape = this.internalGenerateRandomSubShape(weights);
+            const subShape = this.internalGenerateRandomSubShape(rng, weights);
             subShapes = [subShape, subShape, subShape, subShape];
         } else if (distanceToOriginInChunks < 17) {
             // Later patches can also have mixed ones
-            const subShapeA = this.internalGenerateRandomSubShape(weights);
-            const subShapeB = this.internalGenerateRandomSubShape(weights);
+            const subShapeA = this.internalGenerateRandomSubShape(rng, weights);
+            const subShapeB = this.internalGenerateRandomSubShape(rng, weights);
             subShapes = [subShapeA, subShapeA, subShapeB, subShapeB];
         } else {
             // Finally there is a mix of everything
             subShapes = [
-                this.internalGenerateRandomSubShape(weights),
-                this.internalGenerateRandomSubShape(weights),
-                this.internalGenerateRandomSubShape(weights),
-                this.internalGenerateRandomSubShape(weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
             ];
         }
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
-        this.internalGeneratePatch(shapePatchSize, new ShapeItem(definition));
+        this.internalGeneratePatch(rng, shapePatchSize, new ShapeItem(definition));
     }
 
     /**
      * Chooses a random shape with the given weights
+     * @param {RandomNumberGenerator} rng
      * @param {Object.<enumSubShape, number>} weights
      * @returns {enumSubShape}
      */
-    internalGenerateRandomSubShape(weights) {
+    internalGenerateRandomSubShape(rng, weights) {
         // @ts-ignore
         const sum = Object.values(weights).reduce((a, b) => a + b, 0);
 
-        const chosenNumber = randomInt(0, sum - 1);
+        const chosenNumber = rng.nextIntRange(0, sum - 1);
         let accumulated = 0;
         for (const key in weights) {
             const weight = weights[key];
@@ -222,7 +220,9 @@ export class MapChunk {
      * Generates the lower layer "terrain"
      */
     generateLowerLayer() {
-        if (this.generatePredefined()) {
+        const rng = new RandomNumberGenerator(this.x + "|" + this.y + "|" + this.root.map.seed);
+
+        if (this.generatePredefined(rng)) {
             return;
         }
 
@@ -231,27 +231,28 @@ export class MapChunk {
 
         // Determine how likely it is that there is a color patch
         const colorPatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
-        if (Math_random() < colorPatchChance) {
+        if (rng.next() < colorPatchChance) {
             const colorPatchSize = Math_max(2, Math_round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
-            this.internalGenerateColorPatch(colorPatchSize, distanceToOriginInChunks);
+            this.internalGenerateColorPatch(rng, colorPatchSize, distanceToOriginInChunks);
         }
 
         // Determine how likely it is that there is a shape patch
         const shapePatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
-        if (Math_random() < shapePatchChance) {
+        if (rng.next() < shapePatchChance) {
             const shapePatchSize = Math_max(2, Math_round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
-            this.internalGenerateShapePatch(shapePatchSize, distanceToOriginInChunks);
+            this.internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks);
         }
     }
 
     /**
      * Checks if this chunk has predefined contents, and if so returns true and generates the
      * predefined contents
+     * @param {RandomNumberGenerator} rng
      * @returns {boolean}
      */
-    generatePredefined() {
+    generatePredefined(rng) {
         if (this.x === 0 && this.y === 0) {
-            this.internalGeneratePatch(2, new ColorItem(enumColors.red), 7, 7);
+            this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.red), 7, 7);
             return true;
         }
         if (this.x === -1 && this.y === 0) {
@@ -261,7 +262,7 @@ export class MapChunk {
                 enumSubShape.circle,
                 enumSubShape.circle,
             ]);
-            this.internalGeneratePatch(2, new ShapeItem(definition), globalConfig.mapChunkSize - 9, 7);
+            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), globalConfig.mapChunkSize - 9, 7);
             return true;
         }
         if (this.x === 0 && this.y === -1) {
@@ -271,12 +272,12 @@ export class MapChunk {
                 enumSubShape.rect,
                 enumSubShape.rect,
             ]);
-            this.internalGeneratePatch(2, new ShapeItem(definition), 5, globalConfig.mapChunkSize - 7);
+            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), 5, globalConfig.mapChunkSize - 7);
             return true;
         }
 
         if (this.x === -1 && this.y === -1) {
-            this.internalGeneratePatch(2, new ColorItem(enumColors.green));
+            this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.green));
             return true;
         }
 

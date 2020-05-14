@@ -11,6 +11,8 @@ import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
 import { SavegameInterface_V1000 } from "./schemas/1000";
 import { getSavegameInterface } from "./savegame_interface_registry";
+import { compressObject } from "./savegame_compressor";
+import { compressX64 } from "../core/lzstring";
 
 const logger = createLogger("savegame");
 
@@ -37,7 +39,7 @@ export class Savegame extends ReadWriteProxy {
      * @returns {number}
      */
     static getCurrentVersion() {
-        return 1015;
+        return 1000;
     }
 
     /**
@@ -129,7 +131,7 @@ export class Savegame extends ReadWriteProxy {
      * Returns if this game has a serialized game dump
      */
     hasGameDump() {
-        return !!this.currentData.dump;
+        return !!this.currentData.dump && this.currentData.dump.entities.length > 0;
     }
 
     /**
@@ -185,6 +187,12 @@ export class Savegame extends ReadWriteProxy {
         if (!dump) {
             return false;
         }
+        const parsed = JSON.stringify(compressObject(dump));
+        const compressed = compressX64(parsed);
+
+        console.log("Regular: ", Math.round(parsed.length / 1024.0), "KB");
+        console.log("Compressed: ", Math.round(compressed.length / 1024.0), "KB");
+
         // let duration = performanceNow() - timer;
         // console.log("TOOK", duration, "ms to generate dump:", dump);
 

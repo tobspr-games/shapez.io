@@ -1,10 +1,7 @@
-import { BaseItem } from "../base_item";
 import { DrawParameters } from "../../core/draw_parameters";
-import { extendSchema } from "../../savegame/serialization";
+import { types } from "../../savegame/serialization";
+import { BaseItem } from "../base_item";
 import { ShapeDefinition } from "../shape_definition";
-import { createLogger } from "../../core/logging";
-
-const logger = createLogger("shape_item");
 
 export class ShapeItem extends BaseItem {
     static getId() {
@@ -12,9 +9,15 @@ export class ShapeItem extends BaseItem {
     }
 
     static getSchema() {
-        return extendSchema(BaseItem.getCachedSchema(), {
-            // TODO
-        });
+        return types.string;
+    }
+
+    serialize() {
+        return this.definition.getHash();
+    }
+
+    deserialize(data) {
+        this.definition = ShapeDefinition.fromShortKey(data);
     }
 
     /**

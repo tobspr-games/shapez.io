@@ -11,7 +11,6 @@ import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
-import { PerlinNoise } from "../core/perlin_noise";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
@@ -31,6 +30,7 @@ import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
 import { ProductionAnalytics } from "./production_analytics";
+import { randomInt } from "../core/utils";
 
 const logger = createLogger("ingame/core");
 
@@ -112,7 +112,6 @@ export class GameCore {
         root.shapeDefinitionMgr = new ShapeDefinitionManager(root);
         root.hubGoals = new HubGoals(root);
         root.productionAnalytics = new ProductionAnalytics(root);
-        root.mapNoiseGenerator = new PerlinNoise(Math.random()); // TODO: Save seed
         root.buffers = new BufferMaintainer(root);
 
         // Initialize the hud once everything is loaded
@@ -136,6 +135,7 @@ export class GameCore {
     initNewGame() {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
+        this.root.map.seed = randomInt(0, 100000);
 
         gMetaBuildingRegistry.findByClass(MetaHubBuilding).createAndPlaceEntity({
             root: this.root,
