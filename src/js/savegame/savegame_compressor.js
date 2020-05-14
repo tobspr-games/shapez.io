@@ -64,7 +64,7 @@ function compressObjectInternal(obj, keys = [], values = []) {
             result.push(compressObjectInternal(obj[i], keys, values));
         }
         return result;
-    } else if (typeof obj === "object") {
+    } else if (typeof obj === "object" && obj !== null) {
         let result = {};
         for (const key in obj) {
             let index = keys.indexOf(key);
@@ -108,7 +108,7 @@ function decompressObjectInternal(obj, keys = [], values = []) {
             result.push(decompressObjectInternal(obj[i], keys, values));
         }
         return result;
-    } else if (typeof obj === "object") {
+    } else if (typeof obj === "object" && obj !== null) {
         let result = {};
         for (const key in obj) {
             const realIndex = decompressInt(key);
@@ -124,11 +124,11 @@ function decompressObjectInternal(obj, keys = [], values = []) {
 }
 
 export function decompressObject(obj) {
-    if (G_IS_DEV) {
-        return obj;
+    if (obj.keys && obj.values && obj.data) {
+        const keys = obj.keys;
+        const values = obj.values;
+        const result = decompressObjectInternal(obj.data, keys, values);
+        return result;
     }
-    const keys = obj.keys;
-    const values = obj.values;
-    const result = decompressObjectInternal(obj.data, keys, values);
-    return result;
+    return obj;
 }
