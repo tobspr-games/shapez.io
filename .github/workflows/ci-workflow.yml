@@ -15,7 +15,7 @@ jobs:
               uses: mooyoul/tslint-actions@v1.1.1
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  project: ${{ github.workspace }}/src/js
+                  project: ${{ github.workspace }}/src/js/tslint.json
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
