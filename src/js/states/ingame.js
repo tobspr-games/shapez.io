@@ -165,7 +165,7 @@ export class InGameState extends GameState {
             return;
         }
         this.stageLeavingGame();
-        this.doSave(false, true).then(() => {
+        this.doSave().then(() => {
             this.stageDestroyed();
             this.moveToState(stateId, payload);
         });
@@ -424,6 +424,7 @@ export class InGameState extends GameState {
 
         // First update the game data
         logger.log("Starting to save game ...");
+        this.core.root.signals.gameSaved.dispatch();
         this.savegame.updateData(this.core.root);
         return this.savegame.writeSavegameAndMetadata().catch(err => {
             logger.warn("Failed to save:", err);

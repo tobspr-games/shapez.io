@@ -187,14 +187,6 @@ export class Savegame extends ReadWriteProxy {
         if (!dump) {
             return false;
         }
-        const parsed = JSON.stringify(compressObject(dump));
-        const compressed = compressX64(parsed);
-
-        console.log("Regular: ", Math.round(parsed.length / 1024.0), "KB");
-        console.log("Compressed: ", Math.round(compressed.length / 1024.0), "KB");
-
-        // let duration = performanceNow() - timer;
-        // console.log("TOOK", duration, "ms to generate dump:", dump);
 
         const shadowData = Object.assign({}, this.currentData);
         shadowData.dump = dump;
