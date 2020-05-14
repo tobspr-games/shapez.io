@@ -56,7 +56,6 @@ export class ProductionAnalytics extends BasicSerializableObject {
         if (item instanceof ShapeItem) {
             const definition = item.definition;
             const key = definition.getHash();
-            console.log("Shape item produced:", key);
             const entry = this.history[enumAnalyticsDataSource.produced];
             entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + 1;
         }
