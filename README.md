@@ -1,7 +1,5 @@
 # shapez.io
 
-![](https://github.com/tobspr/shapez.io/workflows/ci-workflow/badge.svg)
-
 <img src="https://i.imgur.com/dzvAhEY.png" alt="shapez.io Logo" width="500">
 
 This is the source code for shapez.io, an open source base building game inspired by factorio.
