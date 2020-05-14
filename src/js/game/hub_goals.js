@@ -197,6 +197,20 @@ export class HubGoals extends BasicSerializableObject {
     }
 
     /**
+     * Returns the number of available upgrades
+     * @returns {number}
+     */
+    getAvailableUpgradeCount() {
+        let count = 0;
+        for (const upgradeId in UPGRADES) {
+            if (this.canUnlockUpgrade(upgradeId)) {
+                ++count;
+            }
+        }
+        return count;
+    }
+
+    /**
      * Tries to unlock the given upgrade
      * @param {string} upgradeId
      * @returns {boolean}

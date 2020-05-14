@@ -91,5 +91,40 @@
             left: 50%;
             transform: translateX(-50%);
         }
+
+        &:not(.hasBadge) .badge {
+            display: none;
+        }
+
+        &.hasBadge {
+            @include InlineAnimation(1s ease-in-out infinite) {
+                50% {
+                    transform: scale(1.04);
+                }
+            }
+
+            .badge {
+                position: absolute;
+                @include S(bottom, -12px);
+                left: 50%;
+                transform: translateX(-50%);
+
+                background: #333;
+                @include PlainText;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include S(min-width, 5px);
+                @include S(height, 10px);
+                @include S(padding, 1px, 3px, 2px);
+                @include S(border-radius, 4px);
+                border: #{D(1px)} solid #fff;
+                @include InlineAnimation(1s ease-in-out infinite) {
+                    50% {
+                        transform: translateX(-50%) scale(1.05);
+                    }
+                }
+            }
+        }
     }
 }
