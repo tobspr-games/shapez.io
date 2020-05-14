@@ -75,6 +75,14 @@ export class HubGoals extends BasicSerializableObject {
     getShapesStored(definition) {
         return this.storedShapes[definition.getHash()] || 0;
     }
+    /**
+     * Returns how much of the current shape is stored
+     * @param {string} key
+     * @returns {number}
+     */
+    getShapesStoredByKey(key) {
+        return this.storedShapes[key] || 0;
+    }
 
     /**
      * Returns how much of the current goal was already delivered
@@ -158,11 +166,12 @@ export class HubGoals extends BasicSerializableObject {
     onGoalCompleted() {
         const reward = this.currentGoal.reward;
         this.gainedRewards[reward] = (this.gainedRewards[reward] || 0) + 1;
-        this.root.signals.storyGoalCompleted.dispatch(this.level, reward);
 
         this.root.app.gameAnalytics.handleLevelCompleted(this.level);
         ++this.level;
         this.createNextGoal();
+
+        this.root.signals.storyGoalCompleted.dispatch(this.level - 1, reward);
     }
 
     /**

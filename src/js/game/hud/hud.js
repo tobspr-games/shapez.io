@@ -17,6 +17,8 @@ import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
 import { MetaBuilding } from "../meta_building";
+import { HUDPinnedShapes } from "./parts/pinned_shapes";
+import { ShapeDefinition } from "../shape_definition";
 
 export class GameHUD {
     /**
@@ -47,11 +49,14 @@ export class GameHUD {
 
             vignetteOverlay: new HUDVignetteOverlay(this.root),
 
+            pinnedShapes: new HUDPinnedShapes(this.root),
+
             // betaOverlay: new HUDBetaOverlay(this.root),
         };
 
         this.signals = {
             selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
+            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {

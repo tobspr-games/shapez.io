@@ -153,6 +153,9 @@ export class HUDStatistics extends BaseHUDPart {
      * Performs a full rerender, regenerating everything
      */
     rerenderFull() {
+        for (const key in this.activeHandles) {
+            this.activeHandles[key].detach();
+        }
         removeAllChildren(this.contentDiv);
 
         // Now, attach new ones
@@ -170,8 +173,6 @@ export class HUDStatistics extends BaseHUDPart {
             }
         }
 
-        // const entries = Object.entries(this.root.hubGoals.storedShapes);
-
         entries.sort((a, b) => b[1] - a[1]);
 
         let rendered = new Set();
@@ -179,7 +180,6 @@ export class HUDStatistics extends BaseHUDPart {
         for (let i = 0; i < Math_min(entries.length, 200); ++i) {
             const entry = entries[i];
             const shapeKey = entry[0];
-            const amount = entry[1];
 
             let handle = this.activeHandles[shapeKey];
             if (!handle) {
