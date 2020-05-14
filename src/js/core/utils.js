@@ -436,26 +436,6 @@ export function formatBigNumber(num, divider = ".") {
         return sign + "" + num;
     }
 
-    // if (num > 1e51) return sign + T.common.number_format.sedecillion.replace("%amount%", "" + roundSmart(num / 1e51));
-    // if (num > 1e48)
-    //     return sign + T.common.number_format.quinquadecillion.replace("%amount%", "" + roundSmart(num / 1e48));
-    // if (num > 1e45)
-    //     return sign + T.common.number_format.quattuordecillion.replace("%amount%", "" + roundSmart(num / 1e45));
-    // if (num > 1e42) return sign + T.common.number_format.tredecillion.replace("%amount%", "" + roundSmart(num / 1e42));
-    // if (num > 1e39) return sign + T.common.number_format.duodecillions.replace("%amount%", "" + roundSmart(num / 1e39));
-    // if (num > 1e36) return sign + T.common.number_format.undecillions.replace("%amount%", "" + roundSmart(num / 1e36));
-    // if (num > 1e33) return sign + T.common.number_format.decillions.replace("%amount%", "" + roundSmart(num / 1e33));
-    // if (num > 1e30) return sign + T.common.number_format.nonillions.replace("%amount%", "" + roundSmart(num / 1e30));
-    // if (num > 1e27) return sign + T.common.number_format.octillions.replace("%amount%", "" + roundSmart(num / 1e27));
-    // if (num >= 1e24) return sign + T.common.number_format.septillions.replace("%amount%", "" + roundSmart(num / 1e24));
-    // if (num >= 1e21) return sign + T.common.number_format.sextillions.replace("%amount%", "" + roundSmart(num / 1e21));
-    // if (num >= 1e18) return sign + T.common.number_format.quintillions.replace("%amount%", "" + roundSmart(num / 1e18));
-    // if (num >= 1e15) return sign + T.common.number_format.quantillions.replace("%amount%", "" + roundSmart(num / 1e15));
-    // if (num >= 1e12) return sign + T.common.number_format.trillions.replace("%amount%", "" + roundSmart(num / 1e12));
-    // if (num >= 1e9) return sign + T.common.number_format.billions.replace("%amount%", "" + roundSmart(num / 1e9));
-    // if (num >= 1e6) return sign + T.common.number_format.millions.replace("%amount%", "" + roundSmart(num / 1e6));
-    // if (num > 99999) return sign + T.common.number_format.thousands.replace("%amount%", "" + roundSmart(num / 1e3));
-
     let rest = num;
     let out = "";
 
@@ -474,7 +454,7 @@ export function formatBigNumber(num, divider = ".") {
  * @param {string=} divider THe divider for numbers like 50,000 (divider=',')
  * @returns {string}
  */
-export function formatBigNumberFull(num, divider = T.common.number_format.divider_thousands || " ") {
+export function formatBigNumberFull(num, divider = ",") {
     if (num < 1000) {
         return num + "";
     }
@@ -490,65 +470,6 @@ export function formatBigNumberFull(num, divider = T.common.number_format.divide
     out = rest + divider + out;
 
     return out.substring(0, out.length - 1);
-}
-
-/**
- * Formats an amount of seconds into something like "5s ago"
- * @param {number} secs Seconds
- * @returns {string}
- */
-export function formatSecondsToTimeAgo(secs) {
-    const seconds = Math_floor(secs);
-    const minutes = Math_floor(seconds / 60);
-    const hours = Math_floor(minutes / 60);
-    const days = Math_floor(hours / 24);
-
-    const trans = T.common.time;
-
-    if (seconds <= 60) {
-        if (seconds <= 1) {
-            return trans.one_second_before;
-        }
-        return trans.seconds_before.replace("%amount%", "" + seconds);
-    } else if (minutes <= 60) {
-        if (minutes <= 1) {
-            return trans.one_minute_before;
-        }
-        return trans.minutes_before.replace("%amount%", "" + minutes);
-    } else if (hours <= 60) {
-        if (hours <= 1) {
-            return trans.one_hour_before;
-        }
-        return trans.hours_before.replace("%amount%", "" + hours);
-    } else {
-        if (days <= 1) {
-            return trans.one_day_before;
-        }
-        return trans.days_before.replace("%amount%", "" + days);
-    }
-}
-
-/**
- * Formats seconds into a readable string like "5h 23m"
- * @param {number} secs Seconds
- * @returns {string}
- */
-export function formatSeconds(secs) {
-    const trans = T.common.time;
-    secs = Math_ceil(secs);
-    if (secs < 60) {
-        return trans.seconds_short.replace("%seconds%", "" + secs);
-    } else if (secs < 60 * 60) {
-        const minutes = Math_floor(secs / 60);
-        const seconds = secs % 60;
-        return trans.minutes_seconds_short
-            .replace("%seconds%", "" + seconds)
-            .replace("%minutes%", "" + minutes);
-    } else {
-        const hours = Math_floor(secs / 3600);
-        const minutes = Math_floor(secs / 60) % 60;
-        return trans.hours_minutes_short.replace("%minutes%", "" + minutes).replace("%hours%", "" + hours);
-    }
 }
 
 /**

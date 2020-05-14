@@ -8,6 +8,7 @@
     "private": true,
     "scripts": {
         "dev": "./gulp/gulp main.serveDev",
+        "tslint": "cd src/js && tsc",
         "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*"
     },
     "dependencies": {
