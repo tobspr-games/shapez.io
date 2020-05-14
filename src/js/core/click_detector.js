@@ -4,6 +4,8 @@ import { Signal } from "../core/signal";
 import { fastArrayDelete, fastArrayDeleteValueIfContained } from "./utils";
 import { Vector } from "./vector";
 import { IS_MOBILE } from "./config";
+import { SOUNDS } from "../platform/sound";
+import { GLOBAL_APP } from "./globals";
 
 const logger = createLogger("click_detector");
 
@@ -63,7 +65,7 @@ export class ClickDetector {
             captureTouchmove = false,
             targetOnly = false,
             maxDistance = MAX_MOVE_DISTANCE_PX,
-            clickSound = null,
+            clickSound = SOUNDS.uiClick,
         }
     ) {
         assert(element, "No element given!");
@@ -321,8 +323,7 @@ export class ClickDetector {
 
         // If we should play any sound, do this
         if (this.clickSound) {
-            throw new Error("TODO: Play sounds on click");
-            // GLOBAL_APP.sound.playUiSound(this.clickSound);
+            GLOBAL_APP.sound.playUiSound(this.clickSound);
         }
 
         return false;

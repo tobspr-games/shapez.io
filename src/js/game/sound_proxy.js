@@ -55,11 +55,6 @@ export class SoundProxy {
 
         if (this.playingSounds.length > maxOngoingSounds) {
             // Too many ongoing sounds
-            // console.warn(
-            //   "Not playing",
-            //   id,
-            //   "because there are too many sounds playing"
-            // );
             return false;
         }
 

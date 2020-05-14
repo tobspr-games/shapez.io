@@ -102,7 +102,7 @@
 
             .badge {
                 position: absolute;
-                @include S(bottom, -12px);
+                @include S(bottom, -8px);
                 left: 50%;
                 transform: translateX(-50%);
 

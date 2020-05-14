@@ -91,8 +91,7 @@ export class InGameState extends GameState {
     }
 
     getThemeMusic() {
-        // set later
-        return MUSIC.mainMenu;
+        return MUSIC.theme;
     }
 
     onBeforeExit() {

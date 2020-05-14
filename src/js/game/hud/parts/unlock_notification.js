@@ -14,6 +14,7 @@ import { MetaRotaterBuilding } from "../../buildings/rotater";
 import { MetaStackerBuilding } from "../../buildings/stacker";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { globalConfig } from "../../../core/config";
+import { SOUNDS } from "../../../platform/sound";
 
 export class HUDUnlockNotification extends BaseHUDPart {
     initialize() {
@@ -110,6 +111,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
         this.elemContents.innerHTML = html;
 
         this.visible = true;
+
+        this.root.soundProxy.playUi(SOUNDS.levelComplete);
     }
 
     close() {

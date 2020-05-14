@@ -18,11 +18,15 @@ export const SOUNDS = {
     dialogOk: "ui/dialog_ok.mp3",
     swishHide: "ui/ui_swish_hide.mp3",
     swishShow: "ui/ui_swish_show.mp3",
+
+    levelComplete: "ui/level_complete.mp3",
+
+    placeBuilding: "game/place_building.mp3",
+    placeBelt: "game/place_belt.mp3",
 };
 
 export const MUSIC = {
-    mainMenu: "main_menu.mp3",
-    gameBg: "theme_full.mp3",
+    theme: "theme.mp3",
 };
 
 export class SoundInstanceInterface {

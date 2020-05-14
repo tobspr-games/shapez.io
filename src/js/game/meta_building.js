@@ -4,6 +4,7 @@ import { GameRoot } from "./root";
 import { AtlasSprite } from "../core/sprites";
 import { Entity } from "./entity";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
+import { SOUNDS } from "../platform/sound";
 
 export class MetaBuilding {
     /**
@@ -62,6 +63,14 @@ export class MetaBuilding {
      */
     getRotateAutomaticallyWhilePlacing() {
         return false;
+    }
+
+    /**
+     * Returns the placement sound
+     * @returns {string}
+     */
+    getPlacementSound() {
+        return SOUNDS.placeBuilding;
     }
 
     /**

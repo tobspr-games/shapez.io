@@ -49,17 +49,23 @@ export class HubSystem extends GameSystemWithFilter {
         const textOffsetY = -6;
 
         // Deliver count
-        context.font = "bold 25px GameFont";
+        const delivered = this.root.hubGoals.getCurrentGoalDelivered();
+
+        if (delivered > 9999) {
+            context.font = "bold 16px GameFont";
+        } else if (delivered > 999) {
+            context.font = "bold 20px GameFont";
+        } else {
+            context.font = "bold 25px GameFont";
+        }
         context.fillStyle = "#64666e";
         context.textAlign = "left";
-        context.fillText(
-            "" + formatBigNumber(this.root.hubGoals.getCurrentGoalDelivered()),
-            pos.x + textOffsetX,
-            pos.y + textOffsetY
-        );
+        context.fillText("" + formatBigNumber(delivered), pos.x + textOffsetX, pos.y + textOffsetY);
 
         // Required
+
         context.font = "13px GameFont";
+
         context.fillStyle = "#a4a6b0";
         context.fillText(
             "/ " + formatBigNumber(goals.required),

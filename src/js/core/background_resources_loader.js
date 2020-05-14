@@ -22,7 +22,7 @@ const essentialMainMenuSounds = [
 
 const essentialBareGameAtlases = atlasFiles;
 const essentialBareGameSprites = G_ALL_UI_IMAGES;
-const essentialBareGameSounds = [MUSIC.gameBg];
+const essentialBareGameSounds = [MUSIC.theme];
 
 const additionalGameSprites = [];
 const additionalGameSounds = [];

@@ -1,8 +1,8 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv, removeAllChildren, formatBigNumber } from "../../../core/utils";
-import { ClickDetector } from "../../../core/click_detector";
-import { ShapeDefinition } from "../../shape_definition";
 import { Math_max } from "../../../core/builtins";
+import { ClickDetector } from "../../../core/click_detector";
+import { formatBigNumber, makeDiv } from "../../../core/utils";
+import { ShapeDefinition } from "../../shape_definition";
+import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDPinnedShapes extends BaseHUDPart {
     createElements(parent) {
