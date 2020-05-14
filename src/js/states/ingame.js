@@ -67,10 +67,6 @@ export class InGameState extends GameState {
         this.savegame;
 
         this.boundInputFilter = this.filterInput.bind(this);
-
-        if (G_IS_DEV) {
-            window.performSave = this.doSave.bind(this);
-        }
     }
 
     /**

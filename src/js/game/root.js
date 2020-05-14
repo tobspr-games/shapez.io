@@ -20,7 +20,6 @@ import { Savegame } from "../savegame/savegame";
 import { GameLogic } from "./logic";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { CanvasClickInterceptor } from "./canvas_click_interceptor";
-import { PerlinNoise } from "../core/perlin_noise";
 import { HubGoals } from "./hub_goals";
 import { BufferMaintainer } from "../core/buffer_maintainer";
 import { ProductionAnalytics } from "./production_analytics";
