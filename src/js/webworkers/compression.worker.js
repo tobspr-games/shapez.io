@@ -10,10 +10,7 @@ function accessNestedPropertyReverse(obj, keys) {
     return result;
 }
 
-const rusha = require("rusha");
-
 const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
-const encryptKey = globalConfig.info.sgSalt;
 
 onmessage = function (event) {
     const { jobId, job, data } = event.data;

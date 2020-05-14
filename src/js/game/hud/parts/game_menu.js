@@ -52,13 +52,17 @@ export class HUDGameMenu extends BaseHUDPart {
 
         this.musicButton = makeDiv(menuButtons, null, ["button", "music"]);
         this.sfxButton = makeDiv(menuButtons, null, ["button", "sfx"]);
+        this.saveButton = makeDiv(menuButtons, null, ["button", "save", "animEven"]);
         this.settingsButton = makeDiv(menuButtons, null, ["button", "settings"]);
 
         this.trackClicks(this.musicButton, this.toggleMusic);
         this.trackClicks(this.sfxButton, this.toggleSfx);
+        this.trackClicks(this.saveButton, this.startSave);
 
         this.musicButton.classList.toggle("muted", this.root.app.settings.getAllSettings().musicMuted);
         this.sfxButton.classList.toggle("muted", this.root.app.settings.getAllSettings().musicMuted);
+
+        this.root.signals.gameSaved.add(this.onGameSaved, this);
     }
 
     update() {
@@ -73,6 +77,16 @@ export class HUDGameMenu extends BaseHUDPart {
                 button.classList.toggle("hasBadge", amount > 0);
             }
         }
+    }
+
+    onGameSaved() {
+        console.log("ON GAME SAVED");
+        this.saveButton.classList.toggle("animEven");
+        this.saveButton.classList.toggle("animOdd");
+    }
+
+    startSave() {
+        this.root.gameState.doSave();
     }
 
     toggleMusic() {
