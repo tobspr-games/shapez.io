@@ -27,14 +27,19 @@
 
             &:hover {
                 opacity: 0.8;
-                transform: translateY(3px);
             }
             &.music {
                 background-image: uiResource("icons/music_on.png");
+                &.muted {
+                    background-image: uiResource("icons/music_off.png");
+                }
             }
 
             &.sfx {
                 background-image: uiResource("icons/sound_on.png");
+                &.muted {
+                    background-image: uiResource("icons/sound_off.png");
+                }
             }
 
             &.settings {
