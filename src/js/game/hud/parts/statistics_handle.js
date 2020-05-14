@@ -116,16 +116,16 @@ export class HUDShapeStatisticsHandle {
             this.graphContext.strokeStyle = "#66ccbc";
             this.graphContext.lineWidth = 1.5;
 
-            const sliceWidth = w / globalConfig.statisticsGraphSlices;
+            const sliceWidth = w / (globalConfig.statisticsGraphSlices - 1);
 
             let values = [];
             let maxValue = 1;
 
-            for (let i = 0; i < globalConfig.statisticsGraphSlices - 1; ++i) {
+            for (let i = 0; i < globalConfig.statisticsGraphSlices - 2; ++i) {
                 const value = this.root.productionAnalytics.getPastShapeRate(
                     dataSource,
                     this.definition,
-                    globalConfig.statisticsGraphSlices - i - 1
+                    globalConfig.statisticsGraphSlices - i - 2
                 );
                 if (value > maxValue) {
                     maxValue = value;
