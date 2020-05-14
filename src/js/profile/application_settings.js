@@ -67,6 +67,24 @@ export const allApplicationSettings = [
         },
         G_IS_STANDALONE
     ),
+    new BoolSetting(
+        "soundsMuted",
+        categoryApp,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setSoundsMuted(value),
+        false
+    ),
+    new BoolSetting(
+        "musicMuted",
+        categoryApp,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setMusicMuted(value),
+        false
+    ),
 
     // GAME
 ];
@@ -79,6 +97,9 @@ class SettingsStorage {
     constructor() {
         this.uiScale = "regular";
         this.fullscreen = G_IS_STANDALONE;
+
+        this.soundsMuted = false;
+        this.musicMuted = false;
     }
 }
 
@@ -143,9 +164,20 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string|boolean} value
      */
     updateSetting(key, value) {
-        assert(this.getAllSettings().hasOwnProperty(key), "Setting not known: " + key);
-        this.getAllSettings()[key] = value;
-        return this.writeAsync();
+        for (let i = 0; i < allApplicationSettings.length; ++i) {
+            const setting = allApplicationSettings[i];
+            if (setting.id === key) {
+                if (!setting.validate(value)) {
+                    assertAlways(false, "Bad setting value: " + key);
+                }
+                this.getAllSettings()[key] = value;
+                if (setting.changeCb) {
+                    setting.changeCb(this.app, value);
+                }
+                return this.writeAsync();
+            }
+        }
+        assertAlways(false, "Unknown setting: " + key);
     }
 
     // RW Proxy impl
@@ -176,14 +208,14 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 1;
+        return 2;
     }
 
     migrate(data) {
         // Simply reset
-        if (data.version < 1) {
+        if (data.version < this.getCurrentVersion()) {
             data.settings = new SettingsStorage();
-            data.version = 1;
+            data.version = this.getCurrentVersion();
         }
 
         return ExplainedResult.good();
