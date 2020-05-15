@@ -10,7 +10,6 @@ module.exports = function (api) {
                 loose: true,
                 spec: false,
                 modules: "auto",
-                // debug: true
             },
         ],
     ];
