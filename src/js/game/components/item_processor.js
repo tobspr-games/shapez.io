@@ -45,12 +45,12 @@ export class ItemProcessorComponent extends Component {
                     preferredSlot: types.nullable(types.uint),
                 })
             ),
-            secondsUntilEject: types.ufloat,
+            secondsUntilEject: types.float,
             itemConsumptionAnimations: types.array(
                 types.structured({
                     item: types.obj(gItemRegistry),
                     slotIndex: types.uint,
-                    animProgress: types.ufloat,
+                    animProgress: types.float,
                     direction: types.enum(enumDirection),
                 })
             ),
