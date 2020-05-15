@@ -14,7 +14,7 @@ export class BeltComponent extends Component {
     static getSchema() {
         return {
             direction: types.string,
-            sortedItems: types.array(types.pair(types.ufloat, types.obj(gItemRegistry))),
+            sortedItems: types.array(types.pair(types.float, types.obj(gItemRegistry))),
         };
     }
 

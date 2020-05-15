@@ -26,7 +26,7 @@ export class ItemEjectorComponent extends Component {
                     pos: types.vector,
                     direction: types.enum(enumDirection),
                     item: types.nullable(types.obj(gItemRegistry)),
-                    progress: types.ufloat,
+                    progress: types.float,
                 })
             ),
         };

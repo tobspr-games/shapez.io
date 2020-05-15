@@ -140,7 +140,10 @@ export class ShapeDefinition extends BasicSerializableObject {
             layers.push(quads);
         }
 
-        return new ShapeDefinition({ layers });
+        const definition = new ShapeDefinition({ layers });
+        // We know the hash so save some work
+        definition.cachedHash = key;
+        return definition;
     }
 
     /**
