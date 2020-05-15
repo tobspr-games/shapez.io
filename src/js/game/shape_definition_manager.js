@@ -60,8 +60,8 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         if (this.operationCache[key]) {
             return /** @type {[ShapeDefinition, ShapeDefinition]} */ (this.operationCache[key]);
         }
-        const rightSide = definition.cloneFilteredByQuadrants([0, 1]);
-        const leftSide = definition.cloneFilteredByQuadrants([2, 3]);
+        const rightSide = definition.cloneFilteredByQuadrants([2, 3]);
+        const leftSide = definition.cloneFilteredByQuadrants([0, 1]);
 
         return /** @type {[ShapeDefinition, ShapeDefinition]} */ (this.operationCache[key] = [
             this.registerOrReturnHandle(rightSide),
