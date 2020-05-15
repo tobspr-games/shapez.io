@@ -34,6 +34,9 @@ If you want to add a new feature or in generally contribute I recommend to get i
 The game is based on a custom engine which itself is based on the YORG.io 3 game egine (Actually it shares almost the same core).
 The code within the engine is relatively clean with some code for the actual game on top being hacky.
 
+This project is based on ES5. Some es6 features are used but most of them are too slow, especially when polyfilled. For example, `.forEach` is only used within non-critical loops since its slower than a plain for loop.
+
+
 ### Assets
 
 You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">texture packer</a> license in order to regenerate the atlas. If you don't have one but you want to contribute assets, let me know and I might compile it for you.
