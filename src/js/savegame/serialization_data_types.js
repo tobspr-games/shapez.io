@@ -1079,6 +1079,8 @@ export class TypePair extends BaseDataType {
      */
     constructor(type1, type2) {
         super();
+        assert(type1 && type1 instanceof BaseDataType, "bad first type given for pair");
+        assert(type2 && type2 instanceof BaseDataType, "bad second type given for pair");
         this.type1 = type1;
         this.type2 = type2;
     }
