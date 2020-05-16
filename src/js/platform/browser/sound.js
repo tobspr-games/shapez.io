@@ -74,9 +74,16 @@ class MusicInstance extends MusicInstanceInterface {
                     autoplay: false,
                     loop: true,
                     html5: true,
-                    volume: 0.3,
+                    volume: 1,
                     preload: true,
                     pool: 2,
+
+                    onunlock: () => {
+                        if (this.playing) {
+                            logger.log("Playing music after manual unlock");
+                            this.play();
+                        }
+                    },
 
                     onload: () => {
                         resolve();

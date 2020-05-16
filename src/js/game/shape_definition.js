@@ -7,6 +7,7 @@ import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
+import { THEME } from "./theme";
 
 const rusha = require("rusha");
 
@@ -274,8 +275,8 @@ export class ShapeDefinition extends BasicSerializableObject {
                 context.rotate(rotation);
 
                 context.fillStyle = enumColorsToHexCode[color];
-                context.strokeStyle = "#555";
-                context.lineWidth = 1;
+                context.strokeStyle = THEME.items.outline;
+                context.lineWidth = THEME.items.outlineWidth;
 
                 const insetPadding = 0.0;
 

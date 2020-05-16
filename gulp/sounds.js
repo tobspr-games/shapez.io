@@ -9,7 +9,7 @@ function gulptasksSounds($, gulp, buildFolder) {
         return gulp.src(builtSoundsDir).pipe($.clean({ force: true }));
     });
 
-    const filters = ["loudnorm", "volume=0.2"];
+    const filters = ["volume=0.2"];
 
     const fileCache = new $.cache.Cache({
         cacheDirName: "shapezio-precompiled-sounds",
@@ -27,8 +27,8 @@ function gulptasksSounds($, gulp, buildFolder) {
                             .audioBitrate(48)
                             .audioChannels(1)
                             .audioFrequency(22050)
-                            .audioCodec("libmp3lame");
-                        // .audioFilters(["volume=0.25"])
+                            .audioCodec("libmp3lame")
+                            .audioFilters(["volume=0.3"]);
                     }),
                     {
                         name: "music",

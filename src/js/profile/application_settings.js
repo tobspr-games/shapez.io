@@ -6,6 +6,7 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
+import { THEMES } from "../game/theme";
 
 const logger = createLogger("application_settings");
 
@@ -67,6 +68,18 @@ export const allApplicationSettings = [
         },
         G_IS_STANDALONE
     ),
+    new EnumSetting("theme", {
+        options: Object.keys(THEMES),
+        valueGetter: theme => theme,
+        textGetter: theme => theme.substr(0, 1).toUpperCase() + theme.substr(1),
+        category: categoryApp,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => document.body.setAttribute("data-theme", id),
+    }),
     new BoolSetting(
         "soundsMuted",
         categoryApp,
@@ -100,6 +113,7 @@ class SettingsStorage {
 
         this.soundsMuted = false;
         this.musicMuted = false;
+        this.theme = "light";
     }
 }
 
@@ -110,7 +124,17 @@ export class ApplicationSettings extends ReadWriteProxy {
 
     initialize() {
         // Read and directly write latest data back
-        return this.readAsync().then(() => this.writeAsync());
+        return this.readAsync()
+            .then(() => {
+                // Apply default setting callbacks
+                const settings = this.getAllSettings();
+                for (let i = 0; i < allApplicationSettings.length; ++i) {
+                    const handle = allApplicationSettings[i];
+                    handle.apply(this.app, settings[handle.id]);
+                }
+            })
+
+            .then(() => this.writeAsync());
     }
 
     save() {
@@ -208,7 +232,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 2;
+        return 3;
     }
 
     migrate(data) {

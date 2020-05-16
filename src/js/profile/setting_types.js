@@ -29,6 +29,16 @@ export class BaseSetting {
 
     /**
      * @param {Application} app
+     * @param {any} value
+     */
+    apply(app, value) {
+        if (this.changeCb) {
+            this.changeCb(app, value);
+        }
+    }
+
+    /**
+     * @param {Application} app
      * @param {Element} element
      * @param {any} dialogs
      */

@@ -1,5 +1,6 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, randomInt } from "../../../core/utils";
+import { SOUNDS } from "../../../platform/sound";
 
 export class HUDGameMenu extends BaseHUDPart {
     initialize() {}
@@ -60,12 +61,13 @@ export class HUDGameMenu extends BaseHUDPart {
         this.trackClicks(this.saveButton, this.startSave);
 
         this.musicButton.classList.toggle("muted", this.root.app.settings.getAllSettings().musicMuted);
-        this.sfxButton.classList.toggle("muted", this.root.app.settings.getAllSettings().musicMuted);
+        this.sfxButton.classList.toggle("muted", this.root.app.settings.getAllSettings().soundsMuted);
 
         this.root.signals.gameSaved.add(this.onGameSaved, this);
     }
 
     update() {
+        let playSound = false;
         for (let i = 0; i < this.badgesToUpdate.length; ++i) {
             const { badge, button, badgeElement, lastRenderAmount } = this.badgesToUpdate[i];
             const amount = badge();
@@ -73,9 +75,17 @@ export class HUDGameMenu extends BaseHUDPart {
                 if (amount > 0) {
                     badgeElement.innerText = amount;
                 }
+                // Check if the badge increased
+                if (amount > lastRenderAmount) {
+                    playSound = true;
+                }
                 this.badgesToUpdate[i].lastRenderAmount = amount;
                 button.classList.toggle("hasBadge", amount > 0);
             }
+        }
+
+        if (playSound) {
+            this.root.soundProxy.playUi(SOUNDS.badgeNotification);
         }
     }
 

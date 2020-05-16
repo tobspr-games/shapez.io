@@ -18,6 +18,7 @@ export const SOUNDS = {
     dialogOk: "ui/dialog_ok.mp3",
     swishHide: "ui/ui_swish_hide.mp3",
     swishShow: "ui/ui_swish_show.mp3",
+    badgeNotification: "ui/badge_notification.mp3",
 
     levelComplete: "ui/level_complete.mp3",
 
@@ -27,6 +28,7 @@ export const SOUNDS = {
 
 export const MUSIC = {
     theme: "theme.mp3",
+    menu: "menu.mp3",
 };
 
 export class SoundInstanceInterface {
