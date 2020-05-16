@@ -112,7 +112,6 @@ export class HUDShop extends BaseHUDPart {
                 container.appendChild(pinButton);
 
                 if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
-                    console.log("ALREADY PINNED:", shape);
                     pinButton.classList.add("alreadyPinned");
                 }
 

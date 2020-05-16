@@ -114,7 +114,6 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                             // If we encounter an underground receiver on our way which is also faced in our direction, we don't accept that
                             break;
                         }
-                        // console.log("GOT IT! rotation is", rotation, "and target is", staticComp.rotation);
 
                         return {
                             rotation: targetRotation,
