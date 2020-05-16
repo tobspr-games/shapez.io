@@ -1,7 +1,8 @@
 import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
 import { globalConfig } from "../core/config";
-import { makeDiv, formatSecondsToTimeAgo } from "../core/utils";
+import { makeDiv, formatSecondsToTimeAgo, generateFileDownload } from "../core/utils";
+import { ReadWriteProxy } from "../core/read_write_proxy";
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -90,10 +91,15 @@ export class MainMenuState extends GameState {
                     formatSecondsToTimeAgo((new Date().getTime() - games[i].lastUpdate) / 1000.0)
                 );
 
+                const downloadButton = document.createElement("button");
+                downloadButton.classList.add("styledButton", "downloadGame");
+                elem.appendChild(downloadButton);
+
                 const resumeBtn = document.createElement("button");
                 resumeBtn.classList.add("styledButton", "resumeGame");
                 elem.appendChild(resumeBtn);
 
+                this.trackClicks(downloadButton, () => this.downloadGame(games[i]));
                 this.trackClicks(resumeBtn, () => this.resumeGame(games[i]));
             }
         }
@@ -108,6 +114,17 @@ export class MainMenuState extends GameState {
             this.moveToState("InGameState", {
                 savegame,
             });
+        });
+    }
+
+    /**
+     * @param {object} game
+     */
+    downloadGame(game) {
+        const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
+        savegame.readAsync().then(() => {
+            const data = ReadWriteProxy.serializeObject(savegame.currentData);
+            generateFileDownload(savegame.filename, data);
         });
     }
 
