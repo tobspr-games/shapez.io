@@ -8,9 +8,9 @@
         @include S(border-radius, 2px);
         @include S(margin-top, 3px);
         color: #fff;
-        @include PlainText;
+        @include SuperSmallText;
         @include S(padding, 7px, 10px);
-        @include S(width, 200px);
+        @include S(width, 150px);
 
         &[data-icon] {
             @include S(background-position-x, 8px);

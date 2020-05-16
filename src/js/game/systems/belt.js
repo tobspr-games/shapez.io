@@ -10,6 +10,7 @@ import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector"
 import { MapChunkView } from "../map_chunk_view";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { MetaBeltBaseBuilding } from "../buildings/belt_base";
+import { defaultBuildingVariant } from "../meta_building";
 
 const BELT_ANIM_COUNT = 6;
 
@@ -91,10 +92,11 @@ export class BeltSystem extends GameSystemWithFilter {
                             } = metaBelt.computeOptimalDirectionAndRotationVariantAtTile(
                                 this.root,
                                 new Vector(x, y),
-                                targetStaticComp.originalRotation
+                                targetStaticComp.originalRotation,
+                                defaultBuildingVariant
                             );
                             targetStaticComp.rotation = rotation;
-                            metaBelt.updateRotationVariant(targetEntity, rotationVariant);
+                            metaBelt.updateVariants(targetEntity, rotationVariant, defaultBuildingVariant);
                         }
                     }
                 }

@@ -116,7 +116,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {Entity} entity
      * @param {number} rotationVariant
      */
-    updateRotationVariant(entity, rotationVariant) {
+    updateVariants(entity, rotationVariant) {
         entity.components.Belt.direction = arrayBeltVariantToRotation[rotationVariant];
         entity.components.ItemEjector.slots[0].direction = arrayBeltVariantToRotation[rotationVariant];
 
@@ -128,9 +128,10 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {GameRoot} root
      * @param {Vector} tile
      * @param {number} rotation
+     * @param {string} variant
      * @return {{ rotation: number, rotationVariant: number }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation) {
+    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
         const topDirection = enumAngleToDirection[rotation];
         const rightDirection = enumAngleToDirection[(rotation + 90) % 360];
         const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];

@@ -26,11 +26,13 @@ export class UndergroundBeltComponent extends Component {
      *
      * @param {object} param0
      * @param {enumUndergroundBeltMode=} param0.mode As which type of belt the entity acts
+     * @param {number=} param0.tier
      */
-    constructor({ mode = enumUndergroundBeltMode.sender }) {
+    constructor({ mode = enumUndergroundBeltMode.sender, tier = 0 }) {
         super();
 
         this.mode = mode;
+        this.tier = tier;
 
         /**
          * Used on both receiver and sender.
@@ -57,7 +59,7 @@ export class UndergroundBeltComponent extends Component {
             return false;
         }
 
-        this.pendingItems.push([item, 1 / beltSpeed]);
+        this.pendingItems.push([item, 0.5 / beltSpeed]);
         return true;
     }
 

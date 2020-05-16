@@ -370,7 +370,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
             this.root,
             tile,
-            this.currentBaseRotation
+            this.currentBaseRotation,
+            this.currentVariant.get()
         );
 
         if (
@@ -437,7 +438,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
             this.root,
             tile,
-            this.currentBaseRotation
+            this.currentBaseRotation,
+            this.currentVariant.get()
         );
 
         // Check if there are connected entities
@@ -476,8 +478,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         staticComp.origin = tile;
         staticComp.rotation = rotation;
         staticComp.tileSize = metaBuilding.getDimensions(this.currentVariant.get());
-        metaBuilding.updateRotationVariant(this.fakeEntity, rotationVariant);
-        metaBuilding.updateVariant(this.fakeEntity, this.currentVariant.get());
+        metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
 
         // Check if we could place the buildnig
         const canBuild = this.root.logic.checkCanPlaceBuilding({
