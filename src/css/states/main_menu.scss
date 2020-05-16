@@ -85,21 +85,22 @@
         .savegames {
             @include S(max-height, 92px);
             overflow-y: auto;
-            @include S(width, 200px);
+            @include S(width, 250px);
             pointer-events: all;
             @include S(padding-right, 5px);
             display: grid;
             grid-auto-flow: row;
             @include S(grid-gap, 5px);
             @include S(margin-top, 10px);
+
             .savegame {
                 background: #eee;
                 @include BorderRadius(4px);
                 @include S(padding, 5px);
                 display: grid;
-                grid-template-columns: 1fr auto;
+                grid-template-columns: 1fr auto auto;
                 grid-template-rows: auto auto;
-                @include S(grid-column-gap, 15px);
+                @include S(grid-column-gap, 5px);
 
                 .internalId {
                     grid-column: 1 / 2;
@@ -114,14 +115,24 @@
                     @include PlainText;
                 }
 
-                button.resumeGame {
-                    grid-column: 2 / 3;
+                button.resumeGame,
+                button.downloadGame {
+                    grid-column: 3 / 4;
                     grid-row: 1 / 3;
                     @include S(width, 30px);
                     @include S(height, 30px);
                     padding: 0;
                     align-self: center;
                     background: #44484a uiResource("icons/play.png") center center / 40% no-repeat;
+                }
+
+                button.downloadGame {
+                    grid-column: 2 / 3;
+                    background-image: uiResource("icons/download.png");
+                    @include S(width, 15px);
+                    @include S(height, 15px);
+                    align-self: end;
+                    background-size: 60%;
                 }
             }
         }

@@ -80,6 +80,16 @@ export class ReadWriteProxy {
     }
 
     /**
+     *
+     * @param {object} obj
+     */
+    static serializeObject(obj) {
+        const jsonString = JSON_stringify(compressObject(obj));
+        const checksum = sha1(jsonString + salt);
+        return compressionPrefix + compressX64(checksum + jsonString);
+    }
+
+    /**
      * Writes the data asychronously, fails if verify() fails
      * @returns {Promise<string>}
      */
