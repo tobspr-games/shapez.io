@@ -851,7 +851,7 @@ export function formatSecondsToTimeAgo(secs) {
         if (hours <= 1) {
             return "one hour ago";
         }
-        return hours + " hour ago";
+        return hours + " hours ago";
     } else {
         if (days <= 1) {
             return "one day ago";

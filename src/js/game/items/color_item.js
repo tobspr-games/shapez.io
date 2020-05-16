@@ -29,7 +29,7 @@ export class ColorItem extends BaseItem {
     constructor(color) {
         super();
         this.color = color;
-        this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
+        this.bufferGenerator = null;
     }
 
     getBackgroundColorAsResource() {
@@ -43,6 +43,10 @@ export class ColorItem extends BaseItem {
      * @param {DrawParameters} parameters
      */
     draw(x, y, parameters, size = 12) {
+        if (!this.bufferGenerator) {
+            this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
+        }
+
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
         const key = size + "/" + dpi;
