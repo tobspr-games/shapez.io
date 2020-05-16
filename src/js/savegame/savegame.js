@@ -76,13 +76,9 @@ export class Savegame extends ReadWriteProxy {
      * @param {SavegameData} data
      */
     migrate(data) {
-        // if (data.version === 1014) {
-        //     if (data.dump) {
-        //         const reader = new SavegameInterface_V1015(fakeLogger, data);
-        //         reader.migrateFrom1014();
-        //     }
-        //     data.version = 1015;
-        // }
+        if (data.version < 1000) {
+            return ExplainedResult.bad("Can not migrate savegame, too old");
+        }
         return ExplainedResult.good();
     }
 
@@ -218,7 +214,6 @@ export class Savegame extends ReadWriteProxy {
      * Updates the savegames metadata
      */
     saveMetadata() {
-        const reader = this.getDumpReader();
         this.metaDataRef.lastUpdate = new Date().getTime();
         this.metaDataRef.version = this.getCurrentVersion();
         return this.app.savegameMgr.writeAsync();

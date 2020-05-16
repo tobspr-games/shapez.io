@@ -67,10 +67,6 @@ export class PreloadState extends GameState {
             .then(() => this.setStatus("Creating platform wrapper"))
             .then(() => this.app.platformWrapper.initialize())
 
-            .then(() => this.setStatus("Initializing libraries"))
-            .then(() => this.app.analytics.initialize())
-            .then(() => this.app.gameAnalytics.initialize())
-
             .then(() => this.setStatus("Initializing local storage"))
             .then(() => {
                 const wrapper = this.app.platformWrapper;
@@ -94,6 +90,10 @@ export class PreloadState extends GameState {
             .then(() => {
                 return this.app.storage.initialize();
             })
+
+            .then(() => this.setStatus("Initializing libraries"))
+            .then(() => this.app.analytics.initialize())
+            .then(() => this.app.gameAnalytics.initialize())
 
             .then(() => this.setStatus("Initializing settings"))
             .then(() => {

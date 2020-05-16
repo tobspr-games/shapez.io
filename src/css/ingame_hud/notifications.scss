@@ -21,8 +21,8 @@
         }
 
         transform-origin: 100% 50%;
-
-        @include InlineAnimation(5s ease-in-out) {
+        opacity: 0;
+        @include InlineAnimation(3s ease-in-out) {
             0% {
                 opacity: 1;
             }

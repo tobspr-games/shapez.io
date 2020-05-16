@@ -13,7 +13,7 @@ import { round1Digit } from "./utils";
 
 const logger = createLogger("buffers");
 
-const bufferGcDurationSeconds = 3;
+const bufferGcDurationSeconds = 10;
 
 export class BufferMaintainer {
     /**

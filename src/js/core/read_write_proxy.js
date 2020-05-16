@@ -90,6 +90,35 @@ export class ReadWriteProxy {
     }
 
     /**
+     *
+     * @param {object} text
+     */
+    static deserializeObject(text) {
+        const decompressed = decompressX64(text.substr(compressionPrefix.length));
+        if (!decompressed) {
+            // LZ string decompression failure
+            throw new Error("bad-content / decompression-failed");
+        }
+        if (decompressed.length < 40) {
+            // String too short
+            throw new Error("bad-content / payload-too-small");
+        }
+
+        // Compare stored checksum with actual checksum
+        const checksum = decompressed.substring(0, 40);
+        const jsonString = decompressed.substr(40);
+        const desiredChecksum = sha1(jsonString + salt);
+        if (desiredChecksum !== checksum) {
+            // Checksum mismatch
+            throw new Error("bad-content / checksum-mismatch");
+        }
+
+        const parsed = JSON.parse(jsonString);
+        const decoded = decompressObject(parsed);
+        return decoded;
+    }
+
+    /**
      * Writes the data asychronously, fails if verify() fails
      * @returns {Promise<string>}
      */

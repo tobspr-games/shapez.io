@@ -24,6 +24,8 @@
             transition-property: opacity, transform;
             opacity: 0.9;
             @include S(margin-left, 5px);
+            position: relative;
+            @include IncreasedClickArea(0px);
 
             &:hover {
                 opacity: 0.8;
@@ -80,7 +82,7 @@
         border-radius: 0 0 #{D(4px)} #{D(4px)};
         @include S(padding-left, 30px);
         @include S(margin-right, 3px);
-        @include IncreasedClickArea(10px);
+        @include IncreasedClickArea(0px);
         @include ButtonText;
         @include S(min-height, 30px);
         transition: all 0.12s ease-in-out;

@@ -154,6 +154,22 @@ export class SavegameManager extends ReadWriteProxy {
         });
     }
 
+    importSavegame(data) {
+        const savegame = this.createNewSavegame();
+        const migrationResult = savegame.migrate(data);
+        if (migrationResult.isBad()) {
+            return Promise.reject("Failed to migrate: " + migrationResult.reason);
+        }
+
+        savegame.currentData = data;
+        const verification = savegame.verify(data);
+        if (verification.isBad()) {
+            return Promise.reject("Verification failed: " + verification.result);
+        }
+
+        return savegame.writeSavegameAndMetadata().then(() => this.sortSavegames());
+    }
+
     /**
      * Sorts all savegames by their creation time descending
      * @returns {Promise<any>}

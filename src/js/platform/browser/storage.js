@@ -20,6 +20,7 @@ export class StorageImplBrowser extends StorageInterface {
     }
 
     initialize() {
+        logger.error("Using localStorage, please update to a newer browser");
         return new Promise((resolve, reject) => {
             // Check for local storage availability in general
             if (!window.localStorage) {

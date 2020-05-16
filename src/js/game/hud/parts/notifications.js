@@ -8,6 +8,8 @@ export const enumNotificationType = {
     success: "success",
 };
 
+const notificationDuration = 3;
+
 export class HUDNotifications extends BaseHUDPart {
     createElements(parent) {
         this.element = makeDiv(parent, "ingame_HUD_Notifications", [], ``);
@@ -35,7 +37,7 @@ export class HUDNotifications extends BaseHUDPart {
 
         this.notificationElements.push({
             element,
-            expireAt: this.root.time.realtimeNow() + 5,
+            expireAt: this.root.time.realtimeNow() + notificationDuration,
         });
     }
 
