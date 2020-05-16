@@ -98,7 +98,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // Check if we have an empty queue and can start a new charge
             if (processorComp.itemsToEject.length === 0) {
-                if (processorComp.inputSlots.length === processorComp.inputsPerCharge) {
+                if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
                     this.startNewCharge(entity);
                 }
             }
@@ -133,11 +133,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         switch (processorComp.type) {
             // SPLITTER
             case enumItemProcessorTypes.splitter: {
-                let nextSlot = processorComp.nextOutputSlot++ % 2;
+                const availableSlots = entity.components.ItemEjector.slots.length;
+
+                let nextSlot = processorComp.nextOutputSlot++ % availableSlots;
                 for (let i = 0; i < items.length; ++i) {
                     outItems.push({
                         item: items[i].item,
-                        preferredSlot: (nextSlot + i) % 2,
+                        preferredSlot: (nextSlot + i) % availableSlots,
                     });
                 }
                 break;
@@ -255,7 +257,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // PAINTER (DOUBLE)
 
             case enumItemProcessorTypes.painterDouble: {
-                console.log("YUP");
                 const shapeItem1 = /** @type {ShapeItem} */ (itemsBySlot[0].item);
                 const shapeItem2 = /** @type {ShapeItem} */ (itemsBySlot[1].item);
                 const colorItem = /** @type {ColorItem} */ (itemsBySlot[2].item);
