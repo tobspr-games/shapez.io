@@ -72,6 +72,11 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 <code class="keybinding shift">ALT</code>
                 <label>Reverse orientation</label>
             </div>
+
+            <div class="binding placementOnly">
+                <code class="keybinding shift">CTRL</code>
+                <label>Disable auto orientation</label>
+            </div>
         ` +
                 (queryParamOptions.betaMode
                     ? `

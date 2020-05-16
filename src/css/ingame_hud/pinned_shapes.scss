@@ -1,7 +1,7 @@
 #ingame_HUD_PinnedShapes {
     position: absolute;
     @include S(left, 9px);
-    @include S(top, 120px);
+    @include S(top, 150px);
     @include PlainText;
     display: flex;
     flex-direction: column;

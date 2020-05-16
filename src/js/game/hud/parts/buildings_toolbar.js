@@ -57,24 +57,14 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
         const actionMapper = this.root.gameState.keyActionMapper;
 
         const items = makeDiv(this.element, null, ["buildings"]);
-        const iconSize = 32;
 
         for (let i = 0; i < toolbarBuildings.length; ++i) {
             const metaBuilding = gMetaBuildingRegistry.findByClass(toolbarBuildings[i]);
             const binding = actionMapper.getBinding("building_" + metaBuilding.getId());
 
-            const dimensions = metaBuilding.getDimensions();
             const itemContainer = makeDiv(items, null, ["building"]);
-            itemContainer.setAttribute("data-tilewidth", dimensions.x);
-            itemContainer.setAttribute("data-tileheight", dimensions.y);
+            itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
 
-            const label = makeDiv(itemContainer, null, ["label"]);
-            label.innerText = metaBuilding.getName();
-
-            const sprite = metaBuilding.getPreviewSprite(0);
-
-            const spriteWrapper = makeDiv(itemContainer, null, ["iconWrap"]);
-            spriteWrapper.innerHTML = sprite.getAsHTML(iconSize * dimensions.x, iconSize * dimensions.y);
             binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
             this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {

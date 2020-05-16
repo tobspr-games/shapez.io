@@ -118,13 +118,13 @@ export const tutorialGoals = [
 
     // Stacker
     {
-        shape: "CcCcRgRg",
+        shape: "CgScScCg",
         required: 3000,
         reward: enumHubGoalRewards.no_reward,
     },
 
     {
-        shape: "RgRgRgRg:CcCcCcCc",
+        shape: "RpRpRpRp:CcCcCcCc",
         required: 4000,
         reward: enumHubGoalRewards.no_reward,
     },

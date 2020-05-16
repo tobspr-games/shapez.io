@@ -4,6 +4,9 @@ import { MinerComponent } from "../components/miner";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { ShapeItem } from "../items/shape_item";
+import { enumDirectionToVector } from "../../core/vector";
+import { Entity } from "../entity";
+import { BaseItem } from "../base_item";
 
 export class MinerSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -19,33 +22,74 @@ export class MinerSystem extends GameSystemWithFilter {
             const staticComp = entity.components.StaticMapEntity;
             const ejectComp = entity.components.ItemEjector;
 
-            if (this.root.time.isIngameTimerExpired(minerComp.lastMiningTime, 1 / miningSpeed)) {
-                if (!ejectComp.canEjectOnSlot(0)) {
-                    // We can't eject further
+            // First, try to get rid of chained items
+            if (minerComp.itemChainBuffer.length > 0) {
+                if (this.tryPerformMinerEject(entity, minerComp.itemChainBuffer[0])) {
+                    minerComp.itemChainBuffer.shift();
                     continue;
                 }
+            }
 
-                // Actually mine
-                minerComp.lastMiningTime = this.root.time.now();
-
+            if (this.root.time.isIngameTimerExpired(minerComp.lastMiningTime, 1 / miningSpeed)) {
                 const lowerLayerItem = this.root.map.getLowerLayerContentXY(
                     staticComp.origin.x,
                     staticComp.origin.y
                 );
+
+                // TODO: Should not be required actually
                 if (!lowerLayerItem) {
                     // Nothing below;
                     continue;
                 }
 
-                // Analytics hook
-                this.root.signals.itemProduced.dispatch(lowerLayerItem);
+                if (this.tryPerformMinerEject(entity, lowerLayerItem)) {
+                    // Analytics hook
+                    this.root.signals.itemProduced.dispatch(lowerLayerItem);
 
-                // Try actually ejecting
-                if (!ejectComp.tryEject(0, lowerLayerItem)) {
-                    assert(false, "Failed to eject");
+                    // Actually mine
+                    minerComp.lastMiningTime = this.root.time.now();
                 }
             }
         }
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {BaseItem} item
+     */
+    tryPerformMinerEject(entity, item) {
+        const minerComp = entity.components.Miner;
+        const ejectComp = entity.components.ItemEjector;
+        const staticComp = entity.components.StaticMapEntity;
+
+        // Check if we are a chained miner
+        if (minerComp.chainable) {
+            const ejectingSlot = ejectComp.slots[0];
+            const ejectingPos = staticComp.localTileToWorld(ejectingSlot.pos);
+            const ejectingDirection = staticComp.localDirectionToWorld(ejectingSlot.direction);
+
+            const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
+            const targetContents = this.root.map.getTileContent(targetTile);
+
+            // Check if we are connected to another miner and thus do not eject directly
+            if (targetContents) {
+                const targetMinerComp = targetContents.components.Miner;
+                if (targetMinerComp) {
+                    if (targetMinerComp.tryAcceptChainedItem(item)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        // Seems we are a regular miner or at the end of a row, try actually ejecting
+        if (ejectComp.tryEject(0, item)) {
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -63,6 +63,10 @@ export class BeltSystem extends GameSystemWithFilter {
      * @param {Entity} entity
      */
     updateSurroundingBeltPlacement(entity) {
+        if (!this.root.gameInitialized) {
+            return;
+        }
+
         const staticComp = entity.components.StaticMapEntity;
         if (!staticComp) {
             return;

@@ -4,17 +4,27 @@ import { enumItemAcceptorItemFilter, ItemAcceptorComponent } from "../components
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { GameRoot } from "../root";
+
+/** @enum {string} */
+export const enumPainterVariants = { double: "double" };
 
 export class MetaPainterBuilding extends MetaBuilding {
     constructor() {
         super("painter");
     }
 
-    getDimensions() {
-        return new Vector(2, 1);
+    getDimensions(variant) {
+        switch (variant) {
+            case defaultBuildingVariant:
+                return new Vector(2, 1);
+            case enumPainterVariants.double:
+                return new Vector(2, 2);
+            default:
+                assertAlways(false, "Unknown painter variant: " + variant);
+        }
     }
 
     getName() {
@@ -29,6 +39,10 @@ export class MetaPainterBuilding extends MetaBuilding {
         return "#cd9b7d";
     }
 
+    getAvailableVariants(root) {
+        return [defaultBuildingVariant, enumPainterVariants.double];
+    }
+
     /**
      * @param {GameRoot} root
      */
@@ -41,16 +55,11 @@ export class MetaPainterBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        entity.addComponent(
-            new ItemProcessorComponent({
-                inputsPerCharge: 2,
-                processorType: enumItemProcessorTypes.painter,
-            })
-        );
+        entity.addComponent(new ItemProcessorComponent({}));
 
         entity.addComponent(
             new ItemEjectorComponent({
-                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+                slots: [{ pos: new Vector(1, 0), direction: enumDirection.right }],
             })
         );
         entity.addComponent(
@@ -58,16 +67,69 @@ export class MetaPainterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: [enumDirection.left],
                         filter: enumItemAcceptorItemFilter.shape,
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.bottom],
+                        directions: [enumDirection.top],
                         filter: enumItemAcceptorItemFilter.color,
                     },
                 ],
             })
         );
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {string} variant
+     */
+    updateVariant(entity, variant) {
+        switch (variant) {
+            case defaultBuildingVariant: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.left],
+                        filter: enumItemAcceptorItemFilter.shape,
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.top],
+                        filter: enumItemAcceptorItemFilter.color,
+                    },
+                ]);
+
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.painter;
+                entity.components.ItemProcessor.inputsPerCharge = 2;
+                break;
+            }
+            case enumPainterVariants.double: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.left],
+                        filter: enumItemAcceptorItemFilter.shape,
+                    },
+                    {
+                        pos: new Vector(0, 1),
+                        directions: [enumDirection.left],
+                        filter: enumItemAcceptorItemFilter.shape,
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.top],
+                        filter: enumItemAcceptorItemFilter.color,
+                    },
+                ]);
+
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.painterDouble;
+                entity.components.ItemProcessor.inputsPerCharge = 3;
+                break;
+            }
+            default:
+                assertAlways(false, "Unknown painter variant: " + variant);
+        }
     }
 }

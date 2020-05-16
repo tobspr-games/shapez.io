@@ -16,11 +16,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemProcessorComponent]);
 
-        this.sprites = {};
-        for (const key in enumItemProcessorTypes) {
-            this.sprites[key] = Loader.getSprite("sprites/buildings/" + key + ".png");
-        }
-
         this.underlayBeltSprites = [
             Loader.getSprite("sprites/belt/forward_0.png"),
             Loader.getSprite("sprites/belt/forward_1.png"),
@@ -121,6 +116,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const items = processorComp.inputSlots;
         processorComp.inputSlots = [];
 
+        /** @type {Object.<string, { item: BaseItem, sourceSlot: number }>} */
+        const itemsBySlot = {};
+        for (let i = 0; i < items.length; ++i) {
+            itemsBySlot[items[i].sourceSlot] = items[i];
+        }
+
         const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
         processorComp.secondsUntilEject = 1 / baseSpeed;
 
@@ -185,11 +186,9 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // STACKER
 
             case enumItemProcessorTypes.stacker: {
-                const item1 = items[0];
-                const item2 = items[1];
+                const lowerItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const upperItem = /** @type {ShapeItem} */ (itemsBySlot[1].item);
 
-                const lowerItem = /** @type {ShapeItem} */ (item1.sourceSlot === 0 ? item1.item : item2.item);
-                const upperItem = /** @type {ShapeItem} */ (item1.sourceSlot === 1 ? item1.item : item2.item);
                 assert(lowerItem instanceof ShapeItem, "Input for lower stack is not a shape");
                 assert(upperItem instanceof ShapeItem, "Input for upper stack is not a shape");
 
@@ -238,11 +237,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // PAINTER
 
             case enumItemProcessorTypes.painter: {
-                const item1 = items[0];
-                const item2 = items[1];
-
-                const shapeItem = /** @type {ShapeItem} */ (item1.sourceSlot === 0 ? item1.item : item2.item);
-                const colorItem = /** @type {ColorItem} */ (item1.sourceSlot === 1 ? item1.item : item2.item);
+                const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const colorItem = /** @type {ColorItem} */ (itemsBySlot[1].item);
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith(
                     shapeItem.definition,
@@ -251,6 +247,38 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 outItems.push({
                     item: new ShapeItem(colorizedDefinition),
+                });
+
+                break;
+            }
+
+            // PAINTER (DOUBLE)
+
+            case enumItemProcessorTypes.painterDouble: {
+                console.log("YUP");
+                const shapeItem1 = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const shapeItem2 = /** @type {ShapeItem} */ (itemsBySlot[1].item);
+                const colorItem = /** @type {ColorItem} */ (itemsBySlot[2].item);
+
+                assert(shapeItem1 instanceof ShapeItem, "Input for painter is not a shape");
+                assert(shapeItem2 instanceof ShapeItem, "Input for painter is not a shape");
+                assert(colorItem instanceof ColorItem, "Input for painter is not a color");
+
+                const colorizedDefinition1 = this.root.shapeDefinitionMgr.shapeActionPaintWith(
+                    shapeItem1.definition,
+                    colorItem.color
+                );
+
+                const colorizedDefinition2 = this.root.shapeDefinitionMgr.shapeActionPaintWith(
+                    shapeItem2.definition,
+                    colorItem.color
+                );
+                outItems.push({
+                    item: new ShapeItem(colorizedDefinition1),
+                });
+
+                outItems.push({
+                    item: new ShapeItem(colorizedDefinition2),
                 });
 
                 break;

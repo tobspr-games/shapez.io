@@ -5,12 +5,7 @@ import { Application } from "../../../application";
 import { SOUNDS } from "../../../platform/sound";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { BaseHUDPart } from "../base_hud_part";
-import {
-    Dialog,
-    DialogLoading,
-    DialogVideoTutorial,
-    DialogOptionChooser,
-} from "../../../core/modal_dialog_elements";
+import { Dialog, DialogLoading, DialogOptionChooser } from "../../../core/modal_dialog_elements";
 import { makeDiv } from "../../../core/utils";
 
 export class HUDModalDialogs extends BaseHUDPart {

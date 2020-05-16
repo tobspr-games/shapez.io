@@ -51,13 +51,14 @@ export class GameLogic {
      * @param {Vector} param0.origin
      * @param {number} param0.rotation
      * @param {number} param0.rotationVariant
+     * @param {string} param0.variant
      * @param {MetaBuilding} param0.building
      * @returns {boolean}
      */
-    isAreaFreeToBuild({ origin, rotation, rotationVariant, building }) {
+    isAreaFreeToBuild({ origin, rotation, rotationVariant, variant, building }) {
         const checker = new StaticMapEntityComponent({
             origin,
-            tileSize: building.getDimensions(),
+            tileSize: building.getDimensions(variant),
             rotation,
         });
 
@@ -122,16 +123,30 @@ export class GameLogic {
      * @param {Vector} param0.origin
      * @param {number} param0.rotation
      * @param {number} param0.rotationVariant
+     * @param {string} param0.variant
      * @param {MetaBuilding} param0.building
      */
-    checkCanPlaceBuilding({ origin, rotation, rotationVariant, building }) {
+    checkCanPlaceBuilding({ origin, rotation, rotationVariant, variant, building }) {
         if (!building.getIsUnlocked(this.root)) {
             return false;
         }
+
+        if (
+            !building.performAdditionalPlacementChecks(this.root, {
+                origin,
+                rotation,
+                rotationVariant,
+                variant,
+            })
+        ) {
+            return false;
+        }
+
         return this.isAreaFreeToBuild({
             origin,
             rotation,
             rotationVariant,
+            variant,
             building,
         });
     }
@@ -143,14 +158,15 @@ export class GameLogic {
      * @param {number} param0.rotation
      * @param {number} param0.originalRotation
      * @param {number} param0.rotationVariant
+     * @param {string} param0.variant
      * @param {MetaBuilding} param0.building
      */
-    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, building }) {
-        if (this.checkCanPlaceBuilding({ origin, rotation, rotationVariant, building })) {
+    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, variant, building }) {
+        if (this.checkCanPlaceBuilding({ origin, rotation, rotationVariant, variant, building })) {
             // Remove any removeable entities below
             const checker = new StaticMapEntityComponent({
                 origin,
-                tileSize: building.getDimensions(),
+                tileSize: building.getDimensions(variant),
                 rotation,
             });
 
@@ -174,6 +190,7 @@ export class GameLogic {
                 rotation,
                 rotationVariant,
                 originalRotation,
+                variant,
             });
 
             this.root.soundProxy.playUi(building.getPlacementSound());

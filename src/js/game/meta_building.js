@@ -6,6 +6,8 @@ import { Entity } from "./entity";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { SOUNDS } from "../platform/sound";
 
+export const defaultBuildingVariant = "default";
+
 export class MetaBuilding {
     /**
      *
@@ -25,7 +27,7 @@ export class MetaBuilding {
     /**
      * Should return the dimensions of the building
      */
-    getDimensions() {
+    getDimensions(variant = defaultBuildingVariant) {
         return new Vector(1, 1);
     }
 
@@ -60,8 +62,9 @@ export class MetaBuilding {
 
     /**
      * Whether to rotate automatically in the dragging direction while placing
+     * @param {string} variant
      */
-    getRotateAutomaticallyWhilePlacing() {
+    getRotateAutomaticallyWhilePlacing(variant) {
         return false;
     }
 
@@ -74,19 +77,36 @@ export class MetaBuilding {
     }
 
     /**
+     * @param {GameRoot} root
+     */
+    getAvailableVariants(root) {
+        return [defaultBuildingVariant];
+    }
+
+    /**
      * Returns a preview sprite
      * @returns {AtlasSprite}
      */
-    getPreviewSprite(rotationVariant = 0) {
-        return Loader.getSprite("sprites/buildings/" + this.id + ".png");
+    getPreviewSprite(rotationVariant = 0, variant = defaultBuildingVariant) {
+        return Loader.getSprite(
+            "sprites/buildings/" +
+                this.id +
+                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                ".png"
+        );
     }
 
     /**
      * Returns a sprite for blueprints
      * @returns {AtlasSprite}
      */
-    getBlueprintSprite(rotationVariant = 0) {
-        return Loader.getSprite("sprites/blueprints/" + this.id + ".png");
+    getBlueprintSprite(rotationVariant = 0, variant = defaultBuildingVariant) {
+        return Loader.getSprite(
+            "sprites/blueprints/" +
+                this.id +
+                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                ".png"
+        );
     }
 
     /**
@@ -113,29 +133,48 @@ export class MetaBuilding {
     }
 
     /**
+     * Should perform additional placement checks
+     * @param {GameRoot} root
+     * @param {object} param0
+     * @param {Vector} param0.origin
+     * @param {number} param0.rotation
+     * @param {number} param0.rotationVariant
+     * @param {string} param0.variant
+     */
+    performAdditionalPlacementChecks(root, { origin, rotation, rotationVariant, variant }) {
+        return true;
+    }
+
+    /**
      * Creates the entity at the given location
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.origin Origin tile
      * @param {number=} param0.rotation Rotation
-     * @param {number=} param0.originalRotation Original Rotation
-     * @param {number=} param0.rotationVariant Rotation variant
+     * @param {number} param0.originalRotation Original Rotation
+     * @param {number} param0.rotationVariant Rotation variant
+     * @param {string} param0.variant
      */
-    createAndPlaceEntity({ root, origin, rotation = 0, originalRotation = 0, rotationVariant = 0 }) {
+    createAndPlaceEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
         entity.addComponent(
             new StaticMapEntityComponent({
-                spriteKey: "sprites/buildings/" + this.id + ".png",
+                spriteKey:
+                    "sprites/buildings/" +
+                    this.id +
+                    (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                    ".png",
                 origin: new Vector(origin.x, origin.y),
                 rotation,
                 originalRotation,
-                tileSize: this.getDimensions().copy(),
+                tileSize: this.getDimensions(variant).copy(),
                 silhouetteColor: this.getSilhouetteColor(),
             })
         );
 
         this.setupEntityComponents(entity, root);
         this.updateRotationVariant(entity, rotationVariant);
+        this.updateVariant(entity, variant);
 
         root.map.placeStaticEntity(entity);
         root.entityMgr.registerEntity(entity);
@@ -168,6 +207,13 @@ export class MetaBuilding {
      * @param {number} rotationVariant
      */
     updateRotationVariant(entity, rotationVariant) {}
+
+    /**
+     * Should update the entity to match the given  variant
+     * @param {Entity} entity
+     * @param {string} variant
+     */
+    updateVariant(entity, variant) {}
 
     // PRIVATE INTERFACE
 

@@ -144,6 +144,15 @@
         width: 100%;
         box-sizing: border-box;
 
+        .browserWarning {
+            @include S(margin-bottom, 10px);
+            background-color: $colorRedBright;
+            @include PlainText;
+            color: #fff;
+            @include S(border-radius, 4px);
+            @include S(padding, 5px);
+        }
+
         .playButton {
             @include SuperHeading;
             @include S(width, 130px);

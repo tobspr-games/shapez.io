@@ -13,6 +13,7 @@ export const enumItemProcessorTypes = {
     trash: "trash",
     mixer: "mixer",
     painter: "painter",
+    painterDouble: "painterDouble",
     hub: "hub",
 };
 
@@ -60,12 +61,16 @@ export class ItemProcessorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {enumItemProcessorTypes} param0.processorType Which type of processor this is
-     * @param {number} param0.inputsPerCharge How many items this machine needs until it can start working
+     * @param {enumItemProcessorTypes=} param0.processorType Which type of processor this is
+     * @param {number=} param0.inputsPerCharge How many items this machine needs until it can start working
      * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.beltUnderlays Where to render belt underlays
      *
      */
-    constructor({ processorType = enumItemProcessorTypes.splitter, inputsPerCharge, beltUnderlays = [] }) {
+    constructor({
+        processorType = enumItemProcessorTypes.splitter,
+        inputsPerCharge = 1,
+        beltUnderlays = [],
+    }) {
         super();
 
         // Which slot to emit next, this is only a preference and if it can't emit

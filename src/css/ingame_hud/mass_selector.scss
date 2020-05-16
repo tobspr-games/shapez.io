@@ -8,8 +8,11 @@
     @include S(padding, 9px);
     @include PlainText;
     color: #fff;
+    display: flex;
+    align-items: center;
 
     .keybinding {
+        @include S(margin, 0, 4px);
         position: relative;
         top: unset;
         left: unset;

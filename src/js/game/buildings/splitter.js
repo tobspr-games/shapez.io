@@ -4,17 +4,27 @@ import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+
+/** @enum {string} */
+export const enumSplitterVariants = { compact: "compact" };
 
 export class MetaSplitterBuilding extends MetaBuilding {
     constructor() {
         super("splitter");
     }
 
-    getDimensions() {
-        return new Vector(2, 1);
+    getDimensions(variant) {
+        switch (variant) {
+            case defaultBuildingVariant:
+                return new Vector(2, 1);
+            case enumSplitterVariants.compact:
+                return new Vector(1, 1);
+            default:
+                assertAlways(false, "Unknown splitter variant: " + variant);
+        }
     }
 
     getName() {
@@ -27,6 +37,10 @@ export class MetaSplitterBuilding extends MetaBuilding {
 
     getDescription() {
         return "Multifunctional - Evenly distributes all inputs onto all outputs.";
+    }
+
+    getAvailableVariants(root) {
+        return [defaultBuildingVariant, enumSplitterVariants.compact];
     }
 
     /**
@@ -60,11 +74,6 @@ export class MetaSplitterBuilding extends MetaBuilding {
             new ItemProcessorComponent({
                 inputsPerCharge: 1,
                 processorType: enumItemProcessorTypes.splitter,
-
-                beltUnderlays: [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(1, 0), direction: enumDirection.top },
-                ],
             })
         );
 
@@ -76,5 +85,63 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 ],
             })
         );
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {string} variant
+     */
+    updateVariant(entity, variant) {
+        switch (variant) {
+            case defaultBuildingVariant: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                ]);
+
+                entity.components.ItemEjector.setSlots([
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                ]);
+
+                entity.components.ItemProcessor.beltUnderlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                ];
+
+                break;
+            }
+            case enumSplitterVariants.compact: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.right],
+                    },
+                ]);
+
+                entity.components.ItemEjector.setSlots([
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                ]);
+
+                entity.components.ItemProcessor.beltUnderlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                ];
+
+                break;
+            }
+            default:
+                assertAlways(false, "Unknown painter variant: " + variant);
+        }
     }
 }

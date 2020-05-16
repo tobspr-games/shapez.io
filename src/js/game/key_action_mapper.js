@@ -48,6 +48,8 @@ export const defaultKeybindings = {
         building_abort_placement: { keyCode: key("Q") },
 
         rotate_while_placing: { keyCode: key("R") },
+
+        cycle_variants: { keyCode: key("T") },
     },
 };
 

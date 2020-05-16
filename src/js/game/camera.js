@@ -44,7 +44,7 @@ export class Camera extends BasicSerializableObject {
         this.clampZoomLevel();
 
         /** @type {Vector} */
-        this.center = new Vector(0, 0);
+        this.center = new Vector(2 * globalConfig.tileSize, 2 * globalConfig.tileSize);
 
         // Input handling
         this.currentlyMoving = false;
@@ -150,8 +150,7 @@ export class Camera extends BasicSerializableObject {
      * Finds a good initial zoom level
      */
     findInitialZoom() {
-        return 3;
-        const desiredWorldSpaceWidth = 20 * globalConfig.tileSize;
+        const desiredWorldSpaceWidth = 15 * globalConfig.tileSize;
         const zoomLevelX = this.root.gameWidth / desiredWorldSpaceWidth;
         const zoomLevelY = this.root.gameHeight / desiredWorldSpaceWidth;
 
@@ -327,7 +326,11 @@ export class Camera extends BasicSerializableObject {
         mapper.getBinding("map_move_right").add(() => (this.keyboardForce.x = 1));
         mapper.getBinding("map_move_left").add(() => (this.keyboardForce.x = -1));
 
-        mapper.getBinding("center_map").add(() => (this.desiredCenter = new Vector(0, 0)));
+        mapper.getBinding("center_map").add(() => this.centerOnMap());
+    }
+
+    centerOnMap() {
+        this.desiredCenter = new Vector(0, 0);
     }
 
     /**

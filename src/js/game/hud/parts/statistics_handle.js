@@ -94,7 +94,7 @@ export class HUDShapeStatisticsHandle {
         if (displayMode === enumDisplayMode.detailed) {
             const graphDpi = globalConfig.statisticsGraphDpi;
 
-            const w = 300;
+            const w = 270;
             const h = 40;
 
             if (!this.graphCanvas) {
