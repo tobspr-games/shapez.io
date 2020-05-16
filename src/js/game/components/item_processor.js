@@ -118,11 +118,6 @@ export class ItemProcessorComponent extends Component {
      * @param {BaseItem} item
      */
     tryTakeItem(item, sourceSlot, sourceDirection) {
-        if (this.inputSlots.length >= this.inputsPerCharge) {
-            // Already full
-            return false;
-        }
-
         // Check that we only take one item per slot
         for (let i = 0; i < this.inputSlots.length; ++i) {
             const slot = this.inputSlots[i];
