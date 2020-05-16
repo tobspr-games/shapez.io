@@ -61,10 +61,12 @@
     @include S(bottom, 80px);
     display: grid;
     grid-auto-flow: row;
+    justify-items: start;
     @include S(grid-gap, 5px);
 
     .explanation {
-        @include PlainText;
+        text-transform: uppercase;
+        @include SuperSmallText;
         .keybinding {
             position: relative;
         }
@@ -73,9 +75,8 @@
     .variant {
         @include S(border-radius, 4px);
         background: rgba(0, 10, 20, 0.1);
-        display: grid;
+        display: flex;
         position: relative;
-        grid-template-columns: auto 1fr;
         align-items: center;
         @include S(padding, 5px);
         @include S(grid-gap, 10px);
@@ -110,9 +111,11 @@
         }
 
         .label {
+            display: none;
             grid-column: 2 / 3;
+            text-transform: uppercase;
             grid-row: 1 / 2;
-            @include PlainText;
+            @include SuperSmallText;
             color: #fff;
         }
     }
