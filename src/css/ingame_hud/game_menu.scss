@@ -1,7 +1,6 @@
 #ingame_HUD_GameMenu {
     position: absolute;
     top: 0;
-    left: calc(50% - #{D(50px)});
     right: 0;
     display: flex;
     grid-auto-flow: column;
@@ -12,6 +11,7 @@
         flex-grow: 1;
         @include S(padding, 5px, 4px);
         justify-content: flex-end;
+        @include S(margin-left, 20px);
 
         > .button {
             @include S(width, 30px);
