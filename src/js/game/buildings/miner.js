@@ -62,9 +62,10 @@ export class MetaMinerBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {*} variant
+     * @param {number} rotationVariant
+     * @param {string} variant
      */
-    updateVariant(entity, variant) {
+    updateVariants(entity, rotationVariant, variant) {
         entity.components.Miner.chainable = variant === enumMinerVariants.chainable;
     }
 }

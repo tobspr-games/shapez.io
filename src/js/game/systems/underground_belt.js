@@ -67,7 +67,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
                 for (
                     let searchOffset = 0;
-                    searchOffset < globalConfig.undergroundBeltMaxTiles;
+                    searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier];
                     ++searchOffset
                 ) {
                     currentTile = currentTile.add(searchVector);
@@ -75,7 +75,10 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                     const contents = this.root.map.getTileContent(currentTile);
                     if (contents) {
                         const receiverUndergroundComp = contents.components.UndergroundBelt;
-                        if (receiverUndergroundComp) {
+                        if (
+                            receiverUndergroundComp &&
+                            receiverUndergroundComp.tier === undergroundComp.tier
+                        ) {
                             const receiverStaticComp = contents.components.StaticMapEntity;
                             if (receiverStaticComp.rotation === targetRotation) {
                                 if (receiverUndergroundComp.mode === enumUndergroundBeltMode.receiver) {

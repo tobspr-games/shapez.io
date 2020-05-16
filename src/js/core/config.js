@@ -42,7 +42,7 @@ export const globalConfig = {
     itemSpacingOnBelts: 0.63,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
-    undergroundBeltMaxTiles: 5,
+    undergroundBeltMaxTilesByTier: [5, 8],
 
     buildingSpeeds: {
         cutter: 1 / 4,

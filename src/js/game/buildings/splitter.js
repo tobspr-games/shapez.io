@@ -90,9 +90,10 @@ export class MetaSplitterBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
+     * @param {number} rotationVariant
      * @param {string} variant
      */
-    updateVariant(entity, variant) {
+    updateVariants(entity, rotationVariant, variant) {
         switch (variant) {
             case defaultBuildingVariant: {
                 entity.components.ItemAcceptor.setSlots([

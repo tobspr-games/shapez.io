@@ -173,8 +173,7 @@ export class MetaBuilding {
         );
 
         this.setupEntityComponents(entity, root);
-        this.updateRotationVariant(entity, rotationVariant);
-        this.updateVariant(entity, variant);
+        this.updateVariants(entity, rotationVariant, variant);
 
         root.map.placeStaticEntity(entity);
         root.entityMgr.registerEntity(entity);
@@ -186,9 +185,10 @@ export class MetaBuilding {
      * @param {GameRoot} root
      * @param {Vector} tile
      * @param {number} rotation
+     * @param {string} variant
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation) {
+    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
         if (!this.isRotateable()) {
             return {
                 rotation: 0,
@@ -202,18 +202,12 @@ export class MetaBuilding {
     }
 
     /**
-     * Should update the entity to match the given rotation variant
+     * Should update the entity to match the given variants
      * @param {Entity} entity
      * @param {number} rotationVariant
-     */
-    updateRotationVariant(entity, rotationVariant) {}
-
-    /**
-     * Should update the entity to match the given  variant
-     * @param {Entity} entity
      * @param {string} variant
      */
-    updateVariant(entity, variant) {}
+    updateVariants(entity, rotationVariant, variant) {}
 
     // PRIVATE INTERFACE
 
