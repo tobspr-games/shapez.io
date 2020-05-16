@@ -77,7 +77,9 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
             spriteWrapper.innerHTML = sprite.getAsHTML(iconSize * dimensions.x, iconSize * dimensions.y);
             binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
-            this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {});
+            this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {
+                clickSound: null,
+            });
 
             this.buildingHandles[metaBuilding.id] = {
                 metaBuilding,
@@ -131,6 +133,7 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
             return;
         }
 
+        this.root.soundProxy.playUiClick();
         this.sigBuildingSelected.dispatch(metaBuilding);
         this.onSelectedPlacementBuildingChanged(metaBuilding);
     }
