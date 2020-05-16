@@ -30,5 +30,6 @@ export class BaseItem extends BasicSerializableObject {
 
     getBackgroundColorAsResource() {
         abstract;
+        return "";
     }
 }

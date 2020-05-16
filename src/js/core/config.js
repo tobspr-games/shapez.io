@@ -28,7 +28,8 @@ export const globalConfig = {
     physicsDeltaSeconds: 0,
 
     // Update physics at N fps, independent of rendering
-    physicsUpdateRate: 55,
+    // physicsUpdateRate: 55,
+    physicsUpdateRate: 120,
 
     // Map
     mapChunkSize: 32,
@@ -47,6 +48,7 @@ export const globalConfig = {
         cutter: 1 / 4,
         rotater: 1 / 1,
         painter: 1 / 3,
+        painterDouble: 1 / 3,
         mixer: 1 / 2,
         stacker: 1 / 5,
     },
@@ -71,7 +73,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        // fastGameEnter: true,
+        fastGameEnter: true,
         noArtificialDelays: true,
         // disableSavegameWrite: true,
         showEntityBounds: false,

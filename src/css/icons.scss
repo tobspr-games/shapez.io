@@ -1,23 +1,11 @@
-// $icons: ;
-
-// @each $icon in $icons {
-//     [data-icon="#{$icon}"] {
-//         background-image: uiResource("res/ui/#{$icon}");
-//     }
-// }
-
 $buildings: belt, cutter, miner, mixer, painter, rotater, splitter, stacker, trash, underground_belt;
 
 @each $building in $buildings {
     [data-icon="building_tutorials/#{$building}.png"] {
         background-image: uiResource("res/ui/building_tutorials/#{$building}.png") !important;
     }
-}
-
-$upgrades: belt, miner, painting, processors;
-@each $upgrade in $upgrades {
-    [data-icon="upgrades/#{$upgrade}.png"] {
-        background-image: uiResource("res/ui/upgrades/#{$upgrade}.png") !important;
+    [data-icon="building_icons/#{$building}.png"] {
+        background-image: uiResource("res/ui/building_icons/#{$building}.png") !important;
     }
 }
 

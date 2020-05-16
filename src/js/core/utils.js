@@ -750,15 +750,6 @@ export function checkTimerExpired(now, lastTick, tickRate) {
  * Returns if the game supports this browser
  */
 export function isSupportedBrowser() {
-    if (navigator.userAgent.toLowerCase().indexOf("firefox") >= 0) {
-        return true;
-    }
-
-    return isSupportedBrowserForMultiplayer();
-}
-
-// https://stackoverflow.com/questions/4565112/javascript-how-to-find-out-if-the-user-browser-is-chrome/13348618#13348618
-export function isSupportedBrowserForMultiplayer() {
     // please note,
     // that IE11 now returns undefined again for window.chrome
     // and new Opera 30 outputs true for window.chrome
@@ -776,7 +767,6 @@ export function isSupportedBrowserForMultiplayer() {
     var winNav = window.navigator;
     var vendorName = winNav.vendor;
     // @ts-ignore
-    var isOpera = typeof window.opr !== "undefined";
     var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
     var isIOSChrome = winNav.userAgent.match("CriOS");
 

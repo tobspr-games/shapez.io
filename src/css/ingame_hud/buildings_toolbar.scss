@@ -22,7 +22,7 @@
     .buildings {
         display: grid;
         grid-auto-flow: column;
-        @include S(padding, 0, 5px);
+        @include S(margin-bottom, 2px);
 
         .building {
             color: $accentColorDark;
@@ -33,19 +33,17 @@
             justify-content: center;
             @include S(padding, 5px);
             @include S(padding-bottom, 1px);
-            $buildingIconSize: 32px;
+            @include S(width, 35px);
+            @include S(height, 40px);
+
+            background: center center / 70% no-repeat;
 
             &:not(.unlocked) {
                 @include S(width, 30px);
-                .tooltip {
-                    display: none !important;
-                }
-                .keybinding,
-                .iconWrap {
-                    opacity: 0.01;
-                }
+                opacity: 0.8;
+                background-image: none !important;
+
                 &::before {
-                    opacity: 0.5;
                     content: " ";
                     background: uiResource("locked_building.png") center center / #{D(20px)} #{D(20px)}
                         no-repeat;
@@ -58,8 +56,10 @@
                 }
             }
 
+            @include S(border-radius, 4px);
+
             &.selected {
-                background: rgba(74, 163, 223, 0.3) !important;
+                background-color: rgba(74, 163, 223, 0.3) !important;
                 transform: scale(1.05);
                 .keybinding {
                     color: #111;
@@ -69,34 +69,10 @@
             pointer-events: all;
             transition: all 0.05s ease-in-out;
             transition-property: background-color, transform;
+
             &.unlocked:hover {
-                background: rgba($accentColorDark, 0.1);
+                background-color: rgba($accentColorDark, 0.1);
                 cursor: pointer;
-            }
-
-            .iconWrap {
-                position: relative;
-                @include S(width, $buildingIconSize);
-                @include S(height, $buildingIconSize);
-                @include S(margin-top, 3px);
-                @include S(margin-bottom, 6px);
-            }
-
-            .label {
-                @include SuperSmallText;
-                display: none;
-                font-weight: bold;
-                text-transform: uppercase;
-            }
-
-            &[data-tilewidth="2"] {
-                .iconWrap {
-                    @include S(width, 2 * $buildingIconSize);
-                }
-            }
-
-            &:last-child {
-                border: none;
             }
         }
     }

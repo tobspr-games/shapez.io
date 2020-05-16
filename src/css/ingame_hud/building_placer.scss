@@ -1,6 +1,6 @@
-#ingame_HUD_building_placer {
+#ingame_HUD_PlacementHints {
     position: fixed;
-    @include S(top, 40px);
+    @include S(top, 60px);
     @include S(right, 10px);
 
     display: grid;
@@ -52,5 +52,62 @@
 
     @include StyleBelowWidth(700px) {
         display: none !important;
+    }
+}
+
+#ingame_HUD_PlacerVariants {
+    position: absolute;
+    @include S(left, 10px);
+    @include S(bottom, 80px);
+    display: grid;
+    grid-auto-flow: row;
+    @include S(grid-gap, 5px);
+
+    .explanation {
+        @include PlainText;
+        .keybinding {
+            position: relative;
+        }
+    }
+
+    .variant {
+        @include S(border-radius, 4px);
+        background: rgba(0, 10, 20, 0.1);
+        display: grid;
+        position: relative;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        @include S(padding, 5px);
+        @include S(grid-gap, 10px);
+
+        &.active {
+            background-color: rgba(74, 163, 223, 0.6);
+        }
+
+        $iconSize: 25px;
+
+        .iconWrap {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            position: relative;
+            @include S(width, $iconSize);
+            @include S(height, $iconSize);
+            background: center center / contain no-repeat;
+
+            &[data-tile-w="2"] {
+                @include S(width, 2 * $iconSize);
+            }
+
+            &[data-tile-h="2"] {
+                @include S(height, 2 * $iconSize);
+            }
+        }
+
+        .label {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            @include PlainText;
+            color: #fff;
+        }
     }
 }

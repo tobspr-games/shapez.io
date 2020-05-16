@@ -5,8 +5,8 @@ import {
     makeDiv,
     formatSecondsToTimeAgo,
     generateFileDownload,
-    removeAllChildren,
     waitNextFrame,
+    isSupportedBrowser,
 } from "../core/utils";
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
@@ -61,6 +61,14 @@ export class MainMenuState extends GameState {
             `
             }    
                 <div class="mainContainer">
+            ${
+                isSupportedBrowser()
+                    ? ""
+                    : `
+                <div class="browserWarning">This game is optimized for Google Chrome. Your browser is not supported or slow!</div>
+            `
+            }
+
                     <button class="playButton styledButton">Play</button>
                     <button class="importButton styledButton">Import savegame</button>
                 </div>

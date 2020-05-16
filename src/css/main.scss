@@ -39,11 +39,32 @@
 @import "ingame_hud/notifications";
 @import "ingame_hud/settings_menu";
 
-// Z-Index
-$elements: ingame_Canvas, ingame_VignetteOverlay, ingame_HUD_building_placer, ingame_HUD_PinnedShapes,
-    ingame_HUD_buildings_toolbar, ingame_HUD_GameMenu, ingame_HUD_KeybindingOverlay, ingame_HUD_Notifications,
-    ingame_HUD_Shop, ingame_HUD_Statistics, ingame_HUD_BetaOverlay, ingame_HUD_MassSelector,
-    ingame_HUD_UnlockNotification, ingame_HUD_SettingsMenu;
+// prettier-ignore
+$elements: 
+// Base    
+ingame_Canvas,
+ingame_VignetteOverlay,
+
+// Ingame overlays
+ingame_HUD_PlacementHints,
+ingame_HUD_PlacerVariants,
+
+// Regular hud
+ingame_HUD_PinnedShapes,
+ingame_HUD_buildings_toolbar,
+ingame_HUD_GameMenu,
+ingame_HUD_KeybindingOverlay,
+ingame_HUD_MassSelector,
+ingame_HUD_Notifications,
+
+// Overlays
+ingame_HUD_BetaOverlay,
+
+// Dialogs
+ingame_HUD_Shop,
+ingame_HUD_Statistics,
+ingame_HUD_UnlockNotification,
+ingame_HUD_SettingsMenu;
 
 $zindex: 100;
 
@@ -57,7 +78,7 @@ $zindex: 100;
 
 body.uiHidden {
     #ingame_HUD_buildings_toolbar,
-    #ingame_HUD_building_placer,
+    #ingame_HUD_PlacementHints,
     #ingame_HUD_GameMenu,
     #ingame_HUD_MassSelector,
     #ingame_HUD_PinnedShapes,

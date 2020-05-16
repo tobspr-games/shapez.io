@@ -101,7 +101,7 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    @include S(width, 65px);
+                    @include S(width, 75px);
 
                     button.pin {
                         @include S(width, 12px);

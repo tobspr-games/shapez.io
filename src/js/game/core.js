@@ -31,6 +31,7 @@ import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
 import { ProductionAnalytics } from "./production_analytics";
 import { randomInt } from "../core/utils";
+import { defaultBuildingVariant } from "./meta_building";
 
 const logger = createLogger("ingame/core");
 
@@ -143,6 +144,7 @@ export class GameCore {
             rotation: 0,
             originalRotation: 0,
             rotationVariant: 0,
+            variant: defaultBuildingVariant,
         });
     }
 

@@ -148,11 +148,13 @@
                     grid-column: 3 / 4;
                     grid-row: 1 / 2;
                     @include Heading;
+                    align-self: center;
+                    text-align: right;
                     color: #55595a;
                 }
 
                 canvas.graph {
-                    @include S(width, 300px);
+                    @include S(width, 270px);
                     @include S(height, 40px);
                     @include S(border-radius, 0, 0, 2px, 2px);
                     $color: rgba(0, 10, 20, 0.04);

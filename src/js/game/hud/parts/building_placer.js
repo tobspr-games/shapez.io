@@ -1,5 +1,5 @@
 import { BaseHUDPart } from "../base_hud_part";
-import { MetaBuilding } from "../../meta_building";
+import { MetaBuilding, defaultBuildingVariant } from "../../meta_building";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { globalConfig } from "../../../core/config";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
@@ -10,7 +10,7 @@ import {
     enumInvertedDirections,
     enumDirectionToVector,
 } from "../../../core/vector";
-import { pulseAnimation, makeDiv } from "../../../core/utils";
+import { pulseAnimation, makeDiv, removeAllChildren } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { TrackedState } from "../../../core/tracked_state";
 import { Math_abs, Math_radians, Math_degrees } from "../../../core/builtins";
@@ -32,6 +32,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         keyActionMapper.getBinding("back").add(this.abortPlacement, this);
 
         keyActionMapper.getBinding("rotate_while_placing").add(this.tryRotate, this);
+        keyActionMapper.getBinding("cycle_variants").add(this.cycleVariants, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.element, {});
 
@@ -40,6 +41,15 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.root.camera.upPostHandler.add(this.abortDragging, this);
 
         this.currentlyDragging = false;
+        this.currentVariant = new TrackedState(this.rerenderVariants, this);
+
+        this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
+
+        /**
+         * Stores which variants for each building we prefer, this is based on what
+         * the user last selected
+         */
+        this.preferredVariants = {};
 
         /**
          * The tile we last dragged onto
@@ -55,7 +65,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     }
 
     createElements(parent) {
-        this.element = makeDiv(parent, "ingame_HUD_building_placer", [], ``);
+        this.element = makeDiv(parent, "ingame_HUD_PlacementHints", [], ``);
 
         this.buildingInfoElements = {};
         this.buildingInfoElements.label = makeDiv(this.element, null, ["buildingLabel"], "Extract");
@@ -63,6 +73,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.buildingInfoElements.descText = makeDiv(this.buildingInfoElements.desc, null, ["text"], "");
         this.buildingInfoElements.hotkey = makeDiv(this.buildingInfoElements.desc, null, ["hotkey"], "");
         this.buildingInfoElements.tutorialImage = makeDiv(this.element, null, ["buildingImage"]);
+
+        this.variantsElement = makeDiv(parent, "ingame_HUD_PlacerVariants");
     }
 
     abortPlacement() {
@@ -106,8 +118,17 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             const oldPos = this.lastDragTile;
             const newPos = this.root.camera.screenToWorld(pos).toTileSpace();
 
+            if (this.root.camera.desiredCenter) {
+                // Camera is moving
+                this.lastDragTile = newPos;
+                return;
+            }
+
             if (!oldPos.equals(newPos)) {
-                if (metaBuilding.getRotateAutomaticallyWhilePlacing()) {
+                if (
+                    metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
+                    !this.root.app.inputMgr.ctrlIsDown
+                ) {
                     const delta = newPos.sub(oldPos);
                     const angleDeg = Math_degrees(delta.angle());
                     this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
@@ -177,7 +198,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     }
 
     /**
-     *
      * @param {MetaBuilding} metaBuilding
      */
     onSelectedMetaBuildingChanged(metaBuilding) {
@@ -189,16 +209,18 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             const binding = this.root.gameState.keyActionMapper.getBinding(
                 "building_" + metaBuilding.getId()
             );
-
             this.buildingInfoElements.hotkey.innerHTML = "Hotkey: " + binding.getKeyCodeString();
 
+            const variant = this.preferredVariants[metaBuilding.getId()] || defaultBuildingVariant;
+            this.currentVariant.set(variant);
+
             this.fakeEntity = new Entity(null);
-            metaBuilding.setupEntityComponents(this.fakeEntity, null);
+            metaBuilding.setupEntityComponents(this.fakeEntity, null, variant);
             this.fakeEntity.addComponent(
                 new StaticMapEntityComponent({
                     origin: new Vector(0, 0),
                     rotation: 0,
-                    tileSize: metaBuilding.getDimensions().copy(),
+                    tileSize: metaBuilding.getDimensions(this.currentVariant.get()).copy(),
                 })
             );
 
@@ -209,6 +231,74 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         } else {
             this.currentlyDragging = false;
             this.fakeEntity = null;
+        }
+
+        // Since it depends on both, rerender twice
+        this.rerenderVariants();
+    }
+
+    rerenderVariants() {
+        removeAllChildren(this.variantsElement);
+
+        const metaBuilding = this.currentMetaBuilding.get();
+
+        if (!metaBuilding) {
+            return;
+        }
+        const availableVariants = metaBuilding.getAvailableVariants(this.root);
+        if (availableVariants.length === 1) {
+            return;
+        }
+
+        makeDiv(
+            this.variantsElement,
+            null,
+            ["explanation"],
+            `
+            Press <code class='keybinding'>${this.root.gameState.keyActionMapper
+                .getBinding("cycle_variants")
+                .getKeyCodeString()}</code> to cycle variants.
+        `
+        );
+
+        for (let i = 0; i < availableVariants.length; ++i) {
+            const variant = availableVariants[i];
+
+            const element = makeDiv(this.variantsElement, null, ["variant"]);
+            element.classList.toggle("active", variant === this.currentVariant.get());
+            makeDiv(element, null, ["label"], variant);
+
+            const iconSize = 64;
+
+            const dimensions = metaBuilding.getDimensions(variant);
+            const sprite = metaBuilding.getPreviewSprite(0, variant);
+            const spriteWrapper = makeDiv(element, null, ["iconWrap"]);
+            spriteWrapper.setAttribute("data-tile-w", dimensions.x);
+            spriteWrapper.setAttribute("data-tile-h", dimensions.y);
+
+            spriteWrapper.innerHTML = sprite.getAsHTML(iconSize * dimensions.x, iconSize * dimensions.y);
+        }
+    }
+
+    /**
+     * Cycles through the variants
+     */
+    cycleVariants() {
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (!metaBuilding) {
+            this.currentVariant.set(defaultBuildingVariant);
+        } else {
+            const availableVariants = metaBuilding.getAvailableVariants(this.root);
+            const index = availableVariants.indexOf(this.currentVariant.get());
+            assert(
+                index >= 0,
+                "Current variant was invalid: " + this.currentVariant.get() + " out of " + availableVariants
+            );
+            const newIndex = (index + 1) % availableVariants.length;
+            const newVariant = availableVariants[newIndex];
+            this.currentVariant.set(newVariant);
+
+            this.preferredVariants[metaBuilding.getId()] = newVariant;
         }
     }
 
@@ -290,6 +380,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 rotationVariant,
                 originalRotation: this.currentBaseRotation,
                 building: this.currentMetaBuilding.get(),
+                variant: this.currentVariant.get(),
             })
         ) {
             // Succesfully placed
@@ -317,10 +408,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         if (this.root.camera.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
             // Dont allow placing in overview mode
             this.domAttach.update(false);
+            this.variantsAttach.update(false);
             return;
         }
 
         this.domAttach.update(this.currentMetaBuilding.get());
+        this.variantsAttach.update(this.currentMetaBuilding.get());
         const metaBuilding = this.currentMetaBuilding.get();
 
         if (!metaBuilding) {
@@ -382,7 +475,9 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         const staticComp = this.fakeEntity.components.StaticMapEntity;
         staticComp.origin = tile;
         staticComp.rotation = rotation;
+        staticComp.tileSize = metaBuilding.getDimensions(this.currentVariant.get());
         metaBuilding.updateRotationVariant(this.fakeEntity, rotationVariant);
+        metaBuilding.updateVariant(this.fakeEntity, this.currentVariant.get());
 
         // Check if we could place the buildnig
         const canBuild = this.root.logic.checkCanPlaceBuilding({
@@ -390,6 +485,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             rotation,
             rotationVariant,
             building: metaBuilding,
+            variant: this.currentVariant.get(),
         });
 
         // Fade in / out
@@ -419,7 +515,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         parameters.context.globalAlpha = 1;
 
         // HACK to draw the entity sprite
-        const previewSprite = metaBuilding.getBlueprintSprite(rotationVariant);
+        const previewSprite = metaBuilding.getBlueprintSprite(rotationVariant, this.currentVariant.get());
         staticComp.origin = worldPos.divideScalar(globalConfig.tileSize).subScalars(0.5, 0.5);
         staticComp.drawSpriteOnFullEntityBounds(parameters, previewSprite);
         staticComp.origin = tile;
