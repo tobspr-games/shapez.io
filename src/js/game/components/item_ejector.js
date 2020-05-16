@@ -35,7 +35,7 @@ export class ItemEjectorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection}>} param0.slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.slots The slots to eject on
      * @param {boolean=} param0.instantEject If the ejection is instant
      */
     constructor({ slots = [], instantEject = false }) {

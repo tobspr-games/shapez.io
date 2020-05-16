@@ -483,4 +483,23 @@ export class ShapeDefinition extends BasicSerializableObject {
         }
         return new ShapeDefinition({ layers: newLayers });
     }
+
+    /**
+     * Clones the shape and colors everything in the given colors
+     * @param {[enumColors, enumColors, enumColors, enumColors]} colors
+     */
+    cloneAndPaintWith4Colors(colors) {
+        const newLayers = this.internalCloneLayers();
+
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
+                const item = quadrants[quadrantIndex];
+                if (item) {
+                    item.color = colors[quadrantIndex];
+                }
+            }
+        }
+        return new ShapeDefinition({ layers: newLayers });
+    }
 }

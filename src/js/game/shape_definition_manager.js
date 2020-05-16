@@ -70,6 +70,28 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     }
 
     /**
+     * Generates a definition for splitting a shape definition in four quads
+     * @param {ShapeDefinition} definition
+     * @returns {[ShapeDefinition, ShapeDefinition, ShapeDefinition, ShapeDefinition]}
+     */
+    shapeActionCutQuad(definition) {
+        const key = "cut-quad:" + definition.getHash();
+        if (this.operationCache[key]) {
+            return /** @type {[ShapeDefinition, ShapeDefinition, ShapeDefinition, ShapeDefinition]} */ (this
+                .operationCache[key]);
+        }
+
+        return /** @type {[ShapeDefinition, ShapeDefinition, ShapeDefinition, ShapeDefinition]} */ (this.operationCache[
+            key
+        ] = [
+            this.registerOrReturnHandle(definition.cloneFilteredByQuadrants([0])),
+            this.registerOrReturnHandle(definition.cloneFilteredByQuadrants([1])),
+            this.registerOrReturnHandle(definition.cloneFilteredByQuadrants([2])),
+            this.registerOrReturnHandle(definition.cloneFilteredByQuadrants([3])),
+        ]);
+    }
+
+    /**
      * Generates a definition for rotating a shape clockwise
      * @param {ShapeDefinition} definition
      * @returns {ShapeDefinition}
@@ -125,7 +147,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     /**
      * Generates a definition for painting it with the given color
      * @param {ShapeDefinition} definition
-     * @param {string} color
+     * @param {enumColors} color
      * @returns {ShapeDefinition}
      */
     shapeActionPaintWith(definition, color) {
@@ -134,6 +156,23 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
         const colorized = definition.cloneAndPaintWith(color);
+        return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
+            colorized
+        ));
+    }
+
+    /**
+     * Generates a definition for painting it with the 4 colors
+     * @param {ShapeDefinition} definition
+     * @param {[enumColors, enumColors, enumColors, enumColors]} colors
+     * @returns {ShapeDefinition}
+     */
+    shapeActionPaintWith4Colors(definition, colors) {
+        const key = "paint4:" + definition.getHash() + ":" + colors.join(",");
+        if (this.operationCache[key]) {
+            return /** @type {ShapeDefinition} */ (this.operationCache[key]);
+        }
+        const colorized = definition.cloneAndPaintWith4Colors(colors);
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
             colorized
         ));

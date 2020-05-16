@@ -8,6 +8,7 @@ import { gItemRegistry } from "../../core/global_registries";
 export const enumItemProcessorTypes = {
     splitter: "splitter",
     cutter: "cutter",
+    cutterQuad: "cutterQuad",
     rotater: "rotater",
     rotaterCCW: "rotaterCCW",
     stacker: "stacker",
@@ -15,6 +16,7 @@ export const enumItemProcessorTypes = {
     mixer: "mixer",
     painter: "painter",
     painterDouble: "painterDouble",
+    painterQuad: "painterQuad",
     hub: "hub",
 };
 
