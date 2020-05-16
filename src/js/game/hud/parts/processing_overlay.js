@@ -49,10 +49,6 @@ export class HUDProcessingOverlay extends BaseHUDPart {
             task();
             return;
         }
-        // if (name) {
-        //     console.warn("QUEUE", name);
-        // }
-
         task.__name = name;
         this.tasks.push(task);
     }
