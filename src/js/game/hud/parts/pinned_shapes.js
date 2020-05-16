@@ -18,6 +18,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
         this.rerenderFull();
 
         this.root.signals.storyGoalCompleted.add(this.rerenderFull, this);
+        this.root.signals.postLoadHook.add(this.rerenderFull, this);
         this.root.hud.signals.shapePinRequested.add(this.pinNewShape, this);
     }
 
