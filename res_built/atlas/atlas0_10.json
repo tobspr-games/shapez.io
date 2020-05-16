@@ -2,7 +2,7 @@
 
 "sprites/belt/forward_0.png":
 {
-	"frame": {"x":3,"y":267,"w":13,"h":13},
+	"frame": {"x":82,"y":87,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -10,7 +10,7 @@
 },
 "sprites/belt/forward_1.png":
 {
-	"frame": {"x":20,"y":267,"w":13,"h":13},
+	"frame": {"x":99,"y":107,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -18,7 +18,7 @@
 },
 "sprites/belt/forward_2.png":
 {
-	"frame": {"x":37,"y":267,"w":13,"h":13},
+	"frame": {"x":90,"y":128,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -26,7 +26,7 @@
 },
 "sprites/belt/forward_3.png":
 {
-	"frame": {"x":54,"y":267,"w":13,"h":13},
+	"frame": {"x":107,"y":124,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -34,7 +34,7 @@
 },
 "sprites/belt/forward_4.png":
 {
-	"frame": {"x":82,"y":87,"w":13,"h":13},
+	"frame": {"x":107,"y":141,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -42,7 +42,7 @@
 },
 "sprites/belt/forward_5.png":
 {
-	"frame": {"x":85,"y":127,"w":13,"h":13},
+	"frame": {"x":90,"y":145,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -50,7 +50,7 @@
 },
 "sprites/belt/left_0.png":
 {
-	"frame": {"x":102,"y":127,"w":13,"h":13},
+	"frame": {"x":107,"y":158,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -58,7 +58,7 @@
 },
 "sprites/belt/left_1.png":
 {
-	"frame": {"x":90,"y":144,"w":13,"h":13},
+	"frame": {"x":90,"y":162,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -66,7 +66,7 @@
 },
 "sprites/belt/left_2.png":
 {
-	"frame": {"x":107,"y":144,"w":13,"h":13},
+	"frame": {"x":107,"y":175,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -74,7 +74,7 @@
 },
 "sprites/belt/left_3.png":
 {
-	"frame": {"x":90,"y":161,"w":13,"h":13},
+	"frame": {"x":90,"y":179,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -82,7 +82,7 @@
 },
 "sprites/belt/left_4.png":
 {
-	"frame": {"x":107,"y":161,"w":13,"h":13},
+	"frame": {"x":107,"y":192,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -90,7 +90,7 @@
 },
 "sprites/belt/left_5.png":
 {
-	"frame": {"x":90,"y":178,"w":13,"h":13},
+	"frame": {"x":90,"y":196,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -98,7 +98,7 @@
 },
 "sprites/belt/right_0.png":
 {
-	"frame": {"x":107,"y":178,"w":13,"h":13},
+	"frame": {"x":107,"y":209,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -106,7 +106,7 @@
 },
 "sprites/belt/right_1.png":
 {
-	"frame": {"x":90,"y":195,"w":13,"h":13},
+	"frame": {"x":90,"y":213,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -114,7 +114,7 @@
 },
 "sprites/belt/right_2.png":
 {
-	"frame": {"x":107,"y":195,"w":13,"h":13},
+	"frame": {"x":107,"y":226,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -122,7 +122,7 @@
 },
 "sprites/belt/right_3.png":
 {
-	"frame": {"x":90,"y":212,"w":13,"h":13},
+	"frame": {"x":89,"y":230,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -130,7 +130,7 @@
 },
 "sprites/belt/right_4.png":
 {
-	"frame": {"x":107,"y":212,"w":13,"h":13},
+	"frame": {"x":89,"y":247,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -138,7 +138,7 @@
 },
 "sprites/belt/right_5.png":
 {
-	"frame": {"x":89,"y":229,"w":13,"h":13},
+	"frame": {"x":89,"y":264,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -146,7 +146,7 @@
 },
 "sprites/blueprints/belt_left.png":
 {
-	"frame": {"x":89,"y":246,"w":13,"h":13},
+	"frame": {"x":106,"y":243,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -154,7 +154,7 @@
 },
 "sprites/blueprints/belt_right.png":
 {
-	"frame": {"x":106,"y":229,"w":13,"h":13},
+	"frame": {"x":106,"y":260,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -162,7 +162,7 @@
 },
 "sprites/blueprints/belt_top.png":
 {
-	"frame": {"x":106,"y":246,"w":13,"h":13},
+	"frame": {"x":106,"y":277,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -186,7 +186,7 @@
 },
 "sprites/blueprints/miner.png":
 {
-	"frame": {"x":44,"y":152,"w":19,"h":19},
+	"frame": {"x":44,"y":129,"w":19,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":19},
@@ -215,6 +215,14 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":19},
 	"sourceSize": {"w":38,"h":19}
+},
+"sprites/blueprints/rotater-ccw.png":
+{
+	"frame": {"x":44,"y":152,"w":19,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":19},
+	"sourceSize": {"w":19,"h":19}
 },
 "sprites/blueprints/rotater.png":
 {
@@ -258,7 +266,7 @@
 },
 "sprites/blueprints/underground_belt_entry.png":
 {
-	"frame": {"x":66,"y":244,"w":19,"h":16},
+	"frame": {"x":66,"y":221,"w":19,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w":19,"h":16},
@@ -266,7 +274,7 @@
 },
 "sprites/blueprints/underground_belt_exit.png":
 {
-	"frame": {"x":71,"y":264,"w":19,"h":16},
+	"frame": {"x":66,"y":241,"w":19,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":16},
@@ -274,7 +282,7 @@
 },
 "sprites/buildings/belt_left.png":
 {
-	"frame": {"x":102,"y":127,"w":13,"h":13},
+	"frame": {"x":107,"y":158,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -282,7 +290,7 @@
 },
 "sprites/buildings/belt_right.png":
 {
-	"frame": {"x":107,"y":178,"w":13,"h":13},
+	"frame": {"x":107,"y":209,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -290,7 +298,7 @@
 },
 "sprites/buildings/belt_top.png":
 {
-	"frame": {"x":3,"y":267,"w":13,"h":13},
+	"frame": {"x":82,"y":87,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -298,7 +306,7 @@
 },
 "sprites/buildings/cutter.png":
 {
-	"frame": {"x":45,"y":106,"w":36,"h":19},
+	"frame": {"x":3,"y":267,"w":36,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":36,"h":19},
@@ -322,7 +330,7 @@
 },
 "sprites/buildings/miner.png":
 {
-	"frame": {"x":67,"y":152,"w":19,"h":19},
+	"frame": {"x":43,"y":267,"w":19,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":19},
@@ -352,9 +360,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":19},
 	"sourceSize": {"w":38,"h":19}
 },
+"sprites/buildings/rotater-ccw.png":
+{
+	"frame": {"x":67,"y":129,"w":19,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":19},
+	"sourceSize": {"w":19,"h":19}
+},
 "sprites/buildings/rotater.png":
 {
-	"frame": {"x":67,"y":175,"w":19,"h":19},
+	"frame": {"x":67,"y":152,"w":19,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":19},
@@ -362,7 +378,7 @@
 },
 "sprites/buildings/splitter-compact.png":
 {
-	"frame": {"x":67,"y":198,"w":19,"h":19},
+	"frame": {"x":67,"y":175,"w":19,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":19},
@@ -370,7 +386,7 @@
 },
 "sprites/buildings/splitter.png":
 {
-	"frame": {"x":44,"y":129,"w":36,"h":19},
+	"frame": {"x":45,"y":106,"w":36,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":36,"h":19},
@@ -386,7 +402,7 @@
 },
 "sprites/buildings/trash.png":
 {
-	"frame": {"x":66,"y":221,"w":19,"h":19},
+	"frame": {"x":67,"y":198,"w":19,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":19},
@@ -394,7 +410,7 @@
 },
 "sprites/buildings/underground_belt_entry.png":
 {
-	"frame": {"x":99,"y":87,"w":19,"h":16},
+	"frame": {"x":66,"y":261,"w":19,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w":19,"h":16},
@@ -402,7 +418,7 @@
 },
 "sprites/buildings/underground_belt_exit.png":
 {
-	"frame": {"x":85,"y":107,"w":19,"h":16},
+	"frame": {"x":99,"y":87,"w":19,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":16},
@@ -410,7 +426,7 @@
 },
 "sprites/debug/acceptor_slot.png":
 {
-	"frame": {"x":94,"y":263,"w":6,"h":6},
+	"frame": {"x":85,"y":118,"w":6,"h":6},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
@@ -418,7 +434,7 @@
 },
 "sprites/debug/ejector_slot.png":
 {
-	"frame": {"x":94,"y":273,"w":6,"h":6},
+	"frame": {"x":66,"y":281,"w":6,"h":6},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
@@ -442,7 +458,7 @@
 },
 "sprites/map_overview/belt_right.png":
 {
-	"frame": {"x":104,"y":263,"w":3,"h":3},
+	"frame": {"x":76,"y":281,"w":3,"h":3},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
@@ -466,7 +482,7 @@
 },
 "sprites/misc/slot_good_arrow.png":
 {
-	"frame": {"x":108,"y":107,"w":10,"h":10},
+	"frame": {"x":85,"y":104,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -477,8 +493,8 @@
 	"version": "1.0",
 	"image": "atlas0_10.png",
 	"format": "RGBA8888",
-	"size": {"w":123,"h":283},
+	"size": {"w":123,"h":293},
 	"scale": "0.1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6bbb930c45842ab25fd7b4d0666970df:8136d6133729b6b3c4b0493e3ec8693f:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1a28e62a074b0346c536cb875a4fbda8:3d5d3842157667ebdb6e61f7cb9abd01:f159918d23e5952766c6d23ab52278c6$"
 }
 }

@@ -75,12 +75,30 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     shapeActionRotateCW(definition) {
-        const key = "rotate:" + definition.getHash();
+        const key = "rotate-cw:" + definition.getHash();
         if (this.operationCache[key]) {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
 
         const rotated = definition.cloneRotateCW();
+
+        return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
+            rotated
+        ));
+    }
+
+    /**
+     * Generates a definition for rotating a shape counter clockwise
+     * @param {ShapeDefinition} definition
+     * @returns {ShapeDefinition}
+     */
+    shapeActionRotateCCW(definition) {
+        const key = "rotate-ccw:" + definition.getHash();
+        if (this.operationCache[key]) {
+            return /** @type {ShapeDefinition} */ (this.operationCache[key]);
+        }
+
+        const rotated = definition.cloneRotateCCW();
 
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
             rotated

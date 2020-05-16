@@ -4,9 +4,12 @@ import { ItemAcceptorComponent, enumItemAcceptorItemFilter } from "../components
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { GameRoot } from "../root";
+
+/** @enum {string} */
+export const enumRotaterVariants = { ccw: "ccw" };
 
 export class MetaRotaterBuilding extends MetaBuilding {
     constructor() {
@@ -23,6 +26,10 @@ export class MetaRotaterBuilding extends MetaBuilding {
 
     getSilhouetteColor() {
         return "#7dc6cd";
+    }
+
+    getAvailableVariants(root) {
+        return [defaultBuildingVariant, enumRotaterVariants.ccw];
     }
 
     /**
@@ -60,5 +67,25 @@ export class MetaRotaterBuilding extends MetaBuilding {
                 ],
             })
         );
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {string} variant
+     */
+    updateVariant(entity, variant) {
+        switch (variant) {
+            case defaultBuildingVariant: {
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater;
+                break;
+            }
+            case enumRotaterVariants.ccw: {
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
+                break;
+            }
+            default:
+                assertAlways(false, "Unknown rotater variant: " + variant);
+        }
     }
 }
