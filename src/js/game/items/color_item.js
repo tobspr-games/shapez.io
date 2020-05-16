@@ -24,7 +24,7 @@ export class ColorItem extends BaseItem {
     }
 
     /**
-     * @param {string} color
+     * @param {enumColors} color
      */
     constructor(color) {
         super();

@@ -151,22 +151,37 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
                 const inputDefinition = inputItem.definition;
 
-                const [cutDefinition1, cutDefinition2] = this.root.shapeDefinitionMgr.shapeActionCutHalf(
-                    inputDefinition
-                );
+                const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutHalf(inputDefinition);
 
-                if (!cutDefinition1.isEntirelyEmpty()) {
-                    outItems.push({
-                        item: new ShapeItem(cutDefinition1),
-                        requiredSlot: 0,
-                    });
+                for (let i = 0; i < cutDefinitions.length; ++i) {
+                    const definition = cutDefinitions[i];
+                    if (!definition.isEntirelyEmpty()) {
+                        outItems.push({
+                            item: new ShapeItem(definition),
+                            requiredSlot: i,
+                        });
+                    }
                 }
 
-                if (!cutDefinition2.isEntirelyEmpty()) {
-                    outItems.push({
-                        item: new ShapeItem(cutDefinition2),
-                        requiredSlot: 1,
-                    });
+                break;
+            }
+
+            // CUTTER (Quad)
+            case enumItemProcessorTypes.cutterQuad: {
+                const inputItem = /** @type {ShapeItem} */ (items[0].item);
+                assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
+                const inputDefinition = inputItem.definition;
+
+                const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutQuad(inputDefinition);
+
+                for (let i = 0; i < cutDefinitions.length; ++i) {
+                    const definition = cutDefinitions[i];
+                    if (!definition.isEntirelyEmpty()) {
+                        outItems.push({
+                            item: new ShapeItem(definition),
+                            requiredSlot: i,
+                        });
+                    }
                 }
 
                 break;
@@ -293,6 +308,33 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 outItems.push({
                     item: new ShapeItem(colorizedDefinition2),
+                });
+
+                break;
+            }
+
+            // PAINTER (QUAD)
+
+            case enumItemProcessorTypes.painterQuad: {
+                const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const colorItem1 = /** @type {ColorItem} */ (itemsBySlot[1].item);
+                const colorItem2 = /** @type {ColorItem} */ (itemsBySlot[2].item);
+                const colorItem3 = /** @type {ColorItem} */ (itemsBySlot[3].item);
+                const colorItem4 = /** @type {ColorItem} */ (itemsBySlot[4].item);
+
+                assert(shapeItem instanceof ShapeItem, "Input for painter is not a shape");
+                assert(colorItem1 instanceof ColorItem, "Input for painter is not a color");
+                assert(colorItem2 instanceof ColorItem, "Input for painter is not a color");
+                assert(colorItem3 instanceof ColorItem, "Input for painter is not a color");
+                assert(colorItem4 instanceof ColorItem, "Input for painter is not a color");
+
+                const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
+                    shapeItem.definition,
+                    [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color]
+                );
+
+                outItems.push({
+                    item: new ShapeItem(colorizedDefinition),
                 });
 
                 break;

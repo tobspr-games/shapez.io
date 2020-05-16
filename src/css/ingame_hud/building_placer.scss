@@ -97,6 +97,12 @@
             &[data-tile-w="2"] {
                 @include S(width, 2 * $iconSize);
             }
+            &[data-tile-w="3"] {
+                @include S(width, 3 * $iconSize);
+            }
+            &[data-tile-w="4"] {
+                @include S(width, 4 * $iconSize);
+            }
 
             &[data-tile-h="2"] {
                 @include S(height, 2 * $iconSize);

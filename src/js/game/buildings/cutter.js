@@ -4,9 +4,12 @@ import { enumItemAcceptorItemFilter, ItemAcceptorComponent } from "../components
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+
+/** @enum {string} */
+export const enumCutterVariants = { quad: "quad" };
 
 export class MetaCutterBuilding extends MetaBuilding {
     constructor() {
@@ -16,9 +19,15 @@ export class MetaCutterBuilding extends MetaBuilding {
     getSilhouetteColor() {
         return "#7dcda2";
     }
-
-    getDimensions() {
-        return new Vector(2, 1);
+    getDimensions(variant) {
+        switch (variant) {
+            case defaultBuildingVariant:
+                return new Vector(2, 1);
+            case enumCutterVariants.quad:
+                return new Vector(4, 1);
+            default:
+                assertAlways(false, "Unknown splitter variant: " + variant);
+        }
     }
 
     getName() {
@@ -27,6 +36,10 @@ export class MetaCutterBuilding extends MetaBuilding {
 
     getDescription() {
         return "Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>";
+    }
+
+    getAvailableVariants(root) {
+        return [defaultBuildingVariant, enumCutterVariants.quad];
     }
 
     /**
@@ -47,15 +60,7 @@ export class MetaCutterBuilding extends MetaBuilding {
                 processorType: enumItemProcessorTypes.cutter,
             })
         );
-
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(1, 0), direction: enumDirection.top },
-                ],
-            })
-        );
+        entity.addComponent(new ItemEjectorComponent({}));
         entity.addComponent(
             new ItemAcceptorComponent({
                 slots: [
@@ -67,5 +72,37 @@ export class MetaCutterBuilding extends MetaBuilding {
                 ],
             })
         );
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {number} rotationVariant
+     * @param {string} variant
+     */
+    updateVariants(entity, rotationVariant, variant) {
+        switch (variant) {
+            case defaultBuildingVariant: {
+                entity.components.ItemEjector.setSlots([
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                ]);
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.cutter;
+                break;
+            }
+            case enumCutterVariants.quad: {
+                entity.components.ItemEjector.setSlots([
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                    { pos: new Vector(2, 0), direction: enumDirection.top },
+                    { pos: new Vector(3, 0), direction: enumDirection.top },
+                ]);
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.cutterQuad;
+                break;
+            }
+
+            default:
+                assertAlways(false, "Unknown painter variant: " + variant);
+        }
     }
 }
