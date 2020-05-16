@@ -61,7 +61,7 @@ export class HUDMassSelector extends BaseHUDPart {
      */
     onBack() {
         // Clear entities on escape
-        if (this.entityUidsMarkedForDeletion) {
+        if (this.entityUidsMarkedForDeletion.size > 0) {
             this.entityUidsMarkedForDeletion = new Set();
             return STOP_PROPAGATION;
         }

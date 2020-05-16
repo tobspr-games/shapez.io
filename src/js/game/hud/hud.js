@@ -20,6 +20,7 @@ import { MetaBuilding } from "../meta_building";
 import { HUDPinnedShapes } from "./parts/pinned_shapes";
 import { ShapeDefinition } from "../shape_definition";
 import { HUDNotifications, enumNotificationType } from "./parts/notifications";
+import { HUDSettingsMenu } from "./parts/settings_menu";
 
 export class GameHUD {
     /**
@@ -53,6 +54,7 @@ export class GameHUD {
             pinnedShapes: new HUDPinnedShapes(this.root),
 
             notifications: new HUDNotifications(this.root),
+            settingsMenu: new HUDSettingsMenu(this.root),
 
             // betaOverlay: new HUDBetaOverlay(this.root),
         };

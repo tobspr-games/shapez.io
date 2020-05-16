@@ -30,6 +30,7 @@ import { GameAnalyticsInterface } from "./platform/game_analytics";
 import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 import { queryParamOptions } from "./core/query_parameters";
 import { NoGameAnalytics } from "./platform/browser/no_game_analytics";
+import { StorageImplBrowserIndexedDB } from "./platform/browser/storage_indexed_db";
 
 const logger = createLogger("application");
 
@@ -119,7 +120,12 @@ export class Application {
 
         // Start with empty ad provider
         this.adProvider = new NoAdProvider(this);
-        this.storage = new StorageImplBrowser(this);
+
+        if (window.indexedDB) {
+            this.storage = new StorageImplBrowserIndexedDB(this);
+        } else {
+            this.storage = new StorageImplBrowser(this);
+        }
         this.sound = new SoundImplBrowser(this);
         this.platformWrapper = new PlatformWrapperImplBrowser(this);
         this.analytics = new GoogleAnalyticsImpl(this);

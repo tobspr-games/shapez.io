@@ -1,0 +1,32 @@
+#ingame_HUD_SettingsMenu {
+    .timePlayed {
+        position: absolute;
+        @include S(left, 30px);
+        @include S(bottom, 30px);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        strong {
+            text-transform: uppercase;
+            @include PlainText;
+        }
+
+        span {
+            @include Heading;
+        }
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .buttons {
+        display: grid;
+        grid-auto-flow: row;
+        @include S(grid-gap, 10px);
+        background: rgba(0, 10, 20, 0.1);
+        @include S(padding, 20px);
+        @include S(border-radius, 2px);
+    }
+}

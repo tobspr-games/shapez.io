@@ -1,4 +1,8 @@
 #ingame_HUD_Statistics {
+    .content {
+        @include S(width, 500px);
+    }
+
     .filterHeader {
         display: grid;
         grid-template-columns: auto 1fr;

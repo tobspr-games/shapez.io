@@ -668,9 +668,11 @@ export function makeButton(parent, classes = [], innerHTML = "") {
  * @param {Element} elem
  */
 export function removeAllChildren(elem) {
-    var range = document.createRange();
-    range.selectNodeContents(elem);
-    range.deleteContents();
+    if (elem) {
+        var range = document.createRange();
+        range.selectNodeContents(elem);
+        range.deleteContents();
+    }
 }
 
 export function smartFadeNumber(current, newOne, minFade = 0.01, maxFade = 0.9) {

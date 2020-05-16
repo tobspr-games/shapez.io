@@ -71,6 +71,7 @@ export class HUDGameMenu extends BaseHUDPart {
         this.trackClicks(this.musicButton, this.toggleMusic);
         this.trackClicks(this.sfxButton, this.toggleSfx);
         this.trackClicks(this.saveButton, this.startSave);
+        this.trackClicks(this.settingsButton, this.openSettings);
 
         this.musicButton.classList.toggle("muted", this.root.app.settings.getAllSettings().musicMuted);
         this.sfxButton.classList.toggle("muted", this.root.app.settings.getAllSettings().soundsMuted);
@@ -115,6 +116,10 @@ export class HUDGameMenu extends BaseHUDPart {
 
     startSave() {
         this.root.gameState.doSave();
+    }
+
+    openSettings() {
+        this.root.hud.parts.settingsMenu.show();
     }
 
     toggleMusic() {

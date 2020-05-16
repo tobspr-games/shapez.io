@@ -22,9 +22,15 @@
         opacity: 0;
     }
 
+    &.loadingDialog {
+        * {
+            color: #fff;
+        }
+    }
+
     > .dialogInner {
         background: #fff;
-        @include S(min-width, 500px);
+        @include S(min-width, 300px);
         max-width: calc(100vw - #{D(40px)});
         max-height: calc(100vh - #{D(40px)});
         @include S(border-radius, 4px);
@@ -59,6 +65,28 @@
         > .content {
             overflow-y: auto;
             pointer-events: all;
+        }
+
+        > .buttons {
+            @include S(margin-top, 15px);
+            display: flex;
+            justify-content: flex-end;
+            > button {
+                @include S(margin-left, 8px);
+                @include Text;
+                @include S(min-width, 60px);
+                @include S(padding, 5px, 15px);
+
+                &.good {
+                    background-color: $colorGreenBright;
+                    color: #fff;
+                }
+
+                &.bad {
+                    background-color: $colorRedBright;
+                    color: #fff;
+                }
+            }
         }
     }
 }
