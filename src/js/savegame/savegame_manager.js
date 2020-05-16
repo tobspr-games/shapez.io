@@ -161,7 +161,7 @@ export class SavegameManager extends ReadWriteProxy {
     sortSavegames() {
         this.currentData.savegames.sort((a, b) => b.lastUpdate - a.lastUpdate);
         let promiseChain = Promise.resolve();
-        while (this.currentData.savegames.length > 100) {
+        while (this.currentData.savegames.length > 30) {
             const toRemove = this.currentData.savegames.pop();
 
             // Try to remove the savegame since its no longer available
@@ -200,7 +200,7 @@ export class SavegameManager extends ReadWriteProxy {
             if (G_IS_DEV && globalConfig.debug.disableSavegameWrite) {
                 return Promise.resolve();
             }
-            return this.writeAsync();
+            return this.sortSavegames().then(() => this.writeAsync());
         });
     }
 }
