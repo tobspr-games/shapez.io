@@ -269,6 +269,11 @@ module.exports = ({
                     test: /\.md$/,
                     use: ["html-loader", "markdown-loader"],
                 },
+                {
+                    test: /\.ya?ml$/,
+                    type: "json", // Required by Webpack v4
+                    use: "yaml-loader",
+                },
             ],
         },
     };

@@ -29,7 +29,7 @@ export const defaultKeybindings = {
         menu_open_shop: { keyCode: key("F") },
         menu_open_stats: { keyCode: key("G") },
 
-        confirm_mass_delete: { keyCode: 46 }, // DEL
+        confirm_mass_delete: { keyCode: key("X") }, // DEL
         toggle_hud: { keyCode: 113 }, // F2
     },
 

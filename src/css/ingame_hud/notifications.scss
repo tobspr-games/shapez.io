@@ -1,0 +1,44 @@
+#ingame_HUD_Notifications {
+    position: absolute;
+    @include S(bottom, 60px);
+    @include S(right, 10px);
+
+    .notification {
+        background: rgba(#333438, 0.8);
+        @include S(border-radius, 2px);
+        @include S(margin-top, 3px);
+        color: #fff;
+        @include PlainText;
+        @include S(padding, 7px, 10px);
+        @include S(width, 200px);
+
+        &[data-icon] {
+            @include S(background-position-x, 8px);
+            background-position-y: center;
+            @include S(padding-left, 35px);
+            background-repeat: no-repeat;
+            @include S(background-size, 15px);
+        }
+
+        transform-origin: 100% 50%;
+
+        @include InlineAnimation(5s ease-in-out) {
+            0% {
+                opacity: 1;
+            }
+
+            87% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            95% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+    }
+}

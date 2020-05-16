@@ -1,6 +1,7 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, randomInt } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
+import { enumNotificationType } from "./notifications";
 
 export class HUDGameMenu extends BaseHUDPart {
     initialize() {}
@@ -14,6 +15,10 @@ export class HUDGameMenu extends BaseHUDPart {
                 handler: () => this.root.hud.parts.shop.show(),
                 keybinding: "menu_open_shop",
                 badge: () => this.root.hubGoals.getAvailableUpgradeCount(),
+                notification: /** @type {[string, enumNotificationType]} */ ([
+                    "A new upgrade is available!",
+                    enumNotificationType.upgrade,
+                ]),
             },
             {
                 id: "stats",
@@ -23,10 +28,16 @@ export class HUDGameMenu extends BaseHUDPart {
             },
         ];
 
-        /** @type {Array<{ badge: function, button: HTMLElement, badgeElement: HTMLElement, lastRenderAmount: number }>} */
+        /** @type {Array<{
+         * badge: function,
+         * button: HTMLElement,
+         * badgeElement: HTMLElement,
+         * lastRenderAmount: number,
+         * notification: [string, enumNotificationType]
+         * }>} */
         this.badgesToUpdate = [];
 
-        buttons.forEach(({ id, label, handler, keybinding, badge }) => {
+        buttons.forEach(({ id, label, handler, keybinding, badge, notification }) => {
             const button = document.createElement("button");
             button.setAttribute("data-button-id", id);
             this.element.appendChild(button);
@@ -45,6 +56,7 @@ export class HUDGameMenu extends BaseHUDPart {
                     lastRenderAmount: 0,
                     button,
                     badgeElement,
+                    notification,
                 });
             }
         });
@@ -68,8 +80,9 @@ export class HUDGameMenu extends BaseHUDPart {
 
     update() {
         let playSound = false;
+        let notifications = new Set();
         for (let i = 0; i < this.badgesToUpdate.length; ++i) {
-            const { badge, button, badgeElement, lastRenderAmount } = this.badgesToUpdate[i];
+            const { badge, button, badgeElement, lastRenderAmount, notification } = this.badgesToUpdate[i];
             const amount = badge();
             if (lastRenderAmount !== amount) {
                 if (amount > 0) {
@@ -78,6 +91,9 @@ export class HUDGameMenu extends BaseHUDPart {
                 // Check if the badge increased
                 if (amount > lastRenderAmount) {
                     playSound = true;
+                    if (notification) {
+                        notifications.add(notification);
+                    }
                 }
                 this.badgesToUpdate[i].lastRenderAmount = amount;
                 button.classList.toggle("hasBadge", amount > 0);
@@ -87,6 +103,9 @@ export class HUDGameMenu extends BaseHUDPart {
         if (playSound) {
             this.root.soundProxy.playUi(SOUNDS.badgeNotification);
         }
+        notifications.forEach(([notification, type]) => {
+            this.root.hud.signals.notification.dispatch(notification, type);
+        });
     }
 
     onGameSaved() {

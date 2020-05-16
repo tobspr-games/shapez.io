@@ -253,36 +253,7 @@ button,
 }
 
 @mixin TextShadow3D($color: rgb(222, 234, 238), $borderColor: #000) {
-    // @if $borderColor != #000 {
-    //   @include TextShadow3DImpl($color: $color, $borderColor: $borderColor);
-    // }
     color: $color;
-}
-
-@mixin TextShadow3DImpl(
-    $color: rgb(222, 234, 238),
-    $scale: 1,
-    $additionalShadowAlpha: 1,
-    $borderColor: #222428
-) {
-    // color: $text3dColor;
-
-    $borderColor: rgba(15, 18, 23, 0.9);
-
-    // $shadowColor: darken($color, 40%);
-
-    $border: 0.07em;
-    $borderMid: $border * 1.14;
-
-    $drop1: $borderMid + 0.02;
-    $drop2: $borderMid + 0.06em;
-
-    // text-shadow: #{$border} #{$border} 0 $borderColor, #{-$border} #{$border} 0 $borderColor, #{$border} #{-$border} 0 $borderColor,
-    //     #{-$border} #{-$border} 0 $borderColor, 0 #{$borderMid} 0 $borderColor, 0 #{-$borderMid} 0 $borderColor,
-    //     #{$borderMid} 0 0 $borderColor, #{-$borderMid} 0 0 $borderColor, 0 #{$drop1} 0 $borderColor, #{$borderMid} #{$drop1} 0 $borderColor,
-    //     #{-$borderMid} #{$drop1} 0 $borderColor, 0 #{$drop2} 0 $borderColor, #{$borderMid} #{$drop2} 0 $borderColor,
-    //     #{-$borderMid} #{$drop2} 0 $borderColor, -0.2em 0.13em 0 rgba(#111, 0.25); // 0px 0.07em 0px $shadowColor,
-    // 0px 0.15em 0.09em rgba(#333539, $additionalShadowAlpha);;
 }
 
 // ----------------------------------------

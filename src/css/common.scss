@@ -87,11 +87,6 @@ body {
     // }
 }
 
-// Dirty hack
-* {
-    @include TextShadow3DImpl;
-}
-
 img {
     -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
 }

@@ -36,11 +36,13 @@
 @import "ingame_hud/vignette_overlay";
 @import "ingame_hud/statistics";
 @import "ingame_hud/pinned_shapes";
+@import "ingame_hud/notifications";
 
 // Z-Index
 $elements: ingame_Canvas, ingame_VignetteOverlay, ingame_HUD_building_placer, ingame_HUD_PinnedShapes,
-    ingame_HUD_buildings_toolbar, ingame_HUD_GameMenu, ingame_HUD_KeybindingOverlay, ingame_HUD_Shop,
-    ingame_HUD_Statistics, ingame_HUD_BetaOverlay, ingame_HUD_MassSelector, ingame_HUD_UnlockNotification;
+    ingame_HUD_buildings_toolbar, ingame_HUD_GameMenu, ingame_HUD_KeybindingOverlay, ingame_HUD_Notifications,
+    ingame_HUD_Shop, ingame_HUD_Statistics, ingame_HUD_BetaOverlay, ingame_HUD_MassSelector,
+    ingame_HUD_UnlockNotification;
 
 $zindex: 100;
 
