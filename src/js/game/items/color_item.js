@@ -4,13 +4,7 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { enumColors, enumColorsToHexCode } from "../colors";
-
-/** @enum {string} */
-const enumColorToMapBackground = {
-    [enumColors.red]: "#ffbfc1",
-    [enumColors.green]: "#cbffc4",
-    [enumColors.blue]: "#bfdaff",
-};
+import { THEME } from "../theme";
 
 export class ColorItem extends BaseItem {
     static getId() {
@@ -39,7 +33,7 @@ export class ColorItem extends BaseItem {
     }
 
     getBackgroundColorAsResource() {
-        return enumColorToMapBackground[this.color];
+        return THEME.map.resources[this.color];
     }
 
     /**
@@ -75,8 +69,8 @@ export class ColorItem extends BaseItem {
         context.scale((dpi * w) / 12, (dpi * h) / 12);
 
         context.fillStyle = enumColorsToHexCode[this.color];
-        context.strokeStyle = "rgba(100,102, 110, 1)";
-        context.lineWidth = 2;
+        context.strokeStyle = THEME.items.outline;
+        context.lineWidth = 2 * THEME.items.outlineWidth;
         context.beginCircle(2, -1, 3);
         context.stroke();
         context.fill();

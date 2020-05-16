@@ -4,6 +4,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { BaseMap } from "./map";
 import { freeCanvas, makeOffscreenBuffer } from "../core/buffer_utils";
 import { Entity } from "./entity";
+import { THEME } from "./theme";
 
 /**
  * This is the view of the map, it extends the map which is the raw model and allows
@@ -16,7 +17,7 @@ export class MapView extends BaseMap {
         /**
          * DPI of the background cache images, required in some places
          */
-        this.backgroundCacheDPI = 4;
+        this.backgroundCacheDPI = 2;
 
         /**
          * The cached background sprite, containing the flat background
@@ -109,14 +110,16 @@ export class MapView extends BaseMap {
         });
         context.scale(dpi, dpi);
 
-        context.fillStyle = "#fff";
+        context.fillStyle = THEME.map.background;
         context.fillRect(0, 0, dims, dims);
 
-        context.fillStyle = "#fafafa";
-        context.fillRect(0, 0, dims, 1);
-        context.fillRect(0, 0, 1, dims);
-        context.fillRect(dims - 1, 0, 1, dims);
-        context.fillRect(0, dims - 1, dims, 1);
+        const borderWidth = THEME.map.gridLineWidth;
+        context.fillStyle = THEME.map.grid;
+        context.fillRect(0, 0, dims, borderWidth);
+        context.fillRect(0, borderWidth, borderWidth, dims);
+
+        context.fillRect(dims - borderWidth, borderWidth, borderWidth, dims - 2 * borderWidth);
+        context.fillRect(borderWidth, dims - borderWidth, dims, borderWidth);
 
         this.cachedBackgroundCanvas = canvas;
         this.cachedBackgroundContext = context;

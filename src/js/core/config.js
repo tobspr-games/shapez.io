@@ -37,7 +37,7 @@ export const globalConfig = {
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
-    beltSpeedItemsPerSecond: 1,
+    beltSpeedItemsPerSecond: 10,
     itemSpacingOnBelts: 0.63,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
@@ -71,7 +71,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        // fastGameEnter: true,
+        fastGameEnter: true,
         noArtificialDelays: true,
         // disableSavegameWrite: true,
         showEntityBounds: false,

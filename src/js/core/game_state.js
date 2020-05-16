@@ -252,7 +252,7 @@ export class GameState {
      * @returns {string|null}
      */
     getThemeMusic() {
-        return null;
+        return MUSIC.menu;
     }
 
     ////////////////////

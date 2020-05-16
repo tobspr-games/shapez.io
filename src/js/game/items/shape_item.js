@@ -2,6 +2,7 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { ShapeDefinition } from "../shape_definition";
+import { THEME } from "../theme";
 
 export class ShapeItem extends BaseItem {
     static getId() {
@@ -31,6 +32,10 @@ export class ShapeItem extends BaseItem {
          * This property must not be modified on runtime, you have to clone the class in order to change the definition
          */
         this.definition = definition;
+    }
+
+    getBackgroundColorAsResource() {
+        return THEME.map.resources.shape;
     }
 
     /**
