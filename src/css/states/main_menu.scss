@@ -37,7 +37,7 @@
 
     .mainWrapper {
         display: grid;
-        grid-template-columns: 1fr auto 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         @include S(padding, 0, 10px);
         align-items: center;
         justify-items: center;
@@ -55,6 +55,7 @@
 
             strong {
                 font-weight: bold;
+                @include S(margin, 0, 4px);
             }
 
             h3 {
@@ -133,13 +134,14 @@
     .mainContainer {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         flex-direction: column;
         background: #fafafa;
         @include S(padding, 20px);
         @include S(border-radius, 4px);
         // border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
         height: 100%;
+        width: 100%;
         box-sizing: border-box;
 
         .playButton {

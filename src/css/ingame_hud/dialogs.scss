@@ -11,6 +11,16 @@
     align-items: center;
     justify-content: center;
 
+    @include InlineAnimation(0.12s ease-in-out) {
+        0% {
+            background-color: transparent;
+            opacity: 0.5;
+        }
+        100% {
+            background-color: $modalDialogBg;
+        }
+    }
+
     &.visible {
         .dialogInner {
             opacity: 1;
