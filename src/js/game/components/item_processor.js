@@ -9,6 +9,7 @@ export const enumItemProcessorTypes = {
     splitter: "splitter",
     cutter: "cutter",
     rotater: "rotater",
+    rotaterCCW: "rotaterCCW",
     stacker: "stacker",
     trash: "trash",
     mixer: "mixer",

@@ -175,10 +175,23 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // ROTATER
             case enumItemProcessorTypes.rotater: {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);
-                assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
+                assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
                 const inputDefinition = inputItem.definition;
 
                 const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCW(inputDefinition);
+                outItems.push({
+                    item: new ShapeItem(rotatedDefinition),
+                });
+                break;
+            }
+
+            // ROTATER ( CCW)
+            case enumItemProcessorTypes.rotaterCCW: {
+                const inputItem = /** @type {ShapeItem} */ (items[0].item);
+                assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
+                const inputDefinition = inputItem.definition;
+
+                const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCCW(inputDefinition);
                 outItems.push({
                     item: new ShapeItem(rotatedDefinition),
                 });

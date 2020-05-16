@@ -394,6 +394,20 @@ export class ShapeDefinition extends BasicSerializableObject {
     }
 
     /**
+     * Returns a definition which was rotated counter clockwise
+     * @returns {ShapeDefinition}
+     */
+    cloneRotateCCW() {
+        const newLayers = this.internalCloneLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            quadrants.push(quadrants[0]);
+            quadrants.shift();
+        }
+        return new ShapeDefinition({ layers: newLayers });
+    }
+
+    /**
      * Stacks the given shape definition on top.
      * @param {ShapeDefinition} definition
      */

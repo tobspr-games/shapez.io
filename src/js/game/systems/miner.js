@@ -3,7 +3,6 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { MinerComponent } from "../components/miner";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
-import { ShapeItem } from "../items/shape_item";
 import { enumDirectionToVector } from "../../core/vector";
 import { Entity } from "../entity";
 import { BaseItem } from "../base_item";
@@ -20,7 +19,6 @@ export class MinerSystem extends GameSystemWithFilter {
 
             const minerComp = entity.components.Miner;
             const staticComp = entity.components.StaticMapEntity;
-            const ejectComp = entity.components.ItemEjector;
 
             // First, try to get rid of chained items
             if (minerComp.itemChainBuffer.length > 0) {
