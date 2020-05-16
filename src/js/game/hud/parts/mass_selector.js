@@ -13,13 +13,18 @@ const logger = createLogger("hud/mass_selector");
 
 export class HUDMassSelector extends BaseHUDPart {
     createElements(parent) {
+        const removalKeybinding = this.root.gameState.keyActionMapper
+            .getBinding("confirm_mass_delete")
+            .getKeyCodeString();
+        const abortKeybinding = this.root.gameState.keyActionMapper.getBinding("back").getKeyCodeString();
+
         this.element = makeDiv(
             parent,
             "ingame_HUD_MassSelector",
             [],
             `
-            Press <code class="keybinding">DEL</code> to remove selected buildings
-            and <code class="keybinding">ESC</code> to cancel.
+            Press <code class="keybinding">${removalKeybinding}</code> to remove selected buildings
+            and <code class="keybinding">${abortKeybinding}</code> to cancel.
         `
         );
     }

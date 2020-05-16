@@ -108,6 +108,11 @@ module.exports = ({ watch = false, standalone = false }) => {
                         },
                     },
                 },
+                {
+                    test: /\.ya?ml$/,
+                    type: "json", // Required by Webpack v4
+                    use: "yaml-loader",
+                },
             ],
         },
         output: {

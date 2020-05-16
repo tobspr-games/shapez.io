@@ -20,3 +20,10 @@ $upgrades: belt, miner, painting, processors;
         background-image: uiResource("res/ui/upgrades/#{$upgrade}.png") !important;
     }
 }
+
+$icons: notification_saved, notification_success, notification_upgrade;
+@each $icon in $icons {
+    [data-icon="icons/#{$icon}.png"] {
+        background-image: uiResource("res/ui/icons/#{$icon}.png") !important;
+    }
+}
