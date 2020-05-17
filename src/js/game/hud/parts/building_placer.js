@@ -17,6 +17,7 @@ import { Math_abs, Math_radians, Math_degrees } from "../../../core/builtins";
 import { Loader } from "../../../core/loader";
 import { drawRotatedSprite } from "../../../core/draw_utils";
 import { Entity } from "../../entity";
+import { enumMouseButton } from "../../camera";
 
 export class HUDBuildingPlacer extends BaseHUDPart {
     initialize() {
@@ -44,6 +45,11 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.currentVariant = new TrackedState(this.rerenderVariants, this);
 
         this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
+
+        /**
+         * Whether we are currently drag-deleting
+         */
+        this.currentlyDeleting = false;
 
         /**
          * Stores which variants for each building we prefer, this is based on what
@@ -87,19 +93,31 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     /**
      * mouse down pre handler
      * @param {Vector} pos
+     * @param {enumMouseButton} button
      */
-    onMouseDown(pos) {
+    onMouseDown(pos, button) {
         if (this.root.camera.getIsMapOverlayActive()) {
             return;
         }
 
-        if (this.currentMetaBuilding.get()) {
+        // Placement
+        if (button === enumMouseButton.left && this.currentMetaBuilding.get()) {
             this.currentlyDragging = true;
+            this.currentlyDeleting = false;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
 
             // Place initial building
             this.tryPlaceCurrentBuildingAt(this.lastDragTile);
 
+            return STOP_PROPAGATION;
+        }
+
+        // Deletion
+        if (button === enumMouseButton.right && !this.currentMetaBuilding.get()) {
+            this.currentlyDragging = true;
+            this.currentlyDeleting = true;
+            this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
+            this.currentMetaBuilding.set(null);
             return STOP_PROPAGATION;
         }
     }
@@ -114,7 +132,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         }
 
         const metaBuilding = this.currentMetaBuilding.get();
-        if (metaBuilding && this.lastDragTile) {
+        if ((metaBuilding || this.currentlyDeleting) && this.lastDragTile) {
             const oldPos = this.lastDragTile;
             const newPos = this.root.camera.screenToWorld(pos).toTileSpace();
 
@@ -126,6 +144,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
             if (!oldPos.equals(newPos)) {
                 if (
+                    metaBuilding &&
                     metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
                     !this.root.app.inputMgr.ctrlIsDown
                 ) {
@@ -152,8 +171,15 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 var sy = y0 < y1 ? 1 : -1;
                 var err = dx - dy;
 
-                while (this.currentMetaBuilding.get()) {
-                    this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
+                while (this.currentlyDeleting || this.currentMetaBuilding.get()) {
+                    if (this.currentlyDeleting) {
+                        const contents = this.root.map.getTileContentXY(x0, y0);
+                        if (contents && !contents.queuedForDestroy && !contents.destroyed) {
+                            this.root.logic.tryDeleteBuilding(contents);
+                        }
+                    } else {
+                        this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
+                    }
                     if (x0 === x1 && y0 === y1) break;
                     var e2 = 2 * err;
                     if (e2 > -dy) {
@@ -186,6 +212,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
      */
     abortDragging() {
         this.currentlyDragging = true;
+        this.currentlyDeleting = false;
         this.lastDragTile = null;
     }
 
@@ -201,6 +228,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
      * @param {MetaBuilding} metaBuilding
      */
     onSelectedMetaBuildingChanged(metaBuilding) {
+        this.abortDragging();
         this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
         if (metaBuilding) {
             this.buildingInfoElements.label.innerHTML = metaBuilding.getName();
@@ -215,7 +243,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             this.currentVariant.set(variant);
 
             this.fakeEntity = new Entity(null);
-            metaBuilding.setupEntityComponents(this.fakeEntity, null, variant);
+            metaBuilding.setupEntityComponents(this.fakeEntity, null);
+
             this.fakeEntity.addComponent(
                 new StaticMapEntityComponent({
                     origin: new Vector(0, 0),
@@ -223,13 +252,13 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                     tileSize: metaBuilding.getDimensions(this.currentVariant.get()).copy(),
                 })
             );
+            metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
 
             this.buildingInfoElements.tutorialImage.setAttribute(
                 "data-icon",
                 "building_tutorials/" + metaBuilding.getId() + ".png"
             );
         } else {
-            this.currentlyDragging = false;
             this.fakeEntity = null;
         }
 

@@ -1,5 +1,11 @@
 /* eslint-disable */
 
+const nodeVersion = process.versions.node.split(".")[0];
+if (nodeVersion !== "10") {
+    console.error("This cli requires exactly Node 10. You are using node " + nodeVersion);
+    process.exit(1);
+}
+
 require("colors");
 
 const gulp = require("gulp");

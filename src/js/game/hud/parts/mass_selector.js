@@ -8,6 +8,7 @@ import { globalConfig } from "../../../core/config";
 import { makeDiv } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { createLogger } from "../../../core/logging";
+import { enumMouseButton } from "../../camera";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -82,9 +83,14 @@ export class HUDMassSelector extends BaseHUDPart {
     /**
      * mouse down pre handler
      * @param {Vector} pos
+     * @param {enumMouseButton} mouseButton
      */
-    onMouseDown(pos) {
+    onMouseDown(pos, mouseButton) {
         if (!this.root.app.inputMgr.ctrlIsDown) {
+            return;
+        }
+
+        if (mouseButton !== enumMouseButton.left) {
             return;
         }
 

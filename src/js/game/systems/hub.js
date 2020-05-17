@@ -4,10 +4,13 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { Entity } from "../entity";
 import { formatBigNumber } from "../../core/utils";
 import { enumHubGoalRewardToString } from "../tutorial_goals";
+import { Loader } from "../../core/loader";
 
 export class HubSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [HubComponent]);
+
+        this.hubSprite = Loader.getSprite("sprites/buildings/hub.png");
     }
 
     draw(parameters) {
@@ -39,6 +42,9 @@ export class HubSystem extends GameSystemWithFilter {
         const staticComp = entity.components.StaticMapEntity;
 
         const pos = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+
+        // Background
+        staticComp.drawSpriteOnFullEntityBounds(parameters, this.hubSprite, 2.2);
 
         const definition = this.root.hubGoals.currentGoal.definition;
 

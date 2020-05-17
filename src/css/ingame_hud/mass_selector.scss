@@ -3,20 +3,21 @@
     @include S(top, 50px);
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(#f77, 0.8);
-    @include S(border-radius, 4px);
-    @include S(padding, 9px);
-    @include PlainText;
+    background: rgba(lighten(#f77, 5), 0.95);
+    @include S(border-radius, 2px);
+    @include S(padding, 6px, 10px);
+    @include SuperSmallText;
     color: #fff;
-    display: flex;
-    align-items: center;
+    // color: #f77;
 
     .keybinding {
+        vertical-align: middle;
         @include S(margin, 0, 4px);
         position: relative;
         top: unset;
         left: unset;
         right: unset;
         bottom: unset;
+        @include S(margin-top, -2px);
     }
 }

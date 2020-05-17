@@ -72,14 +72,12 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                if (
-                    this.tryPassOverItem(
-                        ejectingItem,
-                        targetEntity,
+                if (this.tryPassOverItem(ejectingItem, targetEntity, matchingSlot.index)) {
+                    targetAcceptorComp.onItemAccepted(
                         matchingSlot.index,
-                        matchingSlot.acceptedDirection
-                    )
-                ) {
+                        matchingSlot.acceptedDirection,
+                        ejectingItem
+                    );
                     ejectorSlot.item = null;
                     continue;
                 }
@@ -92,9 +90,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
      * @param {BaseItem} item
      * @param {Entity} receiver
      * @param {number} slotIndex
-     * @param {string} localDirection
      */
-    tryPassOverItem(item, receiver, slotIndex, localDirection) {
+    tryPassOverItem(item, receiver, slotIndex) {
         // Try figuring out how what to do with the item
         // TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
         // Also its just a few cases (hope it stays like this .. :x).
@@ -102,8 +99,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         const beltComp = receiver.components.Belt;
         if (beltComp) {
             // Ayy, its a belt!
-            if (beltComp.canAcceptNewItem(localDirection)) {
-                beltComp.takeNewItem(item, localDirection);
+            if (beltComp.canAcceptNewItem()) {
+                beltComp.takeNewItem(item);
                 return true;
             }
         }
@@ -111,7 +108,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         const itemProcessorComp = receiver.components.ItemProcessor;
         if (itemProcessorComp) {
             // Its an item processor ..
-            if (itemProcessorComp.tryTakeItem(item, slotIndex, localDirection)) {
+            if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
                 return true;
             }
         }

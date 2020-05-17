@@ -199,10 +199,10 @@ declare class TypedTrackedState<T> {
 declare const STOP_PROPAGATION = "stop_propagation";
 
 declare interface TypedSignal<T extends Array<any>> {
-    add(receiver: (...args: T) => typeof STOP_PROPAGATION | void, scope?: object);
-    remove(receiver: (...args: T) => typeof STOP_PROPAGATION | void);
+    add(receiver: (...args: T) => /* STOP_PROPAGATION */ string | void, scope?: object);
+    remove(receiver: (...args: T) => /* STOP_PROPAGATION */ string | void);
 
-    dispatch(...args: T): typeof STOP_PROPAGATION | void;
+    dispatch(...args: T): /* STOP_PROPAGATION */ string | void;
 
     removeAll();
 }

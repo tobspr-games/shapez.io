@@ -398,10 +398,10 @@ export class GameCore {
         // systems.mapResources.draw(params);
 
         if (!this.root.camera.getIsMapOverlayActive()) {
-            systems.itemProcessor.drawUnderlays(params);
+            systems.itemAcceptor.drawUnderlays(params);
             systems.belt.draw(params);
             systems.itemEjector.draw(params);
-            systems.itemProcessor.draw(params);
+            systems.itemAcceptor.draw(params);
         }
 
         root.map.drawForeground(params);

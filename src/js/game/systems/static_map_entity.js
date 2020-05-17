@@ -26,7 +26,6 @@ export class StaticMapEntitySystem extends GameSystem {
             return;
         }
 
-        const drawEntitiesOutside = parameters.zoomLevel < globalConfig.mapChunkPrerenderMinZoom;
         const drawOutlinesOnly = parameters.zoomLevel < globalConfig.mapChunkOverviewMinZoom;
 
         const contents = chunk.contents;
@@ -54,17 +53,8 @@ export class StaticMapEntitySystem extends GameSystem {
                     } else {
                         const spriteKey = staticComp.spriteKey;
                         if (spriteKey) {
-                            // Check if origin is contained to avoid drawing entities multiple times
-                            if (
-                                drawEntitiesOutside ||
-                                (staticComp.origin.x >= chunk.tileX &&
-                                    staticComp.origin.x < chunk.tileX + globalConfig.mapChunkSize &&
-                                    staticComp.origin.y >= chunk.tileY &&
-                                    staticComp.origin.y < chunk.tileY + globalConfig.mapChunkSize)
-                            ) {
-                                const sprite = Loader.getSprite(spriteKey);
-                                staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2, false);
-                            }
+                            const sprite = Loader.getSprite(spriteKey);
+                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2, false);
                         }
                     }
                 }
