@@ -90,7 +90,7 @@ export const globalConfig = {
         allBuildingsUnlocked: true,
         upgradesNoCost: true,
         disableUnlockDialog: false,
-        testTranslations: true,
+        // testTranslations: true,
         /* dev:end */
     },
 

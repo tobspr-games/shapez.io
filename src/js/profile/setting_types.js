@@ -3,6 +3,7 @@ import { Application } from "../application";
 /* typehints:end */
 
 import { createLogger } from "../core/logging";
+import { T } from "../translations";
 
 const logger = createLogger("setting_types");
 
@@ -63,8 +64,8 @@ export class BaseSetting {
 
     showRestartRequiredDialog() {
         const { restart } = this.dialogs.showInfo(
-            "Restart required",
-            "You need to restart the game to apply the settings.",
+            T.dialogs.restartRequired.title,
+            T.dialogs.restartRequired.text,
             this.app.platformWrapper.getSupportsRestart() ? ["later:grey", "restart:misc"] : ["ok:good"]
         );
         if (restart) {
@@ -113,11 +114,11 @@ export class EnumSetting extends BaseSetting {
         return `
             <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
                 <div class="row">
-                    <label>TODO: SETTING TITLE</label>
+                    <label>${T.settings.labels[this.id].title}</label>
                     <div class="value enum" data-setting="${this.id}"></div>
                 </div>
                 <div class="desc">
-                    TODO: SETTING DESC
+                    ${T.settings.labels[this.id].description}
                 </div>
             </div>`;
     }
@@ -153,7 +154,7 @@ export class EnumSetting extends BaseSetting {
     }
 
     modify() {
-        const { optionSelected } = this.dialogs.showOptionChooser("TODO: SETTING TITLE", {
+        const { optionSelected } = this.dialogs.showOptionChooser(T.settings.labels[this.id].title, {
             active: this.app.settings.getSetting(this.id),
             options: this.options.map(option => ({
                 value: this.valueGetter(option),
@@ -186,13 +187,13 @@ export class BoolSetting extends BaseSetting {
         return `
         <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
             <div class="row">
-                <label>TODO: SETTING TITLE</label>
+                <label>${T.settings.labels[this.id].title}</label>
                 <div class="value checkbox checked" data-setting="${this.id}">
                 <span class="knob"></span>
                 </div>
             </div>
             <div class="desc">
-                TODO: SETTING DESC
+                ${T.settings.labels[this.id].description}
             </div>
         </div>`;
     }

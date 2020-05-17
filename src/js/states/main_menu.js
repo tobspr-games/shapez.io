@@ -285,6 +285,12 @@ export class MainMenuState extends GameState {
         const savegame = this.app.savegameMgr.createNewSavegame();
 
         this.app.analytics.trackUiClick("startgame");
+
+        if (G_IS_DEV) {
+            // TODO
+            this.moveToState("SettingsState");
+        }
+
         this.moveToState("InGameState", {
             savegame,
         });

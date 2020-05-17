@@ -49,6 +49,20 @@
         @include S(padding, 12px);
         pointer-events: all;
 
+        &.optionChooserDialog {
+            .optionParent {
+                display: grid;
+                @include S(grid-gap, 5px);
+                grid-template-columns: 1fr 1fr;
+                .option {
+                    pointer-events: all;
+                    cursor: pointer;
+                    @include S(padding, 10px);
+                    background: #eee;
+                }
+            }
+        }
+
         > .title {
             @include Heading;
             margin: 0;

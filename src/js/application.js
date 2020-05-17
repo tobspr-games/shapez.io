@@ -31,6 +31,7 @@ import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 import { queryParamOptions } from "./core/query_parameters";
 import { NoGameAnalytics } from "./platform/browser/no_game_analytics";
 import { StorageImplBrowserIndexedDB } from "./platform/browser/storage_indexed_db";
+import { SettingsState } from "./states/settings";
 
 const logger = createLogger("application");
 
@@ -142,7 +143,7 @@ export class Application {
      */
     registerStates() {
         /** @type {Array<typeof GameState>} */
-        const states = [PreloadState, MainMenuState, InGameState];
+        const states = [PreloadState, MainMenuState, InGameState, SettingsState];
 
         for (let i = 0; i < states.length; ++i) {
             this.stateMgr.register(states[i]);

@@ -5,263 +5,39 @@
     align-items: center;
     $padding: 15px;
 
-    .bottomPoppingInNotification {
-        position: absolute;
-        left: 50%;
-        text-align: center;
-        @include BoxShadow3D(mix(lighten($mainBgColor, 12), $colorRedBright, 50%));
-        @include S(padding, 10px);
-        max-width: #{D(280px)};
-        @include S(bottom, 30px);
-        box-sizing: border-box;
-        width: 100%;
-        @include PlainText;
-        @include BorderRadius(4px);
-
-        $baseTransform: translateX(-50%);
-        transform-origin: 0% 100%;
-        transform: translateY(500%);
-        opacity: 0;
-
-        display: block;
-        @include InlineAnimation(5s ease-in-out) {
-            0% {
-                opacity: 0;
-                transform: scale(0) skew(5deg, 5deg) translateY(100%) $baseTransform;
-            }
-            8% {
-                transform: scale(1.05) translateY(-2%) $baseTransform;
-            }
-            12% {
-                transform: scale(1) $baseTransform;
-                opacity: 1;
-            }
-            97% {
-                transform: scale(1) $baseTransform;
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0) skew(5deg, 5deg) translateY(100%) $baseTransform;
-            }
-        }
+    .headerBar,
+    .content {
+        @include S(width, 500px);
     }
 
-    .widthKeeper {
-        width: 100%;
-        height: 100%;
-
+    .headerBar {
         display: flex;
-        flex-direction: column;
-        overflow: hidden;
+        align-items: center;
 
-        box-sizing: content-box;
-        @include S(max-width, 1000px);
-
-        @include StyleAtHeight(800px) {
-            @include S(padding-top, 30px);
+        h1 {
+            @include SuperHeading;
+            text-transform: uppercase;
+            color: #333438;
         }
 
-        .headerBar {
-            display: flex;
-
-            @include VerticalStyle {
-                // margin-top: 1px;
-            }
-
-            // margin-bottom: 15px;
-            padding: $padding;
-
-            $h: 25px;
-            @include S(min-height, $h);
-            @include S(max-height, $h);
-
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 50;
-            background: transparent;
-
-            @include S(padding-top, $padding);
-            @include S(padding-left, $padding);
-            @include S(padding-right, $padding);
-            background-size: calc(100% - #{D(6px)}) 100%;
-            $paddingBottom: 20px;
-
-            @include S(padding-bottom, $paddingBottom);
-            @include S(margin-bottom, -$h - $padding - $paddingBottom);
-
-            h1 {
-                // text-align: center;
-                cursor: pointer;
-                // transform-origin: 0px 50%;
-                pointer-events: all;
-                @include S(padding, 5px, 0px, 5px, 30px);
-                @include S(left, -2px);
-                @include S(min-width, 100px);
-                position: relative;
-                @include IncreasedClickArea(25px);
-                text-transform: uppercase;
-                // background: uiResource("back_arrow.png") center center no-repeat;
-                @include S(background-position-x, -3px);
-                @include S(background-size, 25px, 25px);
-
-                // Due to back button
-                color: $text3dColor;
-                @include TextShadow3D($borderColor: #18151d);
-                @include SuperHeading;
-                @include StyleBelowWidth(380px) {
-                    @include Heading;
-                }
-            }
-
-            .grow {
-                flex-grow: 1;
-            }
+        .backButton {
+            @include S(width, 30px);
+            @include S(height, 30px);
+            @include S(margin-right, 10px);
+            @include S(margin-left, -5px);
+            background: uiResource("icons/state_back_button.png") center center / 70% no-repeat;
         }
 
-        .container {
-            text-align: left;
-            flex-direction: column;
-            pointer-events: all;
-            box-sizing: border-box;
-            z-index: 25;
-            position: relative;
-
-            @include S(padding-left, 0px);
-            @include S(padding-right, 0px);
-
-            height: 100%;
-            @include SupportsAndroidNotchQuery {
-                height: calc(
-                    100% - constant(safe-area-inset-top) - constant(safe-area-inset-bottom) -
-                        var(--notch-inset-top) - var(--notch-inset-bottom)
-                );
-            }
-            @include SupportsiOsNotchQuery {
-                height: calc(
-                    100% - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) -
-                        var(--notch-inset-top) - var(--notch-inset-bottom)
-                );
-            }
-
-            .loadingIndicator {
-                display: none;
-            }
-
-            .errorIndicator {
-                display: none;
-                flex-direction: column;
-                text-align: center;
-
-                .errorInner {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    @include S(max-width, 350px);
-
-                    strong {
-                        $col: #ff4564;
-                        @include TextShadow3D($col);
-                        @include Heading;
-                    }
-
-                    i {
-                        @include PlainText;
-                        color: #888;
-                        @include S(margin-top, 10px);
-                        display: inline-block;
-                    }
-                }
-            }
-
-            .loadingIndicator,
-            .errorIndicator {
-                box-sizing: border-box;
-                justify-content: center;
-                align-items: center;
-                height: 100%;
-                @include S(padding, 30px);
-            }
-
-            // Loading state
-            &.loading {
-                .mainContent {
-                    animation: none;
-                    display: none !important;
-                }
-                .loadingIndicator {
-                    display: flex;
-                }
-            }
-
-            // Error state
-            &.errored {
-                .mainContent {
-                    animation: none;
-                    display: none !important;
-                }
-
-                .errorIndicator {
-                    animation: none;
-                    display: flex;
-                }
-            }
-        }
-
-        .mainContent {
-            overflow-y: auto !important;
-            overflow-x: hidden;
-            @include S(padding, $padding);
-            height: 100%;
-            width: 100%;
-            box-sizing: border-box;
-
-            @include InlineAnimation(0.4s ease-in-out) {
-                0% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 1;
-                }
-            }
-
-            .category_label {
-                display: block;
-                @include S(margin-top, 40px);
-
-                text-transform: uppercase;
-                &:first-child {
-                    margin-top: 0 !important;
-                }
-
-                @include S(margin-bottom, 16px);
-                @include Heading;
-
-                @include TextShadow3D(#68a1bb, $borderColor: #141718);
-            }
-
-            .cardbox {
-                @include S(padding, 20px, 15px);
-                $cardBg: lighten($mainBgColor, 9);
-                background: $cardBg;
-                margin-bottom: 15px;
-                @include S(margin-bottom, 15px);
-                @include BorderRadius(4px);
-                @include S(padding-bottom, 14px);
-                @include BoxShadow3D($cardBg);
-
-                &:last-child {
-                    border-bottom: 0;
-                }
-            }
-        }
+        @include S(margin-bottom, 20px);
     }
 
-    &.hasTitle {
-        .mainContent {
-            @include S(padding-top, 70px, $important: true);
-        }
+    .content {
+        background: #fff;
+        @include S(border-radius, 2px);
+        @include S(padding, 10px);
+        max-height: calc(80vh - #{D(60px)});
+        overflow-y: auto;
+        box-sizing: border-box;
+        pointer-events: all;
     }
 }

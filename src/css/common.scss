@@ -519,14 +519,14 @@ canvas {
 .checkbox {
     $bgColor: darken($mainBgColor, 0);
     background-color: $bgColor;
-    @include S(width, 45px);
-    @include S(height, 20px);
+    @include S(width, 35px);
+    @include S(height, 17px);
     display: flex;
     @include S(padding, 3px);
     box-sizing: content-box;
     cursor: pointer;
     pointer-events: all;
-    transition: opacity 0.2s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out !important;
+    transition: opacity 0.2s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.4s ease-in-out !important;
     position: relative;
     @include BorderRadius(20px);
     @include IncreasedClickArea(10px);
@@ -535,9 +535,13 @@ canvas {
         opacity: 0.2;
     }
 
+    &:hover {
+        background-color: darken($bgColor, 5);
+    }
+
     .knob {
         @include S(width, 20px);
-        @include S(height, 20px);
+        @include S(height, 17px);
         display: inline-block;
         transition: margin-left 0.4s ease-in-out !important;
         background: #fff;
@@ -550,7 +554,11 @@ canvas {
         background-color: $themeColor;
         @include BoxShadow3D($themeColor, $size: 2px);
         .knob {
-            @include S(margin-left, 25px);
+            @include S(margin-left, 15px);
+        }
+
+        &:hover {
+            background-color: lighten($themeColor, 15);
         }
     }
 }
