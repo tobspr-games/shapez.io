@@ -53,7 +53,7 @@ export class Camera extends BasicSerializableObject {
         this.clampZoomLevel();
 
         /** @type {Vector} */
-        this.center = new Vector(2 * globalConfig.tileSize, 2 * globalConfig.tileSize);
+        this.center = new Vector(0, 0);
 
         // Input handling
         this.currentlyMoving = false;

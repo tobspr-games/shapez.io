@@ -38,7 +38,7 @@ export const globalConfig = {
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
-    beltSpeedItemsPerSecond: 1,
+    beltSpeedItemsPerSecond: 5,
     itemSpacingOnBelts: 0.63,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
@@ -76,8 +76,8 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        // fastGameEnter: true,
-        // noArtificialDelays: true,
+        fastGameEnter: true,
+        noArtificialDelays: true,
         // disableSavegameWrite: true,
         showEntityBounds: false,
         showAcceptorEjectors: false,
@@ -87,9 +87,9 @@ export const globalConfig = {
         disableZoomLimits: false,
         showChunkBorders: false,
         rewardsInstant: false,
-        allBuildingsUnlocked: true,
+        // allBuildingsUnlocked: true,
         upgradesNoCost: true,
-        disableUnlockDialog: false,
+        disableUnlockDialog: true,
         // testTranslations: true,
         /* dev:end */
     },

@@ -12,142 +12,122 @@ export const enumHubGoalRewards = {
     reward_splitter: "reward_splitter",
     reward_tunnel: "reward_tunnel",
 
+    reward_rotater_ccw: "reward_rotater_ccw",
+    reward_miner_chainable: "reward_miner_chainable",
+    reward_underground_belt_tier_2: "reward_underground_belt_tier_2",
+    reward_splitter_compact: "reward_splitter_compact",
+    reward_cutter_quad: "reward_cutter_quad",
+    reward_painter_double: "reward_painter_double",
+    reward_painter_quad: "reward_painter_quad",
+
+    reward_freeplay: "reward_freeplay",
+
     no_reward: "no_reward",
 };
 
 export const tutorialGoals = [
     // Circle
     {
-        shape: "CuCuCuCu",
-        required: 40,
+        shape: "CuCuCuCu", // belts t1
+        required: 60,
         reward: enumHubGoalRewards.reward_cutter_and_trash,
     },
 
     // Cutter
     {
-        shape: "CuCu----",
-        required: 150,
-        reward: enumHubGoalRewards.no_reward,
-    },
-
-    {
-        shape: "----CuCu",
-        required: 200,
-        reward: enumHubGoalRewards.reward_splitter,
-    },
-
-    // Rectangle
-    {
-        shape: "RuRuRuRu",
+        shape: "----CuCu", //
         required: 80,
         reward: enumHubGoalRewards.no_reward,
     },
 
+    // Rectangle
     {
-        shape: "RuRu----",
-        required: 250,
+        shape: "RuRuRuRu", // miners t1
+        required: 100,
+        reward: enumHubGoalRewards.reward_splitter,
+    },
+
+    {
+        shape: "RuRu----", // processors t2
+        required: 350,
         reward: enumHubGoalRewards.reward_rotater,
     },
 
     // Rotater
     {
-        shape: "--CuCu--",
+        shape: "--CuCu--", // belts t2
         required: 300,
-        reward: enumHubGoalRewards.no_reward,
-    },
-
-    {
-        shape: "Ru----Ru",
-        required: 400,
         reward: enumHubGoalRewards.reward_tunnel,
     },
 
     {
-        shape: "Cu------",
-        required: 800,
-        reward: enumHubGoalRewards.no_reward,
-    },
-
-    {
-        shape: "------Ru",
+        shape: "Cu------", // miners t2
         required: 1000,
         reward: enumHubGoalRewards.reward_painter,
     },
 
     // Painter
     {
-        shape: "CrCrCrCr",
+        shape: "CrCrCrCr", // unused
         required: 1500,
-        reward: enumHubGoalRewards.no_reward,
+        reward: enumHubGoalRewards.reward_rotater_ccw,
     },
 
     {
-        shape: "RbRb----",
+        shape: "RbRb----", // painter t2
         required: 2500,
         reward: enumHubGoalRewards.reward_mixer,
     },
 
     // Mixing (purple)
     {
-        shape: "CpCpCpCp",
+        shape: "CpCpCpCp", // belts t3
         required: 4000,
-        reward: enumHubGoalRewards.no_reward,
+        reward: enumHubGoalRewards.reward_splitter_compact,
     },
 
     // Star shape + cyan
     {
-        shape: "ScScScSc",
-        required: 500,
+        shape: "ScScScSc", // miners t3
+        required: 5000,
         reward: enumHubGoalRewards.reward_stacker,
     },
 
     // Stacker
     {
-        shape: "CgScScCg",
-        required: 3000,
-        reward: enumHubGoalRewards.no_reward,
-    },
-
-    {
-        shape: "RpRpRpRp:CcCcCcCc",
-        required: 4000,
-        reward: enumHubGoalRewards.no_reward,
-    },
-
-    {
-        shape: "RgCwRgCw:CpCpCpCp",
+        shape: "CgScScCg", // processors t3
         required: 6000,
-        reward: enumHubGoalRewards.no_reward,
+        reward: enumHubGoalRewards.reward_miner_chainable,
     },
 
     {
-        shape: "CwSwCwSw:CpCrCpCr",
-        required: 6000,
-        reward: enumHubGoalRewards.no_reward,
+        shape: "RpRpRpRp:CwCwCwCw", // painting t3
+        required: 7000,
+        reward: enumHubGoalRewards.reward_underground_belt_tier_2,
     },
 
     {
-        shape: "WyWyWyWy",
-        required: 2000,
-        reward: enumHubGoalRewards.no_reward,
+        shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
+        required: 8000,
+        reward: enumHubGoalRewards.reward_cutter_quad,
     },
 
     {
-        shape: "WyWgWyWg:CbCpCbCp",
-        required: 4000,
-        reward: enumHubGoalRewards.no_reward,
-    },
-
-    {
-        shape: "WyRgWyRg:CbCpCbCp:CpCgCpCg",
+        shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
         required: 9000,
-        reward: enumHubGoalRewards.no_reward,
+        reward: enumHubGoalRewards.reward_painter_double,
     },
 
     {
-        shape: "CwRrCbRy:ScSrSpSb:CwCwCwCw:RgRgRgRg",
-        required: 15000,
-        reward: enumHubGoalRewards.no_reward,
+        shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two varinats)
+        required: 10000,
+        reward: enumHubGoalRewards.reward_painter_quad,
+    },
+
+    {
+        shape: "RuCw--Cw:----Ru--",
+        required: 50000,
+        reward: enumHubGoalRewards.reward_freeplay,
     },
 ];
 

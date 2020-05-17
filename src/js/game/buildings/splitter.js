@@ -32,8 +32,18 @@ export class MetaSplitterBuilding extends MetaBuilding {
         return "#444";
     }
 
+    /**
+     * @param {GameRoot} root
+     */
     getAvailableVariants(root) {
-        return [defaultBuildingVariant, enumSplitterVariants.compact, enumSplitterVariants.compactInverse];
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_splitter_compact)) {
+            return [
+                defaultBuildingVariant,
+                enumSplitterVariants.compact,
+                enumSplitterVariants.compactInverse,
+            ];
+        }
+        return super.getAvailableVariants(root);
     }
 
     /**

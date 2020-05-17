@@ -69,6 +69,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
          * @type {Vector}
          */
         this.initialDragTile = null;
+
+        this.root.signals.storyGoalCompleted.add(this.rerenderVariants, this);
     }
 
     createElements(parent) {

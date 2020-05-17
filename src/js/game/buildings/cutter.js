@@ -19,6 +19,7 @@ export class MetaCutterBuilding extends MetaBuilding {
     getSilhouetteColor() {
         return "#7dcda2";
     }
+
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
@@ -30,8 +31,14 @@ export class MetaCutterBuilding extends MetaBuilding {
         }
     }
 
+    /**
+     * @param {GameRoot} root
+     */
     getAvailableVariants(root) {
-        return [defaultBuildingVariant, enumCutterVariants.quad];
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_cutter_quad)) {
+            return [defaultBuildingVariant, enumCutterVariants.quad];
+        }
+        return super.getAvailableVariants(root);
     }
 
     /**

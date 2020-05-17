@@ -266,6 +266,16 @@ storyRewards:
     reward_splitter: Splitter/Merger
     reward_tunnel: Tunnel
 
+    reward_rotater_ccw: CCW Rotating
+    reward_miner_chainable: Chaining Extractor
+    reward_underground_belt_tier_2: Tunnel Tier II
+    reward_splitter_compact: Compact Balancer
+    reward_cutter_quad: Quad Cutting
+    reward_painter_double: Double Painting
+    reward_painter_quad: Quad Painting
+
+    reward_freeplay: Freeplay
+
     # Special reward, which is shown when there is no reward actually
     no_reward: Next level
 

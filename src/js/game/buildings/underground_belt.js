@@ -40,8 +40,14 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         return true;
     }
 
+    /**
+     * @param {GameRoot} root
+     */
     getAvailableVariants(root) {
-        return [defaultBuildingVariant, enumUndergroundBeltVariants.tier2];
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_underground_belt_tier_2)) {
+            return [defaultBuildingVariant, enumUndergroundBeltVariants.tier2];
+        }
+        return super.getAvailableVariants(root);
     }
 
     getPreviewSprite(rotationVariant, variant) {
