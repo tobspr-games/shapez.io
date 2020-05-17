@@ -1,4 +1,5 @@
 import { ShapeDefinition } from "./shape_definition";
+import { finalGameShape } from "./upgrades";
 
 /**
  * @enum {string}
@@ -125,7 +126,7 @@ export const tutorialGoals = [
     },
 
     {
-        shape: "RuCw--Cw:----Ru--",
+        shape: finalGameShape,
         required: 50000,
         reward: enumHubGoalRewards.reward_freeplay,
     },

@@ -71,6 +71,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.initialDragTile = null;
 
         this.root.signals.storyGoalCompleted.add(this.rerenderVariants, this);
+        this.root.signals.upgradePurchased.add(this.rerenderVariants, this);
     }
 
     createElements(parent) {
@@ -80,6 +81,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.buildingInfoElements.label = makeDiv(this.element, null, ["buildingLabel"], "Extract");
         this.buildingInfoElements.desc = makeDiv(this.element, null, ["description"], "");
         this.buildingInfoElements.descText = makeDiv(this.buildingInfoElements.desc, null, ["text"], "");
+        this.buildingInfoElements.additionalInfo = makeDiv(
+            this.buildingInfoElements.desc,
+            null,
+            ["additionalInfo"],
+            ""
+        );
         this.buildingInfoElements.hotkey = makeDiv(this.buildingInfoElements.desc, null, ["hotkey"], "");
         this.buildingInfoElements.tutorialImage = makeDiv(this.element, null, ["buildingImage"]);
 
@@ -234,17 +241,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.abortDragging();
         this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
         if (metaBuilding) {
-            this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id].name;
-            this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id].description;
-
-            const binding = this.root.gameState.keyActionMapper.getBinding(
-                "building_" + metaBuilding.getId()
-            );
-            this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace(
-                "<key>",
-                "<code class='keybinding'>" + binding.getKeyCodeString() + "</code>"
-            );
-
             const variant = this.preferredVariants[metaBuilding.getId()] || defaultBuildingVariant;
             this.currentVariant.set(variant);
 
@@ -272,8 +268,42 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.rerenderVariants();
     }
 
+    /**
+     * Rerenders the building info dialog
+     */
+    rerenderInfoDialog() {
+        const metaBuilding = this.currentMetaBuilding.get();
+
+        if (!metaBuilding) {
+            return;
+        }
+
+        this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id].name;
+        this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id].description;
+
+        const binding = this.root.gameState.keyActionMapper.getBinding("building_" + metaBuilding.getId());
+        this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace(
+            "<key>",
+            "<code class='keybinding'>" + binding.getKeyCodeString() + "</code>"
+        );
+
+        removeAllChildren(this.buildingInfoElements.additionalInfo);
+        const additionalInfo = metaBuilding.getAdditionalStatistics(this.root, this.currentVariant.get());
+        for (let i = 0; i < additionalInfo.length; ++i) {
+            const [label, contents] = additionalInfo[i];
+            this.buildingInfoElements.additionalInfo.innerHTML += `
+                <label>${label}:</label>
+                <span>${contents}</contents>
+            `;
+        }
+    }
+
+    /**
+     * Rerenders the variants displayed
+     */
     rerenderVariants() {
         removeAllChildren(this.variantsElement);
+        this.rerenderInfoDialog();
 
         const metaBuilding = this.currentMetaBuilding.get();
 

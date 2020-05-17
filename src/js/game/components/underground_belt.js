@@ -62,7 +62,7 @@ export class UndergroundBeltComponent extends Component {
             return false;
         }
 
-        this.pendingItems.push([item, 0.5 / beltSpeed]);
+        this.pendingItems.push([item, 1 / beltSpeed / globalConfig.itemSpacingOnBelts]);
         return true;
     }
 
@@ -88,7 +88,7 @@ export class UndergroundBeltComponent extends Component {
         // NOTICE:
         // This corresponds to the item ejector - it needs 0.5 additional tiles to eject the item.
         // So instead of adding 1 we add 0.5 only.
-        const travelDuration = (travelDistance + 0.5) / beltSpeed;
+        const travelDuration = (travelDistance + 0.5) / beltSpeed / globalConfig.itemSpacingOnBelts;
 
         this.pendingItems.push([item, travelDuration]);
 

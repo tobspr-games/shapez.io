@@ -7,6 +7,8 @@ import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { T } from "../../translations";
+import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
 export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
@@ -26,6 +28,16 @@ export class MetaSplitterBuilding extends MetaBuilding {
             default:
                 assertAlways(false, "Unknown splitter variant: " + variant);
         }
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.splitter);
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
     getSilhouetteColor() {

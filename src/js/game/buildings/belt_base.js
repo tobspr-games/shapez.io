@@ -8,6 +8,9 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { SOUNDS } from "../../platform/sound";
+import { T } from "../../translations";
+import { round1Digit, formatItemsPerSecond } from "../../core/utils";
+import { globalConfig } from "../../core/config";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
@@ -18,6 +21,17 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
     getSilhouetteColor() {
         return "#777";
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
+
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
 
     getPreviewSprite(rotationVariant) {

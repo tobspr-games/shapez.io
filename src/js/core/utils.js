@@ -900,3 +900,15 @@ export function generateFileDownload(filename, text) {
 export function capitalizeFirstLetter(str) {
     return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase();
 }
+
+/**
+ * Formats a number like 2.5 to "2.5 items / s"
+ * @param {number} speed
+ * @param {boolean=} double
+ */
+export function formatItemsPerSecond(speed, double = false) {
+    return speed === 1.0
+        ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
+        : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace("<x>", "" + round2Digits(speed)) +
+              (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
+}

@@ -11,6 +11,7 @@ import { MapChunkView } from "../map_chunk_view";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { defaultBuildingVariant } from "../meta_building";
+import { GameRoot } from "../root";
 
 const BELT_ANIM_COUNT = 6;
 
@@ -109,7 +110,11 @@ export class BeltSystem extends GameSystemWithFilter {
     }
 
     update() {
-        const beltSpeed = this.root.hubGoals.getBeltBaseSpeed() * globalConfig.physicsDeltaSeconds;
+        // Divide by item spacing on belts since we use throughput and not speed
+        const beltSpeed =
+            this.root.hubGoals.getBeltBaseSpeed() *
+            globalConfig.physicsDeltaSeconds *
+            globalConfig.itemSpacingOnBelts;
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];

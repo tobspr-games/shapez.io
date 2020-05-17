@@ -40,6 +40,17 @@
         }
     }
 
+    .additionalInfo {
+        display: grid;
+        grid-template-columns: auto 1fr;
+
+        label {
+            color: lighten($colorGreenBright, 10);
+            font-weight: bold;
+            @include S(margin-right, 5px);
+        }
+    }
+
     .hotkey {
         color: lighten($colorGreenBright, 10);
         font-weight: bold;

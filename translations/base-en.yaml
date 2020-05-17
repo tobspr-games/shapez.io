@@ -138,6 +138,12 @@ ingame:
         hotkeyLabel: >-
             Hotkey: <key>
 
+        infoTexts:
+            speed: Speed
+            oneItemPerSecond: 1 item / second
+            itemsPerSecond: <x> items / s
+            itemsPerSecondDouble: (x2)
+
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
@@ -222,7 +228,7 @@ buildings:
 
     miner: # Internal name for the Extractor
         name: Extractor
-        description: Place over a shape or color to extract it. Six extractors fill exactly one belt.
+        description: Place over a shape or color to extract it.
 
     underground_belt: # Internal name for the Tunnel
         name: Tunnel

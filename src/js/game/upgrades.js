@@ -1,7 +1,7 @@
 import { findNiceIntegerValue } from "../core/utils";
 import { ShapeDefinition } from "./shape_definition";
 
-const finalShape = "RuCw--Cw:----Ru--";
+export const finalGameShape = "RuCw--Cw:----Ru--";
 
 export const UPGRADES = {
     belt: {
@@ -27,7 +27,7 @@ export const UPGRADES = {
                 improvement: 4,
             },
             {
-                required: [{ shape: finalShape, amount: 150000 }],
+                required: [{ shape: finalGameShape, amount: 150000 }],
                 improvement: 4,
                 excludePrevious: true,
             },
@@ -57,7 +57,7 @@ export const UPGRADES = {
                 improvement: 4,
             },
             {
-                required: [{ shape: finalShape, amount: 150000 }],
+                required: [{ shape: finalGameShape, amount: 150000 }],
                 improvement: 4,
                 excludePrevious: true,
             },
@@ -87,7 +87,7 @@ export const UPGRADES = {
                 improvement: 4,
             },
             {
-                required: [{ shape: finalShape, amount: 150000 }],
+                required: [{ shape: finalGameShape, amount: 150000 }],
                 improvement: 4,
                 excludePrevious: true,
             },
@@ -117,7 +117,7 @@ export const UPGRADES = {
                 improvement: 4,
             },
             {
-                required: [{ shape: finalShape, amount: 150000 }],
+                required: [{ shape: finalGameShape, amount: 150000 }],
                 improvement: 4,
                 excludePrevious: true,
             },

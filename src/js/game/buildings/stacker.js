@@ -7,6 +7,8 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { formatItemsPerSecond } from "../../core/utils";
+import { T } from "../../translations";
 
 export class MetaStackerBuilding extends MetaBuilding {
     constructor() {
@@ -19,6 +21,16 @@ export class MetaStackerBuilding extends MetaBuilding {
 
     getDimensions() {
         return new Vector(2, 1);
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.stacker);
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
     /**

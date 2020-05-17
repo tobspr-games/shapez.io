@@ -31,7 +31,10 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             for (let animIndex = 0; animIndex < aceptorComp.itemConsumptionAnimations.length; ++animIndex) {
                 const anim = aceptorComp.itemConsumptionAnimations[animIndex];
                 anim.animProgress +=
-                    globalConfig.physicsDeltaSeconds * this.root.hubGoals.getBeltBaseSpeed() * 2;
+                    globalConfig.physicsDeltaSeconds *
+                    this.root.hubGoals.getBeltBaseSpeed() *
+                    2 *
+                    globalConfig.itemSpacingOnBelts;
                 if (anim.animProgress > 1) {
                     aceptorComp.itemConsumptionAnimations.splice(animIndex, 1);
                     animIndex -= 1;
