@@ -1,0 +1,57 @@
+#state_SettingsState {
+    .content {
+        .categoryLabel {
+            display: block;
+            text-transform: uppercase;
+            @include S(margin-top, 15px);
+            @include S(margin-bottom, 15px);
+            @include Heading;
+        }
+
+        .setting {
+            @include S(padding, 10px);
+            background: #eee;
+            @include S(border-radius, 2px);
+            @include S(margin-bottom, 5px);
+
+            label {
+                text-transform: uppercase;
+                @include Text;
+            }
+
+            .desc {
+                @include S(margin-top, 5px);
+                @include SuperSmallText;
+                color: #aaadb2;
+            }
+
+            > .row {
+                display: grid;
+                align-items: center;
+                grid-template-columns: 1fr auto;
+            }
+
+            .value.enum {
+                background: #fff;
+                @include PlainText;
+                display: flex;
+                align-items: flex-start;
+                pointer-events: all;
+                cursor: pointer;
+                justify-content: center;
+                @include S(min-width, 100px);
+                @include S(border-radius, 2px);
+                @include S(padding, 4px);
+                @include S(padding-right, 15px);
+
+                background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
+                    calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
+
+                transition: background-color 0.12s ease-in-out;
+                &:hover {
+                    background-color: #fafafa;
+                }
+            }
+        }
+    }
+}

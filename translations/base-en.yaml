@@ -21,6 +21,7 @@
 
 global:
     loading: Loading
+    error: Error
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -77,6 +78,8 @@ dialogs:
         ok: OK
         delete: Delete
         cancel: Cancel
+        later: Later
+        restart: Restart
 
     importSavegameError:
         title: Import Error
@@ -102,6 +105,11 @@ dialogs:
         title: Failed to delete
         text: >-
             Failed to delete the savegame:
+
+    restartRequired:
+        title: Restart required
+        text: >-
+            You need to restart the game to apply the settings.
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -186,6 +194,7 @@ ingame:
 
         buttons:
             continue: Continue
+            settings: Settings
             menu: Return to menu
 
 # All shop upgrades
@@ -257,3 +266,41 @@ storyRewards:
 
     # Special reward, which is shown when there is no reward actually
     no_reward: Next level
+
+settings:
+    title: Settings
+    categories:
+        game: Game
+        app: Application
+
+    versionBadges:
+        dev: Development
+        staging: Staging
+        prod: Production
+    buildDate: Built <at-date>
+
+    labels:
+        uiScale:
+            title: Interface scale
+            description: >-
+                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+
+        fullscreen:
+            title: Fullscreen
+            description: >-
+                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+
+        theme:
+            title: Interface theme
+            description: >-
+                Choose the interface theme which also affects the game. Notice that everything except the default theme may lead to graphical issues.
+
+        soundsMuted:
+            title: Mute Sounds
+            description: >-
+                If enabled, mutes all sound effects.
+
+        musicMuted:
+            title: Mute Music
+            description: >-
+                If enabled, mutes all music.
