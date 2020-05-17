@@ -53,7 +53,7 @@
         font-family: monospace;
         text-align: left;
         @include S(padding, 6px);
-        @include BorderRadius(2px);
+        @include S(border-radius, $globalBorderRadius);
         @include BoxShadow3D(#eee);
         position: absolute;
         @include S(bottom, 25px);

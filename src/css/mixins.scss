@@ -348,3 +348,16 @@ button,
         @content;
     }
 }
+
+@mixin DarkThemeOverride {
+    @at-root body[data-theme="dark"] &,
+        &[data-theme="dark"] {
+        @content;
+    }
+}
+
+@mixin DarkThemeInvert {
+    @include DarkThemeOverride {
+        filter: invert(1);
+    }
+}

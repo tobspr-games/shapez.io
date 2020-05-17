@@ -3,5 +3,8 @@ export const THEMES = {
     light: require("./themes/light.json"),
 };
 
-// TODO: Make themes customizable
-export const THEME = THEMES.light;
+export let THEME = THEMES.light;
+
+export function applyGameTheme(id) {
+    THEME = THEMES[id];
+}

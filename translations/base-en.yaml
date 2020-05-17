@@ -45,6 +45,8 @@ global:
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>s
 
+        xMinutes: <x> minutes
+
     keys:
         tab: TAB
         control: CTRL
@@ -290,11 +292,6 @@ settings:
             description: >-
                 It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
 
-        theme:
-            title: Interface theme
-            description: >-
-                Choose the interface theme which also affects the game. Notice that everything except the default theme may lead to graphical issues.
-
         soundsMuted:
             title: Mute Sounds
             description: >-
@@ -304,3 +301,8 @@ settings:
             title: Mute Music
             description: >-
                 If enabled, mutes all music.
+
+        theme:
+            title: Game theme
+            description: >-
+                Choose the game theme which mainly affects the map background. Notice that everything except the light theme may lead to graphical issues.

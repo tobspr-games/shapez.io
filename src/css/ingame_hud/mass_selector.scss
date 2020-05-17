@@ -4,7 +4,7 @@
     left: 50%;
     transform: translateX(-50%);
     background: rgba(lighten(#f77, 5), 0.95);
-    @include S(border-radius, 2px);
+    @include S(border-radius, $globalBorderRadius);
     @include S(padding, 6px, 10px);
     @include SuperSmallText;
     color: #fff;

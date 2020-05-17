@@ -148,7 +148,10 @@ export class InGameState extends GameState {
      * Goes back to the settings state
      */
     goToSettings() {
-        this.saveThenGoToState("SettingsState");
+        this.saveThenGoToState("SettingsState", {
+            backToStateId: this.key,
+            backToStatePayload: this.creationPayload,
+        });
     }
 
     /**

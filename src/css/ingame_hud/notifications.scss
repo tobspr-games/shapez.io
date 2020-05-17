@@ -5,12 +5,16 @@
 
     .notification {
         background: rgba(#333438, 0.8);
-        @include S(border-radius, 2px);
+        @include S(border-radius, $globalBorderRadius);
         @include S(margin-top, 3px);
         color: #fff;
         @include SuperSmallText;
         @include S(padding, 7px, 10px);
         @include S(width, 150px);
+
+        @include DarkThemeOverride {
+            background-color: rgba(#55595d, 0.8);
+        }
 
         &[data-icon] {
             @include S(background-position-x, 8px);

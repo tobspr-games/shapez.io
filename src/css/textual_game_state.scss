@@ -33,7 +33,7 @@
 
     .content {
         background: #fff;
-        @include S(border-radius, 2px);
+        @include S(border-radius, $globalBorderRadius);
         @include S(padding, 10px);
         max-height: calc(80vh - #{D(60px)});
         overflow-y: auto;

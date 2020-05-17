@@ -41,6 +41,10 @@
             flex-direction: row;
             grid-column: 2 / 3;
             @include S(height, 9px);
+
+            @include DarkThemeOverride {
+                color: #eee;
+            }
         }
 
         > .goalLabel {
@@ -68,6 +72,8 @@
                 @include S(top, -4px);
                 @include S(left, -4px);
                 background: uiResource("icons/current_goal_marker.png") center center / contain no-repeat;
+
+                @include DarkThemeInvert;
             }
         }
     }

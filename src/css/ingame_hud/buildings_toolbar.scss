@@ -56,10 +56,10 @@
                 }
             }
 
-            @include S(border-radius, 4px);
+            @include S(border-radius, $globalBorderRadius);
 
             &.selected {
-                background-color: rgba(74, 163, 223, 0.3) !important;
+                background-color: rgba($colorBlueBright, 0.3) !important;
                 transform: scale(1.05);
                 .keybinding {
                     color: #111;

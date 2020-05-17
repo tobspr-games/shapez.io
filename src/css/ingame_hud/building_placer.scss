@@ -6,13 +6,17 @@
     display: grid;
 
     @include S(padding, 6px);
-    @include S(border-radius, 2px);
+    @include S(border-radius, $globalBorderRadius);
     @include S(width, 240px);
     @include S(grid-column-gap, 5px);
 
     background: rgba(#333438, 0.8);
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr;
+
+    @include DarkThemeOverride {
+        background-color: #55585a;
+    }
 
     .buildingLabel {
         @include PlainText;
@@ -54,7 +58,7 @@
         @include S(width, 100px);
         @include S(height, 100px);
         background: top left / 100% 100% no-repeat;
-        @include S(border-radius, 2px);
+        @include S(border-radius, $globalBorderRadius);
     }
 
     @include StyleBelowWidth(700px) {
@@ -77,10 +81,14 @@
         .keybinding {
             position: relative;
         }
+
+        @include DarkThemeOverride {
+            color: rgba(#fff, 0.5);
+        }
     }
 
     .variant {
-        @include S(border-radius, 4px);
+        @include S(border-radius, $globalBorderRadius);
         background: rgba(0, 10, 20, 0.1);
         display: flex;
         position: relative;

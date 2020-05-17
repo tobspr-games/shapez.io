@@ -6,4 +6,9 @@
     bottom: 0;
     background: uiResource("vignette.lossless.png") center center / cover no-repeat;
     pointer-events: none;
+
+    @include DarkThemeOverride {
+        // Too many artifacts
+        display: none;
+    }
 }

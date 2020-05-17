@@ -9,7 +9,7 @@
             display: grid;
             grid-template-columns: auto 1fr auto;
             background: #eee;
-            @include S(border-radius, 3px);
+            @include S(border-radius, $globalBorderRadius);
             @include S(margin-bottom, 4px);
             @include S(padding, 5px, 10px);
             @include S(grid-row-gap, 1px);
@@ -18,6 +18,10 @@
 
             &:last-child {
                 margin-bottom: 0;
+            }
+
+            @include DarkThemeOverride {
+                background: #55585a;
             }
 
             .title {
@@ -32,7 +36,7 @@
                 .tier {
                     @include S(margin-right, 9px);
                     background: $colorGreenBright;
-                    @include S(border-radius, 2px);
+                    @include S(border-radius, $globalBorderRadius);
                     text-transform: uppercase;
                     @include PlainText;
                     color: #fff;
@@ -160,19 +164,23 @@
                         background: #e2e4e6;
 
                         @include S(line-height, 13px);
-                        @include S(border-radius, 2px);
+                        @include S(border-radius, $globalBorderRadius);
                         @include S(padding, 1px, 2px, 2px);
                         position: relative;
                         text-align: center;
                         @include S(min-width, 50px);
                         overflow: hidden;
 
+                        @include DarkThemeOverride {
+                            background: #333438;
+                        }
+
                         .progressBar {
                             bottom: 0;
                             left: 0;
                             right: 0;
                             top: 0;
-                            @include S(border-radius, 2px);
+                            @include S(border-radius, $globalBorderRadius);
                             position: absolute;
                             display: inline-block;
                             z-index: -1;

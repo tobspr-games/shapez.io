@@ -4,9 +4,26 @@
     justify-content: center;
     flex-direction: column;
 
-    background: rgb(140, 165, 194) center center / cover !important;
+    // background: #aaacb4 center center / cover !important;
+    background: #bbc2cf center center / cover !important;
+
+    .settingsButton {
+        position: absolute;
+        @include S(bottom, 30px);
+        @include S(right, 30px);
+        @include S(width, 35px);
+        @include S(height, 35px);
+        pointer-events: all;
+        cursor: pointer;
+        background: uiResource("icons/settings.png") center center / contain no-repeat;
+        transition: opacity 0.12s ease-in-out;
+        &:hover {
+            opacity: 0.9;
+        }
+    }
 
     .fullscreenBackgroundVideo {
+        // display: none !important;
         z-index: -1;
         position: fixed;
         right: 50%;
@@ -45,7 +62,7 @@
 
         .standaloneBanner {
             background: rgb(255, 225, 238);
-            @include S(border-radius, 4px);
+            @include S(border-radius, $globalBorderRadius);
             height: 100%;
             box-sizing: border-box;
             @include S(padding, 15px);
@@ -125,7 +142,7 @@
         @include PlainText;
         background: $colorRedBright;
         @include S(padding, 10px);
-        @include S(border-radius, 4px);
+        @include S(border-radius, $globalBorderRadius);
         color: #fff;
         @include S(margin-top, 10px);
         border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
@@ -138,7 +155,7 @@
         flex-direction: column;
         background: #fafafa;
         @include S(padding, 20px);
-        @include S(border-radius, 4px);
+        @include S(border-radius, $globalBorderRadius);
         // border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
         height: 100%;
         width: 100%;
@@ -149,7 +166,7 @@
             background-color: $colorRedBright;
             @include PlainText;
             color: #fff;
-            @include S(border-radius, 4px);
+            @include S(border-radius, $globalBorderRadius);
             @include S(padding, 5px);
         }
 
@@ -158,9 +175,10 @@
             @include S(width, 130px);
             @include S(padding, 15px, 20px);
             letter-spacing: 0.3em !important;
+
+            font-weight: bold;
             color: #fff;
             background-color: $colorGreenBright;
-            text-shadow: #{D(1px)} #{D(2px)} 0 rgba(0, 0, 0, 0.1);
             transition: transform 0.12s ease-in-out;
             &:hover {
                 transform: scale(1.02);
@@ -184,7 +202,7 @@
 
             .savegame {
                 background: #eee;
-                @include BorderRadius(4px);
+                @include S(border-radius, $globalBorderRadius);
                 @include S(padding, 5px);
                 display: grid;
                 grid-template-columns: 1fr auto auto;
@@ -259,7 +277,7 @@
             background: #fafafa;
             @include S(padding, 5px);
             @include S(padding-left, 10px);
-            @include S(border-radius, 4px);
+            @include S(border-radius, $globalBorderRadius);
             @include S(margin-left, 10px);
             @include SuperSmallText();
 

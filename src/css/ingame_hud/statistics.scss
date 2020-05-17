@@ -80,9 +80,13 @@
 
         > div {
             background: #f4f4f4;
-            @include S(border-radius, 2px);
+            @include S(border-radius, $globalBorderRadius);
             @include S(margin-bottom, 4px);
             display: grid;
+
+            @include DarkThemeOverride {
+                background: #222428;
+            }
 
             grid-template-columns: 1fr auto;
             @include S(padding, 5px);
@@ -100,7 +104,7 @@
             .counter {
                 @include SuperSmallText;
 
-                @include S(border-radius, 2px);
+                @include S(border-radius, $globalBorderRadius);
                 @include S(padding, 0, 3px);
             }
         }

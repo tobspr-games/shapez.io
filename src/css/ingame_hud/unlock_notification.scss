@@ -17,7 +17,7 @@
 
     .dialog {
         background: rgba(#222428, 0.5);
-        @include S(border-radius, 4px);
+        @include S(border-radius, $globalBorderRadius);
         @include S(padding, 30px);
 
         @include InlineAnimation(0.5s ease-in-out) {
@@ -54,7 +54,7 @@
             @include S(padding, 1px, 6px);
             @include S(margin, 20px, 0, 20px);
 
-            @include S(border-radius, 4px);
+            @include S(border-radius, $globalBorderRadius);
             @include InlineAnimation(0.5s ease-in-out) {
                 0% {
                     transform: translateY(-60vh);
@@ -111,7 +111,7 @@
                 background-position: center center;
                 background-size: cover;
                 background-repeat: no-repeat;
-                @include S(border-radius, 4px);
+                @include S(border-radius, $globalBorderRadius);
                 box-shadow: #{D(2px)} #{D(3px)} 0 0 rgba(0, 0, 0, 0.15);
             }
         }
