@@ -25,6 +25,7 @@
             opacity: 0.9;
             @include S(margin-left, 5px);
             position: relative;
+
             @include IncreasedClickArea(0px);
 
             @include DarkThemeInvert;

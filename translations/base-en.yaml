@@ -67,7 +67,7 @@ demoBanners:
 
 mainMenu:
     play: Play
-    importSavegame: Import Savegame
+    importSavegame: Import
     openSourceHint: This game is open source!
     discordLink: Official Discord Server
 
