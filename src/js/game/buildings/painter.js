@@ -33,8 +33,18 @@ export class MetaPainterBuilding extends MetaBuilding {
         return "#cd9b7d";
     }
 
+    /**
+     * @param {GameRoot} root
+     */
     getAvailableVariants(root) {
-        return [defaultBuildingVariant, enumPainterVariants.double, enumPainterVariants.quad];
+        let variants = [defaultBuildingVariant];
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter_double)) {
+            variants.push(enumPainterVariants.double);
+        }
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter_quad)) {
+            variants.push(enumPainterVariants.quad);
+        }
+        return variants;
     }
 
     /**

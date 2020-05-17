@@ -159,11 +159,11 @@ export class MapChunk {
         weights = {
             [enumSubShape.rect]: 100,
             [enumSubShape.circle]: Math_round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
-            [enumSubShape.star]: Math_round(9 + clamp(distanceToOriginInChunks, 0, 30)),
+            [enumSubShape.star]: Math_round(20 + clamp(distanceToOriginInChunks, 0, 30)),
             [enumSubShape.windmill]: Math_round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
         };
 
-        if (distanceToOriginInChunks < 5) {
+        if (distanceToOriginInChunks < 4) {
             // Initial chunks can not spawn the good stuff
             weights[enumSubShape.star] = 0;
             weights[enumSubShape.windmill] = 0;
@@ -186,6 +186,18 @@ export class MapChunk {
                 this.internalGenerateRandomSubShape(rng, weights),
                 this.internalGenerateRandomSubShape(rng, weights),
             ];
+        }
+
+        // Makes sure windmills never spawn as whole
+        let windmillCount = 0;
+        for (let i = 0; i < subShapes.length; ++i) {
+            if (subShapes[i] === enumSubShape.windmill) {
+                ++windmillCount;
+            }
+        }
+        if (windmillCount > 1) {
+            subShapes[0] = enumSubShape.rect;
+            subShapes[1] = enumSubShape.rect;
         }
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);

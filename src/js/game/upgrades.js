@@ -1,24 +1,35 @@
 import { findNiceIntegerValue } from "../core/utils";
 import { ShapeDefinition } from "./shape_definition";
 
+const finalShape = "RuCw--Cw:----Ru--";
+
 export const UPGRADES = {
     belt: {
         tiers: [
             {
-                required: [{ shape: "CuCuCuCu", amount: 80 }],
+                required: [{ shape: "CuCuCuCu", amount: 150 }],
                 improvement: 1,
             },
             {
-                required: [{ shape: "Ru----Ru", amount: 4000 }],
+                required: [{ shape: "--CuCu--", amount: 1500 }],
                 improvement: 2,
             },
             {
-                required: [{ shape: "CwSwCwSw", amount: 30000 }],
+                required: [{ shape: "CpCpCpCp", amount: 15000 }],
                 improvement: 4,
             },
             {
-                required: [{ shape: "RgRgSpSp:CwSwCwSw:Cr--Sw--", amount: 80000 }],
+                required: [{ shape: "SrSrSrSr:CyCyCyCy", amount: 40000 }],
                 improvement: 4,
+            },
+            {
+                required: [{ shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", amount: 40000 }],
+                improvement: 4,
+            },
+            {
+                required: [{ shape: finalShape, amount: 150000 }],
+                improvement: 4,
+                excludePrevious: true,
             },
         ],
     },
@@ -26,20 +37,29 @@ export const UPGRADES = {
     miner: {
         tiers: [
             {
-                required: [{ shape: "RuRuRuRu", amount: 200 }],
+                required: [{ shape: "RuRuRuRu", amount: 400 }],
                 improvement: 1,
             },
             {
-                required: [{ shape: "Cu------", amount: 4000 }],
+                required: [{ shape: "Cu------", amount: 5500 }],
                 improvement: 2,
             },
             {
-                required: [{ shape: "WyWgWyWg:CbCpCbCp", amount: 30000 }],
+                required: [{ shape: "ScScScSc", amount: 20000 }],
                 improvement: 4,
             },
             {
-                required: [{ shape: "WyWgWyWg:CbCpCbCp:Rp----Rp", amount: 90000 }],
+                required: [{ shape: "CwCwCwCw:WbWbWbWb", amount: 40000 }],
                 improvement: 4,
+            },
+            {
+                required: [{ shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", amount: 40000 }],
+                improvement: 4,
+            },
+            {
+                required: [{ shape: finalShape, amount: 150000 }],
+                improvement: 4,
+                excludePrevious: true,
             },
         ],
     },
@@ -47,20 +67,29 @@ export const UPGRADES = {
     processors: {
         tiers: [
             {
-                required: [{ shape: "SuSuSuSu", amount: 200 }],
+                required: [{ shape: "SuSuSuSu", amount: 1000 }],
                 improvement: 1,
             },
             {
-                required: [{ shape: "Cu------", amount: 4000 }],
+                required: [{ shape: "RuRu----", amount: 2000 }],
                 improvement: 2,
             },
             {
-                required: [{ shape: "WyWgWyWg:CbCpCbCp", amount: 30000 }],
+                required: [{ shape: "CgScScCg", amount: 25000 }],
                 improvement: 4,
             },
             {
-                required: [{ shape: "WyWgWyWg:CbCpCbCp:Rp----Rp", amount: 90000 }],
+                required: [{ shape: "CwCrCwCr:SgSgSgSg", amount: 40000 }],
                 improvement: 4,
+            },
+            {
+                required: [{ shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", amount: 40000 }],
+                improvement: 4,
+            },
+            {
+                required: [{ shape: finalShape, amount: 150000 }],
+                improvement: 4,
+                excludePrevious: true,
             },
         ],
     },
@@ -68,27 +97,36 @@ export const UPGRADES = {
     painting: {
         tiers: [
             {
-                required: [{ shape: "WuWuWuWu", amount: 200 }],
+                required: [{ shape: "WrWrWrWr", amount: 2000 }],
                 improvement: 1,
             },
             {
-                required: [{ shape: "Cu------", amount: 4000 }],
+                required: [{ shape: "RbRb----", amount: 4000 }],
                 improvement: 2,
             },
             {
-                required: [{ shape: "WyWgWyWg:CbCpCbCp", amount: 30000 }],
+                required: [{ shape: "RpRpRpRp:CwCwCwCw", amount: 30000 }],
                 improvement: 4,
             },
             {
-                required: [{ shape: "WyWgWyWg:CbCpCbCp:Rp----Rp", amount: 90000 }],
+                required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp", amount: 40000 }],
                 improvement: 4,
+            },
+            {
+                required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp:CwCwCwCw", amount: 40000 }],
+                improvement: 4,
+            },
+            {
+                required: [{ shape: finalShape, amount: 150000 }],
+                improvement: 4,
+                excludePrevious: true,
             },
         ],
     },
 };
 
 // Tiers need % of the previous tier as requirement too
-const tierGrowth = 2;
+const tierGrowth = 2.5;
 
 // Automatically generate tier levels
 for (const upgradeId in UPGRADES) {
@@ -101,10 +139,12 @@ for (const upgradeId in UPGRADES) {
 
         for (let k = currentTierRequirements.length - 1; k >= 0; --k) {
             const oldTierRequirement = currentTierRequirements[k];
-            tierHandle.required.unshift({
-                shape: oldTierRequirement.shape,
-                amount: oldTierRequirement.amount,
-            });
+            if (!tierHandle.excludePrevious) {
+                tierHandle.required.unshift({
+                    shape: oldTierRequirement.shape,
+                    amount: oldTierRequirement.amount,
+                });
+            }
         }
         currentTierRequirements.push(
             ...originalRequired.map(req => ({

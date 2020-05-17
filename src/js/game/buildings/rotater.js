@@ -20,8 +20,15 @@ export class MetaRotaterBuilding extends MetaBuilding {
         return "#7dc6cd";
     }
 
+    /**
+     *
+     * @param {GameRoot} root
+     */
     getAvailableVariants(root) {
-        return [defaultBuildingVariant, enumRotaterVariants.ccw];
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw)) {
+            return [defaultBuildingVariant, enumRotaterVariants.ccw];
+        }
+        return super.getAvailableVariants(root);
     }
 
     /**
