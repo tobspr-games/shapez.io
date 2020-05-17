@@ -9,7 +9,7 @@ import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 /** @enum {string} */
-export const enumSplitterVariants = { compact: "compact" };
+export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
 
 export class MetaSplitterBuilding extends MetaBuilding {
     constructor() {
@@ -21,6 +21,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
             case defaultBuildingVariant:
                 return new Vector(2, 1);
             case enumSplitterVariants.compact:
+            case enumSplitterVariants.compactInverse:
                 return new Vector(1, 1);
             default:
                 assertAlways(false, "Unknown splitter variant: " + variant);
@@ -32,7 +33,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
     }
 
     getAvailableVariants(root) {
-        return [defaultBuildingVariant, enumSplitterVariants.compact];
+        return [defaultBuildingVariant, enumSplitterVariants.compact, enumSplitterVariants.compactInverse];
     }
 
     /**
@@ -111,7 +112,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
 
                 break;
             }
-            case enumSplitterVariants.compact: {
+            case enumSplitterVariants.compact:
+            case enumSplitterVariants.compactInverse: {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -119,7 +121,11 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     },
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.right],
+                        directions: [
+                            variant === enumSplitterVariants.compactInverse
+                                ? enumDirection.left
+                                : enumDirection.right,
+                        ],
                     },
                 ]);
 
