@@ -140,9 +140,12 @@ ingame:
 
         infoTexts:
             speed: Speed
+            range: Range
             oneItemPerSecond: 1 item / second
             itemsPerSecond: <x> items / s
             itemsPerSecondDouble: (x2)
+
+            tiles: <x> tiles
 
     # The notification when completing a level
     levelCompleteNotification:

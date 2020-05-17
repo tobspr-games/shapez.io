@@ -48,8 +48,17 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
+        const rangeTiles =
+            globalConfig.undergroundBeltMaxTilesByTier[enumUndergroundBeltVariantToTier[variant]];
+
         const beltSpeed = root.hubGoals.getUndergroundBeltBaseSpeed();
-        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
+        return [
+            [
+                T.ingame.buildingPlacement.infoTexts.range,
+                T.ingame.buildingPlacement.infoTexts.tiles.replace("<x>", "" + rangeTiles),
+            ],
+            [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)],
+        ];
     }
 
     /**
