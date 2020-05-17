@@ -232,6 +232,7 @@
                     @include S(height, 30px);
                     padding: 0;
                     align-self: center;
+                    @include IncreasedClickArea(0px);
                     background: #44484a uiResource("icons/play.png") center center / 40% no-repeat;
                 }
 
