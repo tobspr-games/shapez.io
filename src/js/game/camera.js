@@ -29,6 +29,15 @@ const velocityFade = 0.98;
 const velocityStrength = 0.4;
 const velocityMax = 20;
 
+/**
+ * @enum {string}
+ */
+export const enumMouseButton = {
+    left: "left",
+    middle: "middle",
+    right: "right",
+};
+
 export class Camera extends BasicSerializableObject {
     constructor(root) {
         super();
@@ -81,10 +90,10 @@ export class Camera extends BasicSerializableObject {
         this.touchPostMoveVelocity = new Vector(0, 0);
 
         // Handlers
-        this.downPreHandler = new Signal(/* pos */);
-        this.movePreHandler = new Signal(/* pos */);
-        this.pinchPreHandler = new Signal(/* pos */);
-        this.upPostHandler = new Signal(/* pos */);
+        this.downPreHandler = /** @type {TypedSignal<[Vector, enumMouseButton]>} */ (new Signal());
+        this.movePreHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
+        // this.pinchPreHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
+        this.upPostHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
 
         this.internalInitEvents();
         this.clampZoomLevel();
@@ -411,6 +420,10 @@ export class Camera extends BasicSerializableObject {
         this.touchPostMoveVelocity = new Vector(0, 0);
         if (event.which === 1) {
             this.combinedSingleTouchStartHandler(event.clientX, event.clientY);
+        } else if (event.which === 2) {
+            this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.middle);
+        } else if (event.which === 3) {
+            this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.right);
         }
         return false;
     }
@@ -496,10 +509,10 @@ export class Camera extends BasicSerializableObject {
             const touch = event.touches[0];
             this.combinedSingleTouchStartHandler(touch.clientX, touch.clientY);
         } else if (event.touches.length === 2) {
-            if (this.pinchPreHandler.dispatch() === STOP_PROPAGATION) {
-                // Something prevented pinching
-                return false;
-            }
+            // if (this.pinchPreHandler.dispatch() === STOP_PROPAGATION) {
+            //     // Something prevented pinching
+            //     return false;
+            // }
 
             const touch1 = event.touches[0];
             const touch2 = event.touches[1];
@@ -620,7 +633,7 @@ export class Camera extends BasicSerializableObject {
      */
     combinedSingleTouchStartHandler(x, y) {
         const pos = new Vector(x, y);
-        if (this.downPreHandler.dispatch(pos) === STOP_PROPAGATION) {
+        if (this.downPreHandler.dispatch(pos, enumMouseButton.left) === STOP_PROPAGATION) {
             // Somebody else captured it
             return;
         }

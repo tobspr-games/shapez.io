@@ -44,6 +44,10 @@ export class MetaHubBuilding extends MetaBuilding {
                 processorType: enumItemProcessorTypes.hub,
             })
         );
+
+        // We render the sprite ourself
+        entity.components.StaticMapEntity.spriteKey = null;
+
         entity.addComponent(new UnremovableComponent());
         entity.addComponent(
             new ItemAcceptorComponent({

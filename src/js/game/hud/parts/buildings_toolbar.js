@@ -33,7 +33,13 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
     constructor(root) {
         super(root);
 
-        /** @type {Object.<string, { metaBuilding: MetaBuilding, unlocked: boolean, selected: boolean, element: HTMLElement}>} */
+        /** @type {Object.<string, {
+         * metaBuilding: MetaBuilding,
+         * unlocked: boolean,
+         * selected: boolean,
+         * element: HTMLElement,
+         * index: number
+         * }>} */
         this.buildingHandles = {};
 
         this.sigBuildingSelected = new Signal();
@@ -76,6 +82,7 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
                 element: itemContainer,
                 unlocked: false,
                 selected: false,
+                index: i,
             };
         }
 
@@ -83,6 +90,9 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
             this.onSelectedPlacementBuildingChanged,
             this
         );
+
+        this.lastSelectedIndex = 0;
+        actionMapper.getBinding("cycle_buildings").add(this.cycleBuildings, this);
     }
 
     update() {
@@ -98,6 +108,13 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
         }
     }
 
+    cycleBuildings() {
+        const newIndex = (this.lastSelectedIndex + 1) % toolbarBuildings.length;
+        const metaBuildingClass = toolbarBuildings[newIndex];
+        const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
+        this.selectBuildingForPlacement(metaBuilding);
+    }
+
     /**
      * @param {MetaBuilding} metaBuilding
      */
@@ -108,6 +125,9 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
             if (handle.selected !== newStatus) {
                 handle.selected = newStatus;
                 handle.element.classList.toggle("selected", newStatus);
+            }
+            if (handle.selected) {
+                this.lastSelectedIndex = handle.index;
             }
         }
 

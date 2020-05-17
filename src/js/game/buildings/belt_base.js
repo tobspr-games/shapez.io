@@ -93,6 +93,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                         directions: [enumDirection.bottom],
                     },
                 ],
+                animated: false,
             })
         );
 

@@ -59,9 +59,8 @@ export class BeltComponent extends Component {
 
     /**
      *  Returns if the belt can currently accept an item from the given direction
-     *  @param {enumDirection} direction
      */
-    canAcceptNewItem(direction) {
+    canAcceptNewItem() {
         const firstItem = this.sortedItems[0];
         if (!firstItem) {
             return true;
@@ -73,9 +72,8 @@ export class BeltComponent extends Component {
     /**
      * Pushes a new item to the belt
      * @param {BaseItem} item
-     * @param {enumDirection} direction
      */
-    takeNewItem(item, direction) {
+    takeNewItem(item) {
         this.sortedItems.unshift([0, item]);
     }
 

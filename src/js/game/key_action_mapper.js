@@ -50,6 +50,8 @@ export const defaultKeybindings = {
         rotate_while_placing: { keyCode: key("R") },
 
         cycle_variants: { keyCode: key("T") },
+
+        cycle_buildings: { keyCode: 9 },
     },
 };
 

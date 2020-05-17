@@ -45,7 +45,7 @@ export const enumColorsToHexCode = {
     [enumColors.purple]: "#dd66ff",
 
     // blue + green
-    [enumColors.cyan]: "#87fff5",
+    [enumColors.cyan]: "#00fcff",
 
     // blue + green + red
     [enumColors.white]: "#ffffff",
