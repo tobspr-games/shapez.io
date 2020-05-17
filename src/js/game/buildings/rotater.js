@@ -7,6 +7,8 @@ import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { GameRoot } from "../root";
+import { T } from "../../translations";
+import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
 export const enumRotaterVariants = { ccw: "ccw" };
@@ -18,6 +20,20 @@ export class MetaRotaterBuilding extends MetaBuilding {
 
     getSilhouetteColor() {
         return "#7dc6cd";
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const speed = root.hubGoals.getProcessorBaseSpeed(
+            variant === enumRotaterVariants.ccw
+                ? enumItemProcessorTypes.rotaterCCW
+                : enumItemProcessorTypes.rotater
+        );
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
     /**

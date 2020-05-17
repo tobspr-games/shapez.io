@@ -39,6 +39,16 @@ export class MetaBuilding {
     }
 
     /**
+     * Should return additional statistics about this building
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        return [];
+    }
+
+    /**
      * Whether to flip the orientation after a building has been placed - useful
      * for tunnels.
      */

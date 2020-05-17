@@ -8,6 +8,8 @@ import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { globalConfig } from "../../core/config";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { formatItemsPerSecond } from "../../core/utils";
+import { T } from "../../translations";
 
 /** @enum {string} */
 export const arrayUndergroundRotationVariantToMode = [
@@ -38,6 +40,16 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
 
     getStayInPlacementMode() {
         return true;
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const beltSpeed = root.hubGoals.getUndergroundBeltBaseSpeed();
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
 
     /**

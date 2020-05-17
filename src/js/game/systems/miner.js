@@ -1,11 +1,11 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { enumDirectionToVector } from "../../core/vector";
+import { BaseItem } from "../base_item";
 import { MinerComponent } from "../components/miner";
+import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
-import { enumDirectionToVector } from "../../core/vector";
-import { Entity } from "../entity";
-import { BaseItem } from "../base_item";
 
 export class MinerSystem extends GameSystemWithFilter {
     constructor(root) {

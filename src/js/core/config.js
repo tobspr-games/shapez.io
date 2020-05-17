@@ -49,11 +49,11 @@ export const globalConfig = {
         cutterQuad: 1 / 4,
         rotater: 1 / 1,
         rotaterCCW: 1 / 1,
-        painter: 1 / 3,
-        painterDouble: 1 / 3,
-        painterQuad: 1 / 3,
-        mixer: 1 / 2,
-        stacker: 1 / 5,
+        painter: 1 / 6,
+        painterDouble: 1 / 7,
+        painterQuad: 1 / 7,
+        mixer: 1 / 5,
+        stacker: 1 / 6,
     },
 
     // Zooming
@@ -76,7 +76,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        fastGameEnter: true,
+        // fastGameEnter: true,
         noArtificialDelays: true,
         // disableSavegameWrite: true,
         showEntityBounds: false,
@@ -87,7 +87,7 @@ export const globalConfig = {
         disableZoomLimits: false,
         showChunkBorders: false,
         rewardsInstant: false,
-        // allBuildingsUnlocked: true,
+        allBuildingsUnlocked: true,
         upgradesNoCost: true,
         disableUnlockDialog: true,
         // testTranslations: true,
@@ -114,5 +114,4 @@ export const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 globalConfig.physicsDeltaMs = 1000.0 / globalConfig.physicsUpdateRate;
 globalConfig.physicsDeltaSeconds = 1.0 / globalConfig.physicsUpdateRate;
 
-globalConfig.minerSpeedItemsPerSecond =
-    globalConfig.beltSpeedItemsPerSecond / globalConfig.itemSpacingOnBelts / 6;
+globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5;

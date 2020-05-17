@@ -4,7 +4,7 @@ import { Component } from "../component";
 import { BaseItem } from "../base_item";
 import { gItemRegistry } from "../../core/global_registries";
 
-const chainBufferSize = 10;
+const chainBufferSize = 3;
 
 export class MinerComponent extends Component {
     static getId() {

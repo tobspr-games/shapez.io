@@ -7,6 +7,8 @@ import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { GameRoot } from "../root";
+import { T } from "../../translations";
+import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
 export const enumPainterVariants = { double: "double", quad: "quad" };
@@ -31,6 +33,28 @@ export class MetaPainterBuilding extends MetaBuilding {
 
     getSilhouetteColor() {
         return "#cd9b7d";
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        switch (variant) {
+            case defaultBuildingVariant: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
+            case enumPainterVariants.double: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterDouble);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed, true)]];
+            }
+            case enumPainterVariants.quad: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterQuad);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
+        }
     }
 
     /**

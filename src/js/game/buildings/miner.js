@@ -5,6 +5,8 @@ import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { T } from "../../translations";
+import { round1Digit, round2Digits, formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
 export const enumMinerVariants = { chainable: "chainable" };
@@ -16,6 +18,16 @@ export class MetaMinerBuilding extends MetaBuilding {
 
     getSilhouetteColor() {
         return "#b37dcd";
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const speed = root.hubGoals.getMinerBaseSpeed();
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
     /**

@@ -7,6 +7,8 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { T } from "../../translations";
+import { formatItemsPerSecond } from "../../core/utils";
 
 export class MetaMixerBuilding extends MetaBuilding {
     constructor() {
@@ -26,6 +28,16 @@ export class MetaMixerBuilding extends MetaBuilding {
      */
     getIsUnlocked(root) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_mixer);
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.mixer);
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
     /**
