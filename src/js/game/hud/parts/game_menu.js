@@ -2,6 +2,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, randomInt } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
 import { enumNotificationType } from "./notifications";
+import { T } from "../../../translations";
 
 export class HUDGameMenu extends BaseHUDPart {
     initialize() {}
@@ -16,7 +17,7 @@ export class HUDGameMenu extends BaseHUDPart {
                 keybinding: "menu_open_shop",
                 badge: () => this.root.hubGoals.getAvailableUpgradeCount(),
                 notification: /** @type {[string, enumNotificationType]} */ ([
-                    "A new upgrade is available!",
+                    T.ingame.notifications.newUpgrade,
                     enumNotificationType.upgrade,
                 ]),
             },

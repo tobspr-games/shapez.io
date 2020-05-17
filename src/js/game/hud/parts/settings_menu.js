@@ -1,8 +1,9 @@
 import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv } from "../../../core/utils";
+import { makeDiv, formatSeconds } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { InputReceiver } from "../../../core/input_receiver";
 import { KeyActionMapper } from "../../key_action_mapper";
+import { T } from "../../../translations";
 
 export class HUDSettingsMenu extends BaseHUDPart {
     createElements(parent) {
@@ -14,18 +15,18 @@ export class HUDSettingsMenu extends BaseHUDPart {
             this.background,
             null,
             ["timePlayed"],
-            `<strong>Playtime</strong><span class="playtime"></span>`
+            `<strong>${T.ingame.settingsMenu.playtime}</strong><span class="playtime"></span>`
         );
 
         this.buttonContainer = makeDiv(this.menuElement, null, ["buttons"]);
 
         const buttons = [
             {
-                title: "Continue",
+                title: T.ingame.settingsMenu.buttons.continue,
                 action: () => this.close(),
             },
             {
-                title: "Return to menu",
+                title: T.ingame.settingsMenu.buttons.menu,
                 action: () => this.returnToMenu(),
             },
         ];
@@ -79,9 +80,8 @@ export class HUDSettingsMenu extends BaseHUDPart {
         // this.background.classList.add("visible");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
-        const totalMinutesPlayed = Math.ceil(this.root.time.now() / 60.0);
-        const playtimeString = totalMinutesPlayed === 1 ? "1 minute" : totalMinutesPlayed + " minutes";
-        this.timePlayed.querySelector(".playtime").innerText = playtimeString;
+        const totalSecondsPlayed = Math.ceil(this.root.time.now());
+        this.timePlayed.querySelector(".playtime").innerText = formatSeconds(totalSecondsPlayed);
     }
 
     close() {

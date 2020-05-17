@@ -20,14 +20,6 @@ export class MetaHubBuilding extends MetaBuilding {
         return "#eb5555";
     }
 
-    getName() {
-        return "Hub";
-    }
-
-    getDescription() {
-        return "Your central hub, deliver shapes to it to unlock new buildings.";
-    }
-
     isRotateable() {
         return false;
     }

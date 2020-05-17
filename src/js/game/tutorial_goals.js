@@ -15,21 +15,6 @@ export const enumHubGoalRewards = {
     no_reward: "no_reward",
 };
 
-/**
- * @enum {string}
- */
-export const enumHubGoalRewardToString = {
-    [enumHubGoalRewards.reward_cutter_and_trash]: "Cutting Shapes",
-    [enumHubGoalRewards.reward_rotater]: "Rotating",
-    [enumHubGoalRewards.reward_painter]: "Painting",
-    [enumHubGoalRewards.reward_mixer]: "Color Mixing",
-    [enumHubGoalRewards.reward_stacker]: "Combiner",
-    [enumHubGoalRewards.reward_splitter]: "Splitter/Merger",
-    [enumHubGoalRewards.reward_tunnel]: "Tunnel",
-
-    [enumHubGoalRewards.no_reward]: "Next level",
-};
-
 export const tutorialGoals = [
     // Circle
     {

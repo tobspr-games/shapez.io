@@ -17,14 +17,6 @@ export class MetaMixerBuilding extends MetaBuilding {
         return new Vector(2, 1);
     }
 
-    getName() {
-        return "Mix Colors";
-    }
-
-    getDescription() {
-        return "Mixes two colors using additive blending.";
-    }
-
     getSilhouetteColor() {
         return "#cdbb7d";
     }

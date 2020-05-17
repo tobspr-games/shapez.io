@@ -32,20 +32,6 @@ export class MetaBuilding {
     }
 
     /**
-     * Should return the name of this building
-     */
-    getName() {
-        return this.id;
-    }
-
-    /**
-     * Should return the description of this building
-     */
-    getDescription() {
-        return "No Description";
-    }
-
-    /**
      * Whether to stay in placement mode after having placed a building
      */
     getStayInPlacementMode() {

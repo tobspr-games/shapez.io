@@ -1,18 +1,12 @@
 import { Math_min } from "../../../core/builtins";
 import { InputReceiver } from "../../../core/input_receiver";
-import { makeButton, makeDiv, removeAllChildren } from "../../../core/utils";
+import { makeButton, makeDiv, removeAllChildren, capitalizeFirstLetter } from "../../../core/utils";
 import { KeyActionMapper } from "../../key_action_mapper";
 import { enumAnalyticsDataSource } from "../../production_analytics";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumDisplayMode, HUDShapeStatisticsHandle } from "./statistics_handle";
-
-const enumDataSourceToText = {
-    [enumAnalyticsDataSource.stored]: "Displaying amount of stored shapes in your central building.",
-    [enumAnalyticsDataSource.produced]:
-        "Displaying all shapes your whole factory produces, including intermediate products.",
-    [enumAnalyticsDataSource.delivered]: "Displaying shapes which are delivered to your central building.",
-};
+import { T } from "../../../translations";
 
 export class HUDStatistics extends BaseHUDPart {
     createElements(parent) {
@@ -20,7 +14,7 @@ export class HUDStatistics extends BaseHUDPart {
 
         // DIALOG Inner / Wrapper
         this.dialogInner = makeDiv(this.background, null, ["dialogInner"]);
-        this.title = makeDiv(this.dialogInner, null, ["title"], `statistics`);
+        this.title = makeDiv(this.dialogInner, null, ["title"], T.ingame.statistics.title);
         this.closeButton = makeDiv(this.title, null, ["closeButton"]);
         this.trackClicks(this.closeButton, this.close);
 
@@ -30,13 +24,21 @@ export class HUDStatistics extends BaseHUDPart {
         this.filtersDataSource = makeDiv(this.filterHeader, null, ["filtersDataSource"]);
         this.filtersDisplayMode = makeDiv(this.filterHeader, null, ["filtersDisplayMode"]);
 
-        const buttonModeProduced = makeButton(this.filtersDataSource, ["modeProduced"], "Produced");
-        const buttonModeDelivered = makeButton(this.filtersDataSource, ["modeDelivered"], "Delivered");
-        const buttonModeStored = makeButton(this.filtersDataSource, ["modeStored"], "Stored");
+        const dataSources = [
+            enumAnalyticsDataSource.produced,
+            enumAnalyticsDataSource.delivered,
+            enumAnalyticsDataSource.stored,
+        ];
 
-        this.trackClicks(buttonModeProduced, () => this.setDataSource(enumAnalyticsDataSource.produced));
-        this.trackClicks(buttonModeStored, () => this.setDataSource(enumAnalyticsDataSource.stored));
-        this.trackClicks(buttonModeDelivered, () => this.setDataSource(enumAnalyticsDataSource.delivered));
+        for (let i = 0; i < dataSources.length; ++i) {
+            const dataSource = dataSources[i];
+            const button = makeButton(
+                this.filtersDataSource,
+                ["mode" + capitalizeFirstLetter(dataSource)],
+                T.ingame.statistics.dataSources[dataSource].title
+            );
+            this.trackClicks(button, () => this.setDataSource(dataSource));
+        }
 
         const buttonDisplayDetailed = makeButton(this.filtersDisplayMode, ["displayDetailed"]);
         const buttonDisplayIcons = makeButton(this.filtersDisplayMode, ["displayIcons"]);
@@ -54,7 +56,7 @@ export class HUDStatistics extends BaseHUDPart {
         this.dataSource = source;
         this.dialogInner.setAttribute("data-datasource", source);
 
-        this.sourceExplanation.innerText = enumDataSourceToText[source];
+        this.sourceExplanation.innerText = T.ingame.statistics.dataSources[source].title;
         if (this.visible) {
             this.rerenderFull();
         }
@@ -204,7 +206,7 @@ export class HUDStatistics extends BaseHUDPart {
 
         if (entries.length === 0) {
             this.contentDiv.innerHTML = `
-            <strong class="noEntries">No shapes have been produced so far.</strong>`;
+            <strong class="noEntries">${T.ingame.statistics.noShapesProduced}</strong>`;
         }
 
         this.contentDiv.classList.toggle("hasEntries", entries.length > 0);

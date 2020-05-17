@@ -1,5 +1,6 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
+import { T } from "../../../translations";
 
 /** @enum {string} */
 export const enumNotificationType = {
@@ -23,7 +24,7 @@ export class HUDNotifications extends BaseHUDPart {
 
         // Automatic notifications
         this.root.signals.gameSaved.add(() =>
-            this.onNotification("Your game has been saved.", enumNotificationType.saved)
+            this.onNotification(T.ingame.notifications.gameSaved, enumNotificationType.saved)
         );
     }
 

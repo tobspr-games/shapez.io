@@ -20,14 +20,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return "#777";
     }
 
-    getName() {
-        return "Belt";
-    }
-
-    getDescription() {
-        return "Transports items, hold and drag to place multiple.";
-    }
-
     getPreviewSprite(rotationVariant) {
         switch (arrayBeltVariantToRotation[rotationVariant]) {
             case enumDirection.top: {

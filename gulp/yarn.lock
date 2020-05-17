@@ -2477,6 +2477,13 @@ buffer@^5.2.0, buffer@^5.2.1:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
 
+bufferstreams@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/bufferstreams/-/bufferstreams-2.0.1.tgz#441b267c2fc3fee02bb1d929289da113903bd5ef"
+  integrity sha512-ZswyIoBfFb3cVDsnZLLj2IDJ/0ppYdil/v2EGlZXvoefO689FokEmFEldhN5dV7R2QBxFneqTJOMIpfqhj+n0g==
+  dependencies:
+    readable-stream "^2.3.6"
+
 builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
@@ -6451,6 +6458,18 @@ gulp-webserver@^0.9.1:
     through2 "^0.5.1"
     tiny-lr "0.1.4"
     watch "^0.11.0"
+
+gulp-yaml@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/gulp-yaml/-/gulp-yaml-2.0.4.tgz#86569e2becc9f5dfc95dc92db5a71a237f4b6ab4"
+  integrity sha512-S/9Ib8PO+jGkCvWDwBUkmFkeW7QM0pp4PO8NNrMEfWo5Sk30P+KqpyXc4055L/vOX326T/b9MhM4nw5EenyX9g==
+  dependencies:
+    bufferstreams "^2.0.1"
+    js-yaml "^3.13.1"
+    object-assign "^4.1.1"
+    plugin-error "^1.0.1"
+    replace-ext "^1.0.0"
+    through2 "^3.0.0"
 
 gulp@^3.9.1:
   version "3.9.1"
@@ -12889,7 +12908,7 @@ through2@2.0.3:
     readable-stream "^2.1.5"
     xtend "~4.0.1"
 
-through2@3.0.1, through2@^3.0.1:
+through2@3.0.1, through2@^3.0.0, through2@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/through2/-/through2-3.0.1.tgz#39276e713c3302edf9e388dd9c812dd3b825bd5a"
   integrity sha512-M96dvTalPT3YbYLaKaCuwu+j06D/8Jfib0o/PxbVt6Amhv3dUAtW6rTV1jPgJSBG83I/e04Y6xkVdVhSRhi0ww==

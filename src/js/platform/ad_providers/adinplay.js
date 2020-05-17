@@ -7,6 +7,7 @@ import { createLogger } from "../../core/logging";
 import { ClickDetector } from "../../core/click_detector";
 import { performanceNow } from "../../core/builtins";
 import { clamp } from "../../core/utils";
+import { T } from "../../translations";
 
 const logger = createLogger("adprovider/adinplay");
 
@@ -111,7 +112,7 @@ export class AdinplayAdProvider extends AdProviderInterface {
                 AD_HEIGHT: h,
                 AD_FULLSCREEN: false,
                 AD_CENTERPLAYER: false,
-                LOADING_TEXT: "Loading",
+                LOADING_TEXT: T.global.loading,
                 PREROLL_ELEM: function () {
                     return videoElement;
                 },

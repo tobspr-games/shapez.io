@@ -29,14 +29,6 @@ export class MetaPainterBuilding extends MetaBuilding {
         }
     }
 
-    getName() {
-        return "Dye";
-    }
-
-    getDescription() {
-        return "Colors the whole shape on the left input with the color from the right input.";
-    }
-
     getSilhouetteColor() {
         return "#cd9b7d";
     }

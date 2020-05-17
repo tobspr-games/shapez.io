@@ -10,6 +10,7 @@ import {
 } from "../core/utils";
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { T } from "../translations";
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -18,14 +19,12 @@ export class MainMenuState extends GameState {
 
     getInnerHTML() {
         const bannerHtml = `
-            <h3>This is a Demo Version</h3>
+            <h3>${T.demoBanners.title}</h3>
             
-            <p>Get <strong>shapez.io on steam</strong> for:</p>
+            <p>${T.demoBanners.intro}</p>
 
             <ul>
-                <li>No advertisements and demo banners.</li>
-                <li>Unlimited savegame slots.</li>
-                <li>Supporting the developer ❤️</li>
+                ${T.demoBanners.advantages.map(advantage => `<li>${advantage}</li>`).join("")}
             </ul>
 
             <a href="https://steam.shapez.io" class="steamLink" target="_blank">Get shapez.io on steam!</a>
@@ -65,12 +64,12 @@ export class MainMenuState extends GameState {
                 isSupportedBrowser()
                     ? ""
                     : `
-                <div class="browserWarning">This game is optimized for Google Chrome. Your browser is not supported or slow!</div>
+                <div class="browserWarning">${T.mainMenu.browserWarning}</div>
             `
             }
 
-                    <button class="playButton styledButton">Play</button>
-                    <button class="importButton styledButton">Import savegame</button>
+                    <button class="playButton styledButton">${T.mainMenu.play}</button>
+                    <button class="importButton styledButton">${T.mainMenu.importSavegame}</button>
                 </div>
 
                 ${
@@ -86,13 +85,13 @@ export class MainMenuState extends GameState {
             <div class="footer">
 
                 <a href="https://github.com/tobspr/shapez.io" target="_blank">
-                    This game is open source!
+                    ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
-                </a>    
-
+                    </a>    
+                    
                 <a href="https://discord.gg/HN7EVzV" target="_blank">
-                Official discord server
-                <span class="thirdpartyLogo  discordLogo"></span>
+                    ${T.mainMenu.discordLink}
+                    <span class="thirdpartyLogo  discordLogo"></span>
                 </a>    
 
             </div>
@@ -112,7 +111,6 @@ export class MainMenuState extends GameState {
                     const reader = new FileReader();
                     reader.addEventListener("load", event => {
                         const contents = event.target.result;
-
                         let realContent;
 
                         try {
@@ -120,8 +118,8 @@ export class MainMenuState extends GameState {
                         } catch (err) {
                             closeLoader();
                             this.dialogs.showWarning(
-                                "Import error",
-                                "Failed to import your savegame:<br><br>" + err
+                                T.dialogs.importSavegameError.title,
+                                T.dialogs.importSavegameError.text + "<br><br>" + err
                             );
                             return;
                         }
@@ -129,22 +127,27 @@ export class MainMenuState extends GameState {
                         this.app.savegameMgr.importSavegame(realContent).then(
                             () => {
                                 closeLoader();
-                                this.dialogs.showWarning("Imported", "Your savegame has been imported.");
+                                this.dialogs.showWarning(
+                                    T.dialogs.importSavegameSuccess.title,
+                                    T.dialogs.importSavegameSuccess.text
+                                );
 
                                 this.renderSavegames();
                             },
                             err => {
                                 closeLoader();
                                 this.dialogs.showWarning(
-                                    "Import error",
-                                    "Failed to import savegame. Please check the console output."
+                                    T.dialogs.importSavegameError.title,
+                                    T.dialogs.importSavegameError.text + ":<br><br>" + err
                                 );
                             }
                         );
                     });
                     reader.addEventListener("error", error => {
-                        console.error(error);
-                        alert("Failed to read file: " + error);
+                        this.dialogs.showWarning(
+                            T.dialogs.importSavegameError.title,
+                            T.dialogs.importSavegameError.text + ":<br><br>" + error
+                        );
                     });
                     reader.readAsText(file, "utf-8");
                 });
@@ -159,7 +162,10 @@ export class MainMenuState extends GameState {
 
     onEnter(payload) {
         if (payload.loadError) {
-            alert("Error while loading game: " + payload.loadError);
+            this.dialogs.showWarning(
+                T.dialogs.gameLoadFailure.title,
+                T.dialogs.gameLoadFailure.text + "<br><br>" + payload.loadError
+            );
         }
 
         this.dialogs = new HUDModalDialogs(null, this.app);
@@ -244,8 +250,8 @@ export class MainMenuState extends GameState {
      */
     deleteGame(game) {
         const signals = this.dialogs.showWarning(
-            "Confirm Deletion",
-            "Are you sure you want to delete the game?",
+            T.dialogs.confirmSavegameDelete.title,
+            T.dialogs.confirmSavegameDelete.text,
             ["delete:bad", "cancel:good"]
         );
 
@@ -255,7 +261,10 @@ export class MainMenuState extends GameState {
                     this.renderSavegames();
                 },
                 err => {
-                    this.dialogs.showWarning("Failed to delete", "Error: " + err);
+                    this.dialogs.showWarning(
+                        T.dialogs.savegameDeletionError.title,
+                        T.dialogs.savegameDeletionError.text + "<br><br>" + err
+                    );
                 }
             );
         });

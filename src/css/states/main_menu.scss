@@ -251,9 +251,9 @@
 
         @include S(padding, 15px);
         > a {
-            display: flex;
-            flex-direction: row;
+            display: grid;
             align-items: center;
+            grid-template-columns: 1fr auto;
 
             justify-content: center;
             background: #fafafa;
@@ -280,8 +280,8 @@
 
             .thirdpartyLogo {
                 display: inline-block;
-                width: 80%;
-                height: 80%;
+                @include S(width, 50px);
+                @include S(height, 50px);
                 background: center center / 80% no-repeat;
                 &.githubLogo {
                     background-image: uiResource("main_menu/github.png");

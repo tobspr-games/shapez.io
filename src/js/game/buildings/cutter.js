@@ -30,14 +30,6 @@ export class MetaCutterBuilding extends MetaBuilding {
         }
     }
 
-    getName() {
-        return "Cut Half";
-    }
-
-    getDescription() {
-        return "Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>";
-    }
-
     getAvailableVariants(root) {
         return [defaultBuildingVariant, enumCutterVariants.quad];
     }
