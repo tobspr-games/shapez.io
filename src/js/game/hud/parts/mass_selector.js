@@ -9,6 +9,7 @@ import { makeDiv } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { createLogger } from "../../../core/logging";
 import { enumMouseButton } from "../../camera";
+import { T } from "../../../translations";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -23,10 +24,9 @@ export class HUDMassSelector extends BaseHUDPart {
             parent,
             "ingame_HUD_MassSelector",
             [],
-            `
-            Press <code class="keybinding">${removalKeybinding}</code> to remove selected buildings
-            and <code class="keybinding">${abortKeybinding}</code> to cancel.
-        `
+            T.ingame.massDelete.infoText
+                .replace("<keyDelete>", removalKeybinding)
+                .replace("<keyCancel>", abortKeybinding)
         );
     }
 

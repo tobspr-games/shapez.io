@@ -1,0 +1,259 @@
+#
+#  GAME TRANSLATIONS
+#
+#  Contributing:
+#
+#    If you want to contribute, please make a pull request on this respository
+#    and I will have a look.
+#
+#  Placeholders:
+#
+#    Do *not* replace placeholders! Placeholders have a special syntax like
+#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
+#    translation for this one in German for example would be: `Taste: <key>` (notice
+#    how the placeholder stayed '<key>' and was not replaced!)
+#
+#  Adding a new language:
+#
+#    If you want to add a new language, ask me in the discord and I will setup
+#    the basic structure so the game also detects it.
+#
+
+global:
+    loading: Loading
+
+    # How big numbers are rendered, e.g. "10,000"
+    thousandsDivider: ","
+
+    # Shown for infinitely big numbers
+    infinite: inf
+
+    time:
+        # Used for formatting past time dates
+        oneSecondAgo: one second ago
+        xSecondsAgo: <x> seconds ago
+        oneMinuteAgo: one minute ago
+        xMinutesAgo: <x> minutes ago
+        oneHourAgo: one hour ago
+        xHoursAgo: <x> hours ago
+        oneDayAgo: one day ago
+        xDaysAgo: <x> days ago
+
+        # Short formats for times, e.g. '5h 23m'
+        secondsShort: <seconds>s
+        minutesAndSecondsShort: <minutes>m <seconds>s
+        hoursAndMinutesShort: <hours>h <minutes>s
+
+    keys:
+        tab: TAB
+        control: CTRL
+        alt: ALT
+        escape: ESC
+        shift: SHIFT
+        space: SPACE
+
+demoBanners:
+    # This is the "advertisement" shown in the main menu and other various places
+    title: This is a demo version
+    intro: >-
+        Get <strong>shapez.io on steam</strong> for:
+    advantages:
+        - No advertisements.
+        - Unlimited savegame slots.
+        - Supporting the developer ❤️
+
+mainMenu:
+    play: Play
+    importSavegame: Import Savegame
+    openSourceHint: This game is open source!
+    discordLink: Official Discord Server
+
+    # This is shown when using firefox and other browsers which are not supported.
+    browserWarning: >-
+        This game is optimized for Google Chrome. Your browser is not supported or slow!
+
+dialogs:
+    buttons:
+        ok: OK
+        delete: Delete
+        cancel: Cancel
+
+    importSavegameError:
+        title: Import Error
+        text: >-
+            Failed to import your savegame:
+
+    importSavegameSuccess:
+        title: Savegame Imported
+        text: >-
+            Your savegame has been successfully imported.
+
+    gameLoadFailure:
+        title: Game is broken
+        text: >-
+            Failed to load your savegame:
+
+    confirmSavegameDelete:
+        title: Confirm deletion
+        text: >-
+            Are you sure you want to delete the game?
+
+    savegameDeletionError:
+        title: Failed to delete
+        text: >-
+            Failed to delete the savegame:
+
+ingame:
+    # This is shown in the top left corner and displays useful keybindings in
+    # every situation
+    keybindingsOverlay:
+        centerMap: Center
+        moveMap: Move
+        removeBuildings: Delete
+        stopPlacement: Stop placement
+        rotateBuilding: Rotate building
+        placeMultiple: Place multiple
+        reverseOrientation: Reverse orientation
+        disableAutoOrientation: Disable auto orientation
+        toggleHud: Toggle HUD
+
+    # Everything related to placing buildings (I.e. as soon as you selected a building
+    # from the toolbar)
+    buildingPlacement:
+        # Buildings can have different variants which are unlocked at later levels,
+        # and this is the hint shown when there are multiple variants available.
+        cycleBuildingVariants: Press <key> to cycle variants.
+
+        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
+        hotkeyLabel: >-
+            Hotkey: <key>
+
+    # The notification when completing a level
+    levelCompleteNotification:
+        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
+        levelTitle: Level <level>
+        completed: Completed
+        unlockText: Unlocked <reward>!
+        buttonNextLevel: Next Level
+
+    # Notifications on the lower right
+    notifications:
+        newUpgrade: A new upgrade is available!
+        gameSaved: Your game has been saved.
+
+    # Mass delete information, this is when you hold CTRL and then drag with your mouse
+    # to select multiple buildings to delete
+    massDelete:
+        infoText: Press <keyDelete> to remove selected buildings and <keyCancel> to cancel.
+
+    # The "Upgrades" window
+    shop:
+        title: Upgrades
+        buttonUnlock: Upgrade
+
+        # Gets replaced to e.g. "Tier IX"
+        tier: Tier <x>
+
+        # The roman number for each tier
+        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+
+        maximumLevel: Maximum level
+
+    # The "Statistics" window
+    statistics:
+        title: Statistics
+        dataSources:
+            stored:
+                title: Stored
+                description: Displaying amount of stored shapes in your central building.
+            produced:
+                title: Produced
+                description: Displaying all shapes your whole factory produces, including intermediate products.
+            delivered:
+                title: Delivered
+                description: Displaying shapes which are delivered to your central building.
+        noShapesProduced: No shapes have been produced so far.
+
+        # Displays the shapes per minute, e.g. '523 / m'
+        shapesPerMinute: <shapes> / m
+
+    # Settings menu, when you press "ESC"
+    settingsMenu:
+        playtime: Playtime
+
+        playtime1Minute: 1 minutes
+        playtimeXMinutes: <x> minutes
+
+        buttons:
+            continue: Continue
+            menu: Return to menu
+
+# All shop upgrades
+shopUpgrades:
+    belt:
+        name: Belts, Distributor & Tunnels
+        description: Speed +<gain>%
+    miner:
+        name: Extraction
+        description: Speed +<gain>%
+    processors:
+        name: Shape Processing
+        description: Speed +<gain>%
+    painting:
+        name: Mixing & Painting
+        description: Speed +<gain>%
+
+# Buildings and their name / description
+buildings:
+    belt:
+        name: Belt
+        description: Transports items, hold and drag to place multiple.
+
+    miner: # Internal name for the Extractor
+        name: Extractor
+        description: Place over a shape or color to extract it. Six extractors fill exactly one belt.
+
+    underground_belt: # Internal name for the Tunnel
+        name: Tunnel
+        description: Allows to tunnel resources under buildings and belts.
+
+    splitter: # Internal name for the Balancer
+        name: Balancer
+        description: Multifunctional - Evenly distributes all inputs onto all outputs.
+
+    cutter:
+        name: Cut Half
+        description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+
+    rotater:
+        name: Rotate
+        description: Rotates shapes clockwise by 90 degrees.
+
+    stacker: # Internal name for the Combiner
+        name: Combine
+        description: Combines both items. If they can not be merged, the right item is placed above the left item.
+
+    mixer:
+        name: Mix Colors
+        description: Mixes two colors using additive blending.
+
+    painter:
+        name: Dye
+        description: Colors the whole shape on the left input with the color from the right input.
+
+    trash: # Internal name for the destroyer
+        name: Destroyed
+        description: Accepts inputs from all sides and destroys them. Forever.
+
+storyRewards:
+    # Those are the rewards gained from completing the store
+    reward_cutter_and_trash: Cutting Shapes
+    reward_rotater: Rotating
+    reward_painter: Painting
+    reward_mixer: Color Mixing
+    reward_stacker: Combiner
+    reward_splitter: Splitter/Merger
+    reward_tunnel: Tunnel
+
+    # Special reward, which is shown when there is no reward actually
+    no_reward: Next level

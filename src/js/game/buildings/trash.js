@@ -12,14 +12,6 @@ export class MetaTrashBuilding extends MetaBuilding {
         super("trash");
     }
 
-    getName() {
-        return "Destroyer";
-    }
-
-    getDescription() {
-        return "Accepts inputs from all sides and destroys them. Forever.";
-    }
-
     isRotateable() {
         return false;
     }

@@ -11,6 +11,7 @@ import { FormElement } from "./modal_dialog_forms";
 import { globalConfig } from "./config";
 import { getStringForKeyCode } from "../game/key_action_mapper";
 import { createLogger } from "./logging";
+import { T } from "../translations";
 
 const kbEnter = 13;
 const kbCancel = 27;
@@ -146,8 +147,7 @@ export class Dialog {
                 button.classList.add("button");
                 button.classList.add("styledButton");
                 button.classList.add(buttonStyle);
-                // button.innerText = T.dialog_buttons[buttonId];
-                button.innerText = buttonId;
+                button.innerText = T.dialogs.buttons[buttonId];
 
                 const params = (rawParams || "").split("/");
                 const useTimeout = params.indexOf("timeout") >= 0;
@@ -277,7 +277,7 @@ export class DialogLoading extends Dialog {
         const loader = document.createElement("div");
         loader.classList.add("prefab_LoadingTextWithAnim");
         loader.classList.add("loadingIndicator");
-        loader.innerText = "Loading";
+        loader.innerText = T.global.loading;
         elem.appendChild(loader);
 
         this.app.inputMgr.pushReciever(this.inputReciever);

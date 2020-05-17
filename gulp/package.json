@@ -97,6 +97,7 @@
         "gulp-sftp": "^0.1.5",
         "gulp-terser": "^1.2.0",
         "gulp-webserver": "^0.9.1",
+        "gulp-yaml": "^2.0.4",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-pngquant": "^8.0.0",
         "jimp": "^0.6.1",

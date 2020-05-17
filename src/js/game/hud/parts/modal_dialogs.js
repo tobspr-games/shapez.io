@@ -80,22 +80,6 @@ export class HUDModalDialogs extends BaseHUDPart {
         return dialog.buttonSignals;
     }
 
-    showVideoTutorial(title, text, videoUrl) {
-        const dialog = new DialogVideoTutorial({
-            app: this.app,
-            title: title,
-            contentHTML: text,
-            videoUrl,
-        });
-        this.internalShowDialog(dialog);
-
-        if (this.app) {
-            this.app.sound.playUiSound(SOUNDS.dialogOk);
-        }
-
-        return dialog.buttonSignals;
-    }
-
     showOptionChooser(title, options) {
         const dialog = new DialogOptionChooser({
             app: this.app,

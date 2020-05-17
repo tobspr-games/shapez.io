@@ -1,23 +1,24 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { MetaBuilding, defaultBuildingVariant } from "../../meta_building";
-import { DrawParameters } from "../../../core/draw_parameters";
+import { Math_abs, Math_degrees, Math_radians } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
-import { StaticMapEntityComponent } from "../../components/static_map_entity";
-import { STOP_PROPAGATION, Signal } from "../../../core/signal";
-import {
-    Vector,
-    enumDirectionToAngle,
-    enumInvertedDirections,
-    enumDirectionToVector,
-} from "../../../core/vector";
-import { pulseAnimation, makeDiv, removeAllChildren } from "../../../core/utils";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { TrackedState } from "../../../core/tracked_state";
-import { Math_abs, Math_radians, Math_degrees } from "../../../core/builtins";
-import { Loader } from "../../../core/loader";
+import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite } from "../../../core/draw_utils";
-import { Entity } from "../../entity";
+import { Loader } from "../../../core/loader";
+import { STOP_PROPAGATION } from "../../../core/signal";
+import { TrackedState } from "../../../core/tracked_state";
+import { makeDiv, removeAllChildren } from "../../../core/utils";
+import {
+    enumDirectionToAngle,
+    enumDirectionToVector,
+    enumInvertedDirections,
+    Vector,
+} from "../../../core/vector";
 import { enumMouseButton } from "../../camera";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { Entity } from "../../entity";
+import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
+import { BaseHUDPart } from "../base_hud_part";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { T } from "../../../translations";
 
 export class HUDBuildingPlacer extends BaseHUDPart {
     initialize() {
@@ -231,13 +232,16 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.abortDragging();
         this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
         if (metaBuilding) {
-            this.buildingInfoElements.label.innerHTML = metaBuilding.getName();
-            this.buildingInfoElements.descText.innerHTML = metaBuilding.getDescription();
+            this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id].name;
+            this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id].description;
 
             const binding = this.root.gameState.keyActionMapper.getBinding(
                 "building_" + metaBuilding.getId()
             );
-            this.buildingInfoElements.hotkey.innerHTML = "Hotkey: " + binding.getKeyCodeString();
+            this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace(
+                "<key>",
+                "<code class='keybinding'>" + binding.getKeyCodeString() + "</code>"
+            );
 
             const variant = this.preferredVariants[metaBuilding.getId()] || defaultBuildingVariant;
             this.currentVariant.set(variant);
@@ -283,11 +287,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             this.variantsElement,
             null,
             ["explanation"],
-            `
-            Press <code class='keybinding'>${this.root.gameState.keyActionMapper
-                .getBinding("cycle_variants")
-                .getKeyCodeString()}</code> to cycle variants.
-        `
+            T.ingame.buildingPlacement.cycleBuildingVariants.replace(
+                "<key>",
+                "<code class='keybinding'>" +
+                    this.root.gameState.keyActionMapper.getBinding("cycle_variants").getKeyCodeString() +
+                    "</code>"
+            )
         );
 
         for (let i = 0; i < availableVariants.length; ++i) {

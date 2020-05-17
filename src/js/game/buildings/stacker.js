@@ -13,16 +13,8 @@ export class MetaStackerBuilding extends MetaBuilding {
         super("stacker");
     }
 
-    getName() {
-        return "Combine";
-    }
-
     getSilhouetteColor() {
         return "#9fcd7d";
-    }
-
-    getDescription() {
-        return "Combines both items. If they can not be merged, the right item is placed above the left item.";
     }
 
     getDimensions() {

@@ -39,6 +39,13 @@
     .hotkey {
         color: lighten($colorGreenBright, 10);
         font-weight: bold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .keybinding {
+            position: relative;
+            @include S(margin-left, 5px);
+        }
     }
 
     .buildingImage {

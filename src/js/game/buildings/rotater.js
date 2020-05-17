@@ -16,14 +16,6 @@ export class MetaRotaterBuilding extends MetaBuilding {
         super("rotater");
     }
 
-    getName() {
-        return "Rotate";
-    }
-
-    getDescription() {
-        return "Rotates shapes clockwise by 90 degrees.";
-    }
-
     getSilhouetteColor() {
         return "#7dc6cd";
     }

@@ -27,16 +27,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
         }
     }
 
-    getName() {
-        return "Balancer";
-    }
-
     getSilhouetteColor() {
         return "#444";
-    }
-
-    getDescription() {
-        return "Multifunctional - Evenly distributes all inputs onto all outputs.";
     }
 
     getAvailableVariants(root) {

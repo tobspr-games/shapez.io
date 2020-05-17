@@ -15,6 +15,7 @@ import {
     performanceNow,
 } from "./builtins";
 import { Vector } from "./vector";
+import { T } from "../translations";
 
 // Constants
 export const TOP = new Vector(0, -1);
@@ -421,7 +422,7 @@ export function formatBigNumber(num, divider = ".") {
     num = Math_abs(num);
 
     if (num > 1e54) {
-        return sign + "inf";
+        return sign + T.global.infinite;
     }
 
     if (num < 10 && !Number.isInteger(num)) {
@@ -459,7 +460,7 @@ export function formatBigNumberFull(num, divider = ",") {
         return num + "";
     }
     if (num > 1e54) {
-        return "infinite";
+        return T.global.infinite;
     }
     let rest = num;
     let out = "";
@@ -831,24 +832,47 @@ export function formatSecondsToTimeAgo(secs) {
 
     if (seconds <= 60) {
         if (seconds <= 1) {
-            return "one second ago";
+            return T.global.time.oneSecondAgo;
         }
-        return seconds + " seconds ago";
+        return T.global.time.xSecondsAgo.replace("<x>", "" + seconds);
     } else if (minutes <= 60) {
         if (minutes <= 1) {
-            return "one minute ago";
+            return T.global.time.oneMinuteAgo;
         }
-        return minutes + " minutes ago";
+        return T.global.time.xMinutesAgo.replace("<x>", "" + minutes);
     } else if (hours <= 60) {
         if (hours <= 1) {
-            return "one hour ago";
+            return T.global.time.oneHourAgo;
         }
-        return hours + " hours ago";
+        return T.global.time.xHoursAgo.replace("<x>", "" + hours);
     } else {
         if (days <= 1) {
-            return "one day ago";
+            return T.global.time.oneDayAgo;
         }
-        return days + " days ago";
+        return T.global.time.xDaysAgo.replace("<x>", "" + days);
+    }
+}
+
+/**
+ * Formats seconds into a readable string like "5h 23m"
+ * @param {number} secs Seconds
+ * @returns {string}
+ */
+export function formatSeconds(secs) {
+    const trans = T.global.time;
+    secs = Math_ceil(secs);
+    if (secs < 60) {
+        return trans.secondsShort.replace("<seconds>", "" + secs);
+    } else if (secs < 60 * 60) {
+        const minutes = Math_floor(secs / 60);
+        const seconds = secs % 60;
+        return trans.minutesAndSecondsShort
+            .replace("<seconds>", "" + seconds)
+            .replace("<minutes>", "" + minutes);
+    } else {
+        const hours = Math_floor(secs / 3600);
+        const minutes = Math_floor(secs / 60) % 60;
+        return trans.hoursAndMinutesShort.replace("<minutes>", "" + minutes).replace("<hours>", "" + hours);
     }
 }
 
@@ -867,4 +891,12 @@ export function generateFileDownload(filename, text) {
 
     element.click();
     document.body.removeChild(element);
+}
+
+/**
+ * Capitalizes the first letter
+ * @param {string} str
+ */
+export function capitalizeFirstLetter(str) {
+    return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase();
 }

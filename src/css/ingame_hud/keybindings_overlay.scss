@@ -66,16 +66,12 @@
         }
     }
 
-    .keybinding.shift {
+    .keybinding.builtinKey {
         transition: all 0.1s ease-in-out;
         transition-property: background-color, color, border-color;
         background: $colorRedBright;
         border-color: $colorRedBright;
         color: #fff;
-    }
-
-    &.shiftDown .keybinding.shift {
-        border-color: darken($colorRedBright, 40);
     }
 }
 

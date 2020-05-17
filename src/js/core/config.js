@@ -76,7 +76,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        // fastGameEnter: true,
+        fastGameEnter: true,
         noArtificialDelays: true,
         // disableSavegameWrite: true,
         showEntityBounds: false,
@@ -90,6 +90,7 @@ export const globalConfig = {
         allBuildingsUnlocked: true,
         upgradesNoCost: true,
         disableUnlockDialog: false,
+        testTranslations: true,
         /* dev:end */
     },
 

@@ -3,8 +3,8 @@ import { HubComponent } from "../components/hub";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Entity } from "../entity";
 import { formatBigNumber } from "../../core/utils";
-import { enumHubGoalRewardToString } from "../tutorial_goals";
 import { Loader } from "../../core/loader";
+import { T } from "../../translations";
 
 export class HubSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -84,7 +84,7 @@ export class HubSystem extends GameSystemWithFilter {
         context.font = "bold 11px GameFont";
         context.fillStyle = "#fd0752";
         context.textAlign = "center";
-        context.fillText(enumHubGoalRewardToString[goals.reward].toUpperCase(), pos.x, pos.y + 46);
+        context.fillText(T.storyRewards[goals.reward].toUpperCase(), pos.x, pos.y + 46);
 
         // Level
         context.font = "bold 11px GameFont";

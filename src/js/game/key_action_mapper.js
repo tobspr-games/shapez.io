@@ -6,6 +6,7 @@ import { Application } from "../application";
 
 import { Signal, STOP_PROPAGATION } from "../core/signal";
 import { IS_MOBILE } from "../core/config";
+import { T } from "../translations";
 
 function key(str) {
     return str.toUpperCase().charCodeAt(0);
@@ -65,23 +66,23 @@ export function getStringForKeyCode(code) {
         case 8:
             return "⌫";
         case 9:
-            return "TAB";
+            return T.global.keys.tab;
         case 13:
             return "⏎";
         case 16:
             return "⇪";
         case 17:
-            return "CTRL";
+            return T.global.keys.control;
         case 18:
-            return "ALT";
+            return T.global.keys.alt;
         case 19:
             return "PAUSE";
         case 20:
             return "CAPS";
         case 27:
-            return "ESC";
+            return T.global.keys.escape;
         case 32:
-            return "SPACE";
+            return T.global.keys.space;
         case 33:
             return "PGUP";
         case 34:

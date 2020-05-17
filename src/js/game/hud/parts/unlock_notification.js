@@ -10,9 +10,10 @@ import { MetaSplitterBuilding } from "../../buildings/splitter";
 import { MetaStackerBuilding } from "../../buildings/stacker";
 import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
-import { enumHubGoalRewards, enumHubGoalRewardToString } from "../../tutorial_goals";
+import { enumHubGoalRewards } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { T } from "../../../translations";
 
 export class HUDUnlockNotification extends BaseHUDPart {
     initialize() {
@@ -36,17 +37,10 @@ export class HUDUnlockNotification extends BaseHUDPart {
 
         const dialog = makeDiv(this.element, null, ["dialog"]);
 
-        this.elemTitle = makeDiv(dialog, null, ["title"], ``);
-        this.elemSubTitle = makeDiv(dialog, null, ["subTitle"], `Completed`);
+        this.elemTitle = makeDiv(dialog, null, ["title"]);
+        this.elemSubTitle = makeDiv(dialog, null, ["subTitle"], T.ingame.levelCompleteNotification.completed);
 
-        this.elemContents = makeDiv(
-            dialog,
-            null,
-            ["contents"],
-            `
-            Ready for the next one? 
-        `
-        );
+        this.elemContents = makeDiv(dialog, null, ["contents"]);
 
         this.btnClose = document.createElement("button");
         this.btnClose.classList.add("close", "styledButton");
@@ -61,9 +55,17 @@ export class HUDUnlockNotification extends BaseHUDPart {
      * @param {enumHubGoalRewards} reward
      */
     showForLevel(level, reward) {
-        this.elemTitle.innerText = "Level " + ("" + level).padStart(2, "0");
+        this.elemTitle.innerText = T.ingame.levelCompleteNotification.levelTitle.replace(
+            "<level>",
+            ("" + level).padStart(2, "0")
+        );
 
-        let html = `<span class='reward'>Unlocked ${enumHubGoalRewardToString[reward]}!</span>`;
+        const rewardText = T.storyRewards[reward];
+
+        let html =
+            "<span class='reward'>" +
+            T.ingame.levelCompleteNotification.unlockText.replace("<reward>", rewardText) +
+            "</span>";
 
         const addBuildingExplanation = metaBuildingClass => {
             const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);

@@ -4,6 +4,7 @@ import { enumAnalyticsDataSource } from "../../production_analytics";
 import { formatBigNumber, clamp } from "../../../core/utils";
 import { globalConfig } from "../../../core/config";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
+import { T } from "../../../translations";
 
 /** @enum {string} */
 export const enumDisplayMode = {
@@ -86,7 +87,10 @@ export class HUDShapeStatisticsHandle {
                     (this.root.productionAnalytics.getCurrentShapeRate(dataSource, this.definition) /
                         globalConfig.analyticsSliceDurationSeconds) *
                     60;
-                this.counter.innerText = formatBigNumber(rate) + " / m";
+                this.counter.innerText = T.ingame.statistics.shapesPerMinute.replace(
+                    "<shapes>",
+                    formatBigNumber(rate)
+                );
                 break;
             }
         }

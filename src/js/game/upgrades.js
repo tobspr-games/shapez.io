@@ -1,33 +1,8 @@
 import { findNiceIntegerValue } from "../core/utils";
 import { ShapeDefinition } from "./shape_definition";
 
-export const TIER_LABELS = [
-    "I",
-    "II",
-    "III",
-    "IV",
-    "V",
-    "VI",
-    "VII",
-    "VIII",
-    "IX",
-    "X",
-    "XI",
-    "XII",
-    "XIII",
-    "XIV",
-    "XV",
-    "XVI",
-    "XVII",
-    "XVIII",
-    "XIX",
-    "XX",
-];
-
 export const UPGRADES = {
     belt: {
-        label: "Belts, Distributer & Tunnels",
-        description: improvement => "Speed +" + Math.floor(improvement * 100.0) + "%",
         tiers: [
             {
                 required: [{ shape: "CuCuCuCu", amount: 80 }],
@@ -49,8 +24,6 @@ export const UPGRADES = {
     },
 
     miner: {
-        label: "Extraction",
-        description: improvement => "Speed +" + Math.floor(improvement * 100.0) + "%",
         tiers: [
             {
                 required: [{ shape: "RuRuRuRu", amount: 200 }],
@@ -72,8 +45,6 @@ export const UPGRADES = {
     },
 
     processors: {
-        label: "Shape Processing",
-        description: improvement => "Speed +" + Math.floor(improvement * 100.0) + "%",
         tiers: [
             {
                 required: [{ shape: "SuSuSuSu", amount: 200 }],
@@ -95,8 +66,6 @@ export const UPGRADES = {
     },
 
     painting: {
-        label: "Mixing & Painting",
-        description: improvement => "Speed +" + Math.floor(improvement * 100.0) + "%",
         tiers: [
             {
                 required: [{ shape: "WuWuWuWu", amount: 200 }],

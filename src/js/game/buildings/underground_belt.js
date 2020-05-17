@@ -28,16 +28,8 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         super("underground_belt");
     }
 
-    getName() {
-        return "Tunnel";
-    }
-
     getSilhouetteColor() {
         return "#555";
-    }
-
-    getDescription() {
-        return "Allows to tunnel resources under buildings and belts.";
     }
 
     getFlipOrientationAfterPlacement() {

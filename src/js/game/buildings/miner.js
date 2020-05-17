@@ -13,16 +13,8 @@ export class MetaMinerBuilding extends MetaBuilding {
         super("miner");
     }
 
-    getName() {
-        return "Extract";
-    }
-
     getSilhouetteColor() {
         return "#b37dcd";
-    }
-
-    getDescription() {
-        return "Place over a shape or color to extract it. Six extractors fill exactly one belt.";
     }
 
     getAvailableVariants(root) {
