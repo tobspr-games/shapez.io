@@ -237,7 +237,7 @@ module.exports = ({
                                 { pattern: /globalConfig\.halfTileSize/g, replacement: () => "16" },
                                 {
                                     pattern: /globalConfig\.beltSpeedItemsPerSecond/g,
-                                    replacement: () => "1.0",
+                                    replacement: () => "2.0",
                                 },
                                 { pattern: /globalConfig\.itemSpacingOnBelts/g, replacement: () => "0.8" },
                                 { pattern: /globalConfig\.debug/g, replacement: () => "''" },
