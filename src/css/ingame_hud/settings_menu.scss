@@ -27,6 +27,6 @@
         @include S(grid-gap, 10px);
         background: rgba(0, 10, 20, 0.1);
         @include S(padding, 20px);
-        @include S(border-radius, 2px);
+        @include S(border-radius, $globalBorderRadius);
     }
 }

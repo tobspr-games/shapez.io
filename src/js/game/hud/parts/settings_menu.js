@@ -88,8 +88,11 @@ export class HUDSettingsMenu extends BaseHUDPart {
         // this.background.classList.add("visible");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
-        const totalSecondsPlayed = Math.ceil(this.root.time.now());
-        this.timePlayed.querySelector(".playtime").innerText = formatSeconds(totalSecondsPlayed);
+        const totalMinutesPlayed = Math.ceil(this.root.time.now() / 60);
+        this.timePlayed.querySelector(".playtime").innerText = T.global.time.xMinutes.replace(
+            "<x>",
+            "" + totalMinutesPlayed
+        );
     }
 
     close() {

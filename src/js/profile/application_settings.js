@@ -6,7 +6,7 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
-import { THEMES } from "../game/theme";
+import { THEMES, THEME, applyGameTheme } from "../game/theme";
 
 const logger = createLogger("application_settings");
 
@@ -68,26 +68,14 @@ export const allApplicationSettings = [
         },
         G_IS_STANDALONE
     ),
-    new EnumSetting("theme", {
-        options: Object.keys(THEMES),
-        valueGetter: theme => theme,
-        textGetter: theme => theme.substr(0, 1).toUpperCase() + theme.substr(1),
-        category: categoryApp,
-        restartRequired: false,
-        changeCb:
-            /**
-             * @param {Application} app
-             */
-            (app, id) => document.body.setAttribute("data-theme", id),
-    }),
+
     new BoolSetting(
         "soundsMuted",
         categoryApp,
         /**
          * @param {Application} app
          */
-        (app, value) => app.sound.setSoundsMuted(value),
-        false
+        (app, value) => app.sound.setSoundsMuted(value)
     ),
     new BoolSetting(
         "musicMuted",
@@ -95,11 +83,25 @@ export const allApplicationSettings = [
         /**
          * @param {Application} app
          */
-        (app, value) => app.sound.setMusicMuted(value),
-        false
+        (app, value) => app.sound.setMusicMuted(value)
     ),
 
     // GAME
+    new EnumSetting("theme", {
+        options: Object.keys(THEMES),
+        valueGetter: theme => theme,
+        textGetter: theme => theme.substr(0, 1).toUpperCase() + theme.substr(1),
+        category: categoryGame,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => {
+                applyGameTheme(id);
+                document.body.setAttribute("data-theme", id);
+            },
+    }),
 ];
 
 export function getApplicationSettingById(id) {

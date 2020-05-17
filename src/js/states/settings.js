@@ -19,12 +19,12 @@ export class SettingsState extends TextualGameState {
             ${
                 this.app.platformWrapper.getSupportsKeyboard()
                     ? `
-                        <button class="styledButton editKeybindings">KEYBINDING TODO</button>
+                        <button class="styledButton editKeybindings">Keybindings</button>
             `
                     : ""
             }
 
-            <button class="styledButton changelog">CHANGELOG TODO</button>
+            <button class="styledButton changelog">Changelog</button>
 
 
          </div>
@@ -33,7 +33,7 @@ export class SettingsState extends TextualGameState {
             ${this.getSettingsHtml()}
             <div class="versionbar">
                 <div class="buildVersion">${T.global.loading} ...</div>
-                <button class="styledButton copyright">COPYRIGHT TODO</button>
+                <button class="styledButton copyright">Copyright & Licenses</button>
             </div>
 
 

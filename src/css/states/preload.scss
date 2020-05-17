@@ -32,7 +32,7 @@
 
             @include BoxShadow3D(#fff);
             @include S(padding, 15px);
-            @include BorderRadius(4px);
+            @include S(border-radius, $globalBorderRadius);
             @include DropShadow;
 
             .errorHeader {

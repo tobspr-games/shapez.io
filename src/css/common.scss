@@ -169,19 +169,25 @@ button {
     box-sizing: content-box;
     @include S(padding, 3px, 10px);
     @include IncreasedClickArea(10px);
-    @include BorderRadius(4px);
     @include TextShadow3D(#fff, $borderColor: #28292a);
     @include ButtonText;
-    @include Button3D($accentColorBright);
-    border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
+    border: 0;
+    background: $colorBlueBright;
+    color: #fff;
+
+    // border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
     @include S(border-bottom-width, 2px);
-    color: $accentColorDark;
+    // color: $accentColorDark;
     letter-spacing: 0.05em !important;
-    box-shadow: 0 #{D(1px)} #{D(2px)} 0 rgba(0, 10, 20, 0.2);
+    // box-shadow: 0 #{D(1px)} #{D(2px)} 0 rgba(0, 10, 20, 0.2);
 
     .keybinding {
         @include S(bottom, -2.5px);
         @include S(right, -2px);
+    }
+    transition: opacity 0.12s ease-in-out;
+    &:hover {
+        opacity: 0.9;
     }
 }
 
@@ -210,7 +216,7 @@ input[type="email"] {
 
     @include Text;
     @include IncreasedClickArea(15px);
-    @include BorderRadius(4px);
+    @include S(border-radius, $globalBorderRadius);
 
     &::placeholder {
         color: #fff;
@@ -307,7 +313,7 @@ canvas {
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 4px;
+    // border-radius: 4px;
     background: #cdd0d4;
 }
 
@@ -407,7 +413,7 @@ canvas {
         content: "Coming soon!";
         z-index: 10000;
         background: rgba(lighten($mainBgColor, 0), 0.4);
-        @include BorderRadius(4px);
+        @include S(border-radius, $globalBorderRadius);
         position: absolute;
         display: flex;
         justify-content: center;
@@ -480,7 +486,7 @@ canvas {
                 bottom: 0;
                 z-index: 1;
                 @include BoxShadow3D($themeColor, $size: 1px);
-                @include BorderRadius(4px);
+                @include S(border-radius, $globalBorderRadius);
 
                 transform-origin: 0% 50%;
 
@@ -568,7 +574,7 @@ canvas {
     text-transform: uppercase;
     @include S(padding, 1.5px, 3px, 2px);
     @include PlainText;
-    @include BorderRadius(2px);
+    @include S(border-radius, $globalBorderRadius);
     &,
     > span {
         @include S(font-size, 9px);

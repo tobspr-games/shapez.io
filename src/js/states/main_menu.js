@@ -32,6 +32,8 @@ export class MainMenuState extends GameState {
 
         return `
 
+            <button class="settingsButton"></button>
+
             <video autoplay muted loop class="fullscreenBackgroundVideo">
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
             </video>
@@ -191,6 +193,7 @@ export class MainMenuState extends GameState {
             });
         }
 
+        this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.renderSavegames();
     }
 
@@ -281,6 +284,10 @@ export class MainMenuState extends GameState {
         });
     }
 
+    onSettingsButtonClicked() {
+        this.moveToState("SettingsState");
+    }
+
     onPlayButtonClicked() {
         const savegame = this.app.savegameMgr.createNewSavegame();
 
@@ -288,7 +295,7 @@ export class MainMenuState extends GameState {
 
         if (G_IS_DEV) {
             // TODO
-            this.moveToState("SettingsState");
+            // this.moveToState("SettingsState");
         }
 
         this.moveToState("InGameState", {

@@ -56,7 +56,7 @@ export class HUDStatistics extends BaseHUDPart {
         this.dataSource = source;
         this.dialogInner.setAttribute("data-datasource", source);
 
-        this.sourceExplanation.innerText = T.ingame.statistics.dataSources[source].title;
+        this.sourceExplanation.innerText = T.ingame.statistics.dataSources[source].description;
         if (this.visible) {
             this.rerenderFull();
         }

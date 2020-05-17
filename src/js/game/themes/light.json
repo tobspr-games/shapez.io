@@ -10,6 +10,11 @@
             "red": "#ffbfc1",
             "green": "#cbffc4",
             "blue": "#bfdaff"
+        },
+
+        "chunkOverview": {
+            "empty": "#a6afbb",
+            "filled": "c5ccd6"
         }
     },
 
