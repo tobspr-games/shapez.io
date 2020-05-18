@@ -23,13 +23,8 @@ export const globalConfig = {
     statisticsGraphSlices: 100,
     analyticsSliceDurationSeconds: 10,
 
-    // [Calculated] physics step size
-    physicsDeltaMs: 0,
-    physicsDeltaSeconds: 0,
-
-    // Update physics at N fps, independent of rendering
-    // physicsUpdateRate: 55,
-    physicsUpdateRate: 120,
+    minimumTickRate: 30,
+    maximumTickRate: 500,
 
     // Map
     mapChunkSize: 32,
@@ -76,7 +71,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        fastGameEnter: true,
+        // fastGameEnter: true,
         noArtificialDelays: true,
         // disableSavegameWrite: true,
         showEntityBounds: false,
@@ -110,8 +105,5 @@ export const globalConfig = {
 export const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 // Automatic calculations
-
-globalConfig.physicsDeltaMs = 1000.0 / globalConfig.physicsUpdateRate;
-globalConfig.physicsDeltaSeconds = 1.0 / globalConfig.physicsUpdateRate;
 
 globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5;

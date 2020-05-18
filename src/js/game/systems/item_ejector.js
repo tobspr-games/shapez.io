@@ -14,7 +14,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
     update() {
         const effectiveBeltSpeed = this.root.hubGoals.getBeltBaseSpeed() * globalConfig.itemSpacingOnBelts;
-        const progressGrowth = (effectiveBeltSpeed / 0.5) * globalConfig.physicsDeltaSeconds;
+        const progressGrowth = (effectiveBeltSpeed / 0.5) * this.root.dynamicTickrate.deltaSeconds;
 
         // Try to find acceptors for every ejector
         for (let i = 0; i < this.allEntities.length; ++i) {

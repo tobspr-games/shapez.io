@@ -23,7 +23,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // First of all, process the current recipe
             processorComp.secondsUntilEject = Math_max(
                 0,
-                processorComp.secondsUntilEject - globalConfig.physicsDeltaSeconds
+                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
             );
 
             // Check if we have any finished items we can eject
