@@ -79,7 +79,7 @@ export class UndergroundBeltComponent extends Component {
         }
 
         // Notice: We assume that for all items the travel distance is the same
-        const maxItemsInTunnel = (1 + travelDistance) / globalConfig.itemSpacingOnBelts;
+        const maxItemsInTunnel = (2 + travelDistance) / globalConfig.itemSpacingOnBelts;
         if (this.pendingItems.length >= maxItemsInTunnel) {
             // Simulate a real belt which gets full at some point
             return false;
