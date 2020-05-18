@@ -13,11 +13,17 @@
     .headerBar {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
 
         h1 {
+            display: flex;
+            pointer-events: all;
+            align-items: center;
+            cursor: pointer;
             @include SuperHeading;
             text-transform: uppercase;
             color: #333438;
+            @include IncreasedClickArea(10px);
         }
 
         .backButton {
