@@ -113,11 +113,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
         }
 
-        const undergroundBeltCmop = receiver.components.UndergroundBelt;
-        if (undergroundBeltCmop) {
+        const undergroundBeltComp = receiver.components.UndergroundBelt;
+        if (undergroundBeltComp) {
             // Its an underground belt. yay.
             if (
-                undergroundBeltCmop.tryAcceptExternalItem(
+                undergroundBeltComp.tryAcceptExternalItem(
                     item,
                     this.root.hubGoals.getUndergroundBeltBaseSpeed()
                 )

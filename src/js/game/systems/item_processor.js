@@ -96,11 +96,15 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         /** @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>} */
         const outItems = [];
 
+        // Whether to track the production towards the analytics
+        let trackProduction = true;
+
         // DO SOME MAGIC
 
         switch (processorComp.type) {
             // SPLITTER
             case enumItemProcessorTypes.splitter: {
+                trackProduction = false;
                 const availableSlots = entity.components.ItemEjector.slots.length;
 
                 let nextSlot = processorComp.nextOutputSlot++ % availableSlots;
@@ -311,6 +315,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // HUB
 
             case enumItemProcessorTypes.hub: {
+                trackProduction = false;
+
                 const hubComponent = entity.components.Hub;
                 assert(hubComponent, "Hub item processor has no hub component");
 
@@ -327,8 +333,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         // Track produced items
-        for (let i = 0; i < outItems.length; ++i) {
-            this.root.signals.itemProduced.dispatch(outItems[i].item);
+        if (trackProduction) {
+            for (let i = 0; i < outItems.length; ++i) {
+                this.root.signals.itemProduced.dispatch(outItems[i].item);
+            }
         }
 
         processorComp.itemsToEject = outItems;
