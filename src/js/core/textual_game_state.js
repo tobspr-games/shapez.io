@@ -97,8 +97,8 @@ export class TextualGameState extends GameState {
         if (this.getStateHeaderTitle()) {
             headerHtml = `
             <div class="headerBar">
-            <button class="backButton"></button>
-                <h1>${this.getStateHeaderTitle()}</h1>
+            
+                <h1><button class="backButton"></button> ${this.getStateHeaderTitle()}</h1>
             </div>`;
         }
 
@@ -138,7 +138,7 @@ export class TextualGameState extends GameState {
         }
 
         this.containerElement = this.htmlElement.querySelector(".widthKeeper .container");
-        this.headerElement = this.htmlElement.querySelector(".headerBar > .backButton");
+        this.headerElement = this.htmlElement.querySelector(".headerBar > h1");
 
         if (this.headerElement) {
             this.trackClicks(this.headerElement, this.onBackButton);

@@ -36,9 +36,9 @@ export const defaultKeybindings = {
 
     toolbar: {
         building_belt: { keyCode: key("1") },
-        building_miner: { keyCode: key("2") },
+        building_splitter: { keyCode: key("2") },
         building_underground_belt: { keyCode: key("3") },
-        building_splitter: { keyCode: key("4") },
+        building_miner: { keyCode: key("4") },
         building_cutter: { keyCode: key("5") },
         building_rotater: { keyCode: key("6") },
         building_stacker: { keyCode: key("7") },

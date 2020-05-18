@@ -1,26 +1,25 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv } from "../../../core/utils";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
-import { MetaBuilding } from "../../meta_building";
 import { Signal } from "../../../core/signal";
-import { MetaSplitterBuilding } from "../../buildings/splitter";
-import { MetaMinerBuilding } from "../../buildings/miner";
+import { TrackedState } from "../../../core/tracked_state";
+import { makeDiv } from "../../../core/utils";
+import { MetaBeltBaseBuilding } from "../../buildings/belt_base";
 import { MetaCutterBuilding } from "../../buildings/cutter";
-import { MetaRotaterBuilding } from "../../buildings/rotater";
-import { MetaStackerBuilding } from "../../buildings/stacker";
+import { MetaMinerBuilding } from "../../buildings/miner";
 import { MetaMixerBuilding } from "../../buildings/mixer";
 import { MetaPainterBuilding } from "../../buildings/painter";
+import { MetaRotaterBuilding } from "../../buildings/rotater";
+import { MetaSplitterBuilding } from "../../buildings/splitter";
+import { MetaStackerBuilding } from "../../buildings/stacker";
 import { MetaTrashBuilding } from "../../buildings/trash";
-import { MetaBeltBaseBuilding } from "../../buildings/belt_base";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
-import { globalConfig } from "../../../core/config";
-import { TrackedState } from "../../../core/tracked_state";
+import { MetaBuilding } from "../../meta_building";
+import { BaseHUDPart } from "../base_hud_part";
 
 const toolbarBuildings = [
     MetaBeltBaseBuilding,
-    MetaMinerBuilding,
-    MetaUndergroundBeltBuilding,
     MetaSplitterBuilding,
+    MetaUndergroundBeltBuilding,
+    MetaMinerBuilding,
     MetaCutterBuilding,
     MetaRotaterBuilding,
     MetaStackerBuilding,
