@@ -33,6 +33,10 @@
                 flex-direction: row-reverse;
                 justify-content: flex-end;
 
+                @include DarkThemeOverride {
+                    color: #fff;
+                }
+
                 .tier {
                     @include S(margin-right, 9px);
                     background: $colorGreenBright;
@@ -120,6 +124,9 @@
                         pointer-events: all;
                         @include IncreasedClickArea(5px);
                         transition: opacity 0.12s ease-in-out;
+
+                        @include DarkThemeInvert;
+
                         &:hover {
                             opacity: 0.7;
                         }
@@ -174,6 +181,7 @@
 
                         @include DarkThemeOverride {
                             background: #333438;
+                            color: #fff;
                         }
 
                         .progressBar {
@@ -188,6 +196,10 @@
                             transition: all 0.2s ease-in-out;
                             transition-property: width, background-color;
                             background: #bdbfca;
+
+                            @include DarkThemeOverride {
+                                background: #8c8d96;
+                            }
 
                             &.complete {
                                 background-color: $colorGreenBright;
