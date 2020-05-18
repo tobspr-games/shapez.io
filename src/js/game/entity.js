@@ -26,11 +26,6 @@ export class Entity extends BasicSerializableObject {
         this.root = root;
 
         /**
-         * The metaclass of the entity, should be set by subclasses
-         */
-        this.meta = null;
-
-        /**
          * The components of the entity
          */
         this.components = new EntityComponentStorage();
@@ -87,15 +82,6 @@ export class Entity extends BasicSerializableObject {
      */
     isAlive() {
         return !this.destroyed && !this.queuedForDestroy;
-    }
-
-    /**
-     * Returns the meta class of the entity.
-     * @returns {object}
-     */
-    getMetaclass() {
-        assert(this.meta, "Entity has no metaclass");
-        return this.meta;
     }
 
     /**

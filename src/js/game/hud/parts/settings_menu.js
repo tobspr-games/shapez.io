@@ -1,9 +1,12 @@
 import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv, formatSeconds } from "../../../core/utils";
+import { makeDiv, formatSeconds, formatBigNumberFull } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { InputReceiver } from "../../../core/input_receiver";
 import { KeyActionMapper } from "../../key_action_mapper";
 import { T } from "../../../translations";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { ItemProcessorComponent } from "../../components/item_processor";
+import { BeltComponent } from "../../components/belt";
 
 export class HUDSettingsMenu extends BaseHUDPart {
     createElements(parent) {
@@ -11,11 +14,16 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         this.menuElement = makeDiv(this.background, null, ["menuElement"]);
 
-        this.timePlayed = makeDiv(
+        this.statsElement = makeDiv(
             this.background,
             null,
-            ["timePlayed"],
-            `<strong>${T.ingame.settingsMenu.playtime}</strong><span class="playtime"></span>`
+            ["statsElement"],
+            `
+            <strong>${T.ingame.settingsMenu.beltsPlaced}</strong><span class="beltsPlaced"></span>
+            <strong>${T.ingame.settingsMenu.buildingsPlaced}</strong><span class="buildingsPlaced"></span>
+            <strong>${T.ingame.settingsMenu.playtime}</strong><span class="playtime"></span>
+            
+            `
         );
 
         this.buttonContainer = makeDiv(this.menuElement, null, ["buttons"]);
@@ -89,9 +97,17 @@ export class HUDSettingsMenu extends BaseHUDPart {
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
         const totalMinutesPlayed = Math.ceil(this.root.time.now() / 60);
-        this.timePlayed.querySelector(".playtime").innerText = T.global.time.xMinutes.replace(
+        this.statsElement.querySelector(".playtime").innerText = T.global.time.xMinutes.replace(
             "<x>",
             "" + totalMinutesPlayed
+        );
+
+        this.statsElement.querySelector(".buildingsPlaced").innerText = formatBigNumberFull(
+            this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
+                this.root.entityMgr.getAllWithComponent(BeltComponent).length
+        );
+        this.statsElement.querySelector(".beltsPlaced").innerText = formatBigNumberFull(
+            this.root.entityMgr.getAllWithComponent(BeltComponent).length
         );
     }
 

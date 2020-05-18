@@ -173,11 +173,13 @@
 
                         @include S(line-height, 13px);
                         @include S(border-radius, $globalBorderRadius);
-                        @include S(padding, 1px, 2px, 2px);
+                        @include S(padding, 1px, 0px, 2px);
                         position: relative;
                         text-align: center;
                         @include S(min-width, 50px);
+                        // @include S(max-width, 100px);
                         overflow: hidden;
+                        width: 100%;
 
                         @include DarkThemeOverride {
                             background: #333438;

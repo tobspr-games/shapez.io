@@ -40,6 +40,7 @@
 @import "ingame_hud/notifications";
 @import "ingame_hud/settings_menu";
 @import "ingame_hud/debug_info";
+@import "ingame_hud/entity_debugger";
 
 // prettier-ignore
 $elements: 
@@ -59,6 +60,7 @@ ingame_HUD_KeybindingOverlay,
 ingame_HUD_Notifications,
 ingame_HUD_MassSelector,
 ingame_HUD_DebugInfo,
+ingame_HUD_EntityDebugger,
 
 // Overlays
 ingame_HUD_BetaOverlay,

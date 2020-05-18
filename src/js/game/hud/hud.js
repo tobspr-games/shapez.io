@@ -12,7 +12,7 @@ import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
 import { HUDShop } from "./parts/shop";
-import { IS_MOBILE } from "../../core/config";
+import { IS_MOBILE, globalConfig } from "../../core/config";
 import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
@@ -22,6 +22,7 @@ import { ShapeDefinition } from "../shape_definition";
 import { HUDNotifications, enumNotificationType } from "./parts/notifications";
 import { HUDSettingsMenu } from "./parts/settings_menu";
 import { HUDDebugInfo } from "./parts/debug_info";
+import { HUDEntityDebugger } from "./parts/entity_debugger";
 
 export class GameHUD {
     /**
@@ -69,6 +70,10 @@ export class GameHUD {
 
         if (!IS_MOBILE) {
             this.parts.keybindingOverlay = new HUDKeybindingOverlay(this.root);
+        }
+
+        if (G_IS_DEV && globalConfig.debug.enableEntityInspector) {
+            this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 
         const frag = document.createDocumentFragment();

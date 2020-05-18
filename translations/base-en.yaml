@@ -200,8 +200,8 @@ ingame:
     settingsMenu:
         playtime: Playtime
 
-        playtime1Minute: 1 minutes
-        playtimeXMinutes: <x> minutes
+        buildingsPlaced: Buildings
+        beltsPlaced: Belts
 
         buttons:
             continue: Continue

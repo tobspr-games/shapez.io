@@ -436,6 +436,9 @@ export function formatBigNumber(num, divider = ".") {
     if (num < 1000) {
         return sign + "" + num;
     }
+    if (num > 10000) {
+        return Math_floor(num / 1000.0) + "k";
+    }
 
     let rest = num;
     let out = "";
@@ -455,7 +458,7 @@ export function formatBigNumber(num, divider = ".") {
  * @param {string=} divider THe divider for numbers like 50,000 (divider=',')
  * @returns {string}
  */
-export function formatBigNumberFull(num, divider = ",") {
+export function formatBigNumberFull(num, divider = T.global.thousandsDivider) {
     if (num < 1000) {
         return num + "";
     }
