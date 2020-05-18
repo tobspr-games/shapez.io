@@ -59,6 +59,10 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
         const staticComp = entity.components.StaticMapEntity;
         const acceptorComp = entity.components.ItemAcceptor;
 
+        if (!staticComp.shouldBeDrawn(parameters)) {
+            return;
+        }
+
         for (let animIndex = 0; animIndex < acceptorComp.itemConsumptionAnimations.length; ++animIndex) {
             const { item, slotIndex, animProgress, direction } = acceptorComp.itemConsumptionAnimations[
                 animIndex
@@ -87,6 +91,10 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     drawEntityUnderlays(parameters, entity) {
         const staticComp = entity.components.StaticMapEntity;
         const acceptorComp = entity.components.ItemAcceptor;
+
+        if (!staticComp.shouldBeDrawn(parameters)) {
+            return;
+        }
 
         const underlays = acceptorComp.beltUnderlays;
         for (let i = 0; i < underlays.length; ++i) {

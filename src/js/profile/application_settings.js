@@ -102,6 +102,19 @@ export const allApplicationSettings = [
                 document.body.setAttribute("data-theme", id);
             },
     }),
+
+    new EnumSetting("refreshRate", {
+        options: ["60", "100", "144", "165"],
+        valueGetter: rate => rate,
+        textGetter: rate => rate + " Hz",
+        category: categoryGame,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => {},
+    }),
 ];
 
 export function getApplicationSettingById(id) {
@@ -116,6 +129,7 @@ class SettingsStorage {
         this.soundsMuted = false;
         this.musicMuted = false;
         this.theme = "light";
+        this.refreshRate = "60";
     }
 }
 
@@ -166,6 +180,10 @@ export class ApplicationSettings extends ReadWriteProxy {
             return "regular";
         }
         return this.getAllSettings().uiScale;
+    }
+
+    getDesiredFps() {
+        return parseInt(this.getAllSettings().refreshRate);
     }
 
     getInterfaceScaleValue() {
@@ -234,7 +252,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 3;
+        return 4;
     }
 
     migrate(data) {

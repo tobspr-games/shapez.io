@@ -331,6 +331,10 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
+        if (!staticComp.shouldBeDrawn(parameters)) {
+            return;
+        }
+
         for (let i = 0; i < items.length; ++i) {
             const itemAndProgress = items[i];
 

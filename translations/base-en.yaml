@@ -73,7 +73,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        This game is optimized for Google Chrome. Your browser is not supported or slow!
+        Sorry, but the game is known to run slow on your browser! Get the steam version or download chrome for the full experience.
 
 dialogs:
     buttons:
@@ -325,3 +325,8 @@ settings:
             title: Game theme
             description: >-
                 Choose the game theme which mainly affects the map background. Notice that everything except the light theme may lead to graphical issues.
+
+        refreshRate:
+            title: Simulation Target
+            description: >-
+                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates.

@@ -41,6 +41,10 @@ export class HubSystem extends GameSystemWithFilter {
         const context = parameters.context;
         const staticComp = entity.components.StaticMapEntity;
 
+        if (!staticComp.shouldBeDrawn(parameters)) {
+            return;
+        }
+
         const pos = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
 
         // Background
