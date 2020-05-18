@@ -23,6 +23,7 @@
             @include SuperHeading;
             text-transform: uppercase;
             color: #333438;
+            position: relative;
             @include IncreasedClickArea(10px);
         }
 

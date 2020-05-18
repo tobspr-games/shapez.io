@@ -19,6 +19,7 @@ export class UndergroundBeltComponent extends Component {
         return {
             mode: types.enum(enumUndergroundBeltMode),
             pendingItems: types.array(types.pair(types.obj(gItemRegistry), types.float)),
+            tier: types.uint,
         };
     }
 

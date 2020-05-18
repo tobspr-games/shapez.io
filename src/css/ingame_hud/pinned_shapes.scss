@@ -15,7 +15,9 @@
         justify-content: center;
         grid-template-columns: auto 1fr;
         grid-template-rows: 1fr 1fr;
-        @include S(margin-bottom, 5px);
+        @include S(margin-bottom, 4px);
+        color: #fff;
+        text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.2);
 
         &.unpinable {
             > canvas {
@@ -49,9 +51,10 @@
 
         > .goalLabel {
             @include S(font-size, 7px);
-            opacity: 0.3;
+            opacity: 0.5;
             align-self: start;
             justify-self: start;
+            font-weight: normal;
             grid-row: 2 / 3;
         }
 

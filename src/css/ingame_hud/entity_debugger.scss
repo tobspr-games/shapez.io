@@ -1,0 +1,44 @@
+#ingame_HUD_EntityDebugger {
+    position: absolute;
+    @include S(right, 30px);
+    @include S(top, 250px);
+
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    background: rgba(0, 10, 20, 0.7);
+    padding: 10px;
+    &,
+    * {
+        pointer-events: all;
+    }
+
+    .flag {
+        display: inline-block;
+        background: #333438;
+        @include S(padding, 2px);
+        @include S(margin-right, 2px);
+
+        u {
+            opacity: 0.5;
+        }
+    }
+
+    .components {
+        @include S(margin-top, 4px);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @include S(grid-gap, 3px);
+        .component {
+            @include S(padding, 2px);
+            background: #333;
+            display: flex;
+            flex-direction: column;
+
+            .data {
+                @include S(width, 150px);
+                @include S(height, 50px);
+            }
+        }
+    }
+}

@@ -1,17 +1,21 @@
 #ingame_HUD_SettingsMenu {
-    .timePlayed {
+    .statsElement {
         position: absolute;
         @include S(left, 30px);
-        @include S(bottom, 30px);
+        @include S(top, 30px);
         color: #fff;
         display: flex;
+        grid-template-rows: 1fr auto;
         flex-direction: column;
+
         strong {
             text-transform: uppercase;
             @include PlainText;
+            opacity: 0.5;
         }
 
         span {
+            @include S(margin-bottom, 25px);
             @include Heading;
         }
     }
