@@ -23,7 +23,7 @@ export const globalConfig = {
     statisticsGraphSlices: 100,
     analyticsSliceDurationSeconds: 10,
 
-    minimumTickRate: 30,
+    minimumTickRate: 25,
     maximumTickRate: 500,
 
     // Map
@@ -71,7 +71,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        // fastGameEnter: true,
+        fastGameEnter: true,
         noArtificialDelays: true,
         // disableSavegameWrite: true,
         showEntityBounds: false,
@@ -85,6 +85,7 @@ export const globalConfig = {
         allBuildingsUnlocked: true,
         upgradesNoCost: true,
         disableUnlockDialog: true,
+        // framePausesBetweenTicks: 40,
         // testTranslations: true,
         /* dev:end */
     },

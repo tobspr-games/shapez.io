@@ -112,10 +112,14 @@ export class GameTime extends BasicSerializableObject {
         }
 
         // Check for too big pile of updates -> reduce it to 1
-        const maxLogicSteps = Math_max(
+        let maxLogicSteps = Math_max(
             3,
             (this.speed.getMaxLogicStepsInQueue() * this.root.dynamicTickrate.currentTickRate) / 60
         );
+        if (G_IS_DEV && globalConfig.debug.framePausesBetweenTicks) {
+            maxLogicSteps *= 1 + globalConfig.debug.framePausesBetweenTicks;
+        }
+
         if (this.logicTimeBudget > this.root.dynamicTickrate.deltaMs * maxLogicSteps) {
             // logger.warn("Skipping logic time steps since more than", maxLogicSteps, "are in queue");
             this.logicTimeBudget = this.root.dynamicTickrate.deltaMs * maxLogicSteps;
@@ -132,9 +136,14 @@ export class GameTime extends BasicSerializableObject {
 
         const speedAtStart = this.root.time.getSpeed();
 
+        let effectiveDelta = this.root.dynamicTickrate.deltaMs;
+        if (G_IS_DEV && globalConfig.debug.framePausesBetweenTicks) {
+            effectiveDelta += globalConfig.debug.framePausesBetweenTicks * this.root.dynamicTickrate.deltaMs;
+        }
+
         // Update physics & logic
-        while (this.logicTimeBudget >= this.root.dynamicTickrate.deltaMs) {
-            this.logicTimeBudget -= this.root.dynamicTickrate.deltaMs;
+        while (this.logicTimeBudget >= effectiveDelta) {
+            this.logicTimeBudget -= effectiveDelta;
 
             if (!updateMethod()) {
                 // Gameover happened or so, do not update anymore

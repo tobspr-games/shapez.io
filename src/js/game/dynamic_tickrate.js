@@ -14,15 +14,11 @@ export class DynamicTickrate {
     constructor(root) {
         this.root = root;
 
-        this.setTickRate(120);
-
         this.currentTickStart = null;
         this.capturedTicks = [];
         this.averageTickDuration = 0;
 
-        // Exposed
-        this.deltaSeconds = 0;
-        this.deltaMs = 0;
+        this.setTickRate(60);
     }
 
     /**
@@ -40,14 +36,14 @@ export class DynamicTickrate {
      * Increases the tick rate marginally
      */
     increaseTickRate() {
-        this.setTickRate(Math_round(Math_min(globalConfig.maximumTickRate, this.currentTickRate * 1.1)));
+        this.setTickRate(Math_round(Math_min(globalConfig.maximumTickRate, this.currentTickRate * 1.2)));
     }
 
     /**
      * Decreases the tick rate marginally
      */
     decreaseTickRate() {
-        this.setTickRate(Math_round(Math_min(globalConfig.maximumTickRate, this.currentTickRate * 0.9)));
+        this.setTickRate(Math_round(Math_max(globalConfig.minimumTickRate, this.currentTickRate * 0.8)));
     }
 
     /**
@@ -57,7 +53,7 @@ export class DynamicTickrate {
         assert(this.currentTickStart === null, "BeginTick called twice");
         this.currentTickStart = performanceNow();
 
-        if (this.capturedTicks.length > this.currentTickRate * 4) {
+        if (this.capturedTicks.length > this.currentTickRate * 2) {
             // Take only a portion of the ticks
             this.capturedTicks.sort();
             this.capturedTicks.splice(0, 10);
