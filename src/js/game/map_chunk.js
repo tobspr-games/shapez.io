@@ -244,14 +244,14 @@ export class MapChunk {
         // Determine how likely it is that there is a color patch
         const colorPatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
 
-        if (rng.next() < colorPatchChance) {
+        if (rng.next() < colorPatchChance / 4) {
             const colorPatchSize = Math_max(2, Math_round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
             this.internalGenerateColorPatch(rng, colorPatchSize, distanceToOriginInChunks);
         }
 
         // Determine how likely it is that there is a shape patch
         const shapePatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
-        if (rng.next() < shapePatchChance) {
+        if (rng.next() < shapePatchChance / 4) {
             const shapePatchSize = Math_max(2, Math_round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
             this.internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks);
         }
