@@ -1,7 +1,7 @@
 #ingame_HUD_EntityDebugger {
     position: absolute;
     @include S(right, 30px);
-    @include S(top, 250px);
+    @include S(top, 200px);
 
     font-size: 14px;
     line-height: 16px;
@@ -37,7 +37,7 @@
 
             .data {
                 @include S(width, 150px);
-                @include S(height, 50px);
+                @include S(height, 130px);
             }
         }
     }
