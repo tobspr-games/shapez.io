@@ -197,10 +197,11 @@ export class BeltSystem extends GameSystemWithFilter {
 
         const speedMultiplier = this.root.hubGoals.getBeltBaseSpeed();
 
-        // SYNC with systems/item_processor.js:drawEntityUnderlays!
+        // SYNC with systems/item_acceptor.js:drawEntityUnderlays!
         // 126 / 42 is the exact animation speed of the png animation
         const animationIndex = Math.floor(
-            (this.root.time.now() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42
+            ((this.root.time.now() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
+                globalConfig.itemSpacingOnBelts
         );
         const contents = chunk.contents;
         for (let y = 0; y < globalConfig.mapChunkSize; ++y) {

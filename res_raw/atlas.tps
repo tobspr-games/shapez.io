@@ -345,6 +345,7 @@
             <key type="filename">sprites/blueprints/miner.png</key>
             <key type="filename">sprites/blueprints/rotater-ccw.png</key>
             <key type="filename">sprites/blueprints/rotater.png</key>
+            <key type="filename">sprites/blueprints/splitter-compact-inverse.png</key>
             <key type="filename">sprites/blueprints/splitter-compact.png</key>
             <key type="filename">sprites/blueprints/trash.png</key>
             <key type="filename">sprites/blueprints/underground_belt_entry-tier2.png</key>
@@ -353,6 +354,7 @@
             <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
             <key type="filename">sprites/buildings/miner-chainable.png</key>
             <key type="filename">sprites/buildings/rotater-ccw.png</key>
+            <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
             <key type="filename">sprites/buildings/splitter-compact.png</key>
             <key type="filename">sprites/buildings/underground_belt_entry-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_entry.png</key>

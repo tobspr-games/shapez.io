@@ -311,12 +311,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // HUB
 
             case enumItemProcessorTypes.hub: {
-                const shapeItem = /** @type {ShapeItem} */ (items[0].item);
-
                 const hubComponent = entity.components.Hub;
                 assert(hubComponent, "Hub item processor has no hub component");
 
-                hubComponent.queueShapeDefinition(shapeItem.definition);
+                for (let i = 0; i < items.length; ++i) {
+                    const shapeItem = /** @type {ShapeItem} */ (items[i].item);
+                    hubComponent.queueShapeDefinition(shapeItem.definition);
+                }
+
                 break;
             }
 

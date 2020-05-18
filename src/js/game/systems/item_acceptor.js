@@ -97,11 +97,12 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
 
             // SYNC with systems/belt.js:drawSingleEntity!
             const animationIndex = Math.floor(
-                (this.root.time.now() *
+                ((this.root.time.now() *
                     this.root.hubGoals.getBeltBaseSpeed() *
                     this.underlayBeltSprites.length *
                     126) /
-                    42
+                    42) *
+                    globalConfig.itemSpacingOnBelts
             );
 
             drawRotatedSprite({
