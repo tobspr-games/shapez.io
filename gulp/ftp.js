@@ -73,13 +73,9 @@ function gulptasksFTP($, gulp, buildFolder) {
         });
 
         gulp.task(`ftp.upload.${deployEnv}.additionalFiles`, () => {
-            return gulp.src(additionalFiles, { base: additionalFolder }).pipe(
-                $.sftp({
-                    host: process.env.SHAPEZ_CLI_SERVER_HOST,
-                    user: process.env.SHAPEZ_CLI_STAGING_FTP_USER,
-                    pass: process.env.SHAPEZ_CLI_STAGING_FTP_PW,
-                })
-            );
+            return gulp
+                .src(additionalFiles, { base: additionalFolder }) //
+                .pipe($.sftp(deployCredentials));
         });
 
         gulp.task(`ftp.upload.${deployEnv}`, cb => {
