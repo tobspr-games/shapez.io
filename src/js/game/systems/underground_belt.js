@@ -31,7 +31,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             // Decrease remaining time of all items in belt
             for (let k = 0; k < undergroundComp.pendingItems.length; ++k) {
                 const item = undergroundComp.pendingItems[k];
-                item[1] = Math_max(0, item[1] - globalConfig.physicsDeltaSeconds);
+                item[1] = Math_max(0, item[1] - this.root.dynamicTickrate.deltaSeconds);
             }
 
             if (undergroundComp.mode === enumUndergroundBeltMode.sender) {

@@ -39,6 +39,7 @@
 @import "ingame_hud/pinned_shapes";
 @import "ingame_hud/notifications";
 @import "ingame_hud/settings_menu";
+@import "ingame_hud/debug_info";
 
 // prettier-ignore
 $elements: 
@@ -57,6 +58,7 @@ ingame_HUD_GameMenu,
 ingame_HUD_KeybindingOverlay,
 ingame_HUD_Notifications,
 ingame_HUD_MassSelector,
+ingame_HUD_DebugInfo,
 
 // Overlays
 ingame_HUD_BetaOverlay,

@@ -6,7 +6,7 @@ import { types, BasicSerializableObject } from "../../savegame/serialization";
 import { RegularGameSpeed } from "./regular_game_speed";
 import { BaseGameSpeed } from "./base_game_speed";
 import { PausedGameSpeed } from "./paused_game_speed";
-import { performanceNow } from "../../core/builtins";
+import { performanceNow, Math_max } from "../../core/builtins";
 import { FastForwardGameSpeed } from "./fast_forward_game_speed";
 import { gGameSpeedRegistry } from "../../core/global_registries";
 import { globalConfig } from "../../core/config";
@@ -102,7 +102,7 @@ export class GameTime extends BasicSerializableObject {
      * Internal method to generate new logic time budget
      * @param {number} deltaMs
      */
-    înternalAddDeltaToBudget(deltaMs) {
+    internalAddDeltaToBudget(deltaMs) {
         // Only update if game is supposed to update
         if (this.root.hud.shouldPauseGame()) {
             this.logicTimeBudget = 0;
@@ -112,9 +112,13 @@ export class GameTime extends BasicSerializableObject {
         }
 
         // Check for too big pile of updates -> reduce it to 1
-        const maxLogicSteps = this.speed.getMaxLogicStepsInQueue();
-        if (this.logicTimeBudget > globalConfig.physicsDeltaMs * maxLogicSteps) {
-            this.logicTimeBudget = globalConfig.physicsDeltaMs * maxLogicSteps;
+        const maxLogicSteps = Math_max(
+            3,
+            (this.speed.getMaxLogicStepsInQueue() * this.root.dynamicTickrate.currentTickRate) / 60
+        );
+        if (this.logicTimeBudget > this.root.dynamicTickrate.deltaMs * maxLogicSteps) {
+            // logger.warn("Skipping logic time steps since more than", maxLogicSteps, "are in queue");
+            this.logicTimeBudget = this.root.dynamicTickrate.deltaMs * maxLogicSteps;
         }
     }
 
@@ -124,13 +128,13 @@ export class GameTime extends BasicSerializableObject {
      * @param {function():boolean} updateMethod
      */
     performTicks(deltaMs, updateMethod) {
-        this.înternalAddDeltaToBudget(deltaMs);
+        this.internalAddDeltaToBudget(deltaMs);
 
         const speedAtStart = this.root.time.getSpeed();
 
         // Update physics & logic
-        while (this.logicTimeBudget >= globalConfig.physicsDeltaMs) {
-            this.logicTimeBudget -= globalConfig.physicsDeltaMs;
+        while (this.logicTimeBudget >= this.root.dynamicTickrate.deltaMs) {
+            this.logicTimeBudget -= this.root.dynamicTickrate.deltaMs;
 
             if (!updateMethod()) {
                 // Gameover happened or so, do not update anymore
@@ -138,7 +142,7 @@ export class GameTime extends BasicSerializableObject {
             }
 
             // Step game time
-            this.timeSeconds = quantizeFloat(this.timeSeconds + globalConfig.physicsDeltaSeconds);
+            this.timeSeconds = quantizeFloat(this.timeSeconds + this.root.dynamicTickrate.deltaSeconds);
 
             // Game time speed changed, need to abort since our logic steps are no longer valid
             if (speedAtStart.getId() !== this.speed.getId()) {

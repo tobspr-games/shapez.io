@@ -26,6 +26,7 @@ import { ProductionAnalytics } from "./production_analytics";
 import { Entity } from "./entity";
 import { ShapeDefinition } from "./shape_definition";
 import { BaseItem } from "./base_item";
+import { DynamicTickrate } from "./dynamic_tickrate";
 /* typehints:end */
 
 const logger = createLogger("game/root");
@@ -114,6 +115,9 @@ export class GameRoot {
 
         /** @type {ProductionAnalytics} */
         this.productionAnalytics = null;
+
+        /** @type {DynamicTickrate} */
+        this.dynamicTickrate = null;
 
         this.signals = {
             // Entities

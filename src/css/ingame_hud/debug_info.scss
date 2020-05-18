@@ -1,0 +1,10 @@
+#ingame_HUD_DebugInfo {
+    position: absolute;
+    @include S(bottom, 5px);
+    @include S(left, 5px);
+
+    font-size: 15px;
+    display: flex;
+    line-height: 15px;
+    flex-direction: column;
+}

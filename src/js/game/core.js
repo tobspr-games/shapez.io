@@ -32,6 +32,7 @@ import { GameTime } from "./time/game_time";
 import { ProductionAnalytics } from "./production_analytics";
 import { randomInt } from "../core/utils";
 import { defaultBuildingVariant } from "./meta_building";
+import { DynamicTickrate } from "./dynamic_tickrate";
 
 const logger = createLogger("ingame/core");
 
@@ -52,16 +53,6 @@ export class GameCore {
 
         /** @type {GameRoot} */
         this.root = null;
-
-        /**
-         * Time budget (seconds) for logic updates
-         */
-        this.logicTimeBudget = 0;
-
-        /**
-         * Time budget (seconds) for user interface updates
-         */
-        this.uiTimeBudget = 0;
 
         /**
          * Set to true at the beginning of a logic update and cleared when its finished.
@@ -96,6 +87,9 @@ export class GameCore {
 
         // This isn't nice, but we need it right here
         root.gameState.keyActionMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
+
+        // Needs to come first
+        root.dynamicTickrate = new DynamicTickrate(root);
 
         // Init classes
         root.camera = new Camera(root);
@@ -250,17 +244,6 @@ export class GameCore {
         // Perform logic ticks
         this.root.time.performTicks(deltaMs, this.boundInternalTick);
 
-        // Update UI particles
-        this.uiTimeBudget += deltaMs;
-        const maxUiSteps = 3;
-        if (this.uiTimeBudget > globalConfig.physicsDeltaMs * maxUiSteps) {
-            this.uiTimeBudget = globalConfig.physicsDeltaMs;
-        }
-        while (this.uiTimeBudget >= globalConfig.physicsDeltaMs) {
-            this.uiTimeBudget -= globalConfig.physicsDeltaMs;
-            // root.uiParticleMgr.update();
-        }
-
         // Update analytics
         root.productionAnalytics.update();
 
@@ -288,6 +271,9 @@ export class GameCore {
 
     updateLogic() {
         const root = this.root;
+
+        root.dynamicTickrate.beginTick();
+
         this.duringLogicUpdate = true;
 
         // Update entities, this removes destroyed entities
@@ -296,6 +282,8 @@ export class GameCore {
         // IMPORTANT: At this point, the game might be game over. Stop if this is the case
         if (!this.root) {
             logger.log("Root destructed, returning false");
+            root.dynamicTickrate.endTick();
+
             return false;
         }
 
@@ -303,7 +291,7 @@ export class GameCore {
         // root.particleMgr.update();
 
         this.duringLogicUpdate = false;
-
+        root.dynamicTickrate.endTick();
         return true;
     }
 

@@ -21,6 +21,7 @@ import { HUDPinnedShapes } from "./parts/pinned_shapes";
 import { ShapeDefinition } from "../shape_definition";
 import { HUDNotifications, enumNotificationType } from "./parts/notifications";
 import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDDebugInfo } from "./parts/debug_info";
 
 export class GameHUD {
     /**
@@ -57,6 +58,7 @@ export class GameHUD {
             settingsMenu: new HUDSettingsMenu(this.root),
 
             // betaOverlay: new HUDBetaOverlay(this.root),
+            debugInfo: new HUDDebugInfo(this.root),
         };
 
         this.signals = {

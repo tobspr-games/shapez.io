@@ -109,78 +109,98 @@ export class BeltSystem extends GameSystemWithFilter {
         this.forEachMatchingEntityOnScreen(parameters, this.drawEntityItems.bind(this));
     }
 
-    update() {
+    /**
+     * Updates a given entity
+     * @param {Entity} entity
+     * @param {Set} processedEntities
+     */
+    updateBelt(entity, processedEntities) {
+        if (processedEntities.has(entity.uid)) {
+            return;
+        }
+
+        processedEntities.add(entity.uid);
+
         // Divide by item spacing on belts since we use throughput and not speed
         const beltSpeed =
             this.root.hubGoals.getBeltBaseSpeed() *
-            globalConfig.physicsDeltaSeconds *
+            this.root.dynamicTickrate.deltaSeconds *
             globalConfig.itemSpacingOnBelts;
+        const beltComp = entity.components.Belt;
+        const staticComp = entity.components.StaticMapEntity;
+        const items = beltComp.sortedItems;
+
+        if (items.length === 0) {
+            // Fast out for performance
+            return;
+        }
+
+        const ejectorComp = entity.components.ItemEjector;
+        let maxProgress = 1;
+
+        // When ejecting, we can not go further than the item spacing since it
+        // will be on the corner
+        if (ejectorComp.isAnySlotEjecting()) {
+            maxProgress = 1 - globalConfig.itemSpacingOnBelts;
+        } else {
+            // Find follow up belt to make sure we don't clash items
+            const followUpDirection = staticComp.localDirectionToWorld(beltComp.direction);
+            const followUpVector = enumDirectionToVector[followUpDirection];
+
+            const followUpTile = staticComp.origin.add(followUpVector);
+            const followUpEntity = this.root.map.getTileContent(followUpTile);
+
+            if (followUpEntity) {
+                const followUpBeltComp = followUpEntity.components.Belt;
+                if (followUpBeltComp) {
+                    // Update follow up belt first
+                    this.updateBelt(followUpEntity, processedEntities);
+
+                    const spacingOnBelt = followUpBeltComp.getDistanceToFirstItemCenter();
+                    maxProgress = Math_min(1, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
+                }
+            }
+        }
+
+        let speedMultiplier = 1;
+        if (beltComp.direction !== enumDirection.top) {
+            // Shaped belts are longer, thus being quicker
+            speedMultiplier = 1.41;
+        }
+
+        for (let itemIndex = items.length - 1; itemIndex >= 0; --itemIndex) {
+            const itemAndProgress = items[itemIndex];
+
+            const newProgress = itemAndProgress[0] + speedMultiplier * beltSpeed;
+            if (newProgress >= 1.0) {
+                // Try to give this item to a new belt
+                const freeSlot = ejectorComp.getFirstFreeSlot();
+
+                if (freeSlot === null) {
+                    // So, we don't have a free slot - damned!
+                    itemAndProgress[0] = 1.0;
+                    maxProgress = 1 - globalConfig.itemSpacingOnBelts;
+                } else {
+                    // We got a free slot, remove this item and keep it on the ejector slot
+                    if (!ejectorComp.tryEject(freeSlot, itemAndProgress[1])) {
+                        assert(false, "Ejection failed");
+                    }
+                    items.splice(itemIndex, 1);
+                    maxProgress = 1;
+                }
+            } else {
+                itemAndProgress[0] = Math_min(newProgress, maxProgress);
+                maxProgress = itemAndProgress[0] - globalConfig.itemSpacingOnBelts;
+            }
+        }
+    }
+
+    update() {
+        const processedEntities = new Set();
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-            const beltComp = entity.components.Belt;
-            const staticComp = entity.components.StaticMapEntity;
-            const items = beltComp.sortedItems;
-            if (items.length === 0) {
-                // Fast out for performance
-                continue;
-            }
-
-            const ejectorComp = entity.components.ItemEjector;
-            let maxProgress = 1;
-
-            // When ejecting, we can not go further than the item spacing since it
-            // will be on the corner
-            if (ejectorComp.isAnySlotEjecting()) {
-                maxProgress = 1 - globalConfig.itemSpacingOnBelts;
-            } else {
-                // Find follow up belt to make sure we don't clash items
-                const followUpDirection = staticComp.localDirectionToWorld(beltComp.direction);
-                const followUpVector = enumDirectionToVector[followUpDirection];
-
-                const followUpTile = staticComp.origin.add(followUpVector);
-                const followUpEntity = this.root.map.getTileContent(followUpTile);
-
-                if (followUpEntity) {
-                    const followUpBeltComp = followUpEntity.components.Belt;
-                    if (followUpBeltComp) {
-                        const spacingOnBelt = followUpBeltComp.getDistanceToFirstItemCenter();
-                        maxProgress = Math_min(1, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
-                    }
-                }
-            }
-
-            let speedMultiplier = 1;
-            if (beltComp.direction !== enumDirection.top) {
-                // Shaped belts are longer, thus being quicker
-                speedMultiplier = 1.41;
-            }
-
-            for (let itemIndex = items.length - 1; itemIndex >= 0; --itemIndex) {
-                const itemAndProgress = items[itemIndex];
-
-                const newProgress = itemAndProgress[0] + speedMultiplier * beltSpeed;
-                if (newProgress >= 1.0) {
-                    // Try to give this item to a new belt
-                    const freeSlot = ejectorComp.getFirstFreeSlot();
-
-                    if (freeSlot === null) {
-                        // So, we don't have a free slot - damned!
-                        itemAndProgress[0] = 1.0;
-                        maxProgress = 1 - globalConfig.itemSpacingOnBelts;
-                    } else {
-                        // We got a free slot, remove this item and keep it on the ejector slot
-                        if (!ejectorComp.tryEject(freeSlot, itemAndProgress[1])) {
-                            assert(false, "Ejection failed");
-                        }
-                        items.splice(itemIndex, 1);
-                        maxProgress = 1;
-                    }
-                } else {
-                    itemAndProgress[0] = Math_min(newProgress, maxProgress);
-                    maxProgress = itemAndProgress[0] - globalConfig.itemSpacingOnBelts;
-                }
-            }
+            this.updateBelt(entity, processedEntities);
         }
     }
 
