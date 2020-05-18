@@ -27,7 +27,7 @@ export const globalConfig = {
     maximumTickRate: 500,
 
     // Map
-    mapChunkSize: 32,
+    mapChunkSize: 16,
     mapChunkPrerenderMinZoom: 1.3,
     mapChunkOverviewMinZoom: 0.7,
 
