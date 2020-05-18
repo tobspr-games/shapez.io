@@ -243,6 +243,7 @@ export class MapChunk {
 
         // Determine how likely it is that there is a color patch
         const colorPatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
+
         if (rng.next() < colorPatchChance) {
             const colorPatchSize = Math_max(2, Math_round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
             this.internalGenerateColorPatch(rng, colorPatchSize, distanceToOriginInChunks);

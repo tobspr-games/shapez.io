@@ -146,6 +146,57 @@ export class StaticMapEntityComponent extends Component {
     }
 
     /**
+     * Returns whether the entity should be drawn for the given parameters
+     * @param {DrawParameters} parameters
+     */
+    shouldBeDrawn(parameters) {
+        let x = 0;
+        let y = 0;
+        let w = 0;
+        let h = 0;
+
+        switch (this.rotation) {
+            case 0: {
+                x = this.origin.x;
+                y = this.origin.y;
+                w = this.tileSize.x;
+                h = this.tileSize.y;
+                break;
+            }
+            case 90: {
+                x = this.origin.x - this.tileSize.y + 1;
+                y = this.origin.y;
+                w = this.tileSize.y;
+                h = this.tileSize.x;
+                break;
+            }
+            case 180: {
+                x = this.origin.x - this.tileSize.x + 1;
+                y = this.origin.y - this.tileSize.y + 1;
+                w = this.tileSize.x;
+                h = this.tileSize.y;
+                break;
+            }
+            case 270: {
+                x = this.origin.x;
+                y = this.origin.y - this.tileSize.x + 1;
+                w = this.tileSize.y;
+                h = this.tileSize.x;
+                break;
+            }
+            default:
+                assert(false, "Invalid rotation");
+        }
+
+        return parameters.visibleRect.containsRect4Params(
+            x * globalConfig.tileSize,
+            y * globalConfig.tileSize,
+            w * globalConfig.tileSize,
+            h * globalConfig.tileSize
+        );
+    }
+
+    /**
      * Draws a sprite over the whole space of the entity
      * @param {DrawParameters} parameters
      * @param {AtlasSprite} sprite
@@ -156,6 +207,10 @@ export class StaticMapEntityComponent extends Component {
         const worldX = this.origin.x * globalConfig.tileSize;
         const worldY = this.origin.y * globalConfig.tileSize;
 
+        if (!this.shouldBeDrawn(parameters)) {
+            return;
+        }
+
         if (this.rotation === 0) {
             // Early out, is faster
             sprite.drawCached(
@@ -164,7 +219,7 @@ export class StaticMapEntityComponent extends Component {
                 worldY - extrudePixels * this.tileSize.y,
                 globalConfig.tileSize * this.tileSize.x + 2 * extrudePixels * this.tileSize.x,
                 globalConfig.tileSize * this.tileSize.y + 2 * extrudePixels * this.tileSize.y,
-                clipping
+                false
             );
         } else {
             const rotationCenterX = worldX + globalConfig.halfTileSize;

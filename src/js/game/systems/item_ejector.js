@@ -141,6 +141,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         const ejectorComp = entity.components.ItemEjector;
         const staticComp = entity.components.StaticMapEntity;
 
+        if (!staticComp.shouldBeDrawn(parameters)) {
+            return;
+        }
+
         for (let i = 0; i < ejectorComp.slots.length; ++i) {
             const slot = ejectorComp.slots[i];
             const ejectedItem = slot.item;

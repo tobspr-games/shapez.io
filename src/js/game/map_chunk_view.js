@@ -149,19 +149,7 @@ export class MapChunkView extends MapChunk {
             -this.tileX * globalConfig.tileSize,
             -this.tileY * globalConfig.tileSize
         );
-        // parameters.context.save();
-        // parameters.context.transform(
-        //     1,
-        //     0,
-        //     0,
-        //     zoomLevel,
-        //     this.tileX * globalConfig.tileSize,
-        //     this.tileY * globalConfig.tileSize
-        // );
-
         this.internalDrawBackgroundSystems(parameters);
-
-        // parameters.context.restore();
     }
 
     /**
@@ -187,24 +175,11 @@ export class MapChunkView extends MapChunk {
             zoomLevel,
             root: this.root,
         });
-        // parameters.context.save();
-        // parameters.context.save();
-        // parameters.context.transform(
-        //     zoomLevel,
-        //     0,
-        //     0,
-        //     zoomLevel,
-        //     this.tileX * globalConfig.tileSize,
-        //     this.tileY * globalConfig.tileSize
-        // );
-
         parameters.context.translate(
             -this.tileX * globalConfig.tileSize,
             -this.tileY * globalConfig.tileSize
         );
         this.internalDrawForegroundSystems(parameters);
-
-        // parameters.context.restore();
     }
 
     /**

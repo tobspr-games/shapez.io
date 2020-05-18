@@ -6,6 +6,8 @@ import { round3Digits } from "../core/utils";
 
 const logger = createLogger("dynamic_tickrate");
 
+const fpsAccumulationTime = 1000;
+
 export class DynamicTickrate {
     /**
      *
@@ -18,7 +20,25 @@ export class DynamicTickrate {
         this.capturedTicks = [];
         this.averageTickDuration = 0;
 
+        this.accumulatedFps = 0;
+        this.accumulatedFpsLastUpdate = 0;
+
+        this.averageFps = 60;
+
         this.setTickRate(60);
+    }
+
+    onFrameRendered() {
+        ++this.accumulatedFps;
+
+        const now = performanceNow();
+        const timeDuration = now - this.accumulatedFpsLastUpdate;
+        if (timeDuration > fpsAccumulationTime) {
+            const avgFps = (this.accumulatedFps / fpsAccumulationTime) * 1000;
+            this.averageFps = avgFps;
+            this.accumulatedFps = 0;
+            this.accumulatedFpsLastUpdate = now;
+        }
     }
 
     /**
@@ -36,14 +56,16 @@ export class DynamicTickrate {
      * Increases the tick rate marginally
      */
     increaseTickRate() {
-        this.setTickRate(Math_round(Math_min(globalConfig.maximumTickRate, this.currentTickRate * 1.2)));
+        const desiredFps = this.root.app.settings.getDesiredFps();
+        this.setTickRate(Math_round(Math_min(desiredFps, this.currentTickRate * 1.2)));
     }
 
     /**
      * Decreases the tick rate marginally
      */
     decreaseTickRate() {
-        this.setTickRate(Math_round(Math_max(globalConfig.minimumTickRate, this.currentTickRate * 0.8)));
+        const desiredFps = this.root.app.settings.getDesiredFps();
+        this.setTickRate(Math_round(Math_max(desiredFps / 2, this.currentTickRate * 0.8)));
     }
 
     /**
@@ -65,22 +87,14 @@ export class DynamicTickrate {
             }
             average /= this.capturedTicks.length;
 
-            // Calculate tick duration to cover X% of the frame
-            const ticksPerFrame = this.currentTickRate / 60;
-            const maxFrameDurationMs = 8;
-            const maxTickDuration = maxFrameDurationMs / ticksPerFrame;
-            // const maxTickDuration = (1000 / this.currentTickRate) * 0.75;
-            logger.log(
-                "Average time per tick:",
-                round3Digits(average) + "ms",
-                "allowed are",
-                maxTickDuration
-            );
             this.averageTickDuration = average;
 
-            if (average < maxTickDuration) {
+            const desiredFps = this.root.app.settings.getDesiredFps();
+
+            if (this.averageFps > desiredFps * 0.9) {
+                // if (average < maxTickDuration) {
                 this.increaseTickRate();
-            } else {
+            } else if (this.averageFps < desiredFps * 0.7) {
                 this.decreaseTickRate();
             }
 

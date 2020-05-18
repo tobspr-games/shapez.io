@@ -274,6 +274,11 @@ export class GameCore {
 
         root.dynamicTickrate.beginTick();
 
+        if (G_IS_DEV && globalConfig.debug.disableLogicTicks) {
+            root.dynamicTickrate.endTick();
+            return true;
+        }
+
         this.duringLogicUpdate = true;
 
         // Update entities, this removes destroyed entities
@@ -327,6 +332,8 @@ export class GameCore {
             return;
         }
 
+        this.root.dynamicTickrate.onFrameRendered();
+
         if (!this.shouldRender()) {
             // Always update hud tho
             root.hud.update();
@@ -341,6 +348,9 @@ export class GameCore {
         // Gather context and save all state
         const context = root.context;
         context.save();
+        if (G_IS_DEV && globalConfig.debug.testClipping) {
+            context.clearRect(0, 0, window.innerWidth * 3, window.innerHeight * 3);
+        }
 
         // Compute optimal zoom level and atlas scale
         const zoomLevel = root.camera.zoomLevel;
@@ -383,7 +393,6 @@ export class GameCore {
         // -----
 
         root.map.drawBackground(params);
-        // systems.mapResources.draw(params);
 
         if (!this.root.camera.getIsMapOverlayActive()) {
             systems.itemAcceptor.drawUnderlays(params);
