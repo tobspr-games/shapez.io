@@ -1,4 +1,4 @@
-import { Math_radians, Math_min } from "../../core/builtins";
+import { Math_radians, Math_min, Math_max } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
@@ -6,7 +6,7 @@ import { AtlasSprite } from "../../core/sprites";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
+import { enumDirection, enumDirectionToVector, Vector, enumInvertedDirections } from "../../core/vector";
 import { MapChunkView } from "../map_chunk_view";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { MetaBeltBaseBuilding } from "../buildings/belt_base";
@@ -138,10 +138,24 @@ export class BeltSystem extends GameSystemWithFilter {
         const followUpTile = staticComp.origin.add(followUpVector);
         const followUpEntity = this.root.map.getTileContent(followUpTile);
 
+        // Check if theres a belt at the tile we point to
         if (followUpEntity) {
             const followUpBeltComp = followUpEntity.components.Belt;
             if (followUpBeltComp) {
-                return followUpEntity;
+                const followUpStatic = followUpEntity.components.StaticMapEntity;
+                const followUpAcceptor = followUpEntity.components.ItemAcceptor;
+
+                // Check if the belt accepts items from our direction
+                const acceptorSlots = followUpAcceptor.slots;
+                for (let i = 0; i < acceptorSlots.length; ++i) {
+                    const slot = acceptorSlots[i];
+                    for (let k = 0; k < slot.directions.length; ++k) {
+                        const localDirection = followUpStatic.localDirectionToWorld(slot.directions[k]);
+                        if (enumInvertedDirections[localDirection] === followUpDirection) {
+                            return followUpEntity;
+                        }
+                    }
+                }
             }
         }
 
@@ -220,6 +234,7 @@ export class BeltSystem extends GameSystemWithFilter {
                 if (followUp) {
                     const spacingOnBelt = followUp.components.Belt.getDistanceToFirstItemCenter();
                     maxProgress = Math_min(2, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
+                    assert(maxProgress >= 0.0, "max progress < 0 (I)");
                 }
             }
 
@@ -265,13 +280,13 @@ export class BeltSystem extends GameSystemWithFilter {
                                 assert(false, "Ejection failed");
                             }
                             items.splice(itemIndex, 1);
-                            // Do not override max progress at all
-                            // maxProgress = 1;
+
+                            // NOTICE: Do not override max progress here at all, this leads to issues
                         }
                     }
                 } else {
                     // We just moved this item forward, so determine the maximum progress of other items
-                    maxProgress = progressAndItem[0] - globalConfig.itemSpacingOnBelts;
+                    maxProgress = Math_max(0, progressAndItem[0] - globalConfig.itemSpacingOnBelts);
                 }
             }
         }
