@@ -36,7 +36,7 @@ export class HubGoals extends BasicSerializableObject {
         }
 
         // Compute gained rewards
-        for (let i = 0; i < this.level; ++i) {
+        for (let i = 0; i < this.level - 1; ++i) {
             if (i < tutorialGoals.length) {
                 const reward = tutorialGoals[i].reward;
                 this.gainedRewards[reward] = (this.gainedRewards[reward] || 0) + 1;
