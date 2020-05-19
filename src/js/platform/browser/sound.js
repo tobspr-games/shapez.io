@@ -82,7 +82,6 @@ class WrappedSoundInstance extends SoundInstanceInterface {
     }
 
     play(volume) {
-        logger.error("TDO: PLAY", this.key);
         this.spriteContainer.play(volume, this.key);
     }
 
