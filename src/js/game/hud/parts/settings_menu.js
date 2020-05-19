@@ -2,7 +2,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, formatSeconds, formatBigNumberFull } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { InputReceiver } from "../../../core/input_receiver";
-import { KeyActionMapper } from "../../key_action_mapper";
+import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { T } from "../../../translations";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { ItemProcessorComponent } from "../../components/item_processor";
@@ -72,7 +72,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
     }
 
     initialize() {
-        this.root.gameState.keyActionMapper.getBinding("back").add(this.show, this);
+        this.root.gameState.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.show, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
@@ -80,8 +80,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         this.inputReciever = new InputReceiver("settingsmenu");
         this.keyActionMapper = new KeyActionMapper(this.root, this.inputReciever);
-
-        this.keyActionMapper.getBinding("back").add(this.close, this);
+        this.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.close, this);
 
         this.close();
     }

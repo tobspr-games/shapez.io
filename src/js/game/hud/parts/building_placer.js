@@ -19,6 +19,7 @@ import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { T } from "../../../translations";
+import { KEYMAPPINGS } from "../../key_action_mapper";
 
 export class HUDBuildingPlacer extends BaseHUDPart {
     initialize() {
@@ -30,11 +31,13 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.fakeEntity = null;
 
         const keyActionMapper = this.root.gameState.keyActionMapper;
-        keyActionMapper.getBinding("building_abort_placement").add(this.abortPlacement, this);
-        keyActionMapper.getBinding("back").add(this.abortPlacement, this);
+        keyActionMapper
+            .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
+            .add(this.abortPlacement, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
 
-        keyActionMapper.getBinding("rotate_while_placing").add(this.tryRotate, this);
-        keyActionMapper.getBinding("cycle_variants").add(this.cycleVariants, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.element, {});
 
@@ -281,7 +284,9 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id].name;
         this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id].description;
 
-        const binding = this.root.gameState.keyActionMapper.getBinding("building_" + metaBuilding.getId());
+        const binding = this.root.gameState.keyActionMapper.getBinding(
+            KEYMAPPINGS.buildings[metaBuilding.getId()]
+        );
         this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace(
             "<key>",
             "<code class='keybinding'>" + binding.getKeyCodeString() + "</code>"
@@ -322,7 +327,9 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             T.ingame.buildingPlacement.cycleBuildingVariants.replace(
                 "<key>",
                 "<code class='keybinding'>" +
-                    this.root.gameState.keyActionMapper.getBinding("cycle_variants").getKeyCodeString() +
+                    this.root.gameState.keyActionMapper
+                        .getBinding(KEYMAPPINGS.placement.cycleBuildingVariants)
+                        .getKeyCodeString() +
                     "</code>"
             )
         );
@@ -452,7 +459,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         ) {
             // Succesfully placed
 
-            if (metaBuilding.getFlipOrientationAfterPlacement()) {
+            if (metaBuilding.getFlipOrientationAfterPlacement() && !this.root.app.inputMgr.ctrlIsDown) {
                 this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
             }
 

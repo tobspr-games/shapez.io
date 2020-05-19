@@ -1,13 +1,5 @@
 #state_SettingsState {
     .content {
-        .categoryLabel {
-            display: block;
-            text-transform: uppercase;
-            @include S(margin-top, 15px);
-            @include S(margin-bottom, 15px);
-            @include Heading;
-        }
-
         .versionbar {
             @include S(margin-top, 20px);
             @include SuperSmallText;
@@ -21,9 +13,13 @@
             }
         }
 
+        button.about {
+            background-color: $colorGreenBright;
+        }
+
         .setting {
             @include S(padding, 10px);
-            background: #eee;
+            background: #eeeff5;
             @include S(border-radius, $globalBorderRadius);
             @include S(margin-bottom, 5px);
 

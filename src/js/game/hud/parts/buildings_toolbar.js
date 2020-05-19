@@ -14,6 +14,7 @@ import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
+import { KEYMAPPINGS } from "../../key_action_mapper";
 
 const toolbarBuildings = [
     MetaBeltBaseBuilding,
@@ -65,7 +66,7 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
 
         for (let i = 0; i < toolbarBuildings.length; ++i) {
             const metaBuilding = gMetaBuildingRegistry.findByClass(toolbarBuildings[i]);
-            const binding = actionMapper.getBinding("building_" + metaBuilding.getId());
+            const binding = actionMapper.getBinding(KEYMAPPINGS.buildings[metaBuilding.getId()]);
 
             const itemContainer = makeDiv(items, null, ["building"]);
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
@@ -91,7 +92,7 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
         );
 
         this.lastSelectedIndex = 0;
-        actionMapper.getBinding("cycle_buildings").add(this.cycleBuildings, this);
+        actionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildings).add(this.cycleBuildings, this);
     }
 
     update() {
