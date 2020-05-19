@@ -23,7 +23,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // First of all, process the current recipe
             processorComp.secondsUntilEject = Math_max(
                 0,
-                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
+                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds,
             );
 
             // Check if we have any finished items we can eject
@@ -64,11 +64,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 }
             }
 
+            const inputs = processorComp.inputSlots.length >= processorComp.inputsPerCharge;
+            const outputs = processorComp.itemsToEject.length > 0;
             // Check if we have an empty queue and can start a new charge
-            if (processorComp.itemsToEject.length === 0) {
-                if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
-                    this.startNewCharge(entity);
-                }
+            if (inputs && !outputs || processorComp.chargeWhenBlocked && (inputs || !outputs)) {
+                this.startNewCharge(entity);
             }
         }
     }
@@ -94,7 +94,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         processorComp.secondsUntilEject = 1 / baseSpeed;
 
         /** @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>} */
-        const outItems = [];
+        const outItems = processorComp.itemsToEject;
 
         // Whether to track the production towards the analytics
         let trackProduction = true;
@@ -196,7 +196,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const stackedDefinition = this.root.shapeDefinitionMgr.shapeActionStack(
                     lowerItem.definition,
-                    upperItem.definition
+                    upperItem.definition,
                 );
                 outItems.push({
                     item: new ShapeItem(stackedDefinition),
@@ -244,7 +244,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith(
                     shapeItem.definition,
-                    colorItem.color
+                    colorItem.color,
                 );
 
                 outItems.push({
@@ -267,12 +267,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const colorizedDefinition1 = this.root.shapeDefinitionMgr.shapeActionPaintWith(
                     shapeItem1.definition,
-                    colorItem.color
+                    colorItem.color,
                 );
 
                 const colorizedDefinition2 = this.root.shapeDefinitionMgr.shapeActionPaintWith(
                     shapeItem2.definition,
-                    colorItem.color
+                    colorItem.color,
                 );
                 outItems.push({
                     item: new ShapeItem(colorizedDefinition1),
@@ -302,7 +302,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
                     shapeItem.definition,
-                    [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color]
+                    [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color],
                 );
 
                 outItems.push({
@@ -325,6 +325,38 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     hubComponent.queueShapeDefinition(shapeItem.definition);
                 }
 
+                break;
+            }
+
+            case enumItemProcessorTypes.buffer: {
+                let buffer = entity.components.Buffer;
+
+                for (let i = 0; i < items.length; ++i) {
+                    const inputItem = /** @type {ShapeItem} */ (items[i].item);
+                    assert(inputItem instanceof ShapeItem, "Input is not a shape");
+                    // TODO: Validate item type
+
+                    if (buffer.itemCount < buffer.storageLimit) {
+                        buffer.itemCount++;
+                    }
+
+                    if (buffer.definition == null) {
+                        buffer.definition = inputItem.definition;
+                    }
+                }
+
+                // const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCW(inputDefinition);
+
+                if (outItems.length === 0 && buffer.itemCount > 0) {
+                    buffer.itemCount--;
+                    outItems.push({
+                        item: new ShapeItem(buffer.definition),
+                    });
+
+                    if (buffer.itemCount === 0) {
+                        buffer.definition = null;
+                    }
+                }
                 break;
             }
 

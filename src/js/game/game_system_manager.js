@@ -12,6 +12,7 @@ import { UndergroundBeltSystem } from "./systems/underground_belt";
 import { HubSystem } from "./systems/hub";
 import { StaticMapEntitySystem } from "./systems/static_map_entity";
 import { ItemAcceptorSystem } from "./systems/item_acceptor";
+import { BufferSystem } from "./systems/item_buffer";
 
 const logger = createLogger("game_system_manager");
 
@@ -52,6 +53,9 @@ export class GameSystemManager {
             /** @type {ItemAcceptorSystem} */
             itemAcceptor: null,
 
+            /** @type {BufferSystem} */
+            itemBuffer: null,
+
             /* typehints:end */
         };
         this.systemUpdateOrder = [];
@@ -87,6 +91,8 @@ export class GameSystemManager {
         add("staticMapEntities", StaticMapEntitySystem);
 
         add("itemAcceptor", ItemAcceptorSystem);
+
+        add("itemBuffer", BufferSystem);
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }

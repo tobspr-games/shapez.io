@@ -12,6 +12,7 @@ import { MetaSplitterBuilding } from "../../buildings/splitter";
 import { MetaStackerBuilding } from "../../buildings/stacker";
 import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
+import { MetaBufferBuilding } from "../../buildings/buffer";
 import { MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
 import { KEYMAPPINGS } from "../../key_action_mapper";
@@ -27,6 +28,7 @@ const toolbarBuildings = [
     MetaMixerBuilding,
     MetaPainterBuilding,
     MetaTrashBuilding,
+    MetaBufferBuilding,
 ];
 
 export class HUDBuildingsToolbar extends BaseHUDPart {

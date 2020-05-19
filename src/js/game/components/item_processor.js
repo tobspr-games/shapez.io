@@ -31,7 +31,7 @@ export class ItemProcessorComponent extends Component {
             nextOutputSlot: types.uint,
             type: types.enum(enumItemProcessorTypes),
             inputsPerCharge: types.uint,
-
+            chargeWhenBlocked: types.bool,
             inputSlots: types.array(
                 types.structured({
                     item: types.obj(gItemRegistry),
@@ -54,9 +54,10 @@ export class ItemProcessorComponent extends Component {
      * @param {object} param0
      * @param {enumItemProcessorTypes=} param0.processorType Which type of processor this is
      * @param {number=} param0.inputsPerCharge How many items this machine needs until it can start working
+     * @param {boolean=} param0.chargeWhenBlocked If charges should be preformed when the output buffer is full
      *
      */
-    constructor({ processorType = enumItemProcessorTypes.splitter, inputsPerCharge = 1 }) {
+    constructor({ processorType = enumItemProcessorTypes.splitter, inputsPerCharge = 1, chargeWhenBlocked = false}) {
         super();
 
         // Which slot to emit next, this is only a preference and if it can't emit
@@ -69,6 +70,9 @@ export class ItemProcessorComponent extends Component {
 
         // How many inputs we need for one charge
         this.inputsPerCharge = inputsPerCharge;
+
+        // Should charges be performed when the output buffer still has items (output is blocked)
+        this.chargeWhenBlocked = chargeWhenBlocked;
 
         /**
          * Our current inputs

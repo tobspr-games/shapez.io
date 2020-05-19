@@ -9,6 +9,7 @@ import { ReplaceableMapEntityComponent } from "./components/replaceable_map_enti
 import { UndergroundBeltComponent } from "./components/underground_belt";
 import { UnremovableComponent } from "./components/unremovable";
 import { HubComponent } from "./components/hub";
+import { BufferComponent } from "./components/item_buffer";
 
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
@@ -21,6 +22,7 @@ export function initComponentRegistry() {
     gComponentRegistry.register(UndergroundBeltComponent);
     gComponentRegistry.register(UnremovableComponent);
     gComponentRegistry.register(HubComponent);
+    gComponentRegistry.register(BufferComponent);
 
     // IMPORTANT ^^^^^ REGENERATE SAVEGAME SCHEMA AFTERWARDS
     // IMPORTANT ^^^^^ ALSO UPDATE ENTITY COMPONENT STORAG

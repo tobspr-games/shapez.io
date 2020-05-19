@@ -1,6 +1,7 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { ItemAcceptorComponent, enumItemAcceptorItemFilter } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
+import { BufferComponent } from "../components/item_buffer";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
@@ -34,9 +35,11 @@ export class MetaBufferBuilding extends MetaBuilding {
      */
     setupEntityComponents(entity) {
         // TODO: Use custom component here to allow for smooth output
+        entity.addComponent(new BufferComponent());
         entity.addComponent(
             new ItemProcessorComponent({
                 inputsPerCharge: 1,
+                chargeWhenBlocked: true,
                 processorType: enumItemProcessorTypes.buffer,
             })
         );
@@ -46,6 +49,9 @@ export class MetaBufferBuilding extends MetaBuilding {
                 slots: [{ pos: new Vector(1, 0), direction: enumDirection.top }],
             })
         );
+
+        // We render the sprite our self
+        // entity.components.StaticMapEntity.spriteKey = null;
 
         // TODO: Replace item filters with custom filter to only allow one type of item to be collected.
         entity.addComponent(
