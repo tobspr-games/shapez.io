@@ -1,6 +1,6 @@
 import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
-import { globalConfig } from "../core/config";
+import { globalConfig, IS_DEBUG, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
 import {
     makeDiv,
     formatSecondsToTimeAgo,
@@ -41,57 +41,36 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
-
-                ${
-                    G_IS_STANDALONE
-                        ? ""
-                        : `
-                    <div class="demoBadge"></div>
-                `
-                }
+                ${IS_DEMO ? `<div class="demoBadge"></div>` : ""}
             </div>
 
 
-            <div class="mainWrapper">
+            <div class="mainWrapper ${IS_DEMO ? "demo" : "noDemo"}">
             
-            ${
-                G_IS_STANDALONE
-                    ? ""
-                    : `
-                <div class="standaloneBanner leftSide">${bannerHtml}</div>
-            `
-            }    
+                ${IS_DEMO ? `<div class="standaloneBanner leftSide">${bannerHtml}</div>` : ""}    
+                
                 <div class="mainContainer">
-            ${
-                isSupportedBrowser()
-                    ? ""
-                    : `
-                <div class="browserWarning">${T.mainMenu.browserWarning}</div>
-            `
-            }
-
+                    ${
+                        isSupportedBrowser()
+                            ? ""
+                            : `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
+                    }
                     <button class="playButton styledButton">${T.mainMenu.play}</button>
                     <button class="importButton styledButton">${T.mainMenu.importSavegame}</button>
                 </div>
-
-                ${
-                    G_IS_STANDALONE
-                        ? ""
-                        : `
-                    <div class="standaloneBanner rightSide">${bannerHtml}</div>
-                `
-                }    
+                
+                ${IS_DEMO ? `<div class="standaloneBanner leftSide">${bannerHtml}</div>` : ""}    
     
             </div>
 
             <div class="footer">
 
-                <a href="https://github.com/tobspr/shapez.io" target="_blank">
+                <a href="${THIRDPARTY_URLS.github}" target="_blank">
                     ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
                     </a>    
                     
-                <a href="https://discord.gg/HN7EVzV" target="_blank">
+                <a href="${THIRDPARTY_URLS.discord}" target="_blank">
                     ${T.mainMenu.discordLink}
                     <span class="thirdpartyLogo  discordLogo"></span>
                 </a>    
@@ -101,6 +80,11 @@ export class MainMenuState extends GameState {
     }
 
     requestImportSavegame() {
+        if (IS_DEMO) {
+            this.dialogs.showFeatureRestrictionInfo(T.demo.features.importingGames);
+            return;
+        }
+
         var input = document.createElement("input");
         input.type = "file";
         input.accept = ".bin";
@@ -260,6 +244,12 @@ export class MainMenuState extends GameState {
      */
     resumeGame(game) {
         this.app.analytics.trackUiClick("resume_game");
+
+        if (IS_DEMO) {
+            this.dialogs.showFeatureRestrictionInfo(T.demo.features.restoringGames);
+            return;
+        }
+
         const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
         savegame.readAsync().then(() => {
             this.moveToState("InGameState", {

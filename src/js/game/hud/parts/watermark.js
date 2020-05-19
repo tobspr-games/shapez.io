@@ -14,13 +14,9 @@ export class HUDWatermark extends BaseHUDPart {
         const w = this.root.gameWidth;
 
         parameters.context.fillStyle = "#f77";
-        parameters.context.font = "50px GameFont";
+        parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 15 + "px GameFont";
         parameters.context.textAlign = "center";
-        parameters.context.fillText("DEMO VERSION", w / 2, 100);
-
-        parameters.context.fillStyle = "#aaaca9";
-        parameters.context.font = "20px GameFont";
-        parameters.context.fillText("Get shapez.io on steam for the full experience!", w / 2, 140);
+        parameters.context.fillText("DEMO VERSION", w / 2, 50);
 
         parameters.context.textAlign = "left";
     }

@@ -3,6 +3,7 @@ import { SOUNDS } from "../platform/sound";
 import { T } from "../translations";
 import { KEYMAPPINGS, getStringForKeyCode } from "../game/key_action_mapper";
 import { Dialog } from "../core/modal_dialog_elements";
+import { THIRDPARTY_URLS } from "../core/config";
 
 export class AboutState extends TextualGameState {
     constructor() {
@@ -17,9 +18,9 @@ export class AboutState extends TextualGameState {
         return `
             This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).
             <br><br>
-            If you want to contribute, check out <a href="https://github.com/tobspr/shapez.io" target="_blank">shapez.io on github</a>.
+            If you want to contribute, check out <a href="${THIRDPARTY_URLS.github}" target="_blank">shapez.io on github</a>.
             <br><br>
-            This game wouldn't have been possible without the great discord community arround my games - You should really join the <a href="https://discord.gg/HN7EVzV" target="_blank">discord server</a>!
+            This game wouldn't have been possible without the great discord community arround my games - You should really join the <a href="${THIRDPARTY_URLS.discord}" target="_blank">discord server</a>!
             <br><br>
             The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome. 
             <br><br>

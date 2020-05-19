@@ -4,6 +4,7 @@ import { SOUNDS } from "../../../platform/sound";
 import { enumNotificationType } from "./notifications";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { IS_DEMO } from "../../../core/config";
 
 export class HUDGameMenu extends BaseHUDPart {
     initialize() {}
@@ -117,6 +118,13 @@ export class HUDGameMenu extends BaseHUDPart {
     }
 
     startSave() {
+        if (IS_DEMO) {
+            this.root.hud.parts.dialogs.showFeatureRestrictionInfo(
+                null,
+                T.dialogs.saveNotPossibleInDemo.desc
+            );
+        }
+
         this.root.gameState.doSave();
     }
 

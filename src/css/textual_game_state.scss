@@ -6,7 +6,7 @@
     $padding: 15px;
 
     .headerBar,
-    .content {
+    > .container .content {
         @include S(width, 500px);
     }
 

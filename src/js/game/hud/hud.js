@@ -12,7 +12,7 @@ import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
 import { HUDShop } from "./parts/shop";
-import { IS_MOBILE, globalConfig } from "../../core/config";
+import { IS_MOBILE, globalConfig, IS_DEMO } from "../../core/config";
 import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
@@ -25,6 +25,7 @@ import { HUDDebugInfo } from "./parts/debug_info";
 import { HUDEntityDebugger } from "./parts/entity_debugger";
 import { KEYMAPPINGS } from "../key_action_mapper";
 import { HUDWatermark } from "./parts/watermark";
+import { HUDModalDialogs } from "./parts/modal_dialogs";
 
 export class GameHUD {
     /**
@@ -62,6 +63,8 @@ export class GameHUD {
 
             // betaOverlay: new HUDBetaOverlay(this.root),
             debugInfo: new HUDDebugInfo(this.root),
+
+            dialogs: new HUDModalDialogs(this.root),
         };
 
         this.signals = {
@@ -78,7 +81,7 @@ export class GameHUD {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 
-        if (!G_IS_STANDALONE && G_IS_RELEASE) {
+        if (IS_DEMO) {
             this.parts.watermark = new HUDWatermark(this.root);
         }
 

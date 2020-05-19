@@ -71,6 +71,7 @@ ingame_HUD_BetaOverlay,
 ingame_HUD_UnlockNotification,
 ingame_HUD_Shop,
 ingame_HUD_Statistics,
+ingame_HUD_ModalDialogs,
 ingame_HUD_SettingsMenu;
 
 $zindex: 100;
@@ -96,7 +97,7 @@ body.uiHidden {
 
 body.modalDialogActive,
 body.ingameDialogOpen {
-    > *:not(.ingameDialog):not(.modalDialogParent):not(.loadingDialog):not(.gameLoadingOverlay) {
+    > *:not(.ingameDialog):not(.modalDialogParent):not(.loadingDialog):not(.gameLoadingOverlay):not(#ingame_HUD_ModalDialogs) {
         filter: blur(5px) !important;
     }
 }
