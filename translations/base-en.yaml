@@ -59,11 +59,11 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: This is a demo version
     intro: >-
-        Get <strong>shapez.io on steam</strong> for:
+        Get <strong>shapez.io on steam</strong> to:
     advantages:
+        - Save and resume your games.
         - No advertisements.
-        - Unlimited savegame slots.
-        - Supporting the developer ❤️
+        - Support the developer ❤️
 
 mainMenu:
     play: Play
@@ -83,6 +83,7 @@ dialogs:
         later: Later
         restart: Restart
         reset: Reset
+        getStandalone: Get Standalone
 
     importSavegameError:
         title: Import Error
@@ -125,6 +126,13 @@ dialogs:
     keybindingsResetOk:
         title: Keybindings reset
         desc: The keybindings have been reset to their respective defaults!
+
+    featureRestriction:
+        title: Demo Version
+        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+
+    saveNotPossibleInDemo:
+        desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -337,7 +345,7 @@ settings:
         theme:
             title: Game theme
             description: >-
-                Choose the game theme which mainly affects the map background. Notice that everything except the light theme may lead to graphical issues.
+                Choose the game theme (light / dark).
 
         refreshRate:
             title: Simulation Target
@@ -399,3 +407,11 @@ keybindings:
 
 about:
     title: About this Game
+
+demo:
+    features:
+        restoringGames: Restoring savegames
+        importingGames: Importing savegames
+        customizeKeybindings: Customizing Keybindings
+
+    settingNotAvailable: Not available in the demo.

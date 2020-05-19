@@ -7,6 +7,7 @@ import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
 import { THEMES, THEME, applyGameTheme } from "../game/theme";
+import { IS_DEMO } from "../core/config";
 
 const logger = createLogger("application_settings");
 
@@ -66,7 +67,7 @@ export const allApplicationSettings = [
                 app.platformWrapper.setFullscreen(value);
             }
         },
-        G_IS_STANDALONE
+        !IS_DEMO
     ),
 
     new BoolSetting(
@@ -101,6 +102,7 @@ export const allApplicationSettings = [
                 applyGameTheme(id);
                 document.body.setAttribute("data-theme", id);
             },
+        enabled: !IS_DEMO,
     }),
 
     new EnumSetting("refreshRate", {
@@ -114,6 +116,7 @@ export const allApplicationSettings = [
              * @param {Application} app
              */
             (app, id) => {},
+        enabled: !IS_DEMO,
     }),
 ];
 

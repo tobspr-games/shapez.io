@@ -7,6 +7,8 @@ import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { BaseHUDPart } from "../base_hud_part";
 import { Dialog, DialogLoading, DialogOptionChooser } from "../../../core/modal_dialog_elements";
 import { makeDiv } from "../../../core/utils";
+import { T } from "../../../translations";
+import { THIRDPARTY_URLS } from "../../../core/config";
 
 export class HUDModalDialogs extends BaseHUDPart {
     constructor(root, app) {
@@ -14,7 +16,7 @@ export class HUDModalDialogs extends BaseHUDPart {
         super(root);
 
         /** @type {Application} */
-        this.app = app;
+        this.app = root ? root.app : app;
 
         this.dialogParent = null;
         this.dialogStack = [];
@@ -22,7 +24,7 @@ export class HUDModalDialogs extends BaseHUDPart {
 
     // For use inside of the game, implementation of base hud part
     initialize() {
-        this.dialogParent = document.getElementById("rg_HUD_ModalDialogs");
+        this.dialogParent = document.getElementById("ingame_HUD_ModalDialogs");
         this.domWatcher = new DynamicDomAttach(this.root, this.dialogParent);
     }
 
@@ -35,7 +37,7 @@ export class HUDModalDialogs extends BaseHUDPart {
     }
 
     createElements(parent) {
-        return makeDiv(parent, "rg_HUD_ModalDialogs");
+        return makeDiv(parent, "ingame_HUD_ModalDialogs");
     }
 
     // For use outside of the game
@@ -46,6 +48,11 @@ export class HUDModalDialogs extends BaseHUDPart {
 
     // Methods
 
+    /**
+     * @param {string} title
+     * @param {string} text
+     * @param {Array<string>} buttons
+     */
     showInfo(title, text, buttons = ["ok:good"]) {
         const dialog = new Dialog({
             app: this.app,
@@ -63,6 +70,11 @@ export class HUDModalDialogs extends BaseHUDPart {
         return dialog.buttonSignals;
     }
 
+    /**
+     * @param {string} title
+     * @param {string} text
+     * @param {Array<string>} buttons
+     */
     showWarning(title, text, buttons = ["ok:good"]) {
         const dialog = new Dialog({
             app: this.app,
@@ -76,6 +88,38 @@ export class HUDModalDialogs extends BaseHUDPart {
         if (this.app) {
             this.app.sound.playUiSound(SOUNDS.dialogError);
         }
+
+        return dialog.buttonSignals;
+    }
+
+    /**
+     * @param {string} feature
+     * @param {string} textPrefab
+     */
+    showFeatureRestrictionInfo(feature, textPrefab = T.dialogs.featureRestriction.desc) {
+        const dialog = new Dialog({
+            app: this.app,
+            title: T.dialogs.featureRestriction.title,
+            contentHTML: textPrefab.replace("<feature>", feature),
+            buttons: ["cancel:bad", "getStandalone:good"],
+            type: "warning",
+        });
+        this.internalShowDialog(dialog);
+
+        if (this.app) {
+            this.app.sound.playUiSound(SOUNDS.dialogOk);
+        }
+
+        this.app.analytics.trackUiClick("demo_dialog_show");
+
+        dialog.buttonSignals.cancel.add(() => {
+            this.app.analytics.trackUiClick("demo_dialog_cancel");
+        });
+
+        dialog.buttonSignals.getStandalone.add(() => {
+            this.app.analytics.trackUiClick("demo_dialog_click");
+            window.open(THIRDPARTY_URLS.standaloneStorePage);
+        });
 
         return dialog.buttonSignals;
     }

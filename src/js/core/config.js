@@ -5,7 +5,17 @@ export const IS_DEBUG =
     (window.location.host.indexOf("localhost:") >= 0 || window.location.host.indexOf("192.168.0.") >= 0) &&
     window.location.search.indexOf("nodebug") < 0;
 
+// export const IS_DEMO = G_IS_PROD;
+export const IS_DEMO = G_IS_RELEASE;
+
 const smoothCanvas = true;
+
+export const THIRDPARTY_URLS = {
+    discord: "https://discord.gg/HN7EVzV",
+    github: "https://github.com/tobspr/shapez.io",
+
+    standaloneStorePage: "https://steam.shapez.io",
+};
 
 export const globalConfig = {
     // Size of a single tile in Pixels.

@@ -41,11 +41,27 @@
             }
 
             &.disabled {
-                opacity: 0.3;
+                // opacity: 0.3;
                 pointer-events: none;
                 * {
                     pointer-events: none !important;
                     cursor: default !important;
+                }
+                position: relative;
+                .standaloneOnlyHint {
+                    @include PlainText;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    pointer-events: all;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(#fff, 0.5);
+                    text-transform: uppercase;
+                    color: $colorRedBright;
                 }
             }
 

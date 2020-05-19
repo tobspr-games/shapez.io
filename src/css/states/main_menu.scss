@@ -53,12 +53,22 @@
     }
 
     .mainWrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
         @include S(padding, 0, 10px);
         align-items: center;
         justify-items: center;
-        @include S(grid-column-gap, 10px);
+
+        &.noDemo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &.demo {
+            @include S(grid-column-gap, 10px);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
 
         .standaloneBanner {
             background: rgb(255, 225, 238);

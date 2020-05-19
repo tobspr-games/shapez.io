@@ -1,5 +1,5 @@
 #state_AboutState {
-    .content {
+    > .container .content {
         @include PlainText;
     }
 }

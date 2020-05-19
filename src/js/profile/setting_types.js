@@ -7,6 +7,8 @@ import { T } from "../translations";
 
 const logger = createLogger("setting_types");
 
+const standaloneOnlySettingHtml = `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`;
+
 export class BaseSetting {
     /**
      *
@@ -113,6 +115,7 @@ export class EnumSetting extends BaseSetting {
     getHtml() {
         return `
             <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
+                ${this.enabled ? "" : standaloneOnlySettingHtml}
                 <div class="row">
                     <label>${T.settings.labels[this.id].title}</label>
                     <div class="value enum" data-setting="${this.id}"></div>
@@ -186,6 +189,8 @@ export class BoolSetting extends BaseSetting {
     getHtml() {
         return `
         <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
+            ${this.enabled ? "" : standaloneOnlySettingHtml}
+                
             <div class="row">
                 <label>${T.settings.labels[this.id].title}</label>
                 <div class="value checkbox checked" data-setting="${this.id}">

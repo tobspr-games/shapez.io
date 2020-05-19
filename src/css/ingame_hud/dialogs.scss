@@ -53,8 +53,6 @@
 
     > .dialogInner {
         background: #fff;
-        @include S(min-width, 300px);
-        max-width: calc(100vw - #{D(40px)});
         max-height: calc(100vh - #{D(40px)});
         @include S(border-radius, $globalBorderRadius);
         display: flex;
@@ -118,6 +116,7 @@
             @include PlainText;
             overflow-y: auto;
             pointer-events: all;
+            @include S(width, 350px);
         }
 
         > .buttons {
