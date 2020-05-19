@@ -11,7 +11,6 @@ import { types } from "../../savegame/serialization";
 export const enumItemAcceptorItemFilter = {
     shape: "shape",
     color: "color",
-    any: "any",
     none: null,
 };
 

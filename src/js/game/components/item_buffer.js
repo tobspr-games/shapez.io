@@ -2,7 +2,6 @@ import { types } from "../../savegame/serialization";
 import { Component } from "../component";
 import { BaseItem } from "../base_item";
 import { ShapeDefinition } from "../shape_definition";
-import { gItemRegistry } from "../../core/global_registries";
 
 
 export class BufferComponent extends Component {

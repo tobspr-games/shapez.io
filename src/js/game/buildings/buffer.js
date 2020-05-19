@@ -60,17 +60,17 @@ export class MetaBufferBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.any,
+                        filter: enumItemAcceptorItemFilter.shape,
                     },
                     {
                         pos: new Vector(1, 2),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.any,
+                        filter: enumItemAcceptorItemFilter.shape,
                     },
                     {
                         pos: new Vector(2, 1),
                         directions: [enumDirection.right],
-                        filter: enumItemAcceptorItemFilter.any,
+                        filter: enumItemAcceptorItemFilter.shape,
                     },
                 ],
             })
