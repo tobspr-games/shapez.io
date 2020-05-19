@@ -12,18 +12,18 @@ const logger = createLogger("sound");
 
 export const SOUNDS = {
     // Menu and such
-    uiClick: "ui/ui_click.mp3",
-    uiError: "ui/ui_error.mp3",
-    dialogError: "ui/dialog_error.mp3",
-    dialogOk: "ui/dialog_ok.mp3",
-    swishHide: "ui/ui_swish_hide.mp3",
-    swishShow: "ui/ui_swish_show.mp3",
-    badgeNotification: "ui/badge_notification.mp3",
+    uiClick: "ui_click",
+    uiError: "ui_error",
+    dialogError: "dialog_error",
+    dialogOk: "dialog_ok",
+    swishHide: "ui_swish_hide",
+    swishShow: "ui_swish_show",
+    badgeNotification: "badge_notification",
 
-    levelComplete: "ui/level_complete.mp3",
+    levelComplete: "level_complete",
 
-    placeBuilding: "game/place_building.mp3",
-    placeBelt: "game/place_belt.mp3",
+    placeBuilding: "place_building",
+    placeBelt: "place_belt",
 };
 
 export const MUSIC = {
@@ -145,7 +145,9 @@ export class SoundInterface {
         }
     }
 
-    /** Deinits the sound */
+    /** Deinits the sound
+     * @returns {Promise<void>}
+     */
     deinitialize() {
         const promises = [];
         for (const key in this.sounds) {
@@ -154,7 +156,8 @@ export class SoundInterface {
         for (const key in this.music) {
             promises.push(this.music[key].deinitialize());
         }
-        return Promise.all(promises);
+        // @ts-ignore
+        return Promise.all(...promises);
     }
 
     /**

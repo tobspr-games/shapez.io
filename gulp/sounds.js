@@ -1,4 +1,5 @@
 const path = require("path");
+const audiosprite = require("gulp-audiosprite");
 
 function gulptasksSounds($, gulp, buildFolder) {
     // Gather some basic infos
@@ -16,7 +17,7 @@ function gulptasksSounds($, gulp, buildFolder) {
     });
 
     // Encodes the game music
-    gulp.task("sounds.encodeMusic", () => {
+    gulp.task("sounds.music", () => {
         return gulp
             .src([path.join(soundsDir, "music", "**", "*.wav"), path.join(soundsDir, "music", "**", "*.mp3")])
             .pipe($.plumber())
@@ -40,53 +41,43 @@ function gulptasksSounds($, gulp, buildFolder) {
     });
 
     // Encodes the ui sounds
-    gulp.task("sounds.encodeUi", () => {
+    gulp.task("sounds.sfxGenerateSprites", () => {
         return gulp
-            .src([path.join(soundsDir, "ui", "**", "*.wav"), path.join(soundsDir, "ui", "**", "*.mp3")])
+            .src([path.join(soundsDir, "sfx", "**", "*.wav"), path.join(soundsDir, "sfx", "**", "*.mp3")])
             .pipe($.plumber())
             .pipe(
-                $.cache(
-                    $.fluentFfmpeg("mp3", function (cmd) {
-                        return cmd
-                            .audioBitrate(128)
-                            .audioChannels(1)
-                            .audioFrequency(22050)
-                            .audioCodec("libmp3lame")
-                            .audioFilters(filters);
-                    })
-                ),
-                {
-                    name: "uisounds",
-                    fileCache,
-                }
+                audiosprite({
+                    format: "howler",
+                    output: "sfx",
+                    gap: 0.1,
+                    export: "mp3",
+                })
             )
-            .pipe(gulp.dest(path.join(builtSoundsDir, "ui")));
+            .pipe(gulp.dest(path.join(builtSoundsDir)));
     });
-
-    // Encodes the game sounds
-    gulp.task("sounds.encodeGame", () => {
+    gulp.task("sounds.sfxOptimize", () => {
         return gulp
-
-            .src([path.join(soundsDir, "game", "**", "*.wav"), path.join(soundsDir, "game", "**", "*.mp3")])
+            .src([path.join(builtSoundsDir, "sfx.mp3")])
             .pipe($.plumber())
             .pipe(
-                $.cache(
-                    $.fluentFfmpeg("mp3", function (cmd) {
-                        return cmd
-                            .audioBitrate(128)
-                            .audioChannels(1)
-                            .audioFrequency(22050)
-                            .audioCodec("libmp3lame")
-                            .audioFilters(filters);
-                    }),
-                    {
-                        nane: "gamesounds",
-                        fileCache,
-                    }
-                )
+                $.fluentFfmpeg("mp3", function (cmd) {
+                    return cmd
+                        .audioBitrate(128)
+                        .audioChannels(1)
+                        .audioFrequency(22050)
+                        .audioCodec("libmp3lame")
+                        .audioFilters(filters);
+                })
             )
-            .pipe(gulp.dest(path.join(builtSoundsDir, "game")));
+            .pipe(gulp.dest(path.join(builtSoundsDir)));
     });
+    gulp.task("sounds.sfxCopyAtlas", () => {
+        return gulp
+            .src([path.join(builtSoundsDir, "sfx.json")])
+            .pipe(gulp.dest(path.join(__dirname, "..", "src", "js", "built-temp")));
+    });
+
+    gulp.task("sounds.sfx", ["sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas"]);
 
     gulp.task("sounds.copy", () => {
         return gulp
@@ -96,15 +87,10 @@ function gulptasksSounds($, gulp, buildFolder) {
             .pipe(gulp.dest(path.join(buildFolder, "res", "sounds")));
     });
 
-    gulp.task("sounds.buildall", cb =>
-        $.multiProcess(["sounds.encodeMusic", "sounds.encodeUi", "sounds.encodeGame"], cb, true)
-    );
+    gulp.task("sounds.buildall", cb => $.multiProcess(["sounds.music", "sounds.sfx"], cb, true));
 
     gulp.task("sounds.fullbuild", cb => $.sequence("sounds.clear", "sounds.buildall", "sounds.copy")(cb));
-
-    gulp.task("sounds.dev", cb => {
-        return $.sequence("sounds.buildall", "sounds.copy")(cb);
-    });
+    gulp.task("sounds.dev", cb => $.sequence("sounds.buildall", "sounds.copy")(cb));
 }
 
 module.exports = {
