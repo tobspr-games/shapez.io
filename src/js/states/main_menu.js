@@ -27,7 +27,7 @@ export class MainMenuState extends GameState {
                 ${T.demoBanners.advantages.map(advantage => `<li>${advantage}</li>`).join("")}
             </ul>
 
-            <a href="https://steam.shapez.io" class="steamLink" target="_blank">Get shapez.io on steam!</a>
+            <a href="#" class="steamLink" target="_blank">Get shapez.io on steam!</a>
         `;
 
         return `
@@ -109,6 +109,7 @@ export class MainMenuState extends GameState {
             const file = input.files[0];
             if (file) {
                 waitNextFrame().then(() => {
+                    this.app.analytics.trackUiClick("import_savegame");
                     const closeLoader = this.dialogs.showLoadingDialog();
                     const reader = new FileReader();
                     reader.addEventListener("load", event => {
@@ -200,6 +201,19 @@ export class MainMenuState extends GameState {
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.renderSavegames();
+
+        const steamLinks = this.htmlElement.querySelectorAll(".steamLink");
+        steamLinks.forEach(steamLink => {
+            steamLink.addEventListener("click", this.onSteamLinkClicked.bind(this));
+        });
+    }
+
+    onSteamLinkClicked(event) {
+        this.app.analytics.trackUiClick("main_menu_steam_link");
+        alert("The steam version will launch very soon! (Planned date: Begin of June 2020)");
+        // window.open("https://steam.shapez.io");
+        event.preventDefault();
+        return false;
     }
 
     renderSavegames() {
@@ -245,6 +259,7 @@ export class MainMenuState extends GameState {
      * @param {object} game
      */
     resumeGame(game) {
+        this.app.analytics.trackUiClick("resume_game");
         const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
         savegame.readAsync().then(() => {
             this.moveToState("InGameState", {
@@ -282,6 +297,8 @@ export class MainMenuState extends GameState {
      * @param {object} game
      */
     downloadGame(game) {
+        this.app.analytics.trackUiClick("download_game");
+
         const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
         savegame.readAsync().then(() => {
             const data = ReadWriteProxy.serializeObject(savegame.currentData);
@@ -294,6 +311,7 @@ export class MainMenuState extends GameState {
     }
 
     onPlayButtonClicked() {
+        this.app.analytics.trackUiClick("start_new_game");
         const savegame = this.app.savegameMgr.createNewSavegame();
 
         this.app.analytics.trackUiClick("startgame");
