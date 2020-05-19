@@ -56,7 +56,7 @@ export const tutorialGoals = [
 
     // Rotater
     {
-        shape: "--CuCu--", // belts t2
+        shape: "Cu----Cu", // belts t2
         required: 300,
         reward: enumHubGoalRewards.reward_tunnel,
     },
