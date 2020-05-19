@@ -18,6 +18,7 @@ export const enumItemProcessorTypes = {
     painterDouble: "painterDouble",
     painterQuad: "painterQuad",
     hub: "hub",
+    buffer: "buffer",
 };
 
 export class ItemProcessorComponent extends Component {

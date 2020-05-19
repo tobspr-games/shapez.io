@@ -11,6 +11,7 @@ import { types } from "../../savegame/serialization";
 export const enumItemAcceptorItemFilter = {
     shape: "shape",
     color: "color",
+    any: "any",
     none: null,
 };
 
@@ -20,6 +21,7 @@ export const enumItemAcceptorItemFilter = {
  * filter?: enumItemAcceptorItemFilter
  * }} ItemAcceptorSlot */
 
+// TODO: Make changes in ItemAcceptor to allow buffer to only accept specific items
 export class ItemAcceptorComponent extends Component {
     static getId() {
         return "ItemAcceptor";
