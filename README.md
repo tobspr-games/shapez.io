@@ -8,7 +8,7 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 
 ## Playing
 
-You can already play it on https://beta.shapez.io
+You can already play it on https://shapez.io
 
 ## Building
 
@@ -35,7 +35,6 @@ The game is based on a custom engine which itself is based on the YORG.io 3 game
 The code within the engine is relatively clean with some code for the actual game on top being hacky.
 
 This project is based on ES5. Some es6 features are used but most of them are too slow, especially when polyfilled. For example, `.forEach` is only used within non-critical loops since its slower than a plain for loop.
-
 
 ### Assets
 
