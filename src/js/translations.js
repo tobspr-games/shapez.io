@@ -1,5 +1,6 @@
 import { globalConfig } from "./core/config";
 
+// @ts-ignore
 const baseTranslations = require("./built-temp/base-en.json");
 
 export const T = baseTranslations;

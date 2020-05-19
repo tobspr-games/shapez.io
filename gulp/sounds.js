@@ -77,7 +77,10 @@ function gulptasksSounds($, gulp, buildFolder) {
             .pipe(gulp.dest(path.join(__dirname, "..", "src", "js", "built-temp")));
     });
 
-    gulp.task("sounds.sfx", ["sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas"]);
+    gulp.task(
+        "sounds.sfx",
+        $.sequence(["sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas"])
+    );
 
     gulp.task("sounds.copy", () => {
         return gulp
