@@ -1,6 +1,6 @@
 import { globalConfig } from "./core/config";
 
-const baseTranslations = require("./translations-built/base-en.json");
+const baseTranslations = require("./built-temp/base-en.json");
 
 export const T = baseTranslations;
 

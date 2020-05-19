@@ -1,25 +1,33 @@
-import { MusicInstanceInterface, SoundInstanceInterface, SoundInterface } from "../sound";
+import { MusicInstanceInterface, SoundInstanceInterface, SoundInterface, MUSIC, SOUNDS } from "../sound";
 import { cachebust } from "../../core/cachebust";
 import { createLogger } from "../../core/logging";
+import { globalConfig } from "../../core/config";
 
 const { Howl, Howler } = require("howler");
 
 const logger = createLogger("sound/browser");
 
-class SoundInstance extends SoundInstanceInterface {
-    constructor(key, url) {
-        super(key, url);
+const sprites = require("../../built-temp/sfx.json");
+
+class SoundSpritesContainer {
+    constructor() {
         this.howl = null;
+
+        this.loadingPromise = null;
     }
 
     load() {
-        return Promise.race([
+        if (this.loadingPromise) {
+            return this.loadingPromise;
+        }
+        return (this.loadingPromise = Promise.race([
             new Promise((resolve, reject) => {
                 setTimeout(reject, G_IS_DEV ? 5000 : 60000);
             }),
             new Promise(resolve => {
                 this.howl = new Howl({
-                    src: cachebust("res/sounds/" + this.url),
+                    src: cachebust("res/sounds/sfx.mp3"),
+                    sprite: sprites.sprite,
                     autoplay: false,
                     loop: false,
                     volume: 0,
@@ -29,21 +37,21 @@ class SoundInstance extends SoundInstanceInterface {
                         resolve();
                     },
                     onloaderror: (id, err) => {
-                        logger.warn("Sound", this.url, "failed to load:", id, err);
+                        logger.warn("SFX failed to load:", id, err);
                         this.howl = null;
                         resolve();
                     },
                     onplayerror: (id, err) => {
-                        logger.warn("Sound", this.url, "failed to play:", id, err);
+                        logger.warn("SFX failed to play:", id, err);
                     },
                 });
             }),
-        ]);
+        ]));
     }
 
-    play(volume) {
+    play(volume, key) {
         if (this.howl) {
-            const instance = this.howl.play();
+            const instance = this.howl.play(key);
             this.howl.volume(volume, instance);
         }
     }
@@ -53,6 +61,32 @@ class SoundInstance extends SoundInstanceInterface {
             this.howl.unload();
             this.howl = null;
         }
+    }
+}
+
+class WrappedSoundInstance extends SoundInstanceInterface {
+    /**
+     *
+     * @param {SoundSpritesContainer} spriteContainer
+     * @param {string} key
+     */
+    constructor(spriteContainer, key) {
+        super(key, "sfx.mp3");
+        this.spriteContainer = spriteContainer;
+    }
+
+    /** @returns {Promise<void>} */
+    load() {
+        return this.spriteContainer.load();
+    }
+
+    play(volume) {
+        logger.error("TDO: PLAY", this.key);
+        this.spriteContainer.play(volume, this.key);
+    }
+
+    deinitialize() {
+        return this.spriteContainer.deinitialize();
     }
 }
 
@@ -140,11 +174,32 @@ export class SoundImplBrowser extends SoundInterface {
         Howler.html5PoolSize = 20;
         Howler.pos(0, 0, 0);
 
-        super(app, SoundInstance, MusicInstance);
+        super(app, WrappedSoundInstance, MusicInstance);
     }
 
     initialize() {
-        return super.initialize();
+        this.sfxHandle = new SoundSpritesContainer();
+
+        // @ts-ignore
+        const keys = Object.values(SOUNDS);
+        keys.forEach(key => {
+            this.sounds[key] = new WrappedSoundInstance(this.sfxHandle, key);
+        });
+        console.log(this.sounds);
+        for (const musicKey in MUSIC) {
+            const musicPath = MUSIC[musicKey];
+            const music = new this.musicClass(musicKey, musicPath);
+            this.music[musicPath] = music;
+        }
+
+        this.musicMuted = this.app.settings.getAllSettings().musicMuted;
+        this.soundsMuted = this.app.settings.getAllSettings().soundsMuted;
+
+        if (G_IS_DEV && globalConfig.debug.disableMusic) {
+            this.musicMuted = true;
+        }
+
+        return Promise.resolve();
     }
 
     deinitialize() {

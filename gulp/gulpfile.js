@@ -80,8 +80,13 @@ translations.gulptasksTranslations($, gulp, buildFolder);
 gulp.task("utils.cleanBuildFolder", () => {
     return gulp.src(buildFolder, { read: false }).pipe($.clean({ force: true }));
 });
+gulp.task("utils.cleanBuildTempFolder", () => {
+    return gulp
+        .src(path.join(__dirname, "..", "src", "js", "built-temp"), { read: false })
+        .pipe($.clean({ force: true }));
+});
 
-gulp.task("utils.cleanup", $.sequence("utils.cleanBuildFolder", "translations.clear"));
+gulp.task("utils.cleanup", $.sequence("utils.cleanBuildFolder", "utils.cleanBuildTempFolder"));
 
 // Requires no uncomitted files
 gulp.task("utils.requireCleanWorkingTree", cb => {
@@ -151,16 +156,12 @@ function serve({ standalone }) {
     gulp.watch("../translations/**/*.yaml", ["translations.convertToJson"]);
 
     gulp.watch(
-        ["../res_raw/sounds/ui/*.mp3", "../res_raw/sounds/ui/*.wav"],
-        $.sequence("sounds.encodeUi", "sounds.copy")
-    );
-    gulp.watch(
-        ["../res_raw/sounds/game/*.mp3", "../res_raw/sounds/game/*.wav"],
-        $.sequence("sounds.encodeGame", "sounds.copy")
+        ["../res_raw/sounds/sfx/*.mp3", "../res_raw/sounds/sfx/*.wav"],
+        $.sequence("sounds.sfx", "sounds.copy")
     );
     gulp.watch(
         ["../res_raw/sounds/music/*.mp3", "../res_raw/sounds/music/*.wav"],
-        $.sequence("sounds.encodeMusic", "sounds.copy")
+        $.sequence("sounds.music", "sounds.copy")
     );
 
     // Watch resource files and copy them on change
@@ -176,7 +177,7 @@ function serve({ standalone }) {
         return gulp.src(e.path).pipe(browserSync.reload({ stream: true }));
     });
 
-    gulp.watch("../src/js/translations-built/*.json").on("change", function (e) {
+    gulp.watch("../src/js/built-temp/*.json").on("change", function (e) {
         return gulp.src(e.path).pipe(browserSync.reload({ stream: true }));
     });
 
@@ -197,7 +198,7 @@ gulp.task("default", ["main.serveDev"]);
 /////////////////////  RUNNABLE TASKS  /////////////////////
 
 // Pre and postbuild
-gulp.task("step.baseResources", cb => $.multiProcess(["sounds.fullbuild", "imgres.allOptimized"], cb, false));
+gulp.task("step.baseResources", cb => $.sequence("imgres.allOptimized")(cb));
 gulp.task("step.deleteEmpty", cb => {
     deleteEmpty.sync(buildFolder);
     cb();
@@ -236,7 +237,7 @@ gulp.task("build.standalone.dev", cb => {
 });
 
 // Builds everything (staging)
-gulp.task("step.staging.code", $.sequence("translations.fullBuild", "js.staging"));
+gulp.task("step.staging.code", $.sequence("sounds.fullbuild", "translations.fullBuild", "js.staging"));
 gulp.task("step.staging.mainbuild", cb =>
     $.multiProcess(["utils.copyAdditionalBuildFiles", "step.baseResources", "step.staging.code"], cb, false)
 );
@@ -244,7 +245,7 @@ gulp.task("step.staging.all", $.sequence("step.staging.mainbuild", "css.prod", "
 gulp.task("build.staging", $.sequence("utils.cleanup", "step.staging.all", "step.postbuild"));
 
 // Builds everything (prod)
-gulp.task("step.prod.code", $.sequence("translations.fullBuild", "js.prod"));
+gulp.task("step.prod.code", $.sequence("sounds.fullbuild", "translations.fullBuild", "js.prod"));
 gulp.task("step.prod.mainbuild", cb =>
     $.multiProcess(["utils.copyAdditionalBuildFiles", "step.baseResources", "step.prod.code"], cb, false)
 );
@@ -252,7 +253,10 @@ gulp.task("step.prod.all", $.sequence("step.prod.mainbuild", "css.prod", "html.p
 gulp.task("build.prod", $.sequence("utils.cleanup", "step.prod.all", "step.postbuild"));
 
 // Builds everything (standalone-beta)
-gulp.task("step.standalone-beta.code", $.sequence("translations.fullBuild", "js.standalone-beta"));
+gulp.task(
+    "step.standalone-beta.code",
+    $.sequence("sounds.fullbuild", "translations.fullBuild", "js.standalone-beta")
+);
 gulp.task("step.standalone-beta.mainbuild", cb =>
     $.multiProcess(
         ["utils.copyAdditionalBuildFiles", "step.baseResources", "step.standalone-beta.code"],
@@ -267,7 +271,10 @@ gulp.task(
 gulp.task("build.standalone-beta", $.sequence("utils.cleanup", "step.standalone-beta.all", "step.postbuild"));
 
 // Builds everything (standalone-prod)
-gulp.task("step.standalone-prod.code", $.sequence("translations.fullBuild", "js.standalone-prod"));
+gulp.task(
+    "step.standalone-prod.code",
+    $.sequence("sounds.fullbuild", "translations.fullBuild", "js.standalone-prod")
+);
 gulp.task("step.standalone-prod.mainbuild", cb =>
     $.multiProcess(
         ["utils.copyAdditionalBuildFiles", "step.baseResources", "step.standalone-prod.code"],
