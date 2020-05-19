@@ -157,7 +157,8 @@ export class PreloadState extends GameState {
         if (G_IS_DEV) {
             return Promise.resolve();
         }
-        return waitNextFrame();
+        return Promise.resolve();
+        // return waitNextFrame();
     }
 
     showFailMessage(text) {

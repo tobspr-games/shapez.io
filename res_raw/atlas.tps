@@ -15,13 +15,13 @@
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
-                <false/>
+                <true/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
-                    <int>-1</int>
+                    <int>2048</int>
                     <key>height</key>
-                    <int>-1</int>
+                    <int>2048</int>
                 </QSize>
             </struct>
             <struct type="AutoSDSettings">
@@ -32,13 +32,13 @@
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
-                <false/>
+                <true/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
-                    <int>-1</int>
+                    <int>2048</int>
                     <key>height</key>
-                    <int>-1</int>
+                    <int>2048</int>
                 </QSize>
             </struct>
             <struct type="AutoSDSettings">
@@ -49,7 +49,7 @@
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
-                <false/>
+                <true/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
@@ -66,7 +66,7 @@
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
-                <false/>
+                <true/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
@@ -83,7 +83,7 @@
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
-                <false/>
+                <true/>
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
