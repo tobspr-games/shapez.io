@@ -23,6 +23,8 @@ import { HUDNotifications, enumNotificationType } from "./parts/notifications";
 import { HUDSettingsMenu } from "./parts/settings_menu";
 import { HUDDebugInfo } from "./parts/debug_info";
 import { HUDEntityDebugger } from "./parts/entity_debugger";
+import { KEYMAPPINGS } from "../key_action_mapper";
+import { HUDWatermark } from "./parts/watermark";
 
 export class GameHUD {
     /**
@@ -76,6 +78,10 @@ export class GameHUD {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 
+        if (!G_IS_STANDALONE && G_IS_RELEASE) {
+            this.parts.watermark = new HUDWatermark(this.root);
+        }
+
         const frag = document.createDocumentFragment();
         for (const key in this.parts) {
             this.parts[key].createElements(frag);
@@ -88,7 +94,7 @@ export class GameHUD {
         }
         this.internalInitSignalConnections();
 
-        this.root.gameState.keyActionMapper.getBinding("toggle_hud").add(this.toggleUi, this);
+        this.root.gameState.keyActionMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
     }
 
     /**
@@ -186,7 +192,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     drawOverlays(parameters) {
-        const partsOrder = [];
+        const partsOrder = ["watermark"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

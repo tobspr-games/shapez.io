@@ -1,6 +1,6 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
-import { getStringForKeyCode } from "../../key_action_mapper";
+import { getStringForKeyCode, KEYMAPPINGS } from "../../key_action_mapper";
 import { TrackedState } from "../../../core/tracked_state";
 import { queryParamOptions } from "../../../core/query_parameters";
 import { T } from "../../../translations";
@@ -32,16 +32,16 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             [],
             `
             <div class="binding">
-                <code class="keybinding">${getKeycode("center_map")}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.centerMap)}</code>
                 <label>${T.ingame.keybindingsOverlay.centerMap}</label>
             </div>
 
             <div class="binding">
                 <code class="keybinding leftMouse"></code><i></i>
-                <code class="keybinding">${getKeycode("map_move_up")}</code>
-                <code class="keybinding">${getKeycode("map_move_left")}</code>
-                <code class="keybinding">${getKeycode("map_move_down")}</code>
-                <code class="keybinding">${getKeycode("map_move_right")}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.mapMoveUp)}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.mapMoveLeft)}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.mapMoveDown)}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.mapMoveRight)}</code>
                 <label>${T.ingame.keybindingsOverlay.moveMap}</label>
             </div>               
             
@@ -55,12 +55,12 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             
             <div class="binding placementOnly">
                 <code class="keybinding rightMouse"></code><i></i>
-                <code class="keybinding">${getKeycode("building_abort_placement")}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.placement.abortBuildingPlacement)}</code>
                 <label>${T.ingame.keybindingsOverlay.stopPlacement}</label>
             </div>
 
             <div class="binding placementOnly">
-                <code class="keybinding">${getKeycode("rotate_while_placing")}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.placement.rotateWhilePlacing)}</code>
                 <label>${T.ingame.keybindingsOverlay.rotateBuilding}</label>
             </div>
 

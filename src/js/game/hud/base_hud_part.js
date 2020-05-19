@@ -154,10 +154,10 @@ export class BaseHUDPart {
      */
     forwardMapMovementKeybindings(sourceMapper) {
         sourceMapper.forward(this.root.gameState.keyActionMapper, [
-            "map_move_up",
-            "map_move_right",
-            "map_move_down",
-            "map_move_left",
+            "mapMoveUp",
+            "mapMoveRight",
+            "mapMoveDown",
+            "mapMoveLeft",
         ]);
     }
 }

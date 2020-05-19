@@ -23,9 +23,7 @@ export class SettingsState extends TextualGameState {
             `
                     : ""
             }
-
-            <button class="styledButton changelog">Changelog</button>
-
+            <button class="styledButton about">${T.about.title}</button>
 
          </div>
 
@@ -33,7 +31,6 @@ export class SettingsState extends TextualGameState {
             ${this.getSettingsHtml()}
             <div class="versionbar">
                 <div class="buildVersion">${T.global.loading} ...</div>
-                <button class="styledButton copyright">Copyright & Licenses</button>
             </div>
 
 
@@ -82,10 +79,7 @@ export class SettingsState extends TextualGameState {
 
     onEnter(payload) {
         this.renderBuildText();
-        this.trackClicks(this.htmlElement.querySelector(".copyright"), this.onCopyrightClicked, {
-            preventDefault: false,
-        });
-        this.trackClicks(this.htmlElement.querySelector(".changelog"), this.onChangelogClicked, {
+        this.trackClicks(this.htmlElement.querySelector(".about"), this.onAboutClicked, {
             preventDefault: false,
         });
 
@@ -113,8 +107,8 @@ export class SettingsState extends TextualGameState {
         });
     }
 
-    onCopyrightClicked() {
-        // this.moveToStateAddGoBack("CopyrightState");
+    onAboutClicked() {
+        this.moveToStateAddGoBack("AboutState");
     }
 
     onChangelogClicked() {
@@ -122,6 +116,6 @@ export class SettingsState extends TextualGameState {
     }
 
     onKeybindingsClicked() {
-        // this.moveToStateAddGoBack("KeybindingsState");
+        this.moveToStateAddGoBack("KeybindingsState");
     }
 }

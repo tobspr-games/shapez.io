@@ -1,7 +1,7 @@
 import { Math_min } from "../../../core/builtins";
 import { InputReceiver } from "../../../core/input_receiver";
 import { makeButton, makeDiv, removeAllChildren, capitalizeFirstLetter } from "../../../core/utils";
-import { KeyActionMapper } from "../../key_action_mapper";
+import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { enumAnalyticsDataSource } from "../../production_analytics";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -81,8 +81,8 @@ export class HUDStatistics extends BaseHUDPart {
         this.inputReciever = new InputReceiver("statistics");
         this.keyActionMapper = new KeyActionMapper(this.root, this.inputReciever);
 
-        this.keyActionMapper.getBinding("back").add(this.close, this);
-        this.keyActionMapper.getBinding("menu_open_stats").add(this.close, this);
+        this.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.close, this);
+        this.keyActionMapper.getBinding(KEYMAPPINGS.ingame.menuOpenStats).add(this.close, this);
 
         /** @type {Object.<string, HUDShapeStatisticsHandle>} */
         this.activeHandles = {};

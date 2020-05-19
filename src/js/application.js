@@ -32,6 +32,8 @@ import { queryParamOptions } from "./core/query_parameters";
 import { NoGameAnalytics } from "./platform/browser/no_game_analytics";
 import { StorageImplBrowserIndexedDB } from "./platform/browser/storage_indexed_db";
 import { SettingsState } from "./states/settings";
+import { KeybindingsState } from "./states/keybindings";
+import { AboutState } from "./states/about";
 
 const logger = createLogger("application");
 
@@ -143,7 +145,14 @@ export class Application {
      */
     registerStates() {
         /** @type {Array<typeof GameState>} */
-        const states = [PreloadState, MainMenuState, InGameState, SettingsState];
+        const states = [
+            PreloadState,
+            MainMenuState,
+            InGameState,
+            SettingsState,
+            KeybindingsState,
+            AboutState,
+        ];
 
         for (let i = 0; i < states.length; ++i) {
             this.stateMgr.register(states[i]);

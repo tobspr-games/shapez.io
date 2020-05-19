@@ -17,6 +17,7 @@ import { clamp } from "../core/utils";
 import { mixVector, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { GameRoot } from "./root";
+import { KEYMAPPINGS } from "./key_action_mapper";
 
 const logger = createLogger("camera");
 
@@ -330,12 +331,12 @@ export class Camera extends BasicSerializableObject {
      */
     bindKeys() {
         const mapper = this.root.gameState.keyActionMapper;
-        mapper.getBinding("map_move_up").add(() => (this.keyboardForce.y = -1));
-        mapper.getBinding("map_move_down").add(() => (this.keyboardForce.y = 1));
-        mapper.getBinding("map_move_right").add(() => (this.keyboardForce.x = 1));
-        mapper.getBinding("map_move_left").add(() => (this.keyboardForce.x = -1));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).add(() => (this.keyboardForce.y = -1));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).add(() => (this.keyboardForce.y = 1));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).add(() => (this.keyboardForce.x = 1));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).add(() => (this.keyboardForce.x = -1));
 
-        mapper.getBinding("center_map").add(() => this.centerOnMap());
+        mapper.getBinding(KEYMAPPINGS.ingame.centerMap).add(() => this.centerOnMap());
     }
 
     centerOnMap() {
@@ -867,19 +868,19 @@ export class Camera extends BasicSerializableObject {
             let forceY = 0;
 
             const actionMapper = this.root.gameState.keyActionMapper;
-            if (actionMapper.getBinding("map_move_up").currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).currentlyDown) {
                 forceY -= 1;
             }
 
-            if (actionMapper.getBinding("map_move_down").currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).currentlyDown) {
                 forceY += 1;
             }
 
-            if (actionMapper.getBinding("map_move_left").currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).currentlyDown) {
                 forceX -= 1;
             }
 
-            if (actionMapper.getBinding("map_move_right").currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).currentlyDown) {
                 forceX += 1;
             }
 

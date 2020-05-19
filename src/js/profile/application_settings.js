@@ -130,6 +130,11 @@ class SettingsStorage {
         this.musicMuted = false;
         this.theme = "light";
         this.refreshRate = "60";
+
+        /**
+         * @type {Object.<string, number>}
+         */
+        this.keybindingOverrides = {};
     }
 }
 
@@ -201,6 +206,10 @@ export class ApplicationSettings extends ReadWriteProxy {
         return this.getAllSettings().fullscreen;
     }
 
+    getKeybindingOverrides() {
+        return this.getAllSettings().keybindingOverrides;
+    }
+
     // Setters
 
     /**
@@ -222,6 +231,33 @@ export class ApplicationSettings extends ReadWriteProxy {
             }
         }
         assertAlways(false, "Unknown setting: " + key);
+    }
+
+    /**
+     * Sets a new keybinding override
+     * @param {string} keybindingId
+     * @param {number} keyCode
+     */
+    updateKeybindingOverride(keybindingId, keyCode) {
+        assert(Number.isInteger(keyCode), "Not a valid key code: " + keyCode);
+        this.getAllSettings().keybindingOverrides[keybindingId] = keyCode;
+        return this.writeAsync();
+    }
+
+    /**
+     * Resets a given keybinding override
+     * @param {string} id
+     */
+    resetKeybindingOverride(id) {
+        delete this.getAllSettings().keybindingOverrides[id];
+        return this.writeAsync();
+    }
+    /**
+     * Resets all keybinding overrides
+     */
+    resetKeybindingOverrides() {
+        this.getAllSettings().keybindingOverrides = {};
+        return this.writeAsync();
     }
 
     // RW Proxy impl
@@ -252,7 +288,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 4;
+        return 5;
     }
 
     migrate(data) {

@@ -3,7 +3,7 @@ import { ClickDetector } from "../../../core/click_detector";
 import { InputReceiver } from "../../../core/input_receiver";
 import { formatBigNumber, makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
-import { KeyActionMapper } from "../../key_action_mapper";
+import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { UPGRADES } from "../../upgrades";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -168,8 +168,8 @@ export class HUDShop extends BaseHUDPart {
         this.inputReciever = new InputReceiver("shop");
         this.keyActionMapper = new KeyActionMapper(this.root, this.inputReciever);
 
-        this.keyActionMapper.getBinding("back").add(this.close, this);
-        this.keyActionMapper.getBinding("menu_open_shop").add(this.close, this);
+        this.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.close, this);
+        this.keyActionMapper.getBinding(KEYMAPPINGS.ingame.menuOpenShop).add(this.close, this);
 
         this.close();
 

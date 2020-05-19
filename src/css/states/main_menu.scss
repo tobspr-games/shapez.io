@@ -9,13 +9,13 @@
 
     .settingsButton {
         position: absolute;
-        @include S(bottom, 30px);
+        @include S(top, 30px);
         @include S(right, 30px);
         @include S(width, 35px);
         @include S(height, 35px);
         pointer-events: all;
         cursor: pointer;
-        background: uiResource("icons/settings.png") center center / contain no-repeat;
+        background: uiResource("icons/main_menu_settings.png") center center / contain no-repeat;
         transition: opacity 0.12s ease-in-out;
         &:hover {
             opacity: 0.9;

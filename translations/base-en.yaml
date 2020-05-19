@@ -82,6 +82,7 @@ dialogs:
         cancel: Cancel
         later: Later
         restart: Restart
+        reset: Reset
 
     importSavegameError:
         title: Import Error
@@ -112,6 +113,18 @@ dialogs:
         title: Restart required
         text: >-
             You need to restart the game to apply the settings.
+
+    editKeybinding:
+        title: Change Keybinding
+        desc: Press the key you want to assign, or escape to cancel.
+
+    resetKeybindingsConfirmation:
+        title: Reset keybindings
+        desc: This will reset all keybindings to their default values. Please confirm.
+
+    keybindingsResetOk:
+        title: Keybindings reset
+        desc: The keybindings have been reset to their respective defaults!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -226,43 +239,43 @@ shopUpgrades:
 # Buildings and their name / description
 buildings:
     belt:
-        name: Belt
+        name: &belt Belt
         description: Transports items, hold and drag to place multiple.
 
     miner: # Internal name for the Extractor
-        name: Extractor
+        name: &miner Extractor
         description: Place over a shape or color to extract it.
 
     underground_belt: # Internal name for the Tunnel
-        name: Tunnel
+        name: &underground_belt Tunnel
         description: Allows to tunnel resources under buildings and belts.
 
     splitter: # Internal name for the Balancer
-        name: Balancer
+        name: &splitter Balancer
         description: Multifunctional - Evenly distributes all inputs onto all outputs.
 
     cutter:
-        name: Cut Half
+        name: &cutter Cut Half
         description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
 
     rotater:
-        name: Rotate
+        name: &rotater Rotate
         description: Rotates shapes clockwise by 90 degrees.
 
     stacker: # Internal name for the Combiner
-        name: Combine
+        name: &stacker Combine
         description: Combines both items. If they can not be merged, the right item is placed above the left item.
 
     mixer:
-        name: Mix Colors
+        name: &mixer Mix Colors
         description: Mixes two colors using additive blending.
 
     painter:
-        name: Dye
+        name: &painter Dye
         description: Colors the whole shape on the left input with the color from the right input.
 
     trash: # Internal name for the destroyer
-        name: Destroyed
+        name: &trash Destroyed
         description: Accepts inputs from all sides and destroys them. Forever.
 
 storyRewards:
@@ -329,4 +342,60 @@ settings:
         refreshRate:
             title: Simulation Target
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates.
+                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+
+keybindings:
+    title: Keybindings
+    hint: >-
+        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+
+    resetKeybindings: Reset Keyinbindings
+
+    categoryLabels:
+        general: Appplication
+        ingame: Game
+        placement: Placement
+        massSelect: Mass Delete
+        buildings: Building Shortcuts
+        placementModifiers: Placement Modifiers
+
+    mappings:
+        confirm: Confirm
+        back: Back
+        mapMoveUp: Move Up
+        mapMoveRight: Move Right
+        mapMoveDown: Move Down
+        mapMoveLeft: Move Left
+
+        centerMap: Center Map
+
+        menuOpenShop: Upgrades
+        menuOpenStats: Statistics
+
+        toggleHud: Toggle HUD
+        belt: *belt
+        splitter: *splitter
+        underground_belt: *underground_belt
+        miner: *miner
+        cutter: *cutter
+        rotater: *rotater
+        stacker: *stacker
+        mixer: *mixer
+        painter: *painter
+        trash: *trash
+
+        abortBuildingPlacement: Abort Placement
+        rotateWhilePlacing: Rotate
+        cycleBuildingVariants: Cycle Variants
+        confirmMassDelete: Confirm Mass Delete
+        cycleBuildings: Cycle Buildings
+
+        massSelectStart: Hold and drag to start
+        massSelectSelectMultiple: Select multiple areas
+
+        placementDisableAutoOrientation: Disable automatic orientation
+        placeMultiple: Stay in placement mode
+        placeInverse: Invert automatic orientation
+
+about:
+    title: About this Game

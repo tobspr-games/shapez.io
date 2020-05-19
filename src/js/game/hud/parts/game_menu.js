@@ -3,6 +3,7 @@ import { makeDiv, randomInt } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
 import { enumNotificationType } from "./notifications";
 import { T } from "../../../translations";
+import { KEYMAPPINGS } from "../../key_action_mapper";
 
 export class HUDGameMenu extends BaseHUDPart {
     initialize() {}
@@ -14,7 +15,7 @@ export class HUDGameMenu extends BaseHUDPart {
                 id: "shop",
                 label: "Upgrades",
                 handler: () => this.root.hud.parts.shop.show(),
-                keybinding: "menu_open_shop",
+                keybinding: KEYMAPPINGS.ingame.menuOpenShop,
                 badge: () => this.root.hubGoals.getAvailableUpgradeCount(),
                 notification: /** @type {[string, enumNotificationType]} */ ([
                     T.ingame.notifications.newUpgrade,
@@ -25,7 +26,7 @@ export class HUDGameMenu extends BaseHUDPart {
                 id: "stats",
                 label: "Stats",
                 handler: () => this.root.hud.parts.statistics.show(),
-                keybinding: "menu_open_stats",
+                keybinding: KEYMAPPINGS.ingame.menuOpenStats,
             },
         ];
 

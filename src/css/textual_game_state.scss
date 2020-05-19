@@ -38,13 +38,27 @@
         @include S(margin-bottom, 20px);
     }
 
-    .content {
-        background: #fff;
-        @include S(border-radius, $globalBorderRadius);
-        @include S(padding, 10px);
-        max-height: calc(80vh - #{D(60px)});
-        overflow-y: auto;
-        box-sizing: border-box;
-        pointer-events: all;
+    > .container {
+        > .content {
+            background: #fff;
+            @include S(border-radius, $globalBorderRadius);
+            @include S(padding, 10px);
+            height: calc(80vh - #{D(60px)});
+            overflow-y: auto;
+            box-sizing: border-box;
+            pointer-events: all;
+
+            a {
+                color: $colorBlueBright;
+            }
+
+            .categoryLabel {
+                display: block;
+                text-transform: uppercase;
+                @include S(margin-top, 15px);
+                @include S(margin-bottom, 15px);
+                @include Heading;
+            }
+        }
     }
 }

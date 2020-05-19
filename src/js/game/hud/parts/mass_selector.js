@@ -10,15 +10,18 @@ import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { createLogger } from "../../../core/logging";
 import { enumMouseButton } from "../../camera";
 import { T } from "../../../translations";
+import { KEYMAPPINGS } from "../../key_action_mapper";
 
 const logger = createLogger("hud/mass_selector");
 
 export class HUDMassSelector extends BaseHUDPart {
     createElements(parent) {
         const removalKeybinding = this.root.gameState.keyActionMapper
-            .getBinding("confirm_mass_delete")
+            .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
             .getKeyCodeString();
-        const abortKeybinding = this.root.gameState.keyActionMapper.getBinding("back").getKeyCodeString();
+        const abortKeybinding = this.root.gameState.keyActionMapper
+            .getBinding(KEYMAPPINGS.general.back)
+            .getKeyCodeString();
 
         this.element = makeDiv(
             parent,
@@ -43,8 +46,10 @@ export class HUDMassSelector extends BaseHUDPart {
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
 
-        this.root.gameState.keyActionMapper.getBinding("back").add(this.onBack, this);
-        this.root.gameState.keyActionMapper.getBinding("confirm_mass_delete").add(this.confirmDelete, this);
+        this.root.gameState.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.onBack, this);
+        this.root.gameState.keyActionMapper
+            .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
+            .add(this.confirmDelete, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.element);
     }

@@ -523,7 +523,7 @@ canvas {
 }
 
 .checkbox {
-    $bgColor: darken($mainBgColor, 0);
+    $bgColor: darken($mainBgColor, 3);
     background-color: $bgColor;
     @include S(width, 35px);
     @include S(height, 17px);
