@@ -79,7 +79,7 @@ function gulptasksSounds($, gulp, buildFolder) {
 
     gulp.task(
         "sounds.sfx",
-        $.sequence(["sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas"])
+        $.sequence("sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas")
     );
 
     gulp.task("sounds.copy", () => {
