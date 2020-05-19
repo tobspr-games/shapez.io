@@ -76,7 +76,7 @@ export const globalConfig = {
         // disableSavegameWrite: true,
         // showEntityBounds: true,
         // showAcceptorEjectors: true,
-        disableMusic: true,
+        // disableMusic: true,
         // doNotRenderStatics: true,
         // disableZoomLimits: true,
         // showChunkBorders: true,
