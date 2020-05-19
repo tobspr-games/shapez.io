@@ -185,7 +185,6 @@ export class SoundImplBrowser extends SoundInterface {
         keys.forEach(key => {
             this.sounds[key] = new WrappedSoundInstance(this.sfxHandle, key);
         });
-        console.log(this.sounds);
         for (const musicKey in MUSIC) {
             const musicPath = MUSIC[musicKey];
             const music = new this.musicClass(musicKey, musicPath);
