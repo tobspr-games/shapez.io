@@ -248,7 +248,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             this.currentVariant.set(variant);
 
             this.fakeEntity = new Entity(null);
-            metaBuilding.setupEntityComponents(this.fakeEntity, null);
 
             this.fakeEntity.addComponent(
                 new StaticMapEntityComponent({
@@ -257,6 +256,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                     tileSize: metaBuilding.getDimensions(this.currentVariant.get()).copy(),
                 })
             );
+
+            metaBuilding.setupEntityComponents(this.fakeEntity, null);
             metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
 
             this.buildingInfoElements.tutorialImage.setAttribute(

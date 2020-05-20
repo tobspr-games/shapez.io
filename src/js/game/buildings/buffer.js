@@ -44,14 +44,16 @@ export class MetaBufferBuilding extends MetaBuilding {
             })
         );
 
+
+        // We render the sprite our self
+        entity.components.StaticMapEntity.spriteKey = null;
+
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [{ pos: new Vector(1, 0), direction: enumDirection.top }],
             })
         );
 
-        // We render the sprite our self
-        // entity.components.StaticMapEntity.spriteKey = null;
 
         // TODO: Replace item filters with custom filter to only allow one type of item to be collected.
         entity.addComponent(
