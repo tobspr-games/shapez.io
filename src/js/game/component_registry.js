@@ -9,6 +9,7 @@ import { ReplaceableMapEntityComponent } from "./components/replaceable_map_enti
 import { UndergroundBeltComponent } from "./components/underground_belt";
 import { UnremovableComponent } from "./components/unremovable";
 import { HubComponent } from "./components/hub";
+import { StorageComponent } from "./components/storage";
 
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
@@ -21,9 +22,9 @@ export function initComponentRegistry() {
     gComponentRegistry.register(UndergroundBeltComponent);
     gComponentRegistry.register(UnremovableComponent);
     gComponentRegistry.register(HubComponent);
+    gComponentRegistry.register(StorageComponent);
 
-    // IMPORTANT ^^^^^ REGENERATE SAVEGAME SCHEMA AFTERWARDS
-    // IMPORTANT ^^^^^ ALSO UPDATE ENTITY COMPONENT STORAG
+    // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
 
     // Sanity check - If this is thrown, you (=me, lol) forgot to add a new component here
 

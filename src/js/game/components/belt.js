@@ -60,7 +60,7 @@ export class BeltComponent extends Component {
     /**
      *  Returns if the belt can currently accept an item from the given direction
      */
-    canAcceptNewItem(leftoverProgress = 0.0) {
+    canAcceptItem(leftoverProgress = 0.0) {
         const firstItem = this.sortedItems[0];
         if (!firstItem) {
             return true;
@@ -73,7 +73,7 @@ export class BeltComponent extends Component {
      * Pushes a new item to the belt
      * @param {BaseItem} item
      */
-    takeNewItem(item, leftoverProgress = 0.0) {
+    takeItem(item, leftoverProgress = 0.0) {
         if (G_IS_DEV) {
             assert(
                 this.sortedItems.length === 0 ||

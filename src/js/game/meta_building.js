@@ -107,9 +107,10 @@ export class MetaBuilding {
 
     /**
      * Returns whether this building is rotateable
+     * @param {string} variant
      * @returns {boolean}
      */
-    isRotateable() {
+    isRotateable(variant) {
         return true;
     }
 
@@ -185,7 +186,7 @@ export class MetaBuilding {
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
-        if (!this.isRotateable()) {
+        if (!this.isRotateable(variant)) {
             return {
                 rotation: 0,
                 rotationVariant: 0,

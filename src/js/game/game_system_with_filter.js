@@ -5,7 +5,7 @@ import { Entity } from "./entity";
 /* typehints:end */
 
 import { GameSystem } from "./game_system";
-import { arrayDelete } from "../core/utils";
+import { arrayDelete, arrayDeleteValue } from "../core/utils";
 import { DrawParameters } from "../core/draw_parameters";
 import { globalConfig } from "../core/config";
 import { Math_floor, Math_ceil } from "../core/builtins";
@@ -30,6 +30,7 @@ export class GameSystemWithFilter extends GameSystem {
 
         this.root.signals.entityAdded.add(this.internalPushEntityIfMatching, this);
         this.root.signals.entityGotNewComponent.add(this.internalReconsiderEntityToAdd, this);
+        this.root.signals.entityComponentRemoved.add(this.internalCheckEntityAfterComponentRemoval, this);
         this.root.signals.entityQueuedForDestroy.add(this.internalPopEntityIfMatching, this);
 
         this.root.signals.postLoadHook.add(this.internalPostLoadHook, this);
@@ -120,6 +121,24 @@ export class GameSystemWithFilter extends GameSystem {
 
         assert(this.allEntities.indexOf(entity) < 0, "entity already in list: " + entity);
         this.internalRegisterEntity(entity);
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     */
+    internalCheckEntityAfterComponentRemoval(entity) {
+        if (this.allEntities.indexOf(entity) < 0) {
+            // Entity wasn't interesting anyways
+            return;
+        }
+
+        for (let i = 0; i < this.requiredComponentIds.length; ++i) {
+            if (!entity.components[this.requiredComponentIds[i]]) {
+                // Entity is not interesting anymore
+                arrayDeleteValue(this.allEntities, entity);
+            }
+        }
     }
 
     /**

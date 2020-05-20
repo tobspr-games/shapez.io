@@ -162,6 +162,7 @@ ingame:
         infoTexts:
             speed: Speed
             range: Range
+            storage: Storage
             oneItemPerSecond: 1 item / second
             itemsPerSecond: <x> items / s
             itemsPerSecondDouble: (x2)
@@ -303,6 +304,7 @@ storyRewards:
     reward_cutter_quad: Quad Cutting
     reward_painter_double: Double Painting
     reward_painter_quad: Quad Painting
+    reward_storage: Storage Buffer
 
     reward_freeplay: Freeplay
 
