@@ -403,6 +403,7 @@ export class GameCore {
 
         root.map.drawForeground(params);
         if (!this.root.camera.getIsMapOverlayActive()) {
+            systems.itemBuffer.draw(params);
             systems.hub.draw(params);
         }
 

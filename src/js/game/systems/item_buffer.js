@@ -34,24 +34,19 @@ export class BufferSystem extends GameSystemWithFilter {
         // Background
         staticComp.drawSpriteOnFullEntityBounds(parameters, this.bufferSprite, 2.2);
 
-        bufferContents.definition.draw(pos.x, pos.y - 5, parameters, 20);
+        if (bufferContents.definition != null) {
+            bufferContents.definition.draw(pos.x, pos.y - 11.5, parameters, 26);
+        }
 
-        const textOffsetX = 2;
-        const textOffsetY = -6;
-
-        context.font = "bold 10px GameFont";
+        context.font = "bold 12px GameFont";
         context.fillStyle = "#64666e";
-        context.textAlign = "left";
-        context.fillText("" + formatBigNumber(bufferContents.itemCount), pos.x + textOffsetX, pos.y + textOffsetY);
+        context.textAlign = "center";
+        let text = "" + formatBigNumber(bufferContents.itemCount);
 
-        context.font = "10px GameFont";
-        context.fillStyle = "#a4a6b0";
-        context.fillText(
-            "/ " + formatBigNumber(bufferContents.storageLimit),
-            pos.x + textOffsetX,
-            pos.y + textOffsetY + 13
-        );
+        if (bufferContents.itemCount === 0) {
+            text = "EMPTY";
+        }
 
-        context.textAlign = "left";
+        context.fillText(text, pos.x , pos.y + 22);
     }
 }

@@ -88,11 +88,11 @@ export class GameSystemManager {
 
         add("hub", HubSystem);
 
+        add("itemBuffer", BufferSystem);
+
         add("staticMapEntities", StaticMapEntitySystem);
 
         add("itemAcceptor", ItemAcceptorSystem);
-
-        add("itemBuffer", BufferSystem);
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }
