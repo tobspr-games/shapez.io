@@ -1,5 +1,8 @@
 import { Loader } from "../../core/loader";
+import { formatItemsPerSecond } from "../../core/utils";
 import { enumAngleToDirection, enumDirection, Vector } from "../../core/vector";
+import { SOUNDS } from "../../platform/sound";
+import { T } from "../../translations";
 import { BeltComponent } from "../components/belt";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -7,10 +10,6 @@ import { ReplaceableMapEntityComponent } from "../components/replaceable_map_ent
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
-import { SOUNDS } from "../../platform/sound";
-import { T } from "../../translations";
-import { round1Digit, formatItemsPerSecond } from "../../core/utils";
-import { globalConfig } from "../../core/config";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 

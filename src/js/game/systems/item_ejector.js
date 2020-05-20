@@ -99,8 +99,17 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         const beltComp = receiver.components.Belt;
         if (beltComp) {
             // Ayy, its a belt!
-            if (beltComp.canAcceptNewItem()) {
-                beltComp.takeNewItem(item);
+            if (beltComp.canAcceptItem()) {
+                beltComp.takeItem(item);
+                return true;
+            }
+        }
+
+        const storageComp = receiver.components.Storage;
+        if (storageComp) {
+            // It's a storage
+            if (storageComp.canAcceptItem(item)) {
+                storageComp.takeItem(item);
                 return true;
             }
         }

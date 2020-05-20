@@ -99,6 +99,10 @@ export class Entity extends BasicSerializableObject {
      * @param {boolean} force Used by the entity manager. Internal parameter, do not change
      */
     addComponent(componentInstance, force = false) {
+        if (!force && this.registered) {
+            this.root.entityMgr.attachDynamicComponent(this, componentInstance);
+            return;
+        }
         assert(force || !this.registered, "Entity already registered, use EntityManager.addDynamicComponent");
         const id = /** @type {typeof Component} */ (componentInstance.constructor).getId();
         assert(!this.components[id], "Component already present");
@@ -109,9 +113,17 @@ export class Entity extends BasicSerializableObject {
      * Removes a given component, only possible until the entity is registered on the entity manager,
      * after that use @see EntityManager.removeDynamicComponent
      * @param {typeof Component} componentClass
+     * @param {boolean} force
      */
-    removeComponent(componentClass) {
-        assert(!this.registered, "Entity already registered, use EntityManager.removeDynamicComponent");
+    removeComponent(componentClass, force = false) {
+        if (!force && this.registered) {
+            this.root.entityMgr.removeDynamicComponent(this, componentClass);
+            return;
+        }
+        assert(
+            force || !this.registered,
+            "Entity already registered, use EntityManager.removeDynamicComponent"
+        );
         const id = componentClass.getId();
         assert(this.components[id], "Component does not exist on entity");
         delete this.components[id];

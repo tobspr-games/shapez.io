@@ -258,8 +258,8 @@ export class BeltSystem extends GameSystemWithFilter {
                 if (progressAndItem[0] >= 1.0) {
                     if (followUp) {
                         const followUpBelt = followUp.components.Belt;
-                        if (followUpBelt.canAcceptNewItem()) {
-                            followUpBelt.takeNewItem(progressAndItem[1], progressAndItem[0] - 1.0);
+                        if (followUpBelt.canAcceptItem()) {
+                            followUpBelt.takeItem(progressAndItem[1], progressAndItem[0] - 1.0);
                             items.splice(itemIndex, 1);
                         } else {
                             // Well, we couldn't really take it to a follow up belt, keep it at

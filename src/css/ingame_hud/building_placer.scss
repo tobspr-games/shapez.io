@@ -130,9 +130,11 @@
             &[data-tile-w="4"] {
                 @include S(width, 4 * $iconSize);
             }
-
             &[data-tile-h="2"] {
                 @include S(height, 2 * $iconSize);
+            }
+            &[data-tile-h="3"] {
+                @include S(height, 3 * $iconSize);
             }
         }
 

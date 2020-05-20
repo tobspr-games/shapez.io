@@ -20,6 +20,7 @@ export const enumHubGoalRewards = {
     reward_cutter_quad: "reward_cutter_quad",
     reward_painter_double: "reward_painter_double",
     reward_painter_quad: "reward_painter_quad",
+    reward_storage: "reward_storage",
 
     reward_freeplay: "reward_freeplay",
 
@@ -105,6 +106,12 @@ export const tutorialGoals = [
         shape: "RpRpRpRp:CwCwCwCw", // painting t3
         required: 7000,
         reward: enumHubGoalRewards.reward_underground_belt_tier_2,
+    },
+
+    {
+        shape: "SrSrSrSr:CyCyCyCy", // unused
+        required: 7850,
+        reward: enumHubGoalRewards.reward_storage,
     },
 
     {

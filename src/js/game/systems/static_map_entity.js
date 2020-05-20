@@ -28,12 +28,19 @@ export class StaticMapEntitySystem extends GameSystem {
 
         const drawOutlinesOnly = parameters.zoomLevel < globalConfig.mapChunkOverviewMinZoom;
 
+        const drawnUids = new Set();
+
         const contents = chunk.contents;
         for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
             for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
                 const entity = contents[x][y];
 
                 if (entity) {
+                    if (drawnUids.has(entity.uid)) {
+                        continue;
+                    }
+                    drawnUids.add(entity.uid);
+
                     const staticComp = entity.components.StaticMapEntity;
                     if (drawOutlinesOnly) {
                         const rect = staticComp.getTileSpaceBounds();
