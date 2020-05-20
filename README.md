@@ -38,4 +38,6 @@ This project is based on ES5. Some es6 features are used but most of them are to
 
 ### Assets
 
+For most assets I use photoshop, you can find them in `assets/`.
+
 You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">texture packer</a> license in order to regenerate the atlas. If you don't have one but you want to contribute assets, let me know and I might compile it for you.
