@@ -86,6 +86,12 @@ export class MainMenuState extends GameState {
                     <span class="thirdpartyLogo  discordLogo"></span>
                 </a>    
 
+                ${
+                    G_IS_BROWSER
+                        ? `<a class="iogLink" target="_blank" href="https://iogames.space">More .io games</a>`
+                        : ""
+                }
+
                 <div class="author">Made by <a href="https://tobspr.com" target="_blank">Tobias Springer</a></div>
 
             </div>

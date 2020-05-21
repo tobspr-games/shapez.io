@@ -321,6 +321,15 @@
                 transform: scale(1.01);
             }
 
+            &.iogLink {
+                // background: transparenT;
+                align-self: flex-end;
+                justify-self: flex-end;
+                height: unset;
+                width: unset;
+                @include S(padding, 3px);
+            }
+
             .thirdpartyLogo {
                 display: inline-block;
                 @include S(width, 50px);
