@@ -167,16 +167,16 @@ export class MainMenuState extends GameState {
     }
 
     onEnter(payload) {
+        this.dialogs = new HUDModalDialogs(null, this.app);
+        const dialogsElement = document.body.querySelector(".modalDialogParent");
+        this.dialogs.initializeToElement(dialogsElement);
+
         if (payload.loadError) {
             this.dialogs.showWarning(
                 T.dialogs.gameLoadFailure.title,
                 T.dialogs.gameLoadFailure.text + "<br><br>" + payload.loadError
             );
         }
-
-        this.dialogs = new HUDModalDialogs(null, this.app);
-        const dialogsElement = document.body.querySelector(".modalDialogParent");
-        this.dialogs.initializeToElement(dialogsElement);
 
         const qs = this.htmlElement.querySelector.bind(this.htmlElement);
         this.trackClicks(qs(".mainContainer .playButton"), this.onPlayButtonClicked);
