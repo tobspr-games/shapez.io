@@ -45,7 +45,7 @@
             text-transform: uppercase;
             // font-weight: bold;
             color: #fff;
-            text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.2);
+            text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.1);
 
             @include S(margin-left, 5px);
         }
@@ -55,7 +55,7 @@
         display: none;
     }
 
-    &.placementActive .binding.noPlacementOnly {
+    &.placementActive .noPlacementOnly {
         display: none;
     }
 
