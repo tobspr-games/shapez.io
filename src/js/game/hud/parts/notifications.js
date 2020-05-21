@@ -1,6 +1,7 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
+import { IS_DEMO } from "../../../core/config";
 
 /** @enum {string} */
 export const enumNotificationType = {
@@ -23,9 +24,11 @@ export class HUDNotifications extends BaseHUDPart {
         this.notificationElements = [];
 
         // Automatic notifications
-        this.root.signals.gameSaved.add(() =>
-            this.onNotification(T.ingame.notifications.gameSaved, enumNotificationType.saved)
-        );
+        if (!IS_DEMO) {
+            this.root.signals.gameSaved.add(() =>
+                this.onNotification(T.ingame.notifications.gameSaved, enumNotificationType.saved)
+            );
+        }
     }
 
     /**

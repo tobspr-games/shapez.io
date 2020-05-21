@@ -81,6 +81,7 @@
             @include S(border-radius, $globalBorderRadius);
             height: 100%;
             box-sizing: border-box;
+            @include S(width, 300px);
             @include S(padding, 15px);
 
             display: flex;
@@ -283,6 +284,13 @@
         flex-grow: 1;
         justify-content: center;
         align-items: flex-end;
+        width: 100%;
+
+        .author {
+            flex-grow: 1;
+            text-align: right;
+            @include S(padding-right, 10px);
+        }
 
         @include S(padding, 15px);
         > a {
