@@ -59,11 +59,11 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo version
     intro: >-
-        Get the <strong>shapez.io standalone</strong> for:
+        Get the full version for:
     advantages:
         - Saving and resuming your games.
         - Dark mode & more.
-        - Support the developer ❤️
+        - Supporting the developer ❤️
 
 mainMenu:
     play: Play

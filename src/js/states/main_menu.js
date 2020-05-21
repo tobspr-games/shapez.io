@@ -59,7 +59,7 @@ export class MainMenuState extends GameState {
 
             <div class="mainWrapper ${IS_DEMO ? "demo" : "noDemo"}">
             
-                ${IS_DEMO ? `<div class="standaloneBanner leftSide">${bannerHtml}</div>` : ""}    
+                ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
                 
                 <div class="mainContainer">
                     ${
@@ -71,7 +71,6 @@ export class MainMenuState extends GameState {
                     <button class="importButton styledButton">${T.mainMenu.importSavegame}</button>
                 </div>
                 
-                ${IS_DEMO ? `<div class="standaloneBanner leftSide">${bannerHtml}</div>` : ""}    
     
             </div>
 
