@@ -99,8 +99,8 @@ export class MainMenuState extends GameState {
     }
 
     requestImportSavegame() {
-        if (IS_DEMO) {
-            this.dialogs.showFeatureRestrictionInfo(T.demo.features.importingGames);
+        if (IS_DEMO && this.app.savegameMgr.getSavegamesMetaData().length > 0) {
+            this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
             return;
         }
 
@@ -337,6 +337,11 @@ export class MainMenuState extends GameState {
     }
 
     onPlayButtonClicked() {
+        if (IS_DEMO && this.app.savegameMgr.getSavegamesMetaData().length > 0) {
+            this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
+            return;
+        }
+
         if (IS_DEMO) {
             const { ok } = this.dialogs.showWarning(
                 T.dialogs.demoExplanation.title,
