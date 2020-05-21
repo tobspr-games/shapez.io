@@ -61,8 +61,9 @@ demoBanners:
     intro: >-
         If you enjoy this game, please consider to buy the full version!
     advantages:
-        - No advertisements & watermark
-        - Dark mode
+        - No advertisements
+        - Unlimited savegames
+        - Dark mode & more
         - >-
             Allow me to further develop shapez.io ❤️
 
@@ -148,6 +149,10 @@ dialogs:
     demoExplanation:
         title: Notice from the Developer
         desc: I am developing this game in my free time, and I hope you enjoy it! If you do, please consider to buy the standalone version!
+
+    oneSavegameLimit:
+        title: Limited savegames
+        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -472,6 +477,7 @@ demo:
     features:
         restoringGames: Restoring savegames
         importingGames: Importing savegames
+        oneGameLimit: Limited to one savegame
         customizeKeybindings: Customizing Keybindings
 
     settingNotAvailable: Not available in the demo.

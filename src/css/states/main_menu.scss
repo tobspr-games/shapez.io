@@ -95,7 +95,7 @@
             h3 {
                 @include Heading;
                 font-weight: bold;
-                @include S(margin-bottom, 15px);
+                @include S(margin-bottom, 5px);
                 text-transform: uppercase;
                 color: $colorRedBright;
             }
@@ -105,7 +105,7 @@
             }
 
             ul {
-                @include S(margin-top, 15px);
+                @include S(margin-top, 5px);
                 @include S(padding-left, 20px);
                 li {
                     @include Text;
