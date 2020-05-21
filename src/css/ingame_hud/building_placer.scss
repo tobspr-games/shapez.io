@@ -79,16 +79,18 @@
 
 #ingame_HUD_PlacerVariants {
     position: absolute;
-    @include S(left, 10px);
-    @include S(bottom, 80px);
-    display: grid;
-    grid-auto-flow: row;
-    justify-items: start;
+    @include S(right, 10px);
+    @include S(top, 200px);
+    display: flex;
     @include S(grid-gap, 5px);
+    flex-direction: column;
+    align-items: flex-end;
 
     .explanation {
         text-transform: uppercase;
+        grid-row: 1 / 2;
         @include SuperSmallText;
+        text-align: right;
         .keybinding {
             position: relative;
         }
@@ -98,53 +100,60 @@
         }
     }
 
-    .variant {
-        @include S(border-radius, $globalBorderRadius);
-        background: rgba(0, 10, 20, 0.1);
-        display: flex;
-        position: relative;
-        align-items: center;
-        @include S(padding, 5px);
-        @include S(grid-gap, 10px);
+    .variants {
+        display: grid;
+        @include S(grid-gap, 5px);
 
-        &.active {
-            background-color: rgba(74, 163, 223, 0.6);
-        }
-
-        $iconSize: 25px;
-
-        .iconWrap {
-            grid-column: 1 / 2;
-            grid-row: 1 / 2;
+        .variant {
+            grid-row: 2 / 3;
+            @include S(border-radius, $globalBorderRadius);
+            background: rgba(0, 10, 20, 0.2);
+            display: inline-flex;
+            vertical-align: top;
             position: relative;
-            @include S(width, $iconSize);
-            @include S(height, $iconSize);
-            background: center center / contain no-repeat;
+            align-items: center;
+            @include S(padding, 3px);
+            @include S(grid-gap, 10px);
 
-            &[data-tile-w="2"] {
-                @include S(width, 2 * $iconSize);
+            &.active {
+                background-color: rgba(74, 163, 223, 0.6);
             }
-            &[data-tile-w="3"] {
-                @include S(width, 3 * $iconSize);
-            }
-            &[data-tile-w="4"] {
-                @include S(width, 4 * $iconSize);
-            }
-            &[data-tile-h="2"] {
-                @include S(height, 2 * $iconSize);
-            }
-            &[data-tile-h="3"] {
-                @include S(height, 3 * $iconSize);
-            }
-        }
 
-        .label {
-            display: none;
-            grid-column: 2 / 3;
-            text-transform: uppercase;
-            grid-row: 1 / 2;
-            @include SuperSmallText;
-            color: #fff;
+            $iconSize: 25px;
+
+            .iconWrap {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+                position: relative;
+                @include S(width, $iconSize);
+                @include S(height, $iconSize);
+                background: center center / contain no-repeat;
+
+                &[data-tile-w="2"] {
+                    @include S(width, 2 * $iconSize);
+                }
+                &[data-tile-h="2"] {
+                    @include S(height, 2 * $iconSize);
+                }
+                &[data-tile-h="3"] {
+                    @include S(height, 3 * $iconSize);
+                }
+                &[data-tile-w="3"] {
+                    @include S(width, 3 * $iconSize);
+                }
+                &[data-tile-w="4"] {
+                    @include S(width, 4 * $iconSize);
+                }
+            }
+
+            .label {
+                display: none;
+                grid-column: 2 / 3;
+                text-transform: uppercase;
+                grid-row: 1 / 2;
+                @include SuperSmallText;
+                color: #fff;
+            }
         }
     }
 }

@@ -258,11 +258,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 })
             );
             metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
-
-            this.buildingInfoElements.tutorialImage.setAttribute(
-                "data-icon",
-                "building_tutorials/" + metaBuilding.getId() + ".png"
-            );
         } else {
             this.fakeEntity = null;
         }
@@ -281,13 +276,23 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             return;
         }
 
-        this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id].name;
-        this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id].description;
+        const variant = this.currentVariant.get();
+
+        this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id][variant].name;
+        this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id][variant].description;
 
         const binding = this.root.keyMapper.getBinding(KEYMAPPINGS.buildings[metaBuilding.getId()]);
         this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace(
             "<key>",
             "<code class='keybinding'>" + binding.getKeyCodeString() + "</code>"
+        );
+
+        this.buildingInfoElements.tutorialImage.setAttribute(
+            "data-icon",
+            "building_tutorials/" +
+                metaBuilding.getId() +
+                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                ".png"
         );
 
         removeAllChildren(this.buildingInfoElements.additionalInfo);
@@ -332,10 +337,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             )
         );
 
+        const container = makeDiv(this.variantsElement, null, ["variants"]);
+
         for (let i = 0; i < availableVariants.length; ++i) {
             const variant = availableVariants[i];
 
-            const element = makeDiv(this.variantsElement, null, ["variant"]);
+            const element = makeDiv(container, null, ["variant"]);
             element.classList.toggle("active", variant === this.currentVariant.get());
             makeDiv(element, null, ["label"], variant);
 

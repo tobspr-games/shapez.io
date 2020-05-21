@@ -253,44 +253,86 @@ shopUpgrades:
 # Buildings and their name / description
 buildings:
     belt:
-        name: &belt Conveyor Belt
-        description: Transports items, hold and drag to place multiple.
+        default:
+            name: &belt Conveyor Belt
+            description: Transports items, hold and drag to place multiple.
 
     miner: # Internal name for the Extractor
-        name: &miner Extractor
-        description: Place over a shape or color to extract it.
+        default:
+            name: &miner Extractor
+            description: Place over a shape or color to extract it.
+
+        chainable:
+            name: Extractor (Chain)
+            description: Place over a shape or color to extract it. Can be chained.
 
     underground_belt: # Internal name for the Tunnel
-        name: &underground_belt Tunnel
-        description: Allows to tunnel resources under buildings and belts.
+        default:
+            name: &underground_belt Tunnel
+            description: Allows to tunnel resources under buildings and belts.
+
+        tier2:
+            name: Tunnel Tier II
+            description: Allows to tunnel resources under buildings and belts.
 
     splitter: # Internal name for the Balancer
-        name: &splitter Balancer
-        description: Multifunctional - Evenly distributes all inputs onto all outputs.
+        default:
+            name: &splitter Balancer
+            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+
+        compact:
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+
+        compact-inverse:
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
 
     cutter:
-        name: &cutter Cutter
-        description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+        default:
+            name: &cutter Cutter
+            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+        quad:
+            name: Cutter (Quad)
+            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
 
     rotater:
-        name: &rotater Rotate
-        description: Rotates shapes clockwise by 90 degrees.
+        default:
+            name: &rotater Rotate
+            description: Rotates shapes clockwise by 90 degrees.
+        ccw:
+            name: Rotate (CCW)
+            description: Rotates shapes counter clockwise by 90 degrees.
 
-    stacker: # Internal name for the Combiner
-        name: &stacker Stacker
-        description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+    stacker:
+        default:
+            name: &stacker Stacker
+            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
 
     mixer:
-        name: &mixer Color Mixer
-        description: Mixes two colors using additive blending.
+        default:
+            name: &mixer Color Mixer
+            description: Mixes two colors using additive blending.
 
     painter:
-        name: &painter Painter
-        description: Colors the whole shape on the left input with the color from the right input.
+        default:
+            name: &painter Painter
+            description: Colors the whole shape on the left input with the color from the right input.
+        double:
+            name: Painter (Double)
+            description: Colors the both shapes on the left input with the color from the right input.
+        quad:
+            name: Painter (Quad)
+            description: Allows to color each quadrant of the shape with a different color.
 
-    trash: # Internal name for the destroyer
-        name: &trash Trash
-        description: Accepts inputs from all sides and destroys them. Forever.
+    trash:
+        default:
+            name: &trash Trash
+            description: Accepts inputs from all sides and destroys them. Forever.
+
+        storage:
+            name: Storage
+            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
 
 storyRewards:
     # Those are the rewards gained from completing the store

@@ -1,11 +1,17 @@
 $buildings: belt, cutter, miner, mixer, painter, rotater, splitter, stacker, trash, underground_belt;
 
 @each $building in $buildings {
-    [data-icon="building_tutorials/#{$building}.png"] {
-        background-image: uiResource("res/ui/building_tutorials/#{$building}.png") !important;
-    }
     [data-icon="building_icons/#{$building}.png"] {
         background-image: uiResource("res/ui/building_icons/#{$building}.png") !important;
+    }
+}
+
+$buildingsAndVariants: belt, splitter, splitter-compact, splitter-compact-inverse, underground_belt,
+    underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, stacker, mixer,
+    painter, painter-double, painter-quad, trash, trash-storage;
+@each $building in $buildingsAndVariants {
+    [data-icon="building_tutorials/#{$building}.png"] {
+        background-image: uiResource("res/ui/building_tutorials/#{$building}.png") !important;
     }
 }
 
