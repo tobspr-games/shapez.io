@@ -167,6 +167,7 @@ ingame:
         reverseOrientation: Reverse orientation
         disableAutoOrientation: Disable auto orientation
         toggleHud: Toggle HUD
+        placeBuilding: Place building
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)

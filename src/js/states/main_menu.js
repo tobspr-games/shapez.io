@@ -27,7 +27,7 @@ export class MainMenuState extends GameState {
                 ${T.demoBanners.advantages.map(advantage => `<li>${advantage}</li>`).join("")}
             </ul>
 
-            <a href="#" class="steamLink" target="_blank">Get shapez.io on steam!</a>
+            <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
         `;
 
         return `
