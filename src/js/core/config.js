@@ -6,7 +6,7 @@ export const IS_DEBUG =
     window.location.search.indexOf("nodebug") < 0;
 
 export const IS_DEMO =
-    (G_IS_RELEASE && !G_IS_STANDALONE) ||
+    (G_IS_PROD && !G_IS_STANDALONE) ||
     (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
 
 const smoothCanvas = true;
