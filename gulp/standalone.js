@@ -128,7 +128,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
             asar: true,
             executableName: "shapezio",
             icon: path.join(electronBaseDir, "favicon"),
-            name: "shapez.io Standalone",
+            name: "shapez.io-standalone",
             out: tempDestDir,
             overwrite: true,
             appBundleId: "io.shapez.standalone",

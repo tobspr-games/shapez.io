@@ -25,7 +25,7 @@
 
     .exitAppButton {
         @include S(right, 100px);
-        background-image: resolve("icons/main_menu_exit.png");
+        background-image: uiResource("icons/main_menu_exit.png");
     }
 
     .fullscreenBackgroundVideo {

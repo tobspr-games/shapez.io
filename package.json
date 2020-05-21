@@ -9,7 +9,8 @@
     "scripts": {
         "dev": "./gulp/gulp main.serveDev",
         "tslint": "cd src/js && tsc",
-        "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*"
+        "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*",
+        "publishOnItch": "butler push tmp_standalone_files/shapez.io-standalone-win32-x64 tobspr/shapezio:windows --userversion-file version"
     },
     "dependencies": {
         "@babel/core": "^7.5.4",
