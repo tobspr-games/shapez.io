@@ -272,10 +272,10 @@ export class MainMenuState extends GameState {
     resumeGame(game) {
         this.app.analytics.trackUiClick("resume_game");
 
-        if (IS_DEMO) {
-            this.dialogs.showFeatureRestrictionInfo(T.demo.features.restoringGames);
-            return;
-        }
+        // if (IS_DEMO) {
+        //     this.dialogs.showFeatureRestrictionInfo(T.demo.features.restoringGames);
+        //     return;
+        // }
 
         const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
         savegame.readAsync().then(() => {
