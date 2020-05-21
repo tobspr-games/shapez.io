@@ -86,6 +86,8 @@ export class MainMenuState extends GameState {
                     <span class="thirdpartyLogo  discordLogo"></span>
                 </a>    
 
+                <div class="author">Made by <a href="https://tobspr.com" target="_blank">Tobias Springer</a></div>
+
             </div>
         `;
     }
@@ -319,7 +321,7 @@ export class MainMenuState extends GameState {
         this.moveToState("SettingsState");
     }
 
-    onPlayButtonClicked() {
+    doStartNewGame() {
         this.app.analytics.trackUiClick("start_new_game");
         const savegame = this.app.savegameMgr.createNewSavegame();
 
@@ -333,6 +335,19 @@ export class MainMenuState extends GameState {
         this.moveToState("InGameState", {
             savegame,
         });
+    }
+
+    onPlayButtonClicked() {
+        if (IS_DEMO) {
+            const { ok } = this.dialogs.showWarning(
+                T.dialogs.demoExplanation.title,
+                T.dialogs.demoExplanation.desc
+            );
+            ok.add(() => this.doStartNewGame());
+            return;
+        }
+
+        this.doStartNewGame();
     }
 
     onLeave() {

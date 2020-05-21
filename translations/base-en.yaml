@@ -57,13 +57,14 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo version
+    title: Hey!
     intro: >-
-        Get the full version for:
+        If you enjoy this game, please consider to buy the full version!
     advantages:
-        - Saving and resuming your games.
-        - Dark mode & more.
-        - Supporting the developer ❤️
+        - Save & restore your games
+        - Dark mode
+        - >-
+            Allow me to further develop shapez.io ❤️
 
 mainMenu:
     play: Play
@@ -143,6 +144,10 @@ dialogs:
     newUpdate:
         title: Update available
         desc: There is an update for this game available!
+
+    demoExplanation:
+        title: You can not save
+        desc: This is a demo, and you will not be able to restore your saved games. To save and resume your games, get the standalone on itch.io (You can import them).<br><br>I know this sucks, but otherwise I can not continue the development of this game!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
