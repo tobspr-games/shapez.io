@@ -2,6 +2,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, round3Digits, round2Digits } from "../../../core/utils";
 import { Math_round } from "../../../core/builtins";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { KEYMAPPINGS } from "../../key_action_mapper";
 
 export class HUDDebugInfo extends BaseHUDPart {
     createElements(parent) {
@@ -18,12 +19,17 @@ export class HUDDebugInfo extends BaseHUDPart {
         this.visible = false;
         this.domAttach = new DynamicDomAttach(this.root, this.element);
 
-        // this.root.keyMapper
+        this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleFPSInfo).add(() => this.toggle());
+    }
+
+    toggle() {
+        this.visible = !this.visible;
+        this.domAttach.update(this.visible);
     }
 
     update() {
         const now = this.root.time.realtimeNow();
-        if (now - this.lastTick > 0.25) {
+        if (now - this.lastTick > 0.25 && this.visible) {
             this.lastTick = now;
             this.tickRateElement.innerText = "Tickrate: " + this.root.dynamicTickrate.currentTickRate;
             this.fpsElement.innerText =

@@ -104,7 +104,7 @@ export class MinerSystem extends GameSystemWithFilter {
                 if (entity && entity.components.Miner) {
                     const staticComp = entity.components.StaticMapEntity;
                     if (!staticComp.shouldBeDrawn(parameters)) {
-                        return;
+                        continue;
                     }
 
                     const lowerLayerItem = this.root.map.getLowerLayerContentXY(
