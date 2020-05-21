@@ -28,6 +28,9 @@ export class StorageImplBrowserIndexedDB extends StorageInterface {
             const request = window.indexedDB.open("app_storage", 10);
             request.onerror = event => {
                 logger.error("IDB error:", event);
+                alert(
+                    "Sorry, it seems your browser has blocked the access to the storage system. This might be the case if you are browsing in private mode for example. I recommend to use google chrome or disable private browsing."
+                );
                 reject("Indexed DB access error");
             };
 
