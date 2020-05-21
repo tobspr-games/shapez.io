@@ -24,11 +24,9 @@ export class HUDNotifications extends BaseHUDPart {
         this.notificationElements = [];
 
         // Automatic notifications
-        if (!IS_DEMO) {
-            this.root.signals.gameSaved.add(() =>
-                this.onNotification(T.ingame.notifications.gameSaved, enumNotificationType.saved)
-            );
-        }
+        this.root.signals.gameSaved.add(() =>
+            this.onNotification(T.ingame.notifications.gameSaved, enumNotificationType.saved)
+        );
     }
 
     /**
