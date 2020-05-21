@@ -163,17 +163,17 @@ export class MapChunk {
             [enumSubShape.windmill]: Math_round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
         };
 
-        if (distanceToOriginInChunks < 4) {
+        if (distanceToOriginInChunks < 7) {
             // Initial chunks can not spawn the good stuff
             weights[enumSubShape.star] = 0;
             weights[enumSubShape.windmill] = 0;
         }
 
-        if (distanceToOriginInChunks < 7) {
+        if (distanceToOriginInChunks < 10) {
             // Initial chunk patches always have the same shape
             const subShape = this.internalGenerateRandomSubShape(rng, weights);
             subShapes = [subShape, subShape, subShape, subShape];
-        } else if (distanceToOriginInChunks < 17) {
+        } else if (distanceToOriginInChunks < 15) {
             // Later patches can also have mixed ones
             const subShapeA = this.internalGenerateRandomSubShape(rng, weights);
             const subShapeB = this.internalGenerateRandomSubShape(rng, weights);
@@ -269,28 +269,24 @@ export class MapChunk {
             return true;
         }
         if (this.x === -1 && this.y === 0) {
-            const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes([
-                enumSubShape.circle,
-                enumSubShape.circle,
-                enumSubShape.circle,
-                enumSubShape.circle,
-            ]);
+            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("CuCuCuCu");
             this.internalGeneratePatch(rng, 2, new ShapeItem(definition), globalConfig.mapChunkSize - 9, 7);
             return true;
         }
         if (this.x === 0 && this.y === -1) {
-            const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes([
-                enumSubShape.rect,
-                enumSubShape.rect,
-                enumSubShape.rect,
-                enumSubShape.rect,
-            ]);
+            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("RuRuRuRu");
             this.internalGeneratePatch(rng, 2, new ShapeItem(definition), 5, globalConfig.mapChunkSize - 7);
             return true;
         }
 
         if (this.x === -1 && this.y === -1) {
             this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.green));
+            return true;
+        }
+
+        if (this.x === 5 && this.y === -2) {
+            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("SuSuSuSu");
+            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), 5, globalConfig.mapChunkSize - 7);
             return true;
         }
 

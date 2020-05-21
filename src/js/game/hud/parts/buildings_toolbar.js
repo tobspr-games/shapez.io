@@ -60,7 +60,7 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
     }
 
     initialize() {
-        const actionMapper = this.root.gameState.keyActionMapper;
+        const actionMapper = this.root.keyMapper;
 
         const items = makeDiv(this.element, null, ["buildings"]);
 
@@ -141,6 +141,15 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
         if (!metaBuilding.getIsUnlocked(this.root)) {
             this.root.soundProxy.playUiError();
             return;
+        }
+
+        // Allow clicking an item again to deselect it
+        for (const buildingId in this.buildingHandles) {
+            const handle = this.buildingHandles[buildingId];
+            if (handle.selected && handle.metaBuilding === metaBuilding) {
+                metaBuilding = null;
+                break;
+            }
         }
 
         this.root.soundProxy.playUiClick();

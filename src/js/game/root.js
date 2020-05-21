@@ -27,6 +27,7 @@ import { Entity } from "./entity";
 import { ShapeDefinition } from "./shape_definition";
 import { BaseItem } from "./base_item";
 import { DynamicTickrate } from "./dynamic_tickrate";
+import { KeyActionMapper } from "./key_action_mapper";
 /* typehints:end */
 
 const logger = createLogger("game/root");
@@ -49,6 +50,9 @@ export class GameRoot {
 
         /** @type {InGameState} */
         this.gameState = null;
+
+        /** @type {KeyActionMapper} */
+        this.keyMapper = null;
 
         // Store game dimensions
         this.gameWidth = 500;

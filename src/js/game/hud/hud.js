@@ -97,7 +97,7 @@ export class GameHUD {
         }
         this.internalInitSignalConnections();
 
-        this.root.gameState.keyActionMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
     }
 
     /**

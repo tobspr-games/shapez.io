@@ -16,12 +16,10 @@ const logger = createLogger("hud/mass_selector");
 
 export class HUDMassSelector extends BaseHUDPart {
     createElements(parent) {
-        const removalKeybinding = this.root.gameState.keyActionMapper
+        const removalKeybinding = this.root.keyMapper
             .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
             .getKeyCodeString();
-        const abortKeybinding = this.root.gameState.keyActionMapper
-            .getBinding(KEYMAPPINGS.general.back)
-            .getKeyCodeString();
+        const abortKeybinding = this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).getKeyCodeString();
 
         this.element = makeDiv(
             parent,
@@ -46,8 +44,8 @@ export class HUDMassSelector extends BaseHUDPart {
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
 
-        this.root.gameState.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.onBack, this);
-        this.root.gameState.keyActionMapper
+        this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).add(this.onBack, this);
+        this.root.keyMapper
             .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
             .add(this.confirmDelete, this);
 

@@ -1,6 +1,7 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, round3Digits, round2Digits } from "../../../core/utils";
 import { Math_round } from "../../../core/builtins";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
 
 export class HUDDebugInfo extends BaseHUDPart {
     createElements(parent) {
@@ -13,6 +14,11 @@ export class HUDDebugInfo extends BaseHUDPart {
 
     initialize() {
         this.lastTick = 0;
+
+        this.visible = false;
+        this.domAttach = new DynamicDomAttach(this.root, this.element);
+
+        // this.root.keyMapper
     }
 
     update() {

@@ -7,6 +7,7 @@ import { T } from "../../../translations";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { ItemProcessorComponent } from "../../components/item_processor";
 import { BeltComponent } from "../../components/belt";
+import { IS_DEMO } from "../../../core/config";
 
 export class HUDSettingsMenu extends BaseHUDPart {
     createElements(parent) {
@@ -56,7 +57,16 @@ export class HUDSettingsMenu extends BaseHUDPart {
     }
 
     returnToMenu() {
-        this.root.gameState.goBackToMenu();
+        if (IS_DEMO) {
+            const { cancel, deleteGame } = this.root.hud.parts.dialogs.showWarning(
+                T.dialogs.leaveNotPossibleInDemo.title,
+                T.dialogs.leaveNotPossibleInDemo.desc,
+                ["cancel:good", "deleteGame:bad"]
+            );
+            deleteGame.add(() => this.root.gameState.goBackToMenu());
+        } else {
+            this.root.gameState.goBackToMenu();
+        }
     }
 
     goToSettings() {
@@ -72,7 +82,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
     }
 
     initialize() {
-        this.root.gameState.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.show, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).add(this.show, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",

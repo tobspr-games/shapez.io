@@ -47,7 +47,7 @@ export class HUDGameMenu extends BaseHUDPart {
             this.trackClicks(button, handler);
 
             if (keybinding) {
-                const binding = this.root.gameState.keyActionMapper.getBinding(keybinding);
+                const binding = this.root.keyMapper.getBinding(keybinding);
                 binding.add(handler);
                 binding.appendLabelToElement(button);
             }
