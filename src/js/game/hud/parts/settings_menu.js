@@ -57,16 +57,16 @@ export class HUDSettingsMenu extends BaseHUDPart {
     }
 
     returnToMenu() {
-        if (IS_DEMO) {
-            const { cancel, deleteGame } = this.root.hud.parts.dialogs.showWarning(
-                T.dialogs.leaveNotPossibleInDemo.title,
-                T.dialogs.leaveNotPossibleInDemo.desc,
-                ["cancel:good", "deleteGame:bad"]
-            );
-            deleteGame.add(() => this.root.gameState.goBackToMenu());
-        } else {
-            this.root.gameState.goBackToMenu();
-        }
+        // if (IS_DEMO) {
+        //     const { cancel, deleteGame } = this.root.hud.parts.dialogs.showWarning(
+        //         T.dialogs.leaveNotPossibleInDemo.title,
+        //         T.dialogs.leaveNotPossibleInDemo.desc,
+        //         ["cancel:good", "deleteGame:bad"]
+        //     );
+        //     deleteGame.add(() => this.root.gameState.goBackToMenu());
+        // } else {
+        this.root.gameState.goBackToMenu();
+        // }
     }
 
     goToSettings() {

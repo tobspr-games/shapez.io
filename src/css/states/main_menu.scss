@@ -185,6 +185,7 @@
             color: #fff;
             @include S(border-radius, $globalBorderRadius);
             @include S(padding, 5px);
+            @include S(width, 300px);
         }
 
         .playButton {
