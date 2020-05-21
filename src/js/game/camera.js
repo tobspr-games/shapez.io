@@ -330,7 +330,7 @@ export class Camera extends BasicSerializableObject {
      * Binds the arrow keys
      */
     bindKeys() {
-        const mapper = this.root.gameState.keyActionMapper;
+        const mapper = this.root.keyMapper;
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).add(() => (this.keyboardForce.y = -1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).add(() => (this.keyboardForce.y = 1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).add(() => (this.keyboardForce.x = 1));
@@ -867,7 +867,7 @@ export class Camera extends BasicSerializableObject {
             let forceX = 0;
             let forceY = 0;
 
-            const actionMapper = this.root.gameState.keyActionMapper;
+            const actionMapper = this.root.keyMapper;
             if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).currentlyDown) {
                 forceY -= 1;
             }

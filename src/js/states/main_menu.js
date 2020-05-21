@@ -194,8 +194,7 @@ export class MainMenuState extends GameState {
 
     onSteamLinkClicked(event) {
         this.app.analytics.trackUiClick("main_menu_steam_link");
-        alert("The steam version will launch very soon! (Planned date: Begin of June 2020)");
-        // window.open("https://steam.shapez.io");
+        window.open(THIRDPARTY_URLS.standaloneStorePage);
         event.preventDefault();
         return false;
     }

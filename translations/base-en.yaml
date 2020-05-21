@@ -59,7 +59,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: This is a demo version
     intro: >-
-        Get <strong>shapez.io on steam</strong> to:
+        Get the <strong>shapez.io standalone</strong> to:
     advantages:
         - Save and resume your games.
         - No advertisements.
@@ -84,6 +84,7 @@ dialogs:
         restart: Restart
         reset: Reset
         getStandalone: Get Standalone
+        deleteGame: Delete Progress
 
     importSavegameError:
         title: Import Error
@@ -133,6 +134,10 @@ dialogs:
 
     saveNotPossibleInDemo:
         desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
+
+    leaveNotPossibleInDemo:
+        title: Saving not possible
+        desc: You can not save in the demo. Your game will be lost. Are you sure?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in

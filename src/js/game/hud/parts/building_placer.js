@@ -30,7 +30,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         /** @type {Entity} */
         this.fakeEntity = null;
 
-        const keyActionMapper = this.root.gameState.keyActionMapper;
+        const keyActionMapper = this.root.keyMapper;
         keyActionMapper
             .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
             .add(this.abortPlacement, this);
@@ -284,9 +284,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id].name;
         this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id].description;
 
-        const binding = this.root.gameState.keyActionMapper.getBinding(
-            KEYMAPPINGS.buildings[metaBuilding.getId()]
-        );
+        const binding = this.root.keyMapper.getBinding(KEYMAPPINGS.buildings[metaBuilding.getId()]);
         this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace(
             "<key>",
             "<code class='keybinding'>" + binding.getKeyCodeString() + "</code>"
@@ -327,7 +325,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             T.ingame.buildingPlacement.cycleBuildingVariants.replace(
                 "<key>",
                 "<code class='keybinding'>" +
-                    this.root.gameState.keyActionMapper
+                    this.root.keyMapper
                         .getBinding(KEYMAPPINGS.placement.cycleBuildingVariants)
                         .getKeyCodeString() +
                     "</code>"

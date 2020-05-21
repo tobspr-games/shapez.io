@@ -75,6 +75,7 @@ export class GameCore {
         // Construct the root element, this is the data representation of the game
         this.root = new GameRoot(this.app);
         this.root.gameState = parentState;
+        this.root.keyMapper = parentState.keyActionMapper;
         this.root.savegame = savegame;
         this.root.gameWidth = this.app.screenWidth;
         this.root.gameHeight = this.app.screenHeight;
@@ -86,7 +87,7 @@ export class GameCore {
         const root = this.root;
 
         // This isn't nice, but we need it right here
-        root.gameState.keyActionMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
+        root.keyMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
 
         // Needs to come first
         root.dynamicTickrate = new DynamicTickrate(root);

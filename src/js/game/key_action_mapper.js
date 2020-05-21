@@ -31,6 +31,7 @@ export const KEYMAPPINGS = {
         menuOpenStats: { keyCode: key("G") },
 
         toggleHud: { keyCode: 113 }, // F2
+        toggleFPSInfo: { keyCode: 112 }, // F1
     },
 
     buildings: {
@@ -362,7 +363,7 @@ export class KeyActionMapper {
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode /* && binding.shift === shift && binding.alt === alt */) {
+            if (binding.keyCode === keyCode && !binding.currentlyDown) {
                 binding.currentlyDown = true;
 
                 /** @type {Signal} */

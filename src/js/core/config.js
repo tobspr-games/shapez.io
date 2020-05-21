@@ -5,8 +5,9 @@ export const IS_DEBUG =
     (window.location.host.indexOf("localhost:") >= 0 || window.location.host.indexOf("192.168.0.") >= 0) &&
     window.location.search.indexOf("nodebug") < 0;
 
-// export const IS_DEMO = G_IS_PROD;
-export const IS_DEMO = G_IS_RELEASE;
+export const IS_DEMO =
+    (G_IS_RELEASE && !G_IS_STANDALONE) ||
+    (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
 
 const smoothCanvas = true;
 
@@ -14,7 +15,8 @@ export const THIRDPARTY_URLS = {
     discord: "https://discord.gg/HN7EVzV",
     github: "https://github.com/tobspr/shapez.io",
 
-    standaloneStorePage: "https://steam.shapez.io",
+    // standaloneStorePage: "https://steam.shapez.io",
+    standaloneStorePage: "https://tobspr.itch.io/shapez.io",
 };
 
 export const globalConfig = {

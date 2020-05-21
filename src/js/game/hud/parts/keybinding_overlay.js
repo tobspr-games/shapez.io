@@ -20,7 +20,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
     }
 
     createElements(parent) {
-        const mapper = this.root.gameState.keyActionMapper;
+        const mapper = this.root.keyMapper;
 
         const getKeycode = id => {
             return getStringForKeyCode(mapper.getBinding(id).keyCode);
