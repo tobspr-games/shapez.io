@@ -84,7 +84,7 @@ dialogs:
         restart: Restart
         reset: Reset
         getStandalone: Get Standalone
-        deleteGame: Delete Progress
+        deleteGame: I know what I do
         viewUpdate: View Update
 
     importSavegameError:
@@ -137,8 +137,8 @@ dialogs:
         desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
 
     leaveNotPossibleInDemo:
-        title: Saving not possible
-        desc: You can not save in the demo. Your game will be lost. Are you sure?
+        title: Demo version
+        desc: Your game was saved but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
 
     newUpdate:
         title: Update available
