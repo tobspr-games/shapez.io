@@ -362,7 +362,9 @@ export class KeyActionMapper {
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode /* && binding.shift === shift && binding.alt === alt */) {
+
+            /* && binding.shift === shift && binding.alt === alt */
+            if (binding.keyCode === keyCode && !binding.currentlyDown ) {
                 binding.currentlyDown = true;
 
                 /** @type {Signal} */

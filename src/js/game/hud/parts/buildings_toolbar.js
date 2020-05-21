@@ -143,8 +143,25 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
             return;
         }
 
-        this.root.soundProxy.playUiClick();
-        this.sigBuildingSelected.dispatch(metaBuilding);
-        this.onSelectedPlacementBuildingChanged(metaBuilding);
+        let previouslySelected = false;
+        for (const buildingId in this.buildingHandles) {
+            const handle = this.buildingHandles[buildingId];
+            if (handle.metaBuilding === metaBuilding) {
+                if (handle.index === this.lastSelectedIndex) {
+                    previouslySelected = true;
+                }
+                break;
+            }
+        }
+
+        const buildingPlacer = this.root.hud.parts.buildingPlacer;
+
+        if (previouslySelected && buildingPlacer.currentMetaBuilding.get()) {
+            buildingPlacer.abortPlacement();
+        } else {
+            this.root.soundProxy.playUiClick();
+            this.sigBuildingSelected.dispatch(metaBuilding);
+            this.onSelectedPlacementBuildingChanged(metaBuilding);
+        }
     }
 }
