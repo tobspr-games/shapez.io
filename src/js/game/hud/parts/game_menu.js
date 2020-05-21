@@ -118,12 +118,12 @@ export class HUDGameMenu extends BaseHUDPart {
     }
 
     startSave() {
-        if (IS_DEMO) {
-            this.root.hud.parts.dialogs.showFeatureRestrictionInfo(
-                null,
-                T.dialogs.saveNotPossibleInDemo.desc
-            );
-        }
+        // if (IS_DEMO) {
+        //     this.root.hud.parts.dialogs.showFeatureRestrictionInfo(
+        //         null,
+        //         T.dialogs.saveNotPossibleInDemo.desc
+        //     );
+        // }
 
         this.root.gameState.doSave();
     }

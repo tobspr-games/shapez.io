@@ -61,7 +61,7 @@ demoBanners:
     intro: >-
         If you enjoy this game, please consider to buy the full version!
     advantages:
-        - Save & restore your games
+        - No advertisements
         - Dark mode
         - >-
             Allow me to further develop shapez.io ❤️
@@ -146,8 +146,8 @@ dialogs:
         desc: There is an update for this game available!
 
     demoExplanation:
-        title: You can not save
-        desc: This is a demo, and you will not be able to restore your saved games. To save and resume your games, get the standalone on itch.io (You can import them).<br><br>I know this sucks, but otherwise I can not continue the development of this game!
+        title: Notice from the Developer
+        desc: I am developing this game in my free time, and I hope you enjoy it! If you do, please consider to buy the standalone version!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
