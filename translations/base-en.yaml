@@ -59,7 +59,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Hey!
     intro: >-
-        If you enjoy this game, please consider to buy the full version!
+        If you enjoy this game, please consider buying the full version!
     advantages:
         - No advertisements
         - Unlimited savegames
