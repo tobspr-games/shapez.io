@@ -68,7 +68,7 @@ export class PreloadState extends GameState {
 
             .then(() => this.setStatus("Checking for updates"))
             .then(() => {
-                if (G_IS_STANDALONE || true) {
+                if (G_IS_STANDALONE) {
                     return Promise.race([
                         new Promise(resolve => setTimeout(resolve, 10000)),
                         fetch(
