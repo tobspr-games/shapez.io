@@ -73,11 +73,11 @@
         &.demo {
             @include S(grid-column-gap, 10px);
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
         }
 
         .standaloneBanner {
-            background: rgb(255, 225, 238);
+            background: rgb(255, 234, 245);
             @include S(border-radius, $globalBorderRadius);
             height: 100%;
             box-sizing: border-box;
