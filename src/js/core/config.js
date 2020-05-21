@@ -57,8 +57,8 @@ export const globalConfig = {
         rotater: 1 / 1,
         rotaterCCW: 1 / 1,
         painter: 1 / 6,
-        painterDouble: 1 / 7,
-        painterQuad: 1 / 7,
+        painterDouble: 1 / 8,
+        painterQuad: 1 / 8,
         mixer: 1 / 5,
         stacker: 1 / 6,
     },
@@ -83,7 +83,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        // fastGameEnter: true,
+        fastGameEnter: true,
         noArtificialDelays: true,
         // disableSavegameWrite: true,
         // showEntityBounds: true,
@@ -93,8 +93,8 @@ export const globalConfig = {
         // disableZoomLimits: true,
         // showChunkBorders: true,
         // rewardsInstant: true,
-        // allBuildingsUnlocked: true,
-        // upgradesNoCost: true,
+        allBuildingsUnlocked: true,
+        upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
         // testClipping: true,
