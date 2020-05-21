@@ -85,6 +85,7 @@ dialogs:
         reset: Reset
         getStandalone: Get Standalone
         deleteGame: Delete Progress
+        viewUpdate: View Update
 
     importSavegameError:
         title: Import Error
@@ -138,6 +139,10 @@ dialogs:
     leaveNotPossibleInDemo:
         title: Saving not possible
         desc: You can not save in the demo. Your game will be lost. Are you sure?
+
+    newUpdate:
+        title: Update available
+        desc: There is an update for this game available!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in

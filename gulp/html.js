@@ -308,7 +308,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
 
     gulp.task("html.standalone-beta", () => {
         return buildHtml("https://api-staging.shapez.io", {
-            analytics: true,
+            analytics: false,
             standalone: true,
             enableCachebust: false,
         });
@@ -316,7 +316,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
 
     gulp.task("html.standalone-prod", () => {
         return buildHtml("https://api.shapez.io", {
-            analytics: true,
+            analytics: false,
             standalone: true,
             enableCachebust: false,
         });
