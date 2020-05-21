@@ -295,6 +295,4 @@ gulp.task(
 );
 gulp.task("main.deploy.prod", $.sequence("utils.requireCleanWorkingTree", "build.prod", "ftp.upload.prod"));
 gulp.task("main.deploy.all", $.sequence("main.deploy.staging", "main.deploy.prod"));
-
-// gulp.task("main.standalone.beta", $.sequence("build.standalone-beta", "standalone.package.beta"));
 gulp.task("main.standalone", $.sequence("build.standalone-prod", "standalone.package.prod"));

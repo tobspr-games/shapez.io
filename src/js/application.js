@@ -34,6 +34,8 @@ import { StorageImplBrowserIndexedDB } from "./platform/browser/storage_indexed_
 import { SettingsState } from "./states/settings";
 import { KeybindingsState } from "./states/keybindings";
 import { AboutState } from "./states/about";
+import { PlatformWrapperImplElectron } from "./platform/electron/wrapper";
+import { StorageImplElectron } from "./platform/electron/storage";
 
 const logger = createLogger("application");
 
@@ -124,13 +126,22 @@ export class Application {
         // Start with empty ad provider
         this.adProvider = new NoAdProvider(this);
 
-        if (window.indexedDB) {
-            this.storage = new StorageImplBrowserIndexedDB(this);
+        if (G_IS_STANDALONE) {
+            this.storage = new StorageImplElectron(this);
         } else {
-            this.storage = new StorageImplBrowser(this);
+            if (window.indexedDB) {
+                this.storage = new StorageImplBrowserIndexedDB(this);
+            } else {
+                this.storage = new StorageImplBrowser(this);
+            }
         }
         this.sound = new SoundImplBrowser(this);
-        this.platformWrapper = new PlatformWrapperImplBrowser(this);
+
+        if (G_IS_STANDALONE) {
+            this.platformWrapper = new PlatformWrapperImplElectron(this);
+        } else {
+            this.platformWrapper = new PlatformWrapperImplBrowser(this);
+        }
         this.analytics = new GoogleAnalyticsImpl(this);
 
         if (queryParamOptions.betaMode) {
