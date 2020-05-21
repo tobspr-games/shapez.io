@@ -33,7 +33,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
             JSON.stringify(
                 {
                     devDependencies: {
-                        electron: "6.0.10",
+                        electron: "6.1.12",
                     },
                 },
                 null,
@@ -87,7 +87,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
     });
 
     gulp.task("standalone.prepare.copyGamefiles", () => {
-        return gulp.src("../../www/**/*.*", { base: "../../www" }).pipe(gulp.dest(tempDestBuildDir));
+        return gulp.src("../build/**/*.*", { base: "../build" }).pipe(gulp.dest(tempDestBuildDir));
     });
 
     gulp.task("standalone.killRunningInstances", () => {
@@ -118,18 +118,9 @@ function gulptasksStandalone($, gulp, buildFolder) {
      * @param {boolean=} isRelease
      */
     function packageStandalone(platform, arch, cb, isRelease = false) {
-        const libDirName = (platform === "win32" ? "win" : platform) + (arch === "x64" ? "64" : "32");
-
-        const libDir = path.join(electronBaseDir, "lib", libDirName);
-        if (!fs.existsSync(libDir)) {
-            console.error("FATAL ERROR: LIB DIR does not exist:", libDir);
-            cb();
-            return;
-        }
-
         packager({
             dir: tempDestBuildDir,
-            appCopyright: "Tobias Springer IT Solutions",
+            appCopyright: "Tobias Springer",
             appVersion: buildutils.getVersion(),
             buildVersion: "1.0.0",
             arch,
@@ -137,7 +128,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
             asar: true,
             executableName: "shapezio",
             icon: path.join(electronBaseDir, "favicon"),
-            name: "Shapez.io Standalone",
+            name: "shapez.io Standalone",
             out: tempDestDir,
             overwrite: true,
             appBundleId: "io.shapez.standalone",
@@ -151,14 +142,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
                         return;
                     }
 
-                    console.log("Copying lib files to", appPath);
-                    const libFiles = $.glob.sync(path.join("**", "*.+(dylib|so|dll|lib)"), { cwd: libDir });
-                    libFiles.forEach(f => {
-                        console.log(" -> Copying", f);
-                        fs.copyFileSync(path.join(libDir, f), path.join(appPath, f));
-                    });
-
-                    const playablePath = appPath + "_PLAYABLE";
+                    const playablePath = appPath + "_playable";
                     fse.copySync(appPath, playablePath);
                     fs.writeFileSync(path.join(playablePath, "steam_appid.txt"), "1134480");
                     fs.writeFileSync(
@@ -179,20 +163,6 @@ function gulptasksStandalone($, gulp, buildFolder) {
             }
         );
     }
-
-    // gulp.task("standalone.package.beta.win64", (cb) => packageStandalone("win32", "x64", cb));
-    // gulp.task("standalone.package.beta.win32", (cb) => packageStandalone("win32", "ia32", cb));
-    // gulp.task("standalone.package.beta.linux64", (cb) => packageStandalone("linux", "x64", cb));
-    // gulp.task("standalone.package.beta.linux32", (cb) => packageStandalone("linux", "ia32", cb));
-    // gulp.task("standalone.package.beta.darwin64", (cb) => packageStandalone("darwin", "x64", cb));
-
-    // gulp.task("standalone.package.beta", $.sequence("standalone.prepare", [
-    //     "standalone.package.beta.win64",
-    // "standalone.package.beta.win32",
-    // "standalone.package.beta.linux64",
-    // "standalone.package.beta.linux32",
-    // "standalone.package.beta.darwin64"
-    // ]));
 
     gulp.task("standalone.package.prod.win64", cb => packageStandalone("win32", "x64", cb, true));
     gulp.task("standalone.package.prod.win32", cb => packageStandalone("win32", "ia32", cb, true));

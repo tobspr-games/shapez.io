@@ -33,10 +33,22 @@ export class MainMenuState extends GameState {
         return `
 
             <button class="settingsButton"></button>
+            
+        ${
+            G_IS_STANDALONE
+                ? `
+            <button class="exitAppButton"></button>
+        `
+                : ""
+        }
 
-            <video autoplay muted loop class="fullscreenBackgroundVideo">
+            ${
+                G_IS_STANDALONE
+                    ? ""
+                    : `<video autoplay muted loop class="fullscreenBackgroundVideo">
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
-            </video>
+            </video>`
+            }
 
 
             <div class="logo">
@@ -184,6 +196,11 @@ export class MainMenuState extends GameState {
         }
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
+
+        if (G_IS_STANDALONE) {
+            this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
+        }
+
         this.renderSavegames();
 
         const steamLinks = this.htmlElement.querySelectorAll(".steamLink");
@@ -197,6 +214,10 @@ export class MainMenuState extends GameState {
         window.open(THIRDPARTY_URLS.standaloneStorePage);
         event.preventDefault();
         return false;
+    }
+
+    onExitAppButtonClicked() {
+        this.app.platformWrapper.exitApp();
     }
 
     renderSavegames() {

@@ -100,6 +100,13 @@ export class PreloadState extends GameState {
                 return this.app.settings.initialize();
             })
 
+            .then(() => {
+                // Initialize fullscreen
+                if (this.app.platformWrapper.getSupportsFullscreen()) {
+                    this.app.platformWrapper.setFullscreen(this.app.settings.getIsFullScreen());
+                }
+            })
+
             .then(() => this.setStatus("Initializing sounds"))
             .then(() => {
                 // Notice: We don't await the sounds loading itself

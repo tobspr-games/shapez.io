@@ -107,4 +107,6 @@ dist
 # Buildfiles
 build
 
+tmp_standalone_files
+
 
