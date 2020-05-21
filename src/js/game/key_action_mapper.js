@@ -31,7 +31,7 @@ export const KEYMAPPINGS = {
         menuOpenStats: { keyCode: key("G") },
 
         toggleHud: { keyCode: 113 }, // F2
-        toggleFPSInfo: { keyCode: 112 }, // F1
+        toggleFPSInfo: { keyCode: 115 }, // F1
     },
 
     buildings: {

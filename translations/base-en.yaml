@@ -388,6 +388,7 @@ keybindings:
         menuOpenStats: Statistics
 
         toggleHud: Toggle HUD
+        toggleFPSInfo: Toggle FPS and Debug Info
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
