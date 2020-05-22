@@ -382,15 +382,27 @@ export class HubGoals extends BasicSerializableObject {
                 return 1e30;
             case enumItemProcessorTypes.splitter:
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
+
+            case enumItemProcessorTypes.mixer:
+            case enumItemProcessorTypes.painter:
+            case enumItemProcessorTypes.painterDouble:
+            case enumItemProcessorTypes.painterQuad: {
+                assert(
+                    globalConfig.buildingSpeeds[processorType],
+                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
+                );
+                return (
+                    globalConfig.beltSpeedItemsPerSecond *
+                    this.upgradeImprovements.painting *
+                    globalConfig.buildingSpeeds[processorType]
+                );
+            }
+
             case enumItemProcessorTypes.cutter:
             case enumItemProcessorTypes.cutterQuad:
             case enumItemProcessorTypes.rotater:
             case enumItemProcessorTypes.rotaterCCW:
-            case enumItemProcessorTypes.stacker:
-            case enumItemProcessorTypes.mixer:
-            case enumItemProcessorTypes.painter:
-            case enumItemProcessorTypes.painterDouble:
-            case enumItemProcessorTypes.painterQuad:
+            case enumItemProcessorTypes.stacker: {
                 assert(
                     globalConfig.buildingSpeeds[processorType],
                     "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
@@ -400,7 +412,7 @@ export class HubGoals extends BasicSerializableObject {
                     this.upgradeImprovements.processors *
                     globalConfig.buildingSpeeds[processorType]
                 );
-
+            }
             default:
                 assertAlways(false, "invalid processor type: " + processorType);
         }
