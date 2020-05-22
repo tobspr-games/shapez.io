@@ -75,7 +75,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the steam version or download chrome for the full experience.
+        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
 
 dialogs:
     buttons:
