@@ -38,6 +38,7 @@ export let clickDetectorGlobals = {
  *  targetOnly?: boolean,
  *  maxDistance?: number,
  *  clickSound?: string,
+ *  preventClick?: boolean,
  * }} ClickDetectorConstructorArgs
  */
 
@@ -55,6 +56,7 @@ export class ClickDetector {
      * @param {boolean=} param1.targetOnly Whether to also accept clicks on child elements (e.target !== element)
      * @param {number=} param1.maxDistance The maximum distance in pixels to accept clicks
      * @param {string=} param1.clickSound Sound key to play on touchdown
+     * @param {boolean=} param1.preventClick Whether to prevent click events
      */
     constructor(
         element,
@@ -66,6 +68,7 @@ export class ClickDetector {
             targetOnly = false,
             maxDistance = MAX_MOVE_DISTANCE_PX,
             clickSound = SOUNDS.uiClick,
+            preventClick = false,
         }
     ) {
         assert(element, "No element given!");
@@ -78,6 +81,7 @@ export class ClickDetector {
         this.targetOnly = targetOnly;
         this.clickSound = clickSound;
         this.maxDistance = maxDistance;
+        this.preventClick = preventClick;
 
         // Signals
         this.click = new Signal();
@@ -128,6 +132,10 @@ export class ClickDetector {
                 this.element.removeEventListener("mousemove", this.handlerTouchMove, options);
             }
 
+            if (this.preventClick) {
+                this.element.removeEventListener("click", this.handlerPreventClick, options);
+            }
+
             this.click.removeAll();
             this.touchstart.removeAll();
             this.touchmove.removeAll();
@@ -141,6 +149,14 @@ export class ClickDetector {
     }
 
     // INTERNAL METHODS
+
+    /**
+     *
+     * @param {Event} event
+     */
+    internalPreventClick(event) {
+        event.preventDefault();
+    }
 
     /**
      * Internal method to get the options to pass to an event listener
@@ -163,6 +179,11 @@ export class ClickDetector {
         this.handlerTouchEnd = this.internalOnPointerEnd.bind(this);
         this.handlerTouchMove = this.internalOnPointerMove.bind(this);
         this.handlerTouchCancel = this.internalOnTouchCancel.bind(this);
+
+        if (this.preventClick) {
+            this.handlerPreventClick = this.internalPreventClick.bind(this);
+            element.addEventListener("click", this.handlerPreventClick, options);
+        }
 
         element.addEventListener("touchstart", this.handlerTouchStart, options);
         element.addEventListener("touchend", this.handlerTouchEnd, options);

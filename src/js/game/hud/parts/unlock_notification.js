@@ -47,7 +47,7 @@ export class HUDUnlockNotification extends BaseHUDPart {
         this.btnClose.innerText = "Next level";
         dialog.appendChild(this.btnClose);
 
-        this.trackClicks(this.btnClose, this.close);
+        this.trackClicks(this.btnClose, this.requestClose);
     }
 
     /**
@@ -117,6 +117,12 @@ export class HUDUnlockNotification extends BaseHUDPart {
         this.visible = true;
 
         this.root.soundProxy.playUi(SOUNDS.levelComplete);
+    }
+
+    requestClose() {
+        this.root.app.adProvider.showVideoAd().then(() => {
+            this.close();
+        });
     }
 
     close() {

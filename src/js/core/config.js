@@ -101,6 +101,7 @@ export const globalConfig = {
         // framePausesBetweenTicks: 40,
         // testTranslations: true,
         // enableEntityInspector: true,
+        testAds: true,
         /* dev:end */
     },
 
