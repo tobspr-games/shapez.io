@@ -72,6 +72,33 @@ body {
     overflow: hidden;
     @include Text;
 
+    &.externalAdOpen {
+        &::before {
+            text-transform: uppercase;
+            @include SuperSmallText;
+            content: "Loading Advertisement...";
+            color: #333;
+            position: fixed;
+            top: 0;
+            pointer-events: all;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(50, 60, 70, 0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+
+            @include InlineAnimation(1s ease-in-out infinite) {
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
     // For recording the bg video
 
     // filter: blur(5px);

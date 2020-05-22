@@ -28,7 +28,16 @@ export class AboutState extends TextualGameState {
         `;
     }
 
-    onEnter() {}
+    onEnter() {
+        const links = this.htmlElement.querySelectorAll("a[href]");
+        links.forEach(link => {
+            this.trackClicks(
+                link,
+                () => this.app.platformWrapper.openExternalLink(link.getAttribute("href")),
+                { preventClick: true }
+            );
+        });
+    }
 
     getDefaultPreviousState() {
         return "SettingsState";

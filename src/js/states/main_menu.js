@@ -11,6 +11,7 @@ import {
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { T } from "../translations";
+import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -76,23 +77,25 @@ export class MainMenuState extends GameState {
 
             <div class="footer">
 
-                <a href="${THIRDPARTY_URLS.github}" target="_blank">
+                <a class="githubLink" target="_blank">
                     ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
-                    </a>    
+                </a>    
                     
-                <a href="${THIRDPARTY_URLS.discord}" target="_blank">
+                <a class="discordLink" target="_blank">
                     ${T.mainMenu.discordLink}
                     <span class="thirdpartyLogo  discordLogo"></span>
-                </a>    
+                </a>
 
                 ${
-                    G_IS_BROWSER
+                    G_IS_BROWSER &&
+                    this.app.platformWrapper instanceof PlatformWrapperImplBrowser &&
+                    this.app.platformWrapper.embedProvider.iogLink
                         ? `<a class="iogLink" target="_blank" href="https://iogames.space">More .io games</a>`
                         : ""
                 }
 
-                <div class="author">Made by <a href="https://tobspr.com" target="_blank">Tobias Springer</a></div>
+                <div class="author">Made by <a class="producerLink" target="_blank">Tobias Springer</a></div>
 
             </div>
         `;
@@ -100,6 +103,7 @@ export class MainMenuState extends GameState {
 
     requestImportSavegame() {
         if (IS_DEMO && this.app.savegameMgr.getSavegamesMetaData().length > 0) {
+            this.app.analytics.trackUiClick("importgame_slot_limit_show");
             this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
             return;
         }
@@ -210,16 +214,36 @@ export class MainMenuState extends GameState {
 
         this.renderSavegames();
 
-        const steamLinks = this.htmlElement.querySelectorAll(".steamLink");
-        steamLinks.forEach(steamLink => {
-            steamLink.addEventListener("click", this.onSteamLinkClicked.bind(this));
-        });
+        const steamLink = this.htmlElement.querySelector(".steamLink");
+        if (steamLink) {
+            this.trackClicks(steamLink, () => this.onSteamLinkClicked(), { preventClick: true });
+        }
+
+        const discordLink = this.htmlElement.querySelector(".discordLink");
+        this.trackClicks(
+            discordLink,
+            () => this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord),
+            { preventClick: true }
+        );
+
+        const githubLink = this.htmlElement.querySelector(".githubLink");
+        this.trackClicks(
+            githubLink,
+            () => this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github),
+            { preventClick: true }
+        );
+
+        const producerLink = this.htmlElement.querySelector(".producerLink");
+        this.trackClicks(
+            producerLink,
+            () => this.app.platformWrapper.openExternalLink("https://tobspr.com"),
+            { preventClick: true }
+        );
     }
 
-    onSteamLinkClicked(event) {
+    onSteamLinkClicked() {
         this.app.analytics.trackUiClick("main_menu_steam_link");
-        window.open(THIRDPARTY_URLS.standaloneStorePage);
-        event.preventDefault();
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
         return false;
     }
 
@@ -272,15 +296,13 @@ export class MainMenuState extends GameState {
     resumeGame(game) {
         this.app.analytics.trackUiClick("resume_game");
 
-        // if (IS_DEMO) {
-        //     this.dialogs.showFeatureRestrictionInfo(T.demo.features.restoringGames);
-        //     return;
-        // }
-
-        const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
-        savegame.readAsync().then(() => {
-            this.moveToState("InGameState", {
-                savegame,
+        this.app.adProvider.showVideoAd().then(() => {
+            this.app.analytics.trackUiClick("resume_game_adcomplete");
+            const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
+            savegame.readAsync().then(() => {
+                this.moveToState("InGameState", {
+                    savegame,
+                });
             });
         });
     }
@@ -289,6 +311,8 @@ export class MainMenuState extends GameState {
      * @param {object} game
      */
     deleteGame(game) {
+        this.app.analytics.trackUiClick("delete_game");
+
         const signals = this.dialogs.showWarning(
             T.dialogs.confirmSavegameDelete.title,
             T.dialogs.confirmSavegameDelete.text,
@@ -329,20 +353,26 @@ export class MainMenuState extends GameState {
 
     doStartNewGame() {
         this.app.analytics.trackUiClick("startgame");
-        const savegame = this.app.savegameMgr.createNewSavegame();
 
-        this.moveToState("InGameState", {
-            savegame,
+        this.app.adProvider.showVideoAd().then(() => {
+            const savegame = this.app.savegameMgr.createNewSavegame();
+
+            this.moveToState("InGameState", {
+                savegame,
+            });
+            this.app.analytics.trackUiClick("startgame_adcomplete");
         });
     }
 
     onPlayButtonClicked() {
         if (IS_DEMO && this.app.savegameMgr.getSavegamesMetaData().length > 0) {
+            this.app.analytics.trackUiClick("startgame_slot_limit_show");
             this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
             return;
         }
 
         if (IS_DEMO) {
+            this.app.analytics.trackUiClick("startgame_pre_show");
             const { ok } = this.dialogs.showWarning(
                 T.dialogs.demoExplanation.title,
                 T.dialogs.demoExplanation.desc
