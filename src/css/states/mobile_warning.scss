@@ -1,0 +1,43 @@
+#state_MobileWarningState {
+    display: flex;
+    align-items: center;
+    background: #333438 !important;
+    @include S(padding, 20px);
+    box-sizing: border-box;
+
+    .logo {
+        width: 80%;
+        max-width: 200px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #aaacaf;
+        display: block;
+        margin-bottom: 13px;
+        font-size: 16px;
+        line-height: 20px;
+        a {
+            color: $colorBlueBright;
+        }
+    }
+
+    .standaloneLink {
+        width: 100%;
+        height: 80px;
+        background: uiResource("get_on_itch_io.svg") center center / contain no-repeat;
+        overflow: hidden;
+        display: block;
+        text-indent: -999em;
+        cursor: pointer;
+        margin-top: 20px;
+        pointer-events: all;
+        transition: all 0.12s ease-in;
+        transition-property: opacity, transform;
+        transform: skewX(-0.5deg);
+        &:hover {
+            transform: skewX(-1deg) scale(1.02);
+            opacity: 0.9;
+        }
+    }
+}

@@ -84,7 +84,7 @@ export const globalConfig = {
     debug: {
         /* dev:start */
         // fastGameEnter: true,
-        // noArtificialDelays: true,
+        noArtificialDelays: true,
         // disableSavegameWrite: true,
         // showEntityBounds: true,
         // showAcceptorEjectors: true,
@@ -93,8 +93,8 @@ export const globalConfig = {
         // disableZoomLimits: true,
         // showChunkBorders: true,
         // rewardsInstant: true,
-        // allBuildingsUnlocked: true,
-        // upgradesNoCost: true,
+        allBuildingsUnlocked: true,
+        upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
         // testClipping: true,
