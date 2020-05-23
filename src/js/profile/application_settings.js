@@ -303,7 +303,7 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 6) {
-            data.alwaysMultiplace = false;
+            data.settings.alwaysMultiplace = false;
             data.version = 6;
         }
 
