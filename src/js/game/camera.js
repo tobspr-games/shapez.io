@@ -343,6 +343,9 @@ export class Camera extends BasicSerializableObject {
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).add(() => (this.keyboardForce.x = 1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).add(() => (this.keyboardForce.x = -1));
 
+        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomIn).add(() => (this.desiredZoom = this.zoomLevel * 1.2));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomOut).add(() => (this.desiredZoom = this.zoomLevel * 0.8));
+
         mapper.getBinding(KEYMAPPINGS.ingame.centerMap).add(() => this.centerOnMap());
     }
 
@@ -823,7 +826,7 @@ export class Camera extends BasicSerializableObject {
     internalUpdateZooming(now, dt) {
         if (!this.currentlyPinching && this.desiredZoom !== null) {
             const diff = this.zoomLevel - this.desiredZoom;
-            if (Math_abs(diff) > 0.05) {
+            if (Math_abs(diff) > 0.0001) {
                 let fade = 0.94;
                 if (diff > 0) {
                     // Zoom out faster than in
