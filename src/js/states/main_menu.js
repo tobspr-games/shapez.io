@@ -187,12 +187,12 @@ export class MainMenuState extends GameState {
         this.trackClicks(qs(".mainContainer .importButton"), this.requestImportSavegame);
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
-            const games = this.app.savegameMgr.getSavegamesMetaData();
-            if (games.length > 0) {
-                this.resumeGame(games[0]);
-            } else {
-                this.onPlayButtonClicked();
-            }
+            // // const games = this.app.savegameMgr.getSavegamesMetaData();
+            // if (games.length > 0) {
+            //     this.resumeGame(games[0]);
+            // } else {
+            this.onPlayButtonClicked();
+            // }
         }
 
         // Initialize video
