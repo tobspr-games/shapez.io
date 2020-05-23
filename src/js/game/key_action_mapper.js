@@ -33,6 +33,9 @@ export const KEYMAPPINGS = {
 
         toggleHud: { keyCode: 113 }, // F2
         toggleFPSInfo: { keyCode: 115 }, // F1
+
+        mapZoomIn: { keyCode: 187, repeated: true }, // "+"
+        mapZoomOut: { keyCode: 189, repeated: true }, // "-"
     },
 
     buildings: {
@@ -194,13 +197,11 @@ export function getStringForKeyCode(code) {
         case 186:
             return ";";
         case 187:
-            return "=";
+            return "+";
         case 188:
             return ",";
         case 189:
             return "-";
-        case 189:
-            return ".";
         case 191:
             return "/";
         case 219:
@@ -224,12 +225,14 @@ export class Keybinding {
      * @param {object} param0
      * @param {number} param0.keyCode
      * @param {boolean=} param0.builtin
+     * @param {boolean=} param0.repeated
      */
-    constructor(app, { keyCode, builtin = false }) {
+    constructor(app, { keyCode, builtin = false, repeated = false }) {
         assert(keyCode && Number.isInteger(keyCode), "Invalid key code: " + keyCode);
         this.app = app;
         this.keyCode = keyCode;
         this.builtin = builtin;
+        this.repeated = repeated;
 
         this.currentlyDown = false;
 
@@ -364,7 +367,7 @@ export class KeyActionMapper {
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode && !binding.currentlyDown) {
+            if (binding.keyCode === keyCode && (!binding.currentlyDown || binding.repeated)) {
                 binding.currentlyDown = true;
 
                 /** @type {Signal} */

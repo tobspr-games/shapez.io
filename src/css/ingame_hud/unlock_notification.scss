@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     pointer-events: all;
+
     @include InlineAnimation(0.1s ease-in-out) {
         0% {
             opacity: 0;
@@ -16,7 +17,7 @@
     }
 
     .dialog {
-        background: rgba(#222428, 0.5);
+        // background: rgba(#222428, 0.5);
         @include S(border-radius, $globalBorderRadius);
         @include S(padding, 30px);
 
@@ -32,7 +33,7 @@
         .subTitle {
             @include SuperHeading;
             text-transform: uppercase;
-            @include S(font-size, 50px);
+            @include S(font-size, 40px);
 
             @include InlineAnimation(0.5s ease-in-out) {
                 0% {
@@ -48,11 +49,10 @@
         }
 
         .subTitle {
-            @include Heading;
-            background: $colorGreenBright;
+            @include PlainText;
             display: inline-block;
-            @include S(padding, 1px, 6px);
-            @include S(margin, 20px, 0, 20px);
+            @include S(margin, 0px, 0, 20px);
+            color: $colorGreenBright;
 
             @include S(border-radius, $globalBorderRadius);
             @include InlineAnimation(0.5s ease-in-out) {
@@ -82,14 +82,15 @@
                     transform: translateX(-2vw);
                 }
             }
-            display: grid;
-            grid-template-columns: auto auto;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             @include S(grid-gap, 10px);
 
-            .reward {
+            .rewardName {
                 grid-column: 1 / 3;
+                display: none;
                 @include InlineAnimation(0.5s ease-in-out) {
                     0% {
                         transform: translateX(200vw);
@@ -104,29 +105,63 @@
                 }
             }
 
-            .buildingExplanation {
-                @include S(width, 200px);
-                @include S(height, 200px);
-                display: inline-block;
-                background-position: center center;
-                background-size: cover;
-                background-repeat: no-repeat;
-                @include S(border-radius, $globalBorderRadius);
-                box-shadow: #{D(2px)} #{D(3px)} 0 0 rgba(0, 0, 0, 0.15);
+            .rewardDesc {
+                grid-column: 1 / 3;
+                @include PlainText;
+                @include S(margin-bottom, 15px);
+                color: #aaacaf;
+                @include S(width, 400px);
+                text-align: left;
+                strong {
+                    color: #fff;
+                }
+            }
+
+            .images {
+                display: flex;
+                .buildingExplanation {
+                    @include S(width, 200px);
+                    @include S(height, 200px);
+                    display: inline-block;
+                    background-position: center center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    @include S(border-radius, $globalBorderRadius);
+                    box-shadow: #{D(2px)} #{D(3px)} 0 0 rgba(0, 0, 0, 0.15);
+                }
             }
         }
 
         button.close {
             border: 0;
-            @include InlineAnimation(2s ease-in-out) {
-                0% {
-                    opacity: 0;
-                }
-                95% {
-                    opacity: 0;
+            position: relative;
+            @include S(margin-top, 30px);
+
+            &:not(.unlocked) {
+                pointer-events: none;
+                opacity: 0.8;
+                cursor: default;
+            }
+
+            &::after {
+                content: " ";
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 100%;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 10, 20, 0.8);
+
+                @include InlineAnimation(10s linear) {
+                    0% {
+                        left: 0;
+                    }
+                    100% {
+                        left: 100%;
+                    }
                 }
             }
-            @include S(margin-top, 30px);
         }
     }
 }

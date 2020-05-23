@@ -27,8 +27,8 @@ export const SOUNDS = {
 };
 
 export const MUSIC = {
-    theme: "theme.mp3",
-    menu: "menu.mp3",
+    theme: "theme",
+    menu: "menu",
 };
 
 export class SoundInstanceInterface {

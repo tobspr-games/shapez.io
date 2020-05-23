@@ -83,8 +83,8 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        // fastGameEnter: true,
-        // noArtificialDelays: true,
+        fastGameEnter: true,
+        noArtificialDelays: true,
         // disableSavegameWrite: true,
         // showEntityBounds: true,
         // showAcceptorEjectors: true,

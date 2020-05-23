@@ -1,5 +1,5 @@
 import { AnimationFrame } from "./core/animation_frame";
-import { performanceNow } from "./core/builtins";
+import { performanceNow, Math_min } from "./core/builtins";
 import { GameState } from "./core/game_state";
 import { GLOBAL_APP, setGlobalApp } from "./core/globals";
 import { InputDistributor } from "./core/input_distributor";
@@ -36,6 +36,7 @@ import { KeybindingsState } from "./states/keybindings";
 import { AboutState } from "./states/about";
 import { PlatformWrapperImplElectron } from "./platform/electron/wrapper";
 import { StorageImplElectron } from "./platform/electron/storage";
+import { MobileWarningState } from "./states/mobile_warning";
 
 const logger = createLogger("application");
 
@@ -158,6 +159,7 @@ export class Application {
         /** @type {Array<typeof GameState>} */
         const states = [
             PreloadState,
+            MobileWarningState,
             MainMenuState,
             InGameState,
             SettingsState,
@@ -315,7 +317,12 @@ export class Application {
 
         Loader.linkAppAfterBoot(this);
 
-        this.stateMgr.moveToState("PreloadState");
+        // Check for mobile
+        if (IS_MOBILE) {
+            this.stateMgr.moveToState("MobileWarningState");
+        } else {
+            this.stateMgr.moveToState("PreloadState");
+        }
 
         // Starting rendering
         this.ticker.frameEmitted.add(this.onFrameEmitted, this);

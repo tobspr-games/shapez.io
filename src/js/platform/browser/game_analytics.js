@@ -23,7 +23,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     initialize() {
         this.syncKey = null;
 
-        setInterval(() => this.sendTimePoints(), 30 * 1000);
+        setInterval(() => this.sendTimePoints(), 120 * 1000);
 
         // Retrieve sync key from player
         return this.app.storage.readFileAsync(analyticsLocalFile).then(
@@ -158,26 +158,29 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
         const entities = root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
 
-        for (let i = 0; i < entities.length; ++i) {
-            const entity = entities[i];
-            const staticComp = entity.components.StaticMapEntity;
-            const payload = {};
-            payload.origin = staticComp.origin;
-            payload.tileSize = staticComp.tileSize;
-            payload.rotation = staticComp.rotation;
+        // Limit the entities
+        if (entities.length < 5000) {
+            for (let i = 0; i < entities.length; ++i) {
+                const entity = entities[i];
+                const staticComp = entity.components.StaticMapEntity;
+                const payload = {};
+                payload.origin = staticComp.origin;
+                payload.tileSize = staticComp.tileSize;
+                payload.rotation = staticComp.rotation;
 
-            if (entity.components.Belt) {
-                payload.type = "belt";
-            } else if (entity.components.UndergroundBelt) {
-                payload.type = "tunnel";
-            } else if (entity.components.ItemProcessor) {
-                payload.type = entity.components.ItemProcessor.type;
-            } else if (entity.components.Miner) {
-                payload.type = "extractor";
-            } else {
-                logger.warn("Unkown entity type", entity);
+                if (entity.components.Belt) {
+                    payload.type = "belt";
+                } else if (entity.components.UndergroundBelt) {
+                    payload.type = "tunnel";
+                } else if (entity.components.ItemProcessor) {
+                    payload.type = entity.components.ItemProcessor.type;
+                } else if (entity.components.Miner) {
+                    payload.type = "extractor";
+                } else {
+                    logger.warn("Unkown entity type", entity);
+                }
+                staticEntities.push(payload);
             }
-            staticEntities.push(payload);
         }
 
         return {

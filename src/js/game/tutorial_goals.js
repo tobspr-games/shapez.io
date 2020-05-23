@@ -2,6 +2,7 @@ import { ShapeDefinition } from "./shape_definition";
 import { finalGameShape } from "./upgrades";
 
 /**
+ * Don't forget to also update tutorial_goals_mappings.js as well as the translations!
  * @enum {string}
  */
 export const enumHubGoalRewards = {
@@ -25,6 +26,7 @@ export const enumHubGoalRewards = {
     reward_freeplay: "reward_freeplay",
 
     no_reward: "no_reward",
+    no_reward_freeplay: "no_reward_freeplay",
 };
 
 export const tutorialGoals = [

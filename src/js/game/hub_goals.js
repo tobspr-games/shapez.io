@@ -188,13 +188,11 @@ export class HubGoals extends BasicSerializableObject {
             return;
         }
 
-        const reward = enumHubGoalRewards.no_reward;
-
         this.currentGoal = {
             /** @type {ShapeDefinition} */
             definition: this.createRandomShape(),
             required: 1000 + findNiceIntegerValue(this.level * 47.5),
-            reward,
+            reward: enumHubGoalRewards.no_reward_freeplay,
         };
     }
 
@@ -210,6 +208,13 @@ export class HubGoals extends BasicSerializableObject {
         this.createNextGoal();
 
         this.root.signals.storyGoalCompleted.dispatch(this.level - 1, reward);
+    }
+
+    /**
+     * Returns whether we are playing in free-play
+     */
+    isFreePlay() {
+        return this.level >= tutorialGoals.length;
     }
 
     /**
