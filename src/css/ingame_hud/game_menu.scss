@@ -102,6 +102,10 @@
             background-color: rgb(85, 199, 138);
             background-image: uiResource("icons/statistics.png");
         }
+        &[data-button-id="waypoints"] {
+            background-color: rgb(199, 140, 85);
+            background-image: uiResource("icons/waypoints.png");
+        }
 
         &:hover {
             opacity: 0.9;

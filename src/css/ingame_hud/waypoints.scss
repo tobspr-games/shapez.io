@@ -7,6 +7,22 @@
         display: grid;
         grid-template-columns: 1fr auto;
         @include S(column-gap, 5px);
+
+        input.findOrCreate {
+            box-sizing: border-box;
+            border: none;
+            background: #f4f4f4;
+
+            @include PlainText;
+
+            @include S(padding-left, 5px);
+            @include S(padding-right, 5px);
+
+            @include DarkThemeOverride {
+                background: #222428;
+                color: #efefef;
+            }
+        }
     }
 
     .content {
