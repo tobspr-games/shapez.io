@@ -26,6 +26,7 @@ import { HUDEntityDebugger } from "./parts/entity_debugger";
 import { KEYMAPPINGS } from "../key_action_mapper";
 import { HUDWatermark } from "./parts/watermark";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
+import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 
 export class GameHUD {
     /**
@@ -60,6 +61,8 @@ export class GameHUD {
 
             notifications: new HUDNotifications(this.root),
             settingsMenu: new HUDSettingsMenu(this.root),
+
+            tutorialHints: new HUDPartTutorialHints(this.root),
 
             // betaOverlay: new HUDBetaOverlay(this.root),
             debugInfo: new HUDDebugInfo(this.root),

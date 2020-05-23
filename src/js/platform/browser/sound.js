@@ -104,7 +104,7 @@ class MusicInstance extends MusicInstanceInterface {
             }),
             new Promise((resolve, reject) => {
                 this.howl = new Howl({
-                    src: cachebust("res/sounds/music/" + this.url),
+                    src: cachebust("res/sounds/music/" + this.url + ".mp3"),
                     autoplay: false,
                     loop: true,
                     html5: true,
