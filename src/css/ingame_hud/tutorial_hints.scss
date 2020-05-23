@@ -17,17 +17,42 @@
         transition-property: opacity, width;
         @include S(width, 0px);
         opacity: 0;
+        z-index: 10;
+        position: relative;
     }
 
     .header {
-        @include PlainText;
         color: #333438;
         display: grid;
         align-items: center;
         @include S(grid-gap, 2px);
         grid-template-columns: 1fr;
         @include S(margin-bottom, 3px);
+        z-index: 11;
+        position: relative;
+
+        > span {
+            @include DarkThemeInvert;
+
+            display: flex;
+            @include SuperSmallText;
+            justify-content: flex-start;
+            align-items: center;
+            &::before {
+                @include S(margin-right, 4px);
+                content: " ";
+                @include S(width, 12px);
+                @include S(height, 12px);
+                display: inline-block;
+                background: uiResource("icons/help.png") center center / 95% no-repeat;
+            }
+        }
+
+        button.toggleHint {
+            @include PlainText;
+        }
     }
+
     button.toggleHint {
         .hide {
             display: none;
@@ -40,9 +65,27 @@
         bottom: 50%;
         transform: translate(-50%, 50%);
 
+        &::before {
+            pointer-events: all;
+            content: " ";
+            position: fixed;
+            top: -1000px;
+            left: -1000px;
+            right: -1000px;
+            bottom: -1000px;
+            z-index: 0;
+
+            background: rgba(50, 60, 70, 0.3);
+        }
+
         .header {
             grid-template-columns: 1fr auto;
-            color: #fff;
+            > span {
+                display: none;
+            }
+            button.toggleHint {
+                grid-column: 2 / 3;
+            }
         }
 
         video {

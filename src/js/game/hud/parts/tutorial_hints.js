@@ -5,8 +5,9 @@ import { makeDiv } from "../../../core/utils";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { T } from "../../../translations";
 
-const maxTutorialVideo = 7;
+const tutorialVideos = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11];
 
 export class HUDPartTutorialHints extends BaseHUDPart {
     createElements(parent) {
@@ -16,10 +17,10 @@ export class HUDPartTutorialHints extends BaseHUDPart {
             [],
             `
         <div class="header">
-            No idea what to do?
+            <span>${T.ingame.tutorialHints.title}</span>
             <button class="styledButton toggleHint">
-                <span class="show">Show hint</span>
-                <span class="hide">Hide hint</span>
+                <span class="show">${T.ingame.tutorialHints.showHint}</span>
+                <span class="hide">${T.ingame.tutorialHints.hideHint}</span>
             </button>
         </div>
 
@@ -56,10 +57,16 @@ export class HUDPartTutorialHints extends BaseHUDPart {
     }
 
     updateVideoUrl(level) {
-        console.log("update video url.", level);
-        this.videoElement
-            .querySelector("source")
-            .setAttribute("src", cachebust("res/videos/level_" + level + ".webm"));
+        if (tutorialVideos.indexOf(level) < 0) {
+            this.videoElement.querySelector("source").setAttribute("src", "");
+            this.videoElement.pause();
+        } else {
+            this.videoElement
+                .querySelector("source")
+                .setAttribute("src", "https://static.shapez.io/tutorial_videos/level_" + level + ".webm");
+            this.videoElement.currentTime = 0;
+            this.videoElement.load();
+        }
     }
 
     close() {
@@ -89,7 +96,7 @@ export class HUDPartTutorialHints extends BaseHUDPart {
 
         this.currentShownLevel.set(this.root.hubGoals.level);
 
-        const tutorialVisible = this.root.hubGoals.level <= maxTutorialVideo;
+        const tutorialVisible = tutorialVideos.indexOf(this.root.hubGoals.level) >= 0;
         this.domAttach.update(tutorialVisible);
     }
 

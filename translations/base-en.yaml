@@ -251,6 +251,12 @@ ingame:
             settings: Settings
             menu: Return to menu
 
+    # Bottom left tutorial hints
+    tutorialHints:
+        title: No idea what to do?
+        showHint: Show hint
+        hideHint: Close
+
 # All shop upgrades
 shopUpgrades:
     belt:

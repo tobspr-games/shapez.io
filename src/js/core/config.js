@@ -94,7 +94,7 @@ export const globalConfig = {
         // showChunkBorders: true,
         // rewardsInstant: true,
         // allBuildingsUnlocked: true,
-        // upgradesNoCost: true,
+        upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
         // testClipping: true,
