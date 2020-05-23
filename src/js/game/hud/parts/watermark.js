@@ -23,20 +23,21 @@ export class HUDWatermark extends BaseHUDPart {
      */
     drawOverlays(parameters) {
         const w = this.root.gameWidth;
+        const x = 280 * this.root.app.getEffectiveUiScale();
 
         parameters.context.fillStyle = "#f77";
         parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 17 + "px GameFont";
-        parameters.context.textAlign = "center";
-        parameters.context.fillText("DEMO VERSION", w / 2, this.root.app.getEffectiveUiScale() * 35);
+        // parameters.context.textAlign = "center";
+        parameters.context.fillText("DEMO VERSION", x, this.root.app.getEffectiveUiScale() * 27);
 
         parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 12 + "px GameFont";
-        parameters.context.textAlign = "center";
+        // parameters.context.textAlign = "center";
         parameters.context.fillText(
             "Please consider to buy the full version!",
-            w / 2,
-            this.root.app.getEffectiveUiScale() * 55
+            x,
+            this.root.app.getEffectiveUiScale() * 45
         );
 
-        parameters.context.textAlign = "left";
+        // parameters.context.textAlign = "left";
     }
 }

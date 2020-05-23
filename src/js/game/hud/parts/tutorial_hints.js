@@ -1,13 +1,12 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv } from "../../../core/utils";
 import { cachebust } from "../../../core/cachebust";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { InputReceiver } from "../../../core/input_receiver";
-import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
-import { tutorialGoals } from "../../tutorial_goals";
 import { TrackedState } from "../../../core/tracked_state";
+import { makeDiv } from "../../../core/utils";
+import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
+import { BaseHUDPart } from "../base_hud_part";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
 
-const maxTutorialVideo = 2;
+const maxTutorialVideo = 7;
 
 export class HUDPartTutorialHints extends BaseHUDPart {
     createElements(parent) {
