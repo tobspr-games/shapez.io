@@ -1,0 +1,68 @@
+#ingame_HUD_TutorialHints {
+    position: absolute;
+    @include S(left, 10px);
+    @include S(bottom, 50px);
+    display: flex;
+    flex-direction: column;
+    background: rgba(50, 60, 70, 0);
+
+    transition: all 0.2s ease-in-out;
+    pointer-events: all;
+
+    transition-property: background-color, transform, bottom, left;
+
+    @include S(padding, 5px);
+    video {
+        transition: all 0.2s ease-in-out;
+        transition-property: opacity, width;
+        @include S(width, 0px);
+        opacity: 0;
+    }
+
+    .header {
+        @include PlainText;
+        color: #333438;
+        display: grid;
+        align-items: center;
+        @include S(grid-gap, 2px);
+        grid-template-columns: 1fr;
+        @include S(margin-bottom, 3px);
+    }
+    button.toggleHint {
+        .hide {
+            display: none;
+        }
+    }
+
+    &.enlarged {
+        background: rgba(50, 60, 70, 0.9);
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, 50%);
+
+        .header {
+            grid-template-columns: 1fr auto;
+            color: #fff;
+        }
+
+        video {
+            @include InlineAnimation(0.2s ease-in-out) {
+                0% {
+                    opacity: 0;
+                    @include S(width, 0px);
+                }
+            }
+
+            opacity: 1;
+            @include S(width, 500px);
+        }
+        button.toggleHint {
+            .hide {
+                display: block;
+            }
+            .show {
+                display: none;
+            }
+        }
+    }
+}
