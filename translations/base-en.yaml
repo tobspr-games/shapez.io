@@ -239,6 +239,21 @@ ingame:
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / m
 
+    # The "Waypoints" window
+    waypoints:
+        title: Waypoints
+        position: "X: <xpos>; Y: <ypos>"
+
+        findOrCreate: Find or create...
+        buttonNew: Add Waypoint
+        buttonTeleport: Teleport
+        buttonRemove: Remove
+
+        # When a new waypoint is created, this name is used.
+        defaultName: Waypoint <num>
+        noWaypoints: >-
+            There are no waypoints. Click "<buttonNew>" to create a new waypoint.
+
     # Settings menu, when you press "ESC"
     settingsMenu:
         playtime: Playtime

@@ -39,6 +39,7 @@
 @import "ingame_hud/vignette_overlay";
 @import "ingame_hud/statistics";
 @import "ingame_hud/pinned_shapes";
+@import "ingame_hud/waypoints";
 @import "ingame_hud/notifications";
 @import "ingame_hud/settings_menu";
 @import "ingame_hud/debug_info";
@@ -71,6 +72,7 @@ ingame_HUD_BetaOverlay,
 ingame_HUD_UnlockNotification,
 ingame_HUD_Shop,
 ingame_HUD_Statistics,
+ingame_HUD_Waypoints,
 ingame_HUD_SettingsMenu,
 ingame_HUD_ModalDialogs;
 

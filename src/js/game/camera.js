@@ -56,6 +56,9 @@ export class Camera extends BasicSerializableObject {
         /** @type {Vector} */
         this.center = new Vector(0, 0);
 
+        /** @type {{ name: string, pos: Vector }[]} */
+        this.waypoints = [];
+
         // Input handling
         this.currentlyMoving = false;
         this.lastMovingPosition = null;
@@ -117,6 +120,12 @@ export class Camera extends BasicSerializableObject {
         return {
             zoomLevel: types.float,
             center: types.vector,
+            waypoints: types.array(
+                types.structured({
+                    name: types.string,
+                    pos: types.vector,
+                })
+            ),
         };
     }
 

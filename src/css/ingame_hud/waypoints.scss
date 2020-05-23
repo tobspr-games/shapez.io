@@ -1,0 +1,95 @@
+#ingame_HUD_Waypoints {
+    .content {
+        @include S(width, 500px);
+    }
+
+    .wizardWrap {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        @include S(column-gap, 5px);
+    }
+
+    .content {
+        @include S(margin-top, 10px);
+        @include S(height, 350px);
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+
+        justify-content: flex-start;
+
+        @include S(padding-right, 4px);
+
+        > .noWaypoints {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include PlainText;
+            color: #aaa;
+        }
+
+        > div {
+            background: #f4f4f4;
+            @include S(border-radius, $globalBorderRadius);
+            @include S(margin-bottom, 4px);
+            display: grid;
+
+            @include DarkThemeOverride {
+                background: #222428;
+                color: #efefef;
+            }
+
+            grid-template-columns: 1fr auto;
+            @include S(padding, 5px);
+            @include S(padding-left, 10px);
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .title {
+                @include Text;
+
+                @include S(padding-top, 10px);
+            }
+
+            .position {
+                @include PlainText;
+                opacity: 0.7;
+            }
+
+            button {
+                @include S(margin, 4px);
+            }
+
+            .removeButton {
+                background: #df3f3d;
+            }
+
+            .teleportButton {
+                background: #804db1;
+            }
+        }
+    }
+
+    .dialogInner {
+        &[data-displaymode="detailed"] .content.hasEntries {
+            > div {
+                @include S(padding, 10px);
+                @include S(height, 40px);
+                grid-template-columns: auto 1fr auto;
+                @include S(grid-column-gap, 15px);
+
+                .counter {
+                    grid-column: 3 / 4;
+                    grid-row: 1 / 2;
+                    @include Heading;
+                    align-self: center;
+                    text-align: right;
+                    color: #55595a;
+                }
+            }
+        }
+    }
+}

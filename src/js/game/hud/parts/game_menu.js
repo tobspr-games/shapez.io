@@ -29,6 +29,12 @@ export class HUDGameMenu extends BaseHUDPart {
                 handler: () => this.root.hud.parts.statistics.show(),
                 keybinding: KEYMAPPINGS.ingame.menuOpenStats,
             },
+            {
+                id: "waypoints",
+                label: "Waypoints",
+                handler: () => this.root.hud.parts.waypoints.show(),
+                keybinding: KEYMAPPINGS.ingame.menuOpenWaypoints,
+            },
         ];
 
         /** @type {Array<{

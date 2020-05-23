@@ -18,6 +18,7 @@ import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
 import { MetaBuilding } from "../meta_building";
 import { HUDPinnedShapes } from "./parts/pinned_shapes";
+import { HUDWaypoints } from "./parts/waypoints";
 import { ShapeDefinition } from "../shape_definition";
 import { HUDNotifications, enumNotificationType } from "./parts/notifications";
 import { HUDSettingsMenu } from "./parts/settings_menu";
@@ -26,6 +27,7 @@ import { HUDEntityDebugger } from "./parts/entity_debugger";
 import { KEYMAPPINGS } from "../key_action_mapper";
 import { HUDWatermark } from "./parts/watermark";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
+import { Vector } from "../../core/vector";
 
 export class GameHUD {
     /**
@@ -53,6 +55,7 @@ export class GameHUD {
 
             shop: new HUDShop(this.root),
             statistics: new HUDStatistics(this.root),
+            waypoints: new HUDWaypoints(this.root),
 
             vignetteOverlay: new HUDVignetteOverlay(this.root),
 

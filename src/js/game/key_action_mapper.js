@@ -29,6 +29,7 @@ export const KEYMAPPINGS = {
 
         menuOpenShop: { keyCode: key("F") },
         menuOpenStats: { keyCode: key("G") },
+        menuOpenWaypoints: { keyCode: key("H") },
 
         toggleHud: { keyCode: 113 }, // F2
         toggleFPSInfo: { keyCode: 115 }, // F1
