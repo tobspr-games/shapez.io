@@ -472,6 +472,11 @@ settings:
             description: >-
                 If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
 
+        alwaysMultiplace:
+            title: Multiplace
+            description: >-
+                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+
 keybindings:
     title: Keybindings
     hint: >-
