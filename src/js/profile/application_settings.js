@@ -116,6 +116,7 @@ export const allApplicationSettings = [
     }),
 
     new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
+    new BoolSetting("offerHints", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -133,6 +134,7 @@ class SettingsStorage {
         this.refreshRate = "60";
 
         this.alwaysMultiplace = false;
+        this.offerHints = true;
 
         /**
          * @type {Object.<string, number>}
@@ -291,9 +293,10 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 6;
+        return 7;
     }
 
+    /** @param {{settings: SettingsStorage, version: number}} data */
     migrate(data) {
         // Simply reset before
         if (data.version < 5) {
@@ -305,6 +308,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 6) {
             data.settings.alwaysMultiplace = false;
             data.version = 6;
+        }
+
+        if (data.version < 7) {
+            data.settings.offerHints = true;
+            data.version = 7;
         }
 
         return ExplainedResult.good();

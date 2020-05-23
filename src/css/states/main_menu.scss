@@ -322,8 +322,7 @@
                 transform: scale(1.01);
             }
 
-            &.iogLink {
-                // background: transparenT;
+            &:not(.boxLink) {
                 align-self: flex-end;
                 justify-self: flex-end;
                 height: unset;

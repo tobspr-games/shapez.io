@@ -69,6 +69,7 @@ demoBanners:
 
 mainMenu:
     play: Play
+    changelog: Changelog
     importSavegame: Import
     openSourceHint: This game is open source!
     discordLink: Official Discord Server
@@ -153,6 +154,16 @@ dialogs:
     oneSavegameLimit:
         title: Limited savegames
         desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+
+    updateSummary:
+        title: New update!
+        desc: >-
+            Here are the changes since you last played:
+
+    hintDescription:
+        title: Tutorial
+        desc: >-
+            Whenever you need help or are stuck, check out the 'Show hint' button in the lower left and I'll give my best to help you!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -253,7 +264,7 @@ ingame:
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: No idea what to do?
+        title: Need help?
         showHint: Show hint
         hideHint: Close
 
@@ -483,6 +494,11 @@ settings:
             description: >-
                 If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
 
+        offerHints:
+            title: Hints
+            description: >-
+                Whether to show the 'Show hints' button in the lower left.
+
 keybindings:
     title: Keybindings
     hint: >-
@@ -542,6 +558,9 @@ keybindings:
 
 about:
     title: About this Game
+
+changelog:
+    title: Changelog
 
 demo:
     features:

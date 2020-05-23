@@ -6,6 +6,29 @@
         }
     }
 
+    .changelogDialogEntry {
+        width: 100%;
+        flex-direction: column;
+        text-align: left;
+        padding: 10px;
+        box-sizing: border-box;
+        .version {
+            @include Heading;
+        }
+        .date {
+            @include PlainText;
+            &::before {
+                content: " | ";
+            }
+            color: #aaabaf;
+        }
+
+        .changes {
+            @include SuperSmallText;
+            @include S(padding-left, 20px);
+        }
+    }
+
     .failureBox {
         .logo {
             img {

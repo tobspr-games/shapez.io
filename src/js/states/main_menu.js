@@ -77,15 +77,17 @@ export class MainMenuState extends GameState {
 
             <div class="footer">
 
-                <a class="githubLink" target="_blank">
+                <a class="githubLink boxLink" target="_blank">
                     ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
                 </a>    
                     
-                <a class="discordLink" target="_blank">
+                <a class="discordLink boxLink" target="_blank">
                     ${T.mainMenu.discordLink}
                     <span class="thirdpartyLogo  discordLogo"></span>
                 </a>
+
+                <a class="changelog">${T.changelog.title}</a>
 
                 ${
                     G_IS_BROWSER &&
@@ -207,6 +209,7 @@ export class MainMenuState extends GameState {
         }
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
+        this.trackClicks(qs(".changelog"), this.onChangelogClicked);
 
         if (G_IS_STANDALONE) {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
@@ -249,6 +252,10 @@ export class MainMenuState extends GameState {
 
     onExitAppButtonClicked() {
         this.app.platformWrapper.exitApp();
+    }
+
+    onChangelogClicked() {
+        this.moveToState("ChangelogState");
     }
 
     renderSavegames() {

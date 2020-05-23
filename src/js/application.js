@@ -37,6 +37,7 @@ import { AboutState } from "./states/about";
 import { PlatformWrapperImplElectron } from "./platform/electron/wrapper";
 import { StorageImplElectron } from "./platform/electron/storage";
 import { MobileWarningState } from "./states/mobile_warning";
+import { ChangelogState } from "./states/changelog";
 
 const logger = createLogger("application");
 
@@ -165,6 +166,7 @@ export class Application {
             SettingsState,
             KeybindingsState,
             AboutState,
+            ChangelogState,
         ];
 
         for (let i = 0; i < states.length; ++i) {

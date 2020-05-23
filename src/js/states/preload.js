@@ -5,6 +5,7 @@ import { cachebust } from "../core/cachebust";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { T } from "../translations";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { CHANGELOG } from "../changelog";
 
 const logger = createLogger("state/preload");
 
@@ -174,6 +175,52 @@ export class PreloadState extends GameState {
             .then(() => this.setStatus("Downloading resources"))
             .then(() => {
                 return this.app.backgroundResourceLoader.getPromiseForBareGame();
+            })
+
+            .then(() => this.setStatus("Checking changelog"))
+            .then(() => {
+                return this.app.storage
+                    .readFileAsync("lastversion.bin")
+                    .catch(err => {
+                        logger.warn("Failed to read lastversion:", err);
+                        return G_BUILD_VERSION;
+                    })
+                    .then(version => {
+                        this.app.storage.writeFileAsync("lastversion.bin", version);
+                        return version;
+                    })
+                    .then(version => {
+                        let changelogEntries = [];
+                        logger.log("Last seen version:", version);
+
+                        for (let i = 0; i < CHANGELOG.length; ++i) {
+                            if (CHANGELOG[i].version === version) {
+                                break;
+                            }
+                            changelogEntries.push(CHANGELOG[i]);
+                        }
+                        if (changelogEntries.length === 0) {
+                            return;
+                        }
+
+                        let dialogHtml = T.dialogs.updateSummary.desc;
+                        for (let i = 0; i < changelogEntries.length; ++i) {
+                            const entry = changelogEntries[i];
+                            dialogHtml += `
+                            <div class="changelogDialogEntry">
+                                <span class="version">${entry.version}</span>
+                                <span class="date">${entry.date}</span>
+                                <ul class="changes">
+                                    ${entry.entries.map(text => `<li>${text}</li>`).join("")}
+                                </ul>
+                            </div>
+                        `;
+                        }
+
+                        return new Promise(resolve => {
+                            this.dialogs.showInfo(T.dialogs.updateSummary.title, dialogHtml).ok.add(resolve);
+                        });
+                    });
             })
 
             .then(() => this.setStatus("Launching"))

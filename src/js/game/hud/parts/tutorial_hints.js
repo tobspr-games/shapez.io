@@ -54,6 +54,15 @@ export class HUDPartTutorialHints extends BaseHUDPart {
         this.domAttach = new DynamicDomAttach(this.root, this.element);
 
         this.currentShownLevel = new TrackedState(this.updateVideoUrl, this);
+
+        this.root.signals.postLoadHook.add(() => {
+            if (this.root.hubGoals.level === 1) {
+                this.root.hud.parts.dialogs.showInfo(
+                    T.dialogs.hintDescription.title,
+                    T.dialogs.hintDescription.desc
+                );
+            }
+        });
     }
 
     updateVideoUrl(level) {
