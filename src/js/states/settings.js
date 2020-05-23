@@ -111,10 +111,6 @@ export class SettingsState extends TextualGameState {
         this.moveToStateAddGoBack("AboutState");
     }
 
-    onChangelogClicked() {
-        // this.moveToStateAddGoBack("ChangelogState");
-    }
-
     onKeybindingsClicked() {
         this.moveToStateAddGoBack("KeybindingsState");
     }

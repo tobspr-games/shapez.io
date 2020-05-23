@@ -1,0 +1,24 @@
+#state_ChangelogState {
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+    .entry {
+        padding: 20px;
+        .version {
+            @include Heading;
+        }
+        .date {
+            @include PlainText;
+            &::before {
+                content: " | ";
+            }
+            color: #aaabaf;
+        }
+
+        .changes {
+            @include SuperSmallText;
+            @include S(padding-left, 20px);
+        }
+    }
+}

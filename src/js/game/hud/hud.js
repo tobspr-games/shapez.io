@@ -62,8 +62,6 @@ export class GameHUD {
             notifications: new HUDNotifications(this.root),
             settingsMenu: new HUDSettingsMenu(this.root),
 
-            tutorialHints: new HUDPartTutorialHints(this.root),
-
             // betaOverlay: new HUDBetaOverlay(this.root),
             debugInfo: new HUDDebugInfo(this.root),
 
@@ -86,6 +84,9 @@ export class GameHUD {
 
         if (IS_DEMO) {
             this.parts.watermark = new HUDWatermark(this.root);
+        }
+        if (this.root.app.settings.getAllSettings().offerHints) {
+            this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
         }
 
         const frag = document.createDocumentFragment();
