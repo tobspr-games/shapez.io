@@ -502,6 +502,9 @@ keybindings:
 
         centerMap: Center Map
 
+        mapZoomIn: Zoom in
+        mapZoomOut: Zoom out
+
         menuOpenShop: Upgrades
         menuOpenStats: Statistics
 
