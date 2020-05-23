@@ -143,6 +143,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         const tier = enumUndergroundBeltVariantToTier[variant];
 
         const targetRotation = (rotation + 180) % 360;
+        const targetSenderRotation = rotation;
 
         for (
             let searchOffset = 1;
@@ -161,12 +162,20 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                             // If we encounter an underground receiver on our way which is also faced in our direction, we don't accept that
                             break;
                         }
-
                         return {
                             rotation: targetRotation,
                             rotationVariant: 1,
                             connectedEntities: [contents],
                         };
+                    } else if (staticComp.rotation === targetSenderRotation) {
+                        // Draw connections to receivers
+                        if (undergroundComp.mode === enumUndergroundBeltMode.receiver) {
+                            return {
+                                rotation: rotation,
+                                rotationVariant: 0,
+                                connectedEntities: [contents],
+                            };
+                        }
                     }
                 }
             }
