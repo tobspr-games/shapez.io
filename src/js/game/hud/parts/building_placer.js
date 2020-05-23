@@ -468,7 +468,11 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
             }
 
-            if (!metaBuilding.getStayInPlacementMode() && !this.root.app.inputMgr.shiftIsDown) {
+            if (
+                !metaBuilding.getStayInPlacementMode() &&
+                !this.root.app.inputMgr.shiftIsDown &&
+                !this.root.app.settings.getAllSettings().alwaysMultiplace
+            ) {
                 // Stop placement
                 this.currentMetaBuilding.set(null);
             }

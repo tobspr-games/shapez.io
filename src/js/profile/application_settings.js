@@ -111,13 +111,11 @@ export const allApplicationSettings = [
         textGetter: rate => rate + " Hz",
         category: categoryGame,
         restartRequired: false,
-        changeCb:
-            /**
-             * @param {Application} app
-             */
-            (app, id) => {},
+        changeCb: (app, id) => {},
         enabled: !IS_DEMO,
     }),
+
+    new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -133,6 +131,8 @@ class SettingsStorage {
         this.musicMuted = false;
         this.theme = "light";
         this.refreshRate = "60";
+
+        this.alwaysMultiplace = false;
 
         /**
          * @type {Object.<string, number>}
@@ -291,14 +291,20 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 5;
+        return 6;
     }
 
     migrate(data) {
-        // Simply reset
-        if (data.version < this.getCurrentVersion()) {
+        // Simply reset before
+        if (data.version < 5) {
             data.settings = new SettingsStorage();
             data.version = this.getCurrentVersion();
+            return ExplainedResult.good();
+        }
+
+        if (data.version < 6) {
+            data.alwaysMultiplace = false;
+            data.version = 6;
         }
 
         return ExplainedResult.good();
