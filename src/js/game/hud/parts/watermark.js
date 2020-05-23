@@ -1,10 +1,21 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { DrawParameters } from "../../../core/draw_parameters";
+import { makeDiv } from "../../../core/utils";
+import { THIRDPARTY_URLS } from "../../../core/config";
 
 export class HUDWatermark extends BaseHUDPart {
-    createElements() {}
+    createElements(parent) {
+        this.element = makeDiv(parent, "ingame_HUD_Watermark");
+    }
 
-    initialize() {}
+    initialize() {
+        this.trackClicks(this.element, this.onWatermarkClick);
+    }
+
+    onWatermarkClick() {
+        this.root.app.analytics.trackUiClick("watermark_click");
+        this.root.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
+    }
 
     /**
      *
