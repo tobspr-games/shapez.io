@@ -4,9 +4,10 @@ import { makeDiv } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
 import { T } from "../../../translations";
 import { defaultBuildingVariant } from "../../meta_building";
-import { enumHubGoalRewards, enumHubGoalRewardsToContentUnlocked } from "../../tutorial_goals";
+import { enumHubGoalRewards } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { enumHubGoalRewardsToContentUnlocked } from "../../tutorial_goals_mappings";
 
 export class HUDUnlockNotification extends BaseHUDPart {
     initialize() {
@@ -21,10 +22,6 @@ export class HUDUnlockNotification extends BaseHUDPart {
         }
 
         this.buttonShowTimeout = null;
-    }
-
-    shouldPauseGame() {
-        return this.visible;
     }
 
     createElements(parent) {
