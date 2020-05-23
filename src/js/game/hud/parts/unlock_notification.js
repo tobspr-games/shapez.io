@@ -2,18 +2,11 @@ import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { makeDiv } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
-import { MetaCutterBuilding } from "../../buildings/cutter";
-import { MetaMixerBuilding } from "../../buildings/mixer";
-import { MetaPainterBuilding } from "../../buildings/painter";
-import { MetaRotaterBuilding } from "../../buildings/rotater";
-import { MetaSplitterBuilding } from "../../buildings/splitter";
-import { MetaStackerBuilding } from "../../buildings/stacker";
-import { MetaTrashBuilding } from "../../buildings/trash";
-import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
-import { enumHubGoalRewards } from "../../tutorial_goals";
+import { T } from "../../../translations";
+import { defaultBuildingVariant } from "../../meta_building";
+import { enumHubGoalRewards, enumHubGoalRewardsToContentUnlocked } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { T } from "../../../translations";
 
 export class HUDUnlockNotification extends BaseHUDPart {
     initialize() {
@@ -26,6 +19,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
         if (!(G_IS_DEV && globalConfig.debug.disableUnlockDialog)) {
             this.root.signals.storyGoalCompleted.add(this.showForLevel, this);
         }
+
+        this.buttonShowTimeout = null;
     }
 
     shouldPauseGame() {
@@ -60,63 +55,50 @@ export class HUDUnlockNotification extends BaseHUDPart {
             ("" + level).padStart(2, "0")
         );
 
-        const rewardText = T.storyRewards[reward];
+        const rewardName = T.storyRewards[reward].title;
 
-        let html =
-            "<span class='reward'>" +
-            T.ingame.levelCompleteNotification.unlockText.replace("<reward>", rewardText) +
-            "</span>";
+        let html = `
+        <div class="rewardName">
+            ${T.ingame.levelCompleteNotification.unlockText.replace("<reward>", rewardName)}
+        </div>
+        
+        <div class="rewardDesc">
+            ${T.storyRewards[reward].desc}
+        </div>
 
-        const addBuildingExplanation = metaBuildingClass => {
-            const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
-            html += `<div class="buildingExplanation" data-icon="building_tutorials/${metaBuilding.getId()}.png"></div>`;
-        };
+        `;
 
-        switch (reward) {
-            case enumHubGoalRewards.reward_cutter_and_trash: {
-                addBuildingExplanation(MetaCutterBuilding);
-                addBuildingExplanation(MetaTrashBuilding);
-                break;
-            }
-            case enumHubGoalRewards.reward_mixer: {
-                addBuildingExplanation(MetaMixerBuilding);
-                break;
-            }
-
-            case enumHubGoalRewards.reward_painter: {
-                addBuildingExplanation(MetaPainterBuilding);
-                break;
-            }
-
-            case enumHubGoalRewards.reward_rotater: {
-                addBuildingExplanation(MetaRotaterBuilding);
-                break;
-            }
-
-            case enumHubGoalRewards.reward_splitter: {
-                addBuildingExplanation(MetaSplitterBuilding);
-                break;
-            }
-
-            case enumHubGoalRewards.reward_stacker: {
-                addBuildingExplanation(MetaStackerBuilding);
-                break;
-            }
-
-            case enumHubGoalRewards.reward_tunnel: {
-                addBuildingExplanation(MetaUndergroundBeltBuilding);
-                break;
-            }
+        html += "<div class='images'>";
+        const gained = enumHubGoalRewardsToContentUnlocked[reward];
+        if (gained) {
+            gained.forEach(([metaBuildingClass, variant]) => {
+                const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
+                html += `<div class="buildingExplanation" data-icon="building_tutorials/${
+                    metaBuilding.getId() + (variant === defaultBuildingVariant ? "" : "-" + variant)
+                }.png"></div>`;
+            });
         }
-
-        // addBuildingExplanation(MetaSplitterBuilding);
-        // addBuildingExplanation(MetaCutterBuilding);
+        html += "</div>";
 
         this.elemContents.innerHTML = html;
-
         this.visible = true;
-
         this.root.soundProxy.playUi(SOUNDS.levelComplete);
+
+        if (this.buttonShowTimeout) {
+            clearTimeout(this.buttonShowTimeout);
+        }
+
+        this.buttonShowTimeout = setTimeout(
+            () => this.element.querySelector("button.close").classList.add("unlocked"),
+            G_IS_DEV ? 1000 : 10000
+        );
+    }
+
+    cleanup() {
+        if (this.buttonShowTimeout) {
+            clearTimeout(this.buttonShowTimeout);
+            this.buttonShowTimeout = null;
+        }
     }
 
     requestClose() {
@@ -126,10 +108,18 @@ export class HUDUnlockNotification extends BaseHUDPart {
     }
 
     close() {
+        if (this.buttonShowTimeout) {
+            clearTimeout(this.buttonShowTimeout);
+            this.buttonShowTimeout = null;
+        }
         this.visible = false;
     }
 
     update() {
         this.domAttach.update(this.visible);
+        if (!this.visible && this.buttonShowTimeout) {
+            clearTimeout(this.buttonShowTimeout);
+            this.buttonShowTimeout = null;
+        }
     }
 }

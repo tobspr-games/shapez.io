@@ -88,7 +88,7 @@ export class HubSystem extends GameSystemWithFilter {
         context.font = "bold 11px GameFont";
         context.fillStyle = "#fd0752";
         context.textAlign = "center";
-        context.fillText(T.storyRewards[goals.reward].toUpperCase(), pos.x, pos.y + 46);
+        context.fillText(T.storyRewards[goals.reward].title.toUpperCase(), pos.x, pos.y + 46);
 
         // Level
         context.font = "bold 11px GameFont";
