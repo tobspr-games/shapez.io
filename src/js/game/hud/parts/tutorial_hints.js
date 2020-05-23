@@ -72,6 +72,9 @@ export class HUDPartTutorialHints extends BaseHUDPart {
     }
 
     show() {
+        this.root.app.analytics.trackUiClick("tutorial_hint_show");
+        this.root.app.analytics.trackUiClick("tutorial_hint_show_lvl_" + this.root.hubGoals.level);
+
         document.body.classList.add("ingameDialogOpen");
         this.element.classList.add("enlarged", "noBlur");
         this.enlarged = true;
