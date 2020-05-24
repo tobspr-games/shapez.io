@@ -7,11 +7,14 @@
     }
 
     .changelogDialogEntry {
+        margin-top: 10px;
         width: 100%;
         flex-direction: column;
         text-align: left;
         padding: 10px;
         box-sizing: border-box;
+        background: #eef1f4;
+
         .version {
             @include Heading;
         }
@@ -25,7 +28,14 @@
 
         .changes {
             @include SuperSmallText;
-            @include S(padding-left, 20px);
+            @include S(padding-left, 15px);
+            strong {
+                background: $colorBlueBright;
+                color: #fff;
+                text-transform: uppercase;
+                @include S(padding, 1px, 2px);
+                @include S(margin-right, 3px);
+            }
         }
     }
 
