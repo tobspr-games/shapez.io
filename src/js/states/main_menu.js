@@ -54,7 +54,11 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
-                ${IS_DEMO ? `<div class="demoBadge"></div>` : ""}
+                ${
+                    IS_DEMO && this.app.platformWrapper.getShowDemoBadges()
+                        ? `<div class="demoBadge"></div>`
+                        : ""
+                }
             </div>
 
 
@@ -104,7 +108,11 @@ export class MainMenuState extends GameState {
     }
 
     requestImportSavegame() {
-        if (IS_DEMO && this.app.savegameMgr.getSavegamesMetaData().length > 0) {
+        if (
+            IS_DEMO &&
+            this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
+            !this.app.platformWrapper.getHasUnlimitedSavegames()
+        ) {
             this.app.analytics.trackUiClick("importgame_slot_limit_show");
             this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
             return;
@@ -373,7 +381,11 @@ export class MainMenuState extends GameState {
     }
 
     onPlayButtonClicked() {
-        if (IS_DEMO && this.app.savegameMgr.getSavegamesMetaData().length > 0) {
+        if (
+            IS_DEMO &&
+            this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
+            !this.app.platformWrapper.getHasUnlimitedSavegames()
+        ) {
             this.app.analytics.trackUiClick("startgame_slot_limit_show");
             this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
             return;
