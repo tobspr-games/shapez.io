@@ -301,8 +301,7 @@ export class Application {
         logSection("BEFORE UNLOAD HANDLER", "#f77");
 
         if (!G_IS_DEV && this.stateMgr.getCurrentState().getHasUnloadConfirmation()) {
-            if (G_IS_STANDALONE) {
-            } else {
+            if (!G_IS_STANDALONE) {
                 // Need to show a "Are you sure you want to exit"
                 event.preventDefault();
                 event.returnValue = "Are you sure you want to exit?";
