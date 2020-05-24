@@ -1,5 +1,12 @@
 export const CHANGELOG = [
     {
+        version: "1.0.3",
+        date: "24.05.2020",
+        entries: [
+            "Balancing: I reduced the amount of shapes required for the first 5 levels, to make it easier to get into the game.",
+        ],
+    },
+    {
         version: "1.0.2",
         date: "23.05.2020",
         entries: [
