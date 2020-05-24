@@ -715,10 +715,6 @@ export class Camera extends BasicSerializableObject {
         if (G_IS_DEV && globalConfig.debug.disableZoomLimits) {
             return;
         }
-        if (queryParamOptions.betaMode) {
-            return;
-        }
-
         const wrapper = this.root.app.platformWrapper;
 
         assert(Number.isFinite(this.zoomLevel), "Invalid zoom level *before* clamp: " + this.zoomLevel);
