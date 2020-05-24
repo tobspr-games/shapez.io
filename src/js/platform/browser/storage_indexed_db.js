@@ -34,10 +34,12 @@ export class StorageImplBrowserIndexedDB extends StorageInterface {
                 reject("Indexed DB access error");
             };
 
+            // @ts-ignore
             request.onsuccess = event => resolve(event.target.result);
 
             request.onupgradeneeded = /** @type {IDBVersionChangeEvent} */ event => {
                 /** @type {IDBDatabase} */
+                // @ts-ignore
                 const database = event.target.result;
 
                 const objectStore = database.createObjectStore("files", {

@@ -122,6 +122,7 @@ export class MainMenuState extends GameState {
                     const closeLoader = this.dialogs.showLoadingDialog();
                     const reader = new FileReader();
                     reader.addEventListener("load", event => {
+                        // @ts-ignore
                         const contents = event.target.result;
                         let realContent;
 

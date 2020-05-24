@@ -137,7 +137,8 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             ingameTime: root.time.now(),
             category,
             value,
-            gameDump: this.generateGameDump(root),
+            version: G_BUILD_VERSION,
+            gameDump: this.generateGameDump(root, category === "sync"),
         });
     }
 
@@ -152,14 +153,15 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     /**
      * Generates a game dump
      * @param {GameRoot} root
+     * @param {boolean=} metaOnly
      */
-    generateGameDump(root) {
+    generateGameDump(root, metaOnly = false) {
         let staticEntities = [];
 
         const entities = root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
 
         // Limit the entities
-        if (entities.length < 5000) {
+        if (!metaOnly && entities.length < 500) {
             for (let i = 0; i < entities.length; ++i) {
                 const entity = entities[i];
                 const staticComp = entity.components.StaticMapEntity;

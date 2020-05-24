@@ -107,8 +107,6 @@ declare interface Window {
     assert(condition: boolean, failureMessage: string);
 
     coreThreadLoadedCb();
-
-    gameanalytics: typeof import("./game_analytics");
 }
 
 declare interface Navigator {
