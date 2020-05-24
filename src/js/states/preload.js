@@ -186,7 +186,8 @@ export class PreloadState extends GameState {
                         return G_BUILD_VERSION;
                     })
                     .then(version => {
-                        this.app.storage.writeFileAsync("lastversion.bin", version);
+                        logger.log("Last version:", version, "App version:", G_BUILD_VERSION);
+                        this.app.storage.writeFileAsync("lastversion.bin", G_BUILD_VERSION);
                         return version;
                     })
                     .then(version => {

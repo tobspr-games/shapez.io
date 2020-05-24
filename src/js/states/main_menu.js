@@ -97,7 +97,7 @@ export class MainMenuState extends GameState {
                     G_IS_BROWSER &&
                     this.app.platformWrapper instanceof PlatformWrapperImplBrowser &&
                     this.app.platformWrapper.embedProvider.iogLink
-                        ? `<a class="iogLink" target="_blank" href="https://iogames.space">More .io games</a>`
+                        ? `<a class="iogLink" target="_blank" href="https://iogames.space">.io games</a>`
                         : ""
                 }
 
