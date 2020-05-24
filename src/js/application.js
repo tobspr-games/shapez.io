@@ -146,11 +146,7 @@ export class Application {
         }
         this.analytics = new GoogleAnalyticsImpl(this);
 
-        if (queryParamOptions.betaMode) {
-            this.gameAnalytics = new NoGameAnalytics(this);
-        } else {
-            this.gameAnalytics = new ShapezGameAnalytics(this);
-        }
+        this.gameAnalytics = new ShapezGameAnalytics(this);
     }
 
     /**
