@@ -11,6 +11,7 @@ export const enumHubGoalRewards = {
     reward_painter: "reward_painter",
     reward_mixer: "reward_mixer",
     reward_stacker: "reward_stacker",
+    reward_unstacker: "reward_unstacker",
     reward_splitter: "reward_splitter",
     reward_tunnel: "reward_tunnel",
 

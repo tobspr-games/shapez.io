@@ -145,6 +145,21 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     }
 
     /**
+     * Generates a definition for stacking the upper definition onto the lower one
+     * @param {ShapeDefinition} definition
+     * @returns {[ShapeDefinition, ShapeDefinition]}
+     */
+    shapeActionUnstack(definition) {
+        const key = "unstack:" + definition.getHash();
+        if (this.operationCache[key]) {
+            return /** @type {[ShapeDefinition, ShapeDefinition]} */ (this.operationCache[key]);
+        }
+
+        const unstacked = definition.cloneAndUnstack();
+        return /** @type {[ShapeDefinition, ShapeDefinition]} */ (this.operationCache[key] = unstacked);
+    }
+
+    /**
      * Generates a definition for painting it with the given color
      * @param {ShapeDefinition} definition
      * @param {enumColors} color

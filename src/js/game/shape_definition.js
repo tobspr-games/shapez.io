@@ -466,6 +466,43 @@ export class ShapeDefinition extends BasicSerializableObject {
     }
 
     /**
+     * Stacks the given shape definition on top.
+     */
+    cloneAndUnstack() {
+        const lowerLayers = this.internalCloneLayers();
+
+        if (this.isEntirelyEmpty()) {
+            assert(false, "Can not stack entirely empty definition");
+        }
+
+        // Check if there is only one layer
+        if (this.layers.length === 1) {
+            return [new ShapeDefinition({ layers: lowerLayers })];
+        }
+
+        let upperLayers = [];
+
+        layerCheck:
+        for (let i = lowerLayers.length - 1; i >= 0; --i) {
+            const layerToCheck = lowerLayers[i];
+
+            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
+                // Check for a layer with items on it to remove
+                if (layerToCheck[quadrantIndex]) {
+                    upperLayers.push(layerToCheck);
+                    lowerLayers[i] = [null, null, null, null];
+                    break layerCheck;
+                }
+            }
+        }
+
+        return [
+            new ShapeDefinition({ layers: lowerLayers }),
+            new ShapeDefinition({ layers: upperLayers }),
+        ];
+    }
+
+    /**
      * Clones the shape and colors everything in the given color
      * @param {enumColors} color
      */

@@ -341,6 +341,9 @@ buildings:
         default:
             name: &stacker Stacker
             description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+        unstacker:
+            name: Unstacker
+            description: Takes the top most shape off of a stack and outputs it onto the right.
 
     mixer:
         default:
