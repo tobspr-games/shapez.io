@@ -155,6 +155,7 @@ export class ClickDetector {
      * @param {Event} event
      */
     internalPreventClick(event) {
+        window.focus();
         event.preventDefault();
     }
 
@@ -301,6 +302,8 @@ export class ClickDetector {
      * @param {TouchEvent|MouseEvent} event
      */
     internalOnPointerDown(event) {
+        window.focus();
+
         if (!this.internalEventPreHandler(event, 1)) {
             return false;
         }
@@ -369,6 +372,8 @@ export class ClickDetector {
      * @param {TouchEvent|MouseEvent} event
      */
     internalOnPointerEnd(event) {
+        window.focus();
+
         if (!this.internalEventPreHandler(event, 0)) {
             return false;
         }

@@ -228,6 +228,7 @@ export class Application {
      * @param {Event} event
      */
     handleVisibilityChange(event) {
+        window.focus();
         const pageVisible = !document[pageHiddenPropName];
         if (pageVisible !== this.pageVisible) {
             this.pageVisible = pageVisible;
@@ -267,6 +268,7 @@ export class Application {
 
     onAppRenderableStateChanged(renderable) {
         logger.log("Application renderable:", renderable);
+        window.focus();
         if (!renderable) {
             this.stateMgr.getCurrentState().onAppPause();
         } else {
@@ -326,6 +328,8 @@ export class Application {
         this.ticker.frameEmitted.add(this.onFrameEmitted, this);
         this.ticker.bgFrameEmitted.add(this.onBackgroundFrame, this);
         this.ticker.start();
+
+        window.focus();
     }
 
     /**
