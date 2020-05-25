@@ -28,10 +28,6 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
             this.embedProvider.iframed = true;
             this.embedProvider.iogLink = false;
 
-            logger.log("Running focus-fix automatically");
-            window.focus();
-            setInterval(() => window.focus(), 1000);
-
             switch (providerId) {
                 case "armorgames": {
                     this.embedProvider.id = "armorgames";
