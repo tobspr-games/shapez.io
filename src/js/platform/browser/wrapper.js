@@ -28,6 +28,15 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
             this.embedProvider.iframed = true;
             this.embedProvider.iogLink = false;
 
+            window.addEventListener(
+                "mousedown",
+                () => {
+                    console.log("Firefox fix: focusing window");
+                    window.focus();
+                },
+                true
+            );
+
             switch (providerId) {
                 case "armorgames": {
                     this.embedProvider.id = "armorgames";

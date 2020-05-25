@@ -101,7 +101,8 @@ export const globalConfig = {
         // framePausesBetweenTicks: 40,
         // testTranslations: true,
         // enableEntityInspector: true,
-        testAds: true,
+        // testAds: true,
+        disableMapOverview: true,
         /* dev:end */
     },
 
@@ -123,3 +124,8 @@ export const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 // Automatic calculations
 
 globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5;
+
+if (globalConfig.debug.disableMapOverview) {
+    globalConfig.mapChunkOverviewMinZoom = 0;
+    globalConfig.mapChunkPrerenderMinZoom = 0;
+}
