@@ -434,6 +434,10 @@ storyRewards:
         title: Storage Buffer
         desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
 
+    reward_unstacker:
+        title: Unstacker
+        desc: You can now unstack shapes with the <strong>unstacker</strong>! The top shape is taken off the input and comes out the right output.
+
     reward_freeplay:
         title: Freeplay
         desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)

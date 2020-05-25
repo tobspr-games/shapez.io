@@ -23,7 +23,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // First of all, process the current recipe
             processorComp.secondsUntilEject = Math_max(
                 0,
-                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds,
+                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
             );
 
             // Check if we have any finished items we can eject
@@ -196,7 +196,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const stackedDefinition = this.root.shapeDefinitionMgr.shapeActionStack(
                     lowerItem.definition,
-                    upperItem.definition,
+                    upperItem.definition
                 );
                 outItems.push({
                     item: new ShapeItem(stackedDefinition),
@@ -213,10 +213,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 const unstackedDefinitions = this.root.shapeDefinitionMgr.shapeActionUnstack(item.definition);
 
                 for (let i = 0; i < unstackedDefinitions.length; ++i) {
-                    outItems.push({
-                        item: new ShapeItem(unstackedDefinitions[i]),
-                        requiredSlot: i,
-                    });
+                    const definition = unstackedDefinitions[i];
+                    if (!definition.isEntirelyEmpty()) {
+                        outItems.push({
+                            item: new ShapeItem(definition),
+                            requiredSlot: i,
+                        });
+                    }
                 }
                 break;
             }
@@ -261,7 +264,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith(
                     shapeItem.definition,
-                    colorItem.color,
+                    colorItem.color
                 );
 
                 outItems.push({
@@ -284,12 +287,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const colorizedDefinition1 = this.root.shapeDefinitionMgr.shapeActionPaintWith(
                     shapeItem1.definition,
-                    colorItem.color,
+                    colorItem.color
                 );
 
                 const colorizedDefinition2 = this.root.shapeDefinitionMgr.shapeActionPaintWith(
                     shapeItem2.definition,
-                    colorItem.color,
+                    colorItem.color
                 );
                 outItems.push({
                     item: new ShapeItem(colorizedDefinition1),
@@ -319,7 +322,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
                     shapeItem.definition,
-                    [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color],
+                    [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color]
                 );
 
                 outItems.push({
