@@ -309,6 +309,7 @@ export class Application {
      * Boots the application
      */
     boot() {
+        console.log("Booting ...");
         this.registerStates();
         this.registerEventListeners();
 
