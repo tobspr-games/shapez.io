@@ -34,7 +34,7 @@
      units="px"
      showgrid="false"
      inkscape:document-rotation="0"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="layer1"
      inkscape:document-units="px"
      inkscape:cy="125.30512"
      inkscape:cx="163.3822"
@@ -58,7 +58,6 @@
     </rdf:RDF>
   </metadata>
   <g
-     sodipodi:insensitive="true"
      style="display:inline;opacity:1;mix-blend-mode:normal"
      id="layer1"
      inkscape:groupmode="layer"
@@ -66,11 +65,11 @@
     <path
        id="path1647"
        style="opacity:0.21;fill:#dee1ea;fill-opacity:1;stroke:#64666e;stroke-width:3.175;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="m 11.773184,4.683125 h 80.363157 c 1.465791,0 2.645833,1.1800417 2.645833,2.6458333 L 94.674626,26.890149 89.124998,27.062378 45.905841,47.819138 11.773184,48.034234 C 8.5582897,48.110282 7.3975782,46.38125 7.9105834,44.856066 L 17.568668,19.00564 9.1273499,11.705041 V 7.3289583 c 0,-1.4657916 1.1800411,-2.6458333 2.6458341,-2.6458333 z"
+       d="m 11.773184,4.683125 h 80.363157 c 1.465791,0 2.645833,1.1800417 2.645833,2.6458333 L 94.674626,34.470711 H 89.124998 L 48.551571,47.819138 11.773184,48.034234 C 8.5582897,48.110282 7.3975782,46.38125 7.9105834,44.856066 L 17.568668,19.00564 9.1273499,11.705041 V 7.3289583 c 0,-1.4657916 1.1800411,-2.6458333 2.6458341,-2.6458333 z"
        sodipodi:nodetypes="ssscccccccss" />
     <path
        sodipodi:nodetypes="ssscccccccss"
-       d="m 10.71485,3.6247916 h 80.363157 c 1.465791,0 2.645833,1.1800417 2.645833,2.6458333 L 93.616292,25.831815 88.066664,26.004044 44.847507,46.760804 10.71485,46.9759 C 7.4999563,47.051948 6.3392448,45.322916 6.85225,43.797732 L 16.510334,17.947306 8.0690165,10.646707 V 6.2706249 c 0,-1.4657916 1.1800416,-2.6458333 2.6458335,-2.6458333 z"
+       d="m 10.71485,3.6247916 h 80.363157 c 1.465791,0 2.645833,1.1800417 2.645833,2.6458333 L 93.616292,33.412377 H 88.066664 L 47.493238,46.760804 10.71485,46.9759 C 7.4999563,47.051948 6.3392448,45.322916 6.85225,43.797732 L 16.510334,17.947306 8.0690165,10.646707 V 6.2706249 c 0,-1.4657916 1.1800416,-2.6458333 2.6458335,-2.6458333 z"
        style="opacity:1;fill:#dee1ea;fill-opacity:1;stroke:#64666e;stroke-width:3.175;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect833" />
   </g>
@@ -230,6 +229,7 @@
     </g>
   </g>
   <g
+     sodipodi:insensitive="true"
      style="display:inline"
      inkscape:label="ArrowLines"
      id="layer5"
