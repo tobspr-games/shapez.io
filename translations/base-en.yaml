@@ -277,7 +277,7 @@ shopUpgrades:
         name: Extraction
         description: Speed +<gain>%
     processors:
-        name: Shape Processing
+        name: Cutting, Rotating & Stacking
         description: Speed +<gain>%
     painting:
         name: Mixing & Painting
