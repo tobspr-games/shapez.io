@@ -101,6 +101,14 @@ export class HUDUnlockNotification extends BaseHUDPart {
     requestClose() {
         this.root.app.adProvider.showVideoAd().then(() => {
             this.close();
+            if (this.root.hubGoals.level === 3) {
+                const { showUpgrades } = this.root.hud.parts.dialogs.showInfo(
+                    T.dialogs.upgradesIntroduction.title,
+                    T.dialogs.upgradesIntroduction.desc,
+                    ["showUpgrades:good:timeout"]
+                );
+                showUpgrades.add(() => this.root.hud.parts.shop.show());
+            }
         });
     }
 
