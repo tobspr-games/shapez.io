@@ -131,9 +131,9 @@ export class Camera extends BasicSerializableObject {
 
     deserialize(data) {
         const errorCode = super.deserialize(data);
-        if (errorCode) {
-            return errorCode;
-        }
+        // if (errorCode) {
+        //     return errorCode;
+        // }
 
         // Safety
         this.clampZoomLevel();
