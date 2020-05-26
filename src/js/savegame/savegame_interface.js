@@ -26,7 +26,6 @@ export class BaseSavegameInterface {
      */
     getSchemaUncached() {
         throw new Error("Implement get schema");
-        return {};
     }
 
     getValidator() {

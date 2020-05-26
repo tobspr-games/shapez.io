@@ -97,7 +97,7 @@ export const UPGRADES = {
     painting: {
         tiers: [
             {
-                required: [{ shape: "WrWrWrWr", amount: 2000 }],
+                required: [{ shape: "WrWrWrWr", amount: 500 }],
                 improvement: 1,
             },
             {
