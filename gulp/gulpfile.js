@@ -2,7 +2,7 @@
 
 const nodeVersion = process.versions.node.split(".")[0];
 if (nodeVersion !== "10") {
-    console.error("This cli requires exactly Node 10. You are using node " + nodeVersion);
+    console.error("This cli requires exactly Node.js 10. You are using Node.js " + nodeVersion);
     process.exit(1);
 }
 
@@ -13,6 +13,23 @@ const browserSync = require("browser-sync").create({});
 const path = require("path");
 const deleteEmpty = require("delete-empty");
 const execSync = require("child_process").execSync;
+
+const lfsOutput = execSync("git lfs install", { encoding: "utf-8" });
+if (!lfsOutput.toLowerCase().includes("git lfs initialized")) {
+    console.error(`
+    Git LFS is not installed, unable to build.
+
+    To install Git LFS on Linux:
+      - Arch:
+        sudo pacman -S git-lfs
+      - Debian/Ubuntu:
+        sudo apt install git-lfs
+
+    For other systems, see:
+    https://github.com/git-lfs/git-lfs/wiki/Installation
+    `);
+    process.exit(1);
+}
 
 // Load other plugins dynamically
 const $ = require("gulp-load-plugins")({
