@@ -201,7 +201,7 @@ export class InputDistributor {
             // TAB
             event.keyCode === 9 ||
             // F1 - F10
-            (event.keyCode >= 112 && event.keyCode < 122 && !G_IS_DEV)
+            (event.keyCode >= 112 && event.keyCode < 122)
         ) {
             event.preventDefault();
         }

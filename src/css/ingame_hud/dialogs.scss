@@ -117,6 +117,10 @@
             overflow-y: auto;
             pointer-events: all;
             @include S(width, 350px);
+
+            > strong {
+                font-weight: bold;
+            }
         }
 
         > .buttons {
@@ -142,6 +146,32 @@
                 &.bad {
                     background-color: $colorRedBright;
                     color: #fff;
+                }
+
+                &.timedButton {
+                    pointer-events: none;
+                    cursor: default;
+                    position: relative;
+                    overflow: hidden;
+                    &::after {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: unset;
+                        z-index: 5;
+                        content: " ";
+                        display: inline-block;
+                        background: rgba(#fff, 0.6);
+                        @include InlineAnimation(5s linear) {
+                            0% {
+                                width: 100%;
+                            }
+                            100% {
+                                width: 0%;
+                            }
+                        }
+                    }
                 }
             }
         }

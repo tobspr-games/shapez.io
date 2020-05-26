@@ -1,5 +1,5 @@
 import { Math_min } from "../../core/builtins";
-import { globalConfig, IS_MOBILE } from "../../core/config";
+import { globalConfig, IS_MOBILE, IS_DEBUG, IS_DEMO } from "../../core/config";
 import { createLogger } from "../../core/logging";
 import { queryParamOptions } from "../../core/query_parameters";
 import { clamp } from "../../core/utils";
@@ -19,6 +19,8 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
             iframed: false,
             externalLinks: true,
             iogLink: true,
+            unlimitedSavegames: IS_DEMO ? false : true,
+            showDemoBadge: IS_DEMO,
         };
 
         if (!G_IS_STANDALONE && queryParamOptions.embedProvider) {
@@ -35,6 +37,8 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
                 case "iogames.space": {
                     this.embedProvider.id = "iogames.space";
                     this.embedProvider.iogLink = true;
+                    this.embedProvider.unlimitedSavegames = true;
+                    this.embedProvider.showDemoBadge = false;
                     break;
                 }
 
@@ -69,6 +73,14 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
         logger.log("Embed provider:", this.embedProvider.id);
 
         return super.initialize().then(() => this.initializeAdProvider());
+    }
+
+    getHasUnlimitedSavegames() {
+        return this.embedProvider.unlimitedSavegames;
+    }
+
+    getShowDemoBadges() {
+        return this.embedProvider.showDemoBadge;
     }
 
     onSentryLoaded() {

@@ -84,7 +84,7 @@ class LoaderImpl {
 
         return Promise.race([
             new Promise((resolve, reject) => {
-                setTimeout(reject, G_IS_DEV ? 3000 : 60000);
+                setTimeout(reject, G_IS_DEV ? 500 : 10000);
             }),
 
             new Promise(resolve => {
