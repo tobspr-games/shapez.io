@@ -12,6 +12,8 @@ You can already play it [here](https://shapez.io).
 
 ## Building
 
+-   Make sure git `git lfs` extension is on your path
+-   Run `git lfs pull` to download sound assets
 -   Make sure `ffmpeg` is on your path
 -   Install Yarn and Node.js 10
 -   Run `yarn` in the root folder, then run `yarn` in the `gulp/` folder
