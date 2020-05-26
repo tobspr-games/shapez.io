@@ -514,7 +514,7 @@ keybindings:
     resetKeybindings: Reset Keyinbindings
 
     categoryLabels:
-        general: Appplication
+        general: Application
         ingame: Game
         placement: Placement
         massSelect: Mass Delete
