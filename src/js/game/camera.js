@@ -343,8 +343,9 @@ export class Camera extends BasicSerializableObject {
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).add(() => (this.keyboardForce.x = 1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).add(() => (this.keyboardForce.x = -1));
 
-        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomIn).add(() => (this.desiredZoom = this.zoomLevel * 1.2));
-        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomOut).add(() => (this.desiredZoom = this.zoomLevel * 0.8));
+        const roundToPow = (v, n)=> Math.pow(2, Math.round(Math.log2(v) * n) / n);
+        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomIn).add(() => (this.desiredZoom = roundToPow(this.zoomLevel * 1.2, 4)));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomOut).add(() => (this.desiredZoom = roundToPow(this.zoomLevel * 0.8, 4)));
 
         mapper.getBinding(KEYMAPPINGS.ingame.centerMap).add(() => this.centerOnMap());
     }
@@ -499,7 +500,8 @@ export class Camera extends BasicSerializableObject {
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *after* wheel: " + this.zoomLevel);
 
         this.clampZoomLevel();
-        this.desiredZoom = null;
+        const roundToPow = (v, n)=> Math.pow(2, Math.round(Math.log2(v) * n) / n);
+        this.desiredZoom = roundToPow(this.zoomLevel, 4);
         return false;
     }
 
