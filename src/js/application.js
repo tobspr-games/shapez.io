@@ -146,11 +146,7 @@ export class Application {
         }
         this.analytics = new GoogleAnalyticsImpl(this);
 
-        if (queryParamOptions.betaMode) {
-            this.gameAnalytics = new NoGameAnalytics(this);
-        } else {
-            this.gameAnalytics = new ShapezGameAnalytics(this);
-        }
+        this.gameAnalytics = new ShapezGameAnalytics(this);
     }
 
     /**
@@ -232,6 +228,7 @@ export class Application {
      * @param {Event} event
      */
     handleVisibilityChange(event) {
+        window.focus();
         const pageVisible = !document[pageHiddenPropName];
         if (pageVisible !== this.pageVisible) {
             this.pageVisible = pageVisible;
@@ -271,6 +268,7 @@ export class Application {
 
     onAppRenderableStateChanged(renderable) {
         logger.log("Application renderable:", renderable);
+        window.focus();
         if (!renderable) {
             this.stateMgr.getCurrentState().onAppPause();
         } else {
@@ -301,8 +299,7 @@ export class Application {
         logSection("BEFORE UNLOAD HANDLER", "#f77");
 
         if (!G_IS_DEV && this.stateMgr.getCurrentState().getHasUnloadConfirmation()) {
-            if (G_IS_STANDALONE) {
-            } else {
+            if (!G_IS_STANDALONE) {
                 // Need to show a "Are you sure you want to exit"
                 event.preventDefault();
                 event.returnValue = "Are you sure you want to exit?";
@@ -314,6 +311,7 @@ export class Application {
      * Boots the application
      */
     boot() {
+        console.log("Booting ...");
         this.registerStates();
         this.registerEventListeners();
 
@@ -330,6 +328,8 @@ export class Application {
         this.ticker.frameEmitted.add(this.onFrameEmitted, this);
         this.ticker.bgFrameEmitted.add(this.onBackgroundFrame, this);
         this.ticker.start();
+
+        window.focus();
     }
 
     /**

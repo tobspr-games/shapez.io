@@ -82,10 +82,10 @@ export class KeybindingsState extends TextualGameState {
     }
 
     editKeybinding(id) {
-        if (IS_DEMO) {
-            this.dialogs.showFeatureRestrictionInfo(T.demo.features.customizeKeybindings);
-            return;
-        }
+        // if (IS_DEMO) {
+        //     this.dialogs.showFeatureRestrictionInfo(T.demo.features.customizeKeybindings);
+        //     return;
+        // }
 
         const dialog = new Dialog({
             app: this.app,

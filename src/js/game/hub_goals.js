@@ -145,9 +145,6 @@ export class HubGoals extends BasicSerializableObject {
         if (G_IS_DEV && globalConfig.debug.allBuildingsUnlocked) {
             return true;
         }
-        if (queryParamOptions.betaMode) {
-            return true;
-        }
         return !!this.gainedRewards[reward];
     }
 
@@ -233,9 +230,6 @@ export class HubGoals extends BasicSerializableObject {
         if (G_IS_DEV && globalConfig.debug.upgradesNoCost) {
             return true;
         }
-        if (queryParamOptions.betaMode) {
-            return true;
-        }
 
         const tierData = handle.tiers[currentLevel];
 
@@ -282,8 +276,6 @@ export class HubGoals extends BasicSerializableObject {
 
         if (G_IS_DEV && globalConfig.debug.upgradesNoCost) {
             // Dont take resources
-        } else if (queryParamOptions.betaMode) {
-            // Same
         } else {
             for (let i = 0; i < tierData.required.length; ++i) {
                 const requirement = tierData.required[i];

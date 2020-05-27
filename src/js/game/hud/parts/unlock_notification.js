@@ -8,6 +8,7 @@ import { enumHubGoalRewards } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumHubGoalRewardsToContentUnlocked } from "../../tutorial_goals_mappings";
+import { InputReceiver } from "../../../core/input_receiver";
 
 export class HUDUnlockNotification extends BaseHUDPart {
     initialize() {
@@ -25,6 +26,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
     }
 
     createElements(parent) {
+        this.inputReciever = new InputReceiver("unlock-notification");
+
         this.element = makeDiv(parent, "ingame_HUD_UnlockNotification", []);
 
         const dialog = makeDiv(this.element, null, ["dialog"]);
@@ -47,6 +50,7 @@ export class HUDUnlockNotification extends BaseHUDPart {
      * @param {enumHubGoalRewards} reward
      */
     showForLevel(level, reward) {
+        this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.elemTitle.innerText = T.ingame.levelCompleteNotification.levelTitle.replace(
             "<level>",
             ("" + level).padStart(2, "0")
@@ -92,6 +96,7 @@ export class HUDUnlockNotification extends BaseHUDPart {
     }
 
     cleanup() {
+        this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         if (this.buttonShowTimeout) {
             clearTimeout(this.buttonShowTimeout);
             this.buttonShowTimeout = null;
@@ -101,10 +106,19 @@ export class HUDUnlockNotification extends BaseHUDPart {
     requestClose() {
         this.root.app.adProvider.showVideoAd().then(() => {
             this.close();
+            if (this.root.hubGoals.level === 3) {
+                const { showUpgrades } = this.root.hud.parts.dialogs.showInfo(
+                    T.dialogs.upgradesIntroduction.title,
+                    T.dialogs.upgradesIntroduction.desc,
+                    ["showUpgrades:good:timeout"]
+                );
+                showUpgrades.add(() => this.root.hud.parts.shop.show());
+            }
         });
     }
 
     close() {
+        this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         if (this.buttonShowTimeout) {
             clearTimeout(this.buttonShowTimeout);
             this.buttonShowTimeout = null;
