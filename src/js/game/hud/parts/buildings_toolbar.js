@@ -110,8 +110,8 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
 
     cycleBuildings() {
         let newIndex = this.lastSelectedIndex;
-        for (let i = 0; i < toolbarBuildings.length; ++i) {
-            newIndex = (newIndex + 1) % toolbarBuildings.length;
+        for (let i = 0; i < toolbarBuildings.length; ++i, ++newIndex) {
+            newIndex %= toolbarBuildings.length;
             const metaBuilding = gMetaBuildingRegistry.findByClass(toolbarBuildings[newIndex]);
             const handle = this.buildingHandles[metaBuilding.id];
             if (!handle.selected && handle.unlocked) {
