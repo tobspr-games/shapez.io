@@ -393,6 +393,10 @@ buildings:
             name: &splitter Balancer
             description: Multifunctional - Evenly distributes all inputs onto all outputs.
 
+        swapper:
+            name: Swapper
+            description: Swaps two conveyor belts.
+
         compact:
             name: Merger (compact)
             description: Merges two conveyor belts into one.

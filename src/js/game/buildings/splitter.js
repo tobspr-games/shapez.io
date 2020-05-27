@@ -11,7 +11,7 @@ import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
-export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
+export const enumSplitterVariants = { swapper: "swapper", compact: "compact", compactInverse: "compact-inverse" };
 
 export class MetaSplitterBuilding extends MetaBuilding {
     constructor() {
@@ -21,6 +21,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
+            case enumSplitterVariants.swapper:
                 return new Vector(2, 1);
             case enumSplitterVariants.compact:
             case enumSplitterVariants.compactInverse:
@@ -51,6 +52,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_splitter_compact)) {
             return [
                 defaultBuildingVariant,
+                enumSplitterVariants.swapper,
                 enumSplitterVariants.compact,
                 enumSplitterVariants.compactInverse,
             ];
@@ -110,7 +112,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant, variant) {
         switch (variant) {
-            case defaultBuildingVariant: {
+            case defaultBuildingVariant:
+            case enumSplitterVariants.swapper: {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -131,6 +134,10 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     { pos: new Vector(0, 0), direction: enumDirection.top },
                     { pos: new Vector(1, 0), direction: enumDirection.top },
                 ];
+
+                if (variant === enumSplitterVariants.swapper) {
+                    entity.components.ItemProcessor.type = enumItemProcessorTypes.swapper;
+                }
 
                 break;
             }
