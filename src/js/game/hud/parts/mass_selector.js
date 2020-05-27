@@ -121,7 +121,7 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {enumMouseButton} mouseButton
      */
     onMouseDown(pos, mouseButton) {
-        if (!this.root.app.inputMgr.ctrlIsDown) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).currentlyDown) {
             return;
         }
 
@@ -129,7 +129,7 @@ export class HUDMassSelector extends BaseHUDPart {
             return;
         }
 
-        if (!this.root.app.inputMgr.shiftIsDown) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).currentlyDown) {
             // Start new selection
             this.selectedUids = new Set();
         }

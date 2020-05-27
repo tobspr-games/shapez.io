@@ -161,14 +161,14 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 if (
                     metaBuilding &&
                     metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
-                    !this.root.app.inputMgr.ctrlIsDown
+                    !this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation).currentlyDown
                 ) {
                     const delta = newPos.sub(oldPos);
                     const angleDeg = Math_degrees(delta.angle());
                     this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
 
                     // Holding alt inverts the placement
-                    if (this.root.app.inputMgr.altIsDown) {
+                    if (this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse).currentlyDown) {
                         this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
                     }
                 }
@@ -467,13 +467,16 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         ) {
             // Succesfully placed
 
-            if (metaBuilding.getFlipOrientationAfterPlacement() && !this.root.app.inputMgr.ctrlIsDown) {
+            if (
+                metaBuilding.getFlipOrientationAfterPlacement() && 
+                !this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation).currentlyDown
+            ) {
                 this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
             }
 
             if (
                 !metaBuilding.getStayInPlacementMode() &&
-                !this.root.app.inputMgr.shiftIsDown &&
+                !this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).currentlyDown &&
                 !this.root.app.settings.getAllSettings().alwaysMultiplace
             ) {
                 // Stop placement
