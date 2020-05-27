@@ -17,8 +17,15 @@ export class MinerSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
 
+            // Check if miner is above an actual tile
+
             const minerComp = entity.components.Miner;
             const staticComp = entity.components.StaticMapEntity;
+
+            const tileBelow = this.root.map.getLowerLayerContentXY(staticComp.origin.x, staticComp.origin.y);
+            if (!tileBelow) {
+                continue;
+            }
 
             // First, try to get rid of chained items
             if (minerComp.itemChainBuffer.length > 0) {

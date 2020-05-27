@@ -557,6 +557,8 @@ keybindings:
 
         abortBuildingPlacement: Abort Placement
         rotateWhilePlacing: Rotate
+        rotateInverseModifier: >-
+            Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Confirm Mass Delete
         cycleBuildings: Cycle Buildings

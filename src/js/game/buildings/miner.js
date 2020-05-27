@@ -42,23 +42,6 @@ export class MetaMinerBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {GameRoot} root
-     * @param {object} param0
-     * @param {Vector} param0.origin
-     * @param {number} param0.rotation
-     * @param {number} param0.rotationVariant
-     * @param {string} param0.variant
-     */
-    performAdditionalPlacementChecks(root, { origin, rotation, rotationVariant, variant }) {
-        // Make sure its placed above a resource
-        const lowerLayer = root.map.getLowerLayerContentXY(origin.x, origin.y);
-        if (!lowerLayer) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * Creates the entity at the given location
      * @param {Entity} entity
      */

@@ -3,10 +3,11 @@ import { Entity } from "./entity";
 import { Vector, enumDirectionToVector, enumDirection } from "../core/vector";
 import { MetaBuilding } from "./meta_building";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
-import { Math_abs } from "../core/builtins";
+import { Math_abs, performanceNow } from "../core/builtins";
 import { createLogger } from "../core/logging";
 import { MetaBeltBaseBuilding, arrayBeltVariantToRotation } from "./buildings/belt_base";
 import { SOUNDS } from "../platform/sound";
+import { round2Digits } from "../core/utils";
 
 const logger = createLogger("ingame/logic");
 
@@ -132,17 +133,6 @@ export class GameLogic {
             return false;
         }
 
-        if (
-            !building.performAdditionalPlacementChecks(this.root, {
-                origin,
-                rotation,
-                rotationVariant,
-                variant,
-            })
-        ) {
-            return false;
-        }
-
         return this.isAreaFreeToBuild({
             origin,
             rotation,
@@ -200,6 +190,24 @@ export class GameLogic {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Performs a bulk operation, not updating caches in the meantime
+     * @param {function} operation
+     */
+    performBulkOperation(operation) {
+        logger.log("Running bulk operation ...");
+        assert(!this.root.bulkOperationRunning, "Can not run two bulk operations twice");
+        this.root.bulkOperationRunning = true;
+        const now = performanceNow();
+        const returnValue = operation();
+        const duration = performanceNow() - now;
+        logger.log("Done in", round2Digits(duration), "ms");
+        assert(this.root.bulkOperationRunning, "Bulk operation = false while bulk operation was running");
+        this.root.bulkOperationRunning = false;
+        this.root.signals.bulkOperationFinished.dispatch();
+        return returnValue;
     }
 
     /**

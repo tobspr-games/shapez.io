@@ -34,6 +34,7 @@ export class GameSystemWithFilter extends GameSystem {
         this.root.signals.entityQueuedForDestroy.add(this.internalPopEntityIfMatching, this);
 
         this.root.signals.postLoadHook.add(this.internalPostLoadHook, this);
+        this.root.signals.bulkOperationFinished.add(this.refreshCaches, this);
     }
 
     /**
@@ -175,7 +176,7 @@ export class GameSystemWithFilter extends GameSystem {
     internalRegisterEntity(entity) {
         this.allEntities.push(entity);
 
-        if (this.root.gameInitialized) {
+        if (this.root.gameInitialized && !this.root.bulkOperationRunning) {
             // Sort entities by uid so behaviour is predictable
             this.allEntities.sort((a, b) => a.uid - b.uid);
         }

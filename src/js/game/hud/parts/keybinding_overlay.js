@@ -1,22 +1,14 @@
-import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
-import { getStringForKeyCode, KEYMAPPINGS } from "../../key_action_mapper";
-import { TrackedState } from "../../../core/tracked_state";
-import { queryParamOptions } from "../../../core/query_parameters";
 import { T } from "../../../translations";
+import { getStringForKeyCode, KEYMAPPINGS } from "../../key_action_mapper";
+import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDKeybindingOverlay extends BaseHUDPart {
     initialize() {
-        this.shiftDownTracker = new TrackedState(this.onShiftStateChanged, this);
-
         this.root.hud.signals.selectedPlacementBuildingChanged.add(
             this.onSelectedBuildingForPlacementChanged,
             this
         );
-    }
-
-    onShiftStateChanged(shiftDown) {
-        this.element.classList.toggle("shiftDown", shiftDown);
     }
 
     createElements(parent) {
@@ -70,7 +62,9 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             </div>
 
             <div class="binding placementOnly">
-                <code class="keybinding builtinKey shift">⇧ ${T.global.keys.shift}</code>
+                <code class="keybinding builtinKey shift">⇧ ${getKeycode(
+                    KEYMAPPINGS.placementModifiers.placeMultiple
+                )}</code>
                 <label>${T.ingame.keybindingsOverlay.placeMultiple}</label>
             </div>
         `
@@ -81,7 +75,5 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
         this.element.classList.toggle("placementActive", !!selectedMetaBuilding);
     }
 
-    update() {
-        this.shiftDownTracker.set(this.root.app.inputMgr.shiftIsDown);
-    }
+    update() {}
 }

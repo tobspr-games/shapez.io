@@ -23,10 +23,6 @@ export class InputDistributor {
         /** @type {Array<function(any) : boolean>} */
         this.filters = [];
 
-        this.shiftIsDown = false;
-        this.altIsDown = false;
-        this.ctrlIsDown = false;
-
         this.bindToEvents();
     }
 
@@ -176,27 +172,13 @@ export class InputDistributor {
      * Handles when the page got blurred
      */
     handleBlur() {
-        this.ctrlIsDown = false;
-        this.shiftIsDown = false;
-        this.altIsDown = false;
         this.forwardToReceiver("pageBlur", {});
-        this.forwardToReceiver("shiftUp", {});
     }
 
     /**
      * @param {KeyboardEvent} event
      */
     handleKeydown(event) {
-        if (event.keyCode === 16) {
-            this.shiftIsDown = true;
-        }
-        if (event.keyCode === 17) {
-            this.ctrlIsDown = true;
-        }
-        if (event.keyCode === 18) {
-            this.altIsDown = true;
-        }
-
         if (
             // TAB
             event.keyCode === 9 ||
@@ -230,19 +212,6 @@ export class InputDistributor {
      * @param {KeyboardEvent} event
      */
     handleKeyup(event) {
-        if (event.keyCode === 16) {
-            this.shiftIsDown = false;
-            this.forwardToReceiver("shiftUp", {});
-        }
-        if (event.keyCode === 17) {
-            this.ctrlIsDown = false;
-            this.forwardToReceiver("ctrlUp", {});
-        }
-        if (event.keyCode === 18) {
-            this.altIsDown = false;
-            this.forwardToReceiver("altUp", {});
-        }
-
         this.forwardToReceiver("keyup", {
             keyCode: event.keyCode,
             shift: event.shiftKey,
