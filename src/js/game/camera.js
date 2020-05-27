@@ -529,6 +529,7 @@ export class Camera extends BasicSerializableObject {
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *after* wheel: " + this.zoomLevel);
 
         this.clampZoomLevel();
+        this.desiredZoom = null;
         return false;
     }
 
