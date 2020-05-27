@@ -23,7 +23,7 @@ class SoundSpritesContainer {
         }
         return (this.loadingPromise = Promise.race([
             new Promise((resolve, reject) => {
-                setTimeout(reject, G_IS_DEV ? 5000 : 60000);
+                setTimeout(reject, G_IS_DEV ? 500 : 5000);
             }),
             new Promise(resolve => {
                 this.howl = new Howl({
@@ -100,7 +100,7 @@ class MusicInstance extends MusicInstanceInterface {
     load() {
         return Promise.race([
             new Promise((resolve, reject) => {
-                setTimeout(reject, G_IS_DEV ? 5000 : 60000);
+                setTimeout(reject, G_IS_DEV ? 500 : 5000);
             }),
             new Promise((resolve, reject) => {
                 this.howl = new Howl({

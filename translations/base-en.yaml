@@ -89,6 +89,7 @@ dialogs:
         getStandalone: Get Standalone
         deleteGame: I know what I do
         viewUpdate: View Update
+        showUpgrades: Show Upgrades
 
     importSavegameError:
         title: Import Error
@@ -164,6 +165,12 @@ dialogs:
         title: Tutorial
         desc: >-
             Whenever you need help or are stuck, check out the 'Show hint' button in the lower left and I'll give my best to help you!
+
+    upgradesIntroduction:
+        title: Unlock Upgrades
+        desc: >-
+            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
+            The upgrades tab can be found on the top right corner of the screen.
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -277,7 +284,7 @@ shopUpgrades:
         name: Extraction
         description: Speed +<gain>%
     processors:
-        name: Shape Processing
+        name: Cutting, Rotating & Stacking
         description: Speed +<gain>%
     painting:
         name: Mixing & Painting
@@ -507,7 +514,7 @@ keybindings:
     resetKeybindings: Reset Keyinbindings
 
     categoryLabels:
-        general: Appplication
+        general: Application
         ingame: Game
         placement: Placement
         massSelect: Mass Delete
