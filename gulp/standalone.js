@@ -142,6 +142,11 @@ function gulptasksStandalone($, gulp, buildFolder) {
                         return;
                     }
 
+                    fs.writeFileSync(
+                        path.join(appPath, "LICENSE"),
+                        fs.readFileSync(path.join(__dirname, "..", "LICENSE"))
+                    );
+
                     const playablePath = appPath + "_playable";
                     fse.copySync(appPath, playablePath);
                     fs.writeFileSync(path.join(playablePath, "steam_appid.txt"), "1134480");
@@ -174,8 +179,8 @@ function gulptasksStandalone($, gulp, buildFolder) {
         "standalone.package.prod",
         $.sequence("standalone.prepare", [
             "standalone.package.prod.win64",
-            // "standalone.package.prod.win32",
             // "standalone.package.prod.linux64",
+            // "standalone.package.prod.win32",
             // "standalone.package.prod.linux32",
             // "standalone.package.prod.darwin64"
         ])
