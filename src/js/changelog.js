@@ -3,6 +3,7 @@ export const CHANGELOG = [
         version: "1.1.0",
         date: "unreleased",
         entries: [
+            "BLUEPRINTS!",
             "Allow holding SHIFT to rotate counter clockwise",
             "Allow changing all keybindings, including CTRL, ALT and SHIFT (by Dimava)",
             "Added confirmation when deleting more than 500 buildings at a time",
