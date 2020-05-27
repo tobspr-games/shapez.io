@@ -123,7 +123,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 trackProduction = false;
                 const availableSlots = entity.components.ItemEjector.slots.length - 1;
                 assert(inputItem instanceof ShapeItem, "Input for sorting is not a shape");
-                console.log(inputItem.serialize)
+                console.log(inputItem.serialize);
                 if (inputItem.serialize() == "CuCuCuCu") {
                     let nextSlot = processorComp.nextOutputSlot++ % availableSlots;
                     for (let i = 0; i < items.length; ++i) {
