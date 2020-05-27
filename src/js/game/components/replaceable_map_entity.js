@@ -8,4 +8,8 @@ export class ReplaceableMapEntityComponent extends Component {
     static getId() {
         return "ReplaceableMapEntity";
     }
+
+    duplicateWithoutContents() {
+        return new ReplaceableMapEntityComponent();
+    }
 }

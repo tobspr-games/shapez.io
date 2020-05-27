@@ -95,18 +95,18 @@ export class InGameState extends GameState {
     }
 
     onBeforeExit() {
-        logger.log("Saving before quitting");
-        return this.doSave().then(() => {
-            logger.log(this, "Successfully saved");
-            // this.stageDestroyed();
-        });
+        // logger.log("Saving before quitting");
+        // return this.doSave().then(() => {
+        //     logger.log(this, "Successfully saved");
+        //     // this.stageDestroyed();
+        // });
     }
 
     onAppPause() {
-        if (this.stage === stages.s10_gameRunning) {
-            logger.log("Saving because app got paused");
-            this.doSave();
-        }
+        // if (this.stage === stages.s10_gameRunning) {
+        //     logger.log("Saving because app got paused");
+        //     this.doSave();
+        // }
     }
 
     getHasFadeIn() {

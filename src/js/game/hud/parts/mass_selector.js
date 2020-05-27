@@ -5,12 +5,13 @@ import { DrawParameters } from "../../../core/draw_parameters";
 import { Entity } from "../../entity";
 import { Loader } from "../../../core/loader";
 import { globalConfig } from "../../../core/config";
-import { makeDiv } from "../../../core/utils";
+import { makeDiv, formatBigNumber, formatBigNumberFull } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { createLogger } from "../../../core/logging";
 import { enumMouseButton } from "../../camera";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { THEME } from "../../theme";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -20,13 +21,17 @@ export class HUDMassSelector extends BaseHUDPart {
             .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
             .getKeyCodeString();
         const abortKeybinding = this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).getKeyCodeString();
+        const copyKeybinding = this.root.keyMapper
+            .getBinding(KEYMAPPINGS.massSelect.massSelectCopy)
+            .getKeyCodeString();
 
         this.element = makeDiv(
             parent,
             "ingame_HUD_MassSelector",
             [],
-            T.ingame.massDelete.infoText
+            T.ingame.massSelect.infoText
                 .replace("<keyDelete>", removalKeybinding)
+                .replace("<keyCopy>", copyKeybinding)
                 .replace("<keyCancel>", abortKeybinding)
         );
     }
@@ -36,7 +41,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
         this.currentSelectionStart = null;
         this.currentSelectionEnd = null;
-        this.entityUidsMarkedForDeletion = new Set();
+        this.selectedUids = new Set();
 
         this.root.signals.entityQueuedForDestroy.add(this.onEntityDestroyed, this);
 
@@ -48,6 +53,7 @@ export class HUDMassSelector extends BaseHUDPart {
         this.root.keyMapper
             .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
             .add(this.confirmDelete, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectCopy).add(this.startCopy, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.element);
     }
@@ -57,7 +63,7 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {Entity} entity
      */
     onEntityDestroyed(entity) {
-        this.entityUidsMarkedForDeletion.delete(entity.uid);
+        this.selectedUids.delete(entity.uid);
     }
 
     /**
@@ -65,21 +71,47 @@ export class HUDMassSelector extends BaseHUDPart {
      */
     onBack() {
         // Clear entities on escape
-        if (this.entityUidsMarkedForDeletion.size > 0) {
-            this.entityUidsMarkedForDeletion = new Set();
+        if (this.selectedUids.size > 0) {
+            this.selectedUids = new Set();
             return STOP_PROPAGATION;
         }
     }
 
     confirmDelete() {
-        const entityUids = Array.from(this.entityUidsMarkedForDeletion);
+        if (this.selectedUids.size > 500) {
+            const { ok } = this.root.hud.parts.dialogs.showWarning(
+                T.dialogs.massDeleteConfirm.title,
+                T.dialogs.massDeleteConfirm.desc.replace(
+                    "<count>",
+                    "" + formatBigNumberFull(this.selectedUids.size)
+                ),
+                ["cancel:good", "ok:bad"]
+            );
+            ok.add(() => this.doDelete());
+        } else {
+            this.doDelete();
+        }
+    }
+
+    doDelete() {
+        const entityUids = Array.from(this.selectedUids);
         for (let i = 0; i < entityUids.length; ++i) {
             const uid = entityUids[i];
             const entity = this.root.entityMgr.findByUid(uid);
             if (!this.root.logic.tryDeleteBuilding(entity)) {
                 logger.error("Error in mass delete, could not remove building");
-                this.entityUidsMarkedForDeletion.delete(uid);
+                this.selectedUids.delete(uid);
             }
+        }
+    }
+
+    startCopy() {
+        if (this.selectedUids.size > 0) {
+            this.root.hud.signals.buildingsSelectedForCopy.dispatch(Array.from(this.selectedUids));
+            this.selectedUids = new Set();
+            this.root.soundProxy.playUiClick();
+        } else {
+            this.root.soundProxy.playUiError();
         }
     }
 
@@ -89,7 +121,7 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {enumMouseButton} mouseButton
      */
     onMouseDown(pos, mouseButton) {
-        if (!this.root.app.inputMgr.ctrlIsDown) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).currentlyDown) {
             return;
         }
 
@@ -97,9 +129,9 @@ export class HUDMassSelector extends BaseHUDPart {
             return;
         }
 
-        if (!this.root.app.inputMgr.shiftIsDown) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).currentlyDown) {
             // Start new selection
-            this.entityUidsMarkedForDeletion = new Set();
+            this.selectedUids = new Set();
         }
 
         this.currentSelectionStart = pos.copy();
@@ -132,7 +164,7 @@ export class HUDMassSelector extends BaseHUDPart {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     const contents = this.root.map.getTileContentXY(x, y);
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
-                        this.entityUidsMarkedForDeletion.add(contents.uid);
+                        this.selectedUids.add(contents.uid);
                     }
                 }
             }
@@ -143,7 +175,7 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     update() {
-        this.domAttach.update(this.entityUidsMarkedForDeletion.size > 0);
+        this.domAttach.update(this.selectedUids.size > 0);
     }
 
     /**
@@ -151,6 +183,8 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
+        const boundsBorder = 2;
+
         if (this.currentSelectionStart) {
             const worldStart = this.root.camera.screenToWorld(this.currentSelectionStart);
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
@@ -165,8 +199,8 @@ export class HUDMassSelector extends BaseHUDPart {
             const realTileEnd = tileStart.max(tileEnd);
 
             parameters.context.lineWidth = 1;
-            parameters.context.fillStyle = "rgba(255, 127, 127, 0.2)";
-            parameters.context.strokeStyle = "rgba(255, 127, 127, 0.5)";
+            parameters.context.fillStyle = THEME.map.selectionBackground;
+            parameters.context.strokeStyle = THEME.map.selectionOutline;
             parameters.context.beginPath();
             parameters.context.rect(
                 realWorldStart.x,
@@ -177,34 +211,40 @@ export class HUDMassSelector extends BaseHUDPart {
             parameters.context.fill();
             parameters.context.stroke();
 
+            parameters.context.fillStyle = THEME.map.selectionOverlay;
+
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     const contents = this.root.map.getTileContentXY(x, y);
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
                         const staticComp = contents.components.StaticMapEntity;
-                        const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
-                        this.deletionMarker.drawCachedCentered(
-                            parameters,
-                            center.x,
-                            center.y,
-                            globalConfig.tileSize * 0.5
+                        const bounds = staticComp.getTileSpaceBounds();
+                        parameters.context.beginRoundedRect(
+                            bounds.x * globalConfig.tileSize + boundsBorder,
+                            bounds.y * globalConfig.tileSize + boundsBorder,
+                            bounds.w * globalConfig.tileSize - 2 * boundsBorder,
+                            bounds.h * globalConfig.tileSize - 2 * boundsBorder,
+                            2
                         );
+                        parameters.context.fill();
                     }
                 }
             }
         }
 
-        this.entityUidsMarkedForDeletion.forEach(uid => {
+        parameters.context.fillStyle = THEME.map.selectionOverlay;
+        this.selectedUids.forEach(uid => {
             const entity = this.root.entityMgr.findByUid(uid);
             const staticComp = entity.components.StaticMapEntity;
-            const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
-
-            this.deletionMarker.drawCachedCentered(
-                parameters,
-                center.x,
-                center.y,
-                globalConfig.tileSize * 0.5
+            const bounds = staticComp.getTileSpaceBounds();
+            parameters.context.beginRoundedRect(
+                bounds.x * globalConfig.tileSize + boundsBorder,
+                bounds.y * globalConfig.tileSize + boundsBorder,
+                bounds.w * globalConfig.tileSize - 2 * boundsBorder,
+                bounds.h * globalConfig.tileSize - 2 * boundsBorder,
+                2
             );
+            parameters.context.fill();
         });
     }
 }

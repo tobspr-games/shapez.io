@@ -55,5 +55,4 @@
         // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
         "resolveJsonModule": true
     },
-    "exclude": ["backend/shared/gameserver_base_impl", "backend/shared/sentry_logger.js"]
 }

@@ -130,19 +130,6 @@ export class MetaBuilding {
     }
 
     /**
-     * Should perform additional placement checks
-     * @param {GameRoot} root
-     * @param {object} param0
-     * @param {Vector} param0.origin
-     * @param {number} param0.rotation
-     * @param {number} param0.rotationVariant
-     * @param {string} param0.variant
-     */
-    performAdditionalPlacementChecks(root, { origin, rotation, rotationVariant, variant }) {
-        return true;
-    }
-
-    /**
      * Creates the entity at the given location
      * @param {object} param0
      * @param {GameRoot} param0.root
@@ -154,6 +141,9 @@ export class MetaBuilding {
      */
     createAndPlaceEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
+
+        const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
+
         entity.addComponent(
             new StaticMapEntityComponent({
                 spriteKey:
@@ -166,6 +156,7 @@ export class MetaBuilding {
                 originalRotation,
                 tileSize: this.getDimensions(variant).copy(),
                 silhouetteColor: this.getSilhouetteColor(),
+                blueprintSpriteKey: blueprintSprite ? blueprintSprite.spriteName : "",
             })
         );
 

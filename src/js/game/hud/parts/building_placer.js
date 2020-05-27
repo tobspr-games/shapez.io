@@ -39,6 +39,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
 
+        this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
+
         this.domAttach = new DynamicDomAttach(this.root, this.element, {});
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
@@ -159,14 +161,19 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 if (
                     metaBuilding &&
                     metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
-                    !this.root.app.inputMgr.ctrlIsDown
+                    !this.root.keyMapper.getBinding(
+                        KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation
+                    ).currentlyDown
                 ) {
                     const delta = newPos.sub(oldPos);
                     const angleDeg = Math_degrees(delta.angle());
                     this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
 
                     // Holding alt inverts the placement
-                    if (this.root.app.inputMgr.altIsDown) {
+                    if (
+                        this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse)
+                            .currentlyDown
+                    ) {
                         this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
                     }
                 }
@@ -255,6 +262,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                     origin: new Vector(0, 0),
                     rotation: 0,
                     tileSize: metaBuilding.getDimensions(this.currentVariant.get()).copy(),
+                    blueprintSpriteKey: "",
                 })
             );
             metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
@@ -386,7 +394,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     tryRotate() {
         const selectedBuilding = this.currentMetaBuilding.get();
         if (selectedBuilding) {
-            this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).currentlyDown) {
+                this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
+            } else {
+                this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
+            }
+
             const staticComp = this.fakeEntity.components.StaticMapEntity;
             staticComp.rotation = this.currentBaseRotation;
         }
@@ -464,13 +477,18 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         ) {
             // Succesfully placed
 
-            if (metaBuilding.getFlipOrientationAfterPlacement() && !this.root.app.inputMgr.ctrlIsDown) {
+            if (
+                metaBuilding.getFlipOrientationAfterPlacement() &&
+                !this.root.keyMapper.getBinding(
+                    KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation
+                ).currentlyDown
+            ) {
                 this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
             }
 
             if (
                 !metaBuilding.getStayInPlacementMode() &&
-                !this.root.app.inputMgr.shiftIsDown &&
+                !this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).currentlyDown &&
                 !this.root.app.settings.getAllSettings().alwaysMultiplace
             ) {
                 // Stop placement

@@ -40,7 +40,7 @@ export const globalConfig = {
 
     // Map
     mapChunkSize: 16,
-    mapChunkPrerenderMinZoom: 1.3,
+    mapChunkPrerenderMinZoom: 1.15,
     mapChunkOverviewMinZoom: 0.7,
 
     // Belt speeds
@@ -93,8 +93,8 @@ export const globalConfig = {
         // disableZoomLimits: true,
         // showChunkBorders: true,
         // rewardsInstant: true,
-        // allBuildingsUnlocked: true,
-        upgradesNoCost: true,
+        allBuildingsUnlocked: true,
+        // upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
         // testClipping: true,
@@ -102,7 +102,9 @@ export const globalConfig = {
         // testTranslations: true,
         // enableEntityInspector: true,
         // testAds: true,
-        disableMapOverview: true,
+        // disableMapOverview: true,
+        disableTutorialHints: true,
+        disableUpgradeNotification: true,
         /* dev:end */
     },
 

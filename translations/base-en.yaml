@@ -172,6 +172,11 @@ dialogs:
             All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
             The upgrades tab can be found on the top right corner of the screen.
 
+    massDeleteConfirm:
+        title: Confirm delete
+        desc: >-
+            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -221,10 +226,10 @@ ingame:
         newUpgrade: A new upgrade is available!
         gameSaved: Your game has been saved.
 
-    # Mass delete information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings to delete
-    massDelete:
-        infoText: Press <keyDelete> to remove selected buildings and <keyCancel> to cancel.
+    # Mass select information, this is when you hold CTRL and then drag with your mouse
+    # to select multiple buildings
+    massSelect:
+        infoText: Press <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -514,10 +519,10 @@ keybindings:
     resetKeybindings: Reset Keyinbindings
 
     categoryLabels:
-        general: Appplication
+        general: Application
         ingame: Game
         placement: Placement
-        massSelect: Mass Delete
+        massSelect: Mass Select
         buildings: Building Shortcuts
         placementModifiers: Placement Modifiers
 
@@ -552,12 +557,15 @@ keybindings:
 
         abortBuildingPlacement: Abort Placement
         rotateWhilePlacing: Rotate
+        rotateInverseModifier: >-
+            Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Confirm Mass Delete
         cycleBuildings: Cycle Buildings
 
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
+        massSelectCopy: Copy area
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
