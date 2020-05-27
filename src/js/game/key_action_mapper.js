@@ -58,15 +58,15 @@ export const KEYMAPPINGS = {
     },
 
     massSelect: {
-        massSelectStart: { keyCode: 17, builtin: true }, // CTRL
-        massSelectSelectMultiple: { keyCode: 16, builtin: true }, // SHIFT
+        massSelectStart: { keyCode: 17 }, // CTRL
+        massSelectSelectMultiple: { keyCode: 16 }, // SHIFT
         confirmMassDelete: { keyCode: key("X") },
     },
 
     placementModifiers: {
-        placementDisableAutoOrientation: { keyCode: 17, builtin: true }, // CTRL
-        placeMultiple: { keyCode: 16, builtin: true }, // SHIFT
-        placeInverse: { keyCode: 18, builtin: true }, // ALT
+        placementDisableAutoOrientation: { keyCode: 17 }, // CTRL
+        placeMultiple: { keyCode: 16 }, // SHIFT
+        placeInverse: { keyCode: 18 }, // ALT
     },
 };
 
