@@ -3,24 +3,27 @@ export const CHANGELOG = [
         version: "1.1.0",
         date: "unreleased",
         entries: [
-            "<strong>UX</strong> Added background to toolbar to increase contrast",
-            "<strong>UX</strong> Added confirmation when deleting more than 500 buildings at a time",
+            "Allow changing all keybindings, including CTRL, ALT and SHIFT",
+            "Allow holding SHIFT to rotate counter clockwise",
+            "Added confirmation when deleting more than 500 buildings at a time",
+            "Added background to toolbar to increase contrast",
+            "Allow placing extractors anywhere again, but they don't work at all if not placed on a resource",
         ],
     },
     {
         version: "1.0.4",
         date: "26.05.2020",
         entries: [
-            "<strong>Balancing</strong> Reduce cost of first painting upgrade, and change 'Shape Processing' to 'Cutting, Rotating & Stacking'",
-            "<strong>Tutorial</strong> Add dialog after completing level 2 to check out the upgrades tab.",
-            "<strong>Misc</strong> Allow changing the keybindings in the demo version",
+            "Reduce cost of first painting upgrade, and change 'Shape Processing' to 'Cutting, Rotating & Stacking'",
+            "Add dialog after completing level 2 to check out the upgrades tab.",
+            "Allow changing the keybindings in the demo version",
         ],
     },
     {
         version: "1.0.3",
         date: "24.05.2020",
         entries: [
-            "<strong>Balancing</strong> Reduced the amount of shapes required for the first 5 levels to make it easier to get into the game.",
+            "Reduced the amount of shapes required for the first 5 levels to make it easier to get into the game.",
         ],
     },
     {

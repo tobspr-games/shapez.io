@@ -21,6 +21,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         keyActionMapper
             .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
             .add(this.abortPlacement, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.rotateBlueprint, this);
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
@@ -54,13 +55,13 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             return;
         }
 
-        console.log("down");
         const worldPos = this.root.camera.screenToWorld(pos);
         const tile = worldPos.toTileSpace();
         if (blueprint.tryPlace(this.root, tile)) {
-            if (!this.root.app.inputMgr.shiftIsDown) {
-                this.currentBlueprint.set(null);
-            }
+            // This actually feels weird
+            // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).currentlyDown) {
+            //     this.currentBlueprint.set(null);
+            // }
         }
     }
 
@@ -79,6 +80,16 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             return;
         }
         this.currentBlueprint.set(Blueprint.fromUids(this.root, uids));
+    }
+
+    rotateBlueprint() {
+        if (this.currentBlueprint.get()) {
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).currentlyDown) {
+                this.currentBlueprint.get().rotateCcw();
+            } else {
+                this.currentBlueprint.get().rotateCw();
+            }
+        }
     }
 
     /**

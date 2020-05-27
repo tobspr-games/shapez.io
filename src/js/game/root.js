@@ -70,6 +70,11 @@ export class GameRoot {
         /** @type {boolean} */
         this.gameInitialized = false;
 
+        /**
+         * Whether a bulk operation is running
+         */
+        this.bulkOperationRunning = false;
+
         //////// Other properties ///////
 
         /** @type {Camera} */
@@ -151,6 +156,8 @@ export class GameRoot {
 
             shapeDelivered: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
             itemProduced: /** @type {TypedSignal<[BaseItem]>} */ (new Signal()),
+
+            bulkOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
         };
 
         // RNG's
