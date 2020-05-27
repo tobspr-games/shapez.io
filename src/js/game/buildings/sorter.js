@@ -10,7 +10,7 @@ import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
 
-export class MetaMixerBuilding extends MetaBuilding {
+export class MetaSorterBuilding extends MetaBuilding {
     constructor() {
         super("sorter");
     }
