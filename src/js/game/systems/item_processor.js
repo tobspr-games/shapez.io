@@ -126,10 +126,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 trackProduction = false;
 
                 for (let i = 0; i < items.length; ++i) {
-                    let oppositeSlot = 1 - items[i].sourceSlot
+                    let oppositeSlot = 1 - items[i].sourceSlot;
                     outItems.push({
                         item: items[i].item,
-                        requiredSlot: oppositeSlot
+                        requiredSlot: oppositeSlot,
                     });
                 }
                 break;
