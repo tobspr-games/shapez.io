@@ -117,6 +117,32 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 break;
             }
 
+            // SORTER
+            case enumItemProcessorTypes.sorter: {
+                const inputItem = /** @type {ShapeItem} */ (items[0].item);
+                trackProduction = false;
+                const availableSlots = entity.components.ItemEjector.slots.length - 1;
+                assert(inputItem instanceof ShapeItem, "Input for sorting is not a shape");
+                console.log(inputItem.serialize)
+                if (inputItem.serialize() == "CuCuCuCu") {
+                    let nextSlot = processorComp.nextOutputSlot++ % availableSlots;
+                    for (let i = 0; i < items.length; ++i) {
+                        outItems.push({
+                            item: items[i].item,
+                            requiredSlot: 1,
+                        });
+                    }
+                } else {
+                    for (let i = 0; i < items.length; ++i) {
+                        outItems.push({
+                            item: items[i].item,
+                            requiredSlot: 0,
+                        });
+                    }
+                }
+                break;
+            }
+
             // CUTTER
             case enumItemProcessorTypes.cutter: {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);

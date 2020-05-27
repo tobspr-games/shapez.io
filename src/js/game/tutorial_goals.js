@@ -17,11 +17,12 @@ export const enumHubGoalRewards = {
     reward_rotater_ccw: "reward_rotater_ccw",
     reward_miner_chainable: "reward_miner_chainable",
     reward_underground_belt_tier_2: "reward_underground_belt_tier_2",
+    reward_storage: "reward_storage",
     reward_splitter_compact: "reward_splitter_compact",
     reward_cutter_quad: "reward_cutter_quad",
     reward_painter_double: "reward_painter_double",
+    reward_sorter: "reward_sorter",
     reward_painter_quad: "reward_painter_quad",
-    reward_storage: "reward_storage",
 
     reward_freeplay: "reward_freeplay",
 
