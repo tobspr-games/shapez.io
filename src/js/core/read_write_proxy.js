@@ -131,21 +131,21 @@ export class ReadWriteProxy {
         }
         const jsonString = JSON_stringify(compressObject(this.currentData));
 
-        if (!this.app.pageVisible || this.app.unloaded) {
-            logger.log("Saving file sync because in unload handler");
-            const checksum = sha1(jsonString + salt);
-            let compressed = compressionPrefix + compressX64(checksum + jsonString);
-            if (G_IS_DEV && IS_DEBUG) {
-                compressed = jsonString;
-            }
+        // if (!this.app.pageVisible || this.app.unloaded) {
+        //     logger.log("Saving file sync because in unload handler");
+        //     const checksum = sha1(jsonString + salt);
+        //     let compressed = compressionPrefix + compressX64(checksum + jsonString);
+        //     if (G_IS_DEV && IS_DEBUG) {
+        //         compressed = jsonString;
+        //     }
 
-            if (!this.app.storage.writeFileSyncIfSupported(this.filename, compressed)) {
-                return Promise.reject("Failed to write " + this.filename + " sync!");
-            } else {
-                logger.log("📄 Wrote (sync!)", this.filename);
-                return Promise.resolve(compressed);
-            }
-        }
+        //     if (!this.app.storage.writeFileSyncIfSupported(this.filename, compressed)) {
+        //         return Promise.reject("Failed to write " + this.filename + " sync!");
+        //     } else {
+        //         logger.log("📄 Wrote (sync!)", this.filename);
+        //         return Promise.resolve(compressed);
+        //     }
+        // }
 
         return asyncCompressor
             .compressFileAsync(jsonString)

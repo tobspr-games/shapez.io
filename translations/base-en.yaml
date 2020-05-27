@@ -522,7 +522,7 @@ keybindings:
         general: Application
         ingame: Game
         placement: Placement
-        massSelect: Mass Delete
+        massSelect: Mass Select
         buildings: Building Shortcuts
         placementModifiers: Placement Modifiers
 
@@ -565,6 +565,7 @@ keybindings:
 
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
+        massSelectCopy: Copy area
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
