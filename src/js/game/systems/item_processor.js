@@ -1,42 +1,16 @@
+import { Math_max } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
-import { DrawParameters } from "../../core/draw_parameters";
-import { Loader } from "../../core/loader";
+import { BaseItem } from "../base_item";
+import { enumColorMixingResults } from "../colors";
+import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { ItemProcessorComponent, enumItemProcessorTypes } from "../components/item_processor";
-import { Math_max, Math_radians } from "../../core/builtins";
-import { BaseItem } from "../base_item";
-import { ShapeItem } from "../items/shape_item";
-import { enumDirectionToVector, enumDirection, enumDirectionToAngle } from "../../core/vector";
 import { ColorItem } from "../items/color_item";
-import { enumColorMixingResults } from "../colors";
-import { drawRotatedSprite } from "../../core/draw_utils";
+import { ShapeItem } from "../items/shape_item";
 
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemProcessorComponent]);
-
-        this.sprites = {};
-        for (const key in enumItemProcessorTypes) {
-            this.sprites[key] = Loader.getSprite("sprites/buildings/" + key + ".png");
-        }
-
-        this.underlayBeltSprites = [
-            Loader.getSprite("sprites/belt/forward_0.png"),
-            Loader.getSprite("sprites/belt/forward_1.png"),
-            Loader.getSprite("sprites/belt/forward_2.png"),
-            Loader.getSprite("sprites/belt/forward_3.png"),
-            Loader.getSprite("sprites/belt/forward_4.png"),
-            Loader.getSprite("sprites/belt/forward_5.png"),
-        ];
-    }
-
-    draw(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawEntity.bind(this));
-    }
-
-    drawUnderlays(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawEntityUnderlays.bind(this));
     }
 
     update() {
@@ -49,19 +23,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // First of all, process the current recipe
             processorComp.secondsUntilEject = Math_max(
                 0,
-                processorComp.secondsUntilEject - globalConfig.physicsDeltaSeconds
+                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
             );
-
-            // Also, process item consumption animations to avoid items popping from the belts
-            for (let animIndex = 0; animIndex < processorComp.itemConsumptionAnimations.length; ++animIndex) {
-                const anim = processorComp.itemConsumptionAnimations[animIndex];
-                anim.animProgress +=
-                    globalConfig.physicsDeltaSeconds * this.root.hubGoals.getBeltBaseSpeed() * 2;
-                if (anim.animProgress > 1) {
-                    processorComp.itemConsumptionAnimations.splice(animIndex, 1);
-                    animIndex -= 1;
-                }
-            }
 
             // Check if we have any finished items we can eject
             if (
@@ -103,7 +66,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // Check if we have an empty queue and can start a new charge
             if (processorComp.itemsToEject.length === 0) {
-                if (processorComp.inputSlots.length === processorComp.inputsPerCharge) {
+                if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
                     this.startNewCharge(entity);
                 }
             }
@@ -121,22 +84,34 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const items = processorComp.inputSlots;
         processorComp.inputSlots = [];
 
+        /** @type {Object.<string, { item: BaseItem, sourceSlot: number }>} */
+        const itemsBySlot = {};
+        for (let i = 0; i < items.length; ++i) {
+            itemsBySlot[items[i].sourceSlot] = items[i];
+        }
+
         const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
         processorComp.secondsUntilEject = 1 / baseSpeed;
 
         /** @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>} */
         const outItems = [];
 
+        // Whether to track the production towards the analytics
+        let trackProduction = true;
+
         // DO SOME MAGIC
 
         switch (processorComp.type) {
             // SPLITTER
             case enumItemProcessorTypes.splitter: {
-                let nextSlot = processorComp.nextOutputSlot++ % 2;
+                trackProduction = false;
+                const availableSlots = entity.components.ItemEjector.slots.length;
+
+                let nextSlot = processorComp.nextOutputSlot++ % availableSlots;
                 for (let i = 0; i < items.length; ++i) {
                     outItems.push({
                         item: items[i].item,
-                        preferredSlot: (nextSlot + i) % 2,
+                        preferredSlot: (nextSlot + i) % availableSlots,
                     });
                 }
                 break;
@@ -148,22 +123,37 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
                 const inputDefinition = inputItem.definition;
 
-                const [cutDefinition1, cutDefinition2] = this.root.shapeDefinitionMgr.shapeActionCutHalf(
-                    inputDefinition
-                );
+                const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutHalf(inputDefinition);
 
-                if (!cutDefinition1.isEntirelyEmpty()) {
-                    outItems.push({
-                        item: new ShapeItem(cutDefinition1),
-                        requiredSlot: 0,
-                    });
+                for (let i = 0; i < cutDefinitions.length; ++i) {
+                    const definition = cutDefinitions[i];
+                    if (!definition.isEntirelyEmpty()) {
+                        outItems.push({
+                            item: new ShapeItem(definition),
+                            requiredSlot: i,
+                        });
+                    }
                 }
 
-                if (!cutDefinition2.isEntirelyEmpty()) {
-                    outItems.push({
-                        item: new ShapeItem(cutDefinition2),
-                        requiredSlot: 1,
-                    });
+                break;
+            }
+
+            // CUTTER (Quad)
+            case enumItemProcessorTypes.cutterQuad: {
+                const inputItem = /** @type {ShapeItem} */ (items[0].item);
+                assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
+                const inputDefinition = inputItem.definition;
+
+                const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutQuad(inputDefinition);
+
+                for (let i = 0; i < cutDefinitions.length; ++i) {
+                    const definition = cutDefinitions[i];
+                    if (!definition.isEntirelyEmpty()) {
+                        outItems.push({
+                            item: new ShapeItem(definition),
+                            requiredSlot: i,
+                        });
+                    }
                 }
 
                 break;
@@ -172,7 +162,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // ROTATER
             case enumItemProcessorTypes.rotater: {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);
-                assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
+                assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
                 const inputDefinition = inputItem.definition;
 
                 const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCW(inputDefinition);
@@ -182,14 +172,25 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 break;
             }
 
+            // ROTATER ( CCW)
+            case enumItemProcessorTypes.rotaterCCW: {
+                const inputItem = /** @type {ShapeItem} */ (items[0].item);
+                assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
+                const inputDefinition = inputItem.definition;
+
+                const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCCW(inputDefinition);
+                outItems.push({
+                    item: new ShapeItem(rotatedDefinition),
+                });
+                break;
+            }
+
             // STACKER
 
             case enumItemProcessorTypes.stacker: {
-                const item1 = items[0];
-                const item2 = items[1];
+                const lowerItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const upperItem = /** @type {ShapeItem} */ (itemsBySlot[1].item);
 
-                const lowerItem = /** @type {ShapeItem} */ (item1.sourceSlot === 0 ? item1.item : item2.item);
-                const upperItem = /** @type {ShapeItem} */ (item1.sourceSlot === 1 ? item1.item : item2.item);
                 assert(lowerItem instanceof ShapeItem, "Input for lower stack is not a shape");
                 assert(upperItem instanceof ShapeItem, "Input for upper stack is not a shape");
 
@@ -238,11 +239,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // PAINTER
 
             case enumItemProcessorTypes.painter: {
-                const item1 = items[0];
-                const item2 = items[1];
-
-                const shapeItem = /** @type {ShapeItem} */ (item1.sourceSlot === 0 ? item1.item : item2.item);
-                const colorItem = /** @type {ColorItem} */ (item1.sourceSlot === 1 ? item1.item : item2.item);
+                const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const colorItem = /** @type {ColorItem} */ (itemsBySlot[1].item);
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith(
                     shapeItem.definition,
@@ -256,15 +254,77 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 break;
             }
 
+            // PAINTER (DOUBLE)
+
+            case enumItemProcessorTypes.painterDouble: {
+                const shapeItem1 = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const shapeItem2 = /** @type {ShapeItem} */ (itemsBySlot[1].item);
+                const colorItem = /** @type {ColorItem} */ (itemsBySlot[2].item);
+
+                assert(shapeItem1 instanceof ShapeItem, "Input for painter is not a shape");
+                assert(shapeItem2 instanceof ShapeItem, "Input for painter is not a shape");
+                assert(colorItem instanceof ColorItem, "Input for painter is not a color");
+
+                const colorizedDefinition1 = this.root.shapeDefinitionMgr.shapeActionPaintWith(
+                    shapeItem1.definition,
+                    colorItem.color
+                );
+
+                const colorizedDefinition2 = this.root.shapeDefinitionMgr.shapeActionPaintWith(
+                    shapeItem2.definition,
+                    colorItem.color
+                );
+                outItems.push({
+                    item: new ShapeItem(colorizedDefinition1),
+                });
+
+                outItems.push({
+                    item: new ShapeItem(colorizedDefinition2),
+                });
+
+                break;
+            }
+
+            // PAINTER (QUAD)
+
+            case enumItemProcessorTypes.painterQuad: {
+                const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const colorItem1 = /** @type {ColorItem} */ (itemsBySlot[1].item);
+                const colorItem2 = /** @type {ColorItem} */ (itemsBySlot[2].item);
+                const colorItem3 = /** @type {ColorItem} */ (itemsBySlot[3].item);
+                const colorItem4 = /** @type {ColorItem} */ (itemsBySlot[4].item);
+
+                assert(shapeItem instanceof ShapeItem, "Input for painter is not a shape");
+                assert(colorItem1 instanceof ColorItem, "Input for painter is not a color");
+                assert(colorItem2 instanceof ColorItem, "Input for painter is not a color");
+                assert(colorItem3 instanceof ColorItem, "Input for painter is not a color");
+                assert(colorItem4 instanceof ColorItem, "Input for painter is not a color");
+
+                const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
+                    shapeItem.definition,
+                    [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color]
+                );
+
+                outItems.push({
+                    item: new ShapeItem(colorizedDefinition),
+                });
+
+                break;
+            }
+
             // HUB
 
             case enumItemProcessorTypes.hub: {
-                const shapeItem = /** @type {ShapeItem} */ (items[0].item);
+                trackProduction = false;
 
                 const hubComponent = entity.components.Hub;
                 assert(hubComponent, "Hub item processor has no hub component");
 
-                hubComponent.queueShapeDefinition(shapeItem.definition);
+                for (let i = 0; i < items.length; ++i) {
+                    const shapeItem = /** @type {ShapeItem} */ (items[i].item);
+                    hubComponent.queueShapeDefinition(shapeItem.definition);
+                }
+
                 break;
             }
 
@@ -272,70 +332,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 assertAlways(false, "Unkown item processor type: " + processorComp.type);
         }
 
+        // Track produced items
+        if (trackProduction) {
+            for (let i = 0; i < outItems.length; ++i) {
+                this.root.signals.itemProduced.dispatch(outItems[i].item);
+            }
+        }
+
         processorComp.itemsToEject = outItems;
-    }
-
-    /**
-     * @param {DrawParameters} parameters
-     * @param {Entity} entity
-     */
-    drawEntity(parameters, entity) {
-        const staticComp = entity.components.StaticMapEntity;
-        const processorComp = entity.components.ItemProcessor;
-        const acceptorComp = entity.components.ItemAcceptor;
-
-        for (let animIndex = 0; animIndex < processorComp.itemConsumptionAnimations.length; ++animIndex) {
-            const { item, slotIndex, animProgress, direction } = processorComp.itemConsumptionAnimations[
-                animIndex
-            ];
-
-            const slotData = acceptorComp.slots[slotIndex];
-            const slotWorldPos = staticComp.applyRotationToVector(slotData.pos).add(staticComp.origin);
-
-            const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];
-            const finalTile = slotWorldPos.subScalars(
-                fadeOutDirection.x * (animProgress / 2 - 0.5),
-                fadeOutDirection.y * (animProgress / 2 - 0.5)
-            );
-            item.draw(
-                (finalTile.x + 0.5) * globalConfig.tileSize,
-                (finalTile.y + 0.5) * globalConfig.tileSize,
-                parameters
-            );
-        }
-    }
-    /**
-     * @param {DrawParameters} parameters
-     * @param {Entity} entity
-     */
-    drawEntityUnderlays(parameters, entity) {
-        const staticComp = entity.components.StaticMapEntity;
-        const processorComp = entity.components.ItemProcessor;
-
-        const underlays = processorComp.beltUnderlays;
-        for (let i = 0; i < underlays.length; ++i) {
-            const { pos, direction } = underlays[i];
-
-            const transformedPos = staticComp.localTileToWorld(pos);
-            const angle = enumDirectionToAngle[staticComp.localDirectionToWorld(direction)];
-
-            // SYNC with systems/belt.js:drawSingleEntity!
-            const animationIndex = Math.floor(
-                (this.root.time.now() *
-                    this.root.hubGoals.getBeltBaseSpeed() *
-                    this.underlayBeltSprites.length *
-                    126) /
-                    42
-            );
-
-            drawRotatedSprite({
-                parameters,
-                sprite: this.underlayBeltSprites[animationIndex % this.underlayBeltSprites.length],
-                x: (transformedPos.x + 0.5) * globalConfig.tileSize,
-                y: (transformedPos.y + 0.5) * globalConfig.tileSize,
-                angle: Math_radians(angle),
-                size: globalConfig.tileSize,
-            });
-        }
     }
 }

@@ -91,18 +91,6 @@ export class BaseHUDPart {
     // Helpers
 
     /**
-     * Calls closeMethod if an overlay is opened
-     * @param {function=} closeMethod
-     */
-    closeOnOverlayOpen(closeMethod = null) {
-        this.root.hud.signals.overlayOpened.add(overlay => {
-            if (overlay !== this) {
-                (closeMethod || this.close).call(this);
-            }
-        }, this);
-    }
-
-    /**
      * Helper method to construct a new click detector
      * @param {Element} element The element to listen on
      * @param {function} handler The handler to call on this object
@@ -153,10 +141,7 @@ export class BaseHUDPart {
      * @param {KeyActionMapper} sourceMapper
      */
     forwardGameSpeedKeybindings(sourceMapper) {
-        sourceMapper.forward(this.root.gameState.keyActionMapper, [
-            "gamespeed_pause",
-            "gamespeed_fastforward",
-        ]);
+        sourceMapper.forward(this.root.keyMapper, ["gamespeed_pause", "gamespeed_fastforward"]);
     }
 
     /**
@@ -165,11 +150,11 @@ export class BaseHUDPart {
      * @param {KeyActionMapper} sourceMapper
      */
     forwardMapMovementKeybindings(sourceMapper) {
-        sourceMapper.forward(this.root.gameState.keyActionMapper, [
-            "map_move_up",
-            "map_move_right",
-            "map_move_down",
-            "map_move_left",
+        sourceMapper.forward(this.root.keyMapper, [
+            "mapMoveUp",
+            "mapMoveRight",
+            "mapMoveDown",
+            "mapMoveLeft",
         ]);
     }
 }

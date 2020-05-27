@@ -12,7 +12,21 @@ import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
 import { HUDShop } from "./parts/shop";
-import { IS_MOBILE } from "../../core/config";
+import { IS_MOBILE, globalConfig, IS_DEMO } from "../../core/config";
+import { HUDMassSelector } from "./parts/mass_selector";
+import { HUDVignetteOverlay } from "./parts/vignette_overlay";
+import { HUDStatistics } from "./parts/statistics";
+import { MetaBuilding } from "../meta_building";
+import { HUDPinnedShapes } from "./parts/pinned_shapes";
+import { ShapeDefinition } from "../shape_definition";
+import { HUDNotifications, enumNotificationType } from "./parts/notifications";
+import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDDebugInfo } from "./parts/debug_info";
+import { HUDEntityDebugger } from "./parts/entity_debugger";
+import { KEYMAPPINGS } from "../key_action_mapper";
+import { HUDWatermark } from "./parts/watermark";
+import { HUDModalDialogs } from "./parts/modal_dialogs";
+import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 
 export class GameHUD {
     /**
@@ -26,10 +40,6 @@ export class GameHUD {
      * Initializes the hud parts
      */
     initialize() {
-        this.signals = {
-            overlayOpened: new Signal(/* overlay */),
-        };
-
         this.parts = {
             processingOverlay: new HUDProcessingOverlay(this.root),
 
@@ -40,17 +50,43 @@ export class GameHUD {
 
             gameMenu: new HUDGameMenu(this.root),
 
+            massSelector: new HUDMassSelector(this.root),
+
             shop: new HUDShop(this.root),
+            statistics: new HUDStatistics(this.root),
+
+            vignetteOverlay: new HUDVignetteOverlay(this.root),
+
+            pinnedShapes: new HUDPinnedShapes(this.root),
+
+            notifications: new HUDNotifications(this.root),
+            settingsMenu: new HUDSettingsMenu(this.root),
 
             // betaOverlay: new HUDBetaOverlay(this.root),
+            debugInfo: new HUDDebugInfo(this.root),
+
+            dialogs: new HUDModalDialogs(this.root),
         };
 
         this.signals = {
-            selectedPlacementBuildingChanged: new Signal(/* metaBuilding|null */),
+            selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
+            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition, number]>} */ (new Signal()),
+            notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {
             this.parts.keybindingOverlay = new HUDKeybindingOverlay(this.root);
+        }
+
+        if (G_IS_DEV && globalConfig.debug.enableEntityInspector) {
+            this.parts.entityDebugger = new HUDEntityDebugger(this.root);
+        }
+
+        if (IS_DEMO) {
+            this.parts.watermark = new HUDWatermark(this.root);
+        }
+        if (this.root.app.settings.getAllSettings().offerHints) {
+            this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
         }
 
         const frag = document.createDocumentFragment();
@@ -65,7 +101,7 @@ export class GameHUD {
         }
         this.internalInitSignalConnections();
 
-        this.root.gameState.keyActionMapper.getBinding("toggle_hud").add(this.toggleUi, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
     }
 
     /**
@@ -149,7 +185,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        const partsOrder = ["buildingPlacer"];
+        const partsOrder = ["massSelector", "buildingPlacer"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {
@@ -163,7 +199,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     drawOverlays(parameters) {
-        const partsOrder = [];
+        const partsOrder = ["watermark"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

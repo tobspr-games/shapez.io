@@ -154,6 +154,22 @@ export class SavegameManager extends ReadWriteProxy {
         });
     }
 
+    importSavegame(data) {
+        const savegame = this.createNewSavegame();
+        const migrationResult = savegame.migrate(data);
+        if (migrationResult.isBad()) {
+            return Promise.reject("Failed to migrate: " + migrationResult.reason);
+        }
+
+        savegame.currentData = data;
+        const verification = savegame.verify(data);
+        if (verification.isBad()) {
+            return Promise.reject("Verification failed: " + verification.result);
+        }
+
+        return savegame.writeSavegameAndMetadata().then(() => this.sortSavegames());
+    }
+
     /**
      * Sorts all savegames by their creation time descending
      * @returns {Promise<any>}
@@ -161,7 +177,7 @@ export class SavegameManager extends ReadWriteProxy {
     sortSavegames() {
         this.currentData.savegames.sort((a, b) => b.lastUpdate - a.lastUpdate);
         let promiseChain = Promise.resolve();
-        while (this.currentData.savegames.length > 100) {
+        while (this.currentData.savegames.length > 30) {
             const toRemove = this.currentData.savegames.pop();
 
             // Try to remove the savegame since its no longer available
@@ -186,14 +202,9 @@ export class SavegameManager extends ReadWriteProxy {
      * Helper method to generate a new internal savegame id
      */
     generateInternalId() {
-        const timestamp = ("" + Math_floor(Date.now() / 1000.0 - 1565641619)).padStart(10, "0");
-        return (
-            timestamp +
-            "." +
-            Rusha.createHash()
-                .update(Date.now() + "/" + Math.random())
-                .digest("hex")
-        );
+        return Rusha.createHash()
+            .update(Date.now() + "/" + Math.random())
+            .digest("hex");
     }
 
     // End
@@ -205,7 +216,7 @@ export class SavegameManager extends ReadWriteProxy {
             if (G_IS_DEV && globalConfig.debug.disableSavegameWrite) {
                 return Promise.resolve();
             }
-            return this.writeAsync();
+            return this.sortSavegames().then(() => this.writeAsync());
         });
     }
 }

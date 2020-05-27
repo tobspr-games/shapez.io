@@ -9,6 +9,7 @@ import { ReplaceableMapEntityComponent } from "./components/replaceable_map_enti
 import { UndergroundBeltComponent } from "./components/underground_belt";
 import { UnremovableComponent } from "./components/unremovable";
 import { HubComponent } from "./components/hub";
+import { StorageComponent } from "./components/storage";
 /* typehints:end */
 
 /**
@@ -51,6 +52,9 @@ export class EntityComponentStorage {
 
         /** @type {HubComponent} */
         this.Hub;
+
+        /** @type {StorageComponent} */
+        this.Storage;
 
         /* typehints:end */
     }

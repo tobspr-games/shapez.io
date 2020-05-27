@@ -11,6 +11,7 @@ import { JSON_stringify, JSON_parse } from "./builtins";
 import { ExplainedResult } from "./explained_result";
 import { decompressX64, compressX64 } from ".//lzstring";
 import { asyncCompressor, compressionPrefix } from "./async_compression";
+import { compressObject, decompressObject } from "../savegame/savegame_compressor";
 
 const logger = createLogger("read_write_proxy");
 
@@ -79,6 +80,45 @@ export class ReadWriteProxy {
     }
 
     /**
+     *
+     * @param {object} obj
+     */
+    static serializeObject(obj) {
+        const jsonString = JSON_stringify(compressObject(obj));
+        const checksum = sha1(jsonString + salt);
+        return compressionPrefix + compressX64(checksum + jsonString);
+    }
+
+    /**
+     *
+     * @param {object} text
+     */
+    static deserializeObject(text) {
+        const decompressed = decompressX64(text.substr(compressionPrefix.length));
+        if (!decompressed) {
+            // LZ string decompression failure
+            throw new Error("bad-content / decompression-failed");
+        }
+        if (decompressed.length < 40) {
+            // String too short
+            throw new Error("bad-content / payload-too-small");
+        }
+
+        // Compare stored checksum with actual checksum
+        const checksum = decompressed.substring(0, 40);
+        const jsonString = decompressed.substr(40);
+        const desiredChecksum = sha1(jsonString + salt);
+        if (desiredChecksum !== checksum) {
+            // Checksum mismatch
+            throw new Error("bad-content / checksum-mismatch");
+        }
+
+        const parsed = JSON.parse(jsonString);
+        const decoded = decompressObject(parsed);
+        return decoded;
+    }
+
+    /**
      * Writes the data asychronously, fails if verify() fails
      * @returns {Promise<string>}
      */
@@ -89,7 +129,7 @@ export class ReadWriteProxy {
             logger.error("Tried to write invalid data to", this.filename, "reason:", verifyResult.reason);
             return Promise.reject(verifyResult.reason);
         }
-        const jsonString = JSON_stringify(this.currentData);
+        const jsonString = JSON_stringify(compressObject(this.currentData));
 
         if (!this.app.pageVisible || this.app.unloaded) {
             logger.log("Saving file sync because in unload handler");
@@ -149,7 +189,7 @@ export class ReadWriteProxy {
                 .then(rawData => {
                     if (rawData == null) {
                         // So, the file has not been found, use default data
-                        return JSON_stringify(this.getDefaultData());
+                        return JSON_stringify(compressObject(this.getDefaultData()));
                     }
 
                     if (rawData.startsWith(compressionPrefix)) {
@@ -197,6 +237,9 @@ export class ReadWriteProxy {
                         throw new Error("invalid-serialized-data");
                     }
                 })
+
+                // Decompress
+                .then(compressed => decompressObject(compressed))
 
                 // Verify basic structure
                 .then(contents => {

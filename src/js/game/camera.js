@@ -2,20 +2,22 @@ import {
     Math_abs,
     Math_ceil,
     Math_floor,
+    Math_max,
     Math_min,
     Math_random,
     performanceNow,
-    Math_max,
 } from "../core/builtins";
+import { clickDetectorGlobals } from "../core/click_detector";
+import { globalConfig } from "../core/config";
+import { createLogger } from "../core/logging";
+import { queryParamOptions } from "../core/query_parameters";
 import { Rectangle } from "../core/rectangle";
 import { Signal, STOP_PROPAGATION } from "../core/signal";
-import { clamp, lerp } from "../core/utils";
+import { clamp } from "../core/utils";
 import { mixVector, Vector } from "../core/vector";
-import { globalConfig } from "../core/config";
-import { GameRoot } from "./root";
 import { BasicSerializableObject, types } from "../savegame/serialization";
-import { clickDetectorGlobals } from "../core/click_detector";
-import { createLogger } from "../core/logging";
+import { GameRoot } from "./root";
+import { KEYMAPPINGS } from "./key_action_mapper";
 
 const logger = createLogger("camera");
 
@@ -27,6 +29,15 @@ const velocitySmoothing = 0.5;
 const velocityFade = 0.98;
 const velocityStrength = 0.4;
 const velocityMax = 20;
+
+/**
+ * @enum {string}
+ */
+export const enumMouseButton = {
+    left: "left",
+    middle: "middle",
+    right: "right",
+};
 
 export class Camera extends BasicSerializableObject {
     constructor(root) {
@@ -80,14 +91,21 @@ export class Camera extends BasicSerializableObject {
         this.touchPostMoveVelocity = new Vector(0, 0);
 
         // Handlers
-        this.downPreHandler = new Signal(/* pos */);
-        this.movePreHandler = new Signal(/* pos */);
-        this.pinchPreHandler = new Signal(/* pos */);
-        this.upPostHandler = new Signal(/* pos */);
+        this.downPreHandler = /** @type {TypedSignal<[Vector, enumMouseButton]>} */ (new Signal());
+        this.movePreHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
+        // this.pinchPreHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
+        this.upPostHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
 
         this.internalInitEvents();
         this.clampZoomLevel();
         this.bindKeys();
+        if (G_IS_DEV) {
+            window.addEventListener("keydown", ev => {
+                if (ev.key === "l") {
+                    this.zoomLevel = 3;
+                }
+            });
+        }
     }
 
     // Serialization
@@ -149,8 +167,7 @@ export class Camera extends BasicSerializableObject {
      * Finds a good initial zoom level
      */
     findInitialZoom() {
-        return 3;
-        const desiredWorldSpaceWidth = 20 * globalConfig.tileSize;
+        const desiredWorldSpaceWidth = 15 * globalConfig.tileSize;
         const zoomLevelX = this.root.gameWidth / desiredWorldSpaceWidth;
         const zoomLevelY = this.root.gameHeight / desiredWorldSpaceWidth;
 
@@ -320,13 +337,20 @@ export class Camera extends BasicSerializableObject {
      * Binds the arrow keys
      */
     bindKeys() {
-        const mapper = this.root.gameState.keyActionMapper;
-        mapper.getBinding("map_move_up").add(() => (this.keyboardForce.y = -1));
-        mapper.getBinding("map_move_down").add(() => (this.keyboardForce.y = 1));
-        mapper.getBinding("map_move_right").add(() => (this.keyboardForce.x = 1));
-        mapper.getBinding("map_move_left").add(() => (this.keyboardForce.x = -1));
+        const mapper = this.root.keyMapper;
+        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).add(() => (this.keyboardForce.y = -1));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).add(() => (this.keyboardForce.y = 1));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).add(() => (this.keyboardForce.x = 1));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).add(() => (this.keyboardForce.x = -1));
 
-        mapper.getBinding("center_map").add(() => (this.desiredCenter = new Vector(0, 0)));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomIn).add(() => (this.desiredZoom = this.zoomLevel * 1.2));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomOut).add(() => (this.desiredZoom = this.zoomLevel * 0.8));
+
+        mapper.getBinding(KEYMAPPINGS.ingame.centerMap).add(() => this.centerOnMap());
+    }
+
+    centerOnMap() {
+        this.desiredCenter = new Vector(0, 0);
     }
 
     /**
@@ -407,6 +431,10 @@ export class Camera extends BasicSerializableObject {
         this.touchPostMoveVelocity = new Vector(0, 0);
         if (event.which === 1) {
             this.combinedSingleTouchStartHandler(event.clientX, event.clientY);
+        } else if (event.which === 2) {
+            this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.middle);
+        } else if (event.which === 3) {
+            this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.right);
         }
         return false;
     }
@@ -492,10 +520,10 @@ export class Camera extends BasicSerializableObject {
             const touch = event.touches[0];
             this.combinedSingleTouchStartHandler(touch.clientX, touch.clientY);
         } else if (event.touches.length === 2) {
-            if (this.pinchPreHandler.dispatch() === STOP_PROPAGATION) {
-                // Something prevented pinching
-                return false;
-            }
+            // if (this.pinchPreHandler.dispatch() === STOP_PROPAGATION) {
+            //     // Something prevented pinching
+            //     return false;
+            // }
 
             const touch1 = event.touches[0];
             const touch2 = event.touches[1];
@@ -616,7 +644,7 @@ export class Camera extends BasicSerializableObject {
      */
     combinedSingleTouchStartHandler(x, y) {
         const pos = new Vector(x, y);
-        if (this.downPreHandler.dispatch(pos) === STOP_PROPAGATION) {
+        if (this.downPreHandler.dispatch(pos, enumMouseButton.left) === STOP_PROPAGATION) {
             // Somebody else captured it
             return;
         }
@@ -687,7 +715,6 @@ export class Camera extends BasicSerializableObject {
         if (G_IS_DEV && globalConfig.debug.disableZoomLimits) {
             return;
         }
-
         const wrapper = this.root.app.platformWrapper;
 
         assert(Number.isFinite(this.zoomLevel), "Invalid zoom level *before* clamp: " + this.zoomLevel);
@@ -795,7 +822,7 @@ export class Camera extends BasicSerializableObject {
     internalUpdateZooming(now, dt) {
         if (!this.currentlyPinching && this.desiredZoom !== null) {
             const diff = this.zoomLevel - this.desiredZoom;
-            if (Math_abs(diff) > 0.05) {
+            if (Math_abs(diff) > 0.0001) {
                 let fade = 0.94;
                 if (diff > 0) {
                     // Zoom out faster than in
@@ -846,20 +873,20 @@ export class Camera extends BasicSerializableObject {
             let forceX = 0;
             let forceY = 0;
 
-            const actionMapper = this.root.gameState.keyActionMapper;
-            if (actionMapper.getBinding("map_move_up").currentlyDown) {
+            const actionMapper = this.root.keyMapper;
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).currentlyDown) {
                 forceY -= 1;
             }
 
-            if (actionMapper.getBinding("map_move_down").currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).currentlyDown) {
                 forceY += 1;
             }
 
-            if (actionMapper.getBinding("map_move_left").currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).currentlyDown) {
                 forceX -= 1;
             }
 
-            if (actionMapper.getBinding("map_move_right").currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).currentlyDown) {
                 forceX += 1;
             }
 

@@ -15,6 +15,7 @@ import {
     performanceNow,
 } from "./builtins";
 import { Vector } from "./vector";
+import { T } from "../translations";
 
 // Constants
 export const TOP = new Vector(0, -1);
@@ -421,7 +422,7 @@ export function formatBigNumber(num, divider = ".") {
     num = Math_abs(num);
 
     if (num > 1e54) {
-        return sign + "inf";
+        return sign + T.global.infinite;
     }
 
     if (num < 10 && !Number.isInteger(num)) {
@@ -435,26 +436,9 @@ export function formatBigNumber(num, divider = ".") {
     if (num < 1000) {
         return sign + "" + num;
     }
-
-    // if (num > 1e51) return sign + T.common.number_format.sedecillion.replace("%amount%", "" + roundSmart(num / 1e51));
-    // if (num > 1e48)
-    //     return sign + T.common.number_format.quinquadecillion.replace("%amount%", "" + roundSmart(num / 1e48));
-    // if (num > 1e45)
-    //     return sign + T.common.number_format.quattuordecillion.replace("%amount%", "" + roundSmart(num / 1e45));
-    // if (num > 1e42) return sign + T.common.number_format.tredecillion.replace("%amount%", "" + roundSmart(num / 1e42));
-    // if (num > 1e39) return sign + T.common.number_format.duodecillions.replace("%amount%", "" + roundSmart(num / 1e39));
-    // if (num > 1e36) return sign + T.common.number_format.undecillions.replace("%amount%", "" + roundSmart(num / 1e36));
-    // if (num > 1e33) return sign + T.common.number_format.decillions.replace("%amount%", "" + roundSmart(num / 1e33));
-    // if (num > 1e30) return sign + T.common.number_format.nonillions.replace("%amount%", "" + roundSmart(num / 1e30));
-    // if (num > 1e27) return sign + T.common.number_format.octillions.replace("%amount%", "" + roundSmart(num / 1e27));
-    // if (num >= 1e24) return sign + T.common.number_format.septillions.replace("%amount%", "" + roundSmart(num / 1e24));
-    // if (num >= 1e21) return sign + T.common.number_format.sextillions.replace("%amount%", "" + roundSmart(num / 1e21));
-    // if (num >= 1e18) return sign + T.common.number_format.quintillions.replace("%amount%", "" + roundSmart(num / 1e18));
-    // if (num >= 1e15) return sign + T.common.number_format.quantillions.replace("%amount%", "" + roundSmart(num / 1e15));
-    // if (num >= 1e12) return sign + T.common.number_format.trillions.replace("%amount%", "" + roundSmart(num / 1e12));
-    // if (num >= 1e9) return sign + T.common.number_format.billions.replace("%amount%", "" + roundSmart(num / 1e9));
-    // if (num >= 1e6) return sign + T.common.number_format.millions.replace("%amount%", "" + roundSmart(num / 1e6));
-    // if (num > 99999) return sign + T.common.number_format.thousands.replace("%amount%", "" + roundSmart(num / 1e3));
+    if (num > 10000) {
+        return Math_floor(num / 1000.0) + "k";
+    }
 
     let rest = num;
     let out = "";
@@ -474,12 +458,12 @@ export function formatBigNumber(num, divider = ".") {
  * @param {string=} divider THe divider for numbers like 50,000 (divider=',')
  * @returns {string}
  */
-export function formatBigNumberFull(num, divider = T.common.number_format.divider_thousands || " ") {
+export function formatBigNumberFull(num, divider = T.global.thousandsDivider) {
     if (num < 1000) {
         return num + "";
     }
     if (num > 1e54) {
-        return "infinite";
+        return T.global.infinite;
     }
     let rest = num;
     let out = "";
@@ -490,65 +474,6 @@ export function formatBigNumberFull(num, divider = T.common.number_format.divide
     out = rest + divider + out;
 
     return out.substring(0, out.length - 1);
-}
-
-/**
- * Formats an amount of seconds into something like "5s ago"
- * @param {number} secs Seconds
- * @returns {string}
- */
-export function formatSecondsToTimeAgo(secs) {
-    const seconds = Math_floor(secs);
-    const minutes = Math_floor(seconds / 60);
-    const hours = Math_floor(minutes / 60);
-    const days = Math_floor(hours / 24);
-
-    const trans = T.common.time;
-
-    if (seconds <= 60) {
-        if (seconds <= 1) {
-            return trans.one_second_before;
-        }
-        return trans.seconds_before.replace("%amount%", "" + seconds);
-    } else if (minutes <= 60) {
-        if (minutes <= 1) {
-            return trans.one_minute_before;
-        }
-        return trans.minutes_before.replace("%amount%", "" + minutes);
-    } else if (hours <= 60) {
-        if (hours <= 1) {
-            return trans.one_hour_before;
-        }
-        return trans.hours_before.replace("%amount%", "" + hours);
-    } else {
-        if (days <= 1) {
-            return trans.one_day_before;
-        }
-        return trans.days_before.replace("%amount%", "" + days);
-    }
-}
-
-/**
- * Formats seconds into a readable string like "5h 23m"
- * @param {number} secs Seconds
- * @returns {string}
- */
-export function formatSeconds(secs) {
-    const trans = T.common.time;
-    secs = Math_ceil(secs);
-    if (secs < 60) {
-        return trans.seconds_short.replace("%seconds%", "" + secs);
-    } else if (secs < 60 * 60) {
-        const minutes = Math_floor(secs / 60);
-        const seconds = secs % 60;
-        return trans.minutes_seconds_short
-            .replace("%seconds%", "" + seconds)
-            .replace("%minutes%", "" + minutes);
-    } else {
-        const hours = Math_floor(secs / 3600);
-        const minutes = Math_floor(secs / 60) % 60;
-        return trans.hours_minutes_short.replace("%minutes%", "" + minutes).replace("%hours%", "" + hours);
-    }
 }
 
 /**
@@ -726,13 +651,32 @@ export function makeDiv(parent, id = null, classes = [], innerHTML = "") {
 }
 
 /**
+ * Helper method to create a new button
+ * @param {Element} parent
+ * @param {Array<string>=} classes
+ * @param {string=} innerHTML
+ */
+export function makeButton(parent, classes = [], innerHTML = "") {
+    const element = document.createElement("button");
+    for (let i = 0; i < classes.length; ++i) {
+        element.classList.add(classes[i]);
+    }
+    element.classList.add("styledButton");
+    element.innerHTML = innerHTML;
+    parent.appendChild(element);
+    return element;
+}
+
+/**
  * Removes all children of the given element
  * @param {Element} elem
  */
 export function removeAllChildren(elem) {
-    var range = document.createRange();
-    range.selectNodeContents(elem);
-    range.deleteContents();
+    if (elem) {
+        var range = document.createRange();
+        range.selectNodeContents(elem);
+        range.deleteContents();
+    }
 }
 
 export function smartFadeNumber(current, newOne, minFade = 0.01, maxFade = 0.9) {
@@ -810,15 +754,6 @@ export function checkTimerExpired(now, lastTick, tickRate) {
  * Returns if the game supports this browser
  */
 export function isSupportedBrowser() {
-    if (navigator.userAgent.toLowerCase().indexOf("firefox") >= 0) {
-        return true;
-    }
-
-    return isSupportedBrowserForMultiplayer();
-}
-
-// https://stackoverflow.com/questions/4565112/javascript-how-to-find-out-if-the-user-browser-is-chrome/13348618#13348618
-export function isSupportedBrowserForMultiplayer() {
     // please note,
     // that IE11 now returns undefined again for window.chrome
     // and new Opera 30 outputs true for window.chrome
@@ -836,7 +771,6 @@ export function isSupportedBrowserForMultiplayer() {
     var winNav = window.navigator;
     var vendorName = winNav.vendor;
     // @ts-ignore
-    var isOpera = typeof window.opr !== "undefined";
     var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
     var isIOSChrome = winNav.userAgent.match("CriOS");
 
@@ -886,4 +820,98 @@ export function fastRotateMultipleOf90(x, y, deg) {
             return new Vector(x, y);
         }
     }
+}
+
+/**
+ * Formats an amount of seconds into something like "5s ago"
+ * @param {number} secs Seconds
+ * @returns {string}
+ */
+export function formatSecondsToTimeAgo(secs) {
+    const seconds = Math_floor(secs);
+    const minutes = Math_floor(seconds / 60);
+    const hours = Math_floor(minutes / 60);
+    const days = Math_floor(hours / 24);
+
+    if (seconds <= 60) {
+        if (seconds <= 1) {
+            return T.global.time.oneSecondAgo;
+        }
+        return T.global.time.xSecondsAgo.replace("<x>", "" + seconds);
+    } else if (minutes <= 60) {
+        if (minutes <= 1) {
+            return T.global.time.oneMinuteAgo;
+        }
+        return T.global.time.xMinutesAgo.replace("<x>", "" + minutes);
+    } else if (hours <= 60) {
+        if (hours <= 1) {
+            return T.global.time.oneHourAgo;
+        }
+        return T.global.time.xHoursAgo.replace("<x>", "" + hours);
+    } else {
+        if (days <= 1) {
+            return T.global.time.oneDayAgo;
+        }
+        return T.global.time.xDaysAgo.replace("<x>", "" + days);
+    }
+}
+
+/**
+ * Formats seconds into a readable string like "5h 23m"
+ * @param {number} secs Seconds
+ * @returns {string}
+ */
+export function formatSeconds(secs) {
+    const trans = T.global.time;
+    secs = Math_ceil(secs);
+    if (secs < 60) {
+        return trans.secondsShort.replace("<seconds>", "" + secs);
+    } else if (secs < 60 * 60) {
+        const minutes = Math_floor(secs / 60);
+        const seconds = secs % 60;
+        return trans.minutesAndSecondsShort
+            .replace("<seconds>", "" + seconds)
+            .replace("<minutes>", "" + minutes);
+    } else {
+        const hours = Math_floor(secs / 3600);
+        const minutes = Math_floor(secs / 60) % 60;
+        return trans.hoursAndMinutesShort.replace("<minutes>", "" + minutes).replace("<hours>", "" + hours);
+    }
+}
+
+/**
+ * Generates a file download
+ * @param {string} filename
+ * @param {string} text
+ */
+export function generateFileDownload(filename, text) {
+    var element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    element.setAttribute("download", filename);
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+    document.body.removeChild(element);
+}
+
+/**
+ * Capitalizes the first letter
+ * @param {string} str
+ */
+export function capitalizeFirstLetter(str) {
+    return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase();
+}
+
+/**
+ * Formats a number like 2.5 to "2.5 items / s"
+ * @param {number} speed
+ * @param {boolean=} double
+ */
+export function formatItemsPerSecond(speed, double = false) {
+    return speed === 1.0
+        ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
+        : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace("<x>", "" + round2Digits(speed)) +
+              (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
 }

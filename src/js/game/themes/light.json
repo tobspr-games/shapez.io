@@ -1,0 +1,25 @@
+{
+    "uiStyle": "light",
+    "map": {
+        "background": "#fff",
+        "grid": "#fafafa",
+        "gridLineWidth": 1,
+
+        "resources": {
+            "shape": "#eaebec",
+            "red": "#ffbfc1",
+            "green": "#cbffc4",
+            "blue": "#bfdaff"
+        },
+
+        "chunkOverview": {
+            "empty": "#a6afbb",
+            "filled": "#c5ccd6"
+        }
+    },
+
+    "items": {
+        "outline": "#55575a",
+        "outlineWidth": 0.75
+    }
+}

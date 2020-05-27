@@ -1,35 +1,159 @@
-#ingame_HUD_building_placer {
+#ingame_HUD_PlacementHints {
     position: fixed;
-    @include S(bottom, 60px);
-    left: 50%;
-    transform: translateX(-50%);
+    @include S(top, 60px);
+    @include S(right, 10px);
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
 
     @include S(padding, 6px);
-    justify-content: center;
-    align-items: center;
-    background-color: $ingameHudBg;
-    @include S(border-radius, 4px);
-    background: #333;
-    @include S(width, 300px);
+    @include S(border-radius, $globalBorderRadius);
+    @include S(width, 240px);
+    @include S(grid-column-gap, 5px);
+
+    background: rgba(#333438, 0.8);
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+
+    @include DarkThemeOverride {
+        background-color: #55585a;
+    }
 
     .buildingLabel {
         @include PlainText;
+        @include S(margin-bottom, 2px);
         color: #fff;
         text-transform: uppercase;
-        @include S(margin-bottom, 2px);
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
     }
 
-    .instructions,
     .description {
-        text-align: center;
-        color: mix($accentColorDark, $accentColorBright, 50%);
+        color: #bbb;
         @include SuperSmallText;
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        display: grid;
+        grid-template-rows: 1fr auto;
+
+        strong {
+            color: #fff;
+        }
+    }
+
+    .additionalInfo {
+        display: grid;
+        grid-template-columns: auto 1fr;
+
+        label {
+            color: lighten($colorGreenBright, 10);
+            font-weight: bold;
+            @include S(margin-right, 5px);
+        }
+    }
+
+    .hotkey {
+        color: lighten($colorGreenBright, 10);
+        font-weight: bold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .keybinding {
+            position: relative;
+            @include S(margin-left, 5px);
+        }
+    }
+
+    .buildingImage {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+        @include S(width, 100px);
+        @include S(height, 100px);
+        background: top left / 100% 100% no-repeat;
+        @include S(border-radius, $globalBorderRadius);
     }
 
     @include StyleBelowWidth(700px) {
         display: none !important;
+    }
+}
+
+#ingame_HUD_PlacerVariants {
+    position: absolute;
+    @include S(right, 10px);
+    @include S(top, 200px);
+    display: flex;
+    @include S(grid-gap, 5px);
+    flex-direction: column;
+    align-items: flex-end;
+
+    .explanation {
+        text-transform: uppercase;
+        grid-row: 1 / 2;
+        @include SuperSmallText;
+        text-align: right;
+        .keybinding {
+            position: relative;
+        }
+
+        @include DarkThemeOverride {
+            color: rgba(#fff, 0.5);
+        }
+    }
+
+    .variants {
+        display: grid;
+        @include S(grid-gap, 5px);
+
+        .variant {
+            grid-row: 2 / 3;
+            @include S(border-radius, $globalBorderRadius);
+            background: rgba(0, 10, 20, 0.2);
+            display: inline-flex;
+            vertical-align: top;
+            position: relative;
+            align-items: center;
+            @include S(padding, 3px);
+            @include S(grid-gap, 10px);
+
+            &.active {
+                background-color: rgba(74, 163, 223, 0.6);
+            }
+
+            $iconSize: 25px;
+
+            .iconWrap {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+                position: relative;
+                @include S(width, $iconSize);
+                @include S(height, $iconSize);
+                background: center center / contain no-repeat;
+
+                &[data-tile-w="2"] {
+                    @include S(width, 2 * $iconSize);
+                }
+                &[data-tile-h="2"] {
+                    @include S(height, 2 * $iconSize);
+                }
+                &[data-tile-h="3"] {
+                    @include S(height, 3 * $iconSize);
+                }
+                &[data-tile-w="3"] {
+                    @include S(width, 3 * $iconSize);
+                }
+                &[data-tile-w="4"] {
+                    @include S(width, 4 * $iconSize);
+                }
+            }
+
+            .label {
+                display: none;
+                grid-column: 2 / 3;
+                text-transform: uppercase;
+                grid-row: 1 / 2;
+                @include SuperSmallText;
+                color: #fff;
+            }
+        }
     }
 }

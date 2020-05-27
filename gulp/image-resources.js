@@ -2,7 +2,7 @@
 const path = require("path");
 
 // Globs for non-ui resources
-const nonImageResourcesGlobs = ["../res/**/*.woff2", "../res/*.ico"];
+const nonImageResourcesGlobs = ["../res/**/*.woff2", "../res/*.ico", "../res/**/*.webm"];
 
 // Globs for ui resources
 const imageResourcesGlobs = ["../res/**/*.png", "../res/**/*.svg", "../res/**/*.jpg"];

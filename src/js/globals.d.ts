@@ -107,8 +107,6 @@ declare interface Window {
     assert(condition: boolean, failureMessage: string);
 
     coreThreadLoadedCb();
-
-    gameanalytics: typeof import("./game_analytics");
 }
 
 declare interface Navigator {
@@ -138,13 +136,17 @@ declare interface Element {
     innerHTML: string;
 }
 
+declare interface Object {
+    entries(obj: object): Array<[string, any]>;
+}
+
 declare interface Math {
     radians(number): number;
     degrees(number): number;
 }
 
 declare interface String {
-    padStart(size: number, fill: string): string;
+    padStart(size: number, fill?: string): string;
     padEnd(size: number, fill: string): string;
 }
 
@@ -166,6 +168,8 @@ declare interface SingletonFactoryTemplate<T> {
     entries: Array<T>;
     idToEntry: any;
 
+    getId(): string;
+    getAllIds(): Array<string>;
     register(classHandle: new (...args: any[]) => T): void;
     hasId(id: string): boolean;
     findById(id: string): T;
@@ -188,4 +192,15 @@ declare class TypedTrackedState<T> {
 
     setSilent(value: any): void;
     get(): T;
+}
+
+declare const STOP_PROPAGATION = "stop_propagation";
+
+declare interface TypedSignal<T extends Array<any>> {
+    add(receiver: (...args: T) => /* STOP_PROPAGATION */ string | void, scope?: object);
+    remove(receiver: (...args: T) => /* STOP_PROPAGATION */ string | void);
+
+    dispatch(...args: T): /* STOP_PROPAGATION */ string | void;
+
+    removeAll();
 }

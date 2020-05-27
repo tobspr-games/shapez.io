@@ -20,7 +20,7 @@
             @include S(height, 10px);
             width: 1px;
             @include S(margin, 0, 3px);
-            background-color: #ccc;
+            background-color: #888;
             transform: rotate(10deg);
             // @include S(margin, 0, 3px);
         }
@@ -38,10 +38,15 @@
                 background: #fff uiResource("icons/mouse_left.png") center center / 85% no-repeat;
             }
         }
+
         label {
             color: $accentColorDark;
             @include SuperSmallText;
             text-transform: uppercase;
+            // font-weight: bold;
+            color: #fff;
+            text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.1);
+
             @include S(margin-left, 5px);
         }
     }
@@ -49,7 +54,8 @@
     &:not(.placementActive) .binding.placementOnly {
         display: none;
     }
-    &.placementActive .binding.noPlacementOnly {
+
+    &.placementActive .noPlacementOnly {
         display: none;
     }
 
@@ -64,15 +70,15 @@
         }
     }
 
-    .shift .keybinding {
+    .keybinding.builtinKey {
         transition: all 0.1s ease-in-out;
         transition-property: background-color, color, border-color;
         background: $colorRedBright;
         border-color: $colorRedBright;
         color: #fff;
     }
+}
 
-    &.shiftDown .shift .keybinding {
-        border-color: darken($colorRedBright, 40);
-    }
+body.uiHidden #ingame_HUD_KeybindingOverlay .binding:not(.hudToggle) {
+    display: none;
 }

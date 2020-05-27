@@ -14,7 +14,7 @@ export class BeltComponent extends Component {
     static getSchema() {
         return {
             direction: types.string,
-            sortedItems: types.array(types.pair(types.ufloat, types.obj(gItemRegistry))),
+            sortedItems: types.array(types.pair(types.float, types.obj(gItemRegistry))),
         };
     }
 
@@ -59,9 +59,8 @@ export class BeltComponent extends Component {
 
     /**
      *  Returns if the belt can currently accept an item from the given direction
-     *  @param {enumDirection} direction
      */
-    canAcceptNewItem(direction) {
+    canAcceptItem(leftoverProgress = 0.0) {
         const firstItem = this.sortedItems[0];
         if (!firstItem) {
             return true;
@@ -73,10 +72,20 @@ export class BeltComponent extends Component {
     /**
      * Pushes a new item to the belt
      * @param {BaseItem} item
-     * @param {enumDirection} direction
      */
-    takeNewItem(item, direction) {
-        this.sortedItems.unshift([0, item]);
+    takeItem(item, leftoverProgress = 0.0) {
+        if (G_IS_DEV) {
+            assert(
+                this.sortedItems.length === 0 ||
+                    leftoverProgress <= this.sortedItems[0][0] - globalConfig.itemSpacingOnBelts + 0.001,
+                "Invalid leftover: " +
+                    leftoverProgress +
+                    " items are " +
+                    this.sortedItems.map(item => item[0])
+            );
+            assert(leftoverProgress < 1.0, "Invalid leftover: " + leftoverProgress);
+        }
+        this.sortedItems.unshift([leftoverProgress, item]);
     }
 
     /**

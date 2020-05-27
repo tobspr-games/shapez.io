@@ -7,6 +7,7 @@ import { Math_max, Math_round } from "../core/builtins";
 import { Rectangle } from "../core/rectangle";
 import { createLogger } from "../core/logging";
 import { smoothenDpi } from "../core/dpi_manager";
+import { THEME } from "./theme";
 
 const logger = createLogger("chunk");
 const chunkSizePixels = globalConfig.mapChunkSize * globalConfig.tileSize;
@@ -119,9 +120,9 @@ export class MapChunkView extends MapChunk {
             context.scale(bgDpi, bgDpi);
         } else {
             if (this.containedEntities.length > 0) {
-                context.fillStyle = "#c5ccd6";
+                context.fillStyle = THEME.map.chunkOverview.filled;
             } else {
-                context.fillStyle = "#a6afbb";
+                context.fillStyle = THEME.map.chunkOverview.empty;
             }
             context.fillRect(0, 0, 10000, 10000);
         }
@@ -148,19 +149,7 @@ export class MapChunkView extends MapChunk {
             -this.tileX * globalConfig.tileSize,
             -this.tileY * globalConfig.tileSize
         );
-        // parameters.context.save();
-        // parameters.context.transform(
-        //     1,
-        //     0,
-        //     0,
-        //     zoomLevel,
-        //     this.tileX * globalConfig.tileSize,
-        //     this.tileY * globalConfig.tileSize
-        // );
-
         this.internalDrawBackgroundSystems(parameters);
-
-        // parameters.context.restore();
     }
 
     /**
@@ -186,24 +175,11 @@ export class MapChunkView extends MapChunk {
             zoomLevel,
             root: this.root,
         });
-        // parameters.context.save();
-        // parameters.context.save();
-        // parameters.context.transform(
-        //     zoomLevel,
-        //     0,
-        //     0,
-        //     zoomLevel,
-        //     this.tileX * globalConfig.tileSize,
-        //     this.tileY * globalConfig.tileSize
-        // );
-
         parameters.context.translate(
             -this.tileX * globalConfig.tileSize,
             -this.tileY * globalConfig.tileSize
         );
         this.internalDrawForegroundSystems(parameters);
-
-        // parameters.context.restore();
     }
 
     /**

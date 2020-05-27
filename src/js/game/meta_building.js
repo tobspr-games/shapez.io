@@ -4,6 +4,9 @@ import { GameRoot } from "./root";
 import { AtlasSprite } from "../core/sprites";
 import { Entity } from "./entity";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
+import { SOUNDS } from "../platform/sound";
+
+export const defaultBuildingVariant = "default";
 
 export class MetaBuilding {
     /**
@@ -24,22 +27,8 @@ export class MetaBuilding {
     /**
      * Should return the dimensions of the building
      */
-    getDimensions() {
+    getDimensions(variant = defaultBuildingVariant) {
         return new Vector(1, 1);
-    }
-
-    /**
-     * Should return the name of this building
-     */
-    getName() {
-        return this.id;
-    }
-
-    /**
-     * Should return the description of this building
-     */
-    getDescription() {
-        return "No Description";
     }
 
     /**
@@ -47,6 +36,16 @@ export class MetaBuilding {
      */
     getStayInPlacementMode() {
         return false;
+    }
+
+    /**
+     * Should return additional statistics about this building
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        return [];
     }
 
     /**
@@ -58,18 +57,60 @@ export class MetaBuilding {
     }
 
     /**
+     * Whether to rotate automatically in the dragging direction while placing
+     * @param {string} variant
+     */
+    getRotateAutomaticallyWhilePlacing(variant) {
+        return false;
+    }
+
+    /**
+     * Returns the placement sound
+     * @returns {string}
+     */
+    getPlacementSound() {
+        return SOUNDS.placeBuilding;
+    }
+
+    /**
+     * @param {GameRoot} root
+     */
+    getAvailableVariants(root) {
+        return [defaultBuildingVariant];
+    }
+
+    /**
      * Returns a preview sprite
      * @returns {AtlasSprite}
      */
-    getPreviewSprite(rotationVariant = 0) {
-        return Loader.getSprite("sprites/buildings/" + this.id + ".png");
+    getPreviewSprite(rotationVariant = 0, variant = defaultBuildingVariant) {
+        return Loader.getSprite(
+            "sprites/buildings/" +
+                this.id +
+                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                ".png"
+        );
+    }
+
+    /**
+     * Returns a sprite for blueprints
+     * @returns {AtlasSprite}
+     */
+    getBlueprintSprite(rotationVariant = 0, variant = defaultBuildingVariant) {
+        return Loader.getSprite(
+            "sprites/blueprints/" +
+                this.id +
+                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                ".png"
+        );
     }
 
     /**
      * Returns whether this building is rotateable
+     * @param {string} variant
      * @returns {boolean}
      */
-    isRotateable() {
+    isRotateable(variant) {
         return true;
     }
 
@@ -89,29 +130,50 @@ export class MetaBuilding {
     }
 
     /**
-     * Creates the entity at the given location
+     * Should perform additional placement checks
      * @param {GameRoot} root
-     * @param {Vector} origin Origin tile
-     * @param {number=} rotation Rotation
-     * @param {number=} rotationVariant Rotation variant
+     * @param {object} param0
+     * @param {Vector} param0.origin
+     * @param {number} param0.rotation
+     * @param {number} param0.rotationVariant
+     * @param {string} param0.variant
      */
-    createAndPlaceEntity(root, origin, rotation = 0, rotationVariant = 0) {
+    performAdditionalPlacementChecks(root, { origin, rotation, rotationVariant, variant }) {
+        return true;
+    }
+
+    /**
+     * Creates the entity at the given location
+     * @param {object} param0
+     * @param {GameRoot} param0.root
+     * @param {Vector} param0.origin Origin tile
+     * @param {number=} param0.rotation Rotation
+     * @param {number} param0.originalRotation Original Rotation
+     * @param {number} param0.rotationVariant Rotation variant
+     * @param {string} param0.variant
+     */
+    createAndPlaceEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
         entity.addComponent(
             new StaticMapEntityComponent({
-                spriteKey: "sprites/buildings/" + this.id + ".png",
+                spriteKey:
+                    "sprites/buildings/" +
+                    this.id +
+                    (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                    ".png",
                 origin: new Vector(origin.x, origin.y),
-                rotationDegrees: rotation,
-                tileSize: this.getDimensions().copy(),
+                rotation,
+                originalRotation,
+                tileSize: this.getDimensions(variant).copy(),
                 silhouetteColor: this.getSilhouetteColor(),
             })
         );
 
         this.setupEntityComponents(entity, root);
-        this.updateRotationVariant(entity, rotationVariant);
+        this.updateVariants(entity, rotationVariant, variant);
 
-        root.entityMgr.registerEntity(entity);
         root.map.placeStaticEntity(entity);
+        root.entityMgr.registerEntity(entity);
         return entity;
     }
 
@@ -120,10 +182,11 @@ export class MetaBuilding {
      * @param {GameRoot} root
      * @param {Vector} tile
      * @param {number} rotation
+     * @param {string} variant
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation) {
-        if (!this.isRotateable()) {
+    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
+        if (!this.isRotateable(variant)) {
             return {
                 rotation: 0,
                 rotationVariant: 0,
@@ -136,11 +199,12 @@ export class MetaBuilding {
     }
 
     /**
-     * Should update the entity to match the given rotation variant
+     * Should update the entity to match the given variants
      * @param {Entity} entity
      * @param {number} rotationVariant
+     * @param {string} variant
      */
-    updateRotationVariant(entity, rotationVariant) {}
+    updateVariants(entity, rotationVariant, variant) {}
 
     // PRIVATE INTERFACE
 

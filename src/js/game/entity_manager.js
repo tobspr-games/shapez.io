@@ -1,4 +1,4 @@
-import { arrayDeleteValue, newEmptyMap } from "../core/utils";
+import { arrayDeleteValue, newEmptyMap, fastArrayDeleteValue } from "../core/utils";
 import { Component } from "./component";
 import { GameRoot } from "./root";
 import { Entity } from "./entity";
@@ -126,6 +126,19 @@ export class EntityManager extends BasicSerializableObject {
             this.componentToEntity[componentId] = [entity];
         }
         this.root.signals.entityGotNewComponent.dispatch(entity);
+    }
+
+    /**
+     * Call to remove a component after the creation of the entity
+     * @param {Entity} entity
+     * @param {typeof Component} component
+     */
+    removeDynamicComponent(entity, component) {
+        entity.removeComponent(component, true);
+        const componentId = /** @type {typeof Component} */ (component.constructor).getId();
+
+        fastArrayDeleteValue(this.componentToEntity[componentId], entity);
+        this.root.signals.entityComponentRemoved.dispatch(entity);
     }
 
     /**

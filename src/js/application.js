@@ -1,5 +1,5 @@
 import { AnimationFrame } from "./core/animation_frame";
-import { performanceNow } from "./core/builtins";
+import { performanceNow, Math_min } from "./core/builtins";
 import { GameState } from "./core/game_state";
 import { GLOBAL_APP, setGlobalApp } from "./core/globals";
 import { InputDistributor } from "./core/input_distributor";
@@ -27,7 +27,17 @@ import { AnalyticsInterface } from "./platform/analytics";
 import { GoogleAnalyticsImpl } from "./platform/browser/google_analytics";
 import { Loader } from "./core/loader";
 import { GameAnalyticsInterface } from "./platform/game_analytics";
-import { GameAnalyticsDotCom } from "./platform/browser/game_analytics";
+import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
+import { queryParamOptions } from "./core/query_parameters";
+import { NoGameAnalytics } from "./platform/browser/no_game_analytics";
+import { StorageImplBrowserIndexedDB } from "./platform/browser/storage_indexed_db";
+import { SettingsState } from "./states/settings";
+import { KeybindingsState } from "./states/keybindings";
+import { AboutState } from "./states/about";
+import { PlatformWrapperImplElectron } from "./platform/electron/wrapper";
+import { StorageImplElectron } from "./platform/electron/storage";
+import { MobileWarningState } from "./states/mobile_warning";
+import { ChangelogState } from "./states/changelog";
 
 const logger = createLogger("application");
 
@@ -117,11 +127,26 @@ export class Application {
 
         // Start with empty ad provider
         this.adProvider = new NoAdProvider(this);
-        this.storage = new StorageImplBrowser(this);
+
+        if (G_IS_STANDALONE) {
+            this.storage = new StorageImplElectron(this);
+        } else {
+            if (window.indexedDB) {
+                this.storage = new StorageImplBrowserIndexedDB(this);
+            } else {
+                this.storage = new StorageImplBrowser(this);
+            }
+        }
         this.sound = new SoundImplBrowser(this);
-        this.platformWrapper = new PlatformWrapperImplBrowser(this);
+
+        if (G_IS_STANDALONE) {
+            this.platformWrapper = new PlatformWrapperImplElectron(this);
+        } else {
+            this.platformWrapper = new PlatformWrapperImplBrowser(this);
+        }
         this.analytics = new GoogleAnalyticsImpl(this);
-        this.gameAnalytics = new GameAnalyticsDotCom(this);
+
+        this.gameAnalytics = new ShapezGameAnalytics(this);
     }
 
     /**
@@ -129,7 +154,16 @@ export class Application {
      */
     registerStates() {
         /** @type {Array<typeof GameState>} */
-        const states = [PreloadState, MainMenuState, InGameState];
+        const states = [
+            PreloadState,
+            MobileWarningState,
+            MainMenuState,
+            InGameState,
+            SettingsState,
+            KeybindingsState,
+            AboutState,
+            ChangelogState,
+        ];
 
         for (let i = 0; i < states.length; ++i) {
             this.stateMgr.register(states[i]);
@@ -194,6 +228,7 @@ export class Application {
      * @param {Event} event
      */
     handleVisibilityChange(event) {
+        window.focus();
         const pageVisible = !document[pageHiddenPropName];
         if (pageVisible !== this.pageVisible) {
             this.pageVisible = pageVisible;
@@ -233,6 +268,7 @@ export class Application {
 
     onAppRenderableStateChanged(renderable) {
         logger.log("Application renderable:", renderable);
+        window.focus();
         if (!renderable) {
             this.stateMgr.getCurrentState().onAppPause();
         } else {
@@ -263,8 +299,7 @@ export class Application {
         logSection("BEFORE UNLOAD HANDLER", "#f77");
 
         if (!G_IS_DEV && this.stateMgr.getCurrentState().getHasUnloadConfirmation()) {
-            if (G_IS_STANDALONE) {
-            } else {
+            if (!G_IS_STANDALONE) {
                 // Need to show a "Are you sure you want to exit"
                 event.preventDefault();
                 event.returnValue = "Are you sure you want to exit?";
@@ -276,17 +311,25 @@ export class Application {
      * Boots the application
      */
     boot() {
+        console.log("Booting ...");
         this.registerStates();
         this.registerEventListeners();
 
         Loader.linkAppAfterBoot(this);
 
-        this.stateMgr.moveToState("PreloadState");
+        // Check for mobile
+        if (IS_MOBILE) {
+            this.stateMgr.moveToState("MobileWarningState");
+        } else {
+            this.stateMgr.moveToState("PreloadState");
+        }
 
         // Starting rendering
         this.ticker.frameEmitted.add(this.onFrameEmitted, this);
         this.ticker.bgFrameEmitted.add(this.onBackgroundFrame, this);
         this.ticker.start();
+
+        window.focus();
     }
 
     /**

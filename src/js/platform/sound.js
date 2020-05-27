@@ -12,17 +12,23 @@ const logger = createLogger("sound");
 
 export const SOUNDS = {
     // Menu and such
-    uiClick: "ui/ui_click.mp3",
-    uiError: "ui/ui_error.mp3",
-    dialogError: "ui/dialog_error.mp3",
-    dialogOk: "ui/dialog_ok.mp3",
-    swishHide: "ui/ui_swish_hide.mp3",
-    swishShow: "ui/ui_swish_show.mp3",
+    uiClick: "ui_click",
+    uiError: "ui_error",
+    dialogError: "dialog_error",
+    dialogOk: "dialog_ok",
+    swishHide: "ui_swish_hide",
+    swishShow: "ui_swish_show",
+    badgeNotification: "badge_notification",
+
+    levelComplete: "level_complete",
+
+    placeBuilding: "place_building",
+    placeBelt: "place_belt",
 };
 
 export const MUSIC = {
-    mainMenu: "main_menu.mp3",
-    gameBg: "theme_full.mp3",
+    theme: "theme",
+    menu: "menu",
 };
 
 export class SoundInstanceInterface {
@@ -113,11 +119,8 @@ export class SoundInterface {
             this.music[musicPath] = music;
         }
 
-        // this.musicMuted = this.app.userProfile.getMusicMuted();
-        // this.soundsMuted = this.app.userProfile.getSoundsMuted();
-
-        this.musicMuted = false;
-        this.soundsMuted = false;
+        this.musicMuted = this.app.settings.getAllSettings().musicMuted;
+        this.soundsMuted = this.app.settings.getAllSettings().soundsMuted;
 
         if (G_IS_DEV && globalConfig.debug.disableMusic) {
             this.musicMuted = true;
@@ -142,7 +145,9 @@ export class SoundInterface {
         }
     }
 
-    /** Deinits the sound */
+    /** Deinits the sound
+     * @returns {Promise<void>}
+     */
     deinitialize() {
         const promises = [];
         for (const key in this.sounds) {
@@ -151,7 +156,8 @@ export class SoundInterface {
         for (const key in this.music) {
             promises.push(this.music[key].deinitialize());
         }
-        return Promise.all(promises);
+        // @ts-ignore
+        return Promise.all(...promises);
     }
 
     /**

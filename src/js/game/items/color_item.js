@@ -1,20 +1,10 @@
-import { DrawParameters } from "../../core/draw_parameters";
-import { createLogger } from "../../core/logging";
-import { extendSchema } from "../../savegame/serialization";
-import { BaseItem } from "../base_item";
-import { enumColorsToHexCode, enumColors } from "../colors";
-import { makeOffscreenBuffer } from "../../core/buffer_utils";
 import { globalConfig } from "../../core/config";
-import { round1Digit } from "../../core/utils";
-import { Math_max, Math_round } from "../../core/builtins";
 import { smoothenDpi } from "../../core/dpi_manager";
-
-/** @enum {string} */
-const enumColorToMapBackground = {
-    [enumColors.red]: "#ffbfc1",
-    [enumColors.green]: "#cbffc4",
-    [enumColors.blue]: "#bfdaff",
-};
+import { DrawParameters } from "../../core/draw_parameters";
+import { types } from "../../savegame/serialization";
+import { BaseItem } from "../base_item";
+import { enumColors, enumColorsToHexCode } from "../colors";
+import { THEME } from "../theme";
 
 export class ColorItem extends BaseItem {
     static getId() {
@@ -22,23 +12,28 @@ export class ColorItem extends BaseItem {
     }
 
     static getSchema() {
-        return extendSchema(BaseItem.getCachedSchema(), {
-            // TODO
-        });
+        return types.enum(enumColors);
+    }
+
+    serialize() {
+        return this.color;
+    }
+
+    deserialize(data) {
+        this.color = data;
     }
 
     /**
-     * @param {string} color
+     * @param {enumColors} color
      */
     constructor(color) {
         super();
         this.color = color;
-
-        this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
+        this.bufferGenerator = null;
     }
 
     getBackgroundColorAsResource() {
-        return enumColorToMapBackground[this.color];
+        return THEME.map.resources[this.color];
     }
 
     /**
@@ -48,6 +43,10 @@ export class ColorItem extends BaseItem {
      * @param {DrawParameters} parameters
      */
     draw(x, y, parameters, size = 12) {
+        if (!this.bufferGenerator) {
+            this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
+        }
+
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
         const key = size + "/" + dpi;
@@ -74,8 +73,8 @@ export class ColorItem extends BaseItem {
         context.scale((dpi * w) / 12, (dpi * h) / 12);
 
         context.fillStyle = enumColorsToHexCode[this.color];
-        context.strokeStyle = "rgba(100,102, 110, 1)";
-        context.lineWidth = 2;
+        context.strokeStyle = THEME.items.outline;
+        context.lineWidth = 2 * THEME.items.outlineWidth;
         context.beginCircle(2, -1, 3);
         context.stroke();
         context.fill();

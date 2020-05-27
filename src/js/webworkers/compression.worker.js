@@ -10,10 +10,7 @@ function accessNestedPropertyReverse(obj, keys) {
     return result;
 }
 
-const rusha = require("rusha");
-
 const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
-const encryptKey = globalConfig.info.sgSalt;
 
 onmessage = function (event) {
     const { jobId, job, data } = event.data;
@@ -30,13 +27,6 @@ function performJob(job, data) {
     switch (job) {
         case "compressX64": {
             return compressX64(data);
-        }
-        case "compressWithChecksum": {
-            const checksum = rusha
-                .createHash()
-                .update(data + encryptKey)
-                .digest("hex");
-            return compressX64(checksum + data);
         }
         case "compressFile": {
             const checksum = sha1(data.text + salt);

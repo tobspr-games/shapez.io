@@ -31,7 +31,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             // Decrease remaining time of all items in belt
             for (let k = 0; k < undergroundComp.pendingItems.length; ++k) {
                 const item = undergroundComp.pendingItems[k];
-                item[1] = Math_max(0, item[1] - globalConfig.physicsDeltaSeconds);
+                item[1] = Math_max(0, item[1] - this.root.dynamicTickrate.deltaSeconds);
             }
 
             if (undergroundComp.mode === enumUndergroundBeltMode.sender) {
@@ -67,7 +67,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
                 for (
                     let searchOffset = 0;
-                    searchOffset < globalConfig.undergroundBeltMaxTiles;
+                    searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier];
                     ++searchOffset
                 ) {
                     currentTile = currentTile.add(searchVector);
@@ -75,9 +75,12 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                     const contents = this.root.map.getTileContent(currentTile);
                     if (contents) {
                         const receiverUndergroundComp = contents.components.UndergroundBelt;
-                        if (receiverUndergroundComp) {
+                        if (
+                            receiverUndergroundComp &&
+                            receiverUndergroundComp.tier === undergroundComp.tier
+                        ) {
                             const receiverStaticComp = contents.components.StaticMapEntity;
-                            if (receiverStaticComp.rotationDegrees === targetRotation) {
+                            if (receiverStaticComp.rotation === targetRotation) {
                                 if (receiverUndergroundComp.mode === enumUndergroundBeltMode.receiver) {
                                     // Try to pass over the item to the receiver
                                     if (

@@ -25,6 +25,7 @@ export class InputDistributor {
 
         this.shiftIsDown = false;
         this.altIsDown = false;
+        this.ctrlIsDown = false;
 
         this.bindToEvents();
     }
@@ -175,7 +176,9 @@ export class InputDistributor {
      * Handles when the page got blurred
      */
     handleBlur() {
+        this.ctrlIsDown = false;
         this.shiftIsDown = false;
+        this.altIsDown = false;
         this.forwardToReceiver("pageBlur", {});
         this.forwardToReceiver("shiftUp", {});
     }
@@ -187,12 +190,18 @@ export class InputDistributor {
         if (event.keyCode === 16) {
             this.shiftIsDown = true;
         }
+        if (event.keyCode === 17) {
+            this.ctrlIsDown = true;
+        }
+        if (event.keyCode === 18) {
+            this.altIsDown = true;
+        }
 
         if (
             // TAB
             event.keyCode === 9 ||
             // F1 - F10
-            (event.keyCode >= 112 && event.keyCode < 122 && !G_IS_DEV)
+            (event.keyCode >= 112 && event.keyCode < 122)
         ) {
             event.preventDefault();
         }
@@ -224,6 +233,14 @@ export class InputDistributor {
         if (event.keyCode === 16) {
             this.shiftIsDown = false;
             this.forwardToReceiver("shiftUp", {});
+        }
+        if (event.keyCode === 17) {
+            this.ctrlIsDown = false;
+            this.forwardToReceiver("ctrlUp", {});
+        }
+        if (event.keyCode === 18) {
+            this.altIsDown = false;
+            this.forwardToReceiver("altUp", {});
         }
 
         this.forwardToReceiver("keyup", {

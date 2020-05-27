@@ -11,7 +11,6 @@ import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
-import { PerlinNoise } from "../core/perlin_noise";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
@@ -30,6 +29,10 @@ import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
+import { ProductionAnalytics } from "./production_analytics";
+import { randomInt } from "../core/utils";
+import { defaultBuildingVariant } from "./meta_building";
+import { DynamicTickrate } from "./dynamic_tickrate";
 
 const logger = createLogger("ingame/core");
 
@@ -52,16 +55,6 @@ export class GameCore {
         this.root = null;
 
         /**
-         * Time budget (seconds) for logic updates
-         */
-        this.logicTimeBudget = 0;
-
-        /**
-         * Time budget (seconds) for user interface updates
-         */
-        this.uiTimeBudget = 0;
-
-        /**
          * Set to true at the beginning of a logic update and cleared when its finished.
          * This is to prevent doing a recursive logic update which can lead to unexpected
          * behaviour.
@@ -82,6 +75,7 @@ export class GameCore {
         // Construct the root element, this is the data representation of the game
         this.root = new GameRoot(this.app);
         this.root.gameState = parentState;
+        this.root.keyMapper = parentState.keyActionMapper;
         this.root.savegame = savegame;
         this.root.gameWidth = this.app.screenWidth;
         this.root.gameHeight = this.app.screenHeight;
@@ -93,7 +87,10 @@ export class GameCore {
         const root = this.root;
 
         // This isn't nice, but we need it right here
-        root.gameState.keyActionMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
+        root.keyMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
+
+        // Needs to come first
+        root.dynamicTickrate = new DynamicTickrate(root);
 
         // Init classes
         root.camera = new Camera(root);
@@ -109,12 +106,9 @@ export class GameCore {
         root.entityMgr = new EntityManager(root);
         root.systemMgr = new GameSystemManager(root);
         root.shapeDefinitionMgr = new ShapeDefinitionManager(root);
-        root.mapNoiseGenerator = new PerlinNoise(Math.random()); // TODO: Save seed
         root.hubGoals = new HubGoals(root);
+        root.productionAnalytics = new ProductionAnalytics(root);
         root.buffers = new BufferMaintainer(root);
-
-        // root.particleMgr = new ParticleManager(root);
-        // root.uiParticleMgr = new ParticleManager(root);
 
         // Initialize the hud once everything is loaded
         this.root.hud.initialize();
@@ -132,15 +126,21 @@ export class GameCore {
 
     /**
      * Initializes a new game, this means creating a new map and centering on the
-     * plaerbase
+     * playerbase
      * */
     initNewGame() {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
+        this.root.map.seed = randomInt(0, 100000);
 
-        gMetaBuildingRegistry
-            .findByClass(MetaHubBuilding)
-            .createAndPlaceEntity(this.root, new Vector(-2, -2), 0);
+        gMetaBuildingRegistry.findByClass(MetaHubBuilding).createAndPlaceEntity({
+            root: this.root,
+            origin: new Vector(-2, -2),
+            rotation: 0,
+            originalRotation: 0,
+            rotationVariant: 0,
+            variant: defaultBuildingVariant,
+        });
     }
 
     /**
@@ -245,16 +245,8 @@ export class GameCore {
         // Perform logic ticks
         this.root.time.performTicks(deltaMs, this.boundInternalTick);
 
-        // Update UI particles
-        this.uiTimeBudget += deltaMs;
-        const maxUiSteps = 3;
-        if (this.uiTimeBudget > globalConfig.physicsDeltaMs * maxUiSteps) {
-            this.uiTimeBudget = globalConfig.physicsDeltaMs;
-        }
-        while (this.uiTimeBudget >= globalConfig.physicsDeltaMs) {
-            this.uiTimeBudget -= globalConfig.physicsDeltaMs;
-            // root.uiParticleMgr.update();
-        }
+        // Update analytics
+        root.productionAnalytics.update();
 
         // Update automatic save after everything finished
         root.automaticSave.update();
@@ -280,6 +272,14 @@ export class GameCore {
 
     updateLogic() {
         const root = this.root;
+
+        root.dynamicTickrate.beginTick();
+
+        if (G_IS_DEV && globalConfig.debug.disableLogicTicks) {
+            root.dynamicTickrate.endTick();
+            return true;
+        }
+
         this.duringLogicUpdate = true;
 
         // Update entities, this removes destroyed entities
@@ -288,6 +288,8 @@ export class GameCore {
         // IMPORTANT: At this point, the game might be game over. Stop if this is the case
         if (!this.root) {
             logger.log("Root destructed, returning false");
+            root.dynamicTickrate.endTick();
+
             return false;
         }
 
@@ -295,7 +297,7 @@ export class GameCore {
         // root.particleMgr.update();
 
         this.duringLogicUpdate = false;
-
+        root.dynamicTickrate.endTick();
         return true;
     }
 
@@ -331,6 +333,8 @@ export class GameCore {
             return;
         }
 
+        this.root.dynamicTickrate.onFrameRendered();
+
         if (!this.shouldRender()) {
             // Always update hud tho
             root.hud.update();
@@ -345,6 +349,9 @@ export class GameCore {
         // Gather context and save all state
         const context = root.context;
         context.save();
+        if (G_IS_DEV && globalConfig.debug.testClipping) {
+            context.clearRect(0, 0, window.innerWidth * 3, window.innerHeight * 3);
+        }
 
         // Compute optimal zoom level and atlas scale
         const zoomLevel = root.camera.zoomLevel;
@@ -387,18 +394,18 @@ export class GameCore {
         // -----
 
         root.map.drawBackground(params);
-        // systems.mapResources.draw(params);
 
         if (!this.root.camera.getIsMapOverlayActive()) {
-            systems.itemProcessor.drawUnderlays(params);
+            systems.itemAcceptor.drawUnderlays(params);
             systems.belt.draw(params);
             systems.itemEjector.draw(params);
-            systems.itemProcessor.draw(params);
+            systems.itemAcceptor.draw(params);
         }
 
         root.map.drawForeground(params);
         if (!this.root.camera.getIsMapOverlayActive()) {
             systems.hub.draw(params);
+            systems.storage.draw(params);
         }
 
         if (G_IS_DEV) {

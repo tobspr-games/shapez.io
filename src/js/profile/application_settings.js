@@ -6,6 +6,8 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
+import { THEMES, THEME, applyGameTheme } from "../game/theme";
+import { IS_DEMO } from "../core/config";
 
 const logger = createLogger("application_settings");
 
@@ -65,10 +67,56 @@ export const allApplicationSettings = [
                 app.platformWrapper.setFullscreen(value);
             }
         },
-        G_IS_STANDALONE
+        !IS_DEMO
+    ),
+
+    new BoolSetting(
+        "soundsMuted",
+        categoryApp,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setSoundsMuted(value)
+    ),
+    new BoolSetting(
+        "musicMuted",
+        categoryApp,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setMusicMuted(value)
     ),
 
     // GAME
+    new EnumSetting("theme", {
+        options: Object.keys(THEMES),
+        valueGetter: theme => theme,
+        textGetter: theme => theme.substr(0, 1).toUpperCase() + theme.substr(1),
+        category: categoryGame,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => {
+                applyGameTheme(id);
+                document.body.setAttribute("data-theme", id);
+            },
+        enabled: !IS_DEMO,
+    }),
+
+    new EnumSetting("refreshRate", {
+        options: ["60", "100", "144", "165"],
+        valueGetter: rate => rate,
+        textGetter: rate => rate + " Hz",
+        category: categoryGame,
+        restartRequired: false,
+        changeCb: (app, id) => {},
+        enabled: !IS_DEMO,
+    }),
+
+    new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
+    new BoolSetting("offerHints", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -79,6 +127,19 @@ class SettingsStorage {
     constructor() {
         this.uiScale = "regular";
         this.fullscreen = G_IS_STANDALONE;
+
+        this.soundsMuted = false;
+        this.musicMuted = false;
+        this.theme = "light";
+        this.refreshRate = "60";
+
+        this.alwaysMultiplace = false;
+        this.offerHints = true;
+
+        /**
+         * @type {Object.<string, number>}
+         */
+        this.keybindingOverrides = {};
     }
 }
 
@@ -89,7 +150,17 @@ export class ApplicationSettings extends ReadWriteProxy {
 
     initialize() {
         // Read and directly write latest data back
-        return this.readAsync().then(() => this.writeAsync());
+        return this.readAsync()
+            .then(() => {
+                // Apply default setting callbacks
+                const settings = this.getAllSettings();
+                for (let i = 0; i < allApplicationSettings.length; ++i) {
+                    const handle = allApplicationSettings[i];
+                    handle.apply(this.app, settings[handle.id]);
+                }
+            })
+
+            .then(() => this.writeAsync());
     }
 
     save() {
@@ -121,6 +192,10 @@ export class ApplicationSettings extends ReadWriteProxy {
         return this.getAllSettings().uiScale;
     }
 
+    getDesiredFps() {
+        return parseInt(this.getAllSettings().refreshRate);
+    }
+
     getInterfaceScaleValue() {
         const id = this.getInterfaceScaleId();
         for (let i = 0; i < uiScales.length; ++i) {
@@ -136,6 +211,10 @@ export class ApplicationSettings extends ReadWriteProxy {
         return this.getAllSettings().fullscreen;
     }
 
+    getKeybindingOverrides() {
+        return this.getAllSettings().keybindingOverrides;
+    }
+
     // Setters
 
     /**
@@ -143,8 +222,46 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string|boolean} value
      */
     updateSetting(key, value) {
-        assert(this.getAllSettings().hasOwnProperty(key), "Setting not known: " + key);
-        this.getAllSettings()[key] = value;
+        for (let i = 0; i < allApplicationSettings.length; ++i) {
+            const setting = allApplicationSettings[i];
+            if (setting.id === key) {
+                if (!setting.validate(value)) {
+                    assertAlways(false, "Bad setting value: " + key);
+                }
+                this.getAllSettings()[key] = value;
+                if (setting.changeCb) {
+                    setting.changeCb(this.app, value);
+                }
+                return this.writeAsync();
+            }
+        }
+        assertAlways(false, "Unknown setting: " + key);
+    }
+
+    /**
+     * Sets a new keybinding override
+     * @param {string} keybindingId
+     * @param {number} keyCode
+     */
+    updateKeybindingOverride(keybindingId, keyCode) {
+        assert(Number.isInteger(keyCode), "Not a valid key code: " + keyCode);
+        this.getAllSettings().keybindingOverrides[keybindingId] = keyCode;
+        return this.writeAsync();
+    }
+
+    /**
+     * Resets a given keybinding override
+     * @param {string} id
+     */
+    resetKeybindingOverride(id) {
+        delete this.getAllSettings().keybindingOverrides[id];
+        return this.writeAsync();
+    }
+    /**
+     * Resets all keybinding overrides
+     */
+    resetKeybindingOverrides() {
+        this.getAllSettings().keybindingOverrides = {};
         return this.writeAsync();
     }
 
@@ -176,14 +293,26 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 1;
+        return 7;
     }
 
+    /** @param {{settings: SettingsStorage, version: number}} data */
     migrate(data) {
-        // Simply reset
-        if (data.version < 1) {
+        // Simply reset before
+        if (data.version < 5) {
             data.settings = new SettingsStorage();
-            data.version = 1;
+            data.version = this.getCurrentVersion();
+            return ExplainedResult.good();
+        }
+
+        if (data.version < 6) {
+            data.settings.alwaysMultiplace = false;
+            data.version = 6;
+        }
+
+        if (data.version < 7) {
+            data.settings.offerHints = true;
+            data.version = 7;
         }
 
         return ExplainedResult.good();

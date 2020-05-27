@@ -11,6 +11,8 @@ import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
 import { SavegameInterface_V1000 } from "./schemas/1000";
 import { getSavegameInterface } from "./savegame_interface_registry";
+import { compressObject } from "./savegame_compressor";
+import { compressX64 } from "../core/lzstring";
 
 const logger = createLogger("savegame");
 
@@ -37,7 +39,7 @@ export class Savegame extends ReadWriteProxy {
      * @returns {number}
      */
     static getCurrentVersion() {
-        return 1015;
+        return 1000;
     }
 
     /**
@@ -74,13 +76,9 @@ export class Savegame extends ReadWriteProxy {
      * @param {SavegameData} data
      */
     migrate(data) {
-        // if (data.version === 1014) {
-        //     if (data.dump) {
-        //         const reader = new SavegameInterface_V1015(fakeLogger, data);
-        //         reader.migrateFrom1014();
-        //     }
-        //     data.version = 1015;
-        // }
+        if (data.version < 1000) {
+            return ExplainedResult.bad("Can not migrate savegame, too old");
+        }
         return ExplainedResult.good();
     }
 
@@ -129,7 +127,7 @@ export class Savegame extends ReadWriteProxy {
      * Returns if this game has a serialized game dump
      */
     hasGameDump() {
-        return !!this.currentData.dump;
+        return !!this.currentData.dump && this.currentData.dump.entities.length > 0;
     }
 
     /**
@@ -185,8 +183,6 @@ export class Savegame extends ReadWriteProxy {
         if (!dump) {
             return false;
         }
-        // let duration = performanceNow() - timer;
-        // console.log("TOOK", duration, "ms to generate dump:", dump);
 
         const shadowData = Object.assign({}, this.currentData);
         shadowData.dump = dump;
@@ -218,7 +214,6 @@ export class Savegame extends ReadWriteProxy {
      * Updates the savegames metadata
      */
     saveMetadata() {
-        const reader = this.getDumpReader();
         this.metaDataRef.lastUpdate = new Date().getTime();
         this.metaDataRef.version = this.getCurrentVersion();
         return this.app.savegameMgr.writeAsync();

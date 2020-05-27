@@ -11,6 +11,29 @@
     align-items: center;
     justify-content: center;
 
+    @include InlineAnimation(0.12s ease-in-out) {
+        0% {
+            background-color: transparent;
+            opacity: 0.5;
+        }
+        100% {
+            background-color: $modalDialogBg;
+        }
+    }
+
+    @include DarkThemeOverride {
+        background: rgba(#33363d, 0.9);
+        @include InlineAnimation(0.12s ease-in-out) {
+            0% {
+                background-color: transparent;
+                opacity: 0.5;
+            }
+            100% {
+                background-color: rgba(#33363d, 0.9);
+            }
+        }
+    }
+
     &.visible {
         .dialogInner {
             opacity: 1;
@@ -22,30 +45,64 @@
         opacity: 0;
     }
 
+    &.loadingDialog {
+        * {
+            color: #fff;
+        }
+    }
+
     > .dialogInner {
         background: #fff;
-        @include S(min-width, 500px);
-        max-width: calc(100vw - #{D(50px)});
-        max-height: calc(100vh - #{D(50px)});
-        @include S(border-radius, 4px);
+        max-height: calc(100vh - #{D(40px)});
+        @include S(border-radius, $globalBorderRadius);
         display: flex;
         flex-direction: column;
-        @include S(padding, 15px);
+        @include S(padding, 12px);
         pointer-events: all;
+
+        @include DarkThemeOverride {
+            background: #333438;
+        }
+
+        &.optionChooserDialog {
+            .optionParent {
+                display: grid;
+                @include S(grid-gap, 5px);
+                grid-template-columns: 1fr 1fr;
+                .option {
+                    pointer-events: all;
+                    cursor: pointer;
+                    @include S(padding, 10px);
+                    background: #eee;
+                    transition: background-color 0.12s ease-in-out;
+
+                    &:hover {
+                        background-color: #e7e7e7;
+                    }
+
+                    &.active {
+                        background-color: $colorBlueBright;
+                        color: #fff;
+                    }
+                }
+            }
+        }
 
         > .title {
             @include Heading;
             margin: 0;
             text-transform: uppercase;
             display: grid;
+            align-items: center;
             grid-template-columns: 1fr auto;
             @include S(margin-bottom, 10px);
 
+            @include DarkThemeInvert();
             > .closeButton {
                 opacity: 0.7;
                 @include S(width, 20px);
                 @include S(height, 20px);
-                background: uiResource("icons/close.png") center center / 60% no-repeat;
+                background: uiResource("icons/close.png") center center / 80% no-repeat;
                 cursor: pointer;
                 pointer-events: all;
                 transition: opacity 0.2s ease-in-out;
@@ -56,8 +113,67 @@
         }
 
         > .content {
+            @include PlainText;
             overflow-y: auto;
             pointer-events: all;
+            @include S(width, 350px);
+
+            > strong {
+                font-weight: bold;
+            }
+        }
+
+        > .buttons {
+            @include S(margin-top, 15px);
+            display: flex;
+            justify-content: flex-end;
+            > button {
+                @include S(margin-left, 8px);
+                @include Text;
+                @include S(min-width, 60px);
+                @include S(padding, 5px, 15px);
+
+                transition: opacity 0.12s ease-in-out;
+                &:hover {
+                    opacity: 0.9;
+                }
+
+                &.good {
+                    background-color: $colorGreenBright;
+                    color: #fff;
+                }
+
+                &.bad {
+                    background-color: $colorRedBright;
+                    color: #fff;
+                }
+
+                &.timedButton {
+                    pointer-events: none;
+                    cursor: default;
+                    position: relative;
+                    overflow: hidden;
+                    &::after {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: unset;
+                        z-index: 5;
+                        content: " ";
+                        display: inline-block;
+                        background: rgba(#fff, 0.6);
+                        @include InlineAnimation(5s linear) {
+                            0% {
+                                width: 100%;
+                            }
+                            100% {
+                                width: 0%;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -72,6 +72,33 @@ body {
     overflow: hidden;
     @include Text;
 
+    &.externalAdOpen {
+        &::before {
+            text-transform: uppercase;
+            @include SuperSmallText;
+            content: "Loading Advertisement...";
+            color: #333;
+            position: fixed;
+            top: 0;
+            pointer-events: all;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(50, 60, 70, 0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+
+            @include InlineAnimation(1s ease-in-out infinite) {
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
     // For recording the bg video
 
     // filter: blur(5px);
@@ -85,11 +112,6 @@ body {
     //   content: " ";
     //   background: rgba($ingameHudBg, 0.5);
     // }
-}
-
-// Dirty hack
-* {
-    @include TextShadow3DImpl;
 }
 
 img {
@@ -174,19 +196,25 @@ button {
     box-sizing: content-box;
     @include S(padding, 3px, 10px);
     @include IncreasedClickArea(10px);
-    @include BorderRadius(4px);
     @include TextShadow3D(#fff, $borderColor: #28292a);
     @include ButtonText;
-    @include Button3D($accentColorBright);
-    border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
+    border: 0;
+    background: $colorBlueBright;
+    color: #fff;
+
+    // border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
     @include S(border-bottom-width, 2px);
-    color: $accentColorDark;
+    // color: $accentColorDark;
     letter-spacing: 0.05em !important;
-    box-shadow: 0 #{D(1px)} #{D(2px)} 0 rgba(0, 10, 20, 0.2);
+    // box-shadow: 0 #{D(1px)} #{D(2px)} 0 rgba(0, 10, 20, 0.2);
 
     .keybinding {
         @include S(bottom, -2.5px);
         @include S(right, -2px);
+    }
+    transition: opacity 0.12s ease-in-out;
+    &:hover {
+        opacity: 0.9;
     }
 }
 
@@ -215,7 +243,7 @@ input[type="email"] {
 
     @include Text;
     @include IncreasedClickArea(15px);
-    @include BorderRadius(4px);
+    @include S(border-radius, $globalBorderRadius);
 
     &::placeholder {
         color: #fff;
@@ -312,7 +340,7 @@ canvas {
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 4px;
+    // border-radius: 4px;
     background: #cdd0d4;
 }
 
@@ -412,7 +440,7 @@ canvas {
         content: "Coming soon!";
         z-index: 10000;
         background: rgba(lighten($mainBgColor, 0), 0.4);
-        @include BorderRadius(4px);
+        @include S(border-radius, $globalBorderRadius);
         position: absolute;
         display: flex;
         justify-content: center;
@@ -485,7 +513,7 @@ canvas {
                 bottom: 0;
                 z-index: 1;
                 @include BoxShadow3D($themeColor, $size: 1px);
-                @include BorderRadius(4px);
+                @include S(border-radius, $globalBorderRadius);
 
                 transform-origin: 0% 50%;
 
@@ -522,16 +550,16 @@ canvas {
 }
 
 .checkbox {
-    $bgColor: darken($mainBgColor, 0);
+    $bgColor: darken($mainBgColor, 3);
     background-color: $bgColor;
-    @include S(width, 45px);
-    @include S(height, 20px);
+    @include S(width, 35px);
+    @include S(height, 17px);
     display: flex;
     @include S(padding, 3px);
     box-sizing: content-box;
     cursor: pointer;
     pointer-events: all;
-    transition: opacity 0.2s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out !important;
+    transition: opacity 0.2s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.4s ease-in-out !important;
     position: relative;
     @include BorderRadius(20px);
     @include IncreasedClickArea(10px);
@@ -540,9 +568,13 @@ canvas {
         opacity: 0.2;
     }
 
+    &:hover {
+        background-color: darken($bgColor, 5);
+    }
+
     .knob {
         @include S(width, 20px);
-        @include S(height, 20px);
+        @include S(height, 17px);
         display: inline-block;
         transition: margin-left 0.4s ease-in-out !important;
         background: #fff;
@@ -555,7 +587,11 @@ canvas {
         background-color: $themeColor;
         @include BoxShadow3D($themeColor, $size: 2px);
         .knob {
-            @include S(margin-left, 25px);
+            @include S(margin-left, 15px);
+        }
+
+        &:hover {
+            background-color: lighten($themeColor, 15);
         }
     }
 }
@@ -563,9 +599,9 @@ canvas {
 .keybinding {
     background: #fff;
     text-transform: uppercase;
-    @include S(padding, 2px, 1px, 2px);
+    @include S(padding, 1.5px, 3px, 2px);
     @include PlainText;
-    @include BorderRadius(2px);
+    @include S(border-radius, $globalBorderRadius);
     &,
     > span {
         @include S(font-size, 9px);
@@ -589,7 +625,7 @@ canvas {
     box-sizing: border-box;
     @include S(height, 12px);
     overflow: hidden;
-    border: #{D(1px)} solid $accentColorDark;
+    border: #{D(0px)} solid $accentColorDark;
 
     .keybinding_space {
         @include S(font-size, 17px);

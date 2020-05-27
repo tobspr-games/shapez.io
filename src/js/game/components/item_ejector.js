@@ -1,7 +1,8 @@
-import { globalConfig } from "../../core/config";
 import { Vector, enumDirection, enumDirectionToVector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { types } from "../../savegame/serialization";
+import { gItemRegistry } from "../../core/global_registries";
 
 /**
  * @typedef {{
@@ -19,17 +20,25 @@ export class ItemEjectorComponent extends Component {
 
     static getSchema() {
         return {
-            // slots: "TODO"
+            instantEject: types.bool,
+            slots: types.array(
+                types.structured({
+                    pos: types.vector,
+                    direction: types.enum(enumDirection),
+                    item: types.nullable(types.obj(gItemRegistry)),
+                    progress: types.float,
+                })
+            ),
         };
     }
 
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection}>} param0.slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.slots The slots to eject on
      * @param {boolean=} param0.instantEject If the ejection is instant
      */
-    constructor({ slots, instantEject = false }) {
+    constructor({ slots = [], instantEject = false }) {
         super();
 
         // How long items take to eject

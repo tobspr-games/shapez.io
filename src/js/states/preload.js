@@ -3,6 +3,9 @@ import { createLogger } from "../core/logging";
 import { findNiceValue, waitNextFrame } from "../core/utils";
 import { cachebust } from "../core/cachebust";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
+import { T } from "../translations";
+import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { CHANGELOG } from "../changelog";
 
 const logger = createLogger("state/preload");
 
@@ -44,9 +47,9 @@ export class PreloadState extends GameState {
             }
         }
 
-        // this.dialogs = new HUDModalDialogs(null, this.app);
-        // const dialogsElement = document.body.querySelector(".modalDialogParent");
-        // this.dialogs.initializeToElement(dialogsElement);
+        this.dialogs = new HUDModalDialogs(null, this.app);
+        const dialogsElement = document.body.querySelector(".modalDialogParent");
+        this.dialogs.initializeToElement(dialogsElement);
 
         this.statusText = this.htmlElement.querySelector(".loadingStatus > .desc");
         this.statusBar = this.htmlElement.querySelector(".loadingStatus > .bar > .inner");
@@ -64,12 +67,44 @@ export class PreloadState extends GameState {
     startLoading() {
         this.setStatus("Booting")
 
+            .then(() => this.setStatus("Checking for updates"))
+            .then(() => {
+                if (G_IS_STANDALONE) {
+                    return Promise.race([
+                        new Promise(resolve => setTimeout(resolve, 10000)),
+                        fetch(
+                            "https://itch.io/api/1/x/wharf/latest?target=tobspr/shapezio&channel_name=windows",
+                            {
+                                cache: "no-cache",
+                            }
+                        )
+                            .then(res => res.json())
+                            .then(({ latest }) => {
+                                if (latest !== G_BUILD_VERSION) {
+                                    const { ok, viewUpdate } = this.dialogs.showInfo(
+                                        T.dialogs.newUpdate.title,
+                                        T.dialogs.newUpdate.desc,
+                                        ["ok:good", "viewUpdate:good"]
+                                    );
+
+                                    return new Promise(resolve => {
+                                        ok.add(resolve);
+                                        viewUpdate.add(() => {
+                                            window.open("https://tobspr.itch.io/shapezio", "_blank");
+                                            resolve();
+                                        });
+                                    });
+                                }
+                            })
+                            .catch(err => {
+                                logger.log("Failed to fetch version:", err);
+                            }),
+                    ]);
+                }
+            })
+
             .then(() => this.setStatus("Creating platform wrapper"))
             .then(() => this.app.platformWrapper.initialize())
-
-            .then(() => this.setStatus("Initializing libraries"))
-            .then(() => this.app.analytics.initialize())
-            .then(() => this.app.gameAnalytics.initialize())
 
             .then(() => this.setStatus("Initializing local storage"))
             .then(() => {
@@ -95,13 +130,13 @@ export class PreloadState extends GameState {
                 return this.app.storage.initialize();
             })
 
+            .then(() => this.setStatus("Initializing libraries"))
+            .then(() => this.app.analytics.initialize())
+            .then(() => this.app.gameAnalytics.initialize())
+
             .then(() => this.setStatus("Initializing settings"))
             .then(() => {
                 return this.app.settings.initialize();
-            })
-            .then(() => {
-                // Make sure the app pickups the right size
-                this.app.updateAfterUiScaleChanged();
             })
 
             .then(() => {
@@ -142,6 +177,53 @@ export class PreloadState extends GameState {
                 return this.app.backgroundResourceLoader.getPromiseForBareGame();
             })
 
+            .then(() => this.setStatus("Checking changelog"))
+            .then(() => {
+                return this.app.storage
+                    .readFileAsync("lastversion.bin")
+                    .catch(err => {
+                        logger.warn("Failed to read lastversion:", err);
+                        return G_BUILD_VERSION;
+                    })
+                    .then(version => {
+                        logger.log("Last version:", version, "App version:", G_BUILD_VERSION);
+                        this.app.storage.writeFileAsync("lastversion.bin", G_BUILD_VERSION);
+                        return version;
+                    })
+                    .then(version => {
+                        let changelogEntries = [];
+                        logger.log("Last seen version:", version);
+
+                        for (let i = 0; i < CHANGELOG.length; ++i) {
+                            if (CHANGELOG[i].version === version) {
+                                break;
+                            }
+                            changelogEntries.push(CHANGELOG[i]);
+                        }
+                        if (changelogEntries.length === 0) {
+                            return;
+                        }
+
+                        let dialogHtml = T.dialogs.updateSummary.desc;
+                        for (let i = 0; i < changelogEntries.length; ++i) {
+                            const entry = changelogEntries[i];
+                            dialogHtml += `
+                            <div class="changelogDialogEntry">
+                                <span class="version">${entry.version}</span>
+                                <span class="date">${entry.date}</span>
+                                <ul class="changes">
+                                    ${entry.entries.map(text => `<li>${text}</li>`).join("")}
+                                </ul>
+                            </div>
+                        `;
+                        }
+
+                        return new Promise(resolve => {
+                            this.dialogs.showInfo(T.dialogs.updateSummary.title, dialogHtml).ok.add(resolve);
+                        });
+                    });
+            })
+
             .then(() => this.setStatus("Launching"))
             .then(
                 () => {
@@ -168,7 +250,8 @@ export class PreloadState extends GameState {
         if (G_IS_DEV) {
             return Promise.resolve();
         }
-        return waitNextFrame();
+        return Promise.resolve();
+        // return waitNextFrame();
     }
 
     showFailMessage(text) {

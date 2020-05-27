@@ -82,14 +82,11 @@ export class Rectangle {
             this.y = centerY - halfHeight;
             this.w = halfWidth * 2;
             this.h = halfHeight * 2;
-            // console.log("Assigned", this.x, this.y, this.w, this.h);
         } else {
-            // console.log("before", this.x, this.y, this.w, this.h);
             this.setLeft(Math_min(this.x, centerX - halfWidth));
             this.setRight(Math_max(this.right(), centerX + halfWidth));
             this.setTop(Math_min(this.y, centerY - halfHeight));
             this.setBottom(Math_max(this.bottom(), centerY + halfHeight));
-            // console.log("Extended", this.x, this.y, this.w, this.h);
         }
     }
 
@@ -175,13 +172,14 @@ export class Rectangle {
         return new Rectangle(this.x * factor, this.y * factor, this.w * factor, this.h * factor);
     }
 
-    // Increases the rectangle in all directions
-    expandInAllDirections(amount) {
-        this.x -= amount;
-        this.y -= amount;
-        this.w += 2 * amount;
-        this.h += 2 * amount;
-        return this;
+    /**
+     * Expands the rectangle in all directions
+     * @param {number} amount
+     * @returns {Rectangle} new rectangle
+     */
+
+    expandedInAllDirections(amount) {
+        return new Rectangle(this.x - amount, this.y - amount, this.w + 2 * amount, this.h + 2 * amount);
     }
 
     // Culling helpers

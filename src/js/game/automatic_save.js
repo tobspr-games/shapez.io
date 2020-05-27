@@ -1,6 +1,7 @@
 import { GameRoot } from "./root";
 import { globalConfig, IS_DEBUG } from "../core/config";
 import { Math_max } from "../core/builtins";
+import { createLogger } from "../core/logging";
 
 // How important it is that a savegame is created
 /**
@@ -11,15 +12,10 @@ export const enumSavePriority = {
     asap: 100,
 };
 
-// Internals
-let MIN_INTERVAL_SECS = 15;
+const logger = createLogger("autosave");
 
-if (G_IS_DEV && IS_DEBUG) {
-    // // Testing
-    // MIN_INTERVAL_SECS = 1;
-    // MAX_INTERVAL_SECS = 1;
-    MIN_INTERVAL_SECS = 9999999;
-}
+// Internals
+let MIN_INTERVAL_SECS = 60;
 
 export class AutomaticSave {
     constructor(root) {
@@ -50,6 +46,7 @@ export class AutomaticSave {
             // Bad idea
             return;
         }
+
         // Check when the last save was, but make sure that if it fails, we don't spam
         const lastSaveTime = Math_max(this.lastSaveAttempt, this.root.savegame.getRealLastUpdate());
 
@@ -72,7 +69,7 @@ export class AutomaticSave {
                 break;
         }
         if (shouldSave) {
-            // log(this, "Saving automatically");
+            logger.log("Saving automatically");
             this.lastSaveAttempt = Date.now();
             this.doSave();
         }

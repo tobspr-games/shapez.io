@@ -1,8 +1,9 @@
 import { Component } from "../component";
-import { Vector, enumDirection, enumDirectionToAngle, enumInvertedDirections } from "../../core/vector";
+import { Vector, enumDirection, enumInvertedDirections } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { ShapeItem } from "../items/shape_item";
 import { ColorItem } from "../items/color_item";
+import { types } from "../../savegame/serialization";
 
 /**
  * @enum {string?}
@@ -26,7 +27,30 @@ export class ItemAcceptorComponent extends Component {
 
     static getSchema() {
         return {
-            // slots: "TODO",
+            slots: types.array(
+                types.structured({
+                    pos: types.vector,
+                    directions: types.array(types.enum(enumDirection)),
+                    filter: types.nullable(types.enum(enumItemAcceptorItemFilter)),
+                })
+            ),
+            animated: types.bool,
+            beltUnderlays: types.array(
+                types.structured({
+                    pos: types.vector,
+                    direction: types.enum(enumDirection),
+                })
+            ),
+
+            // We don't actually need to store the animations
+            // itemConsumptionAnimations: types.array(
+            //     types.structured({
+            //         item: types.obj(gItemRegistry),
+            //         slotIndex: types.uint,
+            //         animProgress: types.float,
+            //         direction: types.enum(enumDirection),
+            //     })
+            // ),
         };
     }
 
@@ -34,9 +58,22 @@ export class ItemAcceptorComponent extends Component {
      *
      * @param {object} param0
      * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemAcceptorItemFilter}>} param0.slots The slots from which we accept items
+     * @param {boolean=} param0.animated Whether to animate item consumption
+     * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.beltUnderlays Where to render belt underlays
      */
-    constructor({ slots }) {
+    constructor({ slots = [], beltUnderlays = [], animated = true }) {
         super();
+
+        this.animated = animated;
+
+        /**
+         * Fixes belt animations
+         * @type {Array<{ item: BaseItem, slotIndex: number, animProgress: number, direction: enumDirection}>}
+         */
+        this.itemConsumptionAnimations = [];
+
+        /* Which belt underlays to render */
+        this.beltUnderlays = beltUnderlays;
 
         this.setSlots(slots);
     }
@@ -80,6 +117,23 @@ export class ItemAcceptorComponent extends Component {
     }
 
     /**
+     * Called when an item has been accepted so that
+     * @param {number} slotIndex
+     * @param {enumDirection} direction
+     * @param {BaseItem} item
+     */
+    onItemAccepted(slotIndex, direction, item) {
+        if (this.animated) {
+            this.itemConsumptionAnimations.push({
+                item,
+                slotIndex,
+                direction,
+                animProgress: 0.0,
+            });
+        }
+    }
+
+    /**
      * Tries to find a slot which accepts the current item
      * @param {Vector} targetLocalTile
      * @param {enumDirection} fromLocalDirection
@@ -99,12 +153,6 @@ export class ItemAcceptorComponent extends Component {
         for (let slotIndex = 0; slotIndex < this.slots.length; ++slotIndex) {
             const slot = this.slots[slotIndex];
 
-            // const acceptorLocalPosition = targetStaticComp.applyRotationToVector(
-            //   slot.pos
-            // );
-
-            // const acceptorGlobalPosition = acceptorLocalPosition.add(targetStaticComp.origin);
-
             // Make sure the acceptor slot is on the right position
             if (!slot.pos.equals(targetLocalTile)) {
                 continue;
@@ -123,7 +171,6 @@ export class ItemAcceptorComponent extends Component {
             }
         }
 
-        // && this.canAcceptItem(slotIndex, ejectingItem)
         return null;
     }
 }

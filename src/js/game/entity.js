@@ -5,14 +5,13 @@ import { Component } from "./component";
 /* typehints:end */
 
 import { globalConfig } from "../core/config";
-import { Vector, enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
+import { enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { EntityComponentStorage } from "./entity_components";
 import { Loader } from "../core/loader";
 import { drawRotatedSprite } from "../core/draw_utils";
 import { Math_radians } from "../core/builtins";
-// import { gFactionRegistry, gComponentRegistry } from "../core/global_registries";
-// import { EntityComponentStorage } from "./entity_components";
+import { gComponentRegistry } from "../core/global_registries";
 
 export class Entity extends BasicSerializableObject {
     /**
@@ -25,11 +24,6 @@ export class Entity extends BasicSerializableObject {
          * Handle to the global game root
          */
         this.root = root;
-
-        /**
-         * The metaclass of the entity, should be set by subclasses
-         */
-        this.meta = null;
 
         /**
          * The components of the entity
@@ -78,7 +72,7 @@ export class Entity extends BasicSerializableObject {
     static getSchema() {
         return {
             uid: types.uint,
-            // components: types.keyValueMap(types.objData(gComponentRegistry), false)
+            components: types.keyValueMap(types.objData(gComponentRegistry)),
         };
     }
 
@@ -88,15 +82,6 @@ export class Entity extends BasicSerializableObject {
      */
     isAlive() {
         return !this.destroyed && !this.queuedForDestroy;
-    }
-
-    /**
-     * Returns the meta class of the entity.
-     * @returns {object}
-     */
-    getMetaclass() {
-        assert(this.meta, "Entity has no metaclass");
-        return this.meta;
     }
 
     /**
@@ -114,6 +99,10 @@ export class Entity extends BasicSerializableObject {
      * @param {boolean} force Used by the entity manager. Internal parameter, do not change
      */
     addComponent(componentInstance, force = false) {
+        if (!force && this.registered) {
+            this.root.entityMgr.attachDynamicComponent(this, componentInstance);
+            return;
+        }
         assert(force || !this.registered, "Entity already registered, use EntityManager.addDynamicComponent");
         const id = /** @type {typeof Component} */ (componentInstance.constructor).getId();
         assert(!this.components[id], "Component already present");
@@ -124,9 +113,17 @@ export class Entity extends BasicSerializableObject {
      * Removes a given component, only possible until the entity is registered on the entity manager,
      * after that use @see EntityManager.removeDynamicComponent
      * @param {typeof Component} componentClass
+     * @param {boolean} force
      */
-    removeComponent(componentClass) {
-        assert(!this.registered, "Entity already registered, use EntityManager.removeDynamicComponent");
+    removeComponent(componentClass, force = false) {
+        if (!force && this.registered) {
+            this.root.entityMgr.removeDynamicComponent(this, componentClass);
+            return;
+        }
+        assert(
+            force || !this.registered,
+            "Entity already registered, use EntityManager.removeDynamicComponent"
+        );
         const id = componentClass.getId();
         assert(this.components[id], "Component does not exist on entity");
         delete this.components[id];

@@ -1,13 +1,7 @@
 import { GameRoot } from "../game/root";
-import {
-    makeOffscreenBuffer,
-    freeCanvas,
-    getBufferVramUsageBytes,
-    getBufferStats,
-    clearBufferBacklog,
-} from "./buffer_utils";
+import { clearBufferBacklog, freeCanvas, getBufferStats, makeOffscreenBuffer } from "./buffer_utils";
 import { createLogger } from "./logging";
-import { round2Digits, round1Digit } from "./utils";
+import { round1Digit } from "./utils";
 
 /**
  * @typedef {{
@@ -19,7 +13,7 @@ import { round2Digits, round1Digit } from "./utils";
 
 const logger = createLogger("buffers");
 
-const bufferGcDurationSeconds = 3;
+const bufferGcDurationSeconds = 10;
 
 export class BufferMaintainer {
     /**

@@ -4,18 +4,24 @@ module.exports = function (api) {
         [
             "@babel/preset-env",
             {
-                targets: "android >= 4.4.4",
+                targets: "cover 99.5%",
                 useBuiltIns: "usage",
                 corejs: 3,
                 loose: true,
                 spec: false,
                 modules: "auto",
-                // debug: true
             },
         ],
     ];
     const plugins = [
         "closure-elimination",
+        // var is faster than let and const!
+        [
+            "@babel/plugin-transform-block-scoping",
+            {
+                throwIfClosureRequired: false,
+            },
+        ],
         [
             "@babel/plugin-transform-classes",
             {

@@ -3,10 +3,14 @@ import { HubComponent } from "../components/hub";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Entity } from "../entity";
 import { formatBigNumber } from "../../core/utils";
+import { Loader } from "../../core/loader";
+import { T } from "../../translations";
 
 export class HubSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [HubComponent]);
+
+        this.hubSprite = Loader.getSprite("sprites/buildings/hub.png");
     }
 
     draw(parameters) {
@@ -37,7 +41,14 @@ export class HubSystem extends GameSystemWithFilter {
         const context = parameters.context;
         const staticComp = entity.components.StaticMapEntity;
 
+        if (!staticComp.shouldBeDrawn(parameters)) {
+            return;
+        }
+
         const pos = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+
+        // Background
+        staticComp.drawSpriteOnFullEntityBounds(parameters, this.hubSprite, 2.2);
 
         const definition = this.root.hubGoals.currentGoal.definition;
 
@@ -49,17 +60,23 @@ export class HubSystem extends GameSystemWithFilter {
         const textOffsetY = -6;
 
         // Deliver count
-        context.font = "bold 25px GameFont";
+        const delivered = this.root.hubGoals.getCurrentGoalDelivered();
+
+        if (delivered > 9999) {
+            context.font = "bold 16px GameFont";
+        } else if (delivered > 999) {
+            context.font = "bold 20px GameFont";
+        } else {
+            context.font = "bold 25px GameFont";
+        }
         context.fillStyle = "#64666e";
         context.textAlign = "left";
-        context.fillText(
-            "" + formatBigNumber(this.root.hubGoals.getCurrentGoalDelivered()),
-            pos.x + textOffsetX,
-            pos.y + textOffsetY
-        );
+        context.fillText("" + formatBigNumber(delivered), pos.x + textOffsetX, pos.y + textOffsetY);
 
         // Required
+
         context.font = "13px GameFont";
+
         context.fillStyle = "#a4a6b0";
         context.fillText(
             "/ " + formatBigNumber(goals.required),
@@ -71,7 +88,7 @@ export class HubSystem extends GameSystemWithFilter {
         context.font = "bold 11px GameFont";
         context.fillStyle = "#fd0752";
         context.textAlign = "center";
-        context.fillText(goals.reward.toUpperCase(), pos.x, pos.y + 46);
+        context.fillText(T.storyRewards[goals.reward].title.toUpperCase(), pos.x, pos.y + 46);
 
         // Level
         context.font = "bold 11px GameFont";

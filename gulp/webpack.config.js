@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const path = require("path");
 const webpack = require("webpack");
 const utils = require("./buildutils");
@@ -105,6 +107,11 @@ module.exports = ({ watch = false, standalone = false }) => {
                             inline: true,
                         },
                     },
+                },
+                {
+                    test: /\.ya?ml$/,
+                    type: "json", // Required by Webpack v4
+                    use: "yaml-loader",
                 },
             ],
         },

@@ -6,6 +6,39 @@
         }
     }
 
+    .changelogDialogEntry {
+        margin-top: 10px;
+        width: 100%;
+        flex-direction: column;
+        text-align: left;
+        padding: 10px;
+        box-sizing: border-box;
+        background: #eef1f4;
+
+        .version {
+            @include Heading;
+        }
+        .date {
+            @include PlainText;
+            &::before {
+                content: " | ";
+            }
+            color: #aaabaf;
+        }
+
+        .changes {
+            @include SuperSmallText;
+            @include S(padding-left, 15px);
+            strong {
+                background: $colorBlueBright;
+                color: #fff;
+                text-transform: uppercase;
+                @include S(padding, 1px, 2px);
+                @include S(margin-right, 3px);
+            }
+        }
+    }
+
     .failureBox {
         .logo {
             img {
@@ -32,7 +65,7 @@
 
             @include BoxShadow3D(#fff);
             @include S(padding, 15px);
-            @include BorderRadius(4px);
+            @include S(border-radius, $globalBorderRadius);
             @include DropShadow;
 
             .errorHeader {
@@ -79,6 +112,7 @@
                     @include Button3D($colorRedBright);
                     @include PlainText;
                     @include S(padding, 5px, 8px, 4px);
+                    color: #fff;
                 }
             }
         }

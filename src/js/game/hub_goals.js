@@ -1,20 +1,58 @@
-import { BasicSerializableObject } from "../savegame/serialization";
-import { GameRoot } from "./root";
-import { ShapeDefinition, enumSubShape } from "./shape_definition";
-import { enumColors } from "./colors";
-import { randomChoice, clamp, randomInt, findNiceIntegerValue } from "../core/utils";
-import { tutorialGoals, enumHubGoalRewards } from "./tutorial_goals";
-import { createLogger } from "../core/logging";
-import { globalConfig } from "../core/config";
 import { Math_random } from "../core/builtins";
-import { UPGRADES } from "./upgrades";
+import { globalConfig } from "../core/config";
+import { queryParamOptions } from "../core/query_parameters";
+import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/utils";
+import { BasicSerializableObject, types } from "../savegame/serialization";
+import { enumColors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
-
-const logger = createLogger("hub_goals");
+import { GameRoot } from "./root";
+import { enumSubShape, ShapeDefinition } from "./shape_definition";
+import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
+import { UPGRADES } from "./upgrades";
 
 export class HubGoals extends BasicSerializableObject {
     static getId() {
         return "HubGoals";
+    }
+
+    static getSchema() {
+        return {
+            level: types.uint,
+            storedShapes: types.keyValueMap(types.uint),
+            upgradeLevels: types.keyValueMap(types.uint),
+
+            currentGoal: types.structured({
+                definition: types.knownType(ShapeDefinition),
+                required: types.uint,
+                reward: types.nullable(types.enum(enumHubGoalRewards)),
+            }),
+        };
+    }
+
+    deserialize(data) {
+        const errorCode = super.deserialize(data);
+        if (errorCode) {
+            return errorCode;
+        }
+
+        // Compute gained rewards
+        for (let i = 0; i < this.level - 1; ++i) {
+            if (i < tutorialGoals.length) {
+                const reward = tutorialGoals[i].reward;
+                this.gainedRewards[reward] = (this.gainedRewards[reward] || 0) + 1;
+            }
+        }
+
+        // Compute upgrade improvements
+        for (const upgradeId in UPGRADES) {
+            const upgradeHandle = UPGRADES[upgradeId];
+            const level = this.upgradeLevels[upgradeId] || 0;
+            let totalImprovement = upgradeHandle.baseValue || 1;
+            for (let i = 0; i < level; ++i) {
+                totalImprovement += upgradeHandle.tiers[i].improvement;
+            }
+            this.upgradeImprovements[upgradeId] = totalImprovement;
+        }
     }
 
     /**
@@ -29,6 +67,7 @@ export class HubGoals extends BasicSerializableObject {
 
         /**
          * Which story rewards we already gained
+         * @type {Object.<string, number>}
          */
         this.gainedRewards = {};
 
@@ -74,6 +113,14 @@ export class HubGoals extends BasicSerializableObject {
     getShapesStored(definition) {
         return this.storedShapes[definition.getHash()] || 0;
     }
+    /**
+     * Returns how much of the current shape is stored
+     * @param {string} key
+     * @returns {number}
+     */
+    getShapesStoredByKey(key) {
+        return this.storedShapes[key] || 0;
+    }
 
     /**
      * Returns how much of the current goal was already delivered
@@ -110,6 +157,8 @@ export class HubGoals extends BasicSerializableObject {
         const hash = definition.getHash();
         this.storedShapes[hash] = (this.storedShapes[hash] || 0) + 1;
 
+        this.root.signals.shapeDelivered.dispatch(definition);
+
         // Check if we have enough for the next level
         const targetHash = this.currentGoal.definition.getHash();
         if (
@@ -129,22 +178,18 @@ export class HubGoals extends BasicSerializableObject {
             const { shape, required, reward } = tutorialGoals[storyIndex];
             this.currentGoal = {
                 /** @type {ShapeDefinition} */
-                definition: this.root.shapeDefinitionMgr.registerOrReturnHandle(
-                    ShapeDefinition.fromShortKey(shape)
-                ),
+                definition: this.root.shapeDefinitionMgr.getShapeFromShortKey(shape),
                 required,
                 reward,
             };
             return;
         }
 
-        const reward = enumHubGoalRewards.no_reward;
-
         this.currentGoal = {
             /** @type {ShapeDefinition} */
             definition: this.createRandomShape(),
             required: 1000 + findNiceIntegerValue(this.level * 47.5),
-            reward,
+            reward: enumHubGoalRewards.no_reward_freeplay,
         };
     }
 
@@ -154,11 +199,19 @@ export class HubGoals extends BasicSerializableObject {
     onGoalCompleted() {
         const reward = this.currentGoal.reward;
         this.gainedRewards[reward] = (this.gainedRewards[reward] || 0) + 1;
-        this.root.signals.storyGoalCompleted.dispatch(this.level, reward);
 
         this.root.app.gameAnalytics.handleLevelCompleted(this.level);
         ++this.level;
         this.createNextGoal();
+
+        this.root.signals.storyGoalCompleted.dispatch(this.level - 1, reward);
+    }
+
+    /**
+     * Returns whether we are playing in free-play
+     */
+    isFreePlay() {
+        return this.level >= tutorialGoals.length;
     }
 
     /**
@@ -187,6 +240,20 @@ export class HubGoals extends BasicSerializableObject {
             }
         }
         return true;
+    }
+
+    /**
+     * Returns the number of available upgrades
+     * @returns {number}
+     */
+    getAvailableUpgradeCount() {
+        let count = 0;
+        for (const upgradeId in UPGRADES) {
+            if (this.canUnlockUpgrade(upgradeId)) {
+                ++count;
+            }
+        }
+        return count;
     }
 
     /**
@@ -311,18 +378,38 @@ export class HubGoals extends BasicSerializableObject {
             case enumItemProcessorTypes.hub:
                 return 1e30;
             case enumItemProcessorTypes.splitter:
-                return (2 / globalConfig.beltSpeedItemsPerSecond) * this.upgradeImprovements.processors;
-            case enumItemProcessorTypes.cutter:
-            case enumItemProcessorTypes.rotater:
-            case enumItemProcessorTypes.stacker:
+                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
+
             case enumItemProcessorTypes.mixer:
             case enumItemProcessorTypes.painter:
+            case enumItemProcessorTypes.painterDouble:
+            case enumItemProcessorTypes.painterQuad: {
+                assert(
+                    globalConfig.buildingSpeeds[processorType],
+                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
+                );
                 return (
-                    (1 / globalConfig.beltSpeedItemsPerSecond) *
+                    globalConfig.beltSpeedItemsPerSecond *
+                    this.upgradeImprovements.painting *
+                    globalConfig.buildingSpeeds[processorType]
+                );
+            }
+
+            case enumItemProcessorTypes.cutter:
+            case enumItemProcessorTypes.cutterQuad:
+            case enumItemProcessorTypes.rotater:
+            case enumItemProcessorTypes.rotaterCCW:
+            case enumItemProcessorTypes.stacker: {
+                assert(
+                    globalConfig.buildingSpeeds[processorType],
+                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
+                );
+                return (
+                    globalConfig.beltSpeedItemsPerSecond *
                     this.upgradeImprovements.processors *
                     globalConfig.buildingSpeeds[processorType]
                 );
-
+            }
             default:
                 assertAlways(false, "invalid processor type: " + processorType);
         }

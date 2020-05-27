@@ -24,7 +24,7 @@ export class SavegameSerializer {
      * Serializes the game root into a dump
      * @param {GameRoot} root
      * @param {boolean=} sanityChecks Whether to check for validity
-     * @returns {SerializedGame}
+     * @returns {object}
      */
     generateDumpFromGameRoot(root, sanityChecks = true) {
         // Finalize particles before saving (Like granting destroy indicator rewards)
@@ -32,21 +32,15 @@ export class SavegameSerializer {
         // root.uiParticleMgr.finalizeBeforeSave();
 
         // Now store generic savegame payload
-        const data = /** @type {SerializedGame} */ ({
+        const data = {
             camera: root.camera.serialize(),
             time: root.time.serialize(),
+            map: root.map.serialize(),
             entityMgr: root.entityMgr.serialize(),
-            entities: {},
-        });
+            hubGoals: root.hubGoals.serialize(),
+        };
 
-        // Serialize all types of entities
-        const serializeEntities = component =>
-            this.internal.serializeEntityArray(root.entityMgr.getAllWithComponent(component));
-        const serializeEntitiesFixed = component =>
-            this.internal.serializeEntityArrayFixedType(root.entityMgr.getAllWithComponent(component));
-
-        // data.entities.resources = serializeEntitiesFixed(RawMaterialComponent);
-        // data.entities.buildings = serializeEntities(BuildingComponent);
+        data.entities = this.internal.serializeEntityArray(root.entityMgr.entities);
 
         if (!G_IS_RELEASE) {
             if (sanityChecks) {
@@ -58,13 +52,12 @@ export class SavegameSerializer {
                 }
             }
         }
-
         return data;
     }
 
     /**
      * Verifies if there are logical errors in the savegame
-     * @param {SerializedGame} savegame
+     * @param {object} savegame
      * @returns {ExplainedResult}
      */
     verifyLogicalErrors(savegame) {
@@ -135,33 +128,14 @@ export class SavegameSerializer {
         if (!verifyResult.result) {
             return ExplainedResult.bad(verifyResult.reason);
         }
-
         let errorReason = null;
 
-        // entities
         errorReason = errorReason || root.entityMgr.deserialize(savegame.entityMgr);
-
-        // resources
-        errorReason =
-            errorReason ||
-            this.internal.deserializeEntityArrayFixedType(
-                root,
-                savegame.entities.resources,
-                this.internal.deserializeResource
-            );
-
-        // buildings
-        errorReason =
-            errorReason ||
-            this.internal.deserializeEntityArray(
-                root,
-                savegame.entities.buildings,
-                this.internal.deserializeBuilding
-            );
-
-        // other stuff
         errorReason = errorReason || root.time.deserialize(savegame.time);
         errorReason = errorReason || root.camera.deserialize(savegame.camera);
+        errorReason = errorReason || root.map.deserialize(savegame.map);
+        errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals);
+        errorReason = errorReason || this.internal.deserializeEntityArray(root, savegame.entities);
 
         // Check for errors
         if (errorReason) {

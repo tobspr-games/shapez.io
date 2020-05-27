@@ -1,0 +1,91 @@
+#state_SettingsState {
+    .content {
+        .versionbar {
+            @include S(margin-top, 20px);
+            @include SuperSmallText;
+            display: grid;
+            align-items: center;
+            grid-template-columns: 1fr auto;
+            .buildVersion {
+                display: flex;
+                flex-direction: column;
+                color: #aaadaf;
+            }
+        }
+
+        button.about {
+            background-color: $colorGreenBright;
+        }
+
+        .setting {
+            @include S(padding, 10px);
+            background: #eeeff5;
+            @include S(border-radius, $globalBorderRadius);
+            @include S(margin-bottom, 5px);
+
+            label {
+                text-transform: uppercase;
+                @include Text;
+            }
+
+            .desc {
+                @include S(margin-top, 5px);
+                @include SuperSmallText;
+                color: #aaadb2;
+            }
+
+            > .row {
+                display: grid;
+                align-items: center;
+                grid-template-columns: 1fr auto;
+            }
+
+            &.disabled {
+                // opacity: 0.3;
+                pointer-events: none;
+                * {
+                    pointer-events: none !important;
+                    cursor: default !important;
+                }
+                position: relative;
+                .standaloneOnlyHint {
+                    @include PlainText;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    pointer-events: all;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(#fff, 0.5);
+                    text-transform: uppercase;
+                    color: $colorRedBright;
+                }
+            }
+
+            .value.enum {
+                background: #fff;
+                @include PlainText;
+                display: flex;
+                align-items: flex-start;
+                pointer-events: all;
+                cursor: pointer;
+                justify-content: center;
+                @include S(min-width, 100px);
+                @include S(border-radius, $globalBorderRadius);
+                @include S(padding, 4px);
+                @include S(padding-right, 15px);
+
+                background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
+                    calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
+
+                transition: background-color 0.12s ease-in-out;
+                &:hover {
+                    background-color: #fafafa;
+                }
+            }
+        }
+    }
+}

@@ -5,8 +5,9 @@ import { smoothenDpi } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
-import { BasicSerializableObject } from "../savegame/serialization";
+import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
+import { THEME } from "./theme";
 
 const rusha = require("rusha");
 
@@ -74,6 +75,23 @@ export class ShapeDefinition extends BasicSerializableObject {
         return "ShapeDefinition";
     }
 
+    static getSchema() {
+        return {};
+    }
+
+    deserialize(data) {
+        const errorCode = super.deserialize(data);
+        if (errorCode) {
+            return errorCode;
+        }
+        const definition = ShapeDefinition.fromShortKey(data);
+        this.layers = definition.layers;
+    }
+
+    serialize() {
+        return this.getHash();
+    }
+
     /**
      *
      * @param {object} param0
@@ -123,7 +141,10 @@ export class ShapeDefinition extends BasicSerializableObject {
             layers.push(quads);
         }
 
-        return new ShapeDefinition({ layers });
+        const definition = new ShapeDefinition({ layers });
+        // We know the hash so save some work
+        definition.cachedHash = key;
+        return definition;
     }
 
     /**
@@ -163,6 +184,10 @@ export class ShapeDefinition extends BasicSerializableObject {
                     id += "--";
                 }
             }
+
+            if (layerIndex < this.layers.length - 1) {
+                id += ":";
+            }
         }
         this.cachedHash = id;
         return id;
@@ -197,7 +222,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * Generates this shape as a canvas
      * @param {number} size
      */
-    generateAsCanvas(size = 20) {
+    generateAsCanvas(size = 120) {
         const [canvas, context] = makeOffscreenBuffer(size, size, {
             smooth: true,
             label: "definition-canvas-cache-" + this.getHash(),
@@ -250,8 +275,8 @@ export class ShapeDefinition extends BasicSerializableObject {
                 context.rotate(rotation);
 
                 context.fillStyle = enumColorsToHexCode[color];
-                context.strokeStyle = "#555";
-                context.lineWidth = 1;
+                context.strokeStyle = THEME.items.outline;
+                context.lineWidth = THEME.items.outlineWidth;
 
                 const insetPadding = 0.0;
 
@@ -369,6 +394,20 @@ export class ShapeDefinition extends BasicSerializableObject {
     }
 
     /**
+     * Returns a definition which was rotated counter clockwise
+     * @returns {ShapeDefinition}
+     */
+    cloneRotateCCW() {
+        const newLayers = this.internalCloneLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            quadrants.push(quadrants[0]);
+            quadrants.shift();
+        }
+        return new ShapeDefinition({ layers: newLayers });
+    }
+
+    /**
      * Stacks the given shape definition on top.
      * @param {ShapeDefinition} definition
      */
@@ -439,6 +478,25 @@ export class ShapeDefinition extends BasicSerializableObject {
                 const item = quadrants[quadrantIndex];
                 if (item) {
                     item.color = color;
+                }
+            }
+        }
+        return new ShapeDefinition({ layers: newLayers });
+    }
+
+    /**
+     * Clones the shape and colors everything in the given colors
+     * @param {[enumColors, enumColors, enumColors, enumColors]} colors
+     */
+    cloneAndPaintWith4Colors(colors) {
+        const newLayers = this.internalCloneLayers();
+
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
+                const item = quadrants[quadrantIndex];
+                if (item) {
+                    item.color = colors[quadrantIndex];
                 }
             }
         }

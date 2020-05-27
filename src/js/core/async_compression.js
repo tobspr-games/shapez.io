@@ -85,39 +85,6 @@ class AsynCompression {
     }
 
     /**
-     * Compresses regulary
-     * @param {string} text
-     */
-    compressX64Async(text) {
-        if (text.length < 1024) {
-            // Ok so this is not worth it
-            return Promise.resolve(compressX64(text));
-        }
-        return this.internalQueueJob("compressX64", text);
-    }
-
-    /**
-     * Compresses with checksum
-     * @param {any} obj
-     */
-    compressWithChecksum(obj) {
-        const stringified = JSON_stringify(obj);
-        return this.internalQueueJob("compressWithChecksum", stringified);
-    }
-
-    /**
-     * Compresses with checksum
-     * @param {any} data The packets data
-     * @param {number} packetId The numeric packet id
-     */
-    compressPacket(data, packetId) {
-        return this.internalQueueJob("compressPacket", {
-            data,
-            packetId,
-        });
-    }
-
-    /**
      * Queues a new job
      * @param {string} job
      * @param {any} data

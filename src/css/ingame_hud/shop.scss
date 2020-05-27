@@ -3,60 +3,72 @@
         @include S(padding-right, 10px);
         display: flex;
         flex-direction: column;
+        @include S(width, 500px);
+
         .upgrade {
             display: grid;
             grid-template-columns: auto 1fr auto;
             background: #eee;
-            @include S(border-radius, 3px);
+            @include S(border-radius, $globalBorderRadius);
             @include S(margin-bottom, 4px);
             @include S(padding, 5px, 10px);
-            @include S(grid-row-gap, 5px);
-            @include S(height, 95px);
+            @include S(grid-row-gap, 1px);
+            @include S(height, 85px);
             grid-template-rows: #{D(20px)} auto;
 
             &:last-child {
                 margin-bottom: 0;
             }
 
+            @include DarkThemeOverride {
+                background: #55585a;
+            }
+
             .title {
-                grid-column: 2 / 3;
+                grid-column: 1 / 3;
                 grid-row: 1 / 2;
-                @include Heading;
+                @include PlainText;
                 display: flex;
                 align-items: center;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+
+                @include DarkThemeOverride {
+                    color: #fff;
+                }
 
                 .tier {
-                    @include S(margin-left, 5px);
+                    @include S(margin-right, 9px);
                     background: $colorGreenBright;
-                    @include S(border-radius, 4px);
+                    @include S(border-radius, $globalBorderRadius);
                     text-transform: uppercase;
                     @include PlainText;
                     color: #fff;
+                    text-align: center;
                     font-weight: bold;
-                    @include S(margin-top, 1px);
-
+                    @include S(width, 50px);
                     @include S(padding, 0px, 5px);
 
                     &[data-tier="0"] {
                         background-color: rgb(73, 186, 190);
                     }
                     &[data-tier="1"] {
-                        background-color: rgb(73, 94, 190);
+                        background-color: rgb(88, 110, 207);
                     }
                     &[data-tier="2"] {
-                        background-color: rgb(186, 73, 190);
+                        background-color: rgb(189, 100, 192);
                     }
                     &[data-tier="3"] {
-                        background-color: rgb(96, 190, 73);
+                        background-color: rgb(117, 192, 98);
                     }
                     &[data-tier="4"] {
-                        background-color: rgb(190, 91, 73);
+                        background-color: rgb(243, 77, 48);
                     }
                     &[data-tier="5"] {
-                        background-color: rgb(219, 184, 29);
+                        background-color: rgb(255, 209, 6);
                     }
                     &[data-tier="6"] {
-                        background-color: rgb(190, 73, 73);
+                        background-color: rgb(44, 41, 46);
                     }
                 }
             }
@@ -64,13 +76,15 @@
             .icon {
                 @include S(width, 40px);
                 @include S(height, 40px);
-                background: center center / contain no-repeat;
+                background: center center / 80% no-repeat;
                 align-self: center;
                 justify-self: center;
                 grid-column: 1 / 2;
-                grid-row: 1 / 4;
-                @include S(margin-right, 20px);
-                opacity: 0.2;
+                grid-row: 2 / 4;
+                @include S(margin-right, 30px);
+                @include S(margin-left, 10px);
+                opacity: 0.32;
+                display: none;
             }
 
             .description {
@@ -87,7 +101,7 @@
                 grid-row: 3 / 4;
                 display: grid;
                 grid-auto-flow: column;
-                @include S(grid-gap, 15px);
+                @include S(grid-gap, 9px);
                 justify-content: start;
 
                 .requirement {
@@ -95,6 +109,55 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    @include S(width, 70px);
+                    overflow: hidden;
+
+                    button.pin {
+                        @include S(width, 12px);
+                        @include S(height, 12px);
+                        background: uiResource("icons/pin.png") center center / 95% no-repeat;
+                        position: absolute;
+                        @include S(top, 2px);
+                        @include S(right, 2px);
+                        opacity: 0.6;
+                        cursor: pointer;
+                        pointer-events: all;
+                        @include IncreasedClickArea(5px);
+                        transition: opacity 0.12s ease-in-out;
+
+                        @include DarkThemeInvert;
+
+                        &:hover {
+                            opacity: 0.7;
+                        }
+
+                        &.alreadyPinned {
+                            opacity: 0.1 !important;
+                            pointer-events: none;
+                            cursor: default;
+                        }
+
+                        &.pinned {
+                            opacity: 0.1;
+                            pointer-events: none;
+                            cursor: default;
+                            @include InlineAnimation(0.3s ease-in-out) {
+                                0% {
+                                    opacity: 1;
+                                    transform: scale(0.8);
+                                }
+
+                                30% {
+                                    opacity: 1;
+                                    transform: scale(1.2);
+                                }
+
+                                100% {
+                                    transform: scale(1);
+                                }
+                            }
+                        }
+                    }
 
                     canvas {
                         @include S(width, 40px);
@@ -109,25 +172,36 @@
                         background: #e2e4e6;
 
                         @include S(line-height, 13px);
-                        @include S(border-radius, 2px);
-                        @include S(padding, 0, 2px, 3px);
+                        @include S(border-radius, $globalBorderRadius);
+                        @include S(padding, 1px, 0px, 2px);
                         position: relative;
                         text-align: center;
                         @include S(min-width, 50px);
+                        // @include S(max-width, 100px);
                         overflow: hidden;
+                        width: 100%;
+
+                        @include DarkThemeOverride {
+                            background: #333438;
+                            color: #fff;
+                        }
 
                         .progressBar {
                             bottom: 0;
                             left: 0;
                             right: 0;
                             top: 0;
-                            @include S(border-radius, 2px);
+                            @include S(border-radius, $globalBorderRadius);
                             position: absolute;
                             display: inline-block;
                             z-index: -1;
                             transition: all 0.2s ease-in-out;
                             transition-property: width, background-color;
                             background: #bdbfca;
+
+                            @include DarkThemeOverride {
+                                background: #8c8d96;
+                            }
 
                             &.complete {
                                 background-color: $colorGreenBright;
@@ -140,7 +214,7 @@
             button.buy {
                 grid-column: 3 / 4;
                 grid-row: 3 / 4;
-                align-self: end;
+                align-self: center;
                 justify-self: end;
                 // @include S(padding, 4px, 5px);
                 // @include PlainText;
@@ -155,6 +229,19 @@
                     cursor: default;
                     pointer-events: none;
                     opacity: 0.3;
+                }
+
+                &.buyable {
+                    @include InlineAnimation(1s ease-in-out infinite) {
+                        0% {
+                        }
+
+                        50% {
+                            background-color: lighten($colorGreenBright, 10);
+                        }
+                        100% {
+                        }
+                    }
                 }
             }
 

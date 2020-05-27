@@ -1,18 +1,11 @@
 import { Math_min } from "../../core/builtins";
+import { globalConfig, IS_MOBILE, IS_DEBUG, IS_DEMO } from "../../core/config";
 import { createLogger } from "../../core/logging";
 import { queryParamOptions } from "../../core/query_parameters";
 import { clamp } from "../../core/utils";
-import { globalConfig, IS_MOBILE } from "../../core/config";
 import { NoAdProvider } from "../ad_providers/no_ad_provider";
 import { PlatformWrapperInterface } from "../wrapper";
-import { ShapezioWebsiteEmbedProvider } from "./embed_providers/shapezio_website";
-import { ArmorgamesEmbedProvider } from "./embed_providers/armorgames";
-import { IogamesSpaceEmbedProvider } from "./embed_providers/iogames_space";
-import { MiniclipEmbedProvider } from "./embed_providers/miniclip";
-import { GamedistributionEmbedProvider } from "./embed_providers/gamedistribution";
-import { KongregateEmbedProvider } from "./embed_providers/kongregate";
-import { CrazygamesEmbedProvider } from "./embed_providers/crazygames";
-import { EmbedProvider } from "./embed_provider";
+import { GamedistributionAdProvider } from "../ad_providers/gamedistribution";
 
 const logger = createLogger("platform/browser");
 
@@ -20,39 +13,54 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
     initialize() {
         this.recaptchaTokenCallback = null;
 
-        this.embedProvider = new ShapezioWebsiteEmbedProvider();
+        this.embedProvider = {
+            id: "shapezio-website",
+            adProvider: NoAdProvider,
+            iframed: false,
+            externalLinks: true,
+            iogLink: true,
+            unlimitedSavegames: IS_DEMO ? false : true,
+            showDemoBadge: IS_DEMO,
+        };
 
         if (!G_IS_STANDALONE && queryParamOptions.embedProvider) {
             const providerId = queryParamOptions.embedProvider;
+            this.embedProvider.iframed = true;
+            this.embedProvider.iogLink = false;
 
             switch (providerId) {
                 case "armorgames": {
-                    this.embedProvider = new ArmorgamesEmbedProvider();
+                    this.embedProvider.id = "armorgames";
                     break;
                 }
 
                 case "iogames.space": {
-                    this.embedProvider = new IogamesSpaceEmbedProvider();
+                    this.embedProvider.id = "iogames.space";
+                    this.embedProvider.iogLink = true;
+                    this.embedProvider.unlimitedSavegames = true;
+                    this.embedProvider.showDemoBadge = false;
                     break;
                 }
 
                 case "miniclip": {
-                    this.embedProvider = new MiniclipEmbedProvider();
+                    this.embedProvider.id = "miniclip";
                     break;
                 }
 
                 case "gamedistribution": {
-                    this.embedProvider = new GamedistributionEmbedProvider();
+                    this.embedProvider.id = "gamedistribution";
+                    this.embedProvider.externalLinks = false;
+                    this.embedProvider.adProvider = GamedistributionAdProvider;
                     break;
                 }
 
                 case "kongregate": {
-                    this.embedProvider = new KongregateEmbedProvider();
+                    this.embedProvider.id = "kongregate";
                     break;
                 }
 
                 case "crazygames": {
-                    this.embedProvider = new CrazygamesEmbedProvider();
+                    this.embedProvider.id = "crazygames";
                     break;
                 }
 
@@ -62,27 +70,17 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
             }
         }
 
-        logger.log("Embed provider:", this.embedProvider.getId());
+        logger.log("Embed provider:", this.embedProvider.id);
 
-        return super.initialize().then(() => {
-            // SENTRY
-            if (!G_IS_DEV && false) {
-                logger.log(this, "Loading sentry");
-                const sentryTag = document.createElement("script");
-                sentryTag.src = "https://browser.sentry-cdn.com/5.7.1/bundle.min.js";
-                sentryTag.setAttribute("integrity", "TODO_SENTRY");
-                sentryTag.setAttribute("crossorigin", "anonymous");
-                sentryTag.addEventListener("load", this.onSentryLoaded.bind(this));
-                document.head.appendChild(sentryTag);
-            }
-        });
+        return super.initialize().then(() => this.initializeAdProvider());
     }
 
-    /**
-     * @returns {EmbedProvider}
-     */
-    getEmbedProvider() {
-        return this.embedProvider;
+    getHasUnlimitedSavegames() {
+        return this.embedProvider.unlimitedSavegames;
+    }
+
+    getShowDemoBadges() {
+        return this.embedProvider.showDemoBadge;
     }
 
     onSentryLoaded() {
@@ -151,7 +149,7 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
     }
 
     getId() {
-        return "browser@" + this.embedProvider.getId();
+        return "browser@" + this.embedProvider.id;
     }
 
     getUiScale() {
@@ -173,16 +171,15 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
     openExternalLink(url, force = false) {
         logger.log("Opening external:", url);
-        // if (force || this.embedProvider.getSupportsExternalLinks()) {
-        window.open(url);
-        // } else {
-        //     // Do nothing
-        //     alert("This platform does not allow opening external links. You can play on the website directly to open them.");
-        // }
-    }
-
-    getSupportsAds() {
-        return this.embedProvider.getSupportsAds();
+        if (force || this.embedProvider.externalLinks) {
+            window.open(url);
+        } else {
+            // Do nothing
+            alert(
+                "This platform does not allow opening external links. You can play on https://shapez.io directly to open them.\n\nClicked Link: " +
+                    url
+            );
+        }
     }
 
     performRestart() {
@@ -218,16 +215,18 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
     initializeAdProvider() {
         if (G_IS_DEV && !globalConfig.debug.testAds) {
+            logger.log("Ads disabled in local environment");
             return Promise.resolve();
         }
 
         // First, detect adblocker
         return this.detectAdblock().then(hasAdblocker => {
             if (hasAdblocker) {
+                logger.log("Adblock detected");
                 return;
             }
 
-            const adProvider = this.embedProvider.getAdProvider();
+            const adProvider = this.embedProvider.adProvider;
             this.app.adProvider = new adProvider(this.app);
             return this.app.adProvider.initialize().catch(err => {
                 logger.error("Failed to initialize ad provider, disabling ads:", err);

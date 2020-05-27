@@ -23,6 +23,11 @@
 @import "states/preload";
 @import "states/main_menu";
 @import "states/ingame";
+@import "states/keybindings";
+@import "states/settings";
+@import "states/about";
+@import "states/mobile_warning";
+@import "states/changelog";
 
 @import "ingame_hud/buildings_toolbar";
 @import "ingame_hud/building_placer";
@@ -31,13 +36,49 @@
 @import "ingame_hud/unlock_notification";
 @import "ingame_hud/shop";
 @import "ingame_hud/game_menu";
-@import "ingame_hud/blur_overlay";
 @import "ingame_hud/dialogs";
+@import "ingame_hud/mass_selector";
+@import "ingame_hud/vignette_overlay";
+@import "ingame_hud/statistics";
+@import "ingame_hud/pinned_shapes";
+@import "ingame_hud/notifications";
+@import "ingame_hud/settings_menu";
+@import "ingame_hud/debug_info";
+@import "ingame_hud/entity_debugger";
+@import "ingame_hud/tutorial_hints";
+@import "ingame_hud/watermark";
 
-// Z-Index
-$elements: ingame_Canvas, ingame_HUD_building_placer_overlay, ingame_HUD_building_placer,
-    ingame_HUD_buildings_toolbar, ingame_HUD_GameMenu, ingame_HUD_KeybindingOverlay, ingame_HUD_Shop,
-    ingame_HUD_BetaOverlay, ingame_HUD_UnlockNotification;
+// prettier-ignore
+$elements: 
+// Base    
+ingame_Canvas,
+ingame_VignetteOverlay,
+
+// Ingame overlays
+ingame_HUD_PlacementHints,
+ingame_HUD_PlacerVariants,
+
+// Regular hud
+ingame_HUD_PinnedShapes,
+ingame_HUD_GameMenu,
+ingame_HUD_KeybindingOverlay,
+ingame_HUD_Notifications,
+ingame_HUD_MassSelector,
+ingame_HUD_DebugInfo,
+ingame_HUD_EntityDebugger,
+ingame_HUD_TutorialHints,
+ingame_HUD_buildings_toolbar,
+ingame_HUD_Watermark,
+
+// Overlays
+ingame_HUD_BetaOverlay,
+
+// Dialogs
+ingame_HUD_UnlockNotification,
+ingame_HUD_Shop,
+ingame_HUD_Statistics,
+ingame_HUD_SettingsMenu,
+ingame_HUD_ModalDialogs;
 
 $zindex: 100;
 
@@ -47,4 +88,24 @@ $zindex: 100;
     }
 
     $zindex: $zindex + 10;
+}
+
+body.uiHidden {
+    #ingame_HUD_buildings_toolbar,
+    #ingame_HUD_PlacementHints,
+    #ingame_HUD_GameMenu,
+    #ingame_HUD_MassSelector,
+    #ingame_HUD_PinnedShapes,
+    #ingame_HUD_Notifications,
+    #ingame_HUD_TutorialHints {
+        display: none !important;
+    }
+}
+
+body.modalDialogActive,
+body.externalAdOpen,
+body.ingameDialogOpen {
+    > *:not(.ingameDialog):not(.modalDialogParent):not(.loadingDialog):not(.gameLoadingOverlay):not(#ingame_HUD_ModalDialogs):not(.noBlur) {
+        filter: blur(5px) !important;
+    }
 }

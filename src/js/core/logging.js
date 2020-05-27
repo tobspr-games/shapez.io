@@ -240,10 +240,10 @@ function logInternal(handle, consoleMethod, args) {
             ...args
         );
     } else {
-        if (G_IS_DEV && !globalConfig.debug.disableLoggingLogSources) {
-            consoleMethod.call(console, "%c" + context, "color: " + labelColor, ...args);
-        } else {
-            consoleMethod.call(console, ...args);
-        }
+        // if (G_IS_DEV && !globalConfig.debug.disableLoggingLogSources) {
+        consoleMethod.call(console, "%c" + context, "color: " + labelColor, ...args);
+        // } else {
+        // consoleMethod.call(console, ...args);
+        // }
     }
 }

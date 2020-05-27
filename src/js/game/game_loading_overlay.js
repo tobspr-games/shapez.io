@@ -1,6 +1,7 @@
 /* typehints:start */
 import { Application } from "../application";
 /* typehints:end */
+import { T } from "../translations";
 
 export class GameLoadingOverlay {
     /**
@@ -51,7 +52,7 @@ export class GameLoadingOverlay {
     internalAddSpinnerAndText(element) {
         const inner = document.createElement("span");
         inner.classList.add("prefab_LoadingTextWithAnim");
-        inner.innerText = "Loading";
+        inner.innerText = T.global.loading;
         element.appendChild(inner);
     }
 }

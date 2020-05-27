@@ -1,39 +1,207 @@
 import { GameAnalyticsInterface } from "../game_analytics";
 import { createLogger } from "../../core/logging";
 import { ShapeDefinition } from "../../game/shape_definition";
-import { gameCreationAction } from "../../states/ingame";
+import { Savegame } from "../../savegame/savegame";
+import { FILE_NOT_FOUND } from "../storage";
+import { globalConfig } from "../../core/config";
+import { InGameState } from "../../states/ingame";
+import { GameRoot } from "../../game/root";
+import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
 
-const logger = createLogger("ga_com");
+const logger = createLogger("game_analytics");
 
-export class GameAnalyticsDotCom extends GameAnalyticsInterface {
+const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.shapez.io";
+
+// Be sure to increment the ID whenever it changes to make sure all
+// users are tracked
+const analyticsLocalFile = "analytics_token.3.bin";
+
+export class ShapezGameAnalytics extends GameAnalyticsInterface {
     /**
      * @returns {Promise<void>}
      */
     initialize() {
-        try {
-            const ga = window.gameanalytics.GameAnalytics;
-            ga.configureBuild(G_APP_ENVIRONMENT + "@" + G_BUILD_VERSION + "@" + G_BUILD_COMMIT_HASH);
+        this.syncKey = null;
 
-            ga.setEnabledInfoLog(G_IS_DEV);
-            ga.setEnabledVerboseLog(G_IS_DEV);
+        setInterval(() => this.sendTimePoints(), 120 * 1000);
 
-            // @ts-ignore
-            ga.initialize(window.ga_comKey, window.ga_comToken);
+        // Retrieve sync key from player
+        return this.app.storage.readFileAsync(analyticsLocalFile).then(
+            syncKey => {
+                this.syncKey = syncKey;
+                logger.log("Player sync key read:", this.syncKey);
+            },
+            error => {
+                // File was not found, retrieve new key
+                if (error === FILE_NOT_FOUND) {
+                    logger.log("Retrieving new player key");
 
-            // start new session
-            ga.startSession();
-        } catch (ex) {
-            logger.warn("ga_com init error:", ex);
+                    // Perform call to get a new key from the API
+                    this.sendToApi("/v1/register", {
+                        environment: G_APP_ENVIRONMENT,
+                    })
+                        .then(res => {
+                            // Try to read and parse the key from the api
+                            if (res.key && typeof res.key === "string" && res.key.length === 40) {
+                                this.syncKey = res.key;
+                                logger.log("Key retrieved:", this.syncKey);
+                                this.app.storage.writeFileAsync(analyticsLocalFile, res.key);
+                            } else {
+                                throw new Error("Bad response from analytics server: " + res);
+                            }
+                        })
+                        .catch(err => {
+                            logger.error("Failed to register on analytics api:", err);
+                        });
+                } else {
+                    logger.error("Failed to read ga key:", error);
+                }
+                return;
+            }
+        );
+    }
+
+    /**
+     * Sends a request to the api
+     * @param {string} endpoint Endpoint without base url
+     * @param {object} data payload
+     * @returns {Promise<any>}
+     */
+    sendToApi(endpoint, data) {
+        return Promise.race([
+            new Promise((resolve, reject) => {
+                setTimeout(() => reject("Request to " + endpoint + " timed out"), 20000);
+            }),
+            fetch(analyticsUrl + endpoint, {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                referrer: "no-referrer",
+                credentials: "omit",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "x-api-key": globalConfig.info.analyticsApiKey,
+                },
+                body: JSON.stringify(data),
+            })
+                .then(res => {
+                    if (!res.ok || res.status !== 200) {
+                        throw new Error("Fetch error: Bad status " + res.status);
+                    }
+                    return res;
+                })
+                .then(res => res.json()),
+        ]);
+    }
+
+    /**
+     * Sends a game event to the analytics
+     * @param {string} category
+     * @param {string} value
+     */
+    sendGameEvent(category, value) {
+        if (!this.syncKey) {
+            logger.warn("Can not send event due to missing sync key");
+            return;
         }
-        return Promise.resolve();
+
+        const gameState = this.app.stateMgr.currentState;
+        if (!(gameState instanceof InGameState)) {
+            logger.warn("Trying to send analytics event outside of ingame state");
+            return;
+        }
+
+        const savegame = gameState.savegame;
+        if (!savegame) {
+            logger.warn("Ingame state has empty savegame");
+            return;
+        }
+
+        const savegameId = savegame.internalId;
+        if (!gameState.core) {
+            logger.warn("Game state has no core");
+            return;
+        }
+        const root = gameState.core.root;
+        if (!root) {
+            logger.warn("Root is not initialized");
+            return;
+        }
+
+        logger.log("Sending event", category, value);
+
+        this.sendToApi("/v1/game-event", {
+            playerKey: this.syncKey,
+            gameKey: savegameId,
+            ingameTime: root.time.now(),
+            category,
+            value,
+            version: G_BUILD_VERSION,
+            gameDump: this.generateGameDump(root, category === "sync"),
+        });
+    }
+
+    sendTimePoints() {
+        const gameState = this.app.stateMgr.currentState;
+        if (gameState instanceof InGameState) {
+            logger.log("Syncing analytics");
+            this.sendGameEvent("sync", "");
+        }
+    }
+
+    /**
+     * Generates a game dump
+     * @param {GameRoot} root
+     * @param {boolean=} metaOnly
+     */
+    generateGameDump(root, metaOnly = false) {
+        let staticEntities = [];
+
+        const entities = root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
+
+        // Limit the entities
+        if (!metaOnly && entities.length < 500) {
+            for (let i = 0; i < entities.length; ++i) {
+                const entity = entities[i];
+                const staticComp = entity.components.StaticMapEntity;
+                const payload = {};
+                payload.origin = staticComp.origin;
+                payload.tileSize = staticComp.tileSize;
+                payload.rotation = staticComp.rotation;
+
+                if (entity.components.Belt) {
+                    payload.type = "belt";
+                } else if (entity.components.UndergroundBelt) {
+                    payload.type = "tunnel";
+                } else if (entity.components.ItemProcessor) {
+                    payload.type = entity.components.ItemProcessor.type;
+                } else if (entity.components.Miner) {
+                    payload.type = "extractor";
+                } else {
+                    logger.warn("Unkown entity type", entity);
+                }
+                staticEntities.push(payload);
+            }
+        }
+
+        return {
+            storedShapes: root.hubGoals.storedShapes,
+            gainedRewards: root.hubGoals.gainedRewards,
+            upgradeLevels: root.hubGoals.upgradeLevels,
+            staticEntities,
+        };
     }
 
     /**
      * @param {ShapeDefinition} definition
      */
-    handleShapeDelivered(definition) {
-        const hash = definition.getHash();
-        logger.log("Deliver:", hash);
+    handleShapeDelivered(definition) {}
+
+    /**
+     */
+    handleGameStarted() {
+        this.sendGameEvent("game_start", "");
     }
 
     /**
@@ -42,13 +210,7 @@ export class GameAnalyticsDotCom extends GameAnalyticsInterface {
      */
     handleLevelCompleted(level) {
         logger.log("Complete level", level);
-        try {
-            const gaD = window.gameanalytics;
-            const ga = gaD.GameAnalytics;
-            ga.addProgressionEvent(gaD.EGAProgressionStatus.Complete, "story", "" + level);
-        } catch (ex) {
-            logger.error("ga_com lvl complete error:", ex);
-        }
+        this.sendGameEvent("level_complete", "" + level);
     }
 
     /**
@@ -58,12 +220,6 @@ export class GameAnalyticsDotCom extends GameAnalyticsInterface {
      */
     handleUpgradeUnlocked(id, level) {
         logger.log("Unlock upgrade", id, level);
-        try {
-            const gaD = window.gameanalytics;
-            const ga = gaD.GameAnalytics;
-            ga.addProgressionEvent(gaD.EGAProgressionStatus.Complete, "upgrade", id, "" + level);
-        } catch (ex) {
-            logger.error("ga_com upgrade unlock error:", ex);
-        }
+        this.sendGameEvent("upgrade_unlock", id + "@" + level);
     }
 }

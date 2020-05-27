@@ -9,6 +9,7 @@ import { initComponentRegistry } from "./game/component_registry";
 import { initDrawUtils } from "./core/draw_utils";
 import { initItemRegistry } from "./game/item_registry";
 import { initMetaBuildingRegistry } from "./game/meta_building_registry";
+import { initGameSpeedRegistry } from "./game/game_speed_registry";
 
 const logger = createLogger("main");
 
@@ -18,7 +19,7 @@ if (window.coreThreadLoadedCb) {
 }
 
 console.log(
-    `%cshapez.io ️%c\n© 2019 Tobias Springer IT Solutions\nCommit %c${G_BUILD_COMMIT_HASH}%c on %c${new Date(
+    `%cshapez.io ️%c\n© 2020 Tobias Springer IT Solutions\nCommit %c${G_BUILD_COMMIT_HASH}%c on %c${new Date(
         G_BUILD_TIME
     ).toLocaleString()}\n`,
     "font-size: 35px; font-family: Arial;font-weight: bold; padding: 10px 0;",
@@ -49,6 +50,7 @@ initDrawUtils();
 initComponentRegistry();
 initItemRegistry();
 initMetaBuildingRegistry();
+initGameSpeedRegistry();
 
 let app = null;
 

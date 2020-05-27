@@ -1,5 +1,6 @@
 import { DrawParameters } from "../core/draw_parameters";
 import { BasicSerializableObject, types } from "../savegame/serialization";
+import { THEME } from "./theme";
 
 /**
  * Class for items on belts etc. Not an entity for performance reasons
@@ -28,6 +29,7 @@ export class BaseItem extends BasicSerializableObject {
     draw(x, y, parameters, size) {}
 
     getBackgroundColorAsResource() {
-        return "#eaebec";
+        abstract;
+        return "";
     }
 }

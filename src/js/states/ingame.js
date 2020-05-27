@@ -91,13 +91,12 @@ export class InGameState extends GameState {
     }
 
     getThemeMusic() {
-        // set later
-        return MUSIC.gameBg;
+        return MUSIC.theme;
     }
 
     onBeforeExit() {
         logger.log("Saving before quitting");
-        return this.doSave(true, true).then(() => {
+        return this.doSave().then(() => {
             logger.log(this, "Successfully saved");
             // this.stageDestroyed();
         });
@@ -106,7 +105,7 @@ export class InGameState extends GameState {
     onAppPause() {
         if (this.stage === stages.s10_gameRunning) {
             logger.log("Saving because app got paused");
-            this.doSave(true, true);
+            this.doSave();
         }
     }
 
@@ -115,7 +114,7 @@ export class InGameState extends GameState {
     }
 
     getPauseOnFocusLost() {
-        return !this.isMultiplayer();
+        return false;
     }
 
     getHasUnloadConfirmation() {
@@ -146,6 +145,16 @@ export class InGameState extends GameState {
     }
 
     /**
+     * Goes back to the settings state
+     */
+    goToSettings() {
+        this.saveThenGoToState("SettingsState", {
+            backToStateId: this.key,
+            backToStatePayload: this.creationPayload,
+        });
+    }
+
+    /**
      * Moves to a state outside of the game
      * @param {string} stateId
      * @param {any=} payload
@@ -162,7 +171,7 @@ export class InGameState extends GameState {
             return;
         }
         this.stageLeavingGame();
-        this.doSave(false, true).then(() => {
+        this.doSave().then(() => {
             this.stageDestroyed();
             this.moveToState(stateId, payload);
         });
@@ -198,8 +207,10 @@ export class InGameState extends GameState {
             this.core.initializeRoot(this, this.savegame);
 
             if (this.savegame.hasGameDump()) {
+                this.app.gameAnalytics.handleGameStarted();
                 this.stage4bResumeGame();
             } else {
+                this.app.gameAnalytics.handleGameStarted();
                 this.stage4aInitEmptyGame();
             }
         }
@@ -396,16 +407,10 @@ export class InGameState extends GameState {
 
     /**
      * Saves the game
-     * @param {boolean=} syncWithServer
-     * @param {boolean} force
      */
 
-    doSave(syncWithServer = true, force = false) {
-        // TODO
-        return;
-
+    doSave() {
         if (!this.savegame || !this.savegame.isSaveable()) {
-            // Can not save in multiplayer
             return Promise.resolve();
         }
 
@@ -424,19 +429,10 @@ export class InGameState extends GameState {
         }
 
         // First update the game data
-
         logger.log("Starting to save game ...");
+        this.core.root.signals.gameSaved.dispatch();
         this.savegame.updateData(this.core.root);
-
-        let savePromise = this.savegame.writeSavegameAndMetadata();
-
-        if (syncWithServer) {
-            // Sync in parallel
-            // @ts-ignore
-            savePromise = savePromise.then(() => this.syncer.sync(this.core, this.savegame, force));
-        }
-
-        return savePromise.catch(err => {
+        return this.savegame.writeSavegameAndMetadata().catch(err => {
             logger.warn("Failed to save:", err);
         });
     }

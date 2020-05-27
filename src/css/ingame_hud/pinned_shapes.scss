@@ -1,0 +1,83 @@
+#ingame_HUD_PinnedShapes {
+    position: absolute;
+    @include S(left, 9px);
+    @include S(top, 150px);
+    @include PlainText;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    > .shape {
+        position: relative;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr 1fr;
+        @include S(margin-bottom, 4px);
+        color: #fff;
+        text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.2);
+
+        &.unpinable {
+            > canvas {
+                cursor: pointer;
+                pointer-events: all;
+            }
+        }
+
+        > canvas {
+            @include S(width, 25px);
+            @include S(height, 25px);
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        > .amountLabel,
+        > .goalLabel {
+            @include S(margin-left, 5px);
+            @include SuperSmallText;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            flex-direction: row;
+            grid-column: 2 / 3;
+            @include S(height, 9px);
+
+            @include DarkThemeOverride {
+                color: #eee;
+            }
+        }
+
+        > .goalLabel {
+            @include S(font-size, 7px);
+            opacity: 0.5;
+            align-self: start;
+            justify-self: start;
+            font-weight: normal;
+            grid-row: 2 / 3;
+        }
+
+        > .amountLabel {
+            align-self: end;
+            justify-self: start;
+            grid-row: 1 / 2;
+        }
+
+        &.marked .amountLabel {
+            &::after {
+                content: " ";
+                position: absolute;
+                display: inline-block;
+                @include S(width, 9px);
+                @include S(height, 9px);
+                opacity: 0.8;
+                @include S(top, -4px);
+                @include S(left, -4px);
+                background: uiResource("icons/current_goal_marker.png") center center / contain no-repeat;
+
+                @include DarkThemeInvert;
+            }
+        }
+    }
+}

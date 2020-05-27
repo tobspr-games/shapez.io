@@ -1,6 +1,8 @@
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { globalConfig } from "../../core/config";
+import { types } from "../../savegame/serialization";
+import { gItemRegistry } from "../../core/global_registries";
 
 /** @enum {string} */
 export const enumUndergroundBeltMode = {
@@ -13,15 +15,28 @@ export class UndergroundBeltComponent extends Component {
         return "UndergroundBelt";
     }
 
+    static getSchema() {
+        return {
+            mode: types.enum(enumUndergroundBeltMode),
+            pendingItems: types.array(types.pair(types.obj(gItemRegistry), types.float)),
+            tier: types.uint,
+        };
+    }
+
     /**
      *
      * @param {object} param0
      * @param {enumUndergroundBeltMode=} param0.mode As which type of belt the entity acts
+     * @param {number=} param0.tier
      */
-    constructor({ mode = enumUndergroundBeltMode.sender }) {
+    constructor({ mode = enumUndergroundBeltMode.sender, tier = 0 }) {
         super();
 
         this.mode = mode;
+        this.tier = tier;
+
+        /** @type {Array<{ item: BaseItem, progress: number }>} */
+        this.consumptionAnimations = [];
 
         /**
          * Used on both receiver and sender.
@@ -48,8 +63,7 @@ export class UndergroundBeltComponent extends Component {
             return false;
         }
 
-        console.log("Takes", 1 / beltSpeed);
-        this.pendingItems.push([item, 1 / beltSpeed]);
+        this.pendingItems.push([item, 0]);
         return true;
     }
 
@@ -66,7 +80,7 @@ export class UndergroundBeltComponent extends Component {
         }
 
         // Notice: We assume that for all items the travel distance is the same
-        const maxItemsInTunnel = (1 + travelDistance) / globalConfig.itemSpacingOnBelts;
+        const maxItemsInTunnel = (2 + travelDistance) / globalConfig.itemSpacingOnBelts;
         if (this.pendingItems.length >= maxItemsInTunnel) {
             // Simulate a real belt which gets full at some point
             return false;
@@ -75,8 +89,8 @@ export class UndergroundBeltComponent extends Component {
         // NOTICE:
         // This corresponds to the item ejector - it needs 0.5 additional tiles to eject the item.
         // So instead of adding 1 we add 0.5 only.
-        const travelDuration = (travelDistance + 0.5) / beltSpeed;
-        console.log(travelDistance, "->", travelDuration);
+        // Additionally it takes 1 tile for the acceptor which we just add on top.
+        const travelDuration = (travelDistance + 1.5) / beltSpeed / globalConfig.itemSpacingOnBelts;
 
         this.pendingItems.push([item, travelDuration]);
 

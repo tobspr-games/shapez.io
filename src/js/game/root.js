@@ -2,7 +2,6 @@
 
 import { Signal } from "../core/signal";
 import { RandomNumberGenerator } from "../core/rng";
-// import { gFactionRegistry } from "./global_registries";
 import { createLogger } from "../core/logging";
 
 // Type hints
@@ -11,12 +10,9 @@ import { GameTime } from "./time/game_time";
 import { EntityManager } from "./entity_manager";
 import { GameSystemManager } from "./game_system_manager";
 import { GameHUD } from "./hud/hud";
-// import { GameLogic } from "./game_logic";
 import { MapView } from "./map_view";
 import { Camera } from "./camera";
-// import { ParticleManager } from "../particles/particle_manager";
 import { InGameState } from "../states/ingame";
-// import { CanvasClickInterceptor } from "/canvas_click_interceptor";
 import { AutomaticSave } from "./automatic_save";
 import { Application } from "../application";
 import { SoundProxy } from "./sound_proxy";
@@ -24,9 +20,14 @@ import { Savegame } from "../savegame/savegame";
 import { GameLogic } from "./logic";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { CanvasClickInterceptor } from "./canvas_click_interceptor";
-import { PerlinNoise } from "../core/perlin_noise";
 import { HubGoals } from "./hub_goals";
 import { BufferMaintainer } from "../core/buffer_maintainer";
+import { ProductionAnalytics } from "./production_analytics";
+import { Entity } from "./entity";
+import { ShapeDefinition } from "./shape_definition";
+import { BaseItem } from "./base_item";
+import { DynamicTickrate } from "./dynamic_tickrate";
+import { KeyActionMapper } from "./key_action_mapper";
 /* typehints:end */
 
 const logger = createLogger("game/root");
@@ -49,6 +50,9 @@ export class GameRoot {
 
         /** @type {InGameState} */
         this.gameState = null;
+
+        /** @type {KeyActionMapper} */
+        this.keyMapper = null;
 
         // Store game dimensions
         this.gameWidth = 500;
@@ -95,20 +99,11 @@ export class GameRoot {
         /** @type {GameTime} */
         this.time = null;
 
-        /** @type {PerlinNoise} */
-        this.mapNoiseGenerator = null;
-
         /** @type {HubGoals} */
         this.hubGoals = null;
 
         /** @type {BufferMaintainer} */
         this.buffers = null;
-
-        // /** @type {ParticleManager} */
-        // this.particleMgr = null;
-
-        // /** @type {ParticleManager} */
-        // this.uiParticleMgr = null;
 
         /** @type {CanvasClickInterceptor} */
         this.canvasClickInterceptor = null;
@@ -119,37 +114,43 @@ export class GameRoot {
         /** @type {SoundProxy} */
         this.soundProxy = null;
 
-        // /** @type {MinimapRenderer} */
-        // this.minimapRenderer = null;
-
         /** @type {ShapeDefinitionManager} */
         this.shapeDefinitionMgr = null;
 
+        /** @type {ProductionAnalytics} */
+        this.productionAnalytics = null;
+
+        /** @type {DynamicTickrate} */
+        this.dynamicTickrate = null;
+
         this.signals = {
             // Entities
-            entityAdded: new Signal(/* entity */),
-            entityGotNewComponent: new Signal(/* entity */),
-            entityQueuedForDestroy: new Signal(/* entity */),
-            entityDestroyed: new Signal(/* entity */),
+            entityAdded: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+            entityGotNewComponent: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+            entityComponentRemoved: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+            entityQueuedForDestroy: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+            entityDestroyed: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
 
             // Global
-            resized: new Signal(/* w, h */), // Game got resized,
-            readyToRender: new Signal(),
-            aboutToDestruct: new Signal(),
+            resized: /** @type {TypedSignal<[number, number]>} */ (new Signal()),
+            readyToRender: /** @type {TypedSignal<[]>} */ (new Signal()),
+            aboutToDestruct: /** @type {TypedSignal<[]>} */ new Signal(),
 
             // Game Hooks
-            gameSaved: new Signal(), // Game got saved
-            gameRestored: new Signal(), // Game got restored
-            gameOver: new Signal(), // Game over
+            gameSaved: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got saved
+            gameRestored: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got restored
 
-            storyGoalCompleted: new Signal(/* level, reward */),
-            upgradePurchased: new Signal(),
+            storyGoalCompleted: /** @type {TypedSignal<[number, string]>} */ (new Signal()),
+            upgradePurchased: /** @type {TypedSignal<[string]>} */ (new Signal()),
 
             // Called right after game is initialized
-            postLoadHook: new Signal(),
+            postLoadHook: /** @type {TypedSignal<[]>} */ (new Signal()),
 
             // Can be used to trigger an async task
-            performAsync: new Signal(),
+            performAsync: /** @type {TypedSignal<[function]>} */ (new Signal()),
+
+            shapeDelivered: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            itemProduced: /** @type {TypedSignal<[BaseItem]>} */ (new Signal()),
         };
 
         // RNG's
@@ -170,20 +171,6 @@ export class GameRoot {
         this.signals.aboutToDestruct.dispatch();
 
         this.reset();
-    }
-
-    /**
-     * Prepares the root for game over, this sets the right flags and
-     * detaches all signals so no bad stuff happens
-     */
-    prepareGameOver() {
-        this.gameInitialized = false;
-        this.logicInitialized = false;
-        // for (const key in this.signals) {
-        //     if (key !== "aboutToDestruct") {
-        //         this.signals[key].removeAll();
-        //     }
-        // }
     }
 
     /**

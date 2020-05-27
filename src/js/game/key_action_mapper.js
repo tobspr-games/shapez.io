@@ -6,48 +6,76 @@ import { Application } from "../application";
 
 import { Signal, STOP_PROPAGATION } from "../core/signal";
 import { IS_MOBILE } from "../core/config";
+import { T } from "../translations";
+import { JSON_stringify } from "../core/builtins";
 
 function key(str) {
     return str.toUpperCase().charCodeAt(0);
 }
 
-// TODO: Configurable
-export const defaultKeybindings = {
+export const KEYMAPPINGS = {
     general: {
         confirm: { keyCode: 13 }, // enter
         back: { keyCode: 27, builtin: true }, // escape
     },
 
     ingame: {
-        map_move_up: { keyCode: key("W") },
-        map_move_right: { keyCode: key("D") },
-        map_move_down: { keyCode: key("S") },
-        map_move_left: { keyCode: key("A") },
-        toggle_hud: { keyCode: 113 },
+        mapMoveUp: { keyCode: key("W") },
+        mapMoveRight: { keyCode: key("D") },
+        mapMoveDown: { keyCode: key("S") },
+        mapMoveLeft: { keyCode: key("A") },
 
-        center_map: { keyCode: 32 },
+        centerMap: { keyCode: 32 },
 
-        menu_open_shop: { keyCode: key("F") },
-        menu_open_stats: { keyCode: key("G") },
+        menuOpenShop: { keyCode: key("F") },
+        menuOpenStats: { keyCode: key("G") },
+
+        toggleHud: { keyCode: 113 }, // F2
+        toggleFPSInfo: { keyCode: 115 }, // F1
+
+        mapZoomIn: { keyCode: 187, repeated: true }, // "+"
+        mapZoomOut: { keyCode: 189, repeated: true }, // "-"
     },
 
-    toolbar: {
-        building_belt: { keyCode: key("1") },
-        building_miner: { keyCode: key("2") },
-        building_underground_belt: { keyCode: key("3") },
-        building_splitter: { keyCode: key("4") },
-        building_cutter: { keyCode: key("5") },
-        building_rotater: { keyCode: key("6") },
-        building_stacker: { keyCode: key("7") },
-        building_mixer: { keyCode: key("8") },
-        building_painter: { keyCode: key("9") },
-        building_trash: { keyCode: key("0") },
+    buildings: {
+        belt: { keyCode: key("1") },
+        splitter: { keyCode: key("2") },
+        underground_belt: { keyCode: key("3") },
+        miner: { keyCode: key("4") },
+        cutter: { keyCode: key("5") },
+        rotater: { keyCode: key("6") },
+        stacker: { keyCode: key("7") },
+        mixer: { keyCode: key("8") },
+        painter: { keyCode: key("9") },
+        trash: { keyCode: key("0") },
+    },
 
-        building_abort_placement: { keyCode: key("Q") },
+    placement: {
+        abortBuildingPlacement: { keyCode: key("Q") },
+        rotateWhilePlacing: { keyCode: key("R") },
+        cycleBuildingVariants: { keyCode: key("T") },
+        cycleBuildings: { keyCode: 9 }, // TAB
+    },
 
-        rotate_while_placing: { keyCode: key("R") },
+    massSelect: {
+        massSelectStart: { keyCode: 17, builtin: true }, // CTRL
+        massSelectSelectMultiple: { keyCode: 16, builtin: true }, // SHIFT
+        confirmMassDelete: { keyCode: key("X") },
+    },
+
+    placementModifiers: {
+        placementDisableAutoOrientation: { keyCode: 17, builtin: true }, // CTRL
+        placeMultiple: { keyCode: 16, builtin: true }, // SHIFT
+        placeInverse: { keyCode: 18, builtin: true }, // ALT
     },
 };
+
+// Assign ids
+for (const categoryId in KEYMAPPINGS) {
+    for (const mappingId in KEYMAPPINGS[categoryId]) {
+        KEYMAPPINGS[categoryId][mappingId].id = mappingId;
+    }
+}
 
 /**
  * Returns a keycode -> string
@@ -59,23 +87,23 @@ export function getStringForKeyCode(code) {
         case 8:
             return "⌫";
         case 9:
-            return "TAB";
+            return T.global.keys.tab;
         case 13:
             return "⏎";
         case 16:
             return "⇪";
         case 17:
-            return "CTRL";
+            return T.global.keys.control;
         case 18:
-            return "ALT";
+            return T.global.keys.alt;
         case 19:
             return "PAUSE";
         case 20:
             return "CAPS";
         case 27:
-            return "ESC";
+            return T.global.keys.escape;
         case 32:
-            return "SPACE";
+            return T.global.keys.space;
         case 33:
             return "PGUP";
         case 34:
@@ -168,13 +196,11 @@ export function getStringForKeyCode(code) {
         case 186:
             return ";";
         case 187:
-            return "=";
+            return "+";
         case 188:
             return ",";
         case 189:
             return "-";
-        case 189:
-            return ".";
         case 191:
             return "/";
         case 219:
@@ -198,12 +224,14 @@ export class Keybinding {
      * @param {object} param0
      * @param {number} param0.keyCode
      * @param {boolean=} param0.builtin
+     * @param {boolean=} param0.repeated
      */
-    constructor(app, { keyCode, builtin = false }) {
+    constructor(app, { keyCode, builtin = false, repeated = false }) {
         assert(keyCode && Number.isInteger(keyCode), "Invalid key code: " + keyCode);
         this.app = app;
         this.keyCode = keyCode;
         this.builtin = builtin;
+        this.repeated = repeated;
 
         this.currentlyDown = false;
 
@@ -264,14 +292,14 @@ export class KeyActionMapper {
         /** @type {Object.<string, Keybinding>} */
         this.keybindings = {};
 
-        // const overrides = root.app.settings.getKeybindingOverrides();
+        const overrides = root.app.settings.getKeybindingOverrides();
 
-        for (const category in defaultKeybindings) {
-            for (const key in defaultKeybindings[category]) {
-                let payload = Object.assign({}, defaultKeybindings[category][key]);
-                // if (overrides[key]) {
-                //     payload.keyCode = overrides[key];
-                // }
+        for (const category in KEYMAPPINGS) {
+            for (const key in KEYMAPPINGS[category]) {
+                let payload = Object.assign({}, KEYMAPPINGS[category][key]);
+                if (overrides[key]) {
+                    payload.keyCode = overrides[key];
+                }
 
                 this.keybindings[key] = new Keybinding(this.root.app, payload);
             }
@@ -338,7 +366,7 @@ export class KeyActionMapper {
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode /* && binding.shift === shift && binding.alt === alt */) {
+            if (binding.keyCode === keyCode && (!binding.currentlyDown || binding.repeated)) {
                 binding.currentlyDown = true;
 
                 /** @type {Signal} */
@@ -373,10 +401,13 @@ export class KeyActionMapper {
 
     /**
      * Returns a given keybinding
-     * @param {string} id
+     * @param {{ keyCode: number }} binding
      * @returns {Keybinding}
      */
-    getBinding(id) {
+    getBinding(binding) {
+        // @ts-ignore
+        const id = binding.id;
+        assert(id, "Not a valid keybinding: " + JSON_stringify(binding));
         assert(this.keybindings[id], "Keybinding " + id + " not known!");
         return this.keybindings[id];
     }

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const path = require("path");
 const webpack = require("webpack");
 const utils = require("./buildutils");
@@ -59,7 +61,8 @@ module.exports = ({
             // Display bailout reasons
             optimizationBailout: true,
         },
-        devtool: "source-map",
+        // devtool: "source-map",
+        devtool: false,
         resolve: {
             alias: {
                 "global-compression": path.resolve(__dirname, "..", "src", "js", "core", "lzstring.js"),
@@ -83,7 +86,7 @@ module.exports = ({
             minimizer: [
                 new TerserPlugin({
                     parallel: true,
-                    sourceMap: true,
+                    sourceMap: false,
                     cache: false,
                     terserOptions: {
                         ecma: es6 ? 6 : 5,
@@ -176,6 +179,10 @@ module.exports = ({
                 patterns: ["../src/js/**/*.js"],
             }),
 
+            // new webpack.SourceMapDevToolPlugin({
+            //     filename: "[name].map",
+            //     publicPath: "/v/" + utils.getRevision() + "/",
+            // }),
             // new ReplaceCompressBlocks()
             // new webpack.optimize.ModuleConcatenationPlugin()
             // new WebpackDeepScopeAnalysisPlugin()
@@ -230,7 +237,7 @@ module.exports = ({
                                 { pattern: /globalConfig\.halfTileSize/g, replacement: () => "16" },
                                 {
                                     pattern: /globalConfig\.beltSpeedItemsPerSecond/g,
-                                    replacement: () => "1.0",
+                                    replacement: () => "2.0",
                                 },
                                 { pattern: /globalConfig\.itemSpacingOnBelts/g, replacement: () => "0.8" },
                                 { pattern: /globalConfig\.debug/g, replacement: () => "''" },
@@ -240,17 +247,32 @@ module.exports = ({
                 },
                 {
                     test: /\.worker\.js$/,
-                    use: {
-                        loader: "worker-loader",
-                        options: {
-                            fallback: false,
-                            inline: true,
+                    use: [
+                        {
+                            loader: "worker-loader",
+                            options: {
+                                fallback: false,
+                                inline: true,
+                            },
                         },
-                    },
+                        {
+                            loader: "babel-loader?cacheDirectory",
+                            options: {
+                                configFile: require.resolve(
+                                    es6 ? "./babel-es6.config.js" : "./babel.config.js"
+                                ),
+                            },
+                        },
+                    ],
                 },
                 {
                     test: /\.md$/,
                     use: ["html-loader", "markdown-loader"],
+                },
+                {
+                    test: /\.ya?ml$/,
+                    type: "json", // Required by Webpack v4
+                    use: "yaml-loader",
                 },
             ],
         },

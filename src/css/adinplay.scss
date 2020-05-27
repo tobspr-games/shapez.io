@@ -40,7 +40,7 @@
 
     &.waitingForFinish {
         .videoInner {
-            @include BorderRadius(4px);
+            @include S(border-radius, $globalBorderRadius);
             overflow: hidden;
 
             &::after {
@@ -74,7 +74,7 @@
 
     .adInner {
         @include BoxShadow3D(lighten($mainBgColor, 15));
-        @include BorderRadius(4px);
+        @include S(border-radius, $globalBorderRadius);
         @include S(padding, 15px);
         // max-width: 960px;
         display: block !important;

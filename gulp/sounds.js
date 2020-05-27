@@ -1,4 +1,5 @@
 const path = require("path");
+const audiosprite = require("gulp-audiosprite");
 
 function gulptasksSounds($, gulp, buildFolder) {
     // Gather some basic infos
@@ -9,16 +10,17 @@ function gulptasksSounds($, gulp, buildFolder) {
         return gulp.src(builtSoundsDir).pipe($.clean({ force: true }));
     });
 
-    const filters = ["loudnorm", "volume=0.2"];
+    const filters = ["volume=0.2"];
 
     const fileCache = new $.cache.Cache({
         cacheDirName: "shapezio-precompiled-sounds",
     });
 
     // Encodes the game music
-    gulp.task("sounds.encodeMusic", () => {
+    gulp.task("sounds.music", () => {
         return gulp
             .src([path.join(soundsDir, "music", "**", "*.wav"), path.join(soundsDir, "music", "**", "*.mp3")])
+            .pipe($.plumber())
             .pipe(
                 $.cache(
                     $.fluentFfmpeg("mp3", function (cmd) {
@@ -26,8 +28,8 @@ function gulptasksSounds($, gulp, buildFolder) {
                             .audioBitrate(48)
                             .audioChannels(1)
                             .audioFrequency(22050)
-                            .audioCodec("libmp3lame");
-                        // .audioFilters(["volume=0.25"])
+                            .audioCodec("libmp3lame")
+                            .audioFilters(["volume=0.3"]);
                     }),
                     {
                         name: "music",
@@ -39,67 +41,59 @@ function gulptasksSounds($, gulp, buildFolder) {
     });
 
     // Encodes the ui sounds
-    gulp.task("sounds.encodeUi", () => {
+    gulp.task("sounds.sfxGenerateSprites", () => {
         return gulp
-            .src([path.join(soundsDir, "ui", "**", "*.wav"), path.join(soundsDir, "ui", "**", "*.mp3")])
+            .src([path.join(soundsDir, "sfx", "**", "*.wav"), path.join(soundsDir, "sfx", "**", "*.mp3")])
+            .pipe($.plumber())
             .pipe(
-                $.cache(
-                    $.fluentFfmpeg("mp3", function (cmd) {
-                        return cmd
-                            .audioBitrate(128)
-                            .audioChannels(1)
-                            .audioFrequency(22050)
-                            .audioCodec("libmp3lame")
-                            .audioFilters(filters);
-                    })
-                ),
-                {
-                    name: "uisounds",
-                    fileCache,
-                }
+                audiosprite({
+                    format: "howler",
+                    output: "sfx",
+                    gap: 0.1,
+                    export: "mp3",
+                })
             )
-            .pipe(gulp.dest(path.join(builtSoundsDir, "ui")));
+            .pipe(gulp.dest(path.join(builtSoundsDir)));
+    });
+    gulp.task("sounds.sfxOptimize", () => {
+        return gulp
+            .src([path.join(builtSoundsDir, "sfx.mp3")])
+            .pipe($.plumber())
+            .pipe(
+                $.fluentFfmpeg("mp3", function (cmd) {
+                    return cmd
+                        .audioBitrate(128)
+                        .audioChannels(1)
+                        .audioFrequency(22050)
+                        .audioCodec("libmp3lame")
+                        .audioFilters(filters);
+                })
+            )
+            .pipe(gulp.dest(path.join(builtSoundsDir)));
+    });
+    gulp.task("sounds.sfxCopyAtlas", () => {
+        return gulp
+            .src([path.join(builtSoundsDir, "sfx.json")])
+            .pipe(gulp.dest(path.join(__dirname, "..", "src", "js", "built-temp")));
     });
 
-    // Encodes the game sounds
-    gulp.task("sounds.encodeGame", () => {
-        return gulp
-            .src([path.join(soundsDir, "game", "**", "*.wav"), path.join(soundsDir, "game", "**", "*.mp3")])
-            .pipe(
-                $.cache(
-                    $.fluentFfmpeg("mp3", function (cmd) {
-                        return cmd
-                            .audioBitrate(128)
-                            .audioChannels(1)
-                            .audioFrequency(22050)
-                            .audioCodec("libmp3lame")
-                            .audioFilters(filters);
-                    }),
-                    {
-                        nane: "gamesounds",
-                        fileCache,
-                    }
-                )
-            )
-            .pipe(gulp.dest(path.join(builtSoundsDir, "game")));
-    });
+    gulp.task(
+        "sounds.sfx",
+        $.sequence("sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas")
+    );
 
     gulp.task("sounds.copy", () => {
         return gulp
             .src(path.join(builtSoundsDir, "**", "*.mp3"))
+            .pipe($.plumber())
             .pipe($.cached("sounds.copy"))
             .pipe(gulp.dest(path.join(buildFolder, "res", "sounds")));
     });
 
-    gulp.task("sounds.buildall", cb =>
-        $.multiProcess(["sounds.encodeMusic", "sounds.encodeUi", "sounds.encodeGame"], cb, true)
-    );
+    gulp.task("sounds.buildall", cb => $.multiProcess(["sounds.music", "sounds.sfx"], cb, true));
 
     gulp.task("sounds.fullbuild", cb => $.sequence("sounds.clear", "sounds.buildall", "sounds.copy")(cb));
-
-    gulp.task("sounds.dev", cb => {
-        return $.sequence("sounds.buildall", "sounds.copy")(cb);
-    });
+    gulp.task("sounds.dev", cb => $.sequence("sounds.buildall", "sounds.copy")(cb));
 }
 
 module.exports = {

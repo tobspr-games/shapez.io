@@ -1,0 +1,23 @@
+#ingame_HUD_MassSelector {
+    position: absolute;
+    @include S(top, 50px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(lighten(#f77, 5), 0.95);
+    @include S(border-radius, $globalBorderRadius);
+    @include S(padding, 6px, 10px);
+    @include SuperSmallText;
+    color: #fff;
+    // color: #f77;
+
+    .keybinding {
+        vertical-align: middle;
+        @include S(margin, 0, 4px);
+        position: relative;
+        top: unset;
+        left: unset;
+        right: unset;
+        bottom: unset;
+        @include S(margin-top, -2px);
+    }
+}

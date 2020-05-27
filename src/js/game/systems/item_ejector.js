@@ -13,8 +13,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     update() {
-        const effectiveBeltSpeed = this.root.hubGoals.getBeltBaseSpeed();
-        const progressGrowth = (effectiveBeltSpeed / 0.5) * globalConfig.physicsDeltaSeconds;
+        const effectiveBeltSpeed = this.root.hubGoals.getBeltBaseSpeed() * globalConfig.itemSpacingOnBelts;
+        const progressGrowth = (effectiveBeltSpeed / 0.5) * this.root.dynamicTickrate.deltaSeconds;
 
         // Try to find acceptors for every ejector
         for (let i = 0; i < this.allEntities.length; ++i) {
@@ -72,14 +72,12 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                if (
-                    this.tryPassOverItem(
-                        ejectingItem,
-                        targetEntity,
+                if (this.tryPassOverItem(ejectingItem, targetEntity, matchingSlot.index)) {
+                    targetAcceptorComp.onItemAccepted(
                         matchingSlot.index,
-                        matchingSlot.acceptedDirection
-                    )
-                ) {
+                        matchingSlot.acceptedDirection,
+                        ejectingItem
+                    );
                     ejectorSlot.item = null;
                     continue;
                 }
@@ -92,9 +90,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
      * @param {BaseItem} item
      * @param {Entity} receiver
      * @param {number} slotIndex
-     * @param {string} localDirection
      */
-    tryPassOverItem(item, receiver, slotIndex, localDirection) {
+    tryPassOverItem(item, receiver, slotIndex) {
         // Try figuring out how what to do with the item
         // TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
         // Also its just a few cases (hope it stays like this .. :x).
@@ -102,8 +99,17 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         const beltComp = receiver.components.Belt;
         if (beltComp) {
             // Ayy, its a belt!
-            if (beltComp.canAcceptNewItem(localDirection)) {
-                beltComp.takeNewItem(item, localDirection);
+            if (beltComp.canAcceptItem()) {
+                beltComp.takeItem(item);
+                return true;
+            }
+        }
+
+        const storageComp = receiver.components.Storage;
+        if (storageComp) {
+            // It's a storage
+            if (storageComp.canAcceptItem(item)) {
+                storageComp.takeItem(item);
                 return true;
             }
         }
@@ -111,16 +117,16 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         const itemProcessorComp = receiver.components.ItemProcessor;
         if (itemProcessorComp) {
             // Its an item processor ..
-            if (itemProcessorComp.tryTakeItem(item, slotIndex, localDirection)) {
+            if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
                 return true;
             }
         }
 
-        const undergroundBeltCmop = receiver.components.UndergroundBelt;
-        if (undergroundBeltCmop) {
+        const undergroundBeltComp = receiver.components.UndergroundBelt;
+        if (undergroundBeltComp) {
             // Its an underground belt. yay.
             if (
-                undergroundBeltCmop.tryAcceptExternalItem(
+                undergroundBeltComp.tryAcceptExternalItem(
                     item,
                     this.root.hubGoals.getUndergroundBeltBaseSpeed()
                 )
@@ -144,6 +150,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         const ejectorComp = entity.components.ItemEjector;
         const staticComp = entity.components.StaticMapEntity;
 
+        if (!staticComp.shouldBeDrawn(parameters)) {
+            return;
+        }
+
         for (let i = 0; i < ejectorComp.slots.length; ++i) {
             const slot = ejectorComp.slots[i];
             const ejectedItem = slot.item;
@@ -152,10 +162,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 continue;
             }
 
-            const realPosition = slot.pos.rotateFastMultipleOf90(staticComp.rotationDegrees);
+            const realPosition = slot.pos.rotateFastMultipleOf90(staticComp.rotation);
             const realDirection = Vector.transformDirectionFromMultipleOf90(
                 slot.direction,
-                staticComp.rotationDegrees
+                staticComp.rotation
             );
             const realDirectionVector = enumDirectionToVector[realDirection];
 

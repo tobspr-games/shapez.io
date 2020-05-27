@@ -13,15 +13,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
     const commitHash = buildUtils.getRevision();
     async function buildHtml(
         apiUrl,
-        {
-            analytics = false,
-            standalone = false,
-            app = false,
-            integrity = true,
-            enableCachebust = true,
-            gameAnalyticsKey = null,
-            gameAnalyticsSecret = null,
-        }
+        { analytics = false, standalone = false, app = false, integrity = true, enableCachebust = true }
     ) {
         function cachebust(url) {
             if (enableCachebust) {
@@ -87,21 +79,6 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         // document.head.appendChild(logrocketInit);
                     }
 
-                    if (gameAnalyticsKey && gameAnalyticsSecret) {
-                        const gaLoader = document.createElement("script");
-                        gaLoader.textContent = `
-                            window.GameAnalytics=window.GameAnalytics||function(){(GameAnalytics.q=GameAnalytics.q||[]).push(arguments)};
-                            window.ga_comKey = "${gameAnalyticsKey}";
-                            window.ga_comToken = "${gameAnalyticsSecret}";
-                        `;
-                        document.head.appendChild(gaLoader);
-
-                        const gaScript = document.createElement("script");
-                        gaScript.src = "https://download.gameanalytics.com/js/GameAnalytics-4.0.10.min.js";
-                        gaScript.setAttribute("async", "");
-                        document.head.appendChild(gaScript);
-                    }
-
                     if (app) {
                         // Append cordova link
                         const cdv = document.createElement("script");
@@ -133,7 +110,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         const images = buildUtils.getAllResourceImages();
 
                         // Preload essentials
-                        const preloads = ["fonts/LouisGeorgeCafe.woff2"];
+                        const preloads = ["fonts/GameFont.woff2"];
 
                         // for (let i = 0; i < images.length; ++i) {
                         //     if (preloads.indexOf(images[i]) < 0) {
@@ -180,7 +157,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         font-style: normal;
                         font-weight: normal;
                         font-display: swap;
-                        src: url('${cachebust("res/fonts/LouisGeorgeCafe.woff2")}') format('woff2');
+                        src: url('${cachebust("res/fonts/GameFont.woff2")}') format('woff2');
                     }
             
                     #ll_fp {
@@ -305,27 +282,18 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
             analytics: false,
             integrity: false,
             enableCachebust: false,
-            gameAnalyticsKey: "c8d77921633d5c32a7134e5d5cfcdf12",
-            // Not an actual "secret" since its built into the JS code
-            gameAnalyticsSecret: "6d23b40a70199bff0e7a7d8a073543772cf07097",
         });
     });
 
     gulp.task("html.staging", () => {
         return buildHtml("https://api-staging.shapez.io", {
             analytics: true,
-            gameAnalyticsKey: "903fa0dd2d2e23b07e66ea96ddc4c10c",
-            // Not an actual "secret" since its built into the JS code
-            gameAnalyticsSecret: "9417fc391d7142b9d73a3861ba6046cafa9df6cb",
         });
     });
 
     gulp.task("html.prod", () => {
         return buildHtml("https://api.shapez.io", {
             analytics: true,
-            gameAnalyticsKey: "16c7f9d352e40c92f6a750fc1a4f0443",
-            // Not an actual "secret" since its built into the JS code
-            gameAnalyticsSecret: "4202d7adf154c325ff91731e8be6912e6c0d10e5",
         });
     });
 
@@ -340,7 +308,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
 
     gulp.task("html.standalone-beta", () => {
         return buildHtml("https://api-staging.shapez.io", {
-            analytics: true,
+            analytics: false,
             standalone: true,
             enableCachebust: false,
         });
@@ -348,7 +316,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
 
     gulp.task("html.standalone-prod", () => {
         return buildHtml("https://api.shapez.io", {
-            analytics: true,
+            analytics: false,
             standalone: true,
             enableCachebust: false,
         });

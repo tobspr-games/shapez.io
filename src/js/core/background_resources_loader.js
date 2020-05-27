@@ -22,16 +22,11 @@ const essentialMainMenuSounds = [
 
 const essentialBareGameAtlases = atlasFiles;
 const essentialBareGameSprites = G_ALL_UI_IMAGES;
-const essentialBareGameSounds = [MUSIC.gameBg];
+const essentialBareGameSounds = [MUSIC.theme];
 
 const additionalGameSprites = [];
-const additionalGameSounds = [];
-for (const key in SOUNDS) {
-    additionalGameSounds.push(SOUNDS[key]);
-}
-for (const key in MUSIC) {
-    additionalGameSounds.push(MUSIC[key]);
-}
+// @ts-ignore
+const additionalGameSounds = [...Object.values(SOUNDS), ...Object.values(MUSIC)];
 
 export class BackgroundResourcesLoader {
     /**

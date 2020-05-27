@@ -5,7 +5,19 @@ export const IS_DEBUG =
     (window.location.host.indexOf("localhost:") >= 0 || window.location.host.indexOf("192.168.0.") >= 0) &&
     window.location.search.indexOf("nodebug") < 0;
 
+export const IS_DEMO =
+    (G_IS_PROD && !G_IS_STANDALONE) ||
+    (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
+
 const smoothCanvas = true;
+
+export const THIRDPARTY_URLS = {
+    discord: "https://discord.gg/HN7EVzV",
+    github: "https://github.com/tobspr/shapez.io",
+
+    // standaloneStorePage: "https://steam.shapez.io",
+    standaloneStorePage: "https://tobspr.itch.io/shapez.io",
+};
 
 export const globalConfig = {
     // Size of a single tile in Pixels.
@@ -18,32 +30,37 @@ export const globalConfig = {
     assetsSharpness: 1.2,
     shapesSharpness: 1.4,
 
-    // [Calculated] physics step size
-    physicsDeltaMs: 0,
-    physicsDeltaSeconds: 0,
+    // Production analytics
+    statisticsGraphDpi: 2.5,
+    statisticsGraphSlices: 100,
+    analyticsSliceDurationSeconds: 10,
 
-    // Update physics at N fps, independent of rendering
-    physicsUpdateRate: 60,
+    minimumTickRate: 25,
+    maximumTickRate: 500,
 
     // Map
-    mapChunkSize: 32,
-    mapChunkPrerenderMinZoom: 0.7,
+    mapChunkSize: 16,
+    mapChunkPrerenderMinZoom: 1.3,
     mapChunkOverviewMinZoom: 0.7,
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
-    beltSpeedItemsPerSecond: 1,
+    beltSpeedItemsPerSecond: 2,
     itemSpacingOnBelts: 0.63,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
-    undergroundBeltMaxTiles: 5,
+    undergroundBeltMaxTilesByTier: [5, 8],
 
     buildingSpeeds: {
-        cutter: 1 / 6,
-        rotater: 1 / 2,
-        painter: 1 / 3,
-        mixer: 1 / 2,
-        stacker: 1 / 5,
+        cutter: 1 / 4,
+        cutterQuad: 1 / 4,
+        rotater: 1 / 1,
+        rotaterCCW: 1 / 1,
+        painter: 1 / 6,
+        painterDouble: 1 / 8,
+        painterQuad: 1 / 8,
+        mixer: 1 / 5,
+        stacker: 1 / 6,
     },
 
     // Zooming
@@ -66,20 +83,26 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        fastGameEnter: true,
-        noArtificialDelays: true,
-        disableSavegameWrite: false,
-        showEntityBounds: false,
-        showAcceptorEjectors: false,
-        usePlainShapeIds: true,
-        disableMusic: true,
-        doNotRenderStatics: false,
-        disableZoomLimits: false,
-        showChunkBorders: false,
-        rewardsInstant: false,
-        allBuildingsUnlocked: true,
+        // fastGameEnter: true,
+        // noArtificialDelays: true,
+        // disableSavegameWrite: true,
+        // showEntityBounds: true,
+        // showAcceptorEjectors: true,
+        // disableMusic: true,
+        // doNotRenderStatics: true,
+        // disableZoomLimits: true,
+        // showChunkBorders: true,
+        // rewardsInstant: true,
+        // allBuildingsUnlocked: true,
         upgradesNoCost: true,
-        disableUnlockDialog: true,
+        // disableUnlockDialog: true,
+        // disableLogicTicks: true,
+        // testClipping: true,
+        // framePausesBetweenTicks: 40,
+        // testTranslations: true,
+        // enableEntityInspector: true,
+        // testAds: true,
+        disableMapOverview: true,
         /* dev:end */
     },
 
@@ -90,6 +113,9 @@ export const globalConfig = {
 
         // Savegame salt
         sgSalt: "}95Q3%8/.837Lqym_BJx%q7)pAHJbF",
+
+        // Analytics key
+        analyticsApiKey: "baf6a50f0cc7dfdec5a0e21c88a1c69a4b34bc4a",
     },
 };
 
@@ -97,8 +123,9 @@ export const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 // Automatic calculations
 
-globalConfig.physicsDeltaMs = 1000.0 / globalConfig.physicsUpdateRate;
-globalConfig.physicsDeltaSeconds = 1.0 / globalConfig.physicsUpdateRate;
+globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5;
 
-globalConfig.minerSpeedItemsPerSecond =
-    globalConfig.beltSpeedItemsPerSecond / globalConfig.itemSpacingOnBelts / 6;
+if (globalConfig.debug.disableMapOverview) {
+    globalConfig.mapChunkOverviewMinZoom = 0;
+    globalConfig.mapChunkPrerenderMinZoom = 0;
+}

@@ -1,6 +1,7 @@
 /* typehints:start */
 import { Application } from "../application";
 import { ShapeDefinition } from "../game/shape_definition";
+import { Savegame } from "../savegame/savegame";
 /* typehints:end */
 
 export class GameAnalyticsInterface {
@@ -17,6 +18,11 @@ export class GameAnalyticsInterface {
         abstract;
         return Promise.reject();
     }
+
+    /**
+     * Handles a new game which was started
+     */
+    handleGameStarted() {}
 
     /**
      * @param {ShapeDefinition} definition

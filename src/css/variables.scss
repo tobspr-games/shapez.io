@@ -1,3 +1,5 @@
+$globalBorderRadius: 0px;
+
 // When to reduce control elements size for small devices
 $layoutExpandMinWidth: 340px;
 
@@ -18,7 +20,6 @@ $plainTextLineHeight: 17px;
 
 $supersmallTextFontSize: 10px;
 $supersmallTextLineHeight: 13px;
-
 $buttonFontSize: 14px;
 $buttonLineHeight: 18px;
 
@@ -30,15 +31,16 @@ $mainBgColor: #dee1ea;
 $accentColorBright: #e1e4ed;
 $accentColorDark: #7d808a;
 $colorGreenBright: #66bb6a;
+$colorBlueBright: rgb(74, 163, 223);
 $colorRedBright: #ef5072;
 $themeColor: #393747;
-$ingameHudBg: rgba($accentColorBright, 0.9);
+$ingameHudBg: rgba($accentColorBright, 0.1);
 $ingameHudBorder: #{D(1.5px)} solid $accentColorDark;
 
 $text3dColor: #f4ffff;
 
 // Dialog properties
-$modalDialogBg: rgba(#666a73, 0.8);
+$modalDialogBg: rgba(160, 165, 180, 0.8);
 $dialogBgColor: lighten($mainBgColor, 10);
 
 $lightFontWeight: normal;
