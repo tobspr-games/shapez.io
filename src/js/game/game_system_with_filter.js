@@ -160,6 +160,14 @@ export class GameSystemWithFilter extends GameSystem {
 
     refreshCaches() {
         this.allEntities.sort((a, b) => a.uid - b.uid);
+
+        // Remove all entities which are queued for destroy
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            if (entity.queuedForDestroy || entity.destroyed) {
+                this.allEntities.splice(i, 1);
+            }
+        }
     }
 
     /**
@@ -187,6 +195,10 @@ export class GameSystemWithFilter extends GameSystem {
      * @param {Entity} entity
      */
     internalPopEntityIfMatching(entity) {
+        if (this.root.bulkOperationRunning) {
+            // We do this in refreshCaches afterwards
+            return;
+        }
         const index = this.allEntities.indexOf(entity);
         if (index >= 0) {
             arrayDelete(this.allEntities, index);
