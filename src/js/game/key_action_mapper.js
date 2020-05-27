@@ -60,6 +60,7 @@ export const KEYMAPPINGS = {
     massSelect: {
         massSelectStart: { keyCode: 17 }, // CTRL
         massSelectSelectMultiple: { keyCode: 16 }, // SHIFT
+        massSelectCopy: { keyCode: key("C") },
         confirmMassDelete: { keyCode: key("X") },
     },
 

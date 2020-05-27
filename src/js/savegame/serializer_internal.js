@@ -43,7 +43,7 @@ export class SerializerInternal {
      * @param {Entity} payload
      */
     deserializeEntity(root, payload) {
-        const entity = new Entity(null);
+        const entity = new Entity(root);
         this.deserializeComponents(entity, payload.components);
 
         root.entityMgr.registerEntity(entity, payload.uid);

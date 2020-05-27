@@ -60,6 +60,7 @@ export class GameLogic {
             origin,
             tileSize: building.getDimensions(variant),
             rotation,
+            blueprintSpriteKey: "",
         });
 
         const rect = checker.getTileSpaceBounds();
@@ -168,6 +169,7 @@ export class GameLogic {
                 origin,
                 tileSize: building.getDimensions(variant),
                 rotation,
+                blueprintSpriteKey: "",
             });
 
             const rect = checker.getTileSpaceBounds();

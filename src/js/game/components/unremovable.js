@@ -8,4 +8,8 @@ export class UnremovableComponent extends Component {
     static getSchema() {
         return {};
     }
+
+    duplicateWithoutContents() {
+        return new UnremovableComponent();
+    }
 }
