@@ -51,6 +51,8 @@ export class Camera extends BasicSerializableObject {
         // Find optimal initial zoom
 
         this.zoomLevel = this.findInitialZoom();
+        this.doubleZoomCount = 4;
+        this.kbDoubleZoomCount = 4;
         this.clampZoomLevel();
 
         /** @type {Vector} */
@@ -343,9 +345,8 @@ export class Camera extends BasicSerializableObject {
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).add(() => (this.keyboardForce.x = 1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).add(() => (this.keyboardForce.x = -1));
 
-        const roundToPow = (v, n)=> Math.pow(2, Math.round(Math.log2(v) * n) / n);
-        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomIn).add(() => (this.desiredZoom = roundToPow(this.zoomLevel * 1.2, 4)));
-        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomOut).add(() => (this.desiredZoom = roundToPow(this.zoomLevel * 0.8, 4)));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomIn).add(() => this.changePowZoomLevel(+1, true, this.kbDoubleZoomCount));
+        mapper.getBinding(KEYMAPPINGS.ingame.mapZoomOut).add(() => this.changePowZoomLevel(-1, true, this.kbDoubleZoomCount));
 
         mapper.getBinding(KEYMAPPINGS.ingame.centerMap).add(() => this.centerOnMap());
     }
@@ -400,6 +401,34 @@ export class Camera extends BasicSerializableObject {
     canZoomOut() {
         const minLevel = this.root.app.platformWrapper.getMinimumZoom();
         return this.zoomLevel >= minLevel + 0.01;
+    }
+
+    /**
+     * Changes zoom level as a power of 2
+     * @param {number} level
+     * @param {boolean} asDesired
+     * @param {number} divider
+     */
+    setPowZoomLevel(level, asDesired = false, divider = this.doubleZoomCount) {
+        const value = Math.pow(2, Math.round(level * divider) / divider);
+        console.log({newZoomLevel:value, level, asDesired, divider})
+        if (asDesired) {
+            this.desiredZoom = value;
+        } else {
+            this.zoomLevel = value;
+        }
+    }
+
+    /**
+     * Changes zoom level as a power of 2 relatively
+     * @param {number} delta
+     * @param {boolean} asDesired
+     * @param {number} divider
+     */
+    changePowZoomLevel(delta, asDesired = false, divider = this.doubleZoomCount) {
+        const prevPow = Math.log2(asDesired && this.desiredZoom != null ? this.desiredZoom : this.zoomLevel);
+        const nextPow = prevPow + delta / divider;
+        this.setPowZoomLevel(nextPow, asDesired, divider);
     }
 
     // EVENTS
@@ -493,15 +522,13 @@ export class Camera extends BasicSerializableObject {
             // event.stopPropagation();
         }
 
-        const delta = Math.sign(event.deltaY) * -0.15;
+        const delta = -Math.sign(event.deltaY);
         assert(Number.isFinite(delta), "Got invalid delta in mouse wheel event: " + event.deltaY);
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *before* wheel: " + this.zoomLevel);
-        this.zoomLevel *= 1 + delta;
+        this.changePowZoomLevel(delta);
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *after* wheel: " + this.zoomLevel);
 
         this.clampZoomLevel();
-        const roundToPow = (v, n)=> Math.pow(2, Math.round(Math.log2(v) * n) / n);
-        this.desiredZoom = roundToPow(this.zoomLevel, 4);
         return false;
     }
 
