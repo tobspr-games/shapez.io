@@ -153,14 +153,39 @@ function gulptasksStandalone($, gulp, buildFolder) {
                     const playablePath = appPath + "_playable";
                     fse.copySync(appPath, playablePath);
                     fs.writeFileSync(path.join(playablePath, "steam_appid.txt"), "1134480");
-                    fs.writeFileSync(
-                        path.join(playablePath, "play.bat"),
-                        "start shapezio --dev --disable-direct-composition --in-process-gpu\r\n"
-                    );
-                    fs.writeFileSync(
-                        path.join(playablePath, "play_local.bat"),
-                        "start shapezio --local --dev --disable-direct-composition --in-process-gpu\r\n"
-                    );
+                    switch (platform) {
+                        case 'win32':
+                            fs.writeFileSync(
+                                path.join(playablePath, "play.bat"),
+                                "start shapezio --dev --disable-direct-composition --in-process-gpu\r\n"
+                            );
+                            fs.writeFileSync(
+                                path.join(playablePath, "play_local.bat"),
+                                "start shapezio --local --dev --disable-direct-composition --in-process-gpu\r\n"
+                            );
+                            break;
+                        case 'linux':
+                            fs.writeFileSync(
+                                path.join(playablePath, "play.sh"),
+                                "./shapezio --dev --disable-direct-composition --in-process-gpu\r\n"
+                            );
+                            fs.chmodSync(
+                                path.join(playablePath, "play.sh"),
+                                0o775
+                            )
+                            fs.writeFileSync(
+                                path.join(playablePath, "play_local.sh"),
+                                "./shapezio --local --dev --disable-direct-composition --in-process-gpu\r\n"
+                            );
+                            fs.chmodSync(
+                                path.join(playablePath, "play_local.sh"),
+                                0o775
+                            )
+                            break
+
+                        default:
+                            break;
+                    }
                 });
 
                 cb();
@@ -182,8 +207,13 @@ function gulptasksStandalone($, gulp, buildFolder) {
         "standalone.package.prod",
         $.sequence("standalone.prepare", [
             "standalone.package.prod.win64",
+<<<<<<< HEAD
             // "standalone.package.prod.linux64",
             // "standalone.package.prod.win32",
+=======
+            // "standalone.package.prod.win32",
+            "standalone.package.prod.linux64",
+>>>>>>> Add linux build to standalone.package.prod.
             // "standalone.package.prod.linux32",
             // "standalone.package.prod.darwin64"
         ])
