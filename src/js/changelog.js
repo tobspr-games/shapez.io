@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "1.1.0",
+        date: "unreleased",
+        entries: [
+            "<strong>UX</strong> Added background to toolbar to increase contrast",
+            "<strong>UX</strong> Added confirmation when deleting more than 500 buildings at a time",
+        ],
+    },
+    {
         version: "1.0.4",
         date: "26.05.2020",
         entries: [

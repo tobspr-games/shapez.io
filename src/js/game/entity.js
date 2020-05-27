@@ -77,11 +77,14 @@ export class Entity extends BasicSerializableObject {
     }
 
     /**
-     * Returns whether the entity is still alive
-     * @returns {boolean}
+     * Returns a clone of this entity without contents
      */
-    isAlive() {
-        return !this.destroyed && !this.queuedForDestroy;
+    duplicateWithoutContents() {
+        const clone = new Entity(this.root);
+        for (const key in this.components) {
+            clone.components[key] = this.components[key].duplicateWithoutContents();
+        }
+        return clone;
     }
 
     /**

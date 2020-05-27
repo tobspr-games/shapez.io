@@ -6,6 +6,7 @@ import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { T } from "../translations";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { CHANGELOG } from "../changelog";
+import { globalConfig } from "../core/config";
 
 const logger = createLogger("state/preload");
 
@@ -179,6 +180,10 @@ export class PreloadState extends GameState {
 
             .then(() => this.setStatus("Checking changelog"))
             .then(() => {
+                if (G_IS_DEV && globalConfig.debug.disableUpgradeNotification) {
+                    return;
+                }
+
                 return this.app.storage
                     .readFileAsync("lastversion.bin")
                     .catch(err => {

@@ -18,6 +18,10 @@ export class BeltComponent extends Component {
         };
     }
 
+    duplicateWithoutContents() {
+        return new BeltComponent({ direction: this.direction });
+    }
+
     /**
      *
      * @param {object} param0

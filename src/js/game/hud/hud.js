@@ -8,6 +8,7 @@ import { HUDProcessingOverlay } from "./parts/processing_overlay";
 import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
 import { HUDBuildingPlacer } from "./parts/building_placer";
 import { HUDBetaOverlay } from "./parts/beta_overlay";
+import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
 import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
@@ -45,6 +46,7 @@ export class GameHUD {
 
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
             buildingPlacer: new HUDBuildingPlacer(this.root),
+            blueprintPlacer: new HUDBlueprintPlacer(this.root),
 
             unlockNotification: new HUDUnlockNotification(this.root),
 
@@ -72,6 +74,7 @@ export class GameHUD {
             selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
             shapePinRequested: /** @type {TypedSignal<[ShapeDefinition, number]>} */ (new Signal()),
             notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
+            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {
@@ -185,7 +188,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        const partsOrder = ["massSelector", "buildingPlacer"];
+        const partsOrder = ["massSelector", "buildingPlacer", "blueprintPlacer"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

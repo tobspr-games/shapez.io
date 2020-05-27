@@ -19,8 +19,21 @@ export class StaticMapEntityComponent extends Component {
             rotation: types.float,
             originalRotation: types.float,
             spriteKey: types.nullable(types.string),
+            blueprintSpriteKey: types.string,
             silhouetteColor: types.nullable(types.string),
         };
+    }
+
+    duplicateWithoutContents() {
+        return new StaticMapEntityComponent({
+            origin: this.origin.copy(),
+            tileSize: this.tileSize.copy(),
+            rotation: this.rotation,
+            originalRotation: this.originalRotation,
+            spriteKey: this.spriteKey,
+            silhouetteColor: this.silhouetteColor,
+            blueprintSpriteKey: this.blueprintSpriteKey,
+        });
     }
 
     /**
@@ -31,6 +44,7 @@ export class StaticMapEntityComponent extends Component {
      * @param {number=} param0.rotation Rotation in degrees. Must be multiple of 90
      * @param {number=} param0.originalRotation Original Rotation in degrees. Must be multiple of 90
      * @param {string=} param0.spriteKey Optional sprite
+     * @param {string} param0.blueprintSpriteKey Blueprint sprite, required
      * @param {string=} param0.silhouetteColor Optional silhouette color override
      */
     constructor({
@@ -40,6 +54,7 @@ export class StaticMapEntityComponent extends Component {
         originalRotation = 0,
         spriteKey = null,
         silhouetteColor = null,
+        blueprintSpriteKey = null,
     }) {
         super();
         assert(
@@ -53,6 +68,7 @@ export class StaticMapEntityComponent extends Component {
         this.rotation = rotation;
         this.originalRotation = originalRotation;
         this.silhouetteColor = silhouetteColor;
+        this.blueprintSpriteKey = blueprintSpriteKey;
     }
 
     /**
@@ -202,13 +218,24 @@ export class StaticMapEntityComponent extends Component {
      * @param {AtlasSprite} sprite
      * @param {number=} extrudePixels How many pixels to extrude the sprite
      * @param {boolean=} clipping Whether to clip
+     * @param {Vector=} overridePosition Whether to drwa the entity at a different location
      */
-    drawSpriteOnFullEntityBounds(parameters, sprite, extrudePixels = 0, clipping = true) {
-        const worldX = this.origin.x * globalConfig.tileSize;
-        const worldY = this.origin.y * globalConfig.tileSize;
-
-        if (!this.shouldBeDrawn(parameters)) {
+    drawSpriteOnFullEntityBounds(
+        parameters,
+        sprite,
+        extrudePixels = 0,
+        clipping = true,
+        overridePosition = null
+    ) {
+        if (!this.shouldBeDrawn(parameters) && !overridePosition) {
             return;
+        }
+        let worldX = this.origin.x * globalConfig.tileSize;
+        let worldY = this.origin.y * globalConfig.tileSize;
+
+        if (overridePosition) {
+            worldX = overridePosition.x * globalConfig.tileSize;
+            worldY = overridePosition.y * globalConfig.tileSize;
         }
 
         if (this.rotation === 0) {

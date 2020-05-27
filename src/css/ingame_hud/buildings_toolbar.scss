@@ -4,7 +4,6 @@
     left: 50%;
     transform: translateX(-50%);
 
-    $toolbarBg: rgba($accentColorBright, 0.9);
     display: flex;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
@@ -12,8 +11,7 @@
     border-bottom-width: 0;
     transition: transform 0.12s ease-in-out;
 
-    background: uiResource("toolbar_bg.lossless.png") center center / 100% 100% no-repeat;
-    @include S(padding, 20px, 100px, 0);
+    background: rgba(mix(#ddd, $colorBlueBright, 80%), 0.89);
 
     &:not(.visible) {
         transform: translateX(-50%) translateY(#{D(100px)});
@@ -59,7 +57,7 @@
             @include S(border-radius, $globalBorderRadius);
 
             &.selected {
-                background-color: rgba($colorBlueBright, 0.3) !important;
+                background-color: rgba($colorBlueBright, 0.6) !important;
                 transform: scale(1.05);
                 .keybinding {
                     color: #111;

@@ -24,6 +24,10 @@ export class MetaHubBuilding extends MetaBuilding {
         return false;
     }
 
+    getBlueprintSprite() {
+        return null;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity

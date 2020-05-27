@@ -93,7 +93,7 @@ export const globalConfig = {
         // disableZoomLimits: true,
         // showChunkBorders: true,
         // rewardsInstant: true,
-        // allBuildingsUnlocked: true,
+        allBuildingsUnlocked: true,
         // upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
@@ -103,6 +103,8 @@ export const globalConfig = {
         // enableEntityInspector: true,
         // testAds: true,
         // disableMapOverview: true,
+        disableTutorialHints: true,
+        disableUpgradeNotification: true,
         /* dev:end */
     },
 
