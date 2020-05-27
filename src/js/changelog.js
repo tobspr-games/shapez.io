@@ -1,10 +1,11 @@
 export const CHANGELOG = [
     {
         version: "1.0.4",
-        date: "unreleased",
+        date: "26.05.2020",
         entries: [
             "<strong>Balancing</strong> Reduce cost of first painting upgrade, and change 'Shape Processing' to 'Cutting, Rotating & Stacking'",
             "<strong>Tutorial</strong> Add dialog after completing level 2 to check out the upgrades tab.",
+            "<strong>Misc</strong> Allow changing the keybindings in the demo version",
         ],
     },
     {

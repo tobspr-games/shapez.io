@@ -94,7 +94,7 @@ export const globalConfig = {
         // showChunkBorders: true,
         // rewardsInstant: true,
         // allBuildingsUnlocked: true,
-        upgradesNoCost: true,
+        // upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
         // testClipping: true,
@@ -102,7 +102,7 @@ export const globalConfig = {
         // testTranslations: true,
         // enableEntityInspector: true,
         // testAds: true,
-        disableMapOverview: true,
+        // disableMapOverview: true,
         /* dev:end */
     },
 
