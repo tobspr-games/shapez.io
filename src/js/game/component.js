@@ -17,6 +17,14 @@ export class Component extends BasicSerializableObject {
         return {};
     }
 
+    /**
+     * Should duplicate the component but without its contents
+     * @returns {object}
+     */
+    duplicateWithoutContents() {
+        abstract;
+    }
+
     /* dev:start */
 
     /**

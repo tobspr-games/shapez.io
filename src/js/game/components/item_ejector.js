@@ -32,6 +32,22 @@ export class ItemEjectorComponent extends Component {
         };
     }
 
+    duplicateWithoutContents() {
+        const slotsCopy = [];
+        for (let i = 0; i < this.slots.length; ++i) {
+            const slot = this.slots[i];
+            slotsCopy.push({
+                pos: slot.pos.copy(),
+                direction: slot.direction,
+            });
+        }
+
+        return new ItemEjectorComponent({
+            slots: slotsCopy,
+            instantEject: false,
+        });
+    }
+
     /**
      *
      * @param {object} param0

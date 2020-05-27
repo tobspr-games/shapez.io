@@ -19,6 +19,10 @@ export class StorageComponent extends Component {
         };
     }
 
+    duplicateWithoutContents() {
+        return new StorageComponent({ maximumStorage: this.maximumStorage });
+    }
+
     /**
      * @param {object} param0
      * @param {number=} param0.maximumStorage How much this storage can hold

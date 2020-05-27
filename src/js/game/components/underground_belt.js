@@ -23,6 +23,13 @@ export class UndergroundBeltComponent extends Component {
         };
     }
 
+    duplicateWithoutContents() {
+        return new UndergroundBeltComponent({
+            mode: this.mode,
+            tier: this.tier,
+        });
+    }
+
     /**
      *
      * @param {object} param0

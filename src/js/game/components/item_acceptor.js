@@ -54,6 +54,32 @@ export class ItemAcceptorComponent extends Component {
         };
     }
 
+    duplicateWithoutContents() {
+        const slotsCopy = [];
+        for (let i = 0; i < this.slots.length; ++i) {
+            const slot = this.slots[i];
+            slotsCopy.push({
+                pos: slot.pos.copy(),
+                directions: slot.directions.slice(),
+            });
+        }
+
+        const beltUnderlaysCopy = [];
+        for (let i = 0; i < this.beltUnderlays.length; ++i) {
+            const underlay = this.beltUnderlays[i];
+            beltUnderlaysCopy.push({
+                pos: underlay.pos.copy(),
+                direction: underlay.direction,
+            });
+        }
+
+        return new ItemAcceptorComponent({
+            slots: slotsCopy,
+            beltUnderlays: beltUnderlaysCopy,
+            animated: this.animated,
+        });
+    }
+
     /**
      *
      * @param {object} param0
