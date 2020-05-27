@@ -8,6 +8,7 @@ export const CHANGELOG = [
             "Added confirmation when deleting more than 500 buildings at a time",
             "Added background to toolbar to increase contrast",
             "Allow placing extractors anywhere again, but they don't work at all if not placed on a resource",
+            "Fix cycling through keybindings selecting locked buildings as well",
         ],
     },
     {
