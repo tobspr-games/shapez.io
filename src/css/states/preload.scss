@@ -27,7 +27,7 @@
         }
 
         .changes {
-            @include SuperSmallText;
+            @include PlainText;
             @include S(padding-left, 15px);
             strong {
                 background: $colorBlueBright;
