@@ -11,8 +11,7 @@ import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
 import { SavegameInterface_V1000 } from "./schemas/1000";
 import { getSavegameInterface } from "./savegame_interface_registry";
-import { compressObject } from "./savegame_compressor";
-import { compressX64 } from "../core/lzstring";
+import { SavegameInterface_V1001 } from "./schemas/1001";
 
 const logger = createLogger("savegame");
 
@@ -29,7 +28,7 @@ export class Savegame extends ReadWriteProxy {
         this.internalId = internalId;
         this.metaDataRef = metaDataRef;
 
-        /** @type {SavegameData} */
+        /** @type {import("./savegame_typedefs").SavegameData} */
         this.currentData = this.getDefaultData();
     }
 
@@ -39,14 +38,14 @@ export class Savegame extends ReadWriteProxy {
      * @returns {number}
      */
     static getCurrentVersion() {
-        return 1000;
+        return 1001;
     }
 
     /**
      * @returns {typeof BaseSavegameInterface}
      */
     static getReaderClass() {
-        return SavegameInterface_V1000;
+        return SavegameInterface_V1001;
     }
 
     /**
@@ -58,7 +57,7 @@ export class Savegame extends ReadWriteProxy {
 
     /**
      * Returns the savegames default data
-     * @returns {SavegameData}
+     * @returns {import("./savegame_typedefs").SavegameData}
      */
     getDefaultData() {
         return {
@@ -73,18 +72,25 @@ export class Savegame extends ReadWriteProxy {
 
     /**
      * Migrates the savegames data
-     * @param {SavegameData} data
+     * @param {import("./savegame_typedefs").SavegameData} data
      */
     migrate(data) {
         if (data.version < 1000) {
             return ExplainedResult.bad("Can not migrate savegame, too old");
         }
+
+        console.log("TODO: Migrate from", data.version);
+        if (data.version === 1000) {
+            SavegameInterface_V1001.migrate1000to1001(data);
+            data.version = 1001;
+        }
+
         return ExplainedResult.good();
     }
 
     /**
      * Verifies the savegames data
-     * @param {SavegameData} data
+     * @param {import("./savegame_typedefs").SavegameData} data
      */
     verify(data) {
         if (!data.dump) {
@@ -109,7 +115,7 @@ export class Savegame extends ReadWriteProxy {
     }
     /**
      * Returns the statistics of the savegame
-     * @returns {SavegameStats}
+     * @returns {import("./savegame_typedefs").SavegameStats}
      */
     getStatistics() {
         return this.currentData.stats;
@@ -132,7 +138,7 @@ export class Savegame extends ReadWriteProxy {
 
     /**
      * Returns the current game dump
-     * @returns {SerializedGame}
+     * @returns {import("./savegame_typedefs").SerializedGame}
      */
     getCurrentDump() {
         return this.currentData.dump;

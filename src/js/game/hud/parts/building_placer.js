@@ -39,6 +39,8 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
 
+        this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
+
         this.domAttach = new DynamicDomAttach(this.root, this.element, {});
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
@@ -255,6 +257,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                     origin: new Vector(0, 0),
                     rotation: 0,
                     tileSize: metaBuilding.getDimensions(this.currentVariant.get()).copy(),
+                    blueprintSpriteKey: "",
                 })
             );
             metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());

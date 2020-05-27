@@ -148,6 +148,17 @@ export class BaseMap extends BasicSerializableObject {
     }
 
     /**
+     * Checks if the tile is used
+     * @param {number} x
+     * @param {number} y
+     * @returns {boolean}
+     */
+    isTileUsedXY(x, y) {
+        const chunk = this.getChunkAtTileOrNull(x, y);
+        return chunk && chunk.getTileContentFromWorldCoords(x, y) != null;
+    }
+
+    /**
      * Sets the tiles content
      * @param {Vector} tile
      * @param {Entity} entity

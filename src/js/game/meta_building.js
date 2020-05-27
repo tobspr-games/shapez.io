@@ -154,6 +154,9 @@ export class MetaBuilding {
      */
     createAndPlaceEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
+
+        const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
+
         entity.addComponent(
             new StaticMapEntityComponent({
                 spriteKey:
@@ -166,6 +169,7 @@ export class MetaBuilding {
                 originalRotation,
                 tileSize: this.getDimensions(variant).copy(),
                 silhouetteColor: this.getSilhouetteColor(),
+                blueprintSpriteKey: blueprintSprite ? blueprintSprite.spriteName : "",
             })
         );
 

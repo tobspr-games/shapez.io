@@ -8,6 +8,7 @@
 		"files.exclude": {
 			"**/build": true,
 			"**/node_modules": true,
+			"**/tmp_standalone_files": true,
 			"**/typedefs_gen": true
 		},
 		"vetur.format.defaultFormatter.js": "vscode-typescript",

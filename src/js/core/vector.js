@@ -104,6 +104,17 @@ export class Vector {
     }
 
     /**
+     * Subs a vector
+     * @param {Vector} other
+     * @returns {Vector}
+     */
+    subInplace(other) {
+        this.x -= other.x;
+        this.y -= other.y;
+        return this;
+    }
+
+    /**
      * Multiplies with a vector and return a new vector
      * @param {Vector} other
      * @returns {Vector}

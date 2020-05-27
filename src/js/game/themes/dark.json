@@ -4,7 +4,7 @@
         "background": "#2e2f37",
         "grid": "rgba(255, 255, 255, 0.02)",
         "gridLineWidth": 0.5,
-
+        "selectionColor": "rgba(127, 127, 255, 0.5)",
         "resources": {
             "shape": "#3d3f4a",
             "red": "#4a3d3f",

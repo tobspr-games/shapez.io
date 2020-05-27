@@ -48,6 +48,13 @@ export class ItemProcessorComponent extends Component {
         };
     }
 
+    duplicateWithoutContents() {
+        return new ItemProcessorComponent({
+            processorType: this.type,
+            inputsPerCharge: this.inputsPerCharge,
+        });
+    }
+
     /**
      *
      * @param {object} param0

@@ -4,14 +4,7 @@
  * }} SavegameStats
  */
 
-/**
- * @typedef {{
- *   x: number,
- *   y: number,
- *   uid: number,
- *   key: string
- * }} SerializedMapResource
- */
+import { Entity } from "../game/entity";
 
 /**
  * @typedef {{
@@ -20,7 +13,7 @@
  *   entityMgr: any,
  *   map: any,
  *   hubGoals: any,
- *   entities: Array<any>
+ *   entities: Array<Entity>
  * }} SerializedGame
  */
 
