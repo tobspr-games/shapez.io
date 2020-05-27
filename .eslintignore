@@ -1,0 +1,11 @@
+artwork/*
+build/*
+electron/*
+gulp/*
+node_modules/*
+res/*
+res_built/*
+res_raw/*
+tmp_standalone_files/*
+tools/*
+translations/*
