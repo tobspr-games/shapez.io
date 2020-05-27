@@ -17,7 +17,7 @@
         }
 
         .changes {
-            @include SuperSmallText;
+            @include PlainText;
             @include S(padding-left, 20px);
             strong {
                 color: #aaa;
