@@ -3,12 +3,13 @@ export const CHANGELOG = [
         version: "1.1.0",
         date: "unreleased",
         entries: [
-            "Allow changing all keybindings, including CTRL, ALT and SHIFT",
             "Allow holding SHIFT to rotate counter clockwise",
+            "Allow changing all keybindings, including CTRL, ALT and SHIFT (by Dimava)",
             "Added confirmation when deleting more than 500 buildings at a time",
             "Added background to toolbar to increase contrast",
             "Allow placing extractors anywhere again, but they don't work at all if not placed on a resource",
-            "Fix cycling through keybindings selecting locked buildings as well",
+            "Fix cycling through keybindings selecting locked buildings as well (by Dimava)",
+            "There is now a github action, checking all pull requests with eslint. (by mrHedgehog)",
         ],
     },
     {
