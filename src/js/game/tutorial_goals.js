@@ -34,7 +34,7 @@ export const tutorialGoals = [
     // Circle
     {
         shape: "CuCuCuCu", // belts t1
-        required: 35,
+        required: 20,
         reward: enumHubGoalRewards.reward_cutter_and_trash,
     },
 
@@ -42,7 +42,7 @@ export const tutorialGoals = [
     // Cutter
     {
         shape: "----CuCu", //
-        required: 50,
+        required: 40,
         reward: enumHubGoalRewards.no_reward,
     },
 
@@ -57,7 +57,7 @@ export const tutorialGoals = [
     // 4
     {
         shape: "RuRu----", // processors t2
-        required: 150,
+        required: 120,
         reward: enumHubGoalRewards.reward_rotater,
     },
 
@@ -72,7 +72,7 @@ export const tutorialGoals = [
     // 6
     {
         shape: "Cu------", // miners t2
-        required: 700,
+        required: 500,
         reward: enumHubGoalRewards.reward_painter,
     },
 
@@ -80,14 +80,14 @@ export const tutorialGoals = [
     // Painter
     {
         shape: "CrCrCrCr", // unused
-        required: 1300,
+        required: 1000,
         reward: enumHubGoalRewards.reward_rotater_ccw,
     },
 
     // 8
     {
         shape: "RbRb----", // painter t2
-        required: 2500,
+        required: 1500,
         reward: enumHubGoalRewards.reward_mixer,
     },
 
@@ -95,7 +95,7 @@ export const tutorialGoals = [
     // Mixing (purple)
     {
         shape: "CpCpCpCp", // belts t3
-        required: 4000,
+        required: 2500,
         reward: enumHubGoalRewards.reward_splitter_compact,
     },
 
