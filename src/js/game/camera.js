@@ -100,7 +100,7 @@ export class Camera extends BasicSerializableObject {
         this.bindKeys();
         if (G_IS_DEV) {
             window.addEventListener("keydown", ev => {
-                if (ev.key === "l") {
+                if (ev.key === "i") {
                     this.zoomLevel = 3;
                 }
             });
