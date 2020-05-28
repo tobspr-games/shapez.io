@@ -59,7 +59,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         const tile = worldPos.toTileSpace();
         if (blueprint.tryPlace(this.root, tile)) {
             // This actually feels weird
-            // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).currentlyDown) {
+            // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).isCurrentlyPressed()) {
             //     this.currentBlueprint.set(null);
             // }
         }
@@ -84,7 +84,11 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     rotateBlueprint() {
         if (this.currentBlueprint.get()) {
-            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).currentlyDown) {
+            if (
+                this.root.keyMapper
+                    .getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
+                    .isCurrentlyPressed()
+            ) {
                 this.currentBlueprint.get().rotateCcw();
             } else {
                 this.currentBlueprint.get().rotateCw();

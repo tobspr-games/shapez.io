@@ -9,6 +9,19 @@ export class HUDPinnedShapes extends BaseHUDPart {
         this.element = makeDiv(parent, "ingame_HUD_PinnedShapes", []);
     }
 
+    serialize() {
+        return {
+            shapes: this.pinnedShapes,
+        };
+    }
+
+    deserialize(data) {
+        if (!data || !data.shapes || !Array.isArray(data.shapes)) {
+            return "Invalid pinned shapes data";
+        }
+        this.pinnedShapes = data.shapes;
+    }
+
     initialize() {
         /** @type {Array<{ key: string, goal: number }>} */
         this.pinnedShapes = [];

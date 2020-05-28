@@ -24,6 +24,10 @@ export class SavegameInterface_V1001 extends SavegameInterface_V1000 {
             return true;
         }
 
+        dump.pinnedShapes = {
+            shapes: [],
+        };
+
         const entities = dump.entities;
         for (let i = 0; i < entities.length; ++i) {
             const entity = entities[i];

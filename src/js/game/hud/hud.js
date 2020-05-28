@@ -59,6 +59,7 @@ export class GameHUD {
 
             vignetteOverlay: new HUDVignetteOverlay(this.root),
 
+            // Must always exist
             pinnedShapes: new HUDPinnedShapes(this.root),
 
             notifications: new HUDNotifications(this.root),

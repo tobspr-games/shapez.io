@@ -235,10 +235,15 @@ export class Keybinding {
         this.builtin = builtin;
         this.repeated = repeated;
 
-        this.currentlyDown = false;
-
         this.signal = new Signal();
         this.toggled = new Signal();
+    }
+
+    /**
+     * Returns whether this binding is currently pressed
+     */
+    isCurrentlyPressed() {
+        return this.app.inputMgr.keysDown.has(this.keyCode);
     }
 
     /**
@@ -350,7 +355,6 @@ export class KeyActionMapper {
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            binding.currentlyDown = false;
         }
     }
 
@@ -360,17 +364,16 @@ export class KeyActionMapper {
      * @param {number} param0.keyCode
      * @param {boolean} param0.shift
      * @param {boolean} param0.alt
+     * @param {boolean=} param0.initial
      */
-    handleKeydown({ keyCode, shift, alt }) {
+    handleKeydown({ keyCode, shift, alt, initial }) {
         let stop = false;
 
         // Find mapping
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode && (!binding.currentlyDown || binding.repeated)) {
-                binding.currentlyDown = true;
-
+            if (binding.keyCode === keyCode && (initial || binding.repeated)) {
                 /** @type {Signal} */
                 const signal = this.keybindings[key].signal;
                 if (signal.dispatch() === STOP_PROPAGATION) {
@@ -392,13 +395,7 @@ export class KeyActionMapper {
      * @param {boolean} param0.alt
      */
     handleKeyup({ keyCode, shift, alt }) {
-        for (const key in this.keybindings) {
-            /** @type {Keybinding} */
-            const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode) {
-                binding.currentlyDown = false;
-            }
-        }
+        // Empty
     }
 
     /**

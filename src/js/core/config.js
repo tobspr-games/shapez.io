@@ -83,7 +83,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        fastGameEnter: true,
+        // fastGameEnter: true,
         // noArtificialDelays: true,
         // disableSavegameWrite: true,
         // showEntityBounds: true,
@@ -100,7 +100,7 @@ export const globalConfig = {
         // testClipping: true,
         // framePausesBetweenTicks: 40,
         // testTranslations: true,
-        enableEntityInspector: true,
+        // enableEntityInspector: true,
         // testAds: true,
         // disableMapOverview: true,
         disableTutorialHints: true,

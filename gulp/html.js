@@ -292,7 +292,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
     });
 
     gulp.task("html.prod", () => {
-        return buildHtml("https://api.shapez.io", {
+        return buildHtml("https://analytics.shapez.io", {
             analytics: true,
         });
     });
@@ -315,7 +315,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
     });
 
     gulp.task("html.standalone-prod", () => {
-        return buildHtml("https://api.shapez.io", {
+        return buildHtml("https://analytics.shapez.io", {
             analytics: false,
             standalone: true,
             enableCachebust: false,

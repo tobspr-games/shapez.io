@@ -13,7 +13,6 @@ const UnusedFilesPlugin = require("unused-files-webpack-plugin").UnusedFilesWebp
 
 module.exports = ({
     enableAssert = false,
-    apiEndpoint,
     environment,
     es6 = false,
     standalone = false,
@@ -30,7 +29,6 @@ module.exports = ({
         G_IS_STANDALONE: standalone ? "true" : "false",
         G_IS_BROWSER: isBrowser ? "true" : "false",
         G_IS_MOBILE_APP: mobileApp ? "true" : "false",
-        G_API_ENDPOINT: JSON.stringify(lzString.compressToEncodedURIComponent(apiEndpoint)),
         G_TRACKING_ENDPOINT: JSON.stringify(
             lzString.compressToEncodedURIComponent("https://tracking.shapez.io/v1")
         ),

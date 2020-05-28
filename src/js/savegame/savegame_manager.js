@@ -19,7 +19,8 @@ export const enumLocalSavegameStatus = {
  * @typedef {{
  *   lastUpdate: number,
  *   version: number,
- *   internalId: string
+ *   internalId: string,
+ *   level: number
  * }} SavegameMetadata
  *
  * @typedef {{
@@ -48,7 +49,7 @@ export class SavegameManager extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 1000;
+        return 1001;
     }
 
     /**
@@ -68,6 +69,13 @@ export class SavegameManager extends ReadWriteProxy {
      * @param {SavegamesData} data
      */
     migrate(data) {
+        if (data.version < 1001) {
+            data.savegames.forEach(savegame => {
+                savegame.level = 0;
+            });
+            data.version = 1001;
+        }
+
         return ExplainedResult.good();
     }
 
