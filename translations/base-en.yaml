@@ -298,6 +298,10 @@ ingame:
         showHint: Show hint
         hideHint: Close
 
+    # When placing a blueprint
+    blueprintPlacer:
+        cost: Cost
+
 # All shop upgrades
 shopUpgrades:
     belt:

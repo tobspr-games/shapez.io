@@ -47,6 +47,7 @@
 @import "ingame_hud/entity_debugger";
 @import "ingame_hud/tutorial_hints";
 @import "ingame_hud/watermark";
+@import "ingame_hud/blueprint_placer";
 
 // prettier-ignore
 $elements: 
@@ -68,6 +69,7 @@ ingame_HUD_DebugInfo,
 ingame_HUD_EntityDebugger,
 ingame_HUD_TutorialHints,
 ingame_HUD_buildings_toolbar,
+ingame_HUD_BlueprintPlacer,
 ingame_HUD_Watermark,
 
 // Overlays
