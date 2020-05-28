@@ -127,42 +127,42 @@ export const tutorialGoals = [
     // 13
     {
         shape: "RpRpRpRp:CwCwCwCw", // painting t3
-        required: 9000,
+        required: 12000,
         reward: enumHubGoalRewards.reward_underground_belt_tier_2,
     },
 
     // 14
     {
         shape: "SrSrSrSr:CyCyCyCy", // unused
-        required: 12000,
+        required: 16000,
         reward: enumHubGoalRewards.reward_storage,
     },
 
     // 15
     {
         shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
-        required: 14000,
+        required: 25000,
         reward: enumHubGoalRewards.reward_cutter_quad,
     },
 
     // 16
     {
         shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
-        required: 17000,
+        required: 50000,
         reward: enumHubGoalRewards.reward_painter_double,
     },
 
     // 17
     {
         shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two varinats)
-        required: 30000,
+        required: 100000,
         reward: enumHubGoalRewards.reward_painter_quad,
     },
 
     // 18
     {
         shape: finalGameShape,
-        required: 50000,
+        required: 250000,
         reward: enumHubGoalRewards.reward_freeplay,
     },
 ];

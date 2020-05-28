@@ -3,7 +3,7 @@ export const CHANGELOG = [
         version: "1.1.0",
         date: "unreleased",
         entries: [
-            "BLUEPRINTS! They are unlocked at level 11.",
+            "BLUEPRINTS! They are unlocked at level 12",
             "Savegame levels are now shown in the main menu. For existing games, save them again to make the level show up.",
             "Allow holding SHIFT to rotate counter clockwise",
             "Allow changing all keybindings, including CTRL, ALT and SHIFT (by Dimava)",

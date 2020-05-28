@@ -457,7 +457,7 @@ storyRewards:
 
     reward_blueprints:
         title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold ctrl, then drag), then press 'C' to copy it.<br><br>Pasting it is not free, you need to produce blueprint shapes to afford it! (Those you just delivered).
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
