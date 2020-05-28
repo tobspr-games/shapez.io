@@ -1,6 +1,7 @@
+import { globalConfig } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
 import { formatSecondsToTimeAgo } from "../core/utils";
-import { allApplicationSettings } from "../profile/application_settings";
+import { allApplicationSettings, allDebugSettings } from "../profile/application_settings";
 import { T } from "../translations";
 
 export class SettingsState extends TextualGameState {
@@ -53,6 +54,22 @@ export class SettingsState extends TextualGameState {
             }
 
             html += setting.getHtml();
+        }
+        if (globalConfig.debug.showDebugSettings) {
+            for (let i = 0; i < allDebugSettings.length; ++i) {
+                const setting = allDebugSettings[i];
+
+                if (setting.categoryId !== lastCategory) {
+                    lastCategory = setting.categoryId;
+                    if (i !== 0) {
+                        html += "</div>";
+                    }
+                    html += `<strong class="categoryLabel">${T.settings.categories[lastCategory]}</strong>`;
+                    html += "<div class='settingsContainer'>";
+                }
+
+                html += setting.getHtml();
+            }
         }
         if (lastCategory) {
             html += "</div>";

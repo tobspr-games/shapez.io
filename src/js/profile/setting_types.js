@@ -187,18 +187,19 @@ export class BoolSetting extends BaseSetting {
     }
 
     getHtml() {
+        const label = T.settings.labels[this.id] || {title : this.id};
         return `
         <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
             ${this.enabled ? "" : standaloneOnlySettingHtml}
                 
             <div class="row">
-                <label>${T.settings.labels[this.id].title}</label>
+                <label>${label.title}</label>
                 <div class="value checkbox checked" data-setting="${this.id}">
                 <span class="knob"></span>
                 </div>
             </div>
             <div class="desc">
-                ${T.settings.labels[this.id].description}
+                ${label.description}
             </div>
         </div>`;
     }
