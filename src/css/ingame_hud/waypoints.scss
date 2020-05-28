@@ -32,6 +32,7 @@
     @include S(top, 60px);
     display: flex;
     flex-direction: column;
+    @include DarkThemeInvert();
 
     .waypoint {
         @include SuperSmallText;
