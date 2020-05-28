@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.1.0",
-        date: "unreleased",
+        date: "28.05.2020",
         entries: [
             "BLUEPRINTS! They are unlocked at level 12 and cost a special shape to build.",
             "MAP MARKERS! Press 'M' to create a waypoint and be able to jump to it",
