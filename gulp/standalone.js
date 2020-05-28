@@ -21,8 +21,11 @@ function gulptasksStandalone($, gulp, buildFolder) {
             path.join(electronBaseDir, "lib", "**", "*.node"),
             path.join(electronBaseDir, "node_modules", "**", "*.*"),
             path.join(electronBaseDir, "node_modules", "**", ".*"),
-            path.join(electronBaseDir, "node_modules", "**", "*"),
             path.join(electronBaseDir, "favicon*"),
+
+            // fails on platforms which support symlinks
+            // https://github.com/gulpjs/gulp/issues/1427
+            // path.join(electronBaseDir, "node_modules", "**", "*"),
         ];
         return gulp.src(requiredFiles, { base: electronBaseDir }).pipe(gulp.dest(tempDestBuildDir));
     });
