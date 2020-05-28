@@ -12,6 +12,7 @@ import { enumMouseButton } from "../../camera";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
+import { enumHubGoalRewards } from "../../tutorial_goals";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -30,9 +31,9 @@ export class HUDMassSelector extends BaseHUDPart {
             "ingame_HUD_MassSelector",
             [],
             T.ingame.massSelect.infoText
-                .replace("<keyDelete>", removalKeybinding)
-                .replace("<keyCopy>", copyKeybinding)
-                .replace("<keyCancel>", abortKeybinding)
+                .replace("<keyDelete>", `<code class='keybinding'>${removalKeybinding}</code>`)
+                .replace("<keyCopy>", `<code class='keybinding'>${copyKeybinding}</code>`)
+                .replace("<keyCancel>", `<code class='keybinding'>${abortKeybinding}</code>`)
         );
     }
 
@@ -107,6 +108,13 @@ export class HUDMassSelector extends BaseHUDPart {
 
     startCopy() {
         if (this.selectedUids.size > 0) {
+            if (!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
+                this.root.hud.parts.dialogs.showInfo(
+                    T.dialogs.blueprintsNotUnlocked.title,
+                    T.dialogs.blueprintsNotUnlocked.desc
+                );
+                return;
+            }
             this.root.hud.signals.buildingsSelectedForCopy.dispatch(Array.from(this.selectedUids));
             this.selectedUids = new Set();
             this.root.soundProxy.playUiClick();
@@ -121,7 +129,7 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {enumMouseButton} mouseButton
      */
     onMouseDown(pos, mouseButton) {
-        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).currentlyDown) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).isCurrentlyPressed()) {
             return;
         }
 
@@ -129,7 +137,11 @@ export class HUDMassSelector extends BaseHUDPart {
             return;
         }
 
-        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).currentlyDown) {
+        if (
+            !this.root.keyMapper
+                .getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple)
+                .isCurrentlyPressed()
+        ) {
             // Start new selection
             this.selectedUids = new Set();
         }

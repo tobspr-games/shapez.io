@@ -32,9 +32,6 @@ module.exports = ({ watch = false, standalone = false }) => {
                     "window.assert(false, 'abstract method called of: ' + (this.name || (this.constructor && this.constructor.name)));",
                 G_HAVE_ASSERT: "true",
                 G_APP_ENVIRONMENT: JSON.stringify("dev"),
-                G_API_ENDPOINT: JSON.stringify(
-                    lzString.compressToEncodedURIComponent("http://localhost:5005/v1")
-                ),
                 G_TRACKING_ENDPOINT: JSON.stringify(
                     lzString.compressToEncodedURIComponent("http://localhost:10005/v1")
                 ),

@@ -46,7 +46,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                     requireUncached("./webpack.production.config.js")({
                         enableAssert: true,
                         environment: "staging",
-                        apiEndpoint: "https://api-staging.shapez.io/v1",
                         es6: false,
                     })
                 )
@@ -63,7 +62,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                     requireUncached("./webpack.production.config.js")({
                         enableAssert: true,
                         environment: "staging",
-                        apiEndpoint: "https://api-staging.shapez.io/v1",
                         es6: true,
                     })
                 )
@@ -81,7 +79,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                     requireUncached("./webpack.production.config.js")({
                         enableAssert: false,
                         environment: "prod",
-                        apiEndpoint: "https://api.shapez.io/v1",
                         es6: false,
                     })
                 )
@@ -100,7 +97,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                         enableAssert: false,
                         environment: "prod",
                         es6: true,
-                        apiEndpoint: "https://api.shapez.io/v1",
                     })
                 )
             )
@@ -148,7 +144,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                     requireUncached("./webpack.production.config.js")({
                         enableAssert: true,
                         environment: "staging",
-                        apiEndpoint: "https://api-staging.shapez.io/v1",
                         es6: true,
                         standalone: true,
                     })
@@ -165,7 +160,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                     requireUncached("./webpack.production.config.js")({
                         enableAssert: false,
                         environment: "prod",
-                        apiEndpoint: "https://api.shapez.io/v1",
                         es6: true,
                         standalone: true,
                     })

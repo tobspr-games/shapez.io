@@ -283,8 +283,10 @@ export class MainMenuState extends GameState {
                 makeDiv(
                     elem,
                     null,
-                    ["updateTime"],
-                    formatSecondsToTimeAgo((new Date().getTime() - games[i].lastUpdate) / 1000.0)
+                    ["level"],
+                    games[i].level
+                        ? T.mainMenu.savegameLevel.replace("<x>", "" + games[i].level)
+                        : T.mainMenu.savegameLevelUnknown
                 );
 
                 const deleteButton = document.createElement("button");

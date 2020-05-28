@@ -23,6 +23,11 @@ export class InputDistributor {
         /** @type {Array<function(any) : boolean>} */
         this.filters = [];
 
+        /**
+         * All keys which are currently down
+         */
+        this.keysDown = new Set();
+
         this.bindToEvents();
     }
 
@@ -173,6 +178,7 @@ export class InputDistributor {
      */
     handleBlur() {
         this.forwardToReceiver("pageBlur", {});
+        this.keysDown.clear();
     }
 
     /**
@@ -180,19 +186,24 @@ export class InputDistributor {
      */
     handleKeydown(event) {
         if (
-            // TAB
-            event.keyCode === 9 ||
-            // F1 - F10
-            (event.keyCode >= 112 && event.keyCode < 122)
+            event.keyCode === 9 || // TAB
+            event.keyCode === 16 || // SHIFT
+            event.keyCode === 17 || // CTRL
+            event.keyCode === 18 || // ALT
+            (event.keyCode >= 112 && event.keyCode < 122) // F1 - F10
         ) {
             event.preventDefault();
         }
+
+        const isInitial = !this.keysDown.has(event.keyCode);
+        this.keysDown.add(event.keyCode);
 
         if (
             this.forwardToReceiver("keydown", {
                 keyCode: event.keyCode,
                 shift: event.shiftKey,
                 alt: event.altKey,
+                initial: isInitial,
                 event,
             }) === STOP_PROPAGATION
         ) {
@@ -212,6 +223,8 @@ export class InputDistributor {
      * @param {KeyboardEvent} event
      */
     handleKeyup(event) {
+        this.keysDown.delete(event.keyCode);
+
         this.forwardToReceiver("keyup", {
             keyCode: event.keyCode,
             shift: event.shiftKey,

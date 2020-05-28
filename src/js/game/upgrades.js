@@ -2,6 +2,7 @@ import { findNiceIntegerValue } from "../core/utils";
 import { ShapeDefinition } from "./shape_definition";
 
 export const finalGameShape = "RuCw--Cw:----Ru--";
+export const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
 export const UPGRADES = {
     belt: {

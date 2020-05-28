@@ -161,9 +161,9 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 if (
                     metaBuilding &&
                     metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
-                    !this.root.keyMapper.getBinding(
-                        KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation
-                    ).currentlyDown
+                    !this.root.keyMapper
+                        .getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation)
+                        .isCurrentlyPressed()
                 ) {
                     const delta = newPos.sub(oldPos);
                     const angleDeg = Math_degrees(delta.angle());
@@ -171,8 +171,9 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
                     // Holding alt inverts the placement
                     if (
-                        this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse)
-                            .currentlyDown
+                        this.root.keyMapper
+                            .getBinding(KEYMAPPINGS.placementModifiers.placeInverse)
+                            .isCurrentlyPressed()
                     ) {
                         this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
                     }
@@ -394,7 +395,11 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     tryRotate() {
         const selectedBuilding = this.currentMetaBuilding.get();
         if (selectedBuilding) {
-            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).currentlyDown) {
+            if (
+                this.root.keyMapper
+                    .getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
+                    .isCurrentlyPressed()
+            ) {
                 this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
             } else {
                 this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
@@ -479,16 +484,18 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
             if (
                 metaBuilding.getFlipOrientationAfterPlacement() &&
-                !this.root.keyMapper.getBinding(
-                    KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation
-                ).currentlyDown
+                !this.root.keyMapper
+                    .getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation)
+                    .isCurrentlyPressed()
             ) {
                 this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
             }
 
             if (
                 !metaBuilding.getStayInPlacementMode() &&
-                !this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).currentlyDown &&
+                !this.root.keyMapper
+                    .getBinding(KEYMAPPINGS.placementModifiers.placeMultiple)
+                    .isCurrentlyPressed() &&
                 !this.root.app.settings.getAllSettings().alwaysMultiplace
             ) {
                 // Stop placement

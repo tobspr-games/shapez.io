@@ -873,19 +873,19 @@ export class Camera extends BasicSerializableObject {
             let forceY = 0;
 
             const actionMapper = this.root.keyMapper;
-            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).isCurrentlyPressed()) {
                 forceY -= 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).isCurrentlyPressed()) {
                 forceY += 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).isCurrentlyPressed()) {
                 forceX -= 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).isCurrentlyPressed()) {
                 forceX += 1;
             }
 

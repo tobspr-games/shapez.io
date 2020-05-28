@@ -78,6 +78,9 @@ mainMenu:
     browserWarning: >-
         Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
 
+    savegameLevel: Level <x>
+    savegameLevelUnknown: Unknown Level
+
 dialogs:
     buttons:
         ok: OK
@@ -176,6 +179,11 @@ dialogs:
         title: Confirm delete
         desc: >-
             You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+
+    blueprintsNotUnlocked:
+        title: Not unlocked yet
+        desc: >-
+            Blueprints have not been unlocked yet! Complete more levels to unlock them.
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -446,6 +454,10 @@ storyRewards:
     reward_freeplay:
         title: Freeplay
         desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+
+    reward_blueprints:
+        title: Blueprints
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold ctrl, then drag), then press 'C' to copy it.<br><br>Pasting it is not free, you need to produce blueprint shapes to afford it! (Those you just delivered).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:

@@ -1,10 +1,9 @@
+import { Entity } from "../game/entity";
+
 /**
  * @typedef {{
- *  buildingsPlaced: number
  * }} SavegameStats
  */
-
-import { Entity } from "../game/entity";
 
 /**
  * @typedef {{
@@ -13,6 +12,7 @@ import { Entity } from "../game/entity";
  *   entityMgr: any,
  *   map: any,
  *   hubGoals: any,
+ *   pinnedShapes: any,
  *   entities: Array<Entity>
  * }} SerializedGame
  */
@@ -22,6 +22,6 @@ import { Entity } from "../game/entity";
  *   version: number,
  *   dump: SerializedGame,
  *   stats: SavegameStats,
- *   lastUpdate: number
+ *   lastUpdate: number,
  * }} SavegameData
  */
