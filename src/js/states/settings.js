@@ -43,19 +43,15 @@ export class SettingsState extends TextualGameState {
         let html = "";
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
-            if (
-                allDebugSettings.indexOf(setting) != -1 &&
-                !globalConfig.debug.showDebugSettings
-            )
-                continue;
+            const hidden =  allDebugSettings.indexOf(setting) != -1 && !globalConfig.debug.showDebugSettings;
 
             if (setting.categoryId !== lastCategory) {
                 lastCategory = setting.categoryId;
                 if (i !== 0) {
                     html += "</div>";
                 }
-                html += `<strong class="categoryLabel">${T.settings.categories[lastCategory]}</strong>`;
-                html += "<div class='settingsContainer'>";
+                html += `<strong class="categoryLabel"${hidden ? " hidden" : ""}>${T.settings.categories[lastCategory]}</strong>`;
+                html += `<div class='settingsContainer'${hidden ? " hidden" : ""}>`;
             }
 
             html += setting.getHtml();
