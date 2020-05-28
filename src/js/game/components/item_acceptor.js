@@ -61,6 +61,7 @@ export class ItemAcceptorComponent extends Component {
             slotsCopy.push({
                 pos: slot.pos.copy(),
                 directions: slot.directions.slice(),
+                filter: slot.filter,
             });
         }
 
