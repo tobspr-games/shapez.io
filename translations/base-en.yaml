@@ -378,6 +378,11 @@ buildings:
         storage:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+    
+    sorter:
+        default:
+            name: &sorter Sorter
+            description: Sorts items. too lazy to explain
 
 storyRewards:
     # Those are the rewards gained from completing the store

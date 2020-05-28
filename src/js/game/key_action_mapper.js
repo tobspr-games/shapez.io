@@ -48,6 +48,7 @@ export const KEYMAPPINGS = {
         mixer: { keyCode: key("8") },
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
+        sorter: { keyCode: key("-") },
     },
 
     placement: {

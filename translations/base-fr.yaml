@@ -374,6 +374,11 @@ buildings:
             name: Stockage
             description: Stocke les formes en trop jusqu'à une certaine capacité. Peut être utilisé comme tampon.
 
+    sorter:
+        default:
+            name: &sorter Sorter
+            description: Sorts items. too lazy to explain
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
