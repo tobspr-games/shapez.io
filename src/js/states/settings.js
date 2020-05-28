@@ -43,6 +43,11 @@ export class SettingsState extends TextualGameState {
         let html = "";
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
+            if (
+                allDebugSettings.indexOf(setting) != -1 &&
+                !globalConfig.debug.showDebugSettings
+            )
+                continue;
 
             if (setting.categoryId !== lastCategory) {
                 lastCategory = setting.categoryId;
@@ -54,22 +59,6 @@ export class SettingsState extends TextualGameState {
             }
 
             html += setting.getHtml();
-        }
-        if (globalConfig.debug.showDebugSettings) {
-            for (let i = 0; i < allDebugSettings.length; ++i) {
-                const setting = allDebugSettings[i];
-
-                if (setting.categoryId !== lastCategory) {
-                    lastCategory = setting.categoryId;
-                    if (i !== 0) {
-                        html += "</div>";
-                    }
-                    html += `<strong class="categoryLabel">${T.settings.categories[lastCategory]}</strong>`;
-                    html += "<div class='settingsContainer'>";
-                }
-
-                html += setting.getHtml();
-            }
         }
         if (lastCategory) {
             html += "</div>";
