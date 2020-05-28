@@ -49,17 +49,35 @@ function stringPolyfills() {
 }
 
 function objectPolyfills() {
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
-    // @ts-ignore
-    if (!Object.entries) {
-        // @ts-ignore
-        Object.entries = function (obj) {
-            var ownProps = Object.keys(obj),
-                i = ownProps.length,
-                resArray = new Array(i); // preallocate the Array
-            while (i--) resArray[i] = [ownProps[i], obj[ownProps[i]]];
+    // https://github.com/tc39/proposal-object-values-entries/blob/master/polyfill.js
 
-            return resArray;
+    // @ts-ignore
+    const reduce = Function.bind.call(Function.call, Array.prototype.reduce);
+    // @ts-ignore
+    const isEnumerable = Function.bind.call(Function.call, Object.prototype.propertyIsEnumerable);
+    // @ts-ignore
+    const concat = Function.bind.call(Function.call, Array.prototype.concat);
+    const keys = Reflect.ownKeys;
+
+    // @ts-ignore
+    if (!Object.values) {
+        // @ts-ignore
+        Object.values = function values(O) {
+            return reduce(
+                keys(O),
+                (v, k) => concat(v, typeof k === "string" && isEnumerable(O, k) ? [O[k]] : []),
+                []
+            );
+        };
+    }
+
+    if (!Object.entries) {
+        Object.entries = function entries(O) {
+            return reduce(
+                keys(O),
+                (e, k) => concat(e, typeof k === "string" && isEnumerable(O, k) ? [[k, O[k]]] : []),
+                []
+            );
         };
     }
 }

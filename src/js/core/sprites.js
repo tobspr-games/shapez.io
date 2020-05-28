@@ -86,7 +86,6 @@ export class AtlasSprite extends BaseSprite {
         if (G_IS_DEV) {
             assert(context instanceof CanvasRenderingContext2D, "Not a valid context");
         }
-        console.warn("drawing sprite regulary");
 
         const link = this.linksByResolution[ORIGINAL_SCALE];
 

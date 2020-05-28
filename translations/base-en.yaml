@@ -61,8 +61,8 @@ demoBanners:
     intro: >-
         If you enjoy this game, please consider buying the full version!
     advantages:
-        - No advertisements
         - Unlimited savegames
+        - Waypoints
         - Dark mode & more
         - >-
             Allow me to further develop shapez.io ❤️
@@ -78,6 +78,9 @@ mainMenu:
     browserWarning: >-
         Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
 
+    savegameLevel: Level <x>
+    savegameLevelUnknown: Unknown Level
+
 dialogs:
     buttons:
         ok: OK
@@ -90,6 +93,7 @@ dialogs:
         deleteGame: I know what I do
         viewUpdate: View Update
         showUpgrades: Show Upgrades
+        showKeybindings: Show Keybindings
 
     importSavegameError:
         title: Import Error
@@ -177,11 +181,28 @@ dialogs:
         desc: >-
             You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
 
+    blueprintsNotUnlocked:
+        title: Not unlocked yet
+        desc: >-
+            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+
+    keybindingsIntroduction:
+        title: Useful keybindings
+        desc: >-
+            This game has a lot of keybindings which make it easier to build big factories.
+            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
+            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
+            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+
+    createMarker:
+        title: New Marker
+        desc: Give it a meaningful name
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        centerMap: Center
         moveMap: Move
         removeBuildings: Delete
         stopPlacement: Stop placement
@@ -191,6 +212,7 @@ ingame:
         disableAutoOrientation: Disable auto orientation
         toggleHud: Toggle HUD
         placeBuilding: Place building
+        createMarker: Create Marker
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -279,6 +301,16 @@ ingame:
         title: Need help?
         showHint: Show hint
         hideHint: Close
+
+    # When placing a blueprint
+    blueprintPlacer:
+        cost: Cost
+
+    waypoints:
+        waypoints: Markers
+        hub: HUB
+        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        creationSuccessNotification: Marker has been created.
 
 # All shop upgrades
 shopUpgrades:
@@ -452,6 +484,10 @@ storyRewards:
         title: Freeplay
         desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
 
+    reward_blueprints:
+        title: Blueprints
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: Next level
@@ -512,9 +548,9 @@ settings:
                 If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
 
         offerHints:
-            title: Hints
+            title: Hints & Tutorials
             description: >-
-                Whether to show the 'Show hints' button in the lower left.
+                Whether to offer hints and tutorials while playing.
 
 keybindings:
     title: Keybindings
@@ -538,8 +574,6 @@ keybindings:
         mapMoveRight: Move Right
         mapMoveDown: Move Down
         mapMoveLeft: Move Left
-
-        centerMap: Center Map
 
         mapZoomIn: Zoom in
         mapZoomOut: Zoom out
@@ -574,7 +608,7 @@ keybindings:
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic orientation
+        placeInverse: Invert automatic belt orientation
 
 about:
     title: About this Game
@@ -588,5 +622,6 @@ demo:
         importingGames: Importing savegames
         oneGameLimit: Limited to one savegame
         customizeKeybindings: Customizing Keybindings
+        creatingMarkers: Create custom markers
 
     settingNotAvailable: Not available in the demo.

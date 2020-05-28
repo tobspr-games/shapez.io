@@ -1,0 +1,67 @@
+#ingame_HUD_Waypoints_Hint {
+    position: absolute;
+    @include S(right, 10px);
+    @include S(bottom, 100px);
+
+    display: flex;
+    flex-direction: column;
+
+    @include PlainText;
+    @include S(width, 150px);
+    background: rgba(0, 10, 20, 0.5);
+    @include S(padding, 5px);
+
+    color: #eee;
+
+    .desc {
+        @include SuperSmallText;
+        color: #babcbf;
+        .keybinding {
+            position: relative;
+        }
+
+        strong {
+            color: #fff;
+        }
+    }
+}
+
+#ingame_HUD_Waypoints {
+    position: absolute;
+    @include S(right, 10px);
+    @include S(top, 60px);
+    display: flex;
+    flex-direction: column;
+    @include DarkThemeInvert();
+
+    .waypoint {
+        @include SuperSmallText;
+        pointer-events: all;
+        cursor: pointer;
+        color: #000;
+        @include S(padding-left, 11px);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        background: uiResource("icons/waypoint.png") left 50% / #{D(8px)} no-repeat;
+        opacity: 0.5;
+        @include S(margin-bottom, 1px);
+        font-weight: bold;
+        &:hover {
+            opacity: 1;
+        }
+
+        .deleteButton {
+            @include S(width, 10px);
+            @include S(height, 10px);
+            @include S(margin-left, 4px);
+            background: uiResource("icons/close.png") center center / 60% no-repeat;
+            pointer-events: all;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.5);
+            }
+        }
+    }
+}

@@ -385,6 +385,8 @@ export class DialogWithForm extends Dialog {
         });
         this.confirmButtonId = confirmButton.split(":")[0];
         this.formElements = formElements;
+
+        this.enterHandler = "ok";
     }
 
     internalButtonHandler(id, ...payload) {

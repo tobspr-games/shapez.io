@@ -38,6 +38,8 @@ export class SavegameSerializer {
             map: root.map.serialize(),
             entityMgr: root.entityMgr.serialize(),
             hubGoals: root.hubGoals.serialize(),
+            pinnedShapes: root.hud.parts.pinnedShapes.serialize(),
+            waypoints: root.hud.parts.waypoints.serialize(),
         };
 
         data.entities = this.internal.serializeEntityArray(root.entityMgr.entities);
@@ -118,7 +120,7 @@ export class SavegameSerializer {
 
     /**
      * Tries to load the savegame from a given dump
-     * @param {SerializedGame} savegame
+     * @param {import("./savegame_typedefs").SerializedGame} savegame
      * @param {GameRoot} root
      * @returns {ExplainedResult}
      */
@@ -135,6 +137,8 @@ export class SavegameSerializer {
         errorReason = errorReason || root.camera.deserialize(savegame.camera);
         errorReason = errorReason || root.map.deserialize(savegame.map);
         errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals);
+        errorReason = errorReason || root.hud.parts.pinnedShapes.deserialize(savegame.pinnedShapes);
+        errorReason = errorReason || root.hud.parts.waypoints.deserialize(savegame.waypoints);
         errorReason = errorReason || this.internal.deserializeEntityArray(root, savegame.entities);
 
         // Check for errors
@@ -143,48 +147,5 @@ export class SavegameSerializer {
         }
 
         return ExplainedResult.good();
-    }
-
-    /////////// MIGRATION HELPERS ///////////
-
-    /**
-     * Performs a function on each component (useful to add / remove / alter properties for migration)
-     * @param {SerializedGame} savegame
-     * @param {typeof Component} componentHandle
-     * @param {function} modifier
-     */
-    migration_migrateComponent(savegame, componentHandle, modifier) {
-        const targetId = componentHandle.getId();
-        for (const entityListId in savegame.entities) {
-            for (let i = 0; i < savegame.entities[entityListId].length; ++i) {
-                const list = savegame.entities[entityListId][i];
-                for (let k = 0; k < list.length; ++k) {
-                    const entity = list[k];
-                    const components = entity.components;
-                    if (components[targetId]) {
-                        modifier(components[targetId]);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Performs an operation on each object which is a PooledObject (usually Projectiles). Useful to
-     * perform migrations
-     * @param {Array<any>} pools
-     * @param {string} targetClassKey
-     * @param {function} modifier
-     */
-    migration_migrateGenericObjectPool(pools, targetClassKey, modifier) {
-        for (let i = 0; i < pools.length; ++i) {
-            const pool = pools[i];
-            if (pool.key === targetClassKey) {
-                const entries = pool.data.entries;
-                for (const uid in entries) {
-                    modifier(entries[uid]);
-                }
-            }
-        }
     }
 }

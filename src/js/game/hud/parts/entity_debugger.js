@@ -26,6 +26,9 @@ export class HUDEntityDebugger extends BaseHUDPart {
 
     update() {
         const mousePos = this.root.app.mousePosition;
+        if (!mousePos) {
+            return;
+        }
         const worldPos = this.root.camera.screenToWorld(mousePos);
         const worldTile = worldPos.toTileSpace();
 

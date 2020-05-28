@@ -63,9 +63,7 @@ export class Savegame extends ReadWriteProxy {
         return {
             version: this.getCurrentVersion(),
             dump: null,
-            stats: {
-                buildingsPlaced: 0,
-            },
+            stats: {},
             lastUpdate: Date.now(),
         };
     }
@@ -79,7 +77,6 @@ export class Savegame extends ReadWriteProxy {
             return ExplainedResult.bad("Can not migrate savegame, too old");
         }
 
-        console.log("TODO: Migrate from", data.version);
         if (data.version === 1000) {
             SavegameInterface_V1001.migrate1000to1001(data);
             data.version = 1001;
@@ -222,6 +219,12 @@ export class Savegame extends ReadWriteProxy {
     saveMetadata() {
         this.metaDataRef.lastUpdate = new Date().getTime();
         this.metaDataRef.version = this.getCurrentVersion();
+        if (!this.hasGameDump()) {
+            this.metaDataRef.level = 0;
+        } else {
+            this.metaDataRef.level = this.currentData.dump.hubGoals.level;
+        }
+
         return this.app.savegameMgr.writeAsync();
     }
 

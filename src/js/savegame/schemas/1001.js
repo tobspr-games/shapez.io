@@ -1,5 +1,6 @@
 import { SavegameInterface_V1000 } from "./1000.js";
 import { createLogger } from "../../core/logging.js";
+import { T } from "../../translations.js";
 
 const schema = require("./1001.json");
 
@@ -23,6 +24,20 @@ export class SavegameInterface_V1001 extends SavegameInterface_V1000 {
         if (!dump) {
             return true;
         }
+
+        dump.pinnedShapes = {
+            shapes: [],
+        };
+        dump.waypoints = {
+            waypoints: [
+                {
+                    label: T.ingame.waypoints.hub,
+                    center: { x: 0, y: 0 },
+                    zoomLevel: 3,
+                    deletable: false,
+                },
+            ],
+        };
 
         const entities = dump.entities;
         for (let i = 0; i < entities.length; ++i) {

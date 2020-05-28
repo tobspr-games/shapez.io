@@ -89,9 +89,10 @@ export class HUDUnlockNotification extends BaseHUDPart {
             clearTimeout(this.buttonShowTimeout);
         }
 
+        this.element.querySelector("button.close").classList.remove("unlocked");
         this.buttonShowTimeout = setTimeout(
             () => this.element.querySelector("button.close").classList.add("unlocked"),
-            G_IS_DEV ? 1000 : 10000
+            G_IS_DEV ? 100 : 10000
         );
     }
 
@@ -106,6 +107,11 @@ export class HUDUnlockNotification extends BaseHUDPart {
     requestClose() {
         this.root.app.adProvider.showVideoAd().then(() => {
             this.close();
+
+            if (!this.root.app.settings.getAllSettings().offerHints) {
+                return;
+            }
+
             if (this.root.hubGoals.level === 3) {
                 const { showUpgrades } = this.root.hud.parts.dialogs.showInfo(
                     T.dialogs.upgradesIntroduction.title,
@@ -113,6 +119,15 @@ export class HUDUnlockNotification extends BaseHUDPart {
                     ["showUpgrades:good:timeout"]
                 );
                 showUpgrades.add(() => this.root.hud.parts.shop.show());
+            }
+
+            if (this.root.hubGoals.level === 5) {
+                const { showKeybindings } = this.root.hud.parts.dialogs.showInfo(
+                    T.dialogs.keybindingsIntroduction.title,
+                    T.dialogs.keybindingsIntroduction.desc,
+                    ["showKeybindings:misc", "ok:good:timeout"]
+                );
+                showKeybindings.add(() => this.root.gameState.goToKeybindings());
             }
         });
     }

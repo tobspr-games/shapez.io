@@ -24,6 +24,7 @@ export const enumHubGoalRewards = {
     reward_sorter: "reward_sorter",
     reward_painter_quad: "reward_painter_quad",
 
+    reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
 
     no_reward: "no_reward",
@@ -35,7 +36,7 @@ export const tutorialGoals = [
     // Circle
     {
         shape: "CuCuCuCu", // belts t1
-        required: 35,
+        required: 20,
         reward: enumHubGoalRewards.reward_cutter_and_trash,
     },
 
@@ -43,7 +44,7 @@ export const tutorialGoals = [
     // Cutter
     {
         shape: "----CuCu", //
-        required: 50,
+        required: 40,
         reward: enumHubGoalRewards.no_reward,
     },
 
@@ -58,7 +59,7 @@ export const tutorialGoals = [
     // 4
     {
         shape: "RuRu----", // processors t2
-        required: 150,
+        required: 120,
         reward: enumHubGoalRewards.reward_rotater,
     },
 
@@ -66,14 +67,14 @@ export const tutorialGoals = [
     // Rotater
     {
         shape: "Cu----Cu", // belts t2
-        required: 300,
+        required: 200,
         reward: enumHubGoalRewards.reward_tunnel,
     },
 
     // 6
     {
         shape: "Cu------", // miners t2
-        required: 700,
+        required: 400,
         reward: enumHubGoalRewards.reward_painter,
     },
 
@@ -81,14 +82,14 @@ export const tutorialGoals = [
     // Painter
     {
         shape: "CrCrCrCr", // unused
-        required: 1300,
+        required: 800,
         reward: enumHubGoalRewards.reward_rotater_ccw,
     },
 
     // 8
     {
         shape: "RbRb----", // painter t2
-        required: 2500,
+        required: 1250,
         reward: enumHubGoalRewards.reward_mixer,
     },
 
@@ -96,7 +97,7 @@ export const tutorialGoals = [
     // Mixing (purple)
     {
         shape: "CpCpCpCp", // belts t3
-        required: 4000,
+        required: 1750,
         reward: enumHubGoalRewards.reward_splitter_compact,
     },
 
@@ -104,7 +105,7 @@ export const tutorialGoals = [
     // Star shape + cyan
     {
         shape: "ScScScSc", // miners t3
-        required: 5000,
+        required: 2250,
         reward: enumHubGoalRewards.reward_stacker,
     },
 
@@ -112,49 +113,57 @@ export const tutorialGoals = [
     // Stacker
     {
         shape: "CgScScCg", // processors t3
-        required: 6000,
+        required: 3000,
         reward: enumHubGoalRewards.reward_miner_chainable,
     },
 
     // 12
+    // Blueprints
     {
-        shape: "RpRpRpRp:CwCwCwCw", // painting t3
-        required: 7000,
-        reward: enumHubGoalRewards.reward_underground_belt_tier_2,
+        shape: "CbCbCbRb:CwCwCwCw",
+        required: 4000,
+        reward: enumHubGoalRewards.reward_blueprints,
     },
 
     // 13
     {
-        shape: "SrSrSrSr:CyCyCyCy", // unused
-        required: 7850,
-        reward: enumHubGoalRewards.reward_storage,
+        shape: "RpRpRpRp:CwCwCwCw", // painting t3
+        required: 12000,
+        reward: enumHubGoalRewards.reward_underground_belt_tier_2,
     },
 
     // 14
     {
-        shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
-        required: 8000,
-        reward: enumHubGoalRewards.reward_cutter_quad,
+        shape: "SrSrSrSr:CyCyCyCy", // unused
+        required: 16000,
+        reward: enumHubGoalRewards.reward_storage,
     },
 
     // 15
     {
-        shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
-        required: 9000,
-        reward: enumHubGoalRewards.reward_painter_double,
+        shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
+        required: 25000,
+        reward: enumHubGoalRewards.reward_cutter_quad,
     },
 
     // 16
     {
-        shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two varinats)
-        required: 10000,
-        reward: enumHubGoalRewards.reward_painter_quad,
+        shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
+        required: 50000,
+        reward: enumHubGoalRewards.reward_painter_double,
     },
 
     // 17
     {
+        shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two varinats)
+        required: 100000,
+        reward: enumHubGoalRewards.reward_painter_quad,
+    },
+
+    // 18
+    {
         shape: finalGameShape,
-        required: 50000,
+        required: 250000,
         reward: enumHubGoalRewards.reward_freeplay,
     },
 ];

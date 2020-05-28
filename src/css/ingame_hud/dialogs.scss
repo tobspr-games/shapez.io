@@ -121,6 +121,24 @@
             > strong {
                 font-weight: bold;
             }
+
+            .keybinding {
+                position: relative;
+                background: #eee;
+                @include PlainText;
+                height: unset;
+                margin: 1px 0;
+            }
+
+            input {
+                background: #eee;
+                color: #333438;
+                width: 100%;
+
+                &.errored {
+                    background-color: rgb(250, 206, 206);
+                }
+            }
         }
 
         > .buttons {

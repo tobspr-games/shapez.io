@@ -4,7 +4,11 @@
         "background": "#2e2f37",
         "grid": "rgba(255, 255, 255, 0.02)",
         "gridLineWidth": 0.5,
-        "selectionColor": "rgba(127, 127, 255, 0.5)",
+
+        "selectionOverlay": "rgba(74, 163, 223, 0.7)",
+        "selectionOutline": "rgba(74, 163, 223, 0.5)",
+        "selectionBackground": "rgba(74, 163, 223, 0.2)",
+
         "resources": {
             "shape": "#3d3f4a",
             "red": "#4a3d3f",

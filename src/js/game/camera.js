@@ -100,7 +100,7 @@ export class Camera extends BasicSerializableObject {
         this.bindKeys();
         if (G_IS_DEV) {
             window.addEventListener("keydown", ev => {
-                if (ev.key === "l") {
+                if (ev.key === "i") {
                     this.zoomLevel = 3;
                 }
             });
@@ -145,6 +145,14 @@ export class Camera extends BasicSerializableObject {
     setDesiredCenter(center) {
         this.desiredCenter = center.copy();
         this.currentlyMoving = false;
+    }
+
+    /**
+     * Sets a desired zoom level
+     * @param {number} zoom
+     */
+    setDesiredZoom(zoom) {
+        this.desiredZoom = zoom;
     }
 
     /**
@@ -337,15 +345,15 @@ export class Camera extends BasicSerializableObject {
      */
     bindKeys() {
         const mapper = this.root.keyMapper;
-        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).add(() => (this.keyboardForce.y = -1));
+        mapper
+            .getBinding(KEYMAPPINGS.ingame.mapMoveUp)
+            .add(() => console.log("move up") || (this.keyboardForce.y = -1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).add(() => (this.keyboardForce.y = 1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).add(() => (this.keyboardForce.x = 1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).add(() => (this.keyboardForce.x = -1));
 
         mapper.getBinding(KEYMAPPINGS.ingame.mapZoomIn).add(() => (this.desiredZoom = this.zoomLevel * 1.2));
         mapper.getBinding(KEYMAPPINGS.ingame.mapZoomOut).add(() => (this.desiredZoom = this.zoomLevel * 0.8));
-
-        mapper.getBinding(KEYMAPPINGS.ingame.centerMap).add(() => this.centerOnMap());
     }
 
     centerOnMap() {
@@ -873,19 +881,19 @@ export class Camera extends BasicSerializableObject {
             let forceY = 0;
 
             const actionMapper = this.root.keyMapper;
-            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).isCurrentlyPressed()) {
                 forceY -= 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).isCurrentlyPressed()) {
                 forceY += 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).isCurrentlyPressed()) {
                 forceX -= 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).currentlyDown) {
+            if (actionMapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).isCurrentlyPressed()) {
                 forceX += 1;
             }
 

@@ -6,6 +6,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    color: #fff;
+    text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.1);
 
     > .binding {
         display: inline-grid;
@@ -20,7 +22,7 @@
             @include S(height, 10px);
             width: 1px;
             @include S(margin, 0, 3px);
-            background-color: #888;
+            background-color: #fff;
             transform: rotate(10deg);
             // @include S(margin, 0, 3px);
         }
@@ -43,9 +45,7 @@
             color: $accentColorDark;
             @include SuperSmallText;
             text-transform: uppercase;
-            // font-weight: bold;
             color: #fff;
-            text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.1);
 
             @include S(margin-left, 5px);
         }

@@ -2,6 +2,7 @@ import { findNiceIntegerValue } from "../core/utils";
 import { ShapeDefinition } from "./shape_definition";
 
 export const finalGameShape = "RuCw--Cw:----Ru--";
+export const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
 export const UPGRADES = {
     belt: {
@@ -97,12 +98,12 @@ export const UPGRADES = {
     painting: {
         tiers: [
             {
-                required: [{ shape: "WrWrWrWr", amount: 500 }],
-                improvement: 1,
+                required: [{ shape: "RbRb----", amount: 1500 }],
+                improvement: 2,
             },
             {
-                required: [{ shape: "RbRb----", amount: 4000 }],
-                improvement: 2,
+                required: [{ shape: "WrWrWrWr", amount: 5000 }],
+                improvement: 1,
             },
             {
                 required: [{ shape: "RpRpRpRp:CwCwCwCw", amount: 30000 }],

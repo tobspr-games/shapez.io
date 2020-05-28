@@ -25,8 +25,6 @@ export const KEYMAPPINGS = {
         mapMoveDown: { keyCode: key("S") },
         mapMoveLeft: { keyCode: key("A") },
 
-        centerMap: { keyCode: 32 },
-
         menuOpenShop: { keyCode: key("F") },
         menuOpenStats: { keyCode: key("G") },
 
@@ -35,6 +33,8 @@ export const KEYMAPPINGS = {
 
         mapZoomIn: { keyCode: 187, repeated: true }, // "+"
         mapZoomOut: { keyCode: 189, repeated: true }, // "-"
+
+        createMarker: { keyCode: key("M") },
     },
 
     buildings: {
@@ -223,23 +223,35 @@ export function getStringForKeyCode(code) {
 export class Keybinding {
     /**
      *
+     * @param {KeyActionMapper} keyMapper
      * @param {Application} app
      * @param {object} param0
      * @param {number} param0.keyCode
      * @param {boolean=} param0.builtin
      * @param {boolean=} param0.repeated
      */
-    constructor(app, { keyCode, builtin = false, repeated = false }) {
+    constructor(keyMapper, app, { keyCode, builtin = false, repeated = false }) {
         assert(keyCode && Number.isInteger(keyCode), "Invalid key code: " + keyCode);
+        this.keyMapper = keyMapper;
         this.app = app;
         this.keyCode = keyCode;
         this.builtin = builtin;
         this.repeated = repeated;
 
-        this.currentlyDown = false;
-
         this.signal = new Signal();
         this.toggled = new Signal();
+    }
+
+    /**
+     * Returns whether this binding is currently pressed
+     */
+    isCurrentlyPressed() {
+        // Check if the key is down
+        if (this.app.inputMgr.keysDown.has(this.keyCode)) {
+            // Check if it is the top reciever
+            const reciever = this.keyMapper.inputReceiver;
+            return this.app.inputMgr.getTopReciever() === reciever;
+        }
     }
 
     /**
@@ -289,6 +301,8 @@ export class KeyActionMapper {
      */
     constructor(root, inputReciever) {
         this.root = root;
+        this.inputReceiver = inputReciever;
+
         inputReciever.keydown.add(this.handleKeydown, this);
         inputReciever.keyup.add(this.handleKeyup, this);
 
@@ -304,7 +318,7 @@ export class KeyActionMapper {
                     payload.keyCode = overrides[key];
                 }
 
-                this.keybindings[key] = new Keybinding(this.root.app, payload);
+                this.keybindings[key] = new Keybinding(this, this.root.app, payload);
             }
         }
 
@@ -351,7 +365,6 @@ export class KeyActionMapper {
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            binding.currentlyDown = false;
         }
     }
 
@@ -361,17 +374,16 @@ export class KeyActionMapper {
      * @param {number} param0.keyCode
      * @param {boolean} param0.shift
      * @param {boolean} param0.alt
+     * @param {boolean=} param0.initial
      */
-    handleKeydown({ keyCode, shift, alt }) {
+    handleKeydown({ keyCode, shift, alt, initial }) {
         let stop = false;
 
         // Find mapping
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode && (!binding.currentlyDown || binding.repeated)) {
-                binding.currentlyDown = true;
-
+            if (binding.keyCode === keyCode && (initial || binding.repeated)) {
                 /** @type {Signal} */
                 const signal = this.keybindings[key].signal;
                 if (signal.dispatch() === STOP_PROPAGATION) {
@@ -393,13 +405,7 @@ export class KeyActionMapper {
      * @param {boolean} param0.alt
      */
     handleKeyup({ keyCode, shift, alt }) {
-        for (const key in this.keybindings) {
-            /** @type {Keybinding} */
-            const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode) {
-                binding.currentlyDown = false;
-            }
-        }
+        // Empty
     }
 
     /**
