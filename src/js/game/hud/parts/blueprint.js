@@ -4,6 +4,9 @@ import { createLogger } from "../../../core/logging";
 import { Vector } from "../../../core/vector";
 import { Entity } from "../../entity";
 import { GameRoot } from "../../root";
+import { findNiceIntegerValue } from "../../../core/utils";
+import { Math_pow } from "../../../core/builtins";
+import { blueprintShape } from "../../upgrades";
 
 const logger = createLogger("blueprint");
 
@@ -45,6 +48,13 @@ export class Blueprint {
 
         // Now, make sure the origin is 0,0
         return new Blueprint(newEntities);
+    }
+
+    /**
+     * Returns the cost of this blueprint in shapes
+     */
+    getCost() {
+        return findNiceIntegerValue(4 * Math_pow(this.entities.length, 1.1));
     }
 
     /**
@@ -145,6 +155,13 @@ export class Blueprint {
         }
 
         return anyPlaceable;
+    }
+
+    /**
+     * @param {GameRoot} root
+     */
+    canAfford(root) {
+        return root.hubGoals.getShapesStoredByKey(blueprintShape) >= this.getCost();
     }
 
     /**

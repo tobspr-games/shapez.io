@@ -1,0 +1,39 @@
+#ingame_HUD_BlueprintPlacer {
+    position: absolute;
+    @include S(top, 50px);
+    left: 50%;
+    transform: translateX(-50%);
+    color: #333;
+    z-index: 9999;
+    background: rgba(0, 10, 20, 0.5);
+    @include S(padding, 5px);
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    @include S(width, 120px);
+    align-items: center;
+    justify-content: center;
+
+    .label {
+        @include PlainText;
+        text-transform: uppercase;
+    }
+    .costContainer {
+        display: flex;
+        align-items: center;
+        @include Heading;
+
+        > canvas {
+            @include S(margin-left, 5px);
+            @include S(width, 30px);
+            @include S(height, 30px);
+        }
+    }
+
+    &:not(.canAfford) {
+        background: rgba(98, 27, 41, 0.8);
+        // .costContainer {
+        color: rgb(255, 97, 128);
+        // }
+    }
+}

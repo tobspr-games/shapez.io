@@ -77,7 +77,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
         this.internalPinShape(currentKey, currentGoal.required, false);
 
         if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
-            this.internalPinShape(blueprintShape, currentGoal.required, false);
+            this.internalPinShape(blueprintShape, null, false);
         }
 
         for (let i = 0; i < this.pinnedShapes.length; ++i) {
@@ -114,7 +114,10 @@ export class HUDPinnedShapes extends BaseHUDPart {
         }
 
         const amountLabel = makeDiv(element, null, ["amountLabel"], "");
-        const goalLabel = makeDiv(element, null, ["goalLabel"], "/" + formatBigNumber(goal));
+
+        if (goal) {
+            makeDiv(element, null, ["goalLabel"], "/" + formatBigNumber(goal));
+        }
 
         this.handles.push({
             key,
