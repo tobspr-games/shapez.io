@@ -9,6 +9,7 @@
     "scripts": {
         "dev": "./gulp/gulp main.serveDev",
         "tslint": "cd src/js && tsc",
+        "lint": "npx eslint src/js",
         "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*",
         "publishOnItch": "butler push tmp_standalone_files/shapez.io-standalone-win32-x64 tobspr/shapezio:windows --userversion-file version"
     },

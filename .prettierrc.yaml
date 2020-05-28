@@ -8,4 +8,4 @@ useTabs: false
 quoteProps: "consistent"
 bracketSpacing: true
 arrowParens: avoid
-endOfLine: "lf"
+endOfLine: auto
