@@ -1,3 +1,4 @@
+yarn
 cd gulp
-yarn gulp
+yarn
 exit
