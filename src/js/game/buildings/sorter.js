@@ -16,7 +16,7 @@ export class MetaSorterBuilding extends MetaBuilding {
     }
 
     getDimensions() {
-        return new Vector(2, 1);
+        return new Vector(1, 1);
     }
 
     getSilhouetteColor() {
@@ -26,9 +26,9 @@ export class MetaSorterBuilding extends MetaBuilding {
     /**
      * @param {GameRoot} root
      */
-    getIsUnlocked(root) {
-        return true; //root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_sorter);
-    }
+    /*getIsUnlocked(root) {
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_sorter);
+    }*/
 
     /**
      * @param {GameRoot} root
