@@ -93,6 +93,7 @@ dialogs:
         deleteGame: I know what I do
         viewUpdate: View Update
         showUpgrades: Show Upgrades
+        showKeybindings: Show Keybindings
 
     importSavegameError:
         title: Import Error
@@ -184,6 +185,15 @@ dialogs:
         title: Not unlocked yet
         desc: >-
             Blueprints have not been unlocked yet! Complete more levels to unlock them.
+
+    keybindingsIntroduction:
+        title: Useful keybindings
+        desc: >-
+            This game has a lot of keybindings which make it easier to build big factories.
+            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
+            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
+            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -581,7 +591,7 @@ keybindings:
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic orientation
+        placeInverse: Invert automatic belt orientation
 
 about:
     title: About this Game

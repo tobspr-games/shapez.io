@@ -155,6 +155,16 @@ export class InGameState extends GameState {
     }
 
     /**
+     * Goes back to the settings state
+     */
+    goToKeybindings() {
+        this.saveThenGoToState("KeybindingsState", {
+            backToStateId: this.key,
+            backToStatePayload: this.creationPayload,
+        });
+    }
+
+    /**
      * Moves to a state outside of the game
      * @param {string} stateId
      * @param {any=} payload

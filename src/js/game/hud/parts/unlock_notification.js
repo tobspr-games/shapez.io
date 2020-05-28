@@ -115,6 +115,15 @@ export class HUDUnlockNotification extends BaseHUDPart {
                 );
                 showUpgrades.add(() => this.root.hud.parts.shop.show());
             }
+
+            if (this.root.hubGoals.level === 5) {
+                const { showKeybindings } = this.root.hud.parts.dialogs.showInfo(
+                    T.dialogs.keybindingsIntroduction.title,
+                    T.dialogs.keybindingsIntroduction.desc,
+                    ["showKeybindings:misc", "ok:good:timeout"]
+                );
+                showKeybindings.add(() => this.root.gameState.goToKeybindings());
+            }
         });
     }
 
