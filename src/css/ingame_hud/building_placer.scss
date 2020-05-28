@@ -94,6 +94,7 @@
         .keybinding {
             position: relative;
         }
+        font-weight: bold !important;
 
         @include DarkThemeOverride {
             color: rgba(#fff, 0.5);

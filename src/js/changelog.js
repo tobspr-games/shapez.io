@@ -4,6 +4,7 @@ export const CHANGELOG = [
         date: "unreleased",
         entries: [
             "BLUEPRINTS! They are unlocked at level 12 and cost a special shape to build.",
+            "MAP MARKERS! Press 'M' to create a waypoint and be able to jump to it",
             "Savegame levels are now shown in the main menu. For existing games, save them again to make the level show up.",
             "Allow holding SHIFT to rotate counter clockwise",
             "Added confirmation when deleting more than 500 buildings at a time",
@@ -13,6 +14,7 @@ export const CHANGELOG = [
             "Allow placing extractors anywhere again, but they don't work at all if not placed on a resource",
             "Show dialog explaining some keybindings after completing level 4",
             "Fix keys being stuck when opening a dialog",
+            "Swapped shape order for painting upgrades",
             "Allow changing all keybindings, including CTRL, ALT and SHIFT (by Dimava)",
             "Fix cycling through keybindings selecting locked buildings as well (by Dimava)",
             "There is now a github action, checking all pull requests with eslint. (by mrHedgehog)",

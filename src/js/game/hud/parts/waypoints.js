@@ -1,27 +1,34 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv, arrayDelete, arrayDeleteValue, lerp } from "../../../core/utils";
-import { Vector } from "../../../core/vector";
+import { makeOffscreenBuffer } from "../../../core/buffer_utils";
+import { Math_max } from "../../../core/builtins";
+import { globalConfig, IS_DEMO } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { Loader } from "../../../core/loader";
-import { T } from "../../../translations";
-import { Rectangle } from "../../../core/rectangle";
-import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { enumMouseButton } from "../../camera";
-import { STOP_PROPAGATION } from "../../../core/signal";
-import { KEYMAPPINGS } from "../../key_action_mapper";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { IS_DEMO, globalConfig } from "../../../core/config";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
 import { FormElementInput } from "../../../core/modal_dialog_forms";
-import { Math_max } from "../../../core/builtins";
+import { Rectangle } from "../../../core/rectangle";
+import { STOP_PROPAGATION } from "../../../core/signal";
+import { arrayDeleteValue, lerp, makeDiv, removeAllChildren } from "../../../core/utils";
+import { Vector } from "../../../core/vector";
+import { T } from "../../../translations";
+import { enumMouseButton } from "../../camera";
+import { KEYMAPPINGS } from "../../key_action_mapper";
+import { BaseHUDPart } from "../base_hud_part";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumNotificationType } from "./notifications";
+
+/** @typedef {{
+ *   label: string,
+ *   center: { x: number, y: number },
+ *   zoomLevel: number,
+ *   deletable: boolean
+ * }} Waypoint */
 
 export class HUDWaypoints extends BaseHUDPart {
     createElements(parent) {
         if (this.root.app.settings.getAllSettings().offerHints) {
-            this.element = makeDiv(
+            this.hintElement = makeDiv(
                 parent,
-                "ingame_HUD_Waypoints",
+                "ingame_HUD_Waypoints_Hint",
                 [],
                 `
             <strong class='title'>${T.ingame.waypoints.waypoints}</strong>
@@ -36,6 +43,8 @@ export class HUDWaypoints extends BaseHUDPart {
         }
 
         this.waypointSprite = Loader.getSprite("sprites/misc/waypoint.png");
+
+        this.waypointsListElement = makeDiv(parent, "ingame_HUD_Waypoints", [], "Waypoints");
     }
 
     serialize() {
@@ -49,15 +58,48 @@ export class HUDWaypoints extends BaseHUDPart {
             return "Invalid waypoints data";
         }
         this.waypoints = data.waypoints;
+        this.rerenderWaypointList();
+    }
+
+    rerenderWaypointList() {
+        removeAllChildren(this.waypointsListElement);
+        this.cleanupClickDetectors();
+
+        for (let i = 0; i < this.waypoints.length; ++i) {
+            const waypoint = this.waypoints[i];
+
+            const element = makeDiv(this.waypointsListElement, null, ["waypoint"]);
+            element.innerText = waypoint.label;
+
+            if (waypoint.deletable) {
+                const deleteButton = makeDiv(element, null, ["deleteButton"]);
+                this.trackClicks(deleteButton, () => this.deleteWaypoint(waypoint));
+            }
+
+            this.trackClicks(element, () => this.moveToWaypoint(waypoint), {
+                targetOnly: true,
+            });
+        }
+    }
+
+    /**
+     * @param {Waypoint} waypoint
+     */
+    moveToWaypoint(waypoint) {
+        this.root.camera.setDesiredCenter(new Vector(waypoint.center.x, waypoint.center.y));
+        this.root.camera.setDesiredZoom(waypoint.zoomLevel);
+    }
+
+    /**
+     * @param {Waypoint} waypoint
+     */
+    deleteWaypoint(waypoint) {
+        arrayDeleteValue(this.waypoints, waypoint);
+        this.rerenderWaypointList();
     }
 
     initialize() {
-        /** @type {Array<{
-         *   label: string,
-         *   center: { x: number, y: number },
-         *   zoomLevel: number,
-         *   deletable: boolean
-         * }>}
+        /** @type {Array<Waypoint>}
          */
         this.waypoints = [
             {
@@ -74,7 +116,7 @@ export class HUDWaypoints extends BaseHUDPart {
         })[1];
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
-        this.domAttach = new DynamicDomAttach(this.root, this.element);
+        this.domAttach = new DynamicDomAttach(this.root, this.hintElement);
 
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.createMarker).add(this.requestCreateMarker, this);
 
@@ -82,7 +124,6 @@ export class HUDWaypoints extends BaseHUDPart {
     }
 
     /**
-     *
      * @param {Vector=} worldPos Override the world pos, otherwise it is the camera position
      */
     requestCreateMarker(worldPos = null) {
@@ -116,10 +157,12 @@ export class HUDWaypoints extends BaseHUDPart {
                 zoomLevel: Math_max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
                 deletable: true,
             });
+            this.waypoints.sort((a, b) => a.label.padStart(20, "0").localeCompare(b.label.padStart(20, "0")));
             this.root.hud.signals.notification.dispatch(
                 T.ingame.waypoints.creationSuccessNotification,
                 enumNotificationType.success
             );
+            this.rerenderWaypointList();
         });
     }
 
@@ -168,12 +211,11 @@ export class HUDWaypoints extends BaseHUDPart {
         if (waypoint) {
             if (button === enumMouseButton.left) {
                 this.root.soundProxy.playUiClick();
-                this.root.camera.setDesiredCenter(new Vector(waypoint.center.x, waypoint.center.y));
-                this.root.camera.setDesiredZoom(waypoint.zoomLevel);
+                this.moveToWaypoint(waypoint);
             } else if (button === enumMouseButton.right) {
                 if (waypoint.deletable) {
                     this.root.soundProxy.playUiClick();
-                    arrayDeleteValue(this.waypoints, waypoint);
+                    this.deleteWaypoint(waypoint);
                 } else {
                     this.root.soundProxy.playUiError();
                 }
@@ -183,9 +225,11 @@ export class HUDWaypoints extends BaseHUDPart {
         } else {
             // Allow right click to create a marker
             if (button === enumMouseButton.right) {
-                const worldPos = this.root.camera.screenToWorld(pos);
-                this.requestCreateMarker(worldPos);
-                return STOP_PROPAGATION;
+                if (this.root.camera.getIsMapOverlayActive()) {
+                    const worldPos = this.root.camera.screenToWorld(pos);
+                    this.requestCreateMarker(worldPos);
+                    return STOP_PROPAGATION;
+                }
             }
         }
     }
