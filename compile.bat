@@ -1,0 +1,2 @@
+cd gulp
+yarn gulp
