@@ -110,3 +110,5 @@ build
 tmp_standalone_files
 
 
+# Github Actions files
+.github/workflows
