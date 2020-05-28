@@ -250,7 +250,7 @@ input[type="email"] {
         opacity: 0.4;
     }
 
-    transition: background-color 0.4s ease-in-out !important;
+    transition: background-color 0.1s ease-in-out !important;
     @include TextShadow3D(#fff);
     @include BoxShadow3D(lighten($mainBgColor, 30));
 

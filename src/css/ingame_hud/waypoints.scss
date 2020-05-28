@@ -1,0 +1,27 @@
+#ingame_HUD_Waypoints {
+    position: absolute;
+    @include S(right, 10px);
+    @include S(bottom, 100px);
+
+    display: flex;
+    flex-direction: column;
+
+    @include PlainText;
+    @include S(width, 150px);
+    background: rgba(0, 10, 20, 0.5);
+    @include S(padding, 5px);
+
+    color: #eee;
+
+    .desc {
+        @include SuperSmallText;
+        color: #babcbf;
+        .keybinding {
+            position: relative;
+        }
+
+        strong {
+            color: #fff;
+        }
+    }
+}

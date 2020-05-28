@@ -7,7 +7,6 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { HUDProcessingOverlay } from "./parts/processing_overlay";
 import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
 import { HUDBuildingPlacer } from "./parts/building_placer";
-import { HUDBetaOverlay } from "./parts/beta_overlay";
 import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
 import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
@@ -28,6 +27,7 @@ import { KEYMAPPINGS } from "../key_action_mapper";
 import { HUDWatermark } from "./parts/watermark";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { HUDPartTutorialHints } from "./parts/tutorial_hints";
+import { HUDWaypoints } from "./parts/waypoints";
 
 export class GameHUD {
     /**
@@ -43,31 +43,23 @@ export class GameHUD {
     initialize() {
         this.parts = {
             processingOverlay: new HUDProcessingOverlay(this.root),
-
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
             buildingPlacer: new HUDBuildingPlacer(this.root),
             blueprintPlacer: new HUDBlueprintPlacer(this.root),
-
             unlockNotification: new HUDUnlockNotification(this.root),
-
             gameMenu: new HUDGameMenu(this.root),
-
             massSelector: new HUDMassSelector(this.root),
-
             shop: new HUDShop(this.root),
             statistics: new HUDStatistics(this.root),
-
+            waypoints: new HUDWaypoints(this.root),
             vignetteOverlay: new HUDVignetteOverlay(this.root),
 
             // Must always exist
             pinnedShapes: new HUDPinnedShapes(this.root),
-
             notifications: new HUDNotifications(this.root),
             settingsMenu: new HUDSettingsMenu(this.root),
-
             // betaOverlay: new HUDBetaOverlay(this.root),
             debugInfo: new HUDDebugInfo(this.root),
-
             dialogs: new HUDModalDialogs(this.root),
         };
 
@@ -189,7 +181,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        const partsOrder = ["massSelector", "buildingPlacer", "blueprintPlacer"];
+        const partsOrder = ["waypoints", "massSelector", "buildingPlacer", "blueprintPlacer"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

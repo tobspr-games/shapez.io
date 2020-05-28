@@ -3,7 +3,7 @@ export const CHANGELOG = [
         version: "1.1.0",
         date: "unreleased",
         entries: [
-            "BLUEPRINTS! They are unlocked at level 12",
+            "BLUEPRINTS! They are unlocked at level 12 and cost a special shape to build.",
             "Savegame levels are now shown in the main menu. For existing games, save them again to make the level show up.",
             "Allow holding SHIFT to rotate counter clockwise",
             "Added confirmation when deleting more than 500 buildings at a time",

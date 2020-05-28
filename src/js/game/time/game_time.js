@@ -37,14 +37,6 @@ export class GameTime extends BasicSerializableObject {
 
         // Store how much time we have in bucket
         this.logicTimeBudget = 0;
-
-        if (G_IS_DEV) {
-            window.addEventListener("keydown", ev => {
-                if (ev.key === "p") {
-                    this.requestSpeedToggle();
-                }
-            });
-        }
     }
 
     static getId() {
@@ -197,23 +189,6 @@ export class GameTime extends BasicSerializableObject {
 
     getIsPaused() {
         return this.speed.getId() === PausedGameSpeed.getId();
-    }
-
-    requestSpeedToggle() {
-        logger.warn("Request speed toggle");
-        switch (this.speed.getId()) {
-            case PausedGameSpeed.getId():
-                this.setSpeed(new RegularGameSpeed(this.root));
-                break;
-
-            case RegularGameSpeed.getId():
-                this.setSpeed(new PausedGameSpeed(this.root));
-                break;
-
-            case FastForwardGameSpeed.getId():
-                this.setSpeed(new RegularGameSpeed(this.root));
-                break;
-        }
     }
 
     getSpeed() {
