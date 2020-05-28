@@ -121,6 +121,7 @@ export class HUDWaypoints extends BaseHUDPart {
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.createMarker).add(this.requestCreateMarker, this);
 
         this.currentMarkerOpacity = 1;
+        this.rerenderWaypointList();
     }
 
     /**
