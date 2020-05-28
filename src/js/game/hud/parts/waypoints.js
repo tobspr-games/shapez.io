@@ -116,7 +116,10 @@ export class HUDWaypoints extends BaseHUDPart {
         })[1];
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
-        this.domAttach = new DynamicDomAttach(this.root, this.hintElement);
+
+        if (this.hintElement) {
+            this.domAttach = new DynamicDomAttach(this.root, this.hintElement);
+        }
 
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.createMarker).add(this.requestCreateMarker, this);
 
@@ -168,7 +171,9 @@ export class HUDWaypoints extends BaseHUDPart {
     }
 
     update() {
-        this.domAttach.update(this.root.camera.getIsMapOverlayActive());
+        if (this.domAttach) {
+            this.domAttach.update(this.root.camera.getIsMapOverlayActive());
+        }
     }
 
     findCurrentIntersectedWaypoint() {
