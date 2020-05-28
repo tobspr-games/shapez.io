@@ -3,6 +3,8 @@ import { ClickDetector } from "../../../core/click_detector";
 import { formatBigNumber, makeDiv } from "../../../core/utils";
 import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
+import { blueprintShape } from "../../upgrades";
+import { enumHubGoalRewards } from "../../tutorial_goals";
 
 export class HUDPinnedShapes extends BaseHUDPart {
     createElements(parent) {
@@ -46,6 +48,10 @@ export class HUDPinnedShapes extends BaseHUDPart {
         if (key === this.root.hubGoals.currentGoal.definition.getHash()) {
             return true;
         }
+        if (key === blueprintShape) {
+            return true;
+        }
+
         for (let i = 0; i < this.pinnedShapes.length; ++i) {
             if (this.pinnedShapes[i].key === key) {
                 return true;
@@ -69,6 +75,10 @@ export class HUDPinnedShapes extends BaseHUDPart {
         this.handles = [];
 
         this.internalPinShape(currentKey, currentGoal.required, false);
+
+        if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
+            this.internalPinShape(blueprintShape, currentGoal.required, false);
+        }
 
         for (let i = 0; i < this.pinnedShapes.length; ++i) {
             const key = this.pinnedShapes[i].key;
@@ -150,6 +160,11 @@ export class HUDPinnedShapes extends BaseHUDPart {
             // Can not pin current goal
             return;
         }
+
+        if (key === blueprintShape) {
+            return;
+        }
+
         for (let i = 0; i < this.pinnedShapes.length; ++i) {
             if (this.pinnedShapes[i].key === key) {
                 // Already pinned

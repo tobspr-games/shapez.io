@@ -121,6 +121,14 @@
             > strong {
                 font-weight: bold;
             }
+
+            .keybinding {
+                position: relative;
+                background: #eee;
+                @include PlainText;
+                height: unset;
+                margin: 1px 0;
+            }
         }
 
         > .buttons {
