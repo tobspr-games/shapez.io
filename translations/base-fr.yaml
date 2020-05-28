@@ -176,7 +176,6 @@ ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        centerMap: Centrer
         moveMap: Déplacer
         removeBuildings: Effacer
         stopPlacement: Arrêter le placement
@@ -437,7 +436,7 @@ storyRewards:
     reward_storage:
         title: Tampon de stockage
         desc: Vous avez débloqué une variante de <strong>la poubelle</strong> - Elle permet de stocker des formes jusqu'à une certaine limite!
-        
+
     reward_freeplay:
         title: Mode libre
         desc: Vous l'avez fait! Vous avez débloqué le <strong>mode libre</strong>! Cela veut dire que dorénavant, les formes sont générées aléatoirement! (Ne vous en faites pas, plus de contenu est prévu pour la version complète!)
@@ -529,8 +528,6 @@ keybindings:
         mapMoveDown: Aller en bas
         mapMoveLeft: Aller à gauche
 
-        centerMap: Centrer la carte
-
         mapZoomIn: Zoom avant
         mapZoomOut: Zoom arrière
 
@@ -577,6 +574,5 @@ demo:
         customizeKeybindings: Personalisation des contrôles
 
     settingNotAvailable: Indisponible dans la démo.
-
 #
 # French translation version v0.1 based on english v1.0.4 by Didier WEERTS 'The Corsaire'

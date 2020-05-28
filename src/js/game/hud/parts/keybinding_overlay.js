@@ -24,8 +24,8 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             [],
             `
             <div class="binding">
-                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.centerMap)}</code>
-                <label>${T.ingame.keybindingsOverlay.centerMap}</label>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.createMarker)}</code>
+                <label>${T.ingame.keybindingsOverlay.createMarker}</label>
             </div>
 
             <div class="binding">

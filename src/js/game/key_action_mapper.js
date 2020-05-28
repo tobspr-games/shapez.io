@@ -25,8 +25,6 @@ export const KEYMAPPINGS = {
         mapMoveDown: { keyCode: key("S") },
         mapMoveLeft: { keyCode: key("A") },
 
-        centerMap: { keyCode: 32 },
-
         menuOpenShop: { keyCode: key("F") },
         menuOpenStats: { keyCode: key("G") },
 
@@ -35,6 +33,8 @@ export const KEYMAPPINGS = {
 
         mapZoomIn: { keyCode: 187, repeated: true }, // "+"
         mapZoomOut: { keyCode: 189, repeated: true }, // "-"
+
+        createMarker: { keyCode: key("M") },
     },
 
     buildings: {
@@ -222,14 +222,16 @@ export function getStringForKeyCode(code) {
 export class Keybinding {
     /**
      *
+     * @param {KeyActionMapper} keyMapper
      * @param {Application} app
      * @param {object} param0
      * @param {number} param0.keyCode
      * @param {boolean=} param0.builtin
      * @param {boolean=} param0.repeated
      */
-    constructor(app, { keyCode, builtin = false, repeated = false }) {
+    constructor(keyMapper, app, { keyCode, builtin = false, repeated = false }) {
         assert(keyCode && Number.isInteger(keyCode), "Invalid key code: " + keyCode);
+        this.keyMapper = keyMapper;
         this.app = app;
         this.keyCode = keyCode;
         this.builtin = builtin;
@@ -243,7 +245,12 @@ export class Keybinding {
      * Returns whether this binding is currently pressed
      */
     isCurrentlyPressed() {
-        return this.app.inputMgr.keysDown.has(this.keyCode);
+        // Check if the key is down
+        if (this.app.inputMgr.keysDown.has(this.keyCode)) {
+            // Check if it is the top reciever
+            const reciever = this.keyMapper.inputReceiver;
+            return this.app.inputMgr.getTopReciever() === reciever;
+        }
     }
 
     /**
@@ -293,6 +300,8 @@ export class KeyActionMapper {
      */
     constructor(root, inputReciever) {
         this.root = root;
+        this.inputReceiver = inputReciever;
+
         inputReciever.keydown.add(this.handleKeydown, this);
         inputReciever.keyup.add(this.handleKeyup, this);
 
@@ -308,7 +317,7 @@ export class KeyActionMapper {
                     payload.keyCode = overrides[key];
                 }
 
-                this.keybindings[key] = new Keybinding(this.root.app, payload);
+                this.keybindings[key] = new Keybinding(this, this.root.app, payload);
             }
         }
 

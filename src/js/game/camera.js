@@ -148,6 +148,14 @@ export class Camera extends BasicSerializableObject {
     }
 
     /**
+     * Sets a desired zoom level
+     * @param {number} zoom
+     */
+    setDesiredZoom(zoom) {
+        this.desiredZoom = zoom;
+    }
+
+    /**
      * Returns if this camera is currently moving by a non-user interaction
      */
     isCurrentlyMovingToDesiredCenter() {
@@ -337,15 +345,15 @@ export class Camera extends BasicSerializableObject {
      */
     bindKeys() {
         const mapper = this.root.keyMapper;
-        mapper.getBinding(KEYMAPPINGS.ingame.mapMoveUp).add(() => (this.keyboardForce.y = -1));
+        mapper
+            .getBinding(KEYMAPPINGS.ingame.mapMoveUp)
+            .add(() => console.log("move up") || (this.keyboardForce.y = -1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveDown).add(() => (this.keyboardForce.y = 1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveRight).add(() => (this.keyboardForce.x = 1));
         mapper.getBinding(KEYMAPPINGS.ingame.mapMoveLeft).add(() => (this.keyboardForce.x = -1));
 
         mapper.getBinding(KEYMAPPINGS.ingame.mapZoomIn).add(() => (this.desiredZoom = this.zoomLevel * 1.2));
         mapper.getBinding(KEYMAPPINGS.ingame.mapZoomOut).add(() => (this.desiredZoom = this.zoomLevel * 0.8));
-
-        mapper.getBinding(KEYMAPPINGS.ingame.centerMap).add(() => this.centerOnMap());
     }
 
     centerOnMap() {

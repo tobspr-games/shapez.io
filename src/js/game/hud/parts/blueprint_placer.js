@@ -81,8 +81,10 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
      */
     onMouseDown(pos, button) {
         if (button === enumMouseButton.right) {
-            this.abortPlacement();
-            return STOP_PROPAGATION;
+            if (this.currentBlueprint.get()) {
+                this.abortPlacement();
+                return STOP_PROPAGATION;
+            }
         }
 
         const blueprint = this.currentBlueprint.get();

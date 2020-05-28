@@ -586,11 +586,19 @@
 },
 "sprites/misc/storage_overlay.png":
 {
-	"frame": {"x":1403,"y":939,"w":133,"h":65},
+	"frame": {"x":1403,"y":939,"w":133,"h":66},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":133,"h":65},
-	"sourceSize": {"w":133,"h":65}
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":133,"h":66},
+	"sourceSize": {"w":135,"h":68}
+},
+"sprites/misc/waypoint.png":
+{
+	"frame": {"x":1649,"y":997,"w":20,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":20,"h":24},
+	"sourceSize": {"w":24,"h":24}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -599,6 +607,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2016,"h":1024},
 	"scale": "0.75",
-	"smartupdate": "$TexturePacker:SmartUpdate:c2a63b817240ea11b013f390be5c690a:0c1b9b304a864f030526d8b9e8ae3352:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:feeaacb789d7182e6aef553861c19982:774c2c10210542582abaa8efc495510d:f159918d23e5952766c6d23ab52278c6$"
 }
 }

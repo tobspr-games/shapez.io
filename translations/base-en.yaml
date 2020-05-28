@@ -195,11 +195,14 @@ dialogs:
             <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
             <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
+    createMarker:
+        title: New Marker
+        desc: Give it a meaningful name
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        centerMap: Center
         moveMap: Move
         removeBuildings: Delete
         stopPlacement: Stop placement
@@ -209,6 +212,7 @@ ingame:
         disableAutoOrientation: Disable auto orientation
         toggleHud: Toggle HUD
         placeBuilding: Place building
+        createMarker: Create Marker
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -301,6 +305,12 @@ ingame:
     # When placing a blueprint
     blueprintPlacer:
         cost: Cost
+
+    waypoints:
+        waypoints: Markers
+        hub: HUB
+        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        creationSuccessNotification: Marker has been created.
 
 # All shop upgrades
 shopUpgrades:
@@ -533,9 +543,9 @@ settings:
                 If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
 
         offerHints:
-            title: Hints
+            title: Hints & Tutorials
             description: >-
-                Whether to show the 'Show hints' button in the lower left.
+                Whether to offer hints and tutorials while playing.
 
 keybindings:
     title: Keybindings
@@ -559,8 +569,6 @@ keybindings:
         mapMoveRight: Move Right
         mapMoveDown: Move Down
         mapMoveLeft: Move Left
-
-        centerMap: Center Map
 
         mapZoomIn: Zoom in
         mapZoomOut: Zoom out
@@ -609,5 +617,6 @@ demo:
         importingGames: Importing savegames
         oneGameLimit: Limited to one savegame
         customizeKeybindings: Customizing Keybindings
+        creatingMarkers: Create custom markers
 
     settingNotAvailable: Not available in the demo.
