@@ -205,8 +205,9 @@ export const allApplicationSettings = [
 /** @type {Array<BaseSetting>} */
 export const allDebugSettings = [];
 for (const k in globalConfig.debug) {
-    allDebugSettings.push(new BoolSetting(k, categoryDebug, (app, value) => globalConfig.debug[k] = value));
+    allDebugSettings.push(new BoolSetting("debug_" + k, categoryDebug, (app, value) => globalConfig.debug[k] = value));
 }
+allApplicationSettings.push(...allDebugSettings);
 
 export function getApplicationSettingById(id) {
     return allApplicationSettings.find(setting => setting.id === id);
@@ -272,7 +273,7 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string} key
      */
     getSetting(key) {
-        assert(this.getAllSettings().hasOwnProperty(key), "Setting not known: " + key);
+        assert(key.startsWith("debug_") || this.getAllSettings().hasOwnProperty(key), "Setting not known: " + key);
         return this.getAllSettings()[key];
     }
 
@@ -400,6 +401,7 @@ export class ApplicationSettings extends ReadWriteProxy {
         const settings = data.settings;
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
+            if (setting.id.startsWith("debug_")) continue;
             const storedValue = settings[setting.id];
             if (!setting.validate(storedValue)) {
                 return ExplainedResult.bad("Bad setting value for " + setting.id + ": " + storedValue);
