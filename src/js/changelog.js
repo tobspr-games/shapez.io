@@ -1,5 +1,10 @@
 export const CHANGELOG = [
     {
+        version: "1.1.1",
+        date: "28.05.2020",
+        entries: ["Fix crash when 'Show Hints' setting was turned on"],
+    },
+    {
         version: "1.1.0",
         date: "28.05.2020",
         entries: [
