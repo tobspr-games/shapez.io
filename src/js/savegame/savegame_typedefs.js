@@ -13,6 +13,7 @@ import { Entity } from "../game/entity";
  *   map: any,
  *   hubGoals: any,
  *   pinnedShapes: any,
+ *   waypoints: any,
  *   entities: Array<Entity>
  * }} SerializedGame
  */

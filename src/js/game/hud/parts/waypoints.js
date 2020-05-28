@@ -38,11 +38,31 @@ export class HUDWaypoints extends BaseHUDPart {
         this.waypointSprite = Loader.getSprite("sprites/misc/waypoint.png");
     }
 
+    serialize() {
+        return {
+            waypoints: this.waypoints,
+        };
+    }
+
+    deserialize(data) {
+        if (!data || !data.waypoints || !Array.isArray(data.waypoints)) {
+            return "Invalid waypoints data";
+        }
+        this.waypoints = data.waypoints;
+    }
+
     initialize() {
+        /** @type {Array<{
+         *   label: string,
+         *   center: { x: number, y: number },
+         *   zoomLevel: number,
+         *   deletable: boolean
+         * }>}
+         */
         this.waypoints = [
             {
                 label: T.ingame.waypoints.hub,
-                center: new Vector(0, 0),
+                center: { x: 0, y: 0 },
                 zoomLevel: 3,
                 deletable: false,
             },
@@ -87,10 +107,12 @@ export class HUDWaypoints extends BaseHUDPart {
 
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
 
+        const center = worldPos || this.root.camera.center;
+
         dialog.buttonSignals.ok.add(() => {
             this.waypoints.push({
                 label: markerNameInput.getValue(),
-                center: (worldPos || this.root.camera.center).copy(),
+                center: { x: center.x, y: center.y },
                 zoomLevel: Math_max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
                 deletable: true,
             });
@@ -121,7 +143,9 @@ export class HUDWaypoints extends BaseHUDPart {
 
         for (let i = 0; i < this.waypoints.length; ++i) {
             const waypoint = this.waypoints[i];
-            const screenPos = this.root.camera.worldToScreen(waypoint.center);
+            const screenPos = this.root.camera.worldToScreen(
+                new Vector(waypoint.center.x, waypoint.center.y)
+            );
             const intersectionRect = new Rectangle(
                 screenPos.x - 7 * scale,
                 screenPos.y - 12 * scale,
@@ -144,7 +168,7 @@ export class HUDWaypoints extends BaseHUDPart {
         if (waypoint) {
             if (button === enumMouseButton.left) {
                 this.root.soundProxy.playUiClick();
-                this.root.camera.setDesiredCenter(waypoint.center);
+                this.root.camera.setDesiredCenter(new Vector(waypoint.center.x, waypoint.center.y));
                 this.root.camera.setDesiredZoom(waypoint.zoomLevel);
             } else if (button === enumMouseButton.right) {
                 if (waypoint.deletable) {
@@ -189,13 +213,21 @@ export class HUDWaypoints extends BaseHUDPart {
 
             parameters.context.globalAlpha = this.currentMarkerOpacity * (selected === waypoint ? 1 : 0.7);
 
-            parameters.context.fillStyle = "#000";
-            parameters.context.textAlign = "left";
-            parameters.context.textBaseline = "middle";
-
             const yOffset = -5 * scale;
 
             parameters.context.font = "bold " + 12 * scale + "px GameFont";
+
+            parameters.context.fillStyle = "rgba(255, 255, 255, 0.7)";
+            parameters.context.fillRect(
+                pos.x - 7 * scale,
+                pos.y - 12 * scale,
+                15 * scale + this.dummyBuffer.measureText(waypoint.label).width / this.root.camera.zoomLevel,
+                15 * scale
+            );
+
+            parameters.context.fillStyle = "#000";
+            parameters.context.textAlign = "left";
+            parameters.context.textBaseline = "middle";
             parameters.context.fillText(waypoint.label, pos.x + 6 * scale, pos.y + 0.5 * scale + yOffset);
 
             parameters.context.textBaseline = "alphabetic";
