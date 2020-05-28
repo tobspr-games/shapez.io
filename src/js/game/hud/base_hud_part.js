@@ -72,9 +72,16 @@ export class BaseHUDPart {
     }
 
     /**
-     * Cleans up the hud element, if overridden make sure to call super.cleanups
+     * Cleans up the hud element, if overridden make sure to call super.cleanup
      */
     cleanup() {
+        this.cleanupClickDetectors();
+    }
+
+    /**
+     * Cleans up all click detectors
+     */
+    cleanupClickDetectors() {
         if (this.clickDetectors) {
             for (let i = 0; i < this.clickDetectors.length; ++i) {
                 this.clickDetectors[i].cleanup();
