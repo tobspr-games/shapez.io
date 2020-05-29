@@ -8,7 +8,7 @@ import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
 import { THEMES, THEME, applyGameTheme } from "../game/theme";
-import { IS_DEMO } from "../core/config";
+import { IS_DEMO, IS_DEBUG } from "../core/config";
 import { T } from "../translations";
 import { LANGUAGES } from "../languages";
 
@@ -205,6 +205,7 @@ export const allApplicationSettings = [
 /** @type {Array<BaseSetting>} */
 export const allDebugSettings = [];
 for (const k in globalConfig.debug) {
+    if (!IS_DEBUG) break;
     allDebugSettings.push(new BoolSetting("debug_" + k, categoryDebug, (app, value) => {if (globalConfig.debug.enableDebugSettings) globalConfig.debug[k] = value;}));
 }
 allApplicationSettings.push(...allDebugSettings);
