@@ -78,6 +78,9 @@ mainMenu:
     browserWarning: >-
         Désolé, mais ce jeu est connu pour tourner lentement sur votre browser! Procurez-vous la version autonome ou téléchargez Chrome pour une meilleure expérience.
 
+    savegameLevel: Niveau <x>
+    savegameLevelUnknown: Niveau inconnu
+
 dialogs:
     buttons:
         ok: OK
@@ -90,6 +93,7 @@ dialogs:
         deleteGame: Je sais ce que je fais
         viewUpdate: Voir les mises-à-jour
         showUpgrades: Montrer les améliorations
+        showKeybindings: Montrer les raccourcis
 
     importSavegameError:
         title: Erreur d'importation
@@ -172,6 +176,29 @@ dialogs:
             Toutes les formes que vous produisez peuvent être utilisées pour débloquer des améliorations - <strong>Ne détruisez pas vos anciennes usines!</strong>
             L'onglet des améliorations se trouve dans le coin supérieur droit de l'écran.
 
+    massDeleteConfirm:
+        title: Confirmation de suppression
+        desc: >-
+            Vous allez supprimer pas mal de bâtiments (<count> pour être exact)! Etes vous certains de vouloir faire ça?
+
+    blueprintsNotUnlocked:
+        title: Pas encore débloqué
+        desc: >-
+            Les patrons n'ont pas encore étés débloqués! Terminez encore quelques niveaux pour les débloquer.
+
+    keybindingsIntroduction:
+        title: Raccourcis utiles
+        desc: >-
+            Le jeu a plein de raccourcis facilitant la construction de grandes usines.
+            En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Glisser: Sélectionne une zone à copier / effacer.<br>
+            <code class='keybinding'>SHIFT</code>: Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
+            <code class='keybinding'>ALT</code>: Inverse l'orientation des convoyeurs placés.<br>
+
+    createMarker:
+        title: Nouvelle balise
+        desc: Donnez-lui un nom approprié
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -185,6 +212,7 @@ ingame:
         disableAutoOrientation: Désactiver l'orientation automatique
         toggleHud: Basculet l'ATH
         placeBuilding: Placer un bâtiment
+        createMarker: Créer une balise
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -274,6 +302,16 @@ ingame:
         showHint: Indice
         hideHint: Fermer
 
+    # When placing a blueprint
+    blueprintPlacer:
+        cost: Coût
+
+    waypoints:
+        waypoints: Balise
+        hub: Noyau
+        description: Cliquez une balise pour vous y rendre, clic-droit pour l'effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer une sur l'endroit pointé.
+        creationSuccessNotification: La bailse a été créée.
+
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -293,12 +331,12 @@ shopUpgrades:
 buildings:
     belt:
         default:
-            name: &belt Convoyeurs
+            name: &belt Convoyeur
             description: Transporte les objects, maintenez et fites glisser pour en placer plusieurs.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extracteurs
+            name: &miner Extracteur
             description: Placez-le au dessus d'une forme ou couleur pour l'extraire.
 
         chainable:
@@ -417,7 +455,7 @@ storyRewards:
         desc: Vous avez débloqué une nouvelle variante du <strong>tunnel</strong> - Elle a <strong>une portée plus grande</strong>, et vous pouvez également mixer ces tunnels maintenant!
 
     reward_splitter_compact:
-        title: Balancier compacte
+        title: Balancier compact
         desc: >-
             Vous avez débloqué une variante compacte du <strong>balancier</strong> - Elle accepte deux entrées et les rassemble en une sortie!
 
@@ -440,6 +478,10 @@ storyRewards:
     reward_freeplay:
         title: Mode libre
         desc: Vous l'avez fait! Vous avez débloqué le <strong>mode libre</strong>! Cela veut dire que dorénavant, les formes sont générées aléatoirement! (Ne vous en faites pas, plus de contenu est prévu pour la version complète!)
+
+    reward_blueprints:
+        title: Patrons
+        desc: Vous pouvez maintenant <strong>copier et coller</strong> des perties de votre usines! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer! (Ceux qu'ont vient de vous donner).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -503,7 +545,7 @@ settings:
         offerHints:
             title: Indices
             description: >-
-                ffiche ou non le bouton 'Afficher un indice' dans le coin inférieir gauche.
+                Affiche ou non le bouton 'Afficher un indice' dans le coin inférieur gauche.
 
 keybindings:
     title: Contrôles
@@ -549,12 +591,15 @@ keybindings:
 
         abortBuildingPlacement: Annuler le placement
         rotateWhilePlacing: Pivoter
+        rotateInverseModifier: >-
+            Variante: Pivote à gauche
         cycleBuildingVariants: Faire défiler les variantes
         confirmMassDelete: Confirmer la suppression de masse
         cycleBuildings: Faire défiler les bâtiments
 
         massSelectStart: Cliquez et maintenez pour commencer
         massSelectSelectMultiple: Séléctionner plusieurs zones
+        massSelectCopy: Copie la zone
 
         placementDisableAutoOrientation: Désactiver l'orientation automatique
         placeMultiple: Rester en mode placement
@@ -571,8 +616,10 @@ demo:
         restoringGames: Charger des sauvegardes
         importingGames: Importer des sauvegardes
         oneGameLimit: Limité à une sauvegarde
-        customizeKeybindings: Personalisation des contrôles
+        customizeKeybindings: Personnalisation des contrôles
+        creatingMarkers: Création de balises personnalisées
 
     settingNotAvailable: Indisponible dans la démo.
 #
-# French translation version v0.1 based on english v1.0.4 by Didier WEERTS 'The Corsaire'
+# French translation version v0.2 based on english v1.1.1 by Didier WEERTS 'The Corsaire'
+#
