@@ -583,6 +583,7 @@ settings:
     categories:
         game: Game
         app: Application
+        debug: Debug
 
     versionBadges:
         dev: Development
@@ -667,6 +668,42 @@ settings:
             title: Hints & Tutorials
             description: >-
                 Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+
+        debug_enableDebugSettings:
+            title: Debug / Enable Debug Settings
+            description: >-
+                Apply values below. If disabled, ignore values below.
+        debug_fastGameEnter: null
+        debug_noArtificialDelays: null
+        debug_disableSavegameWrite: null
+        debug_showEntityBounds: null
+        debug_showAcceptorEjectors: null
+        debug_disableMusic: null
+        debug_doNotRenderStatics: null
+        debug_disableZoomLimits: null
+        debug_showChunkBorders: 
+            title: Debug / Show Chunk Borders
+            description: >-
+                Draw chunk rectangles.
+        debug_rewardsInstant: null
+        debug_allBuildingsUnlocked: 
+            title: Debug / Unlock All Buildings
+            description: >-
+                Unlocks all buildings. Works in both new and loaded games.
+        debug_upgradesNoCost: null
+        debug_disableUnlockDialog: null
+        debug_disableLogicTicks: null
+        debug_testClipping: null
+        debug_framePausesBetweenTicks: null
+        debug_testTranslations: null
+        debug_enableEntityInspector: 
+            title: Debug / Enable Entity Inspector
+            description: >-
+                Show information about hovered entity components.
+        debug_testAds: null
+        debug_disableMapOverview: null
+        debug_disableTutorialHints: null
+        debug_disableUpgradeNotification: null
 
 keybindings:
     title: Keybindings
