@@ -206,7 +206,15 @@ export const allApplicationSettings = [
 export const allDebugSettings = [];
 for (const k in globalConfig.debug) {
     if (!IS_DEBUG) break;
-    allDebugSettings.push(new BoolSetting("debug_" + k.replace(/([a-z])([A-Z])/g, (s, a, b) => `${a}_${b}`), categoryDebug, (app, value) => {if (globalConfig.debug.enableDebugSettings) globalConfig.debug[k] = value;}));
+    allDebugSettings.push(
+        new BoolSetting(
+            "debug_" + k.replace(/([a-z])([A-Z])/g, (s, a, b) => `${a}_${b}`),
+            categoryDebug,
+            (app, value) => {
+                if (globalConfig.debug.enableDebugSettings) globalConfig.debug[k] = value;
+            }
+        )
+    );
 }
 allApplicationSettings.push(...allDebugSettings);
 
@@ -274,7 +282,10 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string} key
      */
     getSetting(key) {
-        assert(key.startsWith("debug_") || this.getAllSettings().hasOwnProperty(key), "Setting not known: " + key);
+        assert(
+            key.startsWith("debug_") || this.getAllSettings().hasOwnProperty(key),
+            "Setting not known: " + key
+        );
         return this.getAllSettings()[key];
     }
 

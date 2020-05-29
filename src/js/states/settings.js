@@ -44,14 +44,16 @@ export class SettingsState extends TextualGameState {
         const hideDebug = IS_DEBUG ? "" : " style='display:none'";
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
-            const hidden =  allDebugSettings.indexOf(setting) != -1 && !globalConfig.debug.enableDebugSettings;
+            const hidden = allDebugSettings.indexOf(setting) != -1 && !globalConfig.debug.enableDebugSettings;
 
             if (setting.categoryId !== lastCategory) {
                 lastCategory = setting.categoryId;
                 if (i !== 0) {
                     html += "</div>";
                 }
-                html += `<strong class="categoryLabel"${lastCategory == categoryDebug ? hideDebug : ""}>${T.settings.categories[lastCategory]}</strong>`;
+                html += `<strong class="categoryLabel"${lastCategory == categoryDebug ? hideDebug : ""}>${
+                    T.settings.categories[lastCategory]
+                }</strong>`;
                 html += `<div class="settingsContainer"${lastCategory == categoryDebug ? hideDebug : ""}>`;
             }
 

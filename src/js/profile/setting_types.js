@@ -187,7 +187,7 @@ export class BoolSetting extends BaseSetting {
     }
 
     getHtml() {
-        const label = T.settings.labels[this.id] || {title : this.id};
+        const label = T.settings.labels[this.id] || { title: this.id };
         return `
         <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
             ${this.enabled ? "" : standaloneOnlySettingHtml}
