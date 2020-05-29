@@ -27,9 +27,9 @@ export class MetaSorterBuilding extends MetaBuilding {
     /**
      * @param {GameRoot} root
      */
-    /*getIsUnlocked(root) {
+    getIsUnlocked(root) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_sorter);
-    }*/
+    }
 
     /**
      * @param {GameRoot} root

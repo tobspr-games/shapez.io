@@ -18,7 +18,7 @@ export class SorterComponent extends Component {
         };
     }
     constructor({
-        filter = "CuCuCuXu",
+        filter = "CuCuCuCu",
         isfil = false,
     }) {
         super();
