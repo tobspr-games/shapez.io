@@ -205,11 +205,15 @@ export const allApplicationSettings = [
 /** @type {Array<BaseSetting>} */
 export const allDebugSettings = [];
 for (const k in globalConfig.debug) {
-    if (!IS_DEBUG) break;
     allDebugSettings.push(
-        new BoolSetting("debug_" + k, categoryDebug, (app, value) => {
-            if (globalConfig.debug.enableDebugSettings) globalConfig.debug[k] = value;
-        })
+        new BoolSetting(
+            "debug_" + k,
+            categoryDebug,
+            (app, value) => {
+                if (globalConfig.debug.enableDebugSettings) globalConfig.debug[k] = value;
+            },
+            IS_DEBUG
+        )
     );
 }
 allApplicationSettings.push(...allDebugSettings);
