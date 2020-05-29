@@ -167,6 +167,9 @@ export class EnumSetting extends BaseSetting {
             })),
         });
         optionSelected.add(value => {
+            if (!this.enabled) {
+                return;
+            }
             this.app.settings.updateSetting(this.id, value);
             this.syncValueToElement();
 
@@ -212,6 +215,9 @@ export class BoolSetting extends BaseSetting {
     }
 
     modify() {
+        if (!this.enabled) {
+            return;
+        }
         const newValue = !this.app.settings.getSetting(this.id);
         this.app.settings.updateSetting(this.id, newValue);
         this.syncValueToElement();
