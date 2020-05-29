@@ -94,7 +94,7 @@ export class MainMenuState extends GameState {
                 <a class="changelog">${T.changelog.title}</a>
 
                 ${
-                    G_IS_BROWSER &&
+                    !G_IS_STANDALONE &&
                     this.app.platformWrapper instanceof PlatformWrapperImplBrowser &&
                     this.app.platformWrapper.embedProvider.iogLink
                         ? `<a class="iogLink" target="_blank" href="https://iogames.space">.io games</a>`
