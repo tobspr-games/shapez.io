@@ -11,7 +11,11 @@
         "tslint": "cd src/js && tsc",
         "lint": "npx eslint src/js",
         "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*",
-        "publishOnItch": "butler push tmp_standalone_files/shapez.io-standalone-win32-x64 tobspr/shapezio:windows --userversion-file version"
+        "publishOnItch": "butler push tmp_standalone_files/shapez.io-standalone-win32-x64 tobspr/shapezio:windows --userversion-file version",
+        "publishOnSteam": "cd gulp/steampipe && ./upload.bat",
+        "publishStandalone": "yarn publishOnItch && yarn publishOnSteam",
+        "publishWeb": "cd gulp && yarn main.deploy.prod",
+        "publish": "yarn publishStandalone && yarn publishWeb"
     },
     "dependencies": {
         "@babel/core": "^7.5.4",
