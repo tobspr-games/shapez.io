@@ -40,7 +40,7 @@ export class KeybindingsState extends TextualGameState {
             keybindingsElem.appendChild(categoryDiv);
 
             const labelDiv = document.createElement("strong");
-            labelDiv.innerText = T.keybindings.categoryLabels[category];
+            labelDiv.innerText = T.keybindings.categoryLabels[category] || `unset(${category})`;
             labelDiv.classList.add("categoryLabel");
             categoryDiv.appendChild(labelDiv);
 
@@ -54,7 +54,7 @@ export class KeybindingsState extends TextualGameState {
 
                 const title = document.createElement("span");
                 title.classList.add("title");
-                title.innerText = T.keybindings.mappings[keybindingId];
+                title.innerText = T.keybindings.mappings[keybindingId] || `unset(${keybindingId})`;
                 elem.appendChild(title);
 
                 const mappingDiv = document.createElement("span");
