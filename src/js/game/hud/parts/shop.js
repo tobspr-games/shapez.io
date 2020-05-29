@@ -63,6 +63,7 @@ export class HUDShop extends BaseHUDPart {
             const { tiers } = UPGRADES[upgradeId];
 
             const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
+            const currentTierMultiplier = this.root.hubGoals.upgradeImprovements[upgradeId];
             const tierHandle = tiers[currentTier];
 
             // Set tier
@@ -87,15 +88,17 @@ export class HUDShop extends BaseHUDPart {
 
             if (!tierHandle) {
                 // Max level
-                handle.elemDescription.innerText = T.ingame.shop.maximumLevel;
+                handle.elemDescription.innerText = T.ingame.shop.maximumLevel.replace(
+                    "<currentMult>",
+                    currentTierMultiplier.toString()
+                );
                 continue;
             }
 
             // Set description
-            handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description.replace(
-                "<gain>",
-                Math.floor(tierHandle.improvement * 100.0)
-            );
+            handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description
+                .replace("<currentMult>", currentTierMultiplier.toString())
+                .replace("<newMult>", (currentTierMultiplier + tierHandle.improvement).toString());
 
             tierHandle.required.forEach(({ shape, amount }) => {
                 const container = makeDiv(handle.elemRequirements, null, ["requirement"]);
