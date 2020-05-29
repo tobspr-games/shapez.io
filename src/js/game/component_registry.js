@@ -1,6 +1,7 @@
 import { gComponentRegistry } from "../core/global_registries";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { BeltComponent } from "./components/belt";
+import { SorterComponent } from "./components/sorter";
 import { ItemEjectorComponent } from "./components/item_ejector";
 import { ItemAcceptorComponent } from "./components/item_acceptor";
 import { MinerComponent } from "./components/miner";
@@ -14,6 +15,7 @@ import { StorageComponent } from "./components/storage";
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
     gComponentRegistry.register(BeltComponent);
+    gComponentRegistry.register(SorterComponent);
     gComponentRegistry.register(ItemEjectorComponent);
     gComponentRegistry.register(ItemAcceptorComponent);
     gComponentRegistry.register(MinerComponent);
@@ -31,7 +33,7 @@ export function initComponentRegistry() {
     assert(
         // @ts-ignore
         require.context("./components", false, /.*\.js/i).keys().length ===
-            gComponentRegistry.getNumEntries(),
+        gComponentRegistry.getNumEntries(),
         "Not all components are registered"
     );
 

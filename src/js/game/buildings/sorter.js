@@ -3,6 +3,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { ItemAcceptorComponent, enumItemAcceptorItemFilter } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { SorterComponent } from "../components/sorter";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
@@ -51,7 +52,9 @@ export class MetaSorterBuilding extends MetaBuilding {
                 processorType: enumItemProcessorTypes.sorter,
             })
         );
-
+        entity.addComponent(
+            new SorterComponent({})
+        );
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [

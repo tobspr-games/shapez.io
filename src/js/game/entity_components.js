@@ -1,6 +1,7 @@
 /* typehints:start */
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { BeltComponent } from "./components/belt";
+import { SorterComponent } from "./components/sorter";
 import { ItemEjectorComponent } from "./components/item_ejector";
 import { ItemAcceptorComponent } from "./components/item_acceptor";
 import { MinerComponent } from "./components/miner";
@@ -28,6 +29,9 @@ export class EntityComponentStorage {
 
         /** @type {BeltComponent} */
         this.Belt;
+
+        /** @type {SorterComponent} */
+        this.Sorter;
 
         /** @type {ItemEjectorComponent} */
         this.ItemEjector;
