@@ -25,6 +25,8 @@ You can already play it [here](https://shapez.io).
 
 Since this game is in the more or less early development, I will only accept pull requests which add an immediate benefit. Please understand that low quality PR's might be closed by me with a short comment explaining why.
 
+**If you want to add a new building, please understand that I can not simply add every building to the game!** I recommend to talk to me before implementing anything, to make sure its actually useful. Otherwise there is a high chance of your PR not getting merged.
+
 If you want to add a new feature or in generally contribute I recommend to get in touch with me on Discord:
 
 <a href="https://discord.com/invite/HN7EVzV" target="_blank">
@@ -42,4 +44,4 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 
 For most assets I use Adobe Photoshop, you can find them in `assets/`.
 
-You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you.
+You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when thats done.
