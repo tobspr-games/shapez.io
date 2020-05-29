@@ -911,5 +911,5 @@ export function formatItemsPerSecond(speed, double = false) {
     return speed === 1.0
         ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
         : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace("<x>", "" + round2Digits(speed)) +
-        (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
+              (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
 }
