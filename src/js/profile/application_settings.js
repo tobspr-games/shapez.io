@@ -16,7 +16,7 @@ const logger = createLogger("application_settings");
 
 const categoryGame = "game";
 const categoryApp = "app";
-const categoryDebug = "debug";
+export const categoryDebug = "debug";
 
 export const uiScales = [
     {
@@ -205,7 +205,7 @@ export const allApplicationSettings = [
 /** @type {Array<BaseSetting>} */
 export const allDebugSettings = [];
 for (const k in globalConfig.debug) {
-    allDebugSettings.push(new BoolSetting("debug_" + k, categoryDebug, (app, value) => globalConfig.debug[k] = value));
+    allDebugSettings.push(new BoolSetting("debug_" + k, categoryDebug, (app, value) => {if (globalConfig.debug.enableDebugSettings) globalConfig.debug[k] = value;}));
 }
 allApplicationSettings.push(...allDebugSettings);
 

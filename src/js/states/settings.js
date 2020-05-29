@@ -1,7 +1,7 @@
-import { globalConfig } from "../core/config";
+import { globalConfig, IS_DEBUG } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
 import { formatSecondsToTimeAgo } from "../core/utils";
-import { allApplicationSettings, allDebugSettings } from "../profile/application_settings";
+import { allApplicationSettings, allDebugSettings, categoryDebug } from "../profile/application_settings";
 import { T } from "../translations";
 
 export class SettingsState extends TextualGameState {
@@ -41,17 +41,18 @@ export class SettingsState extends TextualGameState {
     getSettingsHtml() {
         let lastCategory = null;
         let html = "";
+        const hideDebug = IS_DEBUG ? "" : " style='display:none'";
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
-            const hidden =  allDebugSettings.indexOf(setting) != -1 && !globalConfig.debug.showDebugSettings;
+            const hidden =  allDebugSettings.indexOf(setting) != -1 && !globalConfig.debug.enableDebugSettings;
 
             if (setting.categoryId !== lastCategory) {
                 lastCategory = setting.categoryId;
                 if (i !== 0) {
                     html += "</div>";
                 }
-                html += `<strong class="categoryLabel"${hidden ? " hidden" : ""}>${T.settings.categories[lastCategory]}</strong>`;
-                html += `<div class='settingsContainer'${hidden ? " hidden" : ""}>`;
+                html += `<strong class="categoryLabel"${lastCategory == categoryDebug ? hideDebug : ""}>${T.settings.categories[lastCategory]}</strong>`;
+                html += `<div class="settingsContainer"${lastCategory == categoryDebug ? hideDebug : ""}>`;
             }
 
             html += setting.getHtml();
