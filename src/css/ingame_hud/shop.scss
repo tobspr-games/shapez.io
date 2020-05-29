@@ -88,7 +88,7 @@
             }
 
             .description {
-                grid-column: 3 / 4;
+                grid-column: 2 / 4;
                 grid-row: 1 / 2;
                 @include PlainText;
                 color: #aaa;
@@ -253,12 +253,7 @@
                     display: none;
                 }
                 .description {
-                    // grid-column: 2 / 4;
-                    // grid-row: 2 / 3;
-                    align-self: end;
-                    justify-self: center;
                     color: $colorGreenBright;
-                    @include S(margin-top, 20px);
                 }
             }
         }
