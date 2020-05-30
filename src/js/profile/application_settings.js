@@ -111,13 +111,13 @@ export const allApplicationSettings = [
         textGetter: rate => rate + " Hz",
         category: categoryGame,
         restartRequired: false,
-        changeCb: (app, id) => { },
+        changeCb: (app, id) => {},
         enabled: !IS_DEMO,
     }),
 
-    new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => { }),
-    new BoolSetting("abortPlacementOnDeletion", categoryGame, (app, value) => { }),
-    new BoolSetting("offerHints", categoryGame, (app, value) => { }),
+    new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
+    new BoolSetting("abortPlacementOnDeletion", categoryGame, (app, value) => {}),
+    new BoolSetting("offerHints", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
