@@ -116,6 +116,7 @@ export const allApplicationSettings = [
     }),
 
     new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
+    new BoolSetting("deletingDoesntClearCursor", categoryGame, (app, value) => {}),
     new BoolSetting("offerHints", categoryGame, (app, value) => {}),
 ];
 
@@ -134,6 +135,7 @@ class SettingsStorage {
         this.refreshRate = "60";
 
         this.alwaysMultiplace = false;
+        this.deletingDoesntClearCursor = false;
         this.offerHints = true;
 
         /**
@@ -293,7 +295,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 7;
+        return 8;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -313,6 +315,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 7) {
             data.settings.offerHints = true;
             data.version = 7;
+        }
+
+        if (data.version < 8) {
+            data.settings.deletingDoesntClearCursor = false;
+            data.version = 8;
         }
 
         return ExplainedResult.good();

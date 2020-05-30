@@ -128,11 +128,17 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         }
 
         // Deletion
-        if (button === enumMouseButton.right && !this.currentMetaBuilding.get()) {
+        if (
+            button === enumMouseButton.right &&
+            (!this.currentMetaBuilding.get() ||
+                this.root.app.settings.getSetting("deletingDoesntClearCursor"))
+        ) {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            this.currentMetaBuilding.set(null);
+            if (!this.root.app.settings.getSetting("deletingDoesntClearCursor")) {
+                this.currentMetaBuilding.set(null);
+            }
             return STOP_PROPAGATION;
         }
     }
@@ -435,7 +441,10 @@ export class HUDBuildingPlacer extends BaseHUDPart {
      */
     onCanvasClick(mousePos, cancelAction = false) {
         if (cancelAction) {
-            if (this.currentMetaBuilding.get()) {
+            if (
+                this.currentMetaBuilding.get() &&
+                !this.root.app.settings.getSetting("deletingDoesntClearCursor")
+            ) {
                 this.currentMetaBuilding.set(null);
             } else {
                 this.deleteBelowCursor();
