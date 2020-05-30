@@ -5,6 +5,7 @@ export const CHANGELOG = [
         entries: [
             "The official trailer is now ready! Check it out <a href='https://www.youtube.com/watch?v=KyorY1uIqiQ' target='_blank'>here</a>!",
             "The <a href='https://steam.shapez.io' target='_blank'>steam page</a> is now live!",
+            "Experimental linux builds are now available! Please give me feedback on them in the discord",
             "Allow hovering pinned shapes to enlarge them",
             "Allow deselecting blueprints with right click and 'Q'",
             "Move default key for deleting from 'X' to 'DEL'",
