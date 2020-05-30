@@ -182,25 +182,28 @@ export class InputDistributor {
     }
 
     /**
-     * @param {KeyboardEvent} event
+     * @param {KeyboardEvent | MouseEvent} event
      */
     handleKeydown(event) {
+        const keyCode = event instanceof MouseEvent ? event.button : event.keyCode;
         if (
-            event.keyCode === 9 || // TAB
-            event.keyCode === 16 || // SHIFT
-            event.keyCode === 17 || // CTRL
-            event.keyCode === 18 || // ALT
-            (event.keyCode >= 112 && event.keyCode < 122) // F1 - F10
+            keyCode === 3 ||
+            keyCode === 4 || // MB3 / MB4
+            keyCode === 9 || // TAB
+            keyCode === 16 || // SHIFT
+            keyCode === 17 || // CTRL
+            keyCode === 18 || // ALT
+            (keyCode >= 112 && keyCode < 122) // F1 - F10
         ) {
             event.preventDefault();
         }
 
-        const isInitial = !this.keysDown.has(event.keyCode);
-        this.keysDown.add(event.keyCode);
+        const isInitial = !this.keysDown.has(keyCode);
+        this.keysDown.add(keyCode);
 
         if (
             this.forwardToReceiver("keydown", {
-                keyCode: event.keyCode,
+                keyCode: keyCode,
                 shift: event.shiftKey,
                 alt: event.altKey,
                 initial: isInitial,
@@ -210,8 +213,7 @@ export class InputDistributor {
             return;
         }
 
-        const code = event.keyCode;
-        if (code === 27) {
+        if (keyCode === 27) {
             // Escape key
             event.preventDefault();
             event.stopPropagation();
@@ -220,13 +222,14 @@ export class InputDistributor {
     }
 
     /**
-     * @param {KeyboardEvent} event
+     * @param {KeyboardEvent | MouseEvent} event
      */
     handleKeyup(event) {
-        this.keysDown.delete(event.keyCode);
+        const keyCode = event instanceof MouseEvent ? event.button : event.keyCode;
+        this.keysDown.delete(keyCode);
 
         this.forwardToReceiver("keyup", {
-            keyCode: event.keyCode,
+            keyCode: keyCode,
             shift: event.shiftKey,
             alt: event.altKey,
         });
