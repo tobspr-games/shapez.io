@@ -3,6 +3,7 @@ export const CHANGELOG = [
         version: "1.1.2",
         date: "unreleased",
         entries: [
+            "Allow hovering pinned shapes to enlarge them",
             "Move default key for deleting from 'X' to 'DEL'",
             "Show confirmation when deleting > 100 buildings",
             "Reintroduce 'SPACE' keybinding to center on map",

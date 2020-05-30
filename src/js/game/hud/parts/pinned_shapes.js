@@ -74,10 +74,10 @@ export class HUDPinnedShapes extends BaseHUDPart {
         }
         this.handles = [];
 
-        this.internalPinShape(currentKey, currentGoal.required, false);
+        this.internalPinShape(currentKey, currentGoal.required, false, "goal");
 
         if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
-            this.internalPinShape(blueprintShape, null, false);
+            this.internalPinShape(blueprintShape, null, false, "blueprint");
         }
 
         for (let i = 0; i < this.pinnedShapes.length; ++i) {
@@ -93,13 +93,18 @@ export class HUDPinnedShapes extends BaseHUDPart {
      * @param {string} key
      * @param {number} goal
      * @param {boolean} canUnpin
+     * @param {string=} className
      */
-    internalPinShape(key, goal, canUnpin = true) {
+    internalPinShape(key, goal, canUnpin = true, className = null) {
         const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(key);
 
         const element = makeDiv(this.element, null, ["shape"]);
         const canvas = definition.generateAsCanvas(120);
         element.appendChild(canvas);
+
+        if (className) {
+            element.classList.add(className);
+        }
 
         let detector = null;
         if (canUnpin) {

@@ -31,6 +31,14 @@
             @include S(height, 25px);
             grid-column: 1 / 2;
             grid-row: 1 / 3;
+            pointer-events: all;
+            transition: transform 0.1s ease-in-out;
+            position: relative;
+            z-index: 20;
+            &:hover {
+                transform: scale(2) translateX(#{D(5px)});
+                z-index: 21;
+            }
         }
 
         > .amountLabel,
@@ -64,19 +72,27 @@
             grid-row: 1 / 2;
         }
 
-        &.marked .amountLabel {
-            &::after {
-                content: " ";
-                position: absolute;
-                display: inline-block;
-                @include S(width, 9px);
-                @include S(height, 9px);
-                opacity: 0.8;
-                @include S(top, -4px);
-                @include S(left, -4px);
-                background: uiResource("icons/current_goal_marker.png") center center / contain no-repeat;
+        &.goal,
+        &.blueprint {
+            .amountLabel {
+                &::after {
+                    content: " ";
+                    position: absolute;
+                    display: inline-block;
+                    @include S(width, 8px);
+                    @include S(height, 8px);
+                    opacity: 0.8;
+                    @include S(top, 4px);
+                    @include S(left, -7px);
+                    background: uiResource("icons/current_goal_marker.png") center center / contain no-repeat;
 
-                @include DarkThemeInvert;
+                    @include DarkThemeInvert;
+                }
+            }
+
+            &.blueprint .amountLabel::after {
+                background-image: uiResource("icons/blueprint_marker.png");
+                background-size: 90%;
             }
         }
     }
