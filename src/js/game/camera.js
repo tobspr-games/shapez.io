@@ -442,9 +442,8 @@ export class Camera extends BasicSerializableObject {
             this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.middle);
         } else if (event.button === 2) {
             this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.right);
-        } else {
-            this.root.app.inputMgr.handleKeydown(event);
         }
+        this.root.app.inputMgr.handleKeydown(event);
         return false;
     }
 
@@ -486,9 +485,7 @@ export class Camera extends BasicSerializableObject {
         if (!this.checkPreventDoubleMouse()) {
             return;
         }
-        if (event.button >= 3) {
-            this.root.app.inputMgr.handleKeyup(event);
-        }
+        this.root.app.inputMgr.handleKeyup(event);
 
         this.combinedSingleTouchStopHandler(event.clientX, event.clientY);
         return false;
