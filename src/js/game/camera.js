@@ -436,11 +436,11 @@ export class Camera extends BasicSerializableObject {
         }
 
         this.touchPostMoveVelocity = new Vector(0, 0);
-        if (event.which === 1) {
+        if (event.button === 0) {
             this.combinedSingleTouchStartHandler(event.clientX, event.clientY);
-        } else if (event.which === 2) {
+        } else if (event.button === 1) {
             this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.middle);
-        } else if (event.which === 3) {
+        } else if (event.button === 2) {
             this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.right);
         }
         return false;
@@ -460,7 +460,7 @@ export class Camera extends BasicSerializableObject {
             return;
         }
 
-        if (event.which === 1) {
+        if (event.button === 0) {
             this.combinedSingleTouchMoveHandler(event.clientX, event.clientY);
         }
 
