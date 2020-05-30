@@ -185,10 +185,10 @@ export class InputDistributor {
      * @param {KeyboardEvent | MouseEvent} event
      */
     handleKeydown(event) {
-        const keyCode = event instanceof MouseEvent ? event.button : event.keyCode;
+        const keyCode = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
         if (
-            keyCode === 3 ||
-            keyCode === 4 || // MB3 / MB4
+            keyCode === 4 || // MB4
+            keyCode === 5 || // MB5
             keyCode === 9 || // TAB
             keyCode === 16 || // SHIFT
             keyCode === 17 || // CTRL
@@ -225,7 +225,7 @@ export class InputDistributor {
      * @param {KeyboardEvent | MouseEvent} event
      */
     handleKeyup(event) {
-        const keyCode = event instanceof MouseEvent ? event.button : event.keyCode;
+        const keyCode = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
         this.keysDown.delete(keyCode);
 
         this.forwardToReceiver("keyup", {

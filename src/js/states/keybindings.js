@@ -127,7 +127,7 @@ export class KeybindingsState extends TextualGameState {
                 return;
             }
             event.preventDefault();
-            const keyCode = event.button;
+            const keyCode = event.button + 1;
 
             this.app.settings.updateKeybindingOverride(id, keyCode);
 
