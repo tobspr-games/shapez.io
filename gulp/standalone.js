@@ -182,10 +182,10 @@ function gulptasksStandalone($, gulp, buildFolder) {
         "standalone.package.prod",
         $.sequence("standalone.prepare", [
             "standalone.package.prod.win64",
-            // "standalone.package.prod.linux64",
+            "standalone.package.prod.linux64",
+            "standalone.package.prod.darwin64",
             // "standalone.package.prod.win32",
             // "standalone.package.prod.linux32",
-            // "standalone.package.prod.darwin64"
         ])
     );
 }

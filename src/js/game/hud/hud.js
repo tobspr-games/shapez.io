@@ -48,8 +48,8 @@ export class GameHUD {
         this.parts = {
             processingOverlay: new HUDProcessingOverlay(this.root),
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
-            buildingPlacer: new HUDBuildingPlacer(this.root),
             blueprintPlacer: new HUDBlueprintPlacer(this.root),
+            buildingPlacer: new HUDBuildingPlacer(this.root),
             unlockNotification: new HUDUnlockNotification(this.root),
             gameMenu: new HUDGameMenu(this.root),
             massSelector: new HUDMassSelector(this.root),
