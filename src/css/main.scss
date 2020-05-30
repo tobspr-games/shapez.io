@@ -102,7 +102,9 @@ body.uiHidden {
     #ingame_HUD_MassSelector,
     #ingame_HUD_PinnedShapes,
     #ingame_HUD_Notifications,
-    #ingame_HUD_TutorialHints {
+    #ingame_HUD_TutorialHints,
+    #ingame_HUD_Waypoints,
+    #ingame_HUD_Waypoints_Hint {
         display: none !important;
     }
 }

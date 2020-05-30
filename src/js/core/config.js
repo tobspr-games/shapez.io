@@ -94,6 +94,7 @@ export const globalConfig = {
         // showChunkBorders: true,
         // rewardsInstant: true,
         allBuildingsUnlocked: true,
+        blueprintsNoCost: true,
         // upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
@@ -105,6 +106,11 @@ export const globalConfig = {
         // disableMapOverview: true,
         disableTutorialHints: true,
         disableUpgradeNotification: true,
+        // instantBelts: true,
+        // instantProcessors: true,
+        // instantMiners: true,
+
+        // renderForTrailer: true,
         /* dev:end */
     },
 
@@ -130,4 +136,15 @@ globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5
 if (globalConfig.debug.disableMapOverview) {
     globalConfig.mapChunkOverviewMinZoom = 0;
     globalConfig.mapChunkPrerenderMinZoom = 0;
+}
+
+if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+    globalConfig.debug.framePausesBetweenTicks = 32;
+    // globalConfig.mapChunkOverviewMinZoom = 0.0;
+    // globalConfig.mapChunkPrerenderMinZoom = globalConfig.mapChunkOverviewMinZoom;
+    // globalConfig.debug.instantBelts = true;
+    // globalConfig.debug.instantProcessors = true;
+    // globalConfig.debug.instantMiners = true;
+    globalConfig.debug.disableSavegameWrite = true;
+    // globalConfig.beltSpeedItemsPerSecond *= 2;
 }

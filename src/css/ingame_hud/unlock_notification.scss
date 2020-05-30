@@ -143,6 +143,12 @@
                 cursor: default;
             }
 
+            &.unlocked {
+                &::after {
+                    animation: none !important;
+                }
+            }
+
             &::after {
                 content: " ";
                 display: inline-block;
@@ -153,7 +159,7 @@
                 bottom: 0;
                 background: rgba(0, 10, 20, 0.8);
 
-                @include InlineAnimation(10s linear) {
+                @include InlineAnimation(5s linear) {
                     0% {
                         left: 0;
                     }

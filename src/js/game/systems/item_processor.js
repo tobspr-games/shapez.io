@@ -26,6 +26,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
             );
 
+            if (G_IS_DEV && globalConfig.debug.instantProcessors) {
+                processorComp.secondsUntilEject = 0;
+            }
+
             // Check if we have any finished items we can eject
             if (
                 processorComp.secondsUntilEject === 0 && // it was processed in time

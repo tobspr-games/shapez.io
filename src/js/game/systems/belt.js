@@ -206,14 +206,18 @@ export class BeltSystem extends GameSystemWithFilter {
             this.computeBeltCache();
         }
 
+        // Divide by item spacing on belts since we use throughput and not speed
+        let beltSpeed =
+            this.root.hubGoals.getBeltBaseSpeed() *
+            this.root.dynamicTickrate.deltaSeconds *
+            globalConfig.itemSpacingOnBelts;
+        if (G_IS_DEV && globalConfig.debug.instantBelts) {
+            beltSpeed *= 100;
+        }
+
         for (let i = 0; i < this.beltCache.length; ++i) {
             const { entity, followUp } = this.beltCache[i];
 
-            // Divide by item spacing on belts since we use throughput and not speed
-            const beltSpeed =
-                this.root.hubGoals.getBeltBaseSpeed() *
-                this.root.dynamicTickrate.deltaSeconds *
-                globalConfig.itemSpacingOnBelts;
             const beltComp = entity.components.Belt;
             const items = beltComp.sortedItems;
 

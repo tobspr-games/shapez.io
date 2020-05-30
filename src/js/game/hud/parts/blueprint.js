@@ -7,6 +7,7 @@ import { GameRoot } from "../../root";
 import { findNiceIntegerValue } from "../../../core/utils";
 import { Math_pow } from "../../../core/builtins";
 import { blueprintShape } from "../../upgrades";
+import { globalConfig } from "../../../core/config";
 
 const logger = createLogger("blueprint");
 
@@ -54,6 +55,9 @@ export class Blueprint {
      * Returns the cost of this blueprint in shapes
      */
     getCost() {
+        if (G_IS_DEV && globalConfig.debug.blueprintsNoCost) {
+            return 0;
+        }
         return findNiceIntegerValue(4 * Math_pow(this.entities.length, 1.1));
     }
 

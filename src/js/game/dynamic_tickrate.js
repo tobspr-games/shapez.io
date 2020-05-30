@@ -26,6 +26,10 @@ export class DynamicTickrate {
         this.averageFps = 60;
 
         this.setTickRate(60);
+
+        if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+            this.setTickRate(300);
+        }
     }
 
     onFrameRendered() {
@@ -56,6 +60,10 @@ export class DynamicTickrate {
      * Increases the tick rate marginally
      */
     increaseTickRate() {
+        if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+            return;
+        }
+
         const desiredFps = this.root.app.settings.getDesiredFps();
         this.setTickRate(Math_round(Math_min(desiredFps, this.currentTickRate * 1.2)));
     }
@@ -64,6 +72,10 @@ export class DynamicTickrate {
      * Decreases the tick rate marginally
      */
     decreaseTickRate() {
+        if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+            return;
+        }
+
         const desiredFps = this.root.app.settings.getDesiredFps();
         this.setTickRate(Math_round(Math_max(desiredFps / 2, this.currentTickRate * 0.8)));
     }

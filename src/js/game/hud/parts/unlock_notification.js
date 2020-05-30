@@ -90,10 +90,15 @@ export class HUDUnlockNotification extends BaseHUDPart {
         }
 
         this.element.querySelector("button.close").classList.remove("unlocked");
-        this.buttonShowTimeout = setTimeout(
-            () => this.element.querySelector("button.close").classList.add("unlocked"),
-            G_IS_DEV ? 100 : 10000
-        );
+
+        if (this.root.app.settings.getAllSettings().offerHints) {
+            this.buttonShowTimeout = setTimeout(
+                () => this.element.querySelector("button.close").classList.add("unlocked"),
+                G_IS_DEV ? 100 : 5000
+            );
+        } else {
+            this.element.querySelector("button.close").classList.add("unlocked");
+        }
     }
 
     cleanup() {

@@ -228,7 +228,7 @@
                 @include S(grid-column-gap, 5px);
                 @include S(grid-row-gap, 3px);
 
-                .internalId {
+                .playtime {
                     grid-column: 1 / 2;
                     grid-row: 2 / 3;
                     @include SuperSmallText;

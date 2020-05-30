@@ -572,6 +572,7 @@ keybindings:
 
         mapZoomIn: Zoom in
         mapZoomOut: Zoom out
+        createMarker: Create Marker
 
         menuOpenShop: Upgrades
         menuOpenStats: Statistics

@@ -53,10 +53,6 @@ export class HubGoals extends BasicSerializableObject {
             }
             this.upgradeImprovements[upgradeId] = totalImprovement;
         }
-
-        if (G_IS_DEV) {
-            this.storedShapes[blueprintShape] = 1000;
-        }
     }
 
     /**
@@ -80,10 +76,6 @@ export class HubGoals extends BasicSerializableObject {
          * @type {Object<string, number>}
          */
         this.storedShapes = {};
-
-        if (G_IS_DEV) {
-            this.storedShapes[blueprintShape] = 1000;
-        }
 
         /**
          * Stores the levels for all upgrades
@@ -128,9 +120,9 @@ export class HubGoals extends BasicSerializableObject {
      */
     takeShapeByKey(key, amount) {
         assert(this.getShapesStoredByKey(key) >= amount, "Can not afford: " + key + " x " + amount);
-        assert(amount > 0, "Amount <= 0 for " + key);
+        assert(amount >= 0, "Amount < 0 for " + key);
         assert(Number.isInteger(amount), "Invalid amount: " + amount);
-        this.storedShapes[key] -= amount;
+        this.storedShapes[key] = (this.storedShapes[key] || 0) - amount;
         return;
     }
 

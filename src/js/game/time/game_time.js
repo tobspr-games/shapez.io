@@ -113,7 +113,6 @@ export class GameTime extends BasicSerializableObject {
         }
 
         if (this.logicTimeBudget > this.root.dynamicTickrate.deltaMs * maxLogicSteps) {
-            // logger.warn("Skipping logic time steps since more than", maxLogicSteps, "are in queue");
             this.logicTimeBudget = this.root.dynamicTickrate.deltaMs * maxLogicSteps;
         }
     }

@@ -279,7 +279,13 @@ export class MainMenuState extends GameState {
             for (let i = 0; i < games.length; ++i) {
                 const elem = makeDiv(parent, null, ["savegame"]);
 
-                makeDiv(elem, null, ["internalId"], games[i].internalId.substr(0, 6));
+                makeDiv(
+                    elem,
+                    null,
+                    ["playtime"],
+                    formatSecondsToTimeAgo((new Date().getTime() - games[i].lastUpdate) / 1000.0)
+                );
+
                 makeDiv(
                     elem,
                     null,

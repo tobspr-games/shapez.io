@@ -13,7 +13,11 @@ export class MinerSystem extends GameSystemWithFilter {
     }
 
     update() {
-        const miningSpeed = this.root.hubGoals.getMinerBaseSpeed();
+        let miningSpeed = this.root.hubGoals.getMinerBaseSpeed();
+        if (G_IS_DEV && globalConfig.debug.instantMiners) {
+            miningSpeed *= 100;
+        }
+
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
 

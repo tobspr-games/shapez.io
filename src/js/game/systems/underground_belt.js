@@ -32,6 +32,10 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             for (let k = 0; k < undergroundComp.pendingItems.length; ++k) {
                 const item = undergroundComp.pendingItems[k];
                 item[1] = Math_max(0, item[1] - this.root.dynamicTickrate.deltaSeconds);
+
+                if (G_IS_DEV && globalConfig.debug.instantBelts) {
+                    item[1] = 0;
+                }
             }
 
             if (undergroundComp.mode === enumUndergroundBeltMode.sender) {

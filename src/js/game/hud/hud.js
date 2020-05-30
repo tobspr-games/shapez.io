@@ -29,6 +29,10 @@ import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 import { HUDWaypoints } from "./parts/waypoints";
 
+/* dev:start */
+import { TrailerMaker } from "./trailer_maker";
+/* dev:end */
+
 export class GameHUD {
     /**
      * @param {GameRoot} root
@@ -98,6 +102,12 @@ export class GameHUD {
         this.internalInitSignalConnections();
 
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
+
+        /* dev:start */
+        if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+            this.trailerMaker = new TrailerMaker(this.root);
+        }
+        /* dev:end*/
     }
 
     /**
@@ -174,6 +184,10 @@ export class GameHUD {
         for (const key in this.parts) {
             this.parts[key].update();
         }
+
+        /* dev:start */
+        this.trailerMaker.update();
+        /* dev:end*/
     }
 
     /**
