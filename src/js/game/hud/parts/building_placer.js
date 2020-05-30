@@ -131,12 +131,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         if (
             button === enumMouseButton.right &&
             (!this.currentMetaBuilding.get() ||
-                this.root.app.settings.getSetting("deletingDoesntClearCursor"))
+                !this.root.app.settings.getSetting("abortPlacementOnDeletion"))
         ) {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            if (!this.root.app.settings.getSetting("deletingDoesntClearCursor")) {
+            if (this.root.app.settings.getSetting("abortPlacementOnDeletion")) {
                 this.currentMetaBuilding.set(null);
             }
             return STOP_PROPAGATION;
@@ -305,9 +305,9 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.buildingInfoElements.tutorialImage.setAttribute(
             "data-icon",
             "building_tutorials/" +
-                metaBuilding.getId() +
-                (variant === defaultBuildingVariant ? "" : "-" + variant) +
-                ".png"
+            metaBuilding.getId() +
+            (variant === defaultBuildingVariant ? "" : "-" + variant) +
+            ".png"
         );
 
         removeAllChildren(this.buildingInfoElements.additionalInfo);
@@ -345,10 +345,10 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             T.ingame.buildingPlacement.cycleBuildingVariants.replace(
                 "<key>",
                 "<code class='keybinding'>" +
-                    this.root.keyMapper
-                        .getBinding(KEYMAPPINGS.placement.cycleBuildingVariants)
-                        .getKeyCodeString() +
-                    "</code>"
+                this.root.keyMapper
+                    .getBinding(KEYMAPPINGS.placement.cycleBuildingVariants)
+                    .getKeyCodeString() +
+                "</code>"
             )
         );
 
@@ -443,7 +443,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         if (cancelAction) {
             if (
                 this.currentMetaBuilding.get() &&
-                !this.root.app.settings.getSetting("deletingDoesntClearCursor")
+                this.root.app.settings.getSetting("abortPlacementOnDeletion")
             ) {
                 this.currentMetaBuilding.set(null);
             } else {

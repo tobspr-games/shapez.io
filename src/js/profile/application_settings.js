@@ -111,13 +111,13 @@ export const allApplicationSettings = [
         textGetter: rate => rate + " Hz",
         category: categoryGame,
         restartRequired: false,
-        changeCb: (app, id) => {},
+        changeCb: (app, id) => { },
         enabled: !IS_DEMO,
     }),
 
-    new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
-    new BoolSetting("deletingDoesntClearCursor", categoryGame, (app, value) => {}),
-    new BoolSetting("offerHints", categoryGame, (app, value) => {}),
+    new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => { }),
+    new BoolSetting("abortPlacementOnDeletion", categoryGame, (app, value) => { }),
+    new BoolSetting("offerHints", categoryGame, (app, value) => { }),
 ];
 
 export function getApplicationSettingById(id) {
@@ -135,7 +135,7 @@ class SettingsStorage {
         this.refreshRate = "60";
 
         this.alwaysMultiplace = false;
-        this.deletingDoesntClearCursor = false;
+        this.abortPlacementOnDeletion = true;
         this.offerHints = true;
 
         /**
@@ -318,7 +318,7 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 8) {
-            data.settings.deletingDoesntClearCursor = false;
+            data.settings.abortPlacementOnDeletion = true;
             data.version = 8;
         }
 

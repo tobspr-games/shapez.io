@@ -542,10 +542,10 @@ settings:
             description: >-
                 If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
 
-        deletingDoesntClearCursor:
-            title: Deleting doesn't clear cursor
+        abortPlacementOnDeletion:
+            title: Abort Placement on Deletion
             description: >-
-                If enabled, buildings will stay selected when you are deleting objects, until you manually cancel it.
+                If enabled, building placement will be aborted whenever you try to delete a building.
 
         offerHints:
             title: Hints & Tutorials
