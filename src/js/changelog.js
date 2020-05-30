@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.1.2",
-        date: "unreleased",
+        date: "30.05.2020",
         entries: [
             "The official trailer is now ready! Check it out <a href='https://www.youtube.com/watch?v=KyorY1uIqiQ' target='_blank'>here</a>!",
             "The <a href='https://steam.shapez.io' target='_blank'>steam page</a> is now live!",

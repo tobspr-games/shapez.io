@@ -121,6 +121,8 @@ function gulptasksStandalone($, gulp, buildFolder) {
      * @param {boolean=} isRelease
      */
     function packageStandalone(platform, arch, cb, isRelease = false) {
+        const tomlFile = fs.readFileSync(path.join(__dirname, ".itch.toml"));
+
         packager({
             dir: tempDestBuildDir,
             appCopyright: "Tobias Springer",
@@ -150,17 +152,28 @@ function gulptasksStandalone($, gulp, buildFolder) {
                         fs.readFileSync(path.join(__dirname, "..", "LICENSE"))
                     );
 
-                    const playablePath = appPath + "_playable";
-                    fse.copySync(appPath, playablePath);
-                    fs.writeFileSync(path.join(playablePath, "steam_appid.txt"), "1134480");
-                    fs.writeFileSync(
-                        path.join(playablePath, "play.bat"),
-                        "start shapezio --dev --disable-direct-composition --in-process-gpu\r\n"
-                    );
-                    fs.writeFileSync(
-                        path.join(playablePath, "play_local.bat"),
-                        "start shapezio --local --dev --disable-direct-composition --in-process-gpu\r\n"
-                    );
+                    fs.writeFileSync(path.join(appPath, ".itch.toml"), tomlFile);
+
+                    if (platform === "linux" || platform === "darwin") {
+                        fs.writeFileSync(
+                            path.join(appPath, "play.sh"),
+                            "#!/usr/bin/env bash\r\n./shapezio\r\n"
+                        );
+                        fs.chmodSync(path.join(appPath, "play.sh"), 0o775);
+                    } else if (platform === "win32") {
+                        // Optional: Create a playable copy. Shouldn't be required
+                        // const playablePath = appPath + "_playable";
+                        // fse.copySync(appPath, playablePath);
+                        // fs.writeFileSync(path.join(playablePath, "steam_appid.txt"), "1134480");
+                        // fs.writeFileSync(
+                        //     path.join(playablePath, "play.bat"),
+                        //     "start shapezio --dev --disable-direct-composition --in-process-gpu\r\n"
+                        // );
+                        // fs.writeFileSync(
+                        //     path.join(playablePath, "play_local.bat"),
+                        //     "start shapezio --local --dev --disable-direct-composition --in-process-gpu\r\n"
+                        // );
+                    }
                 });
 
                 cb();
