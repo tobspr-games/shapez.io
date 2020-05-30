@@ -35,7 +35,7 @@ export class HUDWaypoints extends BaseHUDPart {
             <span class='desc'>${T.ingame.waypoints.description.replace(
                 "<keybinding>",
                 `<code class='keybinding'>${this.root.keyMapper
-                    .getBinding(KEYMAPPINGS.ingame.createMarker)
+                    .getBinding(KEYMAPPINGS.navigation.createMarker)
                     .getKeyCodeString()}</code>`
             )}</span>
         `
@@ -121,7 +121,9 @@ export class HUDWaypoints extends BaseHUDPart {
             this.domAttach = new DynamicDomAttach(this.root, this.hintElement);
         }
 
-        this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.createMarker).add(this.requestCreateMarker, this);
+        this.root.keyMapper
+            .getBinding(KEYMAPPINGS.navigation.createMarker)
+            .add(this.requestCreateMarker, this);
 
         this.currentMarkerOpacity = 1;
         this.rerenderWaypointList();

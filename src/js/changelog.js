@@ -1,5 +1,16 @@
 export const CHANGELOG = [
     {
+        version: "1.1.2",
+        date: "unreleased",
+        entries: [
+            "Move default key for deleting from 'X' to 'DEL'",
+            "Show confirmation when deleting > 100 buildings",
+            "Reintroduce 'SPACE' keybinding to center on map",
+            "Improved keybinding hints",
+            "Fixed some keybindings showing as 'undefined'",
+        ],
+    },
+    {
         version: "1.1.1",
         date: "28.05.2020",
         entries: ["Fix crash when 'Show Hints' setting was turned off"],

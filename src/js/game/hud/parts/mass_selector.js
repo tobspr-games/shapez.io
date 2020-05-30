@@ -79,7 +79,7 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     confirmDelete() {
-        if (this.selectedUids.size > 500) {
+        if (this.selectedUids.size > 100) {
             const { ok } = this.root.hud.parts.dialogs.showWarning(
                 T.dialogs.massDeleteConfirm.title,
                 T.dialogs.massDeleteConfirm.desc.replace(

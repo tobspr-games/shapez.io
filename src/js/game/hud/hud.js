@@ -186,7 +186,9 @@ export class GameHUD {
         }
 
         /* dev:start */
-        this.trailerMaker.update();
+        if (this.trailerMaker) {
+            this.trailerMaker.update();
+        }
         /* dev:end*/
     }
 

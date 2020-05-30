@@ -20,17 +20,20 @@ export const KEYMAPPINGS = {
     },
 
     ingame: {
-        mapMoveUp: { keyCode: key("W") },
-        mapMoveRight: { keyCode: key("D") },
-        mapMoveDown: { keyCode: key("S") },
-        mapMoveLeft: { keyCode: key("A") },
-
         menuOpenShop: { keyCode: key("F") },
         menuOpenStats: { keyCode: key("G") },
 
         toggleHud: { keyCode: 113 }, // F2
         toggleFPSInfo: { keyCode: 115 }, // F1
+    },
 
+    navigation: {
+        mapMoveUp: { keyCode: key("W") },
+        mapMoveRight: { keyCode: key("D") },
+        mapMoveDown: { keyCode: key("S") },
+        mapMoveLeft: { keyCode: key("A") },
+
+        centerMap: { keyCode: 32 }, // SPACE
         mapZoomIn: { keyCode: 187, repeated: true }, // "+"
         mapZoomOut: { keyCode: 189, repeated: true }, // "-"
 
@@ -62,7 +65,7 @@ export const KEYMAPPINGS = {
         massSelectStart: { keyCode: 17 }, // CTRL
         massSelectSelectMultiple: { keyCode: 16 }, // SHIFT
         massSelectCopy: { keyCode: key("C") },
-        confirmMassDelete: { keyCode: key("X") },
+        confirmMassDelete: { keyCode: 46 }, // DEL
     },
 
     placementModifiers: {

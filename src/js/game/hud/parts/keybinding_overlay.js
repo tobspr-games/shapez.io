@@ -24,24 +24,25 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             [],
             `
             <div class="binding">
-                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.createMarker)}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.createMarker)}</code>
                 <label>${T.ingame.keybindingsOverlay.createMarker}</label>
             </div>
 
             <div class="binding">
                 <code class="keybinding leftMouse noPlacementOnly"></code><i class="noPlacementOnly"></i>
-                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.mapMoveUp)}</code>
-                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.mapMoveLeft)}</code>
-                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.mapMoveDown)}</code>
-                <code class="keybinding">${getKeycode(KEYMAPPINGS.ingame.mapMoveRight)}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.mapMoveUp)}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.mapMoveLeft)}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.mapMoveDown)}</code>
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.mapMoveRight)}</code>
                 <label>${T.ingame.keybindingsOverlay.moveMap}</label>
             </div>               
             
             <div class="binding noPlacementOnly">
-                <code class="keybinding rightMouse"></code><i></i>
-                <code class="keybinding builtinKey">${T.global.keys.control}</code>+
+                <code class="keybinding builtinKey">${getKeycode(
+                    KEYMAPPINGS.massSelect.massSelectStart
+                )}</code>+
                 <code class="keybinding leftMouse"></code>
-                <label>${T.ingame.keybindingsOverlay.removeBuildings}</label>
+                <label>${T.ingame.keybindingsOverlay.selectBuildings}</label>
             </div>
             
             
@@ -62,7 +63,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             </div>
 
             <div class="binding placementOnly">
-                <code class="keybinding builtinKey shift">⇧ ${getKeycode(
+                <code class="keybinding builtinKey shift">${getKeycode(
                     KEYMAPPINGS.placementModifiers.placeMultiple
                 )}</code>
                 <label>${T.ingame.keybindingsOverlay.placeMultiple}</label>
