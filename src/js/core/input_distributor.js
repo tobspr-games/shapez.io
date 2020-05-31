@@ -141,8 +141,13 @@ export class InputDistributor {
     bindToEvents() {
         window.addEventListener("popstate", this.handleBackButton.bind(this), false);
         document.addEventListener("backbutton", this.handleBackButton.bind(this), false);
-        window.addEventListener("keydown", this.handleKeydown.bind(this));
-        window.addEventListener("keyup", this.handleKeyup.bind(this));
+
+        window.addEventListener("keydown", this.handleKeyMouseDown.bind(this));
+        window.addEventListener("keyup", this.handleKeyMouseUp.bind(this));
+
+        window.addEventListener("mousedown", this.handleKeyMouseDown.bind(this));
+        window.addEventListener("mouseup", this.handleKeyMouseUp.bind(this));
+
         window.addEventListener("blur", this.handleBlur.bind(this));
     }
 
@@ -184,7 +189,7 @@ export class InputDistributor {
     /**
      * @param {KeyboardEvent | MouseEvent} event
      */
-    handleKeydown(event) {
+    handleKeyMouseDown(event) {
         const keyCode = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
         if (
             keyCode === 4 || // MB4
@@ -224,7 +229,7 @@ export class InputDistributor {
     /**
      * @param {KeyboardEvent | MouseEvent} event
      */
-    handleKeyup(event) {
+    handleKeyMouseUp(event) {
         const keyCode = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
         this.keysDown.delete(keyCode);
 
