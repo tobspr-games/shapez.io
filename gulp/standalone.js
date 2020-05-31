@@ -155,10 +155,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
                     fs.writeFileSync(path.join(appPath, ".itch.toml"), tomlFile);
 
                     if (platform === "linux" || platform === "darwin") {
-                        fs.writeFileSync(
-                            path.join(appPath, "play.sh"),
-                            "#!/usr/bin/env bash\r\n./shapezio\r\n"
-                        );
+                        fs.writeFileSync(path.join(appPath, "play.sh"), "#!/usr/bin/env bash\n./shapezio\n");
                         fs.chmodSync(path.join(appPath, "play.sh"), 0o775);
                     } else if (platform === "win32") {
                         // Optional: Create a playable copy. Shouldn't be required
