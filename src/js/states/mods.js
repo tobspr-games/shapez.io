@@ -30,17 +30,17 @@ export class ModsState extends TextualGameState {
         return `
 
             <span class="devHint">
-                ${T.mods.dev_hint.replace(
-                    "<modding_docs>",
-                    `<span class='moddingDocsLink'>${T.mods.modding_docs}</span>`
+                ${T.mods.devHint.replace(
+                    "<moddingDocs>",
+                    `<span class='moddingDocsLink'>${T.mods.moddingDocs}</span>`
                 )}
             </span>
             
 
-            <strong class="category_label">${T.mods.installed_mods}</strong>
+            <strong class="category_label">${T.mods.installedMods}</strong>
             <div class="installedMods"></div>
             
-            <strong class="category_label">${T.mods.mods_browser}</strong>
+            <strong class="category_label">${T.mods.modsBrowser}</strong>
             <div class="modGallery"></div>
         `;
     }
@@ -65,7 +65,7 @@ export class ModsState extends TextualGameState {
 
         const mods = this.app.modManager.getMods();
         if (mods.length === 0) {
-            this.installedModsElement.innerHTML = T.mods.no_mods_found;
+            this.installedModsElement.innerHTML = T.mods.noModsFound;
             return;
         }
 
@@ -78,7 +78,7 @@ export class ModsState extends TextualGameState {
 
             const uninstallButton = document.createElement("button");
             uninstallButton.classList.add("styledButton", "uninstallMod");
-            uninstallButton.innerText = T.mods.uninstall_mod;
+            uninstallButton.innerText = T.mods.uninstallMod;
             elem.appendChild(uninstallButton);
             this.trackClicks(uninstallButton, () => this.uninstallMod(mod));
         }
@@ -97,7 +97,7 @@ export class ModsState extends TextualGameState {
             .then(mods => this.rerenderModsGallery(mods))
             .catch(err => {
                 globalWarn(this, "Failed to fetch mod gallery:", err);
-                this.modGalleryElement.innerHTML = T.mods.mod_gallery_fail + " " + err;
+                this.modGalleryElement.innerHTML = T.mods.modGalleryFail + " " + err;
             });
     }
 
@@ -138,7 +138,7 @@ export class ModsState extends TextualGameState {
         if (mod.is_game_changing) {
             const hint = document.createElement("span");
             hint.classList.add("gameChangingHint");
-            hint.innerText = T.mods.gamechanging_hint;
+            hint.innerText = T.mods.gamechangingHint;
             elem.appendChild(hint);
         }
 
@@ -154,7 +154,7 @@ export class ModsState extends TextualGameState {
         removeAllChildren(this.modGalleryElement);
 
         if (mods.length === 0) {
-            this.modGalleryElement.innerHTML = T.mods.no_mods_found;
+            this.modGalleryElement.innerHTML = T.mods.noModsFound;
             return;
         }
 
@@ -167,19 +167,19 @@ export class ModsState extends TextualGameState {
 
             const installCount = document.createElement("span");
             installCount.classList.add("installCount");
-            installCount.innerText = T.mods.install_count.replace("<installs>", "" + mod.install_count);
+            installCount.innerText = T.mods.installCount.replace("<installs>", "" + mod.install_count);
             elem.appendChild(installCount);
 
             if (this.app.modManager.getModByName(mod.name)) {
                 const installedText = document.createElement("span");
-                installedText.innerText = T.mods.mod_installed;
+                installedText.innerText = T.mods.modInstalled;
                 installedText.classList.add("installedText");
                 elem.appendChild(installedText);
                 elem.classList.add("installed");
             } else {
                 const installButton = document.createElement("button");
                 installButton.classList.add("styledButton", "installMod");
-                installButton.innerText = T.mods.install_mod;
+                installButton.innerText = T.mods.installMod;
                 elem.appendChild(installButton);
                 this.trackClicks(installButton, () => this.tryInstallMod(mod));
             }
@@ -198,8 +198,8 @@ export class ModsState extends TextualGameState {
                 closeLoading();
 
                 const { restart } = this.dialogs.showInfo(
-                    T.mods.mod_uninstalled_dialog.title,
-                    T.mods.mod_uninstalled_dialog.desc,
+                    T.mods.modUninstalledDialog.title,
+                    T.mods.modUninstalledDialog.desc,
                     this.app.platformWrapper.getSupportsRestart() ? ["ok:good", "restart:misc"] : ["ok:good"]
                 );
                 if (restart) {
@@ -222,15 +222,15 @@ export class ModsState extends TextualGameState {
      */
     tryInstallMod(mod) {
         const { install } = this.dialogs.showWarning(
-            T.mods.mod_warning.title,
+            T.mods.modWarning.title,
             `
-                    ${T.mods.mod_warning.desc}
+                    ${T.mods.modWarning.desc}
                     <ul>
-                    <li>${T.mods.mod_warning.point_0}</li>
-                    <li>${T.mods.mod_warning.point_1}</li>
-                    <li>${T.mods.mod_warning.point_2}</li>
-                    <li>${T.mods.mod_warning.point_3}</li>
-                    ${mod.is_game_changing ? `<li>${T.mods.mod_warning.disclaimer_gamechanging}</li>` : ""}
+                    <li>${T.mods.modWarning.point0}</li>
+                    <li>${T.mods.modWarning.point1}</li>
+                    <li>${T.mods.modWarning.point2}</li>
+                    <li>${T.mods.modWarning.point3}</li>
+                    ${mod.is_game_changing ? `<li>${T.mods.modWarning.disclaimerGamechanging}</li>` : ""}
                     </ul>
                 `,
             // @ts-ignore
@@ -268,8 +268,8 @@ export class ModsState extends TextualGameState {
                     closeLoading();
 
                     const { restart } = this.dialogs.showInfo(
-                        T.mods.mod_installed_dialog.title,
-                        T.mods.mod_installed_dialog.desc,
+                        T.mods.modInstalledDialog.title,
+                        T.mods.modInstalledDialog.desc,
                         this.app.platformWrapper.getSupportsRestart()
                             ? ["ok:good", "restart:misc"]
                             : ["ok:good"]
