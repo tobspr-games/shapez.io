@@ -55,6 +55,49 @@ global:
         shift: SHIFT
         space: SPACE
 
+mods:
+    title: Mods
+
+    # Links to developer information
+    dev_hint: Interested in creating mods? Check out <modding_docs>!
+    modding_docs: Mod Documentation
+
+    installed_mods: Installed Mods
+    install_count: <installs> mods installed
+    mods_browser: Popular Mods
+    website: Visit Website
+
+    no_mods_found: No mods found
+    mod_gallery_fail: >-
+        Failed to fetch mod gallery:
+
+    install_mod: Install
+    uninstall_mod: Remove
+    mod_installed: Installed
+
+    gamechanging_hint: This mod is gamechanging and thus cannot be removed once added to a game save!
+
+    mod_warning:
+        title: Modded Warning
+        desc: >-
+            Please note the following when installing mods:
+
+        point_0: Mods are not created by the developer.
+        point_1: They may crash and corrupt your games.
+        point_2: Mods are not created by the developer, and the developer (tobspr) is not responsible for any damage caused by mods.
+        point_3: Mods have full access to the game, including other game save files.
+
+        disclaimer_gamechanging: Gamechanging mods cannot be removed once added to a game save.
+
+    mod_installed_dialog:
+        title: Mod Installed
+        desc: The mod has succssfully been installed and will be loaded after a restart.
+
+    mod_uninstalled_dialog:
+        title: Mod Removed
+        desc: The mod has successfully beeen removed and will get unloaded after a restart.
+
+
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Hey!

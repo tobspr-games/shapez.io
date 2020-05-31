@@ -36,6 +36,8 @@ import { MainMenuState } from "./states/main_menu";
 import { MobileWarningState } from "./states/mobile_warning";
 import { PreloadState } from "./states/preload";
 import { SettingsState } from "./states/settings";
+import { ModsState } from "./states/mods";
+import { ModManager } from "./core/mod_manager";
 
 const logger = createLogger("application");
 
@@ -70,6 +72,7 @@ export class Application {
         this.savegameMgr = new SavegameManager(this);
         this.inputMgr = new InputDistributor(this);
         this.backgroundResourceLoader = new BackgroundResourcesLoader(this);
+        this.modManager = new ModManager(this);
 
         // Platform dependent stuff
 
@@ -161,6 +164,7 @@ export class Application {
             KeybindingsState,
             AboutState,
             ChangelogState,
+            ModsState,
         ];
 
         for (let i = 0; i < states.length; ++i) {
