@@ -64,18 +64,36 @@ export class KeybindingsState extends TextualGameState {
                 const editBtn = document.createElement("button");
                 editBtn.classList.add("styledButton", "editKeybinding");
 
+                const mappingDiv2 = document.createElement("span");
+                mappingDiv2.classList.add("mapping");
+                mappingDiv2.classList.add("mapping_2");
+
+                const editBtn2 = document.createElement("button");
+                editBtn2.classList.add("styledButton", "editKeybinding");
+                editBtn2.classList.add("styledButton", "editKeybinding_2");
+
                 const resetBtn = document.createElement("button");
                 resetBtn.classList.add("styledButton", "resetKeybinding");
+                const resetBtn2 = document.createElement("button");
+                resetBtn2.classList.add("styledButton", "resetKeybinding");
+                resetBtn2.classList.add("styledButton", "resetKeybinding_2");
 
                 if (mapped.builtin) {
                     editBtn.classList.add("disabled");
                     resetBtn.classList.add("disabled");
+                    editBtn2.classList.add("disabled");
+                    resetBtn2.classList.add("disabled");
                 } else {
                     this.trackClicks(editBtn, () => this.editKeybinding(keybindingId));
                     this.trackClicks(resetBtn, () => this.resetKeybinding(keybindingId));
+                    this.trackClicks(editBtn2, () => this.editKeybinding(keybindingId + "_2"));
+                    this.trackClicks(resetBtn2, () => this.resetKeybinding(keybindingId + "_2"));
                 }
                 elem.appendChild(editBtn);
                 elem.appendChild(resetBtn);
+                elem.appendChild(mappingDiv2);
+                elem.appendChild(editBtn2);
+                elem.appendChild(resetBtn2);
             }
         }
         this.updateKeybindings();
@@ -144,13 +162,24 @@ export class KeybindingsState extends TextualGameState {
                 if (overrides[keybindingId]) {
                     keyCode = overrides[keybindingId];
                 }
+                let keyCode2 = mapped.keyCode2;
+                if (overrides[keybindingId + "_2"]) {
+                    keyCode2 = overrides[keybindingId + "_2"];
+                }
 
                 const mappingDiv = container.querySelector(".mapping");
                 mappingDiv.innerHTML = getStringForKeyCode(keyCode);
                 mappingDiv.classList.toggle("changed", !!overrides[keybindingId]);
 
+                const mappingDiv2 = container.querySelector(".mapping_2");
+                mappingDiv2.innerHTML = getStringForKeyCode(keyCode2);
+                mappingDiv2.classList.toggle("changed", !!overrides[keybindingId + "_2"]);
+
                 const resetBtn = container.querySelector("button.resetKeybinding");
                 resetBtn.classList.toggle("disabled", mapped.builtin || !overrides[keybindingId]);
+
+                const resetBtn2 = container.querySelector("button.resetKeybinding_2");
+                resetBtn2.classList.toggle("disabled", mapped.builtin || !overrides[keybindingId + "_2"]);
             }
         }
     }

@@ -245,14 +245,16 @@ export class Keybinding {
      * @param {Application} app
      * @param {object} param0
      * @param {number} param0.keyCode
+     * @param {number} param0.keyCode2
      * @param {boolean=} param0.builtin
      * @param {boolean=} param0.repeated
      */
-    constructor(keyMapper, app, { keyCode, builtin = false, repeated = false }) {
+    constructor(keyMapper, app, { keyCode, keyCode2 = 0, builtin = false, repeated = false }) {
         assert(keyCode && Number.isInteger(keyCode), "Invalid key code: " + keyCode);
         this.keyMapper = keyMapper;
         this.app = app;
         this.keyCode = keyCode;
+        this.keyCode2 = keyCode2;
         this.builtin = builtin;
         this.repeated = repeated;
 
@@ -266,7 +268,7 @@ export class Keybinding {
      */
     get pressed() {
         // Check if the key is down
-        if (this.app.inputMgr.keysDown.has(this.keyCode)) {
+        if (this.app.inputMgr.keysDown.has(this.keyCode) || this.app.inputMgr.keysDown.has(this.keyCode2)) {
             // Check if it is the top reciever
             const reciever = this.keyMapper.inputReceiver;
             return this.app.inputMgr.getTopReciever() === reciever;
@@ -304,6 +306,9 @@ export class Keybinding {
     getKeyCodeString() {
         return getStringForKeyCode(this.keyCode);
     }
+    getKeyCodeString2() {
+        return getStringForKeyCode(this.keyCode2);
+    }
 
     /**
      * Remvoes all signal receivers
@@ -336,6 +341,9 @@ export class KeyActionMapper {
                 let payload = Object.assign({}, KEYMAPPINGS[category][key]);
                 if (overrides[key]) {
                     payload.keyCode = overrides[key];
+                }
+                if (overrides[key + "_2"]) {
+                    payload.keyCode2 = overrides[key + "_2"];
                 }
 
                 this.keybindings[key] = new Keybinding(this, this.root.app, payload);
@@ -403,7 +411,10 @@ export class KeyActionMapper {
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode && (initial || binding.repeated)) {
+            if (
+                (binding.keyCode === keyCode || binding.keyCode2 == keyCode) &&
+                (initial || binding.repeated)
+            ) {
                 /** @type {Signal} */
                 const signal = this.keybindings[key].signal;
                 if (signal.dispatch() === STOP_PROPAGATION) {
