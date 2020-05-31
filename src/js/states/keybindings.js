@@ -137,7 +137,7 @@ export class KeybindingsState extends TextualGameState {
 
         dialog.inputReciever.backButton.add(() => {});
         this.dialogs.internalShowDialog(dialog);
-        dialog.element.onmousedown = clickListener;
+        dialog.element.addEventListener("mousedown", clickListener);
 
         this.app.sound.playUiSound(SOUNDS.dialogOk);
     }
