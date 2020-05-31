@@ -8,6 +8,7 @@ import { createLogger } from "../core/logging";
 import { MetaBeltBaseBuilding, arrayBeltVariantToRotation } from "./buildings/belt_base";
 import { SOUNDS } from "../platform/sound";
 import { round2Digits } from "../core/utils";
+import { globalConfig } from "../core/config";
 
 const logger = createLogger("ingame/logic");
 
@@ -199,12 +200,15 @@ export class GameLogic {
     performBulkOperation(operation) {
         logger.log("Running bulk operation ...");
         assert(!this.root.bulkOperationRunning, "Can not run two bulk operations twice");
-        this.root.bulkOperationRunning = true;
+        this.root.bulkOperationRunning = true && !globalConfig.debug.disableBulkOperations;
         const now = performanceNow();
         const returnValue = operation();
         const duration = performanceNow() - now;
         logger.log("Done in", round2Digits(duration), "ms");
-        assert(this.root.bulkOperationRunning, "Bulk operation = false while bulk operation was running");
+        assert(
+            this.root.bulkOperationRunning || globalConfig.debug.disableBulkOperations,
+            "Bulk operation = false while bulk operation was running"
+        );
         this.root.bulkOperationRunning = false;
         this.root.signals.bulkOperationFinished.dispatch();
         return returnValue;

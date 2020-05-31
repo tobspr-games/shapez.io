@@ -60,7 +60,7 @@ export class DynamicTickrate {
      * Increases the tick rate marginally
      */
     increaseTickRate() {
-        if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+        if (G_IS_DEV && globalConfig.debug.renderForTrailer || globalConfig.debug.disableDynamicTickrate) {
             return;
         }
 
@@ -72,7 +72,7 @@ export class DynamicTickrate {
      * Decreases the tick rate marginally
      */
     decreaseTickRate() {
-        if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+        if (G_IS_DEV && globalConfig.debug.renderForTrailer || globalConfig.debug.disableDynamicTickrate) {
             return;
         }
 
