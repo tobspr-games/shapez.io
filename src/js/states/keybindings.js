@@ -122,7 +122,6 @@ export class KeybindingsState extends TextualGameState {
         });
 
         const clickListener = event => {
-            console.log(event);
             if (event.target.tagName == "BUTTON") {
                 return;
             }
