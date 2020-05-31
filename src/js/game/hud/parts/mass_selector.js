@@ -121,7 +121,11 @@ export class HUDMassSelector extends BaseHUDPart {
                 return;
             }
             this.root.hud.signals.buildingsSelectedForCopy.dispatch(Array.from(this.selectedUids));
-            this.selectedUids = new Set();
+            if (
+                !this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.confirmMassDelete).isCurrentlyPressed()
+            ) {
+                this.selectedUids = new Set();
+            }
             this.root.soundProxy.playUiClick();
         } else {
             this.root.soundProxy.playUiError();
