@@ -74,6 +74,7 @@ export class MainMenuState extends GameState {
                     }
                     <button class="playButton styledButton">${T.mainMenu.play}</button>
                     <button class="importButton styledButton">${T.mainMenu.importSavegame}</button>
+                    <button class="modsButton styledButton">${T.mainMenu.mods}</button>
                 </div>
                 
     
@@ -196,6 +197,7 @@ export class MainMenuState extends GameState {
         const qs = this.htmlElement.querySelector.bind(this.htmlElement);
         this.trackClicks(qs(".mainContainer .playButton"), this.onPlayButtonClicked);
         this.trackClicks(qs(".mainContainer .importButton"), this.requestImportSavegame);
+        this.trackClicks(qs(".mainContainer .modsButton"), this.onModsButtonClicked);
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             const games = this.app.savegameMgr.getSavegamesMetaData();
@@ -373,6 +375,10 @@ export class MainMenuState extends GameState {
 
     onSettingsButtonClicked() {
         this.moveToState("SettingsState");
+    }
+
+    onModsButtonClicked() {
+        this.moveToState("ModsState");
     }
 
     doStartNewGame() {

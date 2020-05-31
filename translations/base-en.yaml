@@ -114,6 +114,7 @@ mainMenu:
     play: Play
     changelog: Changelog
     importSavegame: Import
+    mods: Mods
     openSourceHint: This game is open source!
     discordLink: Official Discord Server
 
@@ -337,6 +338,7 @@ ingame:
         buttons:
             continue: Continue
             settings: Settings
+            mods: Mods
             menu: Return to menu
 
     # Bottom left tutorial hints

@@ -39,6 +39,10 @@ export class HUDSettingsMenu extends BaseHUDPart {
                 action: () => this.goToSettings(),
             },
             {
+                title: T.ingame.settingsMenu.buttons.mods,
+                action: () => this.goToMods(),
+            },
+            {
                 title: T.ingame.settingsMenu.buttons.menu,
                 action: () => this.returnToMenu(),
             },
@@ -71,6 +75,10 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
     goToSettings() {
         this.root.gameState.goToSettings();
+    }
+
+    goToMods() {
+        this.root.gameState.goToMods();
     }
 
     shouldPauseGame() {

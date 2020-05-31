@@ -155,6 +155,13 @@ export class InGameState extends GameState {
     }
 
     /**
+     * Goes back to the mods state
+     */
+    goToMods() {
+        this.saveThenGoToState("ModsState");
+    }
+
+    /**
      * Goes back to the settings state
      */
     goToKeybindings() {
