@@ -53,7 +53,7 @@ export class MetaSorterBuilding extends MetaBuilding {
             })
         );
         entity.addComponent(
-            new SorterComponent({})
+            new SorterComponent()
         );
         entity.addComponent(
             new ItemEjectorComponent({
@@ -66,10 +66,10 @@ export class MetaSorterBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         direction: enumDirection.top,
                     },
-                    //{
-                    //    pos: new Vector(0, 0),
-                    //    direction: enumDirection.right,
-                    //},
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                    },
                 ],
             })
         );
