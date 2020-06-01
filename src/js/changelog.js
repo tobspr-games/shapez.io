@@ -3,6 +3,7 @@ export const CHANGELOG = [
         version: "1.1.3",
         date: "unreleased",
         entries: [
+            "Added setting to configure zoom / mouse wheel / touchpad sensitivity",
             "Allow binding mouse buttons to actions (by Dimava)",
             "Fix belts being too slow when copied via blueprint (by Dimava)",
         ],

@@ -105,7 +105,7 @@ export const globalConfig = {
         // testAds: true,
         // disableMapOverview: true,
         disableTutorialHints: true,
-        // disableUpgradeNotification: true,
+        disableUpgradeNotification: true,
         // instantBelts: true,
         // instantProcessors: true,
         // instantMiners: true,
