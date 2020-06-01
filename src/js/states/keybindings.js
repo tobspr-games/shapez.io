@@ -121,9 +121,23 @@ export class KeybindingsState extends TextualGameState {
             this.updateKeybindings();
         });
 
-        dialog.inputReciever.backButton.add(() => {});
+        const clickListener = event => {
+            if (event.target.tagName == "BUTTON") {
+                return;
+            }
+            event.preventDefault();
+            const keyCode = event.button + 1;
 
+            this.app.settings.updateKeybindingOverride(id, keyCode);
+
+            this.dialogs.closeDialog(dialog);
+            this.updateKeybindings();
+        };
+
+        dialog.inputReciever.backButton.add(() => {});
         this.dialogs.internalShowDialog(dialog);
+        dialog.element.addEventListener("mousedown", clickListener);
+
         this.app.sound.playUiSound(SOUNDS.dialogOk);
     }
 

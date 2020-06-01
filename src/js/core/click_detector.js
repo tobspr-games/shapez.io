@@ -311,7 +311,7 @@ export class ClickDetector {
         const position = /** @type {typeof ClickDetector} */ (this.constructor).extractPointerPosition(event);
 
         if (event instanceof MouseEvent) {
-            const isRightClick = event.which == 3;
+            const isRightClick = event.button === 2;
             if (isRightClick) {
                 // Ignore right clicks
                 this.rightClick.dispatch(position, event);
@@ -384,7 +384,7 @@ export class ClickDetector {
         }
 
         if (event instanceof MouseEvent) {
-            const isRightClick = event.which == 3;
+            const isRightClick = event.button === 2;
             if (isRightClick) {
                 return;
             }

@@ -89,6 +89,16 @@ for (const categoryId in KEYMAPPINGS) {
  */
 export function getStringForKeyCode(code) {
     switch (code) {
+        case 1:
+            return "LMB";
+        case 2:
+            return "MMB";
+        case 3:
+            return "RMB";
+        case 4:
+            return "MB4";
+        case 5:
+            return "MB5";
         case 8:
             return "⌫";
         case 9:
