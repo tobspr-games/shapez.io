@@ -13,6 +13,7 @@
         "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*",
         "publishOnItchWindows": "butler push tmp_standalone_files/shapez.io-standalone-win32-x64 tobspr/shapezio:windows --userversion-file version",
         "publishOnItchLinux": "butler push tmp_standalone_files/shapez.io-standalone-linux-x64 tobspr/shapezio:linux-experimental --userversion-file version",
+        "publishOnItch": "yarn publishOnItchWindows && yarn publishOnItchLinux",
         "publishOnSteam": "cd gulp/steampipe && ./upload.bat",
         "publishStandalone": "yarn publishOnItch && yarn publishOnSteam",
         "publishWeb": "cd gulp && yarn main.deploy.prod",

@@ -375,19 +375,6 @@ export class MainMenuState extends GameState {
         this.moveToState("SettingsState");
     }
 
-    doStartNewGame() {
-        this.app.analytics.trackUiClick("startgame");
-
-        this.app.adProvider.showVideoAd().then(() => {
-            const savegame = this.app.savegameMgr.createNewSavegame();
-
-            this.moveToState("InGameState", {
-                savegame,
-            });
-            this.app.analytics.trackUiClick("startgame_adcomplete");
-        });
-    }
-
     onPlayButtonClicked() {
         if (
             IS_DEMO &&
@@ -399,17 +386,15 @@ export class MainMenuState extends GameState {
             return;
         }
 
-        if (IS_DEMO) {
-            this.app.analytics.trackUiClick("startgame_pre_show");
-            const { ok } = this.dialogs.showWarning(
-                T.dialogs.demoExplanation.title,
-                T.dialogs.demoExplanation.desc
-            );
-            ok.add(() => this.doStartNewGame());
-            return;
-        }
+        this.app.analytics.trackUiClick("startgame");
+        this.app.adProvider.showVideoAd().then(() => {
+            const savegame = this.app.savegameMgr.createNewSavegame();
 
-        this.doStartNewGame();
+            this.moveToState("InGameState", {
+                savegame,
+            });
+            this.app.analytics.trackUiClick("startgame_adcomplete");
+        });
     }
 
     onLeave() {

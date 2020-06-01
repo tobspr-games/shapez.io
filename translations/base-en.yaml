@@ -159,10 +159,6 @@ dialogs:
         title: Update available
         desc: There is an update for this game available!
 
-    demoExplanation:
-        title: Notice from the Developer
-        desc: I am developing this game in my free time, and I hope you enjoy it! If you do, please consider to buy the standalone version!
-
     oneSavegameLimit:
         title: Limited savegames
         desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!

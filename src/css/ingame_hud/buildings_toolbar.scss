@@ -41,8 +41,8 @@
             background: center center / 70% no-repeat;
 
             &:not(.unlocked) {
-                @include S(width, 30px);
-                opacity: 0.8;
+                @include S(width, 20px);
+                opacity: 0.15;
                 background-image: none !important;
 
                 &::before {

@@ -23,10 +23,6 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             "ingame_HUD_KeybindingOverlay",
             [],
             `
-            <div class="binding">
-                <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.createMarker)}</code>
-                <label>${T.ingame.keybindingsOverlay.createMarker}</label>
-            </div>
 
             <div class="binding">
                 <code class="keybinding leftMouse noPlacementOnly"></code><i class="noPlacementOnly"></i>
