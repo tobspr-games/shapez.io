@@ -216,6 +216,7 @@ ingame:
         toggleHud: Toggle HUD
         placeBuilding: Place building
         createMarker: Create Marker
+        delete: Destroy
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -565,7 +566,7 @@ settings:
         offerHints:
             title: Hints & Tutorials
             description: >-
-                Whether to offer hints and tutorials while playing.
+                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
 
 keybindings:
     title: Keybindings

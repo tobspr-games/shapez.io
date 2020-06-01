@@ -96,12 +96,20 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
 
                         const initScript = document.createElement("script");
                         initScript.textContent = `
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-                            gtag('config', 'UA-165342524-1', { anonymize_ip: true });
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'UA-165342524-1', { anonymize_ip: true });
                         `;
                         document.head.appendChild(initScript);
+
+                        const abTestingScript = document.createElement("script");
+                        abTestingScript.setAttribute(
+                            "src",
+                            "https://www.googleoptimize.com/optimize.js?id=OPT-M5NHCV7"
+                        );
+                        abTestingScript.setAttribute("async", "");
+                        document.head.appendChild(abTestingScript);
                     }
 
                     // Do not need to preload in app or standalone

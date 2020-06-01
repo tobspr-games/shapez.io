@@ -31,8 +31,15 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.mapMoveDown)}</code>
                 <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.mapMoveRight)}</code>
                 <label>${T.ingame.keybindingsOverlay.moveMap}</label>
-            </div>               
-            
+                </div>               
+                
+                
+                
+            <div class="binding noPlacementOnly">
+                <code class="keybinding rightMouse"></code>
+                <label>${T.ingame.keybindingsOverlay.delete}</label>
+            </div>
+
             <div class="binding noPlacementOnly">
                 <code class="keybinding builtinKey">${getKeycode(
                     KEYMAPPINGS.massSelect.massSelectStart

@@ -199,7 +199,7 @@ export class MainMenuState extends GameState {
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             const games = this.app.savegameMgr.getSavegamesMetaData();
-            if (games.length > 0) {
+            if (games.length > 0 && globalConfig.debug.resumeGameOnFastEnter) {
                 this.resumeGame(games[0]);
             } else {
                 this.onPlayButtonClicked();

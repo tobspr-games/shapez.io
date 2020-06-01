@@ -76,7 +76,7 @@
         }
     }
 
-    > button {
+    .buttonContainer button {
         @include PlainText;
         color: #fff;
         border-color: rgba(0, 0, 0, 0.1);
@@ -86,7 +86,7 @@
         @include S(margin-right, 3px);
         @include IncreasedClickArea(0px);
         @include ButtonText;
-        @include S(min-height, 30px);
+        @include S(min-height, 40px);
         transition: all 0.12s ease-in-out;
         transition-property: opacity, transform;
         display: inline-flex;

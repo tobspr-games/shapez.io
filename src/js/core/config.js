@@ -109,6 +109,7 @@ export const globalConfig = {
         // instantBelts: true,
         // instantProcessors: true,
         // instantMiners: true,
+        // resumeGameOnFastEnter: false,
 
         // renderForTrailer: true,
         /* dev:end */
