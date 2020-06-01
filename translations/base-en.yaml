@@ -704,6 +704,20 @@ settings:
         debug_disableMapOverview: null
         debug_disableTutorialHints: null
         debug_disableUpgradeNotification: null
+        debug_disableShortNumbers: null
+        debug_disableBulkOperations: null
+        debug_disableDynamicTickrate: 
+            title: Debug / Disable Dynamic Tickrate
+            description: >-
+                Make the game run at 60 UPS even if it does not want.
+        debug_disableInternalCheckTile: 
+            title: Assert / Disable CheckTile Asserts
+            description: >-
+                Speed ups the game at the cost of not checking obvious things.
+        debug_disableGetTileAsserts: 
+            title: Assert / Disable GetTile Asserts
+            description: >-
+                Speed ups the game at the cost of not checking obvious things.
 
 keybindings:
     title: Keybindings
