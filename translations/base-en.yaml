@@ -310,11 +310,20 @@ ingame:
     blueprintPlacer:
         cost: Cost
 
+    # Map markers
     waypoints:
         waypoints: Markers
         hub: HUB
         description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
         creationSuccessNotification: Marker has been created.
+
+    # Interactive tutorial
+    interactiveTutorial:
+        title: Tutorial
+        hints:
+            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_2_conveyor: Connect the extractor with a <strong>conveyor belt</strong> to your hub!
+            1_3_expand: This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.
 
 # All shop upgrades
 shopUpgrades:

@@ -1,8 +1,9 @@
 #ingame_HUD_DebugInfo {
     position: absolute;
     @include S(bottom, 5px);
-    @include S(left, 5px);
+    @include S(right, 5px);
 
+    text-align: right;
     font-size: 15px;
     display: flex;
     line-height: 15px;

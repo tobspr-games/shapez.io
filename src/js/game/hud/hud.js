@@ -31,6 +31,7 @@ import { HUDWaypoints } from "./parts/waypoints";
 
 /* dev:start */
 import { TrailerMaker } from "./trailer_maker";
+import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 /* dev:end */
 
 export class GameHUD {
@@ -87,6 +88,7 @@ export class GameHUD {
         }
         if (this.root.app.settings.getAllSettings().offerHints) {
             this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
+            this.parts.interactiveTutorial = new HUDInteractiveTutorial(this.root);
         }
 
         const frag = document.createDocumentFragment();

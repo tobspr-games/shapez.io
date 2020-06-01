@@ -10,7 +10,10 @@ import { AtlasDefinition, atlasFiles } from "./atlas_definitions";
 
 const logger = createLogger("background_loader");
 
-const essentialMainMenuSprites = ["logo.png", ...G_ALL_UI_IMAGES.filter(src => src.startsWith("ui/"))];
+const essentialMainMenuSprites = [
+    "logo.png",
+    ...G_ALL_UI_IMAGES.filter(src => src.startsWith("ui/") && src.indexOf(".gif") < 0),
+];
 const essentialMainMenuSounds = [
     SOUNDS.uiClick,
     SOUNDS.uiError,
@@ -21,7 +24,7 @@ const essentialMainMenuSounds = [
 ];
 
 const essentialBareGameAtlases = atlasFiles;
-const essentialBareGameSprites = G_ALL_UI_IMAGES;
+const essentialBareGameSprites = G_ALL_UI_IMAGES.filter(src => src.indexOf(".gif") < 0);
 const essentialBareGameSounds = [MUSIC.theme];
 
 const additionalGameSprites = [];
