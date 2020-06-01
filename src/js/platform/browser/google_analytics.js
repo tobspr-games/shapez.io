@@ -66,11 +66,6 @@ export class GoogleAnalyticsImpl extends AnalyticsInterface {
     }
 
     trackUiClick(elementName) {
-        // Only track a fraction of clicks to not annoy google analytics
-        if (Math_random() < 0.9) {
-            return;
-        }
-
         const stateKey = this.app.stateMgr.getCurrentState().key;
         const fullSelector = stateKey + ">" + elementName;
 

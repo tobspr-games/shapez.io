@@ -10,8 +10,9 @@ import { BaseSavegameInterface } from "./savegame_interface";
 import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
 import { SavegameInterface_V1000 } from "./schemas/1000";
-import { getSavegameInterface } from "./savegame_interface_registry";
+import { getSavegameInterface, savegameInterfaces } from "./savegame_interface_registry";
 import { SavegameInterface_V1001 } from "./schemas/1001";
+import { SavegameInterface_V1002 } from "./schemas/1002";
 
 const logger = createLogger("savegame");
 
@@ -30,6 +31,11 @@ export class Savegame extends ReadWriteProxy {
 
         /** @type {import("./savegame_typedefs").SavegameData} */
         this.currentData = this.getDefaultData();
+
+        assert(
+            savegameInterfaces[Savegame.getCurrentVersion()],
+            "Savegame interface not defined: " + Savegame.getCurrentVersion()
+        );
     }
 
     //////// RW Proxy Impl //////////
@@ -38,14 +44,14 @@ export class Savegame extends ReadWriteProxy {
      * @returns {number}
      */
     static getCurrentVersion() {
-        return 1001;
+        return 1002;
     }
 
     /**
      * @returns {typeof BaseSavegameInterface}
      */
     static getReaderClass() {
-        return SavegameInterface_V1001;
+        return savegameInterfaces[Savegame.getCurrentVersion()];
     }
 
     /**
@@ -80,6 +86,11 @@ export class Savegame extends ReadWriteProxy {
         if (data.version === 1000) {
             SavegameInterface_V1001.migrate1000to1001(data);
             data.version = 1001;
+        }
+
+        if (data.version === 1001) {
+            SavegameInterface_V1002.migrate1001to1002(data);
+            data.version = 1002;
         }
 
         return ExplainedResult.good();

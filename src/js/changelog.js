@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "1.1.3",
+        date: "unreleased",
+        entries: [
+            "Allow binding mouse buttons to actions (by Dimava)",
+            "Fix belts being too slow when copied via blueprint (by Dimava)",
+        ],
+    },
+    {
         version: "1.1.2",
         date: "30.05.2020",
         entries: [

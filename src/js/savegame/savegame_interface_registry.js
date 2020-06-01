@@ -2,11 +2,13 @@ import { BaseSavegameInterface } from "./savegame_interface";
 import { SavegameInterface_V1000 } from "./schemas/1000";
 import { createLogger } from "../core/logging";
 import { SavegameInterface_V1001 } from "./schemas/1001";
+import { SavegameInterface_V1002 } from "./schemas/1002";
 
 /** @type {Object.<number, typeof BaseSavegameInterface>} */
-const interfaces = {
+export const savegameInterfaces = {
     1000: SavegameInterface_V1000,
     1001: SavegameInterface_V1001,
+    1002: SavegameInterface_V1002,
 };
 
 const logger = createLogger("savegame_interface_registry");
@@ -27,7 +29,7 @@ export function getSavegameInterface(savegame) {
         return null;
     }
 
-    const interfaceClass = interfaces[version];
+    const interfaceClass = savegameInterfaces[version];
     if (!interfaceClass) {
         logger.warn("Version", version, "has no implemented interface!");
         return null;
