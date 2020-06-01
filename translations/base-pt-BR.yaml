@@ -645,4 +645,5 @@ demo:
         oneGameLimit: Limitado para um savegamne
         customizeKeybindings: Modificando Teclas
         creatingMarkers: Criando marcações
+        
     settingNotAvailable: Não disponível na versão demo.
