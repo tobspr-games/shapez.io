@@ -1,5 +1,10 @@
 export const CHANGELOG = [
     {
+        version: "1.1.4",
+        date: "01.06.2020",
+        entries: ["Add 'interactive' tutorial for the first level to improve onboarding experience"],
+    },
+    {
         version: "1.1.3",
         date: "01.06.2020",
         entries: [
