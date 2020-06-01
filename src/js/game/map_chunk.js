@@ -318,10 +318,12 @@ export class MapChunk {
     getTileContentFromWorldCoords(worldX, worldY) {
         const localX = worldX - this.tileX;
         const localY = worldY - this.tileY;
-        assert(localX >= 0, "Local X is < 0");
-        assert(localY >= 0, "Local Y is < 0");
-        assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
-        assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
+        if (!globalConfig.debug.disableGetTileAsserts) {
+            assert(localX >= 0, "Local X is < 0");
+            assert(localY >= 0, "Local Y is < 0");
+            assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
+            assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
+        }
         return this.contents[localX][localY] || null;
     }
 
