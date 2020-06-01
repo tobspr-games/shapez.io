@@ -1,4 +1,4 @@
-import { DrawParameters } from "../../../core/draw_parameters";
+//www.youtube.com/watch?v=KyorY1uIqiQimport { DrawParameters } from "../../../core/draw_parameters";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
 import { Vector } from "../../../core/vector";
@@ -36,6 +36,9 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
             .add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.rotateBlueprint, this);
+        keyActionMapper
+            .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
+            .add(this.abortPlacement, this);
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);

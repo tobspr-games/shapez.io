@@ -105,6 +105,10 @@ export class KeybindingsState extends TextualGameState {
                 event.preventDefault();
             }
 
+            if (event.target && event.target.tagName === "BUTTON" && keyCode === 1) {
+                return;
+            }
+
             if (
                 // Enter
                 keyCode === 13 ||
@@ -122,8 +126,8 @@ export class KeybindingsState extends TextualGameState {
         });
 
         dialog.inputReciever.backButton.add(() => {});
-
         this.dialogs.internalShowDialog(dialog);
+
         this.app.sound.playUiSound(SOUNDS.dialogOk);
     }
 

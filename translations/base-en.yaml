@@ -26,6 +26,13 @@ global:
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
 
+    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
+    suffix:
+        thousands: k
+        millions: M
+        billions: B
+        trillions: T
+
     # Shown for infinitely big numbers
     infinite: inf
 
@@ -127,7 +134,7 @@ dialogs:
 
     editKeybinding:
         title: Change Keybinding
-        desc: Press the key you want to assign, or escape to cancel.
+        desc: Press the key or mouse button you want to assign, or escape to cancel.
 
     resetKeybindingsConfirmation:
         title: Reset keybindings
@@ -511,6 +518,23 @@ settings:
             title: Interface scale
             description: >-
                 Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+            scales:
+                super_small: Super small
+                small: Small
+                regular: Regular
+                large: Large
+                huge: Huge
+
+        scrollWheelSensitivity:
+            title: Zoom sensitivity
+            description: >-
+                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+            sensitivity:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super fast
 
         fullscreen:
             title: Fullscreen

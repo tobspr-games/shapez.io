@@ -8,6 +8,7 @@ import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
 import { THEMES, THEME, applyGameTheme } from "../game/theme";
 import { IS_DEMO } from "../core/config";
+import { T } from "../translations";
 
 const logger = createLogger("application_settings");
 
@@ -18,27 +19,45 @@ export const uiScales = [
     {
         id: "super_small",
         size: 0.6,
-        label: "Super small",
     },
     {
         id: "small",
         size: 0.8,
-        label: "Small",
     },
     {
         id: "regular",
         size: 1,
-        label: "Regular",
     },
     {
         id: "large",
         size: 1.2,
-        label: "Large",
     },
     {
         id: "huge",
         size: 1.4,
-        label: "Huge",
+    },
+];
+
+export const scrollWheelSensitivities = [
+    {
+        id: "super_slow",
+        scale: 0.25,
+    },
+    {
+        id: "slow",
+        scale: 0.5,
+    },
+    {
+        id: "regular",
+        scale: 1,
+    },
+    {
+        id: "fast",
+        scale: 2,
+    },
+    {
+        id: "super_fast",
+        scale: 4,
     },
 ];
 
@@ -47,7 +66,7 @@ export const allApplicationSettings = [
     new EnumSetting("uiScale", {
         options: uiScales.sort((a, b) => a.size - b.size),
         valueGetter: scale => scale.id,
-        textGetter: scale => scale.label,
+        textGetter: scale => T.settings.labels.uiScale.scales[scale.id],
         category: categoryApp,
         restartRequired: false,
         changeCb:
@@ -56,6 +75,7 @@ export const allApplicationSettings = [
              */
             (app, id) => app.updateAfterUiScaleChanged(),
     }),
+
     new BoolSetting(
         "fullscreen",
         categoryApp,
@@ -86,6 +106,18 @@ export const allApplicationSettings = [
          */
         (app, value) => app.sound.setMusicMuted(value)
     ),
+    new EnumSetting("scrollWheelSensitivity", {
+        options: scrollWheelSensitivities.sort((a, b) => a.scale - b.scale),
+        valueGetter: scale => scale.id,
+        textGetter: scale => T.settings.labels.scrollWheelSensitivity.sensitivity[scale.id],
+        category: categoryApp,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => app.updateAfterUiScaleChanged(),
+    }),
 
     // GAME
     new EnumSetting("theme", {
@@ -133,6 +165,7 @@ class SettingsStorage {
         this.musicMuted = false;
         this.theme = "light";
         this.refreshRate = "60";
+        this.scrollWheelSensitivity = "regular";
 
         this.alwaysMultiplace = false;
         this.abortPlacementOnDeletion = true;
@@ -206,6 +239,17 @@ export class ApplicationSettings extends ReadWriteProxy {
             }
         }
         logger.error("Unknown ui scale id:", id);
+        return 1;
+    }
+
+    getScrollWheelSensitivity() {
+        const id = this.getAllSettings().scrollWheelSensitivity;
+        for (let i = 0; i < scrollWheelSensitivities.length; ++i) {
+            if (scrollWheelSensitivities[i].id === id) {
+                return scrollWheelSensitivities[i].scale;
+            }
+        }
+        logger.error("Unknown scroll wheel sensitivity id:", id);
         return 1;
     }
 
@@ -295,7 +339,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 8;
+        return 9;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -318,8 +362,13 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 8) {
-            data.settings.abortPlacementOnDeletion = true;
+            data.settings.scrollWheelSensitivity = "regular";
             data.version = 8;
+        }
+
+        if (data.version < 9) {
+            data.settings.abortPlacementOnDeletion = true;
+            data.version = 9;
         }
 
         return ExplainedResult.good();

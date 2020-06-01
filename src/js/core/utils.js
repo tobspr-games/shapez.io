@@ -24,9 +24,7 @@ export const BOTTOM = new Vector(0, 1);
 export const LEFT = new Vector(-1, 0);
 export const ALL_DIRECTIONS = [TOP, RIGHT, BOTTOM, LEFT];
 
-export const thousand = 1000;
-export const million = 1000 * 1000;
-export const billion = 1000 * 1000 * 1000;
+const bigNumberSuffixTranslationKeys = ["thousands", "millions", "billions", "trillions"];
 
 /**
  * Returns the build id
@@ -435,21 +433,20 @@ export function formatBigNumber(num, divider = ".") {
 
     if (num < 1000) {
         return sign + "" + num;
+    } else {
+        let leadingDigits = num;
+        let suffix = "";
+        for (let suffixIndex = 0; suffixIndex < bigNumberSuffixTranslationKeys.length; ++suffixIndex) {
+            leadingDigits = leadingDigits / 1000;
+            suffix = T.global.suffix[bigNumberSuffixTranslationKeys[suffixIndex]];
+            if (leadingDigits < 1000) {
+                break;
+            }
+        }
+        const leadingDigitsRounded = round1Digit(leadingDigits);
+        const leadingDigitsNoTrailingDecimal = leadingDigitsRounded.toString().replace(".0", "");
+        return sign + leadingDigitsNoTrailingDecimal + suffix;
     }
-    if (num > 10000) {
-        return Math_floor(num / 1000.0) + "k";
-    }
-
-    let rest = num;
-    let out = "";
-
-    while (rest >= 1000) {
-        out = (rest % 1000).toString().padStart(3, "0") + (out !== "" ? divider : "") + out;
-        rest = Math_floor(rest / 1000);
-    }
-
-    out = rest + divider + out;
-    return sign + out;
 }
 
 /**
@@ -731,14 +728,14 @@ export function checkTimerExpired(now, lastTick, tickRate) {
     Client A computes the timer and checks T > lastTick + interval. He computes
 
     30 >= 29.90 + 0.1   <=> 30 >= 30.0000  <=> True  <=> Tick performed
-    
+
     However, this is what it looks on client B:
-    
+
     33 >= 32.90 + 0.1   <=> 33 >= 32.999999999999998 <=> False <=> No tick performed!
-    
+
     This means that Client B will only tick at the *next* frame, which means it from now is out
     of sync by one tick, which means the game will resync further or later and be not able to recover,
-    since it will run into the same issue over and over. 
+    since it will run into the same issue over and over.
     */
 
     // The next tick, in our example it would be 30.0000 / 32.99999999998. In order to fix it, we quantize

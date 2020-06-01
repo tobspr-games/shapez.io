@@ -44,7 +44,7 @@ export class ItemEjectorComponent extends Component {
 
         return new ItemEjectorComponent({
             slots: slotsCopy,
-            instantEject: false,
+            instantEject: this.instantEject,
         });
     }
 

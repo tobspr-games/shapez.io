@@ -6,8 +6,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    color: #fff;
-    text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.1);
+    color: #333438;
+    // text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.1);
+
+    @include DarkThemeOverride {
+        color: #fff;
+    }
 
     > .binding {
         display: inline-grid;
@@ -42,10 +46,13 @@
         }
 
         label {
-            color: $accentColorDark;
+            color: #333438;
             @include SuperSmallText;
             text-transform: uppercase;
-            color: #fff;
+            // color: #fff;
+            @include DarkThemeOverride {
+                color: #fff;
+            }
 
             @include S(margin-left, 5px);
         }

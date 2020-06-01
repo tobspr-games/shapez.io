@@ -38,13 +38,13 @@
         @include SuperSmallText;
         pointer-events: all;
         cursor: pointer;
-        color: #000;
+        color: #333438;
         @include S(padding-left, 11px);
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
         background: uiResource("icons/waypoint.png") left 50% / #{D(8px)} no-repeat;
-        opacity: 0.5;
+        opacity: 0.7;
         @include S(margin-bottom, 1px);
         font-weight: bold;
         &:hover {

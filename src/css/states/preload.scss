@@ -36,6 +36,9 @@
                 @include S(padding, 1px, 2px);
                 @include S(margin-right, 3px);
             }
+            a {
+                color: $colorBlueBright;
+            }
         }
     }
 

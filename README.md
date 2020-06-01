@@ -1,15 +1,15 @@
 # shapez.io
 
 <img src="https://i.imgur.com/Y5Z2iqQ.png" alt="shapez.io Logo">
-<img src="https://i.imgur.com/W25Fkl0.png" alt="shapez.io Screenshot">
 
 This is the source code for shapez.io, an open source base building game inspired by Factorio.
-
 Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
 
-## Playing
-
-You can already play it [here](https://shapez.io).
+-   [Trello Board & Roadmap](https://trello.com/b/ISQncpJP/shapezio)
+-   [Free web version](https://shapez.io)
+-   [itch.io Page](https://tobspr.itch.io/shapezio)
+-   [Steam Page](https://steam.shapez.io)
+-   [Official Discord](https://discord.com/invite/HN7EVzV) <- _Highly recommended to join!_
 
 ## Building
 
@@ -46,3 +46,5 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 For most assets I use Adobe Photoshop, you can find them in `assets/`.
 
 You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when thats done.
+
+<img src="https://i.imgur.com/W25Fkl0.png" alt="shapez.io Screenshot">
