@@ -11,7 +11,11 @@
     border-bottom-width: 0;
     transition: transform 0.12s ease-in-out;
 
-    background: rgba(mix(#ddd, $colorBlueBright, 80%), 0.69);
+    background: rgba(mix(#ddd, $colorBlueBright, 90%), 0.75);
+
+    @include DarkThemeOverride {
+        background: #222428;
+    }
 
     &:not(.visible) {
         transform: translateX(-50%) translateY(#{D(100px)});

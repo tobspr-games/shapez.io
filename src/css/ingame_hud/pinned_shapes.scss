@@ -16,8 +16,8 @@
         grid-template-columns: auto 1fr;
         grid-template-rows: 1fr 1fr;
         @include S(margin-bottom, 4px);
-        color: #fff;
-        text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.2);
+        color: #333438;
+        // text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.2);
 
         &.unpinable {
             > canvas {
@@ -59,7 +59,7 @@
 
         > .goalLabel {
             @include S(font-size, 7px);
-            opacity: 0.5;
+            opacity: 0.9;
             align-self: start;
             justify-self: start;
             font-weight: normal;
@@ -81,7 +81,6 @@
                     display: inline-block;
                     @include S(width, 8px);
                     @include S(height, 8px);
-                    opacity: 0.8;
                     @include S(top, 4px);
                     @include S(left, -7px);
                     background: uiResource("icons/current_goal_marker.png") center center / contain no-repeat;
