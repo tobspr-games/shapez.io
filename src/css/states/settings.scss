@@ -18,7 +18,7 @@
         }
 
         .setting {
-            @include S(padding, 5px);
+            @include S(padding, 10px);
             background: #eeeff5;
             @include S(border-radius, $globalBorderRadius);
             @include S(margin-bottom, 5px);
