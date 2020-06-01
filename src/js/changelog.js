@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.1.3",
-        date: "unreleased",
+        date: "01.06.2020",
         entries: [
             "Added setting to configure zoom / mouse wheel / touchpad sensitivity",
             "Fix belts being too slow when copied via blueprint (by Dimava)",
