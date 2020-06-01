@@ -94,7 +94,7 @@ export class BaseMap extends BasicSerializableObject {
      * @returns {boolean}
      */
     isValidTile(tile) {
-        if (G_IS_DEV) {
+        if (G_IS_DEV && !globalConfig.debug.disableInternalCheckTile) {
             assert(tile instanceof Vector, "tile is not a vector");
         }
         return Number.isInteger(tile.x) && Number.isInteger(tile.y);
@@ -106,7 +106,7 @@ export class BaseMap extends BasicSerializableObject {
      * @returns {Entity} Entity or null
      */
     getTileContent(tile) {
-        if (G_IS_DEV) {
+        if (G_IS_DEV && !globalConfig.debug.disableInternalCheckTile) {
             this.internalCheckTile(tile);
         }
         const chunk = this.getChunkAtTileOrNull(tile.x, tile.y);
@@ -140,7 +140,7 @@ export class BaseMap extends BasicSerializableObject {
      * @returns {boolean}
      */
     isTileUsed(tile) {
-        if (G_IS_DEV) {
+        if (G_IS_DEV && !globalConfig.debug.disableInternalCheckTile) {
             this.internalCheckTile(tile);
         }
         const chunk = this.getChunkAtTileOrNull(tile.x, tile.y);
@@ -164,7 +164,7 @@ export class BaseMap extends BasicSerializableObject {
      * @param {Entity} entity
      */
     setTileContent(tile, entity) {
-        if (G_IS_DEV) {
+        if (G_IS_DEV && !globalConfig.debug.disableInternalCheckTile) {
             this.internalCheckTile(tile);
         }
 
@@ -213,7 +213,7 @@ export class BaseMap extends BasicSerializableObject {
      * @param {Vector} tile
      */
     clearTile(tile) {
-        if (G_IS_DEV) {
+        if (G_IS_DEV && !globalConfig.debug.disableInternalCheckTile) {
             this.internalCheckTile(tile);
         }
         this.getOrCreateChunkAtTile(tile.x, tile.y).setTileContentFromWorldCords(tile.x, tile.y, null);
