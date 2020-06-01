@@ -308,6 +308,7 @@ ingame:
         title: Precisa de ajuda?
         showHint: Mostrar dica
         hideHint: Fechar
+    
     # When placing a blueprint
     blueprintPlacer:
         cost: Custo
@@ -517,7 +518,24 @@ settings:
             title: Fonte
             description: >-
                 Altera o tamanho da fonte do usuário. A interface ainda será dimensionada com base na resolução do dispositivo, mas essa configuração controla a quantidade de escala.
+            scales:
+                super_small: Super pequeno
+                small: Pequeno
+                regular: Normal
+                large: Grande
+                huge: Gigante
 
+        scrollWheelSensitivity:
+            title: Sensibilidade do zoom
+            description: >-
+                Altera a sensibilidade do zoom (scrol do mouse ou touchpad).
+            sensitivity:
+                super_slow: Super lento
+                slow: Lento
+                regular: Normal
+                fast: Rápido
+                super_fast: Super Rápido
+                
         fullscreen:
             title: Tecla Cheia
             description: >-
@@ -563,6 +581,7 @@ keybindings:
     categoryLabels:
         general: Geral
         ingame: Jogo
+        navigation: Navegação
         placement: Posicionamento
         massSelect: Seleção
         buildings: Construções
@@ -575,9 +594,11 @@ keybindings:
         mapMoveRight: Mover para direita
         mapMoveDown: Mover para baixo
         mapMoveLeft: Mover para a esquerda
-
+        centerMap: Centralizar
+        
         mapZoomIn: Aproximar
         mapZoomOut: Distanciar
+        createMarker: Criar marcação
 
         menuOpenShop: Atualizações
         menuOpenStats: Estatísticas
