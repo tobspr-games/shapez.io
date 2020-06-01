@@ -36,6 +36,7 @@
         }
 
         @include S(margin-bottom, 20px);
+        @include S(margin-top, 10px);
     }
 
     > .container {
@@ -43,7 +44,7 @@
             background: #fff;
             @include S(border-radius, $globalBorderRadius);
             @include S(padding, 10px);
-            height: calc(80vh - #{D(60px)});
+            height: calc(100vh - #{D(60px)});
             overflow-y: auto;
             box-sizing: border-box;
             pointer-events: all;
