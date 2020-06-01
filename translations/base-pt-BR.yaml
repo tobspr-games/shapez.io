@@ -48,11 +48,11 @@ global:
         xDaysAgo: <x> dias atrás
 
         # Short formats for times, e.g. '5h 23m'
-        secondsShort: <segundos>s
-        minutesAndSecondsShort: <minutos>m <segundos>s
-        hoursAndMinutesShort: <horas>h <minutos>s
+        secondsShort: <seconds>s
+        minutesAndSecondsShort: <minutes>m <seconds>s
+        hoursAndMinutesShort: <hours>h <minutes>s
 
-        xMinutes: <x> minutos
+        xMinutes: <x> minutes
 
     keys:
         tab: TAB
@@ -605,16 +605,16 @@ keybindings:
 
         toggleHud: Ocultar Menu
         toggleFPSInfo: Mostar FPS
-        belt: *esteira
-        splitter: *divisor
+        belt: *belt
+        splitter: *splitter
         underground_belt: *underground_belt
-        miner: *mineradora
-        cutter: *corte
-        rotater: *rotação
-        stacker: *empilhador
-        mixer: *misturador
-        painter: *pintor
-        trash: *lixo
+        miner: *miner
+        cutter: *cutter
+        rotater: *rotater
+        stacker: *stacker
+        mixer: *mixer
+        painter: *painter
+        trash: *trash
 
         abortBuildingPlacement: Cancelar
         rotateWhilePlacing: Rotacionar
