@@ -20,7 +20,7 @@
                 @include S(margin-top, 2px);
                 @include S(padding-top, 2px);
                 @include S(grid-gap, 4px);
-                grid-template-columns: 1fr #{D(100px)} auto auto;
+                grid-template-columns: 1fr #{D(51px)} auto auto #{D(51px)} auto auto;
                 border-bottom: #{D(1px)} dotted #eee;
                 color: #888c8f;
                 .mapping {
