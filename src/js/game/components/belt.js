@@ -78,7 +78,7 @@ export class BeltComponent extends Component {
      * @param {BaseItem} item
      */
     takeItem(item, leftoverProgress = 0.0) {
-        if (G_IS_DEV) {
+        if (G_IS_DEV && !globalConfig.debug.disableBeltAsserts) {
             assert(
                 this.sortedItems.length === 0 ||
                     leftoverProgress <= this.sortedItems[0][0] - globalConfig.itemSpacingOnBelts + 0.001,

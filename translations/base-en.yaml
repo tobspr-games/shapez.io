@@ -718,6 +718,10 @@ settings:
             title: Assert / Disable GetTile Asserts
             description: >-
                 Speed ups the game at the cost of not checking obvious things.
+        debug_disableBeltAsserts: 
+            title: Assert / Disable Belt Asserts
+            description: >-
+                Speed ups the game at the cost of not checking obvious things.
 
 keybindings:
     title: Keybindings
