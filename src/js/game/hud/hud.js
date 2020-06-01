@@ -28,10 +28,10 @@ import { HUDWatermark } from "./parts/watermark";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 import { HUDWaypoints } from "./parts/waypoints";
+import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 
 /* dev:start */
 import { TrailerMaker } from "./trailer_maker";
-import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 /* dev:end */
 
 export class GameHUD {
