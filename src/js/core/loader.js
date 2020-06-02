@@ -7,6 +7,7 @@ import { makeOffscreenBuffer } from "./buffer_utils";
 import { AtlasSprite, BaseSprite, RegularSprite, SpriteAtlasLink } from "./sprites";
 import { cachebust } from "./cachebust";
 import { createLogger } from "./logging";
+import { globalConfig } from "../core/config";
 
 const logger = createLogger("loader");
 
@@ -84,7 +85,7 @@ class LoaderImpl {
 
         return Promise.race([
             new Promise((resolve, reject) => {
-                setTimeout(reject, G_IS_DEV ? 500 : 10000);
+                setTimeout(reject, G_IS_DEV && !globalConfig.debug.waitForImages ? 500 : 10000);
             }),
 
             new Promise(resolve => {
