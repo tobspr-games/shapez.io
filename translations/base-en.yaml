@@ -157,7 +157,7 @@ dialogs:
 
     newUpdate:
         title: Update available
-        desc: There is an update for this game available!
+        desc: There is an update for this game available, be sure to download it!
 
     oneSavegameLimit:
         title: Limited savegames

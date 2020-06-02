@@ -82,18 +82,14 @@ export class PreloadState extends GameState {
                             .then(res => res.json())
                             .then(({ latest }) => {
                                 if (latest !== G_BUILD_VERSION) {
-                                    const { ok, viewUpdate } = this.dialogs.showInfo(
+                                    const { ok } = this.dialogs.showInfo(
                                         T.dialogs.newUpdate.title,
                                         T.dialogs.newUpdate.desc,
-                                        ["ok:good", "viewUpdate:good"]
+                                        ["ok:good"]
                                     );
 
                                     return new Promise(resolve => {
                                         ok.add(resolve);
-                                        viewUpdate.add(() => {
-                                            window.open("https://tobspr.itch.io/shapezio", "_blank");
-                                            resolve();
-                                        });
                                     });
                                 }
                             })
