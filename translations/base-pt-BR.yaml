@@ -52,7 +52,7 @@ global:
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>s
 
-        xMinutes: <x> minutes
+        xMinutes: <x> minutos
 
     keys:
         tab: TAB
@@ -159,11 +159,7 @@ dialogs:
         title: Atualização disponível
         desc: Uma atualização para esse jogo esta disponível!
 
-    demoExplanation:
-        title: Noticia do desenvolvedor
-        desc: Estou desenvolvendo este jogo no meu tempo livre, e espero que você goste! Considere comprar a versão completa!!
-
-    oneSavegameLimit:
+      oneSavegameLimit:
         title: Save limitado
         desc: Você pode ter apenas um savegame por vez na versão demo. Remova o existente ou obtenha a versão completa!
 
@@ -220,6 +216,7 @@ ingame:
         toggleHud: Base
         placeBuilding: Colocar construção
         createMarker: Criar marcador
+        delete: Destruir
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -313,11 +310,20 @@ ingame:
     blueprintPlacer:
         cost: Custo
 
+    # Map markers
     waypoints:
         waypoints: Marcadores
         hub: HUB
         description: Clique com o botão esquerdo do mouse em um marcador para pular, clique com o botão direito do mouse para excluí-lo. <br> <br> Pressione <keybinding> para criar um marcador a partir da exibição atual ou <strong> clique com o botão direito do mouse </strong> para criar um marcador no local selecionado.
         creationSuccessNotification: Marcador criado.
+
+     # Interactive tutorial
+    interactiveTutorial:
+        title: Tutorial
+        hints:
+            1_1_extractor: Coloque um <strong> extrator </strong> em cima de uma <strong> fonte de círculo </strong> para extraí-lo!
+            1_2_conveyor: Conecte o extrator com uma <strong> esteira transportadora </strong> ao seu hub!
+            1_3_expand: Este <strong> NÃO </strong> é um jogo inativo! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.
 
 # All shop upgrades
 shopUpgrades:
@@ -343,7 +349,7 @@ buildings:
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractora
+            name: &miner Extractor
             description: Coloque sobre uma forma ou cor para extraí-la.
 
         chainable:
