@@ -669,59 +669,84 @@ settings:
             description: >-
                 Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
 
+
+
+        # DEBUG VALUES:
         debug_enableDebugSettings:
-            title: Debug / Enable Debug Settings
+            title: DEBUG / Enable Debug Settings
             description: >-
                 Apply values below. If disabled, ignore values below.
-        debug_fastGameEnter: null
-        debug_noArtificialDelays: null
+        
+        # UI
+        debug_waitForImages:
+            title: UI / Wait For Images
+            description: >-
+                Actually wait for images to load. Game crashes otherwise.
+        debug_showChunkBorders:
+            title: UI / Show Chunk Borders
+            description: >-
+                Draw chunk rectangles.
+        debug_disableZoomLimits:
+            title: UI / Disable Zoom Limits
+            description: >-
+                Zoom however you wish.
+        debug_disableShortNumbers:
+            title: UI / Disable Short Numbers
+            description: >-
+                Numbers will always have full precision.
+
+        # FEATURE
+        debug_fastGameEnter:
+            title: FEATURE / Fast Game Enter
+            description: >-
+                Load topmost save on page load. Disables main menu.
         debug_disableSavegameWrite: null
+        debug_disableUnlockDialog: null
+        debug_disableTutorialHints: null
+        debug_disableUpgradeNotification: null
+        debug_disableDynamicTickrate:
+            title: FEATURE / Disable Dynamic Tickrate
+            description: >-
+                Make the game run at 60 UPS even if it does not want.
+
+        # ASSERT
+        debug_disableInternalCheckTile:
+            title: Assert / Disable CheckTile Asserts
+            description: >-
+                Speed ups the game at the cost of not checking obvious things.
+        debug_disableGetTileAsserts:
+            title: Assert / Disable GetTile Asserts
+            description: >-
+                Speed ups the game at the cost of not checking obvious things.
+        debug_disableBeltAsserts:
+            title: Assert / Disable Belt Asserts
+            description: >-
+                Speed ups the game at the cost of not checking obvious things.
+
+        # CHEATS
+        debug_rewardsInstant: null
+        debug_allBuildingsUnlocked: null
+        debug_blueprintsNoCost: null
+        debug_upgradesNoCost: null
+        debug_instantBelts: null
+        debug_instantProcessors: null
+        debug_instantMiners: null
+
+        # TEST
+        debug_noArtificialDelays: null
         debug_showEntityBounds: null
         debug_showAcceptorEjectors: null
         debug_disableMusic: null
         debug_doNotRenderStatics: null
-        debug_disableZoomLimits: null
-        debug_showChunkBorders: 
-            title: Debug / Show Chunk Borders
-            description: >-
-                Draw chunk rectangles.
-        debug_rewardsInstant: null
-        debug_allBuildingsUnlocked: 
-            title: Debug / Unlock All Buildings
-            description: >-
-                Unlocks all buildings. Works in both new and loaded games.
-        debug_upgradesNoCost: null
-        debug_disableUnlockDialog: null
         debug_disableLogicTicks: null
         debug_testClipping: null
-        debug_framePausesBetweenTicks: null
         debug_testTranslations: null
-        debug_enableEntityInspector: 
-            title: Debug / Enable Entity Inspector
-            description: >-
-                Show information about hovered entity components.
+        debug_enableEntityInspector: null
         debug_testAds: null
         debug_disableMapOverview: null
-        debug_disableTutorialHints: null
-        debug_disableUpgradeNotification: null
-        debug_disableShortNumbers: null
         debug_disableBulkOperations: null
-        debug_disableDynamicTickrate: 
-            title: Debug / Disable Dynamic Tickrate
-            description: >-
-                Make the game run at 60 UPS even if it does not want.
-        debug_disableInternalCheckTile: 
-            title: Assert / Disable CheckTile Asserts
-            description: >-
-                Speed ups the game at the cost of not checking obvious things.
-        debug_disableGetTileAsserts: 
-            title: Assert / Disable GetTile Asserts
-            description: >-
-                Speed ups the game at the cost of not checking obvious things.
-        debug_disableBeltAsserts: 
-            title: Assert / Disable Belt Asserts
-            description: >-
-                Speed ups the game at the cost of not checking obvious things.
+        renderForTrailer: null
+
 
 keybindings:
     title: Keybindings
