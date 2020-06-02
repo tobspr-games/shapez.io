@@ -38,6 +38,8 @@ module.exports = ({
         G_BUILD_COMMIT_HASH: JSON.stringify(utils.getRevision()),
         G_BUILD_VERSION: JSON.stringify(utils.getVersion()),
         G_ALL_UI_IMAGES: JSON.stringify(utils.getAllResourceImages()),
+        // TODO: Get API endpoint from tobspr
+        G_API_ENDPOINT: JSON.stringify(lzString.compressToEncodedURIComponent("https://api.shapez.io/v1")),
     };
 
     return {

@@ -7,6 +7,7 @@ declare function assertAlways(condition: boolean | object | string, ...errorMess
 
 declare const abstract: void;
 
+declare const G_API_ENDPOINT: string;
 declare const G_APP_ENVIRONMENT: string;
 declare const G_HAVE_ASSERT: boolean;
 declare const G_BUILD_TIME: number;

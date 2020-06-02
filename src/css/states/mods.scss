@@ -1,0 +1,109 @@
+#state_ModsState {
+
+  .mainContent {
+    pointer-events: all;
+  }
+
+  .devHint {
+    font-size: calc(13px*var(--ui-scale));
+    line-height: calc(17px*var(--ui-scale));
+    font-weight: 400;
+    letter-spacing: .04em;
+    color: #aaa;
+
+    .moddingDocsLink {
+      pointer-events: all;
+      cursor: pointer;
+      color: #26c6da;
+    }
+  }
+
+  .mod {
+    padding: calc(14px*var(--ui-scale));
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    grid-gap: calc(5px*var(--ui-scale));
+    grid-column-gap: calc(15px*var(--ui-scale));
+
+    .title {
+      font-size: calc(19px*var(--ui-scale));
+      line-height: calc(21px*var(--ui-scale));
+      font-weight: 400;
+      grid-column: 1 / 4;
+      grid-row: 1 / 2;
+      letter-spacing: .04em;
+
+      .version {
+        font-size: calc(13px*var(--ui-scale));
+        line-height: calc(17px*var(--ui-scale));
+        font-weight: 400;
+        letter-spacing: .04em;
+        color: #aaa;
+      }
+    }
+
+    .author {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      color: #aaa;
+    }
+
+    .website {
+      font-size: calc(13px*var(--ui-scale));
+      line-height: calc(17px*var(--ui-scale));
+      font-weight: 400;
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      pointer-events: all;
+      cursor: pointer;
+      color: #26c6da;
+    }
+
+    .description {
+      grid-column: 1 / 5;
+      grid-row: 3 / 4;
+      border-top: 1px solid;
+      border-top-width: calc(1px*var(--ui-scale));
+      padding-top: calc(5px*var(--ui-scale));
+    }
+
+    .installedText, button.installMod, button.uninstallMod {
+      grid-column: 4 / 5;
+      grid-row: 1 / 3;
+      align-self: start;
+    }
+
+    .author, .gameChangingHint {
+      font-size: calc(13px*var(--ui-scale));
+      line-height: calc(17px*var(--ui-scale));
+      font-weight: 400;
+      letter-spacing: .04em;
+    }
+
+    .gameChangingHint {
+      grid-column: 1 / 5;
+      grid-row: 4 / 5;
+      color: #ef5072;
+      border-top: 1px solid;
+      border-top-width: calc(1px*var(--ui-scale));
+      padding-top: calc(5px*var(--ui-scale));
+    }
+
+    .installed {
+      opacity: .5;
+    }
+
+    .installCount, .installedText {
+      font-size: calc(13px*var(--ui-scale));
+      line-height: calc(17px*var(--ui-scale));
+      font-weight: 400;
+      letter-spacing: .04em;
+      color: #aaa;
+    }
+
+    .installedText {
+      text-transform: uppercase;
+      justify-self: end;
+    }
+  }
+}

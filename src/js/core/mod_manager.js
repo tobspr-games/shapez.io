@@ -1,6 +1,6 @@
 import { ReadWriteProxy } from "./read_write_proxy";
 import { ExplainedResult } from "./explained_result";
-import { globalError, globalLog, globalWarn } from "./logging";
+import { globalError, globalWarn } from "./logging";
 import { ModApi } from "./mod_api";
 import { queryParamOptions } from "./query_parameters";
 
@@ -272,10 +272,13 @@ export class ModManager extends ReadWriteProxy {
 
         this.currentData.mods.push(mod);
 
-        // TODO: Check if this use of trackUiClick is okay.
         // Track download in the background
         return this.writeAsync()
-            .then(() => this.app.analytics.trackUiClick("mod/" + id))
+            .then(() =>
+                this.app.api
+                    .trackModDownload(id)
+                    .catch(err => globalWarn(this, "Failed to track mod download:", err))
+            )
             .then(() => (this.needsRestart = true))
             .then(() => null);
     }

@@ -37,10 +37,10 @@ export class ModsState extends TextualGameState {
             </span>
             
 
-            <strong class="category_label">${T.mods.installedMods}</strong>
+            <strong class="categoryLabel">${T.mods.installedMods}</strong>
             <div class="installedMods"></div>
             
-            <strong class="category_label">${T.mods.modsBrowser}</strong>
+            <strong class="categoryLabel">${T.mods.modsBrowser}</strong>
             <div class="modGallery"></div>
         `;
     }

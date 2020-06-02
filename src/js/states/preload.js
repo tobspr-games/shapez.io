@@ -1,5 +1,5 @@
 import { GameState } from "../core/game_state";
-import { createLogger } from "../core/logging";
+import { createLogger, globalError } from "../core/logging";
 import { findNiceValue, waitNextFrame } from "../core/utils";
 import { cachebust } from "../core/cachebust";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
@@ -169,6 +169,21 @@ export class PreloadState extends GameState {
                         // );
                         // ok.add(resolve);
                         alert("Your savegames failed to load. They might not show up. Sorry!");
+                    });
+                });
+            })
+
+            .then(() => this.setStatus("Initializing mods"))
+            .then(() => {
+                return this.app.modManager.initialize().catch(err => {
+                    globalError(this, "Failed to initialize mods:", err);
+                    return new Promise(resolve => {
+                        const { ok } = this.dialogs.showWarning(
+                            T.global.error,
+                            T.dialogs.modLoadFailDialog.content + "<br><br><b>" + err + "</b>",
+                            ["ok:good"]
+                        );
+                        ok.add(resolve);
                     });
                 });
             })

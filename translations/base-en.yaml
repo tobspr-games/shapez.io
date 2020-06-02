@@ -97,6 +97,12 @@ mods:
         title: Mod Removed
         desc: The mod has successfully beeen removed and will get unloaded after a restart.
 
+syncSavegameMods:
+    desc: You need
+
+    savegameMods: Savegame Mods
+    yourMods: Loaded Mods
+    syncMods: Sync Mods
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
@@ -242,6 +248,10 @@ dialogs:
     createMarker:
         title: New Marker
         desc: Give it a meaningful name
+
+    modLoadFailDialog:
+        content: >-
+            Failed to initialize mods:
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in

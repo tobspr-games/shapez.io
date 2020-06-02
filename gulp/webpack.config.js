@@ -45,6 +45,8 @@ module.exports = ({ watch = false, standalone = false }) => {
                 G_BUILD_COMMIT_HASH: JSON.stringify(utils.getRevision()),
                 G_BUILD_VERSION: JSON.stringify(utils.getVersion()),
                 G_ALL_UI_IMAGES: JSON.stringify(utils.getAllResourceImages()),
+                // TODO: Get API endpoint from tobspr
+                G_API_ENDPOINT: JSON.stringify(lzString.compressToEncodedURIComponent("http://localhost:8000")),
             }),
 
             new CircularDependencyPlugin({

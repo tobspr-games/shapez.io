@@ -38,6 +38,7 @@ import { PreloadState } from "./states/preload";
 import { SettingsState } from "./states/settings";
 import { ModsState } from "./states/mods";
 import { ModManager } from "./core/mod_manager";
+import { BackendAPI } from "./core/backend";
 
 const logger = createLogger("application");
 
@@ -72,6 +73,7 @@ export class Application {
         this.savegameMgr = new SavegameManager(this);
         this.inputMgr = new InputDistributor(this);
         this.backgroundResourceLoader = new BackgroundResourcesLoader(this);
+        this.api = new BackendAPI(this);
         this.modManager = new ModManager(this);
 
         // Platform dependent stuff
