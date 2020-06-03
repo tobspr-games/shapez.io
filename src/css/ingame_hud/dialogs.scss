@@ -118,7 +118,7 @@
             pointer-events: all;
             @include S(width, 350px);
 
-            > strong {
+            strong {
                 font-weight: bold;
             }
 
@@ -137,6 +137,14 @@
 
                 &.errored {
                     background-color: rgb(250, 206, 206);
+                }
+            }
+
+            ul.bucketList {
+                padding-left: 30px;
+
+                li {
+                    display: list-item;
                 }
             }
         }

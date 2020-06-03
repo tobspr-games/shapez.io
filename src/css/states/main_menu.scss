@@ -60,28 +60,17 @@
 
     .mainWrapper {
         @include S(padding, 0, 10px);
-        align-items: center;
+        align-items: start;
         justify-items: center;
 
-        &.noDemo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        &.demo {
-            @include S(grid-column-gap, 10px);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
+        @include S(grid-column-gap, 10px);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
 
         .standaloneBanner {
             background: rgb(255, 234, 245);
             @include S(border-radius, $globalBorderRadius);
-            height: 100%;
             box-sizing: border-box;
-            @include S(width, 300px);
             @include S(padding, 15px);
 
             display: flex;
@@ -163,6 +152,44 @@
         color: #fff;
         @include S(margin-top, 10px);
         border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
+    }
+
+    .sideContainer {
+        display: flex;
+        flex-direction: column;
+        @include S(width, 300px);
+
+        .standaloneBanner {
+            flex-grow: 1;
+            @include S(margin-bottom, 10px);
+        }
+
+        .contest {
+            flex-grow: 1;
+            background: rgb(32, 187, 166);
+            @include S(padding, 15px);
+
+            h3 {
+                @include Heading;
+                color: #fff;
+                font-weight: bold;
+                text-transform: uppercase;
+                @include S(margin-bottom, 5px);
+            }
+            p {
+                color: #fff;
+                @include Text;
+                strong {
+                    font-weight: bold;
+                }
+                @include S(margin-bottom, 5px);
+            }
+
+            button {
+                background: #fff;
+                color: #333538;
+            }
+        }
     }
 
     .mainContainer {

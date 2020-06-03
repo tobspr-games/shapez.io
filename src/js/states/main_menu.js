@@ -24,10 +24,6 @@ export class MainMenuState extends GameState {
             
             <p>${T.demoBanners.intro}</p>
 
-            <ul>
-                ${T.demoBanners.advantages.map(advantage => `<li>${advantage}</li>`).join("")}
-            </ul>
-
             <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
         `;
 
@@ -54,18 +50,22 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
-                ${
-                    IS_DEMO && this.app.platformWrapper.getShowDemoBadges()
-                        ? `<div class="demoBadge"></div>`
-                        : ""
-                }
             </div>
 
 
             <div class="mainWrapper ${IS_DEMO ? "demo" : "noDemo"}">
-            
-                ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
                 
+                <div class="sideContainer">
+                    ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
+                    <div class="contest">
+                        <h3>${T.mainMenu.contests.contest_01_03062020.title}</h3>
+                        <p>${T.mainMenu.contests.contest_01_03062020.desc}</p>
+                        <button class="styledButton participateContest">${
+                            T.mainMenu.contests.showInfo
+                        }</button>
+                    </div>
+                </div>
+
                 <div class="mainContainer">
                     ${
                         isSupportedBrowser()
@@ -220,6 +220,8 @@ export class MainMenuState extends GameState {
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.trackClicks(qs(".changelog"), this.onChangelogClicked);
 
+        this.trackClicks(qs(".participateContest"), this.onContestClicked);
+
         if (G_IS_STANDALONE) {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
         }
@@ -265,6 +267,15 @@ export class MainMenuState extends GameState {
 
     onChangelogClicked() {
         this.moveToState("ChangelogState");
+    }
+
+    onContestClicked() {
+        this.app.analytics.trackUiClick("contest_click");
+
+        this.dialogs.showInfo(
+            T.mainMenu.contests.contest_01_03062020.title,
+            T.mainMenu.contests.contest_01_03062020.longDesc
+        );
     }
 
     renderSavegames() {
