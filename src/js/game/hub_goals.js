@@ -94,14 +94,15 @@ export class HubGoals extends BasicSerializableObject {
 
         this.createNextGoal();
 
-        // Allow quickly switching goals in dev mode with key "C"
+        // Allow quickly switching goals in dev mode
         if (G_IS_DEV) {
-            this.root.gameState.inputReciever.keydown.add(key => {
-                if (key.keyCode === 66) {
-                    // Key: b
-                    this.onGoalCompleted();
-                }
-            });
+            if (G_IS_DEV) {
+                window.addEventListener("keydown", ev => {
+                    if (ev.key === "b") {
+                        this.onGoalCompleted();
+                    }
+                });
+            }
         }
     }
 

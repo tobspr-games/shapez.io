@@ -275,11 +275,7 @@ gulp.task(
     $.sequence("sounds.fullbuild", "translations.fullBuild", "js.standalone-beta")
 );
 gulp.task("step.standalone-beta.mainbuild", cb =>
-    $.multiProcess(
-        ["utils.copyAdditionalBuildFiles", "step.baseResources", "step.standalone-beta.code"],
-        cb,
-        false
-    )
+    $.multiProcess(["step.baseResources", "step.standalone-beta.code"], cb, false)
 );
 gulp.task(
     "step.standalone-beta.all",
@@ -293,11 +289,7 @@ gulp.task(
     $.sequence("sounds.fullbuild", "translations.fullBuild", "js.standalone-prod")
 );
 gulp.task("step.standalone-prod.mainbuild", cb =>
-    $.multiProcess(
-        ["utils.copyAdditionalBuildFiles", "step.baseResources", "step.standalone-prod.code"],
-        cb,
-        false
-    )
+    $.multiProcess(["step.baseResources", "step.standalone-prod.code"], cb, false)
 );
 gulp.task(
     "step.standalone-prod.all",

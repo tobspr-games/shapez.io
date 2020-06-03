@@ -2,7 +2,11 @@ export const CHANGELOG = [
     {
         version: "1.1.6",
         date: "unreleased",
-        entries: ["Fixed firefox not loading the game when browsing in private mode"],
+        entries: [
+            "Fixed firefox not loading the game when browsing in private mode",
+            "Fixed level complete dialog being blurred when the shop was opened before",
+            "Increased icon visibility for windows builds",
+        ],
     },
 
     {
