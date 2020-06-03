@@ -42,6 +42,7 @@
         "howler": "^2.1.2",
         "html-loader": "^0.5.5",
         "ignore-loader": "^0.1.2",
+        "logrocket": "^1.0.7",
         "lz-string": "^1.4.4",
         "markdown-loader": "^4.0.0",
         "obfuscator-loader": "^1.1.2",
