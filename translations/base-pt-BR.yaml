@@ -64,15 +64,9 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Hey!
+    title: Versão Demo
     intro: >-
-        Se voce curtiu esse game, por favor considere comprar a versão completa!
-    advantages:
-        - Saves Ilimitados
-        - Marcações
-        - Modo escuro e outros
-        - >-
-            Ajude ainda mais no desenvolvimento do shapez.io ❤️
+        Pegue a versão completa para desbloquear todas os recursos 
 
 mainMenu:
     play: Jogar
@@ -87,7 +81,29 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Level desconhecido
-
+    
+    contests:
+        contest_01_03062020:
+            title: "Concurso #01"
+            desc: Ganhe <strong> $ 25 </strong> pela melhor base!
+            longDesc: >-
+                Para retribuir, pensei que seria legal fazer concursos semanais!
+                <br><br>
+                <strong> Tópico dessa semana:</strong> Cronstua a base mais legal!
+                <br><br>
+                Here's the deal:<br>
+                <ul class="bucketList">
+                    <li>Envie uma captura de tela da sua base para <strong>contest@shapez.io</strong></li>
+                    <li>Pontos bônus se você o compartilhar nas mídias sociais!</li>
+                    <li>Vou escolher 5 capturas de tela e propor à votação a comunidade <strong>discord</strong>.</li>
+                    <li>o vencedor recebe <strong> $ 25 </strong> (Paypal, Amazon Gift Card, o que você preferir)</li>
+                    <li>Até 07.06.2020 12:00 CEST</li>
+                </ul>
+                <br>
+                Estou ansioso para ver suas criações incríveis!
+                
+        showInfo: Participate
+        
 dialogs:
     buttons:
         ok: OK
@@ -321,10 +337,13 @@ ingame:
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Coloque um <strong> extrator </strong> em cima de uma <strong> fonte de círculo </strong> para extraí-lo!
-            1_2_conveyor: Conecte o extrator com uma <strong> esteira transportadora </strong> ao seu hub!
-            1_3_expand: Este <strong> NÃO </strong> é um jogo inativo! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.
-
+           1_1_extractor: Coloque um <strong> extrator </strong> em cima de uma <strong> fonte de círculo </strong> para extraí-lo!
+           1_2_conveyor: >-
+                Conecte o extrator com uma <strong> esteira transportadora </strong> até a sua base! <br><br> Dica, <strong>clique e arraste</strong> a esteira com o mouse!
+           
+           1_3_expand: >-
+               Este <strong> NÃO </strong> é um jogo inativo! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.<br><br>Dica, segure <strong> SHIFT </strong> para colocar vários extratores e use <strong> R </strong> para girá-los.
+     
 # All shop upgrades
 shopUpgrades:
     belt:
