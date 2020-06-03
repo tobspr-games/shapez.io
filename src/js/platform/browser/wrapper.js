@@ -1,11 +1,13 @@
 import { Math_min } from "../../core/builtins";
-import { globalConfig, IS_MOBILE, IS_DEBUG, IS_DEMO } from "../../core/config";
+import { globalConfig, IS_DEMO, IS_MOBILE } from "../../core/config";
 import { createLogger } from "../../core/logging";
 import { queryParamOptions } from "../../core/query_parameters";
 import { clamp } from "../../core/utils";
+import { GamedistributionAdProvider } from "../ad_providers/gamedistribution";
 import { NoAdProvider } from "../ad_providers/no_ad_provider";
 import { PlatformWrapperInterface } from "../wrapper";
-import { GamedistributionAdProvider } from "../ad_providers/gamedistribution";
+import { StorageImplBrowser } from "./storage";
+import { StorageImplBrowserIndexedDB } from "./storage_indexed_db";
 
 const logger = createLogger("platform/browser");
 
@@ -72,7 +74,36 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
         logger.log("Embed provider:", this.embedProvider.id);
 
-        return super.initialize().then(() => this.initializeAdProvider());
+        return this.detectStorageImplementation()
+            .then(() => this.initializeAdProvider())
+            .then(() => super.initialize());
+    }
+
+    detectStorageImplementation() {
+        return new Promise(resolve => {
+            logger.log("Detecting storage");
+
+            if (!window.indexedDB) {
+                logger.log("Indexed DB not supported");
+                this.app.storage = new StorageImplBrowser(this.app);
+                resolve();
+                return;
+            }
+
+            // Try accessing the indexedb
+            const request = window.indexedDB.open("indexeddb_feature_detection", 1);
+            request.onerror = err => {
+                logger.log("Indexed DB can *not* be accessed: ", err);
+                logger.log("Using fallback to local storage");
+                this.app.storage = new StorageImplBrowser(this.app);
+                resolve();
+            };
+            request.onsuccess = () => {
+                logger.log("Indexed DB *can* be accessed");
+                this.app.storage = new StorageImplBrowserIndexedDB(this.app);
+                resolve();
+            };
+        });
     }
 
     getHasUnlimitedSavegames() {
@@ -81,71 +112,6 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
     getShowDemoBadges() {
         return this.embedProvider.showDemoBadge;
-    }
-
-    onSentryLoaded() {
-        logger.log("Initializing sentry");
-        window.Sentry.init({
-            dsn: "TODO SENTRY DSN",
-            release: G_APP_ENVIRONMENT + "-" + G_BUILD_VERSION + "@" + G_BUILD_COMMIT_HASH,
-            // Will cause a deprecation warning, but the demise of `ignoreErrors` is still under discussion.
-            // See: https://github.com/getsentry/raven-js/issues/73
-            ignoreErrors: [
-                // Random plugins/extensions
-                "top.GLOBALS",
-                // See: http://blog.errorception.com/2012/03/tale-of-unfindable-js-error.html
-                "originalCreateNotification",
-                "canvas.contentDocument",
-                "MyApp_RemoveAllHighlights",
-                "http://tt.epicplay.com",
-                "Can't find variable: ZiteReader",
-                "jigsaw is not defined",
-                "ComboSearch is not defined",
-                "http://loading.retry.widdit.com/",
-                "atomicFindClose",
-                // Facebook borked
-                "fb_xd_fragment",
-                // ISP "optimizing" proxy - `Cache-Control: no-transform` seems to reduce this. (thanks @acdha)
-                // See http://stackoverflow.com/questions/4113268/how-to-stop-javascript-injection-from-vodafone-proxy
-                "bmi_SafeAddOnload",
-                "EBCallBackMessageReceived",
-                // See http://toolbar.conduit.com/Developer/HtmlAndGadget/Methods/JSInjection.aspx
-                "conduitPage",
-                // Generic error code from errors outside the security sandbox
-                // You can delete this if using raven.js > 1.0, which ignores these automatically.
-                "Script error.",
-
-                // Errors from ads
-                "Cannot read property 'postMessage' of null",
-
-                // Firefox only
-                "AbortError: The operation was aborted.",
-
-                "<unknown>",
-            ],
-            ignoreUrls: [
-                // Facebook flakiness
-                /graph\.facebook\.com/i,
-                // Facebook blocked
-                /connect\.facebook\.net\/en_US\/all\.js/i,
-                // Woopra flakiness
-                /eatdifferent\.com\.woopra-ns\.com/i,
-                /static\.woopra\.com\/js\/woopra\.js/i,
-                // Chrome extensions
-                /extensions\//i,
-                /^chrome:\/\//i,
-                // Other plugins
-                /127\.0\.0\.1:4001\/isrunning/i, // Cacaoweb
-                /webappstoolbarba\.texthelp\.com\//i,
-                /metrics\.itunes\.apple\.com\.edgesuite\.net\//i,
-            ],
-            beforeSend(event, hint) {
-                if (window.anyModLoaded) {
-                    return null;
-                }
-                return event;
-            },
-        });
     }
 
     getId() {

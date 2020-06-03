@@ -1,10 +1,16 @@
 import { PlatformWrapperImplBrowser } from "../browser/wrapper";
 import { getIPCRenderer } from "../../core/utils";
 import { createLogger } from "../../core/logging";
+import { StorageImplElectron } from "./storage";
 
 const logger = createLogger("electron-wrapper");
 
 export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
+    initialize() {
+        this.app.storage = new StorageImplElectron(this);
+        return super.initialize();
+    }
+
     getId() {
         return "electron";
     }
@@ -19,6 +25,14 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
     }
 
     getSupportsAds() {
+        return false;
+    }
+
+    getHasUnlimitedSavegames() {
+        return true;
+    }
+
+    getShowDemoBadges() {
         return false;
     }
 

@@ -1,5 +1,11 @@
 export const CHANGELOG = [
     {
+        version: "1.1.6",
+        date: "unreleased",
+        entries: ["Fixed firefox not loading the game when browsing in private mode"],
+    },
+
+    {
         version: "1.1.5",
         date: "03.06.2020",
         entries: ["Added weekly contests!"],

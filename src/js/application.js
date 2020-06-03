@@ -123,27 +123,16 @@ export class Application {
     initPlatformDependentInstances() {
         logger.log("Creating platform dependent instances");
 
-        // Start with empty ad provider
-        this.adProvider = new NoAdProvider(this);
-
-        if (G_IS_STANDALONE) {
-            this.storage = new StorageImplElectron(this);
-        } else {
-            if (window.indexedDB) {
-                this.storage = new StorageImplBrowserIndexedDB(this);
-            } else {
-                this.storage = new StorageImplBrowser(this);
-            }
-        }
-        this.sound = new SoundImplBrowser(this);
-
         if (G_IS_STANDALONE) {
             this.platformWrapper = new PlatformWrapperImplElectron(this);
         } else {
             this.platformWrapper = new PlatformWrapperImplBrowser(this);
         }
-        this.analytics = new GoogleAnalyticsImpl(this);
 
+        // Start with empty ad provider
+        this.adProvider = new NoAdProvider(this);
+        this.sound = new SoundImplBrowser(this);
+        this.analytics = new GoogleAnalyticsImpl(this);
         this.gameAnalytics = new ShapezGameAnalytics(this);
     }
 
