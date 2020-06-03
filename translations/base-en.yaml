@@ -338,8 +338,11 @@ ingame:
         title: Tutorial
         hints:
             1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
-            1_2_conveyor: Connect the extractor with a <strong>conveyor belt</strong> to your hub!
-            1_3_expand: This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.
+            1_2_conveyor: >-
+                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+
+            1_3_expand: >-
+                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
 
 # All shop upgrades
 shopUpgrades:
