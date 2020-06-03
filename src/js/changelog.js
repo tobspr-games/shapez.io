@@ -3,9 +3,10 @@ export const CHANGELOG = [
         version: "1.1.6",
         date: "unreleased",
         entries: [
-            "Fixed firefox not loading the game when browsing in private mode",
+            "The steam release will happen on the <strong>7th of June</strong> - Be sure to add it to your wishlist! <a href='https://steam.shapez.io' target='blank'>View on steam</a>",
             "Fixed level complete dialog being blurred when the shop was opened before",
-            "Increased icon visibility for windows builds",
+            "Standalone: Increased icon visibility for windows builds",
+            "Web version: Fixed firefox not loading the game when browsing in private mode",
         ],
     },
 
