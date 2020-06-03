@@ -9,7 +9,7 @@ import { GLOBAL_APP } from "./globals";
 
 const logger = createLogger("click_detector");
 
-export const MAX_MOVE_DISTANCE_PX = IS_MOBILE ? 20 : 40;
+export const MAX_MOVE_DISTANCE_PX = IS_MOBILE ? 20 : 80;
 
 // For debugging
 const registerClickDetectors = G_IS_DEV && true;
@@ -404,11 +404,11 @@ export class ClickDetector {
         if (this.clickDownPosition) {
             const pos = /** @type {typeof ClickDetector} */ (this.constructor).extractPointerPosition(event);
             const distance = pos.distance(this.clickDownPosition);
-            if (distance <= this.maxDistance) {
+            if (!IS_MOBILE || distance <= this.maxDistance) {
                 dispatchClick = true;
                 dispatchClickPos = pos;
             } else {
-                // console.warn("[ClickDetector] Touch does not count as click: ms=", timeSinceStart, "-> tolerance:", tolerance, "(was", distance, ")");
+                console.warn("[ClickDetector] Touch does not count as click:", "(was", distance, ")");
             }
         }
 
