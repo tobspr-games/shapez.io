@@ -121,7 +121,7 @@ export class Application {
      * Initializes all platform instances
      */
     initPlatformDependentInstances() {
-        logger.log("Creating platform dependent instances");
+        logger.log("Creating platform dependent instances (standalone=", G_IS_STANDALONE, ")");
 
         if (G_IS_STANDALONE) {
             this.platformWrapper = new PlatformWrapperImplElectron(this);

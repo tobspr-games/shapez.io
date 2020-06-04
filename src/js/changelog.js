@@ -1,5 +1,10 @@
 export const CHANGELOG = [
     {
+        version: "1.1.7",
+        date: "04.06.2020",
+        entries: ["HOTFIX: Fix savegames not showing up on the standalone version"],
+    },
+    {
         version: "1.1.6",
         date: "04.06.2020",
         entries: [
