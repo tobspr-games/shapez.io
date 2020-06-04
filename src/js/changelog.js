@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.1.6",
-        date: "unreleased",
+        date: "04.06.2020",
         entries: [
             "The steam release will happen on the <strong>7th of June</strong> - Be sure to add it to your wishlist! <a href='https://steam.shapez.io' target='blank'>View on steam</a>",
             "Fixed level complete dialog being blurred when the shop was opened before",

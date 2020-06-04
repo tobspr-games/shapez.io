@@ -97,12 +97,12 @@ mainMenu:
                     <li>Bonus points if you share it on social media!</li>
                     <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
                     <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 CEST</li>
+                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
                 I'm looking forward to seeing your awesome creations!
 
-        showInfo: Participate
+        showInfo: View
 
 dialogs:
     buttons:
