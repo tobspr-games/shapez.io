@@ -64,15 +64,9 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Salut!
+    title: Version démo
     intro: >-
-        Si vous appreciez ce jeu, merci de penser à acheter la version complète!
-    advantages:
-        - Pas de publicité
-        - Sauvegardes illimitées
-        - Mode sombre & plus
-        - >-
-            Donnez-moi l'opportunité de développer shapez.io ❤️
+        Achetez la version complète pour débloquer toutes les fonctionalités!
 
 mainMenu:
     play: Jouer
@@ -88,6 +82,28 @@ mainMenu:
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
 
+    contests:
+        contest_01_03062020:
+            title: "Concours #01"
+            desc: Gagnez <strong>$25</strong> pour l'usine la plus cool!
+            longDesc: >-
+                Pour vous remercier, j'ai pensé qu'il serait bien de faire un concours hebdomadaire!
+                <br><br>
+                <strong>Le sujet de cette semaine:</strong> Construire l'usine la plus cool!
+                <br><br>
+                Voici comment faire:<br>
+                <ul class="bucketList">
+                    <li>Envoyez une capture d'écran de votre usine à <strong>contest@shapez.io</strong></li>
+                    <li>Vous aurez des points bonus si vous la partagez sur les réseaux sociaux!</li>
+                    <li>Je choisirai 5 images et les soumettrai au vote à la communauté <strong>discord</strong>.</li>
+                    <li>Le gagnant empoche <strong>$25</strong> (Paypal, carte cadeau Amazon, ce que vous préférez)</li>
+                    <li>Limite: 07.06.2020 12:00 CEST</li>
+                </ul>
+                <br>
+                J'attends avec impatience de voir vos superbes créations!
+
+        showInfo: Participer
+
 dialogs:
     buttons:
         ok: OK
@@ -96,7 +112,7 @@ dialogs:
         later: Plus tard
         restart: Relancer
         reset: Réinitialiser
-        getStandalone: Se procurer la version autonome
+        getStandalone: Se procurer la version complète
         deleteGame: Je sais ce que je fais
         viewUpdate: Voir les mises-à-jour
         showUpgrades: Montrer les améliorations
@@ -145,14 +161,14 @@ dialogs:
         desc: Les contrôles ont été réinitialisés par leur état par défaut respectifs!
 
     featureRestriction:
-        title: Version Démo
+        title: Version démo
         desc: Vous avez essayé d'accéder à la fonction (<feature>) qui n'est pas disponible dans la démo. Considérez l'achat de la version complète pour une expérience optimale!
 
     saveNotPossibleInDemo:
-        desc: Votre partie a été sauvegardée, mais la charger n'est possible que dans la version complète. Considérez l'achat de la version complète pour une expérience optimale!
+        desc: Votre partie a été sauvegardée, mais la charger n'est possible que dans la version complète. Considérez son achat pour une expérience optimale!
 
     leaveNotPossibleInDemo:
-        title: Version Démo
+        title: Version démo
         desc: Votre partie a été sauvée mais nous ne pourrez pas la charger dans la démo. Charger les parties n'est disponible que dans la version complète. Etes-vous certain?
 
     newUpdate:
@@ -207,7 +223,7 @@ ingame:
     # every situation
     keybindingsOverlay:
         moveMap: Déplacer
-        removeBuildings: Effacer
+        selectBuildings: Sélection de la zone
         stopPlacement: Arrêter le placement
         rotateBuilding: Tourner le bâtiment
         placeMultiple: Placement multiple
@@ -252,10 +268,10 @@ ingame:
         newUpgrade: Une nouvelle amélioration est disponible!
         gameSaved: Votre partie a été sauvegardée.
 
-    # Mass delete information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings to delete
-    massDelete:
-        infoText: Appuyez sur <keyDelete> pour effacer les bâtiments sélectionnés et <keyCancel> pour annuler.
+    # Mass select information, this is when you hold CTRL and then drag with your mouse
+    # to select multiple buildings
+    massSelect:
+        infoText: Appuyez sur <keyCopy> pour copier, <keyDelete> pour supprimer et <keyCancel> pour annuler.
 
     # The "Upgrades" window
     shop:
@@ -276,7 +292,7 @@ ingame:
         dataSources:
             stored:
                 title: Stocké
-                description: Affiche le nombre de formes stockée dans votre bâtiment central.
+                description: Affiche le nombre de formes stockées dans votre bâtiment central.
             produced:
                 title: Produit
                 description: Affiche tous les formes que votre usine entière produit, en incluant les formes intermédiaires.
@@ -322,8 +338,11 @@ ingame:
         title: Tutoriel
         hints:
             1_1_extractor: Placez un <strong>extracteur</strong> sur une <strong>forme en cercle</strong> pour l'extraire!
-            1_2_conveyor: Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre noyau!
-            1_3_expand: Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus votre votre but.
+            1_2_conveyor: >-
+                Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre noyau!<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris!
+
+            1_3_expand: >-
+                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
 # All shop upgrades
 shopUpgrades:
@@ -428,7 +447,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Découper des formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - A cet effet, je vous donne la poubelle, qui détruit tout ce que vous y mettez!
+        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>SOyez certain de vous débarasser des déchets, sinon, <strong>cela coincera</strong> - A cet effet, je vous donne la poubelle, qui détruit tout ce que vous y mettez!
 
     reward_rotater:
         title: Rotation
@@ -494,7 +513,7 @@ storyRewards:
 
     reward_blueprints:
         title: Patrons
-        desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usines! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer! (Ceux que vous venez de livrer).
+        desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usines! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (ce que vous venez de livrer).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -528,13 +547,13 @@ settings:
                 super_small: Très petite
                 small: Petite
                 regular: Normale
-                large: Largr
+                large: Large
                 huge: Très large
 
         scrollWheelSensitivity:
             title: Sensibilité du zoom
             description: >-
-                Change la sensibilité du zoom (AUssi bien de la roulette de la souris que du trackpad).
+                Change la sensibilité du zoom (aussi bien de la roulette de la souris que du trackpad).
             sensitivity:
                 super_slow: Super lent
                 slow: Lent
@@ -654,5 +673,5 @@ demo:
 
     settingNotAvailable: Indisponible dans la démo.
 #
-# French translation version v0.3 based on english v1.1.4 by Didier WEERTS 'The Corsaire'
+# French translation version v0.4 based on english v1.1.5 by Didier WEERTS 'The Corsaire'
 #
