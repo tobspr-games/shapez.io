@@ -45,7 +45,7 @@ export const globalConfig = {
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
-    beltSpeedItemsPerSecond: 2,
+    beltSpeedItemsPerSecond: 1,
     itemSpacingOnBelts: 0.63,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
@@ -93,9 +93,9 @@ export const globalConfig = {
         // disableZoomLimits: true,
         // showChunkBorders: true,
         // rewardsInstant: true,
-        // allBuildingsUnlocked: true,
-        // blueprintsNoCost: true,
-        // upgradesNoCost: true,
+        allBuildingsUnlocked: true,
+        blueprintsNoCost: true,
+        upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
         // testClipping: true,

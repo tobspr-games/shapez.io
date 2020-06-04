@@ -368,7 +368,10 @@ export class Application {
         if (this.screenWidth !== w || this.screenHeight !== h || forceUpdate) {
             this.screenWidth = w;
             this.screenHeight = h;
-            this.stateMgr.getCurrentState().onResized(this.screenWidth, this.screenHeight);
+            const currentState = this.stateMgr.getCurrentState();
+            if (currentState) {
+                currentState.onResized(this.screenWidth, this.screenHeight);
+            }
 
             const scale = this.getEffectiveUiScale();
             waitNextFrame().then(() => document.documentElement.style.setProperty("--ui-scale", scale));

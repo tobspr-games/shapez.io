@@ -25,14 +25,14 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
-    
+
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: K
         millions: M
         billions: B
         trillions: T
-        
+
     # Shown for infinitely big numbers
     infinite: inf
 
@@ -66,7 +66,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Versão Demo
     intro: >-
-        Pegue a versão completa para desbloquear todas os recursos 
+        Pegue a versão completa para desbloquear todas os recursos
 
 mainMenu:
     play: Jogar
@@ -81,7 +81,7 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Level desconhecido
-    
+
     contests:
         contest_01_03062020:
             title: "Concurso #01"
@@ -101,9 +101,9 @@ mainMenu:
                 </ul>
                 <br>
                 Estou ansioso para ver suas criações incríveis!
-                
+
         showInfo: Participate
-        
+
 dialogs:
     buttons:
         ok: OK
@@ -126,7 +126,7 @@ dialogs:
     importSavegameSuccess:
         title: Sucesso
         text: >-
-             Seu savegame foi importado.
+            Seu savegame foi importado.
 
     gameLoadFailure:
         title: Jogo esta quebrado
@@ -175,7 +175,7 @@ dialogs:
         title: Atualização disponível
         desc: Uma atualização para esse jogo esta disponível!
 
-      oneSavegameLimit:
+    oneSavegameLimit:
         title: Save limitado
         desc: Você pode ter apenas um savegame por vez na versão demo. Remova o existente ou obtenha a versão completa!
 
@@ -189,7 +189,6 @@ dialogs:
         desc: >-
             Sempre que precisar de ajuda ou estiver parado, confira o botão 'Mostrar dica' no canto inferior esquerdo e darei o meu melhor para ajudá-lo!
 
-
     upgradesIntroduction:
         title: Desbloquear updates
         desc: >-
@@ -199,7 +198,7 @@ dialogs:
     massDeleteConfirm:
         title: Deletar
         desc: >-
-             Voce esta deletando vários itens (<count> para ser exato)! Voce quer continuar?
+            Voce esta deletando vários itens (<count> para ser exato)! Voce quer continuar?
 
     blueprintsNotUnlocked:
         title: Não desbloqueado ainda
@@ -321,7 +320,7 @@ ingame:
         title: Precisa de ajuda?
         showHint: Mostrar dica
         hideHint: Fechar
-    
+
     # When placing a blueprint
     blueprintPlacer:
         cost: Custo
@@ -333,17 +332,17 @@ ingame:
         description: Clique com o botão esquerdo do mouse em um marcador para pular, clique com o botão direito do mouse para excluí-lo. <br> <br> Pressione <keybinding> para criar um marcador a partir da exibição atual ou <strong> clique com o botão direito do mouse </strong> para criar um marcador no local selecionado.
         creationSuccessNotification: Marcador criado.
 
-     # Interactive tutorial
+        # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
         hints:
-           1_1_extractor: Coloque um <strong> extrator </strong> em cima de uma <strong> fonte de círculo </strong> para extraí-lo!
-           1_2_conveyor: >-
+            1_1_extractor: Coloque um <strong> extrator </strong> em cima de uma <strong> fonte de círculo </strong> para extraí-lo!
+            1_2_conveyor: >-
                 Conecte o extrator com uma <strong> esteira transportadora </strong> até a sua base! <br><br> Dica, <strong>clique e arraste</strong> a esteira com o mouse!
-           
-           1_3_expand: >-
-               Este <strong> NÃO </strong> é um jogo inativo! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.<br><br>Dica, segure <strong> SHIFT </strong> para colocar vários extratores e use <strong> R </strong> para girá-los.
-     
+
+            1_3_expand: >-
+                Este <strong> NÃO </strong> é um jogo inativo! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.<br><br>Dica, segure <strong> SHIFT </strong> para colocar vários extratores e use <strong> R </strong> para girá-los.
+
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -519,7 +518,7 @@ storyRewards:
     no_reward:
         title: Próximo level
         desc: >-
-           Este nível não lhe deu nenhuma recompensa, mas em breve?! <br> <br> PS: Melhor não destruir sua fábrica existente - Você precisa de <strong> todas </strong> todas essas formas posteriormente mais tarde para <strong> desbloquear atualizações </strong>!
+            Este nível não lhe deu nenhuma recompensa, mas em breve?! <br> <br> PS: Melhor não destruir sua fábrica existente - Você precisa de <strong> todas </strong> todas essas formas posteriormente mais tarde para <strong> desbloquear atualizações </strong>!
 
     no_reward_freeplay:
         title: Next level
@@ -560,7 +559,7 @@ settings:
                 regular: Normal
                 fast: Rápido
                 super_fast: Super Rápido
-                
+
         fullscreen:
             title: Tecla Cheia
             description: >-
@@ -620,7 +619,7 @@ keybindings:
         mapMoveDown: Mover para baixo
         mapMoveLeft: Mover para a esquerda
         centerMap: Centralizar
-        
+
         mapZoomIn: Aproximar
         mapZoomOut: Distanciar
         createMarker: Criar marcação
@@ -644,7 +643,7 @@ keybindings:
         abortBuildingPlacement: Cancelar
         rotateWhilePlacing: Rotacionar
         rotateInverseModifier: >-
-            Modifier: Rotação instantanea 
+            Modifier: Rotação instantanea
         cycleBuildingVariants: Variações
         confirmMassDelete: Confirmar exclusão em massa
         cycleBuildings: Trocar de construção
@@ -670,5 +669,5 @@ demo:
         oneGameLimit: Limitado para um savegamne
         customizeKeybindings: Modificando Teclas
         creatingMarkers: Criando marcações
-        
+
     settingNotAvailable: Não disponível na versão demo.
