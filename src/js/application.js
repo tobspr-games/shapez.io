@@ -256,11 +256,15 @@ export class Application {
     onAppRenderableStateChanged(renderable) {
         logger.log("Application renderable:", renderable);
         window.focus();
+        const currentState = this.stateMgr.getCurrentState();
         if (!renderable) {
-            this.stateMgr.getCurrentState().onAppPause();
+            if (currentState) {
+                currentState.onAppPause();
+            }
         } else {
-            // Got resume
-            this.stateMgr.getCurrentState().onAppResume();
+            if (currentState) {
+                currentState.onAppResume();
+            }
             this.checkResize();
         }
 
@@ -274,7 +278,10 @@ export class Application {
         if (!this.unloaded) {
             logSection("UNLOAD HANDLER", "#f77");
             this.unloaded = true;
-            this.stateMgr.getCurrentState().onBeforeExit();
+            const currentState = this.stateMgr.getCurrentState();
+            if (currentState) {
+                currentState.onBeforeExit();
+            }
             this.deinitialize();
         }
     }
@@ -284,8 +291,9 @@ export class Application {
      */
     onBeforeUnload(event) {
         logSection("BEFORE UNLOAD HANDLER", "#f77");
+        const currentState = this.stateMgr.getCurrentState();
 
-        if (!G_IS_DEV && this.stateMgr.getCurrentState().getHasUnloadConfirmation()) {
+        if (!G_IS_DEV && currentState && currentState.getHasUnloadConfirmation()) {
             if (!G_IS_STANDALONE) {
                 // Need to show a "Are you sure you want to exit"
                 event.preventDefault();
@@ -335,7 +343,10 @@ export class Application {
             return;
         }
 
-        this.stateMgr.getCurrentState().onBackgroundTick(dt);
+        const currentState = this.stateMgr.getCurrentState();
+        if (currentState) {
+            currentState.onBackgroundTick(dt);
+        }
     }
 
     /**
@@ -355,7 +366,10 @@ export class Application {
             this.lastResizeCheck = time;
         }
 
-        this.stateMgr.getCurrentState().onRender(dt);
+        const currentState = this.stateMgr.getCurrentState();
+        if (currentState) {
+            currentState.onRender(dt);
+        }
     }
 
     /**
