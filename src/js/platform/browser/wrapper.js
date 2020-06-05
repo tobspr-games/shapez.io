@@ -91,7 +91,14 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
             }
 
             // Try accessing the indexedb
-            const request = window.indexedDB.open("indexeddb_feature_detection", 1);
+            let request;
+            try {
+                request = window.indexedDB.open("indexeddb_feature_detection", 1);
+            } catch (ex) {
+                logger.warn("Error while opening indexed db:", ex);
+                resolve();
+                return;
+            }
             request.onerror = err => {
                 logger.log("Indexed DB can *not* be accessed: ", err);
                 logger.log("Using fallback to local storage");
