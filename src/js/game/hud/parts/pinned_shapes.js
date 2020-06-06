@@ -89,6 +89,10 @@ export class HUDPinnedShapes extends BaseHUDPart {
         }
     }
 
+    /**
+     * Updates the goal amounts in the pins when an upgrade is made.
+     * @param {string} upgradeId
+     */
     recalculateGoals(upgradeId) {
         const amountForUpgradeShape = {};
 
