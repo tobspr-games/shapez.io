@@ -117,7 +117,10 @@ export class HUDShop extends BaseHUDPart {
                 pinButton.classList.add("pin");
                 container.appendChild(pinButton);
 
-                if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
+                const currentGoalShape = this.root.hubGoals.currentGoal.definition.getHash();
+                if (shape === currentGoalShape) {
+                    pinButton.classList.add("isGoal");
+                } else if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
                     pinButton.classList.add("alreadyPinned");
                 }
 
@@ -126,8 +129,15 @@ export class HUDShop extends BaseHUDPart {
                     preventDefault: true,
                 });
                 pinDetector.click.add(() => {
-                    this.root.hud.signals.shapePinRequested.dispatch(shapeDef, amount);
-                    pinButton.classList.add("pinned");
+                    if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
+                        this.root.hud.signals.shapeUnpinRequested.dispatch(shape);
+                        pinButton.classList.add("unpinned");
+                        pinButton.classList.remove("pinned", "alreadyPinned");
+                    } else {
+                        this.root.hud.signals.shapePinRequested.dispatch(shapeDef, amount);
+                        pinButton.classList.add("pinned");
+                        pinButton.classList.remove("unpinned");
+                    }
                 });
 
                 handle.requireIndexToElement.push({
