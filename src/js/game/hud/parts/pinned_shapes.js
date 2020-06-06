@@ -3,7 +3,7 @@ import { ClickDetector } from "../../../core/click_detector";
 import { formatBigNumber, makeDiv } from "../../../core/utils";
 import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
-import { blueprintShape } from "../../upgrades";
+import { blueprintShape, UPGRADES } from "../../upgrades";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 
 export class HUDPinnedShapes extends BaseHUDPart {
@@ -34,6 +34,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
         this.root.signals.storyGoalCompleted.add(this.rerenderFull, this);
         this.root.signals.postLoadHook.add(this.rerenderFull, this);
+        this.root.signals.upgradePurchased.add(this.recalculateGoals, this);
         this.root.hud.signals.shapePinRequested.add(this.pinNewShape, this);
     }
 
@@ -86,6 +87,28 @@ export class HUDPinnedShapes extends BaseHUDPart {
                 this.internalPinShape(key, this.pinnedShapes[i].goal);
             }
         }
+    }
+
+    recalculateGoals(upgradeId) {
+        const amountForUpgradeShape = {};
+
+        const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
+        const currentUpgrade = UPGRADES[upgradeId].tiers[currentTier];
+        const currentRequired = currentUpgrade.required;
+        for (let i = 0; i < currentRequired.length; i++) {
+            const upgradeShape = currentRequired[i].shape;
+            const amount = currentRequired[i].amount;
+            amountForUpgradeShape[upgradeShape] = amount;
+        }
+
+        for (let i = 0; i < this.pinnedShapes.length; ++i) {
+            const key = this.pinnedShapes[i].key;
+            if (key in amountForUpgradeShape) {
+                this.pinnedShapes[i].goal = amountForUpgradeShape[key];
+            }
+        }
+
+        this.rerenderFull();
     }
 
     /**
