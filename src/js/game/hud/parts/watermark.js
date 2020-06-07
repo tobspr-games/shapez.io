@@ -13,7 +13,7 @@ export class HUDWatermark extends BaseHUDPart {
     }
 
     onWatermarkClick() {
-        this.root.app.analytics.trackUiClick("watermark_click");
+        this.root.app.analytics.trackUiClick("watermark_click_2");
         this.root.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
     }
 

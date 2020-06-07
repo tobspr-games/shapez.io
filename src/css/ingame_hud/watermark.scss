@@ -1,6 +1,6 @@
 #ingame_HUD_Watermark {
     position: absolute;
-    background: uiResource("get_on_itch_io.svg") center center / contain no-repeat;
+    background: uiResource("get_on_steam.png") center center / contain no-repeat;
     @include S(width, 110px);
     @include S(height, 40px);
     @include S(top, 10px);
