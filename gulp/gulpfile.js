@@ -233,6 +233,7 @@ gulp.task("build.dev", cb => {
         "imgres.copyImageResources",
         "imgres.copyNonImageResources",
         "translations.fullBuild",
+        "js.dev",
         "css.dev",
         "html.dev"
     )(cb);
