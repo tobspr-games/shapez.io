@@ -11,7 +11,12 @@ import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
-export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
+export const enumSplitterVariants = {
+    compact: "compact",
+    compactInverse: "compact-inverse",
+    compactSplit: "compact-split",
+    compactInverseSplit: "compact-inverse-split",
+};
 
 export class MetaSplitterBuilding extends MetaBuilding {
     constructor() {
@@ -24,6 +29,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 return new Vector(2, 1);
             case enumSplitterVariants.compact:
             case enumSplitterVariants.compactInverse:
+            case enumSplitterVariants.compactSplit:
+            case enumSplitterVariants.compactInverseSplit:
                 return new Vector(1, 1);
             default:
                 assertAlways(false, "Unknown splitter variant: " + variant);
@@ -53,6 +60,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 defaultBuildingVariant,
                 enumSplitterVariants.compact,
                 enumSplitterVariants.compactInverse,
+                enumSplitterVariants.compactSplit,
+                enumSplitterVariants.compactInverseSplit,
             ];
         }
         return super.getAvailableVariants(root);
@@ -153,6 +162,32 @@ export class MetaSplitterBuilding extends MetaBuilding {
 
                 entity.components.ItemEjector.setSlots([
                     { pos: new Vector(0, 0), direction: enumDirection.top },
+                ]);
+
+                entity.components.ItemAcceptor.beltUnderlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                ];
+
+                break;
+            }
+            case enumSplitterVariants.compactSplit:
+            case enumSplitterVariants.compactInverseSplit: {
+                entity.components.ItemAcceptor.setSlots([
+                    { pos: new Vector(0, 0), directions: [enumDirection.bottom] },
+                ]);
+
+                entity.components.ItemEjector.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction:
+                            variant === enumSplitterVariants.compactInverseSplit
+                                ? enumDirection.left
+                                : enumDirection.right,
+                    },
                 ]);
 
                 entity.components.ItemAcceptor.beltUnderlays = [
