@@ -8,7 +8,7 @@ import { createLogger } from "../core/logging";
 import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
-import { enumColors } from "./colors";
+import { enumColors, allColorData } from "./colors";
 import { Entity } from "./entity";
 import { ColorItem } from "./items/color_item";
 import { ShapeItem } from "./items/shape_item";
@@ -136,9 +136,16 @@ export class MapChunk {
      */
     internalGenerateColorPatch(rng, colorPatchSize, distanceToOriginInChunks) {
         // First, determine available colors
-        let availableColors = [enumColors.red, enumColors.green];
-        if (distanceToOriginInChunks > 2) {
-            availableColors.push(enumColors.blue);
+        let availableColors = [];
+        for (let c in enumColors) {
+            c = enumColors[c];
+            if (
+                allColorData[c] &&
+                allColorData[c].spawnable &&
+                allColorData[c].minDistance <= distanceToOriginInChunks
+            ) {
+                availableColors.push(c);
+            }
         }
         this.internalGeneratePatch(rng, colorPatchSize, new ColorItem(rng.choice(availableColors)));
     }

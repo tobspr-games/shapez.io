@@ -1,3 +1,5 @@
+import { customColors } from "./custom/colors";
+
 /** @enum {string} */
 export const enumColors = {
     red: "red",
@@ -5,7 +7,7 @@ export const enumColors = {
     blue: "blue",
 
     yellow: "yellow",
-    purple: "purple",
+    magenta: "magenta",
     cyan: "cyan",
 
     white: "white",
@@ -19,7 +21,7 @@ export const enumColorToShortcode = {
     [enumColors.blue]: "b",
 
     [enumColors.yellow]: "y",
-    [enumColors.purple]: "p",
+    [enumColors.magenta]: "p",
     [enumColors.cyan]: "c",
 
     [enumColors.white]: "w",
@@ -28,140 +30,234 @@ export const enumColorToShortcode = {
 
 /** @enum {enumColors} */
 export const enumShortcodeToColor = {};
-for (const key in enumColorToShortcode) {
-    enumShortcodeToColor[enumColorToShortcode[key]] = key;
-}
 
 /** @enum {string} */
-export const enumColorsToHexCode = {
-    [enumColors.red]: "#ff666a",
-    [enumColors.green]: "#78ff66",
-    [enumColors.blue]: "#66a7ff",
-
-    // red + green
-    [enumColors.yellow]: "#fcf52a",
-
-    // red + blue
-    [enumColors.purple]: "#dd66ff",
-
-    // blue + green
-    [enumColors.cyan]: "#00fcff",
-
-    // blue + green + red
-    [enumColors.white]: "#ffffff",
-
-    [enumColors.uncolored]: "#aaaaaa",
-};
+export const enumColorsToHexCode = {};
 
 const c = enumColors;
-/** @enum {Object.<string, string>} */
-export const enumColorMixingResults = {
-    // 255, 0, 0
-    [c.red]: {
-        [c.green]: c.yellow,
-        [c.blue]: c.purple,
+/** @enum {Object.<string, Object>} */
+export const enumColorMixingResults = {};
 
-        [c.yellow]: c.yellow,
-        [c.purple]: c.purple,
-        [c.cyan]: c.white,
+/**
+ * @typedef {Object} ColorData
+ * @property {string} id
+ * @property {string} code
+ * @property {string} hex
+ * @property {string[][] | string[]} [mixingFrom]
+ * @property {Object.<string, string>} [mixing]
+ * @property {boolean} [spawnable]
+ * @property {number} [minDistance]
+ */
 
-        [c.white]: c.white,
+/** @enum {ColorData} */
+export const allColorData = {
+    uncolored: {
+        id: "uncolored",
+        code: "u",
+        hex: "#aaaaaa",
+        mixing: {
+            any: "any",
+        },
     },
-
-    // 0, 255, 0
-    [c.green]: {
-        [c.blue]: c.cyan,
-
-        [c.yellow]: c.yellow,
-        [c.purple]: c.white,
-        [c.cyan]: c.cyan,
-
-        [c.white]: c.white,
+    red: {
+        id: "red",
+        code: "r",
+        hex: "#ff666a",
+        // no recipes
+        spawnable: true,
     },
-
-    // 0, 255, 0
-    [c.blue]: {
-        [c.yellow]: c.white,
-        [c.purple]: c.purple,
-        [c.cyan]: c.cyan,
-
-        [c.white]: c.white,
+    green: {
+        id: "green",
+        code: "g",
+        hex: "#78ff66",
+        // no recipes
+        spawnable: true,
     },
-
-    // 255, 255, 0
-    [c.yellow]: {
-        [c.purple]: c.white,
-        [c.cyan]: c.white,
+    blue: {
+        id: "blue",
+        code: "b",
+        hex: "#66a7ff",
+        // no recipes
+        spawnable: true,
+        minDistance: 3,
     },
-
-    // 255, 0, 255
-    [c.purple]: {
-        [c.cyan]: c.white,
+    cyan: {
+        id: "cyan",
+        code: "c",
+        hex: "#00fcff",
+        mixingFrom: ["green", "blue"],
+        mixing: {
+            green: "this",
+            blue: "this",
+        },
     },
-
-    // 0, 255, 255
-    [c.cyan]: {},
-
-    //// SPECIAL COLORS
-
-    // 255, 255, 255
-    [c.white]: {
-        // auto
+    magenta: {
+        id: "magenta",
+        code: "p",
+        hex: "#dd66ff",
+        mixingFrom: ["red", "blue"],
+        mixing: {
+            red: "this",
+            blue: "this",
+        },
     },
-
-    // X, X, X
-    [c.uncolored]: {
-        // auto
+    yellow: {
+        id: "yellow",
+        code: "y",
+        hex: "#fcf52a",
+        mixingFrom: ["red", "green"],
+        mixing: {
+            red: "this",
+            green: "this",
+        },
+    },
+    white: {
+        id: "white",
+        code: "w",
+        hex: "#ffffff",
+        mixing: {
+            any: "white",
+        },
+        mixingFrom: [
+            ["red", "cyan"],
+            ["green", "magenta"],
+            ["blue", "yellow"],
+            ["cyan", "magenta"],
+            ["cyan", "yellow"],
+            ["magenta", "yellow"],
+        ],
     },
 };
 
-// Create same color lookups
-for (const color in enumColors) {
-    enumColorMixingResults[color][color] = color;
-
-    // Anything with white is white again
-    enumColorMixingResults[color][c.white] = c.white;
-
-    // Anything with uncolored is the same color
-    enumColorMixingResults[color][c.uncolored] = color;
+/**
+ * @param {Object} colorData
+ * @property {string} colorData.id
+ * @property {string} colorData.code
+ * @property {string} colorData.hex
+ * @property {Object.<string, string>} [colorData.mixing]
+ * @property {string[2][] | string[2]} [colorData.mixingFrom]
+ */
+function registerColor(colorData) {
+    allColorData[colorData.id] = colorData;
 }
 
-// Create reverse lookup and check color mixing lookups
-for (const colorA in enumColorMixingResults) {
-    for (const colorB in enumColorMixingResults[colorA]) {
-        const resultColor = enumColorMixingResults[colorA][colorB];
-        if (!enumColorMixingResults[colorB]) {
-            enumColorMixingResults[colorB] = {
-                [colorA]: resultColor,
-            };
-        } else {
-            const existingResult = enumColorMixingResults[colorB][colorA];
-            if (existingResult && existingResult !== resultColor) {
-                assertAlways(
-                    false,
-                    "invalid color mixing configuration, " +
-                        colorA +
-                        " + " +
-                        colorB +
-                        " is " +
-                        resultColor +
-                        " but " +
-                        colorB +
-                        " + " +
-                        colorA +
-                        " is " +
-                        existingResult
-                );
+export let allowColorMixingMismatch = false;
+export let allowColorMixingOverride = false;
+export let allowColorMixingMissingSource = false;
+export let allowColorMixingMissingTarget = false;
+
+for (let data of customColors) {
+    registerColor(data);
+}
+
+const mix = enumColorMixingResults;
+
+initColors();
+
+export function initColors() {
+    
+    for (let c1 in allColorData) {
+        let data = allColorData[c1];
+        assert(data);
+        assert(data.id == c1);
+        assert(data.code.toLowerCase() == data.code);
+        if (data.disabled) {
+            continue;
+        }
+        if (data.spawnable && !data.minDistance) {
+            data.minDistance = 0;
+        }
+        enumColors[c1] = c1;
+        enumColorToShortcode[c1] = data.code;
+        enumShortcodeToColor[data.code] = c1;
+        enumColorsToHexCode[c1] = data.hex;
+        if (!mix[c1]) {
+            mix[c1] = {};
+        }
+        let mixing = mix[c1];
+        if (data.mixing) {
+            for (let c2 in data.mixing) {
+                if (c2 == "any") {
+                    continue;
+                }
+                let result = data.mixing[c2] == "this" ? c1 : data.mixing[c2] == "any" ? c2 : data.mixing[c2];
+                if (mixing[c2] && mixing[c2] != result) {
+                    if (!allowColorMixingOverride) {
+                        assertAlways(
+                            false,
+                            `Color mixing recipe overrides are not implemented (${c1}+${c2}=${mixing[c2]}->${result})`
+                        );
+                    }
+                }
+                mixing[c2] = result;
             }
-            enumColorMixingResults[colorB][colorA] = resultColor;
         }
     }
-}
-
-for (const colorA in enumColorMixingResults) {
-    for (const colorB in enumColorMixingResults) {
-        if (!enumColorMixingResults[colorA][colorB]) {
-            assertAlways(false, "Color mixing of", colorA, "with", colorB, "is not defined");
+    for (let id in allColorData) {
+        let data = allColorData[id];
+        let mixingFrom = !data.mixingFrom
+            ? []
+            : data.mixingFrom[0] instanceof Array
+            ? data.mixingFrom
+            : [data.mixingFrom];
+        for (let [c1, c2] of mixingFrom) {
+            if (!c[c1] || !c[c2]) {
+                if (!allowColorMixingMissingSource) {
+                    assertAlways(false, `Color mixing recipe source is not known (${c1}+${c2}=${id})`);
+                }
+                continue;
+            }
+            if (mix[c1][c2] && mix[c1][c2] != id) {
+                // TODO
+                throw "wut";
+            }
+            if (mix[c2][c1] && mix[c2][c1] != id) {
+                // TODO
+                throw "wut";
+            }
+            mix[c1][c2] = id;
+        }
+    }
+    for (let c1 in c) {
+        for (let c2 in c) {
+            if (mix[c1][c2] != mix[c2][c1]) {
+                if (mix[c1][c2] && mix[c2][c1] && !allowColorMixingMismatch) {
+                    assertAlways(
+                        false,
+                        `Color mixing recipe result mismatch (${c1}+${c2}=${mix[c1][c2]}/${mix[c2][c1]}}`
+                    );
+                }
+                mix[c1][c2] = mix[c2][c1] = mix[c1][c2] || mix[c2][c1];
+            }
+        }
+    }
+    for (let c1 in c) {
+        if (!mix[c1][c1]) {
+            mix[c1][c1] = c1;
+        }
+    }
+    let anyPairs = {};
+    for (let c1 in c) {
+        let mixing = allColorData[c1].mixing;
+        if (!mixing || !mixing.any) {
+            continue;
+        }
+        for (let c2 in c) {
+            if (mix[c1][c2] || mix[c2][c1]) {
+                continue;
+            }
+            if (anyPairs[`${c1}+${c2}`]) {
+                throw "wut";
+            }
+            anyPairs[`${c1}+${c2}`] = anyPairs[`${c2}+${c1}`] = true;
+            mix[c1][c2] = mix[c2][c1] = mixing.any == "any" ? c2 : mixing.any;
+        }
+    }
+    for (let c1 in c) {
+        for (let c2 in c) {
+            if (!mix[c1][c2]) {
+                assertAlways(false, "Color mixing of", c1, "with", c2, "is not defined");
+            }
         }
     }
 }
