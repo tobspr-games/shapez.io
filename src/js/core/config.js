@@ -15,8 +15,7 @@ export const THIRDPARTY_URLS = {
     discord: "https://discord.gg/HN7EVzV",
     github: "https://github.com/tobspr/shapez.io",
 
-    // standaloneStorePage: "https://steam.shapez.io",
-    standaloneStorePage: "https://tobspr.itch.io/shapez.io",
+    standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
 };
 
 export const globalConfig = {
@@ -46,7 +45,7 @@ export const globalConfig = {
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
     beltSpeedItemsPerSecond: 2,
-    itemSpacingOnBelts: 0.63,
+    itemSpacingOnBelts: 0.8,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
     undergroundBeltMaxTilesByTier: [5, 8],
@@ -83,7 +82,7 @@ export const globalConfig = {
 
     debug: {
         /* dev:start */
-        // fastGameEnter: true,
+        fastGameEnter: true,
         // noArtificialDelays: true,
         // disableSavegameWrite: true,
         // showEntityBounds: true,
@@ -93,9 +92,9 @@ export const globalConfig = {
         // disableZoomLimits: true,
         // showChunkBorders: true,
         // rewardsInstant: true,
-        // allBuildingsUnlocked: true,
-        // blueprintsNoCost: true,
-        // upgradesNoCost: true,
+        allBuildingsUnlocked: true,
+        blueprintsNoCost: true,
+        upgradesNoCost: true,
         // disableUnlockDialog: true,
         // disableLogicTicks: true,
         // testClipping: true,

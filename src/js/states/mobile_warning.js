@@ -13,11 +13,11 @@ export class MobileWarningState extends GameState {
             <img class="logo" src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
 
             <p>
-                I'm sorry, but shapez.io is not yet available on mobile devices!
-                (There is also no estimate when this will change, but feel to make a contribution! It's
-                &nbsp;<a href="https://github.com/tobspr/shapez.io" target="_blank">open source</a>!)</p>
+                I'm sorry, but shapez.io is not available on mobile devices yet!
+                There is also no estimate when this will change, but feel to make a contribution! It's
+                &nbsp;<a href="https://github.com/tobspr/shapez.io" target="_blank">open source</a>!</p>
             
-            <p>If you want to play on your computer, you can also get the standalone on itch.io:</p>
+            <p>If you want to play on your computer, you can also get the standalone on steam:</p>
 
             
             <a href="${

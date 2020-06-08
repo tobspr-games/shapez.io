@@ -1,7 +1,21 @@
 export const CHANGELOG = [
     {
+        version: "1.1.8",
+        date: "07.06.2020",
+        entries: [
+            "You can now purchase the standalone on steam! <a href='https://steam.shapez.io' target='blank'>View steam page</a>",
+            "Added ability to create markers in the demo, but only two.",
+            "Contest #01 has ended! I'll now work through the entries, select the 5 I like most and present them to the community to vote for!",
+        ],
+    },
+    {
+        version: "1.1.7",
+        date: "04.06.2020",
+        entries: ["HOTFIX: Fix savegames not showing up on the standalone version"],
+    },
+    {
         version: "1.1.6",
-        date: "unreleased",
+        date: "04.06.2020",
         entries: [
             "The steam release will happen on the <strong>7th of June</strong> - Be sure to add it to your wishlist! <a href='https://steam.shapez.io' target='blank'>View on steam</a>",
             "Fixed level complete dialog being blurred when the shop was opened before",

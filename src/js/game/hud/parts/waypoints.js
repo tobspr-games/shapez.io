@@ -133,11 +133,6 @@ export class HUDWaypoints extends BaseHUDPart {
      * @param {Vector=} worldPos Override the world pos, otherwise it is the camera position
      */
     requestCreateMarker(worldPos = null) {
-        if (IS_DEMO) {
-            this.root.hud.parts.dialogs.showFeatureRestrictionInfo(T.demo.features.creatingMarkers);
-            return;
-        }
-
         const markerNameInput = new FormElementInput({
             id: "markerName",
             label: null,
@@ -157,6 +152,11 @@ export class HUDWaypoints extends BaseHUDPart {
         const center = worldPos || this.root.camera.center;
 
         dialog.buttonSignals.ok.add(() => {
+            if (IS_DEMO && this.waypoints.length > 2) {
+                this.root.hud.parts.dialogs.showFeatureRestrictionInfo("", T.dialogs.markerDemoLimit.desc);
+                return;
+            }
+
             this.waypoints.push({
                 label: markerNameInput.getValue(),
                 center: { x: center.x, y: center.y },

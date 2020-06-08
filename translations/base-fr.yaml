@@ -66,7 +66,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Version démo
     intro: >-
-        Achetez la version complète pour débloquer toutes les fonctionalités!
+        Achetez la version complète pour débloquer toutes les fonctionnalités!
 
 mainMenu:
     play: Jouer
@@ -103,6 +103,7 @@ mainMenu:
                 J'attends avec impatience de voir vos superbes créations!
 
         showInfo: Participer
+        contestOver: Ce concours est terminé - Rejoignez le discord pour être notifié de nouveaux concours!
 
 dialogs:
     buttons:
@@ -217,6 +218,9 @@ dialogs:
     createMarker:
         title: Nouvelle balise
         desc: Donnez-lui un nom approprié
+
+    markerDemoLimit:
+        desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -669,9 +673,8 @@ demo:
         importingGames: Importer des sauvegardes
         oneGameLimit: Limité à une sauvegarde
         customizeKeybindings: Personnalisation des contrôles
-        creatingMarkers: Création de balises personnalisées
-
+ 
     settingNotAvailable: Indisponible dans la démo.
 #
-# French translation version v0.4 based on english v1.1.5 by Didier WEERTS 'The Corsaire'
+# French translation version v0.5 based on english v1.1.8 by Didier WEERTS 'The Corsaire'
 #
