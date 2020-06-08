@@ -121,29 +121,18 @@ export class Application {
      * Initializes all platform instances
      */
     initPlatformDependentInstances() {
-        logger.log("Creating platform dependent instances");
-
-        // Start with empty ad provider
-        this.adProvider = new NoAdProvider(this);
-
-        if (G_IS_STANDALONE) {
-            this.storage = new StorageImplElectron(this);
-        } else {
-            if (window.indexedDB) {
-                this.storage = new StorageImplBrowserIndexedDB(this);
-            } else {
-                this.storage = new StorageImplBrowser(this);
-            }
-        }
-        this.sound = new SoundImplBrowser(this);
+        logger.log("Creating platform dependent instances (standalone=", G_IS_STANDALONE, ")");
 
         if (G_IS_STANDALONE) {
             this.platformWrapper = new PlatformWrapperImplElectron(this);
         } else {
             this.platformWrapper = new PlatformWrapperImplBrowser(this);
         }
-        this.analytics = new GoogleAnalyticsImpl(this);
 
+        // Start with empty ad provider
+        this.adProvider = new NoAdProvider(this);
+        this.sound = new SoundImplBrowser(this);
+        this.analytics = new GoogleAnalyticsImpl(this);
         this.gameAnalytics = new ShapezGameAnalytics(this);
     }
 
@@ -267,11 +256,15 @@ export class Application {
     onAppRenderableStateChanged(renderable) {
         logger.log("Application renderable:", renderable);
         window.focus();
+        const currentState = this.stateMgr.getCurrentState();
         if (!renderable) {
-            this.stateMgr.getCurrentState().onAppPause();
+            if (currentState) {
+                currentState.onAppPause();
+            }
         } else {
-            // Got resume
-            this.stateMgr.getCurrentState().onAppResume();
+            if (currentState) {
+                currentState.onAppResume();
+            }
             this.checkResize();
         }
 
@@ -285,7 +278,10 @@ export class Application {
         if (!this.unloaded) {
             logSection("UNLOAD HANDLER", "#f77");
             this.unloaded = true;
-            this.stateMgr.getCurrentState().onBeforeExit();
+            const currentState = this.stateMgr.getCurrentState();
+            if (currentState) {
+                currentState.onBeforeExit();
+            }
             this.deinitialize();
         }
     }
@@ -295,8 +291,9 @@ export class Application {
      */
     onBeforeUnload(event) {
         logSection("BEFORE UNLOAD HANDLER", "#f77");
+        const currentState = this.stateMgr.getCurrentState();
 
-        if (!G_IS_DEV && this.stateMgr.getCurrentState().getHasUnloadConfirmation()) {
+        if (!G_IS_DEV && currentState && currentState.getHasUnloadConfirmation()) {
             if (!G_IS_STANDALONE) {
                 // Need to show a "Are you sure you want to exit"
                 event.preventDefault();
@@ -346,7 +343,10 @@ export class Application {
             return;
         }
 
-        this.stateMgr.getCurrentState().onBackgroundTick(dt);
+        const currentState = this.stateMgr.getCurrentState();
+        if (currentState) {
+            currentState.onBackgroundTick(dt);
+        }
     }
 
     /**
@@ -366,7 +366,10 @@ export class Application {
             this.lastResizeCheck = time;
         }
 
-        this.stateMgr.getCurrentState().onRender(dt);
+        const currentState = this.stateMgr.getCurrentState();
+        if (currentState) {
+            currentState.onRender(dt);
+        }
     }
 
     /**
@@ -379,7 +382,10 @@ export class Application {
         if (this.screenWidth !== w || this.screenHeight !== h || forceUpdate) {
             this.screenWidth = w;
             this.screenHeight = h;
-            this.stateMgr.getCurrentState().onResized(this.screenWidth, this.screenHeight);
+            const currentState = this.stateMgr.getCurrentState();
+            if (currentState) {
+                currentState.onResized(this.screenWidth, this.screenHeight);
+            }
 
             const scale = this.getEffectiveUiScale();
             waitNextFrame().then(() => document.documentElement.style.setProperty("--ui-scale", scale));

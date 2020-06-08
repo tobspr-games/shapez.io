@@ -1,0 +1,50 @@
+#ingame_HUD_InteractiveTutorial {
+    position: absolute;
+    @include S(left, 10px);
+    @include S(bottom, 10px);
+
+    @include StyleBelowWidth(1430px) {
+        @include S(bottom, 10px + 40px);
+    }
+
+    @include S(width, 150px);
+
+    background: $ingameHudBg;
+    @include S(padding, 4px);
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+
+    @include MakeAnimationWrappedEvenOdd(0.5s ease-in-out) {
+        0% {
+        }
+
+        50% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+        }
+    }
+
+    .title {
+        color: #fff;
+        opacity: 0.5;
+        @include SuperSmallText;
+        text-transform: uppercase;
+    }
+
+    .desc {
+        @include SuperSmallText;
+        strong {
+            color: $colorBlueBright;
+            font-weight: bold;
+        }
+    }
+
+    .helperGif {
+        @include S(margin-top, 5px);
+        @include S(height, 150px);
+        background: center center / contain no-repeat;
+    }
+}

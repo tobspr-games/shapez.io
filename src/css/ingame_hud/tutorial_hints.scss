@@ -1,7 +1,12 @@
 #ingame_HUD_TutorialHints {
     position: absolute;
     @include S(left, 10px);
-    @include S(bottom, 50px);
+    @include S(bottom, 10px);
+
+    @include StyleBelowWidth(1430px) {
+        @include S(bottom, 50px);
+    }
+
     display: flex;
     flex-direction: column;
     background: rgba(50, 60, 70, 0);
@@ -50,6 +55,7 @@
 
         button.toggleHint {
             @include PlainText;
+            @include IncreasedClickArea(0px);
         }
     }
 
@@ -60,7 +66,7 @@
     }
 
     &.enlarged {
-        background: rgba(50, 60, 70, 0.9);
+        background: $ingameHudBg;
         left: 50%;
         bottom: 50%;
         transform: translate(-50%, 50%);
@@ -75,7 +81,7 @@
             bottom: -1000px;
             z-index: 0;
 
-            background: rgba(50, 60, 70, 0.3);
+            background: rgba($ingameHudBg, 0.3);
         }
 
         .header {

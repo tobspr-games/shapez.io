@@ -26,6 +26,13 @@ global:
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
 
+    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.   cf wikipedia système international d'unité
+    suffix:
+        thousands: k
+        millions: M
+        billions: T
+        trillions: E
+
     # Shown for infinitely big numbers
     infinite: inf
 
@@ -152,10 +159,6 @@ dialogs:
         title: Mise-à-jour disponible
         desc: Une mise-à-jour est disponible pour ce jeu!
 
-    demoExplanation:
-        title: Note du développeur
-        desc: Je développe ce jeu pendant mon temps libre, et j'espère que vous l'appréciez! Si c'est le cas, merci de considérez l'achat de la version complète!
-
     oneSavegameLimit:
         title: Sauvegardes limitées
         desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci de soit effacer l'actuelle ou de vous procurer la version complète!
@@ -213,6 +216,7 @@ ingame:
         toggleHud: Basculet l'ATH
         placeBuilding: Placer un bâtiment
         createMarker: Créer une balise
+        delete: Supprimer
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -278,7 +282,7 @@ ingame:
                 description: Affiche tous les formes que votre usine entière produit, en incluant les formes intermédiaires.
             delivered:
                 title: Délivré
-                description: Affiche les formes qui ont étés délivrées dans votres bâtiment central.
+                description: Affiche les formes qui ont été livrées dans votre noyau.
         noShapesProduced: Aucune forme n'a été produite jusqu'à présent.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -306,11 +310,20 @@ ingame:
     blueprintPlacer:
         cost: Coût
 
+    # Map markers
     waypoints:
         waypoints: Balise
         hub: Noyau
         description: Cliquez une balise pour vous y rendre, clic-droit pour l'effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer une sur l'endroit pointé.
         creationSuccessNotification: La bailse a été créée.
+
+    # Interactive tutorial
+    interactiveTutorial:
+        title: Tutoriel
+        hints:
+            1_1_extractor: Placez un <strong>extracteur</strong> sur une <strong>forme en cercle</strong> pour l'extraire!
+            1_2_conveyor: Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre noyau!
+            1_3_expand: Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus votre votre but.
 
 # All shop upgrades
 shopUpgrades:
@@ -440,7 +453,7 @@ storyRewards:
 
     reward_tunnel:
         title: Tunnel
-        desc: Le <strong>tunnel</strong> a été débloqué - Vous pouvez maintenant faire passer des formes vous les convoyeurs et les bâtimentts avec ça!
+        desc: Le <strong>tunnel</strong> a été débloqué - Vous pouvez maintenant faire passer des formes sous les convoyeurs et les bâtiments avec ça!
 
     reward_rotater_ccw:
         title: Pivoteur inversé
@@ -448,7 +461,7 @@ storyRewards:
 
     reward_miner_chainable:
         title: Extracteur en série
-        desc: Vous avez débloqué <strong>l'extracteur en série</strong>! Il permet <strong>de transférer ses resources</strong> à d'autres extracteurs pour extraire les ressources plus efficacement!
+        desc: Vous avez débloqué <strong>l'extracteur en série</strong>! Il permet <strong>de transférer ses resources</strong> à d'autres extracteurs pour les extraire plus efficacement!
 
     reward_underground_belt_tier_2:
         title: Tunnel échelon II
@@ -481,7 +494,7 @@ storyRewards:
 
     reward_blueprints:
         title: Patrons
-        desc: Vous pouvez maintenant <strong>copier et coller</strong> des perties de votre usines! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer! (Ceux qu'ont vient de vous donner).
+        desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usines! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer! (Ceux que vous venez de livrer).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -511,6 +524,23 @@ settings:
             title: Taille de l'interface
             description: >-
                 Change la taille de l'interface utilisateur. Cette interface se redimensionnera suivant la résolution de votre appareil, mais cette option contrôle le facteur de résolution.
+            scales:
+                super_small: Très petite
+                small: Petite
+                regular: Normale
+                large: Largr
+                huge: Très large
+
+        scrollWheelSensitivity:
+            title: Sensibilité du zoom
+            description: >-
+                Change la sensibilité du zoom (AUssi bien de la roulette de la souris que du trackpad).
+            sensitivity:
+                super_slow: Super lent
+                slow: Lent
+                regular: Normal
+                fast: Rapide
+                super_fast: Super rapide
 
         fullscreen:
             title: Plein écran
@@ -557,6 +587,7 @@ keybindings:
     categoryLabels:
         general: Application
         ingame: Jeu
+        navigation: Navigation
         placement: Placement
         massSelect: Suppression de masse
         buildings: Raccourcis bâtiment
@@ -569,9 +600,11 @@ keybindings:
         mapMoveRight: Aller à droite
         mapMoveDown: Aller en bas
         mapMoveLeft: Aller à gauche
+        centerMap: Centrer la carte
 
         mapZoomIn: Zoom avant
         mapZoomOut: Zoom arrière
+        createMarker: Créer une balise
 
         menuOpenShop: Améliorations
         menuOpenStats: Statistiques
@@ -621,5 +654,5 @@ demo:
 
     settingNotAvailable: Indisponible dans la démo.
 #
-# French translation version v0.2 based on english v1.1.1 by Didier WEERTS 'The Corsaire'
+# French translation version v0.3 based on english v1.1.4 by Didier WEERTS 'The Corsaire'
 #

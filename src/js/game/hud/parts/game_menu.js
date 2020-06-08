@@ -5,9 +5,9 @@ import { enumNotificationType } from "./notifications";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { IS_DEMO } from "../../../core/config";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
 
 export class HUDGameMenu extends BaseHUDPart {
-    initialize() {}
     createElements(parent) {
         this.element = makeDiv(parent, "ingame_HUD_GameMenu");
 
@@ -22,12 +22,16 @@ export class HUDGameMenu extends BaseHUDPart {
                     T.ingame.notifications.newUpgrade,
                     enumNotificationType.upgrade,
                 ]),
+                visible: () =>
+                    !this.root.app.settings.getAllSettings().offerHints || this.root.hubGoals.level >= 3,
             },
             {
                 id: "stats",
                 label: "Stats",
                 handler: () => this.root.hud.parts.statistics.show(),
                 keybinding: KEYMAPPINGS.ingame.menuOpenStats,
+                visible: () =>
+                    !this.root.app.settings.getAllSettings().offerHints || this.root.hubGoals.level >= 3,
             },
         ];
 
@@ -36,20 +40,38 @@ export class HUDGameMenu extends BaseHUDPart {
          * button: HTMLElement,
          * badgeElement: HTMLElement,
          * lastRenderAmount: number,
+         * condition?: function,
          * notification: [string, enumNotificationType]
          * }>} */
         this.badgesToUpdate = [];
 
-        buttons.forEach(({ id, label, handler, keybinding, badge, notification }) => {
+        /** @type {Array<{
+         * button: HTMLElement,
+         * condition: function,
+         * domAttach: DynamicDomAttach
+         * }>} */
+        this.visibilityToUpdate = [];
+
+        this.buttonsElement = makeDiv(this.element, null, ["buttonContainer"]);
+
+        buttons.forEach(({ id, label, handler, keybinding, badge, notification, visible }) => {
             const button = document.createElement("button");
             button.setAttribute("data-button-id", id);
-            this.element.appendChild(button);
+            this.buttonsElement.appendChild(button);
             this.trackClicks(button, handler);
 
             if (keybinding) {
                 const binding = this.root.keyMapper.getBinding(keybinding);
                 binding.add(handler);
                 binding.appendLabelToElement(button);
+            }
+
+            if (visible) {
+                this.visibilityToUpdate.push({
+                    button,
+                    condition: visible,
+                    domAttach: new DynamicDomAttach(this.root, button),
+                });
             }
 
             if (badge) {
@@ -60,6 +82,7 @@ export class HUDGameMenu extends BaseHUDPart {
                     button,
                     badgeElement,
                     notification,
+                    condition: visible,
                 });
             }
         });
@@ -78,27 +101,52 @@ export class HUDGameMenu extends BaseHUDPart {
 
         this.musicButton.classList.toggle("muted", this.root.app.settings.getAllSettings().musicMuted);
         this.sfxButton.classList.toggle("muted", this.root.app.settings.getAllSettings().soundsMuted);
-
+    }
+    initialize() {
         this.root.signals.gameSaved.add(this.onGameSaved, this);
     }
 
     update() {
         let playSound = false;
         let notifications = new Set();
+
+        // Update visibility of buttons
+        for (let i = 0; i < this.visibilityToUpdate.length; ++i) {
+            const { button, condition, domAttach } = this.visibilityToUpdate[i];
+            domAttach.update(condition());
+        }
+
+        // Check for notifications and badges
         for (let i = 0; i < this.badgesToUpdate.length; ++i) {
-            const { badge, button, badgeElement, lastRenderAmount, notification } = this.badgesToUpdate[i];
+            const {
+                badge,
+                button,
+                badgeElement,
+                lastRenderAmount,
+                notification,
+                condition,
+            } = this.badgesToUpdate[i];
+
+            if (condition && !condition()) {
+                // Do not show notifications for invisible buttons
+                continue;
+            }
+
+            // Check if the amount shown differs from the one shown last frame
             const amount = badge();
             if (lastRenderAmount !== amount) {
                 if (amount > 0) {
                     badgeElement.innerText = amount;
                 }
-                // Check if the badge increased
+                // Check if the badge increased, if so play a notification
                 if (amount > lastRenderAmount) {
                     playSound = true;
                     if (notification) {
                         notifications.add(notification);
                     }
                 }
+
+                // Rerender notifications
                 this.badgesToUpdate[i].lastRenderAmount = amount;
                 button.classList.toggle("hasBadge", amount > 0);
             }
@@ -107,6 +155,7 @@ export class HUDGameMenu extends BaseHUDPart {
         if (playSound) {
             this.root.soundProxy.playUi(SOUNDS.badgeNotification);
         }
+
         notifications.forEach(([notification, type]) => {
             this.root.hud.signals.notification.dispatch(notification, type);
         });
@@ -118,13 +167,6 @@ export class HUDGameMenu extends BaseHUDPart {
     }
 
     startSave() {
-        // if (IS_DEMO) {
-        //     this.root.hud.parts.dialogs.showFeatureRestrictionInfo(
-        //         null,
-        //         T.dialogs.saveNotPossibleInDemo.desc
-        //     );
-        // }
-
         this.root.gameState.doSave();
     }
 

@@ -64,15 +64,9 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Hey!
+    title: Demo Version
     intro: >-
-        If you enjoy this game, please consider buying the full version!
-    advantages:
-        - Unlimited savegames
-        - Waypoints
-        - Dark mode & more
-        - >-
-            Allow me to further develop shapez.io ❤️
+        Get the standalone to unlock all features!
 
 mainMenu:
     play: Play
@@ -87,6 +81,29 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
+
+    contests:
+        contest_01_03062020:
+            title: "Contest #01"
+            desc: Win <strong>$25</strong> for the coolest base!
+            longDesc: >-
+                To give something back to you, I thought it would be cool to make weekly contests!
+                <br><br>
+                <strong>This weeks topic:</strong> Build the coolest base!
+                <br><br>
+                Here's the deal:<br>
+                <ul class="bucketList">
+                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
+                    <li>Bonus points if you share it on social media!</li>
+                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
+                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
+                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
+                </ul>
+                <br>
+                I'm looking forward to seeing your awesome creations!
+
+        showInfo: View
+        contestOver: This contest has ended - Join the discord to get noticed about new contests!
 
 dialogs:
     buttons:
@@ -153,15 +170,11 @@ dialogs:
 
     leaveNotPossibleInDemo:
         title: Demo version
-        desc: Your game was saved but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
+        desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
 
     newUpdate:
         title: Update available
-        desc: There is an update for this game available!
-
-    demoExplanation:
-        title: Notice from the Developer
-        desc: I am developing this game in my free time, and I hope you enjoy it! If you do, please consider to buy the standalone version!
+        desc: There is an update for this game available, be sure to download it!
 
     oneSavegameLimit:
         title: Limited savegames
@@ -206,6 +219,9 @@ dialogs:
         title: New Marker
         desc: Give it a meaningful name
 
+    markerDemoLimit:
+        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -220,6 +236,7 @@ ingame:
         toggleHud: Toggle HUD
         placeBuilding: Place building
         createMarker: Create Marker
+        delete: Destroy
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -313,11 +330,23 @@ ingame:
     blueprintPlacer:
         cost: Cost
 
+    # Map markers
     waypoints:
         waypoints: Markers
         hub: HUB
         description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
         creationSuccessNotification: Marker has been created.
+
+    # Interactive tutorial
+    interactiveTutorial:
+        title: Tutorial
+        hints:
+            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_2_conveyor: >-
+                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+
+            1_3_expand: >-
+                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
 
 # All shop upgrades
 shopUpgrades:
@@ -574,7 +603,7 @@ settings:
         offerHints:
             title: Hints & Tutorials
             description: >-
-                Whether to offer hints and tutorials while playing.
+                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
 
 keybindings:
     title: Keybindings
@@ -649,6 +678,5 @@ demo:
         importingGames: Importing savegames
         oneGameLimit: Limited to one savegame
         customizeKeybindings: Customizing Keybindings
-        creatingMarkers: Create custom markers
 
     settingNotAvailable: Not available in the demo.

@@ -24,14 +24,11 @@ export class MainMenuState extends GameState {
             
             <p>${T.demoBanners.intro}</p>
 
-            <ul>
-                ${T.demoBanners.advantages.map(advantage => `<li>${advantage}</li>`).join("")}
-            </ul>
-
             <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
         `;
 
-        return `
+        return (
+            `
 
             <button class="settingsButton"></button>
             
@@ -54,18 +51,29 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
-                ${
-                    IS_DEMO && this.app.platformWrapper.getShowDemoBadges()
-                        ? `<div class="demoBadge"></div>`
-                        : ""
-                }
             </div>
 
 
             <div class="mainWrapper ${IS_DEMO ? "demo" : "noDemo"}">
-            
-                ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
                 
+                <div class="sideContainer">
+                    ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
+
+                    <div class="contest">
+                        <h3>${T.mainMenu.contests.contest_01_03062020.title}</h3>
+                        ` +
+            /*<p>${T.mainMenu.contests.contest_01_03062020.desc}</p>
+                        <button class="styledButton participateContest">${
+                            T.mainMenu.contests.showInfo
+                        }</button>*/
+
+            `   
+                        <p>${T.mainMenu.contests.contestOver}</p>
+                        
+                    </div>
+
+                </div>
+
                 <div class="mainContainer">
                     ${
                         isSupportedBrowser()
@@ -104,7 +112,8 @@ export class MainMenuState extends GameState {
                 <div class="author">Made by <a class="producerLink" target="_blank">Tobias Springer</a></div>
 
             </div>
-        `;
+        `
+        );
     }
 
     requestImportSavegame() {
@@ -199,7 +208,7 @@ export class MainMenuState extends GameState {
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             const games = this.app.savegameMgr.getSavegamesMetaData();
-            if (games.length > 0) {
+            if (games.length > 0 && globalConfig.debug.resumeGameOnFastEnter) {
                 this.resumeGame(games[0]);
             } else {
                 this.onPlayButtonClicked();
@@ -219,6 +228,11 @@ export class MainMenuState extends GameState {
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.trackClicks(qs(".changelog"), this.onChangelogClicked);
+
+        const contestButton = qs(".participateContest");
+        if (contestButton) {
+            this.trackClicks(contestButton, this.onContestClicked);
+        }
 
         if (G_IS_STANDALONE) {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
@@ -254,7 +268,7 @@ export class MainMenuState extends GameState {
     }
 
     onSteamLinkClicked() {
-        this.app.analytics.trackUiClick("main_menu_steam_link");
+        this.app.analytics.trackUiClick("main_menu_steam_link_2");
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
         return false;
     }
@@ -265,6 +279,15 @@ export class MainMenuState extends GameState {
 
     onChangelogClicked() {
         this.moveToState("ChangelogState");
+    }
+
+    onContestClicked() {
+        this.app.analytics.trackUiClick("contest_click");
+
+        this.dialogs.showInfo(
+            T.mainMenu.contests.contest_01_03062020.title,
+            T.mainMenu.contests.contest_01_03062020.longDesc
+        );
     }
 
     renderSavegames() {
@@ -375,19 +398,6 @@ export class MainMenuState extends GameState {
         this.moveToState("SettingsState");
     }
 
-    doStartNewGame() {
-        this.app.analytics.trackUiClick("startgame");
-
-        this.app.adProvider.showVideoAd().then(() => {
-            const savegame = this.app.savegameMgr.createNewSavegame();
-
-            this.moveToState("InGameState", {
-                savegame,
-            });
-            this.app.analytics.trackUiClick("startgame_adcomplete");
-        });
-    }
-
     onPlayButtonClicked() {
         if (
             IS_DEMO &&
@@ -399,17 +409,15 @@ export class MainMenuState extends GameState {
             return;
         }
 
-        if (IS_DEMO) {
-            this.app.analytics.trackUiClick("startgame_pre_show");
-            const { ok } = this.dialogs.showWarning(
-                T.dialogs.demoExplanation.title,
-                T.dialogs.demoExplanation.desc
-            );
-            ok.add(() => this.doStartNewGame());
-            return;
-        }
+        this.app.analytics.trackUiClick("startgame");
+        this.app.adProvider.showVideoAd().then(() => {
+            const savegame = this.app.savegameMgr.createNewSavegame();
 
-        this.doStartNewGame();
+            this.moveToState("InGameState", {
+                savegame,
+            });
+            this.app.analytics.trackUiClick("startgame_adcomplete");
+        });
     }
 
     onLeave() {

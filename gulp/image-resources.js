@@ -5,7 +5,7 @@ const path = require("path");
 const nonImageResourcesGlobs = ["../res/**/*.woff2", "../res/*.ico", "../res/**/*.webm"];
 
 // Globs for ui resources
-const imageResourcesGlobs = ["../res/**/*.png", "../res/**/*.svg", "../res/**/*.jpg"];
+const imageResourcesGlobs = ["../res/**/*.png", "../res/**/*.svg", "../res/**/*.jpg", "../res/**/*.gif"];
 
 function gulptasksImageResources($, gulp, buildFolder) {
     // Lossless options
@@ -16,6 +16,10 @@ function gulptasksImageResources($, gulp, buildFolder) {
         $.imagemin.svgo({}),
         $.imagemin.optipng({
             optimizationLevel: 3,
+        }),
+        $.imageminGifsicle({
+            optimizationLevel: 3,
+            colors: 128,
         }),
     ];
 
@@ -35,6 +39,10 @@ function gulptasksImageResources($, gulp, buildFolder) {
         }),
         $.imagemin.optipng({
             optimizationLevel: 3,
+        }),
+        $.imageminGifsicle({
+            optimizationLevel: 3,
+            colors: 128,
         }),
     ];
 
@@ -124,6 +132,7 @@ function gulptasksImageResources($, gulp, buildFolder) {
                     path.join(buildFolder, "res", "ui", "**", "*.png"),
                     path.join(buildFolder, "res", "ui", "**", "*.jpg"),
                     path.join(buildFolder, "res", "ui", "**", "*.svg"),
+                    path.join(buildFolder, "res", "ui", "**", "*.gif"),
                 ],
                 { read: false }
             )

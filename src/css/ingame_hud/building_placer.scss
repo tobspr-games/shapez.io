@@ -10,7 +10,7 @@
     @include S(width, 240px);
     @include S(grid-column-gap, 5px);
 
-    background: rgba(#333438, 0.8);
+    background: $ingameHudBg;
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr;
 
@@ -108,7 +108,8 @@
         .variant {
             grid-row: 2 / 3;
             @include S(border-radius, $globalBorderRadius);
-            background: rgba(0, 10, 20, 0.2);
+            background: rgba($ingameHudBg, 0.3);
+            opacity: 0.5;
             display: inline-flex;
             vertical-align: top;
             position: relative;
@@ -117,7 +118,8 @@
             @include S(grid-gap, 10px);
 
             &.active {
-                background-color: rgba(74, 163, 223, 0.6);
+                opacity: 1;
+                background-color: rgba($colorBlueBright, 0.8);
             }
 
             $iconSize: 25px;

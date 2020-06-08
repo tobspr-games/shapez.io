@@ -28,7 +28,7 @@ export class HUDUnlockNotification extends BaseHUDPart {
     createElements(parent) {
         this.inputReciever = new InputReceiver("unlock-notification");
 
-        this.element = makeDiv(parent, "ingame_HUD_UnlockNotification", []);
+        this.element = makeDiv(parent, "ingame_HUD_UnlockNotification", ["noBlur"]);
 
         const dialog = makeDiv(this.element, null, ["dialog"]);
 

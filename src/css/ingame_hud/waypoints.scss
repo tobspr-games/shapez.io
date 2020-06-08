@@ -1,7 +1,7 @@
 #ingame_HUD_Waypoints_Hint {
     position: absolute;
     @include S(right, 10px);
-    @include S(bottom, 100px);
+    @include S(bottom, 10px);
 
     display: flex;
     flex-direction: column;

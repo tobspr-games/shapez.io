@@ -5,7 +5,7 @@
     transform: translateX(-50%);
     color: #333;
     z-index: 9999;
-    background: rgba(0, 10, 20, 0.5);
+    background: $ingameHudBg;
     @include S(padding, 5px);
     display: flex;
     flex-direction: column;

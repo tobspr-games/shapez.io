@@ -1,4 +1,3 @@
-import { cachebust } from "../../../core/cachebust";
 import { InputReceiver } from "../../../core/input_receiver";
 import { TrackedState } from "../../../core/tracked_state";
 import { makeDiv } from "../../../core/utils";
@@ -6,9 +5,8 @@ import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { T } from "../../../translations";
-import { globalConfig } from "../../../core/config";
 
-const tutorialVideos = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11];
+const tutorialVideos = [2, 3, 4, 5, 6, 7, 9, 10, 11];
 
 export class HUDPartTutorialHints extends BaseHUDPart {
     createElements(parent) {
@@ -55,15 +53,6 @@ export class HUDPartTutorialHints extends BaseHUDPart {
         this.domAttach = new DynamicDomAttach(this.root, this.element);
 
         this.currentShownLevel = new TrackedState(this.updateVideoUrl, this);
-
-        this.root.signals.postLoadHook.add(() => {
-            if (this.root.hubGoals.level === 1 && !(G_IS_DEV && globalConfig.debug.disableTutorialHints)) {
-                this.root.hud.parts.dialogs.showInfo(
-                    T.dialogs.hintDescription.title,
-                    T.dialogs.hintDescription.desc
-                );
-            }
-        });
     }
 
     updateVideoUrl(level) {

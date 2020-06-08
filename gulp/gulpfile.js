@@ -189,7 +189,7 @@ function serve({ standalone }) {
     gulp.watch("../res_built/atlas/*.json", ["imgres.atlas"]);
 
     // Watch the build folder and reload when anything changed
-    const extensions = ["html", "js", "png", "jpg", "svg", "mp3", "ico", "woff2", "json"];
+    const extensions = ["html", "js", "png", "gif", "jpg", "svg", "mp3", "ico", "woff2", "json"];
     gulp.watch(extensions.map(ext => path.join(buildFolder, "**", "*." + ext))).on("change", function (e) {
         return gulp.src(e.path).pipe(browserSync.reload({ stream: true }));
     });
@@ -275,11 +275,7 @@ gulp.task(
     $.sequence("sounds.fullbuild", "translations.fullBuild", "js.standalone-beta")
 );
 gulp.task("step.standalone-beta.mainbuild", cb =>
-    $.multiProcess(
-        ["utils.copyAdditionalBuildFiles", "step.baseResources", "step.standalone-beta.code"],
-        cb,
-        false
-    )
+    $.multiProcess(["step.baseResources", "step.standalone-beta.code"], cb, false)
 );
 gulp.task(
     "step.standalone-beta.all",
@@ -293,11 +289,7 @@ gulp.task(
     $.sequence("sounds.fullbuild", "translations.fullBuild", "js.standalone-prod")
 );
 gulp.task("step.standalone-prod.mainbuild", cb =>
-    $.multiProcess(
-        ["utils.copyAdditionalBuildFiles", "step.baseResources", "step.standalone-prod.code"],
-        cb,
-        false
-    )
+    $.multiProcess(["step.baseResources", "step.standalone-prod.code"], cb, false)
 );
 gulp.task(
     "step.standalone-prod.all",

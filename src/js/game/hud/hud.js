@@ -28,6 +28,7 @@ import { HUDWatermark } from "./parts/watermark";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 import { HUDWaypoints } from "./parts/waypoints";
+import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 
 /* dev:start */
 import { TrailerMaker } from "./trailer_maker";
@@ -87,6 +88,7 @@ export class GameHUD {
         }
         if (this.root.app.settings.getAllSettings().offerHints) {
             this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
+            this.parts.interactiveTutorial = new HUDInteractiveTutorial(this.root);
         }
 
         const frag = document.createDocumentFragment();
