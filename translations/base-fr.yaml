@@ -97,12 +97,12 @@ mainMenu:
                     <li>Vous aurez des points bonus si vous la partagez sur les réseaux sociaux!</li>
                     <li>Je choisirai 5 images et les soumettrai au vote à la communauté <strong>discord</strong>.</li>
                     <li>Le gagnant empoche <strong>$25</strong> (Paypal, carte cadeau Amazon, ce que vous préférez)</li>
-                    <li>Limite: 07.06.2020 12:00 CEST</li>
+                    <li>Limite: 07.06.2020 AM 12:00 CEST</li>
                 </ul>
                 <br>
                 J'attends avec impatience de voir vos superbes créations!
 
-        showInfo: Participer
+        showInfo: Voir
         contestOver: Ce concours est terminé - Rejoignez le discord pour être notifié de nouveaux concours!
 
 dialogs:
