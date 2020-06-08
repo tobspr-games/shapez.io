@@ -27,7 +27,8 @@ export class MainMenuState extends GameState {
             <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
         `;
 
-        return `
+        return (
+            `
 
             <button class="settingsButton"></button>
             
@@ -57,13 +58,20 @@ export class MainMenuState extends GameState {
                 
                 <div class="sideContainer">
                     ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
+
                     <div class="contest">
                         <h3>${T.mainMenu.contests.contest_01_03062020.title}</h3>
-                        <p>${T.mainMenu.contests.contest_01_03062020.desc}</p>
+                        ` +
+            /*<p>${T.mainMenu.contests.contest_01_03062020.desc}</p>
                         <button class="styledButton participateContest">${
                             T.mainMenu.contests.showInfo
-                        }</button>
+                        }</button>*/
+
+            `   
+                        <p>${T.mainMenu.contests.contestOver}</p>
+                        
                     </div>
+
                 </div>
 
                 <div class="mainContainer">
@@ -104,7 +112,8 @@ export class MainMenuState extends GameState {
                 <div class="author">Made by <a class="producerLink" target="_blank">Tobias Springer</a></div>
 
             </div>
-        `;
+        `
+        );
     }
 
     requestImportSavegame() {
@@ -220,7 +229,10 @@ export class MainMenuState extends GameState {
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.trackClicks(qs(".changelog"), this.onChangelogClicked);
 
-        this.trackClicks(qs(".participateContest"), this.onContestClicked);
+        const contestButton = qs(".participateContest");
+        if (contestButton) {
+            this.trackClicks(contestButton, this.onContestClicked);
+        }
 
         if (G_IS_STANDALONE) {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
@@ -256,7 +268,7 @@ export class MainMenuState extends GameState {
     }
 
     onSteamLinkClicked() {
-        this.app.analytics.trackUiClick("main_menu_steam_link");
+        this.app.analytics.trackUiClick("main_menu_steam_link_2");
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
         return false;
     }

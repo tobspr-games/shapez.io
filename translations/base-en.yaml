@@ -97,12 +97,13 @@ mainMenu:
                     <li>Bonus points if you share it on social media!</li>
                     <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
                     <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 CEST</li>
+                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
                 I'm looking forward to seeing your awesome creations!
 
-        showInfo: Participate
+        showInfo: View
+        contestOver: This contest has ended - Join the discord to get noticed about new contests!
 
 dialogs:
     buttons:
@@ -217,6 +218,9 @@ dialogs:
     createMarker:
         title: New Marker
         desc: Give it a meaningful name
+
+    markerDemoLimit:
+        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -669,6 +673,5 @@ demo:
         importingGames: Importing savegames
         oneGameLimit: Limited to one savegame
         customizeKeybindings: Customizing Keybindings
-        creatingMarkers: Create custom markers
 
     settingNotAvailable: Not available in the demo.

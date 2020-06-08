@@ -2,13 +2,14 @@ import { PlatformWrapperImplBrowser } from "../browser/wrapper";
 import { getIPCRenderer } from "../../core/utils";
 import { createLogger } from "../../core/logging";
 import { StorageImplElectron } from "./storage";
+import { PlatformWrapperInterface } from "../wrapper";
 
 const logger = createLogger("electron-wrapper");
 
 export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
     initialize() {
         this.app.storage = new StorageImplElectron(this);
-        return super.initialize();
+        return PlatformWrapperInterface.prototype.initialize.call(this);
     }
 
     getId() {
