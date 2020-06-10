@@ -3,6 +3,7 @@ import { cachebust } from "../core/cachebust";
 import { globalConfig, IS_DEBUG, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
 import {
     makeDiv,
+    makeButton,
     formatSecondsToTimeAgo,
     generateFileDownload,
     waitNextFrame,
@@ -330,9 +331,17 @@ export class MainMenuState extends GameState {
         const oldContainer = this.htmlElement.querySelector(".mainContainer .savegames");
         if (oldContainer) {
             oldContainer.remove();
+            this.htmlElement.querySelector(".mainContainer .continueButton").remove();
         }
         const games = this.app.savegameMgr.getSavegamesMetaData();
         if (games.length > 0) {
+            const continueButton = makeButton(
+                this.htmlElement.querySelector(".mainContainer"),
+                ["continueButton", "styledButton"],
+                T.mainMenu.continue
+            );
+            this.trackClicks(continueButton, this.onContinueButtonClicked);
+
             const parent = makeDiv(this.htmlElement.querySelector(".mainContainer"), null, ["savegames"]);
 
             for (let i = 0; i < games.length; ++i) {
@@ -460,6 +469,24 @@ export class MainMenuState extends GameState {
                 savegame,
             });
             this.app.analytics.trackUiClick("startgame_adcomplete");
+        });
+    }
+
+    onContinueButtonClicked() {
+        let latestLastUpdate = 0;
+        let latestInternalId;
+        this.app.savegameMgr.currentData.savegames.forEach(saveGame => {
+            if (saveGame.lastUpdate > latestLastUpdate) {
+                latestLastUpdate = saveGame.lastUpdate;
+                latestInternalId = saveGame.internalId;
+            }
+        });
+
+        const savegame = this.app.savegameMgr.getSavegameById(latestInternalId);
+        savegame.readAsync().then(() => {
+            this.moveToState("InGameState", {
+                savegame,
+            });
         });
     }
 

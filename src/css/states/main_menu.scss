@@ -244,6 +244,22 @@
             }
         }
 
+        .continueButton {
+            @include SuperHeading;
+            @include S(min-width, 130px);
+            @include S(padding, 15px, 20px);
+            @include S(margin-top, 15px);
+            letter-spacing: 0.3em !important;
+
+            font-weight: bold;
+            color: #fff;
+            background-color: $colorGreenBright;
+            transition: transform 0.12s ease-in-out;
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+
         .importButton {
             @include S(margin-top, 15px);
         }

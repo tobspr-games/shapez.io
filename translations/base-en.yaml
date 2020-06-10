@@ -118,6 +118,7 @@ demoBanners:
 
 mainMenu:
     play: Play
+    continue: Continue
     changelog: Changelog
     importSavegame: Import
     openSourceHint: This game is open source!
