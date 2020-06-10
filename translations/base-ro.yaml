@@ -86,13 +86,13 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: одну секунду назад
+        oneSecondAgo: one second ago
         xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: одну минуту назад
+        oneMinuteAgo: one minute ago
         xMinutesAgo: <x> minutes ago
-        oneHourAgo: один час назад
+        oneHourAgo: one hour ago
         xHoursAgo: <x> hours ago
-        oneDayAgo: один день назад
+        oneDayAgo: one day ago
         xDaysAgo: <x> days ago
 
         # Short formats for times, e.g. '5h 23m'
@@ -117,11 +117,11 @@ demoBanners:
         Get the standalone to unlock all features!
 
 mainMenu:
-    play: Играть
-    changelog: Список изменений
-    importSavegame: Импортировать сохраненную игру
+    play: Play
+    changelog: Changelog
+    importSavegame: Import
     openSourceHint: This game is open source!
-    discordLink: Оффициальный Дискорд Сервер
+    discordLink: Official Discord Server
     helpTranslate: Help translate!
 
     # This is shown when using firefox and other browsers which are not supported.

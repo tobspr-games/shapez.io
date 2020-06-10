@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes dans une carte infinie.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,42 +30,41 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes. Livrez les formes demandées, de plus en plus complexes, pour progresser dans le jeu et débloquez des améliorations pour accélérer votre usine.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        Comme la demande augmente, vous devrez agrandir votre usine pour répondre aux besoins - Mais, n'oubliez pas les ressources, vous devrez vous agrandir dans la carte [b]infinie[/b] !
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Comme les formes peuvent vite devenir ennuyeuses, vous devrez mélanger les couleurs et peindre vos formes avec - Combinez les ressources de couleur rouge, verte et bleue pour produire différentes couleurs et peignez les formes avec pour satisfaire la demande.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        Ce jeu comporte 18 niveaux (ce qui devrait vous occuper pendant des heures déjà !) mais j'ajoute constamment du nouveau contenu - Il y en a beaucoup de prévu ! 
 
-
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
-        [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        [b]Avantages de la version complête[/b]
 
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
-            [*] And much more!
+            [*] Points de positions
+            [*] Sauvegardes illimitées
+            [*] Mode sombre
+            [*] Plus d'options
+            [*] Me permet de développer davantage shapez.io ❤️
+            [*] Plus de fonctionnalités dans le future!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [b]Fonctionnalités planifiées & Suggestions de la communauté[/b]
+
+        Ce jeu est open source - N'importe qui peut contribuer! En plus de cela, j'écoute beaucoup la communauté ! J'essaie de lire toutes les suggestions et de prendre en compte autant de réactions que possible.
+
+        [list]
+            [*] Mode histoire où les bâtiments coûtent des formes.
+            [*] Plus de niveaux et de bâtiments (Exclusif de la version complête)
+            [*] Différente carte et peut-être des obstacles sur la carte
+            [*] Création de carte configurable (Modifier le nombre et la taille des gisement, graines et bien plus)
+            [*] Plus de types de formes
+            [*] Plus de performances (Même si le jeu roûle déjà très bien!)
+            [*] Mode daltonien
+            [*] Et bien plus!
+        [/list]
+
+        Allez voir mon tableau trello pour la feuille de route complête! https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Chargement
@@ -125,7 +124,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Désolé, mais ce jeu est connu pour tourner lentement sur votre browser! Procurez-vous la version autonome ou téléchargez Chrome pour une meilleure expérience.
+        Désolé, mais ce jeu est connu pour tourner lentement sur votre navigateur web! Procurez-vous la version autonome ou téléchargez Chrome pour une meilleure expérience.
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
@@ -331,7 +330,7 @@ ingame:
         buttonUnlock: Améliorer
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Echelon <x>
+        tier: Échelon <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
@@ -416,7 +415,7 @@ buildings:
     belt:
         default:
             name: &belt Convoyeur
-            description: Transporte les objects, maintenez et fites glisser pour en placer plusieurs.
+            description: Transporte les objects, maintenez et faites glisser pour en placer plusieurs.
 
     miner: # Internal name for the Extractor
         default:
@@ -430,11 +429,11 @@ buildings:
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Tunnel
-            description: Permet de faire passer des ressources en dessous de bâtiment et convoyeurs.
+            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
         tier2:
             name: Tunnel Echelon II
-            description: Permet de faire passer des ressources en dessous de bâtiment et convoyeurs.
+            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
     splitter: # Internal name for the Balancer
         default:
@@ -452,10 +451,10 @@ buildings:
     cutter:
         default:
             name: &cutter Découpeur
-            description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite l'autre ou cela coincera!</strong>
+            description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruire l'autre ou cela coincera!</strong>
         quad:
             name: Découpeur (Quatre)
-            description: Coupe une forme en 4 parts. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite les autres ou cela coincera!</strong>
+            description: Coupe une forme en 4 parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruire les autres ou cela coincera!</strong>
 
     rotater:
         default:
@@ -472,8 +471,8 @@ buildings:
 
     mixer:
         default:
-            name: &mixer Mixeur de couleur
-            description: Mixe deux couleurs en utilisant le mélange additif.
+            name: &mixer Mélangeur de couleur
+            description: Mélange deux couleurs en utilisant le mélange additif.
 
     painter:
         default:
@@ -489,7 +488,7 @@ buildings:
     trash:
         default:
             name: &trash Poubelle
-            description: Accepte des formes de n'importe quel côté et le détruit... pour toujours.
+            description: Accepte des formes de n'importe quel côté et les détruit... pour toujours.
 
         storage:
             name: Stockage
@@ -511,16 +510,16 @@ storyRewards:
             Le <strong>peintre</strong> a été débloqué - Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez les avec une forme dans un peintre pour les colorier!<br><br>PS: Si vous êtes daltonien, je travaille déjà sur une solution!
 
     reward_mixer:
-        title: Mixeur de couleurs
-        desc: Le <strong>mixeur</strong> a été débloqué - Combinez deux couleurs en utilisant <strong>le mélange additif</strong> avec ce bâtiment!
+        title: Le mélangeur de couleurs
+        desc: Le <strong>mélangeur</strong> a été débloqué - Combinez deux couleurs en utilisant <strong>le mélange additif</strong> avec ce bâtiment!
 
     reward_stacker:
         title: Combineur
-        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong>! Les deux entrées sont combinée et si elles peuvent êtres mises l'une à cpôté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche.
+        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong>! Les deux entrées sont combinée et si elles peuvent êtres mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche.
 
     reward_splitter:
-        title: Découpeur/Fusionneur
-        desc: Le <strong>balancier</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>découpant et fusionnant les formes</strong> sur plusieurs convoyeurs!<br><br>
+        title: Distributeur/Rassembleur
+        desc: Le <strong>balancier</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant et en rassemblant les formes</strong> sur plusieurs convoyeurs!<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -528,15 +527,15 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Pivoteur inversé
-        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> - Elle permet de faire pivoter vers la gauche! Pour le construite, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour changer sa variante</strong>!
+        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> - Elle permet de faire pivoter vers la gauche! Pour le construire, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour changer sa variante</strong>!
 
     reward_miner_chainable:
         title: Extracteur en série
-        desc: Vous avez débloqué <strong>l'extracteur en série</strong>! Il permet <strong>de transférer ses resources</strong> à d'autres extracteurs pour les extraire plus efficacement!
+        desc: Vous avez débloqué <strong>l'extracteur en série</strong>! Il permet <strong>de transférer ses ressources</strong> à d'autres extracteurs pour les extraire plus efficacement!
 
     reward_underground_belt_tier_2:
         title: Tunnel échelon II
-        desc: Vous avez débloqué une nouvelle variante du <strong>tunnel</strong> - Elle a <strong>une portée plus grande</strong>, et vous pouvez également mixer ces tunnels maintenant!
+        desc: Vous avez débloqué une nouvelle variante du <strong>tunnel</strong> - Elle a <strong>une portée plus grande</strong>, et vous pouvez également entrecroiser ces tunnels maintenant!
 
     reward_splitter_compact:
         title: Balancier compact
@@ -545,7 +544,7 @@ storyRewards:
 
     reward_cutter_quad:
         title: Quadruple découpeur
-        desc: Vous avez débloqué une variante du <strong>découpeur</strong> - Elle permet de de découper les formes en <strong>quatres parties</strong> à la place de simplement deux!
+        desc: Vous avez débloqué une variante du <strong>découpeur</strong> - Elle permet de découper les formes en <strong>quatres parties</strong> à la place de simplement deux!
 
     reward_painter_double:
         title: Double peintre
@@ -605,7 +604,7 @@ settings:
         scrollWheelSensitivity:
             title: Sensibilité du zoom
             description: >-
-                Change la sensibilité du zoom (aussi bien de la roulette de la souris que du trackpad).
+                Change la sensibilité du zoom (aussi bien de la roulette de la souris que du pavé tactile).
             sensitivity:
                 super_slow: Super lent
                 slow: Lent

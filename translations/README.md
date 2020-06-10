@@ -4,15 +4,22 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 
 ## Languages
 
--   [English (Base Language)](base-en.yaml)
+-   [English (Base Language, Source of Truth)](base-en.yaml)
 -   [German](base-de.yaml)
 -   [French](base-fr.yaml)
 -   [Korean](base-kor.yaml)
 -   [Dutch](base-nl.yaml)
 -   [Polish](base-pl.yaml)
 -   [Portuguese (Brazil)](base-pt-BR.yaml)
+-   [Portuguese (Portugal)](base-pt-PT.yaml)
 -   [Russian](base-ru.yaml)
 -   [Greek](base-el.yaml)
+-   [Italian](base-it.yaml)
+-   [Romanian](base-ro.yaml)
+-   [Swedish](base-sv.yaml)
+-   [Chinese (Simplified)](base-zh-CN.yaml)
+-   [Chinese (Traditional)](base-zh-TW.yaml)
+-   [Spanish](base-es.yaml)
 
 (If you want to translate into a new language, see below!)
 
