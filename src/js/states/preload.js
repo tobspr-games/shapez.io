@@ -3,7 +3,7 @@ import { createLogger } from "../core/logging";
 import { findNiceValue, waitNextFrame } from "../core/utils";
 import { cachebust } from "../core/cachebust";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
-import { T } from "../translations";
+import { T, autoDetectLanguageId, updateApplicationLanguage } from "../translations";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { CHANGELOG } from "../changelog";
 import { globalConfig } from "../core/config";
@@ -141,6 +141,19 @@ export class PreloadState extends GameState {
                 if (this.app.platformWrapper.getSupportsFullscreen()) {
                     this.app.platformWrapper.setFullscreen(this.app.settings.getIsFullScreen());
                 }
+            })
+
+            .then(() => this.setStatus("Initializing language"))
+            .then(() => {
+                if (this.app.settings.getLanguage() === "auto-detect") {
+                    const language = autoDetectLanguageId();
+                    logger.log("Setting language to", language);
+                    return this.app.settings.updateLanguage(language);
+                }
+            })
+            .then(() => {
+                const language = this.app.settings.getLanguage();
+                updateApplicationLanguage(language);
             })
 
             .then(() => this.setStatus("Initializing sounds"))

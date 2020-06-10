@@ -9,6 +9,7 @@ import { ExplainedResult } from "../core/explained_result";
 import { THEMES, THEME, applyGameTheme } from "../game/theme";
 import { IS_DEMO } from "../core/config";
 import { T } from "../translations";
+import { LANGUAGES } from "../languages";
 
 const logger = createLogger("application_settings");
 
@@ -63,6 +64,16 @@ export const scrollWheelSensitivities = [
 
 /** @type {Array<BaseSetting>} */
 export const allApplicationSettings = [
+    new EnumSetting("language", {
+        options: Object.keys(LANGUAGES),
+        valueGetter: key => key,
+        textGetter: key => LANGUAGES[key].name,
+        category: categoryApp,
+        restartRequired: true,
+        changeCb: (app, id) => null,
+        magicValue: "auto-detect",
+    }),
+
     new EnumSetting("uiScale", {
         options: uiScales.sort((a, b) => a.size - b.size),
         valueGetter: scale => scale.id,
@@ -165,6 +176,7 @@ class SettingsStorage {
         this.theme = "light";
         this.refreshRate = "60";
         this.scrollWheelSensitivity = "regular";
+        this.language = "auto-detect";
 
         this.alwaysMultiplace = false;
         this.offerHints = true;
@@ -259,7 +271,16 @@ export class ApplicationSettings extends ReadWriteProxy {
         return this.getAllSettings().keybindingOverrides;
     }
 
+    getLanguage() {
+        return this.getAllSettings().language;
+    }
+
     // Setters
+
+    updateLanguage(id) {
+        assert(LANGUAGES[id], "Language not known: " + id);
+        return this.updateSetting("language", id);
+    }
 
     /**
      * @param {string} key
@@ -337,7 +358,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 8;
+        return 9;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -362,6 +383,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 8) {
             data.settings.scrollWheelSensitivity = "regular";
             data.version = 8;
+        }
+
+        if (data.version < 9) {
+            data.settings.language = "auto-detect";
+            data.version = 9;
         }
 
         return ExplainedResult.good();

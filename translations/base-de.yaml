@@ -20,8 +20,8 @@
 #
 
 global:
-    loading: Loading
-    error: Error
+    loading: Laden
+    error: Fehler
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -564,11 +564,6 @@ settings:
                 regular: Regular
                 fast: Fast
                 super_fast: Super fast
-
-        language:
-            title: Language
-            description: >-
-                Change the language. All translations are user contributed and might be incomplete!
 
         fullscreen:
             title: Fullscreen
