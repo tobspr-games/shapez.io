@@ -132,15 +132,37 @@
                         }
 
                         &.alreadyPinned {
-                            opacity: 0.1 !important;
-                            pointer-events: none;
+                            opacity: 0.3 !important;
+                        }
+
+                        &.isGoal {
+                            background: uiResource("icons/current_goal_marker.png") center center / 95% no-repeat;
+                            opacity: 0.3 !important;
                             cursor: default;
+                            pointer-events: none;
                         }
 
                         &.pinned {
-                            opacity: 0.1;
-                            pointer-events: none;
-                            cursor: default;
+                            opacity: 0.3;
+                            @include InlineAnimation(0.3s ease-in-out) {
+                                0% {
+                                    opacity: 1;
+                                    transform: scale(0.8);
+                                }
+
+                                30% {
+                                    opacity: 1;
+                                    transform: scale(1.2);
+                                }
+
+                                100% {
+                                    transform: scale(1);
+                                }
+                            }
+                        }
+
+                        &.unpinned {
+                            opacity: 0.6;
                             @include InlineAnimation(0.3s ease-in-out) {
                                 0% {
                                     opacity: 1;
