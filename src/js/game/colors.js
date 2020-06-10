@@ -140,17 +140,17 @@ for (const colorA in enumColorMixingResults) {
                 assertAlways(
                     false,
                     "invalid color mixing configuration, " +
-                        colorA +
-                        " + " +
-                        colorB +
-                        " is " +
-                        resultColor +
-                        " but " +
-                        colorB +
-                        " + " +
-                        colorA +
-                        " is " +
-                        existingResult
+                    colorA +
+                    " + " +
+                    colorB +
+                    " is " +
+                    resultColor +
+                    " but " +
+                    colorB +
+                    " + " +
+                    colorA +
+                    " is " +
+                    existingResult
                 );
             }
             enumColorMixingResults[colorB][colorA] = resultColor;
