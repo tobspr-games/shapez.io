@@ -500,7 +500,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Découper des formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>Assurez-vous de vous débarasser des déchets, sinon <strong>gare au blocage</strong> - À cet effet, je met à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>Assurez-vous de vous débarasser des déchets, sinon <strong>gare au blocage</strong> - À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
 
     reward_rotater:
         title: Rotation
