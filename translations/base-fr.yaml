@@ -332,7 +332,7 @@ ingame:
         buttonUnlock: Améliorer
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Echelon <x>
+        tier: Niveau <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
