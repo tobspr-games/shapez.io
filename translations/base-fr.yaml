@@ -453,10 +453,10 @@ buildings:
     cutter:
         default:
             name: &cutter Découpeur
-            description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite l'autre ou cela coincera!</strong>
+            description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite l'autre ou cela bloquera !</strong>
         quad:
             name: Découpeur (Quatre)
-            description: Coupe une forme en 4 parts. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruite les autres ou cela coincera!</strong>
+            description: Coupe une forme en 4 parts. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruite les autres ou cela bloquera !</strong>
 
     rotater:
         default:
@@ -500,7 +500,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Découper des formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>Assurez-vous de vous débarasser des déchets, sinon, <strong>cela coincera</strong> - À cet effet, je met à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>Assurez-vous de vous débarasser des déchets, sinon <strong>gare au blocage</strong> - À cet effet, je met à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
 
     reward_rotater:
         title: Rotation
@@ -667,7 +667,7 @@ keybindings:
         ingame: Jeu
         navigation: Navigation
         placement: Placement
-        massSelect: Suppression de masse
+        massSelect: Suppression de zone
         buildings: Raccourcis bâtiment
         placementModifiers: Modificateurs de placement
 
@@ -705,7 +705,7 @@ keybindings:
         rotateInverseModifier: >-
             Variante: Pivote à gauche
         cycleBuildingVariants: Faire défiler les variantes
-        confirmMassDelete: Confirmer la suppression de masse
+        confirmMassDelete: Confirmer la suppression de zone
         cycleBuildings: Faire défiler les bâtiments
 
         massSelectStart: Cliquez et maintenez pour commencer
