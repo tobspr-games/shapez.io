@@ -1,1 +1,24 @@
 # Translations
+
+The base translation is `base-en.yaml`. It will always contain the latest phrases and structure.
+
+## Editing existing translations
+
+If you want to edit an existing translation (Fixing typos, Updating it to a newer version, etc), you can just use the github file editor to edit the file.
+
+- Find the file you want to edit (For example, `base-de.yaml` if you want to change the german translation)
+- Click on the file name on, there will be a small "edit" symbol on the top right
+- Do the changes you wish to do (Be sure **not** to translate placeholders!)
+- Click "Propose Changes"
+- I will review your changes and make comments, and eventually merge them so they will be in the next release!
+
+## Adding a new language
+
+Please DM me on discord (tobspr#5407), so I can add the language template for you. It is not as simple as creating a new file.
+PS: I'm super busy, but I'll give my best to do it quickly!
+
+## Updating a language to the latest version
+
+Right now there is no possibility to automatically update a translation to the latest version. It is required to manually check the base translation (`base-en.yaml`) and compare it to the other translations to remove unused keys and add new ones.
+
+
