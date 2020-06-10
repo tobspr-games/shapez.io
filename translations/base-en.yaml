@@ -288,7 +288,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: Maximum level
+        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -352,16 +352,16 @@ ingame:
 shopUpgrades:
     belt:
         name: Belts, Distributor & Tunnels
-        description: Speed +<gain>%
+        description: Speed x<currentMult> → x<newMult>
     miner:
         name: Extraction
-        description: Speed +<gain>%
+        description: Speed x<currentMult> → x<newMult>
     processors:
         name: Cutting, Rotating & Stacking
-        description: Speed +<gain>%
+        description: Speed x<currentMult> → x<newMult>
     painting:
         name: Mixing & Painting
-        description: Speed +<gain>%
+        description: Speed x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
