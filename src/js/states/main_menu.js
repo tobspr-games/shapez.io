@@ -12,6 +12,8 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { T } from "../translations";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
+import { getApplicationSettingById } from "../profile/application_settings";
+import { EnumSetting } from "../profile/setting_types";
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -30,15 +32,18 @@ export class MainMenuState extends GameState {
         return (
             `
 
-            <button class="settingsButton"></button>
-            
-        ${
-            G_IS_STANDALONE
-                ? `
-            <button class="exitAppButton"></button>
-        `
-                : ""
-        }
+            <div class="topButtons">
+                <button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>
+                <button class="settingsButton"></button>
+
+            ${
+                G_IS_STANDALONE || G_IS_DEV
+                    ? `
+                <button class="exitAppButton"></button>
+            `
+                    : ""
+            }
+            </div>
 
             ${
                 G_IS_STANDALONE
@@ -100,14 +105,8 @@ export class MainMenuState extends GameState {
                 </a>
 
                 <a class="changelog">${T.changelog.title}</a>
-
-                ${
-                    !G_IS_STANDALONE &&
-                    this.app.platformWrapper instanceof PlatformWrapperImplBrowser &&
-                    this.app.platformWrapper.embedProvider.iogLink
-                        ? `<a class="iogLink" target="_blank" href="https://iogames.space">.io games</a>`
-                        : ""
-                }
+                
+                <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
 
                 <div class="author">Made by <a class="producerLink" target="_blank">Tobias Springer</a></div>
 
@@ -228,6 +227,7 @@ export class MainMenuState extends GameState {
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.trackClicks(qs(".changelog"), this.onChangelogClicked);
+        this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
 
         const contestButton = qs(".participateContest");
         if (contestButton) {
@@ -288,6 +288,40 @@ export class MainMenuState extends GameState {
             T.mainMenu.contests.contest_01_03062020.title,
             T.mainMenu.contests.contest_01_03062020.longDesc
         );
+    }
+
+    onLanguageChooseClicked() {
+        const setting = /** @type {EnumSetting} */ (getApplicationSettingById("language"));
+
+        const { optionSelected } = this.dialogs.showOptionChooser(T.settings.labels.language.title, {
+            active: this.app.settings.getLanguage(),
+            options: setting.options.map(option => ({
+                value: setting.valueGetter(option),
+                text: setting.textGetter(option),
+                desc: setting.descGetter(option),
+                iconPrefix: setting.iconPrefix,
+            })),
+        });
+
+        optionSelected.add(value => {
+            this.app.settings.updateLanguage(value);
+            if (setting.restartRequired) {
+                if (this.app.platformWrapper.getSupportsRestart()) {
+                    this.app.platformWrapper.performRestart();
+                } else {
+                    this.dialogs.showInfo(T.dialogs.restartRequired.title, T.dialogs.restartRequired.text, [
+                        "ok:good",
+                    ]);
+                }
+            }
+
+            if (setting.changeCb) {
+                setting.changeCb(this.app, value);
+            }
+
+            // Update current icon
+            this.htmlElement.querySelector("button.languageChoose").setAttribute("data-languageIcon", value);
+        }, this);
     }
 
     renderSavegames() {
