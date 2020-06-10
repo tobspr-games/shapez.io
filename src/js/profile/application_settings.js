@@ -30,11 +30,11 @@ export const uiScales = [
     },
     {
         id: "large",
-        size: 1.2,
+        size: 1.05,
     },
     {
         id: "huge",
-        size: 1.4,
+        size: 1.1,
     },
 ];
 
