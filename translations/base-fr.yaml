@@ -490,7 +490,7 @@ buildings:
     trash:
         default:
             name: &trash Poubelle
-            description: Accepte des formes de n'importe quel côté et le détruit... pour toujours.
+            description: Accepte des formes de n'importe quel côté et les détruit... pour toujours.
 
         storage:
             name: Stockage
