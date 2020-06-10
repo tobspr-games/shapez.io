@@ -36,7 +36,7 @@ steamPage:
 
         Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
 
         [b]Standalone Advantages[/b]
@@ -120,12 +120,12 @@ mainMenu:
     play: Jouer
     changelog: Historique
     importSavegame: Importer
-    openSourceHint: Ce jeu est open source!
+    openSourceHint: Ce jeu est open source !
     discordLink: Serveur Discord officiel
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Désolé, mais ce jeu est connu pour tourner lentement sur votre browser! Procurez-vous la version autonome ou téléchargez Chrome pour une meilleure expérience.
+        Désolé, mais ce jeu est connu pour tourner lentement sur votre navigateur ! Procurez-vous la version autonome ou téléchargez Chrome pour une meilleure expérience.
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
@@ -133,25 +133,25 @@ mainMenu:
     contests:
         contest_01_03062020:
             title: "Concours #01"
-            desc: Gagnez <strong>$25</strong> pour l'usine la plus cool!
+            desc: Gagnez <strong>$25</strong> pour l'usine la plus cool !
             longDesc: >-
-                Pour vous remercier, j'ai pensé qu'il serait bien de faire un concours hebdomadaire!
+                Pour vous remercier, j'ai pensé qu'il serait bien de faire un concours hebdomadaire !
                 <br><br>
-                <strong>Le sujet de cette semaine:</strong> Construire l'usine la plus cool!
+                <strong>Le sujet de cette semaine:</strong> Construire l'usine la plus cool !
                 <br><br>
                 Voici comment faire:<br>
                 <ul class="bucketList">
                     <li>Envoyez une capture d'écran de votre usine à <strong>contest@shapez.io</strong></li>
-                    <li>Vous aurez des points bonus si vous la partagez sur les réseaux sociaux!</li>
+                    <li>Vous aurez des points bonus si vous la partagez sur les réseaux sociaux !</li>
                     <li>Je choisirai 5 images et les soumettrai au vote à la communauté <strong>discord</strong>.</li>
                     <li>Le gagnant empoche <strong>$25</strong> (Paypal, carte cadeau Amazon, ce que vous préférez)</li>
                     <li>Limite: 07.06.2020 AM 12:00 CEST</li>
                 </ul>
                 <br>
-                J'attends avec impatience de voir vos superbes créations!
+                J'attends avec impatience de voir vos superbes créations !
 
         showInfo: Voir
-        contestOver: Ce concours est terminé - Rejoignez le discord pour être notifié de nouveaux concours!
+        contestOver: Ce concours est terminé - Rejoignez le discord pour être notifié de nouveaux concours !
 
 dialogs:
     buttons:
@@ -170,7 +170,7 @@ dialogs:
     importSavegameError:
         title: Erreur d'importation
         text: >-
-            Impossible d'importer votre sauvegarde:
+            Impossible d'importer votre sauvegarde :
 
     importSavegameSuccess:
         title: Sauvegarde importée
@@ -185,12 +185,12 @@ dialogs:
     confirmSavegameDelete:
         title: Confirmez la suppression
         text: >-
-            Etes-vous certains de vouloir supprimer votre partie?
+            Etes-vous certains de vouloir supprimer votre partie ?
 
     savegameDeletionError:
         title: Impossible de supprimer
         text: >-
-            Impossible de supprimer votre sauvegarde:
+            Impossible de supprimer votre sauvegarde :
 
     restartRequired:
         title: Redémarrage requis
@@ -207,47 +207,47 @@ dialogs:
 
     keybindingsResetOk:
         title: Réinitialisation des contrôles
-        desc: Les contrôles ont été réinitialisés par leur état par défaut respectifs!
+        desc: Les contrôles ont été réinitialisés par leur état par défaut respectifs !
 
     featureRestriction:
         title: Version démo
-        desc: Vous avez essayé d'accéder à la fonction (<feature>) qui n'est pas disponible dans la démo. Considérez l'achat de la version complète pour une expérience optimale!
+        desc: Vous avez essayé d'accéder à la fonction (<feature>) qui n'est pas disponible dans la démo. Considérez l'achat de la version complète pour une expérience optimale !
 
     saveNotPossibleInDemo:
-        desc: Votre partie a été sauvegardée, mais la charger n'est possible que dans la version complète. Considérez son achat pour une expérience optimale!
+        desc: Votre partie a été sauvegardée, mais la charger n'est possible que dans la version complète. Considérez son achat pour une expérience optimale !
 
     leaveNotPossibleInDemo:
         title: Version démo
-        desc: Votre partie a été sauvée mais nous ne pourrez pas la charger dans la démo. Charger les parties n'est disponible que dans la version complète. Etes-vous certain?
+        desc: Votre partie a été sauvée mais nous ne pourrez pas la charger dans la démo. Charger les parties n'est disponible que dans la version complète. Etes-vous certain ?
 
     newUpdate:
         title: Mise-à-jour disponible
-        desc: Une mise-à-jour est disponible pour ce jeu!
+        desc: Une mise-à-jour est disponible pour ce jeu !
 
     oneSavegameLimit:
         title: Sauvegardes limitées
-        desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci de soit effacer l'actuelle ou de vous procurer la version complète!
+        desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci de soit effacer l'actuelle ou de vous procurer la version complète !
 
     updateSummary:
         title: Nouvel mise-à-jour!
         desc: >-
-            Voici les modifications depuis votre dernière session:
+            Voici les modifications depuis votre dernière session :
 
     hintDescription:
         title: Tutorial
         desc: >-
-            Si vous avez besoin d'aide ou êtes coincé, vérifiez le bouton 'Aide' dans le coin inférieur gauche et j'essayerai de vous aider au mieux!
+            Si vous avez besoin d'aide ou êtes coincé, vérifiez le bouton 'Aide' dans le coin inférieur gauche et j'essayerai de vous aider au mieux !
 
     upgradesIntroduction:
         title: Débloquer les améliorations
         desc: >-
-            Toutes les formes que vous produisez peuvent être utilisées pour débloquer des améliorations - <strong>Ne détruisez pas vos anciennes usines!</strong>
+            Toutes les formes que vous produisez peuvent être utilisées pour débloquer des améliorations - <strong>Ne détruisez pas vos anciennes usines !</strong>
             L'onglet des améliorations se trouve dans le coin supérieur droit de l'écran.
 
     massDeleteConfirm:
         title: Confirmation de suppression
         desc: >-
-            Vous allez supprimer pas mal de bâtiments (<count> pour être exact)! Etes vous certains de vouloir faire ça?
+            Vous allez supprimer pas mal de bâtiments (<count> pour être exact)! Etes vous certains de vouloir faire ça ?
 
     blueprintsNotUnlocked:
         title: Pas encore débloqué
@@ -258,7 +258,7 @@ dialogs:
         title: Raccourcis utiles
         desc: >-
             Le jeu a plein de raccourcis facilitant la construction de grandes usines.
-            En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong>!<br><br>
+            En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong> !<br><br>
             <code class='keybinding'>CTRL</code> + Glisser: Sélectionne une zone à copier / effacer.<br>
             <code class='keybinding'>SHIFT</code>: Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
             <code class='keybinding'>ALT</code>: Inverse l'orientation des convoyeurs placés.<br>
@@ -268,7 +268,7 @@ dialogs:
         desc: Donnez-lui un nom approprié
 
     markerDemoLimit:
-        desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez!
+        desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez !
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -301,7 +301,7 @@ ingame:
             speed: Vitesse
             range: Portée
             storage: Espace de stockage
-            oneItemPerSecond: 1 forme / seconde
+            oneItemPerSecond: 1 forme / s
             itemsPerSecond: <x> formes / s
             itemsPerSecondDouble: (x2)
 
@@ -312,12 +312,12 @@ ingame:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Niveau <level>
         completed: Terminé
-        unlockText: <reward> débloqué!
+        unlockText: <reward> débloqué !
         buttonNextLevel: Niveau suivant
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: Une nouvelle amélioration est disponible!
+        newUpgrade: Une nouvelle amélioration est disponible !
         gameSaved: Votre partie a été sauvegardée.
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
@@ -331,7 +331,7 @@ ingame:
         buttonUnlock: Améliorer
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Echelon <x>
+        tier: Échelon <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
@@ -370,8 +370,8 @@ ingame:
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Besoin d'aide?
-        showHint: Indice
+        title: Besoin d'aide ?
+        showHint: Voir indice
         hideHint: Fermer
 
     # When placing a blueprint
@@ -383,7 +383,7 @@ ingame:
         waypoints: Balise
         hub: Noyau
         description: Cliquez une balise pour vous y rendre, clic-droit pour l'effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer une sur l'endroit pointé.
-        creationSuccessNotification: La bailse a été créée.
+        creationSuccessNotification: La balise a été créée.
 
     # Interactive tutorial
     interactiveTutorial:
@@ -391,32 +391,32 @@ ingame:
         hints:
             1_1_extractor: Placez un <strong>extracteur</strong> sur une <strong>forme en cercle</strong> pour l'extraire!
             1_2_conveyor: >-
-                Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre noyau!<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris!
+                Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre noyau!<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
 
             1_3_expand: >-
-                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce : Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
 # All shop upgrades
 shopUpgrades:
     belt:
         name: Convoyeurs, Distributeurs et Tunnels
-        description: Vitesse +<gain>%
+        description: Vitesse x<currentMult> → x<newMult>
     miner:
         name: Extraction
-        description: Vitesse +<gain>%
+        description: Vitesse x<currentMult> → x<newMult>
     processors:
         name: Découpage, Rotation et Empilage
-        description: Vitesse +<gain>%
+        description: Vitesse x<currentMult> → x<newMult>
     painting:
         name: Mélange et Peinture
-        description: Vitesse +<gain>%
+        description: Vitesse x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
             name: &belt Convoyeur
-            description: Transporte les objects, maintenez et fites glisser pour en placer plusieurs.
+            description: Transporte les objects, maintenir et faire glisser pour en placer plusieurs.
 
     miner: # Internal name for the Extractor
         default:
@@ -425,7 +425,7 @@ buildings:
 
         chainable:
             name: Extracteur en série
-            description: Placez-le au dessus d'une forme ou couleur pour l'extraire. Peut être mis en série.
+            description: Placez-le au dessus d'une forme ou couleur pour l'extraire. Peut être chaîné.
 
     underground_belt: # Internal name for the Tunnel
         default:
@@ -499,7 +499,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Découper des formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>SOyez certain de vous débarasser des déchets, sinon, <strong>cela coincera</strong> - A cet effet, je vous donne la poubelle, qui détruit tout ce que vous y mettez!
+        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>SOyez certain de vous débarasser des déchets, sinon, <strong>cela coincera</strong> - À cet effet, je vous donne la poubelle, qui détruit tout ce que vous y mettez !
 
     reward_rotater:
         title: Rotation
@@ -508,11 +508,11 @@ storyRewards:
     reward_painter:
         title: Peintre
         desc: >-
-            Le <strong>peintre</strong> a été débloqué - Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez les avec une forme dans un peintre pour les colorier!<br><br>PS: Si vous êtes daltonien, je travaille déjà sur une solution!
+            Le <strong>peintre</strong> a été débloqué - Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez les avec une forme dans un peintre pour les colorier !<br><br>PS: Si vous êtes daltonien, je travaille déjà sur une solution !
 
     reward_mixer:
         title: Mixeur de couleurs
-        desc: Le <strong>mixeur</strong> a été débloqué - Combinez deux couleurs en utilisant <strong>le mélange additif</strong> avec ce bâtiment!
+        desc: Le <strong>mixeur</strong> a été débloqué - Combinez deux couleurs en utilisant <strong>le mélange additif</strong> avec ce bâtiment !
 
     reward_stacker:
         title: Combineur
@@ -520,63 +520,63 @@ storyRewards:
 
     reward_splitter:
         title: Découpeur/Fusionneur
-        desc: Le <strong>balancier</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>découpant et fusionnant les formes</strong> sur plusieurs convoyeurs!<br><br>
+        desc: Le <strong>balancier</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>découpant et fusionnant les formes</strong> sur plusieurs convoyeurs !<br><br>
 
     reward_tunnel:
         title: Tunnel
-        desc: Le <strong>tunnel</strong> a été débloqué - Vous pouvez maintenant faire passer des formes sous les convoyeurs et les bâtiments avec ça!
+        desc: Le <strong>tunnel</strong> a été débloqué - Vous pouvez maintenant faire passer des formes sous les convoyeurs et les bâtiments avec ça !
 
     reward_rotater_ccw:
         title: Pivoteur inversé
-        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> - Elle permet de faire pivoter vers la gauche! Pour le construite, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour changer sa variante</strong>!
+        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> - Elle permet de faire pivoter vers la gauche ! Pour le construite, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour changer sa variante</strong> !
 
     reward_miner_chainable:
         title: Extracteur en série
-        desc: Vous avez débloqué <strong>l'extracteur en série</strong>! Il permet <strong>de transférer ses resources</strong> à d'autres extracteurs pour les extraire plus efficacement!
+        desc: Vous avez débloqué <strong>l'extracteur en série</strong> ! Il permet <strong>de transférer ses resources</strong> à d'autres extracteurs pour les extraire plus efficacement !
 
     reward_underground_belt_tier_2:
         title: Tunnel échelon II
-        desc: Vous avez débloqué une nouvelle variante du <strong>tunnel</strong> - Elle a <strong>une portée plus grande</strong>, et vous pouvez également mixer ces tunnels maintenant!
+        desc: Vous avez débloqué une nouvelle variante du <strong>tunnel</strong> - Elle a <strong>une portée plus grande</strong>, et vous pouvez également mixer ces tunnels maintenant !
 
     reward_splitter_compact:
         title: Balancier compact
         desc: >-
-            Vous avez débloqué une variante compacte du <strong>balancier</strong> - Elle accepte deux entrées et les rassemble en une sortie!
+            Vous avez débloqué une variante compacte du <strong>balancier</strong> - Elle accepte deux entrées et les rassemble en une sortie !
 
     reward_cutter_quad:
         title: Quadruple découpeur
-        desc: Vous avez débloqué une variante du <strong>découpeur</strong> - Elle permet de de découper les formes en <strong>quatres parties</strong> à la place de simplement deux!
+        desc: Vous avez débloqué une variante du <strong>découpeur</strong> - Elle permet de de découper les formes en <strong>quatres parties</strong> à la place de simplement deux !
 
     reward_painter_double:
         title: Double peintre
-        desc: Vous avez débloqué une variante du <strong>peintre</strong> - Elle fonctionne comme le peintre de base, mais elle permet de traiter <strong>deux formes à la fois</strong> en ne consommant qu'une couleur au lieu de deux!
+        desc: Vous avez débloqué une variante du <strong>peintre</strong> - Elle fonctionne comme le peintre de base, mais elle permet de traiter <strong>deux formes à la fois</strong> en ne consommant qu'une couleur au lieu de deux !
 
     reward_painter_quad:
         title: Quadruple peintre
-        desc: Vous avez débloqué une variante du <strong>peintre</strong> - Elle permet de colorier chaque partie d'une forme individuellement!
+        desc: Vous avez débloqué une variante du <strong>peintre</strong> - Elle permet de colorier chaque partie d'une forme individuellement !
 
     reward_storage:
         title: Tampon de stockage
-        desc: Vous avez débloqué une variante de <strong>la poubelle</strong> - Elle permet de stocker des formes jusqu'à une certaine limite!
+        desc: Vous avez débloqué une variante de <strong>la poubelle</strong> - Elle permet de stocker des formes jusqu'à une certaine limite !
 
     reward_freeplay:
         title: Mode libre
-        desc: Vous l'avez fait! Vous avez débloqué le <strong>mode libre</strong>! Cela veut dire que dorénavant, les formes sont générées aléatoirement! (Ne vous en faites pas, plus de contenu est prévu pour la version complète!)
+        desc: Vous l'avez fait! Vous avez débloqué le <strong>mode libre</strong>! Cela veut dire que dorénavant, les formes sont générées aléatoirement ! (Ne vous en faites pas, plus de contenu est prévu pour la version complète !)
 
     reward_blueprints:
         title: Patrons
-        desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usines! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (ce que vous venez de livrer).
+        desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usines ! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (ce que vous venez de livrer).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: Niveau suivant
         desc: >-
-            Ce niveau n'a pas de récompense, mais le prochain oui! <br><br> PS: Vous ne devriez pas détruires votre usine actuelle - Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour <strong>débloquer les améliorations</strong>!
+            Ce niveau n'a pas de récompense, mais le prochain oui ! <br><br> PS: Vous ne devriez pas détruires votre usine actuelle - Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour <strong>débloquer les améliorations</strong> !
 
     no_reward_freeplay:
         title: Niveau suivant
         desc: >-
-            Bravo! D'ailleurs, plus de contenu est prévu pour la version complète!
+            Bravo! D'ailleurs, plus de contenu est prévu pour la version complète !
 
 settings:
     title: Options
@@ -607,11 +607,11 @@ settings:
             description: >-
                 Change la sensibilité du zoom (aussi bien de la roulette de la souris que du trackpad).
             sensitivity:
-                super_slow: Super lent
+                super_slow: Très lent
                 slow: Lent
                 regular: Normal
                 fast: Rapide
-                super_fast: Super rapide
+                super_fast: Très rapide
 
         fullscreen:
             title: Plein écran
@@ -634,7 +634,7 @@ settings:
                 Choisissez votre thème (clair / sombre).
 
         refreshRate:
-            title: Simulation Target
+            title: Taux de raffraîchissement cible
             description: >-
                 Si vous avez un moniteur à 144hz, changez le taux de rafraichissement ici pour que le jeu fonctionne correctement à cette haute fréquence. Ceci pourrait diminuer vos IPS si votre ordinateur est trop lent.
 
@@ -646,12 +646,12 @@ settings:
         offerHints:
             title: Indices
             description: >-
-                Affiche ou non le bouton 'Afficher un indice' dans le coin inférieur gauche.
+                Affiche ou non le bouton 'Voir indice' dans le coin inférieur gauche.
 
 keybindings:
     title: Contrôles
     hint: >-
-        Astuce: Soyez sûr d'utiliser CTRL, SHIFT et ALT! Ces touches activent différentes options de placement.
+        Astuce: Soyez sûr d'utiliser CTRL, SHIFT et ALT ! Ces touches activent différentes options de placement.
 
     resetKeybindings: Réinitialiser les contrôles
 
@@ -702,7 +702,7 @@ keybindings:
         cycleBuildings: Faire défiler les bâtiments
 
         massSelectStart: Cliquez et maintenez pour commencer
-        massSelectSelectMultiple: Séléctionner plusieurs zones
+        massSelectSelectMultiple: Sélectionner plusieurs zones
         massSelectCopy: Copie la zone
 
         placementDisableAutoOrientation: Désactiver l'orientation automatique
@@ -710,7 +710,7 @@ keybindings:
         placeInverse: Inverser le mode d'orientation automatique
 
 about:
-    title: A propos de ce jeu
+    title: À propos de ce jeu
 
 changelog:
     title: Historique
