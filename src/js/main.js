@@ -18,35 +18,36 @@ if (window.coreThreadLoadedCb) {
     window.coreThreadLoadedCb();
 }
 
-if (!G_IS_DEV && !G_IS_STANDALONE) {
-    const monthlyUsers = 300; // thousand
-    const logrocketLimit = 10; // thousand
-    const percentageOfUsers = logrocketLimit / monthlyUsers;
+// Logrocket
+// if (!G_IS_DEV && !G_IS_STANDALONE) {
+//     const monthlyUsers = 300; // thousand
+//     const logrocketLimit = 10; // thousand
+//     const percentageOfUsers = logrocketLimit / monthlyUsers;
 
-    if (Math.random() <= percentageOfUsers) {
-        logger.log("Analyzing this session with logrocket");
-        const logrocket = require("logrocket");
-        logrocket.init("p1x9zh/shapezio");
+//     if (Math.random() <= percentageOfUsers) {
+//         logger.log("Analyzing this session with logrocket");
+//         const logrocket = require("logrocket");
+//         logrocket.init("p1x9zh/shapezio");
 
-        try {
-            logrocket.getSessionURL(function (sessionURL) {
-                logger.log("Connected lockrocket to GA");
-                // @ts-ignore
-                try {
-                    window.ga("send", {
-                        hitType: "event",
-                        eventCategory: "LogRocket",
-                        eventAction: sessionURL,
-                    });
-                } catch (ex) {
-                    logger.warn("Logrocket connection to analytics failed:", ex);
-                }
-            });
-        } catch (ex) {
-            logger.warn("Logrocket connection to analytics failed:", ex);
-        }
-    }
-}
+//         try {
+//             logrocket.getSessionURL(function (sessionURL) {
+//                 logger.log("Connected lockrocket to GA");
+//                 // @ts-ignore
+//                 try {
+//                     window.ga("send", {
+//                         hitType: "event",
+//                         eventCategory: "LogRocket",
+//                         eventAction: sessionURL,
+//                     });
+//                 } catch (ex) {
+//                     logger.warn("Logrocket connection to analytics failed:", ex);
+//                 }
+//             });
+//         } catch (ex) {
+//             logger.warn("Logrocket connection to analytics failed:", ex);
+//         }
+//     }
+// }
 
 console.log(
     `%cshapez.io ️%c\n© 2020 Tobias Springer IT Solutions\nCommit %c${G_BUILD_COMMIT_HASH}%c on %c${new Date(
