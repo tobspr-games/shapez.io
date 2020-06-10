@@ -12,6 +12,7 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Polish](base-pl.yaml)
 -   [Portuguese (Brazil)](base-pt-BR.yaml)
 -   [Russian](base-ru.yaml)
+-   [Greek](base-el.yaml)
 
 (If you want to translate into a new language, see below!)
 
