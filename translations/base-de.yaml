@@ -42,30 +42,30 @@ steamPage:
         [b]Standalone Advantages[/b]
 
         [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
+            [*] Wegpunkte
+            [*] Unbegrenzte Anzahl von Spielständen
+            [*] Dunkler Modus
+            [*] Mehr Einstellungen
+            [*] Erlaube es mir weiter an shapez.io zu entwickeln  ❤️
+            [*] Mehr Funktionen in der Zukunft!
         [/list]
 
-        [b]Planned features & Community suggestions[/b]
+        [b]Geplante Funktionen & Community vorschläge[/b]
 
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        Diese Spiel ist open source - Jeder kann dazu beitragen! Abgesehen davon höre ich [b]sehr viel[/b] auf die Community! Ich versuche alle vorschläge zu lesen und soviel feedback einzubeziehen wie nur möglich.
 
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
-            [*] And much more!
+            [*] Story-Modus, in dem Gebäude Formen kosten
+            [*] Mehr Gebäude und Levels (nur in der einzelstehenden Version)
+            [*] Mehr Karten und villeicht auch Hindernisse auf diesen
+            [*] Einstellbare Kartenerstellung (Ändere die Grösse und Anzahl von Resourcenflicken, Seed, und mehr)
+            [*] Mehr Typen von Formen
+            [*] Mehr Performanceverbesserungen (Auch wenn das Spiel bereits ganz gut läuft)
+            [*] Farbenblinder-Modus
+            [*] Und viel mehr!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        Schau dir auch das Trello-board for alle Planungen an! https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Laden
@@ -133,24 +133,24 @@ mainMenu:
     contests:
         contest_01_03062020:
             title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            desc: Gewinne <strong>$25</strong> für dir beste Basis!
             longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
+                Um euch etwas zurückzugeben dachte ich, dass es eine coole Idee ist, wöchentliche Wettbewerbe durchzuführen!
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>Thema dieser Woche:</strong> Baue die coolste Basis!
                 <br><br>
-                Here's the deal:<br>
+                Hier ist ein Deal:<br>
                 <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
+                    <li>Sende einen Screenshot deiner Basis an <strong>contest@shapez.io</strong></li>
+                    <li>Bonuspunkte wenn du die Basis auf sozialen Medien teilst!</li>
+                    <li>Ich wähle 5 Screenshots und schlage dieser der Community auf <strong>Discord</strong> vor, um abzustimmen.</li>
+                    <li>Der Gewinner bekommt <strong>$25</strong> (Paypal, Amazon Gift Card, was du willst)</li>
+                    <li>Einsendeschluss: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                I'm looking forward to seeing your awesome creations!
+                Ich freue mich deine tollen Kreationen zu sehen!
 
-        showInfo: View
+        showInfo: Anschauen
         contestOver: Dieser Wettbewerb ist vorbei! Tritt dem discord server bei, um über neue Wettbewerbe informiert zu werden!
 
 dialogs:
@@ -173,14 +173,14 @@ dialogs:
             Fehler beim Importieren deines Speicherstands:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Spielstand importieren
         text: >-
-            Your savegame has been successfully imported.
+            Dein Spielstand wurde erfolgreich importiert
 
     gameLoadFailure:
-        title: Game is broken
+        title: Der Spielstand ist kaputt
         text: >-
-            Failed to load your savegame:
+            Der Spielstand konnte nicht geladen werden.
 
     confirmSavegameDelete:
         title: Confirm deletion

@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes dans une carte infinie.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,11 +30,11 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io est un jeu ayant ayant pour objectif d'automatiser la création et la fusion de formes à l'aide d'une usine. Livrez les formes de plus en plus complèxes requises pour progresser dans le jeu et débloquer des améliorations qui accéléreront votre chaîne de production.
+        shapez.io est un jeu ayant pour objectif d'automatiser la création et la fusion de formes à l'aide d'une usine. Livrez les formes de plus en plus complexes requises pour progresser dans le jeu et débloquez des améliorations qui accéléreront votre chaîne de production.
 
-        La demande allant croissant, vous aurez à adapter l'échelle de votre usine afin de suivre la cadence - Ne négligez pas les resources cependant, vous aurez à vous étendre sur une [b]carte infinie[/b] !
+        La demande allant croissant, vous aurez à adapter l'échelle de votre usine afin de suivre la demande - Ne négligez pas les resources cependant, vous aurez à vous étendre sur une [b]carte infinie[/b] !
 
-        Les formes seules pouvant devenir ennuyeuses à la longue vous aurez à mixer des couleurs et les utiliser pour peindre vos formes - Combinez des colorants rouges, verts ou bleus pour produire différentes couleurs et enduisez-en vos formes afin de satisfaire les demandes.
+        Les formes seules pouvant devenir ennuyeuses à la longue vous aurez à mélanger des couleurs et les utiliser pour peindre vos formes - Combinez des pigments rouges, verts ou bleus pour produire différentes couleurs et enduisez-en vos formes afin de satisfaire les demandes.
 
         Ce jeu propose 18 niveaux (qui devraient dors et déjà vous occuper pour de nombreuses heures !) mais j'ajoute régulièrement de nouveaux contenus - Beaucoup de nouveautés sont prévues !
 
@@ -46,22 +46,22 @@ steamPage:
             [*] Nombre illimité de sauvegardes
             [*] Thème sombre
             [*] Plus de paramètres de configuration
-            [*] Vous m'aidez à poursuivre le développement de shapez.io ❤️
+            [*] Acheter la version complète m'aide à poursuivre le développement de shapez.io ❤️
             [*] Encore plus de fonctionnalités à l'avenir !
         [/list]
 
-        [b]Fonctionnalités prévues & suggestions de la communauté[/b]
+        [b]Fonctionnalités planifiées & suggestions de la communauté[/b]
 
-        Ce jeu est open source - N'importe qui peut contribuer ! En outre, Je suis [b]très attentif[/b] à ce que dit la communauté ! J'essaie de lire toutes les suggestions et essaye de tenir compte des retours autant que faire se peut.
+        Ce jeu est open source - N'importe qui peut contribuer ! En outre, Je suis [b]très attentif[/b] à ce que dit la communauté ! J'essaie de lire toutes les suggestions et de tenir compte des retours autant que possible.
 
         [list]
             [*] Mode Histoire où les batiments ont un coût en formes
-            [*] Plus de niveaux et de batiments (exclusivité pour la version complète)
+            [*] Plus de niveaux et de batiments (en exclusivité dans la version complète)
             [*] Différentes cartes, contenant éventuellement des obstacles
-            [*] Création configurable de carte (éditer le nombre et la taille des veines de resources, édition de la graine générant la carte, et plus encore)
+            [*] Création configurable de carte (éditer le nombre et la taille des gisements de resources, édition de la graine générant la carte, et plus encore)
             [*] Davantage de types de formes
             [*] Performance améliorée (bien que le jeu tourne déjà de manière tout à fait décente !)
-            [*] Mode daltonisme
+            [*] Adaptation de l'affichage des couleurs à différente forme de daltonisme
             [*] Et bien plus encore !
         [/list]
 
@@ -126,7 +126,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Désolé, mais ce jeu est connu pour tourner lentement sur votre nagivateur ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
+        Désolé, mais ce jeu est connu pour tourner lentement sur votre nagivateur web ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
@@ -431,16 +431,16 @@ buildings:
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Tunnel
-            description: Permet de faire passer des ressources en dessous de bâtiment et convoyeurs.
+            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
         tier2:
             name: Tunnel Echelon II
-            description: Permet de faire passer des ressources en dessous de bâtiment et convoyeurs.
+            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancier
-            description: Multifonctionnel - Distribue de manière égale toutes les entrées vers toutes les sorties.
+            name: &splitter Répartiteur
+            description: Multifonctionnel - Distribue de manière équitable toutes les entrées vers toutes les sorties.
 
         compact:
             name: Fusionneur (compact)
@@ -453,10 +453,10 @@ buildings:
     cutter:
         default:
             name: &cutter Découpeur
-            description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite l'autre ou cela bloquera !</strong>
+            description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite l'autre ou sinon, gare au blocage !</strong>
         quad:
             name: Découpeur (Quatre)
-            description: Coupe une forme en 4 parts. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruite les autres ou cela bloquera !</strong>
+            description: Coupe une forme en 4 parties. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruite les autres ou sinon, gare au blocage !</strong>
 
     rotater:
         default:
@@ -473,8 +473,8 @@ buildings:
 
     mixer:
         default:
-            name: &mixer Mixeur de couleur
-            description: Mixe deux couleurs en utilisant la synthèse additive des couleurs.
+            name: &mixer Mélangeur de couleur
+            description: Mélange deux couleurs en utilisant la synthèse additive des couleurs.
 
     painter:
         default:
@@ -512,8 +512,8 @@ storyRewards:
             Le <strong>peintre</strong> a été débloqué - Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez les avec une forme dans un peintre pour les colorier !<br><br>PS: Si vous êtes daltonien, je travaille déjà à une solution !
 
     reward_mixer:
-        title: Mixeur de couleurs
-        desc: Le <strong>mixeur</strong> a été débloqué - Combinez deux couleurs en utilisant <strong>la synthèse additive des couleurs</strong> avec ce bâtiment !
+        title: Mélangeur de couleurs
+        desc: Le <strong>mélangeur</strong> a été débloqué - Combinez deux couleurs en utilisant <strong>la synthèse additive des couleurs</strong> avec ce bâtiment !
 
     reward_stacker:
         title: Combineur
@@ -522,8 +522,8 @@ storyRewards:
     # Suggestion from the translator: "après avoir été légèrement réduite" = "after having been slightly scaled down": I think this part of the explanation is missing in the original text, and I struggled a lot at the beginning to understand this important fact of mixing shapes. 
 
     reward_splitter:
-        title: Séparateur/Mixeur
-        desc: Le <strong>balancier</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>séparant et mixant les formes</strong> entre plusieurs convoyeurs!<br><br>
+        title: Distributeur/Rassembleur
+        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les formes</strong> entre plusieurs convoyeurs!<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -531,24 +531,24 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Pivoteur inversé
-        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> - Elle permet de faire pivoter vers la gauche ! Pour le construite, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour alterner entre les variantes</strong> !
+        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> - Elle permet de faire pivoter vers la gauche ! Pour le construire, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour alterner entre les variantes</strong> !
 
     reward_miner_chainable:
         title: Extracteur en série
-        desc: Vous avez débloqué <strong>l'extracteur en série</strong> ! Il permet de <strong>transférer ses resources</strong> à d'autres extracteurs pour augmenter le rendement !
+        desc: Vous avez débloqué <strong>l'extracteur en série</strong> ! Il permet de <strong>transférer ses resources</strong> à d'autres extracteurs pour augmenter le débit sortant !
 
     reward_underground_belt_tier_2:
         title: Tunnel niveau II
-        desc: Vous avez débloqué une nouvelle variante du <strong>tunnel</strong> - Elle a une <strong>portée plus grande</strong>, et vous pouvez à présent mixer les deux variantes de tunnels !
+        desc: Vous avez débloqué une nouvelle variante du <strong>tunnel</strong> - Elle a une <strong>portée plus grande</strong>, et vous pouvez à présent superposer les deux variantes de tunnels !
 
     reward_splitter_compact:
-        title: Balancier compact
+        title: Répartiteur compact
         desc: >-
-            Vous avez débloqué une variante compacte du <strong>balancier</strong> - Elle accepte deux entrées et les rassemble en une sortie !
+            Vous avez débloqué une variante compacte du <strong>répartiteur</strong> - Elle accepte deux entrées et les rassemble en une sortie !
 
     reward_cutter_quad:
         title: Quadruple découpeur
-        desc: Vous avez débloqué une variante du <strong>découpeur</strong> - Elle permet de découper les formes en <strong>quatres parties</strong> à la place de simplement deux !
+        desc: Vous avez débloqué une variante du <strong>découpeur</strong> - Elle permet de découper les formes en <strong>quatre parties</strong> à la place de simplement deux !
 
     reward_painter_double:
         title: Double peintre
@@ -612,7 +612,7 @@ settings:
         scrollWheelSensitivity:
             title: Sensibilité du zoom
             description: >-
-                Change la sensibilité du zoom (aussi bien de la roulette de la souris que du trackpad).
+                Change la sensibilité du zoom (aussi bien de la roulette de la souris que du pavé tactile).
             sensitivity:
                 super_slow: Super lent
                 slow: Lent
