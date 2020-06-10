@@ -351,7 +351,7 @@ ingame:
                 description: Affiche tous les formes que votre usine entière produit, en incluant les formes intermédiaires.
             delivered:
                 title: Délivré
-                description: Affiche les formes qui ont été livrées dans votre noyau.
+                description: Affiche les formes qui ont été livrées dans votre centre.
         noShapesProduced: Aucune forme n'a été produite jusqu'à présent.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -382,7 +382,7 @@ ingame:
     # Map markers
     waypoints:
         waypoints: Balise
-        hub: Noyau
+        hub: Centre
         description: Cliquez une balise pour vous y rendre, clic-droit pour l'effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer une sur l'endroit pointé.
         creationSuccessNotification: La balise a été créée.
 
@@ -392,7 +392,7 @@ ingame:
         hints:
             1_1_extractor: Placez un <strong>extracteur</strong> sur une <strong>forme en cercle</strong> pour l'extraire !
             1_2_conveyor: >-
-                Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre noyau !<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
+                Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
 
             1_3_expand: >-
                 Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
