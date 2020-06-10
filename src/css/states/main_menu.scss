@@ -217,7 +217,7 @@
 
         .playButton {
             @include SuperHeading;
-            @include S(width, 130px);
+            @include S(min-width, 130px);
             @include S(padding, 15px, 20px);
             letter-spacing: 0.3em !important;
 

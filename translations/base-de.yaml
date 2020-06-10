@@ -24,7 +24,7 @@ global:
     error: Fehler
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -38,21 +38,21 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: vor einer Sekunde
+        xSecondsAgo: vor <x> Sekunden
+        oneMinuteAgo: vor einer Minute
+        xMinutesAgo: vor <x> Minuten
+        oneHourAgo: vor einer Stunde
+        xHoursAgo: vor <x> Stunden
+        oneDayAgo: vor einem Tag
+        xDaysAgo: vor <x> Tagen
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>s
 
-        xMinutes: <x> minutes
+        xMinutes: <x> Minuten
 
     keys:
         tab: TAB
@@ -60,27 +60,27 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
+        space: LEER
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo Version
     intro: >-
-        Get the standalone to unlock all features!
+        Kaufe die Standalone für alle Features!
 
 mainMenu:
-    play: Play
-    changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
+    play: Spielen
+    changelog: Änderungshistorie
+    importSavegame: Importieren
+    openSourceHint: Dieses Spiel ist Open Source!
+    discordLink: Offizieller Discord Server
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Sorry, aber das Spiel wird in deinem Browser langsam laufen! Erwerbe die Standalone-Version oder downloade Chrome für die beste Erfahrung!
 
     savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevelUnknown: Unbekanntes Level
 
     contests:
         contest_01_03062020:
@@ -103,26 +103,26 @@ mainMenu:
                 I'm looking forward to seeing your awesome creations!
 
         showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+        contestOver: Dieser Wettbewerb ist vorbei! Tritt dem discord server bei, um über neue Wettbewerbe informiert zu werden!
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        delete: Löschen
+        cancel: Abbrechen
+        later: Später
+        restart: Neustart
+        reset: Zurücksetzen
+        getStandalone: Standalone Ansehen
+        deleteGame: Ich weiß, was ich tue
+        viewUpdate: Update anzeigen
+        showUpgrades: Upgrades anzeigen
+        showKeybindings: Kürzel anzeigen
 
     importSavegameError:
-        title: Import Error
+        title: Import Fehler
         text: >-
-            Failed to import your savegame:
+            Fehler beim Importieren deines Speicherstands:
 
     importSavegameSuccess:
         title: Savegame Imported
