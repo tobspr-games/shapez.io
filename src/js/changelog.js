@@ -2,7 +2,10 @@ export const CHANGELOG = [
     {
         version: "1.1.9",
         date: "unreleased",
-        entries: ["Make shapes unpinnable in the upgrades tab (By hexy)"],
+        entries: [
+            "Support for translations! Interested in helping out? Check out the <a target='_blank'  href='https://github.com/tobspr/shapez.io/tree/master/translations'>translation guide</a>!",
+            "Make shapes unpinnable in the upgrades tab (By hexy)",
+        ],
     },
     {
         version: "1.1.8",
