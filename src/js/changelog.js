@@ -1,5 +1,10 @@
 export const CHANGELOG = [
     {
+        version: "1.1.9",
+        date: "unreleased",
+        entries: ["Make shapes unpinnable in the upgrades tab (By hexy)"],
+    },
+    {
         version: "1.1.8",
         date: "07.06.2020",
         entries: [
