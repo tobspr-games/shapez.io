@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io to gra polegająca na budowaniu automatycznej fabryki różnych, z każdym poziomem bardziej skomplikowanych kształtów, na mapie która nie ma końca. 
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,49 +30,49 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io jest grą o budowaniu i automatyzacji fabryki różnych kształtów. Dostarczaj coraz bardziej skomplikowane kształty, żeby odblokować nowe ulepszenia żeby przyspieszyć produkcję w twojej fabryce.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        Będziesz potrzebował produkować coraz więcej elementów, więc potrzebujesz również sporo miejsca na powiększanie fabryki. [b]Nieskończona mapa[/b] to coś co ułatwi Ci ten proces!
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Same kształty mogą z czasem być nudne, dlatego gra będzie wymagała od Ciebie malowania kształtów różnymi kolorami - Połącz czerwoną, zieloną i niebieską farbę, a powstanie farba o innym kolorze. Korzystaj z farb by postępować z kolejnymi poziomami.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        Na tą chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na conajmniej kilka godzin!) ale bez przerwy dodaję nowe - Jest naprawdę wiele do dodania! 
 
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
-        [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        [b]Zalety pełnej wersji[/b]
 
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
-            [*] And much more!
+            [*] Znaczniki
+            [*] Nielimitowana ilość zapisanych gier
+            [*] Tryb nocny (kolor)
+            [*] Więcej ustawień
+            [*] Pomóż mi w dalszym rozwijaniu shapez.io ❤️
+            [*] Więcej zawartości niedługo!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [b]Zaplanowana zawartość & Sugestie społeczności[/b]
+
+        Ta gra jest open-source - Kaźdy może pomóc w rozwoju! Poza tym, słucham tego co społeczność ma do powiedenia w kwestii gry! Staram się czytać wszystkie sugestie i odbierać jak najwięcej informacji zwrotnych na temat gry.
+
+        [list]
+            [*] Kampania, gdzie do budowy potrzeba kształtów
+            [*] Więcej poziomów i budynków (tylko w pełnej wersji)
+            [*] Inne mapy z przeszkodami
+            [*] Możliwość modyfikowania parametrów generowanjej mapy (Ilość i rozmiar surowców, seed, itd.)
+            [*] Więcej rodzajów kształtów
+            [*] Optymalizacja (Mimo wszystko gra już działa dośc płynnie!)
+            [*] Tryb dla daltonistów
+            [*] I wiele więcej!
+        [/list]
+
+        Sprawdź tablicę trello i zobacz nad czym teraz pracuję! https://trello.com/b/ISQncpJP/shapezio
 
 global:
-    loading: Loading
-    error: Error
+    loading: Ładowanie
+    error: Wystąpił błąd
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -86,21 +86,21 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: sekundę temu
+        xSecondsAgo: <x> sekund temu
+        oneMinuteAgo: minutę temu
+        xMinutesAgo: <x> minut temu
+        oneHourAgo: godzinę temu
+        xHoursAgo: <x> godzin temu
+        oneDayAgo: dzień temu
+        xDaysAgo: <x> dni temu
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>s
 
-        xMinutes: <x> minutes
+        xMinutes: <x> minut
 
     keys:
         tab: TAB
@@ -112,94 +112,94 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Wersja demo
     intro: >-
-        Get the standalone to unlock all features!
+        kup grę by odblokować pozostałą część!
 
 mainMenu:
-    play: Play
+    play: Start
     changelog: Changelog
     importSavegame: Import
     openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    discordLink: Oficjalny serwer Discord!
+    helpTranslate: Pomóż w tłumaczeniu!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
-
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+        Przepraszam, ale ta gra możę działać wolno w przeglądarce! Kup pełną wersję gry lub pobierz przeglądarkę chrome.
+        
+    savegameLevel: Poziom <x>
+    savegameLevelUnknown: Nieznany poziom
 
     contests:
         contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            title: "Konkurs #01"
+            desc: Nagroda <strong>$25</strong> za najciekawszą bazę!
             longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
+                Żeby dać wam coś od siebie, pomyślałem, że było by fajnie robić tygodniowe konkursy!
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>Temat tego tygodnia:</strong> Zbuduj najciekawszą fabrykę!
                 <br><br>
-                Here's the deal:<br>
+                Zasady:<br>
                 <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
+                    <li>Wyślij zrzut ekranu fabryki na adres <strong>contest@shapez.io</strong></li>
+                    <li>Dodatkowe punkty za udostępnianie na mediach społecznościowych!</li>
+                    <li>Wybiorę 5 najlepszych moim zdaniem projektów i pozwolę społeczności <strong>discord</strong> głosować.</li>
+                    <li>Wygrany dostaje <strong>$25</strong> (Paypal, Amazon Gift Card, którekolwiek wolisz).</li>
+                    <li>Termin: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                I'm looking forward to seeing your awesome creations!
+                NIe mogę się doczekać by zobaczyć Wasze fabryki!
 
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+        showInfo: Widok
+        contestOver: Ten konkurs już się skończył - Dołącz do kanału Discord by nie przegapić kolejnych!
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
+        delete: Usuń
+        cancel: Anuluj
+        later: Później
         restart: Restart
         reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        getStandalone: Kup grę
+        deleteGame: Wiem co robię
+        viewUpdate: Zobacz aktualizację
+        showUpgrades: Pokaż ulepszenia
+        showKeybindings: Pokaż sterowanie
 
     importSavegameError:
-        title: Import Error
+        title: Błąd importowania
         text: >-
-            Failed to import your savegame:
+            Nie udało się zimportować twojego zapisu gry:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Import zapisu
         text: >-
-            Your savegame has been successfully imported.
+            Twoja gra została zimportowana poprawnie.
 
     gameLoadFailure:
-        title: Game is broken
+        title: Błąd ładowania
         text: >-
-            Failed to load your savegame:
+            Nie udało się załadować twojego zapisu gry:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Potwierdź usuwanie
         text: >-
-            Are you sure you want to delete the game?
+            Jesteś pewien, że chcesz usunąć zapis?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Błąd usuwania
         text: >-
-            Failed to delete the savegame:
+            Nie udało się usunąć zapisu:
 
     restartRequired:
-        title: Restart required
+        title: Wymagany restart
         text: >-
-            You need to restart the game to apply the settings.
+            Gra wymaga ponownego uruchomienia w celu wdrożenia nowych ustawień.
 
     editKeybinding:
-        title: Change Keybinding
+        title: Zmień sterowanie
         desc: Press the key or mouse button you want to assign, or escape to cancel.
 
     resetKeybindingsConfirmation:
