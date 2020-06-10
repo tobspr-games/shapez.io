@@ -36,7 +36,7 @@ steamPage:
 
         Les formes seules pouvant devenir ennuyeuses à la longue vous aurez à mélanger des couleurs et les utiliser pour peindre vos formes - Combinez des pigments rouges, verts ou bleus pour produire différentes couleurs et enduisez-en vos formes afin de satisfaire les demandes.
 
-        Ce jeu propose 18 niveaux (qui devraient dors et déjà vous occuper pour de nombreuses heures !) mais j'ajoute régulièrement de nouveaux contenus - Beaucoup de nouveautés sont prévues !
+        Ce jeu propose 18 niveaux (qui devraient d'ores et déjà vous occuper pour de nombreuses heures !) mais j'ajoute régulièrement de nouveaux contenus - Beaucoup de nouveautés sont prévues !
 
 
         [b]Avantage de la version complète[/b]
@@ -126,7 +126,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Désolé, mais ce jeu est connu pour tourner lentement sur votre nagivateur web ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
+        Désolé, mais ce jeu est connu pour tourner lentement sur votre navigateur web ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
