@@ -2,22 +2,28 @@
  * @type {Object<string, {name: string, data: any, code: string, region: string}>}
  */
 export const LANGUAGES = {
-    en: {
+    "en": {
         name: "English",
         data: null,
         code: "en",
         region: "",
     },
-    de: {
+    "de": {
         name: "Deutsch",
         data: require("./built-temp/base-de.json"),
         code: "de",
         region: "",
     },
-    fr: {
+    "fr": {
         name: "Français",
         data: require("./built-temp/base-fr.json"),
         code: "fr",
         region: "",
+    },
+    "pt-BR": {
+        name: "Português (Brasil)",
+        data: require("./built-temp/base-pt-BR.json"),
+        code: "pt",
+        region: "BR",
     },
 };

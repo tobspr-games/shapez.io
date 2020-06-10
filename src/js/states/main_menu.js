@@ -228,6 +228,7 @@ export class MainMenuState extends GameState {
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.trackClicks(qs(".changelog"), this.onChangelogClicked);
         this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
+        this.trackClicks(qs(".helpTranslate"), this.onTranslationHelpLinkClicked);
 
         const contestButton = qs(".participateContest");
         if (contestButton) {
@@ -291,6 +292,7 @@ export class MainMenuState extends GameState {
     }
 
     onLanguageChooseClicked() {
+        this.app.analytics.trackUiClick("choose_language");
         const setting = /** @type {EnumSetting} */ (getApplicationSettingById("language"));
 
         const { optionSelected } = this.dialogs.showOptionChooser(T.settings.labels.language.title, {
@@ -430,6 +432,13 @@ export class MainMenuState extends GameState {
 
     onSettingsButtonClicked() {
         this.moveToState("SettingsState");
+    }
+
+    onTranslationHelpLinkClicked() {
+        this.app.analytics.trackUiClick("translation_help_link");
+        this.app.platformWrapper.openExternalLink(
+            "https://github.com/tobspr/shapez.io/blob/master/translations"
+        );
     }
 
     onPlayButtonClicked() {

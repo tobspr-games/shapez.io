@@ -24,7 +24,7 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 
 ## Helping translate
 
-Please checkout the [Translations readme](translations/README.md).
+Please checkout the [Translations readme](translations/).
 
 ## Contributing
 
