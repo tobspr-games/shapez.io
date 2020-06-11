@@ -237,7 +237,7 @@ dialogs:
     hintDescription:
         title: Обучение
         desc: >-
-            Whenever you need help or are stuck, check out the 'Show hint' button in the lower left and I'll give my best to help you!
+            Всякий раз, когда вам нужна помощь или вы застряли, нажмите кнопку «Показать подсказку» в левом нижнем углу, и я сделаю все возможное, чтобы помочь вам!
 
     upgradesIntroduction:
         title: Открыть улучшения
@@ -256,13 +256,13 @@ dialogs:
             Чертежи еще не открыты! Завершите больше уровней, что-бы открыть их.
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Полезные горячие клавиши
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            В этой игре много горячих клавиш, которые облегчают строительство больших фабрик.
+            Вот несколько, но обязательно <strong>проверьте настройки управления</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Потащить: Выбор области для копирования / удаления.<br>
+            <code class='keybinding'>SHIFT</code>: Удерживайте, чтобы разместить несколько зданий.<br>
+            <code class='keybinding'>ALT</code>: Инвертировать направление размещаемых конвейерных лент.<br>
 
     createMarker:
         title: Новый маркер
@@ -275,14 +275,14 @@ ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
+        moveMap: Передвижение
         selectBuildings: Выбрать область
-        stopPlacement: Stop placement
+        stopPlacement: Прекратить размещение
         rotateBuilding: Повернуть постройку
         placeMultiple: Поставить несколько
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
+        reverseOrientation: Реверсировать направление
+        disableAutoOrientation: Отключить авто-определение направления
+        toggleHud: Переключить HUD
         placeBuilding: Разместить постройку
         createMarker: Создать маркер
         delete: Уничтожить
@@ -292,11 +292,11 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Нажмите <key> для переключения вариантов.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Клавиша: <key>
 
         infoTexts:
             speed: Скорость
@@ -306,7 +306,7 @@ ingame:
             itemsPerSecond: <x> предметов / сек
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> клеток
 
     # The notification when completing a level
     levelCompleteNotification:
@@ -332,7 +332,7 @@ ingame:
         buttonUnlock: Улучшить
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: Уровень <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
@@ -345,14 +345,14 @@ ingame:
         dataSources:
             stored:
                 title: Хранится
-                description: Displaying amount of stored shapes in your central building.
+                description: Показывает количество хранящихся фигур в вашем центральном здании.
             produced:
                 title: Производится
                 description: Показывает производящиеся фигуры, включая промежуточное производство.
             delivered:
                 title: Доставлено
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                description: Показывает фигуры, которые доставляются в ваше центральное здание. 
+        noShapesProduced: Фигуры еще не произведены.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / мин
@@ -367,7 +367,7 @@ ingame:
         buttons:
             continue: Продолжить
             settings: Настройки
-            menu: Возвратиться в меню
+            menu: Вернутся в меню
 
     # Bottom left tutorial hints
     tutorialHints:
@@ -382,119 +382,119 @@ ingame:
     # Map markers
     waypoints:
         waypoints: Маркеры
-        hub: HUB
-        description: ЛКМ по маркеру, чтобы переместится к нему, ПКМ что-бы удалить. <br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        hub: ХАБ
+        description: ЛКМ по маркеру, чтобы переместится к нему, ПКМ что-бы удалить. <br><br>Нажмите <keybinding> чтобы создать маркер в текущей позиции или <strong>ПКМ</strong> чтобы выбрать другое место для сождания маркера.
         creationSuccessNotification: Маркер был создан.
 
     # Interactive tutorial
     interactiveTutorial:
         title: Обучение
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Поместите <strong>экстрактор</strong> на <strong>фигуру в форме круга</strong> чтобы добыть ее!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                Соедините экстрактор <strong>конвейерной лентой</strong> с вашим хабом!<br><br>Подсказка: Необходимо выбрать конвейерную ленту и <strong>нажать и перетащить</strong> мышку!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                Это <strong>НЕ</strong> idle-игра! Постройте больше экстракторов и конвейерных лент, чтобы достичь цели быстрее.<br><br>Подсказка: Удерживайте <strong>SHIFT</strong> чтобы разместить несколько экстракторов, а <strong>R</strong> чтобы вращать их.
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Конвейерные ленты, Распределители & Туннели
+        description: Скорость x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Добыча
+        description: Скорость x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Нарезка, Вращение & Склейка
+        description: Скорость x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Смешивание & Покраска
+        description: Скорость x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
             name: &belt Конвейер
-            description: Транспортриует передметы, hold and drag to place multiple.
+            description: Транспортриует передметы, держите и тащите, чтобы разместить несколько.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Экстрактор
+            description: Поместите над фигурным или цветовым ресурсом, чтобы добыть его.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Экстрактор (Цепной)
+            description: Поместите над фигурным или цветовым ресурсом, чтобы добыть его. Может последовательно соединяться.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt Туннель
+            description: Позволяет перевозить ресурсы под зданиями и конвейерными лентами.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: Туннель II
+            description: Позволяет перевозить ресурсы под зданиями и конвейерными лентами.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Разделитель
+            description: Многофункциональный - равномерно распределяет все входы на все выходы.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Соединитель (компактный)
+            description: Объединяет две конвейерные ленты в одну.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Соединитель (компактный)
+            description: Объединяет две конвейерные ленты в одну.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Резчик
+            description: Разрезает фигуры сверху вниз и выводит обе половины. <strong>Если вы используете только одну часть, обязательно уничтожьте другую, иначе производство остановится!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: Резчик (Четырехпоточный)
+            description: Разрезает фигуры на четыре части. <strong>Если вы используете только одну часть, обязательно уничтожьте другие, иначе производство остановится!</strong>
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Вращатель
+            description: Поворачивает фигуры по часовой стрелке на 90 градусов.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: Вращатель (обратный)
+            description: Поворачивает фигуры против часовой стрелки на 90 градусов.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker Склеиватель
+            description: Склеивает оба предмета. Если они не могут быть объединены, правый элемент помещается над левым элементом.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Смешиватель цветов
+            description: Смешивает два цвета с помощью аддитивного смешивания.
 
     painter:
         default:
-            name: &painter Painter
-            description: Colors the whole shape on the left input with the color from the right input.
+            name: &painter Покрасчик
+            description: Красит всю фигуру из левого входа краской из верхнего.
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Покрасчик (Двойной)
+            description: Красит фигуру из левых входов краской из верхнего.
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: Покрасчик (Четырехпоточный)
+            description: Позволяет раскрасить каждую четверть фигуры разными цветами.
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Мусорка
+            description: Имеет входы со всех сторон. Уничтожает все что принимает, навсегда.
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Хранилище
+            description: Хранит лишние предметы, до заданной вместимости. Может использоваться в качестве ворот для пропускания излишков.
 
 storyRewards:
     # Those are the rewards gained from completing the store
