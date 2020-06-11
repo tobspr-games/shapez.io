@@ -348,10 +348,10 @@ ingame:
                 title: Przechowywane
                 description: Wyświetla ilość przechowywanych kształtów w głównym budynku.
             produced:
-                title: Wybrodukowano
+                title: Produkowane
                 description: Wyświetla wszystkie kształty produkowane przez Twoją fabrykę, w tym półprodukty.
             delivered:
-                title: Dostarczono
+                title: Dostarczone
                 description: Wyświetla kształty dostarczone do budynku głównego.
         noShapesProduced: Brak wyprodukowanych kształtów.
 
