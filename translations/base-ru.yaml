@@ -39,7 +39,7 @@ steamPage:
         Эта игра имеет 18 уровней (но и они займут вас на часы!), но я постоянно добавляю новый контент - там много чего запланировано!
 
 
-        [b]Преимущества автономной версии[/b]
+        [b]Преимущества полной версии[/b]
 
         [list]
             [*] Метки
@@ -56,7 +56,7 @@ steamPage:
 
         [list]
             [*] Режим истории, где здания стоят фигур
-            [*] Больше уровней & зданий (эксклюзивно для автономной версии)
+            [*] Больше уровней & зданий (эксклюзивно для полной версии)
             [*] Различные карты и, возможно, карта препятствий
             [*] Настраиваемое создание карт (редактирование количества и размера участков, семя и т. д.)
             [*] Больше видов фигур
@@ -87,13 +87,13 @@ global:
     time:
         # Used for formatting past time dates
         oneSecondAgo: одну секунду назад
-        xSecondsAgo: <x> seconds ago
+        xSecondsAgo: <x> секунд(ы) назад
         oneMinuteAgo: одну минуту назад
-        xMinutesAgo: <x> minutes ago
+        xMinutesAgo: <x> минут(ы) назад
         oneHourAgo: один час назад
-        xHoursAgo: <x> hours ago
+        xHoursAgo: <x> часов(а) назад
         oneDayAgo: один день назад
-        xDaysAgo: <x> days ago
+        xDaysAgo: <x> дней(я) назад
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>с
@@ -114,19 +114,19 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Демо версия
     intro: >-
-        Get the standalone to unlock all features!
+        Приобретите полную версию чтобы разблокировать все возможности!
 
 mainMenu:
     play: Играть
     changelog: Список изменений
     importSavegame: Импортировать сохраненную игру
-    openSourceHint: У этой игры открытый исходный код!
+    openSourceHint: Это игра с открытым исходным кодом!
     discordLink: Оффициальный Дискорд Сервер
     helpTranslate: Помоги с переводом!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Извините, но игра будет тормозить на вашем браузере! Приобретите полную версию или скачайте хром
+        Извините, но игра работает медленно в вашем браузере! Приобретите полную версию или загрузите Chrome чтобы ознакомится с игрой в полной мере.
 
     savegameLevel: Уровень <x>
     savegameLevelUnknown: Неизвестный уровень
@@ -160,18 +160,18 @@ dialogs:
         delete: Удалить
         cancel: Закрыть
         later: Позже
-        restart: Перезапуск
-        reset: Reset
+        restart: Перезапустить
+        reset: Сбросить
         getStandalone: Приобрести полную версию
         deleteGame: Я знаю, что я делаю
-        viewUpdate: View Update
-        showUpgrades: Показать улучшения
-        showKeybindings: Show Keybindings
+        viewUpdate: Посмотреть Обновление
+        showUpgrades: Показать Улучшения
+        showKeybindings: Показать Управление
 
     importSavegameError:
         title: Ошибка импортирования
         text: >-
-            Failed to import your savegame:
+            Не удалось импортировать ваше сохранение игры:
 
     importSavegameSuccess:
         title: Сохраненная игра импортированна
@@ -179,60 +179,60 @@ dialogs:
             Ваша сохраненная игра успешно импортированна.
             
     gameLoadFailure:
-        title: Game is broken
+        title: Ошибка загрузки
         text: >-
-            Failed to load your savegame:
+            Не удалось загрузить ваше сохранение игры:
 
     confirmSavegameDelete:
         title: Подтвердите удаление.
         text: >-
-            Вы серъезно хотите удалить игру?
+            Вы действительно хотите удалить игру?
 
     savegameDeletionError:
         title: Ошибка удаления
         text: >-
-            Failed to delete the savegame:
+            Не удалось удалить сохранение игры:
 
     restartRequired:
         title: Необходим перезапуск
         text: >-
-            Необходим перезапуск игры, чтобы изменения вошли в силу.
+            Вам необходимо перезапустить игру, чтобы применить настройки.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Изменение управления
+        desc: Нажмите клавишу или кнопку мыши, которую хотите назначить, или нажмите «Esc» для отмены.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Сброс управления
+        desc: Это сбросит все настройки управления к их значениям по умолчанию. Пожалуйста подтвердите.
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Сброс управления
+        desc: Настройки управления сброшены до соответствующих значений по умолчанию!
 
     featureRestriction:
         title: Демо версия
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        desc: Вы попытались получить доступ к функции (<feature>), которая недоступна в демоверсии. Вы можете приобрести полную версию чтобы пользоваться всеми функциями!
 
     saveNotPossibleInDemo:
-        desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
+        desc: Ваша игра была сохранена, но восстановить ее можно только в полной версии. Вы можете приобрести полную версию чтобы пользоваться всеми функциями!
 
     leaveNotPossibleInDemo:
-        title: Демо версия
-        desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
+        title: Демоверсия
+        desc: Ваша игра была сохранена, но вы не сможете восстановить ее в демоверсии. Восстановление ваших сохранений игр возможно только в полной версии. Вы уверены?
 
     newUpdate:
-        title: Обновление доступно
-        desc: There is an update for this game available, be sure to download it!
+        title: Доступно обновление
+        desc: Доступно обновление для этой игры, обязательно скачайте его!
 
     oneSavegameLimit:
         title: Лимит сохранений
-        desc: Вы можете иметь только одну сохраненную игру в демо версии. Удалите существующее сохранение или приобретите полную версию!
+        desc: Вы можете иметь только одно сохранение игры в демо-версии. Пожалуйста, удалите существующее или приобретите полную версию!
 
     updateSummary:
         title: Новое обновление!
         desc: >-
-            Here are the changes since you last played:
+            Здесь изменения с тех пор, когда вы в последний раз играли:
 
     hintDescription:
         title: Обучение
