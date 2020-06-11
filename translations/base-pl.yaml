@@ -318,7 +318,7 @@ ingame:
     # Notifications on the lower right
     notifications:
         newUpgrade: Nowe ulepszenie dostępne!
-        gameSaved: Postęp gry zapisany.
+        gameSaved: Postęp gry został zapisany.
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
@@ -403,7 +403,7 @@ shopUpgrades:
         name: Taśmociągi, Dystrybutory & Tunele
         description: Szybkość x<currentMult> → x<newMult>
     miner:
-        name: Wydobywanie
+        name: Wydobycie
         description: Szybkość x<currentMult> → x<newMult>
     processors:
         name: Cięcie, Obrót & Sklejanie
@@ -634,7 +634,7 @@ settings:
         fullscreen:
             title: Pełny Ekran
             description: >-
-                Zachęcamy do gry w pełnym ekranie dla lepszej rozgrywki. Dostępne tylko w wersji zakupionej.
+                Zachęcamy do gry w pełnym ekranie dla lepszej rozgrywki. Dostępne tylko w pełnej wersji gry.
 
         soundsMuted:
             title: Wycisz Dźwięki
@@ -642,7 +642,7 @@ settings:
                 Jeżeli włączone, wycisza wszystkie efekty dźwiękowe.
 
         musicMuted:
-            title: Wycisz Muzyke
+            title: Wycisz Muzykę
             description: >-
                 Jeżeli włączone, wycisza muzykę.
 
@@ -650,6 +650,9 @@ settings:
             title: Motyw Graficzny Gry
             description: >-
                 Wybierz motyw (jasny / ciemny).
+            themes:
+                dark: Ciemny
+                light: Jasny
 
         refreshRate:
             title: Częstość Odświeżania
