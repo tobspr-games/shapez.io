@@ -79,7 +79,11 @@
 
         @include S(grid-column-gap, 10px);
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+
+        &.demo {
+            grid-template-columns: 1fr 1fr;
+        }
 
         .standaloneBanner {
             background: rgb(255, 234, 245);

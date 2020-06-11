@@ -46,7 +46,7 @@
                     color: #fff;
                     text-align: center;
                     font-weight: bold;
-                    @include S(width, 50px);
+                    @include S(min-width, 50px);
                     @include S(padding, 0px, 5px);
 
                     &[data-tier="0"] {

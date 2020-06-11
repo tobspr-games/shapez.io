@@ -20,7 +20,7 @@ export class AboutState extends TextualGameState {
             <br><br>
             If you want to contribute, check out <a href="${THIRDPARTY_URLS.github}" target="_blank">shapez.io on github</a>.
             <br><br>
-            This game wouldn't have been possible without the great discord community arround my games - You should really join the <a href="${THIRDPARTY_URLS.discord}" target="_blank">discord server</a>!
+            This game wouldn't have been possible without the great discord community around my games - You should really join the <a href="${THIRDPARTY_URLS.discord}" target="_blank">discord server</a>!
             <br><br>
             The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome. 
             <br><br>
