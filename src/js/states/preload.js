@@ -68,38 +68,6 @@ export class PreloadState extends GameState {
     startLoading() {
         this.setStatus("Booting")
 
-            .then(() => this.setStatus("Checking for updates"))
-            .then(() => {
-                if (G_IS_STANDALONE) {
-                    return Promise.race([
-                        new Promise(resolve => setTimeout(resolve, 10000)),
-                        fetch(
-                            "https://itch.io/api/1/x/wharf/latest?target=tobspr/shapezio&channel_name=windows",
-                            {
-                                cache: "no-cache",
-                            }
-                        )
-                            .then(res => res.json())
-                            .then(({ latest }) => {
-                                if (latest !== G_BUILD_VERSION) {
-                                    const { ok } = this.dialogs.showInfo(
-                                        T.dialogs.newUpdate.title,
-                                        T.dialogs.newUpdate.desc,
-                                        ["ok:good"]
-                                    );
-
-                                    return new Promise(resolve => {
-                                        ok.add(resolve);
-                                    });
-                                }
-                            })
-                            .catch(err => {
-                                logger.log("Failed to fetch version:", err);
-                            }),
-                    ]);
-                }
-            })
-
             .then(() => this.setStatus("Creating platform wrapper"))
             .then(() => this.app.platformWrapper.initialize())
 

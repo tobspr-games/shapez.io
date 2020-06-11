@@ -175,6 +175,8 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 rotationVariant: 0,
                                 connectedEntities: [contents],
                             };
+                        } else {
+                            break;
                         }
                     }
                 }

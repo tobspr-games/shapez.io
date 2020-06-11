@@ -26,4 +26,28 @@ export const LANGUAGES = {
         code: "pt",
         region: "BR",
     },
+    "cs": {
+        name: "Čeština",
+        data: require("./built-temp/base-cz.json"),
+        code: "cs",
+        region: "",
+    },
+    "es-419": {
+        name: "Español (Latinoamérica)",
+        data: require("./built-temp/base-es.json"),
+        code: "es",
+        region: "419",
+    },
+    "pl": {
+        name: "Polski",
+        data: require("./built-temp/base-pl.json"),
+        code: "pl",
+        region: "",
+    },
+    "ru": {
+        name: "Русский",
+        data: require("./built-temp/base-ru.json"),
+        code: "ru",
+        region: "",
+    },
 };

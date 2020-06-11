@@ -2,6 +2,7 @@ import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { getStringForKeyCode, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
+import { TrackedState } from "../../../core/tracked_state";
 
 export class HUDKeybindingOverlay extends BaseHUDPart {
     initialize() {
@@ -9,6 +10,8 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             this.onSelectedBuildingForPlacementChanged,
             this
         );
+
+        this.trackedMapOverviewActive = new TrackedState(this.applyCssClasses, this);
     }
 
     createElements(parent) {
@@ -35,10 +38,16 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 
                 
                 
-            <div class="binding noPlacementOnly">
+            <div class="binding noPlacementOnly noOverviewOnly">
                 <code class="keybinding rightMouse"></code>
                 <label>${T.ingame.keybindingsOverlay.delete}</label>
             </div>
+                
+            <div class="binding noPlacementOnly overviewOnly">
+                <code class="keybinding rightMouse"></code>
+                <label>${T.ingame.keybindingsOverlay.createMarker}</label>
+            </div>
+
 
             <div class="binding noPlacementOnly">
                 <code class="keybinding builtinKey">${getKeycode(
@@ -65,12 +74,17 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 <label>${T.ingame.keybindingsOverlay.rotateBuilding}</label>
             </div>
 
+            ` +
+                (this.root.app.settings.getAllSettings().alwaysMultiplace
+                    ? ""
+                    : `
             <div class="binding placementOnly">
                 <code class="keybinding builtinKey shift">${getKeycode(
                     KEYMAPPINGS.placementModifiers.placeMultiple
                 )}</code>
                 <label>${T.ingame.keybindingsOverlay.placeMultiple}</label>
-            </div>
+            </div>`) +
+                `
         `
         );
     }
@@ -79,5 +93,11 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
         this.element.classList.toggle("placementActive", !!selectedMetaBuilding);
     }
 
-    update() {}
+    applyCssClasses() {
+        this.element.classList.toggle("mapOverviewActive", this.root.camera.getIsMapOverlayActive());
+    }
+
+    update() {
+        this.trackedMapOverviewActive.set(this.root.camera.getIsMapOverlayActive());
+    }
 }
