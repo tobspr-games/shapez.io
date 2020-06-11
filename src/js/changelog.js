@@ -1,12 +1,12 @@
 export const CHANGELOG = [
-    {
-        version: "1.1.10",
-        date: "unreleased",
-        entries: [
-            "Add and update more translations (Big thank you to all translators!)",
-            "Prevent invalid connection if existing underground tunnel entrance exists (by jaysc)",
-        ],
-    },
+    // {
+    //     version: "1.1.10",
+    //     date: "unreleased",
+    //     entries: [
+    //         "Add and update more translations (Big thank you to all translators!)",
+    //         "Prevent invalid connection if existing underground tunnel entrance exists (by jaysc)",
+    //     ],
+    // },
     {
         version: "1.1.9",
         date: "11.06.2020",
