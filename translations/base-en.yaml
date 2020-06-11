@@ -514,7 +514,7 @@ storyRewards:
 
     reward_tunnel:
         title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
 
     reward_rotater_ccw:
         title: CCW Rotating
