@@ -639,6 +639,9 @@ settings:
             title: Game theme
             description: >-
                 Choose the game theme (light / dark).
+            themes:
+                dark: Dark
+                light: Light
 
         refreshRate:
             title: Simulation Target
