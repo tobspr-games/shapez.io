@@ -13,9 +13,9 @@ steamPage:
 
         shapez.io je hra o stavbě továren pro automatizaci výroby a kombinování tvarů. Poskytněte vyžadované, stále složitější tvary, aby jste postoupili ve hře dále, a odemkněte vylepšení pro zrychlení vaší továrny.
 
-        Protože poptávka postupně roste, musíte svou továrnu rozšiřovat tak, aby vyhověla potřebám - nezapomeňte však na nové zdroje, budete je muset najít na [b]nekonečné mapě[/b]!
+        Protože poptávka postupně roste, musíte svou továrnu rozšiřovat tak, aby vyhověla potřebám - Nové zdroje, najdete na [b]nekonečné mapě[/b]!
 
-        Tvary se brzy stanou nudnými, je tedy třeba také míchat barvy a obarvit své tvary - zkombinujte červenou, zelenou a modrou barvu, abyste vytvořili další odstíny barev, a obarvěte s nimi tvary pro uspokojení poptávky.
+        Jen tvary by byly nuda, proto máme pigmenty kterými musíte dílky obarvit - zkombinujte červené, zelené a modré barvivo pro vytvoření dalších odstínů a obarvěte s nimi tvary pro uspokojení poptávky.
 
         Hra obsahuje 18 úrovní (což by vás mělo zaměstnat na spoustu hodin!), ale nový obsah je neustále přidáván - je toho hodně naplánováno!
 
@@ -25,7 +25,7 @@ steamPage:
         [list]
             [*] Označování pozic na mapě
             [*] Neomezený počet uložených her
-            [*] Tmavý mód
+            [*] Tmavý motiv
             [*] Více nastavení
             [*] Pomůžete mi dále vyvíjet shapez.io ❤️
             [*] Více funkcí v budoucnu!
@@ -33,7 +33,6 @@ steamPage:
 
         [b]Plánované funkce a komunitní návrhy[/b]
 
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
         Tato hra je open source - kdokoli může přispět! Kromě toho [b]hodně[/b] poslouchám komunitu! Snažím se přečíst si všechny návrhy a vzít v úvahu zpětnou vazbu.
 
         [list]
@@ -101,14 +100,14 @@ demoBanners:
 mainMenu:
     play: Hrát
     changelog: Změny
-    importSavegame: Import
+    importSavegame: Importovat
     openSourceHint: Tato hra je open source!
     discordLink: Oficiální Discord Server
     helpTranslate: Pomozte přeložit hru!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Omlouvám se, ale hra často běží ve vašem prohlížeči pomalu! Pořiďte si plnou verzi nebo si stáhněte Chrome pro plnohodnotný zážitek.
+        Hrajete v nepodporovaném prohlížeči, je možné že hra poběží pomalu! Pořiďte si samostatnou verzi nebo vyzkoušejte prohlížeč Chrome pro plnohodnotný zážitek.
 
     savegameLevel: Úroveň <x>
     savegameLevelUnknown: Neznámá úroveň
@@ -158,7 +157,7 @@ dialogs:
     importSavegameSuccess:
         title: Uložená hra importována
         text: >-
-            Vaše uložená hra byla importována úspěšně.
+            Vaše uložená hra byla úspěšně importována.
 
     gameLoadFailure:
         title: Uložená hra je poškozená
@@ -176,7 +175,7 @@ dialogs:
             Nepovedlo se smazat vaši uloženou hru:
 
     restartRequired:
-        title: Restart vyžadován
+        title: Vyžadován restart
         text: >-
             Pro aplikování nastavení musíte restartovat hru.
 
@@ -186,7 +185,7 @@ dialogs:
 
     resetKeybindingsConfirmation:
         title: Reset klávesových zkratek
-        desc: Vaše klávesové zkratky budou resetovány. Prosím potvrďte.
+        desc: Opravdu chcete vrátit klávesové zkratky zpět do původního nastavení?
 
     keybindingsResetOk:
         title: Reset klávesových zkratek
@@ -218,7 +217,7 @@ dialogs:
             Kdykoli budete potřebovat pomoc nebo se zaseknete, zmáčkněte tlačítko „Zobrazit nápovědu“ v levém dolním rohu a já vám pomohu jak budu moct!
 
     upgradesIntroduction:
-        title: Odemčít vylepšení
+        title: Odemknout vylepšení
         desc: >-
             Všechny tvary, které vytvoříte, lze použít k odemčení vylepšení - <strong>Neničte své staré továrny!</strong>
             Karta vylepšení se nachází v pravém horním rohu obrazovky.
@@ -226,7 +225,7 @@ dialogs:
     massDeleteConfirm:
         title: Potvrdit smazání
         desc: >-
-            Odstraňujete spoustu budov (přesněji <count>)! Opravdu to chcete udělat?
+            Odstraňujete spoustu budov (přesněji <count>)! Opravdu je chcete smazat?
 
     blueprintsNotUnlocked:
         title: Zatím neodemčeno
@@ -400,7 +399,7 @@ buildings:
     belt:
         default:
             name: &belt Dopravníkový pás
-            description: Přepravuje tvary a barvy, přidržením a přetažením můžete umístit více pásů za sebe.
+            description: Přepravuje tvary a barvy, přidržením můžete umístit více pásů za sebe tahem.
 
     miner: # Internal name for the Extractor
         default:
@@ -409,7 +408,7 @@ buildings:
 
         chainable:
             name: Extraktor (Navazující)
-            description: Umístěte na náleziště tvaru nebo barvy pro zahájení těžby. Můžete je zapojovat za sebe.
+            description: Umístěte na náleziště tvaru nebo barvy pro zahájení těžby. Lze zapojit po skupinách.
 
     underground_belt: # Internal name for the Tunnel
         default:
@@ -426,20 +425,20 @@ buildings:
             description: Multifunkční - Rozděluje vstupy do výstupů.
 
         compact:
-            name: Spojovač (kompaktní)
+            name: Spojka (levá)
             description: Spojí dva pásy do jednoho.
 
         compact-inverse:
-            name: Spojovač (kompaktní)
+            name: Spojka (pravá)
             description: Spojí dva pásy do jednoho.
 
     cutter:
         default:
-            name: &cutter Řezač
+            name: &cutter Pila
             description: Rozřízne tvar svisle na dvě části. <strong>Pokud použijete jen jednu půlku, nezapomeňte druhou smazat, jinak se vám produkce zasekne!</strong>
         quad:
-            name: Řezač (čtyřnásobný)
-            description: Rozřízne tvar na čtyři části. <strong>Pokud použijete jen některé části, nezapomeňte ostatní smazat, jinak se vám produkce zasekne!</strong>
+            name: Rozebírač
+            description: Rozebere tvar na čtyři části. <strong>Pokud použijete jen některé části, nezapomeňte ostatní smazat, jinak se vám produkce zasekne!</strong>
 
     rotater:
         default:
@@ -451,7 +450,7 @@ buildings:
 
     stacker:
         default:
-            name: &stacker Slepovač
+            name: &stacker Kombinátor
             description: Spojí tvary dohromady. Pokud nemohou být spojeny, pravý tvar je položen na levý.
 
     mixer:
@@ -468,7 +467,7 @@ buildings:
             description: Obarví tvary z levých vstupů barvou z horního vstupu.
         quad:
             name: Barvič (čtyřnásobný)
-            description: Allows to color each quadrant of the shape with a different color.
+            description: Umožňuje obarvit každý dílek tvaru samostatně.
 
     trash:
         default:
@@ -483,7 +482,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Řezání tvarů
-        desc: Právě jste odemknuli <strong>řezač</strong> - řeže tvary <strong>svisle</strong> bez ohledu na svou orientaci!<br><br>Nezapomeňte se zbavovat odpadu, jinak <strong>se vám zasekne produkce</strong> - pro tento účel jsem vám odemknul koš, který můžete použít na mazání odpadu!
+        desc: Právě jste odemknuli <strong>pilu</strong> - řeže tvary <strong>svisle</strong> bez ohledu na svou orientaci!<br><br>Nezapomeňte se zbavovat odpadu, jinak <strong>se vám zasekne produkce</strong> - pro tento účel jsem vám odemknul koš, který můžete použít na mazání odpadu!
 
     reward_rotater:
         title: Otáčení
@@ -499,11 +498,11 @@ storyRewards:
         desc: <strong>Mixér</strong> byl právě odemčen - zkombinuje dvě barvy pomocí <strong>aditivního míchání</strong>!
 
     reward_stacker:
-        title: Slepovač
-        desc: Nyní můžete spojovat tvary pomocí <strong>slepovač</strong>! Pokud to jde, oba tvary se <strong>slepí</strong> k sobě. Pokud ne, tvar vpravo se <strong>nalepí na</strong> tvar vlevo!
+        title: Kombinátor
+        desc: Nyní můžete spojovat tvary pomocí <strong>kombinátor</strong>! Pokud to jde, oba tvary se <strong>slepí</strong> k sobě. Pokud ne, tvar vpravo se <strong>nalepí na</strong> tvar vlevo!
 
     reward_splitter:
-        title: Rozřazování/Spojování
+        title: Rozřazování/Spojování pásu
         desc: Multifuknční <strong>balancer</strong> byl právě odemčen - Může být použít pro stavbu větších továren díky tomu, že <strong>rozřazuje</strong> tvary mezi dva pásy!<br><br>
 
     reward_tunnel:
@@ -523,13 +522,13 @@ storyRewards:
         desc: Odemknuli jste <strong>tunel II. úrovně</strong> - Má <strong>delší dosah</strong> a také můžete nyní míchat tunely dohromady!
 
     reward_splitter_compact:
-        title: Kompaktní spojovač
+        title: Kompaktní spojka
         desc: >-
             Odemknuli jste variantu <strong>balanceru</strong> - Spojuje dva pásy do jednoho!
 
     reward_cutter_quad:
         title: Řezání na čtvrtiny
-        desc: Odemknuli jste variantu <strong>řezače</strong> - Umožňuje vám řezat tvary <strong> na čtvrtiny</strong> místo na poloviny!
+        desc: Odemknuli jste variantu <strong>pily</strong> - Rozebírač vám umožňuje rozdělit tvary <strong> na čtvrtiny</strong> místo na poloviny!
 
     reward_painter_double:
         title: Dvojité barvení
@@ -545,17 +544,17 @@ storyRewards:
 
     reward_freeplay:
         title: Volná hra
-        desc: Dokázali jste to! Odemknuli jste <strong>volnou hru</strong>! Další tvary jsou již náhodně generované! (No worries, more content is planned for the standalone!)
+        desc: Dokázali jste to! Odemknuli jste <strong>volnou hru</strong>! Další tvary jsou již náhodně generované! (pro plnou verzi plánujeme více obsahu!)
 
     reward_blueprints:
         title: Plány
-        desc: Nyní můžete <strong>kopírovat a vkládat</strong> části továrny! Vyberte oblast (Držte CTRL a táhněte myší) a zmáčkněte 'C' pro zkopírování.<br><br>Vkládání <strong>není zadarmo</strong>, potřebujete produkovat <strong>tvary pro plány</strong>, abyste si to mohli dovolit! (Jsou to ty které jste právě dodali).
+        desc: Nyní můžete <strong>kopírovat a vkládat</strong> části továrny! Vyberte oblast (Držte CTRL a táhněte myší) a zmáčkněte 'C' pro zkopírování.<br><br>Vkládání <strong>není zadarmo</strong>, potřebujete produkovat <strong>tvary pro plány</strong> na výstavbu! (Jsou to ty které jste právě dodali).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: Další úroveň
         desc: >-
-            Tato úroveň vám nic neodemčela, ale další už odemče! <br><br> PS: Radši neničte vaše stávající továrny - budete potřebovat <strong>všechny</strong> produkované tvary později na <strong>odemčení vylepšení</strong>!
+            Tato úroveň vám nic neodemknula, ale s další to přijde! <br><br> PS: Radši neničte vaše stávající továrny - budete potřebovat <strong>všechny</strong> produkované tvary později na <strong>odemčení vylepšení</strong>!
 
     no_reward_freeplay:
         title: Další úroveň
@@ -605,7 +604,7 @@ settings:
         fullscreen:
             title: Celá obrazovka
             description: >-
-                Je doporučeno hrát na celou obrazovku pro nejlepší zážitek. Dostupné pouze v plné verzi.
+                Doporučujeme hrát v režimu celé obrazovky pro nejlepší zážitek. Dostupné pouze v plné verzi.
 
         soundsMuted:
             title: Ztlumit zvuky
@@ -618,9 +617,9 @@ settings:
                 Ztlumí veškerou hudbu.
 
         theme:
-            title: Zobrazení
+            title: Motiv
             description: >-
-                Vybere zobrazení (světlé / tmavé).
+                Vybere motiv (světlý / tmavý).
 
         refreshRate:
             title: Cíl simulace
