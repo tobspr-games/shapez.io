@@ -264,6 +264,11 @@
             @include S(margin-top, 15px);
         }
 
+        .newGameButton {
+            @include S(margin-top, 15px);
+            @include S(margin-left, 15px);
+        }
+
         .savegames {
             @include S(max-height, 105px);
             overflow-y: auto;
