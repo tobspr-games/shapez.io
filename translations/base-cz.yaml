@@ -240,11 +240,6 @@ dialogs:
     keybindingsIntroduction:
         title: Užitečné klávesové zkratky
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
             Hra má spoustu klávesových zkratek, které usnadňují stavbu velkých továren.
             Zde jsou některé, ale nezapomeňte se podívat i na <strong>ostatní klávesové zkratky</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Táhnout: Vyberte oblast pro zkopírování / smazání.<br>
@@ -256,7 +251,7 @@ dialogs:
         desc: Dejte jí smysluplné jméno
 
     markerDemoLimit:
-        desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značkek!
+        desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
