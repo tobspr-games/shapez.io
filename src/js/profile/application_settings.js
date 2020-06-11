@@ -134,7 +134,7 @@ export const allApplicationSettings = [
     new EnumSetting("theme", {
         options: Object.keys(THEMES),
         valueGetter: theme => theme,
-        textGetter: theme => theme.substr(0, 1).toUpperCase() + theme.substr(1),
+        textGetter: theme => T.settings.labels.theme.themes[theme],
         category: categoryGame,
         restartRequired: false,
         changeCb:

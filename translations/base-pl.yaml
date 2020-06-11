@@ -650,6 +650,9 @@ settings:
             title: Motyw Graficzny Gry
             description: >-
                 Wybierz motyw (jasny / ciemny).
+            themes:
+                dark: Ciemny
+                light: Jasny
 
         refreshRate:
             title: Częstość Odświeżania
