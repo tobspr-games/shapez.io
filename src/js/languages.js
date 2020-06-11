@@ -8,12 +8,12 @@ export const LANGUAGES = {
         code: "en",
         region: "",
     },
-    "de": {
-        name: "Deutsch",
-        data: require("./built-temp/base-de.json"),
-        code: "de",
-        region: "",
-    },
+    // "de": {
+    //     name: "Deutsch",
+    //     data: require("./built-temp/base-de.json"),
+    //     code: "de",
+    //     region: "",
+    // },
     "fr": {
         name: "Français",
         data: require("./built-temp/base-fr.json"),
