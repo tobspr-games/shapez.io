@@ -120,13 +120,13 @@ mainMenu:
     play: Играть
     changelog: Список изменений
     importSavegame: Импортировать сохраненную игру
-    openSourceHint: This game is open source!
+    openSourceHint: У этой игры открытый исходный код!
     discordLink: Оффициальный Дискорд Сервер
     helpTranslate: Помоги с переводом!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Извините, но игра будет тормозить на вашем браузере! Приобретите полную версию или скачайте хром
 
     savegameLevel: Уровень <x>
     savegameLevelUnknown: Неизвестный уровень
@@ -160,12 +160,12 @@ dialogs:
         delete: Удалить
         cancel: Закрыть
         later: Позже
-        restart: Restart
+        restart: Перезапуск
         reset: Reset
-        getStandalone: Get Standalone
+        getStandalone: Приобрести полную версию
         deleteGame: Я знаю, что я делаю
         viewUpdate: View Update
-        showUpgrades: Show Upgrades
+        showUpgrades: Показать улучшения
         showKeybindings: Show Keybindings
 
     importSavegameError:
@@ -189,14 +189,14 @@ dialogs:
             Вы серъезно хотите удалить игру?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Ошибка удаления
         text: >-
             Failed to delete the savegame:
 
     restartRequired:
-        title: Restart required
+        title: Необходим перезапуск
         text: >-
-            You need to restart the game to apply the settings.
+            Необходим перезапуск игры, чтобы изменения вошли в силу.
 
     editKeybinding:
         title: Change Keybinding
@@ -218,7 +218,7 @@ dialogs:
         desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
 
     leaveNotPossibleInDemo:
-        title: Demo version
+        title: Демо версия
         desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
 
     newUpdate:
@@ -227,7 +227,7 @@ dialogs:
 
     oneSavegameLimit:
         title: Лимит сохранений
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        desc: Вы можете иметь только одну сохраненную игру в демо версии. Удалите существующее сохранение или приобретите полную версию!
 
     updateSummary:
         title: Новое обновление!
@@ -242,18 +242,18 @@ dialogs:
     upgradesIntroduction:
         title: Открыть улучшения
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            Все фигуры, которые вы производите, могут быть использованны для открытия улучшений - <strong>Не уничтожайте ваши старые производства!<storng>
+            Меню улучшений находится в правом верхнем углу.
 
     massDeleteConfirm:
         title: Подтвердить удаление
         desc: >-
-            Вы удаляете много построек (<count> to be exact)! Вы действительно хотите сделать это?
+            Вы удаляете много построек (<count>)! Вы действительно хотите сделать это?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Еще не открыто
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            Чертежи еще не открыты! Завершите больше уровней, что-бы открыть их.
 
     keybindingsIntroduction:
         title: Useful keybindings
@@ -266,10 +266,10 @@ dialogs:
 
     createMarker:
         title: Новый маркер
-        desc: Give it a meaningful name
+        desc: Напишите содержательное имя.
 
     markerDemoLimit:
-        desc:   You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: Вы можете создать только 2 своих маркера в демо версии. Приобретите полную версию для безлимитных маркеров. 
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -283,7 +283,7 @@ ingame:
         reverseOrientation: Reverse orientation
         disableAutoOrientation: Disable auto orientation
         toggleHud: Toggle HUD
-        placeBuilding: Place building
+        placeBuilding: Разместить постройку
         createMarker: Создать маркер
         delete: Уничтожить
 
@@ -302,8 +302,8 @@ ingame:
             speed: Скорость
             range: Расстояние
             storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            oneItemPerSecond: 1 предмет / сек
+            itemsPerSecond: <x> предметов / сек
             itemsPerSecondDouble: (x2)
 
             tiles: <x> tiles
@@ -312,7 +312,7 @@ ingame:
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Уровень <level>
-        completed: Completed
+        completed: Завершено
         unlockText: Открыто <reward>!
         buttonNextLevel: Следующий уровень
 
@@ -337,7 +337,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: МАКСИМАЛЬНЫЙ УРОВЕНЬ (Speed x<currentMult>)
+        maximumLevel: МАКСИМАЛЬНЫЙ УРОВЕНЬ (Скорость x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -348,14 +348,14 @@ ingame:
                 description: Displaying amount of stored shapes in your central building.
             produced:
                 title: Производится
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                description: Показывает производящиеся фигуры, включая промежуточное производство.
             delivered:
                 title: Доставлено
                 description: Displaying shapes which are delivered to your central building.
         noShapesProduced: No shapes have been produced so far.
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / м
+        shapesPerMinute: <shapes> / мин
 
     # Settings menu, when you press "ESC"
     settingsMenu:
@@ -383,8 +383,8 @@ ingame:
     waypoints:
         waypoints: Маркеры
         hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        description: ЛКМ по маркеру, чтобы переместится к нему, ПКМ что-бы удалить. <br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        creationSuccessNotification: Маркер был создан.
 
     # Interactive tutorial
     interactiveTutorial:
@@ -417,7 +417,7 @@ buildings:
     belt:
         default:
             name: &belt Конвейер
-            description: Transports items, hold and drag to place multiple.
+            description: Транспортриует передметы, hold and drag to place multiple.
 
     miner: # Internal name for the Extractor
         default:
@@ -520,12 +520,12 @@ storyRewards:
         desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: Разделитель/соеденитель
+        desc: Был открыт многофункциональный <strong>balancer</strong>.It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
 
     reward_tunnel:
         title: Туннель
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        desc: Был открыт <strong>Туннель</strong>. You can now pipe items through belts and buildings with it!
 
     reward_rotater_ccw:
         title: CCW Rotating
@@ -570,17 +570,17 @@ storyRewards:
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Следующий уровень
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
 
     no_reward_freeplay:
-        title: Next level
+        title: Следующий уровень
         desc: >-
             Congratulations! By the way, more content is planned for the standalone!
 
 settings:
-    title: Settings
+    title: Настройки
     categories:
         game: Game
         app: Application
@@ -595,13 +595,13 @@ settings:
         uiScale:
             title: Размер интерфейса
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                Выберите размер пользовательского интерфейса. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Очень маленький
+                small: Маленький
+                regular: Средний
+                large: Большой
+                huge: Огромный
 
         scrollWheelSensitivity:
             title: Zoom sensitivity
@@ -617,22 +617,22 @@ settings:
         language:
             title: Язык
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Выберите язык. Все переводы сделаны пользователями и могут быть незакончены!
 
         fullscreen:
             title: Полный экран
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
-
+                Для лучшей игры рекомендуется играть в полноэкранном режиме. Доступно только в полной версии.
+               
         soundsMuted:
-            title: Mute Sounds
+            title: Выключить звуки
             description: >-
-                If enabled, mutes all sound effects.
+                Если включено, выключает все звуковые эффекты
 
         musicMuted:
-            title: Mute Music
+            title: Выключить музыку
             description: >-
-                If enabled, mutes all music.
+                Если включено, выключает музыку
 
         theme:
             title: Тема игры
@@ -655,11 +655,11 @@ settings:
                 Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
 
 keybindings:
-    title: Keybindings
+    title: Настройки управления
     hint: >-
         Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: Настройки по умолчанию
 
     categoryLabels:
         general: Application
@@ -671,8 +671,8 @@ keybindings:
         placementModifiers: Placement Modifiers
 
     mappings:
-        confirm: Confirm
-        back: Back
+        confirm: Подтвердить
+        back: Назад
         mapMoveUp: Move Up
         mapMoveRight: Move Right
         mapMoveDown: Move Down
@@ -687,7 +687,7 @@ keybindings:
         menuOpenStats: Statistics
 
         toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
+        toggleFPSInfo: Включить/выключить FPS и информацию отладки
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
