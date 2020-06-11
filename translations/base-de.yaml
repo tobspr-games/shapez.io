@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io ist ein Spiel über den Bau von Fabriken um die Erstellung und Kombination immer komplexerer Formen zu automatisieren.
+    shortText: shapez.io ist ein Spiel über den Bau von Fabriken, um die Erstellung und Kombination immer komplexerer Formen zu automatisieren.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
