@@ -318,7 +318,7 @@ ingame:
     # Notifications on the lower right
     notifications:
         newUpgrade: Nowe ulepszenie dostępne!
-        gameSaved: Postęp gry zapisany.
+        gameSaved: Postęp gry został zapisany.
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
@@ -330,7 +330,7 @@ ingame:
         title: Ulepszenia
         buttonUnlock: Ulepsz
 
-        # Gets replaced to e.g. "Tier IX" 
+        # Gets replaced to e.g. "Tier IX"
         # Translator note: translated into "rank"
         # 2nd translator's note: I think translating this to "level" is better (and that's how Google Translate translates it :))
         tier: Poziom <x>
@@ -355,7 +355,7 @@ ingame:
                 description: Wyświetla kształty dostarczone do budynku głównego.
         noShapesProduced: Brak wyprodukowanych kształtów.
 
-        # Displays the shapes per minute, e.g. '523 / m' 
+        # Displays the shapes per minute, e.g. '523 / m'
         # Translator note: user "min" to distinguish from "meters"
         shapesPerMinute: <shapes> / min
 
@@ -403,7 +403,7 @@ shopUpgrades:
         name: Taśmociągi, Dystrybutory & Tunele
         description: Szybkość x<currentMult> → x<newMult>
     miner:
-        name: Wydobywanie
+        name: Wydobycie
         description: Szybkość x<currentMult> → x<newMult>
     processors:
         name: Cięcie, Obrót & Sklejanie
@@ -508,13 +508,15 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Przecinanie Kształtów
-        desc: Odblokowano nową maszynę: <strong>przecinak</strong> - tnie kształt na pół <strong>pionowo - od góry do dołu</strong>, niezależnie od orientacji!<br><br>Upewnij się że zniszczysz nichciane kawałki, ponieważ <strong>może się zatkać</strong> - Na potrzeby tego otrzymujesz też kosz - niszczy wszystko co do niego przekierujesz!
+        desc: >-
+            Odblokowano nową maszynę: <strong>przecinak</strong> - tnie kształt na pół <strong>pionowo - od góry do dołu</strong>, niezależnie od orientacji!<br><br>Upewnij się że zniszczysz nichciane kawałki, ponieważ <strong>może się zatkać</strong> - Na potrzeby tego otrzymujesz też kosz - niszczy wszystko co do niego przekierujesz!
 
     reward_rotater:
         title: Obracanie
-        desc: Odblokowano nową maszynę: <strong>Obracacz</strong>! Obraca wejście o 90 stopni zgodnie z wskazówkami zegara.
-    
-    #2nd translator's note: "Color objects" should be translated as "dye" 
+        desc: >-
+            Odblokowano nową maszynę: <strong>Obracacz</strong>! Obraca wejście o 90 stopni zgodnie z wskazówkami zegara.
+
+    #2nd translator's note: "Color objects" should be translated as "dye"
     reward_painter:
         title: Malowanie
         desc: >-
@@ -522,11 +524,13 @@ storyRewards:
 
     reward_mixer:
         title: Mieszanie
-        desc: Odblokowano nową maszynę: <strong>Mieszadło Kolorów</strong> - Złącz dwa kolory z pomocą <strong>modelu addytywnego</strong> dzięki tej maszynie!
+        desc: >-
+            Odblokowano nową maszynę: <strong>Mieszadło Kolorów</strong> - Złącz dwa kolory z pomocą <strong>modelu addytywnego</strong> dzięki tej maszynie!
 
     reward_stacker:
         title: Sklejanie
-        desc: Odblokowano nową maszynę: <strong>Sklejacz</strong> - łączy dwa kształty w jeden! Jeżeli obiekty mogą zostać sklejone, są łączone w <strong>jeden kształt</strong>. Jeśli nie mogą zostać sklejone, kształt po prawej jest <strong>kładziony na</strong> ten z lewej!
+        desc: >-
+            Odblokowano nową maszynę: <strong>Sklejacz</strong> - łączy dwa kształty w jeden! Jeżeli obiekty mogą zostać sklejone, są łączone w <strong>jeden kształt</strong>. Jeśli nie mogą zostać sklejone, kształt po prawej jest <strong>kładziony na</strong> ten z lewej!
 
     reward_splitter:
         title: Rozdzielacz/Łącznik
@@ -630,7 +634,7 @@ settings:
         fullscreen:
             title: Pełny Ekran
             description: >-
-                Zachęcamy do gry w pełnym ekranie dla lepszej rozgrywki. Dostępne tylko w wersji zakupionej.
+                Zachęcamy do gry w pełnym ekranie dla lepszej rozgrywki. Dostępne tylko w pełnej wersji gry.
 
         soundsMuted:
             title: Wycisz Dźwięki
@@ -638,7 +642,7 @@ settings:
                 Jeżeli włączone, wycisza wszystkie efekty dźwiękowe.
 
         musicMuted:
-            title: Wycisz Muzyke
+            title: Wycisz Muzykę
             description: >-
                 Jeżeli włączone, wycisza muzykę.
 
