@@ -74,24 +74,39 @@
 
         &.goal,
         &.blueprint {
-            .amountLabel {
-                &::after {
-                    content: " ";
-                    position: absolute;
-                    display: inline-block;
-                    @include S(width, 8px);
-                    @include S(height, 8px);
-                    @include S(top, 4px);
-                    @include S(left, -7px);
-                    background: uiResource("icons/current_goal_marker.png") center center / contain no-repeat;
+            .amountLabel::after {
+                content: " ";
+                position: absolute;
+                display: inline-block;
+                @include S(width, 8px);
+                @include S(height, 8px);
+                @include S(top, 4px);
+                @include S(left, -7px);
+                background: center center / contain no-repeat;
+            }
 
-                    @include DarkThemeInvert;
+            &.goal .amountLabel {
+                &::after {
+                    background-image: uiResource("icons/current_goal_marker.png");
+                    background-size: 90%;
+                }
+                @include DarkThemeOverride {
+                    &::after {
+                        background-image: uiResource("icons/current_goal_marker_inverted.png") !important;
+                    }
                 }
             }
 
-            &.blueprint .amountLabel::after {
-                background-image: uiResource("icons/blueprint_marker.png");
-                background-size: 90%;
+            &.blueprint .amountLabel {
+                &::after {
+                    background-image: uiResource("icons/blueprint_marker.png");
+                    background-size: 90%;
+                }
+                @include DarkThemeOverride {
+                    &::after {
+                        background-image: uiResource("icons/blueprint_marker_inverted.png") !important;
+                    }
+                }
             }
         }
     }

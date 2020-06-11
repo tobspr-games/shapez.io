@@ -46,7 +46,7 @@
                     color: #fff;
                     text-align: center;
                     font-weight: bold;
-                    @include S(width, 50px);
+                    @include S(min-width, 50px);
                     @include S(padding, 0px, 5px);
 
                     &[data-tier="0"] {
@@ -88,7 +88,7 @@
             }
 
             .description {
-                grid-column: 3 / 4;
+                grid-column: 2 / 4;
                 grid-row: 1 / 2;
                 @include PlainText;
                 color: #aaa;
@@ -127,20 +127,31 @@
 
                         @include DarkThemeInvert;
 
+                        $disabledOpacity: 0.2;
+                        $enabledOpacity: 0.6;
+
                         &:hover {
-                            opacity: 0.7;
+                            opacity: $enabledOpacity + 0.1;
                         }
 
                         &.alreadyPinned {
-                            opacity: 0.1 !important;
-                            pointer-events: none;
+                            opacity: $disabledOpacity !important;
+
+                            &:hover {
+                                opacity: $disabledOpacity + 0.1 !important;
+                            }
+                        }
+
+                        &.isGoal {
+                            background: uiResource("icons/current_goal_marker.png") center center / 95%
+                                no-repeat;
+                            opacity: $disabledOpacity !important;
                             cursor: default;
+                            pointer-events: none;
                         }
 
                         &.pinned {
-                            opacity: 0.1;
-                            pointer-events: none;
-                            cursor: default;
+                            opacity: $disabledOpacity;
                             @include InlineAnimation(0.3s ease-in-out) {
                                 0% {
                                     opacity: 1;
@@ -155,6 +166,31 @@
                                 100% {
                                     transform: scale(1);
                                 }
+                            }
+                            &:hover {
+                                opacity: $disabledOpacity + 0.1;
+                            }
+                        }
+
+                        &.unpinned {
+                            opacity: $enabledOpacity;
+                            @include InlineAnimation(0.3s ease-in-out) {
+                                0% {
+                                    opacity: 1;
+                                    transform: scale(0.8);
+                                }
+
+                                30% {
+                                    opacity: 1;
+                                    transform: scale(1.2);
+                                }
+
+                                100% {
+                                    transform: scale(1);
+                                }
+                            }
+                            &:hover {
+                                opacity: $enabledOpacity + 0.1;
                             }
                         }
                     }
@@ -253,13 +289,7 @@
                     display: none;
                 }
                 .description {
-                    // grid-column: 2 / 4;
-                    // grid-row: 2 / 3;
-                    align-self: end;
-                    justify-self: center;
                     color: $colorGreenBright;
-                    text-transform: uppercase;
-                    @include S(margin-top, 20px);
                 }
             }
         }

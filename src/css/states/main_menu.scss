@@ -7,25 +7,39 @@
     // background: #aaacb4 center center / cover !important;
     background: #bbc2cf center center / cover !important;
 
-    .settingsButton,
-    .exitAppButton {
+    .topButtons {
         position: absolute;
-        @include S(top, 30px);
-        @include S(right, 30px);
-        @include S(width, 35px);
-        @include S(height, 35px);
-        pointer-events: all;
-        cursor: pointer;
-        background: uiResource("icons/main_menu_settings.png") center center / contain no-repeat;
-        transition: opacity 0.12s ease-in-out;
-        &:hover {
-            opacity: 0.9;
-        }
-    }
+        @include S(top, 20px);
+        @include S(right, 20px);
+        display: grid;
+        grid-auto-flow: column;
+        @include S(grid-gap, 15px);
 
-    .exitAppButton {
-        @include S(right, 100px);
-        background-image: uiResource("icons/main_menu_exit.png");
+        .settingsButton,
+        .exitAppButton,
+        .languageChoose {
+            @include S(width, 25px);
+            @include S(height, 25px);
+            pointer-events: all;
+            cursor: pointer;
+            background: uiResource("icons/main_menu_settings.png") center center / contain no-repeat;
+            transition: opacity 0.12s ease-in-out;
+            @include IncreasedClickArea(2px);
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+
+        .exitAppButton {
+            background-image: uiResource("icons/main_menu_exit.png");
+        }
+
+        .languageChoose {
+            @include S(border-radius, 8px);
+            border: solid #222428;
+            @include S(border-width, 2px);
+            background-size: cover;
+        }
     }
 
     .fullscreenBackgroundVideo {
@@ -65,7 +79,11 @@
 
         @include S(grid-column-gap, 10px);
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+
+        &.demo {
+            grid-template-columns: 1fr 1fr;
+        }
 
         .standaloneBanner {
             background: rgb(255, 234, 245);
@@ -217,7 +235,7 @@
 
         .playButton {
             @include SuperHeading;
-            @include S(width, 130px);
+            @include S(min-width, 130px);
             @include S(padding, 15px, 20px);
             letter-spacing: 0.3em !important;
 

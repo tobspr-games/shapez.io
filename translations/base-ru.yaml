@@ -1,0 +1,731 @@
+#
+#  GAME TRANSLATIONS
+#
+#  Contributing:
+#
+#    If you want to contribute, please make a pull request on this respository
+#    and I will have a look.
+#
+#  Placeholders:
+#
+#    Do *not* replace placeholders! Placeholders have a special syntax like
+#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
+#    translation for this one in German for example would be: `Taste: <key>` (notice
+#    how the placeholder stayed '<key>' and was not replaced!)
+#
+#  Adding a new language:
+#
+#    If you want to add a new language, ask me in the discord and I will setup
+#    the basic structure so the game also detects it.
+#
+
+steamPage:
+    # This is the short text appearing on the steam page
+    shortText: shapez.io это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
+
+    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
+    # NOTICE:
+    # - Do not translate the first line (This is the gif image at the start of the store)
+    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
+    longText: >-
+        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+
+        shapez.io это игра о строительстве фабрик для автоматизации создания и объединения фигур. Доставляйте запрошенные, все более сложные фигуры, чтобы развиваться в игре и разблокировать улучшения, чтобы ускорить работу вашей фабрики.
+
+        Поскольку спрос растет, вам придется увеличивать свою фабрику, чтобы соответствовать потребностям. Однако, не забывайте о ресурсах, несмотря на то что вы будете расширятся на [b]бесконечной карте[/b]!
+
+        Поскольку фигуры вскоре могут наскучить, вам потребуется смешивать цвета и рискрашивать свои фигуры ими. Комбинируйте красный, зеленый и синий цветовые ресурсы для получения разных цветов и красте ими фигуры, чтобы удовлетворить спрос.
+
+        Эта игра имеет 18 уровней (но и они займут вас на часы!), но я постоянно добавляю новый контент - там много чего запланировано!
+
+
+        [b]Преимущества полной версии[/b]
+
+        [list]
+            [*] Метки
+            [*] Неограниченное количество сохранений
+            [*] Темный режим
+            [*] Больше настроек
+            [*] Позволит мне быстрее разрабатывать shapez.io ❤️
+            [*] Больше возможностей в будущем!
+        [/list]
+
+        [b]Планируемые функции & Предложения сообщества[/b]
+
+        Это игра с открытым исходным кодом - Любой может внести свой вклад! Кроме того, я во [b]многом[/b] прислушиваюсь к сообществу! Я стараюсь прочитать все предложения и учту как можно больше отзывов.
+
+        [list]
+            [*] Режим истории, где здания стоят фигур
+            [*] Больше уровней & зданий (эксклюзивно для полной версии)
+            [*] Различные карты и, возможно, карта препятствий
+            [*] Настраиваемое создание карт (редактирование количества и размера участков, семя и т. д.)
+            [*] Больше видов фигур
+            [*] Больше улучшений производительности (хотя игра уже работает довольно хорошо!)
+            [*] Режим дальтоника
+            [*] И многое другое!
+        [/list]
+
+        Не забудьте проверить мою доску trello со всеми планами! https://trello.com/b/ISQncpJP/shapezio
+
+global:
+    loading: Загрузка
+    error: Ошибка
+
+    # How big numbers are rendered, e.g. "10,000"
+    thousandsDivider: ","
+
+    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
+    suffix:
+        thousands: тыс.
+        millions: млн
+        billions: млрд
+        trillions: трлн
+
+    # Shown for infinitely big numbers
+    infinite: inf
+
+    time:
+        # Used for formatting past time dates
+        oneSecondAgo: одну секунду назад
+        xSecondsAgo: <x> секунд(ы) назад
+        oneMinuteAgo: одну минуту назад
+        xMinutesAgo: <x> минут(ы) назад
+        oneHourAgo: один час назад
+        xHoursAgo: <x> часов(а) назад
+        oneDayAgo: один день назад
+        xDaysAgo: <x> дней(я) назад
+
+        # Short formats for times, e.g. '5h 23m'
+        secondsShort: <seconds>с
+        minutesAndSecondsShort: <minutes>м <seconds>с
+        hoursAndMinutesShort: <hours>м <minutes>с
+
+        xMinutes: <x> minutes
+
+    keys:
+        tab: TAB
+        control: CTRL
+        alt: ALT
+        escape: ESC
+        shift: SHIFT
+        space: ПРОБЕЛ
+
+demoBanners:
+    # This is the "advertisement" shown in the main menu and other various places
+    title: Демо версия
+    intro: >-
+        Приобретите полную версию чтобы разблокировать все возможности!
+
+mainMenu:
+    play: Играть
+    changelog: Список изменений
+    importSavegame: Импортировать сохраненную игру
+    openSourceHint: Это игра с открытым исходным кодом!
+    discordLink: Оффициальный Дискорд Сервер
+    helpTranslate: Помоги с переводом!
+
+    # This is shown when using firefox and other browsers which are not supported.
+    browserWarning: >-
+        Извините, но игра работает медленно в вашем браузере! Приобретите полную версию или загрузите Chrome чтобы ознакомится с игрой в полной мере.
+
+    savegameLevel: Уровень <x>
+    savegameLevelUnknown: Неизвестный уровень
+
+    contests:
+        contest_01_03062020:
+            title: "Contest #01"
+            desc: Win <strong>$25</strong> for the coolest base!
+            longDesc: >-
+                To give something back to you, I thought it would be cool to make weekly contests!
+                <br><br>
+                <strong>This weeks topic:</strong> Build the coolest base!
+                <br><br>
+                Here's the deal:<br>
+                <ul class="bucketList">
+                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
+                    <li>Bonus points if you share it on social media!</li>
+                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
+                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
+                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
+                </ul>
+                <br>
+                I'm looking forward to seeing your awesome creations!
+
+        showInfo: View
+        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+
+dialogs:
+    buttons:
+        ok: OK
+        delete: Удалить
+        cancel: Закрыть
+        later: Позже
+        restart: Перезапустить
+        reset: Сбросить
+        getStandalone: Приобрести полную версию
+        deleteGame: Я знаю, что я делаю
+        viewUpdate: Посмотреть Обновление
+        showUpgrades: Показать Улучшения
+        showKeybindings: Показать Управление
+
+    importSavegameError:
+        title: Ошибка импортирования
+        text: >-
+            Не удалось импортировать ваше сохранение игры:
+
+    importSavegameSuccess:
+        title: Сохраненная игра импортированна
+        text: >-
+            Ваша сохраненная игра успешно импортированна.
+            
+    gameLoadFailure:
+        title: Ошибка загрузки
+        text: >-
+            Не удалось загрузить ваше сохранение игры:
+
+    confirmSavegameDelete:
+        title: Подтвердите удаление.
+        text: >-
+            Вы действительно хотите удалить игру?
+
+    savegameDeletionError:
+        title: Ошибка удаления
+        text: >-
+            Не удалось удалить сохранение игры:
+
+    restartRequired:
+        title: Необходим перезапуск
+        text: >-
+            Вам необходимо перезапустить игру, чтобы применить настройки.
+
+    editKeybinding:
+        title: Изменение управления
+        desc: Нажмите клавишу или кнопку мыши, которую хотите назначить, или нажмите «Esc» для отмены.
+
+    resetKeybindingsConfirmation:
+        title: Сброс управления
+        desc: Это сбросит все настройки управления к их значениям по умолчанию. Пожалуйста подтвердите.
+
+    keybindingsResetOk:
+        title: Сброс управления
+        desc: Настройки управления сброшены до соответствующих значений по умолчанию!
+
+    featureRestriction:
+        title: Демо версия
+        desc: Вы попытались получить доступ к функции (<feature>), которая недоступна в демоверсии. Вы можете приобрести полную версию чтобы пользоваться всеми функциями!
+
+    saveNotPossibleInDemo:
+        desc: Ваша игра была сохранена, но восстановить ее можно только в полной версии. Вы можете приобрести полную версию чтобы пользоваться всеми функциями!
+
+    leaveNotPossibleInDemo:
+        title: Демоверсия
+        desc: Ваша игра была сохранена, но вы не сможете восстановить ее в демоверсии. Восстановление ваших сохранений игр возможно только в полной версии. Вы уверены?
+
+    newUpdate:
+        title: Доступно обновление
+        desc: Доступно обновление для этой игры, обязательно скачайте его!
+
+    oneSavegameLimit:
+        title: Лимит сохранений
+        desc: Вы можете иметь только одно сохранение игры в демо-версии. Пожалуйста, удалите существующее или приобретите полную версию!
+
+    updateSummary:
+        title: Новое обновление!
+        desc: >-
+            Здесь изменения с тех пор, когда вы в последний раз играли:
+
+    hintDescription:
+        title: Обучение
+        desc: >-
+            Всякий раз, когда вам нужна помощь или вы застряли, нажмите кнопку «Показать подсказку» в левом нижнем углу, и я сделаю все возможное, чтобы помочь вам!
+
+    upgradesIntroduction:
+        title: Открыть улучшения
+        desc: >-
+            Все фигуры, которые вы производите, могут быть использованны для открытия улучшений - <strong>Не уничтожайте ваши старые производства!<storng>
+            Меню улучшений находится в правом верхнем углу.
+
+    massDeleteConfirm:
+        title: Подтвердить удаление
+        desc: >-
+            Вы удаляете много построек (<count>)! Вы действительно хотите сделать это?
+
+    blueprintsNotUnlocked:
+        title: Еще не открыто
+        desc: >-
+            Чертежи еще не открыты! Завершите больше уровней, что-бы открыть их.
+
+    keybindingsIntroduction:
+        title: Полезные горячие клавиши
+        desc: >-
+            В этой игре много горячих клавиш, которые облегчают строительство больших фабрик.
+            Вот несколько, но обязательно <strong>проверьте настройки управления</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Потащить: Выбор области для копирования / удаления.<br>
+            <code class='keybinding'>SHIFT</code>: Удерживайте, чтобы разместить несколько зданий.<br>
+            <code class='keybinding'>ALT</code>: Инвертировать направление размещаемых конвейерных лент.<br>
+
+    createMarker:
+        title: Новый маркер
+        desc: Напишите содержательное имя.
+
+    markerDemoLimit:
+        desc: Вы можете создать только 2 своих маркера в демо версии. Приобретите полную версию для безлимитных маркеров. 
+
+ingame:
+    # This is shown in the top left corner and displays useful keybindings in
+    # every situation
+    keybindingsOverlay:
+        moveMap: Передвижение
+        selectBuildings: Выбрать область
+        stopPlacement: Прекратить размещение
+        rotateBuilding: Повернуть постройку
+        placeMultiple: Поставить несколько
+        reverseOrientation: Реверсировать направление
+        disableAutoOrientation: Отключить авто-определение направления
+        toggleHud: Переключить HUD
+        placeBuilding: Разместить постройку
+        createMarker: Создать маркер
+        delete: Уничтожить
+
+    # Everything related to placing buildings (I.e. as soon as you selected a building
+    # from the toolbar)
+    buildingPlacement:
+        # Buildings can have different variants which are unlocked at later levels,
+        # and this is the hint shown when there are multiple variants available.
+        cycleBuildingVariants: Нажмите <key> для переключения вариантов.
+
+        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
+        hotkeyLabel: >-
+            Клавиша: <key>
+
+        infoTexts:
+            speed: Скорость
+            range: Расстояние
+            storage: Storage
+            oneItemPerSecond: 1 предмет / сек
+            itemsPerSecond: <x> предметов / сек
+            itemsPerSecondDouble: (x2)
+
+            tiles: <x> клеток
+
+    # The notification when completing a level
+    levelCompleteNotification:
+        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
+        levelTitle: Уровень <level>
+        completed: Завершено
+        unlockText: Открыто <reward>!
+        buttonNextLevel: Следующий уровень
+
+    # Notifications on the lower right
+    notifications:
+        newUpgrade: Новое улучшение доступно!
+        gameSaved: Ваша игра была сохранена.
+
+    # Mass select information, this is when you hold CTRL and then drag with your mouse
+    # to select multiple buildings
+    massSelect:
+        infoText: Нажмите <keyCopy> что-бы копировать, <keyDelete> что-бы удалить или <keyCancel> что-бы отменить.
+
+    # The "Upgrades" window
+    shop:
+        title: Улучшения
+        buttonUnlock: Улучшить
+
+        # Gets replaced to e.g. "Tier IX"
+        tier: Уровень <x>
+
+        # The roman number for each tier
+        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+
+        maximumLevel: МАКСИМАЛЬНЫЙ УРОВЕНЬ (Скорость x<currentMult>)
+
+    # The "Statistics" window
+    statistics:
+        title: Статистика
+        dataSources:
+            stored:
+                title: Хранится
+                description: Показывает количество хранящихся фигур в вашем центральном здании.
+            produced:
+                title: Производится
+                description: Показывает производящиеся фигуры, включая промежуточное производство.
+            delivered:
+                title: Доставлено
+                description: Показывает фигуры, которые доставляются в ваше центральное здание. 
+        noShapesProduced: Фигуры еще не произведены.
+
+        # Displays the shapes per minute, e.g. '523 / m'
+        shapesPerMinute: <shapes> / мин
+
+    # Settings menu, when you press "ESC"
+    settingsMenu:
+        playtime: Игровое время
+
+        buildingsPlaced: Постройки
+        beltsPlaced: Конвейеры
+
+        buttons:
+            continue: Продолжить
+            settings: Настройки
+            menu: Вернутся в меню
+
+    # Bottom left tutorial hints
+    tutorialHints:
+        title: Нужна помощь?
+        showHint: Показать подсказку
+        hideHint: Закрыть
+
+    # When placing a blueprint
+    blueprintPlacer:
+        cost: Стоимость
+
+    # Map markers
+    waypoints:
+        waypoints: Маркеры
+        hub: ХАБ
+        description: ЛКМ по маркеру, чтобы переместится к нему, ПКМ что-бы удалить. <br><br>Нажмите <keybinding> чтобы создать маркер в текущей позиции или <strong>ПКМ</strong> чтобы выбрать другое место для сождания маркера.
+        creationSuccessNotification: Маркер был создан.
+
+    # Interactive tutorial
+    interactiveTutorial:
+        title: Обучение
+        hints:
+            1_1_extractor: Поместите <strong>экстрактор</strong> на <strong>фигуру в форме круга</strong> чтобы добыть ее!
+            1_2_conveyor: >-
+                Соедините экстрактор <strong>конвейерной лентой</strong> с вашим хабом!<br><br>Подсказка: Необходимо выбрать конвейерную ленту и <strong>нажать и перетащить</strong> мышку!
+
+            1_3_expand: >-
+                Это <strong>НЕ</strong> idle-игра! Постройте больше экстракторов и конвейерных лент, чтобы достичь цели быстрее.<br><br>Подсказка: Удерживайте <strong>SHIFT</strong> чтобы разместить несколько экстракторов, а <strong>R</strong> чтобы вращать их.
+
+# All shop upgrades
+shopUpgrades:
+    belt:
+        name: Конвейерные ленты, Распределители & Туннели
+        description: Скорость x<currentMult> → x<newMult>
+    miner:
+        name: Добыча
+        description: Скорость x<currentMult> → x<newMult>
+    processors:
+        name: Нарезка, Вращение & Склейка
+        description: Скорость x<currentMult> → x<newMult>
+    painting:
+        name: Смешивание & Покраска
+        description: Скорость x<currentMult> → x<newMult>
+
+# Buildings and their name / description
+buildings:
+    belt:
+        default:
+            name: &belt Конвейер
+            description: Транспортриует передметы, держите и тащите, чтобы разместить несколько.
+
+    miner: # Internal name for the Extractor
+        default:
+            name: &miner Экстрактор
+            description: Поместите над фигурным или цветовым ресурсом, чтобы добыть его.
+
+        chainable:
+            name: Экстрактор (Цепной)
+            description: Поместите над фигурным или цветовым ресурсом, чтобы добыть его. Может последовательно соединяться.
+
+    underground_belt: # Internal name for the Tunnel
+        default:
+            name: &underground_belt Туннель
+            description: Позволяет перевозить ресурсы под зданиями и конвейерными лентами.
+
+        tier2:
+            name: Туннель II
+            description: Позволяет перевозить ресурсы под зданиями и конвейерными лентами.
+
+    splitter: # Internal name for the Balancer
+        default:
+            name: &splitter Разделитель
+            description: Многофункциональный - равномерно распределяет все входы на все выходы.
+
+        compact:
+            name: Соединитель (компактный)
+            description: Объединяет две конвейерные ленты в одну.
+
+        compact-inverse:
+            name: Соединитель (компактный)
+            description: Объединяет две конвейерные ленты в одну.
+
+    cutter:
+        default:
+            name: &cutter Резчик
+            description: Разрезает фигуры сверху вниз и выводит обе половины. <strong>Если вы используете только одну часть, обязательно уничтожьте другую, иначе производство остановится!</strong>
+        quad:
+            name: Резчик (Четырехпоточный)
+            description: Разрезает фигуры на четыре части. <strong>Если вы используете только одну часть, обязательно уничтожьте другие, иначе производство остановится!</strong>
+
+    rotater:
+        default:
+            name: &rotater Вращатель
+            description: Поворачивает фигуры по часовой стрелке на 90 градусов.
+        ccw:
+            name: Вращатель (обратный)
+            description: Поворачивает фигуры против часовой стрелки на 90 градусов.
+
+    stacker:
+        default:
+            name: &stacker Склеиватель
+            description: Склеивает оба предмета. Если они не могут быть объединены, правый элемент помещается над левым элементом.
+
+    mixer:
+        default:
+            name: &mixer Смешиватель цветов
+            description: Смешивает два цвета с помощью аддитивного смешивания.
+
+    painter:
+        default:
+            name: &painter Покрасчик
+            description: Красит всю фигуру из левого входа краской из верхнего.
+        double:
+            name: Покрасчик (Двойной)
+            description: Красит фигуру из левых входов краской из верхнего.
+        quad:
+            name: Покрасчик (Четырехпоточный)
+            description: Позволяет раскрасить каждую четверть фигуры разными цветами.
+
+    trash:
+        default:
+            name: &trash Мусорка
+            description: Имеет входы со всех сторон. Уничтожает все что принимает, навсегда.
+
+        storage:
+            name: Хранилище
+            description: Хранит лишние предметы, до заданной вместимости. Может использоваться в качестве ворот для пропускания излишков.
+
+storyRewards:
+    # Those are the rewards gained from completing the store
+    reward_cutter_and_trash:
+        title: Cutting Shapes
+        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+
+    reward_rotater:
+        title: Rotating
+        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+
+    reward_painter:
+        title: Painting
+        desc: >-
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, I'm working on a solution already!
+
+    reward_mixer:
+        title: Color Mixing
+        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+
+    reward_stacker:
+        title: Combiner
+        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+
+    reward_splitter:
+        title: Разделитель/соеденитель
+        desc: Был открыт многофункциональный <strong>balancer</strong>.It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+
+    reward_tunnel:
+        title: Туннель
+        desc: Был открыт <strong>Туннель</strong>. You can now pipe items through belts and buildings with it!
+
+    reward_rotater_ccw:
+        title: CCW Rotating
+        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+
+    reward_miner_chainable:
+        title: Chaining Extractor
+        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+
+    reward_underground_belt_tier_2:
+        title: Tunnel Tier II
+        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+
+    reward_splitter_compact:
+        title: Compact Balancer
+        desc: >-
+            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+
+    reward_cutter_quad:
+        title: Quad Cutting
+        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+
+    reward_painter_double:
+        title: Double Painting
+        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+
+    reward_painter_quad:
+        title: Quad Painting
+        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+
+    reward_storage:
+        title: Storage Buffer
+        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+
+    reward_freeplay:
+        title: Свободная игра
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+
+    reward_blueprints:
+        title: Blueprints
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+
+    # Special reward, which is shown when there is no reward actually
+    no_reward:
+        title: Следующий уровень
+        desc: >-
+            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+
+    no_reward_freeplay:
+        title: Следующий уровень
+        desc: >-
+            Congratulations! By the way, more content is planned for the standalone!
+
+settings:
+    title: Настройки
+    categories:
+        game: Game
+        app: Application
+
+    versionBadges:
+        dev: Development
+        staging: Staging
+        prod: Production
+    buildDate: Built <at-date>
+
+    labels:
+        uiScale:
+            title: Размер интерфейса
+            description: >-
+                Выберите размер пользовательского интерфейса. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+            scales:
+                super_small: Очень маленький
+                small: Маленький
+                regular: Средний
+                large: Большой
+                huge: Огромный
+
+        scrollWheelSensitivity:
+            title: Zoom sensitivity
+            description: >-
+                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+            sensitivity:
+                super_slow: Очень медленно
+                slow: Медленно
+                regular: Средне
+                fast: Быстро
+                super_fast: Очень быстро
+
+        language:
+            title: Язык
+            description: >-
+                Выберите язык. Все переводы сделаны пользователями и могут быть незакончены!
+
+        fullscreen:
+            title: Полный экран
+            description: >-
+                Для лучшей игры рекомендуется играть в полноэкранном режиме. Доступно только в полной версии.
+               
+        soundsMuted:
+            title: Выключить звуки
+            description: >-
+                Если включено, выключает все звуковые эффекты
+
+        musicMuted:
+            title: Выключить музыку
+            description: >-
+                Если включено, выключает музыку
+
+        theme:
+            title: Тема игры
+            description: >-
+                Выберите тему игры (светлая / темная).
+
+        refreshRate:
+            title: Simulation Target
+            description: >-
+                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+
+        alwaysMultiplace:
+            title: Multiplace
+            description: >-
+                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+
+        offerHints:
+            title: Hints & Tutorials
+            description: >-
+                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+
+keybindings:
+    title: Настройки управления
+    hint: >-
+        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+
+    resetKeybindings: Настройки по умолчанию
+
+    categoryLabels:
+        general: Application
+        ingame: Game
+        navigation: Navigating
+        placement: Placement
+        massSelect: Mass Select
+        buildings: Building Shortcuts
+        placementModifiers: Placement Modifiers
+
+    mappings:
+        confirm: Подтвердить
+        back: Назад
+        mapMoveUp: Move Up
+        mapMoveRight: Move Right
+        mapMoveDown: Move Down
+        mapMoveLeft: Move Left
+        centerMap: Center Map
+
+        mapZoomIn: Zoom in
+        mapZoomOut: Zoom out
+        createMarker: Create Marker
+
+        menuOpenShop: Upgrades
+        menuOpenStats: Statistics
+
+        toggleHud: Toggle HUD
+        toggleFPSInfo: Включить/выключить FPS и информацию отладки
+        belt: *belt
+        splitter: *splitter
+        underground_belt: *underground_belt
+        miner: *miner
+        cutter: *cutter
+        rotater: *rotater
+        stacker: *stacker
+        mixer: *mixer
+        painter: *painter
+        trash: *trash
+
+        abortBuildingPlacement: Abort Placement
+        rotateWhilePlacing: Rotate
+        rotateInverseModifier: >-
+            Modifier: Rotate CCW instead
+        cycleBuildingVariants: Cycle Variants
+        confirmMassDelete: Confirm Mass Delete
+        cycleBuildings: Cycle Buildings
+
+        massSelectStart: Hold and drag to start
+        massSelectSelectMultiple: Select multiple areas
+        massSelectCopy: Copy area
+
+        placementDisableAutoOrientation: Disable automatic orientation
+        placeMultiple: Stay in placement mode
+        placeInverse: Invert automatic belt orientation
+
+about:
+    title: О игре
+
+changelog:
+    title: Список измений
+
+demo:
+    features:
+        restoringGames: Restoring savegames
+        importingGames: Importing savegames
+        oneGameLimit: Limited to one savegame
+        customizeKeybindings: Customizing Keybindings
+
+    settingNotAvailable: Не доступно в демо-версии.

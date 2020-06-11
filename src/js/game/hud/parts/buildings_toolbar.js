@@ -151,6 +151,11 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
             return;
         }
 
+        if (this.root.camera.getIsMapOverlayActive()) {
+            this.root.soundProxy.playUiError();
+            return;
+        }
+
         // Allow clicking an item again to deselect it
         for (const buildingId in this.buildingHandles) {
             const handle = this.buildingHandles[buildingId];

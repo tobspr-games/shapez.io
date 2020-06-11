@@ -63,6 +63,7 @@ export class HUDShop extends BaseHUDPart {
             const { tiers } = UPGRADES[upgradeId];
 
             const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
+            const currentTierMultiplier = this.root.hubGoals.upgradeImprovements[upgradeId];
             const tierHandle = tiers[currentTier];
 
             // Set tier
@@ -87,15 +88,19 @@ export class HUDShop extends BaseHUDPart {
 
             if (!tierHandle) {
                 // Max level
-                handle.elemDescription.innerText = T.ingame.shop.maximumLevel;
+                handle.elemDescription.innerText = T.ingame.shop.maximumLevel.replace(
+                    "<currentMult>",
+                    currentTierMultiplier.toString()
+                );
                 continue;
             }
 
             // Set description
-            handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description.replace(
-                "<gain>",
-                Math.floor(tierHandle.improvement * 100.0)
-            );
+            handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description
+                .replace("<currentMult>", currentTierMultiplier.toString())
+                .replace("<newMult>", (currentTierMultiplier + tierHandle.improvement).toString())
+                // Backwards compatibility
+                .replace("<gain>", (tierHandle.improvement * 100.0).toString());
 
             tierHandle.required.forEach(({ shape, amount }) => {
                 const container = makeDiv(handle.elemRequirements, null, ["requirement"]);
@@ -117,7 +122,10 @@ export class HUDShop extends BaseHUDPart {
                 pinButton.classList.add("pin");
                 container.appendChild(pinButton);
 
-                if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
+                const currentGoalShape = this.root.hubGoals.currentGoal.definition.getHash();
+                if (shape === currentGoalShape) {
+                    pinButton.classList.add("isGoal");
+                } else if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
                     pinButton.classList.add("alreadyPinned");
                 }
 
@@ -126,8 +134,15 @@ export class HUDShop extends BaseHUDPart {
                     preventDefault: true,
                 });
                 pinDetector.click.add(() => {
-                    this.root.hud.signals.shapePinRequested.dispatch(shapeDef, amount);
-                    pinButton.classList.add("pinned");
+                    if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
+                        this.root.hud.signals.shapeUnpinRequested.dispatch(shape);
+                        pinButton.classList.add("unpinned");
+                        pinButton.classList.remove("pinned", "alreadyPinned");
+                    } else {
+                        this.root.hud.signals.shapePinRequested.dispatch(shapeDef, amount);
+                        pinButton.classList.add("pinned");
+                        pinButton.classList.remove("unpinned");
+                    }
                 });
 
                 handle.requireIndexToElement.push({

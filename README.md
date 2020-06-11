@@ -22,6 +22,10 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 
 **Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
 
+## Helping translate
+
+Please checkout the [Translations readme](translations/).
+
 ## Contributing
 
 Since this game is in the more or less early development, I will only accept pull requests which add an immediate benefit. Please understand that low quality PR's might be closed by me with a short comment explaining why.

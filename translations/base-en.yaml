@@ -19,6 +19,54 @@
 #    the basic structure so the game also detects it.
 #
 
+steamPage:
+    # This is the short text appearing on the steam page
+    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+
+    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
+    # NOTICE:
+    # - Do not translate the first line (This is the gif image at the start of the store)
+    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
+    longText: >-
+        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+
+        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+
+        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+
+        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+
+
+        [b]Standalone Advantages[/b]
+
+        [list]
+            [*] Waypoints
+            [*] Unlimited Savegames
+            [*] Dark Mode
+            [*] More settings
+            [*] Allow me to further develop shapez.io ❤️
+            [*] More features in the future!
+        [/list]
+
+        [b]Planned features & Community suggestions[/b]
+
+        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+
+        [list]
+            [*] Story mode where buildings cost shapes
+            [*] More levels & buildings (standalone exclusive)
+            [*] Different maps, and maybe map obstacles
+            [*] Configurable map creation (Edit number and size of patches, seed, and more)
+            [*] More types of shapes
+            [*] More performance improvements (Although the game already runs pretty good!)
+            [*] Color blind mode
+            [*] And much more!
+        [/list]
+
+        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+
 global:
     loading: Loading
     error: Error
@@ -50,7 +98,7 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        hoursAndMinutesShort: <hours>h <minutes>m
 
         xMinutes: <x> minutes
 
@@ -74,6 +122,7 @@ mainMenu:
     importSavegame: Import
     openSourceHint: This game is open source!
     discordLink: Official Discord Server
+    helpTranslate: Help translate!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -165,17 +214,6 @@ dialogs:
         title: Demo Version
         desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
 
-    saveNotPossibleInDemo:
-        desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
-
-    leaveNotPossibleInDemo:
-        title: Demo version
-        desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
-
-    newUpdate:
-        title: Update available
-        desc: There is an update for this game available, be sure to download it!
-
     oneSavegameLimit:
         title: Limited savegames
         desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
@@ -184,11 +222,6 @@ dialogs:
         title: New update!
         desc: >-
             Here are the changes since you last played:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Whenever you need help or are stuck, check out the 'Show hint' button in the lower left and I'll give my best to help you!
 
     upgradesIntroduction:
         title: Unlock Upgrades
@@ -204,14 +237,14 @@ dialogs:
     blueprintsNotUnlocked:
         title: Not unlocked yet
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            Complete level 12 to unlock Blueprints!
 
     keybindingsIntroduction:
         title: Useful keybindings
         desc: >-
             This game has a lot of keybindings which make it easier to build big factories.
             Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
+            <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
             <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
             <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
@@ -288,7 +321,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: Maximum level
+        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -352,19 +385,24 @@ ingame:
 shopUpgrades:
     belt:
         name: Belts, Distributor & Tunnels
-        description: Speed +<gain>%
+        description: Speed x<currentMult> → x<newMult>
     miner:
         name: Extraction
-        description: Speed +<gain>%
+        description: Speed x<currentMult> → x<newMult>
     processors:
         name: Cutting, Rotating & Stacking
-        description: Speed +<gain>%
+        description: Speed x<currentMult> → x<newMult>
     painting:
         name: Mixing & Painting
-        description: Speed +<gain>%
+        description: Speed x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
+
     belt:
         default:
             name: &belt Conveyor Belt
@@ -407,7 +445,7 @@ buildings:
             description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
         quad:
             name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
 
     rotater:
         default:
@@ -430,10 +468,10 @@ buildings:
     painter:
         default:
             name: &painter Painter
-            description: Colors the whole shape on the left input with the color from the right input.
+            description: Colors the whole shape on the left input with the color from the top input.
         double:
             name: Painter (Double)
-            description: Colors the both shapes on the left input with the color from the right input.
+            description: Colors the shapes on the left inputs with the color from the top input.
         quad:
             name: Painter (Quad)
             description: Allows to color each quadrant of the shape with a different color.
@@ -565,6 +603,11 @@ settings:
                 fast: Fast
                 super_fast: Super fast
 
+        language:
+            title: Language
+            description: >-
+                Change the language. All translations are user contributed and might be incomplete!
+
         fullscreen:
             title: Fullscreen
             description: >-
@@ -584,6 +627,9 @@ settings:
             title: Game theme
             description: >-
                 Choose the game theme (light / dark).
+            themes:
+                dark: Dark
+                light: Light
 
         refreshRate:
             title: Simulation Target
@@ -610,7 +656,7 @@ keybindings:
     hint: >-
         Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: Reset Keybindings
 
     categoryLabels:
         general: Application

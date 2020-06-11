@@ -26,6 +26,10 @@
                 opacity: 0;
             }
         }
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        max-height: 100vh;
 
         color: #fff;
         text-align: center;
@@ -51,7 +55,7 @@
         .subTitle {
             @include PlainText;
             display: inline-block;
-            @include S(margin, 0px, 0, 20px);
+            @include S(margin, 5px, 0, 20px);
             color: $colorGreenBright;
 
             @include S(border-radius, $globalBorderRadius);

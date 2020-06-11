@@ -1,4 +1,4 @@
-//www.youtube.com/watch?v=KyorY1uIqiQimport { DrawParameters } from "../../../core/draw_parameters";
+import { DrawParameters } from "../../../core/draw_parameters";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
 import { Vector } from "../../../core/vector";

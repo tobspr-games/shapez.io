@@ -41,12 +41,10 @@
             margin: 0;
 
             :first-child {
-                border-radius: #{D(2px)} 0 0 #{D(2px)} !important;
                 margin-left: 0 !important;
             }
             :last-child {
                 margin-right: 0 !important;
-                border-radius: 0 #{D(2px)} #{D(2px)} 0 !important;
             }
         }
     }
@@ -80,7 +78,6 @@
 
         > div {
             background: #f4f4f4;
-            @include S(border-radius, $globalBorderRadius);
             @include S(margin-bottom, 4px);
             display: grid;
 
@@ -104,7 +101,6 @@
             .counter {
                 @include SuperSmallText;
 
-                @include S(border-radius, $globalBorderRadius);
                 @include S(padding, 0, 3px);
             }
         }

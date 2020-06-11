@@ -9,6 +9,7 @@ import { ExplainedResult } from "../core/explained_result";
 import { THEMES, THEME, applyGameTheme } from "../game/theme";
 import { IS_DEMO } from "../core/config";
 import { T } from "../translations";
+import { LANGUAGES } from "../languages";
 
 const logger = createLogger("application_settings");
 
@@ -30,11 +31,11 @@ export const uiScales = [
     },
     {
         id: "large",
-        size: 1.2,
+        size: 1.05,
     },
     {
         id: "huge",
-        size: 1.4,
+        size: 1.1,
     },
 ];
 
@@ -63,6 +64,16 @@ export const scrollWheelSensitivities = [
 
 /** @type {Array<BaseSetting>} */
 export const allApplicationSettings = [
+    new EnumSetting("language", {
+        options: Object.keys(LANGUAGES),
+        valueGetter: key => key,
+        textGetter: key => LANGUAGES[key].name,
+        category: categoryApp,
+        restartRequired: true,
+        changeCb: (app, id) => null,
+        magicValue: "auto-detect",
+    }),
+
     new EnumSetting("uiScale", {
         options: uiScales.sort((a, b) => a.size - b.size),
         valueGetter: scale => scale.id,
@@ -123,7 +134,7 @@ export const allApplicationSettings = [
     new EnumSetting("theme", {
         options: Object.keys(THEMES),
         valueGetter: theme => theme,
-        textGetter: theme => theme.substr(0, 1).toUpperCase() + theme.substr(1),
+        textGetter: theme => T.settings.labels.theme.themes[theme],
         category: categoryGame,
         restartRequired: false,
         changeCb:
@@ -166,6 +177,7 @@ class SettingsStorage {
         this.theme = "light";
         this.refreshRate = "60";
         this.scrollWheelSensitivity = "regular";
+        this.language = "auto-detect";
 
         this.alwaysMultiplace = false;
         this.abortPlacementOnDeletion = true;
@@ -261,7 +273,16 @@ export class ApplicationSettings extends ReadWriteProxy {
         return this.getAllSettings().keybindingOverrides;
     }
 
+    getLanguage() {
+        return this.getAllSettings().language;
+    }
+
     // Setters
+
+    updateLanguage(id) {
+        assert(LANGUAGES[id], "Language not known: " + id);
+        return this.updateSetting("language", id);
+    }
 
     /**
      * @param {string} key
@@ -339,7 +360,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 9;
+        return 10;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -367,8 +388,13 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 9) {
-            data.settings.abortPlacementOnDeletion = true;
+            data.settings.language = "auto-detect";
             data.version = 9;
+        }
+
+        if (data.version < 10) {
+            data.settings.abortPlacementOnDeletion = true;
+            data.version = 10;
         }
 
         return ExplainedResult.good();
