@@ -128,7 +128,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Przepraszam, ale ta gra może działać wolno w przeglądarce! Kup pełną wersję gry lub pobierz przeglądarkę chrome.
+        Przepraszam, ale ta gra może działać wolno w Twojej przeglądarce! Kup pełną wersję gry lub pobierz przeglądarkę chrome.
 
     savegameLevel: Poziom <x>
     savegameLevelUnknown: Nieznany poziom
@@ -152,10 +152,10 @@ mainMenu:
                     <li>Termin: 07.06.2020 12:00 CEST</li>
                 </ul>
                 <br>
-                Nie mogę się doczekać by zobaczyć Wasze fabryki!
-                
+                Nie mogę się doczekać, by zobaczyć Wasze fabryki!
+
         showInfo: Wyświetl
-        contestOver: Ten konkurs już się skończył - Dołącz do kanału Discord by nie przegapić kolejnych!
+        contestOver: Ten konkurs już się skończył - Dołącz do serwera Discord by nie przegapić kolejnych!
 
 dialogs:
     buttons:
@@ -207,11 +207,11 @@ dialogs:
 
     resetKeybindingsConfirmation:
         title: Zresetuj klawiszologię
-        desc: Zresetuj wszystki ustawione przez siebie klawisze do domyśnych wartości. Proszę potwierdzić.
+        desc: Ta akcja zresetuje wszystkie ustawienia klawiszologii do domyśnych wartości. Proszę potwierdzić.
 
     keybindingsResetOk:
         title: Reset Klawiszologii
-        desc: Klawiszologia przywrócona do ustawień domyślnych!
+        desc: Klawiszologia została przywrócona do ustawień domyślnych!
 
     featureRestriction:
         title: Wersja Demo
@@ -222,11 +222,11 @@ dialogs:
 
     leaveNotPossibleInDemo:
         title: Wersja Demo
-        desc: Gra została zapisana, lecz przywracanie zapisu nie będzie możliwe w wersji demo. Na pewno chcesz kontynuować?
+        desc: Gra została zapisana, lecz przywrócenie zapisu nie będzie możliwe w wersji demo. Na pewno chcesz kontynuować?
 
     oneSavegameLimit:
         title: Limit Zapisów Gry
-        desc: W wersji demo możesz posiadać wyłącznie jeden zapis gry. Proszę wykasuj obecny lub zakup pełną wersję gry!
+        desc: W wersji demo możesz posiadać wyłącznie jeden zapis gry. Proszę usuń obecny lub zakup pełną wersję gry!
 
     updateSummary:
         title: Nowa aktualizacja!
@@ -252,7 +252,7 @@ dialogs:
     blueprintsNotUnlocked:
         title: Jeszcze Nie Odblokowane
         desc: >-
-            Schematy jeszcze nie zostały odblokowane! Awansuj poziomami, by odblokować.
+            Schematy nie zostały jeszcze odblokowane! Awansuj poziomami, by odblokować.
 
     keybindingsIntroduction:
         title: Przydatna Klawiszologia
@@ -261,7 +261,7 @@ dialogs:
             Oto kilka z nich, lecz nie zmienia to faktu iż <strong>warto sprawdzić dostępne kombinacje</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Przeciąganie: Zaznacz obszar do kopiowania/usuwania.<br>
             <code class='keybinding'>SHIFT</code>: Przytrzymaj, by wstawić więcej niż jeden budynek.<br>
-            <code class='keybinding'>ALT</code>: Odwróć orientacje postawionych taśmociągów.<br>
+            <code class='keybinding'>ALT</code>: Odwróć orientacje stawianych taśmociągów.<br>
 
     createMarker:
         title: Nowy Znacznik
@@ -291,7 +291,7 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Naciśnij <key> by zmieniać warianty.
+        cycleBuildingVariants: Naciśnij <key>, by zmieniać warianty.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -417,7 +417,7 @@ buildings:
     belt:
         default:
             name: &belt Taśmociąg
-            description: Transportuje obiekt, przytrymaj by postawić kilka.
+            description: Transportuje obiekty, przytrymaj by postawić kilka.
 
     miner: # Internal name for the Extractor
         default:
@@ -435,7 +435,7 @@ buildings:
 
         tier2:
             name: Tunel Poziomu II
-            description: Pozwala na transport podziemnym tunelem. Nie łączy się z Tunelami Poziomu I
+            description: Pozwala na transport podziemnym tunelem. Nie łączy się z Tunelami Poziomu I.
 
     splitter: # Internal name for the Balancer
         default:
@@ -463,10 +463,10 @@ buildings:
         # Another 2nd translator's note: If you start naming the buildings as "tools to do something", keep naming them like that. Don't suddenly start naming them as "processes" they do
         default:
             name: &rotater Obracacz
-            description: Obraca kształt zgodnie z wskazówkami zegara o 90 stopni.
+            description: Obraca kształt zgodnie z ruchem wskazówek zegara o 90 stopni.
         ccw:
             name: Obracacz (Przeciwny kierunek)
-            description: Obraca kształt przeciwnie do wskazówek zegara o 90 stopni.
+            description: Obraca kształt przeciwnie do ruchu wskazówek zegara o 90 stopni.
 
     stacker:
         default:
