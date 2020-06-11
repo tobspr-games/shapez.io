@@ -291,6 +291,7 @@ ingame:
         placeBuilding: Place building
         createMarker: Create Marker
         delete: Destroy
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -710,6 +711,7 @@ keybindings:
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Confirm Mass Delete
+        pasteLastBlueprint: Paste last blueprint
         cycleBuildings: Cycle Buildings
 
         massSelectStart: Hold and drag to start

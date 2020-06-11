@@ -31,10 +31,10 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.mapMoveDown)}</code>
                 <code class="keybinding">${getKeycode(KEYMAPPINGS.navigation.mapMoveRight)}</code>
                 <label>${T.ingame.keybindingsOverlay.moveMap}</label>
-                </div>               
-                
-                
-                
+                </div>
+
+
+
             <div class="binding noPlacementOnly">
                 <code class="keybinding rightMouse"></code>
                 <label>${T.ingame.keybindingsOverlay.delete}</label>
@@ -47,13 +47,18 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 <code class="keybinding leftMouse"></code>
                 <label>${T.ingame.keybindingsOverlay.selectBuildings}</label>
             </div>
-            
-            
+
+            <div class="binding noPlacementOnly">
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.massSelect.pasteLastBlueprint)}</code>
+                <label>${T.ingame.keybindingsOverlay.pasteLastBlueprint}</label>
+            </div>
+
+
             <div class="binding placementOnly">
                 <code class="keybinding leftMouse"></code>
                 <label>${T.ingame.keybindingsOverlay.placeBuilding}</label>
             </div>
-            
+
             <div class="binding placementOnly">
                 <code class="keybinding rightMouse"></code><i></i>
                 <code class="keybinding">${getKeycode(KEYMAPPINGS.placement.abortBuildingPlacement)}</code>
