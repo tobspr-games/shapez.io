@@ -44,4 +44,10 @@ export const LANGUAGES = {
         code: "pl",
         region: "",
     },
+    "ru": {
+        name: "Русский",
+        data: require("./built-temp/base-ru.json"),
+        code: "ru",
+        region: "",
+    },
 };
