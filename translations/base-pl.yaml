@@ -414,6 +414,11 @@ shopUpgrades:
 
 # Buildings and their name / description
 buildings:
+    hub:
+        deliver: Dostarcz
+        toUnlock: by odblokować
+        levelShortcut: Poz.
+
     belt:
         default:
             name: &belt Taśmociąg
