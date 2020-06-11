@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "version": "0.6.5"
+  },
+  "savePath": "",
+  "images": [],
+  "folders": [
+    "C:/Users/tnt/Documents/GitHub/shapez_tnt.io/res_raw/sprites"
+  ],
+  "packOptions": {
+    "textureName": "../res_built/atlas/atlas0_75",
+    "textureFormat": "png",
+    "removeFileExtension": false,
+    "prependFolderName": true,
+    "scale": 0.75,
+    "filter": "none",
+    "exporter": "JSON (hash)",
+    "base64Export": false,
+    "tinify": false,
+    "tinifyKey": "",
+    "fileName": "pack-resultxx",
+    "savePath": "",
+    "width": 2048,
+    "height": 2048,
+    "fixedSize": false,
+    "powerOfTwo": false,
+    "padding": 0,
+    "extrude": 0,
+    "allowRotation": true,
+    "allowTrim": true,
+    "trimMode": "trim",
+    "alphaThreshold": 0,
+    "detectIdentical": true,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit"
+  }
+}
