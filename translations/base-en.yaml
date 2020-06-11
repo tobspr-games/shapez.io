@@ -221,10 +221,6 @@ dialogs:
         title: Demo version
         desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
 
-    newUpdate:
-        title: Update available
-        desc: There is an update for this game available, be sure to download it!
-
     oneSavegameLimit:
         title: Limited savegames
         desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
