@@ -66,7 +66,7 @@ steamPage:
         [/list]
 
         Sprawdź tablicę trello i zobacz nad czym teraz pracuję! https://trello.com/b/ISQncpJP/shapezio
-        
+
 global:
     loading: Ładowanie
     error: Wystąpił błąd
@@ -117,6 +117,7 @@ demoBanners:
     title: Wersja demo
     intro: >-
         Kup pełną wersję gry, by odblokować więcej funckji!
+
 mainMenu:
     play: Rozpocznij
     changelog: Dziennik Zmian
@@ -128,6 +129,7 @@ mainMenu:
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
         Przepraszam, ale ta gra może działać wolno w przeglądarce! Kup pełną wersję gry lub pobierz przeglądarkę chrome.
+
     savegameLevel: Poziom <x>
     savegameLevelUnknown: Nieznany poziom
 
@@ -151,6 +153,7 @@ mainMenu:
                 </ul>
                 <br>
                 Nie mogę się doczekać by zobaczyć Wasze fabryki!
+                
         showInfo: Wyświetl
         contestOver: Ten konkurs już się skończył - Dołącz do kanału Discord by nie przegapić kolejnych!
 
