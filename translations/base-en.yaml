@@ -36,7 +36,7 @@ steamPage:
 
         Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
 
         [b]Standalone Advantages[/b]
@@ -256,7 +256,7 @@ dialogs:
         desc: >-
             This game has a lot of keybindings which make it easier to build big factories.
             Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to delete.<br>
+            <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
             <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
             <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
