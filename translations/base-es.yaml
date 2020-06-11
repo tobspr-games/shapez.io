@@ -206,7 +206,7 @@ dialogs:
         desc: Esto reseteará todos los atajos de teclado a los valores por defecto. Por favor, confirma.
 
     keybindingsResetOk:
-        title: reseteo de los atajos de teclado
+        title: Reseteo de los atajos de teclado
         desc: Los atajos de taclado han sito reseteados a los valores por defecto!
 
     featureRestriction:
@@ -630,9 +630,9 @@ settings:
                 Si tienes un monitor de 144hz, cambia la tasa de refresco asñi que el juego se ejecutará correctamente a una mayor tasa de refresco. Esto puede disminuir los FPS si tu ordenador no es lo suficientemente rápido.
 
         alwaysMultiplace:
-            title: Multiplace
+            title: Colocar Múltiples
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                Si activado, todos los edificios quedarán seleccionados después de colocarlos hasta que lo canceles. Es equivalente a pulsar SHIFT permanentemente.
 
         offerHints:
             title: Pistas & Tutorial
@@ -642,7 +642,6 @@ settings:
 keybindings:
     title: Atajos de Teclado
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
         Pista: Asegúrate de usar CTRL, SHIFT y ALT! Habilitan distintas opciones de colocación.
     resetKeybindings: Resetear Atajos de Teclado
 
@@ -687,7 +686,6 @@ keybindings:
         abortBuildingPlacement: Cancelar Colocación
         rotateWhilePlacing: Rotar
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
             Modificador: Rotar inversamente en su lugar
         cycleBuildingVariants: Ciclar variantes
         confirmMassDelete: Confirmar Borrado Masivo
