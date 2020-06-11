@@ -15,15 +15,15 @@ export function registerCustomColor(colorData) {
     customColors.push(colorData);
 }
 
-registerCustomColor({
-    id: "black",
-    code: "k",
-    hex: "#333333",
-    mixing: {
-        white: "uncolored",
-        uncolored: "uncolored",
-        any: "black",
-    },
-    spawnable: true,
-    minDistance: 5,
-});
+// registerCustomColor({
+//     id: "black",
+//     code: "k",
+//     hex: "#333333",
+//     mixing: {
+//         white: "uncolored",
+//         uncolored: "uncolored",
+//         any: "black",
+//     },
+//     spawnable: true,
+//     minDistance: 5,
+// });
