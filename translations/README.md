@@ -21,6 +21,7 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Chinese (Traditional)](base-zh-TW.yaml)
 -   [Spanish (Latin America)](base-es.yaml)
 -   [Hungarian](base-hu.yaml)
+-   [Turkish](base-tr.yaml)
 
 (If you want to translate into a new language, see below!)
 
