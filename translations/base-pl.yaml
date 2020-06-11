@@ -100,7 +100,7 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>godz <minutes>s
+        hoursAndMinutesShort: <hours>godz <minutes>m
 
         xMinutes: <x> minut
 
@@ -691,7 +691,6 @@ keybindings:
 
         toggleHud: Włącz Interfejs
         toggleFPSInfo: Pokaż FPS i infomacja Debug-owe
-        #Translator: I don't know if I should translate that
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt

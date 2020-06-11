@@ -80,7 +80,7 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        hoursAndMinutesShort: <hours>h <minutes>m
 
         xMinutes: <x> minut
 
@@ -135,7 +135,6 @@ mainMenu:
 
         showInfo: Zobrazit
         contestOver: Tato soutěž skončila - Připojte se na Discord a získejte informace o nových soutěžích!
-
 
 dialogs:
     buttons:
@@ -717,4 +716,3 @@ demo:
         customizeKeybindings: Změna klávesových zkratek
 
     settingNotAvailable: Nedostupné v demo verzi.
-
