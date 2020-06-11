@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,42 +30,42 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io это игра о строительстве фабрик для автоматизации создания и объединения фигур. Доставляйте запрошенные, все более сложные фигуры, чтобы развиваться в игре и разблокировать улучшения, чтобы ускорить работу вашей фабрики.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        Поскольку спрос растет, вам придется увеличивать свою фабрику, чтобы соответствовать потребностям. Однако, не забывайте о ресурсах, несмотря на то что вы будете расширятся на [b]бесконечной карте[/b]!
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Поскольку фигуры вскоре могут наскучить, вам потребуется смешивать цвета и рискрашивать свои фигуры ими. Комбинируйте красный, зеленый и синий цветовые ресурсы для получения разных цветов и красте ими фигуры, чтобы удовлетворить спрос.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        Эта игра имеет 18 уровней (но и они займут вас на часы!), но я постоянно добавляю новый контент - там много чего запланировано!
 
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
-        [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        [b]Преимущества автономной версии[/b]
 
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
-            [*] And much more!
+            [*] Метки
+            [*] Неограниченное количество сохранений
+            [*] Темный режим
+            [*] Больше настроек
+            [*] Позволит мне быстрее разрабатывать shapez.io ❤️
+            [*] Больше возможностей в будущем!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [b]Планируемые функции & Предложения сообщества[/b]
+
+        Это игра с открытым исходным кодом - Любой может внести свой вклад! Кроме того, я во [b]многом[/b] прислушиваюсь к сообществу! Я стараюсь прочитать все предложения и учту как можно больше отзывов.
+
+        [list]
+            [*] Режим истории, где здания стоят фигур
+            [*] Больше уровней & зданий (эксклюзивно для автономной версии)
+            [*] Различные карты и, возможно, карта препятствий
+            [*] Настраиваемое создание карт (редактирование количества и размера участков, семя и т. д.)
+            [*] Больше видов фигур
+            [*] Больше улучшений производительности (хотя игра уже работает довольно хорошо!)
+            [*] Режим дальтоника
+            [*] И многое другое!
+        [/list]
+
+        Не забудьте проверить мою доску trello со всеми планами! https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Загрузка
@@ -76,10 +76,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: k
-        millions: M
-        billions: B
-        trillions: T
+        thousands: тыс.
+        millions: млн
+        billions: млрд
+        trillions: трлн
 
     # Shown for infinitely big numbers
     infinite: inf
