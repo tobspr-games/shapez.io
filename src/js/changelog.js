@@ -1,9 +1,14 @@
 export const CHANGELOG = [
     {
         version: "1.1.9",
-        date: "unreleased",
+        date: "11.06.2020",
         entries: [
             "Support for translations! Interested in helping out? Check out the <a target='_blank'  href='https://github.com/tobspr/shapez.io/tree/master/translations'>translation guide</a>!",
+            "Update stacker artwork to clarify how it works",
+            "Update keybinding hints on the top left to be more accurate",
+            "Make it more clear when blueprints are unlocked when trying to use them",
+            "Fix pinned shape icons not being visible in dark mode",
+            "Fix being able to select buildings via hotkeys in map overview mode",
             "Make shapes unpinnable in the upgrades tab (By hexy)",
         ],
     },

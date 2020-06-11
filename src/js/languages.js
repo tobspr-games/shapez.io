@@ -8,12 +8,12 @@ export const LANGUAGES = {
         code: "en",
         region: "",
     },
-    "de": {
-        name: "Deutsch",
-        data: require("./built-temp/base-de.json"),
-        code: "de",
-        region: "",
-    },
+    // "de": {
+    //     name: "Deutsch",
+    //     data: require("./built-temp/base-de.json"),
+    //     code: "de",
+    //     region: "",
+    // },
     "fr": {
         name: "Français",
         data: require("./built-temp/base-fr.json"),
@@ -25,5 +25,17 @@ export const LANGUAGES = {
         data: require("./built-temp/base-pt-BR.json"),
         code: "pt",
         region: "BR",
+    },
+    "cs": {
+        name: "Čeština",
+        data: require("./built-temp/base-cz.json"),
+        code: "cs",
+        region: "",
+    },
+    "es-419": {
+        name: "Español (Latinoamérica)",
+        data: require("./built-temp/base-es.json"),
+        code: "es",
+        region: "419",
     },
 };

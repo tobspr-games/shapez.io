@@ -55,30 +55,30 @@ steamPage:
         This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
 
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
+            [*] Sztori mód, ahol az épületek alakzatokba kerülnek
+            [*] Több szint és épület (standalone exclusive)
+            [*] Különböző térképek, és talán akadályok
             [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
+            [*] Sokkal több alakzat
             [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
+            [*] Színvak mód
             [*] And much more!
         [/list]
 
         Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
 
 global:
-    loading: Loading
-    error: Error
+    loading: Betöltés
+    error: Hiba
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: k
+        thousands: E
         millions: M
-        billions: B
+        billions: Mlrd
         trillions: T
 
     # Shown for infinitely big numbers
@@ -86,21 +86,21 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: egy másodperccel ezelőtt
+        xSecondsAgo: <x> másodperccel ezelőtt
+        oneMinuteAgo: egy perccel ezelőtt
+        xMinutesAgo: <x> perccel ezelőtt
+        oneHourAgo: egy órával ezelőtt
+        xHoursAgo: <x> órával ezelőtt
+        oneDayAgo: egy nappal ezelőtt
+        xDaysAgo: <x> nappal ezelőtt
 
         # Short formats for times, e.g. '5h 23m'
-        secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>m
+        secondsShort: <seconds>mp
+        minutesAndSecondsShort: <minutes>p <seconds>mp
+        hoursAndMinutesShort: <hours>ó <minutes>p
 
-        xMinutes: <x> minutes
+        xMinutes: <x> perc
 
     keys:
         tab: TAB
@@ -117,12 +117,12 @@ demoBanners:
         Get the standalone to unlock all features!
 
 mainMenu:
-    play: Play
+    play: Játék
     changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    importSavegame: Importálás
+    openSourceHint: Ez a játék nyílt forráskódú!
+    discordLink: Hivatalos Discord Szerver
+    helpTranslate: Segíts a fordításban!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -157,10 +157,10 @@ mainMenu:
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
+        delete: Törlés
+        cancel: Megszakítás
+        later: Később
+        restart: Újrakezdés
         reset: Reset
         getStandalone: Get Standalone
         deleteGame: I know what I do
@@ -169,14 +169,14 @@ dialogs:
         showKeybindings: Show Keybindings
 
     importSavegameError:
-        title: Import Error
+        title: Importálás Hiba
         text: >-
-            Failed to import your savegame:
+            Failed to import your savegame: Nem sikerült importálni a mentésed.
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Mentés Importálva
         text: >-
-            Your savegame has been successfully imported.
+            A mentésed sikeresen importálva lett.
 
     gameLoadFailure:
         title: Game is broken
@@ -186,17 +186,17 @@ dialogs:
     confirmSavegameDelete:
         title: Confirm deletion
         text: >-
-            Are you sure you want to delete the game?
+            Biztos, hogy ki akarod törölni?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Sikertelen törlés
         text: >-
-            Failed to delete the savegame:
+            Failed to delete the savegame: Nem sikerült törölni a mentésed.
 
     restartRequired:
-        title: Restart required
+        title: Újraindítás szükséges
         text: >-
-            You need to restart the game to apply the settings.
+            Újra kell indítanod a játékot, hogy életbe lépjenek a módosítások.
 
     editKeybinding:
         title: Change Keybinding
@@ -220,6 +220,10 @@ dialogs:
     leaveNotPossibleInDemo:
         title: Demo version
         desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
+
+    newUpdate:
+        title: Update available
+        desc: There is an update for this game available, be sure to download it!
 
     oneSavegameLimit:
         title: Limited savegames
@@ -249,14 +253,14 @@ dialogs:
     blueprintsNotUnlocked:
         title: Not unlocked yet
         desc: >-
-            Complete level 12 to unlock Blueprints!
+            Blueprints have not been unlocked yet! Complete more levels to unlock them.
 
     keybindingsIntroduction:
         title: Useful keybindings
         desc: >-
             This game has a lot of keybindings which make it easier to build big factories.
             Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to delete.<br>
+            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
             <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
             <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
@@ -272,9 +276,9 @@ ingame:
     # every situation
     keybindingsOverlay:
         moveMap: Move
-        selectBuildings: Select area
+        selectBuildings: Terület kijelölése
         stopPlacement: Stop placement
-        rotateBuilding: Rotate building
+        rotateBuilding: Épület forgatása
         placeMultiple: Place multiple
         reverseOrientation: Reverse orientation
         disableAutoOrientation: Disable auto orientation
@@ -288,18 +292,18 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Nyomd meg a <key>-t, hogy válts a variációk között.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
 
         infoTexts:
-            speed: Speed
+            speed: Gyorsaság
             range: Range
             storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            oneItemPerSecond: 1 tárgy / másodperc
+            itemsPerSecond: <x> tárgy / mp
             itemsPerSecondDouble: (x2)
 
             tiles: <x> tiles
@@ -314,8 +318,8 @@ ingame:
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: Egy új fejlesztés elérhető!
+        gameSaved: A játékod el lett mentve.
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
@@ -351,25 +355,25 @@ ingame:
         noShapesProduced: No shapes have been produced so far.
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        shapesPerMinute: <shapes> / p
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: Játékidő
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: Épület
+        beltsPlaced: Futószalag
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: Folytatás
+            settings: Beállítások
+            menu: Vissza a menübe
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: Segítségre van szükséged?
+        showHint: Segítség mutatása
+        hideHint: Bezárás
 
     # When placing a blueprint
     blueprintPlacer:
@@ -410,11 +414,6 @@ shopUpgrades:
 
 # Buildings and their name / description
 buildings:
-    hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
-
     belt:
         default:
             name: &belt Conveyor Belt
@@ -581,7 +580,7 @@ storyRewards:
             Congratulations! By the way, more content is planned for the standalone!
 
 settings:
-    title: Settings
+    title: Beállítások
     categories:
         game: Game
         app: Application
@@ -598,11 +597,11 @@ settings:
             description: >-
                 Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Szuper kicsi
+                small: Kicsi
+                regular: Közepes
+                large: Nagy
+                huge: Hatalmas
 
         scrollWheelSensitivity:
             title: Zoom sensitivity
@@ -616,7 +615,7 @@ settings:
                 super_fast: Super fast
 
         language:
-            title: Language
+            title: Nyelv
             description: >-
                 Change the language. All translations are user contributed and might be incomplete!
 
@@ -717,7 +716,7 @@ keybindings:
         placeInverse: Invert automatic belt orientation
 
 about:
-    title: About this Game
+    title: A játékról
 
 changelog:
     title: Changelog
@@ -729,4 +728,4 @@ demo:
         oneGameLimit: Limited to one savegame
         customizeKeybindings: Customizing Keybindings
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Nem elérhető a demóban.

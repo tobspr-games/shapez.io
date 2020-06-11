@@ -74,9 +74,7 @@ export class HubSystem extends GameSystemWithFilter {
         context.fillText("" + formatBigNumber(delivered), pos.x + textOffsetX, pos.y + textOffsetY);
 
         // Required
-
         context.font = "13px GameFont";
-
         context.fillStyle = "#a4a6b0";
         context.fillText(
             "/ " + formatBigNumber(goals.required),
@@ -94,6 +92,17 @@ export class HubSystem extends GameSystemWithFilter {
         context.font = "bold 11px GameFont";
         context.fillStyle = "#fff";
         context.fillText("" + this.root.hubGoals.level, pos.x - 42, pos.y - 36);
+
+        // Texts
+        context.textAlign = "center";
+        context.fillStyle = "#fff";
+        context.font = "bold 7px GameFont";
+        context.fillText(T.buildings.hub.levelShortcut, pos.x - 42, pos.y - 47);
+
+        context.fillStyle = "#64666e";
+        context.font = "bold 11px GameFont";
+        context.fillText(T.buildings.hub.deliver.toUpperCase(), pos.x, pos.y - 40);
+        context.fillText(T.buildings.hub.toUnlock.toUpperCase(), pos.x, pos.y + 30);
 
         context.textAlign = "left";
     }

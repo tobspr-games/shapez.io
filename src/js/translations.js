@@ -93,7 +93,9 @@ export function autoDetectLanguageId() {
             return trans;
         }
     }
-    return null;
+
+    // Fallback
+    return "en";
 }
 
 function matchDataRecursive(dest, src) {

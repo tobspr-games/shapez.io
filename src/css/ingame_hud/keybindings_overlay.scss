@@ -58,11 +58,20 @@
         }
     }
 
-    &:not(.placementActive) .binding.placementOnly {
+    &:not(.placementActive) .binding.placementOnly,
+    &.mapOverviewActive .binding.placementOnly {
         display: none;
     }
 
-    &.placementActive .noPlacementOnly {
+    &.placementActive:not(.mapOverviewActive) .noPlacementOnly {
+        display: none;
+    }
+
+    &:not(.mapOverviewActive) .binding.overviewOnly {
+        display: none;
+    }
+
+    &.mapOverviewActive .noOverviewOnly {
         display: none;
     }
 

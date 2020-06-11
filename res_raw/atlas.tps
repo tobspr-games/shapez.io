@@ -445,6 +445,7 @@
             <key type="filename">sprites/map_overview/belt_forward.png</key>
             <key type="filename">sprites/map_overview/belt_left.png</key>
             <key type="filename">sprites/map_overview/belt_right.png</key>
+            <key type="filename">sprites/misc/waypoint.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
