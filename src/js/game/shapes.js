@@ -110,7 +110,7 @@ export function initShapes() {
     for (let k in enumShortcodeToSubShape) {
         delete enumShortcodeToSubShape[k];
     }
-    
+
     for (let s in allShapeData) {
         let data = allShapeData[s];
         assert(data.id == s);

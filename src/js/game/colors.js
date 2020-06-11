@@ -155,7 +155,6 @@ const mix = enumColorMixingResults;
 initColors();
 
 export function initColors() {
-    
     for (let c1 in allColorData) {
         let data = allColorData[c1];
         assert(data);
