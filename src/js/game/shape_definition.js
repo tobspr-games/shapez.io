@@ -1,3 +1,5 @@
+import { enumSubShape, enumSubShapeToShortcode, enumShortcodeToSubShape, allShapeData } from "./shapes.js";
+export { enumSubShape, enumSubShapeToShortcode, enumShortcodeToSubShape } from "./shapes.js";
 import { makeOffscreenBuffer } from "../core/buffer_utils";
 import { JSON_parse, JSON_stringify, Math_max, Math_PI, Math_radians } from "../core/builtins";
 import { globalConfig } from "../core/config";
@@ -31,28 +33,6 @@ const arrayQuadrantIndexToOffset = [
     new Vector(-1, 1), // bl
     new Vector(-1, -1), // tl
 ];
-
-/** @enum {string} */
-export const enumSubShape = {
-    rect: "rect",
-    circle: "circle",
-    star: "star",
-    windmill: "windmill",
-};
-
-/** @enum {string} */
-export const enumSubShapeToShortcode = {
-    [enumSubShape.rect]: "R",
-    [enumSubShape.circle]: "C",
-    [enumSubShape.star]: "S",
-    [enumSubShape.windmill]: "W",
-};
-
-/** @enum {enumSubShape} */
-export const enumShortcodeToSubShape = {};
-for (const key in enumSubShapeToShortcode) {
-    enumShortcodeToSubShape[enumSubShapeToShortcode[key]] = key;
-}
 
 /**
  * Converts the given parameters to a valid shape definition
@@ -271,83 +251,63 @@ export class ShapeDefinition extends BasicSerializableObject {
 
                 const rotation = Math_radians(quadrantIndex * 90);
 
+                context.save();
                 context.translate(centerQuadrantX, centerQuadrantY);
                 context.rotate(rotation);
 
                 context.fillStyle = enumColorsToHexCode[color];
                 context.strokeStyle = THEME.items.outline;
-                context.lineWidth = THEME.items.outlineWidth;
+                context.lineWidth = THEME.items.outlineWidth * Math.pow(0.8, layerIndex);
 
                 const insetPadding = 0.0;
 
-                switch (subShape) {
-                    case enumSubShape.rect: {
-                        context.beginPath();
-                        const dims = quadrantSize * layerScale;
-                        context.rect(
-                            insetPadding + -quadrantHalfSize,
-                            -insetPadding + quadrantHalfSize - dims,
-                            dims,
-                            dims
-                        );
+                const dims = quadrantSize * layerScale;
+                const innerDims = insetPadding - quadrantHalfSize;
+                let began = null;
 
-                        break;
+                function begin(args) {
+                    context.save();
+                    context.translate(innerDims, -innerDims);
+                    context.scale(dims, -dims);
+                    if (args.size) {
+                        context.scale(args.size, args.size);
                     }
-                    case enumSubShape.star: {
+                    if (args.path) {
                         context.beginPath();
-                        const dims = quadrantSize * layerScale;
-
-                        let originX = insetPadding - quadrantHalfSize;
-                        let originY = -insetPadding + quadrantHalfSize - dims;
-
-                        const moveInwards = dims * 0.4;
-                        context.moveTo(originX, originY + moveInwards);
-                        context.lineTo(originX + dims, originY);
-                        context.lineTo(originX + dims - moveInwards, originY + dims);
-                        context.lineTo(originX, originY + dims);
+                    }
+                    if (args.zero) {
+                        context.moveTo(0, 0);
+                    }
+                    began = args;
+                }
+                function end() {
+                    if (!began) {
+                        return;
+                    }
+                    if (began.path) {
                         context.closePath();
-                        break;
                     }
+                    context.restore();
+                }
 
-                    case enumSubShape.windmill: {
-                        context.beginPath();
-                        const dims = quadrantSize * layerScale;
-
-                        let originX = insetPadding - quadrantHalfSize;
-                        let originY = -insetPadding + quadrantHalfSize - dims;
-                        const moveInwards = dims * 0.4;
-                        context.moveTo(originX, originY + moveInwards);
-                        context.lineTo(originX + dims, originY);
-                        context.lineTo(originX + dims, originY + dims);
-                        context.lineTo(originX, originY + dims);
-                        context.closePath();
-                        break;
-                    }
-
-                    case enumSubShape.circle: {
-                        context.beginPath();
-                        context.moveTo(insetPadding + -quadrantHalfSize, -insetPadding + quadrantHalfSize);
-                        context.arc(
-                            insetPadding + -quadrantHalfSize,
-                            -insetPadding + quadrantHalfSize,
-                            quadrantSize * layerScale,
-                            -Math_PI * 0.5,
-                            0
-                        );
-                        context.closePath();
-                        break;
-                    }
-
-                    default: {
-                        assertAlways(false, "Unkown sub shape: " + subShape);
-                    }
+                let shape = allShapeData[subShape];
+                if (shape.draw) {
+                    shape.draw({
+                        dims,
+                        innerDims,
+                        layer: layerIndex,
+                        quad: quadrantIndex,
+                        context,
+                        color,
+                        begin,
+                    });
+                    end();
                 }
 
                 context.fill();
                 context.stroke();
 
-                context.rotate(-rotation);
-                context.translate(-centerQuadrantX, -centerQuadrantY);
+                context.restore();
             }
         }
     }

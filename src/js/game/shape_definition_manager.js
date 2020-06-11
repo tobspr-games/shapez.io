@@ -205,4 +205,12 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
 
         return this.registerOrReturnHandle(new ShapeDefinition({ layers: [shapeLayer] }));
     }
+
+    getDefinitionFromSimpleShapesAndColors(subShapes, colors) {
+        const shapeLayer = /** @type {import("./shape_definition").ShapeLayer} */ (subShapes.map(
+            (subShape, i) => ({ subShape, color: colors[i] })
+        ));
+
+        return this.registerOrReturnHandle(new ShapeDefinition({ layers: [shapeLayer] }));
+    }
 }
