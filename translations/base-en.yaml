@@ -253,14 +253,14 @@ dialogs:
     blueprintsNotUnlocked:
         title: Not unlocked yet
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            Complete level 12 to unlock Blueprints!
 
     keybindingsIntroduction:
         title: Useful keybindings
         desc: >-
             This game has a lot of keybindings which make it easier to build big factories.
             Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
+            <code class='keybinding'>CTRL</code> + Drag: Select area to delete.<br>
             <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
             <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
