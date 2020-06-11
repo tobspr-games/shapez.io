@@ -29,11 +29,18 @@ steamPage:
     # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+
         shapez.io jest grą o budowaniu i automatyzacji fabryki różnych kształtów. Dostarczaj coraz bardziej skomplikowane kształty, żeby odblokować nowe ulepszenia żeby przyspieszyć produkcję w twojej fabryce.
+
         Będziesz potrzebował produkować coraz więcej elementów, więc potrzebujesz również sporo miejsca na powiększanie fabryki. [b]Nieskończona mapa[/b] to coś co ułatwi Ci ten proces!
+
         Same kształty mogą z czasem być nudne, dlatego gra będzie wymagała od Ciebie malowania kształtów różnymi kolorami - Połącz czerwoną, zieloną i niebieską farbę, a powstanie farba o innym kolorze. Korzystaj z farb by postępować z kolejnymi poziomami.
+
         Na tą chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na conajmniej kilka godzin!) ale bez przerwy dodaję nowe - Jest naprawdę wiele do dodania! 
+
+
         [b]Zalety pełnej wersji[/b]
+
         [list]
             [*] Znaczniki
             [*] Nielimitowana ilość zapisanych gier
@@ -42,8 +49,11 @@ steamPage:
             [*] Pomóż mi w dalszym rozwijaniu shapez.io ❤️
             [*] Więcej zawartości niedługo!
         [/list]
+
         [b]Zaplanowana zawartość & Sugestie społeczności[/b]
+
         Ta gra jest open-source - Kaźdy może pomóc w rozwoju! Poza tym, słucham tego co społeczność ma do powiedenia w kwestii gry! Staram się czytać wszystkie sugestie i odbierać jak najwięcej informacji zwrotnych na temat gry.
+
         [list]
             [*] Kampania, gdzie do budowy potrzeba kształtów
             [*] Więcej poziomów i budynków (tylko w pełnej wersji)
@@ -54,7 +64,9 @@ steamPage:
             [*] Tryb dla ślepoty barw
             [*] I wiele więcej!
         [/list]
+
         Sprawdź tablicę trello i zobacz nad czym teraz pracuję! https://trello.com/b/ISQncpJP/shapezio
+        
 global:
     loading: Ładowanie
     error: Wystąpił błąd
