@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is ist ein Spiel über das bauen von automatisierten Fabriken und das kreieren von zunehmend schwereren Formen auf einer unendlich großen Karte.
+    shortText: shapez.io ist ein Spiel über den Bau von Fabriken um die Erstellung und Kombination immer komplexerer Formen zu automatisieren.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,42 +30,41 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io ist ein Spiel über das Bauen von automatisierten Fabriken und das kreieren von zunehmend schwereren Fromen. Liefer die angeforderten, zunehmend schweren Formen aus um im Spiel fortzuschreiten und um Upgrades zum verschnellern deiner Fabrik freizuschalten.
+        shapez.io ist ein Spiel über den Bau von Fabriken um die Erstellung und Kombination von Formen zu automatisieren. Liefer die gewünschten, immer komplexeren Formen, um im Spiel voranzukommen, und schalte Upgrades frei um deine Fabrik zu beschleunigen!
 
-        Da der Vebrauch steigt musst du deine Fabrik vegrößern um deine Nachfrage zu decken - Vergiss jedoch nicht die Resourcen, du musst auf der [b]unendlich großen Karte[/b] expandieren!
+        Da die Nachfrage steigt, wirst du deine Fabrik vergrößern müssen, um den Bedürfnissen gerecht zu werden - vergiss jedoch nicht die Ressourcen, du wirst in der [b]unendlichen Karte[/b] expandieren müssen!
 
-        Da die Formen irgendwann langweilig werden kannst du Farben vermischen und deine Fromen damit färben - Kombineiere rote, blaue und grüne Farbresourcen um verschiedene Farben zu produzieren und färbe damit deine Formen um dem Bedarf zu erfüllen.
+        Da Formen natürlich langweilig werden können, musst du Farben mischen und deine Formen damit bemalen - Kombinier rote, grüne und blaue Farbressourcen, um verschiedene Farben herzustellen und Formen damit zu bemalen, um die Nachfrage zu befriedigen.
 
-        Dieses Spiel hat 18 verschiedene vorgestellte Levels (Was dich schon Stunden beschäftig hält!) aber ich werde konstant neuen Inhalt hinzufügen - Es ist viel geplannt! 
+        Dieses Spiel hat 18 verschiedene Level (Was dich schon Stunden beschäftig hält!) aber ich werde konstant neue Inhalte hinzufügen - Es ist echt viel geplannt! 
 
-
-        [b]Standalone Advantages[/b]
+        [b]Vorteile der Standalone[/b]
 
         [list]
             [*] Wegpunkte
             [*] Unbegrenzte Anzahl von Spielständen
-            [*] Dunkler Modus
+            [*] Dark-Mode
             [*] Mehr Einstellungen
             [*] Erlaube es mir weiter an shapez.io zu entwickeln  ❤️
             [*] Mehr Funktionen in der Zukunft!
         [/list]
 
-        [b]Geplante Funktionen & Community vorschläge[/b]
+        [b]Geplante Funktionen & Community Vorschläge[/b]
 
-        Diese Spiel ist open source - Jeder kann dazu beitragen! Abgesehen davon höre ich [b]sehr viel[/b] auf die Community! Ich versuche alle vorschläge zu lesen und soviel feedback einzubeziehen wie nur möglich.
+        Diese Spiel ist open source - Jeder kann dazu beitragen! Abgesehen davon höre ich auf die Community! Ich versuche alle Vorschläge zu lesen, und so viel Feedback einzubeziehen wie nur möglich.
 
         [list]
             [*] Story-Modus, in dem Gebäude Formen kosten
-            [*] Mehr Gebäude und Levels (nur in der einzelstehenden Version)
-            [*] Mehr Karten und villeicht auch Hindernisse auf diesen
-            [*] Einstellbare Kartenerstellung (Ändere die Grösse und Anzahl von Resourcenflicken, Seed, und mehr)
+            [*] Mehr Gebäude und Level (nur in der Standalone-Version)
+            [*] Mehr Karten und vielleicht auch Hindernisse
+            [*] Einstellbare Kartenerstellung (Ändere die Grösse und Anzahl von Resourcenflecken, Seed, und mehr)
             [*] Mehr Typen von Formen
             [*] Mehr Performanceverbesserungen (Auch wenn das Spiel bereits ganz gut läuft)
-            [*] Farbenblinder-Modus
+            [*] Farbenblind-Modus
             [*] Und viel mehr!
         [/list]
 
-        Schau dir auch das Trello-board for alle Planungen an! https://trello.com/b/ISQncpJP/shapezio
+        Schau dir auch das Trello-board für die komplette Planung an! https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Laden
@@ -77,9 +76,9 @@ global:
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: T
-        millions: Mil
-        billions: Bil
-        trillions: Tri
+        millions: M
+        billions: B
+        trillions: tr
 
     # Shown for infinitely big numbers
     infinite: unend
@@ -98,7 +97,7 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        hoursAndMinutesShort: <hours>h <minutes>m
 
         xMinutes: <x> Minuten
 
@@ -107,14 +106,14 @@ global:
         control: STRG
         alt: ALT
         escape: ESC
-        shift: UMS
+        shift: UMSCH
         space: LEER
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo Version
     intro: >-
-        Kaufe die Standalone für alle Features!
+        Kauf die Standalone für alle Features!
 
 mainMenu:
     play: Spielen
@@ -151,7 +150,7 @@ mainMenu:
                 Ich freue mich deine tollen Kreationen zu sehen!
 
         showInfo: Anschauen
-        contestOver: Dieser Wettbewerb ist vorbei! Tritt dem discord server bei, um über neue Wettbewerbe informiert zu werden!
+        contestOver: Dieser Wettbewerb ist vorbei! Tritt dem discord Server bei, um über neue Wettbewerbe informiert zu werden!
 
 dialogs:
     buttons:
@@ -185,7 +184,7 @@ dialogs:
     confirmSavegameDelete:
         title: Bestätige Löschung
         text: >-
-            Bist du sicher das du das Spiel(stand) löschen willst?
+            Bist du sicher, dass du das Spiel löschen willst?
 
     savegameDeletionError:
         title: Löschung gescheitert
@@ -195,7 +194,7 @@ dialogs:
     restartRequired:
         title: Neustart benötigt
         text: >-
-            Du muss das Spiel neustarten um die Einstellungen anzuwenden
+            Du muss das Spiel neustarten, um die Einstellungen anzuwenden
 
     editKeybinding:
         title: Ändere Tastenbelegung
@@ -207,65 +206,49 @@ dialogs:
 
     keybindingsResetOk:
         title: Tastenbelegung zurückgesetzt
-        desc: Die Tastenbelegung wurde auf Ihr Standard zurückgesetzt!
+        desc: Die Tastenbelegung wurde auf den Standard zurückgesetzt!
 
     featureRestriction:
         title: Demo Version
-        desc: Du hast ein Feature probiert (<feature>) die nicht in der Demo enthalten ist. ]Prüfe[ ob du die Standalone hast für das volle Erfahrung(Erlebnis)!
-
-    saveNotPossibleInDemo:
-        desc: dein Spiel(stand) wurde gespeichert, aber das wiederherstellen ist nur in der Standalone möglich. ]Prüfe[ ob du die Standalone hast für das volle Erfahrung(Erlebnis)!
-
-    leaveNotPossibleInDemo:
-        title: Demo version
-        desc: dein Spiel(stand) wurde gespeichert, aber du kannst nicht es in der demo wiederherstellen. Das wiederherstellen deiner Spiel(stände) ist nur in der Vollen Version möglich. Bist du sicher?
-
-    newUpdate:
-        title: Update verfügbar
-        desc: Es ist ein Update verfügbar, stelle sicher das es heruntergeladen wird!
+        desc: Du hast ein Feature probiert (<feature>), welches nicht in der Demo enthalten ist. Erwerbe die Standalone für das volle Erlebnis!
 
     oneSavegameLimit:
         title: Begrenzte Spiele
-        desc: Du kannst nur ein Spiel(stand) auf einmal in der Demo haben. Bitte lösch das Spiel oder hol die die Standalone!
+        desc: Du kannst in der Demo nur einen Spielstand haben. Bitte lösche das Spiel oder hol die die Standalone!
 
     updateSummary:
         title: Neues Update!
         desc: >-
-            Hier sind die Änderuneng seit dem letztem Spiel:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Wenn immer du Hilfe brauchst oder feststeckst, schau dir den 'Hinweis' Knopf unten links an und ich werde meine bestes geben um dir zu Helfen!
+            Hier sind die Änderuneng, seit dem du das letzte Mal gespielt hast:
 
     upgradesIntroduction:
         title: Upgrades Freischalten
         desc: >-
-            All deine Formen können benutzt werden um Upgrades freizuschalten - <strong>Zerstöre nicht deine alten Fabriken!</strong>
-           Der Upgrade Tab ist oben rechts im Bildschirm.
+            All deine Formen können noch benutzt werden, um Upgrades freizuschalten - <strong>Zerstöre deine alten Fabriken nicht!</strong>
+            Den Upgrade Tab kannst du oben rechts im Bildschirm finden.
 
     massDeleteConfirm:
-        title: Bestätige Löschung
+        title: Bestätige Löschen
         desc: >-
-            Du löscht dehr viele Maschinen(Gebäude) (<count> um genau zu sein)! Bist du dir sicher das du sie löschen willst?
+            Du löscht sehr viele Gebäude (<count> um genau zu sein)! Bist du dir sicher?
 
     blueprintsNotUnlocked:
         title: Noch nicht freigeschaltet
         desc: >-
-            Blueprints wurden noch nicht freigeschaltet! Beende mehr Levels um es freizuschalten.
+            Blueprints werden erst in Level 12 freigeschalten!
 
     keybindingsIntroduction:
         title: Nützliche Tastenbelegung
         desc: >-
-           Dieses Spiel hat viele Tastenbelegungen was es einfacher macht Fabriken zu bauen.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Wähle Areal aus um zu kopieren/löschen.<br>
-            <code class='keybinding'>SHIFT</code>: Halte um mehrere Maschinen(Gebäude) zu platzieren.<br>
-            <code class='keybinding'>ALT</code>: Invertiere die platzierung der Förderbänder.<br>
+            Dieses Spiel hat viele Tastenbelegungen die es einfacher machen Fabriken zu bauen.
+            Hier sind ein paar, aber prüfe am besten die<strong>Tastenkürzel-Einstellungen</strong>!<br><br>
+             <code class='keybinding'>STRG</code> + Ziehen: Wähle Areal aus.<br>
+             <code class='keybinding'>UMSCH</code>: Halte um mehrere Gebäude zu platzieren.<br>
+             <code class='keybinding'>ALT</code>: Invertiere die Platzierung der Förderbänder.<br>
 
     createMarker:
         title: Neuer Marker
-        desc: Gib es einen sinnvollen Namen
+        desc: Gib ihm einen sinnvollen Namen
 
     markerDemoLimit:
         desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Standalone um unendlich viele Marker zu benutzen!
@@ -275,15 +258,15 @@ ingame:
     # every situation
     keybindingsOverlay:
         moveMap: Bewege
-        selectBuildings: Wähl Areal
-        stopPlacement: Stoppt Platzierung
-        rotateBuilding: Rotiere Gebäude(Maschine)
-        placeMultiple: Mehrfach Platzierung
+        selectBuildings: Wähle Areal
+        stopPlacement: Stoppe Platzierung
+        rotateBuilding: Rotiere Gebäude
+        placeMultiple: Platziere Mehrere
         reverseOrientation: Umgedrehte Orientierung
-        disableAutoOrientation: deaktiviert Auto-Orientierung
-        toggleHud: Umschaltung HUD
-        placeBuilding: Platziert Gebäaude
-        createMarker: Erschaffe Marker
+        disableAutoOrientation: deaktiviere Auto-Orientierung
+        toggleHud: Umschaltung HUD Sichtbarkeit
+        placeBuilding: Platziere Gebäaude
+        createMarker: Erstelle Marker
         delete: Löschen
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
@@ -291,39 +274,39 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Drück <key> um zwischen den Varianten zu wählen.
+        cycleBuildingVariants: Drücke <key> um zwischen den Varianten zu wählen.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Taste: <key>
 
         infoTexts:
             speed: Geschwindigkeit
             range: Reichweite
-            storage: Lager
+            storage: Kapazität
             oneItemPerSecond: 1 item / sekunde
             itemsPerSecond: <x> items / s
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> Feld
+            tiles: <x> Felder
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Level <level>
         completed: Abgeschlossen
-        unlockText: Freigeschaltet <reward>!
-        buttonNextLevel: Nextes Level
+        unlockText: <reward> freigeschalten!
+        buttonNextLevel: Nächstes Level
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: ein neues Upgrade ist verfügbar!
-        gameSaved: Dein Spiel(stand) wurde gespeichert.
+        newUpgrade: Ein neues Upgrade ist verfügbar!
+        gameSaved: Dein Spiel wurde gespeichert.
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Drück <keyCopy> um zu kopieren, <keyDelete> um zu löschen und <keyCancel> um zu abrechen.
+        infoText: Drücke <keyCopy> zum kopieren, <keyDelete> zum löschen und <keyCancel> zum abbrechen.
 
     # The "Upgrades" window
     shop:
@@ -336,7 +319,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMALER LEVEL (Speed x<currentMult>)
+        maximumLevel: MAXIMALES LEVEL (Geschw. x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -344,14 +327,14 @@ ingame:
         dataSources:
             stored:
                 title: Gelagert
-                description: Zeigt die Menge an Formen die im Zentralem Gebäude gelagert sind.
+                description: Zeigt die Menge an Formen, die im zentralen Gebäude gelagert sind.
             produced:
                 title: Produziert
-                description: Zeigt die Menge an Formen die deine ganze Fabrik produziert, auch die Zwischen Produkte.
+                description: Zeigt die Menge an Formen, die deine ganze Fabrik produziert (auch Zwischenprodukte).
             delivered:
-                title: Ausgeliefert
-                description: Zeigt die Menge an Formen die ins Zentrale Gebäude ausgeliefert wurden.
-        noShapesProduced: Keine Formen wurden bisher produziert.
+                title: Eingeliefert
+                description: Zeigt die Menge an Formen, die ins zentrale Gebäude eingeliefert werden.
+        noShapesProduced: Bisher wurden keine Formen produziert.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / m
@@ -360,8 +343,8 @@ ingame:
     settingsMenu:
         playtime: Spielzeit
 
-        buildingsPlaced: Gebäude(Maschine
-        beltsPlaced: Förderband
+        buildingsPlaced: Gebäude
+        beltsPlaced: Förderbänder
 
         buttons:
             continue: Weiter
@@ -382,45 +365,45 @@ ingame:
     waypoints:
         waypoints: Markierungen
         hub: HUB
-        description: Link-Klicke einen Marker um dort hinzugelangen, R.<br><br>Press <keybinding> um einen Marker von deinem Blickwinkel zu erschaffen, oder <strong>Rechts.Klicke</strong> um einen Marker auf deiner ausgewählten Position zu erschaffen.
-        creationSuccessNotification: Marker has been created.
+        description: Links-Klicke einen Marker um dort hinzugelangen, Rechts-Klick um ihn zu löschen.<br><br>Drücke <keybinding> um einen Marker aus deinem Blickwinkel zu erschaffen, oder <strong>Rechts-Klicke</strong> um einen Marker auf deiner ausgewählten Position zu erschaffen.
+        creationSuccessNotification: Marker wurde erstellt.
 
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Platziere einen <strong>Extrahierer</strong> auf der <strong>Kreis Form</strong> um es zu extrahieren!
+            1_1_extractor: Platziere einen <strong>Extrahierer</strong> auf der <strong>Kreis-Form</strong> um sie zu extrahieren!
             1_2_conveyor: >-
-                Verbinde den Extrahierer mit einem <strong>Förderband</strong> und verbinde es mit dem HUB!<br><br>Tip: <strong>Drück und Ziehe</strong> das Fördeband mit der Maus!
+                Verbinde den Extrahierer mit einem <strong>Förderband</strong> und verbinde es mit dem zentralen Gebäude!<br><br>Tipp: <strong>Drück und Ziehe</strong> das Förderband mit der Maus!
 
             1_3_expand: >-
-                Es ist <strong>NICHT</strong> Klicker-Game! Bau mehr Extrahierer und Fördebänder um das Ziel schneller zu erreichen.<br><br>Tip: Halte <strong>UMSCHALT</strong> um mehrere Gebäude(Maschinen) zu platzieren, und nutze <strong>R</strong> um sie zu rotieren.
+                Dies ist <strong>KEIN</strong> Idle-Game! Bau mehr Extrahierer und Fördebänder um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong> um mehrere Gebäude zu platzieren, und nutze <strong>R</strong> um sie zu rotieren.
 
 # All shop upgrades
 shopUpgrades:
     belt:
         name: Förderbänder, Verteiler & Tunnel
-        description: Geschwindigkeit x<currentMult> → x<newMult>
+        description: Geschw. x<currentMult> → x<newMult>
     miner:
         name: Extrahierer
-        description: Geschwindigkeit x<currentMult> → x<newMult>
+        description: Geschw. x<currentMult> → x<newMult>
     processors:
         name: Schneiden, Rotieren & Stapeln
-        description: Geschwindigkeit x<currentMult> → x<newMult>
+        description: Geschw. x<currentMult> → x<newMult>
     painting:
         name: Mischen & Färben
-        description: Geschwindigkeit x<currentMult> → x<newMult>
+        description: Geschw. x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
             name: &belt Förderband
-            description: Transportiert Items, halte und ziehe um mehrere zu platzieren.
+            description: Transportiert Items, halte und ziehe um Mehrere zu platzieren.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extrahierer 
+            name: &miner Extrahierer
             description: Platziere es über einer Form.
 
         chainable:
@@ -430,11 +413,11 @@ buildings:
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Tunnel
-            description: Es erlaubt dir Formen und Farbe unter Gebäuden(Maschinen) und Förderbänder zu vertunneln.
+            description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten.
 
         tier2:
             name: Tunnel Level II
-            description: Es erlaubt dir Formen und Farbe unter Gebäuden(Maschinen) und Förderbänder zu vertunneln. (mit einer höheren Reichweite?)
+            description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten.
 
     splitter: # Internal name for the Balancer
         default:
@@ -443,19 +426,19 @@ buildings:
 
         compact:
             name: Kombinierer (Kompakt)
-            description: Vereint zwei Förderbänder in einen.
+            description: Vereint zwei Förderbänder in eins.
 
         compact-inverse:
             name: Kombinierer (Kompakt)
-            description: Vereint zwei Förderbänder in einen.
+            description: Vereint zwei Förderbänder in eins.
 
     cutter:
         default:
-            name: &cutter Schneider
-            description: Schneidet Formen von oben nach unten und gibt beide dann aus. <strong>Wenn du nur ein Teil benutzt, stelle sicher das die ondere zerstört wird sonst wird die Maschine verstopft!</strong>
+            name: &cutter Zerschneider
+            description: Schneidet Formen von oben nach unten und gibt beide aus. <strong>Wenn du nur eine Hälfte benutzst, stelle sicher das die andere zerstört wird, sonst verstopft die Maschine!</strong>
         quad:
-            name: Schneider (4-Fach)
-            description: Schneidet Formen in vier Teile. <strong>Wenn du nur ein Teill benutzt, stelle sicher das die ondere zerstört wird sonst wird die Maschine verstopft!</strong>
+            name: Zerschneider (4-Fach)
+            description: Schneidet Formen in vier Teile. <strong>>Wenn du nur eine Hälfte benutzst, stelle sicher das die andere zerstört wird, sonst verstopft die Maschine!</strong>
 
     rotater:
         default:
@@ -463,33 +446,35 @@ buildings:
             description: Rotiert Formen im Uhrzeigersinn um 90 Grad.
         GdUS:
             name: Rotierer (GdUS)
-            description: Rotiert Formen Gegen dem Uhrzeigersinn um 90 Grad.
+            description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
 
     stacker:
         default:
             name: &stacker Stapler
-            description: Stapelt beide Formen. Wenn beide nicht vereint werden können, wird die Rechte Form auf die Linke Form gestapelt.
+            description: Stapelt beide Formen. Wenn beide nicht vereint werden können, wird die rechte Form auf die linke Form gestapelt.
 
     mixer:
         default:
-            name: &mixer Farb Mischer
-            description: Mischt zwei Farben mit der additive Mischung.
+            name: &mixer Mixer
+            description: Mischt zwei Farben auf Basis der additiven Farbmischung.
 
     painter:
         default:
             name: &painter Färber
-            description: Färbt die ganze Form, im oberen Eingang, mit der Farbe, im linken Eingang.
+            description: Färbt die ganze Form aus dem linken Eingang mit der Farbe aus dem oberen Eingang.
+
         double:
             name: Färber (2-Fach)
-            description: Färbt die Formen, im oberen Eingang, mit der Farbe, im linken Eingang.
+            description: Färbt die Formen aus dem linken Eingang mit der Farbe aus dem oberen Eingang.
+
         quad:
             name: Färber (4-Fach)
-            description: Erlaubt die jeden einzelnen Viertel beliebig einzufärben.
+            description: Erlaubt jedes einzelne Viertel einer Form beliebig einzufärben.
 
     trash:
         default:
             name: &trash Mülleimer
-            description: Akzeptiert alles aus jeder Richtung und zerstört es. Für immer...
+            description: Akzeptiert Formen und Farben aus jeder Richtung und zerstört sie. Für immer ...
 
         storage:
             name: Lager
@@ -498,12 +483,12 @@ buildings:
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Formen zerschneiden
+        desc: Du hast den <strong>Zerschneider</strong> freigeschalten! - Er zerschneidet Formen von <strong>oben nach unten</strong> unabhängig von ihrer Orientierung!<br><br>Stelle sicher, dass du den Abfall loswirst, sonst <strong>verstopft die Maschine</strong>! - Dafür habe ich dir extra einen Mülleimer freigeschalten.
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Rotieren
+        desc: Der <strong>Rotierer</strong> wurde freigeschalten! Er rotiert Formen im Uhrzeigersinn um 90 Grad!
 
     reward_painter:
         title: Painting
@@ -579,20 +564,20 @@ storyRewards:
             Congratulations! By the way, more content is planned for the standalone!
 
 settings:
-    title: Settings
+    title: Einstellungen
     categories:
-        game: Game
-        app: Application
+        game: Spiel
+        app: Applikation
 
     versionBadges:
-        dev: Development
-        staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+        dev: Entwicklung
+        staging: Beta
+        prod: Produktion
+    buildDate: Gebaut <at-date>
 
     labels:
         uiScale:
-            title: Interface scale
+            title: HUD Größe
             description: >-
                 Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
             scales:
@@ -603,7 +588,7 @@ settings:
                 huge: Huge
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: Zoom sensitivität
             description: >-
                 Changes how sensitive the zoom is (Either mouse wheel or trackpad).
             sensitivity:
@@ -614,59 +599,59 @@ settings:
                 super_fast: Super fast
 
         fullscreen:
-            title: Fullscreen
+            title: Vollbild
             description: >-
                 It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Sounds stummschalten
             description: >-
                 If enabled, mutes all sound effects.
 
         musicMuted:
-            title: Mute Music
+            title: Music stummschalten
             description: >-
                 If enabled, mutes all music.
 
         theme:
-            title: Game theme
+            title: Spiel-Thema
             description: >-
                 Choose the game theme (light / dark).
 
         refreshRate:
-            title: Simulation Target
+            title: Simulations-Ziel
             description: >-
                 If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
 
         alwaysMultiplace:
-            title: Multiplace
+            title: Mehrfachplatzierung
             description: >-
                 If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
 
         offerHints:
-            title: Hints & Tutorials
+            title: Hinweise & Tutorials
             description: >-
                 Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
 
 keybindings:
-    title: Keybindings
+    title: Tastenkürzel
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene Platzierungs-Optionen!
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: Tastenkürzel zurücksetzen.
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Applikation
+        ingame: Spiel
+        navigation: Navigation
+        placement: Platzierung
+        massSelect: Bereichsauswahl
+        buildings: Gebäude-Kürzel
+        placementModifiers: Platzierungs-Modifikatoren
 
     mappings:
-        confirm: Confirm
-        back: Back
+        confirm: Bestätigen
+        back: Zurück
         mapMoveUp: Move Up
         mapMoveRight: Move Right
         mapMoveDown: Move Down
@@ -710,16 +695,16 @@ keybindings:
         placeInverse: Invert automatic belt orientation
 
 about:
-    title: About this Game
+    title: Über dieses Spiel
 
 changelog:
-    title: Changelog
+    title: Änderungen
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
+        restoringGames: Spiele wiederherstellen
+        importingGames: Spiele importieren
+        oneGameLimit: Beschränkt auf einen Spielstand
+        customizeKeybindings: Tastenkürzel anpassen
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Nicht verfügbar in der Demo.

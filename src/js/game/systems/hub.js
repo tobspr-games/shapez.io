@@ -83,10 +83,16 @@ export class HubSystem extends GameSystemWithFilter {
         );
 
         // Reward
-        context.font = "bold 11px GameFont";
+        const rewardText = T.storyRewards[goals.reward].title.toUpperCase();
+        if (rewardText.length > 12) {
+            context.font = "bold 9px GameFont";
+        } else {
+            context.font = "bold 11px GameFont";
+        }
         context.fillStyle = "#fd0752";
         context.textAlign = "center";
-        context.fillText(T.storyRewards[goals.reward].title.toUpperCase(), pos.x, pos.y + 46);
+
+        context.fillText(rewardText, pos.x, pos.y + 46);
 
         // Level
         context.font = "bold 11px GameFont";
