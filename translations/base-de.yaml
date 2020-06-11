@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io is ist ein Spiel über das bauen von automatisierten Fabriken und das kreieren von zunehmend schwereren Formen auf einer unendlich großen Karte.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,13 +30,13 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io ist ein Spiel über das bauen von automatisierten Fabriken und das kreieren von zunehemnd schwereren Fromen. Liefer die angeforderten, zunehmend schweren Formen aus um im Spiel fortzuschreiten und um Upgrades zum verschnellern deiner Fabrik freizuschalten.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        Da der Vebrauch steigt musst du deine Fabrik vegrößern um deine Nachfrage zu decken - Vergiss jedoch nicht die Resourcen, du musst auf der [b]unendlich großen Karte[/b] expandieren!
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Da die Formen irgendwann langweilig werden kannst du Farben vermischen und deine Fromen damit färben - Kombineiere rote, blaue und grüne Farbresourcen um verschiedene Fraben zu produzieren und färbe damit deine Formen um deinen Nachfrage zu erfüllen.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        Dieses Spiel hat 18 verschiedene vorgestellte Levels (Was dich schon Stunden beschäftig hält!) aber ich werde konstant neuen Inhalt hinzufügen - Es ist viel geplannt! 
 
 
         [b]Standalone Advantages[/b]
@@ -76,13 +76,13 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: k
-        millions: M
-        billions: B
-        trillions: T
+        thousands: T
+        millions: Mil
+        billions: Bil
+        trillions: Tri
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: unend
 
     time:
         # Used for formatting past time dates
@@ -98,16 +98,16 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>m
+        hoursAndMinutesShort: <hours>h <minutes>s
 
         xMinutes: <x> Minuten
 
     keys:
         tab: TAB
-        control: CTRL
+        control: STRG
         alt: ALT
         escape: ESC
-        shift: SHIFT
+        shift: UMS
         space: LEER
 
 demoBanners:
@@ -185,90 +185,90 @@ dialogs:
     confirmSavegameDelete:
         title: Bestätige Löschung
         text: >-
-            Bist du sicher das du diesen Spielstand löschen willst?
+            Bist du sicher das du das Spiel(stand) löschen willst?
 
     savegameDeletionError:
-        title: Löschung fehlgeschlagen
+        title: Löschung gescheitert
         text: >-
-            Löschung des Spielstandes fehlgeschlagen.
+            Das Löschen des Spiels ist gescheitert:
 
     restartRequired:
         title: Neustart benötigt
         text: >-
-            Ein Neustart ist benötigt um die Einstellungen anzuwenden.
+            Du muss das Spiel neustarten um die Einstellungen anzuwenden
 
     editKeybinding:
-        title: Steuerung ändern
-        desc: Drücke den Tastatur- oder Mausknopf um diesen festzulegen oder drücke Escape zum abbrechen.
+        title: Ändere Tastenbelegung
+        desc: Drück die Taste oder Maustaste die du vergeben willst, oder ESC um abzubrechen.
 
     resetKeybindingsConfirmation:
-        title: Steuerung zurücksetzen
-        desc: Dies setzt die Steuerung auf die Standarteinstellungen zurück. Bitte bestätigen.
+        title: Tastenbelegung zurücksetzen
+        desc: Das wird all deine Tastenbelegungen auf den Standard zurücksetzen. Bitte bestätige.
 
     keybindingsResetOk:
-        title: Steuerung zurückgesetzt
-        desc: Die Steuerung wurde auf ihre jeweilige Standarteinstellung zurückgesetzt!
+        title: Tastenbelegung zurückgesetzt
+        desc: Die Tastenbelegung wurde auf Ihr Standard zurückgesetzt!
 
     featureRestriction:
-        title: Demoversion
-        desc: Du hast versucht ein Feature (<feature>) welches nicht in der Demoversion vorhanden ist zu benutzen. Kaufe die vollversion für die volle Spielerfahrung!
+        title: Demo Version
+        desc: Du hast ein Feature probiert (<feature>) die nicht in der Demo enthalten ist. ]Prüfe[ ob du die Standalone hast für das volle Erfahrung(Erlebnis)!
 
     saveNotPossibleInDemo:
-        desc: Dein Spielstand wurde gespeichert, aber wiederherstellen ist nur in der Standaloneversion möglich. Kaufe die vollversion für die volle Spielerfahrung!
+        desc: dein Spiel(stand) wurde gespeichert, aber das wiederherstellen ist nur in der Standalone möglich. ]Prüfe[ ob du die Standalone hast für das volle Erfahrung(Erlebnis)!
 
     leaveNotPossibleInDemo:
-        title: Demoversion
-        desc: Dein Spielstand wurde gespeichert, aber du bist nicht in der Lage diesen in der Demoversion wiederherzustellen. Das wiederherstellen von Spielständen ist nur in der Standaloneversion möglich. Bist du sicher?
+        title: Demo version
+        desc: dein Spiel(stand) wurde gespeichert, aber du kannst nicht es in der demo wiederherstellen. Das wiederherstellen deiner Spiel(stände) ist nur in der Vollen Version möglich. Bist du sicher?
 
     newUpdate:
         title: Update verfügbar
-        desc: Ein update ist verfügbar, lade es so schnell wie möglich runter!
+        desc: Es ist ein Update verfügbar, stelle sicher das es heruntergeladen wird!
 
     oneSavegameLimit:
-        title: Limitierte Spielstände
-        desc: Du kannst in der Demoversion immer nur ein Spielstand gleichzeitig haben. Bitte lösche den vorhandenen Spielstand oder kaufe die Standaloneversion!
+        title: Begrenzte Spiele
+        desc: Du kannst nur ein Spiel(stand) auf einmal in der Demo haben. Bitte lösch das Spiel oder hol die die Standalone!
 
     updateSummary:
         title: Neues Update!
         desc: >-
-            Hier sind die Veränderungen seit deinem letzten mal Spielen
+            Hier sind die Änderuneng seit dem letztem Spiel:
 
     hintDescription:
         title: Tutorial
         desc: >-
-            Wenn du hilfe brauchst oder nicht weiter kommst, Schaue dir den 'Show hint' Knopf in der linken unteren Ecke an und ich gebe mein Bestes dir zu helfen!
+            Wenn immer du Hilfe brauchst oder feststeckst, schau dir den 'Hinweis' Knopf unten links an und ich werde meine bestes geben um dir zu Helfen!
 
     upgradesIntroduction:
-        title: Upgrade freischalten
+        title: Upgrades Freischalten
         desc: >-
-            Alle Formen die du produzierst können benutzt werden um neue Upgrades freizuschalten - <strong>Zerstöre deine alten Fabriken nicht!</strong>
-            Der Upgradereiter kann in der rechten oberen Ecke gefunden werden.
+            All deine Formen können benutzt werden um Upgrades freizuschalten - <strong>Zerstöre nicht deine alten Fabriken!</strong>
+           Der Upgrade Tab ist oben rechts im Bildschirm.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Bestätige Löschung
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Du löscht dehr viele Maschinen(Gebäude) (<count> um genau zu sein)! Bist du dir sicher das du sie löschen willst?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Noch nicht freigeschaltet
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            Blueprints wurden noch nicht freigeschaltet! Beende mehr Levels um es freizuschalten.
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Nützliche Tastenbelegung
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
+           Dieses Spiel hat viele Tastenbelegungen was es einfacher macht Fabriken zu bauen.
             Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            <code class='keybinding'>CTRL</code> + Drag: Wähle Areal aus um zu kopieren/löschen.<br>
+            <code class='keybinding'>SHIFT</code>: Halte um mehrere Maschinen(Gebäude) zu platzieren.<br>
+            <code class='keybinding'>ALT</code>: Invertiere die platzierung der Förderbänder.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name
+        title: Neuer Marker
+        desc: Gib es einen sinnvollen Namen
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Standalone um unendlich viele Marker zu benutzen!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
