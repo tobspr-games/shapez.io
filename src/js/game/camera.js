@@ -901,8 +901,8 @@ export class Camera extends BasicSerializableObject {
                 forceX += 1;
             }
 
-            this.center.x += moveAmount * forceX;
-            this.center.y += moveAmount * forceY;
+            this.center.x += moveAmount * forceX * this.root.app.settings.getMovementSpeed();
+            this.center.y += moveAmount * forceY * this.root.app.settings.getMovementSpeed();
         }
     }
 }

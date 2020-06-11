@@ -603,6 +603,18 @@ settings:
                 fast: Fast
                 super_fast: Super fast
 
+        movementSpeed:
+            title: Movement speed
+            description: >-
+                Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
         language:
             title: Language
             description: >-
