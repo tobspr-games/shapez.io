@@ -203,10 +203,6 @@ dialogs:
         title: Demo verze
         desc: Vaše hra byla uložena, ale v demo verzi ji nebudete moci nahrát. Nahrání vašich uložených her je možné pouze v plné verzi. Jste si jisti?
 
-    newUpdate:
-        title: Dostupná aktualizace
-        desc: Je dostupná nová aktualizace, nezapomeňte si ji stáhnout
-
     oneSavegameLimit:
         title: Omezené ukládání
         desc: Ve zkušební verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající uloženou hru nebo si pořiďte plnou verzi!
@@ -235,14 +231,14 @@ dialogs:
     blueprintsNotUnlocked:
         title: Zatím neodemčeno
         desc: >-
-            Plány ještě nebyly odemčeny! Chcete-li je odemknout, dokončete více úrovní.
+            Plány ještě nebyly odemčeny! Chcete-li je odemknout, dokončete úroveň 12.
 
     keybindingsIntroduction:
         title: Užitečné klávesové zkratky
         desc: >-
             Hra má spoustu klávesových zkratek, které usnadňují stavbu velkých továren.
             Zde jsou některé, ale nezapomeňte se podívat i na <strong>ostatní klávesové zkratky</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Táhnout: Vyberte oblast pro zkopírování / smazání.<br>
+            <code class='keybinding'>CTRL</code> + Táhnout: Vybrání oblasti.<br>
             <code class='keybinding'>SHIFT</code>: Podržením můžete umístit více budov za sebout.<br>
             <code class='keybinding'>ALT</code>: Změnit orientaci umístěných pásů.<br>
 
@@ -396,6 +392,11 @@ shopUpgrades:
 
 # Buildings and their name / description
 buildings:
+    hub:
+        deliver: Dodejte
+        toUnlock: pro odemčení
+        levelShortcut: LVL
+
     belt:
         default:
             name: &belt Dopravníkový pás
