@@ -414,6 +414,11 @@ shopUpgrades:
 
 # Buildings and their name / description
 buildings:
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
+
     belt:
         default:
             name: &belt Conveyor Belt

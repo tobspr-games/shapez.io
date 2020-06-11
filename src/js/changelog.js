@@ -4,6 +4,7 @@ export const CHANGELOG = [
         date: "unreleased",
         entries: [
             "Support for translations! Interested in helping out? Check out the <a target='_blank'  href='https://github.com/tobspr/shapez.io/tree/master/translations'>translation guide</a>!",
+            "Update stacker artwork to clarify how it works",
             "Make shapes unpinnable in the upgrades tab (By hexy)",
         ],
     },
