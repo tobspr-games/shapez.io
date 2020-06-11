@@ -53,7 +53,7 @@ global:
     error: Chyba
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: " "
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -185,11 +185,11 @@ dialogs:
 
     resetKeybindingsConfirmation:
         title: Reset klávesových zkratek
-        desc: Opravdu chcete vrátit klávesové zkratky zpět do továrního nastavení?
+        desc: Opravdu chcete vrátit klávesové zkratky zpět do původního nastavení?
 
     keybindingsResetOk:
         title: Reset klávesových zkratek
-        desc: Vaše klávesové zkratky byly resetovány do továrního nastavení!
+        desc: Vaše klávesové zkratky byly resetovány do původního nastavení!
 
     featureRestriction:
         title: Demo verze
@@ -230,14 +230,14 @@ dialogs:
     blueprintsNotUnlocked:
         title: Zatím neodemčeno
         desc: >-
-            Dokončete level 12 pro odemknutí plánů.
+            Plány ještě nebyly odemčeny! Chcete-li je odemknout, dokončete úroveň 12.
 
     keybindingsIntroduction:
         title: Užitečné klávesové zkratky
         desc: >-
             Hra má spoustu klávesových zkratek, které usnadňují stavbu velkých továren.
             Zde jsou některé, ale nezapomeňte se podívat i na <strong>ostatní klávesové zkratky</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Táhnout: Vyberte oblast pro zkopírování / smazání.<br>
+            <code class='keybinding'>CTRL</code> + Táhnout: Vybrání oblasti.<br>
             <code class='keybinding'>SHIFT</code>: Podržením můžete umístit více budov za sebout.<br>
             <code class='keybinding'>ALT</code>: Změnit orientaci umístěných pásů.<br>
 
@@ -482,7 +482,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Řezání tvarů
-        desc: Právě jste odemknuli <strong>pila</strong> - řeže tvary <strong>svisle</strong> bez ohledu na svou orientaci!<br><br>Nezapomeňte se zbavovat odpadu, jinak <strong>se vám zasekne produkce</strong> - pro tento účel jsem vám odemknul koš, který můžete použít na mazání odpadu!
+        desc: Právě jste odemknuli <strong>pilu</strong> - řeže tvary <strong>svisle</strong> bez ohledu na svou orientaci!<br><br>Nezapomeňte se zbavovat odpadu, jinak <strong>se vám zasekne produkce</strong> - pro tento účel jsem vám odemknul koš, který můžete použít na mazání odpadu!
 
     reward_rotater:
         title: Otáčení
