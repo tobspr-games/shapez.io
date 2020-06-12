@@ -1,0 +1,9 @@
+You need to download free-tex-packer-cli from node.
+
+1. npm install -g free-tex-packer-cli
+
+2. run the python script. 
+
+
+*** NOTE ***
+If you see flashing on the edges of animation textures i.e. belts. Try changing the "alphaThreshold" (between 0 and 1.0) key in the *.ftpp files
