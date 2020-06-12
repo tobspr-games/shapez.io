@@ -255,6 +255,11 @@ dialogs:
 
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez !
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -271,6 +276,7 @@ ingame:
         placeBuilding: Placer un bâtiment
         createMarker: Créer une balise
         delete: Supprimer
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -309,7 +315,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Appuyez sur <keyCopy> pour copier, <keyDelete> pour supprimer et <keyCancel> pour annuler.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -656,6 +662,17 @@ settings:
                 Change the language. All translations are user contributed and might be
                 incomplete!
 
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
 keybindings:
     title: Contrôles
     hint: >-
@@ -716,6 +733,8 @@ keybindings:
         placementDisableAutoOrientation: Désactiver l'orientation automatique
         placeMultiple: Rester en mode placement
         placeInverse: Inverser le mode d'orientation automatique
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
 
 about:
     title: À propos de ce jeu

@@ -235,6 +235,11 @@ dialogs:
 
     markerDemoLimit:
         desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -251,6 +256,7 @@ ingame:
         placeBuilding: Položit budovu
         createMarker: Vytvořit značku
         delete: Zničit
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -289,7 +295,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Zmáčkněte <keyCopy> pro zkopírování, <keyDelete> pro smazání, nebo <keyCancel> pro zrušení.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -628,6 +634,17 @@ settings:
             description: >-
                 Pokud zapnuté, budou se ve hře zobrazovat tipy a nápovědy. Také schová určité elementy na obrazovce pro jednodušší dostání se do hry.
 
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
 keybindings:
     title: Klávesové zkratky
     hint: >-
@@ -688,6 +705,8 @@ keybindings:
         placementDisableAutoOrientation: Zrušit automatickou orientaci
         placeMultiple: Zůstat ve stavebním módu
         placeInverse: Přepnout automatickou orientaci pásů
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
 
 about:
     title: O hře

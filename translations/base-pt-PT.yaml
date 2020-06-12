@@ -254,6 +254,11 @@ dialogs:
 
     markerDemoLimit:
         desc: Apenas podes criar dois marcos na versão Demo. Adquire o jogo completo para colocar marcos infinitos!
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -270,6 +275,7 @@ ingame:
         placeBuilding: Colocar construção
         createMarker: Criar marco
         delete: Destruir
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -308,7 +314,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Pressiona <keyCopy> para copiar, <keyDelete> para remover e <keyCancel> para cancelar.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -646,6 +652,17 @@ settings:
             description: >-
                 Se ativado, dá dicas e tutoriais de apoio ao jogo. Adicionalmente, esconde certos elementos da interface do utilizador até ao nível em que são desbloqueados de forma a simplificar o início do jogo.
 
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
 keybindings:
     title: Keybindings
     hint: >-
@@ -706,6 +723,8 @@ keybindings:
         placementDisableAutoOrientation: Desativa orientação automática
         placeMultiple: Continuar no modo de colocação
         placeInverse: Inverter orientação automática do tapete
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
 about:
     title: Sobre o jogo
 

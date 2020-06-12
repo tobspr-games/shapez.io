@@ -230,6 +230,11 @@ dialogs:
 
     markerDemoLimit:
         desc: 데모 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -246,6 +251,7 @@ ingame:
         placeBuilding: 건물 놓기
         createMarker: 마커 놓기
         delete: 삭제
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -283,7 +289,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: <keyCopy>를 눌러서 복사, <keyDelete>를 눌러서 삭제, <keyCancel>로 취소.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -638,6 +644,18 @@ settings:
             title: 힌트와 튜토리얼
             description: >-
                 이것을 끄면 힌트와 튜토리얼이 나오지 않습니다. 또한 게임에 쉽게 들어가기 위해서 주어진 레벨에서 특정 UI 요소를 숨길 수도 있습니다.
+
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
 keybindings:
     title: 키바인딩
     hint: >-
@@ -697,6 +715,8 @@ keybindings:
         placementDisableAutoOrientation: 자동 회전 끄기
         placeMultiple: 배치 모드에 있기
         placeInverse: 자동 벨트 회전 뒤집기
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
 
 about:
     title: 이 게임의 정보

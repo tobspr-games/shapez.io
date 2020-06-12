@@ -250,6 +250,11 @@ dialogs:
 
     markerDemoLimit:
         desc: solo puedes crear dos marcas en la versión de prueba. Obtén el juego completo para marcas ilimitadas!
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -266,6 +271,7 @@ ingame:
         placeBuilding: Colocar edificio
         createMarker: Crear marca
         delete: Destruir
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -304,7 +310,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Pulsa <keyCopy> para copiar, <keyDelete> para borrar y <keyCancel> para cancelar.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -636,6 +642,17 @@ settings:
             description: >-
                 Activa si recibir pistas y tutoriales mientras juegas. También oculta algunos elementos de la interfaz hasta cierto nivel para hacer más fácil la introducción al juego.
 
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
 keybindings:
     title: Atajos de Teclado
     hint: >-
@@ -695,6 +712,8 @@ keybindings:
         placementDisableAutoOrientation: Desactivar orientación automática
         placeMultiple: Permanecer en modo de construcción
         placeInverse: Invierte automáticamente la orientación de las cintas transportadoras
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
 
 about:
     title: Sobre el Juego
