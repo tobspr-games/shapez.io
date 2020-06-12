@@ -235,7 +235,7 @@ dialogs:
     massDeleteConfirm:
         title: Potwierdź Usuwanie
         desc: >-
-            Usuwasz sporą ilość budynków (<count> gwoli ścisłości)! Czy na pewno chcesz kontynuować?
+            Usuwasz sporą ilość maszyn (<count> gwoli ścisłości)! Czy na pewno chcesz kontynuować?
 
     blueprintsNotUnlocked:
         title: Jeszcze Nie Odblokowane
@@ -257,11 +257,11 @@ dialogs:
 
     markerDemoLimit:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną wersję gry dla nielimitowanych znaczników!
+
     massCutConfirm:
-      title: Confirm cut
+      title: Potwierdź wycinanie
       desc: >-
-        You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-        want to do this?
+        Wycinasz sporą ilość maszyn (<count> gwoli ścisłości)! Czy na pewno chcesz kontynuować?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -278,7 +278,7 @@ ingame:
         placeBuilding: Postaw budynek
         createMarker: Stwórz znacznik
         delete: Usuń
-        pasteLastBlueprint: Paste last blueprint
+        pasteLastBlueprint: Wklej ostatnio skopiowany obszar
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -317,7 +317,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: Naciśnij <keyCut> by wyciąć, <keyCopy> by skopiować, <keyDelete> by usunąć lub <keyCancel> by anulować.
 
     # The "Upgrades" window
     shop:
@@ -574,10 +574,11 @@ storyRewards:
     reward_blueprints:
         title: Schematy
         desc: >-
-          You can now <strong>copy and paste</strong> parts of your factory! Select an
-          area (Hold CTRL, then drag with your mouse), and press 'C' to copy
-          it.<br><br>Pasting it is <strong>not free</strong>, you need to produce
-          <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+          Możesz teraz <strong>kopiować i wklejać</strong> części swojej fabryki!
+          Zaznacz obszar (Przytrzymaj CTRL, a następnie przeciągnij myszą) i naciśnij 'C',
+          by go skopiować.<br><br>Wklejanie <strong>nie jest darmowe</strong> - musisz
+          produkować <strong>kształty schematów</strong> (te, które właśnie dostarczyłeś),
+          by móc wklejać!
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -739,8 +740,8 @@ keybindings:
         placementDisableAutoOrientation: Wyłącz automatyczną orientacje
         placeMultiple: Pozostań w trybie stawiania
         placeInverse: Odwróć automatyczną orientacje pasów
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
+        pasteLastBlueprint: Wklej ostatnio skopiowany obszar
+        massSelectCut: Wytnij obszar
 
 about:
     title: O Grze
