@@ -3,6 +3,7 @@ import { makeDiv, round3Digits, round2Digits } from "../../../core/utils";
 import { Math_round } from "../../../core/builtins";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { T } from "../../../translations.js";
 
 export class HUDDebugInfo extends BaseHUDPart {
     createElements(parent) {
@@ -31,15 +32,17 @@ export class HUDDebugInfo extends BaseHUDPart {
         const now = this.root.time.realtimeNow();
         if (now - this.lastTick > 0.25 && this.visible) {
             this.lastTick = now;
-            this.tickRateElement.innerText = "Tickrate: " + this.root.dynamicTickrate.currentTickRate;
-            this.fpsElement.innerText =
-                "FPS: " +
-                Math_round(this.root.dynamicTickrate.averageFps) +
-                " (" +
-                round2Digits(1000 / this.root.dynamicTickrate.averageFps) +
-                " ms)";
-            this.tickDurationElement.innerText =
-                "Tick Dur: " + round3Digits(this.root.dynamicTickrate.averageTickDuration) + "ms";
+            this.tickRateElement.innerText = T.ingame.debug.tickrate.replace(
+                "<x>",
+                this.root.dynamicTickrate.currentTickRate.toString()
+            );
+            this.fpsElement.innerText = T.ingame.debug.fps
+                .replace("<fps>", Math_round(this.root.dynamicTickrate.averageFps).toString())
+                .replace("<ms>", round2Digits(1000 / this.root.dynamicTickrate.averageFps).toString());
+            this.tickDurationElement.innerText = T.ingame.debug.tickDuration.replace(
+                "<ms>",
+                round3Digits(this.root.dynamicTickrate.averageTickDuration).toString()
+            );
         }
     }
 }

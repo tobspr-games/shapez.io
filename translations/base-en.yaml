@@ -381,6 +381,16 @@ ingame:
             1_3_expand: >-
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
 
+    # The debug overlay (F4)
+    # This doesn't need to be translated.
+    debug:
+        tickrate: >-
+            Tickrate: <x>
+        tickDuration: >-
+            Tick Dur: <ms>ms
+        fps: >-
+            FPS: <fps> (<ms> ms)
+
 # All shop upgrades
 shopUpgrades:
     belt:
