@@ -49,6 +49,7 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 
 For most assets I use Adobe Photoshop, you can find them in `assets/`.
 
-You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when thats done.
+You can use the Texture Packing python script in [res_pipeline](/res_pipeline) to generate packed textures. Default builds over [res_built/atlas](/res_built/atlas). Requires [free-tex-packer-cli](https://github.com/odrick/free-tex-packer-cli). Thanks to [Theisen1337](https://github.com/theisen1337) for intergrating.
+
 
 <img src="https://i.imgur.com/W25Fkl0.png" alt="shapez.io Screenshot">
