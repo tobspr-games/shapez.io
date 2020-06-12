@@ -79,40 +79,7 @@ export const globalConfig = {
     },
 
     rendering: {},
-
-    debug: {
-        /* dev:start */
-        // fastGameEnter: true,
-        // noArtificialDelays: true,
-        // disableSavegameWrite: true,
-        // showEntityBounds: true,
-        // showAcceptorEjectors: true,
-        // disableMusic: true,
-        // doNotRenderStatics: true,
-        // disableZoomLimits: true,
-        // showChunkBorders: true,
-        // rewardsInstant: true,
-        allBuildingsUnlocked: true,
-        blueprintsNoCost: true,
-        upgradesNoCost: true,
-        // disableUnlockDialog: true,
-        // disableLogicTicks: true,
-        // testClipping: true,
-        // framePausesBetweenTicks: 40,
-        // testTranslations: true,
-        // enableEntityInspector: true,
-        // testAds: true,
-        // disableMapOverview: true,
-        // disableTutorialHints: true,
-        disableUpgradeNotification: true,
-        // instantBelts: true,
-        // instantProcessors: true,
-        // instantMiners: true,
-        // resumeGameOnFastEnter: false,
-
-        // renderForTrailer: true,
-        /* dev:end */
-    },
+    debug: require("./config.local").default,
 
     // Secret vars
     info: {
@@ -130,14 +97,15 @@ export const globalConfig = {
 export const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 // Automatic calculations
-
 globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5;
 
+// Dynamic calculations
 if (globalConfig.debug.disableMapOverview) {
     globalConfig.mapChunkOverviewMinZoom = 0;
     globalConfig.mapChunkPrerenderMinZoom = 0;
 }
 
+// Stuff for making the trailer
 if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
     globalConfig.debug.framePausesBetweenTicks = 32;
     // globalConfig.mapChunkOverviewMinZoom = 0.0;
@@ -147,4 +115,8 @@ if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
     // globalConfig.debug.instantMiners = true;
     globalConfig.debug.disableSavegameWrite = true;
     // globalConfig.beltSpeedItemsPerSecond *= 2;
+}
+
+if (globalConfig.debug.fastGameEnter) {
+    globalConfig.debug.noArtificalDelays = true;
 }
