@@ -377,7 +377,23 @@ export function findNiceValue(num) {
         return 0;
     }
 
-    const roundAmount = 0.5 * Math_pow(10, Math_floor(Math_log10(num) - 1));
+    let roundAmount = 1;
+    if (num > 50000) {
+        roundAmount = 10000;
+    } else if (num > 20000) {
+        roundAmount = 5000;
+    } else if (num > 5000) {
+        roundAmount = 1000;
+    } else if (num > 2000) {
+        roundAmount = 500;
+    } else if (num > 1000) {
+        roundAmount = 100;
+    } else if (num > 100) {
+        roundAmount = 20;
+    } else if (num > 20) {
+        roundAmount = 5;
+    }
+
     const niceValue = Math_floor(num / roundAmount) * roundAmount;
     if (num >= 10) {
         return Math_round(niceValue);
@@ -388,6 +404,8 @@ export function findNiceValue(num) {
 
     return Math_round(niceValue * 100) / 100;
 }
+
+window.fn = findNiceValue;
 
 /**
  * Finds a nice integer value
