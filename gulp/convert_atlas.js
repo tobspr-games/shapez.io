@@ -73,6 +73,7 @@ files.forEach(filename => {
 
                 let offset = [0, 0];
 
+                // TODO do something with this for textures not generated with GDX
                 // GDX Atlas packer uses 1 - y coordinates. This sucks, and we have to convert it
                 offset[0] = entry_offset[0];
                 offset[1] = entry_orig[1] - entry_offset[1] - entry_size[1];
