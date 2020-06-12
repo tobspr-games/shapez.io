@@ -1,12 +1,14 @@
 export const CHANGELOG = [
-    // {
-    //     version: "1.1.10",
-    //     date: "unreleased",
-    //     entries: [
-    //         "Add and update more translations (Big thank you to all translators!)",
-    //         "Prevent invalid connection if existing underground tunnel entrance exists (by jaysc)",
-    //     ],
-    // },
+    {
+        version: "1.1.10",
+        date: "12.06.2020",
+        entries: [
+            "There are now linux builds on steam! Please report any issues in the discord!",
+            "Steam cloud saves are now available!",
+            "Added and update more translations (Big thank you to all translators!)",
+            "Prevent invalid connection if existing underground tunnel entrance exists (by jaysc)",
+        ],
+    },
     {
         version: "1.1.9",
         date: "11.06.2020",
