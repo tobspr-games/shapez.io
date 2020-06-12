@@ -483,8 +483,9 @@ buildings:
             description: Lagert den Überschuss, bis zu einer gegebenen Kapazität. Kann als Überlauftor agieren.
 
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
+        deliver: Liefere
+        toUnlock: >-
+            Für folgende Belohnung:
         levelShortcut: LVL
 
 storyRewards:

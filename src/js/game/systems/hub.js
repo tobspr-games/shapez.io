@@ -108,6 +108,13 @@ export class HubSystem extends GameSystemWithFilter {
         context.fillStyle = "#64666e";
         context.font = "bold 11px GameFont";
         context.fillText(T.buildings.hub.deliver.toUpperCase(), pos.x, pos.y - 40);
+
+        const unlockText = T.buildings.hub.toUnlock.toUpperCase();
+        if (unlockText.length > 15) {
+            context.font = "bold 8px GameFont";
+        } else {
+            context.font = "bold 11px GameFont";
+        }
         context.fillText(T.buildings.hub.toUnlock.toUpperCase(), pos.x, pos.y + 30);
 
         context.textAlign = "left";
