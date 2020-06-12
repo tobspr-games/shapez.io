@@ -339,6 +339,7 @@ export class KeyActionMapper {
         for (const category in KEYMAPPINGS) {
             for (const key in KEYMAPPINGS[category]) {
                 let payload = Object.assign({}, KEYMAPPINGS[category][key]);
+                payload.keyCodes = payload.keyCodes.slice();
                 if (overrides[key]) {
                     payload.keyCodes[0] = overrides[key];
                 }

@@ -44,7 +44,7 @@ export class KeybindingsState extends TextualGameState {
         } else {
             this.trackClicks(editBtn, () => this.editKeybinding(keybindingId));
         }
-        elem.querySelector(".resetKeybinding").before(mappingDiv, editBtn);
+        elem.querySelector(".resetKeybinding,.addKeybinding").before(mappingDiv, editBtn);
     }
 
     onEnter() {
@@ -74,6 +74,16 @@ export class KeybindingsState extends TextualGameState {
                 title.classList.add("title");
                 title.innerText = T.keybindings.mappings[keybindingId] || `unset(${keybindingId})`;
                 elem.appendChild(title);
+
+                const addBtn = document.createElement("button");
+                addBtn.classList.add("styledButton", "addKeybinding", /* REMOVE THIS */ "editKeybinding");
+                this.trackClicks(addBtn, () => {
+                    let index = mapped.keyCodes.length;
+                    mapped.keyCodes.push(0);
+                    this.addEditField(elem, keybindingId, index, mapped.builtin);
+                    this.editKeybinding(keybindingId + "_" + index);
+                });
+                elem.appendChild(addBtn);
 
                 const resetBtn = document.createElement("button");
                 resetBtn.classList.add("styledButton", "resetKeybinding");
