@@ -619,6 +619,18 @@ settings:
                 fast: Duża
                 super_fast: Bardzo Duża
 
+        movementSpeed:
+            title: Prędkość poruszania
+            description: >-
+                Zmienia, jak szybko widok porusza się, używając skrótów klawiszowych.
+            speeds:
+                super_slow: Bardzo wolna
+                slow: Wolna
+                regular: Zwykła
+                fast: Szybka
+                super_fast: Bardzo szybka
+                extremely_fast: Ekstremalnie szybka
+
         language:
             title: Język
             description: >-
