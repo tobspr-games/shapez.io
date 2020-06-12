@@ -524,52 +524,52 @@ storyRewards:
         desc: Du hast eine zweite Variante des <strong>Rotierers</strong> freigeschaltet! Damit können Items gegen den Uhrzeigensinn gedreht werden. Wähle den Rotierer aus und <strong>drücke 'T', um auf verschiedene Varianten zuzugreifen</strong>!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: Extrahierer (Kette)
+        desc: Du hast den <strong>Extrahierer (Kette)</strong> freigeschaltet! Damit können die Ressourcen an den nächsten Extrahierer <strong>weitergeben</strong> um Ressourcen effizienter weiterzugeben.!
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: Tunnel Level II
+        desc: Du hast eine neue Variante des <strong>Tunnels</strong> freigeschaltet - Dieser hate eine  <strong>höhere Reichweite</strong> und du kannst beide Tunnel miteinander mischen!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Kombinierer (kompakt)
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+           Du hast eine kompakte Variante des <strong>Kombinierers</strong> freigeschaltet - Damit kannst du zwei förderbänder in eins vereinen!
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Zerschneider (4-fach)
+        desc: Du hast eine neue Varienate des <strong>Zerschneiders</strong> freigeschaltet - Damit kannst du Formen in <strong>vier Teile</strong> anstatt zwei schneiden!
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: Färber (2-fach)
+        desc: Du hast eine neue Varienate des <strong>Färbers</strong> freigeschaltet - Hiermit kannst du <strong>zwei Formen auf einmal</strong> färben un verbrauchst nur eine Farbe!
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: Färber (4-fach)
+        desc: Du hast eine neue Varienate des <strong>Färbers</strong> freigeschaltet - Hiermit kannst du jedes Teil einer Form einzelnd färben!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: Lager
+        desc: Du hast eine neue Varienate des <strong>Mülleimers</strong> freigeschaltet  - Hiermit kannst du überschuss bis zu einer gegebenen Kapazität lagern!
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Freispiel
+        desc: Du hast es geschaft! Du hast den <strong>Freispiel Modus</strong> freigeschaltet! Das heißt das Formen jetzt zufällig generiert werden! (Keine Sorge, mehr Inhalt ist für die Standaloneversion geplant!)
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: Blaupause
+        desc: Jetzt kannst du Teile deiner Fabrik <strong>Koppieren und Einfügen</strong>! Wähle ein Areal (halte STRG, und ziehe mit deiner Maus), drücke 'C' um zu Kopieren.<br><br>Einfügen ist <strong>nicht kostenlos</strong>, du must <strong>Blaupausenformen</strong> produzieren um die Kosten zu bezahlen! (Welche du gerade produziert hast).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Nächstes Level
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            Dieses Level hat dir keine Belohnung gegeben, aber das nächste schon! <br><br> PS: Denk dran nicht deine alten Fabriken zu zerstören - Du wirst <strong>all</strong> später noch brauchen um <strong>Upgrades freizuschalten</strong>!
 
     no_reward_freeplay:
-        title: Next level
+        title: Nächstes Level
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Herzlichen Glückwunsch! Ach, und mehr Inhalt ist in der Standaloneversion geplant!
 
 settings:
     title: Einstellungen
