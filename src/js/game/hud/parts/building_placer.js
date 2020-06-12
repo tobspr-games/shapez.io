@@ -131,12 +131,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         if (
             button === enumMouseButton.right &&
             (!this.currentMetaBuilding.get() ||
-                !this.root.app.settings.getSetting("abortPlacementOnDeletion"))
+                !this.root.app.settings.getAllSettings().abortPlacementOnDeletion)
         ) {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            if (this.root.app.settings.getSetting("abortPlacementOnDeletion")) {
+            if (this.root.app.settings.getAllSettings().abortPlacementOnDeletion) {
                 this.currentMetaBuilding.set(null);
             }
             return STOP_PROPAGATION;
@@ -443,7 +443,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         if (cancelAction) {
             if (
                 this.currentMetaBuilding.get() &&
-                this.root.app.settings.getSetting("abortPlacementOnDeletion")
+                this.root.app.settings.getAllSettings().abortPlacementOnDeletion
             ) {
                 this.currentMetaBuilding.set(null);
             } else {
