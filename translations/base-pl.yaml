@@ -549,8 +549,9 @@ storyRewards:
     reward_splitter_compact:
         title: Łącznik Kompaktowy
         desc: >-
-          You have unlocked a compact variant of the <strong>balancer</strong> - It
-          accepts two inputs and merges them into one!
+          Odblokowano nowy wariant <strong>rozdzielacza</strong> - Przyjmuje 
+          przedmioty z dwóch taśmociągów i przenosi je na jeden!
+
     reward_cutter_quad:
         title: Przecinak Poczwórny
         desc: Odblokowano nowy wariant <strong>Przecinaka</strong> - Pozwala ciąć kształty na <strong>cztery ćwiartki</strong>!
