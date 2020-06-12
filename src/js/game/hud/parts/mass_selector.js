@@ -40,7 +40,6 @@ export class HUDMassSelector extends BaseHUDPart {
     initialize() {
         this.deletionMarker = Loader.getSprite("sprites/misc/deletion_marker.png");
 
-        this.currentSelectionStart = null;
         this.currentSelectionStartWorld = null;
         this.currentSelectionEnd = null;
         this.selectedUids = new Set();
@@ -147,8 +146,7 @@ export class HUDMassSelector extends BaseHUDPart {
             this.selectedUids = new Set();
         }
 
-        this.currentSelectionStart = pos.copy();
-        this.currentSelectionStartWorld = this.root.camera.screenToWorld(this.currentSelectionStart);
+        this.currentSelectionStartWorld = this.root.camera.screenToWorld(pos.copy());
         this.currentSelectionEnd = pos.copy();
         return STOP_PROPAGATION;
     }
@@ -158,13 +156,13 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {Vector} pos
      */
     onMouseMove(pos) {
-        if (this.currentSelectionStart) {
+        if (this.currentSelectionStartWorld) {
             this.currentSelectionEnd = pos.copy();
         }
     }
 
     onMouseUp() {
-        if (this.currentSelectionStart) {
+        if (this.currentSelectionStartWorld) {
             const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
 
@@ -183,7 +181,6 @@ export class HUDMassSelector extends BaseHUDPart {
                 }
             }
 
-            this.currentSelectionStart = null;
             this.currentSelectionStartWorld = null;
             this.currentSelectionEnd = null;
         }
@@ -200,7 +197,7 @@ export class HUDMassSelector extends BaseHUDPart {
     draw(parameters) {
         const boundsBorder = 2;
 
-        if (this.currentSelectionStart) {
+        if (this.currentSelectionStartWorld) {
             const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
 
