@@ -43,16 +43,16 @@ steamPage:
 
         [list]
             [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
+            [*] Végtelen mentések
+            [*] Sötét Mód
+            [*] Több beállítás
+            [*] Lehetővé teszed, hogy tovább fejlesszem a shapez.io-t ❤️
             [*] More features in the future!
         [/list]
 
         [b]Planned features & Community suggestions[/b]
 
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        Ez a játék nyílt forráskódú - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
 
         [list]
             [*] Sztori mód, ahol az épületek alakzatokba kerülnek
@@ -60,7 +60,7 @@ steamPage:
             [*] Különböző térképek, és talán akadályok
             [*] Configurable map creation (Edit number and size of patches, seed, and more)
             [*] Sokkal több alakzat
-            [*] More performance improvements (Although the game already runs pretty good!)
+            [*] More performance improvements (Bár a játék így is elég jól fut!)
             [*] Színvak mód
             [*] And much more!
         [/list]
@@ -112,7 +112,7 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Demó verzi
     intro: >-
         Get the standalone to unlock all features!
 
@@ -128,8 +128,8 @@ mainMenu:
     browserWarning: >-
         Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: <x>. szint
+    savegameLevelUnknown: Ismeretlen szint
 
     contests:
         contest_01_03062020:
@@ -161,9 +161,9 @@ dialogs:
         cancel: Megszakítás
         later: Később
         restart: Újrakezdés
-        reset: Reset
+        reset: Visszaállítás
         getStandalone: Get Standalone
-        deleteGame: I know what I do
+        deleteGame: Tudom mit csinálok
         viewUpdate: View Update
         showUpgrades: Show Upgrades
         showKeybindings: Show Keybindings
@@ -181,7 +181,7 @@ dialogs:
     gameLoadFailure:
         title: Game is broken
         text: >-
-            Failed to load your savegame:
+            Failed to load your savegame: Nem sikerült betölteni a mentésed
 
     confirmSavegameDelete:
         title: Confirm deletion
@@ -219,9 +219,9 @@ dialogs:
         desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
 
     updateSummary:
-        title: New update!
+        title: Új frissítés!
         desc: >-
-            Here are the changes since you last played:
+            Here are the changes since you last played: 
 
     upgradesIntroduction:
         title: Unlock Upgrades
@@ -235,7 +235,7 @@ dialogs:
             You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Még nincs feloldva
         desc: >-
             Blueprints have not been unlocked yet! Complete more levels to unlock them.
 
@@ -250,7 +250,7 @@ dialogs:
 
     createMarker:
         title: New Marker
-        desc: Give it a meaningful name
+        desc: Adj neki egy értelmes nevet
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
@@ -286,7 +286,7 @@ ingame:
             speed: Gyorsaság
             range: Range
             storage: Storage
-            oneItemPerSecond: 1 tárgy / másodperc
+            oneItemPerSecond: 1 tárgy / mp
             itemsPerSecond: <x> tárgy / mp
             itemsPerSecondDouble: (x2)
 
@@ -295,10 +295,10 @@ ingame:
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
+        levelTitle: <level>. szint
         completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        unlockText: Feloldva <reward>!
+        buttonNextLevel: Következő Szint
 
     # Notifications on the lower right
     notifications:
@@ -312,8 +312,8 @@ ingame:
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Fejlesztések
+        buttonUnlock: Fejlesztés
 
         # Gets replaced to e.g. "Tier IX"
         tier: Tier <x>
@@ -325,13 +325,13 @@ ingame:
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: Statisztikák
         dataSources:
             stored:
-                title: Stored
+                title: Tárolva
                 description: Displaying amount of stored shapes in your central building.
             produced:
-                title: Produced
+                title: Gyártva
                 description: Displaying all shapes your whole factory produces, including intermediate products.
             delivered:
                 title: Delivered
@@ -361,7 +361,7 @@ ingame:
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Ár
 
     # Map markers
     waypoints:
@@ -581,7 +581,7 @@ settings:
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Interfész nagyság
             description: >-
                 Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
             scales:
@@ -596,11 +596,11 @@ settings:
             description: >-
                 Changes how sensitive the zoom is (Either mouse wheel or trackpad).
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Szuper lassú
+                slow: Lassú
+                regular: Közepes
+                fast: Gyors
+                super_fast: Szuper gyors
 
         language:
             title: Nyelv
@@ -613,12 +613,12 @@ settings:
                 It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Hangok Némítása
             description: >-
                 If enabled, mutes all sound effects.
 
         musicMuted:
-            title: Mute Music
+            title: Zene Némítása
             description: >-
                 If enabled, mutes all music.
 
@@ -628,8 +628,8 @@ settings:
                 Choose the game theme (light / dark).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Sötét
+                light: Világos
 
         refreshRate:
             title: Simulation Target
@@ -664,7 +664,7 @@ keybindings:
 
     mappings:
         confirm: Confirm
-        back: Back
+        back: Vissza
         mapMoveUp: Move Up
         mapMoveRight: Move Right
         mapMoveDown: Move Down
@@ -675,8 +675,8 @@ keybindings:
         mapZoomOut: Zoom out
         createMarker: Create Marker
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Fejlesztések
+        menuOpenStats: Statisztikák
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
@@ -684,12 +684,12 @@ keybindings:
         splitter: *splitter
         underground_belt: *underground_belt
         miner: *miner
-        cutter: *cutter
+        cutter: *vágó
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer
         painter: *painter
-        trash: *trash
+        trash: *szemét
 
         abortBuildingPlacement: Abort Placement
         rotateWhilePlacing: Rotate
@@ -715,9 +715,9 @@ changelog:
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
+        restoringGames: Mentések visszaállítása
+        importingGames: Mentések importálása
+        oneGameLimit: Egy mentésre van limitálva
         customizeKeybindings: Customizing Keybindings
 
     settingNotAvailable: Nem elérhető a demóban.
