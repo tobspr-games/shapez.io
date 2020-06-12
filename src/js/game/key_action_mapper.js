@@ -65,7 +65,9 @@ export const KEYMAPPINGS = {
         massSelectStart: { keyCode: 17 }, // CTRL
         massSelectSelectMultiple: { keyCode: 16 }, // SHIFT
         massSelectCopy: { keyCode: key("C") },
+        massSelectCut: { keyCode: key("X") },
         confirmMassDelete: { keyCode: 46 }, // DEL
+        pasteLastBlueprint: { keyCode: key("V") },
     },
 
     placementModifiers: {

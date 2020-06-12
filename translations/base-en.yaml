@@ -234,6 +234,11 @@ dialogs:
         desc: >-
             You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
 
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+
     blueprintsNotUnlocked:
         title: Not unlocked yet
         desc: >-
@@ -270,6 +275,7 @@ ingame:
         placeBuilding: Place building
         createMarker: Create Marker
         delete: Destroy
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -308,7 +314,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -697,11 +703,13 @@ keybindings:
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Confirm Mass Delete
+        pasteLastBlueprint: Paste last blueprint
         cycleBuildings: Cycle Buildings
 
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area
+        massSelectCut: Cut area
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
