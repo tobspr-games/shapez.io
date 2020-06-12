@@ -745,6 +745,12 @@ keybindings:
 
 about:
     title: O Grze
+    body: >-
+        Ta gra jest open-source. Rozwijana jest przez <a href="https://github.com/tobspr" target="_blank">Tobiasa Springera</a> (to ja).<br><br>
+        Jeżeli chcesz pomóc w rozwoju gry, sprawdź <a href="<githublink>" target="_blank">repozytorium shapez.io na Githubie</a>.<br><br>
+        Ta gra nie byłaby możliwa bez wspaniałej społeczności Discord skupionej na moich grach - Naprawdę powinieneś dołączyć do <a href="<discordlink>" target="_blank">mojego serwera Discord</a>!<br><br>
+        Ścieżka dźwiękowa tej gry została stworzona przez <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsena</a> - Jest niesamowity.<br><br>
+        Na koniec, wielkie dzięki mojemu najlepszemu przyjacielowi: <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Bez naszego wspólnego grania w Factorio, ta gra nigdy by nie powstała.
 
 changelog:
     title: Dziennik zmian
