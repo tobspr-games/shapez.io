@@ -225,6 +225,10 @@ dialogs:
 
     upgradesIntroduction:
         title: Открыть улучшения
+        desc: >-
+          All shapes you produce can be used to unlock upgrades - <strong>Don't destroy
+          your old factories!</strong> The upgrades tab can be found on the top right
+          corner of the screen.
     massDeleteConfirm:
         title: Подтвердить удаление
         desc: >-

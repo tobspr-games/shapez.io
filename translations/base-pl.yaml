@@ -542,6 +542,9 @@ storyRewards:
 
     reward_splitter_compact:
         title: Łącznik Kompaktowy
+        desc: >-
+          You have unlocked a compact variant of the <strong>balancer</strong> - It
+          accepts two inputs and merges them into one!
     reward_cutter_quad:
         title: Przecinak Poczwórny
         desc: Odblokowano nowy wariant <strong>Przecinaka</strong> - Pozwala ciąć kształty na <strong>cztery ćwiartki</strong>!
@@ -564,6 +567,11 @@ storyRewards:
 
     reward_blueprints:
         title: Schematy
+        desc: >-
+          You can now <strong>copy and paste</strong> parts of your factory! Select an
+          area (Hold CTRL, then drag with your mouse), and press 'C' to copy
+          it.<br><br>Pasting it is <strong>not free</strong>, you need to produce
+          <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:

@@ -502,6 +502,9 @@ storyRewards:
 
     reward_mixer:
         title: Kleuren mengen
+        desc: >-
+          The <strong>mixer</strong> has been unlocked - Combine two colors using
+          <strong>additive blending</strong> with this building!
 
     reward_stacker:
         title: Stapelaar

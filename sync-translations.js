@@ -49,12 +49,7 @@ function match(originalObj, translatedObj, path = "/") {
                     "vs",
                     translatedPlaceholders
                 );
-                console.warn(" | Obsolete key", path + key);
-                // changes.push({
-                //     key: path + key,
-                //     value: null,
-                // });
-                delete translatedObj[key];
+                translatedObj[key] = originalObj[key];
                 continue;
             }
         } else {

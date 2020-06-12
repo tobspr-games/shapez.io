@@ -321,6 +321,7 @@ ingame:
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -384,15 +385,19 @@ ingame:
 shopUpgrades:
     belt:
         name: Esteiras, Distribuidores e Túneis
+        description: Speed x<currentMult> → x<newMult>
 
     miner:
         name: Extração
+        description: Speed x<currentMult> → x<newMult>
 
     processors:
         name: Cortar, Rotacionar e Empilhamento
+        description: Speed x<currentMult> → x<newMult>
 
     painting:
         name: Misturador e pintura
+        description: Speed x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
@@ -507,6 +512,10 @@ storyRewards:
 
     reward_splitter:
         title: Divisor/fusão
+        desc: >-
+            The multifunctional <strong>balancer</strong> has been unlocked - It can be
+            used to build bigger factories by <strong>splitting and merging items</strong>
+            onto multiple belts!<br><br>
 
     reward_tunnel:
         title: Túnel

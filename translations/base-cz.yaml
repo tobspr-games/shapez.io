@@ -195,10 +195,6 @@ dialogs:
         title: Demo verze
         desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Pořiďte si plnou verzi pro lepší zážitek!
 
-
-
-
-
     oneSavegameLimit:
         title: Omezené ukládání
         desc: Ve zkušební verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající uloženou hru nebo si pořiďte plnou verzi!
@@ -208,7 +204,7 @@ dialogs:
         desc: >-
             Tady jsou změny od posledně:
 
-        upgradesIntroduction:
+    upgradesIntroduction:
         title: Odemknout vylepšení
         desc: >-
             Všechny tvary, které vytvoříte, lze použít k odemčení vylepšení - <strong>Neničte své staré továrny!</strong>
@@ -614,9 +610,9 @@ settings:
                 Vybere motiv (světlý / tmavý).
 
             themes:
-              dark: Dark
-              light: Light 
- 
+                dark: Dark
+                light: Light
+
         refreshRate:
             title: Cíl simulace
             description: >-
