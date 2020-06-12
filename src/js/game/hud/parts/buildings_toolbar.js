@@ -109,18 +109,39 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
     }
 
     cycleBuildings() {
+        const actionMapper = this.root.keyMapper;
         let newIndex = this.lastSelectedIndex;
-        for (let i = 0; i < toolbarBuildings.length; ++i, ++newIndex) {
-            newIndex %= toolbarBuildings.length;
-            const metaBuilding = gMetaBuildingRegistry.findByClass(toolbarBuildings[newIndex]);
-            const handle = this.buildingHandles[metaBuilding.id];
-            if (!handle.selected && handle.unlocked) {
-                break;
+
+        if (actionMapper.getBinding(KEYMAPPINGS.placementModifiers.cycleInverse).isCurrentlyPressed()) {
+            for (let i = 0; i < toolbarBuildings.length; --i, --newIndex) {
+                if (newIndex < 0) newIndex = newIndex + toolbarBuildings.length;
+                newIndex %= toolbarBuildings.length;
+
+                if (this.isCycledBuildingSelectable(newIndex)) {
+                    break;
+                }
+            }
+        } else {
+            for (let i = 0; i < toolbarBuildings.length; ++i, ++newIndex) {
+                newIndex %= toolbarBuildings.length;
+                if (this.isCycledBuildingSelectable(newIndex)) {
+                    break;
+                }
             }
         }
         const metaBuildingClass = toolbarBuildings[newIndex];
         const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
         this.selectBuildingForPlacement(metaBuilding);
+    }
+
+    isCycledBuildingSelectable(toolbarIndex) {
+        const metaBuilding = gMetaBuildingRegistry.findByClass(toolbarBuildings[toolbarIndex]);
+        const handle = this.buildingHandles[metaBuilding.id];
+        if (!handle.selected && handle.unlocked) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
