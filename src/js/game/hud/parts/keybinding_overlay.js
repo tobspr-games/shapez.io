@@ -19,7 +19,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
         const mapper = this.root.keyMapper;
 
         const getKeycode = id => {
-            return getStringForKeyCode(mapper.getBinding(id).keyCode);
+            return getStringForKeyCode(mapper.getBinding(id).keyCodes[0]);
         };
 
         this.element = makeDiv(
