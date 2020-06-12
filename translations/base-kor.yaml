@@ -21,55 +21,43 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapz.io는 도형을 만들어 조합하는 공장을 짓는 게임입니다. 플레이 할수록 점점 더 어려운 도형을 만들어야 됩니다.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
     # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
-
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
-
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
-
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
-
-
-        [b]Standalone Advantages[/b]
-
+         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+        shapez.io는 도형을 만들어 조합하는 공장을 짓는 게임입니다. 점점 더 복잡해지는 도형들을 제작해서 공장의 속도를 올리시기 바랍니다
+        수요가 늘수록 공장을 더 넓혀야 합니다. 자원을 늘리는 것도 잊으면 안됩니다. 무한한 크기의 맵에서 확장을 해 나가야 합니다.!
+        도형은 금방 지루해 지기 때문에 색을 조합하여 색칠하십시오.  빨강, 초록, 파랑 색을 섞어서 만든 다양한 색으로 수요를 만족시키세요.
+        이 게임에는 18개의 레벨이 있습니다 (이것 만으로도 여러분들은 이미 몇시간이 걸렸을 거예요!) 하지만 저는 항상 새로운 컨텐츠를 추가하고 있습니다 - 계획해 놓은 것들이 많습니다!
+        [b]유료 버전의 장점[/b]
         [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
+            [*] 마커
+            [*] 저장파일 무한정
+            [*] 다크 모드
+            [*] 다양한 설정 가능
+            [*] 제가 shapez. Io를 더 개발하는데 도움이 됨 
+            [*] 향후 더 많은 컨텐츠
         [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
-
+        [b] 예정된 컨탠츠 및 커뮤니티 제안[/b]
+       이 게임은 오픈 소스입니다. 따라서 누구나 기여할 수 있습니다. 또한, 커뮤니티의 제안을 [b]많이[/b] 듣고 있습니다! 가능한 많이 읽고 많이 반영하도록 노력하겠습니다.
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
-            [*] And much more!
+            [*] 건물을 도형으로 구매해야 돼는 스토리 모드
+            [*] 더 많은 레벨과 건물 (유료 버전 한정)
+            [*] 다양한 월드와 맵 장애물
+            [*] 당신만의 맵 제작
+            [*] 더 많은 종류의 도형
+            [*] 속도 업그레이드 (지금도 게임이 잘 되긴 합니다!)
+            [*] 색맹자용 모드
+            [*] 등등
         [/list]
-
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
-
+        저의 트렐로 보드를 확인해서 로드맵을 확인해보세요! https://trello.com/b/ISQncpJP/shapezio
 global:
-    loading: Loading
-    error: Error
+    loading: 로딩중
+    error: 에러
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -77,30 +65,30 @@ global:
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: k
-        millions: M
-        billions: B
-        trillions: T
+        millions: m
+        billions: b
+        trillions: t
 
     # Shown for infinitely big numbers
     infinite: inf
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: 일초 전
+        xSecondsAgo: <x>초 전
+        oneMinuteAgo: 일분 전
+        xMinutesAgo: <x>분전
+        oneHourAgo: 한 시간 전
+        xHoursAgo: <x> 시간 전
+        oneDayAgo: 일일 전
+        xDaysAgo: <x>일 전
 
         # Short formats for times, e.g. '5h 23m'
-        secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        secondsShort: <seconds>초
+        minutesAndSecondsShort: <minutes>분 <seconds>초
+        hoursAndMinutesShort: <hours>시간 <minutes>분
 
-        xMinutes: <x> minutes
+        xMinutes: <x>분
 
     keys:
         tab: TAB
@@ -112,227 +100,211 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: 무료 버전
     intro: >-
-        Get the standalone to unlock all features!
-
+        유료 버전을 구매해서 모든 컨탠츠를 사용해 보세요!
 mainMenu:
-    play: Play
-    changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    play: 시작
+    changelog: 버전 기록
+    importSavegame: 불러오기
+    openSourceHint: 이 게임은 오픈 소스입니다!
+    discordLink: 공식 디스코드 서버
+    helpTranslate: 번역을 도와주세요!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
-
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+        이 게임은 당신의 브라우저에서 느리게 작동하는 것으로 알려져 있습니다. 더 좋은 성능을 위해 유료 버전을 구매하거나 크롬을 다운받으세요.
+    savegameLevel: 레벨 <x>
+    savegameLevelUnknown: 레벨 모름
 
     contests:
         contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            title: "#1번 콘테스트"
+            desc: 가장 멋진 공장을 지은 사람은 $25를 받습니다!
             longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
+                여러분들에게 무언가를 나눠드리고 싶어서 주간 콘테스트를 개최합니다!
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>이번주 토픽:</strong> 가장 멋있는 공장을 만드세요!
                 <br><br>
-                Here's the deal:<br>
+               참여하는 법:<br>
                 <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
+                    <li>여러분 공장의 스크린샷을 여기로 보내세요: <strong>contest@shapez.io</strong></li>
+                    <li>소셜 미디어에 공유하면 보너스 포인트!</li>
+                    <li>스크린샷 5개를 골라 <strong>디스코드 </strong> 커뮤니티에서 투표를 진행할 예정입니다.</li>
+                    <li>우승자는 <strong>$25</strong>를 받습니다! (PayPal이나 아마존 기프트 카드 중 원하는 것으로)</li>
+                    <li>기한: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                I'm looking forward to seeing your awesome creations!
-
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+               당신들의 멋진 공장을 보고 싶습니다!
+        showInfo: 보기
+        contestOver: 이 콘테스트는 끝났습니다. 디스코드에서 새로운 콘테스트 관련 알림을 받으세요!
 
 dialogs:
     buttons:
-        ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        ok: 확인
+        delete: 지우기
+        cancel: 취소
+        later: 나중에
+        restart: 다시 시작
+        reset: 리셋
+        getStandalone: 유료 버전 구매하기
+        deleteGame: 확실합니다
+        viewUpdate: 업데이트 보기
+        showUpgrades: 업그래이드 보기
+        showKeybindings: 조작법 보기
 
     importSavegameError:
-        title: Import Error
+        title: 불러오기 오류
         text: >-
-            Failed to import your savegame:
-
+            저장 파일을 불러오지 못했습니다:
     importSavegameSuccess:
-        title: Savegame Imported
+        title: 저장 파일 불러오기 성공
         text: >-
-            Your savegame has been successfully imported.
-
+           저장 파일이 성공적으로 불러와졌습니다.
     gameLoadFailure:
-        title: Game is broken
+        title: 게임이 깨졌습니다.(???)
         text: >-
-            Failed to load your savegame:
-
+            저장 파일을 불러오지 못했습니다:
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: 삭제 확인
         text: >-
-            Are you sure you want to delete the game?
-
+            이 게임 파일을 정말로 삭제하겠습니까?
     savegameDeletionError:
-        title: Failed to delete
+        title: 삭제 실패
         text: >-
-            Failed to delete the savegame:
-
+            저장 파일을 삭제하지 못했습니다.
     restartRequired:
-        title: Restart required
+        title: 다시 시작 필요
         text: >-
-            You need to restart the game to apply the settings.
-
+            설정을 적용하려면 게임을 다시 시작해야 됩니다.
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: 키바인딩 바꾸기
+        desc: 당신이 원하는 키나 마우스 버튼을 눌러서 바꾸거나 ESC를 눌러 취소하세요.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: 키바인딩 제설정
+        desc: 이것은 모든 키바인딩을 기본값으로 초기화합니다. 
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: 키바인딩 제설정 완료
+        desc: 모든 키바인딩이 기본값으로 재설정 되었습니다!
 
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        title: 데모 버전
+        desc: 데모 버전에는 없는 컨탠츠(<feature>)로 시도했습니다. 유료 버전을 구입해서 모든 컨텐츠를 사용해보세요!
 
     saveNotPossibleInDemo:
-        desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
+        desc: 게임이 저장되었지만 불러오기는 유료 버전에서만 가능합니다. 유료 버전을 구입해서 모든 컨텐츠를 사용해보세요!
 
     leaveNotPossibleInDemo:
-        title: Demo version
-        desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
+        title: 데모 버전
+        desc: 게임이 저장되었지만, 데모 버전에서는 불러오기가 되지 않습니다. 게임 불러오기는 유료 버전 에서만 가능합니다. 이대로 진행하시겠습니까?
 
     newUpdate:
-        title: Update available
-        desc: There is an update for this game available, be sure to download it!
+        title: 업데이트 버전 가능
+        desc: 이 게임의 새로운 버전이 있습니다. 새로운 버전을 다운받으세요.
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: 저장파일 개수 제한
+        desc: 데모 버전에서는 저장 파일을 한 번에 한 개만 사용할 수 있습니다. 이미 있는 저장 파일을 지우거나 유료 버전을 구입 해주새요.
 
     updateSummary:
-        title: New update!
+        title: 신규 버전!
         desc: >-
-            Here are the changes since you last played:
-
+            지난번 플레이 이후 변경사항은 다음과 같습니다.
     hintDescription:
-        title: Tutorial
+        title: 튜토리얼
         desc: >-
-            Whenever you need help or are stuck, check out the 'Show hint' button in the lower left and I'll give my best to help you!
-
+            도움이 필요할 때는 왼쪽 아래에 있는 힌트 보기 버튼을 누르세요. 최선을 다해 돕겠습니다.
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: 업그래이드 하기
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
-
+            여러분이 만든 모든 도형은 업그레이드에 사용 될 수 있습니다! - <strong> 만들어 놓은 공장을 허물지 마세요!</strong>
+            업그래이드 버튼은 화면의 오른쪽 위에 있습니다.
     massDeleteConfirm:
-        title: Confirm delete
+        title: 삭제 확인
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
-
+           당신은 많은 건물을 삭제하려고 하고있습니다! (정확히는 <count>개) 삭제하시겠습니까?
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: 아직 사용 불가 
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
-
+            복사 기능은 아직 열리지 않았습니다! 레벨을 올려서 잠금을 해제하세요.
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: 유용한 키바인딩 
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
-
+            큰 공장을 지을 때 유용한 키바인딩이 많습니다!
+            아래를 확인하세요.<strong>나머지 키바인딩도 확인해보세요!</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Drag: 지역을 선택해서 복사/삭제하세요.<br>
+            <code class='keybinding'>SHIFT</code>: 한꺼번에 여러 개의 건물을 배치하세요.<br>
+            <code class='keybinding'>ALT</code>: 설치된 컨베이어 벨트의 방향을 바꾸세요.<br>
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name
+        title: 새로운 마커
+        desc: 의미 있는 이름을 지어주세요
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: 데모 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
+        moveMap: 움지기기
+        selectBuildings: 지역 선택
+        stopPlacement: 건물 놓기 중지
+        rotateBuilding: 건물 회전
+        placeMultiple: 여러 개 놓기
+        reverseOrientation: 방향 뒤집기
+        disableAutoOrientation: 자동 회전 끄기
+        toggleHud: UI 끄기/키기
+        placeBuilding: 건물 놓기
+        createMarker: 마커 놓기
+        delete: 삭제
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: <key>를 눌러 변형된 버전 선택
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
-
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            speed: 속도
+            range: 최대 거리
+            storage: 저장공간 
+            oneItemPerSecond: 초당 1개 
+            itemsPerSecond: 초당 <x>개 
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> 타일
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: 레벨 <level>
+        completed: 완료
+        unlockText: <reward> 잠금 해제!
+        buttonNextLevel: 다음 레벨
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: 새로운 업그래이드를 할 수 있습니다!
+        gameSaved: 게임이 저장되었습니다.
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: <keyCopy>를 눌러서 복사, <keyDelete>를 눌러서 삭제, <keyCancel>로 취소.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: 업그레이드 
+        buttonUnlock: 업그레이드하기 
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: 티어 <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
@@ -341,391 +313,378 @@ ingame:
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: 통계
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: 저장된 도형
+                description: 당신의 중앙 건물에 저장되어 있는 도형들의 수
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: 제작된 도형
+                description: 당신의 공장에서 만들어지고 있는 모든 도형의 개수
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: 도착한 도형
+                description: 당신의 중앙 건물에 도착하고 있는 도형의 개수
+        noShapesProduced: 지금까지 제작된 도형이 없습니다. 
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        shapesPerMinute:  분당 <shapes>개
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: 플레이 시간
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: 배치한 건물
+        beltsPlaced: 배치한 컨베이어 벨트
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: 계속하기
+            settings: 설정
+            menu: 메뉴로 돌아가기
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: 도움이 필요하세요?
+        showHint: 힌트 보기
+        hideHint: 닫기
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: 가격
 
     # Map markers
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        waypoints: 마커
+        hub: 중앙 건물
+        description: 마커를 좌클릭해서 그곳으로 가고, 우클릭해서 삭제합니다.<br><br><keybinding>을 눌러 지금 있는 곳에 마커를 놓거나 <strong>우클릭해서</strong> 원하는 곳에 놓으세요.
         creationSuccessNotification: Marker has been created.
 
     # Interactive tutorial
     interactiveTutorial:
-        title: Tutorial
+        title: 튜토리얼
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: <strong>추출기</strong>를 <strong>원 모양의 도형</strong>에 놓아서 추출하세요!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
-
+               추출기를 <strong>컨베이어 벨트</strong>로 당신의 중앙 건물에 연결하세요!<br><br>팁: 마우스로 벨트를 <strong>클릭해서 드래그</strong>하세요!
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
-
+                이것은 아이들 게임이 <strong>아닙니다!</strong> 추출기를 더 놓아 목표를 빨리 달성하세요.<br><br>팁: <strong> SHIFT </strong>를 눌러 여러 개의 추출기를 놓고 <strong>R</strong>로 회전 시키세요.
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: 컨베이어 벨트, 배분기, 터널
+        description: 속도 x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: 추출
+        description: 속도 x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
+        name: 자르기, 회전, 쌓기
         description: Speed x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
+        name: 색 섞기, 색칠하기
         description: Speed x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &컨베이어 벨트
+            description: 도형을 운반. 클릭 및 드래그해서 여러 개 배치.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &추출기
+            description: 도형 또는 색소 위에 놓아서 추출하기
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: 체인 추출기
+            description: 도형 또는 색소 위에 놓아서 추출하기. 여러 개를 연결할 수 있음.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &터널
+            description: 도형을 건물과 벨트 밑으로 통과시킴.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: 터널 티어 II
+            description: 도형을 건물과 벨트 밑으로 통과시킴.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &배분기
+            description: 입력되는 도형을 출력에 평등하게 배분.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 컴팩트 연결기 
+            description: 컨베이어 벨트 2개를 1개로 연결한다.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 컴팩트 연결기 
+            description: 컨베이어 벨트 2개를 1개로 연결한다.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &절단기
+            description: 도형을 위에서 아래로 2개로 나눈다. <strong>만약, 출력한 2개중 1개만 사용하면 기계가 멈추니 사용하지 않는 나머지 한 개는 버릴 것</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: 절단기 (4단)
+            description: 도형을 4개로 나눈다. <strong>만약, 한 개만 사용하면 기계가 멈추니 나머지는 버릴 것</strong>
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &회전기
+            description: 도형을 시계방향으로 90도 회전시킨다.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: 회전기 (반시계방향)
+            description: 도형을 반시계방향으로 90도 회전시킨다.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &스택커
+            description: 도형 2개를 쌓는다. 합칠 수가 없다면 오른쪽 도형이 왼쪽 도형 위에 놓아진다. 
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &색 혼합기
+            description: 두가지 색을 섞어서 다른 색을 만든다.
 
     painter:
         default:
-            name: &painter Painter
-            description: Colors the whole shape on the left input with the color from the right input.
+            name: &도형 색칠기
+            description: 도형을 색소로 색칠한다.
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: 2단 도형 색칠기
+            description: 왼쪽에 입력되는 도형을 위에서 입력되는 색소로 색칠한다.
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: 4단 도형 색칠기
+            description: 도형의 4가지 분단을 각각 다른 색으로 색칠할 수 있다.
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &휴지통
+            description: 양쪽에서 오는 모든 입력물을 버린다.
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: 저장소
+            description: 할당된 용량만큼 초과되는 도형을 저장한다.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: 도형 자르기
+        desc: 당신은 <strong>절단기</strong>를 방금 잠금 해제했습니다! 절단기는 도형을 위에서 아래로 둘로 자릅니다.<br><br> 사용하지 않는 부분은 꼭 버리세요. 그렇지 않으면 기계가 <strong>멈춤니다</strong>. 이런 이유로 휴지통을 만들었습니다.
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: 도형 회전기
+        desc: <strong>도형 회전기</strong>가 잠금 해제되었습니다! 이것은 도형을 시계방향으로 90도 회전 시킵니다.
 
     reward_painter:
-        title: Painting
+        title: 도형 색칠기
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, I'm working on a solution already!
+             <strong>도형 색칠기</strong>가 잠금 해제 되었습니다! 색소 광물을 추출해서 이 기계로 도형을 색칠하세요. <br><br>PS: 당신이 색맹이라면, 해결책을 찾고 있으니 잠시만 기다려주세요!
 
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: 색 혼합기
+        desc: <strong>색 혼합기</strong>가 잠금 해제 되었습니다! 이 건물로 색을 혼합 시키세요.
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: 스태커
+        desc: 이제는 <strong>스태커</strong>로 도형을 쌓거나 합칠 수 잇습니다. 두개를 합칠 수 있으면 합쳐지고 그렇지 않으면 오른쪽의 도형이 왼쪽의 도형 위에 쌓아집니다.
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: 배분기
+        desc: <strong>배분기</strong>가 잠금 해제되었습니다! 이것으로 벨트 2개를 입력을 벨트 1개의 출력으로 축소시킬 수 있습니다! <br<br> 또한, 벨트 2개의 입력을 벨트 2개의 출력으로 평등하게 자원을 배분할 수 있습니다.
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        title: 터널
+        desc: <strong>터널</strong>이 잠금 해제되었습니다! 자원을 건물과 벨트 밑으로 운송 할 수 있습니다.
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: 도형 회전기 (반시게방향)
+        desc: <strong>반시게방향 회전기</strong>가 잠금 해제되었습니다! 이것을 배치하려면 회전기를 선택하고 <strong>T</strong>를 눌러서 변형된 버전을 사용하세요!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: 체인 추출기
+        desc: <strong>체인 추출기</strong>가 잠금 해제되었습니다! 여러 개를 붙여 속도와 효율성을 높일 수 있습니다.
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: 터널 티어 II 
+        desc: <strong>터널 티어 II</strong>가 잠금 해제되었습니다! 일반 터널보다 더 멀리 자원을 보낼 수 있습니다.
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: 컴팩트 연결기
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            <strong>컴팩트 연결기</strong>가 잠금 해제되었습니다! 벨트 2개를 1개로 만듭니다. 
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: 절단기 (4단)
+        desc: <strong>4단 절단기</strong>가 잠금 해제되었습니다! 도형을 2조각 아닌 4조각으로 나눌 수 있습니다.
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: 도형 색칠기 (2단)
+        desc: <strong>2단 도형 색칠기</strong>가 잠금 해제되었습니다! 색소 한 개로 한 번에 도형 2개를 색칠할 수 있습니다. 
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: 도형 색칠기 (4단)
+        desc: <strong>4단 도형 색칠기</strong>가 잠금 해제되었습니다! 도형의 4분단을 각각 다른 색으로 색칠할 수 있습니다!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: 저장소
+        desc: <strong>저장소</strong>가 잠금 해제되었습니다! 주어진 용량만큼 자원을 저장할 수 있습니다! 
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: 프리플레이 모드
+        desc: 당신이 해냈습니다! 이제부터는 <strong>프리플레이</strong>모드입니다! 도형이 랜덤으로 제작된다는 의미 입니다. <br><br.> 너무 걱정하지는 마세요. 유료 버전용으로 더 많은 레벨들이 만들어지고 있습니다.
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: 블루프린트
+        desc: 이제부터는 공장의 일부 지역을 <strong>복사하여 붙여넣기</strong> 할 수 있습니다! CTRL을 누르면서 드래그해서 먼저 지역을 선택하세요. <br><br> 그 다음에는 C, DEL, ESC 로 복사하거나, 지우거나, 취소 하세요.<br><br> 복사는 무료가 이닙니다. 특별한 "화폐" 도형으로 돈을 지불하고 복사가 됩니다.
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: 다음 레벨
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
-
+            이번 레벨은 보상이 없지만 다음 레벨은 보상이 있습니다! <br><br> PS: 지금 있는 공장을 지우지 마세요 - 업그레이드에 가지고 있는 모든 도형을 사용해야 합니다.
     no_reward_freeplay:
-        title: Next level
+        title: 다음 레벨
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
-
+            축하드립니다! 유료 버전을 위한 더 많은 컨텐츠를 만들고 있습니다.
 settings:
-    title: Settings
+    title: 설정
     categories:
-        game: Game
-        app: Application
+        game: 게임
+        app: 앱
 
     versionBadges:
-        dev: Development
-        staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+        dev: 발전 중
+        staging: 단계적으로 발전 중
+        prod: 제작 중
+    buildDate: 날짜<at-date>
 
     labels:
         uiScale:
-            title: Interface scale
+            title: UI 크기
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                UI의 크기를 변경시키기:
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: 매우 작게
+                small: 작게
+                regular: 보통
+                large: 크게
+                huge: 거대하게
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: 확대 민감도
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                마우스 휠이나 트렉패드로 확대하는 데의 민감도
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: 매우 느리게
+                slow: 느리게
+                regular: 보통
+                fast: 빠르게
+                super_fast: 매우 빠르게
 
         language:
-            title: Language
+            title: 언어
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
-
+                언어 바꾸기 - 모든 언어팩은 사용자들이 만든 것이므로 완성되지 않았을 수 있습니다..
         fullscreen:
             title: Fullscreen
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
-
+                이 게임은 풀 스크린으로 하는 것이 가장 좋습니다. 풀 스크린 모드는 유료 버전에서만 가능합니다.
         soundsMuted:
-            title: Mute Sounds
+            title: 소리 끄기
             description: >-
-                If enabled, mutes all sound effects.
-
+                모든 효과음을 끕니다.
         musicMuted:
-            title: Mute Music
+            title: 음악 끄기
             description: >-
-                If enabled, mutes all music.
-
+                모든 배경 음악을 끕니다.
         theme:
-            title: Game theme
+            title: 게임 테마
             description: >-
-                Choose the game theme (light / dark).
-
+                게임 테마를 고르세요. (밝음/어두움).
         refreshRate:
-            title: Simulation Target
+            title: 모니터 리프레쉬 속도
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
-
+              당신의 모니터의 리프세쉬 속도가 144hz 보다 높으면 이 설정을 바꾸어서 게임이 더 빨리 리프레시 되게 하세요. 만약에 컴퓨터가 느리다면 FPS에 영양을 미칠 수 있습니다.
         alwaysMultiplace:
-            title: Multiplace
+            title: 항상 여러 개 배치
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
-
+                배치 이후에도 모든 빌딩이 선택되어 있습니다. SHIFT를 계속 누르고 있는 것과 같은 효과입니다. 
         offerHints:
-            title: Hints & Tutorials
+            title: 힌트와 튜토리얼
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
-
+                이것을 끄면 힌트와 튜토리얼이 나오지 않습니다. 또한 게임에 쉽게 들어가기 위해서 주어진 레벨에서 특정 UI 요소를 숨길 수도 있습니다. 
 keybindings:
-    title: Keybindings
+    title: 키바인딩
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
-
-    resetKeybindings: Reset Keyinbindings
+        팁: CTRL, SHIFT, ALT를 활용하세요. 건물을 배치할 때 유용합니다.
+    resetKeybindings: 키바인딩 리셋
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: 앱
+        ingame: 게임
+        navigation: 둘러보기
+        placement: 놓기
+        massSelect: 여러 개 선택
+        buildings: 건물 쇼트컷
+        placementModifiers: 배치 수정기
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        centerMap: Center Map
+        confirm: 확인
+        back: 취소
+        mapMoveUp: 위로 가기
+        mapMoveRight: 오른쪽으로 가기
+        mapMoveDown: 밑으로 가기
+        mapMoveLeft: 왼쪽으로 가기
+        centerMap: 맵 중앙으로 가기
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: 확대
+        mapZoomOut: 축소
+        createMarker: 마커 놓기
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: 업그래이드
+        menuOpenStats: 통계
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
-        belt: *belt
-        splitter: *splitter
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        painter: *painter
-        trash: *trash
+        toggleHud: UI보기/숨기기
+        toggleFPSInfo: FPS 와 디버그 보기/숨기기
+        belt: *컨배이어 벨트
+        splitter: *배분기
+        underground_belt: *터널
+        miner: *추출기
+        cutter: *절단기
+        rotater: *도형 회전기
+        stacker: *스태커
+        mixer: *색 혼합기
+        painter: *도형 색칠기
+        trash: *휴지통
 
-        abortBuildingPlacement: Abort Placement
-        rotateWhilePlacing: Rotate
+        abortBuildingPlacement: 건물 배치 취소
+        rotateWhilePlacing: 회전
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
-        cycleBuildings: Cycle Buildings
+            Modifier: 대신 반시계방향으로 회전
+        cycleBuildingVariants: 변형종 사용
+        confirmMassDelete: 대량 삭제 확인
+        cycleBuildings: 건물 사이클
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
+        massSelectStart: 누르고 드래그해서 시작
+        massSelectSelectMultiple: 여러 곳 선택
+        massSelectCopy: 지역 복사
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
+        placementDisableAutoOrientation: 자동 회전 끄기
+        placeMultiple: 배치 모드에 있기
+        placeInverse: 자동 벨트 회전 뒤집기
 
 about:
-    title: About this Game
+    title: 이 게임의 정보
 
 changelog:
-    title: Changelog
+    title: 업데이트 기록
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
+        restoringGames: 게임 자장 파일 리스토어 하기
+        importingGames: 게임 저장 파일 불러오기
+        oneGameLimit: 게임 저장 파일 최대 1개
+        customizeKeybindings: 키바인딩 설정하기
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: 데모 버전에서 사용 불가
