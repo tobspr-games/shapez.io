@@ -5,6 +5,7 @@ export const CHANGELOG = [
         entries: [
             "Pinned shapes are now smart, they dynamically update their goal and also unpin when no longer required. Completed objectives are now rendered transparent.",
             "Improve upgrade number rounding, so there are no goals like '37.4k', instead it will now be '35k'",
+            "Selecting an area now is relative to the world and thus does not move when moving the screen",
             "Fix bug regarding number rounding",
         ],
     },
