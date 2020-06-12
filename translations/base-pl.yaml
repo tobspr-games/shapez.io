@@ -410,7 +410,7 @@ buildings:
     belt:
         default:
             name: &belt Taśmociąg
-            description: Transportuje obiekty, przytrymaj by postawić kilka.
+            description: Transportuje obiekty, przytrzymaj by postawić kilka.
 
     miner: # Internal name for the Extractor
         default:
@@ -650,7 +650,7 @@ settings:
         refreshRate:
             title: Częstość Odświeżania
             description: >-
-                Jeśli posiadasz monitor z częstotliwością odświeżania 144hz, zmień tę opcje na poprawnego odświeżania ekranu. To może wpłynąć na FPS jeśli masz za wolny komputer.
+                Jeśli posiadasz monitor z częstotliwością odświeżania 144hz, zmień tę opcje na poprawną częstotliwość odświeżania ekranu. To może wpłynąć na FPS jeśli masz za wolny komputer.
 
         alwaysMultiplace:
             title: Wielokrotne budowanie
