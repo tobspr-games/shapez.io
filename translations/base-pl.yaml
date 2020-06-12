@@ -78,7 +78,7 @@ global:
     # Translator note: We don't use SI size units for common speak, but if you want to keep it SI
     # ...also, Polish has wierd nature of diffrent number naming, we have "million" and "milliard"-thing wich actually is billion in English
     suffix:
-        thousands: tyś
+        thousands: tys
         millions: mln
         billions: mld
         trillions: bln
