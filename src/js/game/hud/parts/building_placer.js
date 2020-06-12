@@ -400,13 +400,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         if (
             this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.cycleInverse).isCurrentlyPressed()
         ) {
-            if (index - 1 < 0) indexModifier = availableVariantsLength - 1;
-            else indexModifier -= 1;
+            indexModifier -= 1;
         } else {
             indexModifier += 1;
         }
 
-        return (index + indexModifier) % availableVariantsLength;
+        return (index + indexModifier + availableVariantsLength) % availableVariantsLength;
     }
 
     /**

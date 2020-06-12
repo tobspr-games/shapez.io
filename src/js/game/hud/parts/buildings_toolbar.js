@@ -114,9 +114,7 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
 
         if (actionMapper.getBinding(KEYMAPPINGS.placementModifiers.cycleInverse).isCurrentlyPressed()) {
             for (let i = 0; i < toolbarBuildings.length; --i, --newIndex) {
-                if (newIndex < 0) newIndex = newIndex + toolbarBuildings.length;
-                newIndex %= toolbarBuildings.length;
-
+                newIndex = (newIndex + toolbarBuildings.length) % toolbarBuildings.length;
                 if (this.isCycledBuildingSelectable(newIndex)) {
                     break;
                 }
