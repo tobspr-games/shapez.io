@@ -32,9 +32,9 @@ steamPage:
 
         shapez.io é um jogo cujo objetivo é construir fábricas para automatizar a criação e combinação de formas geométricas. Entrega as formas cada vez mais complexas que são pedidas de forma a progredir no jogo e desbloquear melhorias para acelerar a produção da tua fábrica
 
-        Uma vez que a procura aumenta, terás de aumentar a tua fábrica para fazer face às necessidades - No entanto, não te esqueças dos recursos, terás de expandir no [b]mapa infinito[/b]!
+        Uma vez que a procura aumenta a cada nível, terás de aumentar a tua fábrica para fazer face às necessidades - Para isso, terás de expandir no [b]mapa infinito[/b] para explorar todos os recursos!
 
-        Como produzir formas se tornará aborrecido rapidamente, não tarda terás de misturar cores e pintá-las com elas - Combina os recursos de cores vermelha, verde e azul para produzir diferentes cores e usá-las para pintar as formas geométricas de forma a satisfazer a procura.
+        Como produzir formas se tornará aborrecido rapidamente, não tardará até precisares de misturar cores e pintá-las com elas - Combina os recursos de cores vermelha, verde e azul para produzir diferentes cores e usá-las para pintar as formas geométricas com o intuito de satisfazer a procura.
 
         Este jogo conta com 18 níveis (Que deverão manter-te ocupado durante horas!) mas estou constantemente a adicionar novos conteúdos - Há muitas coisas planedas!
 
@@ -58,7 +58,7 @@ steamPage:
             [*] Modo história onde as construções custam formas geométricas
             [*] Mais níveis & construções (exclusivo do jogo completo)
             [*] Mapas diferentes, e talvez com obstáculos
-            [*] Criação de mapas configurável (Editar o número e tamanho das minas, semente, e mais)
+            [*] Criação de mapas configuráveis (Editar o número e tamanho das minas, semente, e mais)
             [*] Mais tipos de formas geométricas
             [*] Mais melhorias de performance (Apesar do jogo já correr bastante bem!)
             [*] Modo daltónico
@@ -232,18 +232,18 @@ dialogs:
     massDeleteConfirm:
         title: Confirma a eliminação
         desc: >-
-            Estás a apagar muitas construções (<count> para ser exato)! Tens a certeza que o queres fazer?
+            Estás a apagar muitas construções (<count> para ser exato)! Tens a certeza?
 
     blueprintsNotUnlocked:
         title: Não desbloqueado ainda
         desc: >-
-            Os Projetos ainda não foram desbloqueados! Completa mais níveis para as desbloquear.
+            Os Projetos ainda não foram desbloqueados! Completa mais níveis para os desbloquear.
 
     keybindingsIntroduction:
         title: Keybindings úteis
         desc: >-
             Este jogo tem vários keybindings que tornarão mais fácil a construção de grandes fábricas.
-            Aqui estão alguns, mas <strong>verifica as keybindings</strong>!<br><br>
+            Aqui estão alguns, mas <strong>verifica as restantes keybindings</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Drag: Seleciona a área para copiar / eliminar.<br>
             <code class='keybinding'>SHIFT</code>: Mantém pressionado para colocar várias construções.<br>
             <code class='keybinding'>ALT</code>: Inverte as posições.<br>
@@ -308,7 +308,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Pressiona <keyCopy> para copiar, <keyDelete> para removel e <keyCancel> para cancelar.
+        infoText: Pressiona <keyCopy> para copiar, <keyDelete> para remover e <keyCancel> para cancelar.
 
     # The "Upgrades" window
     shop:
@@ -355,7 +355,7 @@ ingame:
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Precisa de ajuda?
+        title: Precisas de ajuda?
         showHint: Mostrar dica
         hideHint: Fechar
 
@@ -374,7 +374,7 @@ ingame:
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Coloca um <strong>extrator</strong> em cima da <strong>forma circular</strong> para extrai-la!
+            1_1_extractor: Coloca um <strong>extrator</strong> em cima da <strong>forma circular</strong> para extraí-la!
             1_2_conveyor: >-
                 Liga o extrator a um <strong>tapete rolante</strong> em direção ao Edifício Central!<br><br>Dica: <strong>Clica e arrasta</strong> o tapete com o rato!
 
@@ -458,7 +458,7 @@ buildings:
     mixer:
         default:
             name: &mixer Misturador de cores
-            description: Mistura duas cores usando mistura aditiva.
+            description: Mistura duas cores através de mistura aditiva.
 
     painter:
         default:
@@ -480,15 +480,15 @@ buildings:
             name: Armazém
             description: Armazena items em excesso até uma determinada capacidade. Pode ser usado como uma porta de transbordamento.
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
+        deliver: Entrega
+        toUnlock: para desbloquear
+        levelShortcut: NVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Corte de formas
-        desc: Acabaste de desbloquear o <strong>Cortador</strong> - ele corta as formas geométricas ao meio de <strong>cima para baixo</strong> independentemente da orientação!<br><br>Certifica-te de que te livras do desperdício, caso contrário <strong>vai empancar</strong> - Para isso, dou-te um lixo, que destrói tudo o que lá coloques!
+        desc: Acabaste de desbloquear o <strong>Cortador</strong> - ele corta as formas geométricas ao meio de <strong>cima para baixo</strong> independentemente da orientação!<br><br>Certifica-te de que te livras do desperdício, caso contrário <strong>empancará</strong> - Para isso, dou-te um lixo, que destruirá tudo o que lá colocares!
 
     reward_rotater:
         title: Rotação
@@ -501,11 +501,11 @@ storyRewards:
 
     reward_mixer:
         title: Mistura de Cores
-        desc: O <strong>Misturador</strong> foi desbloqueado - Combina duas cores usando <strong>mistura aditiva</strong> com esta construção!
+        desc: O <strong>Misturador</strong> foi desbloqueado - Combina duas cores através de <strong>mistura aditiva</strong> com esta construção!
 
     reward_stacker:
         title: Empilhar
-        desc: Agora podes combinar formas geométricas com o <strong>Combinador</strong>! Ambos os inputs são combinados, e se puderem ser colocados lado-a-lado, serão <strong>fundidos</strong>. Caso contrário, o input da direita é <strong>empilhado em cima</strong> do da esquerda!
+        desc: Agora podes combinar formas geométricas com o <strong>Combinador</strong>! Ambos os inputs são combinados e, se puderem ser colocados lado-a-lado, serão <strong>fundidos</strong>. Caso contrário, o input da direita é <strong>empilhado em cima</strong> do da esquerda!
 
     reward_splitter:
         title: Distribuidor/Misturador
@@ -517,7 +517,7 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Rotação CCW
-        desc: Desbloqueaste umaa variante do <strong>Rodador</strong> - Permite rodar no sentido contrário ao dos ponteiros do relógio! Para construí-lo, seleciona o Rodador e <strong>pressiona 'T' para ver as variantes</strong>!
+        desc: Desbloqueaste uma variante do <strong>Rodador</strong> - Permite rodar no sentido contrário ao dos ponteiros do relógio! Para construí-lo, seleciona o Rodador e <strong>pressiona 'T' para escolher as variantes</strong>!
 
     reward_miner_chainable:
         title: Extração em série
@@ -605,7 +605,7 @@ settings:
         language:
             title: Língua
             description: >-
-                Muda a língua. Todas as traduções são contribuições dos utilizadores e pode estar incompletas!
+                Muda a língua. Todas as traduções são contribuições dos utilizadores e podem estar incompletas!
 
         fullscreen:
             title: Ecrã inteiro
@@ -628,16 +628,16 @@ settings:
                 Escolhe o tema do jogo (claro / escuro).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Escuro
+                light: Claro
 
         refreshRate:
             title: Frequência
             description: >-
-                Se tens um monitor 144hz, muda a frequência aqui para que o jogo simule corretamente frequências de autalização altas. Isto pode resultar em perda de FPS se o teu computador for demasiado lento.
+                Se tens um monitor 144hz, muda a frequência para que o jogo simule corretamente frequências de autalização altas. Isto pode resultar em perda de FPS se o teu computador for demasiado lento.
 
         alwaysMultiplace:
-            title: Colocação multipla
+            title: Colocação múltipla
             description: >-
                 Se ativado, todas as construções permanecerão selecionadas após a colocação até cancelares. Isto é equivalente a pressionares SHIFT permanentemente.
 
