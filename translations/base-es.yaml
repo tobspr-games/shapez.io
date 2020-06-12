@@ -99,7 +99,7 @@ global:
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
 
-        xMinutes: <x> minutes
+        xMinutes: <x> minutos
 
     keys:
         tab: TAB
@@ -120,7 +120,7 @@ mainMenu:
     changelog: Registro de cambios
     importSavegame: Importar
     openSourceHint: Este juego es de código abierto!
-    discordLink: Servidor de Discord Oficil
+    discordLink: Servidor de Discord Oficial
     helpTranslate: Ayuda a traducirlo!
 
     # This is shown when using firefox and other browsers which are not supported.
@@ -219,7 +219,7 @@ dialogs:
     updateSummary:
         title: Nueva actualización!
         desc: >-
-            Estos on los cambios desde la última vez que jugaste:
+            Estos son los cambios desde la última vez que jugaste:
 
     upgradesIntroduction:
         title: Desbloquear Mejoras
@@ -276,7 +276,7 @@ ingame:
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Tecla: <key>
 
         infoTexts:
             speed: Velocidad
