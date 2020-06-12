@@ -45,4 +45,4 @@ PS: I'm super busy, but I'll give my best to do it quickly!
 
 ## Updating a language to the latest version
 
-Right now there is no possibility to automatically update a translation to the latest version. It is required to manually check the base translation (`base-en.yaml`) and compare it to the other translations to remove unused keys and add new ones.
+Run `yarn syncTranslations` in the root directory to synchronize all translations to the latest version! This will remove obsolete keys and add newly added keys. (Run `yarn` before to install packes).

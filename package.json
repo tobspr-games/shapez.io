@@ -17,7 +17,8 @@
         "publishOnSteam": "cd gulp/steampipe && ./upload.bat",
         "publishStandalone": "yarn publishOnItch && yarn publishOnSteam",
         "publishWeb": "cd gulp && yarn main.deploy.prod",
-        "publish": "yarn publishStandalone && yarn publishWeb"
+        "publish": "yarn publishStandalone && yarn publishWeb",
+        "syncTranslations": "node sync-translations.js"
     },
     "dependencies": {
         "@babel/core": "^7.5.4",
@@ -45,6 +46,7 @@
         "logrocket": "^1.0.7",
         "lz-string": "^1.4.4",
         "markdown-loader": "^4.0.0",
+        "match-all": "^1.2.5",
         "obfuscator-loader": "^1.1.2",
         "phonegap-plugin-mobile-accessibility": "^1.0.5",
         "promise-polyfill": "^8.1.0",
@@ -65,7 +67,9 @@
         "webpack-plugin-replace": "^1.1.1",
         "webpack-strip-block": "^0.2.0",
         "whatwg-fetch": "^3.0.0",
-        "worker-loader": "^2.0.0"
+        "worker-loader": "^2.0.0",
+        "yaml": "^1.10.0",
+        "yawn-yaml": "^1.5.0"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "3.0.1",
