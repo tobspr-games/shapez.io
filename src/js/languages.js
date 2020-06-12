@@ -50,4 +50,10 @@ export const LANGUAGES = {
         code: "ru",
         region: "",
     },
+    "kor": {
+        name: "	한국어",
+        data: require("./built-temp/base-kor.json"),
+        code: "kor",
+        region: "",
+    },
 };

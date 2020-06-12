@@ -39,7 +39,7 @@ export class HUDInteractiveTutorial extends BaseHUDPart {
             "ingame_HUD_InteractiveTutorial",
             ["animEven"],
             `
-            <strong class="title">Tutorial</strong>
+            <strong class="title">${T.ingame.interactiveTutorial.title}</strong>
             `
         );
 
