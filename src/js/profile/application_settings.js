@@ -373,7 +373,11 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string} id
      */
     resetKeybindingOverride(id) {
-        delete this.getAllSettings().keybindingOverrides[id];
+        let overrides = this.getAllSettings().keybindingOverrides;
+        delete overrides[id];
+        for (let index = 1; overrides[id + "_" + index]; index++) {
+            delete overrides[id + "_" + index];
+        }
         return this.writeAsync();
     }
     /**
