@@ -244,17 +244,21 @@ export class Keybinding {
      * @param {KeyActionMapper} keyMapper
      * @param {Application} app
      * @param {object} param0
-     * @param {number} param0.keyCode
-     * @param {number} param0.keyCode2
+     * @param {number} [param0.keyCode]
+     * @param {number[]} [param0.keyCodes]
      * @param {boolean=} param0.builtin
      * @param {boolean=} param0.repeated
      */
-    constructor(keyMapper, app, { keyCode, keyCode2 = 0, builtin = false, repeated = false }) {
-        assert(keyCode && Number.isInteger(keyCode), "Invalid key code: " + keyCode);
+    constructor(keyMapper, app, { keyCode = 0, keyCodes = [], builtin = false, repeated = false }) {
+        if (keyCode && keyCode != keyCodes[0]) {
+            keyCodes.unshift(keyCode);
+        }
+        for (let keyCode of keyCodes) {
+            assert(Number.isInteger(keyCode), "Invalid key code: " + keyCode);
+        }
         this.keyMapper = keyMapper;
         this.app = app;
-        this.keyCode = keyCode;
-        this.keyCode2 = keyCode2;
+        this.keyCodes = keyCodes;
         this.builtin = builtin;
         this.repeated = repeated;
 
@@ -268,10 +272,12 @@ export class Keybinding {
      */
     get pressed() {
         // Check if the key is down
-        if (this.app.inputMgr.keysDown.has(this.keyCode) || this.app.inputMgr.keysDown.has(this.keyCode2)) {
-            // Check if it is the top reciever
-            const reciever = this.keyMapper.inputReceiver;
-            return this.app.inputMgr.getTopReciever() === reciever;
+        for (let keyCode of this.keyCodes) {
+            if (this.app.inputMgr.keysDown.has(keyCode)) {
+                // Check if it is the top reciever
+                const reciever = this.keyMapper.inputReceiver;
+                return this.app.inputMgr.getTopReciever() === reciever;
+            }
         }
         return false;
     }
@@ -295,19 +301,17 @@ export class Keybinding {
         }
         const spacer = document.createElement("code");
         spacer.classList.add("keybinding");
-        spacer.innerHTML = getStringForKeyCode(this.keyCode);
+        spacer.innerHTML = getStringForKeyCode(this.keyCodes[0]);
         elem.appendChild(spacer);
         return spacer;
     }
 
     /**
      * Returns the key code as a nice string
+     * @param {number} index
      */
-    getKeyCodeString() {
-        return getStringForKeyCode(this.keyCode);
-    }
-    getKeyCodeString2() {
-        return getStringForKeyCode(this.keyCode2);
+    getKeyCodeString(index = 0) {
+        return getStringForKeyCode(this.keyCodes[index] || 0);
     }
 
     /**
@@ -342,8 +346,11 @@ export class KeyActionMapper {
                 if (overrides[key]) {
                     payload.keyCode = overrides[key];
                 }
-                if (overrides[key + "_2"]) {
-                    payload.keyCode2 = overrides[key + "_2"];
+                payload.keyCodes = payload.keyCodes || [];
+                let index = 1;
+                while (overrides[`${key}_${index + 1}`]) {
+                    payload.keyCodes.push(overrides[`${key}_${index + 1}`]);
+                    index++;
                 }
 
                 this.keybindings[key] = new Keybinding(this, this.root.app, payload);
@@ -412,7 +419,7 @@ export class KeyActionMapper {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
             if (
-                (binding.keyCode === keyCode || binding.keyCode2 == keyCode) &&
+                binding.keyCodes.includes(keyCode) &&
                 (initial || binding.repeated)
             ) {
                 /** @type {Signal} */
