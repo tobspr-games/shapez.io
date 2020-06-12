@@ -46,13 +46,13 @@ steamPage:
             [*] Oneindig veel Savegames
             [*] Donkere modus
             [*] Meer opties
-            [*] Door jouw steun kan ik shapez.io verder ontwikkelen ❤️
+            [*] Met jouw steun kan ik shapez.io verder ontwikkelen ❤️
             [*] Meer functies in de toekomst!
         [/list]
 
         [b]Geplande functies & suggesties van de community[/b]
 
-        Deze game is open source - Iedereen kan bijdragen! Daarnaast luister ik [b]erg veel[/b] naar de community! Ik probeer alle suggesties te lezen en neem zo veel mogelijk feedback mee als mogelijk.
+        Dit spel is open source - Iedereen kan bijdragen! Daarnaast luister ik [b]erg veel[/b] naar de community! Ik probeer alle suggesties te lezen en gebruik feedback zo veel als mogelijk. 
 
         [list]
             [*] Verhaalmodus, waar gebouwen specifieke vormen kosten om te bouwen
@@ -86,7 +86,7 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: een seconde geleden
+        oneSecondAgo: één seconde geleden
         xSecondsAgo: <x> seconden geleden
         oneMinuteAgo: een minuut geleden
         xMinutesAgo: <x> minuten geleden
@@ -199,8 +199,8 @@ dialogs:
             Je moet het spel opnieuw opstarten om de instellingen toe te passen.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Verander sneltoetsen
+        desc: Druk op de toets of muisknop die je aan deze functie toe wil wijzen, of druk op ESC om te annuleren.
 
     resetKeybindingsConfirmation:
         title: Reset sneltoetsen
@@ -255,17 +255,16 @@ dialogs:
     markerDemoLimit:
         desc: Je kunt maar twee markeringen plaatsen in de demo. Koop de standalone voor een ongelimiteerde hoeveelheid markeringen!
     massCutConfirm:
-        title: Confirm cut
+        title: Bevestig knippen
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            Je bent veel gebouwen aan het knippen (<count> om precies te zijn)! Weet je zeker dat je dit wil doen?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Beweeg het speelveld
-        selectBuildings: Selecteer een gebied
+        moveMap: Beweeg speelveld
+        selectBuildings: Selecteer gebied
         stopPlacement: Stop met plaatsen
         rotateBuilding: Draai een gebouw
         placeMultiple: Plaats meerdere
@@ -275,7 +274,7 @@ ingame:
         placeBuilding: Plaats gebouw
         createMarker: Plaats markering
         delete: Vernietig
-        pasteLastBlueprint: Paste last blueprint
+        pasteLastBlueprint: Plak de laatst gekopiëerde blauwdruk
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -308,13 +307,13 @@ ingame:
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: Een nieuwe upgrade is beschikbaar!
+        newUpgrade: Er is een nieuwe upgrade beschikbaar!
         gameSaved: Je spel is opgeslagen.
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: Druk op <keyCut> om te knippen, <keyCopy> om te kopiëren, <keyDelete> om te verwijderen en <keyCancel> om de selectie te annuleren.
 
     # The "Upgrades" window
     shop:
@@ -338,9 +337,9 @@ ingame:
                 description: Geeft weer hoe veel vormen er zijn opgeslagen in je centrale gebouw.
             produced:
                 title: Geproduceerd
-                description: Geeft alle vormen weer die op dit moment geproduceerd worden door de volledige fabriek, inclusief tussenproducten.
+                description: Geeft alle vormen weer die op dit moment geproduceerd worden, inclusief tussenproducten.
             delivered:
-                title: Bezorgt
+                title: Geleverd
                 description: Geeft alle vormen weer die in het centrale gebouw worden bezorgd.
         noShapesProduced: Er zijn nog geen vormen geproduceerd.
 
@@ -385,7 +384,7 @@ ingame:
                 Verbind de extractor met een <strong>lopende band</strong> aan je hub!<br><br>Tip: <strong>Klik en sleep</strong> de lopende band met je muis!
 
             1_3_expand: >-
-                Dit is <strong>GEEN</strong> inactief spel! bouw meer extractors en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere extractors te plaatsen en gebruik <strong>R</strong> om ze te draaien.
+                Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer extractors en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere extractors te plaatsen en gebruik <strong>R</strong> om ze te draaien.
 
 # All shop upgrades
 shopUpgrades:
@@ -433,11 +432,11 @@ buildings:
             description: Multifunctioneel - Verdeelt alle input gelijk over alle output.
 
         compact:
-            name: Samenvoeger (compact)
+            name: Invoeger (compact)
             description: Voegt twee lopende banden samen tot één.
 
         compact-inverse:
-            name: Samenvoeger (compact)
+            name: Invoeger (compact)
             description: Voegt twee lopende banden samen tot één.
 
     cutter:
@@ -487,8 +486,8 @@ buildings:
             description: Slaat het overschot aan voorwerpen op, tot een zekere hoeveelheid. Kan worden gebruikt als buffer.
 
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
+        deliver: Lever
+        toUnlock: om te ontgrendelen
         levelShortcut: LVL
 
 storyRewards:
@@ -499,7 +498,7 @@ storyRewards:
 
     reward_rotater:
         title: Roteren
-        desc: De <strong>roteerder</strong> is ontgrendeld! Het draait vormen 90 graden met de klok mee.
+        desc: De <strong>roteerder</strong> is ontgrendeld - ! Het draait vormen 90 graden met de klok mee.
 
     reward_painter:
         title: Verven
@@ -509,8 +508,7 @@ storyRewards:
     reward_mixer:
         title: Kleuren mengen
         desc: >-
-            The <strong>mixer</strong> has been unlocked - Combine two colors using
-            <strong>additive blending</strong> with this building!
+            De <strong>menger</strong> is ontgrendeld - combineer twee kleuren met dit gebouw!
 
     reward_stacker:
         title: Stapelaar
@@ -537,7 +535,7 @@ storyRewards:
         desc: Je hebt een variant van de <strong>tunnel</strong> ontgrendeld - Deze heeft een <strong>grotere reikwijdte</strong en je kunt de tunnels nu ook door elkaar laten lopen!
 
     reward_splitter_compact:
-        title: Samenvoeger
+        title: Invoeger
         desc: >-
             Je hebt een compacte variant van de <strong>verdeler</strong> ontgrendeld - Dit voegt twee lopende banden samen tot één.
 
@@ -586,7 +584,7 @@ settings:
         dev: Ontwikkeling
         staging: Staging
         prod: Productie
-    buildDate: Gebouwd op <at-date>
+    buildDate: <at-date> gebouwd
 
     labels:
         uiScale:
@@ -637,8 +635,8 @@ settings:
                 Kies de gewenste weergave (licht / donker).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Donker
+                light: Licht
 
         refreshRate:
             title: Simulation Target
@@ -656,15 +654,15 @@ settings:
                 Wanneer dit uit staat zullen er geen hints en tutorials meer aangeboden worden. Als deze optie aan staat, zullen ook bepaalde elementen uit de UI verborgen worden tot het punt waarop ze gebruikt worden om de instap in het spel makkelijker te maken.
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: Bewegingssnelheid
+            description: Veranderd hoe snel het beeld beweegt wanneer je het toetsenbord gebruikt. 
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Super langzaam
+                slow: Langzaam
+                regular: Standaard
+                fast: Snel
+                super_fast: Super snel
+                extremely_fast: Extreem snel
 
 keybindings:
     title: Sneltoetsen
@@ -726,8 +724,8 @@ keybindings:
         placementDisableAutoOrientation: Schakel automatisch draaien uit
         placeMultiple: Blijf in plaatsmodus
         placeInverse: Omkeren richting lopende band
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
+        pasteLastBlueprint: Plak laatst gekopiëerde blauwdruk
+        massSelectCut: Knip geselecteerd gebied
 
 about:
     title: Over dit spel
