@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.1.11",
-        date: "unrelease",
+        date: "unreleased",
         entries: [
             "Pinned shapes are now smart, they dynamically update their goal and also unpin when no longer required. Completed objectives are now rendered transparent.",
             "Improve upgrade number rounding, so there are no goals like '37.4k', instead it will now be '35k'",

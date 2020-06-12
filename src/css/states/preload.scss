@@ -39,6 +39,10 @@
             a {
                 color: $colorBlueBright;
             }
+            li {
+                @include SuperSmallText;
+                @include S(margin-bottom, 10px);
+            }
         }
     }
 

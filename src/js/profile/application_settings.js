@@ -144,28 +144,9 @@ export const allApplicationSettings = [
          */
         (app, value) => app.sound.setMusicMuted(value)
     ),
-    new EnumSetting("scrollWheelSensitivity", {
-        options: scrollWheelSensitivities.sort((a, b) => a.scale - b.scale),
-        valueGetter: scale => scale.id,
-        textGetter: scale => T.settings.labels.scrollWheelSensitivity.sensitivity[scale.id],
-        category: categoryApp,
-        restartRequired: false,
-        changeCb:
-            /**
-             * @param {Application} app
-             */
-            (app, id) => app.updateAfterUiScaleChanged(),
-    }),
 
     // GAME
-    new EnumSetting("movementSpeed", {
-        options: movementSpeeds.sort((a, b) => a.multiplier - b.multiplier),
-        valueGetter: multiplier => multiplier.id,
-        textGetter: multiplier => T.settings.labels.movementSpeed.speeds[multiplier.id],
-        category: categoryGame,
-        restartRequired: false,
-        changeCb: (app, id) => {},
-    }),
+
     new EnumSetting("theme", {
         options: Object.keys(THEMES),
         valueGetter: theme => theme,
@@ -191,6 +172,28 @@ export const allApplicationSettings = [
         restartRequired: false,
         changeCb: (app, id) => {},
         enabled: !IS_DEMO,
+    }),
+
+    new EnumSetting("scrollWheelSensitivity", {
+        options: scrollWheelSensitivities.sort((a, b) => a.scale - b.scale),
+        valueGetter: scale => scale.id,
+        textGetter: scale => T.settings.labels.scrollWheelSensitivity.sensitivity[scale.id],
+        category: categoryGame,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => app.updateAfterUiScaleChanged(),
+    }),
+
+    new EnumSetting("movementSpeed", {
+        options: movementSpeeds.sort((a, b) => a.multiplier - b.multiplier),
+        valueGetter: multiplier => multiplier.id,
+        textGetter: multiplier => T.settings.labels.movementSpeed.speeds[multiplier.id],
+        category: categoryGame,
+        restartRequired: false,
+        changeCb: (app, id) => {},
     }),
 
     new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
