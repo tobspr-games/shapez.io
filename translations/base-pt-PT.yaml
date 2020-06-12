@@ -36,7 +36,7 @@ steamPage:
 
         Como produzir formas se tornará aborrecido rapidamente, não tarda terás de misturar cores e pintá-las com elas - Combina os recursos de cores vermelha, verde e azul para produzir diferentes cores e usá-las para pintar as formas geométricas de forma a satisfazer a procura.
 
-        Este jogo conta com 18 níveis (Que deverão manter-te ocupado durante horas!) mas estou constantemente a adicionar novos conteúdos - Há muitas coisas planedas! 
+        Este jogo conta com 18 níveis (Que deverão manter-te ocupado durante horas!) mas estou constantemente a adicionar novos conteúdos - Há muitas coisas planedas!
 
 
         [b]Vantagens do jogo completo[/b]
@@ -214,17 +214,6 @@ dialogs:
         title: Versão Demo
         desc: Tentaste aceder a uma funcionalidade (<feature>) que não está disponivel no Demo. Considera adquirir o jogo completo para a melhor experiência!
 
-    saveNotPossibleInDemo:
-        desc: O teu jogo foi guardade, mas restaurá-lo apenas será possivel no jogo completo. Considera adquirir o jogo completo para a melhor experiência!
-
-    leaveNotPossibleInDemo:
-        title: Versão Demo
-        desc: O teu jogo foi gravado, mas não será possível restaurá-lo no Demo. Restaurá-lo é possivel apenas no jogo completo. Tens a certeza?
-
-    newUpdate:
-        title: Atualização disponível
-        desc: Existe uma atualização para o jogo. Certifica-te de que a baixas!
-
     oneSavegameLimit:
         title: Savegames limitados
         desc: Podes ter apenas um savegame de cada vez na versão Demo. Por favor remove o savegame existente ou adquire a versão completa!
@@ -233,11 +222,6 @@ dialogs:
         title: Nova atualização!
         desc: >-
             Aqui estão as mudanças desde a última vez que jogaste:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Sempre que precisares de ajuda ou estiveres encravado, utiliza o botão 'Mostrar dica' no canto inferior esquerdo e eu tentarei ajudar-te!
 
     upgradesIntroduction:
         title: Desbloqueia upgrades
@@ -495,6 +479,10 @@ buildings:
         storage:
             name: Armazém
             description: Armazena items em excesso até uma determinada capacidade. Pode ser usado como uma porta de transbordamento.
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -638,6 +626,10 @@ settings:
             title: Tema do jogo
             description: >-
                 Escolhe o tema do jogo (claro / escuro).
+
+            themes:
+                dark: Dark
+                light: Light
 
         refreshRate:
             title: Frequência

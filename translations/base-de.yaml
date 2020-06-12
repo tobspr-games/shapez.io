@@ -36,7 +36,7 @@ steamPage:
 
         Da Formen natürlich langweilig werden können, musst du Farben mischen und deine Formen damit bemalen - Kombiniere rote, grüne und blaue Farbressourcen, um verschiedene Farben herzustellen und Formen damit zu bemalen, um die Nachfrage zu befriedigen.
 
-        Dieses Spiel hat 18 verschiedene Level (Was dich schon Stunden beschäftig hält!) aber ich werde konstant neue Inhalte hinzufügen - Es ist echt viel geplant! 
+        Dieses Spiel hat 18 verschiedene Level (Was dich schon Stunden beschäftig hält!) aber ich werde konstant neue Inhalte hinzufügen - Es ist echt viel geplant!
 
         [b]Vorteile der Standalone[/b]
 
@@ -151,6 +151,7 @@ mainMenu:
 
         showInfo: Anschauen
         contestOver: Dieser Wettbewerb ist vorbei! Tritt dem Discord Server bei, um über neue Wettbewerbe informiert zu werden!
+    helpTranslate: Help translate!
 
 dialogs:
     buttons:
@@ -444,9 +445,10 @@ buildings:
         default:
             name: &rotater Rotierer
             description: Rotiert Formen im Uhrzeigersinn um 90 Grad.
-        GdUS:
-            name: Rotierer (GdUS)
-            description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
+
+        ccw:
+            name: Rotate (CCW)
+            description: Rotates shapes counter clockwise by 90 degrees.
 
     stacker:
         default:
@@ -479,6 +481,11 @@ buildings:
         storage:
             name: Lager
             description: Lagert den Überschuss, bis zu einer gegebenen Kapazität. Kann als Überlauftor agieren.
+
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -618,6 +625,10 @@ settings:
             description: >-
                 Choose the game theme (light / dark).
 
+            themes:
+                dark: Dark
+                light: Light
+
         refreshRate:
             title: Simulations-Ziel
             description: >-
@@ -632,6 +643,12 @@ settings:
             title: Hinweise & Tutorials
             description: >-
                 Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+
+        language:
+            title: Language
+            description: >-
+                Change the language. All translations are user contributed and might be
+                incomplete!
 
 keybindings:
     title: Tastenkürzel

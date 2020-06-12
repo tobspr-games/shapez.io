@@ -120,7 +120,7 @@ mainMenu:
     contests:
         contest_01_03062020:
             title: "#1번 콘테스트"
-            desc: 가장 멋진 공장을 지은 사람은 $25를 받습니다!
+
             longDesc: >-
                 여러분들에게 무언가를 나눠드리고 싶어서 주간 콘테스트를 개최합니다!
                 <br><br>
@@ -193,17 +193,6 @@ dialogs:
         title: 데모 버전
         desc: 데모 버전에는 없는 컨탠츠(<feature>)로 시도했습니다. 유료 버전을 구입해서 모든 컨텐츠를 사용해보세요!
 
-    saveNotPossibleInDemo:
-        desc: 게임이 저장되었지만 불러오기는 유료 버전에서만 가능합니다. 유료 버전을 구입해서 모든 컨텐츠를 사용해보세요!
-
-    leaveNotPossibleInDemo:
-        title: 데모 버전
-        desc: 게임이 저장되었지만, 데모 버전에서는 불러오기가 되지 않습니다. 게임 불러오기는 유료 버전 에서만 가능합니다. 이대로 진행하시겠습니까?
-
-    newUpdate:
-        title: 업데이트 버전 가능
-        desc: 이 게임의 새로운 버전이 있습니다. 새로운 버전을 다운받으세요.
-
     oneSavegameLimit:
         title: 저장파일 개수 제한
         desc: 데모 버전에서는 저장 파일을 한 번에 한 개만 사용할 수 있습니다. 이미 있는 저장 파일을 지우거나 유료 버전을 구입 해주새요.
@@ -212,10 +201,6 @@ dialogs:
         title: 신규 버전!
         desc: >-
             지난번 플레이 이후 변경사항은 다음과 같습니다.
-    hintDescription:
-        title: 튜토리얼
-        desc: >-
-            도움이 필요할 때는 왼쪽 아래에 있는 힌트 보기 버튼을 누르세요. 최선을 다해 돕겠습니다.
     upgradesIntroduction:
         title: 업그래이드 하기
         desc: >-
@@ -465,12 +450,15 @@ buildings:
         storage:
             name: 저장소
             description: 할당된 용량만큼 초과되는 도형을 저장한다.
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: 도형 자르기
-        desc: 당신은 <strong>절단기</strong>를 방금 잠금 해제했습니다! 절단기는 도형을 위에서 아래로 둘로 자릅니다.<br><br> 사용하지 않는 부분은 꼭 버리세요. 그렇지 않으면 기계가 <strong>멈춤니다</strong>. 이런 이유로 휴지통을 만들었습니다.
 
     reward_rotater:
         title: 도형 회전기
@@ -483,15 +471,12 @@ storyRewards:
 
     reward_mixer:
         title: 색 혼합기
-        desc: <strong>색 혼합기</strong>가 잠금 해제 되었습니다! 이 건물로 색을 혼합 시키세요.
 
     reward_stacker:
         title: 스태커
-        desc: 이제는 <strong>스태커</strong>로 도형을 쌓거나 합칠 수 잇습니다. 두개를 합칠 수 있으면 합쳐지고 그렇지 않으면 오른쪽의 도형이 왼쪽의 도형 위에 쌓아집니다.
 
     reward_splitter:
         title: 배분기
-        desc: <strong>배분기</strong>가 잠금 해제되었습니다! 이것으로 벨트 2개를 입력을 벨트 1개의 출력으로 축소시킬 수 있습니다! <br<br> 또한, 벨트 2개의 입력을 벨트 2개의 출력으로 평등하게 자원을 배분할 수 있습니다.
 
     reward_tunnel:
         title: 터널
@@ -503,11 +488,9 @@ storyRewards:
 
     reward_miner_chainable:
         title: 체인 추출기
-        desc: <strong>체인 추출기</strong>가 잠금 해제되었습니다! 여러 개를 붙여 속도와 효율성을 높일 수 있습니다.
 
     reward_underground_belt_tier_2:
         title: 터널 티어 II
-        desc: <strong>터널 티어 II</strong>가 잠금 해제되었습니다! 일반 터널보다 더 멀리 자원을 보낼 수 있습니다.
 
     reward_splitter_compact:
         title: 컴팩트 연결기
@@ -516,11 +499,9 @@ storyRewards:
 
     reward_cutter_quad:
         title: 절단기 (4단)
-        desc: <strong>4단 절단기</strong>가 잠금 해제되었습니다! 도형을 2조각 아닌 4조각으로 나눌 수 있습니다.
 
     reward_painter_double:
         title: 도형 색칠기 (2단)
-        desc: <strong>2단 도형 색칠기</strong>가 잠금 해제되었습니다! 색소 한 개로 한 번에 도형 2개를 색칠할 수 있습니다.
 
     reward_painter_quad:
         title: 도형 색칠기 (4단)
@@ -532,7 +513,6 @@ storyRewards:
 
     reward_freeplay:
         title: 프리플레이 모드
-        desc: 당신이 해냈습니다! 이제부터는 <strong>프리플레이</strong>모드입니다! 도형이 랜덤으로 제작된다는 의미 입니다. <br><br.> 너무 걱정하지는 마세요. 유료 버전용으로 더 많은 레벨들이 만들어지고 있습니다.
 
     reward_blueprints:
         title: 블루프린트
@@ -541,8 +521,6 @@ storyRewards:
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: 다음 레벨
-        desc: >-
-            이번 레벨은 보상이 없지만 다음 레벨은 보상이 있습니다! <br><br> PS: 지금 있는 공장을 지우지 마세요 - 업그레이드에 가지고 있는 모든 도형을 사용해야 합니다.
     no_reward_freeplay:
         title: 다음 레벨
         desc: >-
@@ -602,6 +580,11 @@ settings:
             title: 게임 테마
             description: >-
                 게임 테마를 고르세요. (밝음/어두움).
+
+        themes:
+            dark: Dark
+            light: Light
+
         refreshRate:
             title: 모니터 리프레쉬 속도
             description: >-

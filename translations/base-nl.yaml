@@ -21,8 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is een spel dat draait om het bouwen van fabrieken voor het produceren en automatiseren van steeds complexere vormen in een oneindig groot speelveld. 
-  
+    shortText: shapez.io is een spel dat draait om het bouwen van fabrieken voor het produceren en automatiseren van steeds complexere vormen in een oneindig groot speelveld.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -32,14 +31,14 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         shapez.io is een spel dat draait om het bouwen van fabrieken om steeds complexere vormen te produceren en deze productie te automatiseren. Lever de gevraagde, steeds complexere vormen, om verder te komen in het spel en om upgrades voor je fabrieken te ontgrendelen.
-        
+
         De vraag naar vormen wordt steeds hoger, wat betekent dat je fabriek moet blijven uitbreiden om dit tegemoet te komen. Om de juiste grondstoffen te delven zul je steeds verder in het [b]oneindig grote speelveld[/b] moeten gaan werken!
-        
-        Omdat simpele vormen snel saai worden, moet je kleuren mengen om de vormen te verven - combineer rode, groene en blauwe grondstoffen om verschillende kleuren te produceren en gebruik deze om de vormen te verven, zodat je de vraag hiernaar tegemoet kan komen. 
-        
+
+        Omdat simpele vormen snel saai worden, moet je kleuren mengen om de vormen te verven - combineer rode, groene en blauwe grondstoffen om verschillende kleuren te produceren en gebruik deze om de vormen te verven, zodat je de vraag hiernaar tegemoet kan komen.
+
         Dit spel bevat 18 levels (Waar je al uren mee bezig zal zijn!), maar ik ben continu bezig om het spel uit te breiden - er staat veel in de planning!
-        
-        
+
+
         [b]Standalone voordelen[/b]
 
         [list]
@@ -53,7 +52,7 @@ steamPage:
 
         [b]Geplande functies & suggesties van de community[/b]
 
-        Deze game is open source - Iedereen kan bijdragen! Daarnaast luister ik [b]erg veel[/b] naar de community! Ik probeer alle suggesties te lezen en neem zo veel mogelijk feedback mee als mogelijk. 
+        Deze game is open source - Iedereen kan bijdragen! Daarnaast luister ik [b]erg veel[/b] naar de community! Ik probeer alle suggesties te lezen en neem zo veel mogelijk feedback mee als mogelijk.
 
         [list]
             [*] Verhaalmodus, waar gebouwen specifieke vormen kosten om te bouwen
@@ -197,7 +196,7 @@ dialogs:
     restartRequired:
         title: Opnieuw opstarten vereist
         text: >-
-           Je moet het spel opnieuw opstarten om de instellingen toe te passen.
+            Je moet het spel opnieuw opstarten om de instellingen toe te passen.
 
     editKeybinding:
         title: Change Keybinding
@@ -213,19 +212,8 @@ dialogs:
 
     featureRestriction:
         title: Demoversie
-        desc: Je probeerde een functie te gebruiken (<feature>) die niet beschikbaar is in de demo. Overweeg om de standalone te kopen voor de volledige ervaring!     
+        desc: Je probeerde een functie te gebruiken (<feature>) die niet beschikbaar is in de demo. Overweeg om de standalone te kopen voor de volledige ervaring!
 
-    saveNotPossibleInDemo:
-        desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
-
-    leaveNotPossibleInDemo:
-        title: Demoversie
-        desc: Je spel is opgeslagen, maar je kunt het niet terughalen in de demo. Het ophalen van savegames is alleen mogelijk in de volledige versie. Weet je het zeker?
-
-    newUpdate:
-        title: Update beschikbaar
-        desc: Er is een downloadbare update voor dit spel beschikbaar!
-        
     oneSavegameLimit:
         title: Gelimiteerd aantal savegames
         desc: Je kunt maar één savegame tegelijk hebben in de demoversie. Verwijder de bestaande savegame of koop de standalone!
@@ -234,11 +222,6 @@ dialogs:
         title: Nieuwe update!
         desc: >-
             Dit zijn de veranderingen sinds je voor het laatst gespeeld hebt:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Wanneer je hulp nodig hebt of vast zit, probeer de 'Zie hint' knop linksonder in het scherm en ik doe mijn best om je te helpen!
 
     upgradesIntroduction:
         title: Ontgrendel Upgrades
@@ -254,7 +237,7 @@ dialogs:
     blueprintsNotUnlocked:
         title: Nog niet ontgrendeld
         desc: >-
-            Blauwdrukken zijn nog niet ontgrendeld! Voltooi meer levels om ze te ontgrendelen. 
+            Blauwdrukken zijn nog niet ontgrendeld! Voltooi meer levels om ze te ontgrendelen.
 
     keybindingsIntroduction:
         title: Nuttige sneltoetsen
@@ -264,7 +247,7 @@ dialogs:
             <code class='keybinding'>CTRL</code> + slepen: selecteer een gebied om te kopiëren / verwijderen.<br>
             <code class='keybinding'>SHIFT</code>: Houd ingedrukt om meerdere van het zelfde gebouw te plaatsen.<br>
             <code class='keybinding'>ALT</code>: Draai de richting van geplaatste lopende banden om.<br>
-            
+
     createMarker:
         title: Nieuwe markering
         desc: Geef het een betekenisvolle naam
@@ -385,7 +368,7 @@ ingame:
         waypoints: Markeringen
         hub: HUB
         description: Klik met de linkermuisknop op een markering om hier naartoe te gaan, klik met de rechtermuisknop om de markering te verwijderen.<br><br>Druk op <keybinding> om een markering te maken in het huidige zicht, of <strong>rechtermuisknop</strong> om een markering te maken bij het geselecteerde gebied.
-        creationSuccessNotification: Markering is gemaakt. 
+        creationSuccessNotification: Markering is gemaakt.
 
     # Interactive tutorial
     interactiveTutorial:
@@ -418,11 +401,12 @@ buildings:
     belt:
         default:
             name: &belt Lopende Band
-            description: Transporteert voorwerpen, klik en sleep om meerdere te plaatsen. 
+            description: Transporteert voorwerpen, klik en sleep om meerdere te plaatsen.
+
     miner: # Internal name for the Extractor
         default:
             name: &miner Extractor
-            description: Plaats op een vorm of kleur om deze te onttrekken. 
+            description: Plaats op een vorm of kleur om deze te onttrekken.
 
         chainable:
             name: Extractor (Ketting)
@@ -496,6 +480,11 @@ buildings:
             name: Opslag
             description: Slaat het overschot aan voorwerpen op, tot een zekere hoeveelheid. Kan worden gebruikt als buffer.
 
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -513,7 +502,6 @@ storyRewards:
 
     reward_mixer:
         title: Kleuren mengen
-        desc: De <strong>kleurenmenger</strong> is ontgrendeld - combineer twee kleuren met dit gebouw!
 
     reward_stacker:
         title: Stapelaar
@@ -608,7 +596,7 @@ settings:
             description: >-
                 Veranderd hoe gevoelig het zoomen is (muiswiel of trackpad).
             sensitivity:
-                super_slow: Super langzaam 
+                super_slow: Super langzaam
                 slow: Langzaam
                 regular: Middel
                 fast: Snel
@@ -638,6 +626,10 @@ settings:
             title: Donkere modus
             description: >-
                 Kies de gewenste weergave (licht / donker).
+
+            themes:
+                dark: Dark
+                light: Light
 
         refreshRate:
             title: Simulation Target
@@ -703,7 +695,7 @@ keybindings:
         rotateWhilePlacing: Roteren
         rotateInverseModifier: >-
             Aanpassing: Roteer tegen de klok in
-        cycleBuildingVariants: Wissel tussen varianten 
+        cycleBuildingVariants: Wissel tussen varianten
         confirmMassDelete: Bevestig massaal verwijderen
         cycleBuildings: Wissel tussen gebouwen
 
@@ -713,7 +705,7 @@ keybindings:
 
         placementDisableAutoOrientation: Schakel automatisch draaien uit
         placeMultiple: Blijf in plaatsmodus
-        placeInverse: Omkeren richting lopende band 
+        placeInverse: Omkeren richting lopende band
 
 about:
     title: Over dit spel

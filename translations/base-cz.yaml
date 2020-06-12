@@ -195,12 +195,9 @@ dialogs:
         title: Demo verze
         desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Pořiďte si plnou verzi pro lepší zážitek!
 
-    saveNotPossibleInDemo:
-        desc: Vaše hra byla uložena, ale její nahrání je možné pouze v plné verzi. Pořiďte si plnou verzi pro lepší zážitek!
 
-    leaveNotPossibleInDemo:
-        title: Demo verze
-        desc: Vaše hra byla uložena, ale v demo verzi ji nebudete moci nahrát. Nahrání vašich uložených her je možné pouze v plné verzi. Jste si jisti?
+
+
 
     oneSavegameLimit:
         title: Omezené ukládání
@@ -211,12 +208,7 @@ dialogs:
         desc: >-
             Tady jsou změny od posledně:
 
-    hintDescription:
-        title: Nápověda
-        desc: >-
-            Kdykoli budete potřebovat pomoc nebo se zaseknete, zmáčkněte tlačítko „Zobrazit nápovědu“ v levém dolním rohu a já vám pomohu jak budu moct!
-
-    upgradesIntroduction:
+        upgradesIntroduction:
         title: Odemknout vylepšení
         desc: >-
             Všechny tvary, které vytvoříte, lze použít k odemčení vylepšení - <strong>Neničte své staré továrny!</strong>
@@ -621,6 +613,10 @@ settings:
             description: >-
                 Vybere motiv (světlý / tmavý).
 
+            themes:
+              dark: Dark
+              light: Light 
+ 
         refreshRate:
             title: Cíl simulace
             description: >-

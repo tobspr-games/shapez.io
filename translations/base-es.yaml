@@ -212,14 +212,6 @@ dialogs:
     featureRestriction:
         title: Versión de Prueba
         desc: Has intentado acceder a una característica (<feature>) que no está disponible en la demo. Considera obtener el juego completo para la experiencia completa!
-    saveNotPossibleInDemo:
-        desc: Tu partida ha sigo guardada, pero recuperarla es solo posible en el juego completo. Considera obtenerlo para la experiencia completa!
-    leaveNotPossibleInDemo:
-        title: Versión de Prueba
-        desc: Tu partida ha sido guaradada, pero no serás capaz de recupararla en la demo. Recuperar tu partida guardada es solo posible en la versión completa. Estás seguro?
-    newUpdate:
-        title: Actualización disponible
-        desc: Hay una actualización disponible, acuérdate de descargarla!
 
     oneSavegameLimit:
         title: partidas guardadas limitadas
@@ -229,10 +221,6 @@ dialogs:
         desc: >-
             Estos on los cambios desde la última vez que jugaste:
 
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Cuando necesites ayuda o estés atascado, échale un vistazo al botón 'Ver pista' en la esquina inferior izquierda e intentaré ayudarte lo mejor posible!
     upgradesIntroduction:
         title: Desbloquear Mejoras
         desc: >-
@@ -486,6 +474,11 @@ buildings:
             name: Almacenamiento.
             description: Guarda el exceso de elementos, hasta cierta cantidad. Puede ser usado para contolar el desborde de elementos.
 
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -623,6 +616,10 @@ settings:
             title: Tema del Juego
             description: >-
                 Elije el tema del juego (claro/oscuro).
+
+            themes:
+                dark: Dark
+                light: Light
 
         refreshRate:
             title: Objetivo de Simulación

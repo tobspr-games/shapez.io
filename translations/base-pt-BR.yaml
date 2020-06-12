@@ -36,7 +36,7 @@ steamPage:
 
         Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
 
         [b]Standalone Advantages[/b]
@@ -151,6 +151,8 @@ mainMenu:
                 Estou ansioso para ver suas criações incríveis!
 
         showInfo: Participate
+        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+    helpTranslate: Help translate!
 
 dialogs:
     buttons:
@@ -212,17 +214,6 @@ dialogs:
         title: Versão Demo
         desc: Você tentou acessar um recurso (<feature>) que não está disponível na demo. Considere obter a versão completa para a proceder!
 
-    saveNotPossibleInDemo:
-        desc: Seu jogo foi salvo, mas a restauração só é possível na versão completa. Considere obter a versão completa!
-
-    leaveNotPossibleInDemo:
-        title: Demo version
-        desc: Seu jogo foi salvo, mas você não poderá restaurá-lo na demo. Restaurar seus savegames só é possível na versão completa. Você tem certeza?
-
-    newUpdate:
-        title: Atualização disponível
-        desc: Uma atualização para esse jogo esta disponível!
-
     oneSavegameLimit:
         title: Save limitado
         desc: Você pode ter apenas um savegame por vez na versão demo. Remova o existente ou obtenha a versão completa!
@@ -231,11 +222,6 @@ dialogs:
         title: Nova Atualização!
         desc: >-
             Aqui estão as alterações desde a última vez que você jogou:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Sempre que precisar de ajuda ou estiver parado, confira o botão 'Mostrar dica' no canto inferior esquerdo e darei o meu melhor para ajudá-lo!
 
     upgradesIntroduction:
         title: Desbloquear updates
@@ -265,12 +251,16 @@ dialogs:
     createMarker:
         title: Nova Marcação
         desc: De um nome
+    markerDemoLimit:
+        desc: >-
+            You can only create two custom markers in the demo. Get the standalone for
+            unlimited markers!
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
         moveMap: Mover
-        removeBuildings: Deletar
+
         stopPlacement: Parar
         rotateBuilding: Rotação
         placeMultiple: Colocar vários
@@ -280,6 +270,7 @@ ingame:
         placeBuilding: Colocar construção
         createMarker: Criar marcador
         delete: Destruir
+        selectBuildings: Select area
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -330,8 +321,6 @@ ingame:
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
-
-        maximumLevel: Level Máximo
 
     # The "Statistics" window
     statistics:
@@ -395,16 +384,15 @@ ingame:
 shopUpgrades:
     belt:
         name: Esteiras, Distribuidores e Túneis
-        description: Velocidade +<gain>%
+
     miner:
         name: Extração
-        description: Velocidade +<gain>%
+
     processors:
         name: Cortar, Rotacionar e Empilhamento
-        description: Velocidade +<gain>%
+
     painting:
         name: Misturador e pintura
-        description: Velocidade +<gain>%
 
 # Buildings and their name / description
 buildings:
@@ -489,6 +477,10 @@ buildings:
         storage:
             name: Estoque
             description: Armazena itens em excesso, até uma determinada capacidade. Pode ser usado como uma porta de transbordamento.
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -515,7 +507,6 @@ storyRewards:
 
     reward_splitter:
         title: Divisor/fusão
-        desc: O balanceador multifuncional <strong> </strong> foi desbloqueado - ele pode ser usado para construir fábricas maiores dividindo e mesclando itens </strong>! <br> <br>
 
     reward_tunnel:
         title: Túnel
@@ -628,6 +619,10 @@ settings:
             description: >-
                 Escolha o tema entre (Branco / Preto).
 
+            themes:
+                dark: Dark
+                light: Light
+
         refreshRate:
             title: Frequencia
             description: >-
@@ -642,6 +637,12 @@ settings:
             title: Dicas e tutoriais
             description: >-
                 Se deve oferecer dicas e tutoriais enquanto estiver jogando.v.
+
+        language:
+            title: Language
+            description: >-
+                Change the language. All translations are user contributed and might be
+                incomplete!
 
 keybindings:
     title: Comandos
@@ -716,6 +717,5 @@ demo:
         importingGames: Carregando jogos salvos
         oneGameLimit: Limitado para um savegamne
         customizeKeybindings: Modificando Teclas
-        creatingMarkers: Criando marcações
 
     settingNotAvailable: Não disponível na versão demo.

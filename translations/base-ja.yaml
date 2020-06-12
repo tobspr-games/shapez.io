@@ -36,7 +36,7 @@ steamPage:
 
         Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
 
         [b]Standalone Advantages[/b]
@@ -214,13 +214,6 @@ dialogs:
         title: Demo Version
         desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
 
-    saveNotPossibleInDemo:
-        desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
-
-    leaveNotPossibleInDemo:
-        title: Demo version
-        desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
-
     oneSavegameLimit:
         title: Limited savegames
         desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
@@ -229,11 +222,6 @@ dialogs:
         title: New update!
         desc: >-
             Here are the changes since you last played:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Whenever you need help or are stuck, check out the 'Show hint' button in the lower left and I'll give my best to help you!
 
     upgradesIntroduction:
         title: Unlock Upgrades
@@ -639,6 +627,10 @@ settings:
             title: Game theme
             description: >-
                 Choose the game theme (light / dark).
+
+            themes:
+                dark: Dark
+                light: Light
 
         refreshRate:
             title: Simulation Target

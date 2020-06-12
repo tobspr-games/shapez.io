@@ -36,7 +36,7 @@ steamPage:
 
         Same kształty mogą z czasem być nudne, dlatego gra będzie wymagała od Ciebie malowania kształtów różnymi kolorami - Połącz czerwoną, zieloną i niebieską farbę, a powstanie farba o innym kolorze. Korzystaj z farb by postępować z kolejnymi poziomami.
 
-        Na tą chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na conajmniej kilka godzin!) ale bez przerwy dodaję nowe - Jest naprawdę wiele do dodania! 
+        Na tą chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na conajmniej kilka godzin!) ale bez przerwy dodaję nowe - Jest naprawdę wiele do dodania!
 
 
         [b]Zalety pełnej wersji[/b]
@@ -217,13 +217,6 @@ dialogs:
         title: Wersja Demo
         desc: Próbujesz skorzystać z "<feature>", który nie jest dostępny w wersji demo. Rozważ zakup gry dla pełni doświadczeń!
 
-    saveNotPossibleInDemo:
-        desc: Gra została zapisana, lecz przywracanie zapisu dostępne jest wyłącznie w pełnej wersji gry. Rozważ zakup gry dla pełni doświadczeń!
-
-    leaveNotPossibleInDemo:
-        title: Wersja Demo
-        desc: Gra została zapisana, lecz przywrócenie zapisu nie będzie możliwe w wersji demo. Na pewno chcesz kontynuować?
-
     oneSavegameLimit:
         title: Limit Zapisów Gry
         desc: W wersji demo możesz posiadać wyłącznie jeden zapis gry. Proszę usuń obecny lub zakup pełną wersję gry!
@@ -232,11 +225,6 @@ dialogs:
         title: Nowa aktualizacja!
         desc: >-
             Lista zmian od Twojej ostatniej rozgrywki:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            W razie utknięcia lub potrzeby pomocy, sprawdź przycisk 'Pokaż Wskazówkę' w lewym dolnym rogu - pomogę na tyle, ile będę mógł!
 
     upgradesIntroduction:
         title: Ulepszenia
@@ -554,8 +542,6 @@ storyRewards:
 
     reward_splitter_compact:
         title: Łącznik Kompaktowy
-        desc: >-
-            Odblokowano nowy wariant rozdzielacza: <strong>łącznik kompaktowy</strong> - Przyjmuje dwa wejścia i oddaje je na jednen taśmociąg. <strong>Użyj 'T' by zmienić wariant Rozdzielacza</strong>!
     reward_cutter_quad:
         title: Przecinak Poczwórny
         desc: Odblokowano nowy wariant <strong>Przecinaka</strong> - Pozwala ciąć kształty na <strong>cztery ćwiartki</strong>!
@@ -578,7 +564,6 @@ storyRewards:
 
     reward_blueprints:
         title: Schematy
-        desc: Odblokowano <strong>schematy</strong>! Możesz teraz <strong>kopiować i wklejać</strong> segmenty Twoich fabryk! Zaznacz obszar (Trzymaj CTRL, następnie przeciągnij mysz), potem wciśnij 'C' aby skopiować.<br><br>Wklejanie <strong>nie jest darmowe</strong>, potrzebujesz wyprodukować <strong>kształty schematu</strong> (Te, które właśnie dostarczyłeś), aby było Cie stać!
 
     # Special reward, which is shown when there is no reward actually
     no_reward:

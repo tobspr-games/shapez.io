@@ -153,6 +153,7 @@ mainMenu:
 
         showInfo: Voir
         contestOver: Ce concours est terminé - Rejoignez le serveur discord pour être tenu au courant des prochains concours !
+    helpTranslate: Help translate!
 
 dialogs:
     buttons:
@@ -214,17 +215,6 @@ dialogs:
         title: Version démo
         desc: Vous avez essayé d'accéder à la fonction (<feature>) qui n'est pas disponible dans la démo. Considérez l'achat de la version complète pour une expérience optimale!
 
-    saveNotPossibleInDemo:
-        desc: Votre partie a été sauvegardée, mais la charger n'est possible que dans la version complète. Considérez son achat pour une expérience optimale!
-
-    leaveNotPossibleInDemo:
-        title: Version démo
-        desc: Votre partie a été sauvée mais nous ne pourrez pas la charger dans la démo. Charger les parties n'est disponible que dans la version complète. Etes-vous certain?
-
-    newUpdate:
-        title: Mise-à-jour disponible
-        desc: Une mise-à-jour est disponible pour ce jeu!
-
     oneSavegameLimit:
         title: Sauvegardes limitées
         desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci de soit effacer l'actuelle ou de vous procurer la version complète!
@@ -233,11 +223,6 @@ dialogs:
         title: Nouvel mise-à-jour!
         desc: >-
             Voici les modifications depuis votre dernière session:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Si vous avez besoin d'aide ou êtes coincé, vérifiez le bouton 'Aide' dans le coin inférieur gauche et j'essayerai de vous aider au mieux!
 
     upgradesIntroduction:
         title: Débloquer les améliorations
@@ -337,8 +322,6 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: Niveau maximum
-
     # The "Statistics" window
     statistics:
         title: Statistiques
@@ -401,16 +384,15 @@ ingame:
 shopUpgrades:
     belt:
         name: Convoyeurs, Distributeurs et Tunnels
-        description: Vitesse +<gain>%
+
     miner:
         name: Extraction
-        description: Vitesse +<gain>%
+
     processors:
         name: Découpage, Rotation et Empilage
-        description: Vitesse +<gain>%
+
     painting:
         name: Mélange et Peinture
-        description: Vitesse +<gain>%
 
 # Buildings and their name / description
 buildings:
@@ -495,6 +477,10 @@ buildings:
         storage:
             name: Stockage
             description: Stocke les formes en trop jusqu'à une certaine capacité. Peut être utilisé comme tampon.
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -640,6 +626,10 @@ settings:
             description: >-
                 Choisissez votre thème (clair / sombre).
 
+            themes:
+                dark: Dark
+                light: Light
+
         refreshRate:
             title: Fréquence de simulation
             description: >-
@@ -654,6 +644,12 @@ settings:
             title: Indices
             description: >-
                 Affiche ou non le bouton 'Afficher un indice' dans le coin inférieur gauche.
+
+        language:
+            title: Language
+            description: >-
+                Change the language. All translations are user contributed and might be
+                incomplete!
 
 keybindings:
     title: Contrôles
