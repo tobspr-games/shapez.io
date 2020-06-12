@@ -98,9 +98,10 @@ global:
         xDaysAgo: <x> dni temu
 
         # Short formats for times, e.g. '5h 23m'
+        # 2nd translator's note: Changed 'm' to 'min' to distinguish from meters & to be consistent
         secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>godz <minutes>m
+        minutesAndSecondsShort: <minutes>min <seconds>s
+        hoursAndMinutesShort: <hours>godz <minutes>min
 
         xMinutes: <x> minut
 
@@ -295,8 +296,8 @@ ingame:
             speed: Szybkość
             range: Zasięg
             storage: Pojemność
-            oneItemPerSecond: 1 obiekt / sekundę
-            itemsPerSecond: <x> obiektów / sekundę
+            oneItemPerSecond: 1 obiekt / s
+            itemsPerSecond: <x> obiektów / s
             itemsPerSecondDouble: (x2)
 
             tiles: <x> kafelków
@@ -532,7 +533,7 @@ storyRewards:
 
     reward_tunnel:
         title: Tunel
-        desc: <strong>Tunel</strong> został odblokowany - Możesz prowadzić podziemne taśmociągi!
+        desc: <strong>Tunel</strong> został odblokowany - Możesz teraz prowadzić podziemne taśmociągi!
 
     reward_rotater_ccw:
         title: Obracanie odwrotne
