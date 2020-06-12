@@ -410,7 +410,7 @@ buildings:
     belt:
         default:
             name: &belt Taśmociąg
-            description: Transportuje obiekty, przytrymaj by postawić kilka.
+            description: Transportuje obiekty, przytrzymaj by postawić kilka.
 
     miner: # Internal name for the Extractor
         default:
