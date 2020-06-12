@@ -33,7 +33,7 @@ export class HUDWatermark extends BaseHUDPart {
         parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 12 + "px GameFont";
         // parameters.context.textAlign = "center";
         parameters.context.fillText(
-            "Please consider to buy the full version!",
+            "Please consider buying the full version!",
             x,
             this.root.app.getEffectiveUiScale() * 45
         );
