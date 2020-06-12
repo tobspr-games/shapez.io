@@ -36,6 +36,7 @@ export const KEYMAPPINGS = {
         centerMap: { keyCode: 32 }, // SPACE
         mapZoomIn: { keyCode: 187, repeated: true }, // "+"
         mapZoomOut: { keyCode: 189, repeated: true }, // "-"
+        fastPan: { keyCode: 16 }, //shift
 
         createMarker: { keyCode: key("M") },
     },
