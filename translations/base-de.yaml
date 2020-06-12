@@ -439,7 +439,7 @@ buildings:
             description: Zerschneidet Formen von oben nach unten. <strong>Benutze oder zerstöre beide Hälften, sonst verstopft die Maschine!</strong>
         quad:
             name: Zerschneider (4-fach)
-            description: Zerschneidet Formen in vier Teile. <strong>>Benutze oder zerstöre alle Viertel, sonst verstopft die Maschine!</strong>
+            description: Zerschneidet Formen in vier Teile. <strong>Benutze oder zerstöre alle Viertel, sonst verstopft die Maschine!</strong>
 
     rotater:
         default:
