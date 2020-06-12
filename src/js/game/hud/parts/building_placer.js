@@ -406,8 +406,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             indexModifier += 1;
         }
 
-        console.log(indexModifier);
-        console.log(index);
         return (index + indexModifier) % availableVariantsLength;
     }
 
