@@ -684,7 +684,7 @@ settings:
 keybindings:
     title: Klawiszologia
     hint: >-
-        Tip: Upewnij się, że wykorzystujesz CTRL, SHIFT i ALT! Pozwalają na różne metody kładzenia elementów.
+        Wskazówka: Upewnij się, że wykorzystujesz CTRL, SHIFT i ALT! Pozwalają na różne metody kładzenia elementów.
     resetKeybindings: Zresetuj Klawiszologię
 
     categoryLabels:
