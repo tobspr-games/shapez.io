@@ -9,6 +9,7 @@ export const CHANGELOG = [
             "You can now configure the camera movement speed when using WASD (by mini-bomba)",
             "Selecting an area now is relative to the world and thus does not move when moving the screen (by Dimava)",
             "Fix bug regarding number rounding",
+            "Fix app not starting when the savegames were corrupted - there is now a better error message",
         ],
     },
     {

@@ -138,15 +138,10 @@ export class PreloadState extends GameState {
             .then(() => {
                 return this.app.savegameMgr.initialize().catch(err => {
                     logger.error("Failed to initialize savegames:", err);
-                    return new Promise(resolve => {
-                        // const { ok } = this.dialogs.showWarning(
-                        //     T.preload.savegame_corrupt_dialog.title,
-                        //     T.preload.savegame_corrupt_dialog.content,
-                        //     ["ok:good"]
-                        // );
-                        // ok.add(resolve);
-                        alert("Your savegames failed to load. They might not show up. Sorry!");
-                    });
+                    alert(
+                        "Your savegames failed to load, it seems your data files got corrupted. I'm so sorry!\n\n(This can happen if your pc crashed while a game was saved).\n\nYou can try re-importing your savegames."
+                    );
+                    return this.app.savegameMgr.writeAsync();
                 });
             })
 
