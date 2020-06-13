@@ -118,6 +118,10 @@
             pointer-events: all;
             @include S(width, 350px);
 
+            @include DarkThemeOverride {
+                color: #aaa;
+            }
+
             strong {
                 font-weight: bold;
             }

@@ -11,7 +11,9 @@ export const CHANGELOG = [
             "Selecting an area now is relative to the world and thus does not move when moving the screen (by Dimava)",
             "Allow higher tick-rates up to 500hz (This will burn your PC!)",
             "Fix bug regarding number rounding",
+            "Fix dialog text being hardly readable in dark theme",
             "Fix app not starting when the savegames were corrupted - there is now a better error message",
+            "Further translation updates - Big thanks to all contributors!",
         ],
     },
     {
