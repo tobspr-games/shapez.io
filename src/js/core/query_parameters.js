@@ -11,6 +11,6 @@ if (options.embed) {
 }
 
 // Allow testing full version outside of standalone
-if (options.fullVersion && !G_IS_PROD) {
+if (options.fullVersion && !G_IS_RELEASE) {
     queryParamOptions.fullVersion = true;
 }
