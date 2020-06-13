@@ -15,17 +15,9 @@ export class AboutState extends TextualGameState {
     }
 
     getMainContentHTML() {
-        return `
-            This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).
-            <br><br>
-            If you want to contribute, check out <a href="${THIRDPARTY_URLS.github}" target="_blank">shapez.io on github</a>.
-            <br><br>
-            This game wouldn't have been possible without the great discord community arround my games - You should really join the <a href="${THIRDPARTY_URLS.discord}" target="_blank">discord server</a>!
-            <br><br>
-            The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome. 
-            <br><br>
-            Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions this game would never have existed. 
-        `;
+        return T.about.body
+            .replace("<githublink>", THIRDPARTY_URLS.github)
+            .replace("<discordlink>", THIRDPARTY_URLS.discord);
     }
 
     onEnter() {

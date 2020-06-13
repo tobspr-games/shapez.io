@@ -2,6 +2,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { makeDiv } from "../../../core/utils";
 import { THIRDPARTY_URLS } from "../../../core/config";
+import { T } from "../../../translations";
 
 export class HUDWatermark extends BaseHUDPart {
     createElements(parent) {
@@ -28,15 +29,15 @@ export class HUDWatermark extends BaseHUDPart {
         parameters.context.fillStyle = "#f77";
         parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 17 + "px GameFont";
         // parameters.context.textAlign = "center";
-        parameters.context.fillText("DEMO VERSION", x, this.root.app.getEffectiveUiScale() * 27);
+        parameters.context.fillText(
+            T.demoBanners.title.toUpperCase(),
+            x,
+            this.root.app.getEffectiveUiScale() * 27
+        );
 
         parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 12 + "px GameFont";
         // parameters.context.textAlign = "center";
-        parameters.context.fillText(
-            "Please consider to buy the full version!",
-            x,
-            this.root.app.getEffectiveUiScale() * 45
-        );
+        parameters.context.fillText(T.demoBanners.intro, x, this.root.app.getEffectiveUiScale() * 45);
 
         // parameters.context.textAlign = "left";
     }

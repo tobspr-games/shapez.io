@@ -14,13 +14,10 @@ import { Vector } from "./core/vector";
 import { AdProviderInterface } from "./platform/ad_provider";
 import { NoAdProvider } from "./platform/ad_providers/no_ad_provider";
 import { AnalyticsInterface } from "./platform/analytics";
-import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 import { GoogleAnalyticsImpl } from "./platform/browser/google_analytics";
+import { NoGameAnalytics } from "./platform/browser/no_game_analytics";
 import { SoundImplBrowser } from "./platform/browser/sound";
-import { StorageImplBrowser } from "./platform/browser/storage";
-import { StorageImplBrowserIndexedDB } from "./platform/browser/storage_indexed_db";
 import { PlatformWrapperImplBrowser } from "./platform/browser/wrapper";
-import { StorageImplElectron } from "./platform/electron/storage";
 import { PlatformWrapperImplElectron } from "./platform/electron/wrapper";
 import { GameAnalyticsInterface } from "./platform/game_analytics";
 import { SoundInterface } from "./platform/sound";
@@ -36,7 +33,6 @@ import { MainMenuState } from "./states/main_menu";
 import { MobileWarningState } from "./states/mobile_warning";
 import { PreloadState } from "./states/preload";
 import { SettingsState } from "./states/settings";
-import { NoGameAnalytics } from "./platform/browser/no_game_analytics";
 
 const logger = createLogger("application");
 

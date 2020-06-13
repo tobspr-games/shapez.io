@@ -74,9 +74,7 @@ export class HubSystem extends GameSystemWithFilter {
         context.fillText("" + formatBigNumber(delivered), pos.x + textOffsetX, pos.y + textOffsetY);
 
         // Required
-
         context.font = "13px GameFont";
-
         context.fillStyle = "#a4a6b0";
         context.fillText(
             "/ " + formatBigNumber(goals.required),
@@ -85,15 +83,39 @@ export class HubSystem extends GameSystemWithFilter {
         );
 
         // Reward
-        context.font = "bold 11px GameFont";
+        const rewardText = T.storyRewards[goals.reward].title.toUpperCase();
+        if (rewardText.length > 12) {
+            context.font = "bold 9px GameFont";
+        } else {
+            context.font = "bold 11px GameFont";
+        }
         context.fillStyle = "#fd0752";
         context.textAlign = "center";
-        context.fillText(T.storyRewards[goals.reward].title.toUpperCase(), pos.x, pos.y + 46);
+
+        context.fillText(rewardText, pos.x, pos.y + 46);
 
         // Level
         context.font = "bold 11px GameFont";
         context.fillStyle = "#fff";
         context.fillText("" + this.root.hubGoals.level, pos.x - 42, pos.y - 36);
+
+        // Texts
+        context.textAlign = "center";
+        context.fillStyle = "#fff";
+        context.font = "bold 7px GameFont";
+        context.fillText(T.buildings.hub.levelShortcut, pos.x - 42, pos.y - 47);
+
+        context.fillStyle = "#64666e";
+        context.font = "bold 11px GameFont";
+        context.fillText(T.buildings.hub.deliver.toUpperCase(), pos.x, pos.y - 40);
+
+        const unlockText = T.buildings.hub.toUnlock.toUpperCase();
+        if (unlockText.length > 15) {
+            context.font = "bold 8px GameFont";
+        } else {
+            context.font = "bold 11px GameFont";
+        }
+        context.fillText(T.buildings.hub.toUnlock.toUpperCase(), pos.x, pos.y + 30);
 
         context.textAlign = "left";
     }

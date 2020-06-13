@@ -36,7 +36,7 @@ steamPage:
 
         Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
 
         [b]Standalone Advantages[/b]
@@ -98,7 +98,7 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        hoursAndMinutesShort: <hours>h <minutes>m
 
         xMinutes: <x> minutos
 
@@ -151,6 +151,8 @@ mainMenu:
                 Estou ansioso para ver suas criações incríveis!
 
         showInfo: Participate
+        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+    helpTranslate: Help translate!
 
 dialogs:
     buttons:
@@ -212,17 +214,6 @@ dialogs:
         title: Versão Demo
         desc: Você tentou acessar um recurso (<feature>) que não está disponível na demo. Considere obter a versão completa para a proceder!
 
-    saveNotPossibleInDemo:
-        desc: Seu jogo foi salvo, mas a restauração só é possível na versão completa. Considere obter a versão completa!
-
-    leaveNotPossibleInDemo:
-        title: Demo version
-        desc: Seu jogo foi salvo, mas você não poderá restaurá-lo na demo. Restaurar seus savegames só é possível na versão completa. Você tem certeza?
-
-    newUpdate:
-        title: Atualização disponível
-        desc: Uma atualização para esse jogo esta disponível!
-
     oneSavegameLimit:
         title: Save limitado
         desc: Você pode ter apenas um savegame por vez na versão demo. Remova o existente ou obtenha a versão completa!
@@ -231,11 +222,6 @@ dialogs:
         title: Nova Atualização!
         desc: >-
             Aqui estão as alterações desde a última vez que você jogou:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Sempre que precisar de ajuda ou estiver parado, confira o botão 'Mostrar dica' no canto inferior esquerdo e darei o meu melhor para ajudá-lo!
 
     upgradesIntroduction:
         title: Desbloquear updates
@@ -265,12 +251,29 @@ dialogs:
     createMarker:
         title: Nova Marcação
         desc: De um nome
+    markerDemoLimit:
+        desc: >-
+            You can only create two custom markers in the demo. Get the standalone for
+            unlimited markers!
+
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
+
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: >-
+            You requested to export your base as a screenshot. Please note that this can
+            be quite slow for a big base and even crash your game!
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
         moveMap: Mover
-        removeBuildings: Deletar
+
         stopPlacement: Parar
         rotateBuilding: Rotação
         placeMultiple: Colocar vários
@@ -280,6 +283,8 @@ ingame:
         placeBuilding: Colocar construção
         createMarker: Criar marcador
         delete: Destruir
+        selectBuildings: Select area
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -318,7 +323,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Aperte <keyCopy> para copiar, <keyDelete> para excluir e <keyCancel> para cancelar.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -330,8 +335,7 @@ ingame:
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
-
-        maximumLevel: Level Máximo
+        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -395,16 +399,19 @@ ingame:
 shopUpgrades:
     belt:
         name: Esteiras, Distribuidores e Túneis
-        description: Velocidade +<gain>%
+        description: Speed x<currentMult> → x<newMult>
+
     miner:
         name: Extração
-        description: Velocidade +<gain>%
+        description: Speed x<currentMult> → x<newMult>
+
     processors:
         name: Cortar, Rotacionar e Empilhamento
-        description: Velocidade +<gain>%
+        description: Speed x<currentMult> → x<newMult>
+
     painting:
         name: Misturador e pintura
-        description: Velocidade +<gain>%
+        description: Speed x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
@@ -489,6 +496,10 @@ buildings:
         storage:
             name: Estoque
             description: Armazena itens em excesso, até uma determinada capacidade. Pode ser usado como uma porta de transbordamento.
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -515,7 +526,10 @@ storyRewards:
 
     reward_splitter:
         title: Divisor/fusão
-        desc: O balanceador multifuncional <strong> </strong> foi desbloqueado - ele pode ser usado para construir fábricas maiores dividindo e mesclando itens </strong>! <br> <br>
+        desc: >-
+            The multifunctional <strong>balancer</strong> has been unlocked - It can be
+            used to build bigger factories by <strong>splitting and merging items</strong>
+            onto multiple belts!<br><br>
 
     reward_tunnel:
         title: Túnel
@@ -628,6 +642,10 @@ settings:
             description: >-
                 Escolha o tema entre (Branco / Preto).
 
+            themes:
+                dark: Dark
+                light: Light
+
         refreshRate:
             title: Frequencia
             description: >-
@@ -642,6 +660,23 @@ settings:
             title: Dicas e tutoriais
             description: >-
                 Se deve oferecer dicas e tutoriais enquanto estiver jogando.v.
+
+        language:
+            title: Language
+            description: >-
+                Change the language. All translations are user contributed and might be
+                incomplete!
+
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
 
 keybindings:
     title: Comandos
@@ -703,9 +738,29 @@ keybindings:
         placementDisableAutoOrientation: Desligar orientações automaticas
         placeMultiple: Permanecer no modo de produção
         placeInverse: Inverter orientação de esteira
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
+        exportScreenshot: Export whole Base as Image
 
 about:
     title: Sobre o jogo
+    body: >-
+        This game is open source and developed by <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (this is me).<br><br>
+
+        If you want to contribute, check out <a href="<githublink>"
+        target="_blank">shapez.io on github</a>.<br><br>
+
+        This game wouldn't have been possible without the great discord community
+        around my games - You should really join the <a href="<discordlink>"
+        target="_blank">discord server</a>!<br><br>
+
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
+        factorio sessions this game would never have existed.
 
 changelog:
     title: Changelog
@@ -716,6 +771,6 @@ demo:
         importingGames: Carregando jogos salvos
         oneGameLimit: Limitado para um savegamne
         customizeKeybindings: Modificando Teclas
-        creatingMarkers: Criando marcações
+        exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Não disponível na versão demo.

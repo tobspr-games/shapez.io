@@ -98,7 +98,9 @@ export class HUDShop extends BaseHUDPart {
             // Set description
             handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description
                 .replace("<currentMult>", currentTierMultiplier.toString())
-                .replace("<newMult>", (currentTierMultiplier + tierHandle.improvement).toString());
+                .replace("<newMult>", (currentTierMultiplier + tierHandle.improvement).toString())
+                // Backwards compatibility
+                .replace("<gain>", (tierHandle.improvement * 100.0).toString());
 
             tierHandle.required.forEach(({ shape, amount }) => {
                 const container = makeDiv(handle.elemRequirements, null, ["requirement"]);
@@ -137,7 +139,7 @@ export class HUDShop extends BaseHUDPart {
                         pinButton.classList.add("unpinned");
                         pinButton.classList.remove("pinned", "alreadyPinned");
                     } else {
-                        this.root.hud.signals.shapePinRequested.dispatch(shapeDef, amount);
+                        this.root.hud.signals.shapePinRequested.dispatch(shapeDef);
                         pinButton.classList.add("pinned");
                         pinButton.classList.remove("unpinned");
                     }
