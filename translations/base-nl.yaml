@@ -52,7 +52,7 @@ steamPage:
 
         [b]Geplande functies & suggesties van de community[/b]
 
-        Dit spel is open source - Iedereen kan bijdragen! Daarnaast luister ik [b]erg veel[/b] naar de community! Ik probeer alle suggesties te lezen en gebruik feedback zo veel als mogelijk. 
+        Dit spel is open source - Iedereen kan bijdragen! Daarnaast luister ik [b]erg veel[/b] naar de community! Ik probeer alle suggesties te lezen en gebruik feedback zo veel als mogelijk.
 
         [list]
             [*] Verhaalmodus, waar gebouwen specifieke vormen kosten om te bouwen
@@ -258,6 +258,12 @@ dialogs:
         title: Bevestig knippen
         desc: >-
             Je bent veel gebouwen aan het knippen (<count> om precies te zijn)! Weet je zeker dat je dit wil doen?
+
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: >-
+            You requested to export your base as a screenshot. Please note that this can
+            be quite slow for a big base and even crash your game!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -507,8 +513,7 @@ storyRewards:
 
     reward_mixer:
         title: Kleuren mengen
-        desc: >-
-            De <strong>menger</strong> is ontgrendeld - combineer twee kleuren met dit gebouw!
+        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
 
     reward_stacker:
         title: Stapelaar
@@ -655,7 +660,7 @@ settings:
 
         movementSpeed:
             title: Bewegingssnelheid
-            description: Veranderd hoe snel het beeld beweegt wanneer je het toetsenbord gebruikt. 
+            description: Veranderd hoe snel het beeld beweegt wanneer je het toetsenbord gebruikt.
             speeds:
                 super_slow: Super langzaam
                 slow: Langzaam
@@ -726,9 +731,27 @@ keybindings:
         placeInverse: Omkeren richting lopende band
         pasteLastBlueprint: Plak laatst gekopiëerde blauwdruk
         massSelectCut: Knip geselecteerd gebied
+        exportScreenshot: Export whole Base as Image
 
 about:
     title: Over dit spel
+    body: >-
+        This game is open source and developed by <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (this is me).<br><br>
+
+        If you want to contribute, check out <a href="<githublink>"
+        target="_blank">shapez.io on github</a>.<br><br>
+
+        This game wouldn't have been possible without the great discord community
+        around my games - You should really join the <a href="<discordlink>"
+        target="_blank">discord server</a>!<br><br>
+
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
+        factorio sessions this game would never have existed.
 
 changelog:
     title: Changelog
@@ -739,5 +762,6 @@ demo:
         importingGames: Savegames importeren
         oneGameLimit: Gelimiteerd tot één savegame
         customizeKeybindings: Custom sneltoetsen
+        exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Niet beschikbaar in de demo.

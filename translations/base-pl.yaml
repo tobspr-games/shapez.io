@@ -260,9 +260,15 @@ dialogs:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną wersję gry dla nielimitowanych znaczników!
 
     massCutConfirm:
-      title: Potwierdź wycinanie
-      desc: >-
-        Wycinasz sporą ilość maszyn (<count> gwoli ścisłości)! Czy na pewno chcesz kontynuować?
+        title: Potwierdź wycinanie
+        desc: >-
+            Wycinasz sporą ilość maszyn (<count> gwoli ścisłości)! Czy na pewno chcesz kontynuować?
+
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: >-
+            You requested to export your base as a screenshot. Please note that this can
+            be quite slow for a big base and even crash your game!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -550,8 +556,8 @@ storyRewards:
     reward_splitter_compact:
         title: Łącznik Kompaktowy
         desc: >-
-          Odblokowano nowy wariant <strong>rozdzielacza</strong> - Przyjmuje 
-          przedmioty z dwóch taśmociągów i przenosi je na jeden!
+            Odblokowano nowy wariant <strong>rozdzielacza</strong> - Przyjmuje
+            przedmioty z dwóch taśmociągów i przenosi je na jeden!
 
     reward_cutter_quad:
         title: Przecinak Poczwórny
@@ -576,11 +582,11 @@ storyRewards:
     reward_blueprints:
         title: Schematy
         desc: >-
-          Możesz teraz <strong>kopiować i wklejać</strong> części swojej fabryki!
-          Zaznacz obszar (Przytrzymaj CTRL, a następnie przeciągnij myszą) i naciśnij 'C',
-          by go skopiować.<br><br>Wklejanie <strong>nie jest darmowe</strong> - musisz
-          produkować <strong>kształty schematów</strong> (te, które właśnie dostarczyłeś),
-          by móc wklejać!
+            Możesz teraz <strong>kopiować i wklejać</strong> części swojej fabryki!
+            Zaznacz obszar (Przytrzymaj CTRL, a następnie przeciągnij myszą) i naciśnij 'C',
+            by go skopiować.<br><br>Wklejanie <strong>nie jest darmowe</strong> - musisz
+            produkować <strong>kształty schematów</strong> (te, które właśnie dostarczyłeś),
+            by móc wklejać!
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -744,6 +750,7 @@ keybindings:
         placeInverse: Odwróć automatyczną orientacje pasów
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
         massSelectCut: Wytnij obszar
+        exportScreenshot: Export whole Base as Image
 
 about:
     title: O Grze
@@ -763,5 +770,6 @@ demo:
         importingGames: Importowanie zapisów gry
         oneGameLimit: Limit jednego zapisu gry
         customizeKeybindings: Personalizowanie Klawiszologii
+        exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Niedostępne w wersji demo.

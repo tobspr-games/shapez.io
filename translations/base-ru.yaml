@@ -260,6 +260,12 @@ dialogs:
             You are cutting a lot of buildings (<count> to be exact)! Are you sure you
             want to do this?
 
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: >-
+            You requested to export your base as a screenshot. Please note that this can
+            be quite slow for a big base and even crash your game!
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -725,9 +731,27 @@ keybindings:
         placeInverse: Invert automatic belt orientation
         pasteLastBlueprint: Paste last blueprint
         massSelectCut: Cut area
+        exportScreenshot: Export whole Base as Image
 
 about:
     title: О игре
+    body: >-
+        This game is open source and developed by <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (this is me).<br><br>
+
+        If you want to contribute, check out <a href="<githublink>"
+        target="_blank">shapez.io on github</a>.<br><br>
+
+        This game wouldn't have been possible without the great discord community
+        around my games - You should really join the <a href="<discordlink>"
+        target="_blank">discord server</a>!<br><br>
+
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
+        factorio sessions this game would never have existed.
 
 changelog:
     title: Список измений
@@ -738,5 +762,6 @@ demo:
         importingGames: Importing savegames
         oneGameLimit: Limited to one savegame
         customizeKeybindings: Customizing Keybindings
+        exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Не доступно в демо-версии.
