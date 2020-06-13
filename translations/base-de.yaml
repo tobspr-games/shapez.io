@@ -294,7 +294,7 @@ ingame:
             Taste: <key>
 
         infoTexts:
-            speed: Geschwindigkeit
+            speed: Geschw.
             range: Reichweite
             storage: Kapazität
             oneItemPerSecond: 1 Item / Sekunde
