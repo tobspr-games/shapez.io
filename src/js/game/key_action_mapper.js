@@ -24,7 +24,8 @@ export const KEYMAPPINGS = {
         menuOpenStats: { keyCode: key("G") },
 
         toggleHud: { keyCode: 113 }, // F2
-        toggleFPSInfo: { keyCode: 115 }, // F1
+        exportScreenshot: { keyCode: 114 }, // F3
+        toggleFPSInfo: { keyCode: 115 }, // F4
     },
 
     navigation: {
