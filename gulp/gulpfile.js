@@ -189,12 +189,12 @@ function serve({ standalone }) {
 
     // Watch the build folder and reload when anything changed
     const extensions = ["html", "js", "png", "gif", "jpg", "svg", "mp3", "ico", "woff2", "json"];
-    gulp.watch(extensions.map(ext => path.join(buildFolder, "**", "*." + ext))).on("change", function (e) {
-        return gulp.src(e.path).pipe(browserSync.reload({ stream: true }));
+    gulp.watch(extensions.map(ext => path.join(buildFolder, "**", "*." + ext))).on("change", function (path) {
+        return gulp.src(path).pipe(browserSync.reload({ stream: true }));
     });
 
-    gulp.watch("../src/js/built-temp/*.json").on("change", function (e) {
-        return gulp.src(e.path).pipe(browserSync.reload({ stream: true }));
+    gulp.watch("../src/js/built-temp/*.json").on("change", function (path) {
+        return gulp.src(path).pipe(browserSync.reload({ stream: true }));
     });
 
     // Start the webpack watching server (Will never return)
