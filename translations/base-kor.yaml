@@ -573,7 +573,7 @@ storyRewards:
     no_reward:
         title: 다음 레벨
         desc: >-
-            이 레벨은 보상이 없지만, 다음 레벨에는 있을 거에요! <br><br> 추신: 만들었던 공장을 부수지 않는게 좋을 겁니다. <strong>업그레이드</strong> 하는데 그 모양들이 사용될 것이거든요!
+            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
 
     no_reward_freeplay:
         title: 다음 레벨
