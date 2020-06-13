@@ -75,7 +75,7 @@ export class DynamicTickrate {
     decreaseTickRate() {
         const desiredFps = this.root.app.settings.getDesiredFps();
         if ((G_IS_DEV && globalConfig.debug.renderForTrailer) || globalConfig.debug.disableDynamicTickrate) {
-        this.setTickRate(Math_round(Math_max(desiredFps, this.currentTickRate * 0.8)));
+            this.setTickRate(Math_round(Math_max(desiredFps, this.currentTickRate * 0.8)));
             return;
         }
 

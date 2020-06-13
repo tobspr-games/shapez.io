@@ -47,6 +47,15 @@ export default {
     // Disables the dialog when completing a level
     disableUnlockDialog: false,
     // -----------------------------------------------------------------------------------
+    // Speed ups the game at the cost of not checking obvious things.
+    debug_disableInternalCheckTile: false,
+    // -----------------------------------------------------------------------------------
+    // Speed ups the game at the cost of not checking obvious things.
+    debug_disableGetTileAsserts: false,
+    // -----------------------------------------------------------------------------------
+    // Speed ups the game at the cost of not checking obvious things.
+    debug_disableBeltAsserts: false,
+    // -----------------------------------------------------------------------------------
     // Disables the simulation - This effectively pauses the game.
     disableLogicTicks: false,
     // -----------------------------------------------------------------------------------

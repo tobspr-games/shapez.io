@@ -747,6 +747,21 @@ settings:
             description: >-
                 Disables the dialog when completing a level
         # -----------------------------------------------------------------------------------
+        debug_disableInternalCheckTile:
+            title: DEBUG / disable Internal Check Tile
+            description: >-
+                Speed ups the game at the cost of not checking obvious things
+        # -----------------------------------------------------------------------------------
+        debug_disableGetTileAsserts:
+            title: DEBUG / disable Get Tile Asserts
+            description: >-
+                Speed ups the game at the cost of not checking obvious things
+        # -----------------------------------------------------------------------------------
+        debug_disableBeltAsserts:
+            title: DEBUG / disable Belt Asserts
+            description: >-
+                Speed ups the game at the cost of not checking obvious things
+        # -----------------------------------------------------------------------------------
         debug_disableLogicTicks:
             title: DEBUG / disable Logic Ticks
             description: >-
