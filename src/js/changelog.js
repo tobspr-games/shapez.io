@@ -4,8 +4,9 @@ export const CHANGELOG = [
         date: "unreleased",
         entries: [
             "Pinned shapes are now smart, they dynamically update their goal and also unpin when no longer required. Completed objectives are now rendered transparent.",
-            "Improve upgrade number rounding, so there are no goals like '37.4k', instead it will now be '35k'",
             "You can now cut areas, and also paste the last blueprint again! (by hexy)",
+            "You can now export your whole base as an image by pressing F3!",
+            "Improve upgrade number rounding, so there are no goals like '37.4k', instead it will now be '35k'",
             "You can now configure the camera movement speed when using WASD (by mini-bomba)",
             "Selecting an area now is relative to the world and thus does not move when moving the screen (by Dimava)",
             "Fix bug regarding number rounding",
