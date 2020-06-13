@@ -13,6 +13,7 @@ import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
+import { blueprintShape } from "../../upgrades";
 
 const logger = createLogger("hud/mass_selector");
 

@@ -107,6 +107,11 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             const cost = blueprint.getCost();
             this.root.hubGoals.takeShapeByKey(blueprintShape, cost);
 
+            const leftover = this.root.hubGoals.getShapesStoredByKey(blueprintShape);
+            if (leftover < 50) {
+                this.root.hubGoals.putShapeByKey(blueprintShape, 50 - leftover);
+            }
+
             // This actually feels weird
             // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).isCurrentlyPressed()) {
             //     this.currentBlueprint.set(null);

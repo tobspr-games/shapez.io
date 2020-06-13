@@ -128,6 +128,17 @@ export class HubGoals extends BasicSerializableObject {
     }
 
     /**
+     * @param {string} key
+     * @param {number} amount
+     */
+    putShapeByKey(key, amount) {
+        assert(amount >= 0, "Amount < 0 for " + key);
+        assert(Number.isInteger(amount), "Invalid amount: " + amount);
+        this.storedShapes[key] = (this.storedShapes[key] || 0) + amount;
+        return;
+    }
+
+    /**
      * Returns how much of the current shape is stored
      * @param {string} key
      * @returns {number}
