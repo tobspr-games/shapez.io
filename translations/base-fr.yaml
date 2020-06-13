@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes dans une carte infinie.
+    shortText: shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,11 +30,11 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io est un jeu ayant pour objectif d'automatiser la création et la fusion de formes à l'aide d'une usine. Livrez les formes de plus en plus complexes requises pour progresser dans le jeu et débloquez des améliorations qui accéléreront votre chaîne de production.
+        shapez.io est un jeu ayant pour objectif d'automatiser la création et la fusion de formes à l'aide d'une usine. Livrez des formes de plus en plus complexes requises pour progresser dans le jeu et débloquez des améliorations qui accéléreront votre chaîne de production.
 
         La demande allant croissant, vous aurez à adapter l'échelle de votre usine afin de suivre la demande - Ne négligez pas les resources cependant, vous aurez à vous étendre sur une [b]carte infinie[/b] !
 
-        Les formes seules pouvant devenir ennuyeuses à la longue vous aurez à mélanger des couleurs et les utiliser pour peindre vos formes - Combinez des pigments rouges, verts ou bleus pour produire différentes couleurs et enduisez-en vos formes afin de satisfaire les demandes.
+        Traiter seulement des formes pouvant devenir monotone à la longue, vous aurez aussi à mélanger des couleurs et à les utiliser pour peindre vos formes - Combinez des pigments rouges, verts ou bleus pour produire différentes couleurs et enduisez-en vos formes afin de satisfaire les demandes.
 
         Ce jeu propose 18 niveaux (qui devraient d'ores et déjà vous occuper pour de nombreuses heures !) mais j'ajoute régulièrement de nouveaux contenus - Beaucoup de nouveautés sont prévues !
 
@@ -61,7 +61,7 @@ steamPage:
             [*] Création configurable de carte (éditer le nombre et la taille des gisements de resources, édition de la graine générant la carte, et plus encore)
             [*] Davantage de types de formes
             [*] Performance améliorée (bien que le jeu tourne déjà de manière tout à fait décente !)
-            [*] Adaptation de l'affichage des couleurs à différente forme de daltonisme
+            [*] Adaptation de l'affichage des couleurs à différentes formes de daltonisme
             [*] Et bien plus encore !
         [/list]
 
@@ -115,14 +115,15 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Version démo
     intro: >-
-        Achetez la version complète pour débloquer toutes les fonctionnalités!
+        Achetez la version complète pour débloquer toutes les fonctionnalités !
 
 mainMenu:
     play: Jouer
     changelog: Historique
     importSavegame: Importer
-    openSourceHint: Ce jeu est open source!
+    openSourceHint: Ce jeu est open source !
     discordLink: Serveur Discord officiel
+    helpTranslate: Contribuez à la traduction !
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -134,26 +135,25 @@ mainMenu:
     contests:
         contest_01_03062020:
             title: "Concours #01"
-            desc: Gagnez <strong>$25</strong> pour l'usine la plus cool!
+            desc: Gagnez <strong>$25</strong> pour l'usine la plus cool !
             longDesc: >-
-                Pour vous remercier, j'ai pensé qu'il serait bien de faire un concours hebdomadaire!
+                Pour vous remercier, j'ai pensé qu'il serait bien de faire un concours hebdomadaire !
                 <br><br>
-                <strong>Le sujet de cette semaine:</strong> Construire l'usine la plus cool!
+                <strong>Le sujet de cette semaine:</strong> Construire l'usine la plus cool !
                 <br><br>
                 Voici comment faire:<br>
                 <ul class="bucketList">
                     <li>Envoyez une capture d'écran de votre usine à <strong>contest@shapez.io</strong></li>
-                    <li>Vous aurez des points bonus si vous la partagez sur les réseaux sociaux!</li>
+                    <li>Vous aurez des points bonus si vous la partagez sur les réseaux sociaux !</li>
                     <li>Je choisirai 5 images et les soumettrai au vote à la communauté <strong>discord</strong>.</li>
                     <li>Le gagnant empoche <strong>$25</strong> (Paypal, carte cadeau Amazon, ce que vous préférez)</li>
                     <li>Limite: 07.06.2020 AM 12:00 CEST</li>
                 </ul>
                 <br>
-                J'attends avec impatience de voir vos superbes créations!
+                J'attends avec impatience de voir vos superbes créations !
 
         showInfo: Voir
         contestOver: Ce concours est terminé - Rejoignez le serveur discord pour être tenu au courant des prochains concours !
-    helpTranslate: Help translate!
 
 dialogs:
     buttons:
@@ -187,7 +187,7 @@ dialogs:
     confirmSavegameDelete:
         title: Confirmez la suppression
         text: >-
-            Êtes-vous certains de vouloir supprimer votre partie?
+            Êtes-vous certains de vouloir supprimer votre partie ?
 
     savegameDeletionError:
         title: Impossible de supprimer
@@ -209,31 +209,37 @@ dialogs:
 
     keybindingsResetOk:
         title: Réinitialisation des contrôles
-        desc: Les contrôles ont été réinitialisés par leur état par défaut respectifs!
+        desc: Les contrôles ont été réinitialisés par leur état par défaut respectifs !
 
     featureRestriction:
         title: Version démo
-        desc: Vous avez essayé d'accéder à la fonction (<feature>) qui n'est pas disponible dans la démo. Considérez l'achat de la version complète pour une expérience optimale!
+        desc: Vous avez essayé d'accéder à la fonction (<feature>) qui n'est pas disponible dans la démo. Considérez l'achat de la version complète pour une expérience optimale !
 
     oneSavegameLimit:
         title: Sauvegardes limitées
-        desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci de soit effacer l'actuelle ou de vous procurer la version complète!
+        desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci d'effacer celle en cours ou alternativement de vous procurer la version complète !
 
     updateSummary:
-        title: Nouvel mise-à-jour!
+        title: Nouvel mise-à-jour !
         desc: >-
             Voici les modifications depuis votre dernière session:
 
     upgradesIntroduction:
         title: Débloquer les améliorations
         desc: >-
-            Toutes les formes que vous produisez peuvent être utilisées pour débloquer des améliorations - <strong>Ne détruisez pas vos anciennes usines!</strong>
+            Toutes les formes que vous produisez peuvent être utilisées pour débloquer des améliorations - <strong>Ne détruisez pas vos anciennes usines !</strong>
             L'onglet des améliorations se trouve dans le coin supérieur droit de l'écran.
 
     massDeleteConfirm:
         title: Confirmation de suppression
         desc: >-
-            Vous allez supprimer pas mal de bâtiments (<count> pour être exact)! Etes vous certains de vouloir faire ça ?
+            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Etes vous certains de vouloir faire cela ?
+
+    massCutConfirm:
+        title: Confirmer la coupure
+        desc: >-
+            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être précis) ! Êtes-vous
+            certains de vouloir faire cela ?
 
     blueprintsNotUnlocked:
         title: Pas encore débloqué
@@ -244,7 +250,7 @@ dialogs:
         title: Raccourcis utiles
         desc: >-
             Le jeu a plein de raccourcis facilitant la construction de grandes usines.
-            En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong>!<br><br>
+            En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong> !<br><br>
             <code class='keybinding'>CTRL</code> + Glisser: Sélectionne une zone à copier / effacer.<br>
             <code class='keybinding'>SHIFT</code>: Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
             <code class='keybinding'>ALT</code>: Inverse l'orientation des convoyeurs placés.<br>
@@ -255,17 +261,12 @@ dialogs:
 
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez !
-    massCutConfirm:
-        title: Confirm cut
-        desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Exporter une capture d'écran
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
+
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -278,18 +279,18 @@ ingame:
         placeMultiple: Placement multiple
         reverseOrientation: Changer l'orientation
         disableAutoOrientation: Désactiver l'orientation automatique
-        toggleHud: Basculer l'ATH
+        toggleHud: Basculer l'affichage tête haute (ATH)
         placeBuilding: Placer un bâtiment
         createMarker: Créer une balise
         delete: Supprimer
-        pasteLastBlueprint: Paste last blueprint
+        pasteLastBlueprint: Copier le dernier patron
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Appuyez sur <key> pour changer de variante.
+        cycleBuildingVariants: Appuyez sur <key> pour alterner entre les variantes.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -300,7 +301,7 @@ ingame:
             range: Portée
             storage: Espace de stockage
             oneItemPerSecond: 1 forme / seconde
-            itemsPerSecond: <x> formes / s
+            itemsPerSecond: <x> formes / seconde
             itemsPerSecondDouble: (x2)
 
             tiles: <x> cases
@@ -310,7 +311,7 @@ ingame:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Niveau <level>
         completed: Terminé
-        unlockText: <reward> débloqué!
+        unlockText: <reward> débloqué !
         buttonNextLevel: Niveau suivant
 
     # Notifications on the lower right
@@ -321,7 +322,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: Apuyez sur <keyCut> pour couper, <keyCopy> pour copier, <keyDelete> pour effacer et <keyCancel> pour annuler.
 
     # The "Upgrades" window
     shop:
@@ -333,7 +334,7 @@ ingame:
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: NIVEAU MAXIMAL (Vitesse x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -391,25 +392,25 @@ ingame:
                 Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
 
             1_3_expand: >-
-                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+                Ceci n'est <strong>PAS</strong> un jeu incrémental (incremental game) et inactif (idle game) ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
 # All shop upgrades
 shopUpgrades:
     belt:
         name: Convoyeurs, Distributeurs et Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        description: Vitesse x<currentMult> → x<newMult>
 
     miner:
         name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        description: Vitesse x<currentMult> → x<newMult>
 
     processors:
         name: Découpage, Rotation et Empilage
-        description: Speed x<currentMult> → x<newMult>
+        description: Vitesse x<currentMult> → x<newMult>
 
     painting:
         name: Mélange et Peinture
-        description: Speed x<currentMult> → x<newMult>
+        description: Vitesse x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
@@ -433,7 +434,7 @@ buildings:
             description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
         tier2:
-            name: Tunnel Echelon II
+            name: Tunnel Niveau II
             description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
     splitter: # Internal name for the Balancer
@@ -455,7 +456,7 @@ buildings:
             description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite l'autre ou sinon, gare au blocage !</strong>
         quad:
             name: Découpeur (Quatre)
-            description: Coupe une forme en 4 parties. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruite les autres ou sinon, gare au blocage !</strong>
+            description: Coupe une forme en quatre parties. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruite les autres ou sinon, gare au blocage !</strong>
 
     rotater:
         default:
@@ -483,7 +484,7 @@ buildings:
             name: Peintre (Double)
             description: Colorie les deux formes de gauche avec la couleur de droite.
         quad:
-            name: Peintre (Quatre)
+            name: Peintre (Quadruple)
             description: Permet de colorier chaque quadrant d'une forme avec une couleur différente.
 
     trash:
@@ -495,15 +496,15 @@ buildings:
             name: Stockage
             description: Stocke les formes en trop jusqu'à une certaine capacité. Peut être utilisé comme tampon.
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
+        deliver: Délivrez
+        toUnlock: pour débloquer
+        levelShortcut: NV
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Découper des formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>Assurez-vous de vous débarasser des déchets, sinon <strong>gare au blocage</strong> - À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation !<br><br>Assurez-vous de vous débarasser des déchets, sinon <strong>gare au blocage</strong> - À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
 
     reward_rotater:
         title: Rotation
@@ -522,11 +523,9 @@ storyRewards:
         title: Combineur
         desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinée et si elles ne peuvent êtres mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche après avoir été légèrement réduite.
 
-    # Suggestion from the translator: "après avoir été légèrement réduite" = "after having been slightly scaled down": I think this part of the explanation is missing in the original text, and I struggled a lot at the beginning to understand this important fact of mixing shapes.
-
     reward_splitter:
         title: Distributeur/Rassembleur
-        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les formes</strong> entre plusieurs convoyeurs!<br><br>
+        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les formes</strong> entre plusieurs convoyeurs !<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -579,9 +578,7 @@ storyRewards:
     no_reward:
         title: Niveau suivant
         desc: >-
-            Ce niveau n'a pas de récompense mais le prochain, oui ! <br><br>PS: Vous ne devriez pas détruires votre usine actuelle - Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour <strong>débloquer des améliorations</strong>
-
-    # Question from the translator: Is the "desc: >-" syntaxically correct ?
+            Ce niveau n'a pas de récompense mais le prochain, oui ! <br><br>PS: Vous ne devriez pas détruire votre usine actuelle - Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour <strong>débloquer des améliorations</strong> 
 
     no_reward_freeplay:
         title: Niveau suivant
@@ -595,7 +592,7 @@ settings:
         app: Application
 
     versionBadges:
-        dev: Developpement
+        dev: Développement
         staging: Test
         prod: Production
     buildDate: Créé le <at-date>
@@ -644,13 +641,13 @@ settings:
                 Choisissez votre thème (clair / sombre).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Sombre
+                light: Clair
 
         refreshRate:
             title: Fréquence de simulation
             description: >-
-                Si vous avez un moniteur à 144hz, changez le taux de rafraichissement pour que le jeu fonctionne correctement à cette haute fréquence. Ceci pourrait cependant diminuer vos IPS (itérations par seconde) si votre ordinateur est trop lent.
+                Si vous avez un moniteur à fréquence élevée, changez le taux de rafraichissement pour que le jeu fonctionne correctement à cette haute fréquence. Ceci pourrait cependant diminuer vos IPS (itérations par seconde) si votre ordinateur est trop lent.
 
         alwaysMultiplace:
             title: Placement multiple
@@ -663,21 +660,20 @@ settings:
                 Affiche ou non le bouton 'Afficher un indice' dans le coin inférieur gauche.
 
         language:
-            title: Language
+            title: Langage
             description: >-
-                Change the language. All translations are user contributed and might be
-                incomplete!
+                Change le langage. Toutes les traductions sont des contributions des utilisateurs et pourraient être partiellement incomplètes !
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: Vitesse de déplacement
+            description: Change la vitesse à laquelle l'écran se déplace lors de l'utilisation du clavier.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Super lent
+                slow: Lent
+                regular: Normal
+                fast: Rapide
+                super_fast: Très rapide
+                extremely_fast: Extrêmement rapide
 
 keybindings:
     title: Contrôles
@@ -711,8 +707,8 @@ keybindings:
         menuOpenShop: Améliorations
         menuOpenStats: Statistiques
 
-        toggleHud: Basculer l'ATH (affichage tête haute)
-        toggleFPSInfo: Basculer IPS (itérations par seconde) et informations de débogage
+        toggleHud: Basculer l'affichage tête haute (ATH)
+        toggleFPSInfo: Basculer l'affichage des IPS (itérations par seconde) et des informations de débogage
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -728,41 +724,40 @@ keybindings:
         rotateWhilePlacing: Pivoter
         rotateInverseModifier: >-
             Variante: Pivote à gauche
-        cycleBuildingVariants: Faire défiler les variantes
-        confirmMassDelete: Confirmer la suppression de zone
-        cycleBuildings: Faire défiler les bâtiments
+        cycleBuildingVariants: Alterner entre les variantes
+        confirmMassDelete: Confirmer la suppression de la sélection
+        cycleBuildings: Alterner entre les bâtiments
 
         massSelectStart: Cliquez et maintenez pour commencer
         massSelectSelectMultiple: Sélectionner plusieurs zones
-        massSelectCopy: Copier la zone
+        massSelectCopy: Copier la sélection
 
         placementDisableAutoOrientation: Désactiver l'orientation automatique
         placeMultiple: Rester en mode placement
         placeInverse: Inverser le mode d'orientation automatique
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
+        pasteLastBlueprint: Copier le dernier patron
+        massSelectCut: Couper la sélection
+        exportScreenshot: Exporter toute la base en tant qu'image.
 
 about:
     title: À propos de ce jeu
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Ce jeu est open source et développé par <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (c'est moi).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Si vous souhaitez contribuer, allez voir <a href="<githublink>"
+        target="_blank">shapez.io sur github</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        Ce jeu n'aurait pu être réalisé sans la précieuse communauté discord autour de
+        mes jeux - Vous devriez vraiment envisager de joindre le <a href="<discordlink>"
+        target="_blank">serveur discord</a> !<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        La bande son a été créée par <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Il est impressionnant !<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
-
+        Pour terminer, un immense merci à mon meilleur amis <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sans nos sessions sur factorio, ce jeu n'aurait jamais existé.
+        
 changelog:
     title: Historique
 
@@ -772,7 +767,7 @@ demo:
         importingGames: Importer des sauvegardes
         oneGameLimit: Limité à une sauvegarde
         customizeKeybindings: Personnalisation des contrôles
-        exportingBase: Exporting whole Base as Image
+        exportingBase: Exporter toute la base en tant qu'image
 
     settingNotAvailable: Indisponible dans la démo.
 #
