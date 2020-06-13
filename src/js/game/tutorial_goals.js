@@ -77,6 +77,14 @@ export const tutorialGoals = [
         reward: enumHubGoalRewards.reward_painter,
     },
 
+    // 6.5
+    // Blueprints
+    {
+        shape: "CbCbCbCb",
+        required: 600,
+        reward: enumHubGoalRewards.reward_blueprints,
+    },
+
     // 7
     // Painter
     {
