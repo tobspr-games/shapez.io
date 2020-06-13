@@ -297,7 +297,7 @@ ingame:
             speed: Geschw.
             range: Reichweite
             storage: Kapazität
-            oneItemPerSecond: 1 Item / Sekunde
+            oneItemPerSecond: 1 Item / s
             itemsPerSecond: <x> Items / s
             itemsPerSecondDouble: (x2)
 
