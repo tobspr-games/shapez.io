@@ -260,6 +260,12 @@ dialogs:
     markerDemoLimit:
         desc: 데모 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
 
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: >-
+            You requested to export your base as a screenshot. Please note that this can
+            be quite slow for a big base and even crash your game!
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -726,9 +732,27 @@ keybindings:
         placementDisableAutoOrientation: 자동 회전 끄기
         placeMultiple: 배치 모드에 있기
         placeInverse: 자동 벨트 회전 뒤집기
+        exportScreenshot: Export whole Base as Image
 
 about:
     title: 이 게임의 정보
+    body: >-
+        This game is open source and developed by <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (this is me).<br><br>
+
+        If you want to contribute, check out <a href="<githublink>"
+        target="_blank">shapez.io on github</a>.<br><br>
+
+        This game wouldn't have been possible without the great discord community
+        around my games - You should really join the <a href="<discordlink>"
+        target="_blank">discord server</a>!<br><br>
+
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
+        factorio sessions this game would never have existed.
 
 changelog:
     title: 업데이트 기록
@@ -739,5 +763,6 @@ demo:
         importingGames: 게임 저장 파일 불러오기
         oneGameLimit: 게임 저장 파일 최대 1개
         customizeKeybindings: 키바인딩 설정하기
+        exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: 데모 버전에서 사용 불가

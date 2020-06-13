@@ -409,7 +409,7 @@ export class GameCore {
         }
 
         if (G_IS_DEV) {
-            root.map.drawStaticEntities(params);
+            root.map.drawStaticEntityDebugOverlays(params);
         }
 
         // END OF GAME CONTENT

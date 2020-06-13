@@ -366,11 +366,19 @@ export class MainMenuState extends GameState {
         this.app.adProvider.showVideoAd().then(() => {
             this.app.analytics.trackUiClick("resume_game_adcomplete");
             const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
-            savegame.readAsync().then(() => {
-                this.moveToState("InGameState", {
-                    savegame,
+            savegame
+                .readAsync()
+                .then(() => {
+                    this.moveToState("InGameState", {
+                        savegame,
+                    });
+                })
+                .catch(err => {
+                    this.dialogs.showWarning(
+                        T.dialogs.gameLoadFailure.title,
+                        T.dialogs.gameLoadFailure.text + "<br><br>" + err
+                    );
                 });
-            });
         });
     }
 

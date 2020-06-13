@@ -10,6 +10,7 @@ import {
     Math_atan2,
     Math_sin,
     Math_cos,
+    Math_ceil,
 } from "./builtins";
 
 const tileSize = globalConfig.tileSize;
@@ -303,11 +304,19 @@ export class Vector {
     }
 
     /**
-     * Computes componentwise floor and return a new vector
+     * Computes componentwise floor and returns a new vector
      * @returns {Vector}
      */
     floor() {
         return new Vector(Math_floor(this.x), Math_floor(this.y));
+    }
+
+    /**
+     * Computes componentwise ceil and returns a new vector
+     * @returns {Vector}
+     */
+    ceil() {
+        return new Vector(Math_ceil(this.x), Math_ceil(this.y));
     }
 
     /**

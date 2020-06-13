@@ -57,12 +57,6 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 <label>${T.ingame.keybindingsOverlay.selectBuildings}</label>
             </div>
 
-            <div class="binding noPlacementOnly">
-                <code class="keybinding">${getKeycode(KEYMAPPINGS.massSelect.pasteLastBlueprint)}</code>
-                <label>${T.ingame.keybindingsOverlay.pasteLastBlueprint}</label>
-            </div>
-
-
             <div class="binding placementOnly">
                 <code class="keybinding leftMouse"></code>
                 <label>${T.ingame.keybindingsOverlay.placeBuilding}</label>

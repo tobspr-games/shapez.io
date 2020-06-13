@@ -64,7 +64,7 @@ export class MapView extends BaseMap {
      * Draws all static entities like buildings etc.
      * @param {DrawParameters} drawParameters
      */
-    drawStaticEntities(drawParameters) {
+    drawStaticEntityDebugOverlays(drawParameters) {
         const cullRange = drawParameters.visibleRect.toTileCullRectangle();
         const top = cullRange.top();
         const right = cullRange.right();
@@ -90,7 +90,7 @@ export class MapView extends BaseMap {
                 if (content) {
                     let isBorder = x <= left - 1 || x >= right + 1 || y <= top - 1 || y >= bottom + 1;
                     if (!isBorder) {
-                        content.draw(drawParameters);
+                        content.drawDebugOverlays(drawParameters);
                     }
                 }
             }

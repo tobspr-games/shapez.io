@@ -136,7 +136,7 @@ export class Entity extends BasicSerializableObject {
      * Draws the entity, to override use @see Entity.drawImpl
      * @param {DrawParameters} parameters
      */
-    draw(parameters) {
+    drawDebugOverlays(parameters) {
         const context = parameters.context;
         const staticComp = this.components.StaticMapEntity;
 
