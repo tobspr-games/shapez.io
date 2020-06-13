@@ -12,7 +12,7 @@ export const CHANGELOG = [
             "Allow higher tick-rates up to 500hz (This will burn your PC!)",
             "Fix bug regarding number rounding",
             "Fix dialog text being hardly readable in dark theme",
-            "Fix app not starting when the savegames were corrupted - there is now a better error message",
+            "Fix app not starting when the savegames were corrupted - there is now a better error message as well.",
             "Further translation updates - Big thanks to all contributors!",
         ],
     },
