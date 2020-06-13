@@ -112,27 +112,24 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
         const actionMapper = this.root.keyMapper;
         let newIndex = this.lastSelectedIndex;
 
-        if (actionMapper.getBinding(KEYMAPPINGS.placementModifiers.cycleInverse).isCurrentlyPressed()) {
-            for (let i = 0; i < toolbarBuildings.length; --i, --newIndex) {
-                newIndex = (newIndex + toolbarBuildings.length) % toolbarBuildings.length;
-                if (this.isCycledBuildingSelectable(newIndex)) {
-                    break;
-                }
-            }
-        } else {
-            for (let i = 0; i < toolbarBuildings.length; ++i, ++newIndex) {
-                newIndex %= toolbarBuildings.length;
-                if (this.isCycledBuildingSelectable(newIndex)) {
-                    break;
-                }
+        for (let i = 0; i < toolbarBuildings.length; ++i) {
+            newIndex = this.calculateNewCycleIndex(newIndex, toolbarBuildings.length);
+            if (this.isBuildingSelectable(newIndex)) {
+                break;
             }
         }
+
         const metaBuildingClass = toolbarBuildings[newIndex];
         const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
         this.selectBuildingForPlacement(metaBuilding);
     }
 
-    isCycledBuildingSelectable(toolbarIndex) {
+    /**
+     *
+     * @param {number} toolbarIndex The current toolbar index
+     * @return {boolean} true if building is selectable, otherwise false
+     */
+    isBuildingSelectable(toolbarIndex) {
         const metaBuilding = gMetaBuildingRegistry.findByClass(toolbarBuildings[toolbarIndex]);
         const handle = this.buildingHandles[metaBuilding.id];
         if (!handle.selected && handle.unlocked) {
@@ -140,6 +137,25 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
         }
 
         return false;
+    }
+
+    /**
+     *
+     * @param {number} index the current index
+     * @param {number} length the number of length of the array
+     * @returns {number} the next index
+     */
+    calculateNewCycleIndex(index, length) {
+        const actionMapper = this.root.keyMapper;
+        let cycleDirection;
+
+        if (actionMapper.getBinding(KEYMAPPINGS.placementModifiers.cycleInverse).isCurrentlyPressed()) {
+            cycleDirection = -1;
+        } else {
+            cycleDirection = 1;
+        }
+
+        return (index + cycleDirection + length) % length;
     }
 
     /**

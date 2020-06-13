@@ -381,7 +381,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 index >= 0,
                 "Current variant was invalid: " + this.currentVariant.get() + " out of " + availableVariants
             );
-            const newIndex = this.calculateNewVariantCycleIndex(index, availableVariants.length);
+            const newIndex = this.calculateNewCycleIndex(index, availableVariants.length);
             const newVariant = availableVariants[newIndex];
             this.currentVariant.set(newVariant);
 
@@ -395,17 +395,17 @@ export class HUDBuildingPlacer extends BaseHUDPart {
      * @param {number} availableVariantsLength the number of available variants
      * @returns {number} index for next variant
      */
-    calculateNewVariantCycleIndex(index, availableVariantsLength) {
-        let indexModifier = 0;
-        if (
-            this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.cycleInverse).isCurrentlyPressed()
-        ) {
-            indexModifier -= 1;
+    calculateNewCycleIndex(index, availableVariantsLength) {
+        const actionMapper = this.root.keyMapper;
+        let cycleDirection;
+
+        if (actionMapper.getBinding(KEYMAPPINGS.placementModifiers.cycleInverse).isCurrentlyPressed()) {
+            cycleDirection = -1;
         } else {
-            indexModifier += 1;
+            cycleDirection = 1;
         }
 
-        return (index + indexModifier + availableVariantsLength) % availableVariantsLength;
+        return (index + cycleDirection + availableVariantsLength) % availableVariantsLength;
     }
 
     /**
