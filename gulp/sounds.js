@@ -7,7 +7,7 @@ function gulptasksSounds($, gulp, buildFolder) {
     const builtSoundsDir = path.join("..", "res_built", "sounds");
 
     gulp.task("sounds.clear", () => {
-        return gulp.src(builtSoundsDir).pipe($.clean({ force: true }));
+        return gulp.src(builtSoundsDir, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
     });
 
     const filters = ["volume=0.2"];
