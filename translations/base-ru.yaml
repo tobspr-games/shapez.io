@@ -82,7 +82,7 @@ global:
         trillions: трлн
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: ∞
 
     time:
         # Used for formatting past time dates
