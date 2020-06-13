@@ -90,7 +90,7 @@ function gulptasksSounds($, gulp, buildFolder) {
             .pipe(gulp.dest(path.join(buildFolder, "res", "sounds")));
     });
 
-    gulp.task("sounds.buildall", cb => $.multiProcess(["sounds.music", "sounds.sfx"], cb, true));
+    gulp.task("sounds.buildall", gulp.parallel("sounds.music", "sounds.sfx"));
 
     gulp.task("sounds.fullbuild", gulp.series("sounds.clear", "sounds.buildall", "sounds.copy"));
     gulp.task("sounds.dev", gulp.series("sounds.buildall", "sounds.copy"));

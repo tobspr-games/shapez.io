@@ -250,16 +250,18 @@ gulp.task(
 
 // Builds everything (staging)
 gulp.task("step.staging.code", gulp.series("sounds.fullbuild", "translations.fullBuild", "js.staging"));
-gulp.task("step.staging.mainbuild", cb =>
-    $.multiProcess(["utils.copyAdditionalBuildFiles", "step.baseResources", "step.staging.code"], cb, false)
+gulp.task(
+    "step.staging.mainbuild",
+    gulp.parallel("utils.copyAdditionalBuildFiles", "step.baseResources", "step.staging.code")
 );
 gulp.task("step.staging.all", gulp.series("step.staging.mainbuild", "css.prod", "html.staging"));
 gulp.task("build.staging", gulp.series("utils.cleanup", "step.staging.all", "step.postbuild"));
 
 // Builds everything (prod)
 gulp.task("step.prod.code", gulp.series("sounds.fullbuild", "translations.fullBuild", "js.prod"));
-gulp.task("step.prod.mainbuild", cb =>
-    $.multiProcess(["utils.copyAdditionalBuildFiles", "step.baseResources", "step.prod.code"], cb, false)
+gulp.task(
+    "step.prod.mainbuild",
+    gulp.parallel("utils.copyAdditionalBuildFiles", "step.baseResources", "step.prod.code")
 );
 gulp.task("step.prod.all", gulp.series("step.prod.mainbuild", "css.prod", "html.prod"));
 gulp.task("build.prod", gulp.series("utils.cleanup", "step.prod.all", "step.postbuild"));
@@ -269,9 +271,7 @@ gulp.task(
     "step.standalone-beta.code",
     gulp.series("sounds.fullbuild", "translations.fullBuild", "js.standalone-beta")
 );
-gulp.task("step.standalone-beta.mainbuild", cb =>
-    $.multiProcess(["step.baseResources", "step.standalone-beta.code"], cb, false)
-);
+gulp.task("step.standalone-beta.mainbuild", gulp.parallel("step.baseResources", "step.standalone-beta.code"));
 gulp.task(
     "step.standalone-beta.all",
     gulp.series("step.standalone-beta.mainbuild", "css.prod-standalone", "html.standalone-beta")
@@ -286,9 +286,7 @@ gulp.task(
     "step.standalone-prod.code",
     gulp.series("sounds.fullbuild", "translations.fullBuild", "js.standalone-prod")
 );
-gulp.task("step.standalone-prod.mainbuild", cb =>
-    $.multiProcess(["step.baseResources", "step.standalone-prod.code"], cb, false)
-);
+gulp.task("step.standalone-prod.mainbuild", gulp.parallel("step.baseResources", "step.standalone-prod.code"));
 gulp.task(
     "step.standalone-prod.all",
     gulp.series("step.standalone-prod.mainbuild", "css.prod-standalone", "html.standalone-prod")

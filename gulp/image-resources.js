@@ -116,11 +116,12 @@ function gulptasksImageResources($, gulp, buildFolder) {
     });
 
     // Copies all resources and optimizes them
-    gulp.task("imgres.allOptimized", cb =>
-        $.multiProcess(
-            ["imgres.atlasOptimized", "imgres.copyNonImageResources", "imgres.copyImageResourcesOptimized"],
-            cb,
-            false
+    gulp.task(
+        "imgres.allOptimized",
+        gulp.parallel(
+            "imgres.atlasOptimized",
+            "imgres.copyNonImageResources",
+            "imgres.copyImageResourcesOptimized"
         )
     );
 
