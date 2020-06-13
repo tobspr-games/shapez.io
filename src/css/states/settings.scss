@@ -1,5 +1,7 @@
 #state_SettingsState {
     .content {
+        height: calc(100vh - #{D(60px)});
+
         .versionbar {
             @include S(margin-top, 20px);
             @include SuperSmallText;
