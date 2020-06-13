@@ -9,6 +9,7 @@ export const CHANGELOG = [
             "Improve upgrade number rounding, so there are no goals like '37.4k', instead it will now be '35k'",
             "You can now configure the camera movement speed when using WASD (by mini-bomba)",
             "Selecting an area now is relative to the world and thus does not move when moving the screen (by Dimava)",
+            "Allow higher tick-rates up to 500hz (This will burn your PC!)",
             "Fix bug regarding number rounding",
             "Fix app not starting when the savegames were corrupted - there is now a better error message",
         ],
