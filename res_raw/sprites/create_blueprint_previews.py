@@ -1,5 +1,5 @@
 # Requirements: numpy, scipy, Pillow,
-
+from __future__ import print_function
 import sys
 import numpy as np
 from scipy import ndimage
@@ -59,7 +59,7 @@ def save_image(data, outfilename, src_image):
 
 
 def roberts_cross(infilename, outfilename):
-    print "Processing", infilename
+    print("Processing", infilename)
     img = Image.open(infilename)
     img.load()
     img = img.filter(ImageFilter.GaussianBlur(0.5))
@@ -72,7 +72,7 @@ def roberts_cross(infilename, outfilename):
 
 
 def generateUiPreview(srcPath, buildingId):
-    print srcPath, buildingId
+    print(srcPath, buildingId)
     img = Image.open(srcPath)
     img.load()
     img.thumbnail((110, 110), Image.ANTIALIAS)

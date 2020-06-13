@@ -40,6 +40,8 @@ module.exports = ({
         G_ALL_UI_IMAGES: JSON.stringify(utils.getAllResourceImages()),
     };
 
+    const minifyNames = environment === "prod";
+
     return {
         mode: "production",
         entry: {
@@ -91,15 +93,15 @@ module.exports = ({
                         parse: {},
                         module: true,
                         toplevel: true,
-                        keep_classnames: false,
-                        keep_fnames: false,
-                        keep_fargs: false,
+                        keep_classnames: !minifyNames,
+                        keep_fnames: !minifyNames,
+                        keep_fargs: !minifyNames,
                         safari10: true,
                         compress: {
                             arguments: false, // breaks
                             drop_console: false,
                             global_defs: globalDefs,
-                            keep_fargs: false,
+                            keep_fargs: !minifyNames,
                             keep_infinity: true,
                             passes: 2,
                             module: true,
@@ -141,8 +143,8 @@ module.exports = ({
                         },
                         mangle: {
                             eval: true,
-                            keep_classnames: false,
-                            keep_fnames: false,
+                            keep_classnames: !minifyNames,
+                            keep_fnames: !minifyNames,
                             module: true,
                             toplevel: true,
                             safari10: true,
@@ -154,7 +156,7 @@ module.exports = ({
                             braces: false,
                             ecma: es6 ? 6 : 5,
                             preamble:
-                                "/* Shapez.io Codebase - Copyright 2020 Tobias Springer - " +
+                                "/* shapez.io Codebase - Copyright 2020 Tobias Springer - " +
                                 utils.getVersion() +
                                 " @ " +
                                 utils.getRevision() +

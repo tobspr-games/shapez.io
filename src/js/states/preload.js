@@ -68,38 +68,6 @@ export class PreloadState extends GameState {
     startLoading() {
         this.setStatus("Booting")
 
-            .then(() => this.setStatus("Checking for updates"))
-            .then(() => {
-                if (G_IS_STANDALONE) {
-                    return Promise.race([
-                        new Promise(resolve => setTimeout(resolve, 10000)),
-                        fetch(
-                            "https://itch.io/api/1/x/wharf/latest?target=tobspr/shapezio&channel_name=windows",
-                            {
-                                cache: "no-cache",
-                            }
-                        )
-                            .then(res => res.json())
-                            .then(({ latest }) => {
-                                if (latest !== G_BUILD_VERSION) {
-                                    const { ok } = this.dialogs.showInfo(
-                                        T.dialogs.newUpdate.title,
-                                        T.dialogs.newUpdate.desc,
-                                        ["ok:good"]
-                                    );
-
-                                    return new Promise(resolve => {
-                                        ok.add(resolve);
-                                    });
-                                }
-                            })
-                            .catch(err => {
-                                logger.log("Failed to fetch version:", err);
-                            }),
-                    ]);
-                }
-            })
-
             .then(() => this.setStatus("Creating platform wrapper"))
             .then(() => this.app.platformWrapper.initialize())
 
@@ -170,15 +138,10 @@ export class PreloadState extends GameState {
             .then(() => {
                 return this.app.savegameMgr.initialize().catch(err => {
                     logger.error("Failed to initialize savegames:", err);
-                    return new Promise(resolve => {
-                        // const { ok } = this.dialogs.showWarning(
-                        //     T.preload.savegame_corrupt_dialog.title,
-                        //     T.preload.savegame_corrupt_dialog.content,
-                        //     ["ok:good"]
-                        // );
-                        // ok.add(resolve);
-                        alert("Your savegames failed to load. They might not show up. Sorry!");
-                    });
+                    alert(
+                        "Your savegames failed to load, it seems your data files got corrupted. I'm so sorry!\n\n(This can happen if your pc crashed while a game was saved).\n\nYou can try re-importing your savegames."
+                    );
+                    return this.app.savegameMgr.writeAsync();
                 });
             })
 

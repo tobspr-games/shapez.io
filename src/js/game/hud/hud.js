@@ -2,6 +2,10 @@
 import { GameRoot } from "../root";
 /* typehints:end */
 
+/* dev:start */
+import { TrailerMaker } from "./trailer_maker";
+/* dev:end */
+
 import { Signal } from "../../core/signal";
 import { DrawParameters } from "../../core/draw_parameters";
 import { HUDProcessingOverlay } from "./parts/processing_overlay";
@@ -29,10 +33,7 @@ import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 import { HUDWaypoints } from "./parts/waypoints";
 import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
-
-/* dev:start */
-import { TrailerMaker } from "./trailer_maker";
-/* dev:end */
+import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
 
 export class GameHUD {
     /**
@@ -66,14 +67,16 @@ export class GameHUD {
             // betaOverlay: new HUDBetaOverlay(this.root),
             debugInfo: new HUDDebugInfo(this.root),
             dialogs: new HUDModalDialogs(this.root),
+            screenshotExporter: new HUDScreenshotExporter(this.root),
         };
 
         this.signals = {
             selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
-            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition, number]>} */ (new Signal()),
+            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
             shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
             notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
             buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
+            pasteBlueprintRequested: new Signal(),
         };
 
         if (!IS_MOBILE) {

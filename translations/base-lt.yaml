@@ -1,0 +1,767 @@
+#
+#  GAME TRANSLATIONS
+#
+#  Contributing:
+#
+#    If you want to contribute, please make a pull request on this respository
+#    and I will have a look.
+#
+#  Placeholders:
+#
+#    Do *not* replace placeholders! Placeholders have a special syntax like
+#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
+#    translation for this one in German for example would be: `Taste: <key>` (notice
+#    how the placeholder stayed '<key>' and was not replaced!)
+#
+#  Adding a new language:
+#
+#    If you want to add a new language, ask me in the discord and I will setup
+#    the basic structure so the game also detects it.
+#
+
+steamPage:
+    # This is the short text appearing on the steam page
+    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+
+    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
+    # NOTICE:
+    # - Do not translate the first line (This is the gif image at the start of the store)
+    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
+    longText: >-
+        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+
+        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+
+        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+
+        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+
+
+        [b]Standalone Advantages[/b]
+
+        [list]
+            [*] Waypoints
+            [*] Unlimited Savegames
+            [*] Dark Mode
+            [*] More settings
+            [*] Allow me to further develop shapez.io ❤️
+            [*] More features in the future!
+        [/list]
+
+        [b]Planned features & Community suggestions[/b]
+
+        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+
+        [list]
+            [*] Story mode where buildings cost shapes
+            [*] More levels & buildings (standalone exclusive)
+            [*] Different maps, and maybe map obstacles
+            [*] Configurable map creation (Edit number and size of patches, seed, and more)
+            [*] More types of shapes
+            [*] More performance improvements (Although the game already runs pretty good!)
+            [*] Color blind mode
+            [*] And much more!
+        [/list]
+
+        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+
+global:
+    loading: Loading
+    error: Error
+
+    # How big numbers are rendered, e.g. "10,000"
+    thousandsDivider: ","
+
+    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
+    suffix:
+        thousands: k
+        millions: M
+        billions: B
+        trillions: T
+
+    # Shown for infinitely big numbers
+    infinite: inf
+
+    time:
+        # Used for formatting past time dates
+        oneSecondAgo: one second ago
+        xSecondsAgo: <x> seconds ago
+        oneMinuteAgo: one minute ago
+        xMinutesAgo: <x> minutes ago
+        oneHourAgo: one hour ago
+        xHoursAgo: <x> hours ago
+        oneDayAgo: one day ago
+        xDaysAgo: <x> days ago
+
+        # Short formats for times, e.g. '5h 23m'
+        secondsShort: <seconds>s
+        minutesAndSecondsShort: <minutes>m <seconds>s
+        hoursAndMinutesShort: <hours>h <minutes>m
+
+        xMinutes: <x> minutes
+
+    keys:
+        tab: TAB
+        control: CTRL
+        alt: ALT
+        escape: ESC
+        shift: SHIFT
+        space: SPACE
+
+demoBanners:
+    # This is the "advertisement" shown in the main menu and other various places
+    title: Demo Version
+    intro: >-
+        Get the standalone to unlock all features!
+
+mainMenu:
+    play: Play
+    changelog: Changelog
+    importSavegame: Import
+    openSourceHint: This game is open source!
+    discordLink: Official Discord Server
+    helpTranslate: Help translate!
+
+    # This is shown when using firefox and other browsers which are not supported.
+    browserWarning: >-
+        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+
+    savegameLevel: Level <x>
+    savegameLevelUnknown: Unknown Level
+
+    contests:
+        contest_01_03062020:
+            title: "Contest #01"
+            desc: Win <strong>$25</strong> for the coolest base!
+            longDesc: >-
+                To give something back to you, I thought it would be cool to make weekly contests!
+                <br><br>
+                <strong>This weeks topic:</strong> Build the coolest base!
+                <br><br>
+                Here's the deal:<br>
+                <ul class="bucketList">
+                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
+                    <li>Bonus points if you share it on social media!</li>
+                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
+                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
+                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
+                </ul>
+                <br>
+                I'm looking forward to seeing your awesome creations!
+
+        showInfo: View
+        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+
+dialogs:
+    buttons:
+        ok: OK
+        delete: Delete
+        cancel: Cancel
+        later: Later
+        restart: Restart
+        reset: Reset
+        getStandalone: Get Standalone
+        deleteGame: I know what I do
+        viewUpdate: View Update
+        showUpgrades: Show Upgrades
+        showKeybindings: Show Keybindings
+
+    importSavegameError:
+        title: Import Error
+        text: >-
+            Failed to import your savegame:
+
+    importSavegameSuccess:
+        title: Savegame Imported
+        text: >-
+            Your savegame has been successfully imported.
+
+    gameLoadFailure:
+        title: Game is broken
+        text: >-
+            Failed to load your savegame:
+
+    confirmSavegameDelete:
+        title: Confirm deletion
+        text: >-
+            Are you sure you want to delete the game?
+
+    savegameDeletionError:
+        title: Failed to delete
+        text: >-
+            Failed to delete the savegame:
+
+    restartRequired:
+        title: Restart required
+        text: >-
+            You need to restart the game to apply the settings.
+
+    editKeybinding:
+        title: Change Keybinding
+        desc: Press the key or mouse button you want to assign, or escape to cancel.
+
+    resetKeybindingsConfirmation:
+        title: Reset keybindings
+        desc: This will reset all keybindings to their default values. Please confirm.
+
+    keybindingsResetOk:
+        title: Keybindings reset
+        desc: The keybindings have been reset to their respective defaults!
+
+    featureRestriction:
+        title: Demo Version
+        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+
+    oneSavegameLimit:
+        title: Limited savegames
+        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+
+    updateSummary:
+        title: New update!
+        desc: >-
+            Here are the changes since you last played:
+
+    upgradesIntroduction:
+        title: Unlock Upgrades
+        desc: >-
+            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
+            The upgrades tab can be found on the top right corner of the screen.
+
+    massDeleteConfirm:
+        title: Confirm delete
+        desc: >-
+            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+
+    blueprintsNotUnlocked:
+        title: Not unlocked yet
+        desc: >-
+            Complete level 12 to unlock Blueprints!
+
+    keybindingsIntroduction:
+        title: Useful keybindings
+        desc: >-
+            This game has a lot of keybindings which make it easier to build big factories.
+            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
+            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
+            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+
+    createMarker:
+        title: New Marker
+        desc: Give it a meaningful name
+
+    markerDemoLimit:
+        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
+
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: >-
+            You requested to export your base as a screenshot. Please note that this can
+            be quite slow for a big base and even crash your game!
+
+ingame:
+    # This is shown in the top left corner and displays useful keybindings in
+    # every situation
+    keybindingsOverlay:
+        moveMap: Move
+        selectBuildings: Select area
+        stopPlacement: Stop placement
+        rotateBuilding: Rotate building
+        placeMultiple: Place multiple
+        reverseOrientation: Reverse orientation
+        disableAutoOrientation: Disable auto orientation
+        toggleHud: Toggle HUD
+        placeBuilding: Place building
+        createMarker: Create Marker
+        delete: Destroy
+        pasteLastBlueprint: Paste last blueprint
+
+    # Everything related to placing buildings (I.e. as soon as you selected a building
+    # from the toolbar)
+    buildingPlacement:
+        # Buildings can have different variants which are unlocked at later levels,
+        # and this is the hint shown when there are multiple variants available.
+        cycleBuildingVariants: Press <key> to cycle variants.
+
+        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
+        hotkeyLabel: >-
+            Hotkey: <key>
+
+        infoTexts:
+            speed: Speed
+            range: Range
+            storage: Storage
+            oneItemPerSecond: 1 item / second
+            itemsPerSecond: <x> items / s
+            itemsPerSecondDouble: (x2)
+
+            tiles: <x> tiles
+
+    # The notification when completing a level
+    levelCompleteNotification:
+        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
+        levelTitle: Level <level>
+        completed: Completed
+        unlockText: Unlocked <reward>!
+        buttonNextLevel: Next Level
+
+    # Notifications on the lower right
+    notifications:
+        newUpgrade: A new upgrade is available!
+        gameSaved: Your game has been saved.
+
+    # Mass select information, this is when you hold CTRL and then drag with your mouse
+    # to select multiple buildings
+    massSelect:
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+
+    # The "Upgrades" window
+    shop:
+        title: Upgrades
+        buttonUnlock: Upgrade
+
+        # Gets replaced to e.g. "Tier IX"
+        tier: Tier <x>
+
+        # The roman number for each tier
+        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+
+        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+
+    # The "Statistics" window
+    statistics:
+        title: Statistics
+        dataSources:
+            stored:
+                title: Stored
+                description: Displaying amount of stored shapes in your central building.
+            produced:
+                title: Produced
+                description: Displaying all shapes your whole factory produces, including intermediate products.
+            delivered:
+                title: Delivered
+                description: Displaying shapes which are delivered to your central building.
+        noShapesProduced: No shapes have been produced so far.
+
+        # Displays the shapes per minute, e.g. '523 / m'
+        shapesPerMinute: <shapes> / m
+
+    # Settings menu, when you press "ESC"
+    settingsMenu:
+        playtime: Playtime
+
+        buildingsPlaced: Buildings
+        beltsPlaced: Belts
+
+        buttons:
+            continue: Continue
+            settings: Settings
+            menu: Return to menu
+
+    # Bottom left tutorial hints
+    tutorialHints:
+        title: Need help?
+        showHint: Show hint
+        hideHint: Close
+
+    # When placing a blueprint
+    blueprintPlacer:
+        cost: Cost
+
+    # Map markers
+    waypoints:
+        waypoints: Markers
+        hub: HUB
+        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        creationSuccessNotification: Marker has been created.
+
+    # Interactive tutorial
+    interactiveTutorial:
+        title: Tutorial
+        hints:
+            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_2_conveyor: >-
+                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+
+            1_3_expand: >-
+                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+
+# All shop upgrades
+shopUpgrades:
+    belt:
+        name: Belts, Distributor & Tunnels
+        description: Speed x<currentMult> → x<newMult>
+    miner:
+        name: Extraction
+        description: Speed x<currentMult> → x<newMult>
+    processors:
+        name: Cutting, Rotating & Stacking
+        description: Speed x<currentMult> → x<newMult>
+    painting:
+        name: Mixing & Painting
+        description: Speed x<currentMult> → x<newMult>
+
+# Buildings and their name / description
+buildings:
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
+
+    belt:
+        default:
+            name: &belt Conveyor Belt
+            description: Transports items, hold and drag to place multiple.
+
+    miner: # Internal name for the Extractor
+        default:
+            name: &miner Extractor
+            description: Place over a shape or color to extract it.
+
+        chainable:
+            name: Extractor (Chain)
+            description: Place over a shape or color to extract it. Can be chained.
+
+    underground_belt: # Internal name for the Tunnel
+        default:
+            name: &underground_belt Tunnel
+            description: Allows to tunnel resources under buildings and belts.
+
+        tier2:
+            name: Tunnel Tier II
+            description: Allows to tunnel resources under buildings and belts.
+
+    splitter: # Internal name for the Balancer
+        default:
+            name: &splitter Balancer
+            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+
+        compact:
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+
+        compact-inverse:
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+
+    cutter:
+        default:
+            name: &cutter Cutter
+            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+        quad:
+            name: Cutter (Quad)
+            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
+
+    rotater:
+        default:
+            name: &rotater Rotate
+            description: Rotates shapes clockwise by 90 degrees.
+        ccw:
+            name: Rotate (CCW)
+            description: Rotates shapes counter clockwise by 90 degrees.
+
+    stacker:
+        default:
+            name: &stacker Stacker
+            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+
+    mixer:
+        default:
+            name: &mixer Color Mixer
+            description: Mixes two colors using additive blending.
+
+    painter:
+        default:
+            name: &painter Painter
+            description: Colors the whole shape on the left input with the color from the top input.
+        double:
+            name: Painter (Double)
+            description: Colors the shapes on the left inputs with the color from the top input.
+        quad:
+            name: Painter (Quad)
+            description: Allows to color each quadrant of the shape with a different color.
+
+    trash:
+        default:
+            name: &trash Trash
+            description: Accepts inputs from all sides and destroys them. Forever.
+
+        storage:
+            name: Storage
+            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+
+storyRewards:
+    # Those are the rewards gained from completing the store
+    reward_cutter_and_trash:
+        title: Cutting Shapes
+        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+
+    reward_rotater:
+        title: Rotating
+        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+
+    reward_painter:
+        title: Painting
+        desc: >-
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, I'm working on a solution already!
+
+    reward_mixer:
+        title: Color Mixing
+        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+
+    reward_stacker:
+        title: Combiner
+        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+
+    reward_splitter:
+        title: Splitter/Merger
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+
+    reward_tunnel:
+        title: Tunnel
+        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
+
+    reward_rotater_ccw:
+        title: CCW Rotating
+        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+
+    reward_miner_chainable:
+        title: Chaining Extractor
+        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+
+    reward_underground_belt_tier_2:
+        title: Tunnel Tier II
+        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+
+    reward_splitter_compact:
+        title: Compact Balancer
+        desc: >-
+            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+
+    reward_cutter_quad:
+        title: Quad Cutting
+        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+
+    reward_painter_double:
+        title: Double Painting
+        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+
+    reward_painter_quad:
+        title: Quad Painting
+        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+
+    reward_storage:
+        title: Storage Buffer
+        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+
+    reward_freeplay:
+        title: Freeplay
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+
+    reward_blueprints:
+        title: Blueprints
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+
+    # Special reward, which is shown when there is no reward actually
+    no_reward:
+        title: Next level
+        desc: >-
+            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+
+    no_reward_freeplay:
+        title: Next level
+        desc: >-
+            Congratulations! By the way, more content is planned for the standalone!
+
+settings:
+    title: Settings
+    categories:
+        game: Game
+        app: Application
+
+    versionBadges:
+        dev: Development
+        staging: Staging
+        prod: Production
+    buildDate: Built <at-date>
+
+    labels:
+        uiScale:
+            title: Interface scale
+            description: >-
+                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+            scales:
+                super_small: Super small
+                small: Small
+                regular: Regular
+                large: Large
+                huge: Huge
+
+        scrollWheelSensitivity:
+            title: Zoom sensitivity
+            description: >-
+                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+            sensitivity:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super fast
+
+        language:
+            title: Language
+            description: >-
+                Change the language. All translations are user contributed and might be incomplete!
+
+        fullscreen:
+            title: Fullscreen
+            description: >-
+                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+
+        soundsMuted:
+            title: Mute Sounds
+            description: >-
+                If enabled, mutes all sound effects.
+
+        musicMuted:
+            title: Mute Music
+            description: >-
+                If enabled, mutes all music.
+
+        theme:
+            title: Game theme
+            description: >-
+                Choose the game theme (light / dark).
+            themes:
+                dark: Dark
+                light: Light
+
+        refreshRate:
+            title: Simulation Target
+            description: >-
+                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+
+        alwaysMultiplace:
+            title: Multiplace
+            description: >-
+                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+
+        offerHints:
+            title: Hints & Tutorials
+            description: >-
+                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
+keybindings:
+    title: Keybindings
+    hint: >-
+        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+
+    resetKeybindings: Reset Keybindings
+
+    categoryLabels:
+        general: Application
+        ingame: Game
+        navigation: Navigating
+        placement: Placement
+        massSelect: Mass Select
+        buildings: Building Shortcuts
+        placementModifiers: Placement Modifiers
+
+    mappings:
+        confirm: Confirm
+        back: Back
+        mapMoveUp: Move Up
+        mapMoveRight: Move Right
+        mapMoveDown: Move Down
+        mapMoveLeft: Move Left
+        centerMap: Center Map
+
+        mapZoomIn: Zoom in
+        mapZoomOut: Zoom out
+        createMarker: Create Marker
+
+        menuOpenShop: Upgrades
+        menuOpenStats: Statistics
+
+        toggleHud: Toggle HUD
+        toggleFPSInfo: Toggle FPS and Debug Info
+        belt: *belt
+        splitter: *splitter
+        underground_belt: *underground_belt
+        miner: *miner
+        cutter: *cutter
+        rotater: *rotater
+        stacker: *stacker
+        mixer: *mixer
+        painter: *painter
+        trash: *trash
+
+        abortBuildingPlacement: Abort Placement
+        rotateWhilePlacing: Rotate
+        rotateInverseModifier: >-
+            Modifier: Rotate CCW instead
+        cycleBuildingVariants: Cycle Variants
+        confirmMassDelete: Confirm Mass Delete
+        cycleBuildings: Cycle Buildings
+
+        massSelectStart: Hold and drag to start
+        massSelectSelectMultiple: Select multiple areas
+        massSelectCopy: Copy area
+
+        placementDisableAutoOrientation: Disable automatic orientation
+        placeMultiple: Stay in placement mode
+        placeInverse: Invert automatic belt orientation
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
+        exportScreenshot: Export whole Base as Image
+
+about:
+    title: About this Game
+    body: >-
+        This game is open source and developed by <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (this is me).<br><br>
+
+        If you want to contribute, check out <a href="<githublink>"
+        target="_blank">shapez.io on github</a>.<br><br>
+
+        This game wouldn't have been possible without the great discord community
+        around my games - You should really join the <a href="<discordlink>"
+        target="_blank">discord server</a>!<br><br>
+
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
+        factorio sessions this game would never have existed.
+
+changelog:
+    title: Changelog
+
+demo:
+    features:
+        restoringGames: Restoring savegames
+        importingGames: Importing savegames
+        oneGameLimit: Limited to one savegame
+        customizeKeybindings: Customizing Keybindings
+        exportingBase: Exporting whole Base as Image
+
+    settingNotAvailable: Not available in the demo.

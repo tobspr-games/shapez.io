@@ -1,4 +1,4 @@
-//www.youtube.com/watch?v=KyorY1uIqiQimport { DrawParameters } from "../../../core/draw_parameters";
+import { DrawParameters } from "../../../core/draw_parameters";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
 import { Vector } from "../../../core/vector";
@@ -29,6 +29,8 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
         /** @type {TypedTrackedState<Blueprint?>} */
         this.currentBlueprint = new TrackedState(this.onBlueprintChanged, this);
+        /** @type {Blueprint?} */
+        this.lastBlueprintUsed = null;
 
         const keyActionMapper = this.root.keyMapper;
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
@@ -36,9 +38,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
             .add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.rotateBlueprint, this);
-        keyActionMapper
-            .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
-            .add(this.abortPlacement, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.massSelect.pasteLastBlueprint).add(this.pasteBlueprint, this);
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
@@ -73,6 +73,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
      */
     onBlueprintChanged(blueprint) {
         if (blueprint) {
+            this.lastBlueprintUsed = blueprint;
             this.costDisplayText.innerText = "" + blueprint.getCost();
         }
     }
@@ -141,6 +142,15 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             } else {
                 this.currentBlueprint.get().rotateCw();
             }
+        }
+    }
+
+    pasteBlueprint() {
+        if (this.lastBlueprintUsed !== null) {
+            this.root.hud.signals.pasteBlueprintRequested.dispatch();
+            this.currentBlueprint.set(this.lastBlueprintUsed);
+        } else {
+            this.root.soundProxy.playUiError();
         }
     }
 

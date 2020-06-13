@@ -84,7 +84,6 @@ export function autoDetectLanguageId() {
     } else {
         logger.warn("Navigator has no languages prop");
     }
-    languages = ["de-De"];
 
     for (let i = 0; i < languages.length; ++i) {
         logger.log("Trying to find language target for", languages[i]);
@@ -93,7 +92,9 @@ export function autoDetectLanguageId() {
             return trans;
         }
     }
-    return null;
+
+    // Fallback
+    return "en";
 }
 
 function matchDataRecursive(dest, src) {

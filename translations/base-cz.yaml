@@ -1,0 +1,749 @@
+# Czech translation
+
+steamPage:
+    # This is the short text appearing on the steam page
+    shortText: shapez.io je hra o stavbě továren pro automatizaci výroby a kombinování čím dál složitějších tvarů na nekonečné mapě.
+
+    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
+    # NOTICE:
+    # - Do not translate the first line (This is the gif image at the start of the store)
+    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
+    longText: >-
+        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+
+        shapez.io je hra o stavbě továren pro automatizaci výroby a kombinování tvarů. Poskytněte vyžadované, stále složitější tvary, aby jste postoupili ve hře dále, a odemkněte vylepšení pro zrychlení vaší továrny.
+
+        Protože poptávka postupně roste, musíte svou továrnu rozšiřovat tak, aby vyhověla potřebám - Nové zdroje, najdete na [b]nekonečné mapě[/b]!
+
+        Jen tvary by byly nuda, proto máme pigmenty kterými musíte dílky obarvit - zkombinujte červené, zelené a modré barvivo pro vytvoření dalších odstínů a obarvěte s nimi tvary pro uspokojení poptávky.
+
+        Hra obsahuje 18 úrovní (což by vás mělo zaměstnat na spoustu hodin!), ale nový obsah je neustále přidáván - je toho hodně naplánováno!
+
+
+        [b]Výhody plné hry[/b]
+
+        [list]
+            [*] Označování pozic na mapě
+            [*] Neomezený počet uložených her
+            [*] Tmavý motiv
+            [*] Více nastavení
+            [*] Pomůžete mi dále vyvíjet shapez.io ❤️
+            [*] Více funkcí v budoucnu!
+        [/list]
+
+        [b]Plánované funkce a komunitní návrhy[/b]
+
+        Tato hra je open source - kdokoli může přispět! Kromě toho [b]hodně[/b] poslouchám komunitu! Snažím se přečíst si všechny návrhy a vzít v úvahu zpětnou vazbu.
+
+        [list]
+            [*] Mód s příběhem, kde stavba budov stojí tvary
+            [*] Více úrovní a budov (exkluzivní pro plnou verzi)
+            [*] Různé mapy a zábrany na mapě
+            [*] Konfigurace generátoru map (úprava počtu a velikosti nálezišť, seed map, a další)
+            [*] Více tvarů
+            [*] Další zlepšení výkonu (I když hra již běží docela dobře!)
+            [*] Režim pro barvoslepé
+            [*] A mnohem více!
+        [/list]
+
+        Nezapomeňte se podívat na moji Trello nástěnku pro úplný plán! https://trello.com/b/ISQncpJP/shapezio
+
+global:
+    loading: Načítám
+    error: Chyba
+
+    # How big numbers are rendered, e.g. "10,000"
+    thousandsDivider: " "
+
+    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
+    suffix:
+        thousands: k
+        millions: M
+        billions: B
+        trillions: T
+
+    # Shown for infinitely big numbers
+    infinite: nekonečno
+
+    time:
+        # Used for formatting past time dates
+        oneSecondAgo: před sekundou
+        xSecondsAgo: před <x> sekundami
+        oneMinuteAgo: před minutou
+        xMinutesAgo: před <x> minutami
+        oneHourAgo: před hodinou
+        xHoursAgo: před <x> hodinami
+        oneDayAgo: včera
+        xDaysAgo: před <x> dny
+
+        # Short formats for times, e.g. '5h 23m'
+        secondsShort: <seconds>s
+        minutesAndSecondsShort: <minutes>m <seconds>s
+        hoursAndMinutesShort: <hours>h <minutes>m
+
+        xMinutes: <x> minut
+
+    keys:
+        tab: TAB
+        control: CTRL
+        alt: ALT
+        escape: ESC
+        shift: SHIFT
+        space: SPACE
+
+demoBanners:
+    # This is the "advertisement" shown in the main menu and other various places
+    title: Demo verze
+    intro: >-
+        Získejte plnou verzi pro odemknutí všech funkcí!
+
+mainMenu:
+    play: Hrát
+    changelog: Změny
+    importSavegame: Importovat
+    openSourceHint: Tato hra je open source!
+    discordLink: Oficiální Discord Server
+    helpTranslate: Pomozte přeložit hru!
+
+    # This is shown when using firefox and other browsers which are not supported.
+    browserWarning: >-
+        Hrajete v nepodporovaném prohlížeči, je možné že hra poběží pomalu! Pořiďte si samostatnou verzi nebo vyzkoušejte prohlížeč Chrome pro plnohodnotný zážitek.
+
+    savegameLevel: Úroveň <x>
+    savegameLevelUnknown: Neznámá úroveň
+
+    contests:
+        contest_01_03062020:
+            title: "Soutěž #01"
+            desc: Vyhraj <strong>$25</strong> za nejvíc cool základnu!
+            longDesc: >-
+                Abych vám poděkoval, myslel jsem, že by bylo skvělé dělat týdenní soutěže!
+                <br><br>
+                <strong>Téma tohoto týdne:</strong> Postavte nejvíc cool základnu!
+                <br><br>
+                Zde je zadání:<br>
+                <ul class="bucketList">
+                    <li>Zašlete screenshot své základny na <strong>contest@shapez.io</strong></li>
+                    <li>Bonusové body za sdílení na sociálních médiích!</li>
+                    <li>Vyberu 5 screenshotů a <strong>Discord</strong> komunita bude hlasovat o vítězi.</li>
+                    <li>Vítěz dostane <strong>$25</strong> (Paypal, Amazon Dárkový Poukaz, co preferujete)</li>
+                    <li>Uzávěrka: 07.06.2020 12:00 CEST</li>
+                </ul>
+                <br>
+                Těším se na vaše úžasné výtvory!
+
+        showInfo: Zobrazit
+        contestOver: Tato soutěž skončila - Připojte se na Discord a získejte informace o nových soutěžích!
+
+dialogs:
+    buttons:
+        ok: OK
+        delete: Smazat
+        cancel: Zrušit
+        later: Později
+        restart: Restart
+        reset: Reset
+        getStandalone: Získejte Plnou verzi
+        deleteGame: Vím co dělám
+        viewUpdate: Zobrazit aktualizaci
+        showUpgrades: Zobrazit vylepšení
+        showKeybindings: Zobrazit klávesové zkratky
+
+    importSavegameError:
+        title: Chyba Importu
+        text: >-
+            Nepovedlo se importovat vaši uloženou hru:
+
+    importSavegameSuccess:
+        title: Uložená hra importována
+        text: >-
+            Vaše uložená hra byla úspěšně importována.
+
+    gameLoadFailure:
+        title: Uložená hra je poškozená
+        text: >-
+            Nepovedlo se načíst vaši uloženou hru:
+
+    confirmSavegameDelete:
+        title: Potvrdit smazání
+        text: >-
+            Opravdu chcete smazat hru?
+
+    savegameDeletionError:
+        title: Chyba mazání
+        text: >-
+            Nepovedlo se smazat vaši uloženou hru:
+
+    restartRequired:
+        title: Vyžadován restart
+        text: >-
+            Pro aplikování nastavení musíte restartovat hru.
+
+    editKeybinding:
+        title: Změna klávesové zkratky
+        desc: Zmáčkněte klávesu nebo tlačítko na myši pro přiřazení nebo Escape pro zrušení.
+
+    resetKeybindingsConfirmation:
+        title: Reset klávesových zkratek
+        desc: Opravdu chcete vrátit klávesové zkratky zpět do původního nastavení?
+
+    keybindingsResetOk:
+        title: Reset klávesových zkratek
+        desc: Vaše klávesové zkratky byly resetovány do původního nastavení!
+
+    featureRestriction:
+        title: Demo verze
+        desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Pořiďte si plnou verzi pro lepší zážitek!
+
+    oneSavegameLimit:
+        title: Omezené ukládání
+        desc: Ve zkušební verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající uloženou hru nebo si pořiďte plnou verzi!
+
+    updateSummary:
+        title: Nová aktualizace!
+        desc: >-
+            Tady jsou změny od posledně:
+
+    upgradesIntroduction:
+        title: Odemknout vylepšení
+        desc: >-
+            Všechny tvary, které vytvoříte, lze použít k odemčení vylepšení - <strong>Neničte své staré továrny!</strong>
+            Karta vylepšení se nachází v pravém horním rohu obrazovky.
+
+    massDeleteConfirm:
+        title: Potvrdit smazání
+        desc: >-
+            Odstraňujete spoustu budov (přesněji <count>)! Opravdu je chcete smazat?
+
+    blueprintsNotUnlocked:
+        title: Zatím neodemčeno
+        desc: >-
+            Plány ještě nebyly odemčeny! Chcete-li je odemknout, dokončete úroveň 12.
+
+    keybindingsIntroduction:
+        title: Užitečné klávesové zkratky
+        desc: >-
+            Hra má spoustu klávesových zkratek, které usnadňují stavbu velkých továren.
+            Zde jsou některé, ale nezapomeňte se podívat i na <strong>ostatní klávesové zkratky</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Táhnout: Vybrání oblasti.<br>
+            <code class='keybinding'>SHIFT</code>: Podržením můžete umístit více budov za sebout.<br>
+            <code class='keybinding'>ALT</code>: Změnit orientaci umístěných pásů.<br>
+
+    createMarker:
+        title: Nová značka
+        desc: Dejte jí smysluplné jméno
+
+    markerDemoLimit:
+        desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
+
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: >-
+            You requested to export your base as a screenshot. Please note that this can
+            be quite slow for a big base and even crash your game!
+
+ingame:
+    # This is shown in the top left corner and displays useful keybindings in
+    # every situation
+    keybindingsOverlay:
+        moveMap: Posun mapy
+        selectBuildings: Vybrat oblast
+        stopPlacement: Ukončit pokládání
+        rotateBuilding: Otočit budovu
+        placeMultiple: Položit více budov
+        reverseOrientation: Změnit orientaci
+        disableAutoOrientation: Vypnout automatickou orientaci
+        toggleHud: Přepnout HUD
+        placeBuilding: Položit budovu
+        createMarker: Vytvořit značku
+        delete: Zničit
+        pasteLastBlueprint: Paste last blueprint
+
+    # Everything related to placing buildings (I.e. as soon as you selected a building
+    # from the toolbar)
+    buildingPlacement:
+        # Buildings can have different variants which are unlocked at later levels,
+        # and this is the hint shown when there are multiple variants available.
+        cycleBuildingVariants: Zmáčkněte <key> pro přepínání mezi variantami.
+
+        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
+        hotkeyLabel: >-
+            Klávesová zkratka: <key>
+
+        infoTexts:
+            speed: Rychlost
+            range: Dosah
+            storage: Úložný prostor
+            oneItemPerSecond: 1 tvar / sekundu
+            itemsPerSecond: <x> tvarů / s
+            itemsPerSecondDouble: (x2)
+
+            tiles: <x> dílků
+
+    # The notification when completing a level
+    levelCompleteNotification:
+        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
+        levelTitle: Úroveň <level>
+        completed: Dokončeno
+        unlockText: "Odemčeno: <reward>!"
+        buttonNextLevel: Další úroveň
+
+    # Notifications on the lower right
+    notifications:
+        newUpgrade: Nová aktualizace je k dispozici!
+        gameSaved: Hra byla uložena.
+
+    # Mass select information, this is when you hold CTRL and then drag with your mouse
+    # to select multiple buildings
+    massSelect:
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+
+    # The "Upgrades" window
+    shop:
+        title: Vylepšení
+        buttonUnlock: Vylepšit
+
+        # Gets replaced to e.g. "Tier IX"
+        tier: Úroveň <x>
+
+        # The roman number for each tier
+        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+
+        maximumLevel: MAXIMÁLNÍ ÚROVEŇ (Rychlost x<currentMult>)
+
+    # The "Statistics" window
+    statistics:
+        title: Statistiky
+        dataSources:
+            stored:
+                title: Uloženo
+                description: Tvary uložené ve vaší centrální budově.
+            produced:
+                title: Vyprodukováno
+                description: Tvary která vaše továrna produkuje, včetně meziproduktů.
+            delivered:
+                title: Dodáno
+                description: Tvary které jsou dodávány do vaší centrální budovy.
+        noShapesProduced: Žádné tvary zatím nebyly vyprodukovány.
+
+        # Displays the shapes per minute, e.g. '523 / m'
+        shapesPerMinute: <shapes> / m
+
+    # Settings menu, when you press "ESC"
+    settingsMenu:
+        playtime: Herní čas
+
+        buildingsPlaced: Budovy
+        beltsPlaced: Pásy
+
+        buttons:
+            continue: Pokračovat
+            settings: Nastavení
+            menu: Návrat do menu
+
+    # Bottom left tutorial hints
+    tutorialHints:
+        title: Potřebujete pomoct?
+        showHint: Zobrazit nápovědu
+        hideHint: Zavřít
+
+    # When placing a blueprint
+    blueprintPlacer:
+        cost: Cena
+
+    # Map markers
+    waypoints:
+        waypoints: Značky
+        hub: HUB
+        description: Klepnutím levým tlačítkem myši na značku se přesunete na její umístění, klepnutím pravým tlačítkem ji odstraníte.<br><br>Stisknutím klávesy <keybinding> vytvoříte značku na aktuálním místě, nebo <strong>klepnutím pravým tlačítkem</strong> vytvoříte značku na vybraném místě na mapě.
+        creationSuccessNotification: Značka byla vytvořena.
+
+    # Interactive tutorial
+    interactiveTutorial:
+        title: Tutoriál
+        hints:
+            1_1_extractor: Umístěte <strong>extraktor</strong> na naleziště<strong>kruhového tvaru</strong> a vytěžte jej!
+            1_2_conveyor: >-
+                Připojte extraktor pomocí <strong>dopravníkového pásu</strong> k vašemu HUBu!<br><br>Tip: <strong>Klikněte a táhněte</strong> myší pro položení více pásů!
+
+            1_3_expand: >-
+                Toto <strong>NENÍ</strong> hra o čekání! Sestavte další extraktory a pásy, abyste dosáhli cíle rychleji.<br><br>Tip: Chcete-li umístit více extraktorů, podržte <strong>SHIFT</strong>. Pomocí <strong>R</strong> je můžete otočit.
+
+# All shop upgrades
+shopUpgrades:
+    belt:
+        name: Pásy, distribuce & tunely
+        description: Rychlost x<currentMult> → x<newMult>
+    miner:
+        name: Extrakce
+        description: Rychlost x<currentMult> → x<newMult>
+    processors:
+        name: Řezání, otáčení a spojování
+        description: Rychlost x<currentMult> → x<newMult>
+    painting:
+        name: Míchání a barvení
+        description: Rychlost x<currentMult> → x<newMult>
+
+# Buildings and their name / description
+buildings:
+    hub:
+        deliver: Dodejte
+        toUnlock: pro odemčení
+        levelShortcut: LVL
+
+    belt:
+        default:
+            name: &belt Dopravníkový pás
+            description: Přepravuje tvary a barvy, přidržením můžete umístit více pásů za sebe tahem.
+
+    miner: # Internal name for the Extractor
+        default:
+            name: &miner Extraktor
+            description: Umístěte na náleziště tvaru nebo barvy pro zahájení těžby.
+
+        chainable:
+            name: Extraktor (Navazující)
+            description: Umístěte na náleziště tvaru nebo barvy pro zahájení těžby. Lze zapojit po skupinách.
+
+    underground_belt: # Internal name for the Tunnel
+        default:
+            name: &underground_belt Tunel
+            description: Umožňuje vézt suroviny pod budovami a pásy.
+
+        tier2:
+            name: Tunel II. úrovně
+            description: Umožňuje vézt suroviny pod budovami a pásy.
+
+    splitter: # Internal name for the Balancer
+        default:
+            name: &splitter Balancer
+            description: Multifunkční - Rozděluje vstupy do výstupů.
+
+        compact:
+            name: Spojka (levá)
+            description: Spojí dva pásy do jednoho.
+
+        compact-inverse:
+            name: Spojka (pravá)
+            description: Spojí dva pásy do jednoho.
+
+    cutter:
+        default:
+            name: &cutter Pila
+            description: Rozřízne tvar svisle na dvě části. <strong>Pokud použijete jen jednu půlku, nezapomeňte druhou smazat, jinak se vám produkce zasekne!</strong>
+        quad:
+            name: Rozebírač
+            description: Rozebere tvar na čtyři části. <strong>Pokud použijete jen některé části, nezapomeňte ostatní smazat, jinak se vám produkce zasekne!</strong>
+
+    rotater:
+        default:
+            name: &rotater Rotor
+            description: Otáčí tvary o 90 stupňů po směru hodinových ručiček.
+        ccw:
+            name: Rotor (opačný)
+            description: Otáčí tvary o 90 stupňů proti směru hodinových ručiček
+
+    stacker:
+        default:
+            name: &stacker Kombinátor
+            description: Spojí tvary dohromady. Pokud nemohou být spojeny, pravý tvar je položen na levý.
+
+    mixer:
+        default:
+            name: &mixer Mixér na barvy
+            description: Smíchá dvě barvy.
+
+    painter:
+        default:
+            name: &painter Barvič
+            description: Obarví celý tvar v levém vstupu barvou z pravého vstupu.
+        double:
+            name: Barvič (dvojnásobný)
+            description: Obarví tvary z levých vstupů barvou z horního vstupu.
+        quad:
+            name: Barvič (čtyřnásobný)
+            description: Umožňuje obarvit každý dílek tvaru samostatně.
+
+    trash:
+        default:
+            name: &trash Koš
+            description: Příjmá tvary a barvy ze všech stran a smaže je. Navždy.
+
+        storage:
+            name: Sklad
+            description: Skladuje věci navíc až do naplnění kapacity. Může být použit na skladování surovin navíc.
+
+storyRewards:
+    # Those are the rewards gained from completing the store
+    reward_cutter_and_trash:
+        title: Řezání tvarů
+        desc: Právě jste odemknuli <strong>pilu</strong> - řeže tvary <strong>svisle</strong> bez ohledu na svou orientaci!<br><br>Nezapomeňte se zbavovat odpadu, jinak <strong>se vám zasekne produkce</strong> - pro tento účel jsem vám odemknul koš, který můžete použít na mazání odpadu!
+
+    reward_rotater:
+        title: Otáčení
+        desc: <strong>Rotor</strong> byl právě odemčen! Otáčí tvary po směru hodinových ručiček o 90 stupňů.
+
+    reward_painter:
+        title: Barvení
+        desc: >-
+            <strong>Barvič</strong> byl právě odemčen - vytěžte nějakou barvu (stejně jako těžíte tvary) a skombinujte ji v barviči s tvarem pro obarvení!<br><br>PS: Pokud jste barvoslepí, nebojte, již pracuju na řešení.!
+
+    reward_mixer:
+        title: Míchání barev
+        desc: <strong>Mixér</strong> byl právě odemčen - zkombinuje dvě barvy pomocí <strong>aditivního míchání</strong>!
+
+    reward_stacker:
+        title: Kombinátor
+        desc: Nyní můžete spojovat tvary pomocí <strong>kombinátor</strong>! Pokud to jde, oba tvary se <strong>slepí</strong> k sobě. Pokud ne, tvar vpravo se <strong>nalepí na</strong> tvar vlevo!
+
+    reward_splitter:
+        title: Rozřazování/Spojování pásu
+        desc: Multifuknční <strong>balancer</strong> byl právě odemčen - Může být použít pro stavbu větších továren díky tomu, že <strong>rozřazuje</strong> tvary mezi dva pásy!<br><br>
+
+    reward_tunnel:
+        title: Tunel
+        desc: <strong>Tunel</strong> byl právě odemčen - Umožňuje vézt suroviny pod budovami a pásy.
+
+    reward_rotater_ccw:
+        title: Otáčení II
+        desc: Odemknuli jste variantu <strong>rotoru</strong> - Umožňuje vám otáčet proti směru hodinových ručiček. Vyberte rotor a <strong>zmáčkněte 'T' pro přepnutí mezi variantami</strong>!
+
+    reward_miner_chainable:
+        title: Napojovací extraktor
+        desc: Odemknuli jste variantu <strong>extraktoru</strong>! Může <strong>přesměrovat vytěžené zdroje</strong> do dalších extraktorů pro efektivnější těžbu!
+
+    reward_underground_belt_tier_2:
+        title: Tunel II. úrovně
+        desc: Odemknuli jste <strong>tunel II. úrovně</strong> - Má <strong>delší dosah</strong> a také můžete nyní míchat tunely dohromady!
+
+    reward_splitter_compact:
+        title: Kompaktní spojka
+        desc: >-
+            Odemknuli jste variantu <strong>balanceru</strong> - Spojuje dva pásy do jednoho!
+
+    reward_cutter_quad:
+        title: Řezání na čtvrtiny
+        desc: Odemknuli jste variantu <strong>pily</strong> - Rozebírač vám umožňuje rozdělit tvary <strong> na čtvrtiny</strong> místo na poloviny!
+
+    reward_painter_double:
+        title: Dvojité barvení
+        desc: Odemknuli jste variantu <strong>barviče</strong> - Funguje stejně jako normální, ale nabarví <strong>dva tvary naráz</strong> pomocí jedné barvy!
+
+    reward_painter_quad:
+        title: Quad Painting
+        desc: Odemknuli jste variantu <strong>painter</strong> - Umožní vám nabarvit každou čtvrtinu tvaru jinou barvou!
+
+    reward_storage:
+        title: Sklad
+        desc: Odemknuli jste variantu <strong>koše</strong> - Umožňuje vám skladovat věci až do určité kapacity!
+
+    reward_freeplay:
+        title: Volná hra
+        desc: Dokázali jste to! Odemknuli jste <strong>volnou hru</strong>! Další tvary jsou již náhodně generované! (pro plnou verzi plánujeme více obsahu!)
+
+    reward_blueprints:
+        title: Plány
+        desc: Nyní můžete <strong>kopírovat a vkládat</strong> části továrny! Vyberte oblast (Držte CTRL a táhněte myší) a zmáčkněte 'C' pro zkopírování.<br><br>Vkládání <strong>není zadarmo</strong>, potřebujete produkovat <strong>tvary pro plány</strong> na výstavbu! (Jsou to ty které jste právě dodali).
+
+    # Special reward, which is shown when there is no reward actually
+    no_reward:
+        title: Další úroveň
+        desc: >-
+            Tato úroveň vám nic neodemknula, ale s další to přijde! <br><br> PS: Radši neničte vaše stávající továrny - budete potřebovat <strong>všechny</strong> produkované tvary později na <strong>odemčení vylepšení</strong>!
+
+    no_reward_freeplay:
+        title: Další úroveň
+        desc: >-
+            Gratuluji! Mimochodem, více obsahu najdete v plné verzi!
+
+settings:
+    title: Nastavení
+    categories:
+        game: Hra
+        app: Aplikace
+
+    versionBadges:
+        dev: Vývojová verze
+        staging: Testovací verze
+        prod: Produkční verze
+    buildDate: Sestaveno <at-date>
+
+    labels:
+        uiScale:
+            title: Škála UI
+            description: >-
+                Změní velikost uživatelského rozhraní. Rozhraní se bude stále přizpůsobovoat rozlišení vaší obrazovky, toto nastavení pouze mění jeho škálu.
+            scales:
+                super_small: Velmi malé
+                small: Malé
+                regular: Normální
+                large: Velké
+                huge: Obrovské
+
+        scrollWheelSensitivity:
+            title: Citlivost přibížení
+            description: >-
+                Změní citlivost přiblížení (kolečkem myši nebo trackpadem).
+            sensitivity:
+                super_slow: Hodně pomalé
+                slow: Pomalé
+                regular: Normální
+                fast: Rychlé
+                super_fast: Hodně rychlé
+
+        language:
+            title: Jazyk
+            description: >-
+                Změní jazyk. Všechny překlady jsou vytvářeny komunitou a nemusí být kompletní.
+
+        fullscreen:
+            title: Celá obrazovka
+            description: >-
+                Doporučujeme hrát v režimu celé obrazovky pro nejlepší zážitek. Dostupné pouze v plné verzi.
+
+        soundsMuted:
+            title: Ztlumit zvuky
+            description: >-
+                Ztlumí všechny zvuky.
+
+        musicMuted:
+            title: Ztlumit hudbu
+            description: >-
+                Ztlumí veškerou hudbu.
+
+        theme:
+            title: Motiv
+            description: >-
+                Vybere motiv (světlý / tmavý).
+
+            themes:
+                dark: Dark
+                light: Light
+
+        refreshRate:
+            title: Cíl simulace
+            description: >-
+                Pokud máte 144 Hz monitor, změňte si rychlost obnovování obrazu. Toto nastavení může snížit FPS, pokud máte pomalý počítač.
+
+        alwaysMultiplace:
+            title: Několikanásobné pokládání
+            description: >-
+                Pokud bude zapnuté, zůstanou budovy vybrané i po postavení do té doby než je zrušíte. Má to stejný efekt jako držení klávesy SHIFT.
+
+        offerHints:
+            title: Tipy & Nápovědy
+            description: >-
+                Pokud zapnuté, budou se ve hře zobrazovat tipy a nápovědy. Také schová určité elementy na obrazovce pro jednodušší dostání se do hry.
+
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
+keybindings:
+    title: Klávesové zkratky
+    hint: >-
+        Tip: Nezapomeňte používat CTRL, SHIFT a ALT! Díky nim můžete měnit způsob stavění.
+
+    resetKeybindings: Resetovat nastavení klávesových zkratek
+
+    categoryLabels:
+        general: Aplikace
+        ingame: Hra
+        navigation: Posun mapy
+        placement: Stavba
+        massSelect: Hromadný výběr
+        buildings: Zkratky pro stavbu
+        placementModifiers: Modifikátory umístění
+
+    mappings:
+        confirm: Potvrdit
+        back: Zpět
+        mapMoveUp: Posun nahoru
+        mapMoveRight: Posun doprava
+        mapMoveDown: Posun dolů
+        mapMoveLeft: Posun doleva
+        centerMap: Vycentrovat mapu
+
+        mapZoomIn: Přiblížit
+        mapZoomOut: Oddálit
+        createMarker: Vytvořit značku
+
+        menuOpenShop: Vylepšení
+        menuOpenStats: Statistiky
+
+        toggleHud: Přepnout HUD
+        toggleFPSInfo: Přepnout zobrazení FPS a ladících informací
+        belt: *belt
+        splitter: *splitter
+        underground_belt: *underground_belt
+        miner: *miner
+        cutter: *cutter
+        rotater: *rotater
+        stacker: *stacker
+        mixer: *mixer
+        painter: *painter
+        trash: *trash
+
+        abortBuildingPlacement: Zrušit stavbu
+        rotateWhilePlacing: Otočit
+        rotateInverseModifier: >-
+            Modifikátor: Otočit proti směru hodinových ručiček
+        cycleBuildingVariants: Změnit variantu
+        confirmMassDelete: Potvrdit hromadné smazání
+        cycleBuildings: Změnit budovu
+
+        massSelectStart: Držte a táhněte pro vybrání oblasti
+        massSelectSelectMultiple: Vybrat více oblastí
+        massSelectCopy: Zkopírovat oblast
+
+        placementDisableAutoOrientation: Zrušit automatickou orientaci
+        placeMultiple: Zůstat ve stavebním módu
+        placeInverse: Přepnout automatickou orientaci pásů
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
+        exportScreenshot: Export whole Base as Image
+
+about:
+    title: O hře
+    body: >-
+        This game is open source and developed by <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (this is me).<br><br>
+
+        If you want to contribute, check out <a href="<githublink>"
+        target="_blank">shapez.io on github</a>.<br><br>
+
+        This game wouldn't have been possible without the great discord community
+        around my games - You should really join the <a href="<discordlink>"
+        target="_blank">discord server</a>!<br><br>
+
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
+        factorio sessions this game would never have existed.
+
+changelog:
+    title: Seznam změn
+
+demo:
+    features:
+        restoringGames: Nahrávání uložených her
+        importingGames: Importování uložených her
+        oneGameLimit: Omezeno pouze na jednu uloženou hru
+        customizeKeybindings: Změna klávesových zkratek
+        exportingBase: Exporting whole Base as Image
+
+    settingNotAvailable: Nedostupné v demo verzi.

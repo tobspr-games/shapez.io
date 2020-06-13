@@ -39,7 +39,7 @@ export class HUDUnlockNotification extends BaseHUDPart {
 
         this.btnClose = document.createElement("button");
         this.btnClose.classList.add("close", "styledButton");
-        this.btnClose.innerText = "Next level";
+        this.btnClose.innerText = T.ingame.levelCompleteNotification.buttonNextLevel;
         dialog.appendChild(this.btnClose);
 
         this.trackClicks(this.btnClose, this.requestClose);

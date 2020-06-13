@@ -29,8 +29,7 @@ export class MainMenuState extends GameState {
             <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
         `;
 
-        return (
-            `
+        return `
 
             <div class="topButtons">
                 <button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>
@@ -63,20 +62,6 @@ export class MainMenuState extends GameState {
                 
                 <div class="sideContainer">
                     ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
-
-                    <div class="contest">
-                        <h3>${T.mainMenu.contests.contest_01_03062020.title}</h3>
-                        ` +
-            /*<p>${T.mainMenu.contests.contest_01_03062020.desc}</p>
-                        <button class="styledButton participateContest">${
-                            T.mainMenu.contests.showInfo
-                        }</button>*/
-
-            `   
-                        <p>${T.mainMenu.contests.contestOver}</p>
-                        
-                    </div>
-
                 </div>
 
                 <div class="mainContainer">
@@ -111,8 +96,7 @@ export class MainMenuState extends GameState {
                 <div class="author">Made by <a class="producerLink" target="_blank">Tobias Springer</a></div>
 
             </div>
-        `
-        );
+        `;
     }
 
     requestImportSavegame() {
@@ -382,11 +366,19 @@ export class MainMenuState extends GameState {
         this.app.adProvider.showVideoAd().then(() => {
             this.app.analytics.trackUiClick("resume_game_adcomplete");
             const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
-            savegame.readAsync().then(() => {
-                this.moveToState("InGameState", {
-                    savegame,
+            savegame
+                .readAsync()
+                .then(() => {
+                    this.moveToState("InGameState", {
+                        savegame,
+                    });
+                })
+                .catch(err => {
+                    this.dialogs.showWarning(
+                        T.dialogs.gameLoadFailure.title,
+                        T.dialogs.gameLoadFailure.text + "<br><br>" + err
+                    );
                 });
-            });
         });
     }
 

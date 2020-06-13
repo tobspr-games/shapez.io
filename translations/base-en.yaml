@@ -36,7 +36,7 @@ steamPage:
 
         Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
 
         [b]Standalone Advantages[/b]
@@ -98,7 +98,7 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        hoursAndMinutesShort: <hours>h <minutes>m
 
         xMinutes: <x> minutes
 
@@ -214,17 +214,6 @@ dialogs:
         title: Demo Version
         desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
 
-    saveNotPossibleInDemo:
-        desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
-
-    leaveNotPossibleInDemo:
-        title: Demo version
-        desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
-
-    newUpdate:
-        title: Update available
-        desc: There is an update for this game available, be sure to download it!
-
     oneSavegameLimit:
         title: Limited savegames
         desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
@@ -233,11 +222,6 @@ dialogs:
         title: New update!
         desc: >-
             Here are the changes since you last played:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Whenever you need help or are stuck, check out the 'Show hint' button in the lower left and I'll give my best to help you!
 
     upgradesIntroduction:
         title: Unlock Upgrades
@@ -250,17 +234,22 @@ dialogs:
         desc: >-
             You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
 
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+
     blueprintsNotUnlocked:
         title: Not unlocked yet
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            Complete level 12 to unlock Blueprints!
 
     keybindingsIntroduction:
         title: Useful keybindings
         desc: >-
             This game has a lot of keybindings which make it easier to build big factories.
             Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
+            <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
             <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
             <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
@@ -270,6 +259,10 @@ dialogs:
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -286,6 +279,7 @@ ingame:
         placeBuilding: Place building
         createMarker: Create Marker
         delete: Destroy
+        pasteLastBlueprint: Paste last blueprint
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -324,7 +318,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -414,6 +408,11 @@ shopUpgrades:
 
 # Buildings and their name / description
 buildings:
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
+
     belt:
         default:
             name: &belt Conveyor Belt
@@ -456,7 +455,7 @@ buildings:
             description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
         quad:
             name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
 
     rotater:
         default:
@@ -479,7 +478,7 @@ buildings:
     painter:
         default:
             name: &painter Painter
-            description: Colors the whole shape on the left input with the color from the right input.
+            description: Colors the whole shape on the left input with the color from the top input.
         double:
             name: Painter (Double)
             description: Colors the shapes on the left inputs with the color from the top input.
@@ -525,7 +524,7 @@ storyRewards:
 
     reward_tunnel:
         title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
 
     reward_rotater_ccw:
         title: CCW Rotating
@@ -614,6 +613,18 @@ settings:
                 fast: Fast
                 super_fast: Super fast
 
+        movementSpeed:
+            title: Movement speed
+            description: >-
+                Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
         language:
             title: Language
             description: >-
@@ -638,6 +649,9 @@ settings:
             title: Game theme
             description: >-
                 Choose the game theme (light / dark).
+            themes:
+                dark: Dark
+                light: Light
 
         refreshRate:
             title: Simulation Target
@@ -659,7 +673,7 @@ keybindings:
     hint: >-
         Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: Reset Keybindings
 
     categoryLabels:
         general: Application
@@ -688,6 +702,7 @@ keybindings:
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
+        exportScreenshot: Export whole Base as Image
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -705,11 +720,13 @@ keybindings:
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Confirm Mass Delete
+        pasteLastBlueprint: Paste last blueprint
         cycleBuildings: Cycle Buildings
 
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area
+        massSelectCut: Cut area
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
@@ -717,6 +734,16 @@ keybindings:
 
 about:
     title: About this Game
+    body: >-
+        This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
+
+        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
+
+        This game wouldn't have been possible without the great discord community around my games - You should really join the <a href="<discordlink>" target="_blank">discord server</a>!<br><br>
+
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions this game would never have existed.
 
 changelog:
     title: Changelog
@@ -727,5 +754,6 @@ demo:
         importingGames: Importing savegames
         oneGameLimit: Limited to one savegame
         customizeKeybindings: Customizing Keybindings
+        exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Not available in the demo.
