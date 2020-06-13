@@ -267,7 +267,6 @@ dialogs:
         desc: >-
             Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
 
-
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -300,8 +299,8 @@ ingame:
             speed: Vitesse
             range: Portée
             storage: Espace de stockage
-            oneItemPerSecond: 1 forme / seconde
-            itemsPerSecond: <x> formes / seconde
+            oneItemPerSecond: 1 forme / s
+            itemsPerSecond: <x> formes / s
             itemsPerSecondDouble: (x2)
 
             tiles: <x> cases
@@ -578,7 +577,7 @@ storyRewards:
     no_reward:
         title: Niveau suivant
         desc: >-
-            Ce niveau n'a pas de récompense mais le prochain, oui ! <br><br>PS: Vous ne devriez pas détruire votre usine actuelle - Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour <strong>débloquer des améliorations</strong> 
+            Ce niveau n'a pas de récompense mais le prochain, oui ! <br><br>PS: Vous ne devriez pas détruire votre usine actuelle - Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour <strong>débloquer des améliorations</strong>
 
     no_reward_freeplay:
         title: Niveau suivant
@@ -757,7 +756,7 @@ about:
 
         Pour terminer, un immense merci à mon meilleur amis <a
         href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sans nos sessions sur factorio, ce jeu n'aurait jamais existé.
-        
+
 changelog:
     title: Historique
 
