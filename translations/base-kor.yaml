@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io는 도형을 만들어 조합하는 공장을 짓는 게임입니다. 플레이 할수록 점점 더 어려운 도형을 만들어야 됩니다.
+    shortText: shapez.io는 무한한 공간에서 점점 더 복잡한 도형의 생산과 조합을 자동화하는 공장들을 짓는 게임입니다.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -29,32 +29,44 @@ steamPage:
     # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-        shapez.io는 도형을 만들어 조합하는 공장을 짓는 게임입니다. 점점 더 복잡해지는 도형들을 제작해서 공장의 속도를 올리시기 바랍니다
-        수요가 늘수록 공장을 더 넓혀야 합니다. 자원을 늘리는 것도 잊으면 안됩니다. 무한한 크기의 맵에서 확장을 해 나가야 합니다.!
-        도형은 금방 지루해 지기 때문에 색을 조합하여 색칠하십시오.  빨강, 초록, 파랑 색을 섞어서 만든 다양한 색으로 수요를 만족시키세요.
-        이 게임에는 18개의 레벨이 있습니다 (이것 만으로도 여러분들은 이미 몇시간이 걸렸을 거예요!) 하지만 저는 항상 새로운 컨텐츠를 추가하고 있습니다 - 계획해 놓은 것들이 많습니다!
+
+        shapez.io는 다양한 도형의 생산과 조합을 자동화하는 공장들을 짓는 게임입니다. 점점 복잡해지는 요구사항을 충족하고 업그레이드를 잠금 해제해서 공장의 성능을 높일 수 있습니다.
+
+        점점 증가하는 수요를 충족하기 위해 공장의 규모를 키워야 합니다. [b]무한한 공간[/b]으로 확장하여 도형 재료를 구하는 것도 잊지 마세요.
+
+        단순한 도형은 금방 싫증이 나므로, 색을 조합하여 도형을 색칠하세요. 빨강, 초록, 파랑을 조합하여 다양한 색을 만들고 도형을 색칠하여 요구사항을 충족하세요.
+
+        이 게임에는 18개의 레벨이 있습니다. (이것만으로도 이미 몇시간이 걸렸을 거예요!) 하지만 저는 항상 새로운 컨텐츠를 추가하고 있습니다. 계획해 놓은 것들도 많구요!
+
+
         [b]유료 버전의 장점[/b]
+
         [list]
             [*] 마커
-            [*] 저장파일 무한정
+            [*] 제한 없는 저장
             [*] 다크 모드
-            [*] 다양한 설정 가능
-            [*] 제가 shapez. Io를 더 개발하는데 도움이 됨 ❤️
+            [*] 더 다양한 설정
+            [*] 제가 shapez.io를 개발하는 데 도움이 됨 ❤️
             [*] 향후 더 많은 컨텐츠
         [/list]
+
         [b] 예정된 컨탠츠 및 커뮤니티 제안[/b]
-        이 게임은 오픈 소스입니다. 따라서 누구나 기여할 수 있습니다. 또한, 커뮤니티의 제안을 [b]많이[/b] 듣고 있습니다! 가능한 많이 읽고 많이 반영하도록 노력하겠습니다.
+
+        이 게임은 오픈 소스입니다. 따라서 누구나 기여할 수 있습니다! 또한, 커뮤니티의 제안을 [b]많이[/b] 듣고 있습니다! 가능한 많이 읽고 많이 반영하도록 노력하겠습니다.
+
         [list]
             [*] 건물을 도형으로 구매해야 돼는 스토리 모드
             [*] 더 많은 레벨과 건물 (유료 버전 한정)
             [*] 다양한 월드와 맵 장애물
             [*] 당신만의 맵 제작
             [*] 더 많은 종류의 도형
-            [*] 속도 업그레이드 (지금도 게임이 잘 되긴 합니다!)
+            [*] 성능 향상 (지금도 게임이 잘 되긴 합니다!)
             [*] 색맹자용 모드
-            [*] 등등
+            [*] 그 외 다수!
         [/list]
+
         저의 트렐로 보드를 확인해서 로드맵을 확인해보세요! https://trello.com/b/ISQncpJP/shapezio
+
 global:
     loading: 로딩중
     error: 에러
@@ -65,22 +77,22 @@ global:
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: k
-        millions: m
-        billions: b
-        trillions: t
+        millions: M
+        billions: B
+        trillions: T
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: 무한
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: 일초 전
+        oneSecondAgo: 1초 전
         xSecondsAgo: <x>초 전
-        oneMinuteAgo: 일분 전
-        xMinutesAgo: <x>분전
-        oneHourAgo: 한 시간 전
-        xHoursAgo: <x> 시간 전
-        oneDayAgo: 일일 전
+        oneMinuteAgo: 1분 전
+        xMinutesAgo: <x>분 전
+        oneHourAgo: 1시간 전
+        xHoursAgo: <x>시간 전
+        oneDayAgo: 1일 전
         xDaysAgo: <x>일 전
 
         # Short formats for times, e.g. '5h 23m'
@@ -103,6 +115,7 @@ demoBanners:
     title: 무료 버전
     intro: >-
         유료 버전을 구매해서 모든 컨탠츠를 사용해 보세요!
+
 mainMenu:
     play: 시작
     changelog: 버전 기록
@@ -119,10 +132,11 @@ mainMenu:
 
     contests:
         contest_01_03062020:
-            title: "#1번 콘테스트"
-
+            title: "콘테스트 #01"
+            desc: Win <strong>$25</strong> for the coolest base!
             longDesc: >-
                 여러분들에게 무언가를 나눠드리고 싶어서 주간 콘테스트를 개최합니다!
+
                 <br><br>
                 <strong>이번주 토픽:</strong> 가장 멋있는 공장을 만드세요!
                 <br><br>
@@ -136,7 +150,6 @@ mainMenu:
                 </ul>
                 <br>
                 당신들의 멋진 공장을 보고 싶습니다!
-            desc: Win <strong>$25</strong> for the coolest base!
 
         showInfo: 보기
         contestOver: 이 콘테스트는 끝났습니다. 디스코드에서 새로운 콘테스트 관련 알림을 받으세요!
@@ -152,33 +165,39 @@ dialogs:
         getStandalone: 유료 버전 구매하기
         deleteGame: 확실합니다
         viewUpdate: 업데이트 보기
-        showUpgrades: 업그래이드 보기
+        showUpgrades: 업그레이드 보기
         showKeybindings: 조작법 보기
 
     importSavegameError:
         title: 불러오기 오류
         text: >-
             저장 파일을 불러오지 못했습니다:
+
     importSavegameSuccess:
         title: 저장 파일 불러오기 성공
         text: >-
             저장 파일이 성공적으로 불러와졌습니다.
+
     gameLoadFailure:
-        title: 게임이 깨졌습니다.(???)
+        title: 저장 파일 에러
         text: >-
             저장 파일을 불러오지 못했습니다:
+
     confirmSavegameDelete:
         title: 삭제 확인
         text: >-
             이 게임 파일을 정말로 삭제하겠습니까?
+
     savegameDeletionError:
         title: 삭제 실패
         text: >-
             저장 파일을 삭제하지 못했습니다.
+
     restartRequired:
         title: 다시 시작 필요
         text: >-
             설정을 적용하려면 게임을 다시 시작해야 됩니다.
+
     editKeybinding:
         title: 키바인딩 바꾸기
         desc: 당신이 원하는 키나 마우스 버튼을 눌러서 바꾸거나 ESC를 눌러 취소하세요.
@@ -203,38 +222,43 @@ dialogs:
         title: 신규 버전!
         desc: >-
             지난번 플레이 이후 변경사항은 다음과 같습니다.
+
     upgradesIntroduction:
-        title: 업그래이드 하기
+        title: 업그레이드 하기
         desc: >-
             여러분이 만든 모든 도형은 업그레이드에 사용 될 수 있습니다! - <strong> 만들어 놓은 공장을 허물지 마세요!</strong>
-            업그래이드 버튼은 화면의 오른쪽 위에 있습니다.
+            업그레이드 버튼은 화면의 오른쪽 위에 있습니다.
+
     massDeleteConfirm:
         title: 삭제 확인
         desc: >-
             당신은 많은 건물을 삭제하려고 하고있습니다! (정확히는 <count>개) 삭제하시겠습니까?
+
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+
     blueprintsNotUnlocked:
         title: 아직 사용 불가
         desc: >-
             복사 기능은 아직 열리지 않았습니다! 레벨을 올려서 잠금을 해제하세요.
+
     keybindingsIntroduction:
         title: 유용한 키바인딩
         desc: >-
             큰 공장을 지을 때 유용한 키바인딩이 많습니다!
             아래를 확인하세요.<strong>나머지 키바인딩도 확인해보세요!</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: 지역을 선택해서 복사/삭제하세요.<br>
+            <code class='keybinding'>CTRL</code> + Drag: 영역을 선택해서 복사/삭제하세요.<br>
             <code class='keybinding'>SHIFT</code>: 한꺼번에 여러 개의 건물을 배치하세요.<br>
             <code class='keybinding'>ALT</code>: 설치된 컨베이어 벨트의 방향을 바꾸세요.<br>
+
     createMarker:
         title: 새로운 마커
         desc: 의미 있는 이름을 지어주세요
 
     markerDemoLimit:
         desc: 데모 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
-    massCutConfirm:
-        title: Confirm cut
-        desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
 
     exportScreenshotWarning:
         title: Export screenshot
@@ -246,8 +270,8 @@ ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: 움지기기
-        selectBuildings: 지역 선택
+        moveMap: 움직이기
+        selectBuildings: 영역 선택
         stopPlacement: 건물 놓기 중지
         rotateBuilding: 건물 회전
         placeMultiple: 여러 개 놓기
@@ -269,6 +293,7 @@ ingame:
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
+
         infoTexts:
             speed: 속도
             range: 최대 거리
@@ -289,7 +314,7 @@ ingame:
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: 새로운 업그래이드를 할 수 있습니다!
+        newUpgrade: 새로운 업그레이드를 할 수 있습니다!
         gameSaved: 게임이 저장되었습니다.
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
@@ -364,25 +389,32 @@ ingame:
             1_1_extractor: <strong>추출기</strong>를 <strong>원 모양의 도형</strong>에 놓아서 추출하세요!
             1_2_conveyor: >-
                 추출기를 <strong>컨베이어 벨트</strong>로 당신의 중앙 건물에 연결하세요!<br><br>팁: 마우스로 벨트를 <strong>클릭해서 드래그</strong>하세요!
+
             1_3_expand: >-
-                이것은 아이들 게임이 <strong>아닙니다!</strong> 추출기를 더 놓아 목표를 빨리 달성하세요.<br><br>팁: <strong> SHIFT </strong>를 눌러 여러 개의 추출기를 놓고 <strong>R</strong>로 회전 시키세요.
+                이것은 방치형 게임이 <strong>아닙니다!</strong> 추출기를 더 놓아 목표를 빨리 달성하세요.<br><br>팁: <strong>SHIFT</strong>를 눌러 여러 개의 추출기를 놓고 <strong>R</strong>로 회전 시키세요.
+
 # All shop upgrades
 shopUpgrades:
     belt:
         name: 컨베이어 벨트, 배분기, 터널
         description: 속도 x<currentMult> → x<newMult>
     miner:
-        name: 추출
+        name: 추출기
         description: 속도 x<currentMult> → x<newMult>
     processors:
-        name: 자르기, 회전, 쌓기
-        description: Speed x<currentMult> → x<newMult>
+        name: 절단기, 회전기, 결합기
+        description: 속도 x<currentMult> → x<newMult>
     painting:
-        name: 색 섞기, 색칠하기
-        description: Speed x<currentMult> → x<newMult>
+        name: 색 혼합기, 도형 색칠기
+        description: 속도 x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
+    hub:
+        deliver: 목표
+        toUnlock: 보상
+        levelShortcut: 레벨
+
     belt:
         default:
             name: &belt 컨베이어 벨트
@@ -464,71 +496,49 @@ buildings:
         storage:
             name: 저장소
             description: 할당된 용량만큼 초과되는 도형을 저장한다.
-    hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: 도형 자르기
-        desc: >-
-            You just unlocked the <strong>cutter</strong> - it cuts shapes half from
-            <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure
-            to get rid of the waste, or otherwise <strong>it will stall</strong> - For
-            this purpose I gave you a trash, which destroys everything you put into it!
+        title: 절단기
+        desc: <strong>절단기</strong>가 잠금 해제되었습니다! 절단기는 도형을 <strong>세로로</strong> 잘라 반으로 나눕니다.<br><br>사용하지 않는 도형은 휴지통에 버려주세요. 그렇지 않으면 절단기가 <strong>멈출 것입니다.</strong>
 
     reward_rotater:
-        title: 도형 회전기
-        desc: <strong>도형 회전기</strong>가 잠금 해제되었습니다! 이것은 도형을 시계방향으로 90도 회전 시킵니다.
+        title: 회전기
+        desc: <strong>회전기</strong>가 잠금 해제되었습니다! 이것은 도형을 시계방향으로 90도 회전 시킵니다.
 
     reward_painter:
-        title: 도형 색칠기
+        title: 색칠기
         desc: >-
-            <strong>도형 색칠기</strong>가 잠금 해제 되었습니다! 색소 광물을 추출해서 이 기계로 도형을 색칠하세요. <br><br>PS: 당신이 색맹이라면, 해결책을 찾고 있으니 잠시만 기다려주세요!
+            <strong>색칠기</strong>가 잠금 해제 되었습니다! 색소 광물을 추출해서 이 기계로 도형을 색칠하세요. <br><br>PS: 당신이 색맹이라면, 해결책을 찾고 있으니 잠시만 기다려주세요!
 
     reward_mixer:
-        title: 색 혼합기
-        desc: >-
-            The <strong>mixer</strong> has been unlocked - Combine two colors using
-            <strong>additive blending</strong> with this building!
+        title: 혼합기
+        desc: <strong>혼합기</strong>가 잠금 해제 되었습니다! 이 건물로 두 색소를 <strong>혼합</strong>하세요!
 
     reward_stacker:
-        title: 스태커
-        desc: >-
-            You can now combine shapes with the <strong>combiner</strong>! Both inputs are
-            combined, and if they can be put next to each other, they will be
-            <strong>fused</strong>. If not, the right input is <strong>stacked on
-            top</strong> of the left input!
+        title: 결합기
+        desc: <strong>결합기</strong>가 잠금 해제 되었습니다! 두 도형이 서로 옆에 놓을 수 있는 경우, 두 도형이 <strong>결합</strong>됩니다. 그렇지 않은 경우, 오른쪽 도형이 왼쪽 도형 <strong>위에 쌓이게</strong>됩니다.
 
     reward_splitter:
         title: 배분기
-        desc: >-
-            The multifunctional <strong>balancer</strong> has been unlocked - It can be
-            used to build bigger factories by <strong>splitting and merging items</strong>
-            onto multiple belts!<br><br>
+        desc: 다양한 용도로 쓰이는 <strong>배분기</strong>가 잠금 해제되었습니다! 배분기로 도형들을 여러 개의 벨트에 <strong>합하거나 나누어서</strong> 큰 공장을 지을 수 있습니다.<br><br>
 
     reward_tunnel:
         title: 터널
         desc: <strong>터널</strong>이 잠금 해제되었습니다! 자원을 건물과 벨트 밑으로 운송 할 수 있습니다.
 
     reward_rotater_ccw:
-        title: 도형 회전기 (반시게방향)
+        title: 회전기 (반시게방향)
         desc: <strong>반시게방향 회전기</strong>가 잠금 해제되었습니다! 이것을 배치하려면 회전기를 선택하고 <strong>T</strong>를 눌러서 변형된 버전을 사용하세요!
 
     reward_miner_chainable:
         title: 체인 추출기
-        desc: >-
-            You have unlocked the <strong>chaining extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you can more
-            efficiently extract resources!
+        desc: <strong>체인 추출기</strong>가 잠금 해제되었습니다! 체인 추출기는 <strong>자원을 다른 추출기로 전달하여</strong> 효율적으로 추출할 수 있게 합니다.
 
     reward_underground_belt_tier_2:
         title: 터널 티어 II
-        desc: >-
-            You have unlocked a new variant of the <strong>tunnel</strong> - It has a
-            <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        desc: 새로운 종류의 <strong>터널</strong>이 잠금 해제되었습니다! 새 터널은 <strong>보다 넓은 범위</strong>를 가졌으며, 터널들은 같은 종류끼리만 연결됩니다.
 
     reward_splitter_compact:
         title: 컴팩트 연결기
@@ -537,19 +547,14 @@ storyRewards:
 
     reward_cutter_quad:
         title: 절단기 (4단)
-        desc: >-
-            You have unlocked a variant of the <strong>cutter</strong> - It allows you to
-            cut shapes in <strong>four parts</strong> instead of just two!
+        desc: 새로운 종류의 <strong>절단기</strong>가 잠금 해제되었습니다! 새 절단기는 도형을 2조각이 아니라 <strong>4조각</strong>으로 자릅니다.
 
     reward_painter_double:
-        title: 도형 색칠기 (2단)
-        desc: >-
-            You have unlocked a variant of the <strong>painter</strong> - It works as the
-            regular painter but processes <strong>two shapes at once</strong> consuming
-            just one color instead of two!
+        title: 색칠기 (2단)
+        desc: 새로운 종류의 <strong>색칠기</strong>가 잠금 해제되었습니다! 새 색칠기는 <strong>색소 하나로 2개의 도형</strong>을 색칠할 수 있습니다.
 
     reward_painter_quad:
-        title: 도형 색칠기 (4단)
+        title: 색칠기 (4단)
         desc: <strong>4단 도형 색칠기</strong>가 잠금 해제되었습니다! 도형의 4분단을 각각 다른 색으로 색칠할 수 있습니다!
 
     reward_storage:
@@ -558,26 +563,23 @@ storyRewards:
 
     reward_freeplay:
         title: 프리플레이 모드
-        desc: >-
-            You did it! You unlocked the <strong>free-play mode</strong>! This means that
-            shapes are now randomly generated! (No worries, more content is planned for
-            the standalone!)
+        desc: 해내셨군요! <strong>프리플레이 모드</strong>가 잠금 해제되었습니다! 이제 도형이 랜덤으로 생성됩니다! (걱정 마세요, 유료버전에는 더 많은 컨텐츠가 계획되어 있습니다!)
 
     reward_blueprints:
         title: 블루프린트
-        desc: 이제부터는 공장의 일부 지역을 <strong>복사하여 붙여넣기</strong> 할 수 있습니다! CTRL을 누르면서 드래그해서 먼저 지역을 선택하세요. <br><br> 그 다음에는 C, DEL, ESC 로 복사하거나, 지우거나, 취소 하세요.<br><br> 복사는 무료가 이닙니다. 특별한 "화폐" 도형으로 돈을 지불하고 복사가 됩니다.
+        desc: 이제부터는 공장의 일부 영역을 <strong>복사하여 붙여넣기</strong> 할 수 있습니다! CTRL을 누르면서 드래그해서 먼저 영역을 선택하세요. <br><br> 그 다음에는 C, DEL, ESC 로 복사하거나, 지우거나, 취소 하세요.<br><br> 복사는 무료가 이닙니다. 특별한 "화폐" 도형으로 돈을 지불하고 복사가 됩니다.
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: 다음 레벨
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better
-            don't destroy your existing factory - You need <strong>all</strong> those
-            shapes later again to <strong>unlock upgrades</strong>!
+            이 레벨은 보상이 없지만, 다음 레벨에는 있을 거에요! <br><br> 추신: 만들었던 공장을 부수지 않는게 좋을 겁니다. <strong>업그레이드</strong> 하는데 그 모양들이 사용될 것이거든요!
+
     no_reward_freeplay:
         title: 다음 레벨
         desc: >-
             축하드립니다! 유료 버전을 위한 더 많은 컨텐츠를 만들고 있습니다.
+
 settings:
     title: 설정
     categories:
@@ -613,47 +615,10 @@ settings:
                 fast: 빠르게
                 super_fast: 매우 빠르게
 
-        language:
-            title: 언어
-            description: >-
-                언어 바꾸기 - 모든 언어팩은 사용자들이 만든 것이므로 완성되지 않았을 수 있습니다..
-        fullscreen:
-            title: Fullscreen
-            description: >-
-                이 게임은 풀 스크린으로 하는 것이 가장 좋습니다. 풀 스크린 모드는 유료 버전에서만 가능합니다.
-        soundsMuted:
-            title: 소리 끄기
-            description: >-
-                모든 효과음을 끕니다.
-        musicMuted:
-            title: 음악 끄기
-            description: >-
-                모든 배경 음악을 끕니다.
-        theme:
-            title: 게임 테마
-            description: >-
-                게임 테마를 고르세요. (밝음/어두움).
-
-            themes:
-                dark: Dark
-                light: Light
-
-        refreshRate:
-            title: 모니터 리프레쉬 속도
-            description: >-
-                당신의 모니터의 리프세쉬 속도가 144hz 보다 높으면 이 설정을 바꾸어서 게임이 더 빨리 리프레시 되게 하세요. 만약에 컴퓨터가 느리다면 FPS에 영양을 미칠 수 있습니다.
-        alwaysMultiplace:
-            title: 항상 여러 개 배치
-            description: >-
-                배치 이후에도 모든 빌딩이 선택되어 있습니다. SHIFT를 계속 누르고 있는 것과 같은 효과입니다.
-        offerHints:
-            title: 힌트와 튜토리얼
-            description: >-
-                이것을 끄면 힌트와 튜토리얼이 나오지 않습니다. 또한 게임에 쉽게 들어가기 위해서 주어진 레벨에서 특정 UI 요소를 숨길 수도 있습니다.
-
         movementSpeed:
             title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            description: >-
+                Changes how fast the view moves when using the keyboard.
             speeds:
                 super_slow: Super slow
                 slow: Slow
@@ -662,10 +627,54 @@ settings:
                 super_fast: Super Fast
                 extremely_fast: Extremely Fast
 
+        language:
+            title: 언어
+            description: >-
+                언어 바꾸기 - 모든 언어팩은 사용자들이 만든 것이므로 완성되지 않았을 수 있습니다..
+
+        fullscreen:
+            title: Fullscreen
+            description: >-
+                이 게임은 풀 스크린으로 하는 것이 가장 좋습니다. 풀 스크린 모드는 유료 버전에서만 가능합니다.
+
+        soundsMuted:
+            title: 소리 끄기
+            description: >-
+                모든 효과음을 끕니다.
+
+        musicMuted:
+            title: 음악 끄기
+            description: >-
+                모든 배경 음악을 끕니다.
+
+        theme:
+            title: 게임 테마
+            description: >-
+                게임 테마를 고르세요. (밝음/어두움).
+            themes:
+                dark: Dark
+                light: Light
+
+        refreshRate:
+            title: 모니터 리프레쉬 속도
+            description: >-
+                당신의 모니터의 리프세쉬 속도가 144hz 보다 높으면 이 설정을 바꾸어서 게임이 더 빨리 리프레시 되게 하세요. 만약에 컴퓨터가 느리다면 FPS에 영양을 미칠 수 있습니다.
+
+        alwaysMultiplace:
+            title: 항상 여러 개 배치
+            description: >-
+                배치 이후에도 모든 빌딩이 선택되어 있습니다. SHIFT를 계속 누르고 있는 것과 같은 효과입니다.
+
+        offerHints:
+            title: 힌트와 튜토리얼
+            description: >-
+                이것을 끄면 힌트와 튜토리얼이 나오지 않습니다. 또한 게임에 쉽게 들어가기 위해서 주어진 레벨에서 특정 UI 요소를 숨길 수도 있습니다.
+
 keybindings:
     title: 키바인딩
     hint: >-
         팁: CTRL, SHIFT, ALT를 활용하세요. 건물을 배치할 때 유용합니다.
+
     resetKeybindings: 키바인딩 리셋
 
     categoryLabels:
@@ -690,7 +699,7 @@ keybindings:
         mapZoomOut: 축소
         createMarker: 마커 놓기
 
-        menuOpenShop: 업그래이드
+        menuOpenShop: 업그레이드
         menuOpenStats: 통계
 
         toggleHud: UI보기/숨기기
@@ -712,17 +721,17 @@ keybindings:
             Modifier: 대신 반시계방향으로 회전
         cycleBuildingVariants: 변형종 사용
         confirmMassDelete: 대량 삭제 확인
+        pasteLastBlueprint: Paste last blueprint
         cycleBuildings: 건물 사이클
 
         massSelectStart: 누르고 드래그해서 시작
         massSelectSelectMultiple: 여러 곳 선택
-        massSelectCopy: 지역 복사
+        massSelectCopy: 영역 복사
+        massSelectCut: Cut area
 
         placementDisableAutoOrientation: 자동 회전 끄기
         placeMultiple: 배치 모드에 있기
         placeInverse: 자동 벨트 회전 뒤집기
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
         exportScreenshot: Export whole Base as Image
 
 about:
