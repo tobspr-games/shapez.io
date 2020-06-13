@@ -25,6 +25,13 @@ const logger = createLogger("shape_definition");
  * @typedef {[ShapeLayerItem?, ShapeLayerItem?, ShapeLayerItem?, ShapeLayerItem?]} ShapeLayer
  */
 
+/**
+ ** Order is 0b1000, 0b0100, 0b0010, 0b0001, upper layers are << 4
+ * @typedef {number} FormStack
+ */
+
+
+
 const arrayQuadrantIndexToOffset = [
     new Vector(1, -1), // tr
     new Vector(1, 1), // br
@@ -191,6 +198,14 @@ export class ShapeDefinition extends BasicSerializableObject {
         }
         this.cachedHash = id;
         return id;
+    }
+
+    /**
+     * Returns a filled form of shape
+     * @returns {FormStack}
+     */
+    getForm() {
+        return this.layers.reduceRight((v, [q1, q2, q3, q4]) => (v << 4) | (!!q1 && 0b1000) | (!!q2 && 0b0100) | (!!q3 && 0b0010) | (!!q4 && 0b0001), 0);
     }
 
     /**
@@ -418,50 +433,43 @@ export class ShapeDefinition extends BasicSerializableObject {
             assert(false, "Can not stack entirely empty definition");
         }
 
-        // Put layer for layer on top
-        for (let i = 0; i < definition.layers.length; ++i) {
-            const layerToAdd = definition.layers[i];
+        let form = this.getForm();
+        const dForm = definition.getForm();
 
-            // On which layer we can merge this upper layer
-            let mergeOnLayerIndex = null;
-
-            // Go from top to bottom and check if there is anything intercepting it
-            for (let k = newLayers.length - 1; k >= 0; --k) {
-                const lowerLayer = newLayers[k];
-
-                let canMerge = true;
-                for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                    const upperItem = layerToAdd[quadrantIndex];
-                    const lowerItem = lowerLayer[quadrantIndex];
-
-                    if (upperItem && lowerItem) {
-                        // so, we can't merge it because two items conflict
-                        canMerge = false;
-                        break;
-                    }
-                }
-
-                // If we can merge it, store it - since we go from top to bottom
-                // we can simply override it
-                if (canMerge) {
-                    mergeOnLayerIndex = k;
+        if ((form & dForm) == 0) {
+            // merge
+            for (let i = 0; i < newLayers.length && i < definition.layers.length; ++i) {
+                for (let q = 0; q < 4; q++) {
+                    newLayers[i][q] = newLayers[i][q] || definition.layers[i][q];
                 }
             }
-
-            if (mergeOnLayerIndex !== null) {
-                // Simply merge using an OR mask
-                for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                    newLayers[mergeOnLayerIndex][quadrantIndex] =
-                        newLayers[mergeOnLayerIndex][quadrantIndex] || layerToAdd[quadrantIndex];
-                }
-            } else {
-                // Add new layer
-                newLayers.push(layerToAdd);
+            for (let i = newLayers.length; i < definition.layers.length; ++i) {
+                newLayers.push(definition.layers[i].slice());
             }
+            newLayers.splice(4);
+            return new ShapeDefinition({ layers: newLayers });
         }
 
-        newLayers.splice(4);
+        // otherwise stack, layer by layer
+        for (let i = 0; i < definition.layers.length; ++i) {
+            let layerForm = (dForm & (0b1111 << (4 * i))) >> (4 * i);
 
+            let highestOverlay = 7;
+            while (  ((layerForm << (4 * highestOverlay)) & form) == 0 && highestOverlay >= 0 ) {
+                highestOverlay--;
+            }
+            // highestOverlay is topmost unmergeable layer, so go up 1 more
+            const mergeTagret = highestOverlay + 1;
+            form = form | (layerForm << (4 * mergeTagret));
+            if (newLayers.length <= mergeTagret) {
+                newLayers.push(definition.layers[i].slice());
+                continue;
+            }
+            for (let q = 0; q < 4; q++) {
+                newLayers[mergeTagret][q] = newLayers[mergeTagret][q] || definition.layers[i][q];
+            }
+        }
+        newLayers.splice(4);
         return new ShapeDefinition({ layers: newLayers });
     }
 
