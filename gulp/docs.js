@@ -13,7 +13,7 @@ function gulptasksDocs($, gulp, buildFolder) {
             .pipe(gulp.dest(path.join("..", "tsc_temp")));
     });
 
-    gulp.task("docs.copyTsconfigForHints", () => {
+    gulp.task("docs.copyTsconfigForHints", cb => {
         const src = fs.readFileSync(path.join("..", "src", "js", "tsconfig.json")).toString();
         const baseConfig = JSON.parse($.stripJsonComments(src));
 
@@ -28,9 +28,10 @@ function gulptasksDocs($, gulp, buildFolder) {
         baseConfig.composite = true;
         baseConfig.outFile = "bundled-ts.js";
         fs.writeFileSync(path.join("..", "tsc_temp", "tsconfig.json"), JSON.stringify(baseConfig));
+        cb();
     });
 
-    gulp.task("main.prepareDocs", $.sequence("docs.convertJsToTs", "docs.copyTsconfigForHints"));
+    gulp.task("main.prepareDocs", gulp.series("docs.convertJsToTs", "docs.copyTsconfigForHints"));
 }
 
 module.exports = {

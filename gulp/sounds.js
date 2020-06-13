@@ -79,7 +79,7 @@ function gulptasksSounds($, gulp, buildFolder) {
 
     gulp.task(
         "sounds.sfx",
-        $.sequence("sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas")
+        gulp.series("sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas")
     );
 
     gulp.task("sounds.copy", () => {
@@ -92,8 +92,8 @@ function gulptasksSounds($, gulp, buildFolder) {
 
     gulp.task("sounds.buildall", cb => $.multiProcess(["sounds.music", "sounds.sfx"], cb, true));
 
-    gulp.task("sounds.fullbuild", cb => $.sequence("sounds.clear", "sounds.buildall", "sounds.copy")(cb));
-    gulp.task("sounds.dev", cb => $.sequence("sounds.buildall", "sounds.copy")(cb));
+    gulp.task("sounds.fullbuild", gulp.series("sounds.clear", "sounds.buildall", "sounds.copy"));
+    gulp.task("sounds.dev", gulp.series("sounds.buildall", "sounds.copy"));
 }
 
 module.exports = {

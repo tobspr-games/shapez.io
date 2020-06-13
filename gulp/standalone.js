@@ -12,7 +12,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
     const tempDestBuildDir = path.join(tempDestDir, "built");
 
     gulp.task("standalone.prepare.cleanup", () => {
-        return gulp.src(tempDestDir, { read: false }).pipe($.clean({ force: true }));
+        return gulp.src(tempDestDir, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
     });
 
     gulp.task("standalone.prepare.copyPrefab", () => {
@@ -30,7 +30,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
         return gulp.src(requiredFiles, { base: electronBaseDir }).pipe(gulp.dest(tempDestBuildDir));
     });
 
-    gulp.task("standalone.prepare.writePackageJson", () => {
+    gulp.task("standalone.prepare.writePackageJson", cb => {
         fs.writeFileSync(
             path.join(tempDestBuildDir, "package.json"),
             JSON.stringify(
@@ -43,6 +43,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
                 4
             )
         );
+        cb();
     });
 
     gulp.task("standalone.prepare.minifyCode", () => {
@@ -93,17 +94,18 @@ function gulptasksStandalone($, gulp, buildFolder) {
         return gulp.src("../build/**/*.*", { base: "../build" }).pipe(gulp.dest(tempDestBuildDir));
     });
 
-    gulp.task("standalone.killRunningInstances", () => {
+    gulp.task("standalone.killRunningInstances", cb => {
         try {
             execSync("taskkill /F /IM shapezio.exe");
         } catch (ex) {
             console.warn("Failed to kill running instances, maybe none are up.");
         }
+        cb();
     });
 
     gulp.task(
         "standalone.prepare",
-        $.sequence(
+        gulp.series(
             "standalone.killRunningInstances",
             "standalone.prepare.cleanup",
             "standalone.prepare.copyPrefab",
@@ -190,13 +192,16 @@ function gulptasksStandalone($, gulp, buildFolder) {
 
     gulp.task(
         "standalone.package.prod",
-        $.sequence("standalone.prepare", [
-            "standalone.package.prod.win64",
-            "standalone.package.prod.linux64",
-            "standalone.package.prod.darwin64",
-            // "standalone.package.prod.win32",
-            // "standalone.package.prod.linux32",
-        ])
+        gulp.series(
+            "standalone.prepare",
+            gulp.parallel(
+                "standalone.package.prod.win64",
+                "standalone.package.prod.linux64",
+                "standalone.package.prod.darwin64"
+                // "standalone.package.prod.win32",
+                // "standalone.package.prod.linux32",
+            )
+        )
     );
 }
 

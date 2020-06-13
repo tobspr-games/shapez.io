@@ -2,13 +2,15 @@ const path = require("path");
 const fs = require("fs");
 const buildUtils = require("./buildutils");
 
-export function gulptasksCordova($, gulp, buildFolder) {
+function gulptasksCordova($, gulp, buildFolder) {
     const cdvRes = path.join("..", "..", "res");
 
     // Cleans up the app assets
     // Removes all temporary folders used while optimizing the assets
     gulp.task("cleanupAppAssetsBuiltFolder", () => {
-        return gulp.src(path.join(cdvRes, "built"), { read: false }).pipe($.clean({ force: true }));
+        return gulp
+            .src(path.join(cdvRes, "built"), { read: false, allowEmpty: true })
+            .pipe($.clean({ force: true }));
     });
 
     // Optimizes all built assets
@@ -64,7 +66,7 @@ export function gulptasksCordova($, gulp, buildFolder) {
             .pipe(gulp.dest(path.join(cdvRes, "built", "ios")));
     });
 
-    gulp.task("prepareIosRes", ["scaleIconIos", "copyOtherIosResources"]);
+    gulp.task("prepareIosRes", gulp.series("scaleIconIos", "copyOtherIosResources"));
 
     gulp.task("copyAndroidResources", () => {
         return gulp
@@ -72,19 +74,20 @@ export function gulptasksCordova($, gulp, buildFolder) {
             .pipe(gulp.dest(path.join(cdvRes, "built", "android")));
     });
 
-    gulp.task("prepareAndroidRes", ["copyAndroidResources"]);
+    gulp.task("prepareAndroidRes", gulp.series("copyAndroidResources"));
 
-    gulp.task("prepareCordovaAssets", cb => {
-        return $.sequence(
+    gulp.task(
+        "prepareCordovaAssets",
+        gulp.series(
             "cleanupAppAssetsBuiltFolder",
-            ["prepareIosRes", "prepareAndroidRes"],
+            gulp.parallel("prepareIosRes", "prepareAndroidRes"),
             "optimizeBuiltAppAssets"
-        )(cb);
-    });
+        )
+    );
 
     // Patches the config.xml by replacing the app id to app_beta
 
-    gulp.task("patchConfigXML", () => {
+    gulp.task("patchConfigXML", cb => {
         const configUrl = path.join("..", "..", "config.xml");
         let configContent = fs.readFileSync(configUrl).toString();
         const version = buildUtils.getVersion();
@@ -92,14 +95,16 @@ export function gulptasksCordova($, gulp, buildFolder) {
         configContent = configContent.replace(' id="io.shapez.app" ', ' id="io.shapez.app_beta" ');
         configContent = configContent.replace("<name>Shapez.io</name>", "<name>Shapez.io BETA</name>");
         fs.writeFileSync(configUrl, configContent);
+        cb();
     });
 
-    gulp.task("patchConfigXMLChangeStagingToProd", () => {
+    gulp.task("patchConfigXMLChangeStagingToProd", cb => {
         const configUrl = path.join("..", "..", "config.xml");
         let configContent = fs.readFileSync(configUrl).toString();
         configContent = configContent.replace(' id="io.shapez.app_beta" ', ' id="io.shapez.app" ');
         configContent = configContent.replace("<name>Shapez.io BETA</name>", "<name>Shapez.io</name>");
         fs.writeFileSync(configUrl, configContent);
+        cb();
     });
 
     // Triggers a new build on phonegap
