@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.1.11",
-        date: "unreleased",
+        date: "13.06.2020",
         entries: [
             "Pinned shapes are now smart, they dynamically update their goal and also unpin when no longer required. Completed objectives are now rendered transparent.",
             "You can now cut areas, and also paste the last blueprint again! (by hexy)",
