@@ -3,8 +3,8 @@ const audiosprite = require("gulp-audiosprite");
 
 function gulptasksSounds($, gulp, buildFolder) {
     // Gather some basic infos
-    const soundsDir = path.join("..", "res_raw", "sounds");
-    const builtSoundsDir = path.join("..", "res_built", "sounds");
+    const soundsDir = path.join(__dirname, "..", "res_raw", "sounds");
+    const builtSoundsDir = path.join(__dirname, "..", "res_built", "sounds");
 
     gulp.task("sounds.clear", () => {
         return gulp.src(builtSoundsDir, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
