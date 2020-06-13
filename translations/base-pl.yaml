@@ -78,7 +78,7 @@ global:
     # Translator note: We don't use SI size units for common speak, but if you want to keep it SI
     # ...also, Polish has wierd nature of diffrent number naming, we have "million" and "milliard"-thing wich actually is billion in English
     suffix:
-        thousands: tyś
+        thousands: tys
         millions: mln
         billions: mld
         trillions: bln
@@ -98,9 +98,10 @@ global:
         xDaysAgo: <x> dni temu
 
         # Short formats for times, e.g. '5h 23m'
+        # 2nd translator's note: Changed 'm' to 'min' to distinguish from meters & to be consistent
         secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>godz <minutes>m
+        minutesAndSecondsShort: <minutes>min <seconds>s
+        hoursAndMinutesShort: <hours>godz <minutes>min
 
         xMinutes: <x> minut
 
@@ -295,8 +296,8 @@ ingame:
             speed: Szybkość
             range: Zasięg
             storage: Pojemność
-            oneItemPerSecond: 1 obiekt / sekundę
-            itemsPerSecond: <x> obiektów / sekundę
+            oneItemPerSecond: 1 obiekt / s
+            itemsPerSecond: <x> obiektów / s
             itemsPerSecondDouble: (x2)
 
             tiles: <x> kafelków
@@ -532,7 +533,7 @@ storyRewards:
 
     reward_tunnel:
         title: Tunel
-        desc: <strong>Tunel</strong> został odblokowany - Możesz prowadzić podziemne taśmociągi!
+        desc: <strong>Tunel</strong> został odblokowany - Możesz teraz prowadzić podziemne taśmociągi!
 
     reward_rotater_ccw:
         title: Obracanie odwrotne
@@ -549,8 +550,9 @@ storyRewards:
     reward_splitter_compact:
         title: Łącznik Kompaktowy
         desc: >-
-          You have unlocked a compact variant of the <strong>balancer</strong> - It
-          accepts two inputs and merges them into one!
+          Odblokowano nowy wariant <strong>rozdzielacza</strong> - Przyjmuje 
+          przedmioty z dwóch taśmociągów i przenosi je na jeden!
+
     reward_cutter_quad:
         title: Przecinak Poczwórny
         desc: Odblokowano nowy wariant <strong>Przecinaka</strong> - Pozwala ciąć kształty na <strong>cztery ćwiartki</strong>!
@@ -684,7 +686,7 @@ settings:
 keybindings:
     title: Klawiszologia
     hint: >-
-        Tip: Upewnij się, że wykorzystujesz CTRL, SHIFT i ALT! Pozwalają na różne metody kładzenia elementów.
+        Wskazówka: Upewnij się, że wykorzystujesz CTRL, SHIFT i ALT! Pozwalają na różne metody kładzenia elementów.
     resetKeybindings: Zresetuj Klawiszologię
 
     categoryLabels:
