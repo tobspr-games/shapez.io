@@ -79,14 +79,15 @@ function gulptasksFTP($, gulp, buildFolder) {
                 .pipe($.sftp(deployCredentials));
         });
 
-        gulp.task(`ftp.upload.${deployEnv}`, () => {
-            return gulp.series(
+        gulp.task(
+            `ftp.upload.${deployEnv}`,
+            gulp.series(
                 "ftp.writeVersion",
                 `ftp.upload.${deployEnv}.game`,
                 `ftp.upload.${deployEnv}.indexHtml`,
                 `ftp.upload.${deployEnv}.additionalFiles`
-            );
-        });
+            )
+        );
     }
 }
 

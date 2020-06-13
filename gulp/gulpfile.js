@@ -217,7 +217,8 @@ gulp.task("step.deleteEmpty", cb => {
 gulp.task("step.postbuild", gulp.series("imgres.cleanupUnusedCssInlineImages", "step.deleteEmpty"));
 
 // Builds everything (dev)
-gulp.task("build.dev", () =>
+gulp.task(
+    "build.dev",
     gulp.series(
         "utils.cleanup",
         "utils.copyAdditionalBuildFiles",
@@ -232,7 +233,8 @@ gulp.task("build.dev", () =>
 );
 
 // Builds everything (standalone -dev)
-gulp.task("build.standalone.dev", () =>
+gulp.task(
+    "build.standalone.dev",
     gulp.series(
         "utils.cleanup",
         "imgres.atlas",
