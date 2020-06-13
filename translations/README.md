@@ -25,6 +25,7 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Japanese](base-ja.yaml)
 -   [Lithuanian](base-lt.yaml)
 -   [Arabic](base-ar.yaml)
+-   [Norwegian](base-no.yaml)
 
 (If you want to translate into a new language, see below!)
 
