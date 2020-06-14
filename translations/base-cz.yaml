@@ -236,16 +236,16 @@ dialogs:
     markerDemoLimit:
         desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!
     massCutConfirm:
-        title: Confirm cut
+        title: Potvrdit vyjmutí
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            Chceš vyjmout spoustu budov (přesněji řečeno <count>)! Vážně to
+            chceš udělat?
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Exportuj snímek obrazovky
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            Zažádal jsi o exportování své základny jako obrázek. Měj prosím na paměti, že to
+            může zejména u větších základen dlouho trvat, nebo dokonce shodit hru!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -262,7 +262,7 @@ ingame:
         placeBuilding: Položit budovu
         createMarker: Vytvořit značku
         delete: Zničit
-        pasteLastBlueprint: Paste last blueprint
+        pasteLastBlueprint: Vložit poslední plán
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -301,7 +301,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: Stiskni <keyCut> pro vyjmutí, <keyCopy> pro kopírování a <keyDelete> pro zbourání. <keyCancel> ruší výběr.
 
     # The "Upgrades" window
     shop:
@@ -622,11 +622,11 @@ settings:
                 Vybere motiv (světlý / tmavý).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Tmavý
+                light: Světlý
 
         refreshRate:
-            title: Cíl simulace
+            title: Obnovovací frekvence
             description: >-
                 Pokud máte 144 Hz monitor, změňte si rychlost obnovování obrazu. Toto nastavení může snížit FPS, pokud máte pomalý počítač.
 
@@ -641,15 +641,15 @@ settings:
                 Pokud zapnuté, budou se ve hře zobrazovat tipy a nápovědy. Také schová určité elementy na obrazovce pro jednodušší dostání se do hry.
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: Rychlost kamery
+            description: Mění, jak rychle se kamera posouvá při použití klávesnice.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Hodně pomalá
+                slow: Pomalá
+                regular: Normální
+                fast: Rychlá
+                super_fast: Hodně Rychlá
+                extremely_fast: Extrémně Rychlá
 
 keybindings:
     title: Klávesové zkratky
@@ -674,6 +674,7 @@ keybindings:
         mapMoveRight: Posun doprava
         mapMoveDown: Posun dolů
         mapMoveLeft: Posun doleva
+        mapMoveFaster: Rychlejší posun
         centerMap: Vycentrovat mapu
 
         mapZoomIn: Přiblížit
@@ -711,29 +712,29 @@ keybindings:
         placementDisableAutoOrientation: Zrušit automatickou orientaci
         placeMultiple: Zůstat ve stavebním módu
         placeInverse: Přepnout automatickou orientaci pásů
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
+        pasteLastBlueprint: Vložit poslední plán
+        massSelectCut: Vyjmout oblast
+        exportScreenshot: Exportovat celou základnu jako obrázek
 
 about:
     title: O hře
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Tato hra je open source a je vyvíjená <a href="https://github.com/tobspr"
+        target="_blank">Tobiasem Springerem</a> (česky neumí, ale je to fakt frajer :) ).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Pokud se chceš na hře podílet, podívej se na <a href="<githublink>"
+        target="_blank">shapez.io na githubu</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
+        Tato hra by nebyla ani možná bez skvělé discord komunity
+        okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>"
         target="_blank">discord server</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Soundtrack udělal <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Je úžasnej.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        V neposlední řadě by Tobias (já jen tlumočím) rád poděkoval skvělému kamarádovi <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklasi</a> - Bez hodin strávených
+        u factoria by tato hra nikdy neexistovala.
 
 changelog:
     title: Seznam změn
@@ -744,6 +745,6 @@ demo:
         importingGames: Importování uložených her
         oneGameLimit: Omezeno pouze na jednu uloženou hru
         customizeKeybindings: Změna klávesových zkratek
-        exportingBase: Exporting whole Base as Image
+        exportingBase: Exportovat celou základnu jako obrázek
 
     settingNotAvailable: Nedostupné v demo verzi.
