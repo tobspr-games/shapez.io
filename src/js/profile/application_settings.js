@@ -302,14 +302,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         return 1;
     }
 
-    /**
-     * @param {boolean} moveFaster
-     */
-    getMovementSpeed(moveFaster = false) {
+    getMovementSpeed() {
         const id = this.getAllSettings().movementSpeed;
         for (let i = 0; i < movementSpeeds.length; ++i) {
             if (movementSpeeds[i].id === id) {
-                return movementSpeeds[i].multiplier * (moveFaster ? 2 : 1);
+                return movementSpeeds[i].multiplier;
             }
         }
         logger.error("Unknown movement speed id:", id);
