@@ -704,6 +704,7 @@ keybindings:
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
         exportScreenshot: Export whole Base as Image
+        toggleVignette: Toggle Vignette Effect
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt

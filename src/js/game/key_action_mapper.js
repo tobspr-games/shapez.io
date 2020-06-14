@@ -26,6 +26,7 @@ export const KEYMAPPINGS = {
         toggleHud: { keyCode: 113 }, // F2
         exportScreenshot: { keyCode: 114 }, // F3
         toggleFPSInfo: { keyCode: 115 }, // F4
+        toggleVignette: { keyCode: 116 }, // F5
     },
 
     navigation: {
