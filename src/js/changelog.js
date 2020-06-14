@@ -1,7 +1,12 @@
 export const CHANGELOG = [
     {
-        version: "1.1.12",
+        version: "1.1.13",
         date: "unreleased",
+        entries: ["Added shift modifier for faster pan (by jaysc)"],
+    },
+    {
+        version: "1.1.12",
+        date: "14.06.2020",
         entries: [
             "Huge performance improvements! The game should now run up to 60% faster!",
             "Added norwegian translation",
