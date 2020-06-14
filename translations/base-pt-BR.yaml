@@ -32,11 +32,11 @@ steamPage:
 
         shapez.io é um jogo sobre construir fábricas para automatizar a criação e combinação de formas. Entregue formas cada vez mais complexas pedidas pelo jogo para progredir e desbloquear melhorias que aceleram sua fábrica.
 
-	    Como a demanda é crescente, será necessário dimensionar uma fábrica que atenda a necessidade - Não se esqueça dos recursos à sua disposição, você poderá expandir em um [b]mapa infinito[/b]!
+	Como a demanda é crescente, será necessário dimensionar uma fábrica que atenda a necessidade - Não se esqueça dos recursos à sua disposição, você poderá expandir em um [b]mapa infinito[/b]!
 
-	    Formas podem ficar entediantes por si só, logo você terá que misturar cores e pintá-las - Combine os recursos vermelho, verde e azul para produzir cores diferentes e pintar as formas com elas pra atender a demanda.
+	Formas podem ficar entediantes por si só, logo você terá que misturar cores e pintá-las - Combine os recursos vermelho, verde e azul para produzir cores diferentes e pintar as formas com elas pra atender a demanda.
 
-	    Esse jogo apresenta 18 níveis (que já devem mantê-lo ocupado por horas!) mas estou constantemente adicionado conteúdo novo - Muito já está planejado!
+	Esse jogo apresenta 18 níveis (que já devem mantê-lo ocupado por horas!) mas estou constantemente adicionado conteúdo novo - Muito já está planejado!
 
 
         [b]Vantagens da Versão Standalone[/b]
@@ -52,7 +52,7 @@ steamPage:
 
         [b]Melhoras Planejadas & Sugestões da Comunidade[/b]
 
-	    Esse jogo tem código aberto - Qualquer um pode contribuir! Além disso, eu ouço [b]muito[/a] a comunidade! Tento ler todas as sugestões e levar o máximo possível de comentários sobre o jogo em consideração.
+	Esse jogo tem código aberto - Qualquer um pode contribuir! Além disso, eu ouço [b]muito[/a] a comunidade! Tento ler todas as sugestões e levar o máximo possível de comentários sobre o jogo em consideração.
 
         [list]
             [*] Modo história, onde construir custará formas
@@ -65,7 +65,7 @@ steamPage:
             [*] E muito mais!
         [/list]
 
-	    Não deixe de conferir na minha página no trello o planejamento completo! (em inglês) https://trello.com/b/ISQncpJP/shapezio
+	Não deixe de conferir na minha página no trello o planejamento completo! (em inglês) https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Carregando
@@ -253,8 +253,7 @@ dialogs:
         desc: Dê um nome relevante
     markerDemoLimit:
         desc: >-
-            You can only create two custom markers in the demo. Get the standalone for
-            unlimited markers!
+			Você só pode criar dois marcadores na versão demo. Adquira a versão completa para marcadores ilimitados!
 
     massCutConfirm:
         title: Confirm cut
@@ -738,17 +737,17 @@ about:
     title: Sobre o jogo
     body: >-
 		Esse jogo tem código aberto e é desenvolvido por <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (esse sou eu).<br><br>
+		target="_blank">Tobias Springer</a> (esse sou eu).<br><br>
 
 		Se quiser contribuir, confira <a href="<githublink>"
-        target="_blank">shapez.io no github</a>.<br><br>
+		target="_blank">shapez.io no github</a>.<br><br>
 
 		O jogo não seria possível sem a comunidade incrível do discord sobre
 		os meus jogos - Junte-se à comunidade no <a href="<discordlink>"
-        target="_blank">servidor do discord</a>!<br><br>
+		target="_blank">servidor do discord</a>!<br><br>
 
 		A trilha sonora foi feita por <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - Ele é demais.<br><br>
+		target="_blank">Peppsen</a> - Ele é demais.<br><br>
 
 		Finalmente, agradeço muito ao meu melhor amigo
 		<a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sem nossas sessões de Factorio,
