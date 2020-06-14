@@ -28,6 +28,7 @@ const velocitySmoothing = 0.5;
 const velocityFade = 0.98;
 const velocityStrength = 0.4;
 const velocityMax = 20;
+const ticksBeforeErasingVelocity = 2;
 
 /**
  * @enum {string}
@@ -58,6 +59,8 @@ export class Camera extends BasicSerializableObject {
         // Input handling
         this.currentlyMoving = false;
         this.lastMovingPosition = null;
+        this.lastMovingPositionLastTick = null;
+        this.numTicksStandingStill = null;
         this.cameraUpdateTimeBucket = 0.0;
         this.didMoveSinceTouchStart = false;
         this.currentlyPinching = false;
@@ -667,6 +670,8 @@ export class Camera extends BasicSerializableObject {
         this.touchPostMoveVelocity = new Vector(0, 0);
         this.currentlyMoving = true;
         this.lastMovingPosition = pos;
+        this.lastMovingPositionLastTick = null;
+        this.numTicksStandingStill = 0;
         this.didMoveSinceTouchStart = false;
     }
 
@@ -716,6 +721,8 @@ export class Camera extends BasicSerializableObject {
             this.currentlyMoving = false;
             this.currentlyPinching = false;
             this.lastMovingPosition = null;
+            this.lastMovingPositionLastTick = null;
+            this.numTicksStandingStill = null;
             this.lastPinchPositions = null;
             this.userInteraction.dispatch(USER_INTERACT_TOUCHEND);
             this.didMoveSinceTouchStart = false;
@@ -813,6 +820,20 @@ export class Camera extends BasicSerializableObject {
 
         this.touchPostMoveVelocity = this.touchPostMoveVelocity.multiplyScalar(velocityFade);
 
+        // Check if the camera is being dragged but standing still: if not, zero out `touchPostMoveVelocity`.
+        if (this.currentlyMoving && this.desiredCenter === null) {
+            if (this.lastMovingPositionLastTick === this.lastMovingPosition) {
+                this.numTicksStandingStill += 1;
+            } else {
+                this.numTicksStandingStill = 0;
+            }
+            this.lastMovingPositionLastTick = this.lastMovingPosition;
+
+            if (this.numTicksStandingStill >= ticksBeforeErasingVelocity) {
+                this.touchPostMoveVelocity.x = 0;
+                this.touchPostMoveVelocity.y = 0;
+            }
+        }
         // Check influence of past points
         if (!this.currentlyMoving && !this.currentlyPinching) {
             const len = this.touchPostMoveVelocity.length();
