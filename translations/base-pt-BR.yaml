@@ -32,11 +32,11 @@ steamPage:
 
         shapez.io é um jogo sobre construir fábricas para automatizar a criação e combinação de formas. Entregue formas cada vez mais complexas pedidas pelo jogo para progredir e desbloquear melhorias que aceleram sua fábrica.
 
-	Como a demanda é crescente, será necessário dimensionar uma fábrica que atenda a necessidade - Não se esqueça dos recursos à sua disposição, você poderá expandir em um [b]mapa infinito[/b]!
+        Como a demanda é crescente, será necessário dimensionar uma fábrica que atenda a necessidade - Não se esqueça dos recursos à sua disposição, você poderá expandir em um [b]mapa infinito[/b]!
 
-	Formas podem ficar entediantes por si só, logo você terá que misturar cores e pintá-las - Combine os recursos vermelho, verde e azul para produzir cores diferentes e pintar as formas com elas pra atender a demanda.
+        Formas podem ficar entediantes por si só, logo você terá que misturar cores e pintá-las - Combine os recursos vermelho, verde e azul para produzir cores diferentes e pintar as formas com elas pra atender a demanda.
 
-	Esse jogo apresenta 18 níveis (que já devem mantê-lo ocupado por horas!) mas estou constantemente adicionado conteúdo novo - Muito já está planejado!
+        Esse jogo apresenta 18 níveis (que já devem mantê-lo ocupado por horas!) mas estou constantemente adicionado conteúdo novo - Muito já está planejado!
 
 
         [b]Vantagens da Versão Standalone[/b]
@@ -52,7 +52,7 @@ steamPage:
 
         [b]Melhoras Planejadas & Sugestões da Comunidade[/b]
 
-	Esse jogo tem código aberto - Qualquer um pode contribuir! Além disso, eu ouço [b]muito[/a] a comunidade! Tento ler todas as sugestões e levar o máximo possível de comentários sobre o jogo em consideração.
+        Esse jogo tem código aberto - Qualquer um pode contribuir! Além disso, eu ouço [b]muito[/a] a comunidade! Tento ler todas as sugestões e levar o máximo possível de comentários sobre o jogo em consideração.
 
         [list]
             [*] Modo história, onde construir custará formas
@@ -65,7 +65,7 @@ steamPage:
             [*] E muito mais!
         [/list]
 
-	Não deixe de conferir na minha página no trello o planejamento completo! (em inglês) https://trello.com/b/ISQncpJP/shapezio
+        Não deixe de conferir na minha página no trello o planejamento completo! (em inglês) https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Carregando
@@ -253,17 +253,17 @@ dialogs:
         desc: Dê um nome relevante
     markerDemoLimit:
         desc: >-
-			Você só pode criar dois marcadores na versão demo. Adquira a versão completa para marcadores ilimitados!
+            Você só pode criar dois marcadores na versão demo. Adquira a versão completa para marcadores ilimitados!
 
     massCutConfirm:
         title: Confirm cut
         desc: >-
-			Você está cortando vários objetos (<count> para ser exato)! Você quer continuar?
+            Você está cortando vários objetos (<count> para ser exato)! Você quer continuar?
 
     exportScreenshotWarning:
         title: Exportar captura de tela
         desc: >-
-			Você está prestes a exportar uma captura de tela da sua base. Note que isso pode ser bastante lento para uma base grande, e até mesmo pode travar o jogo!
+            Você está prestes a exportar uma captura de tela da sua base. Note que isso pode ser bastante lento para uma base grande, e até mesmo pode travar o jogo!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -320,7 +320,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-		infoText: Pressione <keyCut> para cortar, <keyCopy> para copiar, <keyDelete> para destruir e <keyCancel> para cancelar.
+        infoText: Pressione <keyCut> para cortar, <keyCopy> para copiar, <keyDelete> para destruir e <keyCancel> para cancelar.
 
     # The "Upgrades" window
     shop:
@@ -656,7 +656,7 @@ settings:
         language:
             title: Idioma
             description: >-
-				Altera o idioma. Todas as traduções são contribuições de usuários e podem estar incompletas!
+                Altera o idioma. Todas as traduções são contribuições de usuários e podem estar incompletas!
 
         movementSpeed:
             title: Velocidade da câmera
@@ -736,22 +736,22 @@ keybindings:
 about:
     title: Sobre o jogo
     body: >-
-		Esse jogo tem código aberto e é desenvolvido por <a href="https://github.com/tobspr"
-		target="_blank">Tobias Springer</a> (esse sou eu).<br><br>
+        Esse jogo tem código aberto e é desenvolvido por <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (esse sou eu).<br><br>
 
-		Se quiser contribuir, confira <a href="<githublink>"
-		target="_blank">shapez.io no github</a>.<br><br>
+        Se quiser contribuir, confira <a href="<githublink>"
+        target="_blank">shapez.io no github</a>.<br><br>
 
-		O jogo não seria possível sem a comunidade incrível do discord sobre
-		os meus jogos - Junte-se à comunidade no <a href="<discordlink>"
-		target="_blank">servidor do discord</a>!<br><br>
+        O jogo não seria possível sem a comunidade incrível do discord sobre
+        os meus jogos - Junte-se à comunidade no <a href="<discordlink>"
+        target="_blank">servidor do discord</a>!<br><br>
 
-		A trilha sonora foi feita por <a href="https://soundcloud.com/pettersumelius"
-		target="_blank">Peppsen</a> - Ele é demais.<br><br>
-
-		Finalmente, agradeço muito ao meu melhor amigo
-		<a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sem nossas sessões de Factorio,
-		esse jogo nunca teria existido.
+        A trilha sonora foi feita por <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Ele é demais.<br><br>
+	
+        Finalmente, agradeço muito ao meu melhor amigo
+        <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sem nossas sessões de Factorio,
+        esse jogo nunca teria existido.
 
 changelog:
     title: Changelog
