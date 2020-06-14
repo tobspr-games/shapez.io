@@ -65,6 +65,7 @@ export const globalConfig = {
         painterDouble: 1 / 8,
         painterQuad: 1 / 8,
         mixer: 1 / 5,
+        dyeIncinerator: 1 / 4,
         stacker: 1 / 6,
     },
 

@@ -395,6 +395,7 @@ export class HubGoals extends BasicSerializableObject {
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
 
             case enumItemProcessorTypes.mixer:
+            case enumItemProcessorTypes.dyeIncinerator:
             case enumItemProcessorTypes.painter:
             case enumItemProcessorTypes.painterDouble:
             case enumItemProcessorTypes.painterQuad: {

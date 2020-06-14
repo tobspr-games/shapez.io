@@ -14,6 +14,7 @@ export const enumItemProcessorTypes = {
     stacker: "stacker",
     trash: "trash",
     mixer: "mixer",
+    dyeIncinerator: "dyeIncinerator",
     painter: "painter",
     painterDouble: "painterDouble",
     painterQuad: "painterQuad",

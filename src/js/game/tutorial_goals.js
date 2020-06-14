@@ -22,6 +22,7 @@ export const enumHubGoalRewards = {
     reward_painter_double: "reward_painter_double",
     reward_painter_quad: "reward_painter_quad",
     reward_storage: "reward_storage",
+    reward_dye_incinerator: "reward_dye_incinerator",
 
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
@@ -160,6 +161,13 @@ export const tutorialGoals = [
     },
 
     // 18
+    {
+        shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp:CwCwCwCw", // painting t4 (two variants)
+        required: 150000,
+        reward: enumHubGoalRewards.reward_dye_incinerator,
+    },
+
+    // 19
     {
         shape: finalGameShape,
         required: 250000,

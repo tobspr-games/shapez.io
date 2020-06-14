@@ -496,6 +496,9 @@ buildings:
         default:
             name: &mixer Color Mixer
             description: Mixes two colors using additive blending.
+        incinerator:
+            name: Dye Incinerator
+            description: Produce gray dye from any dye you put in.
 
     painter:
         default:
@@ -585,6 +588,10 @@ storyRewards:
     reward_storage:
         title: Storage Buffer
         desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+
+    reward_dye_incinerator:
+        title: Dye Incinerator
+        desc: You have unlocked a variant of the <strong>mixer</strong> - It allows you to make gray dye by inputting any dye you have. Very useful with the <strong>quad painter</strong>!
 
     reward_freeplay:
         title: Freeplay

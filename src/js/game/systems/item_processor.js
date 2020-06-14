@@ -240,6 +240,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 break;
             }
 
+            // DYE INCINERATOR
+
+            case enumItemProcessorTypes.dyeIncinerator: {
+                outItems.push({
+                    item: new ColorItem("uncolored"),
+                });
+
+                break;
+            }
+
             // PAINTER
 
             case enumItemProcessorTypes.painter: {
