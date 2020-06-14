@@ -901,8 +901,12 @@ export class Camera extends BasicSerializableObject {
                 forceX += 1;
             }
 
-            this.center.x += moveAmount * forceX * this.root.app.settings.getMovementSpeed();
-            this.center.y += moveAmount * forceY * this.root.app.settings.getMovementSpeed();
+            let movementSpeed =
+                this.root.app.settings.getMovementSpeed() *
+                (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveFaster).isCurrentlyPressed() ? 2 : 1);
+
+            this.center.x += moveAmount * forceX * movementSpeed;
+            this.center.y += moveAmount * forceY * movementSpeed;
         }
     }
 }

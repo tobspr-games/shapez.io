@@ -691,6 +691,7 @@ keybindings:
         mapMoveRight: Move Right
         mapMoveDown: Move Down
         mapMoveLeft: Move Left
+        mapMoveFaster: Move Faster
         centerMap: Center Map
 
         mapZoomIn: Zoom in
