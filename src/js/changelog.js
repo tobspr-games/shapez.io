@@ -2,7 +2,7 @@ export const CHANGELOG = [
     {
         version: "1.1.12",
         date: "unreleased",
-        entries: ["Huge performance improvements! The game should now run up to 80% faster"],
+        entries: ["Huge performance improvements! The game should now run up to 60% faster!"],
     },
     {
         version: "1.1.11",
