@@ -6,7 +6,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
-import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
+import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor, enumColorBaseColor } from "./colors";
 import { THEME } from "./theme";
 
 const rusha = require("rusha");
@@ -345,6 +345,30 @@ export class ShapeDefinition extends BasicSerializableObject {
 
                 context.fill();
                 context.stroke();
+
+                if (color !== enumColors.uncolored) {
+                    const radius = (quadrantSize * layerScale) / 8;
+                    console.log(radius, centerQuadrantX, centerQuadrantY)
+                    context.lineWidth = THEME.items.outlineWidth / 4;
+                    context.beginCircle(- 2 * radius / 3, 0, radius );
+                    context.stroke();
+                    if (enumColorBaseColor[color][enumColors.green]) {
+                        context.fillStyle = enumColorsToHexCode[enumColors.green];
+                        context.fill();
+                    }
+                    context.beginCircle( 2 * radius / 3, 0, radius);
+                    context.stroke();
+                    if (enumColorBaseColor[color][enumColors.red]) {
+                        context.fillStyle = enumColorsToHexCode[enumColors.red];
+                        context.fill();
+                    }
+                    context.beginCircle(0, radius, radius);
+                    context.stroke();
+                    if (enumColorBaseColor[color][enumColors.blue]) {
+                        context.fillStyle = enumColorsToHexCode[enumColors.blue];
+                        context.fill();
+                    }
+                }
 
                 context.rotate(-rotation);
                 context.translate(-centerQuadrantX, -centerQuadrantY);

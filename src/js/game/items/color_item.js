@@ -3,7 +3,7 @@ import { smoothenDpi } from "../../core/dpi_manager";
 import { DrawParameters } from "../../core/draw_parameters";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
-import { enumColors, enumColorsToHexCode } from "../colors";
+import { enumColors, enumColorsToHexCode, enumColorBaseColor } from "../colors";
 import { THEME } from "../theme";
 
 export class ColorItem extends BaseItem {
@@ -74,16 +74,25 @@ export class ColorItem extends BaseItem {
 
         context.fillStyle = enumColorsToHexCode[this.color];
         context.strokeStyle = THEME.items.outline;
-        context.lineWidth = 2 * THEME.items.outlineWidth;
+        context.lineWidth = THEME.items.outlineWidth;
+        // red
         context.beginCircle(2, -1, 3);
         context.stroke();
-        context.fill();
+        if (enumColorBaseColor[this.color][enumColors.red]) {
+            context.fill();
+        }
+        // green
         context.beginCircle(-2, -1, 3);
         context.stroke();
-        context.fill();
+        if (enumColorBaseColor[this.color][enumColors.green]) {
+            context.fill();
+        }
+        // blue
         context.beginCircle(0, 2, 3);
         context.closePath();
         context.stroke();
-        context.fill();
+        if (enumColorBaseColor[this.color][enumColors.blue]) {
+            context.fill();
+        }
     }
 }

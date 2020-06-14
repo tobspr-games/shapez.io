@@ -35,14 +35,14 @@ for (const key in enumColorToShortcode) {
 /** @enum {string} */
 export const enumColorsToHexCode = {
     [enumColors.red]: "#ff666a",
-    [enumColors.green]: "#78ff66",
+    [enumColors.green]: "#2afc0e",
     [enumColors.blue]: "#66a7ff",
 
     // red + green
-    [enumColors.yellow]: "#fcf52a",
+    [enumColors.yellow]: "#fff509",
 
     // red + blue
-    [enumColors.purple]: "#dd66ff",
+    [enumColors.purple]: "#c70cfa",
 
     // blue + green
     [enumColors.cyan]: "#00fcff",
@@ -164,4 +164,43 @@ for (const colorA in enumColorMixingResults) {
             assertAlways(false, "Color mixing of", colorA, "with", colorB, "is not defined");
         }
     }
+}
+
+// @todo: generate this from enumColorMixingResults
+export const enumColorBaseColor = {
+    [c.red]: {
+        [c.red]: true,
+        [c.green]: false,
+        [c.blue]: false,
+    },
+    [c.green]: {
+        [c.red]: false,
+        [c.green]: true,
+        [c.blue]: false,
+    },
+    [c.blue]: {
+        [c.red]: false,
+        [c.green]: false,
+        [c.blue]: true,
+    },
+    [c.yellow]: {
+        [c.red]: true,
+        [c.green]: true,
+        [c.blue]: false,
+    },
+    [c.purple]: {
+        [c.red]: true,
+        [c.green]: false,
+        [c.blue]: true,
+    },
+    [c.cyan]: {
+        [c.red]: false,
+        [c.green]: true,
+        [c.blue]: true,
+    },
+    [c.white]: {
+        [c.red]: true,
+        [c.green]: true,
+        [c.blue]: true,
+    },
 }
