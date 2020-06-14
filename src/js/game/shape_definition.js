@@ -346,6 +346,82 @@ export class ShapeDefinition extends BasicSerializableObject {
                 context.fill();
                 context.stroke();
 
+                let draw_vert = false;
+                let draw_pos = false;
+                let draw_neg = false;
+
+                switch (color) {
+                    case "red":
+                        draw_vert = true;
+                        break;
+                    case "green":
+                        draw_pos = true;
+                        break;
+                    case "blue":
+                        draw_neg = true;
+                        break;
+                    case "purple":
+                        draw_vert = true;
+                        draw_neg = true;
+                        break;
+                    case "yellow":
+                        draw_vert = true;
+                        draw_pos = true;
+                        break;
+                    case "cyan":
+                        draw_pos = true;
+                        draw_neg = true;
+                        break;
+                    case "white":
+                        draw_vert = true;
+                        draw_pos = true;
+                        draw_neg = true;
+                        break;
+                }
+
+                context.strokeStyle = 'rgba(0,0,0,0.4)';
+                context.lineWidth = 1.5;
+                const dims = quadrantSize * layerScale;
+
+                let originX = insetPadding - quadrantHalfSize;
+                let originY = -insetPadding + quadrantHalfSize - dims;
+
+                if (draw_vert) {
+                    context.beginPath();
+                    if (quadrantIndex % 2 == 0) {
+                        context.moveTo(originX + dims * 0.5, originY);
+                        context.lineTo(originX + dims * 0.5, originY + dims);
+                    } else {
+                        context.moveTo(originX, originY + dims * 0.5);
+                        context.lineTo(originX + dims, originY + dims * 0.5);
+                    }
+                    context.stroke();
+                }
+
+                if (draw_pos) {
+                    context.beginPath();
+                    if (quadrantIndex % 2 == 0) {
+                        context.moveTo(originX, originY + dims * 0.2113);
+                        context.lineTo(originX + dims, originY + dims * 0.7887);
+                    } else {
+                        context.moveTo(originX + dims * 0.7887, originY);
+                        context.lineTo(originX + dims * 0.2113, originY + dims);
+                    }
+                    context.stroke();
+                }
+
+                if (draw_neg) {
+                    context.beginPath();
+                    if (quadrantIndex % 2 == 0) {
+                        context.moveTo(originX, originY + dims * 0.7887);
+                        context.lineTo(originX + dims, originY + dims * 0.2113);
+                    } else {
+                        context.moveTo(originX + dims * 0.2113, originY);
+                        context.lineTo(originX + dims * 0.7887, originY + dims);
+                    }
+                    context.stroke();
+                }
+
                 context.rotate(-rotation);
                 context.translate(-centerQuadrantX, -centerQuadrantY);
             }
