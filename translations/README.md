@@ -19,7 +19,7 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Swedish](base-sv.yaml)
 -   [Chinese (Simplified)](base-zh-CN.yaml)
 -   [Chinese (Traditional)](base-zh-TW.yaml)
--   [Spanish](base-es.yaml)
+-   [Spanish (Latin America)](base-es.yaml)
 -   [Hungarian](base-hu.yaml)
 -   [Turkish](base-tr.yaml)
 -   [Japanese](base-ja.yaml)
