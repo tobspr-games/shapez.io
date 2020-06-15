@@ -269,6 +269,7 @@ dialogs:
         desc: >-
             Zamierzasz wyeksportować swoją fabrykę jako zrzut ekranu. W przypadku dużej
             fabryki ta akja może być bardzo wolna, a nawet może spowodować zawieszenie się lub awarię gry!
+            Czy na pewno chcesz kontynuować?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -710,7 +711,8 @@ keybindings:
         mapMoveUp: Ruch w górę
         mapMoveRight: Ruch w prawo
         mapMoveDown: Ruch w dół
-        mapMoveLeft: Move Left
+        mapMoveLeft: Ruch w lewo
+        mapMoveFaster: Przyspiesz ruch
         centerMap: Wyśrodkuj Mapę
 
         mapZoomIn: Przybliżenie
@@ -738,11 +740,11 @@ keybindings:
         rotateInverseModifier: >-
             Modyfikator: Obróć Odrwotnie
         cycleBuildingVariants: Zmień Wariant
-        confirmMassDelete: Potwierdź Usuwanie
+        confirmMassDelete: Potwierdź usuwanie
         cycleBuildings: Zmień Budynek
 
         massSelectStart: Przytrzymaj i przeciągnij by zaznaczyć
-        massSelectSelectMultiple: Zaznacz kilka obszar
+        massSelectSelectMultiple: Zaznacz kilka obszarów
         massSelectCopy: Skopiuj obszar
 
         placementDisableAutoOrientation: Wyłącz automatyczną orientacje
