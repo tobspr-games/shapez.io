@@ -68,4 +68,10 @@ export const LANGUAGES = {
         code: "no",
         region: "",
     },
+    "ja": {
+        name: "日本語",
+        data: require("./built-temp/base-ja.json"),
+        code: "ja",
+        region: "",
+    },
 };

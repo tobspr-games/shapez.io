@@ -1,8 +1,12 @@
 export const CHANGELOG = [
     {
         version: "1.1.13",
-        date: "unreleased",
-        entries: ["Added shift modifier for faster pan (by jaysc)"],
+        date: "15.06.2020",
+        entries: [
+            "Added shift modifier for faster pan (by jaysc)",
+            "Added japanese translations",
+            "Updated existing translations",
+        ],
     },
     {
         version: "1.1.12",
