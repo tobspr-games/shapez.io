@@ -232,7 +232,7 @@ dialogs:
     massDeleteConfirm:
         title: Bekreft sletting
         desc: >-
-            Du skal til å slette mange bygninger (<count> for å være nøyaktig)! Er du sikker på at du ønsker å gjøre det?
+            Du skal til å slette mange bygninger (<count> for å være nøyaktig)! Er du sikker på at du ønsker å gjøre dette?
 
     massCutConfirm:
         title: Bekreft Klipping
@@ -275,7 +275,7 @@ ingame:
         placeMultiple: Plasser flere
         reverseOrientation: Omvent orientering
         disableAutoOrientation: Deaktiver automatisk orientering
-        toggleHud: Veksle HUD
+        toggleHud: Veksle Grensesnitt
         placeBuilding: Plasser bygning
         createMarker: Lag Markør
         delete: Ødelegg
@@ -339,7 +339,7 @@ ingame:
         dataSources:
             stored:
                 title: Lagret
-                description: Viser antall lagrede objekter i hovedbygningen.
+                description: Viser hva som er lagret i hovedbygningen.
             produced:
                 title: Produsert
                 description: Viser alle objektene hele fabrikken produserer, inkluderer avanserte objekter.
@@ -394,7 +394,7 @@ ingame:
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belter, Distributørerr & Tuneller
+        name: Belter, Distributører & Tuneller
         description: Hastighet x<currentMult> → x<newMult>
     miner:
         name: Utdrager
@@ -691,6 +691,7 @@ keybindings:
         mapMoveRight: Flytt Høyre
         mapMoveDown: Flytt Ned
         mapMoveLeft: Flytt Venstre
+        mapMoveFaster: Beveg Raskere
         centerMap: Midstill Brettet
 
         mapZoomIn: Zoom inn
@@ -700,7 +701,7 @@ keybindings:
         menuOpenShop: Oppgraderinger
         menuOpenStats: Statistikk
 
-        toggleHud: Veksle HUD
+        toggleHud: Veksle Grensesnitt
         toggleFPSInfo: Veksle FPS og debug informasjon
         exportScreenshot: Eksporter hele basen som et bilde
         belt: *belt
@@ -717,7 +718,7 @@ keybindings:
         abortBuildingPlacement: Avbryt Plassering
         rotateWhilePlacing: Roter
         rotateInverseModifier: >-
-            Modifier: Roter mot klokken isteden
+            Alternativ: Roter mot klokken isteden
         cycleBuildingVariants: Endre Varianter
         confirmMassDelete: Bekreft Massesletting
         pasteLastBlueprint: Lim inn forrige blåkopi
