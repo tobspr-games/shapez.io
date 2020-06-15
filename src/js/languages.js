@@ -75,7 +75,7 @@ export const LANGUAGES = {
         region: "",
     },
     "no": {
-        name: "norsk",
+        name: "Norsk",
         data: require("./built-temp/base-no.json"),
         code: "no",
         region: "",
