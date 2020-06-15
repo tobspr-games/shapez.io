@@ -114,7 +114,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo Versjon
     intro: >-
-        Skaff deg frittstående versjoen for å åpne alle funksjoner!
+        Skaff deg frittstående versjon for å åpne alle funksjoner!
 
 mainMenu:
     play: Spill
