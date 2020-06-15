@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.ioは無限のマップ内で様々な"形"を資源とし、段々と複雑になっていく形の作成や合成の自動化を目指して工場を構築するゲームです。
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,46 +30,46 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.ioは形の作成と合成を自動化するために工場を構築するゲームです。段々と複雑になる要件を納品していくことでゲームをすすめ、工場を高速化するためのアップグレードを解除していきます。
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        要件が増えてくると、ニーズに合わせて工場をスケールアップしていく必要があるでしょう。もちろん、[b]無限のマップ[/b]に展開する資源採取の拡張もお忘れなく！
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        形状だけではすぐに飽きがきますが、色素を混ぜて形を塗る工程もあります。赤、緑、青の色素の資源を組み合わせて、要件を満たす色と形状を作り出しましょう。
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        このゲームは現在18レベルまでが実装されていますが（これだけでもかなりのボリュームです）、今後も継続的に新しい要素が追加で実装されていく予定です。 - すでに沢山計画されています！
 
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
-        [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        [b]Web版にはないスタンドアローン版のメリット[/b]
 
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
-            [*] And much more!
+            [*] マップのマーク設置とマークへの移動
+            [*] 無制限のセーブデータ
+            [*] ダークモード
+            [*] 多彩な設定
+            [*] shapez.ioのさらなる開発ができます ❤️
+            [*] 将来の追加内容実装
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [b]今後の実装予定とコミュニティの提案[/b]
+
+        このゲームはオープンソースです。誰でも開発に参加できます！　それ以外にも、私はコミュニティの意見を[b]とても[/b]よく聞いており、なるべくすべての提案を読み、できるだけ多くのフィードバックを考慮に入れるようにしています。
+
+        [list]
+            [*] 建造物にコストがかかるストーリーモード
+            [*] 追加のレベル、及び建造物（スタンドアローン版限定）
+            [*] 別マップ、もしかすると障害物
+            [*] 設定可能なマップ生成（数やサイズの設定、ランダム生成シード値、その他）
+            [*] 追加の形
+            [*] パフォーマンス向上（このゲームは現状でもかなり軽いです）
+            [*] 色覚異常モード
+            [*] 他にも沢山！
+        [/list]
+
+        完全なロードマップは私のTrelloボードをチェックしてみてください！ https://trello.com/b/ISQncpJP/shapezio
 
 global:
-    loading: Loading
-    error: Error
+    loading: ロード中
+    error: エラー
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -82,25 +82,25 @@ global:
         trillions: T
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: 無限
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: 1 秒前
+        xSecondsAgo: <x> 秒前
+        oneMinuteAgo: 1 分前
+        xMinutesAgo: <x> 分前
+        oneHourAgo: 1 時間前
+        xHoursAgo: <x> 時間前
+        oneDayAgo: 1 日前
+        xDaysAgo: <x> 日前
 
         # Short formats for times, e.g. '5h 23m'
-        secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>m
+        secondsShort: <seconds>秒
+        minutesAndSecondsShort: <minutes>分 <seconds>秒
+        hoursAndMinutesShort: <hours>時間 <minutes>分
 
-        xMinutes: <x> minutes
+        xMinutes: <x> 分
 
     keys:
         tab: TAB
@@ -112,24 +112,24 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: デモ版
     intro: >-
-        Get the standalone to unlock all features!
+        スタンドアローン版を手に入れ、すべての要素をアンロックしましょう！
 
 mainMenu:
-    play: Play
-    changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    play: プレイ
+    changelog: 更新履歴
+    importSavegame: インポート
+    openSourceHint: このゲームはオープンソースです
+    discordLink: 公式Discordサーバ
+    helpTranslate: 翻訳に参加
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        このゲームはお使いのブラウザでは速度が落ちることがあります。スタンドアローン版を入手するか、Chromeでプレイすることでこの問題は避けられます。
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: レベル <x>
+    savegameLevelUnknown: 不明なレベル
 
     contests:
         contest_01_03062020:
@@ -157,434 +157,433 @@ mainMenu:
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        delete: 削除
+        cancel: キャンセル
+        later: 後で
+        restart: 再起動
+        reset: リセット
+        getStandalone: スタンドアローン版を入手
+        deleteGame: 何が起きるか理解しています
+        viewUpdate: アップデートを見る
+        showUpgrades: アップグレード表示
+        showKeybindings: キー設定表示
 
     importSavegameError:
-        title: Import Error
+        title: インポートエラー
         text: >-
-            Failed to import your savegame:
+            セーブデータのインポートに失敗しました:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: セーブデータのインポートに成功
         text: >-
-            Your savegame has been successfully imported.
+            セーブデータをインポートしました
 
     gameLoadFailure:
-        title: Game is broken
+        title: ゲームが壊れています
         text: >-
-            Failed to load your savegame:
+            セーブデータのロードに失敗しました:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: 削除確認
         text: >-
-            Are you sure you want to delete the game?
+            本当に削除しますか？
 
     savegameDeletionError:
-        title: Failed to delete
+        title: 削除に失敗
         text: >-
-            Failed to delete the savegame:
+            セーブデータの削除に失敗しました:
 
     restartRequired:
-        title: Restart required
+        title: 再起動が必要
         text: >-
-            You need to restart the game to apply the settings.
+            設定を反映するには再起動が必要です
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: キー設定の変更
+        desc: 割当てるキーかマウスボタンを押してください。ESCでキャンセルします。
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: キー設定のリセット
+        desc: すべてのキー設定を初期値に戻します。実行する前によく確認してください。
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: キー設定のリセット
+        desc: キー設定を初期値に設定しました！
 
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        title: デモ版
+        desc: アクセスした要素 (<feature>) はデモ版では利用できません。スタンドアローン版の入手をご検討ください！ 
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: セーブデータ制限
+        desc: デモ版ではひとつのセーブデータのみ保持できます。既存のデータを削除するか、スタンドアローン版の入手をご検討ください！ 
 
     updateSummary:
-        title: New update!
+        title: 新アップデート！
         desc: >-
-            Here are the changes since you last played:
+            前回からの変更点:
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: アップグレード解除
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            すべての納品された形はアップグレードの解除のためにカウントされています。<strong>作った生産ラインを削除しないようにしてください！</strong>　アップグレードタブは画面の右上から確認できます。
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: 削除確認
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            多数の建造物を削除しようとしています！ (<count> 個の選択) 続行しますか？
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: 未解除
         desc: >-
-            Complete level 12 to unlock Blueprints!
+            レベル12をクリアしてブループリント機能を解除してください！
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: 便利なキー設定
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            このゲームには大規模な工場の構築をスムーズにするため、沢山のキー設定があります。
+            以下に数例を示します。詳細は<strong>キー設定を確認してください</strong>！<br><br>
+            <code class='keybinding'>CTRL</code> + ドラッグ: 削除範囲を指定<br>
+            <code class='keybinding'>SHIFT</code>: 押し続けると1種の建造物を連続配置<br>
+            <code class='keybinding'>ALT</code>: 設置されたベルトの方向を逆転させる<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name
+        title: マーカーを設置
+        desc: わかりやすい名前をつけてください。
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: デモ版ではマーカー設置は2つまでに制限されています。スタンドアローン版は無制限です！
+
     massCutConfirm:
-        title: Confirm cut
+        title: カット確認
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            多数の建造物をカットしようとしています！ (<count> 個の選択) 続行しますか？
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: スクリーンショット出力
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            スクリーンショット出力を実行します。この処理は工場の全体像があまりに大きいと、
+            ゲームが遅くなったりクラッシュしてしまう可能性があります！
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
-        pasteLastBlueprint: Paste last blueprint
+        moveMap: マップ移動
+        selectBuildings: 範囲選択
+        stopPlacement: 配置の中止
+        rotateBuilding: 建造物の回転
+        placeMultiple: 複数配置
+        reverseOrientation: 向きの逆転
+        disableAutoOrientation: 自動向き合わせの停止
+        toggleHud: HUD表示切り替え
+        placeBuilding: 建造物配置
+        createMarker: マーカー設置
+        delete: 削除
+        pasteLastBlueprint: ブループリントの内容を設置
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: <key> キーを押して変更
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            ホットキー: <key>
 
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            speed: スピード
+            range: レンジ
+            storage: ストレージ
+            oneItemPerSecond: 1 アイテム / 秒
+            itemsPerSecond: <x> アイテム / 秒
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> タイル
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: レベル <level>
+        completed: 完了
+        unlockText: <reward> を解除！
+        buttonNextLevel: 次のレベル
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: 新しいアップグレードが利用可能です！
+        gameSaved: ゲームをセーブしました。
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: <keyCut> キーでカット <keyCopy> キーでコピー <keyDelete> キーで削除 <keyCancel> キーでキャンセル
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: アップグレード
+        buttonUnlock: アップグレード
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: 第 <x> 段階
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: 最大レベル (スピード x<currentMult>)
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: 統計情報
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: 格納済
+                description: 中央の建造物に格納された形の総数です。
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: 生産済
+                description: 中間生成物を含む、工場全体で生産された形の総数です。
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: 納品済
+                description: 中央の建造物に納品された形の総数です。
+        noShapesProduced: まだ形が生産されていません。
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        shapesPerMinute: <shapes> / 分
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: プレイ時間
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: 建造物
+        beltsPlaced: ベルト
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: コンティニュー
+            settings: 設定
+            menu: メニューに戻る
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: ヒントが必要ですか？
+        showHint: ヒントを見る
+        hideHint: 閉じる
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: コスト
 
     # Map markers
     waypoints:
-        waypoints: Markers
+        waypoints: マーカー
         hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        description: マーカーを左クリックでその場所にジャンプ、右クリックで削除します。<br><br> <keybinding> キーを押すことで現在地にマーカーを設置します。選択した位置で<strong>右クリック</strong>することでもマーカー設置できます。
+        creationSuccessNotification: マーカーを設置しました
 
     # Interactive tutorial
     interactiveTutorial:
-        title: Tutorial
+        title: チュートリアル
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: <strong>抽出機</strong> を <strong>円の形</strong> の上において抽出しましょう！
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                抽出機を <strong>コンベアベルト</strong> でHUBまで繋げましょう！ <br><br> Tip: <strong>マウスのドラッグ</strong> でベルトを引けます。
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                このゲームは放置系のゲームでは<strong>ありません</strong>！ もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip: <strong>SHIFT</strong> キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。 
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: ベルト、ディストリビュータ & トンネル
+        description: スピード x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: 抽出機
+        description: スピード x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: 切断、回転 & 積み重ね
+        description: スピード x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: 混合 & 着色
+        description: スピード x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
+        deliver: 納品
+        toUnlock: 解除
+        levelShortcut: レベル
 
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt コンベアベルト
+            description: アイテムを輸送します。マウスドラッグで連続配置できます。
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner 抽出機
+            description: 形や色の上に設置することで抽出できます。
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: 連鎖抽出機
+            description: 形や色の上に設置することで抽出できます。連鎖設置可能です。
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt トンネル
+            description: 建造物や他のベルトの地下を通してベルトを配置できます。
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: トンネル レベルII
+            description: 建造物や他のベルトの地下を通してベルトを配置できます。
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter 分配機
+            description: 多機能 - すべての入力をすべての出力に均等に分配します。
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 合流機 (コンパクト)
+            description: 2本のベルトの内容を1本のベルトに合流します。
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 合流機 (コンパクト)
+            description: 2本のベルトの内容を1本のベルトに合流します。
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter 切断機
+            description: 形を上下の直線で切断し、双方を出力します。<strong>もしひとつの出力しか使わない場合、他の出力を破棄しないと出力が詰まって停止することに注意してください！</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: 切断機 (四分割)
+            description: 形を四分割します。<strong>もしひとつの出力しか使わない場合、他の出力を破棄しないと出力が詰まって停止することに注意してください！</strong>
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater 回転機
+            description: 形を時計回り方向に90度回転します。
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: 回転機 (逆)
+            description: 形を反時計回り方向に90度回転します。
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker 積層機
+            description: 入力アイテムを積み重ねます。もしうまく統合できなかった場合は、右の入力アイテムを左の入力アイテムの上に重ねます。
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer 混合機
+            description: 2つの色を加算混合で混ぜ合わせます。
 
     painter:
         default:
-            name: &painter Painter
-            description: Colors the whole shape on the left input with the color from the right input.
+            name: &painter 着色機
+            description: 左から入力された形の全体を、右から入力された色で着色します。
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: 着色機 (ダブル)
+            description: 左から入力された形を、上から入力された色で着色します。
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: 着色機 (四分割)
+            description: 入力された形を四分割づつ別の色で塗り分けられます。
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash ゴミ箱
+            description: すべての辺からの入力を破棄します。永遠に。
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: 格納庫
+            description: 余ったアイテムを指定の上限まで格納します。余剰の受け口としても使用可能です。
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: 形の切断
+        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong> - このためにゴミ箱も用意しました。入力アイテムをすべて破棄できます。
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: 回転
+        desc: <strong>回転機</strong>が利用可能になりました。形を時計回り方向に90度回転させます。
 
     reward_painter:
-        title: Painting
+        title: 着色
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, I'm working on a solution already!
+            <strong>着色機</strong>が利用可能になりました。 - 色の鉱脈から形の手順と同様に色を抽出し、着色機で形と組み合わせることで着色できます。<br><br>PS:もしあなたが色の認識に問題があっても安心してください。我々はすでにその解決に着手しています！
 
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: 色の混合
+        desc: <strong>混合機</strong>が利用可能になりました。 - この建造物は2つの色を<strong>加算混合で</strong>混ぜ合わせます。
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: 積層機
+        desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>　
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: 分配機/合流機
+        desc: 多機能な<strong>分配機/合流機</strong>が利用可能になりました。 - より大規模な工場を構築するため、複数のベルト間で<strong>アイテムを合流、分配</strong>できます！<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        title: トンネル
+        desc: <strong>トンネル</strong>が利用可能になりました。 - 他のベルトや建造物の地下を通してベルトが配置可能です！
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: 反時計回りの回転
+        desc: <strong>回転機</strong>のバリエーションが利用可能になりました。 - 反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: 連鎖抽出機
+        desc: <strong>連鎖抽出機</strong>が利用可能になりました。他の抽出機に<strong>出力を渡す</strong>ことができるので、資源の抽出がより効率的になります！
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: トンネル　レベルII
+        desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 - <strong>距離拡張版が追加され<strong>、以前のものと組み合わせて目的に応じて利用することができます！
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: 合流機 (コンパクト)
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            <strong>合流機</strong>のコンパクト版が利用可能になりました。 - 2つの入力をひとつに合流できます！
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: 四分割
+        desc: <strong>切断機</strong>のバリエーションが利用可能になりました。 - 上下の二分割ではなく、<strong>四分割<strong>に切断できます！
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: 着色機 (ダブル)
+        desc: <strong>着色機</strong>のバリエーションが利用可能になりました。 - 通常の着色機と同様に機能しますが、ひとつの色の消費で<strong>一度に2つの形</strong>を着色処理できます！
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: 四分割着色
+        desc: <strong>着色機</strong>のバリエーションが利用可能になりました。 - 形のすべてのパーツを別の色で塗り分けることができます！
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: 余剰の貯蓄
+        desc: <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: フリープレイ
+        desc: やりましたね！　<strong>フリープレイモード</strong>が利用可能になりました。 - これからは形はランダムに生成されます！ (ご心配なく。スタンドアローン版はさらなる追加コンテンツが計画されています)
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: ブループリント
+        desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: 次のレベル
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            このレベルには報酬はありません。次にはあるでしょう！ <br><br> PS: すでに作った生産ラインは削除しないようにしましょう。 - 生産された形は<strong>すべて</strong>、後に<strong>アップグレードの解除</strong>のために必要になります！
 
     no_reward_freeplay:
-        title: Next level
+        title: 次のレベル
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            おめでとうございます！　スタンドアローン版ではさらなる追加要素が計画されています！
 
 settings:
-    title: Settings
+    title: 設定
     categories:
-        game: Game
-        app: Application
+        game: ゲーム
+        app: アプリケーション
 
     versionBadges:
         dev: Development
@@ -594,116 +593,116 @@ settings:
 
     labels:
         uiScale:
-            title: Interface scale
+            title: 画面表示サイズ
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                ユーザーインターフェイスのサイズを変更します。解像度をベースに調整されますが、この設定でそれを変更できます。
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: 極小
+                small: 小
+                regular: 普通
+                large: 大
+                huge: 極大
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: ズーム感度
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                マウスやトラックパッドでのズーム感度を変更します。
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: 極遅
+                slow: 遅
+                regular: 普通
+                fast: 速
+                super_fast: 超速
 
         language:
-            title: Language
+            title: 言語
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                言語を変更します。すべての翻訳はユーザーからの協力で成り立っており、まだ完全には完了していない可能性があります！
 
         fullscreen:
-            title: Fullscreen
+            title: フルスクリーン
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                フルスクリーンでのプレイが推奨です。スタンドアローン版のみ変更可能です。
 
         soundsMuted:
-            title: Mute Sounds
+            title: 効果音ミュート
             description: >-
-                If enabled, mutes all sound effects.
+                有効に設定するとすべての効果音をミュートします。
 
         musicMuted:
-            title: Mute Music
+            title: BGMミュート
             description: >-
-                If enabled, mutes all music.
+                有効に設定するとすべてのBGMをミュートします。
 
         theme:
-            title: Game theme
+            title: ゲームテーマ
             description: >-
-                Choose the game theme (light / dark).
+                ゲームテーマを選択します。 (ライト / ダーク).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: ダーク
+                light: ライト
 
         refreshRate:
-            title: Simulation Target
+            title: シミュレーション対象
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                もし144hzのモニターを利用しているなら、この設定でリフレッシュレートを変更することで、ゲームが高リフレッシュレートを正しくシミュレーションします。利用しているPCが非力な場合、この設定により実効FPSが遅くなる可能性があります。
 
         alwaysMultiplace:
-            title: Multiplace
+            title: 連続配置
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                この設定を有効にすると、建造物を選択後に意図的にキャンセルするまで選択された状態を維持します。これはSHIFTキーを押し続けている状態と同等です。
 
         offerHints:
-            title: Hints & Tutorials
+            title: ヒントとチュートリアル
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                ゲーム中、ヒントとチュートリアルを表示します。レベルごとに不要なUI要素も非表示になり、ゲームに集中しやすくなります。
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: 移動速度
+            description: キーボードを使用した際の画面の移動速度を変更します。
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: 極遅
+                slow: 遅
+                regular: 普通
+                fast: 速
+                super_fast: 超速
+                extremely_fast: 超々速
 
 keybindings:
-    title: Keybindings
+    title: キー設定
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Tip: CTRL, SHIFT, ALTを利用するようにしてください。これらはそれぞれ建造物配置の際の機能があります。 Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: キー設定をリセット
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: アプリケーション
+        ingame: ゲーム
+        navigation: ナビゲーション
+        placement: 配置
+        massSelect: 複数選択
+        buildings: 建造物ショートカット
+        placementModifiers: 配置時バリエーション
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        centerMap: Center Map
+        confirm: 確認
+        back: 戻る
+        mapMoveUp: 上移動
+        mapMoveRight: 右移動
+        mapMoveDown: 下移動
+        mapMoveLeft: 左移動
+        centerMap: マップ中央移動
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: ズームイン
+        mapZoomOut: ズームアウト
+        createMarker: マーカー設置
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: アップグレード
+        menuOpenStats: 統計情報
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
+        toggleHud: HUD切り替え
+        toggleFPSInfo: FPS、デバッグ情報表示切り替え
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -715,54 +714,47 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Abort Placement
-        rotateWhilePlacing: Rotate
+        abortBuildingPlacement: 配置の中止
+        rotateWhilePlacing: 回転
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
-        cycleBuildings: Cycle Buildings
+            Modifier: 逆時計回りにする
+        cycleBuildingVariants: バリエーション変更
+        confirmMassDelete: 複数選択削除の確認
+        cycleBuildings: 建造物の選択
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
+        massSelectStart: マウスドラッグで開始
+        massSelectSelectMultiple: 複数範囲選択
+        massSelectCopy: 範囲コピー
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
+        placementDisableAutoOrientation: 自動向き合わせ無効
+        placeMultiple: 配置モードの維持
+        placeInverse: ベルトの自動向き合わせを逆転
+        pasteLastBlueprint: 直前のブループリントをペーストする
+        massSelectCut: 範囲カット
+        exportScreenshot: 工場の全体像を画像出力
 
 about:
-    title: About this Game
+    title: このゲームについて
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        このゲームはオープンソースであり、<a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (私)によって開発されています。<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        開発に参加したい場合は以下をチェックしてみてください。<a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        このゲームはdiscordでの素晴らしいコミュニティなしには実現しませんでした。 - このサーバにも是非参加してください！　<a href="<discordlink>" target="_blank">discord server</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        サウンドトラックは<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a>により製作されました。 - 彼は素晴らしいです<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        最後に、私の最高の友人<a href="https://github.com/niklas-dahl" target="_blank">Niklas</a>に大きな感謝を。 - 彼とのFactorioのゲーム体験がなければ、このゲームは存在しませんでした。
 
 changelog:
-    title: Changelog
+    title: 更新履歴
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: セーブデータのリストア
+        importingGames: セーブデータのインポート
+        oneGameLimit: セーブデータの1個制限
+        customizeKeybindings: キー設定のカスタマイズ
+        exportingBase: 工場の全体像の画像出力
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: デモ版では利用できません。
