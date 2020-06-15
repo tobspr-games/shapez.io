@@ -903,7 +903,7 @@ export class Camera extends BasicSerializableObject {
 
             let movementSpeed =
                 this.root.app.settings.getMovementSpeed() *
-                (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveFaster).isCurrentlyPressed() ? 2 : 1);
+                (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveFaster).isCurrentlyPressed() ? 4 : 1);
 
             this.center.x += moveAmount * forceX * movementSpeed;
             this.center.y += moveAmount * forceY * movementSpeed;
