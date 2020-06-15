@@ -5,6 +5,8 @@ export const CHANGELOG = [
         entries: [
             "Added shift modifier for faster pan (by jaysc)",
             "Added japanese translations",
+            "Added portguese (brazil) translations",
+            "Updated icon for spanish (latin america) - It was showing a spanish flag before",
             "Updated existing translations",
         ],
     },

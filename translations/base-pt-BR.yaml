@@ -510,7 +510,8 @@ storyRewards:
 
     reward_painter:
         title: Pintura
-        desc: O <strong> pintor </strong> foi desbloqueado - Extraia algumas fontes coloridas (como você faz com formas) e combine-as com uma forma no pintor para colorí-las! <br> <br> PS: Se você é daltônico, já estou trabalhando em uma solução!
+        desc: >-
+            O <strong> pintor </strong> foi desbloqueado - Extraia algumas fontes coloridas (como você faz com formas) e combine-as com uma forma no pintor para colorí-las! <br> <br> PS: Se você é daltônico, já estou trabalhando em uma solução!
 
     reward_mixer:
         title: Misturando cores
