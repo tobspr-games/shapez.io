@@ -121,6 +121,8 @@ demoBanners:
 
 mainMenu:
     play: Rozpocznij
+    continue: Kontynuuj
+    newGame: Nowa gra
     changelog: Dziennik Zmian
     importSavegame: Importuj
     openSourceHint: Gra z otwartym kodem źródłowym!
