@@ -1,5 +1,10 @@
 export const CHANGELOG = [
     {
+        version: "1.1.15",
+        date: "unreleased",
+        entries: ["Added continue button to main menu and add seperate 'New game' button (by jaysc)"],
+    },
+    {
         version: "1.1.14",
         date: "16.06.2020",
         entries: [
