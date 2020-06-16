@@ -162,6 +162,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
             // Check for direction lock
             if (
+                metaBuilding &&
                 metaBuilding.getHasDirectionLockAvailable() &&
                 this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()
             ) {
