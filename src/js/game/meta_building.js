@@ -32,6 +32,13 @@ export class MetaBuilding {
     }
 
     /**
+     * Returns whether the building has the direction lock switch available
+     */
+    getHasDirectionLockAvailable() {
+        return false;
+    }
+
+    /**
      * Whether to stay in placement mode after having placed a building
      */
     getStayInPlacementMode() {

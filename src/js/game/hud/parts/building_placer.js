@@ -162,6 +162,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
             // Check for direction lock
             if (
+                metaBuilding.getHasDirectionLockAvailable() &&
                 this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()
             ) {
                 const vector = enumDirectionToVector[enumAngleToDirection[this.currentBaseRotation]];
@@ -177,9 +178,10 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 if (
                     metaBuilding &&
                     metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
-                    !this.root.keyMapper
-                        .getBinding(KEYMAPPINGS.placement.lockBeltDirection)
-                        .isCurrentlyPressed() &&
+                    (!metaBuilding.getHasDirectionLockAvailable() ||
+                        !this.root.keyMapper
+                            .getBinding(KEYMAPPINGS.placement.lockBeltDirection)
+                            .isCurrentlyPressed()) &&
                     !this.root.keyMapper
                         .getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation)
                         .isCurrentlyPressed()
@@ -659,7 +661,10 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
         // Draw direction lock
 
-        if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()) {
+        if (
+            metaBuilding.getHasDirectionLockAvailable() &&
+            this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()
+        ) {
             if (this.lastDragTile) {
                 parameters.context.fillStyle = THEME.map.selectionBackground;
                 parameters.context.strokeStyle = THEME.map.selectionOverlay;

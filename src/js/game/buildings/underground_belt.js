@@ -38,6 +38,10 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         return true;
     }
 
+    getHasDirectionLockAvailable() {
+        return true;
+    }
+
     getStayInPlacementMode() {
         return true;
     }
