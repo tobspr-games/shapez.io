@@ -23,13 +23,12 @@ export class MinerComponent extends Component {
     duplicateWithoutContents() {
         return new MinerComponent({
             chainable: this.chainable,
-            minedItem: this.minedItem
+            minedItem: this.minedItem,
         });
     }
 
     /**
-     * 
-     * @param {{chainable?: boolean, minedItem?: BaseItem}} param0 
+     * @param {{chainable?: boolean, minedItem?: BaseItem}} param0
      */
     constructor({ chainable = false, minedItem = null }) {
         super();
