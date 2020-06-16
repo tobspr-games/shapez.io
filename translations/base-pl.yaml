@@ -489,13 +489,16 @@ buildings:
         # 2nd translator's note: All those buildings had different descriptions in english. Don't change them all to the same description.
         default:
             name: &painter Malarz
-            description: Koloruje kształt za pomocą koloru dostarczonego od boku.
+            description: &painter_desc Koloruje kształt za pomocą koloru dostarczonego od boku.
         double:
             name: Malarz (Podwójny)
             description: Koloruje kształt za pomocą koloru dostarczonych od boku. Koloruje 2 kształty używając 1 barwnika.
         quad:
             name: Malarz (Poczwórny)
             description: Koloruje każdą ćwiarkę kształtu na inny kolor, używając dostarczonych kolorów.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

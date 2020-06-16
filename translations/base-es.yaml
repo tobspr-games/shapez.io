@@ -469,13 +469,16 @@ buildings:
     painter:
         default:
             name: &painter Pintor
-            description: Colorea la figura entera con el color que entra por la izquierda.
+            description: &painter_desc Colorea la figura entera con el color que entra por la izquierda.
         double:
             name: Pintor (Doble)
             description: Colorea las figuras que entran por la izquierda con el color que entrapor arriba.
         quad:
             name: Pintor (Cuádruple)
             description: Permite colorear cada cuadrante de una figura con un color distinto.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

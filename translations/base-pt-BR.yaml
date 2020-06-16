@@ -477,13 +477,16 @@ buildings:
     painter:
         default:
             name: &painter Pintor
-            description: Colore a forma inteira na entrada esquerda com a cor da entrada direita.
+            description: &painter_desc Colore a forma inteira na entrada esquerda com a cor da entrada direita.
         double:
             name: Pintor (Duplo)
             description: Colore as duas formas na entrada esquerda com a cor da entrada direita.
         quad:
             name: Pintor (Quádruplo)
             description: Permite colorir cada quadrante da forma com uma cor diferente.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

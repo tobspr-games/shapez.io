@@ -474,13 +474,16 @@ buildings:
     painter:
         default:
             name: &painter Pintor
-            description: Pinta a forma geométrica da entrada esquerda com a cor da entrada superior.
+            description: &painter_desc Pinta a forma geométrica da entrada esquerda com a cor da entrada superior.
         double:
             name: Pintor (Duplo)
             description: Pinta as formas geométricas das entradas esquerdas com a cor da entrada superior.
         quad:
             name: Pintor (Quádruplo)
             description: Pinta cada quadrante da forma geométrica com uma cor diferente.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

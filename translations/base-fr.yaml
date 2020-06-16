@@ -478,13 +478,16 @@ buildings:
     painter:
         default:
             name: &painter Peintre
-            description: Colorie entièrement la forme de gauche avec la couleur de droite.
+            description: &painter_desc Colorie entièrement la forme de gauche avec la couleur de droite.
         double:
             name: Peintre (Double)
             description: Colorie les deux formes de gauche avec la couleur de droite.
         quad:
             name: Peintre (Quadruple)
             description: Permet de colorier chaque quadrant d'une forme avec une couleur différente.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

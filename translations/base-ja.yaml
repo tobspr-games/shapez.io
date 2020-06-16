@@ -479,13 +479,16 @@ buildings:
     painter:
         default:
             name: &painter 着色機
-            description: 左から入力された形の全体を、右から入力された色で着色します。
+            description: &painter_desc 左から入力された形の全体を、右から入力された色で着色します。
         double:
             name: 着色機 (ダブル)
             description: 左から入力された形を、上から入力された色で着色します。
         quad:
             name: 着色機 (四分割)
             description: 入力された形を四分割づつ別の色で塗り分けられます。
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

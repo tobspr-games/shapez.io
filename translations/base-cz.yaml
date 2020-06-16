@@ -461,13 +461,16 @@ buildings:
     painter:
         default:
             name: &painter Barvič
-            description: Obarví celý tvar v levém vstupu barvou z pravého vstupu.
+            description: &painter_desc Obarví celý tvar v levém vstupu barvou z pravého vstupu.
         double:
             name: Barvič (dvojnásobný)
             description: Obarví tvary z levých vstupů barvou z horního vstupu.
         quad:
             name: Barvič (čtyřnásobný)
             description: Umožňuje obarvit každý dílek tvaru samostatně.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

@@ -474,13 +474,16 @@ buildings:
     painter:
         default:
             name: &painter Verver
-            description: Verft de volledige vorm in de linker input met de kleur van de rechter input.
+            description: &painter_desc Verft de volledige vorm in de linker input met de kleur van de rechter input.
         double:
             name: Verver (Dubbel)
             description: Verft de vormen in de linker inputs met de kleur van de rechter input.
         quad:
             name: Verver (Quad)
             description: Verft elke kwart van de vorm een andere kleur.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
