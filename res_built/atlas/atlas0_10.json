@@ -568,6 +568,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
 	"sourceSize": {"w":10,"h":10}
 },
+"sprites/misc/hub_direction_indicator.png":
+{
+	"frame": {"x":123,"y":72,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":3,"h":3}
+},
 "sprites/misc/slot_bad_arrow.png":
 {
 	"frame": {"x":187,"y":114,"w":10,"h":10},
@@ -594,7 +602,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":123,"y":72,"w":3,"h":3},
+	"frame": {"x":130,"y":72,"w":3,"h":3},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
@@ -607,6 +615,6 @@
 	"format": "RGBA8888",
 	"size": {"w":407,"h":128},
 	"scale": "0.1",
-	"smartupdate": "$TexturePacker:SmartUpdate:3dd7a89f30024dd4787ad4af6b14588a:9ba11f8b02134c4376ab4e0a44f8b850:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c588acae6c7c29ddcfb639fd48325e9a:613119f38acf12c0214ab0259858da18:f159918d23e5952766c6d23ab52278c6$"
 }
 }

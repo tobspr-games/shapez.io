@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "1.1.14",
+        date: "unreleased",
+        entries: [
+            "There is now an indicator (compass) to the HUB for the HUB Marker!",
+            "You can now include shape short keys in markers to render shape icons instead of text!",
+        ],
+    },
+    {
         version: "1.1.13",
         date: "15.06.2020",
         entries: [

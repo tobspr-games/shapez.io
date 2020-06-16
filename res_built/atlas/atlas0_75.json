@@ -538,7 +538,7 @@
 },
 "sprites/map_overview/belt_forward.png":
 {
-	"frame": {"x":1625,"y":997,"w":20,"h":24},
+	"frame": {"x":1653,"y":997,"w":20,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":20,"h":24},
@@ -568,6 +568,14 @@
 	"spriteSourceSize": {"x":5,"y":5,"w":62,"h":62},
 	"sourceSize": {"w":72,"h":72}
 },
+"sprites/misc/hub_direction_indicator.png":
+{
+	"frame": {"x":1625,"y":997,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
 "sprites/misc/slot_bad_arrow.png":
 {
 	"frame": {"x":1716,"y":953,"w":62,"h":62},
@@ -594,7 +602,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":1649,"y":997,"w":20,"h":24},
+	"frame": {"x":1677,"y":997,"w":20,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":20,"h":24},
@@ -607,6 +615,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2016,"h":1024},
 	"scale": "0.75",
-	"smartupdate": "$TexturePacker:SmartUpdate:3dd7a89f30024dd4787ad4af6b14588a:9ba11f8b02134c4376ab4e0a44f8b850:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c588acae6c7c29ddcfb639fd48325e9a:613119f38acf12c0214ab0259858da18:f159918d23e5952766c6d23ab52278c6$"
 }
 }
