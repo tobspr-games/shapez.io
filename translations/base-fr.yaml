@@ -257,7 +257,7 @@ dialogs:
 
     createMarker:
         title: Nouvelle balise
-        desc: Donnez-lui un nom approprié
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez !
@@ -737,6 +737,7 @@ keybindings:
         pasteLastBlueprint: Copier le dernier patron
         massSelectCut: Couper la sélection
         exportScreenshot: Exporter toute la base en tant qu'image.
+        mapMoveFaster: Move Faster
 
 about:
     title: À propos de ce jeu

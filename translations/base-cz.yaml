@@ -231,7 +231,7 @@ dialogs:
 
     createMarker:
         title: Nová značka
-        desc: Dejte jí smysluplné jméno
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!

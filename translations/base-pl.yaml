@@ -254,7 +254,7 @@ dialogs:
 
     createMarker:
         title: Nowy Znacznik
-        desc: Nadaj nazwę
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną wersję gry dla nielimitowanych znaczników!
