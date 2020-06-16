@@ -44,9 +44,15 @@ export class MetaMinerBuilding extends MetaBuilding {
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
+     * @param {GameRoot} root
      */
-    setupEntityComponents(entity) {
-        entity.addComponent(new MinerComponent({}));
+    setupEntityComponents(entity, root) {
+        let itemBelow = null;
+        if (root) {
+            const staticComp = entity.components.StaticMapEntity;
+            itemBelow = root.map.getLowerLayerContentXY(staticComp.origin.x, staticComp.origin.y);
+        }
+        entity.addComponent(new MinerComponent({ minedItem: itemBelow }));
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
