@@ -740,7 +740,7 @@ keybindings:
         pasteLastBlueprint: Copier le dernier patron
         massSelectCut: Couper la sélection
         exportScreenshot: Exporter toute la base en tant qu'image.
-        mapMoveFaster: Move Faster
+        mapMoveFaster: Se déplacer plus vite
 
 about:
     title: À propos de ce jeu
