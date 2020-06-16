@@ -398,7 +398,7 @@ ingame:
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Конвейеры, Расделители & Туннели
+        name: Конвейеры, Разделители & Туннели
         description: Скорость x<currentMult> → x<newMult>
     miner:
         name: Добыча
@@ -477,13 +477,16 @@ buildings:
     painter:
         default:
             name: &painter Покрасчик
-            description: Красит всю фигуру из левого входа красителем из верхнего.
+            description: &painter_desc Красит всю фигуру из левого входа красителем из верхнего.
         double:
             name: Покрасчик\n(Двойной)
             description: Красит фигуру из левых входов красителем из верхнего.
         quad:
             name: Покрасчик\n(4 Входа)
             description: Позволяет раскрасить каждую четверть фигуры разными цветами.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -653,7 +656,7 @@ settings:
         alwaysMultiplace:
             title: Многократное размещение
             description: >-
-                 Если включено, все здания останутся выбранными после размещения, пока вы не отмените выбор. Это эквивалентно постоянному удержанию SHIFT.
+                Если включено, все здания останутся выбранными после размещения, пока вы не отмените выбор. Это эквивалентно постоянному удержанию SHIFT.
 
         offerHints:
             title: Подсказки & Обучение

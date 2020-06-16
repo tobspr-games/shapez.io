@@ -480,13 +480,16 @@ buildings:
     painter:
         default:
             name: &painter 도형 색칠기
-            description: 도형을 색소로 색칠한다.
+            description: &painter_desc 도형을 색소로 색칠한다.
         double:
             name: 2단 도형 색칠기
             description: 왼쪽에 입력되는 도형을 위에서 입력되는 색소로 색칠한다.
         quad:
             name: 4단 도형 색칠기
             description: 도형의 4가지 분단을 각각 다른 색으로 색칠할 수 있다.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

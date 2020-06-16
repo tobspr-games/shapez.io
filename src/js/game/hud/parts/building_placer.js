@@ -483,6 +483,10 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         ) {
             // Succesfully placed
 
+            const entity = this.root.map.getTileContent(tile);
+            assert(entity, "Entity was not actually placed");
+            this.root.signals.entityManuallyPlaced.dispatch(entity);
+
             if (
                 metaBuilding.getFlipOrientationAfterPlacement() &&
                 !this.root.keyMapper

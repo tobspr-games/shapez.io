@@ -478,13 +478,16 @@ buildings:
     painter:
         default:
             name: &painter Maler
-            description: Maler hele objektet på venstre inngang med fargen fra øverste inngang.
+            description: &painter_desc Maler hele objektet på venstre inngang med fargen fra øverste inngang.
         double:
             name: Maler (Dobbel)
             description: Maler hele objektet på venstre inngang med fargen fra øverste inngang.
         quad:
             name: Maler (Fireganger)
             description: Farger enhver kvadrant av objektet med forskjellige farger.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

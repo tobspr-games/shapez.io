@@ -475,7 +475,7 @@ buildings:
     painter:
         default:
             name: &painter Färber
-            description: Färbt die ganze Form aus dem linken Eingang mit der Farbe aus dem oberen Eingang.
+            description: &painter_desc Färbt die ganze Form aus dem linken Eingang mit der Farbe aus dem oberen Eingang.
 
         double:
             name: Färber (2-Fach)
@@ -484,6 +484,9 @@ buildings:
         quad:
             name: Färber (4-Fach)
             description: Erlaubt jedes einzelne Viertel einer Form beliebig einzufärben.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
