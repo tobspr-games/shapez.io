@@ -1,4 +1,4 @@
-import { Math_abs, Math_degrees, Math_radians } from "../../../core/builtins";
+import { Math_abs, Math_degrees, Math_radians, Math_sign } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite } from "../../../core/draw_utils";
@@ -20,6 +20,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { THEME } from "../../theme";
 
 export class HUDBuildingPlacer extends BaseHUDPart {
     initialize() {
@@ -38,6 +39,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).add(this.resetBeltLock, this);
 
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
@@ -76,6 +78,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
          */
         this.initialDragTile = null;
 
+        /**
+         * The first initial placement direction we performed
+         * @type {Vector}
+         */
+        this.initialPlacementVector = null;
+
         this.root.signals.storyGoalCompleted.add(this.rerenderVariants, this);
         this.root.signals.upgradePurchased.add(this.rerenderVariants, this);
     }
@@ -104,6 +112,13 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             this.currentMetaBuilding.set(null);
             return STOP_PROPAGATION;
         }
+    }
+
+    /**
+     * Resets the belt lock, called after pressing shift
+     */
+    resetBeltLock() {
+        this.initialPlacementVector = null;
     }
 
     /**
@@ -150,12 +165,26 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         const metaBuilding = this.currentMetaBuilding.get();
         if ((metaBuilding || this.currentlyDeleting) && this.lastDragTile) {
             const oldPos = this.lastDragTile;
-            const newPos = this.root.camera.screenToWorld(pos).toTileSpace();
+            let newPos = this.root.camera.screenToWorld(pos).toTileSpace();
 
             if (this.root.camera.desiredCenter) {
                 // Camera is moving
                 this.lastDragTile = newPos;
                 return;
+            }
+
+            // Direction lock
+            if (
+                this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()
+            ) {
+                if (this.initialPlacementVector) {
+                    const lockX = Math_abs(Math_sign(this.initialPlacementVector.x));
+                    const lockY = Math_abs(Math_sign(this.initialPlacementVector.y));
+                    const delta = newPos.sub(oldPos);
+                    delta.x *= lockX;
+                    delta.y *= lockY;
+                    newPos = oldPos.add(delta);
+                }
             }
 
             if (!oldPos.equals(newPos)) {
@@ -200,6 +229,12 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                             this.root.logic.tryDeleteBuilding(contents);
                         }
                     } else {
+                        if (!this.initialPlacementVector) {
+                            const origin = newPos.sub(oldPos);
+                            console.log("ORIGIN:", origin);
+                            this.initialPlacementVector = origin;
+                        }
+
                         this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
                     }
                     if (x0 === x1 && y0 === y1) break;
@@ -235,6 +270,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     abortDragging() {
         this.currentlyDragging = true;
         this.currentlyDeleting = false;
+        this.initialPlacementVector = null;
         this.lastDragTile = null;
     }
 
@@ -636,6 +672,32 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         // Draw ejectors
         if (canBuild) {
             this.drawMatchingAcceptorsAndEjectors(parameters);
+        }
+
+        // Draw direction lock
+
+        if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()) {
+            if (this.lastDragTile && this.initialPlacementVector) {
+                parameters.context.fillStyle = THEME.map.selectionBackground;
+                parameters.context.strokeStyle = THEME.map.selectionOverlay;
+                parameters.context.lineWidth = 3;
+
+                const startLine = this.lastDragTile.toWorldSpaceCenterOfTile();
+                const endLine = tile.toWorldSpaceCenterOfTile();
+
+                parameters.context.beginCircle(startLine.x, startLine.y, 7);
+                parameters.context.fill();
+                parameters.context.stroke();
+
+                parameters.context.beginPath();
+                parameters.context.moveTo(startLine.x, startLine.y);
+                parameters.context.lineTo(endLine.x, endLine.y);
+                parameters.context.stroke();
+
+                parameters.context.beginCircle(endLine.x, endLine.y, 4);
+                parameters.context.fill();
+                parameters.context.stroke();
+            }
         }
     }
 
