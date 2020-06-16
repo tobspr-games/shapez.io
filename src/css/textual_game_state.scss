@@ -61,4 +61,21 @@
             }
         }
     }
+
+    @include DarkThemeOverride {
+        .headerBar {
+            h1 {
+                color: #cfceca;
+            }
+
+            .backButton {
+                filter: invert(1);
+            }
+        }
+
+        > .container > .content {
+            background: #4b4c50;
+            color: #eee;
+        }
+    }
 }

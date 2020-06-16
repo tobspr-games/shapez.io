@@ -350,7 +350,7 @@ button,
 }
 
 @mixin DarkThemeOverride {
-    @at-root body[data-theme="dark"] &,
+    @at-root html[data-theme="dark"] &,
         &[data-theme="dark"] {
         @content;
     }

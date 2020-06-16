@@ -160,7 +160,7 @@ export const allApplicationSettings = [
              */
             (app, id) => {
                 applyGameTheme(id);
-                document.body.setAttribute("data-theme", id);
+                document.documentElement.setAttribute("data-theme", id);
             },
         enabled: !IS_DEMO,
     }),

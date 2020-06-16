@@ -38,6 +38,10 @@ html {
     right: 0;
 
     background: #dee1ea;
+
+    @include DarkThemeOverride {
+        background: #5c606c;
+    }
 }
 
 body {
