@@ -76,10 +76,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: тыс.
-        millions: млн
-        billions: млрд
-        trillions: трлн
+        thousands: \xa0тыс.
+        millions: \xa0млн
+        billions: \xa0млрд
+        trillions: \xa0трлн
 
     # Shown for infinitely big numbers
     infinite: ∞
@@ -114,7 +114,8 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Демо-версия
     intro: >-
-        Приобретите полную версию чтобы разблокировать все возможности!
+        Приобретите полную версию, чтобы
+        разблокировать все возможности!
 
 mainMenu:
     play: Играть
@@ -250,10 +251,10 @@ dialogs:
 
     createMarker:
         title: Новый маркер
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Дайте ему содержательное имя, также можно добавить <strong>сокращение</strong> в виде фигуры (Которое можно сгенерировать <a href="https://viewer.shapez.io" target="_blank">здесь</a>)
 
     markerDemoLimit:
-        desc: Вы можете создать только 2 своих маркера в демо версии. Приобретите полную версию для безлимитных маркеров.
+        desc: Вы можете создать только 2 своих маркера в демо-версии. Приобретите полную версию для безлимитных маркеров.
     massCutConfirm:
         title: Подтвердите вырезку
         desc: >-
@@ -281,7 +282,7 @@ ingame:
         toggleHud: Переключить HUD
         placeBuilding: Разместить постройку
         createMarker: Создать маркер
-        delete: Уничтожить
+        delete: Удалить
         pasteLastBlueprint: Вставить последний чертеж
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
@@ -422,7 +423,7 @@ buildings:
             description: Поместите над жилой с фигурами или красителями, чтобы добыть ресурс.
 
         chainable:
-            name: Экстрактор (Цепной)
+            name: Экстрактор\n(Цепной)
             description: Поместите над жилой с фигурами или красителями, чтобы добыть ресурс. Может последовательно соединяться.
 
     underground_belt: # Internal name for the Tunnel
@@ -440,27 +441,27 @@ buildings:
             description: Многофункциональный - равномерно распределяет все входы на все выходы.
 
         compact:
-            name: Соединитель (компактный)
+            name: Соединитель\n(Компактный)
             description: Объединяет два конвейера в один.
 
         compact-inverse:
-            name: Соединитель (компактный)
+            name: Соединитель\n(Компактный)
             description: Объединяет два конвейера в один.
 
     cutter:
         default:
             name: &cutter Резчик
-            description: Разрезает фигуры сверху вниз и выводит обе половины. <strong>Если вы используете только одну часть, обязательно уничтожьте другую, иначе производство остановится!</strong>
+            description: Разрезает фигуры сверху вниз и выводит обе половины. <strong>Используя только одну часть -  уничтожьте другую, иначе производство остановится!</strong>
         quad:
-            name: Резчик (Четырехпоточный)
-            description: Разрезает фигуры на четыре части. <strong>Если вы используете не все части, обязательно уничтожьте оставшиеся, иначе производство остановится!</strong>
+            name: Резчик\n(4 Выхода)
+            description: Разрезает фигуры на четыре части. <strong>Используя не все части - уничтожьте оставшиеся, иначе производство остановится!</strong>
 
     rotater:
         default:
             name: &rotater Вращатель
             description: Поворачивает фигуры по часовой стрелке на 90 градусов.
         ccw:
-            name: Вращатель (обратный)
+            name: Вращатель\n(Обратный)
             description: Поворачивает фигуры против часовой стрелки на 90 градусов.
 
     stacker:
@@ -478,10 +479,10 @@ buildings:
             name: &painter Покрасчик
             description: Красит всю фигуру из левого входа красителем из верхнего.
         double:
-            name: Покрасчик (Двойной)
+            name: Покрасчик\n(Двойной)
             description: Красит фигуру из левых входов красителем из верхнего.
         quad:
-            name: Покрасчик (Четырехпоточный)
+            name: Покрасчик\n(4 Входа)
             description: Позволяет раскрасить каждую четверть фигуры разными цветами.
 
     trash:
@@ -546,7 +547,7 @@ storyRewards:
             Разблокирован компактный вариант <strong>разделителя</strong>, он объединяет воедино потоки предметов из двух входов!
 
     reward_cutter_quad:
-        title: Резчик (Четырехпоточный)
+        title: Резчик (4 Выхода)
         desc: Разблокирован вариант <strong>резчика</strong> - он позволяет разрезать фигуры на <strong>четыре части</strong> вместо, всего лишь двух!
 
     reward_painter_double:
@@ -554,7 +555,7 @@ storyRewards:
         desc: Разблокирован вариант <strong>покрасчика</strong> - он работает как обычный покрасчик, но обрабатывает <strong>две фигуры одновременно</strong>, потребляя только один краситель вместо двух!
 
     reward_painter_quad:
-        title: Четырехпоточный Покрасчик
+        title: Покрасчик (4 Входа)
         desc: Разблокирован вариант <strong>покрасчика</strong> - он позволяет отдельно раскрашивать каждую часть фигуры!
 
     reward_storage:
@@ -723,7 +724,7 @@ keybindings:
         confirmMassDelete: Подтверждение Массового Удаления
         cycleBuildings: Переключение Построек
 
-        massSelectStart: Удерживайте и тащите, чтобы начать
+        massSelectStart: Модификатор для выделения области
         massSelectSelectMultiple: Выбрать несколько областей
         massSelectCopy: Копировать область
 
@@ -733,7 +734,7 @@ keybindings:
         pasteLastBlueprint: Вставить последний чертеж
         massSelectCut: Вырезать область
         exportScreenshot: Экспорт всей Базы в виде Изображения
-        mapMoveFaster: Move Faster
+        mapMoveFaster: Ускорение передвижения
 
 about:
     title: О игре
