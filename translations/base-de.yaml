@@ -152,6 +152,8 @@ mainMenu:
         showInfo: Anschauen
         contestOver: Dieser Wettbewerb ist vorbei! Tritt dem Discord Server bei, um über neue Wettbewerbe informiert zu werden!
     helpTranslate: Hilf beim Übersetzen!
+    continue: Fortsetzen
+    newGame: Neues Spiel
 
 dialogs:
     buttons:
