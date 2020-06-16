@@ -153,8 +153,8 @@ mainMenu:
 
         showInfo: Ver
         contestOver: Este concurso terminou - Entra no discord para seres notificado quando abrirem novos concursos!
-    continue: Continue
-    newGame: New Game
+    continue: Continuar
+    newGame: Novo Jogo
 
 dialogs:
     buttons:
@@ -252,7 +252,7 @@ dialogs:
 
     createMarker:
         title: Novo marco
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Dá-lhe um nome com significado, também poderás adicionar <strong>um pequeno código</strong> de uma forma. (Pode ser gerado <a href="https://viewer.shapez.io" target="_blank">aqui</a>)
 
     markerDemoLimit:
         desc: Apenas podes criar dois marcos na versão Demo. Adquire o jogo completo para colocar marcos infinitos!
@@ -273,7 +273,7 @@ ingame:
     keybindingsOverlay:
         moveMap: Mover
         selectBuildings: Selecionar área
-        stopPlacement: Parar posicionamento
+        stopPlacement: Cancelar
         rotateBuilding: Rodar construção
         placeMultiple: Colocar vários
         reverseOrientation: Reverter orientação
@@ -440,12 +440,12 @@ buildings:
             description: Multifunções - Distribui igualmente todas as entradas por todas as saídas.
 
         compact:
-            name: Misturador (compacto)
-            description: Junta dois tapetes rolantes num só.
+            name: Misturador (Comp.)
+            description: O Misturador Compacto é uma variante do distibruidor. Junta dois tapetes rolantes num só.
 
         compact-inverse:
-            name: Misturador (compacto)
-            description: Junta dois tapetes rolantes num só.
+            name: Misturador (Comp.)
+            description: O Misturador Compacto é uma variante do distibruidor. Junta dois tapetes rolantes num só.
 
     cutter:
         default:
@@ -470,7 +470,7 @@ buildings:
 
     mixer:
         default:
-            name: &mixer Misturador de cores
+            name: &mixer Misturador de cor
             description: Mistura duas cores através de mistura aditiva.
 
     painter:
@@ -736,7 +736,7 @@ keybindings:
         pasteLastBlueprint: Colar o último blueprint
         massSelectCut: Cortar área
         exportScreenshot: Exportar a base como uma imagem
-        mapMoveFaster: Move Faster
+        mapMoveFaster: Mover rapidamente
 about:
     title: Sobre o jogo
     body: >-
@@ -750,7 +750,7 @@ about:
         em torno dos meus jogos - Devias mesmo juntar-te ao <a href="<discordlink>"
         target="_blank">servidor no discord</a>!<br><br>
 
-        The soundtrack foi feita por <a href="https://soundcloud.com/pettersumelius"
+        A banda sonora foi feita por <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Ele é Fantástico.<br><br>
 
         Finalmente, um grande agradecimento ao meu melhor amigo <a
