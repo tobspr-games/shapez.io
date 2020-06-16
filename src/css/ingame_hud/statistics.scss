@@ -80,6 +80,7 @@
             background: #f4f4f4;
             @include S(margin-bottom, 4px);
             display: grid;
+            position: relative;
 
             @include DarkThemeOverride {
                 background: #222428;
@@ -102,6 +103,19 @@
                 @include SuperSmallText;
 
                 @include S(padding, 0, 3px);
+            }
+
+            div.pin {
+                @include S(width, 12px);
+                @include S(height, 12px);
+                @include S(padding, 0px);
+                background: uiResource("icons/pin.png") center center / 95% no-repeat;
+                position: absolute;
+
+                opacity: 0.6;
+                transition: opacity 0.12s ease-in-out;
+
+                @include DarkThemeInvert;
             }
         }
     }
@@ -135,6 +149,13 @@
                     background: rgba(0, 10, 20, 0.05);
                     justify-self: end;
                 }
+
+                .pin {
+                    grid-column: 2 / 2;
+                    grid-row: 1 / 3;
+                    @include S(top, 4px);
+                    @include S(right, 8px);
+                }
             }
         }
         &[data-displaymode="detailed"] .content.hasEntries {
@@ -151,6 +172,13 @@
                     align-self: center;
                     text-align: right;
                     color: #55595a;
+                }
+
+                .pin {
+                    grid-column: 1 / 2;
+                    grid-row: 1 / 3;
+                    @include S(top, 4px);
+                    @include S(left, 40px);
                 }
 
                 canvas.graph {

@@ -32,7 +32,11 @@ export class HUDShapeStatisticsHandle {
     initElement() {
         this.element = document.createElement("div");
         this.element.setAttribute("data-shape-key", this.definition.getHash());
-
+        if (this.root.hud.parts.pinnedShapes.isShapePinned(this.definition.getHash())) {
+            const pinButton = document.createElement("div");
+            pinButton.classList.add("pin");
+            this.element.appendChild(pinButton);
+        }
         this.counter = document.createElement("span");
         this.counter.classList.add("counter");
         this.element.appendChild(this.counter);
