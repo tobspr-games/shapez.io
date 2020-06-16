@@ -257,7 +257,7 @@ dialogs:
 
     createMarker:
         title: Ny Markør
-        desc: Gi markøren eet meningsfult navn, du kan også inkludere <strong>"short key"</strong> av et objekt (Som du kan generere <a href="https://viewer.shapez.io" target="_blank">her</a>)
+        desc: Gi markøren et meningsfullt navn, du kan også inkludere <strong>"short key"</strong> av et objekt (Som du kan generere <a href="https://viewer.shapez.io" target="_blank">her</a>)
 
     markerDemoLimit:
         desc: Du kan kun ha to markører i demo verjsonen. Skaff deg frittstående versjon for ubegrensede markører!
