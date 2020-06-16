@@ -246,7 +246,7 @@ dialogs:
 
     createMarker:
         title: Nueva marca
-        desc: Dale un nombre representativo
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: solo puedes crear dos marcas en la versión de prueba. Obtén el juego completo para marcas ilimitadas!
@@ -721,6 +721,7 @@ keybindings:
         pasteLastBlueprint: Paste last blueprint
         massSelectCut: Cut area
         exportScreenshot: Export whole Base as Image
+        mapMoveFaster: Move Faster
 
 about:
     title: Sobre el Juego

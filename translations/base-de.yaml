@@ -249,7 +249,7 @@ dialogs:
 
     createMarker:
         title: Neuer Marker
-        desc: Gib ihm einen sinnvollen Namen
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Standalone um unendlich viele Marker zu benutzen!
@@ -294,10 +294,10 @@ ingame:
             Taste: <key>
 
         infoTexts:
-            speed: Geschwindigkeit
+            speed: Geschw.
             range: Reichweite
             storage: Kapazität
-            oneItemPerSecond: 1 Item / Sekunde
+            oneItemPerSecond: 1 Item / s
             itemsPerSecond: <x> Items / s
             itemsPerSecondDouble: (x2)
 
@@ -574,12 +574,12 @@ storyRewards:
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Nächstes Level
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
 
     no_reward_freeplay:
-        title: Next level
+        title: Nächstes Level
         desc: >-
             Congratulations! By the way, more content is planned for the standalone!
 
@@ -735,6 +735,7 @@ keybindings:
         pasteLastBlueprint: Paste last blueprint
         massSelectCut: Cut area
         exportScreenshot: Export whole Base as Image
+        mapMoveFaster: Move Faster
 
 about:
     title: Über dieses Spiel

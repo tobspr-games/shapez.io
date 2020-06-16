@@ -254,7 +254,7 @@ dialogs:
 
     createMarker:
         title: Nowy Znacznik
-        desc: Nadaj nazwę
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną wersję gry dla nielimitowanych znaczników!
@@ -265,10 +265,11 @@ dialogs:
             Wycinasz sporą ilość maszyn (<count> gwoli ścisłości)! Czy na pewno chcesz kontynuować?
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Tworzenie zrzutu fabryki
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            Zamierzasz wyeksportować swoją fabrykę jako zrzut ekranu. W przypadku dużej
+            fabryki ta akja może być bardzo wolna, a nawet może spowodować zawieszenie się lub awarię gry!
+            Czy na pewno chcesz kontynuować?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -710,7 +711,8 @@ keybindings:
         mapMoveUp: Ruch w górę
         mapMoveRight: Ruch w prawo
         mapMoveDown: Ruch w dół
-        mapMoveLeft: Move Left
+        mapMoveLeft: Ruch w lewo
+        mapMoveFaster: Przyspiesz ruch
         centerMap: Wyśrodkuj Mapę
 
         mapZoomIn: Przybliżenie
@@ -738,11 +740,11 @@ keybindings:
         rotateInverseModifier: >-
             Modyfikator: Obróć Odrwotnie
         cycleBuildingVariants: Zmień Wariant
-        confirmMassDelete: Potwierdź Usuwanie
+        confirmMassDelete: Potwierdź usuwanie
         cycleBuildings: Zmień Budynek
 
         massSelectStart: Przytrzymaj i przeciągnij by zaznaczyć
-        massSelectSelectMultiple: Zaznacz kilka obszar
+        massSelectSelectMultiple: Zaznacz kilka obszarów
         massSelectCopy: Skopiuj obszar
 
         placementDisableAutoOrientation: Wyłącz automatyczną orientacje
@@ -750,7 +752,7 @@ keybindings:
         placeInverse: Odwróć automatyczną orientacje pasów
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
         massSelectCut: Wytnij obszar
-        exportScreenshot: Export whole Base as Image
+        exportScreenshot: Wyeksportuj całą fabrykę jako zrzut ekranu
 
 about:
     title: O Grze
@@ -770,6 +772,6 @@ demo:
         importingGames: Importowanie zapisów gry
         oneGameLimit: Limit jednego zapisu gry
         customizeKeybindings: Personalizowanie Klawiszologii
-        exportingBase: Exporting whole Base as Image
+        exportingBase: Eksportowanie całej fabryki jako zrzut ekranu
 
     settingNotAvailable: Niedostępne w wersji demo.

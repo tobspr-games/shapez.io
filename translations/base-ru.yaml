@@ -227,7 +227,7 @@ dialogs:
         title: Улучшения открыты!
         desc: >-
             Все формы, которые вы производите, могут быть использованы для разблокировки
-            улучшений - <strong>Не разрушайте свои старые фабрики!</strong> 
+            улучшений - <strong>Не разрушайте свои старые фабрики!</strong>
             Вкладка обновлений находится в правом верхнем углу экрана.
     massDeleteConfirm:
         title: Подтвердить удаление
@@ -250,21 +250,21 @@ dialogs:
 
     createMarker:
         title: Новый маркер
-        desc: Напишите содержательное имя.
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: Вы можете создать только 2 своих маркера в демо версии. Приобретите полную версию для безлимитных маркеров.
     massCutConfirm:
         title: Подтвердите вырезку
         desc: >-
-            Вы вырезаете много зданий (точнее: <count>)! Вы уверены, 
+            Вы вырезаете много зданий (точнее: <count>)! Вы уверены,
             что хотите это сделать?
 
     exportScreenshotWarning:
         title: Экспорт скриншота
         desc: >-
             Вы запросили экспортировать вашу базу в виде скриншота. Обратите внимание,
-            что это может быть довольно медленным процессом для большой базы 
+            что это может быть довольно медленным процессом для большой базы
             и даже привести к аварийному завершению игры!
 
 ingame:
@@ -733,6 +733,7 @@ keybindings:
         pasteLastBlueprint: Вставить последний чертеж
         massSelectCut: Вырезать область
         exportScreenshot: Экспорт всей Базы в виде Изображения
+        mapMoveFaster: Move Faster
 
 about:
     title: О игре
@@ -751,7 +752,7 @@ about:
         target="_blank">Peppsen</a> - Он потрясающий.<br><br>
 
         Наконец, огромное спасибо моему лучшему другу <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Без наших 
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Без наших
         игровых сессий в factorio эта игра никогда не существовала бы.
 
 changelog:

@@ -1,4 +1,4 @@
-import { Math_radians, Math_min, Math_max } from "../../core/builtins";
+import { Math_radians, Math_min, Math_max, Math_sqrt } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
@@ -15,6 +15,7 @@ import { GameRoot } from "../root";
 import { createLogger } from "../../core/logging";
 
 const BELT_ANIM_COUNT = 6;
+const SQRT_2 = Math_sqrt(2);
 
 const logger = createLogger("belt");
 
@@ -211,6 +212,7 @@ export class BeltSystem extends GameSystemWithFilter {
             this.root.hubGoals.getBeltBaseSpeed() *
             this.root.dynamicTickrate.deltaSeconds *
             globalConfig.itemSpacingOnBelts;
+
         if (G_IS_DEV && globalConfig.debug.instantBelts) {
             beltSpeed *= 100;
         }
@@ -229,35 +231,43 @@ export class BeltSystem extends GameSystemWithFilter {
             const ejectorComp = entity.components.ItemEjector;
             let maxProgress = 1;
 
+            /* PERFORMANCE OPTIMIZATION */
+            // Original:
+            //   const isCurrentlyEjecting = ejectorComp.isAnySlotEjecting();
+            // Replaced (Since belts always have just one slot):
+            const ejectorSlot = ejectorComp.slots[0];
+            const isCurrentlyEjecting = ejectorSlot.item;
+
             // When ejecting, we can not go further than the item spacing since it
             // will be on the corner
-            if (ejectorComp.isAnySlotEjecting()) {
+            if (isCurrentlyEjecting) {
                 maxProgress = 1 - globalConfig.itemSpacingOnBelts;
             } else {
                 // Otherwise our progress depends on the follow up
                 if (followUp) {
                     const spacingOnBelt = followUp.components.Belt.getDistanceToFirstItemCenter();
-                    maxProgress = Math_min(2, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
-                    assert(maxProgress >= 0.0, "max progress < 0 (I)");
+                    maxProgress = Math.min(2, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
+
+                    // Useful check, but hurts performance
+                    // assert(maxProgress >= 0.0, "max progress < 0 (I)");
                 }
             }
 
             let speedMultiplier = 1;
             if (beltComp.direction !== enumDirection.top) {
-                // Shaped belts are longer, thus being quicker
-                speedMultiplier = 1.41;
+                // Curved belts are shorter, thus being quicker (Looks weird otherwise)
+                speedMultiplier = SQRT_2;
             }
 
             // Not really nice. haven't found the reason for this yet.
             if (items.length > 2 / globalConfig.itemSpacingOnBelts) {
-                logger.error("Fixing broken belt:", entity, items);
                 beltComp.sortedItems = [];
             }
 
             for (let itemIndex = items.length - 1; itemIndex >= 0; --itemIndex) {
                 const progressAndItem = items[itemIndex];
 
-                progressAndItem[0] = Math_min(maxProgress, progressAndItem[0] + speedMultiplier * beltSpeed);
+                progressAndItem[0] = Math.min(maxProgress, progressAndItem[0] + speedMultiplier * beltSpeed);
 
                 if (progressAndItem[0] >= 1.0) {
                     if (followUp) {
@@ -273,14 +283,18 @@ export class BeltSystem extends GameSystemWithFilter {
                         }
                     } else {
                         // Try to give this item to a new belt
-                        const freeSlot = ejectorComp.getFirstFreeSlot();
-                        if (freeSlot === null) {
+
+                        /* PERFORMANCE OPTIMIZATION */
+                        // Original:
+                        //  const freeSlot = ejectorComp.getFirstFreeSlot();
+                        // Replaced
+                        if (ejectorSlot.item) {
                             // So, we don't have a free slot - damned!
                             progressAndItem[0] = 1.0;
                             maxProgress = 1 - globalConfig.itemSpacingOnBelts;
                         } else {
                             // We got a free slot, remove this item and keep it on the ejector slot
-                            if (!ejectorComp.tryEject(freeSlot, progressAndItem[1])) {
+                            if (!ejectorComp.tryEject(0, progressAndItem[1])) {
                                 assert(false, "Ejection failed");
                             }
                             items.splice(itemIndex, 1);
@@ -290,7 +304,7 @@ export class BeltSystem extends GameSystemWithFilter {
                     }
                 } else {
                     // We just moved this item forward, so determine the maximum progress of other items
-                    maxProgress = Math_max(0, progressAndItem[0] - globalConfig.itemSpacingOnBelts);
+                    maxProgress = Math.max(0, progressAndItem[0] - globalConfig.itemSpacingOnBelts);
                 }
             }
         }

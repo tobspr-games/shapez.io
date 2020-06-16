@@ -1,5 +1,33 @@
 export const CHANGELOG = [
     {
+        version: "1.1.14",
+        date: "unreleased",
+        entries: [
+            "There is now an indicator (compass) to the HUB for the HUB Marker!",
+            "You can now include shape short keys in markers to render shape icons instead of text!",
+            "Added mirrored variant of the painter",
+        ],
+    },
+    {
+        version: "1.1.13",
+        date: "15.06.2020",
+        entries: [
+            "Added shift modifier for faster pan (by jaysc)",
+            "Added Japanese translations",
+            "Added Portuguese (Portugal) translations",
+            "Updated icon for Spanish (Latin America) - It was showing a Spanish flag before",
+            "Updated existing translations",
+        ],
+    },
+    {
+        version: "1.1.12",
+        date: "14.06.2020",
+        entries: [
+            "Huge performance improvements! The game should now run up to 60% faster!",
+            "Added norwegian translation",
+        ],
+    },
+    {
         version: "1.1.11",
         date: "13.06.2020",
         entries: [

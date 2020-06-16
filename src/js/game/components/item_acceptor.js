@@ -20,6 +20,14 @@ export const enumItemAcceptorItemFilter = {
  * filter?: enumItemAcceptorItemFilter
  * }} ItemAcceptorSlot */
 
+/**
+ * Contains information about a slot plus its location
+ * @typedef {{
+ *  slot: ItemAcceptorSlot,
+ *  index: number,
+ *  acceptedDirection: enumDirection
+ * }} ItemAcceptorLocatedSlot */
+
 export class ItemAcceptorComponent extends Component {
     static getId() {
         return "ItemAcceptor";
@@ -164,11 +172,7 @@ export class ItemAcceptorComponent extends Component {
      * Tries to find a slot which accepts the current item
      * @param {Vector} targetLocalTile
      * @param {enumDirection} fromLocalDirection
-     * @returns {{
-     *  slot: ItemAcceptorSlot,
-     *  index: number,
-     *  acceptedDirection: enumDirection
-     * }|null}
+     * @returns {ItemAcceptorLocatedSlot|null}
      */
     findMatchingSlot(targetLocalTile, fromLocalDirection) {
         // We need to invert our direction since the acceptor specifies *from* which direction

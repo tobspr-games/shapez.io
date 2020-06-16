@@ -15,6 +15,11 @@ $buildingsAndVariants: belt, splitter, splitter-compact, splitter-compact-invers
     }
 }
 
+// Special case
+[data-icon="building_tutorials/painter-mirrored.png"] {
+    background-image: uiResource("res/ui/building_tutorials/painter.png") !important;
+}
+
 $icons: notification_saved, notification_success, notification_upgrade;
 @each $icon in $icons {
     [data-icon="icons/#{$icon}.png"] {
@@ -23,7 +28,7 @@ $icons: notification_saved, notification_success, notification_upgrade;
 }
 
 $languages: en, de, cs, da, et, es-419, fr, it, pt-BR, sv, tr, el, ru, uk, zh-TW, nb, mt-MT, ar, nl, vi, th,
-    hu, pl, ja, kor;
+    hu, pl, ja, kor, no, pt-PT;
 
 @each $language in $languages {
     [data-languageicon="#{$language}"] {

@@ -33,6 +33,7 @@ export const KEYMAPPINGS = {
         mapMoveRight: { keyCode: key("D") },
         mapMoveDown: { keyCode: key("S") },
         mapMoveLeft: { keyCode: key("A") },
+        mapMoveFaster: { keyCode: 16 }, //shift
 
         centerMap: { keyCode: 32 }, // SPACE
         mapZoomIn: { keyCode: 187, repeated: true }, // "+"

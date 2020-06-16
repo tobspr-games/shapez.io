@@ -1,0 +1,760 @@
+#
+#  GAME TRANSLATIONS
+#
+#  Contributing:
+#
+#    If you want to contribute, please make a pull request on this respository
+#    and I will have a look.
+#
+#  Placeholders:
+#
+#    Do *not* replace placeholders! Placeholders have a special syntax like
+#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
+#    translation for this one in German for example would be: `Taste: <key>` (notice
+#    how the placeholder stayed '<key>' and was not replaced!)
+#
+#  Adding a new language:
+#
+#    If you want to add a new language, ask me in the discord and I will setup
+#    the basic structure so the game also detects it.
+#
+
+steamPage:
+    # This is the short text appearing on the steam page
+    shortText: shapez.io er et spill som handler om å bygge fabrikker for å automatisere produksjon og kombinering av former med økende kompleksitet på et ubegrenset brett.
+
+    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
+    # NOTICE:
+    # - Do not translate the first line (This is the gif image at the start of the store)
+    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
+    longText: >-
+        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+
+        shapez.io er et spill som handler om å bygge fabrikker for å automatisere byggeprosessen og kombinere forskjellige former og fasonger. Lever objektene som øker i kompleskitet og fasonger for å progressere i spillet og åpne opp nye oppgraderinger til din fabrikk.
+
+        Siden forespørselen øker, må du skalere opp fabrikken din for å tilpasse deg til behovet - Men ikke glem tilgangen du har til ressurser, du må utvide på det [b]uendelige brettet[/b]!
+
+        Siden figurer i seg selv kan bli kjedelig, må du snart mikse farger og fargelegge dine figurer - Kombiner rød, grønn og blå farge-ressurser for å produsere forskjellige farger, og fargelegg figurene for å tilfredsstille behovet.
+
+        Spillet har 18 nivåer (Som bør holde deg opptatt i mange timer!) men jeg legger konstant til nytt innhold - Det er mye som er planlagt!
+
+
+        [b]Frittstående Fordeler[/b]
+
+        [list]
+            [*] Kartmarkering
+            [*] Uendelige lagringsfiler
+            [*] Mørk Modus
+            [*] Flere instillinger
+            [*] Tillater meg å videreutvikle shapez.io ❤️
+            [*] Flere funksjoner i fremtiden!
+        [/list]
+
+        [b]Planlagte funksjoner & Forslag fra samfunnet[/b]
+
+        Spillet er åpen kildekode - Alle kan bidra! Utenom det, så lytter jeg [b]veldig[/b] til samfunnet! Jeg prøver å lese alle forslag og ta imot så mye tilbakemeldinger som mulig.
+
+        [list]
+            [*] Kampanje
+            [*] Flere nivåer & bygninger (Frittstående eksklusivt)
+            [*] Forskjellige brett, og kanskje hinder på brettet
+            [*] Konfigurerbart brett-generasjon (Endre antall og størrelse på ressursfelt, seed, med mer)
+            [*] Flere forskjellige type former
+            [*] Mer forbedring av ytelse (Selv om spillet allerede kjører ganske bra!)
+            [*] Fargeblind modus
+            [*] Og mye mer!
+        [/list]
+
+        Sjekk ut min trello tavle for hele planen! https://trello.com/b/ISQncpJP/shapezio
+
+global:
+    loading: Laster
+    error: Feil
+
+    # How big numbers are rendered, e.g. "10,000"
+    thousandsDivider: ","
+
+    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
+    suffix:
+        thousands: k
+        millions: M
+        billions: B
+        trillions: T
+
+    # Shown for infinitely big numbers
+    infinite: inf
+
+    time:
+        # Used for formatting past time dates
+        oneSecondAgo: ett sekund siden
+        xSecondsAgo: <x> sekunder siden
+        oneMinuteAgo: ett minutt siden
+        xMinutesAgo: <x> minutter siden
+        oneHourAgo: en time siden
+        xHoursAgo: <x> timer siden
+        oneDayAgo: en dag siden
+        xDaysAgo: <x> dager siden
+
+        # Short formats for times, e.g. '5h 23m'
+        secondsShort: <seconds>s
+        minutesAndSecondsShort: <minutes>m <seconds>s
+        hoursAndMinutesShort: <hours>t <minutes>m
+
+        xMinutes: <x> minutter
+
+    keys:
+        tab: TAB
+        control: CTRL
+        alt: ALT
+        escape: ESC
+        shift: SHIFT
+        space: MELLOMROM
+
+demoBanners:
+    # This is the "advertisement" shown in the main menu and other various places
+    title: Demo Versjon
+    intro: >-
+        Skaff deg frittstående versjon for å åpne alle funksjoner!
+
+mainMenu:
+    play: Spill
+    changelog: Endringshistorikk
+    importSavegame: Importer
+    openSourceHint: Dette spillet er åpen kildekode!
+    discordLink: Offisiel Discord Server
+    helpTranslate: Hjelp oversetting!
+
+    # This is shown when using firefox and other browsers which are not supported.
+    browserWarning: >-
+        Beklager, men spillet er kjent for å kjøre sakte på din nettleser! Skaff deg frittstående versjon, eller last ned Chrome for den fulle opplevelsen.
+
+    savegameLevel: Nivå <x>
+    savegameLevelUnknown: Ukjent Nivå
+
+    contests:
+        contest_01_03062020:
+            title: "Konkurranse #01"
+            desc: Vinn <strong>$25</strong> for den kuleste basen!
+            longDesc: >-
+                For å gi noe tilbake til deg, tenkte jeg det ville vært kult med ukentlige konkurranser!
+                <br><br>
+                <strong>Denne ukens tema:</strong> Bygg den kuleste basen!
+                <br><br>
+                Her er tingen:<br>
+                <ul class="bucketList">
+                    <li>Send et skjermbilde av basen din til <strong>contest@shapez.io</strong></li>
+                    <li>Bonus poeng om du deler på sosiale medier!</li>
+                    <li>Jeg velger 5 skjermbilder og foreslår de på <strong>discord</strong> for samfunnet til å stemme.</li>
+                    <li>Vinneren får <strong>$25</strong> (Paypal, Amazon Gift Card, eller hva du foretrekker)</li>
+                    <li>Frist: 07.06.2020 00:00 Sentraleuropeisk sommertid</li>
+                </ul>
+                <br>
+                Jeg ser fram til å se dine kule skapninger!
+
+        showInfo: Vis
+        contestOver: Denne konkurransen er ferdig - Bli med på discord for å få varsel om nye konkurranser!
+
+dialogs:
+    buttons:
+        ok: OK
+        delete: Slett
+        cancel: Avbryt
+        later: Senere
+        restart: Omstart
+        reset: Nullstill
+        getStandalone: Få frittstående
+        deleteGame: Jeg vet hva jeg gjør
+        viewUpdate: Vis Oppdatering
+        showUpgrades: Vis Oppgraderinger
+        showKeybindings: Se Hurtigtaster
+
+    importSavegameError:
+        title: Importerings feil
+        text: >-
+            Kunne ikke importere lagringsfilen:
+
+    importSavegameSuccess:
+        title: Lagringsfil importert
+        text: >-
+            Din Lagringsfil ble vellykket importert.
+
+    gameLoadFailure:
+        title: Lagringsfilen er ødelagt
+        text: >-
+            Kunne ikke laste inn lagringsfilen:
+
+    confirmSavegameDelete:
+        title: Bekreft sletting
+        text: >-
+            Er du sikker på at du ønsker å slette lagringsfilen?
+
+    savegameDeletionError:
+        title: Kunne ikke slette
+        text: >-
+            Kunne ikke slette lagringsfilen:
+
+    restartRequired:
+        title: Omstart nødvendig
+        text: >-
+            Du må starte spillet på nytt for å ta i bruk instillingene.
+
+    editKeybinding:
+        title: Endre Hurtigtast
+        desc: Trykk på knappen eller museknappen du vil tildele, eller escape for å avbryte.
+
+    resetKeybindingsConfirmation:
+        title: Nullstill Hurtigtaster
+        desc: Dette vil nullstille alle hurtigtaster tilbake til standard. Vennligst bekreft.
+
+    keybindingsResetOk:
+        title: Hurtigtaster nullstilt
+        desc: Hurtigtastene har blitt nullstilt tilbake til standard!
+
+    featureRestriction:
+        title: Demo Versjon
+        desc: Du prøvde å benytte deg av en funksjon (<feature>) som ikke er tilgjengelig i demoen. Vurder å skaffe frittstående versjon for den fulle opplevelsen!
+
+    oneSavegameLimit:
+        title: Begrenset Lagringsfiler
+        desc: Du kan du ha en lagringsfil om gangen i demo versjonen. Vennligst slett den eksisterende, eller skaff frittstående versjon!
+
+    updateSummary:
+        title: Ny oppdatering!!
+        desc: >-
+            Her er endringene siden sist du spilte:
+
+    upgradesIntroduction:
+        title: Åpne Oppgradering
+        desc: >-
+            Alle objektene du produserer kan bli brukt til å åpne oppgraderinger - <strong>Ikke ødelegg dine gamle fabrikker!</strong>
+            Oppgraderingsfanen er plassert øverst til høyre på skjermen.
+
+    massDeleteConfirm:
+        title: Bekreft sletting
+        desc: >-
+            Du skal til å slette mange bygninger (<count> for å være nøyaktig)! Er du sikker på at du ønsker å gjøre dette?
+
+    massCutConfirm:
+        title: Bekreft Klipping
+        desc: >-
+            Du klipper ut mange bygninger (<count> for å være nøyaktig)! Er du sikker på at du ønsker å gjøre dette?
+
+    blueprintsNotUnlocked:
+        title: Ikke åpnet enda
+        desc: >-
+            Fullfør nivå 12 for å åpne blåkopier!
+
+    keybindingsIntroduction:
+        title: Nyttige hurtigtaster
+        desc: >-
+            Spillet har mange hurtigtaster som gjør det enklere å bygge store fabrikker.
+            Her er noen få, men sørg for å <strong>sjekke ut hurtigtaster</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Dra: Velg et område.<br>
+            <code class='keybinding'>SHIFT</code>: Hold trykket for å plassere flere av en bygning.<br>
+            <code class='keybinding'>ALT</code>: Inverter orientasjon av plasserte belter.<br>
+
+    createMarker:
+        title: Ny Markør
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+
+    markerDemoLimit:
+        desc: Du kan kun ha to markører i demo verjsonen. Skaff deg frittstående versjon for ubegrensede markører!
+
+    exportScreenshotWarning:
+        title: Eksporter skjermbilde
+        desc: Du forespurte å eksportere bilde av basen din som et skjermbilde. Vær obs på at dette kan ta lang tid for en stor base, og i verste fall kræsje spillet ditt (Husk å lagre først)!
+
+ingame:
+    # This is shown in the top left corner and displays useful keybindings in
+    # every situation
+    keybindingsOverlay:
+        moveMap: Beveg
+        selectBuildings: Velg område
+        stopPlacement: Stopp plassering
+        rotateBuilding: Roter bygning
+        placeMultiple: Plasser flere
+        reverseOrientation: Omvent orientering
+        disableAutoOrientation: Deaktiver automatisk orientering
+        toggleHud: Veksle Grensesnitt
+        placeBuilding: Plasser bygning
+        createMarker: Lag Markør
+        delete: Ødelegg
+        pasteLastBlueprint: Lim inn forrige blåkopi
+
+    # Everything related to placing buildings (I.e. as soon as you selected a building
+    # from the toolbar)
+    buildingPlacement:
+        # Buildings can have different variants which are unlocked at later levels,
+        # and this is the hint shown when there are multiple variants available.
+        cycleBuildingVariants: Trykk <key> for å veksle mellom variantene.
+
+        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
+        hotkeyLabel: >-
+            Hotkey: <key>
+
+        infoTexts:
+            speed: Hastighet
+            range: Lengde
+            storage: Lagring
+            oneItemPerSecond: 1 objekt / sekund
+            itemsPerSecond: <x> objekter / s
+            itemsPerSecondDouble: (x2)
+
+            tiles: <x> ruter
+
+    # The notification when completing a level
+    levelCompleteNotification:
+        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
+        levelTitle: Nivå <level>
+        completed: Fullført
+        unlockText: Åpnet <reward>!
+        buttonNextLevel: Neste Nivå
+
+    # Notifications on the lower right
+    notifications:
+        newUpgrade: En ny oppgradering er tilgjengelig!
+        gameSaved: Spillet ditt er lagret.
+
+    # Mass select information, this is when you hold CTRL and then drag with your mouse
+    # to select multiple buildings
+    massSelect:
+        infoText: Trykk <keyCut> for å klippe, <keyCopy> for å kopiere, <keyDelete> for å slette, og <keyCancel> for å avbryte.
+
+    # The "Upgrades" window
+    shop:
+        title: Oppgraderinger
+        buttonUnlock: Oppgrader
+
+        # Gets replaced to e.g. "Tier IX"
+        tier: Nivå <x>
+
+        # The roman number for each tier
+        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+
+        maximumLevel: MAKS NIVÅ (Hastighet x<currentMult>)
+
+    # The "Statistics" window
+    statistics:
+        title: Statistikk
+        dataSources:
+            stored:
+                title: Lagret
+                description: Viser hva som er lagret i hovedbygningen.
+            produced:
+                title: Produsert
+                description: Viser alle objektene hele fabrikken produserer, inkluderer avanserte objekter.
+            delivered:
+                title: Levert
+                description: Viser objekter som er levert til hovedbygningen.
+        noShapesProduced: Ingen objekter har blitt produsert så langt.
+
+        # Displays the shapes per minute, e.g. '523 / m'
+        shapesPerMinute: <shapes> / m
+
+    # Settings menu, when you press "ESC"
+    settingsMenu:
+        playtime: Spilletid
+
+        buildingsPlaced: Bygninger
+        beltsPlaced: Belter
+
+        buttons:
+            continue: Fortsett
+            settings: Innstillinger
+            menu: Tilbake til hovedmeny
+
+    # Bottom left tutorial hints
+    tutorialHints:
+        title: Trenger du hjelp?
+        showHint: Vis hint
+        hideHint: Lukk
+
+    # When placing a blueprint
+    blueprintPlacer:
+        cost: Kostnad
+
+    # Map markers
+    waypoints:
+        waypoints: Markør
+        hub: Hovedbygning
+        description: Venstreklikk en markør for å gå dit, høyreklikk for å slette markøren.<br><br>Trykk <keybinding> for å lage en markør fra nåværende sted, eller <strong>høyreklikk</strong> for å lage en markør på valgt område.
+        creationSuccessNotification: Markren ble laget.
+
+    # Interactive tutorial
+    interactiveTutorial:
+        title: Opplæring
+        hints:
+            1_1_extractor: Plasser en <strong>utdrager</strong> på toppen av en <strong>sirkel form</strong> for å samle den!
+            1_2_conveyor: >-
+                Koble utdrageren med et <strong>transportbånd</strong> til hovedbygningen!<br><br>Tips: <strong>Trykk og dra</strong> beltet med musa!
+
+            1_3_expand: >-
+                Dette er <strong>IKKE</strong> et idle-spill! Bygg flere utdragere og belter for å nå målet raskere.<br><br>Tips: Hold <strong>SHIFT</strong> for å plassere flere utdragere, og bruk <strong>R</strong> for å rotere dem.
+
+# All shop upgrades
+shopUpgrades:
+    belt:
+        name: Belter, Distributører & Tuneller
+        description: Hastighet x<currentMult> → x<newMult>
+    miner:
+        name: Utdrager
+        description: Hastighet x<currentMult> → x<newMult>
+    processors:
+        name: Kutting, Rotering & Stabling
+        description: Hastighet x<currentMult> → x<newMult>
+    painting:
+        name: Miksing & Maling
+        description: Hastighet x<currentMult> → x<newMult>
+
+# Buildings and their name / description
+buildings:
+    hub:
+        deliver: Lever
+        toUnlock: for å låse opp
+        levelShortcut: nivå
+
+    belt:
+        default:
+            name: &belt Transportbånd
+            description: Transporterer objekter, hold og dra for å plassere flere.
+
+    miner: # Internal name for the Extractor
+        default:
+            name: &miner Utdrager
+            description: Plasser over en form eller farge for å trekke ut.
+
+        chainable:
+            name: Utdrager (Kjede)
+            description: Plasser over en form eller farge for å trekke ut. Kan kobles i kjede.
+
+    underground_belt: # Internal name for the Tunnel
+        default:
+            name: &underground_belt Tunell
+            description: Lar deg bruke tuneller for å transportere objekter under bygninger og belter.
+
+        tier2:
+            name: Tunell Nivå II
+            description: Lar deg bruke tuneller for å transportere objekter under bygninger og belter.
+
+    splitter: # Internal name for the Balancer
+        default:
+            name: &splitter Utjevner
+            description: Multifunksjonell - Sprer alt jevnt utover.
+
+        compact:
+            name: Sammenslå (kompakt)
+            description: Slår sammen to belter til ett.
+
+        compact-inverse:
+            name: Sammenslå (kompakt)
+            description: Slår sammen to belter til ett.
+
+    cutter:
+        default:
+            name: &cutter Kutter
+            description: Kutter objekter fra top til bunn og spytter ut begge halvdeler. <strong>Hvis du bare skal bruke den ene biten, sørg for å ødelegge den andre biten ellers vil det låse seg!</strong>
+        quad:
+            name: Kutter (4-Veis)
+            description: Kutter objekter til 4 biter. <strong>Hvis du bare skal bruke den ene biten, sørg for å ødelegge den andre biten ellers vil det låse seg!</strong>
+
+    rotater:
+        default:
+            name: &rotater Roter
+            description: Roter objekter med klokken, 90 grader.
+        ccw:
+            name: Roter (Mot klokken)
+            description: Roter objekter mot klokken, 90 grader.
+
+    stacker:
+        default:
+            name: &stacker Stabler
+            description: Stabler begge objekter. Hvis de ikke kan bli stablet sidelengs, vil høyre stables over den andre.
+
+    mixer:
+        default:
+            name: &mixer Fargemikser
+            description: Mikser to farger sammen ved å blande de.
+
+    painter:
+        default:
+            name: &painter Maler
+            description: Maler hele objektet på venstre inngang med fargen fra øverste inngang.
+        double:
+            name: Maler (Dobbel)
+            description: Maler hele objektet på venstre inngang med fargen fra øverste inngang.
+        quad:
+            name: Maler (Fireganger)
+            description: Farger enhver kvadrant av objektet med forskjellige farger.
+
+    trash:
+        default:
+            name: &trash Søppelkasse
+            description: Tar imot objekter fra alle sider og ødelegger de. For alltid.
+
+        storage:
+            name: Lagringsboks
+            description: Lagrer overflødige objekter, opp til en viss kapasitet. Kan bli brukt som mellomlagring for overflyt.
+
+storyRewards:
+    # Those are the rewards gained from completing the store
+    reward_cutter_and_trash:
+        title: Kutt Objekter
+        desc: Du åpnet nettop <strong>kutter</strong> - den kutter objekter i to fra <strong>topp til bunn</strong> uavhengig av rotasjon!<br><br>Husk å kvitt deg med alt søppel, ellers <strong>kiler det seg fast</strong> - For dette formålet har du søplekassen, som ødelegger alt du putter i den!
+
+    reward_rotater:
+        title: Rotering
+        desc: <strong>Rotereren</strong> har blitt tilgjengelig! Den roterer objekter med klokken 90 grader.
+
+    reward_painter:
+        title: Maling
+        desc: >-
+            <strong>Maleren</strong> har blitt tilgjengelig - Hent ut fargeressurser (på samme måte som du gjør med objekter) og kombiner det med et objekt i maleren for å male de!<br><br>PS: Hvis du er fargeblind, så jobber jeg med en løsning alt!
+
+    reward_mixer:
+        title: Fargemikser
+        desc: <strong>Fargemikseren</strong> har blitt tilgjengelig - Kombiner to farger og <strong>bland de sammen</strong> med denne bygningen!
+
+    reward_stacker:
+        title: Sammenslåer
+        desc: Du kan nå slå sammen forskjellige former med <strong>sammenslåeren</strong>! Begge inngangene blir slått sammen, og hvis det er mulig blir de plassert ved siden av hverandre, de vil bil <strong>til en</strong>. Hvis ikke, blir høyre inngang <strong>plassert over</strong> venstre inngang!
+
+    reward_splitter:
+        title: Fordeler/Sammenslåer
+        desc: Den multifunksjonelle <strong>fordeleren</strong> har blitt tilgjengelig - Den kan brukes til å bygge større fabrikker ved å <strong>fordele og slå sammen objekter</strong> til flere transportbånd!<br><br>
+
+    reward_tunnel:
+        title: Tunell
+        desc: <strong>Tunellen</strong> har blitt tilgjengelig - Du kan nå transportere objekter under transportbelter og bygninger med den!
+
+    reward_rotater_ccw:
+        title: Mot klokken rotering
+        desc: Du har åpnte en variant av <strong>rotereren</strong> - Den tillater rotasjoner mot klokken! For å bygge den, velg rotereren og <strong>trykk 'T' for å veksle mellom variantene</strong>!
+
+    reward_miner_chainable:
+        title: Kjede Utdrager
+        desc: Du har åpnet <strong>kjede utdrageren</strong>! Den sender <strong>videre sine resurser</strong> til andre utdragere så de kan mer effektivt hente ut resurser!
+
+    reward_underground_belt_tier_2:
+        title: Tunell Nivå II
+        desc: Du har åpnet en ny variant av <strong>tunellen</strong> - Den har <strong>lengre rekkevidde</strong>, og du kan også blande de forskjellige tunellene nå!
+
+    reward_splitter_compact:
+        title: Kompakt Utjevning
+        desc: >-
+            Du har åpnet en variant av <strong>utjevneren</strong> - Den godtar to innganger og slår de sammen til en!
+
+    reward_cutter_quad:
+        title: 4-Veis Kutting
+        desc: Du har åpnet en variant av <strong>kutteren</strong> - Den lar deg dele objekter inn i <strong>fire deler</strong> istedenfor bare to!
+
+    reward_painter_double:
+        title: Dobbel Maling
+        desc: Du har åpnet en variant av <strong>maleren</strong> - Den fungerer som vanlig maler, men prosesserer <strong>to objekter om gangen</strong>, konsumerer bare en farge istedenfor to!
+
+    reward_painter_quad:
+        title: Firegangers Maling
+        desc: Du har åpnet en variant av <strong>maleren</strong> - Den lar deg male hver del av objektet individuelt!
+
+    reward_storage:
+        title: Lagrings Buffer
+        desc: Du har åpnet en variant av <strong>søplekassen</strong> - Den lar deg lagre objekter opp til en viss mengde!
+
+    reward_freeplay:
+        title: Frispill
+        desc: Du klarte det! Du åpnet <strong>frispill modus</strong>! Dette betyr at formene er nå tilfeldig generert! (Frykt ikke, mer innhold er planlagt for frittstående versjon!)
+
+    reward_blueprints:
+        title: Blåkopier
+        desc: Du kan nå <strong>kopiere og lime inn</strong> deler av fabrikken din! Velg et område (Hold inne CTRL, så dra med musa), trykk så 'C' for å kopiere det.<br><br>Lime det inn er <strong>ikke graits</strong>, du må produsere <strong>blåkopi objekter</strong> for å få råd til det! (Det du nettop leverte).
+
+    # Special reward, which is shown when there is no reward actually
+    no_reward:
+        title: Neste nivå
+        desc: >-
+            Dette nivået ga deg ingen belønning, men neste gjør det! <br><br> PS: Burde ikke ødelegge din nåværende fabrikk - Du trenger <strong>alle</strong> de objektene senere for å <strong>åpne nye ting</strong>!
+
+    no_reward_freeplay:
+        title: Neste nivå
+        desc: >-
+            Gratulerer!! Forresten, mer innhold er planlagt for frittstående versjon!
+
+settings:
+    title: Instillinger
+    categories:
+        game: Spill
+        app: Applikasjon
+
+    versionBadges:
+        dev: Utvikling
+        staging: Icenesettelse
+        prod: Produksjon
+    buildDate: Bygget <at-date>
+
+    labels:
+        uiScale:
+            title: Grensesnitt skala
+            description: >-
+                Endrer størrelsen på brukergrensesnitt. Grensesnittet vil fortsatt skaleres basert på din enhets oppløsning, men denne instillingen styrer mengden den skalerer.
+            scales:
+                super_small: Veldig liten
+                small: Liten
+                regular: Vanlig
+                large: Stor
+                huge: Gigantisk
+
+        scrollWheelSensitivity:
+            title: Forstørrelses sensitivitet
+            description: >-
+                Endrer hvor sensitiv forstørringen er (Enten musehjulet eller trackpad).
+            sensitivity:
+                super_slow: Veldig Sakte
+                slow: Sakte
+                regular: Vanlig
+                fast: Raskt
+                super_fast: Veldig Raskt
+
+        movementSpeed:
+            title: Bevegelses hastighet
+            description: >-
+                Endrer hvor raskt bildet beveger seg når man bruker tastaturet.
+            speeds:
+                super_slow: Veldig Sakte slow
+                slow: Sakte
+                regular: Vanlig
+                fast: Raskt
+                super_fast: Veldig Raskt
+                extremely_fast: Ekstremt Raskt
+
+        language:
+            title: Språk
+            description: >-
+                Endre språket. Alle oversettelser er bidrag ifra andre brukere og kan være ufullstendig!
+
+        fullscreen:
+            title: Fullskjerm
+            description: >-
+                Det er anbefalt å spille spillet i fullskjerm for best mulig opplevelse. Kun tilgjengelig i frittstående versjon.
+
+        soundsMuted:
+            title: Skru av lyder
+            description: >-
+                Hvis aktivert, skrur av alle lydeffekter.
+
+        musicMuted:
+            title: Skru av Musikk
+            description: >-
+                Hvis aktivert, skrur av all musikk.
+
+        theme:
+            title: Spilltema
+            description: >-
+                Velg spilltema (lys / mørk).
+            themes:
+                dark: Mørk
+                light: Lys
+
+        refreshRate:
+            title: Simulerings Mål
+            description: >-
+                Hvis du har en 144hz skjerm, endre oppdateringsfrekvensen her så vil spillet simuleres mer korrekt på høyere oppdateringsfrekvenser. Dette kan redusere FPS om din PC er for treg.
+
+        alwaysMultiplace:
+            title: Plasser flere
+            description: >-
+                Hvis aktivert, alle bygg vil forbli valgt etter plassering inntil du avbryter det. Dette tilsvarer å holde SHIFT nede permanent.
+
+        offerHints:
+            title: Hint & Opplæring
+            description: >-
+                Om du ønsker hint og opplæring mens du spiller. Skjuler også enkelte elementer i brukergrensesnittet inntil spesifike nivå for å enklere komme i gang med spillet.
+
+keybindings:
+    title: Hurtigtaster
+    hint: >-
+        Tips: Husk å bruke CTRL, SHIFT and ALT! De gir deg flere plasseringsmuligheter.
+
+    resetKeybindings: Nullstill Hurtigtaster
+
+    categoryLabels:
+        general: Applikasjon
+        ingame: Spill
+        navigation: Navigering
+        placement: Plassering
+        massSelect: Velg Masse
+        buildings: Bygnings Snarvei
+        placementModifiers: Plasserings Alternativer
+
+    mappings:
+        confirm: Bekreft
+        back: Tilbake
+        mapMoveUp: Flytt Opp
+        mapMoveRight: Flytt Høyre
+        mapMoveDown: Flytt Ned
+        mapMoveLeft: Flytt Venstre
+        mapMoveFaster: Beveg Raskere
+        centerMap: Midstill Brettet
+
+        mapZoomIn: Zoom inn
+        mapZoomOut: Zoom ut
+        createMarker: Lag Markør
+
+        menuOpenShop: Oppgraderinger
+        menuOpenStats: Statistikk
+
+        toggleHud: Veksle Grensesnitt
+        toggleFPSInfo: Veksle FPS og debug informasjon
+        exportScreenshot: Eksporter hele basen som et bilde
+        belt: *belt
+        splitter: *splitter
+        underground_belt: *underground_belt
+        miner: *miner
+        cutter: *cutter
+        rotater: *rotater
+        stacker: *stacker
+        mixer: *mixer
+        painter: *painter
+        trash: *trash
+
+        abortBuildingPlacement: Avbryt Plassering
+        rotateWhilePlacing: Roter
+        rotateInverseModifier: >-
+            Alternativ: Roter mot klokken isteden
+        cycleBuildingVariants: Endre Varianter
+        confirmMassDelete: Bekreft Massesletting
+        pasteLastBlueprint: Lim inn forrige blåkopi
+        cycleBuildings: Endre Bygninger
+
+        massSelectStart: Hold og dra for å starte
+        massSelectSelectMultiple: Velg flere områder
+        massSelectCopy: Kopier Område
+        massSelectCut: Kutt ut Område
+
+        placementDisableAutoOrientation: Deaktiver automatisk orientering
+        placeMultiple: Forbli i plasseringsmodus
+        placeInverse: Inverter automatisk transportbånd orientering
+
+about:
+    title: Om dette spillet
+    body: >-
+        Dette spillet er åpen kildekode og utviklet av <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (dette er meg).<br><br>
+
+        Hvis du ønsker å bidra, sjekk ut <a href="<githublink>" target="_blank">shapez.io på github</a>.<br><br>
+
+        Spillet ville ikke vært mulig uten det fantastidke discord samfunnet rundt spillet mitt - Du burde virkelig bli med på <a href="<discordlink>" target="_blank">discord serveren</a>!<br><br>
+
+        Lydsporet er laget av <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Han er rå.<br><br>
+
+        Til slutt, stor takk til min beste venn <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Uten våre factorio økter ville ikke dette spillet ha eksistert.
+
+changelog:
+    title: Endringshistorikk
+
+demo:
+    features:
+        restoringGames: Gjenopprette lagringsfiler
+        importingGames: Importer lagringsfiler
+        oneGameLimit: Begrenset til en lagringsfil
+        customizeKeybindings: Forandre Hurtigtaster
+        exportingBase: Eksporter hele basen som bile
+
+    settingNotAvailable: Ikke tilgjengelig i demoversjonen.

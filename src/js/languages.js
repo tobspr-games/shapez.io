@@ -20,11 +20,29 @@ export const LANGUAGES = {
         code: "fr",
         region: "",
     },
+    "ja": {
+        name: "日本語",
+        data: require("./built-temp/base-ja.json"),
+        code: "ja",
+        region: "",
+    },
+    "pt-PT": {
+        name: "Português (Portugal)",
+        data: require("./built-temp/base-pt-PT.json"),
+        code: "pt",
+        region: "PT",
+    },
     "pt-BR": {
         name: "Português (Brasil)",
         data: require("./built-temp/base-pt-BR.json"),
         code: "pt",
         region: "BR",
+    },
+    "ru": {
+        name: "Русский",
+        data: require("./built-temp/base-ru.json"),
+        code: "ru",
+        region: "",
     },
     "cs": {
         name: "Čeština",
@@ -44,12 +62,6 @@ export const LANGUAGES = {
         code: "pl",
         region: "",
     },
-    "ru": {
-        name: "Русский",
-        data: require("./built-temp/base-ru.json"),
-        code: "ru",
-        region: "",
-    },
     "kor": {
         name: "한국어",
         data: require("./built-temp/base-kor.json"),
@@ -60,6 +72,12 @@ export const LANGUAGES = {
         name: "Nederlands",
         data: require("./built-temp/base-nl.json"),
         code: "nl",
+        region: "",
+    },
+    "no": {
+        name: "Norsk",
+        data: require("./built-temp/base-no.json"),
+        code: "no",
         region: "",
     },
 };
