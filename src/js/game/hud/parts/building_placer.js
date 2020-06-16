@@ -11,6 +11,7 @@ import {
     enumDirectionToVector,
     enumInvertedDirections,
     Vector,
+    enumAngleToDirection,
 } from "../../../core/vector";
 import { enumMouseButton } from "../../camera";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
@@ -39,7 +40,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
-        keyActionMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).add(this.resetBeltLock, this);
 
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
@@ -78,12 +78,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
          */
         this.initialDragTile = null;
 
-        /**
-         * The first initial placement direction we performed
-         * @type {Vector}
-         */
-        this.initialPlacementVector = null;
-
         this.root.signals.storyGoalCompleted.add(this.rerenderVariants, this);
         this.root.signals.upgradePurchased.add(this.rerenderVariants, this);
     }
@@ -112,13 +106,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             this.currentMetaBuilding.set(null);
             return STOP_PROPAGATION;
         }
-    }
-
-    /**
-     * Resets the belt lock, called after pressing shift
-     */
-    resetBeltLock() {
-        this.initialPlacementVector = null;
     }
 
     /**
@@ -177,14 +164,11 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             if (
                 this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()
             ) {
-                if (this.initialPlacementVector) {
-                    const lockX = Math_abs(Math_sign(this.initialPlacementVector.x));
-                    const lockY = Math_abs(Math_sign(this.initialPlacementVector.y));
-                    const delta = newPos.sub(oldPos);
-                    delta.x *= lockX;
-                    delta.y *= lockY;
-                    newPos = oldPos.add(delta);
-                }
+                const vector = enumDirectionToVector[enumAngleToDirection[this.currentBaseRotation]];
+                const delta = newPos.sub(oldPos);
+                delta.x *= Math_abs(vector.x);
+                delta.y *= Math_abs(vector.y);
+                newPos = oldPos.add(delta);
             }
 
             if (!oldPos.equals(newPos)) {
@@ -229,12 +213,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                             this.root.logic.tryDeleteBuilding(contents);
                         }
                     } else {
-                        if (!this.initialPlacementVector) {
-                            const origin = newPos.sub(oldPos);
-                            console.log("ORIGIN:", origin);
-                            this.initialPlacementVector = origin;
-                        }
-
                         this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
                     }
                     if (x0 === x1 && y0 === y1) break;
@@ -677,7 +655,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         // Draw direction lock
 
         if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()) {
-            if (this.lastDragTile && this.initialPlacementVector) {
+            if (this.lastDragTile) {
                 parameters.context.fillStyle = THEME.map.selectionBackground;
                 parameters.context.strokeStyle = THEME.map.selectionOverlay;
                 parameters.context.lineWidth = 3;
