@@ -3,7 +3,7 @@ export const CHANGELOG = [
         version: "1.1.15",
         date: "unreleased",
         entries: [
-            "You can now place straight belts by holding SHIFT! (For you, @giantwaffle ❤️)",
+            "You can now place straight belts (and other buildings) by holding SHIFT! (For you, @giantwaffle ❤️)",
             "Added continue button to main menu and add seperate 'New game' button (by jaysc)",
             "Added setting to disable smart tunnel placement introduced with the last update",
             "Update translations ",
