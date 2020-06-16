@@ -153,6 +153,8 @@ mainMenu:
 
         showInfo: 보기
         contestOver: 이 콘테스트는 끝났습니다. 디스코드에서 새로운 콘테스트 관련 알림을 받으세요!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:

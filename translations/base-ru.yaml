@@ -154,6 +154,8 @@ mainMenu:
 
         showInfo: Посмотреть
         contestOver: Этот конкурс закончился - присоединяйтесь в дискорде, чтобы получать уведомления о новых конкурсах!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:

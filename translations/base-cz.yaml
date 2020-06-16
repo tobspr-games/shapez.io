@@ -134,6 +134,8 @@ mainMenu:
 
         showInfo: Zobrazit
         contestOver: Tato soutěž skončila - Připojte se na Discord a získejte informace o nových soutěžích!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:

@@ -153,6 +153,8 @@ mainMenu:
 
         showInfo: View
         contestOver: This contest has ended - Join the discord to get noticed about new contests!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:

@@ -152,6 +152,8 @@ mainMenu:
 
         showInfo: Ver
         contestOver: El concurso ha terminado - Únete al discord para enterarte sobre nuevos concursos!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:
@@ -758,4 +760,4 @@ demo:
         exportingBase: Exportando base entera como captura de pantalla
 
     settingNotAvailable: No disponible en la versión de prueba.
-  
+

@@ -153,6 +153,8 @@ mainMenu:
         showInfo: Participar
         contestOver: Esse concurso está encerrado - Entre no discord para ser informado sobre novos concursos!
     helpTranslate: Ajude a traduzir!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:

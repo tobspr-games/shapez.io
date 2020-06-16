@@ -153,6 +153,8 @@ mainMenu:
 
         showInfo: Ver
         contestOver: Este concurso terminou - Entra no discord para seres notificado quando abrirem novos concursos!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:

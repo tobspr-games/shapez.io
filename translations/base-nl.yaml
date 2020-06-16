@@ -153,6 +153,8 @@ mainMenu:
 
         showInfo: Laat zien
         contestOver: Deze competitie is voorbij - word lid van de discord (engelstalig) om berichten te krijgen van nieuwe competities!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:

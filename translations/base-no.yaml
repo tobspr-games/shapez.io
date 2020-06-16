@@ -153,6 +153,8 @@ mainMenu:
 
         showInfo: Vis
         contestOver: Denne konkurransen er ferdig - Bli med på discord for å få varsel om nye konkurranser!
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:

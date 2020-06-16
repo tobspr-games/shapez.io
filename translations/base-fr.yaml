@@ -154,6 +154,8 @@ mainMenu:
 
         showInfo: Voir
         contestOver: Ce concours est terminé - Rejoignez le serveur discord pour être tenu au courant des prochains concours !
+    continue: Continue
+    newGame: New Game
 
 dialogs:
     buttons:
