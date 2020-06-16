@@ -257,7 +257,7 @@ dialogs:
 
     createMarker:
         title: Nouvelle balise
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci </strong> d'une forme (Que vous pouvez générer <a href="https://viewer.shapez.io" target="_blank">ici</a>)
 
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez !
@@ -777,4 +777,4 @@ demo:
 # French translation version v0.5 based on english v1.1.8 by Didier WEERTS 'The Corsaire'
 #
 
-# French translation completed (and corrected) by Pascal Grossé.
+# French translation completed (and corrected) by Pascal Grossé and Withers001
