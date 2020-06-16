@@ -175,7 +175,15 @@ export class HUDStatistics extends BaseHUDPart {
             }
         }
 
-        entries.sort((a, b) => b[1] - a[1]);
+        // Reach into the Hud to get the object that tracks which parts are pinned
+        const { pinnedShapes } = this.root.hud.parts;
+        entries.sort((a, b) => {
+            // do a sort calculation based on if the shapes are pinned
+            const pinSort =
+                Number(pinnedShapes.isShapePinned(b[0])) - Number(pinnedShapes.isShapePinned(a[0]));
+            // if the pinning of shapes is not equal, sort on that, otherwise, sort on the rates
+            return pinSort !== 0 ? pinSort : b[1] - a[1];
+        });
 
         let rendered = new Set();
 
