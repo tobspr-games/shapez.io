@@ -249,7 +249,7 @@ dialogs:
 
     createMarker:
         title: マーカーを設置
-        desc: わかりやすい名前をつけてください。
+        desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<a href="https://viewer.shapez.io" target="_blank">ここ</a>から生成できます）
 
     markerDemoLimit:
         desc: デモ版ではマーカー設置は2つまでに制限されています。スタンドアローン版は無制限です！
@@ -479,13 +479,16 @@ buildings:
     painter:
         default:
             name: &painter 着色機
-            description: 左から入力された形の全体を、右から入力された色で着色します。
+            description: &painter_desc 左から入力された形の全体を、右から入力された色で着色します。
         double:
             name: 着色機 (ダブル)
             description: 左から入力された形を、上から入力された色で着色します。
         quad:
             name: 着色機 (四分割)
             description: 入力された形を四分割づつ別の色で塗り分けられます。
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -537,7 +540,7 @@ storyRewards:
 
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
-        desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 - <strong>距離拡張版が追加され<strong>、以前のものと組み合わせて目的に応じて利用することができます！
+        desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 - <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用することができます！
 
     reward_splitter_compact:
         title: 合流機 (コンパクト)
@@ -546,7 +549,7 @@ storyRewards:
 
     reward_cutter_quad:
         title: 四分割
-        desc: <strong>切断機</strong>のバリエーションが利用可能になりました。 - 上下の二分割ではなく、<strong>四分割<strong>に切断できます！
+        desc: <strong>切断機</strong>のバリエーションが利用可能になりました。 - 上下の二分割ではなく、<strong>四分割</strong>に切断できます！
 
     reward_painter_double:
         title: 着色機 (ダブル)
@@ -566,7 +569,7 @@ storyRewards:
 
     reward_blueprints:
         title: ブループリント
-        desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
+        desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -732,6 +735,7 @@ keybindings:
         pasteLastBlueprint: 直前のブループリントをペーストする
         massSelectCut: 範囲カット
         exportScreenshot: 工場の全体像を画像出力
+        mapMoveFaster: より速く移動
 
 about:
     title: このゲームについて

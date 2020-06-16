@@ -11,7 +11,7 @@ import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
-export const enumPainterVariants = { double: "double", quad: "quad" };
+export const enumPainterVariants = { mirrored: "mirrored", double: "double", quad: "quad" };
 
 export class MetaPainterBuilding extends MetaBuilding {
     constructor() {
@@ -21,6 +21,7 @@ export class MetaPainterBuilding extends MetaBuilding {
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
+            case enumPainterVariants.mirrored:
                 return new Vector(2, 1);
             case enumPainterVariants.double:
                 return new Vector(2, 2);
@@ -42,7 +43,8 @@ export class MetaPainterBuilding extends MetaBuilding {
      */
     getAdditionalStatistics(root, variant) {
         switch (variant) {
-            case defaultBuildingVariant: {
+            case defaultBuildingVariant:
+            case enumPainterVariants.mirrored: {
                 const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
@@ -61,7 +63,7 @@ export class MetaPainterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
-        let variants = [defaultBuildingVariant];
+        let variants = [defaultBuildingVariant, enumPainterVariants.mirrored];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter_double)) {
             variants.push(enumPainterVariants.double);
         }
@@ -116,7 +118,8 @@ export class MetaPainterBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant, variant) {
         switch (variant) {
-            case defaultBuildingVariant: {
+            case defaultBuildingVariant:
+            case enumPainterVariants.mirrored: {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -125,7 +128,9 @@ export class MetaPainterBuilding extends MetaBuilding {
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.top],
+                        directions: [
+                            variant === defaultBuildingVariant ? enumDirection.top : enumDirection.bottom,
+                        ],
                         filter: enumItemAcceptorItemFilter.color,
                     },
                 ]);

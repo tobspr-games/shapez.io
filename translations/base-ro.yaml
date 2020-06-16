@@ -250,7 +250,7 @@ dialogs:
 
     createMarker:
         title: New Marker
-        desc: Give it a meaningful name
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
@@ -475,13 +475,16 @@ buildings:
     painter:
         default:
             name: &painter Painter
-            description: Colors the whole shape on the left input with the color from the right input.
+            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
         double:
             name: Painter (Double)
             description: Colors the shapes on the left inputs with the color from the top input.
         quad:
             name: Painter (Quad)
             description: Allows to color each quadrant of the shape with a different color.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -732,6 +735,7 @@ keybindings:
         pasteLastBlueprint: Paste last blueprint
         massSelectCut: Cut area
         exportScreenshot: Export whole Base as Image
+        mapMoveFaster: Move Faster
 
 about:
     title: About this Game

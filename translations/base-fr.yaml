@@ -257,7 +257,7 @@ dialogs:
 
     createMarker:
         title: Nouvelle balise
-        desc: Donnez-lui un nom approprié
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez !
@@ -478,13 +478,16 @@ buildings:
     painter:
         default:
             name: &painter Peintre
-            description: Colorie entièrement la forme de gauche avec la couleur de droite.
+            description: &painter_desc Colorie entièrement la forme de gauche avec la couleur de droite.
         double:
             name: Peintre (Double)
             description: Colorie les deux formes de gauche avec la couleur de droite.
         quad:
             name: Peintre (Quadruple)
             description: Permet de colorier chaque quadrant d'une forme avec une couleur différente.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

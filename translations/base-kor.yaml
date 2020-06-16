@@ -255,7 +255,7 @@ dialogs:
 
     createMarker:
         title: 새로운 마커
-        desc: 의미 있는 이름을 지어주세요
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: 데모 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
@@ -480,13 +480,16 @@ buildings:
     painter:
         default:
             name: &painter 도형 색칠기
-            description: 도형을 색소로 색칠한다.
+            description: &painter_desc 도형을 색소로 색칠한다.
         double:
             name: 2단 도형 색칠기
             description: 왼쪽에 입력되는 도형을 위에서 입력되는 색소로 색칠한다.
         quad:
             name: 4단 도형 색칠기
             description: 도형의 4가지 분단을 각각 다른 색으로 색칠할 수 있다.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -733,6 +736,7 @@ keybindings:
         placeMultiple: 배치 모드에 있기
         placeInverse: 자동 벨트 회전 뒤집기
         exportScreenshot: Export whole Base as Image
+        mapMoveFaster: Move Faster
 
 about:
     title: 이 게임의 정보

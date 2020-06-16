@@ -55,7 +55,7 @@ steamPage:
         Spillet er åpen kildekode - Alle kan bidra! Utenom det, så lytter jeg [b]veldig[/b] til samfunnet! Jeg prøver å lese alle forslag og ta imot så mye tilbakemeldinger som mulig.
 
         [list]
-            [*] Kampanje 
+            [*] Kampanje
             [*] Flere nivåer & bygninger (Frittstående eksklusivt)
             [*] Forskjellige brett, og kanskje hinder på brettet
             [*] Konfigurerbart brett-generasjon (Endre antall og størrelse på ressursfelt, seed, med mer)
@@ -255,7 +255,7 @@ dialogs:
 
     createMarker:
         title: Ny Markør
-        desc: Gi markøren et meningsfylt navn
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: Du kan kun ha to markører i demo verjsonen. Skaff deg frittstående versjon for ubegrensede markører!
@@ -478,13 +478,16 @@ buildings:
     painter:
         default:
             name: &painter Maler
-            description: Maler hele objektet på venstre inngang med fargen fra øverste inngang.
+            description: &painter_desc Maler hele objektet på venstre inngang med fargen fra øverste inngang.
         double:
             name: Maler (Dobbel)
             description: Maler hele objektet på venstre inngang med fargen fra øverste inngang.
         quad:
             name: Maler (Fireganger)
             description: Farger enhver kvadrant av objektet med forskjellige farger.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:

@@ -250,7 +250,7 @@ dialogs:
 
     createMarker:
         title: Nieuwe markering
-        desc: Geef het een betekenisvolle naam
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: Je kunt maar twee markeringen plaatsen in de demo. Koop de standalone voor een ongelimiteerde hoeveelheid markeringen!
@@ -340,13 +340,13 @@ ingame:
         dataSources:
             stored:
                 title: In opslag
-                description: Geeft weer hoe veel vormen er zijn opgeslagen in je centrale gebouw.
+                description: Geeft weer hoe veel vormen er zijn opgeslagen in de HUB.
             produced:
                 title: Geproduceerd
                 description: Geeft alle vormen weer die op dit moment geproduceerd worden, inclusief tussenproducten.
             delivered:
                 title: Geleverd
-                description: Geeft alle vormen weer die in het centrale gebouw worden bezorgd.
+                description: Geeft alle vormen weer die in de HUB worden bezorgd.
         noShapesProduced: Er zijn nog geen vormen geproduceerd.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -372,7 +372,7 @@ ingame:
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Kost
+        cost: Prijs
 
     # Map markers
     waypoints:
@@ -385,7 +385,7 @@ ingame:
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Plaats een <strong>extractor</strong> op een <strong>cirkelvorm</strong> om deze te onttrekken!
+            1_1_extractor: Plaats een <strong>ontginner</strong> op een <strong>cirkelvorm</strong> om deze te ontginnen!
             1_2_conveyor: >-
                 Verbind de extractor met een <strong>lopende band</strong> aan je hub!<br><br>Tip: <strong>Klik en sleep</strong> de lopende band met je muis!
 
@@ -395,10 +395,10 @@ ingame:
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Lopende banden, Verdeler & Tunnels
+        name: Banden, Verdeler & Tunnels
         description: Snelheid x<currentMult> → x<newMult>
     miner:
-        name: Extractor
+        name: Ontginner
         description: Snelheid x<currentMult> → x<newMult>
     processors:
         name: Knippen, draaien & stapelen
@@ -417,11 +417,11 @@ buildings:
     miner: # Internal name for the Extractor
         default:
             name: &miner Extractor
-            description: Plaats op een vorm of kleur om deze te onttrekken.
+            description: Plaats op een vorm of kleur om deze te ontginnen.
 
         chainable:
             name: Extractor (Ketting)
-            description: Plaats op een vorm of kleur om deze te onttrekken. Kan in serie worden geplaatst.
+            description: Plaats op een vorm of kleur om deze te ontginnen. Kan achter elkaar worden geplaatst.
 
     underground_belt: # Internal name for the Tunnel
         default:
@@ -474,13 +474,16 @@ buildings:
     painter:
         default:
             name: &painter Verver
-            description: Verft de volledige vorm in de linker input met de kleur van de rechter input.
+            description: &painter_desc Verft de volledige vorm in de linker input met de kleur van de rechter input.
         double:
             name: Verver (Dubbel)
             description: Verft de vormen in de linker inputs met de kleur van de rechter input.
         quad:
             name: Verver (Quad)
             description: Verft elke kwart van de vorm een andere kleur.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -732,6 +735,7 @@ keybindings:
         pasteLastBlueprint: Plak laatst gekopiëerde blauwdruk
         massSelectCut: Knip geselecteerd gebied
         exportScreenshot: Export whole Base as Image
+        mapMoveFaster: Move Faster
 
 about:
     title: Over dit spel

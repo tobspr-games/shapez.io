@@ -246,7 +246,7 @@ dialogs:
 
     createMarker:
         title: Nueva marca
-        desc: Dale un nombre representativo
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: solo puedes crear dos marcas en la versión de prueba. Obtén el juego completo para marcas ilimitadas!
@@ -469,13 +469,16 @@ buildings:
     painter:
         default:
             name: &painter Pintor
-            description: Colorea la figura entera con el color que entra por la izquierda.
+            description: &painter_desc Colorea la figura entera con el color que entra por la izquierda.
         double:
             name: Pintor (Doble)
             description: Colorea las figuras que entran por la izquierda con el color que entrapor arriba.
         quad:
             name: Pintor (Cuádruple)
             description: Permite colorear cada cuadrante de una figura con un color distinto.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -721,6 +724,7 @@ keybindings:
         pasteLastBlueprint: Paste last blueprint
         massSelectCut: Cut area
         exportScreenshot: Export whole Base as Image
+        mapMoveFaster: Move Faster
 
 about:
     title: Sobre el Juego

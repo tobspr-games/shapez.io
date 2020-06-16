@@ -250,7 +250,7 @@ dialogs:
 
     createMarker:
         title: Nova Marcação
-        desc: Dê um nome relevante
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
     markerDemoLimit:
         desc: >-
             Você só pode criar dois marcadores na versão demo. Adquira a versão completa para marcadores ilimitados!
@@ -477,13 +477,16 @@ buildings:
     painter:
         default:
             name: &painter Pintor
-            description: Colore a forma inteira na entrada esquerda com a cor da entrada direita.
+            description: &painter_desc Colore a forma inteira na entrada esquerda com a cor da entrada direita.
         double:
             name: Pintor (Duplo)
             description: Colore as duas formas na entrada esquerda com a cor da entrada direita.
         quad:
             name: Pintor (Quádruplo)
             description: Permite colorir cada quadrante da forma com uma cor diferente.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -733,6 +736,7 @@ keybindings:
         pasteLastBlueprint: Colar último projeto
         massSelectCut: Cortar área
         exportScreenshot: Exportar base inteira como imagem
+        mapMoveFaster: Move Faster
 
 about:
     title: Sobre o jogo

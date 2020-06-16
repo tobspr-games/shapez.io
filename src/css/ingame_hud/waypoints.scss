@@ -47,6 +47,7 @@
         opacity: 0.7;
         @include S(margin-bottom, 1px);
         font-weight: bold;
+
         &:hover {
             opacity: 1;
         }
@@ -61,6 +62,30 @@
 
             &:hover {
                 transform: scale(1.5);
+            }
+        }
+
+        &.hub {
+            // Transform because there is a canvas before
+            @include S(margin-left, -2px);
+
+            grid-template-columns: auto 1fr;
+            background: none !important;
+            @include S(padding-left, 0);
+            canvas {
+                @include S(width, 12px);
+                @include S(height, 12px);
+                @include S(margin-right, 1px);
+            }
+        }
+
+        &.shapeIcon {
+            canvas {
+                @include S(width, 15px);
+                @include S(height, 15px);
+                pointer-events: none;
+                // Double invert, to make sure it has the right color
+                @include DarkThemeInvert();
             }
         }
     }
