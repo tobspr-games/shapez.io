@@ -84,6 +84,8 @@
                 @include S(width, 15px);
                 @include S(height, 15px);
                 pointer-events: none;
+                // Double invert, to make sure it has the right color
+                @include DarkThemeInvert();
             }
         }
     }

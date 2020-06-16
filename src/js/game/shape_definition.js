@@ -223,7 +223,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             layers.push(quads);
         }
 
-        if (layers.length === 0) {
+        if (layers.length === 0 || layers.length > 4) {
             return false;
         }
 
