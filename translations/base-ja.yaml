@@ -249,7 +249,7 @@ dialogs:
 
     createMarker:
         title: マーカーを設置
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<a href="https://viewer.shapez.io" target="_blank">ここ</a>から生成できます）
 
     markerDemoLimit:
         desc: デモ版ではマーカー設置は2つまでに制限されています。スタンドアローン版は無制限です！
@@ -537,7 +537,7 @@ storyRewards:
 
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 - <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用することができます！
 
     reward_splitter_compact:
         title: 合流機 (コンパクト)
@@ -546,7 +546,7 @@ storyRewards:
 
     reward_cutter_quad:
         title: 四分割
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        desc: <strong>切断機</strong>のバリエーションが利用可能になりました。 - 上下の二分割ではなく、<strong>四分割</strong>に切断できます！
 
     reward_painter_double:
         title: 着色機 (ダブル)
@@ -566,7 +566,7 @@ storyRewards:
 
     reward_blueprints:
         title: ブループリント
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -732,7 +732,7 @@ keybindings:
         pasteLastBlueprint: 直前のブループリントをペーストする
         massSelectCut: 範囲カット
         exportScreenshot: 工場の全体像を画像出力
-        mapMoveFaster: Move Faster
+        mapMoveFaster: より速く移動
 
 about:
     title: このゲームについて
