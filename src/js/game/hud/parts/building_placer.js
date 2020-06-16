@@ -154,13 +154,13 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             const oldPos = this.lastDragTile;
             let newPos = this.root.camera.screenToWorld(pos).toTileSpace();
 
+            // Check if camera is moving, since then we do nothing
             if (this.root.camera.desiredCenter) {
-                // Camera is moving
                 this.lastDragTile = newPos;
                 return;
             }
 
-            // Direction lock
+            // Check for direction lock
             if (
                 this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).isCurrentlyPressed()
             ) {
@@ -171,10 +171,15 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                 newPos = oldPos.add(delta);
             }
 
+            // Check if anything changed
             if (!oldPos.equals(newPos)) {
+                // Automatic Direction
                 if (
                     metaBuilding &&
                     metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
+                    !this.root.keyMapper
+                        .getBinding(KEYMAPPINGS.placement.lockBeltDirection)
+                        .isCurrentlyPressed() &&
                     !this.root.keyMapper
                         .getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation)
                         .isCurrentlyPressed()
