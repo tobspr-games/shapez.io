@@ -19,8 +19,6 @@ const SQRT_2 = Math_sqrt(2);
 
 const logger = createLogger("belt");
 
-/** @typedef {Array<{ entity: Entity, followUp: Entity }>} BeltCache */
-
 export class BeltSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [BeltComponent]);
@@ -66,9 +64,6 @@ export class BeltSystem extends GameSystemWithFilter {
         this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
 
         this.cacheNeedsUpdate = true;
-
-        /** @type {BeltCache} */
-        this.beltCache = [];
     }
 
     /**
@@ -163,42 +158,14 @@ export class BeltSystem extends GameSystemWithFilter {
         return null;
     }
 
-    /**
-     * Adds a single entity to the cache
-     * @param {Entity} entity
-     * @param {BeltCache} cache
-     * @param {Set} visited
-     */
-    computeSingleBeltCache(entity, cache, visited) {
-        // Check for double visit
-        if (visited.has(entity.uid)) {
-            return;
-        }
-        visited.add(entity.uid);
-
-        const followUp = this.findFollowUpEntity(entity);
-        if (followUp) {
-            // Process followup first
-            this.computeSingleBeltCache(followUp, cache, visited);
-        }
-
-        cache.push({ entity, followUp });
-    }
-
     computeBeltCache() {
         logger.log("Updating belt cache");
 
-        let cache = [];
         let visited = new Set();
         for (let i = 0; i < this.allEntities.length; ++i) {
-            this.computeSingleBeltCache(this.allEntities[i], cache, visited);
+            const entity = this.allEntities[i];
+            entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
         }
-        assert(
-            cache.length === this.allEntities.length,
-            "Belt cache mismatch: Has " + cache.length + " entries but should have " + this.allEntities.length
-        );
-
-        this.beltCache = cache;
     }
 
     update() {
@@ -217,8 +184,8 @@ export class BeltSystem extends GameSystemWithFilter {
             beltSpeed *= 100;
         }
 
-        for (let i = 0; i < this.beltCache.length; ++i) {
-            const { entity, followUp } = this.beltCache[i];
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
 
             const beltComp = entity.components.Belt;
             const items = beltComp.sortedItems;
@@ -244,8 +211,8 @@ export class BeltSystem extends GameSystemWithFilter {
                 maxProgress = 1 - globalConfig.itemSpacingOnBelts;
             } else {
                 // Otherwise our progress depends on the follow up
-                if (followUp) {
-                    const spacingOnBelt = followUp.components.Belt.getDistanceToFirstItemCenter();
+                if (beltComp.followUpCache) {
+                    const spacingOnBelt = beltComp.followUpCache.components.Belt.getDistanceToFirstItemCenter();
                     maxProgress = Math.min(2, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
 
                     // Useful check, but hurts performance
@@ -270,8 +237,8 @@ export class BeltSystem extends GameSystemWithFilter {
                 progressAndItem[0] = Math.min(maxProgress, progressAndItem[0] + speedMultiplier * beltSpeed);
 
                 if (progressAndItem[0] >= 1.0) {
-                    if (followUp) {
-                        const followUpBelt = followUp.components.Belt;
+                    if (beltComp.followUpCache) {
+                        const followUpBelt = beltComp.followUpCache.components.Belt;
                         if (followUpBelt.canAcceptItem()) {
                             followUpBelt.takeItem(progressAndItem[1], progressAndItem[0] - 1.0);
                             items.splice(itemIndex, 1);
