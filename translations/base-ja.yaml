@@ -212,11 +212,11 @@ dialogs:
 
     featureRestriction:
         title: デモ版
-        desc: アクセスした要素 (<feature>) はデモ版では利用できません。スタンドアローン版の入手をご検討ください！ 
+        desc: アクセスした要素 (<feature>) はデモ版では利用できません。スタンドアローン版の入手をご検討ください！
 
     oneSavegameLimit:
         title: セーブデータ制限
-        desc: デモ版ではひとつのセーブデータのみ保持できます。既存のデータを削除するか、スタンドアローン版の入手をご検討ください！ 
+        desc: デモ版ではひとつのセーブデータのみ保持できます。既存のデータを削除するか、スタンドアローン版の入手をご検討ください！
 
     updateSummary:
         title: 新アップデート！
@@ -390,7 +390,7 @@ ingame:
                 抽出機を <strong>コンベアベルト</strong> でHUBまで繋げましょう！ <br><br> Tip: <strong>マウスのドラッグ</strong> でベルトを引けます。
 
             1_3_expand: >-
-                このゲームは放置系のゲームでは<strong>ありません</strong>！ もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip: <strong>SHIFT</strong> キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。 
+                このゲームは放置系のゲームでは<strong>ありません</strong>！ もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip: <strong>SHIFT</strong> キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。
 
 # All shop upgrades
 shopUpgrades:
@@ -517,7 +517,7 @@ storyRewards:
 
     reward_stacker:
         title: 積層機
-        desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>　
+        desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>
 
     reward_splitter:
         title: 分配機/合流機
@@ -672,7 +672,7 @@ settings:
 keybindings:
     title: キー設定
     hint: >-
-        Tip: CTRL, SHIFT, ALTを利用するようにしてください。これらはそれぞれ建造物配置の際の機能があります。 Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Tip: CTRL, SHIFT, ALTを利用するようにしてください。これらはそれぞれ建造物配置の際の機能があります。
 
     resetKeybindings: キー設定をリセット
 
