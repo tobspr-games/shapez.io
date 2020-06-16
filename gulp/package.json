@@ -95,7 +95,7 @@
         "gulp-rename": "^2.0.0",
         "gulp-sass": "^4.1.0",
         "gulp-sass-lint": "^1.4.0",
-        "gulp-sftp": "^0.1.5",
+        "gulp-sftp": "git+https://git@github.com/webksde/gulp-sftp",
         "gulp-terser": "^1.2.0",
         "gulp-webserver": "^0.9.1",
         "gulp-yaml": "^2.0.4",
