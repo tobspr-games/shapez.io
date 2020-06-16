@@ -2,7 +2,11 @@ export const CHANGELOG = [
     {
         version: "1.1.15",
         date: "unreleased",
-        entries: ["Added continue button to main menu and add seperate 'New game' button (by jaysc)"],
+        entries: [
+            "Added continue button to main menu and add seperate 'New game' button (by jaysc)",
+            "Added setting to disable smart tunnel placement introduced with the last update",
+            "Update translations ",
+        ],
     },
     {
         version: "1.1.14",

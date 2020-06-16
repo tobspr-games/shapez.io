@@ -58,6 +58,11 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
      * @param {Entity} entity
      */
     onEntityPlaced(entity) {
+        if (!this.root.app.settings.getAllSettings().enableTunnelSmartplace) {
+            // Smart-place disabled
+            return;
+        }
+
         const undergroundComp = entity.components.UndergroundBelt;
         if (undergroundComp && undergroundComp.mode === enumUndergroundBeltMode.receiver) {
             const staticComp = entity.components.StaticMapEntity;

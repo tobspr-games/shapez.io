@@ -159,8 +159,6 @@ mainMenu:
 
         showInfo: Wyświetl
         contestOver: Ten konkurs już się skończył - Dołącz do serwera Discord by nie przegapić kolejnych!
-    continue: Continue
-    newGame: New Game
 
 dialogs:
     buttons:

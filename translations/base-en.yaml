@@ -675,6 +675,11 @@ settings:
             description: >-
                 Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
 
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables to drag tunnels and excess tunnels will get removed.
+
 keybindings:
     title: Keybindings
     hint: >-
