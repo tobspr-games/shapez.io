@@ -15,6 +15,11 @@ $buildingsAndVariants: belt, splitter, splitter-compact, splitter-compact-invers
     }
 }
 
+// Special case
+[data-icon="building_tutorials/painter-mirrored.png"] {
+    background-image: uiResource("res/ui/building_tutorials/painter.png") !important;
+}
+
 $icons: notification_saved, notification_success, notification_upgrade;
 @each $icon in $icons {
     [data-icon="icons/#{$icon}.png"] {
