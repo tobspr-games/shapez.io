@@ -324,9 +324,11 @@
             </struct>
             <key type="filename">sprites/blueprints/cutter.png</key>
             <key type="filename">sprites/blueprints/mixer.png</key>
+            <key type="filename">sprites/blueprints/painter-mirrored.png</key>
             <key type="filename">sprites/blueprints/painter.png</key>
             <key type="filename">sprites/blueprints/splitter.png</key>
             <key type="filename">sprites/blueprints/stacker.png</key>
+            <key type="filename">sprites/buildings/painter-mirrored.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -445,6 +447,7 @@
             <key type="filename">sprites/map_overview/belt_forward.png</key>
             <key type="filename">sprites/map_overview/belt_left.png</key>
             <key type="filename">sprites/map_overview/belt_right.png</key>
+            <key type="filename">sprites/misc/hub_direction_indicator.png</key>
             <key type="filename">sprites/misc/waypoint.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
