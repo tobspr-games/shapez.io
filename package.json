@@ -7,7 +7,7 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "./gulp/gulp main.serveDev",
+        "dev": "cd gulp && yarn gulp main.serveDev",
         "tslint": "cd src/js && tsc",
         "lint": "npx eslint src/js",
         "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*",

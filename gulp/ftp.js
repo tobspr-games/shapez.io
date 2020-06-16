@@ -28,7 +28,7 @@ function gulptasksFTP($, gulp, buildFolder) {
     };
 
     // Write the "commit.txt" file
-    gulp.task("ftp.writeVersion", () => {
+    gulp.task("ftp.writeVersion", cb => {
         fs.writeFileSync(
             path.join(buildFolder, "version.json"),
             JSON.stringify(
@@ -41,6 +41,7 @@ function gulptasksFTP($, gulp, buildFolder) {
                 4
             )
         );
+        cb();
     });
 
     const gameSrcGlobs = [
@@ -78,14 +79,15 @@ function gulptasksFTP($, gulp, buildFolder) {
                 .pipe($.sftp(deployCredentials));
         });
 
-        gulp.task(`ftp.upload.${deployEnv}`, cb => {
-            $.sequence(
+        gulp.task(
+            `ftp.upload.${deployEnv}`,
+            gulp.series(
                 "ftp.writeVersion",
                 `ftp.upload.${deployEnv}.game`,
                 `ftp.upload.${deployEnv}.indexHtml`,
                 `ftp.upload.${deployEnv}.additionalFiles`
-            )(cb);
-        });
+            )
+        );
     }
 }
 

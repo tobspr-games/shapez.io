@@ -1,11 +1,5 @@
 /* eslint-disable */
 
-const nodeVersion = process.versions.node.split(".")[0];
-if (nodeVersion !== "10") {
-    console.error("This cli requires exactly Node.js 10. You are using Node.js " + nodeVersion);
-    process.exit(1);
-}
-
 require("colors");
 
 const gulp = require("gulp");
@@ -95,15 +89,15 @@ translations.gulptasksTranslations($, gulp, buildFolder);
 
 // Cleans up everything
 gulp.task("utils.cleanBuildFolder", () => {
-    return gulp.src(buildFolder, { read: false }).pipe($.clean({ force: true }));
+    return gulp.src(buildFolder, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
 });
 gulp.task("utils.cleanBuildTempFolder", () => {
     return gulp
-        .src(path.join(__dirname, "..", "src", "js", "built-temp"), { read: false })
+        .src(path.join(__dirname, "..", "src", "js", "built-temp"), { read: false, allowEmpty: true })
         .pipe($.clean({ force: true }));
 });
 
-gulp.task("utils.cleanup", $.sequence("utils.cleanBuildFolder", "utils.cleanBuildTempFolder"));
+gulp.task("utils.cleanup", gulp.series("utils.cleanBuildFolder", "utils.cleanBuildTempFolder"));
 
 // Requires no uncomitted files
 gulp.task("utils.requireCleanWorkingTree", cb => {
@@ -166,71 +160,66 @@ function serve({ standalone }) {
     });
 
     // Watch .scss files, those trigger a css rebuild
-    gulp.watch(["../src/**/*.scss"], ["css.dev"]);
+    gulp.watch(["../src/**/*.scss"], gulp.series("css.dev"));
 
     // Watch .html files, those trigger a html rebuild
-    gulp.watch("../src/**/*.html", [standalone ? "html.standalone-dev" : "html.dev"]);
+    gulp.watch("../src/**/*.html", gulp.series(standalone ? "html.standalone-dev" : "html.dev"));
 
     // Watch sound files
-    // gulp.watch(["../res_raw/sounds/**/*.mp3", "../res_raw/sounds/**/*.wav"], ["sounds.dev"]);
+    // gulp.watch(["../res_raw/sounds/**/*.mp3", "../res_raw/sounds/**/*.wav"], gulp.series("sounds.dev"));
 
     // Watch translations
-    gulp.watch("../translations/**/*.yaml", ["translations.convertToJson"]);
+    gulp.watch("../translations/**/*.yaml", gulp.series("translations.convertToJson"));
 
     gulp.watch(
         ["../res_raw/sounds/sfx/*.mp3", "../res_raw/sounds/sfx/*.wav"],
-        $.sequence("sounds.sfx", "sounds.copy")
+        gulp.series("sounds.sfx", "sounds.copy")
     );
     gulp.watch(
         ["../res_raw/sounds/music/*.mp3", "../res_raw/sounds/music/*.wav"],
-        $.sequence("sounds.music", "sounds.copy")
+        gulp.series("sounds.music", "sounds.copy")
     );
 
     // Watch resource files and copy them on change
-    gulp.watch(imgres.nonImageResourcesGlobs, ["imgres.copyNonImageResources"]);
-    gulp.watch(imgres.imageResourcesGlobs, ["imgres.copyImageResources"]);
+    gulp.watch(imgres.nonImageResourcesGlobs, gulp.series("imgres.copyNonImageResources"));
+    gulp.watch(imgres.imageResourcesGlobs, gulp.series("imgres.copyImageResources"));
 
     // Watch .atlas files and recompile the atlas on change
-    gulp.watch("../res_built/atlas/*.json", ["imgres.atlas"]);
+    gulp.watch("../res_built/atlas/*.json", gulp.series("imgres.atlas"));
 
     // Watch the build folder and reload when anything changed
     const extensions = ["html", "js", "png", "gif", "jpg", "svg", "mp3", "ico", "woff2", "json"];
-    gulp.watch(extensions.map(ext => path.join(buildFolder, "**", "*." + ext))).on("change", function (e) {
-        return gulp.src(e.path).pipe(browserSync.reload({ stream: true }));
+    gulp.watch(extensions.map(ext => path.join(buildFolder, "**", "*." + ext))).on("change", function (path) {
+        return gulp.src(path).pipe(browserSync.reload({ stream: true }));
     });
 
-    gulp.watch("../src/js/built-temp/*.json").on("change", function (e) {
-        return gulp.src(e.path).pipe(browserSync.reload({ stream: true }));
+    gulp.watch("../src/js/built-temp/*.json").on("change", function (path) {
+        return gulp.src(path).pipe(browserSync.reload({ stream: true }));
     });
 
     // Start the webpack watching server (Will never return)
     if (standalone) {
-        $.sequence("js.standalone-dev.watch")(() => true);
+        gulp.series("js.standalone-dev.watch")(() => true);
     } else {
-        $.sequence("js.dev.watch")(() => true);
+        gulp.series("js.dev.watch")(() => true);
     }
 }
-
-// Live-development
-gulp.task("main.serveDev", ["build.dev"], () => serve({ standalone: false }));
-gulp.task("main.serveStandalone", ["build.standalone.dev"], () => serve({ standalone: true }));
-
-gulp.task("default", ["main.serveDev"]);
 
 /////////////////////  RUNNABLE TASKS  /////////////////////
 
 // Pre and postbuild
-gulp.task("step.baseResources", cb => $.sequence("imgres.allOptimized")(cb));
+gulp.task("step.baseResources", gulp.series("imgres.allOptimized"));
 gulp.task("step.deleteEmpty", cb => {
     deleteEmpty.sync(buildFolder);
     cb();
 });
 
-gulp.task("step.postbuild", $.sequence("imgres.cleanupUnusedCssInlineImages", "step.deleteEmpty"));
+gulp.task("step.postbuild", gulp.series("imgres.cleanupUnusedCssInlineImages", "step.deleteEmpty"));
 
 // Builds everything (dev)
-gulp.task("build.dev", cb => {
-    $.sequence(
+gulp.task(
+    "build.dev",
+    gulp.series(
         "utils.cleanup",
         "utils.copyAdditionalBuildFiles",
         "imgres.atlas",
@@ -240,12 +229,13 @@ gulp.task("build.dev", cb => {
         "translations.fullBuild",
         "css.dev",
         "html.dev"
-    )(cb);
-});
+    )
+);
 
 // Builds everything (standalone -dev)
-gulp.task("build.standalone.dev", cb => {
-    $.sequence(
+gulp.task(
+    "build.standalone.dev",
+    gulp.series(
         "utils.cleanup",
         "imgres.atlas",
         "sounds.dev",
@@ -255,58 +245,74 @@ gulp.task("build.standalone.dev", cb => {
         "js.standalone-dev",
         "css.dev",
         "html.standalone-dev"
-    )(cb);
-});
+    )
+);
 
 // Builds everything (staging)
-gulp.task("step.staging.code", $.sequence("sounds.fullbuild", "translations.fullBuild", "js.staging"));
-gulp.task("step.staging.mainbuild", cb =>
-    $.multiProcess(["utils.copyAdditionalBuildFiles", "step.baseResources", "step.staging.code"], cb, false)
+gulp.task("step.staging.code", gulp.series("sounds.fullbuild", "translations.fullBuild", "js.staging"));
+gulp.task(
+    "step.staging.mainbuild",
+    gulp.parallel("utils.copyAdditionalBuildFiles", "step.baseResources", "step.staging.code")
 );
-gulp.task("step.staging.all", $.sequence("step.staging.mainbuild", "css.prod", "html.staging"));
-gulp.task("build.staging", $.sequence("utils.cleanup", "step.staging.all", "step.postbuild"));
+gulp.task("step.staging.all", gulp.series("step.staging.mainbuild", "css.prod", "html.staging"));
+gulp.task("build.staging", gulp.series("utils.cleanup", "step.staging.all", "step.postbuild"));
 
 // Builds everything (prod)
-gulp.task("step.prod.code", $.sequence("sounds.fullbuild", "translations.fullBuild", "js.prod"));
-gulp.task("step.prod.mainbuild", cb =>
-    $.multiProcess(["utils.copyAdditionalBuildFiles", "step.baseResources", "step.prod.code"], cb, false)
+gulp.task("step.prod.code", gulp.series("sounds.fullbuild", "translations.fullBuild", "js.prod"));
+gulp.task(
+    "step.prod.mainbuild",
+    gulp.parallel("utils.copyAdditionalBuildFiles", "step.baseResources", "step.prod.code")
 );
-gulp.task("step.prod.all", $.sequence("step.prod.mainbuild", "css.prod", "html.prod"));
-gulp.task("build.prod", $.sequence("utils.cleanup", "step.prod.all", "step.postbuild"));
+gulp.task("step.prod.all", gulp.series("step.prod.mainbuild", "css.prod", "html.prod"));
+gulp.task("build.prod", gulp.series("utils.cleanup", "step.prod.all", "step.postbuild"));
 
 // Builds everything (standalone-beta)
 gulp.task(
     "step.standalone-beta.code",
-    $.sequence("sounds.fullbuild", "translations.fullBuild", "js.standalone-beta")
+    gulp.series("sounds.fullbuild", "translations.fullBuild", "js.standalone-beta")
 );
-gulp.task("step.standalone-beta.mainbuild", cb =>
-    $.multiProcess(["step.baseResources", "step.standalone-beta.code"], cb, false)
-);
+gulp.task("step.standalone-beta.mainbuild", gulp.parallel("step.baseResources", "step.standalone-beta.code"));
 gulp.task(
     "step.standalone-beta.all",
-    $.sequence("step.standalone-beta.mainbuild", "css.prod-standalone", "html.standalone-beta")
+    gulp.series("step.standalone-beta.mainbuild", "css.prod-standalone", "html.standalone-beta")
 );
-gulp.task("build.standalone-beta", $.sequence("utils.cleanup", "step.standalone-beta.all", "step.postbuild"));
+gulp.task(
+    "build.standalone-beta",
+    gulp.series("utils.cleanup", "step.standalone-beta.all", "step.postbuild")
+);
 
 // Builds everything (standalone-prod)
 gulp.task(
     "step.standalone-prod.code",
-    $.sequence("sounds.fullbuild", "translations.fullBuild", "js.standalone-prod")
+    gulp.series("sounds.fullbuild", "translations.fullBuild", "js.standalone-prod")
 );
-gulp.task("step.standalone-prod.mainbuild", cb =>
-    $.multiProcess(["step.baseResources", "step.standalone-prod.code"], cb, false)
-);
+gulp.task("step.standalone-prod.mainbuild", gulp.parallel("step.baseResources", "step.standalone-prod.code"));
 gulp.task(
     "step.standalone-prod.all",
-    $.sequence("step.standalone-prod.mainbuild", "css.prod-standalone", "html.standalone-prod")
+    gulp.series("step.standalone-prod.mainbuild", "css.prod-standalone", "html.standalone-prod")
 );
-gulp.task("build.standalone-prod", $.sequence("utils.cleanup", "step.standalone-prod.all", "step.postbuild"));
+gulp.task(
+    "build.standalone-prod",
+    gulp.series("utils.cleanup", "step.standalone-prod.all", "step.postbuild")
+);
 
 // Deploying!
 gulp.task(
     "main.deploy.staging",
-    $.sequence("utils.requireCleanWorkingTree", "build.staging", "ftp.upload.staging")
+    gulp.series("utils.requireCleanWorkingTree", "build.staging", "ftp.upload.staging")
 );
-gulp.task("main.deploy.prod", $.sequence("utils.requireCleanWorkingTree", "build.prod", "ftp.upload.prod"));
-gulp.task("main.deploy.all", $.sequence("main.deploy.staging", "main.deploy.prod"));
-gulp.task("main.standalone", $.sequence("build.standalone-prod", "standalone.package.prod"));
+gulp.task("main.deploy.prod", gulp.series("utils.requireCleanWorkingTree", "build.prod", "ftp.upload.prod"));
+gulp.task("main.deploy.all", gulp.series("main.deploy.staging", "main.deploy.prod"));
+gulp.task("main.standalone", gulp.series("build.standalone-prod", "standalone.package.prod"));
+
+// Live-development
+gulp.task(
+    "main.serveDev",
+    gulp.series("build.dev", () => serve({ standalone: false }))
+);
+gulp.task(
+    "main.serveStandalone",
+    gulp.series("build.standalone.dev", () => serve({ standalone: true }))
+);
+
+gulp.task("default", gulp.series("main.serveDev"));

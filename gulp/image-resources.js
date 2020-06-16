@@ -10,7 +10,7 @@ const imageResourcesGlobs = ["../res/**/*.png", "../res/**/*.svg", "../res/**/*.
 function gulptasksImageResources($, gulp, buildFolder) {
     // Lossless options
     const minifyImagesOptsLossless = () => [
-        $.imagemin.jpegtran({
+        $.imageminJpegtran({
             progressive: true,
         }),
         $.imagemin.svgo({}),
@@ -25,7 +25,7 @@ function gulptasksImageResources($, gulp, buildFolder) {
 
     // Lossy options
     const minifyImagesOpts = () => [
-        $.imageminMozjpeg({
+        $.imagemin.mozjpeg({
             quality: 80,
             maxMemory: 1024 * 1024 * 8,
         }),
@@ -116,11 +116,12 @@ function gulptasksImageResources($, gulp, buildFolder) {
     });
 
     // Copies all resources and optimizes them
-    gulp.task("imgres.allOptimized", cb =>
-        $.multiProcess(
-            ["imgres.atlasOptimized", "imgres.copyNonImageResources", "imgres.copyImageResourcesOptimized"],
-            cb,
-            false
+    gulp.task(
+        "imgres.allOptimized",
+        gulp.parallel(
+            "imgres.atlasOptimized",
+            "imgres.copyNonImageResources",
+            "imgres.copyImageResourcesOptimized"
         )
     );
 
