@@ -130,6 +130,7 @@ export class GameRoot {
 
         this.signals = {
             // Entities
+            entityManuallyPlaced: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityAdded: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityGotNewComponent: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityComponentRemoved: /** @type {TypedSignal<[Entity]>} */ (new Signal()),

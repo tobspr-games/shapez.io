@@ -6,6 +6,8 @@ export const CHANGELOG = [
             "There is now an indicator (compass) to the HUB for the HUB Marker!",
             "You can now include shape short keys in markers to render shape icons instead of text!",
             "Added mirrored variant of the painter",
+            "When placing tunnels, unnecessary belts inbetween are now removed!",
+            "You can now drag tunnels and they will automatically expand! (Just try it out, its intuitive)",
         ],
     },
     {
