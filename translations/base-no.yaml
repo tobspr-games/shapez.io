@@ -155,7 +155,7 @@ mainMenu:
         contestOver: Denne konkurransen er ferdig - Bli med på discord for å få varsel om nye konkurranser!
     continue: Fortsett
     newGame: Nytt Spill
-    madeBy: Made by <author-link>
+    madeBy: Laget av <author-link>
 
 dialogs:
     buttons:
@@ -283,8 +283,8 @@ ingame:
         createMarker: Lag Markør
         delete: Ødelegg
         pasteLastBlueprint: Lim inn forrige blåkopi
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        lockBeltDirection: Aktiver båndplanleggeren
+        plannerSwitchSide: Flipp båndplanleggeren
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -677,15 +677,15 @@ settings:
                 Om du ønsker hint og opplæring mens du spiller. Skjuler også enkelte elementer i brukergrensesnittet inntil spesifike nivå for å enklere komme i gang med spillet.
 
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Smarte Tuneller
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Når aktivert, plassering av tuneller vil automatisk fjerne unødvendige bånd.
+                Dette lar deg også dra og slippe tuneller, og overflødige tuneller blir fjernet.
         vignette:
-            title: Vignette
+            title: Vignett
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Aktiverer vignett som gjør hjørnene på skjermen mørkere og teksten lettere
+                å lese.
 
 keybindings:
     title: Hurtigtaster
