@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.1.15",
-        date: "unreleased",
+        date: "17.06.2020",
         entries: [
             "You can now place straight belts (and tunnels) by holding SHIFT! (For you, @giantwaffle ❤️)",
             "Added continue button to main menu and add seperate 'New game' button (by jaysc)",
