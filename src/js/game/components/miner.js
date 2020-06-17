@@ -12,10 +12,10 @@ export class MinerComponent extends Component {
     }
 
     static getSchema() {
+        // cachedMinedItem is not serialized.
         return {
             lastMiningTime: types.ufloat,
             chainable: types.bool,
-            minedItem: types.nullable(types.obj(gItemRegistry)),
             itemChainBuffer: types.array(types.obj(gItemRegistry)),
         };
     }
@@ -23,14 +23,10 @@ export class MinerComponent extends Component {
     duplicateWithoutContents() {
         return new MinerComponent({
             chainable: this.chainable,
-            minedItem: this.minedItem,
         });
     }
 
-    /**
-     * @param {{chainable?: boolean, minedItem?: BaseItem}} param0
-     */
-    constructor({ chainable = false, minedItem = null }) {
+    constructor({ chainable = false }) {
         super();
         this.lastMiningTime = 0;
         this.chainable = chainable;
@@ -45,7 +41,7 @@ export class MinerComponent extends Component {
         /**
          * @type {BaseItem}
          */
-        this.minedItem = minedItem;
+        this.cachedMinedItem = null;
     }
 
     /**

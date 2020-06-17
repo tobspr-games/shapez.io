@@ -25,8 +25,16 @@ export class MinerSystem extends GameSystemWithFilter {
 
             const minerComp = entity.components.Miner;
 
-            if (!minerComp.minedItem) {
-                continue;
+            if (!minerComp.cachedMinedItem) {
+                const staticComp = entity.components.StaticMapEntity;
+                const tileBelow = this.root.map.getLowerLayerContentXY(
+                    staticComp.origin.x,
+                    staticComp.origin.y
+                );
+                if (!tileBelow) {
+                    continue;
+                }
+                minerComp.cachedMinedItem = tileBelow;
             }
 
             // First, try to get rid of chained items
@@ -38,9 +46,9 @@ export class MinerSystem extends GameSystemWithFilter {
             }
 
             if (this.root.time.isIngameTimerExpired(minerComp.lastMiningTime, 1 / miningSpeed)) {
-                if (this.tryPerformMinerEject(entity, minerComp.minedItem)) {
+                if (this.tryPerformMinerEject(entity, minerComp.cachedMinedItem)) {
                     // Analytics hook
-                    this.root.signals.itemProduced.dispatch(minerComp.minedItem);
+                    this.root.signals.itemProduced.dispatch(minerComp.cachedMinedItem);
 
                     // Actually mine
                     minerComp.lastMiningTime = this.root.time.now();
@@ -105,10 +113,13 @@ export class MinerSystem extends GameSystemWithFilter {
                     if (!staticComp.shouldBeDrawn(parameters)) {
                         continue;
                     }
+                    if (!minerComp.cachedMinedItem) {
+                        continue;
+                    }
 
-                    if (minerComp.minedItem) {
+                    if (minerComp.cachedMinedItem) {
                         const padding = 3;
-                        parameters.context.fillStyle = minerComp.minedItem.getBackgroundColorAsResource();
+                        parameters.context.fillStyle = minerComp.cachedMinedItem.getBackgroundColorAsResource();
                         parameters.context.fillRect(
                             staticComp.origin.x * globalConfig.tileSize + padding,
                             staticComp.origin.y * globalConfig.tileSize + padding,
@@ -117,8 +128,8 @@ export class MinerSystem extends GameSystemWithFilter {
                         );
                     }
 
-                    if (minerComp.minedItem) {
-                        minerComp.minedItem.draw(
+                    if (minerComp.cachedMinedItem) {
+                        minerComp.cachedMinedItem.draw(
                             (0.5 + staticComp.origin.x) * globalConfig.tileSize,
                             (0.5 + staticComp.origin.y) * globalConfig.tileSize,
                             parameters
