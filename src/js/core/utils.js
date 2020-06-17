@@ -978,17 +978,3 @@ export function formatItemsPerSecond(speed, double = false) {
         : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace("<x>", "" + round2Digits(speed)) +
               (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
 }
-
-/**
- * Finds the corner point between two vectors
- * @param {Vector} a
- * @param {Vector} b
- */
-export function findCornerBetweenPoints(a, b) {
-    const delta = b.sub(a);
-    if (Math_abs(delta.x) > Math_abs(delta.y)) {
-        return new Vector(a.x, b.y);
-    } else {
-        return new Vector(b.x, a.y);
-    }
-}

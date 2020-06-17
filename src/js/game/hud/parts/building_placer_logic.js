@@ -2,7 +2,6 @@ import { Math_abs, Math_degrees, Math_round } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
 import { Signal, STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
-import { findCornerBetweenPoints } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
 import { enumMouseButton } from "../../camera";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
@@ -31,6 +30,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Signals
         this.signals = {
             variantChanged: new Signal(),
+            draggingStarted: new Signal(),
         };
 
         /**
@@ -137,8 +137,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Figure which points the line visits
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const mouseTile = worldPos.toTileSpace();
-        const cornerTile = findCornerBetweenPoints(this.lastDragTile, mouseTile);
-        return cornerTile;
+
+        const fractional = worldPos.sub(mouseTile.toWorldSpaceCenterOfTile());
+
+        if (fractional.x + fractional.y < 0) {
+            return new Vector(this.lastDragTile.x, mouseTile.y);
+        } else {
+            return new Vector(mouseTile.x, this.lastDragTile.y);
+        }
     }
 
     /**

@@ -3,8 +3,13 @@ import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
-import { findCornerBetweenPoints, makeDiv, removeAllChildren } from "../../../core/utils";
-import { enumDirectionToAngle, enumDirectionToVector, enumInvertedDirections } from "../../../core/vector";
+import { makeDiv, removeAllChildren } from "../../../core/utils";
+import {
+    enumDirectionToAngle,
+    enumDirectionToVector,
+    enumInvertedDirections,
+    Vector,
+} from "../../../core/vector";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant } from "../../meta_building";
@@ -42,8 +47,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.signals.variantChanged.add(this.rerenderVariants, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.element, {});
-
         this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
+
+        this.currentInterpolatedCornerTile = new Vector();
     }
 
     /**
