@@ -65,9 +65,8 @@ export class BeltSystem extends GameSystemWithFilter {
         this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
 
         this.cacheNeedsUpdate = true;
-        /** @type {Rectangle} */
-        this.singleUpdateArea = null;
-        this.isMultiUpdate = false;
+        /** @type {Rectangle[]} */
+        this.smallUpdateAreas = [];
     }
 
     /**
@@ -119,15 +118,10 @@ export class BeltSystem extends GameSystemWithFilter {
             }
         }
 
-        // Optimize for the common case of adding or removing one belt.
+        // Optimize for the common case of adding or removing buildings one at a time.
+        // Clicking and dragging can fire up to 4 create/destroy signals.
         if (this.cacheNeedsUpdate) {
-            if (this.isMultiUpdate || this.singleUpdateArea) {
-                // This isn't the common case.
-                // The singleUpdateArea will be cleared by the cache update.
-                this.isMultiUpdate = true;
-            } else {
-                this.singleUpdateArea = affectedArea.expandedInAllDirections(1);
-            }
+            this.smallUpdateAreas.push(affectedArea.expandedInAllDirections(1));
         }
     }
 
@@ -176,12 +170,15 @@ export class BeltSystem extends GameSystemWithFilter {
     computeBeltCache() {
         logger.log("Updating belt cache");
 
-        if (this.singleUpdateArea && !this.isMultiUpdate) {
-            for (let x = this.singleUpdateArea.x; x < this.singleUpdateArea.right(); ++x) {
-                for (let y = this.singleUpdateArea.y; y < this.singleUpdateArea.bottom(); ++y) {
-                    const tile = this.root.map.getTileContentXY(x, y);
-                    if (tile && tile.components.Belt) {
-                        tile.components.Belt.followUpCache = this.findFollowUpEntity(tile);
+        if (this.smallUpdateAreas.length <= 4) {
+            for (let i = 0; i < this.smallUpdateAreas.length; ++i) {
+                const area = this.smallUpdateAreas[i];
+                for (let x = area.x; x < area.right(); ++x) {
+                    for (let y = area.y; y < area.bottom(); ++y) {
+                        const tile = this.root.map.getTileContentXY(x, y);
+                        if (tile && tile.components.Belt) {
+                            tile.components.Belt.followUpCache = this.findFollowUpEntity(tile);
+                        }
                     }
                 }
             }
@@ -191,8 +188,7 @@ export class BeltSystem extends GameSystemWithFilter {
                 entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
             }
         }
-        this.isMultiUpdate = false;
-        this.singleUpdateArea = null;
+        this.smallUpdateAreas = [];
     }
 
     update() {
