@@ -53,7 +53,7 @@ export class HUDModalDialogs extends BaseHUDPart {
      * @param {string} text
      * @param {Array<string>} buttons
      */
-    showInfo(title, text, buttons = ["ok:good"]) {
+    showInfo(title, text, buttons = ["ok:good/kb_enter/kb_escape"]) {
         const dialog = new Dialog({
             app: this.app,
             title: title,

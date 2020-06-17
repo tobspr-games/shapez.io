@@ -91,7 +91,7 @@ export class HUDMassSelector extends BaseHUDPart {
                     "<count>",
                     "" + formatBigNumberFull(this.selectedUids.size)
                 ),
-                ["cancel:good", "ok:bad"]
+                ["cancel:good/kb_escape", "ok:bad/kb_enter"]
             );
             ok.add(() => this.doDelete());
         } else {
@@ -141,7 +141,7 @@ export class HUDMassSelector extends BaseHUDPart {
                     "<count>",
                     "" + formatBigNumberFull(this.selectedUids.size)
                 ),
-                ["cancel:good", "ok:bad"]
+                ["cancel:good/kb_escape", "ok:bad/kb_enter"]
             );
             ok.add(() => this.doCut());
         } else {

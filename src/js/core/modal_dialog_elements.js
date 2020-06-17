@@ -50,6 +50,8 @@ export class Dialog {
 
         this.closeRequested = new Signal();
         this.buttonSignals = {};
+        this.enterHandler = null;
+        this.escapeHandler = null;
 
         for (let i = 0; i < buttons.length; ++i) {
             if (G_IS_DEV && globalConfig.debug.disableTimedButtons) {
@@ -58,6 +60,14 @@ export class Dialog {
 
             const buttonId = this.buttonIds[i].split(":")[0];
             this.buttonSignals[buttonId] = new Signal();
+            if (this.buttonIds[i].indexOf("/kb_enter") >= 0) {
+                this.enterHandler = buttonId;
+                this.buttonIds[i] = this.buttonIds[i].replace("/kb_enter", "");
+            }
+            if (this.buttonIds[i].indexOf("/kb_escape") >= 0) {
+                this.escapeHandler = buttonId;
+                this.buttonIds[i] = this.buttonIds[i].replace("/kb_escape", "");
+            }
         }
 
         this.timeouts = [];
@@ -66,9 +76,6 @@ export class Dialog {
         this.inputReciever = new InputReceiver("dialog-" + this.title);
 
         this.inputReciever.keydown.add(this.handleKeydown, this);
-
-        this.enterHandler = null;
-        this.escapeHandler = null;
     }
 
     /**
@@ -297,7 +304,7 @@ export class DialogOptionChooser extends Dialog {
                 <div class='option ${value === options.active ? "active" : ""} ${
                 iconPrefix ? "hasIcon" : ""
             }' data-optionvalue='${value}'>
-                    ${iconHtml}    
+                    ${iconHtml}
                     <span class='title'>${text}</span>
                     ${descHtml}
                 </div>
