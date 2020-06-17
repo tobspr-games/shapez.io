@@ -3,7 +3,7 @@ import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
-import { makeDiv, removeAllChildren } from "../../../core/utils";
+import { makeDiv, removeAllChildren, pulseAnimation, clamp } from "../../../core/utils";
 import {
     enumDirectionToAngle,
     enumDirectionToVector,
@@ -50,6 +50,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
 
         this.currentInterpolatedCornerTile = new Vector();
+
+        this.lockIndicatorSprite = Loader.getSprite("sprites/misc/lock_direction_indicator.png");
     }
 
     /**
@@ -319,6 +321,25 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
             parameters.context.beginCircle(endLine.x, endLine.y, 4);
             parameters.context.fill();
+
+            // Draw arrows
+            const path = this.computeDirectionLockPath();
+            for (let i = 0; i < path.length - 1; i += 1) {
+                const { rotation, tile } = path[i];
+                const worldPos = tile.toWorldSpaceCenterOfTile();
+                drawRotatedSprite({
+                    parameters,
+                    sprite: this.lockIndicatorSprite,
+                    x: worldPos.x,
+                    y: worldPos.y,
+                    angle: Math_radians(rotation),
+                    size: 12,
+                    offsetY:
+                        -globalConfig.halfTileSize -
+                        clamp((this.root.time.now() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
+                        globalConfig.halfTileSize,
+                });
+            }
         }
     }
 

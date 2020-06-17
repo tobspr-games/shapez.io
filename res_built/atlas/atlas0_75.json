@@ -592,6 +592,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
 	"sourceSize": {"w":24,"h":24}
 },
+"sprites/misc/lock_direction_indicator.png":
+{
+	"frame": {"x":1357,"y":733,"w":36,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":6,"w":36,"h":24},
+	"sourceSize": {"w":36,"h":36}
+},
 "sprites/misc/slot_bad_arrow.png":
 {
 	"frame": {"x":140,"y":994,"w":62,"h":62},
@@ -618,7 +626,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":1933,"y":327,"w":20,"h":24},
+	"frame": {"x":1357,"y":761,"w":20,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":20,"h":24},
@@ -631,6 +639,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2047,"h":1063},
 	"scale": "0.75",
-	"smartupdate": "$TexturePacker:SmartUpdate:d89b36ef407ab57010cdc305dbead00b:d53090b6a8e7ddd3fb089e71bf9d20ca:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8985524bba1a3f16cecab3c03b6aaa06:d614d20bfce033d8a8ab0990af085d16:f159918d23e5952766c6d23ab52278c6$"
 }
 }

@@ -91,6 +91,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
             .add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
+        this.root.gameState.inputReciever.keyup.add(this.checkForDirectionLockSwitch, this);
 
         // BINDINGS TO GAME EVENTS
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
@@ -212,6 +213,16 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     }
 
     /**
+     * Checks if the direction lock key got released and if such, resets the placement
+     * @param {any} args
+     */
+    checkForDirectionLockSwitch({ keyCode }) {
+        if (keyCode === this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).keyCode) {
+            this.abortDragging();
+        }
+    }
+
+    /**
      * Canvas click handler
      * @param {Vector} mousePos
      * @param {boolean} cancelAction
@@ -316,11 +327,27 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * releasing the mouse
      */
     executeDirectionLockedPlacement() {
+        const path = this.computeDirectionLockPath();
+        for (let i = 0; i < path.length; ++i) {
+            const { rotation, tile } = path[i];
+
+            this.currentBaseRotation = rotation;
+            this.tryPlaceCurrentBuildingAt(tile);
+        }
+    }
+
+    /**
+     * Finds the path which the current direction lock will use
+     * @returns {Array<{ tile: Vector, rotation: number }>}
+     */
+    computeDirectionLockPath() {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
-            return;
+            return [];
         }
+
+        let result = [];
 
         // Figure which points the line visits
         const worldPos = this.root.camera.screenToWorld(mousePosition);
@@ -333,10 +360,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const lengthToCorner = Math_round(pathToCorner.length());
         let currentPos = startTile.copy();
 
-        this.currentBaseRotation = (Math.round(Math_degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
+        let rotation = (Math.round(Math_degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
 
         for (let i = 0; i < lengthToCorner; ++i) {
-            this.tryPlaceCurrentBuildingAt(currentPos);
+            result.push({
+                tile: currentPos.copy(),
+                rotation,
+            });
             currentPos.addInplace(deltaToCorner);
         }
 
@@ -344,12 +374,16 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const pathFromCorner = mouseTile.sub(this.currentDirectionLockCorner);
         const deltaFromCorner = pathFromCorner.normalize().round();
         const lengthFromCorner = Math_round(pathFromCorner.length());
-        this.currentBaseRotation = (Math.round(Math_degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
+        rotation = (Math.round(Math_degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
 
         for (let i = 0; i < lengthFromCorner + 1; ++i) {
-            this.tryPlaceCurrentBuildingAt(currentPos);
+            result.push({
+                tile: currentPos.copy(),
+                rotation,
+            });
             currentPos.addInplace(deltaFromCorner);
         }
+        return result;
     }
 
     /**
