@@ -284,6 +284,7 @@ ingame:
         createMarker: マーカー設置
         delete: 削除
         pasteLastBlueprint: ブループリントの内容を設置
+        lockBeltDirection: Enable belt planner
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)

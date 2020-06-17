@@ -283,6 +283,7 @@ ingame:
         createMarker: Crear marca
         delete: Destruir
         pasteLastBlueprint: Paste last blueprint
+        lockBeltDirection: Enable belt planner
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)

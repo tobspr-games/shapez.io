@@ -283,6 +283,7 @@ ingame:
         createMarker: Lag Markør
         delete: Ødelegg
         pasteLastBlueprint: Lim inn forrige blåkopi
+        lockBeltDirection: Enable belt planner
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)

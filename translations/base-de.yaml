@@ -282,6 +282,7 @@ ingame:
         createMarker: Marker erstellen
         delete: Löschen
         pasteLastBlueprint: Letzte Blaupause einfügen
+        lockBeltDirection: Enable belt planner
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)

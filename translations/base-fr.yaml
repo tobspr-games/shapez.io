@@ -286,6 +286,7 @@ ingame:
         createMarker: Créer une balise
         delete: Supprimer
         pasteLastBlueprint: Copier le dernier patron
+        lockBeltDirection: Enable belt planner
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
