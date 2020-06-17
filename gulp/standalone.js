@@ -6,9 +6,9 @@ const fse = require("fs-extra");
 const execSync = require("child_process").execSync;
 
 function gulptasksStandalone($, gulp, buildFolder) {
-    const electronBaseDir = path.join("../electron");
+    const electronBaseDir = path.join(__dirname, "..", "electron");
 
-    const tempDestDir = path.join("..", "tmp_standalone_files");
+    const tempDestDir = path.join(__dirname, "..", "tmp_standalone_files");
     const tempDestBuildDir = path.join(tempDestDir, "built");
 
     gulp.task("standalone.prepare.cleanup", () => {
@@ -47,47 +47,49 @@ function gulptasksStandalone($, gulp, buildFolder) {
     });
 
     gulp.task("standalone.prepare.minifyCode", () => {
-        return gulp
-            .src(path.join(electronBaseDir, "*.js"))
-            .pipe(
-                $.terser({
-                    ecma: 6,
-                    parse: {},
-                    module: false,
-                    toplevel: true,
-                    keep_classnames: false,
-                    keep_fnames: false,
-                    safari10: false,
-                    compress: {
-                        arguments: false, // breaks
-                        drop_console: false,
-                        // keep_fargs: false,
-                        keep_infinity: true,
-                        passes: 2,
-                        module: false,
-                        toplevel: true,
-                        unsafe_math: true,
-                        unsafe_arrows: false,
-                        warnings: true,
-                    },
-                    mangle: {
-                        eval: true,
-                        keep_classnames: false,
-                        keep_fnames: false,
-                        module: false,
-                        toplevel: true,
-                        safari10: false,
-                    },
-                    output: {
-                        comments: false,
-                        ascii_only: true,
-                        beautify: false,
-                        braces: false,
-                        ecma: 6,
-                    },
-                })
-            )
-            .pipe(gulp.dest(tempDestBuildDir));
+        return (
+            gulp
+                .src(path.join(electronBaseDir, "*.js"))
+                // .pipe(
+                //     $.terser({
+                //         ecma: 6,
+                //         parse: {},
+                //         module: false,
+                //         toplevel: true,
+                //         keep_classnames: false,
+                //         keep_fnames: false,
+                //         safari10: false,
+                //         compress: {
+                //             arguments: false, // breaks
+                //             drop_console: false,
+                //             // keep_fargs: false,
+                //             keep_infinity: true,
+                //             passes: 2,
+                //             module: false,
+                //             toplevel: true,
+                //             unsafe_math: true,
+                //             unsafe_arrows: false,
+                //             warnings: true,
+                //         },
+                //         mangle: {
+                //             eval: true,
+                //             keep_classnames: false,
+                //             keep_fnames: false,
+                //             module: false,
+                //             toplevel: true,
+                //             safari10: false,
+                //         },
+                //         output: {
+                //             comments: false,
+                //             ascii_only: true,
+                //             beautify: false,
+                //             braces: false,
+                //             ecma: 6,
+                //         },
+                //     })
+                // )
+                .pipe(gulp.dest(tempDestBuildDir))
+        );
     });
 
     gulp.task("standalone.prepare.copyGamefiles", () => {
