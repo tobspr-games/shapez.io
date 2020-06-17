@@ -13,6 +13,7 @@ import { MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { createLogger } from "../../core/logging";
+import { Rectangle } from "../../core/rectangle";
 
 const BELT_ANIM_COUNT = 6;
 const SQRT_2 = Math_sqrt(2);
@@ -64,6 +65,9 @@ export class BeltSystem extends GameSystemWithFilter {
         this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
 
         this.cacheNeedsUpdate = true;
+        /** @type {Rectangle} */
+        this.singleUpdateArea = null;
+        this.isMultiUpdate = false;
     }
 
     /**
@@ -114,6 +118,17 @@ export class BeltSystem extends GameSystemWithFilter {
                 }
             }
         }
+
+        // Optimize for the common case of adding or removing one belt.
+        if (this.cacheNeedsUpdate) {
+            if (this.isMultiUpdate || this.singleUpdateArea) {
+                // This isn't the common case.
+                // The singleUpdateArea will be cleared by the cache update.
+                this.isMultiUpdate = true;
+            } else {
+                this.singleUpdateArea = affectedArea.expandedInAllDirections(1);
+            }
+        }
     }
 
     draw(parameters) {
@@ -161,11 +176,23 @@ export class BeltSystem extends GameSystemWithFilter {
     computeBeltCache() {
         logger.log("Updating belt cache");
 
-        let visited = new Set();
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
-            entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
+        if (this.singleUpdateArea && !this.isMultiUpdate) {
+            for (let x = this.singleUpdateArea.x; x < this.singleUpdateArea.right(); ++x) {
+                for (let y = this.singleUpdateArea.y; y < this.singleUpdateArea.bottom(); ++y) {
+                    const tile = this.root.map.getTileContentXY(x, y);
+                    if (tile && tile.components.Belt) {
+                        tile.components.Belt.followUpCache = this.findFollowUpEntity(tile);
+                    }
+                }
+            }
+        } else {
+            for (let i = 0; i < this.allEntities.length; ++i) {
+                const entity = this.allEntities[i];
+                entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
+            }
         }
+        this.isMultiUpdate = false;
+        this.singleUpdateArea = null;
     }
 
     update() {
