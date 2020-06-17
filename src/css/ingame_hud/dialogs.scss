@@ -32,6 +32,21 @@
                 background-color: rgba(#33363d, 0.9);
             }
         }
+
+        > .dialogInner.optionChooserDialog .optionParent {
+            .option {
+                background: #3d3f42;
+
+                &:hover {
+                    background-color: #424348;
+                }
+
+                &.active {
+                    background: $colorBlueBright;
+                    color: #fff;
+                }
+            }
+        }
     }
 
     &.visible {
