@@ -9,6 +9,7 @@ import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
+import { lerp } from "../../../core/utils";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -76,6 +77,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
          */
         this.lastDragTile = null;
 
+        /**
+         * Interpolate the side for direction lock slowly so it doesn't flicker
+         * @type {number}
+         */
+        this.interpolatedDirectionLockSide = 0;
+
         this.initializeBindings();
     }
 
@@ -139,13 +146,28 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const mouseTile = worldPos.toTileSpace();
 
-        const fractional = worldPos.sub(mouseTile.toWorldSpaceCenterOfTile());
-
-        if (fractional.x + fractional.y < 0) {
+        if (this.interpolatedDirectionLockSide <= 0) {
             return new Vector(this.lastDragTile.x, mouseTile.y);
         } else {
             return new Vector(mouseTile.x, this.lastDragTile.y);
         }
+    }
+
+    /**
+     * Computes on which side the direction lock should be active
+     * @returns {-1|0|1}
+     */
+    get currentDirectionLockSide() {
+        const mousePosition = this.root.app.mousePosition;
+        if (!mousePosition) {
+            // Not on screen
+            return 0;
+        }
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const mouseTile = worldPos.toTileSpace();
+
+        const fractional = worldPos.sub(mouseTile.toWorldSpaceCenterOfTile());
+        return fractional.x + fractional.y < 0 ? -1 : 1;
     }
 
     /**
@@ -177,6 +199,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (mousePos) {
             this.onMouseMove(mousePos);
         }
+
+        // Prevent flickering by interpolating the side
+        this.interpolatedDirectionLockSide = lerp(
+            this.interpolatedDirectionLockSide,
+            this.currentDirectionLockSide,
+            0.06
+        );
     }
 
     /**
@@ -362,12 +391,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         let rotation = (Math.round(Math_degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
 
-        for (let i = 0; i < lengthToCorner; ++i) {
-            result.push({
-                tile: currentPos.copy(),
-                rotation,
-            });
-            currentPos.addInplace(deltaToCorner);
+        if (lengthToCorner > 0) {
+            for (let i = 0; i < lengthToCorner; ++i) {
+                result.push({
+                    tile: currentPos.copy(),
+                    rotation,
+                });
+                currentPos.addInplace(deltaToCorner);
+            }
         }
 
         // Place from corner to end
@@ -376,12 +407,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const lengthFromCorner = Math_round(pathFromCorner.length());
         rotation = (Math.round(Math_degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
 
-        for (let i = 0; i < lengthFromCorner + 1; ++i) {
-            result.push({
-                tile: currentPos.copy(),
-                rotation,
-            });
-            currentPos.addInplace(deltaFromCorner);
+        if (lengthFromCorner > 0) {
+            for (let i = 0; i < lengthFromCorner + 1; ++i) {
+                result.push({
+                    tile: currentPos.copy(),
+                    rotation,
+                });
+                currentPos.addInplace(deltaFromCorner);
+            }
         }
         return result;
     }
