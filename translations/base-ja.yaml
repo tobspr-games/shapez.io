@@ -153,8 +153,8 @@ mainMenu:
 
         showInfo: View
         contestOver: This contest has ended - Join the discord to get noticed about new contests!
-    continue: Continue
-    newGame: New Game
+    continue: 続きから
+    newGame: 新規ゲーム
     madeBy: Made by <author-link>
 
 dialogs:
@@ -284,8 +284,8 @@ ingame:
         createMarker: マーカー設置
         delete: 削除
         pasteLastBlueprint: ブループリントの内容を設置
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        lockBeltDirection: ベルトプランナーを有効化
+        plannerSwitchSide: プランナーが通る側を反転
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -677,15 +677,14 @@ settings:
                 super_fast: 超速
                 extremely_fast: 超々速
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: スマートトンネル
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                有効にすると、トンネルを設置した際に不要なベルトを自動的に除去します。
+                また、トンネルをドラッグできるようになり、不要なトンネルは除去されます。
         vignette:
-            title: Vignette
+            title: ビネット
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                画面の隅を暗くして文字を読みやすくするビネットを有効化します。
 
 keybindings:
     title: キー設定
@@ -751,8 +750,8 @@ keybindings:
         massSelectCut: 範囲カット
         exportScreenshot: 工場の全体像を画像出力
         mapMoveFaster: より速く移動
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        lockBeltDirection: ベルトプランナーを有効化
+        switchDirectionLockSide: 'プランナー: 通る側を切り替え'
 
 about:
     title: このゲームについて
