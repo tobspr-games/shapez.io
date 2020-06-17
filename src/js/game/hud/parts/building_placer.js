@@ -299,8 +299,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const mouseWorld = this.root.camera.screenToWorld(mousePosition);
         const mouseTile = mouseWorld.toTileSpace();
         parameters.context.fillStyle = THEME.map.directionLock;
-        parameters.context.strokeStyle = THEME.map.directionLock;
-        parameters.context.lineWidth = 3;
+        parameters.context.strokeStyle = THEME.map.directionLockTrack;
+        parameters.context.lineWidth = 10;
 
         parameters.context.beginCircle(mouseWorld.x, mouseWorld.y, 4);
         parameters.context.fill();
@@ -310,7 +310,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             const endLine = mouseTile.toWorldSpaceCenterOfTile();
             const midLine = this.currentDirectionLockCorner.toWorldSpaceCenterOfTile();
 
-            parameters.context.beginCircle(startLine.x, startLine.y, 7);
+            parameters.context.beginCircle(startLine.x, startLine.y, 8);
             parameters.context.fill();
 
             parameters.context.beginPath();
@@ -319,7 +319,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             parameters.context.lineTo(endLine.x, endLine.y);
             parameters.context.stroke();
 
-            parameters.context.beginCircle(endLine.x, endLine.y, 4);
+            parameters.context.beginCircle(endLine.x, endLine.y, 5);
             parameters.context.fill();
 
             // Draw arrows

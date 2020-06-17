@@ -10,6 +10,7 @@
         "selectionBackground": "rgba(74, 163, 223, 0.2)",
 
         "directionLock": "rgb(74, 237, 134)",
+        "directionLockTrack": "rgba(74, 237, 134, 0.2)",
 
         "resources": {
             "shape": "#eaebec",
