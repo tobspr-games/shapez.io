@@ -153,8 +153,8 @@ mainMenu:
 
         showInfo: Vis
         contestOver: Denne konkurransen er ferdig - Bli med på discord for å få varsel om nye konkurranser!
-    continue: Continue
-    newGame: New Game
+    continue: Fortsett
+    newGame: Nytt Spill
 
 dialogs:
     buttons:
@@ -257,7 +257,7 @@ dialogs:
 
     createMarker:
         title: Ny Markør
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Gi markøren et meningsfullt navn, du kan også inkludere <strong>"short key"</strong> av et objekt (Som du kan generere <a href="https://viewer.shapez.io" target="_blank">her</a>)
 
     markerDemoLimit:
         desc: Du kan kun ha to markører i demo verjsonen. Skaff deg frittstående versjon for ubegrensede markører!
