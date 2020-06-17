@@ -125,6 +125,7 @@ mainMenu:
     openSourceHint: This game is open source!
     discordLink: Official Discord Server
     helpTranslate: Help translate!
+    madeBy: Made by <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-

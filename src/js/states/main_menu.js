@@ -25,7 +25,7 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
-            
+
             <p>${T.demoBanners.intro}</p>
 
             <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
@@ -61,9 +61,9 @@ export class MainMenuState extends GameState {
 
 
             <div class="mainWrapper ${IS_DEMO ? "demo" : "noDemo"}">
-                
+
                 <div class="sideContainer">
-                    ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
+                    ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
                 </div>
 
                 <div class="mainContainer">
@@ -73,8 +73,8 @@ export class MainMenuState extends GameState {
                             : `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
                     }
                 </div>
-                
-    
+
+
             </div>
 
             <div class="footer">
@@ -82,18 +82,20 @@ export class MainMenuState extends GameState {
                 <a class="githubLink boxLink" target="_blank">
                     ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
-                </a>    
-                    
+                </a>
+
                 <a class="discordLink boxLink" target="_blank">
                     ${T.mainMenu.discordLink}
                     <span class="thirdpartyLogo  discordLogo"></span>
                 </a>
 
                 <a class="changelog">${T.changelog.title}</a>
-                
+
                 <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
 
-                <div class="author">Made by <a class="producerLink" target="_blank">Tobias Springer</a></div>
+                <div class="author">${
+                    T.mainMenu.madeBy.replace("<author-link>", "<a class=\"producerLink\" target=\"_blank\">Tobias Springer</a>")
+                }</div>
 
             </div>
         `;
