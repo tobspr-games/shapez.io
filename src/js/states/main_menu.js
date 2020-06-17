@@ -93,9 +93,10 @@ export class MainMenuState extends GameState {
 
                 <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
 
-                <div class="author">${
-                    T.mainMenu.madeBy.replace("<author-link>", "<a class=\"producerLink\" target=\"_blank\">Tobias Springer</a>")
-                }</div>
+                <div class="author">${T.mainMenu.madeBy.replace(
+                    "<author-link>",
+                    '<a class="producerLink" target="_blank">Tobias Springer</a>'
+                )}</div>
 
             </div>
         `;
