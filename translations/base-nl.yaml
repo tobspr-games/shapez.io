@@ -77,9 +77,9 @@ global:
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: d
-        millions: mln
-        billions: mlj
-        trillions: blj
+        millions: M
+        billions: MJ
+        trillions: B
 
     # Shown for infinitely big numbers
     infinite: inf
