@@ -96,6 +96,11 @@ export class HUDStatistics extends BaseHUDPart {
 
         this.lastFullRerender = 0;
 
+        // since pinning shapes changes sort-order, the list should rerender
+        // every time a shape is pinned or unpinned
+        this.root.hud.signals.shapePinRequested.add(this.rerenderFull, this);
+        this.root.hud.signals.shapeUnpinRequested.add(this.rerenderFull, this);
+
         this.close();
         this.rerenderFull();
     }

@@ -105,7 +105,7 @@
                 @include S(padding, 0, 3px);
             }
 
-            div.pin {
+            button.pin {
                 @include S(width, 12px);
                 @include S(height, 12px);
                 @include S(padding, 0px);
@@ -114,8 +114,50 @@
 
                 opacity: 0.6;
                 transition: opacity 0.12s ease-in-out;
+                opacity: 0.6;
+                cursor: pointer;
+                pointer-events: all;
+                @include IncreasedClickArea(5px);
+                transition: opacity 0.12s ease-in-out;
 
                 @include DarkThemeInvert;
+
+                $disabledOpacity: 0.2;
+                $enabledOpacity: 0.6;
+
+                &:hover {
+                    opacity: $enabledOpacity + 0.1;
+                }
+
+                &.alreadyPinned {
+                    opacity: $disabledOpacity !important;
+
+                    &:hover {
+                        opacity: $disabledOpacity + 0.1 !important;
+                    }
+                }
+
+                &.isGoal {
+                    background: uiResource("icons/current_goal_marker.png") center center / 95%
+                        no-repeat;
+                    opacity: $disabledOpacity !important;
+                    cursor: default;
+                    pointer-events: none;
+                }
+
+                &.pinned {
+                    opacity: $disabledOpacity;
+                    &:hover {
+                        opacity: $disabledOpacity + 0.1;
+                    }
+                }
+
+                &.unpinned {
+                    opacity: $enabledOpacity;
+                    &:hover {
+                        opacity: $enabledOpacity + 0.1;
+                    }
+                }
             }
         }
     }

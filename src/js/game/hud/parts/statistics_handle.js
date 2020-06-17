@@ -5,6 +5,7 @@ import { formatBigNumber, clamp } from "../../../core/utils";
 import { globalConfig } from "../../../core/config";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { T } from "../../../translations";
+import { ClickDetector } from "../../../core/click_detector";
 
 /** @enum {string} */
 export const enumDisplayMode = {
@@ -31,12 +32,24 @@ export class HUDShapeStatisticsHandle {
 
     initElement() {
         this.element = document.createElement("div");
-        this.element.setAttribute("data-shape-key", this.definition.getHash());
-        if (this.root.hud.parts.pinnedShapes.isShapePinned(this.definition.getHash())) {
-            const pinButton = document.createElement("div");
-            pinButton.classList.add("pin");
-            this.element.appendChild(pinButton);
-        }
+        const shape = this.definition.getHash();
+        this.element.setAttribute("data-shape-key", shape);
+        const pinButton = document.createElement("button");
+        pinButton.classList.add("pin");
+        const pinDetector = new ClickDetector(pinButton, {
+            consumeEvents: true,
+            preventDefault: true,
+        });
+        pinDetector.click.add(() => {
+            if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
+                this.root.hud.signals.shapeUnpinRequested.dispatch(shape);
+            } else {
+                this.root.hud.signals.shapePinRequested.dispatch(this.definition);
+            }
+        });
+        this.pinButton = pinButton;
+        this.updatePinClasses();
+        this.element.appendChild(this.pinButton);
         this.counter = document.createElement("span");
         this.counter.classList.add("counter");
         this.element.appendChild(this.counter);
@@ -65,6 +78,24 @@ export class HUDShapeStatisticsHandle {
     }
 
     /**
+     * Updates the classes on `this.pinButton` to ensure the UI accurately reflects
+     * the current pin-state of the shape
+     */
+    updatePinClasses() {
+        const shape = this.definition.getHash();
+        const currentGoalShape = this.root.hubGoals.currentGoal.definition.getHash();
+        if (shape === currentGoalShape) {
+            this.pinButton.classList.add("isGoal");
+        } else if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
+            this.pinButton.classList.add("pinned", "alreadyPinned");
+            this.pinButton.classList.remove("unpinned");
+        } else {
+            this.pinButton.classList.remove("pinned", "alreadyPinned");
+            this.pinButton.classList.add("unpinned");
+        }
+    }
+
+    /**
      *
      * @param {enumDisplayMode} displayMode
      * @param {enumAnalyticsDataSource} dataSource
@@ -77,7 +108,7 @@ export class HUDShapeStatisticsHandle {
         if (!this.visible && !forced) {
             return;
         }
-
+        this.updatePinClasses();
         switch (dataSource) {
             case enumAnalyticsDataSource.stored: {
                 this.counter.innerText = formatBigNumber(
