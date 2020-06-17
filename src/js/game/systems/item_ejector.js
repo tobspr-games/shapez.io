@@ -7,6 +7,7 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { Math_min } from "../../core/builtins";
 import { createLogger } from "../../core/logging";
+import { Rectangle } from "../../core/rectangle";
 
 const logger = createLogger("systems/ejector");
 
@@ -18,10 +19,30 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
         this.root.signals.entityAdded.add(this.invalidateCache, this);
         this.root.signals.entityDestroyed.add(this.invalidateCache, this);
+
+        /**
+         * @type {Rectangle[]}
+         */
+        this.smallCacheAreas = [];
     }
 
-    invalidateCache() {
+    /**
+     * 
+     * @param {Entity} entity 
+     */
+    invalidateCache(entity) {
+        if (!entity.components.StaticMapEntity) {
+            return;
+        }
+
         this.cacheNeedsUpdate = true;
+
+        // Optimize for the common case: adding or removing one building at a time. Clicking
+        // and dragging can cause up to 4 add/remove signals.
+        const staticComp = entity.components.StaticMapEntity;
+        const bounds = staticComp.getTileSpaceBounds();
+        const expandedBounds = bounds.expandedInAllDirections(2);
+        this.smallCacheAreas.push(expandedBounds);
     }
 
     /**
@@ -30,67 +51,103 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     recomputeCache() {
         logger.log("Recomputing cache");
 
-        // Try to find acceptors for every ejector
         let entryCount = 0;
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
-            const ejectorComp = entity.components.ItemEjector;
-            const staticComp = entity.components.StaticMapEntity;
+        if (this.smallCacheAreas.length <= 4) {
+            // Only recompute caches of entities inside the rectangles.
+            for (let i = 0; i < this.smallCacheAreas.length; i++) {
+                entryCount += this.recomputeAreaCaches(this.smallCacheAreas[i]);
+            }
+        } else {
+            // Try to find acceptors for every ejector
+            for (let i = 0; i < this.allEntities.length; ++i) {
+                const entity = this.allEntities[i];
+                entryCount += this.recomputeSingleEntityCache(entity);
+            }
 
-            // Clear the old cache.
-            ejectorComp.cachedConnectedSlots = null;
+        }
+        logger.log("Found", entryCount, "entries to update");
 
-            // For every ejector slot, try to find an acceptor
-            for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorComp.slots.length; ++ejectorSlotIndex) {
-                const ejectorSlot = ejectorComp.slots[ejectorSlotIndex];
+        this.smallCacheAreas = [];
+    }
 
-                // Clear the old cache.
-                ejectorSlot.cachedDestSlot = null;
-                ejectorSlot.cachedTargetEntity = null;
-
-                // Figure out where and into which direction we eject items
-                const ejectSlotWsTile = staticComp.localTileToWorld(ejectorSlot.pos);
-                const ejectSlotWsDirection = staticComp.localDirectionToWorld(ejectorSlot.direction);
-                const ejectSlotWsDirectionVector = enumDirectionToVector[ejectSlotWsDirection];
-                const ejectSlotTargetWsTile = ejectSlotWsTile.add(ejectSlotWsDirectionVector);
-
-                // Try to find the given acceptor component to take the item
-                const targetEntity = this.root.map.getTileContent(ejectSlotTargetWsTile);
-                if (!targetEntity) {
-                    // No consumer for item
-                    continue;
+    /**
+     * 
+     * @param {Rectangle} area 
+     */
+    recomputeAreaCaches(area) {
+        let entryCount = 0;
+        for (let x = area.x; x < area.right(); ++x) {
+            for (let y = area.y; y < area.bottom(); ++y) {
+                const entity = this.root.map.getTileContentXY(x, y);
+                if (entity && entity.components.ItemEjector) {
+                    entryCount += this.recomputeSingleEntityCache(entity);
                 }
-
-                const targetAcceptorComp = targetEntity.components.ItemAcceptor;
-                const targetStaticComp = targetEntity.components.StaticMapEntity;
-                if (!targetAcceptorComp) {
-                    // Entity doesn't accept items
-                    continue;
-                }
-
-                const matchingSlot = targetAcceptorComp.findMatchingSlot(
-                    targetStaticComp.worldToLocalTile(ejectSlotTargetWsTile),
-                    targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection)
-                );
-
-                if (!matchingSlot) {
-                    // No matching slot found
-                    continue;
-                }
-
-                // Ok we found a connection
-                if (ejectorComp.cachedConnectedSlots) {
-                    ejectorComp.cachedConnectedSlots.push(ejectorSlot);
-                } else {
-                    ejectorComp.cachedConnectedSlots = [ejectorSlot];
-                }
-                ejectorSlot.cachedTargetEntity = targetEntity;
-                ejectorSlot.cachedDestSlot = matchingSlot;
-                entryCount += 1;
             }
         }
+        return entryCount;
+    }
 
-        logger.log("Found", entryCount, "entries to update");
+    /**
+     * 
+     * @param {Entity} entity 
+     */
+    recomputeSingleEntityCache(entity) {
+        const ejectorComp = entity.components.ItemEjector;
+        const staticComp = entity.components.StaticMapEntity;
+
+        // Clear the old cache.
+        ejectorComp.cachedConnectedSlots = null;
+
+        // For every ejector slot, try to find an acceptor
+        let entryCount = 0;
+        for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorComp.slots.length; ++ejectorSlotIndex) {
+            const ejectorSlot = ejectorComp.slots[ejectorSlotIndex];
+
+            // Clear the old cache.
+            ejectorSlot.cachedDestSlot = null;
+            ejectorSlot.cachedTargetEntity = null;
+
+            // Figure out where and into which direction we eject items
+            const ejectSlotWsTile = staticComp.localTileToWorld(ejectorSlot.pos);
+            const ejectSlotWsDirection = staticComp.localDirectionToWorld(ejectorSlot.direction);
+            const ejectSlotWsDirectionVector = enumDirectionToVector[ejectSlotWsDirection];
+            const ejectSlotTargetWsTile = ejectSlotWsTile.add(ejectSlotWsDirectionVector);
+
+            // Try to find the given acceptor component to take the item
+            const targetEntity = this.root.map.getTileContent(ejectSlotTargetWsTile);
+            if (!targetEntity) {
+                // No consumer for item
+                continue;
+            }
+
+            const targetAcceptorComp = targetEntity.components.ItemAcceptor;
+            const targetStaticComp = targetEntity.components.StaticMapEntity;
+            if (!targetAcceptorComp) {
+                // Entity doesn't accept items
+                continue;
+            }
+
+            const matchingSlot = targetAcceptorComp.findMatchingSlot(
+                targetStaticComp.worldToLocalTile(ejectSlotTargetWsTile),
+                targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection)
+            );
+
+            if (!matchingSlot) {
+                // No matching slot found
+                continue;
+            }
+
+            // Ok we found a connection
+            if (ejectorComp.cachedConnectedSlots) {
+                ejectorComp.cachedConnectedSlots.push(ejectorSlot);
+            } else {
+                ejectorComp.cachedConnectedSlots = [ejectorSlot];
+            }
+            ejectorSlot.cachedTargetEntity = targetEntity;
+            ejectorSlot.cachedDestSlot = matchingSlot;
+            entryCount += 1;
+        }
+        return entryCount;
     }
 
     update() {
