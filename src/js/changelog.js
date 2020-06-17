@@ -6,7 +6,8 @@ export const CHANGELOG = [
             "You can now place straight belts (and tunnels) by holding SHIFT! (For you, @giantwaffle ❤️)",
             "Added continue button to main menu and add seperate 'New game' button (by jaysc)",
             "Added setting to disable smart tunnel placement introduced with the last update",
-            "Update translations ",
+            "Added setting to disable vignette",
+            "Update translations",
         ],
     },
     {

@@ -681,6 +681,11 @@ settings:
             description: >-
                 When enabled, placing tunnels will automatically remove unnecessary belts. This also enables to drag tunnels and excess tunnels will get removed.
 
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier to read.
+
 keybindings:
     title: Keybindings
     hint: >-
