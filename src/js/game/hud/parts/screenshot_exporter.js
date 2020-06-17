@@ -61,7 +61,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         if (dimensions.x + dimensions.y > 256) {
             if (dimensions.x > dimensions.y) {
                 chunkSizePixels = Math.floor(128 * (128 / dimensions.x));
-            }else{
+            } else {
                 chunkSizePixels = Math.floor(128 * (128 / dimensions.y));
             }
             logger.log("ChunkSizePixels:", chunkSizePixels);		
