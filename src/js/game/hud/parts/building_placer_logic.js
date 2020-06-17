@@ -343,12 +343,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      */
     executeDirectionLockedPlacement() {
         const path = this.computeDirectionLockPath();
-        for (let i = 0; i < path.length; ++i) {
-            const { rotation, tile } = path[i];
+        this.root.logic.performBulkOperation(() => {
+            for (let i = 0; i < path.length; ++i) {
+                const { rotation, tile } = path[i];
 
-            this.currentBaseRotation = rotation;
-            this.tryPlaceCurrentBuildingAt(tile);
-        }
+                this.currentBaseRotation = rotation;
+                this.tryPlaceCurrentBuildingAt(tile);
+            }
+        });
     }
 
     /**

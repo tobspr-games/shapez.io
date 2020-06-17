@@ -3,7 +3,7 @@ import { createLogger } from "../core/logging";
 import { Signal } from "../core/signal";
 import { fastArrayDelete, fastArrayDeleteValueIfContained } from "./utils";
 import { Vector } from "./vector";
-import { IS_MOBILE } from "./config";
+import { IS_MOBILE, SUPPORT_TOUCH } from "./config";
 import { SOUNDS } from "../platform/sound";
 import { GLOBAL_APP } from "./globals";
 
@@ -119,16 +119,21 @@ export class ClickDetector {
                 }
             }
             const options = this.internalGetEventListenerOptions();
-            this.element.removeEventListener("touchstart", this.handlerTouchStart, options);
-            this.element.removeEventListener("touchend", this.handlerTouchEnd, options);
-            this.element.removeEventListener("touchcancel", this.handlerTouchCancel, options);
+
+            if (SUPPORT_TOUCH) {
+                this.element.removeEventListener("touchstart", this.handlerTouchStart, options);
+                this.element.removeEventListener("touchend", this.handlerTouchEnd, options);
+                this.element.removeEventListener("touchcancel", this.handlerTouchCancel, options);
+            }
 
             this.element.removeEventListener("mouseup", this.handlerTouchStart, options);
             this.element.removeEventListener("mousedown", this.handlerTouchEnd, options);
             this.element.removeEventListener("mouseout", this.handlerTouchCancel, options);
 
             if (this.captureTouchmove) {
-                this.element.removeEventListener("touchmove", this.handlerTouchMove, options);
+                if (SUPPORT_TOUCH) {
+                    this.element.removeEventListener("touchmove", this.handlerTouchMove, options);
+                }
                 this.element.removeEventListener("mousemove", this.handlerTouchMove, options);
             }
 
@@ -186,16 +191,20 @@ export class ClickDetector {
             element.addEventListener("click", this.handlerPreventClick, options);
         }
 
-        element.addEventListener("touchstart", this.handlerTouchStart, options);
-        element.addEventListener("touchend", this.handlerTouchEnd, options);
-        element.addEventListener("touchcancel", this.handlerTouchCancel, options);
+        if (SUPPORT_TOUCH) {
+            element.addEventListener("touchstart", this.handlerTouchStart, options);
+            element.addEventListener("touchend", this.handlerTouchEnd, options);
+            element.addEventListener("touchcancel", this.handlerTouchCancel, options);
+        }
 
         element.addEventListener("mousedown", this.handlerTouchStart, options);
         element.addEventListener("mouseup", this.handlerTouchEnd, options);
         element.addEventListener("mouseout", this.handlerTouchCancel, options);
 
         if (this.captureTouchmove) {
-            element.addEventListener("touchmove", this.handlerTouchMove, options);
+            if (SUPPORT_TOUCH) {
+                element.addEventListener("touchmove", this.handlerTouchMove, options);
+            }
             element.addEventListener("mousemove", this.handlerTouchMove, options);
         }
 
