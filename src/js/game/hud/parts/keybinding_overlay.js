@@ -92,6 +92,11 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 )}</code>
                 <label>${T.ingame.keybindingsOverlay.lockBeltDirection}</label>
             </div>
+
+            <div class="binding placementOnly directionLock">
+                <code class="keybinding">${getKeycode(KEYMAPPINGS.placement.switchDirectionLockSide)}</code>
+                <label>${T.ingame.keybindingsOverlay.plannerSwitchSide}</label>
+            </div>
         `
         );
     }

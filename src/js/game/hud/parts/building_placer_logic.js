@@ -78,10 +78,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.lastDragTile = null;
 
         /**
-         * Interpolate the side for direction lock slowly so it doesn't flicker
-         * @type {number}
+         * The side for direction lock
+         * @type {number} (0|1)
          */
-        this.interpolatedDirectionLockSide = 0;
+        this.currentDirectionLockSide = 0;
 
         this.initializeBindings();
     }
@@ -94,6 +94,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const keyActionMapper = this.root.keyMapper;
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
+        keyActionMapper
+            .getBinding(KEYMAPPINGS.placement.switchDirectionLockSide)
+            .add(this.switchDirectionLockSide, this);
         keyActionMapper
             .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
             .add(this.abortPlacement, this);
@@ -146,28 +149,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const mouseTile = worldPos.toTileSpace();
 
-        if (this.interpolatedDirectionLockSide <= 0) {
+        if (this.currentDirectionLockSide === 0) {
             return new Vector(this.lastDragTile.x, mouseTile.y);
         } else {
             return new Vector(mouseTile.x, this.lastDragTile.y);
         }
-    }
-
-    /**
-     * Computes on which side the direction lock should be active
-     * @returns {-1|0|1}
-     */
-    get currentDirectionLockSide() {
-        const mousePosition = this.root.app.mousePosition;
-        if (!mousePosition) {
-            // Not on screen
-            return 0;
-        }
-        const worldPos = this.root.camera.screenToWorld(mousePosition);
-        const mouseTile = worldPos.toTileSpace();
-
-        const fractional = worldPos.sub(mouseTile.toWorldSpaceCenterOfTile());
-        return fractional.x + fractional.y < 0 ? -1 : 1;
     }
 
     /**
@@ -199,13 +185,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (mousePos) {
             this.onMouseMove(mousePos);
         }
-
-        // Prevent flickering by interpolating the side
-        this.interpolatedDirectionLockSide = lerp(
-            this.interpolatedDirectionLockSide,
-            this.currentDirectionLockSide,
-            0.04
-        );
     }
 
     /**
@@ -239,6 +218,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (contents) {
             this.root.logic.tryDeleteBuilding(contents);
         }
+    }
+
+    switchDirectionLockSide() {
+        this.currentDirectionLockSide = 1 - this.currentDirectionLockSide;
     }
 
     /**
