@@ -75,6 +75,14 @@
         display: none;
     }
 
+    &:not(.hasDirectionLock) .binding.directionLock {
+        display: none;
+    }
+
+    &.hasDirectionLock .noDirectionLock {
+        display: none;
+    }
+
     .binding.placementOnly,
     &:not(.placementActive) .binding.noPlacementOnly {
         transform-origin: 0% 50%;

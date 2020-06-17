@@ -3,6 +3,7 @@ import { T } from "../../../translations";
 import { getStringForKeyCode, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { TrackedState } from "../../../core/tracked_state";
+import { MetaBuilding } from "../../meta_building";
 
 export class HUDKeybindingOverlay extends BaseHUDPart {
     initialize() {
@@ -77,19 +78,34 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 (this.root.app.settings.getAllSettings().alwaysMultiplace
                     ? ""
                     : `
-            <div class="binding placementOnly">
+            <div class="binding placementOnly noDirectionLock">
                 <code class="keybinding builtinKey shift">${getKeycode(
                     KEYMAPPINGS.placementModifiers.placeMultiple
                 )}</code>
                 <label>${T.ingame.keybindingsOverlay.placeMultiple}</label>
             </div>`) +
                 `
+
+            <div class="binding placementOnly directionLock">
+                <code class="keybinding builtinKey shift">${getKeycode(
+                    KEYMAPPINGS.placementModifiers.lockBeltDirection
+                )}</code>
+                <label>${T.ingame.keybindingsOverlay.lockBeltDirection}</label>
+            </div>
         `
         );
     }
 
+    /**
+     *
+     * @param {MetaBuilding} selectedMetaBuilding
+     */
     onSelectedBuildingForPlacementChanged(selectedMetaBuilding) {
         this.element.classList.toggle("placementActive", !!selectedMetaBuilding);
+        this.element.classList.toggle(
+            "hasDirectionLock",
+            selectedMetaBuilding && selectedMetaBuilding.getHasDirectionLockAvailable()
+        );
     }
 
     applyCssClasses() {

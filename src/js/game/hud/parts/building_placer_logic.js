@@ -121,7 +121,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         return (
             metaBuilding &&
             metaBuilding.getHasDirectionLockAvailable() &&
-            this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).pressed
+            this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed
         );
     }
 
@@ -246,7 +246,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @param {any} args
      */
     checkForDirectionLockSwitch({ keyCode }) {
-        if (keyCode === this.root.keyMapper.getBinding(KEYMAPPINGS.placement.lockBeltDirection).keyCode) {
+        if (
+            keyCode ===
+            this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).keyCode
+        ) {
             this.abortDragging();
         }
     }
