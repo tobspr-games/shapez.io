@@ -393,9 +393,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const pathFromCorner = mouseTile.sub(this.currentDirectionLockCorner);
         const deltaFromCorner = pathFromCorner.normalize().round();
         const lengthFromCorner = Math_round(pathFromCorner.length());
-        rotation = (Math.round(Math_degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
 
         if (lengthFromCorner > 0) {
+            rotation = (Math.round(Math_degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
             for (let i = 0; i < lengthFromCorner + 1; ++i) {
                 result.push({
                     tile: currentPos.copy(),
@@ -403,6 +403,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 });
                 currentPos.addInplace(deltaFromCorner);
             }
+        } else {
+            // Finish last one
+            result.push({
+                tile: currentPos.copy(),
+                rotation,
+            });
         }
         return result;
     }

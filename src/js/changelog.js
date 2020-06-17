@@ -1,5 +1,10 @@
 export const CHANGELOG = [
     {
+        version: "1.1.16",
+        date: "unreleased",
+        entries: ["Fix belt planner not placing the last belt"],
+    },
+    {
         version: "1.1.15",
         date: "17.06.2020",
         entries: [
