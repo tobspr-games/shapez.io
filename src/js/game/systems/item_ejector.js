@@ -27,8 +27,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     /**
-     * 
-     * @param {Entity} entity 
+     *
+     * @param {Entity} entity
      */
     invalidateCache(entity) {
         if (!entity.components.StaticMapEntity) {
@@ -63,7 +63,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const entity = this.allEntities[i];
                 entryCount += this.recomputeSingleEntityCache(entity);
             }
-
         }
         logger.log("Found", entryCount, "entries to update");
 
@@ -71,8 +70,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     /**
-     * 
-     * @param {Rectangle} area 
+     *
+     * @param {Rectangle} area
      */
     recomputeAreaCaches(area) {
         let entryCount = 0;
@@ -88,8 +87,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     /**
-     * 
-     * @param {Entity} entity 
+     *
+     * @param {Entity} entity
      */
     recomputeSingleEntityCache(entity) {
         const ejectorComp = entity.components.ItemEjector;
