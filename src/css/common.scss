@@ -417,6 +417,10 @@ canvas {
         display: inline-block;
         vertical-align: middle;
     }
+
+    @include DarkThemeOverride {
+        color: #fff;
+    }
 }
 
 .prefab_LoadingTextWithAnimDelayed {
