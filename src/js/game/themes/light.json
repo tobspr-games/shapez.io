@@ -9,6 +9,8 @@
         "selectionOutline": "rgba(74, 163, 223, 0.5)",
         "selectionBackground": "rgba(74, 163, 223, 0.2)",
 
+        "directionLock": "rgb(74, 237, 134)",
+
         "resources": {
             "shape": "#eaebec",
             "red": "#ffbfc1",

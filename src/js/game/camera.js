@@ -885,25 +885,25 @@ export class Camera extends BasicSerializableObject {
             let forceY = 0;
 
             const actionMapper = this.root.keyMapper;
-            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveUp).isCurrentlyPressed()) {
+            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveUp).pressed) {
                 forceY -= 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveDown).isCurrentlyPressed()) {
+            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveDown).pressed) {
                 forceY += 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveLeft).isCurrentlyPressed()) {
+            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveLeft).pressed) {
                 forceX -= 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveRight).isCurrentlyPressed()) {
+            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveRight).pressed) {
                 forceX += 1;
             }
 
             let movementSpeed =
                 this.root.app.settings.getMovementSpeed() *
-                (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveFaster).isCurrentlyPressed() ? 4 : 1);
+                (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveFaster).pressed ? 4 : 1);
 
             this.center.x += moveAmount * forceX * movementSpeed;
             this.center.y += moveAmount * forceY * movementSpeed;

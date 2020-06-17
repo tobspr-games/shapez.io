@@ -108,7 +108,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             this.root.hubGoals.takeShapeByKey(blueprintShape, cost);
 
             // This actually feels weird
-            // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).isCurrentlyPressed()) {
+            // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).pressed) {
             //     this.currentBlueprint.set(null);
             // }
         }
@@ -133,11 +133,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     rotateBlueprint() {
         if (this.currentBlueprint.get()) {
-            if (
-                this.root.keyMapper
-                    .getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
-                    .isCurrentlyPressed()
-            ) {
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
                 this.currentBlueprint.get().rotateCcw();
             } else {
                 this.currentBlueprint.get().rotateCw();

@@ -261,14 +261,16 @@ export class Keybinding {
 
     /**
      * Returns whether this binding is currently pressed
+     * @returns {boolean}
      */
-    isCurrentlyPressed() {
+    get pressed() {
         // Check if the key is down
         if (this.app.inputMgr.keysDown.has(this.keyCode)) {
             // Check if it is the top reciever
             const reciever = this.keyMapper.inputReceiver;
             return this.app.inputMgr.getTopReciever() === reciever;
         }
+        return false;
     }
 
     /**
