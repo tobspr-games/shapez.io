@@ -88,4 +88,26 @@
             }
         }
     }
+
+    @include DarkThemeOverride {
+        .content {
+            .setting {
+                background: #424345;
+
+                .value.enum {
+                    // dirty but works
+                    filter: invert(0.8);
+                    color: #222;
+                }
+
+                .value.checkbox {
+                    background-color: #74767b;
+
+                    &.checked {
+                        background-color: #605b7d;
+                    }
+                }
+            }
+        }
+    }
 }
