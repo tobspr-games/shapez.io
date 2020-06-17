@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
+    shortText: shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,7 +30,7 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io это игра о строительстве фабрик для автоматизации создания и объединения фигур. Доставляйте запрошенные, все более сложные фигуры, чтобы развиваться в игре и разблокировать улучшения, чтобы ускорить работу вашей фабрики.
+        shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения фигур. Доставляйте запрошенные, все более сложные фигуры, чтобы развиваться в игре и разблокировать улучшения, чтобы ускорить работу вашей фабрики.
 
         Поскольку спрос растет, вам придется увеличивать свою фабрику, чтобы соответствовать потребностям. Однако, не забывайте о ресурсах, несмотря на то что вы будете расширятся на [b]бесконечной карте[/b]!
 
@@ -154,9 +154,9 @@ mainMenu:
 
         showInfo: Посмотреть
         contestOver: Этот конкурс закончился - присоединяйтесь в дискорде, чтобы получать уведомления о новых конкурсах!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: Продолжить
+    newGame: Новая Игра
+    madeBy: Создано <author-link>
 
 dialogs:
     buttons:
@@ -232,7 +232,7 @@ dialogs:
         desc: >-
             Все формы, которые вы производите, могут быть использованы для разблокировки
             улучшений - <strong>Не разрушайте свои старые фабрики!</strong>
-            Вкладка обновлений находится в правом верхнем углу экрана.
+            Вкладка улучшений находится в правом верхнем углу экрана.
     massDeleteConfirm:
         title: Подтвердить удаление
         desc: >-
@@ -287,8 +287,8 @@ ingame:
         createMarker: Создать маркер
         delete: Удалить
         pasteLastBlueprint: Вставить последний чертеж
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        lockBeltDirection: Включить конвейерный планировщик
+        plannerSwitchSide: Поменять местами стороны планировщика
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -370,7 +370,7 @@ ingame:
         buttons:
             continue: Продолжить
             settings: Настройки
-            menu: Вернутся в меню
+            menu: Вернуться в меню
 
     # Bottom left tutorial hints
     tutorialHints:
@@ -420,7 +420,7 @@ buildings:
     belt:
         default:
             name: &belt Конвейер
-            description: Транспортриует передметы, держите и тащите, чтобы разместить несколько.
+            description: Транспортирует предметы, держите и тащите, чтобы разместить несколько.
 
     miner: # Internal name for the Extractor
         default:
@@ -447,11 +447,11 @@ buildings:
 
         compact:
             name: Соединитель
-            description: Компактный - занимет всего одну клетку! Объединяет два конвейера в один.
+            description: Компактный - занимает всего одну клетку! Объединяет два конвейера в один.
 
         compact-inverse:
             name: Соединитель
-            description: Компактный - занимет всего одну клетку! Объединяет два конвейера в один.
+            description: Компактный - занимает всего одну клетку! Объединяет два конвейера в один.
 
     cutter:
         default:
@@ -472,7 +472,7 @@ buildings:
     stacker:
         default:
             name: &stacker Объединитель
-            description: Объедининяет два предмета. Если они не могут быть соединены, правый элемент помещается над левым.
+            description: Объединяет два предмета. Если они не могут быть соединены, правый элемент помещается над левым.
 
     mixer:
         default:
@@ -482,10 +482,10 @@ buildings:
     painter:
         default:
             name: &painter Покрасчик
-            description: &painter_desc Красит всю фигуру из левого входа красителем из верхнего.
+            description: &painter_desc Красит всю фигуру из левого входа красителем из перпендикулярного.
         double:
             name: Покрасчик (2Вх.)
-            description: Красит фигуру из левых входов красителем из верхнего.
+            description: Красит фигуру из левых входов красителем из перпендикулярного.
         quad:
             name: Покрасчик (4Вх.)
             description: Позволяет раскрасить каждую четверть фигуры разными цветами.
@@ -519,7 +519,7 @@ storyRewards:
     reward_painter:
         title: Покраска
         desc: >-
-            Разблокирован <strong>покрасчик</strong>! Добудте краситель из жилы (так же как и фигуры) и объедините его с фигурой в покрасчике, чтобы раскрасить ее!<br><br>PS: Если вы дальтоник, я уже работаю над решением!
+            Разблокирован <strong>покрасчик</strong>! Добудьте краситель из жилы (так же как и фигуры) и объедините его с фигурой в покрасчике, чтобы раскрасить ее!<br><br>PS: Если вы дальтоник, я уже работаю над решением!
 
     reward_mixer:
         title: Смешивание Цветов
@@ -527,10 +527,10 @@ storyRewards:
 
     reward_stacker:
         title: Объединитель
-        desc: Теперь вы можете объединять фигурыw <strong>объединителем</strong>! Фигуры из обеих входов объединяются. Если они могут быть расположены рядом друг с другом, они будут <strong>соединены</strong>, иначе фигура из правого входа <strong>наложится</strong> на фигуру из левого!
+        desc: Теперь вы можете объединять фигуры <strong>объединителем</strong>! Фигуры из обеих входов объединяются. Если они могут быть расположены рядом друг с другом, они будут <strong>соединены</strong>, иначе фигура из правого входа <strong>наложится</strong> на фигуру из левого!
 
     reward_splitter:
-        title: Разделитель / Соеденитель
+        title: Разделитель / Соединитель
         desc: Разблокирован многофункциональный <strong>разделитель</strong>! Его можно использовать для создания больших фабрик путем <strong>разделения и соединения</strong> конвейеров!<br><br>
 
     reward_tunnel:
@@ -627,7 +627,7 @@ settings:
         language:
             title: Язык
             description: >-
-                Выберите язык. Все переводы сделаны пользователями и могут быть незакончены!
+                Выберите язык. Все переводы сделаны пользователями и могут быть не законченными!
 
         fullscreen:
             title: Полный экран
@@ -666,7 +666,7 @@ settings:
         offerHints:
             title: Подсказки & Обучение
             description: >-
-                Стоит ли предлагать подсказки и обучающий материал во время игры. Также скрывает определенные элементы пользовательского интерфейса для данного уровня, преднязначенные для облегчения "входа" в игру.
+                Стоит ли предлагать подсказки и обучающий материал во время игры. Также скрывает определенные элементы пользовательского интерфейса для данного уровня, предназначенные для облегчения "входа" в игру.
 
         movementSpeed:
             title: Скорость движения
@@ -679,15 +679,14 @@ settings:
                 super_fast: Очень быстро
                 extremely_fast: Чрезвычайно быстро
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Умные Туннели
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Если включено, то при размещении туннелей автоматически удаляются ненужные конвейеры.
+                Это также позволяет протягивать туннели, причем лишние туннели будут удалены.
         vignette:
-            title: Vignette
+            title: Виньетирование
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Включает виньетирование, которое затемняет углы экрана и облегчает чтение текста.
 
 keybindings:
     title: Настройки управления
@@ -753,11 +752,11 @@ keybindings:
         massSelectCut: Вырезать область
         exportScreenshot: Экспорт всей Базы в виде Изображения
         mapMoveFaster: Ускорение передвижения
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        lockBeltDirection: Включает конвейерный планировщик
+        switchDirectionLockSide: 'Планировщик: Переключение сторон'
 
 about:
-    title: О игре
+    title: Об игре
     body: >-
         Эта игра с открытым исходным кодом, разработана <a href="https://github.com/tobspr"
         target="_blank">Тобиасом Спрингером</a> (это я).<br><br>
@@ -777,7 +776,7 @@ about:
         игровых сессий в factorio эта игра никогда не существовала бы.
 
 changelog:
-    title: Список измений
+    title: Список изменений
 
 demo:
     features:
