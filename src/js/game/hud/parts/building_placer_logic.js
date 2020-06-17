@@ -204,7 +204,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.interpolatedDirectionLockSide = lerp(
             this.interpolatedDirectionLockSide,
             this.currentDirectionLockSide,
-            0.06
+            0.04
         );
     }
 
