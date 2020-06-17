@@ -155,6 +155,7 @@ mainMenu:
         contestOver: 이 콘테스트는 끝났습니다. 디스코드에서 새로운 콘테스트 관련 알림을 받으세요!
     continue: Continue
     newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -675,6 +676,17 @@ settings:
             description: >-
                 이것을 끄면 힌트와 튜토리얼이 나오지 않습니다. 또한 게임에 쉽게 들어가기 위해서 주어진 레벨에서 특정 UI 요소를 숨길 수도 있습니다.
 
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
+
 keybindings:
     title: 키바인딩
     hint: >-
@@ -739,6 +751,7 @@ keybindings:
         placeInverse: 자동 벨트 회전 뒤집기
         exportScreenshot: Export whole Base as Image
         mapMoveFaster: Move Faster
+        lockBeltDirection: Enable belt planner
 
 about:
     title: 이 게임의 정보

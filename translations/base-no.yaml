@@ -155,6 +155,7 @@ mainMenu:
         contestOver: Denne konkurransen er ferdig - Bli med på discord for å få varsel om nye konkurranser!
     continue: Fortsett
     newGame: Nytt Spill
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -673,6 +674,17 @@ settings:
             description: >-
                 Om du ønsker hint og opplæring mens du spiller. Skjuler også enkelte elementer i brukergrensesnittet inntil spesifike nivå for å enklere komme i gang med spillet.
 
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
+
 keybindings:
     title: Hurtigtaster
     hint: >-
@@ -737,6 +749,7 @@ keybindings:
         placementDisableAutoOrientation: Deaktiver automatisk orientering
         placeMultiple: Forbli i plasseringsmodus
         placeInverse: Inverter automatisk transportbånd orientering
+        lockBeltDirection: Enable belt planner
 
 about:
     title: Om dette spillet

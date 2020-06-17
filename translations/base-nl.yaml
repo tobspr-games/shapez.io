@@ -155,6 +155,7 @@ mainMenu:
         contestOver: Deze competitie is voorbij - word lid van de discord (engelstalig) om berichten te krijgen van nieuwe competities!
     continue: Continue
     newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -673,6 +674,16 @@ settings:
                 fast: Snel
                 super_fast: Super snel
                 extremely_fast: Extreem snel
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
 
 keybindings:
     title: Sneltoetsen
@@ -738,6 +749,7 @@ keybindings:
         massSelectCut: Knip geselecteerd gebied
         exportScreenshot: Export whole Base as Image
         mapMoveFaster: Move Faster
+        lockBeltDirection: Enable belt planner
 
 about:
     title: Over dit spel

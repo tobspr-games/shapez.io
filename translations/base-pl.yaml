@@ -159,6 +159,7 @@ mainMenu:
 
         showInfo: Wyświetl
         contestOver: Ten konkurs już się skończył - Dołącz do serwera Discord by nie przegapić kolejnych!
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -695,6 +696,17 @@ settings:
             description: >-
                 Oferuje porady i tutoriale podczas gry. Dodatkowo, chowa pewne elementy interfejsu by ułatwić poznanie gry.
 
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
+
 keybindings:
     title: Klawiszologia
     hint: >-
@@ -758,6 +770,7 @@ keybindings:
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
         massSelectCut: Wytnij obszar
         exportScreenshot: Wyeksportuj całą fabrykę jako zrzut ekranu
+        lockBeltDirection: Enable belt planner
 
 about:
     title: O Grze

@@ -154,6 +154,7 @@ mainMenu:
     helpTranslate: Hilf beim Übersetzen!
     continue: Fortsetzen
     newGame: Neues Spiel
+    madeBy: Ein Spiel von <author-link>
 
 dialogs:
     buttons:
@@ -674,6 +675,16 @@ settings:
                 fast: Schnell
                 super_fast: Sehr schnell
                 extremely_fast: Extrem schnell
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
 
 keybindings:
     title: Tastenbelegung
@@ -739,6 +750,7 @@ keybindings:
         massSelectCut: Areal ausschneiden
         exportScreenshot: Ganze Fabrik als Foto exportieren
         mapMoveFaster: Schneller bewegen
+        lockBeltDirection: Enable belt planner
 
 about:
     title: Über dieses Spiel

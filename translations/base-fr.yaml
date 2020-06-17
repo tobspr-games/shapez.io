@@ -156,6 +156,7 @@ mainMenu:
         contestOver: Ce concours est terminé - Rejoignez le serveur discord pour être tenu au courant des prochains concours !
     continue: Continue
     newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -678,6 +679,16 @@ settings:
                 fast: Rapide
                 super_fast: Très rapide
                 extremely_fast: Extrêmement rapide
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
 
 keybindings:
     title: Contrôles
@@ -743,6 +754,7 @@ keybindings:
         massSelectCut: Couper la sélection
         exportScreenshot: Exporter toute la base en tant qu'image.
         mapMoveFaster: Se déplacer plus vite
+        lockBeltDirection: Enable belt planner
 
 about:
     title: À propos de ce jeu

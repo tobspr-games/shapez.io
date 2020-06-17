@@ -136,6 +136,7 @@ mainMenu:
         contestOver: Tato soutěž skončila - Připojte se na Discord a získejte informace o nových soutěžích!
     continue: Continue
     newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -655,6 +656,16 @@ settings:
                 fast: Rychlá
                 super_fast: Hodně Rychlá
                 extremely_fast: Extrémně Rychlá
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
 
 keybindings:
     title: Klávesové zkratky
@@ -720,6 +731,7 @@ keybindings:
         pasteLastBlueprint: Vložit poslední plán
         massSelectCut: Vyjmout oblast
         exportScreenshot: Exportovat celou základnu jako obrázek
+        lockBeltDirection: Enable belt planner
 
 about:
     title: O hře

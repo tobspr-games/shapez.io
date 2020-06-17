@@ -672,6 +672,12 @@ settings:
             description: >-
                 Si está activado, colocar túneles automáticamente removerá las cintas transportadoras innecesarias. Esto también permite arrastrar con el ratón y los túneles excedentes serán removidos.
 
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
+
 keybindings:
     title: Atajos de Teclado
     hint: >-
@@ -769,4 +775,3 @@ demo:
         exportingBase: Exportando base entera como captura de pantalla
 
     settingNotAvailable: No disponible en la versión de prueba.
-

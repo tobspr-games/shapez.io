@@ -741,7 +741,7 @@ keybindings:
         confirmMassDelete: Confirm Mass Delete
         pasteLastBlueprint: Paste last blueprint
         cycleBuildings: Cycle Buildings
-        lockBeltDirection: Place in straight Line
+        lockBeltDirection: Enable belt planner
 
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas

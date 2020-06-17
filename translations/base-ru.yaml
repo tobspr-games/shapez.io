@@ -156,6 +156,7 @@ mainMenu:
         contestOver: Этот конкурс закончился - присоединяйтесь в дискорде, чтобы получать уведомления о новых конкурсах!
     continue: Continue
     newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -675,6 +676,16 @@ settings:
                 fast: Быстро
                 super_fast: Очень быстро
                 extremely_fast: Чрезвычайно быстро
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
 
 keybindings:
     title: Настройки управления
@@ -740,6 +751,7 @@ keybindings:
         massSelectCut: Вырезать область
         exportScreenshot: Экспорт всей Базы в виде Изображения
         mapMoveFaster: Ускорение передвижения
+        lockBeltDirection: Enable belt planner
 
 about:
     title: О игре
