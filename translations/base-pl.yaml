@@ -291,6 +291,7 @@ ingame:
         delete: Usuń
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
         lockBeltDirection: Enable belt planner
+        plannerSwitchSide: Flip planner side
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -772,6 +773,7 @@ keybindings:
         massSelectCut: Wytnij obszar
         exportScreenshot: Wyeksportuj całą fabrykę jako zrzut ekranu
         lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: 'Planner: Switch side'
 
 about:
     title: O Grze

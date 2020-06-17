@@ -285,6 +285,7 @@ ingame:
         delete: Destruir
         pasteLastBlueprint: Colar o último blueprint
         lockBeltDirection: Enable belt planner
+        plannerSwitchSide: Flip planner side
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -750,6 +751,7 @@ keybindings:
         exportScreenshot: Exportar a base como uma imagem
         mapMoveFaster: Mover rapidamente
         lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: 'Planner: Switch side'
 about:
     title: Sobre o jogo
     body: >-

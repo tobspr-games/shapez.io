@@ -286,6 +286,7 @@ ingame:
         selectBuildings: Selecionar área
         pasteLastBlueprint: Colar último projeto
         lockBeltDirection: Enable belt planner
+        plannerSwitchSide: Flip planner side
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -752,6 +753,7 @@ keybindings:
         exportScreenshot: Exportar base inteira como imagem
         mapMoveFaster: Move Faster
         lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: 'Planner: Switch side'
 
 about:
     title: Sobre o jogo

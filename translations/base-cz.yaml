@@ -267,6 +267,7 @@ ingame:
         delete: Zničit
         pasteLastBlueprint: Vložit poslední plán
         lockBeltDirection: Enable belt planner
+        plannerSwitchSide: Flip planner side
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -733,6 +734,7 @@ keybindings:
         massSelectCut: Vyjmout oblast
         exportScreenshot: Exportovat celou základnu jako obrázek
         lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: 'Planner: Switch side'
 
 about:
     title: O hře
