@@ -75,10 +75,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: T
+        thousands: k
         millions: M
-        billions: B
-        trillions: tr
+        billions: G
+        trillions: T
 
     # Shown for infinitely big numbers
     infinite: unend
