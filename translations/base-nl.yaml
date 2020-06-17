@@ -76,10 +76,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: k
-        millions: M
-        billions: B
-        trillions: T
+        thousands: d
+        millions: mln
+        billions: mlj
+        trillions: blj
 
     # Shown for infinitely big numbers
     infinite: inf
@@ -108,7 +108,7 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
+        space: SPATIE
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
@@ -153,15 +153,15 @@ mainMenu:
 
         showInfo: Laat zien
         contestOver: Deze competitie is voorbij - word lid van de discord (engelstalig) om berichten te krijgen van nieuwe competities!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: Verder
+    newGame: Niew Spel
+    madeBy: Gemaakt door <author-link>
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
+        delete: Verwijder
+        cancel: Annuleer
         later: Later
         restart: Herstarten
         reset: Reset
@@ -420,11 +420,11 @@ buildings:
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
+            name: &miner Ontginner
             description: Plaats op een vorm of kleur om deze te ontginnen.
 
         chainable:
-            name: Extractor (Ketting)
+            name: Ontginner (Ketting)
             description: Plaats op een vorm of kleur om deze te ontginnen. Kan achter elkaar worden geplaatst.
 
     underground_belt: # Internal name for the Tunnel
