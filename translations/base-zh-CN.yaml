@@ -19,7 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
-# Chinese translation dictionary:
+# Chinese translation dictionary. TODO: better names for the buildings. 
 # Standalone：独立版
 # Demo：演示版
 # Level：关/关卡
@@ -47,7 +47,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io 是一个关于建造工厂is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的形状的游戏。
     # shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
     
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
@@ -57,13 +57,13 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的形状的游戏。
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        你将会需要随着不断上升得需求扩大你的工厂。当然，不要忘记你可以在[b]无尽[/b]的地图上开采资源！
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        只对形状进行加工可能会使得你感到无聊。我们为你准备了颜色资源——将红、绿、蓝三种颜色混合，生产更多不同的颜色并粉刷在形状上以满足需求。
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        这个游戏目前有18个关卡（这应该已经能让你忙碌几个小时了！），并且正在不断地更新中。很多新关卡已经在开发计划当中！ 
         
 
         [b]独立版优势[/b]
@@ -80,20 +80,20 @@ steamPage:
 
         [b]开发计划与玩家建议[/b]
 
-        本游戏已开源，所有人都能贡献游戏内容！除此以外，我[b]非常重视[/b]玩家社区的反馈！我会阅读每一条建议并尽量顾及所有建议。
+        本游戏已开源，所有人都能参与开发游戏内容！除此以外，我[b]非常重视[/b]玩家社区的反馈！我会阅读每一条建议并尽量顾及所有建议。
 
         [list]
             [*] 故事模式，建筑将消耗形状
             [*] 更多的独立版关卡和建筑
             [*] 不同的地图与障碍物
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
+            [*] 可配置的地图生成（矿脉密度与大小、 随机种子以及其他地图设置）
             [*] 更多形状
-            [*] More performance improvements (Although the game already runs pretty good!)
+            [*] 更多的性能改进（当然，现在游戏已经非常流畅了！）
             [*] 色盲模式
             [*] 以及更多其他的功能！
         [/list]
        
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        记得查看我的Trello看板！那里有所有的开发计划！https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: 加载中
@@ -164,8 +164,7 @@ mainMenu:
     contests:
         contest_01_03062020:
             title: "竞赛 #01"
-            desc: Win <strong>$25</strong> for the coolest base!
-            #desc: Win <strong>$25</strong> for the coolest base!
+            desc: 最6的工厂将能赢得<strong>25</strong>美元的奖金！
             longDesc: >-
                 To give something back to you, I thought it would be cool to make weekly contests!
                 <br><br>
@@ -295,26 +294,18 @@ dialogs:
     createMarker:
         title: 创建地图标记
         desc: 给地图标记起一个的名字。你可以在名字中加入一个<strong>短代码</strong>以加入形状。（你可以在<a href="https://viewer.shapez.io" target="_blank">这里</a>生成短代码。）
-        #desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: 在演示版中你只能创建两个地图标记。请获取独立版以创建更多标记。
-        #desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
     massCutConfirm:
         title: 确认剪切
         desc: >-
             你将要剪切很多建筑，准确来说有<count>幢！ 你确定要这么做吗？
-        # desc: >-
-        #     You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-        #     want to do this?
 
     exportScreenshotWarning:
         title: 工厂截图
         desc: >-
             你将要导出你的工厂的截图。如果你的基地很大，截图过程将会很慢，且有可能导致游戏崩溃！
-        # desc: >-
-        #     You requested to export your base as a screenshot. Please note that this can
-        #     be quite slow for a big base and even crash your game!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -334,20 +325,6 @@ ingame:
         pasteLastBlueprint: 粘贴上一个蓝图
         lockBeltDirection: 启用传送带规划
         plannerSwitchSide: 规划器换边
-        # moveMap: Move
-        # selectBuildings: Select area
-        # stopPlacement: Stop placement
-        # rotateBuilding: Rotate building
-        # placeMultiple: Place multiple
-        # reverseOrientation: Reverse orientation
-        # disableAutoOrientation: Disable auto orientation
-        # toggleHud: Toggle HUD
-        # placeBuilding: Place building
-        # createMarker: Create Marker
-        # delete: Destroy
-        # pasteLastBlueprint: Paste last blueprint
-        # lockBeltDirection: Enable belt planner
-        # plannerSwitchSide: Flip planner side
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -409,24 +386,16 @@ ingame:
             stored:
                 title: 储存
                 description: 显示基地中每种图形储存的数量。
-                # title: Stored
-                # description: Displaying amount of stored shapes in your central building.
             produced:
                 title: 生产
                 description: 显示所有正在被生产的图形数量，包括中间产物。
-                # title: Produced
-                # description: Displaying all shapes your whole factory produces, including intermediate products.
             delivered:
                 title: 送达
                 description: 显示形状送达基地的速度。
-                # title: Delivered
-                # description: Displaying shapes which are delivered to your central building.
         noShapesProduced: 你还没有生产任何形状。
-        # noShapesProduced: No shapes have been produced so far.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes>个/分钟
-        # shapesPerMinute: <shapes> / m
 
 
     # Settings menu, when you press "ESC"
@@ -528,8 +497,8 @@ buildings:
             name: &cutter 切割机
             description: 将形状从上到下切开并输出。 <strong>如果你只需要其中一半，记得把另一半销毁掉，否则切割机会停止工作！</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: 切割机（四分）
+            description: 将输入的形状切成四块。 <strong>如果你只需要其中一块，记得把其他的销毁掉，否则切割机会停止工作！</strong>
 
     rotater:
         default:
@@ -554,11 +523,11 @@ buildings:
             name: &painter 上色机
             description: &painter_desc 将整个形状涂上输入的颜色。
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: 上色机（双倍）
+            description: 同时为两个输入的形状上色，每次上色只消耗一份颜色。
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: 上色机（四向）
+            description: 为形状的四个角涂上不同的颜色。
         mirrored:
             name: *painter
             description: *painter_desc
@@ -625,24 +594,24 @@ storyRewards:
             <strong>小型合流机</strong>变体已解锁。它可以把两个输入合并到一个输出上。
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: 四分切割机
+        desc:  <strong>切割机</strong>四分变体已解锁。它可以将输入的形状切成四块而不只是左右两块。
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: 双倍上色机
+        desc: <strong>上色机</strong>双倍变体已解锁。 它像普通上色机一样为形状上色，只是它可以同时为两个形状上色，每次只消耗一份颜色！
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: 四向上色机
+        desc: <strong>上色机</strong>四向变体已解锁。它可以在一个形状的四个角上涂不同的颜色！
 
     reward_storage:
         title: 仓库
         desc: <strong>仓库</strong>变体已解锁。它可以暂时储存一些材料，有容量上限。
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: 自由模式
+        desc: 恭喜你！你解锁了<strong>自由模式</strong>！现在形状将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
 
     reward_blueprints:
         title: 蓝图
@@ -847,23 +816,20 @@ about:
     title: 关于游戏
     # title: About this Game
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        本游戏由<a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a>（我）开发，并且已经开源。<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        如果你想参与开发，请查看<a href="<githublink>"
+        target="_blank">shapez.io on github</a>。<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        这个游戏的开发少不了热情的Discord社区。请加入我们的<a href="<discordlink>"
+        target="_blank">Discord 服务器</a>！<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        本游戏的音乐由<a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a>制作——他是个很棒的伙伴。<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
-
+        最后，我想感谢我最好的朋友<a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a>——如果没有与他的异星工厂（factorio）的游戏体验，shapez.io将不会存在。
 changelog:
     title: 版本日志
 
@@ -871,7 +837,7 @@ demo:
     features:
         restoringGames: 恢复存档 #中？
         importingGames: 倒入存档 #中？
-        oneGameLimit: 存档最多只能有一个
+        oneGameLimit: 最多一个存档
         customizeKeybindings: 按键设置
         # customizeKeybindings: Customizing Keybindings
         exportingBase: 导出工厂截图
