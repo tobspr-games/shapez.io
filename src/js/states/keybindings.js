@@ -76,7 +76,7 @@ export class KeybindingsState extends TextualGameState {
                 elem.appendChild(title);
 
                 const addBtn = document.createElement("button");
-                addBtn.classList.add("styledButton", "addKeybinding", /* REMOVE THIS */ "editKeybinding");
+                addBtn.classList.add("styledButton", "addKeybinding");
                 this.trackClicks(addBtn, () => {
                     let index = mapped.keyCodes.length;
                     mapped.keyCodes.push(0);
