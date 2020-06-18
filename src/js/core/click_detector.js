@@ -316,6 +316,7 @@ export class ClickDetector {
                 // Ignore right clicks
                 this.rightClick.dispatch(position, event);
                 this.cancelled = true;
+                this.clickDownPosition = null;
                 return;
             }
         }
