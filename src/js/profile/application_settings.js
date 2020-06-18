@@ -248,9 +248,10 @@ export const allApplicationSettings = [
 
     new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", categoryGame, (app, value) => {}),
-    new BoolSetting("vignette", categoryGame, (app, value) => {}),
+    new BoolSetting("vignette", categoryGame, (app, value) => {}),<<<<<<< HEAD
     new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
     new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
+    new BoolSetting("rotationByBuilding", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -277,6 +278,8 @@ class SettingsStorage {
         this.vignette = true;
         this.compactBuildingInfo = false;
         this.disableCutDeleteWarnings = false;
+        this.rotationByBuilding = true;
+
 
         this.enableColorBlindHelper = false;
 
@@ -527,6 +530,7 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 13) {
+<<<<<<< HEAD
             data.settings.compactBuildingInfo = false;
             data.version = 13;
         }
@@ -550,6 +554,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 17) {
             data.settings.enableColorBlindHelper = false;
             data.version = 17;
+=======
+            data.settings.rotationByBuilding = true;
+            data.version = 13;
+
+>>>>>>> 655c356... Adds tracking for rotation per building type.
         }
 
         return ExplainedResult.good();

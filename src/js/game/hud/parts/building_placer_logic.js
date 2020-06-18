@@ -1,3 +1,4 @@
+
 import { Math_abs, Math_degrees, Math_round } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
@@ -45,7 +46,34 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
          * The current rotation
          * @type {number}
          */
-        this.currentBaseRotation = 0;
+        this.currentBaseRotationGeneral = 0;
+
+        /**
+         * The current rotation preference for each building.
+         * @type {Object.<string, number>}
+         */
+        this.preferredRotations = {};
+
+        this.getBaseRotation = function () {
+            const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
+            if (!rotationByBuilding) {
+                return this.currentBaseRotationGeneral;
+            }
+            const id = this.currentMetaBuilding.get().getId();
+            return this.preferredRotations[id] || this.currentBaseRotationGeneral;
+
+        }
+
+        this.setBaseRotation = function (rotation) {
+            const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
+            if (!rotationByBuilding) {
+                this.currentBaseRotationGeneral = rotation;
+            } else {
+                const id = this.currentMetaBuilding.get().getId();
+                this.preferredRotations[id] = rotation;
+            }
+        }
+
 
         /**
          * Whether we are currently dragging
@@ -200,12 +228,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const selectedBuilding = this.currentMetaBuilding.get();
         if (selectedBuilding) {
             if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
-                this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
+                this.setBaseRotation((this.getBaseRotation() + 270) % 360);
             } else {
-                this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
+                this.setBaseRotation((this.getBaseRotation() + 90) % 360);
             }
             const staticComp = this.fakeEntity.components.StaticMapEntity;
-            staticComp.rotation = this.currentBaseRotation;
+            staticComp.rotation = this.getBaseRotation();
         }
     }
     /**
@@ -377,7 +405,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
             this.root,
             tile,
-            this.currentBaseRotation,
+            this.getBaseRotation(),
             this.currentVariant.get()
         );
 
@@ -385,7 +413,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             origin: tile,
             rotation,
             rotationVariant,
-            originalRotation: this.currentBaseRotation,
+            originalRotation: this.getBaseRotation(),
             building: this.currentMetaBuilding.get(),
             variant: this.currentVariant.get(),
         });
@@ -401,7 +429,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation
                 ).pressed
             ) {
-                this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
+                this.setBaseRotation((180 + this.getBaseRotation()) % 360);
             }
 
             // Check if we should stop placement
@@ -451,7 +479,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             for (let i = 0; i < path.length; ++i) {
                 const { rotation, tile } = path[i];
 
-                this.currentBaseRotation = rotation;
+                this.setBaseRotation(rotation);
                 this.tryPlaceCurrentBuildingAt(tile);
             }
         });
@@ -634,11 +662,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 ) {
                     const delta = newPos.sub(oldPos);
                     const angleDeg = Math_degrees(delta.angle());
-                    this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
+                    this.setBaseRotation((Math.round(angleDeg / 90) * 90 + 360) % 360);
 
                     // Holding alt inverts the placement
                     if (this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse).pressed) {
-                        this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
+                        this.setBaseRotation((180 + this.getBaseRotation()) % 360);
                     }
                 }
 
