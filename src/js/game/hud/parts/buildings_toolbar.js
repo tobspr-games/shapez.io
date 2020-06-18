@@ -93,6 +93,7 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
 
         this.lastSelectedIndex = 0;
         actionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildings).add(this.cycleBuildings, this);
+        actionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.usePipette, this);
     }
 
     update() {
@@ -121,6 +122,101 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
         const metaBuildingClass = toolbarBuildings[newIndex];
         const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
         this.selectBuildingForPlacement(metaBuilding);
+    }
+
+    detectPippeted(entity) {
+        const alike = [];
+        for (let i = 0; i < toolbarBuildings.length; ++i) {
+            const metaBuilding = gMetaBuildingRegistry.findByClass(toolbarBuildings[i]);
+            const handle = this.buildingHandles[metaBuilding.id];
+            if (!handle.unlocked) {
+                continue;
+            }
+
+            const availableVariants = metaBuilding.getAvailableVariants(this.root);
+            checkVariant: for (let variant of availableVariants) {
+                let unplaced = metaBuilding.createUnplacedEntity({ root: this.root, variant });
+                // compare props
+                for (let c in entity.components) {
+                    if (
+                        (entity.components[c] && !unplaced.components[c]) ||
+                        (!entity.components[c] && unplaced.components[c])
+                    ) {
+                        continue checkVariant;
+                    }
+                }
+
+                if (
+                    entity.components.ItemProcessor &&
+                    entity.components.ItemProcessor.type != unplaced.components.ItemProcessor.type
+                ) {
+                    continue checkVariant;
+                }
+                if (
+                    entity.components.UndergroundBelt &&
+                    entity.components.UndergroundBelt.tier != unplaced.components.UndergroundBelt.tier
+                ) {
+                    continue checkVariant;
+                }
+                // tecnically this one is enough without all others BUT ubelts
+                if (
+                    entity.components.StaticMapEntity.spriteKey !=
+                        unplaced.components.StaticMapEntity.spriteKey &&
+                    !entity.components.UndergroundBelt
+                ) {
+                    console.log("ignored %o cuz other sprite", unplaced);
+                    continue checkVariant;
+                }
+                console.log("%O is probably %O (%s/%s)", entity, unplaced, metaBuilding.id, variant);
+                alike.push({ metaBuilding, variant, unplaced });
+            }
+        }
+
+        if (alike.length == 1) {
+            let staticEntity = entity.components.StaticMapEntity;
+            let key = staticEntity.spriteKey || staticEntity.blueprintSpriteKey;
+            assertAlways(
+                key &&
+                    key.includes(alike[0].metaBuilding.id) &&
+                    (alike[0].variant == "default" || key.includes(alike[0].variant))
+            );
+            return alike[0];
+        }
+        if (alike.length > 1) {
+            console.warn("multiple alike buildings:", alike);
+        }
+        console.log("entity is unknown", entity);
+        return null;
+    }
+
+    usePipette() {
+        if (this.root.hud.parts.buildingPlacer.currentMetaBuilding.get()) {
+            return;
+        }
+        if (this.root.camera.getIsMapOverlayActive()) {
+            return;
+        }
+
+        const mousePos = this.root.app.mousePosition;
+        if (!mousePos) {
+            return;
+        }
+        const worldPos = this.root.camera.screenToWorld(mousePos);
+        const worldTile = worldPos.toTileSpace();
+
+        const entity = this.root.map.getTileContent(worldTile);
+        if (!entity) {
+            return;
+        }
+
+        let detected = this.detectPippeted(entity);
+
+        if (detected) {
+            this.selectBuildingForPlacement(detected.metaBuilding);
+            this.root.hud.parts.buildingPlacer.currentVariant.set(detected.variant);
+            this.root.hud.parts.buildingPlacer.currentBaseRotation =
+                (Math.round(entity.components.StaticMapEntity.originalRotation / 90) * 90 + 360) % 360;
+        }
     }
 
     /**

@@ -137,6 +137,50 @@ export class MetaBuilding {
     }
 
     /**
+     * Creates the entity but does not adds it to world
+     * @param {object} param0
+     * @param {GameRoot} param0.root
+     * @param {Vector} [param0.origin] Origin tile
+     * @param {number=} [param0.rotation] Rotation
+     * @param {number} [param0.originalRotation] Original Rotation
+     * @param {number} [param0.rotationVariant] Rotation variant
+     * @param {string} param0.variant
+     */
+    createUnplacedEntity({
+        root,
+        origin = new Vector(9999, 9999),
+        rotation = 0,
+        originalRotation = 0,
+        rotationVariant = 0,
+        variant,
+    }) {
+        const entity = new Entity(root);
+
+        const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
+
+        entity.addComponent(
+            new StaticMapEntityComponent({
+                spriteKey:
+                    "sprites/buildings/" +
+                    this.id +
+                    (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                    ".png",
+                origin: new Vector(origin.x, origin.y),
+                rotation,
+                originalRotation,
+                tileSize: this.getDimensions(variant).copy(),
+                silhouetteColor: this.getSilhouetteColor(),
+                blueprintSpriteKey: blueprintSprite ? blueprintSprite.spriteName : "",
+            })
+        );
+
+        this.setupEntityComponents(entity, root);
+        this.updateVariants(entity, rotationVariant, variant);
+
+        return entity;
+    }
+
+    /**
      * Creates the entity at the given location
      * @param {object} param0
      * @param {GameRoot} param0.root

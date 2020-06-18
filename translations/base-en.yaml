@@ -746,6 +746,7 @@ keybindings:
         lockBeltDirection: Enable belt planner
         switchDirectionLockSide: >-
             Planner: Switch side
+        pipette: Pipette (select hovered)
 
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
