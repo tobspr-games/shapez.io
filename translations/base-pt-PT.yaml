@@ -155,7 +155,7 @@ mainMenu:
         contestOver: Este concurso terminou - Entra no discord para seres notificado quando abrirem novos concursos!
     continue: Continuar
     newGame: Novo Jogo
-    madeBy: Made by <author-link>
+    madeBy: Criado por <author-link>
 
 dialogs:
     buttons:
@@ -284,8 +284,8 @@ ingame:
         createMarker: Criar marco
         delete: Destruir
         pasteLastBlueprint: Colar o último blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        lockBeltDirection: Ativa o planeamento de tapetes
+        plannerSwitchSide: Lado de rotação do planeamento
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -296,7 +296,7 @@ ingame:
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Atalho: <key>
 
         infoTexts:
             speed: Velocidade
@@ -417,7 +417,7 @@ buildings:
     belt:
         default:
             name: &belt Tapete Rolante
-            description: Transporta items, mantém pressionado e arrasta para colocar vários.
+            description: Transporta items. Mantém pressionado e arrasta para colocar vários.
 
     miner: # Internal name for the Extractor
         default:
@@ -676,15 +676,15 @@ settings:
                 super_fast: Muito rádida
                 extremely_fast: Extremamente rápida
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Túneis inteligentes
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Quando ativo, a colocação de túneis removerá tapetes desnecessários automaticamente.
+                Isto também permite arrastar túneis e túneis supérfluos serão removidos.
         vignette:
-            title: Vignette
+            title: Vinheta
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Ativa a vinheta, que escurece os cantos do ecrã e torna a leitura do texto
+                mais fácil.
 
 keybindings:
     title: Atalhos
@@ -750,8 +750,8 @@ keybindings:
         massSelectCut: Cortar área
         exportScreenshot: Exportar a base como uma imagem
         mapMoveFaster: Mover rapidamente
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        lockBeltDirection: Ativa o planeamento de tapetes
+        switchDirectionLockSide: 'Planeador: Troca o lado'
 about:
     title: Sobre o jogo
     body: >-
