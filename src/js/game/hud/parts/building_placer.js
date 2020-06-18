@@ -82,9 +82,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.buildingInfoElements.tutorialImage.setAttribute(
             "data-icon",
             "building_tutorials/" +
-            metaBuilding.getId() +
-            (variant === defaultBuildingVariant ? "" : "-" + variant) +
-            ".png"
+                metaBuilding.getId() +
+                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                ".png"
         );
 
         removeAllChildren(this.buildingInfoElements.additionalInfo);
@@ -122,10 +122,10 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             T.ingame.buildingPlacement.cycleBuildingVariants.replace(
                 "<key>",
                 "<code class='keybinding'>" +
-                this.root.keyMapper
-                    .getBinding(KEYMAPPINGS.placement.cycleBuildingVariants)
-                    .getKeyCodeString() +
-                "</code>"
+                    this.root.keyMapper
+                        .getBinding(KEYMAPPINGS.placement.cycleBuildingVariants)
+                        .getKeyCodeString() +
+                    "</code>"
             )
         );
 
