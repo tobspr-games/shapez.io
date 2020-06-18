@@ -206,6 +206,14 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
 
         const entity = this.root.map.getTileContent(worldTile);
         if (!entity) {
+            const tileBelow = this.root.map.getLowerLayerContentXY(worldTile.x, worldTile.y);
+            if (tileBelow) {
+                let miner = gMetaBuildingRegistry.findByClass(MetaMinerBuilding);
+                let variants = miner.getAvailableVariants(this.root);
+                this.selectBuildingForPlacement(miner);
+                this.root.hud.parts.buildingPlacer.currentVariant.set(variants.pop());
+            }
+            // TODO: play error sound
             return;
         }
 
@@ -217,6 +225,7 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
             this.root.hud.parts.buildingPlacer.currentBaseRotation =
                 (Math.round(entity.components.StaticMapEntity.originalRotation / 90) * 90 + 360) % 360;
         }
+        // TODO: play error sound
     }
 
     /**
