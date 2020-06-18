@@ -156,11 +156,7 @@ mainMenu:
         contestOver: Ce concours est terminé - Rejoignez le serveur discord pour être tenu au courant des prochains concours !
     continue: Continuer
     newGame: Nouvelle partie
-<<<<<<< HEAD
-    madeBy: Écrit par <author-link>
-=======
     madeBy: Créé par <author-link>
->>>>>>> d6c1cb15f6854d88490fb76d3f5fe4729b3477be
 
 dialogs:
     buttons:
