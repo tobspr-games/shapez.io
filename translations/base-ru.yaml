@@ -76,10 +76,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: тыс.
-        millions: млн
-        billions: млрд
-        trillions: трлн
+        thousands: ' тыс.'
+        millions: ' млн'
+        billions: ' млрд'
+        trillions: ' трлн'
 
     # Shown for infinitely big numbers
     infinite: ∞
@@ -120,7 +120,7 @@ demoBanners:
 mainMenu:
     play: Играть
     changelog: Список изменений
-    importSavegame: Импортировать сохраненную игру
+    importSavegame: Импорт
     openSourceHint: Это игра с открытым исходным кодом!
     discordLink: Оффициальный Дискорд Сервер
     helpTranslate: Помоги с переводом!
@@ -156,7 +156,7 @@ mainMenu:
         contestOver: Этот конкурс закончился - присоединяйтесь в дискорде, чтобы получать уведомления о новых конкурсах!
     continue: Продолжить
     newGame: Новая Игра
-    madeBy: Создано <author-link>
+    madeBy: Создал <author-link>
 
 dialogs:
     buttons:
@@ -476,8 +476,8 @@ buildings:
 
     mixer:
         default:
-            name: &mixer Смеситель
-            description: Смешивает два цвета с помощью аддитивного смешивания.
+            name: &mixer Смешиватель
+            description: Аддитивно смешивает цвета двух красителей.
 
     painter:
         default:
@@ -523,7 +523,7 @@ storyRewards:
 
     reward_mixer:
         title: Смешивание Цветов
-        desc: Разблокирован <strong>смеситель</strong>! Объедините два цвета в этом здании, используя <strong>аддитивное смешивание</strong>!
+        desc: Разблокирован <strong>смешиватель</strong>! Объедините два цвета в этом здании, используя <strong>аддитивное смешивание</strong>!
 
     reward_stacker:
         title: Объединитель
