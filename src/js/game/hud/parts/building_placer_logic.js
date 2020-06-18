@@ -1,4 +1,3 @@
-
 import { Math_abs, Math_degrees, Math_round } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
@@ -61,8 +60,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             }
             const id = this.currentMetaBuilding.get().getId();
             return this.preferredRotations[id] || this.currentBaseRotationGeneral;
-
-        }
+        };
 
         this.setBaseRotation = function (rotation) {
             const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
@@ -72,8 +70,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 const id = this.currentMetaBuilding.get().getId();
                 this.preferredRotations[id] = rotation;
             }
-        }
-
+        };
 
         /**
          * Whether we are currently dragging

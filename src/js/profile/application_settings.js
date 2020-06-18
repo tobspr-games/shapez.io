@@ -530,7 +530,6 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 13) {
-<<<<<<< HEAD
             data.settings.compactBuildingInfo = false;
             data.version = 13;
         }
@@ -554,11 +553,10 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 17) {
             data.settings.enableColorBlindHelper = false;
             data.version = 17;
-=======
+        }
+        if(data.version < 18) {
             data.settings.rotationByBuilding = true;
-            data.version = 13;
-
->>>>>>> 655c356... Adds tracking for rotation per building type.
+            data.version = 18;
         }
 
         return ExplainedResult.good();
