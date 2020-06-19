@@ -36,7 +36,7 @@ steamPage:
 
         Same kształty mogą z czasem być nudne, dlatego gra będzie wymagała od Ciebie malowania kształtów różnymi kolorami - Połącz czerwoną, zieloną i niebieską farbę, a powstanie farba o innym kolorze. Korzystaj z farb by postępować z kolejnymi poziomami.
 
-        Na tą chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na conajmniej kilka godzin!) ale bez przerwy dodaję nowe - Jest naprawdę wiele do dodania!
+        Na tą chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na co najmniej kilka godzin!) ale bez przerwy dodaję nowe - Jest naprawdę wiele do dodania!
 
 
         [b]Zalety pełnej wersji[/b]
@@ -52,15 +52,15 @@ steamPage:
 
         [b]Zaplanowana zawartość & Sugestie społeczności[/b]
 
-        Ta gra jest open-source - Kaźdy może pomóc w rozwoju! Poza tym, słucham tego co społeczność ma do powiedenia w kwestii gry! Staram się czytać wszystkie sugestie i odbierać jak najwięcej informacji zwrotnych na temat gry.
+        Ta gra jest open-source - Każdy może pomóc w rozwoju! Poza tym, słucham tego co społeczność ma do powiedzenia w kwestii gry! Staram się czytać wszystkie sugestie i odbierać jak najwięcej informacji zwrotnych na temat gry.
 
         [list]
             [*] Kampania, gdzie do budowy potrzeba kształtów
             [*] Więcej poziomów i budynków (tylko w pełnej wersji)
             [*] Inne mapy, może z przeszkodami
-            [*] Możliwość modyfikowania parametrów generowanjej mapy (Ilość i rozmiar surowców, ziarno świata, itd.)
+            [*] Możliwość modyfikowania parametrów generowanej mapy (Ilość i rozmiar surowców, ziarno świata, itd.)
             [*] Więcej rodzajów kształtów
-            [*] Optymalizacja (Mimo wszystko gra już działa dośc płynnie!)
+            [*] Optymalizacja (Mimo wszystko gra już działa dość płynnie!)
             [*] Tryb dla ślepoty barw
             [*] I wiele więcej!
         [/list]
@@ -117,7 +117,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Wersja demo
     intro: >-
-        Kup pełną wersję gry, by odblokować więcej funckji!
+        Kup pełną wersję gry, by odblokować więcej funkcji!
 
 mainMenu:
     play: Rozpocznij
@@ -211,7 +211,7 @@ dialogs:
 
     resetKeybindingsConfirmation:
         title: Zresetuj klawiszologię
-        desc: Ta akcja zresetuje wszystkie ustawienia klawiszologii do domyśnych wartości. Proszę potwierdzić.
+        desc: Ta akcja zresetuje wszystkie ustawienia klawiszologii do domyślnych wartości. Proszę potwierdzić.
 
     keybindingsResetOk:
         title: Reset Klawiszologii
@@ -271,7 +271,7 @@ dialogs:
         title: Tworzenie zrzutu fabryki
         desc: >-
             Zamierzasz wyeksportować swoją fabrykę jako zrzut ekranu. W przypadku dużej
-            fabryki ta akja może być bardzo wolna, a nawet może spowodować zawieszenie się lub awarię gry!
+            fabryki ta akcja może być bardzo wolna, a nawet może spowodować zawieszenie się lub awarię gry!
             Czy na pewno chcesz kontynuować?
 
 ingame:
@@ -403,7 +403,7 @@ ingame:
             1_2_conveyor: >-
                 Połącz ekstraktor <strong>taśmociągiem</strong> do głównego budynku!<br><br>Porada: <strong>Kliknij i przeciągnij</strong> taśmociąg myszką!
             1_3_expand: >-
-                To <strong>NIE JEST</strong> gra "do poczekania"! Buduj więcej taśmociągów i ekstraktorów by wydobywać szybciej.<br><br>Porada: Przytrzymaj <strong>SHIFT</strong> by postawić wiele ekstratkorów. Naciśnij <strong>R</strong>, by je obracać.
+                To <strong>NIE JEST</strong> gra "do poczekania"! Buduj więcej taśmociągów i ekstraktorów by wydobywać szybciej.<br><br>Porada: Przytrzymaj <strong>SHIFT</strong> by postawić wiele ekstraktorów. Naciśnij <strong>R</strong>, by je obracać.
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -500,7 +500,7 @@ buildings:
             description: Koloruje kształt za pomocą koloru dostarczonych od boku. Koloruje 2 kształty używając 1 barwnika.
         quad:
             name: Malarz (Poczwórny)
-            description: Koloruje każdą ćwiarkę kształtu na inny kolor, używając dostarczonych kolorów.
+            description: Koloruje każdą ćwiartkę kształtu na inny kolor, używając dostarczonych kolorów.
         mirrored:
             name: *painter
             description: *painter_desc
@@ -556,7 +556,7 @@ storyRewards:
 
     reward_miner_chainable:
         title: Wydobycie Łańcuchowe
-        desc: Odblokowano nowy wariant <strong>ekstraktora</strong>! Może <strong>przekierować obiekty</strong> do ekstraktorów przed nim zwiększając efektywność wydbobycia!
+        desc: Odblokowano nowy wariant <strong>ekstraktora</strong>! Może <strong>przekierować obiekty</strong> do ekstraktorów przed nim zwiększając efektywność wydobycia!
 
     reward_underground_belt_tier_2:
         title: Tunel Poziomu II
@@ -578,7 +578,7 @@ storyRewards:
 
     reward_painter_quad:
         title: Poczwórne malowanie
-        desc: Odblokowano nowy wariant <strong>Malarza</strong> - Pozwala malować każdą ćwiarkę kształtu na inny kolor!
+        desc: Odblokowano nowy wariant <strong>Malarza</strong> - Pozwala malować każdą ćwiartkę kształtu na inny kolor!
 
     reward_storage:
         title: Magazyn
@@ -742,7 +742,7 @@ keybindings:
         menuOpenStats: Statystyki
 
         toggleHud: Przełącz widoczność interfejsu
-        toggleFPSInfo: Pokaż Licznik FPS i infomacje do debugowania
+        toggleFPSInfo: Pokaż Licznik FPS i informacje do debugowania
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
