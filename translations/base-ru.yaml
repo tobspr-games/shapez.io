@@ -340,7 +340,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: МАКСИМАЛЬНЫЙ УРОВЕНЬ (Скорость x<currentMult>)
+        maximumLevel: Скорость x<currentMult> (макс.)
 
     # The "Statistics" window
     statistics:
