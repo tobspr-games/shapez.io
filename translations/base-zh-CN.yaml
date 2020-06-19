@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io 是一个关于在无限大的地图内建造工厂来自动化生产和合并越来越复杂的图形的游戏。
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,46 +30,47 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io 是一个关于建造工厂来自动化生产和合并越来越复杂的图形的游戏。提交任务，制造更复杂的流水线，解锁升级来提升您工厂的运作速度。
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        当需求提出时，您需要扩大工厂的规模来满足需求 - 不过不要忘记资源，您会扩张[b]无限的地图[/b]！
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        由于纯粹的图形组合很快就会变得无聊，您需要调色并且给您的图形染色 - 混合红黄蓝颜色来生产不同的颜色再给您的图形染色以满足要求。
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        本游戏共有18关（会让您忙活几个小时）但是我会不断增加新内容 - 有好多都在策划啦！
 
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
-        [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        [b]单机版的优点[/b]
 
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
-            [*] And much more!
+            [*] 路径点
+            [*] 无数量限制的存档
+            [*] 暗色模式
+            [*] 更多设置
+            [*] 允许我在开发 shapez.io 的道路上走得更远❤️
+            [*] 在以后还有更多特性
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [b]计划中的特性&社区意见[/b]
+
+        本游戏是开源的 - 任何人都可以做贡献！除此以外, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+
+        [list]
+            [*] 要消耗图形来造建筑的的故事模式
+            [*] 更多关卡&建筑（单机版独有）
+            [*] 更多地图，也许会有障碍物
+            [*] 可配置的地图（Edit number and size of patches, seed, and more）
+            #括号里不会翻译了
+            [*] 更多图形
+            [*] 更多性能优化（虽然游戏运行地已经很好了！）
+            [*] 对色盲友好
+            [*] 还有好多好多！（快买）
+        [/list]
+
+        务必看看我的 计划版(trello board) 了解我的全部计划! https://trello.com/b/ISQncpJP/shapezio
 
 global:
-    loading: Loading
-    error: Error
+    loading: 加载中
+    error: 错误
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -82,18 +83,18 @@ global:
         trillions: T
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: 无限
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: 一秒之前
+        xSecondsAgo: <x> 秒之前
+        oneMinuteAgo: 一分钟之前
+        xMinutesAgo: <x> 分钟之前
+        oneHourAgo: 一小时之前
+        xHoursAgo: <x> 小时之前
+        oneDayAgo: 一天之前
+        xDaysAgo: <x> 天之前
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
