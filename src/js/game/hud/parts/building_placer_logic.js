@@ -329,7 +329,15 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 index >= 0,
                 "Current variant was invalid: " + this.currentVariant.get() + " out of " + availableVariants
             );
-            const newIndex = (index + 1) % availableVariants.length;
+
+            // #51 Cycle backwards if SHIFT is pressed
+            let newIndex;
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingsInverseModifier).pressed) {
+                newIndex = (index - 1 + availableVariants.length) % availableVariants.length;
+            } else {
+                newIndex = (index + 1) % availableVariants.length;
+            }
+
             const newVariant = availableVariants[newIndex];
             this.currentVariant.set(newVariant);
 

@@ -61,6 +61,7 @@ export const KEYMAPPINGS = {
         rotateInverseModifier: { keyCode: 16 }, // SHIFT
         cycleBuildingVariants: { keyCode: key("T") },
         cycleBuildings: { keyCode: 9 }, // TAB
+        cycleBuildingsInverseModifier: { keyCode: 16 }, // SHIFT
         switchDirectionLockSide: { keyCode: key("R") },
     },
 
