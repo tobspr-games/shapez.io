@@ -104,9 +104,13 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 return;
             }
 
-            // Remove any belts between entrance and exit which have the same direction
+            // Remove any belts between entrance and exit
+            // - which have the same direction
+            // - if the last belt is pointed into the exit
+            let endSameDirection = false;
             currentPos = tile.copy();
-            for (let i = 0; i < matchingEntrance.range; ++i) {
+            const end = matchingEntrance.range - 1;
+            for (let i = end; i >= 0; i--) {
                 currentPos.addInplace(offset);
 
                 const contents = this.root.map.getTileContent(currentPos);
@@ -121,9 +125,11 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                     // It's a belt
                     if (
                         contentsBeltComp.direction === enumDirection.top &&
-                        enumAngleToDirection[contentsStaticComp.rotation] === direction
+                        enumAngleToDirection[contentsStaticComp.rotation] === direction &&
+                        (endSameDirection || i == end)
                     ) {
                         // It's same rotation, drop it
+                        endSameDirection = endSameDirection || i == end;
                         this.root.logic.tryDeleteBuilding(contents);
                     }
                 }
