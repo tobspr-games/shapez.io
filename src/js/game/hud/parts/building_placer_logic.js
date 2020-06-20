@@ -331,8 +331,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             );
 
             // #51 Cycle backwards if SHIFT is pressed
+            const cycleBackwards = this.root.keyMapper.getBinding(
+                KEYMAPPINGS.placement.cycleBuildingVariantsInverseModifier
+            ).pressed;
             let newIndex;
-            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingsInverseModifier).pressed) {
+            if (cycleBackwards) {
                 newIndex = (index - 1 + availableVariants.length) % availableVariants.length;
             } else {
                 newIndex = (index + 1) % availableVariants.length;

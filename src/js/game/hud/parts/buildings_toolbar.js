@@ -109,8 +109,15 @@ export class HUDBuildingsToolbar extends BaseHUDPart {
     }
 
     cycleBuildings() {
+        const cycleBackwards = this.root.keyMapper.getBinding(
+            KEYMAPPINGS.placement.cycleBuildingsInverseModifier
+        ).pressed;
         let newIndex = this.lastSelectedIndex;
-        for (let i = 0; i < toolbarBuildings.length; ++i, ++newIndex) {
+        for (
+            let i = 0;
+            i < toolbarBuildings.length;
+            ++i, newIndex += toolbarBuildings.length + (cycleBackwards ? -1 : 1)
+        ) {
             newIndex %= toolbarBuildings.length;
             const metaBuilding = gMetaBuildingRegistry.findByClass(toolbarBuildings[newIndex]);
             const handle = this.buildingHandles[metaBuilding.id];
