@@ -19,10 +19,37 @@
 #    the basic structure so the game also detects it.
 #
 
+# Chinese translation dictionary. TODO: better names for the buildings. 
+# Standalone：独立版
+# Demo：演示版
+# Level：关/关卡
+# Shape：图形
+# tile：格子/格
+# Keybind：按键设置
+# Menu：主界面
+# Center/Hub：基地
+# Upgrade：建筑升级/升级
+# Efficiency：效率
+# Building：建筑
+# Variant：建筑变体
+# Belt: 传送带
+# Balancer：平衡机
+# Compact Balancer：小型合流机
+# Merger：合并机
+# Tunnel：隧道
+# Extractor：开采机
+# Cutter：切割机
+# Rotate：旋转机
+# Stacker：堆叠机
+# Color Mixer：混色机
+# Painter：上色机
+# Trash：垃圾桶
+
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io 是一个关于在无限大的地图内建造工厂来自动化生产和合并越来越复杂的图形的游戏。
-
+    shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的形状的游戏。
+    # shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
@@ -30,54 +57,56 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io 是一个关于建造工厂来自动化生产和合并越来越复杂的图形的游戏。提交任务，制造更复杂的流水线，解锁升级来提升您工厂的运作速度。
+        shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的形状的游戏。
 
-        当需求提出时，您需要扩大工厂的规模来满足需求 - 不过不要忘记资源，您会扩张[b]无限的地图[/b]！
+        你将会需要随着不断上升得需求扩大你的工厂。当然，不要忘记你可以在[b]无尽[/b]的地图上开采资源！
 
-        由于纯粹的图形组合很快就会变得无聊，您需要调色并且给您的图形染色 - 混合红黄蓝颜色来生产不同的颜色再给您的图形染色以满足要求。
+        只对形状进行加工可能会使得你感到无聊。我们为你准备了颜色资源——将红、绿、蓝三种颜色混合，生产更多不同的颜色并粉刷在形状上以满足需求。
 
-        本游戏共有18关（会让您忙活几个小时）但是我会不断增加新内容 - 有好多都在策划啦！
+        这个游戏目前有18个关卡（这应该已经能让你忙碌几个小时了！），并且正在不断地更新中。很多新关卡已经在开发计划当中！ 
+        
 
-
-        [b]单机版的优点[/b]
+        [b]独立版优势[/b]
 
         [list]
-            [*] 路径点
-            [*] 无数量限制的存档
-            [*] 暗色模式
+            [*] 地图标记
+            [*] 无限存档
+            [*] 深色模式
             [*] 更多设置
-            [*] 允许我在开发 shapez.io 的道路上走得更远❤️
-            [*] 在以后还有更多特性
+            [*] 支持作者继续开发shapez.io❤️
+            [*] 更多新功能
         [/list]
 
-        [b]计划中的特性&社区意见[/b]
 
-        本游戏是开源的 - 任何人都可以做贡献！除此以外, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        [b]开发计划与玩家建议[/b]
+
+        本游戏已开源，所有人都能参与开发游戏内容！除此以外，我[b]非常重视[/b]玩家社区的反馈！我会阅读每一条建议并尽量顾及所有建议。
 
         [list]
-            [*] 要消耗图形来造建筑的的故事模式
-            [*] 更多关卡&建筑（单机版独有）
-            [*] 更多地图，也许会有障碍物
-            [*] 可配置的地图（Edit number and size of patches, seed, and more）
-            #括号里不会翻译了
-            [*] 更多图形
-            [*] 更多性能优化（虽然游戏运行地已经很好了！）
-            [*] 对色盲友好
-            [*] 还有好多好多！（快买）
+            [*] 故事模式，建筑将消耗形状
+            [*] 更多的独立版关卡和建筑
+            [*] 不同的地图与障碍物
+            [*] 可配置的地图生成（矿脉密度与大小、 随机种子以及其他地图设置）
+            [*] 更多形状
+            [*] 更多的性能改进（当然，现在游戏已经非常流畅了！）
+            [*] 色盲模式
+            [*] 以及更多其他的功能！
         [/list]
-
-        务必看看我的 计划版(trello board) 了解我的全部计划! https://trello.com/b/ISQncpJP/shapezio
+       
+        记得查看我的Trello看板！那里有所有的开发计划！https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: 加载中
     error: 错误
 
+    # Chinese translation: There is typically no divider used for numbers. 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: ""
 
+    # TODO: Chinese translation: suffix changes every 10000 in Chinese numbering system. 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: k
+        thousands: K
         millions: M
         billions: B
         trillions: T
@@ -87,21 +116,21 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: 一秒之前
-        xSecondsAgo: <x> 秒之前
-        oneMinuteAgo: 一分钟之前
-        xMinutesAgo: <x> 分钟之前
-        oneHourAgo: 一小时之前
-        xHoursAgo: <x> 小时之前
-        oneDayAgo: 一天之前
-        xDaysAgo: <x> 天之前
+        oneSecondAgo: 1秒前
+        xSecondsAgo: <x>秒前
+        oneMinuteAgo: 1分钟前
+        xMinutesAgo: <x>分钟前
+        oneHourAgo: 1小时前
+        xHoursAgo: <x>小时前
+        oneDayAgo: 1天前
+        xDaysAgo: <x>天前
 
         # Short formats for times, e.g. '5h 23m'
-        secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        secondsShort: <seconds>秒
+        minutesAndSecondsShort: <minutes>分 <seconds>秒
+        hoursAndMinutesShort: <hours>小时 <minutes>秒
 
-        xMinutes: <x> minutes
+        xMinutes: <x>分钟
 
     keys:
         tab: TAB
@@ -109,33 +138,33 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
+        space: 空格
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: 演示版
     intro: >-
-        Get the standalone to unlock all features!
+        获取独立版以解锁所有功能！
 
 mainMenu:
-    play: Play
-    changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    play: 开始游戏
+    changelog: 更新日志
+    importSavegame: 导入
+    openSourceHint: 本游戏已开源！
+    discordLink: 官方Discord服务器
+    helpTranslate: 帮助我们翻译！
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        很抱歉, 本游戏在当前浏览器上可能运行缓慢! 使用chrome或者获取独立版以得到更好的体验。
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: 第<x>关
+    savegameLevelUnknown: 未知关卡
 
     contests:
         contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            title: "竞赛 #01"
+            desc: 最6的工厂将能赢得<strong>25</strong>美元的奖金！
             longDesc: >-
                 To give something back to you, I thought it would be cool to make weekly contests!
                 <br><br>
@@ -152,576 +181,602 @@ mainMenu:
                 <br>
                 I'm looking forward to seeing your awesome creations!
 
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+        showInfo: 详细信息
+        contestOver: 本次竞赛已结束。加入官方Discord以收到关于新竞赛的提醒！
+        # contestOver: This contest has ended - Join the discord to get noticed about new contests!
+    continue: 继续游戏
+    newGame: 新游戏
+    madeBy: 作者：<author-link>
 
 dialogs:
     buttons:
-        ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        ok: 确认 # 好 完成 
+        delete: 删除 # Delete
+        cancel: 取消 # Cancel
+        later: 以后 # Later
+        restart: 重启游戏
+        reset: 重置
+        getStandalone: 获取独立版
+        deleteGame: 我知道我在做什么
+        viewUpdate: 查看更新
+        showUpgrades: 显示建筑升级
+        showKeybindings: 显示按键设置
 
     importSavegameError:
-        title: Import Error
+        title: 导入错误
         text: >-
-            Failed to import your savegame:
+            未能导入你的存档：
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: 导入成功
         text: >-
-            Your savegame has been successfully imported.
+            存档被成功导入
 
     gameLoadFailure:
-        title: Game is broken
+        title: 存档损坏
         text: >-
-            Failed to load your savegame:
+            未能导入你的存档：
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: 确认删除
         text: >-
-            Are you sure you want to delete the game?
+            你确定要删除这个存档吗？
 
     savegameDeletionError:
-        title: Failed to delete
+        title: 删除错误
         text: >-
-            Failed to delete the savegame:
+            未能删除你的存档
 
     restartRequired:
-        title: Restart required
+        title: 需要重启游戏
         text: >-
-            You need to restart the game to apply the settings.
+            你需要重启游戏以应用变更的设置。
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: 更改按键设置
+        desc: 请按下你想要使用的按键，或者按下ESC键来取消设置。
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
-
+        title: 重置所有按键
+        desc: 你将要重置所有按键，请确认。
+        
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
-
+        title: 重置所有按键
+        desc: 成功重置所有按键！
+        
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
-
+        title: 演示版
+        desc: 你尝试使用了 <feature> 功能。该功能在演示版中不可用。请考虑购买独立版以获得更好的体验。
+        
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: 存档数量限制
+        desc: 演示版中只能保存一份存档。 请删除旧存档或者获取独立版！
 
     updateSummary:
-        title: New update!
+        title: 更新啦！
         desc: >-
-            Here are the changes since you last played:
+            以下为自上次游戏以来更新的内容:
+        
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: 解锁建筑升级
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            <strong>不要销毁你之前建造的工厂！</strong>你生产过的所有形状都会被用来升级建筑。
+            升级菜单在屏幕右上角。
+        #    All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
+        #    The upgrades tab can be found on the top right corner of the screen.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: 确认删除
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            你将要删除很多建筑，准确来说有<count>幢！ 你确定要这么做吗？
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: 未解锁
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            你还没有解锁蓝图功能！完成更多的关卡来解锁蓝图。
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: 实用按键
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            这个游戏有很多能帮助搭建工厂的使用按键。
+            以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
+            <code class='keybinding'>CTRL</code> + 拖动：选择区域以复制或删除。<br>
+            <code class='keybinding'>SHIFT</code>: 按住以放置多个。<br>
+            <code class='keybinding'>ALT</code>: 反向放置传送带。<br>
+        # desc: >-
+        #     This game has a lot of keybindings which make it easier to build big factories.
+        #     Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
+        #     <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
+        #     <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
+        #     <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        title: 创建地图标记
+        desc: 给地图标记起一个的名字。你可以在名字中加入一个<strong>短代码</strong>以加入形状。（你可以在<a href="https://viewer.shapez.io" target="_blank">这里</a>生成短代码。）
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: 在演示版中你只能创建两个地图标记。请获取独立版以创建更多标记。
     massCutConfirm:
-        title: Confirm cut
+        title: 确认剪切
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            你将要剪切很多建筑，准确来说有<count>幢！ 你确定要这么做吗？
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: 工厂截图
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            你将要导出你的工厂的截图。如果你的基地很大，截图过程将会很慢，且有可能导致游戏崩溃！
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        moveMap: 移动地图
+        selectBuildings: 选择区域
+        stopPlacement: 停止放置
+        rotateBuilding: 转动建筑
+        placeMultiple: 放置多个
+        reverseOrientation: 反向放置
+        disableAutoOrientation: 关闭自动定向
+        toggleHud: 开关HUD
+        placeBuilding: 放置建筑
+        createMarker: 创建地图标记
+        delete: 销毁
+        pasteLastBlueprint: 粘贴上一个蓝图
+        lockBeltDirection: 启用传送带规划
+        plannerSwitchSide: 规划器换边
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: 按<key>键以选择建筑变体.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            快捷键: <key>
 
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
-            itemsPerSecondDouble: (x2)
+            speed: 效率
+            range: 范围
+            storage: 容量
+            oneItemPerSecond: 1个/秒
+            itemsPerSecond: <x>个/秒
+            itemsPerSecondDouble: （2倍）
 
-            tiles: <x> tiles
+            tiles: <x>格
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: 第<level>关
+        completed: 完成
+        unlockText: 解锁<reward>！
+        buttonNextLevel: 下一关
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: 有新更新啦！
+        gameSaved: 游戏已保存。
 
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: <keyCut>剪切，<keyCopy>复制，<keyDelete>删除，<keyCancel>取消.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: 建筑升级
+        buttonUnlock: 升级
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: <x>级
 
         # The roman number for each tier
-        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+        # Chinese translation： Chinese characters for each tier
+        tierLabels: [一, 二, 三, 四, 五, 六, 七, 八, 九, 十]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: 最高级（<currentMult>倍效率）
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: 统计信息
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: 储存
+                description: 显示基地中每种图形储存的数量。
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: 生产
+                description: 显示所有正在被生产的图形数量，包括中间产物。
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: 送达
+                description: 显示形状送达基地的速度。
+        noShapesProduced: 你还没有生产任何形状。
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        shapesPerMinute: <shapes>个/分钟
+
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: 游戏时间
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: 建筑数量
+        beltsPlaced: 传送带数量
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: 继续
+            settings: 设置
+            menu: 回到主界面
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: 需要帮助？
+        showHint: 显示帮助
+        hideHint: 关闭
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: 需要
 
     # Map markers
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        waypoints: 地图标记
+        hub: 基地
+        description: <strong>左键</strong>快速跳转到地图标记，右键删除地图标记。<br><br>按<keybinding>从当前视图中创建地图标记，或者在选定的位置上使用<strong>右键</strong>创建地图标记。
+        creationSuccessNotification: 成功创建地图标记。
 
     # Interactive tutorial
     interactiveTutorial:
-        title: Tutorial
+        title: 教程
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: 在<strong>圆形矿脉</strong>上放一个<strong>开采机</strong>来获取圆形！
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                用<strong>传送带</strong>将你的开采机连接到基地上！<br><br>提示：用你的鼠标<strong>按下并拖动</strong>传送带！
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br>
+                提示：按住<strong>SHIFT</strong>键来放置多个开采机，用<strong>R</strong>键旋转它们。
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: 传送带、平衡机、隧道
+        description: 效率 <currentMult>倍 → <newMult>倍
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: 开采
+        description: 效率 <currentMult>倍 → <newMult>倍
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: 切割、旋转、堆叠
+        description: 效率 <currentMult>倍 → <newMult>倍
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: 混色、上色
+        description: 效率 <currentMult>倍 → <newMult>倍
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt 传送带
+            description: 运送物品，按住并拖动来放置多个传送带。
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner 开采机
+            description: 在形状或者颜色上放置来开采他们。
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: 链式开采机
+            description: 在形状或者颜色上放置来开采他们。可以被链接在一起。
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt 隧道
+            description: 可以从其他传送带或建筑底下方运送物品。
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: 二级隧道
+            description: 可以从其他传送带或建筑底下方运送物品。
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter 平衡机
+            description: 多功能——将所有输入平均分配到所有输出。
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 小型合流机
+            description: 把两个输入合并到一个输出上。
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 小型合流机
+            description: 把两个输入合并到一个输出上。
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter 切割机
+            description: 将形状从上到下切开并输出。 <strong>如果你只需要其中一半，记得把另一半销毁掉，否则切割机会停止工作！</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: 切割机（四分）
+            description: 将输入的形状切成四块。 <strong>如果你只需要其中一块，记得把其他的销毁掉，否则切割机会停止工作！</strong>
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater 旋转机
+            description: 将图形顺时针旋转90度。
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: 旋转机（逆时针）
+            description: 将图形逆时针旋转90度。
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker 堆叠机
+            description: 将输入的形状拼贴在一起。如果不能被直接拼贴，右边的形状会被堆叠在左边的形状上面.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer 混色机
+            description: 将两个颜色混合在一起。（加法混合）
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
+            name: &painter 上色机
+            description: &painter_desc 将整个形状涂上输入的颜色。
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: 上色机（双倍）
+            description: 同时为两个输入的形状上色，每次上色只消耗一份颜色。
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: 上色机（四向）
+            description: 为形状的四个角涂上不同的颜色。
         mirrored:
             name: *painter
             description: *painter_desc
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash 垃圾桶
+            description: 从所有四个方向上输入物品并销毁它们。永远。
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: 仓库
+            description: 储存多余的物品，有一定储存上限。可以被用来作为溢流门。
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
+        deliver: 交付
+        toUnlock: 来解锁
         levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: 切割图形
+        desc: <strong>切割机</strong>已解锁。不论切割机的方向，它都会把图形<strong>从上到下</strong>切成两半。<br><br>记得把不需要的部分处理掉，否则这个这个建筑会停止工作。为此我给你准备了<strong>垃圾桶</strong>，它会把所有放进去的物品销毁掉。
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: 顺时针旋转
+        desc: <strong>旋转机</strong>已解锁。它会顺时针旋转输入的形状90度。
 
     reward_painter:
-        title: Painting
+        title: 上色
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, I'm working on a solution already!
+            <strong>上色机</strong>已解锁。和形状一样，从颜色矿脉中开采颜色，然后将在上色机中将颜色涂在形状上。<br><br>PS：我们正在开发色盲模式！
 
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: 混合颜色
+        desc: <strong>混色机</strong>已解锁。在这个建筑中将两个颜色混合在一起（加法混合）。
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: 堆叠
+        desc: <strong>堆叠机</strong>已解锁。堆叠机会尝试把两个输入的形状<strong>拼贴</strong>在一起。如果有重叠的部分，右边的输入会被<strong>堆叠</strong>在左边的输入上方！
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: 分离与合并
+        desc: <strong>平衡机</strong>已解锁。在大型工厂中，平衡机负责<strong>合并或分离</strong>多个传送带上的物品。<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        title: 隧道
+        desc: <strong>隧道</strong>已解锁。你现在可以从其他传送带或建筑底下运送物品了！
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: 逆时针旋转
+        desc: <strong>旋转机</strong>逆时针变体已解锁。这个变体可以逆时针旋转形状。选择旋转机然后按“T”键来选取这个变体。
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: 链式开采机
+        desc: <strong>链式开采机</strong>变体已解锁。它是开采机的一个变体。它可以将开采出来的资源<strong>传递</strong>给其他的开采机，使得资源提取更加高效！
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: 二级隧道
+        desc: <strong>二级隧道</strong>变体已解锁。这个隧道有<strong>更长的传输距离</strong>。你还可以混用不同的隧道变体！
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: 小型合流机
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            <strong>小型合流机</strong>变体已解锁。它可以把两个输入合并到一个输出上。
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: 四分切割机
+        desc:  <strong>切割机</strong>四分变体已解锁。它可以将输入的形状切成四块而不只是左右两块。
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: 双倍上色机
+        desc: <strong>上色机</strong>双倍变体已解锁。 它像普通上色机一样为形状上色，只是它可以同时为两个形状上色，每次只消耗一份颜色！
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: 四向上色机
+        desc: <strong>上色机</strong>四向变体已解锁。它可以在一个形状的四个角上涂不同的颜色！
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: 仓库
+        desc: <strong>仓库</strong>变体已解锁。它可以暂时储存一些材料，有容量上限。
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: 自由模式
+        desc: 恭喜你！你解锁了<strong>自由模式</strong>！现在形状将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: 蓝图
+        desc: 你现在可以复制粘贴你的工厂的一部分了！按住CTRL键并拖动鼠标来选择一块区域，然后按C键复制。<br><br>粘贴并<strong>不是免费的</strong>，你需要使用<strong>蓝图形状</strong>来粘贴你的蓝图。蓝图形状是你刚刚交付的形状。
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: 下一关
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            这一关没有奖励，但是下一关有！<br><br> PS: 你生产过的<strong>所有</strong>形状都会被用来<strong>升级建筑</strong>。
 
     no_reward_freeplay:
-        title: Next level
+        title: 下一关
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            恭喜你！另外，我们已经计划在独立版中加入更多内容！
 
 settings:
-    title: Settings
+    title: 设置
     categories:
-        game: Game
-        app: Application
+        game: 游戏内容
+        app: 应用
 
     versionBadges:
-        dev: Development
-        staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+        dev: 开发版本 # Development
+        staging: 预览版本 # Staging
+        prod: 正式版本 # Production
+    buildDate: 于<at-date>编译
 
     labels:
         uiScale:
-            title: Interface scale
+            title: 用户界面大小
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                改变用户界面大小。用户界面会随着设备分辨率缩放，这个设置决定缩放比例。
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: 最小
+                small: 较小
+                regular: 正常
+                large: 较大
+                huge: 最大
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: 缩放灵敏度
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                改变缩放灵敏度（鼠标滚轮或者触控板）。
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: 最低
+                slow: 较低
+                regular: 正常
+                fast: 较高
+                super_fast: 最高
 
         language:
-            title: Language
+            title: 语言
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                改变语言。所有的翻译皆由玩家提供，且有可能正在施工中！
 
         fullscreen:
-            title: Fullscreen
+            title: 全屏
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                全屏以获得更好的游戏体验。仅在独立版中可用。
 
         soundsMuted:
-            title: Mute Sounds
+            title: 关闭音效
             description: >-
-                If enabled, mutes all sound effects.
+                关闭所有音效。
 
         musicMuted:
-            title: Mute Music
+            title: 关闭音乐
             description: >-
-                If enabled, mutes all music.
+                关闭所有音乐。
 
         theme:
-            title: Game theme
+            title: 界面主题
             description: >-
-                Choose the game theme (light / dark).
+                选择界面主题（深色或浅色）。
 
             themes:
-                dark: Dark
-                light: Light
+                dark: 深色
+                light: 浅色
 
         refreshRate:
-            title: Simulation Target
+            title: 模拟频率、刷新频率
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                如果你的显示器是144hz的，请在这里更改刷新频率，这样游戏可以正确地根据你的屏幕进行模拟。但是如果你的电脑性能不佳，提高刷新频率可能降低帧数。
+            # description: >-
+            #     If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
 
         alwaysMultiplace:
-            title: Multiplace
+            title: 多重放置
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+               开启这个选项之后放下建筑将不会取消建筑选择。等同于一直按下SHIFT键。
+            # description: >-
+            #     If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
 
         offerHints:
-            title: Hints & Tutorials
+            title: 提示与教程
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                是否显示提示、教程以及一些其他的帮助理解游戏的UI元素。
+            # description: >-
+            #     Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: 移动速度
+            description: 改变摄像头移动速度
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: 最慢
+                slow: 较慢
+                regular: 正常
+                fast: 较快
+                super_fast: 非常快
+                extremely_fast: 最快
+
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: 智能隧道放置
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                启用后，放置隧道时会将多余的传送带移除。
+                此外，拖动隧道可以快速铺设隧道，以及移除不必要的隧道。
         vignette:
-            title: Vignette
+            title: 晕映
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                启用晕映，将屏幕角落里的颜色变深，更容易阅读文本。
 
 keybindings:
-    title: Keybindings
+    title: 按键设置
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+         提示：使用CTRL、SHIFT、ALT! 这些建在放置建筑时有不同的效果。
+    # hint: >-
+    #     Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: 重置按键设置
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: 通用
+        ingame: 游戏
+        navigation: 视角
+        placement: 放置
+        massSelect: 批量选择
+        buildings: 建筑快捷键
+        placementModifiers: 放置建筑修饰键
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        centerMap: Center Map
+        confirm: 确认
+        back: 返回
+        mapMoveUp: 上
+        mapMoveRight: 右
+        mapMoveDown: 下
+        mapMoveLeft: 左
+        centerMap: 回到基地
+        # confirm: Confirm
+        # back: Back
+        # mapMoveUp: Move Up
+        # mapMoveRight: Move Right
+        # mapMoveDown: Move Down
+        # mapMoveLeft: Move Left
+        # centerMap: Center Map
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: 放大
+        mapZoomOut: 缩小
+        createMarker: 创建地图标记
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: 升级菜单
+        menuOpenStats: 统计菜单
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
+        toggleHud: 开关HUD
+        toggleFPSInfo: 开关帧数与调试信息
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -733,57 +788,61 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Abort Placement
-        rotateWhilePlacing: Rotate
+        abortBuildingPlacement: 取消放置
+        rotateWhilePlacing: 顺时针旋转
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
-        cycleBuildings: Cycle Buildings
+            修饰键: 改为逆时针旋转
+        cycleBuildingVariants: 选择建筑变体
+        # cycleBuildingVariants: Cycle Variants
+        confirmMassDelete: 确认批量删除
+        cycleBuildings: 选择建筑
+        # cycleBuildings: Cycle Buildings
+        massSelectStart: 开始批量选择
+        massSelectSelectMultiple: 选择多个区域
+        massSelectCopy: 复制
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
+        placementDisableAutoOrientation: 取消自动定向
+        placeMultiple: 继续放置
+        placeInverse: 反向放置传送带
+        pasteLastBlueprint: 粘贴上一张蓝图
+        massSelectCut: 剪切
+        exportScreenshot: 导出截图
+        mapMoveFaster: 快速移动
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        lockBeltDirection: 启用传送带规划
+        switchDirectionLockSide: '规划器：换边'
 
 about:
-    title: About this Game
+    title: 关于游戏
+    # title: About this Game
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        本游戏由<a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a>（我）开发，并且已经开源。<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        如果你想参与开发，请查看<a href="<githublink>"
+        target="_blank">shapez.io on github</a>。<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        这个游戏的开发少不了热情的Discord社区。请加入我们的<a href="<discordlink>"
+        target="_blank">Discord 服务器</a>！<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        本游戏的音乐由<a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a>制作——他是个很棒的伙伴。<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
-
+        最后，我想感谢我最好的朋友<a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a>——如果没有与他的异星工厂（factorio）的游戏体验，shapez.io将不会存在。
 changelog:
-    title: Changelog
+    title: 版本日志
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: 恢复存档 #中？
+        importingGames: 倒入存档 #中？
+        oneGameLimit: 最多一个存档
+        customizeKeybindings: 按键设置
+        # customizeKeybindings: Customizing Keybindings
+        exportingBase: 导出工厂截图
+    settingNotAvailable: 在演示版中不可用。
 
-    settingNotAvailable: Not available in the demo.
+        
+
+
