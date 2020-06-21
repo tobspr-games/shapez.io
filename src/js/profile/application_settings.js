@@ -200,6 +200,7 @@ export const allApplicationSettings = [
     new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", categoryGame, (app, value) => {}),
     new BoolSetting("vignette", categoryGame, (app, value) => {}),
+    new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -223,6 +224,7 @@ class SettingsStorage {
         this.offerHints = true;
         this.enableTunnelSmartplace = true;
         this.vignette = true;
+        this.compactBuildingInfo = false;
 
         /**
          * @type {Object.<string, number>}
@@ -412,7 +414,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 12;
+        return 13;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -457,6 +459,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 12) {
             data.settings.vignette = true;
             data.version = 12;
+        }
+
+        if (data.version < 13) {
+            data.settings.compactBuildingInfo = false;
+            data.version = 13;
         }
 
         return ExplainedResult.good();

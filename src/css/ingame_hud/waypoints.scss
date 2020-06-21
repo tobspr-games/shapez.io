@@ -29,7 +29,7 @@
 #ingame_HUD_Waypoints {
     position: absolute;
     @include S(right, 10px);
-    @include S(top, 60px);
+    @include S(top, 45px);
     display: flex;
     flex-direction: column;
     @include DarkThemeInvert();

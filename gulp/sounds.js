@@ -29,7 +29,7 @@ function gulptasksSounds($, gulp, buildFolder) {
                             .audioChannels(1)
                             .audioFrequency(22050)
                             .audioCodec("libmp3lame")
-                            .audioFilters(["volume=0.3"]);
+                            .audioFilters(["volume=0.15"]);
                     }),
                     {
                         name: "music",
