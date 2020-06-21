@@ -28,6 +28,8 @@ import { ShapeDefinition } from "../../shape_definition";
  */
 const SHAPE_LABEL_PLACEHOLDER = "      ";
 
+const MAX_LABEL_LENGTH = 71;
+
 export class HUDWaypoints extends BaseHUDPart {
     /**
      * Creates the overview of waypoints
@@ -220,7 +222,8 @@ export class HUDWaypoints extends BaseHUDPart {
             id: "markerName",
             label: null,
             placeholder: "",
-            validator: val => val.length > 0 && (val.length < 15 || ShapeDefinition.isValidShortKey(val)),
+            validator: val =>
+                val.length > 0 && (val.length < MAX_LABEL_LENGTH || ShapeDefinition.isValidShortKey(val)),
         });
         const dialog = new DialogWithForm({
             app: this.root.app,
@@ -270,8 +273,8 @@ export class HUDWaypoints extends BaseHUDPart {
                 return 1;
             }
             return this.getWaypointLabel(a)
-                .padEnd(20, "0")
-                .localeCompare(this.getWaypointLabel(b).padEnd(20, "0"));
+                .padEnd(MAX_LABEL_LENGTH, "0")
+                .localeCompare(this.getWaypointLabel(b).padEnd(MAX_LABEL_LENGTH, "0"));
         });
 
         // Show notification about creation

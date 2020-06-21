@@ -61,4 +61,21 @@
             }
         }
     }
+
+    @include DarkThemeOverride {
+        .headerBar {
+            h1 {
+                color: #e2e0db;
+            }
+
+            .backButton {
+                filter: invert(1);
+            }
+        }
+
+        > .container > .content {
+            background: darken($darkModeGameBackground, 3);
+            color: #eee;
+        }
+    }
 }

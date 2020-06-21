@@ -285,10 +285,6 @@ ingame:
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -323,6 +319,11 @@ ingame:
     notifications:
         newUpgrade: A new upgrade is available!
         gameSaved: Your game has been saved.
+
+    # Mass select information, this is when you hold CTRL and then drag with your mouse
+    # to select multiple buildings
+    massSelect:
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -687,11 +688,6 @@ settings:
             description: >-
                 Enables the vignette which darkens the screen corners and makes text easier to read.
 
-        compactBuildingInfo:
-            title: Compact Building Infos
-            description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
-
 keybindings:
     title: Keybindings
     hint: >-
@@ -739,7 +735,7 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        pipette: Pipette
+        abortBuildingPlacement: Abort Placement
         rotateWhilePlacing: Rotate
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead

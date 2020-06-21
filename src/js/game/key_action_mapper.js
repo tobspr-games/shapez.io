@@ -24,7 +24,7 @@ export const KEYMAPPINGS = {
         menuOpenStats: { keyCode: key("G") },
 
         toggleHud: { keyCode: 113 }, // F2
-        exportScreenshot: { keyCode: 114 }, // F3
+        exportScreenshot: { keyCode: 114 }, // F3PS
         toggleFPSInfo: { keyCode: 115 }, // F4
     },
 
@@ -56,7 +56,7 @@ export const KEYMAPPINGS = {
     },
 
     placement: {
-        abortBuildingPlacement: { keyCode: key("Q") },
+        pipette: { keyCode: key("Q") },
         rotateWhilePlacing: { keyCode: key("R") },
         rotateInverseModifier: { keyCode: 16 }, // SHIFT
         cycleBuildingVariants: { keyCode: key("T") },
@@ -88,6 +88,10 @@ for (const categoryId in KEYMAPPINGS) {
     }
 }
 
+export const KEYCODE_LMB = 1;
+export const KEYCODE_MMB = 2;
+export const KEYCODE_RMB = 3;
+
 /**
  * Returns a keycode -> string
  * @param {number} code
@@ -95,11 +99,11 @@ for (const categoryId in KEYMAPPINGS) {
  */
 export function getStringForKeyCode(code) {
     switch (code) {
-        case 1:
+        case KEYCODE_LMB:
             return "LMB";
-        case 2:
+        case KEYCODE_MMB:
             return "MMB";
-        case 3:
+        case KEYCODE_RMB:
             return "RMB";
         case 4:
             return "MB4";
