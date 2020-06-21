@@ -281,7 +281,7 @@ ingame:
         toggleHud: Toggle HUD
         placeBuilding: Place building
         createMarker: Create Marker
-        delete: Destroy
+        delete: Delete
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
@@ -749,7 +749,7 @@ keybindings:
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
+        confirmMassDelete: Delete area
         pasteLastBlueprint: Paste last blueprint
         cycleBuildings: Cycle Buildings
         lockBeltDirection: Enable belt planner
