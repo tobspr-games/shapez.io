@@ -147,10 +147,32 @@ export class MetaBuilding {
      * @param {string} param0.variant
      */
     createAndPlaceEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
+        const entity = this.createEntity({
+            root,
+            origin,
+            rotation,
+            originalRotation,
+            rotationVariant,
+            variant,
+        });
+        root.map.placeStaticEntity(entity);
+        root.entityMgr.registerEntity(entity);
+        return entity;
+    }
+
+    /**
+     * Creates the entity without placing it
+     * @param {object} param0
+     * @param {GameRoot} param0.root
+     * @param {Vector} param0.origin Origin tile
+     * @param {number=} param0.rotation Rotation
+     * @param {number} param0.originalRotation Original Rotation
+     * @param {number} param0.rotationVariant Rotation variant
+     * @param {string} param0.variant
+     */
+    createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
-
         const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
-
         entity.addComponent(
             new StaticMapEntityComponent({
                 spriteKey:
@@ -166,12 +188,8 @@ export class MetaBuilding {
                 blueprintSpriteKey: blueprintSprite ? blueprintSprite.spriteName : "",
             })
         );
-
         this.setupEntityComponents(entity, root);
         this.updateVariants(entity, rotationVariant, variant);
-
-        root.map.placeStaticEntity(entity);
-        root.entityMgr.registerEntity(entity);
         return entity;
     }
 

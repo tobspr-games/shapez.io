@@ -1,16 +1,15 @@
 import { DrawParameters } from "../../../core/draw_parameters";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
+import { makeDiv } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
+import { T } from "../../../translations";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { BaseHUDPart } from "../base_hud_part";
-import { Blueprint } from "./blueprint";
-import { makeDiv } from "../../../core/utils";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { blueprintShape } from "../../upgrades";
-import { T } from "../../../translations";
-import { PipetteBlueprint } from "./pipette_blueprint";
+import { BaseHUDPart } from "../base_hud_part";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { Blueprint } from "./blueprint";
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
@@ -37,7 +36,6 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.rotateBlueprint, this);
         keyActionMapper.getBinding(KEYMAPPINGS.massSelect.pasteLastBlueprint).add(this.pasteBlueprint, this);
-        keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.startPipette, this);
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
@@ -53,37 +51,6 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             this.currentBlueprint.set(null);
 
             return STOP_PROPAGATION;
-        }
-    }
-
-    /**
-     * Starts the pipette function
-     */
-    startPipette() {
-        // Disable in overview
-        if (this.root.camera.getIsMapOverlayActive()) {
-            return;
-        }
-
-        const mousePosition = this.root.app.mousePosition;
-        if (!mousePosition) {
-            // Not on screen
-            return;
-        }
-
-        const worldPos = this.root.camera.screenToWorld(mousePosition);
-        const tile = worldPos.toTileSpace();
-        const contents = this.root.map.getTileContent(tile);
-
-        // Make sure we selected something, and also make sure it's not a special entity
-        if (contents && !contents.components.Unremovable && !contents.components.Belt) {
-            const blueprint = PipetteBlueprint.fromEntity(contents);
-
-            // Notice: Order here matters, since pipetteExecuted clears the blueprint
-            this.root.hud.signals.pipetteExecuted.dispatch(contents);
-            this.currentBlueprint.set(blueprint);
-        } else {
-            this.root.hud.signals.pipetteExecuted.dispatch(null);
         }
     }
 
