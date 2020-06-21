@@ -9,6 +9,8 @@ export const CHANGELOG = [
             "Show keybindings for area-select in the upper left instead",
             "Automatically deselect area when selecting a new building",
             "Optimize performance by caching miner items (by Phlosioneer)",
+            "Fix for exporting screenshots for huge bases (It was showing an empty file) (by xSparfuchs)",
+            "Update translations",
         ],
     },
     {
