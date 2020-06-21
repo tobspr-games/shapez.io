@@ -92,11 +92,11 @@
     @include DarkThemeOverride {
         .content {
             .setting {
-                background: #424345;
+                background: darken($darkModeGameBackground, 10);
 
                 .value.enum {
                     // dirty but works
-                    filter: invert(0.8);
+                    filter: invert(0.85);
                     color: #222;
                 }
 
@@ -104,7 +104,7 @@
                     background-color: #74767b;
 
                     &.checked {
-                        background-color: #605b7d;
+                        background-color: $colorBlueBright;
                     }
                 }
             }

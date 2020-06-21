@@ -65,7 +65,7 @@
     @include DarkThemeOverride {
         .headerBar {
             h1 {
-                color: #cfceca;
+                color: #e2e0db;
             }
 
             .backButton {
@@ -74,7 +74,7 @@
         }
 
         > .container > .content {
-            background: #4b4c50;
+            background: darken($darkModeGameBackground, 3);
             color: #eee;
         }
     }

@@ -40,7 +40,7 @@ html {
     background: #dee1ea;
 
     @include DarkThemeOverride {
-        background: #5c606c;
+        background: $darkModeGameBackground;
     }
 }
 

@@ -21,15 +21,17 @@
         }
     }
 
+    $darkModeDialogBg: darken($darkModeGameBackground, 10);
+
     @include DarkThemeOverride {
-        background: rgba(#33363d, 0.9);
+        background: rgba($darkModeDialogBg, 0.9);
         @include InlineAnimation(0.12s ease-in-out) {
             0% {
                 background-color: transparent;
                 opacity: 0.5;
             }
             100% {
-                background-color: rgba(#33363d, 0.9);
+                background-color: rgba($darkModeDialogBg, 0.9);
             }
         }
 
