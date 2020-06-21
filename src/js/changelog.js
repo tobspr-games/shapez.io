@@ -2,7 +2,10 @@ export const CHANGELOG = [
     {
         version: "1.1.16",
         date: "unreleased",
-        entries: ["Fix belt planner not placing the last belt"],
+        entries: [
+            "The game soundtrack has been extended! There are now 4 songs with over 13 minutes of playtime from <a href='https://soundcloud.com/pettersumelius' target='blank'>Peppsen</a>!",
+            "Fix belt planner not placing the last belt",
+        ],
     },
     {
         version: "1.1.15",
