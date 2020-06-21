@@ -47,7 +47,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的形状的游戏。
+    shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。
     # shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
     
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
@@ -57,11 +57,11 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的形状的游戏。
+        shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。提交任务，制造更复杂的流水线，解锁升级来提升您工厂的运作速度。
 
         你将会需要随着不断上升得需求扩大你的工厂。当然，不要忘记你可以在[b]无尽[/b]的地图上开采资源！
 
-        只对形状进行加工可能会使得你感到无聊。我们为你准备了颜色资源——将红、绿、蓝三种颜色混合，生产更多不同的颜色并粉刷在形状上以满足需求。
+        只对图形进行加工可能会使你感到无聊。我们为你准备了颜色资源——将红、绿、蓝三种颜色混合，生产更多不同的颜色并粉刷在图形上以满足需求。
 
         这个游戏目前有18个关卡（这应该已经能让你忙碌几个小时了！），并且正在不断地更新中。很多新关卡已经在开发计划当中！ 
         
@@ -74,26 +74,26 @@ steamPage:
             [*] 深色模式
             [*] 更多设置
             [*] 支持作者继续开发shapez.io❤️
-            [*] 更多新功能
+            [*] 在以后还有更多特性！
         [/list]
 
 
-        [b]开发计划与玩家建议[/b]
+        [b]开发计划与社区意见[/b]
 
-        本游戏已开源，所有人都能参与开发游戏内容！除此以外，我[b]非常重视[/b]玩家社区的反馈！我会阅读每一条建议并尽量顾及所有建议。
+        本游戏已开源，所有人都能参与游戏内容的开发！除此以外，我[b]非常重视[/b]玩家社区的反馈！我会阅读每一条建议并尽量顾及所有建议。
 
         [list]
-            [*] 故事模式，建筑将消耗形状
-            [*] 更多的独立版关卡和建筑
-            [*] 不同的地图与障碍物
+            [*] 要消耗图形来造建筑的的故事模式
+            [*] 更多关卡&建筑（单机版独有）
+            [*] 更多地图，也许会有障碍物
             [*] 可配置的地图生成（矿脉密度与大小、 随机种子以及其他地图设置）
-            [*] 更多形状
+            [*] 更多图形
             [*] 更多的性能改进（当然，现在游戏已经非常流畅了！）
             [*] 色盲模式
             [*] 以及更多其他的功能！
         [/list]
        
-        记得查看我的Trello看板！那里有所有的开发计划！https://trello.com/b/ISQncpJP/shapezio
+        记得查看我的Trello计划板！那里有所有的开发计划！https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: 加载中
@@ -261,7 +261,7 @@ dialogs:
     upgradesIntroduction:
         title: 解锁建筑升级
         desc: >-
-            <strong>不要销毁你之前建造的工厂！</strong>你生产过的所有形状都会被用来升级建筑。
+            <strong>不要销毁你之前建造的工厂！</strong>你生产过的所有图形都会被用来升级建筑。
             升级菜单在屏幕右上角。
         #    All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
         #    The upgrades tab can be found on the top right corner of the screen.
@@ -293,7 +293,7 @@ dialogs:
 
     createMarker:
         title: 创建地图标记
-        desc: 给地图标记起一个的名字。你可以在名字中加入一个<strong>短代码</strong>以加入形状。（你可以在<a href="https://viewer.shapez.io" target="_blank">这里</a>生成短代码。）
+        desc: 给地图标记起一个的名字。你可以在名字中加入一个<strong>短代码</strong>以加入图形。（你可以在<a href="https://viewer.shapez.io" target="_blank">这里</a>生成短代码。）
 
     markerDemoLimit:
         desc: 在演示版中你只能创建两个地图标记。请获取独立版以创建更多标记。
@@ -391,8 +391,8 @@ ingame:
                 description: 显示所有正在被生产的图形数量，包括中间产物。
             delivered:
                 title: 送达
-                description: 显示形状送达基地的速度。
-        noShapesProduced: 你还没有生产任何形状。
+                description: 显示图形送达基地的速度。
+        noShapesProduced: 你还没有生产任何图形。
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes>个/分钟
@@ -464,11 +464,11 @@ buildings:
     miner: # Internal name for the Extractor
         default:
             name: &miner 开采机
-            description: 在形状或者颜色上放置来开采他们。
+            description: 在图形或者颜色上放置来开采他们。
 
         chainable:
             name: 链式开采机
-            description: 在形状或者颜色上放置来开采他们。可以被链接在一起。
+            description: 在图形或者颜色上放置来开采他们。可以被链接在一起。
 
     underground_belt: # Internal name for the Tunnel
         default:
@@ -495,10 +495,10 @@ buildings:
     cutter:
         default:
             name: &cutter 切割机
-            description: 将形状从上到下切开并输出。 <strong>如果你只需要其中一半，记得把另一半销毁掉，否则切割机会停止工作！</strong>
+            description: 将图形从上到下切开并输出。 <strong>如果你只需要其中一半，记得把另一半销毁掉，否则切割机会停止工作！</strong>
         quad:
             name: 切割机（四分）
-            description: 将输入的形状切成四块。 <strong>如果你只需要其中一块，记得把其他的销毁掉，否则切割机会停止工作！</strong>
+            description: 将输入的图形切成四块。 <strong>如果你只需要其中一块，记得把其他的销毁掉，否则切割机会停止工作！</strong>
 
     rotater:
         default:
@@ -511,7 +511,7 @@ buildings:
     stacker:
         default:
             name: &stacker 堆叠机
-            description: 将输入的形状拼贴在一起。如果不能被直接拼贴，右边的形状会被堆叠在左边的形状上面.
+            description: 将输入的图形拼贴在一起。如果不能被直接拼贴，右边的图形会被堆叠在左边的图形上面.
 
     mixer:
         default:
@@ -521,13 +521,13 @@ buildings:
     painter:
         default:
             name: &painter 上色机
-            description: &painter_desc 将整个形状涂上输入的颜色。
+            description: &painter_desc 将整个图形涂上输入的颜色。
         double:
             name: 上色机（双倍）
-            description: 同时为两个输入的形状上色，每次上色只消耗一份颜色。
+            description: 同时为两个输入的图形上色，每次上色只消耗一份颜色。
         quad:
             name: 上色机（四向）
-            description: 为形状的四个角涂上不同的颜色。
+            description: 为图形的四个角涂上不同的颜色。
         mirrored:
             name: *painter
             description: *painter_desc
@@ -553,12 +553,12 @@ storyRewards:
 
     reward_rotater:
         title: 顺时针旋转
-        desc: <strong>旋转机</strong>已解锁。它会顺时针旋转输入的形状90度。
+        desc: <strong>旋转机</strong>已解锁。它会顺时针旋转输入的图形90度。
 
     reward_painter:
         title: 上色
         desc: >-
-            <strong>上色机</strong>已解锁。和形状一样，从颜色矿脉中开采颜色，然后将在上色机中将颜色涂在形状上。<br><br>PS：我们正在开发色盲模式！
+            <strong>上色机</strong>已解锁。和图形一样，从颜色矿脉中开采颜色，然后将在上色机中将颜色涂在图形上。<br><br>PS：我们正在开发色盲模式！
 
     reward_mixer:
         title: 混合颜色
@@ -566,7 +566,7 @@ storyRewards:
 
     reward_stacker:
         title: 堆叠
-        desc: <strong>堆叠机</strong>已解锁。堆叠机会尝试把两个输入的形状<strong>拼贴</strong>在一起。如果有重叠的部分，右边的输入会被<strong>堆叠</strong>在左边的输入上方！
+        desc: <strong>堆叠机</strong>已解锁。堆叠机会尝试把两个输入的图形<strong>拼贴</strong>在一起。如果有重叠的部分，右边的输入会被<strong>堆叠</strong>在左边的输入上方！
 
     reward_splitter:
         title: 分离与合并
@@ -578,7 +578,7 @@ storyRewards:
 
     reward_rotater_ccw:
         title: 逆时针旋转
-        desc: <strong>旋转机</strong>逆时针变体已解锁。这个变体可以逆时针旋转形状。选择旋转机然后按“T”键来选取这个变体。
+        desc: <strong>旋转机</strong>逆时针变体已解锁。这个变体可以逆时针旋转图形。选择旋转机然后按“T”键来选取这个变体。
 
     reward_miner_chainable:
         title: 链式开采机
@@ -595,15 +595,15 @@ storyRewards:
 
     reward_cutter_quad:
         title: 四分切割机
-        desc:  <strong>切割机</strong>四分变体已解锁。它可以将输入的形状切成四块而不只是左右两块。
+        desc:  <strong>切割机</strong>四分变体已解锁。它可以将输入的图形切成四块而不只是左右两块。
 
     reward_painter_double:
         title: 双倍上色机
-        desc: <strong>上色机</strong>双倍变体已解锁。 它像普通上色机一样为形状上色，只是它可以同时为两个形状上色，每次只消耗一份颜色！
+        desc: <strong>上色机</strong>双倍变体已解锁。 它像普通上色机一样为图形上色，只是它可以同时为两个图形上色，每次只消耗一份颜色！
 
     reward_painter_quad:
         title: 四向上色机
-        desc: <strong>上色机</strong>四向变体已解锁。它可以在一个形状的四个角上涂不同的颜色！
+        desc: <strong>上色机</strong>四向变体已解锁。它可以在一个图形的四个角上涂不同的颜色！
 
     reward_storage:
         title: 仓库
@@ -611,17 +611,17 @@ storyRewards:
 
     reward_freeplay:
         title: 自由模式
-        desc: 恭喜你！你解锁了<strong>自由模式</strong>！现在形状将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
+        desc: 恭喜你！你解锁了<strong>自由模式</strong>！现在图形将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
 
     reward_blueprints:
         title: 蓝图
-        desc: 你现在可以复制粘贴你的工厂的一部分了！按住CTRL键并拖动鼠标来选择一块区域，然后按C键复制。<br><br>粘贴并<strong>不是免费的</strong>，你需要使用<strong>蓝图形状</strong>来粘贴你的蓝图。蓝图形状是你刚刚交付的形状。
+        desc: 你现在可以复制粘贴你的工厂的一部分了！按住CTRL键并拖动鼠标来选择一块区域，然后按C键复制。<br><br>粘贴并<strong>不是免费的</strong>，你需要使用<strong>蓝图图形</strong>来粘贴你的蓝图。蓝图图形是你刚刚交付的图形。
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: 下一关
         desc: >-
-            这一关没有奖励，但是下一关有！<br><br> PS: 你生产过的<strong>所有</strong>形状都会被用来<strong>升级建筑</strong>。
+            这一关没有奖励，但是下一关有！<br><br> PS: 你生产过的<strong>所有</strong>图形都会被用来<strong>升级建筑</strong>。
 
     no_reward_freeplay:
         title: 下一关
