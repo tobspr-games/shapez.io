@@ -60,6 +60,11 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
      * Starts the pipette function
      */
     startPipette() {
+        // Disable in overview
+        if (this.root.camera.getIsMapOverlayActive()) {
+            return;
+        }
+
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
@@ -69,7 +74,9 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const tile = worldPos.toTileSpace();
         const contents = this.root.map.getTileContent(tile);
-        if (contents) {
+
+        // Make sure we selected something, and also make sure it's not a special entity
+        if (contents && !contents.components.Unremovable) {
             const blueprint = PipetteBlueprint.fromEntity(contents);
 
             // Notice: Order here matters, since pipetteExecuted clears the blueprint
