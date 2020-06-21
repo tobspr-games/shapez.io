@@ -201,6 +201,7 @@ export const allApplicationSettings = [
     new BoolSetting("enableTunnelSmartplace", categoryGame, (app, value) => {}),
     new BoolSetting("vignette", categoryGame, (app, value) => {}),
     new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
+    new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -225,6 +226,7 @@ class SettingsStorage {
         this.enableTunnelSmartplace = true;
         this.vignette = true;
         this.compactBuildingInfo = false;
+        this.disableCutDeleteWarnings = false;
 
         /**
          * @type {Object.<string, number>}
@@ -414,7 +416,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 13;
+        return 14;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -466,6 +468,10 @@ export class ApplicationSettings extends ReadWriteProxy {
             data.version = 13;
         }
 
+        if (data.version < 14) {
+            data.settings.disableCutDeleteWarnings = false;
+            data.version = 14;
+        }
         return ExplainedResult.good();
     }
 }
