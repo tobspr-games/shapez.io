@@ -75,6 +75,8 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             // Notice: Order here matters, since pipetteExecuted clears the blueprint
             this.root.hud.signals.pipetteExecuted.dispatch(contents);
             this.currentBlueprint.set(blueprint);
+        } else {
+            this.root.hud.signals.pipetteExecuted.dispatch(null);
         }
     }
 
