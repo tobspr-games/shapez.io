@@ -285,6 +285,9 @@ ingame:
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -319,11 +322,6 @@ ingame:
     notifications:
         newUpgrade: A new upgrade is available!
         gameSaved: Your game has been saved.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:

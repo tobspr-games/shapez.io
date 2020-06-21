@@ -5,6 +5,10 @@ export const CHANGELOG = [
         entries: [
             "The game soundtrack has been extended! There are now 4 songs with over 13 minutes of playtime from <a href='https://soundcloud.com/pettersumelius' target='blank'>Peppsen</a>!",
             "Fix belt planner not placing the last belt",
+            "Refactor keybindings overlay to show more appropriate keybindings",
+            "Show keybindings for area-select in the upper left instead",
+            "Automatically deselect area when selecting a new building",
+            "Optimize performance by caching miner items (by Phlosioneer)",
         ],
     },
     {
