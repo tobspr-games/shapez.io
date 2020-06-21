@@ -243,20 +243,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @param {boolean} cancelAction
      */
     onCanvasClick(mousePos, cancelAction = false) {
-        if (cancelAction) {
-            if (this.currentMetaBuilding.get()) {
-                this.currentMetaBuilding.set(null);
-            } else {
-                this.deleteBelowCursor();
-            }
+        // Prevent any other canvas clicks
+        if (this.currentMetaBuilding.get()) {
             return STOP_PROPAGATION;
         }
-
-        if (!this.currentMetaBuilding.get()) {
-            return;
-        }
-
-        return STOP_PROPAGATION;
     }
 
     /**
@@ -479,12 +469,17 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         // Deletion
-        if (button === enumMouseButton.right && !this.currentMetaBuilding.get()) {
+        if (button === enumMouseButton.right && !metaBuilding) {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
             this.currentMetaBuilding.set(null);
             return STOP_PROPAGATION;
+        }
+
+        // Cancel placement
+        if (button === enumMouseButton.right && metaBuilding) {
+            this.currentMetaBuilding.set(null);
         }
     }
 

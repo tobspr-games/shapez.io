@@ -17,7 +17,6 @@ import { SavegameSerializer } from "../savegame/savegame_serializer";
 import { AutomaticSave } from "./automatic_save";
 import { MetaHubBuilding } from "./buildings/hub";
 import { Camera } from "./camera";
-import { CanvasClickInterceptor } from "./canvas_click_interceptor";
 import { EntityManager } from "./entity_manager";
 import { GameSystemManager } from "./game_system_manager";
 import { HubGoals } from "./hub_goals";
@@ -98,7 +97,6 @@ export class GameCore {
         root.logic = new GameLogic(root);
         root.hud = new GameHUD(root);
         root.time = new GameTime(root);
-        root.canvasClickInterceptor = new CanvasClickInterceptor(root);
         root.automaticSave = new AutomaticSave(root);
         root.soundProxy = new SoundProxy(root);
 
