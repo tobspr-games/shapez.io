@@ -36,11 +36,11 @@ export class HUDShapeStatisticsHandle {
         this.element.setAttribute("data-shape-key", shape);
         const pinButton = document.createElement("button");
         pinButton.classList.add("pin");
-        const pinDetector = new ClickDetector(pinButton, {
+        this.pinDetector = new ClickDetector(pinButton, {
             consumeEvents: true,
             preventDefault: true,
         });
-        pinDetector.click.add(() => {
+        this.pinDetector.click.add(() => {
             if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
                 this.root.hud.signals.shapeUnpinRequested.dispatch(shape);
             } else {
@@ -236,6 +236,11 @@ export class HUDShapeStatisticsHandle {
             this.graphCanvas.remove();
             delete this.graphCanvas;
             delete this.graphContext;
+        }
+
+        if (this.pinDetector) {
+            this.pinDetector.cleanup();
+            delete this.pinDetector;
         }
     }
 
