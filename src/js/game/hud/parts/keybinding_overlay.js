@@ -44,7 +44,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
      * it supports the belt planner
      * @returns {boolean}
      */
-    get buildingPlacementBeltPlanner() {
+    get buildingPlacementSupportsBeltPlanner() {
         const placer = this.root.hud.parts.buildingPlacer;
         return (
             !this.mapOverviewActive &&
@@ -225,7 +225,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 // Belt planner
                 label: T.ingame.keybindingsOverlay.lockBeltDirection,
                 keys: [k.placementModifiers.lockBeltDirection],
-                condition: () => this.buildingPlacementActive && !this.beltPlannerActive,
+                condition: () => this.buildingPlacementSupportsBeltPlanner && !this.beltPlannerActive,
             },
 
             {
