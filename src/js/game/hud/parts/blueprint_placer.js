@@ -76,7 +76,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         const contents = this.root.map.getTileContent(tile);
 
         // Make sure we selected something, and also make sure it's not a special entity
-        if (contents && !contents.components.Unremovable) {
+        if (contents && !contents.components.Unremovable && !contents.components.Belt) {
             const blueprint = PipetteBlueprint.fromEntity(contents);
 
             // Notice: Order here matters, since pipetteExecuted clears the blueprint
