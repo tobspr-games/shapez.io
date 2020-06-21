@@ -203,10 +203,10 @@ export class Blueprint {
                                     "Can not delete entity for blueprint"
                                 );
                                 if (!root.logic.tryDeleteBuilding(contents)) {
-                                    logger.error(
+                                    assertAlways(
+                                        false,
                                         "Building has replaceable component but is also unremovable in blueprint"
                                     );
-                                    return false;
                                 }
                             }
                         }
