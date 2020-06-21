@@ -401,4 +401,44 @@
             }
         }
     }
+
+    @include DarkThemeOverride {
+        background: #53565e center center / cover !important;
+
+        .topButtons {
+            filter: invert(1);
+
+            .languageChoose {
+                filter: invert(1);
+            }
+        }
+
+        .mainContainer {
+            background: #4b4c50;
+
+            .savegames .savegame {
+                background: #62646a;
+                color: white;
+            }
+        }
+
+        .footer {
+            > a {
+                background: #4b4c50;
+                color: #eee;
+            }
+
+            .author {
+                color: #bdbdbd;
+
+                > a {
+                    color: white;
+                }
+            }
+
+            .thirdpartyLogo.githubLogo {
+                filter: invert(1);
+            }
+        }
+    }
 }
