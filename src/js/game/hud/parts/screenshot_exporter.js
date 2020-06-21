@@ -5,7 +5,7 @@ import { T } from "../../../translations";
 import { createLogger } from "../../../core/logging";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { Vector } from "../../../core/vector";
-import { Math_max, Math_min } from "../../../core/builtins";
+import { Math_max, Math_min, Math_floor } from "../../../core/builtins";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { Rectangle } from "../../../core/rectangle";
@@ -57,10 +57,10 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         logger.log("Dimensions:", dimensions);
 
         let chunkSizePixels = 128;
-        const maxDimensions = Math.max(dimensions.x, dimensions.y);
+        const maxDimensions = Math_max(dimensions.x, dimensions.y);
 
         if (maxDimensions > 128) {
-            chunkSizePixels = Math.floor(128 * (128 / maxDimensions));
+            chunkSizePixels = Math_max(1, Math_floor(128 * (128 / maxDimensions)));
         }
         logger.log("ChunkSizePixels:", chunkSizePixels);
 
