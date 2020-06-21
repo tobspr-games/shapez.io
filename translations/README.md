@@ -19,10 +19,14 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Swedish](base-sv.yaml)
 -   [Chinese (Simplified)](base-zh-CN.yaml)
 -   [Chinese (Traditional)](base-zh-TW.yaml)
--   [Spanish](base-es.yaml)
+-   [Spanish (Latin America)](base-es.yaml)
 -   [Hungarian](base-hu.yaml)
 -   [Turkish](base-tr.yaml)
 -   [Japanese](base-ja.yaml)
+-   [Lithuanian](base-lt.yaml)
+-   [Arabic](base-ar.yaml)
+-   [Norwegian](base-no.yaml)
+-   [Kroatian](base-hr.yaml)
 
 (If you want to translate into a new language, see below!)
 
@@ -43,4 +47,4 @@ PS: I'm super busy, but I'll give my best to do it quickly!
 
 ## Updating a language to the latest version
 
-Right now there is no possibility to automatically update a translation to the latest version. It is required to manually check the base translation (`base-en.yaml`) and compare it to the other translations to remove unused keys and add new ones.
+Run `yarn syncTranslations` in the root directory to synchronize all translations to the latest version! This will remove obsolete keys and add newly added keys. (Run `yarn` before to install packes).

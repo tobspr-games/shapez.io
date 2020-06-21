@@ -14,6 +14,10 @@
         padding: 10px;
         box-sizing: border-box;
         background: #eef1f4;
+        
+        @include DarkThemeOverride {
+            background: #424242;
+        }
 
         .version {
             @include Heading;
@@ -38,6 +42,10 @@
             }
             a {
                 color: $colorBlueBright;
+            }
+            li {
+                @include SuperSmallText;
+                @include S(margin-bottom, 10px);
             }
         }
     }

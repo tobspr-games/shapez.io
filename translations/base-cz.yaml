@@ -134,6 +134,9 @@ mainMenu:
 
         showInfo: Zobrazit
         contestOver: Tato soutěž skončila - Připojte se na Discord a získejte informace o nových soutěžích!
+    continue: Continue
+    newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -195,13 +198,6 @@ dialogs:
         title: Demo verze
         desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Pořiďte si plnou verzi pro lepší zážitek!
 
-    saveNotPossibleInDemo:
-        desc: Vaše hra byla uložena, ale její nahrání je možné pouze v plné verzi. Pořiďte si plnou verzi pro lepší zážitek!
-
-    leaveNotPossibleInDemo:
-        title: Demo verze
-        desc: Vaše hra byla uložena, ale v demo verzi ji nebudete moci nahrát. Nahrání vašich uložených her je možné pouze v plné verzi. Jste si jisti?
-
     oneSavegameLimit:
         title: Omezené ukládání
         desc: Ve zkušební verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající uloženou hru nebo si pořiďte plnou verzi!
@@ -210,11 +206,6 @@ dialogs:
         title: Nová aktualizace!
         desc: >-
             Tady jsou změny od posledně:
-
-    hintDescription:
-        title: Nápověda
-        desc: >-
-            Kdykoli budete potřebovat pomoc nebo se zaseknete, zmáčkněte tlačítko „Zobrazit nápovědu“ v levém dolním rohu a já vám pomohu jak budu moct!
 
     upgradesIntroduction:
         title: Odemknout vylepšení
@@ -243,10 +234,21 @@ dialogs:
 
     createMarker:
         title: Nová značka
-        desc: Dejte jí smysluplné jméno
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!
+    massCutConfirm:
+        title: Potvrdit vyjmutí
+        desc: >-
+            Chceš vyjmout spoustu budov (přesněji řečeno <count>)! Vážně to
+            chceš udělat?
+
+    exportScreenshotWarning:
+        title: Exportuj snímek obrazovky
+        desc: >-
+            Zažádal jsi o exportování své základny jako obrázek. Měj prosím na paměti, že to
+            může zejména u větších základen dlouho trvat, nebo dokonce shodit hru!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -263,6 +265,9 @@ ingame:
         placeBuilding: Položit budovu
         createMarker: Vytvořit značku
         delete: Zničit
+        pasteLastBlueprint: Vložit poslední plán
+        lockBeltDirection: Enable belt planner
+        plannerSwitchSide: Flip planner side
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -301,7 +306,7 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Zmáčkněte <keyCopy> pro zkopírování, <keyDelete> pro smazání, nebo <keyCancel> pro zrušení.
+        infoText: Stiskni <keyCut> pro vyjmutí, <keyCopy> pro kopírování a <keyDelete> pro zbourání. <keyCancel> ruší výběr.
 
     # The "Upgrades" window
     shop:
@@ -461,13 +466,16 @@ buildings:
     painter:
         default:
             name: &painter Barvič
-            description: Obarví celý tvar v levém vstupu barvou z pravého vstupu.
+            description: &painter_desc Obarví celý tvar v levém vstupu barvou z pravého vstupu.
         double:
             name: Barvič (dvojnásobný)
             description: Obarví tvary z levých vstupů barvou z horního vstupu.
         quad:
             name: Barvič (čtyřnásobný)
             description: Umožňuje obarvit každý dílek tvaru samostatně.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -621,8 +629,12 @@ settings:
             description: >-
                 Vybere motiv (světlý / tmavý).
 
+            themes:
+                dark: Tmavý
+                light: Světlý
+
         refreshRate:
-            title: Cíl simulace
+            title: Obnovovací frekvence
             description: >-
                 Pokud máte 144 Hz monitor, změňte si rychlost obnovování obrazu. Toto nastavení může snížit FPS, pokud máte pomalý počítač.
 
@@ -635,6 +647,27 @@ settings:
             title: Tipy & Nápovědy
             description: >-
                 Pokud zapnuté, budou se ve hře zobrazovat tipy a nápovědy. Také schová určité elementy na obrazovce pro jednodušší dostání se do hry.
+
+        movementSpeed:
+            title: Rychlost kamery
+            description: Mění, jak rychle se kamera posouvá při použití klávesnice.
+            speeds:
+                super_slow: Hodně pomalá
+                slow: Pomalá
+                regular: Normální
+                fast: Rychlá
+                super_fast: Hodně Rychlá
+                extremely_fast: Extrémně Rychlá
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
 
 keybindings:
     title: Klávesové zkratky
@@ -659,6 +692,7 @@ keybindings:
         mapMoveRight: Posun doprava
         mapMoveDown: Posun dolů
         mapMoveLeft: Posun doleva
+        mapMoveFaster: Rychlejší posun
         centerMap: Vycentrovat mapu
 
         mapZoomIn: Přiblížit
@@ -696,9 +730,31 @@ keybindings:
         placementDisableAutoOrientation: Zrušit automatickou orientaci
         placeMultiple: Zůstat ve stavebním módu
         placeInverse: Přepnout automatickou orientaci pásů
+        pasteLastBlueprint: Vložit poslední plán
+        massSelectCut: Vyjmout oblast
+        exportScreenshot: Exportovat celou základnu jako obrázek
+        lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: 'Planner: Switch side'
 
 about:
     title: O hře
+    body: >-
+        Tato hra je open source a je vyvíjená <a href="https://github.com/tobspr"
+        target="_blank">Tobiasem Springerem</a> (česky neumí, ale je to fakt frajer :) ).<br><br>
+
+        Pokud se chceš na hře podílet, podívej se na <a href="<githublink>"
+        target="_blank">shapez.io na githubu</a>.<br><br>
+
+        Tato hra by nebyla ani možná bez skvělé discord komunity
+        okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>"
+        target="_blank">discord server</a>!<br><br>
+
+        Soundtrack udělal <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Je úžasnej.<br><br>
+
+        V neposlední řadě by Tobias (já jen tlumočím) rád poděkoval skvělému kamarádovi <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklasi</a> - Bez hodin strávených
+        u factoria by tato hra nikdy neexistovala.
 
 changelog:
     title: Seznam změn
@@ -709,5 +765,6 @@ demo:
         importingGames: Importování uložených her
         oneGameLimit: Omezeno pouze na jednu uloženou hru
         customizeKeybindings: Změna klávesových zkratek
+        exportingBase: Exportovat celou základnu jako obrázek
 
     settingNotAvailable: Nedostupné v demo verzi.

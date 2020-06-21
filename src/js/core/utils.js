@@ -377,7 +377,23 @@ export function findNiceValue(num) {
         return 0;
     }
 
-    const roundAmount = 0.5 * Math_pow(10, Math_floor(Math_log10(num) - 1));
+    let roundAmount = 1;
+    if (num > 50000) {
+        roundAmount = 10000;
+    } else if (num > 20000) {
+        roundAmount = 5000;
+    } else if (num > 5000) {
+        roundAmount = 1000;
+    } else if (num > 2000) {
+        roundAmount = 500;
+    } else if (num > 1000) {
+        roundAmount = 100;
+    } else if (num > 100) {
+        roundAmount = 20;
+    } else if (num > 20) {
+        roundAmount = 5;
+    }
+
     const niceValue = Math_floor(num / roundAmount) * roundAmount;
     if (num >= 10) {
         return Math_round(niceValue);
@@ -388,6 +404,8 @@ export function findNiceValue(num) {
 
     return Math_round(niceValue * 100) / 100;
 }
+
+window.fn = findNiceValue;
 
 /**
  * Finds a nice integer value
@@ -628,13 +646,12 @@ export function measure(name, target) {
 }
 
 /**
- * Helper method to create a new div
- * @param {Element} parent
+ * Helper method to create a new div element
  * @param {string=} id
  * @param {Array<string>=} classes
  * @param {string=} innerHTML
  */
-export function makeDiv(parent, id = null, classes = [], innerHTML = "") {
+export function makeDivElement(id = null, classes = [], innerHTML = "") {
     const div = document.createElement("div");
     if (id) {
         div.id = id;
@@ -643,8 +660,49 @@ export function makeDiv(parent, id = null, classes = [], innerHTML = "") {
         div.classList.add(classes[i]);
     }
     div.innerHTML = innerHTML;
+    return div;
+}
+
+/**
+ * Helper method to create a new div
+ * @param {Element} parent
+ * @param {string=} id
+ * @param {Array<string>=} classes
+ * @param {string=} innerHTML
+ */
+export function makeDiv(parent, id = null, classes = [], innerHTML = "") {
+    const div = makeDivElement(id, classes, innerHTML);
     parent.appendChild(div);
     return div;
+}
+
+/**
+ * Helper method to create a new div and place before reference Node
+ * @param {Element} parent
+ * @param {Element} referenceNode
+ * @param {string=} id
+ * @param {Array<string>=} classes
+ * @param {string=} innerHTML
+ */
+export function makeDivBefore(parent, referenceNode, id = null, classes = [], innerHTML = "") {
+    const div = makeDivElement(id, classes, innerHTML);
+    parent.insertBefore(div, referenceNode);
+    return div;
+}
+
+/**
+ * Helper method to create a new button element
+ * @param {Array<string>=} classes
+ * @param {string=} innerHTML
+ */
+export function makeButtonElement(classes = [], innerHTML = "") {
+    const element = document.createElement("button");
+    for (let i = 0; i < classes.length; ++i) {
+        element.classList.add(classes[i]);
+    }
+    element.classList.add("styledButton");
+    element.innerHTML = innerHTML;
+    return element;
 }
 
 /**
@@ -654,13 +712,21 @@ export function makeDiv(parent, id = null, classes = [], innerHTML = "") {
  * @param {string=} innerHTML
  */
 export function makeButton(parent, classes = [], innerHTML = "") {
-    const element = document.createElement("button");
-    for (let i = 0; i < classes.length; ++i) {
-        element.classList.add(classes[i]);
-    }
-    element.classList.add("styledButton");
-    element.innerHTML = innerHTML;
+    const element = makeButtonElement(classes, innerHTML);
     parent.appendChild(element);
+    return element;
+}
+
+/**
+ * Helper method to create a new button and place before reference Node
+ * @param {Element} parent
+ * @param {Element} referenceNode
+ * @param {Array<string>=} classes
+ * @param {string=} innerHTML
+ */
+export function makeButtonBefore(parent, referenceNode, classes = [], innerHTML = "") {
+    const element = makeButtonElement(classes, innerHTML);
+    parent.insertBefore(element, referenceNode);
     return element;
 }
 

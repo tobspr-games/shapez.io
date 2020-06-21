@@ -17,34 +17,17 @@ import { enumHubGoalRewards } from "../../tutorial_goals";
 const logger = createLogger("hud/mass_selector");
 
 export class HUDMassSelector extends BaseHUDPart {
-    createElements(parent) {
-        const removalKeybinding = this.root.keyMapper
-            .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
-            .getKeyCodeString();
-        const abortKeybinding = this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).getKeyCodeString();
-        const copyKeybinding = this.root.keyMapper
-            .getBinding(KEYMAPPINGS.massSelect.massSelectCopy)
-            .getKeyCodeString();
-
-        this.element = makeDiv(
-            parent,
-            "ingame_HUD_MassSelector",
-            [],
-            T.ingame.massSelect.infoText
-                .replace("<keyDelete>", `<code class='keybinding'>${removalKeybinding}</code>`)
-                .replace("<keyCopy>", `<code class='keybinding'>${copyKeybinding}</code>`)
-                .replace("<keyCancel>", `<code class='keybinding'>${abortKeybinding}</code>`)
-        );
-    }
+    createElements(parent) {}
 
     initialize() {
         this.deletionMarker = Loader.getSprite("sprites/misc/deletion_marker.png");
 
-        this.currentSelectionStart = null;
+        this.currentSelectionStartWorld = null;
         this.currentSelectionEnd = null;
         this.selectedUids = new Set();
 
         this.root.signals.entityQueuedForDestroy.add(this.onEntityDestroyed, this);
+        this.root.hud.signals.pasteBlueprintRequested.add(this.clearSelection, this);
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
@@ -54,9 +37,10 @@ export class HUDMassSelector extends BaseHUDPart {
         this.root.keyMapper
             .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
             .add(this.confirmDelete, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectCut).add(this.confirmCut, this);
         this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectCopy).add(this.startCopy, this);
 
-        this.domAttach = new DynamicDomAttach(this.root, this.element);
+        this.root.hud.signals.selectedPlacementBuildingChanged.add(this.clearSelection, this);
     }
 
     /**
@@ -76,6 +60,13 @@ export class HUDMassSelector extends BaseHUDPart {
             this.selectedUids = new Set();
             return STOP_PROPAGATION;
         }
+    }
+
+    /**
+     * Clears the entire selection
+     */
+    clearSelection() {
+        this.selectedUids = new Set();
     }
 
     confirmDelete() {
@@ -123,13 +114,56 @@ export class HUDMassSelector extends BaseHUDPart {
         }
     }
 
+    confirmCut() {
+        if (!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
+            this.root.hud.parts.dialogs.showInfo(
+                T.dialogs.blueprintsNotUnlocked.title,
+                T.dialogs.blueprintsNotUnlocked.desc
+            );
+        } else if (this.selectedUids.size > 100) {
+            const { ok } = this.root.hud.parts.dialogs.showWarning(
+                T.dialogs.massCutConfirm.title,
+                T.dialogs.massCutConfirm.desc.replace(
+                    "<count>",
+                    "" + formatBigNumberFull(this.selectedUids.size)
+                ),
+                ["cancel:good", "ok:bad"]
+            );
+            ok.add(() => this.doCut());
+        } else {
+            this.doCut();
+        }
+    }
+
+    doCut() {
+        if (this.selectedUids.size > 0) {
+            const entityUids = Array.from(this.selectedUids);
+
+            // copy code relies on entities still existing, so must copy before deleting.
+            this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
+
+            for (let i = 0; i < entityUids.length; ++i) {
+                const uid = entityUids[i];
+                const entity = this.root.entityMgr.findByUid(uid);
+                if (!this.root.logic.tryDeleteBuilding(entity)) {
+                    logger.error("Error in mass cut, could not remove building");
+                    this.selectedUids.delete(uid);
+                }
+            }
+
+            this.root.soundProxy.playUiClick();
+        } else {
+            this.root.soundProxy.playUiError();
+        }
+    }
+
     /**
      * mouse down pre handler
      * @param {Vector} pos
      * @param {enumMouseButton} mouseButton
      */
     onMouseDown(pos, mouseButton) {
-        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).isCurrentlyPressed()) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).pressed) {
             return;
         }
 
@@ -137,16 +171,12 @@ export class HUDMassSelector extends BaseHUDPart {
             return;
         }
 
-        if (
-            !this.root.keyMapper
-                .getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple)
-                .isCurrentlyPressed()
-        ) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).pressed) {
             // Start new selection
             this.selectedUids = new Set();
         }
 
-        this.currentSelectionStart = pos.copy();
+        this.currentSelectionStartWorld = this.root.camera.screenToWorld(pos.copy());
         this.currentSelectionEnd = pos.copy();
         return STOP_PROPAGATION;
     }
@@ -156,14 +186,14 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {Vector} pos
      */
     onMouseMove(pos) {
-        if (this.currentSelectionStart) {
+        if (this.currentSelectionStartWorld) {
             this.currentSelectionEnd = pos.copy();
         }
     }
 
     onMouseUp() {
-        if (this.currentSelectionStart) {
-            const worldStart = this.root.camera.screenToWorld(this.currentSelectionStart);
+        if (this.currentSelectionStartWorld) {
+            const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
 
             const tileStart = worldStart.toTileSpace();
@@ -181,13 +211,9 @@ export class HUDMassSelector extends BaseHUDPart {
                 }
             }
 
-            this.currentSelectionStart = null;
+            this.currentSelectionStartWorld = null;
             this.currentSelectionEnd = null;
         }
-    }
-
-    update() {
-        this.domAttach.update(this.selectedUids.size > 0);
     }
 
     /**
@@ -197,8 +223,8 @@ export class HUDMassSelector extends BaseHUDPart {
     draw(parameters) {
         const boundsBorder = 2;
 
-        if (this.currentSelectionStart) {
-            const worldStart = this.root.camera.screenToWorld(this.currentSelectionStart);
+        if (this.currentSelectionStartWorld) {
+            const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
 
             const realWorldStart = worldStart.min(worldEnd);

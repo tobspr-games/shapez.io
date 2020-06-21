@@ -37,7 +37,6 @@
 @import "ingame_hud/shop";
 @import "ingame_hud/game_menu";
 @import "ingame_hud/dialogs";
-@import "ingame_hud/mass_selector";
 @import "ingame_hud/vignette_overlay";
 @import "ingame_hud/statistics";
 @import "ingame_hud/pinned_shapes";
@@ -67,7 +66,6 @@ ingame_HUD_PinnedShapes,
 ingame_HUD_GameMenu,
 ingame_HUD_KeybindingOverlay,
 ingame_HUD_Notifications,
-ingame_HUD_MassSelector,
 ingame_HUD_DebugInfo,
 ingame_HUD_EntityDebugger,
 ingame_HUD_InteractiveTutorial,
@@ -101,7 +99,6 @@ body.uiHidden {
     #ingame_HUD_buildings_toolbar,
     #ingame_HUD_PlacementHints,
     #ingame_HUD_GameMenu,
-    #ingame_HUD_MassSelector,
     #ingame_HUD_PinnedShapes,
     #ingame_HUD_Notifications,
     #ingame_HUD_TutorialHints,
@@ -115,6 +112,6 @@ body.modalDialogActive,
 body.externalAdOpen,
 body.ingameDialogOpen {
     > *:not(.ingameDialog):not(.modalDialogParent):not(.loadingDialog):not(.gameLoadingOverlay):not(#ingame_HUD_ModalDialogs):not(.noBlur) {
-        filter: blur(5px) !important;
+        // filter: blur(5px) !important;
     }
 }

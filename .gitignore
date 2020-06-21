@@ -112,3 +112,6 @@ tmp_standalone_files
 
 # Github Actions files
 .github/workflows
+
+# Local config
+config.local.js

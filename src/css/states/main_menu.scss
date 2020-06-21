@@ -37,6 +37,7 @@
         .languageChoose {
             @include S(border-radius, 8px);
             border: solid #222428;
+            background-color: #fff;
             @include S(border-width, 2px);
             background-size: cover;
         }
@@ -233,7 +234,8 @@
             @include S(width, 300px);
         }
 
-        .playButton {
+        .playButton,
+        .continueButton {
             @include SuperHeading;
             @include S(min-width, 130px);
             @include S(padding, 15px, 20px);
@@ -246,10 +248,19 @@
             &:hover {
                 transform: scale(1.02);
             }
+
+            &.continueButton {
+                @include Heading;
+            }
         }
 
         .importButton {
             @include S(margin-top, 15px);
+        }
+
+        .newGameButton {
+            @include S(margin-top, 15px);
+            @include S(margin-left, 15px);
         }
 
         .savegames {
@@ -387,6 +398,46 @@
                     background-image: uiResource("main_menu/discord.png");
                     background-size: 95%;
                 }
+            }
+        }
+    }
+
+    @include DarkThemeOverride {
+        background: $darkModeGameBackground center center / cover !important;
+
+        .topButtons {
+            filter: invert(1);
+
+            .languageChoose {
+                filter: invert(1);
+            }
+        }
+
+        .mainContainer {
+            background: darken($darkModeGameBackground, 10);
+
+            .savegames .savegame {
+                background: darken($darkModeGameBackground, 15);
+                color: white;
+            }
+        }
+
+        .footer {
+            > a {
+                background: darken($darkModeGameBackground, 10);
+                color: #eee;
+            }
+
+            .author {
+                color: #bdbdbd;
+
+                > a {
+                    color: white;
+                }
+            }
+
+            .thirdpartyLogo.githubLogo {
+                filter: invert(1);
             }
         }
     }

@@ -68,7 +68,7 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
             )
             .pipe(gulp.dest(buildFolder));
     });
-    gulp.task("js.staging", cb => $.multiProcess(["js.staging.transpiled", "js.staging.latest"], cb, false));
+    gulp.task("js.staging", gulp.parallel("js.staging.transpiled", "js.staging.latest"));
 
     //// PROD
     gulp.task("js.prod.transpiled", () => {
@@ -104,7 +104,7 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
             .pipe(browserSync.stream());
     });
 
-    gulp.task("js.prod", cb => $.multiProcess(["js.prod.transpiled", "js.prod.latest"], cb, false));
+    gulp.task("js.prod", gulp.parallel("js.prod.transpiled", "js.prod.latest"));
 
     //// STANDALONE
 

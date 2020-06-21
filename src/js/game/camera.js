@@ -8,7 +8,7 @@ import {
     performanceNow,
 } from "../core/builtins";
 import { clickDetectorGlobals } from "../core/click_detector";
-import { globalConfig } from "../core/config";
+import { globalConfig, SUPPORT_TOUCH } from "../core/config";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
 import { Signal, STOP_PROPAGATION } from "../core/signal";
@@ -312,32 +312,36 @@ export class Camera extends BasicSerializableObject {
         this.eventListenerMouseMove = this.onMouseMove.bind(this);
         this.eventListenerMouseUp = this.onMouseUp.bind(this);
 
-        this.root.canvas.addEventListener("touchstart", this.eventListenerTouchStart);
-        this.root.canvas.addEventListener("touchend", this.eventListenerTouchEnd);
-        this.root.canvas.addEventListener("touchcancel", this.eventListenerTouchEnd);
-        this.root.canvas.addEventListener("touchmove", this.eventListenerTouchMove);
+        if (SUPPORT_TOUCH) {
+            this.root.canvas.addEventListener("touchstart", this.eventListenerTouchStart);
+            this.root.canvas.addEventListener("touchend", this.eventListenerTouchEnd);
+            this.root.canvas.addEventListener("touchcancel", this.eventListenerTouchEnd);
+            this.root.canvas.addEventListener("touchmove", this.eventListenerTouchMove);
+        }
 
         this.root.canvas.addEventListener("wheel", this.eventListenerMousewheel);
         this.root.canvas.addEventListener("mousedown", this.eventListenerMouseDown);
         this.root.canvas.addEventListener("mousemove", this.eventListenerMouseMove);
-        this.root.canvas.addEventListener("mouseup", this.eventListenerMouseUp);
-        this.root.canvas.addEventListener("mouseout", this.eventListenerMouseUp);
+        window.addEventListener("mouseup", this.eventListenerMouseUp);
+        // this.root.canvas.addEventListener("mouseout", this.eventListenerMouseUp);
     }
 
     /**
      * Cleans up all event listeners
      */
     cleanup() {
-        this.root.canvas.removeEventListener("touchstart", this.eventListenerTouchStart);
-        this.root.canvas.removeEventListener("touchend", this.eventListenerTouchEnd);
-        this.root.canvas.removeEventListener("touchcancel", this.eventListenerTouchEnd);
-        this.root.canvas.removeEventListener("touchmove", this.eventListenerTouchMove);
+        if (SUPPORT_TOUCH) {
+            this.root.canvas.removeEventListener("touchstart", this.eventListenerTouchStart);
+            this.root.canvas.removeEventListener("touchend", this.eventListenerTouchEnd);
+            this.root.canvas.removeEventListener("touchcancel", this.eventListenerTouchEnd);
+            this.root.canvas.removeEventListener("touchmove", this.eventListenerTouchMove);
+        }
 
         this.root.canvas.removeEventListener("wheel", this.eventListenerMousewheel);
         this.root.canvas.removeEventListener("mousedown", this.eventListenerMouseDown);
         this.root.canvas.removeEventListener("mousemove", this.eventListenerMouseMove);
-        this.root.canvas.removeEventListener("mouseup", this.eventListenerMouseUp);
-        this.root.canvas.removeEventListener("mouseout", this.eventListenerMouseUp);
+        window.removeEventListener("mouseup", this.eventListenerMouseUp);
+        // this.root.canvas.removeEventListener("mouseout", this.eventListenerMouseUp);
     }
 
     /**
@@ -885,24 +889,28 @@ export class Camera extends BasicSerializableObject {
             let forceY = 0;
 
             const actionMapper = this.root.keyMapper;
-            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveUp).isCurrentlyPressed()) {
+            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveUp).pressed) {
                 forceY -= 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveDown).isCurrentlyPressed()) {
+            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveDown).pressed) {
                 forceY += 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveLeft).isCurrentlyPressed()) {
+            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveLeft).pressed) {
                 forceX -= 1;
             }
 
-            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveRight).isCurrentlyPressed()) {
+            if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveRight).pressed) {
                 forceX += 1;
             }
 
-            this.center.x += moveAmount * forceX;
-            this.center.y += moveAmount * forceY;
+            let movementSpeed =
+                this.root.app.settings.getMovementSpeed() *
+                (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveFaster).pressed ? 4 : 1);
+
+            this.center.x += moveAmount * forceX * movementSpeed;
+            this.center.y += moveAmount * forceY * movementSpeed;
         }
     }
 }

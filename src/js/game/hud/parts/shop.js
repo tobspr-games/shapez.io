@@ -139,7 +139,7 @@ export class HUDShop extends BaseHUDPart {
                         pinButton.classList.add("unpinned");
                         pinButton.classList.remove("pinned", "alreadyPinned");
                     } else {
-                        this.root.hud.signals.shapePinRequested.dispatch(shapeDef, amount);
+                        this.root.hud.signals.shapePinRequested.dispatch(shapeDef);
                         pinButton.classList.add("pinned");
                         pinButton.classList.remove("unpinned");
                     }

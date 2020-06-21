@@ -36,23 +36,23 @@ steamPage:
 
         Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
 
         [b]Standalone Advantages[/b]
 
         [list]
             [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
+            [*] Végtelen mentések
+            [*] Sötét Mód
+            [*] Több beállítás
+            [*] Lehetővé teszed, hogy tovább fejlesszem a shapez.io-t ❤️
             [*] More features in the future!
         [/list]
 
         [b]Planned features & Community suggestions[/b]
 
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        Ez a játék nyílt forráskódú - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
 
         [list]
             [*] Sztori mód, ahol az épületek alakzatokba kerülnek
@@ -60,7 +60,7 @@ steamPage:
             [*] Különböző térképek, és talán akadályok
             [*] Configurable map creation (Edit number and size of patches, seed, and more)
             [*] Sokkal több alakzat
-            [*] More performance improvements (Although the game already runs pretty good!)
+            [*] More performance improvements (Bár a játék így is elég jól fut!)
             [*] Színvak mód
             [*] And much more!
         [/list]
@@ -112,7 +112,7 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Demó verzi
     intro: >-
         Get the standalone to unlock all features!
 
@@ -128,8 +128,8 @@ mainMenu:
     browserWarning: >-
         Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: <x>. szint
+    savegameLevelUnknown: Ismeretlen szint
 
     contests:
         contest_01_03062020:
@@ -153,6 +153,9 @@ mainMenu:
 
         showInfo: View
         contestOver: This contest has ended - Join the discord to get noticed about new contests!
+    continue: Continue
+    newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -161,9 +164,9 @@ dialogs:
         cancel: Megszakítás
         later: Később
         restart: Újrakezdés
-        reset: Reset
+        reset: Visszaállítás
         getStandalone: Get Standalone
-        deleteGame: I know what I do
+        deleteGame: Tudom mit csinálok
         viewUpdate: View Update
         showUpgrades: Show Upgrades
         showKeybindings: Show Keybindings
@@ -181,7 +184,7 @@ dialogs:
     gameLoadFailure:
         title: Game is broken
         text: >-
-            Failed to load your savegame:
+            Failed to load your savegame: Nem sikerült betölteni a mentésed
 
     confirmSavegameDelete:
         title: Confirm deletion
@@ -214,30 +217,14 @@ dialogs:
         title: Demo Version
         desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
 
-    saveNotPossibleInDemo:
-        desc: Your game has been saved, but restoring it is only possible in the standalone version. Consider to get the standalone for the full experience!
-
-    leaveNotPossibleInDemo:
-        title: Demo version
-        desc: Your game has been saved, but you will not be able to restore it in the demo. Restoring your savegames is only possible in the full version. Are you sure?
-
-    newUpdate:
-        title: Update available
-        desc: There is an update for this game available, be sure to download it!
-
     oneSavegameLimit:
         title: Limited savegames
         desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
 
     updateSummary:
-        title: New update!
+        title: Új frissítés!
         desc: >-
             Here are the changes since you last played:
-
-    hintDescription:
-        title: Tutorial
-        desc: >-
-            Whenever you need help or are stuck, check out the 'Show hint' button in the lower left and I'll give my best to help you!
 
     upgradesIntroduction:
         title: Unlock Upgrades
@@ -251,7 +238,7 @@ dialogs:
             You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Még nincs feloldva
         desc: >-
             Blueprints have not been unlocked yet! Complete more levels to unlock them.
 
@@ -266,10 +253,21 @@ dialogs:
 
     createMarker:
         title: New Marker
-        desc: Give it a meaningful name
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
+            want to do this?
+
+    exportScreenshotWarning:
+        title: Export screenshot
+        desc: >-
+            You requested to export your base as a screenshot. Please note that this can
+            be quite slow for a big base and even crash your game!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -286,6 +284,9 @@ ingame:
         placeBuilding: Place building
         createMarker: Create Marker
         delete: Destroy
+        pasteLastBlueprint: Paste last blueprint
+        lockBeltDirection: Enable belt planner
+        plannerSwitchSide: Flip planner side
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -302,7 +303,7 @@ ingame:
             speed: Gyorsaság
             range: Range
             storage: Storage
-            oneItemPerSecond: 1 tárgy / másodperc
+            oneItemPerSecond: 1 tárgy / mp
             itemsPerSecond: <x> tárgy / mp
             itemsPerSecondDouble: (x2)
 
@@ -311,10 +312,10 @@ ingame:
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
+        levelTitle: <level>. szint
         completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        unlockText: Feloldva <reward>!
+        buttonNextLevel: Következő Szint
 
     # Notifications on the lower right
     notifications:
@@ -324,12 +325,12 @@ ingame:
     # Mass select information, this is when you hold CTRL and then drag with your mouse
     # to select multiple buildings
     massSelect:
-        infoText: Press <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
+        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Fejlesztések
+        buttonUnlock: Fejlesztés
 
         # Gets replaced to e.g. "Tier IX"
         tier: Tier <x>
@@ -341,13 +342,13 @@ ingame:
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: Statisztikák
         dataSources:
             stored:
-                title: Stored
+                title: Tárolva
                 description: Displaying amount of stored shapes in your central building.
             produced:
-                title: Produced
+                title: Gyártva
                 description: Displaying all shapes your whole factory produces, including intermediate products.
             delivered:
                 title: Delivered
@@ -377,7 +378,7 @@ ingame:
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Ár
 
     # Map markers
     waypoints:
@@ -479,13 +480,16 @@ buildings:
     painter:
         default:
             name: &painter Painter
-            description: Colors the whole shape on the left input with the color from the right input.
+            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
         double:
             name: Painter (Double)
             description: Colors the shapes on the left inputs with the color from the top input.
         quad:
             name: Painter (Quad)
             description: Allows to color each quadrant of the shape with a different color.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -495,6 +499,10 @@ buildings:
         storage:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -593,7 +601,7 @@ settings:
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Interfész nagyság
             description: >-
                 Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
             scales:
@@ -608,11 +616,11 @@ settings:
             description: >-
                 Changes how sensitive the zoom is (Either mouse wheel or trackpad).
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Szuper lassú
+                slow: Lassú
+                regular: Közepes
+                fast: Gyors
+                super_fast: Szuper gyors
 
         language:
             title: Nyelv
@@ -625,12 +633,12 @@ settings:
                 It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Hangok Némítása
             description: >-
                 If enabled, mutes all sound effects.
 
         musicMuted:
-            title: Mute Music
+            title: Zene Némítása
             description: >-
                 If enabled, mutes all music.
 
@@ -638,6 +646,10 @@ settings:
             title: Game theme
             description: >-
                 Choose the game theme (light / dark).
+
+            themes:
+                dark: Sötét
+                light: Világos
 
         refreshRate:
             title: Simulation Target
@@ -653,6 +665,27 @@ settings:
             title: Hints & Tutorials
             description: >-
                 Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+
+        movementSpeed:
+            title: Movement speed
+            description: Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
 
 keybindings:
     title: Keybindings
@@ -672,7 +705,7 @@ keybindings:
 
     mappings:
         confirm: Confirm
-        back: Back
+        back: Vissza
         mapMoveUp: Move Up
         mapMoveRight: Move Right
         mapMoveDown: Move Down
@@ -683,8 +716,8 @@ keybindings:
         mapZoomOut: Zoom out
         createMarker: Create Marker
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Fejlesztések
+        menuOpenStats: Statisztikák
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
@@ -714,18 +747,42 @@ keybindings:
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
         placeInverse: Invert automatic belt orientation
+        pasteLastBlueprint: Paste last blueprint
+        massSelectCut: Cut area
+        exportScreenshot: Export whole Base as Image
+        mapMoveFaster: Move Faster
+        lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: 'Planner: Switch side'
 
 about:
     title: A játékról
+    body: >-
+        This game is open source and developed by <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (this is me).<br><br>
+
+        If you want to contribute, check out <a href="<githublink>"
+        target="_blank">shapez.io on github</a>.<br><br>
+
+        This game wouldn't have been possible without the great discord community
+        around my games - You should really join the <a href="<discordlink>"
+        target="_blank">discord server</a>!<br><br>
+
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
+        factorio sessions this game would never have existed.
 
 changelog:
     title: Changelog
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
+        restoringGames: Mentések visszaállítása
+        importingGames: Mentések importálása
+        oneGameLimit: Egy mentésre van limitálva
         customizeKeybindings: Customizing Keybindings
+        exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Nem elérhető a demóban.

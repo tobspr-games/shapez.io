@@ -22,6 +22,10 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return "#777";
     }
 
+    getHasDirectionLockAvailable() {
+        return true;
+    }
+
     /**
      * @param {GameRoot} root
      * @param {string} variant

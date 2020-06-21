@@ -38,6 +38,10 @@ html {
     right: 0;
 
     background: #dee1ea;
+
+    @include DarkThemeOverride {
+        background: $darkModeGameBackground;
+    }
 }
 
 body {
@@ -412,6 +416,10 @@ canvas {
         @include S(margin-left, 5px);
         display: inline-block;
         vertical-align: middle;
+    }
+
+    @include DarkThemeOverride {
+        color: #fff;
     }
 }
 
