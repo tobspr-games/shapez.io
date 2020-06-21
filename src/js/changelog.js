@@ -1,8 +1,9 @@
 export const CHANGELOG = [
     {
         version: "1.1.16",
-        date: "unreleased",
+        date: "21.06.2020",
         entries: [
+            "You can now pickup buildings below your cursor with 'Q'!",
             "The game soundtrack has been extended! There are now 4 songs with over 13 minutes of playtime from <a href='https://soundcloud.com/pettersumelius' target='blank'>Peppsen</a>!",
             "Refactor keybindings overlay to show more appropriate keybindings",
             "Show keybindings for area-select in the upper left instead",
