@@ -165,9 +165,16 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             },
 
             {
+                // Pipette
+                label: T.ingame.keybindingsOverlay.pipette,
+                keys: [k.placement.pipette],
+                condition: () => !this.mapOverviewActive,
+            },
+
+            {
                 // Cancel placement
                 label: T.ingame.keybindingsOverlay.stopPlacement,
-                keys: [KEYCODE_RMB, DIVIDER_TOKEN, k.placement.abortBuildingPlacement],
+                keys: [KEYCODE_RMB],
                 condition: () => this.anyPlacementActive,
             },
 

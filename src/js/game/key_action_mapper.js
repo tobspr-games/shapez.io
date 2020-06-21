@@ -24,7 +24,7 @@ export const KEYMAPPINGS = {
         menuOpenStats: { keyCode: key("G") },
 
         toggleHud: { keyCode: 113 }, // F2
-        exportScreenshot: { keyCode: 114 }, // F3
+        exportScreenshot: { keyCode: 114 }, // F3PS
         toggleFPSInfo: { keyCode: 115 }, // F4
     },
 
@@ -56,7 +56,7 @@ export const KEYMAPPINGS = {
     },
 
     placement: {
-        abortBuildingPlacement: { keyCode: key("Q") },
+        pipette: { keyCode: key("Q") },
         rotateWhilePlacing: { keyCode: key("R") },
         rotateInverseModifier: { keyCode: 16 }, // SHIFT
         cycleBuildingVariants: { keyCode: key("T") },

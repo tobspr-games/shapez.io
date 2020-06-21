@@ -288,6 +288,7 @@ ingame:
         cutSelection: Cut
         copySelection: Copy
         clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -738,7 +739,7 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Abort Placement
+        pipette: Pipette
         rotateWhilePlacing: Rotate
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead

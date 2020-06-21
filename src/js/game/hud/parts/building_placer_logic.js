@@ -97,15 +97,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         keyActionMapper
             .getBinding(KEYMAPPINGS.placement.switchDirectionLockSide)
             .add(this.switchDirectionLockSide, this);
-        keyActionMapper
-            .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
-            .add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
         this.root.gameState.inputReciever.keyup.add(this.checkForDirectionLockSwitch, this);
 
         // BINDINGS TO GAME EVENTS
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
+        this.root.hud.signals.pipetteExecuted.add(this.abortPlacement, this);
         this.root.signals.storyGoalCompleted.add(() => this.signals.variantChanged.dispatch());
         this.root.signals.upgradePurchased.add(() => this.signals.variantChanged.dispatch());
 

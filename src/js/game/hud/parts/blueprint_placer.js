@@ -10,6 +10,7 @@ import { makeDiv } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { blueprintShape } from "../../upgrades";
 import { T } from "../../../translations";
+import { PipetteBlueprint } from "./pipette_blueprint";
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
@@ -34,11 +35,9 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
         const keyActionMapper = this.root.keyMapper;
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
-        keyActionMapper
-            .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
-            .add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.rotateBlueprint, this);
         keyActionMapper.getBinding(KEYMAPPINGS.massSelect.pasteLastBlueprint).add(this.pasteBlueprint, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.startPipette, this);
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
@@ -57,15 +56,36 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         }
     }
 
+    /**
+     * Starts the pipette function
+     */
+    startPipette() {
+        const mousePosition = this.root.app.mousePosition;
+        if (!mousePosition) {
+            // Not on screen
+            return;
+        }
+
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const tile = worldPos.toTileSpace();
+        const contents = this.root.map.getTileContent(tile);
+        if (contents) {
+            const blueprint = PipetteBlueprint.fromEntity(contents);
+
+            // Notice: Order here matters, since pipetteExecuted clears the blueprint
+            this.root.hud.signals.pipetteExecuted.dispatch(contents);
+            this.currentBlueprint.set(blueprint);
+        }
+    }
+
     onCanAffordChanged(canAfford) {
         this.costDisplayParent.classList.toggle("canAfford", canAfford);
     }
 
     update() {
-        this.domAttach.update(this.currentBlueprint.get());
-        this.trackedCanAfford.set(
-            this.currentBlueprint.get() && this.currentBlueprint.get().canAfford(this.root)
-        );
+        const currentBlueprint = this.currentBlueprint.get();
+        this.domAttach.update(currentBlueprint && currentBlueprint.getCost() > 0);
+        this.trackedCanAfford.set(currentBlueprint && currentBlueprint.canAfford(this.root));
     }
 
     /**

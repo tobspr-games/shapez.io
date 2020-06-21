@@ -31,7 +31,7 @@
 
     @include DarkThemeOverride {
         .gameLoadingOverlay {
-            background: #56565c;
+            background: $darkModeGameBackground;
         }
     }
 }
