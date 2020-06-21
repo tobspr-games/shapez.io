@@ -56,7 +56,14 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         const dimensions = maxChunk.sub(minChunk);
         logger.log("Dimensions:", dimensions);
 
-        const chunkSizePixels = 128;
+        let chunkSizePixels = 128;
+        const maxDimensions = Math.max(dimensions.x, dimensions.y);
+
+        if (maxDimensions > 128) {
+            chunkSizePixels = Math.floor(128 * (128 / maxDimensions));
+        }
+        logger.log("ChunkSizePixels:", chunkSizePixels);
+
         const chunkScale = chunkSizePixels / (globalConfig.mapChunkSize * globalConfig.tileSize);
         logger.log("Scale:", chunkScale);
 
