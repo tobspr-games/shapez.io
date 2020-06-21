@@ -686,6 +686,11 @@ settings:
             description: >-
                 Enables the vignette which darkens the screen corners and makes text easier to read.
 
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
+
 keybindings:
     title: Keybindings
     hint: >-

@@ -9,6 +9,7 @@ export const CHANGELOG = [
             "Automatically deselect area when selecting a new building",
             "Raise markers limit from 14 characters to 71 (by Joker-vD)",
             "Optimize performance by caching miner items (by Phlosioneer)",
+            "Added setting to enable compact building infos, which only show ratios and hide the image / description",
             "Apply dark theme to menu as well (by dengr1065)",
             "Fix belt planner not placing the last belt",
             "Fix buildings getting deleted when right clicking while placing a blueprint",
