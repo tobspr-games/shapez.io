@@ -403,7 +403,7 @@
     }
 
     @include DarkThemeOverride {
-        background: #53565e center center / cover !important;
+        background: $darkModeGameBackground center center / cover !important;
 
         .topButtons {
             filter: invert(1);
@@ -414,17 +414,17 @@
         }
 
         .mainContainer {
-            background: #4b4c50;
+            background: darken($darkModeGameBackground, 10);
 
             .savegames .savegame {
-                background: #62646a;
+                background: darken($darkModeGameBackground, 15);
                 color: white;
             }
         }
 
         .footer {
             > a {
-                background: #4b4c50;
+                background: darken($darkModeGameBackground, 10);
                 color: #eee;
             }
 

@@ -238,18 +238,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     }
 
     /**
-     * Canvas click handler
-     * @param {Vector} mousePos
-     * @param {boolean} cancelAction
-     */
-    onCanvasClick(mousePos, cancelAction = false) {
-        // Prevent any other canvas clicks
-        if (this.currentMetaBuilding.get()) {
-            return STOP_PROPAGATION;
-        }
-    }
-
-    /**
      * Tries to place the current building at the given tile
      * @param {Vector} tile
      */
@@ -473,7 +461,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            this.currentMetaBuilding.set(null);
+            this.deleteBelowCursor();
             return STOP_PROPAGATION;
         }
 
