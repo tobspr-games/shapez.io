@@ -397,17 +397,17 @@ ingame:
                 Dette er <strong>IKKE</strong> et idle-spill! Bygg flere utdragere og belter for å nå målet raskere.<br><br>Tips: Hold <strong>SHIFT</strong> for å plassere flere utdragere, og bruk <strong>R</strong> for å rotere dem.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
+        red: Rød
+        green: Grønn
+        blue: Blå
+        yellow: Gul
+        purple: Lilla
         cyan: Cyan
-        white: White
-        uncolored: No color
+        white: Hvit
+        uncolored: Ingen farge
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Lag
+        empty: Tom
 
 # All shop upgrades
 shopUpgrades:
@@ -724,8 +724,8 @@ settings:
                 bygninger.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Fargeblind Modus
+            description: Aktiverer forskjellige verktøy som lar deg spille spillet om du er fargeblind.
 
 keybindings:
     title: Hurtigtaster
