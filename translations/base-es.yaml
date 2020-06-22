@@ -155,6 +155,7 @@ mainMenu:
 
         showInfo: Ver
         contestOver: El concurso ha terminado - Únete al discord para enterarte sobre nuevos concursos!
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -393,6 +394,20 @@ ingame:
                 ¡Conecta el extractor con una <strong>cinta transportadora</strong> a tu edificio central!<br><br> Pista: <strong>Pulsa y arrastra</strong> la cinta transportadora con el ratón!
             1_3_expand: >-
                 ¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más extractores y cintas transportadoras para completar el objetivo más rápido.<br><br> Pista: Mantén pulsado <strong>SHIFT</strong> para colocar varios extractores y usa <strong>R</strong> para rotarlos.
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
+
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -701,6 +716,10 @@ settings:
             description: >-
                 Disable the warning dialogs brought up when cutting/deleting more than 100
                 entities.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: Atajos de Teclado

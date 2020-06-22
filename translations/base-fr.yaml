@@ -157,6 +157,7 @@ mainMenu:
     continue: Continuer
     newGame: Nouvelle partie
     madeBy: Créé par <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -396,6 +397,19 @@ ingame:
 
             1_3_expand: >-
                 Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
 # All shop upgrades
 shopUpgrades:
@@ -709,6 +723,10 @@ settings:
             title: Désactive les avertissement pour Couper/Effacer
             description: >-
                 Désactive la boîte de dialogue qui s'affiche lorsque vous vous apprêtez à couper/effacer plus de 100 entités.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: Contrôles

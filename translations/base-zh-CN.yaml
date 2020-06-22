@@ -187,6 +187,7 @@ mainMenu:
     continue: 继续游戏
     newGame: 新游戏
     madeBy: 作者：<author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -283,12 +284,6 @@ dialogs:
             <code class='keybinding'>CTRL</code> + 拖动：选择区域以复制或删除。<br>
             <code class='keybinding'>SHIFT</code>: 按住以放置多个。<br>
             <code class='keybinding'>ALT</code>: 反向放置传送带。<br>
-        # desc: >-
-        #     This game has a lot of keybindings which make it easier to build big factories.
-        #     Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-        #     <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-        #     <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-        #     <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
     createMarker:
         title: 创建地图标记
@@ -435,6 +430,19 @@ ingame:
             1_3_expand: >-
                 这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br>
                 提示：按住<strong>SHIFT</strong>键来放置多个开采机，用<strong>R</strong>键旋转它们。
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
 # All shop upgrades
 shopUpgrades:
@@ -754,6 +762,10 @@ settings:
                 Disable the warning dialogs brought up when cutting/deleting more than 100
                 entities.
 
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
+
 keybindings:
     title: 按键设置
     hint: >-
@@ -812,10 +824,8 @@ keybindings:
         rotateInverseModifier: >-
             修饰键: 改为逆时针旋转
         cycleBuildingVariants: 选择建筑变体
-        # cycleBuildingVariants: Cycle Variants
         confirmMassDelete: 确认批量删除
         cycleBuildings: 选择建筑
-        # cycleBuildings: Cycle Buildings
         massSelectStart: 开始批量选择
         massSelectSelectMultiple: 选择多个区域
         massSelectCopy: 复制
@@ -850,6 +860,7 @@ about:
 
         最后，我想感谢我最好的朋友<a
         href="https://github.com/niklas-dahl" target="_blank">Niklas</a>——如果没有与他的异星工厂（factorio）的游戏体验，shapez.io将不会存在。
+
 changelog:
     title: 版本日志
 

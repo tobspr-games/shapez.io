@@ -156,6 +156,7 @@ mainMenu:
     continue: Fortsett
     newGame: Nytt Spill
     madeBy: Laget av <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -285,9 +286,9 @@ ingame:
         pasteLastBlueprint: Lim inn forrige blåkopi
         lockBeltDirection: Aktiver båndplanleggeren
         plannerSwitchSide: Flipp båndplanleggeren
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
+        cutSelection: Klipp Ut
+        copySelection: Kopier
+        clearSelection: Fjern Valgte
         pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
@@ -394,6 +395,19 @@ ingame:
 
             1_3_expand: >-
                 Dette er <strong>IKKE</strong> et idle-spill! Bygg flere utdragere og belter for å nå målet raskere.<br><br>Tips: Hold <strong>SHIFT</strong> for å plassere flere utdragere, og bruk <strong>R</strong> for å rotere dem.
+
+    colors:
+        red: Rød
+        green: Grønn
+        blue: Blå
+        yellow: Gul
+        purple: Lilla
+        cyan: Cyan
+        white: Hvit
+        uncolored: Ingen farge
+    shapeViewer:
+        title: Lag
+        empty: Tom
 
 # All shop upgrades
 shopUpgrades:
@@ -687,27 +701,31 @@ settings:
                 å lese.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Autolagringsintervall
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Jsuter hvor ofte spillet lagres automatisk. Du kan også
+                deaktivere det fullstendig.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minutt
+                two_minutes: 2 Minutter
+                five_minutes: 5 Minutter
+                ten_minutes: 10 Minutter
+                twenty_minutes: 20 Minutter
+                disabled: Deaktivert
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Kompakt Bygningsinformasjon
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Forkorter informasjonsboksen for bygninger ved å bare vise dems forhold. Ellers
+                vises en beskrivelse og bilde er vist.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Deaktiverer Kutt/Slette Advarsler
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Deaktiverer advarselsdialogen som kommer frem når du kutter/sletter mer enn 100
+                bygninger.
+
+        enableColorBlindHelper:
+            title: Fargeblind Modus
+            description: Aktiverer forskjellige verktøy som lar deg spille spillet om du er fargeblind.
 
 keybindings:
     title: Hurtigtaster
@@ -773,7 +791,7 @@ keybindings:
         placeMultiple: Forbli i plasseringsmodus
         placeInverse: Inverter automatisk transportbånd orientering
         lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
+        switchDirectionLockSide: "Planlegger: Bytt side"
         pipette: Pipette
 
 about:

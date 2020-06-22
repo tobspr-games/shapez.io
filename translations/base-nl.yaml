@@ -156,6 +156,7 @@ mainMenu:
     continue: Verder
     newGame: Nieuw Spel
     madeBy: Gemaakt door <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -394,6 +395,19 @@ ingame:
 
             1_3_expand: >-
                 Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer ontginners en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te plaatsen en gebruik <strong>R</strong> om ze te draaien.
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
 # All shop upgrades
 shopUpgrades:
@@ -706,6 +720,10 @@ settings:
             description: >-
                 Disable the warning dialogs brought up when cutting/deleting more than 100
                 entities.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: Sneltoetsen
