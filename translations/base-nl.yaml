@@ -156,7 +156,7 @@ mainMenu:
     continue: Verder
     newGame: Nieuw Spel
     madeBy: Gemaakt door <author-link>
-    Subreddit: Reddit
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -396,7 +396,7 @@ ingame:
             1_3_expand: >-
                 Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer ontginners en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te plaatsen en gebruik <strong>R</strong> om ze te draaien.
 
-    Colors:
+    colors:
         red: Rood
         green: Groen
         blue: Blauw
@@ -405,7 +405,7 @@ ingame:
         cyan: Cyaan
         white: Wit
         uncolored: Geen kleur
-    ShapeViewer:
+    shapeViewer:
         title: Lagen
         empty: Leeg
 
