@@ -15,7 +15,7 @@ export const enumSavePriority = {
 const logger = createLogger("autosave");
 
 // Internals
-let MIN_INTERVAL_SECS = 60;
+let MIN_INTERVAL_SECS = 600;
 
 export class AutomaticSave {
     constructor(root) {
