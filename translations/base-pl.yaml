@@ -160,6 +160,7 @@ mainMenu:
         showInfo: Wyświetl
         contestOver: Ten konkurs już się skończył - Dołącz do serwera Discord by nie przegapić kolejnych!
     madeBy: Gra wykonana przez <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -409,7 +410,7 @@ ingame:
     shapeViewer:
         title: Poziomy
         empty: Puste
-        
+
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
@@ -747,6 +748,10 @@ settings:
             description: >-
                 Wyłącza ostrzeżenia wyświetlające się przy usuwaniu lub wycinaniu więcej niż
                 100 budynków.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: Klawiszologia

@@ -156,6 +156,7 @@ mainMenu:
     continue: Continue
     newGame: New Game
     madeBy: Made by <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -396,6 +397,19 @@ ingame:
 
             1_3_expand: >-
                 이것은 방치형 게임이 <strong>아닙니다!</strong> 추출기를 더 놓아 목표를 빨리 달성하세요.<br><br>팁: <strong>SHIFT</strong>를 눌러 여러 개의 추출기를 놓고 <strong>R</strong>로 회전 시키세요.
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
 # All shop upgrades
 shopUpgrades:
@@ -710,6 +724,10 @@ settings:
             description: >-
                 Disable the warning dialogs brought up when cutting/deleting more than 100
                 entities.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: 키바인딩

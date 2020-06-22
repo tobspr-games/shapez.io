@@ -156,6 +156,7 @@ mainMenu:
     continue: Fortsätt
     newGame: Nytt spel
     madeBy: Skapad av <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -260,13 +261,13 @@ dialogs:
     massCutConfirm:
         title: Bekräfta Klipp
         desc: >-
-            Du klipper en stor mängd byggnader (<count> för att vara exakt)! 
+            Du klipper en stor mängd byggnader (<count> för att vara exakt)!
             Är du säker på att du vill göra detta?
 
     exportScreenshotWarning:
         title: Exportera skärmdump
         desc: >-
-            Du efterfrågade att exportera din fabrik som en skärmdump. 
+            Du efterfrågade att exportera din fabrik som en skärmdump.
             Var snäll och notera att detta kan ta ett tag för en stor bas och i vissa fall till och med krascha ditt spel
 
 ingame:
@@ -396,6 +397,19 @@ ingame:
 
             1_3_expand: >-
                 Detta är <strong>INTE</strong> ett idle-spel! Bygg fler extraktörer för att klara målet snabbare.<br><br>Tips: Håll <strong>SHIFT</strong> för att placera flera extraktörer, och använd <strong>R</strong> för att rotera dem.
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
 # All shop upgrades
 shopUpgrades:
@@ -683,7 +697,7 @@ settings:
         vignette:
             title: Vinjett
             description: >-
-                Sätter på vinjetten vilket gör skärmen mörkare i hörnen och 
+                Sätter på vinjetten vilket gör skärmen mörkare i hörnen och
                 gör text lättare att läsa
 
         autosaveInterval:
@@ -706,8 +720,12 @@ settings:
         disableCutDeleteWarnings:
             title: Stäng av klipp/raderingsvarningar
             description: >-
-                Stänger av varningsdialogen som kommer upp då fler än 100 saker 
+                Stänger av varningsdialogen som kommer upp då fler än 100 saker
                 ska tas bort
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: Tangentbindningar

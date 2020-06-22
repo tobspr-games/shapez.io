@@ -155,6 +155,7 @@ mainMenu:
     continue: Fortsetzen
     newGame: Neues Spiel
     madeBy: Ein Spiel von <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -393,6 +394,19 @@ ingame:
 
             1_3_expand: >-
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
 # All shop upgrades
 shopUpgrades:
@@ -703,13 +717,17 @@ settings:
         compactBuildingInfo:
             title: Kompakte Gebäudeinformationen
             description: >-
-                Reduziert die Infoboxen der Gebäude auf ihre Arbeitsgeschwindigkeit. Anderenfalls wird ein 
+                Reduziert die Infoboxen der Gebäude auf ihre Arbeitsgeschwindigkeit. Anderenfalls wird ein
                 Bild mit Beschreibung angezeigt.
 
         disableCutDeleteWarnings:
             title: Deaktiviere Warnungsdialog beim Löschen
             description: >-
                 Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: Tastenbelegung

@@ -156,6 +156,7 @@ mainMenu:
     continue: Continuar
     newGame: Novo Jogo
     madeBy: Criado por <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -395,6 +396,19 @@ ingame:
 
             1_3_expand: >-
                 Isto <strong>NÃO</strong> é um jogo idle! Constrói mais extratores e tapetes para atingir o objetivo mais rapidamente.<br><br>Dica: Pressiona <strong>SHIFT</strong> para colocar vários extratores, e usa <strong>R</strong> para os rodar.
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
 # All shop upgrades
 shopUpgrades:
@@ -707,6 +721,10 @@ settings:
             description: >-
                 Disable the warning dialogs brought up when cutting/deleting more than 100
                 entities.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: Atalhos
