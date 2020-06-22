@@ -611,6 +611,19 @@ settings:
                 large: Large
                 huge: Huge
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it entirely here.
+
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+
         scrollWheelSensitivity:
             title: Zoom sensitivity
             description: >-
