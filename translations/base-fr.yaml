@@ -288,6 +288,10 @@ ingame:
         pasteLastBlueprint: Copier le dernier patron
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         plannerSwitchSide: Échanger la direction du plannificateur
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -322,11 +326,6 @@ ingame:
     notifications:
         newUpgrade: Une nouvelle amélioration est disponible !
         gameSaved: Votre partie a été sauvegardée.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Apuyez sur <keyCut> pour couper, <keyCopy> pour copier, <keyDelete> pour effacer et <keyCancel> pour annuler.
 
     # The "Upgrades" window
     shop:
@@ -691,6 +690,29 @@ settings:
             description: >-
                 Permet l'affichage de l'effet de vignette qui assombrit les coins de l'écran afin de rendre le texte plus facile à lire.
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
+
 keybindings:
     title: Contrôles
     hint: >-
@@ -736,7 +758,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Annuler le placement
         rotateWhilePlacing: Pivoter
         rotateInverseModifier: >-
             Variante: Pivote à gauche
@@ -756,7 +777,8 @@ keybindings:
         exportScreenshot: Exporter toute la base en tant qu'image.
         mapMoveFaster: Se déplacer plus vite
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
-        switchDirectionLockSide: 'Plannificateur: changer de côté'
+        switchDirectionLockSide: "Plannificateur: changer de côté"
+        pipette: Pipette
 
 about:
     title: À propos de ce jeu

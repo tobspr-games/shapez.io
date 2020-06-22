@@ -292,6 +292,10 @@ ingame:
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
         lockBeltDirection: Tryb planowania taśmociągu
         plannerSwitchSide: Obróć planowany taśmociąg
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -326,11 +330,6 @@ ingame:
     notifications:
         newUpgrade: Nowe ulepszenie dostępne!
         gameSaved: Postęp gry został zapisany.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Naciśnij <keyCut> by wyciąć, <keyCopy> by skopiować, <keyDelete> by usunąć lub <keyCancel> by anulować.
 
     # The "Upgrades" window
     shop:
@@ -708,6 +707,29 @@ settings:
             description: >-
                 Włącza winietowanie, które przyciemnia rogi ekranu i poprawia czytelność tekstu.
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
+
 keybindings:
     title: Klawiszologia
     hint: >-
@@ -753,7 +775,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Anuluj Stawianie
         rotateWhilePlacing: Obróć
         rotateInverseModifier: >-
             Modyfikator: Obróć Odwrotnie
@@ -772,7 +793,8 @@ keybindings:
         massSelectCut: Wytnij obszar
         exportScreenshot: Wyeksportuj całą fabrykę jako zrzut ekranu
         lockBeltDirection: Tryb planowania taśmociągu
-        switchDirectionLockSide: 'Planowanie taśmociągu: Zmień stronę'
+        switchDirectionLockSide: "Planowanie taśmociągu: Zmień stronę"
+        pipette: Pipette
 
 about:
     title: O Grze
