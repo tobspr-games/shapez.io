@@ -28,7 +28,7 @@ const velocitySmoothing = 0.5;
 const velocityFade = 0.98;
 const velocityStrength = 0.4;
 const velocityMax = 20;
-const ticksBeforeErasingVelocity = 2;
+const ticksBeforeErasingVelocity = 10;
 
 /**
  * @enum {string}
