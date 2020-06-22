@@ -212,7 +212,7 @@ dialogs:
 
     keybindingsResetOk:
         title: Réinitialisation des contrôles
-        desc: Les contrôles ont été réinitialisés par leur état par défaut respectifs !
+        desc: Les contrôles ont été réinitialisés dans leur état par défaut respectifs !
 
     featureRestriction:
         title: Version démo
@@ -236,7 +236,7 @@ dialogs:
     massDeleteConfirm:
         title: Confirmation de suppression
         desc: >-
-            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Etes vous certains de vouloir faire cela ?
+            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Êtes vous certains de vouloir faire cela ?
 
     massCutConfirm:
         title: Confirmer la coupure
@@ -247,7 +247,7 @@ dialogs:
     blueprintsNotUnlocked:
         title: Pas encore débloqué
         desc: >-
-            Les patrons n'ont pas encore étés débloqués ! Terminez encore quelques niveaux pour les débloquer.
+            Les patrons n'ont pas encore étés débloqués ! Terminez encore quelques niveaux pour y avoir accès.
 
     keybindingsIntroduction:
         title: Raccourcis utiles
@@ -288,9 +288,9 @@ ingame:
         pasteLastBlueprint: Copier le dernier patron
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         plannerSwitchSide: Échanger la direction du plannificateur
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
+        cutSelection: Couper
+        copySelection: Copier
+        clearSelection: Effacer la sélection
         pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
@@ -691,27 +691,24 @@ settings:
                 Permet l'affichage de l'effet de vignette qui assombrit les coins de l'écran afin de rendre le texte plus facile à lire.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Fréquence des sauvegardes automatiques
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Contrôle avec quelle fréquence le jeu sera sauvegardé automatiquement. Vous pouvez aussi entièrement désactiver cette fonctionnalité ici.
             intervals:
                 one_minute: 1 Minute
                 two_minutes: 2 Minutes
                 five_minutes: 5 Minutes
                 ten_minutes: 10 Minutes
                 twenty_minutes: 20 Minutes
-                disabled: Disabled
+                disabled: Désactivé
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Informations réduites sur les bâtiments
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Raccourcit les panneaux d'information sur les bâtiments en n'affichant que les ratios. Dans le cas contraire, une description et une imagine sont présentés.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Désactive les avertissement pour Couper/Effacer
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Désactive la boîte de dialogue qui s'affiche lorsque vous vous apprêtez à couper/effacer plus de 100 entités.
 
 keybindings:
     title: Contrôles
