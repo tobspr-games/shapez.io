@@ -9,6 +9,7 @@ import {
     waitNextFrame,
     isSupportedBrowser,
     makeButton,
+    removeAllChildren,
 } from "../core/utils";
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
@@ -72,6 +73,7 @@ export class MainMenuState extends GameState {
                             ? ""
                             : `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
                     }
+                    <div class="buttons"></div>
                 </div>
 
 
@@ -148,6 +150,7 @@ export class MainMenuState extends GameState {
                                     T.dialogs.importSavegameSuccess.text
                                 );
 
+                                this.renderMainMenu();
                                 this.renderSavegames();
                             },
                             err => {
@@ -255,6 +258,10 @@ export class MainMenuState extends GameState {
     }
 
     renderMainMenu() {
+        const buttonContainer = this.htmlElement.querySelector(".mainContainer .buttons");
+        removeAllChildren(buttonContainer);
+
+        // Import button
         const importButtonElement = makeButtonElement(
             ["importButton", "styledButton"],
             T.mainMenu.importSavegame
@@ -262,14 +269,15 @@ export class MainMenuState extends GameState {
         this.trackClicks(importButtonElement, this.requestImportSavegame);
 
         if (this.savedGames.length > 0) {
+            // Continue game
             const continueButton = makeButton(
-                this.htmlElement.querySelector(".mainContainer"),
+                buttonContainer,
                 ["continueButton", "styledButton"],
                 T.mainMenu.continue
             );
             this.trackClicks(continueButton, this.onContinueButtonClicked);
 
-            const outerDiv = makeDiv(this.htmlElement.querySelector(".mainContainer"), null, ["outer"], null);
+            const outerDiv = makeDiv(buttonContainer, null, ["outer"], null);
             outerDiv.appendChild(importButtonElement);
             const newGameButton = makeButton(
                 this.htmlElement.querySelector(".mainContainer .outer"),
@@ -277,24 +285,11 @@ export class MainMenuState extends GameState {
                 T.mainMenu.newGame
             );
             this.trackClicks(newGameButton, this.onPlayButtonClicked);
-
-            const oldPlayButton = this.htmlElement.querySelector(".mainContainer .playButton");
-            if (oldPlayButton) oldPlayButton.remove();
         } else {
-            const playBtn = makeButton(
-                this.htmlElement.querySelector(".mainContainer"),
-                ["playButton", "styledButton"],
-                T.mainMenu.play
-            );
+            // New game
+            const playBtn = makeButton(buttonContainer, ["playButton", "styledButton"], T.mainMenu.play);
             this.trackClicks(playBtn, this.onPlayButtonClicked);
-
-            this.htmlElement.querySelector(".mainContainer").appendChild(importButtonElement);
-
-            const outerDiv = this.htmlElement.querySelector(".mainContainer .outer");
-            if (outerDiv) {
-                outerDiv.remove();
-                this.htmlElement.querySelector(".mainContainer .continueButton").remove();
-            }
+            buttonContainer.appendChild(importButtonElement);
         }
     }
 

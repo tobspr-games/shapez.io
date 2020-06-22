@@ -224,6 +224,12 @@
         width: 100%;
         box-sizing: border-box;
 
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .browserWarning {
             @include S(margin-bottom, 10px);
             background-color: $colorRedBright;
