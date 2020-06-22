@@ -473,8 +473,9 @@
         }
 
         .footer {
-            > a {
-                background: darken($darkModeGameBackground, 10);
+            > a,
+            .sidelinks > a {
+                background-color: darken($darkModeGameBackground, 10);
                 color: #eee;
             }
 
