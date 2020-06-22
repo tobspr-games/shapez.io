@@ -297,6 +297,17 @@ ingame:
         clearSelection: Wyczyść zaznaczenie
         pipette: Wybierz obiekt z mapy
 
+    # Names of the colors, used for the color blind mode
+    colors:
+        red: Czerwony
+        green: Zielony
+        blue: Niebieski
+        yellow: Żółty
+        purple: Fioletowy
+        cyan: Cyjanowy
+        white: Biały
+        uncolored: Brak koloru
+
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
@@ -394,6 +405,11 @@ ingame:
         description: Kliknij znacznik lewym przyciskiem myszy, by się do niego przenieść lub prawym, by go usunąć.<br><br>Naciśnij <keybinding>, by stworzyć marker na środku widoku lub <strong>prawy przycisk myszy</strong>, by stworzyć na wskazanej lokacji.
         creationSuccessNotification: Utworzono znacznik.
 
+    # Shape viewer
+    shapeViewer:
+        title: Poziomy
+        empty: Puste
+        
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
