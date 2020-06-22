@@ -121,6 +121,20 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 break;
             }
 
+            // SWAPPER
+            case enumItemProcessorTypes.swapper: {
+                trackProduction = false;
+                const availableSlots = entity.components.ItemEjector.slots.length;
+
+                for (let i = 0; i < items.length; ++i) {
+                    outItems.push({
+                        item: items[i].item,
+                        requiredSlot: (items[i].sourceSlot + 1) % availableSlots,
+                    });
+                }
+                break;
+            }
+
             // CUTTER
             case enumItemProcessorTypes.cutter: {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);

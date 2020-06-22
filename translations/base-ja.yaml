@@ -455,6 +455,10 @@ buildings:
             name: 合流機 (コンパクト)
             description: 2本のベルトの内容を1本のベルトに合流します。
 
+        swapper:
+            name: 入換機
+            description: 2本のベルトの内容を入れ換えます。<strong>もしひとつの出力が詰まった場合、すべての出力が停止することに注意してください！</strong>
+
     cutter:
         default:
             name: &cutter 切断機

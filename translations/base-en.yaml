@@ -453,6 +453,10 @@ buildings:
             name: Merger (compact)
             description: Merges two conveyor belts into one.
 
+        swapper:
+            name: Swapper
+            description: Swaps two conveyor belts. <strong>If any output stalls, all outputs will stall!</strong>
+
     cutter:
         default:
             name: &cutter Cutter

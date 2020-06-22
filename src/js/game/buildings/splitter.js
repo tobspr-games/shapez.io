@@ -11,7 +11,11 @@ import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
-export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
+export const enumSplitterVariants = {
+    compact: "compact",
+    compactInverse: "compact-inverse",
+    swapper: "swapper",
+};
 
 export class MetaSplitterBuilding extends MetaBuilding {
     constructor() {
@@ -21,6 +25,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
+            case enumSplitterVariants.swapper:
                 return new Vector(2, 1);
             case enumSplitterVariants.compact:
             case enumSplitterVariants.compactInverse:
@@ -53,6 +58,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 defaultBuildingVariant,
                 enumSplitterVariants.compact,
                 enumSplitterVariants.compactInverse,
+                enumSplitterVariants.swapper,
             ];
         }
         return super.getAvailableVariants(root);
@@ -110,7 +116,15 @@ export class MetaSplitterBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant, variant) {
         switch (variant) {
-            case defaultBuildingVariant: {
+            case defaultBuildingVariant:
+            case enumSplitterVariants.swapper: {
+                console.log(variant);
+                if (variant === enumSplitterVariants.swapper) {
+                    entity.components.ItemProcessor.type = enumItemProcessorTypes.swapper;
+                } else {
+                    entity.components.ItemProcessor.type = enumItemProcessorTypes.splitter;
+                }
+
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
