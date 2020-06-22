@@ -722,7 +722,7 @@ export class Camera extends BasicSerializableObject {
             this.currentlyPinching = false;
             this.lastMovingPosition = null;
             this.lastMovingPositionLastTick = null;
-            this.numTicksStandingStill = null;
+            this.numTicksStandingStill = 0;
             this.lastPinchPositions = null;
             this.userInteraction.dispatch(USER_INTERACT_TOUCHEND);
             this.didMoveSinceTouchStart = false;
@@ -822,12 +822,15 @@ export class Camera extends BasicSerializableObject {
 
         // Check if the camera is being dragged but standing still: if not, zero out `touchPostMoveVelocity`.
         if (this.currentlyMoving && this.desiredCenter === null) {
-            if (this.lastMovingPositionLastTick === this.lastMovingPosition) {
-                this.numTicksStandingStill += 1;
+            if (
+                this.lastMovingPositionLastTick !== null &&
+                this.lastMovingPositionLastTick.equalsEpsilon(this.lastMovingPosition)
+            ) {
+                this.numTicksStandingStill++;
             } else {
                 this.numTicksStandingStill = 0;
             }
-            this.lastMovingPositionLastTick = this.lastMovingPosition;
+            this.lastMovingPositionLastTick = this.lastMovingPosition.copy();
 
             if (this.numTicksStandingStill >= ticksBeforeErasingVelocity) {
                 this.touchPostMoveVelocity.x = 0;
