@@ -275,7 +275,7 @@ export class HubGoals extends BasicSerializableObject {
      * @param {string} upgradeId
      * @returns {boolean}
      */
-    tryUnlockUgprade(upgradeId) {
+    tryUnlockUpgrade(upgradeId) {
         if (!this.canUnlockUpgrade(upgradeId)) {
             return false;
         }
