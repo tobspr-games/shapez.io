@@ -172,6 +172,15 @@ export const allApplicationSettings = [
         (app, value) => app.sound.setMusicMuted(value)
     ),
 
+    new BoolSetting(
+        "enableColorBlindHelper",
+        categoryApp,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => null
+    ),
+
     // GAME
     new BoolSetting("offerHints", categoryGame, (app, value) => {}),
 
@@ -268,6 +277,8 @@ class SettingsStorage {
         this.vignette = true;
         this.compactBuildingInfo = false;
         this.disableCutDeleteWarnings = false;
+
+        this.enableColorBlindHelper = false;
 
         /**
          * @type {Object.<string, number>}
@@ -468,7 +479,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 16;
+        return 17;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -534,6 +545,11 @@ export class ApplicationSettings extends ReadWriteProxy {
             // RE-ENABLE this setting, it already existed
             data.settings.enableTunnelSmartplace = true;
             data.version = 16;
+        }
+
+        if (data.version < 17) {
+            data.settings.enableColorBlindHelper = false;
+            data.version = 17;
         }
 
         return ExplainedResult.good();

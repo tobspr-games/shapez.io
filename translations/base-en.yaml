@@ -290,6 +290,17 @@ ingame:
         clearSelection: Clear Selection
         pipette: Pipette
 
+    # Names of the colors, used for the color blind mode
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
@@ -383,6 +394,11 @@ ingame:
         hub: HUB
         description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
         creationSuccessNotification: Marker has been created.
+
+    # Shape viewer
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
     # Interactive tutorial
     interactiveTutorial:
@@ -651,6 +667,11 @@ settings:
             title: Language
             description: >-
                 Change the language. All translations are user contributed and might be incomplete!
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: >-
+                Enables various tools which allow to play the game if you are color blind.
 
         fullscreen:
             title: Fullscreen
