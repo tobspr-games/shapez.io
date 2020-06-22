@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.1.17",
-        date: "unreleased",
+        date: "22.06.2020",
         entries: [
             "Color blind mode! You can now activate it in the settings and it will show you which color is below your cursor (Either resource or on the belt)",
             "Add info buttons to all shapes so you can figure out how they are built! (And also, which colors they have)",
