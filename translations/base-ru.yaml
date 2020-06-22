@@ -289,10 +289,10 @@ ingame:
         pasteLastBlueprint: Вставить последний чертеж
         lockBeltDirection: Включить конвейерный планировщик
         plannerSwitchSide: Поменять местами стороны планировщика
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        cutSelection: Вырезать
+        copySelection: Копировать
+        clearSelection: Отменить
+        pipette: Пипетка
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -688,27 +688,27 @@ settings:
                 Включает виньетирование, которое затемняет углы экрана и облегчает чтение текста.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Интервал авто-сохранения
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Управляет тем, как часто игра автоматически сохраняется.
+                А также здесь можно полностью отключить авто-сохранение.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Минута
+                two_minutes: 2 Минуты
+                five_minutes: 5 Минут
+                ten_minutes: 10 Минут
+                twenty_minutes: 20 Минут
+                disabled: Отключено
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Компактная Информация о Зданиях
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Сокращает отображаемую информацию о зданиях, показывая только их множители.
+                Иначе информация отображается с описанием и изображением.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Отключить Предупреждение о Вырезании\Удалении
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Отключает диалоговые окна с предупреждениями, появляющиеся при
+                вырезании/удалении более 100 объектов.
 
 keybindings:
     title: Настройки управления
@@ -775,7 +775,7 @@ keybindings:
         mapMoveFaster: Ускорение передвижения
         lockBeltDirection: Включает конвейерный планировщик
         switchDirectionLockSide: "Планировщик: Переключение сторон"
-        pipette: Pipette
+        pipette: Пипетка
 
 about:
     title: Об игре
