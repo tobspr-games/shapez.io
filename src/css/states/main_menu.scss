@@ -477,6 +477,10 @@
             .sidelinks > a {
                 background-color: darken($darkModeGameBackground, 10);
                 color: #eee;
+
+                &:hover {
+                    background-color: darken($darkModeGameBackground, 8);
+                }
             }
 
             .author {

@@ -246,6 +246,6 @@ export class HUDShop extends BaseHUDPart {
 
     tryUnlockNextTier(upgradeId) {
         // Nothing
-        this.root.hubGoals.tryUnlockUgprade(upgradeId);
+        this.root.hubGoals.tryUnlockUpgrade(upgradeId);
     }
 }
