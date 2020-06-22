@@ -191,17 +191,7 @@ export class InputDistributor {
      */
     handleKeyMouseDown(event) {
         const keyCode = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
-        if (
-            keyCode === 4 || // MB4
-            keyCode === 5 || // MB5
-            keyCode === 9 || // TAB
-            keyCode === 16 || // SHIFT
-            keyCode === 17 || // CTRL
-            keyCode === 18 || // ALT
-            (keyCode >= 112 && keyCode < 122) // F1 - F10
-        ) {
-            event.preventDefault();
-        }
+        event.preventDefault();
 
         const isInitial = !this.keysDown.has(keyCode);
         this.keysDown.add(keyCode);

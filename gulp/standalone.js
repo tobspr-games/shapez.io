@@ -6,13 +6,13 @@ const fse = require("fs-extra");
 const execSync = require("child_process").execSync;
 
 function gulptasksStandalone($, gulp, buildFolder) {
-    const electronBaseDir = path.join("../electron");
+    const electronBaseDir = path.join(__dirname, "..", "electron");
 
-    const tempDestDir = path.join("..", "tmp_standalone_files");
+    const tempDestDir = path.join(__dirname, "..", "tmp_standalone_files");
     const tempDestBuildDir = path.join(tempDestDir, "built");
 
     gulp.task("standalone.prepare.cleanup", () => {
-        return gulp.src(tempDestDir, { read: false }).pipe($.clean({ force: true }));
+        return gulp.src(tempDestDir, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
     });
 
     gulp.task("standalone.prepare.copyPrefab", () => {
@@ -30,7 +30,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
         return gulp.src(requiredFiles, { base: electronBaseDir }).pipe(gulp.dest(tempDestBuildDir));
     });
 
-    gulp.task("standalone.prepare.writePackageJson", () => {
+    gulp.task("standalone.prepare.writePackageJson", cb => {
         fs.writeFileSync(
             path.join(tempDestBuildDir, "package.json"),
             JSON.stringify(
@@ -43,67 +43,71 @@ function gulptasksStandalone($, gulp, buildFolder) {
                 4
             )
         );
+        cb();
     });
 
     gulp.task("standalone.prepare.minifyCode", () => {
-        return gulp
-            .src(path.join(electronBaseDir, "*.js"))
-            .pipe(
-                $.terser({
-                    ecma: 6,
-                    parse: {},
-                    module: false,
-                    toplevel: true,
-                    keep_classnames: false,
-                    keep_fnames: false,
-                    safari10: false,
-                    compress: {
-                        arguments: false, // breaks
-                        drop_console: false,
-                        // keep_fargs: false,
-                        keep_infinity: true,
-                        passes: 2,
-                        module: false,
-                        toplevel: true,
-                        unsafe_math: true,
-                        unsafe_arrows: false,
-                        warnings: true,
-                    },
-                    mangle: {
-                        eval: true,
-                        keep_classnames: false,
-                        keep_fnames: false,
-                        module: false,
-                        toplevel: true,
-                        safari10: false,
-                    },
-                    output: {
-                        comments: false,
-                        ascii_only: true,
-                        beautify: false,
-                        braces: false,
-                        ecma: 6,
-                    },
-                })
-            )
-            .pipe(gulp.dest(tempDestBuildDir));
+        return (
+            gulp
+                .src(path.join(electronBaseDir, "*.js"))
+                // .pipe(
+                //     $.terser({
+                //         ecma: 6,
+                //         parse: {},
+                //         module: false,
+                //         toplevel: true,
+                //         keep_classnames: false,
+                //         keep_fnames: false,
+                //         safari10: false,
+                //         compress: {
+                //             arguments: false, // breaks
+                //             drop_console: false,
+                //             // keep_fargs: false,
+                //             keep_infinity: true,
+                //             passes: 2,
+                //             module: false,
+                //             toplevel: true,
+                //             unsafe_math: true,
+                //             unsafe_arrows: false,
+                //             warnings: true,
+                //         },
+                //         mangle: {
+                //             eval: true,
+                //             keep_classnames: false,
+                //             keep_fnames: false,
+                //             module: false,
+                //             toplevel: true,
+                //             safari10: false,
+                //         },
+                //         output: {
+                //             comments: false,
+                //             ascii_only: true,
+                //             beautify: false,
+                //             braces: false,
+                //             ecma: 6,
+                //         },
+                //     })
+                // )
+                .pipe(gulp.dest(tempDestBuildDir))
+        );
     });
 
     gulp.task("standalone.prepare.copyGamefiles", () => {
         return gulp.src("../build/**/*.*", { base: "../build" }).pipe(gulp.dest(tempDestBuildDir));
     });
 
-    gulp.task("standalone.killRunningInstances", () => {
+    gulp.task("standalone.killRunningInstances", cb => {
         try {
             execSync("taskkill /F /IM shapezio.exe");
         } catch (ex) {
             console.warn("Failed to kill running instances, maybe none are up.");
         }
+        cb();
     });
 
     gulp.task(
         "standalone.prepare",
-        $.sequence(
+        gulp.series(
             "standalone.killRunningInstances",
             "standalone.prepare.cleanup",
             "standalone.prepare.copyPrefab",
@@ -190,13 +194,16 @@ function gulptasksStandalone($, gulp, buildFolder) {
 
     gulp.task(
         "standalone.package.prod",
-        $.sequence("standalone.prepare", [
-            "standalone.package.prod.win64",
-            "standalone.package.prod.linux64",
-            "standalone.package.prod.darwin64",
-            // "standalone.package.prod.win32",
-            // "standalone.package.prod.linux32",
-        ])
+        gulp.series(
+            "standalone.prepare",
+            gulp.parallel(
+                "standalone.package.prod.win64",
+                "standalone.package.prod.linux64",
+                "standalone.package.prod.darwin64"
+                // "standalone.package.prod.win32",
+                // "standalone.package.prod.linux32",
+            )
+        )
     );
 }
 

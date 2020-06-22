@@ -12,6 +12,8 @@ export const IS_DEMO = queryParamOptions.fullVersion
     : (G_IS_PROD && !G_IS_STANDALONE) ||
       (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
 
+export const SUPPORT_TOUCH = false;
+
 const smoothCanvas = true;
 
 export const THIRDPARTY_URLS = {

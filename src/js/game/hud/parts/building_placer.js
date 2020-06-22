@@ -1,85 +1,26 @@
-import { Math_abs, Math_degrees, Math_radians } from "../../../core/builtins";
+import { Math_radians } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
-import { STOP_PROPAGATION } from "../../../core/signal";
-import { TrackedState } from "../../../core/tracked_state";
-import { makeDiv, removeAllChildren } from "../../../core/utils";
+import { makeDiv, removeAllChildren, pulseAnimation, clamp } from "../../../core/utils";
 import {
     enumDirectionToAngle,
     enumDirectionToVector,
     enumInvertedDirections,
     Vector,
 } from "../../../core/vector";
-import { enumMouseButton } from "../../camera";
-import { StaticMapEntityComponent } from "../../components/static_map_entity";
-import { Entity } from "../../entity";
-import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
-import { BaseHUDPart } from "../base_hud_part";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { defaultBuildingVariant } from "../../meta_building";
+import { THEME } from "../../theme";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { HUDBuildingPlacerLogic } from "./building_placer_logic";
 
-export class HUDBuildingPlacer extends BaseHUDPart {
-    initialize() {
-        /** @type {TypedTrackedState<MetaBuilding?>} */
-        this.currentMetaBuilding = new TrackedState(this.onSelectedMetaBuildingChanged, this);
-        this.currentBaseRotation = 0;
-
-        /** @type {Entity} */
-        this.fakeEntity = null;
-
-        const keyActionMapper = this.root.keyMapper;
-        keyActionMapper
-            .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
-            .add(this.abortPlacement, this);
-        keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
-
-        keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
-        keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
-
-        this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
-        this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
-
-        this.domAttach = new DynamicDomAttach(this.root, this.element, {});
-
-        this.root.camera.downPreHandler.add(this.onMouseDown, this);
-        this.root.camera.movePreHandler.add(this.onMouseMove, this);
-        this.root.camera.upPostHandler.add(this.abortDragging, this);
-
-        this.currentlyDragging = false;
-        this.currentVariant = new TrackedState(this.rerenderVariants, this);
-
-        this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
-
-        /**
-         * Whether we are currently drag-deleting
-         */
-        this.currentlyDeleting = false;
-
-        /**
-         * Stores which variants for each building we prefer, this is based on what
-         * the user last selected
-         */
-        this.preferredVariants = {};
-
-        /**
-         * The tile we last dragged onto
-         * @type {Vector}
-         *  */
-        this.lastDragTile = null;
-
-        /**
-         * The tile we initially dragged from
-         * @type {Vector}
-         */
-        this.initialDragTile = null;
-
-        this.root.signals.storyGoalCompleted.add(this.rerenderVariants, this);
-        this.root.signals.upgradePurchased.add(this.rerenderVariants, this);
-    }
-
+export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
+    /**
+     * @param {HTMLElement} parent
+     */
     createElements(parent) {
         this.element = makeDiv(parent, "ingame_HUD_PlacementHints", [], ``);
 
@@ -97,183 +38,24 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         this.buildingInfoElements.tutorialImage = makeDiv(this.element, null, ["buildingImage"]);
 
         this.variantsElement = makeDiv(parent, "ingame_HUD_PlacerVariants");
+
+        const compact = this.root.app.settings.getAllSettings().compactBuildingInfo;
+        this.element.classList.toggle("compact", compact);
+        this.variantsElement.classList.toggle("compact", compact);
     }
 
-    abortPlacement() {
-        if (this.currentMetaBuilding.get()) {
-            this.currentMetaBuilding.set(null);
-            return STOP_PROPAGATION;
-        }
-    }
+    initialize() {
+        super.initialize();
 
-    /**
-     * mouse down pre handler
-     * @param {Vector} pos
-     * @param {enumMouseButton} button
-     */
-    onMouseDown(pos, button) {
-        if (this.root.camera.getIsMapOverlayActive()) {
-            return;
-        }
+        // Bind to signals
+        this.signals.variantChanged.add(this.rerenderVariants, this);
 
-        // Placement
-        if (button === enumMouseButton.left && this.currentMetaBuilding.get()) {
-            this.currentlyDragging = true;
-            this.currentlyDeleting = false;
-            this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
+        this.domAttach = new DynamicDomAttach(this.root, this.element, {});
+        this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
 
-            // Place initial building
-            this.tryPlaceCurrentBuildingAt(this.lastDragTile);
+        this.currentInterpolatedCornerTile = new Vector();
 
-            return STOP_PROPAGATION;
-        }
-
-        // Deletion
-        if (button === enumMouseButton.right && !this.currentMetaBuilding.get()) {
-            this.currentlyDragging = true;
-            this.currentlyDeleting = true;
-            this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            this.currentMetaBuilding.set(null);
-            return STOP_PROPAGATION;
-        }
-    }
-
-    /**
-     * mouse move pre handler
-     * @param {Vector} pos
-     */
-    onMouseMove(pos) {
-        if (this.root.camera.getIsMapOverlayActive()) {
-            return;
-        }
-
-        const metaBuilding = this.currentMetaBuilding.get();
-        if ((metaBuilding || this.currentlyDeleting) && this.lastDragTile) {
-            const oldPos = this.lastDragTile;
-            const newPos = this.root.camera.screenToWorld(pos).toTileSpace();
-
-            if (this.root.camera.desiredCenter) {
-                // Camera is moving
-                this.lastDragTile = newPos;
-                return;
-            }
-
-            if (!oldPos.equals(newPos)) {
-                if (
-                    metaBuilding &&
-                    metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
-                    !this.root.keyMapper
-                        .getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation)
-                        .isCurrentlyPressed()
-                ) {
-                    const delta = newPos.sub(oldPos);
-                    const angleDeg = Math_degrees(delta.angle());
-                    this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
-
-                    // Holding alt inverts the placement
-                    if (
-                        this.root.keyMapper
-                            .getBinding(KEYMAPPINGS.placementModifiers.placeInverse)
-                            .isCurrentlyPressed()
-                    ) {
-                        this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
-                    }
-                }
-
-                // - Using bresenhams algorithmus
-
-                let x0 = oldPos.x;
-                let y0 = oldPos.y;
-                let x1 = newPos.x;
-                let y1 = newPos.y;
-
-                var dx = Math_abs(x1 - x0);
-                var dy = Math_abs(y1 - y0);
-                var sx = x0 < x1 ? 1 : -1;
-                var sy = y0 < y1 ? 1 : -1;
-                var err = dx - dy;
-
-                while (this.currentlyDeleting || this.currentMetaBuilding.get()) {
-                    if (this.currentlyDeleting) {
-                        const contents = this.root.map.getTileContentXY(x0, y0);
-                        if (contents && !contents.queuedForDestroy && !contents.destroyed) {
-                            this.root.logic.tryDeleteBuilding(contents);
-                        }
-                    } else {
-                        this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
-                    }
-                    if (x0 === x1 && y0 === y1) break;
-                    var e2 = 2 * err;
-                    if (e2 > -dy) {
-                        err -= dy;
-                        x0 += sx;
-                    }
-                    if (e2 < dx) {
-                        err += dx;
-                        y0 += sy;
-                    }
-                }
-            }
-
-            this.lastDragTile = newPos;
-
-            return STOP_PROPAGATION;
-        }
-    }
-
-    update() {
-        // ALways update since the camera might have moved
-        const mousePos = this.root.app.mousePosition;
-        if (mousePos) {
-            this.onMouseMove(mousePos);
-        }
-    }
-
-    /**
-     * aborts any dragging op
-     */
-    abortDragging() {
-        this.currentlyDragging = true;
-        this.currentlyDeleting = false;
-        this.lastDragTile = null;
-    }
-
-    /**
-     *
-     * @param {MetaBuilding} metaBuilding
-     */
-    startSelection(metaBuilding) {
-        this.currentMetaBuilding.set(metaBuilding);
-    }
-
-    /**
-     * @param {MetaBuilding} metaBuilding
-     */
-    onSelectedMetaBuildingChanged(metaBuilding) {
-        this.abortDragging();
-        this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
-        if (metaBuilding) {
-            const variant = this.preferredVariants[metaBuilding.getId()] || defaultBuildingVariant;
-            this.currentVariant.set(variant);
-
-            this.fakeEntity = new Entity(null);
-            metaBuilding.setupEntityComponents(this.fakeEntity, null);
-
-            this.fakeEntity.addComponent(
-                new StaticMapEntityComponent({
-                    origin: new Vector(0, 0),
-                    rotation: 0,
-                    tileSize: metaBuilding.getDimensions(this.currentVariant.get()).copy(),
-                    blueprintSpriteKey: "",
-                })
-            );
-            metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
-        } else {
-            this.fakeEntity = null;
-        }
-
-        // Since it depends on both, rerender twice
-        this.rerenderVariants();
+        this.lockIndicatorSprite = Loader.getSprite("sprites/misc/lock_direction_indicator.png");
     }
 
     /**
@@ -369,147 +151,6 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     }
 
     /**
-     * Cycles through the variants
-     */
-    cycleVariants() {
-        const metaBuilding = this.currentMetaBuilding.get();
-        if (!metaBuilding) {
-            this.currentVariant.set(defaultBuildingVariant);
-        } else {
-            const availableVariants = metaBuilding.getAvailableVariants(this.root);
-            const index = availableVariants.indexOf(this.currentVariant.get());
-            assert(
-                index >= 0,
-                "Current variant was invalid: " + this.currentVariant.get() + " out of " + availableVariants
-            );
-            const newIndex = (index + 1) % availableVariants.length;
-            const newVariant = availableVariants[newIndex];
-            this.currentVariant.set(newVariant);
-
-            this.preferredVariants[metaBuilding.getId()] = newVariant;
-        }
-    }
-
-    /**
-     * Tries to rotate
-     */
-    tryRotate() {
-        const selectedBuilding = this.currentMetaBuilding.get();
-        if (selectedBuilding) {
-            if (
-                this.root.keyMapper
-                    .getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
-                    .isCurrentlyPressed()
-            ) {
-                this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
-            } else {
-                this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
-            }
-
-            const staticComp = this.fakeEntity.components.StaticMapEntity;
-            staticComp.rotation = this.currentBaseRotation;
-        }
-    }
-
-    /**
-     * Tries to delete the building under the mouse
-     */
-    deleteBelowCursor() {
-        const mousePosition = this.root.app.mousePosition;
-        if (!mousePosition) {
-            // Not on screen
-            return;
-        }
-
-        const worldPos = this.root.camera.screenToWorld(mousePosition);
-        const tile = worldPos.toTileSpace();
-        const contents = this.root.map.getTileContent(tile);
-        if (contents) {
-            this.root.logic.tryDeleteBuilding(contents);
-        }
-    }
-
-    /**
-     * Canvas click handler
-     * @param {Vector} mousePos
-     * @param {boolean} cancelAction
-     */
-    onCanvasClick(mousePos, cancelAction = false) {
-        if (cancelAction) {
-            if (this.currentMetaBuilding.get()) {
-                this.currentMetaBuilding.set(null);
-            } else {
-                this.deleteBelowCursor();
-            }
-            return STOP_PROPAGATION;
-        }
-
-        if (!this.currentMetaBuilding.get()) {
-            return;
-        }
-
-        return STOP_PROPAGATION;
-    }
-
-    /**
-     * Tries to place the current building at the given tile
-     * @param {Vector} tile
-     */
-    tryPlaceCurrentBuildingAt(tile) {
-        if (this.root.camera.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
-            // Dont allow placing in overview mode
-            return;
-        }
-        // Transform to world space
-
-        const metaBuilding = this.currentMetaBuilding.get();
-
-        const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
-            this.root,
-            tile,
-            this.currentBaseRotation,
-            this.currentVariant.get()
-        );
-
-        if (
-            this.root.logic.tryPlaceBuilding({
-                origin: tile,
-                rotation,
-                rotationVariant,
-                originalRotation: this.currentBaseRotation,
-                building: this.currentMetaBuilding.get(),
-                variant: this.currentVariant.get(),
-            })
-        ) {
-            // Succesfully placed
-
-            if (
-                metaBuilding.getFlipOrientationAfterPlacement() &&
-                !this.root.keyMapper
-                    .getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation)
-                    .isCurrentlyPressed()
-            ) {
-                this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
-            }
-
-            if (
-                !metaBuilding.getStayInPlacementMode() &&
-                !this.root.keyMapper
-                    .getBinding(KEYMAPPINGS.placementModifiers.placeMultiple)
-                    .isCurrentlyPressed() &&
-                !this.root.app.settings.getAllSettings().alwaysMultiplace
-            ) {
-                // Stop placement
-                this.currentMetaBuilding.set(null);
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      *
      * @param {DrawParameters} parameters
      */
@@ -529,14 +170,28 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             return;
         }
 
+        // Draw direction lock
+        if (this.isDirectionLockActive) {
+            this.drawDirectionLock(parameters);
+        } else {
+            this.drawRegularPlacement(parameters);
+        }
+    }
+
+    /**
+     * @param {DrawParameters} parameters
+     */
+    drawRegularPlacement(parameters) {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return;
         }
 
+        const metaBuilding = this.currentMetaBuilding.get();
+
         const worldPos = this.root.camera.screenToWorld(mousePosition);
-        const tile = worldPos.toTileSpace();
+        const mouseTile = worldPos.toTileSpace();
 
         // Compute best rotation variant
         const {
@@ -545,7 +200,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
             connectedEntities,
         } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
             this.root,
-            tile,
+            mouseTile,
             this.currentBaseRotation,
             this.currentVariant.get()
         );
@@ -558,7 +213,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
                     .getCenter()
                     .toWorldSpace();
 
-                const startWsPoint = tile.toWorldSpaceCenterOfTile();
+                const startWsPoint = mouseTile.toWorldSpaceCenterOfTile();
 
                 const startOffset = connectedWsPoint
                     .sub(startWsPoint)
@@ -583,14 +238,14 @@ export class HUDBuildingPlacer extends BaseHUDPart {
 
         // Synchronize rotation and origin
         const staticComp = this.fakeEntity.components.StaticMapEntity;
-        staticComp.origin = tile;
+        staticComp.origin = mouseTile;
         staticComp.rotation = rotation;
         staticComp.tileSize = metaBuilding.getDimensions(this.currentVariant.get());
         metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
 
         // Check if we could place the buildnig
         const canBuild = this.root.logic.checkCanPlaceBuilding({
-            origin: tile,
+            origin: mouseTile,
             rotation,
             rotationVariant,
             building: metaBuilding,
@@ -627,7 +282,7 @@ export class HUDBuildingPlacer extends BaseHUDPart {
         const previewSprite = metaBuilding.getBlueprintSprite(rotationVariant, this.currentVariant.get());
         staticComp.origin = worldPos.divideScalar(globalConfig.tileSize).subScalars(0.5, 0.5);
         staticComp.drawSpriteOnFullEntityBounds(parameters, previewSprite);
-        staticComp.origin = tile;
+        staticComp.origin = mouseTile;
 
         // Draw ejectors
         if (canBuild) {
@@ -636,7 +291,63 @@ export class HUDBuildingPlacer extends BaseHUDPart {
     }
 
     /**
-     *
+     * @param {DrawParameters} parameters
+     */
+    drawDirectionLock(parameters) {
+        const mousePosition = this.root.app.mousePosition;
+        if (!mousePosition) {
+            // Not on screen
+            return;
+        }
+
+        const mouseWorld = this.root.camera.screenToWorld(mousePosition);
+        const mouseTile = mouseWorld.toTileSpace();
+        parameters.context.fillStyle = THEME.map.directionLock;
+        parameters.context.strokeStyle = THEME.map.directionLockTrack;
+        parameters.context.lineWidth = 10;
+
+        parameters.context.beginCircle(mouseWorld.x, mouseWorld.y, 4);
+        parameters.context.fill();
+
+        if (this.lastDragTile) {
+            const startLine = this.lastDragTile.toWorldSpaceCenterOfTile();
+            const endLine = mouseTile.toWorldSpaceCenterOfTile();
+            const midLine = this.currentDirectionLockCorner.toWorldSpaceCenterOfTile();
+
+            parameters.context.beginCircle(startLine.x, startLine.y, 8);
+            parameters.context.fill();
+
+            parameters.context.beginPath();
+            parameters.context.moveTo(startLine.x, startLine.y);
+            parameters.context.lineTo(midLine.x, midLine.y);
+            parameters.context.lineTo(endLine.x, endLine.y);
+            parameters.context.stroke();
+
+            parameters.context.beginCircle(endLine.x, endLine.y, 5);
+            parameters.context.fill();
+
+            // Draw arrows
+            const path = this.computeDirectionLockPath();
+            for (let i = 0; i < path.length - 1; i += 1) {
+                const { rotation, tile } = path[i];
+                const worldPos = tile.toWorldSpaceCenterOfTile();
+                drawRotatedSprite({
+                    parameters,
+                    sprite: this.lockIndicatorSprite,
+                    x: worldPos.x,
+                    y: worldPos.y,
+                    angle: Math_radians(rotation),
+                    size: 12,
+                    offsetY:
+                        -globalConfig.halfTileSize -
+                        clamp((this.root.time.now() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
+                        globalConfig.halfTileSize,
+                });
+            }
+        }
+    }
+
+    /**
      * @param {DrawParameters} parameters
      */
     drawMatchingAcceptorsAndEjectors(parameters) {

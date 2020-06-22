@@ -34,6 +34,7 @@ import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 import { HUDWaypoints } from "./parts/waypoints";
 import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
+import { Entity } from "../entity";
 
 export class GameHUD {
     /**
@@ -58,7 +59,6 @@ export class GameHUD {
             shop: new HUDShop(this.root),
             statistics: new HUDStatistics(this.root),
             waypoints: new HUDWaypoints(this.root),
-            vignetteOverlay: new HUDVignetteOverlay(this.root),
 
             // Must always exist
             pinnedShapes: new HUDPinnedShapes(this.root),
@@ -90,9 +90,14 @@ export class GameHUD {
         if (IS_DEMO) {
             this.parts.watermark = new HUDWatermark(this.root);
         }
+
         if (this.root.app.settings.getAllSettings().offerHints) {
             this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
             this.parts.interactiveTutorial = new HUDInteractiveTutorial(this.root);
+        }
+
+        if (this.root.app.settings.getAllSettings().vignette) {
+            this.parts.vignetteOverlay = new HUDVignetteOverlay(this.root);
         }
 
         const frag = document.createDocumentFragment();

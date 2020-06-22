@@ -14,7 +14,7 @@ function gulptasksTranslations($, gulp, buildFolder) {
             .pipe(gulp.dest(translationsJsonDir));
     });
 
-    gulp.task("translations.fullBuild", $.sequence("translations.convertToJson"));
+    gulp.task("translations.fullBuild", gulp.series("translations.convertToJson"));
 }
 
 module.exports = {

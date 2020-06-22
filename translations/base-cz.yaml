@@ -134,6 +134,9 @@ mainMenu:
 
         showInfo: Zobrazit
         contestOver: Tato soutěž skončila - Připojte se na Discord a získejte informace o nových soutěžích!
+    continue: Continue
+    newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -231,21 +234,21 @@ dialogs:
 
     createMarker:
         title: Nová značka
-        desc: Dejte jí smysluplné jméno
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!
     massCutConfirm:
-        title: Confirm cut
+        title: Potvrdit vyjmutí
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            Chceš vyjmout spoustu budov (přesněji řečeno <count>)! Vážně to
+            chceš udělat?
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Exportuj snímek obrazovky
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            Zažádal jsi o exportování své základny jako obrázek. Měj prosím na paměti, že to
+            může zejména u větších základen dlouho trvat, nebo dokonce shodit hru!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -262,7 +265,13 @@ ingame:
         placeBuilding: Položit budovu
         createMarker: Vytvořit značku
         delete: Zničit
-        pasteLastBlueprint: Paste last blueprint
+        pasteLastBlueprint: Vložit poslední plán
+        lockBeltDirection: Enable belt planner
+        plannerSwitchSide: Flip planner side
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -297,11 +306,6 @@ ingame:
     notifications:
         newUpgrade: Nová aktualizace je k dispozici!
         gameSaved: Hra byla uložena.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -461,13 +465,16 @@ buildings:
     painter:
         default:
             name: &painter Barvič
-            description: Obarví celý tvar v levém vstupu barvou z pravého vstupu.
+            description: &painter_desc Obarví celý tvar v levém vstupu barvou z pravého vstupu.
         double:
             name: Barvič (dvojnásobný)
             description: Obarví tvary z levých vstupů barvou z horního vstupu.
         quad:
             name: Barvič (čtyřnásobný)
             description: Umožňuje obarvit každý dílek tvaru samostatně.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -622,11 +629,11 @@ settings:
                 Vybere motiv (světlý / tmavý).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Tmavý
+                light: Světlý
 
         refreshRate:
-            title: Cíl simulace
+            title: Obnovovací frekvence
             description: >-
                 Pokud máte 144 Hz monitor, změňte si rychlost obnovování obrazu. Toto nastavení může snížit FPS, pokud máte pomalý počítač.
 
@@ -641,15 +648,50 @@ settings:
                 Pokud zapnuté, budou se ve hře zobrazovat tipy a nápovědy. Také schová určité elementy na obrazovce pro jednodušší dostání se do hry.
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: Rychlost kamery
+            description: Mění, jak rychle se kamera posouvá při použití klávesnice.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Hodně pomalá
+                slow: Pomalá
+                regular: Normální
+                fast: Rychlá
+                super_fast: Hodně Rychlá
+                extremely_fast: Extrémně Rychlá
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
+
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
 
 keybindings:
     title: Klávesové zkratky
@@ -674,6 +716,7 @@ keybindings:
         mapMoveRight: Posun doprava
         mapMoveDown: Posun dolů
         mapMoveLeft: Posun doleva
+        mapMoveFaster: Rychlejší posun
         centerMap: Vycentrovat mapu
 
         mapZoomIn: Přiblížit
@@ -696,7 +739,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Zrušit stavbu
         rotateWhilePlacing: Otočit
         rotateInverseModifier: >-
             Modifikátor: Otočit proti směru hodinových ručiček
@@ -711,29 +753,32 @@ keybindings:
         placementDisableAutoOrientation: Zrušit automatickou orientaci
         placeMultiple: Zůstat ve stavebním módu
         placeInverse: Přepnout automatickou orientaci pásů
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
+        pasteLastBlueprint: Vložit poslední plán
+        massSelectCut: Vyjmout oblast
+        exportScreenshot: Exportovat celou základnu jako obrázek
+        lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: "Planner: Switch side"
+        pipette: Pipette
 
 about:
     title: O hře
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Tato hra je open source a je vyvíjená <a href="https://github.com/tobspr"
+        target="_blank">Tobiasem Springerem</a> (česky neumí, ale je to fakt frajer :) ).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Pokud se chceš na hře podílet, podívej se na <a href="<githublink>"
+        target="_blank">shapez.io na githubu</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
+        Tato hra by nebyla ani možná bez skvělé discord komunity
+        okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>"
         target="_blank">discord server</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Soundtrack udělal <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Je úžasnej.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        V neposlední řadě by Tobias (já jen tlumočím) rád poděkoval skvělému kamarádovi <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklasi</a> - Bez hodin strávených
+        u factoria by tato hra nikdy neexistovala.
 
 changelog:
     title: Seznam změn
@@ -744,6 +789,6 @@ demo:
         importingGames: Importování uložených her
         oneGameLimit: Omezeno pouze na jednu uloženou hru
         customizeKeybindings: Změna klávesových zkratek
-        exportingBase: Exporting whole Base as Image
+        exportingBase: Exportovat celou základnu jako obrázek
 
     settingNotAvailable: Nedostupné v demo verzi.

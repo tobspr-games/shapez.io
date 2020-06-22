@@ -153,6 +153,9 @@ mainMenu:
 
         showInfo: View
         contestOver: This contest has ended - Join the discord to get noticed about new contests!
+    continue: Continue
+    newGame: New Game
+    madeBy: Made by <author-link>
 
 dialogs:
     buttons:
@@ -250,7 +253,7 @@ dialogs:
 
     createMarker:
         title: New Marker
-        desc: Give it a meaningful name
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
@@ -282,6 +285,12 @@ ingame:
         createMarker: Create Marker
         delete: Destroy
         pasteLastBlueprint: Paste last blueprint
+        lockBeltDirection: Enable belt planner
+        plannerSwitchSide: Flip planner side
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -316,11 +325,6 @@ ingame:
     notifications:
         newUpgrade: A new upgrade is available!
         gameSaved: Your game has been saved.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -475,13 +479,16 @@ buildings:
     painter:
         default:
             name: &painter Painter
-            description: Colors the whole shape on the left input with the color from the right input.
+            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
         double:
             name: Painter (Double)
             description: Colors the shapes on the left inputs with the color from the top input.
         quad:
             name: Painter (Quad)
             description: Allows to color each quadrant of the shape with a different color.
+        mirrored:
+            name: *painter
+            description: *painter_desc
 
     trash:
         default:
@@ -669,6 +676,41 @@ settings:
                 fast: Fast
                 super_fast: Super Fast
                 extremely_fast: Extremely Fast
+        enableTunnelSmartplace:
+            title: Smart Tunnels
+            description: >-
+                When enabled, placing tunnels will automatically remove unnecessary belts.
+                This also enables to drag tunnels and excess tunnels will get removed.
+        vignette:
+            title: Vignette
+            description: >-
+                Enables the vignette which darkens the screen corners and makes text easier
+                to read.
+
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
 
 keybindings:
     title: Keybindings
@@ -715,7 +757,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Abort Placement
         rotateWhilePlacing: Rotate
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
@@ -733,6 +774,10 @@ keybindings:
         pasteLastBlueprint: Paste last blueprint
         massSelectCut: Cut area
         exportScreenshot: Export whole Base as Image
+        mapMoveFaster: Move Faster
+        lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: "Planner: Switch side"
+        pipette: Pipette
 
 about:
     title: About this Game

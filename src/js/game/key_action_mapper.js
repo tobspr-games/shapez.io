@@ -24,7 +24,7 @@ export const KEYMAPPINGS = {
         menuOpenStats: { keyCode: key("G") },
 
         toggleHud: { keyCode: 113 }, // F2
-        exportScreenshot: { keyCode: 114 }, // F3
+        exportScreenshot: { keyCode: 114 }, // F3PS
         toggleFPSInfo: { keyCode: 115 }, // F4
     },
 
@@ -33,6 +33,7 @@ export const KEYMAPPINGS = {
         mapMoveRight: { keyCode: key("D") },
         mapMoveDown: { keyCode: key("S") },
         mapMoveLeft: { keyCode: key("A") },
+        mapMoveFaster: { keyCode: 16 }, //shift
 
         centerMap: { keyCode: 32 }, // SPACE
         mapZoomIn: { keyCode: 187, repeated: true }, // "+"
@@ -55,11 +56,12 @@ export const KEYMAPPINGS = {
     },
 
     placement: {
-        abortBuildingPlacement: { keyCode: key("Q") },
+        pipette: { keyCode: key("Q") },
         rotateWhilePlacing: { keyCode: key("R") },
         rotateInverseModifier: { keyCode: 16 }, // SHIFT
         cycleBuildingVariants: { keyCode: key("T") },
         cycleBuildings: { keyCode: 9 }, // TAB
+        switchDirectionLockSide: { keyCode: key("R") },
     },
 
     massSelect: {
@@ -72,6 +74,7 @@ export const KEYMAPPINGS = {
     },
 
     placementModifiers: {
+        lockBeltDirection: { keyCode: 16 }, // SHIFT
         placementDisableAutoOrientation: { keyCode: 17 }, // CTRL
         placeMultiple: { keyCode: 16 }, // SHIFT
         placeInverse: { keyCode: 18 }, // ALT
@@ -85,6 +88,10 @@ for (const categoryId in KEYMAPPINGS) {
     }
 }
 
+export const KEYCODE_LMB = 1;
+export const KEYCODE_MMB = 2;
+export const KEYCODE_RMB = 3;
+
 /**
  * Returns a keycode -> string
  * @param {number} code
@@ -92,11 +99,11 @@ for (const categoryId in KEYMAPPINGS) {
  */
 export function getStringForKeyCode(code) {
     switch (code) {
-        case 1:
+        case KEYCODE_LMB:
             return "LMB";
-        case 2:
+        case KEYCODE_MMB:
             return "MMB";
-        case 3:
+        case KEYCODE_RMB:
             return "RMB";
         case 4:
             return "MB4";
@@ -259,14 +266,16 @@ export class Keybinding {
 
     /**
      * Returns whether this binding is currently pressed
+     * @returns {boolean}
      */
-    isCurrentlyPressed() {
+    get pressed() {
         // Check if the key is down
         if (this.app.inputMgr.keysDown.has(this.keyCode)) {
             // Check if it is the top reciever
             const reciever = this.keyMapper.inputReceiver;
             return this.app.inputMgr.getTopReciever() === reciever;
         }
+        return false;
     }
 
     /**

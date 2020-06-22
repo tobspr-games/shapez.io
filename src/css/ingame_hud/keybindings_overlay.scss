@@ -14,6 +14,10 @@
     }
 
     > .binding {
+        &:not(.visible) {
+            display: none !important;
+        }
+
         display: inline-grid;
         @include PlainText;
         align-items: center;
@@ -56,42 +60,6 @@
 
             @include S(margin-left, 5px);
         }
-    }
-
-    &:not(.placementActive) .binding.placementOnly,
-    &.mapOverviewActive .binding.placementOnly {
-        display: none;
-    }
-
-    &.placementActive:not(.mapOverviewActive) .noPlacementOnly {
-        display: none;
-    }
-
-    &:not(.mapOverviewActive) .binding.overviewOnly {
-        display: none;
-    }
-
-    &.mapOverviewActive .noOverviewOnly {
-        display: none;
-    }
-
-    .binding.placementOnly,
-    &:not(.placementActive) .binding.noPlacementOnly {
-        transform-origin: 0% 50%;
-        @include InlineAnimation(0.3s ease-in-out) {
-            0% {
-                color: $colorRedBright;
-                transform: scale(1.2);
-            }
-        }
-    }
-
-    .keybinding.builtinKey {
-        transition: all 0.1s ease-in-out;
-        transition-property: background-color, color, border-color;
-        background: $colorRedBright;
-        border-color: $colorRedBright;
-        color: #fff;
     }
 }
 

@@ -1,15 +1,15 @@
 import { DrawParameters } from "../../../core/draw_parameters";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
+import { makeDiv } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
+import { T } from "../../../translations";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { BaseHUDPart } from "../base_hud_part";
-import { Blueprint } from "./blueprint";
-import { makeDiv } from "../../../core/utils";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { blueprintShape } from "../../upgrades";
-import { T } from "../../../translations";
+import { BaseHUDPart } from "../base_hud_part";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { Blueprint } from "./blueprint";
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
@@ -34,9 +34,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
         const keyActionMapper = this.root.keyMapper;
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
-        keyActionMapper
-            .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
-            .add(this.abortPlacement, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.rotateBlueprint, this);
         keyActionMapper.getBinding(KEYMAPPINGS.massSelect.pasteLastBlueprint).add(this.pasteBlueprint, this);
 
@@ -62,10 +60,9 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     update() {
-        this.domAttach.update(this.currentBlueprint.get());
-        this.trackedCanAfford.set(
-            this.currentBlueprint.get() && this.currentBlueprint.get().canAfford(this.root)
-        );
+        const currentBlueprint = this.currentBlueprint.get();
+        this.domAttach.update(currentBlueprint && currentBlueprint.getCost() > 0);
+        this.trackedCanAfford.set(currentBlueprint && currentBlueprint.canAfford(this.root));
     }
 
     /**
@@ -108,7 +105,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             this.root.hubGoals.takeShapeByKey(blueprintShape, cost);
 
             // This actually feels weird
-            // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).isCurrentlyPressed()) {
+            // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).pressed) {
             //     this.currentBlueprint.set(null);
             // }
         }
@@ -133,11 +130,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     rotateBlueprint() {
         if (this.currentBlueprint.get()) {
-            if (
-                this.root.keyMapper
-                    .getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
-                    .isCurrentlyPressed()
-            ) {
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
                 this.currentBlueprint.get().rotateCcw();
             } else {
                 this.currentBlueprint.get().rotateCw();

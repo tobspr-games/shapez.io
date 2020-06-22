@@ -3,10 +3,12 @@ import { cachebust } from "../core/cachebust";
 import { globalConfig, IS_DEBUG, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
 import {
     makeDiv,
+    makeButtonElement,
     formatSecondsToTimeAgo,
     generateFileDownload,
     waitNextFrame,
     isSupportedBrowser,
+    makeButton,
 } from "../core/utils";
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
@@ -23,7 +25,7 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
-            
+
             <p>${T.demoBanners.intro}</p>
 
             <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
@@ -59,9 +61,9 @@ export class MainMenuState extends GameState {
 
 
             <div class="mainWrapper ${IS_DEMO ? "demo" : "noDemo"}">
-                
+
                 <div class="sideContainer">
-                    ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}    
+                    ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
                 </div>
 
                 <div class="mainContainer">
@@ -70,11 +72,9 @@ export class MainMenuState extends GameState {
                             ? ""
                             : `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
                     }
-                    <button class="playButton styledButton">${T.mainMenu.play}</button>
-                    <button class="importButton styledButton">${T.mainMenu.importSavegame}</button>
                 </div>
-                
-    
+
+
             </div>
 
             <div class="footer">
@@ -82,18 +82,21 @@ export class MainMenuState extends GameState {
                 <a class="githubLink boxLink" target="_blank">
                     ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
-                </a>    
-                    
+                </a>
+
                 <a class="discordLink boxLink" target="_blank">
                     ${T.mainMenu.discordLink}
                     <span class="thirdpartyLogo  discordLogo"></span>
                 </a>
 
                 <a class="changelog">${T.changelog.title}</a>
-                
+
                 <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
 
-                <div class="author">Made by <a class="producerLink" target="_blank">Tobias Springer</a></div>
+                <div class="author">${T.mainMenu.madeBy.replace(
+                    "<author-link>",
+                    '<a class="producerLink" target="_blank">Tobias Springer</a>'
+                )}</div>
 
             </div>
         `;
@@ -186,8 +189,6 @@ export class MainMenuState extends GameState {
         }
 
         const qs = this.htmlElement.querySelector.bind(this.htmlElement);
-        this.trackClicks(qs(".mainContainer .playButton"), this.onPlayButtonClicked);
-        this.trackClicks(qs(".mainContainer .importButton"), this.requestImportSavegame);
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             const games = this.app.savegameMgr.getSavegamesMetaData();
@@ -223,6 +224,7 @@ export class MainMenuState extends GameState {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
         }
 
+        this.renderMainMenu();
         this.renderSavegames();
 
         const steamLink = this.htmlElement.querySelector(".steamLink");
@@ -250,6 +252,50 @@ export class MainMenuState extends GameState {
             () => this.app.platformWrapper.openExternalLink("https://tobspr.com"),
             { preventClick: true }
         );
+    }
+
+    renderMainMenu() {
+        const importButtonElement = makeButtonElement(
+            ["importButton", "styledButton"],
+            T.mainMenu.importSavegame
+        );
+        this.trackClicks(importButtonElement, this.requestImportSavegame);
+
+        if (this.savedGames.length > 0) {
+            const continueButton = makeButton(
+                this.htmlElement.querySelector(".mainContainer"),
+                ["continueButton", "styledButton"],
+                T.mainMenu.continue
+            );
+            this.trackClicks(continueButton, this.onContinueButtonClicked);
+
+            const outerDiv = makeDiv(this.htmlElement.querySelector(".mainContainer"), null, ["outer"], null);
+            outerDiv.appendChild(importButtonElement);
+            const newGameButton = makeButton(
+                this.htmlElement.querySelector(".mainContainer .outer"),
+                ["newGameButton", "styledButton"],
+                T.mainMenu.newGame
+            );
+            this.trackClicks(newGameButton, this.onPlayButtonClicked);
+
+            const oldPlayButton = this.htmlElement.querySelector(".mainContainer .playButton");
+            if (oldPlayButton) oldPlayButton.remove();
+        } else {
+            const playBtn = makeButton(
+                this.htmlElement.querySelector(".mainContainer"),
+                ["playButton", "styledButton"],
+                T.mainMenu.play
+            );
+            this.trackClicks(playBtn, this.onPlayButtonClicked);
+
+            this.htmlElement.querySelector(".mainContainer").appendChild(importButtonElement);
+
+            const outerDiv = this.htmlElement.querySelector(".mainContainer .outer");
+            if (outerDiv) {
+                outerDiv.remove();
+                this.htmlElement.querySelector(".mainContainer .continueButton").remove();
+            }
+        }
     }
 
     onSteamLinkClicked() {
@@ -310,12 +356,16 @@ export class MainMenuState extends GameState {
         }, this);
     }
 
+    get savedGames() {
+        return this.app.savegameMgr.getSavegamesMetaData();
+    }
+
     renderSavegames() {
         const oldContainer = this.htmlElement.querySelector(".mainContainer .savegames");
         if (oldContainer) {
             oldContainer.remove();
         }
-        const games = this.app.savegameMgr.getSavegamesMetaData();
+        const games = this.savedGames;
         if (games.length > 0) {
             const parent = makeDiv(this.htmlElement.querySelector(".mainContainer"), null, ["savegames"]);
 
@@ -346,13 +396,13 @@ export class MainMenuState extends GameState {
                 downloadButton.classList.add("styledButton", "downloadGame");
                 elem.appendChild(downloadButton);
 
-                const resumeBtn = document.createElement("button");
-                resumeBtn.classList.add("styledButton", "resumeGame");
-                elem.appendChild(resumeBtn);
+                const resumeButton = document.createElement("button");
+                resumeButton.classList.add("styledButton", "resumeGame");
+                elem.appendChild(resumeButton);
 
                 this.trackClicks(deleteButton, () => this.deleteGame(games[i]));
                 this.trackClicks(downloadButton, () => this.downloadGame(games[i]));
-                this.trackClicks(resumeBtn, () => this.resumeGame(games[i]));
+                this.trackClicks(resumeButton, () => this.resumeGame(games[i]));
             }
         }
     }
@@ -398,6 +448,7 @@ export class MainMenuState extends GameState {
             this.app.savegameMgr.deleteSavegame(game).then(
                 () => {
                     this.renderSavegames();
+                    if (this.savedGames.length <= 0) this.renderMainMenu();
                 },
                 err => {
                     this.dialogs.showWarning(
@@ -452,6 +503,24 @@ export class MainMenuState extends GameState {
                 savegame,
             });
             this.app.analytics.trackUiClick("startgame_adcomplete");
+        });
+    }
+
+    onContinueButtonClicked() {
+        let latestLastUpdate = 0;
+        let latestInternalId;
+        this.app.savegameMgr.currentData.savegames.forEach(saveGame => {
+            if (saveGame.lastUpdate > latestLastUpdate) {
+                latestLastUpdate = saveGame.lastUpdate;
+                latestInternalId = saveGame.internalId;
+            }
+        });
+
+        const savegame = this.app.savegameMgr.getSavegameById(latestInternalId);
+        savegame.readAsync().then(() => {
+            this.moveToState("InGameState", {
+                savegame,
+            });
         });
     }
 

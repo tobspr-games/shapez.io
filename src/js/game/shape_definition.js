@@ -70,6 +70,12 @@ export function createSimpleShape(layers) {
     return layers;
 }
 
+/**
+ * Cache which shapes are valid short keys and which not
+ * @type {Map<string, boolean>}
+ */
+const SHORT_KEY_CACHE = new Map();
+
 export class ShapeDefinition extends BasicSerializableObject {
     static getId() {
         return "ShapeDefinition";
@@ -114,6 +120,8 @@ export class ShapeDefinition extends BasicSerializableObject {
 
     /**
      * Generates the definition from the given short key
+     * @param {string} key
+     * @returns {ShapeDefinition}
      */
     static fromShortKey(key) {
         const sourceLayers = key.split(":");
@@ -145,6 +153,81 @@ export class ShapeDefinition extends BasicSerializableObject {
         // We know the hash so save some work
         definition.cachedHash = key;
         return definition;
+    }
+
+    /**
+     * Checks if a given string is a valid short key
+     * @param {string} key
+     * @returns {boolean}
+     */
+    static isValidShortKey(key) {
+        if (SHORT_KEY_CACHE.has(key)) {
+            return SHORT_KEY_CACHE.get(key);
+        }
+
+        const result = ShapeDefinition.isValidShortKeyInternal(key);
+        SHORT_KEY_CACHE.set(key, result);
+        return result;
+    }
+
+    /**
+     * INTERNAL
+     * Checks if a given string is a valid short key
+     * @param {string} key
+     * @returns {boolean}
+     */
+    static isValidShortKeyInternal(key) {
+        const sourceLayers = key.split(":");
+        let layers = [];
+        for (let i = 0; i < sourceLayers.length; ++i) {
+            const text = sourceLayers[i];
+            if (text.length !== 8) {
+                return false;
+            }
+
+            /** @type {ShapeLayer} */
+            const quads = [null, null, null, null];
+            let anyFilled = false;
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeText = text[quad * 2 + 0];
+                const colorText = text[quad * 2 + 1];
+                const subShape = enumShortcodeToSubShape[shapeText];
+                const color = enumShortcodeToColor[colorText];
+
+                // Valid shape
+                if (subShape) {
+                    if (!color) {
+                        // Invalid color
+                        return false;
+                    }
+                    quads[quad] = {
+                        subShape,
+                        color,
+                    };
+                    anyFilled = true;
+                } else if (shapeText === "-") {
+                    // Make sure color is empty then, too
+                    if (colorText !== "-") {
+                        return false;
+                    }
+                } else {
+                    // Invalid shape key
+                    return false;
+                }
+            }
+
+            if (!anyFilled) {
+                // Empty layer
+                return false;
+            }
+            layers.push(quads);
+        }
+
+        if (layers.length === 0 || layers.length > 4) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

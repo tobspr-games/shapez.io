@@ -92,6 +92,9 @@ export class GameSystemManager {
 
         add("staticMapEntities", StaticMapEntitySystem);
 
+        // IMPORTANT: Must be after belt system since belt system can change the
+        // orientation of an entity after it is placed -> the item acceptor cache
+        // then would be invalid
         add("itemAcceptor", ItemAcceptorSystem);
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");

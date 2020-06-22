@@ -6,19 +6,40 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { Math_min } from "../../core/builtins";
+import { createLogger } from "../../core/logging";
+
+const logger = createLogger("systems/ejector");
 
 export class ItemEjectorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemEjectorComponent]);
+
+        /**
+         * @type {Array<{
+         *  targetEntity: Entity,
+         *  sourceSlot: import("../components/item_ejector").ItemEjectorSlot,
+         *  destSlot: import("../components/item_acceptor").ItemAcceptorLocatedSlot
+         * }>}
+         */
+        this.cache = [];
+
+        this.cacheNeedsUpdate = true;
+
+        this.root.signals.entityAdded.add(this.invalidateCache, this);
+        this.root.signals.entityDestroyed.add(this.invalidateCache, this);
     }
 
-    update() {
-        const effectiveBeltSpeed = this.root.hubGoals.getBeltBaseSpeed() * globalConfig.itemSpacingOnBelts;
-        let progressGrowth = (effectiveBeltSpeed / 0.5) * this.root.dynamicTickrate.deltaSeconds;
+    invalidateCache() {
+        this.cacheNeedsUpdate = true;
+    }
 
-        if (G_IS_DEV && globalConfig.debug.instantBelts) {
-            progressGrowth = 1;
-        }
+    /**
+     * Precomputes the cache, which makes up for a huge performance improvement
+     */
+    recomputeCache() {
+        logger.log("Recomputing cache");
+
+        const cache = [];
 
         // Try to find acceptors for every ejector
         for (let i = 0; i < this.allEntities.length; ++i) {
@@ -29,17 +50,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             // For every ejector slot, try to find an acceptor
             for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorComp.slots.length; ++ejectorSlotIndex) {
                 const ejectorSlot = ejectorComp.slots[ejectorSlotIndex];
-                const ejectingItem = ejectorSlot.item;
-                if (!ejectingItem) {
-                    // No item ejected
-                    continue;
-                }
-
-                ejectorSlot.progress = Math_min(1, ejectorSlot.progress + progressGrowth);
-                if (ejectorSlot.progress < 1.0) {
-                    // Still ejecting
-                    continue;
-                }
 
                 // Figure out where and into which direction we eject items
                 const ejectSlotWsTile = staticComp.localTileToWorld(ejectorSlot.pos);
@@ -71,20 +81,63 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                if (!targetAcceptorComp.canAcceptItem(matchingSlot.index, ejectingItem)) {
-                    // Can not accept item
-                    continue;
-                }
+                // Ok we found a connection
+                cache.push({
+                    targetEntity,
+                    sourceSlot: ejectorSlot,
+                    destSlot: matchingSlot,
+                });
+            }
+        }
 
-                if (this.tryPassOverItem(ejectingItem, targetEntity, matchingSlot.index)) {
-                    targetAcceptorComp.onItemAccepted(
-                        matchingSlot.index,
-                        matchingSlot.acceptedDirection,
-                        ejectingItem
-                    );
-                    ejectorSlot.item = null;
-                    continue;
-                }
+        this.cache = cache;
+        logger.log("Found", cache.length, "entries to update");
+    }
+
+    update() {
+        if (this.cacheNeedsUpdate) {
+            this.cacheNeedsUpdate = false;
+            this.recomputeCache();
+        }
+
+        // Precompute effective belt speed
+        const effectiveBeltSpeed = this.root.hubGoals.getBeltBaseSpeed() * globalConfig.itemSpacingOnBelts;
+        let progressGrowth = (effectiveBeltSpeed / 0.5) * this.root.dynamicTickrate.deltaSeconds;
+
+        if (G_IS_DEV && globalConfig.debug.instantBelts) {
+            progressGrowth = 1;
+        }
+
+        // Go over all cache entries
+        for (let i = 0; i < this.cache.length; ++i) {
+            const { sourceSlot, destSlot, targetEntity } = this.cache[i];
+            const item = sourceSlot.item;
+
+            if (!item) {
+                // No item available to be ejected
+                continue;
+            }
+
+            // Advance items on the slot
+            sourceSlot.progress = Math_min(1, sourceSlot.progress + progressGrowth);
+
+            // Check if we are still in the process of ejecting, can't proceed then
+            if (sourceSlot.progress < 1.0) {
+                continue;
+            }
+
+            // Check if the target acceptor can actually accept this item
+            const targetAcceptorComp = targetEntity.components.ItemAcceptor;
+            if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
+                continue;
+            }
+
+            // Try to hand over the item
+            if (this.tryPassOverItem(item, targetEntity, destSlot.index)) {
+                // Handover successful, clear slot
+                targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
+                sourceSlot.item = null;
+                continue;
             }
         }
     }

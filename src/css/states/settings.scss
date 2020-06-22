@@ -88,4 +88,26 @@
             }
         }
     }
+
+    @include DarkThemeOverride {
+        .content {
+            .setting {
+                background: darken($darkModeGameBackground, 10);
+
+                .value.enum {
+                    // dirty but works
+                    filter: invert(0.85);
+                    color: #222;
+                }
+
+                .value.checkbox {
+                    background-color: #74767b;
+
+                    &.checked {
+                        background-color: $colorBlueBright;
+                    }
+                }
+            }
+        }
+    }
 }

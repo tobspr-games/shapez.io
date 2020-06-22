@@ -3,11 +3,11 @@ const audiosprite = require("gulp-audiosprite");
 
 function gulptasksSounds($, gulp, buildFolder) {
     // Gather some basic infos
-    const soundsDir = path.join("..", "res_raw", "sounds");
-    const builtSoundsDir = path.join("..", "res_built", "sounds");
+    const soundsDir = path.join(__dirname, "..", "res_raw", "sounds");
+    const builtSoundsDir = path.join(__dirname, "..", "res_built", "sounds");
 
     gulp.task("sounds.clear", () => {
-        return gulp.src(builtSoundsDir).pipe($.clean({ force: true }));
+        return gulp.src(builtSoundsDir, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
     });
 
     const filters = ["volume=0.2"];
@@ -29,10 +29,34 @@ function gulptasksSounds($, gulp, buildFolder) {
                             .audioChannels(1)
                             .audioFrequency(22050)
                             .audioCodec("libmp3lame")
-                            .audioFilters(["volume=0.3"]);
+                            .audioFilters(["volume=0.15"]);
                     }),
                     {
                         name: "music",
+                        fileCache,
+                    }
+                )
+            )
+            .pipe(gulp.dest(path.join(builtSoundsDir, "music")));
+    });
+
+    // Encodes the game music in high quality for the standalone
+    gulp.task("sounds.musicHQ", () => {
+        return gulp
+            .src([path.join(soundsDir, "music", "**", "*.wav"), path.join(soundsDir, "music", "**", "*.mp3")])
+            .pipe($.plumber())
+            .pipe(
+                $.cache(
+                    $.fluentFfmpeg("mp3", function (cmd) {
+                        return cmd
+                            .audioBitrate(256)
+                            .audioChannels(2)
+                            .audioFrequency(44100)
+                            .audioCodec("libmp3lame")
+                            .audioFilters(["volume=0.15"]);
+                    }),
+                    {
+                        name: "music-high-quality",
                         fileCache,
                     }
                 )
@@ -79,7 +103,7 @@ function gulptasksSounds($, gulp, buildFolder) {
 
     gulp.task(
         "sounds.sfx",
-        $.sequence("sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas")
+        gulp.series("sounds.sfxGenerateSprites", "sounds.sfxOptimize", "sounds.sfxCopyAtlas")
     );
 
     gulp.task("sounds.copy", () => {
@@ -90,10 +114,12 @@ function gulptasksSounds($, gulp, buildFolder) {
             .pipe(gulp.dest(path.join(buildFolder, "res", "sounds")));
     });
 
-    gulp.task("sounds.buildall", cb => $.multiProcess(["sounds.music", "sounds.sfx"], cb, true));
+    gulp.task("sounds.buildall", gulp.parallel("sounds.music", "sounds.sfx"));
+    gulp.task("sounds.buildallHQ", gulp.parallel("sounds.musicHQ", "sounds.sfx"));
 
-    gulp.task("sounds.fullbuild", cb => $.sequence("sounds.clear", "sounds.buildall", "sounds.copy")(cb));
-    gulp.task("sounds.dev", cb => $.sequence("sounds.buildall", "sounds.copy")(cb));
+    gulp.task("sounds.fullbuild", gulp.series("sounds.clear", "sounds.buildall", "sounds.copy"));
+    gulp.task("sounds.fullbuildHQ", gulp.series("sounds.clear", "sounds.buildallHQ", "sounds.copy"));
+    gulp.task("sounds.dev", gulp.series("sounds.buildall", "sounds.copy"));
 }
 
 module.exports = {
