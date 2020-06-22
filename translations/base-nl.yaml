@@ -406,8 +406,8 @@ ingame:
         white: Wit
         uncolored: Geen kleur
     ShapeViewer:
-        title: Layers
-        empty: Empty
+        title: Lagen
+        empty: Leeg
 
 
 
