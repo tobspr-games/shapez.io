@@ -399,17 +399,17 @@ ingame:
                 Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
+        red: Rouge
+        green: Vert
+        blue: Bleu
+        yellow: Jaune
+        purple: Violet
         cyan: Cyan
-        white: White
-        uncolored: No color
+        white: Blanc
+        uncolored: Non coloré
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Calques
+        empty: Vide
 
 # All shop upgrades
 shopUpgrades:
@@ -725,8 +725,8 @@ settings:
                 Désactive la boîte de dialogue qui s'affiche lorsque vous vous apprêtez à couper/effacer plus de 100 entités.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Mode Daltonien
+            description: Active divers outils qui permettent de jouer à ce jeu si vous êtes daltonien.
 
 keybindings:
     title: Contrôles
