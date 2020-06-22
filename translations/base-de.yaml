@@ -286,7 +286,7 @@ ingame:
         plannerSwitchSide: "Planer: Seite wechseln"
         cutSelection: Ausschneiden
         copySelection: Kopieren
-        clearSelection: Leere Selektion
+        clearSelection: Auswahl aufheben
         pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
@@ -294,7 +294,7 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Drücke <key>, um zwischen den Varianten zu wählen.
+        cycleBuildingVariants: <key> Wechsle Variante
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -688,29 +688,28 @@ settings:
                 und das Lesen der Textfelder vereinfacht.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Intervall für automatisches Speichern
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Ändert das Intervall, in dem der Spielstand automatisch gespeichert wird.
+                Die Funktion kann hier auch deaktiviert werden.
             intervals:
                 one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                two_minutes: 2 Minuten
+                five_minutes: 5 Minuten
+                ten_minutes: 10 Minuten
+                twenty_minutes: 20 Minuten
+                disabled: Deaktiviert
 
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Kompakte Gebäudeinformationen
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Reduziert die Infoboxen der Gebäude auf ihre Arbeitsgeschwindigkeit. Anderenfalls wird ein 
+                Bild mit Beschreibung angezeigt.
 
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Deaktiviere Warnungsdialog beim Löschen
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
 
 keybindings:
     title: Tastenbelegung
