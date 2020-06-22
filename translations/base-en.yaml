@@ -121,6 +121,7 @@ mainMenu:
     continue: Continue
     newGame: New Game
     changelog: Changelog
+    subreddit: Reddit
     importSavegame: Import
     openSourceHint: This game is open source!
     discordLink: Official Discord Server

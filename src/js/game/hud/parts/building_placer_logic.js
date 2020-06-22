@@ -184,6 +184,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (mousePos) {
             this.onMouseMove(mousePos);
         }
+
+        // Make sure we have nothing selected while in overview mode
+        if (this.root.camera.getIsMapOverlayActive()) {
+            if (this.currentMetaBuilding.get()) {
+                this.currentMetaBuilding.set(null);
+            }
+        }
     }
 
     /**
