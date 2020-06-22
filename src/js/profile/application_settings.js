@@ -198,7 +198,6 @@ export const allApplicationSettings = [
     }),
 
     new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
-    new BoolSetting("offerHints", categoryGame, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", categoryGame, (app, value) => {}),
     new BoolSetting("vignette", categoryGame, (app, value) => {}),
     new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
