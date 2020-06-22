@@ -401,9 +401,9 @@ ingame:
         blue: Blau
         yellow: Gelb
         purple: Violett
-        cyan: Blaugrün
+        cyan: Cyan
         white: Weiß
-        uncolored: farblos
+        uncolored: Farblos
     shapeViewer:
         title: Ebenen
         empty: Leer
