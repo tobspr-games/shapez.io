@@ -91,10 +91,14 @@ export class MainMenuState extends GameState {
                     <span class="thirdpartyLogo  discordLogo"></span>
                 </a>
 
-                <a class="changelog">${T.changelog.title}</a>
+                <div class="sidelinks">
+                    <a class="redditLink">${T.mainMenu.subreddit}</a>
 
-                <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
-
+                    <a class="changelog">${T.changelog.title}</a>
+                
+                    <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
+                </div>
+            
                 <div class="author">${T.mainMenu.madeBy.replace(
                     "<author-link>",
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
@@ -215,6 +219,7 @@ export class MainMenuState extends GameState {
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.trackClicks(qs(".changelog"), this.onChangelogClicked);
+        this.trackClicks(qs(".redditLink"), this.onRedditClicked);
         this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
         this.trackClicks(qs(".helpTranslate"), this.onTranslationHelpLinkClicked);
 
@@ -305,6 +310,11 @@ export class MainMenuState extends GameState {
 
     onChangelogClicked() {
         this.moveToState("ChangelogState");
+    }
+
+    onRedditClicked() {
+        this.app.analytics.trackUiClick("main_menu_reddit_link");
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.reddit);
     }
 
     onContestClicked() {
