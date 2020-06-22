@@ -401,17 +401,17 @@ ingame:
                 Это <strong>НЕ</strong> idle-игра! Постройте больше экстракторов и конвейеров, чтобы достичь цели быстрее.<br><br>Подсказка: Удерживайте <strong>SHIFT</strong> чтобы разместить несколько экстракторов, а <strong>R</strong> чтобы вращать их.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: Красный
+        green: Зеленый
+        blue: Синий
+        yellow: Желтый
+        purple: Фиолетовый
+        cyan: Бирюзовый
+        white: Белый
+        uncolored: Бесцветный
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Слои
+        empty: Пусто
 
 # All shop upgrades
 shopUpgrades:
@@ -725,8 +725,8 @@ settings:
                 вырезании/удалении более 100 объектов.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Режим Дальтоника
+            description: Включает различные инструменты, которые позволяют играть в игру дальтоникам.
 
 keybindings:
     title: Настройки управления
