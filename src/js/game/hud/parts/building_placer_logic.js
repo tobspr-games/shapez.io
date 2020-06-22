@@ -87,16 +87,16 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.lastDragTile = null;
 
         /**
+         * Keep holding direction lock
+         * @type {?boolean}
+         */
+        this.currentlyDirectionLock = null;
+
+        /**
          * The side for direction lock
          * @type {number} (0|1)
          */
         this.currentDirectionLockSide = 0;
-
-        /**
-         * Keep holding direction lock while dragging
-         * @type {boolean}
-         */
-        this.keepDirectionLock = false;
 
         this.initializeBindings();
     }
@@ -181,12 +181,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      */
     get isDirectionLockActive() {
         const metaBuilding = this.currentMetaBuilding.get();
-        return (
-            this.keepDirectionLock ||
-            (metaBuilding &&
-                metaBuilding.getHasDirectionLockAvailable() &&
-                this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed)
-        );
+        if (!(metaBuilding && metaBuilding.getHasDirectionLockAvailable())) {
+            return false;
+        }
+        if (this.currentlyDirectionLock !== null) {
+            return this.currentlyDirectionLock;
+        }
+        return this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed;
     }
 
     /**
@@ -235,6 +236,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.currentlyDeleting = false;
         this.initialPlacementVector = null;
         this.lastDragTile = null;
+        this.currentlyDirectionLock = null;
     }
 
     /**
@@ -650,13 +652,21 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         // Placement
         if (button === enumMouseButton.left && metaBuilding) {
+            // Check for direction lock
+            if (this.currentlyDirectionLock) {
+                if (this.lastDragTile && this.currentlyDragging) {
+                    this.executeDirectionLockedPlacement();
+                    this.abortDragging();
+                    return;
+                }
+            }
+
             this.currentlyDragging = true;
             this.currentlyDeleting = false;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
 
-            if (this.isDirectionLockActive) {
-                this.keepDirectionLock = true;
-            } else {
+            this.currentlyDirectionLock = this.isDirectionLockActive;
+            if (!this.currentlyDirectionLock) {
                 // Place initial building, but only if direction lock is not active
                 if (this.tryPlaceCurrentBuildingAt(this.lastDragTile)) {
                     this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
@@ -691,8 +701,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const metaBuilding = this.currentMetaBuilding.get();
         if ((metaBuilding || this.currentlyDeleting) && this.lastDragTile) {
             // Check for direction lock
-            if (this.isDirectionLockActive) {
-                this.keepDirectionLock = true;
+            if (this.currentlyDirectionLock) {
                 return;
             }
 
@@ -789,11 +798,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             return;
         }
 
-        // Check for direction lock
-        if (this.lastDragTile && this.currentlyDragging && this.isDirectionLockActive) {
-            this.executeDirectionLockedPlacement();
+        if (this.currentlyDirectionLock) {
+            return;
         }
-        this.keepDirectionLock = false;
 
         this.abortDragging();
     }
