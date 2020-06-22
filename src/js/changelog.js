@@ -1,5 +1,16 @@
 export const CHANGELOG = [
     {
+        version: "1.1.17",
+        date: "unreleased",
+        entries: [
+            "Allow configuring autosave interval and disabling it in the settings",
+            "The soundtrack now has a higher quality on the standalone version than the web version",
+            "Add setting to disable cut/delete warnings (by hexy)",
+            "Fix bug where belts in blueprints don't orient correctly (by hexy)",
+            "Update tutorial image for tier 2 tunnels to explain mix/match (by jimmyshadow1)",
+        ],
+    },
+    {
         version: "1.1.16",
         date: "21.06.2020",
         entries: [

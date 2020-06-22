@@ -47,10 +47,16 @@ export class AutomaticSave {
             return;
         }
 
+        const saveInterval = this.root.app.settings.getAutosaveIntervalSeconds();
+        if (!saveInterval) {
+            // Disabled
+            return;
+        }
+
         // Check when the last save was, but make sure that if it fails, we don't spam
         const lastSaveTime = Math_max(this.lastSaveAttempt, this.root.savegame.getRealLastUpdate());
 
-        let secondsSinceLastSave = (Date.now() - lastSaveTime) / 1000.0;
+        const secondsSinceLastSave = (Date.now() - lastSaveTime) / 1000.0;
         let shouldSave = false;
 
         switch (this.saveImportance) {
@@ -61,7 +67,7 @@ export class AutomaticSave {
 
             case enumSavePriority.regular:
                 // Could determine if there is a good / bad point here
-                shouldSave = secondsSinceLastSave > MIN_INTERVAL_SECS;
+                shouldSave = secondsSinceLastSave > saveInterval;
                 break;
 
             default:

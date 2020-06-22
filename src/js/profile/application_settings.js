@@ -89,6 +89,33 @@ export const movementSpeeds = [
     },
 ];
 
+export const autosaveIntervals = [
+    {
+        id: "one_minute",
+        seconds: 60,
+    },
+    {
+        id: "two_minutes",
+        seconds: 120,
+    },
+    {
+        id: "five_minutes",
+        seconds: 5 * 60,
+    },
+    {
+        id: "ten_minutes",
+        seconds: 10 * 60,
+    },
+    {
+        id: "twenty_minutes",
+        seconds: 20 * 60,
+    },
+    {
+        id: "disabled",
+        seconds: null,
+    },
+];
+
 /** @type {Array<BaseSetting>} */
 export const allApplicationSettings = [
     new EnumSetting("language", {
@@ -165,6 +192,19 @@ export const allApplicationSettings = [
         enabled: !IS_DEMO,
     }),
 
+    new EnumSetting("autosaveInterval", {
+        options: autosaveIntervals,
+        valueGetter: interval => interval.id,
+        textGetter: interval => T.settings.labels.autosaveInterval.intervals[interval.id],
+        category: categoryGame,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => null,
+    }),
+
     new EnumSetting("refreshRate", {
         options: ["60", "100", "144", "165", "250", "500"],
         valueGetter: rate => rate,
@@ -220,6 +260,7 @@ class SettingsStorage {
         this.scrollWheelSensitivity = "regular";
         this.movementSpeed = "regular";
         this.language = "auto-detect";
+        this.autosaveInterval = "two_minutes";
 
         this.alwaysMultiplace = false;
         this.offerHints = true;
@@ -321,6 +362,17 @@ export class ApplicationSettings extends ReadWriteProxy {
         return 1;
     }
 
+    getAutosaveIntervalSeconds() {
+        const id = this.getAllSettings().autosaveInterval;
+        for (let i = 0; i < autosaveIntervals.length; ++i) {
+            if (autosaveIntervals[i].id === id) {
+                return autosaveIntervals[i].seconds;
+            }
+        }
+        logger.error("Unknown autosave interval id:", id);
+        return 120;
+    }
+
     getIsFullScreen() {
         return this.getAllSettings().fullscreen;
     }
@@ -416,7 +468,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 14;
+        return 15;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -472,6 +524,12 @@ export class ApplicationSettings extends ReadWriteProxy {
             data.settings.disableCutDeleteWarnings = false;
             data.version = 14;
         }
+
+        if (data.version < 15) {
+            data.settings.autosaveInterval = "two_minutes";
+            data.version = 15;
+        }
+
         return ExplainedResult.good();
     }
 }
