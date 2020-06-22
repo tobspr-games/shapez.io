@@ -4,6 +4,7 @@ export const CHANGELOG = [
         date: "unreleased",
         entries: [
             "Allow configuring autosave interval and disabling it in the settings",
+            "The smart-tunnel placement has been reworked to properly replace belts. Thus the setting has been turned on again by default",
             "The soundtrack now has a higher quality on the standalone version than the web version",
             "Add setting to disable cut/delete warnings (by hexy)",
             "Fix bug where belts in blueprints don't orient correctly (by hexy)",

@@ -468,7 +468,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 15;
+        return 16;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -528,6 +528,12 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 15) {
             data.settings.autosaveInterval = "two_minutes";
             data.version = 15;
+        }
+
+        if (data.version < 16) {
+            // RE-ENABLE this setting, it already existed
+            data.settings.enableTunnelSmartplace = true;
+            data.version = 16;
         }
 
         return ExplainedResult.good();

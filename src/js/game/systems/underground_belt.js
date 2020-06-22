@@ -77,6 +77,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             const tier = undergroundComp.tier;
             const range = globalConfig.undergroundBeltMaxTilesByTier[tier];
 
+            // FIND ENTRANCE
             // Search for the entrance which is furthes apart (this is why we can't reuse logic here)
             let matchingEntrance = null;
             for (let i = 0; i < range; ++i) {
@@ -104,31 +105,49 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 return;
             }
 
-            // Remove any belts between entrance and exit which have the same direction
+            // DETECT OBSOLETE BELTS BETWEEN
+            // Remove any belts between entrance and exit which have the same direction,
+            // but only if they *all* have the right direction
             currentPos = tile.copy();
+            let allBeltsMatch = true;
             for (let i = 0; i < matchingEntrance.range; ++i) {
                 currentPos.addInplace(offset);
 
                 const contents = this.root.map.getTileContent(currentPos);
                 if (!contents) {
-                    continue;
+                    allBeltsMatch = false;
+                    break;
                 }
 
                 const contentsStaticComp = contents.components.StaticMapEntity;
                 const contentsBeltComp = contents.components.Belt;
+                if (!contentsBeltComp) {
+                    allBeltsMatch = false;
+                    break;
+                }
 
-                if (contentsBeltComp) {
-                    // It's a belt
-                    if (
-                        contentsBeltComp.direction === enumDirection.top &&
-                        enumAngleToDirection[contentsStaticComp.rotation] === direction
-                    ) {
-                        // It's same rotation, drop it
-                        this.root.logic.tryDeleteBuilding(contents);
-                    }
+                // It's a belt
+                if (
+                    contentsBeltComp.direction !== enumDirection.top ||
+                    enumAngleToDirection[contentsStaticComp.rotation] !== direction
+                ) {
+                    allBeltsMatch = false;
+                    break;
                 }
             }
 
+            currentPos = tile.copy();
+            if (allBeltsMatch) {
+                // All belts between this are obsolete, so drop them
+                for (let i = 0; i < matchingEntrance.range; ++i) {
+                    currentPos.addInplace(offset);
+                    const contents = this.root.map.getTileContent(currentPos);
+                    assert(contents, "Invalid smart underground belt logic");
+                    this.root.logic.tryDeleteBuilding(contents);
+                }
+            }
+
+            // REMOVE OBSOLETE TUNNELS
             // Remove any double tunnels, by checking the tile plus the tile above
             currentPos = tile.copy().add(offset);
             for (let i = 0; i < matchingEntrance.range - 1; ++i) {
