@@ -287,6 +287,10 @@ ingame:
         pasteLastBlueprint: Colar último projeto
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -321,11 +325,6 @@ ingame:
     notifications:
         newUpgrade: Nova melhoria disponível!
         gameSaved: Seu jogo foi salvo.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Pressione <keyCut> para cortar, <keyCopy> para copiar, <keyDelete> para destruir e <keyCancel> para cancelar.
 
     # The "Upgrades" window
     shop:
@@ -688,6 +687,29 @@ settings:
                 Enables the vignette which darkens the screen corners and makes text easier
                 to read.
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
+
 keybindings:
     title: Controles
     hint: >-
@@ -733,7 +755,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Cancelar
         rotateWhilePlacing: Rotacionar
         rotateInverseModifier: >-
             Modifier: Rotação anti-horária
@@ -753,7 +774,8 @@ keybindings:
         exportScreenshot: Exportar base inteira como imagem
         mapMoveFaster: Move Faster
         lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        switchDirectionLockSide: "Planner: Switch side"
+        pipette: Pipette
 
 about:
     title: Sobre o jogo

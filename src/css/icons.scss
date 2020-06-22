@@ -27,7 +27,7 @@ $icons: notification_saved, notification_success, notification_upgrade;
     }
 }
 
-$languages: en, de, cs, da, et, es-419, fr, it, pt-BR, sv, tr, el, ru, uk, zh-TW, nb, mt-MT, ar, nl, vi, th,
+$languages: en, de, cs, da, et, es-419, fr, it, pt-BR, sv, tr, el, ru, uk, zh-TW, zh-CN, nb, mt-MT, ar, nl, vi, th,
     hu, pl, ja, kor, no, pt-PT;
 
 @each $language in $languages {

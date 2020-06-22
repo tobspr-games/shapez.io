@@ -51,4 +51,21 @@
             }
         }
     }
+
+    @include DarkThemeOverride {
+        .content {
+            .hint {
+                background: #3b3d40;
+            }
+
+            .category .entry {
+                color: #c0c4c8;
+                border-bottom-color: #888;
+
+                button {
+                    filter: invert(1);
+                }
+            }
+        }
+    }
 }

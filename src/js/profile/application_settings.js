@@ -89,6 +89,33 @@ export const movementSpeeds = [
     },
 ];
 
+export const autosaveIntervals = [
+    {
+        id: "one_minute",
+        seconds: 60,
+    },
+    {
+        id: "two_minutes",
+        seconds: 120,
+    },
+    {
+        id: "five_minutes",
+        seconds: 5 * 60,
+    },
+    {
+        id: "ten_minutes",
+        seconds: 10 * 60,
+    },
+    {
+        id: "twenty_minutes",
+        seconds: 20 * 60,
+    },
+    {
+        id: "disabled",
+        seconds: null,
+    },
+];
+
 /** @type {Array<BaseSetting>} */
 export const allApplicationSettings = [
     new EnumSetting("language", {
@@ -160,9 +187,22 @@ export const allApplicationSettings = [
              */
             (app, id) => {
                 applyGameTheme(id);
-                document.body.setAttribute("data-theme", id);
+                document.documentElement.setAttribute("data-theme", id);
             },
         enabled: !IS_DEMO,
+    }),
+
+    new EnumSetting("autosaveInterval", {
+        options: autosaveIntervals,
+        valueGetter: interval => interval.id,
+        textGetter: interval => T.settings.labels.autosaveInterval.intervals[interval.id],
+        category: categoryGame,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => null,
     }),
 
     new EnumSetting("refreshRate", {
@@ -200,6 +240,8 @@ export const allApplicationSettings = [
     new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", categoryGame, (app, value) => {}),
     new BoolSetting("vignette", categoryGame, (app, value) => {}),
+    new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
+    new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -218,11 +260,14 @@ class SettingsStorage {
         this.scrollWheelSensitivity = "regular";
         this.movementSpeed = "regular";
         this.language = "auto-detect";
+        this.autosaveInterval = "two_minutes";
 
         this.alwaysMultiplace = false;
         this.offerHints = true;
         this.enableTunnelSmartplace = true;
         this.vignette = true;
+        this.compactBuildingInfo = false;
+        this.disableCutDeleteWarnings = false;
 
         /**
          * @type {Object.<string, number>}
@@ -315,6 +360,17 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
         logger.error("Unknown movement speed id:", id);
         return 1;
+    }
+
+    getAutosaveIntervalSeconds() {
+        const id = this.getAllSettings().autosaveInterval;
+        for (let i = 0; i < autosaveIntervals.length; ++i) {
+            if (autosaveIntervals[i].id === id) {
+                return autosaveIntervals[i].seconds;
+            }
+        }
+        logger.error("Unknown autosave interval id:", id);
+        return 120;
     }
 
     getIsFullScreen() {
@@ -412,7 +468,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 12;
+        return 15;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -457,6 +513,21 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 12) {
             data.settings.vignette = true;
             data.version = 12;
+        }
+
+        if (data.version < 13) {
+            data.settings.compactBuildingInfo = false;
+            data.version = 13;
+        }
+
+        if (data.version < 14) {
+            data.settings.disableCutDeleteWarnings = false;
+            data.version = 14;
+        }
+
+        if (data.version < 15) {
+            data.settings.autosaveInterval = "two_minutes";
+            data.version = 15;
         }
 
         return ExplainedResult.good();

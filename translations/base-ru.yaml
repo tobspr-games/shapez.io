@@ -76,10 +76,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: тыс.
-        millions: млн
-        billions: млрд
-        trillions: трлн
+        thousands: k
+        millions: M
+        billions: B
+        trillions: T
 
     # Shown for infinitely big numbers
     infinite: ∞
@@ -120,7 +120,7 @@ demoBanners:
 mainMenu:
     play: Играть
     changelog: Список изменений
-    importSavegame: Импортировать сохраненную игру
+    importSavegame: Импорт
     openSourceHint: Это игра с открытым исходным кодом!
     discordLink: Оффициальный Дискорд Сервер
     helpTranslate: Помоги с переводом!
@@ -156,7 +156,7 @@ mainMenu:
         contestOver: Этот конкурс закончился - присоединяйтесь в дискорде, чтобы получать уведомления о новых конкурсах!
     continue: Продолжить
     newGame: Новая Игра
-    madeBy: Создано <author-link>
+    madeBy: Создал <author-link>
 
 dialogs:
     buttons:
@@ -289,6 +289,10 @@ ingame:
         pasteLastBlueprint: Вставить последний чертеж
         lockBeltDirection: Включить конвейерный планировщик
         plannerSwitchSide: Поменять местами стороны планировщика
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -324,11 +328,6 @@ ingame:
         newUpgrade: Новое улучшение доступно!
         gameSaved: Игра сохранена.
 
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: <keyCut> - Вырезать; <keyCopy> - Копировать; <keyDelete> - Удалить; <keyCancel> - Отменить.
-
     # The "Upgrades" window
     shop:
         title: Улучшения
@@ -340,7 +339,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: МАКСИМАЛЬНЫЙ УРОВЕНЬ (Скорость x<currentMult>)
+        maximumLevel: Скорость x<currentMult> (макс.)
 
     # The "Statistics" window
     statistics:
@@ -476,8 +475,8 @@ buildings:
 
     mixer:
         default:
-            name: &mixer Смеситель
-            description: Смешивает два цвета с помощью аддитивного смешивания.
+            name: &mixer Смешиватель
+            description: Аддитивно смешивает цвета двух красителей.
 
     painter:
         default:
@@ -523,7 +522,7 @@ storyRewards:
 
     reward_mixer:
         title: Смешивание Цветов
-        desc: Разблокирован <strong>смеситель</strong>! Объедините два цвета в этом здании, используя <strong>аддитивное смешивание</strong>!
+        desc: Разблокирован <strong>смешиватель</strong>! Объедините два цвета в этом здании, используя <strong>аддитивное смешивание</strong>!
 
     reward_stacker:
         title: Объединитель
@@ -688,6 +687,29 @@ settings:
             description: >-
                 Включает виньетирование, которое затемняет углы экрана и облегчает чтение текста.
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
+
 keybindings:
     title: Настройки управления
     hint: >-
@@ -733,7 +755,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Прекратить размещение
         rotateWhilePlacing: Вращать
         rotateInverseModifier: >-
             Модификатор: Вращать против часовой стрелки
@@ -753,7 +774,8 @@ keybindings:
         exportScreenshot: Экспорт всей Базы в виде Изображения
         mapMoveFaster: Ускорение передвижения
         lockBeltDirection: Включает конвейерный планировщик
-        switchDirectionLockSide: 'Планировщик: Переключение сторон'
+        switchDirectionLockSide: "Планировщик: Переключение сторон"
+        pipette: Pipette
 
 about:
     title: Об игре

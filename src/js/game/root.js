@@ -19,7 +19,6 @@ import { SoundProxy } from "./sound_proxy";
 import { Savegame } from "../savegame/savegame";
 import { GameLogic } from "./logic";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
-import { CanvasClickInterceptor } from "./canvas_click_interceptor";
 import { HubGoals } from "./hub_goals";
 import { BufferMaintainer } from "../core/buffer_maintainer";
 import { ProductionAnalytics } from "./production_analytics";
@@ -109,9 +108,6 @@ export class GameRoot {
 
         /** @type {BufferMaintainer} */
         this.buffers = null;
-
-        /** @type {CanvasClickInterceptor} */
-        this.canvasClickInterceptor = null;
 
         /** @type {AutomaticSave} */
         this.automaticSave = null;

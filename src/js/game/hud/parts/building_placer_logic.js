@@ -1,5 +1,6 @@
 import { Math_abs, Math_degrees, Math_round } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { Signal, STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
 import { Vector } from "../../../core/vector";
@@ -9,7 +10,6 @@ import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
-import { lerp } from "../../../core/utils";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -97,10 +97,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         keyActionMapper
             .getBinding(KEYMAPPINGS.placement.switchDirectionLockSide)
             .add(this.switchDirectionLockSide, this);
-        keyActionMapper
-            .getBinding(KEYMAPPINGS.placement.abortBuildingPlacement)
-            .add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.startPipette, this);
         this.root.gameState.inputReciever.keyup.add(this.checkForDirectionLockSwitch, this);
 
         // BINDINGS TO GAME EVENTS
@@ -220,6 +218,125 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
     }
 
+    /**
+     * Starts the pipette function
+     */
+    startPipette() {
+        // Disable in overview
+        if (this.root.camera.getIsMapOverlayActive()) {
+            return;
+        }
+
+        const mousePosition = this.root.app.mousePosition;
+        if (!mousePosition) {
+            // Not on screen
+            return;
+        }
+
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const tile = worldPos.toTileSpace();
+        const contents = this.root.map.getTileContent(tile);
+
+        if (!contents) {
+            this.currentMetaBuilding.set(null);
+            return;
+        }
+
+        // Try to extract the building
+        const extracted = this.hack_reconstructMetaBuildingAndVariantFromBuilding(contents);
+        if (!extracted) {
+            this.currentMetaBuilding.set(null);
+            return;
+        }
+
+        this.currentMetaBuilding.set(extracted.metaBuilding);
+        this.currentVariant.set(extracted.variant);
+        this.currentBaseRotation = contents.components.StaticMapEntity.rotation;
+
+        // Make sure we selected something, and also make sure it's not a special entity
+        // if (contents && !contents.components.Unremovable) {
+
+        // }
+    }
+
+    /**
+     * HACK!
+     *
+     * This attempts to reconstruct the meta building and its variant from a given entity
+     * @param {Entity} entity
+     * @returns {{ metaBuilding: MetaBuilding, variant: string }}
+     */
+    hack_reconstructMetaBuildingAndVariantFromBuilding(entity) {
+        if (entity.components.Hub) {
+            // Hub is not copyable
+            return null;
+        }
+
+        const matches = [];
+        const metaBuildings = gMetaBuildingRegistry.entries;
+        for (let i = 0; i < metaBuildings.length; ++i) {
+            const metaBuilding = metaBuildings[i];
+            const availableVariants = metaBuilding.getAvailableVariants(this.root);
+            checkVariant: for (let k = 0; k < availableVariants.length; ++k) {
+                const variant = availableVariants[k];
+                let unplaced = metaBuilding.createEntity({
+                    root: this.root,
+                    variant,
+                    origin: new Vector(0, 0),
+                    rotation: 0,
+                    originalRotation: 0,
+                    rotationVariant: 0,
+                });
+
+                // Compare if both entities share the same components
+                for (let component in entity.components) {
+                    if ((entity.components[component] == null) !== (unplaced.components[component] == null)) {
+                        continue checkVariant;
+                    }
+                }
+
+                // Check for same item processor
+                if (
+                    entity.components.ItemProcessor &&
+                    entity.components.ItemProcessor.type != unplaced.components.ItemProcessor.type
+                ) {
+                    continue checkVariant;
+                }
+
+                // Check for underground belt
+                if (
+                    entity.components.UndergroundBelt &&
+                    entity.components.UndergroundBelt.tier != unplaced.components.UndergroundBelt.tier
+                ) {
+                    continue checkVariant;
+                }
+
+                // Check for same sprite key - except for underground belts
+                // since the sprite may vary here
+                if (
+                    !entity.components.UndergroundBelt &&
+                    entity.components.StaticMapEntity.spriteKey !=
+                        unplaced.components.StaticMapEntity.spriteKey
+                ) {
+                    continue checkVariant;
+                }
+                matches.push({ metaBuilding, variant });
+            }
+        }
+
+        if (matches.length == 1) {
+            const staticEntity = entity.components.StaticMapEntity;
+            const key = staticEntity.spriteKey || staticEntity.blueprintSpriteKey;
+            assert(
+                key &&
+                    key.includes(matches[0].metaBuilding.id) &&
+                    (matches[0].variant === defaultBuildingVariant || key.includes(matches[0].variant))
+            );
+            return matches[0];
+        }
+        return null;
+    }
+
     switchDirectionLockSide() {
         this.currentDirectionLockSide = 1 - this.currentDirectionLockSide;
     }
@@ -235,28 +352,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         ) {
             this.abortDragging();
         }
-    }
-
-    /**
-     * Canvas click handler
-     * @param {Vector} mousePos
-     * @param {boolean} cancelAction
-     */
-    onCanvasClick(mousePos, cancelAction = false) {
-        if (cancelAction) {
-            if (this.currentMetaBuilding.get()) {
-                this.currentMetaBuilding.set(null);
-            } else {
-                this.deleteBelowCursor();
-            }
-            return STOP_PROPAGATION;
-        }
-
-        if (!this.currentMetaBuilding.get()) {
-            return;
-        }
-
-        return STOP_PROPAGATION;
     }
 
     /**
@@ -479,12 +574,17 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         // Deletion
-        if (button === enumMouseButton.right && !this.currentMetaBuilding.get()) {
+        if (button === enumMouseButton.right && !metaBuilding) {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            this.currentMetaBuilding.set(null);
+            this.deleteBelowCursor();
             return STOP_PROPAGATION;
+        }
+
+        // Cancel placement
+        if (button === enumMouseButton.right && metaBuilding) {
+            this.currentMetaBuilding.set(null);
         }
     }
 

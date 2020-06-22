@@ -239,7 +239,7 @@ dialogs:
     blueprintsNotUnlocked:
         title: Noch nicht freigeschaltet
         desc: >-
-            Blueprints werden erst in Level 12 freigeschalten!
+            Blueprints werden erst in Level 12 freigeschaltet!
 
     keybindingsIntroduction:
         title: Nützliche Hotkeys
@@ -282,15 +282,19 @@ ingame:
         createMarker: Marker erstellen
         delete: Löschen
         pasteLastBlueprint: Letzte Blaupause einfügen
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        lockBeltDirection: Bandplaner aktivieren
+        plannerSwitchSide: "Planer: Seite wechseln"
+        cutSelection: Ausschneiden
+        copySelection: Kopieren
+        clearSelection: Leere Selektion
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Drücke <key> um zwischen den Varianten zu wählen.
+        cycleBuildingVariants: Drücke <key>, um zwischen den Varianten zu wählen.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -318,11 +322,6 @@ ingame:
     notifications:
         newUpgrade: Ein neues Upgrade ist verfügbar!
         gameSaved: Dein Spiel wurde gespeichert.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Drücke <keyCut> zum Ausschneiden, <keyCopy> zum Kopieren, <keyDelete> zum Entfernen und <keyCancel> um Abzubrechen.
 
     # The "Upgrades" window
     shop:
@@ -538,7 +537,7 @@ storyRewards:
         desc: Der <strong>Tunnel</strong> wurde freigeschaltet! Du kannst Items nun unter Gebäuden oder Förderbändern hindurchleiten!
 
     reward_rotater_ccw:
-        title: gUZS Rotieren
+        title: Gegen UZS Rotieren
         desc: Du hast eine zweite Variante des <strong>Rotierers</strong> freigeschaltet! Damit können Items gegen den Uhrzeigensinn gedreht werden. Wähle den Rotierer aus und <strong>drücke 'T', um auf verschiedene Varianten zuzugreifen</strong>!
 
     reward_miner_chainable:
@@ -678,20 +677,45 @@ settings:
                 super_fast: Sehr schnell
                 extremely_fast: Extrem schnell
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Intelligente Tunnel
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Aktiviert das automatische Entfernen von überflüssigen Förderbändern bei der Platzierung von Tunneln.
+                Außerdem funktioniert das Ziehen von Tunneln und überschüssige werden ebenfalls entfernt.
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Aktiviert den Vignetteneffekt, der den Rand des Bildschirms zunehmend verdunkelt
+                und das Lesen der Textfelder vereinfacht.
+
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
 
 keybindings:
     title: Tastenbelegung
     hint: >-
-        Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene Platzierungsoptionen!
+        Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene Platzierungsoptionen.
 
     resetKeybindings: Tastenbelegung zurücksetzen.
 
@@ -733,7 +757,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Platzieren abbrechen
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
             Modifier: stattdessen gegen UZS rotieren
@@ -741,7 +764,7 @@ keybindings:
         confirmMassDelete: Massenlöschung bestätigen
         cycleBuildings: Gebäude rotieren
 
-        massSelectStart: Halten und ziehen zum beginnen
+        massSelectStart: Halten und ziehen zum Beginnen
         massSelectSelectMultiple: Mehrere Areale markieren
         massSelectCopy: Areal kopieren
 
@@ -752,8 +775,9 @@ keybindings:
         massSelectCut: Areal ausschneiden
         exportScreenshot: Ganze Fabrik als Foto exportieren
         mapMoveFaster: Schneller bewegen
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        lockBeltDirection: Bandplaner aktivieren
+        switchDirectionLockSide: "Planer: Seite wechseln"
+        pipette: Pipette
 
 about:
     title: Über dieses Spiel

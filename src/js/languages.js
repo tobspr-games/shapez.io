@@ -80,4 +80,10 @@ export const LANGUAGES = {
         code: "no",
         region: "",
     },
+    "zh-CN": {
+        name: "简体中文",
+        data: require("./built-temp/base-zh-CN.json"),
+        code: "zh",
+        region: "CN",
+    },
 };

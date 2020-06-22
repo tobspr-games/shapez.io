@@ -38,6 +38,10 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.buildingInfoElements.tutorialImage = makeDiv(this.element, null, ["buildingImage"]);
 
         this.variantsElement = makeDiv(parent, "ingame_HUD_PlacerVariants");
+
+        const compact = this.root.app.settings.getAllSettings().compactBuildingInfo;
+        this.element.classList.toggle("compact", compact);
+        this.variantsElement.classList.toggle("compact", compact);
     }
 
     initialize() {

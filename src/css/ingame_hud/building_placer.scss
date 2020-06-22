@@ -75,6 +75,15 @@
     @include StyleBelowWidth(700px) {
         display: none !important;
     }
+
+    &.compact {
+        width: unset !important;
+        grid-template-columns: 1fr;
+        .buildingImage,
+        .description > .text {
+            display: none;
+        }
+    }
 }
 
 #ingame_HUD_PlacerVariants {
@@ -85,6 +94,10 @@
     @include S(grid-gap, 5px);
     flex-direction: column;
     align-items: flex-end;
+
+    &.compact {
+        @include S(top, 150px);
+    }
 
     .explanation {
         text-transform: uppercase;

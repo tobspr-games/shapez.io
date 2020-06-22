@@ -32,7 +32,7 @@ steamPage:
 
         shapez.io is een spel dat draait om het bouwen van fabrieken om steeds complexere vormen te produceren en deze productie te automatiseren. Lever de gevraagde, steeds complexere vormen, om verder te komen in het spel en om upgrades voor je fabrieken te ontgrendelen.
 
-        De vraag naar vormen wordt steeds hoger, wat betekent dat je fabriek moet blijven uitbreiden om dit tegemoet te komen. Om de juiste grondstoffen te delven zul je steeds verder in het [b]oneindig grote speelveld[/b] moeten gaan werken!
+        De vraag naar vormen wordt steeds groter, wat betekent dat je fabriek moet blijven uitbreiden om dit tegemoet te komen. Om de juiste grondstoffen te delven zul je steeds verder in het [b]oneindig grote speelveld[/b] moeten gaan werken!
 
         Omdat simpele vormen snel saai worden, moet je kleuren mengen om de vormen te verven - combineer rode, groene en blauwe grondstoffen om verschillende kleuren te produceren en gebruik deze om de vormen te verven, zodat je de vraag hiernaar tegemoet kan komen.
 
@@ -76,10 +76,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: d
+        thousands: k
         millions: M
-        billions: MJ
-        trillions: B
+        billions: B
+        trillions: T
 
     # Shown for infinitely big numbers
     infinite: inf
@@ -154,7 +154,7 @@ mainMenu:
         showInfo: Laat zien
         contestOver: Deze competitie is voorbij - word lid van de discord (engelstalig) om berichten te krijgen van nieuwe competities!
     continue: Verder
-    newGame: Niew Spel
+    newGame: Nieuw Spel
     madeBy: Gemaakt door <author-link>
 
 dialogs:
@@ -249,11 +249,11 @@ dialogs:
             Hier zijn er een aantal, maar zorg dat je <strong>kijkt naar de sneltoetsen</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + slepen: selecteer een gebied om te kopiëren / verwijderen.<br>
             <code class='keybinding'>SHIFT</code>: Houd ingedrukt om meerdere van het zelfde gebouw te plaatsen.<br>
-            <code class='keybinding'>ALT</code>: Draai de richting van geplaatste lopende banden om.<br>
+            <code class='keybinding'>ALT</code>: Houd ingedrukt om de richting van lopende banden om te draaien wanneer je ze plaatst.<br>
 
     createMarker:
         title: Nieuwe markering
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Geef het een betekenisvolle naam. Je kunt ook een <strong>icoontje</strong> van een vorm toevoegen (die je <a href="https://viewer.shapez.io" target="_blank">hier</a> kunt maken)
 
     markerDemoLimit:
         desc: Je kunt maar twee markeringen plaatsen in de demo. Koop de standalone voor een ongelimiteerde hoeveelheid markeringen!
@@ -263,10 +263,9 @@ dialogs:
             Je bent veel gebouwen aan het knippen (<count> om precies te zijn)! Weet je zeker dat je dit wil doen?
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Exporteer screenshot
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            Je hebt aangegeven dat je jouw basis wil exporteren als screenshot. Als je een grote basis hebt kan dit proces langzaam zijn en er zelfs voor zorgen dat je spel crasht!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -275,7 +274,7 @@ ingame:
         moveMap: Beweeg speelveld
         selectBuildings: Selecteer gebied
         stopPlacement: Stop met plaatsen
-        rotateBuilding: Draai een gebouw
+        rotateBuilding: Draai gebouw
         placeMultiple: Plaats meerdere
         reverseOrientation: Omgekeerde oriëntatie
         disableAutoOrientation: Schakel auto-oriëntatie uit
@@ -286,6 +285,10 @@ ingame:
         pasteLastBlueprint: Plak de laatst gekopiëerde blauwdruk
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -302,8 +305,8 @@ ingame:
             speed: Snelheid
             range: Bereik
             storage: Opslag
-            oneItemPerSecond: 1 item / seconde
-            itemsPerSecond: <x> items / s
+            oneItemPerSecond: 1 voorwerp / s
+            itemsPerSecond: <x> voorwerpen / s
             itemsPerSecondDouble: (x2)
 
             tiles: <x> tegels
@@ -321,11 +324,6 @@ ingame:
         newUpgrade: Er is een nieuwe upgrade beschikbaar!
         gameSaved: Je spel is opgeslagen.
 
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Druk op <keyCut> om te knippen, <keyCopy> om te kopiëren, <keyDelete> om te verwijderen en <keyCancel> om de selectie te annuleren.
-
     # The "Upgrades" window
     shop:
         title: Upgrades
@@ -337,7 +335,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Snelheid x<currentMult>)
+        maximumLevel: MAXIMAAL NIVEAU (Snelheid x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -390,12 +388,12 @@ ingame:
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Plaats een <strong>ontginner</strong> op een <strong>cirkelvorm</strong> om deze te ontginnen!
+            1_1_extractor: Plaats een <strong>ontginner</strong> op een <strong>cirkelvorm</strong> om deze te onttrekken!
             1_2_conveyor: >-
-                Verbind de extractor met een <strong>lopende band</strong> aan je hub!<br><br>Tip: <strong>Klik en sleep</strong> de lopende band met je muis!
+                Verbind de ontginner met een <strong>lopende band</strong> aan je hub!<br><br>Tip: <strong>Klik en sleep</strong> de lopende band met je muis!
 
             1_3_expand: >-
-                Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer extractors en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere extractors te plaatsen en gebruik <strong>R</strong> om ze te draaien.
+                Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer ontginners en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te plaatsen en gebruik <strong>R</strong> om ze te draaien.
 
 # All shop upgrades
 shopUpgrades:
@@ -422,11 +420,11 @@ buildings:
     miner: # Internal name for the Extractor
         default:
             name: &miner Ontginner
-            description: Plaats op een vorm of kleur om deze te ontginnen.
+            description: Plaats op een vorm of kleur om deze te onttrekken.
 
         chainable:
             name: Ontginner (Ketting)
-            description: Plaats op een vorm of kleur om deze te ontginnen. Kan achter elkaar worden geplaatst.
+            description: Plaats op een vorm of kleur om deze te onttrekken. Kan achter elkaar worden geplaatst.
 
     underground_belt: # Internal name for the Tunnel
         default:
@@ -512,12 +510,12 @@ storyRewards:
 
     reward_rotater:
         title: Roteren
-        desc: De <strong>roteerder</strong> is ontgrendeld - ! Het draait vormen 90 graden met de klok mee.
+        desc: De <strong>roteerder</strong> is ontgrendeld - Het draait vormen 90 graden met de klok mee.
 
     reward_painter:
         title: Verven
         desc: >-
-            De <strong>verver</strong> is ontgrendeld - Onttrek wat kleurstoffen (net als met vormen) en combineer deze met een vorm in de verver om ze een kleur te geven!<br><br>PS: Ik werk aan een oplossing voor kleurenblinden!
+            De <strong>verver</strong> is ontgrendeld - Onttrek wat kleurstoffen (net als met vormen) en combineer deze met een vorm in de verver om de vorm een kleur te geven!<br><br>PS: Ik werk aan een oplossing voor kleurenblinden!
 
     reward_mixer:
         title: Kleuren mengen
@@ -537,11 +535,11 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Roteren (andersom)
-        desc: Je hebt een variant van de <strong>rotater</strong> ontgrendeld - Het roteert voorwerpen tegen de klok in! Om het te bouwen selecteer je de roteerder en <strong>druk je op 'T' om tussen varianten te wisselen</strong>!
+        desc: Je hebt een variant van de <strong>roteerder</strong> ontgrendeld - Het roteert voorwerpen tegen de klok in! Om het te bouwen selecteer je de roteerder en <strong>druk je op 'T' om tussen varianten te wisselen</strong>!
 
     reward_miner_chainable:
-        title: Ketting Extractor
-        desc: Je hebt de <strong>Ketting extractor</strong> ontgrendeld! Deze kan <strong>grondstoffen doorsturen</strong> naar andere extractors, waardoor je efficiënter grondstoffen kan onttrekken!
+        title: Ketting-ontginner
+        desc: Je hebt de <strong>Ketting-ontginner</strong> ontgrendeld! Deze kan <strong>grondstoffen doorsturen</strong> naar andere ontginners, waardoor je efficiënter grondstoffen kan onttrekken!
 
     reward_underground_belt_tier_2:
         title: Tunnel Niveau II
@@ -585,7 +583,7 @@ storyRewards:
     no_reward_freeplay:
         title: Volgende level
         desc: >-
-            Gefeliciteerd! By the way, het spel wordt in de toekomst nog verder uitgebereid in de standalone!
+            Gefeliciteerd! Even tussendoor, het spel wordt in de toekomst nog verder uitgebereid in de standalone!
 
 settings:
     title: Opties
@@ -677,15 +675,37 @@ settings:
                 super_fast: Super snel
                 extremely_fast: Extreem snel
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Slimme Tunnels
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Wanneer dit aan staat zullen tunnels automatisch onnodige lopende banden verwijderen.
+                Ook kun je dan tunnels slepen en onnodige tunnels worden ook verwijderd.
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Schakelt de vignet in, wat de hoeken van het scherm donkerder maakt zodat de tekst makkelijker te lezen is.
+
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
 
 keybindings:
     title: Sneltoetsen
@@ -732,7 +752,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Cancel plaatsen
         rotateWhilePlacing: Roteren
         rotateInverseModifier: >-
             Aanpassing: Roteer tegen de klok in
@@ -749,30 +768,31 @@ keybindings:
         placeInverse: Omkeren richting lopende band
         pasteLastBlueprint: Plak laatst gekopiëerde blauwdruk
         massSelectCut: Knip geselecteerd gebied
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        exportScreenshot: Exporteer volledige basis als afbeelding
+        mapMoveFaster: Beweeg sneller
+        lockBeltDirection: Schakel lopende band-planner in
+        switchDirectionLockSide: "Planner: Wissel van kant"
+        pipette: Pipette
 
 about:
     title: Over dit spel
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Dit spel is open source en ontwikkeld door <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (dit ben ik).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Als je ook bij wil dragen, ga dan naar <a href="<githublink>"
+        target="_blank">shapez.io op github</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        Dit spel was niet mogelijk geweest zonder de geweldige discord community
+        rondom mijn spellen - Je zou eens lid moeten worden van de <a href="<discordlink>"
+        target="_blank">discord server</a> (engelstalig)!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        De muziek is gemaakt door <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Hij is geweldig.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        Tot slot wil ik mijn beste vriend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> bedanken - Zonder onze
+        factorio-sessies zou dit spel nooit bestaan hebben.
 
 changelog:
     title: Changelog
@@ -783,6 +803,6 @@ demo:
         importingGames: Savegames importeren
         oneGameLimit: Gelimiteerd tot één savegame
         customizeKeybindings: Custom sneltoetsen
-        exportingBase: Exporting whole Base as Image
+        exportingBase: Exporteer volledige basis als afbeelding
 
     settingNotAvailable: Niet beschikbaar in de demo.

@@ -275,7 +275,7 @@ ingame:
     # every situation
     keybindingsOverlay:
         moveMap: Déplacer
-        selectBuildings: Sélection de la zone
+        selectBuildings: Sélection d'une zone
         stopPlacement: Arrêter le placement
         rotateBuilding: Tourner le bâtiment
         placeMultiple: Placement multiple
@@ -286,8 +286,12 @@ ingame:
         createMarker: Créer une balise
         delete: Supprimer
         pasteLastBlueprint: Copier le dernier patron
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        lockBeltDirection: Utiliser le plannificateur de convoyeurs
+        plannerSwitchSide: Échanger la direction du plannificateur
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -322,11 +326,6 @@ ingame:
     notifications:
         newUpgrade: Une nouvelle amélioration est disponible !
         gameSaved: Votre partie a été sauvegardée.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Apuyez sur <keyCut> pour couper, <keyCopy> pour copier, <keyDelete> pour effacer et <keyCancel> pour annuler.
 
     # The "Upgrades" window
     shop:
@@ -682,15 +681,37 @@ settings:
                 super_fast: Très rapide
                 extremely_fast: Extrêmement rapide
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Tunnels intelligents
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Si cette option est sélectionnée, placer des tunnels effacera automatiquement les convoyeurs inutiles.
+                Cela permet aussi d'étirer les tunnels et les tunnels en surnombre seront effacés.
         vignette:
-            title: Vignette
+            title: Effet de vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Permet l'affichage de l'effet de vignette qui assombrit les coins de l'écran afin de rendre le texte plus facile à lire.
+
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
 
 keybindings:
     title: Contrôles
@@ -737,7 +758,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Annuler le placement
         rotateWhilePlacing: Pivoter
         rotateInverseModifier: >-
             Variante: Pivote à gauche
@@ -756,8 +776,9 @@ keybindings:
         massSelectCut: Couper la sélection
         exportScreenshot: Exporter toute la base en tant qu'image.
         mapMoveFaster: Se déplacer plus vite
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        lockBeltDirection: Utiliser le plannificateur de convoyeurs
+        switchDirectionLockSide: "Plannificateur: changer de côté"
+        pipette: Pipette
 
 about:
     title: À propos de ce jeu

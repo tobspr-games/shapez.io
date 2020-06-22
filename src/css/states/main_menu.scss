@@ -401,4 +401,44 @@
             }
         }
     }
+
+    @include DarkThemeOverride {
+        background: $darkModeGameBackground center center / cover !important;
+
+        .topButtons {
+            filter: invert(1);
+
+            .languageChoose {
+                filter: invert(1);
+            }
+        }
+
+        .mainContainer {
+            background: darken($darkModeGameBackground, 10);
+
+            .savegames .savegame {
+                background: darken($darkModeGameBackground, 15);
+                color: white;
+            }
+        }
+
+        .footer {
+            > a {
+                background: darken($darkModeGameBackground, 10);
+                color: #eee;
+            }
+
+            .author {
+                color: #bdbdbd;
+
+                > a {
+                    color: white;
+                }
+            }
+
+            .thirdpartyLogo.githubLogo {
+                filter: invert(1);
+            }
+        }
+    }
 }
