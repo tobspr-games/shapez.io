@@ -8,7 +8,7 @@ import { SOUNDS } from "../platform/sound";
 const avgSoundDurationSeconds = 0.25;
 const maxOngoingSounds = 2;
 
-const maxOngoingUiSounds = 2;
+const maxOngoingUiSounds = 25;
 
 // Proxy to the application sound instance
 export class SoundProxy {
