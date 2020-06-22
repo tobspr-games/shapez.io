@@ -72,6 +72,24 @@
             grid-row: 1 / 2;
         }
 
+        > .infoButton {
+            @include S(width, 8px);
+            @include S(height, 8px);
+            background: uiResource("icons/info_button.png") center center / 95% no-repeat;
+            position: absolute;
+            opacity: 0.7;
+            @include S(top, 13px);
+            @include S(left, -7px);
+            @include DarkThemeInvert;
+            @include IncreasedClickArea(2px);
+            transition: opacity 0.12s ease-in-out;
+            z-index: 100;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
         &.goal,
         &.blueprint {
             .amountLabel::after {

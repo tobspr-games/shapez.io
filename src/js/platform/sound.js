@@ -22,6 +22,7 @@ export const SOUNDS = {
 
     levelComplete: "level_complete",
 
+    destroyBuilding: "destroy_building",
     placeBuilding: "place_building",
     placeBelt: "place_belt",
 };

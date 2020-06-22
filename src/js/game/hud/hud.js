@@ -34,7 +34,8 @@ import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 import { HUDWaypoints } from "./parts/waypoints";
 import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
-import { Entity } from "../entity";
+import { HUDColorBlindHelper } from "./parts/color_blind_helper";
+import { HUDShapeViewer } from "./parts/shape_viewer";
 
 export class GameHUD {
     /**
@@ -68,6 +69,7 @@ export class GameHUD {
             debugInfo: new HUDDebugInfo(this.root),
             dialogs: new HUDModalDialogs(this.root),
             screenshotExporter: new HUDScreenshotExporter(this.root),
+            shapeViewer: new HUDShapeViewer(this.root),
         };
 
         this.signals = {
@@ -76,7 +78,8 @@ export class GameHUD {
             shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
             notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
             buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
-            pasteBlueprintRequested: new Signal(),
+            pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
+            viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {
@@ -98,6 +101,10 @@ export class GameHUD {
 
         if (this.root.app.settings.getAllSettings().vignette) {
             this.parts.vignetteOverlay = new HUDVignetteOverlay(this.root);
+        }
+
+        if (this.root.app.settings.getAllSettings().enableColorBlindHelper) {
+            this.parts.colorBlindHelper = new HUDColorBlindHelper(this.root);
         }
 
         const frag = document.createDocumentFragment();
@@ -208,7 +215,13 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        const partsOrder = ["waypoints", "massSelector", "buildingPlacer", "blueprintPlacer"];
+        const partsOrder = [
+            "waypoints",
+            "massSelector",
+            "buildingPlacer",
+            "blueprintPlacer",
+            "colorBlindHelper",
+        ];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

@@ -79,6 +79,7 @@ export class HUDShop extends BaseHUDPart {
                 const requiredHandle = handle.requireIndexToElement[i];
                 requiredHandle.container.remove();
                 requiredHandle.pinDetector.cleanup();
+                requiredHandle.infoDetector.cleanup();
             }
 
             // Cleanup
@@ -122,6 +123,10 @@ export class HUDShop extends BaseHUDPart {
                 pinButton.classList.add("pin");
                 container.appendChild(pinButton);
 
+                const viewInfoButton = document.createElement("button");
+                viewInfoButton.classList.add("showInfo");
+                container.appendChild(viewInfoButton);
+
                 const currentGoalShape = this.root.hubGoals.currentGoal.definition.getHash();
                 if (shape === currentGoalShape) {
                     pinButton.classList.add("isGoal");
@@ -145,6 +150,14 @@ export class HUDShop extends BaseHUDPart {
                     }
                 });
 
+                const infoDetector = new ClickDetector(viewInfoButton, {
+                    consumeEvents: true,
+                    preventDefault: true,
+                });
+                infoDetector.click.add(() =>
+                    this.root.hud.signals.viewShapeDetailsRequested.dispatch(shapeDef)
+                );
+
                 handle.requireIndexToElement.push({
                     container,
                     progressLabel,
@@ -152,6 +165,7 @@ export class HUDShop extends BaseHUDPart {
                     definition: shapeDef,
                     required: amount,
                     pinDetector,
+                    infoDetector,
                 });
             });
         }
@@ -202,6 +216,7 @@ export class HUDShop extends BaseHUDPart {
                 const requiredHandle = handle.requireIndexToElement[i];
                 requiredHandle.container.remove();
                 requiredHandle.pinDetector.cleanup();
+                requiredHandle.infoDetector.cleanup();
             }
             handle.requireIndexToElement = [];
         }

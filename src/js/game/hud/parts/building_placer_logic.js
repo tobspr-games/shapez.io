@@ -10,6 +10,7 @@ import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
+import { SOUNDS } from "../../../platform/sound";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -215,6 +216,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const contents = this.root.map.getTileContent(tile);
         if (contents) {
             this.root.logic.tryDeleteBuilding(contents);
+            this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
         }
     }
 
@@ -650,6 +652,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                         const contents = this.root.map.getTileContentXY(x0, y0);
                         if (contents && !contents.queuedForDestroy && !contents.destroyed) {
                             this.root.logic.tryDeleteBuilding(contents);
+                            this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
                         }
                     } else {
                         this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));

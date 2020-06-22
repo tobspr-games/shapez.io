@@ -49,6 +49,8 @@
 @import "ingame_hud/blueprint_placer";
 @import "ingame_hud/waypoints";
 @import "ingame_hud/interactive_tutorial";
+@import "ingame_hud/color_blind_helper";
+@import "ingame_hud/shape_viewer";
 
 // prettier-ignore
 $elements: 
@@ -74,6 +76,7 @@ ingame_HUD_buildings_toolbar,
 ingame_HUD_BlueprintPlacer,
 ingame_HUD_Waypoints_Hint,
 ingame_HUD_Watermark,
+ingame_HUD_ColorBlindBelowTileHelper,
 
 // Overlays
 ingame_HUD_BetaOverlay,
@@ -81,6 +84,7 @@ ingame_HUD_BetaOverlay,
 // Dialogs
 ingame_HUD_Shop,
 ingame_HUD_Statistics,
+ingame_HUD_ShapeViewer,
 ingame_HUD_UnlockNotification,
 ingame_HUD_SettingsMenu,
 ingame_HUD_ModalDialogs;
