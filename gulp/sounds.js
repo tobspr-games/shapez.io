@@ -40,6 +40,30 @@ function gulptasksSounds($, gulp, buildFolder) {
             .pipe(gulp.dest(path.join(builtSoundsDir, "music")));
     });
 
+    // Encodes the game music in high quality for the standalone
+    gulp.task("sounds.musicHQ", () => {
+        return gulp
+            .src([path.join(soundsDir, "music", "**", "*.wav"), path.join(soundsDir, "music", "**", "*.mp3")])
+            .pipe($.plumber())
+            .pipe(
+                $.cache(
+                    $.fluentFfmpeg("mp3", function (cmd) {
+                        return cmd
+                            .audioBitrate(256)
+                            .audioChannels(2)
+                            .audioFrequency(44100)
+                            .audioCodec("libmp3lame")
+                            .audioFilters(["volume=0.15"]);
+                    }),
+                    {
+                        name: "music-high-quality",
+                        fileCache,
+                    }
+                )
+            )
+            .pipe(gulp.dest(path.join(builtSoundsDir, "music")));
+    });
+
     // Encodes the ui sounds
     gulp.task("sounds.sfxGenerateSprites", () => {
         return gulp
@@ -91,8 +115,10 @@ function gulptasksSounds($, gulp, buildFolder) {
     });
 
     gulp.task("sounds.buildall", gulp.parallel("sounds.music", "sounds.sfx"));
+    gulp.task("sounds.buildallHQ", gulp.parallel("sounds.musicHQ", "sounds.sfx"));
 
     gulp.task("sounds.fullbuild", gulp.series("sounds.clear", "sounds.buildall", "sounds.copy"));
+    gulp.task("sounds.fullbuildHQ", gulp.series("sounds.clear", "sounds.buildallHQ", "sounds.copy"));
     gulp.task("sounds.dev", gulp.series("sounds.buildall", "sounds.copy"));
 }
 

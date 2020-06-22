@@ -281,12 +281,16 @@ ingame:
         reverseOrientation: Vänd orientation
         disableAutoOrientation: Stäng av automatisk orientation
         toggleHud: Toggle HUD
-        placeBuilding: Placera byggnad
-        createMarker: Skapa markör
+        placeBuilding: Placera Byggnad
+        createMarker: Skapa Markör
         delete: Förstör
-        pasteLastBlueprint: Infoga senaste ritningen
+        pasteLastBlueprint: Klistra in ritning
         lockBeltDirection: Sätt på rullbandsplannerare
-        plannerSwitchSide: Vänd plannerarsida
+        plannerSwitchSide: Vänd plannerarsidan
+        cutSelection: Klipp
+        copySelection: Kopiera
+        clearSelection: Rensa vald
+        pipette: Pipett
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -321,11 +325,6 @@ ingame:
     notifications:
         newUpgrade: En ny uppgradering är tillgänglig!
         gameSaved: Ditt spel har sparats.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Tryck <keyCut> för att klippa, <keyCopy> för att kopiera, <keyDelete> för att ta bort och <keyCancel> för att avbryta.
 
     # The "Upgrades" window
     shop:
@@ -667,60 +666,83 @@ settings:
                 Om tips och tutorials ska synas under spelets gång. Gömmer också vissa delar av UI tills senare i spelet för att göra det lättare att komma in i spelet.
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: Rörelsehastighet
+            description: Ändrar hur snabbt kameran förflyttar sig när du använder tangentbordet för att flytta kameran.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Superlångsamt
+                slow: långsamt
+                regular: Normal
+                fast: snabbt
+                super_fast: Supersnabbt
+                extremely_fast: Extremt snabbt
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Smarta Tunnlar
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                När på, att placera ut tunnlar kommer automatiskt ta bort onödiga rullband.
+                Detta låter dig också dra för att sätta ut tunnlar och onödiga tunnlar kommer att tas bort.
         vignette:
-            title: Vignette
+            title: Vinjett
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Sätter på vinjetten vilket gör skärmen mörkare i hörnen och 
+                gör text lättare att läsa
+
+        autosaveInterval:
+            title: Intervall för automatisk sparning
+            description: >-
+                Kontrollerar hur ofta spelet sparas atomatiskt.
+                Du kan också stäng av det helt.
+            intervals:
+                one_minute: 1 Minut
+                two_minutes: 2 Minuter
+                five_minutes: 5 Minuter
+                ten_minutes: 10 Minuter
+                twenty_minutes: 20 Minuter
+                disabled: Avstängd
+        compactBuildingInfo:
+            title: Kompaktera byggnadsinfo
+            description: >-
+                Kortar ned infotexter för byggnader genom att endast visa dess storlek.
+                Annars visas en beskrivning och bild.
+        disableCutDeleteWarnings:
+            title: Stäng av klipp/raderingsvarningar
+            description: >-
+                Stänger av varningsdialogen som kommer upp då fler än 100 saker 
+                ska tas bort
 
 keybindings:
-    title: Keybindings
+    title: Tangentbindningar
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Tips: Se till att använda CTRL, SHIFT, och ALT! De låter dig använda olika placeringslägen.
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: Återställ Tangentbindningar
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Applikation
+        ingame: Spelinställningar
+        navigation: Navigation
+        placement: Placering
+        massSelect: Massval
+        buildings: Snabbtangenter
+        placementModifiers: Placeringsmodifierare
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        centerMap: Center Map
+        confirm: Godkänn
+        back: Tillbaka
+        mapMoveUp: Gå upp
+        mapMoveRight: Gå höger
+        mapMoveDown: Gå nedåt
+        mapMoveLeft: Gå vänster
+        centerMap: Till mitten av världen
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: Zooma in
+        mapZoomOut: Zooma ut
+        createMarker: Skapa Markör
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Uppgraderingar
+        menuOpenStats: Statistik
 
         toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
+        toggleFPSInfo: Toggle FPS och Debug info
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -732,57 +754,57 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Abort Placement
-        rotateWhilePlacing: Rotate
+        rotateWhilePlacing: Rotera
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
-        cycleBuildings: Cycle Buildings
+            Modifiering: Rotera motsols istället
+        cycleBuildingVariants: Cykla varianter
+        confirmMassDelete: Godkänn massborttagning
+        cycleBuildings: Cykla byggnader
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
+        massSelectStart: Håll in och dra för att starta
+        massSelectSelectMultiple: Välj flera ytor
+        massSelectCopy: Kopiera yta
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
+        placementDisableAutoOrientation: Stäng av automatisk orientation
+        placeMultiple: Stanna kvar i placeringsläge
+        placeInverse: Invertera automatisk rullbandsorientation
+        pasteLastBlueprint: Klistra in ritning
+        massSelectCut: Klipp yta
+        exportScreenshot: Exportera hela fabriken som bild
+        mapMoveFaster: Flytta dig snabbare
+        lockBeltDirection: Sätt på rullbandsplannerare
+        switchDirectionLockSide: "Plannerare: Byt sida"
+        pipette: Pipett
 
 about:
-    title: About this Game
+    title: Om detta spel
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Detta spel är open source och utvecklas av <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (Det är jag).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Om du vill hjälpa, kolla in <a href="<githublink>"
+        target="_blank">shapez.io på github</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
+        Spelet hade inte varit möjligt utan den fantastiska discordgemenskapen
+        runt mina spel - Du borde gå med i den <a href="<discordlink>"
         target="_blank">discord server</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Musiken skapades av <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Han är grymm!<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        Och sist men inte minst, tack till min bästa vän <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Utan våra
+        factoriosessioner hade detta spel aldrig funnits.
 
 changelog:
     title: Changelog
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Återställer sparfiler
+        importingGames: Importerar sparfiler
+        oneGameLimit: Limiterad till endast en sparfil
+        customizeKeybindings: Finjustera tangentbindningar
+        exportingBase: Exportera hela fabriken som en bild
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Inte tillgänglig i demoversionen.

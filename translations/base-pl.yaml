@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io to gra polegająca na budowaniu automatycznej fabryki różnych, z każdym poziomem bardziej skomplikowanych kształtów, na mapie która nie ma końca.
+    shortText: shapez.io to gra polegająca na budowaniu fabryki automatyzującej tworzenie i łączenie ze sobą coraz bardziej skomplikowanych kształtów na mapie, która nie ma końca.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,13 +30,13 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io jest grą o budowaniu i automatyzacji fabryki różnych kształtów. Dostarczaj coraz bardziej skomplikowane kształty, żeby odblokować nowe ulepszenia żeby przyspieszyć produkcję w twojej fabryce.
+        shapez.io jest grą o budowaniu i automatyzacji fabryki różnych kształtów. Dostarczaj coraz bardziej skomplikowane kształty, żeby odblokować nowe ulepszenia i przyspieszyć produkcję w twojej fabryce.
 
-        Będziesz potrzebował produkować coraz więcej elementów, więc potrzebujesz również sporo miejsca na powiększanie fabryki. [b]Nieskończona mapa[/b] to coś co ułatwi Ci ten proces!
+        Będziesz potrzebował coraz więcej elementów, więc również sporo miejsca na powiększanie fabryki. [b]Nieskończona mapa[/b] to coś co ułatwi Ci ten proces!
 
-        Same kształty mogą z czasem być nudne, dlatego gra będzie wymagała od Ciebie malowania kształtów różnymi kolorami - Połącz czerwoną, zieloną i niebieską farbę, a powstanie farba o innym kolorze. Korzystaj z farb by postępować z kolejnymi poziomami.
+        Same kształty mogą z czasem być nudne, dlatego gra będzie wymagała od Ciebie malowania ich różnymi kolorami - połącz czerwoną, zieloną i niebieską farbę, a powstanie nowa o innym kolorze. Korzystaj z farb, by móc ukończyć kolejne poziomy.
 
-        Na tą chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na co najmniej kilka godzin!) ale bez przerwy dodaję nowe - Jest naprawdę wiele do dodania!
+        Na tę chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na co najmniej kilka godzin!), ale bez przerwy dodaję nowe - jest naprawdę wiele do dodania!
 
 
         [b]Zalety pełnej wersji[/b]
@@ -46,21 +46,21 @@ steamPage:
             [*] Nielimitowana ilość zapisanych gier
             [*] Ciemny motyw gry
             [*] Więcej ustawień
-            [*] Pomóż mi w dalszym rozwijaniu shapez.io ❤️
+            [*] Pomożesz mi w dalszym rozwijaniu shapez.io ❤️
             [*] Więcej zawartości niedługo!
         [/list]
 
         [b]Zaplanowana zawartość & Sugestie społeczności[/b]
 
-        Ta gra jest open-source - Każdy może pomóc w rozwoju! Poza tym, słucham tego co społeczność ma do powiedzenia w kwestii gry! Staram się czytać wszystkie sugestie i odbierać jak najwięcej informacji zwrotnych na temat gry.
+        Ta gra jest open-source - Każdy może pomóc w rozwoju! Poza tym słucham tego, co społeczność ma do powiedzenia w kwestii gry! Staram się czytać wszystkie sugestie i odbierać jak najwięcej informacji zwrotnych na temat gry.
 
         [list]
             [*] Kampania, gdzie do budowy potrzeba kształtów
             [*] Więcej poziomów i budynków (tylko w pełnej wersji)
             [*] Inne mapy, może z przeszkodami
-            [*] Możliwość modyfikowania parametrów generowanej mapy (Ilość i rozmiar surowców, ziarno świata, itd.)
+            [*] Możliwość modyfikowania parametrów generowanej mapy (ilość i rozmiar surowców, ziarno świata, itd.)
             [*] Więcej rodzajów kształtów
-            [*] Optymalizacja (Mimo wszystko gra już działa dość płynnie!)
+            [*] Optymalizacja (mimo wszystko gra już działa dość płynnie!)
             [*] Tryb dla ślepoty barw
             [*] I wiele więcej!
         [/list]
@@ -207,7 +207,7 @@ dialogs:
 
     editKeybinding:
         title: Zmień klawiszologię
-        desc: Naciśnij klawisz bądź przycisk myszy który chcesz przypisać, lub wciśnij Escape aby anulować.
+        desc: Naciśnij klawisz bądź przycisk myszy, który chcesz przypisać lub wciśnij Escape, aby anulować.
 
     resetKeybindingsConfirmation:
         title: Zresetuj klawiszologię
@@ -233,7 +233,7 @@ dialogs:
     upgradesIntroduction:
         title: Ulepszenia
         desc: >-
-            Wszystkie kształty które produkujesz mogą zostać użyte do ulepszeń - <strong>Nie niszcz starych fabryk!</strong>
+            Wszystkie kształty, które produkujesz, mogą zostać użyte do ulepszeń - <strong>Nie niszcz starych fabryk!</strong>
             Zakładka "Ulepszenia" dostępna jest w prawym górnym rogu.
 
     massDeleteConfirm:
@@ -253,7 +253,7 @@ dialogs:
             Oto kilka z nich, lecz nie zmienia to faktu iż <strong>warto sprawdzić dostępne kombinacje</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Przeciąganie: Zaznacz obszar do kopiowania/usuwania.<br>
             <code class='keybinding'>SHIFT</code>: Przytrzymaj, by wstawić więcej niż jeden budynek.<br>
-            <code class='keybinding'>ALT</code>: Odwróć orientacje stawianych taśmociągów.<br>
+            <code class='keybinding'>ALT</code>: Odwróć orientację stawianych taśmociągów.<br>
 
     createMarker:
         title: Nowy Znacznik
@@ -283,15 +283,19 @@ ingame:
         stopPlacement: Przestań stawiać
         rotateBuilding: Obróć budynek
         placeMultiple: Postaw więcej
-        reverseOrientation: Odwróć orientacje
-        disableAutoOrientation: Wyłącz orientacje automatyczną
+        reverseOrientation: Odwróć orientację
+        disableAutoOrientation: Wyłącz orientację automatyczną
         toggleHud: Przełącz widoczność interfejsu
         placeBuilding: Postaw budynek
         createMarker: Stwórz znacznik
         delete: Usuń
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        lockBeltDirection: Tryb planowania taśmociągu
+        plannerSwitchSide: Obróć planowany taśmociąg
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -326,11 +330,6 @@ ingame:
     notifications:
         newUpgrade: Nowe ulepszenie dostępne!
         gameSaved: Postęp gry został zapisany.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Naciśnij <keyCut> by wyciąć, <keyCopy> by skopiować, <keyDelete> by usunąć lub <keyCancel> by anulować.
 
     # The "Upgrades" window
     shop:
@@ -392,18 +391,18 @@ ingame:
     waypoints:
         waypoints: Znaczniki
         hub: Budynek Główny
-        description: Kliknij znacznik lewym przyciskiem myszy, by się do niego przenieść lub prawym, by go usunąć.<br><br>Naciśnij <keybinding> by stworzyć marker na środku widoku lub <strong>prawy przycisk myszy</strong> by stworzyć na wskazanej lokacji.
+        description: Kliknij znacznik lewym przyciskiem myszy, by się do niego przenieść lub prawym, by go usunąć.<br><br>Naciśnij <keybinding>, by stworzyć marker na środku widoku lub <strong>prawy przycisk myszy</strong>, by stworzyć na wskazanej lokacji.
         creationSuccessNotification: Utworzono znacznik.
 
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Postaw <strong>ekstraktor</strong> na źródle <strong>kształtu koła</strong> aby go wydobyć!
+            1_1_extractor: Postaw <strong>ekstraktor</strong> na źródle <strong>kształtu koła</strong>, aby go wydobyć!
             1_2_conveyor: >-
                 Połącz ekstraktor <strong>taśmociągiem</strong> do głównego budynku!<br><br>Porada: <strong>Kliknij i przeciągnij</strong> taśmociąg myszką!
             1_3_expand: >-
-                To <strong>NIE JEST</strong> gra "do poczekania"! Buduj więcej taśmociągów i ekstraktorów by wydobywać szybciej.<br><br>Porada: Przytrzymaj <strong>SHIFT</strong> by postawić wiele ekstraktorów. Naciśnij <strong>R</strong>, by je obracać.
+                To <strong>NIE JEST</strong> gra "do poczekania"! Buduj więcej taśmociągów i ekstraktorów, by wydobywać szybciej.<br><br>Porada: Przytrzymaj <strong>SHIFT</strong>, by postawić wiele ekstraktorów. Naciśnij <strong>R</strong>, by je obracać.
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -429,7 +428,7 @@ buildings:
     belt:
         default:
             name: &belt Taśmociąg
-            description: Transportuje obiekty, przytrzymaj by postawić kilka.
+            description: Transportuje obiekty, przytrzymaj i przeciągnij, by postawić kilka.
 
     miner: # Internal name for the Extractor
         default:
@@ -497,7 +496,7 @@ buildings:
             description: &painter_desc Koloruje kształt za pomocą koloru dostarczonego od boku.
         double:
             name: Malarz (Podwójny)
-            description: Koloruje kształt za pomocą koloru dostarczonych od boku. Koloruje 2 kształty używając 1 barwnika.
+            description: Koloruje kształt za pomocą koloru dostarczonego od boku. Koloruje 2 kształty używając 1 barwnika.
         quad:
             name: Malarz (Poczwórny)
             description: Koloruje każdą ćwiartkę kształtu na inny kolor, używając dostarczonych kolorów.
@@ -519,18 +518,18 @@ storyRewards:
     reward_cutter_and_trash:
         title: Przecinanie Kształtów
         desc: >-
-            Odblokowano nową maszynę: <strong>przecinak</strong> - tnie kształt na pół <strong>pionowo - od góry do dołu</strong>, niezależnie od orientacji!<br><br>Upewnij się że zniszczysz nichciane kawałki, ponieważ <strong>może się zatkać</strong> - Na potrzeby tego otrzymujesz też kosz - niszczy wszystko co do niego przekierujesz!
+            Odblokowano nową maszynę: <strong>Przecinak</strong> - tnie kształt na pół <strong>pionowo - od góry do dołu</strong>, niezależnie od orientacji!<br><br>Upewnij się, że zniszczysz niechciane kawałki, ponieważ <strong>może się zatkać</strong> - Na potrzeby tego otrzymujesz też kosz - niszczy wszystko co do niego przekierujesz!
 
     reward_rotater:
         title: Obracanie
         desc: >-
-            Odblokowano nową maszynę: <strong>Obracacz</strong>! Obraca wejście o 90 stopni zgodnie z wskazówkami zegara.
+            Odblokowano nową maszynę: <strong>Obracacz</strong>! Obraca wejście o 90 stopni zgodnie ze wskazówkami zegara.
 
     #2nd translator's note: "Color objects" should be translated as "dye"
     reward_painter:
         title: Malowanie
         desc: >-
-            Odblokowano nową maszynę: <strong>Malarz</strong> - Wydobądź barwniki (tak jak w przypadku kształtów) i połącz z kształtem by go pomalować!<br><br>PS: Jeśli cierpisz na ślepotę barw, pracuje nad tym!
+            Odblokowano nową maszynę: <strong>Malarz</strong> - Wydobądź barwniki (tak jak w przypadku kształtów) i połącz z kształtem, by go pomalować!<br><br>PS: Jeśli cierpisz na ślepotę barw, pracuję nad tym!
 
     reward_mixer:
         title: Mieszanie
@@ -544,7 +543,7 @@ storyRewards:
 
     reward_splitter:
         title: Rozdzielacz/Łącznik
-        desc: Wielofunkcyjne urządzenie <strong>balansujące</strong> zostało odblokowane - Może zostać wykorzystane do tworzenia większych fabryk poprzez <strong>rozdzielanie i łaczenie taśmociągów</strong>!<br><br>
+        desc: Wielofunkcyjne urządzenie <strong>balansujące</strong> zostało odblokowane - Może zostać wykorzystane do tworzenia większych fabryk poprzez <strong>rozdzielanie i łączenie taśmociągów</strong>!<br><br>
 
     reward_tunnel:
         title: Tunel
@@ -552,11 +551,11 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Obracanie odwrotne
-        desc: Odblokowano nowy wariant <strong>Obracacza</strong> - Pozwala odwracać przeciwnie do wskazówek zegara! Aby zbudować, zaznacz Obracacz i <strong>naciśnij 'T' by zmieniać warianty</strong>!
+        desc: Odblokowano nowy wariant <strong>Obracacza</strong> - Pozwala odwracać przeciwnie do wskazówek zegara! Aby zbudować, zaznacz Obracacz i <strong>naciśnij 'T', by zmieniać warianty</strong>!
 
     reward_miner_chainable:
         title: Wydobycie Łańcuchowe
-        desc: Odblokowano nowy wariant <strong>ekstraktora</strong>! Może <strong>przekierować obiekty</strong> do ekstraktorów przed nim zwiększając efektywność wydobycia!
+        desc: Odblokowano nowy wariant <strong>ekstraktora</strong>! Może <strong>przekierować obiekty</strong> do ekstraktorów przed nim, zwiększając efektywność wydobycia!
 
     reward_underground_belt_tier_2:
         title: Tunel Poziomu II
@@ -574,7 +573,7 @@ storyRewards:
 
     reward_painter_double:
         title: Podwójne Malowanie
-        desc: Odblokowano nowy wariant <strong>Malarza</strong> - Działa jak zwykły malarz, z tą różnicą że maluje <strong>dwa kształty na raz</strong> pobierając wyłącznie jeden barwnik!
+        desc: Odblokowano nowy wariant <strong>Malarza</strong> - Działa jak zwykły malarz, z tą różnicą, że maluje <strong>dwa kształty na raz</strong>, pobierając wyłącznie jeden barwnik!
 
     reward_painter_quad:
         title: Poczwórne malowanie
@@ -601,7 +600,7 @@ storyRewards:
     no_reward:
         title: Następny Poziom
         desc: >-
-            Ten poziom nie daje nagrody, lecz kolejny już tak! <br><br> PS: Lepiej nie niszczyć istniejących fabryk - Potrzebujesz <strong>wszystkich</strong> kształtów w późniejszych etapach by <strong>odblokować ulepszenia</strong>!
+            Ten poziom nie daje nagrody, lecz kolejny już tak! <br><br> PS: Lepiej nie niszczyć istniejących fabryk - Potrzebujesz <strong>wszystkich</strong> kształtów w późniejszych etapach, by <strong>odblokować ulepszenia</strong>!
 
     no_reward_freeplay:
         title: Następny Poziom
@@ -686,7 +685,7 @@ settings:
         refreshRate:
             title: Częstość Odświeżania
             description: >-
-                Jeśli posiadasz monitor z częstotliwością odświeżania 144hz, zmień tę opcje na poprawną częstotliwość odświeżania ekranu. To może wpłynąć na FPS jeśli masz za wolny komputer.
+                Jeśli posiadasz monitor z częstotliwością odświeżania 144hz, zmień tę opcje na poprawną częstotliwość odświeżania ekranu. Może to wpłynąć na FPS jeśli masz za wolny komputer.
 
         alwaysMultiplace:
             title: Wielokrotne budowanie
@@ -696,18 +695,40 @@ settings:
         offerHints:
             title: Porady i Tutoriale
             description: >-
-                Oferuje porady i tutoriale podczas gry. Dodatkowo, chowa pewne elementy interfejsu by ułatwić poznanie gry.
+                Oferuje porady i tutoriale podczas gry. Dodatkowo chowa pewne elementy interfejsu, by ułatwić poznanie gry.
 
         enableTunnelSmartplace:
             title: Smart Tunnels
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Gdy włączone, umieszczenie tunelu automatycznie usuwa zbędny taśmociąg.
+                Pozwala również budować tunele przez przeciąganie i nadmiarowe tunele zostają usunięte.
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Włącza winietowanie, które przyciemnia rogi ekranu i poprawia czytelność tekstu.
+
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
 
 keybindings:
     title: Klawiszologia
@@ -754,26 +775,26 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Anuluj Stawianie
         rotateWhilePlacing: Obróć
         rotateInverseModifier: >-
-            Modyfikator: Obróć Odrwotnie
+            Modyfikator: Obróć Odwrotnie
         cycleBuildingVariants: Zmień Wariant
         confirmMassDelete: Potwierdź usuwanie
         cycleBuildings: Zmień Budynek
 
-        massSelectStart: Przytrzymaj i przeciągnij by zaznaczyć
+        massSelectStart: Przytrzymaj i przeciągnij, by zaznaczyć
         massSelectSelectMultiple: Zaznacz kilka obszarów
         massSelectCopy: Skopiuj obszar
 
-        placementDisableAutoOrientation: Wyłącz automatyczną orientacje
+        placementDisableAutoOrientation: Wyłącz automatyczną orientację
         placeMultiple: Pozostań w trybie stawiania
-        placeInverse: Odwróć automatyczną orientacje pasów
+        placeInverse: Odwróć automatyczną orientację pasów
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
         massSelectCut: Wytnij obszar
         exportScreenshot: Wyeksportuj całą fabrykę jako zrzut ekranu
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        lockBeltDirection: Tryb planowania taśmociągu
+        switchDirectionLockSide: "Planowanie taśmociągu: Zmień stronę"
+        pipette: Pipette
 
 about:
     title: O Grze
@@ -782,7 +803,7 @@ about:
         Jeżeli chcesz pomóc w rozwoju gry, sprawdź <a href="<githublink>" target="_blank">repozytorium shapez.io na Githubie</a>.<br><br>
         Ta gra nie byłaby możliwa bez wspaniałej społeczności Discord skupionej na moich grach - Naprawdę powinieneś dołączyć do <a href="<discordlink>" target="_blank">mojego serwera Discord</a>!<br><br>
         Ścieżka dźwiękowa tej gry została stworzona przez <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsena</a> - Jest niesamowity.<br><br>
-        Na koniec, wielkie dzięki mojemu najlepszemu przyjacielowi: <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Bez naszego wspólnego grania w Factorio, ta gra nigdy by nie powstała.
+        Na koniec, wielkie dzięki mojemu najlepszemu przyjacielowi: <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Bez naszego wspólnego grania w Factorio ta gra nigdy by nie powstała.
 
 changelog:
     title: Dziennik zmian

@@ -269,7 +269,7 @@ gulp.task("build.prod", gulp.series("utils.cleanup", "step.prod.all", "step.post
 // Builds everything (standalone-beta)
 gulp.task(
     "step.standalone-beta.code",
-    gulp.series("sounds.fullbuild", "translations.fullBuild", "js.standalone-beta")
+    gulp.series("sounds.fullbuildHQ", "translations.fullBuild", "js.standalone-beta")
 );
 gulp.task("step.standalone-beta.mainbuild", gulp.parallel("step.baseResources", "step.standalone-beta.code"));
 gulp.task(
@@ -284,7 +284,7 @@ gulp.task(
 // Builds everything (standalone-prod)
 gulp.task(
     "step.standalone-prod.code",
-    gulp.series("sounds.fullbuild", "translations.fullBuild", "js.standalone-prod")
+    gulp.series("sounds.fullbuildHQ", "translations.fullBuild", "js.standalone-prod")
 );
 gulp.task("step.standalone-prod.mainbuild", gulp.parallel("step.baseResources", "step.standalone-prod.code"));
 gulp.task(

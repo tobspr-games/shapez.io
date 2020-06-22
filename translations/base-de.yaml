@@ -283,7 +283,11 @@ ingame:
         delete: Löschen
         pasteLastBlueprint: Letzte Blaupause einfügen
         lockBeltDirection: Bandplaner aktivieren
-        plannerSwitchSide: 'Planer: Seite wechseln'
+        plannerSwitchSide: "Planer: Seite wechseln"
+        cutSelection: Ausschneiden
+        copySelection: Kopieren
+        clearSelection: Leere Selektion
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -318,11 +322,6 @@ ingame:
     notifications:
         newUpgrade: Ein neues Upgrade ist verfügbar!
         gameSaved: Dein Spiel wurde gespeichert.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Drücke <keyCut> zum Ausschneiden, <keyCopy> zum Kopieren, <keyDelete> zum Entfernen und <keyCancel> um Abzubrechen.
 
     # The "Upgrades" window
     shop:
@@ -686,7 +685,32 @@ settings:
             title: Vignette
             description: >-
                 Aktiviert den Vignetteneffekt, der den Rand des Bildschirms zunehmend verdunkelt
-                und das Lesen der Textfelder vereinfacht. 
+                und das Lesen der Textfelder vereinfacht.
+
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
 
 keybindings:
     title: Tastenbelegung
@@ -733,7 +757,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Platzieren abbrechen
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
             Modifier: stattdessen gegen UZS rotieren
@@ -753,7 +776,8 @@ keybindings:
         exportScreenshot: Ganze Fabrik als Foto exportieren
         mapMoveFaster: Schneller bewegen
         lockBeltDirection: Bandplaner aktivieren
-        switchDirectionLockSide: 'Planer: Seite wechseln'
+        switchDirectionLockSide: "Planer: Seite wechseln"
+        pipette: Pipette
 
 about:
     title: Über dieses Spiel

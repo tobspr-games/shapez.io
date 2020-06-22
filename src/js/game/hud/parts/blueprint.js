@@ -176,6 +176,7 @@ export class Blueprint {
     tryPlace(root, tile) {
         return root.logic.performBulkOperation(() => {
             let anyPlaced = false;
+            const beltsToRegisterLater = [];
             for (let i = 0; i < this.entities.length; ++i) {
                 let placeable = true;
                 const entity = this.entities[i];
@@ -202,10 +203,10 @@ export class Blueprint {
                                     "Can not delete entity for blueprint"
                                 );
                                 if (!root.logic.tryDeleteBuilding(contents)) {
-                                    logger.error(
+                                    assertAlways(
+                                        false,
                                         "Building has replaceable component but is also unremovable in blueprint"
                                     );
-                                    return false;
                                 }
                             }
                         }
@@ -215,9 +216,21 @@ export class Blueprint {
                     clone.components.StaticMapEntity.origin.addInplace(tile);
 
                     root.map.placeStaticEntity(clone);
-                    root.entityMgr.registerEntity(clone);
+
+                    // Registering a belt immediately triggers a recalculation of surrounding belt
+                    // directions, which is no good when not all belts have been placed. To resolve
+                    // this, only register belts after all entities have been placed.
+                    if (!clone.components.Belt) {
+                        root.entityMgr.registerEntity(clone);
+                    } else {
+                        beltsToRegisterLater.push(clone);
+                    }
                     anyPlaced = true;
                 }
+            }
+
+            for (let i = 0; i < beltsToRegisterLater.length; i++) {
+                root.entityMgr.registerEntity(beltsToRegisterLater[i]);
             }
             return anyPlaced;
         });

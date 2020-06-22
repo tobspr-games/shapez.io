@@ -19,7 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
-# Chinese translation dictionary. TODO: better names for the buildings. 
+# Chinese translation dictionary. TODO: better names for the buildings.
 # Standalone：独立版
 # Demo：演示版
 # Level：关/关卡
@@ -49,7 +49,7 @@ steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。
     # shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
-    
+
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
@@ -63,8 +63,8 @@ steamPage:
 
         只对图形进行加工可能会使你感到无聊。我们为你准备了颜色资源——将红、绿、蓝三种颜色混合，生产更多不同的颜色并粉刷在图形上以满足需求。
 
-        这个游戏目前有18个关卡（这应该已经能让你忙碌几个小时了！），并且正在不断地更新中。很多新关卡已经在开发计划当中！ 
-        
+        这个游戏目前有18个关卡（这应该已经能让你忙碌几个小时了！），并且正在不断地更新中。很多新关卡已经在开发计划当中！
+
 
         [b]独立版优势[/b]
 
@@ -92,18 +92,18 @@ steamPage:
             [*] 色盲模式
             [*] 以及更多其他的功能！
         [/list]
-       
+
         记得查看我的Trello计划板！那里有所有的开发计划！https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: 加载中
     error: 错误
 
-    # Chinese translation: There is typically no divider used for numbers. 
+    # Chinese translation: There is typically no divider used for numbers.
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ""
 
-    # TODO: Chinese translation: suffix changes every 10000 in Chinese numbering system. 
+    # TODO: Chinese translation: suffix changes every 10000 in Chinese numbering system.
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: K
@@ -190,7 +190,7 @@ mainMenu:
 
 dialogs:
     buttons:
-        ok: 确认 # 好 完成 
+        ok: 确认 # 好 完成
         delete: 删除 # Delete
         cancel: 取消 # Cancel
         later: 以后 # Later
@@ -239,15 +239,15 @@ dialogs:
     resetKeybindingsConfirmation:
         title: 重置所有按键
         desc: 你将要重置所有按键，请确认。
-        
+
     keybindingsResetOk:
         title: 重置所有按键
         desc: 成功重置所有按键！
-        
+
     featureRestriction:
         title: 演示版
         desc: 你尝试使用了 <feature> 功能。该功能在演示版中不可用。请考虑购买独立版以获得更好的体验。
-        
+
     oneSavegameLimit:
         title: 存档数量限制
         desc: 演示版中只能保存一份存档。 请删除旧存档或者获取独立版！
@@ -256,7 +256,6 @@ dialogs:
         title: 更新啦！
         desc: >-
             以下为自上次游戏以来更新的内容:
-        
 
     upgradesIntroduction:
         title: 解锁建筑升级
@@ -325,6 +324,10 @@ ingame:
         pasteLastBlueprint: 粘贴上一个蓝图
         lockBeltDirection: 启用传送带规划
         plannerSwitchSide: 规划器换边
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -360,11 +363,6 @@ ingame:
         newUpgrade: 有新更新啦！
         gameSaved: 游戏已保存。
 
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: <keyCut>剪切，<keyCopy>复制，<keyDelete>删除，<keyCancel>取消.
-
     # The "Upgrades" window
     shop:
         title: 建筑升级
@@ -397,7 +395,6 @@ ingame:
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes>个/分钟
 
-
     # Settings menu, when you press "ESC"
     settingsMenu:
         playtime: 游戏时间
@@ -424,7 +421,7 @@ ingame:
     waypoints:
         waypoints: 地图标记
         hub: 基地
-        description: <strong>左键</strong>快速跳转到地图标记，右键删除地图标记。<br><br>按<keybinding>从当前视图中创建地图标记，或者在选定的位置上使用<strong>右键</strong>创建地图标记。
+        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
         creationSuccessNotification: 成功创建地图标记。
 
     # Interactive tutorial
@@ -562,7 +559,7 @@ storyRewards:
 
     reward_mixer:
         title: 混合颜色
-        desc: <strong>混色机</strong>已解锁。在这个建筑中将两个颜色混合在一起（加法混合）。
+        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
 
     reward_stacker:
         title: 堆叠
@@ -578,7 +575,7 @@ storyRewards:
 
     reward_rotater_ccw:
         title: 逆时针旋转
-        desc: <strong>旋转机</strong>逆时针变体已解锁。这个变体可以逆时针旋转图形。选择旋转机然后按“T”键来选取这个变体。
+        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
 
     reward_miner_chainable:
         title: 链式开采机
@@ -595,11 +592,11 @@ storyRewards:
 
     reward_cutter_quad:
         title: 四分切割机
-        desc:  <strong>切割机</strong>四分变体已解锁。它可以将输入的图形切成四块而不只是左右两块。
+        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
 
     reward_painter_double:
         title: 双倍上色机
-        desc: <strong>上色机</strong>双倍变体已解锁。 它像普通上色机一样为图形上色，只是它可以同时为两个图形上色，每次只消耗一份颜色！
+        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
 
     reward_painter_quad:
         title: 四向上色机
@@ -615,7 +612,7 @@ storyRewards:
 
     reward_blueprints:
         title: 蓝图
-        desc: 你现在可以复制粘贴你的工厂的一部分了！按住CTRL键并拖动鼠标来选择一块区域，然后按C键复制。<br><br>粘贴并<strong>不是免费的</strong>，你需要使用<strong>蓝图图形</strong>来粘贴你的蓝图。蓝图图形是你刚刚交付的图形。
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -702,7 +699,7 @@ settings:
         alwaysMultiplace:
             title: 多重放置
             description: >-
-               开启这个选项之后放下建筑将不会取消建筑选择。等同于一直按下SHIFT键。
+                开启这个选项之后放下建筑将不会取消建筑选择。等同于一直按下SHIFT键。
             # description: >-
             #     If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
 
@@ -734,10 +731,33 @@ settings:
             description: >-
                 启用晕映，将屏幕角落里的颜色变深，更容易阅读文本。
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
+
 keybindings:
     title: 按键设置
     hint: >-
-         提示：使用CTRL、SHIFT、ALT! 这些建在放置建筑时有不同的效果。
+        提示：使用CTRL、SHIFT、ALT! 这些建在放置建筑时有不同的效果。
     # hint: >-
     #     Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
 
@@ -788,7 +808,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: 取消放置
         rotateWhilePlacing: 顺时针旋转
         rotateInverseModifier: >-
             修饰键: 改为逆时针旋转
@@ -810,7 +829,8 @@ keybindings:
         mapMoveFaster: 快速移动
 
         lockBeltDirection: 启用传送带规划
-        switchDirectionLockSide: '规划器：换边'
+        switchDirectionLockSide: "规划器：换边"
+        pipette: Pipette
 
 about:
     title: 关于游戏
@@ -842,7 +862,3 @@ demo:
         # customizeKeybindings: Customizing Keybindings
         exportingBase: 导出工厂截图
     settingNotAvailable: 在演示版中不可用。
-
-        
-
-

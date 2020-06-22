@@ -1,5 +1,20 @@
 export const CHANGELOG = [
     {
+        version: "1.1.17",
+        date: "unreleased",
+        entries: [
+            "Allow configuring autosave interval and disabling it in the settings",
+            "The smart-tunnel placement has been reworked to properly replace belts. Thus the setting has been turned on again by default",
+            "The soundtrack now has a higher quality on the standalone version than the web version",
+            "Add setting to disable cut/delete warnings (by hexy)",
+            "Fix bug where belts in blueprints don't orient correctly (by hexy)",
+            "Fix camera moving weird after dragging and holding (by hexy)",
+            "Fix keybinding for pipette showing while pasting blueprints",
+            "Update tutorial image for tier 2 tunnels to explain mix/match (by jimmyshadow1)",
+            "Prevent default actions on all keybindings in the web version so you don't accidentally use builtin browser shortcuts",
+        ],
+    },
+    {
         version: "1.1.16",
         date: "21.06.2020",
         entries: [
