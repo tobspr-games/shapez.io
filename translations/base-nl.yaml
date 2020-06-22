@@ -156,6 +156,7 @@ mainMenu:
     continue: Verder
     newGame: Nieuw Spel
     madeBy: Gemaakt door <author-link>
+    Subreddit: Reddit
 
 dialogs:
     buttons:
@@ -394,6 +395,22 @@ ingame:
 
             1_3_expand: >-
                 Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer ontginners en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te plaatsen en gebruik <strong>R</strong> om ze te draaien.
+
+    Colors:
+        red: Rood
+        green: Groen
+        blue: Blauw
+        yellow: Geel
+        purple: Paars
+        cyan: Cyaan
+        white: Wit
+        uncolored: Geen kleur
+    ShapeViewer:
+        title: Layers
+        empty: Empty
+
+
+
 
 # All shop upgrades
 shopUpgrades:
@@ -700,13 +717,16 @@ settings:
         compactBuildingInfo:
             title: Combacte gebouwinformatie
             description: >-
-                Informatie weergeven bij gebouwen wordt beperkt tot alleen hun ratios. Anders
+                Informatie weergeven bij gebouwen wordt beperkt tot alleen hun 'ratios'. Anders
                 zie je een beschrijving en een afbeelding. 
         disableCutDeleteWarnings:
             title: Schakel knip/delete waarschuwingen uit.
             description: >-
                 Schakelt de waarschuwing uit die wordt weergegeven wanneer je meer dan 100 dingen probeert te
                 knippen/deleten.
+        enableColorBlindHelper:
+            title: Kleurenblindmodus
+            description: Schakelt verschillende hulpmiddelen in zodat je het spel alsnog kunt spelen wanneer je kleurenblind bent.
 
 keybindings:
     title: Sneltoetsen
