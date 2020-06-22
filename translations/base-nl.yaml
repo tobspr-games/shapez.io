@@ -409,9 +409,6 @@ ingame:
         title: Lagen
         empty: Leeg
 
-
-
-
 # All shop upgrades
 shopUpgrades:
     belt:
