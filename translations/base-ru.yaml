@@ -76,10 +76,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: ' тыс.'
-        millions: ' млн'
-        billions: ' млрд'
-        trillions: ' трлн'
+        thousands: ' k'
+        millions: ' M'
+        billions: ' B'
+        trillions: ' T'
 
     # Shown for infinitely big numbers
     infinite: ∞
