@@ -86,4 +86,10 @@ export const LANGUAGES = {
         code: "zh",
         region: "CN",
     },
+    "sv": {
+        name: "Svenska",
+        data: require("./built-temp/base-sv.json"),
+        code: "sv",
+        region: "",
+    },
 };

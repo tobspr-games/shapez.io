@@ -14,6 +14,7 @@ export const CHANGELOG = [
             "Fix keybinding for pipette showing while pasting blueprints",
             "Improve visibility of shape background in dark mode",
             "Added sound when destroying a building",
+            "Added swedish translation",
             "Update tutorial image for tier 2 tunnels to explain mix/match (by jimmyshadow1)",
         ],
     },
