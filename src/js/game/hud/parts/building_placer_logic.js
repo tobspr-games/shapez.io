@@ -92,6 +92,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
          */
         this.currentDirectionLockSide = 0;
 
+        /**
+         * Keep holding direction lock while dragging
+         * @type {boolean}
+         */
+        this.keepDirectionLock = false;
+
         this.initializeBindings();
     }
 
@@ -108,7 +114,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             .add(this.switchDirectionLockSide, this);
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.startPipette, this);
-        this.root.gameState.inputReciever.keyup.add(this.checkForDirectionLockSwitch, this);
 
         // BINDINGS TO GAME EVENTS
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
@@ -177,9 +182,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     get isDirectionLockActive() {
         const metaBuilding = this.currentMetaBuilding.get();
         return (
-            metaBuilding &&
-            metaBuilding.getHasDirectionLockAvailable() &&
-            this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed
+            this.keepDirectionLock ||
+            (metaBuilding &&
+                metaBuilding.getHasDirectionLockAvailable() &&
+                this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed)
         );
     }
 
@@ -420,19 +426,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     }
 
     /**
-     * Checks if the direction lock key got released and if such, resets the placement
-     * @param {any} args
-     */
-    checkForDirectionLockSwitch({ keyCode }) {
-        if (
-            keyCode ===
-            this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).keyCode
-        ) {
-            this.abortDragging();
-        }
-    }
-
-    /**
      * Tries to place the current building at the given tile
      * @param {Vector} tile
      */
@@ -661,8 +654,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentlyDeleting = false;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
 
-            // Place initial building, but only if direction lock is not active
-            if (!this.isDirectionLockActive) {
+            if (this.isDirectionLockActive) {
+                this.keepDirectionLock = true;
+            } else {
+                // Place initial building, but only if direction lock is not active
                 if (this.tryPlaceCurrentBuildingAt(this.lastDragTile)) {
                     this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
                 }
@@ -693,14 +688,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (this.root.camera.getIsMapOverlayActive()) {
             return;
         }
-
-        // Check for direction lock
-        if (this.isDirectionLockActive) {
-            return;
-        }
-
         const metaBuilding = this.currentMetaBuilding.get();
         if ((metaBuilding || this.currentlyDeleting) && this.lastDragTile) {
+            // Check for direction lock
+            if (this.isDirectionLockActive) {
+                this.keepDirectionLock = true;
+                return;
+            }
+
             const oldPos = this.lastDragTile;
             let newPos = this.root.camera.screenToWorld(pos).toTileSpace();
 
@@ -798,6 +793,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (this.lastDragTile && this.currentlyDragging && this.isDirectionLockActive) {
             this.executeDirectionLockedPlacement();
         }
+        this.keepDirectionLock = false;
 
         this.abortDragging();
     }
