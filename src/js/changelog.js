@@ -15,7 +15,6 @@ export const CHANGELOG = [
             "Improve visibility of shape background in dark mode",
             "Added sound when destroying a building",
             "Update tutorial image for tier 2 tunnels to explain mix/match (by jimmyshadow1)",
-            "Prevent default actions on all keybindings in the web version so you don't accidentally use builtin browser shortcuts",
         ],
     },
     {
