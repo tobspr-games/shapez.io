@@ -586,7 +586,7 @@ storyRewards:
 
     reward_blueprints:
         title: Blåkopier
-        desc: Du kan nå <strong>kopiere og lime inn</strong> deler av fabrikken din! Velg et område (Hold inne CTRL, så dra med musa), trykk så 'C' for å kopiere det.<br><br>Lime det inn er <strong>ikke graits</strong>, du må produsere <strong>blåkopi objekter</strong> for å få råd til det! (Det du nettop leverte).
+        desc: Du kan nå <strong>kopiere og lime inn</strong> deler av fabrikken din! Velg et område (Hold inne CTRL, så dra med musa), trykk så 'C' for å kopiere det.<br><br>Lime det inn er <strong>ikke gratis</strong>, du må produsere <strong>blåkopi objekter</strong> for å få råd til det! (Det du nettop leverte).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
