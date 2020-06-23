@@ -134,9 +134,10 @@ mainMenu:
 
         showInfo: Zobrazit
         contestOver: Tato soutěž skončila - Připojte se na Discord a získejte informace o nových soutěžích!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: Pokračovat
+    newGame: Nová hra
+    madeBy: Vytvořil <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -266,12 +267,12 @@ ingame:
         createMarker: Vytvořit značku
         delete: Zničit
         pasteLastBlueprint: Vložit poslední plán
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        lockBeltDirection: Zamknout směr pásu
+        plannerSwitchSide: Otočit strany plánovače
+        cutSelection: Vyjmout
+        copySelection: Kopířovat
+        clearSelection: Zrušit výběr
+        pipette: Kapátko
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -377,6 +378,19 @@ ingame:
 
             1_3_expand: >-
                 Toto <strong>NENÍ</strong> hra o čekání! Sestavte další extraktory a pásy, abyste dosáhli cíle rychleji.<br><br>Tip: Chcete-li umístit více extraktorů, podržte <strong>SHIFT</strong>. Pomocí <strong>R</strong> je můžete otočit.
+
+    colors:
+        red: Červená
+        green: Zelená
+        blue: Modrá
+        yellow: Žlutá
+        purple: Fialová
+        cyan: Tyrkysová
+        white: Bílá
+        uncolored: Bez barvy
+    shapeViewer:
+        title: Vrstvy
+        empty: Prázdné
 
 # All shop upgrades
 shopUpgrades:
@@ -582,7 +596,7 @@ settings:
 
     labels:
         uiScale:
-            title: Škála UI
+            title: Škálování UI
             description: >-
                 Změní velikost uživatelského rozhraní. Rozhraní se bude stále přizpůsobovoat rozlišení vaší obrazovky, toto nastavení pouze mění jeho škálu.
             scales:
@@ -658,40 +672,42 @@ settings:
                 super_fast: Hodně Rychlá
                 extremely_fast: Extrémně Rychlá
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Chytré tunely
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Pokládání tunelů po zapnutí bude samo odstraňovat nepotřebné pásy.
+                Umožňuje také potahování tunelů a nadbytečné tunely budou odstraněny.
         vignette:
-            title: Vignette
+            title: Viněta
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Zapne vinětu, která ztmaví rohy obrazovky, což umožňuje lepší čtení textu.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Interval automatického ukládání
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Určuje jak často se hra automaticky ukládá. Lze ji zde také úplně zakázat.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 minuta
+                two_minutes: 2 minuty
+                five_minutes: 5 minut
+                ten_minutes: 10 minut
+                twenty_minutes: 20 minut
+                disabled: Zrušeno
 
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Kompaktní informace o stavbách
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Zkrátí informační políčka pro budovy tím, že pouze ukáže jejich koeficient.
+                V opačném případě zobrazí popis a obrázek.
 
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Zakázat upozornění o vyjmutí nebo odstranění
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Deaktivujte varovná dialogová okna vyvolaná při vymutí/mazání více než 100
+                entit.
+
+        enableColorBlindHelper:
+            title: Režim pro barvoslepé
+            description: Zapné různé nástroje, které vám umožní hrát hru i pokud jste barvoslepí.
 
 keybindings:
     title: Klávesové zkratky
@@ -756,9 +772,9 @@ keybindings:
         pasteLastBlueprint: Vložit poslední plán
         massSelectCut: Vyjmout oblast
         exportScreenshot: Exportovat celou základnu jako obrázek
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
-        pipette: Pipette
+        lockBeltDirection: Zamknout směr pásu
+        switchDirectionLockSide: Otočit strany zámku plánovače
+        pipette: Kapátko
 
 about:
     title: O hře

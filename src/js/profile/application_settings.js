@@ -172,6 +172,15 @@ export const allApplicationSettings = [
         (app, value) => app.sound.setMusicMuted(value)
     ),
 
+    new BoolSetting(
+        "enableColorBlindHelper",
+        categoryApp,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => null
+    ),
+
     // GAME
     new BoolSetting("offerHints", categoryGame, (app, value) => {}),
 
@@ -268,6 +277,8 @@ class SettingsStorage {
         this.vignette = true;
         this.compactBuildingInfo = false;
         this.disableCutDeleteWarnings = false;
+
+        this.enableColorBlindHelper = false;
 
         /**
          * @type {Object.<string, number>}
@@ -468,7 +479,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 15;
+        return 17;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -528,6 +539,17 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 15) {
             data.settings.autosaveInterval = "two_minutes";
             data.version = 15;
+        }
+
+        if (data.version < 16) {
+            // RE-ENABLE this setting, it already existed
+            data.settings.enableTunnelSmartplace = true;
+            data.version = 16;
+        }
+
+        if (data.version < 17) {
+            data.settings.enableColorBlindHelper = false;
+            data.version = 17;
         }
 
         return ExplainedResult.good();

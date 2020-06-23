@@ -155,6 +155,7 @@ mainMenu:
     continue: Fortsetzen
     newGame: Neues Spiel
     madeBy: Ein Spiel von <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -286,7 +287,7 @@ ingame:
         plannerSwitchSide: "Planer: Seite wechseln"
         cutSelection: Ausschneiden
         copySelection: Kopieren
-        clearSelection: Leere Selektion
+        clearSelection: Auswahl aufheben
         pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
@@ -294,7 +295,7 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Drücke <key>, um zwischen den Varianten zu wählen.
+        cycleBuildingVariants: <key> Wechsle Variante
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -393,6 +394,19 @@ ingame:
 
             1_3_expand: >-
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
+
+    colors:
+        red: Rot
+        green: Grün
+        blue: Blau
+        yellow: Gelb
+        purple: Violett
+        cyan: Cyan
+        white: Weiß
+        uncolored: Farblos
+    shapeViewer:
+        title: Ebenen
+        empty: Leer
 
 # All shop upgrades
 shopUpgrades:
@@ -688,29 +702,32 @@ settings:
                 und das Lesen der Textfelder vereinfacht.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Intervall für automatisches Speichern
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Ändert das Intervall, in dem der Spielstand automatisch gespeichert wird.
+                Die Funktion kann hier auch deaktiviert werden.
             intervals:
                 one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                two_minutes: 2 Minuten
+                five_minutes: 5 Minuten
+                ten_minutes: 10 Minuten
+                twenty_minutes: 20 Minuten
+                disabled: Deaktiviert
 
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Kompakte Gebäudeinformationen
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Reduziert die Infoboxen der Gebäude auf ihre Arbeitsgeschwindigkeit. Anderenfalls wird ein
+                Bild mit Beschreibung angezeigt.
 
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Deaktiviere Warnungsdialog beim Löschen
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
+
+        enableColorBlindHelper:
+            title: Modus für Farbenblinde
+            description: Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
 
 keybindings:
     title: Tastenbelegung
@@ -739,7 +756,7 @@ keybindings:
 
         mapZoomIn: Hineinzoomen
         mapZoomOut: Herauszoomen
-        createMarker: Markeirung erstellen
+        createMarker: Markierung erstellen
 
         menuOpenShop: Upgrades
         menuOpenStats: Statistiken
@@ -759,7 +776,7 @@ keybindings:
 
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
-            Modifier: stattdessen gegen UZS rotieren
+            Modifikator: stattdessen gegen UZS rotieren
         cycleBuildingVariants: Variante wählen
         confirmMassDelete: Massenlöschung bestätigen
         cycleBuildings: Gebäude rotieren
@@ -782,22 +799,22 @@ keybindings:
 about:
     title: Über dieses Spiel
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Dieses Spiel hat einen offenen Quellcode (Open Source) und wurde von <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (das bin ich!) entwickelt.<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Wenn du etwas zum Spiel beitragen möchtest, dann schaue dir <a href="<githublink>"
+        target="_blank">shapez.io auf GitHub</a> an.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        Das Spiel wurde erst durch die großartige Discord-Community
+        um meine Spiele möglich gemacht. Komm doch einfach mal auf dem <a href="<discordlink>"
+        target="_blank">Discord-Server</a> vorbei!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Der Soundtrack wurde von <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> komponiert! Klasse Typ.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        Abschließend möchte ich meinem Kumpel <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> danken! Ohne unsere
+        etlichen gemeinsamen Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
 
 changelog:
     title: Änderungen

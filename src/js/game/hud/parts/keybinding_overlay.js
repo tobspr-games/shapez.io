@@ -168,7 +168,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 // Pipette
                 label: T.ingame.keybindingsOverlay.pipette,
                 keys: [k.placement.pipette],
-                condition: () => !this.mapOverviewActive,
+                condition: () => !this.mapOverviewActive && !this.blueprintPlacementActive,
             },
 
             {

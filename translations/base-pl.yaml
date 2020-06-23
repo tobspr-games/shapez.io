@@ -159,7 +159,8 @@ mainMenu:
 
         showInfo: Wyświetl
         contestOver: Ten konkurs już się skończył - Dołącz do serwera Discord by nie przegapić kolejnych!
-    madeBy: Made by <author-link>
+    madeBy: Gra wykonana przez <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -292,10 +293,21 @@ ingame:
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
         lockBeltDirection: Tryb planowania taśmociągu
         plannerSwitchSide: Obróć planowany taśmociąg
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        cutSelection: Wytnij
+        copySelection: Skopiuj
+        clearSelection: Wyczyść zaznaczenie
+        pipette: Wybierz obiekt z mapy
+
+    # Names of the colors, used for the color blind mode
+    colors:
+        red: Czerwony
+        green: Zielony
+        blue: Niebieski
+        yellow: Żółty
+        purple: Fioletowy
+        cyan: Cyjanowy
+        white: Biały
+        uncolored: Brak koloru
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -393,6 +405,11 @@ ingame:
         hub: Budynek Główny
         description: Kliknij znacznik lewym przyciskiem myszy, by się do niego przenieść lub prawym, by go usunąć.<br><br>Naciśnij <keybinding>, by stworzyć marker na środku widoku lub <strong>prawy przycisk myszy</strong>, by stworzyć na wskazanej lokacji.
         creationSuccessNotification: Utworzono znacznik.
+
+    # Shape viewer
+    shapeViewer:
+        title: Poziomy
+        empty: Puste
 
     # Interactive tutorial
     interactiveTutorial:
@@ -698,37 +715,43 @@ settings:
                 Oferuje porady i tutoriale podczas gry. Dodatkowo chowa pewne elementy interfejsu, by ułatwić poznanie gry.
 
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Inteligentne taśmociągi i tunele
             description: >-
                 Gdy włączone, umieszczenie tunelu automatycznie usuwa zbędny taśmociąg.
-                Pozwala również budować tunele przez przeciąganie i nadmiarowe tunele zostają usunięte.
+                Pozwala również budować tunele przez przeciąganie, gdyż niepotrzebne tunele zostają usunięte.
         vignette:
-            title: Vignette
+            title: Winieta
             description: >-
-                Włącza winietowanie, które przyciemnia rogi ekranu i poprawia czytelność tekstu.
+                Włącza winietę - przyciemnia rogi ekranu, poprawiając czytelność tekstu.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Częstość auto-zapisu
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Zmienia, jak często gra automatycznie zapisuje fabrykę.
+                Można tą funkcję również całkowicie wyłączyć.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: Co minutę
+                two_minutes: Co 2 minuty
+                five_minutes: Co 5 minut
+                ten_minutes: Co 10 minut
+                twenty_minutes: Co 20 minut
+                disabled: Wyłączone
+
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Wyłącz opis budynków
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Ukrywa opis i zdjęcie budynków w obszarze informacyjnym, pokazując jedynie
+                ich tytuł i specyfikacje techniczne.
+
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Wyłącz ostrzeżenia usuwania/wycinania
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Wyłącza ostrzeżenia wyświetlające się przy usuwaniu lub wycinaniu więcej niż
+                100 budynków.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
 
 keybindings:
     title: Klawiszologia
@@ -793,8 +816,9 @@ keybindings:
         massSelectCut: Wytnij obszar
         exportScreenshot: Wyeksportuj całą fabrykę jako zrzut ekranu
         lockBeltDirection: Tryb planowania taśmociągu
-        switchDirectionLockSide: "Planowanie taśmociągu: Zmień stronę"
-        pipette: Pipette
+        switchDirectionLockSide: >-
+            Planowanie taśmociągu: Zmień stronę
+        pipette: Wybieranie obiektów z mapy
 
 about:
     title: O Grze
