@@ -248,7 +248,7 @@ export const allApplicationSettings = [
 
     new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", categoryGame, (app, value) => {}),
-    new BoolSetting("vignette", categoryGame, (app, value) => {}),<<<<<<< HEAD
+    new BoolSetting("vignette", categoryGame, (app, value) => {}),
     new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
     new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
     new BoolSetting("rotationByBuilding", categoryGame, (app, value) => {}),
@@ -279,7 +279,6 @@ class SettingsStorage {
         this.compactBuildingInfo = false;
         this.disableCutDeleteWarnings = false;
         this.rotationByBuilding = true;
-
 
         this.enableColorBlindHelper = false;
 
@@ -554,7 +553,7 @@ export class ApplicationSettings extends ReadWriteProxy {
             data.settings.enableColorBlindHelper = false;
             data.version = 17;
         }
-        if(data.version < 18) {
+        if (data.version < 18) {
             data.settings.rotationByBuilding = true;
             data.version = 18;
         }

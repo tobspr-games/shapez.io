@@ -201,7 +201,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
             this.root,
             mouseTile,
-            this.getBaseRotation(),
+            this.currentBaseRotation,
             this.currentVariant.get()
         );
 

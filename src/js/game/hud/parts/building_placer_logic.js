@@ -49,28 +49,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         /**
          * The current rotation preference for each building.
-         * @type {Object.<string, number>}
+         * @type{Object.<string,number>}
          */
-        this.preferredRotations = {};
-
-        this.getBaseRotation = function () {
-            const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
-            if (!rotationByBuilding) {
-                return this.currentBaseRotationGeneral;
-            }
-            const id = this.currentMetaBuilding.get().getId();
-            return this.preferredRotations[id] || this.currentBaseRotationGeneral;
-        };
-
-        this.setBaseRotation = function (rotation) {
-            const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
-            if (!rotationByBuilding) {
-                this.currentBaseRotationGeneral = rotation;
-            } else {
-                const id = this.currentMetaBuilding.get().getId();
-                this.preferredRotations[id] = rotation;
-            }
-        };
+        this.preferredBaseRotations = {};
 
         /**
          * Whether we are currently dragging
@@ -137,6 +118,34 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
+    }
+
+    /**
+     * Returns the current base rotation for the current meta-building.
+     * @returns {number}
+     */
+    get currentBaseRotation() {
+        const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
+        if (!rotationByBuilding) {
+            return this.currentBaseRotationGeneral;
+        }
+        const id = this.currentMetaBuilding.get().getId();
+        return this.preferredBaseRotations[id] == null
+            ? this.currentBaseRotationGeneral
+            : this.preferredBaseRotations[id];
+    }
+
+    /**
+     * Sets the base rotation for the current meta-building.
+     */
+    set currentBaseRotation(rotation) {
+        const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
+        if (!rotationByBuilding) {
+            this.currentBaseRotationGeneral = rotation;
+        } else {
+            const id = this.currentMetaBuilding.get().getId();
+            this.preferredBaseRotations[id] = rotation;
+        }
     }
 
     /**
@@ -225,12 +234,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const selectedBuilding = this.currentMetaBuilding.get();
         if (selectedBuilding) {
             if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
-                this.setBaseRotation((this.getBaseRotation() + 270) % 360);
+                this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
             } else {
-                this.setBaseRotation((this.getBaseRotation() + 90) % 360);
+                this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
             }
             const staticComp = this.fakeEntity.components.StaticMapEntity;
-            staticComp.rotation = this.getBaseRotation();
+            staticComp.rotation = this.currentBaseRotation;
         }
     }
     /**
@@ -402,7 +411,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
             this.root,
             tile,
-            this.getBaseRotation(),
+            this.currentBaseRotation,
             this.currentVariant.get()
         );
 
@@ -410,7 +419,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             origin: tile,
             rotation,
             rotationVariant,
-            originalRotation: this.getBaseRotation(),
+            originalRotation: this.currentBaseRotation,
             building: this.currentMetaBuilding.get(),
             variant: this.currentVariant.get(),
         });
@@ -426,7 +435,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation
                 ).pressed
             ) {
-                this.setBaseRotation((180 + this.getBaseRotation()) % 360);
+                this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
             }
 
             // Check if we should stop placement
@@ -476,7 +485,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             for (let i = 0; i < path.length; ++i) {
                 const { rotation, tile } = path[i];
 
-                this.setBaseRotation(rotation);
+                this.currentBaseRotation = rotation;
                 this.tryPlaceCurrentBuildingAt(tile);
             }
         });
@@ -659,11 +668,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 ) {
                     const delta = newPos.sub(oldPos);
                     const angleDeg = Math_degrees(delta.angle());
-                    this.setBaseRotation((Math.round(angleDeg / 90) * 90 + 360) % 360);
+                    this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
 
                     // Holding alt inverts the placement
                     if (this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse).pressed) {
-                        this.setBaseRotation((180 + this.getBaseRotation()) % 360);
+                        this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
                     }
                 }
 
