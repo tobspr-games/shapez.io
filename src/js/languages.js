@@ -80,12 +80,23 @@ export const LANGUAGES = {
         code: "no",
         region: "",
     },
+
     "zh-CN": {
+        // simplified
         name: "简体中文",
         data: require("./built-temp/base-zh-CN.json"),
         code: "zh",
         region: "CN",
     },
+
+    "zh-TW": {
+        // traditional
+        name: "中国传统的",
+        data: require("./built-temp/base-zh-TW.json"),
+        code: "zh",
+        region: "TW",
+    },
+
     "sv": {
         name: "Svenska",
         data: require("./built-temp/base-sv.json"),
