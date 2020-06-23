@@ -57,7 +57,7 @@ steamPage:
             [*] Modo historia en el que los edificios cuesten figuras
             [*] Más niveles y edificios (exclusivos del juego completo)
             [*] Mapas diferentes y tal vez obstáculos en el mapa
-            [*] Configuración en la cración del mapa (Editar el número y tamaño de los recursos, la semilla, y más)
+            [*] Configuración en la creación del mapa (Editar el número y tamaño de los recursos, la semilla, y más)
             [*] Más tipos de formas
             [*] Mejoras de rendimiento (Aunque el juego ya funciona muy bien!)
             [*] Modo para daltónicos
@@ -283,12 +283,12 @@ ingame:
         placeBuilding: Colocar edificio
         createMarker: Crear marca
         delete: Destruir
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
+        pasteLastBlueprint: Pegar último plano
+        lockBeltDirection: Activar planificador de cintas transportadoras
+        plannerSwitchSide: Invertir giro del planificador
+        cutSelection: Cortar
+        copySelection: Copiar
+        clearSelection: Limpiar Selección
         pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
@@ -396,17 +396,17 @@ ingame:
                 ¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más extractores y cintas transportadoras para completar el objetivo más rápido.<br><br> Pista: Mantén pulsado <strong>SHIFT</strong> para colocar varios extractores y usa <strong>R</strong> para rotarlos.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: Rojo
+        green: Verde
+        blue: Azul
+        yellow: Amarillo
+        purple: Morado
+        cyan: Cian
+        white: Blanco
+        uncolored: Sin color
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Capas
+        empty: Vacio
 
 # All shop upgrades
 shopUpgrades:
@@ -454,7 +454,7 @@ buildings:
             description: Multifuncional - Distribuye equitativamente todas las entradas a todas las salidas.
 
         compact:
-            name: fusionador (compacto)
+            name: Fusionador (compacto)
             description: Junta dos cintas transportadoras en una.
 
         compact-inverse:
@@ -620,7 +620,7 @@ settings:
                 huge: Enorme
 
         scrollWheelSensitivity:
-            title: Sensitividad del zoom
+            title: Sensibilidad del zoom
             description: >-
                 Cambia como de sensible es el zoom (Tanto la ruedo del ratón como el trackpad)
             sensitivity:
@@ -689,37 +689,33 @@ settings:
                 Si está activado, colocar túneles automáticamente removerá las cintas transportadoras innecesarias. Esto también permite arrastrar con el ratón y los túneles excedentes serán removidos.
 
         vignette:
-            title: Vignette
+            title: Viñeta
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Activa el efecto viñeta que oscurece loas esquinas de la pantalla y hace el texto mas fácil de leer.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Intervalo de Autoguardado
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Controla cada cuanto tiempo se guarda el juego automaticamente. Aquí tambien puedes deshabilitarlo por completo.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minuto
+                two_minutes: 2 Minutos
+                five_minutes: 5 Minutos
+                ten_minutes: 10 Minutos
+                twenty_minutes: 20 Minutos
+                disabled: Deshabilitado
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Información Compacta de Edificios
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Acorta la caja de información mostrando solo sus ratios. Si no, se mostrara una descripción y una imagen.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Deshabilitar las advertencias de Cortar/Eliminar
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Deshabilita los dialogos de advertencia que se muestran cuando se cortan/eliminan mas de 100 elementos.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Modo para Daltonicos
+            description: Activa varias herramientas que permiten jugar si eres daltonico.
 
 keybindings:
     title: Atajos de Teclado
