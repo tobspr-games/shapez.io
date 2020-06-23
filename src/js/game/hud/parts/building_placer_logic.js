@@ -11,6 +11,7 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
+import { MetaMinerBuilding } from "../../buildings/miner";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -244,10 +245,15 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const tile = worldPos.toTileSpace();
-        const contents = this.root.map.getTileContent(tile);
 
+        const contents = this.root.map.getTileContent(tile);
         if (!contents) {
-            this.currentMetaBuilding.set(null);
+            const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
+            if (tileBelow) {
+                this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
+            } else {
+                this.currentMetaBuilding.set(null);
+            }
             return;
         }
 
