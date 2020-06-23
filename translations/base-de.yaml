@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: In shapez.io automatisierst du die Erschaffung und Kombinierung immer komplexer werdender Formen auf einer endlos generierten Karte.
+    shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um deine Maschinen immer komplexer werdende Formen erschaffen zu lassen.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,13 +30,13 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io ist ein Spiel über den Bau von Fabriken um deine Basis, die Formen automatisiert Erstellen und Kombieren. Liefere die gewünschten, stetig komplexer werdenden Formen and deine Basis, um im Spiel voranzukommen. Schalte zusätzliche Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
+        In shapez.io umringst du deine Basis mit selbstgebauten Fabriken, die Formen automatisiert Erstellen, Bearbeiten und Kombinieren sollen. Liefere die gewünschten, stetig komplexer werdenden Formen an dein Hauptgebäude, um im Spiel voranzukommen. Schalte mit ihnen außerdem Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
 
-        Da die Nachfrage steigt, wirst du deine Fabriken ausbauen müssen, um den Bedürfnissen gerecht zu werden. Vergiss nicht, dass du dafür verschiedene Ressourcen brauchst und auf der [b]unendlichen Karte[/b] expandieren musst!
+        Da die Nachfrage sowohl in der Komplexität, als auch der Anzahl steigt, wirst du deine Fabriken erweitern müssen. Vergiss nicht, dass du die dafür benötigten Ressourcen beschaffen musst und expandiere auf der [b]unendlichen Karte[/b]!
 
-        Da das reine Zusammensetzen von Formen natürlich schnell langweilig werden kann, musst du Farben mischen und deine Formen damit bemalen. Kombiniere rote, grüne und blaue Farbressourcen, um verschiedene Farbtöne herzustellen.
+        Da das reine Zerschneiden und Zusammensetzen von Formen schnell langweilig werden kann, musst du Farben mischen und deine Formen damit bemalen lassen. Kombiniere die Farbpartikel, um verschiedene Farbtöne herzustellen. Staple dann deine fertigen Formen aufeinander und lasse die wildesten Kreationen entstehen.
 
-        Liefere mit deinen Fabriken die gewünschten Formen der 18 verschiedenen Level ab, um neue Gebäude freizuschalten. Das sollte dich schon für Stunden beschäftigt halten! Danach generiert das Spiel im Freispielmodus zufällige Formen, die du ebenfalls abliefern kannst. Außerdem ist noch echt viel geplant!
+        Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
 
         [b]Vorteile der Standalone[/b]
 
@@ -44,21 +44,21 @@ steamPage:
             [*] Wegpunkte
             [*] Unbegrenzte Anzahl von Spielständen
             [*] Dunkelmodus
-            [*] Mehr Einstellungen
+            [*] Weitere Einstellungen
             [*] Unterstütze die Entwicklung von shapez.io ❤️
             [*] Neue Funktionen in der Zukunft!
         [/list]
 
         [b]Geplante Funktionen & Community-Vorschläge[/b]
 
-        Diese Spiel ist Open Source - Jeder kann dazu beitragen! Abgesehen davon, höre ich auf das Feedback der Community! Ich versuche alle Vorschläge zu lesen und so viel davon einzubeziehen, wie nur möglich.
+        Diese Spiel ist Open Source - Jeder kann dazu beitragen! Abgesehen davon, höre ich auf das Feedback der Community! Ich versuche alle Vorschläge zu lesen und so viel davon einzubeziehen, wie nur möglich. Hier ein Liste an Features, die momentan geplant sind.
 
         [list]
             [*] Story-Modus mit Gebäudekosten
             [*] Drähte und Logik
             [*] Neue Gebäude und Level (nur in der Standalone-Version)
             [*] Mehrere Karten und vielleicht auch Hindernisse
-            [*] Einstellbare Kartenerstellung (Ändere die Grösse und Anzahl von Ressourcenflecken, Seed, und mehr)
+            [*] Einstellbare Kartengenerierung (Ändere die Grösse und Anzahl von Ressourcenflecken, den Seed, und mehr)
             [*] Mehr Formentypen
             [*] Performanceverbesserungen (Auch wenn das Spiel bereits ganz gut läuft)
             [*] Und vieles mehr!
