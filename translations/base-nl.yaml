@@ -284,12 +284,12 @@ ingame:
         createMarker: Plaats markering
         delete: Vernietig
         pasteLastBlueprint: Plak de laatst gekopiëerde blauwdruk
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        lockBeltDirection: Maak gebruik van de lopende band planner
+        plannerSwitchSide: Draai de richting van de planner
+        cutSelection: Knip
+        copySelection: Kopieer
+        clearSelection: Cancel selectie
+        pipette: Pipet
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -397,17 +397,17 @@ ingame:
                 Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer ontginners en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te plaatsen en gebruik <strong>R</strong> om ze te draaien.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: Rood
+        green: Groen
+        blue: Blauw
+        yellow: Geel
+        purple: Paars
+        cyan: Cyaan
+        white: Wit
+        uncolored: Geen kleur
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Lagen
+        empty: Leeg
 
 # All shop upgrades
 shopUpgrades:
@@ -533,7 +533,7 @@ storyRewards:
 
     reward_mixer:
         title: Kleuren mengen
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        desc: De <strong>menger</strong> is ontgrendeld - gebruik dit gebouw om twee kleuren te mengen via <strong>'additive blending'</strong>!
 
     reward_stacker:
         title: Stapelaar
@@ -701,29 +701,29 @@ settings:
         autosaveInterval:
             title: Autosave Interval
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Bepaalt hoe vaak het spel automatisch opslaat. Je kan het hier ook volledig 
+                mee uitschakelen.
+         
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minuut
+                two_minutes: 2 Minuten
+                five_minutes: 5 Minuten
+                ten_minutes: 10 Minuten
+                twenty_minutes: 20 Minuten
+                disabled: Uitgeschakeld
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Combacte gebouwinformatie
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Informatie weergeven bij gebouwen wordt beperkt tot alleen hun 'ratios'. Anders
+                zie je een beschrijving en een afbeelding. 
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Schakel knip/delete waarschuwingen uit.
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
-
+                Schakelt de waarschuwing uit die wordt weergegeven wanneer je meer dan 100 dingen probeert te
+                knippen/deleten.
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Kleurenblindmodus
+            description: Schakelt verschillende hulpmiddelen in zodat je het spel alsnog kunt spelen wanneer je kleurenblind bent.
 
 keybindings:
     title: Sneltoetsen
@@ -789,8 +789,8 @@ keybindings:
         exportScreenshot: Exporteer volledige basis als afbeelding
         mapMoveFaster: Beweeg sneller
         lockBeltDirection: Schakel lopende band-planner in
-        switchDirectionLockSide: "Planner: Wissel van kant"
-        pipette: Pipette
+        switchDirectionLockSide: "Planner: Wissel van richting"
+        pipette: Pipet
 
 about:
     title: Over dit spel
