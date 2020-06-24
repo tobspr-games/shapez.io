@@ -6,6 +6,7 @@ export const CHANGELOG = [
             "Preparations for the wires update",
             "Update belt placement performance on huge factories (by Phlosioneer)",
             "Allow clicking on variants to select them",
+            "Allow clicking 'Q' over a shape or color patch to automatically select the miner building (by Gerdon262)",
             "Add 'copy key' button to shape viewer",
             "Add setting (on by default) to store the last used rotation per building instead of globally storing it (by Magos)",
             "Added chinese (traditional) translation",

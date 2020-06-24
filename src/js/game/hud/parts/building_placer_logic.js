@@ -289,10 +289,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const contents = this.root.map.getTileContent(tile);
         if (!contents) {
             const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
+
+            // Check if there's a shape or color item below, if so select the miner
             if (tileBelow) {
                 this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
+
+                // Select chained miner if available, since thats always desired once unlocked
                 if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
-                    return this.currentVariant.set(enumMinerVariants.chainable);
+                    this.currentVariant.set(enumMinerVariants.chainable);
                 }
             } else {
                 this.currentMetaBuilding.set(null);
