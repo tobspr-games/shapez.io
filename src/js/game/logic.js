@@ -6,7 +6,6 @@ import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Math_abs, performanceNow } from "../core/builtins";
 import { createLogger } from "../core/logging";
 import { MetaBeltBaseBuilding, arrayBeltVariantToRotation } from "./buildings/belt_base";
-import { SOUNDS } from "../platform/sound";
 import { round2Digits } from "../core/utils";
 
 const logger = createLogger("ingame/logic");
@@ -151,11 +150,9 @@ export class GameLogic {
      * @param {number} param0.rotationVariant
      * @param {string} param0.variant
      * @param {MetaBuilding} param0.building
-     * @param {boolean} param0.sound
      * @returns {Entity}
      */
-    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, variant, building, sound }) {
-        sound = sound !== null ? sound : true; // Check for sound argument
+    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, variant, building }) {
         if (this.checkCanPlaceBuilding({ origin, rotation, rotationVariant, variant, building })) {
             // Remove any removeable entities below
             const checker = new StaticMapEntityComponent({
@@ -188,10 +185,6 @@ export class GameLogic {
                 variant,
             });
 
-            // Play sound
-            if (sound) {
-                this.root.soundProxy.playUi(building.getPlacementSound());
-            }
             return entity;
         }
         return null;

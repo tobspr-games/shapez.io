@@ -366,13 +366,16 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Tries to place the current building at the given tile
      * @param {Vector} tile
-     * @param {Object} options
+     * @param {boolean} suppressSound
      */
-    tryPlaceCurrentBuildingAt(tile, options = {}) {
+    tryPlaceCurrentBuildingAt(tile, suppressSound = false) {
         if (this.root.camera.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
             // Dont allow placing in overview mode
             return;
         }
+
+        // Set sound to true if no options.suppressSound or set to opposite of options.suppressSound.
+        const sound = !suppressSound;
 
         const metaBuilding = this.currentMetaBuilding.get();
         const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
@@ -389,7 +392,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             originalRotation: this.currentBaseRotation,
             building: this.currentMetaBuilding.get(),
             variant: this.currentVariant.get(),
-            sound: options.suppressSound != null ? !options.suppressSound : true,
         });
 
         if (entity) {
@@ -415,6 +417,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 // Stop placement
                 this.currentMetaBuilding.set(null);
             }
+
+            // Building has been placed, play sound
+            if (sound) {
+                this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+            }
+
             return true;
         } else {
             return false;
@@ -449,21 +457,26 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      */
     executeDirectionLockedPlacement() {
         const path = this.computeDirectionLockPath();
-        let needSound = false;
+        let trySound = false;
         this.root.logic.performBulkOperation(() => {
             for (let i = 0; i < path.length; ++i) {
                 const { rotation, tile } = path[i];
 
                 this.currentBaseRotation = rotation;
-                // Add supressSound flag
-                let addedBuilding = this.tryPlaceCurrentBuildingAt(tile, {
-                    suppressSound: i == 0 || needSound ? false : true,
-                });
-                if (!addedBuilding && (i == 0 || needSound)) {
-                    needSound = true;
-                } else {
-                    needSound = false;
-                }
+
+                /*
+                  Trys to place building.
+                  Includes check to see if we should play sound.
+                */
+                const placedBuilding = this.tryPlaceCurrentBuildingAt(
+                    tile,
+                    i == 0 || trySound ? false : true
+                );
+                /*
+                  If placedBuilding is false then the building didn't place.
+                  If the sound hasn't played yet we will need to try to play sound again.
+                */
+                trySound = !placedBuilding && (i == 0 || trySound);
             }
         });
     }
