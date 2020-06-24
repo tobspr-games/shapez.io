@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um deine Maschinen immer komplexer werdende Formen erschaffen zu lassen.
+    shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen Maschinen durch Kombination zunehmend komplexe Formen zu erschaffen.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,11 +30,11 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        In shapez.io umringst du deine Basis mit selbstgebauten Fabriken, die Formen automatisiert Erstellen, Bearbeiten und Kombinieren sollen. Liefere die gewünschten, stetig komplexer werdenden Formen an dein Hauptgebäude, um im Spiel voranzukommen. Schalte mit ihnen außerdem Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
+        In shapez.io musst du Maschinen geschickt verbinden, damit Formen automatisiert erstellt, bearbeitet und kombiniert werden. Liefere die gewünschten, stetig komplexer werdenden Formen an dein Hauptgebäude, um im Spiel voranzukommen. Schalte mit ihnen außerdem Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
 
         Da die Nachfrage sowohl in der Komplexität, als auch der Anzahl steigt, wirst du deine Fabriken erweitern müssen. Vergiss nicht, dass du die dafür benötigten Ressourcen beschaffen musst und expandiere auf der [b]unendlichen Karte[/b]!
 
-        Das reine Zerschneiden und Zusammensetzen von Formen wird natürlisch schnell langweilig, also musst du Farben mischen und deine Formen damit bemalen lassen. Kombiniere die Farbpartikel, um verschiedene Farbtöne herzustellen. Staple dann deine fertigen Formen aufeinander und lasse die wildesten Kreationen entstehen.
+        Das reine Zerschneiden und Zusammensetzen von Formen wird natürlich schnell langweilig, also musst du Farben mischen und deine Formen damit bemalen lassen. Kombiniere die Farbpartikel, um verschiedene Farbtöne herzustellen. Staple dann deine fertigen Formen aufeinander und lasse die wildesten Kreationen entstehen.
 
         Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
 
@@ -58,7 +58,7 @@ steamPage:
             [*] Drähte und Logik
             [*] Neue Gebäude und Level (nur in der Standalone-Version)
             [*] Mehrere Karten und vielleicht auch Hindernisse
-            [*] Einstellbare Kartengenerierung (Ändere die Grösse und Anzahl von Ressourcenflecken, den Seed, und mehr)
+            [*] Einstellbare Kartengenerierung (Ändere die Grösse und Anzahl von Ressourcenflecken, den Seed und mehr)
             [*] Mehr Formentypen
             [*] Performanceverbesserungen (Auch wenn das Spiel bereits ganz gut läuft)
             [*] Und vieles mehr!
