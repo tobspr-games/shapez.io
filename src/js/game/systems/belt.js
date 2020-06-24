@@ -63,10 +63,10 @@ export class BeltSystem extends GameSystemWithFilter {
 
         this.root.signals.entityAdded.add(this.updateSurroundingBeltPlacement, this);
         this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
+        this.root.signals.postLoadHook.add(this.computeBeltCache, this);
 
-        this.cacheNeedsUpdate = true;
-        /** @type {Rectangle[]} */
-        this.smallUpdateAreas = [];
+        /** @type {Rectangle} */
+        this.areaToRecompute = null;
     }
 
     /**
@@ -92,6 +92,10 @@ export class BeltSystem extends GameSystemWithFilter {
         // Compute affected area
         const originalRect = staticComp.getTileSpaceBounds();
         const affectedArea = originalRect.expandedInAllDirections(1);
+
+        // Store if anything got changed, if so we need to queue a recompute
+        let anythingChanged = false;
+
         for (let x = affectedArea.x; x < affectedArea.right(); ++x) {
             for (let y = affectedArea.y; y < affectedArea.bottom(); ++y) {
                 if (!originalRect.containsPoint(x, y)) {
@@ -111,17 +115,20 @@ export class BeltSystem extends GameSystemWithFilter {
                             );
                             targetStaticComp.rotation = rotation;
                             metaBelt.updateVariants(targetEntity, rotationVariant, defaultBuildingVariant);
-                            this.cacheNeedsUpdate = true;
+                            anythingChanged = true;
                         }
                     }
                 }
             }
         }
 
-        // Optimize for the common case of adding or removing buildings one at a time.
-        // Clicking and dragging can fire up to 4 create/destroy signals.
-        if (this.cacheNeedsUpdate) {
-            this.smallUpdateAreas.push(affectedArea.expandedInAllDirections(1));
+        if (anythingChanged) {
+            if (this.areaToRecompute) {
+                this.areaToRecompute = this.areaToRecompute.getUnion(affectedArea);
+            } else {
+                this.areaToRecompute = affectedArea.clone();
+            }
+            logger.log("Queuing recompute:", this.areaToRecompute);
         }
     }
 
@@ -167,33 +174,34 @@ export class BeltSystem extends GameSystemWithFilter {
         return null;
     }
 
+    /**
+     * Recomputes the belt cache
+     */
     computeBeltCache() {
-        logger.log("Updating belt cache");
-
-        if (this.smallUpdateAreas.length <= 4) {
-            for (let i = 0; i < this.smallUpdateAreas.length; ++i) {
-                const area = this.smallUpdateAreas[i];
-                for (let x = area.x; x < area.right(); ++x) {
-                    for (let y = area.y; y < area.bottom(); ++y) {
-                        const tile = this.root.map.getTileContentXY(x, y);
-                        if (tile && tile.components.Belt) {
-                            tile.components.Belt.followUpCache = this.findFollowUpEntity(tile);
-                        }
+        if (this.areaToRecompute) {
+            logger.log("Updating belt cache by updating area:", this.areaToRecompute);
+            for (let x = this.areaToRecompute.x; x < this.areaToRecompute.right(); ++x) {
+                for (let y = this.areaToRecompute.y; y < this.areaToRecompute.bottom(); ++y) {
+                    const tile = this.root.map.getTileContentXY(x, y);
+                    if (tile && tile.components.Belt) {
+                        tile.components.Belt.followUpCache = this.findFollowUpEntity(tile);
                     }
                 }
             }
+
+            // Reset stale areas afterwards
+            this.areaToRecompute = null;
         } else {
+            logger.log("Doing full belt recompute");
             for (let i = 0; i < this.allEntities.length; ++i) {
                 const entity = this.allEntities[i];
                 entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
             }
         }
-        this.smallUpdateAreas = [];
     }
 
     update() {
-        if (this.cacheNeedsUpdate) {
-            this.cacheNeedsUpdate = false;
+        if (this.areaToRecompute) {
             this.computeBeltCache();
         }
 
