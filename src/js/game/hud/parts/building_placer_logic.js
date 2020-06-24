@@ -13,6 +13,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
 import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
+import { enumEditMode } from "../../root";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -115,11 +116,26 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
         this.root.signals.storyGoalCompleted.add(() => this.signals.variantChanged.dispatch());
         this.root.signals.upgradePurchased.add(() => this.signals.variantChanged.dispatch());
+        this.root.signals.editModeChanged.add(this.onEditModeChanged, this);
 
         // MOUSE BINDINGS
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
+    }
+
+    /**
+     * Called when the edit mode got changed
+     * @param {enumEditMode} editMode
+     */
+    onEditModeChanged(editMode) {
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (metaBuilding) {
+            if (metaBuilding.getEditLayer() !== editMode) {
+                // This layer doesn't fit the edit mode anymore
+                this.currentMetaBuilding.set(null);
+            }
+        }
     }
 
     /**

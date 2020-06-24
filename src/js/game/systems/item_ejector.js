@@ -261,6 +261,14 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
         }
 
+        const energyGeneratorComp = receiver.components.EnergyGenerator;
+        if (energyGeneratorComp) {
+            if (energyGeneratorComp.tryTakeItem(item)) {
+                // Passed it over
+                return true;
+            }
+        }
+
         return false;
     }
 

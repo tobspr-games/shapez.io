@@ -254,6 +254,13 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 keys: [k.massSelect.massSelectCopy],
                 condition: () => this.anythingSelectedOnMap,
             },
+
+            {
+                // Switch layers
+                label: T.ingame.keybindingsOverlay.switchLayers,
+                keys: [k.ingame.switchLayers],
+                condition: () => true,
+            },
         ];
 
         if (!this.root.app.settings.getAllSettings().alwaysMultiplace) {

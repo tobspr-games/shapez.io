@@ -290,6 +290,7 @@ ingame:
         copySelection: Copy
         clearSelection: Clear Selection
         pipette: Pipette
+        switchLayers: Switch Layers
 
     # Names of the colors, used for the color blind mode
     colors:
@@ -522,6 +523,14 @@ buildings:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
 
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For <x> energy
+
+        default:
+            name: &energy_generator Energy Generator
+            description: Generates energy by consuming shapes. Each energy generator requires a different shapes.
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -599,6 +608,10 @@ storyRewards:
         title: Next level
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+
+    reward_wires:
+        title: Wires
+        desc: TODO
 
     no_reward_freeplay:
         title: Next level
@@ -773,6 +786,7 @@ keybindings:
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
+        switchLayers: Switch layers
         exportScreenshot: Export whole Base as Image
         belt: *belt
         splitter: *splitter
@@ -782,6 +796,7 @@ keybindings:
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer
+        energy_generator: *energy_generator
         painter: *painter
         trash: *trash
 

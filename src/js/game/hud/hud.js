@@ -36,6 +36,7 @@ import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
 import { HUDColorBlindHelper } from "./parts/color_blind_helper";
 import { HUDShapeViewer } from "./parts/shape_viewer";
+import { HUDWiresOverlay } from "./parts/wires_overlay";
 
 export class GameHUD {
     /**
@@ -70,6 +71,7 @@ export class GameHUD {
             dialogs: new HUDModalDialogs(this.root),
             screenshotExporter: new HUDScreenshotExporter(this.root),
             shapeViewer: new HUDShapeViewer(this.root),
+            wiresOverlay: new HUDWiresOverlay(this.root),
         };
 
         this.signals = {
