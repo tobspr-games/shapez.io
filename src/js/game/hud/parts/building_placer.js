@@ -16,6 +16,7 @@ import { defaultBuildingVariant } from "../../meta_building";
 import { THEME } from "../../theme";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { HUDBuildingPlacerLogic } from "./building_placer_logic";
+import { ClickDetector } from "../../../core/click_detector";
 
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
@@ -56,6 +57,12 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.currentInterpolatedCornerTile = new Vector();
 
         this.lockIndicatorSprite = Loader.getSprite("sprites/misc/lock_direction_indicator.png");
+
+        /**
+         * Stores the click detectors for the variants so we can clean them up later
+         * @type {Array<ClickDetector>}
+         */
+        this.variantClickDetectors = [];
     }
 
     /**
@@ -98,6 +105,22 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         }
     }
 
+    cleanup() {
+        super.cleanup();
+        this.cleanupVariantClickDetectors();
+    }
+
+    /**
+     * Cleans up all variant click detectors
+     */
+    cleanupVariantClickDetectors() {
+        for (let i = 0; i < this.variantClickDetectors.length; ++i) {
+            const detector = this.variantClickDetectors[i];
+            detector.cleanup();
+        }
+        this.variantClickDetectors = [];
+    }
+
     /**
      * Rerenders the variants displayed
      */
@@ -106,6 +129,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.rerenderInfoDialog();
 
         const metaBuilding = this.currentMetaBuilding.get();
+
+        // First, clear up all click detectors
+        this.cleanupVariantClickDetectors();
 
         if (!metaBuilding) {
             return;
@@ -147,6 +173,12 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             spriteWrapper.setAttribute("data-tile-h", dimensions.y);
 
             spriteWrapper.innerHTML = sprite.getAsHTML(iconSize * dimensions.x, iconSize * dimensions.y);
+
+            const detector = new ClickDetector(element, {
+                consumeEvents: true,
+                targetOnly: true,
+            });
+            detector.click.add(() => this.currentVariant.set(variant));
         }
     }
 

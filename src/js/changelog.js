@@ -5,6 +5,7 @@ export const CHANGELOG = [
         entries: [
             "Preparations for the wires update",
             "Update belt placement performance on huge factories (by Phlosioneer)",
+            "Allow clicking on variants to select them",
             "Add setting (on by default) to store the last used rotation per building instead of globally storing it (by Magos)",
             "Added chinese (traditional) translation",
             "Updated translations",
