@@ -532,7 +532,7 @@ storyRewards:
     reward_painter:
         title: Pintura
         desc: >-
-            O <strong> pintor </strong> foi desbloqueado - Extraia algumas fontes coloridas (como você faz com formas) e combine-as com uma forma no pintor para colorí-las! <br> <br> PS: Se você é daltônico, já estou trabalhando em uma solução!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Misturando cores

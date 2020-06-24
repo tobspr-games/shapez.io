@@ -178,7 +178,7 @@ mainMenu:
                  </ ul>
                  <br>
                  我期待看到您的出色創作！
-                 
+
         showInfo: 詳細信息
         contestOver: 本次競賽已結束。加入官方Discord以收到關於新競賽的提醒！
     continue: 繼續
@@ -363,10 +363,10 @@ ingame:
 
         # The roman number for each tier
         # Chinese translation： Chinese characters for each tier
-        tierLabels: [壹、貳、叁、肆、伍、陸、柒、捌、玖、拾]
+        tierLabels: [壹, 貳, 叁, 肆, 伍, 陸, 柒, 捌, 玖, 拾]
 
         maximumLevel: 最高级（<currentMult>倍效率）
-        
+
     # The "Statistics" window
     statistics:
         title: 統計信息
@@ -413,7 +413,7 @@ ingame:
         hub: 基地
         description: 滑鼠左鍵按標記跳轉到它，按右鍵將其刪除。<br> <br>按<keybinding>從當前視圖創建一個標記，或<strong>按右鍵</ strong>創建一個標記。 所選位置的標記。
         creationSuccessNotification: 成功創建地圖標記。
-        
+
     # Interactive tutorial
     interactiveTutorial:
         title: 教程
@@ -544,7 +544,7 @@ buildings:
         deliver: 交付
         toUnlock: 來解鎖
         levelShortcut: LVL
-        
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -596,7 +596,7 @@ storyRewards:
     reward_cutter_quad:
         title: 四分切割機
         desc: 您已解鎖了<strong>四分切割機</ strong>的變體-它允許您將形狀直接切割為<strong>四個部分</ strong>，而不是兩個！
-   
+
     reward_painter_double:
         title: 雙倍上色機
         desc: 您已經解鎖了<strong>雙倍上色機</ strong>的變體-它可以作為常規畫家使用，但一次只能處理<strong>兩個形狀</ strong>，而只消耗一種顏色而不是兩種顏色！
@@ -762,7 +762,7 @@ keybindings:
     title: 按鍵設置
     hint: >-
         提示：使用CTRL、SHIFT、ALT! 這些建在放置建築時有不同的效果。
-    
+
     resetKeybindings: 重置按鍵設置
 
     categoryLabels:

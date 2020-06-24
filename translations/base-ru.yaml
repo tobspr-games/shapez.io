@@ -532,7 +532,7 @@ storyRewards:
     reward_painter:
         title: Покраска
         desc: >-
-            Разблокирован <strong>покрасчик</strong>! Добудьте краситель из жилы (так же как и фигуры) и объедините его с фигурой в покрасчике, чтобы раскрасить ее!<br><br>PS: Если вы дальтоник, я уже работаю над решением!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Смешивание Цветов

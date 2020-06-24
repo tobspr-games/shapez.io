@@ -563,7 +563,7 @@ storyRewards:
     reward_painter:
         title: 上色
         desc: >-
-            <strong>上色机</strong>已解锁。和图形一样，从颜色矿脉中开采颜色，然后将在上色机中将颜色涂在图形上。<br><br>PS：我们正在开发色盲模式！
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: 混合颜色

@@ -512,7 +512,7 @@ storyRewards:
     reward_painter:
         title: Barvení
         desc: >-
-            <strong>Barvič</strong> byl právě odemčen - vytěžte nějakou barvu (stejně jako těžíte tvary) a skombinujte ji v barviči s tvarem pro obarvení!<br><br>PS: Pokud jste barvoslepí, nebojte, již pracuju na řešení.!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Míchání barev

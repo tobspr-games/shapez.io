@@ -546,7 +546,7 @@ storyRewards:
     reward_painter:
         title: Malowanie
         desc: >-
-            Odblokowano nową maszynę: <strong>Malarz</strong> - Wydobądź barwniki (tak jak w przypadku kształtów) i połącz z kształtem, by go pomalować!<br><br>PS: Jeśli cierpisz na ślepotę barw, pracuję nad tym!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Mieszanie
