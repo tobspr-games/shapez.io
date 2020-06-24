@@ -45,7 +45,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
          * The current rotation
          * @type {number}
          */
-        this.currentBaseRotation = 0;
+        this.currentBaseRotationGeneral = 0;
+
+        /**
+         * The current rotation preference for each building.
+         * @type{Object.<string,number>}
+         */
+        this.preferredBaseRotations = {};
 
         /**
          * Whether we are currently dragging
@@ -112,6 +118,39 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
+    }
+
+    /**
+     * Returns the current base rotation for the current meta-building.
+     * @returns {number}
+     */
+    get currentBaseRotation() {
+        if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
+            return this.currentBaseRotationGeneral;
+        }
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (metaBuilding && this.preferredBaseRotations.hasOwnProperty(metaBuilding.getId())) {
+            return this.preferredBaseRotations[metaBuilding.getId()];
+        } else {
+            return this.currentBaseRotationGeneral;
+        }
+    }
+
+    /**
+     * Sets the base rotation for the current meta-building.
+     * @param {number} rotation The new rotation/angle.
+     */
+    set currentBaseRotation(rotation) {
+        if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
+            this.currentBaseRotationGeneral = rotation;
+        } else {
+            const metaBuilding = this.currentMetaBuilding.get();
+            if (metaBuilding) {
+                this.preferredBaseRotations[metaBuilding.getId()] = rotation;
+            } else {
+                this.currentBaseRotationGeneral = rotation;
+            }
+        }
     }
 
     /**
