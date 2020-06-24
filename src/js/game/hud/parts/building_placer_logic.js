@@ -389,7 +389,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             originalRotation: this.currentBaseRotation,
             building: this.currentMetaBuilding.get(),
             variant: this.currentVariant.get(),
-            sound: ((options.supressSound!=null)? !options.supressSound : true)
+            sound: options.suppressSound != null ? !options.suppressSound : true,
         });
 
         if (entity) {
@@ -456,11 +456,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
                 this.currentBaseRotation = rotation;
                 // Add supressSound flag
-                let addedBuilding = this.tryPlaceCurrentBuildingAt(tile, {supressSound: ((i==0||needSound)? false : true)});
-                if (!addedBuilding && (i==0 || needSound)){
-                  needSound = true;
-                }else {
-                  needSound = false;
+                let addedBuilding = this.tryPlaceCurrentBuildingAt(tile, {
+                    suppressSound: i == 0 || needSound ? false : true,
+                });
+                if (!addedBuilding && (i == 0 || needSound)) {
+                    needSound = true;
+                } else {
+                    needSound = false;
                 }
             }
         });

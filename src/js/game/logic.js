@@ -154,8 +154,8 @@ export class GameLogic {
      * @param {boolean} param0.sound
      * @returns {Entity}
      */
-    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, variant, building, sound  }) {
-        sound = (sound!==null)? sound : true; // Check for sound argument
+    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, variant, building, sound }) {
+        sound = sound !== null ? sound : true; // Check for sound argument
         if (this.checkCanPlaceBuilding({ origin, rotation, rotationVariant, variant, building })) {
             // Remove any removeable entities below
             const checker = new StaticMapEntityComponent({
@@ -189,8 +189,8 @@ export class GameLogic {
             });
 
             // Play sound
-            if (sound){
-              this.root.soundProxy.playUi(building.getPlacementSound());
+            if (sound) {
+                this.root.soundProxy.playUi(building.getPlacementSound());
             }
             return entity;
         }
