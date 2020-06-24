@@ -319,10 +319,10 @@ ingame:
         pasteLastBlueprint: 粘贴上一个蓝图
         lockBeltDirection: 启用传送带规划
         plannerSwitchSide: 规划器换边
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        cutSelection: 剪切
+        copySelection: 复制
+        clearSelection: 取消选择
+        pipette: 选取器
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -377,14 +377,14 @@ ingame:
         title: 统计信息
         dataSources:
             stored:
-                title: 储存
-                description: 显示基地中每种图形储存的数量。
+                title: 已交付
+                description: 显示基地中每种图形已交付且未使用的数量。
             produced:
                 title: 生产
                 description: 显示所有正在被生产的图形数量，包括中间产物。
             delivered:
                 title: 送达
-                description: 显示图形送达基地的速度。
+                description: 显示图形送达基地并交付的速度。
         noShapesProduced: 你还没有生产任何图形。
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -416,7 +416,7 @@ ingame:
     waypoints:
         waypoints: 地图标记
         hub: 基地
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        description: 左键跳转到地图标记，右键删除地图标记。<br><br>按<keybinding>在当前地点创建地图标记，或者在选定位置上<strong>右键</strong>创建地图标记.
         creationSuccessNotification: 成功创建地图标记。
 
     # Interactive tutorial
@@ -432,17 +432,17 @@ ingame:
                 提示：按住<strong>SHIFT</strong>键来放置多个开采机，用<strong>R</strong>键旋转它们。
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: 红色
+        green: 绿色
+        blue: 蓝色
+        yellow: 黄色
+        purple: 紫色
+        cyan: 青色
+        white: 白色
+        uncolored: 无色
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: 层 # TODO: find better translation
+        empty: 空
 
 # All shop upgrades
 shopUpgrades:
@@ -502,7 +502,7 @@ buildings:
             name: &cutter 切割机
             description: 将图形从上到下切开并输出。 <strong>如果你只需要其中一半，记得把另一半销毁掉，否则切割机会停止工作！</strong>
         quad:
-            name: 切割机（四分）
+            name: 切割机（四向）
             description: 将输入的图形切成四块。 <strong>如果你只需要其中一块，记得把其他的销毁掉，否则切割机会停止工作！</strong>
 
     rotater:
@@ -554,73 +554,73 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: 切割图形
-        desc: <strong>切割机</strong>已解锁。不论切割机的方向，它都会把图形<strong>从上到下</strong>切成两半。<br><br>记得把不需要的部分处理掉，否则这个这个建筑会停止工作。为此我给你准备了<strong>垃圾桶</strong>，它会把所有放进去的物品销毁掉。
+        desc: 恭喜！你解锁了<strong>切割机</strong>。切割机会把图形<strong>从上到下</strong>切成两半。注意切割的方向和切割机的朝向无关。<br><br>记得把不需要的部分处理掉，否则这个这个建筑会停止工作。为此我给你准备了<strong>垃圾桶</strong>，它会把所有放进去的物品销毁掉。
 
     reward_rotater:
         title: 顺时针旋转
-        desc: <strong>旋转机</strong>已解锁。它会顺时针旋转输入的图形90度。
+        desc: 恭喜！你解锁了<strong>旋转机</strong>。它会顺时针旋转输入的图形90度。
 
     reward_painter:
         title: 上色
         desc: >-
-            <strong>上色机</strong>已解锁。和图形一样，从颜色矿脉中开采颜色，然后将在上色机中将颜色涂在图形上。<br><br>PS：我们正在开发色盲模式！
+            恭喜！你解锁了<strong>上色机</strong>。和图形一样，从颜色矿脉中开采颜色，然后将在上色机中将颜色涂在图形上。<br><br>PS：我们正在开发色盲模式！
 
     reward_mixer:
         title: 混合颜色
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        desc: 恭喜！你解锁了<strong>混合机</strong>。在这个建筑中将两个颜色混合在一起（加法混合）。
 
     reward_stacker:
         title: 堆叠
-        desc: <strong>堆叠机</strong>已解锁。堆叠机会尝试把两个输入的图形<strong>拼贴</strong>在一起。如果有重叠的部分，右边的输入会被<strong>堆叠</strong>在左边的输入上方！
+        desc: 恭喜！你解锁了<strong>堆叠机</strong>。堆叠机会尝试把两个输入的图形<strong>拼贴</strong>在一起。如果有重叠的部分，右边的输入会被<strong>堆叠</strong>在左边的输入上方！
 
     reward_splitter:
         title: 分离与合并
-        desc: <strong>平衡机</strong>已解锁。在大型工厂中，平衡机负责<strong>合并或分离</strong>多个传送带上的物品。<br><br>
+        desc: 恭喜！你解锁了<strong>平衡机</strong>。在大型工厂中，平衡机负责<strong>合并或分离</strong>多个传送带上的物品。<br><br>
 
     reward_tunnel:
         title: 隧道
-        desc: <strong>隧道</strong>已解锁。你现在可以从其他传送带或建筑底下运送物品了！
+        desc: 恭喜！你解锁了<strong>隧道</strong>。你现在可以从其他传送带或建筑底下运送物品了！
 
     reward_rotater_ccw:
         title: 逆时针旋转
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        desc: 恭喜！你解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。这个变体可以逆时针旋转图形。选择旋转机然后按“T”键来选取这个变体。
 
     reward_miner_chainable:
         title: 链式开采机
-        desc: <strong>链式开采机</strong>变体已解锁。它是开采机的一个变体。它可以将开采出来的资源<strong>传递</strong>给其他的开采机，使得资源提取更加高效！
+        desc: 恭喜！你解锁了<strong>开采机</strong>的<strong>链式</strong>变体。它可以将开采出来的资源<strong>传递</strong>给其他的开采机，使得资源提取更加高效！
 
     reward_underground_belt_tier_2:
         title: 二级隧道
-        desc: <strong>二级隧道</strong>变体已解锁。这个隧道有<strong>更长的传输距离</strong>。你还可以混用不同的隧道变体！
+        desc: 恭喜！你解锁了<strong>二级隧道</strong>。这是隧道的一个变体。二级隧道有<strong>更长的传输距离</strong>。你还可以混用不同的隧道变体！
 
     reward_splitter_compact:
         title: 小型合流机
         desc: >-
-            <strong>小型合流机</strong>变体已解锁。它可以把两个输入合并到一个输出上。
+            恭喜！你解锁了<strong>平衡机</strong>的<strong>小型合流机</strong>变体。它可以把两个输入合并到一个输出上。
 
     reward_cutter_quad:
-        title: 四分切割机
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: 四向切割机
+        desc: 恭喜！你解锁了<strong>切割机</strong>的<strong>四向</strong>变体。它可以将输入的图形切成四块而不只是左右两块！
 
     reward_painter_double:
         title: 双倍上色机
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        desc: 恭喜！你解锁了<strong>上色机</strong>的<strong>双倍</strong>变体。它可以同时为两个图形上色，每次只消耗一份颜色！
 
     reward_painter_quad:
         title: 四向上色机
-        desc: <strong>上色机</strong>四向变体已解锁。它可以在一个图形的四个角上涂不同的颜色！
+        desc: 恭喜！你解锁了<strong>上色机</strong>四向变体。它可以在一个图形的四个角上涂不同的颜色！
 
     reward_storage:
         title: 仓库
-        desc: <strong>仓库</strong>变体已解锁。它可以暂时储存一些材料，有容量上限。
-
+        desc: 恭喜！你解锁了<strong>垃圾桶</strong>的<strong>仓库</strong>变体。它可以暂时储存一些材料，有容量上限。
+ 
     reward_freeplay:
         title: 自由模式
-        desc: 恭喜你！你解锁了<strong>自由模式</strong>！现在图形将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
+        desc: 恭喜你！你解锁了<strong>自由模式</strong>。现在图形将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
 
     reward_blueprints:
         title: 蓝图
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        desc: 你现在可以<strong>复制粘贴</strong>你的工厂的一部分了！按住CTRL键并拖动鼠标来选择一块区域，然后按C键复制。<br><br>粘贴并<strong>不是免费的</strong>，你需要使用<strong>蓝图图形</strong>来粘贴你的蓝图。蓝图图形是你刚刚交付的图形。
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -740,31 +740,28 @@ settings:
                 启用晕映，将屏幕角落里的颜色变深，更容易阅读文本。
 
         autosaveInterval:
-            title: Autosave Interval
+            title: 自动保存间隔
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                在这里控制你的游戏多长时间保存一次，或者完全关闭这个功能。
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1分钟
+                two_minutes: 2分钟
+                five_minutes: 5分钟
+                ten_minutes: 10分钟
+                twenty_minutes: 20分钟
+                disabled: 关闭
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: 精简建筑信息
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                缩小建筑信息展示框。如果打开，放置建筑时建筑将不再显示建筑说明和图片，只显示建筑速度或其他数据。
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: 关闭剪切/删除警告
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                如果打开，将不再在剪切或者删除100+建筑时显示警告信息。
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: 色盲模式
+            description: 提供一些分辨颜色的工具。目前当鼠标移至颜色资源上方时，屏幕上方会显示颜色名称。
 
 keybindings:
     title: 按键设置
@@ -840,7 +837,7 @@ keybindings:
 
         lockBeltDirection: 启用传送带规划
         switchDirectionLockSide: "规划器：换边"
-        pipette: Pipette
+        pipette: 选取器
 
 about:
     title: 关于游戏
