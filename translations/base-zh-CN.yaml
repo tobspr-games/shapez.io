@@ -166,17 +166,17 @@ mainMenu:
             title: "竞赛 #01"
             desc: 最6的工厂将能赢得<strong>25</strong>美元的奖金！
             longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
+                为了让你回忆之前的东西，一个每周竞赛将会很酷。
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>本周主题：</strong> 建造最酷的基地
                 <br><br>
-                Here's the deal:<br>
+                要求如下：<br>
                 <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
+                    <li>发一个你基地的截图到<strong>contest@shapez.io</strong></li>
+                    <li>如果你分享到社交媒体上还有额外积分奖励!</li>
+                    <li>我会选出5个截屏发到<strong>discord</strong> community to vote.</li>
+                    <li>胜出者会得到<strong>$25</strong>的奖金（Paypal, Amazon Gift Card，任何支付方式都行）</li>
+                    <li>结束时间: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
                 I'm looking forward to seeing your awesome creations!
@@ -563,7 +563,7 @@ storyRewards:
     reward_painter:
         title: 上色
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            恭喜！你解锁了<strong>上色机</strong>。和图形一样，从颜色矿脉中开采颜色，然后将在上色机中将颜色涂在图形上。<br><br>PS：我们正在开发色盲模式！
 
     reward_mixer:
         title: 混合颜色
@@ -613,7 +613,7 @@ storyRewards:
     reward_storage:
         title: 仓库
         desc: 恭喜！你解锁了<strong>垃圾桶</strong>的<strong>仓库</strong>变体。它可以暂时储存一些材料，有容量上限。
-
+ 
     reward_freeplay:
         title: 自由模式
         desc: 恭喜你！你解锁了<strong>自由模式</strong>。现在图形将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
