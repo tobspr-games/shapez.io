@@ -216,7 +216,7 @@ dialogs:
 
     featureRestriction:
         title: Demoversion
-        desc: Du försökte nå en funktion (<feature>) som inte är tillgänglig i demversionen. Överväg att skaffa den fristående versionen för den fulla upplevelsen!
+        desc: Du försökte nå en funktion (<feature>) som inte är tillgänglig i demoversionen. Överväg att skaffa den fristående versionen för den fulla upplevelsen!
 
     oneSavegameLimit:
         title: Begränsad mängd sparfiler
