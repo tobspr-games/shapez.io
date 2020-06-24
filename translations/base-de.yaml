@@ -532,7 +532,7 @@ storyRewards:
     reward_painter:
         title: Färben
         desc: >-
-            Der <strong>Färber</strong> wurde freigeschaltet! Extrahiere ein paar Farben (genauso wie die Formen) und lasse sie vom Färber bemalen!<br><br>PS: Falls du farbenblind bist: Ich arbeite bereits an einer Lösung!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Farben mischen
@@ -728,6 +728,12 @@ settings:
         enableColorBlindHelper:
             title: Modus für Farbenblinde
             description: Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Tastenbelegung

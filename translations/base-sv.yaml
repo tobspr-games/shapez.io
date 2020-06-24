@@ -530,7 +530,7 @@ storyRewards:
     reward_painter:
         title: Måleri
         desc: >-
-            <strong>Färgläggaren</strong> har blivit upplåst - Extrahera färg (precis som du gör med former) och kombinera dem med former för att färglägga dem!<br><br>PS: Om du är färgblind, jag jobbar redan på en lösning!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Färgblandning
@@ -726,6 +726,12 @@ settings:
         enableColorBlindHelper:
             title: Färgblint läge
             description: Aktiverar olika verktyg som låter dig spela spelet om du är färbling.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Tangentbindningar

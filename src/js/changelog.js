@@ -1,5 +1,15 @@
 export const CHANGELOG = [
     {
+        version: "1.1.18",
+        date: "24.06.2020",
+        entries: [
+            "Preparations for the wires update",
+            "Add setting (on by default) to store the last used rotation per building instead of globally storing it (by Magos)",
+            "Added chinese (traditional) translation",
+            "Updated translations",
+        ],
+    },
+    {
         version: "1.1.17",
         date: "22.06.2020",
         entries: [

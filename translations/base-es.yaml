@@ -528,7 +528,8 @@ storyRewards:
     reward_painter:
         title: Pintor
         desc: >-
-            El <strong> pintor</strong> ha sido desbloqueado - ¡Extrae color de las betas (al igual que haces con las figuras) y combínalo con una figura para pintarla de ese color!<br><br> PS: Si eres daltónico, estoy trabajando en una solución!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+
     reward_mixer:
         title: Mezclador de Color
         desc: El <strong>mezclador</strong> ha sido desbloqueado - ¡Combina dos colores usando <strong>mezcla aditiva</strong> con este edificio!
@@ -716,6 +717,12 @@ settings:
         enableColorBlindHelper:
             title: Modo para Daltonicos
             description: Activa varias herramientas que permiten jugar si eres daltonico.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Atajos de Teclado

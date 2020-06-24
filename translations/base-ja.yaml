@@ -530,7 +530,7 @@ storyRewards:
     reward_painter:
         title: 着色
         desc: >-
-            <strong>着色機</strong>が利用可能になりました。 - 色の鉱脈から形の手順と同様に色を抽出し、着色機で形と組み合わせることで着色できます。<br><br>PS:もしあなたが色の認識に問題があっても安心してください。我々はすでにその解決に着手しています！
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: 色の混合
@@ -722,6 +722,12 @@ settings:
         enableColorBlindHelper:
             title: 色覚モード
             description: 色覚異常を持っていてもゲームがプレイできるようにするための各種ツールを有効化します。
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: キー設定

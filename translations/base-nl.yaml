@@ -529,7 +529,7 @@ storyRewards:
     reward_painter:
         title: Verven
         desc: >-
-            De <strong>verver</strong> is ontgrendeld - Onttrek wat kleurstoffen (net als met vormen) en combineer deze met een vorm in de verver om de vorm een kleur te geven!<br><br>PS: Ik werk aan een oplossing voor kleurenblinden!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Kleuren mengen
@@ -701,9 +701,9 @@ settings:
         autosaveInterval:
             title: Autosave Interval
             description: >-
-                Bepaalt hoe vaak het spel automatisch opslaat. Je kan het hier ook volledig 
+                Bepaalt hoe vaak het spel automatisch opslaat. Je kan het hier ook volledig
                 mee uitschakelen.
-         
+
             intervals:
                 one_minute: 1 Minuut
                 two_minutes: 2 Minuten
@@ -715,7 +715,7 @@ settings:
             title: Combacte gebouwinformatie
             description: >-
                 Informatie weergeven bij gebouwen wordt beperkt tot alleen hun 'ratios'. Anders
-                zie je een beschrijving en een afbeelding. 
+                zie je een beschrijving en een afbeelding.
         disableCutDeleteWarnings:
             title: Schakel knip/delete waarschuwingen uit.
             description: >-
@@ -724,6 +724,12 @@ settings:
         enableColorBlindHelper:
             title: Kleurenblindmodus
             description: Schakelt verschillende hulpmiddelen in zodat je het spel alsnog kunt spelen wanneer je kleurenblind bent.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Sneltoetsen
