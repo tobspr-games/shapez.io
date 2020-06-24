@@ -368,14 +368,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @param {Vector} tile
      * @param {boolean} suppressSound
      */
-    tryPlaceCurrentBuildingAt(tile, suppressSound = false) {
+    tryPlaceCurrentBuildingAt(tile, playSound = true) {
         if (this.root.camera.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
             // Dont allow placing in overview mode
             return;
         }
-
-        // Set sound to the opposite of suppressSound.
-        const sound = !suppressSound;
 
         const metaBuilding = this.currentMetaBuilding.get();
         const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
@@ -419,7 +416,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             }
 
             // Building has been placed, play sound
-            if (sound) {
+            if (playSound) {
                 this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
             }
 
@@ -467,10 +464,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 /*
                   Trys to place building.
                   Includes check to see if we should play sound.
+                  2nd Argument is playSound.
                 */
                 const placedBuilding = this.tryPlaceCurrentBuildingAt(
                     tile,
-                    i == 0 || trySound ? false : true
+                    i == 0 || trySound ? true : false
                 );
                 /*
                   If placedBuilding is false then the building didn't place.
