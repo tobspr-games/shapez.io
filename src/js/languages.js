@@ -83,7 +83,7 @@ export const LANGUAGES = {
 
     "zh-CN": {
         // simplified
-        name: "简体中文",
+        name: "中文简体",
         data: require("./built-temp/base-zh-CN.json"),
         code: "zh",
         region: "CN",
@@ -91,7 +91,7 @@ export const LANGUAGES = {
 
     "zh-TW": {
         // traditional
-        name: "中国传统的",
+        name: "中文繁體",
         data: require("./built-temp/base-zh-TW.json"),
         code: "zh",
         region: "TW",
