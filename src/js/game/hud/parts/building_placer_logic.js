@@ -366,8 +366,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Tries to place the current building at the given tile
      * @param {Vector} tile
+     * @param {Object} options
      */
-    tryPlaceCurrentBuildingAt(tile) {
+    tryPlaceCurrentBuildingAt(tile, options = {}) {
         if (this.root.camera.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
             // Dont allow placing in overview mode
             return;
@@ -388,6 +389,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             originalRotation: this.currentBaseRotation,
             building: this.currentMetaBuilding.get(),
             variant: this.currentVariant.get(),
+            sound: ((options.supressSound!=null)? !options.supressSound : true)
         });
 
         if (entity) {
@@ -447,12 +449,19 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      */
     executeDirectionLockedPlacement() {
         const path = this.computeDirectionLockPath();
+        let needSound = false;
         this.root.logic.performBulkOperation(() => {
             for (let i = 0; i < path.length; ++i) {
                 const { rotation, tile } = path[i];
 
                 this.currentBaseRotation = rotation;
-                this.tryPlaceCurrentBuildingAt(tile);
+                // Add supressSound flag
+                let addedBuilding = this.tryPlaceCurrentBuildingAt(tile, {supressSound: ((i==0||needSound)? false : true)});
+                if (!addedBuilding && (i==0 || needSound)){
+                  needSound = true;
+                }else {
+                  needSound = false;
+                }
             }
         });
     }
