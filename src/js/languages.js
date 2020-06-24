@@ -51,10 +51,10 @@ export const LANGUAGES = {
         region: "",
     },
     "es-419": {
-        name: "Español (Latinoamérica)",
+        name: "Español",
         data: require("./built-temp/base-es.json"),
         code: "es",
-        region: "419",
+        region: "",
     },
     "pl": {
         name: "Polski",
