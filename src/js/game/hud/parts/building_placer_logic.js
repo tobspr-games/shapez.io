@@ -128,9 +128,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
             return this.currentBaseRotationGeneral;
         }
-        const building = this.currentMetaBuilding.get();
-        if (building != undefined && this.preferredBaseRotations.hasOwnProperty(building.getId())) {
-            return this.preferredBaseRotations[building.getId()];
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (metaBuilding && this.preferredBaseRotations.hasOwnProperty(metaBuilding.getId())) {
+            return this.preferredBaseRotations[metaBuilding.getId()];
         } else {
             return this.currentBaseRotationGeneral;
         }
@@ -138,14 +138,15 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Sets the base rotation for the current meta-building.
+     * @param {number} rotation The new rotation/angle.
      */
     set currentBaseRotation(rotation) {
         if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
             this.currentBaseRotationGeneral = rotation;
         } else {
-            const building = this.currentMetaBuilding.get();
-            if (building != undefined) {
-                this.preferredBaseRotations[building.getId()] = rotation;
+            const metaBuilding = this.currentMetaBuilding.get();
+            if (metaBuilding) {
+                this.preferredBaseRotations[metaBuilding.getId()] = rotation;
             } else {
                 this.currentBaseRotationGeneral = rotation;
             }
