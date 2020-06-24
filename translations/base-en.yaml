@@ -400,6 +400,7 @@ ingame:
     shapeViewer:
         title: Layers
         empty: Empty
+        copyKey: Copy Key
 
     # Interactive tutorial
     interactiveTutorial:
@@ -721,8 +722,8 @@ settings:
             title: Vignette
             description: >-
                 Enables the vignette which darkens the screen corners and makes text easier to read.
-        
-        rotationByBuilding: 
+
+        rotationByBuilding:
             title: Rotation by building type
             description: >-
                 Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.

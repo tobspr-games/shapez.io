@@ -1,13 +1,43 @@
 #ingame_HUD_ShapeViewer {
-    .dialogInner {
-        @include S(width, 160px);
-    }
+    $dims: 170px;
+
     .content {
         display: flex;
-        flex-direction: column;
+        @include S(width, $dims);
         width: 100%;
-        align-items: center;
-        justify-items: center;
+        flex-direction: column;
+        overflow-x: hidden;
+
+        &[data-layers="3"],
+        &[data-layers="4"] {
+            @include S(width, 2 * $dims);
+            .renderArea {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                @include S(grid-row-gap, 15px);
+            }
+        }
+
+        .renderArea {
+            display: grid;
+            width: 100%;
+            @include S(grid-row-gap, 10px);
+            align-items: center;
+            justify-items: center;
+        }
+
+        .infoArea {
+            align-self: flex-end;
+            @include S(margin-top, 10px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            button {
+                @include S(margin, 0);
+                @include PlainText;
+            }
+        }
 
         .seperator {
             display: flex;
