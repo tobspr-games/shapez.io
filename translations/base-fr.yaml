@@ -727,6 +727,12 @@ settings:
         enableColorBlindHelper:
             title: Mode Daltonien
             description: Active divers outils qui permettent de jouer à ce jeu si vous êtes daltonien.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Contrôles

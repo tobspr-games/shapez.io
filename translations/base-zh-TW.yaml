@@ -156,7 +156,7 @@ mainMenu:
     browserWarning: >-
         很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用chrome或者獲取獨立版以得到更好的體驗。
 
-    savegameLevel: 第<x>關/<x>關
+    savegameLevel: Level <x>
     savegameLevelUnknown: 未知關卡
 
     contests:
@@ -258,7 +258,7 @@ dialogs:
     upgradesIntroduction:
         title: 解鎖建築升級
         desc: >-
-            </strong>你生產過的所有圖形都會被用來升級建築。升級菜單在屏幕右上角。 
+            </strong>你生產過的所有圖形都會被用來升級建築。升級菜單在屏幕右上角。
             <strong>不要銷毀你之前建造的工廠！
 
     massDeleteConfirm:
@@ -343,7 +343,7 @@ ingame:
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: 第<level>關 / <level>關
+        levelTitle: Level <level>
         completed: 完成
         unlockText: 解鎖<reward>！
         buttonNextLevel: 下一關
@@ -529,7 +529,7 @@ buildings:
             name: 上色機（四向）
             description: 為圖形的四個角塗上不同的顏色。
         mirrored:
-            name: &painter 上色機 (反向)
+            name: *painter
             description: *painter_desc
 
     trash:
@@ -558,7 +558,7 @@ storyRewards:
     reward_painter:
         title: 上色
         desc: >-
-            <strong>上色機</strong>已解鎖。和圖形一樣，從顏色礦脈中開採顏色，然後將在上色機中將顏色塗在圖形上。 <br><br>PS：我們正在開發色盲模式！
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: 混色
@@ -758,6 +758,13 @@ settings:
         enableColorBlindHelper:
             title: 色盲模式
             description: 如果您是色盲者，啟用了這設定，就可以玩遊戲了。
+
+        rotationByBuilding:
+            title: Rotation by building type
+            description: >-
+                Each building type remembers the rotation you last set it to individually.
+                This may be more comfortable if you frequently switch between placing
+                different building types.
 keybindings:
     title: 按鍵設置
     hint: >-

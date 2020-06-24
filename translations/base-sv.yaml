@@ -726,6 +726,12 @@ settings:
         enableColorBlindHelper:
             title: Färgblint läge
             description: Aktiverar olika verktyg som låter dig spela spelet om du är färbling.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Tangentbindningar

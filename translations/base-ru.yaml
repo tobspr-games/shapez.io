@@ -727,6 +727,12 @@ settings:
         enableColorBlindHelper:
             title: Режим Дальтоника
             description: Включает различные инструменты, которые позволяют играть в игру дальтоникам.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Настройки управления

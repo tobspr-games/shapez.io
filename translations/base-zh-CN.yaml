@@ -567,7 +567,7 @@ storyRewards:
 
     reward_mixer:
         title: 混合颜色
-        desc: 恭喜！你解锁了<strong>混合机</strong>。在这个建筑中将两个颜色混合在一起（加法混合）。
+        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
 
     reward_stacker:
         title: 堆叠
@@ -587,7 +587,7 @@ storyRewards:
 
     reward_miner_chainable:
         title: 链式开采机
-        desc: 恭喜！你解锁了<strong>开采机</strong>的<strong>链式</strong>变体。它可以将开采出来的资源<strong>传递</strong>给其他的开采机，使得资源提取更加高效！
+        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
 
     reward_underground_belt_tier_2:
         title: 二级隧道
@@ -595,8 +595,7 @@ storyRewards:
 
     reward_splitter_compact:
         title: 小型合流机
-        desc: >-
-            恭喜！你解锁了<strong>平衡机</strong>的<strong>小型合流机</strong>变体。它可以把两个输入合并到一个输出上。
+        desc: You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
 
     reward_cutter_quad:
         title: 四向切割机
@@ -612,7 +611,7 @@ storyRewards:
 
     reward_storage:
         title: 仓库
-        desc: 恭喜！你解锁了<strong>垃圾桶</strong>的<strong>仓库</strong>变体。它可以暂时储存一些材料，有容量上限。
+        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
 
     reward_freeplay:
         title: 自由模式
@@ -762,6 +761,12 @@ settings:
         enableColorBlindHelper:
             title: 色盲模式
             description: 提供一些分辨颜色的工具。目前当鼠标移至颜色资源上方时，屏幕上方会显示颜色名称。
+        rotationByBuilding:
+            title: Rotation by building type
+            description: >-
+                Each building type remembers the rotation you last set it to individually.
+                This may be more comfortable if you frequently switch between placing
+                different building types.
 
 keybindings:
     title: 按键设置

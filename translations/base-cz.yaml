@@ -708,6 +708,12 @@ settings:
         enableColorBlindHelper:
             title: Režim pro barvoslepé
             description: Zapné různé nástroje, které vám umožní hrát hru i pokud jste barvoslepí.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Klávesové zkratky
