@@ -7,6 +7,7 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { Math_min } from "../../core/builtins";
 import { createLogger } from "../../core/logging";
+import { Rectangle } from "../../core/rectangle";
 
 const logger = createLogger("systems/ejector");
 
@@ -14,23 +15,34 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemEjectorComponent]);
 
-        /**
-         * @type {Array<{
-         *  targetEntity: Entity,
-         *  sourceSlot: import("../components/item_ejector").ItemEjectorSlot,
-         *  destSlot: import("../components/item_acceptor").ItemAcceptorLocatedSlot
-         * }>}
-         */
-        this.cache = [];
-
         this.cacheNeedsUpdate = true;
 
         this.root.signals.entityAdded.add(this.invalidateCache, this);
         this.root.signals.entityDestroyed.add(this.invalidateCache, this);
+
+        /**
+         * @type {Rectangle[]}
+         */
+        this.smallCacheAreas = [];
     }
 
-    invalidateCache() {
+    /**
+     *
+     * @param {Entity} entity
+     */
+    invalidateCache(entity) {
+        if (!entity.components.StaticMapEntity) {
+            return;
+        }
+
         this.cacheNeedsUpdate = true;
+
+        // Optimize for the common case: adding or removing one building at a time. Clicking
+        // and dragging can cause up to 4 add/remove signals.
+        const staticComp = entity.components.StaticMapEntity;
+        const bounds = staticComp.getTileSpaceBounds();
+        const expandedBounds = bounds.expandedInAllDirections(2);
+        this.smallCacheAreas.push(expandedBounds);
     }
 
     /**
@@ -39,59 +51,102 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     recomputeCache() {
         logger.log("Recomputing cache");
 
-        const cache = [];
-
-        // Try to find acceptors for every ejector
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
-            const ejectorComp = entity.components.ItemEjector;
-            const staticComp = entity.components.StaticMapEntity;
-
-            // For every ejector slot, try to find an acceptor
-            for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorComp.slots.length; ++ejectorSlotIndex) {
-                const ejectorSlot = ejectorComp.slots[ejectorSlotIndex];
-
-                // Figure out where and into which direction we eject items
-                const ejectSlotWsTile = staticComp.localTileToWorld(ejectorSlot.pos);
-                const ejectSlotWsDirection = staticComp.localDirectionToWorld(ejectorSlot.direction);
-                const ejectSlotWsDirectionVector = enumDirectionToVector[ejectSlotWsDirection];
-                const ejectSlotTargetWsTile = ejectSlotWsTile.add(ejectSlotWsDirectionVector);
-
-                // Try to find the given acceptor component to take the item
-                const targetEntity = this.root.map.getTileContent(ejectSlotTargetWsTile);
-                if (!targetEntity) {
-                    // No consumer for item
-                    continue;
-                }
-
-                const targetAcceptorComp = targetEntity.components.ItemAcceptor;
-                const targetStaticComp = targetEntity.components.StaticMapEntity;
-                if (!targetAcceptorComp) {
-                    // Entity doesn't accept items
-                    continue;
-                }
-
-                const matchingSlot = targetAcceptorComp.findMatchingSlot(
-                    targetStaticComp.worldToLocalTile(ejectSlotTargetWsTile),
-                    targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection)
-                );
-
-                if (!matchingSlot) {
-                    // No matching slot found
-                    continue;
-                }
-
-                // Ok we found a connection
-                cache.push({
-                    targetEntity,
-                    sourceSlot: ejectorSlot,
-                    destSlot: matchingSlot,
-                });
+        let entryCount = 0;
+        if (this.smallCacheAreas.length <= 4) {
+            // Only recompute caches of entities inside the rectangles.
+            for (let i = 0; i < this.smallCacheAreas.length; i++) {
+                entryCount += this.recomputeAreaCaches(this.smallCacheAreas[i]);
+            }
+        } else {
+            // Try to find acceptors for every ejector
+            for (let i = 0; i < this.allEntities.length; ++i) {
+                const entity = this.allEntities[i];
+                entryCount += this.recomputeSingleEntityCache(entity);
             }
         }
+        logger.log("Found", entryCount, "entries to update");
 
-        this.cache = cache;
-        logger.log("Found", cache.length, "entries to update");
+        this.smallCacheAreas = [];
+    }
+
+    /**
+     *
+     * @param {Rectangle} area
+     */
+    recomputeAreaCaches(area) {
+        let entryCount = 0;
+        for (let x = area.x; x < area.right(); ++x) {
+            for (let y = area.y; y < area.bottom(); ++y) {
+                const entity = this.root.map.getTileContentXY(x, y);
+                if (entity && entity.components.ItemEjector) {
+                    entryCount += this.recomputeSingleEntityCache(entity);
+                }
+            }
+        }
+        return entryCount;
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     */
+    recomputeSingleEntityCache(entity) {
+        const ejectorComp = entity.components.ItemEjector;
+        const staticComp = entity.components.StaticMapEntity;
+
+        // Clear the old cache.
+        ejectorComp.cachedConnectedSlots = null;
+
+        // For every ejector slot, try to find an acceptor
+        let entryCount = 0;
+        for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorComp.slots.length; ++ejectorSlotIndex) {
+            const ejectorSlot = ejectorComp.slots[ejectorSlotIndex];
+
+            // Clear the old cache.
+            ejectorSlot.cachedDestSlot = null;
+            ejectorSlot.cachedTargetEntity = null;
+
+            // Figure out where and into which direction we eject items
+            const ejectSlotWsTile = staticComp.localTileToWorld(ejectorSlot.pos);
+            const ejectSlotWsDirection = staticComp.localDirectionToWorld(ejectorSlot.direction);
+            const ejectSlotWsDirectionVector = enumDirectionToVector[ejectSlotWsDirection];
+            const ejectSlotTargetWsTile = ejectSlotWsTile.add(ejectSlotWsDirectionVector);
+
+            // Try to find the given acceptor component to take the item
+            const targetEntity = this.root.map.getTileContent(ejectSlotTargetWsTile);
+            if (!targetEntity) {
+                // No consumer for item
+                continue;
+            }
+
+            const targetAcceptorComp = targetEntity.components.ItemAcceptor;
+            const targetStaticComp = targetEntity.components.StaticMapEntity;
+            if (!targetAcceptorComp) {
+                // Entity doesn't accept items
+                continue;
+            }
+
+            const matchingSlot = targetAcceptorComp.findMatchingSlot(
+                targetStaticComp.worldToLocalTile(ejectSlotTargetWsTile),
+                targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection)
+            );
+
+            if (!matchingSlot) {
+                // No matching slot found
+                continue;
+            }
+
+            // Ok we found a connection
+            if (ejectorComp.cachedConnectedSlots) {
+                ejectorComp.cachedConnectedSlots.push(ejectorSlot);
+            } else {
+                ejectorComp.cachedConnectedSlots = [ejectorSlot];
+            }
+            ejectorSlot.cachedTargetEntity = targetEntity;
+            ejectorSlot.cachedDestSlot = matchingSlot;
+            entryCount += 1;
+        }
+        return entryCount;
     }
 
     update() {
@@ -109,35 +164,45 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         }
 
         // Go over all cache entries
-        for (let i = 0; i < this.cache.length; ++i) {
-            const { sourceSlot, destSlot, targetEntity } = this.cache[i];
-            const item = sourceSlot.item;
-
-            if (!item) {
-                // No item available to be ejected
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const sourceEntity = this.allEntities[i];
+            const sourceEjectorComp = sourceEntity.components.ItemEjector;
+            if (!sourceEjectorComp.cachedConnectedSlots) {
                 continue;
             }
+            for (let j = 0; j < sourceEjectorComp.cachedConnectedSlots.length; j++) {
+                const sourceSlot = sourceEjectorComp.cachedConnectedSlots[j];
+                const destSlot = sourceSlot.cachedDestSlot;
+                const targetEntity = sourceSlot.cachedTargetEntity;
 
-            // Advance items on the slot
-            sourceSlot.progress = Math_min(1, sourceSlot.progress + progressGrowth);
+                const item = sourceSlot.item;
 
-            // Check if we are still in the process of ejecting, can't proceed then
-            if (sourceSlot.progress < 1.0) {
-                continue;
-            }
+                if (!item) {
+                    // No item available to be ejected
+                    continue;
+                }
 
-            // Check if the target acceptor can actually accept this item
-            const targetAcceptorComp = targetEntity.components.ItemAcceptor;
-            if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
-                continue;
-            }
+                // Advance items on the slot
+                sourceSlot.progress = Math_min(1, sourceSlot.progress + progressGrowth);
 
-            // Try to hand over the item
-            if (this.tryPassOverItem(item, targetEntity, destSlot.index)) {
-                // Handover successful, clear slot
-                targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
-                sourceSlot.item = null;
-                continue;
+                // Check if we are still in the process of ejecting, can't proceed then
+                if (sourceSlot.progress < 1.0) {
+                    continue;
+                }
+
+                // Check if the target acceptor can actually accept this item
+                const targetAcceptorComp = targetEntity.components.ItemAcceptor;
+                if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
+                    continue;
+                }
+
+                // Try to hand over the item
+                if (this.tryPassOverItem(item, targetEntity, destSlot.index)) {
+                    // Handover successful, clear slot
+                    targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
+                    sourceSlot.item = null;
+                    continue;
+                }
             }
         }
     }
