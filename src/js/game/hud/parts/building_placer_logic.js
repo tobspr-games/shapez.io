@@ -263,8 +263,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const tile = worldPos.toTileSpace();
         const contents = this.root.map.getTileContent(tile);
         if (contents) {
-            this.root.logic.tryDeleteBuilding(contents);
-            this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
+            if (this.root.logic.tryDeleteBuilding(contents)) {
+                this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
+            }
         }
     }
 
