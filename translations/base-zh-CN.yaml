@@ -377,14 +377,14 @@ ingame:
         title: 统计信息
         dataSources:
             stored:
-                title: 储存
-                description: 显示基地中每种图形储存的数量。
+                title: 已交付
+                description: 显示基地中每种图形已交付且未使用的数量。
             produced:
                 title: 生产
                 description: 显示所有正在被生产的图形数量，包括中间产物。
             delivered:
                 title: 送达
-                description: 显示图形送达基地的速度。
+                description: 显示图形送达基地并交付的速度。
         noShapesProduced: 你还没有生产任何图形。
 
         # Displays the shapes per minute, e.g. '523 / m'
