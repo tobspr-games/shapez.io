@@ -1,7 +1,6 @@
 // Globals defined by webpack
 
 declare const G_IS_DEV: boolean;
-declare const G_IS_PROD: boolean;
 declare function assert(condition: boolean | object | string, ...errorMessage: string[]): void;
 declare function assertAlways(condition: boolean | object | string, ...errorMessage: string[]): void;
 

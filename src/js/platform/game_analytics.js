@@ -25,9 +25,9 @@ export class GameAnalyticsInterface {
     handleGameStarted() {}
 
     /**
-     * @param {ShapeDefinition} definition
+     * Handles a resumed game
      */
-    handleShapeDelivered(definition) {}
+    handleGameResumed() {}
 
     /**
      * Handles the given level completed

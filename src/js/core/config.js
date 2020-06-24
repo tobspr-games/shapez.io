@@ -9,7 +9,7 @@ export const IS_DEBUG =
 
 export const IS_DEMO = queryParamOptions.fullVersion
     ? false
-    : (G_IS_PROD && !G_IS_STANDALONE) ||
+    : (!G_IS_DEV && !G_IS_STANDALONE) ||
       (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
 
 export const SUPPORT_TOUCH = false;
