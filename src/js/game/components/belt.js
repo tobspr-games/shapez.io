@@ -5,6 +5,7 @@ import { BaseItem } from "../base_item";
 import { Vector, enumDirection } from "../../core/vector";
 import { Math_PI, Math_sin, Math_cos } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
+import { Entity } from "../entity";
 
 export class BeltComponent extends Component {
     static getId() {
@@ -12,6 +13,7 @@ export class BeltComponent extends Component {
     }
 
     static getSchema() {
+        // The followUpCache field is not serialized.
         return {
             direction: types.string,
             sortedItems: types.array(types.pair(types.float, types.obj(gItemRegistry))),
@@ -34,6 +36,9 @@ export class BeltComponent extends Component {
 
         /** @type {Array<[number, BaseItem]>} */
         this.sortedItems = [];
+
+        /** @type {Entity} */
+        this.followUpCache = null;
     }
 
     /**
