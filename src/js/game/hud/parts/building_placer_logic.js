@@ -374,7 +374,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             return;
         }
 
-        // Set sound to true if no options.suppressSound or set to opposite of options.suppressSound.
+        // Set sound to the opposite of suppressSound.
         const sound = !suppressSound;
 
         const metaBuilding = this.currentMetaBuilding.get();
