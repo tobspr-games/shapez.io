@@ -529,7 +529,7 @@ storyRewards:
     reward_painter:
         title: Maling
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            <strong>Maleren</strong> har blitt tilgjengelig - Hent ut fargeressurser (på samme måte som du gjør med objekter) og kombiner det med et objekt i maleren for å male de!<br><br>PS: Hvis du er fargeblind, så er det en <strong>modus for fargeblinde</strong> i instillinger!
 
     reward_mixer:
         title: Fargemikser
@@ -727,11 +727,11 @@ settings:
             title: Fargeblind Modus
             description: Aktiverer forskjellige verktøy som lar deg spille spillet om du er fargeblind.
         rotationByBuilding:
-          title: Rotation by building type
+          title: Roter basert på bygningstype
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            Hver bygning type husker rotasjonen du sist brukte individuelt.
+            Dette kan være mer komfortabelt hvis du ofte veksler mellom plassering
+            av forskjellige bygninger.
 
 keybindings:
     title: Hurtigtaster
