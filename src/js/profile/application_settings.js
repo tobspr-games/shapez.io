@@ -481,7 +481,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 17;
+        return 18;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -553,6 +553,7 @@ export class ApplicationSettings extends ReadWriteProxy {
             data.settings.enableColorBlindHelper = false;
             data.version = 17;
         }
+
         if (data.version < 18) {
             data.settings.rotationByBuilding = true;
             data.version = 18;
