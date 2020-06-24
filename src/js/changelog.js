@@ -1,5 +1,10 @@
 export const CHANGELOG = [
     {
+        version: "1.1.18",
+        date: "24.06.2020",
+        entries: ["Added chinese (traditional) translation", "Updated translations"],
+    },
+    {
         version: "1.1.17",
         date: "22.06.2020",
         entries: [
