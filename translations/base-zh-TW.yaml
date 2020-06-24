@@ -359,7 +359,7 @@ ingame:
         buttonUnlock: Upgrade
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: <x>級
 
         # The roman number for each tier
         # Chinese translation： Chinese characters for each tier
