@@ -251,6 +251,7 @@ export const allApplicationSettings = [
     new BoolSetting("vignette", categoryGame, (app, value) => {}),
     new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
     new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
+    new BoolSetting("rotationByBuilding", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -277,6 +278,7 @@ class SettingsStorage {
         this.vignette = true;
         this.compactBuildingInfo = false;
         this.disableCutDeleteWarnings = false;
+        this.rotationByBuilding = true;
 
         this.enableColorBlindHelper = false;
 
@@ -550,6 +552,10 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 17) {
             data.settings.enableColorBlindHelper = false;
             data.version = 17;
+        }
+        if (data.version < 18) {
+            data.settings.rotationByBuilding = true;
+            data.version = 18;
         }
 
         return ExplainedResult.good();
