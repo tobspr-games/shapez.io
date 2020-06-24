@@ -1,13 +1,13 @@
+import { Math_min } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { createLogger } from "../../core/logging";
+import { Rectangle } from "../../core/rectangle";
 import { enumDirectionToVector, Vector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { Math_min } from "../../core/builtins";
-import { createLogger } from "../../core/logging";
-import { Rectangle } from "../../core/rectangle";
 
 const logger = createLogger("systems/ejector");
 
@@ -15,71 +15,81 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemEjectorComponent]);
 
-        this.cacheNeedsUpdate = true;
-
-        this.root.signals.entityAdded.add(this.invalidateCache, this);
-        this.root.signals.entityDestroyed.add(this.invalidateCache, this);
+        this.root.signals.entityAdded.add(this.checkForCacheInvalidation, this);
+        this.root.signals.entityDestroyed.add(this.checkForCacheInvalidation, this);
+        this.root.signals.postLoadHook.add(this.recomputeCache, this);
 
         /**
-         * @type {Rectangle[]}
+         * @type {Rectangle}
          */
-        this.smallCacheAreas = [];
+        this.areaToRecompute = null;
     }
 
     /**
      *
      * @param {Entity} entity
      */
-    invalidateCache(entity) {
+    checkForCacheInvalidation(entity) {
+        if (!this.root.gameInitialized) {
+            return;
+        }
         if (!entity.components.StaticMapEntity) {
             return;
         }
-
-        this.cacheNeedsUpdate = true;
 
         // Optimize for the common case: adding or removing one building at a time. Clicking
         // and dragging can cause up to 4 add/remove signals.
         const staticComp = entity.components.StaticMapEntity;
         const bounds = staticComp.getTileSpaceBounds();
         const expandedBounds = bounds.expandedInAllDirections(2);
-        this.smallCacheAreas.push(expandedBounds);
+
+        if (this.areaToRecompute) {
+            this.areaToRecompute = this.areaToRecompute.getUnion(expandedBounds);
+        } else {
+            this.areaToRecompute = expandedBounds;
+        }
     }
 
     /**
      * Precomputes the cache, which makes up for a huge performance improvement
      */
     recomputeCache() {
-        logger.log("Recomputing cache");
-
-        let entryCount = 0;
-        if (this.smallCacheAreas.length <= 4) {
-            // Only recompute caches of entities inside the rectangles.
-            for (let i = 0; i < this.smallCacheAreas.length; i++) {
-                entryCount += this.recomputeAreaCaches(this.smallCacheAreas[i]);
-            }
+        if (this.areaToRecompute) {
+            logger.log("Recomputing cache using rectangle");
+            this.recomputeAreaCache(this.areaToRecompute);
+            this.areaToRecompute = null;
         } else {
+            logger.log("Full cache recompute");
             // Try to find acceptors for every ejector
             for (let i = 0; i < this.allEntities.length; ++i) {
                 const entity = this.allEntities[i];
-                entryCount += this.recomputeSingleEntityCache(entity);
+                this.recomputeSingleEntityCache(entity);
             }
         }
-        logger.log("Found", entryCount, "entries to update");
-
-        this.smallCacheAreas = [];
     }
 
     /**
      *
      * @param {Rectangle} area
      */
-    recomputeAreaCaches(area) {
+    recomputeAreaCache(area) {
         let entryCount = 0;
+
+        logger.log("Recomputing area:", area.x, area.y, "/", area.w, area.h);
+
+        // Store the entities we already recomputed, so we don't do work twice
+        const recomputedEntities = new Set();
+
         for (let x = area.x; x < area.right(); ++x) {
             for (let y = area.y; y < area.bottom(); ++y) {
                 const entity = this.root.map.getTileContentXY(x, y);
-                if (entity && entity.components.ItemEjector) {
-                    entryCount += this.recomputeSingleEntityCache(entity);
+                if (entity) {
+                    // Recompute the entity in case its relevant for this system and it
+                    // hasn't already been computed
+                    if (!recomputedEntities.has(entity.uid) && entity.components.ItemEjector) {
+                        recomputedEntities.add(entity.uid);
+                        this.recomputeSingleEntityCache(entity);
+                    }
                 }
             }
         }
@@ -87,7 +97,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     /**
-     *
      * @param {Entity} entity
      */
     recomputeSingleEntityCache(entity) {
@@ -97,8 +106,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         // Clear the old cache.
         ejectorComp.cachedConnectedSlots = null;
 
-        // For every ejector slot, try to find an acceptor
-        let entryCount = 0;
         for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorComp.slots.length; ++ejectorSlotIndex) {
             const ejectorSlot = ejectorComp.slots[ejectorSlotIndex];
 
@@ -144,14 +151,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
             ejectorSlot.cachedTargetEntity = targetEntity;
             ejectorSlot.cachedDestSlot = matchingSlot;
-            entryCount += 1;
         }
-        return entryCount;
     }
 
     update() {
-        if (this.cacheNeedsUpdate) {
-            this.cacheNeedsUpdate = false;
+        if (this.areaToRecompute) {
             this.recomputeCache();
         }
 
