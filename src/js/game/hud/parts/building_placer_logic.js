@@ -11,6 +11,8 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
+import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
+import { enumHubGoalRewards } from "../../tutorial_goals";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -283,10 +285,18 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const tile = worldPos.toTileSpace();
-        const contents = this.root.map.getTileContent(tile);
 
+        const contents = this.root.map.getTileContent(tile);
         if (!contents) {
-            this.currentMetaBuilding.set(null);
+            const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
+            if (tileBelow) {
+                this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
+                if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
+                    return this.currentVariant.set(enumMinerVariants.chainable);
+                }
+            } else {
+                this.currentMetaBuilding.set(null);
+            }
             return;
         }
 
