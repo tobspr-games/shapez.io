@@ -125,26 +125,30 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @returns {number}
      */
     get currentBaseRotation() {
-        const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
-        if (!rotationByBuilding) {
+        if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
             return this.currentBaseRotationGeneral;
         }
-        const id = this.currentMetaBuilding.get().getId();
-        return this.preferredBaseRotations[id] == null
-            ? this.currentBaseRotationGeneral
-            : this.preferredBaseRotations[id];
+        const building = this.currentMetaBuilding.get();
+        if (building != undefined && this.preferredBaseRotations.hasOwnProperty(building.getId())) {
+            return this.preferredBaseRotations[building.getId()];
+        } else {
+            return this.currentBaseRotationGeneral;
+        }
     }
 
     /**
      * Sets the base rotation for the current meta-building.
      */
     set currentBaseRotation(rotation) {
-        const rotationByBuilding = this.root.app.settings.getAllSettings().rotationByBuilding;
-        if (!rotationByBuilding) {
+        if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
             this.currentBaseRotationGeneral = rotation;
         } else {
-            const id = this.currentMetaBuilding.get().getId();
-            this.preferredBaseRotations[id] = rotation;
+            const building = this.currentMetaBuilding.get();
+            if (building != undefined) {
+                this.preferredBaseRotations[building.getId()] = rotation;
+            } else {
+                this.currentBaseRotationGeneral = rotation;
+            }
         }
     }
 
