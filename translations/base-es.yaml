@@ -43,24 +43,24 @@ steamPage:
 
         [list]
             [*] Puntos de referencia en el mapa
-            [*] Ilimitadas partidas guardadas
+            [*] Partidas guardadas ilimitadas
             [*] Modo nocturno
             [*] Más opciones
             [*] Permitirme seguir desarrollando shapez.io ❤️
             [*] Más características en el futuro!
         [/list]
 
-        [b]Características planeadas & sugerencias de la comunidad[/b]
+        [b]Características planeadas y sugerencias de la comunidad[/b]
 
         Este juego es de código abierto - Cualquiera puede contribuir! A parte de eso, escucho [b]mucho[/b] a la comunidad! Intento leer todas las sugerencias e intento tener en cuenta todo el foodback posible.
         [list]
-            [*] Modo historia en el que los edificios cuesten figuras
+            [*] Modo historia en el que los edificios tengan un coste de figuras
             [*] Más niveles y edificios (exclusivos del juego completo)
             [*] Mapas diferentes y tal vez obstáculos en el mapa
             [*] Configuración en la creación del mapa (Editar el número y tamaño de los recursos, la semilla, y más)
             [*] Más tipos de formas
             [*] Mejoras de rendimiento (Aunque el juego ya funciona muy bien!)
-            [*] Modo para daltónicos
+            [*] Modo para el daltonismo
             [*] Y mucho más!
         [/list]
 
@@ -107,7 +107,7 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
+        space: ESPACIO
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
@@ -119,7 +119,7 @@ mainMenu:
     play: Jugar
     continue: Continuar
     newGame: Nuevo Juego
-    changelog: Registro de cambios
+    changelog: Historial de cambios
     importSavegame: Importar
     openSourceHint: ¡Este juego es de código abierto!
     discordLink: Servidor de Discord Oficial
@@ -164,7 +164,7 @@ dialogs:
         cancel: Cancelar
         later: Más Tarde
         restart: Volver A Empezar
-        reset: Resetear
+        reset: Reiniciar
         getStandalone: Obtener Juego Completo
         deleteGame: Sé Lo Que Hago
         viewUpdate: Ver Actualización
@@ -206,8 +206,8 @@ dialogs:
         desc: Presiona la tecla o botón del ratón que quieras asignar o escape para cancelar.
 
     resetKeybindingsConfirmation:
-        title: Resetear atajos de teclado
-        desc: Esto reseteará todos los atajos de teclado a los valores por defecto. Por favor, confirma.
+        title: Reiniciar atajos de teclado
+        desc: Esto devolverá todos los atajos de teclado a los valores por defecto. Por favor, confirma.
 
     keybindingsResetOk:
         title: Reseteo de los atajos de teclado
@@ -411,7 +411,7 @@ ingame:
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Cintas transportadoras, Distribuidores & Túneles
+        name: Cintas transportadoras, Distribuidores y Túneles
         description: Velocidad x<currentMult> → x<newMult>
     miner:
         name: Extracción
@@ -527,8 +527,7 @@ storyRewards:
 
     reward_painter:
         title: Pintor
-        desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+        desc:  El <strong>pintor</strong> ha sido desbloqueado - ¡Extrae vetas de color (igual que lo haces con las figuras) y combínalas con una figura en el pintor para colorearlas! <br><br>PD: Si tienes alguna forma de daltonismo, ¡hay un <strong>modo daltonismo</strong> en las configuraciones!
 
     reward_mixer:
         title: Mezclador de Color
@@ -590,11 +589,11 @@ storyRewards:
     no_reward:
         title: Siguiente Nivel
         desc: >-
-            Este nivel no da recompensa, pero el siguiente si! <br><br> PS: Mejor no destruyas la fábrica que tienes - ¡Necesitarás <strong>todas</strong> esas figuras más adelante para <strong>desbloquear mejoras</strong>!
+            Este nivel no da recompensa, ¡pero el siguiente si! <br><br> PS: Mejor no destruyas la fábrica que tienes - ¡Necesitarás <strong>todas</strong> esas figuras más adelante para <strong>desbloquear mejoras</strong>!
     no_reward_freeplay:
         title: Siguiente Nivel
         desc: >-
-            ¡Felicidades! ¡Por cierto, más contenido está planeado para el juego completo!
+            ¡Felicidades! ¡Por cierto, hay más contenido está planeado para el juego completo!
 
 settings:
     title: Opciones
@@ -708,21 +707,19 @@ settings:
         compactBuildingInfo:
             title: Información Compacta de Edificios
             description: >-
-                Acorta la caja de información mostrando solo sus ratios. Si no, se mostrara una descripción y una imagen.
+                Acorta la caja de información mostrando solo sus ratios. Si no, se mostrará una descripción y una imagen.
         disableCutDeleteWarnings:
             title: Deshabilitar las advertencias de Cortar/Eliminar
             description: >-
-                Deshabilita los dialogos de advertencia que se muestran cuando se cortan/eliminan mas de 100 elementos.
+                Deshabilita los diálogos de advertencia que se muestran cuando se cortan/eliminan mas de 100 elementos.
 
         enableColorBlindHelper:
-            title: Modo para Daltonicos
-            description: Activa varias herramientas que permiten jugar si eres daltonico.
+            title: Modo para Daltonismo
+            description: Activa varias herramientas que permiten jugar si tienes alguna forma de daltonismo
         rotationByBuilding:
-          title: Rotation by building type
+          title: Rotación por tipo de edificio
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            Cada tipo de edificio recuerda la última rotación que seleccionaste individualmente. Esto puedo se mucho más cómodo si sueles cambiar a menudo entre colocar diferentes tipos de edificio.
 
 keybindings:
     title: Atajos de Teclado
@@ -811,7 +808,7 @@ about:
         de Factorio este juego nunca existiria.
 
 changelog:
-    title: Registro de Cambios
+    title: Historial de Cambios
 
 demo:
     features:
