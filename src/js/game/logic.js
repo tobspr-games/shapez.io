@@ -186,7 +186,6 @@ export class GameLogic {
                 variant,
             });
 
-            this.root.soundProxy.playUi(building.getPlacementSound());
             return entity;
         }
         return null;

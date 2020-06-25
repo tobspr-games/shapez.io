@@ -516,15 +516,32 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * releasing the mouse
      */
     executeDirectionLockedPlacement() {
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (!metaBuilding) {
+            // No active building
+            return;
+        }
+
+        // Get path to place
         const path = this.computeDirectionLockPath();
+
+        // Store if we placed anything
+        let anythingPlaced = false;
+
+        // Perform this in bulk to avoid recalculations
         this.root.logic.performBulkOperation(() => {
             for (let i = 0; i < path.length; ++i) {
                 const { rotation, tile } = path[i];
-
                 this.currentBaseRotation = rotation;
-                this.tryPlaceCurrentBuildingAt(tile);
+                if (this.tryPlaceCurrentBuildingAt(tile)) {
+                    anythingPlaced = true;
+                }
             }
         });
+
+        if (anythingPlaced) {
+            this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+        }
     }
 
     /**
@@ -647,7 +664,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
             // Place initial building, but only if direction lock is not active
             if (!this.isDirectionLockActive) {
-                this.tryPlaceCurrentBuildingAt(this.lastDragTile);
+                if (this.tryPlaceCurrentBuildingAt(this.lastDragTile)) {
+                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+                }
             }
             return STOP_PROPAGATION;
         }
@@ -724,16 +743,25 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 var sy = y0 < y1 ? 1 : -1;
                 var err = dx - dy;
 
+                let anythingPlaced = false;
+                let anythingDeleted = false;
+
                 while (this.currentlyDeleting || this.currentMetaBuilding.get()) {
                     if (this.currentlyDeleting) {
+                        // Deletion
                         const contents = this.root.map.getTileContentXY(x0, y0);
                         if (contents && !contents.queuedForDestroy && !contents.destroyed) {
-                            this.root.logic.tryDeleteBuilding(contents);
-                            this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
+                            if (this.root.logic.tryDeleteBuilding(contents)) {
+                                anythingDeleted = true;
+                            }
                         }
                     } else {
-                        this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
+                        // Placement
+                        if (this.tryPlaceCurrentBuildingAt(new Vector(x0, y0))) {
+                            anythingPlaced = true;
+                        }
                     }
+
                     if (x0 === x1 && y0 === y1) break;
                     var e2 = 2 * err;
                     if (e2 > -dy) {
@@ -744,6 +772,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                         err += dx;
                         y0 += sy;
                     }
+                }
+
+                if (anythingPlaced) {
+                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+                }
+                if (anythingDeleted) {
+                    this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
                 }
             }
 

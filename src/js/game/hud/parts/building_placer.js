@@ -372,7 +372,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     size: 12,
                     offsetY:
                         -globalConfig.halfTileSize -
-                        clamp((this.root.time.now() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
+                        clamp((this.root.time.realtimeNow() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
                         globalConfig.halfTileSize,
                 });
             }
