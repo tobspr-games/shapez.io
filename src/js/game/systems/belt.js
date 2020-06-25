@@ -256,7 +256,7 @@ export class BeltSystem extends GameSystemWithFilter {
                     maxProgress = Math.min(2, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
 
                     // Useful check, but hurts performance
-                    // assert(maxProgress >= 0.0, "max progress < 0 (I)");
+                    // assert(maxProgress >= 0.0, "max progress < 0 (I) (" + maxProgress + ")");
                 }
             }
 
@@ -280,12 +280,16 @@ export class BeltSystem extends GameSystemWithFilter {
                 const progressAndItem = items[itemIndex];
 
                 progressAndItem[0] = Math.min(maxProgress, progressAndItem[0] + speedMultiplier * beltSpeed);
+                assert(progressAndItem[0] >= 0, "Bad progress: " + progressAndItem[0]);
 
                 if (progressAndItem[0] >= 1.0) {
                     if (beltComp.followUpCache) {
                         const followUpBelt = beltComp.followUpCache.components.Belt;
                         if (followUpBelt.canAcceptItem()) {
-                            followUpBelt.takeItem(progressAndItem[1], progressAndItem[0] - takeoverOffset);
+                            followUpBelt.takeItem(
+                                progressAndItem[1],
+                                Math_max(0, progressAndItem[0] - takeoverOffset)
+                            );
                             items.splice(itemIndex, 1);
                         } else {
                             // Well, we couldn't really take it to a follow up belt, keep it at
