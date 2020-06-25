@@ -717,7 +717,7 @@ settings:
                 Informatie weergeven bij gebouwen wordt beperkt tot alleen hun 'ratios'. Anders
                 zie je een beschrijving en een afbeelding.
         disableCutDeleteWarnings:
-            title: Schakel knip/delete waarschuwingen uit.
+            title: Schakel knip/delete waarschuwingen uit
             description: >-
                 Schakelt de waarschuwing uit die wordt weergegeven wanneer je meer dan 100 dingen probeert te
                 knippen/deleten.
