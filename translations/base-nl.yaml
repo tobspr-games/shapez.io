@@ -694,7 +694,7 @@ settings:
                 Wanneer dit aan staat zullen tunnels automatisch onnodige lopende banden verwijderen.
                 Ook kun je dan tunnels slepen en onnodige tunnels worden ook verwijderd.
         vignette:
-            title: Vignette
+            title: Vignet
             description: >-
                 Schakelt de vignet in, wat de hoeken van het scherm donkerder maakt zodat de tekst makkelijker te lezen is.
 
@@ -725,11 +725,11 @@ settings:
             title: Kleurenblindmodus
             description: Schakelt verschillende hulpmiddelen in zodat je het spel alsnog kunt spelen wanneer je kleurenblind bent.
         rotationByBuilding:
-          title: Rotation by building type
+          title: Rotatie per type gebouw
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            Elk type gebouw onthoud apart de rotatie waarin je het voor het laatst geplaatst hebt. 
+            Dit kan handig zijn wanneer je vaak tussen verschillende 
+            soorten gebouwen wisselt.
 
 keybindings:
     title: Sneltoetsen
