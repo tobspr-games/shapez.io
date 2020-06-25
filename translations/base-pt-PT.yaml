@@ -287,10 +287,10 @@ ingame:
         pasteLastBlueprint: Colar o último blueprint
         lockBeltDirection: Ativa o planeamento de tapetes
         plannerSwitchSide: Lado de rotação do planeamento
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        cutSelection: Cortar
+        copySelection: Copiar
+        clearSelection: Cancelar
+        pipette: Pipeta
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -398,17 +398,17 @@ ingame:
                 Isto <strong>NÃO</strong> é um jogo idle! Constrói mais extratores e tapetes para atingir o objetivo mais rapidamente.<br><br>Dica: Pressiona <strong>SHIFT</strong> para colocar vários extratores, e usa <strong>R</strong> para os rodar.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: Vermelho
+        green: Verde
+        blue: Azul
+        yellow: Amarelo
+        purple: Roxo
+        cyan: Azul-bebé
+        white: Branco
+        uncolored: Sem cor
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Camadas
+        empty: Vazio
 
 # All shop upgrades
 shopUpgrades:
@@ -529,7 +529,7 @@ storyRewards:
     reward_painter:
         title: Pintura
         desc: >-
-            O <strong>Pintor</strong> foi desbloqueado - Extrai alguns pigmentos coloridos (tal como fazes com as formas) e combina-os com uma forma no pintor para a colorir!<br><br>PS: Se fores daltónico, já estou a trabalhar para encontrar uma solução!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Mistura de Cores
@@ -679,14 +679,14 @@ settings:
                 Se ativado, dá dicas e tutoriais de apoio ao jogo. Adicionalmente, esconde certos elementos da interface do utilizador até ao nível em que são desbloqueados de forma a simplificar o início do jogo.
 
         movementSpeed:
-            title: Velociade de movimentação
+            title: Velocidade de movimentação
             description: Define quão rápida é a movimentação usando o teclado.
             speeds:
                 super_slow: Muito lenta
                 slow: Lenta
                 regular: Média
-                fast: Rápiada
-                super_fast: Muito rádida
+                fast: Rápida
+                super_fast: Muito rápida
                 extremely_fast: Extremamente rápida
         enableTunnelSmartplace:
             title: Túneis inteligentes
@@ -700,31 +700,37 @@ settings:
                 mais fácil.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Intervalo de gravação automática
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Define o quão frequentemente o jogo grava automaticamente. Também podes desativar
+                aqui.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minuto
+                two_minutes: 2 Minutos
+                five_minutes: 5 Minutos
+                ten_minutes: 10 Minutos
+                twenty_minutes: 20 Minutos
+                disabled: Desligado
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Informações de construções compactas
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Encurta caixas de informação mostrando apenas os respetivos rácios. Caso contrário
+                é mostrada a descrição e a imagem.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Desativar Avisos de Corte/Eliminação
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Desativa os avisos mostrados quando é feito o corte ou a eliminação de mais de 100
+                entidades.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Modo Daltónico
+            description: Ativa várias ferramentas para daltónicos.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Atalhos
@@ -791,7 +797,7 @@ keybindings:
         mapMoveFaster: Mover rapidamente
         lockBeltDirection: Ativa o planeamento de tapetes
         switchDirectionLockSide: "Planeador: Troca o lado"
-        pipette: Pipette
+        pipette: Pipeta
 about:
     title: Sobre o jogo
     body: >-

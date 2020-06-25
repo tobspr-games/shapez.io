@@ -46,6 +46,7 @@ export class Rectangle {
     }
 
     /**
+     * Returns if a intersects b
      * @param {Rectangle} a
      * @param {Rectangle} b
      */
@@ -74,7 +75,21 @@ export class Rectangle {
         return new Rectangle(minX, minY, maxX - minX, maxY - minY);
     }
 
-    // Ensures the rectangle contains the given square
+    /**
+     * Copies this instance
+     * @returns {Rectangle}
+     */
+    clone() {
+        return new Rectangle(this.x, this.y, this.w, this.h);
+    }
+
+    /**
+     * Ensures the rectangle contains the given square
+     * @param {number} centerX
+     * @param {number} centerY
+     * @param {number} halfWidth
+     * @param {number} halfHeight
+     */
     extendBySquare(centerX, centerY, halfWidth, halfHeight) {
         if (this.isEmpty()) {
             // Just assign values since this rectangle is empty
@@ -90,10 +105,19 @@ export class Rectangle {
         }
     }
 
+    /**
+     * Returns if this rectangle is empty
+     * @returns {boolean}
+     */
     isEmpty() {
         return epsilonCompare(this.w * this.h, 0);
     }
 
+    /**
+     * Returns if this rectangle is equal to the other while taking an epsilon into account
+     * @param {Rectangle} other
+     * @param {number} epsilon
+     */
     equalsEpsilon(other, epsilon) {
         return (
             epsilonCompare(this.x, other.x, epsilon) &&
@@ -103,71 +127,126 @@ export class Rectangle {
         );
     }
 
+    /**
+     * @returns {number}
+     */
     left() {
         return this.x;
     }
 
+    /**
+     * @returns {number}
+     */
     right() {
         return this.x + this.w;
     }
 
+    /**
+     * @returns {number}
+     */
     top() {
         return this.y;
     }
 
+    /**
+     * @returns {number}
+     */
     bottom() {
         return this.y + this.h;
     }
 
+    /**
+     * Returns Top, Right, Bottom, Left
+     * @returns {[number, number, number, number]}
+     */
     trbl() {
         return [this.y, this.right(), this.bottom(), this.x];
     }
 
+    /**
+     * Returns the center of the rect
+     * @returns {Vector}
+     */
     getCenter() {
         return new Vector(this.x + this.w / 2, this.y + this.h / 2);
     }
 
+    /**
+     * Sets the right side of the rect without moving it
+     * @param {number} right
+     */
     setRight(right) {
         this.w = right - this.x;
     }
 
+    /**
+     * Sets the bottom side of the rect without moving it
+     * @param {number} bottom
+     */
     setBottom(bottom) {
         this.h = bottom - this.y;
     }
 
-    // Sets top while keeping bottom
+    /**
+     * Sets the top side of the rect without scaling it
+     * @param {number} top
+     */
     setTop(top) {
         const bottom = this.bottom();
         this.y = top;
         this.setBottom(bottom);
     }
 
-    // Sets left while keeping right
+    /**
+     * Sets the left side of the rect without scaling it
+     * @param {number} left
+     */
     setLeft(left) {
         const right = this.right();
         this.x = left;
         this.setRight(right);
     }
 
+    /**
+     * Returns the top left point
+     * @returns {Vector}
+     */
     topLeft() {
         return new Vector(this.x, this.y);
     }
 
+    /**
+     * Returns the bottom left point
+     * @returns {Vector}
+     */
     bottomRight() {
         return new Vector(this.right(), this.bottom());
     }
 
+    /**
+     * Moves the rectangle by the given parameters
+     * @param {number} x
+     * @param {number} y
+     */
     moveBy(x, y) {
         this.x += x;
         this.y += y;
     }
 
+    /**
+     * Moves the rectangle by the given vector
+     * @param {Vector} vec
+     */
     moveByVector(vec) {
         this.x += vec.x;
         this.y += vec.y;
     }
 
-    // Returns a scaled version which also scales the position of the rectangle
+    /**
+     * Scales every parameter (w, h, x, y) by the given factor. Useful to transform from world to
+     * tile space and vice versa
+     * @param {number} factor
+     */
     allScaled(factor) {
         return new Rectangle(this.x * factor, this.y * factor, this.w * factor, this.h * factor);
     }
@@ -177,12 +256,14 @@ export class Rectangle {
      * @param {number} amount
      * @returns {Rectangle} new rectangle
      */
-
     expandedInAllDirections(amount) {
         return new Rectangle(this.x - amount, this.y - amount, this.w + 2 * amount, this.h + 2 * amount);
     }
 
-    // Culling helpers
+    /**
+     * Helper for computing a culling area. Returns the top left tile
+     * @returns {Vector}
+     */
     getMinStartTile() {
         return new Vector(this.x, this.y).snapWorldToTile();
     }
@@ -201,6 +282,14 @@ export class Rectangle {
         );
     }
 
+    /**
+     * Returns if this rectangle contains the other rectangle specified by the parameters
+     * @param {number} x
+     * @param {number} y
+     * @param {number} w
+     * @param {number} h
+     * @returns {boolean}
+     */
     containsRect4Params(x, y, w, h) {
         return this.x <= x + w && x <= this.right() && this.y <= y + h && y <= this.bottom();
     }
@@ -210,6 +299,7 @@ export class Rectangle {
      * @param {number} x
      * @param {number} y
      * @param {number} radius
+     * @returns {boolean}
      */
     containsCircle(x, y, radius) {
         return (
@@ -224,6 +314,7 @@ export class Rectangle {
      * Returns if hte rectangle contains the given point
      * @param {number} x
      * @param {number} y
+     * @returns {boolean}
      */
     containsPoint(x, y) {
         return x >= this.x && x < this.right() && y >= this.y && y < this.bottom();
@@ -234,7 +325,7 @@ export class Rectangle {
      * @param {Rectangle} rect
      * @returns {Rectangle|null}
      */
-    getUnion(rect) {
+    getIntersection(rect) {
         const left = Math_max(this.x, rect.x);
         const top = Math_max(this.y, rect.y);
 
@@ -244,6 +335,30 @@ export class Rectangle {
         if (right <= left || bottom <= top) {
             return null;
         }
+
+        return Rectangle.fromTRBL(top, right, bottom, left);
+    }
+
+    /**
+     * Returns the union of this rectangle with another
+     * @param {Rectangle} rect
+     */
+    getUnion(rect) {
+        if (this.isEmpty()) {
+            // If this is rect is empty, return the other one
+            return rect.clone();
+        }
+        if (rect.isEmpty()) {
+            // If the other is empty, return this one
+            return this.clone();
+        }
+
+        // Find contained area
+        const left = Math_min(this.x, rect.x);
+        const top = Math_min(this.y, rect.y);
+        const right = Math_max(this.right(), rect.right());
+        const bottom = Math_max(this.bottom(), rect.bottom());
+
         return Rectangle.fromTRBL(top, right, bottom, left);
     }
 

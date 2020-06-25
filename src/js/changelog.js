@@ -1,5 +1,21 @@
 export const CHANGELOG = [
     {
+        version: "1.1.18",
+        date: "24.06.2020",
+        entries: [
+            "Preparations for the wires update",
+            "Update belt placement performance on huge factories (by Phlosioneer)",
+            "Allow clicking on variants to select them",
+            "Allow clicking 'Q' over a shape or color patch to automatically select the miner building (by Gerdon262)",
+            "Add 'copy key' button to shape viewer",
+            "Fix deconstruct sound being played when right clicking hub",
+            "Add setting (on by default) to store the last used rotation per building instead of globally storing it (by Magos)",
+            "Add more FPS to the belt animation",
+            "Added chinese (traditional) translation",
+            "Updated translations",
+        ],
+    },
+    {
         version: "1.1.17",
         date: "22.06.2020",
         entries: [

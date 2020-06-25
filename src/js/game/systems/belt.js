@@ -1,25 +1,23 @@
-import { Math_radians, Math_min, Math_max, Math_sqrt } from "../../core/builtins";
+import { Math_sqrt, Math_max } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { Loader } from "../../core/loader";
+import { createLogger } from "../../core/logging";
+import { Rectangle } from "../../core/rectangle";
 import { AtlasSprite } from "../../core/sprites";
+import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
+import { MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumDirection, enumDirectionToVector, Vector, enumInvertedDirections } from "../../core/vector";
 import { MapChunkView } from "../map_chunk_view";
-import { gMetaBuildingRegistry } from "../../core/global_registries";
-import { MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { defaultBuildingVariant } from "../meta_building";
-import { GameRoot } from "../root";
-import { createLogger } from "../../core/logging";
 
-const BELT_ANIM_COUNT = 6;
+export const BELT_ANIM_COUNT = 28;
 const SQRT_2 = Math_sqrt(2);
 
 const logger = createLogger("belt");
-
-/** @typedef {Array<{ entity: Entity, followUp: Entity }>} BeltCache */
 
 export class BeltSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -32,43 +30,32 @@ export class BeltSystem extends GameSystemWithFilter {
             [enumDirection.left]: Loader.getSprite("sprites/belt/left_0.png"),
             [enumDirection.right]: Loader.getSprite("sprites/belt/right_0.png"),
         };
-        /**b
+
+        /**
          * @type {Object.<enumDirection, Array<AtlasSprite>>}
          */
         this.beltAnimations = {
-            [enumDirection.top]: [
-                Loader.getSprite("sprites/belt/forward_0.png"),
-                Loader.getSprite("sprites/belt/forward_1.png"),
-                Loader.getSprite("sprites/belt/forward_2.png"),
-                Loader.getSprite("sprites/belt/forward_3.png"),
-                Loader.getSprite("sprites/belt/forward_4.png"),
-                Loader.getSprite("sprites/belt/forward_5.png"),
-            ],
-            [enumDirection.left]: [
-                Loader.getSprite("sprites/belt/left_0.png"),
-                Loader.getSprite("sprites/belt/left_1.png"),
-                Loader.getSprite("sprites/belt/left_2.png"),
-                Loader.getSprite("sprites/belt/left_3.png"),
-                Loader.getSprite("sprites/belt/left_4.png"),
-                Loader.getSprite("sprites/belt/left_5.png"),
-            ],
-            [enumDirection.right]: [
-                Loader.getSprite("sprites/belt/right_0.png"),
-                Loader.getSprite("sprites/belt/right_1.png"),
-                Loader.getSprite("sprites/belt/right_2.png"),
-                Loader.getSprite("sprites/belt/right_3.png"),
-                Loader.getSprite("sprites/belt/right_4.png"),
-                Loader.getSprite("sprites/belt/right_5.png"),
-            ],
+            [enumDirection.top]: [],
+            [enumDirection.left]: [],
+            [enumDirection.right]: [],
         };
+
+        for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
+            this.beltAnimations[enumDirection.top].push(
+                Loader.getSprite("sprites/belt/forward_" + i + ".png")
+            );
+            this.beltAnimations[enumDirection.left].push(Loader.getSprite("sprites/belt/left_" + i + ".png"));
+            this.beltAnimations[enumDirection.right].push(
+                Loader.getSprite("sprites/belt/right_" + i + ".png")
+            );
+        }
 
         this.root.signals.entityAdded.add(this.updateSurroundingBeltPlacement, this);
         this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
+        this.root.signals.postLoadHook.add(this.computeBeltCache, this);
 
-        this.cacheNeedsUpdate = true;
-
-        /** @type {BeltCache} */
-        this.beltCache = [];
+        /** @type {Rectangle} */
+        this.areaToRecompute = null;
     }
 
     /**
@@ -94,6 +81,10 @@ export class BeltSystem extends GameSystemWithFilter {
         // Compute affected area
         const originalRect = staticComp.getTileSpaceBounds();
         const affectedArea = originalRect.expandedInAllDirections(1);
+
+        // Store if anything got changed, if so we need to queue a recompute
+        let anythingChanged = false;
+
         for (let x = affectedArea.x; x < affectedArea.right(); ++x) {
             for (let y = affectedArea.y; y < affectedArea.bottom(); ++y) {
                 if (!originalRect.containsPoint(x, y)) {
@@ -113,10 +104,21 @@ export class BeltSystem extends GameSystemWithFilter {
                             );
                             targetStaticComp.rotation = rotation;
                             metaBelt.updateVariants(targetEntity, rotationVariant, defaultBuildingVariant);
-                            this.cacheNeedsUpdate = true;
+                            anythingChanged = true;
                         }
                     }
                 }
+            }
+        }
+
+        if (anythingChanged) {
+            if (this.areaToRecompute) {
+                this.areaToRecompute = this.areaToRecompute.getUnion(affectedArea);
+            } else {
+                this.areaToRecompute = affectedArea.clone();
+            }
+            if (G_IS_DEV) {
+                logger.log("Queuing recompute:", this.areaToRecompute);
             }
         }
     }
@@ -164,46 +166,51 @@ export class BeltSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Adds a single entity to the cache
-     * @param {Entity} entity
-     * @param {BeltCache} cache
-     * @param {Set} visited
+     * Recomputes the belt cache
      */
-    computeSingleBeltCache(entity, cache, visited) {
-        // Check for double visit
-        if (visited.has(entity.uid)) {
-            return;
-        }
-        visited.add(entity.uid);
-
-        const followUp = this.findFollowUpEntity(entity);
-        if (followUp) {
-            // Process followup first
-            this.computeSingleBeltCache(followUp, cache, visited);
-        }
-
-        cache.push({ entity, followUp });
-    }
-
     computeBeltCache() {
-        logger.log("Updating belt cache");
+        if (this.areaToRecompute) {
+            logger.log("Updating belt cache by updating area:", this.areaToRecompute);
 
-        let cache = [];
-        let visited = new Set();
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            this.computeSingleBeltCache(this.allEntities[i], cache, visited);
+            if (G_IS_DEV && globalConfig.debug.renderChanges) {
+                this.root.hud.parts.changesDebugger.renderChange(
+                    "belt-area",
+                    this.areaToRecompute,
+                    "#00fff6"
+                );
+            }
+
+            for (let x = this.areaToRecompute.x; x < this.areaToRecompute.right(); ++x) {
+                for (let y = this.areaToRecompute.y; y < this.areaToRecompute.bottom(); ++y) {
+                    const tile = this.root.map.getTileContentXY(x, y);
+                    if (tile && tile.components.Belt) {
+                        tile.components.Belt.followUpCache = this.findFollowUpEntity(tile);
+                    }
+                }
+            }
+
+            // Reset stale areas afterwards
+            this.areaToRecompute = null;
+        } else {
+            logger.log("Doing full belt recompute");
+
+            if (G_IS_DEV && globalConfig.debug.renderChanges) {
+                this.root.hud.parts.changesDebugger.renderChange(
+                    "",
+                    new Rectangle(-1000, -1000, 2000, 2000),
+                    "#00fff6"
+                );
+            }
+
+            for (let i = 0; i < this.allEntities.length; ++i) {
+                const entity = this.allEntities[i];
+                entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
+            }
         }
-        assert(
-            cache.length === this.allEntities.length,
-            "Belt cache mismatch: Has " + cache.length + " entries but should have " + this.allEntities.length
-        );
-
-        this.beltCache = cache;
     }
 
     update() {
-        if (this.cacheNeedsUpdate) {
-            this.cacheNeedsUpdate = false;
+        if (this.areaToRecompute) {
             this.computeBeltCache();
         }
 
@@ -217,8 +224,8 @@ export class BeltSystem extends GameSystemWithFilter {
             beltSpeed *= 100;
         }
 
-        for (let i = 0; i < this.beltCache.length; ++i) {
-            const { entity, followUp } = this.beltCache[i];
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
 
             const beltComp = entity.components.Belt;
             const items = beltComp.sortedItems;
@@ -244,12 +251,12 @@ export class BeltSystem extends GameSystemWithFilter {
                 maxProgress = 1 - globalConfig.itemSpacingOnBelts;
             } else {
                 // Otherwise our progress depends on the follow up
-                if (followUp) {
-                    const spacingOnBelt = followUp.components.Belt.getDistanceToFirstItemCenter();
+                if (beltComp.followUpCache) {
+                    const spacingOnBelt = beltComp.followUpCache.components.Belt.getDistanceToFirstItemCenter();
                     maxProgress = Math.min(2, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
 
                     // Useful check, but hurts performance
-                    // assert(maxProgress >= 0.0, "max progress < 0 (I)");
+                    // assert(maxProgress >= 0.0, "max progress < 0 (I) (" + maxProgress + ")");
                 }
             }
 
@@ -258,6 +265,11 @@ export class BeltSystem extends GameSystemWithFilter {
                 // Curved belts are shorter, thus being quicker (Looks weird otherwise)
                 speedMultiplier = SQRT_2;
             }
+
+            // How much offset we add when transferring to a new belt
+            // This substracts one tick because the belt will be updated directly
+            // afterwards anyways
+            const takeoverOffset = 1.0 + beltSpeed * speedMultiplier;
 
             // Not really nice. haven't found the reason for this yet.
             if (items.length > 2 / globalConfig.itemSpacingOnBelts) {
@@ -268,12 +280,16 @@ export class BeltSystem extends GameSystemWithFilter {
                 const progressAndItem = items[itemIndex];
 
                 progressAndItem[0] = Math.min(maxProgress, progressAndItem[0] + speedMultiplier * beltSpeed);
+                assert(progressAndItem[0] >= 0, "Bad progress: " + progressAndItem[0]);
 
                 if (progressAndItem[0] >= 1.0) {
-                    if (followUp) {
-                        const followUpBelt = followUp.components.Belt;
+                    if (beltComp.followUpCache) {
+                        const followUpBelt = beltComp.followUpCache.components.Belt;
                         if (followUpBelt.canAcceptItem()) {
-                            followUpBelt.takeItem(progressAndItem[1], progressAndItem[0] - 1.0);
+                            followUpBelt.takeItem(
+                                progressAndItem[1],
+                                Math_max(0, progressAndItem[0] - takeoverOffset)
+                            );
                             items.splice(itemIndex, 1);
                         } else {
                             // Well, we couldn't really take it to a follow up belt, keep it at
@@ -285,8 +301,10 @@ export class BeltSystem extends GameSystemWithFilter {
                         // Try to give this item to a new belt
 
                         /* PERFORMANCE OPTIMIZATION */
+
                         // Original:
                         //  const freeSlot = ejectorComp.getFirstFreeSlot();
+
                         // Replaced
                         if (ejectorSlot.item) {
                             // So, we don't have a free slot - damned!

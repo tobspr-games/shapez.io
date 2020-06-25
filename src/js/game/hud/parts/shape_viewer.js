@@ -1,11 +1,12 @@
-import { BaseHUDPart } from "../base_hud_part";
+import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv, removeAllChildren } from "../../../core/utils";
 import { T } from "../../../translations";
-import { defaultBuildingVariant } from "../../meta_building";
+import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { ShapeDefinition } from "../../shape_definition";
-import { KEYMAPPINGS, KeyActionMapper } from "../../key_action_mapper";
-import { InputReceiver } from "../../../core/input_receiver";
+import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+
+const copy = require("clipboard-copy");
 
 export class HUDShapeViewer extends BaseHUDPart {
     createElements(parent) {
@@ -17,6 +18,15 @@ export class HUDShapeViewer extends BaseHUDPart {
         this.closeButton = makeDiv(this.title, null, ["closeButton"]);
         this.trackClicks(this.closeButton, this.close);
         this.contentDiv = makeDiv(this.dialogInner, null, ["content"]);
+
+        this.renderArea = makeDiv(this.contentDiv, null, ["renderArea"]);
+        this.infoArea = makeDiv(this.contentDiv, null, ["infoArea"]);
+
+        // Create button to copy the shape area
+        this.copyButton = document.createElement("button");
+        this.copyButton.classList.add("styledButton", "copyKey");
+        this.copyButton.innerText = T.ingame.shapeViewer.copyKey;
+        this.infoArea.appendChild(this.copyButton);
     }
 
     initialize() {
@@ -26,12 +36,26 @@ export class HUDShapeViewer extends BaseHUDPart {
             attachClass: "visible",
         });
 
+        this.currentShapeKey = null;
+
         this.inputReciever = new InputReceiver("shape_viewer");
         this.keyActionMapper = new KeyActionMapper(this.root, this.inputReciever);
 
         this.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.close, this);
 
+        this.trackClicks(this.copyButton, this.onCopyKeyRequested);
+
         this.close();
+    }
+
+    /**
+     * Called when the copying of a key was requested
+     */
+    onCopyKeyRequested() {
+        if (this.currentShapeKey) {
+            copy(this.currentShapeKey);
+            this.close();
+        }
     }
 
     /**
@@ -53,11 +77,15 @@ export class HUDShapeViewer extends BaseHUDPart {
         document.body.classList.add("ingameDialogOpen");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
-        removeAllChildren(this.contentDiv);
+        removeAllChildren(this.renderArea);
+
+        this.currentShapeKey = definition.getHash();
 
         const layers = definition.layers;
+        this.contentDiv.setAttribute("data-layers", layers.length);
+
         for (let i = 0; i < layers.length; ++i) {
-            const layerElem = makeDiv(this.contentDiv, null, ["layer", "layer-" + i]);
+            const layerElem = makeDiv(this.renderArea, null, ["layer", "layer-" + i]);
 
             let fakeLayers = [];
             for (let k = 0; k < i; ++k) {
@@ -88,10 +116,6 @@ export class HUDShapeViewer extends BaseHUDPart {
                         T.ingame.shapeViewer.empty
                     );
                 }
-            }
-
-            if (i < layers.length - 1) {
-                makeDiv(this.contentDiv, null, ["seperator"], "+");
             }
         }
     }

@@ -1,11 +1,12 @@
-import { GameAnalyticsInterface } from "../game_analytics";
-import { createLogger } from "../../core/logging";
-import { ShapeDefinition } from "../../game/shape_definition";
-import { Savegame } from "../../savegame/savegame";
-import { FILE_NOT_FOUND } from "../storage";
 import { globalConfig } from "../../core/config";
-import { InGameState } from "../../states/ingame";
+import { createLogger } from "../../core/logging";
 import { GameRoot } from "../../game/root";
+import { InGameState } from "../../states/ingame";
+import { GameAnalyticsInterface } from "../game_analytics";
+import { FILE_NOT_FOUND } from "../storage";
+import { blueprintShape, UPGRADES } from "../../game/upgrades";
+import { tutorialGoals } from "../../game/tutorial_goals";
+import { BeltComponent } from "../../game/components/belt";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
 
 const logger = createLogger("game_analytics");
@@ -14,16 +15,32 @@ const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.sha
 
 // Be sure to increment the ID whenever it changes to make sure all
 // users are tracked
-const analyticsLocalFile = "analytics_token.3.bin";
+const analyticsLocalFile = "shapez_token_123.bin";
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
+    get environment() {
+        if (G_IS_DEV) {
+            return "dev";
+        }
+
+        if (G_IS_STANDALONE) {
+            return "steam";
+        }
+
+        if (G_IS_RELEASE) {
+            return "prod";
+        }
+
+        return "beta";
+    }
+
     /**
      * @returns {Promise<void>}
      */
     initialize() {
         this.syncKey = null;
 
-        setInterval(() => this.sendTimePoints(), 120 * 1000);
+        setInterval(() => this.sendTimePoints(), 60 * 1000);
 
         // Retrieve sync key from player
         return this.app.storage.readFileAsync(analyticsLocalFile).then(
@@ -38,7 +55,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
                     // Perform call to get a new key from the API
                     this.sendToApi("/v1/register", {
-                        environment: G_APP_ENVIRONMENT,
+                        environment: this.environment,
                     })
                         .then(res => {
                             // Try to read and parse the key from the api
@@ -135,10 +152,12 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             playerKey: this.syncKey,
             gameKey: savegameId,
             ingameTime: root.time.now(),
+            environment: this.environment,
             category,
             value,
             version: G_BUILD_VERSION,
-            gameDump: this.generateGameDump(root, category === "sync"),
+            level: root.hubGoals.level,
+            gameDump: this.generateGameDump(root),
         });
     }
 
@@ -151,57 +170,69 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     }
 
     /**
-     * Generates a game dump
-     * @param {GameRoot} root
-     * @param {boolean=} metaOnly
+     * Returns true if the shape is interesting
+     * @param {string} key
      */
-    generateGameDump(root, metaOnly = false) {
-        let staticEntities = [];
+    isInterestingShape(key) {
+        if (key === blueprintShape) {
+            return true;
+        }
 
-        const entities = root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
-
-        // Limit the entities
-        if (!metaOnly && entities.length < 500) {
-            for (let i = 0; i < entities.length; ++i) {
-                const entity = entities[i];
-                const staticComp = entity.components.StaticMapEntity;
-                const payload = {};
-                payload.origin = staticComp.origin;
-                payload.tileSize = staticComp.tileSize;
-                payload.rotation = staticComp.rotation;
-
-                if (entity.components.Belt) {
-                    payload.type = "belt";
-                } else if (entity.components.UndergroundBelt) {
-                    payload.type = "tunnel";
-                } else if (entity.components.ItemProcessor) {
-                    payload.type = entity.components.ItemProcessor.type;
-                } else if (entity.components.Miner) {
-                    payload.type = "extractor";
-                } else {
-                    logger.warn("Unkown entity type", entity);
-                }
-                staticEntities.push(payload);
+        // Check if its a story goal
+        for (let i = 0; i < tutorialGoals.length; ++i) {
+            if (key === tutorialGoals[i].shape) {
+                return true;
             }
         }
 
-        return {
-            storedShapes: root.hubGoals.storedShapes,
-            gainedRewards: root.hubGoals.gainedRewards,
-            upgradeLevels: root.hubGoals.upgradeLevels,
-            staticEntities,
-        };
+        // Check if its required to unlock an upgrade
+        for (const upgradeKey in UPGRADES) {
+            const handle = UPGRADES[upgradeKey];
+            const tiers = handle.tiers;
+            for (let i = 0; i < tiers.length; ++i) {
+                const tier = tiers[i];
+                const required = tier.required;
+                for (let k = 0; k < required.length; ++k) {
+                    if (required[k].shape === key) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
-     * @param {ShapeDefinition} definition
+     * Generates a game dump
+     * @param {GameRoot} root
      */
-    handleShapeDelivered(definition) {}
+    generateGameDump(root) {
+        const shapeIds = Object.keys(root.hubGoals.storedShapes).filter(this.isInterestingShape.bind(this));
+        let shapes = {};
+        for (let i = 0; i < shapeIds.length; ++i) {
+            shapes[shapeIds[i]] = root.hubGoals.storedShapes[shapeIds[i]];
+        }
+        return {
+            shapes,
+            upgrades: root.hubGoals.upgradeLevels,
+            belts: root.entityMgr.getAllWithComponent(BeltComponent).length,
+            buildings:
+                root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
+                root.entityMgr.getAllWithComponent(BeltComponent).length,
+        };
+    }
 
     /**
      */
     handleGameStarted() {
         this.sendGameEvent("game_start", "");
+    }
+
+    /**
+     */
+    handleGameResumed() {
+        this.sendTimePoints();
     }
 
     /**

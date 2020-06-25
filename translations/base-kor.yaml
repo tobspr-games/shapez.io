@@ -531,7 +531,7 @@ storyRewards:
     reward_painter:
         title: 색칠기
         desc: >-
-            <strong>색칠기</strong>가 잠금 해제 되었습니다! 색소 광물을 추출해서 이 기계로 도형을 색칠하세요. <br><br>PS: 당신이 색맹이라면, 해결책을 찾고 있으니 잠시만 기다려주세요!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: 혼합기
@@ -728,6 +728,12 @@ settings:
         enableColorBlindHelper:
             title: Color Blind Mode
             description: Enables various tools which allow to play the game if you are color blind.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: 키바인딩

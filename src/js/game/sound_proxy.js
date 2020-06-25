@@ -5,10 +5,9 @@ import { GameRoot } from "./root";
 import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
 
-const avgSoundDurationSeconds = 0.25;
+const avgSoundDurationSeconds = 0.1;
 const maxOngoingSounds = 2;
-
-const maxOngoingUiSounds = 10;
+const maxOngoingUiSounds = 5;
 
 // Proxy to the application sound instance
 export class SoundProxy {

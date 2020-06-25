@@ -7,19 +7,17 @@ import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { Loader } from "../../core/loader";
 import { drawRotatedSprite } from "../../core/draw_utils";
 import { Math_radians } from "../../core/builtins";
+import { BELT_ANIM_COUNT } from "./belt";
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemAcceptorComponent]);
 
-        this.underlayBeltSprites = [
-            Loader.getSprite("sprites/belt/forward_0.png"),
-            Loader.getSprite("sprites/belt/forward_1.png"),
-            Loader.getSprite("sprites/belt/forward_2.png"),
-            Loader.getSprite("sprites/belt/forward_3.png"),
-            Loader.getSprite("sprites/belt/forward_4.png"),
-            Loader.getSprite("sprites/belt/forward_5.png"),
-        ];
+        this.underlayBeltSprites = [];
+
+        for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
+            this.underlayBeltSprites.push(Loader.getSprite("sprites/belt/forward_" + i + ".png"));
+        }
     }
 
     update() {

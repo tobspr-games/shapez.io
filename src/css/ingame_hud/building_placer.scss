@@ -119,6 +119,9 @@
         @include S(grid-gap, 5px);
 
         .variant {
+            pointer-events: all;
+            cursor: pointer;
+
             grid-row: 2 / 3;
             @include S(border-radius, $globalBorderRadius);
             background: rgba($ingameHudBg, 0.3);
@@ -129,6 +132,13 @@
             align-items: center;
             @include S(padding, 3px);
             @include S(grid-gap, 10px);
+
+            transition: background-color 0.12s ease-in-out;
+
+            &:hover:not(.active) {
+                background: rgba($colorBlueBright, 0.8);
+                opacity: 1;
+            }
 
             &.active {
                 opacity: 1;

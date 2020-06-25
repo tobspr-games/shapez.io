@@ -33,6 +33,7 @@ import { MainMenuState } from "./states/main_menu";
 import { MobileWarningState } from "./states/mobile_warning";
 import { PreloadState } from "./states/preload";
 import { SettingsState } from "./states/settings";
+import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 
 const logger = createLogger("application");
 
@@ -130,8 +131,7 @@ export class Application {
         this.adProvider = new NoAdProvider(this);
         this.sound = new SoundImplBrowser(this);
         this.analytics = new GoogleAnalyticsImpl(this);
-        // this.gameAnalytics = new ShapezGameAnalytics(this);
-        this.gameAnalytics = new NoGameAnalytics(this);
+        this.gameAnalytics = new ShapezGameAnalytics(this);
     }
 
     /**

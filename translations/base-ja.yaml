@@ -287,10 +287,10 @@ ingame:
         pasteLastBlueprint: ブループリントの内容を設置
         lockBeltDirection: ベルトプランナーを有効化
         plannerSwitchSide: プランナーが通る側を反転
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        cutSelection: カット
+        copySelection: コピー
+        clearSelection: 選択範囲をクリア
+        pipette: ピペット
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -398,17 +398,17 @@ ingame:
                 このゲームは放置系のゲームでは<strong>ありません</strong>！ もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip: <strong>SHIFT</strong> キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: 赤
+        green: 緑
+        blue: 青
+        yellow: 黄
+        purple: 紫
+        cyan: シアン
+        white: 白
+        uncolored: 無色
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: レイヤー
+        empty: 空
 
 # All shop upgrades
 shopUpgrades:
@@ -530,7 +530,7 @@ storyRewards:
     reward_painter:
         title: 着色
         desc: >-
-            <strong>着色機</strong>が利用可能になりました。 - 色の鉱脈から形の手順と同様に色を抽出し、着色機で形と組み合わせることで着色できます。<br><br>PS:もしあなたが色の認識に問題があっても安心してください。我々はすでにその解決に着手しています！
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: 色の混合
@@ -700,31 +700,34 @@ settings:
                 画面の隅を暗くして文字を読みやすくするビネットを有効化します。
 
         autosaveInterval:
-            title: Autosave Interval
+            title: オートセーブ間隔
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                ゲームが自動的にセーブされる頻度を設定します。無効化することも可能です。
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 分
+                two_minutes: 2 分
+                five_minutes: 5 分
+                ten_minutes: 10 分
+                twenty_minutes: 20 分
+                disabled: 無効
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: コンパクトな建造物情報
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                レートのみを表示することで、建造物の情報ボックスを短くします。選択しない場合は、説明文と画像も表示されます。
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: カット/削除の警告を無効化
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                100個以上のエンティティをカット/削除する際に表示される警告ダイアログを無効にします。
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: 色覚モード
+            description: 色覚異常を持っていてもゲームがプレイできるようにするための各種ツールを有効化します。
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: キー設定
@@ -791,7 +794,7 @@ keybindings:
         mapMoveFaster: より速く移動
         lockBeltDirection: ベルトプランナーを有効化
         switchDirectionLockSide: "プランナー: 通る側を切り替え"
-        pipette: Pipette
+        pipette: ピペット
 
 about:
     title: このゲームについて

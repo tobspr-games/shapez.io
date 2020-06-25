@@ -31,6 +31,12 @@ import { KeyActionMapper } from "./key_action_mapper";
 
 const logger = createLogger("game/root");
 
+/** @enum {string} */
+export const enumEditMode = {
+    regular: "regular",
+    wires: "wires",
+};
+
 /**
  * The game root is basically the whole game state at a given point,
  * combining all important classes. We don't have globals, but this
@@ -124,6 +130,9 @@ export class GameRoot {
         /** @type {DynamicTickrate} */
         this.dynamicTickrate = null;
 
+        /** @type {enumEditMode} */
+        this.editMode = enumEditMode.regular;
+
         this.signals = {
             // Entities
             entityManuallyPlaced: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
@@ -155,6 +164,8 @@ export class GameRoot {
             itemProduced: /** @type {TypedSignal<[BaseItem]>} */ (new Signal()),
 
             bulkOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
+
+            editModeChanged: /** @type {TypedSignal<[enumEditMode]>} */ (new Signal()),
         };
 
         // RNG's

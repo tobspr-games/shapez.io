@@ -396,17 +396,17 @@ ingame:
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
+        red: Rot
+        green: Grün
+        blue: Blau
+        yellow: Gelb
+        purple: Violett
         cyan: Cyan
-        white: White
-        uncolored: No color
+        white: Weiß
+        uncolored: Farblos
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Ebenen
+        empty: Leer
 
 # All shop upgrades
 shopUpgrades:
@@ -532,7 +532,7 @@ storyRewards:
     reward_painter:
         title: Färben
         desc: >-
-            Der <strong>Färber</strong> wurde freigeschaltet! Extrahiere ein paar Farben (genauso wie die Formen) und lasse sie vom Färber bemalen!<br><br>PS: Falls du farbenblind bist: Ich arbeite bereits an einer Lösung!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Farben mischen
@@ -726,8 +726,14 @@ settings:
                 Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Modus für Farbenblinde
+            description: Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Tastenbelegung
@@ -756,7 +762,7 @@ keybindings:
 
         mapZoomIn: Hineinzoomen
         mapZoomOut: Herauszoomen
-        createMarker: Markeirung erstellen
+        createMarker: Markierung erstellen
 
         menuOpenShop: Upgrades
         menuOpenStats: Statistiken
@@ -776,7 +782,7 @@ keybindings:
 
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
-            Modifier: stattdessen gegen UZS rotieren
+            Modifikator: stattdessen gegen UZS rotieren
         cycleBuildingVariants: Variante wählen
         confirmMassDelete: Massenlöschung bestätigen
         cycleBuildings: Gebäude rotieren
@@ -799,22 +805,22 @@ keybindings:
 about:
     title: Über dieses Spiel
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Dieses Spiel hat einen offenen Quellcode (Open Source) und wurde von <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (das bin ich!) entwickelt.<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Wenn du etwas zum Spiel beitragen möchtest, dann schaue dir <a href="<githublink>"
+        target="_blank">shapez.io auf GitHub</a> an.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        Das Spiel wurde erst durch die großartige Discord-Community
+        um meine Spiele möglich gemacht. Komm doch einfach mal auf dem <a href="<discordlink>"
+        target="_blank">Discord-Server</a> vorbei!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Der Soundtrack wurde von <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> komponiert! Klasse Typ.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        Abschließend möchte ich meinem Kumpel <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> danken! Ohne unsere
+        etlichen gemeinsamen Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
 
 changelog:
     title: Änderungen
