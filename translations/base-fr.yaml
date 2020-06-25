@@ -533,7 +533,7 @@ storyRewards:
     reward_painter:
         title: Peintre
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            Le <strong>peintre</strong> a été débloqué - Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez les avec une forme dans un peintre pour les colorier !<br><br>PS: Si vous êtes daltonien, il y a un <strong>mode daltonien</strong> paramétrable dans les préférences !
 
     reward_mixer:
         title: Mélangeur de couleurs
@@ -728,11 +728,10 @@ settings:
             title: Mode Daltonien
             description: Active divers outils qui permettent de jouer à ce jeu si vous êtes daltonien.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Rotation par catégorie de bâtiment
+            description: >-
+                Chaque catégorie de bâtiment enregistre le sens de rotation que vous lui avez assigné la dernière fois, de manière individuelle.
+                Cela sera sans doute plus confortable si vous alternez fréquemment entre le placement de différents types de bâtiments.
 
 keybindings:
     title: Contrôles
