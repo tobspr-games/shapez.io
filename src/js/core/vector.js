@@ -520,6 +520,49 @@ export class Vector {
     }
 
     /**
+     * Mirrors this vector
+     * @param {boolean} mirror
+     * @returns {Vector} new vector
+     */
+    mirror(mirror = true) {
+        if (mirror) {
+                return new Vector(-this.x, this.y);
+        }
+        else {
+                return new Vector(this.x, this.y);
+        }
+    }
+
+    /**
+     * Helper method to mirror a direction
+     * @param {enumDirection} direction
+     * @param {boolean} mirror
+     * @returns {enumDirection}
+     */
+    static mirrorDirection(direction, mirror = true) {
+        if (mirror) {
+            switch (direction) {
+                case enumDirection.left: return enumDirection.right;
+                case enumDirection.right: return enumDirection.left;
+            }
+        }
+        return direction;
+    }
+
+    /**
+     * Helper method to mirror an angle
+     * @param {number} angle
+     * @param {boolean} mirror
+     * @returns {number}
+     */
+    static mirrorAngle(angle, mirror = true) {
+        if (mirror && (angle == 90 || angle == 270) ) {
+            return 360 - angle;
+        }
+        return angle;
+    }
+
+    /**
      * Helper method to rotate a direction
      * @param {enumDirection} direction
      * @param {number} angle

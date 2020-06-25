@@ -24,6 +24,10 @@ export class MetaHubBuilding extends MetaBuilding {
         return false;
     }
 
+    isMirrorable(variant) {
+        return false;
+    }
+
     getBlueprintSprite() {
         return null;
     }

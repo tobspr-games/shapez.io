@@ -137,7 +137,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      * @param {string} variant
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
+    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, mirrored, variant) {
         const searchDirection = enumAngleToDirection[rotation];
         const searchVector = enumDirectionToVector[searchDirection];
         const tier = enumUndergroundBeltVariantToTier[variant];
@@ -164,6 +164,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                         }
                         return {
                             rotation: targetRotation,
+                            mirrored: false,
                             rotationVariant: 1,
                             connectedEntities: [contents],
                         };
@@ -172,6 +173,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                         if (undergroundComp.mode === enumUndergroundBeltMode.receiver) {
                             return {
                                 rotation: rotation,
+                                mirrored: false,
                                 rotationVariant: 0,
                                 connectedEntities: [contents],
                             };
@@ -185,6 +187,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
 
         return {
             rotation,
+            mirrored: false,
             rotationVariant: 0,
         };
     }

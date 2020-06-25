@@ -208,6 +208,13 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             },
 
             {
+                // Mirror
+                label: T.ingame.keybindingsOverlay.mirrorBuilding,
+                keys: [k.placement.mirrorWhilePlacing],
+                condition: () => this.anyPlacementActive && !this.beltPlannerActive,
+            },
+
+            {
                 // [BELT PLANNER] Flip Side
                 label: T.ingame.keybindingsOverlay.plannerSwitchSide,
                 keys: [k.placement.switchDirectionLockSide],

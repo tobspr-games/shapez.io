@@ -18,6 +18,7 @@ export class StaticMapEntityComponent extends Component {
             tileSize: types.tileVector,
             rotation: types.float,
             originalRotation: types.float,
+            mirrored: types.bool,
             spriteKey: types.nullable(types.string),
             blueprintSpriteKey: types.string,
             silhouetteColor: types.nullable(types.string),
@@ -30,6 +31,7 @@ export class StaticMapEntityComponent extends Component {
             tileSize: this.tileSize.copy(),
             rotation: this.rotation,
             originalRotation: this.originalRotation,
+            mirrored: this.mirrored,
             spriteKey: this.spriteKey,
             silhouetteColor: this.silhouetteColor,
             blueprintSpriteKey: this.blueprintSpriteKey,
@@ -52,6 +54,7 @@ export class StaticMapEntityComponent extends Component {
         tileSize = new Vector(1, 1),
         rotation = 0,
         originalRotation = 0,
+        mirrored = false,
         spriteKey = null,
         silhouetteColor = null,
         blueprintSpriteKey = null,
@@ -67,6 +70,7 @@ export class StaticMapEntityComponent extends Component {
         this.spriteKey = spriteKey;
         this.rotation = rotation;
         this.originalRotation = originalRotation;
+        this.mirrored = mirrored;
         this.silhouetteColor = silhouetteColor;
         this.blueprintSpriteKey = blueprintSpriteKey;
     }
@@ -76,32 +80,62 @@ export class StaticMapEntityComponent extends Component {
      * @returns {Rectangle}
      */
     getTileSpaceBounds() {
-        switch (this.rotation) {
-            case 0:
-                return new Rectangle(this.origin.x, this.origin.y, this.tileSize.x, this.tileSize.y);
-            case 90:
-                return new Rectangle(
-                    this.origin.x - this.tileSize.y + 1,
-                    this.origin.y,
-                    this.tileSize.y,
-                    this.tileSize.x
-                );
-            case 180:
-                return new Rectangle(
-                    this.origin.x - this.tileSize.x + 1,
-                    this.origin.y - this.tileSize.y + 1,
-                    this.tileSize.x,
-                    this.tileSize.y
-                );
-            case 270:
-                return new Rectangle(
-                    this.origin.x,
-                    this.origin.y - this.tileSize.x + 1,
-                    this.tileSize.y,
-                    this.tileSize.x
-                );
-            default:
-                assert(false, "Invalid rotation");
+        if (!this.mirrored) {
+            switch (this.rotation) {
+                case 0:
+                    return new Rectangle(this.origin.x, this.origin.y, this.tileSize.x, this.tileSize.y);
+                case 90:
+                    return new Rectangle(
+                        this.origin.x - this.tileSize.y + 1,
+                        this.origin.y,
+                        this.tileSize.y,
+                        this.tileSize.x
+                    );
+                case 180:
+                    return new Rectangle(
+                        this.origin.x - this.tileSize.x + 1,
+                        this.origin.y - this.tileSize.y + 1,
+                        this.tileSize.x,
+                        this.tileSize.y
+                    );
+                case 270:
+                    return new Rectangle(
+                        this.origin.x,
+                        this.origin.y - this.tileSize.x + 1,
+                        this.tileSize.y,
+                        this.tileSize.x
+                    );
+                default:
+                    assert(false, "Invalid rotation");
+            }
+        } else {
+            switch (this.rotation) {
+                case 0:
+                    return new Rectangle(this.origin.x - this.tileSize.x + 1, this.origin.y, this.tileSize.x, this.tileSize.y);
+                case 90:
+                    return new Rectangle(
+                        this.origin.x - this.tileSize.y + 1,
+                        this.origin.y - this.tileSize.x + 1,
+                        this.tileSize.y,
+                        this.tileSize.x
+                    );
+                case 180:
+                    return new Rectangle(
+                        this.origin.x,
+                        this.origin.y - this.tileSize.y + 1,
+                        this.tileSize.x,
+                        this.tileSize.y
+                    );
+                case 270:
+                    return new Rectangle(
+                        this.origin.x,
+                        this.origin.y,
+                        this.tileSize.y,
+                        this.tileSize.x
+                    );
+                default:
+                    assert(false, "Invalid rotation");
+            }
         }
     }
 
@@ -111,7 +145,7 @@ export class StaticMapEntityComponent extends Component {
      * @returns {Vector}
      */
     applyRotationToVector(vector) {
-        return vector.rotateFastMultipleOf90(this.rotation);
+        return vector.mirror(this.mirrored).rotateFastMultipleOf90(this.rotation);
     }
 
     /**
@@ -120,7 +154,7 @@ export class StaticMapEntityComponent extends Component {
      * @returns {Vector}
      */
     unapplyRotationToVector(vector) {
-        return vector.rotateFastMultipleOf90(360 - this.rotation);
+        return vector.rotateFastMultipleOf90(360 - this.rotation).mirror(this.mirrored);
     }
 
     /**
@@ -129,7 +163,7 @@ export class StaticMapEntityComponent extends Component {
      * @returns {enumDirection}
      */
     localDirectionToWorld(direction) {
-        return Vector.transformDirectionFromMultipleOf90(direction, this.rotation);
+        return Vector.transformDirectionFromMultipleOf90(Vector.mirrorDirection(direction, this.mirrored), this.rotation);
     }
 
     /**
@@ -138,7 +172,7 @@ export class StaticMapEntityComponent extends Component {
      * @returns {enumDirection}
      */
     worldDirectionToLocal(direction) {
-        return Vector.transformDirectionFromMultipleOf90(direction, 360 - this.rotation);
+        return Vector.mirrorDirection(Vector.transformDirectionFromMultipleOf90(direction, 360 - this.rotation), this.mirrored);
     }
 
     /**
@@ -166,49 +200,13 @@ export class StaticMapEntityComponent extends Component {
      * @param {DrawParameters} parameters
      */
     shouldBeDrawn(parameters) {
-        let x = 0;
-        let y = 0;
-        let w = 0;
-        let h = 0;
-
-        switch (this.rotation) {
-            case 0: {
-                x = this.origin.x;
-                y = this.origin.y;
-                w = this.tileSize.x;
-                h = this.tileSize.y;
-                break;
-            }
-            case 90: {
-                x = this.origin.x - this.tileSize.y + 1;
-                y = this.origin.y;
-                w = this.tileSize.y;
-                h = this.tileSize.x;
-                break;
-            }
-            case 180: {
-                x = this.origin.x - this.tileSize.x + 1;
-                y = this.origin.y - this.tileSize.y + 1;
-                w = this.tileSize.x;
-                h = this.tileSize.y;
-                break;
-            }
-            case 270: {
-                x = this.origin.x;
-                y = this.origin.y - this.tileSize.x + 1;
-                w = this.tileSize.y;
-                h = this.tileSize.x;
-                break;
-            }
-            default:
-                assert(false, "Invalid rotation");
-        }
+        const rect = this.getTileSpaceBounds();
 
         return parameters.visibleRect.containsRect4Params(
-            x * globalConfig.tileSize,
-            y * globalConfig.tileSize,
-            w * globalConfig.tileSize,
-            h * globalConfig.tileSize
+            rect.x * globalConfig.tileSize,
+            rect.y * globalConfig.tileSize,
+            rect.w * globalConfig.tileSize,
+            rect.h * globalConfig.tileSize
         );
     }
 
@@ -238,7 +236,7 @@ export class StaticMapEntityComponent extends Component {
             worldY = overridePosition.y * globalConfig.tileSize;
         }
 
-        if (this.rotation === 0) {
+        if (this.rotation === 0 && this.mirrored == false) {
             // Early out, is faster
             sprite.drawCached(
                 parameters,
@@ -254,6 +252,9 @@ export class StaticMapEntityComponent extends Component {
 
             parameters.context.translate(rotationCenterX, rotationCenterY);
             parameters.context.rotate(Math_radians(this.rotation));
+            if (this.mirrored == true) {
+                parameters.context.scale(-1.0, 1.0);
+            }
 
             sprite.drawCached(
                 parameters,
@@ -264,6 +265,9 @@ export class StaticMapEntityComponent extends Component {
                 false
             );
 
+            if (this.mirrored == true) {
+                parameters.context.scale(-1.0, 1.0);
+            }
             parameters.context.rotate(-Math_radians(this.rotation));
             parameters.context.translate(-rotationCenterX, -rotationCenterY);
         }

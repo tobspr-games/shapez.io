@@ -229,11 +229,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const {
             rotation,
             rotationVariant,
+            mirrored,
             connectedEntities,
         } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
             this.root,
             mouseTile,
             this.currentBaseRotation,
+            this.currentMirrored,
             this.currentVariant.get()
         );
 
@@ -272,6 +274,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const staticComp = this.fakeEntity.components.StaticMapEntity;
         staticComp.origin = mouseTile;
         staticComp.rotation = rotation;
+        staticComp.mirrored = mirrored;
         staticComp.tileSize = metaBuilding.getDimensions(this.currentVariant.get());
         metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
 
@@ -280,6 +283,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             origin: mouseTile,
             rotation,
             rotationVariant,
+            mirrored,
             building: metaBuilding,
             variant: this.currentVariant.get(),
         });

@@ -8,6 +8,7 @@ import { findNiceIntegerValue } from "../../../core/utils";
 import { Math_pow } from "../../../core/builtins";
 import { blueprintShape } from "../../upgrades";
 import { globalConfig } from "../../../core/config";
+import { enumItemProcessorTypes } from "../../components/item_processor";
 
 const logger = createLogger("blueprint");
 
@@ -127,6 +128,36 @@ export class Blueprint {
         // Well ...
         for (let i = 0; i < 3; ++i) {
             this.rotateCw();
+        }
+    }
+
+    /**
+     * Mirrors the blueprint horizontally
+     */
+    mirror() {
+        for (let i = 0; i < this.entities.length; ++i) {
+            const entity = this.entities[i];
+            const staticComp = entity.components.StaticMapEntity;
+            const beltComp = entity.components.Belt;
+            const itemProcComp = entity.components.ItemProcessor;
+
+            staticComp.rotation = Vector.mirrorAngle(staticComp.rotation)
+            staticComp.originalRotation = Vector.mirrorAngle(staticComp.originalRotation)
+            staticComp.origin = staticComp.origin.mirror();
+
+            if (beltComp) {
+                // It is a belt! Flipping the direction is enough.
+                beltComp.direction = Vector.mirrorDirection( beltComp.direction );
+                staticComp.blueprintSpriteKey = "sprites/blueprints/belt_" + beltComp.direction + ".png";
+            } else if ( itemProcComp && (
+                    itemProcComp.type == enumItemProcessorTypes.rotater ||
+                    itemProcComp.type == enumItemProcessorTypes.rotaterCCW
+                ) ) {
+                // Don't flip the rotater
+            } else {
+                staticComp.mirrored = !staticComp.mirrored;
+            }
+
         }
     }
 

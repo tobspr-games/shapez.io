@@ -37,6 +37,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.rotateBlueprint, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.mirrorWhilePlacing).add(this.mirrorBlueprint, this);
         keyActionMapper.getBinding(KEYMAPPINGS.massSelect.pasteLastBlueprint).add(this.pasteBlueprint, this);
 
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
@@ -135,6 +136,20 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
                 this.currentBlueprint.get().rotateCcw();
             } else {
                 this.currentBlueprint.get().rotateCw();
+            }
+        }
+    }
+
+    mirrorBlueprint() {
+        if (this.currentBlueprint.get()) {
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
+                // Mirror vertically
+                this.currentBlueprint.get().rotateCw();
+                this.currentBlueprint.get().mirror();
+                this.currentBlueprint.get().rotateCcw();
+            } else {
+                // Mirror horizontally
+                this.currentBlueprint.get().mirror();
             }
         }
     }

@@ -24,6 +24,10 @@ export class MetaTrashBuilding extends MetaBuilding {
         return variant !== defaultBuildingVariant;
     }
 
+    isMirrorable(variant) {
+        return variant !== defaultBuildingVariant;
+    }
+
     getSilhouetteColor() {
         return "#cd7d86";
     }

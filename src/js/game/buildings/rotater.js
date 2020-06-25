@@ -18,6 +18,10 @@ export class MetaRotaterBuilding extends MetaBuilding {
         super("rotater");
     }
 
+    isMirrorable(variant) {
+        return false;
+    }
+
     getSilhouetteColor() {
         return "#7dc6cd";
     }

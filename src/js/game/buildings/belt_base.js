@@ -141,7 +141,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {string} variant
      * @return {{ rotation: number, rotationVariant: number }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
+    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, mirrored, variant) {
         const topDirection = enumAngleToDirection[rotation];
         const rightDirection = enumAngleToDirection[(rotation + 90) % 360];
         const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];
@@ -191,6 +191,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             if (hasRightEjector && !hasLeftEjector) {
                 return {
                     rotation: (rotation + 270) % 360,
+                    mirrored: false,
                     rotationVariant: 2,
                 };
             }
@@ -200,6 +201,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             if (hasLeftEjector && !hasRightEjector) {
                 return {
                     rotation: (rotation + 90) % 360,
+                    mirrored: false,
                     rotationVariant: 1,
                 };
             }
@@ -213,6 +215,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             if (hasRightAcceptor && !hasLeftAcceptor) {
                 return {
                     rotation,
+                    mirrored: false,
                     rotationVariant: 2,
                 };
             }
@@ -222,6 +225,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             if (hasLeftAcceptor && !hasRightAcceptor) {
                 return {
                     rotation,
+                    mirrored: false,
                     rotationVariant: 1,
                 };
             }
@@ -229,6 +233,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
         return {
             rotation,
+            mirrored: false,
             rotationVariant: 0,
         };
     }

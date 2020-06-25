@@ -100,6 +100,7 @@ export class BeltSystem extends GameSystemWithFilter {
                                 this.root,
                                 new Vector(x, y),
                                 targetStaticComp.originalRotation,
+                                false,
                                 defaultBuildingVariant
                             );
                             targetStaticComp.rotation = rotation;

@@ -56,11 +56,12 @@ export class GameLogic {
      * @param {MetaBuilding} param0.building
      * @returns {boolean}
      */
-    isAreaFreeToBuild({ origin, rotation, rotationVariant, variant, building }) {
+    isAreaFreeToBuild({ origin, rotation, mirrored, rotationVariant, variant, building }) {
         const checker = new StaticMapEntityComponent({
             origin,
             tileSize: building.getDimensions(variant),
             rotation,
+            mirrored,
             blueprintSpriteKey: "",
         });
 
@@ -76,6 +77,7 @@ export class GameLogic {
                             origin,
                             building,
                             rotation,
+                            mirrored,
                             rotationVariant,
                         })
                     ) {
@@ -95,10 +97,11 @@ export class GameLogic {
      * @param {Vector} param0.origin
      * @param {number} param0.rotation
      * @param {number} param0.rotationVariant
+     * @param {boolean} param0.mirrored
      * @param {MetaBuilding} param0.building
      * @returns {boolean}
      */
-    checkCanReplaceBuilding({ original, origin, building, rotation, rotationVariant }) {
+    checkCanReplaceBuilding({ original, origin, building, rotation, mirrored, rotationVariant }) {
         if (!original.components.ReplaceableMapEntity) {
             // Can not get replaced at all
             return false;
@@ -128,7 +131,7 @@ export class GameLogic {
      * @param {string} param0.variant
      * @param {MetaBuilding} param0.building
      */
-    checkCanPlaceBuilding({ origin, rotation, rotationVariant, variant, building }) {
+    checkCanPlaceBuilding({ origin, rotation, mirrored, rotationVariant, variant, building }) {
         if (!building.getIsUnlocked(this.root)) {
             return false;
         }
@@ -136,6 +139,7 @@ export class GameLogic {
         return this.isAreaFreeToBuild({
             origin,
             rotation,
+            mirrored,
             rotationVariant,
             variant,
             building,
@@ -153,13 +157,14 @@ export class GameLogic {
      * @param {MetaBuilding} param0.building
      * @returns {Entity}
      */
-    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, variant, building }) {
-        if (this.checkCanPlaceBuilding({ origin, rotation, rotationVariant, variant, building })) {
+    tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, mirrored, variant, building }) {
+        if (this.checkCanPlaceBuilding({ origin, rotation, mirrored, rotationVariant, variant, building })) {
             // Remove any removeable entities below
             const checker = new StaticMapEntityComponent({
                 origin,
                 tileSize: building.getDimensions(variant),
                 rotation,
+                mirrored,
                 blueprintSpriteKey: "",
             });
 
@@ -182,6 +187,7 @@ export class GameLogic {
                 origin,
                 rotation,
                 rotationVariant,
+                mirrored,
                 originalRotation,
                 variant,
             });

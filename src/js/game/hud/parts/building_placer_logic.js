@@ -57,6 +57,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.preferredBaseRotations = {};
 
         /**
+         * The current mirror state
+         * @type {boolean}
+         */
+        this.currentMirrored = false;
+
+        /**
          * Whether we are currently dragging
          * @type {boolean}
          */
@@ -103,6 +109,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // KEYBINDINGS
         const keyActionMapper = this.root.keyMapper;
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.mirrorWhilePlacing).add(this.tryMirror, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
         keyActionMapper
             .getBinding(KEYMAPPINGS.placement.switchDirectionLockSide)
@@ -266,6 +273,25 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
     }
     /**
+     * Tries to mirror the current building
+     */
+    tryMirror() {
+        const selectedBuilding = this.currentMetaBuilding.get();
+        if (selectedBuilding) {
+            this.currentMirrored = !this.currentMirrored;
+            this.currentBaseRotation = Vector.mirrorAngle(this.currentBaseRotation);
+            const staticComp = this.fakeEntity.components.StaticMapEntity;
+            staticComp.mirrored = this.currentMirrored;
+            staticComp.rotation = this.currentBaseRotation;
+
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
+                // Rotate twice to get a vertical mirroring
+                this.tryRotate();
+                this.tryRotate();
+            }
+        }
+    }
+    /**
      * Tries to delete the building under the mouse
      */
     deleteBelowCursor() {
@@ -331,6 +357,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.currentMetaBuilding.set(extracted.metaBuilding);
         this.currentVariant.set(extracted.variant);
         this.currentBaseRotation = contents.components.StaticMapEntity.rotation;
+        this.currentMirrored = contents.components.StaticMapEntity.mirrored;
 
         // Make sure we selected something, and also make sure it's not a special entity
         // if (contents && !contents.components.Unremovable) {
@@ -444,10 +471,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         const metaBuilding = this.currentMetaBuilding.get();
-        const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
+        const { rotation, rotationVariant, mirrored } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
             this.root,
             tile,
             this.currentBaseRotation,
+            this.currentMirrored,
             this.currentVariant.get()
         );
 
@@ -456,6 +484,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             rotation,
             rotationVariant,
             originalRotation: this.currentBaseRotation,
+            mirrored,
             building: this.currentMetaBuilding.get(),
             variant: this.currentVariant.get(),
         });

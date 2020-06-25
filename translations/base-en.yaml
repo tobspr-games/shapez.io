@@ -276,6 +276,7 @@ ingame:
         selectBuildings: Select area
         stopPlacement: Stop placement
         rotateBuilding: Rotate building
+        mirrorBuilding: Mirror building
         placeMultiple: Place multiple
         reverseOrientation: Reverse orientation
         disableAutoOrientation: Disable auto orientation
@@ -802,6 +803,7 @@ keybindings:
 
         pipette: Pipette
         rotateWhilePlacing: Rotate
+        mirrorWhilePlacing: Mirror
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants

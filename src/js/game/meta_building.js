@@ -130,6 +130,15 @@ export class MetaBuilding {
     }
 
     /**
+     * Returns whether this building can be mirrored
+     * @param {string} variant
+     * @returns {boolean}
+     */
+    isMirrorable(variant) {
+        return true;
+    }
+
+    /**
      * Returns whether this building is unlocked for the given game
      * @param {GameRoot} root
      */
@@ -151,15 +160,17 @@ export class MetaBuilding {
      * @param {Vector} param0.origin Origin tile
      * @param {number=} param0.rotation Rotation
      * @param {number} param0.originalRotation Original Rotation
+     * @param {boolean} param0.mirrored
      * @param {number} param0.rotationVariant Rotation variant
      * @param {string} param0.variant
      */
-    createAndPlaceEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
+    createAndPlaceEntity({ root, origin, rotation, originalRotation, mirrored, rotationVariant, variant }) {
         const entity = this.createEntity({
             root,
             origin,
             rotation,
             originalRotation,
+            mirrored,
             rotationVariant,
             variant,
         });
@@ -175,10 +186,11 @@ export class MetaBuilding {
      * @param {Vector} param0.origin Origin tile
      * @param {number=} param0.rotation Rotation
      * @param {number} param0.originalRotation Original Rotation
+     * @param {boolean} param0.mirrored
      * @param {number} param0.rotationVariant Rotation variant
      * @param {string} param0.variant
      */
-    createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
+    createEntity({ root, origin, rotation, originalRotation, mirrored, rotationVariant, variant }) {
         const entity = new Entity(root);
         const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
         entity.addComponent(
@@ -191,6 +203,7 @@ export class MetaBuilding {
                 origin: new Vector(origin.x, origin.y),
                 rotation,
                 originalRotation,
+                mirrored,
                 tileSize: this.getDimensions(variant).copy(),
                 silhouetteColor: this.getSilhouetteColor(),
                 blueprintSpriteKey: blueprintSprite ? blueprintSprite.spriteName : "",
@@ -207,17 +220,18 @@ export class MetaBuilding {
      * @param {Vector} tile
      * @param {number} rotation
      * @param {string} variant
-     * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
+     * @return {{ rotation: number, rotationVariant: number, mirrored: boolean, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
+    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, mirrored, variant) {
         if (!this.isRotateable(variant)) {
-            return {
-                rotation: 0,
-                rotationVariant: 0,
-            };
+          rotation = 0;
+        }
+        if (!this.isMirrorable(variant)) {
+            mirrored = false;
         }
         return {
             rotation,
+            mirrored,
             rotationVariant: 0,
         };
     }
