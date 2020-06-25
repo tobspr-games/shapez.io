@@ -10,6 +10,7 @@ export const CHANGELOG = [
             "Add 'copy key' button to shape viewer",
             "Fix deconstruct sound being played when right clicking hub",
             "Add setting (on by default) to store the last used rotation per building instead of globally storing it (by Magos)",
+            "Add more FPS to the belt animation",
             "Added chinese (traditional) translation",
             "Updated translations",
         ],

@@ -1,0 +1,12 @@
+{
+    "name": "belt",
+    "version": "1.0.0",
+    "main": "index.js",
+    "private": "true",
+    "devDependencies": {
+        "canvas": "^2.6.1"
+    },
+    "scripts": {
+        "generate": "node generate_belt_sprites.js"
+    }
+}

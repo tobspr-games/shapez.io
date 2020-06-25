@@ -1,21 +1,20 @@
-import { Math_radians, Math_min, Math_max, Math_sqrt } from "../../core/builtins";
+import { Math_sqrt } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { Loader } from "../../core/loader";
+import { createLogger } from "../../core/logging";
+import { Rectangle } from "../../core/rectangle";
 import { AtlasSprite } from "../../core/sprites";
+import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
+import { MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumDirection, enumDirectionToVector, Vector, enumInvertedDirections } from "../../core/vector";
 import { MapChunkView } from "../map_chunk_view";
-import { gMetaBuildingRegistry } from "../../core/global_registries";
-import { MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { defaultBuildingVariant } from "../meta_building";
-import { GameRoot } from "../root";
-import { createLogger } from "../../core/logging";
-import { Rectangle } from "../../core/rectangle";
 
-const BELT_ANIM_COUNT = 6;
+export const BELT_ANIM_COUNT = 28;
 const SQRT_2 = Math_sqrt(2);
 
 const logger = createLogger("belt");
@@ -31,35 +30,25 @@ export class BeltSystem extends GameSystemWithFilter {
             [enumDirection.left]: Loader.getSprite("sprites/belt/left_0.png"),
             [enumDirection.right]: Loader.getSprite("sprites/belt/right_0.png"),
         };
-        /**b
+
+        /**
          * @type {Object.<enumDirection, Array<AtlasSprite>>}
          */
         this.beltAnimations = {
-            [enumDirection.top]: [
-                Loader.getSprite("sprites/belt/forward_0.png"),
-                Loader.getSprite("sprites/belt/forward_1.png"),
-                Loader.getSprite("sprites/belt/forward_2.png"),
-                Loader.getSprite("sprites/belt/forward_3.png"),
-                Loader.getSprite("sprites/belt/forward_4.png"),
-                Loader.getSprite("sprites/belt/forward_5.png"),
-            ],
-            [enumDirection.left]: [
-                Loader.getSprite("sprites/belt/left_0.png"),
-                Loader.getSprite("sprites/belt/left_1.png"),
-                Loader.getSprite("sprites/belt/left_2.png"),
-                Loader.getSprite("sprites/belt/left_3.png"),
-                Loader.getSprite("sprites/belt/left_4.png"),
-                Loader.getSprite("sprites/belt/left_5.png"),
-            ],
-            [enumDirection.right]: [
-                Loader.getSprite("sprites/belt/right_0.png"),
-                Loader.getSprite("sprites/belt/right_1.png"),
-                Loader.getSprite("sprites/belt/right_2.png"),
-                Loader.getSprite("sprites/belt/right_3.png"),
-                Loader.getSprite("sprites/belt/right_4.png"),
-                Loader.getSprite("sprites/belt/right_5.png"),
-            ],
+            [enumDirection.top]: [],
+            [enumDirection.left]: [],
+            [enumDirection.right]: [],
         };
+
+        for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
+            this.beltAnimations[enumDirection.top].push(
+                Loader.getSprite("sprites/belt/forward_" + i + ".png")
+            );
+            this.beltAnimations[enumDirection.left].push(Loader.getSprite("sprites/belt/left_" + i + ".png"));
+            this.beltAnimations[enumDirection.right].push(
+                Loader.getSprite("sprites/belt/right_" + i + ".png")
+            );
+        }
 
         this.root.signals.entityAdded.add(this.updateSurroundingBeltPlacement, this);
         this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
@@ -283,8 +272,10 @@ export class BeltSystem extends GameSystemWithFilter {
                         // Try to give this item to a new belt
 
                         /* PERFORMANCE OPTIMIZATION */
+
                         // Original:
                         //  const freeSlot = ejectorComp.getFirstFreeSlot();
+
                         // Replaced
                         if (ejectorSlot.item) {
                             // So, we don't have a free slot - damned!
