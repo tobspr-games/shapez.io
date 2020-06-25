@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { Signal } from "../core/signal";
+import { Rectangle } from "../core/rectangle";
 import { RandomNumberGenerator } from "../core/rng";
 import { createLogger } from "../core/logging";
 
@@ -132,6 +133,9 @@ export class GameRoot {
             entityComponentRemoved: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityQueuedForDestroy: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityDestroyed: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+
+            // Special case for updating when a blueprint is placed.
+            blueprintPlacedUpdateBeltCache: /** @type {TypedSignal<[Rectangle]>} */ (new Signal()),
 
             // Global
             resized: /** @type {TypedSignal<[number, number]>} */ (new Signal()),
