@@ -1,4 +1,4 @@
-import { Math_sqrt } from "../../core/builtins";
+import { Math_sqrt, Math_max } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
@@ -117,7 +117,9 @@ export class BeltSystem extends GameSystemWithFilter {
             } else {
                 this.areaToRecompute = affectedArea.clone();
             }
-            logger.log("Queuing recompute:", this.areaToRecompute);
+            if (G_IS_DEV) {
+                logger.log("Queuing recompute:", this.areaToRecompute);
+            }
         }
     }
 
@@ -169,6 +171,15 @@ export class BeltSystem extends GameSystemWithFilter {
     computeBeltCache() {
         if (this.areaToRecompute) {
             logger.log("Updating belt cache by updating area:", this.areaToRecompute);
+
+            if (G_IS_DEV && globalConfig.debug.renderChanges) {
+                this.root.hud.parts.changesDebugger.renderChange(
+                    "belt-area",
+                    this.areaToRecompute,
+                    "#00fff6"
+                );
+            }
+
             for (let x = this.areaToRecompute.x; x < this.areaToRecompute.right(); ++x) {
                 for (let y = this.areaToRecompute.y; y < this.areaToRecompute.bottom(); ++y) {
                     const tile = this.root.map.getTileContentXY(x, y);
@@ -182,6 +193,15 @@ export class BeltSystem extends GameSystemWithFilter {
             this.areaToRecompute = null;
         } else {
             logger.log("Doing full belt recompute");
+
+            if (G_IS_DEV && globalConfig.debug.renderChanges) {
+                this.root.hud.parts.changesDebugger.renderChange(
+                    "",
+                    new Rectangle(-1000, -1000, 2000, 2000),
+                    "#00fff6"
+                );
+            }
+
             for (let i = 0; i < this.allEntities.length; ++i) {
                 const entity = this.allEntities[i];
                 entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
@@ -246,6 +266,11 @@ export class BeltSystem extends GameSystemWithFilter {
                 speedMultiplier = SQRT_2;
             }
 
+            // How much offset we add when transferring to a new belt
+            // This substracts one tick because the belt will be updated directly
+            // afterwards anyways
+            const takeoverOffset = 1.0 + beltSpeed * speedMultiplier;
+
             // Not really nice. haven't found the reason for this yet.
             if (items.length > 2 / globalConfig.itemSpacingOnBelts) {
                 beltComp.sortedItems = [];
@@ -260,7 +285,7 @@ export class BeltSystem extends GameSystemWithFilter {
                     if (beltComp.followUpCache) {
                         const followUpBelt = beltComp.followUpCache.components.Belt;
                         if (followUpBelt.canAcceptItem()) {
-                            followUpBelt.takeItem(progressAndItem[1], progressAndItem[0] - 1.0);
+                            followUpBelt.takeItem(progressAndItem[1], progressAndItem[0] - takeoverOffset);
                             items.splice(itemIndex, 1);
                         } else {
                             // Well, we couldn't really take it to a follow up belt, keep it at
