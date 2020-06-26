@@ -74,8 +74,11 @@ export class GameHUD {
             shapeViewer: new HUDShapeViewer(this.root),
             wiresOverlay: new HUDWiresOverlay(this.root),
 
+            // Typing hints
+            /* typehints:start */
             /** @type {HUDChangesDebugger} */
             changesDebugger: null,
+            /* typehints:end */
         };
 
         this.signals = {

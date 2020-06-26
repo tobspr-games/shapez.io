@@ -1,13 +1,13 @@
-import { DrawParameters } from "../../../core/draw_parameters";
-import { Loader } from "../../../core/loader";
-import { createLogger } from "../../../core/logging";
-import { Vector } from "../../../core/vector";
-import { Entity } from "../../entity";
-import { GameRoot } from "../../root";
-import { findNiceIntegerValue } from "../../../core/utils";
-import { Math_pow } from "../../../core/builtins";
-import { blueprintShape } from "../../upgrades";
-import { globalConfig } from "../../../core/config";
+import { DrawParameters } from "../core/draw_parameters";
+import { Loader } from "../core/loader";
+import { createLogger } from "../core/logging";
+import { Vector } from "../core/vector";
+import { Entity } from "./entity";
+import { GameRoot } from "./root";
+import { findNiceIntegerValue } from "../core/utils";
+import { Math_pow } from "../core/builtins";
+import { blueprintShape } from "./upgrades";
+import { globalConfig } from "../core/config";
 
 const logger = createLogger("blueprint");
 
@@ -176,7 +176,6 @@ export class Blueprint {
     tryPlace(root, tile) {
         return root.logic.performBulkOperation(() => {
             let anyPlaced = false;
-            const beltsToRegisterLater = [];
             for (let i = 0; i < this.entities.length; ++i) {
                 let placeable = true;
                 const entity = this.entities[i];
@@ -217,20 +216,9 @@ export class Blueprint {
 
                     root.map.placeStaticEntity(clone);
 
-                    // Registering a belt immediately triggers a recalculation of surrounding belt
-                    // directions, which is no good when not all belts have been placed. To resolve
-                    // this, only register belts after all entities have been placed.
-                    if (!clone.components.Belt) {
-                        root.entityMgr.registerEntity(clone);
-                    } else {
-                        beltsToRegisterLater.push(clone);
-                    }
+                    root.entityMgr.registerEntity(clone);
                     anyPlaced = true;
                 }
-            }
-
-            for (let i = 0; i < beltsToRegisterLater.length; i++) {
-                root.entityMgr.registerEntity(beltsToRegisterLater[i]);
             }
             return anyPlaced;
         });

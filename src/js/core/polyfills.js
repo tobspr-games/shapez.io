@@ -72,6 +72,7 @@ function objectPolyfills() {
     }
 
     if (!Object.entries) {
+        // @ts-ignore
         Object.entries = function entries(O) {
             return reduce(
                 keys(O),

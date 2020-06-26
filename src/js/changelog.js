@@ -1,8 +1,9 @@
 export const CHANGELOG = [
     {
         version: "1.1.18",
-        date: "24.06.2020",
+        date: "26.06.2020",
         entries: [
+            "Huge belt performance improvements - up to 50% increase",
             "Preparations for the wires update",
             "Update belt placement performance on huge factories (by Phlosioneer)",
             "Allow clicking on variants to select them",
