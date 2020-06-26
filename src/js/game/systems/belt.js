@@ -51,15 +51,51 @@ export class BeltSystem extends GameSystemWithFilter {
         this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
         this.root.signals.entityDestroyed.add(this.onEntityDestroyed, this);
         this.root.signals.entityAdded.add(this.onEntityAdded, this);
-        this.root.signals.postLoadHook.add(this.computeBeltCache, this);
 
         // /** @type {Rectangle} */
         // this.areaToRecompute = null;
 
         /** @type {Array<BeltPath>} */
         this.beltPaths = [];
+    }
 
-        this.recomputePaths = true;
+    /**
+     * Serializes all belt paths
+     */
+    serializePaths() {
+        let data = [];
+        for (let i = 0; i < this.beltPaths.length; ++i) {
+            data.push(this.beltPaths[i].serialize());
+        }
+        return data;
+    }
+
+    /**
+     * Deserializes all belt paths
+     * @param {Array<any>} data
+     */
+    deserializePaths(data) {
+        if (!Array.isArray(data)) {
+            return "Belt paths are not an array: " + typeof data;
+        }
+
+        for (let i = 0; i < data.length; ++i) {
+            const path = BeltPath.fromSerialized(this.root, data[i]);
+            if (!(path instanceof BeltPath)) {
+                return "Failed to create path from belt data: " + path;
+            }
+
+            this.beltPaths.push(path);
+        }
+
+        if (this.beltPaths.length === 0) {
+            logger.warn("Recomputing belt paths (most likely the savegame is old)");
+            this.recomputeAllBeltPaths();
+        } else {
+            logger.warn("Restored", this.beltPaths.length, "belt paths");
+        }
+
+        this.verifyBeltPaths();
     }
 
     /**
@@ -76,7 +112,6 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        // this.recomputePaths = true;
         /*
         const metaBelt = gMetaBuildingRegistry.findByClass(MetaBeltBaseBuilding);
 
@@ -236,7 +271,7 @@ export class BeltSystem extends GameSystemWithFilter {
      * Verifies all belt paths
      */
     verifyBeltPaths() {
-        if (G_IS_DEV && false) {
+        if (G_IS_DEV && true) {
             for (let i = 0; i < this.beltPaths.length; ++i) {
                 this.beltPaths[i].debug_checkIntegrity("general-verify");
             }
@@ -328,57 +363,10 @@ export class BeltSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Recomputes the belt cache
-     */
-    computeBeltCache() {
-        this.recomputePaths = false;
-        /*
-        if (this.areaToRecompute) {
-            logger.log("Updating belt cache by updating area:", this.areaToRecompute);
-
-            if (G_IS_DEV && globalConfig.debug.renderChanges) {
-                this.root.hud.parts.changesDebugger.renderChange(
-                    "belt-area",
-                    this.areaToRecompute,
-                    "#00fff6"
-                );
-            }
-
-            for (let x = this.areaToRecompute.x; x < this.areaToRecompute.right(); ++x) {
-                for (let y = this.areaToRecompute.y; y < this.areaToRecompute.bottom(); ++y) {
-                    const tile = this.root.map.getTileContentXY(x, y);
-                    if (tile && tile.components.Belt) {
-                        tile.components.Belt.followUpCache = this.findFollowUpEntity(tile);
-                    }
-                }
-            }
-
-            // Reset stale areas afterwards
-            this.areaToRecompute = null;
-        } else {
-            logger.log("Doing full belt recompute");
-
-            if (G_IS_DEV && globalConfig.debug.renderChanges) {
-                this.root.hud.parts.changesDebugger.renderChange(
-                    "",
-                    new Rectangle(-1000, -1000, 2000, 2000),
-                    "#00fff6"
-                );
-            }
-
-            for (let i = 0; i < this.allEntities.length; ++i) {
-                const entity = this.allEntities[i];
-                entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
-            }
-        }
-        */
-        this.computeBeltPaths();
-    }
-
-    /**
      * Computes the belt path network
      */
-    computeBeltPaths() {
+    recomputeAllBeltPaths() {
+        logger.warn("Recomputing all belt paths");
         const visitedUids = new Set();
 
         const result = [];
@@ -429,10 +417,6 @@ export class BeltSystem extends GameSystemWithFilter {
     }
 
     update() {
-        if (this.recomputePaths) {
-            this.computeBeltCache();
-        }
-
         this.verifyBeltPaths();
 
         for (let i = 0; i < this.beltPaths.length; ++i) {
@@ -440,123 +424,6 @@ export class BeltSystem extends GameSystemWithFilter {
         }
 
         this.verifyBeltPaths();
-
-        return;
-        /*
-
-        // Divide by item spacing on belts since we use throughput and not speed
-        let beltSpeed =
-            this.root.hubGoals.getBeltBaseSpeed() *
-            this.root.dynamicTickrate.deltaSeconds *
-            globalConfig.itemSpacingOnBelts;
-
-        if (G_IS_DEV && globalConfig.debug.instantBelts) {
-            beltSpeed *= 100;
-        }
-
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
-
-            const beltComp = entity.components.Belt;
-            const items = beltComp.sortedItems;
-
-            if (items.length === 0) {
-                // Fast out for performance
-                continue;
-            }
-
-            const ejectorComp = entity.components.ItemEjector;
-            let maxProgress = 1;
-
-            // PERFORMANCE OPTIMIZATION
-            // Original:
-            //   const isCurrentlyEjecting = ejectorComp.isAnySlotEjecting();
-            // Replaced (Since belts always have just one slot):
-            const ejectorSlot = ejectorComp.slots[0];
-            const isCurrentlyEjecting = ejectorSlot.item;
-
-            // When ejecting, we can not go further than the item spacing since it
-            // will be on the corner
-            if (isCurrentlyEjecting) {
-                maxProgress = 1 - globalConfig.itemSpacingOnBelts;
-            } else {
-                // Otherwise our progress depends on the follow up
-                if (beltComp.followUpCache) {
-                    const spacingOnBelt = beltComp.followUpCache.components.Belt.getDistanceToFirstItemCenter();
-                    maxProgress = Math.min(2, 1 - globalConfig.itemSpacingOnBelts + spacingOnBelt);
-
-                    // Useful check, but hurts performance
-                    // assert(maxProgress >= 0.0, "max progress < 0 (I) (" + maxProgress + ")");
-                }
-            }
-
-            let speedMultiplier = 1;
-            if (beltComp.direction !== enumDirection.top) {
-                // Curved belts are shorter, thus being quicker (Looks weird otherwise)
-                speedMultiplier = SQRT_2;
-            }
-
-            // How much offset we add when transferring to a new belt
-            // This substracts one tick because the belt will be updated directly
-            // afterwards anyways
-            const takeoverOffset = 1.0 + beltSpeed * speedMultiplier;
-
-            // Not really nice. haven't found the reason for this yet.
-            if (items.length > 2 / globalConfig.itemSpacingOnBelts) {
-                beltComp.sortedItems = [];
-            }
-
-            for (let itemIndex = items.length - 1; itemIndex >= 0; --itemIndex) {
-                const progressAndItem = items[itemIndex];
-
-                progressAndItem[0] = Math.min(maxProgress, progressAndItem[0] + speedMultiplier * beltSpeed);
-                assert(progressAndItem[0] >= 0, "Bad progress: " + progressAndItem[0]);
-
-                if (progressAndItem[0] >= 1.0) {
-                    if (beltComp.followUpCache) {
-                        const followUpBelt = beltComp.followUpCache.components.Belt;
-                        if (followUpBelt.canAcceptItem()) {
-                            followUpBelt.takeItem(
-                                progressAndItem[1],
-                                Math_max(0, progressAndItem[0] - takeoverOffset)
-                            );
-                            items.splice(itemIndex, 1);
-                        } else {
-                            // Well, we couldn't really take it to a follow up belt, keep it at
-                            // max progress
-                            progressAndItem[0] = 1.0;
-                            maxProgress = 1 - globalConfig.itemSpacingOnBelts;
-                        }
-                    } else {
-                        // Try to give this item to a new belt
-
-                        // PERFORMANCE OPTIMIZATION
-
-                        // Original:
-                        //  const freeSlot = ejectorComp.getFirstFreeSlot();
-
-                        // Replaced
-                        if (ejectorSlot.item) {
-                            // So, we don't have a free slot - damned!
-                            progressAndItem[0] = 1.0;
-                            maxProgress = 1 - globalConfig.itemSpacingOnBelts;
-                        } else {
-                            // We got a free slot, remove this item and keep it on the ejector slot
-                            if (!ejectorComp.tryEject(0, progressAndItem[1])) {
-                                assert(false, "Ejection failed");
-                            }
-                            items.splice(itemIndex, 1);
-
-                            // NOTICE: Do not override max progress here at all, this leads to issues
-                        }
-                    }
-                } else {
-                    // We just moved this item forward, so determine the maximum progress of other items
-                    maxProgress = Math.max(0, progressAndItem[0] - globalConfig.itemSpacingOnBelts);
-                }
-            }
-        }
-        */
     }
 
     /**
@@ -596,44 +463,6 @@ export class BeltSystem extends GameSystemWithFilter {
             }
         }
         1;
-    }
-
-    /**
-     * @param {DrawParameters} parameters
-     * @param {Entity} entity
-     */
-    drawEntityItems(parameters, entity) {
-        /*
-        const beltComp = entity.components.Belt;
-        const staticComp = entity.components.StaticMapEntity;
-
-        const items = beltComp.sortedItems;
-
-        if (items.length === 0) {
-            // Fast out for performance
-            return;
-        }
-
-        if (!staticComp.shouldBeDrawn(parameters)) {
-            return;
-        }
-
-        for (let i = 0; i < items.length; ++i) {
-            const itemAndProgress = items[i];
-
-            // Nice would be const [pos, item] = itemAndPos;  but that gets polyfilled and is super slow then
-            const progress = itemAndProgress[0];
-            const item = itemAndProgress[1];
-
-            const position = staticComp.applyRotationToVector(beltComp.transformBeltToLocalSpace(progress));
-
-            item.draw(
-                (staticComp.origin.x + position.x + 0.5) * globalConfig.tileSize,
-                (staticComp.origin.y + position.y + 0.5) * globalConfig.tileSize,
-                parameters
-            );
-        }
-        */
     }
 
     /**

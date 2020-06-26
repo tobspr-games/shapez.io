@@ -8,6 +8,8 @@ import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
 import { GameRoot } from "./root";
 import { Rectangle } from "../core/rectangle";
+import { BasicSerializableObject, types } from "../savegame/serialization";
+import { gItemRegistry } from "../core/global_registries";
 
 const logger = createLogger("belt_path");
 
@@ -20,12 +22,76 @@ const DEBUG = G_IS_DEV && false;
 /**
  * Stores a path of belts, used for optimizing performance
  */
-export class BeltPath {
+export class BeltPath extends BasicSerializableObject {
+    static getId() {
+        return "BeltPath";
+    }
+
+    static getSchema() {
+        return {
+            entityPath: types.array(types.entity),
+            items: types.array(types.pair(types.ufloat, types.obj(gItemRegistry))),
+            spacingToFirstItem: types.ufloat,
+        };
+    }
+
+    /**
+     * Creates a path from a serialized object
+     * @param {GameRoot} root
+     * @param {Object} data
+     * @returns {BeltPath|string}
+     */
+    static fromSerialized(root, data) {
+        // Create fake object which looks like a belt path but skips the constructor
+        const fakeObject = /** @type {BeltPath} */ (Object.create(BeltPath.prototype));
+        fakeObject.root = root;
+
+        // Deserialize the data
+        const errorCodeDeserialize = fakeObject.deserialize(data);
+        if (errorCodeDeserialize) {
+            return errorCodeDeserialize;
+        }
+
+        // Compute other properties
+        fakeObject.init(false);
+
+        return fakeObject;
+    }
+
+    /**
+     * Initializes the path by computing the properties which are not saved
+     * @param {boolean} computeSpacing Whether to also compute the spacing
+     */
+    init(computeSpacing = true) {
+        // Find acceptor and ejector
+        this.ejectorComp = this.entityPath[this.entityPath.length - 1].components.ItemEjector;
+        this.ejectorSlot = this.ejectorComp.slots[0];
+        this.initialBeltComponent = this.entityPath[0].components.Belt;
+
+        this.totalLength = this.computeTotalLength();
+
+        if (computeSpacing) {
+            this.spacingToFirstItem = this.totalLength;
+        }
+
+        /**
+         * Current bounds of this path
+         * @type {Rectangle}
+         */
+        this.worldBounds = this.computeBounds();
+
+        // Connect the belts
+        for (let i = 0; i < this.entityPath.length; ++i) {
+            this.entityPath[i].components.Belt.assignedPath = this;
+        }
+    }
+
     /**
      * @param {GameRoot} root
      * @param {Array<Entity>} entityPath
      */
     constructor(root, entityPath) {
+        super();
         this.root = root;
 
         assert(entityPath.length > 0, "invalid entity path");
@@ -42,25 +108,7 @@ export class BeltPath {
          * Stores the spacing to the first item
          */
 
-        // Find acceptor and ejector
-
-        this.ejectorComp = this.entityPath[this.entityPath.length - 1].components.ItemEjector;
-        this.ejectorSlot = this.ejectorComp.slots[0];
-        this.initialBeltComponent = this.entityPath[0].components.Belt;
-
-        this.totalLength = this.computeTotalLength();
-        this.spacingToFirstItem = this.totalLength;
-
-        /**
-         * Current bounds of this path
-         * @type {Rectangle}
-         */
-        this.worldBounds = this.computeBounds();
-
-        // Connect the belts
-        for (let i = 0; i < this.entityPath.length; ++i) {
-            this.entityPath[i].components.Belt.assignedPath = this;
-        }
+        this.init();
 
         this.debug_checkIntegrity("constructor");
     }
@@ -84,6 +132,16 @@ export class BeltPath {
             return true;
         }
         return false;
+    }
+
+    /**
+     * SLOW / Tries to find the item closest to the given tile
+     * @param {Vector} tile
+     * @returns {BaseItem|null}
+     */
+    findItemAtTile(tile) {
+        // TODO: This breaks color blind mode otherwise
+        return null;
     }
 
     /**
@@ -113,7 +171,7 @@ export class BeltPath {
      * Checks if this path is valid
      */
     debug_checkIntegrity(currentChange = "change") {
-        if (!G_IS_DEV || !DEBUG) {
+        if (!G_IS_DEV) {
             return;
         }
 
@@ -126,7 +184,7 @@ export class BeltPath {
 
         // Check for mismatching length
         const totalLength = this.computeTotalLength();
-        if (!epsilonCompare(this.totalLength, totalLength)) {
+        if (!epsilonCompare(this.totalLength, totalLength, 0.01)) {
             return this.debug_failIntegrity(
                 currentChange,
                 "Total length mismatch, stored =",
@@ -200,7 +258,7 @@ export class BeltPath {
         }
 
         // Check distance if empty
-        if (this.items.length === 0 && !epsilonCompare(this.spacingToFirstItem, this.totalLength)) {
+        if (this.items.length === 0 && !epsilonCompare(this.spacingToFirstItem, this.totalLength, 0.01)) {
             return fail(
                 currentChange,
                 "Path is empty but spacing to first item (",
@@ -230,7 +288,7 @@ export class BeltPath {
         }
 
         // Check the total sum matches
-        if (!epsilonCompare(currentPos, this.totalLength)) {
+        if (!epsilonCompare(currentPos, this.totalLength, 0.01)) {
             return fail(
                 "total sum (",
                 currentPos,
