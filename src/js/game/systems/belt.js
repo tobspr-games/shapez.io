@@ -236,7 +236,7 @@ export class BeltSystem extends GameSystemWithFilter {
      * Verifies all belt paths
      */
     verifyBeltPaths() {
-        if (G_IS_DEV) {
+        if (G_IS_DEV && false) {
             for (let i = 0; i < this.beltPaths.length; ++i) {
                 this.beltPaths[i].debug_checkIntegrity("general-verify");
             }
