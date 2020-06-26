@@ -405,8 +405,6 @@ export function findNiceValue(num) {
     return Math_round(niceValue * 100) / 100;
 }
 
-window.fn = findNiceValue;
-
 /**
  * Finds a nice integer value
  * @see findNiceValue

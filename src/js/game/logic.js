@@ -196,7 +196,7 @@ export class GameLogic {
      * @param {function} operation
      */
     performBulkOperation(operation) {
-        logger.log("Running bulk operation ...");
+        logger.warn("Running bulk operation ...");
         assert(!this.root.bulkOperationRunning, "Can not run two bulk operations twice");
         this.root.bulkOperationRunning = true;
         const now = performanceNow();

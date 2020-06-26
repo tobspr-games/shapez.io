@@ -14,6 +14,8 @@ const logger = createLogger("belt_path");
 const _nextDistance = 0;
 const _item = 1;
 
+const DEBUG = G_IS_DEV && false;
+
 /**
  * Stores a path of belts, used for optimizing performance
  */
@@ -204,7 +206,7 @@ export class BeltPath {
      * @param {Entity} entity
      */
     extendOnEnd(entity) {
-        logger.log("Extending belt path by entity at", entity.components.StaticMapEntity.origin);
+        DEBUG && logger.log("Extending belt path by entity at", entity.components.StaticMapEntity.origin);
 
         const beltComp = entity.components.Belt;
 
@@ -212,7 +214,7 @@ export class BeltPath {
         const pendingItem = this.ejectorComp.takeSlotItem(0);
         if (pendingItem) {
             // Ok, so we have a pending item
-            logger.log("Taking pending item and putting it back on the path");
+            DEBUG && logger.log("Taking pending item and putting it back on the path");
             this.items.push([0, pendingItem]);
         }
 
@@ -222,21 +224,22 @@ export class BeltPath {
         // Extend the path length
         const additionalLength = beltComp.getEffectiveLengthTiles();
         this.totalLength += additionalLength;
-        logger.log("  Extended total length by", additionalLength, "to", this.totalLength);
+        DEBUG && logger.log("  Extended total length by", additionalLength, "to", this.totalLength);
 
         // If we have no item, just update the distance to the first item
         if (this.items.length === 0) {
             this.spacingToFirstItem = this.totalLength;
-            logger.log("  Extended spacing to first to", this.totalLength, "(= total length)");
+            DEBUG && logger.log("  Extended spacing to first to", this.totalLength, "(= total length)");
         } else {
             // Otherwise, update the next-distance of the last item
             const lastItem = this.items[this.items.length - 1];
-            logger.log(
-                "  Extended spacing of last item from",
-                lastItem[_nextDistance],
-                "to",
-                lastItem[_nextDistance] + additionalLength
-            );
+            DEBUG &&
+                logger.log(
+                    "  Extended spacing of last item from",
+                    lastItem[_nextDistance],
+                    "to",
+                    lastItem[_nextDistance] + additionalLength
+                );
             lastItem[_nextDistance] += additionalLength;
         }
 
@@ -257,7 +260,7 @@ export class BeltPath {
     extendOnBeginning(entity) {
         const beltComp = entity.components.Belt;
 
-        logger.log("Extending the path on the beginning");
+        DEBUG && logger.log("Extending the path on the beginning");
 
         // All items on that belt are simply lost (for now)
 
@@ -278,13 +281,31 @@ export class BeltPath {
     }
 
     /**
+     * Returns if the given entity is the end entity of the path
+     * @param {Entity} entity
+     * @returns {boolean}
+     */
+    isEndEntity(entity) {
+        return this.entityPath[this.entityPath.length - 1] === entity;
+    }
+
+    /**
+     * Returns if the given entity is the start entity of the path
+     * @param {Entity} entity
+     * @returns {boolean}
+     */
+    isStartEntity(entity) {
+        return this.entityPath[0] === entity;
+    }
+
+    /**
      * Splits this path at the given entity by removing it, and
      * returning the new secondary paht
      * @param {Entity} entity
      * @returns {BeltPath}
      */
     deleteEntityOnPathSplitIntoTwo(entity) {
-        logger.log("Splitting path at entity", entity.components.StaticMapEntity.origin);
+        DEBUG && logger.log("Splitting path at entity", entity.components.StaticMapEntity.origin);
 
         // First, find where the current path ends
         const beltComp = entity.components.Belt;
@@ -302,7 +323,7 @@ export class BeltPath {
         for (let i = 0; i < this.entityPath.length; ++i) {
             const otherEntity = this.entityPath[i];
             if (otherEntity === entity) {
-                logger.log("Found entity at", i, "of length", firstPathLength);
+                DEBUG && logger.log("Found entity at", i, "of length", firstPathLength);
                 break;
             }
 
@@ -311,38 +332,41 @@ export class BeltPath {
             firstPathLength += otherEntity.components.Belt.getEffectiveLengthTiles();
         }
 
-        logger.log(
-            "First path ends at",
-            firstPathLength,
-            "and entity",
-            firstPathEndEntity.components.StaticMapEntity.origin,
-            "and has",
-            firstPathEntityCount,
-            "entities"
-        );
+        DEBUG &&
+            logger.log(
+                "First path ends at",
+                firstPathLength,
+                "and entity",
+                firstPathEndEntity.components.StaticMapEntity.origin,
+                "and has",
+                firstPathEntityCount,
+                "entities"
+            );
 
         // Compute length of second path
         const secondPathLength = this.totalLength - firstPathLength - entityLength;
         const secondPathStart = firstPathLength + entityLength;
         const secondEntities = this.entityPath.splice(firstPathEntityCount + 1);
-        logger.log(
-            "Second path starts at",
-            secondPathStart,
-            "and has a length of ",
-            secondPathLength,
-            "with",
-            secondEntities.length,
-            "entities"
-        );
+        DEBUG &&
+            logger.log(
+                "Second path starts at",
+                secondPathStart,
+                "and has a length of ",
+                secondPathLength,
+                "with",
+                secondEntities.length,
+                "entities"
+            );
 
         // Remove the last item
         this.entityPath.pop();
 
-        logger.log("Splitting", this.items.length, "items");
-        logger.log(
-            "Old items are",
-            this.items.map(i => i[_nextDistance])
-        );
+        DEBUG && logger.log("Splitting", this.items.length, "items");
+        DEBUG &&
+            logger.log(
+                "Old items are",
+                this.items.map(i => i[_nextDistance])
+            );
 
         // Create second path
         const secondPath = new BeltPath(this.root, secondEntities);
@@ -353,45 +377,48 @@ export class BeltPath {
             const item = this.items[i];
             const distanceToNext = item[_nextDistance];
 
-            logger.log("  Checking item at", itemPos, "with distance of", distanceToNext, "to next");
+            DEBUG && logger.log("  Checking item at", itemPos, "with distance of", distanceToNext, "to next");
 
             // Check if this item is past the first path
             if (itemPos >= firstPathLength) {
                 // Remove it from the first path
                 this.items.splice(i, 1);
                 i -= 1;
-                logger.log("     Removed item from first path since its no longer contained @", itemPos);
+                DEBUG &&
+                    logger.log("     Removed item from first path since its no longer contained @", itemPos);
 
                 // Check if its on the second path (otherwise its on the removed belt and simply lost)
                 if (itemPos >= secondPathStart) {
                     // Put item on second path
                     secondPath.items.push([distanceToNext, item[_item]]);
-                    logger.log(
-                        "     Put item to second path @",
-                        itemPos,
-                        "with distance to next =",
-                        distanceToNext
-                    );
+                    DEBUG &&
+                        logger.log(
+                            "     Put item to second path @",
+                            itemPos,
+                            "with distance to next =",
+                            distanceToNext
+                        );
 
                     // If it was the first item, adjust the distance to the first item
                     if (secondPath.items.length === 1) {
-                        logger.log("       Sinc it was the first, set sapcing of first to", itemPos);
+                        DEBUG && logger.log("       Sinc it was the first, set sapcing of first to", itemPos);
                         secondPath.spacingToFirstItem = itemPos - secondPathStart;
                     }
                 } else {
-                    logger.log("    Item was on the removed belt, so its gone - forever!");
+                    DEBUG && logger.log("    Item was on the removed belt, so its gone - forever!");
                 }
             } else {
                 // Seems this item is on the first path (so all good), so just make sure it doesn't
                 // have a nextDistance which is bigger than the total path length
                 const clampedDistanceToNext = Math_min(itemPos + distanceToNext, firstPathLength) - itemPos;
                 if (clampedDistanceToNext < distanceToNext) {
-                    logger.log(
-                        "Correcting next distance (first path) from",
-                        distanceToNext,
-                        "to",
-                        clampedDistanceToNext
-                    );
+                    DEBUG &&
+                        logger.log(
+                            "Correcting next distance (first path) from",
+                            distanceToNext,
+                            "to",
+                            clampedDistanceToNext
+                        );
                     item[_nextDistance] = clampedDistanceToNext;
                 }
             }
@@ -400,15 +427,17 @@ export class BeltPath {
             itemPos += distanceToNext;
         }
 
-        logger.log(
-            "New items are",
-            this.items.map(i => i[_nextDistance])
-        );
+        DEBUG &&
+            logger.log(
+                "New items are",
+                this.items.map(i => i[_nextDistance])
+            );
 
-        logger.log(
-            "And second path items are",
-            secondPath.items.map(i => i[_nextDistance])
-        );
+        DEBUG &&
+            logger.log(
+                "And second path items are",
+                secondPath.items.map(i => i[_nextDistance])
+            );
 
         // Adjust our total length
         this.totalLength = firstPathLength;
@@ -433,25 +462,36 @@ export class BeltPath {
      * @param {Entity} entity
      */
     deleteEntityOnEnd(entity) {
-        assert(this.entityPath[this.entityPath.length - 1] === entity, "Not the last entity actually");
+        assert(
+            this.entityPath[this.entityPath.length - 1] === entity,
+            "Not actually the last entity (instead " + this.entityPath.indexOf(entity) + ")"
+        );
 
         // Ok, first remove the entity
         const beltComp = entity.components.Belt;
         const beltLength = beltComp.getEffectiveLengthTiles();
 
-        logger.log(
-            "Deleting last entity on path with length",
-            this.entityPath.length,
-            "(reducing",
-            this.totalLength,
-            " by",
-            beltLength,
-            ")"
-        );
+        DEBUG &&
+            logger.log(
+                "Deleting last entity on path with length",
+                this.entityPath.length,
+                "(reducing",
+                this.totalLength,
+                " by",
+                beltLength,
+                ")"
+            );
         this.totalLength -= beltLength;
         this.entityPath.pop();
 
-        logger.log("  New path has length of", this.totalLength, "with", this.entityPath.length, "entities");
+        DEBUG &&
+            logger.log(
+                "  New path has length of",
+                this.totalLength,
+                "with",
+                this.entityPath.length,
+                "entities"
+            );
 
         // This is just for sanity
         beltComp.assignedPath = null;
@@ -465,20 +505,20 @@ export class BeltPath {
             let itemOffset = this.spacingToFirstItem;
             let lastItemOffset = itemOffset;
 
-            logger.log("  Adjusting", this.items.length, "items");
+            DEBUG && logger.log("  Adjusting", this.items.length, "items");
 
             for (let i = 0; i < this.items.length; ++i) {
                 const item = this.items[i];
 
                 // Get rid of items past this path
                 if (itemOffset >= this.totalLength) {
-                    logger.log("Dropping item (current index=", i, ")");
+                    DEBUG && logger.log("Dropping item (current index=", i, ")");
                     this.items.splice(i, 1);
                     i -= 1;
                     continue;
                 }
 
-                logger.log("Item", i, "is at", itemOffset, "with next offset", item[_nextDistance]);
+                DEBUG && logger.log("Item", i, "is at", itemOffset, "with next offset", item[_nextDistance]);
                 lastItemOffset = itemOffset;
                 itemOffset += item[_nextDistance];
             }
@@ -497,18 +537,19 @@ export class BeltPath {
                         lastItemOffset
                 );
 
-                logger.log(
-                    "Adjusted distance of last item: it is at",
-                    lastItemOffset,
-                    "so it has a distance of",
-                    lastDistance,
-                    "to the end (",
-                    this.totalLength,
-                    ")"
-                );
+                DEBUG &&
+                    logger.log(
+                        "Adjusted distance of last item: it is at",
+                        lastItemOffset,
+                        "so it has a distance of",
+                        lastDistance,
+                        "to the end (",
+                        this.totalLength,
+                        ")"
+                    );
                 this.items[this.items.length - 1][_nextDistance] = lastDistance;
             } else {
-                logger.log("  Removed all items so we'll update spacing to total length");
+                DEBUG && logger.log("  Removed all items so we'll update spacing to total length");
 
                 // We removed all items so update our spacing
                 this.spacingToFirstItem = this.totalLength;
@@ -528,25 +569,36 @@ export class BeltPath {
      * @param {Entity} entity
      */
     deleteEntityOnStart(entity) {
-        assert(entity === this.entityPath[0], "Not actually the start entity");
+        assert(
+            entity === this.entityPath[0],
+            "Not actually the start entity (instead " + this.entityPath.indexOf(entity) + ")"
+        );
 
         // Ok, first remove the entity
         const beltComp = entity.components.Belt;
         const beltLength = beltComp.getEffectiveLengthTiles();
 
-        logger.log(
-            "Deleting first entity on path with length",
-            this.entityPath.length,
-            "(reducing",
-            this.totalLength,
-            " by",
-            beltLength,
-            ")"
-        );
+        DEBUG &&
+            logger.log(
+                "Deleting first entity on path with length",
+                this.entityPath.length,
+                "(reducing",
+                this.totalLength,
+                " by",
+                beltLength,
+                ")"
+            );
         this.totalLength -= beltLength;
         this.entityPath.shift();
 
-        logger.log("  New path has length of", this.totalLength, "with", this.entityPath.length, "entities");
+        DEBUG &&
+            logger.log(
+                "  New path has length of",
+                this.totalLength,
+                "with",
+                this.entityPath.length,
+                "entities"
+            );
 
         // This is just for sanity
         beltComp.assignedPath = null;
@@ -558,41 +610,45 @@ export class BeltPath {
         } else {
             // Simple case, we had no item on the beginning -> all good
             if (this.spacingToFirstItem >= beltLength) {
-                logger.log(
-                    "  No item on the first place, so we can just adjust the spacing (spacing=",
-                    this.spacingToFirstItem,
-                    ") removed =",
-                    beltLength
-                );
+                DEBUG &&
+                    logger.log(
+                        "  No item on the first place, so we can just adjust the spacing (spacing=",
+                        this.spacingToFirstItem,
+                        ") removed =",
+                        beltLength
+                    );
                 this.spacingToFirstItem -= beltLength;
             } else {
                 // Welp, okay we need to drop all items which are < beltLength and adjust
                 // the other item offsets as well
 
-                logger.log(
-                    "  We have at least one item in the beginning, drop those and adjust spacing (first item @",
-                    this.spacingToFirstItem,
-                    ") since we removed",
-                    beltLength,
-                    "length from path"
-                );
-                logger.log(
-                    "    Items:",
-                    this.items.map(i => i[_nextDistance])
-                );
+                DEBUG &&
+                    logger.log(
+                        "  We have at least one item in the beginning, drop those and adjust spacing (first item @",
+                        this.spacingToFirstItem,
+                        ") since we removed",
+                        beltLength,
+                        "length from path"
+                    );
+                DEBUG &&
+                    logger.log(
+                        "    Items:",
+                        this.items.map(i => i[_nextDistance])
+                    );
 
                 // Find offset to first item
                 let itemOffset = this.spacingToFirstItem;
                 for (let i = 0; i < this.items.length; ++i) {
                     const item = this.items[i];
                     if (itemOffset <= beltLength) {
-                        logger.log(
-                            "  -> Dropping item with index",
-                            i,
-                            "at",
-                            itemOffset,
-                            "since it was on the removed belt"
-                        );
+                        DEBUG &&
+                            logger.log(
+                                "  -> Dropping item with index",
+                                i,
+                                "at",
+                                itemOffset,
+                                "since it was on the removed belt"
+                            );
                         // This item must be dropped
                         this.items.splice(i, 1);
                         i -= 1;
@@ -605,13 +661,14 @@ export class BeltPath {
                 }
 
                 if (this.items.length > 0) {
-                    logger.log(
-                        "  Offset of first non-dropped item was at:",
-                        itemOffset,
-                        "-> setting spacing to it (total length=",
-                        this.totalLength,
-                        ")"
-                    );
+                    DEBUG &&
+                        logger.log(
+                            "  Offset of first non-dropped item was at:",
+                            itemOffset,
+                            "-> setting spacing to it (total length=",
+                            this.totalLength,
+                            ")"
+                        );
 
                     this.spacingToFirstItem = itemOffset - beltLength;
                     assert(
@@ -619,7 +676,7 @@ export class BeltPath {
                         "Invalid spacing after delete on start: " + this.spacingToFirstItem
                     );
                 } else {
-                    logger.log("  We dropped all items, simply set spacing to total length");
+                    DEBUG && logger.log("  We dropped all items, simply set spacing to total length");
                     // We dropped all items, simple one
                     this.spacingToFirstItem = this.totalLength;
                 }
@@ -640,11 +697,11 @@ export class BeltPath {
         assert(otherPath !== this, "Circular path dependency");
 
         const entities = otherPath.entityPath;
-        logger.log("Extending path by other path, starting to add entities");
+        DEBUG && logger.log("Extending path by other path, starting to add entities");
 
         const oldLength = this.totalLength;
 
-        logger.log("  Adding", entities.length, "new entities, current length =", this.totalLength);
+        DEBUG && logger.log("  Adding", entities.length, "new entities, current length =", this.totalLength);
 
         // First, append entities
         for (let i = 0; i < entities.length; ++i) {
@@ -660,7 +717,13 @@ export class BeltPath {
             this.totalLength += additionalLength;
         }
 
-        logger.log("  Path is now", this.entityPath.length, "entities and has a length of", this.totalLength);
+        DEBUG &&
+            logger.log(
+                "  Path is now",
+                this.entityPath.length,
+                "entities and has a length of",
+                this.totalLength
+            );
 
         // Update handles
         this.ejectorComp = this.entityPath[this.entityPath.length - 1].components.ItemEjector;
@@ -670,21 +733,23 @@ export class BeltPath {
         if (this.items.length !== 0) {
             const lastItem = this.items[this.items.length - 1];
             lastItem[_nextDistance] += otherPath.spacingToFirstItem;
-            logger.log("  Add distance to last item, effectively being", lastItem[_nextDistance], "now");
+            DEBUG &&
+                logger.log("  Add distance to last item, effectively being", lastItem[_nextDistance], "now");
         } else {
             // Seems we have no items, update our first item distance
             this.spacingToFirstItem = oldLength + otherPath.spacingToFirstItem;
-            logger.log(
-                "  We had no items, so our new spacing to first is old length (",
-                oldLength,
-                ") plus others spacing to first (",
-                otherPath.spacingToFirstItem,
-                ") =",
-                this.spacingToFirstItem
-            );
+            DEBUG &&
+                logger.log(
+                    "  We had no items, so our new spacing to first is old length (",
+                    oldLength,
+                    ") plus others spacing to first (",
+                    otherPath.spacingToFirstItem,
+                    ") =",
+                    this.spacingToFirstItem
+                );
         }
 
-        logger.log("  Pushing", otherPath.items.length, "items from other path");
+        DEBUG && logger.log("  Pushing", otherPath.items.length, "items from other path");
 
         // Aaand push the other paths items
         for (let i = 0; i < otherPath.items.length; ++i) {

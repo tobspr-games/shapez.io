@@ -19,7 +19,7 @@ export class FormElement {
         abstract;
     }
 
-    focus(parent) {}
+    focus() {}
 
     isValid() {
         return true;

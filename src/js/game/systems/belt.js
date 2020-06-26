@@ -146,38 +146,35 @@ export class BeltSystem extends GameSystemWithFilter {
 
         const assignedPath = entity.components.Belt.assignedPath;
         assert(assignedPath, "Entity has no belt path assigned");
+        this.deleteEntityFromPath(assignedPath, entity);
+        this.verifyBeltPaths();
+    }
 
-        // Find from and to entities
-        const fromEntity = this.findSupplyingEntity(entity);
-        const toEntity = this.findFollowUpEntity(entity);
-
-        // Check if the belt had a previous belt
-        if (fromEntity) {
-            const fromPath = fromEntity.components.Belt.assignedPath;
-
-            // Check if the entity had a followup - belt
-            if (toEntity) {
-                const toPath = toEntity.components.Belt.assignedPath;
-                assert(fromPath === toPath, "Invalid belt path layout (from path != to path)");
-
-                const newPath = fromPath.deleteEntityOnPathSplitIntoTwo(entity);
-                this.beltPaths.push(newPath);
-            } else {
-                fromPath.deleteEntityOnEnd(entity);
-            }
-        } else {
-            if (toEntity) {
-                // We need to remove the entity from the beginning of the other path
-                const toPath = toEntity.components.Belt.assignedPath;
-                toPath.deleteEntityOnStart(entity);
-            } else {
-                // This is a single entity path, easy to do
-                const path = entity.components.Belt.assignedPath;
-                fastArrayDeleteValue(this.beltPaths, path);
-            }
+    /**
+     * Attempts to delete the belt from its current path
+     * @param {BeltPath} path
+     * @param {Entity} entity
+     */
+    deleteEntityFromPath(path, entity) {
+        if (path.entityPath.length === 1) {
+            // This is a single entity path, easy to do, simply erase whole path
+            fastArrayDeleteValue(this.beltPaths, path);
+            return;
         }
 
-        this.verifyBeltPaths();
+        // Notice: Since there might be circular references, it is important to check
+        // which role the entity has
+        if (path.isStartEntity(entity)) {
+            // We tried to delete the start
+            path.deleteEntityOnStart(entity);
+        } else if (path.isEndEntity(entity)) {
+            // We tried to delete the end
+            path.deleteEntityOnEnd(entity);
+        } else {
+            // We tried to delete something inbetween
+            const newPath = path.deleteEntityOnPathSplitIntoTwo(entity);
+            this.beltPaths.push(newPath);
+        }
     }
 
     /**
@@ -193,12 +190,8 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        console.log("ADD");
-
         const fromEntity = this.findSupplyingEntity(entity);
         const toEntity = this.findFollowUpEntity(entity);
-
-        console.log("From:", fromEntity, "to:", toEntity);
 
         // Check if we can add the entity to the previous path
         if (fromEntity) {
@@ -385,14 +378,8 @@ export class BeltSystem extends GameSystemWithFilter {
      */
     computeBeltPaths() {
         const visitedUids = new Set();
-        console.log("Computing belt paths");
 
-        const debugEntity = e => e.components.StaticMapEntity.origin.toString();
-
-        // const stackToVisit = this.allEntities.slice();
         const result = [];
-
-        const currentPath = null;
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
@@ -400,7 +387,6 @@ export class BeltSystem extends GameSystemWithFilter {
                 continue;
             }
 
-            // console.log("Starting at", debugEntity(entity));
             // Mark entity as visited
             visitedUids.add(entity.uid);
 
@@ -412,10 +398,9 @@ export class BeltSystem extends GameSystemWithFilter {
             // Find precedors
             let prevEntity = this.findSupplyingEntity(entity);
             while (prevEntity && --maxIter > 0) {
-                if (visitedUids.has(prevEntity)) {
+                if (visitedUids.has(prevEntity.uid)) {
                     break;
                 }
-                // console.log(" -> precedor: ", debugEntity(prevEntity));
                 path.unshift(prevEntity);
                 visitedUids.add(prevEntity.uid);
                 prevEntity = this.findSupplyingEntity(prevEntity);
@@ -424,26 +409,17 @@ export class BeltSystem extends GameSystemWithFilter {
             // Find succedors
             let nextEntity = this.findFollowUpEntity(entity);
             while (nextEntity && --maxIter > 0) {
-                if (visitedUids.has(nextEntity)) {
+                if (visitedUids.has(nextEntity.uid)) {
                     break;
                 }
 
-                // console.log(" -> succedor: ", debugEntity(nextEntity));
                 path.push(nextEntity);
                 visitedUids.add(nextEntity.uid);
                 nextEntity = this.findFollowUpEntity(nextEntity);
             }
 
-            assert(maxIter !== 0, "Ran out of iterations");
-
-            // console.log(
-            //     "Found path:",
-            //     path.map(e => debugEntity(e))
-            // );
-
+            assert(maxIter > 1, "Ran out of iterations");
             result.push(new BeltPath(this.root, path));
-
-            // let prevEntity = this.findSupplyingEntity(srcEntity);
         }
 
         logger.log("Found", this.beltPaths.length, "belt paths");
