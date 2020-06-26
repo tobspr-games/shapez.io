@@ -12,6 +12,8 @@
         "directionLock": "rgb(74, 237, 134)",
         "directionLockTrack": "rgba(74, 237, 134, 0.2)",
 
+        "colorBlindPickerTile": "rgba(50, 50, 50, 0.4)",
+
         "resources": {
             "shape": "#eaebec",
             "red": "#ffbfc1",
@@ -22,11 +24,19 @@
         "chunkOverview": {
             "empty": "#a6afbb",
             "filled": "#c5ccd6"
+        },
+
+        "wires": {
+            "overlay": "rgba(52, 150, 128, 0.8)",
+            "pins": {
+                "energyEjector": "#c425d7"
+            }
         }
     },
 
     "items": {
         "outline": "#55575a",
-        "outlineWidth": 0.75
+        "outlineWidth": 0.75,
+        "circleBackground": "rgba(40, 50, 65, 0.1)"
     }
 }

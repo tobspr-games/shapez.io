@@ -156,6 +156,7 @@ mainMenu:
     continue: Continue
     newGame: New Game
     madeBy: Made by <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -287,6 +288,10 @@ ingame:
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
+        cutSelection: Cut
+        copySelection: Copy
+        clearSelection: Clear Selection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -321,11 +326,6 @@ ingame:
     notifications:
         newUpgrade: 새로운 업그레이드를 할 수 있습니다!
         gameSaved: 게임이 저장되었습니다.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Press <keyCut> to cut, <keyCopy> to copy, <keyDelete> to remove and <keyCancel> to cancel.
 
     # The "Upgrades" window
     shop:
@@ -397,6 +397,19 @@ ingame:
 
             1_3_expand: >-
                 이것은 방치형 게임이 <strong>아닙니다!</strong> 추출기를 더 놓아 목표를 빨리 달성하세요.<br><br>팁: <strong>SHIFT</strong>를 눌러 여러 개의 추출기를 놓고 <strong>R</strong>로 회전 시키세요.
+
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
+    shapeViewer:
+        title: Layers
+        empty: Empty
 
 # All shop upgrades
 shopUpgrades:
@@ -518,7 +531,7 @@ storyRewards:
     reward_painter:
         title: 색칠기
         desc: >-
-            <strong>색칠기</strong>가 잠금 해제 되었습니다! 색소 광물을 추출해서 이 기계로 도형을 색칠하세요. <br><br>PS: 당신이 색맹이라면, 해결책을 찾고 있으니 잠시만 기다려주세요!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: 혼합기
@@ -689,6 +702,39 @@ settings:
                 Enables the vignette which darkens the screen corners and makes text easier
                 to read.
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it
+                entirely here.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+        compactBuildingInfo:
+            title: Compact Building Infos
+            description: >-
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a
+                description and image is shown.
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100
+                entities.
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: Enables various tools which allow to play the game if you are color blind.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
+
 keybindings:
     title: 키바인딩
     hint: >-
@@ -734,7 +780,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: 건물 배치 취소
         rotateWhilePlacing: 회전
         rotateInverseModifier: >-
             Modifier: 대신 반시계방향으로 회전
@@ -754,7 +799,8 @@ keybindings:
         exportScreenshot: Export whole Base as Image
         mapMoveFaster: Move Faster
         lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        switchDirectionLockSide: "Planner: Switch side"
+        pipette: Pipette
 
 about:
     title: 이 게임의 정보

@@ -24,7 +24,7 @@ import { GameHUD } from "./hud/hud";
 import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
-import { GameRoot } from "./root";
+import { GameRoot, enumEditMode } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
@@ -403,11 +403,23 @@ export class GameCore {
         root.map.drawForeground(params);
         if (!this.root.camera.getIsMapOverlayActive()) {
             systems.hub.draw(params);
+            systems.energyGenerator.draw(params);
             systems.storage.draw(params);
+        }
+
+        // WIRES LAYER
+        root.hud.parts.wiresOverlay.draw(params);
+
+        if (this.root.editMode === enumEditMode.wires) {
+            systems.wiredPins.drawWiresLayer(params);
         }
 
         if (G_IS_DEV) {
             root.map.drawStaticEntityDebugOverlays(params);
+        }
+
+        if (G_IS_DEV && globalConfig.debug.renderBeltPaths) {
+            systems.belt.drawBeltPathDebug(params);
         }
 
         // END OF GAME CONTENT

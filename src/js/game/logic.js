@@ -186,7 +186,6 @@ export class GameLogic {
                 variant,
             });
 
-            this.root.soundProxy.playUi(building.getPlacementSound());
             return entity;
         }
         return null;
@@ -197,7 +196,7 @@ export class GameLogic {
      * @param {function} operation
      */
     performBulkOperation(operation) {
-        logger.log("Running bulk operation ...");
+        logger.warn("Running bulk operation ...");
         assert(!this.root.bulkOperationRunning, "Can not run two bulk operations twice");
         this.root.bulkOperationRunning = true;
         const now = performanceNow();
@@ -228,6 +227,7 @@ export class GameLogic {
         }
         this.root.map.removeStaticEntity(building);
         this.root.entityMgr.destroyEntity(building);
+        this.root.entityMgr.processDestroyList();
         return true;
     }
 

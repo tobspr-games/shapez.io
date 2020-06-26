@@ -224,6 +224,12 @@
         width: 100%;
         box-sizing: border-box;
 
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .browserWarning {
             @include S(margin-bottom, 10px);
             background-color: $colorRedBright;
@@ -337,33 +343,42 @@
     }
 
     .footer {
-        display: flex;
+        display: grid;
         flex-grow: 1;
         justify-content: center;
         align-items: flex-end;
         width: 100%;
+        grid-template-columns: auto auto auto 1fr;
+        @include S(padding, 10px);
+        box-sizing: border-box;
+        @include S(grid-gap, 5px);
 
         .author {
             flex-grow: 1;
             text-align: right;
-            @include S(padding-right, 10px);
+            @include PlainText;
+            color: #888a8f;
+            a {
+                color: #333438;
+            }
         }
 
         @include S(padding, 15px);
-        > a {
+
+        > .boxLink {
             display: grid;
             align-items: center;
             grid-template-columns: 1fr auto;
 
             justify-content: center;
-            background: #fafafa;
+            background: #fdfdfd;
             @include S(padding, 5px);
             @include S(padding-left, 10px);
             @include S(border-radius, $globalBorderRadius);
-            @include S(margin-left, 10px);
             @include SuperSmallText();
 
             font-weight: bold;
+            box-sizing: border-box;
             text-transform: uppercase;
             color: #616266;
 
@@ -371,19 +386,11 @@
             transition-property: background-color, transform;
             pointer-events: all;
             @include S(width, 120px);
-            @include S(height, 50px);
+            @include S(height, 60px);
+
             cursor: pointer;
             &:hover {
                 background-color: #fff;
-                transform: scale(1.01);
-            }
-
-            &:not(.boxLink) {
-                align-self: flex-end;
-                justify-self: flex-end;
-                height: unset;
-                width: unset;
-                @include S(padding, 3px);
             }
 
             .thirdpartyLogo {
@@ -397,6 +404,49 @@
                 &.discordLogo {
                     background-image: uiResource("main_menu/discord.png");
                     background-size: 95%;
+                }
+            }
+        }
+
+        > .sidelinks {
+            display: grid;
+            align-items: flex-start;
+            justify-content: flex-start;
+            grid-template-rows: 1fr 1fr 1fr;
+            @include S(grid-gap, 2px);
+            @include S(height, 60px);
+
+            > a {
+                color: #616266;
+                background: #fdfdfd;
+                height: 100%;
+
+                &:hover {
+                    background-color: #fff;
+                }
+                @include SuperSmallText;
+                text-transform: uppercase;
+                width: 100%;
+                @include S(padding, 2px, 10px);
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                @include S(padding-left, 25px);
+                box-sizing: border-box;
+                font-weight: bold;
+                background-position: #{D(5px)} center;
+                background-size: #{D(12px)};
+                background-repeat: no-repeat;
+
+                &.redditLink {
+                    background-image: uiResource("main_menu/reddit.svg");
+                }
+                &.changelog {
+                    background-image: uiResource("main_menu/changelog.svg");
+                }
+                &.helpTranslate {
+                    background-image: uiResource("main_menu/translate.svg");
                 }
             }
         }
@@ -423,9 +473,14 @@
         }
 
         .footer {
-            > a {
-                background: darken($darkModeGameBackground, 10);
+            > a,
+            .sidelinks > a {
+                background-color: darken($darkModeGameBackground, 10);
                 color: #eee;
+
+                &:hover {
+                    background-color: darken($darkModeGameBackground, 8);
+                }
             }
 
             .author {

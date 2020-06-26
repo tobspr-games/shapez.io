@@ -21,7 +21,7 @@ const placeholderRegexp = /<([a-zA-Z_0-9]+)>/gi;
 
 function match(originalObj, translatedObj, path = "/") {
     for (const key in originalObj) {
-        if (!translatedObj[key]) {
+        if (!translatedObj.hasOwnProperty(key)) {
             console.warn(" | Missing key", path + key);
             translatedObj[key] = originalObj[key];
             continue;
@@ -60,7 +60,7 @@ function match(originalObj, translatedObj, path = "/") {
     }
 
     for (const key in translatedObj) {
-        if (!originalObj[key]) {
+        if (!originalObj.hasOwnProperty(key)) {
             console.warn(" | Obsolete key", path + key);
             delete translatedObj[key];
         }

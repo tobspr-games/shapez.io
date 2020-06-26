@@ -168,7 +168,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 // Pipette
                 label: T.ingame.keybindingsOverlay.pipette,
                 keys: [k.placement.pipette],
-                condition: () => !this.mapOverviewActive,
+                condition: () => !this.mapOverviewActive && !this.blueprintPlacementActive,
             },
 
             {
@@ -253,6 +253,13 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 label: T.ingame.keybindingsOverlay.copySelection,
                 keys: [k.massSelect.massSelectCopy],
                 condition: () => this.anythingSelectedOnMap,
+            },
+
+            {
+                // Switch layers
+                label: T.ingame.keybindingsOverlay.switchLayers,
+                keys: [k.ingame.switchLayers],
+                condition: () => true,
             },
         ];
 

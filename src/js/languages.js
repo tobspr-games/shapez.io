@@ -51,10 +51,10 @@ export const LANGUAGES = {
         region: "",
     },
     "es-419": {
-        name: "Español (Latinoamérica)",
+        name: "Español",
         data: require("./built-temp/base-es.json"),
         code: "es",
-        region: "419",
+        region: "",
     },
     "pl": {
         name: "Polski",
@@ -80,10 +80,27 @@ export const LANGUAGES = {
         code: "no",
         region: "",
     },
+
     "zh-CN": {
-        name: "简体中文",
+        // simplified
+        name: "中文简体",
         data: require("./built-temp/base-zh-CN.json"),
         code: "zh",
         region: "CN",
+    },
+
+    "zh-TW": {
+        // traditional
+        name: "中文繁體",
+        data: require("./built-temp/base-zh-TW.json"),
+        code: "zh",
+        region: "TW",
+    },
+
+    "sv": {
+        name: "Svenska",
+        data: require("./built-temp/base-sv.json"),
+        code: "sv",
+        region: "",
     },
 };

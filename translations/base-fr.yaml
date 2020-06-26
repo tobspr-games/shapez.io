@@ -157,6 +157,7 @@ mainMenu:
     continue: Continuer
     newGame: Nouvelle partie
     madeBy: Créé par <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -212,7 +213,7 @@ dialogs:
 
     keybindingsResetOk:
         title: Réinitialisation des contrôles
-        desc: Les contrôles ont été réinitialisés par leur état par défaut respectifs !
+        desc: Les contrôles ont été réinitialisés dans leur état par défaut respectifs !
 
     featureRestriction:
         title: Version démo
@@ -236,7 +237,7 @@ dialogs:
     massDeleteConfirm:
         title: Confirmation de suppression
         desc: >-
-            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Etes vous certains de vouloir faire cela ?
+            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Êtes vous certains de vouloir faire cela ?
 
     massCutConfirm:
         title: Confirmer la coupure
@@ -247,7 +248,7 @@ dialogs:
     blueprintsNotUnlocked:
         title: Pas encore débloqué
         desc: >-
-            Les patrons n'ont pas encore étés débloqués ! Terminez encore quelques niveaux pour les débloquer.
+            Les patrons n'ont pas encore étés débloqués ! Terminez encore quelques niveaux pour y avoir accès.
 
     keybindingsIntroduction:
         title: Raccourcis utiles
@@ -288,6 +289,10 @@ ingame:
         pasteLastBlueprint: Copier le dernier patron
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         plannerSwitchSide: Échanger la direction du plannificateur
+        cutSelection: Couper
+        copySelection: Copier
+        clearSelection: Effacer la sélection
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -322,11 +327,6 @@ ingame:
     notifications:
         newUpgrade: Une nouvelle amélioration est disponible !
         gameSaved: Votre partie a été sauvegardée.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Apuyez sur <keyCut> pour couper, <keyCopy> pour copier, <keyDelete> pour effacer et <keyCancel> pour annuler.
 
     # The "Upgrades" window
     shop:
@@ -397,6 +397,19 @@ ingame:
 
             1_3_expand: >-
                 Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+
+    colors:
+        red: Rouge
+        green: Vert
+        blue: Bleu
+        yellow: Jaune
+        purple: Violet
+        cyan: Cyan
+        white: Blanc
+        uncolored: Non coloré
+    shapeViewer:
+        title: Calques
+        empty: Vide
 
 # All shop upgrades
 shopUpgrades:
@@ -520,7 +533,7 @@ storyRewards:
     reward_painter:
         title: Peintre
         desc: >-
-            Le <strong>peintre</strong> a été débloqué - Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez les avec une forme dans un peintre pour les colorier !<br><br>PS: Si vous êtes daltonien, je travaille déjà à une solution !
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Mélangeur de couleurs
@@ -691,6 +704,36 @@ settings:
             description: >-
                 Permet l'affichage de l'effet de vignette qui assombrit les coins de l'écran afin de rendre le texte plus facile à lire.
 
+        autosaveInterval:
+            title: Fréquence des sauvegardes automatiques
+            description: >-
+                Contrôle avec quelle fréquence le jeu sera sauvegardé automatiquement. Vous pouvez aussi entièrement désactiver cette fonctionnalité ici.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Désactivé
+        compactBuildingInfo:
+            title: Informations réduites sur les bâtiments
+            description: >-
+                Raccourcit les panneaux d'information sur les bâtiments en n'affichant que les ratios. Dans le cas contraire, une description et une imagine sont présentés.
+        disableCutDeleteWarnings:
+            title: Désactive les avertissement pour Couper/Effacer
+            description: >-
+                Désactive la boîte de dialogue qui s'affiche lorsque vous vous apprêtez à couper/effacer plus de 100 entités.
+
+        enableColorBlindHelper:
+            title: Mode Daltonien
+            description: Active divers outils qui permettent de jouer à ce jeu si vous êtes daltonien.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
+
 keybindings:
     title: Contrôles
     hint: >-
@@ -736,7 +779,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Annuler le placement
         rotateWhilePlacing: Pivoter
         rotateInverseModifier: >-
             Variante: Pivote à gauche
@@ -756,7 +798,8 @@ keybindings:
         exportScreenshot: Exporter toute la base en tant qu'image.
         mapMoveFaster: Se déplacer plus vite
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
-        switchDirectionLockSide: 'Plannificateur: changer de côté'
+        switchDirectionLockSide: "Plannificateur: changer de côté"
+        pipette: Pipette
 
 about:
     title: À propos de ce jeu

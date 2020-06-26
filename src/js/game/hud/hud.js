@@ -34,7 +34,10 @@ import { HUDPartTutorialHints } from "./parts/tutorial_hints";
 import { HUDWaypoints } from "./parts/waypoints";
 import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
-import { Entity } from "../entity";
+import { HUDColorBlindHelper } from "./parts/color_blind_helper";
+import { HUDShapeViewer } from "./parts/shape_viewer";
+import { HUDWiresOverlay } from "./parts/wires_overlay";
+import { HUDChangesDebugger } from "./parts/debug_changes";
 
 export class GameHUD {
     /**
@@ -68,6 +71,14 @@ export class GameHUD {
             debugInfo: new HUDDebugInfo(this.root),
             dialogs: new HUDModalDialogs(this.root),
             screenshotExporter: new HUDScreenshotExporter(this.root),
+            shapeViewer: new HUDShapeViewer(this.root),
+            wiresOverlay: new HUDWiresOverlay(this.root),
+
+            // Typing hints
+            /* typehints:start */
+            /** @type {HUDChangesDebugger} */
+            changesDebugger: null,
+            /* typehints:end */
         };
 
         this.signals = {
@@ -76,7 +87,8 @@ export class GameHUD {
             shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
             notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
             buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
-            pasteBlueprintRequested: new Signal(),
+            pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
+            viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {
@@ -91,6 +103,10 @@ export class GameHUD {
             this.parts.watermark = new HUDWatermark(this.root);
         }
 
+        if (G_IS_DEV && globalConfig.debug.renderChanges) {
+            this.parts.changesDebugger = new HUDChangesDebugger(this.root);
+        }
+
         if (this.root.app.settings.getAllSettings().offerHints) {
             this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
             this.parts.interactiveTutorial = new HUDInteractiveTutorial(this.root);
@@ -98,6 +114,10 @@ export class GameHUD {
 
         if (this.root.app.settings.getAllSettings().vignette) {
             this.parts.vignetteOverlay = new HUDVignetteOverlay(this.root);
+        }
+
+        if (this.root.app.settings.getAllSettings().enableColorBlindHelper) {
+            this.parts.colorBlindHelper = new HUDColorBlindHelper(this.root);
         }
 
         const frag = document.createDocumentFragment();
@@ -208,7 +228,14 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        const partsOrder = ["waypoints", "massSelector", "buildingPlacer", "blueprintPlacer"];
+        const partsOrder = [
+            "waypoints",
+            "massSelector",
+            "buildingPlacer",
+            "blueprintPlacer",
+            "colorBlindHelper",
+            "changesDebugger",
+        ];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

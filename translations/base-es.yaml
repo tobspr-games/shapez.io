@@ -57,7 +57,7 @@ steamPage:
             [*] Modo historia en el que los edificios cuesten figuras
             [*] Más niveles y edificios (exclusivos del juego completo)
             [*] Mapas diferentes y tal vez obstáculos en el mapa
-            [*] Configuración en la cración del mapa (Editar el número y tamaño de los recursos, la semilla, y más)
+            [*] Configuración en la creación del mapa (Editar el número y tamaño de los recursos, la semilla, y más)
             [*] Más tipos de formas
             [*] Mejoras de rendimiento (Aunque el juego ya funciona muy bien!)
             [*] Modo para daltónicos
@@ -155,6 +155,7 @@ mainMenu:
 
         showInfo: Ver
         contestOver: El concurso ha terminado - Únete al discord para enterarte sobre nuevos concursos!
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -282,9 +283,13 @@ ingame:
         placeBuilding: Colocar edificio
         createMarker: Crear marca
         delete: Destruir
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        pasteLastBlueprint: Pegar último plano
+        lockBeltDirection: Activar planificador de cintas transportadoras
+        plannerSwitchSide: Invertir giro del planificador
+        cutSelection: Cortar
+        copySelection: Copiar
+        clearSelection: Limpiar Selección
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -319,11 +324,6 @@ ingame:
     notifications:
         newUpgrade: ¡Una nueva mejora está disponible!
         gameSaved: Tu partida ha sido guardada.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Presiona <keyCut> para cortar, <keyCopy> para copiar, <keyDelete> para eliminar y <keyCancel> para cancelar.
 
     # The "Upgrades" window
     shop:
@@ -394,6 +394,20 @@ ingame:
                 ¡Conecta el extractor con una <strong>cinta transportadora</strong> a tu edificio central!<br><br> Pista: <strong>Pulsa y arrastra</strong> la cinta transportadora con el ratón!
             1_3_expand: >-
                 ¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más extractores y cintas transportadoras para completar el objetivo más rápido.<br><br> Pista: Mantén pulsado <strong>SHIFT</strong> para colocar varios extractores y usa <strong>R</strong> para rotarlos.
+
+    colors:
+        red: Rojo
+        green: Verde
+        blue: Azul
+        yellow: Amarillo
+        purple: Morado
+        cyan: Cian
+        white: Blanco
+        uncolored: Sin color
+    shapeViewer:
+        title: Capas
+        empty: Vacio
+
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -440,7 +454,7 @@ buildings:
             description: Multifuncional - Distribuye equitativamente todas las entradas a todas las salidas.
 
         compact:
-            name: fusionador (compacto)
+            name: Fusionador (compacto)
             description: Junta dos cintas transportadoras en una.
 
         compact-inverse:
@@ -514,7 +528,8 @@ storyRewards:
     reward_painter:
         title: Pintor
         desc: >-
-            El <strong> pintor</strong> ha sido desbloqueado - ¡Extrae color de las betas (al igual que haces con las figuras) y combínalo con una figura para pintarla de ese color!<br><br> PS: Si eres daltónico, estoy trabajando en una solución!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+
     reward_mixer:
         title: Mezclador de Color
         desc: El <strong>mezclador</strong> ha sido desbloqueado - ¡Combina dos colores usando <strong>mezcla aditiva</strong> con este edificio!
@@ -606,7 +621,7 @@ settings:
                 huge: Enorme
 
         scrollWheelSensitivity:
-            title: Sensitividad del zoom
+            title: Sensibilidad del zoom
             description: >-
                 Cambia como de sensible es el zoom (Tanto la ruedo del ratón como el trackpad)
             sensitivity:
@@ -675,10 +690,39 @@ settings:
                 Si está activado, colocar túneles automáticamente removerá las cintas transportadoras innecesarias. Esto también permite arrastrar con el ratón y los túneles excedentes serán removidos.
 
         vignette:
-            title: Vignette
+            title: Viñeta
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Activa el efecto viñeta que oscurece loas esquinas de la pantalla y hace el texto mas fácil de leer.
+
+        autosaveInterval:
+            title: Intervalo de Autoguardado
+            description: >-
+                Controla cada cuanto tiempo se guarda el juego automaticamente. Aquí tambien puedes deshabilitarlo por completo.
+            intervals:
+                one_minute: 1 Minuto
+                two_minutes: 2 Minutos
+                five_minutes: 5 Minutos
+                ten_minutes: 10 Minutos
+                twenty_minutes: 20 Minutos
+                disabled: Deshabilitado
+        compactBuildingInfo:
+            title: Información Compacta de Edificios
+            description: >-
+                Acorta la caja de información mostrando solo sus ratios. Si no, se mostrara una descripción y una imagen.
+        disableCutDeleteWarnings:
+            title: Deshabilitar las advertencias de Cortar/Eliminar
+            description: >-
+                Deshabilita los dialogos de advertencia que se muestran cuando se cortan/eliminan mas de 100 elementos.
+
+        enableColorBlindHelper:
+            title: Modo para Daltonicos
+            description: Activa varias herramientas que permiten jugar si eres daltonico.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Atajos de Teclado
@@ -724,7 +768,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Cancelar Colocación
         rotateWhilePlacing: Rotar
         rotateInverseModifier: >-
             Modificador: Rotar inversamente en su lugar
@@ -744,7 +787,8 @@ keybindings:
         massSelectCut: Cortar área
         exportScreenshot: Exportar toda la base como imagen
         mapMoveFaster: Mover más rápido
-        switchDirectionLockSide: 'Planner: Switch side'
+        switchDirectionLockSide: "Planner: Switch side"
+        pipette: Pipette
 
 about:
     title: Sobre el Juego

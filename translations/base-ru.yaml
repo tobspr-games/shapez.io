@@ -76,10 +76,10 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: ' тыс.'
-        millions: ' млн'
-        billions: ' млрд'
-        trillions: ' трлн'
+        thousands: k
+        millions: M
+        billions: B
+        trillions: T
 
     # Shown for infinitely big numbers
     infinite: ∞
@@ -157,6 +157,7 @@ mainMenu:
     continue: Продолжить
     newGame: Новая Игра
     madeBy: Создал <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -289,6 +290,10 @@ ingame:
         pasteLastBlueprint: Вставить последний чертеж
         lockBeltDirection: Включить конвейерный планировщик
         plannerSwitchSide: Поменять местами стороны планировщика
+        cutSelection: Вырезать
+        copySelection: Копировать
+        clearSelection: Отменить
+        pipette: Пипетка
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -323,11 +328,6 @@ ingame:
     notifications:
         newUpgrade: Новое улучшение доступно!
         gameSaved: Игра сохранена.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: <keyCut> - Вырезать; <keyCopy> - Копировать; <keyDelete> - Удалить; <keyCancel> - Отменить.
 
     # The "Upgrades" window
     shop:
@@ -399,6 +399,19 @@ ingame:
 
             1_3_expand: >-
                 Это <strong>НЕ</strong> idle-игра! Постройте больше экстракторов и конвейеров, чтобы достичь цели быстрее.<br><br>Подсказка: Удерживайте <strong>SHIFT</strong> чтобы разместить несколько экстракторов, а <strong>R</strong> чтобы вращать их.
+
+    colors:
+        red: Красный
+        green: Зеленый
+        blue: Синий
+        yellow: Желтый
+        purple: Фиолетовый
+        cyan: Бирюзовый
+        white: Белый
+        uncolored: Бесцветный
+    shapeViewer:
+        title: Слои
+        empty: Пусто
 
 # All shop upgrades
 shopUpgrades:
@@ -519,7 +532,7 @@ storyRewards:
     reward_painter:
         title: Покраска
         desc: >-
-            Разблокирован <strong>покрасчик</strong>! Добудьте краситель из жилы (так же как и фигуры) и объедините его с фигурой в покрасчике, чтобы раскрасить ее!<br><br>PS: Если вы дальтоник, я уже работаю над решением!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Смешивание Цветов
@@ -688,6 +701,39 @@ settings:
             description: >-
                 Включает виньетирование, которое затемняет углы экрана и облегчает чтение текста.
 
+        autosaveInterval:
+            title: Интервал авто-сохранения
+            description: >-
+                Управляет тем, как часто игра автоматически сохраняется.
+                А также здесь можно полностью отключить авто-сохранение.
+            intervals:
+                one_minute: 1 Минута
+                two_minutes: 2 Минуты
+                five_minutes: 5 Минут
+                ten_minutes: 10 Минут
+                twenty_minutes: 20 Минут
+                disabled: Отключено
+        compactBuildingInfo:
+            title: Компактная Информация о Зданиях
+            description: >-
+                Сокращает отображаемую информацию о зданиях, показывая только их множители.
+                Иначе информация отображается с описанием и изображением.
+        disableCutDeleteWarnings:
+            title: Отключить Предупреждение о Вырезании\Удалении
+            description: >-
+                Отключает диалоговые окна с предупреждениями, появляющиеся при
+                вырезании/удалении более 100 объектов.
+
+        enableColorBlindHelper:
+            title: Режим Дальтоника
+            description: Включает различные инструменты, которые позволяют играть в игру дальтоникам.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
+
 keybindings:
     title: Настройки управления
     hint: >-
@@ -733,7 +779,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Прекратить размещение
         rotateWhilePlacing: Вращать
         rotateInverseModifier: >-
             Модификатор: Вращать против часовой стрелки
@@ -753,7 +798,8 @@ keybindings:
         exportScreenshot: Экспорт всей Базы в виде Изображения
         mapMoveFaster: Ускорение передвижения
         lockBeltDirection: Включает конвейерный планировщик
-        switchDirectionLockSide: 'Планировщик: Переключение сторон'
+        switchDirectionLockSide: "Планировщик: Переключение сторон"
+        pipette: Пипетка
 
 about:
     title: Об игре

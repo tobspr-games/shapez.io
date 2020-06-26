@@ -10,6 +10,10 @@ import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
+import { SOUNDS } from "../../../platform/sound";
+import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
+import { enumHubGoalRewards } from "../../tutorial_goals";
+import { enumEditMode } from "../../root";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -44,7 +48,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
          * The current rotation
          * @type {number}
          */
-        this.currentBaseRotation = 0;
+        this.currentBaseRotationGeneral = 0;
+
+        /**
+         * The current rotation preference for each building.
+         * @type{Object.<string,number>}
+         */
+        this.preferredBaseRotations = {};
 
         /**
          * Whether we are currently dragging
@@ -106,11 +116,59 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
         this.root.signals.storyGoalCompleted.add(() => this.signals.variantChanged.dispatch());
         this.root.signals.upgradePurchased.add(() => this.signals.variantChanged.dispatch());
+        this.root.signals.editModeChanged.add(this.onEditModeChanged, this);
 
         // MOUSE BINDINGS
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
+    }
+
+    /**
+     * Called when the edit mode got changed
+     * @param {enumEditMode} editMode
+     */
+    onEditModeChanged(editMode) {
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (metaBuilding) {
+            if (metaBuilding.getEditLayer() !== editMode) {
+                // This layer doesn't fit the edit mode anymore
+                this.currentMetaBuilding.set(null);
+            }
+        }
+    }
+
+    /**
+     * Returns the current base rotation for the current meta-building.
+     * @returns {number}
+     */
+    get currentBaseRotation() {
+        if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
+            return this.currentBaseRotationGeneral;
+        }
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (metaBuilding && this.preferredBaseRotations.hasOwnProperty(metaBuilding.getId())) {
+            return this.preferredBaseRotations[metaBuilding.getId()];
+        } else {
+            return this.currentBaseRotationGeneral;
+        }
+    }
+
+    /**
+     * Sets the base rotation for the current meta-building.
+     * @param {number} rotation The new rotation/angle.
+     */
+    set currentBaseRotation(rotation) {
+        if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
+            this.currentBaseRotationGeneral = rotation;
+        } else {
+            const metaBuilding = this.currentMetaBuilding.get();
+            if (metaBuilding) {
+                this.preferredBaseRotations[metaBuilding.getId()] = rotation;
+            } else {
+                this.currentBaseRotationGeneral = rotation;
+            }
+        }
     }
 
     /**
@@ -183,6 +241,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (mousePos) {
             this.onMouseMove(mousePos);
         }
+
+        // Make sure we have nothing selected while in overview mode
+        if (this.root.camera.getIsMapOverlayActive()) {
+            if (this.currentMetaBuilding.get()) {
+                this.currentMetaBuilding.set(null);
+            }
+        }
     }
 
     /**
@@ -214,7 +279,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const tile = worldPos.toTileSpace();
         const contents = this.root.map.getTileContent(tile);
         if (contents) {
-            this.root.logic.tryDeleteBuilding(contents);
+            if (this.root.logic.tryDeleteBuilding(contents)) {
+                this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
+            }
         }
     }
 
@@ -235,10 +302,22 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const tile = worldPos.toTileSpace();
-        const contents = this.root.map.getTileContent(tile);
 
+        const contents = this.root.map.getTileContent(tile);
         if (!contents) {
-            this.currentMetaBuilding.set(null);
+            const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
+
+            // Check if there's a shape or color item below, if so select the miner
+            if (tileBelow) {
+                this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
+
+                // Select chained miner if available, since thats always desired once unlocked
+                if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
+                    this.currentVariant.set(enumMinerVariants.chainable);
+                }
+            } else {
+                this.currentMetaBuilding.set(null);
+            }
             return;
         }
 
@@ -437,15 +516,32 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * releasing the mouse
      */
     executeDirectionLockedPlacement() {
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (!metaBuilding) {
+            // No active building
+            return;
+        }
+
+        // Get path to place
         const path = this.computeDirectionLockPath();
+
+        // Store if we placed anything
+        let anythingPlaced = false;
+
+        // Perform this in bulk to avoid recalculations
         this.root.logic.performBulkOperation(() => {
             for (let i = 0; i < path.length; ++i) {
                 const { rotation, tile } = path[i];
-
                 this.currentBaseRotation = rotation;
-                this.tryPlaceCurrentBuildingAt(tile);
+                if (this.tryPlaceCurrentBuildingAt(tile)) {
+                    anythingPlaced = true;
+                }
             }
         });
+
+        if (anythingPlaced) {
+            this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+        }
     }
 
     /**
@@ -568,7 +664,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
             // Place initial building, but only if direction lock is not active
             if (!this.isDirectionLockActive) {
-                this.tryPlaceCurrentBuildingAt(this.lastDragTile);
+                if (this.tryPlaceCurrentBuildingAt(this.lastDragTile)) {
+                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+                }
             }
             return STOP_PROPAGATION;
         }
@@ -651,15 +749,25 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 var sy = y0 < y1 ? 1 : -1;
                 var err = dx - dy;
 
+                let anythingPlaced = false;
+                let anythingDeleted = false;
+
                 while (this.currentlyDeleting || this.currentMetaBuilding.get()) {
                     if (this.currentlyDeleting) {
+                        // Deletion
                         const contents = this.root.map.getTileContentXY(x0, y0);
                         if (contents && !contents.queuedForDestroy && !contents.destroyed) {
-                            this.root.logic.tryDeleteBuilding(contents);
+                            if (this.root.logic.tryDeleteBuilding(contents)) {
+                                anythingDeleted = true;
+                            }
                         }
                     } else {
-                        this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
+                        // Placement
+                        if (this.tryPlaceCurrentBuildingAt(new Vector(x0, y0))) {
+                            anythingPlaced = true;
+                        }
                     }
+
                     if (x0 === x1 && y0 === y1) break;
                     var e2 = 2 * err;
                     if (e2 > -dy) {
@@ -670,6 +778,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                         err += dx;
                         y0 += sy;
                     }
+                }
+
+                if (anythingPlaced) {
+                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+                }
+                if (anythingDeleted) {
+                    this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
                 }
             }
 

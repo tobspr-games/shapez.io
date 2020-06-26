@@ -1,0 +1,18 @@
+#ingame_HUD_ColorBlindBelowTileHelper {
+    position: absolute;
+
+    @include SuperSmallText;
+    color: #fff;
+    background: $ingameHudBg;
+    @include S(padding, 5px);
+    @include S(top, 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+
+    &:not(.visible) {
+        display: none;
+    }
+
+    @include DarkThemeInvert;
+}

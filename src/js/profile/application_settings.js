@@ -89,6 +89,33 @@ export const movementSpeeds = [
     },
 ];
 
+export const autosaveIntervals = [
+    {
+        id: "one_minute",
+        seconds: 60,
+    },
+    {
+        id: "two_minutes",
+        seconds: 120,
+    },
+    {
+        id: "five_minutes",
+        seconds: 5 * 60,
+    },
+    {
+        id: "ten_minutes",
+        seconds: 10 * 60,
+    },
+    {
+        id: "twenty_minutes",
+        seconds: 20 * 60,
+    },
+    {
+        id: "disabled",
+        seconds: null,
+    },
+];
+
 /** @type {Array<BaseSetting>} */
 export const allApplicationSettings = [
     new EnumSetting("language", {
@@ -145,6 +172,15 @@ export const allApplicationSettings = [
         (app, value) => app.sound.setMusicMuted(value)
     ),
 
+    new BoolSetting(
+        "enableColorBlindHelper",
+        categoryApp,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => null
+    ),
+
     // GAME
     new BoolSetting("offerHints", categoryGame, (app, value) => {}),
 
@@ -165,8 +201,21 @@ export const allApplicationSettings = [
         enabled: !IS_DEMO,
     }),
 
+    new EnumSetting("autosaveInterval", {
+        options: autosaveIntervals,
+        valueGetter: interval => interval.id,
+        textGetter: interval => T.settings.labels.autosaveInterval.intervals[interval.id],
+        category: categoryGame,
+        restartRequired: false,
+        changeCb:
+            /**
+             * @param {Application} app
+             */
+            (app, id) => null,
+    }),
+
     new EnumSetting("refreshRate", {
-        options: ["60", "100", "144", "165", "250", "500"],
+        options: ["60", "100", "144", "165", "250", G_IS_DEV ? "10" : "500"],
         valueGetter: rate => rate,
         textGetter: rate => rate + " Hz",
         category: categoryGame,
@@ -201,6 +250,8 @@ export const allApplicationSettings = [
     new BoolSetting("enableTunnelSmartplace", categoryGame, (app, value) => {}),
     new BoolSetting("vignette", categoryGame, (app, value) => {}),
     new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
+    new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
+    new BoolSetting("rotationByBuilding", categoryGame, (app, value) => {}),
     new BoolSetting("abortPlacementOnDeletion", categoryGame, (app, value) => {}),
 ];
 
@@ -220,12 +271,16 @@ class SettingsStorage {
         this.scrollWheelSensitivity = "regular";
         this.movementSpeed = "regular";
         this.language = "auto-detect";
+        this.autosaveInterval = "two_minutes";
 
         this.alwaysMultiplace = false;
         this.offerHints = true;
         this.enableTunnelSmartplace = true;
         this.vignette = true;
         this.compactBuildingInfo = false;
+        this.disableCutDeleteWarnings = false;
+        this.rotationByBuilding = true;
+        this.enableColorBlindHelper = false;
         this.abortPlacementOnDeletion = true;
 
         /**
@@ -319,6 +374,17 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
         logger.error("Unknown movement speed id:", id);
         return 1;
+    }
+
+    getAutosaveIntervalSeconds() {
+        const id = this.getAllSettings().autosaveInterval;
+        for (let i = 0; i < autosaveIntervals.length; ++i) {
+            if (autosaveIntervals[i].id === id) {
+                return autosaveIntervals[i].seconds;
+            }
+        }
+        logger.error("Unknown autosave interval id:", id);
+        return 120;
     }
 
     getIsFullScreen() {
@@ -416,7 +482,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 14;
+        return 19;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -469,8 +535,34 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 14) {
-            data.settings.abortPlacementOnDeletion = true;
+            data.settings.disableCutDeleteWarnings = false;
             data.version = 14;
+        }
+
+        if (data.version < 15) {
+            data.settings.autosaveInterval = "two_minutes";
+            data.version = 15;
+        }
+
+        if (data.version < 16) {
+            // RE-ENABLE this setting, it already existed
+            data.settings.enableTunnelSmartplace = true;
+            data.version = 16;
+        }
+
+        if (data.version < 17) {
+            data.settings.enableColorBlindHelper = false;
+            data.version = 17;
+        }
+
+        if (data.version < 18) {
+            data.settings.rotationByBuilding = true;
+            data.version = 18;
+        }
+
+        if (data.version < 19) {
+            data.settings.abortPlacementOnDeletion = true;
+            data.version = 19;
         }
 
         return ExplainedResult.good();

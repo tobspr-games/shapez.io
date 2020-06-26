@@ -1,13 +1,13 @@
-import { DrawParameters } from "../../../core/draw_parameters";
-import { Loader } from "../../../core/loader";
-import { createLogger } from "../../../core/logging";
-import { Vector } from "../../../core/vector";
-import { Entity } from "../../entity";
-import { GameRoot } from "../../root";
-import { findNiceIntegerValue } from "../../../core/utils";
-import { Math_pow } from "../../../core/builtins";
-import { blueprintShape } from "../../upgrades";
-import { globalConfig } from "../../../core/config";
+import { DrawParameters } from "../core/draw_parameters";
+import { Loader } from "../core/loader";
+import { createLogger } from "../core/logging";
+import { Vector } from "../core/vector";
+import { Entity } from "./entity";
+import { GameRoot } from "./root";
+import { findNiceIntegerValue } from "../core/utils";
+import { Math_pow } from "../core/builtins";
+import { blueprintShape } from "./upgrades";
+import { globalConfig } from "../core/config";
 
 const logger = createLogger("blueprint");
 
@@ -202,10 +202,10 @@ export class Blueprint {
                                     "Can not delete entity for blueprint"
                                 );
                                 if (!root.logic.tryDeleteBuilding(contents)) {
-                                    logger.error(
+                                    assertAlways(
+                                        false,
                                         "Building has replaceable component but is also unremovable in blueprint"
                                     );
-                                    return false;
                                 }
                             }
                         }
@@ -215,6 +215,7 @@ export class Blueprint {
                     clone.components.StaticMapEntity.origin.addInplace(tile);
 
                     root.map.placeStaticEntity(clone);
+
                     root.entityMgr.registerEntity(clone);
                     anyPlaced = true;
                 }

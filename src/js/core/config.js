@@ -9,7 +9,7 @@ export const IS_DEBUG =
 
 export const IS_DEMO = queryParamOptions.fullVersion
     ? false
-    : (G_IS_PROD && !G_IS_STANDALONE) ||
+    : (!G_IS_DEV && !G_IS_STANDALONE) ||
       (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
 
 export const SUPPORT_TOUCH = false;
@@ -19,6 +19,7 @@ const smoothCanvas = true;
 export const THIRDPARTY_URLS = {
     discord: "https://discord.gg/HN7EVzV",
     github: "https://github.com/tobspr/shapez.io",
+    reddit: "https://www.reddit.com/r/shapezio",
 
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
 };
@@ -50,7 +51,7 @@ export const globalConfig = {
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
     beltSpeedItemsPerSecond: 2,
-    itemSpacingOnBelts: 0.8,
+    itemSpacingOnBelts: 0.63,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
     undergroundBeltMaxTilesByTier: [5, 8],

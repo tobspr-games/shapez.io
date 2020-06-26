@@ -1,5 +1,41 @@
 export const CHANGELOG = [
     {
+        version: "1.1.18",
+        date: "26.06.2020",
+        entries: [
+            "Huge belt performance improvements - up to 50% increase",
+            "Preparations for the wires update",
+            "Update belt placement performance on huge factories (by Phlosioneer)",
+            "Allow clicking on variants to select them",
+            "Allow clicking 'Q' over a shape or color patch to automatically select the miner building (by Gerdon262)",
+            "Add 'copy key' button to shape viewer",
+            "Fix deconstruct sound being played when right clicking hub",
+            "Add setting (on by default) to store the last used rotation per building instead of globally storing it (by Magos)",
+            "Add more FPS to the belt animation",
+            "Added chinese (traditional) translation",
+            "Updated translations",
+        ],
+    },
+    {
+        version: "1.1.17",
+        date: "22.06.2020",
+        entries: [
+            "Color blind mode! You can now activate it in the settings and it will show you which color is below your cursor (Either resource or on the belt)",
+            "Add info buttons to all shapes so you can figure out how they are built! (And also, which colors they have)",
+            "Allow configuring autosave interval and disabling it in the settings",
+            "The smart-tunnel placement has been reworked to properly replace belts. Thus the setting has been turned on again by default",
+            "The soundtrack now has a higher quality on the standalone version than the web version",
+            "Add setting to disable cut/delete warnings (by hexy)",
+            "Fix bug where belts in blueprints don't orient correctly (by hexy)",
+            "Fix camera moving weird after dragging and holding (by hexy)",
+            "Fix keybinding for pipette showing while pasting blueprints",
+            "Improve visibility of shape background in dark mode",
+            "Added sound when destroying a building",
+            "Added swedish translation",
+            "Update tutorial image for tier 2 tunnels to explain mix/match (by jimmyshadow1)",
+        ],
+    },
+    {
         version: "1.1.16",
         date: "21.06.2020",
         entries: [

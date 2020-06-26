@@ -405,8 +405,6 @@ export function findNiceValue(num) {
     return Math_round(niceValue * 100) / 100;
 }
 
-window.fn = findNiceValue;
-
 /**
  * Finds a nice integer value
  * @see findNiceValue
@@ -769,7 +767,7 @@ export function quantizeFloat(value) {
  * @param {number} tickRate Interval of the timer
  */
 export function checkTimerExpired(now, lastTick, tickRate) {
-    if (!G_IS_PROD) {
+    if (G_IS_DEV) {
         if (quantizeFloat(now) !== now) {
             console.error("Got non-quantizied time:" + now + " vs " + quantizeFloat(now));
             now = quantizeFloat(now);

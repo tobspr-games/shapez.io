@@ -155,6 +155,7 @@ mainMenu:
     continue: Fortsetzen
     newGame: Neues Spiel
     madeBy: Ein Spiel von <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -283,14 +284,18 @@ ingame:
         delete: Löschen
         pasteLastBlueprint: Letzte Blaupause einfügen
         lockBeltDirection: Bandplaner aktivieren
-        plannerSwitchSide: 'Planer: Seite wechseln'
+        plannerSwitchSide: "Planer: Seite wechseln"
+        cutSelection: Ausschneiden
+        copySelection: Kopieren
+        clearSelection: Auswahl aufheben
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Drücke <key>, um zwischen den Varianten zu wählen.
+        cycleBuildingVariants: <key> Wechsle Variante
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -318,11 +323,6 @@ ingame:
     notifications:
         newUpgrade: Ein neues Upgrade ist verfügbar!
         gameSaved: Dein Spiel wurde gespeichert.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Drücke <keyCut> zum Ausschneiden, <keyCopy> zum Kopieren, <keyDelete> zum Entfernen und <keyCancel> um Abzubrechen.
 
     # The "Upgrades" window
     shop:
@@ -394,6 +394,19 @@ ingame:
 
             1_3_expand: >-
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
+
+    colors:
+        red: Rot
+        green: Grün
+        blue: Blau
+        yellow: Gelb
+        purple: Violett
+        cyan: Cyan
+        white: Weiß
+        uncolored: Farblos
+    shapeViewer:
+        title: Ebenen
+        empty: Leer
 
 # All shop upgrades
 shopUpgrades:
@@ -519,7 +532,7 @@ storyRewards:
     reward_painter:
         title: Färben
         desc: >-
-            Der <strong>Färber</strong> wurde freigeschaltet! Extrahiere ein paar Farben (genauso wie die Formen) und lasse sie vom Färber bemalen!<br><br>PS: Falls du farbenblind bist: Ich arbeite bereits an einer Lösung!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Farben mischen
@@ -686,7 +699,41 @@ settings:
             title: Vignette
             description: >-
                 Aktiviert den Vignetteneffekt, der den Rand des Bildschirms zunehmend verdunkelt
-                und das Lesen der Textfelder vereinfacht. 
+                und das Lesen der Textfelder vereinfacht.
+
+        autosaveInterval:
+            title: Intervall für automatisches Speichern
+            description: >-
+                Ändert das Intervall, in dem der Spielstand automatisch gespeichert wird.
+                Die Funktion kann hier auch deaktiviert werden.
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minuten
+                five_minutes: 5 Minuten
+                ten_minutes: 10 Minuten
+                twenty_minutes: 20 Minuten
+                disabled: Deaktiviert
+
+        compactBuildingInfo:
+            title: Kompakte Gebäudeinformationen
+            description: >-
+                Reduziert die Infoboxen der Gebäude auf ihre Arbeitsgeschwindigkeit. Anderenfalls wird ein
+                Bild mit Beschreibung angezeigt.
+
+        disableCutDeleteWarnings:
+            title: Deaktiviere Warnungsdialog beim Löschen
+            description: >-
+                Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
+
+        enableColorBlindHelper:
+            title: Modus für Farbenblinde
+            description: Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Tastenbelegung
@@ -715,7 +762,7 @@ keybindings:
 
         mapZoomIn: Hineinzoomen
         mapZoomOut: Herauszoomen
-        createMarker: Markeirung erstellen
+        createMarker: Markierung erstellen
 
         menuOpenShop: Upgrades
         menuOpenStats: Statistiken
@@ -733,10 +780,9 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Platzieren abbrechen
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
-            Modifier: stattdessen gegen UZS rotieren
+            Modifikator: stattdessen gegen UZS rotieren
         cycleBuildingVariants: Variante wählen
         confirmMassDelete: Massenlöschung bestätigen
         cycleBuildings: Gebäude rotieren
@@ -753,27 +799,28 @@ keybindings:
         exportScreenshot: Ganze Fabrik als Foto exportieren
         mapMoveFaster: Schneller bewegen
         lockBeltDirection: Bandplaner aktivieren
-        switchDirectionLockSide: 'Planer: Seite wechseln'
+        switchDirectionLockSide: "Planer: Seite wechseln"
+        pipette: Pipette
 
 about:
     title: Über dieses Spiel
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Dieses Spiel hat einen offenen Quellcode (Open Source) und wurde von <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (das bin ich!) entwickelt.<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Wenn du etwas zum Spiel beitragen möchtest, dann schaue dir <a href="<githublink>"
+        target="_blank">shapez.io auf GitHub</a> an.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        Das Spiel wurde erst durch die großartige Discord-Community
+        um meine Spiele möglich gemacht. Komm doch einfach mal auf dem <a href="<discordlink>"
+        target="_blank">Discord-Server</a> vorbei!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Der Soundtrack wurde von <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> komponiert! Klasse Typ.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        Abschließend möchte ich meinem Kumpel <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> danken! Ohne unsere
+        etlichen gemeinsamen Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
 
 changelog:
     title: Änderungen

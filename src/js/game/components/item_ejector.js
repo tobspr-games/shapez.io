@@ -3,13 +3,16 @@ import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { types } from "../../savegame/serialization";
 import { gItemRegistry } from "../../core/global_registries";
+import { Entity } from "../entity";
 
 /**
  * @typedef {{
  *    pos: Vector,
  *    direction: enumDirection,
  *    item: BaseItem,
- *    progress: number?
+ *    progress: number?,
+ *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
+ *    cachedTargetEntity?: Entity
  * }} ItemEjectorSlot
  */
 
@@ -19,6 +22,8 @@ export class ItemEjectorComponent extends Component {
     }
 
     static getSchema() {
+        // The cachedDestSlot, cachedTargetEntity, and cachedConnectedSlots fields
+        // are not serialized.
         return {
             instantEject: types.bool,
             slots: types.array(
@@ -61,6 +66,9 @@ export class ItemEjectorComponent extends Component {
         this.instantEject = instantEject;
 
         this.setSlots(slots);
+
+        /** @type {ItemEjectorSlot[]} */
+        this.cachedConnectedSlots = null;
     }
 
     /**
@@ -76,6 +84,8 @@ export class ItemEjectorComponent extends Component {
                 direction: slot.direction,
                 item: null,
                 progress: 0,
+                cachedDestSlot: null,
+                cachedTargetEntity: null,
             });
         }
     }
@@ -183,5 +193,18 @@ export class ItemEjectorComponent extends Component {
         this.slots[slotIndex].item = item;
         this.slots[slotIndex].progress = this.instantEject ? 1 : 0;
         return true;
+    }
+
+    /**
+     * Clears the given slot and returns the item it had
+     * @param {number} slotIndex
+     * @returns {BaseItem|null}
+     */
+    takeSlotItem(slotIndex) {
+        const slot = this.slots[slotIndex];
+        const item = slot.item;
+        slot.item = null;
+        slot.progress = 0.0;
+        return item;
     }
 }

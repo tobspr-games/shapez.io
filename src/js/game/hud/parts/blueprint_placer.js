@@ -9,7 +9,8 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { blueprintShape } from "../../upgrades";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { Blueprint } from "./blueprint";
+import { Blueprint } from "../../blueprint";
+import { SOUNDS } from "../../../platform/sound";
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
@@ -103,7 +104,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         if (blueprint.tryPlace(this.root, tile)) {
             const cost = blueprint.getCost();
             this.root.hubGoals.takeShapeByKey(blueprintShape, cost);
-
+            this.root.soundProxy.playUi(SOUNDS.placeBuilding);
             // This actually feels weird
             // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).pressed) {
             //     this.currentBlueprint.set(null);

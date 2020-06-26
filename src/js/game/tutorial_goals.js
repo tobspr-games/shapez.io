@@ -23,6 +23,8 @@ export const enumHubGoalRewards = {
     reward_painter_quad: "reward_painter_quad",
     reward_storage: "reward_storage",
 
+    reward_wires: "reward_wires",
+
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
 
@@ -163,6 +165,13 @@ export const tutorialGoals = [
     {
         shape: finalGameShape,
         required: 250000,
+        reward: enumHubGoalRewards.reward_wires,
+    },
+
+    // 19
+    {
+        shape: finalGameShape,
+        required: 1,
         reward: enumHubGoalRewards.reward_freeplay,
     },
 ];

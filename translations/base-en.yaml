@@ -121,6 +121,7 @@ mainMenu:
     continue: Continue
     newGame: New Game
     changelog: Changelog
+    subreddit: Reddit
     importSavegame: Import
     openSourceHint: This game is open source!
     discordLink: Official Discord Server
@@ -281,7 +282,7 @@ ingame:
         toggleHud: Toggle HUD
         placeBuilding: Place building
         createMarker: Create Marker
-        delete: Destroy
+        delete: Delete
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
@@ -289,6 +290,18 @@ ingame:
         copySelection: Copy
         clearSelection: Clear Selection
         pipette: Pipette
+        switchLayers: Switch Layers
+
+    # Names of the colors, used for the color blind mode
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        uncolored: No color
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -383,6 +396,12 @@ ingame:
         hub: HUB
         description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
         creationSuccessNotification: Marker has been created.
+
+    # Shape viewer
+    shapeViewer:
+        title: Layers
+        empty: Empty
+        copyKey: Copy Key
 
     # Interactive tutorial
     interactiveTutorial:
@@ -504,6 +523,14 @@ buildings:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
 
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For <x> energy
+
+        default:
+            name: &energy_generator Energy Generator
+            description: Generates energy by consuming shapes. Each energy generator requires a different shapes.
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -517,7 +544,7 @@ storyRewards:
     reward_painter:
         title: Painting
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, I'm working on a solution already!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Color Mixing
@@ -582,6 +609,10 @@ storyRewards:
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
 
+    reward_wires:
+        title: Wires
+        desc: TODO
+
     no_reward_freeplay:
         title: Next level
         desc: >-
@@ -611,6 +642,19 @@ settings:
                 large: Large
                 huge: Huge
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it entirely here.
+
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
+
         scrollWheelSensitivity:
             title: Zoom sensitivity
             description: >-
@@ -638,6 +682,11 @@ settings:
             title: Language
             description: >-
                 Change the language. All translations are user contributed and might be incomplete!
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: >-
+                Enables various tools which allow to play the game if you are color blind.
 
         fullscreen:
             title: Fullscreen
@@ -692,10 +741,20 @@ settings:
             description: >-
                 Enables the vignette which darkens the screen corners and makes text easier to read.
 
+        rotationByBuilding:
+            title: Rotation by building type
+            description: >-
+                Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
+
         compactBuildingInfo:
             title: Compact Building Infos
             description: >-
                 Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
+
+        disableCutDeleteWarnings:
+            title: Disable Cut/Delete Warnings
+            description: >-
+                Disable the warning dialogs brought up when cutting/deleting more than 100 entities.
 
 keybindings:
     title: Keybindings
@@ -732,6 +791,7 @@ keybindings:
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
+        switchLayers: Switch layers
         exportScreenshot: Export whole Base as Image
         belt: *belt
         splitter: *splitter
@@ -741,6 +801,7 @@ keybindings:
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer
+        energy_generator: *energy_generator
         painter: *painter
         trash: *trash
 
@@ -749,7 +810,7 @@ keybindings:
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
+        confirmMassDelete: Delete area
         pasteLastBlueprint: Paste last blueprint
         cycleBuildings: Cycle Buildings
         lockBeltDirection: Enable belt planner

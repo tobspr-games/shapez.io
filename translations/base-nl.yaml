@@ -156,6 +156,7 @@ mainMenu:
     continue: Verder
     newGame: Nieuw Spel
     madeBy: Gemaakt door <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -283,8 +284,12 @@ ingame:
         createMarker: Plaats markering
         delete: Vernietig
         pasteLastBlueprint: Plak de laatst gekopiëerde blauwdruk
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        lockBeltDirection: Maak gebruik van de lopende band planner
+        plannerSwitchSide: Draai de richting van de planner
+        cutSelection: Knip
+        copySelection: Kopieer
+        clearSelection: Cancel selectie
+        pipette: Pipet
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -319,11 +324,6 @@ ingame:
     notifications:
         newUpgrade: Er is een nieuwe upgrade beschikbaar!
         gameSaved: Je spel is opgeslagen.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Druk op <keyCut> om te knippen, <keyCopy> om te kopiëren, <keyDelete> om te verwijderen en <keyCancel> om te annuleren.
 
     # The "Upgrades" window
     shop:
@@ -395,6 +395,19 @@ ingame:
 
             1_3_expand: >-
                 Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer ontginners en lopende banden om het doel sneller te behalen.<br><br>Tip: Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te plaatsen en gebruik <strong>R</strong> om ze te draaien.
+
+    colors:
+        red: Rood
+        green: Groen
+        blue: Blauw
+        yellow: Geel
+        purple: Paars
+        cyan: Cyaan
+        white: Wit
+        uncolored: Geen kleur
+    shapeViewer:
+        title: Lagen
+        empty: Leeg
 
 # All shop upgrades
 shopUpgrades:
@@ -516,11 +529,11 @@ storyRewards:
     reward_painter:
         title: Verven
         desc: >-
-            De <strong>verver</strong> is ontgrendeld - Onttrek wat kleurstoffen (net als met vormen) en combineer deze met een vorm in de verver om de vorm een kleur te geven!<br><br>PS: Ik werk aan een oplossing voor kleurenblinden!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Kleuren mengen
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        desc: De <strong>menger</strong> is ontgrendeld - gebruik dit gebouw om twee kleuren te mengen via <strong>'additive blending'</strong>!
 
     reward_stacker:
         title: Stapelaar
@@ -685,6 +698,39 @@ settings:
             description: >-
                 Schakelt de vignet in, wat de hoeken van het scherm donkerder maakt zodat de tekst makkelijker te lezen is.
 
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Bepaalt hoe vaak het spel automatisch opslaat. Je kan het hier ook volledig
+                mee uitschakelen.
+
+            intervals:
+                one_minute: 1 Minuut
+                two_minutes: 2 Minuten
+                five_minutes: 5 Minuten
+                ten_minutes: 10 Minuten
+                twenty_minutes: 20 Minuten
+                disabled: Uitgeschakeld
+        compactBuildingInfo:
+            title: Combacte gebouwinformatie
+            description: >-
+                Informatie weergeven bij gebouwen wordt beperkt tot alleen hun 'ratios'. Anders
+                zie je een beschrijving en een afbeelding.
+        disableCutDeleteWarnings:
+            title: Schakel knip/delete waarschuwingen uit.
+            description: >-
+                Schakelt de waarschuwing uit die wordt weergegeven wanneer je meer dan 100 dingen probeert te
+                knippen/deleten.
+        enableColorBlindHelper:
+            title: Kleurenblindmodus
+            description: Schakelt verschillende hulpmiddelen in zodat je het spel alsnog kunt spelen wanneer je kleurenblind bent.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
+
 keybindings:
     title: Sneltoetsen
     hint: >-
@@ -730,7 +776,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Cancel plaatsen
         rotateWhilePlacing: Roteren
         rotateInverseModifier: >-
             Aanpassing: Roteer tegen de klok in
@@ -750,7 +795,8 @@ keybindings:
         exportScreenshot: Exporteer volledige basis als afbeelding
         mapMoveFaster: Beweeg sneller
         lockBeltDirection: Schakel lopende band-planner in
-        switchDirectionLockSide: 'Planner: Wissel van kant'
+        switchDirectionLockSide: "Planner: Wissel van richting"
+        pipette: Pipet
 
 about:
     title: Over dit spel

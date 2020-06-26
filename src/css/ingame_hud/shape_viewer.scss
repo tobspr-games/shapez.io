@@ -1,0 +1,161 @@
+#ingame_HUD_ShapeViewer {
+    $dims: 170px;
+
+    .content {
+        display: flex;
+        @include S(width, $dims);
+        width: 100%;
+        flex-direction: column;
+        overflow-x: hidden;
+
+        &[data-layers="3"],
+        &[data-layers="4"] {
+            @include S(width, 2 * $dims);
+            .renderArea {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                @include S(grid-row-gap, 15px);
+            }
+        }
+
+        .renderArea {
+            display: grid;
+            width: 100%;
+            @include S(grid-row-gap, 10px);
+            align-items: center;
+            justify-items: center;
+        }
+
+        .infoArea {
+            align-self: flex-end;
+            @include S(margin-top, 10px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            button {
+                @include S(margin, 0);
+                @include PlainText;
+            }
+        }
+
+        .seperator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .layer {
+            position: relative;
+            background: #eee;
+
+            @include DarkThemeOverride {
+                background: rgba(0, 10, 20, 0.2);
+            }
+            @include S(width, 150px);
+            @include S(height, 100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            > canvas {
+                @include S(width, 50px);
+                @include S(height, 50px);
+            }
+
+            .quad {
+                position: absolute;
+                width: 50%;
+                height: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+
+                $arrowDims: 23px;
+                $spacing: 9px;
+                @include S(padding, 6px);
+
+                .colorLabel {
+                    text-transform: uppercase;
+                    @include SuperSmallText;
+                    @include S(font-size, 9px);
+                }
+
+                .emptyLabel {
+                    text-transform: uppercase;
+                    @include SuperSmallText;
+                    @include S(font-size, 9px);
+                }
+
+                &::after {
+                    content: " ";
+                    background: rgba(0, 10, 20, 0.5);
+                    @include S(width, $arrowDims);
+                    @include S(height, 1px);
+                    position: absolute;
+                    transform: rotate(45deg);
+                    transform-origin: 50% 50%;
+                }
+                @include DarkThemeOverride {
+                    &::after {
+                        background: rgba(255, 255, 255, 0.5);
+                    }
+                }
+
+                &.quad-0 {
+                    right: 0;
+                    top: 0;
+                    align-items: flex-start;
+                    justify-content: flex-end;
+
+                    &::after {
+                        @include S(left, $spacing);
+                        @include S(bottom, $arrowDims / 2 + $spacing);
+                        transform: rotate(-45deg);
+                    }
+                }
+                &.quad-1 {
+                    bottom: 0;
+                    right: 0;
+
+                    align-items: flex-end;
+                    justify-content: flex-end;
+
+                    &::after {
+                        @include S(left, $spacing);
+                        @include S(top, $arrowDims / 2 + $spacing);
+                        transform: rotate(45deg);
+                    }
+                }
+                &.quad-2 {
+                    bottom: 0;
+                    left: 0;
+
+                    align-items: flex-end;
+                    justify-content: flex-start;
+
+                    &::after {
+                        @include S(right, $spacing);
+                        @include S(top, $arrowDims / 2 + $spacing);
+                        transform: rotate(135deg);
+                    }
+                }
+                &.quad-3 {
+                    top: 0;
+                    left: 0;
+
+                    align-items: flex-start;
+                    justify-content: flex-start;
+
+                    &::after {
+                        @include S(right, $spacing);
+                        @include S(bottom, $arrowDims / 2 + $spacing);
+                        transform: rotate(225deg);
+                    }
+                }
+            }
+        }
+    }
+}

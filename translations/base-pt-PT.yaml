@@ -156,6 +156,7 @@ mainMenu:
     continue: Continuar
     newGame: Novo Jogo
     madeBy: Criado por <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -286,6 +287,10 @@ ingame:
         pasteLastBlueprint: Colar o último blueprint
         lockBeltDirection: Ativa o planeamento de tapetes
         plannerSwitchSide: Lado de rotação do planeamento
+        cutSelection: Cortar
+        copySelection: Copiar
+        clearSelection: Cancelar
+        pipette: Pipeta
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -320,11 +325,6 @@ ingame:
     notifications:
         newUpgrade: Está disponível um novo upgrade!
         gameSaved: O teu jogo foi gravado.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Clica <keyCut> para cortar, <keyCopy> para copiar, <keyDelete> para remover e <keyCancel> para cancelar.
 
     # The "Upgrades" window
     shop:
@@ -396,6 +396,19 @@ ingame:
 
             1_3_expand: >-
                 Isto <strong>NÃO</strong> é um jogo idle! Constrói mais extratores e tapetes para atingir o objetivo mais rapidamente.<br><br>Dica: Pressiona <strong>SHIFT</strong> para colocar vários extratores, e usa <strong>R</strong> para os rodar.
+
+    colors:
+        red: Vermelho
+        green: Verde
+        blue: Azul
+        yellow: Amarelo
+        purple: Roxo
+        cyan: Azul-bebé
+        white: Branco
+        uncolored: Sem cor
+    shapeViewer:
+        title: Camadas
+        empty: Vazio
 
 # All shop upgrades
 shopUpgrades:
@@ -516,7 +529,7 @@ storyRewards:
     reward_painter:
         title: Pintura
         desc: >-
-            O <strong>Pintor</strong> foi desbloqueado - Extrai alguns pigmentos coloridos (tal como fazes com as formas) e combina-os com uma forma no pintor para a colorir!<br><br>PS: Se fores daltónico, já estou a trabalhar para encontrar uma solução!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Mistura de Cores
@@ -666,14 +679,14 @@ settings:
                 Se ativado, dá dicas e tutoriais de apoio ao jogo. Adicionalmente, esconde certos elementos da interface do utilizador até ao nível em que são desbloqueados de forma a simplificar o início do jogo.
 
         movementSpeed:
-            title: Velociade de movimentação
+            title: Velocidade de movimentação
             description: Define quão rápida é a movimentação usando o teclado.
             speeds:
                 super_slow: Muito lenta
                 slow: Lenta
                 regular: Média
-                fast: Rápiada
-                super_fast: Muito rádida
+                fast: Rápida
+                super_fast: Muito rápida
                 extremely_fast: Extremamente rápida
         enableTunnelSmartplace:
             title: Túneis inteligentes
@@ -685,6 +698,39 @@ settings:
             description: >-
                 Ativa a vinheta, que escurece os cantos do ecrã e torna a leitura do texto
                 mais fácil.
+
+        autosaveInterval:
+            title: Intervalo de gravação automática
+            description: >-
+                Define o quão frequentemente o jogo grava automaticamente. Também podes desativar
+                aqui.
+            intervals:
+                one_minute: 1 Minuto
+                two_minutes: 2 Minutos
+                five_minutes: 5 Minutos
+                ten_minutes: 10 Minutos
+                twenty_minutes: 20 Minutos
+                disabled: Desligado
+        compactBuildingInfo:
+            title: Informações de construções compactas
+            description: >-
+                Encurta caixas de informação mostrando apenas os respetivos rácios. Caso contrário
+                é mostrada a descrição e a imagem.
+        disableCutDeleteWarnings:
+            title: Desativar Avisos de Corte/Eliminação
+            description: >-
+                Desativa os avisos mostrados quando é feito o corte ou a eliminação de mais de 100
+                entidades.
+
+        enableColorBlindHelper:
+            title: Modo Daltónico
+            description: Ativa várias ferramentas para daltónicos.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
 
 keybindings:
     title: Atalhos
@@ -731,7 +777,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Cancelar posicionamento
         rotateWhilePlacing: Rotação
         rotateInverseModifier: >-
             Modifier: Rotação CCW
@@ -751,7 +796,8 @@ keybindings:
         exportScreenshot: Exportar a base como uma imagem
         mapMoveFaster: Mover rapidamente
         lockBeltDirection: Ativa o planeamento de tapetes
-        switchDirectionLockSide: 'Planeador: Troca o lado'
+        switchDirectionLockSide: "Planeador: Troca o lado"
+        pipette: Pipeta
 about:
     title: Sobre o jogo
     body: >-

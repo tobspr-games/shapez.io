@@ -156,6 +156,7 @@ mainMenu:
     continue: Fortsett
     newGame: Nytt Spill
     madeBy: Laget av <author-link>
+    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -285,6 +286,10 @@ ingame:
         pasteLastBlueprint: Lim inn forrige blåkopi
         lockBeltDirection: Aktiver båndplanleggeren
         plannerSwitchSide: Flipp båndplanleggeren
+        cutSelection: Klipp Ut
+        copySelection: Kopier
+        clearSelection: Fjern Valgte
+        pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -319,11 +324,6 @@ ingame:
     notifications:
         newUpgrade: En ny oppgradering er tilgjengelig!
         gameSaved: Spillet ditt er lagret.
-
-    # Mass select information, this is when you hold CTRL and then drag with your mouse
-    # to select multiple buildings
-    massSelect:
-        infoText: Trykk <keyCut> for å klippe, <keyCopy> for å kopiere, <keyDelete> for å slette, og <keyCancel> for å avbryte.
 
     # The "Upgrades" window
     shop:
@@ -395,6 +395,19 @@ ingame:
 
             1_3_expand: >-
                 Dette er <strong>IKKE</strong> et idle-spill! Bygg flere utdragere og belter for å nå målet raskere.<br><br>Tips: Hold <strong>SHIFT</strong> for å plassere flere utdragere, og bruk <strong>R</strong> for å rotere dem.
+
+    colors:
+        red: Rød
+        green: Grønn
+        blue: Blå
+        yellow: Gul
+        purple: Lilla
+        cyan: Cyan
+        white: Hvit
+        uncolored: Ingen farge
+    shapeViewer:
+        title: Lag
+        empty: Tom
 
 # All shop upgrades
 shopUpgrades:
@@ -516,7 +529,7 @@ storyRewards:
     reward_painter:
         title: Maling
         desc: >-
-            <strong>Maleren</strong> har blitt tilgjengelig - Hent ut fargeressurser (på samme måte som du gjør med objekter) og kombiner det med et objekt i maleren for å male de!<br><br>PS: Hvis du er fargeblind, så jobber jeg med en løsning alt!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
 
     reward_mixer:
         title: Fargemikser
@@ -573,7 +586,7 @@ storyRewards:
 
     reward_blueprints:
         title: Blåkopier
-        desc: Du kan nå <strong>kopiere og lime inn</strong> deler av fabrikken din! Velg et område (Hold inne CTRL, så dra med musa), trykk så 'C' for å kopiere det.<br><br>Lime det inn er <strong>ikke graits</strong>, du må produsere <strong>blåkopi objekter</strong> for å få råd til det! (Det du nettop leverte).
+        desc: Du kan nå <strong>kopiere og lime inn</strong> deler av fabrikken din! Velg et område (Hold inne CTRL, så dra med musa), trykk så 'C' for å kopiere det.<br><br>Lime det inn er <strong>ikke gratis</strong>, du må produsere <strong>blåkopi objekter</strong> for å få råd til det! (Det du nettop leverte).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -687,6 +700,39 @@ settings:
                 Aktiverer vignett som gjør hjørnene på skjermen mørkere og teksten lettere
                 å lese.
 
+        autosaveInterval:
+            title: Autolagringsintervall
+            description: >-
+                Jsuter hvor ofte spillet lagres automatisk. Du kan også
+                deaktivere det fullstendig.
+            intervals:
+                one_minute: 1 Minutt
+                two_minutes: 2 Minutter
+                five_minutes: 5 Minutter
+                ten_minutes: 10 Minutter
+                twenty_minutes: 20 Minutter
+                disabled: Deaktivert
+        compactBuildingInfo:
+            title: Kompakt Bygningsinformasjon
+            description: >-
+                Forkorter informasjonsboksen for bygninger ved å bare vise dems forhold. Ellers
+                vises en beskrivelse og bilde er vist.
+        disableCutDeleteWarnings:
+            title: Deaktiverer Kutt/Slette Advarsler
+            description: >-
+                Deaktiverer advarselsdialogen som kommer frem når du kutter/sletter mer enn 100
+                bygninger.
+
+        enableColorBlindHelper:
+            title: Fargeblind Modus
+            description: Aktiverer forskjellige verktøy som lar deg spille spillet om du er fargeblind.
+        rotationByBuilding:
+          title: Rotation by building type
+          description: >-
+            Each building type remembers the rotation you last set it to individually.
+            This may be more comfortable if you frequently switch between placing
+            different building types.
+
 keybindings:
     title: Hurtigtaster
     hint: >-
@@ -734,7 +780,6 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        abortBuildingPlacement: Avbryt Plassering
         rotateWhilePlacing: Roter
         rotateInverseModifier: >-
             Alternativ: Roter mot klokken isteden
@@ -752,7 +797,8 @@ keybindings:
         placeMultiple: Forbli i plasseringsmodus
         placeInverse: Inverter automatisk transportbånd orientering
         lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: 'Planner: Switch side'
+        switchDirectionLockSide: "Planlegger: Bytt side"
+        pipette: Pipette
 
 about:
     title: Om dette spillet

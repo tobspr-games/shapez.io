@@ -6,6 +6,10 @@ import { Entity } from "../game/entity";
  */
 
 /**
+ *
+ */
+
+/**
  * @typedef {{
  *   camera: any,
  *   time: any,
@@ -14,7 +18,8 @@ import { Entity } from "../game/entity";
  *   hubGoals: any,
  *   pinnedShapes: any,
  *   waypoints: any,
- *   entities: Array<Entity>
+ *   entities: Array<Entity>,
+ *   beltPaths: Array<any>
  * }} SerializedGame
  */
 

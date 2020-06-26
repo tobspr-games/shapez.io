@@ -170,7 +170,7 @@ export class AtlasSprite extends BaseSprite {
 
         if (clipping) {
             const rect = new Rectangle(destX, destY, destW, destH);
-            intersection = rect.getUnion(visibleRect);
+            intersection = rect.getIntersection(visibleRect);
             if (!intersection) {
                 return;
             }

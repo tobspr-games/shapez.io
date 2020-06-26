@@ -1,10 +1,10 @@
-import { Vector, enumDirection, enumAngleToDirection } from "../core/vector";
 import { Loader } from "../core/loader";
-import { GameRoot } from "./root";
 import { AtlasSprite } from "../core/sprites";
-import { Entity } from "./entity";
-import { StaticMapEntityComponent } from "./components/static_map_entity";
+import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
+import { StaticMapEntityComponent } from "./components/static_map_entity";
+import { Entity } from "./entity";
+import { enumEditMode, GameRoot } from "./root";
 
 export const defaultBuildingVariant = "default";
 
@@ -22,6 +22,14 @@ export class MetaBuilding {
      */
     getId() {
         return this.id;
+    }
+
+    /**
+     * Returns the edit layer of the building
+     * @returns {enumEditMode}
+     */
+    getEditLayer() {
+        return enumEditMode.regular;
     }
 
     /**
