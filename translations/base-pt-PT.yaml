@@ -729,8 +729,8 @@ settings:
           title: Rotação por tipo de construção
           description: >-
             Cada construção lembra-se da última rotação que definiste.
-            Esta definição pode ser mais confortável se alternas a colocação de
-            diferentes tipos de construções.
+            Esta definição pode ser mais confortável se alternas frequentemente
+            a colocação de diferentes tipos de construções.
 
 keybindings:
     title: Atalhos
