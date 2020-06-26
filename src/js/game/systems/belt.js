@@ -227,7 +227,9 @@ export class BeltSystem extends GameSystemWithFilter {
     }
 
     draw(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawEntityItems.bind(this));
+        for (let i = 0; i < this.beltPaths.length; ++i) {
+            this.beltPaths[i].draw(parameters);
+        }
     }
 
     /**

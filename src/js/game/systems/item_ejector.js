@@ -239,9 +239,9 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
         const beltComp = receiver.components.Belt;
         if (beltComp) {
-            // Ayy, its a belt!
-            if (beltComp.canAcceptItem()) {
-                beltComp.takeItem(item);
+            const path = beltComp.assignedPath;
+            assert(path, "belt has no path");
+            if (path.tryAcceptItem(item)) {
                 return true;
             }
         }

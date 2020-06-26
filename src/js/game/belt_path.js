@@ -59,6 +59,27 @@ export class BeltPath {
     }
 
     /**
+     * Returns whether this path can accept a new item
+     * @returns {boolean}
+     */
+    canAcceptItem() {
+        return this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts;
+    }
+
+    /**
+     * Tries to accept the item
+     * @param {BaseItem} item
+     */
+    tryAcceptItem(item) {
+        if (this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts) {
+            this.items.unshift([this.spacingToFirstItem, item]);
+            this.spacingToFirstItem = 0;
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Helper to throw an error on mismatch
      * @param {string} change
      * @param {Array<any>} reason
@@ -174,7 +195,7 @@ export class BeltPath {
         for (let i = 0; i < this.items.length; ++i) {
             const item = this.items[i];
 
-            if (item[_nextDistance] < 0 || item[_nextDistance] > this.totalLength) {
+            if (item[_nextDistance] < 0 || item[_nextDistance] > this.totalLength + 0.02) {
                 return fail(
                     "Item has invalid offset to next item: ",
                     item[_nextDistance],
@@ -777,21 +798,6 @@ export class BeltPath {
      */
     update() {
         this.debug_checkIntegrity("pre-update");
-        const firstBeltItems = this.initialBeltComponent.sortedItems;
-        const transferItemAndProgress = firstBeltItems[0];
-
-        // Check if the first belt took a new item
-        if (transferItemAndProgress) {
-            const transferItem = transferItemAndProgress[_item];
-
-            if (this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts) {
-                // Can take new item
-                firstBeltItems.splice(0, 1);
-
-                this.items.unshift([this.spacingToFirstItem, transferItem]);
-                this.spacingToFirstItem = 0;
-            }
-        }
 
         // Divide by item spacing on belts since we use throughput and not speed
         let beltSpeed =
@@ -929,5 +935,21 @@ export class BeltPath {
         ).toWorldSpaceCenterOfTile();
         parameters.context.fillStyle = "purple";
         parameters.context.fillRect(firstItemIndicator.x - 3, firstItemIndicator.y - 1, 6, 2);
+    }
+
+    /**
+     * Draws the path
+     * @param {DrawParameters} parameters
+     */
+    draw(parameters) {
+        let progress = this.spacingToFirstItem;
+        for (let i = 0; i < this.items.length; ++i) {
+            const nextDistanceAndItem = this.items[i];
+            const worldPos = this.computePositionFromProgress(progress).toWorldSpaceCenterOfTile();
+            if (parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, 10)) {
+                nextDistanceAndItem[_item].draw(worldPos.x, worldPos.y, parameters);
+            }
+            progress += nextDistanceAndItem[_nextDistance];
+        }
     }
 }
