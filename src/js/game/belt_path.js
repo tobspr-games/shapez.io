@@ -1,4 +1,4 @@
-import { Math_min } from "../core/builtins";
+import { Math_min, Math_max } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
@@ -7,6 +7,7 @@ import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
 import { GameRoot } from "./root";
+import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("belt_path");
 
@@ -50,6 +51,12 @@ export class BeltPath {
         this.totalLength = this.computeTotalLength();
         this.spacingToFirstItem = this.totalLength;
 
+        /**
+         * Current bounds of this path
+         * @type {Rectangle}
+         */
+        this.worldBounds = this.computeBounds();
+
         // Connect the belts
         for (let i = 0; i < this.entityPath.length; ++i) {
             this.entityPath[i].components.Belt.assignedPath = this;
@@ -80,6 +87,20 @@ export class BeltPath {
     }
 
     /**
+     * Computes the tile bounds of the path
+     * @returns {Rectangle}
+     */
+    computeBounds() {
+        let bounds = this.entityPath[0].components.StaticMapEntity.getTileSpaceBounds();
+        for (let i = 1; i < this.entityPath.length; ++i) {
+            const staticComp = this.entityPath[i].components.StaticMapEntity;
+            const otherBounds = staticComp.getTileSpaceBounds();
+            bounds = bounds.getUnion(otherBounds);
+        }
+        return bounds.allScaled(globalConfig.tileSize);
+    }
+
+    /**
      * Helper to throw an error on mismatch
      * @param {string} change
      * @param {Array<any>} reason
@@ -92,7 +113,7 @@ export class BeltPath {
      * Checks if this path is valid
      */
     debug_checkIntegrity(currentChange = "change") {
-        if (!G_IS_DEV) {
+        if (!G_IS_DEV || !DEBUG) {
             return;
         }
 
@@ -220,6 +241,12 @@ export class BeltPath {
                 ") -> items: " + this.items.map(i => i[_nextDistance]).join("|")
             );
         }
+
+        // Check bounds
+        const actualBounds = this.computeBounds();
+        if (!actualBounds.equalsEpsilon(this.worldBounds, 0.01)) {
+            return fail("Bounds are stale");
+        }
     }
 
     /**
@@ -271,6 +298,9 @@ export class BeltPath {
         // Assign reference
         beltComp.assignedPath = this;
 
+        // Update bounds
+        this.worldBounds = this.computeBounds();
+
         this.debug_checkIntegrity("extend-on-end");
     }
 
@@ -297,6 +327,9 @@ export class BeltPath {
         beltComp.assignedPath = this;
         this.entityPath.unshift(entity);
         this.initialBeltComponent = this.entityPath[0].components.Belt;
+
+        // Update bounds
+        this.worldBounds = this.computeBounds();
 
         this.debug_checkIntegrity("extend-on-begin");
     }
@@ -472,6 +505,9 @@ export class BeltPath {
         this.ejectorComp = firstPathEndEntity.components.ItemEjector;
         this.ejectorSlot = this.ejectorComp.slots[0];
 
+        // Update bounds
+        this.worldBounds = this.computeBounds();
+
         this.debug_checkIntegrity("split-two-first");
         secondPath.debug_checkIntegrity("split-two-second");
 
@@ -580,6 +616,9 @@ export class BeltPath {
         // Update handles
         this.ejectorComp = this.entityPath[this.entityPath.length - 1].components.ItemEjector;
         this.ejectorSlot = this.ejectorComp.slots[0];
+
+        // Update bounds
+        this.worldBounds = this.computeBounds();
 
         this.debug_checkIntegrity("delete-on-end");
     }
@@ -707,6 +746,9 @@ export class BeltPath {
         // Update handles
         this.initialBeltComponent = this.entityPath[0].components.Belt;
 
+        // Update bounds
+        this.worldBounds = this.computeBounds();
+
         this.debug_checkIntegrity("delete-on-start");
     }
 
@@ -778,6 +820,9 @@ export class BeltPath {
             this.items.push([item[_nextDistance], item[_item]]);
         }
 
+        // Update bounds
+        this.worldBounds = this.computeBounds();
+
         this.debug_checkIntegrity("extend-by-path");
     }
 
@@ -817,16 +862,16 @@ export class BeltPath {
             const nextDistanceAndItem = this.items[i];
             const minimumSpacing = minimumDistance;
 
-            const takeAway = Math.max(
+            const takeAway = Math_max(
                 0,
-                Math.min(remainingAmount, nextDistanceAndItem[_nextDistance] - minimumSpacing)
+                Math_min(remainingAmount, nextDistanceAndItem[_nextDistance] - minimumSpacing)
             );
 
             remainingAmount -= takeAway;
             nextDistanceAndItem[_nextDistance] -= takeAway;
 
             this.spacingToFirstItem += takeAway;
-            if (remainingAmount === 0.0) {
+            if (remainingAmount < 0.01) {
                 break;
             }
 
@@ -878,6 +923,10 @@ export class BeltPath {
      * @param {DrawParameters} parameters
      */
     drawDebug(parameters) {
+        if (!parameters.visibleRect.containsRect(this.worldBounds)) {
+            return;
+        }
+
         parameters.context.fillStyle = "#d79a25";
         parameters.context.strokeStyle = "#d79a25";
         parameters.context.beginPath();
@@ -942,6 +991,10 @@ export class BeltPath {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
+        if (!parameters.visibleRect.containsRect(this.worldBounds)) {
+            return;
+        }
+
         let progress = this.spacingToFirstItem;
         for (let i = 0; i < this.items.length; ++i) {
             const nextDistanceAndItem = this.items[i];
