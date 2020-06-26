@@ -6,6 +6,9 @@ import { Vector, enumDirection } from "../../core/vector";
 import { Math_PI, Math_sin, Math_cos } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { Entity } from "../entity";
+import { BeltPath } from "../belt_path";
+
+export const curvedBeltLength = /* Math_PI / 4 */ 0.78;
 
 export class BeltComponent extends Component {
     static getId() {
@@ -39,6 +42,20 @@ export class BeltComponent extends Component {
 
         /** @type {Entity} */
         this.followUpCache = null;
+
+        /**
+         * The path this belt is contained in, not serialized
+         * @type {BeltPath}
+         */
+        this.assignedPath = null;
+    }
+
+    /**
+     * Returns the effective length of this belt in tile space
+     * @returns {number}
+     */
+    getEffectiveLengthTiles() {
+        return this.direction === enumDirection.top ? 1.0 : curvedBeltLength;
     }
 
     /**
@@ -50,14 +67,17 @@ export class BeltComponent extends Component {
     transformBeltToLocalSpace(progress) {
         switch (this.direction) {
             case enumDirection.top:
+                assert(progress <= 1.02, "Invalid progress: " + progress);
                 return new Vector(0, 0.5 - progress);
 
             case enumDirection.right: {
-                const arcProgress = progress * 0.5 * Math_PI;
+                assert(progress <= curvedBeltLength + 0.02, "Invalid progress 2: " + progress);
+                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math_PI;
                 return new Vector(0.5 - 0.5 * Math_cos(arcProgress), 0.5 - 0.5 * Math_sin(arcProgress));
             }
             case enumDirection.left: {
-                const arcProgress = progress * 0.5 * Math_PI;
+                assert(progress <= curvedBeltLength + 0.02, "Invalid progress 3: " + progress);
+                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math_PI;
                 return new Vector(-0.5 + 0.5 * Math_cos(arcProgress), 0.5 - 0.5 * Math_sin(arcProgress));
             }
             default:

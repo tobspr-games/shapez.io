@@ -1,21 +1,18 @@
-import { Math_sqrt, Math_max } from "../../core/builtins";
+import { Math_sqrt } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
-import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
-import { Rectangle } from "../../core/rectangle";
 import { AtlasSprite } from "../../core/sprites";
-import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
-import { MetaBeltBaseBuilding } from "../buildings/belt_base";
+import { enumDirection, enumDirectionToVector, enumInvertedDirections } from "../../core/vector";
+import { BeltPath } from "../belt_path";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
-import { defaultBuildingVariant } from "../meta_building";
+import { fastArrayDeleteValue } from "../../core/utils";
 
 export const BELT_ANIM_COUNT = 28;
-const SQRT_2 = Math_sqrt(2);
 
 const logger = createLogger("belt");
 
@@ -52,10 +49,17 @@ export class BeltSystem extends GameSystemWithFilter {
 
         this.root.signals.entityAdded.add(this.updateSurroundingBeltPlacement, this);
         this.root.signals.entityDestroyed.add(this.updateSurroundingBeltPlacement, this);
+        this.root.signals.entityDestroyed.add(this.onEntityDestroyed, this);
+        this.root.signals.entityAdded.add(this.onEntityAdded, this);
         this.root.signals.postLoadHook.add(this.computeBeltCache, this);
 
-        /** @type {Rectangle} */
-        this.areaToRecompute = null;
+        // /** @type {Rectangle} */
+        // this.areaToRecompute = null;
+
+        /** @type {Array<BeltPath>} */
+        this.beltPaths = [];
+
+        this.recomputePaths = true;
     }
 
     /**
@@ -72,10 +76,8 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        if (entity.components.Belt) {
-            this.cacheNeedsUpdate = true;
-        }
-
+        // this.recomputePaths = true;
+        /*
         const metaBelt = gMetaBuildingRegistry.findByClass(MetaBeltBaseBuilding);
 
         // Compute affected area
@@ -84,6 +86,8 @@ export class BeltSystem extends GameSystemWithFilter {
 
         // Store if anything got changed, if so we need to queue a recompute
         let anythingChanged = false;
+
+        anythingChanged = true; // TODO / FIXME
 
         for (let x = affectedArea.x; x < affectedArea.right(); ++x) {
             for (let y = affectedArea.y; y < affectedArea.bottom(); ++y) {
@@ -119,6 +123,105 @@ export class BeltSystem extends GameSystemWithFilter {
             }
             if (G_IS_DEV) {
                 logger.log("Queuing recompute:", this.areaToRecompute);
+            }
+        }
+
+        // FIXME
+        this.areaToRecompute = new Rectangle(-1000, -1000, 2000, 2000);
+        */
+    }
+
+    /**
+     * Called when an entity got destroyed
+     * @param {Entity} entity
+     */
+    onEntityDestroyed(entity) {
+        if (!this.root.gameInitialized) {
+            return;
+        }
+
+        if (!entity.components.Belt) {
+            return;
+        }
+
+        console.log("DESTROY");
+
+        const assignedPath = entity.components.Belt.assignedPath;
+        assert(assignedPath, "Entity has no belt path assigned");
+
+        // Find from and to entities
+        const fromEntity = this.findSupplyingEntity(entity);
+        const toEntity = this.findFollowUpEntity(entity);
+
+        // Check if the belt had a previous belt
+        if (fromEntity) {
+            const fromPath = fromEntity.components.Belt.assignedPath;
+
+            // Check if the entity had a followup - belt
+            if (toEntity) {
+                const toPath = toEntity.components.Belt.assignedPath;
+                assert(fromPath === toPath, "Invalid belt path layout (from path != to path)");
+                console.log("Remove inbetween");
+
+                const newPath = fromPath.deleteEntityOnPathSplitIntoTwo(entity);
+                this.beltPaths.push(newPath);
+            } else {
+                // TODO
+                console.error("TODO 1");
+            }
+        } else {
+            if (toEntity) {
+                // TODO
+                console.error("TODO 2");
+            } else {
+                // TODO
+                console.error("TODO 3");
+            }
+        }
+    }
+
+    /**
+     * Called when an entity got added
+     * @param {Entity} entity
+     */
+    onEntityAdded(entity) {
+        if (!this.root.gameInitialized) {
+            return;
+        }
+
+        if (!entity.components.Belt) {
+            return;
+        }
+
+        console.log("ADD");
+
+        const fromEntity = this.findSupplyingEntity(entity);
+        const toEntity = this.findFollowUpEntity(entity);
+
+        console.log("From:", fromEntity, "to:", toEntity);
+
+        // Check if we can add the entity to the previous path
+        if (fromEntity) {
+            const fromPath = fromEntity.components.Belt.assignedPath;
+            fromPath.extendOnEnd(entity);
+
+            // Check if we now can extend the current path by the next path
+            if (toEntity) {
+                const toPath = toEntity.components.Belt.assignedPath;
+                fromPath.extendByPath(toPath);
+
+                // Delete now obsolete path
+                fastArrayDeleteValue(this.beltPaths, toPath);
+            }
+        } else {
+            if (toEntity) {
+                // Prepend it to the other path
+                const toPath = toEntity.components.Belt.assignedPath;
+                toPath.extendOnBeginning(entity);
+            } else {
+                // This is an empty belt path
+                const path = new BeltPath(this.root, [entity]);
+                this.beltPaths.push(path);
             }
         }
     }
@@ -166,9 +269,46 @@ export class BeltSystem extends GameSystemWithFilter {
     }
 
     /**
+     * Finds the supplying belt for a given belt. Used for building the dependencies
+     * @param {Entity} entity
+     */
+    findSupplyingEntity(entity) {
+        const staticComp = entity.components.StaticMapEntity;
+
+        const supplyDirection = staticComp.localDirectionToWorld(enumDirection.bottom);
+        const supplyVector = enumDirectionToVector[supplyDirection];
+
+        const supplyTile = staticComp.origin.add(supplyVector);
+        const supplyEntity = this.root.map.getTileContent(supplyTile);
+
+        // Check if theres a belt at the tile we point to
+        if (supplyEntity) {
+            const supplyBeltComp = supplyEntity.components.Belt;
+            if (supplyBeltComp) {
+                const supplyStatic = supplyEntity.components.StaticMapEntity;
+                const supplyEjector = supplyEntity.components.ItemEjector;
+
+                // Check if the belt accepts items from our direction
+                const ejectorSlots = supplyEjector.slots;
+                for (let i = 0; i < ejectorSlots.length; ++i) {
+                    const slot = ejectorSlots[i];
+                    const localDirection = supplyStatic.localDirectionToWorld(slot.direction);
+                    if (enumInvertedDirections[localDirection] === supplyDirection) {
+                        return supplyEntity;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Recomputes the belt cache
      */
     computeBeltCache() {
+        this.recomputePaths = false;
+        /*
         if (this.areaToRecompute) {
             logger.log("Updating belt cache by updating area:", this.areaToRecompute);
 
@@ -207,12 +347,87 @@ export class BeltSystem extends GameSystemWithFilter {
                 entity.components.Belt.followUpCache = this.findFollowUpEntity(entity);
             }
         }
+        */
+        this.computeBeltPaths();
+    }
+
+    /**
+     * Computes the belt path network
+     */
+    computeBeltPaths() {
+        const visitedUids = new Set();
+        console.log("Computing belt paths");
+
+        const debugEntity = e => e.components.StaticMapEntity.origin.toString();
+
+        // const stackToVisit = this.allEntities.slice();
+        const result = [];
+
+        const currentPath = null;
+
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            if (visitedUids.has(entity.uid)) {
+                continue;
+            }
+
+            // console.log("Starting at", debugEntity(entity));
+            // Mark entity as visited
+            visitedUids.add(entity.uid);
+
+            // Compute path, start with entity and find precedors / successors
+            const path = [entity];
+
+            // Find precedors
+            let prevEntity = this.findSupplyingEntity(entity);
+            while (prevEntity) {
+                if (visitedUids.has(prevEntity)) {
+                    break;
+                }
+                // console.log(" -> precedor: ", debugEntity(prevEntity));
+                path.unshift(prevEntity);
+                visitedUids.add(prevEntity.uid);
+                prevEntity = this.findSupplyingEntity(prevEntity);
+            }
+
+            // Find succedors
+            let nextEntity = this.findFollowUpEntity(entity);
+            while (nextEntity) {
+                if (visitedUids.has(nextEntity)) {
+                    break;
+                }
+
+                // console.log(" -> succedor: ", debugEntity(nextEntity));
+                path.push(nextEntity);
+                visitedUids.add(nextEntity.uid);
+                nextEntity = this.findFollowUpEntity(nextEntity);
+            }
+
+            // console.log(
+            //     "Found path:",
+            //     path.map(e => debugEntity(e))
+            // );
+
+            result.push(new BeltPath(this.root, path));
+
+            // let prevEntity = this.findSupplyingEntity(srcEntity);
+        }
+
+        logger.log("Found", this.beltPaths.length, "belt paths");
+        this.beltPaths = result;
     }
 
     update() {
-        if (this.areaToRecompute) {
+        if (this.recomputePaths) {
             this.computeBeltCache();
         }
+
+        for (let i = 0; i < this.beltPaths.length; ++i) {
+            this.beltPaths[i].update();
+        }
+
+        return;
+        /*
 
         // Divide by item spacing on belts since we use throughput and not speed
         let beltSpeed =
@@ -238,7 +453,7 @@ export class BeltSystem extends GameSystemWithFilter {
             const ejectorComp = entity.components.ItemEjector;
             let maxProgress = 1;
 
-            /* PERFORMANCE OPTIMIZATION */
+            // PERFORMANCE OPTIMIZATION
             // Original:
             //   const isCurrentlyEjecting = ejectorComp.isAnySlotEjecting();
             // Replaced (Since belts always have just one slot):
@@ -300,7 +515,7 @@ export class BeltSystem extends GameSystemWithFilter {
                     } else {
                         // Try to give this item to a new belt
 
-                        /* PERFORMANCE OPTIMIZATION */
+                        // PERFORMANCE OPTIMIZATION
 
                         // Original:
                         //  const freeSlot = ejectorComp.getFirstFreeSlot();
@@ -326,6 +541,7 @@ export class BeltSystem extends GameSystemWithFilter {
                 }
             }
         }
+        */
     }
 
     /**
@@ -372,6 +588,7 @@ export class BeltSystem extends GameSystemWithFilter {
      * @param {Entity} entity
      */
     drawEntityItems(parameters, entity) {
+        /*
         const beltComp = entity.components.Belt;
         const staticComp = entity.components.StaticMapEntity;
 
@@ -400,6 +617,17 @@ export class BeltSystem extends GameSystemWithFilter {
                 (staticComp.origin.y + position.y + 0.5) * globalConfig.tileSize,
                 parameters
             );
+        }
+        */
+    }
+
+    /**
+     * Draws the belt parameters
+     * @param {DrawParameters} parameters
+     */
+    drawBeltPathDebug(parameters) {
+        for (let i = 0; i < this.beltPaths.length; ++i) {
+            this.beltPaths[i].drawDebug(parameters);
         }
     }
 }

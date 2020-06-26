@@ -27,7 +27,7 @@ export class HUDChangesDebugger extends BaseHUDPart {
      * @param {string} fillColor Color to display (Hex)
      * @param {number=} timeToDisplay How long to display the change
      */
-    renderChange(label, area, fillColor, timeToDisplay = 2) {
+    renderChange(label, area, fillColor, timeToDisplay = 0.3) {
         this.changes.push({
             label,
             area: area.clone(),

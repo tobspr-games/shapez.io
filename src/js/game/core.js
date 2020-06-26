@@ -418,6 +418,10 @@ export class GameCore {
             root.map.drawStaticEntityDebugOverlays(params);
         }
 
+        if (G_IS_DEV && globalConfig.debug.renderBeltPaths) {
+            systems.belt.drawBeltPathDebug(params);
+        }
+
         // END OF GAME CONTENT
         // -----
 
