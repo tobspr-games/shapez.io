@@ -129,7 +129,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant) {
         entity.components.Belt.direction = arrayBeltVariantToRotation[rotationVariant];
         entity.components.ItemEjector.slots[0].direction = arrayBeltVariantToRotation[rotationVariant];
-
         entity.components.StaticMapEntity.spriteKey = null;
     }
 

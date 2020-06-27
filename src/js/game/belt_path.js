@@ -1018,7 +1018,6 @@ export class BeltPath extends BasicSerializableObject {
                 worldPos.y + 2
             );
             progress += nextDistanceAndItem[_nextDistance];
-            nextDistanceAndItem[_item].draw(worldPos.x, worldPos.y, parameters, 10);
         }
 
         for (let i = 0; i < this.entityPath.length; ++i) {
