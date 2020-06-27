@@ -165,7 +165,17 @@ export class BeltPath extends BasicSerializableObject {
         this.ejectorSlot = this.ejectorComp.slots[0];
 
         for (let i = 0; i < this.entityPath.length; ++i) {
-            this.entityPath[i].components.ItemEjector.enabled = i === this.entityPath.length - 1;
+            const ejectorComp = this.entityPath[i].components.ItemEjector;
+            const isLast = i === this.entityPath.length - 1;
+            ejectorComp.enabled = isLast;
+
+            // Clear all slots of non-end entities
+            if (!isLast) {
+                for (let k = 0; k < ejectorComp.slots.length; ++k) {
+                    ejectorComp.slots[k].item = null;
+                    ejectorComp.slots[k].progress = 0.0;
+                }
+            }
         }
     }
 
