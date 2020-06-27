@@ -1,4 +1,3 @@
-import { Math_max } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { enumColorMixingResults } from "../colors";
@@ -21,7 +20,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const ejectorComp = entity.components.ItemEjector;
 
             // First of all, process the current recipe
-            processorComp.secondsUntilEject = Math_max(
+            processorComp.secondsUntilEject = Math.max(
                 0,
                 processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
             );

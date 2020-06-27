@@ -5,7 +5,6 @@ import { GameRoot } from "./root";
 import { globalConfig } from "../core/config";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
-import { Math_floor } from "../core/builtins";
 import { createLogger } from "../core/logging";
 import { BaseItem } from "./base_item";
 import { MapChunkView } from "./map_chunk_view";
@@ -71,8 +70,8 @@ export class BaseMap extends BasicSerializableObject {
      * @returns {MapChunkView}
      */
     getOrCreateChunkAtTile(tileX, tileY) {
-        const chunkX = Math_floor(tileX / globalConfig.mapChunkSize);
-        const chunkY = Math_floor(tileY / globalConfig.mapChunkSize);
+        const chunkX = Math.floor(tileX / globalConfig.mapChunkSize);
+        const chunkY = Math.floor(tileY / globalConfig.mapChunkSize);
         return this.getChunk(chunkX, chunkY, true);
     }
 
@@ -83,8 +82,8 @@ export class BaseMap extends BasicSerializableObject {
      * @returns {MapChunkView?}
      */
     getChunkAtTileOrNull(tileX, tileY) {
-        const chunkX = Math_floor(tileX / globalConfig.mapChunkSize);
-        const chunkY = Math_floor(tileY / globalConfig.mapChunkSize);
+        const chunkX = Math.floor(tileX / globalConfig.mapChunkSize);
+        const chunkY = Math.floor(tileY / globalConfig.mapChunkSize);
         return this.getChunk(chunkX, chunkY, false);
     }
 

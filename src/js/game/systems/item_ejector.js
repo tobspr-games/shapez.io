@@ -1,4 +1,3 @@
-import { Math_min } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
@@ -56,10 +55,25 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     recomputeCache() {
         if (this.areaToRecompute) {
             logger.log("Recomputing cache using rectangle");
-            this.recomputeAreaCache(this.areaToRecompute);
+            if (G_IS_DEV && globalConfig.debug.renderChanges) {
+                this.root.hud.parts.changesDebugger.renderChange(
+                    "ejector-area",
+                    this.areaToRecompute,
+                    "#fe50a6"
+                );
+            }
+            this.recomputeAreaCache();
             this.areaToRecompute = null;
         } else {
             logger.log("Full cache recompute");
+            if (G_IS_DEV && globalConfig.debug.renderChanges) {
+                this.root.hud.parts.changesDebugger.renderChange(
+                    "ejector-full",
+                    new Rectangle(-1000, -1000, 2000, 2000),
+                    "#fe50a6"
+                );
+            }
+
             // Try to find acceptors for every ejector
             for (let i = 0; i < this.allEntities.length; ++i) {
                 const entity = this.allEntities[i];
@@ -69,10 +83,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     /**
-     *
-     * @param {Rectangle} area
+     * Recomputes the cache in the given area
      */
-    recomputeAreaCache(area) {
+    recomputeAreaCache() {
+        const area = this.areaToRecompute;
         let entryCount = 0;
 
         logger.log("Recomputing area:", area.x, area.y, "/", area.w, area.h);
@@ -171,23 +185,28 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const sourceEntity = this.allEntities[i];
             const sourceEjectorComp = sourceEntity.components.ItemEjector;
+            if (!sourceEjectorComp.enabled) {
+                continue;
+            }
+
             if (!sourceEjectorComp.cachedConnectedSlots) {
                 continue;
             }
-            for (let j = 0; j < sourceEjectorComp.cachedConnectedSlots.length; j++) {
-                const sourceSlot = sourceEjectorComp.cachedConnectedSlots[j];
-                const destSlot = sourceSlot.cachedDestSlot;
-                const targetEntity = sourceSlot.cachedTargetEntity;
 
+            const slots = sourceEjectorComp.cachedConnectedSlots;
+            for (let j = 0; j < slots.length; ++j) {
+                const sourceSlot = slots[j];
                 const item = sourceSlot.item;
-
                 if (!item) {
                     // No item available to be ejected
                     continue;
                 }
 
+                const destSlot = sourceSlot.cachedDestSlot;
+                const targetEntity = sourceSlot.cachedTargetEntity;
+
                 // Advance items on the slot
-                sourceSlot.progress = Math_min(1, sourceSlot.progress + progressGrowth);
+                sourceSlot.progress = Math.min(1, sourceSlot.progress + progressGrowth);
 
                 // Check if we are still in the process of ejecting, can't proceed then
                 if (sourceSlot.progress < 1.0) {
@@ -224,20 +243,13 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
         const beltComp = receiver.components.Belt;
         if (beltComp) {
-            // Ayy, its a belt!
-            if (beltComp.canAcceptItem()) {
-                beltComp.takeItem(item);
+            const path = beltComp.assignedPath;
+            assert(path, "belt has no path");
+            if (path.tryAcceptItem(item)) {
                 return true;
             }
-        }
-
-        const storageComp = receiver.components.Storage;
-        if (storageComp) {
-            // It's a storage
-            if (storageComp.canAcceptItem(item)) {
-                storageComp.takeItem(item);
-                return true;
-            }
+            // Belt can have nothing else
+            return false;
         }
 
         const itemProcessorComp = receiver.components.ItemProcessor;
@@ -246,6 +258,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
                 return true;
             }
+            // Item processor can have nothing else
+            return false;
         }
 
         const undergroundBeltComp = receiver.components.UndergroundBelt;
@@ -259,6 +273,32 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             ) {
                 return true;
             }
+
+            // Underground belt can have nothing else
+            return false;
+        }
+
+        const storageComp = receiver.components.Storage;
+        if (storageComp) {
+            // It's a storage
+            if (storageComp.canAcceptItem(item)) {
+                storageComp.takeItem(item);
+                return true;
+            }
+
+            // Storage can't have anything else
+            return false;
+        }
+
+        const energyGeneratorComp = receiver.components.EnergyGenerator;
+        if (energyGeneratorComp) {
+            if (energyGeneratorComp.tryTakeItem(item)) {
+                // Passed it over
+                return true;
+            }
+
+            // Energy generator comp can't have anything else
+            return false;
         }
 
         return false;

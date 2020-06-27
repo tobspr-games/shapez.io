@@ -1,4 +1,3 @@
-import { Math_min } from "../../../core/builtins";
 import { ClickDetector } from "../../../core/click_detector";
 import { InputReceiver } from "../../../core/input_receiver";
 import { formatBigNumber, makeDiv } from "../../../core/utils";
@@ -178,7 +177,7 @@ export class HUDShop extends BaseHUDPart {
                 const { progressLabel, progressBar, definition, required } = handle.requireIndexToElement[i];
 
                 const haveAmount = this.root.hubGoals.getShapesStored(definition);
-                const progress = Math_min(haveAmount / required, 1.0);
+                const progress = Math.min(haveAmount / required, 1.0);
 
                 progressLabel.innerText = formatBigNumber(haveAmount) + " / " + formatBigNumber(required);
                 progressBar.style.width = progress * 100.0 + "%";

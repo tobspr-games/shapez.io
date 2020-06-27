@@ -78,10 +78,19 @@ export default {
     // instantMiners: true,
     // -----------------------------------------------------------------------------------
     // When using fastGameEnter, controls whether a new game is started or the last one is resumed
-    // resumeGameOnFastEnter: false,
+    // resumeGameOnFastEnter: true,
     // -----------------------------------------------------------------------------------
     // Special option used to render the trailer
     // renderForTrailer: true,
+    // -----------------------------------------------------------------------------------
+    // Whether to render changes
+    // renderChanges: true,
+    // -----------------------------------------------------------------------------------
+    // Whether to render belt paths
+    // renderBeltPaths: true,
+    // -----------------------------------------------------------------------------------
+    // Whether to check belt paths
+    // checkBeltPaths: true,
     // -----------------------------------------------------------------------------------
     /* dev:end */
 };

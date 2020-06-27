@@ -1,23 +1,12 @@
-import { Component } from "../component";
-import { Vector, enumDirection, enumInvertedDirections } from "../../core/vector";
-import { BaseItem } from "../base_item";
-import { ShapeItem } from "../items/shape_item";
-import { ColorItem } from "../items/color_item";
+import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
-
-/**
- * @enum {string?}
- */
-export const enumItemAcceptorItemFilter = {
-    shape: "shape",
-    color: "color",
-    none: null,
-};
+import { BaseItem, enumItemType } from "../base_item";
+import { Component } from "../component";
 
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
- * filter?: enumItemAcceptorItemFilter
+ * filter?: enumItemType
  * }} ItemAcceptorSlot */
 
 /**
@@ -39,7 +28,7 @@ export class ItemAcceptorComponent extends Component {
                 types.structured({
                     pos: types.vector,
                     directions: types.array(types.enum(enumDirection)),
-                    filter: types.nullable(types.enum(enumItemAcceptorItemFilter)),
+                    filter: types.nullable(types.enum(enumItemType)),
                 })
             ),
             animated: types.bool,
@@ -49,16 +38,6 @@ export class ItemAcceptorComponent extends Component {
                     direction: types.enum(enumDirection),
                 })
             ),
-
-            // We don't actually need to store the animations
-            // itemConsumptionAnimations: types.array(
-            //     types.structured({
-            //         item: types.obj(gItemRegistry),
-            //         slotIndex: types.uint,
-            //         animProgress: types.float,
-            //         direction: types.enum(enumDirection),
-            //     })
-            // ),
         };
     }
 
@@ -92,7 +71,7 @@ export class ItemAcceptorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemAcceptorItemFilter}>} param0.slots The slots from which we accept items
+     * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemType}>} param0.slots The slots from which we accept items
      * @param {boolean=} param0.animated Whether to animate item consumption
      * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.beltUnderlays Where to render belt underlays
      */
@@ -115,10 +94,10 @@ export class ItemAcceptorComponent extends Component {
 
     /**
      *
-     * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemAcceptorItemFilter}>} slots
+     * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemType}>} slots
      */
     setSlots(slots) {
-        /** @type {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemAcceptorItemFilter}>} */
+        /** @type {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemType}>} */
         this.slots = [];
         for (let i = 0; i < slots.length; ++i) {
             const slot = slots[i];
@@ -126,7 +105,7 @@ export class ItemAcceptorComponent extends Component {
                 pos: slot.pos,
                 directions: slot.directions,
 
-                // Which type of item to accept (shape | color | all) @see enumItemAcceptorItemFilter
+                // Which type of item to accept (shape | color | all) @see enumItemType
                 filter: slot.filter,
             });
         }
@@ -139,16 +118,7 @@ export class ItemAcceptorComponent extends Component {
      */
     canAcceptItem(slotIndex, item) {
         const slot = this.slots[slotIndex];
-        switch (slot.filter) {
-            case enumItemAcceptorItemFilter.shape: {
-                return item instanceof ShapeItem;
-            }
-            case enumItemAcceptorItemFilter.color: {
-                return item instanceof ColorItem;
-            }
-            default:
-                return true;
-        }
+        return !slot.filter || slot.filter === item.getItemType();
     }
 
     /**

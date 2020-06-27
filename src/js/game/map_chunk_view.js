@@ -3,7 +3,6 @@ import { GameRoot } from "./root";
 import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { round1Digit } from "../core/utils";
-import { Math_max, Math_round } from "../core/builtins";
 import { Rectangle } from "../core/rectangle";
 import { createLogger } from "../core/logging";
 import { smoothenDpi } from "../core/dpi_manager";

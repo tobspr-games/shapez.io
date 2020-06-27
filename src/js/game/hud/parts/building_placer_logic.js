@@ -1,4 +1,3 @@
-import { Math_abs, Math_degrees, Math_round } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { Signal, STOP_PROPAGATION } from "../../../core/signal";
@@ -13,6 +12,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
 import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
+import { enumEditMode } from "../../root";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -115,11 +115,26 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
         this.root.signals.storyGoalCompleted.add(() => this.signals.variantChanged.dispatch());
         this.root.signals.upgradePurchased.add(() => this.signals.variantChanged.dispatch());
+        this.root.signals.editModeChanged.add(this.onEditModeChanged, this);
 
         // MOUSE BINDINGS
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
+    }
+
+    /**
+     * Called when the edit mode got changed
+     * @param {enumEditMode} editMode
+     */
+    onEditModeChanged(editMode) {
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (metaBuilding) {
+            if (metaBuilding.getEditLayer() !== editMode) {
+                // This layer doesn't fit the edit mode anymore
+                this.currentMetaBuilding.set(null);
+            }
+        }
     }
 
     /**
@@ -500,15 +515,32 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * releasing the mouse
      */
     executeDirectionLockedPlacement() {
+        const metaBuilding = this.currentMetaBuilding.get();
+        if (!metaBuilding) {
+            // No active building
+            return;
+        }
+
+        // Get path to place
         const path = this.computeDirectionLockPath();
+
+        // Store if we placed anything
+        let anythingPlaced = false;
+
+        // Perform this in bulk to avoid recalculations
         this.root.logic.performBulkOperation(() => {
             for (let i = 0; i < path.length; ++i) {
                 const { rotation, tile } = path[i];
-
                 this.currentBaseRotation = rotation;
-                this.tryPlaceCurrentBuildingAt(tile);
+                if (this.tryPlaceCurrentBuildingAt(tile)) {
+                    anythingPlaced = true;
+                }
             }
         });
+
+        if (anythingPlaced) {
+            this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+        }
     }
 
     /**
@@ -532,10 +564,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Place from start to corner
         const pathToCorner = this.currentDirectionLockCorner.sub(startTile);
         const deltaToCorner = pathToCorner.normalize().round();
-        const lengthToCorner = Math_round(pathToCorner.length());
+        const lengthToCorner = Math.round(pathToCorner.length());
         let currentPos = startTile.copy();
 
-        let rotation = (Math.round(Math_degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
+        let rotation = (Math.round(Math.degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
 
         if (lengthToCorner > 0) {
             for (let i = 0; i < lengthToCorner; ++i) {
@@ -550,10 +582,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Place from corner to end
         const pathFromCorner = mouseTile.sub(this.currentDirectionLockCorner);
         const deltaFromCorner = pathFromCorner.normalize().round();
-        const lengthFromCorner = Math_round(pathFromCorner.length());
+        const lengthFromCorner = Math.round(pathFromCorner.length());
 
         if (lengthFromCorner > 0) {
-            rotation = (Math.round(Math_degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
+            rotation = (Math.round(Math.degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
             for (let i = 0; i < lengthFromCorner + 1; ++i) {
                 result.push({
                     tile: currentPos.copy(),
@@ -631,7 +663,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
             // Place initial building, but only if direction lock is not active
             if (!this.isDirectionLockActive) {
-                this.tryPlaceCurrentBuildingAt(this.lastDragTile);
+                if (this.tryPlaceCurrentBuildingAt(this.lastDragTile)) {
+                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+                }
             }
             return STOP_PROPAGATION;
         }
@@ -687,7 +721,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     ).pressed
                 ) {
                     const delta = newPos.sub(oldPos);
-                    const angleDeg = Math_degrees(delta.angle());
+                    const angleDeg = Math.degrees(delta.angle());
                     this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
 
                     // Holding alt inverts the placement
@@ -702,22 +736,31 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 let x1 = newPos.x;
                 let y1 = newPos.y;
 
-                var dx = Math_abs(x1 - x0);
-                var dy = Math_abs(y1 - y0);
+                var dx = Math.abs(x1 - x0);
+                var dy = Math.abs(y1 - y0);
                 var sx = x0 < x1 ? 1 : -1;
                 var sy = y0 < y1 ? 1 : -1;
                 var err = dx - dy;
 
+                let anythingPlaced = false;
+                let anythingDeleted = false;
+
                 while (this.currentlyDeleting || this.currentMetaBuilding.get()) {
                     if (this.currentlyDeleting) {
+                        // Deletion
                         const contents = this.root.map.getTileContentXY(x0, y0);
                         if (contents && !contents.queuedForDestroy && !contents.destroyed) {
-                            this.root.logic.tryDeleteBuilding(contents);
-                            this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
+                            if (this.root.logic.tryDeleteBuilding(contents)) {
+                                anythingDeleted = true;
+                            }
                         }
                     } else {
-                        this.tryPlaceCurrentBuildingAt(new Vector(x0, y0));
+                        // Placement
+                        if (this.tryPlaceCurrentBuildingAt(new Vector(x0, y0))) {
+                            anythingPlaced = true;
+                        }
                     }
+
                     if (x0 === x1 && y0 === y1) break;
                     var e2 = 2 * err;
                     if (e2 > -dy) {
@@ -728,6 +771,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                         err += dx;
                         y0 += sy;
                     }
+                }
+
+                if (anythingPlaced) {
+                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+                }
+                if (anythingDeleted) {
+                    this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
                 }
             }
 

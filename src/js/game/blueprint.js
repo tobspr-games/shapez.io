@@ -1,14 +1,13 @@
-import { DrawParameters } from "../../../core/draw_parameters";
-import { Loader } from "../../../core/loader";
-import { createLogger } from "../../../core/logging";
-import { Vector } from "../../../core/vector";
-import { Entity } from "../../entity";
-import { GameRoot } from "../../root";
-import { findNiceIntegerValue } from "../../../core/utils";
-import { Math_pow } from "../../../core/builtins";
-import { blueprintShape } from "../../upgrades";
-import { globalConfig } from "../../../core/config";
-import { Rectangle } from "../../../core/rectangle";
+import { DrawParameters } from "../core/draw_parameters";
+import { Loader } from "../core/loader";
+import { createLogger } from "../core/logging";
+import { Vector } from "../core/vector";
+import { Entity } from "./entity";
+import { GameRoot } from "./root";
+import { findNiceIntegerValue } from "../core/utils";
+import { blueprintShape } from "./upgrades";
+import { globalConfig } from "../core/config";
+import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("blueprint");
 
@@ -59,7 +58,7 @@ export class Blueprint {
         if (G_IS_DEV && globalConfig.debug.blueprintsNoCost) {
             return 0;
         }
-        return findNiceIntegerValue(4 * Math_pow(this.entities.length, 1.1));
+        return findNiceIntegerValue(4 * Math.pow(this.entities.length, 1.1));
     }
 
     /**
@@ -178,14 +177,6 @@ export class Blueprint {
         return root.logic.performBulkOperation(() => {
             let anyPlaced = false;
 
-            /**
-             * To avoid recomputing belt direction when belts are placed, we manually
-             * recompute the belt cache without redirecting the belts by calculating the
-             * area that needs to update.
-             * @type {Rectangle?}
-             */
-            let rectCoveredByBlueprint = null;
-
             for (let i = 0; i < this.entities.length; ++i) {
                 let placeable = true;
                 const entity = this.entities[i];
@@ -226,19 +217,7 @@ export class Blueprint {
 
                     root.map.placeStaticEntity(clone);
                     root.entityMgr.registerEntity(clone);
-                    if (rectCoveredByBlueprint === null) {
-                        rectCoveredByBlueprint = rect.clone();
-                    } else {
-                        rectCoveredByBlueprint = rectCoveredByBlueprint.getUnion(rect);
-                    }
-                    anyPlaced = true;
                 }
-            }
-            if (anyPlaced) {
-                logger.log(rectCoveredByBlueprint);
-                root.signals.blueprintPlacedUpdateBeltCache.dispatch(
-                    rectCoveredByBlueprint.expandedInAllDirections(1)
-                );
             }
 
             return anyPlaced;

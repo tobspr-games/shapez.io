@@ -1,7 +1,6 @@
 import { GameRoot } from "./root";
 import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
-import { performanceNow, Math_min, Math_round, Math_max } from "../core/builtins";
 import { round3Digits } from "../core/utils";
 
 const logger = createLogger("dynamic_tickrate");
@@ -35,7 +34,7 @@ export class DynamicTickrate {
     onFrameRendered() {
         ++this.accumulatedFps;
 
-        const now = performanceNow();
+        const now = performance.now();
         const timeDuration = now - this.accumulatedFpsLastUpdate;
         if (timeDuration > fpsAccumulationTime) {
             const avgFps = (this.accumulatedFps / fpsAccumulationTime) * 1000;
@@ -65,7 +64,7 @@ export class DynamicTickrate {
         }
 
         const desiredFps = this.root.app.settings.getDesiredFps();
-        this.setTickRate(Math_round(Math_min(desiredFps, this.currentTickRate * 1.2)));
+        this.setTickRate(Math.round(Math.min(desiredFps, this.currentTickRate * 1.2)));
     }
 
     /**
@@ -77,7 +76,7 @@ export class DynamicTickrate {
         }
 
         const desiredFps = this.root.app.settings.getDesiredFps();
-        this.setTickRate(Math_round(Math_max(desiredFps / 2, this.currentTickRate * 0.8)));
+        this.setTickRate(Math.round(Math.max(desiredFps / 2, this.currentTickRate * 0.8)));
     }
 
     /**
@@ -85,7 +84,7 @@ export class DynamicTickrate {
      */
     beginTick() {
         assert(this.currentTickStart === null, "BeginTick called twice");
-        this.currentTickStart = performanceNow();
+        this.currentTickStart = performance.now();
 
         if (this.capturedTicks.length > this.currentTickRate * 2) {
             // Take only a portion of the ticks
@@ -119,7 +118,7 @@ export class DynamicTickrate {
      */
     endTick() {
         assert(this.currentTickStart !== null, "EndTick called without BeginTick");
-        const duration = performanceNow() - this.currentTickStart;
+        const duration = performance.now() - this.currentTickStart;
         this.capturedTicks.push(duration);
         this.currentTickStart = null;
     }

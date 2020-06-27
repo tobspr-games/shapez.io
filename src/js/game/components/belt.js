@@ -1,11 +1,10 @@
-import { Component } from "../component";
+import { enumDirection, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
-import { gItemRegistry } from "../../core/global_registries";
-import { BaseItem } from "../base_item";
-import { Vector, enumDirection } from "../../core/vector";
-import { Math_PI, Math_sin, Math_cos } from "../../core/builtins";
-import { globalConfig } from "../../core/config";
+import { BeltPath } from "../belt_path";
+import { Component } from "../component";
 import { Entity } from "../entity";
+
+export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 
 export class BeltComponent extends Component {
     static getId() {
@@ -16,7 +15,6 @@ export class BeltComponent extends Component {
         // The followUpCache field is not serialized.
         return {
             direction: types.string,
-            sortedItems: types.array(types.pair(types.float, types.obj(gItemRegistry))),
         };
     }
 
@@ -34,11 +32,22 @@ export class BeltComponent extends Component {
 
         this.direction = direction;
 
-        /** @type {Array<[number, BaseItem]>} */
-        this.sortedItems = [];
-
         /** @type {Entity} */
         this.followUpCache = null;
+
+        /**
+         * The path this belt is contained in, not serialized
+         * @type {BeltPath}
+         */
+        this.assignedPath = null;
+    }
+
+    /**
+     * Returns the effective length of this belt in tile space
+     * @returns {number}
+     */
+    getEffectiveLengthTiles() {
+        return this.direction === enumDirection.top ? 1.0 : curvedBeltLength;
     }
 
     /**
@@ -50,61 +59,22 @@ export class BeltComponent extends Component {
     transformBeltToLocalSpace(progress) {
         switch (this.direction) {
             case enumDirection.top:
+                assert(progress <= 1.02, "Invalid progress: " + progress);
                 return new Vector(0, 0.5 - progress);
 
             case enumDirection.right: {
-                const arcProgress = progress * 0.5 * Math_PI;
-                return new Vector(0.5 - 0.5 * Math_cos(arcProgress), 0.5 - 0.5 * Math_sin(arcProgress));
+                assert(progress <= curvedBeltLength + 0.02, "Invalid progress 2: " + progress);
+                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
+                return new Vector(0.5 - 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
             }
             case enumDirection.left: {
-                const arcProgress = progress * 0.5 * Math_PI;
-                return new Vector(-0.5 + 0.5 * Math_cos(arcProgress), 0.5 - 0.5 * Math_sin(arcProgress));
+                assert(progress <= curvedBeltLength + 0.02, "Invalid progress 3: " + progress);
+                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
+                return new Vector(-0.5 + 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
             }
             default:
                 assertAlways(false, "Invalid belt direction: " + this.direction);
                 return new Vector(0, 0);
         }
-    }
-
-    /**
-     *  Returns if the belt can currently accept an item from the given direction
-     */
-    canAcceptItem() {
-        const firstItem = this.sortedItems[0];
-        if (!firstItem) {
-            return true;
-        }
-
-        return firstItem[0] > globalConfig.itemSpacingOnBelts;
-    }
-
-    /**
-     * Pushes a new item to the belt
-     * @param {BaseItem} item
-     */
-    takeItem(item, leftoverProgress = 0.0) {
-        if (G_IS_DEV) {
-            assert(
-                this.sortedItems.length === 0 ||
-                    leftoverProgress <= this.sortedItems[0][0] - globalConfig.itemSpacingOnBelts + 0.001,
-                "Invalid leftover: " +
-                    leftoverProgress +
-                    " items are " +
-                    this.sortedItems.map(item => item[0])
-            );
-            assert(leftoverProgress < 1.0, "Invalid leftover: " + leftoverProgress);
-        }
-        this.sortedItems.unshift([leftoverProgress, item]);
-    }
-
-    /**
-     * Returns how much space there is to the first item
-     */
-    getDistanceToFirstItemCenter() {
-        const firstItem = this.sortedItems[0];
-        if (!firstItem) {
-            return 1;
-        }
-        return firstItem[0];
     }
 }

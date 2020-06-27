@@ -69,6 +69,11 @@ export class ItemEjectorComponent extends Component {
 
         /** @type {ItemEjectorSlot[]} */
         this.cachedConnectedSlots = null;
+
+        /**
+         * Whether this ejector slot is enabled
+         */
+        this.enabled = true;
     }
 
     /**
@@ -193,5 +198,18 @@ export class ItemEjectorComponent extends Component {
         this.slots[slotIndex].item = item;
         this.slots[slotIndex].progress = this.instantEject ? 1 : 0;
         return true;
+    }
+
+    /**
+     * Clears the given slot and returns the item it had
+     * @param {number} slotIndex
+     * @returns {BaseItem|null}
+     */
+    takeSlotItem(slotIndex) {
+        const slot = this.slots[slotIndex];
+        const item = slot.item;
+        slot.item = null;
+        slot.progress = 0.0;
+        return item;
     }
 }

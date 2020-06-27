@@ -546,7 +546,7 @@ storyRewards:
     reward_painter:
         title: Malowanie
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            Odblokowano nową maszynę: <strong>Maszyna Malująca</strong> - wydobądź kilka pigmentów (identycznie jak kształty) i połącz je z kształtami aby je pomalować!<br><br>PS: Jeśli nie widzisz kolorów, w ustawieniach znajduje się <strong>color blind mode</strong>!
 
     reward_mixer:
         title: Mieszanie

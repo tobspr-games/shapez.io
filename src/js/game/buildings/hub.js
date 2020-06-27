@@ -1,11 +1,11 @@
 import { enumDirection, Vector } from "../../core/vector";
-import { enumItemAcceptorItemFilter, ItemAcceptorComponent } from "../components/item_acceptor";
+import { enumItemType } from "../base_item";
+import { HubComponent } from "../components/hub";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
+import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { UnremovableComponent } from "../components/unremovable";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { ItemProcessorComponent, enumItemProcessorTypes } from "../components/item_processor";
-import { globalConfig } from "../../core/config";
-import { UnremovableComponent } from "../components/unremovable";
-import { HubComponent } from "../components/hub";
 
 export class MetaHubBuilding extends MetaBuilding {
     constructor() {
@@ -51,72 +51,72 @@ export class MetaHubBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.top, enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.top],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(2, 0),
                         directions: [enumDirection.top],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(3, 0),
                         directions: [enumDirection.top, enumDirection.right],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(0, 3),
                         directions: [enumDirection.bottom, enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(1, 3),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(2, 3),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(3, 3),
                         directions: [enumDirection.bottom, enumDirection.right],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(0, 2),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(0, 3),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(3, 1),
                         directions: [enumDirection.right],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(3, 2),
                         directions: [enumDirection.right],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(3, 3),
                         directions: [enumDirection.right],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                 ],
             })

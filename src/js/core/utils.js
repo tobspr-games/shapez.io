@@ -1,19 +1,4 @@
 import { globalConfig, IS_DEBUG } from "./config";
-import {
-    Math_abs,
-    Math_atan2,
-    Math_ceil,
-    Math_floor,
-    Math_log10,
-    Math_max,
-    Math_min,
-    Math_PI,
-    Math_pow,
-    Math_random,
-    Math_round,
-    Math_sin,
-    performanceNow,
-} from "./builtins";
 import { Vector } from "./vector";
 import { T } from "../translations";
 
@@ -212,7 +197,7 @@ export function newEmptyMap() {
  * @param {number} end
  */
 export function randomInt(start, end) {
-    return start + Math_round(Math_random() * (end - start));
+    return start + Math.round(Math.random() * (end - start));
 }
 
 /**
@@ -233,7 +218,7 @@ export function accessNestedPropertyReverse(obj, keys) {
  * @param {Array | string} arr
  */
 export function randomChoice(arr) {
-    return arr[Math_floor(Math_random() * arr.length)];
+    return arr[Math.floor(Math.random() * arr.length)];
 }
 
 /**
@@ -327,12 +312,12 @@ export function arrayDeleteValue(array, value) {
  * @returns {number} in range [0, 7]
  */
 export function angleToSpriteIndex(offset, inverse = false) {
-    const twoPi = 2.0 * Math_PI;
+    const twoPi = 2.0 * Math.PI;
     const factor = inverse ? -1 : 1;
     const offs = inverse ? 2.5 : 3.5;
-    const angle = (factor * Math_atan2(offset.y, offset.x) + offs * Math_PI) % twoPi;
+    const angle = (factor * Math.atan2(offset.y, offset.x) + offs * Math.PI) % twoPi;
 
-    const index = Math_round((angle / twoPi) * 8) % 8;
+    const index = Math.round((angle / twoPi) * 8) % 8;
     return index;
 }
 
@@ -343,7 +328,7 @@ export function angleToSpriteIndex(offset, inverse = false) {
  * @returns {boolean}
  */
 export function epsilonCompare(a, b, epsilon = 1e-5) {
-    return Math_abs(a - b) < epsilon;
+    return Math.abs(a - b) < epsilon;
 }
 
 /**
@@ -394,18 +379,16 @@ export function findNiceValue(num) {
         roundAmount = 5;
     }
 
-    const niceValue = Math_floor(num / roundAmount) * roundAmount;
+    const niceValue = Math.floor(num / roundAmount) * roundAmount;
     if (num >= 10) {
-        return Math_round(niceValue);
+        return Math.round(niceValue);
     }
     if (num >= 1) {
-        return Math_round(niceValue * 10) / 10;
+        return Math.round(niceValue * 10) / 10;
     }
 
-    return Math_round(niceValue * 100) / 100;
+    return Math.round(niceValue * 100) / 100;
 }
-
-window.fn = findNiceValue;
 
 /**
  * Finds a nice integer value
@@ -413,7 +396,7 @@ window.fn = findNiceValue;
  * @param {number} num
  */
 export function findNiceIntegerValue(num) {
-    return Math_ceil(findNiceValue(num));
+    return Math.ceil(findNiceValue(num));
 }
 
 /**
@@ -424,7 +407,7 @@ function roundSmart(n) {
     if (n < 100) {
         return n.toFixed(1);
     }
-    return Math_round(n);
+    return Math.round(n);
 }
 
 /**
@@ -435,7 +418,7 @@ function roundSmart(n) {
  */
 export function formatBigNumber(num, divider = ".") {
     const sign = num < 0 ? "-" : "";
-    num = Math_abs(num);
+    num = Math.abs(num);
 
     if (num > 1e54) {
         return sign + T.global.infinite;
@@ -447,7 +430,7 @@ export function formatBigNumber(num, divider = ".") {
     if (num < 50 && !Number.isInteger(num)) {
         return sign + num.toFixed(1);
     }
-    num = Math_floor(num);
+    num = Math.floor(num);
 
     if (num < 1000) {
         return sign + "" + num;
@@ -484,7 +467,7 @@ export function formatBigNumberFull(num, divider = T.global.thousandsDivider) {
     let out = "";
     while (rest >= 1000) {
         out = (rest % 1000).toString().padStart(3, "0") + divider + out;
-        rest = Math_floor(rest / 1000);
+        rest = Math.floor(rest / 1000);
     }
     out = rest + divider + out;
 
@@ -502,11 +485,11 @@ export function artificialDelayedPromise(promise, minTimeMs = 500) {
         return promise;
     }
 
-    const startTime = performanceNow();
+    const startTime = performance.now();
     return promise.then(
         result => {
-            const timeTaken = performanceNow() - startTime;
-            const waitTime = Math_floor(minTimeMs - timeTaken);
+            const timeTaken = performance.now() - startTime;
+            const waitTime = Math.floor(minTimeMs - timeTaken);
             if (waitTime > 0) {
                 return new Promise(resolve => {
                     setTimeout(() => {
@@ -518,8 +501,8 @@ export function artificialDelayedPromise(promise, minTimeMs = 500) {
             }
         },
         error => {
-            const timeTaken = performanceNow() - startTime;
-            const waitTime = Math_floor(minTimeMs - timeTaken);
+            const timeTaken = performance.now() - startTime;
+            const waitTime = Math.floor(minTimeMs - timeTaken);
             if (waitTime > 0) {
                 // @ts-ignore
                 return new Promise((resolve, reject) => {
@@ -541,7 +524,7 @@ export function artificialDelayedPromise(promise, minTimeMs = 500) {
  * @param {number} seed Seed to offset the animation
  */
 export function pulseAnimation(time, duration = 1.0, seed = 0.0) {
-    return Math_sin((time * Math_PI * 2.0) / duration + seed * 5642.86729349) * 0.5 + 0.5;
+    return Math.sin((time * Math.PI * 2.0) / duration + seed * 5642.86729349) * 0.5 + 0.5;
 }
 
 /**
@@ -551,7 +534,7 @@ export function pulseAnimation(time, duration = 1.0, seed = 0.0) {
  * @returns {number} 0 .. 2 PI
  */
 export function smallestAngle(a, b) {
-    return safeMod(a - b + Math_PI, 2.0 * Math_PI) - Math_PI;
+    return safeMod(a - b + Math.PI, 2.0 * Math.PI) - Math.PI;
 }
 
 /**
@@ -568,7 +551,7 @@ export function safeMod(n, m) {
  * @param {number} angle
  */
 export function wrapAngle(angle) {
-    return safeMod(angle, 2.0 * Math_PI);
+    return safeMod(angle, 2.0 * Math.PI);
 }
 
 /**
@@ -591,7 +574,7 @@ export function waitNextFrame() {
  * @returns {number}
  */
 export function round1Digit(n) {
-    return Math_floor(n * 10.0) / 10.0;
+    return Math.floor(n * 10.0) / 10.0;
 }
 
 /**
@@ -600,7 +583,7 @@ export function round1Digit(n) {
  * @returns {number}
  */
 export function round2Digits(n) {
-    return Math_floor(n * 100.0) / 100.0;
+    return Math.floor(n * 100.0) / 100.0;
 }
 
 /**
@@ -609,7 +592,7 @@ export function round2Digits(n) {
  * @returns {number}
  */
 export function round3Digits(n) {
-    return Math_floor(n * 1000.0) / 1000.0;
+    return Math.floor(n * 1000.0) / 1000.0;
 }
 
 /**
@@ -618,7 +601,7 @@ export function round3Digits(n) {
  * @returns {number}
  */
 export function round4Digits(n) {
-    return Math_floor(n * 10000.0) / 10000.0;
+    return Math.floor(n * 10000.0) / 10000.0;
 }
 
 /**
@@ -628,7 +611,7 @@ export function round4Digits(n) {
  * @param {number=} maximum Default 1
  */
 export function clamp(v, minimum = 0, maximum = 1) {
-    return Math_max(minimum, Math_min(maximum, v));
+    return Math.max(minimum, Math.min(maximum, v));
 }
 
 /**
@@ -637,11 +620,11 @@ export function clamp(v, minimum = 0, maximum = 1) {
  * @param {function():void} target
  */
 export function measure(name, target) {
-    const now = performanceNow();
+    const now = performance.now();
     for (let i = 0; i < 25; ++i) {
         target();
     }
-    const dur = (performanceNow() - now) / 25.0;
+    const dur = (performance.now() - now) / 25.0;
     console.warn("->", name, "took", dur.toFixed(2), "ms");
 }
 
@@ -891,10 +874,10 @@ export function fastRotateMultipleOf90(x, y, deg) {
  * @returns {string}
  */
 export function formatSecondsToTimeAgo(secs) {
-    const seconds = Math_floor(secs);
-    const minutes = Math_floor(seconds / 60);
-    const hours = Math_floor(minutes / 60);
-    const days = Math_floor(hours / 24);
+    const seconds = Math.floor(secs);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
 
     if (seconds <= 60) {
         if (seconds <= 1) {
@@ -926,18 +909,18 @@ export function formatSecondsToTimeAgo(secs) {
  */
 export function formatSeconds(secs) {
     const trans = T.global.time;
-    secs = Math_ceil(secs);
+    secs = Math.ceil(secs);
     if (secs < 60) {
         return trans.secondsShort.replace("<seconds>", "" + secs);
     } else if (secs < 60 * 60) {
-        const minutes = Math_floor(secs / 60);
+        const minutes = Math.floor(secs / 60);
         const seconds = secs % 60;
         return trans.minutesAndSecondsShort
             .replace("<seconds>", "" + seconds)
             .replace("<minutes>", "" + minutes);
     } else {
-        const hours = Math_floor(secs / 3600);
-        const minutes = Math_floor(secs / 60) % 60;
+        const hours = Math.floor(secs / 3600);
+        const minutes = Math.floor(secs / 60) % 60;
         return trans.hoursAndMinutesShort.replace("<minutes>", "" + minutes).replace("<hours>", "" + hours);
     }
 }

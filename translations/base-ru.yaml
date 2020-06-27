@@ -532,7 +532,7 @@ storyRewards:
     reward_painter:
         title: Покраска
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            Разблокирован <strong>покрасчик</strong>! Добудьте краситель из жилы (так же как и фигуры) и объедините его с фигурой в покрасчике, чтобы раскрасить ее!<br><br>PS: Если вы дальтоник, то в настройках есть <strong>Режим Дальтоника</strong>!
 
     reward_mixer:
         title: Смешивание Цветов
@@ -728,11 +728,11 @@ settings:
             title: Режим Дальтоника
             description: Включает различные инструменты, которые позволяют играть в игру дальтоникам.
         rotationByBuilding:
-          title: Rotation by building type
+          title: Поворот по типу здания
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            Каждый тип здания запоминает поворот, который в последний раз был установлен.
+            С этой настройкой может быть удобнее, при частом переключении между
+            различными типами зданий.
 
 keybindings:
     title: Настройки управления

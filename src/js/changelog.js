@@ -1,14 +1,18 @@
 export const CHANGELOG = [
     {
         version: "1.1.18",
-        date: "24.06.2020",
+        date: "27.06.2020",
         entries: [
-            "Preparations for the wires update",
-            "Update belt placement performance on huge factories (by Phlosioneer)",
+            "Huge performance improvements - up to double fps and tick-rate! This will wipe out all current items on belts.",
+            "Reduce story shapes required until unlocking blueprints",
             "Allow clicking on variants to select them",
-            "Allow clicking 'Q' over a shape or color patch to automatically select the miner building (by Gerdon262)",
             "Add 'copy key' button to shape viewer",
+            "Add more FPS to the belt animation and fix belt animation seeming to go 'backwards' on high belt speeds",
             "Fix deconstruct sound being played when right clicking hub",
+            "Allow clicking 'Q' over a shape or color patch to automatically select the miner building (by Gerdon262)",
+            "Update belt placement performance on huge factories (by Phlosioneer)",
+            "Fix duplicate waypoints with a shape not rendering (by hexy)",
+            "Fix smart tunnel placement deleting wrong tunnels (by mordof)",
             "Add setting (on by default) to store the last used rotation per building instead of globally storing it (by Magos)",
             "Added chinese (traditional) translation",
             "Updated translations",

@@ -269,21 +269,87 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/belt/forward_10.png</key>
+            <key type="filename">sprites/belt/forward_11.png</key>
+            <key type="filename">sprites/belt/forward_12.png</key>
+            <key type="filename">sprites/belt/forward_13.png</key>
+            <key type="filename">sprites/belt/forward_14.png</key>
+            <key type="filename">sprites/belt/forward_15.png</key>
+            <key type="filename">sprites/belt/forward_16.png</key>
+            <key type="filename">sprites/belt/forward_17.png</key>
+            <key type="filename">sprites/belt/forward_18.png</key>
+            <key type="filename">sprites/belt/forward_19.png</key>
+            <key type="filename">sprites/belt/forward_20.png</key>
+            <key type="filename">sprites/belt/forward_21.png</key>
+            <key type="filename">sprites/belt/forward_22.png</key>
+            <key type="filename">sprites/belt/forward_23.png</key>
+            <key type="filename">sprites/belt/forward_24.png</key>
+            <key type="filename">sprites/belt/forward_25.png</key>
+            <key type="filename">sprites/belt/forward_26.png</key>
+            <key type="filename">sprites/belt/forward_27.png</key>
             <key type="filename">sprites/belt/forward_3.png</key>
             <key type="filename">sprites/belt/forward_4.png</key>
             <key type="filename">sprites/belt/forward_5.png</key>
+            <key type="filename">sprites/belt/forward_6.png</key>
+            <key type="filename">sprites/belt/forward_7.png</key>
+            <key type="filename">sprites/belt/forward_8.png</key>
+            <key type="filename">sprites/belt/forward_9.png</key>
             <key type="filename">sprites/belt/left_0.png</key>
             <key type="filename">sprites/belt/left_1.png</key>
+            <key type="filename">sprites/belt/left_10.png</key>
+            <key type="filename">sprites/belt/left_11.png</key>
+            <key type="filename">sprites/belt/left_12.png</key>
+            <key type="filename">sprites/belt/left_13.png</key>
+            <key type="filename">sprites/belt/left_14.png</key>
+            <key type="filename">sprites/belt/left_15.png</key>
+            <key type="filename">sprites/belt/left_16.png</key>
+            <key type="filename">sprites/belt/left_17.png</key>
+            <key type="filename">sprites/belt/left_18.png</key>
+            <key type="filename">sprites/belt/left_19.png</key>
             <key type="filename">sprites/belt/left_2.png</key>
+            <key type="filename">sprites/belt/left_20.png</key>
+            <key type="filename">sprites/belt/left_21.png</key>
+            <key type="filename">sprites/belt/left_22.png</key>
+            <key type="filename">sprites/belt/left_23.png</key>
+            <key type="filename">sprites/belt/left_24.png</key>
+            <key type="filename">sprites/belt/left_25.png</key>
+            <key type="filename">sprites/belt/left_26.png</key>
+            <key type="filename">sprites/belt/left_27.png</key>
             <key type="filename">sprites/belt/left_3.png</key>
             <key type="filename">sprites/belt/left_4.png</key>
             <key type="filename">sprites/belt/left_5.png</key>
+            <key type="filename">sprites/belt/left_6.png</key>
+            <key type="filename">sprites/belt/left_7.png</key>
+            <key type="filename">sprites/belt/left_8.png</key>
+            <key type="filename">sprites/belt/left_9.png</key>
             <key type="filename">sprites/belt/right_0.png</key>
             <key type="filename">sprites/belt/right_1.png</key>
+            <key type="filename">sprites/belt/right_10.png</key>
+            <key type="filename">sprites/belt/right_11.png</key>
+            <key type="filename">sprites/belt/right_12.png</key>
+            <key type="filename">sprites/belt/right_13.png</key>
+            <key type="filename">sprites/belt/right_14.png</key>
+            <key type="filename">sprites/belt/right_15.png</key>
+            <key type="filename">sprites/belt/right_16.png</key>
+            <key type="filename">sprites/belt/right_17.png</key>
+            <key type="filename">sprites/belt/right_18.png</key>
+            <key type="filename">sprites/belt/right_19.png</key>
             <key type="filename">sprites/belt/right_2.png</key>
+            <key type="filename">sprites/belt/right_20.png</key>
+            <key type="filename">sprites/belt/right_21.png</key>
+            <key type="filename">sprites/belt/right_22.png</key>
+            <key type="filename">sprites/belt/right_23.png</key>
+            <key type="filename">sprites/belt/right_24.png</key>
+            <key type="filename">sprites/belt/right_25.png</key>
+            <key type="filename">sprites/belt/right_26.png</key>
+            <key type="filename">sprites/belt/right_27.png</key>
             <key type="filename">sprites/belt/right_3.png</key>
             <key type="filename">sprites/belt/right_4.png</key>
             <key type="filename">sprites/belt/right_5.png</key>
+            <key type="filename">sprites/belt/right_6.png</key>
+            <key type="filename">sprites/belt/right_7.png</key>
+            <key type="filename">sprites/belt/right_8.png</key>
+            <key type="filename">sprites/belt/right_9.png</key>
             <key type="filename">sprites/blueprints/belt_left.png</key>
             <key type="filename">sprites/blueprints/belt_right.png</key>
             <key type="filename">sprites/blueprints/belt_top.png</key>
@@ -343,6 +409,25 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/blueprints/energy_generator.png</key>
+            <key type="filename">sprites/blueprints/painter-double.png</key>
+            <key type="filename">sprites/blueprints/trash-storage.png</key>
+            <key type="filename">sprites/buildings/energy_generator.png</key>
+            <key type="filename">sprites/buildings/painter-double.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>96,96,192,192</rect>
+                <key>scale9Paddings</key>
+                <rect>96,96,192,192</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">sprites/blueprints/miner-chainable.png</key>
             <key type="filename">sprites/blueprints/miner.png</key>
             <key type="filename">sprites/blueprints/rotater-ccw.png</key>
@@ -373,23 +458,6 @@
                 <rect>48,48,96,96</rect>
                 <key>scale9Paddings</key>
                 <rect>48,48,96,96</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/blueprints/painter-double.png</key>
-            <key type="filename">sprites/blueprints/trash-storage.png</key>
-            <key type="filename">sprites/buildings/painter-double.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>96,96,192,192</rect>
-                <key>scale9Paddings</key>
-                <rect>96,96,192,192</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

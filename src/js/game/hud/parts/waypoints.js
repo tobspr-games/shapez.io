@@ -1,5 +1,4 @@
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { Math_max, Math_PI, Math_radians } from "../../../core/builtins";
 import { globalConfig, IS_DEMO } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { Loader } from "../../../core/loader";
@@ -153,7 +152,16 @@ export class HUDWaypoints extends BaseHUDPart {
 
             if (ShapeDefinition.isValidShortKey(label)) {
                 const canvas = this.getWaypointCanvas(waypoint);
-                element.appendChild(canvas);
+                /**
+                 * Create a clone of the cached canvas, as calling appendElement when a canvas is
+                 * already in the document will move the existing canvas to the new position.
+                 */
+                const [newCanvas, context] = makeOffscreenBuffer(48, 48, {
+                    smooth: true,
+                    label: label + "-waypoint-" + i,
+                });
+                context.drawImage(canvas, 0, 0);
+                element.appendChild(newCanvas);
                 element.classList.add("shapeIcon");
             } else {
                 element.innerText = label;
@@ -261,7 +269,7 @@ export class HUDWaypoints extends BaseHUDPart {
             center: { x: position.x, y: position.y },
             // Make sure the zoom is *just* a bit above the zoom level where the map overview
             // starts, so you always see all buildings
-            zoomLevel: Math_max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
+            zoomLevel: Math.max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
         });
 
         // Sort waypoints by name
@@ -410,7 +418,7 @@ export class HUDWaypoints extends BaseHUDPart {
 
         if (this.currentCompassOpacity > 0.01) {
             context.globalAlpha = this.currentCompassOpacity;
-            const angle = cameraPos.angle() + Math_radians(45) + Math_PI / 2;
+            const angle = cameraPos.angle() + Math.radians(45) + Math.PI / 2;
             context.translate(dims / 2, dims / 2);
             context.rotate(angle);
             this.directionIndicatorSprite.drawCentered(context, 0, 0, indicatorSize);

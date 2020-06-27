@@ -24,6 +24,13 @@
         "chunkOverview": {
             "empty": "#a6afbb",
             "filled": "#c5ccd6"
+        },
+
+        "wires": {
+            "overlay": "rgba(52, 150, 128, 0.8)",
+            "pins": {
+                "energyEjector": "#c425d7"
+            }
         }
     },
 

@@ -7,6 +7,7 @@ import { DrawParameters } from "../../../core/draw_parameters";
 import { THEME } from "../../theme";
 import { globalConfig } from "../../../core/config";
 import { T } from "../../../translations";
+import { enumItemType } from "../../base_item";
 
 export class HUDColorBlindHelper extends BaseHUDPart {
     createElements(parent) {
@@ -48,9 +49,9 @@ export class HUDColorBlindHelper extends BaseHUDPart {
 
             // Check if the belt has a color item
             if (beltComp) {
-                const firstItem = beltComp.sortedItems[0];
-                if (firstItem && firstItem[1] instanceof ColorItem) {
-                    return firstItem[1].color;
+                const item = beltComp.assignedPath.findItemAtTile(tile);
+                if (item && item.getItemType() === enumItemType.color) {
+                    return /** @type {ColorItem} */ (item).color;
                 }
             }
 
@@ -59,16 +60,16 @@ export class HUDColorBlindHelper extends BaseHUDPart {
             if (ejectorComp) {
                 for (let i = 0; i < ejectorComp.slots.length; ++i) {
                     const slot = ejectorComp.slots[i];
-                    if (slot.item && slot.item instanceof ColorItem) {
-                        return slot.item.color;
+                    if (slot.item && slot.item.getItemType() === enumItemType.color) {
+                        return /** @type {ColorItem} */ (slot.item).color;
                     }
                 }
             }
         } else {
             // We hovered a lower layer, show the color there
             const lowerLayer = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
-            if (lowerLayer && lowerLayer instanceof ColorItem) {
-                return lowerLayer.color;
+            if (lowerLayer && lowerLayer.getItemType() === enumItemType.color) {
+                return /** @type {ColorItem} */ (lowerLayer).color;
             }
         }
 

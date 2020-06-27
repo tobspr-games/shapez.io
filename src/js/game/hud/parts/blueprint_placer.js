@@ -9,7 +9,7 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { blueprintShape } from "../../upgrades";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { Blueprint } from "./blueprint";
+import { Blueprint } from "../../blueprint";
 import { SOUNDS } from "../../../platform/sound";
 
 export class HUDBlueprintPlacer extends BaseHUDPart {

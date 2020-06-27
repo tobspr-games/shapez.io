@@ -1,5 +1,4 @@
 import { globalConfig } from "./config";
-import { Math_max, Math_floor, Math_abs } from "./builtins";
 import { fastArrayDelete } from "./utils";
 import { createLogger } from "./logging";
 
@@ -70,8 +69,8 @@ export function makeOffscreenBuffer(w, h, { smooth = true, reusable = true, labe
     }
     if (w < 1 || h < 1) {
         logger.error("Offscreen buffer size < 0:", w, "x", h);
-        w = Math_max(1, w);
-        h = Math_max(1, h);
+        w = Math.max(1, w);
+        h = Math.max(1, h);
     }
 
     const recommendedSize = 1024 * 1024;
@@ -79,8 +78,8 @@ export function makeOffscreenBuffer(w, h, { smooth = true, reusable = true, labe
         logger.warn("Creating huge buffer:", w, "x", h, "with label", label);
     }
 
-    w = Math_floor(w);
-    h = Math_floor(h);
+    w = Math.floor(w);
+    h = Math.floor(h);
 
     let canvas = null;
     let context = null;
@@ -103,7 +102,7 @@ export function makeOffscreenBuffer(w, h, { smooth = true, reusable = true, labe
         }
 
         const otherPixels = useableCanvas.width * useableCanvas.height;
-        const diff = Math_abs(otherPixels - currentPixels);
+        const diff = Math.abs(otherPixels - currentPixels);
         if (diff < bestMatchingPixelsDiff) {
             bestMatchingPixelsDiff = diff;
             bestMatchingOne = {

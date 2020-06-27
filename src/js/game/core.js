@@ -5,7 +5,6 @@ import { Application } from "../application";
 
 import { BufferMaintainer } from "../core/buffer_maintainer";
 import { disableImageSmoothing, enableImageSmoothing, registerCanvas } from "../core/buffer_utils";
-import { Math_random } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
@@ -24,7 +23,7 @@ import { GameHUD } from "./hud/hud";
 import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
-import { GameRoot } from "./root";
+import { GameRoot, enumEditMode } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
@@ -403,11 +402,23 @@ export class GameCore {
         root.map.drawForeground(params);
         if (!this.root.camera.getIsMapOverlayActive()) {
             systems.hub.draw(params);
+            systems.energyGenerator.draw(params);
             systems.storage.draw(params);
+        }
+
+        // WIRES
+        // root.hud.parts.wiresOverlay.draw(params);
+
+        if (this.root.editMode === enumEditMode.wires) {
+            systems.wiredPins.drawWiresLayer(params);
         }
 
         if (G_IS_DEV) {
             root.map.drawStaticEntityDebugOverlays(params);
+        }
+
+        if (G_IS_DEV && globalConfig.debug.renderBeltPaths) {
+            systems.belt.drawBeltPathDebug(params);
         }
 
         // END OF GAME CONTENT
@@ -431,7 +442,7 @@ export class GameCore {
             for (let i = 0; i < 1e8; ++i) {
                 sum += i;
             }
-            if (Math_random() > 0.95) {
+            if (Math.random() > 0.95) {
                 console.log(sum);
             }
         }

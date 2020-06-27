@@ -3,7 +3,6 @@ import { Entity } from "./entity";
 import { Vector, enumDirectionToVector, enumDirection } from "../core/vector";
 import { MetaBuilding } from "./meta_building";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
-import { Math_abs, performanceNow } from "../core/builtins";
 import { createLogger } from "../core/logging";
 import { MetaBeltBaseBuilding, arrayBeltVariantToRotation } from "./buildings/belt_base";
 import { SOUNDS } from "../platform/sound";
@@ -186,7 +185,6 @@ export class GameLogic {
                 variant,
             });
 
-            this.root.soundProxy.playUi(building.getPlacementSound());
             return entity;
         }
         return null;
@@ -197,12 +195,12 @@ export class GameLogic {
      * @param {function} operation
      */
     performBulkOperation(operation) {
-        logger.log("Running bulk operation ...");
+        logger.warn("Running bulk operation ...");
         assert(!this.root.bulkOperationRunning, "Can not run two bulk operations twice");
         this.root.bulkOperationRunning = true;
-        const now = performanceNow();
+        const now = performance.now();
         const returnValue = operation();
-        const duration = performanceNow() - now;
+        const duration = performance.now() - now;
         logger.log("Done in", round2Digits(duration), "ms");
         assert(this.root.bulkOperationRunning, "Bulk operation = false while bulk operation was running");
         this.root.bulkOperationRunning = false;
@@ -228,6 +226,7 @@ export class GameLogic {
         }
         this.root.map.removeStaticEntity(building);
         this.root.entityMgr.destroyEntity(building);
+        this.root.entityMgr.processDestroyList();
         return true;
     }
 
@@ -244,7 +243,7 @@ export class GameLogic {
 
         for (let dx = -1; dx <= 1; ++dx) {
             for (let dy = -1; dy <= 1; ++dy) {
-                if (Math_abs(dx) + Math_abs(dy) !== 1) {
+                if (Math.abs(dx) + Math.abs(dy) !== 1) {
                     continue;
                 }
 

@@ -1,14 +1,14 @@
-import { globalConfig } from "../../core/config";
+import { formatItemsPerSecond } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
-import { ItemAcceptorComponent, enumItemAcceptorItemFilter } from "../components/item_acceptor";
+import { T } from "../../translations";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { enumHubGoalRewards } from "../tutorial_goals";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
-import { T } from "../../translations";
-import { formatItemsPerSecond } from "../../core/utils";
+import { enumHubGoalRewards } from "../tutorial_goals";
+import { enumItemType } from "../base_item";
 
 /** @enum {string} */
 export const enumRotaterVariants = { ccw: "ccw" };
@@ -77,7 +77,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                 ],
             })

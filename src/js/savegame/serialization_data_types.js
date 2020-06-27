@@ -5,8 +5,6 @@ import { BasicSerializableObject } from "./serialization";
 
 import { Vector } from "../core/vector";
 import { round4Digits, schemaObject, accessNestedPropertyReverse } from "../core/utils";
-import { JSON_stringify } from "../core/builtins";
-
 export const globalJsonSchemaDefs = {};
 
 /**
@@ -128,7 +126,7 @@ export class BaseDataType {
                 "serialization verify failed: " +
                 errorCode +
                 " [value " +
-                JSON_stringify(value).substr(0, 100) +
+                JSON.stringify(value).substr(0, 100) +
                 "]"
             );
         }

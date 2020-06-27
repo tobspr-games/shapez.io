@@ -36,6 +36,8 @@ import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
 import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
 import { HUDColorBlindHelper } from "./parts/color_blind_helper";
 import { HUDShapeViewer } from "./parts/shape_viewer";
+import { HUDWiresOverlay } from "./parts/wires_overlay";
+import { HUDChangesDebugger } from "./parts/debug_changes";
 
 export class GameHUD {
     /**
@@ -70,6 +72,15 @@ export class GameHUD {
             dialogs: new HUDModalDialogs(this.root),
             screenshotExporter: new HUDScreenshotExporter(this.root),
             shapeViewer: new HUDShapeViewer(this.root),
+
+            // WIRES
+            // wiresOverlay: new HUDWiresOverlay(this.root),
+
+            // Typing hints
+            /* typehints:start */
+            /** @type {HUDChangesDebugger} */
+            changesDebugger: null,
+            /* typehints:end */
         };
 
         this.signals = {
@@ -92,6 +103,10 @@ export class GameHUD {
 
         if (IS_DEMO) {
             this.parts.watermark = new HUDWatermark(this.root);
+        }
+
+        if (G_IS_DEV && globalConfig.debug.renderChanges) {
+            this.parts.changesDebugger = new HUDChangesDebugger(this.root);
         }
 
         if (this.root.app.settings.getAllSettings().offerHints) {
@@ -221,6 +236,7 @@ export class GameHUD {
             "buildingPlacer",
             "blueprintPlacer",
             "colorBlindHelper",
+            "changesDebugger",
         ];
 
         for (let i = 0; i < partsOrder.length; ++i) {

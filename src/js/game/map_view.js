@@ -1,4 +1,3 @@
-import { Math_max, Math_min, Math_floor, Math_ceil } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { BaseMap } from "./map";
@@ -142,11 +141,11 @@ export class MapView extends BaseMap {
         const minX = left - border;
         const maxX = right + border - 1;
 
-        const chunkStartX = Math_floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math_floor(minY / globalConfig.mapChunkSize);
+        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
 
-        const chunkEndX = Math_ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math_ceil(maxY / globalConfig.mapChunkSize);
+        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
+        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
 
         // Render y from top down for proper blending
         for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
@@ -196,11 +195,11 @@ export class MapView extends BaseMap {
         const minX = left - border;
         const maxX = right + border - 1;
 
-        const chunkStartX = Math_floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math_floor(minY / globalConfig.mapChunkSize);
+        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
 
-        const chunkEndX = Math_ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math_ceil(maxY / globalConfig.mapChunkSize);
+        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
+        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
 
         // Render y from top down for proper blending
         for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
@@ -223,11 +222,11 @@ export class MapView extends BaseMap {
             const minX = left - border;
             const maxX = right + border - 1;
 
-            const chunkStartX = Math_floor(minX / globalConfig.mapChunkSize);
-            const chunkStartY = Math_floor(minY / globalConfig.mapChunkSize);
+            const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+            const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
 
-            const chunkEndX = Math_ceil(maxX / globalConfig.mapChunkSize);
-            const chunkEndY = Math_ceil(maxY / globalConfig.mapChunkSize);
+            const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
+            const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
 
             // Render y from top down for proper blending
             for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {

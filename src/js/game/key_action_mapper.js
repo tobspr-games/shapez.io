@@ -7,8 +7,6 @@ import { Application } from "../application";
 import { Signal, STOP_PROPAGATION } from "../core/signal";
 import { IS_MOBILE } from "../core/config";
 import { T } from "../translations";
-import { JSON_stringify } from "../core/builtins";
-
 function key(str) {
     return str.toUpperCase().charCodeAt(0);
 }
@@ -26,6 +24,9 @@ export const KEYMAPPINGS = {
         toggleHud: { keyCode: 113 }, // F2
         exportScreenshot: { keyCode: 114 }, // F3PS
         toggleFPSInfo: { keyCode: 115 }, // F4
+
+        // WIRES
+        // switchLayers: { keyCode: key("Y") },
     },
 
     navigation: {
@@ -53,6 +54,9 @@ export const KEYMAPPINGS = {
         mixer: { keyCode: key("8") },
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
+
+        // WIRES
+        // energy_generator: { keyCode: key("O") },
     },
 
     placement: {
@@ -440,7 +444,7 @@ export class KeyActionMapper {
     getBinding(binding) {
         // @ts-ignore
         const id = binding.id;
-        assert(id, "Not a valid keybinding: " + JSON_stringify(binding));
+        assert(id, "Not a valid keybinding: " + JSON.stringify(binding));
         assert(this.keybindings[id], "Keybinding " + id + " not known!");
         return this.keybindings[id];
     }

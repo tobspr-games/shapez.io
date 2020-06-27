@@ -8,8 +8,6 @@ import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
 import { DrawParameters } from "../core/draw_parameters";
 import { globalConfig } from "../core/config";
-import { Math_floor, Math_ceil } from "../core/builtins";
-
 export class GameSystemWithFilter extends GameSystem {
     /**
      * Constructs a new game system with the given component filter. It will process
@@ -71,11 +69,11 @@ export class GameSystemWithFilter extends GameSystem {
 
         let seenUids = new Set();
 
-        const chunkStartX = Math_floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math_floor(minY / globalConfig.mapChunkSize);
+        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
 
-        const chunkEndX = Math_ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math_ceil(maxY / globalConfig.mapChunkSize);
+        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
+        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
 
         const requiredComponents = this.requiredComponentIds;
 

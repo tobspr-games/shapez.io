@@ -1,4 +1,3 @@
-import { Math_min } from "../../../core/builtins";
 import { InputReceiver } from "../../../core/input_receiver";
 import { makeButton, makeDiv, removeAllChildren, capitalizeFirstLetter } from "../../../core/utils";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
@@ -179,7 +178,7 @@ export class HUDStatistics extends BaseHUDPart {
 
         let rendered = new Set();
 
-        for (let i = 0; i < Math_min(entries.length, 200); ++i) {
+        for (let i = 0; i < Math.min(entries.length, 200); ++i) {
             const entry = entries[i];
             const shapeKey = entry[0];
 

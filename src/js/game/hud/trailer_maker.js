@@ -1,7 +1,6 @@
 import { GameRoot } from "../root";
 import { globalConfig } from "../../core/config";
 import { Vector, mixVector } from "../../core/vector";
-import { performanceNow } from "../../core/builtins";
 import { lerp } from "../../core/utils";
 
 /* dev:start */
@@ -87,7 +86,7 @@ export class TrailerMaker {
 
             if (!nextMarker.startTime) {
                 console.log("Starting to approach", nextMarker.pos);
-                nextMarker.startTime = performanceNow() / 1000.0;
+                nextMarker.startTime = performance.now() / 1000.0;
             }
 
             const speed =
@@ -98,7 +97,7 @@ export class TrailerMaker {
             //     this.currentPlaybackOrigin.distance(Vector.fromSerializedObject(nextMarker.pos)) / speed;
             const time = nextMarker.time;
 
-            const progress = (performanceNow() / 1000.0 - nextMarker.startTime) / time;
+            const progress = (performance.now() / 1000.0 - nextMarker.startTime) / time;
 
             if (progress > 1.0) {
                 if (nextMarker.wait > 0) {
