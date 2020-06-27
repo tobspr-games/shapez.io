@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: A shapez.io egy végtelen térképen történő gyárépítésről és egyre komplexebb alakzatok előállításának automatizálásáról szóló játék.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,56 +30,56 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        A shapez.io egy gyárépítésről és alakzatok előállításának és kombinálásának automatizálásáról szóló játék. Szállítsd le a kért, egyre komplexebb alakzatokat az előrelépéshez és a gyár gyorsítóinak feloldásához.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        Az igények növekedésével növelned kell a gyáradat - Azonban ne feledkezz meg a nyersanyagokról - egy [b]végtelen térképen[/b] kell majd terjeszkedned!
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Mivel az alakzatok hamar unalmassá válnak, hamar színeket kell keverned, és befesteni vele az alakzatokat - Keverj pirosat, zöldet és kéket a különböző színek előállításához, és fesd be velük az alakokat.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        A játék 18 szinttel rendelkezik (Ami már így is órákon át le fog kötni!), de folyamatosan új tartalmat fogok hozzáadni - Sokminden van tervben!
 
 
-        [b]Standalone Advantages[/b]
+        [b]Önálló verzió előnyei[/b]
 
         [list]
-            [*] Waypoints
-            [*] Végtelen mentések
+            [*] Útpontok
+            [*] Korlátlan mentés
             [*] Sötét Mód
             [*] Több beállítás
             [*] Lehetővé teszed, hogy tovább fejlesszem a shapez.io-t ❤️
-            [*] More features in the future!
+            [*] További funkciók a jövőben!
         [/list]
 
-        [b]Planned features & Community suggestions[/b]
+        [b]Tervezett újítások és közösségi javaslatok[/b]
 
-        Ez a játék nyílt forráskódú - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        Ez a játék nyílt forráskódú - Bárki hozzájárulhat! Ezenkívül, [b]nagyon sokat[/b] hallgatok a közösségre! Próbálom az összes javaslatot elolvasni és a lehető legtöbbet figyelembe veszem a fejlesztés során.
 
         [list]
             [*] Sztori mód, ahol az épületek alakzatokba kerülnek
-            [*] Több szint és épület (standalone exclusive)
+            [*] Több szint és épület (Önálló verzió exkluzív)
             [*] Különböző térképek, és talán akadályok
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
+            [*] Konfigurálható térképkészítés (Beállítható az erőforrások száma, mérete, seed és még több)
             [*] Sokkal több alakzat
-            [*] More performance improvements (Bár a játék így is elég jól fut!)
+            [*] További teljesítmény javítás (Bár a játék így is elég jól fut!)
             [*] Színvak mód
-            [*] And much more!
+            [*] És még ennél is több!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        Nézd meg a Trello táblámat a teljes roadmapért! https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Betöltés
     error: Hiba
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: E
         millions: M
-        billions: Mlrd
-        trillions: T
+        billions: Mrd
+        trillions: B
 
     # Shown for infinitely big numbers
     infinite: inf
@@ -96,9 +96,9 @@ global:
         xDaysAgo: <x> nappal ezelőtt
 
         # Short formats for times, e.g. '5h 23m'
-        secondsShort: <seconds>mp
-        minutesAndSecondsShort: <minutes>p <seconds>mp
-        hoursAndMinutesShort: <hours>ó <minutes>p
+        secondsShort: <seconds> mp
+        minutesAndSecondsShort: <minutes> p <seconds> mp
+        hoursAndMinutesShort: <hours> ó <minutes> p
 
         xMinutes: <x> perc
 
@@ -108,17 +108,17 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
+        space: SZÓKÖZ
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demó verzi
+    title: Demó verzió
     intro: >-
-        Get the standalone to unlock all features!
+        Szerezd meg az önálló verziót az összes funkció feloldásához!
 
 mainMenu:
     play: Játék
-    changelog: Changelog
+    changelog: Változásjegyzék
     importSavegame: Importálás
     openSourceHint: Ez a játék nyílt forráskódú!
     discordLink: Hivatalos Discord Szerver
@@ -126,36 +126,36 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Sajnáljuk, de a játék a böngésződben lassan fut! Szerezd be az önálló verziót, vagy töltsd le a Google Chrome-ot a teljes élményhez.
 
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
 
     contests:
         contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            title: "1. verseny"
+            desc: Nyerj <strong>$25</strong>-t a legkirályabb bázissal!
             longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
+                Hogy valamit visszaadhassak nektek, úgy gondoltam jó ötlet lenne heti versenyeket tartani!
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>Az eheti téma:</strong> Építsd meg a legkirályabb bázist!
                 <br><br>
-                Here's the deal:<br>
+                Itt a lényeg:<br>
                 <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
+                    <li>Küldj be egy képernyőképet a bázisodról a <strong>contest@shapez.io</strong> címre</li>
+                    <li>Bónuszpont, ha közösségi oldalakon is megosztod!</li>
+                    <li>5 képernyőképet választok és a <strong>discord</strong> közösségben szavazásra bocsájtom őket.</li>
+                    <li>A győztes <strong>$25</strong>-t kap (Paypal, Amazon Ajándékkártya, amit csak szeretnél)</li>
+                    <li>Határidő: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                I'm looking forward to seeing your awesome creations!
+                Már alig várom, hogy a menő építményeiteket láthassam!
 
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+        showInfo: Megtekintés
+        contestOver: Ez a verseny már véget ért - Csatlakozz a discord szerverhez, hogy értesülj az új versenyekről!
+    continue: Tovább
+    newGame: Új játék
+    madeBy: <author-link> készítette
     subreddit: Reddit
 
 dialogs:
@@ -166,16 +166,16 @@ dialogs:
         later: Később
         restart: Újrakezdés
         reset: Visszaállítás
-        getStandalone: Get Standalone
+        getStandalone: Önálló verzió beszerzése
         deleteGame: Tudom mit csinálok
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        viewUpdate: Frissítés megtekintése
+        showUpgrades: Fejlesztések megtekintése
+        showKeybindings: Billentyűkombinációk megtekintése
 
     importSavegameError:
         title: Importálás Hiba
         text: >-
-            Failed to import your savegame: Nem sikerült importálni a mentésed.
+            Nem sikerült importálni a mentésed:
 
     importSavegameSuccess:
         title: Mentés Importálva
@@ -183,19 +183,19 @@ dialogs:
             A mentésed sikeresen importálva lett.
 
     gameLoadFailure:
-        title: Game is broken
+        title: A játék elromlott
         text: >-
-            Failed to load your savegame: Nem sikerült betölteni a mentésed
+            Nem sikerült betölteni a mentésed:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Törlés megerősítése
         text: >-
-            Biztos, hogy ki akarod törölni?
+            Biztos, hogy törölni akarod?
 
     savegameDeletionError:
         title: Sikertelen törlés
         text: >-
-            Failed to delete the savegame: Nem sikerült törölni a mentésed.
+            Nem sikerült törölni a mentésed.
 
     restartRequired:
         title: Újraindítás szükséges
@@ -203,29 +203,29 @@ dialogs:
             Újra kell indítanod a játékot, hogy életbe lépjenek a módosítások.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Billentyűkombináció módosítása
+        desc: Nyomd meg a kívánt gombot az egéren vagy billentyűzeten, vagy az Esc gombot a visszavonáshoz.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Billentyűkombinációk visszaállítása
+        desc: Ezzel visszaállítod az összes billentyűkombinációt az eredeti beállításre. Kérlek, erősítsd meg.
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Billentyűkombinációk visszaállítása
+        desc: A billentyűkombinációk visszaállításra kerültek!
 
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        title: Demó verzió
+        desc: Egy olyan funkciót (<feature>) próbáltál elérni, ami nem érhető el a demóban. Szerezd be az önálló verziót a teljes élményért!
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: Korlátozott számú mentés
+        desc: Csak korlátozott számú mentésed lehet a demó verzióban. Kérlek, törölj egy mentést vagy vedd meg az önálló verziót!
 
     updateSummary:
         title: Új frissítés!
         desc: >-
-            Here are the changes since you last played:
+            Itt vannak a változások, amik a legutóbbi játékod óta kerültek bevezetésre:
 
     upgradesIntroduction:
         title: Unlock Upgrades
