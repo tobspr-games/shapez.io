@@ -7,6 +7,7 @@ import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { Loader } from "../../core/loader";
 import { drawRotatedSprite } from "../../core/draw_utils";
 import { BELT_ANIM_COUNT } from "./belt";
+import { fastArrayDelete } from "../../core/utils";
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -36,7 +37,12 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
                 const anim = animations[animIndex];
                 anim.animProgress += progress;
                 if (anim.animProgress > 1) {
-                    animations.splice(animIndex, 1);
+                    // Original
+                    // animations.splice(animIndex, 1);
+
+                    // Faster variant
+                    fastArrayDelete(animations, animIndex);
+
                     animIndex -= 1;
                 }
             }
