@@ -1,18 +1,18 @@
-import { Math_sqrt } from "../../core/builtins";
+import { Math_min } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
 import { AtlasSprite } from "../../core/sprites";
+import { fastArrayDeleteValue } from "../../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
 import { BeltPath } from "../belt_path";
+import { arrayBeltVariantToRotation, MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
-import { fastArrayDeleteValue } from "../../core/utils";
-import { gMetaBuildingRegistry } from "../../core/global_registries";
-import { MetaBeltBaseBuilding, arrayBeltVariantToRotation } from "../buildings/belt_base";
 import { defaultBuildingVariant } from "../meta_building";
 
 export const BELT_ANIM_COUNT = 28;
@@ -469,12 +469,13 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        const speedMultiplier = this.root.hubGoals.getBeltBaseSpeed();
+        // Limit speed to avoid belts going backwards
+        const speedMultiplier = Math_min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
         // SYNC with systems/item_acceptor.js:drawEntityUnderlays!
         // 126 / 42 is the exact animation speed of the png animation
         const animationIndex = Math.floor(
-            ((this.root.time.now() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
+            ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
                 globalConfig.itemSpacingOnBelts
         );
         const contents = chunk.contents;

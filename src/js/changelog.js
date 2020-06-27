@@ -7,7 +7,7 @@ export const CHANGELOG = [
             "Preparations for the wires update",
             "Allow clicking on variants to select them",
             "Add 'copy key' button to shape viewer",
-            "Add more FPS to the belt animation",
+            "Add more FPS to the belt animation and fix belt animation seeming to go 'backwards' on high belt speeds",
             "Fix deconstruct sound being played when right clicking hub",
             "Allow clicking 'Q' over a shape or color patch to automatically select the miner building (by Gerdon262)",
             "Update belt placement performance on huge factories (by Phlosioneer)",

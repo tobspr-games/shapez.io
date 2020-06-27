@@ -6,7 +6,7 @@ import { enumDirectionToVector, enumDirectionToAngle } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { Loader } from "../../core/loader";
 import { drawRotatedSprite } from "../../core/draw_utils";
-import { Math_radians } from "../../core/builtins";
+import { Math_radians, Math_min } from "../../core/builtins";
 import { BELT_ANIM_COUNT } from "./belt";
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
@@ -94,6 +94,9 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             return;
         }
 
+        // Limit speed to avoid belts going backwards
+        const speedMultiplier = Math_min(this.root.hubGoals.getBeltBaseSpeed(), 10);
+
         const underlays = acceptorComp.beltUnderlays;
         for (let i = 0; i < underlays.length; ++i) {
             const { pos, direction } = underlays[i];
@@ -103,11 +106,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
 
             // SYNC with systems/belt.js:drawSingleEntity!
             const animationIndex = Math.floor(
-                ((this.root.time.now() *
-                    this.root.hubGoals.getBeltBaseSpeed() *
-                    this.underlayBeltSprites.length *
-                    126) /
-                    42) *
+                ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
                     globalConfig.itemSpacingOnBelts
             );
 
