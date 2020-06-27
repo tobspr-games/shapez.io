@@ -108,7 +108,7 @@ gulp.task("utils.requireCleanWorkingTree", cb => {
     if (output.length > 0) {
         console.error("\n\nYou have unstaged changes, please commit everything first!");
         console.error("Unstaged files:");
-        console.error(output.join("\n"));
+        console.error(output.map(x => "'" + x + "'").join("\n"));
         process.exit(1);
     }
     cb();
