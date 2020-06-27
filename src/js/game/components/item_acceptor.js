@@ -118,7 +118,7 @@ export class ItemAcceptorComponent extends Component {
      */
     canAcceptItem(slotIndex, item) {
         const slot = this.slots[slotIndex];
-        return slot.filter === null || slot.filter === item.getItemType();
+        return !slot.filter || slot.filter === item.getItemType();
     }
 
     /**
