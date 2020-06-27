@@ -153,7 +153,16 @@ export class HUDWaypoints extends BaseHUDPart {
 
             if (ShapeDefinition.isValidShortKey(label)) {
                 const canvas = this.getWaypointCanvas(waypoint);
-                element.appendChild(canvas);
+                /**
+                 * Create a clone of the cached canvas, as calling appendElement when a canvas is
+                 * already in the document will move the existing canvas to the new position.
+                 */
+                const [newCanvas, context] = makeOffscreenBuffer(48, 48, {
+                    smooth: true,
+                    label: canvas.label + "-waypoint-" + i,
+                });
+                context.drawImage(canvas, 0, 0);
+                element.appendChild(newCanvas);
                 element.classList.add("shapeIcon");
             } else {
                 element.innerText = label;
