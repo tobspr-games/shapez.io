@@ -324,7 +324,7 @@ ingame:
     # Notifications on the lower right
     notifications:
         newUpgrade: Está disponível um novo upgrade!
-        gameSaved: O teu jogo foi gravado.
+        gameSaved: O teu jogo foi guardado.
 
     # The "Upgrades" window
     shop:
@@ -403,7 +403,7 @@ ingame:
         blue: Azul
         yellow: Amarelo
         purple: Roxo
-        cyan: Azul-bebé
+        cyan: Ciano
         white: Branco
         uncolored: Sem cor
     shapeViewer:
@@ -466,10 +466,10 @@ buildings:
     cutter:
         default:
             name: &cutter Cortador
-            description: Corta as formas geométricas de cima para baixo e produz duas metades. <strong>Se apenas usares uma parte, certifica-te de que destrois a outra parte de forma a não encravar a produção!</strong>
+            description: Corta as formas, de cima para baixo, em duas partes. <strong>Se apenas usares uma parte, destrói a outra para não encravar a produção!</strong>
         quad:
-            name: Cortador (Quádruplo)
-            description: Corta as formas geométricas em quatro partes. <strong>Se apenas usares uma parte, certifica-te de que destrois as outras partes de forma a não encravar a produção!</strong>
+            name: Cortador (Quad)
+            description: Corta as formas em quatro partes. <strong>Se apenas usares uma parte, destrói as outras partes para não encravar a produção!</strong>
 
     rotater:
         default:
@@ -529,7 +529,7 @@ storyRewards:
     reward_painter:
         title: Pintura
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            O <strong>pintor</strong> foi desbloqueado - Extrai alguns pigmentos coloridos (tal como fazes com as formas) e combina-os com uma forma no pintor para a colorir!<br><br>PS: Se fores daltónico, esxite um <strong>modo daltónico</strong> nas definições!
 
     reward_mixer:
         title: Mistura de Cores
@@ -691,8 +691,8 @@ settings:
         enableTunnelSmartplace:
             title: Túneis inteligentes
             description: >-
-                Quando ativo, a colocação de túneis removerá tapetes desnecessários automaticamente.
-                Isto também permite arrastar túneis e túneis supérfluos serão removidos.
+                Quando ativado, a colocação de túneis removerá tapetes desnecessários automaticamente.
+                Isto também permite arrastar túneis e túneis em excesso serão removidos.
         vignette:
             title: Vinheta
             description: >-
@@ -724,13 +724,13 @@ settings:
 
         enableColorBlindHelper:
             title: Modo Daltónico
-            description: Ativa várias ferramentas para daltónicos.
+            description: Ativa várias ferramentas que te permitirão jogar o jogo se fores daltónico.
         rotationByBuilding:
-          title: Rotation by building type
+          title: Tipo de rotação por construção
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            Cada tipo de construção grava a última rotação utilizada individualmente.
+            Isto pode ser mais confortável se frquentemente trocas de colocação
+            de diferentes tipo de construção.
 
 keybindings:
     title: Atalhos
