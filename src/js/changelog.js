@@ -1,10 +1,10 @@
 export const CHANGELOG = [
     {
         version: "1.1.18",
-        date: "26.06.2020",
+        date: "27.06.2020",
         entries: [
-            "Huge belt performance improvements - up to 50% increase",
-            "Preparations for the wires update",
+            "Huge performance improvements - up to double fps and tick-rate!",
+            "Reduce story shapes required until unlocking blueprints",
             "Allow clicking on variants to select them",
             "Add 'copy key' button to shape viewer",
             "Add more FPS to the belt animation and fix belt animation seeming to go 'backwards' on high belt speeds",
