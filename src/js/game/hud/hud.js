@@ -72,7 +72,9 @@ export class GameHUD {
             dialogs: new HUDModalDialogs(this.root),
             screenshotExporter: new HUDScreenshotExporter(this.root),
             shapeViewer: new HUDShapeViewer(this.root),
-            wiresOverlay: new HUDWiresOverlay(this.root),
+
+            // WIRES
+            // wiresOverlay: new HUDWiresOverlay(this.root),
 
             // Typing hints
             /* typehints:start */

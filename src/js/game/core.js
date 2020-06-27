@@ -407,8 +407,8 @@ export class GameCore {
             systems.storage.draw(params);
         }
 
-        // WIRES LAYER
-        root.hud.parts.wiresOverlay.draw(params);
+        // WIRES
+        // root.hud.parts.wiresOverlay.draw(params);
 
         if (this.root.editMode === enumEditMode.wires) {
             systems.wiredPins.drawWiresLayer(params);
