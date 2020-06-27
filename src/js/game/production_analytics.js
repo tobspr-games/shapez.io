@@ -98,27 +98,27 @@ export class ProductionAnalytics extends BasicSerializableObject {
     /**
      * Returns the current rate of a given shape
      * @param {enumAnalyticsDataSource} dataSource
-     * @param {ShapeDefinition} definition
+     * @param {string} shapeKey
      */
-    getCurrentShapeRate(dataSource, definition) {
+    getCurrentShapeRate(dataSource, shapeKey) {
         const slices = this.history[dataSource];
-        return slices[slices.length - 2][definition.getHash()] || 0;
+        return slices[slices.length - 2][shapeKey] || 0;
     }
 
     /**
      * Returns the rate of a given shape, <historyOffset> frames ago
      * @param {enumAnalyticsDataSource} dataSource
-     * @param {ShapeDefinition} definition
+     * @param {string} shapeKey
      * @param {number} historyOffset
      */
-    getPastShapeRate(dataSource, definition, historyOffset) {
+    getPastShapeRate(dataSource, shapeKey, historyOffset) {
         assertAlways(
             historyOffset >= 0 && historyOffset < globalConfig.statisticsGraphSlices - 1,
             "Invalid slice offset: " + historyOffset
         );
 
         const slices = this.history[dataSource];
-        return slices[slices.length - 2 - historyOffset][definition.getHash()] || 0;
+        return slices[slices.length - 2 - historyOffset][shapeKey] || 0;
     }
 
     /**
