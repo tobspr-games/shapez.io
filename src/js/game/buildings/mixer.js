@@ -1,14 +1,14 @@
-import { globalConfig } from "../../core/config";
+import { formatItemsPerSecond } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
-import { ItemAcceptorComponent, enumItemAcceptorItemFilter } from "../components/item_acceptor";
+import { T } from "../../translations";
+import { enumItemType } from "../base_item";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { T } from "../../translations";
-import { formatItemsPerSecond } from "../../core/utils";
 
 export class MetaMixerBuilding extends MetaBuilding {
     constructor() {
@@ -63,12 +63,12 @@ export class MetaMixerBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                 ],
             })

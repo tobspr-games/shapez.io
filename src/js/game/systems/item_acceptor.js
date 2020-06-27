@@ -21,20 +21,23 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     }
 
     update() {
+        const progress =
+            this.root.dynamicTickrate.deltaSeconds *
+            this.root.hubGoals.getBeltBaseSpeed() *
+            2 * // * 2 because its only a half tile
+            globalConfig.itemSpacingOnBelts;
+
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const aceptorComp = entity.components.ItemAcceptor;
+            const animations = aceptorComp.itemConsumptionAnimations;
 
             // Process item consumption animations to avoid items popping from the belts
-            for (let animIndex = 0; animIndex < aceptorComp.itemConsumptionAnimations.length; ++animIndex) {
-                const anim = aceptorComp.itemConsumptionAnimations[animIndex];
-                anim.animProgress +=
-                    this.root.dynamicTickrate.deltaSeconds *
-                    this.root.hubGoals.getBeltBaseSpeed() *
-                    2 *
-                    globalConfig.itemSpacingOnBelts;
+            for (let animIndex = 0; animIndex < animations.length; ++animIndex) {
+                const anim = animations[animIndex];
+                anim.animProgress += progress;
                 if (anim.animProgress > 1) {
-                    aceptorComp.itemConsumptionAnimations.splice(animIndex, 1);
+                    animations.splice(animIndex, 1);
                     animIndex -= 1;
                 }
             }

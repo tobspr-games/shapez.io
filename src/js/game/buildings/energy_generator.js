@@ -1,11 +1,12 @@
 import { enumDirection, Vector } from "../../core/vector";
-import { ItemAcceptorComponent, enumItemAcceptorItemFilter } from "../components/item_acceptor";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { EnergyGeneratorComponent } from "../components/energy_generator";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
+import { enumItemType } from "../base_item";
 
 export class MetaEnergyGenerator extends MetaBuilding {
     constructor() {
@@ -52,23 +53,23 @@ export class MetaEnergyGenerator extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.top],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
 
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.top],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(1, 1),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                 ],
             })

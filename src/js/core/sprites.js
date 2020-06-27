@@ -144,9 +144,9 @@ export class AtlasSprite extends BaseSprite {
      */
     drawCached(parameters, x, y, w = null, h = null, clipping = true) {
         if (G_IS_DEV) {
-            assertAlways(parameters instanceof DrawParameters, "Not a valid context");
-            assertAlways(!!w && w > 0, "Not a valid width:" + w);
-            assertAlways(!!h && h > 0, "Not a valid height:" + h);
+            assert(parameters instanceof DrawParameters, "Not a valid context");
+            assert(!!w && w > 0, "Not a valid width:" + w);
+            assert(!!h && h > 0, "Not a valid height:" + h);
         }
 
         const visibleRect = parameters.visibleRect;

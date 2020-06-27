@@ -193,17 +193,18 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             if (!sourceEjectorComp.cachedConnectedSlots) {
                 continue;
             }
-            for (let j = 0; j < sourceEjectorComp.cachedConnectedSlots.length; j++) {
-                const sourceSlot = sourceEjectorComp.cachedConnectedSlots[j];
-                const destSlot = sourceSlot.cachedDestSlot;
-                const targetEntity = sourceSlot.cachedTargetEntity;
 
+            const slots = sourceEjectorComp.cachedConnectedSlots;
+            for (let j = 0; j < slots.length; ++j) {
+                const sourceSlot = slots[j];
                 const item = sourceSlot.item;
-
                 if (!item) {
                     // No item available to be ejected
                     continue;
                 }
+
+                const destSlot = sourceSlot.cachedDestSlot;
+                const targetEntity = sourceSlot.cachedTargetEntity;
 
                 // Advance items on the slot
                 sourceSlot.progress = Math_min(1, sourceSlot.progress + progressGrowth);
@@ -248,15 +249,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             if (path.tryAcceptItem(item)) {
                 return true;
             }
-        }
-
-        const storageComp = receiver.components.Storage;
-        if (storageComp) {
-            // It's a storage
-            if (storageComp.canAcceptItem(item)) {
-                storageComp.takeItem(item);
-                return true;
-            }
+            // Belt can have nothing else
+            return false;
         }
 
         const itemProcessorComp = receiver.components.ItemProcessor;
@@ -265,6 +259,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
                 return true;
             }
+            // Item processor can have nothing else
+            return false;
         }
 
         const undergroundBeltComp = receiver.components.UndergroundBelt;
@@ -278,6 +274,21 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             ) {
                 return true;
             }
+
+            // Underground belt can have nothing else
+            return false;
+        }
+
+        const storageComp = receiver.components.Storage;
+        if (storageComp) {
+            // It's a storage
+            if (storageComp.canAcceptItem(item)) {
+                storageComp.takeItem(item);
+                return true;
+            }
+
+            // Storage can't have anything else
+            return false;
         }
 
         const energyGeneratorComp = receiver.components.EnergyGenerator;
@@ -286,6 +297,9 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 // Passed it over
                 return true;
             }
+
+            // Energy generator comp can't have anything else
+            return false;
         }
 
         return false;

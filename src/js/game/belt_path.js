@@ -82,7 +82,9 @@ export class BeltPath extends BasicSerializableObject {
 
         this.init();
 
-        this.debug_checkIntegrity("constructor");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("constructor");
+        }
     }
     /**
      * Initializes the path by computing the properties which are not saved
@@ -168,6 +170,9 @@ export class BeltPath extends BasicSerializableObject {
         }
     }
 
+    // Following code will be compiled out outside of dev versions
+    /* dev:start */
+
     /**
      * Helper to throw an error on mismatch
      * @param {string} change
@@ -181,10 +186,6 @@ export class BeltPath extends BasicSerializableObject {
      * Checks if this path is valid
      */
     debug_checkIntegrity(currentChange = "change") {
-        if (!G_IS_DEV) {
-            return;
-        }
-
         const fail = (...args) => this.debug_failIntegrity(currentChange, ...args);
 
         // Check for empty path
@@ -319,6 +320,8 @@ export class BeltPath extends BasicSerializableObject {
         }
     }
 
+    /* dev:end */
+
     /**
      * Extends the belt path by the given belt
      * @param {Entity} entity
@@ -368,7 +371,9 @@ export class BeltPath extends BasicSerializableObject {
         // Update bounds
         this.worldBounds = this.computeBounds();
 
-        this.debug_checkIntegrity("extend-on-end");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("extend-on-end");
+        }
     }
 
     /**
@@ -398,7 +403,9 @@ export class BeltPath extends BasicSerializableObject {
         // Update bounds
         this.worldBounds = this.computeBounds();
 
-        this.debug_checkIntegrity("extend-on-begin");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("extend-on-begin");
+        }
     }
 
     /**
@@ -574,8 +581,10 @@ export class BeltPath extends BasicSerializableObject {
         // Update bounds
         this.worldBounds = this.computeBounds();
 
-        this.debug_checkIntegrity("split-two-first");
-        secondPath.debug_checkIntegrity("split-two-second");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("split-two-first");
+            secondPath.debug_checkIntegrity("split-two-second");
+        }
 
         return secondPath;
     }
@@ -683,7 +692,9 @@ export class BeltPath extends BasicSerializableObject {
         // Update bounds
         this.worldBounds = this.computeBounds();
 
-        this.debug_checkIntegrity("delete-on-end");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("delete-on-end");
+        }
     }
 
     /**
@@ -810,7 +821,9 @@ export class BeltPath extends BasicSerializableObject {
         // Update bounds
         this.worldBounds = this.computeBounds();
 
-        this.debug_checkIntegrity("delete-on-start");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("delete-on-start");
+        }
     }
 
     /**
@@ -882,7 +895,9 @@ export class BeltPath extends BasicSerializableObject {
 
         this.onPathChanged();
 
-        this.debug_checkIntegrity("extend-by-path");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("extend-by-path");
+        }
     }
 
     /**
@@ -901,7 +916,9 @@ export class BeltPath extends BasicSerializableObject {
      * Performs one tick
      */
     update() {
-        this.debug_checkIntegrity("pre-update");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("pre-update");
+        }
 
         // Divide by item spacing on belts since we use throughput and not speed
         let beltSpeed =
@@ -945,7 +962,9 @@ export class BeltPath extends BasicSerializableObject {
             }
         }
 
-        this.debug_checkIntegrity("post-update");
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_checkIntegrity("post-update");
+        }
     }
 
     /**

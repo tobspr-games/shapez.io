@@ -1,6 +1,11 @@
 import { DrawParameters } from "../core/draw_parameters";
-import { BasicSerializableObject, types } from "../savegame/serialization";
-import { THEME } from "./theme";
+import { BasicSerializableObject } from "../savegame/serialization";
+
+/** @enum {string} */
+export const enumItemType = {
+    shape: "shape",
+    color: "color",
+};
 
 /**
  * Class for items on belts etc. Not an entity for performance reasons
@@ -17,6 +22,12 @@ export class BaseItem extends BasicSerializableObject {
     /** @returns {object} */
     static getSchema() {
         return {};
+    }
+
+    /** @returns {enumItemType} */
+    getItemType() {
+        abstract;
+        return "";
     }
 
     /**

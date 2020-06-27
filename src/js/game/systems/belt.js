@@ -102,7 +102,9 @@ export class BeltSystem extends GameSystemWithFilter {
             logger.warn("Restored", this.beltPaths.length, "belt paths");
         }
 
-        this.verifyBeltPaths();
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_verifyBeltPaths();
+        }
     }
 
     /**
@@ -171,12 +173,16 @@ export class BeltSystem extends GameSystemWithFilter {
                     this.addEntityToPaths(targetEntity);
 
                     // Sanity
-                    this.verifyBeltPaths();
+                    if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+                        this.debug_verifyBeltPaths();
+                    }
                 }
             }
         }
 
-        this.verifyBeltPaths();
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_verifyBeltPaths();
+        }
     }
 
     /**
@@ -195,7 +201,9 @@ export class BeltSystem extends GameSystemWithFilter {
         const assignedPath = entity.components.Belt.assignedPath;
         assert(assignedPath, "Entity has no belt path assigned");
         this.deleteEntityFromPath(assignedPath, entity);
-        this.verifyBeltPaths();
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_verifyBeltPaths();
+        }
     }
 
     /**
@@ -281,7 +289,9 @@ export class BeltSystem extends GameSystemWithFilter {
         }
 
         this.addEntityToPaths(entity);
-        this.verifyBeltPaths();
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_verifyBeltPaths();
+        }
     }
 
     /**
@@ -297,21 +307,19 @@ export class BeltSystem extends GameSystemWithFilter {
     /**
      * Verifies all belt paths
      */
-    verifyBeltPaths() {
-        if (G_IS_DEV && true) {
-            for (let i = 0; i < this.beltPaths.length; ++i) {
-                this.beltPaths[i].debug_checkIntegrity("general-verify");
-            }
+    debug_verifyBeltPaths() {
+        for (let i = 0; i < this.beltPaths.length; ++i) {
+            this.beltPaths[i].debug_checkIntegrity("general-verify");
+        }
 
-            const belts = this.root.entityMgr.getAllWithComponent(BeltComponent);
-            for (let i = 0; i < belts.length; ++i) {
-                const path = belts[i].components.Belt.assignedPath;
-                if (!path) {
-                    throw new Error("Belt has no path: " + belts[i].uid);
-                }
-                if (this.beltPaths.indexOf(path) < 0) {
-                    throw new Error("Path of entity not contained: " + belts[i].uid);
-                }
+        const belts = this.root.entityMgr.getAllWithComponent(BeltComponent);
+        for (let i = 0; i < belts.length; ++i) {
+            const path = belts[i].components.Belt.assignedPath;
+            if (!path) {
+                throw new Error("Belt has no path: " + belts[i].uid);
+            }
+            if (this.beltPaths.indexOf(path) < 0) {
+                throw new Error("Path of entity not contained: " + belts[i].uid);
             }
         }
     }
@@ -450,13 +458,17 @@ export class BeltSystem extends GameSystemWithFilter {
      * Updates all belts
      */
     update() {
-        this.verifyBeltPaths();
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_verifyBeltPaths();
+        }
 
         for (let i = 0; i < this.beltPaths.length; ++i) {
             this.beltPaths[i].update();
         }
 
-        this.verifyBeltPaths();
+        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+            this.debug_verifyBeltPaths();
+        }
     }
 
     /**

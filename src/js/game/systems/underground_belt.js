@@ -30,21 +30,21 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
     }
 
     update() {
+        const delta = this.root.dynamicTickrate.deltaSeconds;
+
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-
             const undergroundComp = entity.components.UndergroundBelt;
+            const pendingItems = undergroundComp.pendingItems;
 
             // Decrease remaining time of all items in belt
-            for (let k = 0; k < undergroundComp.pendingItems.length; ++k) {
-                const item = undergroundComp.pendingItems[k];
-                item[1] = Math_max(0, item[1] - this.root.dynamicTickrate.deltaSeconds);
-
+            for (let k = 0; k < pendingItems.length; ++k) {
+                const item = pendingItems[k];
+                item[1] = Math_max(0, item[1] - delta);
                 if (G_IS_DEV && globalConfig.debug.instantBelts) {
                     item[1] = 0;
                 }
             }
-
             if (undergroundComp.mode === enumUndergroundBeltMode.sender) {
                 this.handleSender(entity);
             } else {

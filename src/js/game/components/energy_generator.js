@@ -37,12 +37,7 @@ export class EnergyGeneratorComponent extends Component {
      * @param {BaseItem} item
      */
     tryTakeItem(item) {
-        if (!(item instanceof ShapeItem)) {
-            // Not a shape
-            return false;
-        }
-
-        if (item.definition.getHash() !== this.requiredKey) {
+        if (/** @type {ShapeItem} */ (item).definition.getHash() !== this.requiredKey) {
             // Not our shape
             return false;
         }
