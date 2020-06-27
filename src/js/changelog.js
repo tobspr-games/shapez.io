@@ -3,7 +3,7 @@ export const CHANGELOG = [
         version: "1.1.18",
         date: "27.06.2020",
         entries: [
-            "Huge performance improvements - up to double fps and tick-rate!",
+            "Huge performance improvements - up to double fps and tick-rate! This will wipe out all current items on belts.",
             "Reduce story shapes required until unlocking blueprints",
             "Allow clicking on variants to select them",
             "Add 'copy key' button to shape viewer",
