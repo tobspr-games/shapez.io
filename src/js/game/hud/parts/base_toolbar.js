@@ -1,5 +1,5 @@
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
-import { Signal } from "../../../core/signal";
+import { Signal, STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
 import { makeDiv } from "../../../core/utils";
 import { KEYMAPPINGS } from "../../key_action_mapper";
