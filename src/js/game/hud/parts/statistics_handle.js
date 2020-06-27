@@ -29,9 +29,13 @@ export class HUDShapeStatisticsHandle {
         this.visible = false;
     }
 
+    get shapeKey() {
+        return this.definition.getHash();
+    }
+
     initElement() {
         this.element = document.createElement("div");
-        this.element.setAttribute("data-shape-key", this.definition.getHash());
+        this.element.setAttribute("data-shape-key", this.shapeKey);
 
         this.counter = document.createElement("span");
         this.counter.classList.add("counter");
@@ -76,9 +80,7 @@ export class HUDShapeStatisticsHandle {
 
         switch (dataSource) {
             case enumAnalyticsDataSource.stored: {
-                this.counter.innerText = formatBigNumber(
-                    this.root.hubGoals.storedShapes[this.definition.getHash()] || 0
-                );
+                this.counter.innerText = formatBigNumber(this.root.hubGoals.storedShapes[this.shapeKey] || 0);
                 break;
             }
             case enumAnalyticsDataSource.delivered:
@@ -111,7 +113,7 @@ export class HUDShapeStatisticsHandle {
                 const [canvas, context] = makeOffscreenBuffer(w * graphDpi, h * graphDpi, {
                     smooth: true,
                     reusable: false,
-                    label: "statgraph-" + this.definition.getHash(),
+                    label: "statgraph-" + this.shapeKey,
                 });
                 context.scale(graphDpi, graphDpi);
                 canvas.classList.add("graph");
@@ -223,5 +225,23 @@ export class HUDShapeStatisticsHandle {
             // Remove handle
             delete this.counter;
         }
+    }
+}
+
+export class HUDShapeStatisticsStorageHandle extends HUDShapeStatisticsHandle {
+    /**
+     * @param {GameRoot} root
+     * @param {number} uid
+     * @param {ShapeDefinition} definition
+     * @param {IntersectionObserver} intersectionObserver
+     */
+    constructor(root, uid, definition, intersectionObserver) {
+        super(root, definition, intersectionObserver);
+
+        this.uid = uid;
+    }
+
+    get shapeKey() {
+        return this.uid.toString() + "," + this.definition.getHash();
     }
 }

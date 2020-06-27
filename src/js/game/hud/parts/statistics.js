@@ -4,7 +4,11 @@ import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { enumAnalyticsDataSource } from "../../production_analytics";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { enumDisplayMode, HUDShapeStatisticsHandle } from "./statistics_handle";
+import {
+    enumDisplayMode,
+    HUDShapeStatisticsHandle,
+    HUDShapeStatisticsStorageHandle,
+} from "./statistics_handle";
 import { T } from "../../../translations";
 
 export class HUDStatistics extends BaseHUDPart {
@@ -183,16 +187,23 @@ export class HUDStatistics extends BaseHUDPart {
         for (let i = 0; i < Math.min(entries.length, 200); ++i) {
             const entry = entries[i];
             const shapeKey = entry[0];
-            const shape = shapeKey.split(",")[1] || shapeKey;
 
             let handle = this.activeHandles[shapeKey];
             if (!handle) {
-                const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
-                handle = this.activeHandles[shapeKey] = new HUDShapeStatisticsHandle(
-                    this.root,
-                    definition,
-                    this.intersectionObserver
-                );
+                if (this.dataSource === enumAnalyticsDataSource.deliveredToStorage) {
+                    const [uid, shape] = shapeKey.split(",");
+                    const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
+                    handle = new HUDShapeStatisticsStorageHandle(
+                        this.root,
+                        Number.parseInt(uid),
+                        definition,
+                        this.intersectionObserver
+                    );
+                } else {
+                    const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shapeKey);
+                    handle = new HUDShapeStatisticsHandle(this.root, definition, this.intersectionObserver);
+                }
+                this.activeHandles[shapeKey] = handle;
             }
 
             rendered.add(shapeKey);
