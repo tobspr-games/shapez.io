@@ -52,6 +52,17 @@ export class HubGoals extends BasicSerializableObject {
             }
             this.upgradeImprovements[upgradeId] = totalImprovement;
         }
+
+        // Compute current goal
+        const goal = tutorialGoals[this.level - 1];
+        if (goal) {
+            this.currentGoal = {
+                /** @type {ShapeDefinition} */
+                definition: this.root.shapeDefinitionMgr.getShapeFromShortKey(goal.shape),
+                required: goal.required,
+                reward: goal.reward,
+            };
+        }
     }
 
     /**
@@ -201,7 +212,7 @@ export class HubGoals extends BasicSerializableObject {
         this.currentGoal = {
             /** @type {ShapeDefinition} */
             definition: this.createRandomShape(),
-            required: 1000 + findNiceIntegerValue(this.level * 47.5),
+            required: 10000 + findNiceIntegerValue(this.level * 2000),
             reward: enumHubGoalRewards.no_reward_freeplay,
         };
     }
@@ -312,7 +323,7 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     createRandomShape() {
-        const layerCount = clamp(this.level / 50, 2, 4);
+        const layerCount = clamp(this.level / 25, 2, 4);
         /** @type {Array<import("./shape_definition").ShapeLayer>} */
         let layers = [];
 
