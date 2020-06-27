@@ -10,6 +10,7 @@ export const enumAnalyticsDataSource = {
     produced: "produced",
     stored: "stored",
     delivered: "delivered",
+    deliveredToStorage: "deliveredToStorage",
 };
 
 export class ProductionAnalytics extends BasicSerializableObject {
@@ -28,6 +29,7 @@ export class ProductionAnalytics extends BasicSerializableObject {
             [enumAnalyticsDataSource.produced]: [],
             [enumAnalyticsDataSource.stored]: [],
             [enumAnalyticsDataSource.delivered]: [],
+            [enumAnalyticsDataSource.deliveredToStorage]: [],
         };
 
         for (let i = 0; i < globalConfig.statisticsGraphSlices; ++i) {
@@ -36,6 +38,7 @@ export class ProductionAnalytics extends BasicSerializableObject {
 
         this.root.signals.shapeDelivered.add(this.onShapeDelivered, this);
         this.root.signals.itemProduced.add(this.onItemProduced, this);
+        this.root.signals.itemDeliveredToStorage.add(this.onItemDeliveredToStorage, this);
 
         this.lastAnalyticsSlice = 0;
     }
@@ -58,6 +61,20 @@ export class ProductionAnalytics extends BasicSerializableObject {
             const key = definition.getHash();
             const entry = this.history[enumAnalyticsDataSource.produced];
             entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + 1;
+        }
+    }
+
+    /**
+     * @param {number} uid
+     * @param {BaseItem} item
+     * @param {number} count
+     */
+    onItemDeliveredToStorage(uid, item, count) {
+        if (item.getItemType() === enumItemType.shape) {
+            const definition = /** @type {ShapeItem} */ (item).definition;
+            const key = uid + "," + definition.getHash();
+            const entry = this.history[enumAnalyticsDataSource.deliveredToStorage];
+            entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + count;
         }
     }
 

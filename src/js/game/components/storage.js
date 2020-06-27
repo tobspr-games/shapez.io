@@ -43,6 +43,11 @@ export class StorageComponent extends Component {
         this.storedCount = 0;
 
         /**
+         * Item to be analyzed
+         */
+        this.itemsToAnalyze = 0;
+
+        /**
          * We compute an opacity to make sure it doesn't flicker
          */
         this.overlayOpacity = 0;
@@ -86,5 +91,6 @@ export class StorageComponent extends Component {
     takeItem(item) {
         this.storedItem = item;
         this.storedCount++;
+        this.itemsToAnalyze++;
     }
 }

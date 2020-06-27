@@ -18,6 +18,16 @@ export class StorageSystem extends GameSystemWithFilter {
             const entity = this.allEntities[i];
             const storageComp = entity.components.Storage;
 
+            // Analytics hook
+            if (storageComp.itemsToAnalyze > 0) {
+                this.root.signals.itemDeliveredToStorage.dispatch(
+                    entity.uid,
+                    storageComp.storedItem,
+                    storageComp.itemsToAnalyze
+                );
+                storageComp.itemsToAnalyze = 0;
+            }
+
             // Eject from storage
             if (storageComp.storedItem && storageComp.storedCount > 0) {
                 const ejectorComp = entity.components.ItemEjector;
