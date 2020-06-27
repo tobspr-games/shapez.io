@@ -5,7 +5,6 @@ import { Application } from "../application";
 
 import { BufferMaintainer } from "../core/buffer_maintainer";
 import { disableImageSmoothing, enableImageSmoothing, registerCanvas } from "../core/buffer_utils";
-import { Math_random } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
@@ -443,7 +442,7 @@ export class GameCore {
             for (let i = 0; i < 1e8; ++i) {
                 sum += i;
             }
-            if (Math_random() > 0.95) {
+            if (Math.random() > 0.95) {
                 console.log(sum);
             }
         }

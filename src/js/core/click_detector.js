@@ -1,4 +1,3 @@
-import { performanceNow } from "../core/builtins";
 import { createLogger } from "../core/logging";
 import { Signal } from "../core/signal";
 import { fastArrayDelete, fastArrayDeleteValueIfContained } from "./utils";
@@ -246,7 +245,7 @@ export class ClickDetector {
         }
 
         if (window.TouchEvent && event instanceof TouchEvent) {
-            clickDetectorGlobals.lastTouchTime = performanceNow();
+            clickDetectorGlobals.lastTouchTime = performance.now();
 
             // console.log("Got touches", event.targetTouches.length, "vs", expectedRemainingTouches);
             if (event.targetTouches.length !== expectedRemainingTouches) {
@@ -255,7 +254,7 @@ export class ClickDetector {
         }
 
         if (event instanceof MouseEvent) {
-            if (performanceNow() - clickDetectorGlobals.lastTouchTime < 1000.0) {
+            if (performance.now() - clickDetectorGlobals.lastTouchTime < 1000.0) {
                 return false;
             }
         }
@@ -340,7 +339,7 @@ export class ClickDetector {
 
         // Store where the touch started
         this.clickDownPosition = position;
-        this.clickStartTime = performanceNow();
+        this.clickStartTime = performance.now();
         this.touchstartSimple.dispatch(this.clickDownPosition.x, this.clickDownPosition.y);
 
         // If we are not currently within a click, register it

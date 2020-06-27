@@ -1,12 +1,3 @@
-import {
-    Math_abs,
-    Math_ceil,
-    Math_floor,
-    Math_max,
-    Math_min,
-    Math_random,
-    performanceNow,
-} from "../core/builtins";
 import { clickDetectorGlobals } from "../core/click_detector";
 import { globalConfig, SUPPORT_TOUCH } from "../core/config";
 import { createLogger } from "../core/logging";
@@ -137,8 +128,8 @@ export class Camera extends BasicSerializableObject {
     addScreenShake(amount) {
         const currentShakeAmount = this.currentShake.length();
         const scale = 1 / (1 + 3 * currentShakeAmount);
-        this.currentShake.x = this.currentShake.x + 2 * (Math_random() - 0.5) * scale * amount;
-        this.currentShake.y = this.currentShake.y + 2 * (Math_random() - 0.5) * scale * amount;
+        this.currentShake.x = this.currentShake.x + 2 * (Math.random() - 0.5) * scale * amount;
+        this.currentShake.y = this.currentShake.y + 2 * (Math.random() - 0.5) * scale * amount;
     }
 
     /**
@@ -181,7 +172,7 @@ export class Camera extends BasicSerializableObject {
         const zoomLevelX = this.root.gameWidth / desiredWorldSpaceWidth;
         const zoomLevelY = this.root.gameHeight / desiredWorldSpaceWidth;
 
-        const finalLevel = Math_min(zoomLevelX, zoomLevelY);
+        const finalLevel = Math.min(zoomLevelX, zoomLevelY);
         assert(
             Number.isFinite(finalLevel) && finalLevel > 0,
             "Invalid zoom level computed for initial zoom: " + finalLevel
@@ -292,10 +283,10 @@ export class Camera extends BasicSerializableObject {
      */
     getVisibleRect() {
         return Rectangle.fromTRBL(
-            Math_floor(this.getViewportTop()),
-            Math_ceil(this.getViewportRight()),
-            Math_ceil(this.getViewportBottom()),
-            Math_floor(this.getViewportLeft())
+            Math.floor(this.getViewportTop()),
+            Math.ceil(this.getViewportRight()),
+            Math.ceil(this.getViewportBottom()),
+            Math.floor(this.getViewportLeft())
         );
     }
 
@@ -426,7 +417,7 @@ export class Camera extends BasicSerializableObject {
      * should get ignored
      */
     checkPreventDoubleMouse() {
-        if (performanceNow() - clickDetectorGlobals.lastTouchTime < 1000.0) {
+        if (performance.now() - clickDetectorGlobals.lastTouchTime < 1000.0) {
             return false;
         }
         return true;
@@ -531,7 +522,7 @@ export class Camera extends BasicSerializableObject {
             // event.stopPropagation();
         }
 
-        clickDetectorGlobals.lastTouchTime = performanceNow();
+        clickDetectorGlobals.lastTouchTime = performance.now();
         this.touchPostMoveVelocity = new Vector(0, 0);
 
         if (event.touches.length === 1) {
@@ -565,7 +556,7 @@ export class Camera extends BasicSerializableObject {
             // event.stopPropagation();
         }
 
-        clickDetectorGlobals.lastTouchTime = performanceNow();
+        clickDetectorGlobals.lastTouchTime = performance.now();
 
         if (event.touches.length === 1) {
             const touch = event.touches[0];
@@ -585,7 +576,7 @@ export class Camera extends BasicSerializableObject {
                 const thisDistance = newPinchPositions[0].distance(newPinchPositions[1]);
 
                 // IMPORTANT to do math max here to avoid NaN and causing an invalid zoom level
-                const difference = thisDistance / Math_max(0.001, lastDistance);
+                const difference = thisDistance / Math.max(0.001, lastDistance);
 
                 // Find old center of zoom
                 let oldCenter = this.lastPinchPositions[0].centerPoint(this.lastPinchPositions[1]);
@@ -645,7 +636,7 @@ export class Camera extends BasicSerializableObject {
             }
         }
 
-        clickDetectorGlobals.lastTouchTime = performanceNow();
+        clickDetectorGlobals.lastTouchTime = performance.now();
         if (event.changedTouches.length === 0) {
             logger.warn("Touch end without changed touches");
         }
@@ -753,7 +744,7 @@ export class Camera extends BasicSerializableObject {
      * @param {number} dt Delta time in milliseconds
      */
     update(dt) {
-        dt = Math_min(dt, 33);
+        dt = Math.min(dt, 33);
         this.cameraUpdateTimeBucket += dt;
 
         // Simulate movement of N FPS
@@ -861,7 +852,7 @@ export class Camera extends BasicSerializableObject {
     internalUpdateZooming(now, dt) {
         if (!this.currentlyPinching && this.desiredZoom !== null) {
             const diff = this.zoomLevel - this.desiredZoom;
-            if (Math_abs(diff) > 0.0001) {
+            if (Math.abs(diff) > 0.0001) {
                 let fade = 0.94;
                 if (diff > 0) {
                     // Zoom out faster than in
@@ -889,7 +880,7 @@ export class Camera extends BasicSerializableObject {
             const length = diff.length();
             const tolerance = 1 / this.zoomLevel;
             if (length > tolerance) {
-                const movement = diff.multiplyScalar(Math_min(1, dt * 0.008));
+                const movement = diff.multiplyScalar(Math.min(1, dt * 0.008));
                 this.center.x += movement.x;
                 this.center.y += movement.y;
             } else {
@@ -905,7 +896,7 @@ export class Camera extends BasicSerializableObject {
      */
     internalUpdateKeyboardForce(now, dt) {
         if (!this.currentlyMoving && this.desiredCenter == null) {
-            const limitingDimension = Math_min(this.root.gameWidth, this.root.gameHeight);
+            const limitingDimension = Math.min(this.root.gameWidth, this.root.gameHeight);
 
             const moveAmount = ((limitingDimension / 2048) * dt) / this.zoomLevel;
 

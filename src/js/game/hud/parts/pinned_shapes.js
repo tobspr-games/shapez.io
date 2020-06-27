@@ -1,4 +1,3 @@
-import { Math_max } from "../../../core/builtins";
 import { ClickDetector } from "../../../core/click_detector";
 import { formatBigNumber, makeDiv, arrayDelete, arrayDeleteValue } from "../../../core/utils";
 import { ShapeDefinition } from "../../shape_definition";

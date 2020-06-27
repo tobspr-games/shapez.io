@@ -1,4 +1,3 @@
-import { Math_radians } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite } from "../../../core/draw_utils";
@@ -368,7 +367,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     sprite: this.lockIndicatorSprite,
                     x: worldPos.x,
                     y: worldPos.y,
-                    angle: Math_radians(rotation),
+                    angle: Math.radians(rotation),
                     size: 12,
                     offsetY:
                         -globalConfig.halfTileSize -
@@ -432,7 +431,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                         sprite,
                         x: acceptorSlotWsPos.x,
                         y: acceptorSlotWsPos.y,
-                        angle: Math_radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
+                        angle: Math.radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
                         size: 13,
                         offsetY: offsetShift + 13,
                     });
@@ -478,7 +477,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     sprite,
                     x: ejectorSLotWsPos.x,
                     y: ejectorSLotWsPos.y,
-                    angle: Math_radians(enumDirectionToAngle[ejectorSlotWsDirection]),
+                    angle: Math.radians(enumDirectionToAngle[ejectorSlotWsDirection]),
                     size: 13,
                     offsetY: offsetShift,
                 });

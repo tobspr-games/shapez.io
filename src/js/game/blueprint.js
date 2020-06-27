@@ -5,7 +5,6 @@ import { Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { GameRoot } from "./root";
 import { findNiceIntegerValue } from "../core/utils";
-import { Math_pow } from "../core/builtins";
 import { blueprintShape } from "./upgrades";
 import { globalConfig } from "../core/config";
 
@@ -58,7 +57,7 @@ export class Blueprint {
         if (G_IS_DEV && globalConfig.debug.blueprintsNoCost) {
             return 0;
         }
-        return findNiceIntegerValue(4 * Math_pow(this.entities.length, 1.1));
+        return findNiceIntegerValue(4 * Math.pow(this.entities.length, 1.1));
     }
 
     /**

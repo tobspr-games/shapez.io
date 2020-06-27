@@ -1,6 +1,4 @@
 import { globalConfig } from "../core/config";
-import { Math_floor, performanceNow } from "./builtins";
-
 const circularJson = require("circular-json");
 
 /*
@@ -231,7 +229,7 @@ function logInternal(handle, consoleMethod, args) {
     const labelColor = handle && handle.LOG_LABEL_COLOR ? handle.LOG_LABEL_COLOR : "#aaa";
 
     if (G_IS_DEV && globalConfig.debug.logTimestamps) {
-        const timestamp = "⏱ %c" + (Math_floor(performanceNow()) + "").padEnd(6, " ") + "";
+        const timestamp = "⏱ %c" + (Math.floor(performance.now()) + "").padEnd(6, " ") + "";
         consoleMethod.call(
             console,
             timestamp + " %c" + context,

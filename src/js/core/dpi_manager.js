@@ -1,5 +1,4 @@
 import { globalConfig } from "../core/config";
-import { Math_ceil, Math_floor, Math_round } from "./builtins";
 import { round1Digit, round2Digits } from "./utils";
 
 /**
@@ -23,7 +22,7 @@ export function smoothenDpi(dpi) {
     } else if (dpi < 1) {
         return round1Digit(dpi);
     } else {
-        return round1Digit(Math_round(dpi / 0.5) * 0.5);
+        return round1Digit(Math.round(dpi / 0.5) * 0.5);
     }
 }
 
@@ -59,11 +58,11 @@ export function prepareHighDPIContext(context, smooth = true) {
 export function resizeHighDPICanvas(canvas, w, h, smooth = true) {
     const dpi = getDeviceDPI();
 
-    const wNumber = Math_floor(w);
-    const hNumber = Math_floor(h);
+    const wNumber = Math.floor(w);
+    const hNumber = Math.floor(h);
 
-    const targetW = Math_floor(wNumber * dpi);
-    const targetH = Math_floor(hNumber * dpi);
+    const targetW = Math.floor(wNumber * dpi);
+    const targetH = Math.floor(hNumber * dpi);
 
     if (targetW !== canvas.width || targetH !== canvas.height) {
         // console.log("Resize Canvas from", canvas.width, canvas.height, "to", targetW, targetH)
@@ -82,8 +81,8 @@ export function resizeHighDPICanvas(canvas, w, h, smooth = true) {
  * @param {number} h
  */
 export function resizeCanvas(canvas, w, h, setStyle = true) {
-    const actualW = Math_ceil(w);
-    const actualH = Math_ceil(h);
+    const actualW = Math.ceil(w);
+    const actualH = Math.ceil(h);
     if (actualW !== canvas.width || actualH !== canvas.height) {
         canvas.width = actualW;
         canvas.height = actualH;
@@ -103,8 +102,8 @@ export function resizeCanvas(canvas, w, h, setStyle = true) {
  * @param {number} h
  */
 export function resizeCanvasAndClear(canvas, context, w, h) {
-    const actualW = Math_ceil(w);
-    const actualH = Math_ceil(h);
+    const actualW = Math.ceil(w);
+    const actualH = Math.ceil(h);
     if (actualW !== canvas.width || actualH !== canvas.height) {
         canvas.width = actualW;
         canvas.height = actualH;

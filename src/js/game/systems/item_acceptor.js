@@ -6,7 +6,6 @@ import { enumDirectionToVector, enumDirectionToAngle } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { Loader } from "../../core/loader";
 import { drawRotatedSprite } from "../../core/draw_utils";
-import { Math_radians, Math_min } from "../../core/builtins";
 import { BELT_ANIM_COUNT } from "./belt";
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
@@ -98,7 +97,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
         }
 
         // Limit speed to avoid belts going backwards
-        const speedMultiplier = Math_min(this.root.hubGoals.getBeltBaseSpeed(), 10);
+        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
         const underlays = acceptorComp.beltUnderlays;
         for (let i = 0; i < underlays.length; ++i) {
@@ -118,7 +117,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
                 sprite: this.underlayBeltSprites[animationIndex % this.underlayBeltSprites.length],
                 x: (transformedPos.x + 0.5) * globalConfig.tileSize,
                 y: (transformedPos.y + 0.5) * globalConfig.tileSize,
-                angle: Math_radians(angle),
+                angle: Math.radians(angle),
                 size: globalConfig.tileSize,
             });
         }

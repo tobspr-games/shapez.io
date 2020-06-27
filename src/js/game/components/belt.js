@@ -1,11 +1,10 @@
-import { Math_cos, Math_PI, Math_sin } from "../../core/builtins";
 import { enumDirection, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { BeltPath } from "../belt_path";
 import { Component } from "../component";
 import { Entity } from "../entity";
 
-export const curvedBeltLength = /* Math_PI / 4 */ 0.78;
+export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 
 export class BeltComponent extends Component {
     static getId() {
@@ -65,13 +64,13 @@ export class BeltComponent extends Component {
 
             case enumDirection.right: {
                 assert(progress <= curvedBeltLength + 0.02, "Invalid progress 2: " + progress);
-                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math_PI;
-                return new Vector(0.5 - 0.5 * Math_cos(arcProgress), 0.5 - 0.5 * Math_sin(arcProgress));
+                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
+                return new Vector(0.5 - 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
             }
             case enumDirection.left: {
                 assert(progress <= curvedBeltLength + 0.02, "Invalid progress 3: " + progress);
-                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math_PI;
-                return new Vector(-0.5 + 0.5 * Math_cos(arcProgress), 0.5 - 0.5 * Math_sin(arcProgress));
+                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
+                return new Vector(-0.5 + 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
             }
             default:
                 assertAlways(false, "Invalid belt direction: " + this.direction);

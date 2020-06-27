@@ -1,6 +1,5 @@
 import { GameRoot } from "./root";
 import { globalConfig, IS_DEBUG } from "../core/config";
-import { Math_max } from "../core/builtins";
 import { createLogger } from "../core/logging";
 
 // How important it is that a savegame is created
@@ -29,7 +28,7 @@ export class AutomaticSave {
     }
 
     setSaveImportance(importance) {
-        this.saveImportance = Math_max(this.saveImportance, importance);
+        this.saveImportance = Math.max(this.saveImportance, importance);
     }
 
     doSave() {
@@ -54,7 +53,7 @@ export class AutomaticSave {
         }
 
         // Check when the last save was, but make sure that if it fails, we don't spam
-        const lastSaveTime = Math_max(this.lastSaveAttempt, this.root.savegame.getRealLastUpdate());
+        const lastSaveTime = Math.max(this.lastSaveAttempt, this.root.savegame.getRealLastUpdate());
 
         const secondsSinceLastSave = (Date.now() - lastSaveTime) / 1000.0;
         let shouldSave = false;

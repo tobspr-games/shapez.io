@@ -1,4 +1,3 @@
-import { Math_random } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { queryParamOptions } from "../core/query_parameters";
 import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/utils";
@@ -336,14 +335,14 @@ export class HubGoals extends BasicSerializableObject {
             }
 
             // Sometimes shapes are missing
-            if (Math_random() > 0.85) {
+            if (Math.random() > 0.85) {
                 layer[randomInt(0, 3)] = null;
             }
 
             // Sometimes they actually are missing *two* ones!
             // Make sure at max only one layer is missing it though, otherwise we could
             // create an uncreateable shape
-            if (Math_random() > 0.95 && !anyIsMissingTwo) {
+            if (Math.random() > 0.95 && !anyIsMissingTwo) {
                 layer[randomInt(0, 3)] = null;
                 anyIsMissingTwo = true;
             }

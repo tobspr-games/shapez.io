@@ -1,4 +1,3 @@
-import { Math_min } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
@@ -207,7 +206,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const targetEntity = sourceSlot.cachedTargetEntity;
 
                 // Advance items on the slot
-                sourceSlot.progress = Math_min(1, sourceSlot.progress + progressGrowth);
+                sourceSlot.progress = Math.min(1, sourceSlot.progress + progressGrowth);
 
                 // Check if we are still in the process of ejecting, can't proceed then
                 if (sourceSlot.progress < 1.0) {

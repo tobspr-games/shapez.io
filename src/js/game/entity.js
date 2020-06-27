@@ -10,7 +10,6 @@ import { BasicSerializableObject, types } from "../savegame/serialization";
 import { EntityComponentStorage } from "./entity_components";
 import { Loader } from "../core/loader";
 import { drawRotatedSprite } from "../core/draw_utils";
-import { Math_radians } from "../core/builtins";
 import { gComponentRegistry } from "../core/global_registries";
 
 export class Entity extends BasicSerializableObject {
@@ -166,7 +165,7 @@ export class Entity extends BasicSerializableObject {
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     const direction = staticComp.localDirectionToWorld(slot.direction);
                     const directionVector = enumDirectionToVector[direction];
-                    const angle = Math_radians(enumDirectionToAngle[direction]);
+                    const angle = Math.radians(enumDirectionToAngle[direction]);
 
                     context.globalAlpha = slot.item ? 1 : 0.2;
                     drawRotatedSprite({
@@ -189,7 +188,7 @@ export class Entity extends BasicSerializableObject {
                     for (let k = 0; k < slot.directions.length; ++k) {
                         const direction = staticComp.localDirectionToWorld(slot.directions[k]);
                         const directionVector = enumDirectionToVector[direction];
-                        const angle = Math_radians(enumDirectionToAngle[direction] + 180);
+                        const angle = Math.radians(enumDirectionToAngle[direction] + 180);
                         context.globalAlpha = 0.4;
                         drawRotatedSprite({
                             parameters,

@@ -1,4 +1,3 @@
-import { Math_min, Math_max } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
@@ -538,7 +537,7 @@ export class BeltPath extends BasicSerializableObject {
             } else {
                 // Seems this item is on the first path (so all good), so just make sure it doesn't
                 // have a nextDistance which is bigger than the total path length
-                const clampedDistanceToNext = Math_min(itemPos + distanceToNext, firstPathLength) - itemPos;
+                const clampedDistanceToNext = Math.min(itemPos + distanceToNext, firstPathLength) - itemPos;
                 if (clampedDistanceToNext < distanceToNext) {
                     DEBUG &&
                         logger.log(
@@ -938,9 +937,9 @@ export class BeltPath extends BasicSerializableObject {
             const nextDistanceAndItem = this.items[i];
             const minimumSpacing = minimumDistance;
 
-            const takeAway = Math_max(
+            const takeAway = Math.max(
                 0,
-                Math_min(remainingAmount, nextDistanceAndItem[_nextDistance] - minimumSpacing)
+                Math.min(remainingAmount, nextDistanceAndItem[_nextDistance] - minimumSpacing)
             );
 
             remainingAmount -= takeAway;
@@ -984,7 +983,7 @@ export class BeltPath extends BasicSerializableObject {
 
             if (currentLength + localLength >= progress || i === this.entityPath.length - 1) {
                 // Min required here due to floating point issues
-                const localProgress = Math_min(1.0, progress - currentLength);
+                const localProgress = Math.min(1.0, progress - currentLength);
 
                 assert(localProgress >= 0.0, "Invalid local progress: " + localProgress);
                 const localSpace = beltComp.transformBeltToLocalSpace(localProgress);

@@ -2,8 +2,6 @@
 import CompressionWorker from "../webworkers/compression.worker";
 import { createLogger } from "./logging";
 import { compressX64 } from "./lzstring";
-import { performanceNow, JSON_stringify } from "./builtins";
-
 const logger = createLogger("async_compression");
 
 export let compressionPrefix = String.fromCodePoint(1);
@@ -53,7 +51,7 @@ class AsynCompression {
                 return;
             }
 
-            const duration = performanceNow() - jobData.startTime;
+            const duration = performance.now() - jobData.startTime;
             // log(this, "Got response from worker within", duration.toFixed(2), "ms");
             const resolver = jobData.resolver;
             delete this.currentJobs[jobId];
@@ -100,7 +98,7 @@ class AsynCompression {
             this.currentJobs[jobId] = {
                 errorHandler,
                 resolver: resolve,
-                startTime: performanceNow(),
+                startTime: performance.now(),
             };
             this.worker.postMessage({ jobId, job, data });
         });

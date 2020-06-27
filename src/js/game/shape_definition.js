@@ -1,5 +1,4 @@
 import { makeOffscreenBuffer } from "../core/buffer_utils";
-import { JSON_parse, JSON_stringify, Math_max, Math_PI, Math_radians } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { smoothenDpi } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
@@ -235,7 +234,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @returns {Array<ShapeLayer>}
      */
     internalCloneLayers() {
-        return JSON_parse(JSON_stringify(this.layers));
+        return JSON.parse(JSON.stringify(this.layers));
     }
 
     /**
@@ -340,7 +339,7 @@ export class ShapeDefinition extends BasicSerializableObject {
         for (let layerIndex = 0; layerIndex < this.layers.length; ++layerIndex) {
             const quadrants = this.layers[layerIndex];
 
-            const layerScale = Math_max(0.1, 0.9 - layerIndex * 0.22);
+            const layerScale = Math.max(0.1, 0.9 - layerIndex * 0.22);
 
             for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 if (!quadrants[quadrantIndex]) {
@@ -352,7 +351,7 @@ export class ShapeDefinition extends BasicSerializableObject {
                 const centerQuadrantX = quadrantPos.x * quadrantHalfSize;
                 const centerQuadrantY = quadrantPos.y * quadrantHalfSize;
 
-                const rotation = Math_radians(quadrantIndex * 90);
+                const rotation = Math.radians(quadrantIndex * 90);
 
                 context.translate(centerQuadrantX, centerQuadrantY);
                 context.rotate(rotation);
@@ -414,7 +413,7 @@ export class ShapeDefinition extends BasicSerializableObject {
                             insetPadding + -quadrantHalfSize,
                             -insetPadding + quadrantHalfSize,
                             quadrantSize * layerScale,
-                            -Math_PI * 0.5,
+                            -Math.PI * 0.5,
                             0
                         );
                         context.closePath();

@@ -209,7 +209,7 @@ export class Savegame extends ReadWriteProxy {
         // Construct a new serializer
         const serializer = new SavegameSerializer();
 
-        // let timer = performanceNow();
+        // let timer = performance.now();
         const dump = serializer.generateDumpFromGameRoot(root);
         if (!dump) {
             return false;

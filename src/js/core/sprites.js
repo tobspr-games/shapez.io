@@ -1,5 +1,4 @@
 import { DrawParameters } from "./draw_parameters";
-import { Math_floor } from "./builtins";
 import { Rectangle } from "./rectangle";
 import { epsilonCompare, round3Digits } from "./utils";
 
@@ -195,20 +194,20 @@ export class AtlasSprite extends BaseSprite {
                 link.atlas,
 
                 // atlas src pos
-                Math_floor(srcX),
-                Math_floor(srcY),
+                Math.floor(srcX),
+                Math.floor(srcY),
 
                 // atlas src size
-                Math_floor(srcW),
-                Math_floor(srcH),
+                Math.floor(srcW),
+                Math.floor(srcH),
 
                 // dest pos
-                Math_floor(destX),
-                Math_floor(destY),
+                Math.floor(destX),
+                Math.floor(destY),
 
                 // dest size
-                Math_floor(destW),
-                Math_floor(destH)
+                Math.floor(destW),
+                Math.floor(destH)
             );
         } else {
             parameters.context.drawImage(

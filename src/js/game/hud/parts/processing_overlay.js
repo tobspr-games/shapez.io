@@ -1,6 +1,5 @@
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { BaseHUDPart } from "../base_hud_part";
-import { performanceNow } from "../../../core/builtins";
 import { makeDiv } from "../../../core/utils";
 import { Signal } from "../../../core/signal";
 import { InputReceiver } from "../../../core/input_receiver";
@@ -62,15 +61,15 @@ export class HUDProcessingOverlay extends BaseHUDPart {
     }
 
     processSync() {
-        const now = performanceNow();
+        const now = performance.now();
         while (this.tasks.length > 0) {
             const workload = this.tasks[0];
             workload.call();
             this.tasks.shift();
         }
-        const duration = performanceNow() - now;
+        const duration = performance.now() - now;
         if (duration > 100) {
-            logger.log("Tasks done slow (SYNC!) within", (performanceNow() - now).toFixed(2), "ms");
+            logger.log("Tasks done slow (SYNC!) within", (performance.now() - now).toFixed(2), "ms");
         }
     }
 
@@ -89,15 +88,15 @@ export class HUDProcessingOverlay extends BaseHUDPart {
         }
 
         this.computeTimeout = setTimeout(() => {
-            const now = performanceNow();
+            const now = performance.now();
             while (this.tasks.length > 0) {
                 const workload = this.tasks[0];
                 workload.call();
                 this.tasks.shift();
             }
-            const duration = performanceNow() - now;
+            const duration = performance.now() - now;
             if (duration > 100) {
-                logger.log("Tasks done slow within", (performanceNow() - now).toFixed(2), "ms");
+                logger.log("Tasks done slow within", (performance.now() - now).toFixed(2), "ms");
             }
 
             this.domWatcher.update(false);

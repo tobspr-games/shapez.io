@@ -4,8 +4,6 @@ import { Signal } from "./signal";
 import BackgroundAnimationFrameEmitterWorker from "../webworkers/background_animation_frame_emittter.worker";
 
 import { createLogger } from "./logging";
-import { performanceNow } from "./builtins";
-
 const logger = createLogger("animation_frame");
 
 const maxDtMs = 1000;
@@ -34,7 +32,7 @@ export class AnimationFrame {
      * @param {MessageEvent} event
      */
     handleBackgroundTick(event) {
-        const time = performanceNow();
+        const time = performance.now();
         if (!this.bgLastTime) {
             // First update, first delta is always 16ms
             this.bgFrameEmitted.dispatch(1000 / 60);

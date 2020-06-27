@@ -1,6 +1,5 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, round3Digits, round2Digits } from "../../../core/utils";
-import { Math_round } from "../../../core/builtins";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 
@@ -34,7 +33,7 @@ export class HUDDebugInfo extends BaseHUDPart {
             this.tickRateElement.innerText = "Tickrate: " + this.root.dynamicTickrate.currentTickRate;
             this.fpsElement.innerText =
                 "FPS: " +
-                Math_round(this.root.dynamicTickrate.averageFps) +
+                Math.round(this.root.dynamicTickrate.averageFps) +
                 " (" +
                 round2Digits(1000 / this.root.dynamicTickrate.averageFps) +
                 " ms)";

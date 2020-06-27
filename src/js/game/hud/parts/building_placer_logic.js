@@ -1,4 +1,3 @@
-import { Math_abs, Math_degrees, Math_round } from "../../../core/builtins";
 import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { Signal, STOP_PROPAGATION } from "../../../core/signal";
@@ -565,10 +564,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Place from start to corner
         const pathToCorner = this.currentDirectionLockCorner.sub(startTile);
         const deltaToCorner = pathToCorner.normalize().round();
-        const lengthToCorner = Math_round(pathToCorner.length());
+        const lengthToCorner = Math.round(pathToCorner.length());
         let currentPos = startTile.copy();
 
-        let rotation = (Math.round(Math_degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
+        let rotation = (Math.round(Math.degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
 
         if (lengthToCorner > 0) {
             for (let i = 0; i < lengthToCorner; ++i) {
@@ -583,10 +582,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Place from corner to end
         const pathFromCorner = mouseTile.sub(this.currentDirectionLockCorner);
         const deltaFromCorner = pathFromCorner.normalize().round();
-        const lengthFromCorner = Math_round(pathFromCorner.length());
+        const lengthFromCorner = Math.round(pathFromCorner.length());
 
         if (lengthFromCorner > 0) {
-            rotation = (Math.round(Math_degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
+            rotation = (Math.round(Math.degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
             for (let i = 0; i < lengthFromCorner + 1; ++i) {
                 result.push({
                     tile: currentPos.copy(),
@@ -722,7 +721,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     ).pressed
                 ) {
                     const delta = newPos.sub(oldPos);
-                    const angleDeg = Math_degrees(delta.angle());
+                    const angleDeg = Math.degrees(delta.angle());
                     this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
 
                     // Holding alt inverts the placement
@@ -737,8 +736,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 let x1 = newPos.x;
                 let y1 = newPos.y;
 
-                var dx = Math_abs(x1 - x0);
-                var dy = Math_abs(y1 - y0);
+                var dx = Math.abs(x1 - x0);
+                var dy = Math.abs(y1 - y0);
                 var sx = x0 < x1 ? 1 : -1;
                 var sy = y0 < y1 ? 1 : -1;
                 var err = dx - dy;

@@ -1,6 +1,5 @@
 import { AnimationFrame } from "./core/animation_frame";
 import { BackgroundResourcesLoader } from "./core/background_resources_loader";
-import { performanceNow } from "./core/builtins";
 import { IS_MOBILE } from "./core/config";
 import { GameState } from "./core/game_state";
 import { GLOBAL_APP, setGlobalApp } from "./core/globals";
@@ -356,7 +355,7 @@ export class Application {
             return;
         }
 
-        const time = performanceNow();
+        const time = performance.now();
 
         // Periodically check for resizes, this is expensive (takes 2-3ms so only do it once in a while!)
         if (!this.lastResizeCheck || time - this.lastResizeCheck > 1000) {

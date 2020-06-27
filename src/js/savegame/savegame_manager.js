@@ -3,8 +3,6 @@ import { createLogger } from "../core/logging";
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { globalConfig } from "../core/config";
 import { Savegame } from "./savegame";
-import { Math_floor } from "../core/builtins";
-
 const logger = createLogger("savegame_manager");
 
 const Rusha = require("rusha");

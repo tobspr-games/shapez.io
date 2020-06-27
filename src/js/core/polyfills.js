@@ -1,12 +1,12 @@
 function mathPolyfills() {
     // Converts from degrees to radians.
     Math.radians = function (degrees) {
-        return (degrees * Math_PI) / 180.0;
+        return (degrees * Math.PI) / 180.0;
     };
 
     // Converts from radians to degrees.
     Math.degrees = function (radians) {
-        return (radians * 180.0) / Math_PI;
+        return (radians * 180.0) / Math.PI;
     };
 }
 
@@ -98,8 +98,6 @@ function initExtensions() {
 
 // Fetch polyfill
 import "whatwg-fetch";
-import { Math_PI } from "./builtins";
-
 // Other polyfills
 initPolyfills();
 initExtensions();

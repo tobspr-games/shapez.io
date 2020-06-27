@@ -1,4 +1,3 @@
-import { Math_max } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
 import {
@@ -40,7 +39,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             // Decrease remaining time of all items in belt
             for (let k = 0; k < pendingItems.length; ++k) {
                 const item = pendingItems[k];
-                item[1] = Math_max(0, item[1] - delta);
+                item[1] = Math.max(0, item[1] - delta);
                 if (G_IS_DEV && globalConfig.debug.instantBelts) {
                     item[1] = 0;
                 }

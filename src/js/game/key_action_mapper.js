@@ -7,8 +7,6 @@ import { Application } from "../application";
 import { Signal, STOP_PROPAGATION } from "../core/signal";
 import { IS_MOBILE } from "../core/config";
 import { T } from "../translations";
-import { JSON_stringify } from "../core/builtins";
-
 function key(str) {
     return str.toUpperCase().charCodeAt(0);
 }
@@ -446,7 +444,7 @@ export class KeyActionMapper {
     getBinding(binding) {
         // @ts-ignore
         const id = binding.id;
-        assert(id, "Not a valid keybinding: " + JSON_stringify(binding));
+        assert(id, "Not a valid keybinding: " + JSON.stringify(binding));
         assert(this.keybindings[id], "Keybinding " + id + " not known!");
         return this.keybindings[id];
     }

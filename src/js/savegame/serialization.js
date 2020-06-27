@@ -1,4 +1,3 @@
-import { JSON_stringify } from "../core/builtins";
 import {
     BaseDataType,
     TypeArray,
@@ -223,7 +222,7 @@ export function serializeSchema(obj, schema, mergeWith = {}) {
             );
         }
         if (!schema[key]) {
-            assert(false, "Invalid schema (bad key '" + key + "'): " + JSON_stringify(schema));
+            assert(false, "Invalid schema (bad key '" + key + "'): " + JSON.stringify(schema));
         }
 
         if (G_IS_DEV) {

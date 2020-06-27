@@ -1,4 +1,3 @@
-import { Math_min } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
@@ -482,7 +481,7 @@ export class BeltSystem extends GameSystemWithFilter {
         }
 
         // Limit speed to avoid belts going backwards
-        const speedMultiplier = Math_min(this.root.hubGoals.getBeltBaseSpeed(), 10);
+        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
         // SYNC with systems/item_acceptor.js:drawEntityUnderlays!
         // 126 / 42 is the exact animation speed of the png animation
