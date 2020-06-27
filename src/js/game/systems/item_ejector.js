@@ -62,7 +62,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     "#fe50a6"
                 );
             }
-            this.recomputeAreaCache(this.areaToRecompute);
+            this.recomputeAreaCache();
             this.areaToRecompute = null;
         } else {
             logger.log("Full cache recompute");
@@ -83,10 +83,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     /**
-     *
-     * @param {Rectangle} area
+     * Recomputes the cache in the given area
      */
-    recomputeAreaCache(area) {
+    recomputeAreaCache() {
+        const area = this.areaToRecompute;
         let entryCount = 0;
 
         logger.log("Recomputing area:", area.x, area.y, "/", area.w, area.h);

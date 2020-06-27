@@ -3,12 +3,20 @@ import { Component } from "../component";
 import { globalConfig } from "../../core/config";
 import { types } from "../../savegame/serialization";
 import { gItemRegistry } from "../../core/global_registries";
+import { Entity } from "../entity";
 
 /** @enum {string} */
 export const enumUndergroundBeltMode = {
     sender: "sender",
     receiver: "receiver",
 };
+
+/**
+ * @typedef {{
+ *   entity: Entity,
+ *   distance: number
+ * }} LinkedUndergroundBelt
+ */
 
 export class UndergroundBeltComponent extends Component {
     static getId() {
@@ -52,6 +60,13 @@ export class UndergroundBeltComponent extends Component {
          * @type {Array<[BaseItem, number]>} Format is [Item, remaining seconds until transfer/ejection]
          */
         this.pendingItems = [];
+
+        /**
+         * The linked entity, used to speed up performance. This contains either
+         * the entrance or exit depending on the tunnel type
+         * @type {LinkedUndergroundBelt}
+         */
+        this.cachedLinkedEntity = null;
     }
 
     /**
