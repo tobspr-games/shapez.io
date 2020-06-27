@@ -88,10 +88,12 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 }
 
                 const contentsUndergroundComp = contents.components.UndergroundBelt;
+                const contentsStaticComp = contents.components.StaticMapEntity;
                 if (
                     contentsUndergroundComp &&
                     contentsUndergroundComp.tier === undergroundComp.tier &&
-                    contentsUndergroundComp.mode === enumUndergroundBeltMode.sender
+                    contentsUndergroundComp.mode === enumUndergroundBeltMode.sender &&
+                    enumAngleToDirection[contentsStaticComp.rotation] === direction
                 ) {
                     matchingEntrance = {
                         entity: contents,
