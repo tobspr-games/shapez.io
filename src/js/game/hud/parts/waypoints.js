@@ -159,7 +159,7 @@ export class HUDWaypoints extends BaseHUDPart {
                  */
                 const [newCanvas, context] = makeOffscreenBuffer(48, 48, {
                     smooth: true,
-                    label: canvas.label + "-waypoint-" + i,
+                    label: label + "-waypoint-" + i,
                 });
                 context.drawImage(canvas, 0, 0);
                 element.appendChild(newCanvas);
