@@ -186,6 +186,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const sourceEntity = this.allEntities[i];
             const sourceEjectorComp = sourceEntity.components.ItemEjector;
+            if (!sourceEjectorComp.enabled) {
+                continue;
+            }
+
             if (!sourceEjectorComp.cachedConnectedSlots) {
                 continue;
             }

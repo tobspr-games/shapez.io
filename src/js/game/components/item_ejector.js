@@ -69,6 +69,11 @@ export class ItemEjectorComponent extends Component {
 
         /** @type {ItemEjectorSlot[]} */
         this.cachedConnectedSlots = null;
+
+        /**
+         * Whether this ejector slot is enabled
+         */
+        this.enabled = true;
     }
 
     /**
