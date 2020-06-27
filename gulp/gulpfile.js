@@ -104,7 +104,10 @@ gulp.task("utils.requireCleanWorkingTree", cb => {
     let output = $.trim(execSync("git status -su").toString("ascii")).replace(/\r/gi, "").split("\n");
 
     // Filter files which are OK to be untracked
-    output = output.filter(x => x.indexOf(".local.js") < 0);
+    output = output
+        .map(x => x.replace(/[\r\n]+/gi, ""))
+        .filter(x => x.indexOf(".local.js") < 0)
+        .filter(x => x.length > 0);
     if (output.length > 0) {
         console.error("\n\nYou have unstaged changes, please commit everything first!");
         console.error("Unstaged files:");
