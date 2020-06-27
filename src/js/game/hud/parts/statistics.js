@@ -27,6 +27,7 @@ export class HUDStatistics extends BaseHUDPart {
             enumAnalyticsDataSource.produced,
             enumAnalyticsDataSource.delivered,
             enumAnalyticsDataSource.stored,
+            enumAnalyticsDataSource.deliveredToStorage,
         ];
 
         for (let i = 0; i < dataSources.length; ++i) {
@@ -168,7 +169,8 @@ export class HUDStatistics extends BaseHUDPart {
                 break;
             }
             case enumAnalyticsDataSource.produced:
-            case enumAnalyticsDataSource.delivered: {
+            case enumAnalyticsDataSource.delivered:
+            case enumAnalyticsDataSource.deliveredToStorage: {
                 entries = Object.entries(this.root.productionAnalytics.getCurrentShapeRates(this.dataSource));
                 break;
             }
@@ -181,10 +183,11 @@ export class HUDStatistics extends BaseHUDPart {
         for (let i = 0; i < Math.min(entries.length, 200); ++i) {
             const entry = entries[i];
             const shapeKey = entry[0];
+            const shape = shapeKey.split(",")[1] || shapeKey;
 
             let handle = this.activeHandles[shapeKey];
             if (!handle) {
-                const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shapeKey);
+                const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
                 handle = this.activeHandles[shapeKey] = new HUDShapeStatisticsHandle(
                     this.root,
                     definition,

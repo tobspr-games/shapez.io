@@ -111,7 +111,8 @@
         &[data-displaymode="icons"] .displayIcons,
         &[data-datasource="produced"] .modeProduced,
         &[data-datasource="delivered"] .modeDelivered,
-        &[data-datasource="stored"] .modeStored {
+        &[data-datasource="stored"] .modeStored,
+        &[data-datasource="deliveredToStorage"] .modeDeliveredtostorage {
             opacity: 1;
         }
 

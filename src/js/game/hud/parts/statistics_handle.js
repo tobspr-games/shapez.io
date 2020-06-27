@@ -82,7 +82,8 @@ export class HUDShapeStatisticsHandle {
                 break;
             }
             case enumAnalyticsDataSource.delivered:
-            case enumAnalyticsDataSource.produced: {
+            case enumAnalyticsDataSource.produced:
+            case enumAnalyticsDataSource.deliveredToStorage: {
                 let rate =
                     (this.root.productionAnalytics.getCurrentShapeRate(dataSource, this.definition) /
                         globalConfig.analyticsSliceDurationSeconds) *
