@@ -30,13 +30,13 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io ist ein Spiel über den Bau von Fabriken um die Erstellung und Kombination von Formen zu automatisieren. Liefere die gewünschten, stetig komplexer werdenden Formen, um im Spiel voranzukommen und schalte Upgrades frei, die deine Fabrik zu beschleunigen!
+        shapez.io ist ein Spiel über den Bau von Fabriken, um die Erstellung und Kombination von Formen zu automatisieren. Liefere die gewünschten und zunehmend komplexer werdenden Formen an dein Hub, um im Spiel voranzukommen. Schalte durch Quests Upgrades frei, die deine Fabrik beschleunigen!
 
-        Da die Nachfrage steigt, wirst du deine Fabrik vergrößern müssen, um den Bedürfnissen gerecht zu werden - vergiss jedoch nicht die Ressourcen, du wirst in der [b]unendlichen Karte[/b] expandieren müssen!
+        Die Nachfrage steigt stetig und die Rezepte werden komplexer. Du wirst du deine Fabrik vergrößern müssen, um den Bedürfnissen gerecht zu werden - vergiss jedoch nicht die Ressourcen, du wirst in der [b]unendlichen Karte[/b] expandieren müssen!
 
-        Da Formen natürlich langweilig werden können, musst du Farben mischen und deine Formen damit bemalen - Kombiniere rote, grüne und blaue Farbressourcen, um verschiedene Farben herzustellen und Formen damit zu bemalen, um die Nachfrage zu befriedigen.
+        Durch die Kombination von roter, grüner und blauer Farbressourcen kannst du verschiedene Farben herstellen und Formen damit bemalen, um die Nachfrage zu befriedigen.
 
-        Dieses Spiel hat 18 verschiedene Level (Was dich schon Stunden beschäftig hält!) aber ich werde konstant neue Inhalte hinzufügen - Es ist echt viel geplant!
+        Dieses Spiel hat 18 verschiedene Level, die dich stundenlang beschäftigen werden, aber neue Inhalte sind bereits geplant und werden stetig hinzugefügt.
 
         [b]Vorteile der Standalone[/b]
 
@@ -51,8 +51,10 @@ steamPage:
 
         [b]Geplante Funktionen & Community Vorschläge[/b]
 
-        Diese Spiel ist open source - Jeder kann dazu beitragen! Abgesehen davon höre ich auf die Community! Ich versuche alle Vorschläge zu lesen und so viel Feedback einzubeziehen wie nur möglich.
+        Dieses Spiel ist Open Source - Jeder kann dazu beitragen! Abgesehen davon höre ich auf die Community! Ich versuche alle Vorschläge zu lesen und so viel Feedback einzubeziehen wie nur möglich.
 
+        Folgendes ist bereits in der Planung:
+        
         [list]
             [*] Story-Modus, in dem Gebäude Formen kosten
             [*] Mehr Gebäude und Level (nur in der Standalone-Version)
@@ -124,7 +126,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, aber das Spiel wird in deinem Browser langsam laufen! Erwerbe die Standalone-Version oder downloade Chrome für die beste Erfahrung!
+        Für ein optimales Spielerlebnis erwirb die Standalone-Version oder nutze einen Chromium Browser, etwa Edge oder Chrome. Dein Browser könnte das Spielerlebnis beeinträchtigen.
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
@@ -215,16 +217,16 @@ dialogs:
 
     featureRestriction:
         title: Demo Version
-        desc: Du hast ein Feature gefunden (<feature>), welches nicht in der Demo enthalten ist. Erwerbe die Standalone für das volle Erlebnis!
+        desc: Du hast ein Feature gefunden (<feature>), welches nicht in der Demo enthalten ist. Erwirb die Standalone für das volle Erlebnis!
 
     oneSavegameLimit:
         title: Begrenzte Spielstände
-        desc: Du kannst in der Demo nur einen Spielstand haben. Bitte lösche den existierenden Spielstand oder hole dir die Standalone!
+        desc: Du kannst in der Demo nur einen Spielstand haben. Bitte lösche den existierenden Spielstand oder erwirb die Standalone!
 
     updateSummary:
         title: Neues Update!
         desc: >-
-            Hier sind die Änderungen, seit dem du das letzte Mal gespielt hast:
+            Hier sind die Änderungen, seit deiner letzten Session:
 
     upgradesIntroduction:
         title: Upgrades Freischalten
@@ -256,7 +258,7 @@ dialogs:
         desc: Gib ihm einen griffigen Namen. Du kannst sogar die <strong>Abkürzung</strong> einer Form eingeben (Diese kann <a href="https://viewer.shapez.io" target="_blank">hier</a> generiert werden).
 
     markerDemoLimit:
-        desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Standalone, um unendlich viele Marker zu erstellen!
+        desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Standalone, um unbegrenzt viele Marker zu erstellen!
     massCutConfirm:
         title: Ausschneiden bestätigen
         desc: >-
@@ -265,7 +267,7 @@ dialogs:
     exportScreenshotWarning:
         title: Bildschirmfoto exportieren
         desc: >-
-            Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für extrem große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
+            Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für besonders große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -388,12 +390,12 @@ ingame:
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Platziere einen <strong>Extrahierer</strong> auf der <strong>Kreisform</strong> um sie zu extrahieren!
+            1_1_extractor: Platziere einen <strong>Extraktor</strong> auf der <strong>Kreisform</strong> um sie zu extrahieren!
             1_2_conveyor: >-
-                Verbinde den Extrahierer mit einem <strong>Förderband</strong> und schließe ihn am zentralen Gebäude an!<br><br>Tipp: <strong>Drück und ziehe</strong> das Förderband mit der Maus!
+                Verbinde den Extraktor mit einem <strong>Förderband</strong> und schließe ihn am zentralen Gebäude an!<br><br>Tipp: <strong>Drück und ziehe</strong> das Förderband mit der Maus!
 
             1_3_expand: >-
-                Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
+                Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extraktor und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
 
     colors:
         red: Rot
@@ -414,7 +416,7 @@ shopUpgrades:
         name: Förderbänder, Verteiler & Tunnel
         description: Geschw. x<currentMult> → x<newMult>
     miner:
-        name: Extrahierer
+        name: Extraktor
         description: Geschw. x<currentMult> → x<newMult>
     processors:
         name: Schneider, Rotierer & Stapler
@@ -428,16 +430,16 @@ buildings:
     belt:
         default:
             name: &belt Förderband
-            description: Transportiert Items. Halte und ziehe um mehrere zu platzieren.
+            description: Transportiert Items. Halte und ziehe, um mehrere zu platzieren.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extrahierer
-            description: Platziere ihn auf einer Form oder Farbe um sie zu extrahieren.
+            name: &miner Extraktor
+            description: Platziere ihn auf einer Form oder Farbe, um sie zu extrahieren.
 
         chainable:
-            name: Extrahierer (Kette)
-            description: Platziere ihn auf einer Form oder Farbe um sie zu extrahieren. Kann verkettet werden.
+            name: Extraktor (Kette)
+            description: Platziere ihn auf einer Form oder Farbe, um sie zu extrahieren. Kann verkettet werden.
 
     underground_belt: # Internal name for the Tunnel
         default:
@@ -555,8 +557,8 @@ storyRewards:
         desc: Du hast eine zweite Variante des <strong>Rotierers</strong> freigeschaltet! Damit können Items gegen den Uhrzeigensinn gedreht werden. Wähle den Rotierer aus und <strong>drücke 'T', um auf verschiedene Varianten zuzugreifen</strong>!
 
     reward_miner_chainable:
-        title: Extrahierer (Kette)
-        desc: Du hast den <strong>Extrahierer (Kette)</strong> freigeschaltet! Damit können die Ressourcen an den Nächsten <strong>weitergegeben</strong> werden, um Ressourcen effizienter zu extrahieren.
+        title: Extraktor (Kette)
+        desc: Du hast den <strong>Extraktor (Kette)</strong> freigeschaltet! Damit können die Ressourcen an den Nächsten <strong>weitergegeben</strong> werden, um Ressourcen effizienter zu extrahieren.
 
     reward_underground_belt_tier_2:
         title: Tunnel Stufe II
@@ -629,7 +631,7 @@ settings:
         scrollWheelSensitivity:
             title: Zoomempfindlichkeit
             description: >-
-                Ändert die Sensitivität des Zooms (Sowohl Mausrad, als auch Trackpad).
+                Ändert die Sensitivität des Zooms für Mausrad und Trackpad).
             sensitivity:
                 super_slow: Sehr langsam
                 slow: Langsam
@@ -663,7 +665,7 @@ settings:
         refreshRate:
             title: Zielbildwiederholrate
             description: >-
-                Für z.B einen 144-Hz-Monitor kann die Bildwiederholrate hier korrekt eingestellt werden. Bei einem zu langsamen Computer kann dies die Leistung beeinträchtigen.
+                Für z.B. einen 144-Hz-Monitor kann die Bildwiederholrate hier korrekt eingestellt werden. Bei einem zu langsamen Computer kann dies die Leistung beeinträchtigen.
 
         alwaysMultiplace:
             title: Mehrfachplatzierung
