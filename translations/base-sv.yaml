@@ -203,23 +203,23 @@ dialogs:
             Du behöver starta om spelet för att applicera inställningar.
 
     editKeybinding:
-        title: Ändra tangentbindningar
+        title: Ändra snabbtangenter
         desc: Tryck ned tangenten eller musknappen du vill tillsätta, eller escape för att avbryta.
 
     resetKeybindingsConfirmation:
-        title: Återställ tangentbindningar
+        title: Återställ snabbtangenter
         desc: Detta kommer att återställa alla tangentbindningar till deras standardtangenter. Var snäll och bekräfta.
 
     keybindingsResetOk:
-        title: Återställning av tangentbindningar
-        desc: Tangentbindningar har återställts!
+        title: Återställning av snabbtangenter
+        desc: Snabbtangenterna har återställts!
 
     featureRestriction:
         title: Demoversion
-        desc: Du försökte nå en funktion (<feature>) som inte är tillgänglig i demversionen. Överväg att skaffa den fristående versionen för den fulla upplevelsen!
+        desc: Du försökte nå en funktion (<feature>) som inte är tillgänglig i demoversionen. Överväg att skaffa den fristående versionen för den fulla upplevelsen!
 
     oneSavegameLimit:
-        title: Limiterad mängd sparfiler
+        title: Begränsad mängd sparfiler
         desc: Du kan bara ha en sparfil åt gången i demoversionen. Var snäll och ta bort det existerande eller skaffa den fristående versionen!
 
     updateSummary:
@@ -231,7 +231,7 @@ dialogs:
         title: Lås upp Uppgraderingar
         desc: >-
             Alla former du producerar  kan användas för att låsa upp uppgraderingar - <strong>Förstör inte dina gamla fabriker!</strong>
-            Uppgraderingsmenyn kan finnas i det övre högra hörnet på skärmen.
+            Uppgraderingsmenyn finns i det övre högra hörnet på skärmen.
 
     massDeleteConfirm:
         title: Bekräfta borttagning
@@ -239,7 +239,7 @@ dialogs:
             Du tar nu bort ganska många byggnader (<count> för att vara exakt)! Är du säker på att du vill göra detta?
 
     blueprintsNotUnlocked:
-        title: Inte än upplåst
+        title: Inte upplåst än
         desc: >-
             Ritningar är inte än upplåsta! Klara fler nivåer för att låsa upp dem.
 
@@ -268,7 +268,7 @@ dialogs:
         title: Exportera skärmdump
         desc: >-
             Du efterfrågade att exportera din fabrik som en skärmdump.
-            Var snäll och notera att detta kan ta ett tag för en stor bas och i vissa fall till och med krascha ditt spel
+            Vänligen notera att detta kan ta ett tag för en stor bas och i vissa fall till och med krascha ditt spel
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -286,7 +286,7 @@ ingame:
         createMarker: Skapa Markör
         delete: Förstör
         pasteLastBlueprint: Klistra in ritning
-        lockBeltDirection: Sätt på rullbandsplannerare
+        lockBeltDirection: Aktivera rullbandsplanerare
         plannerSwitchSide: Vänd planerarsidan
         cutSelection: Klipp
         copySelection: Kopiera
@@ -298,7 +298,7 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Tryck ned <key> För att cykla igenom varianter.
+        cycleBuildingVariants: Tryck ned <key> För att bläddra igenom varianter.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -393,10 +393,10 @@ ingame:
         hints:
             1_1_extractor: Placera en <strong>extraktor</strong> över en <strong>cirkel</strong> för att extrahera den!
             1_2_conveyor: >-
-                Koppla extraktorn med ett<strong>rullband</strong> till din hub!<br><br>Tips: <strong>Clicka och dra</strong> rullbandet med musen!
+                Koppla extraktorn med ett<strong>rullband</strong> till din hub!<br><br>Tips: <strong>Klicka och dra</strong> rullbandet med musen!
 
             1_3_expand: >-
-                Detta är <strong>INTE</strong> ett idle-spel! Bygg fler extraktörer för att klara målet snabbare.<br><br>Tips: Håll <strong>SHIFT</strong> för att placera flera extraktörer, och använd <strong>R</strong> för att rotera dem.
+                Detta är <strong>INTE</strong> ett idle-spel! Bygg fler extraktörer för att klara målet snabbare.<br><br>Tips: Håll <strong>SKIFT</strong> för att placera flera extraktörer, och använd <strong>R</strong> för att rotera dem.
 
     colors:
         red: Röd
@@ -420,7 +420,7 @@ shopUpgrades:
         name: Extraktion
         description: Hastighet x<currentMult> → x<newMult>
     processors:
-        name: Klippning, Rotationg & Stapling
+        name: Klippning, Rotering & Stapling
         description: Hastighet x<currentMult> → x<newMult>
     painting:
         name: Blandning & Färgning
@@ -431,7 +431,7 @@ buildings:
     belt:
         default:
             name: &belt Rullband
-            description: Transporterar obejekt, håll in och dra för att placera flera.
+            description: Transporterar objekt, håll in och dra för att placera flera.
 
     miner: # Internal name for the Extractor
         default:
@@ -467,10 +467,10 @@ buildings:
     cutter:
         default:
             name: &cutter Klippare
-            description: Klipper former från topp till botten och outputtar båda halver.<strong>Om du bara använder en halva, se till att förstöra den andra, annars kommer den uppehålla fabrkien!</strong>
+            description: Klipper former från topp till botten och outputtar båda halvor.<strong>Om du endast använder en halva, se till att förstöra den andra, annars kommer den blockera maskinen!</strong>
         quad:
             name: Klippare (Quad)
-            description: Klipper former i fyra delar. <strong>Om du bara använder en del, se till att förstöra de andra, annars kommer de uppehålla fabrkien!</strong>
+            description: Klipper former i fyra delar. <strong>Om du endast använder en del, se till att förstöra de andra, annars kommer de blockera maskinen!</strong>
 
     rotater:
         default:
@@ -483,7 +483,7 @@ buildings:
     stacker:
         default:
             name: &stacker Staplare
-            description: Staplar båda obejekt. Om de inte kan slås ihop, placeras det högra obejektet över det vänstra.
+            description: Staplar båda objekt. Om de inte kan slås ihop, placeras det högra objektet över det vänstra.
 
     mixer:
         default:
@@ -530,7 +530,7 @@ storyRewards:
     reward_painter:
         title: Måleri
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            <strong>Målaren</strong> har låsts upp - Extrahera färger (precis som du gör med formerna) och kombinera med en form i målaren för att måla formen!<br><br>PS: Om du är färgblind finns det ett <strong>färblint läge</strong> bland inställningarna!
 
     reward_mixer:
         title: Färgblandning
@@ -542,7 +542,7 @@ storyRewards:
 
     reward_splitter:
         title: Delning/Sammanslagning
-        desc: Den multifunktiionella <strong>balanseraren</strong> har blivit upplåst - Den kan användas för att bygga större fabriker genom att <strong>dela eller slå ihop objekt</strong> till flera rullband!<br><br>
+        desc: Den multifunktionella <strong>balanseraren</strong> har blivit upplåst - Den kan användas för att bygga större fabriker genom att <strong>dela eller slå ihop objekt</strong> till flera rullband!<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -550,7 +550,7 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Motsols rotation
-        desc: Du har låst upp en variant av <strong>roteraren</strong> - Den låter dig rotera saker motsols! För att bygga den, välj roteraren och <strong>tryck ned 'T' för att cykla genom dess varianter</strong>!
+        desc: Du har låst upp en variant av <strong>roteraren</strong> - Den låter dig rotera saker motsols! För att bygga den, välj roteraren och <strong>tryck ned 'T' för att bläddra genom dess varianter</strong>!
 
     reward_miner_chainable:
         title: Kedjeextraktor
@@ -575,11 +575,11 @@ storyRewards:
 
     reward_painter_quad:
         title: Quad Färgläggning
-        desc: Du har låst upp en ny variant av <strong>Färgläggaren</strong> - Den tillåter dig att färglägga varje del av en form individuellt!
+        desc: Du har låst upp en ny variant av <strong>Färgläggaren</strong> - Den låter dig färglägga varje del av en form individuellt!
 
     reward_storage:
         title: Förvaringsbuffert
-        desc: Du har låst upp en ny variant av <strong>skräphantering</strong> - Den tillåter dig att förvara objekt upp till en viss kapacitet!
+        desc: Du har låst upp en ny variant av <strong>skräphantering</strong> - Den låter dig förvara objekt upp till en viss kapacitet!
 
     reward_freeplay:
         title: Friläge
@@ -593,12 +593,12 @@ storyRewards:
     no_reward:
         title: Nästa nivå
         desc: >-
-            Denna nivå har ingen belöning, men nästa kommer!<br><br> PS: Se till att inte förstöra din redan existerande fabrik - Du behöver <strong>alla</strong> de där formerna igen för att <strong>låsa upp uppgraderingar</strong>!
+            Denna nivå har ingen belöning, men nästa har!<br><br> PS: Se till att inte förstöra din redan existerande fabrik - Du behöver <strong>alla</strong> de där formerna igen för att <strong>låsa upp uppgraderingar</strong>!
 
     no_reward_freeplay:
         title: Nästa nivå
         desc: >-
-            Grattis! Föresten, mer spelinnehåll är planerat för den fristående versionen!
+            Grattis! Förresten, mer spelinnehåll är planerat för den fristående versionen!
 
 settings:
     title: Inställningar
@@ -643,7 +643,7 @@ settings:
         fullscreen:
             title: Fullskärm
             description: >-
-                Det är rekommenderat att spela i fullskärm för bästa upplevelse. Endast tillgänglig i den fristående versionen.
+                Det är rekommenderat att spela i fullskärm för bästa upplevelse. Endast tillgängligt i den fristående versionen.
 
         soundsMuted:
             title: Dämpa Ljud
@@ -727,18 +727,17 @@ settings:
             title: Färgblint läge
             description: Aktiverar olika verktyg som låter dig spela spelet om du är färbling.
         rotationByBuilding:
-          title: Rotation by building type
+          title: Rotering per byggnadstyp
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            Varje byggnadstyp kommer ihåg rotationen du senast var på individuellt.
+            Detta kan vara mer bekvämt om du ofta bytar byggnader som du placerar.
 
 keybindings:
-    title: Tangentbindningar
+    title: Snabbtangenter
     hint: >-
         Tips: Se till att använda CTRL, SKIFT, och ALT! De låter dig använda olika placeringslägen.
 
-    resetKeybindings: Återställ Tangentbindningar
+    resetKeybindings: Återställ Snabbtangenter
 
     categoryLabels:
         general: Applikation
@@ -828,7 +827,7 @@ demo:
         restoringGames: Återställer sparfiler
         importingGames: Importerar sparfiler
         oneGameLimit: Limiterad till endast en sparfil
-        customizeKeybindings: Finjustera tangentbindningar
+        customizeKeybindings: Finjustera snabbtangenter
         exportingBase: Exportera hela fabriken som en bild
 
     settingNotAvailable: Inte tillgänglig i demoversionen.
