@@ -38,7 +38,7 @@ export const globalConfig = {
     // Production analytics
     statisticsGraphDpi: 2.5,
     statisticsGraphSlices: 100,
-    analyticsSliceDurationSeconds: 10,
+    analyticsSliceDurationSeconds: G_IS_DEV ? 1 : 10,
 
     minimumTickRate: 25,
     maximumTickRate: 500,

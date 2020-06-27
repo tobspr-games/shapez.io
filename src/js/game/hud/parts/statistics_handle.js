@@ -1,10 +1,10 @@
+import { makeOffscreenBuffer } from "../../../core/buffer_utils";
+import { globalConfig } from "../../../core/config";
+import { clamp, formatBigNumber, round2Digits } from "../../../core/utils";
+import { T } from "../../../translations";
+import { enumAnalyticsDataSource } from "../../production_analytics";
 import { GameRoot } from "../../root";
 import { ShapeDefinition } from "../../shape_definition";
-import { enumAnalyticsDataSource } from "../../production_analytics";
-import { formatBigNumber, clamp } from "../../../core/utils";
-import { globalConfig } from "../../../core/config";
-import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { T } from "../../../translations";
 
 /** @enum {string} */
 export const enumDisplayMode = {
@@ -91,6 +91,11 @@ export class HUDShapeStatisticsHandle {
                     "<shapes>",
                     formatBigNumber(rate)
                 );
+
+                if (G_IS_DEV && globalConfig.debug.detailedStatistics) {
+                    this.counter.innerText = "" + round2Digits(rate / 60) + " /s";
+                }
+
                 break;
             }
         }
