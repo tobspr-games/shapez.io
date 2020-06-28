@@ -88,6 +88,11 @@ export class AtlasSprite extends BaseSprite {
 
         const link = this.linksByResolution[ORIGINAL_SCALE];
 
+        assert(
+            link,
+            "Link not known: " + ORIGINAL_SCALE + " (having " + Object.keys(this.linksByResolution) + ")"
+        );
+
         const width = w || link.w;
         const height = h || link.h;
 
@@ -152,6 +157,9 @@ export class AtlasSprite extends BaseSprite {
 
         const scale = parameters.desiredAtlasScale;
         const link = this.linksByResolution[scale];
+
+        assert(link, "Link not known: " + scale + " (having " + Object.keys(this.linksByResolution) + ")");
+
         const scaleW = w / link.w;
         const scaleH = h / link.h;
 

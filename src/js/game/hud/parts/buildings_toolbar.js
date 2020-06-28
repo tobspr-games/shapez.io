@@ -24,8 +24,9 @@ const toolbarBuildings = [
     MetaPainterBuilding,
     MetaTrashBuilding,
 
-    // WIRES
-    // MetaEnergyGenerator,
+    /* wires:start */
+    MetaEnergyGenerator,
+    /* wires:end */
 ];
 
 export class HUDBuildingsToolbar extends HUDBaseToolbar {

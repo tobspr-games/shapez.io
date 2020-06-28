@@ -8,6 +8,7 @@ import { THEME } from "../../theme";
 import { globalConfig } from "../../../core/config";
 import { T } from "../../../translations";
 import { enumItemType } from "../../base_item";
+import { enumEditMode } from "../../root";
 
 export class HUDColorBlindHelper extends BaseHUDPart {
     createElements(parent) {
@@ -37,6 +38,11 @@ export class HUDColorBlindHelper extends BaseHUDPart {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
+            return null;
+        }
+
+        if (this.root.editMode !== enumEditMode.regular) {
+            // Not in regular mode
             return null;
         }
 

@@ -682,7 +682,7 @@
 },
 "sprites/blueprints/belt_right.png":
 {
-	"frame": {"x":596,"y":71,"w":13,"h":13},
+	"frame": {"x":598,"y":37,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -690,7 +690,7 @@
 },
 "sprites/blueprints/belt_top.png":
 {
-	"frame": {"x":570,"y":105,"w":13,"h":13},
+	"frame": {"x":600,"y":20,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -874,7 +874,7 @@
 },
 "sprites/buildings/belt_left.png":
 {
-	"frame": {"x":582,"y":88,"w":13,"h":13},
+	"frame": {"x":570,"y":105,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -882,7 +882,7 @@
 },
 "sprites/buildings/belt_right.png":
 {
-	"frame": {"x":587,"y":105,"w":13,"h":13},
+	"frame": {"x":582,"y":88,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -1122,7 +1122,7 @@
 },
 "sprites/misc/deletion_marker.png":
 {
-	"frame": {"x":598,"y":37,"w":10,"h":10},
+	"frame": {"x":603,"y":3,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1146,7 +1146,7 @@
 },
 "sprites/misc/slot_bad_arrow.png":
 {
-	"frame": {"x":598,"y":37,"w":10,"h":10},
+	"frame": {"x":603,"y":3,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1154,7 +1154,7 @@
 },
 "sprites/misc/slot_good_arrow.png":
 {
-	"frame": {"x":599,"y":88,"w":10,"h":10},
+	"frame": {"x":603,"y":54,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1175,14 +1175,30 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
 	"sourceSize": {"w":3,"h":3}
+},
+"sprites/misc/wires_overlay_tile.png":
+{
+	"frame": {"x":596,"y":71,"w":13,"h":13},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
+	"sourceSize": {"w":13,"h":13}
+},
+"sprites/wires/pin-energy-on.png":
+{
+	"frame": {"x":587,"y":105,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":11,"h":11},
+	"sourceSize": {"w":13,"h":13}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "atlas0_10.png",
 	"format": "RGBA8888",
-	"size": {"w":612,"h":128},
+	"size": {"w":616,"h":128},
 	"scale": "0.1",
-	"smartupdate": "$TexturePacker:SmartUpdate:dc34796c028235bbc69e5b8d854254ca:2765d0b8c8bcbb7a4aaaf1104853ad41:8778749683c68f53155587e6d831729a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1e5c68ef1fd4026b263679a3171f1832:b30cc36f2dfbe8399542e279c203efaf:f159918d23e5952766c6d23ab52278c6$"
 }
 }

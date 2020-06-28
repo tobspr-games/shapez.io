@@ -26,7 +26,6 @@
         },
 
         "wires": {
-            "overlay": "rgba(52, 150, 128, 0.5)",
             "pins": {
                 "energyEjector": "#c425d7"
             }

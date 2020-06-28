@@ -1,12 +1,18 @@
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { WiredPinsComponent } from "../components/wired_pins";
+import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Entity } from "../entity";
 import { THEME } from "../theme";
+import { Loader } from "../../core/loader";
+import { globalConfig } from "../../core/config";
 
 export class WiredPinsSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [WiredPinsComponent]);
+
+        this.pinSprites = {
+            [enumPinSlotType.energyEjector]: [Loader.getSprite("sprites/wires/pin-energy-on.png")],
+        };
     }
 
     update() {
@@ -39,13 +45,12 @@ export class WiredPinsSystem extends GameSystemWithFilter {
 
             const worldPos = tile.toWorldSpaceCenterOfTile();
 
-            parameters.context.fillStyle = THEME.map.wires.pins[slot.type];
-            parameters.context.beginCircle(worldPos.x, worldPos.y, 5);
-            parameters.context.fill();
-
-            parameters.context.lineWidth = 2;
-            parameters.context.fillStyle = "rgba(0, 0, 0, 0.1)";
-            parameters.context.stroke();
+            this.pinSprites[slot.type][0].drawCachedCentered(
+                parameters,
+                worldPos.x,
+                worldPos.y,
+                globalConfig.tileSize
+            );
         }
     }
 }

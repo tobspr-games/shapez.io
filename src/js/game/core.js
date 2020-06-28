@@ -406,12 +406,13 @@ export class GameCore {
             systems.storage.draw(params);
         }
 
-        // WIRES
-        // root.hud.parts.wiresOverlay.draw(params);
+        /* wires:start */
+        root.hud.parts.wiresOverlay.draw(params);
 
         if (this.root.editMode === enumEditMode.wires) {
             systems.wiredPins.drawWiresLayer(params);
         }
+        /* wires:end */
 
         if (G_IS_DEV) {
             root.map.drawStaticEntityDebugOverlays(params);

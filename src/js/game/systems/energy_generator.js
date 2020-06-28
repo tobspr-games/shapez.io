@@ -4,6 +4,7 @@ import { EnergyGeneratorComponent } from "../components/energy_generator";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ShapeDefinition } from "../shape_definition";
+import { formatBigNumber } from "../../core/utils";
 
 export class EnergyGeneratorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -62,15 +63,14 @@ export class EnergyGeneratorSystem extends GameSystemWithFilter {
 
         // deliver: Deliver
         // toGenerateEnergy: For <x> energy
-        context.font = "bold 7px GameFont";
+        context.font = "bold 9px GameFont";
         context.fillStyle = "#64666e";
         context.textAlign = "left";
         context.fillText(T.buildings.energy_generator.deliver.toUpperCase(), pos.x - 25, pos.y - 18);
+        context.fillText(T.buildings.energy_generator.toGenerateEnergy.toUpperCase(), pos.x - 25, pos.y + 27);
 
-        context.fillText(
-            T.buildings.energy_generator.toGenerateEnergy.replace("<x>", "" + energyGenerated).toUpperCase(),
-            pos.x - 25,
-            pos.y + 28
-        );
+        context.font = "700 9px GameFont";
+        context.fillStyle = "#dee1ea";
+        context.fillText("" + formatBigNumber(energyGenerated), pos.x + 1, pos.y + 27);
     }
 }

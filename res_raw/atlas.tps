@@ -19,9 +19,9 @@
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
-                    <int>2048</int>
+                    <int>4096</int>
                     <key>height</key>
-                    <int>2048</int>
+                    <int>4096</int>
                 </QSize>
             </struct>
             <struct type="AutoSDSettings">
@@ -53,9 +53,9 @@
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
-                    <int>-1</int>
+                    <int>2048</int>
                     <key>height</key>
-                    <int>-1</int>
+                    <int>2048</int>
                 </QSize>
             </struct>
             <struct type="AutoSDSettings">
@@ -70,9 +70,9 @@
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
-                    <int>-1</int>
+                    <int>1024</int>
                     <key>height</key>
-                    <int>-1</int>
+                    <int>1024</int>
                 </QSize>
             </struct>
             <struct type="AutoSDSettings">
@@ -255,6 +255,7 @@
             <key type="filename">sprites/buildings/miner.png</key>
             <key type="filename">sprites/buildings/rotater.png</key>
             <key type="filename">sprites/buildings/trash.png</key>
+            <key type="filename">sprites/misc/wires_overlay_tile.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

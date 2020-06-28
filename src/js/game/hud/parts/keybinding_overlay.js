@@ -255,13 +255,14 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 condition: () => this.anythingSelectedOnMap,
             },
 
-            // WIRES
-            // {
-            //     // Switch layers
-            //     label: T.ingame.keybindingsOverlay.switchLayers,
-            //     keys: [k.ingame.switchLayers],
-            //     condition: () => true,
-            // },
+            /* wires:start */
+            {
+                // Switch layers
+                label: T.ingame.keybindingsOverlay.switchLayers,
+                keys: [k.ingame.switchLayers],
+                condition: () => true,
+            },
+            /* wires:end */
         ];
 
         if (!this.root.app.settings.getAllSettings().alwaysMultiplace) {

@@ -202,6 +202,13 @@ module.exports = ({
                                 end: "dev:end",
                             },
                         },
+                        {
+                            loader: "webpack-strip-block",
+                            options: {
+                                start: "wires:start",
+                                end: "wires:end",
+                            },
+                        },
                     ],
                 },
                 {

@@ -525,7 +525,9 @@ buildings:
 
     energy_generator:
         deliver: Deliver
-        toGenerateEnergy: For <x> energy
+
+        # This will be shown before the amount, so for example 'For 123 Energy'
+        toGenerateEnergy: For
 
         default:
             name: &energy_generator Energy Generator
