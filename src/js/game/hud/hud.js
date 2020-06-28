@@ -38,6 +38,8 @@ import { HUDColorBlindHelper } from "./parts/color_blind_helper";
 import { HUDShapeViewer } from "./parts/shape_viewer";
 import { HUDWiresOverlay } from "./parts/wires_overlay";
 import { HUDChangesDebugger } from "./parts/debug_changes";
+import { queryParamOptions } from "../../core/query_parameters";
+import { HUDSandboxController } from "./parts/sandbox_controller";
 
 export class GameHUD {
     /**
@@ -121,6 +123,10 @@ export class GameHUD {
 
         if (this.root.app.settings.getAllSettings().enableColorBlindHelper) {
             this.parts.colorBlindHelper = new HUDColorBlindHelper(this.root);
+        }
+
+        if (queryParamOptions.sandboxMode || G_IS_DEV) {
+            this.parts.sandboxController = new HUDSandboxController(this.root);
         }
 
         const frag = document.createDocumentFragment();

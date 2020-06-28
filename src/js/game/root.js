@@ -133,10 +133,6 @@ export class GameRoot {
         /** @type {enumEditMode} */
         this.editMode = enumEditMode.regular;
 
-        if (G_IS_DEV) {
-            this.editMode = enumEditMode.wires;
-        }
-
         this.signals = {
             // Entities
             entityManuallyPlaced: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
