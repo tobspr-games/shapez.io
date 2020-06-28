@@ -322,7 +322,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         // Try to extract the building
         const extracted = this.hack_reconstructMetaBuildingAndVariantFromBuilding(contents);
-        if (!extracted) {
+        // If the building we are picking is the same as the one we have, clear the cursor.
+        if (
+            !extracted ||
+            (extracted.metaBuilding === this.currentMetaBuilding.get() &&
+                extracted.variant === this.currentVariant.get())
+        ) {
             this.currentMetaBuilding.set(null);
             return;
         }
