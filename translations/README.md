@@ -28,6 +28,7 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Norwegian](base-no.yaml)
 -   [Kroatian](base-hr.yaml)
 -   [Danish](base-da.yaml)
+-   [Finnish](base-fi.yaml)
 
 (If you want to translate into a new language, see below!)
 
