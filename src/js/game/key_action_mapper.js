@@ -243,7 +243,6 @@ export function getStringForKeyCode(code) {
             return "'";
     }
 
-    // TODO
     return String.fromCharCode(code);
 }
 

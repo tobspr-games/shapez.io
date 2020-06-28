@@ -20,9 +20,6 @@ import { WiredPinsComponent } from "./components/wired_pins";
  */
 export class EntityComponentStorage {
     constructor() {
-        // TODO: Figure out if its faster to declare all components here and not
-        // compile them out (In theory, should make it a fast object in V8 engine)
-
         /* typehints:start */
 
         /** @type {StaticMapEntityComponent} */

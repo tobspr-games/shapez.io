@@ -90,18 +90,4 @@ export class BaseSavegameInterface {
     readIngameTimeSeconds() {
         return this.data.dump.time.timeSeconds;
     }
-
-    /**
-
-
-    //////// ANTICHEAT ///////
-
-    /**
-     * Detects cheats in the savegame - returns false if the game looks cheated
-     */
-    performAnticheatCheck() {
-        // TODO
-
-        return true;
-    }
 }

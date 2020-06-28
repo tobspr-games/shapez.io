@@ -134,8 +134,6 @@ export class GameState {
      */
     cancelAllAsyncOperations() {
         this.asyncChannel.cancelAll();
-        // TODO
-        // this.app.api.cancelRequests();
     }
 
     //// CALLBACKS ////

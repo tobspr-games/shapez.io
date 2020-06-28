@@ -43,7 +43,6 @@ export class BaseMap extends BasicSerializableObject {
      * @param {number} chunkY
      */
     getChunk(chunkX, chunkY, createIfNotExistent = false) {
-        // TODO: Better generation
         const chunkIdentifier = chunkX + "|" + chunkY;
         let storedChunk;
 
