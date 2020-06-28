@@ -1122,7 +1122,7 @@
 },
 "sprites/buildings/wire_top.png":
 {
-	"frame": {"x":614,"y":84,"w":9,"h":13},
+	"frame": {"x":618,"y":52,"w":9,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":9,"h":13},
@@ -1170,7 +1170,7 @@
 },
 "sprites/misc/deletion_marker.png":
 {
-	"frame": {"x":602,"y":101,"w":10,"h":10},
+	"frame": {"x":602,"y":114,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1194,7 +1194,7 @@
 },
 "sprites/misc/slot_bad_arrow.png":
 {
-	"frame": {"x":602,"y":101,"w":10,"h":10},
+	"frame": {"x":602,"y":114,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1202,7 +1202,7 @@
 },
 "sprites/misc/slot_good_arrow.png":
 {
-	"frame": {"x":602,"y":115,"w":10,"h":10},
+	"frame": {"x":616,"y":114,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1232,7 +1232,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
 	"sourceSize": {"w":13,"h":13}
 },
-"sprites/wires/pin-negative-energy.png":
+"sprites/wires/pin_negative_accept.png":
 {
 	"frame": {"x":599,"y":86,"w":11,"h":11},
 	"rotated": false,
@@ -1240,9 +1240,25 @@
 	"spriteSourceSize": {"x":1,"y":0,"w":11,"h":11},
 	"sourceSize": {"w":13,"h":13}
 },
-"sprites/wires/pin-positive-energy.png":
+"sprites/wires/pin_negative_eject.png":
 {
 	"frame": {"x":611,"y":69,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":11,"h":11},
+	"sourceSize": {"w":13,"h":13}
+},
+"sprites/wires/pin_positive_accept.png":
+{
+	"frame": {"x":614,"y":84,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":11,"h":11},
+	"sourceSize": {"w":13,"h":13}
+},
+"sprites/wires/pin_positive_eject.png":
+{
+	"frame": {"x":614,"y":99,"w":11,"h":11},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":11,"h":11},
@@ -1253,8 +1269,8 @@
 	"version": "1.0",
 	"image": "atlas0_10.png",
 	"format": "RGBA8888",
-	"size": {"w":629,"h":128},
+	"size": {"w":630,"h":128},
 	"scale": "0.1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9ea1a09cb2003bf62ce57f52404292e0:0fc8d0e33f315e93d6d057148d691370:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f2991e3fe6c79348d0808b1f60a06ef7:740a2ce184f6485487669e0f615a8a7e:f159918d23e5952766c6d23ab52278c6$"
 }
 }

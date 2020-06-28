@@ -7,6 +7,7 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ColorItem } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 import { enumLayer } from "../root";
+import { NEGATIVE_ENERGY_ITEM_SINGLETON } from "../items/negative_energy_item";
 
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -331,6 +332,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     const shapeItem = /** @type {ShapeItem} */ (items[i].item);
                     hubComponent.queueShapeDefinition(shapeItem.definition);
                 }
+
+                break;
+            }
+
+            // ADVANCED PROCESSING
+
+            case enumItemProcessorTypes.advancedProcessor: {
+                // TODO
+
+                entity.components.ItemEjector.tryEject(1, NEGATIVE_ENERGY_ITEM_SINGLETON);
 
                 break;
             }

@@ -66,6 +66,7 @@ export const globalConfig = {
         painterQuad: 1 / 8,
         mixer: 1 / 5,
         stacker: 1 / 6,
+        advancedProcessor: 1 / 15,
     },
 
     // Zooming

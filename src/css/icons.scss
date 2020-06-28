@@ -1,5 +1,5 @@
 $buildings: belt, cutter, miner, mixer, painter, rotater, splitter, stacker, trash, underground_belt,
-    energy_generator, wire;
+    energy_generator, wire, advanced_processor;
 
 @each $building in $buildings {
     [data-icon="building_icons/#{$building}.png"] {

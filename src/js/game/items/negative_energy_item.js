@@ -41,7 +41,7 @@ export class NegativeEnergyItem extends BaseItem {
 
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
-        const key = size + "/" + dpi;
+        const key = "pos:" + size + "/" + dpi;
         const canvas = parameters.root.buffers.getForKey(key, "", size, size, dpi, this.bufferGenerator);
         parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
     }
@@ -56,13 +56,11 @@ export class NegativeEnergyItem extends BaseItem {
         context.translate((w * dpi) / 2, (h * dpi) / 2);
         context.scale((dpi * w) / 12, (dpi * h) / 12);
 
-        context.fillStyle = "#1d2725";
         context.strokeStyle = "#eee";
-        context.lineWidth = 1;
-        context.beginCircle(0, 0, 5);
-        context.fill();
+        context.lineWidth = 2;
+        context.beginCircle(0, 0, 4);
         context.stroke();
     }
 }
 
-export const POSITIVE_ENERGY_ITEM_SINGLETON = new NegativeEnergyItem();
+export const NEGATIVE_ENERGY_ITEM_SINGLETON = new NegativeEnergyItem();

@@ -41,7 +41,7 @@ export class PositiveEnergyItem extends BaseItem {
 
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
-        const key = size + "/" + dpi;
+        const key = "neg:" + size + "/" + dpi;
         const canvas = parameters.root.buffers.getForKey(key, "", size, size, dpi, this.bufferGenerator);
         parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
     }
@@ -56,12 +56,10 @@ export class PositiveEnergyItem extends BaseItem {
         context.translate((w * dpi) / 2, (h * dpi) / 2);
         context.scale((dpi * w) / 12, (dpi * h) / 12);
 
-        context.fillStyle = "#e84a4a";
-        context.strokeStyle = "#eee";
+        context.fillStyle = "#eee";
         context.lineWidth = 1;
-        context.beginCircle(0, 0, 5);
+        context.beginCircle(0, 0, 4);
         context.fill();
-        context.stroke();
     }
 }
 

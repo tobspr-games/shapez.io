@@ -54,6 +54,7 @@ export const KEYMAPPINGS = {
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
         energy_generator: { keyCode: key("O") },
+        advanced_processor: { keyCode: key("P") },
 
         // Wires layer
         wire: { keyCode: key("1") },

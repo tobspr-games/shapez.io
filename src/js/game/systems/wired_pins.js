@@ -11,11 +11,13 @@ export class WiredPinsSystem extends GameSystemWithFilter {
         super(root, [WiredPinsComponent]);
 
         this.pinSprites = {
-            [enumPinSlotType.positiveEnergyEjector]: Loader.getSprite(
-                "sprites/wires/pin-positive-energy.png"
+            [enumPinSlotType.positiveEnergyEjector]: Loader.getSprite("sprites/wires/pin_positive_eject.png"),
+            [enumPinSlotType.positiveEnergyAcceptor]: Loader.getSprite(
+                "sprites/wires/pin_positive_accept.png"
             ),
+            [enumPinSlotType.negativeEnergyEjector]: Loader.getSprite("sprites/wires/pin_negative_eject.png"),
             [enumPinSlotType.negativeEnergyAcceptor]: Loader.getSprite(
-                "sprites/wires/pin-negative-energy.png"
+                "sprites/wires/pin_negative_accept.png"
             ),
         };
     }
