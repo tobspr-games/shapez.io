@@ -879,17 +879,17 @@ export function formatSecondsToTimeAgo(secs) {
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
 
-    if (seconds <= 60) {
+    if (seconds < 60) {
         if (seconds <= 1) {
             return T.global.time.oneSecondAgo;
         }
         return T.global.time.xSecondsAgo.replace("<x>", "" + seconds);
-    } else if (minutes <= 60) {
+    } else if (minutes < 60) {
         if (minutes <= 1) {
             return T.global.time.oneMinuteAgo;
         }
         return T.global.time.xMinutesAgo.replace("<x>", "" + minutes);
-    } else if (hours <= 60) {
+    } else if (hours < 24) {
         if (hours <= 1) {
             return T.global.time.oneHourAgo;
         }

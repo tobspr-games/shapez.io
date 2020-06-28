@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "1.1.19",
+        date: "unreleased",
+        entries: [
+            "Allow holding ALT in belt planner to reverse direction (by jakobhellermann)",
+            "Clear cursor when trying to pipette the same building twice (by hexy)",
+        ],
+    },
+    {
         version: "1.1.18",
         date: "27.06.2020",
         entries: [
