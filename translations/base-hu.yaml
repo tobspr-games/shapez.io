@@ -170,7 +170,7 @@ dialogs:
         deleteGame: Tudom mit csinálok
         viewUpdate: Frissítés megtekintése
         showUpgrades: Fejlesztések megtekintése
-        showKeybindings: Billentyűkombinációk megtekintése
+        showKeybindings: Gyorsbillentyűk megtekintése
 
     importSavegameError:
         title: Importálás Hiba
@@ -203,16 +203,16 @@ dialogs:
             Újra kell indítanod a játékot, hogy életbe lépjenek a módosítások.
 
     editKeybinding:
-        title: Billentyűkombináció módosítása
+        title: Gyorsbillentyű módosítása
         desc: Nyomd meg a kívánt gombot az egéren vagy billentyűzeten, vagy az Esc gombot a visszavonáshoz.
 
     resetKeybindingsConfirmation:
-        title: Billentyűkombinációk visszaállítása
-        desc: Ezzel visszaállítod az összes billentyűkombinációt az eredeti beállításre. Kérlek, erősítsd meg.
+        title: Gyorsbillentyű visszaállítása
+        desc: Ezzel visszaállítod az összes Gyorsbillentyűt az eredeti beállításra. Kérlek, erősítsd meg.
 
     keybindingsResetOk:
-        title: Billentyűkombinációk visszaállítása
-        desc: A billentyűkombinációk visszaállításra kerültek!
+        title: Gyorsbillentyűk visszaállítása
+        desc: A gyorsbillentyűk visszaállításra kerültek!
 
     featureRestriction:
         title: Demó verzió
@@ -228,70 +228,69 @@ dialogs:
             Itt vannak a változások, amik a legutóbbi játékod óta kerültek bevezetésre:
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Fejlesztések feloldása
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            Minden alakzat, amit készítesz, fejlesztések feloldására használható - <strong>Ne bontsd le a régi gyárakat!</strong>
+            A fejlesztés fül a képernyő jobb felső sarkában található.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Törlés megerősítése
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Sok épületet készülsz törölni (<count>-t, hogy pontosak legyünk)! Biztosan ezt szeretnéd?
 
     blueprintsNotUnlocked:
         title: Még nincs feloldva
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            A tervrajzok még nincsenek feloldva!  A feloldáshoz teljesíts több szintet.
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Hasznos gyorsbillentyűk
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            A játékban számos gyorsbillentyű található, amik megkönnyítik a nagy gyárak építését.
+            Itt van néhány, de javaslom, <strong>nézd meg a többi gyorsbillentyűt is</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Húzás: Terület kijelölése másolásra / törlésre.<br>
+            <code class='keybinding'>SHIFT</code>: Tartsd lenyomva több épület elhelyezéséhez.<br>
+            <code class='keybinding'>ALT</code>: Lehelyezett futószalag irányának megfordítása.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        title: Új jelölő
+        desc: Adj neki nevet, beletehetsz egy <strong>rövid kulcsot</strong> (Amit <a href="https://viewer.shapez.io" target="_blank">itt</a> generálhatsz).
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: A demóban két egyedi jelölőt készíthetsz. Szerezd be az önálló verziót a korlátlan jelölőkért!
     massCutConfirm:
-        title: Confirm cut
+        title: Vágás megerősítése
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            Sok épületet készülsz vágni (<count>-t, hogy pontosak legyünk)! Biztosan ezt szeretnéd?
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Képernyőkép exportálása
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            Bázisod képernyőképként történő exportálását kérted. Kérlek vedd figyelembe,
+            hogy ez egy nagy bázis esetén hosszú folyamat lehet és leállhat a játékod is!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
+        moveMap: Mozgás
         selectBuildings: Terület kijelölése
-        stopPlacement: Stop placement
+        stopPlacement: Elhelyezés visszavonása
         rotateBuilding: Épület forgatása
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        placeMultiple: Több elhelyezése
+        reverseOrientation: Orientáció megfordítása
+        disableAutoOrientation: Auto orientáció kikapcsolása
+        toggleHud: HUD ki/bekapcsolása
+        placeBuilding: Épület elhelyezése
+        createMarker: Jelölő készítése
+        delete: Lebontás
+        pasteLastBlueprint: Legutóbbi tervrajz beillesztése
+        lockBeltDirection: Futószalag tervező bekapcsolása
+        plannerSwitchSide: Tervező oldal forgatása
+        cutSelection: Kivágás
+        copySelection: Másolás
+        clearSelection: Kijelölés törlése
+        pipette: Pipetta
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -302,24 +301,24 @@ ingame:
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Gyorsbillentyű: <key>
 
         infoTexts:
-            speed: Gyorsaság
-            range: Range
-            storage: Storage
+            speed: Sebesség
+            range: Hatótáv
+            storage: Raktár
             oneItemPerSecond: 1 tárgy / mp
             itemsPerSecond: <x> tárgy / mp
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> cella
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: <level>. szint
-        completed: Completed
-        unlockText: Feloldva <reward>!
+        completed: Teljesítve
+        unlockText: Feloldottad a(z) <reward> jutalmat!
         buttonNextLevel: Következő Szint
 
     # Notifications on the lower right
@@ -338,22 +337,22 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: MAXIMUM SZINT (Sebesség x<currentMult>)
 
     # The "Statistics" window
     statistics:
         title: Statisztikák
         dataSources:
             stored:
-                title: Tárolva
-                description: Displaying amount of stored shapes in your central building.
+                title: Tárolt
+                description: A központi épületben tárolt alakzatok mennyiségének kijelzése.
             produced:
-                title: Gyártva
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: Gyártott
+                description: A gyárad által termelt alakzatok kijelzése, beleértve a köztes termékeket is.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: Leszállított
+                description: A központi épületbe leszállított alakzatok kijelzése.
+        noShapesProduced: Nincsenek még leszállított alakzatok.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / p
@@ -382,103 +381,103 @@ ingame:
 
     # Map markers
     waypoints:
-        waypoints: Markers
+        waypoints: Jelölők
         hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        description: KAttints bal gombbal egy jejölőre az odaugráshoz, jobb gombbal pedig a törléshez.<br><br>Nyomd meg a <keybinding> gombot az aktuális nézet jelölő készítéséhez, vagy  <strong>kattints jobb gombbal</strong> a kijelölt hely jelölőhöz rendeléséhez.
+        creationSuccessNotification: Jelölő elkészítve.
 
     # Interactive tutorial
     interactiveTutorial:
-        title: Tutorial
+        title: Bevezető
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Helyezz el egy <strong>bányát</strong> a <strong>kör alakzaton</strong> a bányászathoz!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                Kösd össze a bányát a központi épületeddel egy <strong>futószalag</strong> segítségével!<br><br>Tipp: <strong>Kattints és húzd</strong> a futószalagot az elhelyezéshez!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                Ez <strong>NEM</strong> egy idle játék! Építs több bányát és szalagot, hogy gyorsabban teljesítsd a célt.<br><br>Tipp: Tartsd lenyomva a <strong>SHIFT</strong> gombot a több bánya elhelyezéséhez, az <strong>R</strong> billentyűvel forgathatod őket.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: Piros
+        green: Zöld
+        blue: Kék
+        yellow: Sárga
+        purple: Lila
+        cyan: Ciánkék
+        white: Fehér
+        uncolored: Színtelen
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Rétegek
+        empty: Üres
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Szalagok, elosztók, alagutak
+        description: Sebesség x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Bányászat
+        description: Sebesség x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Vágás, forgatás és Rakodás
+        description: Sebesség x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Keverés és festés
+        description: Sebesség x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Futószalag
+            description: Tárgyakat mozgat, tarsd lenyomva az egérgombot a több szalag elhelyezéséhez.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Bánya
+            description: Helyezd egy alakzat vagy szín felé hogy kibányászd azt.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Bánya (Lánc)
+            description: Helyezd egy alakzat vagy szín felé hogy kibányászd azt. Láncba építhető.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt Alagút
+            description: Épületek és futószalagok alatt szállíthatsz nyersanyagokat.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: Alagút II
+            description: Épületek és futószalagok alatt szállíthatsz nyersanyagokat.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Elosztó
+            description: Multifunkciós - Egyenlően eloszt minden bejövő tárgyat az összes kimenő szalagra.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Összekötő (kompakt)
+            description: Két futószalagot eggyé alakít.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Összekötő (kompakt)
+            description: Két futószalagot eggyé alakít.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Vágó
+            description: Egy alakot fentről lefelé félbevág és kiadja mindkét részt. <strong>Ha csak az egyik részre van szükséged, a másikat semmisítsd meg, különben a gép beragad!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: Vágó (Negyed)
+            description: Egy alakot négyfelé vág. <strong>Ha csak az egyik részre van szükséged, a másikat semmisítsd meg, különben a gép beragad!</strong>
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Forgató (jobbra)
+            description: Az alakot óramutató járása szerint 90 fokkal forgat el.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: Forgató (balra)
+            description: Egy alakot óramutató járásával ellentétesen 90 fokkal forgat el.
 
     stacker:
         default:
