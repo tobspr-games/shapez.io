@@ -3,6 +3,7 @@ import { makeDiv } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { blueprintShape, UPGRADES } from "../../upgrades";
 import { enumNotificationType } from "./notifications";
+import { tutorialGoals } from "../../tutorial_goals";
 
 export class HUDSandboxController extends BaseHUDPart {
     createElements(parent) {
@@ -98,14 +99,26 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     modifyLevel(amount) {
-        this.root.hubGoals.level = Math.max(1, this.root.hubGoals.level + amount);
-        this.root.hubGoals.createNextGoal();
+        const hubGoals = this.root.hubGoals;
+        hubGoals.level = Math.max(1, hubGoals.level + amount);
+        hubGoals.createNextGoal();
 
         // Clear all shapes of this level
-        this.root.hubGoals.storedShapes[this.root.hubGoals.currentGoal.definition.getHash()] = 0;
+        hubGoals.storedShapes[hubGoals.currentGoal.definition.getHash()] = 0;
+
+        this.root.hud.parts.pinnedShapes.rerenderFull();
+
+        // Compute gained rewards
+        hubGoals.gainedRewards = {};
+        for (let i = 0; i < hubGoals.level - 1; ++i) {
+            if (i < tutorialGoals.length) {
+                const reward = tutorialGoals[i].reward;
+                hubGoals.gainedRewards[reward] = (hubGoals.gainedRewards[reward] || 0) + 1;
+            }
+        }
 
         this.root.hud.signals.notification.dispatch(
-            "Changed level to " + this.root.hubGoals.level,
+            "Changed level to " + hubGoals.level,
             enumNotificationType.upgrade
         );
     }
