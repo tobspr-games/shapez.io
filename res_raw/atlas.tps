@@ -256,6 +256,10 @@
             <key type="filename">sprites/buildings/rotater.png</key>
             <key type="filename">sprites/buildings/trash.png</key>
             <key type="filename">sprites/misc/wires_overlay_tile.png</key>
+            <key type="filename">sprites/wires/pin_negative_accept.png</key>
+            <key type="filename">sprites/wires/pin_negative_eject.png</key>
+            <key type="filename">sprites/wires/pin_positive_accept.png</key>
+            <key type="filename">sprites/wires/pin_positive_eject.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -354,9 +358,15 @@
             <key type="filename">sprites/blueprints/belt_left.png</key>
             <key type="filename">sprites/blueprints/belt_right.png</key>
             <key type="filename">sprites/blueprints/belt_top.png</key>
+            <key type="filename">sprites/blueprints/wire_left.png</key>
+            <key type="filename">sprites/blueprints/wire_right.png</key>
+            <key type="filename">sprites/blueprints/wire_top.png</key>
             <key type="filename">sprites/buildings/belt_left.png</key>
             <key type="filename">sprites/buildings/belt_right.png</key>
             <key type="filename">sprites/buildings/belt_top.png</key>
+            <key type="filename">sprites/buildings/wire_left.png</key>
+            <key type="filename">sprites/buildings/wire_right.png</key>
+            <key type="filename">sprites/buildings/wire_top.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
