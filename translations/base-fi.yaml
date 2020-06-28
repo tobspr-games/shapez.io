@@ -20,8 +20,8 @@
 #
 
 steamPage:
-    # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    # This is the short text appearing on the steam page 
+    shortText: shapez.io on peli tehtaiden rakentamisesta, joiden avulla automatisoidaan yhä monimutkaisempien muotojen luonti and yhdisteleminen loputtomassa maailmassa.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,46 +30,45 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io on peli tehtaiden rakentamisesta, joiden avulla automatisoidaan yhä monimutkaisempien muotojen luonti and yhdisteleminen. Toimita yhä monimutkaisemmat pyydetyt muodot edistyäksesi pelissä ja avataksesi päivityksiä kasvattamaan tehtaasi nopeutta.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        Kun kysyntä kasvaa, sinun täytyy kasvattaa tehdastasi täyttämään uudet vaatimukset. - Joskin älä unohda resursseja, sinun täytyy laajentua [b]loputtomassa maailmassa[/b]!
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Koska muodot voivat käydä pian tylsiksi, sinun täytyy sekoittaa värejä keskenään ja värjätä muotoja niillä - Sekoita punaista, vihreää ja sinista väriresurssia tehdäksesi erilaisia värejä ja värjätäksesi muotoja sillä tyydyttääksesi kysynnän.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Tämä peli tarjoaa 18 tasoa (Joiden pitäisi pitää sinut kiireisenä jo monia tunteja!) mutta lisään jatkuvasti lisää sisältöä peliin. - Paljon sisältöä on suunniteltu!
 
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
-        [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        [b]Itsenäisen pelin edut[/b]
 
         [list]
-            [*] Wires!
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] And much more!
+            [*] Reittipisteet
+            [*] Loputon määrä tallennuksia
+            [*] Tumma tila
+            [*] Lisää asetuksia
+            [*] Antakaa minun kehittää shapez.io:ta pidemmälle❤️
+            [*] Lisää ominaisuuksia tulossa!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [b]Suunnitellut ominaisuudet & Yhteisön ehdotukset[/b]
+
+        Tässä pelissä on avoin lähdekoodi - Kuka tahansa voi osallistua! Sen lisäksi kuuntelen [b]paljon[/b] Yhteisöä! Yritän lukea kaikki ehdotukset ja ottaa mahdollisimman paljon palautetta huomioon.
+        [list]
+            [*] Johdot!
+            [*] Tarinatila, jossa rakennukset maksavat muotoja
+            [*] Lisää tasoja ja rakennuksia (pelkästään itsenäisessä pelissä)
+            [*] Erilaisia karttoja sekä ehkä esteitä kartoissa
+            [*] Säädettävä kartan luonti (Säädä alueiden lukumäärää ja kokoa, kartan siementä ja muuta)
+            [*] Lisää muototyyppejä
+            [*] Lisää suorituskyvyn parannuksia (Huolimatta siitä että peli jo nyt toimii meko hyvin!)
+            [*] Ja paljon muuta!
+        [/list]
+
+        Muista tarkistaa trello taulusta koko etenemissuunnitelma! https://trello.com/b/ISQncpJP/shapezio
 
 global:
-    loading: Loading
-    error: Error
+    loading: Ladataan
+    error: Virhe
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -82,58 +81,58 @@ global:
         trillions: T
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: ∞
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: yksi sekunti sitten
+        xSecondsAgo: <x> sekunttia sitten
+        oneMinuteAgo: yksi minuutti sitten
+        xMinutesAgo: <x> minuuttia sitten
+        oneHourAgo: yksi tunti sitten
+        xHoursAgo: <x> tuntia sitten
+        oneDayAgo: yksi päivä sitten
+        xDaysAgo: <x> päivää sitten
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
 
-        xMinutes: <x> minutes
+        xMinutes: <x> minuuttia
 
     keys:
-        tab: TAB
+        tab: SARKAIN
         control: CTRL
         alt: ALT
         escape: ESC
-        shift: SHIFT
-        space: SPACE
+        shift: VAIHTO
+        space: VÄLILYÖNTI
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Demoversio
     intro: >-
-        Get the standalone to unlock all features!
+        Hanki itsenäinen peli avataksesi kaikki omunaisuudet!
 
 mainMenu:
-    play: Play
-    continue: Continue
-    newGame: New Game
-    changelog: Changelog
+    play: Pelaa
+    continue: Jatka
+    newGame: Uusi Peli
+    changelog: Muutosloki
     subreddit: Reddit
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
-    madeBy: Made by <author-link>
+    importSavegame: Tuo peli
+    openSourceHint: Tämä on avoimen lähdekoodin peli!
+    discordLink: Virallinen Discord Palvelin
+    helpTranslate: Auta kääntämään!
+    madeBy: Pelin on tehnyt <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Anteeksi, mutta pelin tiedetään toimivan huonosti selaimellasi! Hanki itsenäinen versio tai lataa Chrome täyttä tukea varten.
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: Taso <x>
+    savegameLevelUnknown: Tuntematon Taso
 
     contests:
         contest_01_03062020:
