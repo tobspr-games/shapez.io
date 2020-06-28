@@ -4,12 +4,14 @@ import { Component } from "../component";
 import { types } from "../../savegame/serialization";
 import { gItemRegistry } from "../../core/global_registries";
 import { Entity } from "../entity";
+import { enumLayer } from "../root";
 
 /**
  * @typedef {{
  *    pos: Vector,
  *    direction: enumDirection,
  *    item: BaseItem,
+ *    layer: enumLayer,
  *    progress: number?,
  *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
  *    cachedTargetEntity?: Entity
@@ -32,6 +34,9 @@ export class ItemEjectorComponent extends Component {
                     direction: types.enum(enumDirection),
                     item: types.nullable(types.obj(gItemRegistry)),
                     progress: types.float,
+
+                    // TODO: Migrate
+                    layer: types.enum(enumLayer),
                 })
             ),
         };
@@ -44,6 +49,7 @@ export class ItemEjectorComponent extends Component {
             slotsCopy.push({
                 pos: slot.pos.copy(),
                 direction: slot.direction,
+                layer: slot.layer,
             });
         }
 
@@ -56,7 +62,7 @@ export class ItemEjectorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>=} param0.slots The slots to eject on
      * @param {boolean=} param0.instantEject If the ejection is instant
      */
     constructor({ slots = [], instantEject = false }) {
@@ -77,7 +83,7 @@ export class ItemEjectorComponent extends Component {
     }
 
     /**
-     * @param {Array<{pos: Vector, direction: enumDirection}>} slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>} slots The slots to eject on
      */
     setSlots(slots) {
         /** @type {Array<ItemEjectorSlot>} */
@@ -89,17 +95,11 @@ export class ItemEjectorComponent extends Component {
                 direction: slot.direction,
                 item: null,
                 progress: 0,
+                layer: slot.layer || enumLayer.regular,
                 cachedDestSlot: null,
                 cachedTargetEntity: null,
             });
         }
-    }
-
-    /**
-     * Returns the amount of slots
-     */
-    getNumSlots() {
-        return this.slots.length;
     }
 
     /**
@@ -116,24 +116,15 @@ export class ItemEjectorComponent extends Component {
     /**
      * Returns whether any slot ejects to the given local tile
      * @param {Vector} tile
+     * @param {enumLayer} layer
      */
-    anySlotEjectsToLocalTile(tile) {
+    anySlotEjectsToLocalTile(tile, layer) {
         for (let i = 0; i < this.slots.length; ++i) {
-            if (this.getSlotTargetLocalTile(i).equals(tile)) {
+            if (this.getSlotTargetLocalTile(i).equals(tile) && this.slots[i].layer === layer) {
                 return true;
             }
         }
         return false;
-    }
-
-    /**
-     * Returns if slot # is currently ejecting
-     * @param {number} slotIndex
-     * @returns {boolean}
-     */
-    isSlotEjecting(slotIndex) {
-        assert(slotIndex >= 0 && slotIndex < this.slots.length, "Invalid ejector slot: " + slotIndex);
-        return !!this.slots[slotIndex].item;
     }
 
     /**
@@ -148,41 +139,16 @@ export class ItemEjectorComponent extends Component {
 
     /**
      * Returns the first free slot on this ejector or null if there is none
+     * @param {enumLayer} layer
      * @returns {number?}
      */
-    getFirstFreeSlot() {
+    getFirstFreeSlot(layer) {
         for (let i = 0; i < this.slots.length; ++i) {
-            if (this.canEjectOnSlot(i)) {
+            if (this.canEjectOnSlot(i) && this.slots[i].layer === layer) {
                 return i;
             }
         }
         return null;
-    }
-
-    /**
-     * Returns if any slot is ejecting
-     * @returns {boolean}
-     */
-    isAnySlotEjecting() {
-        for (let i = 0; i < this.slots.length; ++i) {
-            if (this.slots[i].item) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Returns if any slot is free
-     * @returns {boolean}
-     */
-    hasAnySlotFree() {
-        for (let i = 0; i < this.slots.length; ++i) {
-            if (this.canEjectOnSlot(i)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

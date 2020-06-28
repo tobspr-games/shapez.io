@@ -1,17 +1,22 @@
-import { GameSystemWithFilter } from "../game_system_with_filter";
-import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
-import { DrawParameters } from "../../core/draw_parameters";
-import { Entity } from "../entity";
-import { THEME } from "../theme";
-import { Loader } from "../../core/loader";
 import { globalConfig } from "../../core/config";
+import { DrawParameters } from "../../core/draw_parameters";
+import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
+import { Entity } from "../entity";
+import { GameSystemWithFilter } from "../game_system_with_filter";
+import { MapChunkView } from "../map_chunk_view";
+import { Loader } from "../../core/loader";
 
 export class WiredPinsSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [WiredPinsComponent]);
 
         this.pinSprites = {
-            [enumPinSlotType.energyEjector]: [Loader.getSprite("sprites/wires/pin-energy-on.png")],
+            [enumPinSlotType.positiveEnergyEjector]: Loader.getSprite(
+                "sprites/wires/pin-positive-energy.png"
+            ),
+            [enumPinSlotType.negativeEnergyAcceptor]: Loader.getSprite(
+                "sprites/wires/pin-negative-energy.png"
+            ),
         };
     }
 
@@ -19,25 +24,22 @@ export class WiredPinsSystem extends GameSystemWithFilter {
         // TODO
     }
 
-    drawWiresLayer(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawEntityPins.bind(this));
+    /**
+     * Draws the given layer
+     * @param {DrawParameters} parameters
+     */
+    draw(parameters) {
+        this.forEachMatchingEntityOnScreen(parameters, this.drawSingleEntity.bind(this));
     }
 
     /**
-     *
+     * Draws a given chunk
      * @param {DrawParameters} parameters
      * @param {Entity} entity
      */
-    drawEntityPins(parameters, entity) {
+    drawSingleEntity(parameters, entity) {
         const staticComp = entity.components.StaticMapEntity;
-
-        if (!staticComp.shouldBeDrawn(parameters)) {
-            return;
-        }
-
-        const pinsComp = entity.components.WiredPins;
-
-        const slots = pinsComp.slots;
+        const slots = entity.components.WiredPins.slots;
 
         for (let i = 0; i < slots.length; ++i) {
             const slot = slots[i];
@@ -45,7 +47,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
 
             const worldPos = tile.toWorldSpaceCenterOfTile();
 
-            this.pinSprites[slot.type][0].drawCachedCentered(
+            this.pinSprites[slot.type].drawCachedCentered(
                 parameters,
                 worldPos.x,
                 worldPos.y,

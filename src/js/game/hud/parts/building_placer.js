@@ -49,6 +49,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         // Bind to signals
         this.signals.variantChanged.add(this.rerenderVariants, this);
+        this.root.hud.signals.buildingSelectedForPlacement.add(this.startSelection, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.element, {});
         this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
@@ -389,7 +390,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const goodArrowSprite = Loader.getSprite("sprites/misc/slot_good_arrow.png");
         const badArrowSprite = Loader.getSprite("sprites/misc/slot_bad_arrow.png");
 
-        // Just ignore this code ...
+        // Just ignore the following code please ... thanks!
 
         const offsetShift = 10;
 
@@ -397,6 +398,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             const slots = acceptorComp.slots;
             for (let acceptorSlotIndex = 0; acceptorSlotIndex < slots.length; ++acceptorSlotIndex) {
                 const slot = slots[acceptorSlotIndex];
+
                 const acceptorSlotWsTile = staticComp.localTileToWorld(slot.pos);
                 const acceptorSlotWsPos = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
 
@@ -409,7 +411,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     const worldDirection = staticComp.localDirectionToWorld(direction);
 
                     const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
-                    const sourceEntity = this.root.map.getTileContent(sourceTile);
+                    const sourceEntity = this.root.map.getTileContent(sourceTile, this.root.currentLayer);
 
                     let sprite = goodArrowSprite;
                     let alpha = 0.5;
@@ -419,7 +421,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                         const sourceEjector = sourceEntity.components.ItemEjector;
                         const sourceStaticComp = sourceEntity.components.StaticMapEntity;
                         const ejectorAcceptLocalTile = sourceStaticComp.worldToLocalTile(acceptorSlotWsTile);
-                        if (sourceEjector && sourceEjector.anySlotEjectsToLocalTile(ejectorAcceptLocalTile)) {
+                        if (
+                            sourceEjector &&
+                            sourceEjector.anySlotEjectsToLocalTile(
+                                ejectorAcceptLocalTile,
+                                this.root.currentLayer
+                            )
+                        ) {
                             sprite = goodArrowSprite;
                         }
                         alpha = 1.0;
@@ -443,7 +451,10 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         if (ejectorComp) {
             const slots = ejectorComp.slots;
             for (let ejectorSlotIndex = 0; ejectorSlotIndex < slots.length; ++ejectorSlotIndex) {
-                const slot = ejectorComp.slots[ejectorSlotIndex];
+                const slot = slots[ejectorSlotIndex];
+                if (slot.layer !== this.root.currentLayer) {
+                    continue;
+                }
 
                 const ejectorSlotWsTile = staticComp.localTileToWorld(
                     ejectorComp.getSlotTargetLocalTile(ejectorSlotIndex)
@@ -451,7 +462,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 const ejectorSLotWsPos = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
                 const ejectorSlotWsDirection = staticComp.localDirectionToWorld(slot.direction);
 
-                const destEntity = this.root.map.getTileContent(ejectorSlotWsTile);
+                const destEntity = this.root.map.getTileContent(ejectorSlotWsTile, this.root.currentLayer);
 
                 let sprite = goodArrowSprite;
                 let alpha = 0.5;
@@ -463,7 +474,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     if (destAcceptor) {
                         const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
                         const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
-                        if (destAcceptor.findMatchingSlot(destLocalTile, destLocalDir)) {
+                        if (
+                            destAcceptor.findMatchingSlot(destLocalTile, destLocalDir, this.root.currentLayer)
+                        ) {
                             sprite = goodArrowSprite;
                         } else {
                             sprite = badArrowSprite;

@@ -1,9 +1,9 @@
 /* typehints:start */
-import { GameRoot } from "./root";
 import { DrawParameters } from "../core/draw_parameters";
 import { Component } from "./component";
 /* typehints:end */
 
+import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
@@ -33,6 +33,11 @@ export class Entity extends BasicSerializableObject {
          * Whether this entity was registered on the @see EntityManager so far
          */
         this.registered = false;
+
+        /**
+         * On which layer this entity is
+         */
+        this.layer = enumLayer.regular;
 
         /**
          * Internal entity unique id, set by the @see EntityManager
@@ -72,6 +77,7 @@ export class Entity extends BasicSerializableObject {
         return {
             uid: types.uint,
             components: types.keyValueMap(types.objData(gComponentRegistry)),
+            layer: types.enum(enumLayer),
         };
     }
 
@@ -83,6 +89,7 @@ export class Entity extends BasicSerializableObject {
         for (const key in this.components) {
             clone.components[key] = this.components[key].duplicateWithoutContents();
         }
+        clone.layer = this.layer;
         return clone;
     }
 
@@ -162,6 +169,9 @@ export class Entity extends BasicSerializableObject {
                 const ejectorSprite = Loader.getSprite("sprites/debug/ejector_slot.png");
                 for (let i = 0; i < ejectorComp.slots.length; ++i) {
                     const slot = ejectorComp.slots[i];
+                    if (slot.layer !== this.root.currentLayer) {
+                        continue;
+                    }
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     const direction = staticComp.localDirectionToWorld(slot.direction);
                     const directionVector = enumDirectionToVector[direction];
@@ -184,6 +194,9 @@ export class Entity extends BasicSerializableObject {
                 const acceptorSprite = Loader.getSprite("sprites/debug/acceptor_slot.png");
                 for (let i = 0; i < acceptorComp.slots.length; ++i) {
                     const slot = acceptorComp.slots[i];
+                    if (slot.layer !== this.root.currentLayer) {
+                        continue;
+                    }
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     for (let k = 0; k < slot.directions.length; ++k) {
                         const direction = staticComp.localDirectionToWorld(slot.directions[k]);

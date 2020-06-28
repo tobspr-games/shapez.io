@@ -12,7 +12,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
 import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
-import { enumEditMode } from "../../root";
+import { enumLayer } from "../../root";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -125,12 +125,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Called when the edit mode got changed
-     * @param {enumEditMode} editMode
+     * @param {enumLayer} editMode
      */
     onEditModeChanged(editMode) {
         const metaBuilding = this.currentMetaBuilding.get();
         if (metaBuilding) {
-            if (metaBuilding.getEditLayer() !== editMode) {
+            if (metaBuilding.getLayer() !== editMode) {
                 // This layer doesn't fit the edit mode anymore
                 this.currentMetaBuilding.set(null);
             }
@@ -276,7 +276,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const tile = worldPos.toTileSpace();
-        const contents = this.root.map.getTileContent(tile);
+        const contents = this.root.map.getTileContent(tile, this.root.currentLayer);
         if (contents) {
             if (this.root.logic.tryDeleteBuilding(contents)) {
                 this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
@@ -302,7 +302,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const tile = worldPos.toTileSpace();
 
-        const contents = this.root.map.getTileContent(tile);
+        const contents = this.root.map.getTileContent(tile, this.root.currentLayer);
         if (!contents) {
             const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
 
@@ -322,6 +322,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         // Try to extract the building
         const extracted = this.hack_reconstructMetaBuildingAndVariantFromBuilding(contents);
+
         // If the building we are picking is the same as the one we have, clear the cursor.
         if (
             !extracted ||
@@ -335,11 +336,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.currentMetaBuilding.set(extracted.metaBuilding);
         this.currentVariant.set(extracted.variant);
         this.currentBaseRotation = contents.components.StaticMapEntity.rotation;
-
-        // Make sure we selected something, and also make sure it's not a special entity
-        // if (contents && !contents.components.Unremovable) {
-
-        // }
     }
 
     /**
@@ -760,7 +756,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 while (this.currentlyDeleting || this.currentMetaBuilding.get()) {
                     if (this.currentlyDeleting) {
                         // Deletion
-                        const contents = this.root.map.getTileContentXY(x0, y0);
+                        const contents = this.root.map.getLayerContentXY(x0, y0, this.root.currentLayer);
                         if (contents && !contents.queuedForDestroy && !contents.destroyed) {
                             if (this.root.logic.tryDeleteBuilding(contents)) {
                                 anythingDeleted = true;

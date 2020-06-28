@@ -5,7 +5,7 @@ import { epsilonCompare, round4Digits } from "../core/utils";
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
-import { GameRoot } from "./root";
+import { GameRoot, enumLayer } from "./root";
 import { Rectangle } from "../core/rectangle";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { gItemRegistry } from "../core/global_registries";
@@ -118,6 +118,14 @@ export class BeltPath extends BasicSerializableObject {
      */
     canAcceptItem() {
         return this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts;
+    }
+
+    /**
+     * Returns the layer of the this path
+     * @returns {enumLayer}
+     */
+    get layer() {
+        return this.entityPath[0].layer;
     }
 
     /**
@@ -1026,6 +1034,11 @@ export class BeltPath extends BasicSerializableObject {
      */
     drawDebug(parameters) {
         if (!parameters.visibleRect.containsRect(this.worldBounds)) {
+            return;
+        }
+
+        if (this.entityPath[0].layer !== this.root.currentLayer) {
+            // Don't draw
             return;
         }
 

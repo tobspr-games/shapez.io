@@ -2,7 +2,7 @@ import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { enumEditMode } from "../../root";
+import { enumLayer } from "../../root";
 import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
 import { Loader } from "../../../core/loader";
@@ -26,12 +26,12 @@ export class HUDWiresOverlay extends BaseHUDPart {
      * Switches between layers
      */
     switchLayers() {
-        if (this.root.editMode === enumEditMode.regular) {
-            this.root.editMode = enumEditMode.wires;
+        if (this.root.currentLayer === enumLayer.regular) {
+            this.root.currentLayer = enumLayer.wires;
         } else {
-            this.root.editMode = enumEditMode.regular;
+            this.root.currentLayer = enumLayer.regular;
         }
-        this.root.signals.editModeChanged.dispatch(this.root.editMode);
+        this.root.signals.editModeChanged.dispatch(this.root.currentLayer);
     }
 
     /**
@@ -50,7 +50,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
     }
 
     update() {
-        const desiredAlpha = this.root.editMode === enumEditMode.wires ? 1.0 : 0.0;
+        const desiredAlpha = this.root.currentLayer === enumLayer.wires ? 1.0 : 0.0;
         this.currentAlpha = lerp(this.currentAlpha, desiredAlpha, 0.08);
     }
 
@@ -60,6 +60,10 @@ export class HUDWiresOverlay extends BaseHUDPart {
      */
     draw(parameters) {
         if (this.currentAlpha < 0.02) {
+            return;
+        }
+
+        if (this.root.camera.getIsMapOverlayActive()) {
             return;
         }
 

@@ -35,7 +35,7 @@ export default {
     // Unlocks all buildings
     // allBuildingsUnlocked: true,
     // -----------------------------------------------------------------------------------
-    // Disables cost of bluepirnts
+    // Disables cost of blueprints
     // blueprintsNoCost: true,
     // -----------------------------------------------------------------------------------
     // Disables cost of upgrades
@@ -91,6 +91,9 @@ export default {
     // -----------------------------------------------------------------------------------
     // Whether to check belt paths
     // checkBeltPaths: true,
+    // -----------------------------------------------------------------------------------
+    // Whether to items / s instead of items / m in stats
+    // detailedStatistics: true,
     // -----------------------------------------------------------------------------------
     /* dev:end */
 };

@@ -40,6 +40,7 @@ import { HUDWiresOverlay } from "./parts/wires_overlay";
 import { HUDChangesDebugger } from "./parts/debug_changes";
 import { queryParamOptions } from "../../core/query_parameters";
 import { HUDSandboxController } from "./parts/sandbox_controller";
+import { HUDWiresToolbar } from "./parts/wires_toolbar";
 
 export class GameHUD {
     /**
@@ -56,6 +57,7 @@ export class GameHUD {
         this.parts = {
             processingOverlay: new HUDProcessingOverlay(this.root),
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
+            wiresToolbar: new HUDWiresToolbar(this.root),
             blueprintPlacer: new HUDBlueprintPlacer(this.root),
             buildingPlacer: new HUDBuildingPlacer(this.root),
             unlockNotification: new HUDUnlockNotification(this.root),
@@ -75,9 +77,7 @@ export class GameHUD {
             screenshotExporter: new HUDScreenshotExporter(this.root),
             shapeViewer: new HUDShapeViewer(this.root),
 
-            /* wires:start */
             wiresOverlay: new HUDWiresOverlay(this.root),
-            /* wires:end */
 
             // Typing hints
             /* typehints:start */
@@ -87,6 +87,7 @@ export class GameHUD {
         };
 
         this.signals = {
+            buildingSelectedForPlacement: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
             selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
             shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
             shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
@@ -139,7 +140,6 @@ export class GameHUD {
         for (const key in this.parts) {
             this.parts[key].initialize();
         }
-        this.internalInitSignalConnections();
 
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
 
@@ -203,14 +203,6 @@ export class GameHUD {
      */
     toggleUi() {
         document.body.classList.toggle("uiHidden");
-    }
-
-    /**
-     * Initializes connections between parts
-     */
-    internalInitSignalConnections() {
-        const p = this.parts;
-        p.buildingsToolbar.sigBuildingSelected.add(p.buildingPlacer.startSelection, p.buildingPlacer);
     }
 
     /**

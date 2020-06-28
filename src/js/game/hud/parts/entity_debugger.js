@@ -36,7 +36,7 @@ export class HUDEntityDebugger extends BaseHUDPart {
         this.mousePosElem.innerText = worldTile.x + " / " + worldTile.y;
         this.chunkPosElem.innerText = chunk.x + " / " + chunk.y;
 
-        const entity = this.root.map.getTileContent(worldTile);
+        const entity = this.root.map.getTileContent(worldTile, this.root.currentLayer);
         if (entity) {
             removeAllChildren(this.entityInfoElem);
             let html = "Entity";

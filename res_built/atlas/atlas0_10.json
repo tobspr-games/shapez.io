@@ -872,9 +872,33 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":16},
 	"sourceSize": {"w":19,"h":19}
 },
+"sprites/blueprints/wire_left.png":
+{
+	"frame": {"x":596,"y":71,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":11,"h":11},
+	"sourceSize": {"w":13,"h":13}
+},
+"sprites/blueprints/wire_right.png":
+{
+	"frame": {"x":603,"y":54,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":11,"h":11},
+	"sourceSize": {"w":13,"h":13}
+},
+"sprites/blueprints/wire_top.png":
+{
+	"frame": {"x":617,"y":20,"w":9,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":9,"h":13},
+	"sourceSize": {"w":13,"h":13}
+},
 "sprites/buildings/belt_left.png":
 {
-	"frame": {"x":570,"y":105,"w":13,"h":13},
+	"frame": {"x":603,"y":3,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -882,7 +906,7 @@
 },
 "sprites/buildings/belt_right.png":
 {
-	"frame": {"x":582,"y":88,"w":13,"h":13},
+	"frame": {"x":570,"y":105,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
@@ -1080,6 +1104,30 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":16},
 	"sourceSize": {"w":19,"h":19}
 },
+"sprites/buildings/wire_left.png":
+{
+	"frame": {"x":615,"y":37,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":11,"h":11},
+	"sourceSize": {"w":13,"h":13}
+},
+"sprites/buildings/wire_right.png":
+{
+	"frame": {"x":587,"y":105,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":11,"h":11},
+	"sourceSize": {"w":13,"h":13}
+},
+"sprites/buildings/wire_top.png":
+{
+	"frame": {"x":614,"y":84,"w":9,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":9,"h":13},
+	"sourceSize": {"w":13,"h":13}
+},
 "sprites/debug/acceptor_slot.png":
 {
 	"frame": {"x":82,"y":72,"w":6,"h":6},
@@ -1122,7 +1170,7 @@
 },
 "sprites/misc/deletion_marker.png":
 {
-	"frame": {"x":603,"y":3,"w":10,"h":10},
+	"frame": {"x":602,"y":101,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1146,7 +1194,7 @@
 },
 "sprites/misc/slot_bad_arrow.png":
 {
-	"frame": {"x":603,"y":3,"w":10,"h":10},
+	"frame": {"x":602,"y":101,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1154,7 +1202,7 @@
 },
 "sprites/misc/slot_good_arrow.png":
 {
-	"frame": {"x":603,"y":54,"w":10,"h":10},
+	"frame": {"x":602,"y":115,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1178,18 +1226,26 @@
 },
 "sprites/misc/wires_overlay_tile.png":
 {
-	"frame": {"x":596,"y":71,"w":13,"h":13},
+	"frame": {"x":582,"y":88,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":13},
 	"sourceSize": {"w":13,"h":13}
 },
-"sprites/wires/pin-energy-on.png":
+"sprites/wires/pin-negative-energy.png":
 {
-	"frame": {"x":587,"y":105,"w":11,"h":11},
+	"frame": {"x":599,"y":86,"w":11,"h":11},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":1,"w":11,"h":11},
+	"spriteSourceSize": {"x":1,"y":0,"w":11,"h":11},
+	"sourceSize": {"w":13,"h":13}
+},
+"sprites/wires/pin-positive-energy.png":
+{
+	"frame": {"x":611,"y":69,"w":11,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":11,"h":11},
 	"sourceSize": {"w":13,"h":13}
 }},
 "meta": {
@@ -1197,8 +1253,8 @@
 	"version": "1.0",
 	"image": "atlas0_10.png",
 	"format": "RGBA8888",
-	"size": {"w":616,"h":128},
+	"size": {"w":629,"h":128},
 	"scale": "0.1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1e5c68ef1fd4026b263679a3171f1832:b30cc36f2dfbe8399542e279c203efaf:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9ea1a09cb2003bf62ce57f52404292e0:0fc8d0e33f315e93d6d057148d691370:f159918d23e5952766c6d23ab52278c6$"
 }
 }

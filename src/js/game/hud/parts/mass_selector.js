@@ -210,7 +210,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
-                    const contents = this.root.map.getTileContentXY(x, y);
+                    const contents = this.root.map.getLayerContentXY(x, y, this.root.currentLayer);
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
                         this.selectedUids.add(contents.uid);
                     }
@@ -259,7 +259,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
-                    const contents = this.root.map.getTileContentXY(x, y);
+                    const contents = this.root.map.getLayerContentXY(x, y, this.root.currentLayer);
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
                         const staticComp = contents.components.StaticMapEntity;
                         const bounds = staticComp.getTileSpaceBounds();

@@ -25,9 +25,7 @@ export const KEYMAPPINGS = {
         exportScreenshot: { keyCode: 114 }, // F3PS
         toggleFPSInfo: { keyCode: 115 }, // F4
 
-        /* wires:start */
         switchLayers: { keyCode: key("Y") },
-        /* wires:end */
     },
 
     navigation: {
@@ -55,10 +53,10 @@ export const KEYMAPPINGS = {
         mixer: { keyCode: key("8") },
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
-
-        /* wires:start */
         energy_generator: { keyCode: key("O") },
-        /* wires:end */
+
+        // Wires layer
+        wire: { keyCode: key("1") },
     },
 
     placement: {

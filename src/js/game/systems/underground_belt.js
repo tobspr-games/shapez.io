@@ -13,6 +13,7 @@ import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { fastArrayDelete } from "../../core/utils";
+import { enumLayer } from "../root";
 
 const logger = createLogger("tunnels");
 
@@ -95,7 +96,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             let matchingEntrance = null;
             for (let i = 0; i < range; ++i) {
                 currentPos.addInplace(offset);
-                const contents = this.root.map.getTileContent(currentPos);
+                const contents = this.root.map.getTileContent(currentPos, entity.layer);
                 if (!contents) {
                     continue;
                 }
@@ -128,7 +129,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             for (let i = 0; i < matchingEntrance.range; ++i) {
                 currentPos.addInplace(offset);
 
-                const contents = this.root.map.getTileContent(currentPos);
+                const contents = this.root.map.getTileContent(currentPos, entity.layer);
                 if (!contents) {
                     allBeltsMatch = false;
                     break;
@@ -156,7 +157,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 // All belts between this are obsolete, so drop them
                 for (let i = 0; i < matchingEntrance.range; ++i) {
                     currentPos.addInplace(offset);
-                    const contents = this.root.map.getTileContent(currentPos);
+                    const contents = this.root.map.getTileContent(currentPos, entity.layer);
                     assert(contents, "Invalid smart underground belt logic");
                     this.root.logic.tryDeleteBuilding(contents);
                 }
@@ -169,8 +170,8 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 const posBefore = currentPos.copy();
                 currentPos.addInplace(offset);
 
-                const entityBefore = this.root.map.getTileContent(posBefore);
-                const entityAfter = this.root.map.getTileContent(currentPos);
+                const entityBefore = this.root.map.getTileContent(posBefore, entity.layer);
+                const entityAfter = this.root.map.getTileContent(currentPos, entity.layer);
 
                 if (!entityBefore || !entityAfter) {
                     continue;
@@ -233,16 +234,16 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
         for (let x = area.x; x < area.right(); ++x) {
             for (let y = area.y; y < area.bottom(); ++y) {
-                const entity = this.root.map.getTileContentXY(x, y);
-                if (!entity) {
-                    continue;
-                }
-                const undergroundComp = entity.components.UndergroundBelt;
-                if (!undergroundComp) {
-                    continue;
-                }
+                const entities = this.root.map.getLayersContentsMultipleXY(x, y);
+                for (let i = 0; i < entities.length; ++i) {
+                    const entity = entities[i];
+                    const undergroundComp = entity.components.UndergroundBelt;
+                    if (!undergroundComp) {
+                        continue;
+                    }
 
-                undergroundComp.cachedLinkedEntity = null;
+                    undergroundComp.cachedLinkedEntity = null;
+                }
             }
         }
     }
@@ -297,7 +298,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
         ) {
             currentTile = currentTile.add(searchVector);
 
-            const potentialReceiver = this.root.map.getTileContent(currentTile);
+            const potentialReceiver = this.root.map.getTileContent(currentTile, enumLayer.regular);
             if (!potentialReceiver) {
                 // Empty tile
                 continue;
@@ -393,7 +394,8 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
             if (remainingTime <= 0) {
                 const ejectorComp = entity.components.ItemEjector;
-                const nextSlotIndex = ejectorComp.getFirstFreeSlot();
+
+                const nextSlotIndex = ejectorComp.getFirstFreeSlot(entity.layer);
                 if (nextSlotIndex !== null) {
                     if (ejectorComp.tryEject(nextSlotIndex, nextItem)) {
                         items.shift();

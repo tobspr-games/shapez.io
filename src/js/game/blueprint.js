@@ -3,7 +3,7 @@ import { Loader } from "../core/loader";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
-import { GameRoot } from "./root";
+import { GameRoot, enumLayer } from "./root";
 import { findNiceIntegerValue } from "../core/utils";
 import { blueprintShape } from "./upgrades";
 import { globalConfig } from "../core/config";
@@ -16,6 +16,17 @@ export class Blueprint {
      */
     constructor(entities) {
         this.entities = entities;
+    }
+
+    /**
+     * Returns the layer of this blueprint
+     * @returns {enumLayer}
+     */
+    get layer() {
+        if (this.entities.length === 0) {
+            return enumLayer.regular;
+        }
+        return this.entities[0].layer;
     }
 
     /**
@@ -183,7 +194,7 @@ export class Blueprint {
                 rect.moveBy(tile.x, tile.y);
                 placementCheck: for (let x = rect.x; x < rect.right(); ++x) {
                     for (let y = rect.y; y < rect.bottom(); ++y) {
-                        const contents = root.map.getTileContentXY(x, y);
+                        const contents = root.map.getLayerContentXY(x, y, entity.layer);
                         if (contents && !contents.components.ReplaceableMapEntity) {
                             placeable = false;
                             break placementCheck;
@@ -194,7 +205,7 @@ export class Blueprint {
                 if (placeable) {
                     for (let x = rect.x; x < rect.right(); ++x) {
                         for (let y = rect.y; y < rect.bottom(); ++y) {
-                            const contents = root.map.getTileContentXY(x, y);
+                            const contents = root.map.getLayerContentXY(x, y, entity.layer);
                             if (contents) {
                                 assert(
                                     contents.components.ReplaceableMapEntity,

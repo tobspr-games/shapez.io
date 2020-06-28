@@ -1,4 +1,4 @@
-import { GameRoot } from "./root";
+import { GameRoot, enumLayer, arrayLayers } from "./root";
 import { Entity } from "./entity";
 import { Vector, enumDirectionToVector, enumDirection } from "../core/vector";
 import { MetaBuilding } from "./meta_building";
@@ -63,16 +63,16 @@ export class GameLogic {
             blueprintSpriteKey: "",
         });
 
+        const layer = building.getLayer();
         const rect = checker.getTileSpaceBounds();
 
         for (let x = rect.x; x < rect.x + rect.w; ++x) {
             for (let y = rect.y; y < rect.y + rect.h; ++y) {
-                const contents = this.root.map.getTileContentXY(x, y);
+                const contents = this.root.map.getLayerContentXY(x, y, layer);
                 if (contents) {
                     if (
                         !this.checkCanReplaceBuilding({
                             original: contents,
-                            origin,
                             building,
                             rotation,
                             rotationVariant,
@@ -80,6 +80,25 @@ export class GameLogic {
                     ) {
                         // Content already has same rotation
                         return false;
+                    }
+                }
+
+                // Check for any pins which are in the way
+                if (layer === enumLayer.wires) {
+                    const regularContents = this.root.map.getLayerContentXY(x, y, enumLayer.regular);
+                    if (regularContents) {
+                        const staticComp = regularContents.components.StaticMapEntity;
+                        const pinComponent = regularContents.components.WiredPins;
+                        if (pinComponent) {
+                            const pins = pinComponent.slots;
+                            for (let i = 0; i < pins.length; ++i) {
+                                const pos = staticComp.localTileToWorld(pins[i].pos);
+                                // Occupied by a pin
+                                if (pos.x === x && pos.y === y) {
+                                    return false;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -91,15 +110,19 @@ export class GameLogic {
      * Checks if the given building can be replaced by another
      * @param {object} param0
      * @param {Entity} param0.original
-     * @param {Vector} param0.origin
      * @param {number} param0.rotation
      * @param {number} param0.rotationVariant
      * @param {MetaBuilding} param0.building
      * @returns {boolean}
      */
-    checkCanReplaceBuilding({ original, origin, building, rotation, rotationVariant }) {
+    checkCanReplaceBuilding({ original, building, rotation, rotationVariant }) {
         if (!original.components.ReplaceableMapEntity) {
             // Can not get replaced at all
+            return false;
+        }
+
+        if (building.getLayer() !== original.layer) {
+            // Layer mismatch
             return false;
         }
 
@@ -162,11 +185,12 @@ export class GameLogic {
                 blueprintSpriteKey: "",
             });
 
-            const rect = checker.getTileSpaceBounds();
+            const layer = building.getLayer();
 
+            const rect = checker.getTileSpaceBounds();
             for (let x = rect.x; x < rect.x + rect.w; ++x) {
                 for (let y = rect.y; y < rect.y + rect.h; ++y) {
-                    const contents = this.root.map.getTileContentXY(x, y);
+                    const contents = this.root.map.getLayerContentXY(x, y, layer);
                     if (contents) {
                         if (!this.tryDeleteBuilding(contents)) {
                             logger.error("Building has replaceable component but is also unremovable");
@@ -233,9 +257,10 @@ export class GameLogic {
     /**
      * Returns the acceptors and ejectors which affect the current tile
      * @param {Vector} tile
+     * @param {enumLayer} layer
      * @returns {AcceptorsAndEjectorsAffectingTile}
      */
-    getEjectorsAndAcceptorsAtTile(tile) {
+    getEjectorsAndAcceptorsAtTile(tile, layer) {
         /** @type {EjectorsAffectingTile} */
         let ejectors = [];
         /** @type {AcceptorsAffectingTile} */
@@ -247,13 +272,16 @@ export class GameLogic {
                     continue;
                 }
 
-                const entity = this.root.map.getTileContentXY(tile.x + dx, tile.y + dy);
+                const entity = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, layer);
                 if (entity) {
                     const staticComp = entity.components.StaticMapEntity;
                     const itemEjector = entity.components.ItemEjector;
                     if (itemEjector) {
                         for (let ejectorSlot = 0; ejectorSlot < itemEjector.slots.length; ++ejectorSlot) {
                             const slot = itemEjector.slots[ejectorSlot];
+                            if (slot.layer !== layer) {
+                                continue;
+                            }
                             const wsTile = staticComp.localTileToWorld(slot.pos);
                             const wsDirection = staticComp.localDirectionToWorld(slot.direction);
                             const targetTile = wsTile.add(enumDirectionToVector[wsDirection]);
@@ -272,6 +300,10 @@ export class GameLogic {
                     if (itemAcceptor) {
                         for (let acceptorSlot = 0; acceptorSlot < itemAcceptor.slots.length; ++acceptorSlot) {
                             const slot = itemAcceptor.slots[acceptorSlot];
+                            if (slot.layer !== layer) {
+                                continue;
+                            }
+
                             const wsTile = staticComp.localTileToWorld(slot.pos);
                             for (let k = 0; k < slot.directions.length; ++k) {
                                 const direction = slot.directions[k];

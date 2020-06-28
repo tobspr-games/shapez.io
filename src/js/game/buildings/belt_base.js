@@ -9,7 +9,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { ReplaceableMapEntityComponent } from "../components/replaceable_map_entity";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot, enumLayer } from "../root";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
@@ -146,7 +146,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];
         const leftDirection = enumAngleToDirection[(rotation + 270) % 360];
 
-        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile);
+        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile, enumLayer.regular);
 
         let hasBottomEjector = false;
         let hasRightEjector = false;

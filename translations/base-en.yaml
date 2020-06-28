@@ -441,6 +441,11 @@ buildings:
             name: &belt Conveyor Belt
             description: Transports items, hold and drag to place multiple.
 
+    wire:
+        default:
+            name: &wire Wire
+            description: Allows to transport energy
+
     miner: # Internal name for the Extractor
         default:
             name: &miner Extractor
@@ -801,6 +806,7 @@ keybindings:
         energy_generator: *energy_generator
         painter: *painter
         trash: *trash
+        wire: *wire
 
         pipette: Pipette
         rotateWhilePlacing: Rotate

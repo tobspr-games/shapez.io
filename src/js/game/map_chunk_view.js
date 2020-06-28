@@ -23,6 +23,7 @@ export class MapChunkView extends MapChunk {
 
         this.boundInternalDrawBackgroundToContext = this.internalDrawBackgroundToContext.bind(this);
         this.boundInternalDrawForegroundToContext = this.internalDrawForegroundToContext.bind(this);
+        this.boundInternalDrawWiresToContext = this.internalDrawWiresToContext.bind(this);
 
         /**
          * Whenever something changes, we increase this number - so we know we need to redraw
@@ -88,6 +89,35 @@ export class MapChunkView extends MapChunk {
             chunkSizePixels,
             dpi,
             this.boundInternalDrawForegroundToContext,
+            { zoomLevel: parameters.zoomLevel }
+        );
+        parameters.context.drawImage(
+            buffer,
+            this.tileX * globalConfig.tileSize,
+            this.tileY * globalConfig.tileSize,
+            chunkSizePixels,
+            chunkSizePixels
+        );
+    }
+
+    /**
+     * Draws the wires layer
+     * @param {DrawParameters} parameters
+     */
+    drawWiresLayer(parameters) {
+        if (parameters.zoomLevel > globalConfig.mapChunkPrerenderMinZoom) {
+            this.internalDrawWireSystems(parameters);
+            return;
+        }
+
+        const dpi = smoothenDpi(parameters.zoomLevel);
+        const buffer = this.root.buffers.getForKey(
+            "" + dpi,
+            this.renderKey + "@wire",
+            chunkSizePixels,
+            chunkSizePixels,
+            dpi,
+            this.boundInternalDrawWiresToContext,
             { zoomLevel: parameters.zoomLevel }
         );
         parameters.context.drawImage(
@@ -182,12 +212,51 @@ export class MapChunkView extends MapChunk {
     }
 
     /**
+     *
+     * @param {HTMLCanvasElement} canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} w
+     * @param {number} h
+     * @param {number} dpi
+     */
+    internalDrawWiresToContext(canvas, context, w, h, dpi, { zoomLevel }) {
+        context.scale(dpi, dpi);
+        const parameters = new DrawParameters({
+            context,
+            visibleRect: new Rectangle(
+                this.tileX * globalConfig.tileSize,
+                this.tileY * globalConfig.tileSize,
+                chunkSizePixels,
+                chunkSizePixels
+            ),
+            desiredAtlasScale: "1",
+            zoomLevel,
+            root: this.root,
+        });
+        parameters.context.translate(
+            -this.tileX * globalConfig.tileSize,
+            -this.tileY * globalConfig.tileSize
+        );
+        this.internalDrawWireSystems(parameters);
+    }
+
+    /**
      * @param {DrawParameters} parameters
      */
     internalDrawBackgroundSystems(parameters) {
         const systems = this.root.systemMgr.systems;
         systems.mapResources.drawChunk(parameters, this);
         systems.belt.drawChunk(parameters, this);
+    }
+
+    /**
+     * @param {DrawParameters} parameters
+     */
+    internalDrawWireSystems(parameters) {
+        const systems = this.root.systemMgr.systems;
+
+        systems.belt.drawWiresChunk(parameters, this);
+        systems.staticMapEntities.drawWiresChunk(parameters, this);
     }
 
     /**

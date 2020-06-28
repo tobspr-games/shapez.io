@@ -6,6 +6,7 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ColorItem } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
+import { enumLayer } from "../root";
 
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -48,11 +49,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         if (ejectorComp.canEjectOnSlot(preferredSlot)) {
                             slot = preferredSlot;
                         } else {
-                            slot = ejectorComp.getFirstFreeSlot();
+                            /* FIXME: WIRES */
+                            slot = ejectorComp.getFirstFreeSlot(enumLayer.regular);
                         }
                     } else {
+                        /* FIXME: WIRES */
+
                         // We can eject on any slot
-                        slot = ejectorComp.getFirstFreeSlot();
+                        slot = ejectorComp.getFirstFreeSlot(enumLayer.regular);
                     }
 
                     if (slot !== null) {

@@ -4,7 +4,7 @@ import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
-import { enumEditMode, GameRoot } from "./root";
+import { enumLayer, GameRoot } from "./root";
 
 export const defaultBuildingVariant = "default";
 
@@ -26,10 +26,10 @@ export class MetaBuilding {
 
     /**
      * Returns the edit layer of the building
-     * @returns {enumEditMode}
+     * @returns {enumLayer}
      */
-    getEditLayer() {
-        return enumEditMode.regular;
+    getLayer() {
+        return enumLayer.regular;
     }
 
     /**
@@ -180,6 +180,7 @@ export class MetaBuilding {
      */
     createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
+        entity.layer = this.getLayer();
         const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
         entity.addComponent(
             new StaticMapEntityComponent({

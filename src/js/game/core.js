@@ -23,7 +23,7 @@ import { GameHUD } from "./hud/hud";
 import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
-import { GameRoot, enumEditMode } from "./root";
+import { GameRoot, enumLayer } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
@@ -393,26 +393,36 @@ export class GameCore {
         root.map.drawBackground(params);
 
         if (!this.root.camera.getIsMapOverlayActive()) {
-            systems.itemAcceptor.drawUnderlays(params);
-            systems.belt.draw(params);
-            systems.itemEjector.draw(params);
-            systems.itemAcceptor.draw(params);
+            systems.itemAcceptor.drawUnderlays(params, enumLayer.regular);
+            systems.belt.drawLayer(params, enumLayer.regular);
+            systems.itemEjector.drawLayer(params, enumLayer.regular);
+            systems.itemAcceptor.drawLayer(params, enumLayer.regular);
         }
 
         root.map.drawForeground(params);
+
         if (!this.root.camera.getIsMapOverlayActive()) {
             systems.hub.draw(params);
             systems.energyGenerator.draw(params);
             systems.storage.draw(params);
         }
 
-        /* wires:start */
         root.hud.parts.wiresOverlay.draw(params);
 
-        if (this.root.editMode === enumEditMode.wires) {
-            systems.wiredPins.drawWiresLayer(params);
+        if (this.root.currentLayer === enumLayer.wires) {
+            if (!this.root.camera.getIsMapOverlayActive()) {
+                systems.itemAcceptor.drawUnderlays(params, enumLayer.wires);
+            }
+
+            root.map.drawWiresLayer(params);
+
+            if (!this.root.camera.getIsMapOverlayActive()) {
+                systems.itemEjector.drawLayer(params, enumLayer.wires);
+                systems.itemAcceptor.drawLayer(params, enumLayer.wires);
+                systems.belt.drawLayer(params, enumLayer.wires);
+                systems.wiredPins.draw(params);
+            }
         }
-        /* wires:end */
 
         if (G_IS_DEV) {
             root.map.drawStaticEntityDebugOverlays(params);

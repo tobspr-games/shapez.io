@@ -1,10 +1,11 @@
 import { DrawParameters } from "../../core/draw_parameters";
+import { formatBigNumber } from "../../core/utils";
 import { T } from "../../translations";
-import { EnergyGeneratorComponent } from "../components/energy_generator";
+import { EnergyGeneratorComponent, ENERGY_GENERATOR_EJECT_SLOT } from "../components/energy_generator";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
+import { POSITIVE_ENERGY_ITEM_SINGLETON } from "../items/positive_energy_item";
 import { ShapeDefinition } from "../shape_definition";
-import { formatBigNumber } from "../../core/utils";
 
 export class EnergyGeneratorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -27,10 +28,17 @@ export class EnergyGeneratorSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const energyGenComp = entity.components.EnergyGenerator;
+            const ejectorComp = entity.components.ItemEjector;
 
             if (!energyGenComp.requiredKey) {
                 // Compute required key for this generator
                 energyGenComp.requiredKey = this.getShapeRequiredForGenerator(entity);
+            }
+
+            if (energyGenComp.itemsInQueue > 0) {
+                if (ejectorComp.tryEject(ENERGY_GENERATOR_EJECT_SLOT, POSITIVE_ENERGY_ITEM_SINGLETON)) {
+                    energyGenComp.itemsInQueue -= 1;
+                }
             }
         }
     }

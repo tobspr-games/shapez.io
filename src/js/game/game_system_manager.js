@@ -102,9 +102,7 @@ export class GameSystemManager {
 
         add("staticMapEntities", StaticMapEntitySystem);
 
-        /* wires:start */
         add("wiredPins", WiredPinsSystem);
-        /* wires:end */
 
         // IMPORTANT: Must be after belt system since belt system can change the
         // orientation of an entity after it is placed -> the item acceptor cache

@@ -11,6 +11,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { Blueprint } from "../../blueprint";
 import { SOUNDS } from "../../../platform/sound";
+import { enumLayer } from "../../root";
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
@@ -26,7 +27,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     initialize() {
-        this.root.hud.signals.buildingsSelectedForCopy.add(this.onBuildingsSelected, this);
+        this.root.hud.signals.buildingsSelectedForCopy.add(this.createBlueprintFromBuildings, this);
 
         /** @type {TypedTrackedState<Blueprint?>} */
         this.currentBlueprint = new TrackedState(this.onBlueprintChanged, this);
@@ -43,6 +44,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
 
         this.root.hud.signals.selectedPlacementBuildingChanged.add(this.abortPlacement, this);
+        this.root.signals.editModeChanged.add(this.onEditModeChanged, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.costDisplayParent);
         this.trackedCanAfford = new TrackedState(this.onCanAffordChanged, this);
@@ -56,6 +58,24 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         }
     }
 
+    /**
+     * Called when the layer was changed
+     * @param {enumLayer} layer
+     */
+    onEditModeChanged(layer) {
+        // Check if the layer of the blueprint differs and thus we have to deselect it
+        const blueprint = this.currentBlueprint.get();
+        if (blueprint) {
+            if (blueprint.layer !== layer) {
+                this.currentBlueprint.set(null);
+            }
+        }
+    }
+
+    /**
+     * Called when the blueprint is now affordable or not
+     * @param {boolean} canAfford
+     */
     onCanAffordChanged(canAfford) {
         this.costDisplayParent.classList.toggle("canAfford", canAfford);
     }
@@ -67,6 +87,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     /**
+     * Called when the blueprint was changed
      * @param {Blueprint} blueprint
      */
     onBlueprintChanged(blueprint) {
@@ -105,13 +126,12 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             const cost = blueprint.getCost();
             this.root.hubGoals.takeShapeByKey(blueprintShape, cost);
             this.root.soundProxy.playUi(SOUNDS.placeBuilding);
-            // This actually feels weird
-            // if (!this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).pressed) {
-            //     this.currentBlueprint.set(null);
-            // }
         }
     }
 
+    /**
+     * Mose move handler
+     */
     onMouseMove() {
         // Prevent movement while blueprint is selected
         if (this.currentBlueprint.get()) {
@@ -120,15 +140,19 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     /**
+     * Called when an array of bulidings was selected
      * @param {Array<number>} uids
      */
-    onBuildingsSelected(uids) {
+    createBlueprintFromBuildings(uids) {
         if (uids.length === 0) {
             return;
         }
         this.currentBlueprint.set(Blueprint.fromUids(this.root, uids));
     }
 
+    /**
+     * Attempts to rotate the current blueprint
+     */
     rotateBlueprint() {
         if (this.currentBlueprint.get()) {
             if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
@@ -139,8 +163,17 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         }
     }
 
+    /**
+     * Attempts to paste the last blueprint
+     */
     pasteBlueprint() {
         if (this.lastBlueprintUsed !== null) {
+            if (this.lastBlueprintUsed.layer !== this.root.currentLayer) {
+                // Not compatible
+                this.root.soundProxy.playUiError();
+                return;
+            }
+
             this.root.hud.signals.pasteBlueprintRequested.dispatch();
             this.currentBlueprint.set(this.lastBlueprintUsed);
         } else {

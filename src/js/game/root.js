@@ -32,10 +32,13 @@ import { KeyActionMapper } from "./key_action_mapper";
 const logger = createLogger("game/root");
 
 /** @enum {string} */
-export const enumEditMode = {
+export const enumLayer = {
     regular: "regular",
     wires: "wires",
 };
+
+/** @type {Array<enumLayer>} */
+export const arrayLayers = [enumLayer.regular, enumLayer.wires];
 
 /**
  * The game root is basically the whole game state at a given point,
@@ -130,8 +133,8 @@ export class GameRoot {
         /** @type {DynamicTickrate} */
         this.dynamicTickrate = null;
 
-        /** @type {enumEditMode} */
-        this.editMode = enumEditMode.regular;
+        /** @type {enumLayer} */
+        this.currentLayer = enumLayer.regular;
 
         this.signals = {
             // Entities
@@ -165,7 +168,7 @@ export class GameRoot {
 
             bulkOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
 
-            editModeChanged: /** @type {TypedSignal<[enumEditMode]>} */ (new Signal()),
+            editModeChanged: /** @type {TypedSignal<[enumLayer]>} */ (new Signal()),
         };
 
         // RNG's

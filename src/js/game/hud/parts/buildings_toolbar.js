@@ -9,10 +9,10 @@ import { MetaSplitterBuilding } from "../../buildings/splitter";
 import { MetaStackerBuilding } from "../../buildings/stacker";
 import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
-import { enumEditMode } from "../../root";
+import { enumLayer } from "../../root";
 import { HUDBaseToolbar } from "./base_toolbar";
 
-const toolbarBuildings = [
+const supportedBuildings = [
     MetaBeltBaseBuilding,
     MetaSplitterBuilding,
     MetaUndergroundBeltBuilding,
@@ -24,17 +24,16 @@ const toolbarBuildings = [
     MetaPainterBuilding,
     MetaTrashBuilding,
 
-    /* wires:start */
     MetaEnergyGenerator,
-    /* wires:end */
 ];
 
 export class HUDBuildingsToolbar extends HUDBaseToolbar {
     constructor(root) {
-        super(
-            root,
-            toolbarBuildings,
-            () => !this.root.camera.getIsMapOverlayActive() && this.root.editMode === enumEditMode.regular
-        );
+        super(root, {
+            supportedBuildings,
+            visibilityCondition: () =>
+                !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === enumLayer.regular,
+            htmlElementId: "ingame_HUD_buildings_toolbar",
+        });
     }
 }

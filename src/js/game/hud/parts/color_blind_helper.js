@@ -8,7 +8,7 @@ import { THEME } from "../../theme";
 import { globalConfig } from "../../../core/config";
 import { T } from "../../../translations";
 import { enumItemType } from "../../base_item";
-import { enumEditMode } from "../../root";
+import { enumLayer } from "../../root";
 
 export class HUDColorBlindHelper extends BaseHUDPart {
     createElements(parent) {
@@ -41,14 +41,14 @@ export class HUDColorBlindHelper extends BaseHUDPart {
             return null;
         }
 
-        if (this.root.editMode !== enumEditMode.regular) {
+        if (this.root.currentLayer !== enumLayer.regular) {
             // Not in regular mode
             return null;
         }
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const tile = worldPos.toTileSpace();
-        const contents = this.root.map.getTileContent(tile);
+        const contents = this.root.map.getTileContent(tile, this.root.currentLayer);
 
         if (contents && !contents.components.Miner) {
             const beltComp = contents.components.Belt;
@@ -66,6 +66,9 @@ export class HUDColorBlindHelper extends BaseHUDPart {
             if (ejectorComp) {
                 for (let i = 0; i < ejectorComp.slots.length; ++i) {
                     const slot = ejectorComp.slots[i];
+                    if (slot.layer !== this.root.currentLayer) {
+                        continue;
+                    }
                     if (slot.item && slot.item.getItemType() === enumItemType.color) {
                         return /** @type {ColorItem} */ (slot.item).color;
                     }

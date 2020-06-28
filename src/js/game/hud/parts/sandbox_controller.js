@@ -132,7 +132,7 @@ export class HUDSandboxController extends BaseHUDPart {
             }
         });
 
-        this.visible = true;
+        this.visible = !G_IS_DEV;
         this.domAttach = new DynamicDomAttach(this.root, this.element);
     }
 

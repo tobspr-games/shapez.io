@@ -2,10 +2,12 @@ import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector
 import { types } from "../../savegame/serialization";
 import { BaseItem, enumItemType } from "../base_item";
 import { Component } from "../component";
+import { enumLayer } from "../root";
 
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
+ * layer: enumLayer,
  * filter?: enumItemType
  * }} ItemAcceptorSlot */
 
@@ -16,6 +18,13 @@ import { Component } from "../component";
  *  index: number,
  *  acceptedDirection: enumDirection
  * }} ItemAcceptorLocatedSlot */
+
+/** @typedef {{
+ * pos: Vector,
+ * directions: enumDirection[],
+ * layer?: enumLayer,
+ * filter?: enumItemType
+ * }} ItemAcceptorSlotConfig */
 
 export class ItemAcceptorComponent extends Component {
     static getId() {
@@ -29,6 +38,9 @@ export class ItemAcceptorComponent extends Component {
                     pos: types.vector,
                     directions: types.array(types.enum(enumDirection)),
                     filter: types.nullable(types.enum(enumItemType)),
+
+                    // TODO: MIGRATE
+                    layer: types.enum(enumLayer),
                 })
             ),
             animated: types.bool,
@@ -36,6 +48,9 @@ export class ItemAcceptorComponent extends Component {
                 types.structured({
                     pos: types.vector,
                     direction: types.enum(enumDirection),
+
+                    // TODO: MIGRATE
+                    layer: types.enum(enumLayer),
                 })
             ),
         };
@@ -49,6 +64,7 @@ export class ItemAcceptorComponent extends Component {
                 pos: slot.pos.copy(),
                 directions: slot.directions.slice(),
                 filter: slot.filter,
+                layer: slot.layer,
             });
         }
 
@@ -58,6 +74,7 @@ export class ItemAcceptorComponent extends Component {
             beltUnderlaysCopy.push({
                 pos: underlay.pos.copy(),
                 direction: underlay.direction,
+                layer: underlay.layer,
             });
         }
 
@@ -71,9 +88,9 @@ export class ItemAcceptorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemType}>} param0.slots The slots from which we accept items
+     * @param {Array<ItemAcceptorSlotConfig>} param0.slots The slots from which we accept items
      * @param {boolean=} param0.animated Whether to animate item consumption
-     * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.beltUnderlays Where to render belt underlays
+     * @param {Array<{pos: Vector, direction: enumDirection, layer: enumLayer}>=} param0.beltUnderlays Where to render belt underlays
      */
     constructor({ slots = [], beltUnderlays = [], animated = true }) {
         super();
@@ -82,7 +99,7 @@ export class ItemAcceptorComponent extends Component {
 
         /**
          * Fixes belt animations
-         * @type {Array<{ item: BaseItem, slotIndex: number, animProgress: number, direction: enumDirection}>}
+         * @type {Array<{ item: BaseItem, slotIndex: number, animProgress: number, direction: enumDirection }>}
          */
         this.itemConsumptionAnimations = [];
 
@@ -94,16 +111,17 @@ export class ItemAcceptorComponent extends Component {
 
     /**
      *
-     * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemType}>} slots
+     * @param {Array<ItemAcceptorSlotConfig>} slots
      */
     setSlots(slots) {
-        /** @type {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemType}>} */
+        /** @type {Array<ItemAcceptorSlot>} */
         this.slots = [];
         for (let i = 0; i < slots.length; ++i) {
             const slot = slots[i];
             this.slots.push({
                 pos: slot.pos,
                 directions: slot.directions,
+                layer: slot.layer || enumLayer.regular,
 
                 // Which type of item to accept (shape | color | all) @see enumItemType
                 filter: slot.filter,
@@ -142,9 +160,10 @@ export class ItemAcceptorComponent extends Component {
      * Tries to find a slot which accepts the current item
      * @param {Vector} targetLocalTile
      * @param {enumDirection} fromLocalDirection
+     * @param {enumLayer} layer
      * @returns {ItemAcceptorLocatedSlot|null}
      */
-    findMatchingSlot(targetLocalTile, fromLocalDirection) {
+    findMatchingSlot(targetLocalTile, fromLocalDirection, layer) {
         // We need to invert our direction since the acceptor specifies *from* which direction
         // it accepts items, but the ejector specifies *into* which direction it ejects items.
         // E.g.: Ejector ejects into "right" direction but acceptor accepts from "left" direction.
@@ -156,6 +175,11 @@ export class ItemAcceptorComponent extends Component {
 
             // Make sure the acceptor slot is on the right position
             if (!slot.pos.equals(targetLocalTile)) {
+                continue;
+            }
+
+            // Make sure the layer matches
+            if (slot.layer !== layer) {
                 continue;
             }
 

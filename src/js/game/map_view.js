@@ -157,6 +157,38 @@ export class MapView extends BaseMap {
     }
 
     /**
+     * Draws the maps foreground
+     * @param {DrawParameters} parameters
+     */
+    drawWiresLayer(parameters) {
+        const cullRange = parameters.visibleRect.toTileCullRectangle();
+        const top = cullRange.top();
+        const right = cullRange.right();
+        const bottom = cullRange.bottom();
+        const left = cullRange.left();
+
+        const border = 1;
+        const minY = top - border;
+        const maxY = bottom + border;
+        const minX = left - border;
+        const maxX = right + border - 1;
+
+        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
+
+        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
+        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
+
+        // Render y from top down for proper blending
+        for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
+            for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
+                const chunk = this.root.map.getChunk(chunkX, chunkY, true);
+                chunk.drawWiresLayer(parameters);
+            }
+        }
+    }
+
+    /**
      * Draws the map background
      * @param {DrawParameters} parameters
      */

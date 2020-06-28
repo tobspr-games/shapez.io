@@ -1,7 +1,4 @@
-/* typehints:start */
-import { GameRoot } from "./root";
-/* typehints:end */
-
+import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
@@ -35,6 +32,13 @@ export class MapChunk {
             globalConfig.mapChunkSize,
             globalConfig.mapChunkSize,
             "map-chunk@" + this.x + "|" + this.y
+        );
+
+        /** @type {Array<Array<?Entity>>} */
+        this.wireContents = make2DUndefinedArray(
+            globalConfig.mapChunkSize,
+            globalConfig.mapChunkSize,
+            "map-chunk-wires@" + this.x + "|" + this.y
         );
 
         /** @type {Array<Array<?BaseItem>>} */
@@ -325,6 +329,53 @@ export class MapChunk {
     }
 
     /**
+     * Returns the contents of this chunk from the given world space coordinates
+     * @param {number} worldX
+     * @param {number} worldY
+     * @param {enumLayer} layer
+     * @returns {Entity=}
+     */
+    getLayerContentFromWorldCoords(worldX, worldY, layer) {
+        const localX = worldX - this.tileX;
+        const localY = worldY - this.tileY;
+        assert(localX >= 0, "Local X is < 0");
+        assert(localY >= 0, "Local Y is < 0");
+        assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
+        assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
+        if (layer === enumLayer.regular) {
+            return this.contents[localX][localY] || null;
+        } else {
+            return this.wireContents[localX][localY] || null;
+        }
+    }
+    /**
+     * Returns the contents of this chunk from the given world space coordinates
+     * @param {number} worldX
+     * @param {number} worldY
+     * @returns {Array<Entity>}
+     */
+    getLayersContentsMultipleFromWorldCoords(worldX, worldY) {
+        const localX = worldX - this.tileX;
+        const localY = worldY - this.tileY;
+        assert(localX >= 0, "Local X is < 0");
+        assert(localY >= 0, "Local Y is < 0");
+        assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
+        assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
+
+        const regularContent = this.contents[localX][localY];
+        const wireContent = this.wireContents[localX][localY];
+
+        const result = [];
+        if (regularContent) {
+            result.push(regularContent);
+        }
+        if (wireContent) {
+            result.push(wireContent);
+        }
+        return result;
+    }
+
+    /**
      * Returns the chunks contents from the given local coordinates
      * @param {number} localX
      * @param {number} localY
@@ -344,22 +395,36 @@ export class MapChunk {
      * @param {number} tileX
      * @param {number} tileY
      * @param {Entity=} contents
+     * @param {enumLayer} layer
      */
-    setTileContentFromWorldCords(tileX, tileY, contents) {
+    setLayerContentFromWorldCords(tileX, tileY, contents, layer) {
         const localX = tileX - this.tileX;
         const localY = tileY - this.tileY;
         assert(localX >= 0, "Local X is < 0");
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
-        const oldContents = this.contents[localX][localY];
+
+        let oldContents;
+        if (layer === enumLayer.regular) {
+            oldContents = this.contents[localX][localY];
+        } else {
+            oldContents = this.wireContents[localX][localY];
+        }
+
         assert(contents === null || !oldContents, "Tile already used: " + tileX + " / " + tileY);
 
         if (oldContents) {
             // Remove from list
             fastArrayDeleteValueIfContained(this.containedEntities, oldContents);
         }
-        this.contents[localX][localY] = contents;
+
+        if (layer === enumLayer.regular) {
+            this.contents[localX][localY] = contents;
+        } else {
+            this.wireContents[localX][localY] = contents;
+        }
+
         if (contents) {
             if (this.containedEntities.indexOf(contents) < 0) {
                 this.containedEntities.push(contents);
