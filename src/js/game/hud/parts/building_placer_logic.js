@@ -322,7 +322,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         // Try to extract the building
         const extracted = this.hack_reconstructMetaBuildingAndVariantFromBuilding(contents);
-        if (!extracted) {
+        // If the building we are picking is the same as the one we have, clear the cursor.
+        if (
+            !extracted ||
+            (extracted.metaBuilding === this.currentMetaBuilding.get() &&
+                extracted.variant === this.currentVariant.get())
+        ) {
             this.currentMetaBuilding.set(null);
             return;
         }
@@ -558,8 +563,15 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         // Figure which points the line visits
         const worldPos = this.root.camera.screenToWorld(mousePosition);
-        const mouseTile = worldPos.toTileSpace();
-        const startTile = this.lastDragTile;
+        let endTile = worldPos.toTileSpace();
+        let startTile = this.lastDragTile;
+
+        // if the alt key is pressed, reverse belt planner direction by switching start and end tile
+        if (this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse).pressed) {
+            let tmp = startTile;
+            startTile = endTile;
+            endTile = tmp;
+        }
 
         // Place from start to corner
         const pathToCorner = this.currentDirectionLockCorner.sub(startTile);
@@ -580,7 +592,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         // Place from corner to end
-        const pathFromCorner = mouseTile.sub(this.currentDirectionLockCorner);
+        const pathFromCorner = endTile.sub(this.currentDirectionLockCorner);
         const deltaFromCorner = pathFromCorner.normalize().round();
         const lengthFromCorner = Math.round(pathFromCorner.length());
 
