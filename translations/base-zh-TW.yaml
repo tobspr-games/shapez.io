@@ -170,10 +170,10 @@ mainMenu:
                  <br> <br>
                  這是交易：<br>
                  <ul class =“ bucketList”>
-                     <li>將您的基地的屏幕截圖提交到<strong> contest@shapez.io </ strong> </ li>
+                     <li>將您的基地的螢幕截圖提交到<strong> contest@shapez.io </ strong> </ li>
                      <li>如果您在社交媒體上分享會有額外獎勵積分！</ li>
-                     <li>我將選擇5張屏幕截圖，並將其提交給<strong> discord </ strong>社區進行投票。</ li>
-                     <li>獲勝者將獲得<strong> $ 25 </ strong>（貝寶paypal，亞馬遜禮品卡，隨您喜歡）</ li>
+                     <li>我將選擇5張螢幕截圖，並將其提交給<strong> discord </ strong>社區進行投票。</ li>
+                     <li>獲勝者將獲得<strong> $ 25 </ strong>（paypal，亞馬遜禮品卡，隨您喜歡）</ li>
                      <li>截止日期：CEST 07.06.2020 12:00 AM </ li>
                  </ ul>
                  <br>
@@ -189,7 +189,7 @@ mainMenu:
 dialogs:
     buttons:
         ok: 確認
-        delete: 删除
+        delete: 刪除
         cancel: 取消
         later: 之後
         restart: 重啟
@@ -201,19 +201,19 @@ dialogs:
         showKeybindings: 顯示按鍵設置
 
     importSavegameError:
-        title: 導入錯誤
+        title: 匯入錯誤
         text: >-
-            未能導入存檔：
+            未能匯入存檔：
 
     importSavegameSuccess:
-        title: 導入成功
+        title: 匯入成功
         text: >-
-            存檔被成功導入
+            存檔被成功匯入
 
     gameLoadFailure:
         title: 存檔被損壞
         text: >-
-            未能導入存檔：
+            未能匯入存檔：
 
     confirmSavegameDelete:
         title: 確認刪除
@@ -355,8 +355,8 @@ ingame:
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: 建築升級
+        buttonUnlock: 升級
 
         # Gets replaced to e.g. "Tier IX"
         tier: <x>級
@@ -369,7 +369,7 @@ ingame:
 
     # The "Statistics" window
     statistics:
-        title: 統計信息
+        title: 統計資訊
         dataSources:
             stored:
                 title: 儲存
@@ -411,7 +411,7 @@ ingame:
     waypoints:
         waypoints: 地圖標記
         hub: 基地
-        description: 滑鼠左鍵按標記跳轉到它，按右鍵將其刪除。<br> <br>按<keybinding>從當前視圖創建一個標記，或<strong>按右鍵</ strong>創建一個在所選位置的標記。
+        description: 滑鼠左鍵按標記跳轉到它，按右鍵將其刪除。<br> <br>按<keybinding>從當前視圖創建一個標記，或<strong>按右鍵</strong>創建一個在所選位置的標記。
         creationSuccessNotification: 成功創建地圖標記。
 
     # Interactive tutorial
@@ -423,7 +423,7 @@ ingame:
                 用<strong>傳送帶</strong>將你的挖礦機連接到基地上！ <br><br>提示：用你的鼠標<strong>按下並拖動</strong>傳送帶！
 
             1_3_expand: >-
-                這<strong>不是</strong>一個掛機遊戲！建造更多的挖礦機和傳送帶來更快地完成目標。 <br><br>
+                這<strong>不是</strong>一個放置型遊戲！建造更多的挖礦機和傳送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個挖礦機，用<strong>R</strong>鍵旋轉它們。
 
     colors:
@@ -497,7 +497,7 @@ buildings:
             name: &cutter 切割機
             description: 將圖形從上到下切開並輸出。 <strong>如果你只需要其中一半，記得把另一半銷毀掉，否則切割機會停止工作！ </strong>
         quad:
-            name: 切割機（四分）
+            name: 四分切割機
             description: 將輸入的圖形切成四塊。 <strong>如果你只需要其中一塊，記得把其他的銷毀掉，否則切割機會停止工作！ </strong>
 
     rotater:
@@ -505,7 +505,7 @@ buildings:
             name: &rotater 旋轉機
             description: 將圖形順時針旋轉90度。
         ccw:
-            name: 旋轉機（逆時針）
+            name: 逆時針旋轉機
             description: 將圖形逆時針旋轉90度。
 
     stacker:
@@ -516,17 +516,17 @@ buildings:
     mixer:
         default:
             name: &mixer 混色機
-            description: 將兩個顏色混合在一起。 （加法混合）
+            description: 將兩個顏色混合在一起。
 
     painter:
         default:
             name: &painter 上色機
             description: &painter_desc 將整個圖形塗上輸入的顏色。
         double:
-            name: 上色機（雙倍）
-            description: 同時為兩個輸入的圖形上色，每次上色只消耗一份顏色。
+            name: 雙倍上色機
+            description: 同時為兩個輸入的圖形上色，每次上色只消耗一份顏色塗料。
         quad:
-            name: 上色機（四向）
+            name: 四向上色機
             description: 為圖形的四個角塗上不同的顏色。
         mirrored:
             name: *painter
@@ -549,16 +549,16 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: 切割圖形
-        desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>從上到下</strong>切成兩半。 <br><br>記得把不需要的部分處理掉，否則這個這個建築會停止工作。為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
+        desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>從上到下</strong>切成兩半。 <br><br>記得把不需要的部分處理掉，否則這個這個建築會停止運作。為此我給你準備了<strong>垃圾桶</strong>，它會把放進去的所有物品銷毀掉。
 
     reward_rotater:
-        title: 順時針旋轉
+        title: 順時鐘旋轉
         desc: <strong>旋轉機</strong>已解鎖。它會順時針旋轉輸入的圖形90度。
 
     reward_painter:
         title: 上色
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            The <strong>上色機</strong>已解鎖。開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設置中有<strong>色盲模式</strong>可以選。
 
     reward_mixer:
         title: 混色
@@ -725,14 +725,14 @@ settings:
                 extremely_fast: 最快
 
         enableTunnelSmartplace:
-            title: 智能地下傳送帶放置
+            title: 智能傳送帶放置
             description: >-
                 啟用後，放置地下傳送帶時會將多餘的傳送帶移除。
                 此外，拖動可以快速鋪設地下傳送帶，並移除多餘的傳送帶。
         vignette:
             title: 暈映
             description: >-
-                啟用暈映，將屏幕角落裡的顏色變深，更容易閱讀文本。
+                啟用暈映，將屏幕角落裡的顏色變深，更容易閱讀文字。
 
         autosaveInterval:
             title: 自動刷新時間
@@ -744,14 +744,14 @@ settings:
                 five_minutes: 5分鐘
                 ten_minutes: 10分鐘
                 twenty_minutes: 20分鐘
-                disabled: 禁用
+                disabled: 關閉
         compactBuildingInfo:
             title: 關閉建築訊息
             description: >-
-                通過顯示建築物的比率來縮短建築物的信息框。 否則
+                通過顯示建築物的比率來縮短建築物的訊息框。 否則
                  顯示所有說明+圖像。
         disableCutDeleteWarnings:
-            title: 禁用剪下/刪除的警告
+            title: 關閉剪下/刪除的警告
             description: >-
                 剪下/刪除超過100個建築物時禁用警告。
 
@@ -760,11 +760,10 @@ settings:
             description: 如果您是色盲者，啟用了這設定，就可以玩遊戲了。
 
         rotationByBuilding:
-            title: Rotation by building type
+            title: 依建築類型旋轉
             description: >-
-                Each building type remembers the rotation you last set it to individually.
-                This may be more comfortable if you frequently switch between placing
-                different building types.
+                每個建築類型，將會分別記住您最後一次使用的旋轉方向。
+                如果您常常切換不同類型的建築，這樣可能會更方便。
 keybindings:
     title: 按鍵設置
     hint: >-
@@ -823,9 +822,9 @@ keybindings:
         placementDisableAutoOrientation: 取消自動定向
         placeMultiple: 繼續放置
         placeInverse: 反向放置傳送帶
-        pasteLastBlueprint: 貼上上一張藍圖
+        pasteLastBlueprint: 貼上前一張藍圖
         massSelectCut: 剪下
-        exportScreenshot: 導出截圖
+        exportScreenshot: 匯出截圖
         mapMoveFaster: 快速移動
 
         lockBeltDirection: 啟用傳送帶規劃
