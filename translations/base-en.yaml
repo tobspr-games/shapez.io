@@ -474,11 +474,11 @@ buildings:
 
         serializer:
             name: Serializer
-            description: Serializes two conveyor belts into one.
+            description: Serializes four conveyor belts into one.
 
         deserializer:
             name: Deserializer
-            description: Deserializes one conveyor belts into two.
+            description: Deserializes one conveyor belts into four.
 
     cutter:
         default:

@@ -26,12 +26,13 @@ export class MetaSplitterBuilding extends MetaBuilding {
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
-            case enumSplitterVariants.serializer:
-            case enumSplitterVariants.deserializer:
                 return new Vector(2, 1);
             case enumSplitterVariants.compact:
             case enumSplitterVariants.compactInverse:
                 return new Vector(1, 1);
+            case enumSplitterVariants.serializer:
+            case enumSplitterVariants.deserializer:
+                return new Vector(4, 1);
             default:
                 assertAlways(false, "Unknown splitter variant: " + variant);
         }
@@ -186,6 +187,14 @@ export class MetaSplitterBuilding extends MetaBuilding {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
                     },
+                    {
+                        pos: new Vector(2, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                    {
+                        pos: new Vector(3, 0),
+                        directions: [enumDirection.bottom],
+                    },
                 ]);
 
                 entity.components.ItemEjector.setSlots([
@@ -196,7 +205,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     { pos: new Vector(0, 0), direction: enumDirection.top },
                 ];
 
-                entity.components.ItemProcessor.inputsPerCharge = 2;
+                entity.components.ItemProcessor.inputsPerCharge = 4;
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.serializer;
 
                 break;
@@ -212,11 +221,15 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 entity.components.ItemEjector.setSlots([
                     { pos: new Vector(0, 0), direction: enumDirection.top },
                     { pos: new Vector(1, 0), direction: enumDirection.top },
+                    { pos: new Vector(2, 0), direction: enumDirection.top },
+                    { pos: new Vector(3, 0), direction: enumDirection.top },
                 ]);
 
                 entity.components.ItemAcceptor.beltUnderlays = [
                     { pos: new Vector(0, 0), direction: enumDirection.top },
                     { pos: new Vector(1, 0), direction: enumDirection.top },
+                    { pos: new Vector(2, 0), direction: enumDirection.top },
+                    { pos: new Vector(3, 0), direction: enumDirection.top },
                 ];
 
                 entity.components.ItemProcessor.inputsPerCharge = 1;
