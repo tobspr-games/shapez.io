@@ -66,16 +66,10 @@ export class MinerSystem extends GameSystemWithFilter {
     tryPerformMinerEject(entity, item) {
         const minerComp = entity.components.Miner;
         const ejectComp = entity.components.ItemEjector;
-        const staticComp = entity.components.StaticMapEntity;
 
         // Check if we are a chained miner
         if (minerComp.chainable) {
-            const ejectingSlot = ejectComp.slots[0];
-            const ejectingPos = staticComp.localTileToWorld(ejectingSlot.pos);
-            const ejectingDirection = staticComp.localDirectionToWorld(ejectingSlot.direction);
-
-            const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
-            const targetContents = this.root.map.getTileContent(targetTile, enumLayer.regular);
+            const targetContents = this.getAdjacentEntity(entity);
 
             // Check if we are connected to another miner and thus do not eject directly
             if (targetContents) {

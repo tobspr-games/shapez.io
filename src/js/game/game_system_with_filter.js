@@ -8,6 +8,8 @@ import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
 import { DrawParameters } from "../core/draw_parameters";
 import { globalConfig } from "../core/config";
+import { enumDirection, enumDirectionToVector } from "../core/vector";
+
 export class GameSystemWithFilter extends GameSystem {
     /**
      * Constructs a new game system with the given component filter. It will process
@@ -210,5 +212,22 @@ export class GameSystemWithFilter extends GameSystem {
         if (index >= 0) {
             arrayDelete(this.allEntities, index);
         }
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {enumDirection=} direction
+     * @returns {Entity|null}
+     */
+    getAdjacentEntity(entity, direction = null) {
+        const ejectComp = entity.components.ItemEjector;
+        const staticComp = entity.components.StaticMapEntity;
+
+        const ejectingSlot = ejectComp.slots[0];
+        const ejectingPos = staticComp.localTileToWorld(ejectingSlot.pos);
+        const ejectingDirection = staticComp.localDirectionToWorld(direction || ejectingSlot.direction);
+        const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
+        return this.root.map.getTileContent(targetTile, enumLayer.regular);
     }
 }
