@@ -507,7 +507,7 @@ buildings:
         mirrored:
             name: *painter
             description: *painter_desc
-        bleacher:
+        bleach:
             name: 脱色機
             description: 入力された形の全体を無色にします。
 

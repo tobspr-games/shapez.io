@@ -64,7 +64,7 @@ export const globalConfig = {
         painter: 1 / 6,
         painterDouble: 1 / 8,
         painterQuad: 1 / 8,
-        bleacher: 1 / 8,
+        painterBleach: 1 / 8,
         mixer: 1 / 5,
         stacker: 1 / 6,
         advancedProcessor: 1 / 15,

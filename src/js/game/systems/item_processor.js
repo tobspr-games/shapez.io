@@ -321,9 +321,9 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 break;
             }
 
-            // BLEACHER
+            // PAINTER (BLEACH)
 
-            case enumItemProcessorTypes.bleacher: {
+            case enumItemProcessorTypes.painterBleach: {
                 const shapeItem = /** @type {ShapeItem} */ (items[0].item);
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith(
