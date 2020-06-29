@@ -621,141 +621,141 @@ storyRewards:
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
 
     reward_wires:
-        title: Wires
+        title: Johdot
         desc: TODO
 
     no_reward_freeplay:
-        title: Next level
+        title: Seuraava taso
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Onnittelut! Muuten, lisää sisältöä on suunniteltu itsenäiseen versioon!
 
 settings:
-    title: Settings
+    title: Asetukset
     categories:
-        game: Game
-        app: Application
+        game: Peli
+        app: Sovellus
 
     versionBadges:
-        dev: Development
-        staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+        dev: Kehitys
+        staging: Näyttämö
+        prod: Tuotanto
+    buildDate: Rakennettu <at-date>
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Käyttöliittymän Koko
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                Muuttaa käyttöliittymän kokoa. Käyttöliittymä skaalataan silti laitteen resoluution perusteella based on your device resolution, mutta tämä asetus määrittää skaalauksen määrän.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Erittäin pieni
+                small: Pieni
+                regular: Normaali
+                large: Iso
+                huge: Valtava
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Automaattitallennuksen Aikaväli
             description: >-
-                Controls how often the game saves automatically. You can also disable it entirely here.
+                Määrittää kuinka usein peli tallentaa automaattisesti. Voit myös poistaa automaattisen tallennuksen kokonaan käytöstä täällä.
 
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minuutin välein
+                two_minutes: 2 Minuutin välein
+                five_minutes: 5 Minuutin välein
+                ten_minutes: 10 Minuutin välein
+                twenty_minutes: 20 Minuutin välein
+                disabled: Pois käytöstä
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: Zoomausherkkyys
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                Vaihtaa kuinka herkkä zoomi on (Joko hiiren rulla tai ohjauslevy).
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Erittäin hidas
+                slow: Hidas
+                regular: Normaali
+                fast: Nopea
+                super_fast: Erittäin nopea
 
         movementSpeed:
-            title: Movement speed
+            title: Liikkumis nopeus
             description: >-
-                Changes how fast the view moves when using the keyboard.
+                Muuttaa kuinka nopeasti näkymä liikkuu kun käytetään näppäimistöä.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Erittäin hidas
+                slow: Hidas
+                regular: Normaali
+                fast: Nopea
+                super_fast: Erittäin nopea
+                extremely_fast: Hyper nopea
 
         language:
-            title: Language
+            title: Kieli
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Vaihda kieltä. Kaikki käännökset ovat käyttäjien tekemiä ja saattavat olla puutteellisia!
 
         enableColorBlindHelper:
-            title: Color Blind Mode
+            title: Värisokeatila
             description: >-
-                Enables various tools which allow to play the game if you are color blind.
+                Ottaa käyttöön useita työkaluja, jotka sallivat pelin pelaamisen jos olet värisokea.
 
         fullscreen:
-            title: Fullscreen
+            title: Kokonäyttö
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                On suositeltava pelata tätä peliä kokonäytön tilassa saadaksesi parhaan kokemuksen. Saatavilla vain itsenäisessä versiossa.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Mykistä Äänet
             description: >-
-                If enabled, mutes all sound effects.
+                Jos käytössä, mykistää kaikki ääniefektit.
 
         musicMuted:
-            title: Mute Music
+            title: Mykistä Musiikki
             description: >-
-                If enabled, mutes all music.
+                Jos käytössä, mykistää musiikin.
 
         theme:
-            title: Game theme
+            title: Pelin Teema
             description: >-
-                Choose the game theme (light / dark).
+                Valitse pelin teema (vaalea / tumma).
             themes:
-                dark: Dark
-                light: Light
+                dark: Tumma
+                light: Kirkas
 
         refreshRate:
-            title: Simulation Target
+            title: Simulaatiotavoite
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                Jos sinulla on 144hz näyttö, muuta virkistystaajuus täällä jotta pelin simulaatio toimii oikein isommilla virkistystaajuuksilla. Tämä voi laskea FPS nopeutta jos tietokoneesi on liian hidas.
 
         alwaysMultiplace:
-            title: Multiplace
+            title: Monisijoitus
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                Jos käytössä, kaikki rakennukset pysyvät valittuina sijoittamisen jälkeen kunnes peruutat sen. Tämä vastaa SHIFT:in pitämistö pohjassa ikuisesti.
 
         offerHints:
-            title: Hints & Tutorials
+            title: Vihjeet & Oppaat
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                Tarjotaanko pelaamisen aikana vihjeitä ja oppaita. Myös piilottaa tietyt käyttöliittymäelementit tietyn tason mukaan, jotta alkuunpääseminen olisi helpompaa.
 
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Älykkäät Tunnelit
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables to drag tunnels and excess tunnels will get removed.
+                Kun käytössä, tunnelin sijoittaminen automaattisesti poistaa tarpeettomat liukuhihnat. Tämä myös ottaa käyttöön tunnelien raahaamisen ja ylimääräiset tunnelit poistetaan.
 
         vignette:
-            title: Vignette
+            title: Vignetti
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier to read.
+                Ottaa käyttöön vignetin, joka tummentaa näytön kulmia ja tekee tekstin lukemisesta helpompaa.
 
         rotationByBuilding:
-            title: Rotation by building type
+            title: Kiertäminen rakennustyypin mukaan
             description: >-
-                Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
+                Jokainen rakennustyyppi muistaa kierron, jonka viimeksi asetit yksilöllisesti. Tämä voi olla mukavampi vaihtoehto jos usein sijoitat eri rakennustyyppejä.
 
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Kompaktit Rakennusten Tiedot
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
+                Lyhentää rakennusten tietolaatikoita näyttämällä vain niiden suhteet. Muuten rakennuksen kuvaus ja kuva näytetään.
 
         disableCutDeleteWarnings:
             title: Poista Leikkaus/Poisto Varoitukset
@@ -795,7 +795,7 @@ keybindings:
         menuOpenShop: Päivitykset
         menuOpenStats: Tilastot
 
-        toggleHud: Toggle HUD
+        toggleHud: Vaihda valikon näkyvyys
         toggleFPSInfo: Vaihda FPS and Virheenkorjaus tiedot
         switchLayers: Vaihda tasoa
         exportScreenshot: Vie koko tukikohta kuvana
