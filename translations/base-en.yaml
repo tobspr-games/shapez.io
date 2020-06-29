@@ -524,6 +524,10 @@ buildings:
             name: Painter (Quad)
             description: Allows to color each quadrant of the shape with a different color.
 
+        bleacher:
+            name: Bleacher
+            description: Bleaches the whole shape..
+
     trash:
         default:
             name: &trash Trash

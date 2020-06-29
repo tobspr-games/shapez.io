@@ -11,7 +11,12 @@ import { enumHubGoalRewards } from "../tutorial_goals";
 import { enumItemType } from "../base_item";
 
 /** @enum {string} */
-export const enumPainterVariants = { mirrored: "mirrored", double: "double", quad: "quad" };
+export const enumPainterVariants = {
+    mirrored: "mirrored",
+    double: "double",
+    quad: "quad",
+    bleacher: "bleacher",
+};
 
 export class MetaPainterBuilding extends MetaBuilding {
     constructor() {
@@ -27,6 +32,8 @@ export class MetaPainterBuilding extends MetaBuilding {
                 return new Vector(2, 2);
             case enumPainterVariants.quad:
                 return new Vector(4, 1);
+            case enumPainterVariants.bleacher:
+                return new Vector(1, 1);
             default:
                 assertAlways(false, "Unknown painter variant: " + variant);
         }
@@ -56,6 +63,10 @@ export class MetaPainterBuilding extends MetaBuilding {
                 const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterQuad);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
+            case enumPainterVariants.bleacher: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.bleacher);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
         }
     }
 
@@ -69,6 +80,7 @@ export class MetaPainterBuilding extends MetaBuilding {
         }
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter_quad)) {
             variants.push(enumPainterVariants.quad);
+            variants.push(enumPainterVariants.bleacher);
         }
         return variants;
     }
@@ -203,6 +215,22 @@ export class MetaPainterBuilding extends MetaBuilding {
 
                 entity.components.ItemEjector.setSlots([
                     { pos: new Vector(0, 0), direction: enumDirection.top },
+                ]);
+                break;
+            }
+            case enumPainterVariants.bleacher: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.left],
+                        filter: enumItemType.shape,
+                    },
+                ]);
+
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.bleacher;
+                entity.components.ItemProcessor.inputsPerCharge = 1;
+                entity.components.ItemEjector.setSlots([
+                    { pos: new Vector(0, 0), direction: enumDirection.right },
                 ]);
                 break;
             }

@@ -8,6 +8,7 @@ import { ColorItem } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 import { enumLayer } from "../root";
 import { NEGATIVE_ENERGY_ITEM_SINGLETON } from "../items/negative_energy_item";
+import { enumColors } from "../../game/colors";
 
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -311,6 +312,23 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
                     shapeItem.definition,
                     [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color]
+                );
+
+                outItems.push({
+                    item: new ShapeItem(colorizedDefinition),
+                });
+
+                break;
+            }
+
+            // BLEACHER
+
+            case enumItemProcessorTypes.bleacher: {
+                const shapeItem = /** @type {ShapeItem} */ (items[0].item);
+
+                const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith(
+                    shapeItem.definition,
+                    enumColors.uncolored
                 );
 
                 outItems.push({
