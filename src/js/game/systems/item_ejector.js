@@ -306,6 +306,16 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             return false;
         }
 
+        const chainableSplitterComp = receiver.components.ChainableSplitter;
+        if (chainableSplitterComp) {
+            // Its an chainable splitter ..
+            if (chainableSplitterComp.tryTakeItem(item)) {
+                return true;
+            }
+            // Chainable splitter can have nothing else
+            return false;
+        }
+
         const energyGeneratorComp = receiver.components.EnergyGenerator;
         if (energyGeneratorComp) {
             if (energyGeneratorComp.tryTakeItem(item, slotIndex)) {

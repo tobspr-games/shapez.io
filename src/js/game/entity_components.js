@@ -10,6 +10,7 @@ import { UndergroundBeltComponent } from "./components/underground_belt";
 import { UnremovableComponent } from "./components/unremovable";
 import { HubComponent } from "./components/hub";
 import { StorageComponent } from "./components/storage";
+import { ChainableSplitterComponent } from "./components/chainable_splitter";
 import { EnergyGeneratorComponent } from "./components/energy_generator";
 import { WiredPinsComponent } from "./components/wired_pins";
 /* typehints:end */
@@ -54,6 +55,9 @@ export class EntityComponentStorage {
 
         /** @type {StorageComponent} */
         this.Storage;
+
+        /** @type {ChainableSplitterComponent} */
+        this.ChainableSplitter;
 
         /** @type {EnergyGeneratorComponent} */
         this.EnergyGenerator;

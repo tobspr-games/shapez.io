@@ -10,6 +10,7 @@ import { UndergroundBeltComponent } from "./components/underground_belt";
 import { UnremovableComponent } from "./components/unremovable";
 import { HubComponent } from "./components/hub";
 import { StorageComponent } from "./components/storage";
+import { ChainableSplitterComponent } from "./components/chainable_splitter";
 import { EnergyGeneratorComponent } from "./components/energy_generator";
 import { WiredPinsComponent } from "./components/wired_pins";
 
@@ -25,6 +26,7 @@ export function initComponentRegistry() {
     gComponentRegistry.register(UnremovableComponent);
     gComponentRegistry.register(HubComponent);
     gComponentRegistry.register(StorageComponent);
+    gComponentRegistry.register(ChainableSplitterComponent);
     gComponentRegistry.register(EnergyGeneratorComponent);
     gComponentRegistry.register(WiredPinsComponent);
 
