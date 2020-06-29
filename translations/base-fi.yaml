@@ -54,7 +54,7 @@ steamPage:
 
         Tässä pelissä on avoin lähdekoodi - Kuka tahansa voi osallistua! Sen lisäksi kuuntelen [b]paljon[/b] Yhteisöä! Yritän lukea kaikki ehdotukset ja ottaa mahdollisimman paljon palautetta huomioon.
         [list]
-            [*] Johdot!
+            [*] Johtoja!
             [*] Tarinatila, jossa rakennukset maksavat muotoja
             [*] Lisää tasoja ja rakennuksia (pelkästään itsenäisessä pelissä)
             [*] Erilaisia karttoja sekä ehkä esteitä kartoissa
@@ -136,487 +136,487 @@ mainMenu:
 
     contests:
         contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            title: "Kilpailu #01"
+            desc: Palkinto <strong>17,78€</strong> hienoimmalle päämajalle!
             longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
+                Jotta voin antaa takaisin jotain, ajattelin että olisi hienoa pitää viikottaisia kilpailuja!
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>Tämän viikon aihe:</strong> Rakenna hienoin päämaja!
                 <br><br>
-                Here's the deal:<br>
+                Tässä on ehdot:<br>
                 <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
+                    <li>Lähetä kuvakaappaus tukikohdastasi osoitteeseen <strong>contest@shapez.io</strong></li>
+                    <li>Saat bonuspisteita jos jaat sen sosiaalisessa mediassa!</li>
+                    <li>Valitsen viisi kuvakaappausta ja lähetän ne <strong>discord</strong> yhteisölle äänestettäväksi.</li>
+                    <li>Voittaja saa <strong>22,23€</strong> (Paypal, Amazon lahjakortti tai mitä vain haluat)</li>
                     <li>Deadline: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                I'm looking forward to seeing your awesome creations!
+                Odotan innolla mahtavia luomuksiasi!
 
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+        showInfo: Näytä
+        contestOver: Tämä kilpailu on päättynyt - Liity discord yhteisöön saadaksesi huomautuksia uusista kilpailuista!
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
+        delete: Poista
+        cancel: Peruuta
+        later: Myöhemmin
+        restart: Käynnistä uudelleen
+        reset: Nollaa
+        getStandalone: Hanki itsenäinen peli
+        deleteGame: Tiedän mitä olen tekemässä
+        viewUpdate: Näytä päivitys
+        showUpgrades: Näytä Päivitykset
         showKeybindings: Show Keybindings
 
     importSavegameError:
-        title: Import Error
+        title: Tuonti Virhe
         text: >-
-            Failed to import your savegame:
+            Tallennuksen tuonti epäonnistui:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Tallennus tuotiin
         text: >-
-            Your savegame has been successfully imported.
+            Tallennuksesi tuotiin onnistuneesti.
 
     gameLoadFailure:
-        title: Game is broken
+        title: Peli on rikki
         text: >-
-            Failed to load your savegame:
+            Tallennuksen lataus epäonnistui:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Varmista poisto
         text: >-
-            Are you sure you want to delete the game?
+            Oletko varma että haluat poistaa tallennuksen?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Poisto epäonnistui
         text: >-
-            Failed to delete the savegame:
+            Tallennuksen poisto epäonnistui:
 
     restartRequired:
-        title: Restart required
+        title: Uudelleenkäynnistys vaaditaan
         text: >-
-            You need to restart the game to apply the settings.
+            Käynnistä peli uudelleen ottaaksesi asetukset käyttöön.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Vaihda pikanäppäin
+        desc: Paina näppäintä tai hiiren nappia jonka haluat asettaa tai paina escape peruuttaaksesi.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Nollaa pikanäppäimet
+        desc: Tämä nollaa kaikki pikanäppäimet oletusarvoihin. Vahvista.
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Pikanäppäimet nollattiin
+        desc: Pikanäppäimet nollattiin oletusarvoihin!
 
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        title: Demoversio
+        desc: Yritit käyttää ominaisuutta (<feature>) joka ei ole saatavilla demoversiossa. Harkitse itsenäisen version hankkimista avataksesi kaikki ominaisuudet!
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: Rajoitetut tallennukset
+        desc: Sinulla voi olla vain yksi tallennus kerrallaan demoversiossa. Poista vanha tallennus tai hanki itsenäinen versio!
 
     updateSummary:
-        title: New update!
+        title: Uusi päivitys!
         desc: >-
-            Here are the changes since you last played:
+            Tässä on tulleet muutokset sen jälkeen kun viimeksi pelasit:
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Avaa Päivitykset
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            Kaikkia muodoja joita tuotat voi käyttää päivitysten avaamiseen - <strong>Älä tuhoa vanhoja tehtaitasi!</strong>
+            Löydät päivitysikkunan näytön oikeasta yläkulmasta.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Vahvista poisto
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Olet poistamassa paljon rakennuksia (tasan <count>)! Oletko varma että haluat jatkaa?
 
     massCutConfirm:
-        title: Confirm cut
+        title: Vahtista leikkaus
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Olet leikkaamassa paljon rakennuksia (tasan <count>)! Oletko varma että haluat jatkaa?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Ei vielä avattu
         desc: >-
-            Complete level 12 to unlock Blueprints!
+            Suorita taso 12 avataksesi Piirustukset!
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Hyödyllisiä pikanäppäimiä
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            Tässä pelissä on paljon pikanäppäimiä, jotka tekevät isojen tehtaiden rakentamisesta helpompaa.
+            Tässä on muutama, mutta <strong>katso kaikki pikanäppäimet</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Raahaus: Valitse alue.<br>
+            <code class='keybinding'>VAIHTO</code>: Pidä pohjassa sijoittaaksesi useita samoja rakennuksia.<br>
+            <code class='keybinding'>ALT</code>: Käännä sijoitettavien hihnojen suunta.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        title: Uusi Merkki
+        desc: Anna merkille kuvaava nimi, voit myös sisällyttää muodon <strong>lyhyen avaimen</strong> siihen. (Lyhyen avaimen voit luoda <a href="https://viewer.shapez.io" target="_blank">täällä</a>)
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki itsenäinen versio saadaksesi loputtoman määrän merkkejä!
 
     exportScreenshotWarning:
-        title: Export screenshot
-        desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
+        title: Vie kuvakaappaus
+        desc: Pyysit tukikohtasi viemistä kuvakaappauksena. Huomaa, että tämä voi olla melko hidasta isolla tukikohdalla ja voi jopa kaataa pelisi!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Delete
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
-        switchLayers: Switch Layers
+        moveMap: Liiku
+        selectBuildings: Valitse alue
+        stopPlacement: Lopeta sijoittaminen
+        rotateBuilding: Käännä rakennusta
+        placeMultiple: Sijoita useita
+        reverseOrientation: Käänteinen suunta
+        disableAutoOrientation: Poista automaattinen suunta käytöstä
+        toggleHud: Vaihda valikon näkyvyys
+        placeBuilding: Sijoita rakennus
+        createMarker: Luo merkki
+        delete: Poista
+        pasteLastBlueprint: Liitä viimeisin piirustus
+        lockBeltDirection: Ota hihnojen suunnittelija käyttöön
+        plannerSwitchSide: Käännä suunnittelijan puoli
+        cutSelection: Leikkaa
+        copySelection: Kopioi
+        clearSelection: Tyhjennä Valinta
+        pipette: Pipetti
+        switchLayers: Vaihda Tasoa
 
     # Names of the colors, used for the color blind mode
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: Punainen
+        green: Vihreä
+        blue: Sininen
+        yellow: Keltainen
+        purple: Violetti
+        cyan: Syaani
+        white: Valkoinen
+        uncolored: Ei Väriä
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Paina <key> kiertääksesi muunnoksia.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
 
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            speed: Nopeus
+            range: Matka
+            storage: Varasto
+            oneItemPerSecond: 1 kappale / sekunti
+            itemsPerSecond: <x> kappaleita / s
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> laattaa
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: Taso <level>
+        completed: Suoritettu
+        unlockText: Avattu <reward>!
+        buttonNextLevel: Seuraava taso
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: Uusi päivitys on saatavilla!
+        gameSaved: Peli on tallennettu.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Päivitykset
+        buttonUnlock: Päivitä
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: Taso <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: SUURIN TASO (Nopeus x<currentMult>)
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: Tilastot
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: Varastoitu
+                description: Näyttää keskusrakennuksessa varastoitujen muotojen määrän.
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: Tuotettu
+                description: Näyttää kaikki muodot mitä tehtaasi tuottaa ja lisäksi myös välituotteet.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: Toimitettu
+                description: Näyttää muodot jotka on toimitettu keskusrakennukseen.
+        noShapesProduced: Toistaiseksi ei muotoja tuotettu.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / m
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: Peliaika
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: Rakennukset
+        beltsPlaced: Liukuhihnat
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: Jatka
+            settings: Asetukset
+            menu: Palaa valikkoon
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: Tarvitsetko apua?
+        showHint: Näytä vihje
+        hideHint: Sulje
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Hinta
 
     # Map markers
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        waypoints: Merkit
+        hub: Keskusrakennus
+        description: Paina merkkia hiiren vasemmalla mennäksesi siihen, paina oikeaa nappia poistaaksesi sen.<br><br>Paina <keybinding> luodaksesi merkin nykyisestä näkymästä tai <strong>varen nappi</strong> luodaksesi merkin valittuun paikkaan.
+        creationSuccessNotification: Merkki luotiin onnistuneesti.
 
     # Shape viewer
     shapeViewer:
-        title: Layers
-        empty: Empty
-        copyKey: Copy Key
+        title: Tasot
+        empty: Tyhjä
+        copyKey: Kopioi avain
 
     # Interactive tutorial
     interactiveTutorial:
-        title: Tutorial
+        title: Tutoriaali
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Laita <strong>Kaivaja</strong> <strong>ympyrämuodon</strong> päälle kaivaaksesi sen!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                Yhdistä kaivaja <strong>liukuhihnalla</strong> keskusrakennukseen!<br><br>Vihje: <strong>Paina ja raahaa</strong> liukuhihnaa hiirellä!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                Tämä <strong>EI OLE</strong> tyhjäkäyntipeli! Rakenna lisää kaivajia ja hihnoja saadaksesi tavoitteen nopeammin valmiiksi.<br><br>Vihje: Pidä pohjassa <strong>VAIHTO</strong> laittaaksesi useampia kaivajia ja käytä <strong>R</strong> kääntääksesi niitä.
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Hihnat, Jakelija & Tunneli
+        description: Nopeus x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Kaivuu
+        description: Nopeus x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Leikkaus, Kääntö & Pinoaminen
+        description: Nopeus x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Sekoitus & Värjäys
+        description: Nopeus x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
+        deliver: Toimita
+        toUnlock: avataksesi
         levelShortcut: LVL
 
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Liukuhihna
+            description: Kuljettaa esineitä, pidä pohjassa ja raahaa laittaaksesi useampia.
 
     wire:
         default:
-            name: &wire Wire
-            description: Allows to transport energy
+            name: &wire Johto
+            description: Sallii sähkön kuljetuksen
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Kaivaja
+            description: Laita muodon tai värin päälle kaivaaksesi sen.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Kaivaja (Sarja)
+            description: Laita muodon tai värin päälle kaivaaksesi sen. Voidaan kytkeä sarjaan.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt Tunneli
+            description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: Tunneli Taso II
+            description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Tasaaja
+            description: Monikäyttöinen - Jakaa kaikki sisääntulot tasaisesti kaikkiin ulostuloihin.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Yhdistäjä (Pienikokoinen)
+            description: Yhdistää kaksi liukuhihnaa yhdeksi.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Yhdistäjä (Pienikokoinen)
+            description: Yhdistää kaksi liukuhihnaa yhdeksi.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Leikkuri
+            description: Leikkaa muotoja ylhäältä alaspäin ja tuottaa muodon molemmat puoliskot. <strong>Jos käytät vain yhden puoliskon, tuhoa toinen puolisko tai se jumittaa leikkurin!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
+            name: Leikkuri (Neliö)
+            description: Leikkaa muotoja ylhäältä alaspäin ja tuottaa muodon molemmat puoliskot. <strong>Jos käytät vain yhden puoliskon, tuhoa toinen puolisko tai se jumittaa leikkurin!</strong>
 
     advanced_processor:
         default:
-            name: &advanced_processor Advanced Processor
-            description: Advanced shape processing
+            name: &advanced_processor Edistynyt Käsittelijä
+            description: Edistynyt muotojen käsittely
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Kääntäjä
+            description: Kääntää muotoja 90 astetta myötäpäivään.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: Rotate (Vastapäivään)
+            description: Kääntää muotoja 90 astetta vastapäivään.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker Pinoaja
+            description: Pinoaa molemmat tavarat. Jos niitä ei pysty yhdistämään, oikeanpuoleinen tavara laitetaan vasemmanpuoleisen päälle.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Värinsekoittaja
+            description: Sekoittaa kaksi väriä lisäaineiden avulla.
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the top input.
+            name: &painter Värjääjä
+            description: &painter_desc Värjää vasemmasta sisääntulosta tulevan muodon ylemmästä sisääntulosta tulevalla värillä.
 
         mirrored:
             name: *painter
             description: *painter_desc
 
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Värjääjä (Kaksinkertainen)
+            description: Värjää vasemmasta sisääntulosta tulevan muodon ylemmästä sisääntulosta tulevalla värillä.
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: Painter (Neljännes)
+            description: Sallii muodon neljäsosien värjäämisen eri väreillä.
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Roskakori
+            description: Sallii sisääntulot kaikilta sivuilta ja tuhoaa ne. Lopullisesti.
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Varasto
+            description: Varastoi ylimääräisia resursseja tiettyyn kapasiteettiin asti. Voidaan käyttää ylivuotoporttina.
 
     energy_generator:
-        deliver: Deliver
+        deliver: Toimita
 
         # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: For
+        toGenerateEnergy: Kohden
 
         default:
-            name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes. Each energy generator requires a different shapes.
+            name: &energy_generator Sähkögeneraattori
+            description: Tuottaa sähköä kuluttamalla muotoja. Jokainen sähkögeneraattori vaatii eri muotoja.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Muotojen Leikkaus
+        desc: Avasit <strong>Leikkurin</strong> - se leikkaa muotoja puoliksi <strong>ylhäältä alaspäin</strong> riippumatta sen suunnasta!<br><br>Varmista, että pääset eroon jätteistä, tai muuten <strong>se jumittuu</strong> - Tätä varten saat Roskiksen, joka tuhoaa kaiken mitä laitat sinne!
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Kääntö
+        desc: Avasit <strong>Kääntäjän</strong>! Se kääntää muotoja myötäpäivään 90 astetta.
 
     reward_painter:
-        title: Painting
+        title: Värjäys
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            Avasit <strong>Värjääjän</strong> - Kaiva joitain värialueita (Samanlailla kuin muotoja) ja yhdistä se muotoon värjääjän avulla!<br><br>PS: Jos olet värisokea, asetuksissa on <strong> tila värisokeille</strong>!
 
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: Värin Sekoitus
+        desc: Avasit <strong>Värinsekoittajan</strong> - Yhdistä kaksi väriä <strong>lisäaineiden avulla</strong> tällä rakennuksella!
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Yhdistäjä
+        desc: Nyt voit yhdistää muotoja <strong>Yhdistäjällä</strong>! Molemman sisääntulot yhdistetään, jos ne laitetaan vierekkäin, niistä tulee <strong>sulatettu</strong>. Jos ne eivät ole vierekkäin, oikeanpuoleinen sisääntulo <strong>kasataan</strong> vasemman päälle!
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: Tasaaja
+        desc: Avasit monikäyttöisen <strong>Tasaajan</strong> - Sitä voidaan käyttää isompien tehtaiden rakennukseen <strong>jakamaan ja yhdistämään tavaroita</strong> monille hihnoille!<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
+        title: Tunneli
+        desc: Avasit <strong>Tunnelin</strong> - Nyt voit kuljettaa tavaroita liukuhihnoilla rakennusten ja liukuhihnojen alta!
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: Vastapäivään Kääntö
+        desc: Avasit uuden muodon <strong>Kääntäjästä</strong> - Se sallii kääntämisen vastapäivään! Sen voi rakentaa valitsemalla kääntäjän ja <strong>painamalla 'T' vaihtaaksesi sen muotoja</strong>!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: Sarja Kaivaja
+        desc: Avasit <strong>Sarja Kaivajan</strong>! Se voi <strong>välittää sen resurssit</strong> muille kaivajille, jotta voit kaivaa resursseja tehokkaammin!
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: Tunneli Taso II
+        desc: Avasit uuden muodon <strong>Tunnelista</strong> - Siinä on <strong>pidempi matka</strong>, ja voit myös yhdistellä ja sovitella tunneleita!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Pienikokoinen Yhdistäjä
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            Avasit pienikokoisen muodon <strong>Yhdistäjästä</strong> - Se ottaa kaksi sisääntuloa ja yhdistää ne yhdeksi!
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Neljäsosa Leikkaus
+        desc: Avasit muodon <strong>Leikkurista</strong> - Se sallii muotojen leikkaamisen <strong>neljään osaan</strong> kahden sijaan!
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: Kaksinkertainen Värjäys
+        desc: Avasit muodon <strong>Värjääjästä</strong> - Se toimii samanlailla kuin normaali värjääjä, mutta käsittelee <strong>kaksi muotoa kerrallaan</strong> käyttäen vain yhden värin kahden sijaan!
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: Neljäsosa Värjäys
+        desc: Avasit muodon <strong>Värjääjästä</strong> - Se sallii muodon eri osien värjäämisen erikseen!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: Varasto Puskuri
+        desc: Avasit muodon <strong>Roskiksesta</strong> - Se sallii resurssien säilyttämisen tiettyyn kapasiteettiin asti!
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Vapaapeli
+        desc: Sinä teit sen! Avasit <strong>Vapaapelitilan</strong>! Tämä tarkoittaa sitä, että muodot tehdään nyt satunnaisesti! (Ei hätää, lisää sisältöä on suunnitteilla itsenäiseen peliin!)
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: Piirustukset
+        desc: Nyt voit <strong>Kopioida ja Liittää</strong> paloja tehtaastasi! Valitse alue (pidä pohjassa CTRL ja raahaa hiirellä), ja paina 'C' kopioidaksesi.<br><br>Sen liittäminen ei ole <strong>ilmaista</strong>, sinun täytyy tuottaa <strong>piirustus muotoja</strong> jotta sinulla on varaa siihen! (Ne mitkä juuri toimitit).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Seuraava taso
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
 
@@ -758,47 +758,47 @@ settings:
                 Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
 
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Poista Leikkaus/Poisto Varoitukset
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100 entities.
+                Poista varoitusikkunat dialogs brought up when cutting/deleting more than 100 entities.
 
 keybindings:
-    title: Keybindings
+    title: Pikanäppäimet
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Tip: Muista käyttää CTRL, VAIHTO and ALT! Ne ottavat käyttöön erilaisia sijoitteluvaihtoehtoja.
 
-    resetKeybindings: Reset Keybindings
+    resetKeybindings: Nollaa Pikanäppäimet
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Sovellus
+        ingame: Peli
+        navigation: Navigointi
+        placement: Sijoitus
+        massSelect: Massa Valinta
+        buildings: Rakennus Pikanäppäimet
+        placementModifiers: Sijoittelu Muokkaajat
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        mapMoveFaster: Move Faster
-        centerMap: Center Map
+        confirm: Vahvista
+        back: Takaisin
+        mapMoveUp: Liiku Ylös
+        mapMoveRight: Liiku Oikealle
+        mapMoveDown: Liiku Alas
+        mapMoveLeft: Liiku Vasemmalle
+        mapMoveFaster: Liiku Nopeammin
+        centerMap: Keskitä Kartta
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: Lähennä
+        mapZoomOut: Loitonna
+        createMarker: Luo merkki
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Päivitykset
+        menuOpenStats: Tilastot
 
         toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
-        switchLayers: Switch layers
-        exportScreenshot: Export whole Base as Image
+        toggleFPSInfo: Vaihda FPS and Virheenkorjaus tiedot
+        switchLayers: Vaihda tasoa
+        exportScreenshot: Vie koko tukikohta kuvana
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -813,49 +813,49 @@ keybindings:
         trash: *trash
         wire: *wire
 
-        pipette: Pipette
-        rotateWhilePlacing: Rotate
+        pipette: Pipetti
+        rotateWhilePlacing: Käännä
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Delete area
-        pasteLastBlueprint: Paste last blueprint
-        cycleBuildings: Cycle Buildings
-        lockBeltDirection: Enable belt planner
+            Modifier: Käännä sen sijaan vastapäivään
+        cycleBuildingVariants: Valitse muotoja
+        confirmMassDelete: Poista alue
+        pasteLastBlueprint: Liitä viimeisin piirustus
+        cycleBuildings: Valitse Rakennuksia
+        lockBeltDirection: Ota liukuhihnasuunnittelija käyttöön
         switchDirectionLockSide: >-
-            Planner: Switch side
+            Planner: Muuta sivua
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
-        massSelectCut: Cut area
+        massSelectStart: Pidä pohjassa ja raahaa aloittaaksesi
+        massSelectSelectMultiple: Valitse useita alueita
+        massSelectCopy: Kopioi alue
+        massSelectCut: Leikkaa alue
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
+        placementDisableAutoOrientation: Poista automaattinen suunta käytöstä
+        placeMultiple: Pysy sijoittamistilassa
+        placeInverse: Käännä automaattinen hihnan suunta
 
 about:
-    title: About this Game
+    title: Tietoja tästä pelistä
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Tämä peli on avoimen lähdekoodin ja kehitettä on <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (tämä on minä).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
+        Jos haluat osallistua, tarkista <a href="<githublink>" target="_blank">shapez.io githubissa</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community around my games - You should really join the <a href="<discordlink>" target="_blank">discord server</a>!<br><br>
+        Tämä peli ei olisi ollut mahdollinen ilman suurta discord yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">discord palvelimelleni</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on mahtava.<br><br>
 
-        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions this game would never have existed.
+        Lopuksi, isot kiitokset minun parhaalle kaverilleni <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Ilman meidän factorio istuntoja tätä peliä ei olisi koskaan ollut olemassa.
 
 changelog:
-    title: Changelog
+    title: Muutosloki
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Tallennusten palautus
+        importingGames: Tallennettujen pelien tuonti
+        oneGameLimit: Rajoitettu yhteen tallennukseen
+        customizeKeybindings: Pikanäppäinten mukautus
+        exportingBase: Viedään koko tukikohta kuvana
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Ei saatavilla demoversiossa.
