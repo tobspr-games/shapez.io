@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen Maschinen durch Kombination zunehmend komplexe Formen zu erschaffen.
+    shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen Maschinen durch Kombination immer komplexere Formen zu erschaffen.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -34,7 +34,7 @@ steamPage:
 
         Da die Nachfrage sowohl in der Komplexität, als auch der Anzahl steigt, wirst du deine Fabriken erweitern müssen. Vergiss nicht, dass du die dafür benötigten Ressourcen beschaffen musst und expandiere auf der [b]unendlichen Karte[/b]!
 
-        Das reine Zerschneiden und Zusammensetzen von Formen wird natürlich schnell langweilig, also musst du Farben mischen und deine Formen damit bemalen lassen. Kombiniere die Farbpartikel, um verschiedene Farbtöne herzustellen. Staple dann deine fertigen Formen aufeinander und lasse die wildesten Kreationen entstehen.
+        Das reine Zerschneiden und Zusammensetzen von Formen kann natürlich schnell langweilig werden, aber keine Sorge - Du kannst Farben mischen und deine Formen damit bemalen lassen. Staple dann deine fertigen Formen aufeinander und lasse so die wildesten Kreationen entstehen.
 
         Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
 
@@ -43,7 +43,7 @@ steamPage:
         [list]
             [*] Wegpunkte
             [*] Unbegrenzte Anzahl von Spielständen
-            [*] Dunkelmodus
+            [*] Dark-Mode
             [*] Weitere Einstellungen
             [*] Unterstütze die Entwicklung von shapez.io ❤️
             [*] Neue Funktionen in der Zukunft!
