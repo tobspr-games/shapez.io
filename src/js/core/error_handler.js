@@ -48,7 +48,7 @@ function catchErrors(message, source, lineno, colno, error) {
     console.log("\n\n⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️\n\n\n");
 
     logSection("APPLICATION CRASH", "#e53935");
-    console.log("Error:", message, "->", error);
+    console.error("Error:", message, "->", error);
     console.log("Payload:", fullPayload);
 
     if (window.Sentry && !window.anyModLoaded) {
