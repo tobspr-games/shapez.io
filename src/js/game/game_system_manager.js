@@ -13,6 +13,7 @@ import { HubSystem } from "./systems/hub";
 import { StaticMapEntitySystem } from "./systems/static_map_entity";
 import { ItemAcceptorSystem } from "./systems/item_acceptor";
 import { StorageSystem } from "./systems/storage";
+import { ChainableSplitterSystem } from "./systems/chainable_splitter";
 import { EnergyGeneratorSystem } from "./systems/energy_generator";
 import { WiredPinsSystem } from "./systems/wired_pins";
 
@@ -58,6 +59,9 @@ export class GameSystemManager {
             /** @type {StorageSystem} */
             storage: null,
 
+            /** @type {ChainableSplitterSystem} */
+            chainableSplitter: null,
+
             /** @type {EnergyGeneratorSystem} */
             energyGenerator: null,
 
@@ -89,6 +93,8 @@ export class GameSystemManager {
         add("miner", MinerSystem);
 
         add("storage", StorageSystem);
+
+        add("chainableSplitter", ChainableSplitterSystem);
 
         add("itemProcessor", ItemProcessorSystem);
 
