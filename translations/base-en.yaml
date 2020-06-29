@@ -477,6 +477,10 @@ buildings:
             name: Merger (compact)
             description: Merges two conveyor belts into one.
 
+        chainable:
+            name: Balancer (chainable)
+            description: Evenly distributes all inputs onto all outputs. Can be chained.
+
     cutter:
         default:
             name: &cutter Cutter

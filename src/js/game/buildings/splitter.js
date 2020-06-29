@@ -3,6 +3,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { ChainableSplitterComponent } from "../components/chainable_splitter";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot, enumLayer } from "../root";
@@ -11,7 +12,11 @@ import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
-export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
+export const enumSplitterVariants = {
+    compact: "compact",
+    compactInverse: "compact-inverse",
+    chainable: "chainable",
+};
 
 export class MetaSplitterBuilding extends MetaBuilding {
     constructor() {
@@ -24,6 +29,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 return new Vector(2, 1);
             case enumSplitterVariants.compact:
             case enumSplitterVariants.compactInverse:
+            case enumSplitterVariants.chainable:
                 return new Vector(1, 1);
             default:
                 assertAlways(false, "Unknown splitter variant: " + variant);
@@ -48,14 +54,15 @@ export class MetaSplitterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
+        let variants = [defaultBuildingVariant];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_splitter_compact)) {
-            return [
-                defaultBuildingVariant,
-                enumSplitterVariants.compact,
-                enumSplitterVariants.compactInverse,
-            ];
+            variants.push(enumSplitterVariants.compact);
+            variants.push(enumSplitterVariants.compactInverse);
         }
-        return super.getAvailableVariants(root);
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_freeplay)) {
+            variants.push(enumSplitterVariants.chainable);
+        }
+        return variants;
     }
 
     /**
@@ -86,13 +93,6 @@ export class MetaSplitterBuilding extends MetaBuilding {
         );
 
         entity.addComponent(
-            new ItemProcessorComponent({
-                inputsPerCharge: 1,
-                processorType: enumItemProcessorTypes.splitter,
-            })
-        );
-
-        entity.addComponent(
             new ItemEjectorComponent({
                 slots: [
                     { pos: new Vector(0, 0), direction: enumDirection.top },
@@ -105,12 +105,32 @@ export class MetaSplitterBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
+     */
+    updateDefaultComponent(entity) {
+        if (!entity.components.ItemProcessor) {
+            entity.addComponent(
+                new ItemProcessorComponent({
+                    inputsPerCharge: 1,
+                    processorType: enumItemProcessorTypes.splitter,
+                })
+            );
+        }
+        if (entity.components.ChainableSplitter) {
+            entity.removeComponent(ChainableSplitterComponent);
+        }
+    }
+
+    /**
+     *
+     * @param {Entity} entity
      * @param {number} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {
         switch (variant) {
             case defaultBuildingVariant: {
+                this.updateDefaultComponent(entity);
+
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -136,6 +156,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
             }
             case enumSplitterVariants.compact:
             case enumSplitterVariants.compactInverse: {
+                this.updateDefaultComponent(entity);
+
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -148,6 +170,31 @@ export class MetaSplitterBuilding extends MetaBuilding {
                                 ? enumDirection.left
                                 : enumDirection.right,
                         ],
+                    },
+                ]);
+
+                entity.components.ItemEjector.setSlots([
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                ]);
+
+                entity.components.ItemAcceptor.beltUnderlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
+                ];
+
+                break;
+            }
+            case enumSplitterVariants.chainable: {
+                if (entity.components.ItemProcessor) {
+                    entity.removeComponent(ItemProcessorComponent);
+                }
+                if (!entity.components.ChainableSplitter) {
+                    entity.addComponent(new ChainableSplitterComponent({ chainable: true }));
+                }
+
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
                     },
                 ]);
 
