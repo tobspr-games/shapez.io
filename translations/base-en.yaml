@@ -472,6 +472,14 @@ buildings:
             name: Merger (compact)
             description: Merges two conveyor belts into one.
 
+        serializer:
+            name: Serializer
+            description: Serializes two conveyor belts into one.
+
+        deserializer:
+            name: Deserializer
+            description: Deserializes one conveyor belts into two.
+
     cutter:
         default:
             name: &cutter Cutter

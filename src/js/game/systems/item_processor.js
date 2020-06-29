@@ -120,6 +120,35 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 break;
             }
 
+            // SERIALIZER
+            case enumItemProcessorTypes.serializer: {
+                trackProduction = false;
+                const availableSlots = entity.components.ItemAcceptor.slots.length;
+
+                for (let i = 0; i < availableSlots; ++i) {
+                    console.log(i);
+                    console.log(itemsBySlot[i]);
+                    outItems.push(itemsBySlot[i]);
+                }
+
+                break;
+            }
+
+            // DESERIALIZER
+            case enumItemProcessorTypes.deserializer: {
+                trackProduction = false;
+                const availableSlots = entity.components.ItemEjector.slots.length;
+
+                let nextSlot = processorComp.nextOutputSlot++ % availableSlots;
+                for (let i = 0; i < items.length; ++i) {
+                    outItems.push({
+                        item: items[i].item,
+                        requiredSlot: (nextSlot + i) % availableSlots,
+                    });
+                }
+                break;
+            }
+
             // CUTTER
             case enumItemProcessorTypes.cutter: {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);

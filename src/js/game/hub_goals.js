@@ -403,6 +403,8 @@ export class HubGoals extends BasicSerializableObject {
             case enumItemProcessorTypes.hub:
                 return 1e30;
             case enumItemProcessorTypes.splitter:
+            case enumItemProcessorTypes.serializer:
+            case enumItemProcessorTypes.deserializer:
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
 
             case enumItemProcessorTypes.mixer:

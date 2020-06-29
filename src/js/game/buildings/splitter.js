@@ -11,7 +11,12 @@ import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
-export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
+export const enumSplitterVariants = {
+    compact: "compact",
+    compactInverse: "compact-inverse",
+    serializer: "serializer",
+    deserializer: "deserializer",
+};
 
 export class MetaSplitterBuilding extends MetaBuilding {
     constructor() {
@@ -21,6 +26,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
+            case enumSplitterVariants.serializer:
+            case enumSplitterVariants.deserializer:
                 return new Vector(2, 1);
             case enumSplitterVariants.compact:
             case enumSplitterVariants.compactInverse:
@@ -53,6 +60,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 defaultBuildingVariant,
                 enumSplitterVariants.compact,
                 enumSplitterVariants.compactInverse,
+                enumSplitterVariants.serializer,
+                enumSplitterVariants.deserializer,
             ];
         }
         return super.getAvailableVariants(root);
@@ -132,6 +141,9 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     { pos: new Vector(1, 0), direction: enumDirection.top },
                 ];
 
+                entity.components.ItemProcessor.inputsPerCharge = 1;
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.splitter;
+
                 break;
             }
             case enumSplitterVariants.compact:
@@ -158,6 +170,57 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.beltUnderlays = [
                     { pos: new Vector(0, 0), direction: enumDirection.top },
                 ];
+
+                entity.components.ItemProcessor.inputsPerCharge = 1;
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.splitter;
+
+                break;
+            }
+            case enumSplitterVariants.serializer: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                ]);
+
+                entity.components.ItemEjector.setSlots([
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                ]);
+
+                entity.components.ItemAcceptor.beltUnderlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                ];
+
+                entity.components.ItemProcessor.inputsPerCharge = 2;
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.serializer;
+
+                break;
+            }
+            case enumSplitterVariants.deserializer: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                ]);
+
+                entity.components.ItemEjector.setSlots([
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                ]);
+
+                entity.components.ItemAcceptor.beltUnderlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                ];
+
+                entity.components.ItemProcessor.inputsPerCharge = 1;
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.deserializer;
 
                 break;
             }

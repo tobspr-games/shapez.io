@@ -468,6 +468,14 @@ buildings:
             name: 合流機 (コンパクト)
             description: 2本のベルトの内容を1本のベルトに合流します。
 
+        serializer:
+            name: 整列合流機
+            description: 2本のベルトの内容を順番に1本のベルトに合流します。
+
+        deserializer:
+            name: 整列分配機
+            description: 1本のベルトの内容を順番に2本のベルトに分配します。
+
     cutter:
         default:
             name: &cutter 切断機

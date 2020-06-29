@@ -6,6 +6,8 @@ import { Component } from "../component";
 /** @enum {string} */
 export const enumItemProcessorTypes = {
     splitter: "splitter",
+    serializer: "serializer",
+    deserializer: "deserializer",
     cutter: "cutter",
     cutterQuad: "cutterQuad",
     rotater: "rotater",
