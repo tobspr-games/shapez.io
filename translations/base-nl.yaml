@@ -712,15 +712,15 @@ settings:
                 twenty_minutes: 20 Minuten
                 disabled: Uitgeschakeld
         compactBuildingInfo:
-            title: Combacte gebouwinformatie
+            title: Compacte gebouwinformatie
             description: >-
                 Informatie weergeven bij gebouwen wordt beperkt tot alleen hun 'ratios'. Anders
                 zie je een beschrijving en een afbeelding.
         disableCutDeleteWarnings:
-            title: Schakel knip/delete waarschuwingen uit
+            title: Schakel knip/verwijder waarschuwingen uit
             description: >-
                 Schakelt de waarschuwing uit die wordt weergegeven wanneer je meer dan 100 dingen probeert te
-                knippen/deleten.
+                knippen/verwijderen.
         enableColorBlindHelper:
             title: Kleurenblindmodus
             description: Schakelt verschillende hulpmiddelen in zodat je het spel alsnog kunt spelen wanneer je kleurenblind bent.
