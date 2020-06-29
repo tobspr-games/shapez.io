@@ -126,8 +126,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 const availableSlots = entity.components.ItemAcceptor.slots.length;
 
                 for (let i = 0; i < availableSlots; ++i) {
-                    console.log(i);
-                    console.log(itemsBySlot[i]);
                     outItems.push(itemsBySlot[i]);
                 }
 
