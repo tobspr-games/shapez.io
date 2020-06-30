@@ -92,7 +92,7 @@ export class Blueprint {
             let placeable = true;
             placementCheck: for (let x = rect.x; x < rect.right(); ++x) {
                 for (let y = rect.y; y < rect.bottom(); ++y) {
-                    if (parameters.root.map.isTileUsedXY(x, y)) {
+                    if (parameters.root.map.isTileUsedXY(x, y, entity.layer)) {
                         placeable = false;
                         break placementCheck;
                     }
@@ -156,7 +156,7 @@ export class Blueprint {
             rect.moveBy(tile.x, tile.y);
             placementCheck: for (let x = rect.x; x < rect.right(); ++x) {
                 for (let y = rect.y; y < rect.bottom(); ++y) {
-                    if (root.map.isTileUsedXY(x, y)) {
+                    if (root.map.isTileUsedXY(x, y, entity.layer)) {
                         placeable = false;
                         break placementCheck;
                     }

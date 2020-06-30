@@ -123,17 +123,6 @@ export class BaseMap extends BasicSerializableObject {
      * Returns the tile content of a given tile
      * @param {number} x
      * @param {number} y
-     * @returns {Entity} Entity or null
-     */
-    getTileContentXY(x, y) {
-        const chunk = this.getChunkAtTileOrNull(x, y);
-        return chunk && chunk.getTileContentFromWorldCoords(x, y);
-    }
-
-    /**
-     * Returns the tile content of a given tile
-     * @param {number} x
-     * @param {number} y
      * @param {enumLayer} layer
      * @returns {Entity} Entity or null
      */
@@ -156,25 +145,27 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Checks if the tile is used
      * @param {Vector} tile
+     * @param {enumLayer} layer
      * @returns {boolean}
      */
-    isTileUsed(tile) {
+    isTileUsed(tile, layer) {
         if (G_IS_DEV) {
             this.internalCheckTile(tile);
         }
         const chunk = this.getChunkAtTileOrNull(tile.x, tile.y);
-        return chunk && chunk.getTileContentFromWorldCoords(tile.x, tile.y) != null;
+        return chunk && chunk.getLayerContentFromWorldCoords(tile.x, tile.y, layer) != null;
     }
 
     /**
      * Checks if the tile is used
      * @param {number} x
      * @param {number} y
+     * @param {enumLayer} layer
      * @returns {boolean}
      */
-    isTileUsedXY(x, y) {
+    isTileUsedXY(x, y, layer) {
         const chunk = this.getChunkAtTileOrNull(x, y);
-        return chunk && chunk.getTileContentFromWorldCoords(x, y) != null;
+        return chunk && chunk.getLayerContentFromWorldCoords(x, y, layer) != null;
     }
 
     /**
