@@ -103,14 +103,24 @@ export class HUDBaseToolbar extends BaseHUDPart {
      * Cycles through all buildings
      */
     cycleBuildings() {
+        const visible = this.visibilityCondition();
+        if (!visible) {
+            return;
+        }
+
+        let process = false;
         let newIndex = this.lastSelectedIndex;
         for (let i = 0; i < this.supportedBuildings.length; ++i, ++newIndex) {
             newIndex %= this.supportedBuildings.length;
             const metaBuilding = gMetaBuildingRegistry.findByClass(this.supportedBuildings[newIndex]);
             const handle = this.buildingHandles[metaBuilding.id];
             if (!handle.selected && handle.unlocked) {
+                process = true;
                 break;
             }
+        }
+        if (!process) {
+            return;
         }
         const metaBuildingClass = this.supportedBuildings[newIndex];
         const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
