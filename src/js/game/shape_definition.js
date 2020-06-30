@@ -536,7 +536,8 @@ export class ShapeDefinition extends BasicSerializableObject {
             gapsBetweenShapes.push(topShapeLowestLayerByQuad[quad] - bottomShapeHighestLayerByQuad[quad]);
         }
         const smallestGapBetweenShapes = Math.min(...gapsBetweenShapes);
-        const layerToMergeAt = 1 - smallestGapBetweenShapes;
+        // Can't merge at a layer lower than 0
+        const layerToMergeAt = Math.max(1 - smallestGapBetweenShapes, 0);
 
         const mergedLayers = this.internalCloneLayers();
         for (let layer = mergedLayers.length; layer < layerToMergeAt + topShapeLayers.length; ++layer) {
