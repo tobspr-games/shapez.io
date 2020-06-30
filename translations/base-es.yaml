@@ -182,7 +182,7 @@ dialogs:
             Tu partida guardada ha sido importada con éxito.
 
     gameLoadFailure:
-        title: El juego está roto
+        title: Error de Carga
         text: >-
             No se ha podido cargar la partida guardada:
 
@@ -472,10 +472,10 @@ buildings:
     rotater:
         default:
             name: &rotater Rotador
-            description: Rota la figura en el sentido de las agujas del reloj, 90 grados.
+            description: Rota la figura en sentido horario, 90 grados.
         ccw:
             name: Rotador (Inverso)
-            description: Rota las figuras en contra de las agujas del reloj, 90 grados.
+            description: Rota las figuras en sentido antihorario, 90 grados.
 
     stacker:
         default:
@@ -523,7 +523,7 @@ storyRewards:
 
     reward_rotater:
         title: Rotador
-        desc: ¡El <strong>rotador</strong> ha sido desbloqueado! Rota figuras en el sentido de las agujas del reloj, 90 grados.
+        desc: ¡El <strong>rotador</strong> ha sido desbloqueado! Rota figuras en sentido horario, 90 grados.
 
     reward_painter:
         title: Pintor
