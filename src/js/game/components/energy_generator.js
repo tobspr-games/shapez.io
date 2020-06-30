@@ -3,7 +3,7 @@ import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { ShapeItem } from "../items/shape_item";
 
-const maxQueueSize = 4;
+const maxQueueSize = 20;
 
 export const ENERGY_GENERATOR_EJECT_SLOT = 0;
 export const ENERGY_GENERATOR_ACCEPT_SLOT = 4;

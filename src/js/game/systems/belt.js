@@ -312,7 +312,7 @@ export class BeltSystem extends GameSystemWithFilter {
     drawLayer(parameters, layer) {
         for (let i = 0; i < this.beltPaths.length; ++i) {
             const path = this.beltPaths[i];
-            if (path.getLayer() === layer) {
+            if (path.layer === layer) {
                 path.draw(parameters);
             }
         }
@@ -507,13 +507,13 @@ export class BeltSystem extends GameSystemWithFilter {
         }
 
         // Limit speed to avoid belts going backwards
-        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
+        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(enumLayer.regular), 10);
 
         // SYNC with systems/item_acceptor.js:drawEntityUnderlays!
         // 126 / 42 is the exact animation speed of the png animation
         const animationIndex = Math.floor(
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                globalConfig.itemSpacingOnBelts
+                globalConfig.beltItemSpacingByLayer[enumLayer.regular]
         );
         const contents = chunk.contents;
         for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
@@ -546,15 +546,6 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        // Limit speed to avoid belts going backwards
-        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
-
-        // SYNC with systems/item_acceptor.js:drawEntityUnderlays!
-        // 126 / 42 is the exact animation speed of the png animation
-        const animationIndex = Math.floor(
-            ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                globalConfig.itemSpacingOnBelts
-        );
         const contents = chunk.wireContents;
         for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
             for (let x = 0; x < globalConfig.mapChunkSize; ++x) {

@@ -4,7 +4,7 @@ import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/ut
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
-import { GameRoot } from "./root";
+import { GameRoot, enumLayer } from "./root";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
 import { UPGRADES, blueprintShape } from "./upgrades";
@@ -370,9 +370,13 @@ export class HubGoals extends BasicSerializableObject {
 
     /**
      * Belt speed
+     * @param {enumLayer} layer
      * @returns {number} items / sec
      */
-    getBeltBaseSpeed() {
+    getBeltBaseSpeed(layer) {
+        if (layer === enumLayer.wires) {
+            return globalConfig.wiresSpeedItemsPerSecond;
+        }
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
 

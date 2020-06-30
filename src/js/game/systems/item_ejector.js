@@ -185,8 +185,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         }
 
         // Precompute effective belt speed
-        const effectiveBeltSpeed = this.root.hubGoals.getBeltBaseSpeed() * globalConfig.itemSpacingOnBelts;
-        let progressGrowth = (effectiveBeltSpeed / 0.5) * this.root.dynamicTickrate.deltaSeconds;
+        let progressGrowth = 2 * this.root.dynamicTickrate.deltaSeconds;
 
         if (G_IS_DEV && globalConfig.debug.instantBelts) {
             progressGrowth = 1;
@@ -217,7 +216,13 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const targetEntity = sourceSlot.cachedTargetEntity;
 
                 // Advance items on the slot
-                sourceSlot.progress = Math.min(1, sourceSlot.progress + progressGrowth);
+                sourceSlot.progress = Math.min(
+                    1,
+                    sourceSlot.progress +
+                        progressGrowth *
+                            this.root.hubGoals.getBeltBaseSpeed(sourceSlot.layer) *
+                            globalConfig.beltItemSpacingByLayer[sourceSlot.layer]
+                );
 
                 // Check if we are still in the process of ejecting, can't proceed then
                 if (sourceSlot.progress < 1.0) {
