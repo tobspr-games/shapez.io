@@ -20,6 +20,26 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 -   Run `yarn` in the root folder, then run `yarn` in the `gulp/` folder
 -   Cd into `gulp` and run `yarn gulp` - it should now open in your browser
 
+-   Mac building with Windows
+-   Make sure git `git lfs` extension is on your path
+-   Run `git lfs pull` to download sound assets
+-   Make sure `ffmpeg` is on your path
+-   Install Node.js and Yarn
+-   Be sure to run cmd as ADMIN! Otherwise this will not work.
+-   Run yarn in the root folder, then run 'yarn' in the `gulp/` folder
+-   Cd into `gulp` and run `yarn gulp main.standalone`
+-   Go into 'tmp_standalone_files' folder with file explorer and navigate into shapez.io-standalone-darwin-x64 or x32 folder
+-   Navigate into shapez.io-standalone.app/Contents/Frameworks folder
+-   This needs to be done after every rebuild or update!
+-   Do this for every .framework folder
+-   Step 1: Delete everything here except 'Versions' folder.
+-   Step 2: Navigate into .framework/Versions/A folder
+-   Step 3: Copy everything from there into .framework root folder
+-   To run game on Mac, run play.sh or just run Stapez.io.App
+
+-   If u get error when running 'yarn' in the `gulp/`, run 'yarn upgrade' in the `gulp/` folder and try again.
+    
+
 **Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
 
 ## Helping translate
