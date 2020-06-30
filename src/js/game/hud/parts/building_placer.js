@@ -230,12 +230,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             rotation,
             rotationVariant,
             connectedEntities,
-        } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
-            this.root,
-            mouseTile,
-            this.currentBaseRotation,
-            this.currentVariant.get()
-        );
+        } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile({
+            root: this.root,
+            tile: mouseTile,
+            rotation: this.currentBaseRotation,
+            variant: this.currentVariant.get(),
+            layer: metaBuilding.getLayer(),
+        });
 
         // Check if there are connected entities
         if (connectedEntities) {
@@ -411,12 +412,15 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     const worldDirection = staticComp.localDirectionToWorld(direction);
 
                     const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
-                    const sourceEntity = this.root.map.getTileContent(sourceTile, this.root.currentLayer);
-
                     let sprite = goodArrowSprite;
-                    let alpha = 0.5;
+                    let alpha = 0.3;
 
-                    if (sourceEntity) {
+                    const sourceEntities = this.root.map.getLayersContentsMultipleXY(
+                        sourceTile.x,
+                        sourceTile.y
+                    );
+                    for (let i = 0; i < sourceEntities.length; ++i) {
+                        const sourceEntity = sourceEntities[i];
                         sprite = badArrowSprite;
                         const sourceEjector = sourceEntity.components.ItemEjector;
                         const sourceStaticComp = sourceEntity.components.StaticMapEntity;
@@ -462,15 +466,19 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 const ejectorSLotWsPos = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
                 const ejectorSlotWsDirection = staticComp.localDirectionToWorld(slot.direction);
 
-                const destEntity = this.root.map.getTileContent(ejectorSlotWsTile, this.root.currentLayer);
-
                 let sprite = goodArrowSprite;
-                let alpha = 0.5;
-                if (destEntity) {
+                let alpha = 0.3;
+
+                const destEntities = this.root.map.getLayersContentsMultipleXY(
+                    ejectorSlotWsTile.x,
+                    ejectorSlotWsTile.y
+                );
+
+                for (let i = 0; i < destEntities.length; ++i) {
                     alpha = 1;
+                    const destEntity = destEntities[i];
                     const destAcceptor = destEntity.components.ItemAcceptor;
                     const destStaticComp = destEntity.components.StaticMapEntity;
-
                     if (destAcceptor) {
                         const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
                         const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);

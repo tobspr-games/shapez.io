@@ -14,14 +14,6 @@ import { GameRoot, enumLayer } from "../root";
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
 export class MetaBeltBaseBuilding extends MetaBuilding {
-    constructor() {
-        super("belt");
-    }
-
-    getSilhouetteColor() {
-        return "#777";
-    }
-
     getHasDirectionLockAvailable() {
         return true;
     }
@@ -33,42 +25,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      */
     getAdditionalStatistics(root, variant) {
         const beltSpeed = root.hubGoals.getBeltBaseSpeed();
-
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
-    }
-
-    getPreviewSprite(rotationVariant) {
-        switch (arrayBeltVariantToRotation[rotationVariant]) {
-            case enumDirection.top: {
-                return Loader.getSprite("sprites/buildings/belt_top.png");
-            }
-            case enumDirection.left: {
-                return Loader.getSprite("sprites/buildings/belt_left.png");
-            }
-            case enumDirection.right: {
-                return Loader.getSprite("sprites/buildings/belt_right.png");
-            }
-            default: {
-                assertAlways(false, "Invalid belt rotation variant");
-            }
-        }
-    }
-
-    getBlueprintSprite(rotationVariant) {
-        switch (arrayBeltVariantToRotation[rotationVariant]) {
-            case enumDirection.top: {
-                return Loader.getSprite("sprites/blueprints/belt_top.png");
-            }
-            case enumDirection.left: {
-                return Loader.getSprite("sprites/blueprints/belt_left.png");
-            }
-            case enumDirection.right: {
-                return Loader.getSprite("sprites/blueprints/belt_right.png");
-            }
-            default: {
-                assertAlways(false, "Invalid belt rotation variant");
-            }
-        }
     }
 
     getStayInPlacementMode() {
@@ -93,6 +50,8 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                 direction: enumDirection.top, // updated later
             })
         );
+        // Make this entity replaceabel
+        entity.addComponent(new ReplaceableMapEntityComponent());
 
         entity.addComponent(
             new ItemAcceptorComponent({
@@ -100,6 +59,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
+                        layer: this.getLayer(),
                     },
                 ],
                 animated: false,
@@ -112,13 +72,12 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         direction: enumDirection.top, // updated later
+                        layer: this.getLayer(),
                     },
                 ],
                 instantEject: true,
             })
         );
-        // Make this entity replaceabel
-        entity.addComponent(new ReplaceableMapEntityComponent());
     }
 
     /**
@@ -133,20 +92,22 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
     }
 
     /**
-     * Computes optimal belt rotation variant
-     * @param {GameRoot} root
-     * @param {Vector} tile
-     * @param {number} rotation
-     * @param {string} variant
-     * @return {{ rotation: number, rotationVariant: number }}
+     * Should compute the optimal rotation variant on the given tile
+     * @param {object} param0
+     * @param {GameRoot} param0.root
+     * @param {Vector} param0.tile
+     * @param {number} param0.rotation
+     * @param {string} param0.variant
+     * @param {string} param0.layer
+     * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
+    computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
         const topDirection = enumAngleToDirection[rotation];
         const rightDirection = enumAngleToDirection[(rotation + 90) % 360];
         const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];
         const leftDirection = enumAngleToDirection[(rotation + 270) % 360];
 
-        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile, enumLayer.regular);
+        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile, layer);
 
         let hasBottomEjector = false;
         let hasRightEjector = false;

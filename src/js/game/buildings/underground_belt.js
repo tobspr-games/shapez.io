@@ -131,13 +131,16 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {GameRoot} root
-     * @param {Vector} tile
-     * @param {number} rotation
-     * @param {string} variant
+     * Should compute the optimal rotation variant on the given tile
+     * @param {object} param0
+     * @param {GameRoot} param0.root
+     * @param {Vector} param0.tile
+     * @param {number} param0.rotation
+     * @param {string} param0.variant
+     * @param {string} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
+    computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
         const searchDirection = enumAngleToDirection[rotation];
         const searchVector = enumDirectionToVector[searchDirection];
         const tier = enumUndergroundBeltVariantToTier[variant];

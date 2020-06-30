@@ -272,8 +272,10 @@ export class GameLogic {
                     continue;
                 }
 
-                const entity = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, layer);
-                if (entity) {
+                const entities = this.root.map.getLayersContentsMultipleXY(tile.x + dx, tile.y + dy);
+                for (let i = 0; i < entities.length; ++i) {
+                    const entity = entities[i];
+
                     const staticComp = entity.components.StaticMapEntity;
                     const itemEjector = entity.components.ItemEjector;
                     if (itemEjector) {

@@ -132,11 +132,7 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        /* BIG HACK: We don't actually store the meta building  */
-        const metaBelt = gMetaBuildingRegistry.findByClass(
-            entity.layer === enumLayer.regular ? MetaBeltBaseBuilding : MetaWireBaseBuilding
-        );
-
+        const metaBelt = gMetaBuildingRegistry.findByClass(MetaBeltBaseBuilding);
         // Compute affected area
         const originalRect = staticComp.getTileSpaceBounds();
         const affectedArea = originalRect.expandedInAllDirections(1);
@@ -148,47 +144,47 @@ export class BeltSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                const targetEntity = this.root.map.getLayerContentXY(x, y, entity.layer);
-                if (!targetEntity) {
-                    // Empty tile
-                    continue;
-                }
+                const targetEntities = this.root.map.getLayersContentsMultipleXY(x, y, entity.layer);
+                for (let i = 0; i < targetEntities.length; ++i) {
+                    const targetEntity = targetEntities[i];
 
-                const targetBeltComp = targetEntity.components.Belt;
-                const targetStaticComp = targetEntity.components.StaticMapEntity;
+                    const targetBeltComp = targetEntity.components.Belt;
+                    const targetStaticComp = targetEntity.components.StaticMapEntity;
 
-                if (!targetBeltComp) {
-                    // Not a belt
-                    continue;
-                }
+                    if (!targetBeltComp) {
+                        // Not a belt
+                        continue;
+                    }
 
-                const {
-                    rotation,
-                    rotationVariant,
-                } = metaBelt.computeOptimalDirectionAndRotationVariantAtTile(
-                    this.root,
-                    new Vector(x, y),
-                    targetStaticComp.originalRotation,
-                    defaultBuildingVariant
-                );
+                    const {
+                        rotation,
+                        rotationVariant,
+                    } = metaBelt.computeOptimalDirectionAndRotationVariantAtTile({
+                        root: this.root,
+                        tile: new Vector(x, y),
+                        rotation: targetStaticComp.originalRotation,
+                        variant: defaultBuildingVariant,
+                        layer: targetEntity.layer,
+                    });
 
-                // Compute delta to see if anything changed
-                const newDirection = arrayBeltVariantToRotation[rotationVariant];
+                    // Compute delta to see if anything changed
+                    const newDirection = arrayBeltVariantToRotation[rotationVariant];
 
-                if (targetStaticComp.rotation !== rotation || newDirection !== targetBeltComp.direction) {
-                    // Ok, first remove it from its current path
-                    this.deleteEntityFromPath(targetBeltComp.assignedPath, targetEntity);
+                    if (targetStaticComp.rotation !== rotation || newDirection !== targetBeltComp.direction) {
+                        // Ok, first remove it from its current path
+                        this.deleteEntityFromPath(targetBeltComp.assignedPath, targetEntity);
 
-                    // Change stuff
-                    targetStaticComp.rotation = rotation;
-                    metaBelt.updateVariants(targetEntity, rotationVariant, defaultBuildingVariant);
+                        // Change stuff
+                        targetStaticComp.rotation = rotation;
+                        metaBelt.updateVariants(targetEntity, rotationVariant, defaultBuildingVariant);
 
-                    // Now add it again
-                    this.addEntityToPaths(targetEntity);
+                        // Now add it again
+                        this.addEntityToPaths(targetEntity);
 
-                    // Sanity
-                    if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
-                        this.debug_verifyBeltPaths();
+                        // Sanity
+                        if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
+                            this.debug_verifyBeltPaths();
+                        }
                     }
                 }
             }
