@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io ist ein Spiel über den Bau von Fabriken, um die Erstellung und Kombination immer komplexerer Formen zu automatisieren.
+    shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen Maschinen durch Kombination immer komplexere Formen zu erschaffen.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,13 +30,13 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io ist ein Spiel über den Bau von Fabriken um die Erstellung und Kombination von Formen zu automatisieren. Liefere die gewünschten, stetig komplexer werdenden Formen, um im Spiel voranzukommen und schalte Upgrades frei, die deine Fabrik zu beschleunigen!
+        In shapez.io musst du Maschinen geschickt verbinden, damit Formen automatisiert erstellt, bearbeitet und kombiniert werden. Liefere die gewünschten, stetig komplexer werdenden Formen an dein Hauptgebäude, um im Spiel voranzukommen. Schalte mit ihnen außerdem Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
 
-        Da die Nachfrage steigt, wirst du deine Fabrik vergrößern müssen, um den Bedürfnissen gerecht zu werden - vergiss jedoch nicht die Ressourcen, du wirst in der [b]unendlichen Karte[/b] expandieren müssen!
+        Da die Nachfrage sowohl in der Komplexität, als auch der Anzahl steigt, wirst du deine Fabriken erweitern müssen. Vergiss nicht, dass du die dafür benötigten Ressourcen beschaffen musst und expandiere auf der [b]unendlichen Karte[/b]!
 
-        Da Formen natürlich langweilig werden können, musst du Farben mischen und deine Formen damit bemalen - Kombiniere rote, grüne und blaue Farbressourcen, um verschiedene Farben herzustellen und Formen damit zu bemalen, um die Nachfrage zu befriedigen.
+        Das reine Zerschneiden und Zusammensetzen von Formen kann natürlich schnell langweilig werden, aber keine Sorge - Du kannst Farben mischen und deine Formen damit bemalen lassen. Staple dann deine fertigen Formen aufeinander und lasse so die wildesten Kreationen entstehen.
 
-        Dieses Spiel hat 18 verschiedene Level (Was dich schon Stunden beschäftig hält!) aber ich werde konstant neue Inhalte hinzufügen - Es ist echt viel geplant!
+        Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
 
         [b]Vorteile der Standalone[/b]
 
@@ -44,27 +44,27 @@ steamPage:
             [*] Wegpunkte
             [*] Unbegrenzte Anzahl von Spielständen
             [*] Dark-Mode
-            [*] Mehr Einstellungen
-            [*] Erlaube es mir weiter an shapez.io zu entwickeln  ❤️
-            [*] Mehr Funktionen in der Zukunft!
+            [*] Weitere Einstellungen
+            [*] Unterstütze die Entwicklung von shapez.io ❤️
+            [*] Neue Funktionen in der Zukunft!
         [/list]
 
-        [b]Geplante Funktionen & Community Vorschläge[/b]
+        [b]Geplante Funktionen & Community-Vorschläge[/b]
 
-        Diese Spiel ist open source - Jeder kann dazu beitragen! Abgesehen davon höre ich auf die Community! Ich versuche alle Vorschläge zu lesen und so viel Feedback einzubeziehen wie nur möglich.
+        Diese Spiel ist Open Source - Jeder kann dazu beitragen! Abgesehen davon, höre ich auf das Feedback der Community! Ich versuche alle Vorschläge zu lesen und so viel davon einzubeziehen, wie nur möglich. Hier ein Liste an Features, die momentan geplant sind.
 
         [list]
-            [*] Story-Modus, in dem Gebäude Formen kosten
-            [*] Mehr Gebäude und Level (nur in der Standalone-Version)
-            [*] Mehr Karten und vielleicht auch Hindernisse
-            [*] Einstellbare Kartenerstellung (Ändere die Grösse und Anzahl von Ressourcenflecken, Seed, und mehr)
-            [*] Mehr Typen von Formen
-            [*] Mehr Performanceverbesserungen (Auch wenn das Spiel bereits ganz gut läuft)
-            [*] Farbenblind-Modus
-            [*] Und viel mehr!
+            [*] Story-Modus mit Gebäudekosten
+            [*] Drähte und Logik
+            [*] Neue Gebäude und Level (nur in der Standalone-Version)
+            [*] Mehrere Karten und vielleicht auch Hindernisse
+            [*] Einstellbare Kartengenerierung (Ändere die Grösse und Anzahl von Ressourcenflecken, den Seed und mehr)
+            [*] Mehr Formentypen
+            [*] Performanceverbesserungen (Auch wenn das Spiel bereits ganz gut läuft)
+            [*] Und vieles mehr!
         [/list]
 
-        Schau dir auch das Trello-board für die komplette Planung an! https://trello.com/b/ISQncpJP/shapezio
+        Schau für die komplette Planung doch mal auf dem Trello-Board vorbei! https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Laden
@@ -138,16 +138,16 @@ mainMenu:
                 <br><br>
                 <strong>Thema dieser Woche:</strong> Baue die coolste Basis!
                 <br><br>
-                Hier ist ein Deal:<br>
+                Hier ist der Deal:<br>
                 <ul class="bucketList">
                     <li>Sende einen Screenshot deiner Basis an <strong>contest@shapez.io</strong></li>
-                    <li>Bonuspunkte wenn du die Basis auf sozialen Medien teilst!</li>
-                    <li>Ich wähle 5 Screenshots und schlage dieser der Community auf <strong>Discord</strong> vor, um abzustimmen.</li>
-                    <li>Der Gewinner bekommt <strong>$25</strong> (Paypal, Amazon Gift Card, was du willst)</li>
+                    <li>Bonuspunkte, wenn du die Basis auf sozialen Medien teilst!</li>
+                    <li>Ich wähle 5 Screenshots aus und schlage dieser der Community auf <strong>Discord</strong> zur Abstimmung vor.</li>
+                    <li>Der Gewinner bekommt <strong>$25</strong> (PayPal, Amazon Gift Card, was du willst)</li>
                     <li>Einsendeschluss: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                Ich freue mich deine tollen Kreationen zu sehen!
+                Ich freue mich auf eure tollen Kreationen!
 
         showInfo: Anschauen
         contestOver: Dieser Wettbewerb ist vorbei! Tritt dem Discord Server bei, um über neue Wettbewerbe informiert zu werden!
@@ -203,7 +203,7 @@ dialogs:
 
     editKeybinding:
         title: Tastenbelegung ändern
-        desc: Drücke die Taste oder Maustaste, die du vergeben willst, oder ESC um abzubrechen.
+        desc: Drücke die (Maus-)Taste, die du vergeben willst, oder ESC um abzubrechen.
 
     resetKeybindingsConfirmation:
         title: Tastenbelegung zurücksetzen
@@ -214,7 +214,7 @@ dialogs:
         desc: Die Tastenbelegung wurde auf den Standard zurückgesetzt!
 
     featureRestriction:
-        title: Demo Version
+        title: Demo-Version
         desc: Du hast ein Feature gefunden (<feature>), welches nicht in der Demo enthalten ist. Erwerbe die Standalone für das volle Erlebnis!
 
     oneSavegameLimit:
@@ -346,7 +346,7 @@ ingame:
                 description: Zeigt die Menge an Formen, die im zentralen Gebäude gelagert sind.
             produced:
                 title: Produziert
-                description: Zeigt die Menge an Formen, die deine ganze Fabrik produziert (auch Zwischenprodukte).
+                description: Zeigt die Menge an Formen, die deine gesamte Fabrik produziert (inkl. Zwischenprodukte).
             delivered:
                 title: Abgeliefert
                 description: Zeigt die Menge an Formen, die im zentralen Gebäude abgeliefert werden.
@@ -663,7 +663,7 @@ settings:
         refreshRate:
             title: Zielbildwiederholrate
             description: >-
-                Für z.B einen 144-Hz-Monitor kann die Bildwiederholrate hier korrekt eingestellt werden. Bei einem zu langsamen Computer kann dies die Leistung beeinträchtigen.
+                Für z.B. einen 144-Hz-Monitor kann die Bildwiederholrate hier korrekt eingestellt werden. Bei einem zu langsamen Computer kann dies die Leistung beeinträchtigen.
 
         alwaysMultiplace:
             title: Mehrfachplatzierung
