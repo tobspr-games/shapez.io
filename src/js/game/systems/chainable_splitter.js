@@ -15,20 +15,14 @@ export class ChainableSplitterSystem extends GameSystemWithFilter {
     }
 
     update() {
-        // Precompute effective belt speed
-        const effectiveBeltSpeed = this.root.hubGoals.getBeltBaseSpeed() * globalConfig.itemSpacingOnBelts;
-        let progressGrowth = (effectiveBeltSpeed / 0.5) * this.root.dynamicTickrate.deltaSeconds;
-
-        if (G_IS_DEV && globalConfig.debug.instantBelts) {
-            progressGrowth = 1;
-        }
+        const beltSpeed = this.getBeltSpeed();
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const splitterComp = entity.components.ChainableSplitter;
 
             // First, try to get rid of received item
-            this.tryEject(entity, progressGrowth);
+            this.tryEject(entity, beltSpeed);
 
             const item = splitterComp.inputItem;
             if (item === null) {
@@ -114,5 +108,20 @@ export class ChainableSplitterSystem extends GameSystemWithFilter {
         }
 
         return false;
+    }
+
+    /** @returns {number} */
+    getBeltSpeed() {
+        let progressGrowth = 2 * this.root.dynamicTickrate.deltaSeconds;
+
+        if (G_IS_DEV && globalConfig.debug.instantBelts) {
+            progressGrowth = 1;
+        }
+
+        return (
+            progressGrowth *
+            this.root.hubGoals.getBeltBaseSpeed(enumLayer.regular) *
+            globalConfig.beltItemSpacingByLayer[enumLayer.regular]
+        );
     }
 }
