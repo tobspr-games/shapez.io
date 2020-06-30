@@ -441,6 +441,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      */
     cloneFilteredByQuadrants(includeQuadrants) {
         const newLayers = this.internalCloneLayers();
+        let lastNonEmptyLayer = -1;
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
             let anyContents = false;
@@ -448,16 +449,16 @@ export class ShapeDefinition extends BasicSerializableObject {
                 if (includeQuadrants.indexOf(quadrantIndex) < 0) {
                     quadrants[quadrantIndex] = null;
                 } else if (quadrants[quadrantIndex]) {
-                    anyContents = true;
+                    lastNonEmptyLayer = layerIndex;
                 }
             }
-
-            // Check if the layer is entirely empty
-            if (!anyContents) {
-                newLayers.splice(layerIndex, 1);
-                layerIndex -= 1;
-            }
         }
+
+        // Remove top most empty layers which aren't needed anymore
+        if (lastNonEmptyLayer !== newLayers.length - 1) {
+            newLayers.splice(lastNonEmptyLayer + 1);
+        }
+
         return new ShapeDefinition({ layers: newLayers });
     }
 
