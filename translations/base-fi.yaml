@@ -311,7 +311,7 @@ ingame:
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Pikanäppäin: <key>
 
         infoTexts:
             speed: Nopeus
