@@ -22,7 +22,6 @@ export class ChainableSplitterSystem extends GameSystemWithFilter {
             }
 
             const leftEdgeEntity = this.getLeftEdgeEntity(entity);
-            this.reset = true;
             if (this.tryEject(leftEdgeEntity, splitterComp.inputItem)) {
                 splitterComp.inputItem = null;
             }
@@ -52,7 +51,6 @@ export class ChainableSplitterSystem extends GameSystemWithFilter {
     tryEject(entity, item) {
         const splitterComp = entity.components.ChainableSplitter;
         if (!splitterComp.ejected) {
-            this.reset = false;
             const ejectComp = entity.components.ItemEjector;
 
             if (ejectComp.canEjectOnSlot(0)) {
@@ -72,9 +70,7 @@ export class ChainableSplitterSystem extends GameSystemWithFilter {
             return true;
         }
 
-        if (this.reset) {
-            splitterComp.ejected = false;
-        }
+        splitterComp.ejected = false;
         return false;
     }
 }
