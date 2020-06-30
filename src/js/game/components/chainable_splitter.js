@@ -4,6 +4,8 @@ import { Component } from "../component";
 import { BaseItem } from "../base_item";
 import { gItemRegistry } from "../../core/global_registries";
 
+const receivedSize = 3;
+
 export class ChainableSplitterComponent extends Component {
     static getId() {
         return "ChainableSplitter";
@@ -13,7 +15,13 @@ export class ChainableSplitterComponent extends Component {
         return {
             chainable: types.bool,
             inputItem: types.nullable(types.obj(gItemRegistry)),
-            ejected: types.bool,
+            receivedItems: types.array(
+                types.structured({
+                    item: types.obj(gItemRegistry),
+                    distance: types.float,
+                })
+            ),
+            received: types.bool,
         };
     }
 
@@ -26,9 +34,17 @@ export class ChainableSplitterComponent extends Component {
     constructor({ chainable = false }) {
         super();
 
+        /** @type {boolean} */
         this.chainable = chainable;
+
+        /** @type {BaseItem} */
         this.inputItem = null;
-        this.ejected = false;
+
+        /** @type {Array<{ item: BaseItem, distance: number }>} */
+        this.receivedItems = [];
+
+        /** @type {boolean} */
+        this.received = false;
     }
 
     /**
@@ -42,5 +58,28 @@ export class ChainableSplitterComponent extends Component {
 
         this.inputItem = item;
         return true;
+    }
+
+    /**
+     *
+     * @param {BaseItem} item
+     * @param {number} distance
+     */
+    tryReceiveItem(item, distance) {
+        if (this.received || this.receivedItems.length > receivedSize) {
+            return false;
+        }
+
+        this.received = true;
+        this.receivedItems.push({
+            item: item,
+            distance: distance,
+        });
+        this.receivedItems.sort((a, b) => a.distance - b.distance);
+        return true;
+    }
+
+    resetReceived() {
+        this.received = false;
     }
 }
