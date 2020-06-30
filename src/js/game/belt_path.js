@@ -124,7 +124,7 @@ export class BeltPath extends BasicSerializableObject {
      * Returns the layer of the this path
      * @returns {enumLayer}
      */
-    get layer() {
+    getLayer() {
         return this.entityPath[0].layer;
     }
 

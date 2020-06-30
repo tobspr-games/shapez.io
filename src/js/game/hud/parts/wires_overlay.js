@@ -51,7 +51,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
 
     update() {
         const desiredAlpha = this.root.currentLayer === enumLayer.wires ? 1.0 : 0.0;
-        this.currentAlpha = lerp(this.currentAlpha, desiredAlpha, 0.08);
+        this.currentAlpha = lerp(this.currentAlpha, desiredAlpha, 0.12);
     }
 
     /**

@@ -474,7 +474,7 @@
 },
 "sprites/belt/right_3.png":
 {
-	"frame": {"x":1142,"y":892,"w":57,"h":57},
+	"frame": {"x":1207,"y":770,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -482,7 +482,7 @@
 },
 "sprites/belt/right_4.png":
 {
-	"frame": {"x":1203,"y":892,"w":57,"h":57},
+	"frame": {"x":1081,"y":832,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -490,7 +490,7 @@
 },
 "sprites/belt/right_5.png":
 {
-	"frame": {"x":916,"y":893,"w":57,"h":57},
+	"frame": {"x":1081,"y":893,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -498,7 +498,7 @@
 },
 "sprites/belt/right_6.png":
 {
-	"frame": {"x":977,"y":893,"w":57,"h":57},
+	"frame": {"x":1081,"y":954,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -506,7 +506,7 @@
 },
 "sprites/belt/right_7.png":
 {
-	"frame": {"x":1038,"y":893,"w":57,"h":57},
+	"frame": {"x":1142,"y":831,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -514,7 +514,7 @@
 },
 "sprites/belt/right_8.png":
 {
-	"frame": {"x":916,"y":954,"w":57,"h":57},
+	"frame": {"x":1142,"y":892,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -522,7 +522,7 @@
 },
 "sprites/belt/right_9.png":
 {
-	"frame": {"x":977,"y":954,"w":57,"h":57},
+	"frame": {"x":1203,"y":831,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -610,7 +610,7 @@
 },
 "sprites/belt/right_20.png":
 {
-	"frame": {"x":1020,"y":832,"w":57,"h":57},
+	"frame": {"x":959,"y":893,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -618,7 +618,7 @@
 },
 "sprites/belt/right_21.png":
 {
-	"frame": {"x":1024,"y":771,"w":57,"h":57},
+	"frame": {"x":959,"y":954,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -626,7 +626,7 @@
 },
 "sprites/belt/right_22.png":
 {
-	"frame": {"x":1085,"y":770,"w":57,"h":57},
+	"frame": {"x":1020,"y":832,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -634,7 +634,7 @@
 },
 "sprites/belt/right_23.png":
 {
-	"frame": {"x":1146,"y":770,"w":57,"h":57},
+	"frame": {"x":1020,"y":893,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -642,7 +642,7 @@
 },
 "sprites/belt/right_24.png":
 {
-	"frame": {"x":1207,"y":770,"w":57,"h":57},
+	"frame": {"x":1020,"y":954,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -650,7 +650,7 @@
 },
 "sprites/belt/right_25.png":
 {
-	"frame": {"x":1081,"y":832,"w":57,"h":57},
+	"frame": {"x":1024,"y":771,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -658,7 +658,7 @@
 },
 "sprites/belt/right_26.png":
 {
-	"frame": {"x":1142,"y":831,"w":57,"h":57},
+	"frame": {"x":1085,"y":770,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -666,7 +666,7 @@
 },
 "sprites/belt/right_27.png":
 {
-	"frame": {"x":1203,"y":831,"w":57,"h":57},
+	"frame": {"x":1146,"y":770,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -898,7 +898,7 @@
 },
 "sprites/buildings/belt_left.png":
 {
-	"frame": {"x":1038,"y":954,"w":57,"h":57},
+	"frame": {"x":1142,"y":953,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":6,"w":57,"h":57},
@@ -906,7 +906,7 @@
 },
 "sprites/buildings/belt_right.png":
 {
-	"frame": {"x":1099,"y":953,"w":57,"h":57},
+	"frame": {"x":1203,"y":892,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":57,"h":57},
@@ -1106,7 +1106,7 @@
 },
 "sprites/buildings/wire_left.png":
 {
-	"frame": {"x":1160,"y":953,"w":47,"h":47},
+	"frame": {"x":1203,"y":953,"w":47,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":16,"w":47,"h":47},
@@ -1114,7 +1114,7 @@
 },
 "sprites/buildings/wire_right.png":
 {
-	"frame": {"x":1211,"y":953,"w":47,"h":47},
+	"frame": {"x":1254,"y":953,"w":47,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":16,"y":16,"w":47,"h":47},
@@ -1146,7 +1146,7 @@
 },
 "sprites/map_overview/belt_forward.png":
 {
-	"frame": {"x":147,"y":965,"w":14,"h":16},
+	"frame": {"x":487,"y":926,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":14,"h":16},
@@ -1154,7 +1154,7 @@
 },
 "sprites/map_overview/belt_left.png":
 {
-	"frame": {"x":817,"y":797,"w":15,"h":15},
+	"frame": {"x":1288,"y":303,"w":15,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":15,"h":15},
@@ -1162,7 +1162,7 @@
 },
 "sprites/map_overview/belt_right.png":
 {
-	"frame": {"x":878,"y":736,"w":15,"h":15},
+	"frame": {"x":1288,"y":322,"w":15,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":15,"h":15},
@@ -1178,7 +1178,7 @@
 },
 "sprites/misc/hub_direction_indicator.png":
 {
-	"frame": {"x":1234,"y":470,"w":16,"h":16},
+	"frame": {"x":147,"y":965,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1186,7 +1186,7 @@
 },
 "sprites/misc/lock_direction_indicator.png":
 {
-	"frame": {"x":240,"y":963,"w":24,"h":16},
+	"frame": {"x":1234,"y":470,"w":24,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":4,"w":24,"h":16},
@@ -1218,7 +1218,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":487,"y":926,"w":14,"h":16},
+	"frame": {"x":817,"y":797,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":14,"h":16},
@@ -1232,45 +1232,61 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
 	"sourceSize": {"w":64,"h":64}
 },
-"sprites/wires/pin_negative_accept.png":
+"sprites/wires/negative_energy.png":
 {
-	"frame": {"x":1268,"y":770,"w":41,"h":48},
+	"frame": {"x":878,"y":736,"w":22,"h":22},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":0,"w":41,"h":48},
+	"spriteSourceSize": {"x":5,"y":5,"w":22,"h":22},
+	"sourceSize": {"w":32,"h":32}
+},
+"sprites/wires/pin_negative_accept.png":
+{
+	"frame": {"x":916,"y":877,"w":39,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":0,"w":39,"h":54},
 	"sourceSize": {"w":64,"h":64}
 },
 "sprites/wires/pin_negative_eject.png":
 {
-	"frame": {"x":1268,"y":822,"w":41,"h":48},
+	"frame": {"x":916,"y":935,"w":39,"h":54},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":0,"w":41,"h":48},
+	"spriteSourceSize": {"x":12,"y":0,"w":39,"h":54},
 	"sourceSize": {"w":64,"h":64}
 },
 "sprites/wires/pin_positive_accept.png":
 {
-	"frame": {"x":1264,"y":874,"w":41,"h":48},
+	"frame": {"x":1264,"y":831,"w":39,"h":54},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":0,"w":41,"h":48},
+	"spriteSourceSize": {"x":12,"y":0,"w":39,"h":54},
 	"sourceSize": {"w":64,"h":64}
 },
 "sprites/wires/pin_positive_eject.png":
 {
-	"frame": {"x":1264,"y":926,"w":41,"h":48},
+	"frame": {"x":1264,"y":889,"w":39,"h":54},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":0,"w":41,"h":48},
+	"spriteSourceSize": {"x":12,"y":0,"w":39,"h":54},
 	"sourceSize": {"w":64,"h":64}
+},
+"sprites/wires/positive_energy.png":
+{
+	"frame": {"x":240,"y":963,"w":22,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":5,"w":22,"h":22},
+	"sourceSize": {"w":32,"h":32}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "atlas0_50.png",
 	"format": "RGBA8888",
-	"size": {"w":1312,"h":1024},
+	"size": {"w":1306,"h":1024},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:f2991e3fe6c79348d0808b1f60a06ef7:740a2ce184f6485487669e0f615a8a7e:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:64992def403ecae5d6a9a8c1d669aa36:a6ea6940afa6efd3e09314c1b1be5a97:f159918d23e5952766c6d23ab52278c6$"
 }
 }

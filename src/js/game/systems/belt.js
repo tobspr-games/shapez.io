@@ -144,7 +144,7 @@ export class BeltSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                const targetEntities = this.root.map.getLayersContentsMultipleXY(x, y, entity.layer);
+                const targetEntities = this.root.map.getLayersContentsMultipleXY(x, y);
                 for (let i = 0; i < targetEntities.length; ++i) {
                     const targetEntity = targetEntities[i];
 
@@ -312,7 +312,7 @@ export class BeltSystem extends GameSystemWithFilter {
     drawLayer(parameters, layer) {
         for (let i = 0; i < this.beltPaths.length; ++i) {
             const path = this.beltPaths[i];
-            if (path.layer === layer) {
+            if (path.getLayer() === layer) {
                 path.draw(parameters);
             }
         }
