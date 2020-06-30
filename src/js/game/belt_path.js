@@ -1109,14 +1109,45 @@ export class BeltPath extends BasicSerializableObject {
             return;
         }
 
-        let progress = this.spacingToFirstItem;
-        for (let i = 0; i < this.items.length; ++i) {
-            const nextDistanceAndItem = this.items[i];
-            const worldPos = this.computePositionFromProgress(progress).toWorldSpaceCenterOfTile();
-            if (parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, 10)) {
-                nextDistanceAndItem[_item].draw(worldPos.x, worldPos.y, parameters);
+        if (this.items.length === 0) {
+            // Early out
+            return;
+        }
+
+        let currentItemPos = this.spacingToFirstItem;
+        let currentItemIndex = 0;
+
+        let trackPos = 0.0;
+
+        // Iterate whole track and check items
+        for (let i = 0; i < this.entityPath.length; ++i) {
+            const entity = this.entityPath[i];
+            const beltComp = entity.components.Belt;
+            const beltLength = beltComp.getEffectiveLengthTiles();
+
+            // Check if the item is on the current belt
+            if (trackPos + beltLength >= currentItemPos) {
+                // Its on the belt, render it now
+                const staticComp = entity.components.StaticMapEntity;
+                const localPos = beltComp.transformBeltToLocalSpace(currentItemPos - trackPos);
+                const worldPos = staticComp.localTileToWorld(localPos).toWorldSpaceCenterOfTile();
+
+                const distanceAndItem = this.items[currentItemIndex];
+                if (parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, 10)) {
+                    distanceAndItem[_item].draw(worldPos.x, worldPos.y, parameters);
+                }
+
+                // Check for the next item
+                currentItemPos += distanceAndItem[_nextDistance];
+                ++currentItemIndex;
+
+                if (currentItemIndex >= this.items.length) {
+                    // We rendered all items
+                    break;
+                }
             }
-            progress += nextDistanceAndItem[_nextDistance];
+
+            trackPos += beltLength;
         }
     }
 }
