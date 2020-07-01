@@ -43,14 +43,14 @@ steamPage:
 
         [list]
             [*] Puntos de referencia en el mapa
-            [*] Ilimitadas partidas guardadas
+            [*] Partidas guardadas ilimitadas
             [*] Modo nocturno
             [*] Más opciones
             [*] Permitirme seguir desarrollando shapez.io ❤️
             [*] Más características en el futuro!
         [/list]
 
-        [b]Características planeadas & sugerencias de la comunidad[/b]
+        [b]Características planeadas y sugerencias de la comunidad[/b]
 
         Este juego es de código abierto - Cualquiera puede contribuir! A parte de eso, escucho [b]mucho[/b] a la comunidad! Intento leer todas las sugerencias e intento tener en cuenta todo el feedback posible.
         [list]
@@ -107,7 +107,7 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
+        space: ESPACIO
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
@@ -119,7 +119,7 @@ mainMenu:
     play: Jugar
     continue: Continuar
     newGame: Nuevo Juego
-    changelog: Registro de cambios
+    changelog: Historial de cambios
     importSavegame: Importar
     openSourceHint: ¡Este juego es de código abierto!
     discordLink: Servidor de Discord Oficial
@@ -164,7 +164,7 @@ dialogs:
         cancel: Cancelar
         later: Más Tarde
         restart: Volver A Empezar
-        reset: Resetear
+        reset: Reiniciar
         getStandalone: Obtener Juego Completo
         deleteGame: Sé Lo Que Hago
         viewUpdate: Ver Actualización
@@ -206,8 +206,8 @@ dialogs:
         desc: Presiona la tecla o botón del ratón que quieras asignar o escape para cancelar.
 
     resetKeybindingsConfirmation:
-        title: Resetear atajos de teclado
-        desc: Esto reseteará todos los atajos de teclado a los valores por defecto. Por favor, confirma.
+        title: Reiniciar atajos de teclado
+        desc: Esto devolverá todos los atajos de teclado a los valores por defecto. Por favor, confirma.
 
     keybindingsResetOk:
         title: Reseteo de los atajos de teclado
@@ -219,7 +219,7 @@ dialogs:
 
     oneSavegameLimit:
         title: partidas guardadas limitadas
-        desc: Solo puedes tener una partida guardada a la vez en la versión de prueba. ¡Por favor elimina la ya existente o obtén el juego completo!
+        desc: Solo puedes tener una partida guardada a la vez en la versión de prueba. ¡Por favor elimina la ya existente u obtén el juego completo!
     updateSummary:
         title: ¡Nueva actualización!
         desc: >-
@@ -265,8 +265,8 @@ dialogs:
     exportScreenshotWarning:
         title: Exportar captura de pantalla
         desc: >-
-            Has pedido una captura de pantalla. Por favor ten en cuenta de que
-            puede tardar bastante en las bases grandes ¡E incluso crashear tu juego!
+            Has pedido una captura de pantalla. Por favor ten en cuenta que
+            puede tardar bastante en las bases grandes ¡He incluso crashear tu juego!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -411,7 +411,7 @@ ingame:
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Cintas transportadoras, Distribuidores & Túneles
+        name: Cintas transportadoras, Distribuidores y Túneles
         description: Velocidad x<currentMult> → x<newMult>
     miner:
         name: Extracción
@@ -508,7 +508,7 @@ buildings:
 
         storage:
             name: Almacenamiento.
-            description: Guarda el exceso de elementos, hasta cierta cantidad. Puede ser usado para contolar el desborde de elementos.
+            description: Guarda el exceso de elementos, hasta cierta cantidad. Puede ser usado para controlar el desborde de elementos.
 
     hub:
         deliver: Envía
@@ -519,7 +519,8 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cortador de Figuras
-        desc: Acabas de desbloquear el <strong>cortador</strong> - corta las figuras por la mitad <strong>de arriba abajo</strong> ¡Sin importar su orientación!<br><br>Asegúrate de deshacerte de lo que no vayas a usar o <strong>se parará</strong> - Para ese propósito te he dado una basura, que destruye todo lo que le pongas!
+
+        desc: Acabas de desbloquear el <strong>cortador</strong> - corta las figuras por la mitad <strong>de arriba abajo</strong> ¡Sin importar su orientación!<br><br>Asegúrate de deshacerte de lo que no vayas a usar o <strong>se parará</strong> - Para ese propósito te he dado una basura que destruye todo lo que le pongas!
 
     reward_rotater:
         title: Rotador
@@ -527,9 +528,8 @@ storyRewards:
 
     reward_painter:
         title: Pintor
-        desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
-
+        desc: El <strong>pintor</strong> ha sido desbloqueado - ¡Extrae vetas de color (igual que lo haces con las figuras) y combínalas con una figura en el pintor para colorearlas! <br><br>PD: Si tienes alguna forma de daltonismo, ¡hay un <strong>modo para daltonicos</strong> en las configuraciones!
+       
     reward_mixer:
         title: Mezclador de Color
         desc: El <strong>mezclador</strong> ha sido desbloqueado - ¡Combina dos colores usando <strong>mezcla aditiva</strong> con este edificio!
@@ -560,8 +560,8 @@ storyRewards:
 
     reward_splitter_compact:
         title: Balanceador Compacto
-        desc: >-
-            Has desbloqueado una variante compacta del <strong>balanceador</strong> - ¡Acepta dos entradas y las junta en una salida!
+        desc: Has desbloqueado una variante compacta del <strong>balanceador</strong> - ¡Acepta dos entradas y las junta en una salida!
+
     reward_cutter_quad:
         title: Cortador Cuádruple
         desc: Has desbloqueado una variante del <strong>cortador</strong> - ¡Permite cortar figuras en <strong>cuatro partes</strong> en vez de solo dos!
@@ -590,11 +590,12 @@ storyRewards:
     no_reward:
         title: Siguiente Nivel
         desc: >-
-            Este nivel no da recompensa, pero el siguiente si! <br><br> PS: Mejor no destruyas la fábrica que tienes - ¡Necesitarás <strong>todas</strong> esas figuras más adelante para <strong>desbloquear mejoras</strong>!
-    no_reward_freeplay:
+            Este nivel no da recompensa, ¡pero el siguiente si! <br><br> PS: Mejor no destruyas la fábrica que tienes - ¡Necesitarás <strong>todas</strong> esas figuras más adelante para <strong>desbloquear mejoras</strong>!
+
+no_reward_freeplay:
         title: Siguiente Nivel
         desc: >-
-            ¡Felicidades! ¡Por cierto, más contenido está planeado para el juego completo!
+            ¡Felicidades! ¡Por cierto, hay más contenido planeado para el juego completo!
 
 settings:
     title: Opciones
@@ -675,19 +676,19 @@ settings:
                 Si tienes un monitor de 144hz, cambia la tasa de refresco. Así el juego se ejecutará correctamente a una mayor tasa de refresco. Esto puede disminuir los FPS si tu ordenador no es lo suficientemente rápido.
 
         alwaysMultiplace:
-            title: Colocar Múltiples
+            title: Colocación Múltiple
             description: >-
                 Si está activado, todos los edificios quedarán seleccionados después de colocarlos hasta que lo canceles. Es equivalente a pulsar SHIFT permanentemente.
 
         offerHints:
-            title: Pistas & Tutorial
+            title: Pistas y Tutorial
             description: >-
                 Activa para recibir pistas y tutoriales mientras juegas. También oculta algunos elementos de la interfaz hasta cierto nivel para hacer más fácil la introducción al juego.
 
         enableTunnelSmartplace:
             title: Túneles Inteligentes
             description: >-
-                Si está activado, colocar túneles automáticamente removerá las cintas transportadoras innecesarias. Esto también permite arrastrar con el ratón y los túneles excedentes serán removidos.
+                Si está activado, colocar túneles automáticamente eliminará las cintas transportadoras innecesarias. Esto también permite arrastrar con el ratón y los túneles excedentes serán eliminados.
 
         vignette:
             title: Viñeta
@@ -708,7 +709,8 @@ settings:
         compactBuildingInfo:
             title: Información Compacta de Edificios
             description: >-
-                Acorta la caja de información mostrando solo sus razones. Si no, se mostrará una descripción y una imagen.
+                Acorta la caja de información mostrando solo sus ratios. Si no, se mostrará una descripción y una imagen.
+                
         disableCutDeleteWarnings:
             title: Deshabilitar las advertencias de Cortar/Eliminar
             description: >-
@@ -716,12 +718,13 @@ settings:
 
         enableColorBlindHelper:
             title: Modo para Daltónicos
-            description: Activa varias herramientas que permiten jugar si eres daltónico.
+            description: Activa varias herramientas que facilitan jugar si tienes alguna forma de daltonismo.
+            
         rotationByBuilding:
           title: Rotación por tipo de edificio
           description: >-
             Cada tipo de edificio recuerda la última rotación que le diste individualmente.
-            Esto puede ser más cómodo si cambias habitualmente entre tipos de edificios para colocar.
+            Esto puede ser más cómodo si cambias a menudo entre colocar diferentes tipos de edificios.
 
 keybindings:
     title: Atajos de Teclado
@@ -810,7 +813,7 @@ about:
         de Factorio este juego nunca existiría.
 
 changelog:
-    title: Registro de Cambios
+    title: Historial de Cambios
 
 demo:
     features:

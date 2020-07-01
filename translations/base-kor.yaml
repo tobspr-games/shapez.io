@@ -133,7 +133,7 @@ mainMenu:
     contests:
         contest_01_03062020:
             title: "콘테스트 #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            desc: 가장 멋진 공장을 지으신 분에게 <strong>$25</strong>를 !
             longDesc: >-
                 여러분들에게 무언가를 나눠드리고 싶어서 주간 콘테스트를 개최합니다!
 
@@ -153,9 +153,9 @@ mainMenu:
 
         showInfo: 보기
         contestOver: 이 콘테스트는 끝났습니다. 디스코드에서 새로운 콘테스트 관련 알림을 받으세요!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: 계속하기
+    newGame: 새 게임
+    madeBy: 제작 <author-link>
     subreddit: Reddit
 
 dialogs:
@@ -239,9 +239,9 @@ dialogs:
             당신은 많은 건물을 삭제하려고 하고있습니다! (정확히는 <count>개) 삭제하시겠습니까?
 
     massCutConfirm:
-        title: Confirm cut
+        title: 자르기 확인
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            당신은 많은 건물을 자르려고 하고있습니다! (정확히는 <count>개) 자르시겠습니까?
 
     blueprintsNotUnlocked:
         title: 아직 사용 불가
@@ -259,16 +259,16 @@ dialogs:
 
     createMarker:
         title: 새로운 마커
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: 이 장소에 이름을 지어주세요, 당신은 원하는 모양으로 <strong>단축키</strong>를 생성할 수 있습니다. (<a href="https://viewer.shapez.io" target="_blank">여기</a>에서 만들 수 있습니다.)
 
     markerDemoLimit:
         desc: 데모 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: 스크린샷 내보내기
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            당신은 당신의 공장을 스크린샷으로 내보내려 하고있습니다. 공장이 너무 큰 경우에는
+            시간이 오래 걸리거나 게임이 꺼질 수도 있음을 알려드립니다!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -285,13 +285,13 @@ ingame:
         placeBuilding: 건물 놓기
         createMarker: 마커 놓기
         delete: 삭제
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        pasteLastBlueprint: 마지막 청사진 붙여넣기
+        lockBeltDirection: 벨트 플래너 활성화하기
+        plannerSwitchSide: 벨트 플래너 방향바꾸기
+        cutSelection: 선택된 부분 자르기
+        copySelection: 선택된 부분 복사하기
+        clearSelection: 선택된 부분 지우기
+        pipette: 스포이드
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -338,7 +338,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: 최대  (Speed x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -399,14 +399,14 @@ ingame:
                 이것은 방치형 게임이 <strong>아닙니다!</strong> 추출기를 더 놓아 목표를 빨리 달성하세요.<br><br>팁: <strong>SHIFT</strong>를 눌러 여러 개의 추출기를 놓고 <strong>R</strong>로 회전 시키세요.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: 빨강
+        green: 초록
+        blue: 파랑
+        yellow: 노랑
+        purple: 보라
+        cyan: 청록
+        white: 하양
+        uncolored: 색 
     shapeViewer:
         title: Layers
         empty: Empty
@@ -531,15 +531,15 @@ storyRewards:
     reward_painter:
         title: 색칠기
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            <strong>색칠기</strong>가 잠금 해제되었습니다. - 추출한 색소(도형을 추출하는 것처럼)를 색칠기에서 도형과 합쳐 색칠된 도형을 얻으세요!<br><br> 추신: 색맹이라면, 설정에서 <strong>색맹 모드</strong>를 활성화 시키세요!
 
     reward_mixer:
         title: 혼합기
-        desc: <strong>혼합기</strong>가 잠금 해제 되었습니다! 이 건물로 두 색소를 <strong>혼합</strong>하세요!
+        desc: <strong>혼합기</strong>가 잠금 해제되었습니다! 이 건물로 두 색소를 <strong>혼합</strong>하세요!
 
     reward_stacker:
         title: 결합기
-        desc: <strong>결합기</strong>가 잠금 해제 되었습니다! 두 도형이 서로 옆에 놓을 수 있는 경우, 두 도형이 <strong>결합</strong>됩니다. 그렇지 않은 경우, 오른쪽 도형이 왼쪽 도형 <strong>위에 쌓이게</strong>됩니다.
+        desc: <strong>결합기</strong>가 잠금 해제되었습니다! 두 도형이 서로 옆에 놓을 수 있는 경우, 두 도형이 <strong>결합</strong>됩니다. 그렇지 않은 경우, 오른쪽 도형이 왼쪽 도형 <strong>위에 쌓이게</strong>됩니다.
 
     reward_splitter:
         title: 배분기
@@ -594,7 +594,7 @@ storyRewards:
     no_reward:
         title: 다음 레벨
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            이 단계는 아무런 보상이 없습니다. 하지만 다음 단계에는 있죠! <br><br> 추신: 현존하는 공장을 부수지 않는 것이 좋습니다. - 추후 <strong>업그레이드를 해제</strong>하기 위해 <strong>모든</strong> 도형들이 필요합니다!
 
     no_reward_freeplay:
         title: 다음 레벨
@@ -637,16 +637,16 @@ settings:
                 super_fast: 매우 빠르게
 
         movementSpeed:
-            title: Movement speed
+            title: 이동 속도
             description: >-
-                Changes how fast the view moves when using the keyboard.
+                키보드를 사용할 때, 화면 이동 속도를 설정합니다.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow:매우 느리게
+                slow: 느리게
+                regular: 보통
+                fast: 빠르게
+                super_fast: 매우 빠르게
+                extremely_fast: 극한의 속도
 
         language:
             title: 언어
@@ -673,8 +673,8 @@ settings:
             description: >-
                 게임 테마를 고르세요. (밝음/어두움).
             themes:
-                dark: Dark
-                light: Light
+                dark: 어두운 테마
+                light: 밝은 테마
 
         refreshRate:
             title: 모니터 리프레쉬 속도
@@ -692,48 +692,45 @@ settings:
                 이것을 끄면 힌트와 튜토리얼이 나오지 않습니다. 또한 게임에 쉽게 들어가기 위해서 주어진 레벨에서 특정 UI 요소를 숨길 수도 있습니다.
 
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: 스마트 터널
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                활성화 시키면, 터널을 설치하는 것이 자동적으로 불필요한 벨트를 없앱니다.
+                또한, 터널을 당겨서 남는 터널을 없앱니다.
+                
         vignette:
-            title: Vignette
+            title: 삽화
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                화면의 코너를 어둡게 만들어 텍스트를 읽기 쉽게 해주는 삽화를 활성화 시킵니다.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: 자동저장 주기
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                자동저장을 얼마나 자주 할 것인지 정합니다. 자동저장기능을 끌 수도 있습니다.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1분
+                two_minutes: 2분
+                five_minutes: 5분
+                ten_minutes: 10분
+                twenty_minutes: 20분
+                disabled: 기능 끄기
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: 간결한 건물 정보
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                건물의 정보창을 해당 건물의 능률만 보이도록 줄입니다.
+                아니면, 설명과 이미지가 보입니다.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: 자르기/삭제 경고기능 끄기
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
-
+                100개 이상의 건물을 자르기/삭제할 때 경고창이 나오지 않게 합니다.
+                
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: 색맹 모드
+            description: 색맹이 게임을 플레이하는데 도움을 주는 다양한 도구를 활성화 시킵니다.
         rotationByBuilding:
-          title: Rotation by building type
+          title: 건물 유형에 따른 방향
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            각 건물 유형은 최근에 설정한 방향을 개별적으로 기억합니다.
+            다른 유형의 건물 배치 간에 자주 방향을 전환할 경우, 이 방법이 더 편할 수 있습니다.
 
 keybindings:
     title: 키바인딩
@@ -747,7 +744,7 @@ keybindings:
         ingame: 게임
         navigation: 둘러보기
         placement: 놓기
-        massSelect: 여러 개 선택
+        massSelect: 다중 선택
         buildings: 건물 쇼트컷
         placementModifiers: 배치 수정기
 
@@ -785,42 +782,41 @@ keybindings:
             Modifier: 대신 반시계방향으로 회전
         cycleBuildingVariants: 변형종 사용
         confirmMassDelete: 대량 삭제 확인
-        pasteLastBlueprint: Paste last blueprint
+        pasteLastBlueprint: 최근 청사진 붙여넣기
         cycleBuildings: 건물 사이클
 
         massSelectStart: 누르고 드래그해서 시작
         massSelectSelectMultiple: 여러 곳 선택
         massSelectCopy: 영역 복사
-        massSelectCut: Cut area
+        massSelectCut: 영역 자르기
 
         placementDisableAutoOrientation: 자동 회전 끄기
         placeMultiple: 배치 모드에 있기
         placeInverse: 자동 벨트 회전 뒤집기
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
-        pipette: Pipette
+        exportScreenshot: 공장 전체를 이미지로 내보내기
+        mapMoveFaster: 더 빠르게 움직이기
+        lockBeltDirection: 벨트 플래너 활성화
+        switchDirectionLockSide: "플래너: 방향 바꾸기"
+        pipette: 피펫
 
 about:
     title: 이 게임의 정보
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        이 게임은 오픈소스이고, <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a>가 개발했습니다.<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        이 게임을 위해 이바지하고 싶다면, <a href="<githublink>"
+        target="_blank">shapez.io on github</a>를 확인하세요.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        이 게임은 디스코드 커뮤니티의 공헌이 없었다면 불가능했을 것입니다.
+        우리 디스코드 커뮤니티에 꼭 참여해주세요! <a href="<discordlink>"
+        target="_blank">디스코드 서버</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        사운드 트랙 제작자는 <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a>입니다. - 킹갓제너럴 Peppsen!<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        마지막으로, 나의 베스트프렌드 <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a>에게
+        크나큰 감사를 표합니다 - 우리가 함께 해낸 Factorio가 아니었다면, 이 게임은 존재하지 않았을거야!
 
 changelog:
     title: 업데이트 기록
@@ -831,6 +827,6 @@ demo:
         importingGames: 게임 저장 파일 불러오기
         oneGameLimit: 게임 저장 파일 최대 1개
         customizeKeybindings: 키바인딩 설정하기
-        exportingBase: Exporting whole Base as Image
+        exportingBase: 공장 전체를 이미지로 내보내기
 
     settingNotAvailable: 데모 버전에서 사용 불가
