@@ -4,11 +4,7 @@ import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { enumAnalyticsDataSource } from "../../production_analytics";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import {
-    enumDisplayMode,
-    HUDShapeStatisticsHandle,
-    HUDShapeStatisticsStorageHandle,
-} from "./statistics_handle";
+import { enumDisplayMode, HUDShapeStatisticsHandle } from "./statistics_handle";
 import { T } from "../../../translations";
 
 export class HUDStatistics extends BaseHUDPart {
@@ -31,7 +27,6 @@ export class HUDStatistics extends BaseHUDPart {
             enumAnalyticsDataSource.produced,
             enumAnalyticsDataSource.delivered,
             enumAnalyticsDataSource.stored,
-            enumAnalyticsDataSource.deliveredToStorage,
         ];
 
         for (let i = 0; i < dataSources.length; ++i) {
@@ -173,8 +168,7 @@ export class HUDStatistics extends BaseHUDPart {
                 break;
             }
             case enumAnalyticsDataSource.produced:
-            case enumAnalyticsDataSource.delivered:
-            case enumAnalyticsDataSource.deliveredToStorage: {
+            case enumAnalyticsDataSource.delivered: {
                 entries = Object.entries(this.root.productionAnalytics.getCurrentShapeRates(this.dataSource));
                 break;
             }
@@ -190,20 +184,12 @@ export class HUDStatistics extends BaseHUDPart {
 
             let handle = this.activeHandles[shapeKey];
             if (!handle) {
-                if (this.dataSource === enumAnalyticsDataSource.deliveredToStorage) {
-                    const [uid, shape] = shapeKey.split(",");
-                    const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
-                    handle = new HUDShapeStatisticsStorageHandle(
-                        this.root,
-                        Number.parseInt(uid),
-                        definition,
-                        this.intersectionObserver
-                    );
-                } else {
-                    const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shapeKey);
-                    handle = new HUDShapeStatisticsHandle(this.root, definition, this.intersectionObserver);
-                }
-                this.activeHandles[shapeKey] = handle;
+                const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shapeKey);
+                handle = this.activeHandles[shapeKey] = new HUDShapeStatisticsHandle(
+                    this.root,
+                    definition,
+                    this.intersectionObserver
+                );
             }
 
             rendered.add(shapeKey);

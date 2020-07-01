@@ -5,7 +5,6 @@ import { T } from "../../../translations";
 import { enumAnalyticsDataSource } from "../../production_analytics";
 import { GameRoot } from "../../root";
 import { ShapeDefinition } from "../../shape_definition";
-import { ClickDetector } from "../../../core/click_detector";
 
 /** @enum {string} */
 export const enumDisplayMode = {
@@ -30,19 +29,13 @@ export class HUDShapeStatisticsHandle {
         this.visible = false;
     }
 
-    get shapeKey() {
-        return this.definition.getHash();
-    }
-
     initElement() {
         this.element = document.createElement("div");
-        this.element.setAttribute("data-shape-key", this.shapeKey);
+        this.element.setAttribute("data-shape-key", this.definition.getHash());
 
         this.counter = document.createElement("span");
         this.counter.classList.add("counter");
         this.element.appendChild(this.counter);
-
-        this.canvasElement = this.element;
     }
 
     /**
@@ -59,7 +52,7 @@ export class HUDShapeStatisticsHandle {
                 // Create elements
                 this.shapeCanvas = this.definition.generateAsCanvas(100);
                 this.shapeCanvas.classList.add("icon");
-                this.canvasElement.appendChild(this.shapeCanvas);
+                this.element.appendChild(this.shapeCanvas);
             }
         } else {
             // Drop elements
@@ -83,12 +76,13 @@ export class HUDShapeStatisticsHandle {
 
         switch (dataSource) {
             case enumAnalyticsDataSource.stored: {
-                this.counter.innerText = formatBigNumber(this.root.hubGoals.storedShapes[this.shapeKey] || 0);
+                this.counter.innerText = formatBigNumber(
+                    this.root.hubGoals.storedShapes[this.definition.getHash()] || 0
+                );
                 break;
             }
             case enumAnalyticsDataSource.delivered:
-            case enumAnalyticsDataSource.produced:
-            case enumAnalyticsDataSource.deliveredToStorage: {
+            case enumAnalyticsDataSource.produced: {
                 let rate =
                     (this.root.productionAnalytics.getCurrentShapeRate(dataSource, this.shapeKey) /
                         globalConfig.analyticsSliceDurationSeconds) *
@@ -116,7 +110,7 @@ export class HUDShapeStatisticsHandle {
                 const [canvas, context] = makeOffscreenBuffer(w * graphDpi, h * graphDpi, {
                     smooth: true,
                     reusable: false,
-                    label: "statgraph-" + this.shapeKey,
+                    label: "statgraph-" + this.definition.getHash(),
                 });
                 context.scale(graphDpi, graphDpi);
                 canvas.classList.add("graph");
@@ -228,50 +222,5 @@ export class HUDShapeStatisticsHandle {
             // Remove handle
             delete this.counter;
         }
-    }
-}
-
-export class HUDShapeStatisticsStorageHandle extends HUDShapeStatisticsHandle {
-    /**
-     * @param {GameRoot} root
-     * @param {number} uid
-     * @param {ShapeDefinition} definition
-     * @param {IntersectionObserver} intersectionObserver
-     */
-    constructor(root, uid, definition, intersectionObserver) {
-        super(root, definition, intersectionObserver);
-
-        this.uid = uid;
-    }
-
-    get shapeKey() {
-        return this.uid.toString() + "," + this.definition.getHash();
-    }
-
-    initElement() {
-        super.initElement();
-
-        this.canvasElement = document.createElement("div");
-        this.canvasElement.classList.add("shape");
-        this.element.appendChild(this.canvasElement);
-
-        // Show small move icon
-        const moveButton = document.createElement("button");
-        moveButton.classList.add("moveButton");
-        this.canvasElement.appendChild(moveButton);
-        const infoDetector = new ClickDetector(moveButton, {
-            consumeEvents: true,
-            preventDefault: true,
-            targetOnly: true,
-        });
-        infoDetector.click.add(() => {
-            const entity = this.root.entityMgr.findByUid(this.uid);
-            const position = entity.components.StaticMapEntity.origin;
-
-            this.root.camera.setDesiredCenter(position.toWorldSpace());
-            this.root.camera.setDesiredZoom(
-                Math.max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05)
-            );
-        });
     }
 }

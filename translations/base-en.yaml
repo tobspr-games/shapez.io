@@ -363,9 +363,6 @@ ingame:
             delivered:
                 title: Delivered
                 description: Displaying shapes which are delivered to your central building.
-            deliveredToStorage:
-                title: Storage
-                description: Displaying shapes which are delivered to your storages.
         noShapesProduced: No shapes have been produced so far.
 
         # Displays the shapes per minute, e.g. '523 / m'

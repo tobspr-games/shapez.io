@@ -352,9 +352,6 @@ ingame:
             delivered:
                 title: 納品済
                 description: 中央の建造物に納品された形の総数です。
-            deliveredToStorage:
-                title: 格納庫
-                description: 格納庫に納品された形の総数です。
         noShapesProduced: まだ形が生産されていません。
 
         # Displays the shapes per minute, e.g. '523 / m'

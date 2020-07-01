@@ -111,8 +111,7 @@
         &[data-displaymode="icons"] .displayIcons,
         &[data-datasource="produced"] .modeProduced,
         &[data-datasource="delivered"] .modeDelivered,
-        &[data-datasource="stored"] .modeStored,
-        &[data-datasource="deliveredToStorage"] .modeDeliveredtostorage {
+        &[data-datasource="stored"] .modeStored {
             opacity: 1;
         }
 
@@ -163,29 +162,6 @@
                     border: #{D(4px)} solid transparent;
                     // @include S(border-width, 1px, 0, 1px, 0);
                     @include S(margin-top, -3px);
-                }
-            }
-        }
-
-        .shape {
-            position: relative;
-
-            button.moveButton {
-                @include S(width, 11px);
-                @include S(height, 11px);
-                background: uiResource("icons/waypoint.png") center center / 95% no-repeat;
-                position: absolute;
-                @include S(top, 29px);
-                @include S(right, -11px);
-                opacity: 0.5;
-                cursor: pointer;
-                pointer-events: all;
-                @include IncreasedClickArea(5px);
-                transition: opacity 0.12s ease-in-out;
-                @include DarkThemeInvert;
-
-                &:hover {
-                    opacity: 0.6;
                 }
             }
         }
