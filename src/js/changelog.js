@@ -5,6 +5,7 @@ export const CHANGELOG = [
         entries: [
             "Allow holding ALT in belt planner to reverse direction (by jakobhellermann)",
             "Clear cursor when trying to pipette the same building twice (by hexy)",
+            "Updated the soundtrack again, it is now 20 minutes in total!",
         ],
     },
     {

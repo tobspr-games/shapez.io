@@ -527,8 +527,9 @@ storyRewards:
 
     reward_painter:
         title: Pintor
-        desc: El <strong>pintor</strong> ha sido desbloqueado - ¡Extrae vetas de color (igual que lo haces con las figuras) y combínalas con una figura en el pintor para colorearlas! <br><br>PD: Si tienes alguna forma de daltonismo, ¡hay un <strong>modo para daltonicos</strong> en las configuraciones!
-       
+        desc: >-
+            El <strong>pintor</strong> ha sido desbloqueado - ¡Extrae vetas de color (igual que lo haces con las figuras) y combínalas con una figura en el pintor para colorearlas! <br><br>PD: Si tienes alguna forma de daltonismo, ¡hay un <strong>modo para daltonicos</strong> en las configuraciones!
+
     reward_mixer:
         title: Mezclador de Color
         desc: El <strong>mezclador</strong> ha sido desbloqueado - ¡Combina dos colores usando <strong>mezcla aditiva</strong> con este edificio!
@@ -592,9 +593,9 @@ storyRewards:
             Este nivel no da recompensa, ¡pero el siguiente si! <br><br> PS: Mejor no destruyas la fábrica que tienes - ¡Necesitarás <strong>todas</strong> esas figuras más adelante para <strong>desbloquear mejoras</strong>!
 
 no_reward_freeplay:
-        title: Siguiente Nivel
-        desc: >-
-            ¡Felicidades! ¡Por cierto, hay más contenido planeado para el juego completo!
+    title: Siguiente Nivel
+    desc: >-
+        ¡Felicidades! ¡Por cierto, hay más contenido planeado para el juego completo!
 
 settings:
     title: Opciones
@@ -718,10 +719,10 @@ settings:
             title: Modo para Daltónicos
             description: Activa varias herramientas que facilitan jugar si tienes alguna forma de daltonismo.
         rotationByBuilding:
-          title: Rotación por tipo de edificio
-          description: >-
-            Cada tipo de edificio recuerda la última rotación que seleccionaste individualmente.
-            Esto puede ser mucho más cómodo si cambias a menudo entre colocar diferentes tipos de edificio.
+            title: Rotación por tipo de edificio
+            description: >-
+                Cada tipo de edificio recuerda la última rotación que seleccionaste individualmente.
+                Esto puede ser mucho más cómodo si cambias a menudo entre colocar diferentes tipos de edificio.
 
 keybindings:
     title: Atajos de Teclado

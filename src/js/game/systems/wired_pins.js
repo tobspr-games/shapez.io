@@ -27,7 +27,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Draws the given layer
+     * Draws the pins
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
@@ -35,7 +35,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Draws a given chunk
+     * Draws a given entity
      * @param {DrawParameters} parameters
      * @param {Entity} entity
      */

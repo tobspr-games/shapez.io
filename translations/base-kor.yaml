@@ -406,7 +406,7 @@ ingame:
         purple: 보라
         cyan: 청록
         white: 하양
-        uncolored: 색 
+        uncolored: 색
     shapeViewer:
         title: Layers
         empty: Empty
@@ -641,7 +641,7 @@ settings:
             description: >-
                 키보드를 사용할 때, 화면 이동 속도를 설정합니다.
             speeds:
-                super_slow:매우 느리게
+                super_slow: 매우 느리게
                 slow: 느리게
                 regular: 보통
                 fast: 빠르게
@@ -696,7 +696,7 @@ settings:
             description: >-
                 활성화 시키면, 터널을 설치하는 것이 자동적으로 불필요한 벨트를 없앱니다.
                 또한, 터널을 당겨서 남는 터널을 없앱니다.
-                
+
         vignette:
             title: 삽화
             description: >-
@@ -722,15 +722,15 @@ settings:
             title: 자르기/삭제 경고기능 끄기
             description: >-
                 100개 이상의 건물을 자르기/삭제할 때 경고창이 나오지 않게 합니다.
-                
+
         enableColorBlindHelper:
             title: 색맹 모드
             description: 색맹이 게임을 플레이하는데 도움을 주는 다양한 도구를 활성화 시킵니다.
         rotationByBuilding:
-          title: 건물 유형에 따른 방향
-          description: >-
-            각 건물 유형은 최근에 설정한 방향을 개별적으로 기억합니다.
-            다른 유형의 건물 배치 간에 자주 방향을 전환할 경우, 이 방법이 더 편할 수 있습니다.
+            title: 건물 유형에 따른 방향
+            description: >-
+                각 건물 유형은 최근에 설정한 방향을 개별적으로 기억합니다.
+                다른 유형의 건물 배치 간에 자주 방향을 전환할 경우, 이 방법이 더 편할 수 있습니다.
 
 keybindings:
     title: 키바인딩

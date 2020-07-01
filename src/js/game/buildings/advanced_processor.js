@@ -9,6 +9,7 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot, enumLayer } from "../root";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
+import { EnergyConsumerComponent } from "../components/energy_consumer";
 
 export class MetaAdvancedProcessorBuilding extends MetaBuilding {
     constructor() {
@@ -61,6 +62,14 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
                 ],
             })
         );
+        entity.addComponent(
+            new EnergyConsumerComponent({
+                bufferSize: 3,
+                perCharge: 1,
+                batteryPosition: new Vector(4, 6.5),
+            })
+        );
+
         entity.addComponent(
             new WiredPinsComponent({
                 slots: [

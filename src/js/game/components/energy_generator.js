@@ -5,9 +5,6 @@ import { ShapeItem } from "../items/shape_item";
 
 const maxQueueSize = 20;
 
-export const ENERGY_GENERATOR_EJECT_SLOT = 0;
-export const ENERGY_GENERATOR_ACCEPT_SLOT = 4;
-
 export class EnergyGeneratorComponent extends Component {
     static getId() {
         return "EnergyGenerator";
@@ -24,8 +21,9 @@ export class EnergyGeneratorComponent extends Component {
      *
      * @param {object} param0
      * @param {string} param0.requiredKey Which shape this generator needs, can be null if not computed yet
+     * @param {number} param0.acceptorSlotIndex
      */
-    constructor({ requiredKey }) {
+    constructor({ requiredKey, acceptorSlotIndex = 0 }) {
         super();
         this.requiredKey = requiredKey;
 
@@ -34,6 +32,12 @@ export class EnergyGeneratorComponent extends Component {
          * @type {number}
          */
         this.itemsInQueue = 0;
+
+        /**
+         * Stores which slot accepts the waste
+         * @type {number}
+         */
+        this.acceptorSlotIndex = acceptorSlotIndex;
     }
 
     /**
@@ -42,7 +46,7 @@ export class EnergyGeneratorComponent extends Component {
      * @param {number} slot
      */
     tryTakeItem(item, slot) {
-        if (slot === ENERGY_GENERATOR_ACCEPT_SLOT) {
+        if (slot === this.acceptorSlotIndex) {
             // this is the acceptor slot on the wires layer
             // just destroy it
             return true;
