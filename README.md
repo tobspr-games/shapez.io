@@ -37,8 +37,6 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 
 **Notice**: This will produce a standalone build.
 
--   If u get error when running 'yarn' in the `gulp/`, run 'yarn upgrade' in the `gulp/` folder and try again.
-
 ## Helping translate
 
 Please checkout the [Translations readme](translations/).
