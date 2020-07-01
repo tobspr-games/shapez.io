@@ -4,6 +4,8 @@ import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { Vector } from "../../../core/vector";
 
+export const enumDebugOverlayMode = { disabled: 'disabled', regular: 'regular', detailed: 'detailed'};
+
 export class HUDDebugInfo extends BaseHUDPart {
     createElements(parent) {
         this.element = makeDiv(parent, "ingame_HUD_DebugInfo", []);
@@ -19,8 +21,7 @@ export class HUDDebugInfo extends BaseHUDPart {
     initialize() {
         this.lastTick = 0;
 
-        this.visible = false;
-        this.full = false;
+        this.mode = enumDebugOverlayMode.disabled;
         this.domAttach = new DynamicDomAttach(this.root, this.element);
 
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleFPSInfo).add(() => this.toggle());
@@ -47,18 +48,19 @@ export class HUDDebugInfo extends BaseHUDPart {
     }
 
     toggle() {
-        if (this.visible) {
-            if (this.full) {
-                this.visible = false;
-                this.full = false;
-            } else {
-                this.full = true;
-            }
-        } else {
-            this.visible = true;
+        switch (this.mode) {
+            case enumDebugOverlayMode.detailed:
+                this.mode = enumDebugOverlayMode.disabled;
+                break;
+            case enumDebugOverlayMode.regular:
+                this.mode = enumDebugOverlayMode.detailed;
+                break;
+            default:
+                this.mode = enumDebugOverlayMode.regular;
+                break;
         }
         this.updateFullText();
-        this.domAttach.update(this.visible);
+        this.domAttach.update(this.mode != enumDebugOverlayMode.disabled);
     }
 
     update() {
