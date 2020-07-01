@@ -24,11 +24,7 @@ export class StorageSystem extends GameSystemWithFilter {
 
             // Analytics hook
             if (storageComp.itemsToAnalyze > 0) {
-                this.root.signals.itemDeliveredToStorage.dispatch(
-                    entity.uid,
-                    storageComp.storedItem,
-                    storageComp.itemsToAnalyze
-                );
+                this.root.signals.itemDeliveredToStorage.dispatch(entity.uid, storageComp.itemsToAnalyze);
                 storageComp.itemsToAnalyze = 0;
             }
 
@@ -86,11 +82,10 @@ export class StorageSystem extends GameSystemWithFilter {
                 context.fillStyle = "#64666e";
                 context.fillText(formatBigNumber(storageComp.storedCount), center.x, center.y + 25.5);
             } else if (storageComp.displayType === enumStorageDisplayType.rate) {
-                const shapeKey = entity.uid.toString() + "," + storageComp.storedItem.serialize();
                 let rate =
                     (this.root.productionAnalytics.getCurrentShapeRate(
                         enumAnalyticsDataSource.deliveredToStorage,
-                        shapeKey
+                        entity.uid.toString()
                     ) /
                         globalConfig.analyticsSliceDurationSeconds) *
                     60;

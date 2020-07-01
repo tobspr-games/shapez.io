@@ -165,7 +165,7 @@ export class GameRoot {
 
             shapeDelivered: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
             itemProduced: /** @type {TypedSignal<[BaseItem]>} */ (new Signal()),
-            itemDeliveredToStorage: /** @type {TypedSignal<[number, BaseItem, number]>} */ (new Signal()),
+            itemDeliveredToStorage: /** @type {TypedSignal<[number, number]>} */ (new Signal()),
 
             bulkOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
 

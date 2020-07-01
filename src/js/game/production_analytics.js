@@ -66,11 +66,10 @@ export class ProductionAnalytics extends BasicSerializableObject {
 
     /**
      * @param {number} uid
-     * @param {BaseItem} item
      * @param {number} count
      */
-    onItemDeliveredToStorage(uid, item, count) {
-        const key = uid + "," + item.serialize();
+    onItemDeliveredToStorage(uid, count) {
+        const key = uid.toString();
         const entry = this.history[enumAnalyticsDataSource.deliveredToStorage];
         entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + count;
     }
