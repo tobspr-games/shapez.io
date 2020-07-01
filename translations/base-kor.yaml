@@ -385,7 +385,7 @@ ingame:
         waypoints: 마커
         hub: 중앙 건물
         description: 마커를 좌클릭해서 그곳으로 가고, 우클릭해서 삭제합니다.<br><br><keybinding>을 눌러 지금 있는 곳에 마커를 놓거나 <strong>우클릭해서</strong> 원하는 곳에 놓으세요.
-        creationSuccessNotification: Marker has been created.
+        creationSuccessNotification: 마커가 성공적으로 제작되었습니다.
 
     # Interactive tutorial
     interactiveTutorial:
@@ -408,8 +408,8 @@ ingame:
         white: 하양
         uncolored: 색 
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: 층
+        empty: 비었음
 
 # All shop upgrades
 shopUpgrades:
