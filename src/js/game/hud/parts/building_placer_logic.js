@@ -264,10 +264,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             staticComp.rotation = this.currentBaseRotation;
         }
     }
+
     /**
-     * Tries to delete the building under the mouse
+     * Get the building under the mouse
      */
-    deleteBelowCursor() {
+    getContentBelowCursor() {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
@@ -276,7 +277,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const tile = worldPos.toTileSpace();
-        const contents = this.root.map.getTileContent(tile, this.root.currentLayer);
+        return this.root.map.getTileContent(tile, this.root.currentLayer);
+    }
+
+    /**
+     * Tries to delete the building under the mouse
+     */
+    deleteBelowCursor() {
+        const contents = this.getContentBelowCursor();
         if (contents) {
             if (this.root.logic.tryDeleteBuilding(contents)) {
                 this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
@@ -691,6 +699,16 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Cancel placement
         if (button === enumMouseButton.right && metaBuilding) {
             this.currentMetaBuilding.set(null);
+        }
+
+        // Action
+        if (button === enumMouseButton.left && !metaBuilding) {
+            this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
+            const content = this.getContentBelowCursor();
+            if (content && content.components.Storage) {
+                content.components.Storage.cycleDisplayType();
+                // return STOP_PROPAGATION;
+            }
         }
     }
 
