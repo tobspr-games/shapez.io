@@ -70,12 +70,9 @@ export class ProductionAnalytics extends BasicSerializableObject {
      * @param {number} count
      */
     onItemDeliveredToStorage(uid, item, count) {
-        if (item.getItemType() === enumItemType.shape) {
-            const definition = /** @type {ShapeItem} */ (item).definition;
-            const key = uid + "," + definition.getHash();
-            const entry = this.history[enumAnalyticsDataSource.deliveredToStorage];
-            entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + count;
-        }
+        const key = uid + "," + item.serialize();
+        const entry = this.history[enumAnalyticsDataSource.deliveredToStorage];
+        entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + count;
     }
 
     /**
