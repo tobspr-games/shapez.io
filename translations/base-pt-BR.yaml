@@ -153,9 +153,9 @@ mainMenu:
         showInfo: Participar
         contestOver: Esse concurso está encerrado - Entre no discord para ser informado sobre novos concursos!
     helpTranslate: Ajude a traduzir!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: Continuar
+    newGame: Novo jogo
+    madeBy: Feito por <author-link>
     subreddit: Reddit
 
 dialogs:
