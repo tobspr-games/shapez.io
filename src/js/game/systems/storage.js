@@ -1,10 +1,14 @@
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { StorageComponent } from "../components/storage";
+import { StorageComponent, enumStorageDisplayType } from "../components/storage";
 import { Entity } from "../entity";
 import { DrawParameters } from "../../core/draw_parameters";
 import { formatBigNumber, lerp } from "../../core/utils";
 import { Loader } from "../../core/loader";
 import { enumLayer } from "../root";
+import { enumAnalyticsDataSource } from "../production_analytics";
+import { globalConfig } from "../../core/config";
+import { enumItemType } from "../base_item";
+import { ShapeItem } from "../items/shape_item";
 
 export class StorageSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -76,10 +80,25 @@ export class StorageSystem extends GameSystemWithFilter {
 
             this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
 
-            context.font = "bold 10px GameFont";
-            context.textAlign = "center";
-            context.fillStyle = "#64666e";
-            context.fillText(formatBigNumber(storageComp.storedCount), center.x, center.y + 25.5);
+            if (storageComp.displayType === enumStorageDisplayType.count) {
+                context.font = "bold 10px GameFont";
+                context.textAlign = "center";
+                context.fillStyle = "#64666e";
+                context.fillText(formatBigNumber(storageComp.storedCount), center.x, center.y + 25.5);
+            } else if (storageComp.displayType === enumStorageDisplayType.rate) {
+                const shapeKey = entity.uid.toString() + "," + storageComp.storedItem.serialize();
+                let rate =
+                    (this.root.productionAnalytics.getCurrentShapeRate(
+                        enumAnalyticsDataSource.deliveredToStorage,
+                        shapeKey
+                    ) /
+                        globalConfig.analyticsSliceDurationSeconds) *
+                    60;
+                context.font = "bold 7px GameFont";
+                context.textAlign = "center";
+                context.fillStyle = "#64666e";
+                context.fillText("" + formatBigNumber(rate) + " /s", center.x, center.y + 24.5);
+            }
 
             context.textAlign = "left";
             context.globalAlpha = 1;

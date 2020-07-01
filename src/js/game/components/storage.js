@@ -5,6 +5,12 @@ import { BaseItem, enumItemType } from "../base_item";
 import { ColorItem } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
+/** @enum {string} */
+export const enumStorageDisplayType = {
+    count: "count",
+    rate: "rate",
+};
+
 export class StorageComponent extends Component {
     static getId() {
         return "Storage";
@@ -51,6 +57,8 @@ export class StorageComponent extends Component {
          * We compute an opacity to make sure it doesn't flicker
          */
         this.overlayOpacity = 0;
+
+        this.displayType = enumStorageDisplayType.count;
     }
 
     /**
@@ -92,5 +100,13 @@ export class StorageComponent extends Component {
         this.storedItem = item;
         this.storedCount++;
         this.itemsToAnalyze++;
+    }
+
+    cycleDisplayType() {
+        if (this.displayType === enumStorageDisplayType.count) {
+            this.displayType = enumStorageDisplayType.rate;
+        } else {
+            this.displayType = enumStorageDisplayType.count;
+        }
     }
 }
