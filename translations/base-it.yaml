@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: In shapez.io potrai costruire delle fabbriche per automatizzare la creazione e la combinazione di forme sempre più complesse, in una mappa infinita.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -68,8 +68,8 @@ steamPage:
         Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
 
 global:
-    loading: Loading
-    error: Error
+    loading: Caricamento
+    error: Errore
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -86,50 +86,50 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: un secondo fa
+        xSecondsAgo: <x> secondi fa
+        oneMinuteAgo: un minuto fa
+        xMinutesAgo: <x> minuti fa
+        oneHourAgo: un'ora fa
+        xHoursAgo: <x> ore fa
+        oneDayAgo: un giorno fa
+        xDaysAgo: <x> giorni fa
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        hoursAndMinutesShort: <hours>h <minutes>m
 
-        xMinutes: <x> minutes
+        xMinutes: <x> minuti
 
     keys:
         tab: TAB
         control: CTRL
         alt: ALT
         escape: ESC
-        shift: SHIFT
-        space: SPACE
+        shift: MAIUSC
+        space: SPAZIO
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Versione Demo
     intro: >-
-        Get the standalone to unlock all features!
+        Ottieni la versione standalone per sbloccare tutte le funzioni!
 
 mainMenu:
     play: Play
     changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    importSavegame: Importa
+    openSourceHint: Questo gioco è open source!
+    discordLink: Server ufficiale Discord
+    helpTranslate: Aiutaci a tradurre!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Ci spiace, ma il gioco è molto lento su questo browser! Ottieni la versione standalone oppure scarica Chrome per provare l'esperienza completa.
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: Livello <x>
+    savegameLevelUnknown: Livello sconosciuto
 
     contests:
         contest_01_03062020:
@@ -151,51 +151,51 @@ mainMenu:
                 <br>
                 I'm looking forward to seeing your awesome creations!
 
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+        showInfo: Mostra
+        contestOver: Questa competizione è conclusa - Unisciti su Discord per ricevere notizie sulle prossime competizioni!
+    continue: Continua
+    newGame: Nuova partita
+    madeBy: Creato da <author-link>
     subreddit: Reddit
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
+        delete: Elimina
+        cancel: Annulla
+        later: Più tardi
+        restart: Ricomincia
         reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        getStandalone: Ottieni la versione completa
+        deleteGame: So cosa sto facendo
+        viewUpdate: Mostra aggiornamento
+        showUpgrades: Mostra upgrade
+        showKeybindings: Mostra scorciatoie
 
     importSavegameError:
-        title: Import Error
+        title: Errore di importazione
         text: >-
-            Failed to import your savegame:
+            Impossibile caricare il salvataggio:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Salvataggio importato
         text: >-
-            Your savegame has been successfully imported.
+            Il tuo salvataggio è stato importato correttamente.
 
     gameLoadFailure:
-        title: Game is broken
+        title: Partita malfunzionante
         text: >-
-            Failed to load your savegame:
+            Impossibile caricare il salvataggio:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Conferma eliminazione
         text: >-
-            Are you sure you want to delete the game?
+            Vuoi davvero eliminare la partita?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Impossibile eliminare
         text: >-
-            Failed to delete the savegame:
+            Impossibile eliminare il salvataggio:
 
     restartRequired:
         title: Restart required
@@ -274,24 +274,24 @@ ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
+        moveMap: Sposta
+        selectBuildings: Seleziona area
+        stopPlacement: Concludi posizionamento
+        rotateBuilding: Ruota costruzione
+        placeMultiple: Posiziona multiplo
+        reverseOrientation: Inverti orientamento
+        disableAutoOrientation: Disabilita orientamento automatico
+        toggleHud: Mostra/Nascondi HUD
+        placeBuilding: Posiziona costruzione
+        createMarker: Crea etichetta
+        delete: Distruggi
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        cutSelection: Taglia
+        copySelection: Copia
+        clearSelection: Annulla selezione
+        pipette: Contagocce
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -308,8 +308,8 @@ ingame:
             speed: Speed
             range: Range
             storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            oneItemPerSecond: 1 oggetto / secondo
+            itemsPerSecond: <x> oggetti / s
             itemsPerSecondDouble: (x2)
 
             tiles: <x> tiles
@@ -345,10 +345,10 @@ ingame:
         title: Statistics
         dataSources:
             stored:
-                title: Stored
+                title: Immagazzinati
                 description: Displaying amount of stored shapes in your central building.
             produced:
-                title: Produced
+                title: Prodotti
                 description: Displaying all shapes your whole factory produces, including intermediate products.
             delivered:
                 title: Delivered
@@ -360,25 +360,25 @@ ingame:
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: Tempo di gioco
 
         buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        beltsPlaced: Nastri
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: Continua
+            settings: Impostazioni
+            menu: Torna al menù
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: Serve aiuto?
+        showHint: Mostra indizio
+        hideHint: Chiudi
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Costo
 
     # Map markers
     waypoints:
@@ -399,70 +399,70 @@ ingame:
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: Rosso
+        green: Verde
+        blue: Blu
+        yellow: Giallo
+        purple: Viola
+        cyan: Azzurro
+        white: Bianco
+        uncolored: No colore
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Livelli
+        empty: Vuoto
 
 # All shop upgrades
 shopUpgrades:
     belt:
         name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        description: Velocità x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Estrazione
+        description: Velocità x<currentMult> → x<newMult>
     processors:
         name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        description: Velocità x<currentMult> → x<newMult>
     painting:
         name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        description: Velocità x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Nastro Trasportatore
+            description: Trasporta oggetti, clicca e trascina per posizionare in sequenza.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Estrattore
+            description: Posiziona sopra una forma o un colore per estrarlo.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Estrattore (Catena)
+            description: Posiziona sopra una forma o un colore per estrarlo. Puoi combinarlo con altri estrattori.
 
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            description: Permette di far passare delle risorse sotto a costruzioni e nastri trasportatori.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: Tunnel Grado II
+            description: Permette di far passare delle risorse sotto a costruzioni e nastri trasportatori.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Bilanciatore
+            description: Multifunzionale - Distribuisce equamente tutti gli ingressi su tutte le uscite.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Aggregatore (compatto)
+            description: Unisce due nastri trasportatori in uno solo.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Aggregatore (compatto)
+            description: Unisce due nastri trasportatori in uno solo.
 
     cutter:
         default:
@@ -487,18 +487,18 @@ buildings:
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Mixer Colori
+            description: Mescola due colori mediante sintesi additiva.
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
+            name: &painter Verniciatore
+            description: &painter_desc Colora l'intera forma dell'ingresso sinistro con il colore dell'ingresso destro.
         double:
-            name: Painter (Double)
+            name: Verniciatore (Doppio)
             description: Colors the shapes on the left inputs with the color from the top input.
         quad:
-            name: Painter (Quad)
+            name: Verniciatore (Quadruplo)
             description: Allows to color each quadrant of the shape with a different color.
         mirrored:
             name: *painter
@@ -506,16 +506,16 @@ buildings:
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Cestino
+            description: Accetta ingressi da tutti i lati e li distrugge. per sempre.
 
         storage:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
 
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
+        deliver: Consegna
+        toUnlock: per sbloccare
         levelShortcut: LVL
 
 storyRewards:
@@ -602,15 +602,15 @@ storyRewards:
             Congratulations! By the way, more content is planned for the standalone!
 
 settings:
-    title: Settings
+    title: Impostazioni
     categories:
-        game: Game
-        app: Application
+        game: Gioco
+        app: Applicazione
 
     versionBadges:
-        dev: Development
+        dev: Sviluppo
         staging: Staging
-        prod: Production
+        prod: Produzione
     buildDate: Built <at-date>
 
     labels:
@@ -637,9 +637,9 @@ settings:
                 super_fast: Super fast
 
         language:
-            title: Language
+            title: Lingua
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Cambia la lingua. Tutte le traduzioni sono realizzate dagli utenti e potrebbero essere incomplete!
 
         fullscreen:
             title: Fullscreen
@@ -647,23 +647,23 @@ settings:
                 It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Silenzia Suoni
             description: >-
-                If enabled, mutes all sound effects.
+                Se abilitato, spegne tutti gli effetti sonori.
 
         musicMuted:
-            title: Mute Music
+            title: Silenzia Musica
             description: >-
-                If enabled, mutes all music.
+                Se abilitato, spegne la musica.
 
         theme:
-            title: Game theme
+            title: Tema del gioco
             description: >-
-                Choose the game theme (light / dark).
+                Scegli il tema (chiaro / scuro).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Scuro
+                light: Chiaro
 
         refreshRate:
             title: Simulation Target
@@ -684,19 +684,19 @@ settings:
             title: Movement speed
             description: Changes how fast the view moves when using the keyboard.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Molto lento
+                slow: Lento
+                regular: Regolare
+                fast: Veloce
+                super_fast: Molto veloce
+                extremely_fast: Velocissimo
         enableTunnelSmartplace:
             title: Smart Tunnels
             description: >-
                 When enabled, placing tunnels will automatically remove unnecessary belts.
                 This also enables to drag tunnels and excess tunnels will get removed.
         vignette:
-            title: Vignette
+            title: Vignetta
             description: >-
                 Enables the vignette which darkens the screen corners and makes text easier
                 to read.
@@ -742,32 +742,32 @@ keybindings:
     resetKeybindings: Reset Keyinbindings
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
+        general: Applicazione
+        ingame: Gioco
+        navigation: Navigazione
+        placement: Posizionamento
         massSelect: Mass Select
         buildings: Building Shortcuts
         placementModifiers: Placement Modifiers
 
     mappings:
-        confirm: Confirm
-        back: Back
+        confirm: Conferma
+        back: Indietro
         mapMoveUp: Move Up
         mapMoveRight: Move Right
         mapMoveDown: Move Down
         mapMoveLeft: Move Left
-        centerMap: Center Map
+        centerMap: Centra mappa
 
         mapZoomIn: Zoom in
         mapZoomOut: Zoom out
         createMarker: Create Marker
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Upgrade
+        menuOpenStats: Statistiche
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
+        toggleHud: Mostra/Nascondi HUD
+        toggleFPSInfo: Mostra/Nascondi FPS e info debug
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -779,16 +779,16 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        rotateWhilePlacing: Rotate
+        rotateWhilePlacing: Ruota
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
+        cycleBuildingVariants: Cicla varianti
+        confirmMassDelete: Conferma eliminazione di massa
         cycleBuildings: Cycle Buildings
 
         massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
+        massSelectSelectMultiple: Seleziona aree multiple
+        massSelectCopy: Copia area
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
@@ -802,7 +802,7 @@ keybindings:
         pipette: Pipette
 
 about:
-    title: About this Game
+    title: Riguardo questo gioco
     body: >-
         This game is open source and developed by <a href="https://github.com/tobspr"
         target="_blank">Tobias Springer</a> (this is me).<br><br>
@@ -826,10 +826,10 @@ changelog:
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Recupero salvataggi
+        importingGames: Importazione salvataggi
+        oneGameLimit: Limite di un salvataggio
+        customizeKeybindings: Scorciatoie personalizabili
+        exportingBase: Esportazione dell'intera base come immagine
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Non disponibile nella demo.
