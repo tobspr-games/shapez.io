@@ -84,7 +84,10 @@ export class HUDShapeStatisticsHandle {
             case enumAnalyticsDataSource.delivered:
             case enumAnalyticsDataSource.produced: {
                 let rate =
-                    (this.root.productionAnalytics.getCurrentShapeRate(dataSource, this.shapeKey) /
+                    (this.root.productionAnalytics.getCurrentShapeRate(
+                        dataSource,
+                        this.definition.getHash()
+                    ) /
                         globalConfig.analyticsSliceDurationSeconds) *
                     60;
                 this.counter.innerText = T.ingame.statistics.shapesPerMinute.replace(
@@ -133,7 +136,7 @@ export class HUDShapeStatisticsHandle {
             for (let i = 0; i < globalConfig.statisticsGraphSlices - 2; ++i) {
                 const value = this.root.productionAnalytics.getPastShapeRate(
                     dataSource,
-                    this.shapeKey,
+                    this.definition.getHash(),
                     globalConfig.statisticsGraphSlices - i - 2
                 );
                 if (value > maxValue) {
