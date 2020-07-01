@@ -23,10 +23,6 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 **Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
 
 -   Mac building with Windows
--   Make sure git `git lfs` extension is on your path
--   Run `git lfs pull` to download sound assets
--   Make sure `ffmpeg` is on your path
--   Install Node.js and Yarn
 -   Be sure to run cmd as ADMIN! Otherwise this will not work.
 -   Run yarn in the root folder, then run 'yarn' in the `gulp/` folder
 -   Cd into `gulp` and run `yarn gulp main.standalone`
