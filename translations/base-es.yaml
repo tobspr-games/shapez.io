@@ -278,7 +278,7 @@ ingame:
         rotateBuilding: Rotar edificio
         placeMultiple: Colocar varios
         reverseOrientation: Invertir la orientación
-        disableAutoOrientation: Desactivar la auto-orientación
+        disableAutoOrientation: Desactivar la autoorientación
         toggleHud: Habilitar el HUD
         placeBuilding: Colocar edificio
         createMarker: Crear marca
