@@ -20,6 +20,8 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 -   Run `yarn` in the root folder, then run `yarn` in the `gulp/` folder
 -   Cd into `gulp` and run `yarn gulp` - it should now open in your browser
 
+**Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
+
 -   Mac building with Windows
 -   Make sure git `git lfs` extension is on your path
 -   Run `git lfs pull` to download sound assets
@@ -37,10 +39,9 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 -   Step 3: Copy everything from there into .framework root folder
 -   To run game on Mac, run play.sh or just run Stapez.io.App
 
--   If u get error when running 'yarn' in the `gulp/`, run 'yarn upgrade' in the `gulp/` folder and try again.
-    
+**Notice**: This will produce a standalone build.
 
-**Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
+-   If u get error when running 'yarn' in the `gulp/`, run 'yarn upgrade' in the `gulp/` folder and try again.
 
 ## Helping translate
 
