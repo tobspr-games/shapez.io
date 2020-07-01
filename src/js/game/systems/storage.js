@@ -77,7 +77,7 @@ export class StorageSystem extends GameSystemWithFilter {
         }
 
         switch (storageComp.displayType) {
-            case enumStorageDisplayType.count:
+            case enumStorageDisplayType.count: {
                 if (storedItem !== null) {
                     this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
 
@@ -89,8 +89,9 @@ export class StorageSystem extends GameSystemWithFilter {
                     context.globalAlpha = 1;
                 }
                 break;
+            }
 
-            case enumStorageDisplayType.rate:
+            case enumStorageDisplayType.rate: {
                 context.globalAlpha = 1;
                 this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
 
@@ -108,6 +109,7 @@ export class StorageSystem extends GameSystemWithFilter {
                 context.textAlign = "left";
                 context.globalAlpha = 1;
                 break;
+            }
         }
     }
 }
