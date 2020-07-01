@@ -641,7 +641,7 @@ settings:
             description: >-
                 키보드를 사용할 때, 화면 이동 속도를 설정합니다.
             speeds:
-                super_slow:매우 느리게
+                super_slow: 매우 느리게
                 slow: 느리게
                 regular: 보통
                 fast: 빠르게
