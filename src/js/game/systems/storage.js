@@ -105,7 +105,7 @@ export class StorageSystem extends GameSystemWithFilter {
                 context.font = "bold 7px GameFont";
                 context.textAlign = "center";
                 context.fillStyle = "#64666e";
-                context.fillText("" + formatBigNumber(rate) + " /s", center.x, center.y + 24.5);
+                context.fillText("" + formatBigNumber(rate) + " /m", center.x, center.y + 24.5);
                 context.textAlign = "left";
                 context.globalAlpha = 1;
                 break;
