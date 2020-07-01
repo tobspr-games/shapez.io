@@ -4,7 +4,7 @@ import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { Vector } from "../../../core/vector";
 
-export const enumDebugOverlayMode = { disabled: 'disabled', regular: 'regular', detailed: 'detailed'};
+export const enumDebugOverlayMode = { disabled: "disabled", regular: "regular", detailed: "detailed" };
 
 export class HUDDebugInfo extends BaseHUDPart {
     createElements(parent) {
