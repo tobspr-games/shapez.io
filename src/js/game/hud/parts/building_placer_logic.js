@@ -92,6 +92,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
          */
         this.currentDirectionLockSide = 0;
 
+        /**
+         * Whether the side for direction lock has not yet been determined.
+         * @type {boolean}
+         */
+        this.currentDirectionLockSideIndeterminate = true;
+
         this.initializeBindings();
     }
 
@@ -203,6 +209,17 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Figure which points the line visits
         const worldPos = this.root.camera.screenToWorld(mousePosition);
         const mouseTile = worldPos.toTileSpace();
+
+        // Figure initial direction
+        const dx = Math.abs(this.lastDragTile.x - mouseTile.x);
+        const dy = Math.abs(this.lastDragTile.y - mouseTile.y);
+        if (dx === 0 && dy === 0) {
+            // Back at the start. Try a new direction.
+            this.currentDirectionLockSideIndeterminate = true;
+        } else if (this.currentDirectionLockSideIndeterminate) {
+            this.currentDirectionLockSideIndeterminate = false;
+            this.currentDirectionLockSide = dx <= dy ? 0 : 1;
+        }
 
         if (this.currentDirectionLockSide === 0) {
             return new Vector(this.lastDragTile.x, mouseTile.y);
