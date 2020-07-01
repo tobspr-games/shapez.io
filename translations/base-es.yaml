@@ -527,8 +527,9 @@ storyRewards:
 
     reward_painter:
         title: Pintor
-        desc: El <strong>pintor</strong> ha sido desbloqueado - ¡Extrae vetas de color (igual que lo haces con las figuras) y combínalas con una figura en el pintor para colorearlas! <br><br>PD Si tienes alguna forma de daltonismo, ¡hay un <strong>modo para daltonicos</strong> en las configuraciones!
-       
+        desc: >-
+            El <strong>pintor</strong> ha sido desbloqueado - ¡Extrae vetas de color (igual que lo haces con las figuras) y combínalas con una figura en el pintor para colorearlas! <br><br>PD: Si tienes alguna forma de daltonismo, ¡hay un <strong>modo para daltonicos</strong> en las configuraciones!
+
     reward_mixer:
         title: Mezclador de Color
         desc: El <strong>mezclador</strong> ha sido desbloqueado - ¡Combina dos colores usando <strong>mezcla aditiva</strong> con este edificio!
