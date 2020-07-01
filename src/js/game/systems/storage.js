@@ -69,19 +69,31 @@ export class StorageSystem extends GameSystemWithFilter {
         const storageComp = entity.components.Storage;
 
         const storedItem = storageComp.storedItem;
+        const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+
         if (storedItem !== null) {
             context.globalAlpha = storageComp.overlayOpacity;
-            const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
             storedItem.draw(center.x, center.y, parameters, 30);
+        }
 
-            this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
+        switch (storageComp.displayType) {
+            case enumStorageDisplayType.count:
+                if (storedItem !== null) {
+                    this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
 
-            if (storageComp.displayType === enumStorageDisplayType.count) {
-                context.font = "bold 10px GameFont";
-                context.textAlign = "center";
-                context.fillStyle = "#64666e";
-                context.fillText(formatBigNumber(storageComp.storedCount), center.x, center.y + 25.5);
-            } else if (storageComp.displayType === enumStorageDisplayType.rate) {
+                    context.font = "bold 10px GameFont";
+                    context.textAlign = "center";
+                    context.fillStyle = "#64666e";
+                    context.fillText(formatBigNumber(storageComp.storedCount), center.x, center.y + 25.5);
+                    context.textAlign = "left";
+                    context.globalAlpha = 1;
+                }
+                break;
+
+            case enumStorageDisplayType.rate:
+                context.globalAlpha = 1;
+                this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
+
                 let rate =
                     (this.root.productionAnalytics.getCurrentShapeRate(
                         enumAnalyticsDataSource.deliveredToStorage,
@@ -93,10 +105,9 @@ export class StorageSystem extends GameSystemWithFilter {
                 context.textAlign = "center";
                 context.fillStyle = "#64666e";
                 context.fillText("" + formatBigNumber(rate) + " /s", center.x, center.y + 24.5);
-            }
-
-            context.textAlign = "left";
-            context.globalAlpha = 1;
+                context.textAlign = "left";
+                context.globalAlpha = 1;
+                break;
         }
     }
 }
