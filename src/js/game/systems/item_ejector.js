@@ -236,7 +236,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Try to hand over the item
-                if (this.tryPassOverItem(item, targetEntity, destSlot.index)) {
+                if (this.tryPassOverItem(item, targetEntity, destSlot)) {
                     // Handover successful, clear slot
                     targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
                     sourceSlot.item = null;
@@ -250,12 +250,27 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
      *
      * @param {BaseItem} item
      * @param {Entity} receiver
-     * @param {number} slotIndex
+     * @param {import("../components/item_acceptor").ItemAcceptorLocatedSlot} slot
+     * @returns {boolean}
      */
-    tryPassOverItem(item, receiver, slotIndex) {
+    tryPassOverItem(item, receiver, slot) {
+        const processor = slot.slot.processor;
+        if (processor) {
+            const itemProcessorComp = receiver.components[processor];
+            if (itemProcessorComp) {
+                // Its an item processor ..
+                if (itemProcessorComp.tryTakeItem(item, slot.index)) {
+                    return true;
+                }
+                // Item processor can have nothing else
+                return false;
+            }
+        }
+
         // Try figuring out how what to do with the item
         // TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
         // Also its just a few cases (hope it stays like this .. :x).
+        const slotIndex = slot.index;
 
         const itemLayer = enumItemTypeToLayer[item.getItemType()];
 

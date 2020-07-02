@@ -8,7 +8,8 @@ import { enumLayer } from "../root";
  * pos: Vector,
  * directions: enumDirection[],
  * layer: enumLayer,
- * filter?: enumItemType
+ * filter?: enumItemType,
+ * processor?: string
  * }} ItemAcceptorSlot */
 
 /**
@@ -23,7 +24,8 @@ import { enumLayer } from "../root";
  * pos: Vector,
  * directions: enumDirection[],
  * layer?: enumLayer,
- * filter?: enumItemType
+ * filter?: enumItemType,
+ * processor?: string
  * }} ItemAcceptorSlotConfig */
 
 export class ItemAcceptorComponent extends Component {
@@ -41,6 +43,8 @@ export class ItemAcceptorComponent extends Component {
 
                     // TODO: MIGRATE
                     layer: types.enum(enumLayer),
+
+                    processor: types.nullable(types.string),
                 })
             ),
             animated: types.bool,
@@ -125,6 +129,7 @@ export class ItemAcceptorComponent extends Component {
 
                 // Which type of item to accept (shape | color | all) @see enumItemType
                 filter: slot.filter,
+                processor: slot.processor,
             });
         }
     }
