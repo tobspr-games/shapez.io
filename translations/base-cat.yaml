@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io és un joc que té com a objectiu construir i automatitzar fàbriques per tal de produir figures cada cop més complexes en un mapa infinit.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -29,46 +29,43 @@ steamPage:
     # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
-
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
-
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
-
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
-
-
-        [b]Standalone Advantages[/b]
-
+        shapez.io és un joc que té com a objectiu construir i automatitzar fàbriques per tal de produir i combinar figures. Al entregar-les, es progressa en el joc desbloquejant millores per les línies de producció.
+        
+        En augmentar la demanda serà necessari redissenyar les línies de producció per tal de saciar les demandes - Sense oblidar-se dels recursos bàsics, serà necessari expandir-se en el [b]mapa infinit[/b]!
+        
+        Ja que les figures simples poden ser avorrides serà necessari mesclar colors i pintar-les - Combina vermell, verd i blau per produir diferents colors i així pintar les figures per assolir el nivell de demanda adequat.
+        
+        El joc compta amb 18 nivells (Que et mantindran ocupat durant hores!) però estic afegint constantment nou contingut - Tinc moltes coses planejades!
+        
+        [b]Avantatges del joc complet[/b]
+        
         [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
+            [*] Balises o marcadors, punts de referència en el mapa
+            [*] Guardar partides de forma il·limitada
+            [*] Mode fosc/nocturn
+            [*] Més opcions
+            [*] Em permet seguir desenvolupant shapez.io ❤️
+            [*] Més característiques en el futur!
         [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
-
+        
+        [b]Característiques planejades i suggerències de la comunitat[/b]
+        
+        Aquest joc es de codi obert - Qualsevol pot contribuir! A més, tinc [b]molt present[/b] a la comunitat! Intento/e llegir tots els suggeriments i proporcionar tot el feedback que m'és possible.
+        
         [list]
-            [*] Wires!
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] And much more!
+            [*] Cables!
+            [*] Mode història on els edificis tenen un cost en figures
+            [*] Més nivells i edificis (exclusiu de la versió completa)
+            [*] Mapes diferents i potser obstacles dins d'aquest
+            [*] Configurar la generació del mapa (número i mida dels recursos, la seed i més)
+            [*] Més tipus de figures
+            [*] Millorar el rendiment (Tot i que el joc ja funciona molt bé!)
+            [*] I molt més!
         [/list]
-
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
-
+        
+        Assegurat de revisar el taulell de Trello per veure el full de ruta! https://trello.com/b/ISQncpJP/shapezio
 global:
-    loading: Loading
+    loading: Carregant
     error: Error
 
     # How big numbers are rendered, e.g. "10,000"
@@ -86,21 +83,21 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: fa un segon
+        xSecondsAgo: fa <x> segons
+        oneMinuteAgo: fa un minut
+        xMinutesAgo: fa <x> minuts
+        oneHourAgo: fa una hora
+        xHoursAgo: fa <x> hores
+        oneDayAgo: fa un dia
+        xDaysAgo: fa <x> dies
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
 
-        xMinutes: <x> minutes
+        xMinutes: <x> minuts
 
     keys:
         tab: TAB
@@ -108,161 +105,159 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
+        space: ESPAI
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Demo - Versió de prova
     intro: >-
-        Get the standalone to unlock all features!
-
+        Aconsegueix el joc complet per obtenir totes les característiques!
 mainMenu:
-    play: Play
-    continue: Continue
-    newGame: New Game
-    changelog: Changelog
+    play: Jugar
+    continue: Continuar
+    newGame: Nou joc
+    changelog: Historial de canvis
     subreddit: Reddit
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
-    madeBy: Made by <author-link>
+    importSavegame: Importar
+    openSourceHint: Aquest joc es de codi obert!
+    discordLink: Servidor Discord oficial
+    helpTranslate: Ajuda a traduir-lo!
+    madeBy: Creat per <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
-
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    
+        Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarregat chrome per una millor experiència.
+    savegameLevel: Nivell <x>
+    savegameLevelUnknown: Nivell desconegut
 
     contests:
         contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            title: "Concurs #01"
+            desc: Guanya <strong>$25</strong> per la base més impresionant!
             longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
+                Per tal de mantenir el feedback he pensat que molaria fer concursos setmanals!
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>El tema d'aquesta setmana:</strong> Construeix la base més impresionant!
                 <br><br>
-                Here's the deal:<br>
+                Aquest es el procés:<br>
                 <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
+                    <li>Envia una captura de pantalla de la teva base <strong>contest@shapez.io</strong></li>
+                    <li>Punts extra si ho comparteixes en xarxes socials!</li>
+                    <li>Seleccionare aa 5 captures i les proposaré a la comunitat de <strong>discord</strong> per que votin/en.</li>
+                    <li>El premi és <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
                     <li>Deadline: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                I'm looking forward to seeing your awesome creations!
-
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
+                Estic esperant per les vostres increïbles creacions!
+        showInfo: Veure
+        contestOver: Aquest concurs ha conclòs- Entra a discord per assabentar-te de nous concursos!
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        delete: Eliminar
+        cancel: Cancel·lar
+        later: Més tard
+        restart: Tornar a començar
+        reset: Reiniciar
+        getStandalone: Obtenir versió completa
+        deleteGame: Se el que em faig
+        viewUpdate: Veure actualitzacions
+        showUpgrades: Mostrar millores
+        showKeybindings: Mostrar dreceres de teclat 
 
     importSavegameError:
-        title: Import Error
+        title: Error a l'importar
         text: >-
             Failed to import your savegame:
-
+            
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Importar
         text: >-
-            Your savegame has been successfully imported.
-
+            La partida ha sigut importada amb èxit.
+            
     gameLoadFailure:
-        title: Game is broken
+        title: No es pot càrregar la partida guardada
         text: >-
             Failed to load your savegame:
-
+            
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Eliminar
         text: >-
-            Are you sure you want to delete the game?
-
+            Estàs segur que vols eliminar la partida guardada?
+            
     savegameDeletionError:
-        title: Failed to delete
+        title: Error al eliminar
         text: >-
             Failed to delete the savegame:
-
+            
     restartRequired:
-        title: Restart required
+        title: Reiniciar
         text: >-
-            You need to restart the game to apply the settings.
-
+            És necessari reiniciar el joc per aplicar els canvis.
+            
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Cambiar dreceres de teclat
+        desc: Pressiona la tecla o botó del ratolí que vols designar o ESC per cancel·lar.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Reiniciar dreceres de teclat
+        desc: Això reiniciarà tots els canvis realitzats, n'estàs segur?
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Cambiar dreceres de teclat
+        desc: Les dreceres han tornat en el seu estat predeterminat!
 
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        title: Demo - Versió de prova
+        desc: Has intentat accedir a una característica (<feature>) que no està disponible en la demo. Considera en obtenir el joc complet per una experiència completa!
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: Partides guardades limitades
+        desc: Només pots tenir una sola partida guardada a la versió de demostració. Si us plau elimina la ja existent o fes-te amb la versió completa del joc!
 
     updateSummary:
-        title: New update!
+        title: Nova actualització!
         desc: >-
-            Here are the changes since you last played:
-
+            Aquí tens els canvis des de l'últim cop que vas jugar:
+            
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Desbloquejar millora
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
-
+            Totes les figures poden ser usades per desbloquejar millores - <strong>No eliminis les teves fabriques anteriors!</strong>
+            La pestanya de millores està a la part superior dreta de la pantalla.
+            
     massDeleteConfirm:
-        title: Confirm delete
+        title: Eliminar edificis 
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
-
+            Estàs esborrant molts edificis de cop (<count> per ser exactes)! Estàs segur que vols seguir?
+            
     massCutConfirm:
-        title: Confirm cut
+        title: Tallar edificis
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
-
+            Estàs esborrant molts edificis de cop (<count> per ser exactes)! Estàs segur que vols seguir?
+            
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Encara no s'ha desbloquejat
         desc: >-
-            Complete level 12 to unlock Blueprints!
-
+            Completa el nivell 12 per poder desbloquejar aquesta característica.
+            
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Dreceres de teclat útils
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
-
+            El joc té moltes dreceres que faciliten la feina a l'hora de construir grans línies de producció.
+            Aquí tens algunes, però asegurat de <strong>revisar les dreceres de teclat</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Arrossegar: Selecciona una àrea.<br>
+            <code class='keybinding'>SHIFT</code>: Mentè pressionat per col·locar vàries vegades el mateix edifici.<br>
+            <code class='keybinding'>ALT</code>: Invertir la orientació de les cintes transportades ja col·locades.<br>
+            
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        title: Nou Marcador
+        desc: Dona-li un nom significatiu, també pots usar <strong>claus</strong> de les figures (Pots generarles a: <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: En la Demo només pots crear dos marcadors, aconsegueix la versió completa per gaudir de l'experiència completa!
 
     exportScreenshotWarning:
         title: Export screenshot
@@ -313,7 +308,6 @@ ingame:
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
-
         infoTexts:
             speed: Speed
             range: Range
@@ -410,10 +404,8 @@ ingame:
             1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
             1_2_conveyor: >-
                 Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
-
             1_3_expand: >-
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
-
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -557,7 +549,6 @@ storyRewards:
         title: Painting
         desc: >-
             The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
-
     reward_mixer:
         title: Color Mixing
         desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
@@ -590,7 +581,6 @@ storyRewards:
         title: Compact Balancer
         desc: >-
             You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
-
     reward_cutter_quad:
         title: Quad Cutting
         desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
@@ -620,7 +610,6 @@ storyRewards:
         title: Next level
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
-
     reward_wires:
         title: Wires
         desc: TODO
@@ -629,7 +618,6 @@ storyRewards:
         title: Next level
         desc: >-
             Congratulations! By the way, more content is planned for the standalone!
-
 settings:
     title: Settings
     categories:
@@ -658,7 +646,6 @@ settings:
             title: Autosave Interval
             description: >-
                 Controls how often the game saves automatically. You can also disable it entirely here.
-
             intervals:
                 one_minute: 1 Minute
                 two_minutes: 2 Minutes
@@ -694,27 +681,22 @@ settings:
             title: Language
             description: >-
                 Change the language. All translations are user contributed and might be incomplete!
-
         enableColorBlindHelper:
             title: Color Blind Mode
             description: >-
                 Enables various tools which allow to play the game if you are color blind.
-
         fullscreen:
             title: Fullscreen
             description: >-
                 It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
-
         soundsMuted:
             title: Mute Sounds
             description: >-
                 If enabled, mutes all sound effects.
-
         musicMuted:
             title: Mute Music
             description: >-
                 If enabled, mutes all music.
-
         theme:
             title: Game theme
             description: >-
@@ -727,47 +709,38 @@ settings:
             title: Simulation Target
             description: >-
                 If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
-
         alwaysMultiplace:
             title: Multiplace
             description: >-
                 If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
-
         offerHints:
             title: Hints & Tutorials
             description: >-
                 Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
-
         enableTunnelSmartplace:
             title: Smart Tunnels
             description: >-
                 When enabled, placing tunnels will automatically remove unnecessary belts. This also enables to drag tunnels and excess tunnels will get removed.
-
         vignette:
             title: Vignette
             description: >-
                 Enables the vignette which darkens the screen corners and makes text easier to read.
-
         rotationByBuilding:
             title: Rotation by building type
             description: >-
                 Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
-
         compactBuildingInfo:
             title: Compact Building Infos
             description: >-
                 Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
-
         disableCutDeleteWarnings:
             title: Disable Cut/Delete Warnings
             description: >-
                 Disable the warning dialogs brought up when cutting/deleting more than 100 entities.
-
 keybindings:
     title: Keybindings
     hint: >-
         Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
-
     resetKeybindings: Reset Keybindings
 
     categoryLabels:
@@ -825,7 +798,6 @@ keybindings:
         lockBeltDirection: Enable belt planner
         switchDirectionLockSide: >-
             Planner: Switch side
-
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area
@@ -839,15 +811,10 @@ about:
     title: About this Game
     body: >-
         This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
-
         If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
-
         This game wouldn't have been possible without the great discord community around my games - You should really join the <a href="<discordlink>" target="_blank">discord server</a>!<br><br>
-
         The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
-
         Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions this game would never have existed.
-
 changelog:
     title: Changelog
 
@@ -860,3 +827,6 @@ demo:
         exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Not available in the demo.
+
+
+
