@@ -278,10 +278,10 @@ ingame:
         placeBuilding: Col·locar edifici
         createMarker: Crear marcador
         delete: Esborrar
-        pasteLastBlueprint: Pegar últim plànol
+        pasteLastBlueprint: Apegar/Enganxar últim plànol
         lockBeltDirection: Activar planificador de cintes
         plannerSwitchSide: Emmirallar plànol
-        cutSelection: Cortar
+        cutSelection: Tallar
         copySelection: Copiar
         clearSelection: Buidar selecció
         pipette: Pipeta
@@ -312,11 +312,11 @@ ingame:
             speed: Velocitat
             range: Distància
             storage: Emmagatzemament
-            oneItemPerSecond: 1 objecte / segon
+            oneItemPerSecond: 1 objecte / s
             itemsPerSecond: <x> objectes / s
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> quadrats
+            tiles: <x> caselles
 
     # The notification when completing a level
     levelCompleteNotification:
@@ -329,7 +329,7 @@ ingame:
     # Notifications on the lower right
     notifications:
         newUpgrade: Una nova millora està disponible!
-        gameSaved: La teua partida s'ha guardat.
+        gameSaved: La teva/ua partida s'ha guardat.
 
     # The "Upgrades" window
     shop:
@@ -350,14 +350,14 @@ ingame:
         dataSources:
             stored:
                 title: Emmagatzemat
-                description: Mostrant la quantitat de formes emmagatzemades en el teu edifici central.
+                description: Mostrant la quantitat de figures emmagatzemades en el teu edifici central.
             produced:
                 title: Produit
-                description: Mostrant totes les formes que la teva/teua fàbrica sencera produeix. Incluïnt productes intermijos.
+                description: Mostra la producció total de figures de la fàbrica, incluïnt productes intermijos.
             delivered:
                 title: Enviats
-                description: Mostrants formes que són enviades a l'edifici central.
-        noShapesProduced: Ninguna forma s'ha produit fins ara.
+                description: Mostra les figures que són enviades a l'edifici central.
+        noShapesProduced: Ninguna figura s'ha produit fins ara.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / m
@@ -388,8 +388,8 @@ ingame:
     waypoints:
         waypoints: Marcadors
         hub: NEXE
-        description: Fes clic esquerre en un marcador per botar-ne a ell. Fes clic dret per esborrarlo.<br><br>Pressiona <keybinding> per a crear un marcador des de la vista actual, o fes <strong>clic dret</strong> per a crear un marcador en el punt seleccionat.
-        creationSuccessNotification: Un marcador s'ha creat.
+        description: Fes clic esquerre en un marcador per desplaçar-se cap a ell. Fes clic dret per esborrar-lo. <br><br>Pressiona <keybinding> per a crear un marcador des de la vista actual, o fes <strong>clic dret</strong> per a crear un marcador en el punt seleccionat.
+        creationSuccessNotification: S'ha creat un marcador .
 
     # Shape viewer
     shapeViewer:
@@ -401,11 +401,11 @@ ingame:
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Col·loca un <strong>extractor</strong> damunt d'una <strong>forma circular</strong> per extraure-la!
+            1_1_extractor: Col·loca un <strong>extractor</strong> damunt d'una <strong>figura circular</strong> per extraure-la!
             1_2_conveyor: >-
                 Connecta l'extractor a la <strong>cinta transportadora</strong> cap al teu nexe!<br><br>Pista: Pots <strong>clicar i arrossegar</strong> la cinta transportadora amb el teu ratolí!
             1_3_expand: >-
-                Açò <strong>NO</strong> es un joc un joc d'espera! Contrueix més extractors i cintes per a completar l'objectiu més ràpidament.<br><br>Pista: Manté pressionat <strong>SHIFT</strong> per a col·locar més extractors, i utilitza <strong>R</strong> per a rotar-los.
+                Açò/ixò <strong>NO</strong> no és un joc d'espera! Contrueix més extractors i cintes per a completar l'objectiu més ràpidament.<br><br>Pista: Manté pressionat <strong>SHIFT</strong> per a col·locar més extractors, i utilitza <strong>R</strong> per a rotar-los.
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -415,7 +415,7 @@ shopUpgrades:
         name: Extracció
         description: Velocitat x<currentMult> → x<newMult>
     processors:
-        name: Cortar, Rotar i Apilar
+        name: Tallar, Rotar i Apilar
         description: Velocitat x<currentMult> → x<newMult>
     painting:
         name: Mesclar i Pintar
@@ -441,25 +441,25 @@ buildings:
     miner: # Internal name for the Extractor
         default:
             name: &miner Extractor
-            description: Posa-ho damunt d'una forma o color per extraure-lo.
+            description: Posa-ho damunt d'una font de figures o colors per extraure'ls.
 
         chainable:
             name: Extractor (Cadena)
-            description: Posa-ho damunt d'una forma o color per extraure-lo. Pot ser encadenat!
+            description: Posa-ho damunt d'una font de figures o colors per extraure'ls. Pot ser encadenat!
 
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Túnel
-            description: Permet transportar recursos per davall d'edificis i cintes.
+            description: Permet transportar recursos per sota d'edificis i cintes.
 
         tier2:
             name: Tunnel Tier II
-            description: Permet transportar recursos per davall d'edificis i cintes.
+            description: Permet transportar recursos per sota d'edificis i cintes.
 
     splitter: # Internal name for the Balancer
         default:
             name: &splitter Distribuidor
-            description: Multifuncional - Distribueix les entrades i salides equitativament.
+            description: Multifuncional - Distribueix les entrades i sortides equitativament.
 
         compact:
             name: Fusionador (compacte)
@@ -471,16 +471,16 @@ buildings:
 
     cutter:
         default:
-            name: &cutter Cortador
-            description: Corta formes de dalt a baix i produeix les dues meitats. <strong>Si utilitzes sols una part, assegura't de destruir l'altra o es pararà!</strong>
+            name: &cutter Cisalla
+            description: Talla figures de dalt a baix i produeix les dues meitats. <strong>Si utilitzes sols una part, assegura't de destruir l'altra o es pararà!</strong>
         quad:
-            name: Cortador (Quàdruple)
-            description: Corta formes en quatre parts. <strong>Si no utilitzes totes les parts, assegura't de destruir les altres o es pararà!</strong>
+            name: Cisalla (Quàdruple)
+            description: Talla figures en quatre parts. <strong>Si no utilitzes totes les parts, assegura't de destruir les altres o es pararà!</strong>
 
     advanced_processor:
         default:
             name: &advanced_processor Processador avançat
-            description: Processament de formes avançat.
+            description: Processament de figures avançat.
 
     rotater:
         default:
@@ -493,7 +493,7 @@ buildings:
     stacker:
         default:
             name: &stacker Apilador
-            description: Apila ambdós objectes. Si no poden ser fusionats, l'objecte de la dreta es posarà damunt del de l'esquerra.
+            description: Fusiona o apila ambdós figures. Si no poden ser fusionats, l'objecte de la dreta es posarà damunt del de l'esquerra.
 
     mixer:
         default:
@@ -503,22 +503,22 @@ buildings:
     painter:
         default:
             name: &painter Pintor
-            description: Pinta la forma sencera de l'esquerra amb el color de l'entrada de dalt.
+            description: Pinta la figura sencera de l'esquerra amb el color de l'entrada de dalt.
 
         mirrored:
-            name: *painter
-            description: Pinta la forma sencera de l'esquerra amb el color de l'entrada de baix.
+            name: Pintor
+            description: Pinta la figura sencera de l'esquerra amb el color de l'entrada de baix.
 
         double:
             name: Pintor (Doble)
-            description: Pinta les formes de l'esquerra amb el color de dalt.
+            description: Pinta les figures de l'esquerra amb el color de dalt.
         quad:
             name: Pintor (Quàdruple)
             description: Permet pintar cadascun dels quadrants de forma diferent.
 
     trash:
         default:
-            name: &trash Fem
+            name: &trash Fem/Brossa
             description: Acepta objectes de tots els costats i els destrueix. Permanentment.
 
         storage:
@@ -533,25 +533,26 @@ buildings:
 
         default:
             name: &energy_generator Generador d'energia
-            description: Genera energia consumint formes. Cada generador requereix una forma distinta.
+            description: Genera energia consumint figures. Cada generador requereix una figura diferent.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Tallant figures
+        desc: Acabes de desbloquejar la <strong>Cisalla</strong> - talla les figures per la meitat <strong>de dalt a baix</strong> sense importar la seva orientació!<br><br>Assegura't d'eliminar les parts que no haguis d'utilitzar, sinò <strong>es pararà</strong> - Es per això que t'he donat una fem/brossa, utilitza-la!
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Rotant
+        desc: El <strong>Rotador</strong> s'ha desbloquejat! Rota formes en sentit horari 90 graus.
 
     reward_painter:
-        title: Painting
+        title: Pintor
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            El <strong>Pintor</strong> s'ha desbloquejat! - Extreu mena de color (de la mateixa forma que les figures) i pinta les figures amb el pintor!<br><br> - Si ets daltònic, pots activar <strong>l'opció per daltònics</strong> en les opcions!
+    
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: Mesclador de colors
+        desc: El <strong>Mesclador de colors</strong> s'ha desbloquejat! - Combina dos colors utilitzant <strong>la mescla additiba</strong> amb aquest edifici!
 
     reward_stacker:
         title: Combiner
