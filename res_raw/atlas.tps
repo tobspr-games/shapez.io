@@ -381,6 +381,27 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/blueprints/advanced_processor.png</key>
+            <key type="filename">sprites/blueprints/energy_generator.png</key>
+            <key type="filename">sprites/blueprints/painter-double.png</key>
+            <key type="filename">sprites/blueprints/trash-storage.png</key>
+            <key type="filename">sprites/buildings/advanced_processor.png</key>
+            <key type="filename">sprites/buildings/energy_generator.png</key>
+            <key type="filename">sprites/buildings/painter-double.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>96,96,192,192</rect>
+                <key>scale9Paddings</key>
+                <rect>96,96,192,192</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">sprites/blueprints/cutter-quad.png</key>
             <key type="filename">sprites/blueprints/painter-quad.png</key>
             <key type="filename">sprites/buildings/cutter-quad.png</key>
@@ -417,25 +438,6 @@
                 <rect>96,48,192,96</rect>
                 <key>scale9Paddings</key>
                 <rect>96,48,192,96</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/blueprints/energy_generator.png</key>
-            <key type="filename">sprites/blueprints/painter-double.png</key>
-            <key type="filename">sprites/blueprints/trash-storage.png</key>
-            <key type="filename">sprites/buildings/energy_generator.png</key>
-            <key type="filename">sprites/buildings/painter-double.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>96,96,192,192</rect>
-                <key>scale9Paddings</key>
-                <rect>96,96,192,192</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -589,6 +591,10 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/wires/battery_empty.png</key>
+            <key type="filename">sprites/wires/battery_full.png</key>
+            <key type="filename">sprites/wires/battery_low.png</key>
+            <key type="filename">sprites/wires/battery_medium.png</key>
             <key type="filename">sprites/wires/negative_energy.png</key>
             <key type="filename">sprites/wires/positive_energy.png</key>
             <struct type="IndividualSpriteSettings">

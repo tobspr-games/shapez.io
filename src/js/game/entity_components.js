@@ -12,6 +12,7 @@ import { HubComponent } from "./components/hub";
 import { StorageComponent } from "./components/storage";
 import { EnergyGeneratorComponent } from "./components/energy_generator";
 import { WiredPinsComponent } from "./components/wired_pins";
+import { EnergyConsumerComponent } from "./components/energy_consumer";
 /* typehints:end */
 
 /**
@@ -60,6 +61,9 @@ export class EntityComponentStorage {
 
         /** @type {WiredPinsComponent} */
         this.WiredPins;
+
+        /** @type {EnergyConsumerComponent} */
+        this.EnergyConsumer;
 
         /* typehints:end */
     }

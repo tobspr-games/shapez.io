@@ -3,7 +3,7 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { enumDirectionToVector, Vector } from "../../core/vector";
-import { BaseItem } from "../base_item";
+import { BaseItem, enumItemType, enumItemTypeToLayer } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -257,6 +257,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         // TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
         // Also its just a few cases (hope it stays like this .. :x).
 
+        const itemLayer = enumItemTypeToLayer[item.getItemType()];
+
         const beltComp = receiver.components.Belt;
         if (beltComp) {
             const path = beltComp.assignedPath;
@@ -268,14 +270,27 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             return false;
         }
 
-        const itemProcessorComp = receiver.components.ItemProcessor;
-        if (itemProcessorComp) {
-            // Its an item processor ..
-            if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
+        const energyConsumerComp = receiver.components.EnergyConsumer;
+        if (energyConsumerComp) {
+            if (energyConsumerComp.tryAcceptItem(item, slotIndex)) {
+                // All good
                 return true;
             }
-            // Item processor can have nothing else
-            return false;
+
+            // Energy consumer can have more components
+        }
+
+        const itemProcessorComp = receiver.components.ItemProcessor;
+        if (itemProcessorComp) {
+            // Make sure its the same layer
+            if (itemLayer === receiver.layer) {
+                // Its an item processor ..
+                if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
+                    return true;
+                }
+                // Item processor can have nothing else
+                return false;
+            }
         }
 
         const undergroundBeltComp = receiver.components.UndergroundBelt;

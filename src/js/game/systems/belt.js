@@ -546,7 +546,6 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        parameters.context.globalAlpha = 0.5;
         const contents = chunk.wireContents;
         for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
             for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
@@ -564,7 +563,6 @@ export class BeltSystem extends GameSystemWithFilter {
                 }
             }
         }
-        parameters.context.globalAlpha = 1;
     }
 
     /**

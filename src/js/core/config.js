@@ -45,7 +45,7 @@ export const globalConfig = {
 
     // Map
     mapChunkSize: 16,
-    mapChunkPrerenderMinZoom: 1.15,
+    mapChunkPrerenderMinZoom: 0.7,
     mapChunkOverviewMinZoom: 0.7,
 
     // Belt speeds
@@ -72,7 +72,7 @@ export const globalConfig = {
         painterQuad: 1 / 8,
         mixer: 1 / 5,
         stacker: 1 / 6,
-        advancedProcessor: 1 / 15,
+        advancedProcessor: 1 / 6,
     },
 
     // Zooming

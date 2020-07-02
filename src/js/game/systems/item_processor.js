@@ -75,7 +75,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // Check if we have an empty queue and can start a new charge
             if (processorComp.itemsToEject.length === 0) {
                 if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
-                    this.startNewCharge(entity);
+                    const energyConsumerComp = entity.components.EnergyConsumer;
+                    if (energyConsumerComp) {
+                        // Check if we have enough energy
+                        if (energyConsumerComp.tryStartNextCharge()) {
+                            this.startNewCharge(entity);
+                        }
+                    } else {
+                        // No further checks required
+                        this.startNewCharge(entity);
+                    }
                 }
             }
         }
@@ -339,10 +348,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // ADVANCED PROCESSING
 
             case enumItemProcessorTypes.advancedProcessor: {
-                // TODO
+                const shapeItem = /** @type {ShapeItem} */ (items[0].item);
+                const newItem = this.root.shapeDefinitionMgr.shapeActionInvertColors(shapeItem.definition);
 
-                entity.components.ItemEjector.tryEject(1, NEGATIVE_ENERGY_ITEM_SINGLETON);
-
+                outItems.push({
+                    item: new ShapeItem(newItem),
+                    requiredSlot: 0,
+                });
                 break;
             }
 

@@ -156,7 +156,7 @@ export const tutorialGoals = [
 
     // 17
     {
-        shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two varinats)
+        shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two variants)
         required: 120000,
         reward: enumHubGoalRewards.reward_painter_quad,
     },

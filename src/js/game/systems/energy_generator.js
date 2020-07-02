@@ -1,7 +1,7 @@
 import { DrawParameters } from "../../core/draw_parameters";
 import { formatBigNumber } from "../../core/utils";
 import { T } from "../../translations";
-import { EnergyGeneratorComponent, ENERGY_GENERATOR_EJECT_SLOT } from "../components/energy_generator";
+import { EnergyGeneratorComponent } from "../components/energy_generator";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { POSITIVE_ENERGY_ITEM_SINGLETON } from "../items/positive_energy_item";
@@ -36,7 +36,8 @@ export class EnergyGeneratorSystem extends GameSystemWithFilter {
             }
 
             if (energyGenComp.itemsInQueue > 0) {
-                if (ejectorComp.tryEject(ENERGY_GENERATOR_EJECT_SLOT, POSITIVE_ENERGY_ITEM_SINGLETON)) {
+                // FIXME: Find slot dynamically
+                if (ejectorComp.tryEject(0, POSITIVE_ENERGY_ITEM_SINGLETON)) {
                     energyGenComp.itemsInQueue -= 1;
                 }
             }

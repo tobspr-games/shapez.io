@@ -301,6 +301,7 @@ ingame:
         purple: Purple
         cyan: Cyan
         white: White
+        black: Black
         uncolored: No color
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
