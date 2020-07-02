@@ -268,6 +268,11 @@ dialogs:
         title: Export screenshot
         desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
 
+    buyFullVersion:
+        title: Enjoy the game?
+        desc: >-
+            You are already playing the demo for <minutes> minutes! Please get the standalone on steam for all features and to support me!<br><br>PS: It has a dark mode, and you can import your savegame to continue where you left! :P
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation

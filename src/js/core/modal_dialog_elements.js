@@ -151,6 +151,7 @@ export class Dialog {
 
                 const params = (rawParams || "").split("/");
                 const useTimeout = params.indexOf("timeout") >= 0;
+                const useTimeoutSlow = params.indexOf("timeoutSlow") >= 0;
 
                 const isEnter = params.indexOf("enter") >= 0;
                 const isEscape = params.indexOf("escape") >= 0;
@@ -167,6 +168,16 @@ export class Dialog {
                     }, 5000);
                     this.timeouts.push(timeout);
                 }
+
+                if (useTimeoutSlow) {
+                    button.classList.add("timedButtonSlow");
+                    const timeout = setTimeout(() => {
+                        button.classList.remove("timedButtonSlow");
+                        arrayDeleteValue(this.timeouts, timeout);
+                    }, 10000);
+                    this.timeouts.push(timeout);
+                }
+
                 if (isEnter || isEscape) {
                     // if (this.app.settings.getShowKeyboardShortcuts()) {
                     // Show keybinding

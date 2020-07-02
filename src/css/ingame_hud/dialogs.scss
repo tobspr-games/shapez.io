@@ -199,7 +199,8 @@
                     color: #fff;
                 }
 
-                &.timedButton {
+                &.timedButton,
+                &.timedButtonSlow {
                     pointer-events: none;
                     cursor: default;
                     position: relative;
@@ -214,13 +215,27 @@
                         content: " ";
                         display: inline-block;
                         background: rgba(#fff, 0.6);
-                        @include InlineAnimation(5s linear) {
-                            0% {
-                                width: 100%;
-                            }
-                            100% {
-                                width: 0%;
-                            }
+                    }
+                }
+
+                &.timedButton::after {
+                    @include InlineAnimation(5s linear) {
+                        0% {
+                            width: 100%;
+                        }
+                        100% {
+                            width: 0%;
+                        }
+                    }
+                }
+
+                &.timedButtonSlow::after {
+                    @include InlineAnimation(10s linear) {
+                        0% {
+                            width: 100%;
+                        }
+                        100% {
+                            width: 0%;
                         }
                     }
                 }

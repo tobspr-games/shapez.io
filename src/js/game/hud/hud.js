@@ -38,6 +38,7 @@ import { HUDColorBlindHelper } from "./parts/color_blind_helper";
 import { HUDShapeViewer } from "./parts/shape_viewer";
 import { HUDWiresOverlay } from "./parts/wires_overlay";
 import { HUDChangesDebugger } from "./parts/debug_changes";
+import { HUDStandaloneReminder } from "./parts/standalone_reminder";
 
 export class GameHUD {
     /**
@@ -103,6 +104,7 @@ export class GameHUD {
 
         if (IS_DEMO) {
             this.parts.watermark = new HUDWatermark(this.root);
+            this.parts.standaloneReminder = new HUDStandaloneReminder(this.root);
         }
 
         if (G_IS_DEV && globalConfig.debug.renderChanges) {
