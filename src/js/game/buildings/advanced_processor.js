@@ -103,6 +103,7 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
                         directions: [enumDirection.top],
                         filter: enumItemType.positiveEnergy,
                         layer: enumLayer.wires,
+                        processor: "EnergyConsumer",
                     },
                 ],
             })

@@ -267,23 +267,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
         }
 
-        // Try figuring out how what to do with the item
-        // TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
-        // Also its just a few cases (hope it stays like this .. :x).
-        const slotIndex = slot.index;
-
-        const itemLayer = enumItemTypeToLayer[item.getItemType()];
-
-        const energyConsumerComp = receiver.components.EnergyConsumer;
-        if (energyConsumerComp) {
-            if (energyConsumerComp.tryAcceptItem(item, slotIndex)) {
-                // All good
-                return true;
-            }
-
-            // Energy consumer can have more components
-        }
-
         return false;
     }
 

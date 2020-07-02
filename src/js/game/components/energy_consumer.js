@@ -60,6 +60,21 @@ export class EnergyConsumerComponent extends Component {
     }
 
     /**
+     *
+     * @param {BaseItem} item
+     * @param {number} slot
+     */
+    tryTakeItem(item, slot) {
+        if (this.tryAcceptItem(item, slot)) {
+            // All good
+            return true;
+        }
+
+        // Energy consumer can have more components
+        return false;
+    }
+
+    /**
      * Tries to accept a given item
      * @param {BaseItem} item
      * @param {number} slotIndex
