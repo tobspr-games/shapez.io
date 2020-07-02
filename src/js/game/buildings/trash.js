@@ -127,6 +127,7 @@ export class MetaTrashBuilding extends MetaBuilding {
                             enumDirection.bottom,
                             enumDirection.left,
                         ],
+                        processor: "ItemProcessor",
                     },
                 ]);
                 entity.components.ItemEjector.setSlots([]);

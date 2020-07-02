@@ -115,10 +115,12 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
+                        processor: "ItemProcessor",
                     },
                 ]);
 
@@ -140,6 +142,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(0, 0),
@@ -148,6 +151,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                                 ? enumDirection.left
                                 : enumDirection.right,
                         ],
+                        processor: "ItemProcessor",
                     },
                 ]);
 

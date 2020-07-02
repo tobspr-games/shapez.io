@@ -78,6 +78,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
                 ],
             })

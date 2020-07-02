@@ -95,6 +95,7 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.left],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
 
                     {

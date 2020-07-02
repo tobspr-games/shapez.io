@@ -64,11 +64,13 @@ export class MetaStackerBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
                 ],
             })

@@ -55,11 +55,13 @@ export class MetaEnergyGenerator extends MetaBuilding {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.shape,
+                        processor: "EnergyGenerator",
                     },
                     {
                         pos: new Vector(1, 1),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.shape,
+                        processor: "EnergyGenerator",
                     },
                     {
                         pos: new Vector(1, 0),

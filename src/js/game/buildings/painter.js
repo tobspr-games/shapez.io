@@ -99,11 +99,13 @@ export class MetaPainterBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.top],
                         filter: enumItemType.color,
+                        processor: "ItemProcessor",
                     },
                 ],
             })

@@ -295,19 +295,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             // Energy consumer can have more components
         }
 
-        const itemProcessorComp = receiver.components.ItemProcessor;
-        if (itemProcessorComp) {
-            // Make sure its the same layer
-            if (itemLayer === receiver.layer) {
-                // Its an item processor ..
-                if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
-                    return true;
-                }
-                // Item processor can have nothing else
-                return false;
-            }
-        }
-
         const undergroundBeltComp = receiver.components.UndergroundBelt;
         if (undergroundBeltComp) {
             // Its an underground belt. yay.
@@ -333,17 +320,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
 
             // Storage can't have anything else
-            return false;
-        }
-
-        const energyGeneratorComp = receiver.components.EnergyGenerator;
-        if (energyGeneratorComp) {
-            if (energyGeneratorComp.tryTakeItem(item, slotIndex)) {
-                // Passed it over
-                return true;
-            }
-
-            // Energy generator comp can't have anything else
             return false;
         }
 
