@@ -147,10 +147,12 @@ export class MetaTrashBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.bottom],
+                        processor: "Storage",
                     },
                     {
                         pos: new Vector(1, 1),
                         directions: [enumDirection.bottom],
+                        processor: "Storage",
                     },
                 ]);
 

@@ -311,18 +311,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             return false;
         }
 
-        const storageComp = receiver.components.Storage;
-        if (storageComp) {
-            // It's a storage
-            if (storageComp.canAcceptItem(item)) {
-                storageComp.takeItem(item);
-                return true;
-            }
-
-            // Storage can't have anything else
-            return false;
-        }
-
         return false;
     }
 

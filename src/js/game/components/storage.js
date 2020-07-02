@@ -49,6 +49,20 @@ export class StorageComponent extends Component {
     }
 
     /**
+     *
+     * @param {BaseItem} item
+     * @param {number} slot
+     */
+    tryTakeItem(item, slot) {
+        if (this.canAcceptItem(item)) {
+            this.takeItem(item);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Returns whether this storage can accept the item
      * @param {BaseItem} item
      */
