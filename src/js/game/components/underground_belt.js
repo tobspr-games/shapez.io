@@ -71,6 +71,21 @@ export class UndergroundBeltComponent extends Component {
     }
 
     /**
+     *
+     * @param {BaseItem} item
+     * @param {number} slot
+     */
+    tryTakeItem(item, slot) {
+        // Its an underground belt. yay.
+        if (this.tryAcceptExternalItem(item, 0)) {
+            return true;
+        }
+
+        // Underground belt can have nothing else
+        return false;
+    }
+
+    /**
      * Tries to accept an item from an external source like a regular belt or building
      * @param {BaseItem} item
      * @param {number} beltSpeed How fast this item travels

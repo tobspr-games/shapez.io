@@ -214,6 +214,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
+                        processor: "UndergroundBelt",
                     },
                 ]);
                 return;

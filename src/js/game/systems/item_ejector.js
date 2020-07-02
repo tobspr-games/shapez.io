@@ -295,22 +295,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             // Energy consumer can have more components
         }
 
-        const undergroundBeltComp = receiver.components.UndergroundBelt;
-        if (undergroundBeltComp) {
-            // Its an underground belt. yay.
-            if (
-                undergroundBeltComp.tryAcceptExternalItem(
-                    item,
-                    this.root.hubGoals.getUndergroundBeltBaseSpeed()
-                )
-            ) {
-                return true;
-            }
-
-            // Underground belt can have nothing else
-            return false;
-        }
-
         return false;
     }
 
