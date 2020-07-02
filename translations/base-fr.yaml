@@ -264,7 +264,7 @@ dialogs:
         desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci </strong> d'une forme (Que vous pouvez générer <a href="https://viewer.shapez.io" target="_blank">ici</a>)
 
     markerDemoLimit:
-        desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez !
+        desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire autant que vous voulez !
 
     exportScreenshotWarning:
         title: Exporter une capture d'écran
