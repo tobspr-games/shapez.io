@@ -1202,7 +1202,7 @@
 },
 "sprites/misc/lock_direction_indicator.png":
 {
-	"frame": {"x":65,"y":1873,"w":48,"h":30},
+	"frame": {"x":1570,"y":1661,"w":48,"h":30},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":9,"w":48,"h":30},
@@ -1258,7 +1258,7 @@
 },
 "sprites/wires/battery_full.png":
 {
-	"frame": {"x":3,"y":1873,"w":58,"h":38},
+	"frame": {"x":1508,"y":1661,"w":58,"h":38},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":3,"y":14,"w":58,"h":38},
@@ -1266,7 +1266,7 @@
 },
 "sprites/wires/battery_low.png":
 {
-	"frame": {"x":1508,"y":1661,"w":58,"h":38},
+	"frame": {"x":2548,"y":1172,"w":58,"h":38},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":3,"y":14,"w":58,"h":38},
@@ -1274,7 +1274,7 @@
 },
 "sprites/wires/battery_medium.png":
 {
-	"frame": {"x":2548,"y":1172,"w":58,"h":38},
+	"frame": {"x":65,"y":1873,"w":58,"h":38},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":3,"y":14,"w":58,"h":38},
@@ -1327,6 +1327,14 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":11,"w":42,"h":42},
 	"sourceSize": {"w":64,"h":64}
+},
+"sprites/wires/waste_piled.png":
+{
+	"frame": {"x":3,"y":1873,"w":58,"h":55},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":4,"w":58,"h":55},
+	"sourceSize": {"w":64,"h":64}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -1335,6 +1343,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2764,"h":1933},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e8c413f60f96b12d878fb0fbf75d98e6:c8ebf93da8392443efe79b5d6c6bcd32:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1caa58cc124d4a31029319d973957f35:dac5f0c449de47bf040f30c87841ea79:f159918d23e5952766c6d23ab52278c6$"
 }
 }

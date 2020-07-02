@@ -65,8 +65,10 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
         entity.addComponent(
             new EnergyConsumerComponent({
                 bufferSize: 3,
-                perCharge: 1,
+                perCharge: 0.25,
                 batteryPosition: new Vector(4, 6.5),
+                acceptorSlotIndex: 1,
+                ejectorSlotIndex: 1,
             })
         );
 
@@ -90,7 +92,7 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
             new ItemAcceptorComponent({
                 slots: [
                     {
-                        pos: new Vector(0, 0),
+                        pos: new Vector(0, 1),
                         directions: [enumDirection.left],
                         filter: enumItemType.shape,
                     },

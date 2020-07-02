@@ -1162,7 +1162,7 @@
 },
 "sprites/map_overview/belt_forward.png":
 {
-	"frame": {"x":1139,"y":1427,"w":20,"h":24},
+	"frame": {"x":1863,"y":1089,"w":20,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":20,"h":24},
@@ -1202,7 +1202,7 @@
 },
 "sprites/misc/lock_direction_indicator.png":
 {
-	"frame": {"x":1956,"y":490,"w":36,"h":24},
+	"frame": {"x":1139,"y":1427,"w":36,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":6,"w":36,"h":24},
@@ -1234,7 +1234,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":1863,"y":1089,"w":20,"h":24},
+	"frame": {"x":796,"y":1478,"w":20,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":20,"h":24},
@@ -1258,7 +1258,7 @@
 },
 "sprites/wires/battery_full.png":
 {
-	"frame": {"x":1483,"y":569,"w":44,"h":30},
+	"frame": {"x":1483,"y":616,"w":44,"h":30},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":10,"w":44,"h":30},
@@ -1266,7 +1266,7 @@
 },
 "sprites/wires/battery_low.png":
 {
-	"frame": {"x":1483,"y":603,"w":44,"h":30},
+	"frame": {"x":1708,"y":621,"w":44,"h":30},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":10,"w":44,"h":30},
@@ -1274,7 +1274,7 @@
 },
 "sprites/wires/battery_medium.png":
 {
-	"frame": {"x":1708,"y":621,"w":44,"h":30},
+	"frame": {"x":1956,"y":490,"w":44,"h":30},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":10,"w":44,"h":30},
@@ -1327,6 +1327,14 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":8,"w":32,"h":32},
 	"sourceSize": {"w":48,"h":48}
+},
+"sprites/wires/waste_piled.png":
+{
+	"frame": {"x":1483,"y":569,"w":44,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":44,"h":43},
+	"sourceSize": {"w":48,"h":48}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -1335,6 +1343,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2035,"h":1506},
 	"scale": "0.75",
-	"smartupdate": "$TexturePacker:SmartUpdate:e8c413f60f96b12d878fb0fbf75d98e6:c8ebf93da8392443efe79b5d6c6bcd32:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1caa58cc124d4a31029319d973957f35:dac5f0c449de47bf040f30c87841ea79:f159918d23e5952766c6d23ab52278c6$"
 }
 }

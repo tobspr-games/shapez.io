@@ -1146,7 +1146,7 @@
 },
 "sprites/debug/acceptor_slot.png":
 {
-	"frame": {"x":336,"y":464,"w":14,"h":16},
+	"frame": {"x":404,"y":453,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":14,"h":16},
@@ -1154,7 +1154,7 @@
 },
 "sprites/debug/ejector_slot.png":
 {
-	"frame": {"x":482,"y":450,"w":14,"h":16},
+	"frame": {"x":422,"y":453,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":14,"h":16},
@@ -1162,7 +1162,7 @@
 },
 "sprites/map_overview/belt_forward.png":
 {
-	"frame": {"x":241,"y":311,"w":8,"h":8},
+	"frame": {"x":798,"y":193,"w":8,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
@@ -1170,7 +1170,7 @@
 },
 "sprites/map_overview/belt_left.png":
 {
-	"frame": {"x":794,"y":193,"w":8,"h":8},
+	"frame": {"x":798,"y":205,"w":8,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
@@ -1178,7 +1178,7 @@
 },
 "sprites/map_overview/belt_right.png":
 {
-	"frame": {"x":241,"y":323,"w":8,"h":8},
+	"frame": {"x":241,"y":311,"w":8,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
@@ -1194,7 +1194,7 @@
 },
 "sprites/misc/hub_direction_indicator.png":
 {
-	"frame": {"x":565,"y":467,"w":8,"h":8},
+	"frame": {"x":356,"y":464,"w":8,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
@@ -1202,7 +1202,7 @@
 },
 "sprites/misc/lock_direction_indicator.png":
 {
-	"frame": {"x":778,"y":193,"w":12,"h":10},
+	"frame": {"x":581,"y":467,"w":12,"h":10},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":12,"h":10},
@@ -1234,7 +1234,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":577,"y":467,"w":8,"h":8},
+	"frame": {"x":241,"y":323,"w":8,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
@@ -1250,7 +1250,7 @@
 },
 "sprites/wires/battery_empty.png":
 {
-	"frame": {"x":354,"y":464,"w":12,"h":16},
+	"frame": {"x":440,"y":453,"w":12,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":12,"h":16},
@@ -1258,7 +1258,7 @@
 },
 "sprites/wires/battery_full.png":
 {
-	"frame": {"x":370,"y":468,"w":16,"h":12},
+	"frame": {"x":280,"y":430,"w":16,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":2,"w":16,"h":12},
@@ -1266,7 +1266,7 @@
 },
 "sprites/wires/battery_low.png":
 {
-	"frame": {"x":280,"y":430,"w":16,"h":12},
+	"frame": {"x":300,"y":430,"w":16,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":2,"w":16,"h":12},
@@ -1274,7 +1274,7 @@
 },
 "sprites/wires/battery_medium.png":
 {
-	"frame": {"x":300,"y":430,"w":16,"h":12},
+	"frame": {"x":778,"y":193,"w":16,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":2,"w":16,"h":12},
@@ -1322,10 +1322,18 @@
 },
 "sprites/wires/positive_energy.png":
 {
-	"frame": {"x":390,"y":468,"w":12,"h":12},
+	"frame": {"x":565,"y":467,"w":12,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":2,"w":12,"h":12},
+	"sourceSize": {"w":16,"h":16}
+},
+"sprites/wires/waste_piled.png":
+{
+	"frame": {"x":336,"y":464,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
 	"sourceSize": {"w":16,"h":16}
 }},
 "meta": {
@@ -1335,6 +1343,6 @@
 	"format": "RGBA8888",
 	"size": {"w":809,"h":484},
 	"scale": "0.25",
-	"smartupdate": "$TexturePacker:SmartUpdate:e8c413f60f96b12d878fb0fbf75d98e6:c8ebf93da8392443efe79b5d6c6bcd32:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1caa58cc124d4a31029319d973957f35:dac5f0c449de47bf040f30c87841ea79:f159918d23e5952766c6d23ab52278c6$"
 }
 }
