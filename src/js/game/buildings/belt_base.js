@@ -60,6 +60,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
                         layer: this.getLayer(),
+                        processor: "Belt",
                     },
                 ],
                 animated: false,

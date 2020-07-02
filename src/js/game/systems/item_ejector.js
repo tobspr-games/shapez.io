@@ -274,17 +274,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
         const itemLayer = enumItemTypeToLayer[item.getItemType()];
 
-        const beltComp = receiver.components.Belt;
-        if (beltComp) {
-            const path = beltComp.assignedPath;
-            assert(path, "belt has no path");
-            if (path.tryAcceptItem(item)) {
-                return true;
-            }
-            // Belt can have nothing else
-            return false;
-        }
-
         const energyConsumerComp = receiver.components.EnergyConsumer;
         if (energyConsumerComp) {
             if (energyConsumerComp.tryAcceptItem(item, slotIndex)) {

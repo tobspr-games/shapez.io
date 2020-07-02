@@ -4,6 +4,7 @@ import { BeltPath } from "../belt_path";
 import { Component } from "../component";
 import { Entity } from "../entity";
 import { enumLayer } from "../root";
+import { BaseItem } from "../base_item";
 
 export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 
@@ -117,5 +118,20 @@ export class BeltComponent extends Component {
                 }
             }
         }
+    }
+
+    /**
+     *
+     * @param {BaseItem} item
+     * @param {number} slot
+     */
+    tryTakeItem(item, slot) {
+        const path = this.assignedPath;
+        assert(path, "belt has no path");
+        if (path.tryAcceptItem(item)) {
+            return true;
+        }
+        // Belt can have nothing else
+        return false;
     }
 }
