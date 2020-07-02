@@ -127,6 +127,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(1, 0),
@@ -134,6 +135,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                             variant === defaultBuildingVariant ? enumDirection.top : enumDirection.bottom,
                         ],
                         filter: enumItemType.color,
+                        processor: "ItemProcessor",
                     },
                 ]);
 
@@ -150,16 +152,19 @@ export class MetaPainterBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.left],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.top],
                         filter: enumItemType.color,
+                        processor: "ItemProcessor",
                     },
                 ]);
 
@@ -177,26 +182,31 @@ export class MetaPainterBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
                         filter: enumItemType.shape,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.color,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.color,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(2, 0),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.color,
+                        processor: "ItemProcessor",
                     },
                     {
                         pos: new Vector(3, 0),
                         directions: [enumDirection.bottom],
                         filter: enumItemType.color,
+                        processor: "ItemProcessor",
                     },
                 ]);
 
