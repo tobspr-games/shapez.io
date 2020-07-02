@@ -16,7 +16,7 @@ import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
 import { HUDShop } from "./parts/shop";
-import { IS_MOBILE, globalConfig, IS_DEMO } from "../../core/config";
+import { IS_MOBILE, globalConfig, IS_DEMO, IS_MAC } from "../../core/config";
 import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
@@ -104,6 +104,9 @@ export class GameHUD {
 
         if (IS_DEMO) {
             this.parts.watermark = new HUDWatermark(this.root);
+        }
+
+        if (IS_DEMO && !IS_MAC) {
             this.parts.standaloneReminder = new HUDStandaloneReminder(this.root);
         }
 

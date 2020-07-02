@@ -14,6 +14,8 @@ export const IS_DEMO = queryParamOptions.fullVersion
 
 export const SUPPORT_TOUCH = false;
 
+export const IS_MAC = navigator.userAgent.toLowerCase().indexOf("mac os x") >= 0;
+
 const smoothCanvas = true;
 
 export const THIRDPARTY_URLS = {
