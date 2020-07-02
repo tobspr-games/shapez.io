@@ -271,7 +271,7 @@ dialogs:
     buyFullVersion:
         title: Enjoying the game?
         desc: >-
-            You are already playing the demo for <minutes> minutes! Please get the standalone on steam for all features and to support me!<br><br>PS: It has a dark mode, and you can import your savegame to continue where you left! :P
+            You have been playing the demo for <minutes> minutes! Please get the standalone on steam for all features and to support me!<br><br>PS: It has a dark mode, and you can import your savegame to continue where you left! :P
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
