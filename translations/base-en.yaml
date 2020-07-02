@@ -32,7 +32,7 @@ steamPage:
 
         shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        Since the demand rises, you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
 
         Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
@@ -142,13 +142,13 @@ mainMenu:
             longDesc: >-
                 To give something back to you, I thought it would be cool to make weekly contests!
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>This week's topic:</strong> Build the coolest base!
                 <br><br>
                 Here's the deal:<br>
                 <ul class="bucketList">
                     <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
                     <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
+                    <li>I will choose 5 screenshots and showcase them to the <strong>discord</strong> community to vote.</li>
                     <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
                     <li>Deadline: 07.06.2020 12:00 AM CEST</li>
                 </ul>
@@ -167,7 +167,7 @@ dialogs:
         restart: Restart
         reset: Reset
         getStandalone: Get Standalone
-        deleteGame: I know what I do
+        deleteGame: I know what I am doing
         viewUpdate: View Update
         showUpgrades: Show Upgrades
         showKeybindings: Show Keybindings
@@ -216,11 +216,11 @@ dialogs:
 
     featureRestriction:
         title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider getting the standalone version for the full experience!
 
     oneSavegameLimit:
         title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone version!
 
     updateSummary:
         title: New update!
@@ -278,19 +278,19 @@ ingame:
         rotateBuilding: Rotate building
         placeMultiple: Place multiple
         reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
+        disableAutoOrientation: Disable auto-orientation
         toggleHud: Toggle HUD
         placeBuilding: Place building
-        createMarker: Create Marker
+        createMarker: Create marker
         delete: Delete
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
         cutSelection: Cut
         copySelection: Copy
-        clearSelection: Clear Selection
+        clearSelection: Clear selection
         pipette: Pipette
-        switchLayers: Switch Layers
+        switchLayers: Switch layers
 
     # Names of the colors, used for the color blind mode
     colors:
@@ -445,7 +445,7 @@ buildings:
     wire:
         default:
             name: &wire Wire
-            description: Allows to transport energy
+            description: Allows you to transport energy
 
     miner: # Internal name for the Extractor
         default:
@@ -459,11 +459,11 @@ buildings:
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            description: Allows you to tunnel resources under buildings and belts.
 
         tier2:
             name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            description: Allows you to tunnel resources under buildings and belts.
 
     splitter: # Internal name for the Balancer
         default:
@@ -497,7 +497,7 @@ buildings:
             description: Rotates shapes clockwise by 90 degrees.
         ccw:
             name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            description: Rotates shapes counter-clockwise by 90 degrees.
 
     stacker:
         default:
@@ -523,7 +523,7 @@ buildings:
             description: Colors the shapes on the left inputs with the color from the top input.
         quad:
             name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            description: Allows you to color each quadrant of the shape with a different color.
 
     trash:
         default:
@@ -542,7 +542,7 @@ buildings:
 
         default:
             name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes. Each energy generator requires a different shapes.
+            description: Generates energy by consuming shapes. Each energy generator requires a different shape.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -557,7 +557,7 @@ storyRewards:
     reward_painter:
         title: Painting
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>colorblind mode</strong> in the settings!
 
     reward_mixer:
         title: Color Mixing
@@ -577,7 +577,7 @@ storyRewards:
 
     reward_rotater_ccw:
         title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows you to rotate shapes counter-clockwise! To build it, select the rotater and <strong>press 'T' to cycle through its variants</strong>!
 
     reward_miner_chainable:
         title: Chaining Extractor
@@ -590,7 +590,7 @@ storyRewards:
     reward_splitter_compact:
         title: Compact Balancer
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
 
     reward_cutter_quad:
         title: Quad Cutting
@@ -602,11 +602,11 @@ storyRewards:
 
     reward_painter_quad:
         title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        desc: You have unlocked a variant of the <strong>painter</strong> - It allows you to paint each part of the shape individually!
 
     reward_storage:
         title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        desc: You have unlocked a variant of the <strong>trash</strong> - It allows you to store items up to a given capacity!
 
     reward_freeplay:
         title: Freeplay
@@ -647,7 +647,7 @@ settings:
         uiScale:
             title: Interface scale
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                Changes the size of the user interface. The interface will still scale based on your device's resolution, but this setting controls the amount of scaling.
             scales:
                 super_small: Super small
                 small: Small
@@ -694,12 +694,12 @@ settings:
         language:
             title: Language
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Change the language. All translations are user-contributed and might be incomplete!
 
         enableColorBlindHelper:
             title: Color Blind Mode
             description: >-
-                Enables various tools which allow to play the game if you are color blind.
+                Enables various tools which allow you to play the game if you are color blind.
 
         fullscreen:
             title: Fullscreen
@@ -737,17 +737,17 @@ settings:
         offerHints:
             title: Hints & Tutorials
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                Whether to offer hints and tutorials while playing. Also hides certain UI elements up to a given level to make it easier to get into the game.
 
         enableTunnelSmartplace:
             title: Smart Tunnels
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables to drag tunnels and excess tunnels will get removed.
+                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables you to drag tunnels and excess tunnels will get removed.
 
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier to read.
+                Enables the vignette, which darkens the screen corners and makes text easier to read.
 
         rotationByBuilding:
             title: Rotation by building type
@@ -762,7 +762,7 @@ settings:
         disableCutDeleteWarnings:
             title: Disable Cut/Delete Warnings
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100 entities.
+                Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
 
 keybindings:
     title: Keybindings
@@ -847,7 +847,7 @@ about:
 
         The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
 
-        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions this game would never have existed.
+        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions, this game would never have existed.
 
 changelog:
     title: Changelog
