@@ -348,8 +348,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // ADVANCED PROCESSING
 
             case enumItemProcessorTypes.advancedProcessor: {
+                const shapeItem = /** @type {ShapeItem} */ (items[0].item);
+                const newItem = this.root.shapeDefinitionMgr.shapeActionInvertColors(shapeItem.definition);
+
                 outItems.push({
-                    item: items[0].item,
+                    item: new ShapeItem(newItem),
                     requiredSlot: 0,
                 });
                 break;

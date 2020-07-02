@@ -38,8 +38,11 @@
     }
 
     .additionalOptions {
+        display: flex;
+        flex-direction: column;
         @include S(margin-top, 10px);
         button {
+            @include S(margin-bottom, 2px);
             @include IncreasedClickArea(0px);
             @include SuperSmallText;
         }

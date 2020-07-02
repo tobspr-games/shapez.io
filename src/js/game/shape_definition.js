@@ -5,7 +5,13 @@ import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
-import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
+import {
+    enumColors,
+    enumColorsToHexCode,
+    enumColorToShortcode,
+    enumShortcodeToColor,
+    enumInvertedColors,
+} from "./colors";
 import { THEME } from "./theme";
 
 const rusha = require("rusha");
@@ -560,6 +566,23 @@ export class ShapeDefinition extends BasicSerializableObject {
                 const item = quadrants[quadrantIndex];
                 if (item) {
                     item.color = color;
+                }
+            }
+        }
+        return new ShapeDefinition({ layers: newLayers });
+    }
+
+    /**
+     * Clones the shape and inverts all colors
+     */
+    cloneAndInvertColors() {
+        const newLayers = this.internalCloneLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
+                const item = quadrants[quadrantIndex];
+                if (item) {
+                    item.color = enumInvertedColors[item.color];
                 }
             }
         }
