@@ -8,6 +8,7 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { enumLayer, GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { ItemProcessorComponent, enumItemProcessorTypes } from "../components/item_processor";
 
 export class MetaEnergyGenerator extends MetaBuilding {
     constructor() {
@@ -68,6 +69,7 @@ export class MetaEnergyGenerator extends MetaBuilding {
                         directions: [enumDirection.top],
                         layer: enumLayer.wires,
                         filter: enumItemType.negativeEnergy,
+                        processor: "ItemProcessor",
                     },
                 ],
             })
@@ -107,6 +109,13 @@ export class MetaEnergyGenerator extends MetaBuilding {
                         direction: enumDirection.top,
                     },
                 ],
+            })
+        );
+
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: enumItemProcessorTypes.trash,
             })
         );
     }
