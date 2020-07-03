@@ -444,7 +444,6 @@ export class ShapeDefinition extends BasicSerializableObject {
         let lastNonEmptyLayer = -1;
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
-            let anyContents = false;
             for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 if (includeQuadrants.indexOf(quadrantIndex) < 0) {
                     quadrants[quadrantIndex] = null;
