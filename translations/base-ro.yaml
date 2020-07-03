@@ -231,7 +231,7 @@ dialogs:
         title: Deblochează Upgrade-uri
         desc: >-
            Toate formele pe care le produci pot fi folosite să deblochezi upgrade-uri - <strong>Nu îți distruge vechile fabrici!</strong>
-            Fila upgrade-urilor poate fi găsită în colțul din dreapta sus al ecranului.
+           Fila upgrade-urilor poate fi găsită în colțul din dreapta sus al ecranului.
 
     massDeleteConfirm:
         title: Confirmă ștergerea
@@ -259,38 +259,35 @@ dialogs:
     markerDemoLimit:
         desc: Poți crea decât două waypoint-uri personalizate în demo. Ia standalone-ul pentru Waypoint-uri nelimitate!
     massCutConfirm:
-        title: Confirm cut
+        title: Confirmă tăierea
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            Tu tai multe construcții (<count> pentru a fi precis)! Sunteți sigur că vreți să faceți asta?
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Exportează captură de ecran
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
-
+            Ai solicitat să exportezi baza ta ca o captură de ecran. Vă rugăm să rețineți că asta poate fi destul de lent pentru o bază mare și poate chiar să blocheze jocul!
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
         moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
+        selectBuildings: Selectează zona
+        stopPlacement: Oprește plasarea
+        rotateBuilding: Rotește construcția
+        placeMultiple: Plasează mai multe
+        reverseOrientation: Întoarce orientarea
+        disableAutoOrientation: Dezactivați auto orientarea
+        toggleHud: Comută Interfața
+        placeBuilding: Plasează construcția
+        createMarker: Crează Waypoint
+        delete: Distruge
+        pasteLastBlueprint: Lipește ultimul plan
+        lockBeltDirection: Activează planificator de benzi
+        plannerSwitchSide: Întoarce partea planificatorului
+        cutSelection: Taie
+        copySelection: Copiază
+        clearSelection: Golește Secțiunea
         pipette: Pipette
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
@@ -298,38 +295,38 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Apasă <key> pentru a cicla variantele.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Tasta: <key>
 
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            speed: Viteză
+            range: Distanță
+            storage: Capacitate
+            oneItemPerSecond: 1 obiect / second
+            itemsPerSecond: <x> obiecte / s
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> Câmpuri
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: Nivelul <level>
+        completed: Completat
+        unlockText: Ai deblocat <reward>!
+        buttonNextLevel: Nivelul următor
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: Un upgrade nou este disponibil!
+        gameSaved: Jocul tău a fost salvat.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
+        title: Upgrade-uri
         buttonUnlock: Upgrade
 
         # Gets replaced to e.g. "Tier IX"
@@ -338,190 +335,190 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: NIVELUL MAXIM (Speed x<currentMult>)
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: Statistici
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: Stocate
+                description: Afișează numărul de forme stocate în construcția centrală .
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: Produse
+                description: Afișează toate formele pe care fabrica ta le produce, incluzând produsele intermediate.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: Livrate
+                description: Afișează formele care sunt livrate la construcția centrală.
+        noShapesProduced: Nicio formă nu a fost produsă până acum.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / m
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: Timp jucat
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: Construcții
+        beltsPlaced: Benzi
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: Continuă
+            settings: Setări
+            menu: Întoarce-te în meniu
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: Ai nevoie de ajutor?
+        showHint: Arată o idee
+        hideHint: Închide
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Preț
 
     # Map markers
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        waypoints: Waypointuri
+        hub: Interfață
+        description: Click-stânga pe un waypoint pentru a merge la el, click-dreapta pentru a îl șterge.<br><br>Apasă <keybinding> pentru a crea un waypoint din perspectiva actuală, sau <strong>click-dreapta</strong> pentru a crea un waypoint.
+        creationSuccessNotification: Waypointul a fost creat.
 
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Plasează un <strong>extractor</strong> pe o <strong>formă de cerc</strong> pentru a o extrage!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                Conectează extractorul cu o<strong>bandă rulantă</strong> până la centru!<br><br>Sfat: <strong>Click și trage</strong> banda cu mouse-ul tău!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                Acesta <strong>NU</strong> este un joc idle! Construiește mai multe extractoare și benzi pentru a finaliza scopul mai rapid.<br><br>Sfat: Ține apăsat <strong>SHIFT</strong> pentru a plasa mai multe extractoare, și flosește <strong>R</strong> pentru a le roti.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
+        red: Roșu
+        green: Verde
+        blue: Albastru
+        yellow: Galben
+        purple: Mov
         cyan: Cyan
-        white: White
-        uncolored: No color
+        white: Alb
+        uncolored: Necolorat
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Start
+        empty: Gol
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Benzi, Distribuitor & Tunele
+        description: Viteza x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Extractoare
+        description: Viteza x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Tăiere, Rotație & Presare
+        description: Viteza x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Amestecare & Pictare
+        description: Viteza x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Benzi Rulante
+            description: Transportă obiecte, ține apăsat și trage pentru a plasa mai multe.
 
     miner: # Internal name for the Extractor
         default:
             name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            description: Plasează peste o formă sau culoare pentru a o extrage.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Extractor (lanț)
+            description: Plasează peste o formă sau culoare pentru a o extrage. Poate fi înlănțuit.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt Tunel
+            description: Permite transportarea resurselor pe sub construcții și benzi.
 
         tier2:
             name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            description: Permite transportarea resurselor pe sub construcții și benzi.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Distribuitor
+            description: Multifuncțional - Distribuie egal toate input-urile pe toate output-urile.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Combinator (compact)
+            description: Combină două benzi rulante în una.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Combinator (compact)
+            description: Combină două benzi rulante în una.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Tăietor
+            description: Taie forme de sus în jos și scoate ambele jumătăți. <strong>Dacă folosești doar o parte, ține minte să o distrugi pe cealaltă sau producția se va opri!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: Tăietor (Quad)
+            description: Taie formele în patru părți. <strong>Dacă folosești doar o parte, ține minte să o distrugi pe cealaltă sau producția se va opri!</strong>
 
     rotater:
         default:
             name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            description: Rotește formele în sensul acelor de ceasornic la 90 de grade.
         ccw:
             name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            description: Rotește formele în inversul sensului acelor de ceasornic la 90 de grade.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker Mașină de presat
+            description: Unește ambele obiecte. Dacă ele nu poti fi unite, obiectul drept va fi pus peste obiectul stâng.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Mixer de culori
+            description: Amestecă două culori folosind amestecuri aditive.
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
+            name: &painter Mașină de pictat
+            description: &painter_desc Colorează întreaga formă din input-ul stâng folosind culoarea din input-ul drept.
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Mașină de pictat (Dublu)
+            description: Colorează formele din input-urile din stânga folosind culoarea din input-ul de sus.
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: Mașină de pictat (Quad)
+            description: Permite colorarea fiecărui cadrant al formei cu o culoare diferită .
         mirrored:
             name: *painter
             description: *painter_desc
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Gunoi
+            description: Acceptă input-uri din toate părțile și le distruge. Pentru totdeauna. 
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Depozit
+            description: Depozitează obiectele in exces, până la o capacitate dată. Poate fi folosit ca un overflow gate.
     hub:
         deliver: Deliver
-        toUnlock: to unlock
+        toUnlock: pentru a debloca
         levelShortcut: LVL
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Tăierea formelor
+        desc: Tocmai ai deblocat <strong>tăietorul</strong> - taie forme pe jumate de <strong>jos în sus</strong> indiferent de orientație!<br><br>Ține minte să scapi de deșeuri, altfel <strong>se va opri</strong> - În acest scop ți-am dat un gunoi, care distruge tot ce pui în el!
 
     reward_rotater:
         title: Rotating
