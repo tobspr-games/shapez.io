@@ -521,150 +521,150 @@ storyRewards:
         desc: Tocmai ai deblocat <strong>tăietorul</strong> - taie forme pe jumate de <strong>jos în sus</strong> indiferent de orientație!<br><br>Ține minte să scapi de deșeuri, altfel <strong>se va opri</strong> - În acest scop ți-am dat un gunoi, care distruge tot ce pui în el!
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Rotitul
+        desc: <strong>rotater-ul</strong> a fost deblocat! El rotește formele la 90 de grade.
 
     reward_painter:
-        title: Painting
+        title: Pictatul
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            The <strong>Mașina de pictat</strong> a fost deblocată - Extrage niște culori (la fel cum faci și cu formele) și combină-le cu o formă în mașina de pictat pentru a le colora!<br><br>PS: Dacă ești orb, acolo este un <strong>mod pentru orbi</strong> în setări!
 
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: Amestecatul culorilor
+        desc: <strong>Mixerul</strong> a fost deblocat - Combină două culori folosind <strong>amestecul de aditivi</strong> cu această clădire!
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Mașina de presat
+        desc: Acum poți combina forme cu <strong>mașina de presat</strong>! Ambele input-uri vor fi combinate, iar dacă ele pot fi puse alături, ele vor fi <strong>sudate</strong>. Dacă nu, input-ul drept este <strong>pus peste</strong> input-ul stâng!
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: Distribuitor/Combinator
+        desc: Multifuncționalul <strong>distribuitor</strong> a fost deblocat - El poate fi folosit pentru a construi fabrici mai mari prin <strong>distribuirea și combinarea obiectelor</strong> pe benzi multiple!<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        title: Tunel
+        desc: <strong>Tunelul</strong> a fost deblocat - Acum poți deplasa obiecte prin benzi și construcții cu el!
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: Rotarea CCW
+        desc: Ai deblocat o variantă a <strong>rotater-ului</strong> - El permite rotația în sensul invers al acelor de ceasornic! Pentru a îț construi, selectează rotater-ul și <strong>apasă 'T' pentru a cicla printre variante</strong>!
 
     reward_miner_chainable:
         title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        desc: Ai deblocat <strong>Extractorul în lanț</strong>! El își poate <strong>transmite resursele</strong> la alte extractoare ca tu să poți extrage resurse mai eficient!
 
     reward_underground_belt_tier_2:
         title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        desc: Ai deblocat o variantă nouă a <strong>tunelului</strong> - El are <strong>distanță mai mare</strong>, iar tu poți de asemenea să alternezi acele tunele acum!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Distribuitor compact
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            Ai deblocat o variantă compactă a <strong>distribuitorului</strong> - El acceptă două input-uri și le combină intr-una!
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Tăiatul quadriplu
+        desc: Ai deblocat o variantă a <strong>tăietorului</strong> - El îți permite să tai forme în <strong>patru părți</strong> în loc de doar două!
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: Pictatul dublu
+        desc: Ai deblocat o variantă a <strong>Mașini de pictat</strong> - Funcționează la fel ca o mașină de pictat normală dar, procesează <strong>două forme odată</strong> consumând doar o culoare în loc de două!
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: Pictatul quadruplu
+        desc: Ai deblocat o variantă a <strong>Mașini de pictat</strong> - Ea permite să pictezi fiecare parte a formei individual!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: Depozitul
+        desc: Ai deblocat o variantă a <strong>gunoiului</strong> - El permite să depoziți obiecte până într-o capacitate dată!
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Jocul liber
+        desc: Ai făcut-o! Ai deblocat <strong>modul de joc liber</strong>! Asta înseamnă că formele sunt acum generate aleatoriu! (Fără griji, mai mult conținut este planificat pentru versiunea standalone!)
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: Planuri
+        desc: Acum poți <strong>copia și lipi</strong> părți ale fabrici tale! Selectează o zonă (Ține apăsat CTRL, apoi trage cu mouse-ul tău), și apasă 'C' pentru a o copia.<br><br>Lipitul nu este <strong>gratis</strong>, ai nevoie să produci <strong>forme de planuri</strong> pentru a ți le permite! (Acelea pe care tocmai le-ai livrat).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Nivelul următor
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            Acest nivel nu ți-a dat nimic dar, următor îți va da! <br><br> PS: Mai bine nu îți distruge fabricile construite - Ai nevoie de <strong>toate</strong> acele forme mai târziu din nou pentru a <strong>debloca upgrade-uri</strong>!
 
     no_reward_freeplay:
-        title: Next level
+        title: Nivelul următor
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Felicitări! Apropo, mai mult conținut este planificat pentru versiunea standalone!
 
 settings:
-    title: Settings
+    title: Setări
     categories:
-        game: Game
-        app: Application
+        game: Joc
+        app: Aplicație
 
     versionBadges:
-        dev: Development
-        staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+        dev: Dezvoltare
+        staging: Beta
+        prod: Producere
+    buildDate: Construit <at-date>
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Scala de interfață
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                Schimbă dimensiunea interfeței utilizatorului. Această interfață tot se va scala bazată pe rezoluția dispozitivului dumneavoastră dar, această setare controlează cantitatea scalări.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Foarte mică
+                small: Mică
+                regular: Normal
+                large: Mare
+                huge: Imens
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: Sensitivitatea Zoom-ului
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                Schimbă cât de sensitiv zoom-ul este (Fie roata mouse-ului ori trackpadlui).
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Foarte încet
+                slow: Încet
+                regular: Regulat
+                fast: Rapid
+                super_fast: Foarte rapid
 
         language:
-            title: Language
+            title: Limba
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Schimbă limba. Toate traducerile sunt contribuite de utilizatori și pot fi incomplete!
 
         fullscreen:
             title: Fullscreen
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                Este recomandat ca jocul să fie jucat în fullscreen pentru a aveam cea mai bună experiență. Doar disponibil în versiunea standalone.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Oprește sunetele
             description: >-
-                If enabled, mutes all sound effects.
+                Dacă este activat, oprește toate efectele sonore.
 
         musicMuted:
-            title: Mute Music
+            title: Oprește muzica
             description: >-
-                If enabled, mutes all music.
+                Dacă este activat, oprește toată muzica.
 
         theme:
-            title: Game theme
+            title: Tema jocului
             description: >-
-                Choose the game theme (light / dark).
+                Alege tema jocului (luminoasă / întunecată).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Întunecată
+                light: Luminoasă
 
         refreshRate:
             title: Simulation Target
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                Dacă ai un monitor cu 144hz, schimbă refresh rate-ul aici și jocul va simula la refresh rate-uri mai mari. Acesta poate de fapt scădea FPS-urile dacă calculatorul dumneavoastră este prea lent.
 
         alwaysMultiplace:
             title: Multiplace
