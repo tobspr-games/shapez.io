@@ -75,6 +75,9 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     giveBlueprints() {
+        if (!this.root.hubGoals.storedShapes[blueprintShape]) {
+            this.root.hubGoals.storedShapes[blueprintShape] = 0;
+        }
         this.root.hubGoals.storedShapes[blueprintShape] += 1e4;
     }
 
