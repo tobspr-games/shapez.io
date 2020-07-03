@@ -153,9 +153,9 @@ mainMenu:
         showInfo: Participar
         contestOver: Esse concurso está encerrado - Entre no discord para ser informado sobre novos concursos!
     helpTranslate: Ajude a traduzir!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: Continuar
+    newGame: Novo jogo
+    madeBy: Feito por <author-link>
     subreddit: Reddit
 
 dialogs:
@@ -609,9 +609,9 @@ settings:
 
     versionBadges:
         dev: Desenvolvedor
-        staging: Staging
+        staging: Teste
         prod: Produção
-    buildDate: Built <at-date>
+    buildDate: Compilado <at-date>
 
     labels:
         uiScale:
@@ -691,48 +691,47 @@ settings:
                 super_fast: Super Rápido
                 extremely_fast: Extremamente Rápido
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Túneis inteligentes
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Quando colocados, irão remover automaticamente esteiras desnecessárias.
+                Isso também permite arrastar túneis e túneis em excesso serão removidos.
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Permite o modo vinheta que escurece os cantos da tela e facilita a
+                leitura do texto.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Intervalo de gravação automática
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Controla a frequência com que o jogo salva automaticamente.
+                Você também pode desativá-lo totalmente aqui.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minuto
+                two_minutes: 2 Minutos
+                five_minutes: 5 Minutos
+                ten_minutes: 10 Minutos
+                twenty_minutes: 20 Minutos
+                disabled: Desativado
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Informações compactas sobre edifícios
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Reduz as caixas de informações dos edifícios, mostrando apenas suas proporções.
+                Caso contrário, uma descrição e imagem são mostradas.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Desativar avisos de recorte / exclusão
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Desative as caixas de diálogo de aviso exibidas ao cortar / excluir
+                mais de 100 entidades.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Modo daltônico.
+            description: Permite várias ferramentas que permitem jogar se você é daltônico.
         rotationByBuilding:
-          title: Rotation by building type
+          title: Rotação por tipo de construção
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+              Cada tipo de construção lembra a rotação que você definiu pela última vez individualmente.
+              Isso pode ser mais confortável se você alternar frequentemente entre a colocação de diferentes tipos de construção.
 
 keybindings:
     title: Controles
@@ -796,10 +795,10 @@ keybindings:
         pasteLastBlueprint: Colar último projeto
         massSelectCut: Cortar área
         exportScreenshot: Exportar base inteira como imagem
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
-        pipette: Pipette
+        mapMoveFaster: Mover mais rápido
+        lockBeltDirection: Ativar planejador de correia
+        switchDirectionLockSide: "Planejador: Mudar de lado"
+        pipette: Pipeta
 
 about:
     title: Sobre o jogo
@@ -822,7 +821,7 @@ about:
         esse jogo nunca teria existido.
 
 changelog:
-    title: Changelog
+    title: Alterações
 
 demo:
     features:
