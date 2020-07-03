@@ -13,6 +13,7 @@ import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
+import { enumNotificationType } from "./notifications";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -148,13 +149,29 @@ export class HUDMassSelector extends BaseHUDPart {
             // copy code relies on entities still existing, so must copy before deleting.
             this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
 
-            for (let i = 0; i < entityUids.length; ++i) {
-                const uid = entityUids[i];
-                const entity = this.root.entityMgr.findByUid(uid);
-                if (!this.root.logic.tryDeleteBuilding(entity)) {
-                    logger.error("Error in mass cut, could not remove building");
-                    this.selectedUids.delete(uid);
+            let canPaste = false;
+            const placer = this.root.hud.parts.blueprintPlacer;
+            if (placer) {
+                const blueprint = placer.currentBlueprint.get();
+                if (blueprint) {
+                    canPaste = blueprint.canAfford(this.root);
                 }
+            }
+            if (canPaste) {
+                for (let i = 0; i < entityUids.length; ++i) {
+                    const uid = entityUids[i];
+                    const entity = this.root.entityMgr.findByUid(uid);
+                    if (!this.root.logic.tryDeleteBuilding(entity)) {
+                        logger.error("Error in mass cut, could not remove building");
+                        this.selectedUids.delete(uid);
+                    }
+                }
+            } else {
+                this.selectedUids = new Set();
+                this.root.hud.signals.notification.dispatch(
+                    T.ingame.notifications.massCutInsufficient,
+                    enumNotificationType.success
+                );
             }
 
             this.root.soundProxy.playUiClick();

@@ -325,6 +325,7 @@ ingame:
     notifications:
         newUpgrade: 新しいアップグレードが利用可能です！
         gameSaved: ゲームをセーブしました。
+        massCutInsufficient: 設置コストが不足しています！
 
     # The "Upgrades" window
     shop:

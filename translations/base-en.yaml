@@ -337,6 +337,7 @@ ingame:
     notifications:
         newUpgrade: A new upgrade is available!
         gameSaved: Your game has been saved.
+        massCutInsufficient: The cost for pasting is insufficient!
 
     # The "Upgrades" window
     shop:
