@@ -32,7 +32,7 @@ steamPage:
 
         shapez.io este un joc despre construirea fabricilor pentru a automatiza crearea și combinarea de forme. Livrează cerutele, din ce in ce mai complexe forme pentru a progresa în joc și a debloca upgrade-uri pentru a îți accelera fabrica.
 
-        Când crerea crește tu va trebui să îți mărești fabrica pentru a se potrivi cererilor - Nu uita de resurse totuși, tu va trebui să te extinzi în [b]harta infinită[/b]!
+        Când cererea crește tu va trebui să îți mărești fabrica pentru a se potrivi cererilor - Nu uita de resurse totuși, tu va trebui să te extinzi în [b]harta infinită[/b]!
 
         Când formele pot deveni plictisitoare curând tu trebuie să amesteci culori și să îți pictezi formele cu ea - Amestecă culorile roșu, verde și albastru pentru a produce diferite culori și a picta forme cu ele pentru a satisface cererile.
 
@@ -56,11 +56,11 @@ steamPage:
 
         [list]
             [*] Story mode unde construcțiile costă forme
-            [*] Mai multe nivele & construcții (standalone exclusive)
+            [*] Mai multe nivele & construcții (exclusiv standalone-ului)
             [*] Diferite hărți, și poate obstacole ale hărții
             [*] Creare de hartă configurabilă (Editează numărul și mărimea zonelor, seed-ul, și multe altele)
             [*] Mai multe forme
-            [*] Mai multe îmbunătățiri de performanță (Although the game already runs pretty good!)
+            [*] Mai multe îmbunătățiri de performanță (Totuși jocul deja rulează destul de bine!)
             [*] Mod pentru orbii de culoare
             [*] Și multe altele!
         [/list]
@@ -68,8 +68,8 @@ steamPage:
         Asigurați-vă ca îmi verificați trello board-ul pentru întregul progres! https://trello.com/b/ISQncpJP/shapezio
 
 global:
-    loading: Loading
-    error: Error
+    loading: Se Încarcă
+    error: Eroare
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -86,21 +86,21 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: acum o secundă
+        xSecondsAgo: acum <x> secunde
+        oneMinuteAgo: acum un minut
+        xMinutesAgo: acum <x> minute
+        oneHourAgo: acum o oră
+        xHoursAgo: acum <x> ore
+        oneDayAgo: acum o zi
+        xDaysAgo: acum <x> zile
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>s
 
-        xMinutes: <x> minutes
+        xMinutes: <x> minute
 
     keys:
         tab: TAB
@@ -112,152 +112,152 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Versiunea Demo
     intro: >-
-        Get the standalone to unlock all features!
+        Ia versiunea Standalone pentru a debloca toate funcțiile!
 
 mainMenu:
-    play: Play
+    play: Joacă
     changelog: Changelog
     importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    openSourceHint: Acest joc este open source!
+    discordLink: Serverul oficial de Discord
+    helpTranslate: Ajută să traducem!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Scuze dar, jocul este știut să ruleze încet pe browser-ul tău! Ia versiunea standalone sau descarcă chrome pentru experiența completă.
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: Nivelul <x>
+    savegameLevelUnknown: Nivel necunoscut
 
     contests:
         contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
+            title: "Concursul #01"
+            desc: Câștigă <strong>$25</strong> pentru cea mai tare bază!
             longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
+                Pentru a vă da ceva înapoi, M-am gândit că ar fi tare să fac concursuri săptămânale!
                 <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
+                <strong>Subiectul acestei săptămâni:</strong> Construiește cea mai tare bază!
                 <br><br>
-                Here's the deal:<br>
+               Treaba stă așa:<br>
                 <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
+                    <li>Trimite o poză cu baza ta la <strong>contest@shapez.io</strong></li>
+                    <li>Puncte bonus dacă o trimiți și pe rețelele de socializare!</li>
+                    <li>Eu voi alege 5 poze și le voi propune comunității pe <strong>discord</strong> pentru a vota.</li>
+                    <li>Câștigătorul primește <strong>$25</strong> (Paypal, Amazon Gift Card, orice preferi)</li>
                     <li>Deadline: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                I'm looking forward to seeing your awesome creations!
+                Abia aștept să văd creațiile voastre minunate!
 
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+        showInfo: Vezi
+        contestOver: Acest concurs s-a terminat - Alătură-te server-ului de discord pentru a primi notificări despre noi concursuri!
+    continue: Continuă
+    newGame: Joc nou
+    madeBy: Făcut de <author-link>
     subreddit: Reddit
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        delete: Șterge
+        cancel: Anulează
+        later: Mai târziu
+        restart: Restartează
+        reset: Resetează
+        getStandalone: Ia Standalone-ul
+        deleteGame: Știu ce fac
+        viewUpdate: Vezi Update-ul
+        showUpgrades: Vezi Upgrade-urile
+        showKeybindings: Arată tastele configurate
 
     importSavegameError:
-        title: Import Error
+        title: Eroare la Import
         text: >-
-            Failed to import your savegame:
+            Încercarea de import a eșuat:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Savegame importat
         text: >-
-            Your savegame has been successfully imported.
+            Savegame-ul tău a fost importat cu succes.
 
     gameLoadFailure:
-        title: Game is broken
+        title: Jocul este stricat
         text: >-
-            Failed to load your savegame:
+            Încercarea de încărcat savegame-ul a eșuat:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Confirmă ștergerea
         text: >-
-            Are you sure you want to delete the game?
+            Ești sigur că vrei să ștergi acest joc?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Eroare la ștergere
         text: >-
-            Failed to delete the savegame:
+            Nu a reușit să se ștearga savegame-ul:
 
     restartRequired:
-        title: Restart required
+        title: Restartare necesară
         text: >-
-            You need to restart the game to apply the settings.
+            Trebuie să restartezi jocul pentru a aplica setările.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Schimbă Tastele configurate
+        desc: Apasă tasta sau butonul mouse-ului pe care vrei să îl atribui, sau escape pentru a anula.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Resetează Tastele configurate
+        desc: Acesta va reseta toate tastele configurate la valorile obișnuite. Vă rog să confirmați.
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Tastele configurate se resetează
+        desc: Tastele configurate au fost resetate la valorile lor obișnuite!
 
     featureRestriction:
         title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        desc: Ai încercat să accesezi o funcție (<feature>) care nu este disponibilă în demo. Consideră să iei standalone-ul pentru experiența completă!
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: Savegame-uri limitate
+        desc: Poți avea doar un savegame în același timp în versiunea demo. Te rugăm șterge-o pe cea existentă sau ia standalone-ul!
 
     updateSummary:
-        title: New update!
+        title: Update nou!
         desc: >-
-            Here are the changes since you last played:
+            Aici sunt schimbările de când ai jucat ultima oară:
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Deblochează Upgrade-uri
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+           Toate formele pe care le produci pot fi folosite să deblochezi upgrade-uri - <strong>Nu îți distruge vechile fabrici!</strong>
+            Fila upgrade-urilor poate fi găsită în colțul din dreapta sus al ecranului.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Confirmă ștergerea
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Stergeți multe construcții (<count> pentru a fi exact)! Sunteți sigur că vreți să faceți asta?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Nu este deblocat încă
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            Planurile nu au fost deblocate încă! Completează mai multe nivele să le deblochezi.
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Taste configurate folositoare
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            Acest joc are multe taste configurate care fac construitul fabricilor mari mai ușor.
+            Aici sunt câteva dar, fii sigur să <strong>verifici tastele configurate</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Drag: Selectează o zonă pentreu a copia  / delete.<br>
+            <code class='keybinding'>SHIFT</code>: Ține apăsat pentru a plasa mai multe dintr-o clădire.<br>
+            <code class='keybinding'>ALT</code>: Inversează orientația a benzilor rulante.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        title: Nou waypoint
+        desc: Dă-i un nume plin de înțeles, de asemenea poți include a <strong>codul scurt</strong> al unei forme (Pe care îl poți genera <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: Poți crea decât două waypoint-uri personalizate în demo. Ia standalone-ul pentru Waypoint-uri nelimitate!
     massCutConfirm:
         title: Confirm cut
         desc: >-
