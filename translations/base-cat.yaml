@@ -353,10 +353,10 @@ ingame:
                 description: Mostrant la quantitat de figures emmagatzemades en el teu edifici central.
             produced:
                 title: Produit
-                description: Mostra la producció total de figures de la fàbrica, incluïnt productes intermijos.
+                description: Mostrant la producció total de figures de la fàbrica, incluïnt productes intermijos.
             delivered:
                 title: Enviats
-                description: Mostra les figures que són enviades a l'edifici central.
+                description: Mostrant les figures que són enviades a l'edifici central.
         noShapesProduced: Ninguna figura s'ha produit fins ara.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -364,7 +364,7 @@ ingame:
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Tems de joc
+        playtime: Temps de joc
 
         buildingsPlaced: Edificis
         beltsPlaced: Cintes transportadores
@@ -388,7 +388,7 @@ ingame:
     waypoints:
         waypoints: Marcadors
         hub: NEXE
-        description: Fes clic esquerre en un marcador per desplaçar-se cap a ell. Fes clic dret per esborrar-lo. <br><br>Pressiona <keybinding> per a crear un marcador des de la vista actual, o fes <strong>clic dret</strong> per a crear un marcador en el punt seleccionat.
+        description: Fes clic esquerre en un marcador per desplaçar-te cap a ell. Fes clic dret per esborrar-lo. <br><br>Pressiona <keybinding> per a crear un marcador des de la vista actual, o fes <strong>clic dret</strong> per a crear un marcador en el punt seleccionat.
         creationSuccessNotification: S'ha creat un marcador .
 
     # Shape viewer
@@ -405,7 +405,7 @@ ingame:
             1_2_conveyor: >-
                 Connecta l'extractor a la <strong>cinta transportadora</strong> cap al teu nexe!<br><br>Pista: Pots <strong>clicar i arrossegar</strong> la cinta transportadora amb el teu ratolí!
             1_3_expand: >-
-                Açò/ixò <strong>NO</strong> no és un joc d'espera! Contrueix més extractors i cintes per a completar l'objectiu més ràpidament.<br><br>Pista: Manté pressionat <strong>SHIFT</strong> per a col·locar més extractors, i utilitza <strong>R</strong> per a rotar-los.
+                Aquest <strong>NO</strong> és un joc d'espera! Contrueix més extractors i cintes per a completar l'objectiu més ràpidament.<br><br>Pista: Manté pressionat <strong>SHIFT</strong> per a col·locar més extractors, i utilitza <strong>R</strong> per a rotar-los.
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -431,7 +431,7 @@ buildings:
     belt:
         default:
             name: &belt Cinta transportadora
-            description: Transporta objectes, manté pressionat i arrossega per a col·locar múltiples.
+            description: Transporta objectes, mantén pressionat i arrossega per a col·locar múltiples.
 
     wire:
         default:
@@ -453,12 +453,12 @@ buildings:
             description: Permet transportar recursos per sota d'edificis i cintes.
 
         tier2:
-            name: Tunnel Tier II
+            name: Túnel de Nivell II
             description: Permet transportar recursos per sota d'edificis i cintes.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Distribuidor
+            name: &splitter Distribuïdor
             description: Multifuncional - Distribueix les entrades i sortides equitativament.
 
         compact:
@@ -493,17 +493,17 @@ buildings:
     stacker:
         default:
             name: &stacker Apilador
-            description: Fusiona o apila ambdós figures. Si no poden ser fusionats, l'objecte de la dreta es posarà damunt del de l'esquerra.
+            description: Fusiona o apila ambdues figures. Si no poden ser fusionades, la figura de la dreta es posarà damunt de la de l'esquerra.
 
     mixer:
         default:
             name: &mixer Mesclador de colors
-            description: Mescla dos colors amb mescla aditiva.
+            description: Mescla dos colors amb mescla additiva.
 
     painter:
         default:
             name: &painter Pintor
-            description: Pinta la figura sencera de l'esquerra amb el color de l'entrada de dalt.
+            description: &painter_desc Pinta la figura sencera de l'esquerra amb el color de l'entrada de dalt.
 
         mirrored:
             name: Pintor
@@ -518,7 +518,7 @@ buildings:
 
     trash:
         default:
-            name: &trash Fem/Brossa
+            name: &trash Paperera/Brossa
             description: Acepta objectes de tots els costats i els destrueix. Permanentment.
 
         storage:
@@ -538,87 +538,89 @@ buildings:
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Tallant figures
-        desc: Acabes de desbloquejar la <strong>Cisalla</strong> - talla les figures per la meitat <strong>de dalt a baix</strong> sense importar la seva orientació!<br><br>Assegura't d'eliminar les parts que no haguis d'utilitzar, sinò <strong>es pararà</strong> - Es per això que t'he donat una fem/brossa, utilitza-la!
+        title: Tallar figures
+        desc: Acabes de desbloquejar la <strong>Cisalla</strong> - talla les figures per la meitat <strong>de dalt a baix</strong>; sense importar la seva/ua orientació!<br><br>Assegura't d'eliminar les parts que no utilitzes, si no <strong>es pararà</strong> - Es per això que t'he donat una paperera/brossa, utilitza-la!
 
     reward_rotater:
-        title: Rotant
+        title: Rotar
         desc: El <strong>Rotador</strong> s'ha desbloquejat! Rota formes en sentit horari 90 graus.
 
     reward_painter:
-        title: Pintor
+        title: Pintar
         desc: >-
             El <strong>Pintor</strong> s'ha desbloquejat! - Extreu mena de color (de la mateixa forma que les figures) i pinta les figures amb el pintor!<br><br> - Si ets daltònic, pots activar <strong>l'opció per daltònics</strong> en les opcions!
     
     reward_mixer:
-        title: Mesclador de colors
-        desc: El <strong>Mesclador de colors</strong> s'ha desbloquejat! - Combina dos colors utilitzant <strong>la mescla additiba</strong> amb aquest edifici!
+        title: Mesclar colors
+        desc: El <strong>Mesclador de colors</strong> s'ha desbloquejat! - Combina dos colors utilitzant <strong>la mescla additiva</strong> amb aquest edifici!
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Apilador
+        desc: Ara pots combinar figures amb el <strong>apilador</strong>! Ambdues entrades són combinades. Si es poden posar una vora l'altra, es <strong>fusionaran</strong>. Si no, l'entrada de la dreta <strong>s'apilarà damunt</strong> de la de l'esquerra!
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: Distribuïdor
+        desc: El <strong>distribuïdor</strong> multifuncional s'ha desbloquejat - Pot ser utilitzat per a construir fàbriques més grans per mitjà de la <strong>separació i fusió</strong> de figures de diferents cintes!<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
+        title: Túnel
+        desc: El <strong>túnel</strong> s'ha desbloquejat - Ara pots passar objectes a través d'edificis i cintes transportadores!
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: Rotació antihorària
+        desc: Has desbloquejat una variant del <strong>rotador</strong> - Et permet rotar en sentit antihorari! Per tal de construir-lo, selecciona el rotador i <strong>pressiona 'T' per a ciclar les diferents variants</strong>!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: Extractor en cadena
+        desc: Has desbloquejat el <strong>extractor en cadena</strong>! Pot <strong>passar els seus recursos</strong> a altres extractors perquè pugues extraure recursos més eficientment!
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: Túnel de Nivell II
+        desc: Has desbloquejat una nova variant del <strong>túnel</strong> - Té una <strong>major distància màxima</strong>, i ara pots mesclar tipus de túnels!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Distribuïdor compacte
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            Has desbloquejat una variant compacta del <strong>distribuïdor</strong> - Acepta dues entrades i les fusiona en una sola!
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Cisalla quàdruple
+        desc: Has desbloquejat una variant de la <strong>cisalla</strong> - Et permet tallar figures en <strong>quatre parts</strong> en lloc de sols en dos!
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: Pintor doble
+        desc: Has desbloquejat una variant del <strong>pintor</strong> - Funciona com el pintor regular però processa <strong>dos figures alhora</strong>, consumint sols un color en lloc de dos!
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: Pintor quàdruple
+        desc: Has desbloquejat una variant del <strong>pintor</strong> - Et permet pintar cada part de la figura individualment!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: Magatzem de reserva
+        desc: Has desbloquejat una variant de la <strong>paperera/brossa</strong> - Et permet emmagatzemar objectes fins a una capacitat màxima!
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Joc lliure
+        desc: Ho has fet! Has desbloquejat el <strong>mode de joc lliure</strong>! Això significa que les figures ara són generades aleatòriament! (No t'angoixes, hi ha més contingut planejat per a la versió autònoma - fora del web)
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: Plànols
+        desc: Ara pots <strong>copiar i apegar/enxegar</strong> parts de la teva/ua fàbrica! Selecciona una àrea (Mantén pressionat CTRL, i arrossega el ratolí), i pressiona 'C' per a copiar-la.<br><br>Apegar/enxegar-la <strong>no és gratis</strong>, necessites produir <strong>figures de plànols</strong> per a poder fer-ho! (Les que n'acabes d'enviar).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Següent nivell
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            Aquest nivell no t'ha donat res, però el següent ho farà! <br><br> PD: És millor que no destrueixes la part de la fàbrica existent - Necessitaràs <strong>totes</strong> eixes figures més tard per a <strong>desbloquejar millores</strong>!
+   
     reward_wires:
-        title: Wires
+        title: Cables
         desc: TODO
 
     no_reward_freeplay:
-        title: Next level
+        title: Següent nivell
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Enhorabona! Per cert, hi ha més contingut planejat per a la versió autònoma - fora del web!
+            
 settings:
     title: Settings
     categories:
