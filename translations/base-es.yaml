@@ -32,9 +32,9 @@ steamPage:
 
         shapez.io es un juego sobre construir fábricas para automatizar la creación y combinación de figuras. Entrega las cada vez más complejas figuras requeridas para progresar y desbloquea mejoras para aumentar la velocidad de tu fábrica.
 
-        Al aumentar la demanda, necesitaras escalar tu fábrica para ajustarte a las necesidades - ¡No te olvides de los recursos, necesitarás expandirte en el [b]mapa infinito[/b]!
+        Al aumentar la demanda, necesitarás escalar tu fábrica para ajustarte a las necesidades - ¡No te olvides de los recursos, necesitarás expandirte en el [b]mapa infinito[/b]!
 
-        Ya que las figuras puedes ser aburridas necesitarás mezclar colores para pintar las figuras - Combina recursos de colores rojo, verde y azul para producir diferentes colores y pintar figuras para satisfacer la demanda.
+        Ya que las figuras pueden ser aburridas, necesitarás mezclar colores para pintar las figuras - Combina recursos de colores rojo, verde y azul para producir diferentes colores y pintar figuras para satisfacer la demanda.
 
         Este juego cuenta con 18 niveles (¡Que te mantendrán ocupado durante horas!) pero estoy constantemente añadiendo nuevo contenido - ¡Hay mucho planeado!
 
@@ -182,7 +182,7 @@ dialogs:
             Tu partida guardada ha sido importada con éxito.
 
     gameLoadFailure:
-        title: El juego está roto
+        title: Error de Carga
         text: >-
             No se ha podido cargar la partida guardada:
 
@@ -228,7 +228,7 @@ dialogs:
     upgradesIntroduction:
         title: Desbloquear Mejoras
         desc: >-
-            Todas las figuras puedes ser usadas para desbloquear mejoras - <strong>¡No destruyas tus fábricas anteriores!</strong>
+            Todas las figuras pueden ser usadas para desbloquear mejoras - <strong>¡No destruyas tus fábricas anteriores!</strong>
             La pestaña de mejoras está en la esquina superior derecha de la pantalla.
 
     massDeleteConfirm:
@@ -239,7 +239,7 @@ dialogs:
     massCutConfirm:
         title: Confirmar corte
         desc: >-
-            ¡Estas cortando muchos edificios (<count> para ser exactos)! ¿Estas seguro de
+            ¡Estás cortando muchos edificios (<count> para ser exactos)! ¿Estas seguro de
             que quieres hacer esto?
 
     blueprintsNotUnlocked:
@@ -277,9 +277,9 @@ ingame:
         stopPlacement: Parar de colocar
         rotateBuilding: Rotar edificio
         placeMultiple: Colocar varios
-        reverseOrientation: Invierte la orientación
-        disableAutoOrientation: Desactiva la auto orientación
-        toggleHud: Habilita el HUD
+        reverseOrientation: Invertir la orientación
+        disableAutoOrientation: Desactivar la autoorientación
+        toggleHud: Habilitar el HUD
         placeBuilding: Colocar edificio
         createMarker: Crear marca
         delete: Destruir
@@ -472,10 +472,10 @@ buildings:
     rotater:
         default:
             name: &rotater Rotador
-            description: Rota la figura en el sentido de las agujas del reloj, 90 grados.
+            description: Rota la figura en sentido horario, 90 grados.
         ccw:
             name: Rotador (Inverso)
-            description: Rota las figuras en contra de las agujas del reloj, 90 grados.
+            description: Rota las figuras en sentido antihorario, 90 grados.
 
     stacker:
         default:
@@ -496,7 +496,7 @@ buildings:
             description: *painter_desc
         double:
             name: Pintor (Doble)
-            description: Colorea las figuras que entran por la izquierda con el color que entrapor arriba.
+            description: Colorea las figuras que entran por la izquierda con el color que entra por arriba.
         quad:
             name: Pintor (Cuádruple)
             description: Permite colorear cada cuadrante de una figura con un color distinto.
@@ -519,11 +519,12 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cortador de Figuras
-        desc: Acabas de desbloquear el <strong>cortador</strong> - corta las figuras por la mitad <strong>de arriba abajo</strong> ¡Sin importar su orientación!<br><br>Asegurate de deshacerte de lo que no vayas a usar o <strong>se parará</strong> - Para ese propósito te he dado una basura, que destruye todo lo que le pongas!
+
+        desc: Acabas de desbloquear el <strong>cortador</strong> - corta las figuras por la mitad <strong>de arriba abajo</strong> ¡Sin importar su orientación!<br><br>Asegúrate de deshacerte de lo que no vayas a usar o <strong>se parará</strong> - Para ese propósito te he dado una basura que destruye todo lo que le pongas!
 
     reward_rotater:
         title: Rotador
-        desc: ¡El <strong>rotador</strong> ha sido desbloqueado! Rota figuras en el sentido de las agujas del reloj, 90 grados.
+        desc: ¡El <strong>rotador</strong> ha sido desbloqueado! Rota figuras en sentido horario, 90 grados.
 
     reward_painter:
         title: Pintor
@@ -544,7 +545,7 @@ storyRewards:
 
     reward_tunnel:
         title: Túnel
-        desc: El <strong>tunel</strong> ha sido desbloqueado - ¡Ahora puedes transportar elementos por debajo de edificios u otras cintas!
+        desc: El <strong>túnel</strong> ha sido desbloqueado - ¡Ahora puedes transportar elementos por debajo de edificios u otras cintas!
 
     reward_rotater_ccw:
         title: Rotador Inverso
@@ -555,8 +556,8 @@ storyRewards:
         desc: ¡Has desbloqueado el <strong>extractor en cadena</strong>! Puede <strong>enviar los recursos</strong> a otros extractores, así puedes extraer recursos más eficientemente
 
     reward_underground_belt_tier_2:
-        title: Tunel de Nivel II
-        desc: Has desbloqueado una nueva variante del <strong>tunel</strong> - ¡Tiene un <strong>mayor rango</strong>, ahora puedes mezclar los distintos tipos de túneles!
+        title: Túnel de Nivel II
+        desc: Has desbloqueado una nueva variante del <strong>túnel</strong> - ¡Tiene un <strong>mayor rango</strong>, ahora puedes mezclar los distintos tipos de túneles!
 
     reward_splitter_compact:
         title: Balanceador Compacto
@@ -568,7 +569,7 @@ storyRewards:
 
     reward_painter_double:
         title: Doble Pintor
-        desc: Has desbloqueado una variante del <strong>pintor</strong> - ¡Funciona como un pintor regular pero procesa <strong>dos formas a la vez</strong> consumiendo solo un color en vez de dos!
+        desc: Has desbloqueado una variante del <strong>pintor</strong> - ¡Funciona como un pintor regular pero procesa <strong>dos formas a la vez</strong>, consumiendo solo un color en vez de dos!
 
     reward_painter_quad:
         title: Cuádruple Pintor
@@ -624,7 +625,7 @@ settings:
         scrollWheelSensitivity:
             title: Sensibilidad del zoom
             description: >-
-                Cambia como de sensible es el zoom (Tanto la ruedo del ratón como el trackpad)
+                Cambia cómo de sensible es el zoom (Tanto la rueda del ratón como el trackpad)
             sensitivity:
                 super_slow: Muy Lento
                 slow: Lento
@@ -634,13 +635,13 @@ settings:
 
         movementSpeed:
             title: Velocidad de movimiento
-            description: Cambia que tan rapido se mueve la camara al usar el teclado.
+            description: Cambia qué tan rápido se mueve la cámara al usar el teclado.
             speeds:
                 super_slow: Super lento
                 slow: Lento
                 regular: Regular
                 fast: Rápido
-                super_fast: Super rápido
+                super_fast: Súper rápido
                 extremely_fast: Extremadamente rápido
 
         language:
@@ -654,12 +655,12 @@ settings:
         soundsMuted:
             title: Silenciar Sonidos
             description: >-
-                Si habilitado, silencia todos los efectos de sonido.
+                Si está habilitado, silencia todos los efectos de sonido.
 
         musicMuted:
             title: Silenciar Música
             description: >-
-                Si habilitado, silencia toda la música.
+                Si está habilitado, silencia toda la música.
 
         theme:
             title: Tema del Juego
@@ -673,7 +674,7 @@ settings:
         refreshRate:
             title: Objetivo de Simulación
             description: >-
-                Si tienes un monitor de 144hz, cambia la tasa de refresco asi el juego se ejecutará correctamente a una mayor tasa de refresco. Esto puede disminuir los FPS si tu ordenador no es lo suficientemente rápido.
+                Si tienes un monitor de 144hz, cambia la tasa de refresco. Así el juego se ejecutará correctamente a una mayor tasa de refresco. Esto puede disminuir los FPS si tu ordenador no es lo suficientemente rápido.
 
         alwaysMultiplace:
             title: Colocación Múltiple
@@ -698,7 +699,7 @@ settings:
         autosaveInterval:
             title: Intervalo de Autoguardado
             description: >-
-                Controla cada cuanto tiempo se guarda el juego automaticamente. Aquí tambien puedes deshabilitarlo por completo.
+                Controla cada cuánto tiempo se guarda el juego automáticamente. Aquí también puedes deshabilitarlo por completo.
             intervals:
                 one_minute: 1 Minuto
                 two_minutes: 2 Minutos
@@ -710,6 +711,7 @@ settings:
             title: Información Compacta de Edificios
             description: >-
                 Acorta la caja de información mostrando solo sus ratios. Si no, se mostrará una descripción y una imagen.
+                
         disableCutDeleteWarnings:
             title: Deshabilitar las advertencias de Cortar/Eliminar
             description: >-
@@ -718,11 +720,12 @@ settings:
         enableColorBlindHelper:
             title: Modo para Daltónicos
             description: Activa varias herramientas que facilitan jugar si tienes alguna forma de daltonismo.
+            
         rotationByBuilding:
             title: Rotación por tipo de edificio
             description: >-
-                Cada tipo de edificio recuerda la última rotación que seleccionaste individualmente.
-                Esto puede ser mucho más cómodo si cambias a menudo entre colocar diferentes tipos de edificio.
+                Cada tipo de edificio recuerda la última rotación que le diste individualmente.
+                Esto puede ser más cómodo si cambias a menudo entre colocar diferentes tipos de edificio.
 
 keybindings:
     title: Atajos de Teclado
@@ -799,16 +802,16 @@ about:
         Si quieres contribuir revisa <a href="<githublink>"
         target="_blank">shapez.io en github</a>.<br><br>
 
-        Este juego no habria sido posible si no fuera por la gran comunidad de Discord
+        Este juego no habría sido posible si no fuera por la gran comunidad de Discord
         sobre mis juegos - ¡Deberías unirte al <a href="<discordlink>"
-        target="_blank">servidor de discord</a>!<br><br>
+        target="_blank">servidor de Discord</a>!<br><br>
 
         La banda sonora ha sido creada por <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - El es genial.<br><br>
+        target="_blank">Peppsen</a> - Él es genial.<br><br>
 
         Finalmente muchísimas gracias a mi amigo <a
         href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sin nuestras sesiones
-        de Factorio este juego nunca existiria.
+        de Factorio este juego nunca existiría.
 
 changelog:
     title: Historial de Cambios
