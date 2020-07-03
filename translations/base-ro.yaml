@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io este un joc despre construirea fabricilor pentru a automatiza crearea și combinarea a din ce in ce mai complexe forme într-o hartă infinită.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,42 +30,42 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io este un joc despre construirea fabricilor pentru a automatiza crearea și combinarea de forme. Livrează cerutele, din ce in ce mai complexe forme pentru a progresa în joc și a debloca upgrade-uri pentru a îți accelera fabrica.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        Când crerea crește tu va trebui să îți mărești fabrica pentru a se potrivi cererilor - Nu uita de resurse totuși, tu va trebui să te extinzi în [b]harta infinită[/b]!
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Când formele pot deveni plictisitoare curând tu trebuie să amesteci culori și să îți pictezi formele cu ea - Amestecă culorile roșu, verde și albastru pentru a produce diferite culori și a picta forme cu ele pentru a satisface cererile.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Acest joc cuprinde 18 nivele (Care are trebui să te păstreze ocupat pentru ore deja!) dar, eu adaug constant conținut nou - Sunt multe planificate!
 
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
-            [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
-        [/list]
-
-        [b]Planned features & Community suggestions[/b]
-
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        [b]Avantajele Standalone-ului[/b]
 
         [list]
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
-            [*] Color blind mode
-            [*] And much more!
+            [*] Waypointuri
+            [*] Savegame-uri nelimitate
+            [*] Modul Întunecat
+            [*] Mai multe setări
+            [*] Îmi permiți să dezvolt mai departe shapez.io ❤️
+            [*] Mai multe funcții în viitor!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [b]Funcții planificate & Sugestiile comunității[/b]
+
+        Acest joc este open source - Toată lumea poate contribui! Pe lângă asta, eu ascult [b]mult[/b] de comunitate! Încerc să citesc toate sugestiile și să iau cât mai mule opinii în considerare pe cât posibil.
+
+        [list]
+            [*] Story mode unde construcțiile costă forme
+            [*] Mai multe nivele & construcții (standalone exclusive)
+            [*] Diferite hărți, și poate obstacole ale hărții
+            [*] Creare de hartă configurabilă (Editează numărul și mărimea zonelor, seed-ul, și multe altele)
+            [*] Mai multe forme
+            [*] Mai multe îmbunătățiri de performanță (Although the game already runs pretty good!)
+            [*] Mod pentru orbii de culoare
+            [*] Și multe altele!
+        [/list]
+
+        Asigurați-vă ca îmi verificați trello board-ul pentru întregul progres! https://trello.com/b/ISQncpJP/shapezio
 
 global:
     loading: Loading
