@@ -220,10 +220,11 @@ export class ShapeDefinition extends BasicSerializableObject {
                 }
             }
 
-            if (!anyFilled) {
-                // Empty layer
+            if (!anyFilled && i === sourceLayers.length - 1) {
+                // Topmost layer isn't allowed being empty
                 return false;
             }
+
             layers.push(quads);
         }
 
