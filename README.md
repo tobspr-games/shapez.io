@@ -23,12 +23,10 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 **Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
 
 ## Mac building with Windows
--   Be sure to run cmd as ADMIN! Otherwise this will not work.
--   Run yarn in the root folder, then run 'yarn' in the `gulp/` folder
--   Cd into `gulp` and run `yarn gulp main.standalone`
+-   Execute the regular build steps as admin
 -   Go into 'tmp_standalone_files' folder with file explorer and navigate into shapez.io-standalone-darwin-x64 or x32 folder
 -   Navigate into shapez.io-standalone.app/Contents/Frameworks folder
--   This needs to be done after every rebuild or update!
+-   This needs to be done after every rebuild or update
 -   Do this for every .framework folder
 -   Step 1: Delete everything here except 'Versions' folder.
 -   Step 2: Navigate into .framework/Versions/A folder
