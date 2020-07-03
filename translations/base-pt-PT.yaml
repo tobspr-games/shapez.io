@@ -114,7 +114,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Versão Demo
     intro: >-
-        Compra a versão completa para desbloquear todas as funcionalidades!
+        Compra a versão completa para desbloqueares todas as funcionalidades!
 
 mainMenu:
     play: Jogar
@@ -126,7 +126,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Desculpa, mas este jogo parece correr mais lentamente no teu navegador! Compra o jogo completo ou baixa o chrome para a melhorares a tua experiência.
+        Desculpa, mas este jogo parece correr mais lentamente no teu navegador! Compra o jogo completo ou baixa o chrome para melhorares a tua experiência.
 
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
@@ -231,12 +231,12 @@ dialogs:
         title: Desbloqueia upgrades
         desc: >-
             Todas as formas geométricas que produzes podem ser usadas para desbloquear upgrades - <strong>Não destruas as tuas fábricas antigas!</strong>
-            A tab dos upgrades pode ser encontrada no canto superior direito do ecrã.
+            A aba dos upgrades pode ser encontrada no canto superior direito do ecrã.
 
     massDeleteConfirm:
-        title: Confirma a eliminação
+        title: Confirmar eliminação
         desc: >-
-            Estás a apagar muitas construções (<count> para ser exato)! Tens a certeza?
+            Estás a apagar muitas construções, (<count> para ser exato)! Tens a certeza?
 
     blueprintsNotUnlocked:
         title: Ainda não está desbloqueado
@@ -324,7 +324,7 @@ ingame:
     # Notifications on the lower right
     notifications:
         newUpgrade: Está disponível um novo upgrade!
-        gameSaved: O teu jogo foi gravado.
+        gameSaved: O teu jogo foi guardado.
 
     # The "Upgrades" window
     shop:
@@ -403,7 +403,7 @@ ingame:
         blue: Azul
         yellow: Amarelo
         purple: Roxo
-        cyan: Azul-bebé
+        cyan: Ciano
         white: Branco
         uncolored: Sem cor
     shapeViewer:
@@ -466,10 +466,10 @@ buildings:
     cutter:
         default:
             name: &cutter Cortador
-            description: Corta as formas geométricas de cima para baixo e produz duas metades. <strong>Se apenas usares uma parte, certifica-te de que destrois a outra parte de forma a não encravar a produção!</strong>
+            description: Corta as formas, de cima para baixo, em duas partes. <strong>Se apenas usares uma parte, destrói a outra para não encravar a produção!</strong>
         quad:
-            name: Cortador (Quádruplo)
-            description: Corta as formas geométricas em quatro partes. <strong>Se apenas usares uma parte, certifica-te de que destrois as outras partes de forma a não encravar a produção!</strong>
+            name: Cortador (Quad)
+            description: Corta as formas geométricas em quatro partes. <strong>Se apenas usares uma parte, destrói as outras partes para não encravar a produção!</strong>
 
     rotater:
         default:
@@ -691,8 +691,8 @@ settings:
         enableTunnelSmartplace:
             title: Túneis inteligentes
             description: >-
-                Quando ativo, a colocação de túneis removerá tapetes desnecessários automaticamente.
-                Isto também permite arrastar túneis e túneis supérfluos serão removidos.
+                Quando ativado, a colocação de túneis removerá tapetes desnecessários automaticamente.
+                Isto também permite arrastar túneis e túneis em excesso serão removidos.
         vignette:
             title: Vinheta
             description: >-
@@ -714,7 +714,7 @@ settings:
         compactBuildingInfo:
             title: Informações de construções compactas
             description: >-
-                Encurta caixas de informação mostrando apenas os respetivos rácios. Caso contrário
+                Encurta caixas de informação e apenas mostra os respetivos rácios. Caso contrário
                 é mostrada a descrição e a imagem.
         disableCutDeleteWarnings:
             title: Desativar Avisos de Corte/Eliminação
@@ -724,12 +724,12 @@ settings:
 
         enableColorBlindHelper:
             title: Modo Daltónico
-            description: Ativa várias ferramentas para daltónicos.
+            description: Ativa várias ferramentas que te permitirão jogar o jogo se fores daltónico.
         rotationByBuilding:
           title: Rotação por tipo de construção
           description: >-
-            Cada construção lembra-se da última rotação que definiste.
-            Esta definição pode ser mais confortável se alternas frequentemente
+            Cada tipo construção lembra-se da última rotação que definiste.
+            Esta definição pode ser mais confortável se alterares frequentemente
             a colocação de diferentes tipos de construções.
 
 keybindings:
