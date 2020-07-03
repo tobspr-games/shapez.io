@@ -197,6 +197,7 @@ export class HUDShop extends BaseHUDPart {
         this.keyActionMapper = new KeyActionMapper(this.root, this.inputReciever);
 
         this.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.close, this);
+        this.keyActionMapper.getBinding(KEYMAPPINGS.ingame.keybindingsOverlay.pipette).add(this.close, this);
         this.keyActionMapper.getBinding(KEYMAPPINGS.ingame.menuOpenShop).add(this.close, this);
 
         this.close();
