@@ -177,6 +177,11 @@ export class ShapeDefinition extends BasicSerializableObject {
      */
     static isValidShortKeyInternal(key) {
         const sourceLayers = key.split(":");
+
+        if (sourceLayers.length === 0 || sourceLayers.length > 4) {
+            return false;
+        }
+
         let layers = [];
         for (let i = 0; i < sourceLayers.length; ++i) {
             const text = sourceLayers[i];
@@ -220,10 +225,6 @@ export class ShapeDefinition extends BasicSerializableObject {
                 return false;
             }
             layers.push(quads);
-        }
-
-        if (layers.length === 0 || layers.length > 4) {
-            return false;
         }
 
         return true;
