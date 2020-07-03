@@ -81,7 +81,7 @@ export class HUDStatistics extends BaseHUDPart {
         this.keyActionMapper = new KeyActionMapper(this.root, this.inputReciever);
 
         this.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.close, this);
-        this.keyActionMapper.getBinding(KEYMAPPINGS.ingame.keybindingsOverlay.pipette).add(this.close, this);
+        this.keyActionMapper.getBinding(KEYMAPPINGS.ingame.menuClose).add(this.close, this);
         this.keyActionMapper.getBinding(KEYMAPPINGS.ingame.menuOpenStats).add(this.close, this);
 
         /** @type {Object.<string, HUDShapeStatisticsHandle>} */
