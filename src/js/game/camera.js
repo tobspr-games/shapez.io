@@ -514,6 +514,7 @@ export class Camera extends BasicSerializableObject {
         if (mousePosition) {
             const worldPos = this.root.camera.screenToWorld(mousePosition);
             let de = worldPos.sub(this.center);
+            this.desiredCenter = null;
             this.center = this.center.add(de.multiplyScalar(delta));
         }
 
