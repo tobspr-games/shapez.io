@@ -320,6 +320,29 @@ export class HubGoals extends BasicSerializableObject {
         return true;
     }
 
+
+    /*
+    picks given number of colors that are close on the color wheel
+    */
+    generateRandomColorSet() {
+        const colorWheel = [
+            enumColors.red,
+            enumColors.yellow,
+            enumColors.green,
+            enumColors.cyan,
+            enumColors.blue,
+            enumColors.purple,
+            enumColors.red,
+            enumColors.yellow,
+        ];
+        const universalColors = [enumColors.black, enumColors.white, enumColors.uncolored];
+        const index = randomInt(0, colorWheel.length - 3);
+        const pickedColors = colorWheel.slice(index, index + 3);
+        pickedColors.push(randomChoice(universalColors));
+        return pickedColors;
+    }
+
+
     /**
      * @returns {ShapeDefinition}
      */
@@ -328,37 +351,43 @@ export class HubGoals extends BasicSerializableObject {
         /** @type {Array<import("./shape_definition").ShapeLayer>} */
         let layers = [];
 
-        // @ts-ignore
-        const randomColor = () => randomChoice(Object.values(enumColors));
-        // @ts-ignore
-        const randomShape = () => randomChoice(Object.values(enumSubShape));
+        let availableColors = this.generateRandomColorSet();
+        let pickedSymmetry = null; // pairs of quadrants that must be the same
+        let availableShapes = [enumSubShape.rect, enumSubShape.circle, enumSubShape.star];
+        if (Math.random() < 0.5) {
+        pickedSymmetry = [[0, 2], [1, 3]]; // radial symmetry
+        availableShapes.push(enumSubShape.windmill); // windmill looks good only in radial symmetry
+        } else {
+            const symmetries = [
+                [[0, 3], [1, 2]], // vertical axis
+                [[0, 1], [2, 3]], // horizontal axis
+                [[0, 2], [1], [3]], // diagonal axis
+                [[1, 3], [0], [2]], // other diagonal axis
+            ]
+            pickedSymmetry = randomChoice(symmetries);
+        }
 
-        let anyIsMissingTwo = false;
+        // @ts-ignore
+        const randomColor = () => randomChoice(availableColors);
+        // @ts-ignore
+        const randomShape = () => randomChoice(availableShapes);
 
         for (let i = 0; i < layerCount; ++i) {
             /** @type {import("./shape_definition").ShapeLayer} */
             const layer = [null, null, null, null];
 
-            for (let quad = 0; quad < 4; ++quad) {
-                layer[quad] = {
-                    subShape: randomShape(),
-                    color: randomColor(),
-                };
+            for (let j = 0; j < pickedSymmetry.length; ++j) {
+                const group = pickedSymmetry[j];
+                const shape = randomShape();
+                const color = randomColor();
+                for (let k = 0; k < group.length; ++k) {
+                    const quad = group[k];
+                    layer[quad] = {
+                        subShape: shape,
+                        color: color,
+                    };
+                }
             }
-
-            // Sometimes shapes are missing
-            if (Math.random() > 0.85) {
-                layer[randomInt(0, 3)] = null;
-            }
-
-            // Sometimes they actually are missing *two* ones!
-            // Make sure at max only one layer is missing it though, otherwise we could
-            // create an uncreateable shape
-            if (Math.random() > 0.95 && !anyIsMissingTwo) {
-                layer[randomInt(0, 3)] = null;
-                anyIsMissingTwo = true;
-            }
-
             layers.push(layer);
         }
 
