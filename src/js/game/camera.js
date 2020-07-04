@@ -514,10 +514,10 @@ export class Camera extends BasicSerializableObject {
         const mousePosition = this.root.app.mousePosition;
         if (mousePosition) {
             const worldPos = this.root.camera.screenToWorld(mousePosition);
-            let de = worldPos.sub(this.center);
-            this.desiredCenter = null;
+            const worldDelta = worldPos.sub(this.center);
             const actualDelta = this.zoomLevel / prevZoom - 1;
-            this.center = this.center.add(de.multiplyScalar(actualDelta));
+            this.center = this.center.add(worldDelta.multiplyScalar(actualDelta));
+            this.desiredCenter = null;
         }
 
         return false;
