@@ -760,6 +760,7 @@ keybindings:
 
         menuOpenShop: アップグレード
         menuOpenStats: 統計情報
+        menuClose: メニューを閉じる
 
         toggleHud: HUD切り替え
         toggleFPSInfo: FPS、デバッグ情報表示切り替え

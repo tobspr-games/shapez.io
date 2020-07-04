@@ -796,6 +796,7 @@ keybindings:
 
         menuOpenShop: Upgrades
         menuOpenStats: Statistics
+        menuClose: Close Menu
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
