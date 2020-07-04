@@ -10,7 +10,7 @@ export const CHANGELOG = [
             "Added keybinding to close menus (by isaisstillalive / Sandwichs-del)",
             "Fix rare crash regarding the buildings toolbar (by isaisstillalive)",
             "Fixed some phrases (By EnderDoom77)",
-
+            "Zoom towards mouse cursor (by Dimava)",
             "Updated the soundtrack again, it is now 20 minutes in total!",
             "Updated and added new translations (Thanks to all contributors!)",
         ],
