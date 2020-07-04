@@ -111,9 +111,7 @@ export class KeybindingsState extends TextualGameState {
 
             if (
                 // Enter
-                keyCode === 13 ||
-                // TAB
-                keyCode === 9
+                keyCode === 13
             ) {
                 // Ignore builtins
                 return;

@@ -597,6 +597,7 @@
             <key type="filename">sprites/wires/battery_medium.png</key>
             <key type="filename">sprites/wires/negative_energy.png</key>
             <key type="filename">sprites/wires/positive_energy.png</key>
+            <key type="filename">sprites/wires/waste_piled.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

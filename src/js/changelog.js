@@ -1,11 +1,26 @@
 export const CHANGELOG = [
     {
-        version: "1.1.19",
+        version: "1.2.0",
         date: "unreleased",
         entries: [
+            "WIRES",
             "Allow holding ALT in belt planner to reverse direction (by jakobhellermann)",
             "Clear cursor when trying to pipette the same building twice (by hexy)",
+            "Allow binding TAB (by swtw7466)",
+            "Added keybinding to close menus (by isaisstillalive / Sandwichs-del)",
+            "Fix rare crash regarding the buildings toolbar (by isaisstillalive)",
+            "Fixed some phrases (By EnderDoom77)",
+
             "Updated the soundtrack again, it is now 20 minutes in total!",
+            "Updated and added new translations (Thanks to all contributors!)",
+        ],
+    },
+    {
+        version: "1.1.19",
+        date: "02.07.2020",
+        entries: [
+            "There are now notifications every 15 minutes in the demo version to buy the full version (For further details and the reason, check the #surveys channel in the discord)",
+            "I'm still working on the wires update, I hope to release it mid july!",
         ],
     },
     {
