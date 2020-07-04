@@ -320,7 +320,6 @@ export class HubGoals extends BasicSerializableObject {
         return true;
     }
 
-
     /*
     picks given number of colors that are close on the color wheel
     */
@@ -342,7 +341,6 @@ export class HubGoals extends BasicSerializableObject {
         return pickedColors;
     }
 
-
     /**
      * @returns {ShapeDefinition}
      */
@@ -355,15 +353,37 @@ export class HubGoals extends BasicSerializableObject {
         let pickedSymmetry = null; // pairs of quadrants that must be the same
         let availableShapes = [enumSubShape.rect, enumSubShape.circle, enumSubShape.star];
         if (Math.random() < 0.5) {
-        pickedSymmetry = [[0, 2], [1, 3]]; // radial symmetry
-        availableShapes.push(enumSubShape.windmill); // windmill looks good only in radial symmetry
+            pickedSymmetry = [
+                // radial symmetry
+                [0, 2],
+                [1, 3],
+            ];
+            availableShapes.push(enumSubShape.windmill); // windmill looks good only in radial symmetry
         } else {
             const symmetries = [
-                [[0, 3], [1, 2]], // vertical axis
-                [[0, 1], [2, 3]], // horizontal axis
-                [[0, 2], [1], [3]], // diagonal axis
-                [[1, 3], [0], [2]], // other diagonal axis
-            ]
+                [
+                    // horizontal axis
+                    [0, 3],
+                    [1, 2],
+                ],
+                [
+                    // vertical axis
+                    [0, 1],
+                    [2, 3],
+                ],
+                [
+                    // diagonal axis
+                    [0, 2],
+                    [1],
+                    [3],
+                ],
+                [
+                    // other diagonal axis
+                    [1, 3],
+                    [0],
+                    [2],
+                ],
+            ];
             pickedSymmetry = randomChoice(symmetries);
         }
 
