@@ -500,6 +500,7 @@ export class Camera extends BasicSerializableObject {
             event.preventDefault();
             // event.stopPropagation();
         }
+        const prevZoom = this.zoomLevel;
 
         const delta = Math.sign(event.deltaY) * -0.15 * this.root.app.settings.getScrollWheelSensitivity();
         assert(Number.isFinite(delta), "Got invalid delta in mouse wheel event: " + event.deltaY);
@@ -509,6 +510,16 @@ export class Camera extends BasicSerializableObject {
 
         this.clampZoomLevel();
         this.desiredZoom = null;
+
+        const mousePosition = this.root.app.mousePosition;
+        if (mousePosition) {
+            const worldPos = this.root.camera.screenToWorld(mousePosition);
+            const worldDelta = worldPos.sub(this.center);
+            const actualDelta = this.zoomLevel / prevZoom - 1;
+            this.center = this.center.add(worldDelta.multiplyScalar(actualDelta));
+            this.desiredCenter = null;
+        }
+
         return false;
     }
 
