@@ -28,7 +28,7 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 -   Navigate into shapez.io-standalone.app/Contents/Frameworks folder
 -   This needs to be done after every rebuild or update
 -   Do this for every .framework folder
--   Step 1: Delete everything here except 'Versions' folder.
+-   Step 1: Delete everything in .framework folder except 'Versions' folder.
 -   Step 2: Navigate into .framework/Versions/A folder
 -   Step 3: Copy everything from there into .framework root folder
 -   To run game on Mac, run play.sh or just run Stapez.io.App
