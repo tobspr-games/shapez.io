@@ -13,6 +13,7 @@ import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
+import { Blueprint } from "../../blueprint";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -145,16 +146,30 @@ export class HUDMassSelector extends BaseHUDPart {
         if (this.selectedUids.size > 0) {
             const entityUids = Array.from(this.selectedUids);
 
-            // copy code relies on entities still existing, so must copy before deleting.
-            this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
+            const cutAction = () => {
+                // copy code relies on entities still existing, so must copy before deleting.
+                this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
 
-            for (let i = 0; i < entityUids.length; ++i) {
-                const uid = entityUids[i];
-                const entity = this.root.entityMgr.findByUid(uid);
-                if (!this.root.logic.tryDeleteBuilding(entity)) {
-                    logger.error("Error in mass cut, could not remove building");
-                    this.selectedUids.delete(uid);
+                for (let i = 0; i < entityUids.length; ++i) {
+                    const uid = entityUids[i];
+                    const entity = this.root.entityMgr.findByUid(uid);
+                    if (!this.root.logic.tryDeleteBuilding(entity)) {
+                        logger.error("Error in mass cut, could not remove building");
+                        this.selectedUids.delete(uid);
+                    }
                 }
+            };
+
+            const blueprint = Blueprint.fromUids(this.root, entityUids);
+            if (blueprint.canAfford(this.root)) {
+                cutAction();
+            } else {
+                const { cancel, ok } = this.root.hud.parts.dialogs.showWarning(
+                    T.dialogs.massCutInsufficientConfirm.title,
+                    T.dialogs.massCutInsufficientConfirm.desc,
+                    ["cancel:good:escape", "ok:bad:enter"]
+                );
+                ok.add(cutAction);
             }
 
             this.root.soundProxy.playUiClick();

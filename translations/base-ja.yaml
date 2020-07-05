@@ -263,6 +263,11 @@ dialogs:
         desc: >-
             多数の建造物をカットしようとしています！ (<count> 個の選択) 続行しますか？
 
+    massCutInsufficientConfirm:
+        title: カット確認
+        desc: >-
+            設置コストが不足しています！ 続行しますか？
+
     exportScreenshotWarning:
         title: スクリーンショット出力
         desc: >-

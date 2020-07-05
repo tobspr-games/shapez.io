@@ -243,6 +243,11 @@ dialogs:
         desc: >-
             You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
 
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: >-
+            The cost for pasting is insufficient! Are you sure you want to do this?
+
     blueprintsNotUnlocked:
         title: Not unlocked yet
         desc: >-
