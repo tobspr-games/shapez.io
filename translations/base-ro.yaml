@@ -140,7 +140,7 @@ mainMenu:
                 <br><br>
                 <strong>Subiectul acestei săptămâni:</strong> Construiește cea mai tare bază!
                 <br><br>
-               Treaba stă așa:<br>
+                Treaba stă așa:<br>
                 <ul class="bucketList">
                     <li>Trimite o poză cu baza ta la <strong>contest@shapez.io</strong></li>
                     <li>Puncte bonus dacă o trimiți și pe rețelele de socializare!</li>
@@ -230,8 +230,8 @@ dialogs:
     upgradesIntroduction:
         title: Deblochează Upgrade-uri
         desc: >-
-           Toate formele pe care le produci pot fi folosite să deblochezi upgrade-uri - <strong>Nu îți distruge vechile fabrici!</strong>
-           Fila upgrade-urilor poate fi găsită în colțul din dreapta sus al ecranului.
+            Toate formele pe care le produci pot fi folosite să deblochezi upgrade-uri - <strong>Nu îți distruge vechile fabrici!</strong>
+            Fila upgrade-urilor poate fi găsită în colțul din dreapta sus al ecranului.
 
     massDeleteConfirm:
         title: Confirmă ștergerea
@@ -504,7 +504,7 @@ buildings:
     trash:
         default:
             name: &trash Gunoi
-            description: Acceptă input-uri din toate părțile și le distruge. Pentru totdeauna. 
+            description: Acceptă input-uri din toate părțile și le distruge. Pentru totdeauna.
 
         storage:
             name: Depozit
@@ -674,7 +674,7 @@ settings:
         offerHints:
             title: Indicii & Tutoriale
             description: >-
-               Dacă este activat, oferă indicii și tutoriale în timpul jocului. De asemenea ascunde anumite elemente ale interfeței utilizatorului certain UI pâna la anumite nivele pentru a ușura înțelegerea jocului.
+                Dacă este activat, oferă indicii și tutoriale în timpul jocului. De asemenea ascunde anumite elemente ale interfeței utilizatorului certain UI pâna la anumite nivele pentru a ușura înțelegerea jocului.
 
         movementSpeed:
             title: Viteza de deplasare
@@ -720,9 +720,9 @@ settings:
             title: Modul pentru orbi de culoare
             description: Activează diferite unelte care îți permit să joci jocul chiar dacă ești orb de culoare.
         rotationByBuilding:
-          title: Rotație după tipul clădirii
-          description: >-
-            Fiecare tip de clădire ține minte ultima rotație pe care i-ai setat-o individual. Aceasta poate fi mai confortabil dacă schimbi frecvent între tipurile clădirilor.
+            title: Rotație după tipul clădirii
+            description: >-
+                Fiecare tip de clădire ține minte ultima rotație pe care i-ai setat-o individual. Aceasta poate fi mai confortabil dacă schimbi frecvent între tipurile clădirilor.
 
 keybindings:
     title: Tastele setate
