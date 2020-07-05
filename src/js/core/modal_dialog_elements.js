@@ -376,11 +376,12 @@ export class DialogWithForm extends Dialog {
             html += formElements[i].getHtml();
         }
 
-        const buttons = [];
+        let buttons = null;
         if (extraButton) {
-            buttons.push(extraButton);
+            buttons = [extraButton, "cancel", confirmButton];
+        } else {
+            buttons = ["cancel", confirmButton];
         }
-        buttons.push("cancel:bad", confirmButton);
         super({
             app,
             title: title,
