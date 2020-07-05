@@ -1,8 +1,9 @@
+import { ClickDetector } from "../../../core/click_detector";
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
-import { makeDiv, removeAllChildren, pulseAnimation, clamp } from "../../../core/utils";
+import { clamp, makeDiv, removeAllChildren } from "../../../core/utils";
 import {
     enumDirectionToAngle,
     enumDirectionToVector,
@@ -15,7 +16,6 @@ import { defaultBuildingVariant } from "../../meta_building";
 import { THEME } from "../../theme";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { HUDBuildingPlacerLogic } from "./building_placer_logic";
-import { ClickDetector } from "../../../core/click_detector";
 
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
@@ -400,9 +400,15 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             for (let acceptorSlotIndex = 0; acceptorSlotIndex < slots.length; ++acceptorSlotIndex) {
                 const slot = slots[acceptorSlotIndex];
 
+                // Only draw same layer slots
+                if (slot.layer !== this.root.currentLayer) {
+                    continue;
+                }
+
                 const acceptorSlotWsTile = staticComp.localTileToWorld(slot.pos);
                 const acceptorSlotWsPos = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
 
+                // Go over all slots
                 for (
                     let acceptorDirectionIndex = 0;
                     acceptorDirectionIndex < slot.directions.length;
@@ -411,31 +417,46 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     const direction = slot.directions[acceptorDirectionIndex];
                     const worldDirection = staticComp.localDirectionToWorld(direction);
 
+                    // Figure out which tile ejects to this slot
                     const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
-                    let sprite = goodArrowSprite;
-                    let alpha = 0.3;
 
+                    let isBlocked = false;
+                    let isConnected = false;
+
+                    // Find all entities which are on that tile
                     const sourceEntities = this.root.map.getLayersContentsMultipleXY(
                         sourceTile.x,
                         sourceTile.y
                     );
+
+                    // Check for every entity:
                     for (let i = 0; i < sourceEntities.length; ++i) {
                         const sourceEntity = sourceEntities[i];
-                        sprite = badArrowSprite;
                         const sourceEjector = sourceEntity.components.ItemEjector;
                         const sourceStaticComp = sourceEntity.components.StaticMapEntity;
                         const ejectorAcceptLocalTile = sourceStaticComp.worldToLocalTile(acceptorSlotWsTile);
-                        if (
-                            sourceEjector &&
-                            sourceEjector.anySlotEjectsToLocalTile(
-                                ejectorAcceptLocalTile,
-                                this.root.currentLayer
-                            )
-                        ) {
-                            sprite = goodArrowSprite;
+
+                        // If this entity is on the same layer as the slot - if so, it can either be
+                        // connected, or it can not be connected and thus block the input
+                        if (sourceEntity.layer === slot.layer) {
+                            if (
+                                sourceEjector &&
+                                sourceEjector.anySlotEjectsToLocalTile(
+                                    ejectorAcceptLocalTile,
+                                    this.root.currentLayer
+                                )
+                            ) {
+                                // This one is connected, all good
+                                isConnected = true;
+                            } else {
+                                // This one is blocked
+                                isBlocked = true;
+                            }
                         }
-                        alpha = 1.0;
                     }
+
+                    const alpha = isConnected || isBlocked ? 1.0 : 0.3;
+                    const sprite = isBlocked ? badArrowSprite : goodArrowSprite;
 
                     parameters.context.globalAlpha = alpha;
                     drawRotatedSprite({
@@ -454,8 +475,12 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         if (ejectorComp) {
             const slots = ejectorComp.slots;
+
+            // Go over all slots
             for (let ejectorSlotIndex = 0; ejectorSlotIndex < slots.length; ++ejectorSlotIndex) {
                 const slot = slots[ejectorSlotIndex];
+
+                // Only draw same layer slots
                 if (slot.layer !== this.root.currentLayer) {
                     continue;
                 }
@@ -466,31 +491,41 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 const ejectorSLotWsPos = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
                 const ejectorSlotWsDirection = staticComp.localDirectionToWorld(slot.direction);
 
-                let sprite = goodArrowSprite;
-                let alpha = 0.3;
+                let isBlocked = false;
+                let isConnected = false;
 
+                // Find all entities which are on that tile
                 const destEntities = this.root.map.getLayersContentsMultipleXY(
                     ejectorSlotWsTile.x,
                     ejectorSlotWsTile.y
                 );
 
+                // Check for every entity:
                 for (let i = 0; i < destEntities.length; ++i) {
-                    alpha = 1;
                     const destEntity = destEntities[i];
                     const destAcceptor = destEntity.components.ItemAcceptor;
                     const destStaticComp = destEntity.components.StaticMapEntity;
-                    if (destAcceptor) {
+
+                    // If this entity is on the same layer as the slot - if so, it can either be
+                    // connected, or it can not be connected and thus block the input
+                    if (destEntity.layer === slot.layer) {
                         const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
                         const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
                         if (
+                            destAcceptor &&
                             destAcceptor.findMatchingSlot(destLocalTile, destLocalDir, this.root.currentLayer)
                         ) {
-                            sprite = goodArrowSprite;
+                            // This one is connected, all good
+                            isConnected = true;
                         } else {
-                            sprite = badArrowSprite;
+                            // This one is blocked
+                            isBlocked = true;
                         }
                     }
                 }
+
+                const alpha = isConnected || isBlocked ? 1.0 : 0.3;
+                const sprite = isBlocked ? badArrowSprite : goodArrowSprite;
 
                 parameters.context.globalAlpha = alpha;
                 drawRotatedSprite({
