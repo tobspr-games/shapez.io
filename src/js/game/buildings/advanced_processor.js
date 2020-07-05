@@ -2,14 +2,14 @@ import { formatItemsPerSecond } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { enumItemType } from "../base_item";
+import { EnergyConsumerComponent } from "../components/energy_consumer";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
-import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
-import { EnergyConsumerComponent } from "../components/energy_consumer";
+import { enumLayer, GameRoot } from "../root";
 
 export class MetaAdvancedProcessorBuilding extends MetaBuilding {
     constructor() {
@@ -66,7 +66,7 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
             new EnergyConsumerComponent({
                 bufferSize: 3,
                 perCharge: 0.25,
-                batteryPosition: new Vector(4, 6.5),
+                batteryPosition: new Vector(0.63, 0.7),
                 acceptorSlotIndex: 1,
                 ejectorSlotIndex: 1,
             })

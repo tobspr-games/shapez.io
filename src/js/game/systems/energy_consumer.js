@@ -72,11 +72,7 @@ export class EnergyConsumerSystem extends GameSystemWithFilter {
         const staticComp = entity.components.StaticMapEntity;
         const consumerComp = entity.components.EnergyConsumer;
 
-        const position = staticComp
-            .getTileSpaceBounds()
-            .getCenter()
-            .toWorldSpace()
-            .add(consumerComp.batteryPosition);
+        const position = staticComp.localTileToWorld(consumerComp.batteryPosition).toWorldSpaceCenterOfTile();
 
         if (consumerComp.hasTooMuchWastePiled()) {
             this.piledWasteSprite.drawCachedCentered(parameters, position.x, position.y, 12);
