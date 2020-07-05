@@ -98,7 +98,7 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        hoursAndMinutesShort: <hours>h <minutes>m
 
         xMinutes: <x> minute
 
@@ -667,103 +667,97 @@ settings:
                 Dacă ai un monitor cu 144hz, schimbă refresh rate-ul aici și jocul va simula la refresh rate-uri mai mari. Acesta poate de fapt scădea FPS-urile dacă calculatorul dumneavoastră este prea lent.
 
         alwaysMultiplace:
-            title: Multiplace
+            title: Plasare multiplă
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                Dacă este activat, toate construcțiile vor sta selectate până le anulezi. Asta este echivalent cu ținutul SHIFT-ului apăsat permanent.
 
         offerHints:
-            title: Hints & Tutorials
+            title: Indicii & Tutoriale
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+               Dacă este activat, oferă indicii și tutoriale în timpul jocului. De asemenea ascunde anumite elemente ale interfeței utilizatorului certain UI pâna la anumite nivele pentru a ușura înțelegerea jocului.
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: Viteza de deplasare
+            description: Modifică viteza cât de rapid se mișcă vederea folosind tastatura.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Foarte încet
+                slow: Încet
+                regular: Normal
+                fast: Rapid
+                super_fast: Foarte Rapid
+                extremely_fast: Extrem de Rapid
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Tunele Inteligente
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Când este activat, plasarea tunelelor va elimina automat benzile nefolositoare.
+                Aceasta permite de asemenea tragerea tunelelor și tunelele în exces vor fi șterse.
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Dacă este activat, înnegrește colțurile ecranului și face textul mai ușor de citit.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Intervalul de salvare automată
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Controlează cât de des jocul se salvează automat. Poți de asemenea să o dezactivezi total aici.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minut
+                two_minutes: 2 Minute
+                five_minutes: 5 Minute
+                ten_minutes: 10 Minute
+                twenty_minutes: 20 Minute
+                disabled: Dezactivat
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Informații ale construcțiilor compacte
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Shortens info boxes for buildings by only showing their ratios. Otherwise adescription and image is shown.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Dezactivre Avertizări Tăiere/Ștergere
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Dezactivează avertizările dialogului adus când sunt șterse mai mult de 100 de entități.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Modul pentru orbi de culoare
+            description: Activează diferite unelte care îți permit să joci jocul chiar dacă ești orb de culoare.
         rotationByBuilding:
-          title: Rotation by building type
+          title: Rotație după tipul clădirii
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            Fiecare tip de clădire ține minte ultima rotație pe care i-ai setat-o individual. Aceasta poate fi mai confortabil dacă schimbi frecvent între tipurile clădirilor.
 
 keybindings:
-    title: Keybindings
+    title: Tastele setate
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Indiciu: Asigură-te că foloseșto CTRL, SHIFT și ALT! Ele activează diferite opțiuni de plasare.
 
     resetKeybindings: Reset Keyinbindings
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Aplicație
+        ingame: Joc
+        navigation: Navigație
+        placement: Plasare
+        massSelect: Selectare în masă
+        buildings: Comenzi rapide pentru clădiri
+        placementModifiers: Modificatori de plasare
 
     mappings:
         confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        centerMap: Center Map
+        back: Înapoi
+        mapMoveUp: Mută în sus
+        mapMoveRight: Mută în dreapta
+        mapMoveDown: Mută în joc
+        mapMoveLeft: Mută în stânga
+        centerMap: Centrează harta
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: Mărește imaginea
+        mapZoomOut: Micșorează imaginea
+        createMarker: Creează waypoint
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Upgrade-uri
+        menuOpenStats: Statistici
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
+        toggleHud: Comută interfața
+        toggleFPSInfo: Comută FPS and Debug Info
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -775,57 +769,57 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        rotateWhilePlacing: Rotate
+        rotateWhilePlacing: Rotește
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
-        cycleBuildings: Cycle Buildings
+            Modifier: Rotește CCW în schimb
+        cycleBuildingVariants: Ciclează Variante
+        confirmMassDelete: Confirmă ștergere în masă
+        cycleBuildings: Ciclează clădiri
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
+        massSelectStart: Ține apăsat și trage pentru a începe
+        massSelectSelectMultiple: Selectează zone multiple
+        massSelectCopy: Copiază zona
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
+        placementDisableAutoOrientation: Dezactivați orientarea automată
+        placeMultiple: Rămâneți în modul de plasare
+        placeInverse: Inversați orientarea automată a benzii
+        pasteLastBlueprint: Lipește ultimul plan
+        massSelectCut: Taie zona
+        exportScreenshot: Exportați întreaga bază ca imagine
+        mapMoveFaster: Deplasează-te mai repede
+        lockBeltDirection: Activează planificator de benzi
+        switchDirectionLockSide: "Planificator: Schimbă direcția"
         pipette: Pipette
 
 about:
-    title: About this Game
+    title: Despre acest joc
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Acest joc este open source și dezvoltat de <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (acesta sunt eu).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Dacă vrei să contribui, verifică <a href="<githublink>"
+        target="_blank">shapez.io pe github</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        Acest joc nu ar fi fost posibil fără minunata comunitate de pe discord
+        pe lângă jocurile mele - Chiar ar trebui să te alături <a href="<discordlink>"
+        target="_blank">server-ului de discord</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Coloana sonoră a fost făcută de <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Este uimitor.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        În final, mii de mulțumiri prietenului meu <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Fără sesiunile noastre de
+        factorio acest joc nu ar fi existat niciodată.
 
 changelog:
-    title: Changelog
+    title: Lista de schimbări
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Restabilirea savegame-urilor
+        importingGames: Importarea savegame-urilor
+        oneGameLimit: Limitat la un savegame
+        customizeKeybindings: Taste customizabile
+        exportingBase: Exportul întregii baze ca imagine
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Nu este valabil în demo.
