@@ -36,12 +36,12 @@ const $ = require("gulp-load-plugins")({
 const envVars = [
     "SHAPEZ_CLI_SERVER_HOST",
     // "SHAPEZ_CLI_PHONEGAP_KEY",
+    "SHAPEZ_CLI_ALPHA_FTP_USER",
+    "SHAPEZ_CLI_ALPHA_FTP_PW",
     "SHAPEZ_CLI_STAGING_FTP_USER",
     "SHAPEZ_CLI_STAGING_FTP_PW",
     "SHAPEZ_CLI_LIVE_FTP_USER",
     "SHAPEZ_CLI_LIVE_FTP_PW",
-    // "SHAPEZ_CLI_TRANSREPORT_FTP_USER",
-    // "SHAPEZ_CLI_TRANSREPORT_FTP_PW",
 ];
 
 for (let i = 0; i < envVars.length; ++i) {
@@ -300,6 +300,10 @@ gulp.task(
 );
 
 // Deploying!
+gulp.task(
+    "main.deploy.alpha",
+    gulp.series("utils.requireCleanWorkingTree", "build.staging", "ftp.upload.alpha")
+);
 gulp.task(
     "main.deploy.staging",
     gulp.series("utils.requireCleanWorkingTree", "build.staging", "ftp.upload.staging")
