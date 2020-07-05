@@ -52,11 +52,11 @@
             opacity: 1;
         }
 
-        .deleteButton {
+        .editButton {
             @include S(width, 10px);
             @include S(height, 10px);
             @include S(margin-left, 4px);
-            background: uiResource("icons/close.png") center center / 60% no-repeat;
+            background: uiResource("icons/edit_key.png") center center / 60% no-repeat;
             pointer-events: all;
             cursor: pointer;
 

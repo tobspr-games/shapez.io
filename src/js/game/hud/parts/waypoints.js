@@ -168,8 +168,8 @@ export class HUDWaypoints extends BaseHUDPart {
             }
 
             if (this.isWaypointDeletable(waypoint)) {
-                const deleteButton = makeDiv(element, null, ["deleteButton"]);
-                this.trackClicks(deleteButton, () => this.requestEditMarker(waypoint));
+                const editButton = makeDiv(element, null, ["editButton"]);
+                this.trackClicks(editButton, () => this.requestEditMarker(waypoint));
             }
 
             if (!waypoint.label) {
