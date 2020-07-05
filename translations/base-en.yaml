@@ -246,7 +246,7 @@ dialogs:
     massCutInsufficientConfirm:
         title: Confirm cut
         desc: >-
-            The cost for pasting is insufficient! Are you sure you want to do this?
+            You can not afford to paste this area! Are you sure you want to cut it?
 
     blueprintsNotUnlocked:
         title: Not unlocked yet
