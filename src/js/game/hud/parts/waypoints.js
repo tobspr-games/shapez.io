@@ -272,18 +272,7 @@ export class HUDWaypoints extends BaseHUDPart {
             zoomLevel: Math.max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
         });
 
-        // Sort waypoints by name
-        this.waypoints.sort((a, b) => {
-            if (!a.label) {
-                return -1;
-            }
-            if (!b.label) {
-                return 1;
-            }
-            return this.getWaypointLabel(a)
-                .padEnd(MAX_LABEL_LENGTH, "0")
-                .localeCompare(this.getWaypointLabel(b).padEnd(MAX_LABEL_LENGTH, "0"));
-        });
+        this.sort();
 
         // Show notification about creation
         this.root.hud.signals.notification.dispatch(
@@ -302,6 +291,23 @@ export class HUDWaypoints extends BaseHUDPart {
         if (this.domAttach) {
             this.domAttach.update(this.root.camera.getIsMapOverlayActive());
         }
+    }
+
+    /**
+     * Sort waypoints by name
+     */
+    sort() {
+        this.waypoints.sort((a, b) => {
+            if (!a.label) {
+                return -1;
+            }
+            if (!b.label) {
+                return 1;
+            }
+            return this.getWaypointLabel(a)
+                .padEnd(MAX_LABEL_LENGTH, "0")
+                .localeCompare(this.getWaypointLabel(b).padEnd(MAX_LABEL_LENGTH, "0"));
+        });
     }
 
     /**
