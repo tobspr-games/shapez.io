@@ -23,6 +23,9 @@ steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
 
+    # This is the text shown above the discord link
+    discordLink: Official Discord - Chat with me!
+
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
@@ -34,38 +37,49 @@ steamPage:
 
         Since the demand rises, you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Obviously shapes can get boring, so you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
 
-
-        [b]Standalone Advantages[/b]
+        [img]{STEAM_APP_IMAGE}/extras/header_standalone_advantages.png[/img]
 
         [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
+            [*] Coming soon: Wires & Energy! Roughly end of July 2020.
+            [*] Coming soon: More Levels
             [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
             [*] More settings
             [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
         [/list]
 
-        [b]Planned features & Community suggestions[/b]
+        [img]{STEAM_APP_IMAGE}/extras/header_future_updates.png[/img]
 
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        I am updating the game very often and try to push an update at least every week!
 
         [list]
-            [*] Wires!
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
             [*] Different maps, and maybe map obstacles
+            [*] Story mode where buildings cost shapes
             [*] Configurable map creation (Edit number and size of patches, seed, and more)
             [*] More types of shapes
             [*] More performance improvements (Although the game already runs pretty good!)
             [*] And much more!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [img]{STEAM_APP_IMAGE}/extras/header_open_source.png[/img]
+
+        Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        Be sure to check out my trello board for the full roadmap! 
+
+        [img]{STEAM_APP_IMAGE}/extras/header_links.png[/img]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
 
 global:
     loading: Loading
