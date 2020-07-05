@@ -145,30 +145,6 @@ export class MetaBuilding {
     }
 
     /**
-     * Creates the entity at the given location
-     * @param {object} param0
-     * @param {GameRoot} param0.root
-     * @param {Vector} param0.origin Origin tile
-     * @param {number=} param0.rotation Rotation
-     * @param {number} param0.originalRotation Original Rotation
-     * @param {number} param0.rotationVariant Rotation variant
-     * @param {string} param0.variant
-     */
-    createAndPlaceEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
-        const entity = this.createEntity({
-            root,
-            origin,
-            rotation,
-            originalRotation,
-            rotationVariant,
-            variant,
-        });
-        root.map.placeStaticEntity(entity);
-        root.entityMgr.registerEntity(entity);
-        return entity;
-    }
-
-    /**
      * Creates the entity without placing it
      * @param {object} param0
      * @param {GameRoot} param0.root

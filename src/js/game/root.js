@@ -27,6 +27,7 @@ import { ShapeDefinition } from "./shape_definition";
 import { BaseItem } from "./base_item";
 import { DynamicTickrate } from "./dynamic_tickrate";
 import { KeyActionMapper } from "./key_action_mapper";
+import { Vector } from "../core/vector";
 /* typehints:end */
 
 const logger = createLogger("game/root");
@@ -169,6 +170,14 @@ export class GameRoot {
             bulkOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
 
             editModeChanged: /** @type {TypedSignal<[enumLayer]>} */ (new Signal()),
+
+            // Called to check if an entity can be placed, second parameter is an additional offset.
+            // Use to introduce additional placement checks
+            prePlacementCheck: /** @type {TypedSignal<[Entity, Vector]>} */ (new Signal()),
+
+            // Called before actually placing an entity, use to perform additional logic
+            // for freeing space before actually placing.
+            freeEntityAreaBeforeBuild: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
         };
 
         // RNG's

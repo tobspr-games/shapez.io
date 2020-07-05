@@ -276,14 +276,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         staticComp.tileSize = metaBuilding.getDimensions(this.currentVariant.get());
         metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
 
-        // Check if we could place the buildnig
-        const canBuild = this.root.logic.checkCanPlaceBuilding({
-            origin: mouseTile,
-            rotation,
-            rotationVariant,
-            building: metaBuilding,
-            variant: this.currentVariant.get(),
-        });
+        const canBuild = this.root.logic.checkCanPlaceEntity(this.fakeEntity);
 
         // Fade in / out
         parameters.context.lineWidth = 1;

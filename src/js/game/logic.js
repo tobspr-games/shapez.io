@@ -1,12 +1,10 @@
-import { GameRoot, enumLayer, arrayLayers } from "./root";
-import { Entity } from "./entity";
-import { Vector, enumDirectionToVector, enumDirection } from "../core/vector";
-import { MetaBuilding } from "./meta_building";
-import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { createLogger } from "../core/logging";
-import { MetaBeltBaseBuilding, arrayBeltVariantToRotation } from "./buildings/belt_base";
-import { SOUNDS } from "../platform/sound";
 import { round2Digits } from "../core/utils";
+import { enumDirection, enumDirectionToVector, Vector } from "../core/vector";
+import { Entity } from "./entity";
+import { MetaBuilding } from "./meta_building";
+import { enumLayer, GameRoot } from "./root";
+import { STOP_PROPAGATION } from "../core/signal";
 
 const logger = createLogger("ingame/logic");
 
@@ -47,125 +45,41 @@ export class GameLogic {
     }
 
     /**
-     * @param {object} param0
-     * @param {Vector} param0.origin
-     * @param {number} param0.rotation
-     * @param {number} param0.rotationVariant
-     * @param {string} param0.variant
-     * @param {MetaBuilding} param0.building
-     * @returns {boolean}
+     * Checks if the given entity can be placed
+     * @param {Entity} entity
+     * @param {Vector=} offset Optional, move the entity by the given offset first
+     * @returns {boolean} true if the entity could be placed there
      */
-    isAreaFreeToBuild({ origin, rotation, rotationVariant, variant, building }) {
-        const checker = new StaticMapEntityComponent({
-            origin,
-            tileSize: building.getDimensions(variant),
-            rotation,
-            blueprintSpriteKey: "",
-        });
+    checkCanPlaceEntity(entity, offset = null) {
+        // Compute area of the building
+        const rect = entity.components.StaticMapEntity.getTileSpaceBounds();
+        if (offset) {
+            rect.x += offset.x;
+            rect.y += offset.y;
+        }
 
-        const layer = building.getLayer();
-        const rect = checker.getTileSpaceBounds();
-
+        // Check the whole area of the building
         for (let x = rect.x; x < rect.x + rect.w; ++x) {
             for (let y = rect.y; y < rect.y + rect.h; ++y) {
-                const contents = this.root.map.getLayerContentXY(x, y, layer);
-                if (contents) {
-                    if (
-                        !this.checkCanReplaceBuilding({
-                            original: contents,
-                            building,
-                            rotation,
-                            rotationVariant,
-                        })
-                    ) {
-                        // Content already has same rotation
-                        return false;
-                    }
-                }
-
-                // Check for any pins which are in the way
-                if (layer === enumLayer.wires) {
-                    const regularContents = this.root.map.getLayerContentXY(x, y, enumLayer.regular);
-                    if (regularContents) {
-                        const staticComp = regularContents.components.StaticMapEntity;
-                        const pinComponent = regularContents.components.WiredPins;
-                        if (pinComponent) {
-                            const pins = pinComponent.slots;
-                            for (let i = 0; i < pins.length; ++i) {
-                                const pos = staticComp.localTileToWorld(pins[i].pos);
-                                // Occupied by a pin
-                                if (pos.x === x && pos.y === y) {
-                                    return false;
-                                }
-                            }
-                        }
-                    }
+                // Check if there is any direct collision
+                const otherEntity = this.root.map.getLayerContentXY(x, y, entity.layer);
+                if (otherEntity && !otherEntity.components.ReplaceableMapEntity) {
+                    // This one is a direct blocker
+                    return false;
                 }
             }
         }
-        return true;
-    }
 
-    /**
-     * Checks if the given building can be replaced by another
-     * @param {object} param0
-     * @param {Entity} param0.original
-     * @param {number} param0.rotation
-     * @param {number} param0.rotationVariant
-     * @param {MetaBuilding} param0.building
-     * @returns {boolean}
-     */
-    checkCanReplaceBuilding({ original, building, rotation, rotationVariant }) {
-        if (!original.components.ReplaceableMapEntity) {
-            // Can not get replaced at all
+        // Perform additional placement checks
+        if (this.root.signals.prePlacementCheck.dispatch(entity, offset) === STOP_PROPAGATION) {
             return false;
-        }
-
-        if (building.getLayer() !== original.layer) {
-            // Layer mismatch
-            return false;
-        }
-
-        const staticComp = original.components.StaticMapEntity;
-        assert(staticComp, "Building is not static");
-        const beltComp = original.components.Belt;
-        if (beltComp && building instanceof MetaBeltBaseBuilding) {
-            // Its a belt, check if it differs in either rotation or rotation variant
-            if (staticComp.rotation !== rotation) {
-                return true;
-            }
-            if (beltComp.direction !== arrayBeltVariantToRotation[rotationVariant]) {
-                return true;
-            }
         }
 
         return true;
     }
 
     /**
-     * @param {object} param0
-     * @param {Vector} param0.origin
-     * @param {number} param0.rotation
-     * @param {number} param0.rotationVariant
-     * @param {string} param0.variant
-     * @param {MetaBuilding} param0.building
-     */
-    checkCanPlaceBuilding({ origin, rotation, rotationVariant, variant, building }) {
-        if (!building.getIsUnlocked(this.root)) {
-            return false;
-        }
-
-        return this.isAreaFreeToBuild({
-            origin,
-            rotation,
-            rotationVariant,
-            variant,
-            building,
-        });
-    }
-
-    /**
-     *
+     * Attempts to place the given building
      * @param {object} param0
      * @param {Vector} param0.origin
      * @param {number} param0.rotation
@@ -176,42 +90,49 @@ export class GameLogic {
      * @returns {Entity}
      */
     tryPlaceBuilding({ origin, rotation, rotationVariant, originalRotation, variant, building }) {
-        if (this.checkCanPlaceBuilding({ origin, rotation, rotationVariant, variant, building })) {
-            // Remove any removeable entities below
-            const checker = new StaticMapEntityComponent({
-                origin,
-                tileSize: building.getDimensions(variant),
-                rotation,
-                blueprintSpriteKey: "",
-            });
-
-            const layer = building.getLayer();
-
-            const rect = checker.getTileSpaceBounds();
-            for (let x = rect.x; x < rect.x + rect.w; ++x) {
-                for (let y = rect.y; y < rect.y + rect.h; ++y) {
-                    const contents = this.root.map.getLayerContentXY(x, y, layer);
-                    if (contents) {
-                        if (!this.tryDeleteBuilding(contents)) {
-                            logger.error("Building has replaceable component but is also unremovable");
-                            return null;
-                        }
-                    }
-                }
-            }
-
-            const entity = building.createAndPlaceEntity({
-                root: this.root,
-                origin,
-                rotation,
-                rotationVariant,
-                originalRotation,
-                variant,
-            });
-
+        const entity = building.createEntity({
+            root: this.root,
+            origin,
+            rotation,
+            originalRotation,
+            rotationVariant,
+            variant,
+        });
+        if (this.checkCanPlaceEntity(entity)) {
+            this.freeEntityAreaBeforeBuild(entity);
+            this.root.map.placeStaticEntity(entity);
+            this.root.entityMgr.registerEntity(entity);
             return entity;
         }
         return null;
+    }
+
+    /**
+     * Removes all entities with a RemovableMapEntityComponent which need to get
+     * removed before placing this entity
+     * @param {Entity} entity
+     */
+    freeEntityAreaBeforeBuild(entity) {
+        const staticComp = entity.components.StaticMapEntity;
+        const rect = staticComp.getTileSpaceBounds();
+        // Remove any removeable colliding entities on the same layer
+        for (let x = rect.x; x < rect.x + rect.w; ++x) {
+            for (let y = rect.y; y < rect.y + rect.h; ++y) {
+                const contents = this.root.map.getLayerContentXY(x, y, entity.layer);
+                if (contents) {
+                    assertAlways(
+                        contents.components.ReplaceableMapEntity,
+                        "Tried to replace non-repleaceable entity"
+                    );
+                    if (!this.tryDeleteBuilding(contents)) {
+                        assertAlways(false, "Tried to replace non-repleaceable entity #2");
+                    }
+                }
+            }
+        }
+
+        // Perform other callbacks
+        this.root.signals.freeEntityAreaBeforeBuild.dispatch(entity);
     }
 
     /**
@@ -266,6 +187,7 @@ export class GameLogic {
         /** @type {AcceptorsAffectingTile} */
         let acceptors = [];
 
+        // Well .. please ignore this code! :D
         for (let dx = -1; dx <= 1; ++dx) {
             for (let dy = -1; dy <= 1; ++dy) {
                 if (Math.abs(dx) + Math.abs(dy) !== 1) {
