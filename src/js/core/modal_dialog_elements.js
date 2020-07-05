@@ -366,20 +366,26 @@ export class DialogWithForm extends Dialog {
      * @param {string} param0.title
      * @param {string} param0.desc
      * @param {string=} param0.confirmButton
+     * @param {string=} param0.extraButton
      * @param {Array<FormElement>} param0.formElements
      */
-    constructor({ app, title, desc, formElements, confirmButton = "ok:good" }) {
+    constructor({ app, title, desc, formElements, confirmButton = "ok:good", extraButton = null }) {
         let html = "";
         html += desc + "<br>";
         for (let i = 0; i < formElements.length; ++i) {
             html += formElements[i].getHtml();
         }
 
+        const buttons = [];
+        if (extraButton) {
+            buttons.push(extraButton);
+        }
+        buttons.push("cancel:bad", confirmButton);
         super({
             app,
             title: title,
             contentHTML: html,
-            buttons: ["cancel:bad", confirmButton],
+            buttons: buttons,
             type: "info",
             closeButton: true,
         });
