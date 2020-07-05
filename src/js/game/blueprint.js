@@ -52,7 +52,8 @@ export class Blueprint {
         }
 
         averagePosition.divideScalarInplace(uids.length);
-        const blueprintOrigin = averagePosition.floor();
+        const blueprintOrigin = averagePosition.subScalars(0.5, 0.5).floor();
+
         for (let i = 0; i < uids.length; ++i) {
             newEntities[i].components.StaticMapEntity.origin.subInplace(blueprintOrigin);
         }

@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
 
     # This is the text shown above the discord link
     discordLink: Official Discord - Chat with me!
@@ -33,36 +33,40 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Since the demand rises, you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
         Obviously shapes can get boring, so you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned! 
+
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
         [img]{STEAM_APP_IMAGE}/extras/header_standalone_advantages.png[/img]
 
         [list]
-            [*] Coming soon: Wires & Energy! Roughly end of July 2020.
-            [*] Coming soon: More Levels
             [*] Dark Mode
             [*] Unlimited Waypoints
             [*] Unlimited Savegames
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
         [img]{STEAM_APP_IMAGE}/extras/header_future_updates.png[/img]
 
-        I am updating the game very often and try to push an update at least every week!
+        I am updating the game very often and trying to push an update at least every week!
 
         [list]
-            [*] Different maps, and maybe map obstacles
-            [*] Story mode where buildings cost shapes
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty good!)
             [*] And much more!
         [/list]
 

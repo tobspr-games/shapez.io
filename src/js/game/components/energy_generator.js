@@ -3,7 +3,7 @@ import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { ShapeItem } from "../items/shape_item";
 
-const maxQueueSize = 20;
+const maxQueueSize = 4;
 
 export class EnergyGeneratorComponent extends Component {
     static getId() {
@@ -14,16 +14,24 @@ export class EnergyGeneratorComponent extends Component {
         return {
             requiredKey: types.nullable(types.string),
             itemsInQueue: types.uint,
+            wasteAcceptorSlotIndex: types.uint,
         };
+    }
+
+    duplicateWithoutContents() {
+        return new EnergyGeneratorComponent({
+            requiredKey: null,
+            wasteAcceptorSlotIndex: this.wasteAcceptorSlotIndex,
+        });
     }
 
     /**
      *
      * @param {object} param0
-     * @param {string} param0.requiredKey Which shape this generator needs, can be null if not computed yet
-     * @param {number} param0.acceptorSlotIndex
+     * @param {string=} param0.requiredKey Which shape this generator needs, can be null if not computed yet
+     * @param {number} param0.wasteAcceptorSlotIndex Which slot accepts the waste
      */
-    constructor({ requiredKey, acceptorSlotIndex = 0 }) {
+    constructor({ requiredKey, wasteAcceptorSlotIndex = 0 }) {
         super();
         this.requiredKey = requiredKey;
 
@@ -37,7 +45,7 @@ export class EnergyGeneratorComponent extends Component {
          * Stores which slot accepts the waste
          * @type {number}
          */
-        this.acceptorSlotIndex = acceptorSlotIndex;
+        this.wasteAcceptorSlotIndex = wasteAcceptorSlotIndex;
     }
 
     /**
@@ -46,7 +54,7 @@ export class EnergyGeneratorComponent extends Component {
      * @param {number} slot
      */
     tryTakeItem(item, slot) {
-        if (slot === this.acceptorSlotIndex) {
+        if (slot === this.wasteAcceptorSlotIndex) {
             // this is the acceptor slot on the wires layer
             // just destroy it
             return true;

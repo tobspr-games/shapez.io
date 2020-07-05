@@ -12,14 +12,25 @@ export class EnergyConsumerComponent extends Component {
         return {
             bufferSize: types.float,
             perCharge: types.float,
-            stored: types.float,
-            piledOutput: types.float,
             batteryPosition: types.vector,
             energyType: types.enum(enumItemType),
             wasteType: types.enum(enumItemType),
             acceptorSlotIndex: types.uint,
             ejectorSlotIndex: types.uint,
+
+            stored: types.float,
+            piledOutput: types.float,
         };
+    }
+
+    duplicateWithoutContents() {
+        return new EnergyConsumerComponent({
+            bufferSize: this.bufferSize,
+            perCharge: this.perCharge,
+            batteryPosition: this.batteryPosition.copy(),
+            acceptorSlotIndex: this.acceptorSlotIndex,
+            ejectorSlotIndex: this.ejectorSlotIndex,
+        });
     }
 
     /**

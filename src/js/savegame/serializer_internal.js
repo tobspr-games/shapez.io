@@ -1,15 +1,9 @@
-/* typehints:start */
-import { GameRoot } from "../game/root";
-/* typehints:end */
-
 import { gComponentRegistry } from "../core/global_registries";
-import { createLogger } from "../core/logging";
 import { Entity } from "../game/entity";
+import { enumLayer, GameRoot } from "../game/root";
 
 // Internal serializer methods
 export class SerializerInternal {
-    constructor() {}
-
     /**
      * Serializes an array of entities
      * @param {Array<Entity>} array
@@ -45,6 +39,11 @@ export class SerializerInternal {
     deserializeEntity(root, payload) {
         const entity = new Entity(root);
         this.deserializeComponents(entity, payload.components);
+        entity.layer = payload.layer;
+
+        if (!enumLayer[payload.layer]) {
+            assert(false, "Invalid layer: " + payload.layer);
+        }
 
         root.entityMgr.registerEntity(entity, payload.uid);
 

@@ -81,6 +81,7 @@ export class MetaEnergyGenerator extends MetaBuilding {
                         layer: enumLayer.wires,
                     },
                 ],
+                instantEject: true,
             })
         );
 
@@ -88,7 +89,7 @@ export class MetaEnergyGenerator extends MetaBuilding {
             new EnergyGeneratorComponent({
                 // Set by the energy generator system later
                 requiredKey: null,
-                acceptorSlotIndex: 2,
+                wasteAcceptorSlotIndex: 2,
             })
         );
 

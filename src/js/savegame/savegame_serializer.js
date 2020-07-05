@@ -26,10 +26,6 @@ export class SavegameSerializer {
      * @returns {object}
      */
     generateDumpFromGameRoot(root, sanityChecks = true) {
-        // Finalize particles before saving (Like granting destroy indicator rewards)
-        // root.particleMgr.finalizeBeforeSave();
-        // root.uiParticleMgr.finalizeBeforeSave();
-
         // Now store generic savegame payload
         const data = {
             camera: root.camera.serialize(),
