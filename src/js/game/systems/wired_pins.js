@@ -6,6 +6,8 @@ import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { enumLayer } from "../root";
+import { STOP_PROPAGATION } from "../../core/signal";
+import { drawRotatedSprite } from "../../core/draw_utils";
 
 export class WiredPinsSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -171,12 +173,16 @@ export class WiredPinsSystem extends GameSystemWithFilter {
 
             const worldPos = tile.toWorldSpaceCenterOfTile();
 
-            this.pinSprites[slot.type].drawCachedCentered(
+            drawRotatedSprite({
                 parameters,
-                worldPos.x,
-                worldPos.y,
-                globalConfig.tileSize
-            );
+                sprite: this.pinSprites[slot.type],
+                x: worldPos.x,
+                y: worldPos.y,
+                angle: Math.radians(staticComp.rotation),
+                size: globalConfig.tileSize,
+                offsetX: 0,
+                offsetY: 0,
+            });
         }
     }
 }
