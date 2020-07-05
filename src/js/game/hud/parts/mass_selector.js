@@ -13,7 +13,7 @@ import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
-import { enumNotificationType } from "./notifications";
+import { Blueprint } from "../../blueprint";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -146,18 +146,10 @@ export class HUDMassSelector extends BaseHUDPart {
         if (this.selectedUids.size > 0) {
             const entityUids = Array.from(this.selectedUids);
 
-            // copy code relies on entities still existing, so must copy before deleting.
-            this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
+            const cutAction = () => {
+                // copy code relies on entities still existing, so must copy before deleting.
+                this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
 
-            let canPaste = false;
-            const placer = this.root.hud.parts.blueprintPlacer;
-            if (placer) {
-                const blueprint = placer.currentBlueprint.get();
-                if (blueprint) {
-                    canPaste = blueprint.canAfford(this.root);
-                }
-            }
-            if (canPaste) {
                 for (let i = 0; i < entityUids.length; ++i) {
                     const uid = entityUids[i];
                     const entity = this.root.entityMgr.findByUid(uid);
@@ -166,12 +158,18 @@ export class HUDMassSelector extends BaseHUDPart {
                         this.selectedUids.delete(uid);
                     }
                 }
+            };
+
+            const blueprint = Blueprint.fromUids(this.root, entityUids);
+            if (blueprint.canAfford(this.root)) {
+                cutAction();
             } else {
-                this.selectedUids = new Set();
-                this.root.hud.signals.notification.dispatch(
-                    T.ingame.notifications.massCutInsufficient,
-                    enumNotificationType.success
+                const { cancel, ok } = this.root.hud.parts.dialogs.showWarning(
+                    T.dialogs.massCutInsufficientConfirm.title,
+                    T.dialogs.massCutInsufficientConfirm.desc,
+                    ["cancel:good:escape", "ok:bad:enter"]
                 );
+                ok.add(cutAction);
             }
 
             this.root.soundProxy.playUiClick();

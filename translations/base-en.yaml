@@ -243,6 +243,11 @@ dialogs:
         desc: >-
             You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
 
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: >-
+            The cost for pasting is insufficient! Are you sure you want to do this?
+
     blueprintsNotUnlocked:
         title: Not unlocked yet
         desc: >-
@@ -337,7 +342,6 @@ ingame:
     notifications:
         newUpgrade: A new upgrade is available!
         gameSaved: Your game has been saved.
-        massCutInsufficient: The cost for pasting is insufficient!
 
     # The "Upgrades" window
     shop:
