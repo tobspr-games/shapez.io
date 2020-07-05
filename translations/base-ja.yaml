@@ -255,6 +255,10 @@ dialogs:
         title: マーカーを設置
         desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<a href="https://viewer.shapez.io" target="_blank">ここ</a>から生成できます）
 
+    editMarker:
+        title: マーカーを編集
+        desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<a href="https://viewer.shapez.io" target="_blank">ここ</a>から生成できます）
+
     markerDemoLimit:
         desc: デモ版ではマーカー設置は2つまでに制限されています。スタンドアローン版は無制限です！
 

@@ -169,7 +169,7 @@ export class HUDWaypoints extends BaseHUDPart {
 
             if (this.isWaypointDeletable(waypoint)) {
                 const deleteButton = makeDiv(element, null, ["deleteButton"]);
-                this.trackClicks(deleteButton, () => this.deleteWaypoint(waypoint));
+                this.trackClicks(deleteButton, () => this.requestEditMarker(waypoint));
             }
 
             if (!waypoint.label) {
@@ -285,6 +285,59 @@ export class HUDWaypoints extends BaseHUDPart {
     }
 
     /**
+     * Requests to edit a marker.
+     * @param {Waypoint} waypoint
+     */
+    requestEditMarker(waypoint) {
+        // Construct dialog with input field
+        const markerNameInput = new FormElementInput({
+            id: "markerName",
+            label: null,
+            placeholder: "",
+            defaultValue: waypoint.label,
+            validator: val =>
+                val.length > 0 && (val.length < MAX_LABEL_LENGTH || ShapeDefinition.isValidShortKey(val)),
+        });
+        const dialog = new DialogWithForm({
+            app: this.root.app,
+            title: T.dialogs.editMarker.title,
+            desc: T.dialogs.editMarker.desc,
+            formElements: [markerNameInput],
+            extraButton: "delete:bad",
+        });
+        this.root.hud.parts.dialogs.internalShowDialog(dialog);
+
+        dialog.buttonSignals.ok.add(() => {
+            // Actually rename the waypoint
+            this.renameWaypoint(waypoint, markerNameInput.getValue());
+        });
+        dialog.buttonSignals.delete.add(() => {
+            // Actually delete the waypoint
+            this.deleteWaypoint(waypoint);
+        });
+    }
+
+    /**
+     * Renames a waypoint with the given label
+     * @param {Waypoint} waypoint
+     * @param {string} label
+     */
+    renameWaypoint(waypoint, label) {
+        waypoint.label = label;
+
+        this.sort();
+
+        // Show notification about renamed
+        this.root.hud.signals.notification.dispatch(
+            T.ingame.waypoints.creationSuccessNotification,
+            enumNotificationType.success
+        );
+
+        // Re-render the list and thus add it
+        this.rerenderWaypointList();
+    }
+
+    /**
      * Called every frame to update stuff
      */
     update() {
@@ -387,7 +440,7 @@ export class HUDWaypoints extends BaseHUDPart {
             } else if (button === enumMouseButton.right) {
                 if (this.isWaypointDeletable(waypoint)) {
                     this.root.soundProxy.playUiClick();
-                    this.deleteWaypoint(waypoint);
+                    this.requestEditMarker(waypoint);
                 } else {
                     this.root.soundProxy.playUiError();
                 }
