@@ -40,7 +40,8 @@ export class MetaEnergyGenerator extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_cutter_and_trash);
+        return true;
+        // return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_cutter_and_trash);
     }
 
     /**
