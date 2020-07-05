@@ -42,6 +42,7 @@ export class HUDMassSelector extends BaseHUDPart {
         this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectCopy).add(this.startCopy, this);
 
         this.root.hud.signals.selectedPlacementBuildingChanged.add(this.clearSelection, this);
+        this.root.signals.editModeChanged.add(this.clearSelection, this);
     }
 
     /**
