@@ -486,7 +486,7 @@ buildings:
     mixer:
         default:
             name: &mixer Kleurenmenger
-            description: Mengt twee kleuren.
+            description: Mengt twee kleuren met behulp van additieve kleurmenging.
 
     painter:
         default:
@@ -532,7 +532,7 @@ storyRewards:
 
     reward_mixer:
         title: Kleuren mengen
-        desc: De <strong>menger</strong> is ontgrendeld - Gebruik dit gebouw om twee kleuren te mengen via <strong>'additive blending'</strong>!
+        desc: De <strong>menger</strong> is ontgrendeld - Gebruik dit gebouw om twee kleuren te mengen met behulp van <strong>additieve kleurmenging</strong>!
 
     reward_stacker:
         title: Stapelaar
