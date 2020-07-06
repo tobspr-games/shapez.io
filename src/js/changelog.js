@@ -14,6 +14,7 @@ export const CHANGELOG = [
             "Updated the soundtrack again, it is now 20 minutes in total!",
             "Updated and added new translations (Thanks to all contributors!)",
             "Show confirmation when cutting area which is too expensive to get pasted again (by isaisstillalive)",
+            "Fix tunnels entrances connecting to exits sometimes when they shouldn't",
         ],
     },
     {
