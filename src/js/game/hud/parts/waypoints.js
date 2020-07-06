@@ -272,7 +272,7 @@ export class HUDWaypoints extends BaseHUDPart {
             zoomLevel: Math.max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
         });
 
-        this.sort();
+        this.sortWaypoints();
 
         // Show notification about creation
         this.root.hud.signals.notification.dispatch(
@@ -325,7 +325,7 @@ export class HUDWaypoints extends BaseHUDPart {
     renameWaypoint(waypoint, label) {
         waypoint.label = label;
 
-        this.sort();
+        this.sortWaypoints();
 
         // Show notification about renamed
         this.root.hud.signals.notification.dispatch(
@@ -349,7 +349,7 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Sort waypoints by name
      */
-    sort() {
+    sortWaypoints() {
         this.waypoints.sort((a, b) => {
             if (!a.label) {
                 return -1;
