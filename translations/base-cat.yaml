@@ -30,15 +30,15 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
         shapez.io és un joc que té com a objectiu construir i automatitzar fàbriques per tal de produir i combinar figures. Al entregar-les, es progressa en el joc desbloquejant millores per les línies de producció.
-        
+
         En augmentar la demanda serà necessari redissenyar les línies de producció per tal de saciar les demandes - Sense oblidar-se dels recursos bàsics, serà necessari expandir-se en el [b]mapa infinit[/b]!
-        
+
         Ja que les figures simples poden ser avorrides serà necessari mesclar colors i pintar-les - Combina roig, verd i blau per produir diferents colors i així pintar les figures per assolir el nivell de demanda adequat.
-        
+
         El joc compta amb 18 nivells (Que et mantindran ocupat durant hores!) però estic afegint constantment nou contingut - Tinc moltes coses planejades!
-        
+
         [b]Avantatges del joc complet[/b]
-        
+
         [list]
             [*] Balises o marcadors, punts de referència en el mapa
             [*] Guardar partides de forma il·limitada
@@ -47,11 +47,11 @@ steamPage:
             [*] Em permet seguir desenvolupant shapez.io ❤️
             [*] Més característiques en el futur!
         [/list]
-        
+
         [b]Característiques planejades i suggerències de la comunitat[/b]
-        
+
         Aquest joc és de codi obert - Qualsevol pot contribuir! A més, tinc [b]molt present[/b] a la comunitat! Intento/e llegir tots els suggeriments i proporcionar tot el feedback que m'és possible.
-        
+
         [list]
             [*] Cables!
             [*] Mode història on els edificis tenen un cost en figures
@@ -62,7 +62,7 @@ steamPage:
             [*] Millorar el rendiment (Tot i que el joc ja funciona molt bé!)
             [*] I molt més!
         [/list]
-        
+
         Assegurat de revisar el taulell de Trello per veure el full de ruta! https://trello.com/b/ISQncpJP/shapezio
 global:
     loading: Carregant
@@ -126,7 +126,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-    
+
         Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarrega't chrome per una millor experiència.
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut
@@ -165,38 +165,38 @@ dialogs:
         deleteGame: Sé el que faig
         viewUpdate: Veure actualitzacions
         showUpgrades: Mostrar millores
-        showKeybindings: Mostrar dreceres de teclat 
+        showKeybindings: Mostrar dreceres de teclat
 
     importSavegameError:
         title: Error en importar
         text: >-
             Failed to import your savegame:
-            
+
     importSavegameSuccess:
         title: Importar
         text: >-
             La partida ha sigut importada amb èxit.
-            
+
     gameLoadFailure:
         title: No es pot carregar la partida guardada
         text: >-
             Failed to load your savegame:
-            
+
     confirmSavegameDelete:
         title: Eliminar
         text: >-
             Estàs segur que vols eliminar la partida guardada?
-            
+
     savegameDeletionError:
         title: Error en eliminar
         text: >-
             Failed to delete the savegame:
-            
+
     restartRequired:
         title: Reiniciar
         text: >-
             És necessari reiniciar el joc per aplicar els canvis.
-            
+
     editKeybinding:
         title: Cambiar dreceres de teclat
         desc: Pressiona la tecla o botó del ratolí que vols designar o ESC per cancel·lar.
@@ -221,28 +221,28 @@ dialogs:
         title: Nova actualització!
         desc: >-
             Aquí tens els canvis des de l'últim cop que vas jugar:
-            
+
     upgradesIntroduction:
         title: Desbloquejar millora
         desc: >-
             Totes les figures poden ser usades per desbloquejar millores - <strong>No eliminis/es les teves fabriques anteriors!</strong>
             La pestanya de millores està a la part superior dreta de la pantalla.
-            
+
     massDeleteConfirm:
-        title: Eliminar edificis 
+        title: Eliminar edificis
         desc: >-
             Estàs esborrant molts edificis de cop (<count> per ser exactes)! Estàs segur que vols seguir?
-            
+
     massCutConfirm:
         title: Tallar edificis
         desc: >-
             Estàs esborrant molts edificis de cop (<count> per ser exactes)! Estàs segur que vols seguir?
-            
+
     blueprintsNotUnlocked:
         title: Encara no s'ha desbloquejat
         desc: >-
             Completa el nivell 12 per poder desbloquejar aquesta característica.
-            
+
     keybindingsIntroduction:
         title: Dreceres de teclat útils
         desc: >-
@@ -251,10 +251,11 @@ dialogs:
             <code class='keybinding'>CTRL</code> + Arrossegar: Selecciona una àrea.<br>
             <code class='keybinding'>SHIFT</code>: Mentè pressionat per col·locar vàries vegades el mateix edifici.<br>
             <code class='keybinding'>ALT</code>: Invertir la orientació de les cintes transportadores ja col·locades.<br>
-            
+
     createMarker:
         title: Nou Marcador
-        desc: Dona-li un nom significatiu, també pots usar <strong>claus</strong> de les figures (Pots generarles a: <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
+        desc: >-
+            Dona-li un nom significatiu, també pots usar <strong>claus</strong> de les figures (Pots generarles a: <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
 
     markerDemoLimit:
         desc: En la Demo només pots crear dos marcadors, aconsegueix la versió completa per gaudir de l'experiència completa!
@@ -549,7 +550,7 @@ storyRewards:
         title: Pintar
         desc: >-
             El <strong>Pintor</strong> s'ha desbloquejat! - Extreu mena de color (de la mateixa forma que les figures) i pinta les figures amb el pintor!<br><br> - Si ets daltònic, pots activar <strong>l'opció per daltònics</strong> en les opcions!
-    
+
     reward_mixer:
         title: Mesclar colors
         desc: El <strong>Mesclador de colors</strong> s'ha desbloquejat! - Combina dos colors utilitzant <strong>la mescla additiva</strong> amb aquest edifici!
@@ -611,7 +612,7 @@ storyRewards:
         title: Següent nivell
         desc: >-
             Aquest nivell no t'ha donat res, però el següent ho farà! <br><br> PD: És millor que no destrueixes la part de la fàbrica existent - Necessitaràs <strong>totes</strong> aquestes figures més tard per a <strong>desbloquejar millores</strong>!
-   
+
     reward_wires:
         title: Cables
         desc: TODO
@@ -620,7 +621,7 @@ storyRewards:
         title: Següent nivell
         desc: >-
             Enhorabona! Per cert, hi ha més contingut planejat per a la versió completa - fora del web!
-            
+
 settings:
     title: Opcions
     categories:
@@ -830,6 +831,3 @@ demo:
         exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Not available in the demo.
-
-
-
