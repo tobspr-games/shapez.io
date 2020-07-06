@@ -914,10 +914,10 @@
 },
 "sprites/blueprints/wire_top.png":
 {
-	"frame": {"x":680,"y":3,"w":5,"h":13},
+	"frame": {"x":680,"y":3,"w":6,"h":13},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":0,"w":5,"h":13},
+	"spriteSourceSize": {"x":4,"y":0,"w":6,"h":13},
 	"sourceSize": {"w":13,"h":13}
 },
 "sprites/buildings/advanced_processor.png":
@@ -1383,6 +1383,6 @@
 	"format": "RGBA8888",
 	"size": {"w":690,"h":127},
 	"scale": "0.1",
-	"smartupdate": "$TexturePacker:SmartUpdate:812e8a2b8b0a4c9bbeb20fc68d835efe:85394009739c7a89da6c54b97c627497:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0b0b30763ad223eaf27d38779febe72e:d99996306029a5a7291a271635ca5e37:f159918d23e5952766c6d23ab52278c6$"
 }
 }

@@ -898,7 +898,7 @@
 },
 "sprites/blueprints/wire_left.png":
 {
-	"frame": {"x":1706,"y":1596,"w":60,"h":60},
+	"frame": {"x":1705,"y":1596,"w":60,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":35,"w":60,"h":60},
@@ -906,18 +906,18 @@
 },
 "sprites/blueprints/wire_right.png":
 {
-	"frame": {"x":1641,"y":1596,"w":61,"h":61},
+	"frame": {"x":1641,"y":1596,"w":60,"h":61},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":34,"y":34,"w":61,"h":61},
+	"spriteSourceSize": {"x":35,"y":34,"w":60,"h":61},
 	"sourceSize": {"w":95,"h":95}
 },
 "sprites/blueprints/wire_top.png":
 {
-	"frame": {"x":1809,"y":298,"w":27,"h":95},
+	"frame": {"x":1809,"y":298,"w":25,"h":95},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":34,"y":0,"w":27,"h":95},
+	"spriteSourceSize": {"x":35,"y":0,"w":25,"h":95},
 	"sourceSize": {"w":95,"h":95}
 },
 "sprites/buildings/advanced_processor.png":
@@ -1154,7 +1154,7 @@
 },
 "sprites/buildings/wire_left.png":
 {
-	"frame": {"x":1770,"y":1596,"w":60,"h":60},
+	"frame": {"x":1769,"y":1596,"w":60,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":35,"w":60,"h":60},
@@ -1194,7 +1194,7 @@
 },
 "sprites/map_overview/belt_forward.png":
 {
-	"frame": {"x":1840,"y":298,"w":20,"h":24},
+	"frame": {"x":1465,"y":1663,"w":20,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":20,"h":24},
@@ -1202,7 +1202,7 @@
 },
 "sprites/map_overview/belt_left.png":
 {
-	"frame": {"x":1617,"y":786,"w":22,"h":22},
+	"frame": {"x":1838,"y":298,"w":22,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":2,"w":22,"h":22},
@@ -1210,7 +1210,7 @@
 },
 "sprites/map_overview/belt_right.png":
 {
-	"frame": {"x":1079,"y":1133,"w":22,"h":22},
+	"frame": {"x":1838,"y":324,"w":22,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":2,"w":22,"h":22},
@@ -1274,7 +1274,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":1840,"y":326,"w":20,"h":24},
+	"frame": {"x":1489,"y":1663,"w":20,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":20,"h":24},
@@ -1383,6 +1383,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1863,"h":1690},
 	"scale": "0.75",
-	"smartupdate": "$TexturePacker:SmartUpdate:812e8a2b8b0a4c9bbeb20fc68d835efe:85394009739c7a89da6c54b97c627497:f159918d23e5952766c6d23ab52278c6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0b0b30763ad223eaf27d38779febe72e:d99996306029a5a7291a271635ca5e37:f159918d23e5952766c6d23ab52278c6$"
 }
 }

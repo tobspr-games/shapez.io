@@ -21,6 +21,8 @@ def rgb2gray(rgb):
     return np.dot(rgb[..., :3], [0.2989, 0.5870, 0.1140])
 
 
+
+
 def save_image(data, outfilename, src_image):
     img = Image.fromarray(np.asarray(
         np.clip(data, 0, 255), dtype="uint8"), "L")
@@ -31,6 +33,18 @@ def save_image(data, outfilename, src_image):
     realSrc = src_image.load()
     mask = src_image.filter(ImageFilter.GaussianBlur(10)).load()
     orig = src_image.load()
+
+
+    isWire = "wire" in outfilename
+
+    targetR = 104
+    targetG = 200
+    targetB = 255
+
+    if isWire:
+        targetR = 255
+        targetG = 104
+        targetB = 232 
 
     for x in range(img.width):
         for y in range(img.height):
@@ -49,9 +63,9 @@ def save_image(data, outfilename, src_image):
             noShadow = 1 - shadow
 
             dst[x, y] = (
-                min(255, int((realpixl[0] / 255.0 * 0.4 + 0.6) * 104 * 1.1)),
-                min(255, int((realpixl[1] / 255.0 * 0.4 + 0.6) * 200 * 1.1)),
-                min(255, int((realpixl[2] / 255.0 * 0.4 + 0.6) * 255 * 1.1)),
+                min(255, int((realpixl[0] / 255.0 * 0.4 + 0.6) * targetR * 1.1)),
+                min(255, int((realpixl[1] / 255.0 * 0.4 + 0.6) * targetG * 1.1)),
+                min(255, int((realpixl[2] / 255.0 * 0.4 + 0.6) * targetB * 1.1)),
                 min(255, int(float(realpixl[3]) * (0.6 + 5 * edgeFactor))))
 
 
