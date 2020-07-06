@@ -46,18 +46,15 @@ export class MainMenuState extends GameState {
                     : ""
             }
             </div>
-
-            ${
-                G_IS_STANDALONE
-                    ? ""
-                    : `<video autoplay muted loop class="fullscreenBackgroundVideo">
+            
+            <video autoplay muted loop class="fullscreenBackgroundVideo">
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
-            </video>`
-            }
+            </video>
 
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
+                <span class="updateLabel">Wires update!</span>
             </div>
 
 
@@ -208,14 +205,12 @@ export class MainMenuState extends GameState {
 
         // Initialize video
         this.videoElement = this.htmlElement.querySelector("video");
-        if (this.videoElement) {
-            this.videoElement.playbackRate = 0.9;
-            this.videoElement.addEventListener("canplay", () => {
-                if (this.videoElement) {
-                    this.videoElement.classList.add("loaded");
-                }
-            });
-        }
+        this.videoElement.playbackRate = 0.9;
+        this.videoElement.addEventListener("canplay", () => {
+            if (this.videoElement) {
+                this.videoElement.classList.add("loaded");
+            }
+        });
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
         this.trackClicks(qs(".changelog"), this.onChangelogClicked);

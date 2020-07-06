@@ -35,6 +35,7 @@ export class MapView extends BaseMap {
 
         this.root.signals.entityAdded.add(this.onEntityChanged, this);
         this.root.signals.entityDestroyed.add(this.onEntityChanged, this);
+        this.root.signals.entityChanged.add(this.onEntityChanged, this);
     }
 
     cleanup() {
@@ -44,7 +45,7 @@ export class MapView extends BaseMap {
     }
 
     /**
-     * Called when an entity was added or removed
+     * Called when an entity was added, removed or changed
      * @param {Entity} entity
      */
     onEntityChanged(entity) {

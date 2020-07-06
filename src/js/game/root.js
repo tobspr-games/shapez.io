@@ -141,6 +141,7 @@ export class GameRoot {
             // Entities
             entityManuallyPlaced: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityAdded: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+            entityChanged: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityGotNewComponent: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityComponentRemoved: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
             entityQueuedForDestroy: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
