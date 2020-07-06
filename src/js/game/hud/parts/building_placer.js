@@ -178,7 +178,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 consumeEvents: true,
                 targetOnly: true,
             });
-            detector.click.add(() => this.currentVariant.set(variant));
+            detector.click.add(() => this.setVariant(variant));
         }
     }
 
