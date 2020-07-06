@@ -518,7 +518,7 @@ buildings:
 
     trash:
         default:
-            name: &trash Paperera/Brossa
+            name: &trash Paperera
             description: Acepta objectes de tots els costats i els destrueix. Permanentment.
 
         storage:
@@ -539,7 +539,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Tallar figures
-        desc: Acabes de desbloquejar la <strong>Cisalla</strong> - talla les figures per la meitat <strong>de dalt a baix</strong>; sense importar la seva/ua orientació!<br><br>Assegura't d'eliminar les parts que no utilitzes, si no <strong>es pararà</strong> - Es per això que t'he donat una paperera/brossa, utilitza-la!
+        desc: Acabes de desbloquejar la <strong>Cisalla</strong> - talla les figures per la meitat <strong>de dalt a baix</strong>; sense importar la seva/ua orientació!<br><br>Assegura't d'eliminar les parts que no utilitzes, si no <strong>es pararà</strong> - Es per això que t'he donat una paperera, utilitza-la!
 
     reward_rotater:
         title: Rotar
@@ -596,11 +596,11 @@ storyRewards:
 
     reward_storage:
         title: Magatzem de reserva
-        desc: Has desbloquejat una variant de la <strong>paperera/brossa</strong> - Et permet emmagatzemar objectes fins a una capacitat màxima!
+        desc: Has desbloquejat una variant de la <strong>paperera</strong> - Et permet emmagatzemar objectes fins a una capacitat màxima!
 
     reward_freeplay:
         title: Joc lliure
-        desc: Ho has fet! Has desbloquejat el <strong>mode de joc lliure</strong>! Això significa que les figures ara són generades aleatòriament! (No t'angoixes, hi ha més contingut planejat per a la versió autònoma - fora del web)
+        desc: Ho has fet! Has desbloquejat el <strong>mode de joc lliure</strong>! Això significa que les figures ara són generades aleatòriament! (No t'angoixis/es, hi ha més contingut planejat per a la versió completa - fora del web)
 
     reward_blueprints:
         title: Plànols
@@ -610,7 +610,7 @@ storyRewards:
     no_reward:
         title: Següent nivell
         desc: >-
-            Aquest nivell no t'ha donat res, però el següent ho farà! <br><br> PD: És millor que no destrueixes la part de la fàbrica existent - Necessitaràs <strong>totes</strong> eixes figures més tard per a <strong>desbloquejar millores</strong>!
+            Aquest nivell no t'ha donat res, però el següent ho farà! <br><br> PD: És millor que no destrueixes la part de la fàbrica existent - Necessitaràs <strong>totes</strong> aquestes figures més tard per a <strong>desbloquejar millores</strong>!
    
     reward_wires:
         title: Cables
@@ -619,43 +619,43 @@ storyRewards:
     no_reward_freeplay:
         title: Següent nivell
         desc: >-
-            Enhorabona! Per cert, hi ha més contingut planejat per a la versió autònoma - fora del web!
+            Enhorabona! Per cert, hi ha més contingut planejat per a la versió completa - fora del web!
             
 settings:
-    title: Settings
+    title: Opcions
     categories:
-        game: Game
-        app: Application
+        game: Joc
+        app: Aplicació
 
     versionBadges:
-        dev: Development
+        dev: Desenvolupament
         staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+        prod: Producció
+    buildDate: Generat <at-date>
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Escala de la interfície
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                Canvia la dimensió de la interfície de l'usuari. La interfície se seguirà redimensionant depenent de la resolució del teu dispositiu, però aquesta opció controla la quantitat del redimensionat.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Micro
+                small: Petit
+                regular: Estàndard
+                large: Gran
+                huge: Macro
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Interval de guardat automàtic
             description: >-
-                Controls how often the game saves automatically. You can also disable it entirely here.
+                Controla el temps entre guardats automàtics que fa el joc, pots deshabilitar-ho des d'aquí
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minut
+                two_minutes: 2 Minuts
+                five_minutes: 5 Minuts
+                ten_minutes: 10 Minuts
+                twenty_minutes: 20 Minuts
+                disabled: Desactivat
 
         scrollWheelSensitivity:
             title: Zoom sensitivity
