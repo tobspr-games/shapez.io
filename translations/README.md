@@ -30,6 +30,7 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Danish](base-da.yaml)
 -   [Finnish](base-fi.yaml)
 -   [Catalan](base-cat.yaml)
+-   [Slovenian](base-sl.yaml)
 
 (If you want to translate into a new language, see below!)
 
