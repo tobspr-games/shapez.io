@@ -185,6 +185,9 @@ export class BeltSystem extends GameSystemWithFilter {
                         if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
                             this.debug_verifyBeltPaths();
                         }
+
+                        // Make sure the chunks know about the update
+                        this.root.signals.entityChanged.dispatch(targetEntity);
                     }
                 }
             }

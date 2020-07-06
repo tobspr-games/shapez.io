@@ -309,15 +309,15 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 continue;
             }
 
-            if (receiverUndergroundComp.mode !== enumUndergroundBeltMode.receiver) {
-                // Not a receiver
-                continue;
-            }
-
             const receiverStaticComp = potentialReceiver.components.StaticMapEntity;
             if (receiverStaticComp.rotation !== targetRotation) {
                 // Wrong rotation
                 continue;
+            }
+
+            if (receiverUndergroundComp.mode !== enumUndergroundBeltMode.receiver) {
+                // Not a receiver, but a sender -> Abort to make sure we don't deliver double
+                break;
             }
 
             return { entity: potentialReceiver, distance: searchOffset };

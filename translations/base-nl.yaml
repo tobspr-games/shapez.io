@@ -61,7 +61,7 @@ steamPage:
             [*] Aangepaste mappen aanmaken (Het kiezen van de hoeveelheid en de grootte van de grondstofbronnen, seeds, en meer)
             [*] Meer soorten vormen
             [*] Meer prestatieverbeteringen (Hoewel het spel al vrij goed loopt!)
-            [*] Kleurenblind-modus
+            [*] Kleurenblindmodus
             [*] En nog veel meer!
         [/list]
 
@@ -486,7 +486,7 @@ buildings:
     mixer:
         default:
             name: &mixer Kleurenmenger
-            description: Mengt twee kleuren.
+            description: Mengt twee kleuren met behulp van additieve kleurmenging.
 
     painter:
         default:
@@ -529,11 +529,11 @@ storyRewards:
     reward_painter:
         title: Verven
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            De <strong>verver</strong> is ontgrendeld - Onttrek wat kleur (op dezelfde manier hoe je vormen onttrekt) en combineer het met een vorm in de verver om ze te kleuren!<br><br>PS: Als je kleurenblind bent, is er een <strong>kleurenblindmodus</strong> in de instellingen!
 
     reward_mixer:
         title: Kleuren mengen
-        desc: De <strong>menger</strong> is ontgrendeld - gebruik dit gebouw om twee kleuren te mengen via <strong>'additive blending'</strong>!
+        desc: De <strong>menger</strong> is ontgrendeld - Gebruik dit gebouw om twee kleuren te mengen met behulp van <strong>additieve kleurmenging</strong>!
 
     reward_stacker:
         title: Stapelaar
@@ -725,11 +725,11 @@ settings:
             title: Kleurenblindmodus
             description: Schakelt verschillende hulpmiddelen in zodat je het spel alsnog kunt spelen wanneer je kleurenblind bent.
         rotationByBuilding:
-          title: Rotatie per type gebouw
-          description: >-
-            Elk type gebouw onthoud apart de rotatie waarin je het voor het laatst geplaatst hebt. 
-            Dit kan handig zijn wanneer je vaak tussen verschillende 
-            soorten gebouwen wisselt.
+            title: Rotatie per type gebouw
+            description: >-
+                Elk type gebouw onthoud apart de rotatie waarin je het voor het laatst geplaatst hebt. 
+                Dit kan handig zijn wanneer je vaak tussen verschillende 
+                soorten gebouwen wisselt.
 
 keybindings:
     title: Sneltoetsen

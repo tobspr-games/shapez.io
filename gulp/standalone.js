@@ -158,7 +158,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
 
                     fs.writeFileSync(path.join(appPath, ".itch.toml"), tomlFile);
 
-                    if (platform === "linux" || platform === "darwin") {
+                    if (platform === "linux") {
                         fs.writeFileSync(
                             path.join(appPath, "play.sh"),
                             '#!/usr/bin/env bash\n./shapezio --no-sandbox "$@"\n'
@@ -177,6 +177,43 @@ function gulptasksStandalone($, gulp, buildFolder) {
                         //     path.join(playablePath, "play_local.bat"),
                         //     "start shapezio --local --dev --disable-direct-composition --in-process-gpu\r\n"
                         // );
+                    }
+
+                    if (platform === "darwin") {
+                        // Clear up framework folders
+                        fs.writeFileSync(
+                            path.join(appPath, "play.sh"),
+                            '#!/usr/bin/env bash\n./shapez.io-standalone.app/Contents/MacOS/shapezio --no-sandbox "$@"\n'
+                        );
+                        fs.chmodSync(path.join(appPath, "play.sh"), 0o775);
+                        fs.chmodSync(
+                            path.join(appPath, "shapez.io-standalone.app", "Contents", "MacOS", "shapezio"),
+                            0o775
+                        );
+
+                        const finalPath = path.join(appPath, "shapez.io-standalone.app");
+
+                        const frameworksDir = path.join(finalPath, "Contents", "Frameworks");
+                        const frameworkFolders = fs
+                            .readdirSync(frameworksDir)
+                            .filter(fname => fname.endsWith(".framework"));
+
+                        for (let i = 0; i < frameworkFolders.length; ++i) {
+                            const folderName = frameworkFolders[i];
+                            const frameworkFolder = path.join(frameworksDir, folderName);
+                            console.log(" -> ", frameworkFolder);
+
+                            const filesToDelete = fs
+                                .readdirSync(frameworkFolder)
+                                .filter(fname => fname.toLowerCase() !== "versions");
+                            filesToDelete.forEach(fname => {
+                                console.log("    -> Deleting", fname);
+                                fs.unlinkSync(path.join(frameworkFolder, fname));
+                            });
+
+                            const frameworkSourceDir = path.join(frameworkFolder, "Versions", "A");
+                            fse.copySync(frameworkSourceDir, frameworkFolder);
+                        }
                     }
                 });
 

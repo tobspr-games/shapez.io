@@ -5,8 +5,30 @@
 
     text-align: right;
     font-size: 15px;
-    display: flex;
+    display: grid;
     line-height: 15px;
-    flex-direction: column;
     color: #fff;
+    grid-gap: 2px;
+    text-shadow: 1px 1px 3px rgba(#000, 0.4);
+    font-weight: bold;
+
+    &:not([data-mode="detailed"]) {
+        .mousePosition,
+        .cameraPosition {
+            display: none;
+        }
+    }
+
+    code {
+        background: #333;
+        min-width: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        line-height: 15px;
+        padding: 1px;
+        font-family: "GameFont";
+        border-radius: 3px;
+    }
 }
