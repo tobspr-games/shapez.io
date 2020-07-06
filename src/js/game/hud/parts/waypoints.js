@@ -300,8 +300,8 @@ export class HUDWaypoints extends BaseHUDPart {
         });
         const dialog = new DialogWithForm({
             app: this.root.app,
-            title: T.dialogs.editMarker.title,
-            desc: T.dialogs.editMarker.desc,
+            title: T.dialogs.createMarker.titleEdit,
+            desc: T.dialogs.createMarker.desc,
             formElements: [markerNameInput],
             buttons: ["delete:bad", "cancel", "ok:good"],
         });
