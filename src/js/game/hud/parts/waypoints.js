@@ -303,7 +303,7 @@ export class HUDWaypoints extends BaseHUDPart {
             title: T.dialogs.editMarker.title,
             desc: T.dialogs.editMarker.desc,
             formElements: [markerNameInput],
-            extraButton: "delete:bad",
+            buttons: ["delete:bad", "cancel", "ok:good"],
         });
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
 
