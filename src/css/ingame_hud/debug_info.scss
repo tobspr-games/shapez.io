@@ -9,4 +9,11 @@
     line-height: 15px;
     flex-direction: column;
     color: #fff;
+
+    &:not([data-mode="detailed"]) {
+        .mousePosition,
+        .cameraPosition {
+            display: none;
+        }
+    }
 }
