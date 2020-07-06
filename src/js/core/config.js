@@ -45,7 +45,7 @@ export const globalConfig = {
 
     // Map
     mapChunkSize: 16,
-    mapChunkPrerenderMinZoom: 0.7,
+    mapChunkPrerenderMinZoom: -1,
     mapChunkOverviewMinZoom: 0.7,
 
     // Belt speeds
@@ -55,7 +55,7 @@ export const globalConfig = {
 
     beltItemSpacingByLayer: {
         regular: 0.63,
-        wires: 0.33,
+        wires: 0.4,
     },
 
     wiresSpeedItemsPerSecond: 6,

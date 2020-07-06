@@ -403,6 +403,9 @@ export class HubGoals extends BasicSerializableObject {
      */
     getProcessorBaseSpeed(processorType) {
         switch (processorType) {
+            case enumItemProcessorTypes.splitterWires:
+                return globalConfig.wiresSpeedItemsPerSecond * 2;
+
             case enumItemProcessorTypes.trash:
             case enumItemProcessorTypes.hub:
                 return 1e30;

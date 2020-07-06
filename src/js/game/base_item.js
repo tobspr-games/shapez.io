@@ -8,6 +8,9 @@ export const enumItemType = {
     color: "color",
     positiveEnergy: "positiveEnergy",
     negativeEnergy: "negativeEnergy",
+
+    // Can be used for filters
+    genericEnergy: "genericEnergy",
 };
 
 /** @enum {enumLayer} */
@@ -16,6 +19,7 @@ export const enumItemTypeToLayer = {
     [enumItemType.color]: enumLayer.regular,
     [enumItemType.positiveEnergy]: enumLayer.wires,
     [enumItemType.negativeEnergy]: enumLayer.wires,
+    [enumItemType.genericEnergy]: enumLayer.wires,
 };
 
 /**

@@ -328,8 +328,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         const mouseWorld = this.root.camera.screenToWorld(mousePosition);
         const mouseTile = mouseWorld.toTileSpace();
-        parameters.context.fillStyle = THEME.map.directionLock;
-        parameters.context.strokeStyle = THEME.map.directionLockTrack;
+        parameters.context.fillStyle = THEME.map.directionLock[this.root.currentLayer].color;
+        parameters.context.strokeStyle = THEME.map.directionLock[this.root.currentLayer].background;
         parameters.context.lineWidth = 10;
 
         parameters.context.beginCircle(mouseWorld.x, mouseWorld.y, 4);

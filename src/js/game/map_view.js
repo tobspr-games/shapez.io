@@ -4,6 +4,7 @@ import { BaseMap } from "./map";
 import { freeCanvas, makeOffscreenBuffer } from "../core/buffer_utils";
 import { Entity } from "./entity";
 import { THEME } from "./theme";
+import { MapChunkView } from "./map_chunk_view";
 
 /**
  * This is the view of the map, it extends the map which is the raw model and allows
@@ -130,6 +131,15 @@ export class MapView extends BaseMap {
      * @param {DrawParameters} parameters
      */
     drawForeground(parameters) {
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundLayer);
+    }
+
+    /**
+     * Calls a given method on all given chunks
+     * @param {DrawParameters} parameters
+     * @param {function} method
+     */
+    drawVisibleChunks(parameters, method) {
         const cullRange = parameters.visibleRect.toTileCullRectangle();
         const top = cullRange.top();
         const right = cullRange.right();
@@ -152,41 +162,25 @@ export class MapView extends BaseMap {
         for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
             for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
                 const chunk = this.root.map.getChunk(chunkX, chunkY, true);
-                chunk.drawForegroundLayer(parameters);
+                method.call(chunk, parameters);
             }
         }
     }
 
     /**
-     * Draws the maps foreground
+     * Draws the wires background
      * @param {DrawParameters} parameters
      */
     drawWiresLayer(parameters) {
-        const cullRange = parameters.visibleRect.toTileCullRectangle();
-        const top = cullRange.top();
-        const right = cullRange.right();
-        const bottom = cullRange.bottom();
-        const left = cullRange.left();
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawWiresLayer);
+    }
 
-        const border = 1;
-        const minY = top - border;
-        const maxY = bottom + border;
-        const minX = left - border;
-        const maxX = right + border - 1;
-
-        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
-
-        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
-
-        // Render y from top down for proper blending
-        for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
-            for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
-                const chunk = this.root.map.getChunk(chunkX, chunkY, true);
-                chunk.drawWiresLayer(parameters);
-            }
-        }
+    /**
+     * Draws the wires foreground
+     * @param {DrawParameters} parameters
+     */
+    drawWiresForegroundLayer(parameters) {
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawWiresForegroundLayer);
     }
 
     /**
@@ -216,31 +210,7 @@ export class MapView extends BaseMap {
             parameters.context.scale(dpi, dpi);
         }
 
-        const cullRange = parameters.visibleRect.toTileCullRectangle();
-        const top = cullRange.top();
-        const right = cullRange.right();
-        const bottom = cullRange.bottom();
-        const left = cullRange.left();
-
-        const border = 1;
-        const minY = top - border;
-        const maxY = bottom + border;
-        const minX = left - border;
-        const maxX = right + border - 1;
-
-        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
-
-        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
-
-        // Render y from top down for proper blending
-        for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
-            for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
-                const chunk = this.root.map.getChunk(chunkX, chunkY, true);
-                chunk.drawBackgroundLayer(parameters);
-            }
-        }
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawBackgroundLayer);
 
         if (G_IS_DEV && globalConfig.debug.showChunkBorders) {
             const cullRange = parameters.visibleRect.toTileCullRectangle();

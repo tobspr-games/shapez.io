@@ -312,7 +312,7 @@ export class BeltSystem extends GameSystemWithFilter {
      * @param {DrawParameters} parameters
      * @param {enumLayer} layer
      */
-    drawLayer(parameters, layer) {
+    drawLayerBeltItems(parameters, layer) {
         for (let i = 0; i < this.beltPaths.length; ++i) {
             const path = this.beltPaths[i];
             if (path.layer === layer) {

@@ -393,39 +393,54 @@ export class GameCore {
         // Main rendering order
         // -----
 
+        // BG / Map Resources / Belt Backgrounds
         root.map.drawBackground(params);
 
         if (!this.root.camera.getIsMapOverlayActive()) {
+            // Underlays for splitters / balancers
             systems.itemAcceptor.drawUnderlays(params, enumLayer.regular);
-            systems.belt.drawLayer(params, enumLayer.regular);
+
+            // Belt items
+            systems.belt.drawLayerBeltItems(params, enumLayer.regular);
+
+            // Items being ejected / accepted currently (animations)
             systems.itemEjector.drawLayer(params, enumLayer.regular);
             systems.itemAcceptor.drawLayer(params, enumLayer.regular);
         }
 
+        // Miner & Static map entities
         root.map.drawForeground(params);
 
         if (!this.root.camera.getIsMapOverlayActive()) {
+            // HUB Overlay
             systems.hub.draw(params);
+
+            // Energy generator overlay
             systems.energyGenerator.draw(params);
+
+            // Storage items
             systems.storage.draw(params);
+
+            // Energy consumer (Battery icons)
             systems.energyConsumer.draw(params);
         }
 
+        // Green wires overlay (not within the if because it can fade)
         root.hud.parts.wiresOverlay.draw(params);
 
-        if (this.root.currentLayer === enumLayer.wires) {
-            if (!this.root.camera.getIsMapOverlayActive()) {
-                systems.itemAcceptor.drawUnderlays(params, enumLayer.wires);
-            }
-
+        if (this.root.currentLayer === enumLayer.wires && !this.root.camera.getIsMapOverlayActive()) {
+            // Belt sprites & Static map entities
             root.map.drawWiresLayer(params);
 
-            if (!this.root.camera.getIsMapOverlayActive()) {
-                systems.itemEjector.drawLayer(params, enumLayer.wires);
-                systems.itemAcceptor.drawLayer(params, enumLayer.wires);
-                systems.belt.drawLayer(params, enumLayer.wires);
-                systems.wiredPins.draw(params);
-            }
+            // Belt items as well as accepted / ejected items
+            systems.belt.drawLayerBeltItems(params, enumLayer.wires);
+            systems.itemEjector.drawLayer(params, enumLayer.wires);
+            systems.itemAcceptor.drawLayer(params, enumLayer.wires);
+
+            root.map.drawWiresForegroundLayer(params);
+
+            // pins
+            systems.wiredPins.draw(params);
         }
 
         if (G_IS_DEV) {

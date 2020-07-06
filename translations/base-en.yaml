@@ -567,6 +567,15 @@ buildings:
             name: &energy_generator Energy Generator
             description: Generates energy by consuming shapes. Each energy generator requires a different shape.
 
+    wire_crossings:
+        default:
+            name: &wire_crossings Wire Splitter
+            description: Splits a wire into two
+
+        merger:
+            name: Wire Merger
+            description: Merges two wires into one
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:

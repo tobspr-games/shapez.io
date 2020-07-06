@@ -54,7 +54,7 @@ export const enumColorsToHexCode = {
     // blue + green + red
     [enumColors.white]: "#ffffff",
 
-    [enumColors.black]: "#212428",
+    [enumColors.black]: "#31383a",
 
     [enumColors.uncolored]: "#aaaaaa",
 };

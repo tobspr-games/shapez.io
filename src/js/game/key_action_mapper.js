@@ -56,6 +56,7 @@ export const KEYMAPPINGS = {
         trash: { keyCode: key("0") },
         energy_generator: { keyCode: key("O") },
         advanced_processor: { keyCode: key("P") },
+        wire_crossings: { keyCode: key("H") },
 
         // Wires layer
         wire: { keyCode: key("1") },

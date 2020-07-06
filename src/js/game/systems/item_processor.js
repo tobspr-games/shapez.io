@@ -50,14 +50,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         if (ejectorComp.canEjectOnSlot(preferredSlot)) {
                             slot = preferredSlot;
                         } else {
-                            /* FIXME: WIRES */
-                            slot = ejectorComp.getFirstFreeSlot(enumLayer.regular);
+                            slot = ejectorComp.getFirstFreeSlot(entity.layer);
                         }
                     } else {
-                        /* FIXME: WIRES */
-
                         // We can eject on any slot
-                        slot = ejectorComp.getFirstFreeSlot(enumLayer.regular);
+                        slot = ejectorComp.getFirstFreeSlot(entity.layer);
                     }
 
                     if (slot !== null) {
@@ -120,6 +117,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         switch (processorComp.type) {
             // SPLITTER
+            case enumItemProcessorTypes.splitterWires:
             case enumItemProcessorTypes.splitter: {
                 trackProduction = false;
                 const availableSlots = entity.components.ItemEjector.slots.length;

@@ -139,7 +139,10 @@ export class BaseMap extends BasicSerializableObject {
      */
     getLayersContentsMultipleXY(x, y) {
         const chunk = this.getChunkAtTileOrNull(x, y);
-        return chunk && chunk.getLayersContentsMultipleFromWorldCoords(x, y);
+        if (!chunk) {
+            return [];
+        }
+        return chunk.getLayersContentsMultipleFromWorldCoords(x, y);
     }
 
     /**

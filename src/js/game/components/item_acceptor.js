@@ -136,7 +136,25 @@ export class ItemAcceptorComponent extends Component {
      */
     canAcceptItem(slotIndex, item) {
         const slot = this.slots[slotIndex];
-        return !slot.filter || slot.filter === item.getItemType();
+        return this.filterMatches(slot.filter, item);
+    }
+
+    /**
+     * Returns if the given filter matches
+     * @param {enumItemType|null} filter
+     * @param {BaseItem} item
+     */
+    filterMatches(filter, item) {
+        if (!filter) {
+            return true;
+        }
+
+        const itemType = item.getItemType();
+        if (filter === enumItemType.genericEnergy) {
+            return itemType === enumItemType.positiveEnergy || itemType === enumItemType.negativeEnergy;
+        }
+
+        return itemType === filter;
     }
 
     /**
