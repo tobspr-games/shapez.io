@@ -1,7 +1,7 @@
 import { ClickDetector } from "../../../core/click_detector";
-import { globalConfig } from "../../../core/config";
+import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
-import { drawRotatedSprite } from "../../../core/draw_utils";
+import { drawRotatedSprite, rotateTrapezRightFaced } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
 import { clamp, makeDiv, removeAllChildren } from "../../../core/utils";
 import {
@@ -16,6 +16,8 @@ import { defaultBuildingVariant } from "../../meta_building";
 import { THEME } from "../../theme";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { HUDBuildingPlacerLogic } from "./building_placer_logic";
+import { makeOffscreenBuffer } from "../../../core/buffer_utils";
+import { enumLayer } from "../../root";
 
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
@@ -56,13 +58,49 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         this.currentInterpolatedCornerTile = new Vector();
 
-        this.lockIndicatorSprite = Loader.getSprite("sprites/misc/lock_direction_indicator.png");
+        this.lockIndicatorSprites = {};
+        for (const layerId in enumLayer) {
+            this.lockIndicatorSprites[layerId] = this.makeLockIndicatorSprite(layerId);
+        }
+
+        //
 
         /**
          * Stores the click detectors for the variants so we can clean them up later
          * @type {Array<ClickDetector>}
          */
         this.variantClickDetectors = [];
+    }
+
+    /**
+     * Makes the lock indicator sprite for the given layer
+     * @param {enumLayer} layer
+     */
+    makeLockIndicatorSprite(layer) {
+        const dims = 48;
+        const [canvas, context] = makeOffscreenBuffer(dims, dims, {
+            smooth: true,
+            reusable: false,
+            label: "lock-direction-indicator",
+        });
+
+        // Loader.getSprite("sprites/misc/lock_direction_indicator.png").draw(context, 0, 0, 48, 48);
+        context.fillStyle = THEME.map.directionLock[enumLayer.wires].color;
+        context.strokeStyle = THEME.map.directionLock[enumLayer.wires].color;
+        context.lineWidth = 2;
+
+        const padding = 5;
+        const height = dims * 0.5;
+        const bottom = (dims + height) / 2;
+
+        context.moveTo(padding, bottom);
+        context.lineTo(dims / 2, bottom - height);
+        context.lineTo(dims - padding, bottom);
+        context.closePath();
+        context.stroke();
+        context.fill();
+
+        return canvas;
     }
 
     /**
@@ -352,23 +390,28 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             parameters.context.beginCircle(endLine.x, endLine.y, 5);
             parameters.context.fill();
 
-            // Draw arrows
+            // Draw arrow
+            const arrowSprite = this.lockIndicatorSprites[this.root.currentLayer];
             const path = this.computeDirectionLockPath();
             for (let i = 0; i < path.length - 1; i += 1) {
                 const { rotation, tile } = path[i];
                 const worldPos = tile.toWorldSpaceCenterOfTile();
-                drawRotatedSprite({
-                    parameters,
-                    sprite: this.lockIndicatorSprite,
-                    x: worldPos.x,
-                    y: worldPos.y,
-                    angle: Math.radians(rotation),
-                    size: 12,
-                    offsetY:
-                        -globalConfig.halfTileSize -
+                const angle = Math.radians(rotation);
+
+                parameters.context.translate(worldPos.x, worldPos.y);
+                parameters.context.rotate(angle);
+                parameters.context.drawImage(
+                    arrowSprite,
+                    -6,
+                    -globalConfig.halfTileSize -
                         clamp((this.root.time.realtimeNow() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
-                        globalConfig.halfTileSize,
-                });
+                        globalConfig.halfTileSize -
+                        6,
+                    12,
+                    12
+                );
+                parameters.context.rotate(-angle);
+                parameters.context.translate(-worldPos.x, -worldPos.y);
             }
         }
     }

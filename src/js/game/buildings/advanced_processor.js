@@ -65,7 +65,7 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
         entity.addComponent(
             new EnergyConsumerComponent({
                 bufferSize: 3,
-                perCharge: 0.25,
+                perCharge: 1,
                 batteryPosition: new Vector(0.63, 0.7),
                 acceptorSlotIndex: 1,
                 ejectorSlotIndex: 1,
