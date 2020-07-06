@@ -528,7 +528,8 @@ storyRewards:
 
     reward_painter:
         title: Verven
-        desc: De <strong>verver</strong> is ontgrendeld - Onttrek wat kleur (op dezelfde manier hoe je vormen onttrekt) en combineer het met een vorm in de verver om ze te kleuren!<br><br>PS: Als je kleurenblind bent, is er een <strong>kleurenblindmodus</strong> in de instellingen!
+        desc: >-
+            De <strong>verver</strong> is ontgrendeld - Onttrek wat kleur (op dezelfde manier hoe je vormen onttrekt) en combineer het met een vorm in de verver om ze te kleuren!<br><br>PS: Als je kleurenblind bent, is er een <strong>kleurenblindmodus</strong> in de instellingen!
 
     reward_mixer:
         title: Kleuren mengen
@@ -724,11 +725,11 @@ settings:
             title: Kleurenblindmodus
             description: Schakelt verschillende hulpmiddelen in zodat je het spel alsnog kunt spelen wanneer je kleurenblind bent.
         rotationByBuilding:
-          title: Rotatie per type gebouw
-          description: >-
-            Elk type gebouw onthoud apart de rotatie waarin je het voor het laatst geplaatst hebt. 
-            Dit kan handig zijn wanneer je vaak tussen verschillende 
-            soorten gebouwen wisselt.
+            title: Rotatie per type gebouw
+            description: >-
+                Elk type gebouw onthoud apart de rotatie waarin je het voor het laatst geplaatst hebt. 
+                Dit kan handig zijn wanneer je vaak tussen verschillende 
+                soorten gebouwen wisselt.
 
 keybindings:
     title: Sneltoetsen
