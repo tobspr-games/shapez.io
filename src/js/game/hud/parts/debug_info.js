@@ -29,7 +29,7 @@ export class HUDDebugInfo extends BaseHUDPart {
     }
 
     updateFullText() {
-        this.element.classList.toggle("debugFull", this.full);
+        this.element.setAttribute("data-mode", this.mode);
 
         let version = `version ${G_BUILD_VERSION}`;
         if (this.full) {
@@ -61,12 +61,14 @@ export class HUDDebugInfo extends BaseHUDPart {
                 break;
         }
         this.updateFullText();
-        this.domAttach.update(this.mode != enumDebugOverlayMode.disabled);
+        this.domAttach.update(this.mode !== enumDebugOverlayMode.disabled);
     }
 
     update() {
         const now = this.root.time.realtimeNow();
-        if (now - this.lastTick > 0.25 && this.visible) {
+        if (!this.visible) return;
+        
+        if (now - this.lastTick > 0.25) {
             this.lastTick = now;
             this.tickRateElement.innerText = "Tickrate: " + this.root.dynamicTickrate.currentTickRate;
             this.fpsElement.innerText =
