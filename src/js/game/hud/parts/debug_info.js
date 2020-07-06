@@ -67,7 +67,7 @@ export class HUDDebugInfo extends BaseHUDPart {
     update() {
         const now = this.root.time.realtimeNow();
         if (!this.visible) return;
-        
+
         if (now - this.lastTick > 0.25) {
             this.lastTick = now;
             this.tickRateElement.innerText = "Tickrate: " + this.root.dynamicTickrate.currentTickRate;
