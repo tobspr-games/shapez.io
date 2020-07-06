@@ -33,7 +33,7 @@ steamPage:
         
         En augmentar la demanda serà necessari redissenyar les línies de producció per tal de saciar les demandes - Sense oblidar-se dels recursos bàsics, serà necessari expandir-se en el [b]mapa infinit[/b]!
         
-        Ja que les figures simples poden ser avorrides serà necessari mesclar colors i pintar-les - Combina vermell, verd i blau per produir diferents colors i així pintar les figures per assolir el nivell de demanda adequat.
+        Ja que les figures simples poden ser avorrides serà necessari mesclar colors i pintar-les - Combina roig, verd i blau per produir diferents colors i així pintar les figures per assolir el nivell de demanda adequat.
         
         El joc compta amb 18 nivells (Que et mantindran ocupat durant hores!) però estic afegint constantment nou contingut - Tinc moltes coses planejades!
         
@@ -50,7 +50,7 @@ steamPage:
         
         [b]Característiques planejades i suggerències de la comunitat[/b]
         
-        Aquest joc es de codi obert - Qualsevol pot contribuir! A més, tinc [b]molt present[/b] a la comunitat! Intento/e llegir tots els suggeriments i proporcionar tot el feedback que m'és possible.
+        Aquest joc és de codi obert - Qualsevol pot contribuir! A més, tinc [b]molt present[/b] a la comunitat! Intento/e llegir tots els suggeriments i proporcionar tot el feedback que m'és possible.
         
         [list]
             [*] Cables!
@@ -127,7 +127,7 @@ mainMenu:
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
     
-        Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarregat chrome per una millor experiència.
+        Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarrega't chrome per una millor experiència.
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut
 
@@ -140,16 +140,16 @@ mainMenu:
                 <br><br>
                 <strong>El tema d'aquesta setmana:</strong> Construeix la base més impresionant!
                 <br><br>
-                Aquest es el procés:<br>
+                Aquest és el procés:<br>
                 <ul class="bucketList">
-                    <li>Envia una captura de pantalla de la teva base <strong>contest@shapez.io</strong></li>
+                    <li>Envia una captura de pantalla de la teva/teua base <strong>contest@shapez.io</strong></li>
                     <li>Punts extra si ho comparteixes en xarxes socials!</li>
-                    <li>Seleccionare aa 5 captures i les proposaré a la comunitat de <strong>discord</strong> per que votin/en.</li>
+                    <li>Seleccionaré a 5 captures i les proposaré a la comunitat de <strong>discord</strong> per que votin/en.</li>
                     <li>El premi és <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
                     <li>Deadline: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
-                Estic esperant per les vostres increïbles creacions!
+                Estic esperant les vostres increïbles creacions!
         showInfo: Veure
         contestOver: Aquest concurs ha conclòs- Entra a discord per assabentar-te de nous concursos!
 
@@ -162,13 +162,13 @@ dialogs:
         restart: Tornar a començar
         reset: Reiniciar
         getStandalone: Obtenir versió completa
-        deleteGame: Se el que em faig
+        deleteGame: Sé el que faig
         viewUpdate: Veure actualitzacions
         showUpgrades: Mostrar millores
         showKeybindings: Mostrar dreceres de teclat 
 
     importSavegameError:
-        title: Error a l'importar
+        title: Error en importar
         text: >-
             Failed to import your savegame:
             
@@ -178,7 +178,7 @@ dialogs:
             La partida ha sigut importada amb èxit.
             
     gameLoadFailure:
-        title: No es pot càrregar la partida guardada
+        title: No es pot carregar la partida guardada
         text: >-
             Failed to load your savegame:
             
@@ -188,7 +188,7 @@ dialogs:
             Estàs segur que vols eliminar la partida guardada?
             
     savegameDeletionError:
-        title: Error al eliminar
+        title: Error en eliminar
         text: >-
             Failed to delete the savegame:
             
@@ -211,11 +211,11 @@ dialogs:
 
     featureRestriction:
         title: Demo - Versió de prova
-        desc: Has intentat accedir a una característica (<feature>) que no està disponible en la demo. Considera en obtenir el joc complet per una experiència completa!
+        desc: Has intentat accedir a una característica (<feature>) que no està disponible en la demo. Considera obtenir el joc complet per a una experiència completa!
 
     oneSavegameLimit:
         title: Partides guardades limitades
-        desc: Només pots tenir una sola partida guardada a la versió de demostració. Si us plau elimina la ja existent o fes-te amb la versió completa del joc!
+        desc: Només pots tenir una sola partida guardada a la versió de demostració. Si vols, elimina la ja existent o fes-te amb la versió completa del joc!
 
     updateSummary:
         title: Nova actualització!
@@ -225,7 +225,7 @@ dialogs:
     upgradesIntroduction:
         title: Desbloquejar millora
         desc: >-
-            Totes les figures poden ser usades per desbloquejar millores - <strong>No eliminis les teves fabriques anteriors!</strong>
+            Totes les figures poden ser usades per desbloquejar millores - <strong>No eliminis/es les teves fabriques anteriors!</strong>
             La pestanya de millores està a la part superior dreta de la pantalla.
             
     massDeleteConfirm:
@@ -247,138 +247,138 @@ dialogs:
         title: Dreceres de teclat útils
         desc: >-
             El joc té moltes dreceres que faciliten la feina a l'hora de construir grans línies de producció.
-            Aquí tens algunes, però asegurat de <strong>revisar les dreceres de teclat</strong>!<br><br>
+            Aquí tens algunes, però asegura't de <strong>revisar les dreceres de teclat</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Arrossegar: Selecciona una àrea.<br>
             <code class='keybinding'>SHIFT</code>: Mentè pressionat per col·locar vàries vegades el mateix edifici.<br>
-            <code class='keybinding'>ALT</code>: Invertir la orientació de les cintes transportades ja col·locades.<br>
+            <code class='keybinding'>ALT</code>: Invertir la orientació de les cintes transportadores ja col·locades.<br>
             
     createMarker:
         title: Nou Marcador
-        desc: Dona-li un nom significatiu, també pots usar <strong>claus</strong> de les figures (Pots generarles a: <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Dona-li un nom significatiu, també pots usar <strong>claus</strong> de les figures (Pots generarles a: <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
 
     markerDemoLimit:
         desc: En la Demo només pots crear dos marcadors, aconsegueix la versió completa per gaudir de l'experiència completa!
 
     exportScreenshotWarning:
         title: Export screenshot
-        desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
+        desc: Has demanat exportar la teva/teua base com una captura de pantalla. Tin en conte que aquest procés pot ser molt lent i inclús crashear el teu joc!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Delete
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
-        switchLayers: Switch Layers
+        moveMap: Moure
+        selectBuildings: Seleccionar àrea
+        stopPlacement: Parar de col·locar
+        rotateBuilding: Rotar edifici
+        placeMultiple: Col·locar múltiples
+        reverseOrientation: Invertir orientació
+        disableAutoOrientation: Desactivar autoorientació
+        toggleHud: Activar/Desactivar HUD
+        placeBuilding: Col·locar edifici
+        createMarker: Crear marcador
+        delete: Esborrar
+        pasteLastBlueprint: Apegar/Enganxar últim plànol
+        lockBeltDirection: Activar planificador de cintes
+        plannerSwitchSide: Emmirallar plànol
+        cutSelection: Tallar
+        copySelection: Copiar
+        clearSelection: Buidar selecció
+        pipette: Pipeta
+        switchLayers: Intercanviar capes
 
     # Names of the colors, used for the color blind mode
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: Roig
+        green: Verd
+        blue: Blau
+        yellow: Groc
+        purple: Morat
+        cyan: Cian
+        white: Blanc
+        uncolored: Sense color
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Pulsa <key> per a ciclar entre variants.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            speed: Velocitat
+            range: Distància
+            storage: Emmagatzemament
+            oneItemPerSecond: 1 objecte / s
+            itemsPerSecond: <x> objectes / s
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> caselles
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: Nivell <level>
+        completed: Complet
+        unlockText: Desbloquejat <reward>!
+        buttonNextLevel: Següent nivell
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: Una nova millora està disponible!
+        gameSaved: La teva/ua partida s'ha guardat.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Millores
+        buttonUnlock: Millorar
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: Nivell <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: NIVELL MÀXIM (Velocitat x<currentMult>)
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: Estadístiques
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: Emmagatzemat
+                description: Mostrant la quantitat de figures emmagatzemades en el teu edifici central.
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: Produit
+                description: Mostrant la producció total de figures de la fàbrica, incluïnt productes intermijos.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: Enviats
+                description: Mostrant les figures que són enviades a l'edifici central.
+        noShapesProduced: Ninguna figura s'ha produit fins ara.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / m
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: Temps de joc
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: Edificis
+        beltsPlaced: Cintes transportadores
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: Continuar
+            settings: Configuració
+            menu: Tornar al menú
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: Necessites ajuda?
+        showHint: Mostrar pista
+        hideHint: Tancar
 
     # When placing a blueprint
     blueprintPlacer:
@@ -386,238 +386,241 @@ ingame:
 
     # Map markers
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        waypoints: Marcadors
+        hub: NEXE
+        description: Fes clic esquerre en un marcador per desplaçar-te cap a ell. Fes clic dret per esborrar-lo. <br><br>Pressiona <keybinding> per a crear un marcador des de la vista actual, o fes <strong>clic dret</strong> per a crear un marcador en el punt seleccionat.
+        creationSuccessNotification: S'ha creat un marcador .
 
     # Shape viewer
     shapeViewer:
-        title: Layers
-        empty: Empty
-        copyKey: Copy Key
+        title: Capes
+        empty: Buit
+        copyKey: Copiar clau
 
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Col·loca un <strong>extractor</strong> damunt d'una <strong>figura circular</strong> per extraure-la!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                Connecta l'extractor a la <strong>cinta transportadora</strong> cap al teu nexe!<br><br>Pista: Pots <strong>clicar i arrossegar</strong> la cinta transportadora amb el teu ratolí!
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                Aquest <strong>NO</strong> és un joc d'espera! Contrueix més extractors i cintes per a completar l'objectiu més ràpidament.<br><br>Pista: Manté pressionat <strong>SHIFT</strong> per a col·locar més extractors, i utilitza <strong>R</strong> per a rotar-los.
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Cintes transportadores, Distribuidors i Túnels
+        description: Velocitat x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Extracció
+        description: Velocitat x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Tallar, Rotar i Apilar
+        description: Velocitat x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Mesclar i Pintar
+        description: Velocitat x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
+        deliver: Envia
+        toUnlock: per a desbloquejar
+        levelShortcut: NVL
 
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Cinta transportadora
+            description: Transporta objectes, mantén pressionat i arrossega per a col·locar múltiples.
 
     wire:
         default:
-            name: &wire Wire
-            description: Allows to transport energy
+            name: &wire Cable
+            description: Permet transportar energia.
 
     miner: # Internal name for the Extractor
         default:
             name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            description: Posa-ho damunt d'una font de figures o colors per extraure'ls.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Extractor (Cadena)
+            description: Posa-ho damunt d'una font de figures o colors per extraure'ls. Pot ser encadenat!
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt Túnel
+            description: Permet transportar recursos per sota d'edificis i cintes.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: Túnel de Nivell II
+            description: Permet transportar recursos per sota d'edificis i cintes.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Distribuïdor
+            description: Multifuncional - Distribueix les entrades i sortides equitativament.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Fusionador (compacte)
+            description: Fusiona dos cintes en una.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Fusionador (compacte)
+            description: Fusiona dos cintes en una.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Cisalla
+            description: Talla figures de dalt a baix i produeix les dues meitats. <strong>Si utilitzes sols una part, assegura't de destruir l'altra o es pararà!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
+            name: Cisalla (Quàdruple)
+            description: Talla figures en quatre parts. <strong>Si no utilitzes totes les parts, assegura't de destruir les altres o es pararà!</strong>
 
     advanced_processor:
         default:
-            name: &advanced_processor Advanced Processor
-            description: Advanced shape processing
+            name: &advanced_processor Processador avançat
+            description: Processament de figures avançat.
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Rotador
+            description: Rota formes en sentit horari 90 graus.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: Rotador (Antihorari)
+            description: Rota formes en sentit antihorari 90 graus.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker Apilador
+            description: Fusiona o apila ambdues figures. Si no poden ser fusionades, la figura de la dreta es posarà damunt de la de l'esquerra.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Mesclador de colors
+            description: Mescla dos colors amb mescla additiva.
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the top input.
+            name: &painter Pintor
+            description: &painter_desc Pinta la figura sencera de l'esquerra amb el color de l'entrada de dalt.
 
         mirrored:
-            name: *painter
-            description: *painter_desc
+            name: Pintor
+            description: Pinta la figura sencera de l'esquerra amb el color de l'entrada de baix.
 
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Pintor (Doble)
+            description: Pinta les figures de l'esquerra amb el color de dalt.
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: Pintor (Quàdruple)
+            description: Permet pintar cadascun dels quadrants de forma diferent.
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Paperera/Brossa
+            description: Acepta objectes de tots els costats i els destrueix. Permanentment.
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Magatzem
+            description: Emmagatzema objectes en excés, fins a una capacitat màxima. Es pot utilitzar com a control d'excedents.
 
     energy_generator:
-        deliver: Deliver
+        deliver: Envia
 
         # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: For
+        toGenerateEnergy: Per a
 
         default:
-            name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes. Each energy generator requires a different shapes.
+            name: &energy_generator Generador d'energia
+            description: Genera energia consumint figures. Cada generador requereix una figura diferent.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Tallar figures
+        desc: Acabes de desbloquejar la <strong>Cisalla</strong> - talla les figures per la meitat <strong>de dalt a baix</strong>; sense importar la seva/ua orientació!<br><br>Assegura't d'eliminar les parts que no utilitzes, si no <strong>es pararà</strong> - Es per això que t'he donat una paperera/brossa, utilitza-la!
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Rotar
+        desc: El <strong>Rotador</strong> s'ha desbloquejat! Rota formes en sentit horari 90 graus.
 
     reward_painter:
-        title: Painting
+        title: Pintar
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            El <strong>Pintor</strong> s'ha desbloquejat! - Extreu mena de color (de la mateixa forma que les figures) i pinta les figures amb el pintor!<br><br> - Si ets daltònic, pots activar <strong>l'opció per daltònics</strong> en les opcions!
+    
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: Mesclar colors
+        desc: El <strong>Mesclador de colors</strong> s'ha desbloquejat! - Combina dos colors utilitzant <strong>la mescla additiva</strong> amb aquest edifici!
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Apilador
+        desc: Ara pots combinar figures amb el <strong>apilador</strong>! Ambdues entrades són combinades. Si es poden posar una vora l'altra, es <strong>fusionaran</strong>. Si no, l'entrada de la dreta <strong>s'apilarà damunt</strong> de la de l'esquerra!
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: Distribuïdor
+        desc: El <strong>distribuïdor</strong> multifuncional s'ha desbloquejat - Pot ser utilitzat per a construir fàbriques més grans per mitjà de la <strong>separació i fusió</strong> de figures de diferents cintes!<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
+        title: Túnel
+        desc: El <strong>túnel</strong> s'ha desbloquejat - Ara pots passar objectes a través d'edificis i cintes transportadores!
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: Rotació antihorària
+        desc: Has desbloquejat una variant del <strong>rotador</strong> - Et permet rotar en sentit antihorari! Per tal de construir-lo, selecciona el rotador i <strong>pressiona 'T' per a ciclar les diferents variants</strong>!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: Extractor en cadena
+        desc: Has desbloquejat el <strong>extractor en cadena</strong>! Pot <strong>passar els seus recursos</strong> a altres extractors perquè pugues extraure recursos més eficientment!
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: Túnel de Nivell II
+        desc: Has desbloquejat una nova variant del <strong>túnel</strong> - Té una <strong>major distància màxima</strong>, i ara pots mesclar tipus de túnels!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Distribuïdor compacte
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            Has desbloquejat una variant compacta del <strong>distribuïdor</strong> - Acepta dues entrades i les fusiona en una sola!
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Cisalla quàdruple
+        desc: Has desbloquejat una variant de la <strong>cisalla</strong> - Et permet tallar figures en <strong>quatre parts</strong> en lloc de sols en dos!
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: Pintor doble
+        desc: Has desbloquejat una variant del <strong>pintor</strong> - Funciona com el pintor regular però processa <strong>dos figures alhora</strong>, consumint sols un color en lloc de dos!
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: Pintor quàdruple
+        desc: Has desbloquejat una variant del <strong>pintor</strong> - Et permet pintar cada part de la figura individualment!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: Magatzem de reserva
+        desc: Has desbloquejat una variant de la <strong>paperera/brossa</strong> - Et permet emmagatzemar objectes fins a una capacitat màxima!
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Joc lliure
+        desc: Ho has fet! Has desbloquejat el <strong>mode de joc lliure</strong>! Això significa que les figures ara són generades aleatòriament! (No t'angoixes, hi ha més contingut planejat per a la versió autònoma - fora del web)
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: Plànols
+        desc: Ara pots <strong>copiar i apegar/enxegar</strong> parts de la teva/ua fàbrica! Selecciona una àrea (Mantén pressionat CTRL, i arrossega el ratolí), i pressiona 'C' per a copiar-la.<br><br>Apegar/enxegar-la <strong>no és gratis</strong>, necessites produir <strong>figures de plànols</strong> per a poder fer-ho! (Les que n'acabes d'enviar).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Següent nivell
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            Aquest nivell no t'ha donat res, però el següent ho farà! <br><br> PD: És millor que no destrueixes la part de la fàbrica existent - Necessitaràs <strong>totes</strong> eixes figures més tard per a <strong>desbloquejar millores</strong>!
+   
     reward_wires:
-        title: Wires
+        title: Cables
         desc: TODO
 
     no_reward_freeplay:
-        title: Next level
+        title: Següent nivell
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Enhorabona! Per cert, hi ha més contingut planejat per a la versió autònoma - fora del web!
+            
 settings:
     title: Settings
     categories:
