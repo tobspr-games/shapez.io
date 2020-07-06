@@ -178,6 +178,34 @@ function gulptasksStandalone($, gulp, buildFolder) {
                         //     "start shapezio --local --dev --disable-direct-composition --in-process-gpu\r\n"
                         // );
                     }
+
+                    if (platform === "darwin") {
+                        // Clear up framework folders
+
+                        const finalPath = path.join(appPath, "shapez.io-standalone.app");
+
+                        const frameworksDir = path.join(finalPath, "Contents", "Frameworks");
+                        const frameworkFolders = fs
+                            .readdirSync(frameworksDir)
+                            .filter(fname => fname.endsWith(".framework"));
+
+                        for (let i = 0; i < frameworkFolders.length; ++i) {
+                            const folderName = frameworkFolders[i];
+                            const frameworkFolder = path.join(frameworksDir, folderName);
+                            console.log(" -> ", frameworkFolder);
+
+                            const filesToDelete = fs
+                                .readdirSync(frameworkFolder)
+                                .filter(fname => fname.toLowerCase() !== "versions");
+                            filesToDelete.forEach(fname => {
+                                console.log("    -> Deleting", fname);
+                                fs.unlinkSync(path.join(frameworkFolder, fname));
+                            });
+
+                            const frameworkSourceDir = path.join(frameworkFolder, "Versions", "A");
+                            fse.copySync(frameworkSourceDir, frameworkFolder);
+                        }
+                    }
                 });
 
                 cb();
