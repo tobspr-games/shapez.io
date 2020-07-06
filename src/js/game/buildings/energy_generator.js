@@ -14,10 +14,6 @@ export class MetaEnergyGenerator extends MetaBuilding {
         super("energy_generator");
     }
 
-    isRotateable(variant) {
-        return false;
-    }
-
     getSilhouetteColor() {
         return "#c425d7";
     }

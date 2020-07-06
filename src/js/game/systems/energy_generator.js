@@ -6,10 +6,14 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { POSITIVE_ENERGY_ITEM_SINGLETON } from "../items/positive_energy_item";
 import { ShapeDefinition } from "../shape_definition";
+import { Loader } from "../../core/loader";
+import { globalConfig } from "../../core/config";
 
 export class EnergyGeneratorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [EnergyGeneratorComponent]);
+
+        this.energyGeneratorOverlay = Loader.getSprite("sprites/misc/energy_generator_overlay.png");
     }
 
     draw(parameters) {
@@ -64,10 +68,18 @@ export class EnergyGeneratorSystem extends GameSystemWithFilter {
 
         const pos = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
 
-        // TESTING
         const definition = ShapeDefinition.fromShortKey(energyGenComp.requiredKey);
         definition.draw(pos.x, pos.y, parameters, 30);
 
+        // Draw background
+        this.energyGeneratorOverlay.drawCachedCentered(
+            parameters,
+            pos.x,
+            pos.y,
+            globalConfig.tileSize * 2 + 8
+        );
+
+        // TODO
         const energyGenerated = 5;
 
         // deliver: Deliver

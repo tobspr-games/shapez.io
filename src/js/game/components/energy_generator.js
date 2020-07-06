@@ -1,5 +1,5 @@
 import { types } from "../../savegame/serialization";
-import { BaseItem } from "../base_item";
+import { BaseItem, enumItemType } from "../base_item";
 import { Component } from "../component";
 import { ShapeItem } from "../items/shape_item";
 
@@ -59,6 +59,22 @@ export class EnergyGeneratorComponent extends Component {
             // just destroy it
             return true;
         } else {
+            if (item.getItemType() !== enumItemType.shape) {
+                // This shouldn't happen since we have a filter - still, it doesn't hurt
+                // to check either
+                assertAlways(
+                    false,
+                    "Energy generator took wrong item: " +
+                        item.getItemType() +
+                        " on slot " +
+                        slot +
+                        " (waste slot = " +
+                        this.wasteAcceptorSlotIndex +
+                        ")"
+                );
+                return false;
+            }
+
             if (/** @type {ShapeItem} */ (item).definition.getHash() !== this.requiredKey) {
                 // Not our shape
                 return false;
