@@ -10,7 +10,7 @@
     flex-direction: column;
     color: #fff;
 
-    &:not([data-mode="full"]) {
+    &:not([data-mode="detailed"]) {
         .mousePosition,
         .cameraPosition {
             display: none;
