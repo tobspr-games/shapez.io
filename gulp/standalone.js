@@ -158,7 +158,7 @@ function gulptasksStandalone($, gulp, buildFolder) {
 
                     fs.writeFileSync(path.join(appPath, ".itch.toml"), tomlFile);
 
-                    if (platform === "linux" || platform === "darwin") {
+                    if (platform === "linux") {
                         fs.writeFileSync(
                             path.join(appPath, "play.sh"),
                             '#!/usr/bin/env bash\n./shapezio --no-sandbox "$@"\n'
@@ -181,6 +181,15 @@ function gulptasksStandalone($, gulp, buildFolder) {
 
                     if (platform === "darwin") {
                         // Clear up framework folders
+                        fs.writeFileSync(
+                            path.join(appPath, "play.sh"),
+                            '#!/usr/bin/env bash\n./shapez.io-standalone.app/Contents/MacOS/shapezio --no-sandbox "$@"\n'
+                        );
+                        fs.chmodSync(path.join(appPath, "play.sh"), 0o775);
+                        fs.chmodSync(
+                            path.join(appPath, "shapez.io-standalone.app", "Contents", "MacOS", "shapezio"),
+                            0o775
+                        );
 
                         const finalPath = path.join(appPath, "shapez.io-standalone.app");
 
