@@ -365,10 +365,12 @@ export class DialogWithForm extends Dialog {
      * @param {Application} param0.app
      * @param {string} param0.title
      * @param {string} param0.desc
-     * @param {string=} param0.confirmButton
+     * @param {array=} param0.buttons
+     * @param {string=} param0.confirmButtonId
+     * @param {string=} param0.extraButton
      * @param {Array<FormElement>} param0.formElements
      */
-    constructor({ app, title, desc, formElements, confirmButton = "ok:good" }) {
+    constructor({ app, title, desc, formElements, buttons = ["cancel", "ok:good"], confirmButtonId = "ok" }) {
         let html = "";
         html += desc + "<br>";
         for (let i = 0; i < formElements.length; ++i) {
@@ -379,14 +381,14 @@ export class DialogWithForm extends Dialog {
             app,
             title: title,
             contentHTML: html,
-            buttons: ["cancel:bad", confirmButton],
+            buttons: buttons,
             type: "info",
             closeButton: true,
         });
-        this.confirmButtonId = confirmButton.split(":")[0];
+        this.confirmButtonId = confirmButtonId;
         this.formElements = formElements;
 
-        this.enterHandler = "ok";
+        this.enterHandler = confirmButtonId;
     }
 
     internalButtonHandler(id, ...payload) {

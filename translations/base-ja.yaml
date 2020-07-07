@@ -253,6 +253,7 @@ dialogs:
 
     createMarker:
         title: マーカーを設置
+        titleEdit: マーカーを編集
         desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<a href="https://viewer.shapez.io" target="_blank">ここ</a>から生成できます）
 
     markerDemoLimit:
