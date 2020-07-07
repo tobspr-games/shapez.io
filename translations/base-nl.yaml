@@ -30,47 +30,47 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io is een spel over het bouwen van fabrieken, welke steeds moeilijker wordende vormen maken en verfijnen, over een oneindig grote map.
+        Nadat u de gevraagde vormen heeft afgeleverd, komt u verder in de game, en kunt u upgrades verkrijgen om zo uw fabriek te versnellen.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Omdat de vraag naar vormen groter wordt, moet u uw fabriek steeds groter maken om aan de vraag te voldoen - vergeet de grondstoffen niet, u zal moeten groeien over de [b]oneindige map[/b]!
+        
+        Binnenkort moet u kleuren mengen en uw vormen ermee verven - Combineer rode, groene en blauwe kleurbronnen om verschillende kleuren, en verf vormen ermee om aan de vraag te voldoen.
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Dit spel heeft 18 opeenvolgende niveaus (Welke u bezig moeten houden voor al gauw een paar uur!) maar ik vroeg constant inhoud toe - er is veel gepland!
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Door dit spel te kopen krijgt u toegang tot de losstaande versie, welke meer mogelijkheden heeft, mede als toegang gevend aan nieuw toegevoegde onderdelen.
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
-
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
+        [b]Losstaande voordelen[/b]
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Donkere modus
+            [*] Oneindig aantal wegpunten
+            [*] Oneindig aantal werelden
+            [*] Meer instellingen
+            [*] Binnenkort: Draden & Energie! Gemikt op (ongeveer) het einde van Juli 2020.
+            [*] Binnenkort: Meer Niveaus
+            [*] Sta mij toe om shapez.io te verbeteren ❤️
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Toekomstige Updates[/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Ik update het spel erg vaak, en probeer ten minste iedere week een update te publiceren!
+
+        [list]
+            [*] Verschillende werelden en uitdagingen (b.v. werelden met obstakels)
+            [*] Puzzels (Breng de gevraagde vorm, door een afgezette omgeving / bepaalde hoeveelheid gebouwen)
+            [*] Een verhaal waar gebouwen een prijs hebben
+            [*] Instelbare werleld generator (Pas vorm, vormgrootte, dichtheid, seed en meer aan)
+            [*] Meer types vormen toegevoegd
+            [*] Prestaties verbeteringen (Het spel draait al best goed!)
+            [*] En nog veel meer!
+        [/list]
+
+        [b]Dit spel is open-source![/b]
+
+        Iedereen can toevoegen, ik ben actief in de gemeenschap, en probeer alle suggesties te bekijken en terugkoppelingen te overwegen waar mogelijk.
+        Bekijk mijn trello bord voor het volledige stappenplan! 
 
         [b]Links[/b]
 
@@ -82,7 +82,7 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Officiële Discord - Praat met me!
 
 global:
     loading: Laden
