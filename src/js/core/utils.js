@@ -413,7 +413,7 @@ function roundSmart(n) {
 /**
  * Formats a big number
  * @param {number} num
- * @param {string=} separator The decimal separator for numbers like 50.1 (divider='.')
+ * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
  * @returns {string}
  */
 export function formatBigNumber(num, separator = T.global.decimalSeparator) {
@@ -957,13 +957,13 @@ export function capitalizeFirstLetter(str) {
  * Formats a number like 2.5 to "2.5 items / s"
  * @param {number} speed
  * @param {boolean=} double
- * @param {string=} separator The decimal separator for numbers like 50.1 (divider='.')
+ * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
  */
 export function formatItemsPerSecond(speed, double = false, separator = T.global.decimalSeparator) {
     return speed === 1.0
         ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
         : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace(
-                "<x>",
-                round2Digits(speed).toString().replace(".", separator)
-            ) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
+              "<x>",
+              round2Digits(speed).toString().replace(".", separator)
+          ) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
 }
