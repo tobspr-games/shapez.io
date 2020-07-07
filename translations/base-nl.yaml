@@ -31,7 +31,8 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         shapez.io is een spel dat draait om het bouwen van fabrieken om steeds complexere vormen te produceren en deze productie te automatiseren in een oneindig groot speelveld. 
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        
+        Door het leveren van de gevraagde vormen, kom je verder in het spel en ontgrendel je upgrades waar je fabriek sneller van wordt. 
 
         De vraag naar vormen wordt steeds groter, wat betekent dat je de fabriek moet uitbreiden om de vraag tegemoet te komen. Om de juiste grondstoffen te delven zul je steeds verder in het [b]oneindig grote speelveld[/b] moeten gaan werken!
         
@@ -371,7 +372,7 @@ ingame:
         buttons:
             continue: Verder spelen
             settings: Opties
-            menu: Terug naar het menu
+            menu: Terug naar het Menu
 
     # Bottom left tutorial hints
     tutorialHints:
@@ -825,7 +826,7 @@ keybindings:
         lockBeltDirection: Schakel lopende band-planner in
         switchDirectionLockSide: "Planner: Wissel van richting"
         pipette: Pipet
-        menuClose: Sluit menu
+        menuClose: Sluit Menu
         switchLayers: Lagen omwisselen
         advanced_processor: Kleur-omvormer
         energy_generator: Energiegenerator
