@@ -23,8 +23,6 @@ export const enumHubGoalRewards = {
     reward_painter_quad: "reward_painter_quad",
     reward_storage: "reward_storage",
 
-    reward_wires: "reward_wires",
-
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
 

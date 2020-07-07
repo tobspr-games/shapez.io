@@ -11,42 +11,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io je hra o stavbě továren pro automatizaci výroby a kombinování tvarů. Poskytněte vyžadované, stále složitější tvary, aby jste postoupili ve hře dále, a odemkněte vylepšení pro zrychlení vaší továrny.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Protože poptávka postupně roste, musíte svou továrnu rozšiřovat tak, aby vyhověla potřebám - Nové zdroje, najdete na [b]nekonečné mapě[/b]!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Jen tvary by byly nuda, proto máme pigmenty kterými musíte dílky obarvit - zkombinujte červené, zelené a modré barvivo pro vytvoření dalších odstínů a obarvěte s nimi tvary pro uspokojení poptávky.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Hra obsahuje 18 úrovní (což by vás mělo zaměstnat na spoustu hodin!), ale nový obsah je neustále přidáván - je toho hodně naplánováno!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Výhody plné hry[/b]
-
-        [list]
-            [*] Označování pozic na mapě
-            [*] Neomezený počet uložených her
-            [*] Tmavý motiv
-            [*] Více nastavení
-            [*] Pomůžete mi dále vyvíjet shapez.io ❤️
-            [*] Více funkcí v budoucnu!
-        [/list]
-
-        [b]Plánované funkce a komunitní návrhy[/b]
-
-        Tato hra je open source - kdokoli může přispět! Kromě toho [b]hodně[/b] poslouchám komunitu! Snažím se přečíst si všechny návrhy a vzít v úvahu zpětnou vazbu.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Mód s příběhem, kde stavba budov stojí tvary
-            [*] Více úrovní a budov (exkluzivní pro plnou verzi)
-            [*] Různé mapy a zábrany na mapě
-            [*] Konfigurace generátoru map (úprava počtu a velikosti nálezišť, seed map, a další)
-            [*] Více tvarů
-            [*] Další zlepšení výkonu (I když hra již běží docela dobře!)
-            [*] Režim pro barvoslepé
-            [*] A mnohem více!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Nezapomeňte se podívat na moji Trello nástěnku pro úplný plán! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Načítám
@@ -112,28 +129,7 @@ mainMenu:
     savegameLevel: Úroveň <x>
     savegameLevelUnknown: Neznámá úroveň
 
-    contests:
-        contest_01_03062020:
-            title: "Soutěž #01"
-            desc: Vyhraj <strong>$25</strong> za nejvíc cool základnu!
-            longDesc: >-
-                Abych vám poděkoval, myslel jsem, že by bylo skvělé dělat týdenní soutěže!
-                <br><br>
-                <strong>Téma tohoto týdne:</strong> Postavte nejvíc cool základnu!
-                <br><br>
-                Zde je zadání:<br>
-                <ul class="bucketList">
-                    <li>Zašlete screenshot své základny na <strong>contest@shapez.io</strong></li>
-                    <li>Bonusové body za sdílení na sociálních médiích!</li>
-                    <li>Vyberu 5 screenshotů a <strong>Discord</strong> komunita bude hlasovat o vítězi.</li>
-                    <li>Vítěz dostane <strong>$25</strong> (Paypal, Amazon Dárkový Poukaz, co preferujete)</li>
-                    <li>Uzávěrka: 07.06.2020 12:00 CEST</li>
-                </ul>
-                <br>
-                Těším se na vaše úžasné výtvory!
 
-        showInfo: Zobrazit
-        contestOver: Tato soutěž skončila - Připojte se na Discord a získejte informace o nových soutěžích!
     continue: Pokračovat
     newGame: Nová hra
     madeBy: Vytvořil <author-link>
@@ -236,6 +232,7 @@ dialogs:
     createMarker:
         title: Nová značka
         desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!
@@ -250,6 +247,10 @@ dialogs:
         desc: >-
             Zažádal jsi o exportování své základny jako obrázek. Měj prosím na paměti, že to
             může zejména u větších základen dlouho trvat, nebo dokonce shodit hru!
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -273,6 +274,7 @@ ingame:
         copySelection: Kopířovat
         clearSelection: Zrušit výběr
         pipette: Kapátko
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -388,9 +390,11 @@ ingame:
         cyan: Tyrkysová
         white: Bílá
         uncolored: Bez barvy
+        black: Black
     shapeViewer:
         title: Vrstvy
         empty: Prázdné
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -498,6 +502,27 @@ buildings:
         storage:
             name: Sklad
             description: Skladuje věci navíc až do naplnění kapacity. Může být použit na skladování surovin navíc.
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -709,11 +734,11 @@ settings:
             title: Režim pro barvoslepé
             description: Zapné různé nástroje, které vám umožní hrát hru i pokud jste barvoslepí.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Rotation by building type
+            description: >-
+                Each building type remembers the rotation you last set it to individually.
+                This may be more comfortable if you frequently switch between placing
+                different building types.
 
 keybindings:
     title: Klávesové zkratky
@@ -781,6 +806,11 @@ keybindings:
         lockBeltDirection: Zamknout směr pásu
         switchDirectionLockSide: Otočit strany zámku plánovače
         pipette: Kapátko
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: O hře

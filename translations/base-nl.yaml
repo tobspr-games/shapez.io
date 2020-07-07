@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is een spel dat draait om het bouwen van fabrieken om steeds complexere vormen te produceren en deze productie te automatiseren. Lever de gevraagde, steeds complexere vormen, om verder te komen in het spel en om upgrades voor je fabrieken te ontgrendelen.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        De vraag naar vormen wordt steeds groter, wat betekent dat je fabriek moet blijven uitbreiden om dit tegemoet te komen. Om de juiste grondstoffen te delven zul je steeds verder in het [b]oneindig grote speelveld[/b] moeten gaan werken!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Omdat simpele vormen snel saai worden, moet je kleuren mengen om de vormen te verven - combineer rode, groene en blauwe grondstoffen om verschillende kleuren te produceren en gebruik deze om de vormen te verven, zodat je de vraag hiernaar tegemoet kan komen.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Dit spel bevat 18 levels (Waar je al uren mee bezig zal zijn!), maar ik ben continu bezig om het spel uit te breiden - er staat veel in de planning!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Standalone voordelen[/b]
-
-        [list]
-            [*] Markeringen
-            [*] Oneindig veel Savegames
-            [*] Donkere modus
-            [*] Meer opties
-            [*] Met jouw steun kan ik shapez.io verder ontwikkelen ❤️
-            [*] Meer functies in de toekomst!
-        [/list]
-
-        [b]Geplande functies & suggesties van de community[/b]
-
-        Dit spel is open source - Iedereen kan bijdragen! Daarnaast luister ik [b]erg veel[/b] naar de community! Ik probeer alle suggesties te lezen en gebruik feedback zo veel als mogelijk.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Verhaalmodus, waar gebouwen specifieke vormen kosten om te bouwen
-            [*] Meer levels & gebouwen (exclusief in de standalone)
-            [*] Verschillende mappen en misschien obstakels in mappen
-            [*] Aangepaste mappen aanmaken (Het kiezen van de hoeveelheid en de grootte van de grondstofbronnen, seeds, en meer)
-            [*] Meer soorten vormen
-            [*] Meer prestatieverbeteringen (Hoewel het spel al vrij goed loopt!)
-            [*] Kleurenblindmodus
-            [*] En nog veel meer!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Bekijk mijn trello-bord voor het volledige stappenplan! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Laden
@@ -131,28 +148,7 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Onbekend Level
 
-    contests:
-        contest_01_03062020:
-            title: "Competitie #01"
-            desc: Win <strong>$25</strong> voor de meest coole basis!
-            longDesc: >-
-                Om wat aan jullie terug te geven leek het me leuk om wekelijkse competities te houden!
-                <br><br>
-                <strong>Het onderwerp van deze week:</strong> Bouw de meest coole basis!
-                <br><br>
-                Dit is hoe het zit:<br>
-                <ul class="bucketList">
-                    <li>Stuur een screenshot van jouw basis naar <strong>contest@shapez.io</strong></li>
-                    <li>Bonuspunten als je het deelt op social media!</li>
-                    <li>Ik kies 5 screenshots en presenteer deze aan de <strong>discord</strong> community om te stemmen.</li>
-                    <li>De winnaar krijgt <strong>$25</strong> (Paypal, Amazon Gift Card, wat jij het liefste hebt)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                Ik kijk er naar uit om jullie geweldige creaties te zien!
 
-        showInfo: Laat zien
-        contestOver: Deze competitie is voorbij - word lid van de discord (engelstalig) om berichten te krijgen van nieuwe competities!
     continue: Verder
     newGame: Nieuw Spel
     madeBy: Gemaakt door <author-link>
@@ -255,6 +251,7 @@ dialogs:
     createMarker:
         title: Nieuwe markering
         desc: Geef het een betekenisvolle naam. Je kunt ook een <strong>icoontje</strong> van een vorm toevoegen (die je <a href="https://viewer.shapez.io" target="_blank">hier</a> kunt maken)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Je kunt maar twee markeringen plaatsen in de demo. Koop de standalone voor een ongelimiteerde hoeveelheid markeringen!
@@ -267,6 +264,10 @@ dialogs:
         title: Exporteer screenshot
         desc: >-
             Je hebt aangegeven dat je jouw basis wil exporteren als screenshot. Als je een grote basis hebt kan dit proces langzaam zijn en er zelfs voor zorgen dat je spel crasht!
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -290,6 +291,7 @@ ingame:
         copySelection: Kopieer
         clearSelection: Cancel selectie
         pipette: Pipet
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -405,9 +407,11 @@ ingame:
         cyan: Cyaan
         white: Wit
         uncolored: Geen kleur
+        black: Black
     shapeViewer:
         title: Lagen
         empty: Leeg
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -515,6 +519,27 @@ buildings:
         deliver: Lever
         toUnlock: om te ontgrendelen
         levelShortcut: LVL
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -727,8 +752,8 @@ settings:
         rotationByBuilding:
             title: Rotatie per type gebouw
             description: >-
-                Elk type gebouw onthoud apart de rotatie waarin je het voor het laatst geplaatst hebt. 
-                Dit kan handig zijn wanneer je vaak tussen verschillende 
+                Elk type gebouw onthoud apart de rotatie waarin je het voor het laatst geplaatst hebt.
+                Dit kan handig zijn wanneer je vaak tussen verschillende
                 soorten gebouwen wisselt.
 
 keybindings:
@@ -797,6 +822,11 @@ keybindings:
         lockBeltDirection: Schakel lopende band-planner in
         switchDirectionLockSide: "Planner: Wissel van richting"
         pipette: Pipet
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: Over dit spel

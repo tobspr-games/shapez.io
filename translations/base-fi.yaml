@@ -20,7 +20,7 @@
 #
 
 steamPage:
-    # This is the short text appearing on the steam page 
+    # This is the short text appearing on the steam page
     shortText: shapez.io on peli tehtaiden rakentamisesta, joiden avulla automatisoidaan yhä monimutkaisempien muotojen luonti and yhdisteleminen loputtomassa maailmassa.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
@@ -30,41 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io on peli tehtaiden rakentamisesta, joiden avulla automatisoidaan yhä monimutkaisempien muotojen luonti and yhdisteleminen. Toimita yhä monimutkaisemmat pyydetyt muodot edistyäksesi pelissä ja avataksesi päivityksiä kasvattamaan tehtaasi nopeutta.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Kun kysyntä kasvaa, sinun täytyy kasvattaa tehdastasi täyttämään uudet vaatimukset. - Joskin älä unohda resursseja, sinun täytyy laajentua [b]loputtomassa maailmassa[/b]!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Koska muodot voivat käydä pian tylsiksi, sinun täytyy sekoittaa värejä keskenään ja värjätä muotoja niillä - Sekoita punaista, vihreää ja sinista väriresurssia tehdäksesi erilaisia värejä ja värjätäksesi muotoja sillä tyydyttääksesi kysynnän.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Tämä peli tarjoaa 18 tasoa (Joiden pitäisi pitää sinut kiireisenä jo monia tunteja!) mutta lisään jatkuvasti lisää sisältöä peliin. - Paljon sisältöä on suunniteltu!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Itsenäisen pelin edut[/b]
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Reittipisteet
-            [*] Loputon määrä tallennuksia
-            [*] Tumma tila
-            [*] Lisää asetuksia
-            [*] Antakaa minun kehittää shapez.io:ta pidemmälle❤️
-            [*] Lisää ominaisuuksia tulossa!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        [b]Suunnitellut ominaisuudet & Yhteisön ehdotukset[/b]
+        [b]Future Updates[/b]
 
-        Tässä pelissä on avoin lähdekoodi - Kuka tahansa voi osallistua! Sen lisäksi kuuntelen [b]paljon[/b] Yhteisöä! Yritän lukea kaikki ehdotukset ja ottaa mahdollisimman paljon palautetta huomioon.
+        I am updating the game very often and trying to push an update at least every week!
+
         [list]
-            [*] Johtoja!
-            [*] Tarinatila, jossa rakennukset maksavat muotoja
-            [*] Lisää tasoja ja rakennuksia (pelkästään itsenäisessä pelissä)
-            [*] Erilaisia karttoja sekä ehkä esteitä kartoissa
-            [*] Säädettävä kartan luonti (Säädä alueiden lukumäärää ja kokoa, kartan siementä ja muuta)
-            [*] Lisää muototyyppejä
-            [*] Lisää suorituskyvyn parannuksia (Huolimatta siitä että peli jo nyt toimii meko hyvin!)
-            [*] Ja paljon muuta!
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
         [/list]
 
-        Muista tarkistaa trello taulusta koko etenemissuunnitelma! https://trello.com/b/ISQncpJP/shapezio
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Ladataan
@@ -134,28 +152,7 @@ mainMenu:
     savegameLevel: Taso <x>
     savegameLevelUnknown: Tuntematon Taso
 
-    contests:
-        contest_01_03062020:
-            title: "Kilpailu #01"
-            desc: Palkinto <strong>17,78€</strong> hienoimmalle päämajalle!
-            longDesc: >-
-                Jotta voin antaa takaisin jotain, ajattelin että olisi hienoa pitää viikottaisia kilpailuja!
-                <br><br>
-                <strong>Tämän viikon aihe:</strong> Rakenna hienoin päämaja!
-                <br><br>
-                Tässä on ehdot:<br>
-                <ul class="bucketList">
-                    <li>Lähetä kuvakaappaus tukikohdastasi osoitteeseen <strong>contest@shapez.io</strong></li>
-                    <li>Saat bonuspisteita jos jaat sen sosiaalisessa mediassa!</li>
-                    <li>Valitsen viisi kuvakaappausta ja lähetän ne <strong>discord</strong> yhteisölle äänestettäväksi.</li>
-                    <li>Voittaja saa <strong>22,23€</strong> (Paypal, Amazon lahjakortti tai mitä vain haluat)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                Odotan innolla mahtavia luomuksiasi!
 
-        showInfo: Näytä
-        contestOver: Tämä kilpailu on päättynyt - Liity discord yhteisöön saadaksesi huomautuksia uusista kilpailuista!
 
 dialogs:
     buttons:
@@ -259,6 +256,7 @@ dialogs:
     createMarker:
         title: Uusi Merkki
         desc: Anna merkille kuvaava nimi, voit myös sisällyttää muodon <strong>lyhyen avaimen</strong> siihen. (Lyhyen avaimen voit luoda <a href="https://viewer.shapez.io" target="_blank">täällä</a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki itsenäinen versio saadaksesi loputtoman määrän merkkejä!
@@ -266,6 +264,9 @@ dialogs:
     exportScreenshotWarning:
         title: Vie kuvakaappaus
         desc: Pyysit tukikohtasi viemistä kuvakaappauksena. Huomaa, että tämä voi olla melko hidasta isolla tukikohdalla ja voi jopa kaataa pelisi!
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -301,6 +302,7 @@ ingame:
         cyan: Syaani
         white: Valkoinen
         uncolored: Ei Väriä
+        black: Black
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -541,6 +543,13 @@ buildings:
         default:
             name: &energy_generator Sähkögeneraattori
             description: Tuottaa sähköä kuluttamalla muotoja. Jokainen sähkögeneraattori vaatii eri muotoja.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -619,10 +628,6 @@ storyRewards:
         title: Seuraava taso
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
-
-    reward_wires:
-        title: Johdot
-        desc: TODO
 
     no_reward_freeplay:
         title: Seuraava taso
@@ -833,6 +838,7 @@ keybindings:
         placementDisableAutoOrientation: Poista automaattinen suunta käytöstä
         placeMultiple: Pysy sijoittamistilassa
         placeInverse: Käännä automaattinen hihnan suunta
+        menuClose: Close Menu
 
 about:
     title: Tietoja tästä pelistä

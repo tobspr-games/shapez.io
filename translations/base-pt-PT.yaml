@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io é um jogo cujo objetivo é construir fábricas para automatizar a criação e fusão de formas geométricas. Entrega as formas pedidas, que são cada vez mais complexas, de modo a progredir no jogo e desbloquear melhorias para acelerar a produção da tua fábrica
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Uma vez que a procura aumenta a cada nível, terás de aumentar a tua fábrica para fazer face às necessidades - Para isso, terás de te expandir no [b]mapa infinito[/b] para explorar todos os recursos!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Como produzir formas se tornará aborrecido rapidamente, não tardará até precisares de misturar cores e pintá-las com elas - Combina os recursos de cores vermelha, verde e azul para produzir diferentes cores e usá-las para pintar as formas geométricas com o intuito de satisfazer a procura.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Este jogo conta com 18 níveis (Que deverão manter-te ocupado durante horas!) mas estou constantemente a adicionar novos conteúdos - Há muitas coisas planedas!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Vantagens do jogo completo[/b]
-
-        [list]
-            [*] Marcos
-            [*] Savegames infinitos
-            [*] Modo escuro
-            [*] Mais definições
-            [*] Possibilita-me desenvolver ainda mais o shapez.io ❤️
-            [*] Mais conteúdo no futuro!
-        [/list]
-
-        [b]Conteúdo planeado & Sugestões da comunidade[/b]
-
-        Este jogo é open source (código aberto) - Qualquer pessoa pode contribuir! Adicionalmente, Eu ouço [b]muito[/b] a comunidade! Eu tento ler todas as sugestões e retirar delas tanto feedback quanto possível.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Modo história onde as construções custam formas geométricas
-            [*] Mais níveis & construções (exclusivo do jogo completo)
-            [*] Mapas diferentes, e talvez com obstáculos
-            [*] Criação de mapas configuráveis (Editar o número e tamanho das minas, semente, e mais)
-            [*] Mais tipos de formas geométricas
-            [*] Mais melhorias de performance (Apesar do jogo já correr bastante bem!)
-            [*] Modo daltónico
-            [*] E muito mais!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Segue o meu trello board para veres todo o roteiro de desenvolvimento! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: A carregar
@@ -131,28 +148,7 @@ mainMenu:
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
 
-    contests:
-        contest_01_03062020:
-            title: "Concurso #01"
-            desc: Ganha <strong>$25</strong> para a base mais cool!
-            longDesc: >-
-                Para retribuir o teu apoio, pensei que seria bom fazer concursos semanais!
-                <br><br>
-                <strong>O tópico desta semana:</strong> Construir a base mais cool!
-                <br><br>
-                Como fazer:<br>
-                <ul class="bucketList">
-                    <li>Envia uma captura de ecrã da tua base para <strong>contest@shapez.io</strong></li>
-                    <li>Bónus se o partilhares nas redes sociais!</li>
-                    <li>Eu irei escolher 5 capturas de ecrã e propô-las-ei à comunidade do <strong>discord</strong> para votar.</li>
-                    <li>O vencedor ganha <strong>$25</strong> (Paypal, Amazon Gift Card, ou o que preferires)</li>
-                    <li>Prazo: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                Estou ansioso por ver as vossas fantásticas criações!
 
-        showInfo: Ver
-        contestOver: Este concurso terminou - Entra no discord para seres notificado quando abrirem novos concursos!
     continue: Continuar
     newGame: Novo Jogo
     madeBy: Criado por <author-link>
@@ -255,6 +251,7 @@ dialogs:
     createMarker:
         title: Novo marco
         desc: Dá-lhe um nome com significado, também poderás adicionar <strong>um pequeno código</strong> de uma forma. (Pode ser gerado <a href="https://viewer.shapez.io" target="_blank">aqui</a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Apenas podes criar dois marcos na versão Demo. Adquire o jogo completo para colocar marcos infinitos!
@@ -268,6 +265,10 @@ dialogs:
         desc: >-
             Tu estás a pedir pra exportar a tua base como uma captura de ecrã. Por favor tem em atenção que isto pode
             ser um pouco lento para uma base muito grande até mesmo bloquear o teu jogo!
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -291,6 +292,7 @@ ingame:
         copySelection: Copiar
         clearSelection: Cancelar
         pipette: Pipeta
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -406,9 +408,11 @@ ingame:
         cyan: Ciano
         white: Branco
         uncolored: Sem cor
+        black: Black
     shapeViewer:
         title: Camadas
         empty: Vazio
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -515,6 +519,27 @@ buildings:
         deliver: Entrega
         toUnlock: para desbloquear
         levelShortcut: NVL
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -726,11 +751,11 @@ settings:
             title: Modo Daltónico
             description: Ativa várias ferramentas que te permitirão jogar o jogo se fores daltónico.
         rotationByBuilding:
-          title: Rotação por tipo de construção
-          description: >-
-            Cada tipo construção lembra-se da última rotação que definiste.
-            Esta definição pode ser mais confortável se alterares frequentemente
-            a colocação de diferentes tipos de construções.
+            title: Rotação por tipo de construção
+            description: >-
+                Cada tipo construção lembra-se da última rotação que definiste.
+                Esta definição pode ser mais confortável se alterares frequentemente
+                a colocação de diferentes tipos de construções.
 
 keybindings:
     title: Atalhos
@@ -798,6 +823,11 @@ keybindings:
         lockBeltDirection: Ativa o planeamento de tapetes
         switchDirectionLockSide: "Planeador: Troca o lado"
         pipette: Pipeta
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 about:
     title: Sobre o jogo
     body: >-

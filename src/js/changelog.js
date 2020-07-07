@@ -13,10 +13,12 @@ export const CHANGELOG = [
             "Zoom towards mouse cursor (by Dimava)",
             "Updated the soundtrack again, it is now 20 minutes in total!",
             "Updated and added new translations (Thanks to all contributors!)",
+            "Allow editing waypoints (by isaisstillalive)",
             "Show confirmation when cutting area which is too expensive to get pasted again (by isaisstillalive)",
             "Show mouse and camera tile on debug overlay (F4) (by dengr)",
             "Fix tunnels entrances connecting to exits sometimes when they shouldn't",
             "The initial belt planner direction is now based on the cursor movement (by MizardX)",
+            "Fix preferred variant not getting saved when clicking on the hud (by Danacus)",
         ],
     },
     {

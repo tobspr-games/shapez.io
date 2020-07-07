@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io est un jeu ayant pour objectif d'automatiser la création et la fusion de formes à l'aide d'une usine. Livrez des formes de plus en plus complexes requises pour progresser dans le jeu et débloquez des améliorations qui accéléreront votre chaîne de production.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        La demande allant croissant, vous aurez à adapter l'échelle de votre usine afin de suivre la demande - Ne négligez pas les resources cependant, vous aurez à vous étendre sur une [b]carte infinie[/b] !
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Traiter seulement des formes pouvant devenir monotone à la longue, vous aurez aussi à mélanger des couleurs et à les utiliser pour peindre vos formes - Combinez des pigments rouges, verts ou bleus pour produire différentes couleurs et enduisez-en vos formes afin de satisfaire les demandes.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Ce jeu propose 18 niveaux (qui devraient d'ores et déjà vous occuper pour de nombreuses heures !) mais j'ajoute régulièrement de nouveaux contenus - Beaucoup de nouveautés sont prévues !
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Avantage de la version complète[/b]
-
-        [list]
-            [*] Balises
-            [*] Nombre illimité de sauvegardes
-            [*] Thème sombre
-            [*] Plus de paramètres de configuration
-            [*] Acheter la version complète m'aide à poursuivre le développement de shapez.io ❤️
-            [*] Encore plus de fonctionnalités à l'avenir !
-        [/list]
-
-        [b]Fonctionnalités planifiées & suggestions de la communauté[/b]
-
-        Ce jeu est open source - N'importe qui peut contribuer ! En outre, Je suis [b]très attentif[/b] à ce que dit la communauté ! J'essaie de lire toutes les suggestions et de tenir compte des retours autant que possible.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Mode Histoire où les batiments ont un coût en formes
-            [*] Plus de niveaux et de batiments (en exclusivité dans la version complète)
-            [*] Différentes cartes, contenant éventuellement des obstacles
-            [*] Création configurable de carte (éditer le nombre et la taille des gisements de resources, édition de la graine générant la carte, et plus encore)
-            [*] Davantage de types de formes
-            [*] Performance améliorée (bien que le jeu tourne déjà de manière tout à fait décente !)
-            [*] Adaptation de l'affichage des couleurs à différentes formes de daltonisme
-            [*] Et bien plus encore !
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        N'hésitez pas à consulter mon tableau trello pour avoir une vue d'ensemble de ce qui est prévu ! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Chargement
@@ -132,28 +149,7 @@ mainMenu:
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
 
-    contests:
-        contest_01_03062020:
-            title: "Concours #01"
-            desc: Gagnez <strong>$25</strong> pour l'usine la plus cool !
-            longDesc: >-
-                Pour vous remercier, j'ai pensé qu'il serait bien de faire un concours hebdomadaire !
-                <br><br>
-                <strong>Le sujet de cette semaine:</strong> Construire l'usine la plus cool !
-                <br><br>
-                Voici comment faire:<br>
-                <ul class="bucketList">
-                    <li>Envoyez une capture d'écran de votre usine à <strong>contest@shapez.io</strong></li>
-                    <li>Vous aurez des points bonus si vous la partagez sur les réseaux sociaux !</li>
-                    <li>Je choisirai 5 images et les soumettrai au vote à la communauté <strong>discord</strong>.</li>
-                    <li>Le gagnant empoche <strong>$25</strong> (Paypal, carte cadeau Amazon, ce que vous préférez)</li>
-                    <li>Limite: 07.06.2020 AM 12:00 CEST</li>
-                </ul>
-                <br>
-                J'attends avec impatience de voir vos superbes créations !
 
-        showInfo: Voir
-        contestOver: Ce concours est terminé - Rejoignez le serveur discord pour être tenu au courant des prochains concours !
     continue: Continuer
     newGame: Nouvelle partie
     madeBy: Créé par <author-link>
@@ -262,6 +258,7 @@ dialogs:
     createMarker:
         title: Nouvelle balise
         desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci </strong> d'une forme (Que vous pouvez générer <a href="https://viewer.shapez.io" target="_blank">ici</a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire autant que vous voulez !
@@ -270,6 +267,10 @@ dialogs:
         title: Exporter une capture d'écran
         desc: >-
             Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -293,6 +294,7 @@ ingame:
         copySelection: Copier
         clearSelection: Effacer la sélection
         pipette: Pipette
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -407,9 +409,11 @@ ingame:
         cyan: Cyan
         white: Blanc
         uncolored: Non coloré
+        black: Black
     shapeViewer:
         title: Calques
         empty: Vide
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -519,6 +523,27 @@ buildings:
         deliver: Délivrez
         toUnlock: pour débloquer
         levelShortcut: NV
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -799,6 +824,11 @@ keybindings:
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         switchDirectionLockSide: "Plannificateur: changer de côté"
         pipette: Pipette
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: À propos de ce jeu

@@ -44,7 +44,7 @@ steamPage:
 
         Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [img]{STEAM_APP_IMAGE}/extras/header_standalone_advantages.png[/img]
+        [b]Standalone Advantages[/b]
 
         [list]
             [*] Dark Mode
@@ -56,7 +56,7 @@ steamPage:
             [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        [img]{STEAM_APP_IMAGE}/extras/header_future_updates.png[/img]
+        [b]Future Updates[/b]
 
         I am updating the game very often and trying to push an update at least every week!
 
@@ -70,12 +70,12 @@ steamPage:
             [*] And much more!
         [/list]
 
-        [img]{STEAM_APP_IMAGE}/extras/header_open_source.png[/img]
+        [b]This game is open source![/b]
 
         Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
         Be sure to check out my trello board for the full roadmap! 
 
-        [img]{STEAM_APP_IMAGE}/extras/header_links.png[/img]
+        [b]Links[/b]
 
         [list]
             [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
@@ -152,29 +152,6 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
-
-    contests:
-        contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
-            longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
-                <br><br>
-                <strong>This week's topic:</strong> Build the coolest base!
-                <br><br>
-                Here's the deal:<br>
-                <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and showcase them to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                I'm looking forward to seeing your awesome creations!
-
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
 
 dialogs:
     buttons:
@@ -282,6 +259,7 @@ dialogs:
 
     createMarker:
         title: New Marker
+        titleEdit: Edit Marker
         desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
@@ -325,7 +303,7 @@ ingame:
         cyan: Cyan
         white: White
         black: Black
-        uncolored: No color
+        uncolored: Gray
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -467,8 +445,8 @@ buildings:
 
     wire:
         default:
-            name: &wire Wire
-            description: Allows you to transport energy
+            name: &wire Energy Wire
+            description: Allows you to transport energy.
 
     miner: # Internal name for the Extractor
         default:
@@ -511,8 +489,8 @@ buildings:
 
     advanced_processor:
         default:
-            name: &advanced_processor Advanced Processor
-            description: Advanced shape processing
+            name: &advanced_processor Color Inverter
+            description: Accepts a color or shape and inverts it.
 
     rotater:
         default:
@@ -565,16 +543,16 @@ buildings:
 
         default:
             name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes. Each energy generator requires a different shape.
+            description: Generates energy by consuming shapes.
 
     wire_crossings:
         default:
             name: &wire_crossings Wire Splitter
-            description: Splits a wire into two
+            description: Splits a energy wire into two.
 
         merger:
             name: Wire Merger
-            description: Merges two wires into one
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -653,10 +631,6 @@ storyRewards:
         title: Next level
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
-
-    reward_wires:
-        title: Wires
-        desc: TODO
 
     no_reward_freeplay:
         title: Next level
