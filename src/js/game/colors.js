@@ -155,6 +155,9 @@ for (const color in enumColors) {
 
     // Anything with white is white again
     enumColorMixingResults[color][c.white] = c.white;
+    
+    // Black mixed with white is gray
+    enumColorMixingResults[c.black][c.white] = c.uncolored;
 
     // Anything with uncolored is the same color
     enumColorMixingResults[color][c.uncolored] = color;
