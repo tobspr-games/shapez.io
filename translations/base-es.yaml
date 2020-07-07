@@ -655,10 +655,10 @@ storyRewards:
         desc: >-
             Este nivel no da recompensa, ¡pero el siguiente sí! <br><br> PD: Es mejor que no destruyas la fábrica que tienes - ¡Necesitarás <strong>todas</strong> esas figuras más adelante para <strong>desbloquear mejoras</strong>!
 
-	no_reward_freeplay:
-	    title: Siguiente nivel
-	    desc: >-
-	        ¡Felicidades! ¡Por cierto, hay más contenido planeado para el juego completo!
+    no_reward_freeplay:
+        title: Siguiente nivel
+        desc: >-
+            ¡Felicidades! ¡Por cierto, hay más contenido planeado para el juego completo!
 
 settings:
     title: Opciones
