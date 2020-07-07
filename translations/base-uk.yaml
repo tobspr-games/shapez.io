@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+    shortText: shapez.io — це гра про будування фабрик для автоматизації створення та обробки все більш складних форм на нескінченно розширюваній мапі.
 
     # This is the text shown above the discord link
     discordLink: Офіційний Discord сервер — поговори зі мною!
@@ -72,17 +72,17 @@ steamPage:
 
         [img]{STEAM_APP_IMAGE}/extras/header_open_source.png[/img]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Будь-хто може зробити внесок, я активно беру участь у спільноті і намагаюся оцінити всі пропозиції і відгуки, та взяти до уваги, де це можливо.
+        Не забудьте перевірити мою дошку Trello заради повної дорожньої карти!
 
         [img]{STEAM_APP_IMAGE}/extras/header_links.png[/img]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Офіційний Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Дорожня карта[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Спільнота на Reddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Вихідний код на GitHub[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Допоможіть з перекладом[/url]
         [/list]
 
 global:
@@ -147,7 +147,7 @@ mainMenu:
     openSourceHint: Ця гра з відкритим вихідним кодом!
     discordLink: Офіційний Discord сервер
     helpTranslate: Допоможіть перекласти!
-    madeBy: Зробив(ла) <author-link>
+    madeBy: Зробив <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -216,7 +216,7 @@ dialogs:
 
     featureRestriction:
         title: Демоверсія
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider getting the standalone version for the full experience!
+        desc: Ви спробували отримати доступ до функції (<feature>), яка недоступна в демонстраційній версії. Подумайте про отримання окремої версії, щоб насолодитися грою сповна!
 
     oneSavegameLimit:
         title: Обмежені збереження
@@ -249,9 +249,9 @@ dialogs:
             You can not afford to paste this area! Are you sure you want to cut it?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Ще не розблоковано
         desc: >-
-            Complete level 12 to unlock Blueprints!
+            Досягніть 13-го рівня, щоб розблокувати Blueprints!
 
     keybindingsIntroduction:
         title: Useful keybindings
@@ -373,11 +373,11 @@ ingame:
         noShapesProduced: No shapes have been produced so far.
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        shapesPerMinute: <shapes> за хв.
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: У грі
 
         buildingsPlaced: Buildings
         beltsPlaced: Belts
@@ -390,12 +390,12 @@ ingame:
     # Bottom left tutorial hints
     tutorialHints:
         title: Потрібна допомога?
-        showHint: Show hint
+        showHint: Показати підказку
         hideHint: Закрити
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Вартість
 
     # Map markers
     waypoints:
@@ -406,8 +406,8 @@ ingame:
 
     # Shape viewer
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Шари
+        empty: Пустий
         copyKey: Copy Key
 
     # Interactive tutorial
@@ -439,9 +439,9 @@ shopUpgrades:
 # Buildings and their name / description
 buildings:
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
+        deliver: Доставте,
+        toUnlock: щоб розблокувати
+        levelShortcut: РІВН
 
     belt:
         default:
@@ -693,16 +693,16 @@ settings:
                 super_fast: Надзвичайно швидка
 
         movementSpeed:
-            title: Movement speed
+            title: Швидкість руху
             description: >-
-                Changes how fast the view moves when using the keyboard.
+                Змінює Змінює швидкість руху бачення при використанні клавіатури.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Надзвичайно повільна
+                slow: Повільна
+                regular: Звичайна
+                fast: Швидка
+                super_fast: Надзвичайно швидка
+                extremely_fast: Екстремально швидка
 
         language:
             title: Мова
@@ -710,50 +710,50 @@ settings:
                 Змініть мову. Усі переклади зроблені користувачами і можуть бути незавершеними!
 
         enableColorBlindHelper:
-            title: Color Blind Mode
+            title: Режим високої контрастності
             description: >-
-                Enables various tools which allow you to play the game if you are color blind.
+                Дозволяє використовувати різні інструменти, які дозволяють грати в гру, якщо ви є дальтоніком.
 
         fullscreen:
             title: Повноекранний режим
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                Щоб повністю насолодитися грою, рекомендується грати у повноекранному режимі. Не доступно тільки в демоверсії.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Заглушити звуки
             description: >-
-                If enabled, mutes all sound effects.
+                Якщо увімкнено, то вимикає всі звукові ефекти.
 
         musicMuted:
-            title: Mute Music
+            title: Заглушити музику
             description: >-
-                If enabled, mutes all music.
+                Якщо увімкнено, то вимикає всю музику.
 
         theme:
-            title: Game theme
+            title: Тема гри
             description: >-
-                Choose the game theme (light / dark).
+                Оберіть тему гри (світлу чи темну).
             themes:
-                dark: Dark
-                light: Light
+                dark: Темна
+                light: Світла
 
         refreshRate:
-            title: Simulation Target
+            title: Частота оновлення
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                Якщо ви маєте 144-герцовий монітор, то змініть частоту оновлення тут, щоб гра правильно працювала при більшій швидкості оновлення. Це може фактично знизити FPS, якщо ваш комп’ютер занадто повільний.
 
         alwaysMultiplace:
-            title: Multiplace
+            title: Мультирозміщення
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                Якщо ввімкнено, всі будівлі залишатимуться вибраними після розміщення, доки ви не скасуєте це. Це еквівалентно постійному утримуванню SHIFT.
 
         offerHints:
-            title: Hints & Tutorials
+            title: Підказки & посібники
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements up to a given level to make it easier to get into the game.
+                Якщо увімкнено, то пропонує підказки та посібники під час гри. Також приховує певні елементи інтерфейсу до заданого рівня, щоб полегшити потрапляння в гру.
 
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Розумні Tunnels
             description: >-
                 When enabled, placing tunnels will automatically remove unnecessary belts. This also enables you to drag tunnels and excess tunnels will get removed.
 
@@ -808,8 +808,8 @@ keybindings:
         createMarker: Create Marker
 
         menuOpenShop: Upgrades
-        menuOpenStats: Statistics
-        menuClose: Close Menu
+        menuOpenStats: Статистика
+        menuClose: Закрити меню
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
