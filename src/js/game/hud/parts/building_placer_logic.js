@@ -529,6 +529,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Sets the current variant to the given variant
+     * @param {string} variant
      */
     setVariant(variant) {
         const metaBuilding = this.currentMetaBuilding.get();

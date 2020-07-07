@@ -18,6 +18,7 @@ export const CHANGELOG = [
             "Show mouse and camera tile on debug overlay (F4) (by dengr)",
             "Fix tunnels entrances connecting to exits sometimes when they shouldn't",
             "The initial belt planner direction is now based on the cursor movement (by MizardX)",
+            "Fix preferred variant not getting saved when clicking on the hud (by Danacus)",
         ],
     },
     {
