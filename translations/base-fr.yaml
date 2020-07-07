@@ -38,8 +38,9 @@ steamPage:
         Puis il vas falloir mélanger les couleurs et peindres tes formes avec - Combine du rouge, du bleu et du vert pour produire différente couleurs et peindre des formes pour satisfaire la demande.
 
         Ce jeu propose 18 niveaux progressifs (qui devraient vous occuper pendant des heures!) et j'ajoute constament plus de contenu - Il y en as beaucoup qui arrive!
-        
+
         Acheter le jeu te donnes accès à la version hors-ligne qui as plus de contenu et tu recevras l'accès aux nouvelles fonctionnalités.
+
         [b]Avantages de la version hors-ligne[/b]
 
         [list]
@@ -150,7 +151,6 @@ mainMenu:
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
-
 
     continue: Continuer
     newGame: Nouvelle partie
