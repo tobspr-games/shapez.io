@@ -31,6 +31,7 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Finnish](base-fi.yaml)
 -   [Catalan](base-cat.yaml)
 -   [Slovenian](base-sl.yaml)
+-   [Ukrainian](base-uk.yaml)
 
 (If you want to translate into a new language, see below!)
 
