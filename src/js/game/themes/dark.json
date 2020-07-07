@@ -15,8 +15,8 @@
                 "background": "rgba(74, 237, 134, 0.2)"
             },
             "wires": {
-                "color": "rgb(144, 24, 255)",
-                "background": "rgba(144, 24, 255, 0.2)"
+                "color": "rgb(209, 107, 203)",
+                "background": "rgba(209, 107, 203, 0.2)"
             }
         },
 
