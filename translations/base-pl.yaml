@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io jest grą o budowaniu i automatyzacji fabryki różnych kształtów. Dostarczaj coraz bardziej skomplikowane kształty, żeby odblokować nowe ulepszenia i przyspieszyć produkcję w twojej fabryce.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Będziesz potrzebował coraz więcej elementów, więc również sporo miejsca na powiększanie fabryki. [b]Nieskończona mapa[/b] to coś co ułatwi Ci ten proces!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Same kształty mogą z czasem być nudne, dlatego gra będzie wymagała od Ciebie malowania ich różnymi kolorami - połącz czerwoną, zieloną i niebieską farbę, a powstanie nowa o innym kolorze. Korzystaj z farb, by móc ukończyć kolejne poziomy.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Na tę chwilę gra oferuje 18 poziomów (które powinny zagwarantować rozrywkę na co najmniej kilka godzin!), ale bez przerwy dodaję nowe - jest naprawdę wiele do dodania!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Zalety pełnej wersji[/b]
-
-        [list]
-            [*] Znaczniki
-            [*] Nielimitowana ilość zapisanych gier
-            [*] Ciemny motyw gry
-            [*] Więcej ustawień
-            [*] Pomożesz mi w dalszym rozwijaniu shapez.io ❤️
-            [*] Więcej zawartości niedługo!
-        [/list]
-
-        [b]Zaplanowana zawartość & Sugestie społeczności[/b]
-
-        Ta gra jest open-source - Każdy może pomóc w rozwoju! Poza tym słucham tego, co społeczność ma do powiedzenia w kwestii gry! Staram się czytać wszystkie sugestie i odbierać jak najwięcej informacji zwrotnych na temat gry.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Kampania, gdzie do budowy potrzeba kształtów
-            [*] Więcej poziomów i budynków (tylko w pełnej wersji)
-            [*] Inne mapy, może z przeszkodami
-            [*] Możliwość modyfikowania parametrów generowanej mapy (ilość i rozmiar surowców, ziarno świata, itd.)
-            [*] Więcej rodzajów kształtów
-            [*] Optymalizacja (mimo wszystko gra już działa dość płynnie!)
-            [*] Tryb dla ślepoty barw
-            [*] I wiele więcej!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Sprawdź tablicę trello i zobacz nad czym teraz pracuję! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Ładowanie
@@ -136,29 +153,7 @@ mainMenu:
     savegameLevel: Poziom <x>
     savegameLevelUnknown: Nieznany poziom
 
-    contests:
-        contest_01_03062020:
-            title: "Konkurs #01"
-            desc: Wygraj <strong>25$</strong> za najciekawszą bazę!
-            #Translator note: We don't use AM/PM, we mainly use 24 hour clock system, older generations use 12h
-            longDesc: >-
-                Żeby dać wam coś od siebie, pomyślałem, że było by fajnie robić tygodniowe konkursy!
-                <br><br>
-                <strong>Temat tego tygodnia:</strong> Zbuduj najciekawszą fabrykę!
-                <br><br>
-                Zasady:<br>
-                <ul class="bucketList">
-                    <li>Wyślij zrzut ekranu fabryki na adres <strong>contest@shapez.io</strong></li>
-                    <li>Dodatkowe punkty za udostępnianie na mediach społecznościowych!</li>
-                    <li>Wybiorę 5 najlepszych moim zdaniem projektów i pozwolę społeczności <strong>discord</strong> głosować.</li>
-                    <li>Wygrany dostaje <strong>$25</strong> (Paypal, Amazon Gift Card, którekolwiek wolisz).</li>
-                    <li>Termin: 07.06.2020 12:00 CEST</li>
-                </ul>
-                <br>
-                Nie mogę się doczekać, by zobaczyć Wasze fabryki!
 
-        showInfo: Wyświetl
-        contestOver: Ten konkurs już się skończył - Dołącz do serwera Discord by nie przegapić kolejnych!
     madeBy: Gra wykonana przez <author-link>
     subreddit: Reddit
 
@@ -259,6 +254,7 @@ dialogs:
     createMarker:
         title: Nowy Znacznik
         desc: Podaj nazwę znacznika. Możesz w niej zawrzeć <strong>kod kształtu</strong>, który możesz wygenerować <a href="https://viewer.shapez.io" target="_blank">tutaj</a>.
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną wersję gry dla nielimitowanych znaczników!
@@ -274,6 +270,10 @@ dialogs:
             Zamierzasz wyeksportować swoją fabrykę jako zrzut ekranu. W przypadku dużej
             fabryki ta akcja może być bardzo wolna, a nawet może spowodować zawieszenie się lub awarię gry!
             Czy na pewno chcesz kontynuować?
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -297,6 +297,7 @@ ingame:
         copySelection: Skopiuj
         clearSelection: Wyczyść zaznaczenie
         pipette: Wybierz obiekt z mapy
+        switchLayers: Switch layers
 
     # Names of the colors, used for the color blind mode
     colors:
@@ -308,6 +309,7 @@ ingame:
         cyan: Cyjanowy
         white: Biały
         uncolored: Brak koloru
+        black: Black
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -410,6 +412,7 @@ ingame:
     shapeViewer:
         title: Poziomy
         empty: Puste
+        copyKey: Copy Key
 
     # Interactive tutorial
     interactiveTutorial:
@@ -529,6 +532,27 @@ buildings:
         storage:
             name: Magazyn
             description: Magazynuje obiekty, do określonego limitu. Może zostać użyty jako bramka przepełnienia.
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -753,11 +777,11 @@ settings:
             title: Color Blind Mode
             description: Enables various tools which allow to play the game if you are color blind.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Rotation by building type
+            description: >-
+                Each building type remembers the rotation you last set it to individually.
+                This may be more comfortable if you frequently switch between placing
+                different building types.
 
 keybindings:
     title: Klawiszologia
@@ -825,6 +849,11 @@ keybindings:
         switchDirectionLockSide: >-
             Planowanie taśmociągu: Zmień stronę
         pipette: Wybieranie obiektów z mapy
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: O Grze

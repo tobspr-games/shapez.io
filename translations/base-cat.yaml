@@ -29,41 +29,61 @@ steamPage:
     # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-        shapez.io és un joc que té com a objectiu construir i automatitzar fàbriques per tal de produir i combinar figures. Al entregar-les, es progressa en el joc desbloquejant millores per les línies de producció.
 
-        En augmentar la demanda serà necessari redissenyar les línies de producció per tal de saciar les demandes - Sense oblidar-se dels recursos bàsics, serà necessari expandir-se en el [b]mapa infinit[/b]!
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Ja que les figures simples poden ser avorrides serà necessari mesclar colors i pintar-les - Combina roig, verd i blau per produir diferents colors i així pintar les figures per assolir el nivell de demanda adequat.
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        El joc compta amb 18 nivells (Que et mantindran ocupat durant hores!) però estic afegint constantment nou contingut - Tinc moltes coses planejades!
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        [b]Avantatges del joc complet[/b]
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
-        [list]
-            [*] Balises o marcadors, punts de referència en el mapa
-            [*] Guardar partides de forma il·limitada
-            [*] Mode fosc/nocturn
-            [*] Més opcions
-            [*] Em permet seguir desenvolupant shapez.io ❤️
-            [*] Més característiques en el futur!
-        [/list]
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Característiques planejades i suggerències de la comunitat[/b]
-
-        Aquest joc és de codi obert - Qualsevol pot contribuir! A més, tinc [b]molt present[/b] a la comunitat! Intento/e llegir tots els suggeriments i proporcionar tot el feedback que m'és possible.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Cables!
-            [*] Mode història on els edificis tenen un cost en figures
-            [*] Més nivells i edificis (exclusiu de la versió completa)
-            [*] Mapes diferents i potser obstacles dins d'aquest
-            [*] Configurar la generació del mapa (número i mida dels recursos, la seed i més)
-            [*] Més tipus de figures
-            [*] Millorar el rendiment (Tot i que el joc ja funciona molt bé!)
-            [*] I molt més!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Assegurat de revisar el taulell de Trello per veure el full de ruta! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
+
 global:
     loading: Carregant
     error: Error
@@ -131,27 +151,7 @@ mainMenu:
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut
 
-    contests:
-        contest_01_03062020:
-            title: "Concurs #01"
-            desc: Guanya <strong>$25</strong> per la base més impresionant!
-            longDesc: >-
-                Per tal de mantenir el feedback he pensat que molaria fer concursos setmanals!
-                <br><br>
-                <strong>El tema d'aquesta setmana:</strong> Construeix la base més impresionant!
-                <br><br>
-                Aquest és el procés:<br>
-                <ul class="bucketList">
-                    <li>Envia una captura de pantalla de la teva/teua base <strong>contest@shapez.io</strong></li>
-                    <li>Punts extra si ho comparteixes en xarxes socials!</li>
-                    <li>Seleccionaré a 5 captures i les proposaré a la comunitat de <strong>discord</strong> per que votin/en.</li>
-                    <li>El premi és <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                Estic esperant les vostres increïbles creacions!
-        showInfo: Veure
-        contestOver: Aquest concurs ha conclòs- Entra a discord per assabentar-te de nous concursos!
+
 
 dialogs:
     buttons:
@@ -254,6 +254,7 @@ dialogs:
 
     createMarker:
         title: Nou Marcador
+        titleEdit: Edit Marker
         desc: >-
             Dona-li un nom significatiu, també pots usar <strong>claus</strong> de les figures (Pots generarles a: <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
 
@@ -263,6 +264,9 @@ dialogs:
     exportScreenshotWarning:
         title: Export screenshot
         desc: Has demanat exportar la teva/teua base com una captura de pantalla. Tin en conte que aquest procés pot ser molt lent i inclús crashear el teu joc!
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -298,6 +302,7 @@ ingame:
         cyan: Cian
         white: Blanc
         uncolored: Sense color
+        black: Black
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -535,6 +540,13 @@ buildings:
         default:
             name: &energy_generator Generador d'energia
             description: Genera energia consumint figures. Cada generador requereix una figura diferent.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -612,10 +624,6 @@ storyRewards:
         title: Següent nivell
         desc: >-
             Aquest nivell no t'ha donat res, però el següent ho farà! <br><br> PD: És millor que no destrueixes la part de la fàbrica existent - Necessitaràs <strong>totes</strong> aquestes figures més tard per a <strong>desbloquejar millores</strong>!
-
-    reward_wires:
-        title: Cables
-        desc: TODO
 
     no_reward_freeplay:
         title: Següent nivell
@@ -810,6 +818,7 @@ keybindings:
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
         placeInverse: Invert automatic belt orientation
+        menuClose: Close Menu
 
 about:
     title: About this Game
