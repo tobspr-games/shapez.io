@@ -288,8 +288,8 @@ ingame:
         lockBeltDirection: Maak gebruik van de lopende band planner
         plannerSwitchSide: Draai de richting van de planner
         cutSelection: Knip
-        copySelection: Kopieer
-        clearSelection: Cancel selectie
+        copySelection: Kopiëer
+        clearSelection: Annuleer selectie
         pipette: Pipet
         switchLayers: Switch layers
 
@@ -411,7 +411,7 @@ ingame:
     shapeViewer:
         title: Lagen
         empty: Leeg
-        copyKey: Copy Key
+        copyKey: Kopiëer sleutel
 
 # All shop upgrades
 shopUpgrades:
@@ -822,11 +822,11 @@ keybindings:
         lockBeltDirection: Schakel lopende band-planner in
         switchDirectionLockSide: "Planner: Wissel van richting"
         pipette: Pipet
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Sluit menu
+        switchLayers: Lagen omwisselen
+        advanced_processor: Kleur Omvormer
+        energy_generator: Energie generator
+        wire: Energie Draad
 
 about:
     title: Over dit spel
