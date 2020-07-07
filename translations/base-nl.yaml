@@ -825,8 +825,8 @@ keybindings:
         menuClose: Sluit menu
         switchLayers: Lagen omwisselen
         advanced_processor: Kleur Omvormer
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        energy_generator: Energie generator
+        wire: Energie Draad
 
 about:
     title: Over dit spel
