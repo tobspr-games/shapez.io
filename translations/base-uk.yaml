@@ -165,7 +165,7 @@ dialogs:
         cancel: Скасувати
         later: Пізніше
         restart: Перезавантажити
-        reset: Reset
+        reset: Скинути
         getStandalone: Завантажити гру
         deleteGame: Я знаю, що роблю
         viewUpdate: Переглянути оновлення
@@ -173,9 +173,9 @@ dialogs:
         showKeybindings: Показати прив’язки клавіш
 
     importSavegameError:
-        title: Import Error
+        title: Помилка при імпортуванні
         text: >-
-            Failed to import your savegame:
+            Не вдалося імпортувати вашу збережену гру:
 
     importSavegameSuccess:
         title: Savegame Imported
@@ -198,9 +198,9 @@ dialogs:
             Failed to delete the savegame:
 
     restartRequired:
-        title: Restart required
+        title: Потрібне перезавантаження
         text: >-
-            You need to restart the game to apply the settings.
+            Перезавантажте гру, щоб налаштування вступили в дію.
 
     editKeybinding:
         title: Change Keybinding
@@ -379,8 +379,8 @@ ingame:
     settingsMenu:
         playtime: У грі
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: Будівлі
+        beltsPlaced: Стрічки
 
         buttons:
             continue: Продовжити
