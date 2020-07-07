@@ -153,8 +153,10 @@ export const enumColorMixingResults = {
 for (const color in enumColors) {
     enumColorMixingResults[color][color] = color;
 
-    // Anything with white is white again
-    enumColorMixingResults[color][c.white] = c.white;
+    // Anything with white is white again, except for black which creates gray
+    if (color !== enumColors.black) {
+        enumColorMixingResults[color][c.white] = c.white;
+    }
 
     // Anything with uncolored is the same color
     enumColorMixingResults[color][c.uncolored] = color;
