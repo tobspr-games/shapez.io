@@ -30,59 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
+        Lors de la livraison des formes requises vuos progresserez et debloquerez des améliorations pour accelerer votre usine.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Au vu de l'augmantation des demandes de formes, vous devrez agrandir votre usine pour répondre à la forte demande - Mais n'oubliez pas les ressources, vous drevrez vous étendre au milieu de cette [b]carte infinie[/b]!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Bientôt vous devrez mixer les couleurs et peindre vos formes avec - Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec pour satisfaire la demande.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper des heures!) mais j'ajoute constamment de nouveau contenus - Il y en a beaucoup de prévus!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Acheter le jeu vous donne accès à la version complète qui a des fonctionnalitées additionnelles et vous recevrez aussi un accès à des fonctionnalitées fraîchement développées.
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
+        [b]Avantages de la version complète[/b]
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Mode sombre
+            [*] Marqueurs illimités
+            [*] Nombre illimité de parties
+            [*] Paramètres additionnaux
+            [*] Arrivage imminent: Câbles et énergie! Visé pour (environ) fin Juillet 2020.
+            [*] Arrivage imminent: Plus de niveaux
+            [*] Aidez moi à développer plus profondément shapez.io ❤️
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Mises à jour futures[/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Je met à jour le jeu très souvent et j'essaye de sortir une mise à jour au moins toutes les semaines!
 
-        [b]Links[/b]
+        [list]
+            [*] Différentes cartes at challenges (ex: carte avec obstacles)
+            [*] Puzzles (Délivrer la forme requise avec une zone limitée/jeu de batîments
+            [*] Un mode histoire où les batîments ont un coût
+            [*] Générateur de carte configurable (configuration des ressources/formes taille/densitée, graine et plus)
+            [*] Types de formes additionnelles
+            [*] Amélioration des performances (Le jeu tourne déjà plutot bien!)
+            [*] Et plus encore!
+        [/list]
+
+        [b]Ce jeu est open source![/b]
+
+        N'importe qui peut contribuer, je suis activement impliqué dans la communauté et j'essaye de répondre à toutes les suggestions et prendre en compte votre retour d'expérience quand je le peux.
+        Soyez sûr de jeter un coup d'œil à mon tableau Trello pour toute la feuille de route!
+
+        [b]Liens[/b]
 
         [list]
             [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Feuille de route[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Code source (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Aidez à traduire[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Discord officiel - Parlez avec moi!
 
 global:
     loading: Chargement
@@ -138,9 +138,9 @@ mainMenu:
     play: Jouer
     changelog: Historique
     importSavegame: Importer
-    openSourceHint: Ce jeu est open source !
+    openSourceHint: Ce jeu est open source!
     discordLink: Serveur Discord officiel
-    helpTranslate: Contribuez à la traduction !
+    helpTranslate: Contribuez à la traduction!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -165,7 +165,7 @@ dialogs:
         reset: Réinitialiser
         getStandalone: Se procurer la version complète
         deleteGame: Je sais ce que je fais
-        viewUpdate: Voir les mises-à-jour
+        viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
 
@@ -201,7 +201,7 @@ dialogs:
 
     editKeybinding:
         title: Changer les contrôles
-        desc: Appuyez sur la touche que vous voulez assigner, ou Escape pour annuler.
+        desc: Appuyez sur la touche que vous voulez assigner, ou Echap pour annuler.
 
     resetKeybindingsConfirmation:
         title: Réinitialiser les contrôles
@@ -220,7 +220,7 @@ dialogs:
         desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci d'effacer celle en cours ou alternativement de vous procurer la version complète !
 
     updateSummary:
-        title: Nouvel mise-à-jour !
+        title: Nouvelle mise à jour !
         desc: >-
             Voici les modifications depuis votre dernière session:
 
@@ -266,11 +266,11 @@ dialogs:
     exportScreenshotWarning:
         title: Exporter une capture d'écran
         desc: >-
-            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
+            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même faire planter votre jeu !
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Couffirmer le coupage
+        desc: Vous ne pouvez pas vous permettre de coller cette zone! Etes vous sur que vous voulez la couper?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -294,7 +294,7 @@ ingame:
         copySelection: Copier
         clearSelection: Effacer la sélection
         pipette: Pipette
-        switchLayers: Switch layers
+        switchLayers: Inverser les couches
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -409,11 +409,11 @@ ingame:
         cyan: Cyan
         white: Blanc
         uncolored: Non coloré
-        black: Black
+        black: Noir
     shapeViewer:
         title: Calques
         empty: Vide
-        copyKey: Copy Key
+        copyKey: Copier la clé
 
 # All shop upgrades
 shopUpgrades:
@@ -525,25 +525,25 @@ buildings:
         levelShortcut: NV
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Câble d'énergie
+            description: Permet de transporter de l'énergie.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Inverseur de couleur
+            description: Accepte une couleur ou une forme et l'inverse.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Délivre
+        toGenerateEnergy: Pour
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Générateur d'énergie
+            description: Genère de l'énergie en consummant des formes.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Diviseur de câble
+            description: Divise un câble d'énergie en deux.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Fusionneur de câbles
+            description: Fusionne deux câbles d'énergie en un seul.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -566,7 +566,7 @@ storyRewards:
 
     reward_stacker:
         title: Combineur
-        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinée et si elles ne peuvent êtres mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche après avoir été légèrement réduite.
+        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles ne peuvent êtres mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche après avoir été légèrement réduite.
 
     reward_splitter:
         title: Distributeur/Rassembleur
@@ -824,11 +824,11 @@ keybindings:
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         switchDirectionLockSide: "Plannificateur: changer de côté"
         pipette: Pipette
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Fermer le menu
+        switchLayers: Inverser les ccouches
+        advanced_processor: Inverseur de couleur
+        energy_generator: Générateur d'énergie
+        wire: Câble d'énergie
 
 about:
     title: À propos de ce jeu
@@ -866,3 +866,5 @@ demo:
 #
 
 # French translation completed (and corrected) by Pascal Grossé and Withers001
+
+# French translation entirely completed and corrected by martypiton
