@@ -659,124 +659,124 @@ settings:
                 disabled: Desactivat
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: Sensibilitat del Zoom
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                Canvia la sensibilitat del zoom (una roda del ratolí o un trackpad).
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Super lent
+                slow: Lent
+                regular: Normal
+                fast: Ràpid
+                super_fast: Super Ràpid
 
         movementSpeed:
-            title: Movement speed
+            title: Velocitat de moviment
             description: >-
-                Changes how fast the view moves when using the keyboard.
+                Canvia la velocitat de desplaçament de la vista si s'usa el teclat.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Super lent
+                slow: Lent
+                regular: Normal
+                fast: Ràpid
+                super_fast: Super Ràpid
+                extremely_fast: Extremadament Ràpid
 
         language:
-            title: Language
+            title: Idioma
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Canviar l’idioma. Totes les traduccions són aportades per l'usuari i poden ser incompletes.
         enableColorBlindHelper:
-            title: Color Blind Mode
+            title: Opció per daltònics
             description: >-
-                Enables various tools which allow to play the game if you are color blind.
+                Habilita diverses eines que permeten jugar al joc si ets daltònic.
         fullscreen:
-            title: Fullscreen
+            title: Pantalla completa
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                Es recomana jugar al joc a pantalla completa per obtenir la millor experiència. Només disponible en el joc complet.
         soundsMuted:
-            title: Mute Sounds
+            title: Emmudir sons
             description: >-
-                If enabled, mutes all sound effects.
+                Si està activat, emmudeix tots els efectes de so.
         musicMuted:
-            title: Mute Music
+            title: Emmudir música
             description: >-
-                If enabled, mutes all music.
+                Si està activat, emmudeix la música.
         theme:
-            title: Game theme
+            title: Tema del joc
             description: >-
-                Choose the game theme (light / dark).
+                Trieu el tema del joc (clar / fosc).
             themes:
-                dark: Dark
-                light: Light
+                dark: Fosc
+                light: Clar
 
         refreshRate:
             title: Simulation Target
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                Si teniu un monitor de 144 hz, canvieu aquí la velocitat de refresc, de manera que el joc es simularà adequadament a majors taxes de refresc. Podria disminuir els FPS si l’ordinador és massa lent.
         alwaysMultiplace:
-            title: Multiplace
+            title: Multicol·locació
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                Si està activat, tots els edificis es mantindran seleccionats després de la seva ubicació fins que el cancel·leu. És equival a mantenir SHIFT de forma permanent.
         offerHints:
-            title: Hints & Tutorials
+            title: Consells i tutorials
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                Ofereix suggeriments i tutorials durant l'inci del joc. Oculta també alguns elements de la interfície d'interès a un nivell determinat per facilitar la seva entrada al joc.
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Túnels intel·ligents
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables to drag tunnels and excess tunnels will get removed.
+                Si està activat s'eliminaran les entrades i sortides dels túnels que puguin ser encadenats. També permet arrossegar túnels i es podran eliminar els túnels en excés.
         vignette:
-            title: Vignette
+            title: Vinyeta
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier to read.
+                Habilita la vinyeta per tal d'enfosquir les cantonades de la pantalla i facilita la lectura del text.
         rotationByBuilding:
-            title: Rotation by building type
+            title: Rotació per tipus d’edifici
             description: >-
-                Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
+                Cada tipus d’edifici recorda la rotació que us vau definir per última vegada de manera individual. Aquesta funció pot ser més còmode si canvieu sovint entre col·locar diferents tipus d’edificació.
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Informació compacta 
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
+                Escurça els quadres d'informació dels edificis només mostrant les seves ratios. També es pot mostra una descripció i una imatge.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Desactiva els avisos de tallar i suprimir
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100 entities.
+                Desactiveu els diàlegs d’avís que es mostren en tallar / suprimir més de 100 entitats.
 keybindings:
-    title: Keybindings
+    title: Dreceres de teclat
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
-    resetKeybindings: Reset Keybindings
+        Tip: Assegureu-vos d’utilitzar CTRL, SHIFT i ALT! Habiliten diferents opcions d’ubicació.
+    resetKeybindings: Reiniciar dreceres de teclat
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Aplicació
+        ingame: Joc
+        navigation: Navegació
+        placement: Emplaçament
+        massSelect: Selecció massiva
+        buildings: Draceres d'edificis
+        placementModifiers: Modificadors d'emplaçament
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        mapMoveFaster: Move Faster
-        centerMap: Center Map
+        confirm: Confirmar
+        back: Endarrere
+        mapMoveUp: Moure amunt
+        mapMoveRight: Moure a la dreta
+        mapMoveDown: Moure a baix
+        mapMoveLeft: Moure a l'esquerra
+        mapMoveFaster: Moure ràpidament
+        centerMap: Centre del mapa
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: Apropar-se
+        mapZoomOut: Allunyar-se
+        createMarker: Crear Marcador
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Actualitzacions
+        menuOpenStats: Estadístiques
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
-        switchLayers: Switch layers
-        exportScreenshot: Export whole Base as Image
+        toggleHud: Activar interfície
+        toggleFPSInfo: Activa la informació de depuració i FPS
+        switchLayers: Canviar les capes
+        exportScreenshot: Exporta la base sencera com a imatge
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -791,43 +791,43 @@ keybindings:
         trash: *trash
         wire: *wire
 
-        pipette: Pipette
-        rotateWhilePlacing: Rotate
+        pipette: Pipeta
+        rotateWhilePlacing: Rotar
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Delete area
-        pasteLastBlueprint: Paste last blueprint
-        cycleBuildings: Cycle Buildings
-        lockBeltDirection: Enable belt planner
+            Modificador: Rotar inversament en el lloc
+        cycleBuildingVariants: Variants de cicle
+        confirmMassDelete: Eliminar àrea
+        pasteLastBlueprint: Copiar últim blueprint
+        cycleBuildings: Edificis de cicles
+        lockBeltDirection: Habilita el planificador de cintes
         switchDirectionLockSide: >-
-            Planner: Switch side
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
-        massSelectCut: Cut area
+            Planner: Canviar de costat
+        massSelectStart: Mantingueu premut i arrossegueu per començar
+        massSelectSelectMultiple: Seleccioneu diverses àrees
+        massSelectCopy: Copiar àrea
+        massSelectCut: Tallar àrea
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
+        placementDisableAutoOrientation: Desactiva l’orientació automàtica
+        placeMultiple: Manteniu-vos en mode d’emplaçament
+        placeInverse: Invertir l’orientació automàtica de la cinta
 
 about:
-    title: About this Game
+    title: Sobre el joc
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
-        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
-        This game wouldn't have been possible without the great discord community around my games - You should really join the <a href="<discordlink>" target="_blank">discord server</a>!<br><br>
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
-        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions this game would never have existed.
+        Aquest joc és de codi obert i desenvolupat per <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (sóc jo!).<br><br>
+        Si voleu contribuir, feu un cop d’ull <a href="<githublink>" target="_blank">shapez.io a github</a>.<br><br>
+        Aquest joc no hauria estat possible sense la gran comunitat de Discord dels meus jocs - Ús convido a unir-vos al <a href="<discordlink>" target="_blank">servidor de Discord</a>!<br><br>
+        La banda sonora ha estat feta per <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - És increible.<br><br>
+        Finalment, moltes gràcies al meu millor amic <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sense les nostres sessions de factorio, aquest joc mai no hauria existit.
 changelog:
-    title: Changelog
+    title: Historial de modificacions
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Recuperant partides guardades
+        importingGames: Important partides guardades
+        oneGameLimit: Limitat a una partida guardada
+        customizeKeybindings: Personalitzant dreceres de teclat
+        exportingBase: Exportació de base sencera com a imatge
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: No disponible per la demo.
