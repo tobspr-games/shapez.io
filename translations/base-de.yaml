@@ -23,6 +23,9 @@ steamPage:
     # This is the short text appearing on the steam page
     shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen Maschinen durch Kombination immer komplexere Formen zu erschaffen.
 
+    # This is the text shown above the discord link
+    discordLink: Offizieller Discord - Hier kannst du mit mir schreiben!
+
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
@@ -32,39 +35,56 @@ steamPage:
 
         In shapez.io musst du Maschinen geschickt verbinden, damit Formen automatisiert erstellt, bearbeitet und kombiniert werden. Liefere die gewünschten, stetig komplexer werdenden Formen an dein Hauptgebäude, um im Spiel voranzukommen. Schalte mit ihnen außerdem Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
 
-        Da die Nachfrage sowohl in der Komplexität, als auch der Anzahl steigt, wirst du deine Fabriken erweitern müssen. Vergiss nicht, dass du die dafür benötigten Ressourcen beschaffen musst und expandiere auf der [b]unendlichen Karte[/b]!
+        Da die Nachfrage sowohl in der Komplexität, als auch der Menge steigt, wirst du deine Fabriken erweitern müssen. Vergiss nicht, dass du die dafür benötigten Ressourcen beschaffen musst und expandiere auf der [b]unendlichen Karte[/b]!
 
-        Das reine Zerschneiden und Zusammensetzen von Formen kann natürlich schnell langweilig werden, aber keine Sorge - Du kannst Farben mischen und deine Formen damit bemalen lassen. Staple dann deine fertigen Formen aufeinander und lasse so die wildesten Kreationen entstehen.
+        Bald wirst du Farben mischen und deine Formen damit bemalen lassen. Staple dann deine fertigen Formen aufeinander und lasse so die wildesten Kreationen entstehen.
 
         Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
+        
+        Wenn du das Spiel erwirbst, erhälst du Zugriff auf die zusätzlichen Features der Standalone-Version. Das bedeutet, du kannst unter anderem die neuesten Updates zuerst spielen!
 
-        [b]Vorteile der Standalone[/b]
+        [h1]VORTEILE DER STANDALONE[/h1]
 
         [list]
-            [*] Wegpunkte
-            [*] Unbegrenzte Anzahl von Spielständen
             [*] Dark-Mode
+            [*] So viele Wegpunkte wie du willst
+            [*] Unbegrenzte Anzahl von Spielständen
             [*] Weitere Einstellungen
+            [*] Kommende Updates:
+            [list]
+                [*] Mehr Levels
+                [*] Kabel & Energie! Voraussichtlich gegen Ende Juli 2020.
+            [/list]
             [*] Unterstütze die Entwicklung von shapez.io ❤️
-            [*] Neue Funktionen in der Zukunft!
         [/list]
 
-        [b]Geplante Funktionen & Community-Vorschläge[/b]
-
-        Diese Spiel ist Open Source - Jeder kann dazu beitragen! Abgesehen davon, höre ich auf das Feedback der Community! Ich versuche alle Vorschläge zu lesen und so viel davon einzubeziehen, wie nur möglich. Hier ein Liste an Features, die momentan geplant sind.
-
+        [h1]GEPLANTE FUNKTIONEN[/h1]
+        
+        Ich bin aktiv mit der Entwicklung beschäftigt und versuche jede Woche ein Update oder den aktuellen Stand der Entwicklung zu veröffentlichen.
+        
         [list]
+            [*] Verschiedene Karten und Herausforderungen (z.B. Karten mit Hindernissen)
+            [*] Puzzle (Liefere die gewünschten Formen mit begrenztem Platz / limitierten Gebäuden)
             [*] Story-Modus mit Gebäudekosten
-            [*] Drähte und Logik
-            [*] Neue Gebäude und Level (nur in der Standalone-Version)
-            [*] Mehrere Karten und vielleicht auch Hindernisse
-            [*] Einstellbare Kartengenerierung (Ändere die Grösse und Anzahl von Ressourcenflecken, den Seed und mehr)
+            [*] Einstellbare Kartengenerierung (Ändere die Grösse/Anzahl/Dichte der Ressourcenflecken, den Seed und mehr)
             [*] Mehr Formentypen
-            [*] Performanceverbesserungen (Auch wenn das Spiel bereits ganz gut läuft)
+            [*] Performanceverbesserungen (Das Spiel läuft bereits ganz gut!)
             [*] Und vieles mehr!
         [/list]
 
-        Schau für die komplette Planung doch mal auf dem Trello-Board vorbei! https://trello.com/b/ISQncpJP/shapezio
+        [h1] Dieses Spiel ist Open Source[/h1]
+        
+        Jeder kann dazu beitragen! Ich bin aktiv in die Community involviert, versuche alle Vorschläge zu lesen und beziehe so viel Feedback wie möglich mit in die Entwicklung ein.
+        Die komplette Roadmap gibt es auf dem Trello-Board zum Nachlesen!
+        
+        [h1]LINKS[/h1]
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Offizieller Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Quelltext (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Hilf beim Übersetzen[/url]
+        [/list]
 
 global:
     loading: Laden
@@ -729,11 +749,11 @@ settings:
             title: Modus für Farbenblinde
             description: Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
         rotationByBuilding:
-          title: Rotation by building type
+          title: Rotation pro Gebäudetyp
           description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            Jeder Gebäudetyp merkt sich einzeln, welche Rotation ausgewählt ist.
+            Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen
+            Gebäudetypen wechselst.
 
 keybindings:
     title: Tastenbelegung
