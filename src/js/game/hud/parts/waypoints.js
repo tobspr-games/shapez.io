@@ -109,7 +109,9 @@ export class HUDWaypoints extends BaseHUDPart {
 
         // Catch mouse and key events
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
-        this.root.keyMapper.getBinding(KEYMAPPINGS.navigation.createMarker).add(this.requestSaveMarker, this);
+        this.root.keyMapper
+            .getBinding(KEYMAPPINGS.navigation.createMarker)
+            .add(() => this.requestSaveMarker({}));
 
         /**
          * Stores at how much opacity the markers should be rendered on the map.
