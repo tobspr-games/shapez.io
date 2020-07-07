@@ -143,7 +143,7 @@ export const enumColorMixingResults = {
 
     [c.black]: {
         // auto
-        [c.white]: c.white,
+        [c.white]: c.uncolored,
         [c.cyan]: c.cyan,
         [c.uncolored]: c.uncolored,
     },
