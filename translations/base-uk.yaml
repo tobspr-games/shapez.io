@@ -658,20 +658,20 @@ settings:
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Масштаб інтерфейсу
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device's resolution, but this setting controls the amount of scaling.
+                Змінює розмір користувацього інтерфейсу. Інтерфейс усе ще буде масштабуватися залежно від роздільної здатності вашого пристрою, але цей параметр контролює масштаб масштабування.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Надзвичайно малий
+                small: Малий
+                regular: Звичайний
+                large: Великий
+                huge: Величезний
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Проміжок між автозбереженнями
             description: >-
-                Controls how often the game saves automatically. You can also disable it entirely here.
+                Контролює, як часто гра автоматично зберігатиметься. Ви також можете повністю вимкнути його тут.
 
             intervals:
                 one_minute: 1 хвилина
@@ -679,18 +679,18 @@ settings:
                 five_minutes: 5 хвилин
                 ten_minutes: 10 хвилин
                 twenty_minutes: 20 хвилин
-                disabled: Disabled
+                disabled: Вимкнено
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: Чутливість масштабування
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                Змінює наскільки чутливе масштабування (колесо миші або трекпад).
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Надзвичайно повільна
+                slow: Повільна
+                regular: Звичайна
+                fast: Швидка
+                super_fast: Надзвичайно швидка
 
         movementSpeed:
             title: Movement speed
