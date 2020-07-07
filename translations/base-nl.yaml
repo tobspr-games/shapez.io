@@ -823,7 +823,7 @@ keybindings:
         switchDirectionLockSide: "Planner: Wissel van richting"
         pipette: Pipet
         menuClose: Sluit menu
-        switchLayers: Switch layers
+        switchLayers: Lagen omwisselen
         advanced_processor: Color Inverter
         energy_generator: Energy Generator
         wire: Energy Wire
