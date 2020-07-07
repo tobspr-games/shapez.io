@@ -288,7 +288,7 @@ ingame:
         lockBeltDirection: Maak gebruik van de lopende band planner
         plannerSwitchSide: Draai de richting van de planner
         cutSelection: Knip
-        copySelection: Kopieer
+        copySelection: Kopiëer
         clearSelection: Cancel selectie
         pipette: Pipet
         switchLayers: Switch layers
