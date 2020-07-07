@@ -1,13 +1,11 @@
 import { globalConfig } from "../../core/config";
-import { BaseItem } from "../base_item";
-import { enumColorMixingResults } from "../colors";
+import { BaseItem, enumItemType } from "../base_item";
+import { enumColorMixingResults, enumInvertedColors } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ColorItem } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
-import { enumLayer } from "../root";
-import { NEGATIVE_ENERGY_ITEM_SINGLETON } from "../items/negative_energy_item";
 
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -346,13 +344,29 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // ADVANCED PROCESSING
 
             case enumItemProcessorTypes.advancedProcessor: {
-                const shapeItem = /** @type {ShapeItem} */ (items[0].item);
-                const newItem = this.root.shapeDefinitionMgr.shapeActionInvertColors(shapeItem.definition);
+                const item = items[0].item;
 
-                outItems.push({
-                    item: new ShapeItem(newItem),
-                    requiredSlot: 0,
-                });
+                if (item.getItemType() === enumItemType.color) {
+                    const colorItem = /** @type {ColorItem} */ (items[0].item);
+                    const newColor = enumInvertedColors[colorItem.color];
+                    outItems.push({
+                        item: new ColorItem(newColor),
+                        requiredSlot: 0,
+                    });
+                } else if (item.getItemType() === enumItemType.shape) {
+                    const shapeItem = /** @type {ShapeItem} */ (items[0].item);
+                    const newItem = this.root.shapeDefinitionMgr.shapeActionInvertColors(
+                        shapeItem.definition
+                    );
+
+                    outItems.push({
+                        item: new ShapeItem(newItem),
+                        requiredSlot: 0,
+                    });
+                } else {
+                    assertAlways(false, "Bad item type: " + item.getItemType() + " for advanced processor.");
+                }
+
                 break;
             }
 
