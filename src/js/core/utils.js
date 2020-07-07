@@ -413,10 +413,10 @@ function roundSmart(n) {
 /**
  * Formats a big number
  * @param {number} num
- * @param {string=} divider THe divider for numbers like 50,000 (divider=',')
+ * @param {string=} separator The decimal separator for numbers like 50.1 (divider='.')
  * @returns {string}
  */
-export function formatBigNumber(num, divider = ".") {
+export function formatBigNumber(num, separator = T.global.decimalSeparator) {
     const sign = num < 0 ? "-" : "";
     num = Math.abs(num);
 
@@ -445,7 +445,7 @@ export function formatBigNumber(num, divider = ".") {
             }
         }
         const leadingDigitsRounded = round1Digit(leadingDigits);
-        const leadingDigitsNoTrailingDecimal = leadingDigitsRounded.toString().replace(".0", "");
+        const leadingDigitsNoTrailingDecimal = leadingDigitsRounded.toString().replace(".0", "").replace(".", separator);
         return sign + leadingDigitsNoTrailingDecimal + suffix;
     }
 }
@@ -453,7 +453,7 @@ export function formatBigNumber(num, divider = ".") {
 /**
  * Formats a big number, but does not add any suffix and instead uses its full representation
  * @param {number} num
- * @param {string=} divider THe divider for numbers like 50,000 (divider=',')
+ * @param {string=} divider The divider for numbers like 50,000 (divider=',')
  * @returns {string}
  */
 export function formatBigNumberFull(num, divider = T.global.thousandsDivider) {
@@ -954,10 +954,11 @@ export function capitalizeFirstLetter(str) {
  * Formats a number like 2.5 to "2.5 items / s"
  * @param {number} speed
  * @param {boolean=} double
+ * @param {string=} separator The decimal separator for numbers like 50.1 (divider='.')
  */
-export function formatItemsPerSecond(speed, double = false) {
+export function formatItemsPerSecond(speed, double = false, separator = T.global.decimalSeparator) {
     return speed === 1.0
         ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
-        : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace("<x>", "" + round2Digits(speed)) +
+        : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace("<x>", "" + round2Digits(speed)).replace(".", separator) +
               (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
 }
