@@ -456,7 +456,7 @@ shopUpgrades:
 
 # Buildings and their name / description
 buildings:
-	hub:
+    hub:
         deliver: Envía
         toUnlock: para desbloquear
         levelShortcut: LVL
