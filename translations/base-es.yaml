@@ -30,41 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io es un juego sobre construir fábricas para automatizar la creación y combinación de figuras. Entrega las cada vez más complejas figuras requeridas para progresar y desbloquea mejoras para aumentar la velocidad de tu fábrica.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Al aumentar la demanda, necesitarás escalar tu fábrica para ajustarte a las necesidades - ¡No te olvides de los recursos, necesitarás expandirte en el [b]mapa infinito[/b]!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Ya que las figuras pueden ser aburridas, necesitarás mezclar colores para pintar las figuras - Combina recursos de colores rojo, verde y azul para producir diferentes colores y pintar figuras para satisfacer la demanda.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Este juego cuenta con 18 niveles (¡Que te mantendrán ocupado durante horas!) pero estoy constantemente añadiendo nuevo contenido - ¡Hay mucho planeado!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Ventajas del juego completo[/b]
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Puntos de referencia en el mapa
-            [*] Partidas guardadas ilimitadas
-            [*] Modo nocturno
-            [*] Más opciones
-            [*] Permitirme seguir desarrollando shapez.io ❤️
-            [*] Más características en el futuro!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        [b]Características planeadas y sugerencias de la comunidad[/b]
+        [b]Future Updates[/b]
 
-        Este juego es de código abierto - Cualquiera puede contribuir! A parte de eso, escucho [b]mucho[/b] a la comunidad! Intento leer todas las sugerencias e intento tener en cuenta todo el feedback posible.
+        I am updating the game very often and trying to push an update at least every week!
+
         [list]
-            [*] Modo historia en el que los edificios cuesten figuras
-            [*] Más niveles y edificios (exclusivos del juego completo)
-            [*] Mapas diferentes y tal vez obstáculos en el mapa
-            [*] Configuración en la creación del mapa (Editar el número y tamaño de los recursos, la semilla, y más)
-            [*] Más tipos de formas
-            [*] Mejoras de rendimiento (Aunque el juego ya funciona muy bien!)
-            [*] Modo para daltónicos
-            [*] Y mucho más!
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
         [/list]
 
-        Además asegúrate de comprobar el tablero de Trello para ver todo lo planificado! https://trello.com/b/ISQncpJP/shapezio
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Cargando
@@ -133,28 +151,7 @@ mainMenu:
     savegameLevel: Nivel <x>
     savegameLevelUnknown: Nivel desconocido
 
-    contests:
-        contest_01_03062020:
-            title: "Concurso #01"
-            desc: ¡Gana <strong>25$</strong> por la base más impresionante!
-            longDesc: >-
-                ¡Para devolveros algo a vosotros he pensado que molaría hacer consursos semanales!
-                <br><br>
-                <strong>¡El tema de esta semana:</strong> Construye la base más chula!
-                <br><br>
-                Este es el trato:<br>
-                <ul class="bucketList">
-                    <li>Envía una captura de pantalla de tu base a <strong>contest@shapez.io</strong></li>
-                    <li>Puntos extra si lo subes a redes sociales!</li>
-                    <li>Elegiré 5 capturas de pantalla y las propondré a la comunidad de <strong>discord</strong> para que vote.</li>
-                    <li>El ganador obtendrá <strong>25$</strong> (Paypal, tarjeta de regalo de Amazon, lo que prefieras)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                Estoy esperando para ver vuestras increíbles creaciones!
 
-        showInfo: Ver
-        contestOver: El concurso ha terminado - Únete al discord para enterarte sobre nuevos concursos!
     subreddit: Reddit
 
 dialogs:
@@ -258,6 +255,7 @@ dialogs:
     createMarker:
         title: Nuevo marcador
         desc: Dale un nombre significativo, tambien puedes agregarle la <strong>clave</strong> de una forma (La cual puedes generar <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Sólo puedes crear dos marcadores en la versión de prueba. ¡Obtén el juego completo para marcas ilimitadas!
@@ -267,6 +265,10 @@ dialogs:
         desc: >-
             Has pedido una captura de pantalla. Por favor ten en cuenta que
             puede tardar bastante en las bases grandes ¡He incluso crashear tu juego!
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -290,6 +292,7 @@ ingame:
         copySelection: Copiar
         clearSelection: Limpiar Selección
         pipette: Pipette
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -404,9 +407,11 @@ ingame:
         cyan: Cian
         white: Blanco
         uncolored: Sin color
+        black: Black
     shapeViewer:
         title: Capas
         empty: Vacio
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -514,6 +519,27 @@ buildings:
         deliver: Envía
         toUnlock: para desbloquear
         levelShortcut: LVL
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -593,10 +619,9 @@ storyRewards:
         desc: >-
             Este nivel no da recompensa, ¡pero el siguiente si! <br><br> PS: Mejor no destruyas la fábrica que tienes - ¡Necesitarás <strong>todas</strong> esas figuras más adelante para <strong>desbloquear mejoras</strong>!
 
-no_reward_freeplay:
-    title: Siguiente Nivel
-    desc: >-
-        ¡Felicidades! ¡Por cierto, hay más contenido planeado para el juego completo!
+    no_reward_freeplay:
+        title: Next level
+        desc: Congratulations! By the way, more content is planned for the standalone!
 
 settings:
     title: Opciones
@@ -711,7 +736,7 @@ settings:
             title: Información Compacta de Edificios
             description: >-
                 Acorta la caja de información mostrando solo sus ratios. Si no, se mostrará una descripción y una imagen.
-                
+
         disableCutDeleteWarnings:
             title: Deshabilitar las advertencias de Cortar/Eliminar
             description: >-
@@ -720,7 +745,7 @@ settings:
         enableColorBlindHelper:
             title: Modo para Daltónicos
             description: Activa varias herramientas que facilitan jugar si tienes alguna forma de daltonismo.
-            
+
         rotationByBuilding:
             title: Rotación por tipo de edificio
             description: >-
@@ -792,6 +817,11 @@ keybindings:
         mapMoveFaster: Mover más rápido
         switchDirectionLockSide: "Planner: Switch side"
         pipette: Pipette
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: Sobre el Juego
