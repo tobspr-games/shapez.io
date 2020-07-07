@@ -326,7 +326,7 @@ ingame:
         cyan: Cyan
         white: White
         black: Black
-        uncolored: No color
+        uncolored: Gray
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
