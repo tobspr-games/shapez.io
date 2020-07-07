@@ -411,7 +411,7 @@ ingame:
     shapeViewer:
         title: Lagen
         empty: Leeg
-        copyKey: Copy Key
+        copyKey: Kopiëer sleutel
 
 # All shop upgrades
 shopUpgrades:
