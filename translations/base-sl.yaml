@@ -36,7 +36,7 @@ steamPage:
         shapez.io je igra grajenja tovarne katere cilj je avtomatiziranje kreiranja in procesiranja vse bolj zapletenih oblik na neskončni ravnini.
         Ob dostavi zahtevanih oblik boste napredovali v igri in odklenili nadgradnje, da boste pospešili tovarno.
 
-        Ko se bo povpraševanje po oblikah povečalo, boste morali prilagoditi svojo tovarno, da bo zadostilo povpraševanju. Ne pozabite na vire, morali pa se boste razširiti čez [b] neskončno ravnino [/ b]!
+        Ko se bo povpraševanje po oblikah povečalo, boste morali prilagoditi svojo tovarno, da bo zadostilo povpraševanju. Ne pozabite na vire, morali pa se boste razširiti čez [b]neskončno ravnino[/b]!
 
         Kmalu boste morali mešati barve in z njimi barvati svoje oblike - Združite rdeče, zelene in modre barvne vire, da ustvarite različne barve in z njimi barvate oblike, da zadostite povpraševanju.
         V tej igri je 18 progresivnih stopenj (ki vas bodo zaposlile za več ur!), Vendar nenehno dodajam novo vsebino - načrtovanih novosti je veliko!  
@@ -150,8 +150,6 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
-
-
 
 dialogs:
     buttons:
@@ -545,12 +543,12 @@ buildings:
             name: &energy_generator Energy Generator
             description: Generates energy by consuming shapes. Each energy generator requires a different shape.
     wire_crossings:
-      default:
-        name: Wire Splitter
-        description: Splits a energy wire into two.
-      merger:
-        name: Wire Merger
-        description: Merges two energy wires into one.
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -629,8 +627,6 @@ storyRewards:
         title: Next level
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
-
-
 
     no_reward_freeplay:
         title: Next level
