@@ -106,9 +106,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        if (processorComp.secondsUntilEject <= 0) {
-            processorComp.secondsUntilEject += 1 / baseSpeed;
-        }
+        processorComp.secondsUntilEject += 1 / baseSpeed;
 
         /** @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>} */
         const outItems = [];
