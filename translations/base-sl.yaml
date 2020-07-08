@@ -62,7 +62,7 @@ steamPage:
         [list]
             [*] Različni zemljevidi in izzivi (npr. Zemljevidi z ovirami)
             [*] Izzivi (vnesite želeno obliko z omejenim območjem / nizom zgradb)
-            [*] Način zgodbe, kjer imajo stavbe stroške/cene
+            [*] Način zgodbe, kjer imajo zgradbe stroške/cene
             [*] Nastavljiv generator zemljevidov (konfigurirajte velikost / gostoto oblik /, seme in več)
             [*] Dodatne vrste oblik
             [*] Izboljšanje zmogljivosti (igra že sedaj deluje zelo dobro!)
@@ -85,14 +85,14 @@ steamPage:
         [/list]
 
 global:
-    loading: Loading
-    error: Error
+    loading: Nalaganje
+    error: Napaka
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: "."
 
     # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
-    decimalSeparator: "."
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -106,21 +106,21 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: sekundo nazaj
+        xSecondsAgo: <x> sekund nazaj
+        oneMinuteAgo: minuto nazaj
+        xMinutesAgo: <x> minut nazaj
+        oneHourAgo: uro nazaj
+        xHoursAgo: <x> ur nazaj
+        oneDayAgo: včeraj
+        xDaysAgo: <x> dni nazaj
 
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
 
-        xMinutes: <x> minutes
+        xMinutes: <x> minut
 
     keys:
         tab: TAB
@@ -132,682 +132,681 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Preizkusna različica
     intro: >-
-        Get the standalone to unlock all features!
+        Pridobite samostojno različizo za odklep vseh funkcionalnosti.
 
 mainMenu:
-    play: Play
-    continue: Continue
-    newGame: New Game
-    changelog: Changelog
+    play: Igraj
+    continue: Nadaljuj
+    newGame: Nova igra
+    changelog: Dnevnik sprememb
     subreddit: Reddit
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
-    madeBy: Made by <author-link>
+    importSavegame: Uvozi
+    openSourceHint: Ta igra je odprtokodna.
+    discordLink: Uradni Discord strežnik
+    helpTranslate: Pomagaj pri prevodi!
+    madeBy: Naredil <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Oprostite, ta igra deluje počasi v tem brskalniku. Pridobite samostojno različico ali prenesite chrome za popolno izkušnjo.
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: Nivo <x>
+    savegameLevelUnknown: Neznan nivo
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I am doing
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        delete: Zbriši
+        cancel: Prekliči
+        later: Kasneje
+        restart: 
+        reset: Ponastavi
+        getStandalone: Pridobi samostojno različico
+        deleteGame: Vem kaj počenjam
+        viewUpdate: Poglej posodobitev
+        showUpgrades: Pokaži nadgradnje
+        showKeybindings: Pokaži bljižnice
 
     importSavegameError:
-        title: Import Error
+        title: Uvozna napaka
         text: >-
-            Failed to import your savegame:
+            Uvoz tvoje shranjene igre ni uspel:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Uvoz uspel.
         text: >-
-            Your savegame has been successfully imported.
+            Tvoja shranjena igra je bila uspešno uvožena.
 
     gameLoadFailure:
-        title: Game is broken
+        title: Igra je pokvarjena
         text: >-
-            Failed to load your savegame:
+            Uvoz tvoje shranjene igre ni uspel:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Potrdi brisanje
         text: >-
-            Are you sure you want to delete the game?
+            Si prepričan da želiš izbrisati igro?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Neuspešno brisanje
         text: >-
-            Failed to delete the savegame:
+            Brisanje ni uspelo za igro:
 
     restartRequired:
-        title: Restart required
+        title: Ponovno zagon potreben
         text: >-
-            You need to restart the game to apply the settings.
+            Za uveljavitev spremem je potreben ponovno zagon.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Spremeni tipko
+        desc: Pritisni tipko na tipkovnici za nastavitev bljižnice (ali esc za prekinitev).
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Ponastavi bljižnice
+        desc: Ponastavil boš vse bljižnice na privzete vrednosti. Prosim potrdi.
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Bljižnice ponastavljene
+        desc: Vse bljižnice so bile ponastavljene na privzete vrednosti.
 
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider getting the standalone version for the full experience!
+        title: Preizkusna različica
+        desc: Poskusil si dostopati do funkcionalnosti (<feature>), ki ni na voljo v preizkusni različici. Razmisli o pridobitvi polne različice za popolno izkušnjo.
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone version!
+        title: Omejene shranjene igre.
+        desc: V preizkusni različici imaš lahko zgolj eno shranjeno igro. Razmisli o pridobitvi polne različice za popolno izkušnjo.
 
     updateSummary:
-        title: New update!
+        title: Nova posodobitev!
         desc: >-
-            Here are the changes since you last played:
+            Tukaj je seznam sprememb, ki jih prinaša posodobitev:
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Odkleni nadgradnje
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            Vse oblike, ki jih ustvarite, lahko uporabite za odklepanje nadgradenj - <strong>Ne uniči svojih starih tovarn!</strong>
+            Zavihek z nadgradnjimi lahko najdeš v zgornjem desnem kotu.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Potrdi brisanje!
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Hej, brišeš precej veliko zgradb (natančno <count>)! Si prepričan, da je to tvoja želja?
 
     massCutConfirm:
-        title: Confirm cut
+        title: Potrdi izrez
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Hej, izrezuješ precej veliko zgradb (natančno <count>)! Si prepričan, da je to tvoja želja?
 
     massCutInsufficientConfirm:
-        title: Confirm cut
+        title: Potrdi izrez
         desc: >-
-            You can not afford to paste this area! Are you sure you want to cut it?
+           Ne moreš si privoščiti lepljenja tega izreza! Si prepričan, da želiš območje izrezati iz zemljevida?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Še ni odklenjeno
         desc: >-
-            Complete level 12 to unlock Blueprints!
+            Dokončaj 12. nivo da odkleneš to funckionalnost.
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Uporabne bljižnice
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            Ta igra ima veliko bljižnic, ki olajšajo grajenje velikih tovarn.
+            Tukaj jih je nakaj, ampak ne pozabi <strong>preverit vseh bljižnic</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Povleci: Izberi območje.<br>
+            <code class='keybinding'>SHIFT</code>: Pridrži za postavitev večih zgradb.<br>
+            <code class='keybinding'>ALT</code>: Obrni smer postavljenih tekočih trakov.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Edit Marker
+        title: Nova oznaka
+        desc:  Dajte mu pomenljivo ime, lahko vključiš tudi<strong>kratko kodo</strong> oblike (Le to lahko generiraš <a href="https://viewer.shapez.io" target="_blank">tukaj</a>)
+        titleEdit: uredi oznako
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: V preizkusni različici lahko postaviš zgolj dve oznaki. Pridobi polno različico za neomejeno oznak in več!
 
     exportScreenshotWarning:
-        title: Export screenshot
-        desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
+        title: Izvozi zaslonski posnetek
+        desc: Začel si z izvozom zaslonskega posnetka tvoje tovarne. Pri velikih tovarnah lahko postopek traja kar nekaj časa in celo začasno zamrzne delovanje igre!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto-orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create marker
-        delete: Delete
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear selection
-        pipette: Pipette
-        switchLayers: Switch layers
+        moveMap: Premikanje
+        selectBuildings: Izberi območje
+        stopPlacement: Prenehaj postavitev
+        rotateBuilding: Zavrti zgradbo
+        placeMultiple: Postavi več
+        reverseOrientation: Obrnjena postavitev
+        disableAutoOrientation: Onemogoči samodejno obračanje
+        toggleHud: Preklopi HUD
+        placeBuilding: Postavi zgradbo
+        createMarker: Ustavri oznako
+        delete: Briši
+        pasteLastBlueprint: Prilepi zadnji načrt
+        lockBeltDirection: Omogoči trakovni načrtovalnik
+        plannerSwitchSide: Obrni trakovni načrtovalnik
+        cutSelection: Izreži
+        copySelection: Kopiraj
+        clearSelection: Pobriši izbrano
+        pipette: Pipeta
+        switchLayers: Preklopi med sloji
 
     # Names of the colors, used for the color blind mode
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        black: Black
-        uncolored: No color
+        red: Rdeča
+        green: Zelena
+        blue: Modra
+        yellow: Rumena
+        purple: Vijolična
+        cyan: Cijan
+        white: Bela
+        black: Črna
+        uncolored: Brez barve
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Pritisni <key> za spremembo različice.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
 
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            speed: Hitrost
+            range: Domet
+            storage: Shramba
+            oneItemPerSecond: 1 surovin / sekundo
+            itemsPerSecond: <x> surovin / sekundo
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> ploščic
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: Nivo <level>
+        completed: Opravljen
+        unlockText: Odkljenjeno <reward>!
+        buttonNextLevel: Naslenji nivo
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: Nova nadgradnja je na voljo
+        gameSaved: Igra je bila shranjena.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Nadgradnje
+        buttonUnlock: Nadgradi
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: Stopnja <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: Najvišja stopnja! (Hitrost x<currentMult>)
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: Statistika
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: Shranjeno
+                description: Prikaz shranjenih oblik v centralnem skladišču.
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: Prozvodnja
+                description: Prikaz vseh oblik (skupaj z vmesnimi oblikami), ki jih tvoja tovarna izdeluje.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: Dostava
+                description: Prikaz vseh oblik, ki jih tvoja tovarna dostavlja v centralno skladišče.
+        noShapesProduced: Tvoja tovarna ni proizvedla nobene oblike!
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        shapesPerMinute: <shapes> / minuto
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: Igralni čas
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: Zgradb
+        beltsPlaced: Tekočih trakov
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: Nadaljuj
+            settings: Nastavitve
+            menu: Vrnitev v meni
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: Potrebuješ pomoč?
+        showHint: Pokaži namig
+        hideHint: Zapri
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Cena
 
     # Map markers
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
-
+        waypoints: Oznake
+        hub: Centralno skladišče
+        description: Levi klik za skok na oznako, desni klik za brisanje.<br><br>Pritisni <keybinding> za ustvarjenje oznake na trenutni lokaciji, ali <strong>desni klik</strong> za oznako za izbrani lokaciji.
+        creationSuccessNotification: Oznaka je bila ustvarjena.
     # Shape viewer
     shapeViewer:
-        title: Layers
-        empty: Empty
-        copyKey: Copy Key
+        title: Plasti
+        empty: Prazno
+        copyKey: Kopiraj kodo
 
     # Interactive tutorial
     interactiveTutorial:
-        title: Tutorial
+        title: Vadnica
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Postavi <strong>ekstraktor</strong> na <strong>obliko kroga</strong> da ga ekstrahiraš!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+               Poveži ekstraktor s centralnim skladiščem s pomočjo <strong>tekočega traku</strong>!<br><br>Namig: <strong>Pritisni in vleči</strong> tekoči trak z miško!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                To <strong>NI</strong> igra čakanja! Postavi več ekstraktorjev in tekočih trakov da zaključiš hitreje.<br><br>Tip: Pritistni in drži tipko <strong>SHIFT</strong> za postavljanje večih ekstraktorjev, in pritistni tipko <strong>R</strong> za vrtenje le teh.
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Trakovi, delilniki & predori
+        description: Hitrost x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Ekstrahiranje
+        description: Hitrost x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Rezanje, vrtenje & zlaganje
+        description: Hitrost x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Mešanje & barvanje
+        description: Hitrost x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
+        deliver: Dostavi
+        toUnlock: za odklep
+        levelShortcut: NIVO
 
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Tekoči trak
+            description: Prenaša surovine, pridrži in povleči za postavitev.
 
     wire:
         default:
-            name: &wire Wire
-            description: Allows you to transport energy
+            name: &wire Žica
+            description: Omogoča prenos energije
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Ekstraktor
+            description: Postavi na obliko ali barvo za ekstrahiranje.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Ekstraktor (Verižni)
+            description: Postavi na obliko ali barvo za ekstrahiranje. Lahko jih verižiš.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows you to tunnel resources under buildings and belts.
+            name: &underground_belt Predor
+            description: Omogoča transport pod ostalimi trakovi in zgradbami.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows you to tunnel resources under buildings and belts.
+            name: Predor stopnje II
+            description:  Omogoča transport pod ostalimi trakovi in zgradbami.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Delilnik
+            description: Deli surovine enakomirno med obema tekočima trakovoma.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Združevalnik (kopmaktni)
+            description: Združuje dva tekoča trakova v enega.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Združevalnik (kompaktni)
+            description: Združuje dva tekoča trakova v enega.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Rezalnik
+            description: Razreže oblike vertikalno na dve polovici. <strong>Če uporabljaš zgolj eno polovico, poskrbi za odvoz druge (do smeti) drugače bo rezalnik obstal!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
+            name: Super rezalnik (4)
+            description: Razreže oblike na 4 dele. <strong>če ne uporabljaš vseh delov, poskrbi za odvoz ostalih (do smeti), drugače bo rezalnik obstal!</strong>
 
     advanced_processor:
         default:
-            name: &advanced_processor Advanced Processor
-            description: Advanced shape processing
+            name: &advanced_processor Napredni procesor
+            description: Procesor za procesiranje naprednih oblik
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Obračalnik
+            description: Obrne oblike za 90° v smeri urinega kazalca.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter-clockwise by 90 degrees.
+            name: Obračalnik (O)
+            description: Obrne oblike za 90° v obratni smeri urinega kazalca.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker Sestavljalnik
+            description: Skupaj sestavi dve oblike. V koliokr oblike niso združljive, obliko z desne položi nad levo.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Barvni mojster.
+            description: Zmeša dve barvi in ustvari novo barvo (aditivno mešanje)
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the top input.
+            name: &painter Malar
+            description: &painter_desc Pobarva celotno obliko v barvo, ki je dostavljena do Malarja.
 
         mirrored:
             name: *painter
             description: *painter_desc
 
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Dvojni malar
+            description: Pobarva dve oblike hkrati.
         quad:
-            name: Painter (Quad)
-            description: Allows you to color each quadrant of the shape with a different color.
+            name: Super malar (4)
+            description: Pobarva vsak kvadrant oblike z izbrano barvo.
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Smeti
+            description: Sprejema oblike in barve iz vseh smeri in jih pobriše. Za vedno!
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Shranjevalnik
+            description: Shrani odvečne oblike, do določenih zmožnosti. Se lahko uporabi kot blažilec odvečnih surovin.
 
     energy_generator:
-        deliver: Deliver
+        deliver: Dostavi
 
         # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: For
+        toGenerateEnergy: Za
 
         default:
-            name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes. Each energy generator requires a different shape.
+            name: &energy_generator Generator energije
+            description: Ustavrja energijo iz dostavljenih oblik. Vsak generator energije potrebuje določeno vrsto oblik.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Ločevalnik žic
+            description: Iz ene žice naredi dve.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Združevalnik žic
+            description: Združi dve žici v eno.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Rezanje oblik
+        desc: Pravkar si odklenil <strong>rezalnik</strong> - obliki <strong>vertikalno</strong> razreže na pol!<br><br>Ne pozabi se znebiti odpadnih polovic, drugače se bo <strong>ustavil</strong> - V ta namen ti podarjam kanto za smeti, v katero lahko pospraviš odvečne oblike.
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Vrtenje
+        desc: <strong>Obračalnik</strong> je bil odklenjen! Obrača oblike za 90° v smeri urinega kazalca.
 
     reward_painter:
-        title: Painting
+        title: Barvanje
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>colorblind mode</strong> in the settings!
+            <strong>Malar</strong> je bil odklenjen - Ekstrahiraj nekaj barve (na isti način kot oblike) in pobarvaj oblike s pomočjo malarja!<br><br>PS: Če si barvno slep, vklopi <strong>način za barvno slepoto</strong> v nastavitvah!
 
-    reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+    reward_mixer: Mešanje barv
+        title: 
+        desc: <strong>Barvni mojster</strong> je bil odklenjen - Zmešaj dve barve (<strong>aditivno mešanje</strong>) s pomočjo barvnega mojstra.
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Sestavljalnik
+        desc: Sedaj lahko združiš dve obliki s <strong>sestavljalnikom</strong>! Obe obliki sta združeni, v kolikor je to možno, v nasprotnem primeru pa sestavljalnik položi desno obliko na levo.
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: Delilnik
+        desc: Multifunkcionalen <strong>delilnk</strong> je bil odklenjen - uporabi se lahko za grajenje večjih tovarn s pomočjo <strong>deljenja in združevanja</strong> na več različnih tekočih trakov.<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
+        title: Predor
+        desc:  <strong>Predor</strong> je bil odklenjen - Sedaj lahko prenašaš oblike in barve pod trakovi in zgradbami.
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows you to rotate shapes counter-clockwise! To build it, select the rotater and <strong>press 'T' to cycle through its variants</strong>!
+        title: Obračalnik (o)
+        desc: Odklenil si različico <strong>obračalnika</strong> - Omogoča ti da obračaš oblike v nasprotni smeri urinega kazalca! Za izgradnjo, izberi obračalnik in <strong>pritistni tipko'T' za preklapljanje med različicami</strong>!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: Verižni ekstraktor
+        desc: Odklenil si <strong>verižni ekstraktor</strong>! Omogoča ti <strong>posredovanje surovin</strong> drugim ekstraktorjem in bolj učinkovito ekstrahiranje!
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: Predor stopnje II
+        desc: Odklenil si novo različico <strong>predora</strong> - Ima <strong>daljši domet</strong>, hkrati pa lahko kombiniraš obe različice predorov!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Komptaktni združevalnik
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
+            Odklenil si različico <strong>delilnika</strong> - Združi dva tekoča traka v enega.
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Super rezalnik (4)
+        desc: Odklenil si različizo <strong>rezalnika</strong> - Omogoča ti rezanje oblik <strong>na 4 dele</strong> za razliko od navadnega rezalnika!
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: Dvojni malar
+        desc:  Odklenil si različizo <strong>malarja</strong> - Deluje kot navadni malar, vendar pobarva <strong>dve oblike hkrati</strong>, porabi pa zgolj eno enoto barve.
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows you to paint each part of the shape individually!
+        title: Super malar (4)
+        desc: Odklenil si različizo <strong>malarja</strong> - Omogoča barvanje posameznih delov oblike!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows you to store items up to a given capacity!
+        title: Shranjevalnik
+        desc: Odklenil si različico <strong>kante za smeti</strong> - Dovoli ti shranjevanje oblike do določene zmožnosti.
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Prosta igra
+        desc: Uspelo ti je! Odklenil si <strong>način proste igre</strong>! Ciljne oblike bodo sedaj ustvarjen naključno (Brez skrbi, samostojna različima ima predvidenih še veliko novih nivojeh in funkcionalnosti!)
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: Načrti
+        desc: Sedaj lahko <strong>kopiraš in prilepiš</strong> dele svoje tovarne! Izberi območje (pridrži tipko CTRL, nato pa povlezi z miško), in pritisni tipko 'C' za kopiranje.<br><br>Leplenje  <strong>ni brezplačno</strong>, zato moraš ustvariti <strong>načrtne oblike</strong> da si ga lahko privoščiš! (Oblike,ki si jih pravkar dostavil).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Naslednji nivo
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            Naslednji nivo ti ne prinaša nagrade, le to dobiš pri naslednjem. <br><br> PS: Ne uniči obstoječih tovarn - kasneje potrebuješ <strong>vse</strong> trenutne oblike za <strong>odklepanje nadgradnj</strong>!
 
     no_reward_freeplay:
-        title: Next level
+        title: Naslednji nivo
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Čestitke! Mimogrede, več nivojev in funkcij je predvidenih za samostojno različico!
 
 settings:
-    title: Settings
+    title: Nastavitve
     categories:
-        game: Game
-        app: Application
+        game: Igra
+        app: Aplikacija
 
     versionBadges:
-        dev: Development
-        staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+        dev: Razcoj
+        staging: Uprizoritev
+        prod: Produkcija
+    buildDate: Zgrajeno <at-date>
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Velikost vmesnika
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device's resolution, but this setting controls the amount of scaling.
+                Spremeni velikost uporabniškega vmesnika. Vmesnik se bo prilagodil glede na resolucijo in izbrane nastavitve.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Super majhna
+                small: Majhna
+                regular: Navadna
+                large: Velika
+                huge: Gromozanska
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Interval shranjevanja
             description: >-
-                Controls how often the game saves automatically. You can also disable it entirely here.
+                Izberi, kako pogosto se igra shranjuje. Nastavitev lahko tudi popolnoma onemogočiš.
 
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minuta
+                two_minutes: 2 Minuti
+                five_minutes: 5 Minut
+                ten_minutes: 10 Minut
+                twenty_minutes: 20 Minut
+                disabled: Onemogočeno
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: Občutljivost povečave
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                Nastavi občutljivost povečave.
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Super počasna
+                slow: Počasna
+                regular: Navadna
+                fast: Hitra
+                super_fast: Super hitra
 
         movementSpeed:
-            title: Movement speed
+            title: Hitrost premikanja
             description: >-
-                Changes how fast the view moves when using the keyboard.
+                Nastavi hitrost premikanja s pomočjo tipkovnice.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Super počasna
+                slow: Počasna
+                regular: Navadna
+                fast: Hitra
+                super_fast: Super hitra
+                extremely_fast: Super duper hitra
 
         language:
-            title: Language
+            title: Jezik
             description: >-
-                Change the language. All translations are user-contributed and might be incomplete!
+                Spremeni jezik. Vsi prevodi so posredovani s strani uporabnikov in morda niso popolni.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
+            title: Način barvne slepote
             description: >-
-                Enables various tools which allow you to play the game if you are color blind.
+                Omogoči pomagala, ki omogočajo igranje kljub barvni slepoti.
 
         fullscreen:
-            title: Fullscreen
+            title: Polni zaslon
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+               Za najboljšo izkušnjo priporočamo igranje na polnem zaslonu. Navoljo samo v samostojni različici.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Utišaj zvoke
             description: >-
-                If enabled, mutes all sound effects.
+                Če je omogočeno, izključi vse zvoke.
 
         musicMuted:
-            title: Mute Music
+            title: Utišaj glasbo.
             description: >-
-                If enabled, mutes all music.
+                Če je omogočeno, izklopi glasbo.
 
         theme:
-            title: Game theme
+            title: Tema igre
             description: >-
-                Choose the game theme (light / dark).
+                Iberi temo igre (svetla / temna).
             themes:
-                dark: Dark
-                light: Light
+                dark: Temna
+                light: Svetla
 
         refreshRate:
-            title: Simulation Target
+            title: Nastavitev monitorja
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+               V kolikor imaš 144hz monitor, spremeni hitrost osveževanje. V primeru počasnega računalnika se FPS lahko zmanjša!
 
         alwaysMultiplace:
-            title: Multiplace
+            title: Več-postavljanje
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                V kolikor je omogočeno bodo vse stavbe ostale označene ob postavitvi. To je enakovredno tiščanju tipke SHIFT.
 
         offerHints:
-            title: Hints & Tutorials
+            title: Namigi in vadnica
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements up to a given level to make it easier to get into the game.
+               Prikazovanje namigov ter vadnice. Skrije tudi določene gumbe do določenega nivoja za lažje igranje.
 
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Pametni predori
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables you to drag tunnels and excess tunnels will get removed.
+                V kolikor je omogočeno bodo postavljeni predori avtomatično porušili neuporabne tekoče trakove. To tudi omogoča hitro postavljanje in odstranjevanje neuporabljenih elementov.
 
         vignette:
-            title: Vignette
+            title: Vinjeta
             description: >-
-                Enables the vignette, which darkens the screen corners and makes text easier to read.
+                Omogoči vinjeto, ki zatemni robove in omogoča lažje branje besedila.
 
         rotationByBuilding:
-            title: Rotation by building type
+            title: Obračanja glede na tip zgradbe
             description: >-
-                Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
+                Vsaka zgradba si zapomni zadnjo rotacijo. To omogoča hitrejpše igranje, če velikokrat preklapljaš med zgradbami.
 
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Kompaktne informacije o zgradbi
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
+                Prikaže kompaktnejše informacije o zgradbi, brez slike in opisa delovanja.
 
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Onemogoči opozorila pri brisanju in rezanju
             description: >-
-                Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
+                Onemogoči opozorila pri brisanju in rezanju več kot 100 zgradb.
 
 keybindings:
-    title: Keybindings
+    title: Bližnjice
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Tip: Ne pozabi uporavbljati CTRL, SHIFT in ALT! Omogočajo različne postavitve.
 
-    resetKeybindings: Reset Keybindings
+    resetKeybindings: Ponastavi bližnjice.
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Aplikacija
+        ingame: Igra
+        navigation: Navigacija
+        placement: Postavitev
+        massSelect: Množični izbor
+        buildings: Bljižnive za grajenje
+        placementModifiers: Spreminjanje postavitve
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        mapMoveFaster: Move Faster
-        centerMap: Center Map
+        confirm: Potrdi
+        back: Nazaj
+        mapMoveUp: Pomik gor
+        mapMoveRight: Pomik desno
+        mapMoveDown: Pomik dol
+        mapMoveLeft: Pomik levo
+        mapMoveFaster: Hitrejši pomik
+        centerMap: Skočoi na center
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: Povečava +
+        mapZoomOut: Povečava -
+        createMarker: Ustvari oznako
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
-        menuClose: Close Menu
+        menuOpenShop: Nadgradnje
+        menuOpenStats: Statistika
+        menuClose: Zapri meni
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
-        switchLayers: Switch layers
-        exportScreenshot: Export whole Base as Image
+        toggleHud: Preklpi HUD
+        toggleFPSInfo: Preklopi FPS in razhroščevalne informacije
+        switchLayers: Preklopi med plastmi
+        exportScreenshot: Ustvari zaslonski posnetek
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -822,49 +821,49 @@ keybindings:
         trash: *trash
         wire: *wire
 
-        pipette: Pipette
-        rotateWhilePlacing: Rotate
+        pipette: Pipeta
+        rotateWhilePlacing: Zavrti
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Delete area
-        pasteLastBlueprint: Paste last blueprint
-        cycleBuildings: Cycle Buildings
-        lockBeltDirection: Enable belt planner
+            Modifier: zavrti v nasprotni smeri
+        cycleBuildingVariants: Preklopi različico
+        confirmMassDelete: Pobriši območje
+        pasteLastBlueprint: Prilepi (zadnje kopiran del)
+        cycleBuildings: Preklopi med stavbami
+        lockBeltDirection: Omogoči načrtovalnik traku
         switchDirectionLockSide: >-
-            Planner: Switch side
+            Planner: Zamenjaj smer
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
-        massSelectCut: Cut area
+        massSelectStart: Pritistni in drži za začetek
+        massSelectSelectMultiple: Označi več območji
+        massSelectCopy: Kopiraj območje
+        massSelectCut: Izrezi območje
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
+        placementDisableAutoOrientation: Onemogoči avtomatično obračanje
+        placeMultiple: Ostani v postavitvenem načinu
+        placeInverse: Obrni avtomatično obračanje traku
 
 about:
-    title: About this Game
+    title: O igri
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
+        Ta igra je odprtokodna. Razvija jo <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (to sem jaz).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
+        Če bi rad prispeval k razvoju, preveri <a href="<githublink>" target="_blank">shapez.io na Github-u</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community around my games - You should really join the <a href="<discordlink>" target="_blank">discord server</a>!<br><br>
+        Ta igra ne bi bila mogoče brez super podpore skupnosti na mojem Discordu - Resnično bi se moral pridružiti <a href="<discordlink>" target="_blank">discord strežniku</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Glasva je bila ustvarjena s strani <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen-a</a> - On je odličen.<br><br>
 
-        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions, this game would never have existed.
+        Končno, najlepša hvala mojemu najboljšemu kolegu <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Brez najinih skupnih igranj igre Factorio ta igra ne bi nikoli nastala.
 
 changelog:
-    title: Changelog
+    title: Dnevnik sprememb
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Obnovitev shranjenih iger
+        importingGames: Uvoz shranjene igre
+        oneGameLimit: Omejitev ene shranjene igre
+        customizeKeybindings: Nastavljive bližnjice
+        exportingBase: Izvoz zaslonske slike
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Ni na voljo v poizkusni različici
