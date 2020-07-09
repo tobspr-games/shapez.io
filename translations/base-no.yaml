@@ -30,59 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io er et spill som handler om å bygge fabrikker for å automatisere produksjon og kombinering av former med økende kompleksitet på et ubegrenset brett.
+        Når du leverer de etterspurte formene går du framover i spillet og åpner oppgraderinger som du kan bruke til å få fart på fabrikken din.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Ettervert som etterspørselen for former øker må du bygge på fabrikken for å fylle behovet - Ikke glem ressursene da, du vil også måtte utvide over [b]det uendelige kartet[/b]!
+        
+        Ganske fort må du også begynne å blande farger og male formene med dem - Bland røde, grønne og blå fargestoffer for å produsere forskjellige farger og mal formene for å tilfredstille etterspørrselen.
+        
+        Dette spillet har 18 brett (Som burde holde deg opptatt i flere timer!) men jeg legger til stadig mer innhold - Og enda mer planlagt!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Ved å kjøpe spillet får du tilgang til en uavhengig versjon med ekstra funksjoner. Du vil også få tilgang på nye, ferske funksjoner.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
-
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
-
-        [b]Standalone Advantages[/b]
+        [b]Uavhengige versjonens fordeler[/b]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] En mørk modus
+            [*] Uendelige markører
+            [*] Uendelige lagringsfiler
+            [*] Flere instillinger
+            [*] Kommer snart: Ledninger & strøm! Planlagt å komme (grovt estimat) i slutten av juli 2020
+            [*] Kommer snart: Flere brett
+            [*] Tillater meg å fortsette å utvikle shapez.io ❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]Framtidige oppdateringer[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Jeg oppdaterer spillet ofte og prøver å gi ut en oppdatering hver uke!
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Forskjellige brett og utfordringer (f.eks brett med hindringer)
+            [*] Hjernetrimmende brett (Lever de etterspurte formene med ett begrenset område / sett med bygninger)
+            [*] En fortellings-modus der bygninger koster å bygge
+            [*] En konfigurerbar brett-generator (Konfigurer ressurs/form størrelse/tetthet, frø og mer)
+            [*] Flere typer former
+            [*] Ytelses forbedringer (Selv om spillet allerede kjører ganske bra!)
+            [*] Og mye mer!
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Dette spillet er åpen kildekode![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
-
-        [b]Links[/b]
+        Hvem som helst kan delta. Jeg er aktivt innvolvert i felleskapet og forsøker å gjennomgå alle forslagene og ta imot tilbakemeldinger der det er mulig.
+        Husk å sjekke ut trello- tavlen for hele veikartet!
+        
+        [b]Hyperlinker[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Offersielle Discord kanalen[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Veikart[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Kildekoden (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Hjelp til med å oversette[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Offersielle Discord - Snakk med meg!
 
 global:
     loading: Laster
