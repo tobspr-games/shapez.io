@@ -1,9 +1,9 @@
-import { Math_radians } from "../../../core/builtins";
-import { globalConfig } from "../../../core/config";
+import { ClickDetector } from "../../../core/click_detector";
+import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
-import { drawRotatedSprite } from "../../../core/draw_utils";
+import { drawRotatedSprite, rotateTrapezRightFaced } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
-import { makeDiv, removeAllChildren, pulseAnimation, clamp } from "../../../core/utils";
+import { clamp, makeDiv, removeAllChildren } from "../../../core/utils";
 import {
     enumDirectionToAngle,
     enumDirectionToVector,
@@ -16,7 +16,8 @@ import { defaultBuildingVariant } from "../../meta_building";
 import { THEME } from "../../theme";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { HUDBuildingPlacerLogic } from "./building_placer_logic";
-import { ClickDetector } from "../../../core/click_detector";
+import { makeOffscreenBuffer } from "../../../core/buffer_utils";
+import { enumLayer } from "../../root";
 
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
@@ -50,19 +51,56 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         // Bind to signals
         this.signals.variantChanged.add(this.rerenderVariants, this);
+        this.root.hud.signals.buildingSelectedForPlacement.add(this.startSelection, this);
 
         this.domAttach = new DynamicDomAttach(this.root, this.element, {});
         this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
 
         this.currentInterpolatedCornerTile = new Vector();
 
-        this.lockIndicatorSprite = Loader.getSprite("sprites/misc/lock_direction_indicator.png");
+        this.lockIndicatorSprites = {};
+        for (const layerId in enumLayer) {
+            this.lockIndicatorSprites[layerId] = this.makeLockIndicatorSprite(layerId);
+        }
+
+        //
 
         /**
          * Stores the click detectors for the variants so we can clean them up later
          * @type {Array<ClickDetector>}
          */
         this.variantClickDetectors = [];
+    }
+
+    /**
+     * Makes the lock indicator sprite for the given layer
+     * @param {enumLayer} layer
+     */
+    makeLockIndicatorSprite(layer) {
+        const dims = 48;
+        const [canvas, context] = makeOffscreenBuffer(dims, dims, {
+            smooth: true,
+            reusable: false,
+            label: "lock-direction-indicator",
+        });
+
+        // Loader.getSprite("sprites/misc/lock_direction_indicator.png").draw(context, 0, 0, 48, 48);
+        context.fillStyle = THEME.map.directionLock[enumLayer.wires].color;
+        context.strokeStyle = THEME.map.directionLock[enumLayer.wires].color;
+        context.lineWidth = 2;
+
+        const padding = 5;
+        const height = dims * 0.5;
+        const bottom = (dims + height) / 2;
+
+        context.moveTo(padding, bottom);
+        context.lineTo(dims / 2, bottom - height);
+        context.lineTo(dims - padding, bottom);
+        context.closePath();
+        context.stroke();
+        context.fill();
+
+        return canvas;
     }
 
     /**
@@ -178,7 +216,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 consumeEvents: true,
                 targetOnly: true,
             });
-            detector.click.add(() => this.currentVariant.set(variant));
+            detector.click.add(() => this.setVariant(variant));
         }
     }
 
@@ -230,12 +268,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             rotation,
             rotationVariant,
             connectedEntities,
-        } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile(
-            this.root,
-            mouseTile,
-            this.currentBaseRotation,
-            this.currentVariant.get()
-        );
+        } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile({
+            root: this.root,
+            tile: mouseTile,
+            rotation: this.currentBaseRotation,
+            variant: this.currentVariant.get(),
+            layer: metaBuilding.getLayer(),
+        });
 
         // Check if there are connected entities
         if (connectedEntities) {
@@ -275,14 +314,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         staticComp.tileSize = metaBuilding.getDimensions(this.currentVariant.get());
         metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
 
-        // Check if we could place the buildnig
-        const canBuild = this.root.logic.checkCanPlaceBuilding({
-            origin: mouseTile,
-            rotation,
-            rotationVariant,
-            building: metaBuilding,
-            variant: this.currentVariant.get(),
-        });
+        const canBuild = this.root.logic.checkCanPlaceEntity(this.fakeEntity);
 
         // Fade in / out
         parameters.context.lineWidth = 1;
@@ -334,8 +366,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         const mouseWorld = this.root.camera.screenToWorld(mousePosition);
         const mouseTile = mouseWorld.toTileSpace();
-        parameters.context.fillStyle = THEME.map.directionLock;
-        parameters.context.strokeStyle = THEME.map.directionLockTrack;
+        parameters.context.fillStyle = THEME.map.directionLock[this.root.currentLayer].color;
+        parameters.context.strokeStyle = THEME.map.directionLock[this.root.currentLayer].background;
         parameters.context.lineWidth = 10;
 
         parameters.context.beginCircle(mouseWorld.x, mouseWorld.y, 4);
@@ -358,23 +390,28 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             parameters.context.beginCircle(endLine.x, endLine.y, 5);
             parameters.context.fill();
 
-            // Draw arrows
+            // Draw arrow
+            const arrowSprite = this.lockIndicatorSprites[this.root.currentLayer];
             const path = this.computeDirectionLockPath();
             for (let i = 0; i < path.length - 1; i += 1) {
                 const { rotation, tile } = path[i];
                 const worldPos = tile.toWorldSpaceCenterOfTile();
-                drawRotatedSprite({
-                    parameters,
-                    sprite: this.lockIndicatorSprite,
-                    x: worldPos.x,
-                    y: worldPos.y,
-                    angle: Math_radians(rotation),
-                    size: 12,
-                    offsetY:
-                        -globalConfig.halfTileSize -
+                const angle = Math.radians(rotation);
+
+                parameters.context.translate(worldPos.x, worldPos.y);
+                parameters.context.rotate(angle);
+                parameters.context.drawImage(
+                    arrowSprite,
+                    -6,
+                    -globalConfig.halfTileSize -
                         clamp((this.root.time.realtimeNow() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
-                        globalConfig.halfTileSize,
-                });
+                        globalConfig.halfTileSize -
+                        6,
+                    12,
+                    12
+                );
+                parameters.context.rotate(-angle);
+                parameters.context.translate(-worldPos.x, -worldPos.y);
             }
         }
     }
@@ -390,7 +427,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const goodArrowSprite = Loader.getSprite("sprites/misc/slot_good_arrow.png");
         const badArrowSprite = Loader.getSprite("sprites/misc/slot_bad_arrow.png");
 
-        // Just ignore this code ...
+        // Just ignore the following code please ... thanks!
 
         const offsetShift = 10;
 
@@ -398,9 +435,16 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             const slots = acceptorComp.slots;
             for (let acceptorSlotIndex = 0; acceptorSlotIndex < slots.length; ++acceptorSlotIndex) {
                 const slot = slots[acceptorSlotIndex];
+
+                // Only draw same layer slots
+                if (slot.layer !== this.root.currentLayer) {
+                    continue;
+                }
+
                 const acceptorSlotWsTile = staticComp.localTileToWorld(slot.pos);
                 const acceptorSlotWsPos = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
 
+                // Go over all slots
                 for (
                     let acceptorDirectionIndex = 0;
                     acceptorDirectionIndex < slot.directions.length;
@@ -409,22 +453,46 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     const direction = slot.directions[acceptorDirectionIndex];
                     const worldDirection = staticComp.localDirectionToWorld(direction);
 
+                    // Figure out which tile ejects to this slot
                     const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
-                    const sourceEntity = this.root.map.getTileContent(sourceTile);
 
-                    let sprite = goodArrowSprite;
-                    let alpha = 0.5;
+                    let isBlocked = false;
+                    let isConnected = false;
 
-                    if (sourceEntity) {
-                        sprite = badArrowSprite;
+                    // Find all entities which are on that tile
+                    const sourceEntities = this.root.map.getLayersContentsMultipleXY(
+                        sourceTile.x,
+                        sourceTile.y
+                    );
+
+                    // Check for every entity:
+                    for (let i = 0; i < sourceEntities.length; ++i) {
+                        const sourceEntity = sourceEntities[i];
                         const sourceEjector = sourceEntity.components.ItemEjector;
                         const sourceStaticComp = sourceEntity.components.StaticMapEntity;
                         const ejectorAcceptLocalTile = sourceStaticComp.worldToLocalTile(acceptorSlotWsTile);
-                        if (sourceEjector && sourceEjector.anySlotEjectsToLocalTile(ejectorAcceptLocalTile)) {
-                            sprite = goodArrowSprite;
+
+                        // If this entity is on the same layer as the slot - if so, it can either be
+                        // connected, or it can not be connected and thus block the input
+                        if (sourceEntity.layer === slot.layer) {
+                            if (
+                                sourceEjector &&
+                                sourceEjector.anySlotEjectsToLocalTile(
+                                    ejectorAcceptLocalTile,
+                                    this.root.currentLayer
+                                )
+                            ) {
+                                // This one is connected, all good
+                                isConnected = true;
+                            } else {
+                                // This one is blocked
+                                isBlocked = true;
+                            }
                         }
-                        alpha = 1.0;
                     }
+
+                    const alpha = isConnected || isBlocked ? 1.0 : 0.3;
+                    const sprite = isBlocked ? badArrowSprite : goodArrowSprite;
 
                     parameters.context.globalAlpha = alpha;
                     drawRotatedSprite({
@@ -432,7 +500,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                         sprite,
                         x: acceptorSlotWsPos.x,
                         y: acceptorSlotWsPos.y,
-                        angle: Math_radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
+                        angle: Math.radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
                         size: 13,
                         offsetY: offsetShift + 13,
                     });
@@ -443,8 +511,15 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         if (ejectorComp) {
             const slots = ejectorComp.slots;
+
+            // Go over all slots
             for (let ejectorSlotIndex = 0; ejectorSlotIndex < slots.length; ++ejectorSlotIndex) {
-                const slot = ejectorComp.slots[ejectorSlotIndex];
+                const slot = slots[ejectorSlotIndex];
+
+                // Only draw same layer slots
+                if (slot.layer !== this.root.currentLayer) {
+                    continue;
+                }
 
                 const ejectorSlotWsTile = staticComp.localTileToWorld(
                     ejectorComp.getSlotTargetLocalTile(ejectorSlotIndex)
@@ -452,25 +527,41 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 const ejectorSLotWsPos = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
                 const ejectorSlotWsDirection = staticComp.localDirectionToWorld(slot.direction);
 
-                const destEntity = this.root.map.getTileContent(ejectorSlotWsTile);
+                let isBlocked = false;
+                let isConnected = false;
 
-                let sprite = goodArrowSprite;
-                let alpha = 0.5;
-                if (destEntity) {
-                    alpha = 1;
+                // Find all entities which are on that tile
+                const destEntities = this.root.map.getLayersContentsMultipleXY(
+                    ejectorSlotWsTile.x,
+                    ejectorSlotWsTile.y
+                );
+
+                // Check for every entity:
+                for (let i = 0; i < destEntities.length; ++i) {
+                    const destEntity = destEntities[i];
                     const destAcceptor = destEntity.components.ItemAcceptor;
                     const destStaticComp = destEntity.components.StaticMapEntity;
 
-                    if (destAcceptor) {
+                    // If this entity is on the same layer as the slot - if so, it can either be
+                    // connected, or it can not be connected and thus block the input
+                    if (destEntity.layer === slot.layer) {
                         const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
                         const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
-                        if (destAcceptor.findMatchingSlot(destLocalTile, destLocalDir)) {
-                            sprite = goodArrowSprite;
+                        if (
+                            destAcceptor &&
+                            destAcceptor.findMatchingSlot(destLocalTile, destLocalDir, this.root.currentLayer)
+                        ) {
+                            // This one is connected, all good
+                            isConnected = true;
                         } else {
-                            sprite = badArrowSprite;
+                            // This one is blocked
+                            isBlocked = true;
                         }
                     }
                 }
+
+                const alpha = isConnected || isBlocked ? 1.0 : 0.3;
+                const sprite = isBlocked ? badArrowSprite : goodArrowSprite;
 
                 parameters.context.globalAlpha = alpha;
                 drawRotatedSprite({
@@ -478,7 +569,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     sprite,
                     x: ejectorSLotWsPos.x,
                     y: ejectorSLotWsPos.y,
-                    angle: Math_radians(enumDirectionToAngle[ejectorSlotWsDirection]),
+                    angle: Math.radians(enumDirectionToAngle[ejectorSlotWsDirection]),
                     size: 13,
                     offsetY: offsetShift,
                 });

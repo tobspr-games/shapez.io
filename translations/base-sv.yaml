@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io är ett spel som går ut på att automatisera skapandet av former. Leverera de efterfrågade, alltmer komplexa formerna för att utvecklas genom spelet och skaffa uppgraderingar för att öka hastigheten i fabriken.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Eftersom efterfrågan ökar behöver du bygga ut fabriken för att möta behoven - Glöm bara inte bort resurserna, du kommer behöva expadera fabriken över den [b]oändligt stora världen[/b]!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Eftersom former kan bli tråkiga kommer du behöva blanda färger och måla dina former med dem - Kombinera röd, grön, och blå för att producera olika färger och måla former med dem för att tillfredställa efterfrågan.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Detta spel innehåller just nu 18 nivåer (Vilket borde hålla dig upptagen i några timmar!) men jag lägger konstant till fler saker - Det finns mycket planerat!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Fristående Fördelar[/b]
-
-        [list]
-            [*] Waypoints
-            [*] Oändligt antal sparfiler
-            [*] Mörkt tema
-            [*] Fler inställningar
-            [*] Tillåter mig att vidare utveckla shapez.io ❤️
-            [*] Fler funktioner i framtiden!
-        [/list]
-
-        [b]Planerade tillägg & Gruppförslag[/b]
-
-        Detta spel är open source - Vem som helst kan hjälpa! Förutom det lyssnar jag [b]ofta[/b] på min community! Jag försöker läsa alla förslag och ta till mig så mycket feedback som möjligt.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Story mode däri byggnader kostar former
-            [*] Fler nivåer & och byggnader (exklusivt för den fristående versionen)
-            [*] Olika världar, och kanske världshinder
-            [*] Konfigurerbar världskapande (Ändra antal och storlek på resursfläckar, seed, med mera)
-            [*] Fler sorters former
-            [*] Fler prestandaförbättringar (Även om spelet redan spelar ganska väl!)
-            [*] Färgblint läge
-            [*] Och mycket mer!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Se till att kolla min trello för en full framtidskarta! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Laddar
@@ -73,6 +90,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -131,28 +151,7 @@ mainMenu:
     savegameLevel: Nivå <x>
     savegameLevelUnknown: Okänd Nivå
 
-    contests:
-        contest_01_03062020:
-            title: "Tävling #01"
-            desc: Vinn <strong>$25</strong> för den coolaste fabriken!
-            longDesc: >-
-                För att ge något åter till dig, tänkte jag att det skulle vara coolt att skapa veckovisa tävlingar!
-                <br><br>
-                <strong>Denna veckas tema:</strong> Bygg den coolaste fabriken!
-                <br><br>
-                Så här går det till:<br>
-                <ul class="bucketList">
-                    <li>Skicka in en skärmdump av din fabrik till <strong>contest@shapez.io</strong></li>
-                    <li>Bonuspoäng om du delar den på sociala medier!</li>
-                    <li>Jag kommer välja 5 skärmdumpar och framföra dem till<strong>discord</strong>gruppen och låta dem rösta.</li>
-                    <li>Vinnaren får <strong>$25</strong> (Paypal, Amazon Gift Card, Vilket du än föredrar)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                Jag ser fram emot att se era grymma skapelser!
 
-        showInfo: Se
-        contestOver: Tävlingen är avslutad - Gå med i discordservern för att bli notifierad kring nya tävlingar!
     continue: Fortsätt
     newGame: Nytt spel
     madeBy: Skapad av <author-link>
@@ -203,23 +202,23 @@ dialogs:
             Du behöver starta om spelet för att applicera inställningar.
 
     editKeybinding:
-        title: Ändra tangentbindningar
+        title: Ändra snabbtangenter
         desc: Tryck ned tangenten eller musknappen du vill tillsätta, eller escape för att avbryta.
 
     resetKeybindingsConfirmation:
-        title: Återställ tangentbindningar
+        title: Återställ snabbtangenter
         desc: Detta kommer att återställa alla tangentbindningar till deras standardtangenter. Var snäll och bekräfta.
 
     keybindingsResetOk:
-        title: Återställning av tangentbindningar
-        desc: Tangentbindningar har återställts!
+        title: Återställning av snabbtangenter
+        desc: Snabbtangenterna har återställts!
 
     featureRestriction:
         title: Demoversion
-        desc: Du försökte nå en funktion (<feature>) som inte är tillgänglig i demversionen. Överväg att skaffa den fristående versionen för den fulla upplevelsen!
+        desc: Du försökte nå en funktion (<feature>) som inte är tillgänglig i demoversionen. Överväg att skaffa den fristående versionen för den fulla upplevelsen!
 
     oneSavegameLimit:
-        title: Limiterad mängd sparfiler
+        title: Begränsad mängd sparfiler
         desc: Du kan bara ha en sparfil åt gången i demoversionen. Var snäll och ta bort det existerande eller skaffa den fristående versionen!
 
     updateSummary:
@@ -231,7 +230,7 @@ dialogs:
         title: Lås upp Uppgraderingar
         desc: >-
             Alla former du producerar  kan användas för att låsa upp uppgraderingar - <strong>Förstör inte dina gamla fabriker!</strong>
-            Uppgraderingsmenyn kan finnas i det övre högra hörnet på skärmen.
+            Uppgraderingsmenyn finns i det övre högra hörnet på skärmen.
 
     massDeleteConfirm:
         title: Bekräfta borttagning
@@ -239,7 +238,7 @@ dialogs:
             Du tar nu bort ganska många byggnader (<count> för att vara exakt)! Är du säker på att du vill göra detta?
 
     blueprintsNotUnlocked:
-        title: Inte än upplåst
+        title: Inte upplåst än
         desc: >-
             Ritningar är inte än upplåsta! Klara fler nivåer för att låsa upp dem.
 
@@ -255,6 +254,7 @@ dialogs:
     createMarker:
         title: Ny Markör
         desc: Ge den ett meningsfullt namn, du kan också inkludera en <strong>kort kod</strong> av en form (Vilket du kan generera här <a href="https://viewer.shapez.io" target="_blank"></a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Du kan endast skapa två markörer i demoversionen. Skaffa den fristående versionen för ett oändligt antal!
@@ -268,7 +268,11 @@ dialogs:
         title: Exportera skärmdump
         desc: >-
             Du efterfrågade att exportera din fabrik som en skärmdump.
-            Var snäll och notera att detta kan ta ett tag för en stor bas och i vissa fall till och med krascha ditt spel
+            Vänligen notera att detta kan ta ett tag för en stor bas och i vissa fall till och med krascha ditt spel
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -286,19 +290,20 @@ ingame:
         createMarker: Skapa Markör
         delete: Förstör
         pasteLastBlueprint: Klistra in ritning
-        lockBeltDirection: Sätt på rullbandsplannerare
+        lockBeltDirection: Aktivera rullbandsplanerare
         plannerSwitchSide: Vänd planerarsidan
         cutSelection: Klipp
         copySelection: Kopiera
         clearSelection: Rensa vald
         pipette: Pipett
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Tryck ned <key> För att cykla igenom varianter.
+        cycleBuildingVariants: Tryck ned <key> För att bläddra igenom varianter.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -393,10 +398,10 @@ ingame:
         hints:
             1_1_extractor: Placera en <strong>extraktor</strong> över en <strong>cirkel</strong> för att extrahera den!
             1_2_conveyor: >-
-                Koppla extraktorn med ett<strong>rullband</strong> till din hub!<br><br>Tips: <strong>Clicka och dra</strong> rullbandet med musen!
+                Koppla extraktorn med ett<strong>rullband</strong> till din hub!<br><br>Tips: <strong>Klicka och dra</strong> rullbandet med musen!
 
             1_3_expand: >-
-                Detta är <strong>INTE</strong> ett idle-spel! Bygg fler extraktörer för att klara målet snabbare.<br><br>Tips: Håll <strong>SHIFT</strong> för att placera flera extraktörer, och använd <strong>R</strong> för att rotera dem.
+                Detta är <strong>INTE</strong> ett idle-spel! Bygg fler extraktörer för att klara målet snabbare.<br><br>Tips: Håll <strong>SKIFT</strong> för att placera flera extraktörer, och använd <strong>R</strong> för att rotera dem.
 
     colors:
         red: Röd
@@ -407,9 +412,11 @@ ingame:
         cyan: Turkos
         white: Vit
         uncolored: Ofärgad
+        black: Black
     shapeViewer:
         title: Lager
         empty: Tom
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -420,7 +427,7 @@ shopUpgrades:
         name: Extraktion
         description: Hastighet x<currentMult> → x<newMult>
     processors:
-        name: Klippning, Rotationg & Stapling
+        name: Klippning, Rotering & Stapling
         description: Hastighet x<currentMult> → x<newMult>
     painting:
         name: Blandning & Färgning
@@ -431,7 +438,7 @@ buildings:
     belt:
         default:
             name: &belt Rullband
-            description: Transporterar obejekt, håll in och dra för att placera flera.
+            description: Transporterar objekt, håll in och dra för att placera flera.
 
     miner: # Internal name for the Extractor
         default:
@@ -467,10 +474,10 @@ buildings:
     cutter:
         default:
             name: &cutter Klippare
-            description: Klipper former från topp till botten och outputtar båda halver.<strong>Om du bara använder en halva, se till att förstöra den andra, annars kommer den uppehålla fabrkien!</strong>
+            description: Klipper former från topp till botten och outputtar båda halvor.<strong>Om du endast använder en halva, se till att förstöra den andra, annars kommer den blockera maskinen!</strong>
         quad:
             name: Klippare (Quad)
-            description: Klipper former i fyra delar. <strong>Om du bara använder en del, se till att förstöra de andra, annars kommer de uppehålla fabrkien!</strong>
+            description: Klipper former i fyra delar. <strong>Om du endast använder en del, se till att förstöra de andra, annars kommer de blockera maskinen!</strong>
 
     rotater:
         default:
@@ -483,7 +490,7 @@ buildings:
     stacker:
         default:
             name: &stacker Staplare
-            description: Staplar båda obejekt. Om de inte kan slås ihop, placeras det högra obejektet över det vänstra.
+            description: Staplar båda objekt. Om de inte kan slås ihop, placeras det högra objektet över det vänstra.
 
     mixer:
         default:
@@ -516,6 +523,27 @@ buildings:
         deliver: Leverera
         toUnlock: Att låsa upp
         levelShortcut: LVL
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -530,7 +558,7 @@ storyRewards:
     reward_painter:
         title: Måleri
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            <strong>Målaren</strong> har låsts upp - Extrahera färger (precis som du gör med formerna) och kombinera med en form i målaren för att måla formen!<br><br>PS: Om du är färgblind finns det ett <strong>färblint läge</strong> bland inställningarna!
 
     reward_mixer:
         title: Färgblandning
@@ -542,7 +570,7 @@ storyRewards:
 
     reward_splitter:
         title: Delning/Sammanslagning
-        desc: Den multifunktiionella <strong>balanseraren</strong> har blivit upplåst - Den kan användas för att bygga större fabriker genom att <strong>dela eller slå ihop objekt</strong> till flera rullband!<br><br>
+        desc: Den multifunktionella <strong>balanseraren</strong> har blivit upplåst - Den kan användas för att bygga större fabriker genom att <strong>dela eller slå ihop objekt</strong> till flera rullband!<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -550,7 +578,7 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Motsols rotation
-        desc: Du har låst upp en variant av <strong>roteraren</strong> - Den låter dig rotera saker motsols! För att bygga den, välj roteraren och <strong>tryck ned 'T' för att cykla genom dess varianter</strong>!
+        desc: Du har låst upp en variant av <strong>roteraren</strong> - Den låter dig rotera saker motsols! För att bygga den, välj roteraren och <strong>tryck ned 'T' för att bläddra genom dess varianter</strong>!
 
     reward_miner_chainable:
         title: Kedjeextraktor
@@ -575,11 +603,11 @@ storyRewards:
 
     reward_painter_quad:
         title: Quad Färgläggning
-        desc: Du har låst upp en ny variant av <strong>Färgläggaren</strong> - Den tillåter dig att färglägga varje del av en form individuellt!
+        desc: Du har låst upp en ny variant av <strong>Färgläggaren</strong> - Den låter dig färglägga varje del av en form individuellt!
 
     reward_storage:
         title: Förvaringsbuffert
-        desc: Du har låst upp en ny variant av <strong>skräphantering</strong> - Den tillåter dig att förvara objekt upp till en viss kapacitet!
+        desc: Du har låst upp en ny variant av <strong>skräphantering</strong> - Den låter dig förvara objekt upp till en viss kapacitet!
 
     reward_freeplay:
         title: Friläge
@@ -593,12 +621,12 @@ storyRewards:
     no_reward:
         title: Nästa nivå
         desc: >-
-            Denna nivå har ingen belöning, men nästa kommer!<br><br> PS: Se till att inte förstöra din redan existerande fabrik - Du behöver <strong>alla</strong> de där formerna igen för att <strong>låsa upp uppgraderingar</strong>!
+            Denna nivå har ingen belöning, men nästa har!<br><br> PS: Se till att inte förstöra din redan existerande fabrik - Du behöver <strong>alla</strong> de där formerna igen för att <strong>låsa upp uppgraderingar</strong>!
 
     no_reward_freeplay:
         title: Nästa nivå
         desc: >-
-            Grattis! Föresten, mer spelinnehåll är planerat för den fristående versionen!
+            Grattis! Förresten, mer spelinnehåll är planerat för den fristående versionen!
 
 settings:
     title: Inställningar
@@ -643,7 +671,7 @@ settings:
         fullscreen:
             title: Fullskärm
             description: >-
-                Det är rekommenderat att spela i fullskärm för bästa upplevelse. Endast tillgänglig i den fristående versionen.
+                Det är rekommenderat att spela i fullskärm för bästa upplevelse. Endast tillgängligt i den fristående versionen.
 
         soundsMuted:
             title: Dämpa Ljud
@@ -727,18 +755,17 @@ settings:
             title: Färgblint läge
             description: Aktiverar olika verktyg som låter dig spela spelet om du är färbling.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Rotering per byggnadstyp
+            description: >-
+                Varje byggnadstyp kommer ihåg rotationen du senast var på individuellt.
+                Detta kan vara mer bekvämt om du ofta bytar byggnader som du placerar.
 
 keybindings:
-    title: Tangentbindningar
+    title: Snabbtangenter
     hint: >-
         Tips: Se till att använda CTRL, SKIFT, och ALT! De låter dig använda olika placeringslägen.
 
-    resetKeybindings: Återställ Tangentbindningar
+    resetKeybindings: Återställ Snabbtangenter
 
     categoryLabels:
         general: Applikation
@@ -799,6 +826,11 @@ keybindings:
         lockBeltDirection: Sätt på rullbandsplanerare
         switchDirectionLockSide: "Planerare: Byt sida"
         pipette: Pipett
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: Om detta spel
@@ -828,7 +860,7 @@ demo:
         restoringGames: Återställer sparfiler
         importingGames: Importerar sparfiler
         oneGameLimit: Limiterad till endast en sparfil
-        customizeKeybindings: Finjustera tangentbindningar
+        customizeKeybindings: Finjustera snabbtangenter
         exportingBase: Exportera hela fabriken som en bild
 
     settingNotAvailable: Inte tillgänglig i demoversionen.

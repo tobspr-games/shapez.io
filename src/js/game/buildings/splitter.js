@@ -5,7 +5,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot, enumLayer } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
@@ -72,16 +72,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
     setupEntityComponents(entity) {
         entity.addComponent(
             new ItemAcceptorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
-                    },
-                    {
-                        pos: new Vector(1, 0),
-                        directions: [enumDirection.bottom],
-                    },
-                ],
+                slots: [], // set later
             })
         );
 
@@ -94,10 +85,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
 
         entity.addComponent(
             new ItemEjectorComponent({
-                slots: [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(1, 0), direction: enumDirection.top },
-                ],
+                slots: [], // set later
             })
         );
     }
@@ -128,8 +116,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemAcceptor.beltUnderlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
+                    { pos: new Vector(1, 0), direction: enumDirection.top, layer: enumLayer.regular },
                 ];
 
                 break;
@@ -156,7 +144,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemAcceptor.beltUnderlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
                 ];
 
                 break;

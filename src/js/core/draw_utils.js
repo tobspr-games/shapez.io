@@ -3,7 +3,6 @@ import { AtlasSprite } from "./sprites";
 import { DrawParameters } from "./draw_parameters";
 /* typehints:end */
 
-import { Math_PI, Math_round, Math_atan2, Math_hypot, Math_floor } from "./builtins";
 import { Vector } from "./vector";
 import { Rectangle } from "./rectangle";
 import { createLogger } from "./logging";
@@ -40,7 +39,7 @@ export function initDrawUtils() {
             return;
         }
         this.beginPath();
-        this.arc(x, y, r, 0, 2.0 * Math_PI);
+        this.arc(x, y, r, 0, 2.0 * Math.PI);
     };
 }
 
@@ -68,8 +67,8 @@ export function drawLineFast(context, { x1, x2, y1, y2, color = null, lineSize =
     const dX = x2 - x1;
     const dY = y2 - y1;
 
-    const angle = Math_atan2(dY, dX) + 0.0 * Math_PI;
-    const len = Math_hypot(dX, dY);
+    const angle = Math.atan2(dY, dX) + 0.0 * Math.PI;
+    const len = Math.hypot(dX, dY);
 
     context.translate(x1, y1);
     context.rotate(angle);
@@ -247,7 +246,7 @@ export function hslToRgb(h, s, l) {
         b = hue2rgb(p, q, h - 1 / 3);
     }
 
-    return [Math_round(r * 255), Math_round(g * 255), Math_round(b * 255)];
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
 export function wrapText(context, text, x, y, maxWidth, lineHeight, stroke = false) {
@@ -306,7 +305,7 @@ export function rotateTrapezRightFaced(x, y, w, h, leftHeight, angle) {
  */
 export function mapClampedColorValueToHex(value) {
     const hex = "0123456789abcdef";
-    return hex[Math_floor(value / 16)] + hex[value % 16];
+    return hex[Math.floor(value / 16)] + hex[value % 16];
 }
 
 /**

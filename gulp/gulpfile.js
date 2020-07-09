@@ -36,12 +36,12 @@ const $ = require("gulp-load-plugins")({
 const envVars = [
     "SHAPEZ_CLI_SERVER_HOST",
     // "SHAPEZ_CLI_PHONEGAP_KEY",
+    "SHAPEZ_CLI_ALPHA_FTP_USER",
+    "SHAPEZ_CLI_ALPHA_FTP_PW",
     "SHAPEZ_CLI_STAGING_FTP_USER",
     "SHAPEZ_CLI_STAGING_FTP_PW",
     "SHAPEZ_CLI_LIVE_FTP_USER",
     "SHAPEZ_CLI_LIVE_FTP_PW",
-    // "SHAPEZ_CLI_TRANSREPORT_FTP_USER",
-    // "SHAPEZ_CLI_TRANSREPORT_FTP_PW",
 ];
 
 for (let i = 0; i < envVars.length; ++i) {
@@ -104,11 +104,14 @@ gulp.task("utils.requireCleanWorkingTree", cb => {
     let output = $.trim(execSync("git status -su").toString("ascii")).replace(/\r/gi, "").split("\n");
 
     // Filter files which are OK to be untracked
-    output = output.filter(x => x.indexOf(".local.js") < 0);
+    output = output
+        .map(x => x.replace(/[\r\n]+/gi, ""))
+        .filter(x => x.indexOf(".local.js") < 0)
+        .filter(x => x.length > 0);
     if (output.length > 0) {
         console.error("\n\nYou have unstaged changes, please commit everything first!");
         console.error("Unstaged files:");
-        console.error(output.join("\n"));
+        console.error(output.map(x => "'" + x + "'").join("\n"));
         process.exit(1);
     }
     cb();
@@ -297,6 +300,10 @@ gulp.task(
 );
 
 // Deploying!
+gulp.task(
+    "main.deploy.alpha",
+    gulp.series("utils.requireCleanWorkingTree", "build.staging", "ftp.upload.alpha")
+);
 gulp.task(
     "main.deploy.staging",
     gulp.series("utils.requireCleanWorkingTree", "build.staging", "ftp.upload.staging")

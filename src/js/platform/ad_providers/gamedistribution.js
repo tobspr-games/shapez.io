@@ -3,7 +3,6 @@ import { Application } from "../../application";
 /* typehints:end */
 
 import { AdProviderInterface } from "../ad_provider";
-import { performanceNow } from "../../core/builtins";
 import { createLogger } from "../../core/logging";
 
 const minimumTimeBetweenVideoAdsMs = G_IS_DEV ? 1 : 5 * 60 * 1000;
@@ -45,7 +44,7 @@ export class GamedistributionAdProvider extends AdProviderInterface {
         return (
             this.getHasAds() &&
             !this.videoAdResolveFunction &&
-            performanceNow() - this.lastVideoAdShowTime > minimumTimeBetweenVideoAdsMs
+            performance.now() - this.lastVideoAdShowTime > minimumTimeBetweenVideoAdsMs
         );
     }
 
@@ -84,7 +83,7 @@ export class GamedistributionAdProvider extends AdProviderInterface {
     showVideoAd() {
         assert(this.getHasAds(), "Called showVideoAd but ads are not supported!");
         assert(!this.videoAdResolveFunction, "Video ad still running, can not show again!");
-        this.lastVideoAdShowTime = performanceNow();
+        this.lastVideoAdShowTime = performance.now();
 
         console.log("🎬 Gamedistribution: Start ad");
         try {
@@ -104,7 +103,7 @@ export class GamedistributionAdProvider extends AdProviderInterface {
                 this.videoAdResolveTimer = null;
 
                 // When the ad closed, also set the time
-                this.lastVideoAdShowTime = performanceNow();
+                this.lastVideoAdShowTime = performance.now();
                 resolve();
             };
 

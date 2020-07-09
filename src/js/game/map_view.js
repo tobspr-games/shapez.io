@@ -1,10 +1,10 @@
-import { Math_max, Math_min, Math_floor, Math_ceil } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { BaseMap } from "./map";
 import { freeCanvas, makeOffscreenBuffer } from "../core/buffer_utils";
 import { Entity } from "./entity";
 import { THEME } from "./theme";
+import { MapChunkView } from "./map_chunk_view";
 
 /**
  * This is the view of the map, it extends the map which is the raw model and allows
@@ -36,6 +36,7 @@ export class MapView extends BaseMap {
 
         this.root.signals.entityAdded.add(this.onEntityChanged, this);
         this.root.signals.entityDestroyed.add(this.onEntityChanged, this);
+        this.root.signals.entityChanged.add(this.onEntityChanged, this);
     }
 
     cleanup() {
@@ -45,7 +46,7 @@ export class MapView extends BaseMap {
     }
 
     /**
-     * Called when an entity was added or removed
+     * Called when an entity was added, removed or changed
      * @param {Entity} entity
      */
     onEntityChanged(entity) {
@@ -130,6 +131,15 @@ export class MapView extends BaseMap {
      * @param {DrawParameters} parameters
      */
     drawForeground(parameters) {
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundLayer);
+    }
+
+    /**
+     * Calls a given method on all given chunks
+     * @param {DrawParameters} parameters
+     * @param {function} method
+     */
+    drawVisibleChunks(parameters, method) {
         const cullRange = parameters.visibleRect.toTileCullRectangle();
         const top = cullRange.top();
         const right = cullRange.right();
@@ -142,19 +152,35 @@ export class MapView extends BaseMap {
         const minX = left - border;
         const maxX = right + border - 1;
 
-        const chunkStartX = Math_floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math_floor(minY / globalConfig.mapChunkSize);
+        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
 
-        const chunkEndX = Math_ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math_ceil(maxY / globalConfig.mapChunkSize);
+        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
+        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
 
         // Render y from top down for proper blending
         for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
             for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
                 const chunk = this.root.map.getChunk(chunkX, chunkY, true);
-                chunk.drawForegroundLayer(parameters);
+                method.call(chunk, parameters);
             }
         }
+    }
+
+    /**
+     * Draws the wires background
+     * @param {DrawParameters} parameters
+     */
+    drawWiresLayer(parameters) {
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawWiresLayer);
+    }
+
+    /**
+     * Draws the wires foreground
+     * @param {DrawParameters} parameters
+     */
+    drawWiresForegroundLayer(parameters) {
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawWiresForegroundLayer);
     }
 
     /**
@@ -184,31 +210,7 @@ export class MapView extends BaseMap {
             parameters.context.scale(dpi, dpi);
         }
 
-        const cullRange = parameters.visibleRect.toTileCullRectangle();
-        const top = cullRange.top();
-        const right = cullRange.right();
-        const bottom = cullRange.bottom();
-        const left = cullRange.left();
-
-        const border = 1;
-        const minY = top - border;
-        const maxY = bottom + border;
-        const minX = left - border;
-        const maxX = right + border - 1;
-
-        const chunkStartX = Math_floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math_floor(minY / globalConfig.mapChunkSize);
-
-        const chunkEndX = Math_ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math_ceil(maxY / globalConfig.mapChunkSize);
-
-        // Render y from top down for proper blending
-        for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
-            for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
-                const chunk = this.root.map.getChunk(chunkX, chunkY, true);
-                chunk.drawBackgroundLayer(parameters);
-            }
-        }
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawBackgroundLayer);
 
         if (G_IS_DEV && globalConfig.debug.showChunkBorders) {
             const cullRange = parameters.visibleRect.toTileCullRectangle();
@@ -223,11 +225,11 @@ export class MapView extends BaseMap {
             const minX = left - border;
             const maxX = right + border - 1;
 
-            const chunkStartX = Math_floor(minX / globalConfig.mapChunkSize);
-            const chunkStartY = Math_floor(minY / globalConfig.mapChunkSize);
+            const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+            const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
 
-            const chunkEndX = Math_ceil(maxX / globalConfig.mapChunkSize);
-            const chunkEndY = Math_ceil(maxY / globalConfig.mapChunkSize);
+            const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
+            const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
 
             // Render y from top down for proper blending
             for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {

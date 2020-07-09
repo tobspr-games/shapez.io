@@ -30,49 +30,69 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io est un jeu ayant pour objectif d'automatiser la création et la fusion de formes à l'aide d'une usine. Livrez des formes de plus en plus complexes requises pour progresser dans le jeu et débloquez des améliorations qui accéléreront votre chaîne de production.
+        shapez.io est un jeu ou il faut construire des usines pour automatiser la création et la transformation de formes de plus en plus complexes sur une carte infinie.
+        En livrant les bonnes formes tu vas progresser dans le jeu et débloquer des améliorations pour accélerer ton usine.
 
-        La demande allant croissant, vous aurez à adapter l'échelle de votre usine afin de suivre la demande - Ne négligez pas les resources cependant, vous aurez à vous étendre sur une [b]carte infinie[/b] !
+        Comme la demande de formes augmente, il vas falloir agrandir ton usine pour produire plus - N'oublie pas les resources, il vas falloir s'étendre tout autour de la [b]carte infinie[/b]!
 
-        Traiter seulement des formes pouvant devenir monotone à la longue, vous aurez aussi à mélanger des couleurs et à les utiliser pour peindre vos formes - Combinez des pigments rouges, verts ou bleus pour produire différentes couleurs et enduisez-en vos formes afin de satisfaire les demandes.
+        Puis il vas falloir mélanger les couleurs et peindres tes formes avec - Combine du rouge, du bleu et du vert pour produire différente couleurs et peindre des formes pour satisfaire la demande.
 
-        Ce jeu propose 18 niveaux (qui devraient d'ores et déjà vous occuper pour de nombreuses heures !) mais j'ajoute régulièrement de nouveaux contenus - Beaucoup de nouveautés sont prévues !
+        Ce jeu propose 18 niveaux progressifs (qui devraient vous occuper pendant des heures!) et j'ajoute constament plus de contenu - Il y en as beaucoup qui arrive!
 
+        Acheter le jeu te donnes accès à la version hors-ligne qui as plus de contenu et tu recevras l'accès aux nouvelles fonctionnalités.
 
-        [b]Avantage de la version complète[/b]
-
-        [list]
-            [*] Balises
-            [*] Nombre illimité de sauvegardes
-            [*] Thème sombre
-            [*] Plus de paramètres de configuration
-            [*] Acheter la version complète m'aide à poursuivre le développement de shapez.io ❤️
-            [*] Encore plus de fonctionnalités à l'avenir !
-        [/list]
-
-        [b]Fonctionnalités planifiées & suggestions de la communauté[/b]
-
-        Ce jeu est open source - N'importe qui peut contribuer ! En outre, Je suis [b]très attentif[/b] à ce que dit la communauté ! J'essaie de lire toutes les suggestions et de tenir compte des retours autant que possible.
+        [b]Avantages de la version hors-ligne[/b]
 
         [list]
-            [*] Mode Histoire où les batiments ont un coût en formes
-            [*] Plus de niveaux et de batiments (en exclusivité dans la version complète)
-            [*] Différentes cartes, contenant éventuellement des obstacles
-            [*] Création configurable de carte (éditer le nombre et la taille des gisements de resources, édition de la graine générant la carte, et plus encore)
-            [*] Davantage de types de formes
-            [*] Performance améliorée (bien que le jeu tourne déjà de manière tout à fait décente !)
-            [*] Adaptation de l'affichage des couleurs à différentes formes de daltonisme
-            [*] Et bien plus encore !
+            [*] Mode sombre
+            [*] Balises infinies
+            [*] Sauvegardes infinies
+            [*] Plus de setting
+            [*] Arrive bientôt: Cables et éléctricité! Sort en Juillet 2020.
+            [*] Arrive bientôt: Plus de niveaux
+            [*] Me permet de plus déveloper le jeu ❤️
         [/list]
 
-        N'hésitez pas à consulter mon tableau trello pour avoir une vue d'ensemble de ce qui est prévu ! https://trello.com/b/ISQncpJP/shapezio
+        [b]Mises à jours futures[/b]
+
+        Je fait souvent des mises à jours et essaye d'en sortir une part semaine!
+
+        [list]
+            [*] Plusieurs cartes et challenges (e.g. carte avec des obstacles)
+            [*] Puzzles (Livrer les formes avec des batiments limités/une carte limitée)
+            [*] Un mode histoire ou les bâtiments on un coût
+            [*] Générateur de carte configurable (Configure les ressources/formes leur taille, densité et plus)
+            [*] Plus de formes
+            [*] Meilleures performances (Le jeu est déja très optimisé!)
+            [*] Et bien plus!
+        [/list]
+
+        [b]Ce jeu est open source![/b]
+
+        Tout le monde peut contribuer, je suis très impliqué dans la communeauté et essaye de regarder toutes les suggestions et prendre les retours si possible.
+        Vas voir mon trello pour plus d'informations!
+
+        [b]Liens[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Discord officiel[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Trello[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Code source (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Aide à traduire[/url]
+        [/list]
+
+    discordLink: Discord officiel - Parles avec moi!
 
 global:
     loading: Chargement
     error: Erreur
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: "."
+    thousandsDivider: ","
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.   cf wikipedia système international d'unité
     # For french: https://fr.wikipedia.org/wiki/Pr%C3%A9fixes_du_Syst%C3%A8me_international_d%27unit%C3%A9s
@@ -132,28 +152,6 @@ mainMenu:
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
 
-    contests:
-        contest_01_03062020:
-            title: "Concours #01"
-            desc: Gagnez <strong>$25</strong> pour l'usine la plus cool !
-            longDesc: >-
-                Pour vous remercier, j'ai pensé qu'il serait bien de faire un concours hebdomadaire !
-                <br><br>
-                <strong>Le sujet de cette semaine:</strong> Construire l'usine la plus cool !
-                <br><br>
-                Voici comment faire:<br>
-                <ul class="bucketList">
-                    <li>Envoyez une capture d'écran de votre usine à <strong>contest@shapez.io</strong></li>
-                    <li>Vous aurez des points bonus si vous la partagez sur les réseaux sociaux !</li>
-                    <li>Je choisirai 5 images et les soumettrai au vote à la communauté <strong>discord</strong>.</li>
-                    <li>Le gagnant empoche <strong>$25</strong> (Paypal, carte cadeau Amazon, ce que vous préférez)</li>
-                    <li>Limite: 07.06.2020 AM 12:00 CEST</li>
-                </ul>
-                <br>
-                J'attends avec impatience de voir vos superbes créations !
-
-        showInfo: Voir
-        contestOver: Ce concours est terminé - Rejoignez le serveur discord pour être tenu au courant des prochains concours !
     continue: Continuer
     newGame: Nouvelle partie
     madeBy: Créé par <author-link>
@@ -262,14 +260,19 @@ dialogs:
     createMarker:
         title: Nouvelle balise
         desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci </strong> d'une forme (Que vous pouvez générer <a href="https://viewer.shapez.io" target="_blank">ici</a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
-        desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire tant que vous voulez !
+        desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire autant que vous voulez !
 
     exportScreenshotWarning:
         title: Exporter une capture d'écran
         desc: >-
             Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -293,6 +296,7 @@ ingame:
         copySelection: Copier
         clearSelection: Effacer la sélection
         pipette: Pipette
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -407,9 +411,11 @@ ingame:
         cyan: Cyan
         white: Blanc
         uncolored: Non coloré
+        black: Black
     shapeViewer:
         title: Calques
         empty: Vide
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -519,6 +525,27 @@ buildings:
         deliver: Délivrez
         toUnlock: pour débloquer
         levelShortcut: NV
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -533,7 +560,7 @@ storyRewards:
     reward_painter:
         title: Peintre
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            Le <strong>peintre</strong> a été débloqué - Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez les avec une forme dans un peintre pour les colorier !<br><br>PS: Si vous êtes daltonien, il y a un <strong>mode daltonien</strong> paramétrable dans les préférences !
 
     reward_mixer:
         title: Mélangeur de couleurs
@@ -728,11 +755,10 @@ settings:
             title: Mode Daltonien
             description: Active divers outils qui permettent de jouer à ce jeu si vous êtes daltonien.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Rotation par catégorie de bâtiment
+            description: >-
+                Chaque catégorie de bâtiment enregistre le sens de rotation que vous lui avez assigné la dernière fois, de manière individuelle.
+                Cela sera sans doute plus confortable si vous alternez fréquemment entre le placement de différents types de bâtiments.
 
 keybindings:
     title: Contrôles
@@ -800,6 +826,11 @@ keybindings:
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         switchDirectionLockSide: "Plannificateur: changer de côté"
         pipette: Pipette
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: À propos de ce jeu

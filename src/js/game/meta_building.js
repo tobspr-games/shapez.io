@@ -4,7 +4,7 @@ import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
-import { enumEditMode, GameRoot } from "./root";
+import { enumLayer, GameRoot } from "./root";
 
 export const defaultBuildingVariant = "default";
 
@@ -26,10 +26,10 @@ export class MetaBuilding {
 
     /**
      * Returns the edit layer of the building
-     * @returns {enumEditMode}
+     * @returns {enumLayer}
      */
-    getEditLayer() {
-        return enumEditMode.regular;
+    getLayer() {
+        return enumLayer.regular;
     }
 
     /**
@@ -145,30 +145,6 @@ export class MetaBuilding {
     }
 
     /**
-     * Creates the entity at the given location
-     * @param {object} param0
-     * @param {GameRoot} param0.root
-     * @param {Vector} param0.origin Origin tile
-     * @param {number=} param0.rotation Rotation
-     * @param {number} param0.originalRotation Original Rotation
-     * @param {number} param0.rotationVariant Rotation variant
-     * @param {string} param0.variant
-     */
-    createAndPlaceEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
-        const entity = this.createEntity({
-            root,
-            origin,
-            rotation,
-            originalRotation,
-            rotationVariant,
-            variant,
-        });
-        root.map.placeStaticEntity(entity);
-        root.entityMgr.registerEntity(entity);
-        return entity;
-    }
-
-    /**
      * Creates the entity without placing it
      * @param {object} param0
      * @param {GameRoot} param0.root
@@ -180,6 +156,7 @@ export class MetaBuilding {
      */
     createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
+        entity.layer = this.getLayer();
         const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
         entity.addComponent(
             new StaticMapEntityComponent({
@@ -203,13 +180,15 @@ export class MetaBuilding {
 
     /**
      * Should compute the optimal rotation variant on the given tile
-     * @param {GameRoot} root
-     * @param {Vector} tile
-     * @param {number} rotation
-     * @param {string} variant
+     * @param {object} param0
+     * @param {GameRoot} param0.root
+     * @param {Vector} param0.tile
+     * @param {number} param0.rotation
+     * @param {string} param0.variant
+     * @param {string} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile(root, tile, rotation, variant) {
+    computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
         if (!this.isRotateable(variant)) {
             return {
                 rotation: 0,

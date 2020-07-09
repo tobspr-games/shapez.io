@@ -1,5 +1,4 @@
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { Math_max, Math_PI, Math_radians } from "../../../core/builtins";
 import { globalConfig, IS_DEMO } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { Loader } from "../../../core/loader";
@@ -112,7 +111,7 @@ export class HUDWaypoints extends BaseHUDPart {
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.keyMapper
             .getBinding(KEYMAPPINGS.navigation.createMarker)
-            .add(this.requestCreateMarker, this);
+            .add(() => this.requestSaveMarker({}));
 
         /**
          * Stores at how much opacity the markers should be rendered on the map.
@@ -153,15 +152,24 @@ export class HUDWaypoints extends BaseHUDPart {
 
             if (ShapeDefinition.isValidShortKey(label)) {
                 const canvas = this.getWaypointCanvas(waypoint);
-                element.appendChild(canvas);
+                /**
+                 * Create a clone of the cached canvas, as calling appendElement when a canvas is
+                 * already in the document will move the existing canvas to the new position.
+                 */
+                const [newCanvas, context] = makeOffscreenBuffer(48, 48, {
+                    smooth: true,
+                    label: label + "-waypoint-" + i,
+                });
+                context.drawImage(canvas, 0, 0);
+                element.appendChild(newCanvas);
                 element.classList.add("shapeIcon");
             } else {
                 element.innerText = label;
             }
 
             if (this.isWaypointDeletable(waypoint)) {
-                const deleteButton = makeDiv(element, null, ["deleteButton"]);
-                this.trackClicks(deleteButton, () => this.deleteWaypoint(waypoint));
+                const editButton = makeDiv(element, null, ["editButton"]);
+                this.trackClicks(editButton, () => this.requestSaveMarker({ waypoint }));
             }
 
             if (!waypoint.label) {
@@ -212,42 +220,61 @@ export class HUDWaypoints extends BaseHUDPart {
     }
 
     /**
-     * Requests to create a marker at the current camera position. If worldPos is set,
+     * Requests to save a marker at the current camera position. If worldPos is set,
      * uses that position instead.
-     * @param {Vector=} worldPos Override the world pos, otherwise it is the camera position
+     * @param {object} param0
+     * @param {Vector=} param0.worldPos Override the world pos, otherwise it is the camera position
+     * @param {Waypoint=} param0.waypoint Waypoint to be edited. If omitted, create new
      */
-    requestCreateMarker(worldPos = null) {
+    requestSaveMarker({ worldPos = null, waypoint = null }) {
         // Construct dialog with input field
         const markerNameInput = new FormElementInput({
             id: "markerName",
             label: null,
             placeholder: "",
+            defaultValue: waypoint ? waypoint.label : "",
             validator: val =>
                 val.length > 0 && (val.length < MAX_LABEL_LENGTH || ShapeDefinition.isValidShortKey(val)),
         });
         const dialog = new DialogWithForm({
             app: this.root.app,
-            title: T.dialogs.createMarker.title,
+            title: waypoint ? T.dialogs.createMarker.titleEdit : T.dialogs.createMarker.title,
             desc: T.dialogs.createMarker.desc,
             formElements: [markerNameInput],
+            buttons: waypoint ? ["delete:bad", "cancel", "ok:good"] : ["cancel", "ok:good"],
         });
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
 
-        // Compute where to create the marker
-        const center = worldPos || this.root.camera.center;
+        // Edit marker
+        if (waypoint) {
+            dialog.buttonSignals.ok.add(() => {
+                // Actually rename the waypoint
+                this.renameWaypoint(waypoint, markerNameInput.getValue());
+            });
+            dialog.buttonSignals.delete.add(() => {
+                // Actually delete the waypoint
+                this.deleteWaypoint(waypoint);
+            });
+        } else {
+            // Compute where to create the marker
+            const center = worldPos || this.root.camera.center;
 
-        dialog.buttonSignals.ok.add(() => {
-            // Show info that you can have only N markers in the demo,
-            // actually show this *after* entering the name so you want the
-            // standalone even more (I'm evil :P)
-            if (IS_DEMO && this.waypoints.length > 2) {
-                this.root.hud.parts.dialogs.showFeatureRestrictionInfo("", T.dialogs.markerDemoLimit.desc);
-                return;
-            }
+            dialog.buttonSignals.ok.add(() => {
+                // Show info that you can have only N markers in the demo,
+                // actually show this *after* entering the name so you want the
+                // standalone even more (I'm evil :P)
+                if (IS_DEMO && this.waypoints.length > 2) {
+                    this.root.hud.parts.dialogs.showFeatureRestrictionInfo(
+                        "",
+                        T.dialogs.markerDemoLimit.desc
+                    );
+                    return;
+                }
 
-            // Actually create the waypoint
-            this.addWaypoint(markerNameInput.getValue(), center);
-        });
+                // Actually create the waypoint
+                this.addWaypoint(markerNameInput.getValue(), center);
+            });
+        }
     }
 
     /**
@@ -261,23 +288,32 @@ export class HUDWaypoints extends BaseHUDPart {
             center: { x: position.x, y: position.y },
             // Make sure the zoom is *just* a bit above the zoom level where the map overview
             // starts, so you always see all buildings
-            zoomLevel: Math_max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
+            zoomLevel: Math.max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
         });
 
-        // Sort waypoints by name
-        this.waypoints.sort((a, b) => {
-            if (!a.label) {
-                return -1;
-            }
-            if (!b.label) {
-                return 1;
-            }
-            return this.getWaypointLabel(a)
-                .padEnd(MAX_LABEL_LENGTH, "0")
-                .localeCompare(this.getWaypointLabel(b).padEnd(MAX_LABEL_LENGTH, "0"));
-        });
+        this.sortWaypoints();
 
         // Show notification about creation
+        this.root.hud.signals.notification.dispatch(
+            T.ingame.waypoints.creationSuccessNotification,
+            enumNotificationType.success
+        );
+
+        // Re-render the list and thus add it
+        this.rerenderWaypointList();
+    }
+
+    /**
+     * Renames a waypoint with the given label
+     * @param {Waypoint} waypoint
+     * @param {string} label
+     */
+    renameWaypoint(waypoint, label) {
+        waypoint.label = label;
+
+        this.sortWaypoints();
+
+        // Show notification about renamed
         this.root.hud.signals.notification.dispatch(
             T.ingame.waypoints.creationSuccessNotification,
             enumNotificationType.success
@@ -294,6 +330,23 @@ export class HUDWaypoints extends BaseHUDPart {
         if (this.domAttach) {
             this.domAttach.update(this.root.camera.getIsMapOverlayActive());
         }
+    }
+
+    /**
+     * Sort waypoints by name
+     */
+    sortWaypoints() {
+        this.waypoints.sort((a, b) => {
+            if (!a.label) {
+                return -1;
+            }
+            if (!b.label) {
+                return 1;
+            }
+            return this.getWaypointLabel(a)
+                .padEnd(MAX_LABEL_LENGTH, "0")
+                .localeCompare(this.getWaypointLabel(b).padEnd(MAX_LABEL_LENGTH, "0"));
+        });
     }
 
     /**
@@ -373,7 +426,7 @@ export class HUDWaypoints extends BaseHUDPart {
             } else if (button === enumMouseButton.right) {
                 if (this.isWaypointDeletable(waypoint)) {
                     this.root.soundProxy.playUiClick();
-                    this.deleteWaypoint(waypoint);
+                    this.requestSaveMarker({ waypoint });
                 } else {
                     this.root.soundProxy.playUiError();
                 }
@@ -385,7 +438,7 @@ export class HUDWaypoints extends BaseHUDPart {
             if (button === enumMouseButton.right) {
                 if (this.root.camera.getIsMapOverlayActive()) {
                     const worldPos = this.root.camera.screenToWorld(pos);
-                    this.requestCreateMarker(worldPos);
+                    this.requestSaveMarker({ worldPos });
                     return STOP_PROPAGATION;
                 }
             }
@@ -410,7 +463,7 @@ export class HUDWaypoints extends BaseHUDPart {
 
         if (this.currentCompassOpacity > 0.01) {
             context.globalAlpha = this.currentCompassOpacity;
-            const angle = cameraPos.angle() + Math_radians(45) + Math_PI / 2;
+            const angle = cameraPos.angle() + Math.radians(45) + Math.PI / 2;
             context.translate(dims / 2, dims / 2);
             context.rotate(angle);
             this.directionIndicatorSprite.drawCentered(context, 0, 0, indicatorSize);

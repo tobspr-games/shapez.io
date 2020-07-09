@@ -9,7 +9,7 @@ const logger = createLogger("entity_manager");
 
 // Manages all entities
 
-// TODO & NOTICE: We use arrayDeleteValue instead of fastArrayDeleteValue since that does not preserve the order
+// NOTICE: We use arrayDeleteValue instead of fastArrayDeleteValue since that does not preserve the order
 // This is slower but we need it for the street path generation
 
 export class EntityManager extends BasicSerializableObject {

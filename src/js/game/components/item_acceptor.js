@@ -1,23 +1,14 @@
-import { Component } from "../component";
-import { Vector, enumDirection, enumInvertedDirections } from "../../core/vector";
-import { BaseItem } from "../base_item";
-import { ShapeItem } from "../items/shape_item";
-import { ColorItem } from "../items/color_item";
+import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
-
-/**
- * @enum {string?}
- */
-export const enumItemAcceptorItemFilter = {
-    shape: "shape",
-    color: "color",
-    none: null,
-};
+import { BaseItem, enumItemType } from "../base_item";
+import { Component } from "../component";
+import { enumLayer } from "../root";
 
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
- * filter?: enumItemAcceptorItemFilter
+ * layer: enumLayer,
+ * filter?: enumItemType
  * }} ItemAcceptorSlot */
 
 /**
@@ -27,6 +18,13 @@ export const enumItemAcceptorItemFilter = {
  *  index: number,
  *  acceptedDirection: enumDirection
  * }} ItemAcceptorLocatedSlot */
+
+/** @typedef {{
+ * pos: Vector,
+ * directions: enumDirection[],
+ * layer?: enumLayer,
+ * filter?: enumItemType
+ * }} ItemAcceptorSlotConfig */
 
 export class ItemAcceptorComponent extends Component {
     static getId() {
@@ -39,7 +37,10 @@ export class ItemAcceptorComponent extends Component {
                 types.structured({
                     pos: types.vector,
                     directions: types.array(types.enum(enumDirection)),
-                    filter: types.nullable(types.enum(enumItemAcceptorItemFilter)),
+                    filter: types.nullable(types.enum(enumItemType)),
+
+                    // TODO: MIGRATE
+                    layer: types.enum(enumLayer),
                 })
             ),
             animated: types.bool,
@@ -47,18 +48,11 @@ export class ItemAcceptorComponent extends Component {
                 types.structured({
                     pos: types.vector,
                     direction: types.enum(enumDirection),
+
+                    // TODO: MIGRATE
+                    layer: types.enum(enumLayer),
                 })
             ),
-
-            // We don't actually need to store the animations
-            // itemConsumptionAnimations: types.array(
-            //     types.structured({
-            //         item: types.obj(gItemRegistry),
-            //         slotIndex: types.uint,
-            //         animProgress: types.float,
-            //         direction: types.enum(enumDirection),
-            //     })
-            // ),
         };
     }
 
@@ -70,6 +64,7 @@ export class ItemAcceptorComponent extends Component {
                 pos: slot.pos.copy(),
                 directions: slot.directions.slice(),
                 filter: slot.filter,
+                layer: slot.layer,
             });
         }
 
@@ -79,6 +74,7 @@ export class ItemAcceptorComponent extends Component {
             beltUnderlaysCopy.push({
                 pos: underlay.pos.copy(),
                 direction: underlay.direction,
+                layer: underlay.layer,
             });
         }
 
@@ -92,9 +88,9 @@ export class ItemAcceptorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemAcceptorItemFilter}>} param0.slots The slots from which we accept items
+     * @param {Array<ItemAcceptorSlotConfig>} param0.slots The slots from which we accept items
      * @param {boolean=} param0.animated Whether to animate item consumption
-     * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.beltUnderlays Where to render belt underlays
+     * @param {Array<{pos: Vector, direction: enumDirection, layer: enumLayer}>=} param0.beltUnderlays Where to render belt underlays
      */
     constructor({ slots = [], beltUnderlays = [], animated = true }) {
         super();
@@ -103,7 +99,7 @@ export class ItemAcceptorComponent extends Component {
 
         /**
          * Fixes belt animations
-         * @type {Array<{ item: BaseItem, slotIndex: number, animProgress: number, direction: enumDirection}>}
+         * @type {Array<{ item: BaseItem, slotIndex: number, animProgress: number, direction: enumDirection }>}
          */
         this.itemConsumptionAnimations = [];
 
@@ -115,18 +111,19 @@ export class ItemAcceptorComponent extends Component {
 
     /**
      *
-     * @param {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemAcceptorItemFilter}>} slots
+     * @param {Array<ItemAcceptorSlotConfig>} slots
      */
     setSlots(slots) {
-        /** @type {Array<{pos: Vector, directions: enumDirection[], filter?: enumItemAcceptorItemFilter}>} */
+        /** @type {Array<ItemAcceptorSlot>} */
         this.slots = [];
         for (let i = 0; i < slots.length; ++i) {
             const slot = slots[i];
             this.slots.push({
                 pos: slot.pos,
                 directions: slot.directions,
+                layer: slot.layer || enumLayer.regular,
 
-                // Which type of item to accept (shape | color | all) @see enumItemAcceptorItemFilter
+                // Which type of item to accept (shape | color | all) @see enumItemType
                 filter: slot.filter,
             });
         }
@@ -139,16 +136,25 @@ export class ItemAcceptorComponent extends Component {
      */
     canAcceptItem(slotIndex, item) {
         const slot = this.slots[slotIndex];
-        switch (slot.filter) {
-            case enumItemAcceptorItemFilter.shape: {
-                return item instanceof ShapeItem;
-            }
-            case enumItemAcceptorItemFilter.color: {
-                return item instanceof ColorItem;
-            }
-            default:
-                return true;
+        return this.filterMatches(slot.filter, item);
+    }
+
+    /**
+     * Returns if the given filter matches
+     * @param {enumItemType|null} filter
+     * @param {BaseItem} item
+     */
+    filterMatches(filter, item) {
+        if (!filter) {
+            return true;
         }
+
+        const itemType = item.getItemType();
+        if (filter === enumItemType.genericEnergy) {
+            return itemType === enumItemType.positiveEnergy || itemType === enumItemType.negativeEnergy;
+        }
+
+        return itemType === filter;
     }
 
     /**
@@ -172,9 +178,10 @@ export class ItemAcceptorComponent extends Component {
      * Tries to find a slot which accepts the current item
      * @param {Vector} targetLocalTile
      * @param {enumDirection} fromLocalDirection
+     * @param {enumLayer} layer
      * @returns {ItemAcceptorLocatedSlot|null}
      */
-    findMatchingSlot(targetLocalTile, fromLocalDirection) {
+    findMatchingSlot(targetLocalTile, fromLocalDirection, layer) {
         // We need to invert our direction since the acceptor specifies *from* which direction
         // it accepts items, but the ejector specifies *into* which direction it ejects items.
         // E.g.: Ejector ejects into "right" direction but acceptor accepts from "left" direction.
@@ -186,6 +193,11 @@ export class ItemAcceptorComponent extends Component {
 
             // Make sure the acceptor slot is on the right position
             if (!slot.pos.equals(targetLocalTile)) {
+                continue;
+            }
+
+            // Make sure the layer matches
+            if (slot.layer !== layer) {
                 continue;
             }
 

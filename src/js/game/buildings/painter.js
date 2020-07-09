@@ -1,14 +1,14 @@
-import { globalConfig } from "../../core/config";
+import { formatItemsPerSecond } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
-import { enumItemAcceptorItemFilter, ItemAcceptorComponent } from "../components/item_acceptor";
+import { T } from "../../translations";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { enumHubGoalRewards } from "../tutorial_goals";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
-import { T } from "../../translations";
-import { formatItemsPerSecond } from "../../core/utils";
+import { enumHubGoalRewards } from "../tutorial_goals";
+import { enumItemType } from "../base_item";
 
 /** @enum {string} */
 export const enumPainterVariants = { mirrored: "mirrored", double: "double", quad: "quad" };
@@ -98,12 +98,12 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.top],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                 ],
             })
@@ -124,14 +124,14 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [
                             variant === defaultBuildingVariant ? enumDirection.top : enumDirection.bottom,
                         ],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                 ]);
 
@@ -147,17 +147,17 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.top],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                 ]);
 
@@ -174,27 +174,27 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
-                        filter: enumItemAcceptorItemFilter.shape,
+                        filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                     {
                         pos: new Vector(2, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                     {
                         pos: new Vector(3, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemAcceptorItemFilter.color,
+                        filter: enumItemType.color,
                     },
                 ]);
 

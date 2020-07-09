@@ -38,21 +38,27 @@ export const globalConfig = {
     // Production analytics
     statisticsGraphDpi: 2.5,
     statisticsGraphSlices: 100,
-    analyticsSliceDurationSeconds: 10,
+    analyticsSliceDurationSeconds: G_IS_DEV ? 1 : 10,
 
     minimumTickRate: 25,
     maximumTickRate: 500,
 
     // Map
     mapChunkSize: 16,
-    mapChunkPrerenderMinZoom: 1.15,
+    mapChunkPrerenderMinZoom: -1,
     mapChunkOverviewMinZoom: 0.7,
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
     beltSpeedItemsPerSecond: 2,
-    itemSpacingOnBelts: 0.8,
     minerSpeedItemsPerSecond: 0, // COMPUTED
+
+    beltItemSpacingByLayer: {
+        regular: 0.63,
+        wires: 0.4,
+    },
+
+    wiresSpeedItemsPerSecond: 6,
 
     undergroundBeltMaxTilesByTier: [5, 8],
 
@@ -66,6 +72,7 @@ export const globalConfig = {
         painterQuad: 1 / 8,
         mixer: 1 / 5,
         stacker: 1 / 6,
+        advancedProcessor: 1 / 3,
     },
 
     // Zooming

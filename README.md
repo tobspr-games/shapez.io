@@ -17,8 +17,9 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 -   Run `git lfs pull` to download sound assets
 -   Make sure `ffmpeg` is on your path
 -   Install Node.js and Yarn
--   Run `yarn` in the root folder, then run `yarn` in the `gulp/` folder
--   Cd into `gulp` and run `yarn gulp` - it should now open in your browser
+-   Run `yarn` in the root folder
+-   Cd into `gulp` folder
+-   Run `yarn` and then `yarn gulp` - it should now open in your browser
 
 **Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
 

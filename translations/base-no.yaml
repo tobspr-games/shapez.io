@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io er et spill som handler om å bygge fabrikker for å automatisere byggeprosessen og kombinere forskjellige former og fasonger. Lever objektene som øker i kompleskitet og fasonger for å progressere i spillet og åpne opp nye oppgraderinger til din fabrikk.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Siden forespørselen øker, må du skalere opp fabrikken din for å tilpasse deg til behovet - Men ikke glem tilgangen du har til ressurser, du må utvide på det [b]uendelige brettet[/b]!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Siden figurer i seg selv kan bli kjedelig, må du snart mikse farger og fargelegge dine figurer - Kombiner rød, grønn og blå farge-ressurser for å produsere forskjellige farger, og fargelegg figurene for å tilfredsstille behovet.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Spillet har 18 nivåer (Som bør holde deg opptatt i mange timer!) men jeg legger konstant til nytt innhold - Det er mye som er planlagt!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Frittstående Fordeler[/b]
-
-        [list]
-            [*] Kartmarkering
-            [*] Uendelige lagringsfiler
-            [*] Mørk Modus
-            [*] Flere instillinger
-            [*] Tillater meg å videreutvikle shapez.io ❤️
-            [*] Flere funksjoner i fremtiden!
-        [/list]
-
-        [b]Planlagte funksjoner & Forslag fra samfunnet[/b]
-
-        Spillet er åpen kildekode - Alle kan bidra! Utenom det, så lytter jeg [b]veldig[/b] til samfunnet! Jeg prøver å lese alle forslag og ta imot så mye tilbakemeldinger som mulig.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Kampanje
-            [*] Flere nivåer & bygninger (Frittstående eksklusivt)
-            [*] Forskjellige brett, og kanskje hinder på brettet
-            [*] Konfigurerbart brett-generasjon (Endre antall og størrelse på ressursfelt, seed, med mer)
-            [*] Flere forskjellige type former
-            [*] Mer forbedring av ytelse (Selv om spillet allerede kjører ganske bra!)
-            [*] Fargeblind modus
-            [*] Og mye mer!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Sjekk ut min trello tavle for hele planen! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Laster
@@ -73,6 +90,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -131,28 +151,7 @@ mainMenu:
     savegameLevel: Nivå <x>
     savegameLevelUnknown: Ukjent Nivå
 
-    contests:
-        contest_01_03062020:
-            title: "Konkurranse #01"
-            desc: Vinn <strong>$25</strong> for den kuleste basen!
-            longDesc: >-
-                For å gi noe tilbake til deg, tenkte jeg det ville vært kult med ukentlige konkurranser!
-                <br><br>
-                <strong>Denne ukens tema:</strong> Bygg den kuleste basen!
-                <br><br>
-                Her er tingen:<br>
-                <ul class="bucketList">
-                    <li>Send et skjermbilde av basen din til <strong>contest@shapez.io</strong></li>
-                    <li>Bonus poeng om du deler på sosiale medier!</li>
-                    <li>Jeg velger 5 skjermbilder og foreslår de på <strong>discord</strong> for samfunnet til å stemme.</li>
-                    <li>Vinneren får <strong>$25</strong> (Paypal, Amazon Gift Card, eller hva du foretrekker)</li>
-                    <li>Frist: 07.06.2020 00:00 Sentraleuropeisk sommertid</li>
-                </ul>
-                <br>
-                Jeg ser fram til å se dine kule skapninger!
 
-        showInfo: Vis
-        contestOver: Denne konkurransen er ferdig - Bli med på discord for å få varsel om nye konkurranser!
     continue: Fortsett
     newGame: Nytt Spill
     madeBy: Laget av <author-link>
@@ -260,6 +259,7 @@ dialogs:
     createMarker:
         title: Ny Markør
         desc: Gi markøren et meningsfullt navn, du kan også inkludere <strong>"short key"</strong> av et objekt (Som du kan generere <a href="https://viewer.shapez.io" target="_blank">her</a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Du kan kun ha to markører i demo verjsonen. Skaff deg frittstående versjon for ubegrensede markører!
@@ -267,6 +267,9 @@ dialogs:
     exportScreenshotWarning:
         title: Eksporter skjermbilde
         desc: Du forespurte å eksportere bilde av basen din som et skjermbilde. Vær obs på at dette kan ta lang tid for en stor base, og i verste fall kræsje spillet ditt (Husk å lagre først)!
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -290,6 +293,7 @@ ingame:
         copySelection: Kopier
         clearSelection: Fjern Valgte
         pipette: Pipette
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -405,9 +409,11 @@ ingame:
         cyan: Cyan
         white: Hvit
         uncolored: Ingen farge
+        black: Black
     shapeViewer:
         title: Lag
         empty: Tom
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -515,6 +521,27 @@ buildings:
         storage:
             name: Lagringsboks
             description: Lagrer overflødige objekter, opp til en viss kapasitet. Kan bli brukt som mellomlagring for overflyt.
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -529,7 +556,7 @@ storyRewards:
     reward_painter:
         title: Maling
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            <strong>Maleren</strong> har blitt tilgjengelig - Hent ut fargeressurser (på samme måte som du gjør med objekter) og kombiner det med et objekt i maleren for å male de!<br><br>PS: Hvis du er fargeblind, så er det en <strong>modus for fargeblinde</strong> i instillinger!
 
     reward_mixer:
         title: Fargemikser
@@ -727,11 +754,11 @@ settings:
             title: Fargeblind Modus
             description: Aktiverer forskjellige verktøy som lar deg spille spillet om du er fargeblind.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Roter basert på bygningstype
+            description: >-
+                Hver bygning type husker rotasjonen du sist brukte individuelt.
+                Dette kan være mer komfortabelt hvis du ofte veksler mellom plassering
+                av forskjellige bygninger.
 
 keybindings:
     title: Hurtigtaster
@@ -799,6 +826,11 @@ keybindings:
         lockBeltDirection: Enable belt planner
         switchDirectionLockSide: "Planlegger: Bytt side"
         pipette: Pipette
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: Om dette spillet

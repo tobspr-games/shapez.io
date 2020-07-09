@@ -5,7 +5,6 @@ import { Application } from "../application";
 
 import { BufferMaintainer } from "../core/buffer_maintainer";
 import { disableImageSmoothing, enableImageSmoothing, registerCanvas } from "../core/buffer_utils";
-import { Math_random } from "../core/builtins";
 import { globalConfig } from "../core/config";
 import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
@@ -24,7 +23,7 @@ import { GameHUD } from "./hud/hud";
 import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
-import { GameRoot, enumEditMode } from "./root";
+import { GameRoot, enumLayer } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
@@ -131,7 +130,8 @@ export class GameCore {
         this.root.gameIsFresh = true;
         this.root.map.seed = randomInt(0, 100000);
 
-        gMetaBuildingRegistry.findByClass(MetaHubBuilding).createAndPlaceEntity({
+        // Place the hub
+        const hub = gMetaBuildingRegistry.findByClass(MetaHubBuilding).createEntity({
             root: this.root,
             origin: new Vector(-2, -2),
             rotation: 0,
@@ -139,6 +139,8 @@ export class GameCore {
             rotationVariant: 0,
             variant: defaultBuildingVariant,
         });
+        this.root.map.placeStaticEntity(hub);
+        this.root.entityMgr.registerEntity(hub);
     }
 
     /**
@@ -391,31 +393,62 @@ export class GameCore {
         // Main rendering order
         // -----
 
+        // BG / Map Resources / Belt Backgrounds
         root.map.drawBackground(params);
 
         if (!this.root.camera.getIsMapOverlayActive()) {
-            systems.itemAcceptor.drawUnderlays(params);
-            systems.belt.draw(params);
-            systems.itemEjector.draw(params);
-            systems.itemAcceptor.draw(params);
+            // Underlays for splitters / balancers
+            systems.itemAcceptor.drawUnderlays(params, enumLayer.regular);
+
+            // Belt items
+            systems.belt.drawLayerBeltItems(params, enumLayer.regular);
+
+            // Items being ejected / accepted currently (animations)
+            systems.itemEjector.drawLayer(params, enumLayer.regular);
+            systems.itemAcceptor.drawLayer(params, enumLayer.regular);
         }
 
+        // Miner & Static map entities
         root.map.drawForeground(params);
+
         if (!this.root.camera.getIsMapOverlayActive()) {
+            // HUB Overlay
             systems.hub.draw(params);
+
+            // Energy generator overlay
             systems.energyGenerator.draw(params);
+
+            // Storage items
             systems.storage.draw(params);
+
+            // Energy consumer (Battery icons)
+            systems.energyConsumer.draw(params);
         }
 
-        // WIRES LAYER
+        // Green wires overlay (not within the if because it can fade)
         root.hud.parts.wiresOverlay.draw(params);
 
-        if (this.root.editMode === enumEditMode.wires) {
-            systems.wiredPins.drawWiresLayer(params);
+        if (this.root.currentLayer === enumLayer.wires && !this.root.camera.getIsMapOverlayActive()) {
+            // Belt sprites & Static map entities
+            root.map.drawWiresLayer(params);
+
+            // Belt items as well as accepted / ejected items
+            systems.belt.drawLayerBeltItems(params, enumLayer.wires);
+            systems.itemEjector.drawLayer(params, enumLayer.wires);
+            systems.itemAcceptor.drawLayer(params, enumLayer.wires);
+
+            root.map.drawWiresForegroundLayer(params);
+
+            // pins
+            systems.wiredPins.draw(params);
         }
 
         if (G_IS_DEV) {
             root.map.drawStaticEntityDebugOverlays(params);
+        }
+
+        if (G_IS_DEV && globalConfig.debug.renderBeltPaths) {
+            systems.belt.drawBeltPathDebug(params);
         }
 
         // END OF GAME CONTENT
@@ -439,7 +472,7 @@ export class GameCore {
             for (let i = 0; i < 1e8; ++i) {
                 sum += i;
             }
-            if (Math_random() > 0.95) {
+            if (Math.random() > 0.95) {
                 console.log(sum);
             }
         }

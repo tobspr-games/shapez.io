@@ -57,43 +57,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。提交任务，制造更复杂的流水线，解锁升级来提升您工厂的运作速度。
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        你将会需要随着不断上升得需求扩大你的工厂。当然，不要忘记你可以在[b]无尽[/b]的地图上开采资源！
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        只对图形进行加工可能会使你感到无聊。我们为你准备了颜色资源——将红、绿、蓝三种颜色混合，生产更多不同的颜色并粉刷在图形上以满足需求。
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        这个游戏目前有18个关卡（这应该已经能让你忙碌几个小时了！），并且正在不断地更新中。很多新关卡已经在开发计划当中！
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]独立版优势[/b]
-
-        [list]
-            [*] 地图标记
-            [*] 无限存档
-            [*] 深色模式
-            [*] 更多设置
-            [*] 支持作者继续开发shapez.io❤️
-            [*] 在以后还有更多特性！
-        [/list]
-
-
-        [b]开发计划与社区意见[/b]
-
-        本游戏已开源，所有人都能参与游戏内容的开发！除此以外，我[b]非常重视[/b]玩家社区的反馈！我会阅读每一条建议并尽量顾及所有建议。
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] 要消耗图形来造建筑的的故事模式
-            [*] 更多关卡&建筑（单机版独有）
-            [*] 更多地图，也许会有障碍物
-            [*] 可配置的地图生成（矿脉密度与大小、 随机种子以及其他地图设置）
-            [*] 更多图形
-            [*] 更多的性能改进（当然，现在游戏已经非常流畅了！）
-            [*] 色盲模式
-            [*] 以及更多其他的功能！
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        记得查看我的Trello计划板！那里有所有的开发计划！https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: 加载中
@@ -102,6 +118,9 @@ global:
     # Chinese translation: There is typically no divider used for numbers.
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ""
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # TODO: Chinese translation: suffix changes every 10000 in Chinese numbering system.
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
@@ -161,28 +180,7 @@ mainMenu:
     savegameLevel: 第<x>关
     savegameLevelUnknown: 未知关卡
 
-    contests:
-        contest_01_03062020:
-            title: "竞赛 #01"
-            desc: 最6的工厂将能赢得<strong>25</strong>美元的奖金！
-            longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
-                <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
-                <br><br>
-                Here's the deal:<br>
-                <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                I'm looking forward to seeing your awesome creations!
 
-        showInfo: 详细信息
-        contestOver: 本次竞赛已结束。加入官方Discord以收到关于新竞赛的提醒！
         # contestOver: This contest has ended - Join the discord to get noticed about new contests!
     continue: 继续游戏
     newGame: 新游戏
@@ -288,6 +286,7 @@ dialogs:
     createMarker:
         title: 创建地图标记
         desc: 给地图标记起一个的名字。你可以在名字中加入一个<strong>短代码</strong>以加入图形。（你可以在<a href="https://viewer.shapez.io" target="_blank">这里</a>生成短代码。）
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: 在演示版中你只能创建两个地图标记。请获取独立版以创建更多标记。
@@ -300,6 +299,10 @@ dialogs:
         title: 工厂截图
         desc: >-
             你将要导出你的工厂的截图。如果你的基地很大，截图过程将会很慢，且有可能导致游戏崩溃！
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -323,6 +326,7 @@ ingame:
         copySelection: 复制
         clearSelection: 取消选择
         pipette: 选取器
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -440,9 +444,11 @@ ingame:
         cyan: 青色
         white: 白色
         uncolored: 无色
+        black: Black
     shapeViewer:
         title: 层 # TODO: find better translation
         empty: 空
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -549,6 +555,27 @@ buildings:
         deliver: 交付
         toUnlock: 来解锁
         levelShortcut: LVL
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -843,6 +870,11 @@ keybindings:
         lockBeltDirection: 启用传送带规划
         switchDirectionLockSide: "规划器：换边"
         pipette: 选取器
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: 关于游戏

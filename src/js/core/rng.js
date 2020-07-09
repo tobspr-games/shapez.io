@@ -1,5 +1,3 @@
-import { Math_random } from "./builtins";
-
 // ALEA RNG
 
 function Mash() {
@@ -72,7 +70,7 @@ export class RandomNumberGenerator {
      * @param {number|string=} seed
      */
     constructor(seed) {
-        this.internalRng = makeNewRng(seed || Math_random());
+        this.internalRng = makeNewRng(seed || Math.random());
     }
 
     /**
@@ -80,7 +78,7 @@ export class RandomNumberGenerator {
      * @param {number|string} seed
      */
     reseed(seed) {
-        this.internalRng = makeNewRng(seed || Math_random());
+        this.internalRng = makeNewRng(seed || Math.random());
     }
 
     /**

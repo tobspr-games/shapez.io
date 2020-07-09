@@ -1,8 +1,4 @@
-/* typehints:start */
-import { GameRoot } from "./root";
-/* typehints:end */
-
-import { Math_ceil, Math_max, Math_min, Math_round } from "../core/builtins";
+import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
@@ -38,6 +34,13 @@ export class MapChunk {
             "map-chunk@" + this.x + "|" + this.y
         );
 
+        /** @type {Array<Array<?Entity>>} */
+        this.wireContents = make2DUndefinedArray(
+            globalConfig.mapChunkSize,
+            globalConfig.mapChunkSize,
+            "map-chunk-wires@" + this.x + "|" + this.y
+        );
+
         /** @type {Array<Array<?BaseItem>>} */
         this.lowerLayer = make2DUndefinedArray(
             globalConfig.mapChunkSize,
@@ -66,7 +69,7 @@ export class MapChunk {
      * @param {number=} overrideY Override the Y position of the patch
      */
     internalGeneratePatch(rng, patchSize, item, overrideX = null, overrideY = null) {
-        const border = Math_ceil(patchSize / 2 + 3);
+        const border = Math.ceil(patchSize / 2 + 3);
 
         // Find a position within the chunk which is not blocked
         let patchX = rng.nextIntRange(border, globalConfig.mapChunkSize - border - 1);
@@ -88,7 +91,7 @@ export class MapChunk {
 
         for (let i = 0; i <= numCircles; ++i) {
             // Determine circle parameters
-            const circleRadius = Math_min(1 + i, patchSize);
+            const circleRadius = Math.min(1 + i, patchSize);
             const circleRadiusSquare = circleRadius * circleRadius;
             const circleOffsetRadius = (numCircles - i) / 2 + 2;
 
@@ -101,8 +104,8 @@ export class MapChunk {
 
             for (let dx = -circleRadius * circleScaleX - 2; dx <= circleRadius * circleScaleX + 2; ++dx) {
                 for (let dy = -circleRadius * circleScaleY - 2; dy <= circleRadius * circleScaleY + 2; ++dy) {
-                    const x = Math_round(circleX + dx);
-                    const y = Math_round(circleY + dy);
+                    const x = Math.round(circleX + dx);
+                    const y = Math.round(circleY + dy);
                     if (x >= 0 && x < globalConfig.mapChunkSize && y >= 0 && y <= globalConfig.mapChunkSize) {
                         const originalDx = dx / circleScaleX;
                         const originalDy = dy / circleScaleY;
@@ -158,9 +161,9 @@ export class MapChunk {
         // Later there is a mix of everything
         weights = {
             [enumSubShape.rect]: 100,
-            [enumSubShape.circle]: Math_round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
-            [enumSubShape.star]: Math_round(20 + clamp(distanceToOriginInChunks, 0, 30)),
-            [enumSubShape.windmill]: Math_round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
+            [enumSubShape.circle]: Math.round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
+            [enumSubShape.star]: Math.round(20 + clamp(distanceToOriginInChunks, 0, 30)),
+            [enumSubShape.windmill]: Math.round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
         };
 
         if (distanceToOriginInChunks < 7) {
@@ -239,20 +242,20 @@ export class MapChunk {
         }
 
         const chunkCenter = new Vector(this.x, this.y).addScalar(0.5);
-        const distanceToOriginInChunks = Math_round(chunkCenter.length());
+        const distanceToOriginInChunks = Math.round(chunkCenter.length());
 
         // Determine how likely it is that there is a color patch
         const colorPatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
 
         if (rng.next() < colorPatchChance / 4) {
-            const colorPatchSize = Math_max(2, Math_round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
+            const colorPatchSize = Math.max(2, Math.round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
             this.internalGenerateColorPatch(rng, colorPatchSize, distanceToOriginInChunks);
         }
 
         // Determine how likely it is that there is a shape patch
         const shapePatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
         if (rng.next() < shapePatchChance / 4) {
-            const shapePatchSize = Math_max(2, Math_round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
+            const shapePatchSize = Math.max(2, Math.round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
             this.internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks);
         }
     }
@@ -326,6 +329,53 @@ export class MapChunk {
     }
 
     /**
+     * Returns the contents of this chunk from the given world space coordinates
+     * @param {number} worldX
+     * @param {number} worldY
+     * @param {enumLayer} layer
+     * @returns {Entity=}
+     */
+    getLayerContentFromWorldCoords(worldX, worldY, layer) {
+        const localX = worldX - this.tileX;
+        const localY = worldY - this.tileY;
+        assert(localX >= 0, "Local X is < 0");
+        assert(localY >= 0, "Local Y is < 0");
+        assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
+        assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
+        if (layer === enumLayer.regular) {
+            return this.contents[localX][localY] || null;
+        } else {
+            return this.wireContents[localX][localY] || null;
+        }
+    }
+    /**
+     * Returns the contents of this chunk from the given world space coordinates
+     * @param {number} worldX
+     * @param {number} worldY
+     * @returns {Array<Entity>}
+     */
+    getLayersContentsMultipleFromWorldCoords(worldX, worldY) {
+        const localX = worldX - this.tileX;
+        const localY = worldY - this.tileY;
+        assert(localX >= 0, "Local X is < 0");
+        assert(localY >= 0, "Local Y is < 0");
+        assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
+        assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
+
+        const regularContent = this.contents[localX][localY];
+        const wireContent = this.wireContents[localX][localY];
+
+        const result = [];
+        if (regularContent) {
+            result.push(regularContent);
+        }
+        if (wireContent) {
+            result.push(wireContent);
+        }
+        return result;
+    }
+
+    /**
      * Returns the chunks contents from the given local coordinates
      * @param {number} localX
      * @param {number} localY
@@ -345,22 +395,36 @@ export class MapChunk {
      * @param {number} tileX
      * @param {number} tileY
      * @param {Entity=} contents
+     * @param {enumLayer} layer
      */
-    setTileContentFromWorldCords(tileX, tileY, contents) {
+    setLayerContentFromWorldCords(tileX, tileY, contents, layer) {
         const localX = tileX - this.tileX;
         const localY = tileY - this.tileY;
         assert(localX >= 0, "Local X is < 0");
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
-        const oldContents = this.contents[localX][localY];
+
+        let oldContents;
+        if (layer === enumLayer.regular) {
+            oldContents = this.contents[localX][localY];
+        } else {
+            oldContents = this.wireContents[localX][localY];
+        }
+
         assert(contents === null || !oldContents, "Tile already used: " + tileX + " / " + tileY);
 
         if (oldContents) {
             // Remove from list
             fastArrayDeleteValueIfContained(this.containedEntities, oldContents);
         }
-        this.contents[localX][localY] = contents;
+
+        if (layer === enumLayer.regular) {
+            this.contents[localX][localY] = contents;
+        } else {
+            this.wireContents[localX][localY] = contents;
+        }
+
         if (contents) {
             if (this.containedEntities.indexOf(contents) < 0) {
                 this.containedEntities.push(contents);

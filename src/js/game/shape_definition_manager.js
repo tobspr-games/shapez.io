@@ -162,6 +162,22 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     }
 
     /**
+     * Generates a definition for inverting all colors on that shape
+     * @param {ShapeDefinition} definition
+     * @returns {ShapeDefinition}
+     */
+    shapeActionInvertColors(definition) {
+        const key = "invert:" + definition.getHash();
+        if (this.operationCache[key]) {
+            return /** @type {ShapeDefinition} */ (this.operationCache[key]);
+        }
+        const inverted = definition.cloneAndInvertColors();
+        return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
+            inverted
+        ));
+    }
+
+    /**
      * Generates a definition for painting it with the 4 colors
      * @param {ShapeDefinition} definition
      * @param {[enumColors, enumColors, enumColors, enumColors]} colors

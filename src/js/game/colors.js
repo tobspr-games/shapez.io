@@ -10,6 +10,8 @@ export const enumColors = {
 
     white: "white",
     uncolored: "uncolored",
+
+    black: "black",
 };
 
 /** @enum {string} */
@@ -24,6 +26,8 @@ export const enumColorToShortcode = {
 
     [enumColors.white]: "w",
     [enumColors.uncolored]: "u",
+
+    [enumColors.black]: "0",
 };
 
 /** @enum {enumColors} */
@@ -50,7 +54,25 @@ export const enumColorsToHexCode = {
     // blue + green + red
     [enumColors.white]: "#ffffff",
 
+    [enumColors.black]: "#31383a",
+
     [enumColors.uncolored]: "#aaaaaa",
+};
+
+/** @enum {enumColors} */
+export const enumInvertedColors = {
+    [enumColors.red]: enumColors.cyan,
+    [enumColors.green]: enumColors.purple,
+    [enumColors.blue]: enumColors.yellow,
+
+    [enumColors.yellow]: enumColors.blue,
+    [enumColors.purple]: enumColors.green,
+    [enumColors.cyan]: enumColors.red,
+
+    [enumColors.white]: enumColors.black,
+    [enumColors.black]: enumColors.white,
+
+    [enumColors.uncolored]: enumColors.uncolored,
 };
 
 const c = enumColors;
@@ -66,6 +88,7 @@ export const enumColorMixingResults = {
         [c.cyan]: c.white,
 
         [c.white]: c.white,
+        [c.black]: c.red,
     },
 
     // 0, 255, 0
@@ -77,6 +100,7 @@ export const enumColorMixingResults = {
         [c.cyan]: c.cyan,
 
         [c.white]: c.white,
+        [c.black]: c.green,
     },
 
     // 0, 255, 0
@@ -86,17 +110,20 @@ export const enumColorMixingResults = {
         [c.cyan]: c.cyan,
 
         [c.white]: c.white,
+        [c.black]: c.blue,
     },
 
     // 255, 255, 0
     [c.yellow]: {
         [c.purple]: c.white,
         [c.cyan]: c.white,
+        [c.black]: c.yellow,
     },
 
     // 255, 0, 255
     [c.purple]: {
         [c.cyan]: c.white,
+        [c.black]: c.purple,
     },
 
     // 0, 255, 255
@@ -113,14 +140,23 @@ export const enumColorMixingResults = {
     [c.uncolored]: {
         // auto
     },
+
+    [c.black]: {
+        // auto
+        [c.white]: c.uncolored,
+        [c.cyan]: c.cyan,
+        [c.uncolored]: c.uncolored,
+    },
 };
 
 // Create same color lookups
 for (const color in enumColors) {
     enumColorMixingResults[color][color] = color;
 
-    // Anything with white is white again
-    enumColorMixingResults[color][c.white] = c.white;
+    // Anything with white is white again, except for black which creates gray
+    if (color !== enumColors.black) {
+        enumColorMixingResults[color][c.white] = c.white;
+    }
 
     // Anything with uncolored is the same color
     enumColorMixingResults[color][c.uncolored] = color;

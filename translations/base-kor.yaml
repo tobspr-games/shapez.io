@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io는 다양한 도형의 생산과 조합을 자동화하는 공장들을 짓는 게임입니다. 점점 복잡해지는 요구사항을 충족하고 업그레이드를 잠금 해제해서 공장의 성능을 높일 수 있습니다.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        점점 증가하는 수요를 충족하기 위해 공장의 규모를 키워야 합니다. [b]무한한 공간[/b]으로 확장하여 도형 재료를 구하는 것도 잊지 마세요.
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        단순한 도형은 금방 싫증이 나므로, 색을 조합하여 도형을 색칠하세요. 빨강, 초록, 파랑을 조합하여 다양한 색을 만들고 도형을 색칠하여 요구사항을 충족하세요.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        이 게임에는 18개의 레벨이 있습니다. (이것만으로도 이미 몇시간이 걸렸을 거예요!) 하지만 저는 항상 새로운 컨텐츠를 추가하고 있습니다. 계획해 놓은 것들도 많구요!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]유료 버전의 장점[/b]
-
-        [list]
-            [*] 마커
-            [*] 제한 없는 저장
-            [*] 다크 모드
-            [*] 더 다양한 설정
-            [*] 제가 shapez.io를 개발하는 데 도움이 됨 ❤️
-            [*] 향후 더 많은 컨텐츠
-        [/list]
-
-        [b] 예정된 컨탠츠 및 커뮤니티 제안[/b]
-
-        이 게임은 오픈 소스입니다. 따라서 누구나 기여할 수 있습니다! 또한, 커뮤니티의 제안을 [b]많이[/b] 듣고 있습니다! 가능한 많이 읽고 많이 반영하도록 노력하겠습니다.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] 건물을 도형으로 구매해야 돼는 스토리 모드
-            [*] 더 많은 레벨과 건물 (유료 버전 한정)
-            [*] 다양한 월드와 맵 장애물
-            [*] 당신만의 맵 제작
-            [*] 더 많은 종류의 도형
-            [*] 성능 향상 (지금도 게임이 잘 되긴 합니다!)
-            [*] 색맹자용 모드
-            [*] 그 외 다수!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        저의 트렐로 보드를 확인해서 로드맵을 확인해보세요! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: 로딩중
@@ -73,6 +90,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -130,32 +150,10 @@ mainMenu:
     savegameLevel: 레벨 <x>
     savegameLevelUnknown: 레벨 모름
 
-    contests:
-        contest_01_03062020:
-            title: "콘테스트 #01"
-            desc: Win <strong>$25</strong> for the coolest base!
-            longDesc: >-
-                여러분들에게 무언가를 나눠드리고 싶어서 주간 콘테스트를 개최합니다!
 
-                <br><br>
-                <strong>이번주 토픽:</strong> 가장 멋있는 공장을 만드세요!
-                <br><br>
-                참여하는 법:<br>
-                <ul class="bucketList">
-                    <li>여러분 공장의 스크린샷을 여기로 보내세요: <strong>contest@shapez.io</strong></li>
-                    <li>소셜 미디어에 공유하면 보너스 포인트!</li>
-                    <li>스크린샷 5개를 골라 <strong>디스코드 </strong> 커뮤니티에서 투표를 진행할 예정입니다.</li>
-                    <li>우승자는 <strong>$25</strong>를 받습니다! (PayPal이나 아마존 기프트 카드 중 원하는 것으로)</li>
-                    <li>기한: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                당신들의 멋진 공장을 보고 싶습니다!
-
-        showInfo: 보기
-        contestOver: 이 콘테스트는 끝났습니다. 디스코드에서 새로운 콘테스트 관련 알림을 받으세요!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: 계속하기
+    newGame: 새 게임
+    madeBy: 제작 <author-link>
     subreddit: Reddit
 
 dialogs:
@@ -239,9 +237,9 @@ dialogs:
             당신은 많은 건물을 삭제하려고 하고있습니다! (정확히는 <count>개) 삭제하시겠습니까?
 
     massCutConfirm:
-        title: Confirm cut
+        title: 자르기 확인
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            당신은 많은 건물을 자르려고 하고있습니다! (정확히는 <count>개) 자르시겠습니까?
 
     blueprintsNotUnlocked:
         title: 아직 사용 불가
@@ -259,16 +257,21 @@ dialogs:
 
     createMarker:
         title: 새로운 마커
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: 이 장소에 이름을 지어주세요, 당신은 원하는 모양으로 <strong>단축키</strong>를 생성할 수 있습니다. (<a href="https://viewer.shapez.io" target="_blank">여기</a>에서 만들 수 있습니다.)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: 데모 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: 스크린샷 내보내기
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            당신은 당신의 공장을 스크린샷으로 내보내려 하고있습니다. 공장이 너무 큰 경우에는
+            시간이 오래 걸리거나 게임이 꺼질 수도 있음을 알려드립니다!
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -285,13 +288,14 @@ ingame:
         placeBuilding: 건물 놓기
         createMarker: 마커 놓기
         delete: 삭제
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
+        pasteLastBlueprint: 마지막 청사진 붙여넣기
+        lockBeltDirection: 벨트 플래너 활성화하기
+        plannerSwitchSide: 벨트 플래너 방향바꾸기
+        cutSelection: 선택된 부분 자르기
+        copySelection: 선택된 부분 복사하기
+        clearSelection: 선택된 부분 지우기
+        pipette: 스포이드
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -338,7 +342,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: 최대  (Speed x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -385,7 +389,7 @@ ingame:
         waypoints: 마커
         hub: 중앙 건물
         description: 마커를 좌클릭해서 그곳으로 가고, 우클릭해서 삭제합니다.<br><br><keybinding>을 눌러 지금 있는 곳에 마커를 놓거나 <strong>우클릭해서</strong> 원하는 곳에 놓으세요.
-        creationSuccessNotification: Marker has been created.
+        creationSuccessNotification: 마커가 성공적으로 제작되었습니다.
 
     # Interactive tutorial
     interactiveTutorial:
@@ -399,17 +403,19 @@ ingame:
                 이것은 방치형 게임이 <strong>아닙니다!</strong> 추출기를 더 놓아 목표를 빨리 달성하세요.<br><br>팁: <strong>SHIFT</strong>를 눌러 여러 개의 추출기를 놓고 <strong>R</strong>로 회전 시키세요.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
+        red: 빨강
+        green: 초록
+        blue: 파랑
+        yellow: 노랑
+        purple: 보라
+        cyan: 청록
+        white: 하양
+        uncolored: 색
+        black: Black
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: 층
+        empty: 비었음
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -517,6 +523,27 @@ buildings:
         storage:
             name: 저장소
             description: 할당된 용량만큼 초과되는 도형을 저장한다.
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -531,15 +558,15 @@ storyRewards:
     reward_painter:
         title: 색칠기
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            <strong>색칠기</strong>가 잠금 해제되었습니다. - 추출한 색소(도형을 추출하는 것처럼)를 색칠기에서 도형과 합쳐 색칠된 도형을 얻으세요!<br><br> 추신: 색맹이라면, 설정에서 <strong>색맹 모드</strong>를 활성화 시키세요!
 
     reward_mixer:
         title: 혼합기
-        desc: <strong>혼합기</strong>가 잠금 해제 되었습니다! 이 건물로 두 색소를 <strong>혼합</strong>하세요!
+        desc: <strong>혼합기</strong>가 잠금 해제되었습니다! 이 건물로 두 색소를 <strong>혼합</strong>하세요!
 
     reward_stacker:
         title: 결합기
-        desc: <strong>결합기</strong>가 잠금 해제 되었습니다! 두 도형이 서로 옆에 놓을 수 있는 경우, 두 도형이 <strong>결합</strong>됩니다. 그렇지 않은 경우, 오른쪽 도형이 왼쪽 도형 <strong>위에 쌓이게</strong>됩니다.
+        desc: <strong>결합기</strong>가 잠금 해제되었습니다! 두 도형이 서로 옆에 놓을 수 있는 경우, 두 도형이 <strong>결합</strong>됩니다. 그렇지 않은 경우, 오른쪽 도형이 왼쪽 도형 <strong>위에 쌓이게</strong>됩니다.
 
     reward_splitter:
         title: 배분기
@@ -594,7 +621,7 @@ storyRewards:
     no_reward:
         title: 다음 레벨
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            이 단계는 아무런 보상이 없습니다. 하지만 다음 단계에는 있죠! <br><br> 추신: 현존하는 공장을 부수지 않는 것이 좋습니다. - 추후 <strong>업그레이드를 해제</strong>하기 위해 <strong>모든</strong> 도형들이 필요합니다!
 
     no_reward_freeplay:
         title: 다음 레벨
@@ -637,16 +664,16 @@ settings:
                 super_fast: 매우 빠르게
 
         movementSpeed:
-            title: Movement speed
+            title: 이동 속도
             description: >-
-                Changes how fast the view moves when using the keyboard.
+                키보드를 사용할 때, 화면 이동 속도를 설정합니다.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: 매우 느리게
+                slow: 느리게
+                regular: 보통
+                fast: 빠르게
+                super_fast: 매우 빠르게
+                extremely_fast: 극한의 속도
 
         language:
             title: 언어
@@ -673,8 +700,8 @@ settings:
             description: >-
                 게임 테마를 고르세요. (밝음/어두움).
             themes:
-                dark: Dark
-                light: Light
+                dark: 어두운 테마
+                light: 밝은 테마
 
         refreshRate:
             title: 모니터 리프레쉬 속도
@@ -692,48 +719,45 @@ settings:
                 이것을 끄면 힌트와 튜토리얼이 나오지 않습니다. 또한 게임에 쉽게 들어가기 위해서 주어진 레벨에서 특정 UI 요소를 숨길 수도 있습니다.
 
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: 스마트 터널
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                활성화 시키면, 터널을 설치하는 것이 자동적으로 불필요한 벨트를 없앱니다.
+                또한, 터널을 당겨서 남는 터널을 없앱니다.
+
         vignette:
-            title: Vignette
+            title: 삽화
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                화면의 코너를 어둡게 만들어 텍스트를 읽기 쉽게 해주는 삽화를 활성화 시킵니다.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: 자동저장 주기
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                자동저장을 얼마나 자주 할 것인지 정합니다. 자동저장기능을 끌 수도 있습니다.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1분
+                two_minutes: 2분
+                five_minutes: 5분
+                ten_minutes: 10분
+                twenty_minutes: 20분
+                disabled: 기능 끄기
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: 간결한 건물 정보
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                건물의 정보창을 해당 건물의 능률만 보이도록 줄입니다.
+                아니면, 설명과 이미지가 보입니다.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: 자르기/삭제 경고기능 끄기
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                100개 이상의 건물을 자르기/삭제할 때 경고창이 나오지 않게 합니다.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: 색맹 모드
+            description: 색맹이 게임을 플레이하는데 도움을 주는 다양한 도구를 활성화 시킵니다.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: 건물 유형에 따른 방향
+            description: >-
+                각 건물 유형은 최근에 설정한 방향을 개별적으로 기억합니다.
+                다른 유형의 건물 배치 간에 자주 방향을 전환할 경우, 이 방법이 더 편할 수 있습니다.
 
 keybindings:
     title: 키바인딩
@@ -747,7 +771,7 @@ keybindings:
         ingame: 게임
         navigation: 둘러보기
         placement: 놓기
-        massSelect: 여러 개 선택
+        massSelect: 다중 선택
         buildings: 건물 쇼트컷
         placementModifiers: 배치 수정기
 
@@ -785,42 +809,46 @@ keybindings:
             Modifier: 대신 반시계방향으로 회전
         cycleBuildingVariants: 변형종 사용
         confirmMassDelete: 대량 삭제 확인
-        pasteLastBlueprint: Paste last blueprint
+        pasteLastBlueprint: 최근 청사진 붙여넣기
         cycleBuildings: 건물 사이클
 
         massSelectStart: 누르고 드래그해서 시작
         massSelectSelectMultiple: 여러 곳 선택
         massSelectCopy: 영역 복사
-        massSelectCut: Cut area
+        massSelectCut: 영역 자르기
 
         placementDisableAutoOrientation: 자동 회전 끄기
         placeMultiple: 배치 모드에 있기
         placeInverse: 자동 벨트 회전 뒤집기
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
-        pipette: Pipette
+        exportScreenshot: 공장 전체를 이미지로 내보내기
+        mapMoveFaster: 더 빠르게 움직이기
+        lockBeltDirection: 벨트 플래너 활성화
+        switchDirectionLockSide: "플래너: 방향 바꾸기"
+        pipette: 피펫
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: 이 게임의 정보
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        이 게임은 오픈소스이고, <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a>가 개발했습니다.<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        이 게임을 위해 이바지하고 싶다면, <a href="<githublink>"
+        target="_blank">shapez.io on github</a>를 확인하세요.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        이 게임은 디스코드 커뮤니티의 공헌이 없었다면 불가능했을 것입니다.
+        우리 디스코드 커뮤니티에 꼭 참여해주세요! <a href="<discordlink>"
+        target="_blank">디스코드 서버</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        사운드 트랙 제작자는 <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a>입니다. - 킹갓제너럴 Peppsen!<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        마지막으로, 나의 절친 <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a>에게
+        크나큰 감사를 표합니다 - 우리가 함께 해낸 Factorio가 아니었다면, 이 게임은 존재하지 않았을 겁니다!
 
 changelog:
     title: 업데이트 기록
@@ -831,6 +859,6 @@ demo:
         importingGames: 게임 저장 파일 불러오기
         oneGameLimit: 게임 저장 파일 최대 1개
         customizeKeybindings: 키바인딩 설정하기
-        exportingBase: Exporting whole Base as Image
+        exportingBase: 공장 전체를 이미지로 내보내기
 
     settingNotAvailable: 데모 버전에서 사용 불가

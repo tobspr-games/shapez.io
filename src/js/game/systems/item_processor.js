@@ -1,7 +1,6 @@
-import { Math_max } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
-import { BaseItem } from "../base_item";
-import { enumColorMixingResults } from "../colors";
+import { BaseItem, enumItemType } from "../base_item";
+import { enumColorMixingResults, enumInvertedColors } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -21,7 +20,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const ejectorComp = entity.components.ItemEjector;
 
             // First of all, process the current recipe
-            processorComp.secondsUntilEject = Math_max(
+            processorComp.secondsUntilEject = Math.max(
                 0,
                 processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
             );
@@ -49,11 +48,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         if (ejectorComp.canEjectOnSlot(preferredSlot)) {
                             slot = preferredSlot;
                         } else {
-                            slot = ejectorComp.getFirstFreeSlot();
+                            slot = ejectorComp.getFirstFreeSlot(entity.layer);
                         }
                     } else {
                         // We can eject on any slot
-                        slot = ejectorComp.getFirstFreeSlot();
+                        slot = ejectorComp.getFirstFreeSlot(entity.layer);
                     }
 
                     if (slot !== null) {
@@ -71,7 +70,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // Check if we have an empty queue and can start a new charge
             if (processorComp.itemsToEject.length === 0) {
                 if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
-                    this.startNewCharge(entity);
+                    const energyConsumerComp = entity.components.EnergyConsumer;
+                    if (energyConsumerComp) {
+                        // Check if we have enough energy
+                        if (energyConsumerComp.tryStartNextCharge()) {
+                            this.startNewCharge(entity);
+                        }
+                    } else {
+                        // No further checks required
+                        this.startNewCharge(entity);
+                    }
                 }
             }
         }
@@ -107,6 +115,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         switch (processorComp.type) {
             // SPLITTER
+            case enumItemProcessorTypes.splitterWires:
             case enumItemProcessorTypes.splitter: {
                 trackProduction = false;
                 const availableSlots = entity.components.ItemEjector.slots.length;
@@ -327,6 +336,35 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 for (let i = 0; i < items.length; ++i) {
                     const shapeItem = /** @type {ShapeItem} */ (items[i].item);
                     hubComponent.queueShapeDefinition(shapeItem.definition);
+                }
+
+                break;
+            }
+
+            // ADVANCED PROCESSING
+
+            case enumItemProcessorTypes.advancedProcessor: {
+                const item = items[0].item;
+
+                if (item.getItemType() === enumItemType.color) {
+                    const colorItem = /** @type {ColorItem} */ (items[0].item);
+                    const newColor = enumInvertedColors[colorItem.color];
+                    outItems.push({
+                        item: new ColorItem(newColor),
+                        requiredSlot: 0,
+                    });
+                } else if (item.getItemType() === enumItemType.shape) {
+                    const shapeItem = /** @type {ShapeItem} */ (items[0].item);
+                    const newItem = this.root.shapeDefinitionMgr.shapeActionInvertColors(
+                        shapeItem.definition
+                    );
+
+                    outItems.push({
+                        item: new ShapeItem(newItem),
+                        requiredSlot: 0,
+                    });
+                } else {
+                    assertAlways(false, "Bad item type: " + item.getItemType() + " for advanced processor.");
                 }
 
                 break;

@@ -1,23 +1,26 @@
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
-import { Signal } from "../../../core/signal";
-import { TrackedState } from "../../../core/tracked_state";
+import { Signal, STOP_PROPAGATION } from "../../../core/signal";
 import { makeDiv } from "../../../core/utils";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { MetaBuilding } from "../../meta_building";
-import { BaseHUDPart } from "../base_hud_part";
 import { GameRoot } from "../../root";
+import { BaseHUDPart } from "../base_hud_part";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
 
 export class HUDBaseToolbar extends BaseHUDPart {
     /**
      * @param {GameRoot} root
-     * @param {Array<typeof MetaBuilding>} supportedBuildings
-     * @param {function} visibilityCondition
+     * @param {object} param0
+     * @param {Array<typeof MetaBuilding>} param0.supportedBuildings
+     * @param {function} param0.visibilityCondition
+     * @param {string} param0.htmlElementId
      */
-    constructor(root, supportedBuildings, visibilityCondition) {
+    constructor(root, { supportedBuildings, visibilityCondition, htmlElementId }) {
         super(root);
 
         this.supportedBuildings = supportedBuildings;
         this.visibilityCondition = visibilityCondition;
+        this.htmlElementId = htmlElementId;
 
         /** @type {Object.<string, {
          * metaBuilding: MetaBuilding,
@@ -27,17 +30,6 @@ export class HUDBaseToolbar extends BaseHUDPart {
          * index: number
          * }>} */
         this.buildingHandles = {};
-
-        this.sigBuildingSelected = new Signal();
-        this.trackedIsVisisible = new TrackedState(this.onVisibilityChanged, this);
-    }
-
-    /**
-     * Called when the visibility of the toolbar changed
-     * @param {boolean} visible
-     */
-    onVisibilityChanged(visible) {
-        this.element.classList.toggle("visible", visible);
     }
 
     /**
@@ -45,7 +37,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
      * @param {HTMLElement} parent
      */
     createElements(parent) {
-        this.element = makeDiv(parent, "ingame_HUD_buildings_toolbar", ["ingame_buildingsToolbar"], "");
+        this.element = makeDiv(parent, this.htmlElementId, ["ingame_buildingsToolbar"], "");
     }
 
     initialize() {
@@ -80,6 +72,10 @@ export class HUDBaseToolbar extends BaseHUDPart {
             this
         );
 
+        this.domAttach = new DynamicDomAttach(this.root, this.element, {
+            timeToKeepSeconds: 0.12,
+            attachClass: "visible",
+        });
         this.lastSelectedIndex = 0;
         actionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildings).add(this.cycleBuildings, this);
     }
@@ -88,11 +84,10 @@ export class HUDBaseToolbar extends BaseHUDPart {
      * Updates the toolbar
      */
     update() {
-        this.trackedIsVisisible.set(this.visibilityCondition());
+        const visible = this.visibilityCondition();
+        this.domAttach.update(visible);
 
-        if (!this.trackedIsVisisible.get()) {
-            // Currently not active
-        } else {
+        if (visible) {
             for (const buildingId in this.buildingHandles) {
                 const handle = this.buildingHandles[buildingId];
                 const newStatus = handle.metaBuilding.getIsUnlocked(this.root);
@@ -108,14 +103,24 @@ export class HUDBaseToolbar extends BaseHUDPart {
      * Cycles through all buildings
      */
     cycleBuildings() {
+        const visible = this.visibilityCondition();
+        if (!visible) {
+            return;
+        }
+
+        let newBuildingFound = false;
         let newIndex = this.lastSelectedIndex;
         for (let i = 0; i < this.supportedBuildings.length; ++i, ++newIndex) {
             newIndex %= this.supportedBuildings.length;
             const metaBuilding = gMetaBuildingRegistry.findByClass(this.supportedBuildings[newIndex]);
             const handle = this.buildingHandles[metaBuilding.id];
             if (!handle.selected && handle.unlocked) {
+                newBuildingFound = true;
                 break;
             }
+        }
+        if (!newBuildingFound) {
+            return;
         }
         const metaBuildingClass = this.supportedBuildings[newIndex];
         const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
@@ -166,7 +171,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
         }
 
         this.root.soundProxy.playUiClick();
-        this.sigBuildingSelected.dispatch(metaBuilding);
+        this.root.hud.signals.buildingSelectedForPlacement.dispatch(metaBuilding);
         this.onSelectedPlacementBuildingChanged(metaBuilding);
     }
 }

@@ -1,7 +1,7 @@
 import { Component } from "../component";
 import { types } from "../../savegame/serialization";
 import { gItemRegistry } from "../../core/global_registries";
-import { BaseItem } from "../base_item";
+import { BaseItem, enumItemType } from "../base_item";
 import { ColorItem } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
@@ -60,17 +60,23 @@ export class StorageComponent extends Component {
             return true;
         }
 
-        if (item instanceof ColorItem) {
-            return this.storedItem instanceof ColorItem && this.storedItem.color === item.color;
+        const itemType = item.getItemType();
+
+        // Check type matches
+        if (itemType !== this.storedItem.getItemType()) {
+            return false;
         }
 
-        if (item instanceof ShapeItem) {
+        if (itemType === enumItemType.color) {
+            return /** @type {ColorItem} */ (this.storedItem).color === /** @type {ColorItem} */ (item).color;
+        }
+
+        if (itemType === enumItemType.shape) {
             return (
-                this.storedItem instanceof ShapeItem &&
-                this.storedItem.definition.getHash() === item.definition.getHash()
+                /** @type {ShapeItem} */ (this.storedItem).definition.getHash() ===
+                /** @type {ShapeItem} */ (item).definition.getHash()
             );
         }
-
         return false;
     }
 

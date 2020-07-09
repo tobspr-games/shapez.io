@@ -1,5 +1,4 @@
 import { globalConfig } from "./config";
-import { Math_ceil, Math_floor, Math_max, Math_min } from "./builtins";
 import { clamp, epsilonCompare, round2Digits } from "./utils";
 import { Vector } from "./vector";
 
@@ -38,10 +37,10 @@ export class Rectangle {
      * @param {Vector} p2
      */
     static fromTwoPoints(p1, p2) {
-        const left = Math_min(p1.x, p2.x);
-        const top = Math_min(p1.y, p2.y);
-        const right = Math_max(p1.x, p2.x);
-        const bottom = Math_max(p1.y, p2.y);
+        const left = Math.min(p1.x, p2.x);
+        const top = Math.min(p1.y, p2.y);
+        const right = Math.max(p1.x, p2.x);
+        const bottom = Math.max(p1.y, p2.y);
         return new Rectangle(left, top, right - left, bottom - top);
     }
 
@@ -67,10 +66,10 @@ export class Rectangle {
         let maxY = -1e10;
         for (let i = 0; i < points.length; ++i) {
             const rotated = points[i].rotated(angle);
-            minX = Math_min(minX, rotated.x);
-            minY = Math_min(minY, rotated.y);
-            maxX = Math_max(maxX, rotated.x);
-            maxY = Math_max(maxY, rotated.y);
+            minX = Math.min(minX, rotated.x);
+            minY = Math.min(minY, rotated.y);
+            maxX = Math.max(maxX, rotated.x);
+            maxY = Math.max(maxY, rotated.y);
         }
         return new Rectangle(minX, minY, maxX - minX, maxY - minY);
     }
@@ -98,10 +97,10 @@ export class Rectangle {
             this.w = halfWidth * 2;
             this.h = halfHeight * 2;
         } else {
-            this.setLeft(Math_min(this.x, centerX - halfWidth));
-            this.setRight(Math_max(this.right(), centerX + halfWidth));
-            this.setTop(Math_min(this.y, centerY - halfHeight));
-            this.setBottom(Math_max(this.bottom(), centerY + halfHeight));
+            this.setLeft(Math.min(this.x, centerX - halfWidth));
+            this.setRight(Math.max(this.right(), centerX + halfWidth));
+            this.setTop(Math.min(this.y, centerY - halfHeight));
+            this.setBottom(Math.max(this.bottom(), centerY + halfHeight));
         }
     }
 
@@ -326,11 +325,11 @@ export class Rectangle {
      * @returns {Rectangle|null}
      */
     getIntersection(rect) {
-        const left = Math_max(this.x, rect.x);
-        const top = Math_max(this.y, rect.y);
+        const left = Math.max(this.x, rect.x);
+        const top = Math.max(this.y, rect.y);
 
-        const right = Math_min(this.x + this.w, rect.x + rect.w);
-        const bottom = Math_min(this.y + this.h, rect.y + rect.h);
+        const right = Math.min(this.x + this.w, rect.x + rect.w);
+        const bottom = Math.min(this.y + this.h, rect.y + rect.h);
 
         if (right <= left || bottom <= top) {
             return null;
@@ -354,10 +353,10 @@ export class Rectangle {
         }
 
         // Find contained area
-        const left = Math_min(this.x, rect.x);
-        const top = Math_min(this.y, rect.y);
-        const right = Math_max(this.right(), rect.right());
-        const bottom = Math_max(this.bottom(), rect.bottom());
+        const left = Math.min(this.x, rect.x);
+        const top = Math.min(this.y, rect.y);
+        const right = Math.max(this.right(), rect.right());
+        const bottom = Math.max(this.bottom(), rect.bottom());
 
         return Rectangle.fromTRBL(top, right, bottom, left);
     }
@@ -388,10 +387,10 @@ export class Rectangle {
         if (includeHalfTiles) {
             // Increase rectangle size
             scaled = Rectangle.fromTRBL(
-                Math_floor(scaled.y),
-                Math_ceil(scaled.right()),
-                Math_ceil(scaled.bottom()),
-                Math_floor(scaled.x)
+                Math.floor(scaled.y),
+                Math.ceil(scaled.right()),
+                Math.ceil(scaled.bottom()),
+                Math.floor(scaled.x)
             );
         }
 

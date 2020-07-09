@@ -7,7 +7,6 @@ import { createLogger } from "./logging";
 import { FILE_NOT_FOUND } from "../platform/storage";
 import { accessNestedPropertyReverse } from "./utils";
 import { IS_DEBUG, globalConfig } from "./config";
-import { JSON_stringify, JSON_parse } from "./builtins";
 import { ExplainedResult } from "./explained_result";
 import { decompressX64, compressX64 } from ".//lzstring";
 import { asyncCompressor, compressionPrefix } from "./async_compression";
@@ -84,7 +83,7 @@ export class ReadWriteProxy {
      * @param {object} obj
      */
     static serializeObject(obj) {
-        const jsonString = JSON_stringify(compressObject(obj));
+        const jsonString = JSON.stringify(compressObject(obj));
         const checksum = sha1(jsonString + salt);
         return compressionPrefix + compressX64(checksum + jsonString);
     }
@@ -129,7 +128,7 @@ export class ReadWriteProxy {
             logger.error("Tried to write invalid data to", this.filename, "reason:", verifyResult.reason);
             return Promise.reject(verifyResult.reason);
         }
-        const jsonString = JSON_stringify(compressObject(this.currentData));
+        const jsonString = JSON.stringify(compressObject(this.currentData));
 
         // if (!this.app.pageVisible || this.app.unloaded) {
         //     logger.log("Saving file sync because in unload handler");
@@ -189,7 +188,7 @@ export class ReadWriteProxy {
                 .then(rawData => {
                     if (rawData == null) {
                         // So, the file has not been found, use default data
-                        return JSON_stringify(compressObject(this.getDefaultData()));
+                        return JSON.stringify(compressObject(this.getDefaultData()));
                     }
 
                     if (rawData.startsWith(compressionPrefix)) {
@@ -223,7 +222,7 @@ export class ReadWriteProxy {
                 // Parse JSON, this could throw but thats fine
                 .then(res => {
                     try {
-                        return JSON_parse(res);
+                        return JSON.parse(res);
                     } catch (ex) {
                         logger.error(
                             "Failed to parse file content of",

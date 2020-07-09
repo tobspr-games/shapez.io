@@ -38,6 +38,9 @@ import { HUDColorBlindHelper } from "./parts/color_blind_helper";
 import { HUDShapeViewer } from "./parts/shape_viewer";
 import { HUDWiresOverlay } from "./parts/wires_overlay";
 import { HUDChangesDebugger } from "./parts/debug_changes";
+import { queryParamOptions } from "../../core/query_parameters";
+import { HUDSandboxController } from "./parts/sandbox_controller";
+import { HUDWiresToolbar } from "./parts/wires_toolbar";
 
 export class GameHUD {
     /**
@@ -54,6 +57,7 @@ export class GameHUD {
         this.parts = {
             processingOverlay: new HUDProcessingOverlay(this.root),
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
+            wiresToolbar: new HUDWiresToolbar(this.root),
             blueprintPlacer: new HUDBlueprintPlacer(this.root),
             buildingPlacer: new HUDBuildingPlacer(this.root),
             unlockNotification: new HUDUnlockNotification(this.root),
@@ -72,13 +76,18 @@ export class GameHUD {
             dialogs: new HUDModalDialogs(this.root),
             screenshotExporter: new HUDScreenshotExporter(this.root),
             shapeViewer: new HUDShapeViewer(this.root),
+
             wiresOverlay: new HUDWiresOverlay(this.root),
 
+            // Typing hints
+            /* typehints:start */
             /** @type {HUDChangesDebugger} */
             changesDebugger: null,
+            /* typehints:end */
         };
 
         this.signals = {
+            buildingSelectedForPlacement: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
             selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
             shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
             shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
@@ -117,6 +126,10 @@ export class GameHUD {
             this.parts.colorBlindHelper = new HUDColorBlindHelper(this.root);
         }
 
+        if (queryParamOptions.sandboxMode || G_IS_DEV) {
+            this.parts.sandboxController = new HUDSandboxController(this.root);
+        }
+
         const frag = document.createDocumentFragment();
         for (const key in this.parts) {
             this.parts[key].createElements(frag);
@@ -127,7 +140,6 @@ export class GameHUD {
         for (const key in this.parts) {
             this.parts[key].initialize();
         }
-        this.internalInitSignalConnections();
 
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
 
@@ -191,14 +203,6 @@ export class GameHUD {
      */
     toggleUi() {
         document.body.classList.toggle("uiHidden");
-    }
-
-    /**
-     * Initializes connections between parts
-     */
-    internalInitSignalConnections() {
-        const p = this.parts;
-        p.buildingsToolbar.sigBuildingSelected.add(p.buildingPlacer.startSelection, p.buildingPlacer);
     }
 
     /**

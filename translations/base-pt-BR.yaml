@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io é um jogo sobre construir fábricas para automatizar a criação e combinação de formas. Entregue formas cada vez mais complexas pedidas pelo jogo para progredir e desbloquear melhorias que aceleram sua fábrica.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Como a demanda é crescente, será necessário dimensionar uma fábrica que atenda a necessidade - Não se esqueça dos recursos à sua disposição, você poderá expandir em um [b]mapa infinito[/b]!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Formas podem ficar entediantes por si só, logo você terá que misturar cores e pintá-las - Combine os recursos vermelho, verde e azul para produzir cores diferentes e pintar as formas com elas pra atender a demanda.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Esse jogo apresenta 18 níveis (que já devem mantê-lo ocupado por horas!) mas estou constantemente adicionado conteúdo novo - Muito já está planejado!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Vantagens da Versão Standalone[/b]
-
-        [list]
-            [*] Marcações no mapa
-            [*] Jogos salvos ilimitados
-            [*] Modo escuro
-            [*] Mais opções no menu
-            [*] Me ajuda a desenvolver mais o shapez.io ❤️
-            [*] Ainda mais recursos no futuro!
-        [/list]
-
-        [b]Melhoras Planejadas & Sugestões da Comunidade[/b]
-
-        Esse jogo tem código aberto - Qualquer um pode contribuir! Além disso, eu ouço [b]muito[/a] a comunidade! Tento ler todas as sugestões e levar o máximo possível de comentários sobre o jogo em consideração.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Modo história, onde construir custará formas
-            [*] Mais níves & construções (exclusivo da versão standalone)
-            [*] Mapas diferentes, e talvez obstáculos no mapa
-            [*] Criação de mapa configurável (Número e tamanho de recursos, seed, e mais)
-            [*] Mais tipos de formas
-            [*] Mais melhoras no desempenho (Mesmo que o jogo já esteja rodando bem rápido!)
-            [*] Acessibilidade para daltonismo
-            [*] E muito mais!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Não deixe de conferir na minha página no trello o planejamento completo! (em inglês) https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Carregando
@@ -73,6 +90,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -130,32 +150,11 @@ mainMenu:
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
 
-    contests:
-        contest_01_03062020:
-            title: "Concurso #01"
-            desc: Ganhe <strong>$25</strong> pela melhor base!
-            longDesc: >-
-                Para retribuir, pensei que seria legal fazer concursos semanais!
-                <br><br>
-                <strong> Tópico dessa semana:</strong> Construa a base mais legal!
-                <br><br>
-                Esse é o plano:<br>
-                <ul class="bucketList">
-                    <li>Envie uma captura de tela da sua base para <strong>contest@shapez.io</strong></li>
-                    <li>Pontos bônus se você o compartilhar nas mídias sociais!</li>
-                    <li>Vou escolher 5 capturas de tela e propor à votação a comunidade <strong>discord</strong>.</li>
-                    <li>o vencedor recebe <strong>$25</strong> (Paypal, Amazon Gift Card, o que você preferir)</li>
-                    <li>Até 07.06.2020 12:00 CEST</li>
-                </ul>
-                <br>
-                Estou ansioso para ver suas criações incríveis!
 
-        showInfo: Participar
-        contestOver: Esse concurso está encerrado - Entre no discord para ser informado sobre novos concursos!
     helpTranslate: Ajude a traduzir!
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: Continuar
+    newGame: Novo jogo
+    madeBy: Feito por <author-link>
     subreddit: Reddit
 
 dialogs:
@@ -255,6 +254,7 @@ dialogs:
     createMarker:
         title: Nova Marcação
         desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        titleEdit: Edit Marker
     markerDemoLimit:
         desc: >-
             Você só pode criar dois marcadores na versão demo. Adquira a versão completa para marcadores ilimitados!
@@ -268,6 +268,10 @@ dialogs:
         title: Exportar captura de tela
         desc: >-
             Você está prestes a exportar uma captura de tela da sua base. Note que isso pode ser bastante lento para uma base grande, e até mesmo pode travar o jogo!
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -292,6 +296,7 @@ ingame:
         copySelection: Copy
         clearSelection: Clear Selection
         pipette: Pipette
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -406,9 +411,11 @@ ingame:
         cyan: Cyan
         white: White
         uncolored: No color
+        black: Black
     shapeViewer:
         title: Layers
         empty: Empty
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -518,6 +525,27 @@ buildings:
         deliver: Entregue
         toUnlock: para desbloquear
         levelShortcut: LVL
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -609,9 +637,9 @@ settings:
 
     versionBadges:
         dev: Desenvolvedor
-        staging: Staging
+        staging: Teste
         prod: Produção
-    buildDate: Built <at-date>
+    buildDate: Compilado <at-date>
 
     labels:
         uiScale:
@@ -691,48 +719,47 @@ settings:
                 super_fast: Super Rápido
                 extremely_fast: Extremamente Rápido
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Túneis inteligentes
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Quando colocados, irão remover automaticamente esteiras desnecessárias.
+                Isso também permite arrastar túneis e túneis em excesso serão removidos.
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Permite o modo vinheta que escurece os cantos da tela e facilita a
+                leitura do texto.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Intervalo de gravação automática
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Controla a frequência com que o jogo salva automaticamente.
+                Você também pode desativá-lo totalmente aqui.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Minuto
+                two_minutes: 2 Minutos
+                five_minutes: 5 Minutos
+                ten_minutes: 10 Minutos
+                twenty_minutes: 20 Minutos
+                disabled: Desativado
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Informações compactas sobre edifícios
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Reduz as caixas de informações dos edifícios, mostrando apenas suas proporções.
+                Caso contrário, uma descrição e imagem são mostradas.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Desativar avisos de recorte / exclusão
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Desative as caixas de diálogo de aviso exibidas ao cortar / excluir
+                mais de 100 entidades.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Modo daltônico.
+            description: Permite várias ferramentas que permitem jogar se você é daltônico.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Rotação por tipo de construção
+            description: >-
+                Cada tipo de construção lembra a rotação que você definiu pela última vez individualmente.
+                Isso pode ser mais confortável se você alternar frequentemente entre a colocação de diferentes tipos de construção.
 
 keybindings:
     title: Controles
@@ -796,10 +823,15 @@ keybindings:
         pasteLastBlueprint: Colar último projeto
         massSelectCut: Cortar área
         exportScreenshot: Exportar base inteira como imagem
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
-        pipette: Pipette
+        mapMoveFaster: Mover mais rápido
+        lockBeltDirection: Ativar planejador de correia
+        switchDirectionLockSide: "Planejador: Mudar de lado"
+        pipette: Pipeta
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: Sobre o jogo
@@ -822,7 +854,7 @@ about:
         esse jogo nunca teria existido.
 
 changelog:
-    title: Changelog
+    title: Alterações
 
 demo:
     features:

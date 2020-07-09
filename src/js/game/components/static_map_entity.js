@@ -1,4 +1,3 @@
-import { Math_radians } from "../../core/builtins";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Rectangle } from "../../core/rectangle";
@@ -253,7 +252,7 @@ export class StaticMapEntityComponent extends Component {
             const rotationCenterY = worldY + globalConfig.halfTileSize;
 
             parameters.context.translate(rotationCenterX, rotationCenterY);
-            parameters.context.rotate(Math_radians(this.rotation));
+            parameters.context.rotate(Math.radians(this.rotation));
 
             sprite.drawCached(
                 parameters,
@@ -264,7 +263,7 @@ export class StaticMapEntityComponent extends Component {
                 false
             );
 
-            parameters.context.rotate(-Math_radians(this.rotation));
+            parameters.context.rotate(-Math.radians(this.rotation));
             parameters.context.translate(-rotationCenterX, -rotationCenterY);
         }
     }

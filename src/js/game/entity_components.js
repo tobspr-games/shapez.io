@@ -12,6 +12,7 @@ import { HubComponent } from "./components/hub";
 import { StorageComponent } from "./components/storage";
 import { EnergyGeneratorComponent } from "./components/energy_generator";
 import { WiredPinsComponent } from "./components/wired_pins";
+import { EnergyConsumerComponent } from "./components/energy_consumer";
 /* typehints:end */
 
 /**
@@ -20,9 +21,6 @@ import { WiredPinsComponent } from "./components/wired_pins";
  */
 export class EntityComponentStorage {
     constructor() {
-        // TODO: Figure out if its faster to declare all components here and not
-        // compile them out (In theory, should make it a fast object in V8 engine)
-
         /* typehints:start */
 
         /** @type {StaticMapEntityComponent} */
@@ -63,6 +61,9 @@ export class EntityComponentStorage {
 
         /** @type {WiredPinsComponent} */
         this.WiredPins;
+
+        /** @type {EnergyConsumerComponent} */
+        this.EnergyConsumer;
 
         /* typehints:end */
     }

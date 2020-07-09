@@ -4,6 +4,7 @@ import { globalConfig } from "../../core/config";
 import { MapChunkView } from "../map_chunk_view";
 import { Loader } from "../../core/loader";
 import { enumDirection } from "../../core/vector";
+import { enumLayer } from "../root";
 
 export class StaticMapEntitySystem extends GameSystem {
     constructor(root) {
@@ -40,7 +41,6 @@ export class StaticMapEntitySystem extends GameSystem {
                         continue;
                     }
                     drawnUids.add(entity.uid);
-
                     const staticComp = entity.components.StaticMapEntity;
                     if (drawOutlinesOnly) {
                         const rect = staticComp.getTileSpaceBounds();
@@ -63,6 +63,38 @@ export class StaticMapEntitySystem extends GameSystem {
                             const sprite = Loader.getSprite(spriteKey);
                             staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2, false);
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Draws the static wire entities
+     * @param {DrawParameters} parameters
+     * @param {MapChunkView} chunk
+     */
+    drawWiresChunk(parameters, chunk) {
+        if (G_IS_DEV && globalConfig.debug.doNotRenderStatics) {
+            return;
+        }
+
+        const drawnUids = new Set();
+        const contents = chunk.wireContents;
+        for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
+            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
+                const entity = contents[x][y];
+                if (entity) {
+                    if (drawnUids.has(entity.uid)) {
+                        continue;
+                    }
+                    drawnUids.add(entity.uid);
+                    const staticComp = entity.components.StaticMapEntity;
+
+                    const spriteKey = staticComp.spriteKey;
+                    if (spriteKey) {
+                        const sprite = Loader.getSprite(spriteKey);
+                        staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2, false);
                     }
                 }
             }

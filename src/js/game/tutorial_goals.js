@@ -23,8 +23,6 @@ export const enumHubGoalRewards = {
     reward_painter_quad: "reward_painter_quad",
     reward_storage: "reward_storage",
 
-    reward_wires: "reward_wires",
-
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
 
@@ -90,7 +88,7 @@ export const tutorialGoals = [
     // 8
     {
         shape: "RbRb----", // painter t2
-        required: 1250,
+        required: 1000,
         reward: enumHubGoalRewards.reward_mixer,
     },
 
@@ -98,7 +96,7 @@ export const tutorialGoals = [
     // Mixing (purple)
     {
         shape: "CpCpCpCp", // belts t3
-        required: 1750,
+        required: 1400,
         reward: enumHubGoalRewards.reward_splitter_compact,
     },
 
@@ -106,7 +104,7 @@ export const tutorialGoals = [
     // Star shape + cyan
     {
         shape: "ScScScSc", // miners t3
-        required: 2250,
+        required: 1600,
         reward: enumHubGoalRewards.reward_stacker,
     },
 
@@ -114,7 +112,7 @@ export const tutorialGoals = [
     // Stacker
     {
         shape: "CgScScCg", // processors t3
-        required: 3000,
+        required: 1800,
         reward: enumHubGoalRewards.reward_miner_chainable,
     },
 
@@ -122,7 +120,7 @@ export const tutorialGoals = [
     // Blueprints
     {
         shape: "CbCbCbRb:CwCwCwCw",
-        required: 4000,
+        required: 2000,
         reward: enumHubGoalRewards.reward_blueprints,
     },
 
@@ -156,8 +154,8 @@ export const tutorialGoals = [
 
     // 17
     {
-        shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two varinats)
-        required: 100000,
+        shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two variants)
+        required: 120000,
         reward: enumHubGoalRewards.reward_painter_quad,
     },
 
@@ -165,19 +163,12 @@ export const tutorialGoals = [
     {
         shape: finalGameShape,
         required: 250000,
-        reward: enumHubGoalRewards.reward_wires,
-    },
-
-    // 19
-    {
-        shape: finalGameShape,
-        required: 1,
         reward: enumHubGoalRewards.reward_freeplay,
     },
 ];
 
 if (G_IS_DEV) {
-    tutorialGoals.forEach(({ shape, required, reward }) => {
+    tutorialGoals.forEach(({ shape }) => {
         try {
             ShapeDefinition.fromShortKey(shape);
         } catch (ex) {

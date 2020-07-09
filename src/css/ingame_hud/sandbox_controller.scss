@@ -1,0 +1,50 @@
+#ingame_HUD_SandboxController {
+    position: absolute;
+    background: $ingameHudBg;
+    @include S(padding, 5px);
+    @include S(bottom, 10px);
+    @include S(left, 10px);
+
+    @include SuperSmallText;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+
+    > label {
+        text-transform: uppercase;
+    }
+
+    .hint {
+        color: #aaa;
+    }
+
+    .plusMinus {
+        @include S(margin-top, 4px);
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        @include S(grid-gap, 4px);
+
+        button {
+            @include PlainText;
+            @include S(padding, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include S(width, 15px);
+            @include S(height, 15px);
+            @include IncreasedClickArea(0px);
+        }
+    }
+
+    .additionalOptions {
+        display: flex;
+        flex-direction: column;
+        @include S(margin-top, 10px);
+        button {
+            @include S(margin-bottom, 2px);
+            @include IncreasedClickArea(0px);
+            @include SuperSmallText;
+        }
+    }
+}

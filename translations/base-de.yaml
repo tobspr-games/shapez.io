@@ -21,7 +21,10 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io ist ein Spiel über den Bau von Fabriken, um die Erstellung und Kombination immer komplexerer Formen zu automatisieren.
+    shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen Maschinen durch Kombination immer komplexere Formen zu erschaffen.
+
+    # This is the text shown above the discord link
+    discordLink: Offizieller Discord - Hier kannst du mit mir schreiben!
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,48 +33,66 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io ist ein Spiel über den Bau von Fabriken um die Erstellung und Kombination von Formen zu automatisieren. Liefere die gewünschten, stetig komplexer werdenden Formen, um im Spiel voranzukommen und schalte Upgrades frei, die deine Fabrik zu beschleunigen!
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Da die Nachfrage steigt, wirst du deine Fabrik vergrößern müssen, um den Bedürfnissen gerecht zu werden - vergiss jedoch nicht die Ressourcen, du wirst in der [b]unendlichen Karte[/b] expandieren müssen!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Da Formen natürlich langweilig werden können, musst du Farben mischen und deine Formen damit bemalen - Kombiniere rote, grüne und blaue Farbressourcen, um verschiedene Farben herzustellen und Formen damit zu bemalen, um die Nachfrage zu befriedigen.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        Dieses Spiel hat 18 verschiedene Level (Was dich schon Stunden beschäftig hält!) aber ich werde konstant neue Inhalte hinzufügen - Es ist echt viel geplant!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
-        [b]Vorteile der Standalone[/b]
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [list]
-            [*] Wegpunkte
-            [*] Unbegrenzte Anzahl von Spielständen
-            [*] Dark-Mode
-            [*] Mehr Einstellungen
-            [*] Erlaube es mir weiter an shapez.io zu entwickeln  ❤️
-            [*] Mehr Funktionen in der Zukunft!
-        [/list]
-
-        [b]Geplante Funktionen & Community Vorschläge[/b]
-
-        Diese Spiel ist open source - Jeder kann dazu beitragen! Abgesehen davon höre ich auf die Community! Ich versuche alle Vorschläge zu lesen und so viel Feedback einzubeziehen wie nur möglich.
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] Story-Modus, in dem Gebäude Formen kosten
-            [*] Mehr Gebäude und Level (nur in der Standalone-Version)
-            [*] Mehr Karten und vielleicht auch Hindernisse
-            [*] Einstellbare Kartenerstellung (Ändere die Grösse und Anzahl von Ressourcenflecken, Seed, und mehr)
-            [*] Mehr Typen von Formen
-            [*] Mehr Performanceverbesserungen (Auch wenn das Spiel bereits ganz gut läuft)
-            [*] Farbenblind-Modus
-            [*] Und viel mehr!
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        Schau dir auch das Trello-board für die komplette Planung an! https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
 
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
 global:
     loading: Laden
     error: Fehler
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -129,28 +150,7 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
 
-    contests:
-        contest_01_03062020:
-            title: "Contest #01"
-            desc: Gewinne <strong>$25</strong> für die beste Basis!
-            longDesc: >-
-                Um euch etwas zurückzugeben dachte ich, dass es eine coole Idee ist, wöchentliche Wettbewerbe durchzuführen!
-                <br><br>
-                <strong>Thema dieser Woche:</strong> Baue die coolste Basis!
-                <br><br>
-                Hier ist ein Deal:<br>
-                <ul class="bucketList">
-                    <li>Sende einen Screenshot deiner Basis an <strong>contest@shapez.io</strong></li>
-                    <li>Bonuspunkte wenn du die Basis auf sozialen Medien teilst!</li>
-                    <li>Ich wähle 5 Screenshots und schlage dieser der Community auf <strong>Discord</strong> vor, um abzustimmen.</li>
-                    <li>Der Gewinner bekommt <strong>$25</strong> (Paypal, Amazon Gift Card, was du willst)</li>
-                    <li>Einsendeschluss: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                Ich freue mich deine tollen Kreationen zu sehen!
 
-        showInfo: Anschauen
-        contestOver: Dieser Wettbewerb ist vorbei! Tritt dem Discord Server bei, um über neue Wettbewerbe informiert zu werden!
     helpTranslate: Hilf beim Übersetzen!
     continue: Fortsetzen
     newGame: Neues Spiel
@@ -203,7 +203,7 @@ dialogs:
 
     editKeybinding:
         title: Tastenbelegung ändern
-        desc: Drücke die Taste oder Maustaste, die du vergeben willst, oder ESC um abzubrechen.
+        desc: Drücke die (Maus-)Taste, die du vergeben willst, oder ESC um abzubrechen.
 
     resetKeybindingsConfirmation:
         title: Tastenbelegung zurücksetzen
@@ -214,7 +214,7 @@ dialogs:
         desc: Die Tastenbelegung wurde auf den Standard zurückgesetzt!
 
     featureRestriction:
-        title: Demo Version
+        title: Demo-Version
         desc: Du hast ein Feature gefunden (<feature>), welches nicht in der Demo enthalten ist. Erwerbe die Standalone für das volle Erlebnis!
 
     oneSavegameLimit:
@@ -254,6 +254,7 @@ dialogs:
     createMarker:
         title: Neuer Marker
         desc: Gib ihm einen griffigen Namen. Du kannst sogar die <strong>Abkürzung</strong> einer Form eingeben (Diese kann <a href="https://viewer.shapez.io" target="_blank">hier</a> generiert werden).
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Standalone, um unendlich viele Marker zu erstellen!
@@ -266,6 +267,10 @@ dialogs:
         title: Bildschirmfoto exportieren
         desc: >-
             Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für extrem große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -289,6 +294,7 @@ ingame:
         copySelection: Kopieren
         clearSelection: Auswahl aufheben
         pipette: Pipette
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -346,7 +352,7 @@ ingame:
                 description: Zeigt die Menge an Formen, die im zentralen Gebäude gelagert sind.
             produced:
                 title: Produziert
-                description: Zeigt die Menge an Formen, die deine ganze Fabrik produziert (auch Zwischenprodukte).
+                description: Zeigt die Menge an Formen, die deine gesamte Fabrik produziert (inkl. Zwischenprodukte).
             delivered:
                 title: Abgeliefert
                 description: Zeigt die Menge an Formen, die im zentralen Gebäude abgeliefert werden.
@@ -404,9 +410,11 @@ ingame:
         cyan: Cyan
         white: Weiß
         uncolored: Farblos
+        black: Black
     shapeViewer:
         title: Ebenen
         empty: Leer
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -518,6 +526,27 @@ buildings:
         toUnlock: >-
             Für folgende Belohnung:
         levelShortcut: LVL
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -663,7 +692,7 @@ settings:
         refreshRate:
             title: Zielbildwiederholrate
             description: >-
-                Für z.B einen 144-Hz-Monitor kann die Bildwiederholrate hier korrekt eingestellt werden. Bei einem zu langsamen Computer kann dies die Leistung beeinträchtigen.
+                Für z.B. einen 144-Hz-Monitor kann die Bildwiederholrate hier korrekt eingestellt werden. Bei einem zu langsamen Computer kann dies die Leistung beeinträchtigen.
 
         alwaysMultiplace:
             title: Mehrfachplatzierung
@@ -729,11 +758,11 @@ settings:
             title: Modus für Farbenblinde
             description: Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Rotation pro Gebäudetyp
+            description: >-
+                Jeder Gebäudetyp merkt sich einzeln, welche Rotation ausgewählt ist.
+                Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen
+                Gebäudetypen wechselst.
 
 keybindings:
     title: Tastenbelegung
@@ -801,6 +830,11 @@ keybindings:
         lockBeltDirection: Bandplaner aktivieren
         switchDirectionLockSide: "Planer: Seite wechseln"
         pipette: Pipette
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: Über dieses Spiel

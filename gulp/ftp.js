@@ -15,6 +15,11 @@ function gulptasksFTP($, gulp, buildFolder) {
     ];
 
     const credentials = {
+        alpha: {
+            host: process.env.SHAPEZ_CLI_SERVER_HOST,
+            user: process.env.SHAPEZ_CLI_ALPHA_FTP_USER,
+            pass: process.env.SHAPEZ_CLI_ALPHA_FTP_PW,
+        },
         staging: {
             host: process.env.SHAPEZ_CLI_SERVER_HOST,
             user: process.env.SHAPEZ_CLI_STAGING_FTP_USER,
@@ -51,7 +56,7 @@ function gulptasksFTP($, gulp, buildFolder) {
         path.join(buildFolder, "!**/index.html"),
     ];
 
-    for (const deployEnv of ["prod", "staging"]) {
+    for (const deployEnv of ["alpha", "prod", "staging"]) {
         const deployCredentials = credentials[deployEnv];
 
         gulp.task(`ftp.upload.${deployEnv}.game`, () => {

@@ -6,7 +6,6 @@ import { types, BasicSerializableObject } from "../../savegame/serialization";
 import { RegularGameSpeed } from "./regular_game_speed";
 import { BaseGameSpeed } from "./base_game_speed";
 import { PausedGameSpeed } from "./paused_game_speed";
-import { performanceNow, Math_max } from "../../core/builtins";
 import { FastForwardGameSpeed } from "./fast_forward_game_speed";
 import { gGameSpeedRegistry } from "../../core/global_registries";
 import { globalConfig } from "../../core/config";
@@ -55,7 +54,7 @@ export class GameTime extends BasicSerializableObject {
      * Fetches the new "real" time, called from the core once per frame, since performance now() is kinda slow
      */
     updateRealtimeNow() {
-        this.realtimeSeconds = performanceNow() / 1000.0 + this.realtimeAdjust;
+        this.realtimeSeconds = performance.now() / 1000.0 + this.realtimeAdjust;
     }
 
     /**
@@ -104,7 +103,7 @@ export class GameTime extends BasicSerializableObject {
         }
 
         // Check for too big pile of updates -> reduce it to 1
-        let maxLogicSteps = Math_max(
+        let maxLogicSteps = Math.max(
             3,
             (this.speed.getMaxLogicStepsInQueue() * this.root.dynamicTickrate.currentTickRate) / 60
         );
@@ -209,7 +208,7 @@ export class GameTime extends BasicSerializableObject {
         }
 
         // Adjust realtime now difference so they match
-        this.realtimeAdjust = this.realtimeSeconds - performanceNow() / 1000.0;
+        this.realtimeAdjust = this.realtimeSeconds - performance.now() / 1000.0;
         this.updateRealtimeNow();
 
         // Make sure we have a quantizied time

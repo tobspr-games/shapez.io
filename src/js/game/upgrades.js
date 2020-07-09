@@ -12,7 +12,7 @@ export const UPGRADES = {
                 improvement: 1,
             },
             {
-                required: [{ shape: "--CuCu--", amount: 1500 }],
+                required: [{ shape: "--CuCu--", amount: 1200 }],
                 improvement: 2,
             },
             {
@@ -42,7 +42,7 @@ export const UPGRADES = {
                 improvement: 1,
             },
             {
-                required: [{ shape: "Cu------", amount: 5500 }],
+                required: [{ shape: "Cu------", amount: 4000 }],
                 improvement: 2,
             },
             {
@@ -102,7 +102,7 @@ export const UPGRADES = {
                 improvement: 2,
             },
             {
-                required: [{ shape: "WrWrWrWr", amount: 5000 }],
+                required: [{ shape: "WrWrWrWr", amount: 4000 }],
                 improvement: 1,
             },
             {

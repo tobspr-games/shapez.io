@@ -1,12 +1,12 @@
+import { gItemRegistry } from "../../core/global_registries";
+import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
-import { enumDirection, Vector } from "../../core/vector";
-import { types } from "../../savegame/serialization";
-import { gItemRegistry } from "../../core/global_registries";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
     splitter: "splitter",
+    splitterWires: "splitterWires",
     cutter: "cutter",
     cutterQuad: "cutterQuad",
     rotater: "rotater",
@@ -17,6 +17,7 @@ export const enumItemProcessorTypes = {
     painter: "painter",
     painterDouble: "painterDouble",
     painterQuad: "painterQuad",
+    advancedProcessor: "advancedProcessor",
     hub: "hub",
 };
 
@@ -102,6 +103,12 @@ export class ItemProcessorComponent extends Component {
      * @param {number} sourceSlot
      */
     tryTakeItem(item, sourceSlot) {
+        if (this.type === enumItemProcessorTypes.hub || this.type === enumItemProcessorTypes.trash) {
+            // Hub has special logic .. not really nice but efficient.
+            this.inputSlots.push({ item, sourceSlot });
+            return true;
+        }
+
         // Check that we only take one item per slot
         for (let i = 0; i < this.inputSlots.length; ++i) {
             const slot = this.inputSlots[i];

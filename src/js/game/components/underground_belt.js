@@ -3,12 +3,21 @@ import { Component } from "../component";
 import { globalConfig } from "../../core/config";
 import { types } from "../../savegame/serialization";
 import { gItemRegistry } from "../../core/global_registries";
+import { Entity } from "../entity";
+import { enumLayer } from "../root";
 
 /** @enum {string} */
 export const enumUndergroundBeltMode = {
     sender: "sender",
     receiver: "receiver",
 };
+
+/**
+ * @typedef {{
+ *   entity: Entity,
+ *   distance: number
+ * }} LinkedUndergroundBelt
+ */
 
 export class UndergroundBeltComponent extends Component {
     static getId() {
@@ -52,6 +61,13 @@ export class UndergroundBeltComponent extends Component {
          * @type {Array<[BaseItem, number]>} Format is [Item, remaining seconds until transfer/ejection]
          */
         this.pendingItems = [];
+
+        /**
+         * The linked entity, used to speed up performance. This contains either
+         * the entrance or exit depending on the tunnel type
+         * @type {LinkedUndergroundBelt}
+         */
+        this.cachedLinkedEntity = null;
     }
 
     /**
@@ -87,7 +103,8 @@ export class UndergroundBeltComponent extends Component {
         }
 
         // Notice: We assume that for all items the travel distance is the same
-        const maxItemsInTunnel = (2 + travelDistance) / globalConfig.itemSpacingOnBelts;
+        const maxItemsInTunnel =
+            (2 + travelDistance) / globalConfig.beltItemSpacingByLayer[enumLayer.regular];
         if (this.pendingItems.length >= maxItemsInTunnel) {
             // Simulate a real belt which gets full at some point
             return false;
@@ -97,7 +114,8 @@ export class UndergroundBeltComponent extends Component {
         // This corresponds to the item ejector - it needs 0.5 additional tiles to eject the item.
         // So instead of adding 1 we add 0.5 only.
         // Additionally it takes 1 tile for the acceptor which we just add on top.
-        const travelDuration = (travelDistance + 1.5) / beltSpeed / globalConfig.itemSpacingOnBelts;
+        const travelDuration =
+            (travelDistance + 1.5) / beltSpeed / globalConfig.beltItemSpacingByLayer[enumLayer.regular];
 
         this.pendingItems.push([item, travelDuration]);
 

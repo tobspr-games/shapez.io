@@ -1,15 +1,13 @@
 /* typehints:start */
 import { Component } from "./component";
-import { GameRoot } from "./root";
 import { Entity } from "./entity";
 /* typehints:end */
 
+import { GameRoot, enumLayer } from "./root";
 import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
 import { DrawParameters } from "../core/draw_parameters";
 import { globalConfig } from "../core/config";
-import { Math_floor, Math_ceil } from "../core/builtins";
-
 export class GameSystemWithFilter extends GameSystem {
     /**
      * Constructs a new game system with the given component filter. It will process
@@ -41,8 +39,9 @@ export class GameSystemWithFilter extends GameSystem {
      * Calls a function for each matching entity on the screen, useful for drawing them
      * @param {DrawParameters} parameters
      * @param {function} callback
+     * @param {enumLayer=} layerFilter Can be null for no filter
      */
-    forEachMatchingEntityOnScreen(parameters, callback) {
+    forEachMatchingEntityOnScreen(parameters, callback, layerFilter = null) {
         const cullRange = parameters.visibleRect.toTileCullRectangle();
         if (this.allEntities.length < 100) {
             // So, its much quicker to simply perform per-entity checking
@@ -50,7 +49,9 @@ export class GameSystemWithFilter extends GameSystem {
             for (let i = 0; i < this.allEntities.length; ++i) {
                 const entity = this.allEntities[i];
                 if (cullRange.containsRect(entity.components.StaticMapEntity.getTileSpaceBounds())) {
-                    callback(parameters, entity);
+                    if (!layerFilter || entity.layer === layerFilter) {
+                        callback(parameters, entity);
+                    }
                 }
             }
             return;
@@ -71,11 +72,11 @@ export class GameSystemWithFilter extends GameSystem {
 
         let seenUids = new Set();
 
-        const chunkStartX = Math_floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math_floor(minY / globalConfig.mapChunkSize);
+        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
 
-        const chunkEndX = Math_ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math_ceil(maxY / globalConfig.mapChunkSize);
+        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
+        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
 
         const requiredComponents = this.requiredComponentIds;
 
@@ -93,10 +94,16 @@ export class GameSystemWithFilter extends GameSystem {
                 entityLoop: for (let i = 0; i < entities.length; ++i) {
                     const entity = entities[i];
 
+                    // Avoid drawing non-layer contents
+                    if (layerFilter && entity.layer !== layerFilter) {
+                        continue;
+                    }
+
                     // Avoid drawing twice
                     if (seenUids.has(entity.uid)) {
                         continue;
                     }
+
                     seenUids.add(entity.uid);
 
                     for (let i = 0; i < requiredComponents.length; ++i) {

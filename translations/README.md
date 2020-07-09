@@ -1,10 +1,9 @@
 # Translations
 
-The base translation is `base-en.yaml`. It will always contain the latest phrases and structure.
+The base language is English and can be found [here](base-en.yaml).
 
 ## Languages
 
--   [English (Base Language, Source of Truth)](base-en.yaml)
 -   [German](base-de.yaml)
 -   [French](base-fr.yaml)
 -   [Korean](base-kor.yaml)
@@ -19,7 +18,7 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Swedish](base-sv.yaml)
 -   [Chinese (Simplified)](base-zh-CN.yaml)
 -   [Chinese (Traditional)](base-zh-TW.yaml)
--   [Spanish (Latin America)](base-es.yaml)
+-   [Spanish](base-es.yaml)
 -   [Hungarian](base-hu.yaml)
 -   [Turkish](base-tr.yaml)
 -   [Japanese](base-ja.yaml)
@@ -28,6 +27,10 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 -   [Norwegian](base-no.yaml)
 -   [Kroatian](base-hr.yaml)
 -   [Danish](base-da.yaml)
+-   [Finnish](base-fi.yaml)
+-   [Catalan](base-cat.yaml)
+-   [Slovenian](base-sl.yaml)
+-   [Ukrainian](base-uk.yaml)
 
 (If you want to translate into a new language, see below!)
 
@@ -35,15 +38,39 @@ The base translation is `base-en.yaml`. It will always contain the latest phrase
 
 If you want to edit an existing translation (Fixing typos, Updating it to a newer version, etc), you can just use the github file editor to edit the file.
 
--   Find the file you want to edit (For example, `base-de.yaml` if you want to change the german translation)
--   Click on the file name on, there will be a small "edit" symbol on the top right
--   Do the changes you wish to do (Be sure **not** to translate placeholders!)
+-   Click the language you want to edit from the list above
+-   Click the small "edit" symbol on the top right
+
+<img src="https://i.imgur.com/gZnUQoe.png" alt="edit symbol" width="200">
+
+-   Do the changes you wish to do (Be sure **not** to translate placeholders! For example, `<amount> minutes` should get `<amount> Minuten` and **not** `<anzahl> Minuten`!)
+
 -   Click "Propose Changes"
--   I will review your changes and make comments, and eventually merge them so they will be in the next release!
+
+<img src="https://i.imgur.com/KT9ZFp6.png" alt="propose changes" width="200">
+
+-   Click "Create pull request"
+
+<img src="https://i.imgur.com/oVljvRE.png" alt="create pull request" width="200">
+
+-   I will review your changes and make comments, and eventually merge them so they will be in the next release! Be sure to regulary check the created pull request for comments.
 
 ## Adding a new language
 
-Please DM me on discord (tobspr#5407), so I can add the language template for you. It is not as simple as creating a new file.
+Please DM me on discord (tobspr#5407), so I can add the language template for you.
+
+Please use the following template:
+
+```
+Hey, could you add a new translation?
+
+Language: <Language, e.g. 'German'>
+Short code: <Short code, e.g. 'de', see below>
+Local Name: <Name of your Language, e.g. 'Deutsch'>
+```
+
+You can find the short code [here](https://www.science.co.il/language/Codes.php) (In column `Code 2`).
+
 PS: I'm super busy, but I'll give my best to do it quickly!
 
 ## Updating a language to the latest version

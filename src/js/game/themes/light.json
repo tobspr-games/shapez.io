@@ -9,8 +9,16 @@
         "selectionOutline": "rgba(74, 163, 223, 0.5)",
         "selectionBackground": "rgba(74, 163, 223, 0.2)",
 
-        "directionLock": "rgb(74, 237, 134)",
-        "directionLockTrack": "rgba(74, 237, 134, 0.2)",
+        "directionLock": {
+            "regular": {
+                "color": "rgb(74, 237, 134)",
+                "background": "rgba(74, 237, 134, 0.2)"
+            },
+            "wires": {
+                "color": "rgb(209, 107, 203)",
+                "background": "rgba(209, 107, 203, 0.2)"
+            }
+        },
 
         "colorBlindPickerTile": "rgba(50, 50, 50, 0.4)",
 
@@ -27,7 +35,6 @@
         },
 
         "wires": {
-            "overlay": "rgba(52, 150, 128, 0.8)",
             "pins": {
                 "energyEjector": "#c425d7"
             }

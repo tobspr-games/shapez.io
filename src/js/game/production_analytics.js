@@ -1,7 +1,7 @@
 import { GameRoot } from "./root";
 import { ShapeDefinition } from "./shape_definition";
 import { globalConfig } from "../core/config";
-import { BaseItem } from "./base_item";
+import { BaseItem, enumItemType } from "./base_item";
 import { ShapeItem } from "./items/shape_item";
 import { BasicSerializableObject } from "../savegame/serialization";
 
@@ -53,8 +53,8 @@ export class ProductionAnalytics extends BasicSerializableObject {
      * @param {BaseItem} item
      */
     onItemProduced(item) {
-        if (item instanceof ShapeItem) {
-            const definition = item.definition;
+        if (item.getItemType() === enumItemType.shape) {
+            const definition = /** @type {ShapeItem} */ (item).definition;
             const key = definition.getHash();
             const entry = this.history[enumAnalyticsDataSource.produced];
             entry[entry.length - 1][key] = (entry[entry.length - 1][key] || 0) + 1;

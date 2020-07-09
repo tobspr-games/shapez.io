@@ -1,5 +1,4 @@
 import { AnalyticsInterface } from "../analytics";
-import { Math_random, performanceNow } from "../../core/builtins";
 import { createLogger } from "../../core/logging";
 
 const logger = createLogger("ga");
