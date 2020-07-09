@@ -30,59 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io is een spel dat draait om het bouwen van fabrieken om steeds complexere vormen te produceren en deze productie te automatiseren in een oneindig groot speelveld. 
+        Door het leveren van de gevraagde vormen, kom je verder in het spel en ontgrendel je upgrades waar je fabriek sneller van wordt. 
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        De vraag naar vormen wordt steeds groter, wat betekent dat je de fabriek moet uitbreiden om de vraag tegemoet te komen. Om de juiste grondstoffen te delven zul je steeds verder in het [b]oneindig grote speelveld[/b] moeten gaan werken!
+        
+        Omdat simpele vormen snel saai worden, moet je kleuren mengen om de vormen te verven - Combineer rode, groene en blauwe grondstoffen om verschillende kleuren te produceren en gebruik deze om de vormen te verven, zodat je de vraag hiernaar tegemoet kan komen.
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Dit spel bevat 18 levels (Waar je al uren mee bezig zal zijn!), maar ik ben continu bezig om het spel uit te breiden - er staat veel in de planning!
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Wanneer je het spel koopt dan krijg je toegang tot de standalone versie. Deze heeft extra functies en je krijgt ook toegang tot nieuwe ontwikkelingen.
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
-
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
+        [b]Standalone Voordelen[/b]
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Donkere modus
+            [*] Oneindig veel markeringen 
+            [*] Oneindig veel savegames
+            [*] Extra opties
+            [*] Binnenkort: Kabels & Energie! Hopelijk vanaf eind juli 2020.
+            [*] Binnenkort: Meer Levels
+            [*] Helpt mij om shapez.io verder te ontwikkelen ❤️
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Geplande Updates[/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Ik update het spel regelmatig en probeer dit zeker eenmaal per week te doen!
+
+        [list]
+            [*] Verschillende speelvelden en uitdagingen (bijv. obstakels)
+            [*] Puzzels (Bezorg de gevraagde vorm binnen een afgesloten gebied of met bepaalde gebouwen)
+            [*] Een verhaalmodus waar gebouwen iets kosten
+            [*] Aanpasbare speelveldgenerator (Kies de hoeveelheid en grootte van grondstoffen, seed en meer)
+            [*] Meer soorten vormen
+            [*] Prestatieverbeteringen (Het spel loopt al vrij goed!)
+            [*] En nog veel meer!
+        [/list]
+
+        [b]Dit spel is open source![/b]
+
+        Iedreen kan bijdragen. Ik ben actief in de community en probeer naar alle suggesties en feedback te kijken en deze mee te nemen in de ontwikkeling.
+        Bekijk mijn trello-bord voor het volledige stappenplan!
 
         [b]Links[/b]
 
         [list]
             [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Stappenplan[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
             [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help met vertalen[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Officiële Discord - Chat met mij!
 
 global:
     loading: Laden
@@ -90,12 +90,15 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
+    
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: K
+        thousands: k
         millions: M
-        billions: G
+        billions: B
         trillions: T
 
     # Shown for infinitely big numbers
@@ -166,7 +169,7 @@ dialogs:
         deleteGame: Ik weet wat ik doe
         viewUpdate: Zie Update
         showUpgrades: Zie Upgrades
-        showKeybindings: Zie sneltoetsen
+        showKeybindings: Zie Sneltoetsen
 
     importSavegameError:
         title: Import Error
@@ -266,8 +269,8 @@ dialogs:
             Je hebt aangegeven dat je jouw basis wil exporteren als screenshot. Als je een grote basis hebt kan dit proces langzaam zijn en er zelfs voor zorgen dat je spel crasht!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Bevestig knippen
+        desc: Je kunt het je niet veroorloven om de selectie te plakken! Weet je zeker dat je het wil knippen?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -284,14 +287,14 @@ ingame:
         placeBuilding: Plaats gebouw
         createMarker: Plaats markering
         delete: Vernietig
-        pasteLastBlueprint: Plak de laatst gekopiëerde blauwdruk
-        lockBeltDirection: Maak gebruik van de lopende band planner
+        pasteLastBlueprint: Plak laatst gekopiëerde blauwdruk
+        lockBeltDirection: Gebruik lopende band planner
         plannerSwitchSide: Draai de richting van de planner
         cutSelection: Knip
         copySelection: Kopieer
-        clearSelection: Cancel selectie
+        clearSelection: Annuleer selectie
         pipette: Pipet
-        switchLayers: Switch layers
+        switchLayers: Wissel lagen
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -368,7 +371,7 @@ ingame:
         buttons:
             continue: Verder spelen
             settings: Opties
-            menu: Terug naar het menu
+            menu: Terug naar het Menu
 
     # Bottom left tutorial hints
     tutorialHints:
@@ -407,11 +410,11 @@ ingame:
         cyan: Cyaan
         white: Wit
         uncolored: Geen kleur
-        black: Black
+        black: Zwart
     shapeViewer:
         title: Lagen
         empty: Leeg
-        copyKey: Copy Key
+        copyKey: Kopiëer sleutel
 
 # All shop upgrades
 shopUpgrades:
@@ -521,25 +524,25 @@ buildings:
         levelShortcut: LVL
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Energiekabel
+            description: Voor transport van energie.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Kleur-omkeerder
+            description: Keert de kleur om van een voorwerp.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Lever
+        toGenerateEnergy: Voor
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Energiegenerator
+            description: Wekt energie op door vormen te consumeren.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Kabelsplijter
+            description: Splijt één kabel in twee.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Kabelvoeger
+            description: Voegt twee kabels samen tot één.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -590,7 +593,7 @@ storyRewards:
             Je hebt een compacte variant van de <strong>verdeler</strong> ontgrendeld - Dit voegt twee lopende banden samen tot één.
 
     reward_cutter_quad:
-        title: Quad Cutting
+        title: Quad Knippen
         desc: Je hebt een variant van de <strong>knipper</strong> ontgrendeld - Dit knipt vormen in <strong>vier stukken</strong> in plaats van twee!
 
     reward_painter_double:
@@ -602,7 +605,7 @@ storyRewards:
         desc: Je hebt een variant van de <strong>verver</strong> ontgrendeld - Het verft elk kwadrant van de vorm een andere kleur!
 
     reward_storage:
-        title: Opslag buffer
+        title: Opslagbuffer
         desc: Je hebt een variant van de <strong>vuilnisbak</strong> ontgrendeld - Het slaat voorwerpen op tot een zekere hoeveelheid!
 
     reward_freeplay:
@@ -822,11 +825,11 @@ keybindings:
         lockBeltDirection: Schakel lopende band-planner in
         switchDirectionLockSide: "Planner: Wissel van richting"
         pipette: Pipet
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Sluit Menu
+        switchLayers: Lagen omwisselen
+        advanced_processor: Kleur-omvormer
+        energy_generator: Energiegenerator
+        wire: Energiekabel
 
 about:
     title: Over dit spel

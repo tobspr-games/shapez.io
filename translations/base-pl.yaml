@@ -30,59 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io to gra o budowie fabryk, która automatyzuje tworzenie i przetwarzanie coraz bardziej złożonych kształtów na nieskończenie powiększającej się mapie.
+        Po dostarczeniu wymaganych kształtów będziesz postępować w grze i odblokowywać ulepszenia, aby przyspieszyć fabrykę.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Wraz ze wzrostem zapotrzebowania na kształty, będziesz musiał powiększyć swoją fabrykę, aby zaspokoić popyt - Nie zapominaj jednak o zasobach, będziesz musiał rozwinąć się na [b] nieskończonej mapie [/ b]!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Wkrótce będziesz musiał mieszać kolory i malować nimi kształty - Połącz zasoby kolorów czerwonego, zielonego i niebieskiego, aby uzyskać różne kolory i pomalować kształty, aby zaspokoić popyt.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Ta gra oferuje 18 poziomów progresywnych (które powinny być zajęte przez wiele godzin!), Ale ciągle dodam nowe treści - Wiele jest zaplanowanych!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Zakup gry daje dostęp do samodzielnej wersji, która ma dodatkowe funkcje, a także dostęp do nowo opracowanych funkcji.
 
-        [b]Standalone Advantages[/b]
+        [b]Samodzielne zalety[/b]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] Tryb ciemny
+            [*] Nieograniczone punkty trasy
+            [*] Nieograniczona liczba zapisanych gier
+            [*] Dodatkowe ustawienia
+            [*] Wkrótce: przewody i energia! Dążenie do (z grubsza) końca lipca 2020 r.
+            [*] Wkrótce: Więcej poziomów
+            [*] Pozwala mi dalej rozwijać shapez.io ❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]Przyszłe aktualizacje[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Aktualizuję grę bardzo często i staram się przesyłać aktualizacje przynajmniej co tydzień!
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Różne mapy i wyzwania (np. Mapy z przeszkodami)
+            [*] Puzzle (Dostarcz żądany kształt z ograniczonym obszarem / zestawem budynków)
+            [*] Tryb fabularny, w którym budynki kosztują
+            [*] Konfigurowalny generator map (Konfiguruj rozmiar / gęstość zasobu / kształtu, ziarno i więcej)
+            [*] Dodatkowe typy kształtów
+            [*] Ulepszenia wydajności (gra działa już całkiem dobrze!)
+            [*] I wiele więcej!
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Ta gra jest open source![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Każdy może się przyłączyć, jestem aktywnie zaangażowany w społeczność i staram się przejrzeć wszystkie sugestie i wziąć pod uwagę opinie tam, gdzie to możliwe.
+        Zapoznaj się z moją tablicą trello, aby zobaczyć pełną mapę drogową!
 
-        [b]Links[/b]
+        [b]Linki[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Oficjalna Discord[/url]
             [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Kod źródłowy (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Pomóż w tłumaczeniu[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Oficjalna Discord - Porozmawiaj ze mną!
 
 global:
     loading: Ładowanie
@@ -90,6 +90,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     # Translator note: We don't use SI size units for common speak, but if you want to keep it SI
@@ -254,8 +257,7 @@ dialogs:
     createMarker:
         title: Nowy Znacznik
         desc: Podaj nazwę znacznika. Możesz w niej zawrzeć <strong>kod kształtu</strong>, który możesz wygenerować <a href="https://viewer.shapez.io" target="_blank">tutaj</a>.
-        titleEdit: Edit Marker
-
+        titleEdit: Edytuj Znacznik
     markerDemoLimit:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną wersję gry dla nielimitowanych znaczników!
 
@@ -272,8 +274,8 @@ dialogs:
             Czy na pewno chcesz kontynuować?
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Potwierdź cięcie
+        desc: Nie możesz sobie pozwolić na wklejenie tego obszaru! Czy na pewno chcesz to wyciąć?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -355,7 +357,7 @@ ingame:
         # 2nd translator's note: I think translating this to "level" is better (and that's how Google Translate translates it :))
         tier: Poziom <x>
 
-        # The roman number for each tier
+        # The roman numeral for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
         maximumLevel: POZIOM MAKSYMALNY (Szybkość x<currentMult>)
@@ -774,14 +776,14 @@ settings:
                 100 budynków.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Tryb ślepy na kolory
+            description: Włącza różne narzędzia, które pozwalają ci grać, jeśli jesteś daltonistą.
         rotationByBuilding:
-            title: Rotation by building type
+            title: Obrót według typu budynku
             description: >-
-                Each building type remembers the rotation you last set it to individually.
-                This may be more comfortable if you frequently switch between placing
-                different building types.
+                Każdy typ budynku pamięta obrót, który ostatnio ustawiłeś indywidualnie.
+                Może to być wygodniejsze, jeśli często przełączasz się między umieszczaniem
+                różne typy budynków.
 
 keybindings:
     title: Klawiszologia
@@ -849,11 +851,11 @@ keybindings:
         switchDirectionLockSide: >-
             Planowanie taśmociągu: Zmień stronę
         pipette: Wybieranie obiektów z mapy
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Zamknij Menu
+        switchLayers: zamknij menu
+        advanced_processor: Kolor Falownika
+        energy_generator: Generator Energii
+        wire: Drut Energetyczny
 
 about:
     title: O Grze
