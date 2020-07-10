@@ -166,7 +166,7 @@ dialogs:
         restart: Reiniciar
         reset: Reset
         getStandalone: Obter versão completa
-        deleteGame: Sei o que faço
+        deleteGame: Sei o que estou fazendo
         viewUpdate: Atualizações
         showUpgrades: Ver melhorias
         showKeybindings: Controles
@@ -253,14 +253,14 @@ dialogs:
 
     createMarker:
         title: Nova Marcação
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Edit Marker
+        desc: Dê um nome com significado, também pode adicionar <strong>um pequeno código</strong> de uma forma. (Pode ser gerado <a href="https://viewer.shapez.io" target="_blank">aqui</a>)
+        titleEdit: Editar Marcador
     markerDemoLimit:
         desc: >-
             Você só pode criar dois marcadores na versão demo. Adquira a versão completa para marcadores ilimitados!
 
     massCutConfirm:
-        title: Confirm cut
+        title: Confirmar corte
         desc: >-
             Você está cortando vários objetos (<count> para ser exato)! Você quer continuar?
 
@@ -290,11 +290,11 @@ ingame:
         delete: Destruir
         selectBuildings: Selecionar área
         pasteLastBlueprint: Colar último projeto
-        lockBeltDirection: Enable belt planner
+        lockBeltDirection: Ativar planejador de correia
         plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
+        cutSelection: Cortar
+        copySelection: Copiar
+        clearSelection: Limpar Seleção
         pipette: Pipette
         switchLayers: Switch layers
 
