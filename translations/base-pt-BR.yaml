@@ -403,18 +403,18 @@ ingame:
                 Este <strong> NÃO </strong> é um jogo inativo! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.<br><br>Dica, segure <strong> SHIFT </strong> para colocar vários extratores e use <strong> R </strong> para girá-los.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
-        black: Black
+        red: Vermelho
+        green: Verde
+        blue: Azul
+        yellow: Amarelo
+        purple: Roxo
+        cyan: Ciano
+        white: Branco
+        black: Preto
+        uncolored: Sem cor
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Camadas
+        empty: Vazio
         copyKey: Copy Key
 
 # All shop upgrades
@@ -527,25 +527,25 @@ buildings:
         levelShortcut: LVL
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: &wire Cabo de Energia
+            description: Permite transportar energia.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Inversor de Cor
+            description: Aceita uma cor ou forma e a inverte.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Entregar
+        toGenerateEnergy: Para
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Gerador de Energia
+            description: Gera energia ao consumir formas.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: &wire_crossings Divisor de cabos
+            description: Divide um cabo em dois.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Combinador de Cabos
+            description: Combina dois cabos de energia em um.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -627,7 +627,7 @@ storyRewards:
     no_reward_freeplay:
         title: Próximo nível
         desc: >-
-            Parabéns! Não se esqueça, existe muita coisa planejada para a versão completa.
+            Parabéns! Aliás, mais conteúdo vindo na versão completa!
 
 settings:
     title: opções
@@ -696,12 +696,12 @@ settings:
         alwaysMultiplace:
             title: Multiplicidade
             description: >-
-                Se ativado, todos os edifícios permanecerão selecionados após o posicionamento até que você o cancele. Isso é equivalente a manter SHIFT permanentemente.
+                Se ativado, todas as construções permanecerão selecionadas após o posicionamento até que você a cancele. Isso é equivalente a pressionar  SHIFT permanentemente.
 
         offerHints:
             title: Dicas e tutoriais
             description: >-
-                Se serão oferecidas dicas e tutoriais enquanto estiver jogando.
+                Se ativado, oferece dicas e tutoriais enquanto se joga. Além disso, esconde certos elementos da interface até certo ponto, para facilitar o começo do jogo.
 
         language:
             title: Idioma
@@ -794,7 +794,7 @@ keybindings:
         menuOpenStats: Estatísticas
 
         toggleHud: Ocultar Interface
-        toggleFPSInfo: Mostar FPS
+        toggleFPSInfo: Mostrar FPS
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -826,12 +826,12 @@ keybindings:
         mapMoveFaster: Mover mais rápido
         lockBeltDirection: Ativar planejador de correia
         switchDirectionLockSide: "Planejador: Mudar de lado"
-        pipette: Pipeta
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        pipette: Conta-Gotas
+        menuClose: Fechar Menu
+        switchLayers: Alternar Camadas
+        advanced_processor: *advanced_processor
+        energy_generator: *energy_generator
+        wire: *wire
 
 about:
     title: Sobre o jogo
