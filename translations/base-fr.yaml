@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
+    shortText: shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la transformation de formes de plus en plus complexes sur une carte infinie.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,38 +30,39 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io est un jeu ou il faut construire des usines pour automatiser la création et la transformation de formes de plus en plus complexes sur une carte infinie.
+        shapez.io est un jeu où il faut construire des usines pour automatiser la création et la transformation de formes de plus en plus complexes sur une carte infinie.
+        
         En livrant les bonnes formes tu vas progresser dans le jeu et débloquer des améliorations pour accélerer ton usine.
 
-        Comme la demande de formes augmente, il vas falloir agrandir ton usine pour produire plus - N'oublie pas les resources, il vas falloir s'étendre tout autour de la [b]carte infinie[/b]!
+        Comme la demande de formes augmente, il vas falloir agrandir ton usine pour produire plus - N'oublie pas les resources, il va falloir s'étendre tout autour de la [b]carte infinie[/b]!
 
-        Puis il vas falloir mélanger les couleurs et peindres tes formes avec - Combine du rouge, du bleu et du vert pour produire différente couleurs et peindre des formes pour satisfaire la demande.
+        Puis il va falloir mélanger les couleurs et peindre tes formes avec ces dernières - Combine du rouge, du bleu et du vert pour produire différentes couleurs et peindre des formes pour satisfaire la demande.
 
-        Ce jeu propose 18 niveaux progressifs (qui devraient vous occuper pendant des heures!) et j'ajoute constament plus de contenu - Il y en as beaucoup qui arrive!
+        Ce jeu propose 18 niveaux progressifs (qui devraient vous occuper pendant des heures!) et j'ajoute constamment plus de contenu - Il y en a beaucoup qui arrive!
 
-        Acheter le jeu te donnes accès à la version hors-ligne qui as plus de contenu et tu recevras l'accès aux nouvelles fonctionnalités.
+        Acheter le jeu te donne accès à la version hors-ligne avec des fonctions additionnelles, tu recevras l'accès aux nouvelles fonctionnalités.
 
         [b]Avantages de la version hors-ligne[/b]
 
         [list]
             [*] Mode sombre
-            [*] Balises infinies
-            [*] Sauvegardes infinies
-            [*] Plus de setting
-            [*] Arrive bientôt: Cables et éléctricité! Sort en Juillet 2020.
+            [*] Points de repère illimités
+            [*] Sauvegardes illimitées
+            [*] Configurations additionelles
+            [*] Arrive bientôt: Câbles et éléctricité! Sortie prévue en Juillet 2020.
             [*] Arrive bientôt: Plus de niveaux
             [*] Me permet de plus déveloper le jeu ❤️
         [/list]
 
-        [b]Mises à jours futures[/b]
+        [b]Mises à jour futures[/b]
 
-        Je fait souvent des mises à jours et essaye d'en sortir une part semaine!
+        Je fais souvent des mises à jours et essaye d'en sortir une part semaine!
 
         [list]
             [*] Plusieurs cartes et challenges (e.g. carte avec des obstacles)
             [*] Puzzles (Livrer les formes avec des batiments limités/une carte limitée)
-            [*] Un mode histoire ou les bâtiments on un coût
-            [*] Générateur de carte configurable (Configure les ressources/formes leur taille, densité et plus)
+            [*] Un mode histoire ou les bâtiments ont un coût
+            [*] Générateur de carte configurable (Configure les ressources/formes, taille/densité, noyau générateur et plus)
             [*] Plus de formes
             [*] Meilleures performances (Le jeu est déja très optimisé!)
             [*] Et bien plus!
@@ -70,7 +71,7 @@ steamPage:
         [b]Ce jeu est open source![/b]
 
         Tout le monde peut contribuer, je suis très impliqué dans la communeauté et essaye de regarder toutes les suggestions et prendre les retours si possible.
-        Vas voir mon trello pour plus d'informations!
+        Va voir mon trello pour plus d'informations!
 
         [b]Liens[/b]
 
@@ -82,14 +83,14 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Aide à traduire[/url]
         [/list]
 
-    discordLink: Discord officiel - Parles avec moi!
+    discordLink: Discord officiel - Parle avec moi!
 
 global:
     loading: Chargement
     error: Erreur
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: "."
 
     # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: ","
@@ -103,7 +104,7 @@ global:
         trillions: T
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: inf.
 
     time:
         # Used for formatting past time dates
@@ -128,7 +129,7 @@ global:
         control: CTRL
         alt: ALT
         escape: ESC
-        shift: SHIFT
+        shift: MAJ
         space: ESPACE
 
 demoBanners:
@@ -141,9 +142,9 @@ mainMenu:
     play: Jouer
     changelog: Historique
     importSavegame: Importer
-    openSourceHint: Ce jeu est open source !
+    openSourceHint: Ce jeu est open source!
     discordLink: Serveur Discord officiel
-    helpTranslate: Contribuez à la traduction !
+    helpTranslate: Contribuez à la traduction!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -167,7 +168,7 @@ dialogs:
         reset: Réinitialiser
         getStandalone: Se procurer la version complète
         deleteGame: Je sais ce que je fais
-        viewUpdate: Voir les mises-à-jour
+        viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
 
@@ -189,7 +190,7 @@ dialogs:
     confirmSavegameDelete:
         title: Confirmez la suppression
         text: >-
-            Êtes-vous certains de vouloir supprimer votre partie ?
+            Êtes-vous certains de vouloir supprimer votre partie?
 
     savegameDeletionError:
         title: Impossible de supprimer
@@ -203,7 +204,7 @@ dialogs:
 
     editKeybinding:
         title: Changer les contrôles
-        desc: Appuyez sur la touche que vous voulez assigner, ou Escape pour annuler.
+        desc: Appuyez sur la touche que vous voulez assigner, ou Échap pour annuler.
 
     resetKeybindingsConfirmation:
         title: Réinitialiser les contrôles
@@ -211,18 +212,18 @@ dialogs:
 
     keybindingsResetOk:
         title: Réinitialisation des contrôles
-        desc: Les contrôles ont été réinitialisés dans leur état par défaut respectifs !
+        desc: Les contrôles ont été réinitialisés dans leur état par défaut respectifs!
 
     featureRestriction:
         title: Version démo
-        desc: Vous avez essayé d'accéder à la fonction (<feature>) qui n'est pas disponible dans la démo. Considérez l'achat de la version complète pour une expérience optimale !
+        desc: Vous avez essayé d'accéder à la fonction (<feature>) qui n'est pas disponible dans la démo. Considérez l'achat de la version complète pour une expérience optimale!
 
     oneSavegameLimit:
         title: Sauvegardes limitées
-        desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci d'effacer celle en cours ou alternativement de vous procurer la version complète !
+        desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci d'effacer celle en cours ou de vous procurer la version complète!
 
     updateSummary:
-        title: Nouvel mise-à-jour !
+        title: Nouvelle mise à jour!
         desc: >-
             Voici les modifications depuis votre dernière session:
 
@@ -235,44 +236,44 @@ dialogs:
     massDeleteConfirm:
         title: Confirmation de suppression
         desc: >-
-            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Êtes vous certains de vouloir faire cela ?
+            Vous vous apprêtez supprimer beaucoup de bâtiments (<count> pour être exact)! Êtes-vous certain de vouloir faire cela?
 
     massCutConfirm:
-        title: Confirmer la coupure
+        title: Confirmer la coupe
         desc: >-
-            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être précis) ! Êtes-vous
-            certains de vouloir faire cela ?
+            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être exact)! Êtes-vous
+            certain de vouloir faire cela?
 
     blueprintsNotUnlocked:
         title: Pas encore débloqué
         desc: >-
-            Les patrons n'ont pas encore étés débloqués ! Terminez encore quelques niveaux pour y avoir accès.
+            Les patrons n'ont pas encore étés débloqués! Completez le niveau 12 pour y avoir accès.
 
     keybindingsIntroduction:
         title: Raccourcis utiles
         desc: >-
-            Le jeu a plein de raccourcis facilitant la construction de grandes usines.
-            En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong> !<br><br>
+            Le jeu a de nombreux raccourcis facilitant la construction de grandes usines.
+            En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Glisser: Sélectionne une zone à copier / effacer.<br>
             <code class='keybinding'>SHIFT</code>: Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
             <code class='keybinding'>ALT</code>: Inverse l'orientation des convoyeurs placés.<br>
 
     createMarker:
-        title: Nouvelle balise
-        desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci </strong> d'une forme (Que vous pouvez générer <a href="https://viewer.shapez.io" target="_blank">ici</a>)
+        title: Nouveau point de repère
+        desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci</strong> d'une forme (Que vous pouvez générer <a href="https://viewer.shapez.io" target="_blank">ici</a>)
         titleEdit: Edit Marker
 
     markerDemoLimit:
-        desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire autant que vous voulez !
+        desc: Vous ne pouvez créer que deux points de repère dans la démo. Achetez la version complète pour en créer autant que vous voulez!
 
     exportScreenshotWarning:
         title: Exporter une capture d'écran
         desc: >-
-            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
+            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer lent pour une grande base, voire même planter votre jeu!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Confirmer la coupe
+        desc: Vous n'avez pas assez de ressources pour coller cette zone. Êtes-vous sûr de vouloir la couper?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -287,16 +288,16 @@ ingame:
         disableAutoOrientation: Désactiver l'orientation automatique
         toggleHud: Basculer l'affichage tête haute (ATH)
         placeBuilding: Placer un bâtiment
-        createMarker: Créer une balise
+        createMarker: Créer un point de repère
         delete: Supprimer
         pasteLastBlueprint: Copier le dernier patron
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
-        plannerSwitchSide: Échanger la direction du plannificateur
+        plannerSwitchSide: Changer la direction du plannificateur
         cutSelection: Couper
         copySelection: Copier
         clearSelection: Effacer la sélection
         pipette: Pipette
-        switchLayers: Switch layers
+        switchLayers: Intervertir la couche
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -324,12 +325,12 @@ ingame:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Niveau <level>
         completed: Terminé
-        unlockText: <reward> débloqué !
+        unlockText: <reward> débloqué!
         buttonNextLevel: Niveau suivant
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: Une nouvelle amélioration est disponible !
+        newUpgrade: Une nouvelle amélioration est disponible!
         gameSaved: Votre partie a été sauvegardée.
 
     # The "Upgrades" window
@@ -353,7 +354,7 @@ ingame:
                 description: Affiche le nombre de formes stockées dans votre bâtiment central.
             produced:
                 title: Produit
-                description: Affiche tous les formes que votre usine entière produit, en incluant les formes intermédiaires.
+                description: Affiche toutes les formes que votre usine produit, en incluant les formes intermédiaires.
             delivered:
                 title: Délivré
                 description: Affiche les formes qui ont été livrées dans votre centre.
@@ -376,7 +377,7 @@ ingame:
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Besoin d'aide ?
+        title: Besoin d'aide?
         showHint: Indice
         hideHint: Fermer
 
@@ -386,10 +387,10 @@ ingame:
 
     # Map markers
     waypoints:
-        waypoints: Balise
+        waypoints: Point de repère
         hub: Centre
-        description: Cliquez une balise pour vous y rendre, clic-droit pour l'effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer une sur l'endroit pointé.
-        creationSuccessNotification: La balise a été créée.
+        description: Cliquez un point de repère pour vous y rendre, clic-droit pour l'effacer.<br><br>Appuyez sur <keybinding> pour créer un point de repère sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer un sur l'endroit pointé.
+        creationSuccessNotification: Le point de repère a été créé.
 
     # Interactive tutorial
     interactiveTutorial:
@@ -397,10 +398,10 @@ ingame:
         hints:
             1_1_extractor: Placez un <strong>extracteur</strong> sur une <strong>forme en cercle</strong> pour l'extraire !
             1_2_conveyor: >-
-                Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
+                Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris!
 
             1_3_expand: >-
-                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
     colors:
         red: Rouge
@@ -411,11 +412,11 @@ ingame:
         cyan: Cyan
         white: Blanc
         uncolored: Non coloré
-        black: Black
+        black: Noir
     shapeViewer:
         title: Calques
         empty: Vide
-        copyKey: Copy Key
+        copyKey: Copier raccourci
 
 # All shop upgrades
 shopUpgrades:
@@ -440,7 +441,7 @@ buildings:
     belt:
         default:
             name: &belt Convoyeur
-            description: Transporte les objects, maintenez et faites glisser pour en placer plusieurs.
+            description: Transporte les objets, maintenez et faites glisser pour en placer plusieurs.
 
     miner: # Internal name for the Extractor
         default:
@@ -454,11 +455,11 @@ buildings:
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Tunnel
-            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
+            description: Permet de faire passer des ressources en dessous des bâtiment et des convoyeurs.
 
         tier2:
             name: Tunnel Niveau II
-            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
+            description: Permet de faire passer des ressources en dessous des bâtiments et des convoyeurs.
 
     splitter: # Internal name for the Balancer
         default:
@@ -476,18 +477,18 @@ buildings:
     cutter:
         default:
             name: &cutter Découpeur
-            description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite l'autre ou sinon, gare au blocage !</strong>
+            description: Coupe une forme de haut en bas et restitue les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruite l'autre ou sinon, gare au blocage!</strong>
         quad:
             name: Découpeur (Quatre)
-            description: Coupe une forme en quatre parties. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruite les autres ou sinon, gare au blocage !</strong>
+            description: Coupe une forme en quatre parties. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruite les autres ou sinon, gare au blocage!</strong>
 
     rotater:
         default:
             name: &rotater Pivoteur
-            description: Fait pivoter une forme de 90 degrés vers la droite.
+            description: Pivote une forme de 90 degrés vers la droite.
         ccw:
             name: Pivoteur inversé
-            description: Fait pivoter une forme de 90 degrés vers la gauche.
+            description: Pivote une forme de 90 degrés vers la gauche.
 
     stacker:
         default:
@@ -551,11 +552,11 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Découper des formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation !<br><br>Assurez-vous de vous débarasser des déchets, sinon <strong>gare au blocage</strong> - À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: Vous venez de débloquer le <strong>découpeur</strong> - il coupe des formes en deux <strong>de haut en bas</strong> quel que soit son orientation!<br><br>Assurez-vous de vous débarasser des déchets, sinon <strong>gare au blocage</strong> - À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez!
 
     reward_rotater:
         title: Rotation
-        desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90 degrés vers la droite.
+        desc: Le <strong>pivoteur</strong> a été débloqué! Il pivote les formes de 90 degrés vers la droite.
 
     reward_painter:
         title: Peintre
@@ -867,4 +868,4 @@ demo:
 # French translation version v0.5 based on english v1.1.8 by Didier WEERTS 'The Corsaire'
 #
 
-# French translation completed (and corrected) by Pascal Grossé and Withers001
+# French translation completed (and corrected) by Pascal Grossé, Withers001 and Alexandre Pereira
