@@ -19,21 +19,21 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const processorComp = entity.components.ItemProcessor;
             const ejectorComp = entity.components.ItemEjector;
 
-            // First of all, process the current recipe
-            processorComp.secondsUntilEject = Math.max(
-                0,
-                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
-            );
+            if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
+                // First of all, process the current recipe
+                processorComp.secondsUntilEject = Math.max(
+                    0,
+                    processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
+                );
 
-            if (G_IS_DEV && globalConfig.debug.instantProcessors) {
-                processorComp.secondsUntilEject = 0;
-            }
+                if (G_IS_DEV && globalConfig.debug.instantProcessors) {
+                    processorComp.secondsUntilEject = 0;
+                }
 
-            if (
-                processorComp.secondsUntilEject === 0 && // it was processed in time
-                processorComp.itemsToEject.length === 0 // Check if we have an empty queue and can start a new charge
-            ) {
-                if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
+                if (
+                    processorComp.secondsUntilEject === 0 && // it was processed in time
+                    processorComp.itemsToEject.length === 0 // Check if we have an empty queue and can start a new charge
+                ) {
                     const energyConsumerComp = entity.components.EnergyConsumer;
                     if (energyConsumerComp) {
                         // Check if we have enough energy
