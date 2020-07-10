@@ -21,17 +21,15 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
                 // First of all, process the current recipe
-                processorComp.secondsUntilEject = Math.max(
-                    0,
-                    processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
-                );
+                processorComp.secondsUntilEject =
+                    processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds;
 
                 if (G_IS_DEV && globalConfig.debug.instantProcessors) {
                     processorComp.secondsUntilEject = 0;
                 }
 
                 if (
-                    processorComp.secondsUntilEject === 0 && // it was processed in time
+                    processorComp.secondsUntilEject <= 0 && // it was processed in time
                     processorComp.itemsToEject.length === 0 // Check if we have an empty queue and can start a new charge
                 ) {
                     const energyConsumerComp = entity.components.EnergyConsumer;
@@ -45,6 +43,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         this.startNewCharge(entity);
                     }
                 }
+            } else {
+                // Remove time carryover if processing is not continuous
+                const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
+                processorComp.secondsUntilEject = 1 / baseSpeed;
             }
 
             // Check if we have any finished items we can eject
@@ -104,7 +106,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        processorComp.secondsUntilEject = 1 / baseSpeed;
+        processorComp.secondsUntilEject += 1 / baseSpeed;
 
         /** @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>} */
         const outItems = [];
