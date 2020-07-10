@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io é um jogo sobre construir fábricas, automatizando a criação e combinação de formas cada vez mais complexas num mapa infinito.
+    shortText: shapez.io é um jogo sobre construir fábricas, automatizando a criação e combinação de peças cada vez mais complexas num mapa infinito.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -229,7 +229,7 @@ dialogs:
     upgradesIntroduction:
         title: Desbloquear melhorias
         desc: >-
-            Todas as formas que você produz podem ser usadas para desbloquear melhorias - <strong> Não destrua suas antigas fábricas!!</strong>
+            Todas as peças que você produz podem ser usadas para desbloquear melhorias - <strong> Não destrua suas antigas fábricas!!</strong>
             O guia de melhorias pode ser encontrado no canto superior direito da tela.
 
     massDeleteConfirm:
@@ -295,8 +295,8 @@ ingame:
         cutSelection: Cortar
         copySelection: Copiar
         clearSelection: Limpar Seleção
-        pipette: Pipette
-        switchLayers: Switch layers
+        pipette: Conta-Gotas
+        switchLayers: Alternar Camadas
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -350,14 +350,14 @@ ingame:
         dataSources:
             stored:
                 title: Estoque
-                description: Exibindo a quantidade de formas armazenadas em seu edifício central.
+                description: Exibindo a quantidade de peças armazenadas em sua construção central.
             produced:
                 title: Produção
-                description: Exibindo todas as formas que toda a sua fábrica produz, incluindo produtos intermediários..
+                description: Exibindo todas as peças que toda a sua fábrica produz, incluindo produtos intermediários..
             delivered:
                 title: Entregue
-                description: Exibindo formas entregues ao seu edifício central..
-        noShapesProduced: Nenhuma forma foi produzida até o momento.
+                description: Exibindo peças entregues na sua construção central.
+        noShapesProduced: Nenhuma peça foi produzida até o momento.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / m
@@ -415,7 +415,7 @@ ingame:
     shapeViewer:
         title: Camadas
         empty: Vazio
-        copyKey: Copy Key
+        copyKey: Copiar Chave
 
 # All shop upgrades
 shopUpgrades:
@@ -428,11 +428,11 @@ shopUpgrades:
         description: Velocidade x<currentMult> → x<newMult>
 
     processors:
-        name: Corte, Rotação e Empilhamento
+        name: Corte, Rotação & Montagem
         description: Velocidade x<currentMult> → x<newMult>
 
     painting:
-        name: Mistura de cores e pintura
+        name: Mistura & Pintura
         description: Velocidade x<currentMult> → x<newMult>
 
 # Buildings and their name / description
@@ -445,54 +445,54 @@ buildings:
     miner: # Internal name for the Extractor
         default:
             name: &miner Extrator
-            description: Coloque sobre uma forma ou cor para extraí-la.
+            description: Coloque sobre uma peça ou cor para extraí-la.
 
         chainable:
-            name: Extrator em Cadeia
-            description: Coloque sobre uma forma ou cor para extraí-la. Pode ser ligado a outros extratores.
+            name: Extrator (em Cadeia)
+            description: Coloque sobre uma peça ou cor para extraí-la. Pode ser ligado a outros extratores.
 
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Túnel
-            description: Permite transportar recursos sob construções.
+            description: Permite transportar recursos por baixo de construções e esteiras.
 
         tier2:
             name: Túnel Classe II
-            description: Permite transportar recursos sob construções.
+            description:  Permite transportar recursos por baixo de construções e esteiras.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balanceador
+            name: &splitter Distribuidor
             description: Multifuncional - Distribui uniformemente todas as entradas em todas as saídas.
 
         compact:
-            name: Balanceador (compacto)
-            description: Mescla duas esteiras transportadoras em uma.
+            name: Misturador (compacto)
+            description: Une duas esteiras transportadoras em uma.
 
         compact-inverse:
-            name: Balanceador (compacto)
-            description: Mescla duas esteiras transportadoras em uma.
+            name: Misturador (compacto)
+            description: Une duas esteiras transportadoras em uma.
 
     cutter:
         default:
             name: &cutter Cortador
-            description: Corta as formas verticalmente e produz as duas metades. <strong> Se você usar apenas uma parte, não se esqueça de destruir a outra parte, ou ela irá parar a produção! </strong>
+            description: Corta as peças verticalmente e produz as duas metades. <strong> Se você usar apenas uma parte, não se esqueça de destruir a outra parte, ou ela irá parar a produção! </strong>
         quad:
             name: Cortador (Quádruplo)
-            description: Corta as formas em quatro partes. <strong> Se você usar apenas uma parte, não se esqueça de destruir as outras, ou ela irá parar a produção! </strong>
+            description: Corta as peças em quatro partes. <strong> Se você usar apenas uma parte, não se esqueça de destruir as outras, ou ela irá parar a produção! </strong>
 
     rotater:
         default:
             name: &rotater Rotacionador
-            description: Gira as formas no sentido horário em 90 graus.
+            description: Gira as peças no sentido horário em 90 graus.
         ccw:
             name: Rotacionador (Anti-horário)
-            description: Gira as formas no sentido anti-horário em 90 graus.
+            description: Gira as peças no sentido anti-horário em 90 graus.
 
     stacker:
         default:
             name: &stacker Empilhador
-            description: Empilha os dois itens. Se eles não puderem ser mesclados, o item direito será colocado acima do item esquerdo.
+            description: Empilha os dois itens. Se eles não puderem ser unidos, o item direito será colocado acima do item esquerdo.
 
     mixer:
         default:
@@ -502,13 +502,13 @@ buildings:
     painter:
         default:
             name: &painter Pintor
-            description: &painter_desc Colore a forma inteira na entrada esquerda com a cor da entrada direita.
+            description: &painter_desc Colore a peça inteira na entrada esquerda com a cor da entrada direita.
         double:
             name: Pintor (Duplo)
-            description: Colore as duas formas na entrada esquerda com a cor da entrada direita.
+            description: Colore as duas peças na entrada esquerda com a cor da entrada direita.
         quad:
             name: Pintor (Quádruplo)
-            description: Permite colorir cada quadrante da forma com uma cor diferente.
+            description: Permite colorir cada quadrante da peça com uma cor diferente.
         mirrored:
             name: *painter
             description: *painter_desc
@@ -532,35 +532,35 @@ buildings:
     advanced_processor:
         default:
             name: Inversor de Cor
-            description: Aceita uma cor ou forma e a inverte.
+            description: Aceita uma cor ou peça e a inverte.
     energy_generator:
         deliver: Entregar
         toGenerateEnergy: Para
         default:
             name: Gerador de Energia
-            description: Gera energia ao consumir formas.
+            description: Gera energia ao consumir peças.
     wire_crossings:
         default:
             name: &wire_crossings Divisor de cabos
             description: Divide um cabo em dois.
         merger:
-            name: Combinador de Cabos
-            description: Combina dois cabos de energia em um.
+            name: Misturador de Cabos
+            description: Une dois cabos de energia em um.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cortando formas
-        desc: Voce desbloqueou <strong>cortador</strong> - corte de formas pela metade <strong>verticalmente</strong> independentemente de sua orientação!<br><br> Certifique-se de se livrar do lixo, ou então <strong> ele irá parar a produção </strong> - Para esse propósito, eu lhe dei um lixo, que destrói tudo o que você coloca nele.
+        title: Cortando peças
+        desc: Voce desbloqueou <strong>cortador</strong> - corte de peças pela metade <strong>verticalmente</strong> independentemente de sua orientação!<br><br> Certifique-se de se livrar do lixo, ou então <strong> ele irá parar a produção </strong> - Para esse propósito, eu lhe dei uma lixeira, que destrói tudo o que você coloca nela!
 
     reward_rotater:
         title: Rotação
-        desc: O <strong> rotacionador </strong> foi desbloqueado! Gira as formas no sentido horário em 90 graus.
+        desc: O <strong> rotacionador </strong> foi desbloqueado! Gira as peças no sentido horário em 90 graus.
 
     reward_painter:
         title: Pintura
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            O <strong>Pintor</strong> foi desbloqueado - Extrai alguns pigmentos coloridos (assim como você fez com as peças) e combina-os com uma peça no pintor para os colorir!<br><br>PS: Se for daltônico, existe um <strong>modo daltônico</strong> nas definições!
 
     reward_mixer:
         title: Misturando cores
@@ -568,11 +568,11 @@ storyRewards:
 
     reward_stacker:
         title: Empilhador
-        desc: Agora você pode combinar formas com o <strong>empilhador</strong>! Ambas as entradas são combinadas e, se puderem ser colocadas próximas uma da outra, serão <strong> fundidas </strong>. Caso contrário, a entrada direita é <strong>empilhada em cima</strong> da entrada esquerda!
+        desc: Agora você pode combinar peças com o <strong>empilhador</strong>! Ambas as entradas são combinadas e, se puderem ser colocadas próximas uma da outra, serão <strong> fundidas </strong>. Caso contrário, a entrada direita é <strong>empilhada em cima</strong> da entrada esquerda!
 
     reward_splitter:
-        title: Balanceador
-        desc: O <strong>balanceador</strong> multifuncional foi desbloqueado - pode ser usado para construir fábricas maiores <strong>dividindo e unindo itens</strong> em múltiplas esteiras!<br><br>
+        title: Distribuidor
+        desc: O <strong>Distribuidor</strong> multifuncional foi desbloqueado - pode ser usado para construir fábricas maiores <strong>dividindo e unindo itens</strong> em múltiplas esteiras!<br><br>
 
     reward_tunnel:
         title: Túnel
@@ -591,20 +591,20 @@ storyRewards:
         desc: Você desbloqueou uma nova variante do <strong>túnel</strong> - ele tem um <strong>maior alcance</strong>, e também pode atravessar outros túneis na mesma linha!
 
     reward_splitter_compact:
-        title: Balanceador compacto
-        desc: Você desbloqueou uma variante compacta do <strong>balanceador</strong> - ele aceita duas entradas e as mescla em uma!
+        title: Distribuidor compacto
+        desc: Você desbloqueou uma variante compacta do <strong>Distribuidor</strong> - ele aceita duas entradas e as une em uma!
 
     reward_cutter_quad:
         title: Cortador quádruplo
-        desc: Você desbloqueou uma variante do <strong>cortador</strong> - permite cortar formas em <strong>quatro partes</strong> em vez de apenas duas!
+        desc: Você desbloqueou uma variante do <strong>cortador</strong> - permite cortar peças em <strong>quatro partes</strong> em vez de apenas duas!
 
     reward_painter_double:
         title: Pintura dupla
-        desc: Você desbloqueou uma variante do <strong>pintor</strong> - funciona como o pintor regular, mas processa <strong> duas formas ao mesmo tempo </strong>, consumindo apenas uma cor em vez de duas!
+        desc: Você desbloqueou uma variante do <strong>pintor</strong> - funciona como o pintor regular, mas processa <strong> duas peças ao mesmo tempo </strong>, consumindo apenas uma cor em vez de duas!
 
     reward_painter_quad:
         title: Pintura quádrupla
-        desc: Você desbloqueou uma variante do <strong>pintor</strong> - permite pintar cada parte da forma individualmente!
+        desc: Você desbloqueou uma variante do <strong>pintor</strong> - permite pintar cada parte da peça individualmente!
 
     reward_storage:
         title: Acúmulo de excesso
@@ -612,17 +612,17 @@ storyRewards:
 
     reward_freeplay:
         title: Modo Livre
-        desc: Você conseguiu! Você desbloqueou o <strong>modo de jogo livre</strong>! Isso significa que as formas agora são geradas aleatoriamente! (Não se preocupe, mais conteúdo está planejado para o jogo completo!)
+        desc: Você conseguiu! Você desbloqueou o <strong>modo de jogo livre</strong>! Isso significa que as peças agora são geradas aleatoriamente! (Não se preocupe, mais conteúdo está planejado para o jogo completo!)
 
     reward_blueprints:
         title: Projetos
-        desc: Agora você pode <strong>copiar e colar</strong> partes de sua fábrica! Selecione uma área (mantenha pressionada a tecla CTRL e arraste com o mouse) e pressione 'C' para copiá-la. <br><br>Colar <strong>não é de graça</strong>, é necessário produzir <strong>formas de projeto</strong> para pagar! (Aquelas que você acabou de entregar).
+        desc: Agora você pode <strong>copiar e colar</strong> partes de sua fábrica! Selecione uma área (mantenha pressionada a tecla CTRL e arraste com o mouse) e pressione 'C' para copiá-la. <br><br>Colar <strong>não é de graça</strong>, é necessário produzir <strong>peças do projeto</strong> para pagar! (Aquelas que você acabou de entregar).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: Próximo nível
         desc: >-
-            Este nível não lhe deu nenhuma recompensa, mas em breve?! <br><br>PS: Melhor não destruir sua fábrica existente - Você precisa de <strong>todas</strong> essas formas posteriormente mais tarde para <strong>desbloquear atualizações</strong>!
+            Este nível não lhe deu nenhuma recompensa, mas em breve?! <br><br>PS: Melhor não destruir sua fábrica existente - Você precisa de <strong>todas</strong> essas peças posteriormente mais tarde para <strong>desbloquear atualizações</strong>!
 
     no_reward_freeplay:
         title: Próximo nível
@@ -675,9 +675,9 @@ settings:
                 Se ligado o jogo fica mudo
 
         musicMuted:
-            title: Musica
+            title: Música
             description: >-
-                Se ligado, a musica fica muda.
+                Se ligado, a música fica muda.
 
         theme:
             title: Tema
@@ -742,9 +742,9 @@ settings:
                 twenty_minutes: 20 Minutos
                 disabled: Desativado
         compactBuildingInfo:
-            title: Informações compactas sobre edifícios
+            title: Informações compactas sobre construções
             description: >-
-                Reduz as caixas de informações dos edifícios, mostrando apenas suas proporções.
+                Reduz as caixas de informações dos construções, mostrando apenas suas proporções.
                 Caso contrário, uma descrição e imagem são mostradas.
         disableCutDeleteWarnings:
             title: Desativar avisos de recorte / exclusão
@@ -794,18 +794,25 @@ keybindings:
         menuOpenStats: Estatísticas
 
         toggleHud: Ocultar Interface
-        toggleFPSInfo: Mostrar FPS
+        toggleFPSInfo: Mostrar FPS e Debug Info
+        switchLayers: Alternar Camadas
+        exportScreenshot: Exportar Base inteira como Imagem 
+
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
         miner: *miner
         cutter: *cutter
+        advanced_processor: *advanced_processor
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer
+        energy_generator: *energy_generator
         painter: *painter
         trash: *trash
+        wire: *wire
 
+        pipette: Conta-Gotas        
         rotateWhilePlacing: Rotacionar
         rotateInverseModifier: >-
             Modifier: Rotação anti-horária
@@ -822,16 +829,13 @@ keybindings:
         placeInverse: Inverter orientação de esteira
         pasteLastBlueprint: Colar último projeto
         massSelectCut: Cortar área
-        exportScreenshot: Exportar base inteira como imagem
+        exportScreenshot: Exportar Base inteira como Imagem
         mapMoveFaster: Mover mais rápido
         lockBeltDirection: Ativar planejador de correia
         switchDirectionLockSide: "Planejador: Mudar de lado"
         pipette: Conta-Gotas
         menuClose: Fechar Menu
-        switchLayers: Alternar Camadas
-        advanced_processor: *advanced_processor
-        energy_generator: *energy_generator
-        wire: *wire
+        switchLayers: Alternar Camadas        
 
 about:
     title: Sobre o jogo
@@ -860,8 +864,8 @@ demo:
     features:
         restoringGames: Restaurar jogos salvos
         importingGames: Carregar jogos salvos
-        oneGameLimit: Limitado para um jogo salvo
+        oneGameLimit: Limitado a um jogo salvo
         customizeKeybindings: Modificar Teclas
-        exportingBase: Exportar base inteira como imagem
+        exportingBase: Exportar Base inteira como Imagem
 
     settingNotAvailable: Não disponível na versão demo.
