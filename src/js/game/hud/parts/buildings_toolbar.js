@@ -4,6 +4,7 @@ import { MetaEnergyGenerator } from "../../buildings/energy_generator";
 import { MetaMinerBuilding } from "../../buildings/miner";
 import { MetaMixerBuilding } from "../../buildings/mixer";
 import { MetaPainterBuilding } from "../../buildings/painter";
+import { MetaCounterBuilding } from "../../buildings/counter";
 import { MetaRotaterBuilding } from "../../buildings/rotater";
 import { MetaSplitterBuilding } from "../../buildings/splitter";
 import { MetaStackerBuilding } from "../../buildings/stacker";
@@ -19,6 +20,7 @@ const supportedBuildings = [
     MetaUndergroundBeltBuilding,
     MetaMinerBuilding,
     MetaCutterBuilding,
+    MetaCounterBuilding,
     MetaRotaterBuilding,
     MetaStackerBuilding,
     MetaMixerBuilding,

@@ -423,6 +423,8 @@ export class GameCore {
 
             // Energy consumer (Battery icons)
             systems.energyConsumer.draw(params);
+
+            systems.counter.draw(params);
         }
 
         // Green wires overlay (not within the if because it can fade)
