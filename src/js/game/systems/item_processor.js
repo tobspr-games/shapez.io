@@ -19,11 +19,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const processorComp = entity.components.ItemProcessor;
             const ejectorComp = entity.components.ItemEjector;
 
-            // First of all, process the current recipe
-            processorComp.secondsUntilEject =
-                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds;
+            if (processorComp.secondsUntilEject > 0) {
+                // First of all, process the current recipe
+                processorComp.secondsUntilEject =
+                    processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds;
 
-            if (G_IS_DEV && globalConfig.debug.instantProcessors) {
+                if (G_IS_DEV && globalConfig.debug.instantProcessors) {
+                    processorComp.secondsUntilEject = 0;
+                }
+            } else {
+                // Remove time carryover if processing is not continuous
                 processorComp.secondsUntilEject = 0;
             }
 
@@ -79,11 +84,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         this.startNewCharge(entity);
                     }
                 }
-            }
-
-            // Remove time carryover if processing is not continuous
-            if (processorComp.secondsUntilEject < 0) {
-                processorComp.secondsUntilEject = 0;
             }
         }
     }
