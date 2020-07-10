@@ -29,9 +29,26 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 processorComp.secondsUntilEject = 0;
             }
 
-            // Check if we have any finished items we can eject
             if (
                 processorComp.secondsUntilEject === 0 && // it was processed in time
+                processorComp.itemsToEject.length === 0 // Check if we have an empty queue and can start a new charge
+            ) {
+                if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
+                    const energyConsumerComp = entity.components.EnergyConsumer;
+                    if (energyConsumerComp) {
+                        // Check if we have enough energy
+                        if (energyConsumerComp.tryStartNextCharge()) {
+                            this.startNewCharge(entity);
+                        }
+                    } else {
+                        // No further checks required
+                        this.startNewCharge(entity);
+                    }
+                }
+            }
+
+            // Check if we have any finished items we can eject
+            if (
                 processorComp.itemsToEject.length > 0 // we have some items left to eject
             ) {
                 for (let itemIndex = 0; itemIndex < processorComp.itemsToEject.length; ++itemIndex) {
@@ -63,22 +80,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                             processorComp.itemsToEject.splice(itemIndex, 1);
                             itemIndex -= 1;
                         }
-                    }
-                }
-            }
-
-            // Check if we have an empty queue and can start a new charge
-            if (processorComp.itemsToEject.length === 0) {
-                if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
-                    const energyConsumerComp = entity.components.EnergyConsumer;
-                    if (energyConsumerComp) {
-                        // Check if we have enough energy
-                        if (energyConsumerComp.tryStartNextCharge()) {
-                            this.startNewCharge(entity);
-                        }
-                    } else {
-                        // No further checks required
-                        this.startNewCharge(entity);
                     }
                 }
             }

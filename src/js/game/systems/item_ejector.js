@@ -185,7 +185,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         }
 
         // Precompute effective belt speed
-        let progressGrowth = 2 * this.root.dynamicTickrate.deltaSeconds;
+        let progressGrowth = this.root.dynamicTickrate.deltaSeconds;
 
         if (G_IS_DEV && globalConfig.debug.instantBelts) {
             progressGrowth = 1;
