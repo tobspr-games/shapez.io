@@ -248,7 +248,7 @@ dialogs:
             Este jogo possui muitas combinações de teclas que facilitam a construção de grandes fábricas
             Aqui estão algumas, certifique-se de <strong> verificar as combinações de teclas </strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Arrastar: Seleciona área para copiar / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Mantenha pressionado para colocar vária construções.<br>
+            <code class='keybinding'>SHIFT</code>: Mantenha pressionado para colocar várias construções.<br>
             <code class='keybinding'>ALT</code>: Inverte as posições.<br>
 
     createMarker:
