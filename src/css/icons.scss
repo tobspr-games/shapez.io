@@ -1,4 +1,4 @@
-$buildings: belt, cutter, miner, mixer, painter, rotater, splitter, stacker, trash, underground_belt,
+$buildings: belt, counter, cutter, miner, mixer, painter, rotater, splitter, stacker, trash, underground_belt,
     energy_generator, wire, advanced_processor, wire_crossings;
 
 @each $building in $buildings {
