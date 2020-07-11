@@ -537,7 +537,7 @@ buildings:
         deliver: Entregar
         toGenerateEnergy: Para
         default:
-            name: Gerador de Energia
+            name: &energy_generator Gerador de Energia
             description: Gera energia ao consumir formas.
     wire_crossings:
         default:
