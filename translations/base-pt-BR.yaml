@@ -828,15 +828,12 @@ keybindings:
         placeMultiple: Permanecer no modo de construção
         placeInverse: Inverter orientação de esteira
         pasteLastBlueprint: Colar último projeto
-        massSelectCut: Cortar área
-        exportScreenshot: Exportar Base inteira como Imagem
+        massSelectCut: Cortar área        
         mapMoveFaster: Mover mais rápido
         lockBeltDirection: Ativar planejador de correia
         switchDirectionLockSide: "Planejador: Mudar de lado"
-        pipette: Conta-Gotas
         menuClose: Fechar Menu
-        switchLayers: Alternar Camadas        
-
+        
 about:
     title: Sobre o jogo
     body: >-
