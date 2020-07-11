@@ -443,11 +443,7 @@ export class HubGoals extends BasicSerializableObject {
                 );
             }
             case enumItemProcessorTypes.advancedProcessor: {
-                return (
-                    globalConfig.beltSpeedItemsPerSecond *
-                    this.upgradeImprovements.processors *
-                    globalConfig.buildingSpeeds[processorType]
-                );
+                return globalConfig.beltSpeedItemsPerSecond * globalConfig.buildingSpeeds[processorType];
             }
             default:
                 assertAlways(false, "invalid processor type: " + processorType);
