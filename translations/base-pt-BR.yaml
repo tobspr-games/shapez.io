@@ -531,7 +531,7 @@ buildings:
             description: Permite transportar energia.
     advanced_processor:
         default:
-            name: Inversor de Cor
+            name: &advanced_processor Inversor de Cor
             description: Aceita uma cor ou forma e a inverte.
     energy_generator:
         deliver: Entregar
