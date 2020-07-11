@@ -13,6 +13,7 @@ import { StorageComponent } from "./components/storage";
 import { EnergyGeneratorComponent } from "./components/energy_generator";
 import { WiredPinsComponent } from "./components/wired_pins";
 import { EnergyConsumerComponent } from "./components/energy_consumer";
+import { ItemCounterComponent } from "./components/counter";
 
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
@@ -29,6 +30,7 @@ export function initComponentRegistry() {
     gComponentRegistry.register(EnergyGeneratorComponent);
     gComponentRegistry.register(WiredPinsComponent);
     gComponentRegistry.register(EnergyConsumerComponent);
+    gComponentRegistry.register(ItemCounterComponent);
 
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
 
@@ -37,7 +39,7 @@ export function initComponentRegistry() {
     assert(
         // @ts-ignore
         require.context("./components", false, /.*\.js/i).keys().length ===
-            gComponentRegistry.getNumEntries(),
+        gComponentRegistry.getNumEntries(),
         "Not all components are registered"
     );
 
