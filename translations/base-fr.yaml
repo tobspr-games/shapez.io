@@ -269,7 +269,7 @@ dialogs:
             Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même faire planter votre jeu !
 
     massCutInsufficientConfirm:
-        title: Couffirmer le coupage
+        title: Confirmer le coupage
         desc: Vous ne pouvez pas vous permettre de coller cette zone! Etes vous sur que vous voulez la couper?
 
 ingame:
