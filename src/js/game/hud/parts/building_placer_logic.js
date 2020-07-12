@@ -523,10 +523,19 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             );
             const newIndex = (index + 1) % availableVariants.length;
             const newVariant = availableVariants[newIndex];
-            this.currentVariant.set(newVariant);
-
-            this.preferredVariants[metaBuilding.getId()] = newVariant;
+            this.setVariant(newVariant);
         }
+    }
+
+    /**
+     * Sets the current variant to the given variant
+     * @param {string} variant
+     */
+    setVariant(variant) {
+        const metaBuilding = this.currentMetaBuilding.get();
+        this.currentVariant.set(variant);
+
+        this.preferredVariants[metaBuilding.getId()] = variant;
     }
 
     /**

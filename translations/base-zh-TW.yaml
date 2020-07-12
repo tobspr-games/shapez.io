@@ -57,43 +57,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io 是一款在無邊際的地圖上建造工廠、自動化生產與組合愈加複雜的圖形的遊戲。提交任務，製造更複雜的流水線，解鎖升級來提升您工廠的運作速度。
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        你將會需要隨著不斷上升的需求擴大你的工廠。當然，不要忘記你可以在[b]無盡[/b]的地圖上開採資源！
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        只對圖形進行加工可能會使你感到無聊。我們為你準備了顏色資源——將紅、綠、藍三種顏色調色，產生更多不同的顏色並著色在圖形上以滿足任務需求。
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        這個遊戲目前有18個關卡（這應該已經能讓你忙碌幾個小時了！），並且遊戲正在不斷地更新中。很多新關卡已經在開發計劃當中！
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]獨立版優勢[/b]
-
-        [list]
-            [*] 地圖標記
-            [*] 無限存檔
-            [*] 深色模式
-            [*] 更多設置
-            [*] 支持作者繼續開發shapez.io❤️
-            [*] 在以後還有更多特性！
-        [/list]
-
-
-        [b]開發計劃與社區意見[/b]
-
-        本遊戲已開源，所有人都能參與遊戲內容的開發！除此以外，我[b]非常重視[/b]玩家社區的反饋！我會閱讀每一條建議並儘量顧及所有建議。
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] 要消耗圖形來造建築的的故事模式
-            [*] 更多關卡&建築（獨立版獨有）
-            [*] 更多地圖，也許會有障礙物
-            [*] 可配置的地圖生成（礦脈密度與大小、 隨機種子以及其他地圖設置）
-            [*] 更多圖形
-            [*] 更多的性能改進（當然，現在遊戲已經非常流暢了！）
-            [*] 色盲模式
-            [*] 以及更多其他的功能！
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        記得查看我的Trello計劃板！那裡有所有的開發計劃！ https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: 加載中
@@ -101,6 +117,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -159,28 +178,7 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: 未知關卡
 
-    contests:
-        contest_01_03062020:
-            title: "比賽 #01"
-            desc: 最屌的工廠將能贏得<strong>25</strong>美元的獎金！
-            longDesc: >-
-                為了回饋您，我認為每週進行比賽也很酷！
-                 <br> <br>
-                 <strong>本週主題：</ strong>建立最酷的基地！
-                 <br> <br>
-                 是這樣的：<br>
-                 <ul class =“ bucketList”>
-                     <li>將您的基地的螢幕截圖提交到<strong> contest@shapez.io </ strong> </ li>
-                     <li>如果您在社交媒體上分享會有額外獎勵積分！</ li>
-                     <li>我將選擇5張螢幕截圖，並將其提交給<strong> discord </ strong>社區進行投票。</ li>
-                     <li>獲勝者將獲得<strong> $ 25 </ strong>（PayPal，亞馬遜禮品卡，隨您喜歡）</ li>
-                     <li>截止日期：CEST 07.06.2020 12:00 AM </ li>
-                 </ ul>
-                 <br>
-                 我期待看到您的出色創作！
 
-        showInfo: 詳細信息
-        contestOver: 本次競賽已結束。加入官方Discord以收到關於新競賽的提醒！
     continue: 繼續
     newGame: 新遊戲
     madeBy: 作者：<author-link>
@@ -283,6 +281,7 @@ dialogs:
     createMarker:
         title: 創建標記
         desc: 給地圖標記起一個的名字。你可以在名字中加入一個<strong>短代碼</strong>以加入圖形。 （你可以在<a href="https://viewer.shapez.io" target="_blank">這裡</a>生成短代碼。）
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: 在演示版中你只能創建兩個地圖標記。請獲取獨立版以創建更多標記。
@@ -295,6 +294,10 @@ dialogs:
         title: 工廠截圖
         desc: >-
             你將要匯出你的工廠的截圖。如果你的基地很大，截圖過程將會很慢，甚至有可能導致遊戲當掉！
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -318,6 +321,7 @@ ingame:
         copySelection: 複製選取
         clearSelection: 清空選取
         pipette: 吸附
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -435,9 +439,11 @@ ingame:
         cyan: 青
         white: 白
         uncolored: 無顏色
+        black: Black
     shapeViewer:
         title: 層
         empty: 空
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -544,6 +550,27 @@ buildings:
         deliver: 交付
         toUnlock: 來解鎖
         levelShortcut: LVL
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -831,6 +858,11 @@ keybindings:
         lockBeltDirection: 啟用傳送帶規劃
         switchDirectionLockSide: "規劃器：換邊"
         pipette: Pipette
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: 關於遊戲

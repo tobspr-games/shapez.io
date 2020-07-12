@@ -358,12 +358,16 @@
             <key type="filename">sprites/blueprints/belt_left.png</key>
             <key type="filename">sprites/blueprints/belt_right.png</key>
             <key type="filename">sprites/blueprints/belt_top.png</key>
+            <key type="filename">sprites/blueprints/wire_crossings-merger.png</key>
+            <key type="filename">sprites/blueprints/wire_crossings.png</key>
             <key type="filename">sprites/blueprints/wire_left.png</key>
             <key type="filename">sprites/blueprints/wire_right.png</key>
             <key type="filename">sprites/blueprints/wire_top.png</key>
             <key type="filename">sprites/buildings/belt_left.png</key>
             <key type="filename">sprites/buildings/belt_right.png</key>
             <key type="filename">sprites/buildings/belt_top.png</key>
+            <key type="filename">sprites/buildings/wire_crossings-merger.png</key>
+            <key type="filename">sprites/buildings/wire_crossings.png</key>
             <key type="filename">sprites/buildings/wire_left.png</key>
             <key type="filename">sprites/buildings/wire_right.png</key>
             <key type="filename">sprites/buildings/wire_top.png</key>
@@ -388,6 +392,7 @@
             <key type="filename">sprites/buildings/advanced_processor.png</key>
             <key type="filename">sprites/buildings/energy_generator.png</key>
             <key type="filename">sprites/buildings/painter-double.png</key>
+            <key type="filename">sprites/misc/energy_generator_overlay.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

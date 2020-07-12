@@ -30,42 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.ioは形の作成と合成を自動化するために工場を構築するゲームです。段々と複雑になる要件を納品していくことでゲームをすすめ、工場を高速化するためのアップグレードを解除していきます。
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        要件が増えてくると、ニーズに合わせて工場をスケールアップしていく必要があるでしょう。もちろん、[b]無限のマップ[/b]に展開する資源採取の拡張もお忘れなく！
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        形状だけではすぐに飽きがきますが、色素を混ぜて形を塗る工程もあります。赤、緑、青の色素の資源を組み合わせて、要件を満たす色と形状を作り出しましょう。
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        このゲームは現在18レベルまでが実装されていますが（これだけでもかなりのボリュームです）、今後も継続的に新しい要素が追加で実装されていく予定です。 - すでに沢山計画されています！
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Web版にはないスタンドアローン版のメリット[/b]
-
-        [list]
-            [*] マップのマーク設置とマークへの移動
-            [*] 無制限のセーブデータ
-            [*] ダークモード
-            [*] 多彩な設定
-            [*] shapez.ioのさらなる開発ができます ❤️
-            [*] 将来の追加内容実装
-        [/list]
-
-        [b]今後の実装予定とコミュニティの提案[/b]
-
-        このゲームはオープンソースです。誰でも開発に参加できます！　それ以外にも、私はコミュニティの意見を[b]とても[/b]よく聞いており、なるべくすべての提案を読み、できるだけ多くのフィードバックを考慮に入れるようにしています。
+        [b]Standalone Advantages[/b]
 
         [list]
-            [*] 建造物にコストがかかるストーリーモード
-            [*] 追加のレベル、及び建造物（スタンドアローン版限定）
-            [*] 別マップ、もしかすると障害物
-            [*] 設定可能なマップ生成（数やサイズの設定、ランダム生成シード値、その他）
-            [*] 追加の形
-            [*] パフォーマンス向上（このゲームは現状でもかなり軽いです）
-            [*] 色覚異常モード
-            [*] 他にも沢山！
+            [*] Dark Mode
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        完全なロードマップは私のTrelloボードをチェックしてみてください！ https://trello.com/b/ISQncpJP/shapezio
+        [b]Future Updates[/b]
+
+        I am updating the game very often and trying to push an update at least every week!
+
+        [list]
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
+            [*] And much more!
+        [/list]
+
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: ロード中
@@ -73,6 +90,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -131,28 +151,7 @@ mainMenu:
     savegameLevel: レベル <x>
     savegameLevelUnknown: 不明なレベル
 
-    contests:
-        contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
-            longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
-                <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
-                <br><br>
-                Here's the deal:<br>
-                <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                I'm looking forward to seeing your awesome creations!
 
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
     continue: 続きから
     newGame: 新規ゲーム
     madeBy: Made by <author-link>
@@ -253,6 +252,7 @@ dialogs:
 
     createMarker:
         title: マーカーを設置
+        titleEdit: マーカーを編集
         desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<a href="https://viewer.shapez.io" target="_blank">ここ</a>から生成できます）
 
     markerDemoLimit:
@@ -296,6 +296,7 @@ ingame:
         copySelection: コピー
         clearSelection: 選択範囲をクリア
         pipette: ピペット
+        switchLayers: Switch layers
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -411,9 +412,11 @@ ingame:
         cyan: シアン
         white: 白
         uncolored: 無色
+        black: Black
     shapeViewer:
         title: レイヤー
         empty: 空
+        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -521,6 +524,27 @@ buildings:
         storage:
             name: 格納庫
             description: 余ったアイテムを指定の上限まで格納します。余剰の受け口としても使用可能です。
+    wire:
+        default:
+            name: Energy Wire
+            description: Allows you to transport energy.
+    advanced_processor:
+        default:
+            name: Color Inverter
+            description: Accepts a color or shape and inverts it.
+    energy_generator:
+        deliver: Deliver
+        toGenerateEnergy: For
+        default:
+            name: Energy Generator
+            description: Generates energy by consuming shapes.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -728,11 +752,11 @@ settings:
             title: 色覚モード
             description: 色覚異常を持っていてもゲームがプレイできるようにするための各種ツールを有効化します。
         rotationByBuilding:
-          title: Rotation by building type
-          description: >-
-            Each building type remembers the rotation you last set it to individually.
-            This may be more comfortable if you frequently switch between placing
-            different building types.
+            title: Rotation by building type
+            description: >-
+                Each building type remembers the rotation you last set it to individually.
+                This may be more comfortable if you frequently switch between placing
+                different building types.
 
 keybindings:
     title: キー設定
@@ -801,6 +825,10 @@ keybindings:
         lockBeltDirection: ベルトプランナーを有効化
         switchDirectionLockSide: "プランナー: 通る側を切り替え"
         pipette: ピペット
+        switchLayers: Switch layers
+        advanced_processor: Color Inverter
+        energy_generator: Energy Generator
+        wire: Energy Wire
 
 about:
     title: このゲームについて

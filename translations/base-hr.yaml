@@ -50,7 +50,6 @@
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io je igra o izradi tvornica za automatizaciju stvaranja i spajanja sve složenijih oblika unutar beskonačno velike mape.
-            # shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -60,42 +59,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and combination of shapes. Deliver the requested, increasingly complex shapes to progress within the game and unlock upgrades to speed up your factory.
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        Since the demand raises you will have to scale up your factory to fit the needs - Don't forget about resources though, you will have to expand in the [b]infinite map[/b]!
+        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
-        Since shapes can get boring soon you need to mix colors and paint your shapes with it - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
 
-        This game features 18 levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
+        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
         [b]Standalone Advantages[/b]
 
         [list]
-            [*] Waypoints
-            [*] Unlimited Savegames
             [*] Dark Mode
-            [*] More settings
-            [*] Allow me to further develop shapez.io ❤️
-            [*] More features in the future!
+            [*] Unlimited Waypoints
+            [*] Unlimited Savegames
+            [*] Additional settings
+            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Coming soon: More Levels
+            [*] Allows me to further develop shapez.io ❤️
         [/list]
 
-        [b]Planned features & Community suggestions[/b]
+        [b]Future Updates[/b]
 
-        This game is open source - Anybody can contribute! Besides of that, I listen [b]a lot[/b] to the community! I try to read all suggestions and take as much feedback into account as possible.
+        I am updating the game very often and trying to push an update at least every week!
 
         [list]
-            [*] Žice!
-            [*] Story mode where buildings cost shapes
-            [*] More levels & buildings (standalone exclusive)
-            [*] Different maps, and maybe map obstacles
-            [*] Configurable map creation (Edit number and size of patches, seed, and more)
-            [*] More types of shapes
-            [*] More performance improvements (Although the game already runs pretty good!)
+            [*] Different maps and challenges (e.g. maps with obstacles)
+            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
+            [*] A story mode where buildings have a cost
+            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
+            [*] Additional types of shapes
+            [*] Performance improvements (The game already runs pretty well!)
             [*] And much more!
         [/list]
 
-        Be sure to check out my trello board for the full roadmap! https://trello.com/b/ISQncpJP/shapezio
+        [b]This game is open source![/b]
+
+        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Be sure to check out my trello board for the full roadmap!
+
+        [b]Links[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+        [/list]
+
+    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Učitavanje
@@ -103,6 +119,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -168,29 +187,8 @@ mainMenu:
     savegameLevel: Nivo <x>
     savegameLevelUnknown: Nepoznati Nivo
 
-# TODO
-    contests:
-        contest_01_03062020:
-            title: "Contest #01"
-            desc: Win <strong>$25</strong> for the coolest base!
-            longDesc: >-
-                To give something back to you, I thought it would be cool to make weekly contests!
-                <br><br>
-                <strong>This weeks topic:</strong> Build the coolest base!
-                <br><br>
-                Here's the deal:<br>
-                <ul class="bucketList">
-                    <li>Submit a screenshot of your base to <strong>contest@shapez.io</strong></li>
-                    <li>Bonus points if you share it on social media!</li>
-                    <li>I will choose 5 screenshots and propose it to the <strong>discord</strong> community to vote.</li>
-                    <li>The winner gets <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
-                    <li>Deadline: 07.06.2020 12:00 AM CEST</li>
-                </ul>
-                <br>
-                I'm looking forward to seeing your awesome creations!
+    # TODO
 
-        showInfo: View
-        contestOver: This contest has ended - Join the discord to get noticed about new contests!
 
 dialogs:
     buttons:
@@ -261,7 +259,7 @@ dialogs:
         desc: >-
             Evo sve promjene od zadnjeg igranja:
 
-# TODO
+    # TODO
     upgradesIntroduction:
         title: Otključaj Nadogradnje
         desc: >-
@@ -295,6 +293,7 @@ dialogs:
     createMarker:
         title: Novi Putokaz
         desc: Daj mu smisleno ime. Može se uključiti i <strong>kratki kod</strong> oblika. (Koju možeš generirati <a href="https://viewer.shapez.io" target="_blank">ovdje</a>)
+        titleEdit: Edit Marker
 
     markerDemoLimit:
         desc: U demo verziji se mogu stvoriti samo dva putokaza istovremeno. Nabavi samostalnu igru za beskonačno mnogo putokaza!
@@ -302,6 +301,9 @@ dialogs:
     exportScreenshotWarning:
         title: Izvezi sliku zaslona
         desc: Zatražen je izvoz cijele baze u obliku slike zaslone. Ovo može biti jako sporo za velike tvornice, a može i srušiti igru!
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -431,7 +433,7 @@ ingame:
         hub: Središte
         description: Klikni lijevim klikom na marker kako bi skočio na njegovu lokaciju, a izbriši ga desnim klikom. <br><br>Za stvaranje markera pritisni <keybinding>, ili <strong>desnim klikom</strong> stvori marker na odabranoj lokaciji.
         creationSuccessNotification: Putokaz stvoren.
-    
+
     # Shape viewer
     shapeViewer:
         title: Slojevi
@@ -519,7 +521,7 @@ buildings:
         quad:
             name: Rezač (Četverostruki)
             description: Reže oblike u četiri dijela. <strong>Ako se koristi samo jedan dio, ostali se moraju uništiti da bi se spriječio zastoj!</strong>
-    
+
     advanced_processor:
         default:
             name: &advanced_processor Napredni Procesor
@@ -567,7 +569,7 @@ buildings:
         storage:
             name: Skladište
             description: Skladišti višak stvari do određenog kapaciteta. Može se koristiti kao zaštita od preljeva.
-    
+
     energy_generator:
         deliver: Dostavi
 
@@ -577,6 +579,13 @@ buildings:
         default:
             name: &energy_generator Generator
             description: Proizvodi energiju iz oblika. Svaki generator zahtijeva različiti oblik.
+    wire_crossings:
+        default:
+            name: Wire Splitter
+            description: Splits a energy wire into two.
+        merger:
+            name: Wire Merger
+            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -656,10 +665,6 @@ storyRewards:
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
 
-    reward_wires:
-        title: Žice
-        desc: TODO
-
     no_reward_freeplay:
         title: Next level
         desc: >-
@@ -688,7 +693,7 @@ settings:
                 regular: Normalno
                 large: Veliko
                 huge: Ogromno
-        
+
         autosaveInterval:
             title: Interval Automatskog Spremanja
             description: >-
@@ -814,7 +819,7 @@ keybindings:
         buildings: Kratice Građevina
         placementModifiers: Modifikatori Smještanja
 
-#TODO
+    #TODO
     mappings:
         confirm: Potvrdi
         back: Nazad
@@ -870,6 +875,7 @@ keybindings:
         placementDisableAutoOrientation: Onemogući automatsku orijentaciju
         placeMultiple: Ostani u modusu za smještanje
         placeInverse: Obrni automatsku orijentaciju pokretnih traka
+        menuClose: Close Menu
 #TODO
 about:
     title: O Igri
