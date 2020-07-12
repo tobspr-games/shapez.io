@@ -124,7 +124,7 @@
         <key>jxrCompressionLevel</key>
         <uint>0</uint>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">PngQuantLow</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -150,7 +150,7 @@
         <key>atfFormats</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png</enum>
+        <enum type="SettingsBase::TextureFormat">png8</enum>
         <key>borderPadding</key>
         <uint>1</uint>
         <key>maxTextureSize</key>
@@ -407,6 +407,41 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/blueprints/counter.png</key>
+            <key type="filename">sprites/blueprints/miner-chainable.png</key>
+            <key type="filename">sprites/blueprints/miner.png</key>
+            <key type="filename">sprites/blueprints/rotater-ccw.png</key>
+            <key type="filename">sprites/blueprints/rotater.png</key>
+            <key type="filename">sprites/blueprints/splitter-compact-inverse.png</key>
+            <key type="filename">sprites/blueprints/splitter-compact.png</key>
+            <key type="filename">sprites/blueprints/trash.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry-tier2.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
+            <key type="filename">sprites/buildings/counter.png</key>
+            <key type="filename">sprites/buildings/miner-chainable.png</key>
+            <key type="filename">sprites/buildings/rotater-ccw.png</key>
+            <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
+            <key type="filename">sprites/buildings/splitter-compact.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry-tier2.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>48,48,96,96</rect>
+                <key>scale9Paddings</key>
+                <rect>48,48,96,96</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">sprites/blueprints/cutter-quad.png</key>
             <key type="filename">sprites/blueprints/painter-quad.png</key>
             <key type="filename">sprites/buildings/cutter-quad.png</key>
@@ -443,39 +478,6 @@
                 <rect>96,48,192,96</rect>
                 <key>scale9Paddings</key>
                 <rect>96,48,192,96</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/blueprints/miner-chainable.png</key>
-            <key type="filename">sprites/blueprints/miner.png</key>
-            <key type="filename">sprites/blueprints/rotater-ccw.png</key>
-            <key type="filename">sprites/blueprints/rotater.png</key>
-            <key type="filename">sprites/blueprints/splitter-compact-inverse.png</key>
-            <key type="filename">sprites/blueprints/splitter-compact.png</key>
-            <key type="filename">sprites/blueprints/trash.png</key>
-            <key type="filename">sprites/blueprints/underground_belt_entry-tier2.png</key>
-            <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
-            <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
-            <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
-            <key type="filename">sprites/buildings/miner-chainable.png</key>
-            <key type="filename">sprites/buildings/rotater-ccw.png</key>
-            <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
-            <key type="filename">sprites/buildings/splitter-compact.png</key>
-            <key type="filename">sprites/buildings/underground_belt_entry-tier2.png</key>
-            <key type="filename">sprites/buildings/underground_belt_entry.png</key>
-            <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
-            <key type="filename">sprites/buildings/underground_belt_exit.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>48,48,96,96</rect>
-                <key>scale9Paddings</key>
-                <rect>48,48,96,96</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
