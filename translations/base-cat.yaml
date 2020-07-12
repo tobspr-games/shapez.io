@@ -134,18 +134,18 @@ mainMenu:
     contests:
         contest_01_03062020:
             title: "Concurs #01"
-            desc: Guanya <strong>$25</strong> per la base més impresionant!
+            desc: Guanya <strong>$25</strong> per la base més impressionant!
             longDesc: >-
                 Per tal de mantenir el feedback he pensat que molaria fer concursos setmanals!
                 <br><br>
-                <strong>El tema d'aquesta setmana:</strong> Construeix la base més impresionant!
+                <strong>El tema d'aquesta setmana:</strong> Construeix la base més impressionant!
                 <br><br>
                 Aquest és el procés:<br>
                 <ul class="bucketList">
-                    <li>Envia una captura de pantalla de la teva/teua base <strong>contest@shapez.io</strong></li>
+                    <li>Envia una captura de pantalla de la teva/ua base <strong>contest@shapez.io</strong></li>
                     <li>Punts extra si ho comparteixes en xarxes socials!</li>
-                    <li>Seleccionaré a 5 captures i les proposaré a la comunitat de <strong>discord</strong> per que votin/en.</li>
-                    <li>El premi és <strong>$25</strong> (Paypal, Amazon Gift Card, whatever you prefer)</li>
+                    <li>Seleccionaré 5 captures i les proposaré a la comunitat de <strong>discord</strong> per que votin/en.</li>
+                    <li>El premi és <strong>25$</strong> (Paypal, Amazon Gift Card, el que preferisques)</li>
                     <li>Deadline: 07.06.2020 12:00 AM CEST</li>
                 </ul>
                 <br>
@@ -225,7 +225,7 @@ dialogs:
     upgradesIntroduction:
         title: Desbloquejar millora
         desc: >-
-            Totes les figures poden ser usades per desbloquejar millores - <strong>No eliminis/es les teves fabriques anteriors!</strong>
+            Totes les figures poden ser usades per desbloquejar millores - <strong>No eliminis/es les teves fàbriques anteriors!</strong>
             La pestanya de millores està a la part superior dreta de la pantalla.
 
     massDeleteConfirm:
@@ -236,7 +236,7 @@ dialogs:
     massCutConfirm:
         title: Tallar edificis
         desc: >-
-            Estàs esborrant molts edificis de cop (<count> per ser exactes)! Estàs segur que vols seguir?
+            Estàs tallant molts edificis de cop (<count> per ser exactes)! Estàs segur que vols seguir?
 
     blueprintsNotUnlocked:
         title: Encara no s'ha desbloquejat
@@ -255,14 +255,14 @@ dialogs:
     createMarker:
         title: Nou Marcador
         desc: >-
-            Dona-li un nom significatiu, també pots usar <strong>claus</strong> de les figures (Pots generarles a: <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
+            Dona-li un nom significatiu, també pots usar les <strong>claus</strong> de les figures (Pots generarles <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
 
     markerDemoLimit:
         desc: En la Demo només pots crear dos marcadors, aconsegueix la versió completa per gaudir de l'experiència completa!
 
     exportScreenshotWarning:
         title: Export screenshot
-        desc: Has demanat exportar la teva/teua base com una captura de pantalla. Tin en conte que aquest procés pot ser molt lent i inclús crashear el teu joc!
+        desc: Has demanat exportar la teva/ua base com una captura de pantalla. Tin en conte que aquest procés pot ser molt lent i inclús crashear el teu joc!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -406,7 +406,7 @@ ingame:
             1_2_conveyor: >-
                 Connecta l'extractor a la <strong>cinta transportadora</strong> cap al teu nexe!<br><br>Pista: Pots <strong>clicar i arrossegar</strong> la cinta transportadora amb el teu ratolí!
             1_3_expand: >-
-                Aquest <strong>NO</strong> és un joc d'espera! Contrueix més extractors i cintes per a completar l'objectiu més ràpidament.<br><br>Pista: Manté pressionat <strong>SHIFT</strong> per a col·locar més extractors, i utilitza <strong>R</strong> per a rotar-los.
+                Aquest <strong>NO</strong> és un joc d'espera! Contrueix més extractors i cintes per a completar l'objectiu més ràpidament.<br><br>Pista: Mantén pressionat <strong>SHIFT</strong> per a col·locar més extractors, i utilitza <strong>R</strong> per a rotar-los.
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -640,11 +640,11 @@ settings:
             description: >-
                 Canvia la dimensió de la interfície de l'usuari. La interfície se seguirà redimensionant depenent de la resolució del teu dispositiu, però aquesta opció controla la quantitat del redimensionat.
             scales:
-                super_small: Micro
+                super_small: Minúscul
                 small: Petit
                 regular: Estàndard
                 large: Gran
-                huge: Macro
+                huge: Gegant
 
         autosaveInterval:
             title: Interval de guardat automàtic
@@ -663,28 +663,28 @@ settings:
             description: >-
                 Canvia la sensibilitat del zoom (una roda del ratolí o un trackpad).
             sensitivity:
-                super_slow: Super lent
+                super_slow: Súper Lent
                 slow: Lent
                 regular: Normal
                 fast: Ràpid
-                super_fast: Super Ràpid
+                super_fast: Súper Ràpid
 
         movementSpeed:
             title: Velocitat de moviment
             description: >-
                 Canvia la velocitat de desplaçament de la vista si s'usa el teclat.
             speeds:
-                super_slow: Super lent
+                super_slow: Súper lent
                 slow: Lent
                 regular: Normal
                 fast: Ràpid
-                super_fast: Super Ràpid
+                super_fast: Súper Ràpid
                 extremely_fast: Extremadament Ràpid
 
         language:
             title: Idioma
             description: >-
-                Canviar l’idioma. Totes les traduccions són aportades per l'usuari i poden ser incompletes.
+                Canviar l’idioma. Totes les traduccions són aportades pels usuaris i poden ser incompletes.
         enableColorBlindHelper:
             title: Opció per daltònics
             description: >-
@@ -710,21 +710,21 @@ settings:
                 light: Clar
 
         refreshRate:
-            title: Simulation Target
+            title: Objectiu de Simulació
             description: >-
                 Si teniu un monitor de 144 hz, canvieu aquí la velocitat de refresc, de manera que el joc es simularà adequadament a majors taxes de refresc. Podria disminuir els FPS si l’ordinador és massa lent.
         alwaysMultiplace:
-            title: Multicol·locació
+            title: Multiemplaçament
             description: >-
-                Si està activat, tots els edificis es mantindran seleccionats després de la seva ubicació fins que el cancel·leu. És equival a mantenir SHIFT de forma permanent.
+                Si està activat, tots els edificis es mantindran seleccionats després de la seva ubicació fins que el cancel·leu. Equival a mantenir SHIFT de forma permanent.
         offerHints:
             title: Consells i tutorials
             description: >-
-                Ofereix suggeriments i tutorials durant l'inci del joc. Oculta també alguns elements de la interfície d'interès a un nivell determinat per facilitar la seva entrada al joc.
+                Ofereix suggeriments i tutorials durant l'inici del joc. Oculta també alguns elements de la interfície d'interès fins a un nivell determinat per facilitar l'entrada al joc.
         enableTunnelSmartplace:
             title: Túnels intel·ligents
             description: >-
-                Si està activat s'eliminaran les entrades i sortides dels túnels que puguin ser encadenats. També permet arrossegar túnels i es podran eliminar els túnels en excés.
+                Si està activat, s'eliminaran les entrades i sortides dels túnels que puguin ser encadenats. També permet arrossegar túnels i es podran eliminar els túnels en excés.
         vignette:
             title: Vinyeta
             description: >-
@@ -736,7 +736,7 @@ settings:
         compactBuildingInfo:
             title: Informació compacta 
             description: >-
-                Escurça els quadres d'informació dels edificis només mostrant les seves ratios. També es pot mostra una descripció i una imatge.
+                Escurça/acurta els quadres d'informació dels edificis només mostrant les seves/ues ràtios. També es pot mostra una descripció i una imatge.
         disableCutDeleteWarnings:
             title: Desactiva els avisos de tallar i suprimir
             description: >-
@@ -753,7 +753,7 @@ keybindings:
         navigation: Navegació
         placement: Emplaçament
         massSelect: Selecció massiva
-        buildings: Draceres d'edificis
+        buildings: Dreceres d'edificis
         placementModifiers: Modificadors d'emplaçament
 
     mappings:
@@ -794,10 +794,10 @@ keybindings:
         pipette: Pipeta
         rotateWhilePlacing: Rotar
         rotateInverseModifier: >-
-            Modificador: Rotar inversament en el lloc
+            Modificador: Rotar inversament en canvi
         cycleBuildingVariants: Variants de cicle
         confirmMassDelete: Eliminar àrea
-        pasteLastBlueprint: Copiar últim blueprint
+        pasteLastBlueprint: Copiar últim plànol
         cycleBuildings: Edificis de cicles
         lockBeltDirection: Habilita el planificador de cintes
         switchDirectionLockSide: >-
@@ -808,7 +808,7 @@ keybindings:
         massSelectCut: Tallar àrea
 
         placementDisableAutoOrientation: Desactiva l’orientació automàtica
-        placeMultiple: Manteniu-vos en mode d’emplaçament
+        placeMultiple: Manteniu-vos en mode d'emplaçament.
         placeInverse: Invertir l’orientació automàtica de la cinta
 
 about:
@@ -816,9 +816,9 @@ about:
     body: >-
         Aquest joc és de codi obert i desenvolupat per <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (sóc jo!).<br><br>
         Si voleu contribuir, feu un cop d’ull <a href="<githublink>" target="_blank">shapez.io a github</a>.<br><br>
-        Aquest joc no hauria estat possible sense la gran comunitat de Discord dels meus jocs - Ús convido a unir-vos al <a href="<discordlink>" target="_blank">servidor de Discord</a>!<br><br>
+        Aquest joc no hauria estat possible sense la gran comunitat de Discord dels meus jocs - Us convido/e a unir-vos al <a href="<discordlink>" target="_blank">servidor de Discord</a>!<br><br>
         La banda sonora ha estat feta per <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - És increible.<br><br>
-        Finalment, moltes gràcies al meu millor amic <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sense les nostres sessions de factorio, aquest joc mai no hauria existit.
+        Finalment, moltes gràcies al meu millor amic <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sense les nostres sessions de Factorio, aquest joc mai no hauria existit.
 changelog:
     title: Historial de modificacions
 
