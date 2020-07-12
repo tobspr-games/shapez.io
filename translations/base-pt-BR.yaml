@@ -411,7 +411,7 @@ ingame:
         cyan: Ciano
         white: Branco
         uncolored: Sem cor
-        black: Preteo
+        black: Preto
     shapeViewer:
         title: Camadas
         empty: Vazio 
@@ -826,7 +826,7 @@ keybindings:
         mapMoveFaster: Mover mais rápido
         lockBeltDirection: Ativar planejador de correia
         switchDirectionLockSide: "Planejador: Mudar de lado"
-        pipette: Pipeta
+        pipette: Conta-gotas
         menuClose: Close Menu
         switchLayers: Switch layers
         advanced_processor: Color Inverter
