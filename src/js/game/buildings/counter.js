@@ -24,7 +24,7 @@ export class MetaCounterBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const speed = 2;
+        const speed = root.hubGoals.getBeltBaseSpeed();
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
