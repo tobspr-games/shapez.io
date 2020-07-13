@@ -1,6 +1,6 @@
 export const CHANGELOG = [
     {
-        version: "1.1.9",
+        version: "1.1.19",
         date: "02.07.2020",
         entries: [
             "There are now notifications every 15 minutes in the demo version to buy the full version (For further details and the reason, check the #surveys channel in the discord)",
