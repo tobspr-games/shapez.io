@@ -30,16 +30,16 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io est un jeu ou il faut construire des usines pour automatiser la création et la transformation de formes de plus en plus complexes sur une carte infinie.
+        shapez.io est un jeu où il faut construire des usines pour automatiser la création et la transformation de formes de plus en plus complexes sur une carte infinie.
         En livrant les bonnes formes tu vas progresser dans le jeu et débloquer des améliorations pour accélerer ton usine.
 
-        Comme la demande de formes augmente, il vas falloir agrandir ton usine pour produire plus - N'oublie pas les resources, il vas falloir s'étendre tout autour de la [b]carte infinie[/b]!
+        Comme la demande de formes augmente, il va falloir agrandir ton usine pour produire plus - N'oublie pas les resources, il va falloir s'étendre tout autour de la [b]carte infinie[/b]!
 
-        Puis il vas falloir mélanger les couleurs et peindres tes formes avec - Combine du rouge, du bleu et du vert pour produire différente couleurs et peindre des formes pour satisfaire la demande.
+        Puis il va falloir mélanger les couleurs et peindre tes formes avec - Combine du rouge, du bleu et du vert pour produire différente couleurs et peindre des formes pour satisfaire la demande.
 
-        Ce jeu propose 18 niveaux progressifs (qui devraient vous occuper pendant des heures!) et j'ajoute constament plus de contenu - Il y en as beaucoup qui arrive!
+        Ce jeu propose 18 niveaux progressifs (qui devraient vous occuper pendant des heures!) et j'ajoute constamment plus de contenu - Il y en a beaucoup qui arrive!
 
-        Acheter le jeu te donnes accès à la version hors-ligne qui as plus de contenu et tu recevras l'accès aux nouvelles fonctionnalités.
+        Acheter le jeu te donnes accès à la version hors-ligne qui a plus de contenu et tu recevras l'accès aux nouvelles fonctionnalités.
 
         [b]Avantages de la version hors-ligne[/b]
 
@@ -47,20 +47,20 @@ steamPage:
             [*] Mode sombre
             [*] Balises infinies
             [*] Sauvegardes infinies
-            [*] Plus de setting
-            [*] Arrive bientôt: Cables et éléctricité! Sort en Juillet 2020.
+            [*] Plus d'options
+            [*] Arrive bientôt: Câbles et éléctricité! Sort en Juillet 2020.
             [*] Arrive bientôt: Plus de niveaux
-            [*] Me permet de plus déveloper le jeu ❤️
+            [*] Me permet de plus développer le jeu ❤️
         [/list]
 
         [b]Mises à jours futures[/b]
 
-        Je fait souvent des mises à jours et essaye d'en sortir une part semaine!
+        Je fais souvent des mises à jour et essaye d'en sortir une par semaine!
 
         [list]
             [*] Plusieurs cartes et challenges (e.g. carte avec des obstacles)
             [*] Puzzles (Livrer les formes avec des batiments limités/une carte limitée)
-            [*] Un mode histoire ou les bâtiments on un coût
+            [*] Un mode histoire où les bâtiments ont un coût
             [*] Générateur de carte configurable (Configure les ressources/formes leur taille, densité et plus)
             [*] Plus de formes
             [*] Meilleures performances (Le jeu est déja très optimisé!)
@@ -89,7 +89,7 @@ global:
     error: Erreur
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: "."
 
     # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: ","
@@ -271,8 +271,8 @@ dialogs:
             Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Confirmer la coupe
+        desc: Vous n'avez pas les moyens de copier cette zone ! Êtes-vous certain de vouloir la couper ?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -296,7 +296,7 @@ ingame:
         copySelection: Copier
         clearSelection: Effacer la sélection
         pipette: Pipette
-        switchLayers: Switch layers
+        switchLayers: Échanger les calques
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -411,11 +411,11 @@ ingame:
         cyan: Cyan
         white: Blanc
         uncolored: Non coloré
-        black: Black
+        black: Noir
     shapeViewer:
         title: Calques
         empty: Vide
-        copyKey: Copy Key
+        copyKey: Touche de copie
 
 # All shop upgrades
 shopUpgrades:
@@ -527,25 +527,25 @@ buildings:
         levelShortcut: NV
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Ligne énergétique
+            description: Vous permet de transporter de l'énergie.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Inverseur de couleur
+            description: Accepte une couleur ou une forme et l'inverse
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Délivrer
+        toGenerateEnergy: Pour
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Générateur d'énergie
+            description: Génère de l'énergie en consommant des formes.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Duplicateur de ligne
+            description: Sépare une ligne énergétique en deux.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Fusionneur de ligne
+            description: Fusionne deux lignes énergétiques en une seule.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -826,11 +826,11 @@ keybindings:
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         switchDirectionLockSide: "Plannificateur: changer de côté"
         pipette: Pipette
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Fermer le Menu
+        switchLayers: Échanger les calques
+        advanced_processor: Inverseur de couleur
+        energy_generator: Générateur d'énergie
+        wire: Ligne énergétique
 
 about:
     title: À propos de ce jeu
