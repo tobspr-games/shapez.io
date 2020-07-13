@@ -271,8 +271,8 @@ dialogs:
             Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Confirmer la coupe
+        desc: Vous n'avez pas les moyens de copier cette zone ! Êtes-vous certain de vouloir la couper ?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -296,7 +296,7 @@ ingame:
         copySelection: Copier
         clearSelection: Effacer la sélection
         pipette: Pipette
-        switchLayers: Switch layers
+        switchLayers: Échanger les calques
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -411,11 +411,11 @@ ingame:
         cyan: Cyan
         white: Blanc
         uncolored: Non coloré
-        black: Black
+        black: Noir
     shapeViewer:
         title: Calques
         empty: Vide
-        copyKey: Copy Key
+        copyKey: Touche de copie
 
 # All shop upgrades
 shopUpgrades:
@@ -527,25 +527,25 @@ buildings:
         levelShortcut: NV
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Ligne énergétique
+            description: Vous permet de transporter de l'énergie.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Inverseur de couleur
+            description: Accepte une couleur ou une forme et l'inverse
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Délivrer
+        toGenerateEnergy: Pour
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Générateur d'énergie
+            description: Génère de l'énergie en consommant des formes.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Duplicateur de ligne
+            description: Sépare une ligne énergétique en deux.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Fusionneur de ligne
+            description: Fusionne deux lignes énergétiques en une seule.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -826,11 +826,11 @@ keybindings:
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         switchDirectionLockSide: "Plannificateur: changer de côté"
         pipette: Pipette
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Fermer le Menu
+        switchLayers: Échanger les calques
+        advanced_processor: Inverseur de couleur
+        energy_generator: Générateur d'énergie
+        wire: Ligne énergétique
 
 about:
     title: À propos de ce jeu
