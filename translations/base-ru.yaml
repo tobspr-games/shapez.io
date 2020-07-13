@@ -30,66 +30,66 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
+        Развивайтесь в игре и открывайте улучшения для ускорения фабрики, после доставки запрошенных ресурсов. 
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        По мере увеличения спроса на фигуры вам придется увеличивать свою фабрику, чтобы удовлетворить спрос. Однако, не забывайте о ресурсах, несмотря на то что вы будете расширятся на [b]бесконечной карте[/b]!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Вскоре вам придется смешивать цвета и красить ими фигуры. Комбинируйте красный, зеленый и синий красители для получения разных цветов и красьте ими фигуры, чтобы удовлетворить спрос.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Эта игра имеет 18 уровней развития (но и они займут вас на часы!), но я постоянно добавляю новый контент - там многое запланировано!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Покупка игры даст доступ к полной версии, которая имеет дополнительные функции, а также вы получите доступ к недавно разработанным функциям.
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
+        [b]Преимущества полной версии[/b]
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Темный Режим
+            [*] Неограниченные Метки
+            [*] Неограниченные Сохранения
+            [*] Дополнительные настройки
+            [*] Скоро: Провода & Энергия! Запланировано (примерно) на конец июля 2020 года.
+            [*] Скоро: Больше уровней
+            [*] Позволит мне дальше разрабатывать shapez.io ❤️
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Будущие обновления[/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
-
-        [b]Links[/b]
+        Я очень часто обновляю игру и пытаюсь обновлять ее как минимум каждую неделю!
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] Различные карты и испытания (например, карты с препятствиями)
+            [*] Пазлы (Доставить запрошенную фигуру с ограничением пространства / набора зданий)
+            [*] Режим истории, где здания стоят фигур
+            [*] Настраиваемый генератор карт (настройка ресурса / размера фигуры / плотности, семя и т.д.)
+            [*] Дополнительные типы фигур
+            [*] Улучшения производительности (игра уже работает довольно хорошо!)
+            [*] И многое другое!
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+        [b]Это игра с открытым исходным кодом![/b]
+
+        Любой может внести свой вклад, я активно участвую в жизни сообщества и пытаюсь рассмотреть все предложения и по возможности принять во внимание отзывы.
+        Не забудьте проверить мою доску trello со всеми планами!
+
+        [b]Ссылки[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Официальный Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Планы[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Сабреддит[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Исходный код (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Помочь с переводом[/url]
+        [/list]
+
+    discordLink: Официальный Discord - Общайся со мной!
 
 global:
     loading: Загрузка
     error: Ошибка
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: " "
 
     # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: "."
@@ -142,7 +142,7 @@ mainMenu:
     changelog: Список изменений
     importSavegame: Импорт
     openSourceHint: Это игра с открытым исходным кодом!
-    discordLink: Оффициальный Дискорд Сервер
+    discordLink: Офици- альный Дискорд
     helpTranslate: Помоги с переводом!
 
     # This is shown when using firefox and other browsers which are not supported.
@@ -255,7 +255,7 @@ dialogs:
     createMarker:
         title: Новый маркер
         desc: Дайте ему содержательное имя, также можно добавить <strong>сокращение</strong> в виде фигуры (Которое можно сгенерировать <a href="https://viewer.shapez.io" target="_blank">здесь</a>)
-        titleEdit: Edit Marker
+        titleEdit: Редактирование маркера
 
     markerDemoLimit:
         desc: Вы можете создать только 2 своих маркера в демо-версии. Приобретите полную версию для безлимитных маркеров.
@@ -273,8 +273,8 @@ dialogs:
             и даже привести к аварийному завершению игры!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Подтвердите вырезку
+        desc: Вы не можете позволить себе вставить эту область! Вы уверены, что хотите вырезать ее?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -298,7 +298,7 @@ ingame:
         copySelection: Копировать
         clearSelection: Отменить
         pipette: Пипетка
-        switchLayers: Switch layers
+        switchLayers: Переключить слои
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -414,11 +414,11 @@ ingame:
         cyan: Бирюзовый
         white: Белый
         uncolored: Бесцветный
-        black: Black
+        black: Черный
     shapeViewer:
         title: Слои
         empty: Пусто
-        copyKey: Copy Key
+        copyKey: Копировать
 
 # All shop upgrades
 shopUpgrades:
@@ -527,25 +527,25 @@ buildings:
         levelShortcut: Ур.
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Энергетический провод
+            description: Позволяет транспортировать энергию.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Инвертор цвета
+            description: Инвертирует цвета красителей или фигур.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Доставить
+        toGenerateEnergy: Для
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Генератор энергии
+            description: Производит энергию потребляя фигуры.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Разделитель провода
+            description: Разделяет энергетический провод на два.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Соединитель проводов
+            description: Соединяет два энергетических провода в один.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -828,11 +828,11 @@ keybindings:
         lockBeltDirection: Включает конвейерный планировщик
         switchDirectionLockSide: "Планировщик: Переключение сторон"
         pipette: Пипетка
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Закрыть меню
+        switchLayers: Переключить слои
+        advanced_processor: Инвертор цвета
+        energy_generator: Генератор энергии
+        wire: Энергетический провод
 
 about:
     title: Об игре
