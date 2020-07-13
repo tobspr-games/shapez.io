@@ -4,7 +4,7 @@ export const CHANGELOG = [
         date: "02.07.2020",
         entries: [
             "There are now notifications every 15 minutes in the demo version to buy the full version (For further details and the reason, check the #surveys channel in the discord)",
-            "I'm still working on the wires update, I hope to release it mid july!",
+            "I'm still working on the wires update, I hope to release it mid august!",
         ],
     },
     {
