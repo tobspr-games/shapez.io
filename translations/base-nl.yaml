@@ -50,7 +50,7 @@ steamPage:
             [*] Extra opties
             [*] Binnenkort: Kabels & Energie! Hopelijk vanaf eind juli 2020.
             [*] Binnenkort: Meer Levels
-            [*] Helpt mij om shapez.io verder te ontwikkelen ❤️
+            [*] Help mij om shapez.io verder te ontwikkelen ❤️
         [/list]
 
         [b]Geplande Updates[/b]
@@ -69,7 +69,7 @@ steamPage:
 
         [b]Dit spel is open source![/b]
 
-        Iedreen kan bijdragen. Ik ben actief in de community en probeer naar alle suggesties en feedback te kijken en deze mee te nemen in de ontwikkeling.
+        Iedereen kan bijdragen. Ik ben actief in de community en probeer naar alle suggesties en feedback te kijken en deze op te nemen in de ontwikkeling.
         Bekijk mijn trello-bord voor het volledige stappenplan!
 
         [b]Links[/b]
@@ -172,12 +172,12 @@ dialogs:
         showKeybindings: Zie Sneltoetsen
 
     importSavegameError:
-        title: Import Error
+        title: Importeer error
         text: >-
             Het importeren van je savegame is mislukt:
 
     importSavegameSuccess:
-        title: Savegame Geïmporteerd
+        title: Savegame geïmporteerd
         text: >-
             Je savegame is succesvol geïmporteerd.
 
@@ -227,7 +227,7 @@ dialogs:
             Dit zijn de veranderingen sinds je voor het laatst gespeeld hebt:
 
     upgradesIntroduction:
-        title: Ontgrendel Upgrades
+        title: Ontgrendel upgrades
         desc: >-
             Alle vormen die je produceert kunnen gebruikt worden om upgrades te ontgrendelen - <strong>vernietig je oude fabrieken niet!</strong>
             Het upgrades-tabblad staat in de rechterbovenhoek van het scherm.
@@ -349,7 +349,7 @@ ingame:
         dataSources:
             stored:
                 title: In opslag
-                description: Geeft weer hoe veel vormen er zijn opgeslagen in de HUB.
+                description: Geeft alle vormen weer die opgeslagen zijn in de HUB.
             produced:
                 title: Geproduceerd
                 description: Geeft alle vormen weer die op dit moment geproduceerd worden, inclusief tussenproducten.
@@ -501,7 +501,7 @@ buildings:
             description: &painter_desc Verft de volledige vorm in de linker input met de kleur van de rechter input.
         double:
             name: Verver (Dubbel)
-            description: Verft de vormen in de linker inputs met de kleur van de rechter input.
+            description: Verft de vormen in de linker input met de kleur van de rechter input.
         quad:
             name: Verver (Quad)
             description: Verft elke kwart van de vorm een andere kleur.
@@ -649,7 +649,7 @@ settings:
                 small: Klein
                 regular: Middel
                 large: Groot
-                huge: Wumbo
+                huge: Jumbo
 
         scrollWheelSensitivity:
             title: Zoom-gevoeligheid

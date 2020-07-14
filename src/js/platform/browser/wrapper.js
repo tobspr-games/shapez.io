@@ -95,6 +95,7 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
                 request = window.indexedDB.open("indexeddb_feature_detection", 1);
             } catch (ex) {
                 logger.warn("Error while opening indexed db:", ex);
+                this.app.storage = new StorageImplBrowser(this.app);
                 resolve();
                 return;
             }
