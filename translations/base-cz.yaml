@@ -72,6 +72,9 @@ global:
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
 
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
+
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: k

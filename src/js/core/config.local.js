@@ -3,7 +3,7 @@ export default {
     /* dev:start */
     // -----------------------------------------------------------------------------------
     // Quickly enters the game and skips the main menu - good for fast iterating
-    fastGameEnter: true,
+    // fastGameEnter: true,
     // -----------------------------------------------------------------------------------
     // Skips any delays like transitions between states and such
     // noArtificialDelays: true,
@@ -33,13 +33,13 @@ export default {
     // rewardsInstant: true,
     // -----------------------------------------------------------------------------------
     // Unlocks all buildings
-    allBuildingsUnlocked: true,
+    // allBuildingsUnlocked: true,
     // -----------------------------------------------------------------------------------
     // Disables cost of blueprints
-    blueprintsNoCost: true,
+    // blueprintsNoCost: true,
     // -----------------------------------------------------------------------------------
     // Disables cost of upgrades
-    upgradesNoCost: true,
+    // upgradesNoCost: true,
     // -----------------------------------------------------------------------------------
     // Disables the dialog when completing a level
     // disableUnlockDialog: true,
@@ -78,7 +78,7 @@ export default {
     // instantMiners: true,
     // -----------------------------------------------------------------------------------
     // When using fastGameEnter, controls whether a new game is started or the last one is resumed
-    resumeGameOnFastEnter: true,
+    // resumeGameOnFastEnter: true,
     // -----------------------------------------------------------------------------------
     // Special option used to render the trailer
     // renderForTrailer: true,

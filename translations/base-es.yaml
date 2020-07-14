@@ -44,7 +44,7 @@ steamPage:
 
         Comprando el juego tendrás acceso a la versión completa con contenido adicional, además del contenido en desarrollo.
 
-        [b]Standalone Advantages[/b]
+        [b]Ventajas del juego completo[/b]
 
         [list]
             [*] Modo oscuro
@@ -91,6 +91,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -599,8 +602,7 @@ storyRewards:
 
     reward_splitter_compact:
         title: Balanceador compacto
-        desc: >-
-        	Has desbloqueado una variante compacta del <strong>balanceador</strong> - ¡Acepta dos entradas y las junta en una salida!
+        desc: Has desbloqueado una variante compacta del <strong>balanceador</strong> - ¡Acepta dos entradas y las junta en una salida!
 
     reward_cutter_quad:
         title: Cortador cuádruple

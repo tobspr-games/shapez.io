@@ -30,59 +30,59 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io é um jogo sobre construir fábricas, automatizando a criação e combinação de formas cada vez mais complexas num mapa infinito.
+        Após a entrega das formas requisitadas você progredirá no jogo e desbloqueará melhorias para acelerar sua fábrica.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Conforme sua demanda por formas aumenta, você irá que aumentar sua fábrica para alcançar-la - Mas não se esqueça dos recursos, você precisará expandir pelo [b]mapa infinito[/b]!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Rapidamente você vai ter que misturar cores e pintar suas formas com elas - Combine recursos vermelhos, verdes e azuis para produzir cores diferentes e pintar formas com elas para satisfazer a demanda.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        O jogo contém 18 níveis progressivos (Que já devem manter você ocupado por horas!) mas eu adiciono novo contéudo constantemente - Tem bastante coisa já planejada!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Comprando o jogo você terá acesso à versão completa, que contém recursos adicionais, e além disso você também terá acesso aos recursos que seram desenvolvidos.
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
+        [b]Vantagens da versão completa[/b]
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Modo Escuro
+            [*] Pontos de Referência Ilimitados
+            [*] Quantidade de Saves Ilimitada
+            [*] Configurações adicionais
+            [*] Em Breve: Fios e Energia! Previsto para (mais ou menos) o fim de Julho de 2020.
+            [*] Em Breve: Mais Níveis
+            [*] Me permite desenvolver shapez.io ❤️
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Atualizações Futuras[/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Eu lanço atualizações frequentemente e estou tentando lançar pelo menos um por semana!
+
+        [list]
+            [*] Mapas diferentes e desafios (por exemplo mapas com obstáculos)
+            [*] Puzzles (Entregue a forma pedida com uma área restringida ou um certo conjunto de construções)
+            [*] Um modo história onde as construções têm um custo
+            [*] Um geredor de mapa customizável (Configure recursos, forma, tamanho, densidade, semente e mais)
+            [*] Mais tipos de formas
+            [*] Melhorias de desempenho (O jogo já roda bem!)
+            [*] E muito mais!
+        [/list]
+
+        [b]Esse jogo tem código aberto![/b]
+
+        Qualquer um pode contribuir, eu estou ativamente envolvido com a comunidade e tento ler todas as sugestões e levar o feedback em consideração quando possível.
+        Para uma lista completa dos planos para o futuro, não se esqueça de dar uma olhada no meu quadro do Trello!
 
         [b]Links[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Discord oficial[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Planos para o futuro[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Código fonte(GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Ajude a traduzir[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Discord Oficial - Converse comigo!
 
 global:
     loading: Carregando
@@ -90,6 +90,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -251,13 +254,13 @@ dialogs:
     createMarker:
         title: Nova Marcação
         desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Edit Marker
+        titleEdit: Editar Marcação
     markerDemoLimit:
         desc: >-
             Você só pode criar dois marcadores na versão demo. Adquira a versão completa para marcadores ilimitados!
 
     massCutConfirm:
-        title: Confirm cut
+        title: Confirmar Corte
         desc: >-
             Você está cortando vários objetos (<count> para ser exato)! Você quer continuar?
 
@@ -267,7 +270,7 @@ dialogs:
             Você está prestes a exportar uma captura de tela da sua base. Note que isso pode ser bastante lento para uma base grande, e até mesmo pode travar o jogo!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
+        title: Confirmar Corte
         desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
@@ -287,13 +290,13 @@ ingame:
         delete: Destruir
         selectBuildings: Selecionar área
         pasteLastBlueprint: Colar último projeto
-        lockBeltDirection: Enable belt planner
+        lockBeltDirection: Ativar Planejador de Esteiras
         plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
-        switchLayers: Switch layers
+        cutSelection: Cortar
+        copySelection: Colar
+        clearSelection: Limpar Seleção
+        pipette: Pipeta
+        switchLayers: Trocar camadas
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -400,18 +403,18 @@ ingame:
                 Este <strong> NÃO </strong> é um jogo inativo! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.<br><br>Dica, segure <strong> SHIFT </strong> para colocar vários extratores e use <strong> R </strong> para girá-los.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
-        black: Black
+        red: Vermelho
+        green: Verde
+        blue: Azul
+        yellow: Amarelo
+        purple: Roxo
+        cyan: Ciano
+        white: Branco
+        uncolored: Sem cor
+        black: Preto
     shapeViewer:
-        title: Layers
-        empty: Empty
+        title: Camadas
+        empty: Vazio 
         copyKey: Copy Key
 
 # All shop upgrades
@@ -524,25 +527,25 @@ buildings:
         levelShortcut: LVL
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Fio de energia
+            description: Permite transportar energia.
     advanced_processor:
         default:
             name: Color Inverter
             description: Accepts a color or shape and inverts it.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Entregue
+        toGenerateEnergy: Para
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Gerador de Energia 
+            description: Consome figuras para gerar energia.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Separador de Fios
+            description: Divide um fio de energia em dois.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Juntador de Fios
+            description: Junta dois fios de energia em um.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -823,7 +826,7 @@ keybindings:
         mapMoveFaster: Mover mais rápido
         lockBeltDirection: Ativar planejador de correia
         switchDirectionLockSide: "Planejador: Mudar de lado"
-        pipette: Pipeta
+        pipette: Conta-gotas
         menuClose: Close Menu
         switchLayers: Switch layers
         advanced_processor: Color Inverter
