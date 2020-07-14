@@ -32,6 +32,9 @@ export default {
     // All rewards can be unlocked by passing just 1 of any shape
     // rewardsInstant: true,
     // -----------------------------------------------------------------------------------
+    // Rewards after level 18 can be unlocked by passing just 1 of required shape
+    // rewardsSingleShape: true,
+    // -----------------------------------------------------------------------------------
     // Unlocks all buildings
     // allBuildingsUnlocked: true,
     // -----------------------------------------------------------------------------------
