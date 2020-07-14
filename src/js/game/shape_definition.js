@@ -13,6 +13,7 @@ import {
     enumInvertedColors,
 } from "./colors";
 import { THEME } from "./theme";
+import { StaticMapEntitySystem } from "./systems/static_map_entity";
 
 const rusha = require("rusha");
 
@@ -491,6 +492,19 @@ export class ShapeDefinition extends BasicSerializableObject {
             const quadrants = newLayers[layerIndex];
             quadrants.push(quadrants[0]);
             quadrants.shift();
+        }
+        return new ShapeDefinition({ layers: newLayers });
+    }
+
+    /**
+     * Returns a definition which was rotated 180 degrees (flipped)
+     * @returns {ShapeDefinition}
+     */
+    cloneRotateFL() {
+        const newLayers = this.internalCloneLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            quadrants.push(quadrants.shift(), quadrants.shift());
         }
         return new ShapeDefinition({ layers: newLayers });
     }
