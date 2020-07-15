@@ -507,7 +507,7 @@ buildings:
     counter:
         default:
             name: &counter Counter
-            description: COUNTER
+            description: Displays a count of items that passed by in the last second.
 
     stacker:
         default:

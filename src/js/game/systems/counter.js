@@ -3,13 +3,11 @@ import { ItemCounterComponent } from "../components/counter";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ShapeItem } from "../items/shape_item";
-import { Loader } from "../../core/loader";
+import { ColorItem } from "../items/color_item";
 
 export class CounterSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemCounterComponent]);
-
-        this.storageOverlaySprite = Loader.getSprite("sprites/misc/storage_overlay.png");
     }
 
     update() {
@@ -23,8 +21,7 @@ export class CounterSystem extends GameSystemWithFilter {
             let outItem = null;
 
             if (items.length > 0) {
-                const inputItem = /** @type {ShapeItem} */ (items[0].item);
-                assert(inputItem instanceof ShapeItem, "Input for counting is not a shape");
+                const inputItem = /** @type {ShapeItem|ColorItem} */ (items[0].item);
 
                 outItem = inputItem;
                 let slot = ejectorComp.getFirstFreeSlot(entity.layer);
@@ -43,6 +40,7 @@ export class CounterSystem extends GameSystemWithFilter {
         }
     }
 
+    // Only render the items/s overlay if the entity is on screen
     draw(parameters) {
         this.forEachMatchingEntityOnScreen(parameters, this.drawEntity.bind(this));
     }
@@ -67,7 +65,7 @@ export class CounterSystem extends GameSystemWithFilter {
         context.font = "bold 8.5px GameFont";
         context.textAlign = "center";
         context.fillStyle = "#64666e";
-        context.fillText(counterComp.averageItemsPerSecond, center.x, center.y + 3);
+        context.fillText(counterComp.averageItemsPerSecond.toString(), center.x, center.y + 3);
 
         context.textAlign = "left";
         context.globalAlpha = 1;

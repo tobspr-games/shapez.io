@@ -49,7 +49,6 @@ export const KEYMAPPINGS = {
         underground_belt: { keyCode: key("3") },
         miner: { keyCode: key("4") },
         cutter: { keyCode: key("5") },
-        counter: { keyCode: key("~") },
         rotater: { keyCode: key("6") },
         stacker: { keyCode: key("7") },
         mixer: { keyCode: key("8") },
@@ -57,6 +56,7 @@ export const KEYMAPPINGS = {
         trash: { keyCode: key("0") },
         energy_generator: { keyCode: key("O") },
         advanced_processor: { keyCode: key("P") },
+        counter: { keyCode: key("J") },
 
         // Wires layer
         wire: { keyCode: key("1") },

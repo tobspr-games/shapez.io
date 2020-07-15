@@ -4,7 +4,6 @@ import { MetaEnergyGenerator } from "../../buildings/energy_generator";
 import { MetaMinerBuilding } from "../../buildings/miner";
 import { MetaMixerBuilding } from "../../buildings/mixer";
 import { MetaPainterBuilding } from "../../buildings/painter";
-import { MetaCounterBuilding } from "../../buildings/counter";
 import { MetaRotaterBuilding } from "../../buildings/rotater";
 import { MetaSplitterBuilding } from "../../buildings/splitter";
 import { MetaStackerBuilding } from "../../buildings/stacker";
@@ -13,6 +12,7 @@ import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { enumLayer } from "../../root";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaAdvancedProcessorBuilding } from "../../buildings/advanced_processor";
+import { MetaCounterBuilding } from "../../buildings/counter";
 
 const supportedBuildings = [
     MetaBeltBaseBuilding,
@@ -20,12 +20,12 @@ const supportedBuildings = [
     MetaUndergroundBeltBuilding,
     MetaMinerBuilding,
     MetaCutterBuilding,
-    MetaCounterBuilding,
     MetaRotaterBuilding,
     MetaStackerBuilding,
     MetaMixerBuilding,
     MetaPainterBuilding,
     MetaTrashBuilding,
+    MetaCounterBuilding,
 
     MetaEnergyGenerator,
     MetaAdvancedProcessorBuilding,

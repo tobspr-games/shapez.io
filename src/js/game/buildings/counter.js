@@ -14,8 +14,11 @@ export class MetaCounterBuilding extends MetaBuilding {
         super("counter");
     }
 
+    /**
+     * @returns {string} Colour used to represent this building when zoomed out.
+     */
     getSilhouetteColor() {
-        return "#7dc6cd";
+        return "#444e81"; // Dark Blue
     }
 
     /**
@@ -24,15 +27,19 @@ export class MetaCounterBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const speed = root.hubGoals.getBeltBaseSpeed();
+        const speed = root.hubGoals.getBeltBaseSpeed("regular");
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
     /**
+     * The counter is unlocked once the belt speed reaches 20 (items/s). This is around the time when items on
+     * a belt begin to blurr. It is also late enough in the game that a player would understand and appreciate
+     * this building.
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        return true; //root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater);
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed("regular");
+        return beltSpeed >= 20;
     }
 
     /**
@@ -53,7 +60,6 @@ export class MetaCounterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.shape,
                     },
                 ],
             })

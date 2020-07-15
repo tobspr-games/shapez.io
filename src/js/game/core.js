@@ -424,6 +424,7 @@ export class GameCore {
             // Energy consumer (Battery icons)
             systems.energyConsumer.draw(params);
 
+            // Items per second overlay
             systems.counter.draw(params);
         }
 
