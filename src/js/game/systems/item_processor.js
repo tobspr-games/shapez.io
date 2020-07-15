@@ -6,6 +6,7 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ColorItem } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
+import { quantizeFloat } from "../../core/utils";
 
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -31,7 +32,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // Check if we have any finished items we can eject
             if (
-                processorComp.secondsUntilEject === 0 && // it was processed in time
+                quantizeFloat(processorComp.secondsUntilEject) == 0 && // it was processed in time
                 processorComp.itemsToEject.length > 0 // we have some items left to eject
             ) {
                 for (let itemIndex = 0; itemIndex < processorComp.itemsToEject.length; ++itemIndex) {

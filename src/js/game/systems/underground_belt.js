@@ -12,7 +12,7 @@ import {
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { fastArrayDelete } from "../../core/utils";
+import { fastArrayDelete, quantizeFloat } from "../../core/utils";
 import { enumLayer } from "../root";
 
 const logger = createLogger("tunnels");
@@ -362,7 +362,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             const nextItem = nextItemAndDuration[0];
 
             // Check if the item is ready to be emitted
-            if (remainingTime === 0) {
+            if (quantizeFloat(remainingTime) == 0) {
                 // Check if the receiver can accept it
                 if (
                     receiver.entity.components.UndergroundBelt.tryAcceptTunneledItem(
@@ -392,7 +392,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             const remainingTime = nextItemAndDuration[1];
             const nextItem = nextItemAndDuration[0];
 
-            if (remainingTime <= 0) {
+            if (quantizeFloat(remainingTime) == 0) {
                 const ejectorComp = entity.components.ItemEjector;
 
                 const nextSlotIndex = ejectorComp.getFirstFreeSlot(entity.layer);

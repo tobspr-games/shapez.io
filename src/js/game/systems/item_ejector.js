@@ -8,6 +8,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { enumLayer } from "../root";
+import { quantizeFloat } from "../../core/utils";
 
 const logger = createLogger("systems/ejector");
 
@@ -225,7 +226,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 );
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (sourceSlot.progress < 1.0) {
+                if (quantizeFloat(sourceSlot.progress) < 1.0) {
                     continue;
                 }
 
