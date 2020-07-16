@@ -219,9 +219,9 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 sourceSlot.progress = Math.min(
                     1,
                     sourceSlot.progress +
-                    progressGrowth *
-                    this.root.hubGoals.getBeltBaseSpeed(sourceSlot.layer) *
-                    globalConfig.beltItemSpacingByLayer[sourceSlot.layer]
+                        progressGrowth *
+                            this.root.hubGoals.getBeltBaseSpeed(sourceSlot.layer) *
+                            globalConfig.beltItemSpacingByLayer[sourceSlot.layer]
                 );
 
                 // Check if we are still in the process of ejecting, can't proceed then

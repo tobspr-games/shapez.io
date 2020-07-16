@@ -613,7 +613,7 @@ storyRewards:
         desc: Du hast eine neue Variante des <strong>Mülleimers</strong> freigeschaltet! Bis zu einer gewissen Kapazität können hier Items zwischengelagert werden!
 
     reward_freeplay:
-        title: Freispiel
+        title: Freies Spiel
         desc: Du hast es geschafft! Du hast den <strong>Freispielmodus</strong> freigeschaltet! Das heißt, dass abzuliefernde Formen jetzt zufällig generiert werden! (Keine Sorge, für die Standaloneversion ist noch mehr geplant!)
 
     reward_blueprints:
@@ -641,7 +641,7 @@ settings:
         dev: Entwicklung
         staging: Beta
         prod: Produktion
-    buildDate: Gebaut <at-date>
+    buildDate: Gebaut am <at-date>
 
     labels:
         uiScale:
@@ -811,7 +811,7 @@ keybindings:
 
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
-            Modifikator: stattdessen gegen UZS rotieren
+            Modifikator: stattdessen gegen den UZS rotieren
         cycleBuildingVariants: Variante wählen
         confirmMassDelete: Massenlöschung bestätigen
         cycleBuildings: Gebäude rotieren

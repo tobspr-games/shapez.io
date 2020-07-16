@@ -504,11 +504,6 @@ buildings:
             name: Rotate (CCW)
             description: Rotates shapes counter-clockwise by 90 degrees.
 
-    counter:
-        default:
-            name: &counter Counter
-            description: Displays a count of items that passed by in the last second.
-
     stacker:
         default:
             name: &stacker Stacker
@@ -823,7 +818,6 @@ keybindings:
         miner: *miner
         cutter: *cutter
         advanced_processor: *advanced_processor
-        counter: *counter
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer

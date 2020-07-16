@@ -1,3 +1,8 @@
+/** @typedef {object} TickCount
+ * @property {number} gameTimeSeconds
+ * @property {number} count
+ */
+
 import { types } from "../../savegame/serialization";
 import { Component } from "../component";
 import { BaseItem } from "../base_item";
@@ -33,22 +38,24 @@ export class ItemCounterComponent extends Component {
          */
         this.inputSlots = [];
 
+        /** @type {number} a count of items that have passed through the component since the last tick */
         this.currentCount = 0;
 
-        this.lastResetTime = 0;
-
-        /** @typedef {object} TickCount
-         * @property {number} gameTimeSeconds
-         * @property {number} count
+        /**
+         * Maintained every game tick, this aray contains the item counts for every tick in the past 1 second.
+         * @type {TickCount[]}
          */
-        /** @type {TickCount[]} */
         this.tickHistory = [];
 
+        /** @type {number} Calculated and set every second. This is a read only property. */
         this.averageItemsPerSecond = 0;
+
+        /** @type {number} - Last time the averageItemsPerSecond property was reset. */
+        this.lastResetTime = 0;
     }
 
     /**
-     * Called every time an item leaves the counter
+     * Called every time an item leaves the counter building
      */
     countNewItem() {
         this.currentCount++;
@@ -60,6 +67,7 @@ export class ItemCounterComponent extends Component {
      */
     tick(gameTime) {
         const count = this.currentCount;
+        // Reset the count
         this.currentCount = 0;
 
         this.tickHistory.push({
@@ -68,6 +76,8 @@ export class ItemCounterComponent extends Component {
         });
 
         // Only keep history for the last second.
+        // TODO: Possible optimisation to replace with a for loop. Unsure if the logic within the loop will
+        // counteract any speed gained by not using .filter
         this.tickHistory = this.tickHistory.filter(tick => gameTime.timeSeconds - tick.gameTimeSeconds <= 1);
 
         const delta = gameTime.timeSeconds - this.lastResetTime;
