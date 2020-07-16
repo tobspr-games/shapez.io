@@ -3,7 +3,7 @@ import { T } from "../../../translations";
 import { THIRDPARTY_URLS } from "../../../core/config";
 
 // How often to show the dialog
-const DIALOG_INTERVAL = 15;
+const DIALOG_INTERVAL = 30;
 
 // When to start showing the dialogs
 const DIALOG_START_INTERVAL = 15;
