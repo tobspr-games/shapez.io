@@ -503,6 +503,9 @@ buildings:
         ccw:
             name: Rotate (CCW)
             description: Rotates shapes counter-clockwise by 90 degrees.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:

@@ -8,8 +8,8 @@ $buildings: belt, cutter, miner, mixer, painter, rotater, splitter, stacker, tra
 }
 
 $buildingsAndVariants: belt, splitter, splitter-compact, splitter-compact-inverse, underground_belt,
-    underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, stacker, mixer,
-    painter, painter-double, painter-quad, trash, trash-storage;
+    underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, rotater-fl,
+    stacker, mixer, painter, painter-double, painter-quad, trash, trash-storage;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
         background-image: uiResource("res/ui/building_tutorials/#{$building}.png") !important;
