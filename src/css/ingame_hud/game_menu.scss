@@ -22,6 +22,7 @@
             cursor: pointer;
             transition: all 0.12s ease-in-out;
             transition-property: opacity, transform;
+            will-change: opacity;
             opacity: 0.9;
             @include S(margin-left, 5px);
             position: relative;
