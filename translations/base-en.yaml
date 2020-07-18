@@ -774,6 +774,11 @@ settings:
             description: >-
                 Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
 
+        middleMouseScroll:
+            title: Middle mouse scroll
+            description: >-
+                Allows for scrolling with the middle mouse button in addition to left click.
+
 keybindings:
     title: Keybindings
     hint: >-

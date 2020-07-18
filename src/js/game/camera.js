@@ -437,8 +437,12 @@ export class Camera extends BasicSerializableObject {
             return;
         }
 
+        const middleMousePressed = event.button === 1 && event.buttons === 4;
         this.touchPostMoveVelocity = new Vector(0, 0);
-        if (event.button === 0) {
+        if (
+            event.button === 0 ||
+            (middleMousePressed && this.root.app.settings.getSetting("middleMouseScroll"))
+        ) {
             this.combinedSingleTouchStartHandler(event.clientX, event.clientY);
         } else if (event.button === 1) {
             this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.middle);
