@@ -12,7 +12,8 @@
     transition: transform 120ms ease-in-out;
     will-change: transform;
 
-    background-color: rgba(mix(#ddd, $colorBlueBright, 90%), 0.75);
+    background-color: rgba(mix(#ddd, $colorBlueBright, 90%), 0.5);
+    backdrop-filter: blur(D(3px));
 
     @include DarkThemeOverride {
         background-color: #222428;
