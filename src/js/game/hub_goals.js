@@ -217,14 +217,15 @@ export class HubGoals extends BasicSerializableObject {
                 required: 1,
                 reward: enumHubGoalRewards.no_reward_freeplay,
             };
-        } else {
-            this.currentGoal = {
-                /** @type {ShapeDefinition} */
-                definition: this.createRandomShape(),
-                required: 10000 + findNiceIntegerValue(this.level * 2000),
-                reward: enumHubGoalRewards.no_reward_freeplay,
-            };
+            return;
         }
+        this.currentGoal = {
+            /** @type {ShapeDefinition} */
+            definition: this.createRandomShape(),
+            required: 10000 + findNiceIntegerValue(this.level * 2000),
+            reward: enumHubGoalRewards.no_reward_freeplay,
+        };
+        return;
     }
 
     /**
