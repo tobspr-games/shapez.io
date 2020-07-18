@@ -7,6 +7,7 @@ import { enumItemProcessorTypes } from "./components/item_processor";
 import { GameRoot, enumLayer } from "./root";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
+import { HUDUnlockNotification } from "./hud/parts/unlock_notification";
 import { UPGRADES, blueprintShape } from "./upgrades";
 
 export class HubGoals extends BasicSerializableObject {
@@ -76,7 +77,7 @@ export class HubGoals extends BasicSerializableObject {
         this.level = 1;
 
         /**
-         * Which story rewards we already gained
+         * Which story and upgrade rewards we already gained
          * @type {Object.<string, number>}
          */
         this.gainedRewards = {};
