@@ -2,8 +2,8 @@
 /* Forces an element to get rendered on its own layer, increasing
 the performance when animated. Use only transform and opacity in animations! */
 @mixin FastAnimation {
-    // will-change: transform, opacity;
-    transform: translateZ(0);
+    will-change: transform, opacity, filter;
+    // transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }

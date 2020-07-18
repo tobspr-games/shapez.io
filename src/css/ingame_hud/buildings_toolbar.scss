@@ -4,17 +4,19 @@
     left: 50%;
     transform: translateX(-50%);
 
+    // NOTE: This flex rule may not be necessary. Need to find out intent.
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
     background: transparent;
     border-bottom-width: 0;
-    transition: transform 0.12s ease-in-out;
+    transition: transform 120ms ease-in-out;
+    will-change: transform;
 
-    background: rgba(mix(#ddd, $colorBlueBright, 90%), 0.75);
+    background-color: rgba(mix(#ddd, $colorBlueBright, 90%), 0.5);
+    backdrop-filter: blur(D(3px));
 
     @include DarkThemeOverride {
-        background: #222428;
+        background-color: #222428;
     }
 
     &:not(.visible) {
@@ -60,21 +62,43 @@
 
             @include S(border-radius, $globalBorderRadius);
 
-            &.selected {
-                background-color: rgba($colorBlueBright, 0.6) !important;
-                transform: scale(1.05);
-                .keybinding {
-                    color: #111;
-                }
-            }
-
-            pointer-events: all;
-            transition: all 0.05s ease-in-out;
-            transition-property: background-color, transform;
-
-            &.unlocked:hover {
-                background-color: rgba($accentColorDark, 0.1);
+            &.unlocked {
+                pointer-events: all;
+                transition: all 50ms ease-in-out;
+                transition-property: background-color, transform;
                 cursor: pointer;
+                will-change: transform;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background-color: $accentColorDark;
+                    opacity: 0;
+                    will-change: opacity;
+                }
+
+                &:hover {
+                    &::before {
+                        opacity: 0.1;
+                    }
+                }
+
+                &.selected {
+                    transform: scale(1.05);
+
+                    &::before {
+                        background-color: $colorBlueBright;
+                        opacity: 0.6;
+                    }
+
+                    .keybinding {
+                        color: #111;
+                    }
+                }
             }
         }
     }

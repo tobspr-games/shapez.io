@@ -105,7 +105,7 @@ export class HUDSandboxController extends BaseHUDPart {
         this.root.hubGoals.upgradeImprovements[id] = improvement;
         this.root.signals.upgradePurchased.dispatch(id);
         this.root.hud.signals.notification.dispatch(
-            "Upgrade '" + id + "' is now at level " + this.root.hubGoals.upgradeLevels[id],
+            "Upgrade '" + id + "' is now at tier " + (this.root.hubGoals.upgradeLevels[id] + 1),
             enumNotificationType.upgrade
         );
     }
