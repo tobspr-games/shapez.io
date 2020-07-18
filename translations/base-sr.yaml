@@ -69,7 +69,7 @@ steamPage:
             [*] Neobraničen broj putokaza
             [*] Neograničen broj sačuvanih igara
             [*] Dodatna podešavanja
-            [*] Uskoro: Žice i Enerija! Predviđeno (otprilike) za kraj Jula 2020.
+            [*] Uskoro: Žice i Energija! Predviđeno (otprilike) za kraj Jula 2020.
             [*] Uskoro: Više nivoa
             [*] Omogućavate mi da dalje radim na shapez.io ❤️
         [/list]
@@ -100,7 +100,7 @@ steamPage:
             [*] [url=https://discord.com/invite/HN7EVzV]Oficijalni Discord server[/url]
             [*] [url=https://trello.com/b/ISQncpJP/shapezio]Plan[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Sors kod (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Izvorni kod (GitHub)[/url]
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Pomozite sa prevođenjem[/url]
         [/list]
 
@@ -154,7 +154,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo Verzija
     intro: >-
-        Nabavite punu igru kako da bi otključali sve funkcije!
+        Nabavite punu igru kako biste otključali sve funkcije!
 
 mainMenu:
     play: Igraj
@@ -170,7 +170,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Izvinjavamo se, pošto je poznato da se ova igra koči u pretraživaču! Nabavite samostalnu verziju ili koristite chrome za puno iskustvo.
+        Izvinjavamo se, pošto je poznato da se ova igra koči u pretraživaču! Za puno iskustvo nabavite samostalnu verziju ili koristite chrome.
 
     savegameLevel: Nivo <x>
     savegameLevelUnknown: Nepoznat Nivo
@@ -217,7 +217,7 @@ dialogs:
     restartRequired:
         title: Potrebno je ponovno pokretanje
         text: >-
-            Da bi primenili podešavanja, potrebno je ponovo pokrenuti igru.
+            Da bi primenili podešavanja, potrebno je da ponovo pokrenute igru.
 
     editKeybinding:
         title: Promeni podešavanja tastera
@@ -282,7 +282,7 @@ dialogs:
     createMarker:
         title: Novi Putokaz
         titleEdit: Uredi Putokaz
-        desc: Dajte mu smisleno ime. Možete koristiti i <strong>kratak kod</strong> oblika (Koji možete napraviti <a href="https://viewer.shapez.io" target="_blank">ovde</a>)
+        desc: Dajte mu smisleno ime. Možete koristiti i <strong>kod</strong> oblika (Koji možete napraviti <a href="https://viewer.shapez.io" target="_blank">ovde</a>)
 
     markerDemoLimit:
         desc: U demo verziji možete imati samo dva putokaza istovremeno. Nabavite samostalnu igru za beskonačno mnogo putokaza!
@@ -425,7 +425,7 @@ ingame:
     shapeViewer:
         title: Slojevi
         empty: Prazno
-        copyKey: Kopiraj kratak kod
+        copyKey: Kopiraj kod oblika
 
     # Interactive tutorial
     interactiveTutorial:
@@ -652,7 +652,7 @@ storyRewards:
     no_reward:
         title: Sledeći Nivo
         desc: >-
-            Ovaj nivo je bio bez nagrade, ali sledeći neće! <br><br> PS: Nemojte uništavari stare fabrike - <strong>Svi</strong> ti oblici će vam biti potrebni kasnije da biste <strong>otključali nadogradnje</strong>!
+            Ovaj nivo je bio bez nagrade, ali sledeći neće! <br><br> PS: Nemojte uništavati stare fabrike - <strong>Svi</strong> ti oblici će vam biti potrebni kasnije da biste <strong>otključali nadogradnje</strong>!
 
     no_reward_freeplay:
         title: Sledeći Nivo
@@ -827,9 +827,9 @@ keybindings:
         menuClose: Zatvori Meni
 
         toggleHud: Uključi/Isključi Interfejs
-        toggleFPSInfo: Uključi/Isključi FPS i infomacije o draženju grešaka u kodu
+        toggleFPSInfo: Uključi/Isključi FPS i infomacije o traženju grešaka u kodu
         switchLayers: Promeni Sloj
-        exportScreenshot: Izvezete sliku cele fabrike kao snimak ekrana
+        exportScreenshot: Izvoz slike cele fabrike kao snimak ekrana
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -868,7 +868,7 @@ keybindings:
 about:
     title: O Igri
     body: >-
-        Ova igra je otvorenog kod i napravljena je od strane <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (to sam ja).<br><br>
+        Ova igra je otvorenog koda i napravljena je od strane <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (to sam ja).<br><br>
 #TODO
         Ako želite da doprinesete razvoju, bacite pogled na <a href="<githublink>" target="_blank">shapez.io github</a>.<br><br>
 
@@ -887,6 +887,6 @@ demo:
         importingGames: Uvoz sačuvanih igara
         oneGameLimit: Ograničenje od jedne sačuvane igre
         customizeKeybindings: Prilagođena Podešavanja Tastera
-        exportingBase: Izvezete sliku cele fabrike kao snimak ekrana
+        exportingBase: Izvoz slike cele fabrike kao snimak ekrana
 
     settingNotAvailable: Nije dostupno u demo verziji.
