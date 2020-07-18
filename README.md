@@ -17,7 +17,7 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 2. Check out the trello board: https://trello.com/b/ISQncpJP/shapezio
 3. See if it's already there - If so, vote for it, done. I will see it. (You have to be signed in on trello)
 4. If not, check if it's already reported here: https://github.com/tobspr/shapez.io/issues
-5. f not, file a new issue here: https://github.com/tobspr/shapez.io/issues/new
+5. If not, file a new issue here: https://github.com/tobspr/shapez.io/issues/new
 6. I will then have a look (This can take days or weeks) and convert it to trello, and comment with the link. You can then vote there ;)
 
 ## Building
