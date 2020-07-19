@@ -44,4 +44,3 @@ jobs:
               uses: ibiqlik/action-yamllint@v1.0.0
               with:
                   file_or_dir: translations/*.yaml
-                  strict: true
