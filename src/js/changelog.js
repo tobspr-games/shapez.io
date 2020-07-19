@@ -6,7 +6,6 @@ export const CHANGELOG = [
             "WIRES",
             "Allow holding ALT in belt planner to reverse direction (by jakobhellermann)",
             "Clear cursor when trying to pipette the same building twice (by hexy)",
-            "Allow binding TAB (by swtw7466)",
             "Added keybinding to close menus (by isaisstillalive / Sandwichs-del)",
             "Fix rare crash regarding the buildings toolbar (by isaisstillalive)",
             "Fixed some phrases (by EnderDoom77)",
