@@ -151,7 +151,6 @@ mainMenu:
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
 
-
     continue: Continuar
     newGame: Novo Jogo
     madeBy: Criado por <author-link>

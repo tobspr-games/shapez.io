@@ -151,7 +151,6 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
 
-
     continue: Continue
     newGame: New Game
     madeBy: Made by <author-link>

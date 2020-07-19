@@ -155,8 +155,6 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
 
-
-
 dialogs:
     buttons:
         ok: OK

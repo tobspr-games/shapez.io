@@ -30,48 +30,47 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io est un jeu où il faut construire des usines pour automatiser la création et la transformation de formes de plus en plus complexes sur une carte infinie.
-        En livrant les bonnes formes tu vas progresser dans le jeu et débloquer des améliorations pour accélerer ton usine.
+        shapez.io est un jeu dans lequel vous devrez construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
+        Lors de la livraison des formes requises vous progresserez et débloquerez des améliorations pour accélerer votre usine.
 
-        Comme la demande de formes augmente, il va falloir agrandir ton usine pour produire plus - N'oublie pas les resources, il va falloir s'étendre tout autour de la [b]carte infinie[/b]!
+        Au vu de l'augmantation des demandes de formes, vous devrez agrandir votre usine pour répondre à la forte demande - Mais n'oubliez pas les ressources, vous drevrez vous étendre au milieu de cette [b]carte infinie[/b] !
 
-        Puis il va falloir mélanger les couleurs et peindre tes formes avec - Combine du rouge, du bleu et du vert pour produire différente couleurs et peindre des formes pour satisfaire la demande.
+        Bientôt vous devrez mixer les couleurs et peindre vos formes avec - Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec pour satisfaire la demande.
 
-        Ce jeu propose 18 niveaux progressifs (qui devraient vous occuper pendant des heures!) et j'ajoute constamment plus de contenu - Il y en a beaucoup qui arrive!
+        Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper des heures!) mais j'ajoute constamment de nouveau contenus - Il y en a beaucoup de prévus !
 
-        Acheter le jeu te donnes accès à la version hors-ligne qui a plus de contenu et tu recevras l'accès aux nouvelles fonctionnalités.
+        Acheter le jeu vous donne accès à la version complète qui a des fonctionnalitées additionnelles et vous recevrez aussi un accès à des fonctionnalitées fraîchement développées.
 
-        [b]Avantages de la version hors-ligne[/b]
+        [b]Avantages de la version complète (standalone)[/b]
 
         [list]
             [*] Mode sombre
             [*] Balises infinies
-            [*] Sauvegardes infinies
+            [*] Parties infinies
             [*] Plus d'options
-            [*] Arrive bientôt: Câbles et éléctricité! Sort en Juillet 2020.
-            [*] Arrive bientôt: Plus de niveaux
-            [*] Me permet de plus développer le jeu ❤️
+            [*] Prochainement: Câbles et énergie ! Prévu pour (environ) fin Juillet 2020.
+            [*] Prochainement: Plus de niveaux
+            [*] Aidez moi à continuer de développer shapez.io ❤️
         [/list]
 
-        [b]Mises à jours futures[/b]
+        [b]Mises à jour futures[/b]
 
         Je fais souvent des mises à jour et essaye d'en sortir une par semaine!
 
         [list]
-            [*] Plusieurs cartes et challenges (e.g. carte avec des obstacles)
-            [*] Puzzles (Livrer les formes avec des batiments limités/une carte limitée)
-            [*] Un mode histoire où les bâtiments ont un coût
-            [*] Générateur de carte configurable (Configure les ressources/formes leur taille, densité et plus)
+            [*] Différentes cartes et challenges (e.g. carte avec obstacles)
+            [*] Puzzles (Délivrer la forme requise avec une zone limitée/jeu de batîments)
+            [*] Un mode histoire où les batîments ont un coût
+            [*] Générateur de carte configurable (configuration des ressources/formes taille/densitée, graine et plus)
             [*] Plus de formes
-            [*] Meilleures performances (Le jeu est déja très optimisé!)
-            [*] Et bien plus!
+            [*] Amélioration des performances (Le jeu tourne déjà plutot bien!)
+            [*] Et bien plus !
         [/list]
 
-        [b]Ce jeu est open source![/b]
+        [b]Ce jeu est open source ![/b]
 
-        Tout le monde peut contribuer, je suis très impliqué dans la communeauté et essaye de regarder toutes les suggestions et prendre les retours si possible.
-        Vas voir mon trello pour plus d'informations!
-
+        Tout le monde peut contribuer, je suis très impliqué dans la communauté et j'essaye de répondre à toutes les suggestions et prendre en compte vos retours si possible.
+        Jetez un coup d'œil à mon Trello pour le suivi du projet et la planification du développement !
         [b]Liens[/b]
 
         [list]
@@ -79,17 +78,17 @@ steamPage:
             [*] [url=https://trello.com/b/ISQncpJP/shapezio]Trello[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
             [*] [url=https://github.com/tobspr/shapez.io]Code source (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Aide à traduire[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Aidez à traduire[/url]
         [/list]
 
-    discordLink: Discord officiel - Parles avec moi!
+    discordLink: Discord officiel - Parlez avec moi!
 
 global:
     loading: Chargement
     error: Erreur
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: "."
+    thousandsDivider: " "
 
     # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: ","
@@ -141,9 +140,9 @@ mainMenu:
     play: Jouer
     changelog: Historique
     importSavegame: Importer
-    openSourceHint: Ce jeu est open source !
+    openSourceHint: Ce jeu est open source!
     discordLink: Serveur Discord officiel
-    helpTranslate: Contribuez à la traduction !
+    helpTranslate: Contribuez à la traduction!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -167,7 +166,7 @@ dialogs:
         reset: Réinitialiser
         getStandalone: Se procurer la version complète
         deleteGame: Je sais ce que je fais
-        viewUpdate: Voir les mises-à-jour
+        viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
 
@@ -203,7 +202,7 @@ dialogs:
 
     editKeybinding:
         title: Changer les contrôles
-        desc: Appuyez sur la touche que vous voulez assigner, ou Escape pour annuler.
+        desc: Appuyez sur la touche que vous voulez assigner, ou Echap pour annuler.
 
     resetKeybindingsConfirmation:
         title: Réinitialiser les contrôles
@@ -222,7 +221,7 @@ dialogs:
         desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci d'effacer celle en cours ou alternativement de vous procurer la version complète !
 
     updateSummary:
-        title: Nouvel mise-à-jour !
+        title: Nouvelle mise à jour !
         desc: >-
             Voici les modifications depuis votre dernière session:
 
@@ -268,11 +267,11 @@ dialogs:
     exportScreenshotWarning:
         title: Exporter une capture d'écran
         desc: >-
-            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
+            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même faire planter votre jeu !
 
     massCutInsufficientConfirm:
         title: Confirmer la coupe
-        desc: Vous n'avez pas les moyens de copier cette zone ! Êtes-vous certain de vouloir la couper ?
+        desc: Vous n'avez pas les moyens de copier cette zone ! Etes vous certain de vouloir la couper ?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -415,7 +414,7 @@ ingame:
     shapeViewer:
         title: Calques
         empty: Vide
-        copyKey: Touche de copie
+        copyKey: Copier la clé de forme
 
 # All shop upgrades
 shopUpgrades:
@@ -528,17 +527,17 @@ buildings:
     wire:
         default:
             name: Ligne énergétique
-            description: Vous permet de transporter de l'énergie.
+            description: Permet de transporter de l'énergie.
     advanced_processor:
         default:
             name: Inverseur de couleur
-            description: Accepte une couleur ou une forme et l'inverse
+            description: Accepte une couleur ou une forme et l'inverse.
     energy_generator:
         deliver: Délivrer
         toGenerateEnergy: Pour
         default:
             name: Générateur d'énergie
-            description: Génère de l'énergie en consommant des formes.
+            description: Genère de l'énergie en consommant des formes.
     wire_crossings:
         default:
             name: Duplicateur de ligne
@@ -568,7 +567,7 @@ storyRewards:
 
     reward_stacker:
         title: Combineur
-        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinée et si elles ne peuvent êtres mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche après avoir été légèrement réduite.
+        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles ne peuvent êtres mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche après avoir été légèrement réduite.
 
     reward_splitter:
         title: Distributeur/Rassembleur
@@ -826,7 +825,7 @@ keybindings:
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         switchDirectionLockSide: "Plannificateur: changer de côté"
         pipette: Pipette
-        menuClose: Fermer le Menu
+        menuClose: Fermer le menu
         switchLayers: Échanger les calques
         advanced_processor: Inverseur de couleur
         energy_generator: Générateur d'énergie
@@ -868,3 +867,5 @@ demo:
 #
 
 # French translation completed (and corrected) by Pascal Grossé and Withers001
+
+# French translation entirely completed and corrected by martypiton

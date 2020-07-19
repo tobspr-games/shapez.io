@@ -150,7 +150,6 @@ mainMenu:
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
 
-
     helpTranslate: Ajude a traduzir!
     continue: Continuar
     newGame: Novo jogo
@@ -166,7 +165,7 @@ dialogs:
         restart: Reiniciar
         reset: Reset
         getStandalone: Obter versão completa
-        deleteGame: Sei o que faço
+        deleteGame: Sei o que estou fazendo
         viewUpdate: Atualizações
         showUpgrades: Ver melhorias
         showKeybindings: Controles
@@ -247,20 +246,21 @@ dialogs:
         desc: >-
             Este jogo possui muitas combinações de teclas que facilitam a construção de grandes fábricas
             Aqui estão algumas, certifique-se de <strong> verificar as combinações de teclas </strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Arrastar: Seleciona área para copiar / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Mantenha pressionado para colocar vária construções.<br>
+            <code class='keybinding'>CTRL</code> + Arrastar: Seleciona área para copiar/deletar.<br>
+            <code class='keybinding'>SHIFT</code>: Mantenha pressionado para colocar várias construções.<br>
             <code class='keybinding'>ALT</code>: Inverte as posições.<br>
 
     createMarker:
         title: Nova Marcação
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Editar Marcação
+        desc: Dê um nome com significado, também pode adicionar <strong>um pequeno código</strong> de uma forma. (Pode ser gerado <a href="https://viewer.shapez.io" target="_blank">aqui</a>)
+        titleEdit: Editar Marcador
+
     markerDemoLimit:
         desc: >-
             Você só pode criar dois marcadores na versão demo. Adquira a versão completa para marcadores ilimitados!
 
     massCutConfirm:
-        title: Confirmar Corte
+        title: Confirmar corte
         desc: >-
             Você está cortando vários objetos (<count> para ser exato)! Você quer continuar?
 
@@ -290,13 +290,14 @@ ingame:
         delete: Destruir
         selectBuildings: Selecionar área
         pasteLastBlueprint: Colar último projeto
+
         lockBeltDirection: Ativar Planejador de Esteiras
         plannerSwitchSide: Flip planner side
         cutSelection: Cortar
-        copySelection: Colar
+        copySelection: Copiar
         clearSelection: Limpar Seleção
-        pipette: Pipeta
-        switchLayers: Trocar camadas
+        pipette: Conta-Gotas
+        switchLayers: Trocar Camadas
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -350,13 +351,13 @@ ingame:
         dataSources:
             stored:
                 title: Estoque
-                description: Exibindo a quantidade de formas armazenadas em seu edifício central.
+                description: Exibindo a quantidade de formas armazenadas em sua construção central.
             produced:
                 title: Produção
                 description: Exibindo todas as formas que toda a sua fábrica produz, incluindo produtos intermediários..
             delivered:
                 title: Entregue
-                description: Exibindo formas entregues ao seu edifício central..
+                description: Exibindo formas entregues na sua construção central.
         noShapesProduced: Nenhuma forma foi produzida até o momento.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -410,12 +411,12 @@ ingame:
         purple: Roxo
         cyan: Ciano
         white: Branco
-        uncolored: Sem cor
         black: Preto
+        uncolored: Sem cor
     shapeViewer:
         title: Camadas
-        empty: Vazio 
-        copyKey: Copy Key
+        empty: Vazio
+        copyKey: Copiar Chave
 
 # All shop upgrades
 shopUpgrades:
@@ -428,11 +429,11 @@ shopUpgrades:
         description: Velocidade x<currentMult> → x<newMult>
 
     processors:
-        name: Corte, Rotação e Empilhamento
+        name: Corte, Rotação & Montagem
         description: Velocidade x<currentMult> → x<newMult>
 
     painting:
-        name: Mistura de cores e pintura
+        name: Mistura & Pintura
         description: Velocidade x<currentMult> → x<newMult>
 
 # Buildings and their name / description
@@ -448,30 +449,30 @@ buildings:
             description: Coloque sobre uma forma ou cor para extraí-la.
 
         chainable:
-            name: Extrator em Cadeia
+            name: Extrator (em Cadeia)
             description: Coloque sobre uma forma ou cor para extraí-la. Pode ser ligado a outros extratores.
 
     underground_belt: # Internal name for the Tunnel
         default:
             name: &underground_belt Túnel
-            description: Permite transportar recursos sob construções.
+            description: Permite transportar recursos por baixo de construções e esteiras.
 
         tier2:
             name: Túnel Classe II
-            description: Permite transportar recursos sob construções.
+            description: Permite transportar recursos por baixo de construções e esteiras.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balanceador
+            name: &splitter Distribuidor
             description: Multifuncional - Distribui uniformemente todas as entradas em todas as saídas.
 
         compact:
-            name: Balanceador (compacto)
-            description: Mescla duas esteiras transportadoras em uma.
+            name: Misturador (compacto)
+            description: Une duas esteiras transportadoras em uma.
 
         compact-inverse:
-            name: Balanceador (compacto)
-            description: Mescla duas esteiras transportadoras em uma.
+            name: Misturador (compacto)
+            description: Une duas esteiras transportadoras em uma.
 
     cutter:
         default:
@@ -492,7 +493,7 @@ buildings:
     stacker:
         default:
             name: &stacker Empilhador
-            description: Empilha os dois itens. Se eles não puderem ser mesclados, o item direito será colocado acima do item esquerdo.
+            description: Empilha os dois itens. Se eles não puderem ser unidos, o item direito será colocado acima do item esquerdo.
 
     mixer:
         default:
@@ -527,31 +528,32 @@ buildings:
         levelShortcut: LVL
     wire:
         default:
-            name: Fio de energia
+            name: &wire Fio de Energia
+
             description: Permite transportar energia.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: &advanced_processor Inversor de Cor
+            description: Aceita uma cor ou forma e a inverte.
     energy_generator:
-        deliver: Entregue
+        deliver: Entregar
         toGenerateEnergy: Para
         default:
-            name: Gerador de Energia 
-            description: Consome figuras para gerar energia.
+            name: &energy_generator Gerador de Energia
+            description: Consome formas para gerar energia.
     wire_crossings:
         default:
-            name: Separador de Fios
+            name: &wire_crossings Divisor de Fios
             description: Divide um fio de energia em dois.
         merger:
-            name: Juntador de Fios
-            description: Junta dois fios de energia em um.
+            name: Misturador de Fios
+            description: Une dois fios de energia em um.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cortando formas
-        desc: Voce desbloqueou <strong>cortador</strong> - corte de formas pela metade <strong>verticalmente</strong> independentemente de sua orientação!<br><br> Certifique-se de se livrar do lixo, ou então <strong> ele irá parar a produção </strong> - Para esse propósito, eu lhe dei um lixo, que destrói tudo o que você coloca nele.
+        desc: Voce desbloqueou <strong>cortador</strong> - corte de formas pela metade <strong>verticalmente</strong> independentemente de sua orientação!<br><br> Certifique-se de se livrar do lixo, ou então <strong> ele irá parar a produção </strong> - Para esse propósito, eu lhe dei uma lixeira, que destrói tudo o que você coloca nela!
 
     reward_rotater:
         title: Rotação
@@ -560,7 +562,7 @@ storyRewards:
     reward_painter:
         title: Pintura
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            O <strong>Pintor</strong> foi desbloqueado - Extrai alguns pigmentos coloridos (assim como você fez com as formas) e combina-os com uma forma no pintor para os colorir!<br><br>PS: Se for daltônico, existe um <strong>modo daltônico</strong> nas definições!
 
     reward_mixer:
         title: Misturando cores
@@ -571,8 +573,8 @@ storyRewards:
         desc: Agora você pode combinar formas com o <strong>empilhador</strong>! Ambas as entradas são combinadas e, se puderem ser colocadas próximas uma da outra, serão <strong> fundidas </strong>. Caso contrário, a entrada direita é <strong>empilhada em cima</strong> da entrada esquerda!
 
     reward_splitter:
-        title: Balanceador
-        desc: O <strong>balanceador</strong> multifuncional foi desbloqueado - pode ser usado para construir fábricas maiores <strong>dividindo e unindo itens</strong> em múltiplas esteiras!<br><br>
+        title: Distribuidor
+        desc: O <strong>Distribuidor</strong> multifuncional foi desbloqueado - pode ser usado para construir fábricas maiores <strong>dividindo e unindo itens</strong> em múltiplas esteiras!<br><br>
 
     reward_tunnel:
         title: Túnel
@@ -591,8 +593,8 @@ storyRewards:
         desc: Você desbloqueou uma nova variante do <strong>túnel</strong> - ele tem um <strong>maior alcance</strong>, e também pode atravessar outros túneis na mesma linha!
 
     reward_splitter_compact:
-        title: Balanceador compacto
-        desc: Você desbloqueou uma variante compacta do <strong>balanceador</strong> - ele aceita duas entradas e as mescla em uma!
+        title: Distribuidor compacto
+        desc: Você desbloqueou uma variante compacta do <strong>Distribuidor</strong> - ele aceita duas entradas e as une em uma!
 
     reward_cutter_quad:
         title: Cortador quádruplo
@@ -616,7 +618,7 @@ storyRewards:
 
     reward_blueprints:
         title: Projetos
-        desc: Agora você pode <strong>copiar e colar</strong> partes de sua fábrica! Selecione uma área (mantenha pressionada a tecla CTRL e arraste com o mouse) e pressione 'C' para copiá-la. <br><br>Colar <strong>não é de graça</strong>, é necessário produzir <strong>formas de projeto</strong> para pagar! (Aquelas que você acabou de entregar).
+        desc: Agora você pode <strong>copiar e colar</strong> partes de sua fábrica! Selecione uma área (mantenha pressionada a tecla CTRL e arraste com o mouse) e pressione 'C' para copiá-la. <br><br>Colar <strong>não é de graça</strong>, é necessário produzir <strong>formas do projeto</strong> para pagar! (Aquelas que você acabou de entregar).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -627,7 +629,7 @@ storyRewards:
     no_reward_freeplay:
         title: Próximo nível
         desc: >-
-            Parabéns! Não se esqueça, existe muita coisa planejada para a versão completa.
+            Parabéns! Aliás, mais conteúdo vindo na versão completa!
 
 settings:
     title: opções
@@ -675,9 +677,9 @@ settings:
                 Se ligado o jogo fica mudo
 
         musicMuted:
-            title: Musica
+            title: Música
             description: >-
-                Se ligado, a musica fica muda.
+                Se ligado, a música fica muda.
 
         theme:
             title: Tema
@@ -696,12 +698,12 @@ settings:
         alwaysMultiplace:
             title: Multiplicidade
             description: >-
-                Se ativado, todos os edifícios permanecerão selecionados após o posicionamento até que você o cancele. Isso é equivalente a manter SHIFT permanentemente.
+                Se ativado, todas as construções permanecerão selecionadas após o posicionamento até que você a cancele. Isso é equivalente a pressionar  SHIFT permanentemente.
 
         offerHints:
             title: Dicas e tutoriais
             description: >-
-                Se serão oferecidas dicas e tutoriais enquanto estiver jogando.
+                Se ativado, oferece dicas e tutoriais enquanto se joga. Além disso, esconde certos elementos da interface até certo ponto, para facilitar o começo do jogo.
 
         language:
             title: Idioma
@@ -742,9 +744,9 @@ settings:
                 twenty_minutes: 20 Minutos
                 disabled: Desativado
         compactBuildingInfo:
-            title: Informações compactas sobre edifícios
+            title: Informações compactas sobre construções
             description: >-
-                Reduz as caixas de informações dos edifícios, mostrando apenas suas proporções.
+                Reduz as caixas de informações dos construções, mostrando apenas suas proporções.
                 Caso contrário, uma descrição e imagem são mostradas.
         disableCutDeleteWarnings:
             title: Desativar avisos de recorte / exclusão
@@ -794,18 +796,25 @@ keybindings:
         menuOpenStats: Estatísticas
 
         toggleHud: Ocultar Interface
-        toggleFPSInfo: Mostar FPS
+        toggleFPSInfo: Mostrar FPS e Debug Info
+        switchLayers: Alternar Camadas
+        exportScreenshot: Exportar Base inteira como Imagem
+
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
         miner: *miner
         cutter: *cutter
+        advanced_processor: *advanced_processor
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer
+        energy_generator: *energy_generator
         painter: *painter
         trash: *trash
+        wire: *wire
 
+        pipette: Conta-Gotas
         rotateWhilePlacing: Rotacionar
         rotateInverseModifier: >-
             Modifier: Rotação anti-horária
@@ -822,16 +831,10 @@ keybindings:
         placeInverse: Inverter orientação de esteira
         pasteLastBlueprint: Colar último projeto
         massSelectCut: Cortar área
-        exportScreenshot: Exportar base inteira como imagem
         mapMoveFaster: Mover mais rápido
         lockBeltDirection: Ativar planejador de correia
         switchDirectionLockSide: "Planejador: Mudar de lado"
-        pipette: Conta-gotas
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Fechar Menu
 
 about:
     title: Sobre o jogo
@@ -860,8 +863,8 @@ demo:
     features:
         restoringGames: Restaurar jogos salvos
         importingGames: Carregar jogos salvos
-        oneGameLimit: Limitado para um jogo salvo
+        oneGameLimit: Limitado a um jogo salvo
         customizeKeybindings: Modificar Teclas
-        exportingBase: Exportar base inteira como imagem
+        exportingBase: Exportar Base inteira como Imagem
 
     settingNotAvailable: Não disponível na versão demo.

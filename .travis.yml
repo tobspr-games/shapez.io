@@ -3,165 +3,164 @@ os: linux
 dist: xenial
 language: node_js
 node_js:
-  - "10"
+    - "12"
 cache: yarn
 
 # platform specific configuration
 jobs:
+    # jobs which have to succeed
+    include:
+        # OS: MAC
+        ## -> build darwin
+        # - name: "Standalone MacOS on MacOS"
+        #   os: osx
+        #   osx_image: xcode11.3
+        #   before_install:
+        #     - HOMEBREW_NO_AUTO_UPDATE=1 brew install git-lfs
+        #     - HOMEBREW_NO_AUTO_UPDATE=1 brew install ffmpeg
+        #   script:
+        #     - cd gulp
+        #     - yarn gulp build.standalone-prod || travis_terminate 1
+        #     - yarn gulp standalone.prepare
+        #     - yarn gulp standalone.package.prod.darwin64
+        #     - cd ..
 
-  # jobs which have to succeed
-  include:
-    # OS: MAC
-    ## -> build darwin
-    - name: "Standalone MacOS on MacOS"
-      os: osx
-      osx_image: xcode11.3
-      before_install:
-        - HOMEBREW_NO_AUTO_UPDATE=1 brew install git-lfs
-        - HOMEBREW_NO_AUTO_UPDATE=1 brew install ffmpeg
-      script: 
-        - cd gulp
-        - yarn gulp build.standalone-prod || travis_terminate 1
-        - yarn gulp standalone.prepare
-        - yarn gulp standalone.package.prod.darwin64
-        - cd ..
+        ## -> build win
+        # - name: "Standalone Windows on MacOS"
+        #   os: osx
+        #   osx_image: xcode11.3
+        #   before_install:
+        #       - HOMEBREW_NO_AUTO_UPDATE=1 brew install git-lfs
+        #       - HOMEBREW_NO_AUTO_UPDATE=1 brew install ffmpeg
+        #       - HOMEBREW_NO_AUTO_UPDATE=1 brew cask install wine-stable
+        #       # prevent Wine popup dialogs about installing additional packages
+        #       - export WINEDLLOVERRIDES="mscoree,mshtml="
+        #       - export WINEDEBUG="-all"
+        #   script:
+        #       - cd gulp
+        #       - yarn gulp build.standalone-prod || travis_terminate 1
+        #       - yarn gulp standalone.prepare
+        #       - yarn gulp standalone.package.prod.win64
+        #       - yarn gulp standalone.package.prod.win32
+        #       - cd ..
 
-    ## -> build win
-    - name: "Standalone Windows on MacOS"
-      os: osx
-      osx_image: xcode11.3
-      before_install:
-        - HOMEBREW_NO_AUTO_UPDATE=1 brew install git-lfs
-        - HOMEBREW_NO_AUTO_UPDATE=1 brew install ffmpeg
-        - HOMEBREW_NO_AUTO_UPDATE=1 brew cask install wine-stable
-        # prevent Wine popup dialogs about installing additional packages
-        - export WINEDLLOVERRIDES="mscoree,mshtml="
-        - export WINEDEBUG="-all"
-      script:
-        - cd gulp
-        - yarn gulp build.standalone-prod || travis_terminate 1
-        - yarn gulp standalone.prepare
-        - yarn gulp standalone.package.prod.win64
-        - yarn gulp standalone.package.prod.win32
-        - cd ..
+        ## -> build linux
+        # - name: "Standalone Linux on MacOS"
+        #   os: osx
+        #   osx_image: xcode11.3
+        #   before_install:
+        #       - HOMEBREW_NO_AUTO_UPDATE=1 brew install git-lfs
+        #       - HOMEBREW_NO_AUTO_UPDATE=1 brew install ffmpeg
+        #   script:
+        #       - cd gulp
+        #       - yarn gulp build.standalone-prod || travis_terminate 1
+        #       - yarn gulp standalone.prepare
+        #       - yarn gulp standalone.package.prod.linux64
+        #       - yarn gulp standalone.package.prod.linux32
+        #       - cd ..
 
-    ## -> build linux
-    - name: "Standalone Linux on MacOS"
-      os: osx
-      osx_image: xcode11.3
-      before_install:
-        - HOMEBREW_NO_AUTO_UPDATE=1 brew install git-lfs
-        - HOMEBREW_NO_AUTO_UPDATE=1 brew install ffmpeg
-      script: 
-        - cd gulp
-        - yarn gulp build.standalone-prod || travis_terminate 1
-        - yarn gulp standalone.prepare
-        - yarn gulp standalone.package.prod.linux64
-        - yarn gulp standalone.package.prod.linux32
-        - cd ..
+        # OS: LINUX
+        ## -> build darwin
+        ## not possible
 
-    # OS: LINUX
-    ## -> build darwin
-    ## not possible
+        ## -> build win
+        # - name: "Standalone Windows on Linux"
+        #   os: linux
+        #   addons:
+        #       apt:
+        #           packages:
+        #               - libavformat-dev
+        #               - libavfilter-dev
+        #               - libavdevice-dev
+        #               - ffmpeg
+        #               - wine
+        #   script:
+        #       - cd gulp
+        #       - yarn gulp build.standalone-prod || travis_terminate 1
+        #       - yarn gulp standalone.prepare
+        #       - yarn gulp standalone.package.prod.win64
+        #       - yarn gulp standalone.package.prod.win32
+        #       - cd ..
 
-    ## -> build win
-    - name: "Standalone Windows on Linux"
-      os: linux
-      addons:
-        apt:
-          packages:
-            - libavformat-dev
-            - libavfilter-dev
-            - libavdevice-dev
-            - ffmpeg
-            - wine
-      script: 
-        - cd gulp
-        - yarn gulp build.standalone-prod || travis_terminate 1
-        - yarn gulp standalone.prepare
-        - yarn gulp standalone.package.prod.win64
-        - yarn gulp standalone.package.prod.win32
-        - cd ..
+        ## -> build linux
+        # - name: "Standalone Linux on Linux"
+        #   os: linux
+        #   addons:
+        #       apt:
+        #           packages:
+        #               - libavformat-dev
+        #               - libavfilter-dev
+        #               - libavdevice-dev
+        #               - ffmpeg
+        #   script:
+        #       - cd gulp
+        #       - yarn gulp build.standalone-prod || travis_terminate 1
+        #       - yarn gulp standalone.prepare
+        #       - yarn gulp standalone.package.prod.linux64
+        #       - yarn gulp standalone.package.prod.linux32
+        #       - cd ..
 
-    ## -> build linux
-    - name: "Standalone Linux on Linux"
-      os: linux
-      addons:
-        apt:
-          packages:
-            - libavformat-dev
-            - libavfilter-dev
-            - libavdevice-dev
-            - ffmpeg
-      script: 
-        - cd gulp
-        - yarn gulp build.standalone-prod || travis_terminate 1
-        - yarn gulp standalone.prepare
-        - yarn gulp standalone.package.prod.linux64
-        - yarn gulp standalone.package.prod.linux32
-        - cd ..
+        # OS: WINDOWS
+        ## -> build darwin
+        ## not possible
 
-    # OS: WINDOWS
-    ## -> build darwin
-    ## not possible
+        ## -> build linux
+        # - name: "Standalone Linux on Windows"
+        #   os: windows
+        #   env: YARN_GPG=no
+        #   before_install:
+        #       - choco install git-lfs -y -f || echo "0" # choco fails but git-lfs is still installed
+        #       - choco install ffmpeg --version=4.2.3
+        #       - export PATH=/C/ProgramData/chocolatey/lib/ffmpeg/tools/ffmpeg/bin:$PATH
+        #       - wget https://github.com/moiamond/docker-ffmpeg-base-windowsservercore/raw/master/System32/avicap32.dll -P /C/Windows/System32/
+        #       - wget https://github.com/moiamond/docker-ffmpeg-base-windowsservercore/raw/master/System32/msvfw32.dll -P /C/Windows/System32/
+        #   script:
+        #       - cd gulp
+        #       - yarn gulp build.standalone-prod || travis_terminate 1
+        #       - yarn gulp standalone.prepare
+        #       - yarn gulp standalone.package.prod.linux64
+        #       - yarn gulp standalone.package.prod.linux32
+        #       - cd ..
 
-    ## -> build linux
-    - name: "Standalone Linux on Windows"
-      os: windows
-      env: YARN_GPG=no
-      before_install:
-        - choco install git-lfs -y -f || echo "0" # choco fails but git-lfs is still installed
-        - choco install ffmpeg --version=4.2.3
-        - export PATH=/C/ProgramData/chocolatey/lib/ffmpeg/tools/ffmpeg/bin:$PATH
-        - wget https://github.com/moiamond/docker-ffmpeg-base-windowsservercore/raw/master/System32/avicap32.dll -P /C/Windows/System32/
-        - wget https://github.com/moiamond/docker-ffmpeg-base-windowsservercore/raw/master/System32/msvfw32.dll -P /C/Windows/System32/
-      script:
-        - cd gulp
-        - yarn gulp build.standalone-prod || travis_terminate 1
-        - yarn gulp standalone.prepare
-        - yarn gulp standalone.package.prod.linux64
-        - yarn gulp standalone.package.prod.linux32
-        - cd ..
+        ## -> build win
+        - name: "Standalone Windows on Windows"
+          os: windows
+          env: YARN_GPG=no
+          before_install:
+              - choco install git-lfs -y -f || echo "0" # choco fails but git-lfs is still installed
+              - choco install ffmpeg --version=4.2.3
+              - choco install wget
+              - export PATH=/C/ProgramData/chocolatey/lib/ffmpeg/tools/ffmpeg/bin:$PATH
+              - wget https://github.com/moiamond/docker-ffmpeg-base-windowsservercore/raw/master/System32/avicap32.dll -P /C/Windows/System32/
+              - wget https://github.com/moiamond/docker-ffmpeg-base-windowsservercore/raw/master/System32/msvfw32.dll -P /C/Windows/System32/
+          script:
+              - cd gulp
+              - yarn gulp build.standalone-prod || travis_terminate 1
+              - yarn gulp standalone.prepare
+              - yarn gulp standalone.package.prod.win64
+              - yarn gulp standalone.package.prod.win32
+              - cd ..
 
-    ## -> build win
-    - name: "Standalone Windows on Windows"
-      os: windows
-      env: YARN_GPG=no
-      before_install:
-        - choco install git-lfs -y -f || echo "0" # choco fails but git-lfs is still installed
-        - choco install ffmpeg --version=4.2.3
-        - choco install wget
-        - export PATH=/C/ProgramData/chocolatey/lib/ffmpeg/tools/ffmpeg/bin:$PATH
-        - wget https://github.com/moiamond/docker-ffmpeg-base-windowsservercore/raw/master/System32/avicap32.dll -P /C/Windows/System32/
-        - wget https://github.com/moiamond/docker-ffmpeg-base-windowsservercore/raw/master/System32/msvfw32.dll -P /C/Windows/System32/
-      script:
-        - cd gulp
-        - yarn gulp build.standalone-prod || travis_terminate 1
-        - yarn gulp standalone.prepare
-        - yarn gulp standalone.package.prod.win64
-        - yarn gulp standalone.package.prod.win32
-        - cd ..
+    # mark build as finished even if "allow_failures" are still running
+    fast_finish: true
 
-  # mark build as finished even if "allow_failures" are still running
-  fast_finish: true
+    # optional jobs which may fail
+    #allow_failures:
+    #  - name: ""
 
-  # optional jobs which may fail
-  #allow_failures:
-  #  - name: ""
-    
 # shared
 install:
-  - git lfs install
-  - git lfs pull
+    - git lfs install
+    - git lfs pull
 
-  - yarn
-  
-  # electron dependencies
-  - cd electron 
-  - yarn
-  - cd ..
+    - yarn
 
-  # gulp dependendencies
-  - cd gulp 
-  - yarn
-  - cd ..
+    # electron dependencies
+    - cd electron
+    - yarn
+    - cd ..
+
+    # gulp dependendencies
+    - cd gulp
+    - yarn
+    - cd ..
