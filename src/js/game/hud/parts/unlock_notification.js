@@ -20,7 +20,6 @@ export class HUDUnlockNotification extends BaseHUDPart {
 
         if (!(G_IS_DEV && globalConfig.debug.disableUnlockDialog)) {
             this.root.signals.storyGoalCompleted.add(this.showForLevel, this);
-            this.root.signals.upgradePurchased.add(this.showForUpgrade, this);
         }
 
         this.buttonShowTimeout = null;
@@ -66,81 +65,6 @@ export class HUDUnlockNotification extends BaseHUDPart {
         
         <div class="rewardDesc">
             ${T.storyRewards[reward].desc}
-        </div>
-
-        `;
-
-        html += "<div class='images'>";
-        const gained = enumHubGoalRewardsToContentUnlocked[reward];
-        if (gained) {
-            gained.forEach(([metaBuildingClass, variant]) => {
-                const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
-                html += `<div class="buildingExplanation" data-icon="building_tutorials/${
-                    metaBuilding.getId() + (variant === defaultBuildingVariant ? "" : "-" + variant)
-                }.png"></div>`;
-            });
-        }
-        html += "</div>";
-
-        this.elemContents.innerHTML = html;
-        this.visible = true;
-        this.root.soundProxy.playUi(SOUNDS.levelComplete);
-
-        if (this.buttonShowTimeout) {
-            clearTimeout(this.buttonShowTimeout);
-        }
-
-        this.element.querySelector("button.close").classList.remove("unlocked");
-
-        if (this.root.app.settings.getAllSettings().offerHints) {
-            this.buttonShowTimeout = setTimeout(
-                () => this.element.querySelector("button.close").classList.add("unlocked"),
-                G_IS_DEV ? 100 : 5000
-            );
-        } else {
-            this.element.querySelector("button.close").classList.add("unlocked");
-        }
-    }
-
-    /**
-     * @param {string} upgradeId
-     */
-    showForUpgrade(upgradeId) {
-        this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
-        this.elemTitle.innerText = T.ingame.upgradeCompleteNotification.upgradeTitle;
-
-        // If it's not at the max level:
-        if(this.root.hubGoals.canUnlockUpgrade(upgradeId)){
-            return;
-        }
-        if(!T.upgradeRewards[upgradeId]){
-            return;
-        }
-
-        var reward;
-        for(let goalReward in enumHubGoalRewards){
-            if(T.upgradeRewards[upgradeId][goalReward]){
-                reward = goalReward;
-                break;
-            }
-        }
-
-        if(!reward){
-            return;
-        }
-
-        //Functional for now -> Needs some rework; Only will register the unlock here if you actually click "upgrade" in the same session
-        this.root.hubGoals.gainedRewards[reward] = (this.root.hubGoals.gainedRewards[reward] || 0) + 1;
-
-        const rewardName = T.upgradeRewards[upgradeId][reward].title;
-
-        let html = `
-        <div class="rewardName">
-            ${T.ingame.upgradeCompleteNotification.unlockText}
-        </div>
-        
-        <div class="rewardDesc">
-            ${T.upgradeRewards[upgradeId][reward].desc}
         </div>
 
         `;

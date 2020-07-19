@@ -51,7 +51,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
     getAvailableVariants(root) {
         let variants = [defaultBuildingVariant];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw)) {
-            variants.push(enumRotaterVariants.ccw);
+            variants.push(enumRotaterVariants.ccw, enumRotaterVariants.fl);
         }
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_fl)) {
             variants.push(enumRotaterVariants.fl);

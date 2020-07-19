@@ -338,13 +338,6 @@ ingame:
         unlockText: Unlocked <reward>!
         buttonNextLevel: Next Level
 
-    # The notification when completing an upgrade
-    upgradeCompleteNotification:
-        upgradeTitle: Upgrade Unlocked
-        completed: Goal Completed
-        unlockText: Unlocked <reward>!
-        continue: Continue
-
     # Notifications on the lower right
     notifications:
         newUpgrade: A new upgrade is available!
@@ -650,13 +643,6 @@ storyRewards:
         title: Next level
         desc: >-
             Congratulations! By the way, more content is planned for the standalone!
-
-upgradeRewards:
-    # Rewards you get for completing upgrades
-    processors:
-        reward_rotater_fl:
-            title: 180 Degree Rotating
-            desc: You have unlocked a variant of the <strong>rotater</strong> - It allows you to rotate shapes 180 degrees!
 
 settings:
     title: Settings
