@@ -189,7 +189,6 @@ mainMenu:
 
     # TODO
 
-
 dialogs:
     buttons:
         ok: OK

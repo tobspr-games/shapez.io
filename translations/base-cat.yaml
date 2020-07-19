@@ -154,8 +154,6 @@ mainMenu:
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut
 
-
-
 dialogs:
     buttons:
         ok: OK

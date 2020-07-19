@@ -18,7 +18,7 @@
 #    If you want to add a new language, ask me in the discord and I will setup
 #    the basic structure so the game also detects it.
 #
-#   
+#
 #
 #   Hvala https://github.com/ivanbratovic na idejama za prevod. Alal ti vera na prevodu :)
 #
@@ -53,7 +53,7 @@ steamPage:
         shapez.io je igra o pravljenju fabrika za automatizaciju stvaranja i spajanja sve složenijih oblika na beskonačno velikoj mapi.
 
         Nakon dostavljanja zahtevanog oblika napredovaćete u igri i oključaćete nadogradnje za bržu fabriku.
-        
+
         Kako potražnja za oblicima raste, da bi zadovoljili potražnju, moraćete da uvećate fabriku - Ne zaboravite na resurse, proširićete se na [b]beskonačnoj mapi[/b]!
 
         Vrlo brzo moraćete da mešate boje i farbate oblike - Pomešajte crvenu, zelenu i plavu rudu boje da biste dobili različite boje i ofarbajte oblik kako bi ispunili zahteve potražnje.
@@ -485,7 +485,7 @@ buildings:
             description: Omogućava prenos predmeta ispod građevina i traka.
 
         tier2:
-            name: Tunel II Reda 
+            name: Tunel II Reda
             description: Omogućava prenos predmeta ispod građevina i traka.
 
     splitter: # Internal name for the Balancer
@@ -566,7 +566,7 @@ buildings:
         default:
             name: &energy_generator Generator
             description: Pretvara oblike u energiju.
-#TODO
+    #TODO
     wire_crossings:
         default:
             name: &wire_crossings Razdelnik žica
@@ -869,7 +869,7 @@ about:
     title: O Igri
     body: >-
         Ova igra je otvorenog koda i napravljena je od strane <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (to sam ja).<br><br>
-#TODO
+
         Ako želite da doprinesete razvoju, bacite pogled na <a href="<githublink>" target="_blank">shapez.io github</a>.<br><br>
 
         Bez odlične discord zajednice ova igra, kao ni druge, ne bi postojala - Pridružite se  <a href="<discordlink>" target="_blank">discord serveru</a>!<br><br>

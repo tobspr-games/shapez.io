@@ -151,7 +151,6 @@ mainMenu:
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
 
-
     continue: Continue
     newGame: New Game
     madeBy: Made by <author-link>

@@ -71,7 +71,7 @@ steamPage:
 
         誰でもこのげむの開発を手伝うことができ、私もプレーヤーの意見をできるだけゲームに取り入れようとしています。
         Trelloで今後の予定が全て確認できます。
-        
+
         [b]外部リンク[/b]
 
         [list]
@@ -150,7 +150,6 @@ mainMenu:
 
     savegameLevel: レベル <x>
     savegameLevelUnknown: 不明なレベル
-
 
     continue: 続きから
     newGame: 新規ゲーム

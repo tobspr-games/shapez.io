@@ -25,7 +25,7 @@ steamPage:
 
     # This is the text shown above the discord link
     discordLink: Discord oficial - ¡Chatea conmigo!
-    
+
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
@@ -33,7 +33,7 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io es un juego basado en la construcción de fábricas para automatizar la creación y combinación de figuras en un mapa que se expande infinitamente. 
+        shapez.io es un juego basado en la construcción de fábricas para automatizar la creación y combinación de figuras en un mapa que se expande infinitamente.
         Entrega las figuras requeridas para progresar y desbloquear mejoras para aumentar la velocidad de tu fábrica.
 
         Al aumentar la demanda, necesitarás escalar tu fábrica para ajustarte a las necesidades - ¡No te olvides de los recursos, necesitarás expandirte en el [b]mapa infinito[/b]!
@@ -73,7 +73,7 @@ steamPage:
         [b]¡Este juego es de código abierto![/b]
 
         Cualquiera puede contribuir, estoy activamente involucrado en la comunidad e intento leer todas las sugerencias y considerar todas las propuestas planteadas.
-        ¡Comprueba mi tablero de Trello para ver todo lo planificado! 
+        ¡Comprueba mi tablero de Trello para ver todo lo planificado!
 
         [b]Enlaces[/b]
 
@@ -219,7 +219,7 @@ dialogs:
     oneSavegameLimit:
         title: Partidas guardadas limitadas
         desc: Solo puedes tener una partida guardada a la vez en la versión de prueba. ¡Por favor, elimina la ya existente u obtén el juego completo!
-    
+
     updateSummary:
         title: ¡Nueva actualización!
         desc: >-
@@ -556,7 +556,7 @@ buildings:
         merger:
             name: Fusionador de cables
             description: Fusiona dos cables en uno
-    
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
