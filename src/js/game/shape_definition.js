@@ -13,7 +13,6 @@ import {
     enumInvertedColors,
 } from "./colors";
 import { THEME } from "./theme";
-import { StaticMapEntitySystem } from "./systems/static_map_entity";
 
 const rusha = require("rusha");
 
