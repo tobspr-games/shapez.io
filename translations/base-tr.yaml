@@ -151,7 +151,6 @@ mainMenu:
     savegameLevel: Seviye <x>
     savegameLevelUnknown: Bilinmeyen seviye
 
-
     continue: Devam et
     newGame: Yeni Oyun
     madeBy: Made by <author-link>

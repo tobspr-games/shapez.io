@@ -45,6 +45,7 @@
 # Painter：上色机
 # Trash：垃圾桶
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。
@@ -178,9 +179,8 @@ mainMenu:
         很抱歉, 本游戏在当前浏览器上可能运行缓慢! 使用chrome或者获取独立版以得到更好的体验。
 
     savegameLevel: 第<x>关
-    savegameLevelUnknown: 未知关卡
-
-
+    savegameLevelUnknown:
+        未知关卡
         # contestOver: This contest has ended - Join the discord to get noticed about new contests!
     continue: 继续游戏
     newGame: 新游戏
