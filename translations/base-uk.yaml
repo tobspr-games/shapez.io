@@ -156,8 +156,6 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
 
-
-
 dialogs:
     buttons:
         ok: OK
@@ -636,8 +634,6 @@ storyRewards:
         title: Next level
         desc: >-
             This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
-
-
 
     no_reward_freeplay:
         title: Next level
