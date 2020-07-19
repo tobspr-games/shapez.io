@@ -155,8 +155,6 @@ mainMenu:
     savegameLevel: Taso <x>
     savegameLevelUnknown: Tuntematon Taso
 
-
-
 dialogs:
     buttons:
         ok: OK

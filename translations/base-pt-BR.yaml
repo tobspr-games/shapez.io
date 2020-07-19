@@ -150,7 +150,6 @@ mainMenu:
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
 
-
     helpTranslate: Ajude a traduzir!
     continue: Continuar
     newGame: Novo jogo
@@ -291,7 +290,7 @@ ingame:
         delete: Destruir
         selectBuildings: Selecionar área
         pasteLastBlueprint: Colar último projeto
-        
+
         lockBeltDirection: Ativar Planejador de Esteiras
         plannerSwitchSide: Flip planner side
         cutSelection: Cortar
@@ -299,7 +298,6 @@ ingame:
         clearSelection: Limpar Seleção
         pipette: Conta-Gotas
         switchLayers: Trocar Camadas
-
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -461,7 +459,7 @@ buildings:
 
         tier2:
             name: Túnel Classe II
-            description:  Permite transportar recursos por baixo de construções e esteiras.
+            description: Permite transportar recursos por baixo de construções e esteiras.
 
     splitter: # Internal name for the Balancer
         default:
@@ -550,7 +548,6 @@ buildings:
         merger:
             name: Misturador de Fios
             description: Une dois fios de energia em um.
-
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -801,7 +798,7 @@ keybindings:
         toggleHud: Ocultar Interface
         toggleFPSInfo: Mostrar FPS e Debug Info
         switchLayers: Alternar Camadas
-        exportScreenshot: Exportar Base inteira como Imagem 
+        exportScreenshot: Exportar Base inteira como Imagem
 
         belt: *belt
         splitter: *splitter
@@ -817,7 +814,7 @@ keybindings:
         trash: *trash
         wire: *wire
 
-        pipette: Conta-Gotas        
+        pipette: Conta-Gotas
         rotateWhilePlacing: Rotacionar
         rotateInverseModifier: >-
             Modifier: Rotação anti-horária
@@ -833,11 +830,11 @@ keybindings:
         placeMultiple: Permanecer no modo de construção
         placeInverse: Inverter orientação de esteira
         pasteLastBlueprint: Colar último projeto
-        massSelectCut: Cortar área        
+        massSelectCut: Cortar área
         mapMoveFaster: Mover mais rápido
         lockBeltDirection: Ativar planejador de correia
         switchDirectionLockSide: "Planejador: Mudar de lado"
-        menuClose: Fechar Menu        
+        menuClose: Fechar Menu
 
 about:
     title: Sobre o jogo

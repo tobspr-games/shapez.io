@@ -151,7 +151,6 @@ mainMenu:
     savegameLevel: Nivå <x>
     savegameLevelUnknown: Ukjent Nivå
 
-
     continue: Fortsett
     newGame: Nytt Spill
     madeBy: Laget av <author-link>
