@@ -774,10 +774,10 @@ settings:
             description: >-
                 Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
 
-        middleMouseScroll:
-            title: Middle mouse scroll
+        middleMousePan:
+            title: Pan camera with middle click
             description: >-
-                Allows for scrolling with the middle mouse button in addition to left click.
+                Click with the middle mouse button instead of left click to pan the camera. Allows panning camera while a building is selected.
 
 keybindings:
     title: Keybindings

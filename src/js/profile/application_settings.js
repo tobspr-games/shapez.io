@@ -252,7 +252,7 @@ export const allApplicationSettings = [
     new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
     new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
     new BoolSetting("rotationByBuilding", categoryGame, (app, value) => {}),
-    new BoolSetting("middleMouseScroll", categoryGame, (app, value) => {}),
+    new BoolSetting("middleMousePan", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -280,7 +280,7 @@ class SettingsStorage {
         this.compactBuildingInfo = false;
         this.disableCutDeleteWarnings = false;
         this.rotationByBuilding = true;
-        this.middleMouseScroll = false;
+        this.middleMousePan = false;
 
         this.enableColorBlindHelper = false;
 
