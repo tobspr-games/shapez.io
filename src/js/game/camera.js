@@ -438,13 +438,14 @@ export class Camera extends BasicSerializableObject {
         }
 
         this.touchPostMoveVelocity = new Vector(0, 0);
-        if (event.button === 0) {
-            this.combinedSingleTouchStartHandler(event.clientX, event.clientY);
-        } else if (event.button === 1) {
-            this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.middle);
-        } else if (event.button === 2) {
-            this.downPreHandler.dispatch(new Vector(event.clientX, event.clientY), enumMouseButton.right);
-        }
+        let buttonKey;
+
+        this.combinedSingleTouchStartHandler(
+            event.clientX,
+            event.clientY,
+            this.mouseEnumFromNumber(event.button)
+        );
+
         return false;
     }
 
@@ -462,12 +463,7 @@ export class Camera extends BasicSerializableObject {
             return;
         }
 
-        if (
-            (!this.root.app.settings.getSetting("middleMousePan") && event.button === 0) ||
-            (this.root.app.settings.getSetting("middleMousePan") && event.button === 1)
-        ) {
-            this.combinedSingleTouchMoveHandler(event.clientX, event.clientY);
-        }
+        this.combinedSingleTouchMoveHandler(event.clientX, event.clientY);
 
         // Clamp everything afterwards
         this.clampZoomLevel();
@@ -490,8 +486,28 @@ export class Camera extends BasicSerializableObject {
             return;
         }
 
-        this.combinedSingleTouchStopHandler(event.clientX, event.clientY);
+        this.combinedSingleTouchStopHandler(
+            event.clientX,
+            event.clientY,
+            this.mouseEnumFromNumber(event.button)
+        );
+
         return false;
+    }
+
+    /**
+     * Converts a mouse key index (0-2) to a {enumMouseButton} value, otherwise undefined if out of range
+     * @param {number} mouseKey
+     */
+    mouseEnumFromNumber(mouseKey) {
+        if (mouseKey === 0) {
+            return enumMouseButton.left;
+        } else if (mouseKey === 1) {
+            return enumMouseButton.middle;
+        } else if (mouseKey === 2) {
+            return enumMouseButton.right;
+        }
+        return undefined;
     }
 
     /**
@@ -541,7 +557,8 @@ export class Camera extends BasicSerializableObject {
 
         if (event.touches.length === 1) {
             const touch = event.touches[0];
-            this.combinedSingleTouchStartHandler(touch.clientX, touch.clientY);
+            // all touches should be considered a left click behavior
+            this.combinedSingleTouchStartHandler(touch.clientX, touch.clientY, enumMouseButton.left);
         } else if (event.touches.length === 2) {
             // if (this.pinchPreHandler.dispatch() === STOP_PROPAGATION) {
             //     // Something prevented pinching
@@ -656,7 +673,7 @@ export class Camera extends BasicSerializableObject {
         }
 
         const touch = event.changedTouches[0];
-        this.combinedSingleTouchStopHandler(touch.clientX, touch.clientY);
+        this.combinedSingleTouchStopHandler(touch.clientX, touch.clientY, enumMouseButton.left);
         return false;
     }
 
@@ -664,20 +681,28 @@ export class Camera extends BasicSerializableObject {
      * Internal touch start handler
      * @param {number} x
      * @param {number} y
+     * @param {enumMouseButton} buttonKey
      */
-    combinedSingleTouchStartHandler(x, y) {
+    combinedSingleTouchStartHandler(x, y, buttonKey) {
         const pos = new Vector(x, y);
-        if (this.downPreHandler.dispatch(pos, enumMouseButton.left) === STOP_PROPAGATION) {
+        if (this.downPreHandler.dispatch(pos, buttonKey) === STOP_PROPAGATION) {
             // Somebody else captured it
             return;
         }
 
-        this.touchPostMoveVelocity = new Vector(0, 0);
-        this.currentlyMoving = true;
-        this.lastMovingPosition = pos;
-        this.lastMovingPositionLastTick = null;
-        this.numTicksStandingStill = 0;
-        this.didMoveSinceTouchStart = false;
+        if (
+            buttonKey ===
+            (this.root.app.settings.getSetting("middleMousePan")
+                ? enumMouseButton.middle
+                : enumMouseButton.left)
+        ) {
+            this.touchPostMoveVelocity = new Vector(0, 0);
+            this.currentlyMoving = true;
+            this.lastMovingPosition = pos;
+            this.lastMovingPositionLastTick = null;
+            this.numTicksStandingStill = 0;
+            this.didMoveSinceTouchStart = false;
+        }
     }
 
     /**
@@ -720,9 +745,19 @@ export class Camera extends BasicSerializableObject {
 
     /**
      * Internal touch stop handler
+     * @param {number} x
+     * @param {number} y
+     * @param {enumMouseButton} buttonKey
      */
-    combinedSingleTouchStopHandler(x, y) {
-        if (this.currentlyMoving || this.currentlyPinching) {
+    combinedSingleTouchStopHandler(x, y, buttonKey) {
+        if (
+            this.currentlyPinching ||
+            (this.currentlyMoving &&
+                buttonKey ===
+                    (this.root.app.settings.getSetting("middleMousePan")
+                        ? enumMouseButton.middle
+                        : enumMouseButton.left))
+        ) {
             this.currentlyMoving = false;
             this.currentlyPinching = false;
             this.lastMovingPosition = null;
