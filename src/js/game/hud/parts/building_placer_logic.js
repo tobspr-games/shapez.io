@@ -706,7 +706,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         // Deletion
-        if (button === enumMouseButton.right && !metaBuilding) {
+        if (
+            button === enumMouseButton.right &&
+            (!metaBuilding || this.root.app.settings.getSetting("canDeleteWhileBuilding"))
+        ) {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
@@ -715,7 +718,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         // Cancel placement
-        if (button === enumMouseButton.right && metaBuilding) {
+        if (
+            button === enumMouseButton.right &&
+            metaBuilding &&
+            !this.root.app.settings.getSetting("canDeleteWhileBuilding")
+        ) {
             this.currentMetaBuilding.set(null);
         }
     }

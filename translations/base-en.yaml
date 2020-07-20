@@ -777,7 +777,12 @@ settings:
         middleMousePan:
             title: Pan camera with middle click
             description: >-
-                Click with the middle mouse button instead of left click to pan the camera. Allows panning camera while a building is selected.
+                Click and drag with the middle mouse button instead of the left mouse button to pan the camera. Allows panning camera while a building is selected.
+
+        canDeleteWhileBuilding:
+            title: Immediate Delete Mode
+            description: >-
+                Enabling this will disable deselecting with right click and allow you to immediately delete buildings and structures without deselecting your current building.
 
 keybindings:
     title: Keybindings

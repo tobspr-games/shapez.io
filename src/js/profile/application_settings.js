@@ -253,6 +253,7 @@ export const allApplicationSettings = [
     new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
     new BoolSetting("rotationByBuilding", categoryGame, (app, value) => {}),
     new BoolSetting("middleMousePan", categoryGame, (app, value) => {}),
+    new BoolSetting("canDeleteWhileBuilding", categoryGame, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -281,6 +282,7 @@ class SettingsStorage {
         this.disableCutDeleteWarnings = false;
         this.rotationByBuilding = true;
         this.middleMousePan = false;
+        this.canDeleteWhileBuilding = false;
 
         this.enableColorBlindHelper = false;
 
@@ -563,6 +565,7 @@ export class ApplicationSettings extends ReadWriteProxy {
 
         if (data.version < 19) {
             data.settings.middleMousePan = false;
+            data.settings.canDeleteWhileBuilding = false;
             data.version = 19;
         }
 
