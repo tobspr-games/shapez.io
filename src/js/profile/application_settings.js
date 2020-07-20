@@ -483,7 +483,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 18;
+        return 19;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -559,6 +559,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 18) {
             data.settings.rotationByBuilding = true;
             data.version = 18;
+        }
+
+        if (data.version < 19) {
+            data.settings.middleMousePan = false;
+            data.version = 19;
         }
 
         return ExplainedResult.good();
