@@ -824,8 +824,21 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Mouse up handler
      */
-    onMouseUp() {
+    onMouseUp(pos, mouseButton) {
         if (this.root.camera.getIsMapOverlayActive()) {
+            return;
+        }
+
+        // prevent releasing the wrong mouse button from cancelling other actions:
+        // if not dragging, OR
+        // if not deleting and the released mouse button is not left click, OR
+        // if deleting and the released mouse button is not right click,
+        // then ignore the release
+        if (
+            !this.currentlyDragging ||
+            (!this.currentlyDeleting && mouseButton !== enumMouseButton.left) ||
+            (this.currentlyDeleting && mouseButton !== enumMouseButton.right)
+        ) {
             return;
         }
 

@@ -87,7 +87,7 @@ export class Camera extends BasicSerializableObject {
         this.downPreHandler = /** @type {TypedSignal<[Vector, enumMouseButton]>} */ (new Signal());
         this.movePreHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
         // this.pinchPreHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
-        this.upPostHandler = /** @type {TypedSignal<[Vector]>} */ (new Signal());
+        this.upPostHandler = /** @type {TypedSignal<[Vector, enumMouseButton]>} */ (new Signal());
 
         this.internalInitEvents();
         this.clampZoomLevel();
@@ -767,7 +767,7 @@ export class Camera extends BasicSerializableObject {
             this.userInteraction.dispatch(USER_INTERACT_TOUCHEND);
             this.didMoveSinceTouchStart = false;
         }
-        this.upPostHandler.dispatch(new Vector(x, y));
+        this.upPostHandler.dispatch(new Vector(x, y), buttonKey);
     }
 
     /**

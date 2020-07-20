@@ -213,7 +213,12 @@ export class HUDMassSelector extends BaseHUDPart {
         }
     }
 
-    onMouseUp() {
+    onMouseUp(pos, mouseButton) {
+        // prevent releasing other mouse buttons from stopping a left click action
+        if (mouseButton !== enumMouseButton.left) {
+            return;
+        }
+
         if (this.currentSelectionStartWorld) {
             const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
