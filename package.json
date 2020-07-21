@@ -29,7 +29,6 @@
         "@types/filesystem": "^0.0.29",
         "ajv": "^6.10.2",
         "babel-loader": "^8.0.4",
-        "browser-sync": "^2.24.6",
         "circular-dependency-plugin": "^5.0.2",
         "circular-json": "^0.5.9",
         "clipboard-copy": "^3.1.0",
