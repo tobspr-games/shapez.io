@@ -128,6 +128,24 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     }
 
     /**
+     * Generates a definition for rotating a shape counter clockwise
+     * @param {ShapeDefinition} definition
+     * @returns {ShapeDefinition}
+     */
+    shapeActionRotateFL(definition) {
+        const key = "rotate-fl:" + definition.getHash();
+        if (this.operationCache[key]) {
+            return /** @type {ShapeDefinition} */ (this.operationCache[key]);
+        }
+
+        const rotated = definition.cloneRotateFL();
+
+        return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
+            rotated
+        ));
+    }
+
+    /**
      * Generates a definition for stacking the upper definition onto the lower one
      * @param {ShapeDefinition} lowerDefinition
      * @param {ShapeDefinition} upperDefinition
