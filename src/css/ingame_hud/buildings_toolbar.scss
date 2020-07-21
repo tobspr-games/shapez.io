@@ -23,6 +23,9 @@
         transform: translateX(-50%) translateY(#{D(100px)});
     }
 
+    @include S(border-top-left-radius, $globalBorderRadius);
+    @include S(border-top-right-radius, $globalBorderRadius);
+
     .buildings {
         display: grid;
         grid-auto-flow: column;
