@@ -511,6 +511,15 @@ export class Camera extends BasicSerializableObject {
     }
 
     /**
+     * Returns the {enumMouseButton} value for the key to pan the camera as according to settings
+     */
+    getMousePanButton() {
+        return this.root.app.settings.getSetting("middleMousePan")
+            ? enumMouseButton.middle
+            : enumMouseButton.left;
+    }
+
+    /**
      * Mousewheel event
      * @param {WheelEvent} event
      */
@@ -690,12 +699,7 @@ export class Camera extends BasicSerializableObject {
             return;
         }
 
-        if (
-            buttonKey ===
-            (this.root.app.settings.getSetting("middleMousePan")
-                ? enumMouseButton.middle
-                : enumMouseButton.left)
-        ) {
+        if (buttonKey === this.getMousePanButton()) {
             this.touchPostMoveVelocity = new Vector(0, 0);
             this.currentlyMoving = true;
             this.lastMovingPosition = pos;
@@ -750,14 +754,7 @@ export class Camera extends BasicSerializableObject {
      * @param {enumMouseButton} buttonKey
      */
     combinedSingleTouchStopHandler(x, y, buttonKey) {
-        if (
-            this.currentlyPinching ||
-            (this.currentlyMoving &&
-                buttonKey ===
-                    (this.root.app.settings.getSetting("middleMousePan")
-                        ? enumMouseButton.middle
-                        : enumMouseButton.left))
-        ) {
+        if (this.currentlyPinching || (this.currentlyMoving && buttonKey === this.getMousePanButton())) {
             this.currentlyMoving = false;
             this.currentlyPinching = false;
             this.lastMovingPosition = null;
