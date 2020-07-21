@@ -67,6 +67,7 @@ export const globalConfig = {
         cutterQuad: 1 / 4,
         rotater: 1 / 1,
         rotaterCCW: 1 / 1,
+        rotaterFL: 1 / 1,
         painter: 1 / 6,
         painterDouble: 1 / 8,
         painterQuad: 1 / 8,

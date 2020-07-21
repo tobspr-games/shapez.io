@@ -15,6 +15,7 @@ export const enumHubGoalRewards = {
     reward_tunnel: "reward_tunnel",
 
     reward_rotater_ccw: "reward_rotater_ccw",
+    reward_rotater_fl: "reward_rotater_fl",
     reward_miner_chainable: "reward_miner_chainable",
     reward_underground_belt_tier_2: "reward_underground_belt_tier_2",
     reward_splitter_compact: "reward_splitter_compact",

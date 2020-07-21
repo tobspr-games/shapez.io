@@ -416,6 +416,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 ) {
                     continue checkVariant;
                 }
+
+                if (metaBuilding.id === "wire" && entity.layer !== enumLayer.wires) {
+                    continue checkVariant;
+                }
+
+                if (metaBuilding.id === "belt" && entity.layer !== enumLayer.regular) {
+                    continue checkVariant;
+                }
                 matches.push({ metaBuilding, variant });
             }
         }
