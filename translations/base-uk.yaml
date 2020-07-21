@@ -17,6 +17,13 @@
 #
 #    If you want to add a new language, ask me in the discord and I will setup
 #    the basic structure so the game also detects it.
+# Ґлосарій:
+# map мапа
+# keybinds гарячі клавіши
+# upgrade поліпшення 
+#marker позначка
+#area ділянка
+#
 #
 
 steamPage:
@@ -47,18 +54,18 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/header_standalone_advantages.png[/img]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
+            [*] Темний режим 
+            [*] Необмежені Waypoints
+            [*] Необмежені збереження
+            [*] Додаткові налаштування
+            [*] Незабаром: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Незабаром: більше рівнів.
             [*] Allows me to further develop shapez.io ❤️
         [/list]
 
         [img]{STEAM_APP_IMAGE}/extras/header_future_updates.png[/img]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Я оновлюю гру жує часто і намагаюся випускати оновлення щотижня and trying to push an update at least every week!
 
         [list]
             [*] Different maps and challenges (e.g. maps with obstacles)
@@ -178,14 +185,14 @@ dialogs:
             Не вдалося імпортувати вашу збережену гру:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Збереження імпортовано
         text: >-
-            Your savegame has been successfully imported.
+            Вашу збережену гру успішно імпортовано. 
 
     gameLoadFailure:
         title: Game is broken
         text: >-
-            Failed to load your savegame:
+            Не вдалося завантажити вашу збережену гру. 
 
     confirmSavegameDelete:
         title: Підтвердження
@@ -193,9 +200,9 @@ dialogs:
             Ви справді хочете видалити гру?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Виникла помилка при видаленні
         text: >-
-            Failed to delete the savegame:
+            Не вдалося видалити збережену гру. 
 
     restartRequired:
         title: Потрібне перезавантаження
@@ -203,16 +210,16 @@ dialogs:
             Перезавантажте гру, щоб налаштування вступили в дію.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Зміна гарячої клавіши
+        desc: Натисніть клавішу, яку ви хочете призначити, або escape для скасування.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Скинути гарячу клавіші
+        desc: Це скине всі прив'язки клавіш до їхніх значень за замовчуванням. Будь ласка, підтвердіть.
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Скинути гарячі клавіші
+        desc: Гарячі клавіши скинемуться до їхніх початкових значень!
 
     featureRestriction:
         title: Демоверсія
@@ -228,7 +235,7 @@ dialogs:
             Ось зміни з вашої останньої гри
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Розблокування поліпшень
         desc: >-
             All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
             The upgrades tab can be found on the top right corner of the screen.
@@ -263,9 +270,9 @@ dialogs:
             <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
 
     createMarker:
-        title: New Marker
+        title: Нова позначка
         desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Edit Marker
+        titleEdit: Редагувати позначку
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
@@ -278,8 +285,8 @@ ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
+        moveMap: Рухатися
+        selectBuildings: Виділити будівлі
         stopPlacement: Stop placement
         rotateBuilding: Rotate building
         placeMultiple: Place multiple
@@ -288,12 +295,12 @@ ingame:
         toggleHud: Toggle HUD
         placeBuilding: Place building
         createMarker: Create marker
-        delete: Delete
+        delete: Видалити
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
+        cutSelection: Вирізати
+        copySelection: Скопіювати
         clearSelection: Clear selection
         pipette: Pipette
         switchLayers: Switch layers
@@ -322,14 +329,14 @@ ingame:
             Hotkey: <key>
 
         infoTexts:
-            speed: Speed
+            speed: Швидкість 
             range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            storage: Сховище
+            oneItemPerSecond: 1 предмет за сек.
+            itemsPerSecond: <x> предмет. за сек
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> плиток
 
     # The notification when completing a level
     levelCompleteNotification:
@@ -341,16 +348,16 @@ ingame:
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
+        newUpgrade: Нове оновлення розблоковано!
         gameSaved: Вашу гру збережено.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Поліпшення
+        buttonUnlock: Поліпшення
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Ранг <x>
+        tier: Клас <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
@@ -399,7 +406,7 @@ ingame:
 
     # Map markers
     waypoints:
-        waypoints: Markers
+        waypoints: Позначки
         hub: Центр
         description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
         creationSuccessNotification: Marker has been created.
@@ -441,7 +448,7 @@ buildings:
     hub:
         deliver: Доставте,
         toUnlock: щоб розблокувати
-        levelShortcut: РІВН
+        levelShortcut: РІВ
 
     belt:
         default:
@@ -803,11 +810,11 @@ keybindings:
         mapMoveFaster: Move Faster
         centerMap: Center Map
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: Приблизити
+        mapZoomOut: Віддалити
+        createMarker: Створити позначку
 
-        menuOpenShop: Upgrades
+        menuOpenShop: Поліпшення
         menuOpenStats: Статистика
         menuClose: Закрити меню
 
@@ -829,7 +836,7 @@ keybindings:
         trash: *trash
         wire: *wire
 
-        pipette: Pipette
+        pipette: Pipetteї
         rotateWhilePlacing: Rotate
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
@@ -868,10 +875,10 @@ changelog:
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Відновлення збережень
+        importingGames: Імпортування збережень
+        oneGameLimit: Обмежено одним збереженням
+        customizeKeybindings: Налаштування гарячих клавіш
+        exportingBase: Експортування цілої бази у вигляді зображення
 
     settingNotAvailable: Недоступно в демоверсії.
