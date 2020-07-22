@@ -181,7 +181,6 @@ mainMenu:
     savegameLevel: 第<x>关
     savegameLevelUnknown:
         未知关卡
-        # contestOver: This contest has ended - Join the discord to get noticed about new contests!
     continue: 继续游戏
     newGame: 新游戏
     madeBy: 作者：<author-link>

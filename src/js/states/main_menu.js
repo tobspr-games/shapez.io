@@ -46,7 +46,7 @@ export class MainMenuState extends GameState {
                     : ""
             }
             </div>
-            
+
             <video autoplay muted loop class="fullscreenBackgroundVideo">
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
             </video>
@@ -92,10 +92,10 @@ export class MainMenuState extends GameState {
                     <a class="redditLink">${T.mainMenu.subreddit}</a>
 
                     <a class="changelog">${T.changelog.title}</a>
-                
+
                     <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
                 </div>
-            
+
                 <div class="author">${T.mainMenu.madeBy.replace(
                     "<author-link>",
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
@@ -218,11 +218,6 @@ export class MainMenuState extends GameState {
         this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
         this.trackClicks(qs(".helpTranslate"), this.onTranslationHelpLinkClicked);
 
-        const contestButton = qs(".participateContest");
-        if (contestButton) {
-            this.trackClicks(contestButton, this.onContestClicked);
-        }
-
         if (G_IS_STANDALONE) {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
         }
@@ -310,15 +305,6 @@ export class MainMenuState extends GameState {
     onRedditClicked() {
         this.app.analytics.trackUiClick("main_menu_reddit_link");
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.reddit);
-    }
-
-    onContestClicked() {
-        this.app.analytics.trackUiClick("contest_click");
-
-        this.dialogs.showInfo(
-            T.mainMenu.contests.contest_01_03062020.title,
-            T.mainMenu.contests.contest_01_03062020.longDesc
-        );
     }
 
     onLanguageChooseClicked() {
