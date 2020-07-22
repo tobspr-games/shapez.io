@@ -109,6 +109,10 @@
                 @include S(margin-top, 4px);
                 width: calc(100% - #{D(20px)});
                 text-align: start;
+
+                &::after {
+                    content: unset;
+                }
             }
 
             button.categoryButton {
@@ -139,21 +143,35 @@
     }
 
     @include DarkThemeOverride {
-        .content {
-            .setting {
-                background: darken($darkModeGameBackground, 10);
+        .container .content {
+            .sidebar {
+                button.categoryButton {
+                    background-color: #44444f;
 
-                .value.enum {
-                    // dirty but works
-                    filter: invert(0.85);
-                    color: #222;
-                }
-
-                .value.checkbox {
-                    background-color: #74767b;
-
-                    &.checked {
+                    &.active {
                         background-color: $colorBlueBright;
+                    }
+                }
+            }
+
+            .categoryContainer {
+                .category {
+                    .setting {
+                        background: darken($darkModeGameBackground, 10);
+
+                        .value.enum {
+                            // dirty but works
+                            filter: invert(0.78) sepia(40%) hue-rotate(190deg);
+                            color: #222;
+                        }
+
+                        .value.checkbox {
+                            background-color: #74767b;
+
+                            &.checked {
+                                background-color: $colorBlueBright;
+                            }
+                        }
                     }
                 }
             }
