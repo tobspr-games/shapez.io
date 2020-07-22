@@ -33,32 +33,32 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io ist ein Spiel, in dem du Fabriken auf einer endlosen Karte baust, die zunehmend komplexere Shapez herstellen und weiterverarbeiten. Durch abgeschlossene Lieferaufträge werden für deine Fabrik Verbesserungen freigeschaltet.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Mit steigender Shapez nachfrage wirst du deine Fabrik erweitern müssen, aber vergesse die Ressourcen nicht. Du wirst dich auf der ganzen [b]endlosen Karte[/b] ausbreiten!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Schon bald wirst du Farben mischen und die Shapez färben. Kombiniere rote, grüne und blaue Farbstoffe um Verschiedene Farben zu erhalten um die Nachfrage zu decken.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Dieses Spiel enthält 18 progressive Level welche dich für Stunden beschäftigen! Ich füge konstant neue Inhalte hinzu – Es ist viel geplant !
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Mit kauf der Vollversion bekommst du Zugang zu zusätzlichen Funktionen unter anderem auch neuentwickelten Funktionen.
 
-        [b]Standalone Advantages[/b]
+
+        [b]Vorteile der Vollversion[/b]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] Nacht Modus
+            [*] Unendliche Wegpunkte
+            [*] Unendliche Spielstände
+            [*] Zusätzliche Einstellungen
+            [*] Kommt bald: Kabel & Strom! Vorrausichtlich ende Juli 2020.
+            [*] Kommt bald: Mehr Level
+            [*] Es erlaubt mir shapez.io weiter zu entwickeln❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]Zukünfitge Updates[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Ich verbessere das Spiel ständig und versuche jede Woche ein Update zu veröffentlichen!
 
         [list]
             [*] Different maps and challenges (e.g. maps with obstacles)
@@ -70,10 +70,10 @@ steamPage:
             [*] And much more!
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Dieses Spiel ist Open Source![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Jeder kann dazu beitragen. Ich bin aktiv in der Community unterwegs und versuche alle Vorschläge und Rückmeldungen wo möglich, in das Spiel mit einzubeziehen.
+        Besucht mich auf meinem Trello board für die komplette Roadmap!
 
         [b]Links[/b]
 
@@ -134,7 +134,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo Version
     intro: >-
-        Kauf die Standalone für alle Features!
+        Kaufe die Vollversion für alle Funktionen!
 
 mainMenu:
     play: Spielen
@@ -145,7 +145,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, aber das Spiel wird in deinem Browser langsam laufen! Erwerbe die Standalone-Version oder downloade Chrome für die beste Erfahrung!
+        Entschuldigung, aber das Spiel wird in deinem Browser langsam laufen! Erwerbe die Vollversion oder lade den Chromebrowser herunter, für die beste Erfahrung!
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
@@ -164,7 +164,7 @@ dialogs:
         later: Später
         restart: Neustart
         reset: Zurücksetzen
-        getStandalone: Standalone Ansehen
+        getStandalone: Vollversion Ansehen
         deleteGame: Ich weiß, was ich tue
         viewUpdate: Update anzeigen
         showUpgrades: Upgrades anzeigen
@@ -181,7 +181,7 @@ dialogs:
             Dein Spielstand wurde erfolgreich importiert.
 
     gameLoadFailure:
-        title: Der Spielstand ist kaputt
+        title: Der Spielstand ist beschädigt
         text: >-
             Der Spielstand konnte nicht geladen werden.
 
@@ -202,11 +202,11 @@ dialogs:
 
     editKeybinding:
         title: Tastenbelegung ändern
-        desc: Drücke die (Maus-)Taste, die du vergeben willst, oder ESC um abzubrechen.
+        desc: Drücke die (Maus-)Taste, die du belegen willst, oder ESC um abzubrechen.
 
     resetKeybindingsConfirmation:
         title: Tastenbelegung zurücksetzen
-        desc: Das wird alle deine Tastenbelegungen auf den Standard zurücksetzen. Bist du dir sicher?
+        desc: Deine Tastenbelegungen wird auf den Standard zurücksetzen. Bist du dir sicher?
 
     keybindingsResetOk:
         title: Tastenbelegung zurückgesetzt
@@ -214,11 +214,11 @@ dialogs:
 
     featureRestriction:
         title: Demo-Version
-        desc: Du hast ein Feature gefunden (<feature>), welches nicht in der Demo enthalten ist. Erwerbe die Standalone für das volle Erlebnis!
+        desc: Du hast ein Feature gefunden (<feature>), welches nicht in der Demo enthalten ist. Erwerbe die Vollversion für das ganze Erlebnis!
 
     oneSavegameLimit:
         title: Begrenzte Spielstände
-        desc: Du kannst in der Demo nur einen Spielstand haben. Bitte lösche den existierenden Spielstand oder hole dir die Standalone!
+        desc: Du kannst in der Demo nur einen Spielstand haben. Bitte lösche den existierenden Spielstand oder hole dir die Vollversion!
 
     updateSummary:
         title: Neues Update!
@@ -242,9 +242,9 @@ dialogs:
             Blueprints werden erst in Level 12 freigeschaltet!
 
     keybindingsIntroduction:
-        title: Nützliche Hotkeys
+        title: Nützliche Tastenkürzel
         desc: >-
-            Dieses Spiel hat viele Hotkeys, die den Bau von Fabriken vereinfachen und beschleunigen.
+            Dieses Spiel hat viele Tastenkürzel, die den Bau von Fabriken vereinfachen und beschleunigen.
             Hier sind ein paar, aber prüfe am besten die <strong>Tastenbelegung-Einstellungen</strong>!<br><br>
              <code class='keybinding'>STRG</code> + Ziehen: Wähle Areal aus.<br>
              <code class='keybinding'>UMSCH</code>: Halten, um mehrere Gebäude zu platzieren.<br>
@@ -252,11 +252,11 @@ dialogs:
 
     createMarker:
         title: Neuer Marker
-        desc: Gib ihm einen griffigen Namen. Du kannst sogar die <strong>Abkürzung</strong> einer Form eingeben (Diese kann <a href="https://viewer.shapez.io" target="_blank">hier</a> generiert werden).
+        desc: Gib dem Marker einen prägnanten Namen. Du kannst sogar die <strong>Abkürzung</strong> einer Form eingeben (Diese kann <a href="https://viewer.shapez.io" target="_blank">hier</a> generiert werden).
         titleEdit: Edit Marker
 
     markerDemoLimit:
-        desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Standalone, um unendlich viele Marker zu erstellen!
+        desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Vollversion, um unbegrenzt Marker zu erstellen!
     massCutConfirm:
         title: Ausschneiden bestätigen
         desc: >-
@@ -268,8 +268,8 @@ dialogs:
             Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für extrem große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Bestätige Ausschneiden
+        desc: Du kannst dir das Einfügen nicht Leisten! Bist du dir sicher?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -287,13 +287,13 @@ ingame:
         createMarker: Marker erstellen
         delete: Löschen
         pasteLastBlueprint: Letzte Blaupause einfügen
-        lockBeltDirection: Bandplaner aktivieren
+        lockBeltDirection: Förderbandplaner aktivieren
         plannerSwitchSide: "Planer: Seite wechseln"
         cutSelection: Ausschneiden
         copySelection: Kopieren
         clearSelection: Auswahl aufheben
         pipette: Pipette
-        switchLayers: Switch layers
+        switchLayers: Wechsle Ebenen
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -321,18 +321,18 @@ ingame:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Level <level>
         completed: Abgeschlossen
-        unlockText: <reward> freigeschaltet!
+        unlockText: <reward> Freigeschaltet!
         buttonNextLevel: Nächstes Level
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: Ein neues Upgrade ist verfügbar!
+        newUpgrade: Ein neue Verbesserung ist verfügbar!
         gameSaved: Dein Spiel wurde gespeichert.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Verbesserung
+        buttonUnlock: Verbessern
 
         # Gets replaced to e.g. "Tier IX"
         tier: Stufe <x>
@@ -348,13 +348,13 @@ ingame:
         dataSources:
             stored:
                 title: Gelagert
-                description: Zeigt die Menge an Formen, die im zentralen Gebäude gelagert sind.
+                description: Zeigt die Menge an Formen an, die im zentralen Gebäude gelagert sind.
             produced:
                 title: Produziert
-                description: Zeigt die Menge an Formen, die deine gesamte Fabrik produziert (inkl. Zwischenprodukte).
+                description: Zeigt die Menge an Formen an, die deine gesamte Fabrik produziert (inkl. Zwischenprodukte).
             delivered:
                 title: Abgeliefert
-                description: Zeigt die Menge an Formen, die im zentralen Gebäude abgeliefert werden.
+                description: Zeigt die Menge an Formen an, die im zentralen Gebäude abgeliefert werden.
         noShapesProduced: Bisher wurden keine Formen produziert.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -405,7 +405,7 @@ ingame:
         green: Grün
         blue: Blau
         yellow: Gelb
-        purple: Violett
+        purple: Lila
         cyan: Cyan
         white: Weiß
         uncolored: Farblos
@@ -479,16 +479,16 @@ buildings:
     rotater:
         default:
             name: &rotater Rotierer
-            description: Rotiert Formen im Uhrzeigersinn um 90 Grad.
+            description: Bewegt Formen im Uhrzeigersinn um 90 Grad.
 
         ccw:
             name: Rotierer (CCW)
-            description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
+            description: Bewegt Formen gegen den Uhrzeigersinn um 90 Grad.
 
     stacker:
         default:
             name: &stacker Stapler
-            description: Stapelt beide Formen. Wenn beide nicht vereint werden können, wird die rechte Form auf die linke Form gestapelt.
+            description: Stapelt beide Formen. Wenn beide nicht kombiniert werden können, wird die rechte Form auf die linke Form gestapelt.
 
     mixer:
         default:
@@ -527,25 +527,25 @@ buildings:
         levelShortcut: LVL
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Stromkabel
+            description: Ermöglicht Strom zu transportieren.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Farb Inverter
+            description: Aktzeptiert eine Farbe oder From und invertiert sie.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Liefere
+        toGenerateEnergy: für
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Stromgenerator
+            description: Produziert Strom mit Formen.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Kabelsteiler
+            description: Teilt ein Stromkabel in Zwei.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Kabel Verbinder
+            description: Verbindet Zwei Stromkabel zu einem.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -668,7 +668,7 @@ settings:
         fullscreen:
             title: Vollbild
             description: >-
-                Für das beste Erlebnis im Spiel wird der Vollbildmodus empfohlen (Nur in der Standalone-Version verfügbar).
+                Für das beste Erlebnis im Spiel wird der Vollbildmodus empfohlen (Nur in der Vollversion verfügbar).
 
         soundsMuted:
             title: Geräusche stummschalten
@@ -797,16 +797,16 @@ keybindings:
 
         toggleHud: HUD an/aus
         toggleFPSInfo: FPS und Debug-Info an/aus
-        belt: *belt
-        splitter: *splitter
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        painter: *painter
-        trash: *trash
+        belt: *Förderband
+        splitter: *Teiler
+        underground_belt: *Untergrund_Förderband
+        miner: *Förderer
+        cutter: *Zerschneider
+        rotater: *Rotierer
+        stacker: *Stapler
+        mixer: *Mischer
+        painter: *Färber
+        trash: *Müll
 
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
@@ -866,4 +866,4 @@ demo:
         customizeKeybindings: Tastenbelegung anpassen
         exportingBase: Ganze Fabrik als Foto exportieren
 
-    settingNotAvailable: Nicht verfügbar in der Demo.
+    settingNotAvailable: Nicht verfügbar in der Testversion.
