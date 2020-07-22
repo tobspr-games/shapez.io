@@ -2,98 +2,98 @@ export default {
     // You can set any debug options here!
     /* dev:start */
     // -----------------------------------------------------------------------------------
-    // Quickly enters the game and skips the main menu - good for fast iterating
-    // fastGameEnter: true,
+    _fastGameEnter: "Quickly enters the game and skips the main menu - good for fast iterating",
+    fastGameEnter: false,
     // -----------------------------------------------------------------------------------
-    // Skips any delays like transitions between states and such
-    // noArtificialDelays: true,
+    _noArtificialDelays: "Skips any delays like transitions between states and such",
+    noArtificialDelays: false,
     // -----------------------------------------------------------------------------------
-    // Disables writing of savegames, useful for testing the same savegame over and over
-    // disableSavegameWrite: true,
+    _disableSavegameWrite: "Disables writing of savegames, useful for testing the same savegame over and over",
+    disableSavegameWrite: false,
     // -----------------------------------------------------------------------------------
-    // Shows bounds of all entities
-    // showEntityBounds: true,
+    _showEntityBounds: "Shows bounds of all entities",
+    showEntityBounds: false,
     // -----------------------------------------------------------------------------------
-    // Shows arrows for every ejector / acceptor
-    // showAcceptorEjectors: true,
+    _showAcceptorEjectors: "Shows arrows for every ejector / acceptor",
+    showAcceptorEjectors: false,
     // -----------------------------------------------------------------------------------
-    // Disables the music (Overrides any setting, can cause weird behaviour)
-    // disableMusic: true,
+    _disableMusic: "Disables the music (Overrides any setting, can cause weird behaviour)",
+    disableMusic: false,
     // -----------------------------------------------------------------------------------
-    // Do not render static map entities (=most buildings)
-    // doNotRenderStatics: true,
+    _doNotRenderStatics: "Do not render static map entities (=most buildings)",
+    doNotRenderStatics: false,
     // -----------------------------------------------------------------------------------
-    // Allow to zoom freely without limits
-    // disableZoomLimits: true,
+    _disableZoomLimits: "Allow to zoom freely without limits",
+    disableZoomLimits: false,
     // -----------------------------------------------------------------------------------
-    // Shows a border arround every chunk
-    // showChunkBorders: true,
+    _showChunkBorders: "Shows a border arround every chunk",
+    showChunkBorders: false,
     // -----------------------------------------------------------------------------------
-    // All rewards can be unlocked by passing just 1 of any shape
-    // rewardsInstant: true,
+    _rewardsInstant: "All rewards can be unlocked by passing just 1 of any shape",
+    rewardsInstant: false,
     // -----------------------------------------------------------------------------------
-    // Unlocks all buildings
-    // allBuildingsUnlocked: true,
+    _allBuildingsUnlocked: "Unlocks all buildings",
+    allBuildingsUnlocked: false,
     // -----------------------------------------------------------------------------------
-    // Disables cost of blueprints
-    // blueprintsNoCost: true,
+    _blueprintsNoCost: "Disables cost of blueprints",
+    blueprintsNoCost: false,
     // -----------------------------------------------------------------------------------
-    // Disables cost of upgrades
-    // upgradesNoCost: true,
+    _upgradesNoCost: "Disables cost of upgrades",
+    upgradesNoCost: false,
     // -----------------------------------------------------------------------------------
-    // Disables the dialog when completing a level
-    // disableUnlockDialog: true,
+    _disableUnlockDialog: "Disables the dialog when completing a level",
+    disableUnlockDialog: false,
     // -----------------------------------------------------------------------------------
-    // Disables the simulation - This effectively pauses the game.
-    // disableLogicTicks: true,
+    _disableLogicTicks: "Disables the simulation - This effectively pauses the game.",
+    disableLogicTicks: false,
     // -----------------------------------------------------------------------------------
-    // Test the rendering if everything is clipped out properly
-    // testClipping: true,
+    _testClipping: "Test the rendering if everything is clipped out properly",
+    testClipping: false,
     // -----------------------------------------------------------------------------------
     // Allows to render slower, useful for recording at half speed to avoid stuttering
     // framePausesBetweenTicks: 1,
     // -----------------------------------------------------------------------------------
-    // Replace all translations with emojis to see which texts are translateable
-    // testTranslations: true,
+    _testTranslations: "Replace all translations with emojis to see which texts are translateable",
+    testTranslations: false,
     // -----------------------------------------------------------------------------------
-    // Enables an inspector which shows information about the entity below the curosr
-    // enableEntityInspector: true,
+    _enableEntityInspector: "Enables an inspector which shows information about the entity below the curosr",
+    enableEntityInspector: false,
     // -----------------------------------------------------------------------------------
-    // Enables ads in the local build (normally they are deactivated there)
-    // testAds: true,
+    _testAds: "Enables ads in the local build (normally they are deactivated there)",
+    testAds: false,
     // -----------------------------------------------------------------------------------
-    // Disables the automatic switch to an overview when zooming out
-    // disableMapOverview: true,
+    _disableMapOverview: "Disables the automatic switch to an overview when zooming out",
+    disableMapOverview: false,
     // -----------------------------------------------------------------------------------
-    // Disables the notification when there are new entries in the changelog since last played
-    // disableUpgradeNotification: true,
+    _disableUpgradeNotification: "Disables the notification when there are new entries in the changelog since last played",
+    disableUpgradeNotification: false,
     // -----------------------------------------------------------------------------------
-    // Makes belts almost infinitely fast
-    // instantBelts: true,
+    _instantBelts: "Makes belts almost infinitely fast",
+    instantBelts: false,
     // -----------------------------------------------------------------------------------
-    // Makes item processors almost infinitely fast
-    // instantProcessors: true,
+    _instantProcessors: "Makes item processors almost infinitely fast",
+    instantProcessors: false,
     // -----------------------------------------------------------------------------------
-    // Makes miners almost infinitely fast
-    // instantMiners: true,
+    _instantMiners: "Makes miners almost infinitely fast",
+    instantMiners: false,
     // -----------------------------------------------------------------------------------
-    // When using fastGameEnter, controls whether a new game is started or the last one is resumed
-    // resumeGameOnFastEnter: true,
+    _resumeGameOnFastEnter: "When using fastGameEnter, controls whether a new game is started or the last one is resumed",
+    resumeGameOnFastEnter: false,
     // -----------------------------------------------------------------------------------
-    // Special option used to render the trailer
-    // renderForTrailer: true,
+    _renderForTrailer: "Special option used to render the trailer",
+    renderForTrailer: false,
     // -----------------------------------------------------------------------------------
-    // Whether to render changes
-    // renderChanges: true,
+    _renderChanges: "Whether to render changes",
+    renderChanges: false,
     // -----------------------------------------------------------------------------------
-    // Whether to render belt paths
-    // renderBeltPaths: true,
+    _renderBeltPaths: "Whether to render belt paths",
+    renderBeltPaths: false,
     // -----------------------------------------------------------------------------------
-    // Whether to check belt paths
-    // checkBeltPaths: true,
+    _checkBeltPaths: "Whether to check belt paths",
+    checkBeltPaths: false,
     // -----------------------------------------------------------------------------------
-    // Whether to items / s instead of items / m in stats
-    // detailedStatistics: true,
+    _detailedStatistics: "Whether to items / s instead of items / m in stats",
+    detailedStatistics: false,
     // -----------------------------------------------------------------------------------
     /* dev:end */
 };
