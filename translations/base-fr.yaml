@@ -253,7 +253,7 @@ dialogs:
             En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong> !<br><br>
             <code class='keybinding'>CTRL</code> + Glisser: Sélectionne une zone à copier / effacer.<br>
             <code class='keybinding'>SHIFT</code>: Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
-            <code class='keybinding'>ALT</code>: Inversel'orientation des convoyeurs placés.<br>
+            <code class='keybinding'>ALT</code>: Inverse l'orientation des convoyeurs placés.<br>
 
     createMarker:
         title: Nouvelle balise
