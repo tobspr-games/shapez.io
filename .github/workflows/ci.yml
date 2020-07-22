@@ -47,4 +47,7 @@ jobs:
 
             - name: TSLint
               run: |
+                  cd gulp
+                  yarn gulp translations.fullBuild
+                  cd ..
                   yarn tslint
