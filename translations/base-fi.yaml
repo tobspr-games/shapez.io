@@ -500,8 +500,8 @@ buildings:
             name: Rotate (Vastapäivään)
             description: Kääntää muotoja 90 astetta vastapäivään.
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -641,8 +641,9 @@ storyRewards:
 settings:
     title: Asetukset
     categories:
-        game: Peli
-        app: Sovellus
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Kehitys

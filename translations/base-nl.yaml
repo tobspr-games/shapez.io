@@ -484,8 +484,8 @@ buildings:
             name: Roteerder (andersom)
             description: Draait vormen 90 graden tegen de klok in.
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -632,8 +632,9 @@ storyRewards:
 settings:
     title: Opties
     categories:
-        game: Spel
-        app: Applicatie
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Ontwikkeling

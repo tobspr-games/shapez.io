@@ -484,6 +484,9 @@ buildings:
         ccw:
             name: Rodar (CCW)
             description: Roda as formas 90º no sentido contrário ao dos ponteiros do relógio.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -629,8 +632,9 @@ storyRewards:
 settings:
     title: Definições
     categories:
-        game: Jogo
-        app: Aplicação
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Desenvolvimento

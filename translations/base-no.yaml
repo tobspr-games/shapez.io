@@ -488,8 +488,8 @@ buildings:
             name: Roter (Mot klokken)
             description: Roter objekter mot klokken, 90 grader.
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -631,8 +631,9 @@ storyRewards:
 settings:
     title: Instillinger
     categories:
-        game: Spill
-        app: Applikasjon
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Utvikling

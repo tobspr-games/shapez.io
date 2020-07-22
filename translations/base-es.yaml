@@ -503,8 +503,8 @@ buildings:
             name: Rotador (Inverso)
             description: Rota las figuras en sentido antihorario 90 grados.
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -645,8 +645,9 @@ storyRewards:
 settings:
     title: Opciones
     categories:
-        game: Juego
-        app: Aplicación
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Desarrollo

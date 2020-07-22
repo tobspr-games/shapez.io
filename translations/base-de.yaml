@@ -485,8 +485,8 @@ buildings:
             name: Rotierer (CCW)
             description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -636,8 +636,9 @@ storyRewards:
 settings:
     title: Einstellungen
     categories:
-        game: Spiel
-        app: Applikation
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Entwicklung

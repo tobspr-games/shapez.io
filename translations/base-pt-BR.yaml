@@ -490,8 +490,8 @@ buildings:
             name: Rotacionador (Anti-horário)
             description: Gira as formas no sentido anti-horário em 90 graus.
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -637,8 +637,9 @@ storyRewards:
 settings:
     title: opções
     categories:
-        game: Jogo
-        app: Aplicação
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Desenvolvedor

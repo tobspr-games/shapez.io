@@ -513,8 +513,8 @@ buildings:
             name: 旋轉機（逆時針）
             description: 將圖形逆時針旋轉90度。
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -660,8 +660,9 @@ storyRewards:
 settings:
     title: 設置
     categories:
-        game: 遊戲內容
-        app: 應用
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: 開發版本 # Development

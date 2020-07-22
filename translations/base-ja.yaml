@@ -491,8 +491,8 @@ buildings:
             name: 回転機 (逆)
             description: 形を反時計回り方向に90度回転します。
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -634,8 +634,9 @@ storyRewards:
 settings:
     title: 設定
     categories:
-        game: ゲーム
-        app: アプリケーション
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Development

@@ -486,8 +486,8 @@ buildings:
             name: Roterare (CCW)
             description: Roterar former 90 motsols.
         fl:
-          name: Rotate (180)
-          description: Rotates shapes by 180 degrees.
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -633,8 +633,9 @@ storyRewards:
 settings:
     title: Inställningar
     categories:
-        game: Spelinställningar
-        app: Applikation
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Utveckling
