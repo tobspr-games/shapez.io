@@ -1,24 +1,18 @@
 .gameState.textualState {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    $padding: 15px;
-
-    .headerBar,
-    > .container .content {
-        @include S(width, 500px);
-    }
+    display: grid;
+    grid-template-rows: auto 1fr;
+    box-sizing: border-box;
+    @include S(padding, 32px);
+    height: 100vh;
 
     .headerBar {
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
 
         h1 {
-            display: flex;
-            pointer-events: all;
+            display: grid;
+            grid-template-columns: auto 1fr;
             align-items: center;
+            pointer-events: all;
             cursor: pointer;
             @include SuperHeading;
             text-transform: uppercase;
@@ -39,11 +33,17 @@
     }
 
     > .container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        overflow-y: auto;
+
         > .content {
+            width: 100%;
             background: #fff;
             @include S(border-radius, $globalBorderRadius);
             @include S(padding, 10px);
-            height: calc(80vh - #{D(60px)});
+            height: 100%;
             overflow-y: auto;
             box-sizing: border-box;
             pointer-events: all;

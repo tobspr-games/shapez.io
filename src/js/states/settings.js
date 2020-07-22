@@ -1,6 +1,6 @@
 import { TextualGameState } from "../core/textual_game_state";
 import { formatSecondsToTimeAgo } from "../core/utils";
-import { allApplicationSettings } from "../profile/application_settings";
+import { allApplicationSettings, enumCategories } from "../profile/application_settings";
 import { T } from "../translations";
 
 export class SettingsState extends TextualGameState {
@@ -15,50 +15,62 @@ export class SettingsState extends TextualGameState {
     getMainContentHTML() {
         return `
 
-            <div class="upperLinks">
-            ${
-                this.app.platformWrapper.getSupportsKeyboard()
-                    ? `
-                        <button class="styledButton editKeybindings">${T.keybindings.title}</button>
-            `
-                    : ""
-            }
-            <button class="styledButton about">${T.about.title}</button>
+        <div class="sidebar">
+            ${this.getCategoryButtonsHtml()}
 
-         </div>
+            <div class="other">
+                ${
+                    this.app.platformWrapper.getSupportsKeyboard()
+                        ? `<button class="styledButton editKeybindings">${T.keybindings.title}</button>`
+                        : ""
+                }
 
+                <button class="styledButton about">${T.about.title}</button>
 
-            ${this.getSettingsHtml()}
-            <div class="versionbar">
-                <div class="buildVersion">${T.global.loading} ...</div>
+                <div class="versionbar">
+                    <div class="buildVersion">${T.global.loading} ...</div>
+                </div>
             </div>
+        </div>
 
+        <div class="categoryContainer">
+            ${this.getSettingsHtml()}
+        </div>
 
         `;
     }
 
+    getCategoryButtonsHtml() {
+        return Object.keys(enumCategories)
+            .map(key => enumCategories[key])
+            .map(
+                category =>
+                    `
+                    <button class="styledButton categoryButton" data-category-btn="${category}">
+                        ${T.settings.categories[category]}
+                    </button>
+                    `
+            )
+            .join("");
+    }
+
     getSettingsHtml() {
-        let lastCategory = null;
-        let html = "";
+        const categoriesHTML = {};
+
+        Object.keys(enumCategories).forEach(key => {
+            const catName = enumCategories[key];
+            categoriesHTML[catName] = `<div class="category" data-category="${catName}">`;
+        });
+
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
 
-            if (setting.categoryId !== lastCategory) {
-                lastCategory = setting.categoryId;
-                if (i !== 0) {
-                    html += "</div>";
-                }
-                html += `<strong class="categoryLabel">${T.settings.categories[lastCategory]}</strong>`;
-                html += "<div class='settingsContainer'>";
-            }
-
-            html += setting.getHtml();
-        }
-        if (lastCategory) {
-            html += "</div>";
+            categoriesHTML[setting.categoryId] += setting.getHtml();
         }
 
-        return html;
+        return Object.keys(categoriesHTML)
+            .map(k => categoriesHTML[k] + "</div>")
+            .join("");
     }
 
     renderBuildText() {
@@ -90,6 +102,28 @@ export class SettingsState extends TextualGameState {
         }
 
         this.initSettings();
+        this.initCategoryButtons();
+
+        this.htmlElement.querySelector(".category").classList.add("active");
+        this.htmlElement.querySelector(".categoryButton").classList.add("active");
+    }
+
+    setActiveCategory(category) {
+        const previousCategory = this.htmlElement.querySelector(".category.active");
+        const previousCategoryButton = this.htmlElement.querySelector(".categoryButton.active");
+
+        if (previousCategory.getAttribute("data-category") == category) {
+            return;
+        }
+
+        previousCategory.classList.remove("active");
+        previousCategoryButton.classList.remove("active");
+
+        const newCategory = this.htmlElement.querySelector("[data-category='" + category + "']");
+        const newCategoryButton = this.htmlElement.querySelector("[data-category-btn='" + category + "']");
+
+        newCategory.classList.add("active");
+        newCategoryButton.classList.add("active");
     }
 
     initSettings() {
@@ -101,6 +135,20 @@ export class SettingsState extends TextualGameState {
                 element,
                 () => {
                     setting.modify();
+                },
+                { preventDefault: false }
+            );
+        });
+    }
+
+    initCategoryButtons() {
+        Object.keys(enumCategories).forEach(key => {
+            const category = enumCategories[key];
+            const button = this.htmlElement.querySelector("[data-category-btn='" + category + "']");
+            this.trackClicks(
+                button,
+                () => {
+                    this.setActiveCategory(category);
                 },
                 { preventDefault: false }
             );

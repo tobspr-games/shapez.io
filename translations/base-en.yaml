@@ -647,8 +647,9 @@ storyRewards:
 settings:
     title: Settings
     categories:
-        game: Game
-        app: Application
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Development
