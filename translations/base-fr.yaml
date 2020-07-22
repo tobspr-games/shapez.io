@@ -181,7 +181,7 @@ dialogs:
             Votre sauvegarde a été importée avec succès.
 
     gameLoadFailure:
-        title: Le sauvegarde est corrompue
+        title: La sauvegarde est corrompue
         text: >-
             Impossible de charger votre sauvegarde:
 
