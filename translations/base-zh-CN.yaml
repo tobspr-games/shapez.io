@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -181,7 +181,7 @@ mainMenu:
     savegameLevel: 第<x>关
     savegameLevelUnknown:
         未知关卡
-        # contestOver: This contest has ended - Join the discord to get noticed about new contests!
+        # contestOver: This contest has ended - Join the Discord to get noticed about new contests!
     continue: 继续游戏
     newGame: 新游戏
     madeBy: 作者：<author-link>
@@ -518,6 +518,9 @@ buildings:
         ccw:
             name: 旋转机（逆时针）
             description: 将图形逆时针旋转90度。
+        fl:
+          name: Rotate (180)
+          description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
