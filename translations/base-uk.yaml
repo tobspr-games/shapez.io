@@ -21,10 +21,9 @@
 # map мапа
 # keybinds гарячі клавіши
 # upgrade поліпшення 
-#marker позначка
-#area ділянка
-#
-#
+# marker позначка
+# area ділянка
+# hub 
 
 steamPage:
     # This is the short text appearing on the steam page
@@ -58,7 +57,7 @@ steamPage:
             [*] Необмежені Waypoints
             [*] Необмежені збереження
             [*] Додаткові налаштування
-            [*] Незабаром: Wires & Energy! Aiming for (roughly) end of July 2020.
+            [*] Незабаром: дроти й енергія! Гадаю, оновлення вийде у кінці липня 2020 року.
             [*] Незабаром: більше рівнів.
             [*] Allows me to further develop shapez.io ❤️
         [/list]
@@ -190,7 +189,7 @@ dialogs:
             Вашу збережену гру успішно імпортовано. 
 
     gameLoadFailure:
-        title: Game is broken
+        title: Гра поламана
         text: >-
             Не вдалося завантажити вашу збережену гру. 
 
@@ -237,23 +236,23 @@ dialogs:
     upgradesIntroduction:
         title: Розблокування поліпшень
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            Усі форми, що ви виробляєте, можуть використовуватися для розблокування поліпшення - <strong>Не зруйновуйте ваші старі заводи!<strong>
+            Вкладку з поліпшеннями можна знайти в правому верхньому куті екрана.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Підтвердження видалення
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Ви видаляєте багато будівль (<count>, якщо бути точним)! Ви справді хочете зробити це?
 
     massCutConfirm:
-        title: Confirm cut
+        title: Підтвердження вирізання
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Ви вирізаєте багато будівль(<count>, якщо бути точним)! Ви справді хочете зробити це?
 
     massCutInsufficientConfirm:
-        title: Confirm cut
+        title: Підтвердити вирізання
         desc: >-
-            You can not afford to paste this area! Are you sure you want to cut it?
+            Ви не можете дозволити собі вставити цю область! Ви справді хочете вирізати це?
 
     blueprintsNotUnlocked:
         title: Ще не розблоковано
@@ -261,9 +260,9 @@ dialogs:
             Досягніть 13-го рівня, щоб розблокувати Blueprints!
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Корисні гарячі клавіши
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
+            Гра має багато гарічих клавіш, що полегшує будівництво великих заводів.
             Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
             <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
@@ -271,15 +270,15 @@ dialogs:
 
     createMarker:
         title: Нова позначка
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Дайте йому змістовну назву, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
         titleEdit: Редагувати позначку
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: Ви можете створити тільки 2 позначки в демоверсії. Отримайте окрему версії для створення необмеженної кількості позначок.
 
     exportScreenshotWarning:
-        title: Export screenshot
-        desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
+        title: Експортувати зняток
+        desc: Ви просили експортувати свою базу як знімок екрана. Зверніть увагу, що для великої бази це може бути досить повільним процесом і може навіть зруйнувати вашу гру!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -288,13 +287,13 @@ ingame:
         moveMap: Рухатися
         selectBuildings: Виділити будівлі
         stopPlacement: Stop placement
-        rotateBuilding: Rotate building
+        rotateBuilding: Повернути будівлю
         placeMultiple: Place multiple
         reverseOrientation: Reverse orientation
         disableAutoOrientation: Disable auto-orientation
         toggleHud: Toggle HUD
         placeBuilding: Place building
-        createMarker: Create marker
+        createMarker: Створити позначку
         delete: Видалити
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
@@ -302,8 +301,8 @@ ingame:
         cutSelection: Вирізати
         copySelection: Скопіювати
         clearSelection: Clear selection
-        pipette: Pipette
-        switchLayers: Switch layers
+        pipette: Піпетка
+        switchLayers: Змінити шари
 
     # Names of the colors, used for the color blind mode
     colors:
@@ -369,13 +368,13 @@ ingame:
         title: Статистика
         dataSources:
             stored:
-                title: Stored
+                title: Зберігається
                 description: Displaying amount of stored shapes in your central building.
             produced:
-                title: Produced
+                title: Виробляється
                 description: Displaying all shapes your whole factory produces, including intermediate products.
             delivered:
-                title: Delivered
+                title: Доставлено
                 description: Displaying shapes which are delivered to your central building.
         noShapesProduced: No shapes have been produced so far.
 
@@ -421,27 +420,27 @@ ingame:
     interactiveTutorial:
         title: Навчання
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Розмістіть <strong>екстрактор</strong> поверх <strong>фігури кола</strong>, щоб отримати її!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                З’єднайте екстрактор з вашим центром за допомогою <strong>конвеєрної стрічки</strong>!<br><br>Підказка: <strong>Натисніть і протягніть</strong> стрічку вашою мишею.
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                У цій грі <strong>ВАМ НЕ ПОТРІБНО БЕЗДІЯТИ</strong>! Будуйте більше екстракторів і стрічок, щоб виконати свою мету швидше.<br><br>Підказка: Утримуйте <strong>SHIFT</strong>, щоб розмістити багато екстракторів, і використовуйте <strong>R</strong>, щоб обертати їх.
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Стрічки, розподілювачі і тунелі
+        description: Швидкість x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Видобуток
+        description: Швидкість x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Різання, обертання й укладання
+        description: Швидкість x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Змішування і малювання
+        description: Швидкість x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
@@ -569,8 +568,8 @@ buildings:
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Різання фігур
+        desc: Ви тільки-но розблокували <strong>різця</strong>. Він розрізає фігури наполовину з <strong>вершини до низу</strong> незалежно від його орієнтації!<br><br>Обов’язково позбудьтесь відходів або  <strong>він зупиниться</strong>. Для цього є сміттєбак, який знищує все, що входить в нього.
 
     reward_rotater:
         title: Rotating
@@ -591,7 +590,7 @@ storyRewards:
 
     reward_splitter:
         title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        desc: Багатофункціональний <strong> балансир </strong> було розблоковано. Його можна використовувати для створення великих заводів, <strong>розділяючи та об’єднуючи предмети </strong> на кілька стрічок!<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -642,7 +641,7 @@ storyRewards:
     no_reward:
         title: Наступний рівень
         desc: >-
-            Цей рівень не дав нагороди, але наступний дасть. <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            Цей рівень не дав нагороди, але в наступному... щось буде. <br><br> До речі, краще не руйнуйте свій поточний завод. Вам знадобляться всі ті форми пізніше, щоб <strong>розблокувати поліпшення</strong>!
 
 
 
@@ -785,11 +784,11 @@ settings:
                 Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
 
 keybindings:
-    title: Keybindings
+    title: Гарячі клавіши
     hint: >-
         Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
 
-    resetKeybindings: Reset Keybindings
+    resetKeybindings: Скинути гарячі клавіші
 
     categoryLabels:
         general: Застосунок
@@ -837,11 +836,11 @@ keybindings:
         wire: *wire
 
         pipette: Pipetteї
-        rotateWhilePlacing: Rotate
+        rotateWhilePlacing: Повернути
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Delete area
+        confirmMassDelete: Видалити ділянку
         pasteLastBlueprint: Paste last blueprint
         cycleBuildings: Cycle Buildings
         lockBeltDirection: Enable belt planner
@@ -850,10 +849,10 @@ keybindings:
 
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
-        massSelectCut: Cut area
+        massSelectCopy: Копіювати ділянку
+        massSelectCut: Вирізати ділянку
 
-        placementDisableAutoOrientation: Disable automatic orientation
+        placementDisableAutoOrientation: Вимкнути автоматичну орієнтацію
         placeMultiple: Stay in placement mode
         placeInverse: Invert automatic belt orientation
 
