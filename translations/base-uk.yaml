@@ -48,13 +48,13 @@ steamPage:
 
         This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Купуючи гру, ви отримуєте доступ до окремої версії, яка має додаткові функції, а також ви отримаєте доступ до нещодавно розроблених функцій.
 
         [img]{STEAM_APP_IMAGE}/extras/header_standalone_advantages.png[/img]
 
         [list]
             [*] Темний режим 
-            [*] Необмежені Waypoints
+            [*] Необмежені позначки
             [*] Необмежені збереження
             [*] Додаткові налаштування
             [*] Незабаром: дроти й енергія! Гадаю, оновлення вийде у кінці липня 2020 року.
@@ -64,16 +64,16 @@ steamPage:
 
         [img]{STEAM_APP_IMAGE}/extras/header_future_updates.png[/img]
 
-        Я оновлюю гру жує часто і намагаюся випускати оновлення щотижня and trying to push an update at least every week!
+        Я оновлюю гру надпрочуд часто і намагаюся випускати оновлення щотижня!
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Різноманітні мапи та випробування (наприклад, мапи з перешкодами)
+            [*] Пазли (Надайте потрібну форму з обмеженою площею/набором будівель)
+            [*] Режим історії, де будівлі матимуть вартість
+            [*] Генератор мап, який можна налаштувати (ресурс/розмір/щільність форми, зерно та багато іншого)
+            [*] Додаткові типи форм
+            [*] Поліпшення продуктивності (Гра вже працює досить добре!)
+            [*] Та багато чого іншого!
         [/list]
 
         [img]{STEAM_APP_IMAGE}/extras/header_open_source.png[/img]
@@ -848,7 +848,7 @@ keybindings:
             Planner: Switch side
 
         massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
+        massSelectSelectMultiple: 
         massSelectCopy: Копіювати ділянку
         massSelectCut: Вирізати ділянку
 
