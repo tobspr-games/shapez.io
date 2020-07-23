@@ -181,7 +181,7 @@ dialogs:
             Votre sauvegarde a été importée avec succès.
 
     gameLoadFailure:
-        title: Le jeu est cassé
+        title: La sauvegarde est corrompue
         text: >-
             Impossible de charger votre sauvegarde:
 
@@ -202,7 +202,7 @@ dialogs:
 
     editKeybinding:
         title: Changer les contrôles
-        desc: Appuyez sur la touche que vous voulez assigner, ou Echap pour annuler.
+        desc: Appuyez sur la touche que vous voulez assigner, ou Échap pour annuler.
 
     resetKeybindingsConfirmation:
         title: Réinitialiser les contrôles
@@ -239,8 +239,7 @@ dialogs:
     massCutConfirm:
         title: Confirmer la coupure
         desc: >-
-            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être précis) ! Êtes-vous
-            certains de vouloir faire cela ?
+            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être précis) ! Êtes-vous certains de vouloir faire cela ?
 
     blueprintsNotUnlocked:
         title: Pas encore débloqué
@@ -250,7 +249,7 @@ dialogs:
     keybindingsIntroduction:
         title: Raccourcis utiles
         desc: >-
-            Le jeu a plein de raccourcis facilitant la construction de grandes usines.
+            Le jeu a de nombreux raccourcis facilitant la construction de grandes usines.
             En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong> !<br><br>
             <code class='keybinding'>CTRL</code> + Glisser: Sélectionne une zone à copier / effacer.<br>
             <code class='keybinding'>SHIFT</code>: Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
@@ -259,7 +258,7 @@ dialogs:
     createMarker:
         title: Nouvelle balise
         desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci </strong> d'une forme (Que vous pouvez générer <a href="https://viewer.shapez.io" target="_blank">ici</a>)
-        titleEdit: Edit Marker
+        titleEdit: Éditer cette balise
 
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire autant que vous voulez !
@@ -617,8 +616,6 @@ storyRewards:
     reward_blueprints:
         title: Patrons
         desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usines ! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (les mêmes que celles que vous venez de livrer).
-
-    # Question from the translator: Should shortcuts be hardcoded in this message ?
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
