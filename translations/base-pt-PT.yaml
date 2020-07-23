@@ -632,9 +632,9 @@ storyRewards:
 settings:
     title: Definições
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Geral
+        userInterface: Interface
+        advanced: Avançado
 
     versionBadges:
         dev: Desenvolvimento
