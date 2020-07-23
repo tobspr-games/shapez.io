@@ -31,6 +31,8 @@ The base language is English and can be found [here](base-en.yaml).
 -   [Catalan](base-cat.yaml)
 -   [Slovenian](base-sl.yaml)
 -   [Ukrainian](base-uk.yaml)
+-   [Indonesian](base-ind.yaml)
+-   [Serbian](base-sr.yaml)
 
 (If you want to translate into a new language, see below!)
 
@@ -57,7 +59,7 @@ If you want to edit an existing translation (Fixing typos, Updating it to a newe
 
 ## Adding a new language
 
-Please DM me on discord (tobspr#5407), so I can add the language template for you.
+Please DM me on Discord (tobspr#5407), so I can add the language template for you.
 
 Please use the following template:
 

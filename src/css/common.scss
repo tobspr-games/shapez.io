@@ -73,6 +73,9 @@ body {
     scrollbar-face-color: #888;
     scrollbar-track-color: rgba(255, 255, 255, 0.1);
 
+    // Firefox
+    scrollbar-color: #cdd0d4 rgba(#000, 0.05);
+
     overflow: hidden;
     @include Text;
 
@@ -205,7 +208,7 @@ button {
     border: 0;
     background: $colorBlueBright;
     color: #fff;
-
+    @include S(border-radius, $globalBorderRadius);
     // border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
     @include S(border-bottom-width, 2px);
     // color: $accentColorDark;
@@ -345,6 +348,7 @@ canvas {
 
 ::-webkit-scrollbar-thumb {
     // border-radius: 4px;
+    @include S(border-radius, $globalBorderRadius);
     background: #cdd0d4;
 }
 

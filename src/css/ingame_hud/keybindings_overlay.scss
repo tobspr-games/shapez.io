@@ -7,7 +7,8 @@
     flex-direction: column;
     align-items: flex-start;
     color: #333438;
-    // text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.1);
+    backdrop-filter: blur(D(2px));
+    padding: D(3px);
 
     @include DarkThemeOverride {
         color: #fff;

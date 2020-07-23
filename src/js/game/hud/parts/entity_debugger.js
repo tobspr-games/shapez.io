@@ -15,7 +15,9 @@ export class HUDEntityDebugger extends BaseHUDPart {
         `
         );
 
+        /** @type {HTMLElement} */
         this.mousePosElem = this.element.querySelector(".mousePos");
+        /** @type {HTMLElement} */
         this.chunkPosElem = this.element.querySelector(".chunkPos");
         this.entityInfoElem = this.element.querySelector(".entityInfo");
     }
