@@ -23,7 +23,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
             <strong>${T.ingame.settingsMenu.beltsPlaced}</strong><span class="beltsPlaced"></span>
             <strong>${T.ingame.settingsMenu.buildingsPlaced}</strong><span class="buildingsPlaced"></span>
             <strong>${T.ingame.settingsMenu.playtime}</strong><span class="playtime"></span>
-            
+
             `
         );
 
@@ -106,16 +106,22 @@ export class HUDSettingsMenu extends BaseHUDPart {
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
         const totalMinutesPlayed = Math.ceil(this.root.time.now() / 60);
-        this.statsElement.querySelector(".playtime").innerText = T.global.time.xMinutes.replace(
-            "<x>",
-            "" + totalMinutesPlayed
-        );
 
-        this.statsElement.querySelector(".buildingsPlaced").innerText = formatBigNumberFull(
+        /** @type {HTMLElement} */
+        const playtimeElement = this.statsElement.querySelector(".playtime");
+        /** @type {HTMLElement} */
+        const buildingsPlacedElement = this.statsElement.querySelector(".buildingsPlaced");
+        /** @type {HTMLElement} */
+        const beltsPlacedElement = this.statsElement.querySelector(".beltsPlaced");
+
+        playtimeElement.innerText = T.global.time.xMinutes.replace("<x>", `${totalMinutesPlayed}`);
+
+        buildingsPlacedElement.innerText = formatBigNumberFull(
             this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
                 this.root.entityMgr.getAllWithComponent(BeltComponent).length
         );
-        this.statsElement.querySelector(".beltsPlaced").innerText = formatBigNumberFull(
+
+        beltsPlacedElement.innerText = formatBigNumberFull(
             this.root.entityMgr.getAllWithComponent(BeltComponent).length
         );
     }
