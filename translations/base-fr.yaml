@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -486,6 +486,9 @@ buildings:
         ccw:
             name: Pivoteur inversé
             description: Fait pivoter une forme de 90 degrés vers la gauche.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -631,8 +634,9 @@ storyRewards:
 settings:
     title: Options
     categories:
-        game: Jeu
-        app: Application
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Développement
@@ -837,9 +841,9 @@ about:
         Si vous souhaitez contribuer, allez voir <a href="<githublink>"
         target="_blank">shapez.io sur github</a>.<br><br>
 
-        Ce jeu n'aurait pu être réalisé sans la précieuse communauté discord autour de
+        Ce jeu n'aurait pu être réalisé sans la précieuse communauté Discord autour de
         mes jeux - Vous devriez vraiment envisager de joindre le <a href="<discordlink>"
-        target="_blank">serveur discord</a> !<br><br>
+        target="_blank">serveur Discord</a> !<br><br>
 
         La bande son a été créée par <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Il est impressionnant !<br><br>

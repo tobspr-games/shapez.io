@@ -59,7 +59,7 @@ If you want to edit an existing translation (Fixing typos, Updating it to a newe
 
 ## Adding a new language
 
-Please DM me on discord (tobspr#5407), so I can add the language template for you.
+Please DM me on Discord (tobspr#5407), so I can add the language template for you.
 
 Please use the following template:
 

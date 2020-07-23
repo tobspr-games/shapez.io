@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -490,6 +490,9 @@ buildings:
         ccw:
             name: Rotate (CCW)
             description: Rotates shapes counter clockwise by 90 degrees.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -631,8 +634,9 @@ storyRewards:
 settings:
     title: Settings
     categories:
-        game: Game
-        app: Application
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Development
@@ -842,9 +846,9 @@ about:
         If you want to contribute, check out <a href="<githublink>"
         target="_blank">shapez.io on github</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
+        This game wouldn't have been possible without the great Discord community
         around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        target="_blank">Discord server</a>!<br><br>
 
         The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - He's awesome.<br><br>

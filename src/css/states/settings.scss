@@ -1,110 +1,177 @@
 #state_SettingsState {
-    .content {
-        .versionbar {
-            @include S(margin-top, 20px);
-            @include SuperSmallText;
-            display: grid;
-            align-items: center;
-            grid-template-columns: 1fr auto;
-            .buildVersion {
-                display: flex;
-                flex-direction: column;
-                color: #aaadaf;
+    $colorCategoryButton: #393747;
+    $colorCategoryButtonSelected: #5c5872;
+
+    .container .content {
+        display: flex;
+        overflow-y: scroll;
+
+        .categoryContainer {
+            width: 100%;
+
+            .category {
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+
+                .setting {
+                    @include S(padding, 10px);
+                    background: #eeeff5;
+                    @include S(border-radius, $globalBorderRadius);
+                    @include S(margin-bottom, 5px);
+
+                    label {
+                        text-transform: uppercase;
+                        @include Text;
+                    }
+
+                    .desc {
+                        @include S(margin-top, 5px);
+                        @include SuperSmallText;
+                        color: #aaadb2;
+                    }
+
+                    > .row {
+                        display: grid;
+                        align-items: center;
+                        grid-template-columns: 1fr auto;
+                    }
+
+                    &.disabled {
+                        // opacity: 0.3;
+                        pointer-events: none;
+                        * {
+                            pointer-events: none !important;
+                            cursor: default !important;
+                        }
+                        position: relative;
+                        .standaloneOnlyHint {
+                            @include PlainText;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            pointer-events: all;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: rgba(#fff, 0.5);
+                            text-transform: uppercase;
+                            color: $colorRedBright;
+                        }
+                    }
+
+                    .value.enum {
+                        background: #fff;
+                        @include PlainText;
+                        display: flex;
+                        align-items: flex-start;
+                        pointer-events: all;
+                        cursor: pointer;
+                        justify-content: center;
+                        @include S(min-width, 100px);
+                        @include S(border-radius, $globalBorderRadius);
+                        @include S(padding, 4px);
+                        @include S(padding-right, 15px);
+
+                        background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
+                            calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
+
+                        transition: background-color 0.12s ease-in-out;
+                        &:hover {
+                            background-color: #fafafa;
+                        }
+                    }
+                }
             }
         }
 
-        button.about {
-            background-color: $colorGreenBright;
-        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            @include S(min-width, 210px);
+            @include S(max-width, 320px);
+            width: 30%;
+            height: 100%;
+            position: sticky;
+            top: 0;
+            @include S(margin-left, 20px);
+            @include S(margin-right, 32px);
 
-        .setting {
-            @include S(padding, 10px);
-            background: #eeeff5;
-            @include S(border-radius, $globalBorderRadius);
-            @include S(margin-bottom, 5px);
-
-            label {
-                text-transform: uppercase;
-                @include Text;
+            .other {
+                margin-top: auto;
             }
 
-            .desc {
-                @include S(margin-top, 5px);
+            button {
+                @include S(margin-top, 4px);
+                width: calc(100% - #{D(20px)});
+                text-align: start;
+
+                &::after {
+                    content: unset;
+                }
+            }
+
+            button.categoryButton {
+                background-color: $colorCategoryButton;
+
+                &.active {
+                    background-color: $colorCategoryButtonSelected;
+                }
+            }
+
+            button.about {
+                background-color: $colorGreenBright;
+            }
+
+            .versionbar {
+                @include S(margin-top, 20px);
                 @include SuperSmallText;
-                color: #aaadb2;
-            }
-
-            > .row {
                 display: grid;
                 align-items: center;
                 grid-template-columns: 1fr auto;
-            }
-
-            &.disabled {
-                // opacity: 0.3;
-                pointer-events: none;
-                * {
-                    pointer-events: none !important;
-                    cursor: default !important;
-                }
-                position: relative;
-                .standaloneOnlyHint {
-                    @include PlainText;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    pointer-events: all;
+                .buildVersion {
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: rgba(#fff, 0.5);
-                    text-transform: uppercase;
-                    color: $colorRedBright;
-                }
-            }
-
-            .value.enum {
-                background: #fff;
-                @include PlainText;
-                display: flex;
-                align-items: flex-start;
-                pointer-events: all;
-                cursor: pointer;
-                justify-content: center;
-                @include S(min-width, 100px);
-                @include S(border-radius, $globalBorderRadius);
-                @include S(padding, 4px);
-                @include S(padding-right, 15px);
-
-                background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
-                    calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
-
-                transition: background-color 0.12s ease-in-out;
-                &:hover {
-                    background-color: #fafafa;
+                    flex-direction: column;
+                    color: #aaadaf;
                 }
             }
         }
     }
 
     @include DarkThemeOverride {
-        .content {
-            .setting {
-                background: darken($darkModeGameBackground, 10);
+        .container .content {
+            .sidebar {
+                button.categoryButton {
+                    background-color: #44444f;
 
-                .value.enum {
-                    // dirty but works
-                    filter: invert(0.85);
-                    color: #222;
-                }
-
-                .value.checkbox {
-                    background-color: #74767b;
-
-                    &.checked {
+                    &.active {
                         background-color: $colorBlueBright;
+                    }
+                }
+            }
+
+            .categoryContainer {
+                .category {
+                    .setting {
+                        background: darken($darkModeGameBackground, 10);
+
+                        .value.enum {
+                            // dirty but works
+                            filter: invert(0.78) sepia(40%) hue-rotate(190deg);
+                            color: #222;
+                        }
+
+                        .value.checkbox {
+                            background-color: #74767b;
+
+                            &.checked {
+                                background-color: $colorBlueBright;
+                            }
+                        }
                     }
                 }
             }

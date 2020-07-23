@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -141,7 +141,7 @@ mainMenu:
     changelog: Changelog
     importSavegame: Importeren
     openSourceHint: Dit spel is open source!
-    discordLink: Officiële discord-server (Engelstalig)
+    discordLink: Officiële Discord-server (Engelstalig)
     helpTranslate: Help met vertalen!
 
     # This is shown when using firefox and other browsers which are not supported.
@@ -483,6 +483,9 @@ buildings:
         ccw:
             name: Roteerder (andersom)
             description: Draait vormen 90 graden tegen de klok in.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -629,8 +632,9 @@ storyRewards:
 settings:
     title: Opties
     categories:
-        game: Spel
-        app: Applicatie
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Ontwikkeling
@@ -839,9 +843,9 @@ about:
         Als je ook bij wil dragen, ga dan naar <a href="<githublink>"
         target="_blank">shapez.io op github</a>.<br><br>
 
-        Dit spel was niet mogelijk geweest zonder de geweldige discord community
+        Dit spel was niet mogelijk geweest zonder de geweldige Discord community
         rondom mijn spellen - Je zou eens lid moeten worden van de <a href="<discordlink>"
-        target="_blank">discord server</a> (engelstalig)!<br><br>
+        target="_blank">Discord server</a> (engelstalig)!<br><br>
 
         De muziek is gemaakt door <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Hij is geweldig.<br><br>

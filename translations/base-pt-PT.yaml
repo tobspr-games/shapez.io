@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -484,6 +484,9 @@ buildings:
         ccw:
             name: Rodar (CCW)
             description: Roda as formas 90º no sentido contrário ao dos ponteiros do relógio.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -629,8 +632,9 @@ storyRewards:
 settings:
     title: Definições
     categories:
-        game: Jogo
-        app: Aplicação
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Desenvolvimento
@@ -839,9 +843,9 @@ about:
         Se quiseres contribuir, dá uma olhadela em <a href="<githublink>"
         target="_blank">shapez.io no github</a>.<br><br>
 
-        Este Jogo não seria possível sem a excelente comunidade do discord
+        Este Jogo não seria possível sem a excelente comunidade do Discord
         em torno dos meus jogos - Devias mesmo juntar-te ao <a href="<discordlink>"
-        target="_blank">servidor no discord</a>!<br><br>
+        target="_blank">servidor no Discord</a>!<br><br>
 
         A banda sonora foi feita por <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Ele é Fantástico.<br><br>

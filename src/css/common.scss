@@ -73,6 +73,9 @@ body {
     scrollbar-face-color: #888;
     scrollbar-track-color: rgba(255, 255, 255, 0.1);
 
+    // Firefox
+    scrollbar-color: #cdd0d4 rgba(#000, 0.05);
+
     overflow: hidden;
     @include Text;
 
