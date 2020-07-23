@@ -1,6 +1,6 @@
 #state_SettingsState {
-    $colorCategoryButton: #393747;
-    $colorCategoryButtonSelected: #5c5872;
+    $colorCategoryButton: #eee;
+    $colorCategoryButtonSelected: #5f748b;
 
     .container .content {
         display: flex;
@@ -115,16 +115,23 @@
                 }
             }
 
-            button.categoryButton {
+            button.categoryButton,
+            button.about {
                 background-color: $colorCategoryButton;
+                color: #777a7f;
 
                 &.active {
                     background-color: $colorCategoryButtonSelected;
-                }
-            }
+                    color: #fff;
 
-            button.about {
-                background-color: $colorGreenBright;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+
+                &.pressed {
+                    transform: none !important;
+                }
             }
 
             .versionbar {
@@ -145,8 +152,9 @@
     @include DarkThemeOverride {
         .container .content {
             .sidebar {
-                button.categoryButton {
-                    background-color: #44444f;
+                button.categoryButton,
+                button.about {
+                    background-color: #3f3f47;
 
                     &.active {
                         background-color: $colorBlueBright;

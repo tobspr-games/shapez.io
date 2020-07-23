@@ -18,13 +18,16 @@ export class SettingsState extends TextualGameState {
         <div class="sidebar">
             ${this.getCategoryButtonsHtml()}
 
-            <div class="other">
-                ${
-                    this.app.platformWrapper.getSupportsKeyboard()
-                        ? `<button class="styledButton editKeybindings">${T.keybindings.title}</button>`
-                        : ""
-                }
+            ${
+                this.app.platformWrapper.getSupportsKeyboard()
+                    ? `
+            <button class="styledButton categoryButton editKeybindings">
+            ${T.keybindings.title}
+            </button>`
+                    : ""
+            }
 
+            <div class="other">
                 <button class="styledButton about">${T.about.title}</button>
 
                 <div class="versionbar">

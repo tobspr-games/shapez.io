@@ -3,16 +3,16 @@
         @include S(max-width, 600px);
         @include PlainText;
         padding: 0;
+        background: transparent;
     }
 
     .head {
-        background: rgba(0, 0, 0, 0.2);
-        @include S(padding, 10px);
+        @include S(padding, 20px);
 
         img {
             display: block;
             margin: 0 auto;
-            @include S(max-width, 300px);
+            @include S(max-width, 200px);
         }
     }
 
@@ -22,11 +22,5 @@
 
     a {
         @include S(margin, 0, 3px);
-    }
-
-    @include DarkThemeOverride {
-        .head {
-            background: rgba(22, 21, 21, 0.1);
-        }
     }
 }

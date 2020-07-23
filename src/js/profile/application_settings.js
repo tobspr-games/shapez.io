@@ -252,7 +252,7 @@ export const allApplicationSettings = [
         changeCb: (app, id) => {},
     }),
 
-    new BoolSetting("alwaysMultiplace", enumCategories.userInterface, (app, value) => {}),
+    new BoolSetting("alwaysMultiplace", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("vignette", enumCategories.userInterface, (app, value) => {}),
     new BoolSetting("compactBuildingInfo", enumCategories.userInterface, (app, value) => {}),

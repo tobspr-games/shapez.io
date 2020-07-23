@@ -4,6 +4,7 @@ export const CHANGELOG = [
         date: "unreleased",
         entries: [
             "WIRES",
+            "Reworked menu UI design (by dengr1605)",
             "Allow holding ALT in belt planner to reverse direction (by jakobhellermann)",
             "Clear cursor when trying to pipette the same building twice (by hexy)",
             "Added keybinding to close menus (by isaisstillalive / Sandwichs-del)",

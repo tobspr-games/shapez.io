@@ -55,7 +55,7 @@
         opacity: 0;
         display: none;
         transform: translate(50%, 50%);
-        filter: blur(10px);
+        // filter: blur(10px);
 
         $opacity: 0.2;
         &.loaded {
@@ -177,6 +177,10 @@
                 50% {
                     transform: translateX(50%) rotate(-7deg) scale(1.1);
                 }
+            }
+
+            @include DarkThemeOverride {
+                color: $colorBlueBright;
             }
         }
     }
