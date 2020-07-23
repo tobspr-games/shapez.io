@@ -36,11 +36,6 @@ declare interface CanvasRenderingContext2D {
     webkitImageSmoothingEnabled: boolean;
 }
 
-declare interface HTMLCanvasElement {
-    opaque: boolean;
-    webkitOpaque: boolean;
-}
-
 // Just for compatibility with the shared code
 declare interface Logger {
     log(...args);
@@ -125,13 +120,6 @@ declare interface WebpackContext {
 
 declare interface NodeRequire {
     context(src: string, flag: boolean, regexp: RegExp): WebpackContext;
-}
-
-// HTML Element
-declare interface Element {
-    style: any;
-    innerText: string;
-    innerHTML: string;
 }
 
 declare interface Object {

@@ -94,6 +94,7 @@ export class SettingsState extends TextualGameState {
 
     initSettings() {
         allApplicationSettings.forEach(setting => {
+            /** @type {HTMLElement} */
             const element = this.htmlElement.querySelector("[data-setting='" + setting.id + "']");
             setting.bind(this.app, element, this.dialogs);
             setting.syncValueToElement();

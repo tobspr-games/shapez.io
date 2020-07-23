@@ -385,7 +385,7 @@ export class Application {
             }
 
             const scale = this.getEffectiveUiScale();
-            waitNextFrame().then(() => document.documentElement.style.setProperty("--ui-scale", scale));
+            waitNextFrame().then(() => document.documentElement.style.setProperty("--ui-scale", `${scale}`));
             window.focus();
         }
     }

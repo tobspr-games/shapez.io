@@ -40,7 +40,7 @@ export class BaseSetting {
 
     /**
      * @param {Application} app
-     * @param {Element} element
+     * @param {HTMLElement} element
      * @param {any} dialogs
      */
     bind(app, element, dialogs) {
@@ -188,7 +188,7 @@ export class BoolSetting extends BaseSetting {
         return `
         <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
             ${this.enabled ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
-                
+
             <div class="row">
                 <label>${T.settings.labels[this.id].title}</label>
                 <div class="value checkbox checked" data-setting="${this.id}">
