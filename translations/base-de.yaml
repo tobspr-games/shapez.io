@@ -33,23 +33,30 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        In shapez.io musst du Maschinen geschickt verbinden, damit Formen automatisiert erstellt, bearbeitet und kombiniert werden. Liefere die gewünschten, stetig komplexer werdenden Formen an dein Hauptgebäude, um im Spiel voranzukommen. Schalte mit ihnen außerdem Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
+        In shapez.io musst du Maschinen geschickt verbinden, damit Formen automatisiert erstellt, bearbeitet und kombiniert werden.
+        
+        Liefere die gewünschten, stetig komplexer werdenden Formen an dein Hauptgebäude, um im Spiel voranzukommen. Schalte mit ihnen außerdem Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
+        
         Da die Nachfrage sowohl in der Komplexität, als auch der Menge steigt, wirst du deine Fabriken erweitern müssen. Vergiss nicht, dass du die dafür benötigten Ressourcen beschaffen musst und expandiere auf der [b]unendlichen Karte[/b]!
+        
         Bald wirst du Farben mischen und deine Formen damit bemalen lassen. Staple dann deine fertigen Formen aufeinander und lasse so die wildesten Kreationen entstehen.
+        
         Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
         
         Wenn du das Spiel erwirbst, erhälst du Zugriff auf die zusätzlichen Features der Standalone-Version. Das bedeutet, du kannst unter anderem die neuesten Updates zuerst spielen!
+        
         [b]Vorteile der Standalone[/b]
+        
         [list]
             [*] Dark-Mode
-            [*] So viele Wegpunkte wie du willst
+            [*] Unbegrenzte Wegpunkte
             [*] Unbegrenzte Anzahl von Spielständen
             [*] Weitere Einstellungen
-            [*] Kommende Updates umfassen:
-            [*] Mehr Levels
-            [*] Kabel & Energie! Voraussichtlich gegen Ende Juli 2020.
+            [*] Es kommen: Mehr Levels
+            [*] Es kommen: Kabel & Energie! Voraussichtlich gegen Ende Juli 2020.
             [*] Unterstütze die Entwicklung von shapez.io ❤️
         [/list]
+        
         [b]Geplante Funktionen[/b]
         
         Ich bin aktiv mit der Entwicklung beschäftigt und versuche jede Woche ein Update oder den aktuellen Stand der Entwicklung zu veröffentlichen.
@@ -63,6 +70,7 @@ steamPage:
             [*] Performanceverbesserungen (Das Spiel läuft bereits ganz gut!)
             [*] Und vieles mehr!
         [/list]
+        
         [b] Dieses Spiel ist Open Source[/b]
         
         Jeder kann dazu beitragen! Ich bin aktiv in die Community involviert, versuche alle Vorschläge zu lesen und beziehe so viel Feedback wie möglich mit in die Entwicklung ein.
