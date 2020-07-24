@@ -151,7 +151,6 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
 
-
     helpTranslate: Hilf beim Übersetzen!
     continue: Fortsetzen
     newGame: Neues Spiel
@@ -486,6 +485,9 @@ buildings:
         ccw:
             name: Rotierer (CCW)
             description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
+        fl:
+            name: Rotierer (180)
+            description: Rotiert Formen um 180 Grad.
 
     stacker:
         default:
@@ -635,8 +637,9 @@ storyRewards:
 settings:
     title: Einstellungen
     categories:
-        game: Spiel
-        app: Applikation
+        general: Allgemein
+        userInterface: Benutzeroberfläche
+        advanced: Erweitert
 
     versionBadges:
         dev: Entwicklung
