@@ -1,7 +1,6 @@
-// @ts-ignore
-import CompressionWorker from "../webworkers/compression.worker";
+import CompressionWorker from "worker-loader!../webworkers/compression.worker";
 import { createLogger } from "./logging";
-import { compressX64 } from "./lzstring";
+
 const logger = createLogger("async_compression");
 
 export let compressionPrefix = String.fromCodePoint(1);
@@ -35,7 +34,6 @@ if (!checkCryptPrefix(compressionPrefix)) {
 
 class AsynCompression {
     constructor() {
-        /** @type {Worker} */
         this.worker = new CompressionWorker();
 
         this.currentJobId = 1000;
