@@ -31,15 +31,15 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         shapez.io é um jogo cujo objetivo é construir fábricas para automatizar a criação e fusão de formas geométricas num mapa infinito.
-        Ao entregar as formas pedidas, progredirás no jogo e desbloquearás melhorias para acelerar a produção da tua fábrica.
+        Ao entregar as formas pedidas, irás progredir no jogo e irás desbloquear melhorias para acelerar a produção da tua fábrica.
 
         Uma vez que a procura aumenta a cada nível, terás de aumentar a tua fábrica para fazer face às necessidades - Para isso, terás de explorar o [b]mapa infinito[/b] para encontrar todos os recursos!
 
-        Rapidamente precisarás de misturar cores e pintar as formas com elas - Combina os recursos de cores vermelha, verde e azul para produzir ainda mais cores e usá-las para pintar as formas geométricas com o intuito de satisfazer a procura.
+        Rapidamente irás precisar de misturar cores e pintar as formas com elas - Combina os recursos de cores vermelha, verde e azul para produzires mais cores e usá-las para pintar as formas geométricas com o intuito de satisfazer a procura.
 
         Este jogo conta com 18 níveis (Que deverão manter-te ocupado durante horas!) mas estou constantemente a adicionar novos conteúdos - Há muitas coisas planeadas!
 
-        Ao comprar o jogo, terás acesso à versão completa, que contém funcionalidades adicionais, e também a conteúdos desenvolvidos recentemente.
+        Ao comprares o jogo, terás acesso à versão completa, que contém funcionalidades adicionais, e também a conteúdos desenvolvidos recentemente.
 
         [b]Vantagens do jogo completo[/b]
 
@@ -485,8 +485,8 @@ buildings:
             name: Rodar (CCW)
             description: Roda as formas 90º no sentido contrário ao dos ponteiros do relógio.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Rodar (180)
+            description: Roda as formas 180º.
 
     stacker:
         default:
@@ -536,14 +536,14 @@ buildings:
         deliver: Entrega
         toGenerateEnergy: Para
         default:
-            name: Gerador
+            name: Gerador de energia
             description: Gera energia consumindo formas.
     wire_crossings:
         default:
-            name: Repartidor
+            name: Repartidor de fios
             description: Divide um fio elétrico em dois.
         merger:
-            name: Conector de junção
+            name: Conector de fios
             description: Junta dois fios elétricos num só.
 
 storyRewards:
@@ -632,9 +632,9 @@ storyRewards:
 settings:
     title: Definições
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Geral
+        userInterface: Interface de Utilizador
+        advanced: Avançado
 
     versionBadges:
         dev: Desenvolvimento
@@ -832,7 +832,7 @@ keybindings:
         menuClose: Fechar Menu
         switchLayers: Troca de camadas
         advanced_processor: Inversor de Cor
-        energy_generator: Gerador
+        energy_generator: Gerador de energia
         wire: Fio Elétrico
 about:
     title: Sobre o jogo
