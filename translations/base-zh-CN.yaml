@@ -301,7 +301,7 @@ dialogs:
 
     massCutInsufficientConfirm:
         title: 确认剪切
-        desc: 你没有足够图形来粘贴这个区域！你确定要剪切吗？
+        desc: 你没有足够的图形来粘贴这个区域！你确定要剪切吗？
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
