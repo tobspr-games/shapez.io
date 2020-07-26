@@ -138,11 +138,11 @@ demoBanners:
 
 mainMenu:
     play: Oyna
-    changelog: Değişiklik Günlüğü
-    importSavegame: Yükle
+    changelog: Değİşİklİk Günlüğü
+    importSavegame: Kayıt Yükle
     openSourceHint: Bu oyun açık kaynak kodlu!
-    discordLink: Resmi Discord Sunucusu
-    helpTranslate: Çeviriye yardım et!
+    discordLink: Resmİ Discord Sunucusu
+    helpTranslate: Çevİrİye yardım et!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
