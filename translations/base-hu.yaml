@@ -132,7 +132,7 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demó verzi
+    title: Demó verzió
     intro: >-
         Get the standalone to unlock all features!
 
@@ -151,9 +151,9 @@ mainMenu:
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
 
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: Folytatás
+    newGame: Új játék
+    madeBy: Készítette: <author-link>
     subreddit: Reddit
 
 dialogs:
@@ -213,7 +213,7 @@ dialogs:
         desc: The keybindings have been reset to their respective defaults!
 
     featureRestriction:
-        title: Demo Version
+        title: Demo Verzió
         desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
 
     oneSavegameLimit:
@@ -277,7 +277,7 @@ ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
+        moveMap: Mozgatás
         selectBuildings: Terület kijelölése
         stopPlacement: Stop placement
         rotateBuilding: Épület forgatása
@@ -322,14 +322,14 @@ ingame:
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: <level>. szint
-        completed: Completed
+        completed: Teljesítve
         unlockText: Feloldva <reward>!
         buttonNextLevel: Következő Szint
 
     # Notifications on the lower right
     notifications:
         newUpgrade: Egy új fejlesztés elérhető!
-        gameSaved: A játékod el lett mentve.
+        gameSaved: Az állás mentve.
 
     # The "Upgrades" window
     shop:
@@ -350,14 +350,14 @@ ingame:
         dataSources:
             stored:
                 title: Tárolva
-                description: Displaying amount of stored shapes in your central building.
+                description: A központi épületben tárolt alakzatok számának megjelenítése.
             produced:
                 title: Gyártva
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                description: A gyártott alakzatok számának megjelenítése, beleértve a köztes gyártmányokat is.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: Beszállítva
+                description: A központi épületbe beszállított alakzatok számának megjelenítése. 
+        noShapesProduced: Még nem volt termelés.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / p
@@ -366,8 +366,8 @@ ingame:
     settingsMenu:
         playtime: Játékidő
 
-        buildingsPlaced: Épület
-        beltsPlaced: Futószalag
+        buildingsPlaced: Épületek száma:
+        beltsPlaced: Futószalagok hossza:
 
         buttons:
             continue: Folytatás
@@ -403,124 +403,124 @@ ingame:
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
-        black: Black
+        red: Piros
+        green: Zöld
+        blue: Kék
+        yellow: Sárga
+        purple: Lila
+        cyan: Világoskék
+        white: Fehér
+        uncolored: Színtelen
+        black: Fekete
     shapeViewer:
-        title: Layers
-        empty: Empty
-        copyKey: Copy Key
+        title: Rétegek
+        empty: Üres
+        copyKey: Kód másolása
 
 # All shop upgrades
 shopUpgrades:
     belt:
         name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        description: Sebesség x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Bányászat
+        description: Sebesség x<currentMult> → x<newMult>
     processors:
         name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        description: Sebesség x<currentMult> → x<newMult>
     painting:
         name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        description: Sebesség x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Futószalag
+            description: Elemeket szállít, tartsd nyomva az egérgombot egyszerre több lerakásához.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Bányász
+            description: Tedd egy alakzatra vagy színre a kibányászásához.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Bányász (összekapcsolható)
+            description: Tedd egy alakzatra vagy színre a kibányászásához. Több egymáshoz kapcsolható.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt Alagút
+            description: Segítségével futószalagok és épületek alatt átvezethetők az elemek.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: Alagút II
+            description: Segítségével futószalagok és épületek alatt átvezethetők az elemek.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Elosztó
+            description: Többfunkciós - Egyenletesen szétosztja a bementeket a kimenetekre.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Egyesítő (kompakt)
+            description: Két futószalagot egyesít.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Egyesítő (kompakt)
+            description: Két futószalagot egyesít.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Vágó
+            description: Függőlegesen félbevágja az alakzatokat. <strong>Ha csak az egyik felet akarod használni, ne felejtsd el a másikat kukába küldeni, különben eldugítja!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: Vágó (negyedelő)
+            description: Négyfelé vágja az alakzatokat. Cuts shapes into four parts. <strong>Ha csak az egyik felet akarod használni, ne felejtsd el a többit a kukába küldeni, különben eldugítja!</strong>
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Forgató
+            description: Elforgatja az alakzatot óramutató irányában 90 fokkal.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: Forgató (fordított)
+            description: Elforgatja az alakzatot óramutatóval ellentétesen 90 fokkal.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Forgató (180)
+            description: Elforgatja az alakzatot 180 fokkal.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker Egyesítő
+            description: Egyesít két elemet. Ha nem lehet összeilleszteni őket, a jobboldali elem a baloldali tetejére kerül.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Színkeverő
+            description: Összekever két színt összeadó színkeveréssel.
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
+            name: &painter Festő
+            description: &painter_desc Beszínezi az alakzatot a baloldali bemeneten a jobboldali bemeneten érkező színnel.
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Festő (Dupla)
+            description: Beszínezi az alakzatokat a baloldali bemeneteken a fenti bemeneten érkező színnel.
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: Festő (Négyszeres)
+            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni. 
         mirrored:
             name: *painter
             description: *painter_desc
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Kuka
+            description: Bármelyik irányból lehet hozzá csatlakozni, és megsemmisíti a beleküldött elemeket. Örökre.
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Tároló
+            description: Tárolja a fölös elemeket egy bizonyos kapacitásig.
     hub:
         deliver: Deliver
         toUnlock: to unlock
