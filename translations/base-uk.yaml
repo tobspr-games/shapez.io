@@ -20,10 +20,10 @@
 # Ґлосарій:
 # map мапа
 # keybinds гарячі клавіши
-# upgrade поліпшення 
+# upgrade поліпшення
 # marker позначка
 # area ділянка
-# hub 
+# hub
 
 steamPage:
     # This is the short text appearing on the steam page
@@ -53,7 +53,7 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/header_standalone_advantages.png[/img]
 
         [list]
-            [*] Темний режим 
+            [*] Темний режим
             [*] Необмежені позначки
             [*] Необмежені збереження
             [*] Додаткові налаштування
@@ -184,12 +184,12 @@ dialogs:
     importSavegameSuccess:
         title: Збереження імпортовано
         text: >-
-            Вашу збережену гру успішно імпортовано. 
+            Вашу збережену гру успішно імпортовано.
 
     gameLoadFailure:
         title: Гра поламана
         text: >-
-            Не вдалося завантажити вашу збережену гру. 
+            Не вдалося завантажити вашу збережену гру.
 
     confirmSavegameDelete:
         title: Підтвердження
@@ -199,7 +199,7 @@ dialogs:
     savegameDeletionError:
         title: Виникла помилка при видаленні
         text: >-
-            Не вдалося видалити збережену гру. 
+            Не вдалося видалити збережену гру.
 
     restartRequired:
         title: Потрібне перезавантаження
@@ -326,7 +326,7 @@ ingame:
             Hotkey: <key>
 
         infoTexts:
-            speed: Швидкість 
+            speed: Швидкість
             range: Range
             storage: Сховище
             oneItemPerSecond: 1 предмет за сек.
@@ -848,7 +848,7 @@ keybindings:
             Planner: Switch side
 
         massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: 
+        massSelectSelectMultiple:
         massSelectCopy: Копіювати ділянку
         massSelectCut: Вирізати ділянку
 
