@@ -637,7 +637,7 @@ storyRewards:
     no_reward:
         title: Next level
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            This level gave you no reward, but the next one will! <br><br> PS: Better not to destroy your existing factory - You'll need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
 
     no_reward_freeplay:
         title: Next level
