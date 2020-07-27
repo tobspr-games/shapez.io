@@ -1,4 +1,4 @@
-import CompressionWorker from "worker-loader!../webworkers/compression.worker";
+import CompressionWorker from "worker-loader?inline=true&fallback=false!../webworkers/compression.worker";
 import { createLogger } from "./logging";
 
 const logger = createLogger("async_compression");

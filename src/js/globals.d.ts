@@ -191,7 +191,7 @@ declare interface TypedSignal<T extends Array<any>> {
     removeAll();
 }
 
-declare module "worker-loader!*" {
+declare module "worker-loader?inline=true&fallback=false!*" {
     class WebpackWorker extends Worker {
         constructor();
     }
