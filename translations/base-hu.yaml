@@ -153,7 +153,7 @@ mainMenu:
 
     continue: Folytatás
     newGame: Új játék
-    madeBy: Készítette: <author-link>
+    madeBy: Készítette <author-link>
     subreddit: Reddit
 
 dialogs:
@@ -356,7 +356,7 @@ ingame:
                 description: A gyártott alakzatok számának megjelenítése, beleértve a köztes gyártmányokat is.
             delivered:
                 title: Beszállítva
-                description: A központi épületbe beszállított alakzatok számának megjelenítése. 
+                description: A központi épületbe beszállított alakzatok számának megjelenítése.
         noShapesProduced: Még nem volt termelés.
 
         # Displays the shapes per minute, e.g. '523 / m'
