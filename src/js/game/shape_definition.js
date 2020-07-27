@@ -183,11 +183,6 @@ export class ShapeDefinition extends BasicSerializableObject {
      */
     static isValidShortKeyInternal(key) {
         const sourceLayers = key.split(":");
-
-        if (sourceLayers.length === 0 || sourceLayers.length > 4) {
-            return false;
-        }
-
         let layers = [];
         for (let i = 0; i < sourceLayers.length; ++i) {
             const text = sourceLayers[i];
@@ -226,12 +221,15 @@ export class ShapeDefinition extends BasicSerializableObject {
                 }
             }
 
-            if (!anyFilled && i === sourceLayers.length - 1) {
-                // Topmost layer isn't allowed being empty
+            if (!anyFilled) {
+                // Empty layer
                 return false;
             }
-
             layers.push(quads);
+        }
+
+        if (layers.length === 0 || layers.length > 4) {
+            return false;
         }
 
         return true;
@@ -449,23 +447,23 @@ export class ShapeDefinition extends BasicSerializableObject {
      */
     cloneFilteredByQuadrants(includeQuadrants) {
         const newLayers = this.internalCloneLayers();
-        let lastNonEmptyLayer = -1;
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
+            let anyContents = false;
             for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 if (includeQuadrants.indexOf(quadrantIndex) < 0) {
                     quadrants[quadrantIndex] = null;
                 } else if (quadrants[quadrantIndex]) {
-                    lastNonEmptyLayer = layerIndex;
+                    anyContents = true;
                 }
             }
-        }
 
-        // Remove top most empty layers which aren't needed anymore
-        if (lastNonEmptyLayer !== newLayers.length - 1) {
-            newLayers.splice(lastNonEmptyLayer + 1);
+            // Check if the layer is entirely empty
+            if (!anyContents) {
+                newLayers.splice(layerIndex, 1);
+                layerIndex -= 1;
+            }
         }
-
         return new ShapeDefinition({ layers: newLayers });
     }
 
