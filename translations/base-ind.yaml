@@ -134,7 +134,7 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Verso Demo
+    title: Versi Demo
     intro: >-
         Dapatkan versi penuh untuk membuka semua fitur!
 
