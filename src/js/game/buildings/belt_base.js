@@ -1,4 +1,3 @@
-import { Loader } from "../../core/loader";
 import { formatItemsPerSecond } from "../../core/utils";
 import { enumAngleToDirection, enumDirection, Vector } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
@@ -38,6 +37,10 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
     getPlacementSound() {
         return SOUNDS.placeBelt;
+    }
+
+    getSprite() {
+        return null;
     }
 
     /**
@@ -88,7 +91,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant) {
         entity.components.Belt.direction = arrayBeltVariantToRotation[rotationVariant];
         entity.components.ItemEjector.slots[0].direction = arrayBeltVariantToRotation[rotationVariant];
-        entity.components.StaticMapEntity.spriteKey = null;
     }
 
     /**

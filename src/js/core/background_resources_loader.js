@@ -7,6 +7,7 @@ import { createLogger } from "./logging";
 import { Signal } from "./signal";
 import { SOUNDS, MUSIC } from "../platform/sound";
 import { AtlasDefinition, atlasFiles } from "./atlas_definitions";
+import { initBuildingCodesAfterResourcesLoaded } from "../game/meta_building_registry";
 
 const logger = createLogger("background_loader");
 
@@ -116,6 +117,7 @@ export class BackgroundResourcesLoader {
                 logger.log("⏰ Finish load: bare game");
                 Loader.createAtlasLinks();
                 this.bareGameReady = true;
+                initBuildingCodesAfterResourcesLoaded();
                 this.signalBareGameLoaded.dispatch();
                 this.internalStartLoadingAdditionalGameAssets();
             });

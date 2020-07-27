@@ -71,6 +71,10 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         return super.getAvailableVariants(root);
     }
 
+    /**
+     * @param {number} rotationVariant
+     * @param {string} variant
+     */
     getPreviewSprite(rotationVariant, variant) {
         let suffix = "";
         if (variant !== defaultBuildingVariant) {
@@ -87,6 +91,10 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         }
     }
 
+    /**
+     * @param {number} rotationVariant
+     * @param {string} variant
+     */
     getBlueprintSprite(rotationVariant, variant) {
         let suffix = "";
         if (variant !== defaultBuildingVariant) {
@@ -101,6 +109,14 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
             default:
                 assertAlways(false, "Invalid rotation variant");
         }
+    }
+
+    /**
+     * @param {number} rotationVariant
+     * @param {string} variant
+     */
+    getSprite(rotationVariant, variant) {
+        return this.getPreviewSprite(rotationVariant, variant);
     }
 
     /**
@@ -201,10 +217,6 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant, variant) {
         entity.components.UndergroundBelt.tier = enumUndergroundBeltVariantToTier[variant];
-        entity.components.StaticMapEntity.spriteKey = this.getPreviewSprite(
-            rotationVariant,
-            variant
-        ).spriteName;
 
         switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
             case enumUndergroundBeltMode.sender: {

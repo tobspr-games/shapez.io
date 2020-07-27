@@ -28,6 +28,11 @@ export class MetaHubBuilding extends MetaBuilding {
         return null;
     }
 
+    getSprite() {
+        // We render it ourself
+        return null;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
@@ -40,9 +45,6 @@ export class MetaHubBuilding extends MetaBuilding {
                 processorType: enumItemProcessorTypes.hub,
             })
         );
-
-        // We render the sprite ourself
-        entity.components.StaticMapEntity.spriteKey = null;
 
         entity.addComponent(new UnremovableComponent());
         entity.addComponent(

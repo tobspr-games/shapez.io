@@ -44,16 +44,18 @@ function decompressInt(s) {
 }
 
 // Sanity
-for (let i = 0; i < 10000; ++i) {
-    if (decompressInt(compressInt(i)) !== i) {
-        throw new Error(
-            "Bad compression for: " +
-                i +
-                " compressed: " +
-                compressInt(i) +
-                " decompressed: " +
-                decompressInt(compressInt(i))
-        );
+if (G_IS_DEV) {
+    for (let i = 0; i < 10000; ++i) {
+        if (decompressInt(compressInt(i)) !== i) {
+            throw new Error(
+                "Bad compression for: " +
+                    i +
+                    " compressed: " +
+                    compressInt(i) +
+                    " decompressed: " +
+                    decompressInt(compressInt(i))
+            );
+        }
     }
 }
 

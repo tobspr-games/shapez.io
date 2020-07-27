@@ -55,7 +55,7 @@
         opacity: 0;
         display: none;
         transform: translate(50%, 50%);
-        // filter: blur(10px);
+        filter: blur(D(3px));
 
         $opacity: 0.2;
         &.loaded {
