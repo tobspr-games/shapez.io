@@ -8,7 +8,7 @@ import { FILE_NOT_FOUND } from "../platform/storage";
 import { accessNestedPropertyReverse } from "./utils";
 import { IS_DEBUG, globalConfig } from "./config";
 import { ExplainedResult } from "./explained_result";
-import { decompressX64, compressX64 } from ".//lzstring";
+import { decompressX64, compressX64 } from "./lzstring";
 import { asyncCompressor, compressionPrefix } from "./async_compression";
 import { compressObject, decompressObject } from "../savegame/savegame_compressor";
 
