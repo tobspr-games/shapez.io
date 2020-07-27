@@ -183,6 +183,11 @@ export class ShapeDefinition extends BasicSerializableObject {
      */
     static isValidShortKeyInternal(key) {
         const sourceLayers = key.split(":");
+
+        if (sourceLayers.length === 0 || sourceLayers.length > 4) {
+            return false;
+        }
+
         let layers = [];
         for (let i = 0; i < sourceLayers.length; ++i) {
             const text = sourceLayers[i];
@@ -221,15 +226,12 @@ export class ShapeDefinition extends BasicSerializableObject {
                 }
             }
 
-            if (!anyFilled) {
-                // Empty layer
+            if (!anyFilled && i === sourceLayers.length - 1) {
+                // Topmost layer isn't allowed being empty
                 return false;
             }
-            layers.push(quads);
-        }
 
-        if (layers.length === 0 || layers.length > 4) {
-            return false;
+            layers.push(quads);
         }
 
         return true;
@@ -447,23 +449,23 @@ export class ShapeDefinition extends BasicSerializableObject {
      */
     cloneFilteredByQuadrants(includeQuadrants) {
         const newLayers = this.internalCloneLayers();
+        let lastNonEmptyLayer = -1;
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
-            let anyContents = false;
             for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 if (includeQuadrants.indexOf(quadrantIndex) < 0) {
                     quadrants[quadrantIndex] = null;
                 } else if (quadrants[quadrantIndex]) {
-                    anyContents = true;
+                    lastNonEmptyLayer = layerIndex;
                 }
             }
-
-            // Check if the layer is entirely empty
-            if (!anyContents) {
-                newLayers.splice(layerIndex, 1);
-                layerIndex -= 1;
-            }
         }
+
+        // Remove top most empty layers which aren't needed anymore
+        if (lastNonEmptyLayer !== newLayers.length - 1) {
+            newLayers.splice(lastNonEmptyLayer + 1);
+        }
+
         return new ShapeDefinition({ layers: newLayers });
     }
 
@@ -513,57 +515,68 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @param {ShapeDefinition} definition
      */
     cloneAndStackWith(definition) {
-        const newLayers = this.internalCloneLayers();
-
         if (this.isEntirelyEmpty() || definition.isEntirelyEmpty()) {
             assert(false, "Can not stack entirely empty definition");
         }
 
-        // Put layer for layer on top
-        for (let i = 0; i < definition.layers.length; ++i) {
-            const layerToAdd = definition.layers[i];
+        const bottomShapeLayers = this.layers;
+        const bottomShapeHighestLayerByQuad = [-1, -1, -1, -1];
 
-            // On which layer we can merge this upper layer
-            let mergeOnLayerIndex = null;
-
-            // Go from top to bottom and check if there is anything intercepting it
-            for (let k = newLayers.length - 1; k >= 0; --k) {
-                const lowerLayer = newLayers[k];
-
-                let canMerge = true;
-                for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                    const upperItem = layerToAdd[quadrantIndex];
-                    const lowerItem = lowerLayer[quadrantIndex];
-
-                    if (upperItem && lowerItem) {
-                        // so, we can't merge it because two items conflict
-                        canMerge = false;
-                        break;
-                    }
+        for (let layer = bottomShapeLayers.length - 1; layer >= 0; --layer) {
+            const shapeLayer = bottomShapeLayers[layer];
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeQuad = shapeLayer[quad];
+                if (shapeQuad !== null && bottomShapeHighestLayerByQuad[quad] < layer) {
+                    bottomShapeHighestLayerByQuad[quad] = layer;
                 }
-
-                // If we can merge it, store it - since we go from top to bottom
-                // we can simply override it
-                if (canMerge) {
-                    mergeOnLayerIndex = k;
-                }
-            }
-
-            if (mergeOnLayerIndex !== null) {
-                // Simply merge using an OR mask
-                for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                    newLayers[mergeOnLayerIndex][quadrantIndex] =
-                        newLayers[mergeOnLayerIndex][quadrantIndex] || layerToAdd[quadrantIndex];
-                }
-            } else {
-                // Add new layer
-                newLayers.push(layerToAdd);
             }
         }
 
-        newLayers.splice(4);
+        const topShapeLayers = definition.layers;
+        const topShapeLowestLayerByQuad = [4, 4, 4, 4];
 
-        return new ShapeDefinition({ layers: newLayers });
+        for (let layer = 0; layer < topShapeLayers.length; ++layer) {
+            const shapeLayer = topShapeLayers[layer];
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeQuad = shapeLayer[quad];
+                if (shapeQuad !== null && topShapeLowestLayerByQuad[quad] > layer) {
+                    topShapeLowestLayerByQuad[quad] = layer;
+                }
+            }
+        }
+
+        /**
+         * We want to find the number `layerToMergeAt` such that when the top shape is placed at that
+         * layer, the smallest gap between shapes is only 1. Instead of doing a guess-and-check method to
+         * find the appropriate layer, we just calculate all the gaps assuming a merge at layer 0, even
+         * though they go negative, and calculating the number to add to it so the minimum gap is 1 (ends
+         * up being 1 - minimum).
+         */
+        const gapsBetweenShapes = [];
+        for (let quad = 0; quad < 4; ++quad) {
+            gapsBetweenShapes.push(topShapeLowestLayerByQuad[quad] - bottomShapeHighestLayerByQuad[quad]);
+        }
+        const smallestGapBetweenShapes = Math.min(...gapsBetweenShapes);
+        // Can't merge at a layer lower than 0
+        const layerToMergeAt = Math.max(1 - smallestGapBetweenShapes, 0);
+
+        const mergedLayers = this.internalCloneLayers();
+        for (let layer = mergedLayers.length; layer < layerToMergeAt + topShapeLayers.length; ++layer) {
+            mergedLayers.push([null, null, null, null]);
+        }
+
+        for (let layer = 0; layer < topShapeLayers.length; ++layer) {
+            const layerMergingAt = layerToMergeAt + layer;
+            const bottomShapeLayer = mergedLayers[layerMergingAt];
+            const topShapeLayer = topShapeLayers[layer];
+            for (let quad = 0; quad < 4; quad++) {
+                bottomShapeLayer[quad] = bottomShapeLayer[quad] || topShapeLayer[quad];
+            }
+        }
+
+        mergedLayers.splice(4);
+
+        return new ShapeDefinition({ layers: mergedLayers });
     }
 
     /**
