@@ -570,10 +570,12 @@ export class ShapeDefinition extends BasicSerializableObject {
             const bottomShapeLayer = mergedLayers[layerMergingAt];
             const topShapeLayer = topShapeLayers[layer];
             for (let quad = 0; quad < 4; quad++) {
+                assert(!(bottomShapeLayer[quad] && topShapeLayer[quad]), "Shape merge: Sub shape got lost");
                 bottomShapeLayer[quad] = bottomShapeLayer[quad] || topShapeLayer[quad];
             }
         }
 
+        // Limit to 4 layers at max
         mergedLayers.splice(4);
 
         return new ShapeDefinition({ layers: mergedLayers });
