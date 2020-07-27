@@ -7,6 +7,7 @@ export const CHANGELOG = [
             "Reworked menu UI design (by dengr1605)",
             "Allow holding ALT in belt planner to reverse direction (by jakobhellermann)",
             "Clear cursor when trying to pipette the same building twice (by hexy)",
+            "Fixed level 18 stacker bug: If you experienced it already, you know it, if not, I don't want to spoiler (by hexy)",
             "Added keybinding to close menus (by isaisstillalive / Sandwichs-del)",
             "Fix rare crash regarding the buildings toolbar (by isaisstillalive)",
             "Fixed some phrases (by EnderDoom77)",

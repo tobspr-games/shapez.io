@@ -88,7 +88,7 @@ export class MetaWireCrossingsBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.left, layer: enumLayer.wires },
+                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.wires },
                     { pos: new Vector(0, 0), direction: enumDirection.right, layer: enumLayer.wires },
                 ]);
 
@@ -98,7 +98,7 @@ export class MetaWireCrossingsBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        directions: [enumDirection.top],
                         layer: enumLayer.wires,
                     },
                     {
@@ -109,7 +109,7 @@ export class MetaWireCrossingsBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.wires },
+                    { pos: new Vector(0, 0), direction: enumDirection.bottom, layer: enumLayer.wires },
                 ]);
                 break;
             }
