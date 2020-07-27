@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -45,6 +45,7 @@
 # Painter：上色机
 # Trash：垃圾桶
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。
@@ -178,10 +179,8 @@ mainMenu:
         很抱歉, 本游戏在当前浏览器上可能运行缓慢! 使用chrome或者获取独立版以得到更好的体验。
 
     savegameLevel: 第<x>关
-    savegameLevelUnknown: 未知关卡
-
-
-        # contestOver: This contest has ended - Join the discord to get noticed about new contests!
+    savegameLevelUnknown:
+        未知关卡
     continue: 继续游戏
     newGame: 新游戏
     madeBy: 作者：<author-link>
@@ -301,8 +300,8 @@ dialogs:
             你将要导出你的工厂的截图。如果你的基地很大，截图过程将会很慢，且有可能导致游戏崩溃！
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: 确认剪切
+        desc: 你没有足够的图形来粘贴这个区域！你确定要剪切吗？
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -444,11 +443,11 @@ ingame:
         cyan: 青色
         white: 白色
         uncolored: 无色
-        black: Black
+        black: 黑色
     shapeViewer:
         title: 层 # TODO: find better translation
         empty: 空
-        copyKey: Copy Key
+        copyKey: 复制短代码
 
 # All shop upgrades
 shopUpgrades:
@@ -518,6 +517,9 @@ buildings:
         ccw:
             name: 旋转机（逆时针）
             description: 将图形逆时针旋转90度。
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -527,7 +529,7 @@ buildings:
     mixer:
         default:
             name: &mixer 混色机
-            description: 将两个颜色混合在一起。（加法混合）
+            description: 用加法混色将两个颜色混合起来
 
     painter:
         default:
@@ -590,11 +592,11 @@ storyRewards:
     reward_painter:
         title: 上色
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            恭喜！你解锁了<strong>上色机</strong>。 开采一些颜色 (就像你开采图形一样) 将其在上色机中与图形结合来将图形上色！<br><br>PS: 如果你患有色盲，可以在设置中启用<strong>色盲模式</strong>！
 
     reward_mixer:
         title: 混合颜色
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        desc: 恭喜！你解锁了<strong>混色机</strong>。这个建筑使用<strong>加法混色</strong>将两种颜色混合起来。
 
     reward_stacker:
         title: 堆叠
@@ -614,7 +616,7 @@ storyRewards:
 
     reward_miner_chainable:
         title: 链式开采机
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        desc: 你解锁了<strong>链式开采机</strong>! 它能够<strong>把资源传递给</strong>其他开采机，让你可以更高效率的开采资源！
 
     reward_underground_belt_tier_2:
         title: 二级隧道
@@ -622,7 +624,7 @@ storyRewards:
 
     reward_splitter_compact:
         title: 小型合流机
-        desc: You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+        desc: 恭喜！你解锁了<strong>平衡机</strong>的变体。它能够接受两个输入，合并成一个输出！
 
     reward_cutter_quad:
         title: 四向切割机
@@ -638,7 +640,7 @@ storyRewards:
 
     reward_storage:
         title: 仓库
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        desc: 恭喜！你解锁了<strong>垃圾桶</strong>的变体。他可以存储一定数量的物品！
 
     reward_freeplay:
         title: 自由模式
@@ -662,8 +664,9 @@ storyRewards:
 settings:
     title: 设置
     categories:
-        game: 游戏内容
-        app: 应用
+        general: 通用
+        userInterface: 用户界面
+        advanced: 高级
 
     versionBadges:
         dev: 开发版本 # Development
@@ -789,11 +792,9 @@ settings:
             title: 色盲模式
             description: 提供一些分辨颜色的工具。目前当鼠标移至颜色资源上方时，屏幕上方会显示颜色名称。
         rotationByBuilding:
-            title: Rotation by building type
+            title: 记忆建筑方向
             description: >-
-                Each building type remembers the rotation you last set it to individually.
-                This may be more comfortable if you frequently switch between placing
-                different building types.
+                每一类建筑都会记住各自上一次的旋转方向。如果你经常在不同建筑类型之间切换，这个设置会让游戏更加舒适。
 
 keybindings:
     title: 按键设置

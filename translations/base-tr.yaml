@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -31,7 +31,7 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        Upon delivering the requested shapes you will progress within the game and unlock upgrades to Hız up your factory.
 
         As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
 
@@ -85,7 +85,7 @@ steamPage:
     discordLink: Official Discord - Chat with me!
 
 global:
-    loading: yükleniyor
+    loading: Yüklenİyor
     error: Hata
 
     # How big numbers are rendered, e.g. "10,000"
@@ -116,9 +116,9 @@ global:
         xDaysAgo: <x> gün önce
 
         # Short formats for times, e.g. '5h 23m'
-        secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>d <seconds>s
-        hoursAndMinutesShort: <hours>S <minutes>m
+        secondsShort: <seconds>sn
+        minutesAndSecondsShort: <minutes>dk <seconds>sn
+        hoursAndMinutesShort: <hours>sa <minutes>dk
 
         xMinutes: <x> dakika
 
@@ -132,586 +132,589 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Deneme Sürümü
     intro: >-
-        Get the standalone to unlock all features!
+        Bütün özellikleri açmak için tam sürümü satın alın!
 
 mainMenu:
     play: Oyna
-    changelog: Changelog
-    importSavegame: Yükle
+    changelog: Değİşİklİk Günlüğü
+    importSavegame: Kayıt Yükle
     openSourceHint: Bu oyun açık kaynak kodlu!
-    discordLink: Resmi Discord Sunucusu
-    helpTranslate: Çeviriye yardım et!
+    discordLink: Resmİ Discord Sunucusu
+    helpTranslate: Çevİrİye yardım et!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Üzgünüz, bu oyunun tarayıcınızda yavaş çalıştığı biliniyor! Tam sürümü satın alın veya iyi performans için Chrome tarayıcısını kullanın.
 
     savegameLevel: Seviye <x>
     savegameLevelUnknown: Bilinmeyen seviye
 
-
     continue: Devam et
-    newGame: Yeni Oyun
-    madeBy: Made by <author-link>
+    newGame: YENİ OYUN
+    madeBy: <author-link> tarafından yapıldı
     subreddit: Reddit
 
 dialogs:
     buttons:
         ok: OK
-        delete: Sil
+        delete: SİL
         cancel: İptal
         later: Sonra
         restart: Yeniden başla
         reset: Sıfırla
-        getStandalone: Tam versiyona eriş
+        getStandalone: Tam sürüme eriş
         deleteGame: Ne yaptığımi biliyorum
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        viewUpdate: Güncellemeleri Görüntüle
+        showUpgrades: Geliştirmeleri Göster
+        showKeybindings: Tuş Kısayollarını Göster
 
     importSavegameError:
-        title: Import Error
+        title: Kayıt yükleme hatası
         text: >-
-            Failed to import your savegame:
+            Oyun kaydı yükleme başarısız:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Oyun Kaydı Yüklendi
         text: >-
-            Kayıtlı oyun başarıyla yüklendi.
+            Oyun kaydı başarıyla yüklendi.
 
     gameLoadFailure:
-        title: Game is broken
+        title: Oyun bozuk
         text: >-
-            Failed to load your savegame:
+            Oyun yükleme başarısız:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Silme işlemini onayla
         text: >-
             Oyunu silmek istediğinizden emin misiniz?
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Silme başarısız
         text: >-
-            Failed to delete the savegame:
+            Oyun kaydını silme başarısız:
 
     restartRequired:
-        title: Restart required
+        title: Yeniden başlatma gerekiyor
         text: >-
-            You need to restart the game to apply the settings.
+            Değişiklikleri uygulamak için oyunu yeniden başlatılmalı.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Tuş Atamasını Değiştir
+        desc: Atamak isteğiniz tuşa veya fare butonun basın, veya iptal etmek için Esc tuşuna basın.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Tuş Atamasını Sıfırla
+        desc: Bu işlem bütün tuş atamalarını varsayılan durumuna sıfırlayacak. Lütfen onaylayın.
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Tuş Atamaları sıfırlandı
+        desc: Tuş atamaları varsayılan duruma sıfırlandı!
 
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        title: Deneme Sürümü
+        desc: Demoda olmayan bir özelliğe (<feature>) erişmeye çalıştınız. Tam deneyim için tam versiyonu satın alın.
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: Sınırlı Oyun Kaydı
+        desc: Deneme sürümünde sadece tek bir oyun kaydınız olabilir. Lütfen varolanı silin veya tam sürümü satın alın!
 
     updateSummary:
-        title: New update!
+        title: Yeni güncelleme!
         desc: >-
-            Here are the changes since you last played:
+            Son oynadığınızdan bu yana gelen değişikler:
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Geliştirmeleri Aç
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            Ürettiğiniz her şekil geliştirmeler için kullanılabilir - <strong>Eski fabrikalarınızı silmeyin!</strong>
+            Güncellemeler sekmesini ekranınızın sağ üst köşesinde bulabilirsiniz.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Silmeyi onayla
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Çok fazla yapı siliyorsunuz (tam olarak <count> adet)! Bunu yapmak istediğinize emin misiniz?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Henüz açılmadı
         desc: >-
-            Complete level 12 to unlock Blueprints!
+            Taslakları açmak için 12. seviyeyi tamamlamalısınız!
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Kullanışlı tuş atamaları
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            Bu oyunda büyük fabrikalar inşa etmeyi kolaylaştıran çok fazla tuş ataması var.
+            Bunlardan bazıları şunlar, ama emin olmak için <strong>tuş atamalarını kontrol edin</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Sürükle: Silmek için alan seç.<br>
+            <code class='keybinding'>SHIFT</code>: Çoklu yapı inşa etmek için basılı tutun<br>
+            <code class='keybinding'>ALT</code>: Yerleştirilen taşıma bantlarının yönünü ters çevirir.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Edit Marker
+        title: Yeni Konum İşareti
+        desc: İşarete anlamlı bir isim verin, aynı zamanda (<a href="https://viewer.shapez.io" target="_blank">buradan</a> oluşturabileceğiniz) bir şeklin <strong>sembolünü</strong> ekleyebilirsiniz.
+        titleEdit: Konum İşaretini Düzenle
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: Deneme sürümünde sadece iki adet yer imi oluşturabilirsiniz. Sınırsız yer imi için tam sürümü alın!
     massCutConfirm:
-        title: Confirm cut
+        title: Kesmeyi onayla
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            Çok fazla yapı kesiyorsunuz (tam olarak <count> adet)! Bunu yapmak istediğinize emin misiniz?
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Ekran görüntüsünü dışa aktar
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            Fabrikanızın ekran görüntüsünü dışarı aktarmak istiyorsunuz. Lütfen dikkat edin,
+            büyük bir fabrika için bu işlem oldukça yavaş olabilir ve hatta oyununuz kapanabilir.
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Kesmeyi onayla
+        desc: Seçili yapıları yapıştırmak için yeterli kaynağınız yok! Kesmek istediğinize emin misiniz?
+
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
+        moveMap: Hareket Et
+        selectBuildings: Alan seç
+        stopPlacement: Yerleştİrmeyİ durdur
+        rotateBuilding: Yapıyı döndür
+        placeMultiple: Çoklu yerleştİr
+        reverseOrientation: Yönünü ters çevİr
+        disableAutoOrientation: Otomatik yönü devre dışı bırak
+        toggleHud: Kullanıcı arayüzünü aç/kapa
+        placeBuilding: Yapı yerleştİr
+        createMarker: Yer İmi oluştur
+        delete: SİL
+        pasteLastBlueprint: Son taslağı yapıştır
+        lockBeltDirection: Taşıma bandı planlayıcısını kullan
         plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
-        switchLayers: Switch layers
+        cutSelection: Kes
+        copySelection: Kopyala
+        clearSelection: Seçİmİ temİzle
+        pipette: Pİpet
+        switchLayers: Katman değİştİr
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Yapının farklı türlerine geçmek için <key> tuşuna bas.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Kısayol: <key>
 
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            Hız: Hız
+            range: Menzil
+            storage: Depo
+            oneItemPerSecond: 1 eşya / saniye
+            itemsPerSecond: <x> eşya / sn
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> karo
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: SEVİYE <level>
+        completed: Tamamlandı
+        unlockText: Açıldı <reward>!
+        buttonNextLevel: Sonrakİ Sevİye
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: Yeni geliştirme mevcut!
+        gameSaved: Oyun kaydedildi.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Geliştirmeler
+        buttonUnlock: Geliştir
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: Aşama <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: SON SEVİYE (Hız x<currentMult>)
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: İstatistikler
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: Mevcut
+                description: Merkez yapınızda bulunan şekillerin miktarını gösterir.
+
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: Üretilen
+                description: Fabrikanızın ürettiği bütün şekilleri gösterir, ara ürünler dahil.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: Teslim Edilen
+                description: Merkez binanıza giden bütün şekilleri gösterir.
+        noShapesProduced: Henüz hiçbir şekil üretilmedi.
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        shapesPerMinute: <shapes> / dk
 
     # Settings menu, when you press "ESC"
     settingsMenu:
         playtime: Oynama zamani
 
         buildingsPlaced: Yapılar
-        beltsPlaced: Belts
+        beltsPlaced: Taşıma bantları
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: Devam
+            settings: Ayarlar
+            menu: Ana Menüye Dön
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: Yardım?
+        showHint: İpucu Göster
+        hideHint: Kapat
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Bedel
 
     # Map markers
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        waypoints: Yer İmi
+        hub: MERKEZ
+        description: Sol-tık ile Yer İmlerine git, sağ-tık ile yer imini sil.<br><br>Mevcut konumdan yer imi oluşturmak için <keybinding>'a bas, <strong>sağ-tık</strong> ile mevcut konumda yer imi oluştur.
+        creationSuccessNotification: Yer İmi oluşturuldu.
 
     # Interactive tutorial
     interactiveTutorial:
-        title: Tutorial
+        title: Eğİtİm
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Daire üretmek için <strong>daire şekli</strong> üzerine bir <strong>üretici</strong> yerleştir!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
-
+                Üreticiyi <strong>taşıma bandı</strong> ile merkezine bağla!<br><br>İpucu: Taşıma bandı nı seç ve taşıma bandını farenin sol tuşu ile <strong>tıkla ve sürükle</strong>!
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                Bu bir boşta kalma oyunu (idle game) <strong>değil</strong>! Hedefe ulaşmak için daha fazla üretici ve taşıma bandı yerleştir.<br><br>İpucu: Birden fazla üretici yerleştirmek için <strong>SHIFT</strong> tuşuna basılı tut, ve <strong>R</strong> tuşuyla taşıma bandının yönünü döndür.
 
     colors:
         red: Kırmızı
-        green: Yesil
+        green: Yeşil
         blue: Mavi
         yellow: Sarı
         purple: Mor
-        cyan: Cyan
+        cyan: Turkuaz
         white: Beyaz
         uncolored: Renksiz
-        black: Black
+        black: Siyah
     shapeViewer:
-        title: Layers
-        empty: Bos
-        copyKey: Copy Key
+        title: Katmanlar
+        empty: Boş
+        copyKey: Şekil Kodunu Kopyala
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Taşıma Bandı, Dağıtıcılar & Tüneller
+        description: Hız x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Üretme
+        description: Hız x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Kesme, Döndürme & Kaynaştırıcı
+        description: Hız x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Karıştırma & Boyama
+        description: Hız x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
+        deliver: "Teslİm et"
+        toUnlock: "Açılacak"
+        levelShortcut: SVY
 
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Taşıma Bandı
+            description: Eşyaları taşır, basılı birden fazla yerleştirmek için tutup sürükle.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Üretİcİ
+            description: Bir şekli veya rengi üretmek için üzerlerini yerleştir.
 
         chainable:
-            name: Extractor (Chain)
+            name: Üretİcİ (Zİncİrleme)
             description: Place over a shape or color to extract it. Can be chained.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt Tünel
+            description: Yapıların ve taşıma bantlarının altından kaynak aktarımı sağlar.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: Tünel Aşama II
+            description: Yapıların, taşıma bantlarının ve normal tünellerin altından kaynak aktarımı sağlar.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Dengeleyici
+            description: Çok işlevli - bütün girdileri eşit olarak bütün çıkışlara dağıtır.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Bİrleştİrİcİ (tekİl)
+            description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Birleştİrİcİ (tekİl)
+            description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Kesİcİ
+            description: Şekilleri yukarıdan aşağıya böler ve iki yarım parçayı çıktı olarak verir. <strong>Eğer sadece bir çıktıyı kullanıyorsanız diğer çıkan parçayı yok etmeyi unutmayın, yoksa kesim durur!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: Kesİcİ (Dörtlü)
+            description: Şekilleri dört parçaya böler. <strong>Eğer sadece bir çıktıyı kullanıyorsanız diğer çıkan parçaları yok etmeyi unutmayın, yoksa kesim durur!</strong>
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Döndürücü
+            description: Şekilleri saat yönünde 90 derece döndürür.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: Döndürücü (Saat Yönünün Tersİ)
+            description: Şekilleri saat yönünün tersinde 90 derece döndürür.
+        fl:
+            name: Döndürücü (180)
+            description: Şekilleri 180 derece döndürür.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker Kaynaştırıcı
+            description: İki eşyayı kaynaştırır. Eğer eşyalar kaynaştırılamazsa sağdaki eşya soldaki eşyanın üzerine kaynaştırılır.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Renk Karıştırıcısı
+            description: Mixes two colors using additive blending. İki rengi eklemeli renk metoduyla birleştirir.
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
+            name: &painter Boyayıcı
+            description: &painter_desc Sol girdideki bütün şekli sağ girdideki renk ile boyar.
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Boyayıcı (Çİft)
+            description: Sol girdideki şekilleri yukarı girdideki renk ile boyar.
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: Boyayıcı (Dörtlü)
+            description: Şeklin her çeyreğinin farklı bir renkle boyanmasını sağlar.
         mirrored:
             name: *painter
             description: *painter_desc
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Çöp
+            description: Her yönden giren girdileri yok eder. Tamamen.
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Depo
+            description: Belirli bir sınıra kadar fazla eşyaları depolar. Taşırma kapısı olarak kullanıla bilir.
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Enerji Kablosu
+            description: Enerji aktarmayı sağlar.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Renk Ters Dönüştürücü
+            description: Bir rengi veya şeklin rengini ters dönüştürür.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Teslİm et
+        toGenerateEnergy: İçİn
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Enerjİ Üretİcİ
+            description: Şekilleri tüketerek enerji üretir.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Kablo Çoklayıcı
+            description: Bir kablo çıkışını ikiye çoğaltır.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Kablo Bİrleştİrİcİ
+            description: İki enerji kablosunu birleştirir
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Şekİllerİ Kesmek
+        desc: Az önce <strong>kesici</strong> açıldı - kesici şekilleri <strong>yukarıdan aşağıya</strong> ikiye böler konumu ne olursa olsun!<br><br>Kullanılmayan çıktılardan kurtulmayı unutma, <strong>yoksa kesim durur</strong>. Bu sepeble size, herşeyi yok eden bir çöp verdim!
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Döndürme
+        desc: <strong>Döndürücü</strong> açıldı! Döndürücü şekilleri saat yönüne 90 derece döndürür.
 
     reward_painter:
-        title: Painting
+        title: Boyama
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            <strong>Boyayıcı</strong> açıldı - Biraz renk üretin (tıpkı şekiller gibi) ve şekil boyamak için rengi boyayıcıda bir şekille birleştirin!<br><br>NOT: Renkleri daha kolay ayırt etmek için ayarlardan <strong>renk körü modunu</strong> kullanabilirsiniz!
 
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: Renk Karıştırma
+        desc: <strong>Karıştırıcı</strong> açıldı - Bu yapıyla iki rengi <strong>eklemeli renk metodu</strong> ile karıştırın!
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Kaynaştırıcı
+        desc: Artık <strong>kaynaştırıcı</strong> ile şekilleri birleştirebilirsiniz! İki şekil eğer yanyana koyulabilirse şekiller <strong>birleştirilir</strong>, yoksa sol girişteki şeklin <strong>üzerine kaynaştırılır</strong>!
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: Ayırıcı/Bİrleştİrİcİ
+        desc: Çok fonksiyonlu <strong>dengeleyici</strong> açıldı - <strong>Eşyaları birden fazla taşıma bandı üzerinde ayırarak ve birleştirerek</strong> daha büyük fabrikalar kurabilmek için kullanılabilir!<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        title: Tünel
+        desc: <strong>Tünel</strong> açıldı - Artık eşyaları taşıma bantları ve yapılar altından geçirebilirsiniz!
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: Saat yönünün tersİnde Döndürme
+        desc: <strong>Döndürücünün</strong> farklı bir türünü açtın - Şekiller artık saat yönünün tersinde döndürülebilir! İnşa etmek için döndürücüyü seç ve <strong>türler arası geçiş yapmak için 'T' tuşuna bas</strong>!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: Zincirleme Üretİm
+        desc: <strong>Zincirleme üretici</strong> açıldı! Zincirleme üretici <strong>kendi kaynaklarını diğer üreticilere aktarabilir</strong>. Böylece daha etkili üretim sağlayabilirsin!
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: Tünel Aşama II
+        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now! <strong>Tünelin</strong> başka bir türünü açtın - Bu tünelin menzili <strong>daha yüksek</strong> ve tünel türlerini artık içiçe kullanabilirsin!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Tekİl Dengeleyİcİ
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            <strong>Dengeleyecinin</strong> daha küçük bir türünü açtın - İki taşıma bandından gelen eşyaları tek hatta birleştirir!
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Çeyreğİnİ Kesme
+        desc: <strong>Kesicinin</strong> yeni bir türünü açtın - Bu tür şekilleri iki parça yerine <strong>dört parçaya</strong> ayırabilir!
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: Çİfte Boyama
+        desc: <strong>Boyayıcının<strong> başka bir türünü açtın - Sıradan bir boyayıcı gibi çalışır, fakat <strong>iki şekli birden</strong> boyayarak iki boya yerine sadece bir boya harcar!
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: Dörtlü Boyama
+        desc: <strong>Boyayıcının<strong> başka bir türünü açtın - Şeklin her parçasının bağımsız olarak boyanmasını sağlar!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: Depo Sağlayıcı
+        desc: <strong>Çöpün</strong> farklı bir türünü açtın - Bu tür belirli bir sınıra kadar eşyaları depolamanı sağlar!
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Özgür Mod
+        desc: Başardın! <strong>Özgür mod</strong> açıldı! Merkeze istenilen şekiller artık rastgele oluşturulacak! (Merak etme, yeni içerikler planlanıyor!)
 
-    reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+    reward_blueprints:  # 'Taslaklar' yerine 'planlar' da kullanılabilir.
+        title: Taslaklar
+        desc: Fabrikanın bölümlerini artık <strong>kopyalayıp yapıştırabilirsin</strong>! Bir alan seç (CTRL tuşuna bas ve fareyi sol-tık tuşuna basarak sürükle), ve kopyalamak için 'C' tuşuna bas.<br><br>Kopyaladığın taslağı <strong>bedel karşılığı</strong> yapıştırabilmek için <strong>taslak şekilleri</strong> üretmelisin! (Az önce teslim ettiğin şekiller).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Sonrakİ Sevİye
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            Bu seviyede ödül yok, ama sonrakinde var! <br><br> NOT: En iyisi eski fabrikalarını yok etme - Ürettiğin <strrong>bütün</strong> şekillere <strong>geliştirmeleri açmak için</strong ihtiyacın olacak!
 
     no_reward_freeplay:
-        title: Next level
+        title: Sonrakİ Sevİye
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Tebrikler! Bu arada, yeni içerikler planlanıyor!
 
 settings:
-    title: Settings
+    title: Ayarlar
     categories:
-        game: Game
-        app: Application
+        general: Genel
+        userInterface: Kullanıcı Arayüzü
+        advanced: Gelİşmİş
 
-    versionBadges:
-        dev: Development
-        staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+    versionBadges:  # Development, Staging, Production
+        dev: Geliştirme
+        staging: Yükseltme
+        prod: Üretim
+    buildDate: <at-date> derlendi
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Arayüz Ölçeğİ
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                Kullanıcı arayüzünün boyutunu değiştirir. Arayüz cihazınızın çözünürlüğüne göre ölçeklendirilir, ama ölçeğin miktarı burada ayarlanabilir.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Çok Küçük
+                small: Küçük
+                regular: Normal
+                large: Büyük
+                huge: Çok Büyük
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: Yakınlaştırma Hassasİyeti
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                Yakınlaştırmanın ne kadar hassas olduğunu ayarlar (Fare tekerleği veya dokunmatik farketmez).
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Çok Yavaş
+                slow: Yavaş
+                regular: Normal
+                fast: Hızlı
+                super_fast: Çok Hızlı
 
         language:
-            title: Language
+            title: Dİl
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Dili değiştirir. Bütün çevirmeler kullanıcı katkılarıyla oluşturulmuştur ve tam olmayabilir!
 
         fullscreen:
-            title: Fullscreen
+            title: Tam Ekran
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                En iyi oyun tecrübesi için oyunun tam ekranda oynanması tavsiye edilir. Sadece tam sürümde mevcut.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Ses Efektlerİnİ Sustur
             description: >-
-                If enabled, mutes all sound effects.
+                Aktif edildiğinde bütün ses efektleri susturulur.
 
         musicMuted:
-            title: Mute Music
+            title: Müzİğİ Sustur
             description: >-
-                If enabled, mutes all music.
+                Aktif edildiğinde bütün müzikler susturulur.
 
         theme:
-            title: Game theme
+            title: Renk Teması
             description: >-
-                Choose the game theme (light / dark).
+                Renk temasını seçin (aydınlık / karanlık).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Karanlık
+                light: Aydınlık
 
         refreshRate:
-            title: Simulation Target
+            title: Sİmülasyon Hızı
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                Eğer mönitörünüzün yenileme hızı (Hz) yüksekse oyunun akıcı bir şekilde çalışması için yenileme hızını buradan değiştirin. Eğer bilgisayarınız yavaşsa bu ayar oyunun gösterdiği kare hızını (FPS) düşürebilir.
 
         alwaysMultiplace:
-            title: Multiplace
+            title: Çoklu Yerleştirme
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                Aktif edildiğinde bir yapı seçilip yerleştirildiğinde, yapıyı yerleştirmeye siz iptal edene kadar devam edebilirsiniz. Bu özellik SHIFT tuşuna sürekli basılı tutup yapı yerleştirmeyle aynıdır.
 
         offerHints:
-            title: Hints & Tutorials
+            title: İpuçları ve Eğİtİmler
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                İpuçları ve eğitimleri açar. Ayrıca bazı arayüz elemanlarını oyunun daha kolay öğrenilebilmesi için gizler.
 
-        movementSpeed:
-            title: Movement speed
+        movementHız:
+            title: Hareket hızı
             description: Changes how fast the view moves when using the keyboard.
-            speeds:
+            Hızs:
                 super_slow: Super slow
                 slow: Slow
                 regular: Regular
@@ -724,78 +727,73 @@ settings:
                 When enabled, placing tunnels will automatically remove unnecessary belts.
                 This also enables to drag tunnels and excess tunnels will get removed.
         vignette:
-            title: Vignette
+            title: Gölgelendİrme
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Gölgelendirmeyi açar. Gölgelendirme ekranın köşelerini karartır ve yazıları daha kolay okuyabilmeinizi sağlar.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Otomatik Kayıt Sıklığı
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Oyunun hangi sıklıkta kaydedileceğini belirler. Ayrıca otomatik kayıt tamamen kapatılabilir.
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Dakika
+                two_minutes: 2 Dakika
+                five_minutes: 5 Dakika
+                ten_minutes: 10 Dakika
+                twenty_minutes: 20 Dakika
+                disabled: Devredışı
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Derlİ Toplu Yapı Bilgileri
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Yapıların bilgi kutularını sadece oranlarını göstecek şekilde kısaltır. Aksi taktirde yapının açıklaması ve resmi gösterilir.
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Kes/Sİl Uyarılarını Devredışı Bırak
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                100 birimden fazla parçayı kesme/silme işlemlerinde beliren uyarı pencerelerini devredışı bırakır.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Renk Körü Modu
+            description: Eğer renkleri seçemiyorsanız oyunu ayarlamak için çeşitli araç gereçleri aktif eder.
         rotationByBuilding:
             title: Rotation by building type
             description: >-
-                Each building type remembers the rotation you last set it to individually.
-                This may be more comfortable if you frequently switch between placing
-                different building types.
+                Her yapı türü en son kullanıldığı yönü hatırlar.
+                Yerleştirdiğiniz yapıları sıklıkla değiştiriyorsanız bu ayar oynanyışınızı rahatlatabilir.
 
 keybindings:
-    title: Keybindings
+    title: Tuş Atamaları
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        İpucu: CTRL, SHIFT ve ALT tuşlarından yararlanın! Farklı yerleştirme seçeneklerini kullanmanızı sağlarlar.
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: Tuş Atamalarını Sıfırla
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Uygulama
+        ingame: Oyun
+        navigation: Hareket
+        placement: Yerleştİrme
+        massSelect: Çoklu Seçim
+        buildings: Yapı Kısayolları
+        placementModifiers: Yerleştİrme Özellİklerİ
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        centerMap: Center Map
+        confirm: Kabul
+        back: Geri
+        mapMoveUp: Yukarı Git
+        mapMoveRight: Sağa Git
+        mapMoveDown: Aşagı Git
+        mapMoveLeft: Sola Git
+        centerMap: Haritayı Ortala
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: Yakınlaş
+        mapZoomOut: Uzaklaş
+        createMarker: Yer İmi Oluştur
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Geliştirmeler
+        menuOpenStats: İstatistikler
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
+        toggleHud: Arayüzü Aç/Kapat
+        toggleFPSInfo: FPS ve Debug Bilgisini Aç/Kapat
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -807,35 +805,35 @@ keybindings:
         painter: *painter
         trash: *trash
 
-        rotateWhilePlacing: Rotate
+        rotateWhilePlacing: Döndür
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
-        cycleBuildings: Cycle Buildings
+            Basılı Tut: Saat yönünün tersinde döndür
+        cycleBuildingVariants: Yapı türünü değiştir
+        confirmMassDelete: Çoklu Silme
+        cycleBuildings: Yapıyı değiştir
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
+        massSelectStart: Basılı tutup seçme
+        massSelectSelectMultiple: Birden fazla alanı seçme
+        massSelectCopy: Alanı kopyala
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
-        pipette: Pipette
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        placementDisableAutoOrientation: Otomatik Yönü devredışı bırak
+        placeMultiple: Yerleştirme modunda kal
+        placeInverse: Taşıma bandı yönünü ters çevir
+        pasteLastBlueprint: Son taslağı yapıştır
+        massSelectCut: Alanı yapıştır
+        exportScreenshot: Bütün merkezi resim olarak dışarı aktar
+        mapMoveFaster: Hızlı Hareket
+        lockBeltDirection: Taşıma bandı planlayıcısını akfitleştir
+        switchDirectionLockSide: "Planlayıcı: Taraf değiştir"
+        pipette: Pipet
+        menuClose: Menüyü Kapat
+        switchLayers: Katman değiştir
+        advanced_processor: Renk Ters Çevirici
+        energy_generator: Enerji Üretici
+        wire: Enerji Kablosu
 
 about:
-    title: About this Game
+    title: Oyun Hakkında
     body: >-
         This game is open source and developed by <a href="https://github.com/tobspr"
         target="_blank">Tobias Springer</a> (this is me).<br><br>
@@ -843,9 +841,9 @@ about:
         If you want to contribute, check out <a href="<githublink>"
         target="_blank">shapez.io on github</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
+        This game wouldn't have been possible without the great Discord community
         around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        target="_blank">Discord server</a>!<br><br>
 
         The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - He's awesome.<br><br>
@@ -855,14 +853,14 @@ about:
         factorio sessions this game would never have existed.
 
 changelog:
-    title: Changelog
+    title: Değİşİklİk Günlüğü
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Oyun kayıtlarını yükleme
+        importingGames: Oyun kayıtlarını indirme
+        oneGameLimit: Bir oyun kaydıyla sınırlı
+        customizeKeybindings: Tuş Atamalarını Değiştirme
+        exportingBase: Bütün merkezi resim olarak dışa aktarma
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Demo sürümünde mevcut değil

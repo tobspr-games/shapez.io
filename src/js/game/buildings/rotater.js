@@ -11,7 +11,7 @@ import { enumHubGoalRewards } from "../tutorial_goals";
 import { enumItemType } from "../base_item";
 
 /** @enum {string} */
-export const enumRotaterVariants = { ccw: "ccw" };
+export const enumRotaterVariants = { ccw: "ccw", fl: "fl" };
 
 export class MetaRotaterBuilding extends MetaBuilding {
     constructor() {
@@ -28,12 +28,20 @@ export class MetaRotaterBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const speed = root.hubGoals.getProcessorBaseSpeed(
-            variant === enumRotaterVariants.ccw
-                ? enumItemProcessorTypes.rotaterCCW
-                : enumItemProcessorTypes.rotater
-        );
-        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+        switch (variant) {
+            case defaultBuildingVariant: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
+            case enumRotaterVariants.ccw: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
+            case enumRotaterVariants.fl: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterFL);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
+        }
     }
 
     /**
@@ -41,10 +49,14 @@ export class MetaRotaterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
+        let variants = [defaultBuildingVariant];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw)) {
-            return [defaultBuildingVariant, enumRotaterVariants.ccw];
+            variants.push(enumRotaterVariants.ccw);
         }
-        return super.getAvailableVariants(root);
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_fl)) {
+            variants.push(enumRotaterVariants.fl);
+        }
+        return variants;
     }
 
     /**
@@ -98,6 +110,10 @@ export class MetaRotaterBuilding extends MetaBuilding {
             }
             case enumRotaterVariants.ccw: {
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
+                break;
+            }
+            case enumRotaterVariants.fl: {
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterFL;
                 break;
             }
             default:

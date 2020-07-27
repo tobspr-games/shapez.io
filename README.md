@@ -11,6 +11,15 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 -   [Steam Page](https://steam.shapez.io)
 -   [Official Discord](https://discord.com/invite/HN7EVzV) <- _Highly recommended to join!_
 
+## Reporting issues, suggestions, feedback, bugs
+
+1. Ask in `#bugs` / `#feedback` / `#questions` on the [Official Discord](https://discord.com/invite/HN7EVzV) if you are not entirely sure if it's a bug etc.
+2. Check out the trello board: https://trello.com/b/ISQncpJP/shapezio
+3. See if it's already there - If so, vote for it, done. I will see it. (You have to be signed in on trello)
+4. If not, check if it's already reported here: https://github.com/tobspr/shapez.io/issues
+5. If not, file a new issue here: https://github.com/tobspr/shapez.io/issues/new
+6. I will then have a look (This can take days or weeks) and convert it to trello, and comment with the link. You can then vote there ;)
+
 ## Building
 
 -   Make sure git `git lfs` extension is on your path
@@ -41,7 +50,7 @@ If you want to add a new feature or in generally contribute I recommend to get i
 
 ### Code
 
-The game is based on a custom engine which itself is based on the YORG.io 3 game egine (Actually it shares almost the same core).
+The game is based on a custom engine which itself is based on the YORG.io 3 game engine (Actually it shares almost the same core).
 The code within the engine is relatively clean with some code for the actual game on top being hacky.
 
 This project is based on ES5. Some ES2015 features are used but most of them are too slow, especially when polyfilled. For example, `Array.prototype.forEach` is only used within non-critical loops since its slower than a plain for loop.

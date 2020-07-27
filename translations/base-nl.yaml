@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -30,11 +30,11 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is een spel dat draait om het bouwen van fabrieken om steeds complexere vormen te produceren en deze productie te automatiseren in een oneindig groot speelveld. 
-        Door het leveren van de gevraagde vormen, kom je verder in het spel en ontgrendel je upgrades waar je fabriek sneller van wordt. 
+        shapez.io is een spel dat draait om het bouwen van fabrieken om steeds complexere vormen te produceren en deze productie te automatiseren in een oneindig groot speelveld.
+        Door het leveren van de gevraagde vormen, kom je verder in het spel en ontgrendel je upgrades waar je fabriek sneller van wordt.
 
         De vraag naar vormen wordt steeds groter, wat betekent dat je de fabriek moet uitbreiden om de vraag tegemoet te komen. Om de juiste grondstoffen te delven zul je steeds verder in het [b]oneindig grote speelveld[/b] moeten gaan werken!
-        
+
         Omdat simpele vormen snel saai worden, moet je kleuren mengen om de vormen te verven - Combineer rode, groene en blauwe grondstoffen om verschillende kleuren te produceren en gebruik deze om de vormen te verven, zodat je de vraag hiernaar tegemoet kan komen.
 
         Dit spel bevat 18 levels (Waar je al uren mee bezig zal zijn!), maar ik ben continu bezig om het spel uit te breiden - er staat veel in de planning!
@@ -45,12 +45,12 @@ steamPage:
 
         [list]
             [*] Donkere modus
-            [*] Oneindig veel markeringen 
+            [*] Oneindig veel markeringen
             [*] Oneindig veel savegames
             [*] Extra opties
             [*] Binnenkort: Kabels & Energie! Hopelijk vanaf eind juli 2020.
             [*] Binnenkort: Meer Levels
-            [*] Helpt mij om shapez.io verder te ontwikkelen ❤️
+            [*] Help mij om shapez.io verder te ontwikkelen ❤️
         [/list]
 
         [b]Geplande Updates[/b]
@@ -69,7 +69,7 @@ steamPage:
 
         [b]Dit spel is open source![/b]
 
-        Iedreen kan bijdragen. Ik ben actief in de community en probeer naar alle suggesties en feedback te kijken en deze mee te nemen in de ontwikkeling.
+        Iedereen kan bijdragen. Ik ben actief in de community en probeer naar alle suggesties en feedback te kijken en deze op te nemen in de ontwikkeling.
         Bekijk mijn trello-bord voor het volledige stappenplan!
 
         [b]Links[/b]
@@ -90,7 +90,7 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
-    
+
     # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: ","
 
@@ -141,7 +141,7 @@ mainMenu:
     changelog: Changelog
     importSavegame: Importeren
     openSourceHint: Dit spel is open source!
-    discordLink: Officiële discord-server (Engelstalig)
+    discordLink: Officiële Discord-server (Engelstalig)
     helpTranslate: Help met vertalen!
 
     # This is shown when using firefox and other browsers which are not supported.
@@ -150,7 +150,6 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Onbekend Level
-
 
     continue: Verder
     newGame: Nieuw Spel
@@ -172,12 +171,12 @@ dialogs:
         showKeybindings: Zie Sneltoetsen
 
     importSavegameError:
-        title: Import Error
+        title: Importeer error
         text: >-
             Het importeren van je savegame is mislukt:
 
     importSavegameSuccess:
-        title: Savegame Geïmporteerd
+        title: Savegame geïmporteerd
         text: >-
             Je savegame is succesvol geïmporteerd.
 
@@ -227,7 +226,7 @@ dialogs:
             Dit zijn de veranderingen sinds je voor het laatst gespeeld hebt:
 
     upgradesIntroduction:
-        title: Ontgrendel Upgrades
+        title: Ontgrendel upgrades
         desc: >-
             Alle vormen die je produceert kunnen gebruikt worden om upgrades te ontgrendelen - <strong>vernietig je oude fabrieken niet!</strong>
             Het upgrades-tabblad staat in de rechterbovenhoek van het scherm.
@@ -349,7 +348,7 @@ ingame:
         dataSources:
             stored:
                 title: In opslag
-                description: Geeft weer hoe veel vormen er zijn opgeslagen in de HUB.
+                description: Geeft alle vormen weer die opgeslagen zijn in de HUB.
             produced:
                 title: Geproduceerd
                 description: Geeft alle vormen weer die op dit moment geproduceerd worden, inclusief tussenproducten.
@@ -484,6 +483,9 @@ buildings:
         ccw:
             name: Roteerder (andersom)
             description: Draait vormen 90 graden tegen de klok in.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -501,7 +503,7 @@ buildings:
             description: &painter_desc Verft de volledige vorm in de linker input met de kleur van de rechter input.
         double:
             name: Verver (Dubbel)
-            description: Verft de vormen in de linker inputs met de kleur van de rechter input.
+            description: Verft de vormen in de linker input met de kleur van de rechter input.
         quad:
             name: Verver (Quad)
             description: Verft elke kwart van de vorm een andere kleur.
@@ -630,8 +632,9 @@ storyRewards:
 settings:
     title: Opties
     categories:
-        game: Spel
-        app: Applicatie
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Ontwikkeling
@@ -649,7 +652,7 @@ settings:
                 small: Klein
                 regular: Middel
                 large: Groot
-                huge: Wumbo
+                huge: Jumbo
 
         scrollWheelSensitivity:
             title: Zoom-gevoeligheid
@@ -840,9 +843,9 @@ about:
         Als je ook bij wil dragen, ga dan naar <a href="<githublink>"
         target="_blank">shapez.io op github</a>.<br><br>
 
-        Dit spel was niet mogelijk geweest zonder de geweldige discord community
+        Dit spel was niet mogelijk geweest zonder de geweldige Discord community
         rondom mijn spellen - Je zou eens lid moeten worden van de <a href="<discordlink>"
-        target="_blank">discord server</a> (engelstalig)!<br><br>
+        target="_blank">Discord server</a> (engelstalig)!<br><br>
 
         De muziek is gemaakt door <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Hij is geweldig.<br><br>

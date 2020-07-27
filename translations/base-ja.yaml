@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -30,32 +30,32 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.ioは無限のマップ内で様々な"形"を資源とし、段々と複雑になっていく形の作成や合成の自動化を目指して工場を構築するゲームです。
+        求められた"形"を届けることで様々なアップグレードを手に入れることができ、さらに工場の効率を上げることができます。
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        "形"の需要が増えるにつれ、工場を拡大する必要があります - より多くの資源を手に入れるために[b]無限のマップ[!b]を開拓していく必要があります。
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        "形"に色を塗る必要もあります - 赤、緑、青を混ぜ、さまざまな色を作り需要に応じて色が塗られた"形"を製造できます。
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        現在このゲームには18個のレベルがあり、今後これを拡大していく予定です - 他にも様々なアップデートを準備しています!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        このゲームを買うことによってスタンドアローン版の様々な機能が使えるようになり、新しいアップデートもすぐに手に入ります。
 
-        [b]Standalone Advantages[/b]
+        [b]スタンドアローン版で使える機能[/b]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] ダークモード
+            [*] ウェイポイントの制限がありません
+            [*] セーブの数の制限がありません
+            [*] 様々な設定
+            [*] 追加予定: ワイヤーとエネルギー! (7月末を目指しています)
+            [*] 追加予定: より多くのレベル
+            [*] shapez.io開発が助けられます❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]今後の予定[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        週に一回はアップデートを出せることを目指しています。
 
         [list]
             [*] Different maps and challenges (e.g. maps with obstacles)
@@ -67,22 +67,22 @@ steamPage:
             [*] And much more!
         [/list]
 
-        [b]This game is open source![/b]
+        [b]このゲームはオープンソースです![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        誰でもこのげむの開発を手伝うことができ、私もプレーヤーの意見をできるだけゲームに取り入れようとしています。
+        Trelloで今後の予定が全て確認できます。
 
-        [b]Links[/b]
+        [b]外部リンク[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]公式Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]今後の予定[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Reddit[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]ソースコード(GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]翻訳に参加[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: 公式Discord - 私と話せます!
 
 global:
     loading: ロード中
@@ -134,14 +134,14 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: デモ版
     intro: >-
-        スタンドアローン版を手に入れ、すべての要素をアンロックしましょう！
+        スタンドアローン版を手に入れ、すべての機能をアンロックしましょう！
 
 mainMenu:
     play: プレイ
     changelog: 更新履歴
     importSavegame: インポート
     openSourceHint: このゲームはオープンソースです
-    discordLink: 公式Discordサーバ
+    discordLink: 公式Discord
     helpTranslate: 翻訳に参加
 
     # This is shown when using firefox and other browsers which are not supported.
@@ -151,10 +151,9 @@ mainMenu:
     savegameLevel: レベル <x>
     savegameLevelUnknown: 不明なレベル
 
-
     continue: 続きから
     newGame: 新規ゲーム
-    madeBy: Made by <author-link>
+    madeBy: 制作者 <author-link>
     subreddit: Reddit
 
 dialogs:
@@ -491,6 +490,9 @@ buildings:
         ccw:
             name: 回転機 (逆)
             description: 形を反時計回り方向に90度回転します。
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -632,8 +634,9 @@ storyRewards:
 settings:
     title: 設定
     categories:
-        game: ゲーム
-        app: アプリケーション
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Development
@@ -837,7 +840,7 @@ about:
 
         開発に参加したい場合は以下をチェックしてみてください。<a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
 
-        このゲームはdiscordでの素晴らしいコミュニティなしには実現しませんでした。 - このサーバにも是非参加してください！　<a href="<discordlink>" target="_blank">discord server</a>!<br><br>
+        このゲームはdiscordでの素晴らしいコミュニティなしには実現しませんでした。 - このサーバにも是非参加してください！　<a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
         サウンドトラックは<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a>により製作されました。 - 彼は素晴らしいです<br><br>
 

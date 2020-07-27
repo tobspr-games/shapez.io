@@ -1,6 +1,23 @@
 #state_AboutState {
     > .container .content {
+        @include S(max-width, 600px);
         @include PlainText;
+        padding: 0;
+        background: transparent;
+    }
+
+    .head {
+        @include S(padding, 20px);
+
+        img {
+            display: block;
+            margin: 0 auto;
+            @include S(max-width, 200px);
+        }
+    }
+
+    .text {
+        @include S(margin, 10px);
     }
 
     a {

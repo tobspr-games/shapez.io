@@ -81,6 +81,13 @@ export const LANGUAGES = {
         region: "",
     },
 
+    "tr": {
+        name: "Türkçe",
+        data: require("./built-temp/base-tr.json"),
+        code: "tr",
+        region: "",
+    },
+
     "zh-CN": {
         // simplified
         name: "中文简体",
