@@ -344,6 +344,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         // If the building we are picking is the same as the one we have, clear the cursor.
         if (
+            this.currentMetaBuilding.get() &&
             extracted.metaInstance.getId() === this.currentMetaBuilding.get().getId() &&
             extracted.variant === this.currentVariant.get()
         ) {
