@@ -334,7 +334,7 @@ ingame:
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Nível <level>
-        completed: concluído
+        completed: Concluído
         unlockText: Desbloqueado <reward>!
         buttonNextLevel: Próximo Nível
 
