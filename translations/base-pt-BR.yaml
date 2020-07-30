@@ -199,7 +199,7 @@ dialogs:
     restartRequired:
         title: Ação necessária
         text: >-
-            Voce precisa reiniciar o jogo para aplicar as mudanças.
+            Você precisa reiniciar o jogo para aplicar as mudanças.
 
     editKeybinding:
         title: Alterar tecla
@@ -565,7 +565,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cortando formas
-        desc: Voce desbloqueou <strong>cortador</strong> - corte de formas pela metade <strong>verticalmente</strong> independentemente de sua orientação!<br><br> Certifique-se de se livrar do lixo, ou então <strong>ele irá parar a produção</strong> - Para esse propósito, eu lhe dei uma lixeira, que destrói tudo o que você coloca nela!
+        desc: Você desbloqueou <strong>cortador</strong> - corte de formas pela metade <strong>verticalmente</strong> independentemente de sua orientação!<br><br> Certifique-se de se livrar do lixo, ou então <strong>ele irá parar a produção</strong> - Para esse propósito, eu lhe dei uma lixeira, que destrói tudo o que você coloca nela!
 
     reward_rotater:
         title: Rotação
