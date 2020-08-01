@@ -44,36 +44,36 @@ steamPage:
 
         Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
 
-        [b]Standalone Advantages[/b]
+        [b]Vorteile der Standalone-Version[/b]
 
         [list]
             [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] Unbegrenzt viele Wegpunkte
+            [*] Unbegrenzt viele Savegames
+            [*] Zusätzliche Einstellungen
+            [*] Coming soon: Kabel & Energie! Aiming for (roughly) end of July 2020. Geplant für (ungefähr) ende Julie 2020.
+            [*] Coming soon: Mehr Level
+            [*] Erlaubt mir shapez.io weiter zu entwickeln ❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]Zukünftige Updates[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Ich update das Spiel sehr oft und versuche mindestens einmal pro Woche ein Update zu veröffentlichen!
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Verschiedene Karten und Herausforderungen (z.B. Karten mit Hindernissen)
+            [*] Puzzles (Liefere eine Angeforderte Form mit limitiertem Platz/Gebäuden)
+            [*] Einen Story-Modus in welchem Gebäude etwas kosten
+            [*] Einstellbarer Kartengenerator (Stelle Ressourcen/Formen, größe und Dichte von Vorkommen, Weltseed und mehr ein)
+            [*] Zusätzliche neue Formen
+            [*] Performanceverbesserungen (Das Spiel läuft bereits ziemlich gut!)
+            [*] Und vieles mehr!
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Dieses Spiel ist open source![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Jeder kann etwas dazu beitragen. Ich bin aktiv in der Community beteiligt und versuche alle Vorschläge und Rückmeldungen in betracht zu ziehen, wo dies möglich ist. Schaut euch
+        mein Trello-board an um die ganze Roadmap zu sehen! 
 
         [b]Links[/b]
 
@@ -293,7 +293,7 @@ ingame:
         copySelection: Kopieren
         clearSelection: Auswahl aufheben
         pipette: Pipette
-        switchLayers: Switch layers
+        switchLayers: Ändere Ebenenansicht
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -409,7 +409,7 @@ ingame:
         cyan: Cyan
         white: Weiß
         uncolored: Farblos
-        black: Black
+        black: Schwarz
     shapeViewer:
         title: Ebenen
         empty: Leer
@@ -485,8 +485,8 @@ buildings:
             name: Rotierer (CCW)
             description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Rotierer (180)
+            description: Rotiert Formen um 180 Grad.
 
     stacker:
         default:
@@ -530,25 +530,25 @@ buildings:
         levelShortcut: LVL
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Energie Kabel
+            description: Erlaubt dir den Transport von Energie.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Farbinvertierer
+            description: Akzeptiert Farben und Formen und invertiert die Farben.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Liefere
+        toGenerateEnergy: Für
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Energie Generator
+            description: Generiert Energie durch das Konsumieren von Formen.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Kabelverteiler
+            description: Spaltet ein Energie Kabel in zwei.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Kabelkombinierer
+            description: Verbindet zwei Energie Kabel zu einem.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -835,9 +835,9 @@ keybindings:
         pipette: Pipette
         menuClose: Close Menu
         switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        advanced_processor: Farbinvertierer
+        energy_generator: Energie Generator
+        wire: Energie Kabel
 
 about:
     title: Über dieses Spiel
