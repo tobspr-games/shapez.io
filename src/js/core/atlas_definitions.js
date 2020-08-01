@@ -1,20 +1,38 @@
 /**
+ * @typedef {{ w: number, h: number }} Size
+ * @typedef {{ x: number, y: number }} Position
  * @typedef {{
- *   frame: { x: number, y: number, w: number, h: number },
- *   rotated: false,
- *   spriteSourceSize: { x: number, y: number, w: number, h: number },
- *   sourceSize: { w: number, h: number},
- *   trimmed: true
+ *   frame: Position & Size,
+ *   rotated: boolean,
+ *   spriteSourceSize: Position & Size,
+ *   sourceSize: Size,
+ *   trimmed: boolean
  * }} SpriteDefinition
+ *
+ * @typedef {{
+ *   app: string,
+ *   version: string,
+ *   image: string,
+ *   format: string,
+ *   size: Size,
+ *   scale: string,
+ *   smartupdate: string
+ * }} AtlasMeta
+ *
+ * @typedef {{
+ *   frames: Object.<string, SpriteDefinition>,
+ *   meta: AtlasMeta
+ * }} SourceData
  */
 
 export class AtlasDefinition {
-    constructor(sourceData) {
-        this.sourceFileName = sourceData.meta.image;
-        this.meta = sourceData.meta;
-
-        /** @type {Object.<string, SpriteDefinition>} */
-        this.sourceData = sourceData.frames;
+    /**
+     * @param {SourceData} sourceData
+     */
+    constructor({ frames, meta }) {
+        this.meta = meta;
+        this.sourceData = frames;
+        this.sourceFileName = meta.image;
     }
 
     getFullSourcePath() {
@@ -22,6 +40,7 @@ export class AtlasDefinition {
     }
 }
 
+/** @type {AtlasDefinition[]} **/
 export const atlasFiles = require
     // @ts-ignore
     .context("../../../res_built/atlas/", false, /.*\.json/i)

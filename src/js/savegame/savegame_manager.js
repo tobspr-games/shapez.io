@@ -7,31 +7,21 @@ const logger = createLogger("savegame_manager");
 
 const Rusha = require("rusha");
 
+/**
+ * @typedef {import("./savegame_typedefs").SavegamesData} SavegamesData
+ * @typedef {import("./savegame_typedefs").SavegameMetadata} SavegameMetadata
+ */
+
 /** @enum {string} */
 export const enumLocalSavegameStatus = {
     offline: "offline",
     synced: "synced",
 };
 
-/**
- * @typedef {{
- *   lastUpdate: number,
- *   version: number,
- *   internalId: string,
- *   level: number
- * }} SavegameMetadata
- *
- * @typedef {{
- *   version: number,
- *   savegames: Array<SavegameMetadata>
- * }} SavegamesData
- */
-
 export class SavegameManager extends ReadWriteProxy {
     constructor(app) {
         super(app, "savegames.bin");
 
-        /** @type {SavegamesData} */
         this.currentData = this.getDefaultData();
     }
 
