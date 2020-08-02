@@ -451,7 +451,23 @@ buildings:
             name: &underground_belt Tunnel
             description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten.
 
+        side:
+            name: &underground_belt Tunnel
+            description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten.
+
+        side-mirrored:
+            name: &underground_belt Tunnel
+            description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten.
+
         tier2:
+            name: Tunnel Stufe II
+            description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten. Höhere Reichweite.
+
+        tier2-side:
+            name: Tunnel Stufe II
+            description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten. Höhere Reichweite.
+
+        tier2-side-mirrored:
             name: Tunnel Stufe II
             description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten. Höhere Reichweite.
 

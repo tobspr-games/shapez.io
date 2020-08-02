@@ -439,7 +439,23 @@ buildings:
             name: &underground_belt Tunel
             description: Umožňuje vézt suroviny pod budovami a pásy.
 
+        side:
+            name: &underground_belt Tunel
+            description: Umožňuje vézt suroviny pod budovami a pásy.
+
+        side-mirrored:
+            name: &underground_belt Tunel
+            description: Umožňuje vézt suroviny pod budovami a pásy.
+
         tier2:
+            name: Tunel II. úrovně
+            description: Umožňuje vézt suroviny pod budovami a pásy.
+
+        tier2-side:
+            name: Tunel II. úrovně
+            description: Umožňuje vézt suroviny pod budovami a pásy.
+
+        tier2-side-mirrored:
             name: Tunel II. úrovně
             description: Umožňuje vézt suroviny pod budovami a pásy.
 

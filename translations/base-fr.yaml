@@ -454,7 +454,23 @@ buildings:
             name: &underground_belt Tunnel
             description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
+        side:
+            name: &underground_belt Tunnel
+            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
+
+        side-mirrored:
+            name: &underground_belt Tunnel
+            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
+
         tier2:
+            name: Tunnel Niveau II
+            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
+
+        tier2-side:
+            name: Tunnel Niveau II
+            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
+
+        tier2-side-mirrored:
             name: Tunnel Niveau II
             description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 

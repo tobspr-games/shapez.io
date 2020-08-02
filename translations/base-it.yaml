@@ -453,7 +453,23 @@ buildings:
             name: &underground_belt Tunnel
             description: Permette di far passare delle risorse sotto a costruzioni e nastri trasportatori.
 
+        side:
+            name: &underground_belt Tunnel
+            description: Permette di far passare delle risorse sotto a costruzioni e nastri trasportatori.
+
+        side-mirrored:
+            name: &underground_belt Tunnel
+            description: Permette di far passare delle risorse sotto a costruzioni e nastri trasportatori.
+
         tier2:
+            name: Tunnel Grado II
+            description: Permette di far passare delle risorse sotto a costruzioni e nastri trasportatori.
+
+        tier2-side:
+            name: Tunnel Grado II
+            description: Permette di far passare delle risorse sotto a costruzioni e nastri trasportatori.
+
+        tier2-side-mirrored:
             name: Tunnel Grado II
             description: Permette di far passare delle risorse sotto a costruzioni e nastri trasportatori.
 

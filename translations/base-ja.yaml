@@ -458,7 +458,23 @@ buildings:
             name: &underground_belt トンネル
             description: 建造物や他のベルトの地下を通してベルトを配置できます。
 
+        side:
+            name: &underground_belt トンネル
+            description: 建造物や他のベルトの地下を通してベルトを配置できます。
+
+        side-mirrored:
+            name: &underground_belt トンネル
+            description: 建造物や他のベルトの地下を通してベルトを配置できます。
+
         tier2:
+            name: トンネル レベルII
+            description: 建造物や他のベルトの地下を通してベルトを配置できます。
+
+        tier2-side:
+            name: トンネル レベルII
+            description: 建造物や他のベルトの地下を通してベルトを配置できます。
+
+        tier2-side-mirrored:
             name: トンネル レベルII
             description: 建造物や他のベルトの地下を通してベルトを配置できます。
 

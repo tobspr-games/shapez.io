@@ -80,26 +80,34 @@ export function initMetaBuildingRegistry() {
     // Underground belt
     registerBuildingVariant(22, MetaUndergroundBeltBuilding, defaultBuildingVariant, 0);
     registerBuildingVariant(23, MetaUndergroundBeltBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(24, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 0);
-    registerBuildingVariant(25, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 1);
+	registerBuildingVariant(24, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.side, 0);
+	registerBuildingVariant(25, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.side, 1);
+	registerBuildingVariant(26, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.sideMirrored, 0);
+	registerBuildingVariant(27, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.sideMirrored, 1);
+    registerBuildingVariant(28, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 0);
+    registerBuildingVariant(29, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 1);
+    registerBuildingVariant(30, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2Side, 0);
+    registerBuildingVariant(31, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2SideMirrored, 0);
+    registerBuildingVariant(32, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2Side, 1);
+    registerBuildingVariant(33, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2SideMirrored, 1);
 
     // Hub
-    registerBuildingVariant(26, MetaHubBuilding);
+    registerBuildingVariant(34, MetaHubBuilding);
 
     // Energy generator
-    registerBuildingVariant(27, MetaEnergyGenerator);
+    registerBuildingVariant(35, MetaEnergyGenerator);
 
     // Wire
-    registerBuildingVariant(28, MetaWireBaseBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(29, MetaWireBaseBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(30, MetaWireBaseBuilding, defaultBuildingVariant, 2);
+    registerBuildingVariant(36, MetaWireBaseBuilding, defaultBuildingVariant, 0);
+    registerBuildingVariant(37, MetaWireBaseBuilding, defaultBuildingVariant, 1);
+    registerBuildingVariant(38, MetaWireBaseBuilding, defaultBuildingVariant, 2);
 
     // Advanced processor
-    registerBuildingVariant(31, MetaAdvancedProcessorBuilding);
+    registerBuildingVariant(39, MetaAdvancedProcessorBuilding);
 
     // Wire crossing
-    registerBuildingVariant(32, MetaWireCrossingsBuilding);
-    registerBuildingVariant(33, MetaWireCrossingsBuilding, enumWireCrossingVariants.merger);
+    registerBuildingVariant(40, MetaWireCrossingsBuilding);
+    registerBuildingVariant(41, MetaWireCrossingsBuilding, enumWireCrossingVariants.merger);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

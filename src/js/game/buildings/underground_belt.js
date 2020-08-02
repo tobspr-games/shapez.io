@@ -18,11 +18,15 @@ export const arrayUndergroundRotationVariantToMode = [
 ];
 
 /** @enum {string} */
-export const enumUndergroundBeltVariants = { tier2: "tier2" };
+export const enumUndergroundBeltVariants = { side: "side", sideMirrored: "side-mirrored", tier2: "tier2", tier2Side: "tier2-side", tier2SideMirrored: "tier2-side-mirrored" };
 
 export const enumUndergroundBeltVariantToTier = {
     [defaultBuildingVariant]: 0,
+    [enumUndergroundBeltVariants.side]: 0,
+    [enumUndergroundBeltVariants.sideMirrored]: 0,
     [enumUndergroundBeltVariants.tier2]: 1,
+    [enumUndergroundBeltVariants.tier2Side]: 1,
+    [enumUndergroundBeltVariants.tier2SideMirrored]: 1,
 };
 
 export class MetaUndergroundBeltBuilding extends MetaBuilding {
@@ -66,9 +70,9 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      */
     getAvailableVariants(root) {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_underground_belt_tier_2)) {
-            return [defaultBuildingVariant, enumUndergroundBeltVariants.tier2];
+            return [defaultBuildingVariant, enumUndergroundBeltVariants.side, enumUndergroundBeltVariants.sideMirrored, enumUndergroundBeltVariants.tier2, enumUndergroundBeltVariants.tier2Side, enumUndergroundBeltVariants.tier2SideMirrored];
         }
-        return super.getAvailableVariants(root);
+        return [defaultBuildingVariant, enumUndergroundBeltVariants.side, enumUndergroundBeltVariants.sideMirrored];
     }
 
     /**
@@ -225,7 +229,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: [(variant=="side"||variant=="tier2-side"?enumDirection.left:(variant=="side-mirrored"||variant=="tier2-side-mirrored"?enumDirection.right:enumDirection.bottom))],
                     },
                 ]);
                 return;
@@ -236,7 +240,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                 entity.components.ItemEjector.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+						direction: (variant=="side"||variant=="tier2-side"?enumDirection.left:(variant=="side-mirrored"||variant=="tier2-side-mirrored"?enumDirection.right:enumDirection.top)),
                     },
                 ]);
                 return;

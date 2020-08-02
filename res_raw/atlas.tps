@@ -454,8 +454,16 @@
             <key type="filename">sprites/blueprints/splitter-compact-inverse.png</key>
             <key type="filename">sprites/blueprints/splitter-compact.png</key>
             <key type="filename">sprites/blueprints/trash.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry-side-mirrored.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry-side.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry-tier2-side-mirrored.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry-tier2-side.png</key>
             <key type="filename">sprites/blueprints/underground_belt_entry-tier2.png</key>
             <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit-side-mirrored.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit-side.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit-tier2-side-mirrored.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit-tier2-side.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
             <key type="filename">sprites/buildings/miner-chainable.png</key>
@@ -463,8 +471,16 @@
             <key type="filename">sprites/buildings/rotater-fl.png</key>
             <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
             <key type="filename">sprites/buildings/splitter-compact.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry-side-mirrored.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry-side.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry-tier2-side-mirrored.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry-tier2-side.png</key>
             <key type="filename">sprites/buildings/underground_belt_entry-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_entry.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit-side-mirrored.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit-side.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit-tier2-side-mirrored.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit-tier2-side.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit.png</key>
             <struct type="IndividualSpriteSettings">
@@ -565,21 +581,6 @@
                 <rect>24,24,48,48</rect>
                 <key>scale9Paddings</key>
                 <rect>24,24,48,48</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/misc/lock_direction_indicator.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>12,12,24,24</rect>
-                <key>scale9Paddings</key>
-                <rect>12,12,24,24</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
