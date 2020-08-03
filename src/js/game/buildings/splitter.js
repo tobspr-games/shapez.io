@@ -5,10 +5,13 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
+
+/**
+ * @typedef {import("../root").GameRoot} GameRoot
+ */
 
 /** @enum {string} */
 export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
@@ -116,8 +119,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemAcceptor.beltUnderlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
-                    { pos: new Vector(1, 0), direction: enumDirection.top, layer: enumLayer.regular },
+                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: "regular" },
+                    { pos: new Vector(1, 0), direction: enumDirection.top, layer: "regular" },
                 ];
 
                 break;
@@ -144,7 +147,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemAcceptor.beltUnderlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
+                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: "regular" },
                 ];
 
                 break;

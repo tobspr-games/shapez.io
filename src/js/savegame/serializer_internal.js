@@ -1,6 +1,6 @@
 import { gComponentRegistry } from "../core/global_registries";
 import { Entity } from "../game/entity";
-import { enumLayer, GameRoot } from "../game/root";
+import { GameRoot, layers } from "../game/root";
 
 // Internal serializer methods
 export class SerializerInternal {
@@ -41,7 +41,7 @@ export class SerializerInternal {
         this.deserializeComponents(entity, payload.components);
         entity.layer = payload.layer;
 
-        if (!enumLayer[payload.layer]) {
+        if (!layers.includes(payload.layer)) {
             assert(false, "Invalid layer: " + payload.layer);
         }
 

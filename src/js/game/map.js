@@ -1,4 +1,3 @@
-import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
@@ -7,6 +6,11 @@ import { BaseItem } from "./base_item";
 import { MapChunkView } from "./map_chunk_view";
 import { randomInt } from "../core/utils";
 import { BasicSerializableObject, types } from "../savegame/serialization";
+
+/**
+ * @typedef {import("./root").GameRoot} GameRoot
+ * @typedef {import("./root").Layer} Layer
+ */
 
 const logger = createLogger("map");
 
@@ -98,7 +102,7 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Returns the tile content of a given tile
      * @param {Vector} tile
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {Entity} Entity or null
      */
     getTileContent(tile, layer) {
@@ -123,7 +127,7 @@ export class BaseMap extends BasicSerializableObject {
      * Returns the tile content of a given tile
      * @param {number} x
      * @param {number} y
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {Entity} Entity or null
      */
     getLayerContentXY(x, y, layer) {
@@ -148,7 +152,7 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Checks if the tile is used
      * @param {Vector} tile
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {boolean}
      */
     isTileUsed(tile, layer) {
@@ -163,7 +167,7 @@ export class BaseMap extends BasicSerializableObject {
      * Checks if the tile is used
      * @param {number} x
      * @param {number} y
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {boolean}
      */
     isTileUsedXY(x, y, layer) {

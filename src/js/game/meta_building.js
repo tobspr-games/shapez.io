@@ -4,8 +4,12 @@ import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
-import { enumLayer, GameRoot } from "./root";
 import { getCodeFromBuildingData } from "./building_codes";
+
+/**
+ * @typedef {import("./root").GameRoot} GameRoot
+ * @typedef {import("./root").Layer} Layer
+ */
 
 export const defaultBuildingVariant = "default";
 
@@ -27,10 +31,10 @@ export class MetaBuilding {
 
     /**
      * Returns the edit layer of the building
-     * @returns {enumLayer}
+     * @returns {Layer}
      */
     getLayer() {
-        return enumLayer.regular;
+        return "regular";
     }
 
     /**

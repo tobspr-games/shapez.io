@@ -8,7 +8,10 @@ import { Loader } from "../../core/loader";
 import { drawRotatedSprite } from "../../core/draw_utils";
 import { BELT_ANIM_COUNT } from "./belt";
 import { fastArrayDelete } from "../../core/utils";
-import { enumLayer } from "../root";
+
+/**
+ * @typedef {import("../root").Layer} Layer
+ **/
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -53,7 +56,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     /**
      * Draws the acceptor items
      * @param {DrawParameters} parameters
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      */
     drawLayer(parameters, layer) {
         this.forEachMatchingEntityOnScreen(parameters, this.drawEntityRegularLayer.bind(this, layer));
@@ -62,14 +65,14 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     /**
      * Draws the acceptor underlays
      * @param {DrawParameters} parameters
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      */
     drawUnderlays(parameters, layer) {
         this.forEachMatchingEntityOnScreen(parameters, this.drawEntityUnderlays.bind(this, layer));
     }
 
     /**
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @param {DrawParameters} parameters
      * @param {Entity} entity
      */
@@ -107,7 +110,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     }
 
     /**
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @param {DrawParameters} parameters
      * @param {Entity} entity
      */

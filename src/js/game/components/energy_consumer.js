@@ -1,7 +1,7 @@
 import { Component } from "../component";
 import { types } from "../../savegame/serialization";
 import { Vector } from "../../core/vector";
-import { BaseItem, enumItemTypeToLayer, enumItemType } from "../base_item";
+import { BaseItem, itemTypes } from "../base_item";
 
 export class EnergyConsumerComponent extends Component {
     static getId() {
@@ -13,8 +13,8 @@ export class EnergyConsumerComponent extends Component {
             bufferSize: types.float,
             perCharge: types.float,
             batteryPosition: types.vector,
-            energyType: types.enum(enumItemType),
-            wasteType: types.enum(enumItemType),
+            energyType: types.enum(itemTypes),
+            wasteType: types.enum(itemTypes),
             acceptorSlotIndex: types.uint,
             ejectorSlotIndex: types.uint,
 
@@ -54,8 +54,10 @@ export class EnergyConsumerComponent extends Component {
         this.bufferSize = bufferSize;
         this.perCharge = perCharge;
         this.batteryPosition = batteryPosition;
-        this.energyType = enumItemType.positiveEnergy;
-        this.wasteType = enumItemType.negativeEnergy;
+        /** @type {"positiveEnergy"} **/
+        this.energyType = "positiveEnergy";
+        /** @type {"negativeEnergy"} **/
+        this.wasteType = "negativeEnergy";
         this.acceptorSlotIndex = acceptorSlotIndex;
         this.ejectorSlotIndex = ejectorSlotIndex;
 

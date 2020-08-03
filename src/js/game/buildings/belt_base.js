@@ -8,7 +8,11 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { ReplaceableMapEntityComponent } from "../components/replaceable_map_entity";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
+
+/**
+ * @typedef {import("../root").GameRoot} GameRoot
+ * @typedef {import("../root").Layer} Layer
+ */
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
@@ -23,7 +27,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const beltSpeed = root.hubGoals.getBeltBaseSpeed(enumLayer.regular);
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed("regular");
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
 
@@ -100,7 +104,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {Vector} param0.tile
      * @param {number} param0.rotation
      * @param {string} param0.variant
-     * @param {string} param0.layer
+     * @param {Layer} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {

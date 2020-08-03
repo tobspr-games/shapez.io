@@ -4,7 +4,6 @@ import { globalConfig } from "../../core/config";
 import { MapChunkView } from "../map_chunk_view";
 import { Loader } from "../../core/loader";
 import { enumDirection } from "../../core/vector";
-import { enumLayer } from "../root";
 
 export class StaticMapEntitySystem extends GameSystem {
     constructor(root) {

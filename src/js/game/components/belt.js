@@ -3,7 +3,10 @@ import { types } from "../../savegame/serialization";
 import { BeltPath } from "../belt_path";
 import { Component } from "../component";
 import { Entity } from "../entity";
-import { enumLayer } from "../root";
+
+/**
+ * @typedef {import("../root").Layer} Layer
+ **/
 
 export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 
@@ -45,12 +48,12 @@ export class BeltComponent extends Component {
 
     /**
      * Returns the effective length of this belt in tile space
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {number}
      */
     getEffectiveLengthTiles(layer) {
         assert(layer, "no layer given");
-        if (layer === enumLayer.wires) {
+        if (layer === "wires") {
             return 1.0;
         }
         return this.direction === enumDirection.top ? 1.0 : curvedBeltLength;
@@ -60,14 +63,14 @@ export class BeltComponent extends Component {
      * Converts from belt space (0 = start of belt ... 1 = end of belt) to the local
      * belt coordinates (-0.5|-0.5 to 0.5|0.5)
      * @param {number} progress
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {Vector}
      */
     transformBeltToLocalSpace(progress, layer) {
         assert(progress >= 0.0, "Invalid progress ( < 0): " + progress);
 
         switch (layer) {
-            case enumLayer.regular: {
+            case "regular": {
                 switch (this.direction) {
                     case enumDirection.top:
                         assert(progress <= 1.02, "Invalid progress: " + progress);
@@ -94,7 +97,7 @@ export class BeltComponent extends Component {
                         return new Vector(0, 0);
                 }
             }
-            case enumLayer.wires: {
+            case "wires": {
                 const pow = 0.5;
                 switch (this.direction) {
                     case enumDirection.top:

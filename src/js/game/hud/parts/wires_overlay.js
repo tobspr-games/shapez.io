@@ -2,7 +2,6 @@ import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { enumLayer } from "../../root";
 import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
 import { Loader } from "../../../core/loader";
@@ -26,10 +25,10 @@ export class HUDWiresOverlay extends BaseHUDPart {
      * Switches between layers
      */
     switchLayers() {
-        if (this.root.currentLayer === enumLayer.regular) {
-            this.root.currentLayer = enumLayer.wires;
+        if (this.root.currentLayer === "regular") {
+            this.root.currentLayer = "wires";
         } else {
-            this.root.currentLayer = enumLayer.regular;
+            this.root.currentLayer = "regular";
         }
         this.root.signals.editModeChanged.dispatch(this.root.currentLayer);
     }
@@ -50,7 +49,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
     }
 
     update() {
-        const desiredAlpha = this.root.currentLayer === enumLayer.wires ? 1.0 : 0.0;
+        const desiredAlpha = this.root.currentLayer === "wires" ? 1.0 : 0.0;
         this.currentAlpha = lerp(this.currentAlpha, desiredAlpha, 0.12);
     }
 

@@ -1,6 +1,5 @@
 import { Loader } from "../../core/loader";
 import { enumDirection } from "../../core/vector";
-import { enumLayer } from "../root";
 import { arrayBeltVariantToRotation, MetaBeltBaseBuilding } from "./belt_base";
 
 export class MetaWireBaseBuilding extends MetaBeltBaseBuilding {
@@ -12,8 +11,9 @@ export class MetaWireBaseBuilding extends MetaBeltBaseBuilding {
         return "#c425d7";
     }
 
+    /** @returns {"wires"} **/
     getLayer() {
-        return enumLayer.wires;
+        return "wires";
     }
 
     getPreviewSprite(rotationVariant) {

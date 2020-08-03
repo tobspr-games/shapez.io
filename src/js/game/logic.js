@@ -3,32 +3,28 @@ import { round2Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
-import { enumLayer, GameRoot } from "./root";
 import { STOP_PROPAGATION } from "../core/signal";
 
 const logger = createLogger("ingame/logic");
 
 /**
- * Typing helper
+ * @typedef {import("./root").GameRoot} GameRoot
+ * @typedef {import("./root").Layer} Layer
+ *
  * @typedef {Array<{
  *  entity: Entity,
  *  slot: import("./components/item_ejector").ItemEjectorSlot,
  *  fromTile: Vector,
  *  toDirection: enumDirection
  * }>} EjectorsAffectingTile
- */
-
-/**
- * Typing helper
+ *
  * @typedef {Array<{
  *  entity: Entity,
  *  slot: import("./components/item_acceptor").ItemAcceptorSlot,
  *  toTile: Vector,
  *  fromDirection: enumDirection
  * }>} AcceptorsAffectingTile
- */
-
-/**
+ *
  * @typedef {{
  *     acceptors: AcceptorsAffectingTile,
  *     ejectors: EjectorsAffectingTile
@@ -178,7 +174,7 @@ export class GameLogic {
     /**
      * Returns the acceptors and ejectors which affect the current tile
      * @param {Vector} tile
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {AcceptorsAndEjectorsAffectingTile}
      */
     getEjectorsAndAcceptorsAtTile(tile, layer) {

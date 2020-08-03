@@ -23,7 +23,7 @@ import { GameHUD } from "./hud/hud";
 import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
-import { GameRoot, enumLayer } from "./root";
+import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
@@ -31,6 +31,10 @@ import { ProductionAnalytics } from "./production_analytics";
 import { randomInt } from "../core/utils";
 import { defaultBuildingVariant } from "./meta_building";
 import { DynamicTickrate } from "./dynamic_tickrate";
+
+/**
+ * @typedef {import("./root").Layer} Layer
+ **/
 
 const logger = createLogger("ingame/core");
 
@@ -398,14 +402,14 @@ export class GameCore {
 
         if (!this.root.camera.getIsMapOverlayActive()) {
             // Underlays for splitters / balancers
-            systems.itemAcceptor.drawUnderlays(params, enumLayer.regular);
+            systems.itemAcceptor.drawUnderlays(params, "regular");
 
             // Belt items
-            systems.belt.drawLayerBeltItems(params, enumLayer.regular);
+            systems.belt.drawLayerBeltItems(params, "regular");
 
             // Items being ejected / accepted currently (animations)
-            systems.itemEjector.drawLayer(params, enumLayer.regular);
-            systems.itemAcceptor.drawLayer(params, enumLayer.regular);
+            systems.itemEjector.drawLayer(params, "regular");
+            systems.itemAcceptor.drawLayer(params, "regular");
         }
 
         // Miner & Static map entities
@@ -428,14 +432,14 @@ export class GameCore {
         // Green wires overlay (not within the if because it can fade)
         root.hud.parts.wiresOverlay.draw(params);
 
-        if (this.root.currentLayer === enumLayer.wires && !this.root.camera.getIsMapOverlayActive()) {
+        if (this.root.currentLayer === "wires" && !this.root.camera.getIsMapOverlayActive()) {
             // Belt sprites & Static map entities
             root.map.drawWiresLayer(params);
 
             // Belt items as well as accepted / ejected items
-            systems.belt.drawLayerBeltItems(params, enumLayer.wires);
-            systems.itemEjector.drawLayer(params, enumLayer.wires);
-            systems.itemAcceptor.drawLayer(params, enumLayer.wires);
+            systems.belt.drawLayerBeltItems(params, "wires");
+            systems.itemEjector.drawLayer(params, "wires");
+            systems.itemAcceptor.drawLayer(params, "wires");
 
             root.map.drawWiresForegroundLayer(params);
 

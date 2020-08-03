@@ -1,35 +1,28 @@
 import { DrawParameters } from "../core/draw_parameters";
 import { BasicSerializableObject } from "../savegame/serialization";
-import { enumLayer } from "./root";
 
-/** @enum {string} */
-export const enumItemType = {
-    shape: "shape",
-    color: "color",
-    positiveEnergy: "positiveEnergy",
-    negativeEnergy: "negativeEnergy",
+/**
+ * @typedef {import("./root").Layer} Layer
+ *
+ * @typedef {"shape" | "color" | "positiveEnergy" | "negativeEnergy" | "genericEnergy"} ItemType
+ */
 
-    // Can be used for filters
-    genericEnergy: "genericEnergy",
-};
+/** @type {ItemType[]} **/
+export const itemTypes = ["shape", "color", "positiveEnergy", "negativeEnergy", "genericEnergy"];
 
-/** @enum {enumLayer} */
-export const enumItemTypeToLayer = {
-    [enumItemType.shape]: enumLayer.regular,
-    [enumItemType.color]: enumLayer.regular,
-    [enumItemType.positiveEnergy]: enumLayer.wires,
-    [enumItemType.negativeEnergy]: enumLayer.wires,
-    [enumItemType.genericEnergy]: enumLayer.wires,
+/** @type {Record<ItemType, Layer>} **/
+export const itemTypeLayerMap = {
+    shape: "regular",
+    color: "regular",
+    positiveEnergy: "wires",
+    negativeEnergy: "wires",
+    genericEnergy: "wires",
 };
 
 /**
  * Class for items on belts etc. Not an entity for performance reasons
  */
 export class BaseItem extends BasicSerializableObject {
-    constructor() {
-        super();
-    }
-
     static getId() {
         return "base_item";
     }
@@ -39,10 +32,10 @@ export class BaseItem extends BasicSerializableObject {
         return {};
     }
 
-    /** @returns {enumItemType} */
+    /** @abstract @returns {ItemType} **/
     getItemType() {
         abstract;
-        return "";
+        return "shape";
     }
 
     /**

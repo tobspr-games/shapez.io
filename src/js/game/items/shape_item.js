@@ -1,6 +1,6 @@
 import { DrawParameters } from "../../core/draw_parameters";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { ShapeDefinition } from "../shape_definition";
 import { THEME } from "../theme";
 
@@ -21,8 +21,9 @@ export class ShapeItem extends BaseItem {
         this.definition = ShapeDefinition.fromShortKey(data);
     }
 
+    /** @returns {"shape"} **/
     getItemType() {
-        return enumItemType.shape;
+        return "shape";
     }
 
     /**

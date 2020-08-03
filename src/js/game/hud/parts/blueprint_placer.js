@@ -11,7 +11,10 @@ import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { Blueprint } from "../../blueprint";
 import { SOUNDS } from "../../../platform/sound";
-import { enumLayer } from "../../root";
+
+/**
+ * @typedef {import("../../root").Layer} Layer
+ **/
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
@@ -60,7 +63,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     /**
      * Called when the layer was changed
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      */
     onEditModeChanged(layer) {
         // Check if the layer of the blueprint differs and thus we have to deselect it

@@ -460,7 +460,7 @@ export class TypeEnum extends BaseDataType {
      */
     constructor(enumeration = {}) {
         super();
-        this.availableValues = Object.keys(enumeration);
+        this.availableValues = Object.values(enumeration);
     }
 
     serialize(value) {

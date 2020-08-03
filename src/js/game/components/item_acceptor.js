@@ -1,30 +1,34 @@
 import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem, itemTypes } from "../base_item";
 import { Component } from "../component";
-import { enumLayer } from "../root";
-
-/** @typedef {{
- * pos: Vector,
- * directions: enumDirection[],
- * layer: enumLayer,
- * filter?: enumItemType
- * }} ItemAcceptorSlot */
+import { layers } from "../root";
 
 /**
+ * @typedef {import("../root").Layer} Layer
+ * @typedef {import ("../base_item").ItemType} ItemType
+ *
+ * @typedef {{
+ *   pos: Vector,
+ *   directions: enumDirection[],
+ *   layer: Layer,
+ *   filter?: ItemType
+ * }} ItemAcceptorSlot
+ *
  * Contains information about a slot plus its location
  * @typedef {{
- *  slot: ItemAcceptorSlot,
- *  index: number,
- *  acceptedDirection: enumDirection
- * }} ItemAcceptorLocatedSlot */
-
-/** @typedef {{
- * pos: Vector,
- * directions: enumDirection[],
- * layer?: enumLayer,
- * filter?: enumItemType
- * }} ItemAcceptorSlotConfig */
+ *   slot: ItemAcceptorSlot,
+ *   index: number,
+ *   acceptedDirection: enumDirection
+ * }} ItemAcceptorLocatedSlot
+ *
+ * @typedef {{
+ *   pos: Vector,
+ *   directions: enumDirection[],
+ *   layer?: Layer,
+ *   filter?: ItemType
+ * }} ItemAcceptorSlotConfig
+ **/
 
 export class ItemAcceptorComponent extends Component {
     static getId() {
@@ -37,10 +41,10 @@ export class ItemAcceptorComponent extends Component {
                 types.structured({
                     pos: types.vector,
                     directions: types.array(types.enum(enumDirection)),
-                    filter: types.nullable(types.enum(enumItemType)),
+                    filter: types.nullable(types.enum(itemTypes)),
 
                     // TODO: MIGRATE
-                    layer: types.enum(enumLayer),
+                    layer: types.enum(layers),
                 })
             ),
             animated: types.bool,
@@ -50,7 +54,7 @@ export class ItemAcceptorComponent extends Component {
                     direction: types.enum(enumDirection),
 
                     // TODO: MIGRATE
-                    layer: types.enum(enumLayer),
+                    layer: types.enum(layers),
                 })
             ),
         };
@@ -90,7 +94,7 @@ export class ItemAcceptorComponent extends Component {
      * @param {object} param0
      * @param {Array<ItemAcceptorSlotConfig>} param0.slots The slots from which we accept items
      * @param {boolean=} param0.animated Whether to animate item consumption
-     * @param {Array<{pos: Vector, direction: enumDirection, layer: enumLayer}>=} param0.beltUnderlays Where to render belt underlays
+     * @param {Array<{pos: Vector, direction: enumDirection, layer: Layer}>=} param0.beltUnderlays Where to render belt underlays
      */
     constructor({ slots = [], beltUnderlays = [], animated = true }) {
         super();
@@ -121,9 +125,9 @@ export class ItemAcceptorComponent extends Component {
             this.slots.push({
                 pos: slot.pos,
                 directions: slot.directions,
-                layer: slot.layer || enumLayer.regular,
+                layer: slot.layer || "regular",
 
-                // Which type of item to accept (shape | color | all) @see enumItemType
+                // Which type of item to accept (shape | color | all) @see ItemType
                 filter: slot.filter,
             });
         }
@@ -141,7 +145,7 @@ export class ItemAcceptorComponent extends Component {
 
     /**
      * Returns if the given filter matches
-     * @param {enumItemType|null} filter
+     * @param {ItemType|null} filter
      * @param {BaseItem} item
      */
     filterMatches(filter, item) {
@@ -150,8 +154,8 @@ export class ItemAcceptorComponent extends Component {
         }
 
         const itemType = item.getItemType();
-        if (filter === enumItemType.genericEnergy) {
-            return itemType === enumItemType.positiveEnergy || itemType === enumItemType.negativeEnergy;
+        if (filter === "genericEnergy") {
+            return itemType === "positiveEnergy" || itemType === "negativeEnergy";
         }
 
         return itemType === filter;
@@ -178,7 +182,7 @@ export class ItemAcceptorComponent extends Component {
      * Tries to find a slot which accepts the current item
      * @param {Vector} targetLocalTile
      * @param {enumDirection} fromLocalDirection
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {ItemAcceptorLocatedSlot|null}
      */
     findMatchingSlot(targetLocalTile, fromLocalDirection, layer) {

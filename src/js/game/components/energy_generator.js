@@ -1,5 +1,5 @@
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { ShapeItem } from "../items/shape_item";
 
@@ -59,7 +59,7 @@ export class EnergyGeneratorComponent extends Component {
             // just destroy it
             return true;
         } else {
-            if (item.getItemType() !== enumItemType.shape) {
+            if (item.getItemType() !== "shape") {
                 // This shouldn't happen since we have a filter - still, it doesn't hurt
                 // to check either
                 assertAlways(

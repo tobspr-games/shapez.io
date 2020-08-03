@@ -1,12 +1,13 @@
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { clamp } from "../../core/utils";
-import { enumItemType } from "../base_item";
 import { EnergyConsumerComponent } from "../components/energy_consumer";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { NEGATIVE_ENERGY_ITEM_SINGLETON } from "../items/negative_energy_item";
 import { POSITIVE_ENERGY_ITEM_SINGLETON } from "../items/positive_energy_item";
+
+/** @typedef {import("../base_item").ItemType} ItemType **/
 
 export class EnergyConsumerSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -42,13 +43,13 @@ export class EnergyConsumerSystem extends GameSystemWithFilter {
 
     /**
      *
-     * @param {enumItemType} itemType
+     * @param {ItemType} itemType
      */
     getItemSingletonByType(itemType) {
         switch (itemType) {
-            case enumItemType.positiveEnergy:
+            case "positiveEnergy":
                 return POSITIVE_ENERGY_ITEM_SINGLETON;
-            case enumItemType.negativeEnergy:
+            case "negativeEnergy":
                 return NEGATIVE_ENERGY_ITEM_SINGLETON;
             default:
                 assertAlways(false, "Bad item type: " + itemType);

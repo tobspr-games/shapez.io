@@ -5,11 +5,14 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
 import { globalConfig } from "../../core/config";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { formatItemsPerSecond } from "../../core/utils";
 import { T } from "../../translations";
+
+/**
+ * @typedef {import("../root").GameRoot} GameRoot
+ */
 
 /** @enum {string} */
 export const arrayUndergroundRotationVariantToMode = [
@@ -172,7 +175,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
             tile = tile.addScalars(searchVector.x, searchVector.y);
 
             /* WIRES: FIXME */
-            const contents = root.map.getTileContent(tile, enumLayer.regular);
+            const contents = root.map.getTileContent(tile, "regular");
             if (contents) {
                 const undergroundComp = contents.components.UndergroundBelt;
                 if (undergroundComp && undergroundComp.tier === tier) {
