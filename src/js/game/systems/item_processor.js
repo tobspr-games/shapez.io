@@ -1,6 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { BaseItem, enumItemType } from "../base_item";
-import { enumColorMixingResults, enumInvertedColors } from "../colors";
+import { colorInvertedMap, colorMixingMap } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -249,14 +249,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 const color1 = item1.color;
                 const color2 = item2.color;
 
-                // Try finding mixer color, and if we can't mix it we simply return the same color
-                const mixedColor = enumColorMixingResults[color1][color2];
-                let resultColor = color1;
-                if (mixedColor) {
-                    resultColor = mixedColor;
-                }
+                const mixedColor = colorMixingMap[color1][color2];
+
                 outItems.push({
-                    item: new ColorItem(resultColor),
+                    item: new ColorItem(mixedColor),
                 });
 
                 break;
@@ -361,7 +357,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 if (item.getItemType() === enumItemType.color) {
                     const colorItem = /** @type {ColorItem} */ (items[0].item);
-                    const newColor = enumInvertedColors[colorItem.color];
+                    const newColor = colorInvertedMap[colorItem.color];
                     outItems.push({
                         item: new ColorItem(newColor),
                         requiredSlot: 0,

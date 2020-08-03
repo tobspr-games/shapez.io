@@ -2,9 +2,13 @@ import { BasicSerializableObject } from "../savegame/serialization";
 import { GameRoot } from "./root";
 import { ShapeDefinition, enumSubShape } from "./shape_definition";
 import { createLogger } from "../core/logging";
-import { enumColors } from "./colors";
 
 const logger = createLogger("shape_definition_manager");
+
+/**
+ * @typedef {import("./colors").Color} Color
+ * @typedef {import("./shape_definition").ShapeLayer} ShapeLayer
+ */
 
 export class ShapeDefinitionManager extends BasicSerializableObject {
     static getId() {
@@ -165,7 +169,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     /**
      * Generates a definition for painting it with the given color
      * @param {ShapeDefinition} definition
-     * @param {enumColors} color
+     * @param {Color} color
      * @returns {ShapeDefinition}
      */
     shapeActionPaintWith(definition, color) {
@@ -198,7 +202,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     /**
      * Generates a definition for painting it with the 4 colors
      * @param {ShapeDefinition} definition
-     * @param {[enumColors, enumColors, enumColors, enumColors]} colors
+     * @param {[Color, Color, Color, Color]} colors
      * @returns {ShapeDefinition}
      */
     shapeActionPaintWith4Colors(definition, colors) {
@@ -232,10 +236,8 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @param {[enumSubShape, enumSubShape, enumSubShape, enumSubShape]} subShapes
      * @returns {ShapeDefinition}
      */
-    getDefinitionFromSimpleShapes(subShapes, color = enumColors.uncolored) {
-        const shapeLayer = /** @type {import("./shape_definition").ShapeLayer} */ (subShapes.map(
-            subShape => ({ subShape, color })
-        ));
+    getDefinitionFromSimpleShapes(subShapes, color = "uncolored") {
+        const shapeLayer = /** @type {ShapeLayer} */ (subShapes.map(subShape => ({ subShape, color })));
 
         return this.registerOrReturnHandle(new ShapeDefinition({ layers: [shapeLayer] }));
     }

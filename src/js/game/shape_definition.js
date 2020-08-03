@@ -5,13 +5,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
-import {
-    enumColors,
-    enumColorsToHexCode,
-    enumColorToShortcode,
-    enumShortcodeToColor,
-    enumInvertedColors,
-} from "./colors";
+import { colorHexColorMap, colorInvertedMap, colorShortColorMap, shortColorColorMap } from "./colors";
 import { THEME } from "./theme";
 
 const rusha = require("rusha");
@@ -19,13 +13,9 @@ const rusha = require("rusha");
 const logger = createLogger("shape_definition");
 
 /**
- * @typedef {{
- *   subShape: enumSubShape,
- *   color: enumColors,
- * }} ShapeLayerItem
- */
-
-/**
+ * @typedef {import("./colors").Color} Color
+ * @typedef {{ subShape: enumSubShape, color: Color }} ShapeLayerItem
+ *
  * Order is Q1 (tr), Q2(br), Q3(bl), Q4(tl)
  * @typedef {[ShapeLayerItem?, ShapeLayerItem?, ShapeLayerItem?, ShapeLayerItem?]} ShapeLayer
  */
@@ -62,13 +52,13 @@ for (const key in enumSubShapeToShortcode) {
 /**
  * Converts the given parameters to a valid shape definition
  * @param {*} layers
- * @returns {Array<import("./shape_definition").ShapeLayer>}
+ * @returns {Array<ShapeLayer>}
  */
 export function createSimpleShape(layers) {
     layers.forEach(layer => {
         layer.forEach(item => {
             if (item) {
-                item.color = item.color || enumColors.uncolored;
+                item.color = item.color || "uncolored";
             }
         });
     });
@@ -140,7 +130,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             for (let quad = 0; quad < 4; ++quad) {
                 const shapeText = text[quad * 2 + 0];
                 const subShape = enumShortcodeToSubShape[shapeText];
-                const color = enumShortcodeToColor[text[quad * 2 + 1]];
+                const color = shortColorColorMap[text[quad * 2 + 1]];
                 if (subShape) {
                     assert(color, "Invalid shape short key:", key);
                     quads[quad] = {
@@ -197,7 +187,7 @@ export class ShapeDefinition extends BasicSerializableObject {
                 const shapeText = text[quad * 2 + 0];
                 const colorText = text[quad * 2 + 1];
                 const subShape = enumShortcodeToSubShape[shapeText];
-                const color = enumShortcodeToColor[colorText];
+                const color = shortColorColorMap[colorText];
 
                 // Valid shape
                 if (subShape) {
@@ -267,7 +257,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             for (let quadrant = 0; quadrant < layer.length; ++quadrant) {
                 const item = layer[quadrant];
                 if (item) {
-                    id += enumSubShapeToShortcode[item.subShape] + enumColorToShortcode[item.color];
+                    id += enumSubShapeToShortcode[item.subShape] + colorShortColorMap[item.color];
                 } else {
                     id += "--";
                 }
@@ -362,7 +352,7 @@ export class ShapeDefinition extends BasicSerializableObject {
                 context.translate(centerQuadrantX, centerQuadrantY);
                 context.rotate(rotation);
 
-                context.fillStyle = enumColorsToHexCode[color];
+                context.fillStyle = colorHexColorMap[color];
                 context.strokeStyle = THEME.items.outline;
                 context.lineWidth = THEME.items.outlineWidth;
 
@@ -581,7 +571,7 @@ export class ShapeDefinition extends BasicSerializableObject {
 
     /**
      * Clones the shape and colors everything in the given color
-     * @param {enumColors} color
+     * @param {Color} color
      */
     cloneAndPaintWith(color) {
         const newLayers = this.internalCloneLayers();
@@ -608,7 +598,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 const item = quadrants[quadrantIndex];
                 if (item) {
-                    item.color = enumInvertedColors[item.color];
+                    item.color = colorInvertedMap[item.color];
                 }
             }
         }
@@ -617,7 +607,7 @@ export class ShapeDefinition extends BasicSerializableObject {
 
     /**
      * Clones the shape and colors everything in the given colors
-     * @param {[enumColors, enumColors, enumColors, enumColors]} colors
+     * @param {[Color, Color, Color, Color]} colors
      */
     cloneAndPaintWith4Colors(colors) {
         const newLayers = this.internalCloneLayers();

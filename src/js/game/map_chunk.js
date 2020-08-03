@@ -4,7 +4,6 @@ import { createLogger } from "../core/logging";
 import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
-import { enumColors } from "./colors";
 import { Entity } from "./entity";
 import { ColorItem } from "./items/color_item";
 import { ShapeItem } from "./items/shape_item";
@@ -12,6 +11,8 @@ import { enumSubShape } from "./shape_definition";
 import { RandomNumberGenerator } from "../core/rng";
 
 const logger = createLogger("map_chunk");
+
+/** @typedef {import("./colors").Color} Color **/
 
 export class MapChunk {
     /**
@@ -139,9 +140,10 @@ export class MapChunk {
      */
     internalGenerateColorPatch(rng, colorPatchSize, distanceToOriginInChunks) {
         // First, determine available colors
-        let availableColors = [enumColors.red, enumColors.green];
+        /** @type {Color[]} */
+        const availableColors = ["red", "green"];
         if (distanceToOriginInChunks > 2) {
-            availableColors.push(enumColors.blue);
+            availableColors.push("blue");
         }
         this.internalGeneratePatch(rng, colorPatchSize, new ColorItem(rng.choice(availableColors)));
     }
@@ -268,7 +270,7 @@ export class MapChunk {
      */
     generatePredefined(rng) {
         if (this.x === 0 && this.y === 0) {
-            this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.red), 7, 7);
+            this.internalGeneratePatch(rng, 2, new ColorItem("red"), 7, 7);
             return true;
         }
         if (this.x === -1 && this.y === 0) {
@@ -283,7 +285,7 @@ export class MapChunk {
         }
 
         if (this.x === -1 && this.y === -1) {
-            this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.green));
+            this.internalGeneratePatch(rng, 2, new ColorItem("green"));
             return true;
         }
 

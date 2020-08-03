@@ -3,8 +3,13 @@ import { smoothenDpi } from "../../core/dpi_manager";
 import { DrawParameters } from "../../core/draw_parameters";
 import { types } from "../../savegame/serialization";
 import { BaseItem, enumItemType } from "../base_item";
-import { enumColors, enumColorsToHexCode } from "../colors";
+import { colors, colorHexColorMap } from "../colors";
 import { THEME } from "../theme";
+
+/**
+ * @typedef {import("../colors").Color} Color
+ * @typedef {import("../colors").HexColor} HexColor
+ */
 
 export class ColorItem extends BaseItem {
     static getId() {
@@ -12,7 +17,7 @@ export class ColorItem extends BaseItem {
     }
 
     static getSchema() {
-        return types.enum(enumColors);
+        return types.enum(colors);
     }
 
     serialize() {
@@ -28,7 +33,7 @@ export class ColorItem extends BaseItem {
     }
 
     /**
-     * @param {enumColors} color
+     * @param {Color} color
      */
     constructor(color) {
         super();
@@ -36,6 +41,9 @@ export class ColorItem extends BaseItem {
         this.bufferGenerator = null;
     }
 
+    /**
+     * @returns {HexColor}
+     */
     getBackgroundColorAsResource() {
         return THEME.map.resources[this.color];
     }
@@ -76,7 +84,7 @@ export class ColorItem extends BaseItem {
         context.translate((w * dpi) / 2, (h * dpi) / 2);
         context.scale((dpi * w) / 12, (dpi * h) / 12);
 
-        context.fillStyle = enumColorsToHexCode[this.color];
+        context.fillStyle = colorHexColorMap[this.color];
         context.strokeStyle = THEME.items.outline;
         context.lineWidth = 2 * THEME.items.outlineWidth;
         context.beginCircle(2, -1, 3);

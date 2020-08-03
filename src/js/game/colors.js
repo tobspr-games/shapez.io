@@ -1,202 +1,213 @@
-/** @enum {string} */
-export const enumColors = {
-    red: "red",
-    green: "green",
-    blue: "blue",
+/** @typedef {"red" | "green" | "blue" | "yellow" | "purple" | "cyan" | "white" | "uncolored" | "black"} Color **/
+/** @typedef {"r" | "g" | "b" | "y" | "p" | "c" | "w" | "u" | "0"} ShortColor **/
+/** @typedef {"#ff666a" | "#78ff66" | "#66a7ff" | "#fcf52a" | "#dd66ff" | "#00fcff" | "#ffffff" | "#aaaaaa" | "#31383a" } HexColor
 
-    yellow: "yellow",
-    purple: "purple",
-    cyan: "cyan",
+ /** @type {Color[]} **/
+export const colors = ["red", "green", "blue", "yellow", "purple", "cyan", "white", "uncolored", "black"];
 
-    white: "white",
+/** @type {ShortColor[]} **/
+export const shortColors = ["r", "g", "b", "y", "p", "c", "w", "u", "0"];
+
+/** @type {Record<Color, ShortColor>} **/
+export const colorShortColorMap = {
+    red: "r",
+    green: "g",
+    blue: "b",
+    yellow: "y",
+    purple: "p",
+    cyan: "c",
+    white: "w",
+    uncolored: "u",
+    black: "0",
+};
+
+/** @type {Record<ShortColor, Color>} **/
+export const shortColorColorMap = {
+    "r": "red",
+    "g": "green",
+    "b": "blue",
+    "y": "yellow",
+    "p": "purple",
+    "c": "cyan",
+    "w": "white",
+    "u": "uncolored",
+    "0": "black",
+};
+
+/** @type {Record<Color, HexColor>} **/
+export const colorHexColorMap = {
+    red: "#ff666a",
+    green: "#78ff66",
+    blue: "#66a7ff",
+    yellow: "#fcf52a",
+    purple: "#dd66ff",
+    cyan: "#00fcff",
+    white: "#ffffff",
+    uncolored: "#aaaaaa",
+    black: "#31383a",
+};
+
+/** @type {Record<Color, Color>} **/
+export const colorInvertedMap = {
+    red: "cyan",
+    green: "purple",
+    blue: "yellow",
+    yellow: "blue",
+    purple: "green",
+    cyan: "red",
+    white: "black",
     uncolored: "uncolored",
-
-    black: "black",
+    black: "white",
 };
 
-/** @enum {string} */
-export const enumColorToShortcode = {
-    [enumColors.red]: "r",
-    [enumColors.green]: "g",
-    [enumColors.blue]: "b",
-
-    [enumColors.yellow]: "y",
-    [enumColors.purple]: "p",
-    [enumColors.cyan]: "c",
-
-    [enumColors.white]: "w",
-    [enumColors.uncolored]: "u",
-
-    [enumColors.black]: "0",
-};
-
-/** @enum {enumColors} */
-export const enumShortcodeToColor = {};
-for (const key in enumColorToShortcode) {
-    enumShortcodeToColor[enumColorToShortcode[key]] = key;
-}
-
-/** @enum {string} */
-export const enumColorsToHexCode = {
-    [enumColors.red]: "#ff666a",
-    [enumColors.green]: "#78ff66",
-    [enumColors.blue]: "#66a7ff",
-
-    // red + green
-    [enumColors.yellow]: "#fcf52a",
-
-    // red + blue
-    [enumColors.purple]: "#dd66ff",
-
-    // blue + green
-    [enumColors.cyan]: "#00fcff",
-
-    // blue + green + red
-    [enumColors.white]: "#ffffff",
-
-    [enumColors.black]: "#31383a",
-
-    [enumColors.uncolored]: "#aaaaaa",
-};
-
-/** @enum {enumColors} */
-export const enumInvertedColors = {
-    [enumColors.red]: enumColors.cyan,
-    [enumColors.green]: enumColors.purple,
-    [enumColors.blue]: enumColors.yellow,
-
-    [enumColors.yellow]: enumColors.blue,
-    [enumColors.purple]: enumColors.green,
-    [enumColors.cyan]: enumColors.red,
-
-    [enumColors.white]: enumColors.black,
-    [enumColors.black]: enumColors.white,
-
-    [enumColors.uncolored]: enumColors.uncolored,
-};
-
-const c = enumColors;
-/** @enum {Object.<string, string>} */
-export const enumColorMixingResults = {
+/** @type {Record<Color, Record<Color, Color>>} **/
+export const colorMixingMap = {
     // 255, 0, 0
-    [c.red]: {
-        [c.green]: c.yellow,
-        [c.blue]: c.purple,
-
-        [c.yellow]: c.yellow,
-        [c.purple]: c.purple,
-        [c.cyan]: c.white,
-
-        [c.white]: c.white,
-        [c.black]: c.red,
+    red: {
+        red: "red",
+        green: "yellow",
+        blue: "purple",
+        yellow: "yellow",
+        purple: "purple",
+        cyan: "white",
+        white: "white",
+        uncolored: "red",
+        black: "red",
     },
 
     // 0, 255, 0
-    [c.green]: {
-        [c.blue]: c.cyan,
-
-        [c.yellow]: c.yellow,
-        [c.purple]: c.white,
-        [c.cyan]: c.cyan,
-
-        [c.white]: c.white,
-        [c.black]: c.green,
+    green: {
+        red: "yellow",
+        blue: "cyan",
+        green: "green",
+        yellow: "yellow",
+        purple: "white",
+        cyan: "cyan",
+        white: "white",
+        uncolored: "green",
+        black: "green",
     },
 
     // 0, 255, 0
-    [c.blue]: {
-        [c.yellow]: c.white,
-        [c.purple]: c.purple,
-        [c.cyan]: c.cyan,
-
-        [c.white]: c.white,
-        [c.black]: c.blue,
+    blue: {
+        red: "purple",
+        green: "cyan",
+        blue: "blue",
+        yellow: "white",
+        purple: "purple",
+        cyan: "cyan",
+        white: "white",
+        uncolored: "blue",
+        black: "blue",
     },
 
     // 255, 255, 0
-    [c.yellow]: {
-        [c.purple]: c.white,
-        [c.cyan]: c.white,
-        [c.black]: c.yellow,
+    yellow: {
+        red: "yellow",
+        green: "yellow",
+        blue: "white",
+        purple: "white",
+        cyan: "white",
+        yellow: "yellow",
+        white: "white",
+        uncolored: "yellow",
+        black: "yellow",
     },
 
     // 255, 0, 255
-    [c.purple]: {
-        [c.cyan]: c.white,
-        [c.black]: c.purple,
+    purple: {
+        red: "purple",
+        green: "white",
+        blue: "purple",
+        cyan: "white",
+        yellow: "white",
+        purple: "purple",
+        white: "white",
+        uncolored: "purple",
+        black: "purple",
     },
 
     // 0, 255, 255
-    [c.cyan]: {},
+    cyan: {
+        red: "white",
+        green: "cyan",
+        blue: "cyan",
+        cyan: "cyan",
+        yellow: "white",
+        purple: "white",
+        white: "white",
+        uncolored: "cyan",
+        black: "cyan",
+    },
 
     //// SPECIAL COLORS
 
     // 255, 255, 255
-    [c.white]: {
-        // auto
+    white: {
+        red: "white",
+        green: "white",
+        blue: "white",
+        cyan: "white",
+        yellow: "white",
+        purple: "white",
+        white: "white",
+        uncolored: "white",
+        black: "uncolored",
     },
 
     // X, X, X
-    [c.uncolored]: {
-        // auto
+    uncolored: {
+        red: "red",
+        green: "green",
+        blue: "blue",
+        cyan: "cyan",
+        yellow: "yellow",
+        purple: "purple",
+        white: "white",
+        uncolored: "uncolored",
+        black: "black",
     },
 
-    [c.black]: {
-        // auto
-        [c.white]: c.uncolored,
-        [c.cyan]: c.cyan,
-        [c.uncolored]: c.uncolored,
+    black: {
+        red: "red",
+        green: "green",
+        blue: "blue",
+        cyan: "cyan",
+        yellow: "yellow",
+        purple: "purple",
+        white: "uncolored",
+        uncolored: "black",
+        black: "black",
     },
 };
 
-// Create same color lookups
-for (const color in enumColors) {
-    enumColorMixingResults[color][color] = color;
-
-    // Anything with white is white again, except for black which creates gray
-    if (color !== enumColors.black) {
-        enumColorMixingResults[color][c.white] = c.white;
-    }
-
-    // Anything with uncolored is the same color
-    enumColorMixingResults[color][c.uncolored] = color;
-}
-
-// Create reverse lookup and check color mixing lookups
-for (const colorA in enumColorMixingResults) {
-    for (const colorB in enumColorMixingResults[colorA]) {
-        const resultColor = enumColorMixingResults[colorA][colorB];
-        if (!enumColorMixingResults[colorB]) {
-            enumColorMixingResults[colorB] = {
-                [colorA]: resultColor,
-            };
-        } else {
-            const existingResult = enumColorMixingResults[colorB][colorA];
-            if (existingResult && existingResult !== resultColor) {
-                assertAlways(
-                    false,
-                    "invalid color mixing configuration, " +
-                        colorA +
-                        " + " +
-                        colorB +
-                        " is " +
-                        resultColor +
-                        " but " +
-                        colorB +
-                        " + " +
-                        colorA +
-                        " is " +
-                        existingResult
-                );
-            }
-            enumColorMixingResults[colorB][colorA] = resultColor;
+for (const colorA in colorMixingMap) {
+    for (const colorB in colorMixingMap[colorA]) {
+        const resultColor = colorMixingMap[colorA][colorB];
+        const existingResult = colorMixingMap[colorB][colorA];
+        if (existingResult && existingResult !== resultColor) {
+            assertAlways(
+                false,
+                "invalid color mixing configuration, " +
+                    colorA +
+                    " + " +
+                    colorB +
+                    " is " +
+                    resultColor +
+                    " but " +
+                    colorB +
+                    " + " +
+                    colorA +
+                    " is " +
+                    existingResult
+            );
         }
     }
 }
 
-for (const colorA in enumColorMixingResults) {
-    for (const colorB in enumColorMixingResults) {
-        if (!enumColorMixingResults[colorA][colorB]) {
+for (const colorA in colorMixingMap) {
+    for (const colorB in colorMixingMap) {
+        if (!colorMixingMap[colorA][colorB]) {
             assertAlways(false, "Color mixing of", colorA, "with", colorB, "is not defined");
         }
     }
