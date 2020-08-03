@@ -1,6 +1,21 @@
 import { Component } from "../component";
-import { Vector, enumDirection } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
+
+/**
+ * @typedef {import("../../core/vector").Direction} Direction
+ *
+ * @typedef {{
+ *   pos: Vector,
+ *   type: enumPinSlotType,
+ *   direction: Direction
+ * }} WirePinSlotDefinition
+ *
+ * @typedef {{
+ *   pos: Vector,
+ *   type: enumPinSlotType,
+ *   direction: Direction
+ * }} WirePinSlot */
 
 /** @enum {string} */
 export const enumPinSlotType = {
@@ -9,18 +24,6 @@ export const enumPinSlotType = {
     positiveEnergyAcceptor: "positiveEnergyAcceptor",
     negativeEnergyAcceptor: "negativeEnergyAcceptor",
 };
-
-/** @typedef {{
- *   pos: Vector,
- *   type: enumPinSlotType,
- *   direction: enumDirection
- * }} WirePinSlotDefinition */
-
-/** @typedef {{
- *   pos: Vector,
- *   type: enumPinSlotType,
- *   direction: enumDirection
- * }} WirePinSlot */
 
 export class WiredPinsComponent extends Component {
     static getId() {

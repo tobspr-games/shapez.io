@@ -1,5 +1,11 @@
 import { formatItemsPerSecond } from "../../core/utils";
-import { enumAngleToDirection, enumDirection, Vector } from "../../core/vector";
+import {
+    angleDirectionMap,
+    clockwiseAngleMap,
+    counterClockwiseAngleMap,
+    inverseAngleMap,
+    Vector,
+} from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
 import { T } from "../../translations";
 import { BeltComponent } from "../components/belt";
@@ -10,7 +16,13 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot, enumLayer } from "../root";
 
-export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
+/**
+ * @typedef {import("../../core/vector").Angle} Angle
+ * @typedef {import("../../core/vector").Direction} Direction
+ */
+
+/** @type {Direction[]} **/
+export const arrayBeltVariantToRotation = ["top", "left", "right"];
 
 export class MetaBeltBaseBuilding extends MetaBuilding {
     getHasDirectionLockAvailable() {
@@ -50,7 +62,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
     setupEntityComponents(entity) {
         entity.addComponent(
             new BeltComponent({
-                direction: enumDirection.top, // updated later
+                direction: "top", // updated later
             })
         );
         // Make this entity replaceabel
@@ -61,7 +73,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         layer: this.getLayer(),
                     },
                 ],
@@ -74,7 +86,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top, // updated later
+                        direction: "top", // updated later
                         layer: this.getLayer(),
                     },
                 ],
@@ -98,16 +110,16 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.tile
-     * @param {number} param0.rotation
+     * @param {Angle} param0.rotation
      * @param {string} param0.variant
      * @param {string} param0.layer
-     * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
+     * @return {{ rotation: Angle, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
-        const topDirection = enumAngleToDirection[rotation];
-        const rightDirection = enumAngleToDirection[(rotation + 90) % 360];
-        const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];
-        const leftDirection = enumAngleToDirection[(rotation + 270) % 360];
+        const topDirection = angleDirectionMap[rotation];
+        const rightDirection = angleDirectionMap[clockwiseAngleMap[rotation]];
+        const bottomDirection = angleDirectionMap[inverseAngleMap[rotation]];
+        const leftDirection = angleDirectionMap[counterClockwiseAngleMap[rotation]];
 
         const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile, layer);
 
@@ -152,7 +164,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
             if (hasRightEjector && !hasLeftEjector) {
                 return {
-                    rotation: (rotation + 270) % 360,
+                    rotation: counterClockwiseAngleMap[rotation],
                     rotationVariant: 2,
                 };
             }
@@ -161,7 +173,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             // do a curve from the right to the top
             if (hasLeftEjector && !hasRightEjector) {
                 return {
-                    rotation: (rotation + 90) % 360,
+                    rotation: clockwiseAngleMap[rotation],
                     rotationVariant: 1,
                 };
             }

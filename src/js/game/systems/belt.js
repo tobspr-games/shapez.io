@@ -5,7 +5,7 @@ import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
 import { AtlasSprite } from "../../core/sprites";
 import { fastArrayDeleteValue } from "../../core/utils";
-import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
+import { directionVectorMap, invertedDirectionMap, Vector } from "../../core/vector";
 import { BeltPath } from "../belt_path";
 import { arrayBeltVariantToRotation, MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { BeltComponent } from "../components/belt";
@@ -22,46 +22,46 @@ export const BELT_ANIM_COUNT = 28;
 const logger = createLogger("belt");
 
 /**
+ * @typedef {import("../../core/vector").Direction} Direction
+ */
+
+/**
  * Manages all belts
  */
 export class BeltSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [BeltComponent]);
         /**
-         * @type {Object.<enumDirection, Array<AtlasSprite>>}
+         * @type {Object.<Direction, Array<AtlasSprite>>}
          */
         this.beltSprites = {
-            [enumDirection.top]: Loader.getSprite("sprites/belt/forward_0.png"),
-            [enumDirection.left]: Loader.getSprite("sprites/belt/left_0.png"),
-            [enumDirection.right]: Loader.getSprite("sprites/belt/right_0.png"),
+            top: Loader.getSprite("sprites/belt/forward_0.png"),
+            left: Loader.getSprite("sprites/belt/left_0.png"),
+            right: Loader.getSprite("sprites/belt/right_0.png"),
         };
 
         /**
-         * @type {Object.<enumDirection, Array<AtlasSprite>>}
+         * @type {Object.<Direction, Array<AtlasSprite>>}
          */
         this.wireSprites = {
-            [enumDirection.top]: Loader.getSprite("sprites/buildings/wire_top.png"),
-            [enumDirection.left]: Loader.getSprite("sprites/buildings/wire_left.png"),
-            [enumDirection.right]: Loader.getSprite("sprites/buildings/wire_right.png"),
+            top: Loader.getSprite("sprites/buildings/wire_top.png"),
+            left: Loader.getSprite("sprites/buildings/wire_left.png"),
+            right: Loader.getSprite("sprites/buildings/wire_right.png"),
         };
 
         /**
-         * @type {Object.<enumDirection, Array<AtlasSprite>>}
+         * @type {Object.<Direction, Array<AtlasSprite>>}
          */
         this.beltAnimations = {
-            [enumDirection.top]: [],
-            [enumDirection.left]: [],
-            [enumDirection.right]: [],
+            top: [],
+            left: [],
+            right: [],
         };
 
         for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
-            this.beltAnimations[enumDirection.top].push(
-                Loader.getSprite("sprites/belt/forward_" + i + ".png")
-            );
-            this.beltAnimations[enumDirection.left].push(Loader.getSprite("sprites/belt/left_" + i + ".png"));
-            this.beltAnimations[enumDirection.right].push(
-                Loader.getSprite("sprites/belt/right_" + i + ".png")
-            );
+            this.beltAnimations.top.push(Loader.getSprite(`sprites/belt/forward_${i}.png`));
+            this.beltAnimations.left.push(Loader.getSprite(`sprites/belt/left_${i}.png`));
+            this.beltAnimations.right.push(Loader.getSprite(`sprites/belt/right_${i}.png`));
         }
 
         this.root.signals.entityDestroyed.add(this.onEntityDestroyed, this);
@@ -351,7 +351,7 @@ export class BeltSystem extends GameSystemWithFilter {
         const beltComp = entity.components.Belt;
 
         const followUpDirection = staticComp.localDirectionToWorld(beltComp.direction);
-        const followUpVector = enumDirectionToVector[followUpDirection];
+        const followUpVector = directionVectorMap[followUpDirection];
 
         const followUpTile = staticComp.origin.add(followUpVector);
         const followUpEntity = this.root.map.getLayerContentXY(followUpTile.x, followUpTile.y, entity.layer);
@@ -375,7 +375,7 @@ export class BeltSystem extends GameSystemWithFilter {
 
                     for (let k = 0; k < slot.directions.length; ++k) {
                         const localDirection = followUpStatic.localDirectionToWorld(slot.directions[k]);
-                        if (enumInvertedDirections[localDirection] === followUpDirection) {
+                        if (invertedDirectionMap[localDirection] === followUpDirection) {
                             return followUpEntity;
                         }
                     }
@@ -394,8 +394,8 @@ export class BeltSystem extends GameSystemWithFilter {
     findSupplyingEntity(entity) {
         const staticComp = entity.components.StaticMapEntity;
 
-        const supplyDirection = staticComp.localDirectionToWorld(enumDirection.bottom);
-        const supplyVector = enumDirectionToVector[supplyDirection];
+        const supplyDirection = staticComp.localDirectionToWorld("bottom");
+        const supplyVector = directionVectorMap[supplyDirection];
 
         const supplyTile = staticComp.origin.add(supplyVector);
         const supplyEntity = this.root.map.getLayerContentXY(supplyTile.x, supplyTile.y, entity.layer);
@@ -417,7 +417,7 @@ export class BeltSystem extends GameSystemWithFilter {
                         continue;
                     }
                     const localDirection = supplyStatic.localDirectionToWorld(slot.direction);
-                    if (enumInvertedDirections[localDirection] === supplyDirection) {
+                    if (invertedDirectionMap[localDirection] === supplyDirection) {
                         return supplyEntity;
                     }
                 }

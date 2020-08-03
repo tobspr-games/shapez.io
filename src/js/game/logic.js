@@ -1,6 +1,6 @@
 import { createLogger } from "../core/logging";
 import { round2Digits } from "../core/utils";
-import { enumDirection, enumDirectionToVector, Vector } from "../core/vector";
+import { directionVectorMap, Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
 import { enumLayer, GameRoot } from "./root";
@@ -9,26 +9,25 @@ import { STOP_PROPAGATION } from "../core/signal";
 const logger = createLogger("ingame/logic");
 
 /**
- * Typing helper
+ * @typedef {import("./components/item_ejector").ItemEjectorSlot} ItemEjectorSlot
+ * @typedef {import("./components/item_acceptor").ItemAcceptorSlot} ItemAcceptorSlot
+ * @typedef {import("../core/vector").Angle} Angle
+ * @typedef {import("../core/vector").Direction} Direction
+ *
  * @typedef {Array<{
  *  entity: Entity,
- *  slot: import("./components/item_ejector").ItemEjectorSlot,
+ *  slot: ItemEjectorSlot,
  *  fromTile: Vector,
- *  toDirection: enumDirection
+ *  toDirection: Direction
  * }>} EjectorsAffectingTile
- */
-
-/**
- * Typing helper
+ *
  * @typedef {Array<{
  *  entity: Entity,
- *  slot: import("./components/item_acceptor").ItemAcceptorSlot,
+ *  slot: ItemAcceptorSlot,
  *  toTile: Vector,
- *  fromDirection: enumDirection
+ *  fromDirection: Direction
  * }>} AcceptorsAffectingTile
- */
-
-/**
+ *
  * @typedef {{
  *     acceptors: AcceptorsAffectingTile,
  *     ejectors: EjectorsAffectingTile
@@ -82,8 +81,8 @@ export class GameLogic {
      * Attempts to place the given building
      * @param {object} param0
      * @param {Vector} param0.origin
-     * @param {number} param0.rotation
-     * @param {number} param0.originalRotation
+     * @param {Angle} param0.rotation
+     * @param {Angle} param0.originalRotation
      * @param {number} param0.rotationVariant
      * @param {string} param0.variant
      * @param {MetaBuilding} param0.building
@@ -183,9 +182,9 @@ export class GameLogic {
      */
     getEjectorsAndAcceptorsAtTile(tile, layer) {
         /** @type {EjectorsAffectingTile} */
-        let ejectors = [];
+        const ejectors = [];
         /** @type {AcceptorsAffectingTile} */
-        let acceptors = [];
+        const acceptors = [];
 
         // Well .. please ignore this code! :D
         for (let dx = -1; dx <= 1; ++dx) {
@@ -208,7 +207,7 @@ export class GameLogic {
                             }
                             const wsTile = staticComp.localTileToWorld(slot.pos);
                             const wsDirection = staticComp.localDirectionToWorld(slot.direction);
-                            const targetTile = wsTile.add(enumDirectionToVector[wsDirection]);
+                            const targetTile = wsTile.add(directionVectorMap[wsDirection]);
                             if (targetTile.equals(tile)) {
                                 ejectors.push({
                                     entity,
@@ -233,7 +232,7 @@ export class GameLogic {
                                 const direction = slot.directions[k];
                                 const wsDirection = staticComp.localDirectionToWorld(direction);
 
-                                const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
+                                const sourceTile = wsTile.add(directionVectorMap[wsDirection]);
                                 if (sourceTile.equals(tile)) {
                                     acceptors.push({
                                         entity,

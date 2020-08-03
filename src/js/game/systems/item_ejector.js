@@ -2,7 +2,7 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
-import { enumDirectionToVector, Vector } from "../../core/vector";
+import { directionRotationMap, directionVectorMap } from "../../core/vector";
 import { BaseItem, enumItemType, enumItemTypeToLayer } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
@@ -133,7 +133,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             // Figure out where and into which direction we eject items
             const ejectSlotWsTile = staticComp.localTileToWorld(ejectorSlot.pos);
             const ejectSlotWsDirection = staticComp.localDirectionToWorld(ejectorSlot.direction);
-            const ejectSlotWsDirectionVector = enumDirectionToVector[ejectSlotWsDirection];
+            const ejectSlotWsDirectionVector = directionVectorMap[ejectSlotWsDirection];
             const ejectSlotTargetWsTile = ejectSlotWsTile.add(ejectSlotWsDirectionVector);
 
             // Try to find the given acceptor component to take the item
@@ -372,11 +372,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
 
             const realPosition = slot.pos.rotateFastMultipleOf90(staticComp.rotation);
-            const realDirection = Vector.transformDirectionFromMultipleOf90(
-                slot.direction,
-                staticComp.rotation
-            );
-            const realDirectionVector = enumDirectionToVector[realDirection];
+            const realDirection = directionRotationMap[slot.direction][staticComp.rotation];
+            const realDirectionVector = directionVectorMap[realDirection];
 
             const tileX =
                 staticComp.origin.x + realPosition.x + 0.5 + realDirectionVector.x * 0.5 * slot.progress;

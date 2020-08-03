@@ -3,7 +3,6 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { globalConfig } from "../../core/config";
 import { MapChunkView } from "../map_chunk_view";
 import { Loader } from "../../core/loader";
-import { enumDirection } from "../../core/vector";
 import { enumLayer } from "../root";
 
 export class StaticMapEntitySystem extends GameSystem {
@@ -11,9 +10,9 @@ export class StaticMapEntitySystem extends GameSystem {
         super(root);
 
         this.beltOverviewSprites = {
-            [enumDirection.top]: Loader.getSprite("sprites/map_overview/belt_forward.png"),
-            [enumDirection.right]: Loader.getSprite("sprites/map_overview/belt_right.png"),
-            [enumDirection.left]: Loader.getSprite("sprites/map_overview/belt_left.png"),
+            top: Loader.getSprite("sprites/map_overview/belt_forward.png"),
+            right: Loader.getSprite("sprites/map_overview/belt_right.png"),
+            left: Loader.getSprite("sprites/map_overview/belt_left.png"),
         };
     }
 

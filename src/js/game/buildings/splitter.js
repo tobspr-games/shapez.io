@@ -1,5 +1,5 @@
 import { globalConfig } from "../../core/config";
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
@@ -102,22 +102,22 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                 ]);
 
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                    { pos: new Vector(0, 0), direction: "top" },
+                    { pos: new Vector(1, 0), direction: "top" },
                 ]);
 
                 entity.components.ItemAcceptor.beltUnderlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
-                    { pos: new Vector(1, 0), direction: enumDirection.top, layer: enumLayer.regular },
+                    { pos: new Vector(0, 0), direction: "top", layer: enumLayer.regular },
+                    { pos: new Vector(1, 0), direction: "top", layer: enumLayer.regular },
                 ];
 
                 break;
@@ -127,24 +127,18 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                     {
                         pos: new Vector(0, 0),
-                        directions: [
-                            variant === enumSplitterVariants.compactInverse
-                                ? enumDirection.left
-                                : enumDirection.right,
-                        ],
+                        directions: [variant === enumSplitterVariants.compactInverse ? "left" : "right"],
                     },
                 ]);
 
-                entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                ]);
+                entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: "top" }]);
 
                 entity.components.ItemAcceptor.beltUnderlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
+                    { pos: new Vector(0, 0), direction: "top", layer: enumLayer.regular },
                 ];
 
                 break;
