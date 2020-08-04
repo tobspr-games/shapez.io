@@ -29,8 +29,8 @@
 # area ділянка
 # hub центр
 # range дальність
-# storage: Сховище
-# shape
+# storage сховище
+# shape форма
 
 steamPage:
     # This is the short text appearing on the steam page
@@ -159,7 +159,7 @@ mainMenu:
     importSavegame: Імпортувати
     openSourceHint: Ця гра з відкритим вихідним кодом!
     discordLink: Офіційний Discord сервер
-    helpTranslate: Допоможіть з прекладом!
+    helpTranslate: Допоможіть з перекладом!
     madeBy: Зробив <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
