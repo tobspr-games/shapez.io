@@ -5,6 +5,7 @@ import { AtlasSprite } from "../../core/sprites";
 import { enumDirection, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { Component } from "../component";
+import { getBuildingDataFromCode } from "../building_codes";
 
 export class StaticMapEntityComponent extends Component {
     static getId() {
@@ -17,10 +18,34 @@ export class StaticMapEntityComponent extends Component {
             tileSize: types.tileVector,
             rotation: types.float,
             originalRotation: types.float,
-            spriteKey: types.nullable(types.string),
-            blueprintSpriteKey: types.string,
-            silhouetteColor: types.nullable(types.string),
+
+            // See building_codes.js
+            code: types.uint,
         };
+    }
+
+    /**
+     * Returns the sprite
+     * @returns {AtlasSprite}
+     */
+    getSprite() {
+        return getBuildingDataFromCode(this.code).sprite;
+    }
+
+    /**
+     * Returns the blueprint sprite
+     * @returns {AtlasSprite}
+     */
+    getBlueprintSprite() {
+        return getBuildingDataFromCode(this.code).blueprintSprite;
+    }
+
+    /**
+     * Returns the silhouette color
+     * @returns {string}
+     */
+    getSilhouetteColor() {
+        return getBuildingDataFromCode(this.code).silhouetteColor;
     }
 
     duplicateWithoutContents() {
@@ -29,9 +54,7 @@ export class StaticMapEntityComponent extends Component {
             tileSize: this.tileSize.copy(),
             rotation: this.rotation,
             originalRotation: this.originalRotation,
-            spriteKey: this.spriteKey,
-            silhouetteColor: this.silhouetteColor,
-            blueprintSpriteKey: this.blueprintSpriteKey,
+            code: this.code,
         });
     }
 
@@ -42,18 +65,14 @@ export class StaticMapEntityComponent extends Component {
      * @param {Vector=} param0.tileSize Size of the entity in tiles
      * @param {number=} param0.rotation Rotation in degrees. Must be multiple of 90
      * @param {number=} param0.originalRotation Original Rotation in degrees. Must be multiple of 90
-     * @param {string=} param0.spriteKey Optional sprite
-     * @param {string} param0.blueprintSpriteKey Blueprint sprite, required
-     * @param {string=} param0.silhouetteColor Optional silhouette color override
+     * @param {number=} param0.code Building code
      */
     constructor({
         origin = new Vector(),
         tileSize = new Vector(1, 1),
         rotation = 0,
         originalRotation = 0,
-        spriteKey = null,
-        silhouetteColor = null,
-        blueprintSpriteKey = null,
+        code = 0,
     }) {
         super();
         assert(
@@ -63,11 +82,9 @@ export class StaticMapEntityComponent extends Component {
 
         this.origin = origin;
         this.tileSize = tileSize;
-        this.spriteKey = spriteKey;
         this.rotation = rotation;
+        this.code = code;
         this.originalRotation = originalRotation;
-        this.silhouetteColor = silhouetteColor;
-        this.blueprintSpriteKey = blueprintSpriteKey;
     }
 
     /**

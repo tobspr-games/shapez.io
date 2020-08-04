@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -483,6 +483,9 @@ buildings:
         ccw:
             name: Rotate (CCW)
             description: Rotește formele în inversul sensului acelor de ceasornic la 90 de grade.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -628,8 +631,9 @@ storyRewards:
 settings:
     title: Setări
     categories:
-        game: Joc
-        app: Aplicație
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Dezvoltare
@@ -833,9 +837,9 @@ about:
         Dacă vrei să contribui, verifică <a href="<githublink>"
         target="_blank">shapez.io pe github</a>.<br><br>
 
-        Acest joc nu ar fi fost posibil fără minunata comunitate de pe discord
+        Acest joc nu ar fi fost posibil fără minunata comunitate de pe Discord
         pe lângă jocurile mele - Chiar ar trebui să te alături <a href="<discordlink>"
-        target="_blank">server-ului de discord</a>!<br><br>
+        target="_blank">server-ului de Discord</a>!<br><br>
 
         Coloana sonoră a fost făcută de <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Este uimitor.<br><br>

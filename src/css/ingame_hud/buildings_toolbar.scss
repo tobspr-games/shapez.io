@@ -29,7 +29,6 @@
     .buildings {
         display: grid;
         grid-auto-flow: column;
-        @include S(margin-bottom, 2px);
 
         .building {
             color: $accentColorDark;
@@ -43,7 +42,7 @@
             @include S(width, 35px);
             @include S(height, 40px);
 
-            background: center center / 70% no-repeat;
+            background: center center / 65% no-repeat;
 
             &:not(.unlocked) {
                 @include S(width, 20px);

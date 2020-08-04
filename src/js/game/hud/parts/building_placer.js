@@ -18,6 +18,7 @@ import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { HUDBuildingPlacerLogic } from "./building_placer_logic";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { enumLayer } from "../../root";
+import { getCodeFromBuildingData } from "../../building_codes";
 
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
@@ -84,9 +85,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             label: "lock-direction-indicator",
         });
 
-        // Loader.getSprite("sprites/misc/lock_direction_indicator.png").draw(context, 0, 0, 48, 48);
-        context.fillStyle = THEME.map.directionLock[enumLayer.wires].color;
-        context.strokeStyle = THEME.map.directionLock[enumLayer.wires].color;
+        context.fillStyle = THEME.map.directionLock[layer].color;
+        context.strokeStyle = THEME.map.directionLock[layer].color;
         context.lineWidth = 2;
 
         const padding = 5;
@@ -313,6 +313,11 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         staticComp.rotation = rotation;
         staticComp.tileSize = metaBuilding.getDimensions(this.currentVariant.get());
         metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
+        staticComp.code = getCodeFromBuildingData(
+            this.currentMetaBuilding.get(),
+            this.currentVariant.get(),
+            rotationVariant
+        );
 
         const canBuild = this.root.logic.checkCanPlaceEntity(this.fakeEntity);
 

@@ -471,6 +471,9 @@ buildings:
         ccw:
             name: Rotor (opačný)
             description: Otáčí tvary o 90 stupňů proti směru hodinových ručiček
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -612,8 +615,9 @@ storyRewards:
 settings:
     title: Nastavení
     categories:
-        game: Hra
-        app: Aplikace
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Vývojová verze
@@ -823,9 +827,9 @@ about:
         Pokud se chceš na hře podílet, podívej se na <a href="<githublink>"
         target="_blank">shapez.io na githubu</a>.<br><br>
 
-        Tato hra by nebyla ani možná bez skvělé discord komunity
+        Tato hra by nebyla ani možná bez skvělé Discord komunity
         okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        target="_blank">Discord server</a>!<br><br>
 
         Soundtrack udělal <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Je úžasnej.<br><br>

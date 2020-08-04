@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -499,6 +499,9 @@ buildings:
         ccw:
             name: Rotate (Vastapäivään)
             description: Kääntää muotoja 90 astetta vastapäivään.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -638,8 +641,9 @@ storyRewards:
 settings:
     title: Asetukset
     categories:
-        game: Peli
-        app: Sovellus
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Kehitys
@@ -848,7 +852,7 @@ about:
 
         Jos haluat osallistua, tarkista <a href="<githublink>" target="_blank">shapez.io githubissa</a>.<br><br>
 
-        Tämä peli ei olisi ollut mahdollinen ilman suurta discord yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">discord palvelimelleni</a>!<br><br>
+        Tämä peli ei olisi ollut mahdollinen ilman suurta Discord yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
 
         Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on mahtava.<br><br>
 

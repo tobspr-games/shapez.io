@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -118,7 +118,7 @@ global:
         # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>t <minutes>s
+        hoursAndMinutesShort: <hours>t <minutes>m
 
         xMinutes: <x> minuter
 
@@ -138,15 +138,15 @@ demoBanners:
 
 mainMenu:
     play: Spela
-    changelog: Changelog
+    changelog: Ändringslogg
     importSavegame: Importera
-    openSourceHint: Detta spel är open source!
+    openSourceHint: Detta spelet har öppen kod!
     discordLink: Officiell Discord Server
     helpTranslate: Hjälp till att översätta!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Förlåt, men det är känt att spelet spelar långsamt på din browser! Skaffa den fristående versionen eller ladda ner chrome för den fulla upplevelsen.
+        Förlåt, men det är känt att spelet spelar långsamt på din browser! Skaffa den fristående versionen eller ladda ner Chrome för en bättre upplevelse.
 
     savegameLevel: Nivå <x>
     savegameLevelUnknown: Okänd Nivå
@@ -202,7 +202,7 @@ dialogs:
 
     editKeybinding:
         title: Ändra snabbtangenter
-        desc: Tryck ned tangenten eller musknappen du vill tillsätta, eller escape för att avbryta.
+        desc: Tryck ned tangenten eller musknappen du vill använda, eller escape för att avbryta.
 
     resetKeybindingsConfirmation:
         title: Återställ snabbtangenter
@@ -218,34 +218,34 @@ dialogs:
 
     oneSavegameLimit:
         title: Begränsad mängd sparfiler
-        desc: Du kan bara ha en sparfil åt gången i demoversionen. Var snäll och ta bort det existerande eller skaffa den fristående versionen!
+        desc: Du kan bara ha en sparfil åt gången i demoversionen. Var snäll och ta bort den nuvarande eller skaffa den fristående versionen!
 
     updateSummary:
         title: Ny uppdatering!
         desc: >-
-            Här är ändringarna sen du sist spelade:
+            Här är ändringarna sen du senast spelade:
 
     upgradesIntroduction:
         title: Lås upp Uppgraderingar
         desc: >-
-            Alla former du producerar  kan användas för att låsa upp uppgraderingar - <strong>Förstör inte dina gamla fabriker!</strong>
+            Alla former du producerar kan användas för att låsa upp uppgraderingar - <strong>Förstör inte dina gamla fabriker!</strong>
             Uppgraderingsmenyn finns i det övre högra hörnet på skärmen.
 
     massDeleteConfirm:
         title: Bekräfta borttagning
         desc: >-
-            Du tar nu bort ganska många byggnader (<count> för att vara exakt)! Är du säker på att du vill göra detta?
+            Du tar bort ganska många byggnader (<count> för att vara exakt)! Är du säker på att du vill göra detta?
 
     blueprintsNotUnlocked:
         title: Inte upplåst än
         desc: >-
-            Ritningar är inte än upplåsta! Klara fler nivåer för att låsa upp dem.
+            Nå level 12 för att låsa upp Ritningar.
 
     keybindingsIntroduction:
         title: Användbara tangentbindningar
         desc: >-
             Detta spel använder en stor mängd tangentbindningar som gör det lättare att bygga stora fabriker.
-            Här är några men se till att <strong>kolla in tangentbindningarna</strong>!<br><br>
+            Här är några, men se till att <strong>kolla in tangentbindningarna</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + Dra: Välj en yta att kopiera / radera.<br>
             <code class='keybinding'>SHIFT</code>: Håll ned för att placera flera  av samma byggnad.<br>
             <code class='keybinding'>ALT</code>: Invertera orientationen av placerade rullband.<br>
@@ -253,10 +253,10 @@ dialogs:
     createMarker:
         title: Ny Markör
         desc: Ge den ett meningsfullt namn, du kan också inkludera en <strong>kort kod</strong> av en form (Vilket du kan generera här <a href="https://viewer.shapez.io" target="_blank"></a>)
-        titleEdit: Edit Marker
+        titleEdit: Ändra Markör
 
     markerDemoLimit:
-        desc: Du kan endast skapa två markörer i demoversionen. Skaffa den fristående versionen för ett oändligt antal!
+        desc: Du kan endast ha två markörer i demoversionen. Skaffa den fristående versionen för ett obegränsat antal!
     massCutConfirm:
         title: Bekräfta Klipp
         desc: >-
@@ -267,11 +267,11 @@ dialogs:
         title: Exportera skärmdump
         desc: >-
             Du efterfrågade att exportera din fabrik som en skärmdump.
-            Vänligen notera att detta kan ta ett tag för en stor bas och i vissa fall till och med krascha ditt spel
+            Vänligen notera att detta kan ta ett tag för en stor bas och i vissa fall till och med krascha ditt spel!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Bekräfta Klipp
+        desc: Du har inte råd att placera detta område! Är du säker att du vill klippa det?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -284,10 +284,10 @@ ingame:
         placeMultiple: Placera flera
         reverseOrientation: Vänd orientation
         disableAutoOrientation: Stäng av automatisk orientation
-        toggleHud: Toggle HUD
+        toggleHud: Växla HUD
         placeBuilding: Placera Byggnad
         createMarker: Skapa Markör
-        delete: Förstör
+        delete: Ta bort
         pasteLastBlueprint: Klistra in ritning
         lockBeltDirection: Aktivera rullbandsplanerare
         plannerSwitchSide: Vänd planerarsidan
@@ -295,7 +295,7 @@ ingame:
         copySelection: Kopiera
         clearSelection: Rensa vald
         pipette: Pipett
-        switchLayers: Switch layers
+        switchLayers: Byt lager
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -485,6 +485,9 @@ buildings:
         ccw:
             name: Roterare (CCW)
             description: Roterar former 90 motsols.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -630,8 +633,9 @@ storyRewards:
 settings:
     title: Inställningar
     categories:
-        game: Spelinställningar
-        app: Applikation
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Utveckling
@@ -842,7 +846,7 @@ about:
 
         Spelet hade inte varit möjligt utan den fantastiska discordgemenskapen
         runt mina spel - Du borde gå med i den <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        target="_blank">Discord server</a>!<br><br>
 
         Musiken skapades av <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Han är grym!<br><br>

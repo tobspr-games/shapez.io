@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -499,6 +499,9 @@ buildings:
         ccw:
             name: Obracacz (Przeciwny kierunek)
             description: Obraca kształt przeciwnie do ruchu wskazówek zegara o 90 stopni.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -652,8 +655,9 @@ storyRewards:
 settings:
     title: Ustawienia
     categories:
-        game: Gra
-        app: Aplikacja
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Wersja Rozwojowa

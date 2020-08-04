@@ -1,7 +1,6 @@
 import { Signal } from "./signal";
 
-// @ts-ignore
-import BackgroundAnimationFrameEmitterWorker from "../webworkers/background_animation_frame_emittter.worker";
+import BackgroundAnimationFrameEmitterWorker from "worker-loader?inline=true&fallback=false!../webworkers/background_animation_frame_emittter.worker";
 
 import { createLogger } from "./logging";
 const logger = createLogger("animation_frame");
@@ -14,12 +13,11 @@ export class AnimationFrame {
         this.frameEmitted = new Signal();
         this.bgFrameEmitted = new Signal();
 
-        this.lastTime = null;
-        this.bgLastTime = null;
+        this.lastTime = performance.now();
+        this.bgLastTime = performance.now();
 
         this.boundMethod = this.handleAnimationFrame.bind(this);
 
-        /** @type {Worker} */
         this.backgroundWorker = new BackgroundAnimationFrameEmitterWorker();
         this.backgroundWorker.addEventListener("error", err => {
             logger.error("Error in background fps worker:", err);
@@ -27,22 +25,16 @@ export class AnimationFrame {
         this.backgroundWorker.addEventListener("message", this.handleBackgroundTick.bind(this));
     }
 
-    /**
-     *
-     * @param {MessageEvent} event
-     */
-    handleBackgroundTick(event) {
+    handleBackgroundTick() {
         const time = performance.now();
-        if (!this.bgLastTime) {
-            // First update, first delta is always 16ms
-            this.bgFrameEmitted.dispatch(1000 / 60);
-        } else {
-            let dt = time - this.bgLastTime;
-            if (dt > maxDtMs) {
-                dt = resetDtMs;
-            }
-            this.bgFrameEmitted.dispatch(dt);
+
+        let dt = time - this.bgLastTime;
+
+        if (dt > maxDtMs) {
+            dt = resetDtMs;
         }
+
+        this.bgFrameEmitted.dispatch(dt);
         this.bgLastTime = time;
     }
 
@@ -52,18 +44,15 @@ export class AnimationFrame {
     }
 
     handleAnimationFrame(time) {
-        if (!this.lastTime) {
-            // First update, first delta is always 16ms
-            this.frameEmitted.dispatch(1000 / 60);
-        } else {
-            let dt = time - this.lastTime;
-            if (dt > maxDtMs) {
-                // warn(this, "Clamping", dt, "to", resetDtMs);
-                dt = resetDtMs;
-            }
-            this.frameEmitted.dispatch(dt);
+        let dt = time - this.lastTime;
+
+        if (dt > maxDtMs) {
+            dt = resetDtMs;
         }
+
+        this.frameEmitted.dispatch(dt);
         this.lastTime = time;
+
         window.requestAnimationFrame(this.boundMethod);
     }
 }

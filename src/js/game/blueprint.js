@@ -81,10 +81,6 @@ export class Blueprint {
         for (let i = 0; i < this.entities.length; ++i) {
             const entity = this.entities[i];
             const staticComp = entity.components.StaticMapEntity;
-            if (!staticComp.blueprintSpriteKey) {
-                logger.warn("Blueprint entity without sprite!");
-                return;
-            }
             const newPos = staticComp.origin.add(tile);
 
             const rect = staticComp.getTileSpaceBounds();
@@ -98,7 +94,7 @@ export class Blueprint {
 
             staticComp.drawSpriteOnFullEntityBounds(
                 parameters,
-                Loader.getSprite(staticComp.blueprintSpriteKey),
+                staticComp.getBlueprintSprite(),
                 0,
                 true,
                 newPos

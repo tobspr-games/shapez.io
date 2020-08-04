@@ -37,7 +37,7 @@ export class PreloadState extends GameState {
         return false;
     }
 
-    onEnter(payload) {
+    onEnter() {
         this.htmlElement.classList.add("prefab_LoadingState");
 
         const elementsToRemove = ["#loadingPreload", "#fontPreload"];
@@ -52,9 +52,13 @@ export class PreloadState extends GameState {
         const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);
 
+        /** @type {HTMLElement} */
         this.statusText = this.htmlElement.querySelector(".loadingStatus > .desc");
+        /** @type {HTMLElement} */
         this.statusBar = this.htmlElement.querySelector(".loadingStatus > .bar > .inner");
+        /** @type {HTMLElement} */
         this.statusBarText = this.htmlElement.querySelector(".loadingStatus > .bar > .status");
+
         this.currentStatus = "booting";
         this.currentIndex = 0;
 
@@ -251,12 +255,12 @@ export class PreloadState extends GameState {
                         ${this.currentStatus} failed:<br/>
                         ${text}
                     </div>
-                    
+
                     <div class="supportHelp">
                     Please send me an email with steps to reproduce and what you did before this happened:
                         <br /><a class="email" href="mailto:${email}?subject=App%20does%20not%20launch">${email}</a>
                     </div>
-                        
+
                     <div class="lower">
                         <button class="resetApp styledButton">Reset App</button>
                         <i>Build ${G_BUILD_VERSION} @ ${G_BUILD_COMMIT_HASH}</i>

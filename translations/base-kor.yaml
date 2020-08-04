@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -489,6 +489,9 @@ buildings:
         ccw:
             name: 회전기 (반시계방향)
             description: 도형을 반시계방향으로 90도 회전시킨다.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -630,8 +633,9 @@ storyRewards:
 settings:
     title: 설정
     categories:
-        game: 게임
-        app: 앱
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: 개발

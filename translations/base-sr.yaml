@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 #
@@ -40,7 +40,7 @@ steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io je igra o pravljenju fabrika za automatizaciju stvaranja i spajanja sve složenijih oblika na beskonačno velikoj mapi.
 
-    # This is the text shown above the discord link
+    # This is the text shown above the Discord link
     discordLink: Oficijalni Discord server
     # TODO
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
@@ -521,6 +521,9 @@ buildings:
         ccw:
             name: Obrtač (↺)
             description: Okreće oblike za 90 stepeni u smeru suprotnom od kazaljke na satu.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -662,8 +665,9 @@ storyRewards:
 settings:
     title: Podešavanja
     categories:
-        game: Igra
-        app: Aplikacija
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Razvoj
@@ -872,7 +876,7 @@ about:
 
         Ako želite da doprinesete razvoju, bacite pogled na <a href="<githublink>" target="_blank">shapez.io github</a>.<br><br>
 
-        Bez odlične discord zajednice ova igra, kao ni druge, ne bi postojala - Pridružite se  <a href="<discordlink>" target="_blank">discord serveru</a>!<br><br>
+        Bez odlične Discord zajednice ova igra, kao ni druge, ne bi postojala - Pridružite se  <a href="<discordlink>" target="_blank">Discord serveru</a>!<br><br>
 
         <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> je komponovao muziku za igru - On je super.<br><br>
 

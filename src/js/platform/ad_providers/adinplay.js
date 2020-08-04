@@ -102,7 +102,10 @@ export class AdinplayAdProvider extends AdProviderInterface {
 
         // Add the player
         const videoElement = this.adContainerMainElement.querySelector(".videoInner");
-        this.adContainerMainElement.querySelector(".adInner").style.maxWidth = w + "px";
+        /** @type {HTMLElement} */
+        const adInnerElement = this.adContainerMainElement.querySelector(".adInner");
+
+        adInnerElement.style.maxWidth = w + "px";
 
         const self = this;
         window.aiptag.cmd.player.push(function () {

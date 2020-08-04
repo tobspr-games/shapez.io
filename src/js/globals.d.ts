@@ -36,11 +36,6 @@ declare interface CanvasRenderingContext2D {
     webkitImageSmoothingEnabled: boolean;
 }
 
-declare interface HTMLCanvasElement {
-    opaque: boolean;
-    webkitOpaque: boolean;
-}
-
 // Just for compatibility with the shared code
 declare interface Logger {
     log(...args);
@@ -127,13 +122,6 @@ declare interface NodeRequire {
     context(src: string, flag: boolean, regexp: RegExp): WebpackContext;
 }
 
-// HTML Element
-declare interface Element {
-    style: any;
-    innerText: string;
-    innerHTML: string;
-}
-
 declare interface Object {
     entries(obj: object): Array<[string, any]>;
 }
@@ -201,4 +189,12 @@ declare interface TypedSignal<T extends Array<any>> {
     dispatch(...args: T): /* STOP_PROPAGATION */ string | void;
 
     removeAll();
+}
+
+declare module "worker-loader?inline=true&fallback=false!*" {
+    class WebpackWorker extends Worker {
+        constructor();
+    }
+
+    export default WebpackWorker;
 }

@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -490,6 +490,9 @@ buildings:
         ccw:
             name: 回転機 (逆)
             description: 形を反時計回り方向に90度回転します。
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -631,8 +634,9 @@ storyRewards:
 settings:
     title: 設定
     categories:
-        game: ゲーム
-        app: アプリケーション
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Development
@@ -836,7 +840,7 @@ about:
 
         開発に参加したい場合は以下をチェックしてみてください。<a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
 
-        このゲームはdiscordでの素晴らしいコミュニティなしには実現しませんでした。 - このサーバにも是非参加してください！　<a href="<discordlink>" target="_blank">discord server</a>!<br><br>
+        このゲームはdiscordでの素晴らしいコミュニティなしには実現しませんでした。 - このサーバにも是非参加してください！　<a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
         サウンドトラックは<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a>により製作されました。 - 彼は素晴らしいです<br><br>
 

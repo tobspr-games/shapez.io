@@ -5,6 +5,7 @@ import { SOUNDS } from "../platform/sound";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
 import { enumLayer, GameRoot } from "./root";
+import { getCodeFromBuildingData } from "./building_codes";
 
 export const defaultBuildingVariant = "default";
 
@@ -157,25 +158,33 @@ export class MetaBuilding {
     createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
         entity.layer = this.getLayer();
-        const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
         entity.addComponent(
             new StaticMapEntityComponent({
-                spriteKey:
-                    "sprites/buildings/" +
-                    this.id +
-                    (variant === defaultBuildingVariant ? "" : "-" + variant) +
-                    ".png",
                 origin: new Vector(origin.x, origin.y),
                 rotation,
                 originalRotation,
                 tileSize: this.getDimensions(variant).copy(),
-                silhouetteColor: this.getSilhouetteColor(),
-                blueprintSpriteKey: blueprintSprite ? blueprintSprite.spriteName : "",
+                code: getCodeFromBuildingData(this, variant, rotationVariant),
             })
         );
         this.setupEntityComponents(entity, root);
         this.updateVariants(entity, rotationVariant, variant);
         return entity;
+    }
+
+    /**
+     * Returns the sprite for a given variant
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @returns {AtlasSprite}
+     */
+    getSprite(rotationVariant, variant) {
+        return Loader.getSprite(
+            "sprites/buildings/" +
+                this.id +
+                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                ".png"
+        );
     }
 
     /**
