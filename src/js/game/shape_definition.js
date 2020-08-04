@@ -19,16 +19,41 @@ const rusha = require("rusha");
 const logger = createLogger("shape_definition");
 
 /**
+ * @typedef {"rect" | "circle" | "star" | "windmill"} SubShape
+ * @typedef {"R" | "C" | "S" | "W"} SubShapeShortCode
+ *
+ *
+ *
  * @typedef {{
- *   subShape: enumSubShape,
+ *   subShape: SubShape,
  *   color: enumColors,
  * }} ShapeLayerItem
- */
-
-/**
+ *
  * Order is Q1 (tr), Q2(br), Q3(bl), Q4(tl)
  * @typedef {[ShapeLayerItem?, ShapeLayerItem?, ShapeLayerItem?, ShapeLayerItem?]} ShapeLayer
  */
+
+/** @type {SubShape[]} **/
+export const subShapes = ["rect", "circle", "star", "windmill"];
+
+/** @type {SubShapeShortCode[]} **/
+export const subShapeShortCodes = ["R", "C", "S", "W"];
+
+/** @type {Record<SubShape, SubShapeShortCode>} **/
+export const subShapeShortCodeMap = {
+    rect: "R",
+    circle: "C",
+    star: "S",
+    windmill: "W",
+};
+
+/** @type {Record<SubShapeShortCode, SubShape>} **/
+export const shortCodeSubShapeMap = {
+    R: "rect",
+    C: "circle",
+    S: "star",
+    W: "windmill",
+};
 
 const arrayQuadrantIndexToOffset = [
     new Vector(1, -1), // tr
@@ -37,44 +62,6 @@ const arrayQuadrantIndexToOffset = [
     new Vector(-1, -1), // tl
 ];
 
-/** @enum {string} */
-export const enumSubShape = {
-    rect: "rect",
-    circle: "circle",
-    star: "star",
-    windmill: "windmill",
-};
-
-/** @enum {string} */
-export const enumSubShapeToShortcode = {
-    [enumSubShape.rect]: "R",
-    [enumSubShape.circle]: "C",
-    [enumSubShape.star]: "S",
-    [enumSubShape.windmill]: "W",
-};
-
-/** @enum {enumSubShape} */
-export const enumShortcodeToSubShape = {};
-for (const key in enumSubShapeToShortcode) {
-    enumShortcodeToSubShape[enumSubShapeToShortcode[key]] = key;
-}
-
-/**
- * Converts the given parameters to a valid shape definition
- * @param {*} layers
- * @returns {Array<import("./shape_definition").ShapeLayer>}
- */
-export function createSimpleShape(layers) {
-    layers.forEach(layer => {
-        layer.forEach(item => {
-            if (item) {
-                item.color = item.color || enumColors.uncolored;
-            }
-        });
-    });
-    return layers;
-}
-
 /**
  * Cache which shapes are valid short keys and which not
  * @type {Map<string, boolean>}
@@ -82,29 +69,7 @@ export function createSimpleShape(layers) {
 const SHORT_KEY_CACHE = new Map();
 
 export class ShapeDefinition extends BasicSerializableObject {
-    static getId() {
-        return "ShapeDefinition";
-    }
-
-    static getSchema() {
-        return {};
-    }
-
-    deserialize(data) {
-        const errorCode = super.deserialize(data);
-        if (errorCode) {
-            return errorCode;
-        }
-        const definition = ShapeDefinition.fromShortKey(data);
-        this.layers = definition.layers;
-    }
-
-    serialize() {
-        return this.getHash();
-    }
-
     /**
-     *
      * @param {object} param0
      * @param {Array<ShapeLayer>=} param0.layers
      */
@@ -123,6 +88,14 @@ export class ShapeDefinition extends BasicSerializableObject {
         this.bufferGenerator = null;
     }
 
+    static getId() {
+        return "ShapeDefinition";
+    }
+
+    static getSchema() {
+        return {};
+    }
+
     /**
      * Generates the definition from the given short key
      * @param {string} key
@@ -130,7 +103,8 @@ export class ShapeDefinition extends BasicSerializableObject {
      */
     static fromShortKey(key) {
         const sourceLayers = key.split(":");
-        let layers = [];
+        const layers = [];
+
         for (let i = 0; i < sourceLayers.length; ++i) {
             const text = sourceLayers[i];
             assert(text.length === 8, "Invalid shape short key: " + key);
@@ -139,7 +113,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             const quads = [null, null, null, null];
             for (let quad = 0; quad < 4; ++quad) {
                 const shapeText = text[quad * 2 + 0];
-                const subShape = enumShortcodeToSubShape[shapeText];
+                const subShape = shortCodeSubShapeMap[shapeText];
                 const color = enumShortcodeToColor[text[quad * 2 + 1]];
                 if (subShape) {
                     assert(color, "Invalid shape short key:", key);
@@ -183,7 +157,8 @@ export class ShapeDefinition extends BasicSerializableObject {
      */
     static isValidShortKeyInternal(key) {
         const sourceLayers = key.split(":");
-        let layers = [];
+        const layers = [];
+
         for (let i = 0; i < sourceLayers.length; ++i) {
             const text = sourceLayers[i];
             if (text.length !== 8) {
@@ -196,7 +171,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             for (let quad = 0; quad < 4; ++quad) {
                 const shapeText = text[quad * 2 + 0];
                 const colorText = text[quad * 2 + 1];
-                const subShape = enumShortcodeToSubShape[shapeText];
+                const subShape = shortCodeSubShapeMap[shapeText];
                 const color = enumShortcodeToColor[colorText];
 
                 // Valid shape
@@ -235,6 +210,19 @@ export class ShapeDefinition extends BasicSerializableObject {
         return true;
     }
 
+    deserialize(data) {
+        const errorCode = super.deserialize(data);
+        if (errorCode) {
+            return errorCode;
+        }
+        const definition = ShapeDefinition.fromShortKey(data);
+        this.layers = definition.layers;
+    }
+
+    serialize() {
+        return this.getHash();
+    }
+
     /**
      * Internal method to clone the shape definition
      * @returns {Array<ShapeLayer>}
@@ -267,7 +255,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             for (let quadrant = 0; quadrant < layer.length; ++quadrant) {
                 const item = layer[quadrant];
                 if (item) {
-                    id += enumSubShapeToShortcode[item.subShape] + enumColorToShortcode[item.color];
+                    id += subShapeShortCodeMap[item.subShape] + enumColorToShortcode[item.color];
                 } else {
                     id += "--";
                 }
@@ -369,7 +357,7 @@ export class ShapeDefinition extends BasicSerializableObject {
                 const insetPadding = 0.0;
 
                 switch (subShape) {
-                    case enumSubShape.rect: {
+                    case "rect": {
                         context.beginPath();
                         const dims = quadrantSize * layerScale;
                         context.rect(
@@ -381,7 +369,7 @@ export class ShapeDefinition extends BasicSerializableObject {
 
                         break;
                     }
-                    case enumSubShape.star: {
+                    case "star": {
                         context.beginPath();
                         const dims = quadrantSize * layerScale;
 
@@ -397,7 +385,7 @@ export class ShapeDefinition extends BasicSerializableObject {
                         break;
                     }
 
-                    case enumSubShape.windmill: {
+                    case "windmill": {
                         context.beginPath();
                         const dims = quadrantSize * layerScale;
 
@@ -412,7 +400,7 @@ export class ShapeDefinition extends BasicSerializableObject {
                         break;
                     }
 
-                    case enumSubShape.circle: {
+                    case "circle": {
                         context.beginPath();
                         context.moveTo(insetPadding + -quadrantHalfSize, -insetPadding + quadrantHalfSize);
                         context.arc(
