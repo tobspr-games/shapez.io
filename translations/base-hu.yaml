@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: A shapez.io-ban gyárak építésével kell automatizálni az egyre összetettebb alakzatok gyártását és kombinálását egy végtelen méretű térképen.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,79 +30,79 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        A shapez.io egy olyan játék, amelyben gyárak építésével kell automatizálni az egyre összetettebb alakzatok gyártását és összeillesztését, mindezt egy végtelenül növekvő térképen.
+        A kívánt alakzatok kézbesítése lehetővé teszi a játékban való előrehaladást, és a gyártási folyamatot felgyorsító fejlesztések feloldását.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Ahogy egyre több és több alakzatot kell kézbesíteni, úgy a gyártási folyamatot is fel kell skálázni - Ne feledkezz meg az erőforrásokról sem, egy [b]végtelen méretű térképen[/b] terjeszkedhetsz!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Előbb vagy utóbb színeket kell majd összekeverned és lefesteni az alakzatokat - Keverd össze a piros, töld és kék színeket, hogy új árnyalatokat hozz létre, és fesd le az alakzatokat velük, hogy teljesíteni tudd az elvárásokat.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        A játékban 18 fokozatosan erősödő szint található (ami már így is órákra le tud kötni!), de folyamatosan adok új tartalmakat hozzá - Nagyon sok tervem van!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        A játék megvásárlásával Tiéd lehet a teljes (önálló) verzió, amely még többet tartalmaz, és azonnal hozzáférsz a legfrissebb tartalmakhoz.
 
-        [b]Standalone Advantages[/b]
+        [b]Az Önálló Játék Előnyei[/b]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] Éjszakai Mód
+            [*] Végtelen Útpontok
+            [*] Végtelen Játék Mentés
+            [*] Kiegészítő Beállítások
+            [*] Hamarosan: Vezetékek és Energia! A cél (nagyjából) 2020 Július vége.
+            [*] Hamarosan: További Szintek
+            [*] Lehetővé teszi, hogy tovább fejleszzem a shapez.io-t ❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]Tervezett Frissítések[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Nagyon gyakran frissítem a játékot, igyekszem minden héten egy új frissítést kiadni!
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Különböző térképek és kihívások (pl. pályák akadályokkal)
+            [*] Fejtörők (Juttasd a célba a kívánt alakzatot egy korlátozott méretű területen / korlátozott darab épülettel)
+            [*] Sztori-mód, ahol az épületek pénzbe kerülnek
+            [*] Testreszabható térképgenerátor (Beállítható forrás/alakzat/sűrűség, seed és mások)
+            [*] További alakzattípusok
+            [*] Teljesítménybeli javítások (A játék már most nagyon jól fut!)
+            [*] És még sok más!
         [/list]
 
-        [b]This game is open source![/b]
+        [b]A játék nyílt forráskódú![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Bárki közreműködhet. Aktív részese vagyok a közösségnek, és igyekszem minden javaslatot és visszajelzéset figyelembe venni.
+        Mindenképpen látogass el a Trello-mra a teljes ütemtervért!
 
-        [b]Links[/b]
+        [b]Linkek[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Hivatalos Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Ütemterv[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Forráskód (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Segíts lefordítani[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Hivatalos Discord - Beszélgessünk!
 
 global:
     loading: Betöltés
     error: Hiba
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: "."
 
     # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
-    decimalSeparator: "."
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: E
+        thousands: e
         millions: M
-        billions: Mlrd
-        trillions: T
+        billions: Mrd
+        trillions: Tr
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: végtelen
 
     time:
         # Used for formatting past time dates
@@ -132,17 +132,17 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demó verzi
+    title: Demó verzió
     intro: >-
-        Get the standalone to unlock all features!
+        Vásárold meg a teljes verziót a teljes játékélményért!
 
 mainMenu:
     play: Játék
-    changelog: Changelog
+    changelog: Változások
     importSavegame: Importálás
     openSourceHint: Ez a játék nyílt forráskódú!
     discordLink: Hivatalos Discord Szerver
-    helpTranslate: Segíts a fordításban!
+    helpTranslate: Segíts fordítani!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -151,24 +151,24 @@ mainMenu:
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
 
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    continue: Folytatás
+    newGame: Új Játék
+    madeBy: Készítette <author-link>
     subreddit: Reddit
 
 dialogs:
     buttons:
         ok: OK
         delete: Törlés
-        cancel: Megszakítás
+        cancel: Mégse
         later: Később
         restart: Újrakezdés
         reset: Visszaállítás
-        getStandalone: Get Standalone
-        deleteGame: Tudom mit csinálok
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        getStandalone: Teljes Verzió
+        deleteGame: Játék Törlése
+        viewUpdate: Frissítés
+        showUpgrades: Fejlesztések
+        showKeybindings: Irányítás
 
     importSavegameError:
         title: Importálás Hiba
