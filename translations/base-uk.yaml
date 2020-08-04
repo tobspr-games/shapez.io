@@ -1,5 +1,9 @@
 #
 #  GAME TRANSLATIONS
+#  
+#  Translators:
+#
+#    Prosta4ok_ua 07.07.2020 — 04.08.2020
 #
 #  Contributing:
 #
@@ -23,7 +27,10 @@
 # upgrade поліпшення
 # marker позначка
 # area ділянка
-# hub
+# hub центр
+# range дальність
+# storage: Сховище
+# shape
 
 steamPage:
     # This is the short text appearing on the steam page
@@ -39,14 +46,14 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io — це гра про будування фабрик для автоматизації створення та обробки все більш складних форм на нескінченно розширюваній мапі.
+        Після доставки потрібних форм ви просунетеся в грі та розблокуєте поліпшення, щоб пришвидшити свою фабрику.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Коли попит на форми зростає, вам доведеться збільшити масштаб своєї фабрики, щоб задовольнити попит. Однак не забувайте про ресурси, вам доведеться розширюватися на [b]нескінченній мапі[/b]!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Незабаром ви зможете змішути кольори і з їхньою допомогою фарбувати свої форми. Поєднуйте червоний, зелений та синій ресурси кольорів, щоб виготовити різноманітні кольори і пофарувати форми як вам заманеться.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        У цій грі є 18 передових рівнів, які повинні утримувати вас годинами. Але не турбуйтеся, я постійно додаю новий вміст — ще багато чого заплановано!
 
         Купуючи гру, ви отримуєте доступ до окремої версії, яка має додаткові функції, а також ви отримаєте доступ до нещодавно розроблених функцій.
 
@@ -59,7 +66,7 @@ steamPage:
             [*] Додаткові налаштування
             [*] Незабаром: дроти й енергія! Гадаю, оновлення вийде у кінці липня 2020 року.
             [*] Незабаром: більше рівнів.
-            [*] Allows me to further develop shapez.io ❤️
+            [*] Дозволяє мені розвиватися далі shapez.io ❤️
         [/list]
 
         [img]{STEAM_APP_IMAGE}/extras/header_future_updates.png[/img]
@@ -68,7 +75,7 @@ steamPage:
 
         [list]
             [*] Різноманітні мапи та випробування (наприклад, мапи з перешкодами)
-            [*] Пазли (Надайте потрібну форму з обмеженою площею/набором будівель)
+            [*] Пазли (надайте потрібну форму з обмеженою площею/набором будівель)
             [*] Режим історії, де будівлі матимуть вартість
             [*] Генератор мап, який можна налаштувати (ресурс/розмір/щільність форми, зерно та багато іншого)
             [*] Додаткові типи форм
@@ -152,7 +159,7 @@ mainMenu:
     importSavegame: Імпортувати
     openSourceHint: Ця гра з відкритим вихідним кодом!
     discordLink: Офіційний Discord сервер
-    helpTranslate: Допоможіть перекласти!
+    helpTranslate: Допоможіть з прекладом!
     madeBy: Зробив <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
@@ -229,12 +236,12 @@ dialogs:
     updateSummary:
         title: Нове оновлення!
         desc: >-
-            Ось зміни з вашої останньої гри
+            Ось зміни з вашої останньої гри:
 
     upgradesIntroduction:
         title: Розблокування поліпшень
         desc: >-
-            Усі форми, що ви виробляєте, можуть використовуватися для розблокування поліпшення - <strong>Не зруйновуйте ваші старі заводи!<strong>
+            Усі форми, що ви виробляєте, можуть використовуватися для розблокування поліпшення - <strong>Не зруйнуйте свої старі фабрики!<strong>
             Вкладку з поліпшеннями можна знайти в правому верхньому куті екрана.
 
     massDeleteConfirm:
@@ -255,20 +262,21 @@ dialogs:
     blueprintsNotUnlocked:
         title: Ще не розблоковано
         desc: >-
-            Досягніть 13-го рівня, щоб розблокувати Blueprints!
+            Досягніть 13-го рівня, щоб розблокувати креслення!
 
     keybindingsIntroduction:
         title: Корисні гарячі клавіши
         desc: >-
-            Гра має багато гарічих клавіш, що полегшує будівництво великих заводів.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select an area.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            Гра має багато гарячих клавіш, що полегшують будівництво великих фабрик.
+            Ось декілька, але обов’язково <strong>ознайомтеся з прив’язками клавіш</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + тягніть: виділити зону.<br>
+            <code class='keybinding'>SHIFT</code>: тримайте, щоб розмістити декілька одного будинку.<br>
+            <code class='keybinding'>ALT</code>: змінити орієнтацію розміщеної конвеєрної стрічки.<br>
 
     createMarker:
         title: Нова позначка
-        desc: Дайте йому змістовну назву, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Дайте їй змістовну назву. Ви також можете додати <strong>короткий ключ</strong> форми
+        , що можно згенерувати: <a href="https://viewer.shapez.io" target="_blank">тут</a>.
         titleEdit: Редагувати позначку
 
     markerDemoLimit:
@@ -284,21 +292,21 @@ ingame:
     keybindingsOverlay:
         moveMap: Рухатися
         selectBuildings: Виділити будівлі
-        stopPlacement: Stop placement
+        stopPlacement: Зупинити розміщення
         rotateBuilding: Повернути будівлю
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto-orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
+        placeMultiple: Розмістити декілька
+        reverseOrientation: Змінити орієнтацію
+        disableAutoOrientation: Вимкнути автоматичну орієнтацію
+        toggleHud: Перемкнути інтерфейс
+        placeBuilding: Розмістити будівлю
         createMarker: Створити позначку
         delete: Видалити
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
+        pasteLastBlueprint: Вставити останнє креслення
+        lockBeltDirection: Увімкнути стрічковий планувальник
+        plannerSwitchSide: Змінити сторону планувальника
         cutSelection: Вирізати
         copySelection: Скопіювати
-        clearSelection: Clear selection
+        clearSelection: Очистити виділене
         pipette: Піпетка
         switchLayers: Змінити шари
 
@@ -319,7 +327,7 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Натисніть <key> для циклу варіантів.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
@@ -327,7 +335,7 @@ ingame:
 
         infoTexts:
             speed: Швидкість
-            range: Range
+            range: Дальність
             storage: Сховище
             oneItemPerSecond: 1 предмет за сек.
             itemsPerSecond: <x> предмет. за сек
@@ -354,7 +362,7 @@ ingame:
         buttonUnlock: Поліпшення
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Клас <x>
+        tier: Ранг <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
@@ -367,14 +375,14 @@ ingame:
         dataSources:
             stored:
                 title: Зберігається
-                description: Displaying amount of stored shapes in your central building.
+                description: Відображає кількість збережених фігур у вашому центрі.
             produced:
                 title: Виробляється
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                description: Відображає всі форми вашої цілої фабрики, що виробляються, включаючи проміжні продукти.
             delivered:
                 title: Доставлено
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                description: Відображає форми, що доставляються до центру.
+        noShapesProduced: Жодної форми поки не випускається.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> за хв.
@@ -405,14 +413,14 @@ ingame:
     waypoints:
         waypoints: Позначки
         hub: Центр
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        description: ЛКМ на позначку, щоб перейти до неї, ПКМ для видалення<br><br>Натисніть <keybinding> для створення позначки з поточного виду або <strong>ПКМ</strong>, щоб створити позначку в обраному місці.
+        creationSuccessNotification: Позначку створено.
 
     # Shape viewer
     shapeViewer:
         title: Шари
         empty: Пустий
-        copyKey: Copy Key
+        copyKey: Копіювати ключ
 
     # Interactive tutorial
     interactiveTutorial:
@@ -449,78 +457,78 @@ buildings:
 
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Конвеєрна стрічка
+            description: Транспортує предмети, утримуйте і перетягуйте для розміщення декількох.
 
     wire:
         default:
-            name: &wire Wire
-            description: Allows you to transport energy
+            name: &wire Дріт
+            description: Дозволяє передавати енергію
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Екстрактор
+            description: Розмістіть над формою чи кольором, який хочете видобути.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Екстрактор (Ланц.)
+            description:  Розмістіть над формою чи кольором, який хочете видобути. Можна об’єднати в ланцюг.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows you to tunnel resources under buildings and belts.
+            name: &underground_belt Тунель
+            description: Дозволяє транспортувати ресурси під будівлями та стрічками.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows you to tunnel resources under buildings and belts.
+            name: Тунель, ранг II
+            description: Дозволяє транспортувати ресурси під будівлями та стрічками.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
+            name: &splitter Розподілювач
             description: Multifunctional - Evenly distributes all inputs onto all outputs.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: З’єднувач
+            description: Об’єднує дві конвеєрні стрічки в одну. Займає усього на всього одну клітину.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: З’єднувач
+            description: Об’єднує дві конвеєрні стрічки в одну. Займає усього на всього одну клітину.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Різчик
+            description: Розрізає форми зверху вниз і виводить обидві половинки. <strong>Якщо ви використовуєте лише одну частину, не забудьте знищити іншу частину, інакше вона застрягне в механізмі!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
+            name: Різчик (4 вих.)
+            description: Розрізає форми на 4 частини. <strong>Якщо ви використовуєте лише одну частину, не забудьте знищити інші, інакше вони застрягнуть в механізмі!</strong>
 
     advanced_processor:
         default:
-            name: &advanced_processor Advanced Processor
-            description: Advanced shape processing
+            name: &advanced_processor Передовий процесор
+            description: Покращена обробка форм.
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Обертач
+            description: Обертає форми за годинниковою стрілкою на 90 градусів.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter-clockwise by 90 degrees.
+            name: Обертач (-90)
+            description: Обертає форми проти годинникової стрілки на 90 градусів.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Обертач (180)
+            description: Обертає форми на 180 градусів.
 
     stacker:
         default:
-            name: &stacker Stacker
+            name: &stacker Укладальник
             description: Stacks both items. If they can not be merged, the right item is placed above the left item.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Змішувач кольо8рів
+            description: Змішує два кольори за допомогою добавки.
 
     painter:
         default:
@@ -591,7 +599,7 @@ storyRewards:
 
     reward_splitter:
         title: Splitter/Merger
-        desc: Багатофункціональний <strong> балансир </strong> було розблоковано. Його можна використовувати для створення великих заводів, <strong>розділяючи та об’єднуючи предмети </strong> на кілька стрічок!<br><br>
+        desc: Багатофункціональний <strong> балансир </strong> було розблоковано. Його можна використовувати для створення великих фабрик, <strong>розділяючи та об’єднуючи предмети </strong> на кілька стрічок!<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -642,7 +650,7 @@ storyRewards:
     no_reward:
         title: Наступний рівень
         desc: >-
-            Цей рівень не дав нагороди, але в наступному... щось буде. <br><br> До речі, краще не руйнуйте свій поточний завод. Вам знадобляться всі ті форми пізніше, щоб <strong>розблокувати поліпшення</strong>!
+            Цей рівень не дав нагороди, але в наступному... щось буде. <br><br> До речі, краще не руйнуйте свою поточну фабрику. Вам знадобляться всі ті форми пізніше, щоб <strong>розблокувати поліпшення</strong>!
 
     no_reward_freeplay:
         title: Наступний рівень
