@@ -487,8 +487,8 @@ buildings:
             name: Pivoteur inversé
             description: Fait pivoter une forme de 90 degrés vers la gauche.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Retourneur
+            description: Tourne la forme de 180 degrés.
 
     stacker:
         default:
@@ -634,9 +634,9 @@ storyRewards:
 settings:
     title: Options
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Général
+        userInterface: Interface Utilisateur
+        advanced: Avancé
 
     versionBadges:
         dev: Développement
