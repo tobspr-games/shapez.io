@@ -29,6 +29,16 @@ export const enumUndergroundBeltVariantToTier = {
     [enumUndergroundBeltVariants.tier2SideMirrored]: 1,
 };
 
+//This might want to be looked at. I don't understand the whole enum thing well enough to make this return them, nor indeed whether that would be the appropriate course of action.
+export const enumUndergroundBeltVariantToDirection = {
+    [defaultBuildingVariant]: "straight",
+    [enumUndergroundBeltVariants.side]: "left",
+    [enumUndergroundBeltVariants.sideMirrored]: "right",
+    [enumUndergroundBeltVariants.tier2]: "straight",
+    [enumUndergroundBeltVariants.tier2Side]: "left",
+    [enumUndergroundBeltVariants.tier2SideMirrored]: "right",
+};
+
 export class MetaUndergroundBeltBuilding extends MetaBuilding {
     constructor() {
         super("underground_belt");
@@ -221,28 +231,69 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant, variant) {
         entity.components.UndergroundBelt.tier = enumUndergroundBeltVariantToTier[variant];
+		entity.components.UndergroundBelt.direction = enumUndergroundBeltVariantToDirection[variant];
 
         switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
             case enumUndergroundBeltMode.sender: {
                 entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.sender;
                 entity.components.ItemEjector.setSlots([]);
-                entity.components.ItemAcceptor.setSlots([
-                    {
-                        pos: new Vector(0, 0),
-                        directions: [(variant=="side"||variant=="tier2-side"?enumDirection.left:(variant=="side-mirrored"||variant=="tier2-side-mirrored"?enumDirection.right:enumDirection.bottom))],
-                    },
-                ]);
+				switch (enumUndergroundBeltVariantToDirection[variant]) {
+					case "straight": {
+						entity.components.ItemAcceptor.setSlots([
+							{
+								pos: new Vector(0, 0),
+								directions: [enumDirection.bottom],
+							},
+						]);
+					}
+					case "left": {
+						entity.components.ItemAcceptor.setSlots([
+							{
+								pos: new Vector(0, 0),
+								directions: [enumDirection.left],
+							},
+						]);
+					}
+					case "right": {
+						entity.components.ItemAcceptor.setSlots([
+							{
+								pos: new Vector(0, 0),
+								directions: [enumDirection.right],
+							},
+						]);
+					}
+				}
                 return;
             }
             case enumUndergroundBeltMode.receiver: {
                 entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.receiver;
                 entity.components.ItemAcceptor.setSlots([]);
-                entity.components.ItemEjector.setSlots([
-                    {
-                        pos: new Vector(0, 0),
-						direction: (variant=="side"||variant=="tier2-side"?enumDirection.left:(variant=="side-mirrored"||variant=="tier2-side-mirrored"?enumDirection.right:enumDirection.top)),
-                    },
-                ]);
+				switch (enumUndergroundBeltVariantToDirection[variant]) {
+					case "straight": {
+						entity.components.ItemEjector.setSlots([
+							{
+								pos: new Vector(0, 0),
+								directions: [enumDirection.bottom],
+							},
+						]);
+					}
+					case "left": {
+						entity.components.ItemEjector.setSlots([
+							{
+								pos: new Vector(0, 0),
+								directions: [enumDirection.left],
+							},
+						]);
+					}
+					case "right": {
+						entity.components.ItemEjector.setSlots([
+							{
+								pos: new Vector(0, 0),
+								directions: [enumDirection.right],
+							},
+						]);
+					}
+				}
                 return;
             }
             default:
