@@ -4,7 +4,7 @@ import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/ut
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { colors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
-import { enumSubShape, ShapeDefinition } from "./shape_definition";
+import { subShapes, ShapeDefinition } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
 import { UPGRADES, blueprintShape } from "./upgrades";
 
@@ -333,8 +333,7 @@ export class HubGoals extends BasicSerializableObject {
         let layers = [];
 
         const randomColor = () => randomChoice(colors);
-        // @ts-ignore
-        const randomShape = () => randomChoice(Object.values(enumSubShape));
+        const randomShape = () => randomChoice(subShapes);
 
         let anyIsMissingTwo = false;
 

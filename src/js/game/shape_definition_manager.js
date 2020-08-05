@@ -1,13 +1,11 @@
 import { BasicSerializableObject } from "../savegame/serialization";
 import { GameRoot } from "./root";
-import { ShapeDefinition, enumSubShape } from "./shape_definition";
-import { createLogger } from "../core/logging";
-
-const logger = createLogger("shape_definition_manager");
+import { ShapeDefinition } from "./shape_definition";
 
 /**
  * @typedef {import("./colors").Color} Color
  * @typedef {import("./shape_definition").ShapeLayer} ShapeLayer
+ * @typedef {import("./shape_definition").SubShape} SubShape
  */
 
 export class ShapeDefinitionManager extends BasicSerializableObject {
@@ -227,18 +225,16 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
             return this.shapeKeyToDefinition[id];
         }
         this.shapeKeyToDefinition[id] = definition;
-        // logger.log("Registered shape with key (2)", id);
         return definition;
     }
 
     /**
      *
-     * @param {[enumSubShape, enumSubShape, enumSubShape, enumSubShape]} subShapes
+     * @param {[SubShape, SubShape, SubShape, SubShape]} subShapes
      * @returns {ShapeDefinition}
      */
     getDefinitionFromSimpleShapes(subShapes, color = "uncolored") {
         const shapeLayer = /** @type {ShapeLayer} */ (subShapes.map(subShape => ({ subShape, color })));
-
         return this.registerOrReturnHandle(new ShapeDefinition({ layers: [shapeLayer] }));
     }
 }
