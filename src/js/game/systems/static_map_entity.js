@@ -3,7 +3,6 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { globalConfig } from "../../core/config";
 import { MapChunkView } from "../map_chunk_view";
 import { Loader } from "../../core/loader";
-import { enumLayer } from "../root";
 
 export class StaticMapEntitySystem extends GameSystem {
     constructor(root) {

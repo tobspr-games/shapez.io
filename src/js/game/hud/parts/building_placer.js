@@ -8,12 +8,16 @@ import { directionVectorMap, directionAngleMap, invertedDirectionMap, Vector } f
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant } from "../../meta_building";
+import { layers } from "../../root";
 import { THEME } from "../../theme";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { HUDBuildingPlacerLogic } from "./building_placer_logic";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { enumLayer } from "../../root";
 import { getCodeFromBuildingData } from "../../building_codes";
+
+/**
+ * @typedef {import("../../root").Layer} Layer
+ **/
 
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
@@ -55,9 +59,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.currentInterpolatedCornerTile = new Vector();
 
         this.lockIndicatorSprites = {};
-        for (const layerId in enumLayer) {
-            this.lockIndicatorSprites[layerId] = this.makeLockIndicatorSprite(layerId);
-        }
+        layers.forEach(layer => {
+            this.lockIndicatorSprites[layer] = this.makeLockIndicatorSprite(layer);
+        });
 
         //
 
@@ -70,7 +74,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
     /**
      * Makes the lock indicator sprite for the given layer
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      */
     makeLockIndicatorSprite(layer) {
         const dims = 48;

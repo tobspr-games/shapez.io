@@ -1,10 +1,7 @@
-/* eslint-disable no-unused-vars */
-
 import { Signal } from "../core/signal";
 import { RandomNumberGenerator } from "../core/rng";
 import { createLogger } from "../core/logging";
 
-// Type hints
 /* typehints:start */
 import { GameTime } from "./time/game_time";
 import { EntityManager } from "./entity_manager";
@@ -32,14 +29,10 @@ import { Vector } from "../core/vector";
 
 const logger = createLogger("game/root");
 
-/** @enum {string} */
-export const enumLayer = {
-    regular: "regular",
-    wires: "wires",
-};
+/** @typedef {"regular" | "wires"} Layer **/
 
-/** @type {Array<enumLayer>} */
-export const arrayLayers = [enumLayer.regular, enumLayer.wires];
+/** @type {Array<Layer>} */
+export const layers = ["regular", "wires"];
 
 /**
  * The game root is basically the whole game state at a given point,
@@ -134,8 +127,8 @@ export class GameRoot {
         /** @type {DynamicTickrate} */
         this.dynamicTickrate = null;
 
-        /** @type {enumLayer} */
-        this.currentLayer = enumLayer.regular;
+        /** @type {Layer} */
+        this.currentLayer = "regular";
 
         this.signals = {
             // Entities
@@ -170,7 +163,7 @@ export class GameRoot {
 
             bulkOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
 
-            editModeChanged: /** @type {TypedSignal<[enumLayer]>} */ (new Signal()),
+            editModeChanged: /** @type {TypedSignal<[Layer]>} */ (new Signal()),
 
             // Called to check if an entity can be placed, second parameter is an additional offset.
             // Use to introduce additional placement checks

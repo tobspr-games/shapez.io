@@ -1,11 +1,10 @@
 import { Vector } from "../../core/vector";
-import { enumItemType } from "../base_item";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
-import { enumLayer, GameRoot } from "../root";
+import { GameRoot } from "../root";
 
 /** @enum {string} */
 export const enumWireCrossingVariants = {
@@ -26,8 +25,9 @@ export class MetaWireCrossingsBuilding extends MetaBuilding {
         return "#c425d7";
     }
 
+    /** @returns {"wires"} **/
     getLayer() {
-        return enumLayer.wires;
+        return "wires";
     }
 
     /**
@@ -83,13 +83,13 @@ export class MetaWireCrossingsBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: ["bottom"],
-                        layer: enumLayer.wires,
+                        layer: "wires",
                     },
                 ]);
 
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: "top", layer: enumLayer.wires },
-                    { pos: new Vector(0, 0), direction: "right", layer: enumLayer.wires },
+                    { pos: new Vector(0, 0), direction: "top", layer: "wires" },
+                    { pos: new Vector(0, 0), direction: "right", layer: "wires" },
                 ]);
 
                 break;
@@ -99,17 +99,17 @@ export class MetaWireCrossingsBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: ["top"],
-                        layer: enumLayer.wires,
+                        layer: "wires",
                     },
                     {
                         pos: new Vector(0, 0),
                         directions: ["right"],
-                        layer: enumLayer.wires,
+                        layer: "wires",
                     },
                 ]);
 
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: "bottom", layer: enumLayer.wires },
+                    { pos: new Vector(0, 0), direction: "bottom", layer: "wires" },
                 ]);
                 break;
             }

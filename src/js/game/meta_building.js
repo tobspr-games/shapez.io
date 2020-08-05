@@ -4,10 +4,13 @@ import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
-import { enumLayer, GameRoot } from "./root";
 import { getCodeFromBuildingData } from "./building_codes";
 
-/** @typedef {import("../core/vector").Angle} Angle **/
+/**
+ * @typedef {import("../core/vector").Angle} Angle
+ * @typedef {import("./root").GameRoot} GameRoot
+ * @typedef {import("./root").Layer} Layer
+ */
 
 export const defaultBuildingVariant = "default";
 
@@ -29,10 +32,10 @@ export class MetaBuilding {
 
     /**
      * Returns the edit layer of the building
-     * @returns {enumLayer}
+     * @returns {Layer}
      */
     getLayer() {
-        return enumLayer.regular;
+        return "regular";
     }
 
     /**
@@ -196,10 +199,10 @@ export class MetaBuilding {
      * @param {Vector} param0.tile
      * @param {Angle} param0.rotation
      * @param {string} param0.variant
-     * @param {string} param0.layer
+     * @param {Layer} param0.layer
      * @return {{ rotation: Angle, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
+    computeOptimalDirectionAndRotationVariantAtTile({ rotation, variant }) {
         if (!this.isRotateable(variant)) {
             return {
                 rotation: 0,

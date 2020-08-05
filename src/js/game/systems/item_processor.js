@@ -1,5 +1,5 @@
 import { globalConfig } from "../../core/config";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { colorInvertedMap, colorMixingMap } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
@@ -355,14 +355,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             case enumItemProcessorTypes.advancedProcessor: {
                 const item = items[0].item;
 
-                if (item.getItemType() === enumItemType.color) {
+                if (item.getItemType() === "color") {
                     const colorItem = /** @type {ColorItem} */ (items[0].item);
                     const newColor = colorInvertedMap[colorItem.color];
                     outItems.push({
                         item: new ColorItem(newColor),
                         requiredSlot: 0,
                     });
-                } else if (item.getItemType() === enumItemType.shape) {
+                } else if (item.getItemType() === "shape") {
                     const shapeItem = /** @type {ShapeItem} */ (items[0].item);
                     const newItem = this.root.shapeDefinitionMgr.shapeActionInvertColors(
                         shapeItem.definition

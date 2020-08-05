@@ -1,7 +1,6 @@
 import { formatItemsPerSecond } from "../../core/utils";
 import { Vector } from "../../core/vector";
 import { T } from "../../translations";
-import { enumItemType } from "../base_item";
 import { EnergyConsumerComponent } from "../components/energy_consumer";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -9,7 +8,11 @@ import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/it
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { enumLayer, GameRoot } from "../root";
+
+/**
+ * @typedef {import("../root").GameRoot} GameRoot
+ * @typedef {import("../root").Layer} Layer
+ */
 
 export class MetaAdvancedProcessorBuilding extends MetaBuilding {
     constructor() {
@@ -58,7 +61,7 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
             new ItemEjectorComponent({
                 slots: [
                     { pos: new Vector(1, 0), direction: "right" },
-                    { pos: new Vector(1, 0), direction: "top", layer: enumLayer.wires },
+                    { pos: new Vector(1, 0), direction: "top", layer: "wires" },
                 ],
             })
         );
@@ -98,8 +101,8 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: ["top"],
-                        filter: enumItemType.positiveEnergy,
-                        layer: enumLayer.wires,
+                        filter: "positiveEnergy",
+                        layer: "wires",
                     },
                 ],
             })

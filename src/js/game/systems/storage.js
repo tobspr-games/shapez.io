@@ -4,7 +4,6 @@ import { Entity } from "../entity";
 import { DrawParameters } from "../../core/draw_parameters";
 import { formatBigNumber, lerp } from "../../core/utils";
 import { Loader } from "../../core/loader";
-import { enumLayer } from "../root";
 
 export class StorageSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -23,7 +22,7 @@ export class StorageSystem extends GameSystemWithFilter {
                 const ejectorComp = entity.components.ItemEjector;
 
                 /* FIXME: WIRES */
-                const nextSlot = ejectorComp.getFirstFreeSlot(enumLayer.regular);
+                const nextSlot = ejectorComp.getFirstFreeSlot("regular");
                 if (nextSlot !== null) {
                     if (ejectorComp.tryEject(nextSlot, storageComp.storedItem)) {
                         storageComp.storedCount--;

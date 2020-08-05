@@ -3,14 +3,19 @@ import { DrawParameters } from "../core/draw_parameters";
 import { Component } from "./component";
 /* typehints:end */
 
-import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { directionAngleMap, directionVectorMap } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { EntityComponentStorage } from "./entity_components";
+import { layers } from "./root";
 import { Loader } from "../core/loader";
 import { drawRotatedSprite } from "../core/draw_utils";
 import { gComponentRegistry } from "../core/global_registries";
+
+/**
+ * @typedef {import("./root").GameRoot} GameRoot
+ * @typedef {import("./root").Layer} Layer
+ **/
 
 export class Entity extends BasicSerializableObject {
     /**
@@ -36,8 +41,9 @@ export class Entity extends BasicSerializableObject {
 
         /**
          * On which layer this entity is
+         * @type {Layer}
          */
-        this.layer = enumLayer.regular;
+        this.layer = "regular";
 
         /**
          * Internal entity unique id, set by the @see EntityManager
@@ -77,7 +83,7 @@ export class Entity extends BasicSerializableObject {
         return {
             uid: types.uint,
             components: types.keyValueMap(types.objData(gComponentRegistry)),
-            layer: types.enum(enumLayer),
+            layer: types.enum(layers),
         };
     }
 

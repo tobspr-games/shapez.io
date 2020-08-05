@@ -3,11 +3,12 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { directionRotationMap, directionVectorMap } from "../../core/vector";
-import { BaseItem, enumItemType, enumItemTypeToLayer } from "../base_item";
+import { BaseItem, itemTypeLayerMap } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumLayer } from "../root";
+
+/** @typedef {import("../root").Layer} Layer **/
 
 const logger = createLogger("systems/ejector");
 
@@ -257,7 +258,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         // TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
         // Also its just a few cases (hope it stays like this .. :x).
 
-        const itemLayer = enumItemTypeToLayer[item.getItemType()];
+        const itemLayer = itemTypeLayerMap[item.getItemType()];
 
         const beltComp = receiver.components.Belt;
         if (beltComp) {
@@ -338,14 +339,14 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     /**
      * Draws the given layer
      * @param {DrawParameters} parameters
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      */
     drawLayer(parameters, layer) {
         this.forEachMatchingEntityOnScreen(parameters, this.drawSingleEntity.bind(this, layer));
     }
 
     /**
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @param {DrawParameters} parameters
      * @param {Entity} entity
      */

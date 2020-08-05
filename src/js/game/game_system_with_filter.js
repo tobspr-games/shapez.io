@@ -3,11 +3,16 @@ import { Component } from "./component";
 import { Entity } from "./entity";
 /* typehints:end */
 
-import { GameRoot, enumLayer } from "./root";
 import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
 import { DrawParameters } from "../core/draw_parameters";
 import { globalConfig } from "../core/config";
+
+/**
+ * @typedef {import("./root").GameRoot} GameRoot
+ * @typedef {import("./root").Layer} Layer
+ **/
+
 export class GameSystemWithFilter extends GameSystem {
     /**
      * Constructs a new game system with the given component filter. It will process
@@ -39,7 +44,7 @@ export class GameSystemWithFilter extends GameSystem {
      * Calls a function for each matching entity on the screen, useful for drawing them
      * @param {DrawParameters} parameters
      * @param {function} callback
-     * @param {enumLayer=} layerFilter Can be null for no filter
+     * @param {Layer=} layerFilter Can be null for no filter
      */
     forEachMatchingEntityOnScreen(parameters, callback, layerFilter = null) {
         const cullRange = parameters.visibleRect.toTileCullRectangle();

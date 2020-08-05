@@ -1,13 +1,15 @@
 import { Vector } from "../../core/vector";
-import { enumItemType } from "../base_item";
 import { EnergyGeneratorComponent } from "../components/energy_generator";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { enumLayer, GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+
+/**
+ * @typedef {import("../root").GameRoot} GameRoot
+ */
 
 export class MetaEnergyGenerator extends MetaBuilding {
     constructor() {
@@ -51,18 +53,18 @@ export class MetaEnergyGenerator extends MetaBuilding {
                     {
                         pos: new Vector(0, 1),
                         directions: ["bottom"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(1, 1),
                         directions: ["bottom"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: ["top"],
-                        layer: enumLayer.wires,
-                        filter: enumItemType.negativeEnergy,
+                        layer: "wires",
+                        filter: "negativeEnergy",
                     },
                 ],
             })
@@ -74,7 +76,7 @@ export class MetaEnergyGenerator extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         direction: "top",
-                        layer: enumLayer.wires,
+                        layer: "wires",
                     },
                 ],
                 instantEject: true,

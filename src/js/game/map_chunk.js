@@ -1,4 +1,3 @@
-import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
@@ -9,6 +8,11 @@ import { ColorItem } from "./items/color_item";
 import { ShapeItem } from "./items/shape_item";
 import { enumSubShape } from "./shape_definition";
 import { RandomNumberGenerator } from "../core/rng";
+
+/**
+ * @typedef {import("./root").GameRoot} GameRoot
+ * @typedef {import("./root").Layer} Layer
+ */
 
 const logger = createLogger("map_chunk");
 
@@ -334,7 +338,7 @@ export class MapChunk {
      * Returns the contents of this chunk from the given world space coordinates
      * @param {number} worldX
      * @param {number} worldY
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {Entity=}
      */
     getLayerContentFromWorldCoords(worldX, worldY, layer) {
@@ -344,7 +348,7 @@ export class MapChunk {
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
-        if (layer === enumLayer.regular) {
+        if (layer === "regular") {
             return this.contents[localX][localY] || null;
         } else {
             return this.wireContents[localX][localY] || null;
@@ -397,7 +401,7 @@ export class MapChunk {
      * @param {number} tileX
      * @param {number} tileY
      * @param {Entity=} contents
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      */
     setLayerContentFromWorldCords(tileX, tileY, contents, layer) {
         const localX = tileX - this.tileX;
@@ -408,7 +412,7 @@ export class MapChunk {
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
 
         let oldContents;
-        if (layer === enumLayer.regular) {
+        if (layer === "regular") {
             oldContents = this.contents[localX][localY];
         } else {
             oldContents = this.wireContents[localX][localY];
@@ -421,7 +425,7 @@ export class MapChunk {
             fastArrayDeleteValueIfContained(this.containedEntities, oldContents);
         }
 
-        if (layer === enumLayer.regular) {
+        if (layer === "regular") {
             this.contents[localX][localY] = contents;
         } else {
             this.wireContents[localX][localY] = contents;

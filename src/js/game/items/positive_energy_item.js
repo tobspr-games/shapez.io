@@ -1,7 +1,7 @@
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 
 export class PositiveEnergyItem extends BaseItem {
     static getId() {
@@ -18,8 +18,9 @@ export class PositiveEnergyItem extends BaseItem {
 
     deserialize(data) {}
 
+    /** @returns {"positiveEnergy"} **/
     getItemType() {
-        return enumItemType.positiveEnergy;
+        return "positiveEnergy";
     }
 
     /**

@@ -1,5 +1,4 @@
 import { Vector } from "../../core/vector";
-import { enumItemType } from "../base_item";
 import { HubComponent } from "../components/hub";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
@@ -53,72 +52,72 @@ export class MetaHubBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: ["top", "left"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: ["top"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(2, 0),
                         directions: ["top"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(3, 0),
                         directions: ["top", "right"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(0, 3),
                         directions: ["bottom", "left"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(1, 3),
                         directions: ["bottom"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(2, 3),
                         directions: ["bottom"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(3, 3),
                         directions: ["bottom", "right"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(0, 1),
                         directions: ["left"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(0, 2),
                         directions: ["left"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(0, 3),
                         directions: ["left"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(3, 1),
                         directions: ["right"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(3, 2),
                         directions: ["right"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(3, 3),
                         directions: ["right"],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                 ],
             })

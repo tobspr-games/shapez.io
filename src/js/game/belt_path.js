@@ -5,10 +5,14 @@ import { epsilonCompare, round4Digits } from "../core/utils";
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
-import { GameRoot, enumLayer } from "./root";
 import { Rectangle } from "../core/rectangle";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { gItemRegistry } from "../core/global_registries";
+
+/**
+ * @typedef {import("./root").GameRoot} GameRoot
+ * @typedef {import("./root").Layer} Layer
+ **/
 
 const logger = createLogger("belt_path");
 
@@ -127,7 +131,7 @@ export class BeltPath extends BasicSerializableObject {
 
     /**
      * Returns the layer of the this path
-     * @returns {enumLayer}
+     * @returns {Layer}
      */
     getLayer() {
         return this.entityPath[0].layer;

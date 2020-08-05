@@ -2,7 +2,7 @@ import { globalConfig } from "../../core/config";
 import { smoothenDpi } from "../../core/dpi_manager";
 import { DrawParameters } from "../../core/draw_parameters";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { colors, colorHexColorMap } from "../colors";
 import { THEME } from "../theme";
 
@@ -28,8 +28,9 @@ export class ColorItem extends BaseItem {
         this.color = data;
     }
 
+    /** @returns {"color"} **/
     getItemType() {
-        return enumItemType.color;
+        return "color";
     }
 
     /**

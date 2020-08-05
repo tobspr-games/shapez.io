@@ -6,8 +6,6 @@ import { DrawParameters } from "../../../core/draw_parameters";
 import { THEME } from "../../theme";
 import { globalConfig } from "../../../core/config";
 import { T } from "../../../translations";
-import { enumItemType } from "../../base_item";
-import { enumLayer } from "../../root";
 
 /**
  * @typedef {import("../../colors").Color} Color
@@ -44,7 +42,7 @@ export class HUDColorBlindHelper extends BaseHUDPart {
             return null;
         }
 
-        if (this.root.currentLayer !== enumLayer.regular) {
+        if (this.root.currentLayer !== "regular") {
             // Not in regular mode
             return null;
         }
@@ -59,7 +57,7 @@ export class HUDColorBlindHelper extends BaseHUDPart {
             // Check if the belt has a color item
             if (beltComp) {
                 const item = beltComp.assignedPath.findItemAtTile(tile);
-                if (item && item.getItemType() === enumItemType.color) {
+                if (item && item.getItemType() === "color") {
                     return /** @type {ColorItem} */ (item).color;
                 }
             }
@@ -72,7 +70,7 @@ export class HUDColorBlindHelper extends BaseHUDPart {
                     if (slot.layer !== this.root.currentLayer) {
                         continue;
                     }
-                    if (slot.item && slot.item.getItemType() === enumItemType.color) {
+                    if (slot.item && slot.item.getItemType() === "color") {
                         return /** @type {ColorItem} */ (slot.item).color;
                     }
                 }
@@ -80,7 +78,7 @@ export class HUDColorBlindHelper extends BaseHUDPart {
         } else {
             // We hovered a lower layer, show the color there
             const lowerLayer = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
-            if (lowerLayer && lowerLayer.getItemType() === enumItemType.color) {
+            if (lowerLayer && lowerLayer.getItemType() === "color") {
                 return /** @type {ColorItem} */ (lowerLayer).color;
             }
         }
