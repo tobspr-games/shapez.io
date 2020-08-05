@@ -2,6 +2,8 @@ import { globalConfig } from "./config";
 import { clamp, epsilonCompare, round2Digits } from "./utils";
 import { Vector } from "./vector";
 
+/** @typedef {import("./vector").Angle} Angle **/
+
 export class Rectangle {
     constructor(x = 0, y = 0, w = 0, h = 0) {
         this.x = x;
@@ -56,7 +58,7 @@ export class Rectangle {
     /**
      * Returns a rectangle arround a rotated point
      * @param {Array<Vector>} points
-     * @param {number} angle
+     * @param {Angle} angle
      * @returns {Rectangle}
      */
     static getAroundPointsRotated(points, angle) {

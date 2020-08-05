@@ -1,4 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { MinerComponent } from "../components/miner";
 import { Entity } from "../entity";
@@ -49,7 +49,7 @@ export class MetaMinerBuilding extends MetaBuilding {
         entity.addComponent(new MinerComponent({}));
         entity.addComponent(
             new ItemEjectorComponent({
-                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+                slots: [{ pos: new Vector(0, 0), direction: "top" }],
             })
         );
     }

@@ -1,5 +1,5 @@
 import { formatItemsPerSecond } from "../../core/utils";
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -81,7 +81,7 @@ export class MetaCutterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         filter: enumItemType.shape,
                     },
                 ],
@@ -99,18 +99,18 @@ export class MetaCutterBuilding extends MetaBuilding {
         switch (variant) {
             case defaultBuildingVariant: {
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(1, 0), direction: enumDirection.top },
+                    { pos: new Vector(0, 0), direction: "top" },
+                    { pos: new Vector(1, 0), direction: "top" },
                 ]);
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.cutter;
                 break;
             }
             case enumCutterVariants.quad: {
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(1, 0), direction: enumDirection.top },
-                    { pos: new Vector(2, 0), direction: enumDirection.top },
-                    { pos: new Vector(3, 0), direction: enumDirection.top },
+                    { pos: new Vector(0, 0), direction: "top" },
+                    { pos: new Vector(1, 0), direction: "top" },
+                    { pos: new Vector(2, 0), direction: "top" },
+                    { pos: new Vector(3, 0), direction: "top" },
                 ]);
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.cutterQuad;
                 break;

@@ -2,7 +2,7 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Entity } from "../entity";
-import { enumDirectionToVector, enumDirectionToAngle } from "../../core/vector";
+import { directionAngleMap, directionVectorMap } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { Loader } from "../../core/loader";
 import { drawRotatedSprite } from "../../core/draw_utils";
@@ -93,7 +93,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             }
 
             const slotWorldPos = staticComp.applyRotationToVector(slotData.pos).add(staticComp.origin);
-            const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];
+            const fadeOutDirection = directionVectorMap[staticComp.localDirectionToWorld(direction)];
             const finalTile = slotWorldPos.subScalars(
                 fadeOutDirection.x * (animProgress / 2 - 0.5),
                 fadeOutDirection.y * (animProgress / 2 - 0.5)
@@ -131,7 +131,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             }
 
             const transformedPos = staticComp.localTileToWorld(pos);
-            const angle = enumDirectionToAngle[staticComp.localDirectionToWorld(direction)];
+            const angle = directionAngleMap[staticComp.localDirectionToWorld(direction)];
 
             // SYNC with systems/belt.js:drawSingleEntity!
             const animationIndex = Math.floor(

@@ -1,9 +1,11 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { BeltPath } from "../belt_path";
 import { Component } from "../component";
 import { Entity } from "../entity";
 import { enumLayer } from "../root";
+
+/** @typedef {import("../../core/vector").Direction} Direction **/
 
 export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 
@@ -26,9 +28,9 @@ export class BeltComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {enumDirection=} param0.direction The direction of the belt
+     * @param {Direction=} param0.direction The direction of the belt
      */
-    constructor({ direction = enumDirection.top }) {
+    constructor({ direction = "top" }) {
         super();
 
         this.direction = direction;
@@ -53,7 +55,7 @@ export class BeltComponent extends Component {
         if (layer === enumLayer.wires) {
             return 1.0;
         }
-        return this.direction === enumDirection.top ? 1.0 : curvedBeltLength;
+        return this.direction === "top" ? 1.0 : curvedBeltLength;
     }
 
     /**
@@ -69,11 +71,11 @@ export class BeltComponent extends Component {
         switch (layer) {
             case enumLayer.regular: {
                 switch (this.direction) {
-                    case enumDirection.top:
+                    case "top":
                         assert(progress <= 1.02, "Invalid progress: " + progress);
                         return new Vector(0, 0.5 - progress);
 
-                    case enumDirection.right: {
+                    case "right": {
                         assert(progress <= curvedBeltLength + 0.02, "Invalid progress 2: " + progress);
                         const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
                         return new Vector(
@@ -81,7 +83,7 @@ export class BeltComponent extends Component {
                             0.5 - 0.5 * Math.sin(arcProgress)
                         );
                     }
-                    case enumDirection.left: {
+                    case "left": {
                         assert(progress <= curvedBeltLength + 0.02, "Invalid progress 3: " + progress);
                         const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
                         return new Vector(
@@ -97,15 +99,15 @@ export class BeltComponent extends Component {
             case enumLayer.wires: {
                 const pow = 0.5;
                 switch (this.direction) {
-                    case enumDirection.top:
+                    case "top":
                         assert(progress <= 1.02, "Invalid progress: " + progress);
                         return new Vector(0, 0.5 - progress);
 
-                    case enumDirection.right: {
+                    case "right": {
                         assert(progress <= 1.02, "Invalid progress 2: " + progress);
                         return progress > 0.5 ? new Vector(progress - 0.5, 0) : new Vector(0, 0.5 - progress);
                     }
-                    case enumDirection.left: {
+                    case "left": {
                         assert(progress <= 1.02, "Invalid progress 3: " + progress);
                         return progress > 0.5
                             ? new Vector(-progress + 0.5, 0)

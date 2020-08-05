@@ -1,4 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { enumItemType } from "../base_item";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -82,14 +82,14 @@ export class MetaWireCrossingsBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         layer: enumLayer.wires,
                     },
                 ]);
 
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.wires },
-                    { pos: new Vector(0, 0), direction: enumDirection.right, layer: enumLayer.wires },
+                    { pos: new Vector(0, 0), direction: "top", layer: enumLayer.wires },
+                    { pos: new Vector(0, 0), direction: "right", layer: enumLayer.wires },
                 ]);
 
                 break;
@@ -98,18 +98,18 @@ export class MetaWireCrossingsBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.top],
+                        directions: ["top"],
                         layer: enumLayer.wires,
                     },
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.right],
+                        directions: ["right"],
                         layer: enumLayer.wires,
                     },
                 ]);
 
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.bottom, layer: enumLayer.wires },
+                    { pos: new Vector(0, 0), direction: "bottom", layer: enumLayer.wires },
                 ]);
                 break;
             }

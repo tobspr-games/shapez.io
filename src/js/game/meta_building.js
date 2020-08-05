@@ -7,6 +7,8 @@ import { Entity } from "./entity";
 import { enumLayer, GameRoot } from "./root";
 import { getCodeFromBuildingData } from "./building_codes";
 
+/** @typedef {import("../core/vector").Angle} Angle **/
+
 export const defaultBuildingVariant = "default";
 
 export class MetaBuilding {
@@ -150,8 +152,8 @@ export class MetaBuilding {
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.origin Origin tile
-     * @param {number=} param0.rotation Rotation
-     * @param {number} param0.originalRotation Original Rotation
+     * @param {Angle=} param0.rotation Rotation
+     * @param {Angle} param0.originalRotation Original Rotation
      * @param {number} param0.rotationVariant Rotation variant
      * @param {string} param0.variant
      */
@@ -192,10 +194,10 @@ export class MetaBuilding {
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.tile
-     * @param {number} param0.rotation
+     * @param {Angle} param0.rotation
      * @param {string} param0.variant
      * @param {string} param0.layer
-     * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
+     * @return {{ rotation: Angle, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
         if (!this.isRotateable(variant)) {

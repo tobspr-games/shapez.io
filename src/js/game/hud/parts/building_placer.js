@@ -4,12 +4,7 @@ import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite, rotateTrapezRightFaced } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
 import { clamp, makeDiv, removeAllChildren } from "../../../core/utils";
-import {
-    enumDirectionToAngle,
-    enumDirectionToVector,
-    enumInvertedDirections,
-    Vector,
-} from "../../../core/vector";
+import { directionVectorMap, directionAngleMap, invertedDirectionMap, Vector } from "../../../core/vector";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant } from "../../meta_building";
@@ -459,7 +454,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     const worldDirection = staticComp.localDirectionToWorld(direction);
 
                     // Figure out which tile ejects to this slot
-                    const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
+                    const sourceTile = acceptorSlotWsTile.add(directionVectorMap[worldDirection]);
 
                     let isBlocked = false;
                     let isConnected = false;
@@ -505,7 +500,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                         sprite,
                         x: acceptorSlotWsPos.x,
                         y: acceptorSlotWsPos.y,
-                        angle: Math.radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
+                        angle: Math.radians(directionAngleMap[invertedDirectionMap[worldDirection]]),
                         size: 13,
                         offsetY: offsetShift + 13,
                     });
@@ -574,7 +569,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     sprite,
                     x: ejectorSLotWsPos.x,
                     y: ejectorSLotWsPos.y,
-                    angle: Math.radians(enumDirectionToAngle[ejectorSlotWsDirection]),
+                    angle: Math.radians(directionAngleMap[ejectorSlotWsDirection]),
                     size: 13,
                     offsetY: offsetShift,
                 });

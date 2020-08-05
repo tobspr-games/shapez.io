@@ -1,4 +1,4 @@
-import { Vector, enumDirection, enumDirectionToVector } from "../../core/vector";
+import { directions, directionVectorMap, Vector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { types } from "../../savegame/serialization";
@@ -7,13 +7,15 @@ import { Entity } from "../entity";
 import { enumLayer } from "../root";
 
 /**
+ * @typedef {import("../../core/vector").Direction} Direction
+ * @typedef {import("./item_acceptor").ItemAcceptorLocatedSlot} ItemAcceptorLocatedSlot
  * @typedef {{
  *    pos: Vector,
- *    direction: enumDirection,
+ *    direction: Direction,
  *    item: BaseItem,
  *    layer: enumLayer,
  *    progress: number?,
- *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
+ *    cachedDestSlot?: ItemAcceptorLocatedSlot,
  *    cachedTargetEntity?: Entity
  * }} ItemEjectorSlot
  */
@@ -31,7 +33,7 @@ export class ItemEjectorComponent extends Component {
             slots: types.array(
                 types.structured({
                     pos: types.vector,
-                    direction: types.enum(enumDirection),
+                    direction: types.enum(directions),
                     item: types.nullable(types.obj(gItemRegistry)),
                     progress: types.float,
 
@@ -62,7 +64,7 @@ export class ItemEjectorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>=} param0.slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: Direction, layer?: enumLayer}>=} param0.slots The slots to eject on
      * @param {boolean=} param0.instantEject If the ejection is instant
      */
     constructor({ slots = [], instantEject = false }) {
@@ -83,7 +85,7 @@ export class ItemEjectorComponent extends Component {
     }
 
     /**
-     * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>} slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: Direction, layer?: enumLayer}>} slots The slots to eject on
      */
     setSlots(slots) {
         /** @type {Array<ItemEjectorSlot>} */
@@ -109,7 +111,7 @@ export class ItemEjectorComponent extends Component {
      */
     getSlotTargetLocalTile(index) {
         const slot = this.slots[index];
-        const directionVector = enumDirectionToVector[slot.direction];
+        const directionVector = directionVectorMap[slot.direction];
         return slot.pos.add(directionVector);
     }
 

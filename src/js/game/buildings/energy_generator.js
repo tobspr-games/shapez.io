@@ -1,4 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { enumItemType } from "../base_item";
 import { EnergyGeneratorComponent } from "../components/energy_generator";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
@@ -50,17 +50,17 @@ export class MetaEnergyGenerator extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(1, 1),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         filter: enumItemType.shape,
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.top],
+                        directions: ["top"],
                         layer: enumLayer.wires,
                         filter: enumItemType.negativeEnergy,
                     },
@@ -73,7 +73,7 @@ export class MetaEnergyGenerator extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                         layer: enumLayer.wires,
                     },
                 ],
@@ -95,12 +95,12 @@ export class MetaEnergyGenerator extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         type: enumPinSlotType.positiveEnergyEjector,
-                        direction: enumDirection.top,
+                        direction: "top",
                     },
                     {
                         pos: new Vector(1, 0),
                         type: enumPinSlotType.negativeEnergyAcceptor,
-                        direction: enumDirection.top,
+                        direction: "top",
                     },
                 ],
             })

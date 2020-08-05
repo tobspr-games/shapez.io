@@ -1,4 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
@@ -85,12 +85,7 @@ export class MetaTrashBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [
-                            enumDirection.top,
-                            enumDirection.right,
-                            enumDirection.bottom,
-                            enumDirection.left,
-                        ],
+                        directions: ["top", "right", "bottom", "left"],
                     },
                 ],
             })
@@ -121,12 +116,7 @@ export class MetaTrashBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [
-                            enumDirection.top,
-                            enumDirection.right,
-                            enumDirection.bottom,
-                            enumDirection.left,
-                        ],
+                        directions: ["top", "right", "bottom", "left"],
                     },
                 ]);
                 entity.components.ItemEjector.setSlots([]);
@@ -145,22 +135,22 @@ export class MetaTrashBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                     {
                         pos: new Vector(1, 1),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                 ]);
 
                 entity.components.ItemEjector.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                     },
                     {
                         pos: new Vector(1, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                     },
                 ]);
                 break;

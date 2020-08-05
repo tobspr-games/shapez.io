@@ -9,6 +9,8 @@ import { createLogger } from "./logging";
 
 const logger = createLogger("draw_utils");
 
+/** @typedef {import("./vector").Angle} Angle **/
+
 export function initDrawUtils() {
     CanvasRenderingContext2D.prototype.beginRoundedRect = function (x, y, w, h, r) {
         if (r < 0.05) {
@@ -284,7 +286,7 @@ export function wrapText(context, text, x, y, maxWidth, lineHeight, stroke = fal
  * @param {number} w
  * @param {number} h
  * @param {number} leftHeight
- * @param {number} angle
+ * @param {Angle} angle
  */
 export function rotateTrapezRightFaced(x, y, w, h, leftHeight, angle) {
     const halfY = y + h / 2;

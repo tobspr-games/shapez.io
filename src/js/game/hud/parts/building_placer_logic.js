@@ -2,7 +2,13 @@ import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { Signal, STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
-import { Vector } from "../../../core/vector";
+import {
+    clockwiseAngleMap,
+    counterClockwiseAngleMap,
+    inverseAngleMap,
+    snapToAngle,
+    Vector,
+} from "../../../core/vector";
 import { enumMouseButton } from "../../camera";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { Entity } from "../../entity";
@@ -14,6 +20,8 @@ import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { enumLayer } from "../../root";
 import { getBuildingDataFromCode, getCodeFromBuildingData } from "../../building_codes";
+
+/** @typedef {import("../../../core/vector").Angle} Angle **/
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -46,13 +54,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         /**
          * The current rotation
-         * @type {number}
+         * @type {Angle}
          */
         this.currentBaseRotationGeneral = 0;
 
         /**
          * The current rotation preference for each building.
-         * @type{Object.<string,number>}
+         * @type{Object.<string,Angle>}
          */
         this.preferredBaseRotations = {};
 
@@ -146,7 +154,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Returns the current base rotation for the current meta-building.
-     * @returns {number}
+     * @returns {Angle}
      */
     get currentBaseRotation() {
         if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
@@ -162,7 +170,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Sets the base rotation for the current meta-building.
-     * @param {number} rotation The new rotation/angle.
+     * @param {Angle} rotation The new rotation/angle.
      */
     set currentBaseRotation(rotation) {
         if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
@@ -274,9 +282,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const selectedBuilding = this.currentMetaBuilding.get();
         if (selectedBuilding) {
             if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
-                this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
+                this.currentBaseRotation = counterClockwiseAngleMap[this.currentBaseRotation];
             } else {
-                this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
+                this.currentBaseRotation = clockwiseAngleMap[this.currentBaseRotation];
             }
             const staticComp = this.fakeEntity.components.StaticMapEntity;
             staticComp.rotation = this.currentBaseRotation;
@@ -416,7 +424,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation
                 ).pressed
             ) {
-                this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
+                this.currentBaseRotation = inverseAngleMap[this.currentBaseRotation];
             }
 
             // Check if we should stop placement
@@ -500,7 +508,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Finds the path which the current direction lock will use
-     * @returns {Array<{ tile: Vector, rotation: number }>}
+     * @returns {Array<{ tile: Vector, rotation: Angle }>}
      */
     computeDirectionLockPath() {
         const mousePosition = this.root.app.mousePosition;
@@ -529,7 +537,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const lengthToCorner = Math.round(pathToCorner.length());
         let currentPos = startTile.copy();
 
-        let rotation = (Math.round(Math.degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
+        let rotation = snapToAngle(deltaToCorner.angle());
 
         if (lengthToCorner > 0) {
             for (let i = 0; i < lengthToCorner; ++i) {
@@ -547,7 +555,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const lengthFromCorner = Math.round(pathFromCorner.length());
 
         if (lengthFromCorner > 0) {
-            rotation = (Math.round(Math.degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
+            rotation = snapToAngle(deltaFromCorner.angle());
             for (let i = 0; i < lengthFromCorner + 1; ++i) {
                 result.push({
                     tile: currentPos.copy(),
@@ -683,12 +691,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     ).pressed
                 ) {
                     const delta = newPos.sub(oldPos);
-                    const angleDeg = Math.degrees(delta.angle());
-                    this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
+                    this.currentBaseRotation = snapToAngle(delta.angle());
 
                     // Holding alt inverts the placement
                     if (this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse).pressed) {
-                        this.currentBaseRotation = (180 + this.currentBaseRotation) % 360;
+                        this.currentBaseRotation = inverseAngleMap[this.currentBaseRotation];
                     }
                 }
 

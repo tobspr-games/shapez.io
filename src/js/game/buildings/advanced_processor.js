@@ -1,5 +1,5 @@
 import { formatItemsPerSecond } from "../../core/utils";
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { enumItemType } from "../base_item";
 import { EnergyConsumerComponent } from "../components/energy_consumer";
@@ -57,8 +57,8 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [
-                    { pos: new Vector(1, 0), direction: enumDirection.right },
-                    { pos: new Vector(1, 0), direction: enumDirection.top, layer: enumLayer.wires },
+                    { pos: new Vector(1, 0), direction: "right" },
+                    { pos: new Vector(1, 0), direction: "top", layer: enumLayer.wires },
                 ],
             })
         );
@@ -77,12 +77,12 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                         type: enumPinSlotType.positiveEnergyAcceptor,
                     },
                     {
                         pos: new Vector(1, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                         type: enumPinSlotType.negativeEnergyEjector,
                     },
                 ],
@@ -93,11 +93,11 @@ export class MetaAdvancedProcessorBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.left],
+                        directions: ["left"],
                     },
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.top],
+                        directions: ["top"],
                         filter: enumItemType.positiveEnergy,
                         layer: enumLayer.wires,
                     },

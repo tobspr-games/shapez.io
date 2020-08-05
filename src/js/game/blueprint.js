@@ -1,7 +1,7 @@
 import { DrawParameters } from "../core/draw_parameters";
 import { Loader } from "../core/loader";
 import { createLogger } from "../core/logging";
-import { Vector } from "../core/vector";
+import { clockwiseAngleMap, counterClockwiseAngleMap, Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { GameRoot, enumLayer } from "./root";
 import { findNiceIntegerValue } from "../core/utils";
@@ -111,19 +111,23 @@ export class Blueprint {
             const entity = this.entities[i];
             const staticComp = entity.components.StaticMapEntity;
 
-            staticComp.rotation = (staticComp.rotation + 90) % 360;
-            staticComp.originalRotation = (staticComp.originalRotation + 90) % 360;
+            staticComp.rotation = clockwiseAngleMap[staticComp.rotation];
+            staticComp.originalRotation = clockwiseAngleMap[staticComp.originalRotation];
             staticComp.origin = staticComp.origin.rotateFastMultipleOf90(90);
         }
     }
 
     /**
-     * Rotates the blueprint counter clock wise
+     * Rotates the blueprint counter-clockwise
      */
     rotateCcw() {
-        // Well ...
-        for (let i = 0; i < 3; ++i) {
-            this.rotateCw();
+        for (let i = 0; i < this.entities.length; ++i) {
+            const entity = this.entities[i];
+            const staticComp = entity.components.StaticMapEntity;
+
+            staticComp.rotation = counterClockwiseAngleMap[staticComp.rotation];
+            staticComp.originalRotation = counterClockwiseAngleMap[staticComp.originalRotation];
+            staticComp.origin = staticComp.origin.rotateFastMultipleOf90(270);
         }
     }
 
