@@ -109,6 +109,8 @@ export class SettingsState extends TextualGameState {
 
         this.htmlElement.querySelector(".category").classList.add("active");
         this.htmlElement.querySelector(".categoryButton").classList.add("active");
+
+        this.setActiveCategory(enumCategories.general);
     }
 
     setActiveCategory(category) {

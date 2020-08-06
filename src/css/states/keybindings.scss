@@ -1,4 +1,4 @@
-#state_KeybindingsState {
+#state_SettingsState {
     .content {
         .topEntries {
             display: grid;
@@ -14,7 +14,7 @@
             @include PlainText;
         }
 
-        .category {
+        .keyCategory {
             .entry {
                 display: grid;
                 @include S(margin-top, 2px);

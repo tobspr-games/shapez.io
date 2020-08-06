@@ -650,6 +650,7 @@ settings:
         general: General
         userInterface: User Interface
         advanced: Advanced
+        keybindings: Keybindings
 
     versionBadges:
         dev: Development
