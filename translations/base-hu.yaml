@@ -366,8 +366,8 @@ ingame:
     settingsMenu:
         playtime: Játékidő
 
-        buildingsPlaced: Épületek száma:
-        beltsPlaced: Futószalagok hossza:
+        buildingsPlaced: Épületek száma&#58;
+        beltsPlaced: Futószalagok hossza&#58;
 
         buttons:
             continue: Folytatás
@@ -508,7 +508,7 @@ buildings:
             description: Beszínezi az alakzatokat a baloldali bemeneteken a fenti bemeneten érkező színnel.
         quad:
             name: Festő (Négyszeres)
-            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni. 
+            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni.
         mirrored:
             name: *painter
             description: *painter_desc

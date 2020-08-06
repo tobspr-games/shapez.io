@@ -465,11 +465,11 @@ buildings:
         default:
             name: &underground_belt Tunnel
             description: &underground_belt_description Allows you to tunnel resources under buildings and belts.
-            
+
         side:
             name: *underground_belt
             description: *underground_belt_description
-            
+
         side-mirrored:
             name: *underground_belt
             description: *underground_belt_description
@@ -477,7 +477,7 @@ buildings:
         tier2:
             name: &underground_belt_tier_2 Tunnel Tier II
             description: Allows you to tunnel resources under buildings and belts.
-            
+
         tier2-side:
             name: *underground_belt_tier_2
             description: *underground_belt_description
