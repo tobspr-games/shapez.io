@@ -80,10 +80,10 @@ export function initMetaBuildingRegistry() {
     // Underground belt
     registerBuildingVariant(22, MetaUndergroundBeltBuilding, defaultBuildingVariant, 0);
     registerBuildingVariant(23, MetaUndergroundBeltBuilding, defaultBuildingVariant, 1);
-	registerBuildingVariant(24, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.side, 0);
-	registerBuildingVariant(25, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.side, 1);
-	registerBuildingVariant(26, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.sideMirrored, 0);
-	registerBuildingVariant(27, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.sideMirrored, 1);
+    registerBuildingVariant(24, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.side, 0);
+    registerBuildingVariant(25, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.side, 1);
+    registerBuildingVariant(26, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.sideMirrored, 0);
+    registerBuildingVariant(27, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.sideMirrored, 1);
     registerBuildingVariant(28, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 0);
     registerBuildingVariant(29, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 1);
     registerBuildingVariant(30, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2Side, 0);

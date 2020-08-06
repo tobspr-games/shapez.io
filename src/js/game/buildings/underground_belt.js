@@ -231,69 +231,69 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant, variant) {
         entity.components.UndergroundBelt.tier = enumUndergroundBeltVariantToTier[variant];
-		entity.components.UndergroundBelt.direction = enumUndergroundBeltVariantToDirection[variant];
+        entity.components.UndergroundBelt.direction = enumUndergroundBeltVariantToDirection[variant];
 
         switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
             case enumUndergroundBeltMode.sender: {
                 entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.sender;
                 entity.components.ItemEjector.setSlots([]);
-				switch (enumUndergroundBeltVariantToDirection[variant]) {
-					case "straight": {
-						entity.components.ItemAcceptor.setSlots([
-							{
-								pos: new Vector(0, 0),
-								directions: [enumDirection.bottom],
-							},
-						]);
-					}
-					case "left": {
-						entity.components.ItemAcceptor.setSlots([
-							{
-								pos: new Vector(0, 0),
-								directions: [enumDirection.left],
-							},
-						]);
-					}
-					case "right": {
-						entity.components.ItemAcceptor.setSlots([
-							{
-								pos: new Vector(0, 0),
-								directions: [enumDirection.right],
-							},
-						]);
-					}
-				}
+                switch (enumUndergroundBeltVariantToDirection[variant]) {
+                    case "straight": {
+                        entity.components.ItemAcceptor.setSlots([
+                            {
+                                pos: new Vector(0, 0),
+                                directions: [enumDirection.bottom],
+                            },
+                        ]);
+                    }
+                    case "left": {
+                        entity.components.ItemAcceptor.setSlots([
+                            {
+                                pos: new Vector(0, 0),
+                                directions: [enumDirection.left],
+                            },
+                        ]);
+                    }
+                    case "right": {
+                        entity.components.ItemAcceptor.setSlots([
+                            {
+                                pos: new Vector(0, 0),
+                                directions: [enumDirection.right],
+                            },
+                        ]);
+                    }
+                }
                 return;
             }
             case enumUndergroundBeltMode.receiver: {
                 entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.receiver;
                 entity.components.ItemAcceptor.setSlots([]);
-				switch (enumUndergroundBeltVariantToDirection[variant]) {
-					case "straight": {
-						entity.components.ItemEjector.setSlots([
-							{
-								pos: new Vector(0, 0),
-								directions: [enumDirection.bottom],
-							},
-						]);
-					}
-					case "left": {
-						entity.components.ItemEjector.setSlots([
-							{
-								pos: new Vector(0, 0),
-								directions: [enumDirection.left],
-							},
-						]);
-					}
-					case "right": {
-						entity.components.ItemEjector.setSlots([
-							{
-								pos: new Vector(0, 0),
-								directions: [enumDirection.right],
-							},
-						]);
-					}
-				}
+                switch (enumUndergroundBeltVariantToDirection[variant]) {
+                    case "straight": {
+                        entity.components.ItemEjector.setSlots([
+                            {
+                                pos: new Vector(0, 0),
+                                directions: [enumDirection.bottom],
+                            },
+                        ]);
+                    }
+                    case "left": {
+                        entity.components.ItemEjector.setSlots([
+                            {
+                                pos: new Vector(0, 0),
+                                directions: [enumDirection.left],
+                            },
+                        ]);
+                    }
+                    case "right": {
+                        entity.components.ItemEjector.setSlots([
+                            {
+                                pos: new Vector(0, 0),
+                                directions: [enumDirection.right],
+                            },
+                        ]);
+                    }
+                }
                 return;
             }
             default:
