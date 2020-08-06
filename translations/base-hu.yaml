@@ -235,12 +235,12 @@ dialogs:
         title: Törlés megerősítése
         desc: >-
             Egy csomó épületet akarsz egyszerre törölni (egészen pontosan <count>-t)! Biztos, hogy ezt szeretnéd?
-    
+
     massCutConfirm:
         title: Biztosan kivágod?
         desc: >-
             Egy csomó épületet akarsz egyszerre kivágni (egészen pontosan <count>-t)! Biztos, hogy ezt szeretnéd?
-    
+
     massCutInsufficientConfirm:
         title: Kivágás megerősítése
         desc: Nincs elég Tervrajzod ennek a beillsztéséhez! Egészen biztos, hogy kivágod?
@@ -365,8 +365,8 @@ ingame:
     settingsMenu:
         playtime: Játékidő
 
-        buildingsPlaced: Épületek száma:
-        beltsPlaced: Futószalagok hossza:
+        buildingsPlaced: Épületek száma
+        beltsPlaced: Futószalagok hossza
 
         buttons:
             continue: Folytatás
@@ -507,7 +507,7 @@ buildings:
             description: Beszínezi az alakzatokat a baloldali bemeneteken a fenti bemeneten érkező színnel.
         quad:
             name: Festő (Négyszeres)
-            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni. 
+            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni.
         mirrored:
             name: *painter
             description: *painter_desc
