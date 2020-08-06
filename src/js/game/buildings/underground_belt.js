@@ -19,7 +19,7 @@ export const arrayUndergroundRotationVariantToMode = [
 
 /** @enum {string} */
 //Github insisted these needed to be on multiple lines to pass a check.
-export const enumUndergroundBeltVariants = { 
+export const enumUndergroundBeltVariants = {
     side: "side",
     sideMirrored: "side-mirrored",
     tier2: "tier2",

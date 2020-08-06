@@ -93,13 +93,13 @@ export function initMetaBuildingRegistry() {
         32,
         MetaUndergroundBeltBuilding,
         enumUndergroundBeltVariants.tier2SideMirrored,
-        0,
+        0
     );
     registerBuildingVariant(
         33,
         MetaUndergroundBeltBuilding,
         enumUndergroundBeltVariants.tier2SideMirrored,
-        1,
+        1
     );
 
     // Hub
