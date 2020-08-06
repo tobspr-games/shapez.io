@@ -481,7 +481,7 @@ buildings:
         tier2-side:
             name: *underground_belt_tier_2
             description: *underground_belt_description
-            
+
         tier2-side-mirrored:
             name: *underground_belt_tier_2
             description: *underground_belt_description
