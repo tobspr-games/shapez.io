@@ -496,23 +496,7 @@ buildings:
             name: &underground_belt Tunel
             description: Allows to tunnel resources under buildings and belts.
 
-        side:
-            name: &underground_belt Tunel
-            description: Allows to tunnel resources under buildings and belts.
-
-        side-mirrored:
-            name: &underground_belt Tunel
-            description: Allows to tunnel resources under buildings and belts.
-
         tier2:
-            name: Tunel razine II
-            description: Allows to tunnel resources under buildings and belts.
-
-        tier2-side:
-            name: Tunel razine II
-            description: Allows to tunnel resources under buildings and belts.
-
-        tier2-side-mirrored:
             name: Tunel razine II
             description: Allows to tunnel resources under buildings and belts.
 

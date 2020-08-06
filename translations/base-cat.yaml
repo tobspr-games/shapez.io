@@ -459,23 +459,7 @@ buildings:
             name: &underground_belt Túnel
             description: Permet transportar recursos per sota d'edificis i cintes.
 
-        side:
-            name: &underground_belt Túnel
-            description: Permet transportar recursos per sota d'edificis i cintes.
-
-        side-mirrored:
-            name: &underground_belt Túnel
-            description: Permet transportar recursos per sota d'edificis i cintes.
-
         tier2:
-            name: Túnel de Nivell II
-            description: Permet transportar recursos per sota d'edificis i cintes.
-
-        tier2-side:
-            name: Túnel de Nivell II
-            description: Permet transportar recursos per sota d'edificis i cintes.
-
-        tier2-side-mirrored:
             name: Túnel de Nivell II
             description: Permet transportar recursos per sota d'edificis i cintes.
 

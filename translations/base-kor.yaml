@@ -457,23 +457,7 @@ buildings:
             name: &underground_belt 터널
             description: 도형을 건물과 벨트 밑으로 통과시킴.
 
-        side:
-            name: &underground_belt 터널
-            description: 도형을 건물과 벨트 밑으로 통과시킴.
-
-        side-mirrored:
-            name: &underground_belt 터널
-            description: 도형을 건물과 벨트 밑으로 통과시킴.
-
         tier2:
-            name: 터널 티어 II
-            description: 도형을 건물과 벨트 밑으로 통과시킴.
-
-        tier2-side:
-            name: 터널 티어 II
-            description: 도형을 건물과 벨트 밑으로 통과시킴.
-
-        tier2-side-mirrored:
             name: 터널 티어 II
             description: 도형을 건물과 벨트 밑으로 통과시킴.
 

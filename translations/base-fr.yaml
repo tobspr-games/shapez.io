@@ -33,13 +33,13 @@ steamPage:
         shapez.io est un jeu dans lequel vous devrez construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
         Lors de la livraison des formes requises vous progresserez et débloquerez des améliorations pour accélerer votre usine.
 
-        Au vu de l'augmantation des demandes de formes, vous devrez agrandir votre usine pour répondre à la forte demande - Mais n'oubliez pas les ressources, vous drevrez vous étendre au milieu de cette [b]carte infinie[/b] !
+        Au vu de l'augmentation des demandes de formes, vous devrez agrandir votre usine pour répondre à la forte demande - Mais n'oubliez pas les ressources, vous drevrez vous étendre au milieu de cette [b]carte infinie[/b] !
 
         Bientôt vous devrez mixer les couleurs et peindre vos formes avec - Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec pour satisfaire la demande.
 
-        Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper des heures!) mais j'ajoute constamment de nouveau contenus - Il y en a beaucoup de prévus !
+        Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper quelques heures !) mais j'ajoute constamment de nouveau contenus - Il y en a beaucoup de prévus !
 
-        Acheter le jeu vous donne accès à la version complète qui a des fonctionnalitées additionnelles et vous recevrez aussi un accès à des fonctionnalitées fraîchement développées.
+        Acheter le jeu vous donne accès à la version complète qui a des fonctionnalités additionnelles et vous recevrez aussi un accès à des fonctionnalités fraîchement développées.
 
         [b]Avantages de la version complète (standalone)[/b]
 
@@ -59,11 +59,11 @@ steamPage:
 
         [list]
             [*] Différentes cartes et challenges (e.g. carte avec obstacles)
-            [*] Puzzles (Délivrer la forme requise avec une zone limitée/jeu de batîments)
-            [*] Un mode histoire où les batîments ont un coût
-            [*] Générateur de carte configurable (configuration des ressources/formes taille/densitée, graine et plus)
+            [*] Puzzles (Délivrer la forme requise avec une zone limitée/jeu de bâtiments)
+            [*] Un mode histoire où les bâtiments ont un coût
+            [*] Générateur de carte configurable (configuration des ressources/formes/taille/densitée, seed et plus)
             [*] Plus de formes
-            [*] Amélioration des performances (Le jeu tourne déjà plutot bien!)
+            [*] Amélioration des performances (Le jeu tourne déjà plutot bien !)
             [*] Et bien plus !
         [/list]
 
@@ -127,7 +127,7 @@ global:
         control: CTRL
         alt: ALT
         escape: ESC
-        shift: SHIFT
+        shift: MAJ
         space: ESPACE
 
 demoBanners:
@@ -140,13 +140,13 @@ mainMenu:
     play: Jouer
     changelog: Historique
     importSavegame: Importer
-    openSourceHint: Ce jeu est open source!
+    openSourceHint: Ce jeu est open source !
     discordLink: Serveur Discord officiel
-    helpTranslate: Contribuez à la traduction!
+    helpTranslate: Contribuez à la traduction !
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Désolé, mais ce jeu est connu pour tourner lentement sur votre navigateur web ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
+        Désolé, ce jeu est connu pour tourner lentement sur votre navigateur web ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
@@ -234,12 +234,12 @@ dialogs:
     massDeleteConfirm:
         title: Confirmation de suppression
         desc: >-
-            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Êtes vous certains de vouloir faire cela ?
+            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Êtes vous certains de vouloir faire ça ?
 
     massCutConfirm:
         title: Confirmer la coupure
         desc: >-
-            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être précis) ! Êtes-vous certains de vouloir faire cela ?
+            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être précis) ! Êtes-vous certains de vouloir faire ça ?
 
     blueprintsNotUnlocked:
         title: Pas encore débloqué
@@ -351,10 +351,10 @@ ingame:
                 description: Affiche le nombre de formes stockées dans votre bâtiment central.
             produced:
                 title: Produit
-                description: Affiche tous les formes que votre usine entière produit, en incluant les formes intermédiaires.
+                description: Affiche tous les formes que votre usine produit, en incluant les formes intermédiaires.
             delivered:
                 title: Délivré
-                description: Affiche les formes qui ont été livrées dans votre centre.
+                description: Affiche les formes qui ont été livrées dans votre bâtiment central.
         noShapesProduced: Aucune forme n'a été produite jusqu'à présent.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -398,7 +398,7 @@ ingame:
                 Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
 
             1_3_expand: >-
-                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
     colors:
         red: Rouge
@@ -454,23 +454,7 @@ buildings:
             name: &underground_belt Tunnel
             description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
-        side:
-            name: &underground_belt Tunnel
-            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
-
-        side-mirrored:
-            name: &underground_belt Tunnel
-            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
-
         tier2:
-            name: Tunnel Niveau II
-            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
-
-        tier2-side:
-            name: Tunnel Niveau II
-            description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
-
-        tier2-side-mirrored:
             name: Tunnel Niveau II
             description: Permet de faire passer des ressources en dessous de bâtiment et de convoyeurs.
 
@@ -503,8 +487,8 @@ buildings:
             name: Pivoteur inversé
             description: Fait pivoter une forme de 90 degrés vers la gauche.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Pivoteur (180)
+            description: Fait pivoter les formes de 90 degrés.
 
     stacker:
         default:
@@ -723,9 +707,9 @@ settings:
                 Affiche ou non le bouton 'Afficher un indice' dans le coin inférieur gauche.
 
         language:
-            title: Langage
+            title: Langue
             description: >-
-                Change le langage. Toutes les traductions sont des contributions des utilisateurs et pourraient être partiellement incomplètes !
+                Change la langue. Toutes les traductions sont des contributions des utilisateurs et pourraient être partiellement incomplètes !
 
         movementSpeed:
             title: Vitesse de déplacement

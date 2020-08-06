@@ -465,23 +465,7 @@ buildings:
             name: &underground_belt Túnel
             description: Permite contruir un túnel para transportar los elementos por debajo de edificios y otras cintas transportadoras.
 
-        side:
-            name: &underground_belt Túnel
-            description: Permite contruir un túnel para transportar los elementos por debajo de edificios y otras cintas transportadoras.
-
-        side-mirrored:
-            name: &underground_belt Túnel
-            description: Permite contruir un túnel para transportar los elementos por debajo de edificios y otras cintas transportadoras.
-
         tier2:
-            name: Túnel nivel II
-            description: Permite contruir un túnel para transportar los elementos por debajo de edificios y otras cintas transportadoras.
-
-        tier2-side:
-            name: Túnel nivel II
-            description: Permite contruir un túnel para transportar los elementos por debajo de edificios y otras cintas transportadoras.
-
-        tier2-side-mirrored:
             name: Túnel nivel II
             description: Permite contruir un túnel para transportar los elementos por debajo de edificios y otras cintas transportadoras.
 

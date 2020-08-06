@@ -451,23 +451,7 @@ buildings:
             name: &underground_belt Tunnel
             description: Laat voorwerpen onder gebouwen en lopende banden door lopen.
 
-        side:
-            name: &underground_belt Tunnel
-            description: Laat voorwerpen onder gebouwen en lopende banden door lopen.
-
-        side-mirrored:
-            name: &underground_belt Tunnel
-            description: Laat voorwerpen onder gebouwen en lopende banden door lopen.
-
         tier2:
-            name: Tunnel Niveau II
-            description: Laat voorwerpen onder gebouwen en lopende banden door lopen.
-
-        tier2-side:
-            name: Tunnel Niveau II
-            description: Laat voorwerpen onder gebouwen en lopende banden door lopen.
-
-        tier2-side-mirrored:
             name: Tunnel Niveau II
             description: Laat voorwerpen onder gebouwen en lopende banden door lopen.
 

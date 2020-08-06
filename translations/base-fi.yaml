@@ -462,23 +462,7 @@ buildings:
             name: &underground_belt Tunneli
             description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
 
-        side:
-            name: &underground_belt Tunneli
-            description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
-
-        side-mirrored:
-            name: &underground_belt Tunneli
-            description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
-
         tier2:
-            name: Tunneli Taso II
-            description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
-
-        tier2-side:
-            name: Tunneli Taso II
-            description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
-
-        tier2-side-mirrored:
             name: Tunneli Taso II
             description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
 
