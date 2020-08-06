@@ -115,7 +115,6 @@ export class BackgroundResourcesLoader {
             })
             .then(() => {
                 logger.log("⏰ Finish load: bare game");
-                Loader.createAtlasLinks();
                 this.bareGameReady = true;
                 initBuildingCodesAfterResourcesLoaded();
                 this.signalBareGameLoaded.dispatch();

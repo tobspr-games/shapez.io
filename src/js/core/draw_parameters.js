@@ -1,9 +1,9 @@
-import { Rectangle } from "./rectangle";
 import { globalConfig } from "./config";
 
-/* typehints:start */
-import { GameRoot } from "../game/root";
-/* typehints:end */
+/**
+ * @typedef {import("../game/root").GameRoot} GameRoot
+ * @typedef {import("./rectangle").Rectangle} Rectangle
+ */
 
 export class DrawParameters {
     constructor({ context, visibleRect, desiredAtlasScale, zoomLevel, root }) {

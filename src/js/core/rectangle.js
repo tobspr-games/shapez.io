@@ -1,5 +1,5 @@
 import { globalConfig } from "./config";
-import { clamp, epsilonCompare, round2Digits } from "./utils";
+import { epsilonCompare, round2Digits } from "./utils";
 import { Vector } from "./vector";
 
 export class Rectangle {

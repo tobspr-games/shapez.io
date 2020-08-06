@@ -1,11 +1,10 @@
 import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
-import { globalConfig, IS_DEBUG, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
+import { globalConfig, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
 import {
     makeDiv,
     makeButtonElement,
     formatSecondsToTimeAgo,
-    generateFileDownload,
     waitNextFrame,
     isSupportedBrowser,
     makeButton,
@@ -14,9 +13,29 @@ import {
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { T } from "../translations";
-import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { getApplicationSettingById } from "../profile/application_settings";
-import { EnumSetting } from "../profile/setting_types";
+
+/**
+ * @typedef {import("../savegame/savegame_typedefs").SavegameMetadata} SavegameMetadata
+ * @typedef {import("../profile/setting_types").EnumSetting} EnumSetting
+ */
+
+/**
+ * Generates a file download
+ * @param {string} filename
+ * @param {string} text
+ */
+function generateFileDownload(filename, text) {
+    var element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    element.setAttribute("download", filename);
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+    document.body.removeChild(element);
+}
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -128,7 +147,6 @@ export class MainMenuState extends GameState {
                     const closeLoader = this.dialogs.showLoadingDialog();
                     const reader = new FileReader();
                     reader.addEventListener("load", event => {
-                        // @ts-ignore
                         const contents = event.target.result;
                         let realContent;
 
@@ -394,7 +412,7 @@ export class MainMenuState extends GameState {
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
      */
     resumeGame(game) {
         this.app.analytics.trackUiClick("resume_game");
@@ -419,7 +437,7 @@ export class MainMenuState extends GameState {
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
      */
     deleteGame(game) {
         this.app.analytics.trackUiClick("delete_game");
@@ -447,7 +465,7 @@ export class MainMenuState extends GameState {
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
      */
     downloadGame(game) {
         this.app.analytics.trackUiClick("download_game");

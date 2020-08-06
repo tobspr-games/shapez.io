@@ -1,8 +1,6 @@
-/* typehints:start */
-import { Application } from "../application";
-import { ShapeDefinition } from "../game/shape_definition";
-import { Savegame } from "../savegame/savegame";
-/* typehints:end */
+/**
+ * @typedef {import("../application").Application} Application
+ */
 
 export class GameAnalyticsInterface {
     constructor(app) {
