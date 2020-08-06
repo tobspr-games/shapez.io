@@ -88,8 +88,19 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(29, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 1);
     registerBuildingVariant(30, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2Side, 0);
     registerBuildingVariant(31, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2Side, 1);
-    registerBuildingVariant(32, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2SideMirrored, 0);
-    registerBuildingVariant(33, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2SideMirrored, 1);
+    //These ones are split into lines where the others aren't because Github insisted that they and they alone needed it to pass a check.
+    registerBuildingVariant(
+        32, 
+        MetaUndergroundBeltBuilding, 
+        enumUndergroundBeltVariants.tier2SideMirrored, 
+        0
+    );
+    registerBuildingVariant(
+        33, 
+        MetaUndergroundBeltBuilding, 
+        enumUndergroundBeltVariants.tier2SideMirrored, 
+        1
+    );
 
     // Hub
     registerBuildingVariant(34, MetaHubBuilding);

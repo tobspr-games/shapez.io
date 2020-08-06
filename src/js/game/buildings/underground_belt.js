@@ -18,7 +18,14 @@ export const arrayUndergroundRotationVariantToMode = [
 ];
 
 /** @enum {string} */
-export const enumUndergroundBeltVariants = { side: "side", sideMirrored: "side-mirrored", tier2: "tier2", tier2Side: "tier2-side", tier2SideMirrored: "tier2-side-mirrored" };
+//Github insisted these needed to be on multiple lines to pass a check.
+export const enumUndergroundBeltVariants = { 
+    side: "side", 
+    sideMirrored: "side-mirrored", 
+    tier2: "tier2", 
+    tier2Side: "tier2-side", 
+    tier2SideMirrored: "tier2-side-mirrored" 
+};
 
 export const enumUndergroundBeltVariantToTier = {
     [defaultBuildingVariant]: 0,
@@ -80,9 +87,21 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      */
     getAvailableVariants(root) {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_underground_belt_tier_2)) {
-            return [defaultBuildingVariant, enumUndergroundBeltVariants.side, enumUndergroundBeltVariants.sideMirrored, enumUndergroundBeltVariants.tier2, enumUndergroundBeltVariants.tier2Side, enumUndergroundBeltVariants.tier2SideMirrored];
+            //Github insisted these needed to be on multiple lines to pass a check.
+            return [
+                defaultBuildingVariant, 
+                enumUndergroundBeltVariants.side, 
+                enumUndergroundBeltVariants.sideMirrored, 
+                enumUndergroundBeltVariants.tier2, 
+                enumUndergroundBeltVariants.tier2Side, 
+                enumUndergroundBeltVariants.tier2SideMirrored
+            ];
         }
-        return [defaultBuildingVariant, enumUndergroundBeltVariants.side, enumUndergroundBeltVariants.sideMirrored];
+        return [
+            defaultBuildingVariant, 
+            enumUndergroundBeltVariants.side, 
+            enumUndergroundBeltVariants.sideMirrored
+        ];
     }
 
     /**
