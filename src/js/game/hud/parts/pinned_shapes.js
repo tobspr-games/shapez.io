@@ -1,5 +1,5 @@
 import { ClickDetector } from "../../../core/click_detector";
-import { formatBigNumber, makeDiv, arrayDelete, arrayDeleteValue } from "../../../core/utils";
+import { formatBigNumber, makeDiv, arrayDeleteValue } from "../../../core/utils";
 import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
 import { blueprintShape, UPGRADES } from "../../upgrades";

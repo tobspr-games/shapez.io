@@ -488,8 +488,8 @@ buildings:
             name: Вращатель (Обр.)
             description: Поворачивает фигуры против часовой стрелки на 90 градусов.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Вращатель (180)
+            description: Вращает фигуры на 180 градусов.
 
     stacker:
         default:
@@ -635,9 +635,9 @@ storyRewards:
 settings:
     title: Настройки
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Основные
+        userInterface: Интерфейс
+        advanced: Продвинутые
 
     versionBadges:
         dev: Разработчик

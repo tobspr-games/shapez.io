@@ -28,25 +28,13 @@ export class MapChunk {
         this.tileY = y * globalConfig.mapChunkSize;
 
         /** @type {Array<Array<?Entity>>} */
-        this.contents = make2DUndefinedArray(
-            globalConfig.mapChunkSize,
-            globalConfig.mapChunkSize,
-            "map-chunk@" + this.x + "|" + this.y
-        );
+        this.contents = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
 
         /** @type {Array<Array<?Entity>>} */
-        this.wireContents = make2DUndefinedArray(
-            globalConfig.mapChunkSize,
-            globalConfig.mapChunkSize,
-            "map-chunk-wires@" + this.x + "|" + this.y
-        );
+        this.wireContents = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
 
         /** @type {Array<Array<?BaseItem>>} */
-        this.lowerLayer = make2DUndefinedArray(
-            globalConfig.mapChunkSize,
-            globalConfig.mapChunkSize,
-            "map-chunk-lower@" + this.x + "|" + this.y
-        );
+        this.lowerLayer = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
 
         /** @type {Array<Entity>} */
         this.containedEntities = [];
