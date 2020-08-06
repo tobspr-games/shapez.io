@@ -245,6 +245,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.bottom],
                             },
                         ]);
+						return;
                     }
                     case "left": {
                         entity.components.ItemAcceptor.setSlots([
@@ -253,6 +254,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.left],
                             },
                         ]);
+						return;
                     }
                     case "right": {
                         entity.components.ItemAcceptor.setSlots([
@@ -261,6 +263,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.right],
                             },
                         ]);
+						return;
                     }
                 }
                 return;
@@ -276,6 +279,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.bottom],
                             },
                         ]);
+						return;
                     }
                     case "left": {
                         entity.components.ItemEjector.setSlots([
@@ -284,6 +288,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.left],
                             },
                         ]);
+						return;
                     }
                     case "right": {
                         entity.components.ItemEjector.setSlots([
@@ -293,6 +298,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                             },
                         ]);
                     }
+						return;
                 }
                 return;
             }
