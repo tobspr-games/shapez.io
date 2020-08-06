@@ -43,6 +43,9 @@ export class SavegameInterface_V1001 extends SavegameInterface_V1000 {
         for (let i = 0; i < entities.length; ++i) {
             const entity = entities[i];
 
+            // FIXME - https://github.com/tobspr/shapez.io/issues/514
+            // Broken in https://github.com/tobspr/shapez.io/commit/bf2eee908fedb84dbbabd359a200c446020a340e
+            /** @type any **/
             const staticComp = entity.components.StaticMapEntity;
             const beltComp = entity.components.Belt;
             if (staticComp) {
