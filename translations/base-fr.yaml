@@ -707,9 +707,9 @@ settings:
                 Affiche ou non le bouton 'Afficher un indice' dans le coin inférieur gauche.
 
         language:
-            title: Langage
+            title: Langue
             description: >-
-                Change le langage. Toutes les traductions sont des contributions des utilisateurs et pourraient être partiellement incomplètes !
+                Change la langue. Toutes les traductions sont des contributions des utilisateurs et pourraient être partiellement incomplètes !
 
         movementSpeed:
             title: Vitesse de déplacement
