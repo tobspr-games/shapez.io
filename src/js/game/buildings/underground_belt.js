@@ -297,8 +297,8 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.right],
                             },
                         ]);
-                    }
                         return;
+                    }
                 }
                 return;
             }
