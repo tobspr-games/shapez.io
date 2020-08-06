@@ -1,6 +1,6 @@
 import { DrawParameters } from "./draw_parameters";
 import { Rectangle } from "./rectangle";
-import { epsilonCompare, round3Digits } from "./utils";
+import { round3Digits } from "./utils";
 
 const floorSpriteCoordinates = false;
 
@@ -63,10 +63,9 @@ export class SpriteAtlasLink {
 export class AtlasSprite extends BaseSprite {
     /**
      *
-     * @param {object} param0
-     * @param {string} param0.spriteName
+     * @param {string} spriteName
      */
-    constructor({ spriteName = "sprite" }) {
+    constructor(spriteName = "sprite") {
         super();
         /** @type {Object.<string, SpriteAtlasLink>} */
         this.linksByResolution = {};
@@ -196,8 +195,6 @@ export class AtlasSprite extends BaseSprite {
             destW = intersection.w;
             destH = intersection.h;
         }
-
-        // assert(epsilonCompare(scaleW, scaleH), "Sprite should be square for cached rendering");
 
         if (floorSpriteCoordinates) {
             parameters.context.drawImage(

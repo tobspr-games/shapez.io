@@ -1,7 +1,7 @@
 import { ClickDetector } from "../../../core/click_detector";
-import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
+import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
-import { drawRotatedSprite, rotateTrapezRightFaced } from "../../../core/draw_utils";
+import { drawRotatedSprite } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
 import { clamp, makeDiv, removeAllChildren } from "../../../core/utils";
 import {
@@ -323,7 +323,6 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         // Fade in / out
         parameters.context.lineWidth = 1;
-        // parameters.context.globalAlpha = 0.3 + pulseAnimation(this.root.time.realtimeNow(), 0.9) * 0.7;
 
         // Determine the bounds and visualize them
         const entityBounds = staticComp.getTileSpaceBounds();

@@ -5,7 +5,6 @@ import { Entity } from "./entity";
 import { createLogger } from "../core/logging";
 import { BaseItem } from "./base_item";
 import { MapChunkView } from "./map_chunk_view";
-import { randomInt } from "../core/utils";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 
 const logger = createLogger("map");

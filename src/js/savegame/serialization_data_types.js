@@ -4,7 +4,7 @@ import { BasicSerializableObject } from "./serialization";
 /* typehints:end */
 
 import { Vector } from "../core/vector";
-import { round4Digits, schemaObject, accessNestedPropertyReverse } from "../core/utils";
+import { round4Digits } from "../core/utils";
 export const globalJsonSchemaDefs = {};
 
 /**
@@ -26,6 +26,19 @@ export function schemaToJsonSchema(schema) {
     }
 
     return jsonSchema;
+}
+
+/**
+ * Helper function to create a json schema object
+ * @param {any} properties
+ */
+function schemaObject(properties) {
+    return {
+        type: "object",
+        required: Object.keys(properties).slice(),
+        additionalProperties: false,
+        properties,
+    };
 }
 
 /**
@@ -75,23 +88,6 @@ export class BaseDataType {
         return {
             $ref: "#/definitions/" + key,
         };
-
-        // return this.getAsJsonSchemaUncached();
-        // if (!globalJsonSchemaDefs[key]) {
-        //     // schema.$id = key;
-        //     globalJsonSchemaDefs[key] = {
-        //         $id: key,
-        //         definitions: {
-        //             ["d-" + key]: schema
-        //         }
-        //     };
-        // }
-
-        // return {
-        //     $ref: key + "#/definitions/d-" + key
-        // }
-
-        // // return this.getAsJsonSchemaUncached();
     }
 
     /**
