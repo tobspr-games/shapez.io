@@ -465,11 +465,11 @@ buildings:
         default:
             name: &underground_belt Tunnel
             description: Allows you to tunnel resources under buildings and belts.
-        
+
         side:
             name: &underground_belt Tunnel
             description: Allows you to tunnel resources under buildings and belts.
-        
+
         side-mirrored:
             name: &underground_belt Tunnel
             description: Allows you to tunnel resources under buildings and belts.
