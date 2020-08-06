@@ -245,7 +245,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.bottom],
                             },
                         ]);
-						return;
+                        return;
                     }
                     case "left": {
                         entity.components.ItemAcceptor.setSlots([
@@ -254,7 +254,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.left],
                             },
                         ]);
-						return;
+                        return;
                     }
                     case "right": {
                         entity.components.ItemAcceptor.setSlots([
@@ -263,7 +263,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.right],
                             },
                         ]);
-						return;
+                        return;
                     }
                 }
                 return;
@@ -279,7 +279,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.bottom],
                             },
                         ]);
-						return;
+                        return;
                     }
                     case "left": {
                         entity.components.ItemEjector.setSlots([
@@ -288,7 +288,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                                 directions: [enumDirection.left],
                             },
                         ]);
-						return;
+                        return;
                     }
                     case "right": {
                         entity.components.ItemEjector.setSlots([
@@ -298,7 +298,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                             },
                         ]);
                     }
-						return;
+                        return;
                 }
                 return;
             }
