@@ -38,9 +38,9 @@ steamPage:
 
         Da die Nachfrage steigt, bist du gezwungen deine Fabrik zu vergrößern - vergiss aber jedoch nicht die Ressourcen, denn du musst dich über die [b]unendliche Karte[\b] ausbreiten!
 
-        Schon bald wirdt du Farben mischen und die Formen anzumalen - mische rot, grün und blau, um verschiedene Farben zu bekommen, mit denen du die Formen bemalst um der Nachfrage gerecht zu werden.
+        Schon bald wirst du Farben mischen und die Formen anzumalen - mische rot, grün und blau, um verschiedene Farben zu bekommen, mit denen du die Formen bemalst um der Nachfrage gerecht zu werden.
 
-        Das Spiel hat einen Umfang von 18 Level (die dich für Stunden beschäftigt halten sollten!), aber ich arbeite ständig an neuen Updates - Da ist sehr viel noch geplant.
+        Das Spiel hat einen Umfang von 18 Level (die dich für Stunden beschäftigt halten sollten!), aber ich arbeite ständig an neuen Updates - Es ist noch sehr viel geplant.
 
         Der Kauf des Spiels gibt dir Zugang zu der Standalone Version, welche zusätzliche Features bietet, und du bekommst Zugang zu neu Entwickelten Features.
 
@@ -58,22 +58,22 @@ steamPage:
 
         [b]Zukünftige Updates:[/b]
 
-        Ich update das Spiel sehr oft, und versuche ein Update wöchentlich zu veröffentlichen!
+        Ich update das Spiel sehr oft, und versuche wöchentlich ein Update zu veröffentlichen!
 
         [list]
-            [*] Verschiedene Karten und Herrausforderungen (z.B. Karten mit Hindernissem)
-            [*] Rätsel (liefere die geforderte Form mit einer beschränkten Karte / anzahl an Gebäuden ab)
+            [*] Verschiedene Karten und Herrausforderungen (z.B. Karten mit Hindernissen)
+            [*] Herrausforderungen (liefere die geforderte Form mit einer beschränkten Karte / anzahl an Gebäuden ab)
             [*] Eine Kampange, in der die Gebäude einen Preis haben.
-            [*] ein konfigurierbarer Kartengenerator (bestimme Ressourcen / Größe / Dichte. den Seed und viel mehr)
+            [*] einen konfigurierbaren Kartengenerator (bestimme Ressourcen / Größe / Dichte, den Seed und viel mehr)
             [*] zusätzliche Formen
-            [*] Performance verbesserungen (Das Spiel läuft jedoch schon sehr gut!)
+            [*] Performance verbesserungen (Das Spiel läuft jetzt schon sehr gut!)
             [*] Und vieles mehr!
         [/list]
 
         [b]Das Spiel ist open source![/b]
 
-        Jeder kann dazu beitragen. Ich bin aktiv in der Communtiy und versuche alle Vorschläge zu lesen und wo möglich wird Feedback in Betracht bezogen.
-        Für alle geplanten änderungen besuche meine Trello Seite.
+        Jeder kann dazu beitragen. Ich bin aktiv in der Communtiy und versuche alle Vorschläge zu lesen und wo möglich wird Feedback in Betracht gezogen.
+        Für alle geplanten Änderungen besuche meine Trello Seite.
 
         [b]Links[/b]
 
@@ -82,7 +82,7 @@ steamPage:
             [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
             [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Hilf zu übersetzen[/url]
         [/list]
 global:
     loading: Laden
@@ -486,7 +486,7 @@ buildings:
             description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
         fl:
             name: Rotierer (180°)
-            description: Rotiert Formen um 180 Grad.
+            description: Rotiert die Formen um 180 Grad.
 
     stacker:
         default:
@@ -517,7 +517,7 @@ buildings:
     trash:
         default:
             name: &trash Mülleimer
-            description: Nimmt Formen und Farben aus jeder Richtung und zerstört sie. Für immer ...
+            description: Akzeptiert Formen und Farben aus jeder Richtung und zerstört sie. Für immer ...
 
         storage:
             name: Lager
@@ -530,7 +530,7 @@ buildings:
         levelShortcut: LVL
     wire:
         default:
-            name: Strom Kabel
+            name: Stromkabel
             description: Erlaubt dir Strom zu transportieren.
     advanced_processor:
         default:
@@ -540,14 +540,14 @@ buildings:
         deliver: Abliefern
         toGenerateEnergy: für
         default:
-            name: Strom Generator
+            name: Stromgenerator
             description: Erzeugt Strom, indem er Formen verbrennt.
     wire_crossings:
         default:
-            name: Kabel Aufteiler
+            name: Kabelverteiler
             description: Teilt ein Stromkabel in zwei auf.
         merger:
-            name: Kabel Verbinder
+            name: Kabelverbinder
             description: Verbindet zwei Stromkabel.
 
 storyRewards:
@@ -563,7 +563,7 @@ storyRewards:
     reward_painter:
         title: Färben
         desc: >-
-            Der <strong>Färber</strong> wurde freigeschaltet. Extrahiere ein paar Farben (genauso wie bei Formen) und färbe damit eine Form im Färberm!<br><br>PS: Falls du Farbenblind bist, es gibt einen <strong>Modus für Farbenblinde</strong> in den Einstellungen!
+            Der <strong>Färber</strong> wurde freigeschaltet. Extrahiere ein paar Farben (genauso wie bei Formen) und färbe damit eine Form im Färber!<br><br>PS: Falls du Farbenblind bist, es gibt einen <strong>Modus für Farbenblinde</strong> in den Einstellungen!
 
     reward_mixer:
         title: Farben mischen
@@ -661,7 +661,7 @@ settings:
         scrollWheelSensitivity:
             title: Zoomempfindlichkeit
             description: >-
-                Ändert die empfindlichkeit des Zooms (Sowohl Mausrad, als auch Trackpad).
+                Ändert die Empfindlichkeit des Zooms (Sowohl Mausrad, als auch Trackpad).
             sensitivity:
                 super_slow: Sehr langsam
                 slow: Langsam
@@ -693,7 +693,7 @@ settings:
                 dark: Dunkel
                 light: Hell
         refreshRate:
-            title: Bildwiederholrate
+            title: Bildwiederholungsrate
             description: >-
                 Für z.B. einen 144-Hz-Monitor kann die Bildwiederholrate hier korrekt eingestellt werden. Bei einem zu langsamen Computer kann dies die Leistung beeinträchtigen.
 
@@ -763,7 +763,7 @@ settings:
         rotationByBuilding:
             title: Rotation pro Gebäudetyp
             description: >-
-                Jeder Gebäudetyp merkt sich einzeln, welche in welche Richtung er zeigt.
+                Jeder Gebäudetyp merkt sich einzeln, in welche Richtung er zeigt.
                 Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen
                 Gebäudetypen wechselst.
 
@@ -834,9 +834,9 @@ keybindings:
         switchDirectionLockSide: "Planer: Seite wechseln"
         pipette: Pipette
         menuClose: Menü schließen
-        switchLayers: Schicht wescheln
-        advanced_processor: Farb invertierer
-        energy_generator: Strom Generator
+        switchLayers: Schicht wechseln
+        advanced_processor: Farbinvertierer
+        energy_generator: Stromgenerator
         wire: Stromkabel
 
 about:
