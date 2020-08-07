@@ -247,16 +247,6 @@ dialogs:
         title: Kivágás megerősítése
         desc: Nincs elég Tervrajzod ennek a beillsztéséhez! Egészen biztos, hogy kivágod?
 
-    massCutConfirm:
-        title: Confirm cut
-        desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
-
-    massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: >-
-            You can not afford to paste this area! Are you sure you want to cut it?
-
     blueprintsNotUnlocked:
         title: Még nincs feloldva
         desc: >-
