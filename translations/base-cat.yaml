@@ -23,6 +23,9 @@ steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io és un joc que té com a objectiu construir i automatitzar fàbriques per tal de produir figures cada cop més complexes en un mapa infinit.
 
+    # This is the text shown above the Discord link
+    discordLink: Official Discord - Chat with me!
+
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
@@ -31,15 +34,16 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Upon delivering the requested shapes you'll progress within the game and unlock upgrades to speed up your factory.
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        As the demand for shapes increases, you'll have to scale up your factory to meet the demand - Don't forget about resources though, you'll have to expand across the [b]infinite map[/b]!
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Soon you'll have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with them to satisfy the demand.
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        This game features 18 progressive levels (Which should already keep you busy for hours!) but I'm constantly adding new content - There's a lot planned!
+
+        Purchasing the game gives you access to the standalone version which has additional features, and you'll also receive access to newly developed features.
 
         [b]Standalone Advantages[/b]
 
@@ -55,7 +59,7 @@ steamPage:
 
         [b]Future Updates[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        I am updating the game often and trying to push an update at least once every week!
 
         [list]
             [*] Different maps and challenges (e.g. maps with obstacles)
@@ -81,8 +85,6 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
         [/list]
-
-    discordLink: Official Discord - Chat with me!
 
 global:
     loading: Carregant
@@ -136,7 +138,7 @@ demoBanners:
     intro: >-
         Aconsegueix el joc complet per obtenir totes les característiques!
 mainMenu:
-    play: Jugar
+   play: Jugar
     continue: Continuar
     newGame: Nou joc
     changelog: Historial de canvis
@@ -239,6 +241,11 @@ dialogs:
         desc: >-
             Estàs esborrant molts edificis de cop (<count> per ser exactes)! Estàs segur que vols seguir?
 
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: >-
+            You can not afford to paste this area! Are you sure you want to cut it?
+
     blueprintsNotUnlocked:
         title: Encara no s'ha desbloquejat
         desc: >-
@@ -265,9 +272,6 @@ dialogs:
     exportScreenshotWarning:
         title: Export screenshot
         desc: Has demanat exportar la teva/teua base com una captura de pantalla. Tin en conte que aquest procés pot ser molt lent i inclús crashear el teu joc!
-    massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -302,8 +306,8 @@ ingame:
         purple: Morat
         cyan: Cian
         white: Blanc
-        uncolored: Sense color
         black: Black
+        uncolored: Sense color
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -315,6 +319,7 @@ ingame:
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
+
         infoTexts:
             speed: Velocitat
             range: Distància
@@ -411,8 +416,10 @@ ingame:
             1_1_extractor: Col·loca un <strong>extractor</strong> damunt d'una <strong>figura circular</strong> per extraure-la!
             1_2_conveyor: >-
                 Connecta l'extractor a la <strong>cinta transportadora</strong> cap al teu nexe!<br><br>Pista: Pots <strong>clicar i arrossegar</strong> la cinta transportadora amb el teu ratolí!
+
             1_3_expand: >-
                 Aquest <strong>NO</strong> és un joc d'espera! Contrueix més extractors i cintes per a completar l'objectiu més ràpidament.<br><br>Pista: Manté pressionat <strong>SHIFT</strong> per a col·locar més extractors, i utilitza <strong>R</strong> per a rotar-los.
+
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -544,10 +551,12 @@ buildings:
         default:
             name: &energy_generator Generador d'energia
             description: Genera energia consumint figures. Cada generador requereix una figura diferent.
+
     wire_crossings:
         default:
-            name: Wire Splitter
+            name: &wire_crossings Wire Splitter
             description: Splits a energy wire into two.
+
         merger:
             name: Wire Merger
             description: Merges two energy wires into one.
@@ -599,6 +608,7 @@ storyRewards:
         title: Distribuïdor compacte
         desc: >-
             Has desbloquejat una variant compacta del <strong>distribuïdor</strong> - Acepta dues entrades i les fusiona en una sola!
+
     reward_cutter_quad:
         title: Cisalla quàdruple
         desc: Has desbloquejat una variant de la <strong>cisalla</strong> - Et permet tallar figures en <strong>quatre parts</strong> en lloc de sols en dos!
@@ -663,6 +673,7 @@ settings:
             title: Interval de guardat automàtic
             description: >-
                 Controla el temps entre guardats automàtics que fa el joc, pots deshabilitar-ho des d'aquí
+
             intervals:
                 one_minute: 1 Minut
                 two_minutes: 2 Minuts
@@ -697,23 +708,28 @@ settings:
         language:
             title: Language
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Change the language. All translations are user-contributed and might be incomplete!
+
         enableColorBlindHelper:
             title: Color Blind Mode
             description: >-
-                Enables various tools which allow to play the game if you are color blind.
+                Enables various tools which allow you to play the game if you are color blind.
+
         fullscreen:
             title: Fullscreen
             description: >-
                 It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+
         soundsMuted:
             title: Mute Sounds
             description: >-
                 If enabled, mutes all sound effects.
+
         musicMuted:
             title: Mute Music
             description: >-
                 If enabled, mutes all music.
+
         theme:
             title: Game theme
             description: >-
@@ -726,38 +742,47 @@ settings:
             title: Simulation Target
             description: >-
                 If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+
         alwaysMultiplace:
             title: Multiplace
             description: >-
                 If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+
         offerHints:
             title: Hints & Tutorials
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                Whether to offer hints and tutorials while playing. Also hides certain UI elements up to a given level to make it easier to get into the game.
+
         enableTunnelSmartplace:
             title: Smart Tunnels
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables to drag tunnels and excess tunnels will get removed.
+                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables you to drag tunnels and excess tunnels will get removed.
+
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier to read.
+                Enables the vignette, which darkens the screen corners and makes text easier to read.
+
         rotationByBuilding:
             title: Rotation by building type
             description: >-
                 Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
+
         compactBuildingInfo:
             title: Compact Building Infos
             description: >-
                 Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
+
         disableCutDeleteWarnings:
             title: Disable Cut/Delete Warnings
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100 entities.
+                Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
+
 keybindings:
     title: Keybindings
     hint: >-
         Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+
     resetKeybindings: Reset Keybindings
 
     categoryLabels:
@@ -785,6 +810,7 @@ keybindings:
 
         menuOpenShop: Upgrades
         menuOpenStats: Statistics
+        menuClose: Close Menu
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
@@ -815,6 +841,7 @@ keybindings:
         lockBeltDirection: Enable belt planner
         switchDirectionLockSide: >-
             Planner: Switch side
+
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area
@@ -823,16 +850,20 @@ keybindings:
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
         placeInverse: Invert automatic belt orientation
-        menuClose: Close Menu
 
 about:
     title: About this Game
     body: >-
         This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
-        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
+
+        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on GitHub</a>.<br><br>
+
         This game wouldn't have been possible without the great Discord community around my games - You should really join the <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
+
         The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
-        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions this game would never have existed.
+
+        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our Factorio sessions, this game would never have existed.
+
 changelog:
     title: Changelog
 
