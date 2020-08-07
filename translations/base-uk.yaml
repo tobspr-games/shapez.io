@@ -1,6 +1,6 @@
 #
 #  GAME TRANSLATIONS
-#  
+#
 #  Translators:
 #
 #    Prosta4ok_ua 07.07.2020 — 04.08.2020
@@ -276,9 +276,8 @@ dialogs:
 
     createMarker:
         title: Нова позначка
-        desc: Дайте їй змістовну назву. Ви також можете додати <strong>короткий ключ</strong> форми
-        , що можно згенерувати: <a href="https://viewer.shapez.io" target="_blank">тут</a>.
         titleEdit: Редагувати позначку
+        desc: Дайте їй змістовну назву. Ви також можете додати <strong>короткий ключ</strong> форми, що можно згенерувати <a href="https://viewer.shapez.io" target="_blank">тут</a>.
 
     markerDemoLimit:
         desc: Ви можете створити тільки 2 позначки в демоверсії. Отримайте окрему версії для створення необмеженної кількості позначок.
@@ -466,16 +465,18 @@ buildings:
             name: &wire Дріт
             description: Дозволяє передавати енергію
 
-    miner: # Internal name for the Extractor
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Екстрактор
             description: Розмістіть над формою чи кольором, який хочете видобути.
 
         chainable:
             name: Екстрактор (Ланц.)
-            description:  Розмістіть над формою чи кольором, який хочете видобути. Можна об’єднати в ланцюг.
+            description: Розмістіть над формою чи кольором, який хочете видобути. Можна об’єднати в ланцюг.
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Тунель
             description: Дозволяє транспортувати ресурси під будівлями та стрічками.
@@ -484,7 +485,8 @@ buildings:
             name: Тунель, ранг II
             description: Дозволяє транспортувати ресурси під будівлями та стрічками.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Розподілювач
             description: Multifunctional - Evenly distributes all inputs onto all outputs.
