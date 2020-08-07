@@ -21,7 +21,7 @@
 
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: A shapez.io-ban gyárak építésével kell automatizálni az egyre összetettebb alakzatok gyártását és kombinálását egy végtelen méretű térképen.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -30,79 +30,79 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        A shapez.io egy olyan játék, amelyben gyárak építésével kell automatizálni az egyre összetettebb alakzatok gyártását és összeillesztését, mindezt egy végtelenül növekvő térképen.
+        A kívánt alakzatok kézbesítése lehetővé teszi a játékban való előrehaladást, és a gyártási folyamatot felgyorsító fejlesztések feloldását.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Ahogy egyre több és több alakzatot kell kézbesíteni, úgy a gyártási folyamatot is fel kell skálázni - Ne feledkezz meg az erőforrásokról sem, egy [b]végtelen méretű térképen[/b] terjeszkedhetsz!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Előbb vagy utóbb színeket kell majd összekeverned és lefesteni az alakzatokat - Keverd össze a piros, töld és kék színeket, hogy új árnyalatokat hozz létre, és fesd le az alakzatokat velük, hogy teljesíteni tudd az elvárásokat.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        A játékban 18 fokozatosan erősödő szint található (ami már így is órákra le tud kötni!), de folyamatosan adok új tartalmakat hozzá - Nagyon sok tervem van!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        A játék megvásárlásával Tiéd lehet a teljes (önálló) verzió, amely még többet tartalmaz, és azonnal hozzáférsz a legfrissebb tartalmakhoz.
 
-        [b]Standalone Advantages[/b]
+        [b]Az Önálló Játék Előnyei[/b]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] Éjszakai Mód
+            [*] Végtelen Útpontok
+            [*] Végtelen Játék Mentés
+            [*] Kiegészítő Beállítások
+            [*] Hamarosan: Vezetékek és Energia! A cél (nagyjából) 2020 Július vége.
+            [*] Hamarosan: További Szintek
+            [*] Lehetővé teszi, hogy tovább fejleszzem a shapez.io-t ❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]Tervezett Frissítések[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Nagyon gyakran frissítem a játékot, igyekszem minden héten egy új frissítést kiadni!
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Különböző térképek és kihívások (pl. pályák akadályokkal)
+            [*] Fejtörők (Juttasd a célba a kívánt alakzatot egy korlátozott méretű területen / korlátozott darab épülettel)
+            [*] Sztori-mód, ahol az épületek pénzbe kerülnek
+            [*] Testreszabható térképgenerátor (Beállítható forrás/alakzat/sűrűség, seed és mások)
+            [*] További alakzattípusok
+            [*] Teljesítménybeli javítások (A játék már most nagyon jól fut!)
+            [*] És még sok más!
         [/list]
 
-        [b]This game is open source![/b]
+        [b]A játék nyílt forráskódú![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Bárki közreműködhet. Aktív részese vagyok a közösségnek, és igyekszem minden javaslatot és visszajelzéset figyelembe venni.
+        Mindenképpen látogass el a Trello-mra a teljes ütemtervért!
 
-        [b]Links[/b]
+        [b]Linkek[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Hivatalos Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Ütemterv[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Forráskód (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Segíts lefordítani[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Hivatalos Discord - Beszélgessünk!
 
 global:
     loading: Betöltés
     error: Hiba
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: "."
 
     # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
-    decimalSeparator: "."
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: E
+        thousands: e
         millions: M
-        billions: Mlrd
-        trillions: T
+        billions: Mrd
+        trillions: Tr
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: végtelen
 
     time:
         # Used for formatting past time dates
@@ -134,46 +134,46 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demó verzió
     intro: >-
-        Get the standalone to unlock all features!
+        Vásárold meg az önálló verziót a teljes játékélményért!
 
 mainMenu:
     play: Játék
-    changelog: Changelog
+    continue: Folytatás
+    newGame: Új Játék
+    changelog: Változások
+    subreddit: Reddit
     importSavegame: Importálás
     openSourceHint: Ez a játék nyílt forráskódú!
     discordLink: Hivatalos Discord Szerver
-    helpTranslate: Segíts a fordításban!
+    helpTranslate: Segíts fordítani!
+    madeBy: Készítette <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Elnézést, de a játék ezen a böngészőn problémásan fut. Vásárold meg az Önálló Verziót, vagy töltsd le a Chrome-ot a teljes játékélményért.
 
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
 
-    continue: Folytatás
-    newGame: Új játék
-    madeBy: Készítette <author-link>
-    subreddit: Reddit
 
 dialogs:
     buttons:
         ok: OK
         delete: Törlés
-        cancel: Megszakítás
+        cancel: Mégse
         later: Később
         restart: Újrakezdés
         reset: Visszaállítás
-        getStandalone: Get Standalone
-        deleteGame: Tudom mit csinálok
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        getStandalone: Teljes Verzió
+        deleteGame: Játék Törlése
+        viewUpdate: Frissítés Megtekintése
+        showUpgrades: Fejlesztések
+        showKeybindings: Irányítás
 
     importSavegameError:
         title: Importálás Hiba
         text: >-
-            Failed to import your savegame: Nem sikerült importálni a mentésed.
+            Nem sikerült importálni a mentésed:
 
     importSavegameSuccess:
         title: Mentés Importálva
@@ -181,19 +181,19 @@ dialogs:
             A mentésed sikeresen importálva lett.
 
     gameLoadFailure:
-        title: Game is broken
+        title: A játék elromlott
         text: >-
-            Failed to load your savegame: Nem sikerült betölteni a mentésed
+            Nem sikerült betölteni a mentésed:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Törlés megerősítése
         text: >-
             Biztos, hogy ki akarod törölni?
 
     savegameDeletionError:
         title: Sikertelen törlés
         text: >-
-            Failed to delete the savegame: Nem sikerült törölni a mentésed.
+            Nem sikerült törölni a mentésed:
 
     restartRequired:
         title: Újraindítás szükséges
@@ -201,77 +201,76 @@ dialogs:
             Újra kell indítanod a játékot, hogy életbe lépjenek a módosítások.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Gyorsbillentyű módosítása
+        desc: Nyomd meg a billentyűt vagy egérgombot, amit használni szeretnél, vagy nyomj ESC-et, ha mégse.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Gyorsbillentyűk visszaállítása
+        desc: Ez minden gyorsbillentyűt visszaállít az eredeti állapotára. Biztos vagy benne?
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Gyorsbillentyűk visszaállítva
+        desc: A gyorsbillentyűk az eredeti értékekre visszaállítva!
 
     featureRestriction:
-        title: Demo Verzió
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        title: Demó Verzió
+        desc: Egy olyan funkciót próbáltál elérni (<feature>), amely nem elérhető a Demóban. Vásárold meg an Önálló verziót a teljes játékélményért!
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: Egy Játékmentés
+        desc: A Demó verzióban egyszerre csak egy játékmentésed lehet. Töröld a meglévő mentésedet, vagy vásárold meg az Önálló verziót!
 
     updateSummary:
         title: Új frissítés!
         desc: >-
-            Here are the changes since you last played:
+            Íme a változások a legutóbbi játékod óta:
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Szerezz Fejlesztéseket
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            Minden legyártott alakzatot felhasználhatsz a fejlesztésekhez - <strong>Ne töröld ki a régi gyáraidat!</strong>
+            A Fejlesztések lap a képernyő jobb felső sarkában található.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Törlés megerősítése
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Egy csomó épületet akarsz egyszerre törölni (egészen pontosan <count>-t)! Biztos, hogy ezt szeretnéd?
+
+    massCutConfirm:
+        title: Biztosan kivágod?
+        desc: >-
+            Egy csomó épületet akarsz egyszerre kivágni (egészen pontosan <count>-t)! Biztos, hogy ezt szeretnéd?
+
+    massCutInsufficientConfirm:
+        title: Kivágás megerősítése
+        desc: Nincs elég Tervrajzod ennek a beillsztéséhez! Egészen biztos, hogy kivágod?
 
     blueprintsNotUnlocked:
         title: Még nincs feloldva
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            A Tervrajzokat a 12-es szinten fogod feloldani.
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Hasznos billentyűk
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            A játék sok hasznos gyorsbillentyűt tartalmaz, amelyek megkönnyítik a gyárépítést.
+            Íme, néhány, de feltétlenül <strong>nézd meg a gyorsbillentyűket</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Húzás: Terület kijelölése másolás/törléshez.<br>
+            <code class='keybinding'>SHIFT</code>: Egyszerre több épületet rak le.<br>
+            <code class='keybinding'>ALT</code>: Megfordítja a futószalagok irányát lehelyezéskor.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Edit Marker
+        title: Új Jelölő
+        desc: Adj neki egy nevet, vagy egy alakzat <strong>gyorskódját</strong> (amit <a href="https://viewer.shapez.io" target="_blank">itt</a> tudsz legenerálni)
+        titleEdit: Jelölő Szerkesztése
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
-    massCutConfirm:
-        title: Confirm cut
-        desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+        desc: A Demó verzióban csak két Jelölőd lehet. Vásárold meg az Önálló verziót, hogy feloldd ezt a korlátozást!
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Képernyőkép exportálása
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
-
-    massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+            A teljes bázisod képének lementését választottad. Vedd figyelembe, hogy ez nagy méretű bázisoknál igen lassú lehet, de akár a játék összeomlását is okozhatja!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -279,57 +278,57 @@ ingame:
     keybindingsOverlay:
         moveMap: Mozgatás
         selectBuildings: Terület kijelölése
-        stopPlacement: Stop placement
+        stopPlacement: Lehelyezés megszakítása
         rotateBuilding: Épület forgatása
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
-        switchLayers: Switch layers
+        placeMultiple: Több lehelyezése
+        reverseOrientation: Irány megfordítása
+        disableAutoOrientation: Automatikus iránykeresés kikapcsolása
+        toggleHud: Kezelőfelület ki/bekapcsolása
+        placeBuilding: Épület lehelyezése
+        createMarker: Jelölő készítése
+        delete: Törlés
+        pasteLastBlueprint: Legutóbb használt Tervrajz beillesztése
+        lockBeltDirection: Futószalag-tervező engedélyezése
+        plannerSwitchSide: Tervező oldal váltás
+        cutSelection: Kivágás
+        copySelection: Másolás
+        clearSelection: Kijelölés megszüntetése
+        pipette: Pipetta
+        switchLayers: Réteg váltás
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Nyomd meg a <key>-t, hogy válts a variációk között.
+        cycleBuildingVariants: Nyomd meg a <key>-t, a variációk váltogatásához.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
-            Hotkey: <key>
+            Gyorsbillentyű: <key>
 
         infoTexts:
-            speed: Gyorsaság
-            range: Range
-            storage: Storage
+            speed: Sebesség
+            range: Távolság
+            storage: Kapacitás
             oneItemPerSecond: 1 tárgy / mp
             itemsPerSecond: <x> tárgy / mp
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> csempe
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: <level>. szint
+        levelTitle: <level>. Szint
         completed: Teljesítve
-        unlockText: Feloldva <reward>!
+        unlockText: <reward> Feloldva!
         buttonNextLevel: Következő Szint
 
     # Notifications on the lower right
     notifications:
         newUpgrade: Egy új fejlesztés elérhető!
-        gameSaved: Az állás mentve.
+        gameSaved: A játékállás mentve.
 
     # The "Upgrades" window
     shop:
@@ -337,12 +336,12 @@ ingame:
         buttonUnlock: Fejlesztés
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: <x>. Szint
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: LEGMAGASABB SZINT (<currentMult>x Sebesség)
 
     # The "Statistics" window
     statistics:
@@ -350,14 +349,14 @@ ingame:
         dataSources:
             stored:
                 title: Tárolva
-                description: A központi épületben tárolt alakzatok számának megjelenítése.
+                description: Az összes tárolt alakzatod a központi épületben.
             produced:
                 title: Gyártva
-                description: A gyártott alakzatok számának megjelenítése, beleértve a köztes gyártmányokat is.
+                description: Az összes eddig legyártott alakzatod, beleértve a köztes alakzatokat is.
             delivered:
                 title: Beszállítva
-                description: A központi épületbe beszállított alakzatok számának megjelenítése.
-        noShapesProduced: Még nem volt termelés.
+                description: Az összes alakzat, amely jelenleg kézbesítés alatt van a központba.
+        noShapesProduced: Még nem gyártottál egy alazkatot sem.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / p
@@ -366,8 +365,8 @@ ingame:
     settingsMenu:
         playtime: Játékidő
 
-        buildingsPlaced: Épületek száma:
-        beltsPlaced: Futószalagok hossza:
+        buildingsPlaced: Épületek száma
+        beltsPlaced: Futószalagok hossza
 
         buttons:
             continue: Folytatás
@@ -386,21 +385,21 @@ ingame:
 
     # Map markers
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        waypoints: Jelölők
+        hub: KÖZPONT
+        description: Bal klikk egy jelölőre az odaugráshoz, jobb klikk a törléshez.<br><br>Nyomj <keybinding>-t egy jelölő készítéséhez a jelenlegi nézetből, vagy <strong>jobb klikk</strong> egy jelölő készítéséhez a kiválasztott helyre.
+        creationSuccessNotification: Jelölő létrehozva.
 
     # Interactive tutorial
     interactiveTutorial:
-        title: Tutorial
+        title: Oktatás
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Helyezz egy <strong>bányát</strong> egy <strong>kör alakzat</strong> tetejére a kibányászásához!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                Kösd össze a bányát egy <strong>futószalag</strong> segítségével a Központi épülettel!<br><br>Tipp: <strong>Kattints és húzd</strong> a futószalagot az egérrel!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                Ez <strong>NEM</strong> egy tétlen játék! Építs több bányát és futószalagot, hogy hamarabb elérd a célt.<br><br>Tipp: Tartsd lenyomva a <strong>SHIFT</strong>-et, hogy egyszerre több bányát helyezz le, és nyomj <strong>R</strong>-t a forgatáshoz.
 
     colors:
         red: Piros
@@ -410,27 +409,27 @@ ingame:
         purple: Lila
         cyan: Világoskék
         white: Fehér
-        uncolored: Színtelen
+        uncolored: Színezetlen
         black: Fekete
     shapeViewer:
         title: Rétegek
         empty: Üres
-        copyKey: Kód másolása
+        copyKey: Gyorskód másolása
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Sebesség x<currentMult> → x<newMult>
+        name: Futószalagok, Elosztók & Alagutak
+        description: <currentMult>x → <newMult>x Sebesség
     miner:
         name: Bányászat
-        description: Sebesség x<currentMult> → x<newMult>
+        description: <currentMult>x → <newMult>x Sebesség
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Sebesség x<currentMult> → x<newMult>
+        name: Vágás, Forgatás & Összeillesztés
+        description: <currentMult>x → <newMult>x Sebesség
     painting:
-        name: Mixing & Painting
-        description: Sebesség x<currentMult> → x<newMult>
+        name: Keverés & Festés
+        description: <currentMult>x → <newMult>x Sebesség
 
 # Buildings and their name / description
 buildings:
@@ -508,7 +507,7 @@ buildings:
             description: Beszínezi az alakzatokat a baloldali bemeneteken a fenti bemeneten érkező színnel.
         quad:
             name: Festő (Négyszeres)
-            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni. 
+            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni.
         mirrored:
             name: *painter
             description: *painter_desc
