@@ -6,12 +6,6 @@ function requireUncached(module) {
 }
 
 function gulptasksJS($, gulp, buildFolder, browserSync) {
-    gulp.task("js.prettify", () => {
-        return gulp
-            .src(path.join(buildFolder, "bundle.js"))
-            .pipe($.jsbeautifier(require("./jsbeautify.json")))
-            .pipe(gulp.dest(buildFolder));
-    });
 
     //// DEV
 
@@ -71,6 +65,7 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
     gulp.task("js.staging", gulp.parallel("js.staging.transpiled", "js.staging.latest"));
 
     //// PROD
+
     gulp.task("js.prod.transpiled", () => {
         return gulp
             .src("../src/js/main.js")
@@ -167,8 +162,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
             )
             .pipe(gulp.dest(buildFolder));
     });
-
-    // TODO: Tasks for te app
 }
 
 module.exports = {
