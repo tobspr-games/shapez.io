@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
@@ -452,7 +453,8 @@ buildings:
             name: &wire Energy Wire
             description: Allows you to transport energy.
 
-    miner: # Internal name for the Extractor
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Extractor
             description: Place over a shape or color to extract it.
@@ -461,7 +463,8 @@ buildings:
             name: Extractor (Chain)
             description: Place over a shape or color to extract it. Can be chained.
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Tunnel
             description: Allows you to tunnel resources under buildings and belts.
@@ -470,7 +473,8 @@ buildings:
             name: Tunnel Tier II
             description: Allows you to tunnel resources under buildings and belts.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Balancer
             description: Multifunctional - Evenly distributes all inputs onto all outputs.
@@ -529,6 +533,7 @@ buildings:
         double:
             name: Painter (Double)
             description: Colors the shapes on the left inputs with the color from the top input.
+
         quad:
             name: Painter (Quad)
             description: Allows you to color each quadrant of the shape with a different color.

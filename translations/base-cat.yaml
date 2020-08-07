@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io és un joc que té com a objectiu construir i automatitzar fàbriques per tal de produir figures cada cop més complexes en un mapa infinit.
@@ -138,7 +139,7 @@ demoBanners:
     intro: >-
         Aconsegueix el joc complet per obtenir totes les característiques!
 mainMenu:
-   play: Jugar
+    play: Jugar
     continue: Continuar
     newGame: Nou joc
     changelog: Historial de canvis
@@ -452,7 +453,8 @@ buildings:
             name: &wire Cable
             description: Permet transportar energia.
 
-    miner: # Internal name for the Extractor
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Extractor
             description: Posa-ho damunt d'una font de figures o colors per extraure'ls.
@@ -461,7 +463,8 @@ buildings:
             name: Extractor (Cadena)
             description: Posa-ho damunt d'una font de figures o colors per extraure'ls. Pot ser encadenat!
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Túnel
             description: Permet transportar recursos per sota d'edificis i cintes.
@@ -470,7 +473,8 @@ buildings:
             name: Túnel de Nivell II
             description: Permet transportar recursos per sota d'edificis i cintes.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Distribuïdor
             description: Multifuncional - Distribueix les entrades i sortides equitativament.

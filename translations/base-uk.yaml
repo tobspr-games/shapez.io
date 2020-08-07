@@ -32,6 +32,7 @@
 # storage сховище
 # shape форма
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io — це гра про будування фабрик для автоматизації створення та обробки все більш складних форм на нескінченно розширюваній мапі.
