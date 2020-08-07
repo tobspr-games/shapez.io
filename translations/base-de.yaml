@@ -33,12 +33,12 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io ist ein Spiel, in dem es darum geht, immer größere Produktionsketten zu bauen um zunehmend komplexere Formen, auf einer unbegrenzten Karte, automatisiert herzustellen. 
+        shapez.io ist ein Spiel, in dem es darum geht, immer größere Produktionsketten zu bauen um zunehmend komplexere Formen, auf einer unbegrenzten Karte, automatisiert herzustellen.
         Durch das Abliefern der produzierten Formen, kannst du im Spiel vorranschreiten, um mehr Upgrades frei zu schalten und die Produktion zu beschleunigen.
 
-        Da die Nachfrage steigt, bist du gezwungen deine Fabrik zu vergrößern - vergiss aber jedoch nicht die Ressourcen, denn du musst dich über die [b]unendliche Karte[\b] ausbreiten!te map[/b]!
+        Da die Nachfrage steigt, bist du gezwungen deine Fabrik zu vergrößern - vergiss aber jedoch nicht die Ressourcen, denn du musst dich über die [b]unendliche Karte[\b] ausbreiten!
 
-        Schon bald wirdt du Farben mischen und die Formen anzumalen - mische rot, grün und blau, um verschiedene Farben zu bekommen, mit denen du die Formen an malst um der Nachfrage gerecht zu werden.
+        Schon bald wirdt du Farben mischen und die Formen anzumalen - mische rot, grün und blau, um verschiedene Farben zu bekommen, mit denen du die Formen bemalst um der Nachfrage gerecht zu werden.
 
         Das Spiel hat einen Umfang von 18 Level (die dich für Stunden beschäftigt halten sollten!), aber ich arbeite ständig an neuen Updates - Da ist sehr viel noch geplant.
 
@@ -48,7 +48,7 @@ steamPage:
 
         [list]
             [*] Dark Mode
-            [*] unbegrenzte Anzahl an Wegpunkten  
+            [*] unbegrenzte Anzahl an Wegpunkten
             [*] unbegrenzte Anzahl an Speicherständen
             [*] zusätzliche Einstellungen
             [*] Bald: Strom & Kabel! (Ungefähr) geplant für ende Juli 2020.
@@ -128,7 +128,7 @@ global:
         alt: ALT
         escape: ESC
         shift: UMSCH
-        space: LEERTASTE
+        space: LEER
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
@@ -150,7 +150,7 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
 
-    helpTranslate: Hilf bitte beim Übersetzen!
+    helpTranslate: Hilf beim Übersetzen!
     continue: Fortsetzen
     newGame: Neues Spiel
     madeBy: Ein Spiel von <author-link>
@@ -168,7 +168,7 @@ dialogs:
         deleteGame: Ich weiß, was ich tue!
         viewUpdate: Update anzeigen
         showUpgrades: Upgrades anzeigen
-        showKeybindings: Tastenkürzel anzeigen
+        showKeybindings: Kürzel anzeigen
 
     importSavegameError:
         title: Importierfehler
@@ -223,7 +223,7 @@ dialogs:
     updateSummary:
         title: Neues Update!
         desc: >-
-            Hier sind die Änderungen, seit dem du das letzte Mal gespielt hast:
+            Hier sind die Änderungen, seit dem letzten mal:
 
     upgradesIntroduction:
         title: Upgrades Freischalten
@@ -239,12 +239,12 @@ dialogs:
     blueprintsNotUnlocked:
         title: Noch nicht freigeschaltet
         desc: >-
-            Voralgen werden erst in Level 12 freigeschaltet!
+            Vorlagen werden erst in Level 12 freigeschaltet!
 
     keybindingsIntroduction:
         title: Nützliche Tatenkürzel
         desc: >-
-            Dieses Spiel hat viele Tatenkürzel, die den Bau von Fabriken vereinfachen und beschleunigen.
+            Dieses Spiel hat viele Tastenkürzel, die den Bau von Fabriken vereinfachen und beschleunigen.
             Hier sind ein paar, aber prüfe am besten die <strong>Tastenbelegung-Einstellungen</strong>!<br><br>
              <code class='keybinding'>STRG</code> + Ziehen: Wähle Areal aus.<br>
              <code class='keybinding'>UMSCH</code>: Halten, um mehrere Gebäude zu platzieren.<br>
@@ -269,7 +269,7 @@ dialogs:
 
     massCutInsufficientConfirm:
         title: Ausschneiden bestätigen
-        desc:  Du kannst dir das einfügen nicht leisten! Bist du sicher, dass du trotzdem ausschneiden möchtest?
+        desc: Du kannst dir das einfügen nicht leisten! Bist du sicher, dass du trotzdem ausschneiden möchtest?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -300,7 +300,7 @@ ingame:
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: <key> Wechsele Variante
+        cycleBuildingVariants: <key> Wechsle Variante
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
