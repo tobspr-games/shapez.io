@@ -398,7 +398,7 @@ export class GameCore {
 
         if (!this.root.camera.getIsMapOverlayActive()) {
             // Underlays for splitters / balancers
-            systems.itemAcceptor.drawUnderlays(params, enumLayer.regular);
+            systems.beltUnderlays.drawUnderlays(params, enumLayer.regular);
 
             // Belt items
             systems.belt.drawLayerBeltItems(params, enumLayer.regular);

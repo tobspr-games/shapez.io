@@ -13,12 +13,6 @@ import { enumLayer } from "../root";
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemAcceptorComponent]);
-
-        this.underlayBeltSprites = [];
-
-        for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
-            this.underlayBeltSprites.push(Loader.getSprite("sprites/belt/forward_" + i + ".png"));
-        }
     }
 
     update() {
@@ -60,15 +54,6 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Draws the acceptor underlays
-     * @param {DrawParameters} parameters
-     * @param {enumLayer} layer
-     */
-    drawUnderlays(parameters, layer) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawEntityUnderlays.bind(this, layer));
-    }
-
-    /**
      * @param {enumLayer} layer
      * @param {DrawParameters} parameters
      * @param {Entity} entity
@@ -103,50 +88,6 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
                 (finalTile.y + 0.5) * globalConfig.tileSize,
                 parameters
             );
-        }
-    }
-
-    /**
-     * @param {enumLayer} layer
-     * @param {DrawParameters} parameters
-     * @param {Entity} entity
-     */
-    drawEntityUnderlays(layer, parameters, entity) {
-        const staticComp = entity.components.StaticMapEntity;
-        const acceptorComp = entity.components.ItemAcceptor;
-
-        if (!staticComp.shouldBeDrawn(parameters)) {
-            return;
-        }
-
-        // Limit speed to avoid belts going backwards
-        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(layer), 10);
-
-        const underlays = acceptorComp.beltUnderlays;
-        for (let i = 0; i < underlays.length; ++i) {
-            const { pos, direction, layer: underlayLayer } = underlays[i];
-            if (underlayLayer !== layer) {
-                // Not our layer
-                continue;
-            }
-
-            const transformedPos = staticComp.localTileToWorld(pos);
-            const angle = enumDirectionToAngle[staticComp.localDirectionToWorld(direction)];
-
-            // SYNC with systems/belt.js:drawSingleEntity!
-            const animationIndex = Math.floor(
-                ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                    globalConfig.beltItemSpacingByLayer[layer]
-            );
-
-            drawRotatedSprite({
-                parameters,
-                sprite: this.underlayBeltSprites[animationIndex % this.underlayBeltSprites.length],
-                x: (transformedPos.x + 0.5) * globalConfig.tileSize,
-                y: (transformedPos.y + 0.5) * globalConfig.tileSize,
-                angle: Math.radians(angle),
-                size: globalConfig.tileSize,
-            });
         }
     }
 }
