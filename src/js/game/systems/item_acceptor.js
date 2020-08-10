@@ -1,13 +1,10 @@
-import { GameSystemWithFilter } from "../game_system_with_filter";
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
-import { Entity } from "../entity";
-import { enumDirectionToVector, enumDirectionToAngle } from "../../core/vector";
-import { ItemAcceptorComponent } from "../components/item_acceptor";
-import { Loader } from "../../core/loader";
-import { drawRotatedSprite } from "../../core/draw_utils";
-import { BELT_ANIM_COUNT } from "./belt";
 import { fastArrayDelete } from "../../core/utils";
+import { enumDirectionToVector } from "../../core/vector";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
+import { Entity } from "../entity";
+import { GameSystemWithFilter } from "../game_system_with_filter";
 import { enumLayer } from "../root";
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
