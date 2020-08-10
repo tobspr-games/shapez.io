@@ -8,6 +8,8 @@ export const enumPinSlotType = {
     negativeEnergyEjector: "negativeEnergyEjector",
     positiveEnergyAcceptor: "positiveEnergyAcceptor",
     negativeEnergyAcceptor: "negativeEnergyAcceptor",
+    logicalEjector: "logicalEjector",
+    logicalAcceptor: "logicalAcceptor",
 };
 
 /** @typedef {{
