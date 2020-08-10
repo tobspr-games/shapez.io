@@ -5,6 +5,7 @@ import { types } from "../../savegame/serialization";
 import { gItemRegistry } from "../../core/global_registries";
 import { Entity } from "../entity";
 import { enumLayer } from "../root";
+import { BeltPath } from "../belt_path";
 
 /**
  * @typedef {{
@@ -14,6 +15,7 @@ import { enumLayer } from "../root";
  *    layer: enumLayer,
  *    progress: number?,
  *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
+ *    cachedBeltPath?: BeltPath,
  *    cachedTargetEntity?: Entity
  * }} ItemEjectorSlot
  */
@@ -24,7 +26,7 @@ export class ItemEjectorComponent extends Component {
     }
 
     static getSchema() {
-        // The cachedDestSlot, cachedTargetEntity, and cachedConnectedSlots fields
+        // The cachedDestSlot, cachedTargetEntity fields
         // are not serialized.
         return {
             instantEject: types.bool,
@@ -72,9 +74,6 @@ export class ItemEjectorComponent extends Component {
         this.instantEject = instantEject;
 
         this.setSlots(slots);
-
-        /** @type {ItemEjectorSlot[]} */
-        this.cachedConnectedSlots = null;
 
         /**
          * Whether this ejector slot is enabled

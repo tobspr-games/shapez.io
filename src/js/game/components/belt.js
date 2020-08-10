@@ -7,6 +7,40 @@ import { enumLayer } from "../root";
 
 export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 
+/** @type {import("./item_acceptor").ItemAcceptorSlot} */
+export const FAKE_BELT_ACCEPTOR_SLOT = {
+    pos: new Vector(0, 0),
+    directions: [enumDirection.bottom],
+    layer: enumLayer.regular,
+};
+
+/** @type {Object<enumDirection, import("./item_ejector").ItemEjectorSlot>} */
+export const FAKE_BELT_EJECTOR_SLOT_BY_DIRECTION = {
+    [enumDirection.top]: {
+        pos: new Vector(0, 0),
+        direction: enumDirection.top,
+        item: null,
+        layer: enumLayer.regular,
+        progress: 0,
+    },
+
+    [enumDirection.right]: {
+        pos: new Vector(0, 0),
+        direction: enumDirection.right,
+        item: null,
+        layer: enumLayer.regular,
+        progress: 0,
+    },
+
+    [enumDirection.left]: {
+        pos: new Vector(0, 0),
+        direction: enumDirection.left,
+        item: null,
+        layer: enumLayer.regular,
+        progress: 0,
+    },
+};
+
 export class BeltComponent extends Component {
     static getId() {
         return "Belt";
@@ -54,6 +88,27 @@ export class BeltComponent extends Component {
             return 1.0;
         }
         return this.direction === enumDirection.top ? 1.0 : curvedBeltLength;
+    }
+
+    /**
+     * Returns fake acceptor slot used for matching
+     * @returns {import("./item_acceptor").ItemAcceptorSlot}
+     */
+    getFakeAcceptorSlot() {
+        return FAKE_BELT_ACCEPTOR_SLOT;
+    }
+
+    /**
+     * Returns fake acceptor slot used for matching
+     * @returns {import("./item_ejector").ItemEjectorSlot}
+     */
+    getFakeEjectorSlots() {
+        assert(
+            FAKE_BELT_EJECTOR_SLOT_BY_DIRECTION[this.direction],
+            "Invalid belt direction: ",
+            this.direction
+        );
+        return FAKE_BELT_EJECTOR_SLOT_BY_DIRECTION[this.direction];
     }
 
     /**

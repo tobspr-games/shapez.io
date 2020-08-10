@@ -2,8 +2,8 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
-import { enumDirectionToVector, Vector } from "../../core/vector";
-import { BaseItem, enumItemType, enumItemTypeToLayer } from "../base_item";
+import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
+import { BaseItem, enumItemTypeToLayer } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -120,15 +120,13 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         const ejectorComp = entity.components.ItemEjector;
         const staticComp = entity.components.StaticMapEntity;
 
-        // Clear the old cache.
-        ejectorComp.cachedConnectedSlots = null;
-
-        for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorComp.slots.length; ++ejectorSlotIndex) {
-            const ejectorSlot = ejectorComp.slots[ejectorSlotIndex];
+        for (let slotIndex = 0; slotIndex < ejectorComp.slots.length; ++slotIndex) {
+            const ejectorSlot = ejectorComp.slots[slotIndex];
 
             // Clear the old cache.
             ejectorSlot.cachedDestSlot = null;
             ejectorSlot.cachedTargetEntity = null;
+            ejectorSlot.cachedBeltPath = null;
 
             // Figure out where and into which direction we eject items
             const ejectSlotWsTile = staticComp.localTileToWorld(ejectorSlot.pos);
@@ -146,8 +144,21 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             for (let i = 0; i < targetEntities.length; ++i) {
                 const targetEntity = targetEntities[i];
 
-                const targetAcceptorComp = targetEntity.components.ItemAcceptor;
                 const targetStaticComp = targetEntity.components.StaticMapEntity;
+                const targetBeltComp = targetEntity.components.Belt;
+
+                // Check for belts (special case)
+                if (targetBeltComp) {
+                    const beltAcceptingDirection = targetStaticComp.localDirectionToWorld(enumDirection.top);
+                    if (ejectSlotWsDirection === beltAcceptingDirection) {
+                        ejectorSlot.cachedTargetEntity = targetEntity;
+                        ejectorSlot.cachedBeltPath = targetBeltComp.assignedPath;
+                        break;
+                    }
+                }
+
+                // Check for item acceptors
+                const targetAcceptorComp = targetEntity.components.ItemAcceptor;
                 if (!targetAcceptorComp) {
                     // Entity doesn't accept items
                     continue;
@@ -162,13 +173,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 if (!matchingSlot) {
                     // No matching slot found
                     continue;
-                }
-
-                // Ok we found a connection
-                if (ejectorComp.cachedConnectedSlots) {
-                    ejectorComp.cachedConnectedSlots.push(ejectorSlot);
-                } else {
-                    ejectorComp.cachedConnectedSlots = [ejectorSlot];
                 }
 
                 // A slot can always be connected to one other slot only
@@ -199,11 +203,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 continue;
             }
 
-            if (!sourceEjectorComp.cachedConnectedSlots) {
-                continue;
-            }
-
-            const slots = sourceEjectorComp.cachedConnectedSlots;
+            const slots = sourceEjectorComp.slots;
             for (let j = 0; j < slots.length; ++j) {
                 const sourceSlot = slots[j];
                 const item = sourceSlot.item;
@@ -212,7 +212,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                const destSlot = sourceSlot.cachedDestSlot;
                 const targetEntity = sourceSlot.cachedTargetEntity;
 
                 // Advance items on the slot
@@ -229,18 +228,34 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                // Check if the target acceptor can actually accept this item
-                const targetAcceptorComp = targetEntity.components.ItemAcceptor;
-                if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
+                // Check if we are ejecting to a belt path
+                const destPath = sourceSlot.cachedBeltPath;
+                if (destPath) {
+                    // Try passing the item over
+                    if (destPath.tryAcceptItem(item)) {
+                        sourceSlot.item = null;
+                    }
+
+                    // Always stop here, since there can *either* be a belt path *or*
+                    // a slot
                     continue;
                 }
 
-                // Try to hand over the item
-                if (this.tryPassOverItem(item, targetEntity, destSlot.index)) {
-                    // Handover successful, clear slot
-                    targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
-                    sourceSlot.item = null;
-                    continue;
+                // Check if the target acceptor can actually accept this item
+                const destSlot = sourceSlot.cachedDestSlot;
+                if (destSlot) {
+                    const targetAcceptorComp = targetEntity.components.ItemAcceptor;
+                    if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
+                        continue;
+                    }
+
+                    // Try to hand over the item
+                    if (this.tryPassOverItem(item, targetEntity, destSlot.index)) {
+                        // Handover successful, clear slot
+                        targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
+                        sourceSlot.item = null;
+                        continue;
+                    }
                 }
             }
         }

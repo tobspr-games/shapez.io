@@ -1,5 +1,7 @@
-import { MetaBuilding, defaultBuildingVariant } from "./meta_building";
+/* typehints:start */
+import { MetaBuilding } from "./meta_building";
 import { AtlasSprite } from "../core/sprites";
+/* typehints:end */
 
 /**
  * @typedef {{
@@ -22,13 +24,18 @@ export const gBuildingVariants = {
 };
 
 /**
- *
- * @param {*} id
- * @param {*} meta
- * @param {*} variant
- * @param {*} rotationVariant
+ * Registers a new variant
+ * @param {number} id
+ * @param {typeof MetaBuilding} meta
+ * @param {string} variant
+ * @param {number} rotationVariant
  */
-export function registerBuildingVariant(id, meta, variant = defaultBuildingVariant, rotationVariant = 0) {
+export function registerBuildingVariant(
+    id,
+    meta,
+    variant = "default" /* FIXME: Circular dependency, actually its defaultBuildingVariant */,
+    rotationVariant = 0
+) {
     assert(!gBuildingVariants[id], "Duplicate id: " + id);
     gBuildingVariants[id] = {
         metaClass: meta,
