@@ -4,6 +4,7 @@ import { findNiceValue } from "../core/utils";
 import { cachebust } from "../core/cachebust";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { T, autoDetectLanguageId, updateApplicationLanguage } from "../translations";
+import { isLanguageTag } from "../translations/languages";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { CHANGELOG } from "../changelog";
 import { globalConfig } from "../core/config";
@@ -125,7 +126,9 @@ export class PreloadState extends GameState {
             })
             .then(() => {
                 const language = this.app.settings.getLanguage();
-                updateApplicationLanguage(language);
+                if (isLanguageTag(language)) {
+                    updateApplicationLanguage(language);
+                }
             })
 
             .then(() => this.setStatus("Initializing sounds"))

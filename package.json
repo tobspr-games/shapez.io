@@ -94,6 +94,7 @@
         "sass-unused": "^0.3.0",
         "strip-json-comments": "^3.0.1",
         "trim": "^0.0.1",
+        "yaml-loader": "^0.6.0",
         "yarn": "^1.22.4"
     }
 }
