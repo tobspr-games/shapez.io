@@ -13,11 +13,10 @@ function accessNestedPropertyReverse(obj, keys) {
 const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
 
 self.addEventListener("message", event => {
+    // @ts-ignore
     const { jobId, job, data } = event.data;
-    console.log("[worker] Received message:");
-    console.log(JSON.stringify(event.data));
     const result = performJob(job, data);
-    postMessage({ jobId, result });
+    self.postMessage({ jobId, result });
 });
 
 function performJob(job, data) {
