@@ -440,11 +440,6 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             for (let acceptorSlotIndex = 0; acceptorSlotIndex < slots.length; ++acceptorSlotIndex) {
                 const slot = slots[acceptorSlotIndex];
 
-                // Only draw same layer slots
-                if (slot.layer !== this.root.currentLayer) {
-                    continue;
-                }
-
                 const acceptorSlotWsTile = staticComp.localTileToWorld(slot.pos);
                 const acceptorSlotWsPos = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
 
@@ -478,20 +473,12 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
                         // If this entity is on the same layer as the slot - if so, it can either be
                         // connected, or it can not be connected and thus block the input
-                        if (sourceEntity.layer === slot.layer) {
-                            if (
-                                sourceEjector &&
-                                sourceEjector.anySlotEjectsToLocalTile(
-                                    ejectorAcceptLocalTile,
-                                    this.root.currentLayer
-                                )
-                            ) {
-                                // This one is connected, all good
-                                isConnected = true;
-                            } else {
-                                // This one is blocked
-                                isBlocked = true;
-                            }
+                        if (sourceEjector && sourceEjector.anySlotEjectsToLocalTile(ejectorAcceptLocalTile)) {
+                            // This one is connected, all good
+                            isConnected = true;
+                        } else {
+                            // This one is blocked
+                            isBlocked = true;
                         }
                     }
 
@@ -520,11 +507,6 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             for (let ejectorSlotIndex = 0; ejectorSlotIndex < slots.length; ++ejectorSlotIndex) {
                 const slot = slots[ejectorSlotIndex];
 
-                // Only draw same layer slots
-                if (slot.layer !== this.root.currentLayer) {
-                    continue;
-                }
-
                 const ejectorSlotWsTile = staticComp.localTileToWorld(
                     ejectorComp.getSlotTargetLocalTile(ejectorSlotIndex)
                 );
@@ -546,21 +528,14 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     const destAcceptor = destEntity.components.ItemAcceptor;
                     const destStaticComp = destEntity.components.StaticMapEntity;
 
-                    // If this entity is on the same layer as the slot - if so, it can either be
-                    // connected, or it can not be connected and thus block the input
-                    if (destEntity.layer === slot.layer) {
-                        const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
-                        const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
-                        if (
-                            destAcceptor &&
-                            destAcceptor.findMatchingSlot(destLocalTile, destLocalDir, this.root.currentLayer)
-                        ) {
-                            // This one is connected, all good
-                            isConnected = true;
-                        } else {
-                            // This one is blocked
-                            isBlocked = true;
-                        }
+                    const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
+                    const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
+                    if (destAcceptor && destAcceptor.findMatchingSlot(destLocalTile, destLocalDir)) {
+                        // This one is connected, all good
+                        isConnected = true;
+                    } else {
+                        // This one is blocked
+                        isBlocked = true;
                     }
                 }
 

@@ -13,9 +13,7 @@ import { HubSystem } from "./systems/hub";
 import { StaticMapEntitySystem } from "./systems/static_map_entity";
 import { ItemAcceptorSystem } from "./systems/item_acceptor";
 import { StorageSystem } from "./systems/storage";
-import { EnergyGeneratorSystem } from "./systems/energy_generator";
 import { WiredPinsSystem } from "./systems/wired_pins";
-import { EnergyConsumerSystem } from "./systems/energy_consumer";
 import { BeltUnderlaysSystem } from "./systems/belt_underlays";
 
 const logger = createLogger("game_system_manager");
@@ -60,14 +58,8 @@ export class GameSystemManager {
             /** @type {StorageSystem} */
             storage: null,
 
-            /** @type {EnergyGeneratorSystem} */
-            energyGenerator: null,
-
             /** @type {WiredPinsSystem} */
             wiredPins: null,
-
-            /** @type {EnergyConsumerSystem} */
-            energyConsumer: null,
 
             /** @type {BeltUnderlaysSystem} */
             beltUnderlays: null,
@@ -106,13 +98,9 @@ export class GameSystemManager {
 
         add("hub", HubSystem);
 
-        add("energyGenerator", EnergyGeneratorSystem);
-
         add("staticMapEntities", StaticMapEntitySystem);
 
         add("wiredPins", WiredPinsSystem);
-
-        add("energyConsumer", EnergyConsumerSystem);
 
         add("beltUnderlays", BeltUnderlaysSystem);
 

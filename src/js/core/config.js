@@ -53,10 +53,7 @@ export const globalConfig = {
     beltSpeedItemsPerSecond: 2,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
-    beltItemSpacingByLayer: {
-        regular: 0.63,
-        wires: 0.4,
-    },
+    itemSpacingOnBelts: 0.63,
 
     wiresSpeedItemsPerSecond: 6,
 

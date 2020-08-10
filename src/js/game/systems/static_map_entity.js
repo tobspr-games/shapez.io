@@ -1,10 +1,9 @@
-import { GameSystem } from "../game_system";
-import { DrawParameters } from "../../core/draw_parameters";
 import { globalConfig } from "../../core/config";
-import { MapChunkView } from "../map_chunk_view";
+import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { enumDirection } from "../../core/vector";
-import { enumLayer } from "../root";
+import { GameSystem } from "../game_system";
+import { MapChunkView } from "../map_chunk_view";
 
 export class StaticMapEntitySystem extends GameSystem {
     constructor(root) {

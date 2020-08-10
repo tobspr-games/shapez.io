@@ -367,13 +367,9 @@ export class HubGoals extends BasicSerializableObject {
 
     /**
      * Belt speed
-     * @param {enumLayer} layer
      * @returns {number} items / sec
      */
-    getBeltBaseSpeed(layer) {
-        if (layer === enumLayer.wires) {
-            return globalConfig.wiresSpeedItemsPerSecond;
-        }
+    getBeltBaseSpeed() {
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
 

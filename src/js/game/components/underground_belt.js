@@ -103,8 +103,7 @@ export class UndergroundBeltComponent extends Component {
         }
 
         // Notice: We assume that for all items the travel distance is the same
-        const maxItemsInTunnel =
-            (2 + travelDistance) / globalConfig.beltItemSpacingByLayer[enumLayer.regular];
+        const maxItemsInTunnel = (2 + travelDistance) / globalConfig.itemSpacingOnBelts;
         if (this.pendingItems.length >= maxItemsInTunnel) {
             // Simulate a real belt which gets full at some point
             return false;
@@ -114,8 +113,7 @@ export class UndergroundBeltComponent extends Component {
         // This corresponds to the item ejector - it needs 0.5 additional tiles to eject the item.
         // So instead of adding 1 we add 0.5 only.
         // Additionally it takes 1 tile for the acceptor which we just add on top.
-        const travelDuration =
-            (travelDistance + 1.5) / beltSpeed / globalConfig.beltItemSpacingByLayer[enumLayer.regular];
+        const travelDuration = (travelDistance + 1.5) / beltSpeed / globalConfig.itemSpacingOnBelts;
 
         this.pendingItems.push([item, travelDuration]);
 

@@ -92,7 +92,7 @@ export class TrailerMaker {
             const speed =
                 globalConfig.tileSize *
                 globalConfig.beltSpeedItemsPerSecond *
-                globalConfig.beltItemSpacingByLayer[enumLayer.regular];
+                globalConfig.itemSpacingOnBelts;
             // let time =
             //     this.currentPlaybackOrigin.distance(Vector.fromSerializedObject(nextMarker.pos)) / speed;
             const time = nextMarker.time;

@@ -52,15 +52,6 @@ export class MapChunkView extends MapChunk {
      * Draws the wires layer
      * @param {DrawParameters} parameters
      */
-    drawWiresLayer(parameters) {
-        const systems = this.root.systemMgr.systems;
-        systems.belt.drawWiresChunk(parameters, this);
-    }
-
-    /**
-     * Draws the wires layer
-     * @param {DrawParameters} parameters
-     */
     drawWiresForegroundLayer(parameters) {
         const systems = this.root.systemMgr.systems;
         systems.staticMapEntities.drawWiresChunk(parameters, this);

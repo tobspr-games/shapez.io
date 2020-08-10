@@ -3,7 +3,7 @@ import { round2Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot, enumLayer } from "./root";
 import { STOP_PROPAGATION } from "../core/signal";
 
 const logger = createLogger("ingame/logic");
@@ -178,10 +178,9 @@ export class GameLogic {
     /**
      * Returns the acceptors and ejectors which affect the current tile
      * @param {Vector} tile
-     * @param {enumLayer} layer
      * @returns {AcceptorsAndEjectorsAffectingTile}
      */
-    getEjectorsAndAcceptorsAtTile(tile, layer) {
+    getEjectorsAndAcceptorsAtTile(tile) {
         /** @type {EjectorsAffectingTile} */
         let ejectors = [];
         /** @type {AcceptorsAffectingTile} */
@@ -194,10 +193,8 @@ export class GameLogic {
                     continue;
                 }
 
-                const entities = this.root.map.getLayersContentsMultipleXY(tile.x + dx, tile.y + dy);
-                for (let i = 0; i < entities.length; ++i) {
-                    const entity = entities[i];
-
+                const entity = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, enumLayer.regular);
+                if (entity) {
                     let ejectorSlots = [];
                     let acceptorSlots = [];
 
@@ -223,9 +220,6 @@ export class GameLogic {
 
                     for (let ejectorSlot = 0; ejectorSlot < ejectorSlots.length; ++ejectorSlot) {
                         const slot = ejectorSlots[ejectorSlot];
-                        if (slot.layer !== layer) {
-                            continue;
-                        }
                         const wsTile = staticComp.localTileToWorld(slot.pos);
                         const wsDirection = staticComp.localDirectionToWorld(slot.direction);
                         const targetTile = wsTile.add(enumDirectionToVector[wsDirection]);
@@ -241,10 +235,6 @@ export class GameLogic {
 
                     for (let acceptorSlot = 0; acceptorSlot < acceptorSlots.length; ++acceptorSlot) {
                         const slot = acceptorSlots[acceptorSlot];
-                        if (slot.layer !== layer) {
-                            continue;
-                        }
-
                         const wsTile = staticComp.localTileToWorld(slot.pos);
                         for (let k = 0; k < slot.directions.length; ++k) {
                             const direction = slot.directions[k];

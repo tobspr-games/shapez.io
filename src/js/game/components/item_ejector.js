@@ -12,7 +12,6 @@ import { BeltPath } from "../belt_path";
  *    pos: Vector,
  *    direction: enumDirection,
  *    item: BaseItem,
- *    layer: enumLayer,
  *    progress: number?,
  *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
  *    cachedBeltPath?: BeltPath,
@@ -34,9 +33,6 @@ export class ItemEjectorComponent extends Component {
                     direction: types.enum(enumDirection),
                     item: types.nullable(types.obj(gItemRegistry)),
                     progress: types.float,
-
-                    // TODO: Migrate
-                    layer: types.enum(enumLayer),
                 })
             ),
         };
@@ -49,7 +45,6 @@ export class ItemEjectorComponent extends Component {
             slotsCopy.push({
                 pos: slot.pos.copy(),
                 direction: slot.direction,
-                layer: slot.layer,
             });
         }
 
@@ -61,7 +56,7 @@ export class ItemEjectorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>=} param0.slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection }>=} param0.slots The slots to eject on
      */
     constructor({ slots = [] }) {
         super();
@@ -75,7 +70,7 @@ export class ItemEjectorComponent extends Component {
     }
 
     /**
-     * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>} slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection }>} slots The slots to eject on
      */
     setSlots(slots) {
         /** @type {Array<ItemEjectorSlot>} */
@@ -87,7 +82,6 @@ export class ItemEjectorComponent extends Component {
                 direction: slot.direction,
                 item: null,
                 progress: 0,
-                layer: slot.layer || enumLayer.regular,
                 cachedDestSlot: null,
                 cachedTargetEntity: null,
             });
@@ -108,11 +102,10 @@ export class ItemEjectorComponent extends Component {
     /**
      * Returns whether any slot ejects to the given local tile
      * @param {Vector} tile
-     * @param {enumLayer} layer
      */
-    anySlotEjectsToLocalTile(tile, layer) {
+    anySlotEjectsToLocalTile(tile) {
         for (let i = 0; i < this.slots.length; ++i) {
-            if (this.getSlotTargetLocalTile(i).equals(tile) && this.slots[i].layer === layer) {
+            if (this.getSlotTargetLocalTile(i).equals(tile)) {
                 return true;
             }
         }
@@ -131,12 +124,11 @@ export class ItemEjectorComponent extends Component {
 
     /**
      * Returns the first free slot on this ejector or null if there is none
-     * @param {enumLayer} layer
      * @returns {number?}
      */
-    getFirstFreeSlot(layer) {
+    getFirstFreeSlot() {
         for (let i = 0; i < this.slots.length; ++i) {
-            if (this.canEjectOnSlot(i) && this.slots[i].layer === layer) {
+            if (this.canEjectOnSlot(i)) {
                 return i;
             }
         }

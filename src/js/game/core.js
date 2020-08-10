@@ -398,14 +398,14 @@ export class GameCore {
 
         if (!this.root.camera.getIsMapOverlayActive()) {
             // Underlays for splitters / balancers
-            systems.beltUnderlays.drawUnderlays(params, enumLayer.regular);
+            systems.beltUnderlays.drawUnderlays(params);
 
             // Belt items
-            systems.belt.drawLayerBeltItems(params, enumLayer.regular);
+            systems.belt.drawBeltItems(params);
 
             // Items being ejected / accepted currently (animations)
-            systems.itemEjector.drawLayer(params, enumLayer.regular);
-            systems.itemAcceptor.drawLayer(params, enumLayer.regular);
+            systems.itemEjector.draw(params);
+            systems.itemAcceptor.draw(params);
         }
 
         // Miner & Static map entities
@@ -415,28 +415,15 @@ export class GameCore {
             // HUB Overlay
             systems.hub.draw(params);
 
-            // Energy generator overlay
-            systems.energyGenerator.draw(params);
-
             // Storage items
             systems.storage.draw(params);
-
-            // Energy consumer (Battery icons)
-            systems.energyConsumer.draw(params);
         }
 
         // Green wires overlay (not within the if because it can fade)
         root.hud.parts.wiresOverlay.draw(params);
 
         if (this.root.currentLayer === enumLayer.wires && !this.root.camera.getIsMapOverlayActive()) {
-            // Belt sprites & Static map entities
-            root.map.drawWiresLayer(params);
-
-            // Belt items as well as accepted / ejected items
-            systems.belt.drawLayerBeltItems(params, enumLayer.wires);
-            systems.itemEjector.drawLayer(params, enumLayer.wires);
-            systems.itemAcceptor.drawLayer(params, enumLayer.wires);
-
+            // Static map entities
             root.map.drawWiresForegroundLayer(params);
 
             // pins

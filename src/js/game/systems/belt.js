@@ -13,9 +13,6 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
-import { enumLayer } from "../root";
-import { MetaWireBaseBuilding } from "../buildings/wire_base";
-import { enumItemType } from "../base_item";
 
 export const BELT_ANIM_COUNT = 28;
 
@@ -320,14 +317,10 @@ export class BeltSystem extends GameSystemWithFilter {
     /**
      * Draws all belt paths
      * @param {DrawParameters} parameters
-     * @param {enumLayer} layer
      */
-    drawLayerBeltItems(parameters, layer) {
+    drawBeltItems(parameters) {
         for (let i = 0; i < this.beltPaths.length; ++i) {
-            const path = this.beltPaths[i];
-            if (path.layer === layer) {
-                path.draw(parameters);
-            }
+            this.beltPaths[i].draw(parameters);
         }
     }
 
@@ -497,13 +490,13 @@ export class BeltSystem extends GameSystemWithFilter {
         }
 
         // Limit speed to avoid belts going backwards
-        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(enumLayer.regular), 10);
+        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
         // SYNC with systems/item_acceptor.js:drawEntityUnderlays!
         // 126 / 42 is the exact animation speed of the png animation
         const animationIndex = Math.floor(
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                globalConfig.beltItemSpacingByLayer[enumLayer.regular]
+                globalConfig.itemSpacingOnBelts
         );
         const contents = chunk.contents;
         for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
@@ -524,35 +517,6 @@ export class BeltSystem extends GameSystemWithFilter {
             }
         }
         1;
-    }
-
-    /**
-     * Draws a given chunk
-     * @param {DrawParameters} parameters
-     * @param {MapChunkView} chunk
-     */
-    drawWiresChunk(parameters, chunk) {
-        if (parameters.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
-            return;
-        }
-
-        const contents = chunk.wireContents;
-        for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
-            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
-                const entity = contents[x][y];
-
-                if (entity && entity.components.Belt) {
-                    const direction = entity.components.Belt.direction;
-                    const sprite = this.wireSprites[direction];
-                    entity.components.StaticMapEntity.drawSpriteOnFullEntityBounds(
-                        parameters,
-                        sprite,
-                        0,
-                        false
-                    );
-                }
-            }
-        }
     }
 
     /**

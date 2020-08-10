@@ -23,11 +23,8 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             // Process item consumption animations to avoid items popping from the belts
             for (let animIndex = 0; animIndex < animations.length; ++animIndex) {
                 const anim = animations[animIndex];
-                const layer = aceptorComp.slots[anim.slotIndex].layer;
                 anim.animProgress +=
-                    progress *
-                    this.root.hubGoals.getBeltBaseSpeed(layer) *
-                    globalConfig.beltItemSpacingByLayer[layer];
+                    progress * this.root.hubGoals.getBeltBaseSpeed() * globalConfig.itemSpacingOnBelts;
                 if (anim.animProgress > 1) {
                     // Original
                     // animations.splice(animIndex, 1);
@@ -44,18 +41,16 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     /**
      * Draws the acceptor items
      * @param {DrawParameters} parameters
-     * @param {enumLayer} layer
      */
-    drawLayer(parameters, layer) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawEntityRegularLayer.bind(this, layer));
+    draw(parameters) {
+        this.forEachMatchingEntityOnScreen(parameters, this.drawEntityRegularLayer.bind(this));
     }
 
     /**
-     * @param {enumLayer} layer
      * @param {DrawParameters} parameters
      * @param {Entity} entity
      */
-    drawEntityRegularLayer(layer, parameters, entity) {
+    drawEntityRegularLayer(parameters, entity) {
         const staticComp = entity.components.StaticMapEntity;
         const acceptorComp = entity.components.ItemAcceptor;
 
@@ -69,10 +64,6 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             ];
 
             const slotData = acceptorComp.slots[slotIndex];
-            if (slotData.layer !== layer) {
-                // Don't draw non-regular slots for now
-                continue;
-            }
 
             const slotWorldPos = staticComp.applyRotationToVector(slotData.pos).add(staticComp.origin);
             const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];

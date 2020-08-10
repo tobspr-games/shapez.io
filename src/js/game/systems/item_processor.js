@@ -1,6 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { BaseItem, enumItemType } from "../base_item";
-import { enumColorMixingResults, enumInvertedColors } from "../colors";
+import { enumColorMixingResults } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -48,11 +48,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         if (ejectorComp.canEjectOnSlot(preferredSlot)) {
                             slot = preferredSlot;
                         } else {
-                            slot = ejectorComp.getFirstFreeSlot(entity.layer);
+                            slot = ejectorComp.getFirstFreeSlot();
                         }
                     } else {
                         // We can eject on any slot
-                        slot = ejectorComp.getFirstFreeSlot(entity.layer);
+                        slot = ejectorComp.getFirstFreeSlot();
                     }
 
                     if (slot !== null) {
@@ -349,35 +349,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 for (let i = 0; i < items.length; ++i) {
                     const shapeItem = /** @type {ShapeItem} */ (items[i].item);
                     this.root.hubGoals.handleDefinitionDelivered(shapeItem.definition);
-                }
-
-                break;
-            }
-
-            // ADVANCED PROCESSING
-
-            case enumItemProcessorTypes.advancedProcessor: {
-                const item = items[0].item;
-
-                if (item.getItemType() === enumItemType.color) {
-                    const colorItem = /** @type {ColorItem} */ (items[0].item);
-                    const newColor = enumInvertedColors[colorItem.color];
-                    outItems.push({
-                        item: new ColorItem(newColor),
-                        requiredSlot: 0,
-                    });
-                } else if (item.getItemType() === enumItemType.shape) {
-                    const shapeItem = /** @type {ShapeItem} */ (items[0].item);
-                    const newItem = this.root.shapeDefinitionMgr.shapeActionInvertColors(
-                        shapeItem.definition
-                    );
-
-                    outItems.push({
-                        item: new ShapeItem(newItem),
-                        requiredSlot: 0,
-                    });
-                } else {
-                    assertAlways(false, "Bad item type: " + item.getItemType() + " for advanced processor.");
                 }
 
                 break;

@@ -3,7 +3,7 @@ import { Component } from "./component";
 import { Entity } from "./entity";
 /* typehints:end */
 
-import { GameRoot, enumLayer } from "./root";
+import { GameRoot } from "./root";
 import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
 import { DrawParameters } from "../core/draw_parameters";
@@ -39,9 +39,8 @@ export class GameSystemWithFilter extends GameSystem {
      * Calls a function for each matching entity on the screen, useful for drawing them
      * @param {DrawParameters} parameters
      * @param {function} callback
-     * @param {enumLayer=} layerFilter Can be null for no filter
      */
-    forEachMatchingEntityOnScreen(parameters, callback, layerFilter = null) {
+    forEachMatchingEntityOnScreen(parameters, callback) {
         const cullRange = parameters.visibleRect.toTileCullRectangle();
         if (this.allEntities.length < 100) {
             // So, its much quicker to simply perform per-entity checking
@@ -49,9 +48,7 @@ export class GameSystemWithFilter extends GameSystem {
             for (let i = 0; i < this.allEntities.length; ++i) {
                 const entity = this.allEntities[i];
                 if (cullRange.containsRect(entity.components.StaticMapEntity.getTileSpaceBounds())) {
-                    if (!layerFilter || entity.layer === layerFilter) {
-                        callback(parameters, entity);
-                    }
+                    callback(parameters, entity);
                 }
             }
             return;
@@ -93,11 +90,6 @@ export class GameSystemWithFilter extends GameSystem {
                 const entities = chunk.containedEntities;
                 entityLoop: for (let i = 0; i < entities.length; ++i) {
                     const entity = entities[i];
-
-                    // Avoid drawing non-layer contents
-                    if (layerFilter && entity.layer !== layerFilter) {
-                        continue;
-                    }
 
                     // Avoid drawing twice
                     if (seenUids.has(entity.uid)) {

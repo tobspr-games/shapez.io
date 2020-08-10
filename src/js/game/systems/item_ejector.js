@@ -3,11 +3,10 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
-import { BaseItem, enumItemTypeToLayer } from "../base_item";
+import { BaseItem } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumLayer } from "../root";
 
 const logger = createLogger("systems/ejector");
 
@@ -166,8 +165,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
                 const matchingSlot = targetAcceptorComp.findMatchingSlot(
                     targetStaticComp.worldToLocalTile(ejectSlotTargetWsTile),
-                    targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection),
-                    ejectorSlot.layer
+                    targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection)
                 );
 
                 if (!matchingSlot) {
@@ -219,8 +217,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     1,
                     sourceSlot.progress +
                         progressGrowth *
-                            this.root.hubGoals.getBeltBaseSpeed(sourceSlot.layer) *
-                            globalConfig.beltItemSpacingByLayer[sourceSlot.layer]
+                            this.root.hubGoals.getBeltBaseSpeed() *
+                            globalConfig.itemSpacingOnBelts
                 );
 
                 // Check if we are still in the process of ejecting, can't proceed then
@@ -272,8 +270,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         // TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
         // Also its just a few cases (hope it stays like this .. :x).
 
-        const itemLayer = enumItemTypeToLayer[item.getItemType()];
-
         const beltComp = receiver.components.Belt;
         if (beltComp) {
             const path = beltComp.assignedPath;
@@ -297,15 +293,12 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
         const itemProcessorComp = receiver.components.ItemProcessor;
         if (itemProcessorComp) {
-            // Make sure its the same layer
-            if (itemLayer === receiver.layer) {
-                // Its an item processor ..
-                if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
-                    return true;
-                }
-                // Item processor can have nothing else
-                return false;
+            // Its an item processor ..
+            if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
+                return true;
             }
+            // Item processor can have nothing else
+            return false;
         }
 
         const undergroundBeltComp = receiver.components.UndergroundBelt;
@@ -336,35 +329,22 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             return false;
         }
 
-        const energyGeneratorComp = receiver.components.EnergyGenerator;
-        if (energyGeneratorComp) {
-            if (energyGeneratorComp.tryTakeItem(item, slotIndex)) {
-                // Passed it over
-                return true;
-            }
-
-            // Energy generator comp can't have anything else
-            return false;
-        }
-
         return false;
     }
 
     /**
-     * Draws the given layer
+     * Draws everything
      * @param {DrawParameters} parameters
-     * @param {enumLayer} layer
      */
-    drawLayer(parameters, layer) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawSingleEntity.bind(this, layer));
+    draw(parameters) {
+        this.forEachMatchingEntityOnScreen(parameters, this.drawSingleEntity.bind(this));
     }
 
     /**
-     * @param {enumLayer} layer
      * @param {DrawParameters} parameters
      * @param {Entity} entity
      */
-    drawSingleEntity(layer, parameters, entity) {
+    drawSingleEntity(parameters, entity) {
         const ejectorComp = entity.components.ItemEjector;
         const staticComp = entity.components.StaticMapEntity;
 
@@ -378,11 +358,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
             if (!ejectedItem) {
                 // No item
-                continue;
-            }
-
-            if (slot.layer !== layer) {
-                // Not our layer
                 continue;
             }
 

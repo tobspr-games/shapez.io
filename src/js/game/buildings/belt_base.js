@@ -23,7 +23,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const beltSpeed = root.hubGoals.getBeltBaseSpeed(enumLayer.regular);
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
 
@@ -82,7 +82,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];
         const leftDirection = enumAngleToDirection[(rotation + 270) % 360];
 
-        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile, layer);
+        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile);
 
         let hasBottomEjector = false;
         let hasRightEjector = false;

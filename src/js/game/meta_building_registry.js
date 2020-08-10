@@ -1,10 +1,8 @@
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
-import { MetaAdvancedProcessorBuilding } from "./buildings/advanced_processor";
 import { MetaBeltBuilding } from "./buildings/belt";
 import { MetaBeltBaseBuilding } from "./buildings/belt_base";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
-import { MetaEnergyGenerator } from "./buildings/energy_generator";
 import { MetaHubBuilding } from "./buildings/hub";
 import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
 import { MetaMixerBuilding } from "./buildings/mixer";
@@ -14,8 +12,6 @@ import { enumSplitterVariants, MetaSplitterBuilding } from "./buildings/splitter
 import { MetaStackerBuilding } from "./buildings/stacker";
 import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
 import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
-import { MetaWireBaseBuilding } from "./buildings/wire_base";
-import { enumWireCrossingVariants, MetaWireCrossingsBuilding } from "./buildings/wire_crossings";
 import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
 
@@ -33,10 +29,6 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaBeltBuilding);
     gMetaBuildingRegistry.register(MetaUndergroundBeltBuilding);
     gMetaBuildingRegistry.register(MetaHubBuilding);
-    gMetaBuildingRegistry.register(MetaEnergyGenerator);
-    gMetaBuildingRegistry.register(MetaWireBaseBuilding);
-    gMetaBuildingRegistry.register(MetaAdvancedProcessorBuilding);
-    gMetaBuildingRegistry.register(MetaWireCrossingsBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
@@ -85,21 +77,6 @@ export function initMetaBuildingRegistry() {
 
     // Hub
     registerBuildingVariant(26, MetaHubBuilding);
-
-    // Energy generator
-    registerBuildingVariant(27, MetaEnergyGenerator);
-
-    // Wire
-    registerBuildingVariant(28, MetaWireBaseBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(29, MetaWireBaseBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(30, MetaWireBaseBuilding, defaultBuildingVariant, 2);
-
-    // Advanced processor
-    registerBuildingVariant(31, MetaAdvancedProcessorBuilding);
-
-    // Wire crossing
-    registerBuildingVariant(32, MetaWireCrossingsBuilding);
-    registerBuildingVariant(33, MetaWireCrossingsBuilding, enumWireCrossingVariants.merger);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

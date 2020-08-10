@@ -10,9 +10,7 @@ import { UndergroundBeltComponent } from "./components/underground_belt";
 import { UnremovableComponent } from "./components/unremovable";
 import { HubComponent } from "./components/hub";
 import { StorageComponent } from "./components/storage";
-import { EnergyGeneratorComponent } from "./components/energy_generator";
 import { WiredPinsComponent } from "./components/wired_pins";
-import { EnergyConsumerComponent } from "./components/energy_consumer";
 import { BeltUnderlaysComponent } from "./components/belt_underlays";
 
 export function initComponentRegistry() {
@@ -27,9 +25,7 @@ export function initComponentRegistry() {
     gComponentRegistry.register(UnremovableComponent);
     gComponentRegistry.register(HubComponent);
     gComponentRegistry.register(StorageComponent);
-    gComponentRegistry.register(EnergyGeneratorComponent);
     gComponentRegistry.register(WiredPinsComponent);
-    gComponentRegistry.register(EnergyConsumerComponent);
     gComponentRegistry.register(BeltUnderlaysComponent);
 
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS

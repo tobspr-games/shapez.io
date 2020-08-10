@@ -7,7 +7,6 @@ import { enumLayer } from "../root";
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
- * layer: enumLayer,
  * filter?: enumItemType
  * }} ItemAcceptorSlot */
 
@@ -22,7 +21,6 @@ import { enumLayer } from "../root";
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
- * layer?: enumLayer,
  * filter?: enumItemType
  * }} ItemAcceptorSlotConfig */
 
@@ -38,9 +36,6 @@ export class ItemAcceptorComponent extends Component {
                     pos: types.vector,
                     directions: types.array(types.enum(enumDirection)),
                     filter: types.nullable(types.enum(enumItemType)),
-
-                    // TODO: MIGRATE
-                    layer: types.enum(enumLayer),
                 })
             ),
         };
@@ -54,7 +49,6 @@ export class ItemAcceptorComponent extends Component {
                 pos: slot.pos.copy(),
                 directions: slot.directions.slice(),
                 filter: slot.filter,
-                layer: slot.layer,
             });
         }
 
@@ -92,7 +86,6 @@ export class ItemAcceptorComponent extends Component {
             this.slots.push({
                 pos: slot.pos,
                 directions: slot.directions,
-                layer: slot.layer || enumLayer.regular,
 
                 // Which type of item to accept (shape | color | all) @see enumItemType
                 filter: slot.filter,
@@ -147,10 +140,9 @@ export class ItemAcceptorComponent extends Component {
      * Tries to find a slot which accepts the current item
      * @param {Vector} targetLocalTile
      * @param {enumDirection} fromLocalDirection
-     * @param {enumLayer} layer
      * @returns {ItemAcceptorLocatedSlot|null}
      */
-    findMatchingSlot(targetLocalTile, fromLocalDirection, layer) {
+    findMatchingSlot(targetLocalTile, fromLocalDirection) {
         // We need to invert our direction since the acceptor specifies *from* which direction
         // it accepts items, but the ejector specifies *into* which direction it ejects items.
         // E.g.: Ejector ejects into "right" direction but acceptor accepts from "left" direction.
@@ -162,11 +154,6 @@ export class ItemAcceptorComponent extends Component {
 
             // Make sure the acceptor slot is on the right position
             if (!slot.pos.equals(targetLocalTile)) {
-                continue;
-            }
-
-            // Make sure the layer matches
-            if (slot.layer !== layer) {
                 continue;
             }
 

@@ -168,14 +168,6 @@ export class MapView extends BaseMap {
     }
 
     /**
-     * Draws the wires background
-     * @param {DrawParameters} parameters
-     */
-    drawWiresLayer(parameters) {
-        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawWiresLayer);
-    }
-
-    /**
      * Draws the wires foreground
      * @param {DrawParameters} parameters
      */

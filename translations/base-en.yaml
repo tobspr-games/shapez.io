@@ -448,11 +448,6 @@ buildings:
             name: &belt Conveyor Belt
             description: Transports items, hold and drag to place multiple.
 
-    wire:
-        default:
-            name: &wire Energy Wire
-            description: Allows you to transport energy.
-
     # Internal name for the Extractor
     miner:
         default:
@@ -494,11 +489,6 @@ buildings:
         quad:
             name: Cutter (Quad)
             description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
-
-    advanced_processor:
-        default:
-            name: &advanced_processor Color Inverter
-            description: Accepts a color or shape and inverts it.
 
     rotater:
         default:
@@ -546,25 +536,6 @@ buildings:
         storage:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
-
-    energy_generator:
-        deliver: Deliver
-
-        # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: For
-
-        default:
-            name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes.
-
-    wire_crossings:
-        default:
-            name: &wire_crossings Wire Splitter
-            description: Splits a energy wire into two.
-
-        merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -826,14 +797,11 @@ keybindings:
         underground_belt: *underground_belt
         miner: *miner
         cutter: *cutter
-        advanced_processor: *advanced_processor
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer
-        energy_generator: *energy_generator
         painter: *painter
         trash: *trash
-        wire: *wire
 
         pipette: Pipette
         rotateWhilePlacing: Rotate
