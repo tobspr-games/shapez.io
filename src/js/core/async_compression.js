@@ -1,5 +1,6 @@
 import CompressionWorker from "worker-loader?inline=true&fallback=false!../webworkers/compression.worker";
 import { createLogger } from "./logging";
+import { round2Digits } from "./utils";
 
 const logger = createLogger("async_compression");
 
@@ -50,7 +51,7 @@ class AsynCompression {
             }
 
             const duration = performance.now() - jobData.startTime;
-            // log(this, "Got response from worker within", duration.toFixed(2), "ms");
+            logger.log("Got job", jobId, "response within", round2Digits(duration), "ms");
             const resolver = jobData.resolver;
             delete this.currentJobs[jobId];
             resolver(result);
@@ -74,6 +75,7 @@ class AsynCompression {
      * @param {string} text
      */
     compressFileAsync(text) {
+        logger.log("Compressing", text.length, "bytes async");
         return this.internalQueueJob("compressFile", {
             text,
             compressionPrefix,
@@ -98,6 +100,8 @@ class AsynCompression {
                 resolver: resolve,
                 startTime: performance.now(),
             };
+
+            logger.log("Posting job", job, "/", jobId);
             this.worker.postMessage({ jobId, job, data });
         });
     }
