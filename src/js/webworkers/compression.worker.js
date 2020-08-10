@@ -12,7 +12,8 @@ function accessNestedPropertyReverse(obj, keys) {
 
 const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
 
-onmessage = function ({ data: { jobId, job, data } }) {
+onmessage = function (event) {
+    const { jobId, job, data } = event.data;
     const result = performJob(job, data);
     postMessage({ jobId, result });
 };
