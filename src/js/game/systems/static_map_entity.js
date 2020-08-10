@@ -47,7 +47,7 @@ export class StaticMapEntitySystem extends GameSystem {
                         const beltComp = entity.components.Belt;
                         if (beltComp) {
                             const sprite = this.beltOverviewSprites[beltComp.direction];
-                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0, false);
+                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
                         } else {
                             parameters.context.fillRect(
                                 rect.x * globalConfig.tileSize,
@@ -59,7 +59,7 @@ export class StaticMapEntitySystem extends GameSystem {
                     } else {
                         const sprite = staticComp.getSprite();
                         if (sprite) {
-                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2, false);
+                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2);
                         }
                     }
                 }
@@ -91,7 +91,7 @@ export class StaticMapEntitySystem extends GameSystem {
 
                     const sprite = staticComp.getSprite();
                     if (sprite) {
-                        staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2, false);
+                        staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2);
                     }
                 }
             }

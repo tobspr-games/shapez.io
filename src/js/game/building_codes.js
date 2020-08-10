@@ -1,6 +1,7 @@
 /* typehints:start */
 import { MetaBuilding } from "./meta_building";
 import { AtlasSprite } from "../core/sprites";
+import { Vector } from "../core/vector";
 /* typehints:end */
 
 /**
@@ -9,6 +10,7 @@ import { AtlasSprite } from "../core/sprites";
  *   metaInstance?: MetaBuilding,
  *   variant?: string,
  *   rotationVariant?: number,
+ *   tileSize?: Vector,
  *   sprite?: AtlasSprite,
  *   blueprintSprite?: AtlasSprite,
  *   silhouetteColor?: string
@@ -41,6 +43,8 @@ export function registerBuildingVariant(
         metaClass: meta,
         variant,
         rotationVariant,
+        // @ts-ignore
+        tileSize: new meta().getDimensions(variant),
     };
 }
 

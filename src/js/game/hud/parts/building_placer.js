@@ -312,7 +312,6 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const staticComp = this.fakeEntity.components.StaticMapEntity;
         staticComp.origin = mouseTile;
         staticComp.rotation = rotation;
-        staticComp.tileSize = metaBuilding.getDimensions(this.currentVariant.get());
         metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
         staticComp.code = getCodeFromBuildingData(
             this.currentMetaBuilding.get(),

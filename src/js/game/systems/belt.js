@@ -507,12 +507,7 @@ export class BeltSystem extends GameSystemWithFilter {
                     const direction = entity.components.Belt.direction;
                     const sprite = this.beltAnimations[direction][animationIndex % BELT_ANIM_COUNT];
 
-                    entity.components.StaticMapEntity.drawSpriteOnFullEntityBounds(
-                        parameters,
-                        sprite,
-                        0,
-                        false
-                    );
+                    entity.components.StaticMapEntity.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
                 }
             }
         }
