@@ -90,11 +90,10 @@ export class ItemEjectorComponent extends Component {
 
     /**
      * Returns where this slot ejects to
-     * @param {number} index
+     * @param {ItemEjectorSlot} slot
      * @returns {Vector}
      */
-    getSlotTargetLocalTile(index) {
-        const slot = this.slots[index];
+    getSlotTargetLocalTile(slot) {
         const directionVector = enumDirectionToVector[slot.direction];
         return slot.pos.add(directionVector);
     }
@@ -105,7 +104,7 @@ export class ItemEjectorComponent extends Component {
      */
     anySlotEjectsToLocalTile(tile) {
         for (let i = 0; i < this.slots.length; ++i) {
-            if (this.getSlotTargetLocalTile(i).equals(tile)) {
+            if (this.getSlotTargetLocalTile(this.slots[i]).equals(tile)) {
                 return true;
             }
         }

@@ -9,6 +9,7 @@ import {
     enumDirectionToVector,
     enumInvertedDirections,
     Vector,
+    enumDirection,
 } from "../../../core/vector";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
@@ -427,6 +428,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const acceptorComp = this.fakeEntity.components.ItemAcceptor;
         const ejectorComp = this.fakeEntity.components.ItemEjector;
         const staticComp = this.fakeEntity.components.StaticMapEntity;
+        const beltComp = this.fakeEntity.components.Belt;
 
         const goodArrowSprite = Loader.getSprite("sprites/misc/slot_good_arrow.png");
         const badArrowSprite = Loader.getSprite("sprites/misc/slot_bad_arrow.png");
@@ -435,103 +437,67 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         const offsetShift = 10;
 
-        if (acceptorComp) {
-            const slots = acceptorComp.slots;
-            for (let acceptorSlotIndex = 0; acceptorSlotIndex < slots.length; ++acceptorSlotIndex) {
-                const slot = slots[acceptorSlotIndex];
-
-                const acceptorSlotWsTile = staticComp.localTileToWorld(slot.pos);
-                const acceptorSlotWsPos = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
-
-                // Go over all slots
-                for (
-                    let acceptorDirectionIndex = 0;
-                    acceptorDirectionIndex < slot.directions.length;
-                    ++acceptorDirectionIndex
-                ) {
-                    const direction = slot.directions[acceptorDirectionIndex];
-                    const worldDirection = staticComp.localDirectionToWorld(direction);
-
-                    // Figure out which tile ejects to this slot
-                    const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
-
-                    let isBlocked = false;
-                    let isConnected = false;
-
-                    // Find all entities which are on that tile
-                    const sourceEntities = this.root.map.getLayersContentsMultipleXY(
-                        sourceTile.x,
-                        sourceTile.y
-                    );
-
-                    // Check for every entity:
-                    for (let i = 0; i < sourceEntities.length; ++i) {
-                        const sourceEntity = sourceEntities[i];
-                        const sourceEjector = sourceEntity.components.ItemEjector;
-                        const sourceStaticComp = sourceEntity.components.StaticMapEntity;
-                        const ejectorAcceptLocalTile = sourceStaticComp.worldToLocalTile(acceptorSlotWsTile);
-
-                        // If this entity is on the same layer as the slot - if so, it can either be
-                        // connected, or it can not be connected and thus block the input
-                        if (sourceEjector && sourceEjector.anySlotEjectsToLocalTile(ejectorAcceptLocalTile)) {
-                            // This one is connected, all good
-                            isConnected = true;
-                        } else {
-                            // This one is blocked
-                            isBlocked = true;
-                        }
-                    }
-
-                    const alpha = isConnected || isBlocked ? 1.0 : 0.3;
-                    const sprite = isBlocked ? badArrowSprite : goodArrowSprite;
-
-                    parameters.context.globalAlpha = alpha;
-                    drawRotatedSprite({
-                        parameters,
-                        sprite,
-                        x: acceptorSlotWsPos.x,
-                        y: acceptorSlotWsPos.y,
-                        angle: Math.radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
-                        size: 13,
-                        offsetY: offsetShift + 13,
-                    });
-                    parameters.context.globalAlpha = 1;
-                }
-            }
-        }
+        let acceptorSlots = [];
+        let ejectorSlots = [];
 
         if (ejectorComp) {
-            const slots = ejectorComp.slots;
+            ejectorSlots = ejectorComp.slots.slice();
+        }
+
+        if (acceptorComp) {
+            acceptorSlots = acceptorComp.slots.slice();
+        }
+
+        if (beltComp) {
+            const fakeEjectorSlot = beltComp.getFakeEjectorSlot();
+            const fakeAcceptorSlot = beltComp.getFakeAcceptorSlot();
+            ejectorSlots.push(fakeEjectorSlot);
+            acceptorSlots.push(fakeAcceptorSlot);
+        }
+
+        for (let acceptorSlotIndex = 0; acceptorSlotIndex < acceptorSlots.length; ++acceptorSlotIndex) {
+            const slot = acceptorSlots[acceptorSlotIndex];
+
+            const acceptorSlotWsTile = staticComp.localTileToWorld(slot.pos);
+            const acceptorSlotWsPos = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
 
             // Go over all slots
-            for (let ejectorSlotIndex = 0; ejectorSlotIndex < slots.length; ++ejectorSlotIndex) {
-                const slot = slots[ejectorSlotIndex];
+            for (
+                let acceptorDirectionIndex = 0;
+                acceptorDirectionIndex < slot.directions.length;
+                ++acceptorDirectionIndex
+            ) {
+                const direction = slot.directions[acceptorDirectionIndex];
+                const worldDirection = staticComp.localDirectionToWorld(direction);
 
-                const ejectorSlotWsTile = staticComp.localTileToWorld(
-                    ejectorComp.getSlotTargetLocalTile(ejectorSlotIndex)
-                );
-                const ejectorSLotWsPos = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
-                const ejectorSlotWsDirection = staticComp.localDirectionToWorld(slot.direction);
+                // Figure out which tile ejects to this slot
+                const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
 
                 let isBlocked = false;
                 let isConnected = false;
 
                 // Find all entities which are on that tile
-                const destEntities = this.root.map.getLayersContentsMultipleXY(
-                    ejectorSlotWsTile.x,
-                    ejectorSlotWsTile.y
-                );
+                const sourceEntities = this.root.map.getLayersContentsMultipleXY(sourceTile.x, sourceTile.y);
 
                 // Check for every entity:
-                for (let i = 0; i < destEntities.length; ++i) {
-                    const destEntity = destEntities[i];
-                    const destAcceptor = destEntity.components.ItemAcceptor;
-                    const destStaticComp = destEntity.components.StaticMapEntity;
+                for (let i = 0; i < sourceEntities.length; ++i) {
+                    const sourceEntity = sourceEntities[i];
+                    const sourceEjector = sourceEntity.components.ItemEjector;
+                    const sourceBeltComp = sourceEntity.components.Belt;
+                    const sourceStaticComp = sourceEntity.components.StaticMapEntity;
+                    const ejectorAcceptLocalTile = sourceStaticComp.worldToLocalTile(acceptorSlotWsTile);
 
-                    const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
-                    const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
-                    if (destAcceptor && destAcceptor.findMatchingSlot(destLocalTile, destLocalDir)) {
+                    // If this entity is on the same layer as the slot - if so, it can either be
+                    // connected, or it can not be connected and thus block the input
+                    if (sourceEjector && sourceEjector.anySlotEjectsToLocalTile(ejectorAcceptLocalTile)) {
                         // This one is connected, all good
+                        isConnected = true;
+                    } else if (
+                        sourceBeltComp &&
+                        sourceStaticComp.localDirectionToWorld(sourceBeltComp.direction) ===
+                            enumInvertedDirections[worldDirection]
+                    ) {
+                        // Belt connected
                         isConnected = true;
                     } else {
                         // This one is blocked
@@ -546,14 +512,69 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 drawRotatedSprite({
                     parameters,
                     sprite,
-                    x: ejectorSLotWsPos.x,
-                    y: ejectorSLotWsPos.y,
-                    angle: Math.radians(enumDirectionToAngle[ejectorSlotWsDirection]),
+                    x: acceptorSlotWsPos.x,
+                    y: acceptorSlotWsPos.y,
+                    angle: Math.radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
                     size: 13,
-                    offsetY: offsetShift,
+                    offsetY: offsetShift + 13,
                 });
                 parameters.context.globalAlpha = 1;
             }
+        }
+
+        // Go over all slots
+        for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorSlots.length; ++ejectorSlotIndex) {
+            const slot = ejectorSlots[ejectorSlotIndex];
+
+            const ejectorSlotLocalTile = slot.pos.add(enumDirectionToVector[slot.direction]);
+            const ejectorSlotWsTile = staticComp.localTileToWorld(ejectorSlotLocalTile);
+
+            const ejectorSLotWsPos = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
+            const ejectorSlotWsDirection = staticComp.localDirectionToWorld(slot.direction);
+
+            let isBlocked = false;
+            let isConnected = false;
+
+            // Find all entities which are on that tile
+            const destEntities = this.root.map.getLayersContentsMultipleXY(
+                ejectorSlotWsTile.x,
+                ejectorSlotWsTile.y
+            );
+
+            // Check for every entity:
+            for (let i = 0; i < destEntities.length; ++i) {
+                const destEntity = destEntities[i];
+                const destAcceptor = destEntity.components.ItemAcceptor;
+                const destStaticComp = destEntity.components.StaticMapEntity;
+
+                const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
+                const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
+                if (destAcceptor && destAcceptor.findMatchingSlot(destLocalTile, destLocalDir)) {
+                    // This one is connected, all good
+                    isConnected = true;
+                } else if (destEntity.components.Belt && destLocalDir === enumDirection.top) {
+                    // Connected to a belt
+                    isConnected = true;
+                } else {
+                    // This one is blocked
+                    isBlocked = true;
+                }
+            }
+
+            const alpha = isConnected || isBlocked ? 1.0 : 0.3;
+            const sprite = isBlocked ? badArrowSprite : goodArrowSprite;
+
+            parameters.context.globalAlpha = alpha;
+            drawRotatedSprite({
+                parameters,
+                sprite,
+                x: ejectorSLotWsPos.x,
+                y: ejectorSLotWsPos.y,
+                angle: Math.radians(enumDirectionToAngle[ejectorSlotWsDirection]),
+                size: 13,
+                offsetY: offsetShift,
+            });
+            parameters.context.globalAlpha = 1;
         }
     }
 }

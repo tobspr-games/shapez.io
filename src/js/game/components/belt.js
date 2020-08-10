@@ -93,7 +93,7 @@ export class BeltComponent extends Component {
      * Returns fake acceptor slot used for matching
      * @returns {import("./item_ejector").ItemEjectorSlot}
      */
-    getFakeEjectorSlots() {
+    getFakeEjectorSlot() {
         assert(
             FAKE_BELT_EJECTOR_SLOT_BY_DIRECTION[this.direction],
             "Invalid belt direction: ",

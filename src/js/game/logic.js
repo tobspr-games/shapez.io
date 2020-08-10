@@ -212,7 +212,7 @@ export class GameLogic {
                     }
 
                     if (beltComp) {
-                        const fakeEjectorSlot = beltComp.getFakeEjectorSlots();
+                        const fakeEjectorSlot = beltComp.getFakeEjectorSlot();
                         const fakeAcceptorSlot = beltComp.getFakeAcceptorSlot();
                         ejectorSlots.push(fakeEjectorSlot);
                         acceptorSlots.push(fakeAcceptorSlot);
