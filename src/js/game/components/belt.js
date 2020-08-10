@@ -2,8 +2,6 @@ import { enumDirection, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { BeltPath } from "../belt_path";
 import { Component } from "../component";
-import { Entity } from "../entity";
-import { enumLayer } from "../root";
 
 export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 
@@ -43,7 +41,6 @@ export class BeltComponent extends Component {
     }
 
     static getSchema() {
-        // The followUpCache field is not serialized.
         return {
             direction: types.string,
         };
@@ -62,9 +59,6 @@ export class BeltComponent extends Component {
         super();
 
         this.direction = direction;
-
-        /** @type {Entity} */
-        this.followUpCache = null;
 
         /**
          * The path this belt is contained in, not serialized

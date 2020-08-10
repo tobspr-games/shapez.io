@@ -2,7 +2,6 @@ import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector
 import { types } from "../../savegame/serialization";
 import { BaseItem, enumItemType } from "../base_item";
 import { Component } from "../component";
-import { enumLayer } from "../root";
 
 /** @typedef {{
  * pos: Vector,

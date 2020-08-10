@@ -1009,31 +1009,55 @@ export class BeltPath extends BasicSerializableObject {
         // Check if we have an item which is ready to be emitted
         const lastItem = this.items[this.items.length - 1];
         if (lastItem && lastItem[_nextDistance] === 0 && this.acceptorTarget) {
-            // Pass over the item
-            if (
-                this.root.systemMgr.systems.itemEjector.tryPassOverItem(
-                    lastItem[_item],
-                    this.acceptorTarget.entity,
-                    this.acceptorTarget.slot
-                )
-            ) {
+            if (this.tryHandOverItem(lastItem[_item])) {
                 this.items.pop();
-
-                // Also trigger animation
-                const targetAcceptorComp = this.acceptorTarget.entity.components.ItemAcceptor;
-                if (targetAcceptorComp) {
-                    targetAcceptorComp.onItemAccepted(
-                        this.acceptorTarget.slot,
-                        this.acceptorTarget.direction,
-                        lastItem[_item]
-                    );
-                }
             }
         }
 
         if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
             this.debug_checkIntegrity("post-update");
         }
+    }
+
+    /**
+     * Tries to hand over the item to the end entity
+     * @param {BaseItem} item
+     */
+    tryHandOverItem(item) {
+        if (!this.acceptorTarget) {
+            return;
+        }
+
+        const targetAcceptorComp = this.acceptorTarget.entity.components.ItemAcceptor;
+
+        // Check if the acceptor has a filter for example
+        if (targetAcceptorComp && !targetAcceptorComp.canAcceptItem(this.acceptorTarget.slot, item)) {
+            // Well, this item is not accepted
+            return false;
+        }
+
+        // Try to pass over
+        if (
+            this.root.systemMgr.systems.itemEjector.tryPassOverItem(
+                item,
+                this.acceptorTarget.entity,
+                this.acceptorTarget.slot
+            )
+        ) {
+            // Trigger animation on the acceptor comp
+            const targetAcceptorComp = this.acceptorTarget.entity.components.ItemAcceptor;
+            if (targetAcceptorComp) {
+                targetAcceptorComp.onItemAccepted(
+                    this.acceptorTarget.slot,
+                    this.acceptorTarget.direction,
+                    item
+                );
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
