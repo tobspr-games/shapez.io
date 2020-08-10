@@ -1,6 +1,8 @@
 import { compressX64 } from "../core/lzstring";
 import { globalConfig } from "../core/config";
-import { sha1 } from "../core/sensitive_utils.encrypt";
+import { compressObject } from "../savegame/savegame_compressor";
+import { CRC_PREFIX } from "../core/sensitive_utils.encrypt";
+import crc32 from "crc/crc32";
 
 function accessNestedPropertyReverse(obj, keys) {
     let result = obj;
@@ -24,9 +26,13 @@ function performJob(job, data) {
         case "compressX64": {
             return compressX64(data);
         }
-        case "compressFile": {
-            const checksum = sha1(data.text + salt);
-            return data.compressionPrefix + compressX64(checksum + data.text);
+
+        case "compressObject": {
+            const optimized = compressObject(data.obj);
+            const stringified = JSON.stringify(optimized);
+
+            const checksum = CRC_PREFIX + crc32(stringified + salt).toString(16);
+            return data.compressionPrefix + compressX64(checksum + stringified);
         }
         default:
             throw new Error("Webworker: Unknown job: " + job);

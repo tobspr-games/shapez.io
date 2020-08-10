@@ -53,7 +53,15 @@ class AsynCompression {
             }
 
             const duration = performance.now() - jobData.startTime;
-            logger.log("Got job", jobId, "response within", round2Digits(duration), "ms");
+            logger.log(
+                "Got job",
+                jobId,
+                "response within",
+                round2Digits(duration),
+                "ms: ",
+                result.length,
+                "bytes"
+            );
             const resolver = jobData.resolver;
             delete this.currentJobs[jobId];
             resolver(result);
@@ -73,13 +81,13 @@ class AsynCompression {
     }
 
     /**
-     * Compresses file
-     * @param {string} text
+     * Compresses any object
+     * @param {any} obj
      */
-    compressFileAsync(text) {
-        logger.log("Compressing", text.length, "bytes async");
-        return this.internalQueueJob("compressFile", {
-            text,
+    compressObjectAsync(obj) {
+        logger.log("Compressing object async (optimized)");
+        return this.internalQueueJob("compressObject", {
+            obj,
             compressionPrefix,
         });
     }

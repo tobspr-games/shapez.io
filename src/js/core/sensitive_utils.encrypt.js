@@ -10,3 +10,6 @@ export function sha1(str) {
 export function getNameOfProvider() {
     return window[decompressX64("DYewxghgLgliB2Q")][decompressX64("BYewzgLgdghgtgUyA")];
 }
+
+// Distinguish legacy crc prefixes
+export const CRC_PREFIX = "crc32".padEnd(32, "-");
