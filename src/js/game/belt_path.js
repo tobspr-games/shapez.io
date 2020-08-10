@@ -4,7 +4,7 @@ import { gItemRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
 import { epsilonCompare, round4Digits } from "../core/utils";
-import { enumDirection, enumDirectionToVector, Vector } from "../core/vector";
+import { enumDirection, enumDirectionToVector, Vector, enumInvertedDirections } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
@@ -194,7 +194,7 @@ export class BeltPath extends BasicSerializableObject {
 
     /**
      * Finds the entity which accepts our items
-     * @return {{ entity: Entity, slot: number }}
+     * @return {{ entity: Entity, slot: number, direction?: enumDirection }}
      */
     computeAcceptingEntityAndSlot() {
         const lastEntity = this.entityPath[this.entityPath.length - 1];
@@ -226,6 +226,7 @@ export class BeltPath extends BasicSerializableObject {
                 if (ejectSlotWsDirection === beltAcceptingDirection) {
                     return {
                         entity: targetEntity,
+                        direction: null,
                         slot: 0,
                     };
                 }
@@ -238,9 +239,10 @@ export class BeltPath extends BasicSerializableObject {
                 continue;
             }
 
+            const ejectingDirection = targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection);
             const matchingSlot = targetAcceptorComp.findMatchingSlot(
                 targetStaticComp.worldToLocalTile(ejectSlotTargetWsTile),
-                targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection),
+                ejectingDirection,
                 lastEntity.layer
             );
 
@@ -252,6 +254,7 @@ export class BeltPath extends BasicSerializableObject {
             return {
                 entity: targetEntity,
                 slot: matchingSlot.index,
+                direction: enumInvertedDirections[ejectingDirection],
             };
         }
     }
@@ -1026,6 +1029,16 @@ export class BeltPath extends BasicSerializableObject {
                 )
             ) {
                 this.items.pop();
+
+                // Also trigger animation
+                const targetAcceptorComp = this.acceptorTarget.entity.components.ItemAcceptor;
+                if (targetAcceptorComp) {
+                    targetAcceptorComp.onItemAccepted(
+                        this.acceptorTarget.slot,
+                        this.acceptorTarget.direction,
+                        lastItem[_item]
+                    );
+                }
             }
         }
 
