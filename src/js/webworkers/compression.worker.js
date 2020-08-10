@@ -12,13 +12,13 @@ function accessNestedPropertyReverse(obj, keys) {
 
 const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
 
-onmessage = function (event) {
+self.addEventListener("message", event => {
     const { jobId, job, data } = event.data;
     console.log("[worker] Received message:");
     console.log(JSON.stringify(event.data));
     const result = performJob(job, data);
     postMessage({ jobId, result });
-};
+});
 
 function performJob(job, data) {
     switch (job) {
