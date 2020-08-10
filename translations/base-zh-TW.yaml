@@ -45,6 +45,7 @@
 # Painter：上色機
 # Trash：垃圾桶
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io 是一款在一個無邊際的地圖上建造工廠、自動化生產與組合愈加複雜圖形的遊戲。

@@ -19,9 +19,13 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: A shapez.io-ban gyárak építésével kell automatizálni az egyre összetettebb alakzatok gyártását és kombinálását egy végtelen méretű térképen.
+
+    # This is the text shown above the Discord link
+    discordLink: Hivatalos Discord - Beszélgessünk!
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -31,6 +35,7 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         A shapez.io egy olyan játék, amelyben gyárak építésével kell automatizálni az egyre összetettebb alakzatok gyártását és összeillesztését, mindezt egy végtelenül növekvő térképen.
+
         A kívánt alakzatok kézbesítése lehetővé teszi a játékban való előrehaladást, és a gyártási folyamatot felgyorsító fejlesztések feloldását.
 
         Ahogy egyre több és több alakzatot kell kézbesíteni, úgy a gyártási folyamatot is fel kell skálázni - Ne feledkezz meg az erőforrásokról sem, egy [b]végtelen méretű térképen[/b] terjeszkedhetsz!
@@ -81,8 +86,6 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io]Forráskód (GitHub)[/url]
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Segíts lefordítani[/url]
         [/list]
-
-    discordLink: Hivatalos Discord - Beszélgessünk!
 
 global:
     loading: Betöltés
@@ -154,7 +157,6 @@ mainMenu:
 
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
-
 
 dialogs:
     buttons:
@@ -296,6 +298,18 @@ ingame:
         pipette: Pipetta
         switchLayers: Réteg váltás
 
+    # Names of the colors, used for the color blind mode
+    colors:
+        red: Piros
+        green: Zöld
+        blue: Kék
+        yellow: Sárga
+        purple: Lila
+        cyan: Világoskék
+        white: Fehér
+        black: Fekete
+        uncolored: Színezetlen
+
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
@@ -390,6 +404,12 @@ ingame:
         description: Bal klikk egy jelölőre az odaugráshoz, jobb klikk a törléshez.<br><br>Nyomj <keybinding>-t egy jelölő készítéséhez a jelenlegi nézetből, vagy <strong>jobb klikk</strong> egy jelölő készítéséhez a kiválasztott helyre.
         creationSuccessNotification: Jelölő létrehozva.
 
+    # Shape viewer
+    shapeViewer:
+        title: Rétegek
+        empty: Üres
+        copyKey: Gyorskód másolása
+
     # Interactive tutorial
     interactiveTutorial:
         title: Oktatás
@@ -400,21 +420,6 @@ ingame:
 
             1_3_expand: >-
                 Ez <strong>NEM</strong> egy tétlen játék! Építs több bányát és futószalagot, hogy hamarabb elérd a célt.<br><br>Tipp: Tartsd lenyomva a <strong>SHIFT</strong>-et, hogy egyszerre több bányát helyezz le, és nyomj <strong>R</strong>-t a forgatáshoz.
-
-    colors:
-        red: Piros
-        green: Zöld
-        blue: Kék
-        yellow: Sárga
-        purple: Lila
-        cyan: Világoskék
-        white: Fehér
-        uncolored: Színezetlen
-        black: Fekete
-    shapeViewer:
-        title: Rétegek
-        empty: Üres
-        copyKey: Gyorskód másolása
 
 # All shop upgrades
 shopUpgrades:
@@ -433,12 +438,23 @@ shopUpgrades:
 
 # Buildings and their name / description
 buildings:
+    hub:
+        deliver: Deliver
+        toUnlock: to unlock
+        levelShortcut: LVL
+
     belt:
         default:
             name: &belt Futószalag
             description: Elemeket szállít, tartsd nyomva az egérgombot egyszerre több lerakásához.
 
-    miner: # Internal name for the Extractor
+    wire:
+        default:
+            name: &wire Energy Wire
+            description: Allows you to transport energy.
+
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Bányász
             description: Tedd egy alakzatra vagy színre a kibányászásához.
@@ -447,7 +463,8 @@ buildings:
             name: Bányász (összekapcsolható)
             description: Tedd egy alakzatra vagy színre a kibányászásához. Több egymáshoz kapcsolható.
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Alagút
             description: Segítségével futószalagok és épületek alatt átvezethetők az elemek.
@@ -456,7 +473,8 @@ buildings:
             name: Alagút II
             description: Segítségével futószalagok és épületek alatt átvezethetők az elemek.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Elosztó
             description: Többfunkciós - Egyenletesen szétosztja a bementeket a kimenetekre.
@@ -476,6 +494,11 @@ buildings:
         quad:
             name: Vágó (negyedelő)
             description: Négyfelé vágja az alakzatokat. Cuts shapes into four parts. <strong>Ha csak az egyik felet akarod használni, ne felejtsd el a többit a kukába küldeni, különben eldugítja!</strong>
+
+    advanced_processor:
+        default:
+            name: &advanced_processor Color Inverter
+            description: Accepts a color or shape and inverts it.
 
     rotater:
         default:
@@ -502,15 +525,18 @@ buildings:
         default:
             name: &painter Festő
             description: &painter_desc Beszínezi az alakzatot a baloldali bemeneten a jobboldali bemeneten érkező színnel.
-        double:
-            name: Festő (Dupla)
-            description: Beszínezi az alakzatokat a baloldali bemeneteken a fenti bemeneten érkező színnel.
-        quad:
-            name: Festő (Négyszeres)
-            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni.
+
         mirrored:
             name: *painter
             description: *painter_desc
+
+        double:
+            name: Festő (Dupla)
+            description: Beszínezi az alakzatokat a baloldali bemeneteken a fenti bemeneten érkező színnel.
+
+        quad:
+            name: Festő (Négyszeres)
+            description: Az alakzat négy negyedét különböző színekkel lehet vele színezni.
 
     trash:
         default:
@@ -520,28 +546,22 @@ buildings:
         storage:
             name: Tároló
             description: Tárolja a fölös elemeket egy bizonyos kapacitásig.
-    hub:
-        deliver: Deliver
-        toUnlock: to unlock
-        levelShortcut: LVL
-    wire:
-        default:
-            name: Energy Wire
-            description: Allows you to transport energy.
-    advanced_processor:
-        default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+
     energy_generator:
         deliver: Deliver
+
+        # This will be shown before the amount, so for example 'For 123 Energy'
         toGenerateEnergy: For
+
         default:
-            name: Energy Generator
+            name: &energy_generator Energy Generator
             description: Generates energy by consuming shapes.
+
     wire_crossings:
         default:
-            name: Wire Splitter
+            name: &wire_crossings Wire Splitter
             description: Splits a energy wire into two.
+
         merger:
             name: Wire Merger
             description: Merges two energy wires into one.

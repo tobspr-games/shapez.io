@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.ioは無限のマップ内で様々な"形"を資源とし、段々と複雑になっていく形の作成や合成の自動化を目指して工場を構築するゲームです。

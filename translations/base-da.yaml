@@ -19,9 +19,13 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io handler om at bygge fabrikker på en grænseløs spilleflade for automatisk at skabe og kombinere figurer, der i stigende grad bliver mere komplicerede.
+
+    # This is the text shown above the Discord link
+    discordLink: Officiel Discord - Snak lidt med mig!
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -31,14 +35,15 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         shapez.io handler om at bygge fabrikker over en grænseløs spilleflade for automatisk at skabe og kombinere figurer, der i stigende grad bliver mere komplicerede.
+
         Når efterspurgte figurer bliver afleveret, vil du gøre fremskridt i spillet og modtage opgraderinger, der gør din fabrik hurtigere.
-        
+
         Som efterspørgslen på figurer stiger, må du opskalere din fabrik for at holde trit - Glem dog ikke resurserne, du vil blive nødt til at udvide over hele den [b]uendelige flade[/b]!
 
         Der går ikke lang tid før du må mikse farver og male dine figurer med dem - Kombiner rød, grøn og blå farveresurser for at producere forskellige farver og mal derefter figurer med dem for at møde efterspørgslen.
-        
+
         Dette spil indeholder 18 fremadskridende levels (Som allerede burde holde dig beskæftiget i timevis!) men jeg tilføjer hele tiden nyt - Der er en hel masse planlagt!
-        
+
         Hvis du køber spillet, får du adgang til den selvstændige version, der har endnu flere ting, og du får også adgang til nyudviklet indhold.
 
         [b]Fordele for køb[/b]
@@ -71,7 +76,6 @@ steamPage:
 
         Enhver kan kontribuere, jeg er aktivt involveret i fælleskabet og prøver at gennemgå alle forslag og tage feedback i betragtning når det er muligt.
         Husk at tjekke mit trello board for den fulde køreplan!
-        
 
         [b]Link[/b]
 
@@ -82,8 +86,6 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io]Kildekode (GitHub)[/url]
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Hjælp med at oversætte[/url]
         [/list]
-
-    discordLink: Officiel Discord - Snak lidt med mig!
 
 global:
     loading: Indlæser
@@ -203,7 +205,7 @@ dialogs:
     editKeybinding:
         title: Ændr Keybinding
         desc: Tryk på knappen du vil bruge, eller escape for at fortryde.
-        
+
     resetKeybindingsConfirmation:
         title: Nulstil keybindings
         desc: Dette vil nulstille alle keybindings til deres standarder. Vær sød at bekræfte.
@@ -444,7 +446,8 @@ buildings:
             name: &belt Transportbælte
             description: Transportere varer, hold og træk for at sætte flere.
 
-    miner: # Internal name for the Extractor
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Udvinder
             description: Placer over en figur eller farve for at udvinde den.
@@ -453,7 +456,8 @@ buildings:
             name: Udvinder (Kæde)
             description: Placer over en figur eller farve for at udvinde den. Kan sættes i kæder.
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Tunnel
             description: Laver tunneller under bygninger and bælter.
@@ -462,7 +466,8 @@ buildings:
             name: Tunnel Trin II
             description: Laver tunneller under bygninger and bælter.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Spalter
             description: Flere funktioner - Fordeler alle modtagne varer jævnt.
@@ -664,7 +669,7 @@ settings:
             title: Autogem Interval
             description: >-
                 Kontrollere hvor ofte spillet gemmer automatisk. Du kan også slå det helt fra her.
-                
+
             intervals:
                 one_minute: 1 Minut
                 two_minutes: 2 Minuter

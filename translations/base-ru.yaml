@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
