@@ -15,10 +15,11 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
@@ -487,6 +488,9 @@ buildings:
         ccw:
             name: Вращатель (Обр.)
             description: Поворачивает фигуры против часовой стрелки на 90 градусов.
+        fl:
+            name: Вращатель (180)
+            description: Вращает фигуры на 180 градусов.
 
     stacker:
         default:
@@ -632,8 +636,9 @@ storyRewards:
 settings:
     title: Настройки
     categories:
-        game: Игровые
-        app: Основные
+        general: Основные
+        userInterface: Интерфейс
+        advanced: Продвинутые
 
     versionBadges:
         dev: Разработчик

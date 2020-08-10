@@ -1,14 +1,14 @@
 import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
+import { gItemRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
+import { Rectangle } from "../core/rectangle";
 import { epsilonCompare, round4Digits } from "../core/utils";
-import { Vector } from "../core/vector";
+import { enumDirection, enumDirectionToVector, Vector, enumInvertedDirections } from "../core/vector";
+import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
-import { GameRoot, enumLayer } from "./root";
-import { Rectangle } from "../core/rectangle";
-import { BasicSerializableObject, types } from "../savegame/serialization";
-import { gItemRegistry } from "../core/global_registries";
+import { GameRoot } from "./root";
 
 const logger = createLogger("belt_path");
 
@@ -126,14 +126,6 @@ export class BeltPath extends BasicSerializableObject {
     }
 
     /**
-     * Returns the layer of the this path
-     * @returns {enumLayer}
-     */
-    getLayer() {
-        return this.entityPath[0].layer;
-    }
-
-    /**
      * Tries to accept the item
      * @param {BaseItem} item
      */
@@ -167,7 +159,7 @@ export class BeltPath extends BasicSerializableObject {
      * @returns {BaseItem|null}
      */
     findItemAtTile(tile) {
-        // TODO: This breaks color blind mode otherwise
+        // @TODO: This breaks color blind mode otherwise
         return null;
     }
 
@@ -186,27 +178,85 @@ export class BeltPath extends BasicSerializableObject {
     }
 
     /**
-     * Updates all ejectors on the path, so that only the last ejector
+     * Recomputes the layer of the path and the target acceptor
      */
     onPathChanged() {
-        this.ejectorComp = this.entityPath[this.entityPath.length - 1].components.ItemEjector;
-        this.ejectorSlot = this.ejectorComp.slots[0];
+        this.layer = this.entityPath[0].layer;
+        this.acceptorTarget = this.computeAcceptingEntityAndSlot();
+    }
 
-        for (let i = 0; i < this.entityPath.length; ++i) {
-            const ejectorComp = this.entityPath[i].components.ItemEjector;
-            const isLast = i === this.entityPath.length - 1;
-            ejectorComp.enabled = isLast;
+    /**
+     * Called by the belt system when the surroundings changed
+     */
+    onSurroundingsChanged() {
+        this.onPathChanged();
+    }
 
-            // Clear all slots of non-end entities
-            if (!isLast) {
-                for (let k = 0; k < ejectorComp.slots.length; ++k) {
-                    ejectorComp.slots[k].item = null;
-                    ejectorComp.slots[k].progress = 0.0;
+    /**
+     * Finds the entity which accepts our items
+     * @return {{ entity: Entity, slot: number, direction?: enumDirection }}
+     */
+    computeAcceptingEntityAndSlot() {
+        const lastEntity = this.entityPath[this.entityPath.length - 1];
+        const lastStatic = lastEntity.components.StaticMapEntity;
+        const lastBeltComp = lastEntity.components.Belt;
+
+        // Figure out where and into which direction we eject items
+        const ejectSlotWsTile = lastStatic.localTileToWorld(new Vector(0, 0));
+        const ejectSlotWsDirection = lastStatic.localDirectionToWorld(lastBeltComp.direction);
+        const ejectSlotWsDirectionVector = enumDirectionToVector[ejectSlotWsDirection];
+        const ejectSlotTargetWsTile = ejectSlotWsTile.add(ejectSlotWsDirectionVector);
+
+        // Try to find the given acceptor component to take the item
+        // Since there can be cross layer dependencies, check on all layers
+        const targetEntities = this.root.map.getLayersContentsMultipleXY(
+            ejectSlotTargetWsTile.x,
+            ejectSlotTargetWsTile.y
+        );
+
+        for (let i = 0; i < targetEntities.length; ++i) {
+            const targetEntity = targetEntities[i];
+
+            const targetStaticComp = targetEntity.components.StaticMapEntity;
+            const targetBeltComp = targetEntity.components.Belt;
+
+            // Check for belts (special case)
+            if (targetBeltComp) {
+                const beltAcceptingDirection = targetStaticComp.localDirectionToWorld(enumDirection.top);
+                if (ejectSlotWsDirection === beltAcceptingDirection) {
+                    return {
+                        entity: targetEntity,
+                        direction: null,
+                        slot: 0,
+                    };
                 }
             }
-        }
 
-        this.layer = this.entityPath[0].layer;
+            // Check for item acceptors
+            const targetAcceptorComp = targetEntity.components.ItemAcceptor;
+            if (!targetAcceptorComp) {
+                // Entity doesn't accept items
+                continue;
+            }
+
+            const ejectingDirection = targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection);
+            const matchingSlot = targetAcceptorComp.findMatchingSlot(
+                targetStaticComp.worldToLocalTile(ejectSlotTargetWsTile),
+                ejectingDirection,
+                lastEntity.layer
+            );
+
+            if (!matchingSlot) {
+                // No matching slot found
+                continue;
+            }
+
+            return {
+                entity: targetEntity,
+                slot: matchingSlot.index,
+                direction: enumInvertedDirections[ejectingDirection],
+            };
+        }
     }
 
     // Following code will be compiled out outside of dev versions
@@ -251,11 +301,6 @@ export class BeltPath extends BasicSerializableObject {
                 return fail("Reference to destroyed entity " + entity.uid);
             }
 
-            const enabledState = i === this.entityPath.length - 1;
-            if (entity.components.ItemEjector.enabled !== enabledState) {
-                return fail("Item ejector enabled state is not synchronized (index =" + i + ")");
-            }
-
             const followUp = this.root.systemMgr.systems.belt.findFollowUpEntity(entity);
             if (!followUp) {
                 return fail(
@@ -281,20 +326,6 @@ export class BeltPath extends BasicSerializableObject {
                     "doesn't have this path assigned, but this path contains the entity."
                 );
             }
-        }
-
-        // Check for right ejector component and slot
-        if (this.ejectorComp !== this.entityPath[this.entityPath.length - 1].components.ItemEjector) {
-            return fail("Stale ejectorComp handle");
-        }
-        if (this.ejectorSlot !== this.ejectorComp.slots[0]) {
-            return fail("Stale ejector slot handle");
-        }
-        if (!this.ejectorComp) {
-            return fail("Ejector comp not set");
-        }
-        if (!this.ejectorSlot) {
-            return fail("Ejector slot not set");
         }
 
         // Check spacing
@@ -369,14 +400,6 @@ export class BeltPath extends BasicSerializableObject {
         DEBUG && logger.log("Extending belt path by entity at", entity.components.StaticMapEntity.origin);
 
         const beltComp = entity.components.Belt;
-
-        // If the last belt has something on its ejector, put that into the path first
-        const pendingItem = this.ejectorComp.takeSlotItem(0);
-        if (pendingItem) {
-            // Ok, so we have a pending item
-            DEBUG && logger.log("Taking pending item and putting it back on the path");
-            this.items.push([0, pendingItem]);
-        }
 
         // Append the entity
         this.entityPath.push(entity);
@@ -970,7 +993,7 @@ export class BeltPath extends BasicSerializableObject {
             beltSpeed *= 100;
         }
 
-        let minimumDistance = this.ejectorSlot.item ? this.getItemSpacing() : 0;
+        let minimumDistance = 0;
 
         // Try to reduce spacing
         let remainingAmount = beltSpeed;
@@ -994,11 +1017,28 @@ export class BeltPath extends BasicSerializableObject {
             minimumDistance = this.getItemSpacing();
         }
 
+        // Check if we have an item which is ready to be emitted
         const lastItem = this.items[this.items.length - 1];
-        if (lastItem && lastItem[_nextDistance] === 0) {
-            // Take over
-            if (this.ejectorComp.tryEject(0, lastItem[_item])) {
+        if (lastItem && lastItem[_nextDistance] === 0 && this.acceptorTarget) {
+            // Pass over the item
+            if (
+                this.root.systemMgr.systems.itemEjector.tryPassOverItem(
+                    lastItem[_item],
+                    this.acceptorTarget.entity,
+                    this.acceptorTarget.slot
+                )
+            ) {
                 this.items.pop();
+
+                // Also trigger animation
+                const targetAcceptorComp = this.acceptorTarget.entity.components.ItemAcceptor;
+                if (targetAcceptorComp) {
+                    targetAcceptorComp.onItemAccepted(
+                        this.acceptorTarget.slot,
+                        this.acceptorTarget.direction,
+                        lastItem[_item]
+                    );
+                }
             }
         }
 
@@ -1134,7 +1174,7 @@ export class BeltPath extends BasicSerializableObject {
             const beltLength = beltComp.getEffectiveLengthTiles(this.layer);
 
             // Check if the current items are on the belt
-            while (trackPos + beltLength >= currentItemPos) {
+            while (trackPos + beltLength >= currentItemPos - 1e-51) {
                 // Its on the belt, render it now
                 const staticComp = entity.components.StaticMapEntity;
                 assert(

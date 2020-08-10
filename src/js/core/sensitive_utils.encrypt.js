@@ -1,19 +1,12 @@
-import { globalConfig } from "./config";
-import { decompressX64, compressX64 } from "./lzstring";
+import { createHash } from "rusha";
 
-const Rusha = require("rusha");
-
-const encryptKey = globalConfig.info.sgSalt;
-
-export function decodeHashedString(s) {
-    return decompressX64(s);
-}
+import { decompressX64 } from "./lzstring";
 
 export function sha1(str) {
-    return Rusha.createHash().update(str).digest("hex");
+    return createHash().update(str).digest("hex");
 }
 
 // Window.location.host
 export function getNameOfProvider() {
-    return window[decodeHashedString("DYewxghgLgliB2Q")][decodeHashedString("BYewzgLgdghgtgUyA")];
+    return window[decompressX64("DYewxghgLgliB2Q")][decompressX64("BYewzgLgdghgtgUyA")];
 }

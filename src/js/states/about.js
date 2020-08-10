@@ -1,9 +1,7 @@
 import { TextualGameState } from "../core/textual_game_state";
-import { SOUNDS } from "../platform/sound";
 import { T } from "../translations";
-import { KEYMAPPINGS, getStringForKeyCode } from "../game/key_action_mapper";
-import { Dialog } from "../core/modal_dialog_elements";
 import { THIRDPARTY_URLS } from "../core/config";
+import { cachebust } from "../core/cachebust";
 
 export class AboutState extends TextualGameState {
     constructor() {
@@ -15,9 +13,16 @@ export class AboutState extends TextualGameState {
     }
 
     getMainContentHTML() {
-        return T.about.body
-            .replace("<githublink>", THIRDPARTY_URLS.github)
-            .replace("<discordlink>", THIRDPARTY_URLS.discord);
+        return `
+            <div class="head">
+                <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
+            </div>
+            <div class="text">
+            ${T.about.body
+                .replace("<githublink>", THIRDPARTY_URLS.github)
+                .replace("<discordlink>", THIRDPARTY_URLS.discord)}
+            </div>
+        `;
     }
 
     onEnter() {

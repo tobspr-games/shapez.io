@@ -13,6 +13,7 @@ import { StorageComponent } from "./components/storage";
 import { EnergyGeneratorComponent } from "./components/energy_generator";
 import { WiredPinsComponent } from "./components/wired_pins";
 import { EnergyConsumerComponent } from "./components/energy_consumer";
+import { BeltUnderlaysComponent } from "./components/belt_underlays";
 /* typehints:end */
 
 /**
@@ -64,6 +65,9 @@ export class EntityComponentStorage {
 
         /** @type {EnergyConsumerComponent} */
         this.EnergyConsumer;
+
+        /** @type {BeltUnderlaysComponent} */
+        this.BeltUnderlays;
 
         /* typehints:end */
     }

@@ -22,6 +22,8 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             [enumPinSlotType.negativeEnergyAcceptor]: Loader.getSprite(
                 "sprites/wires/pin_negative_accept.png"
             ),
+            [enumPinSlotType.logicalEjector]: Loader.getSprite("sprites/wires/pin_negative_eject.png"),
+            [enumPinSlotType.logicalAcceptor]: Loader.getSprite("sprites/wires/pin_negative_accept.png"),
         };
 
         this.root.signals.prePlacementCheck.add(this.prePlacementCheck, this);

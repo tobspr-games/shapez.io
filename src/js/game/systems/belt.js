@@ -137,6 +137,9 @@ export class BeltSystem extends GameSystemWithFilter {
         const originalRect = staticComp.getTileSpaceBounds();
         const affectedArea = originalRect.expandedInAllDirections(1);
 
+        /** @type {Set<BeltPath>} */
+        const changedPaths = new Set();
+
         for (let x = affectedArea.x; x < affectedArea.right(); ++x) {
             for (let y = affectedArea.y; y < affectedArea.bottom(); ++y) {
                 if (originalRect.containsPoint(x, y)) {
@@ -189,9 +192,16 @@ export class BeltSystem extends GameSystemWithFilter {
                         // Make sure the chunks know about the update
                         this.root.signals.entityChanged.dispatch(targetEntity);
                     }
+
+                    if (targetBeltComp.assignedPath) {
+                        changedPaths.add(targetBeltComp.assignedPath);
+                    }
                 }
             }
         }
+
+        // notify all paths *afterwards* to avoid multi-updates
+        changedPaths.forEach(path => path.onSurroundingsChanged());
 
         if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
             this.debug_verifyBeltPaths();
@@ -361,24 +371,10 @@ export class BeltSystem extends GameSystemWithFilter {
             const followUpBeltComp = followUpEntity.components.Belt;
             if (followUpBeltComp) {
                 const followUpStatic = followUpEntity.components.StaticMapEntity;
-                const followUpAcceptor = followUpEntity.components.ItemAcceptor;
 
-                // Check if the belt accepts items from our direction
-                const acceptorSlots = followUpAcceptor.slots;
-                for (let i = 0; i < acceptorSlots.length; ++i) {
-                    const slot = acceptorSlots[i];
-
-                    // Make sure the acceptor slot is on the same layer
-                    if (slot.layer !== entity.layer) {
-                        continue;
-                    }
-
-                    for (let k = 0; k < slot.directions.length; ++k) {
-                        const localDirection = followUpStatic.localDirectionToWorld(slot.directions[k]);
-                        if (enumInvertedDirections[localDirection] === followUpDirection) {
-                            return followUpEntity;
-                        }
-                    }
+                const acceptedDirection = followUpStatic.localDirectionToWorld(enumDirection.top);
+                if (acceptedDirection === followUpDirection) {
+                    return followUpEntity;
                 }
             }
         }
@@ -405,21 +401,12 @@ export class BeltSystem extends GameSystemWithFilter {
             const supplyBeltComp = supplyEntity.components.Belt;
             if (supplyBeltComp) {
                 const supplyStatic = supplyEntity.components.StaticMapEntity;
-                const supplyEjector = supplyEntity.components.ItemEjector;
+                const otherDirection = supplyStatic.localDirectionToWorld(
+                    enumInvertedDirections[supplyBeltComp.direction]
+                );
 
-                // Check if the belt accepts items from our direction
-                const ejectorSlots = supplyEjector.slots;
-                for (let i = 0; i < ejectorSlots.length; ++i) {
-                    const slot = ejectorSlots[i];
-
-                    // Make sure the ejector slot is on the same layer
-                    if (slot.layer !== entity.layer) {
-                        continue;
-                    }
-                    const localDirection = supplyStatic.localDirectionToWorld(slot.direction);
-                    if (enumInvertedDirections[localDirection] === supplyDirection) {
-                        return supplyEntity;
-                    }
+                if (otherDirection === supplyDirection) {
+                    return supplyEntity;
                 }
             }
         }

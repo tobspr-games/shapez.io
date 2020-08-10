@@ -15,17 +15,18 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io adalah permainan membangun pabrik-pabrik dengan tujuan untuk mengautomatiskan pembentukan dan pemrosesan bentuk-bentuk yang bertambah semakin kompleks di dalam area permainan yang meluas secara tak terhingga.
 
+
     # This is the text shown above the discord link
     discordLink: Tautan Resmi Discord – Obrol dengan saya!
-
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
@@ -503,6 +504,9 @@ buildings:
         ccw:
             name: Pemutar (Berlawanan Arah Jarum Jam)
             description: Memutar bentuk berlawanan arah jarum jam sebesar 90 derajat.
+        fl:
+            name: Pemutar (180)
+            description: Memutar bentuk sebesar 180 derajat.
 
     stacker:
         default:
@@ -642,8 +646,9 @@ storyRewards:
 settings:
     title: Pengaturan
     categories:
-        game: Permainan
-        app: Aplikasi
+        general: Umum
+        userInterface: Antarmuka Pengguna
+        advanced: Tingkat Tinggi
 
     versionBadges:
         dev: Pengembangan

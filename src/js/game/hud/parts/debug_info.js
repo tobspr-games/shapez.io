@@ -88,8 +88,8 @@ export class HUDDebugInfo extends BaseHUDPart {
         const mouseTile = this.root.camera.screenToWorld(mousePos).toTileSpace();
         const cameraTile = this.root.camera.center.toTileSpace();
 
-        this.trackedMousePosition.set(`Pos: <code>${mouseTile.x}</code> / <code>${mouseTile.y}</code>`);
-        this.trackedCameraPosition.set(`Center: <code>${cameraTile.x}</code> / <code>${cameraTile.y}</code>`);
+        this.trackedMousePosition.set(`Mouse: <code>${mouseTile.x}</code> / <code>${mouseTile.y}</code>`);
+        this.trackedCameraPosition.set(`Camera: <code>${cameraTile.x}</code> / <code>${cameraTile.y}</code>`);
     }
 
     /**

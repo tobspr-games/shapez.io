@@ -5,6 +5,7 @@ import { types } from "../../savegame/serialization";
 import { gItemRegistry } from "../../core/global_registries";
 import { Entity } from "../entity";
 import { enumLayer } from "../root";
+import { BeltPath } from "../belt_path";
 
 /**
  * @typedef {{
@@ -14,6 +15,7 @@ import { enumLayer } from "../root";
  *    layer: enumLayer,
  *    progress: number?,
  *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
+ *    cachedBeltPath?: BeltPath,
  *    cachedTargetEntity?: Entity
  * }} ItemEjectorSlot
  */
@@ -24,10 +26,8 @@ export class ItemEjectorComponent extends Component {
     }
 
     static getSchema() {
-        // The cachedDestSlot, cachedTargetEntity, and cachedConnectedSlots fields
-        // are not serialized.
+        // The cachedDestSlot, cachedTargetEntity fields are not serialized.
         return {
-            instantEject: types.bool,
             slots: types.array(
                 types.structured({
                     pos: types.vector,
@@ -55,7 +55,6 @@ export class ItemEjectorComponent extends Component {
 
         return new ItemEjectorComponent({
             slots: slotsCopy,
-            instantEject: this.instantEject,
         });
     }
 
@@ -63,18 +62,11 @@ export class ItemEjectorComponent extends Component {
      *
      * @param {object} param0
      * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>=} param0.slots The slots to eject on
-     * @param {boolean=} param0.instantEject If the ejection is instant
      */
-    constructor({ slots = [], instantEject = false }) {
+    constructor({ slots = [] }) {
         super();
 
-        // How long items take to eject
-        this.instantEject = instantEject;
-
         this.setSlots(slots);
-
-        /** @type {ItemEjectorSlot[]} */
-        this.cachedConnectedSlots = null;
 
         /**
          * Whether this ejector slot is enabled
@@ -162,7 +154,7 @@ export class ItemEjectorComponent extends Component {
             return false;
         }
         this.slots[slotIndex].item = item;
-        this.slots[slotIndex].progress = this.instantEject ? 1 : 0;
+        this.slots[slotIndex].progress = 0;
         return true;
     }
 

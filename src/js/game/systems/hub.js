@@ -17,21 +17,7 @@ export class HubSystem extends GameSystemWithFilter {
         this.forEachMatchingEntityOnScreen(parameters, this.drawEntity.bind(this));
     }
 
-    update() {
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
-
-            const hubComponent = entity.components.Hub;
-
-            const queue = hubComponent.definitionsToAnalyze;
-            for (let k = 0; k < queue.length; ++k) {
-                const definition = queue[k];
-                this.root.hubGoals.handleDefinitionDelivered(definition);
-            }
-
-            hubComponent.definitionsToAnalyze = [];
-        }
-    }
+    update() {}
 
     /**
      * @param {DrawParameters} parameters

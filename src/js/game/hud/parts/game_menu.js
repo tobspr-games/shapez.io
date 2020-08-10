@@ -1,10 +1,9 @@
 import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv, randomInt } from "../../../core/utils";
+import { makeDiv } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
 import { enumNotificationType } from "./notifications";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { IS_DEMO } from "../../../core/config";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
 export class HUDGameMenu extends BaseHUDPart {

@@ -348,7 +348,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 for (let i = 0; i < items.length; ++i) {
                     const shapeItem = /** @type {ShapeItem} */ (items[i].item);
-                    hubComponent.queueShapeDefinition(shapeItem.definition);
+                    this.root.hubGoals.handleDefinitionDelivered(shapeItem.definition);
                 }
 
                 break;

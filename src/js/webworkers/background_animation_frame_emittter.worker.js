@@ -1,15 +1,14 @@
 // We clamp high deltas so 30 fps is fairly ok
-var bgFps = 30;
-var desiredMsDelay = 1000 / bgFps;
+const bgFps = 30;
+const desiredMsDelay = 1000 / bgFps;
 
-let lastTick = 0;
+let lastTick = performance.now();
 
 function tick() {
-    var now = performance.now();
-    var delta = now - lastTick;
+    const now = performance.now();
+    const delta = now - lastTick;
     lastTick = now;
 
-    // @ts-ignore
     postMessage({ delta });
 }
 

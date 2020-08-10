@@ -1,5 +1,6 @@
 #state_ChangelogState {
     .content {
+        @include S(max-width, 800px);
         display: flex;
         flex-direction: column;
     }

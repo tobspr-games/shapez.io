@@ -6,7 +6,7 @@ import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
-import { round1Digit, round2Digits, formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond } from "../../core/utils";
 
 /** @enum {string} */
 export const enumMinerVariants = { chainable: "chainable" };

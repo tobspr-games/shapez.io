@@ -1,4 +1,3 @@
-import { Loader } from "../../core/loader";
 import { formatItemsPerSecond } from "../../core/utils";
 import { enumAngleToDirection, enumDirection, Vector } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
@@ -40,6 +39,10 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return SOUNDS.placeBelt;
     }
 
+    getSprite() {
+        return null;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
@@ -50,34 +53,8 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                 direction: enumDirection.top, // updated later
             })
         );
-        // Make this entity replaceabel
+        // Make this entity replaceable
         entity.addComponent(new ReplaceableMapEntityComponent());
-
-        entity.addComponent(
-            new ItemAcceptorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
-                        layer: this.getLayer(),
-                    },
-                ],
-                animated: false,
-            })
-        );
-
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.top, // updated later
-                        layer: this.getLayer(),
-                    },
-                ],
-                instantEject: true,
-            })
-        );
     }
 
     /**
@@ -87,8 +64,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant) {
         entity.components.Belt.direction = arrayBeltVariantToRotation[rotationVariant];
-        entity.components.ItemEjector.slots[0].direction = arrayBeltVariantToRotation[rotationVariant];
-        entity.components.StaticMapEntity.spriteKey = null;
     }
 
     /**

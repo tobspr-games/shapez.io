@@ -198,50 +198,66 @@ export class GameLogic {
                 for (let i = 0; i < entities.length; ++i) {
                     const entity = entities[i];
 
+                    let ejectorSlots = [];
+                    let acceptorSlots = [];
+
                     const staticComp = entity.components.StaticMapEntity;
                     const itemEjector = entity.components.ItemEjector;
+                    const itemAcceptor = entity.components.ItemAcceptor;
+                    const beltComp = entity.components.Belt;
+
                     if (itemEjector) {
-                        for (let ejectorSlot = 0; ejectorSlot < itemEjector.slots.length; ++ejectorSlot) {
-                            const slot = itemEjector.slots[ejectorSlot];
-                            if (slot.layer !== layer) {
-                                continue;
-                            }
-                            const wsTile = staticComp.localTileToWorld(slot.pos);
-                            const wsDirection = staticComp.localDirectionToWorld(slot.direction);
-                            const targetTile = wsTile.add(enumDirectionToVector[wsDirection]);
-                            if (targetTile.equals(tile)) {
-                                ejectors.push({
-                                    entity,
-                                    slot,
-                                    fromTile: wsTile,
-                                    toDirection: wsDirection,
-                                });
-                            }
+                        ejectorSlots = itemEjector.slots.slice();
+                    }
+
+                    if (itemAcceptor) {
+                        acceptorSlots = itemAcceptor.slots.slice();
+                    }
+
+                    if (beltComp) {
+                        const fakeEjectorSlot = beltComp.getFakeEjectorSlots();
+                        const fakeAcceptorSlot = beltComp.getFakeAcceptorSlot();
+                        ejectorSlots.push(fakeEjectorSlot);
+                        acceptorSlots.push(fakeAcceptorSlot);
+                    }
+
+                    for (let ejectorSlot = 0; ejectorSlot < ejectorSlots.length; ++ejectorSlot) {
+                        const slot = ejectorSlots[ejectorSlot];
+                        if (slot.layer !== layer) {
+                            continue;
+                        }
+                        const wsTile = staticComp.localTileToWorld(slot.pos);
+                        const wsDirection = staticComp.localDirectionToWorld(slot.direction);
+                        const targetTile = wsTile.add(enumDirectionToVector[wsDirection]);
+                        if (targetTile.equals(tile)) {
+                            ejectors.push({
+                                entity,
+                                slot,
+                                fromTile: wsTile,
+                                toDirection: wsDirection,
+                            });
                         }
                     }
 
-                    const itemAcceptor = entity.components.ItemAcceptor;
-                    if (itemAcceptor) {
-                        for (let acceptorSlot = 0; acceptorSlot < itemAcceptor.slots.length; ++acceptorSlot) {
-                            const slot = itemAcceptor.slots[acceptorSlot];
-                            if (slot.layer !== layer) {
-                                continue;
-                            }
+                    for (let acceptorSlot = 0; acceptorSlot < acceptorSlots.length; ++acceptorSlot) {
+                        const slot = acceptorSlots[acceptorSlot];
+                        if (slot.layer !== layer) {
+                            continue;
+                        }
 
-                            const wsTile = staticComp.localTileToWorld(slot.pos);
-                            for (let k = 0; k < slot.directions.length; ++k) {
-                                const direction = slot.directions[k];
-                                const wsDirection = staticComp.localDirectionToWorld(direction);
+                        const wsTile = staticComp.localTileToWorld(slot.pos);
+                        for (let k = 0; k < slot.directions.length; ++k) {
+                            const direction = slot.directions[k];
+                            const wsDirection = staticComp.localDirectionToWorld(direction);
 
-                                const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
-                                if (sourceTile.equals(tile)) {
-                                    acceptors.push({
-                                        entity,
-                                        slot,
-                                        toTile: wsTile,
-                                        fromDirection: wsDirection,
-                                    });
-                                }
+                            const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
+                            if (sourceTile.equals(tile)) {
+                                acceptors.push({
+                                    entity,
+                                    slot,
+                                    toTile: wsTile,
+                                    fromDirection: wsDirection,
+                                });
                             }
                         }
                     }

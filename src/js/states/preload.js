@@ -1,6 +1,6 @@
 import { GameState } from "../core/game_state";
 import { createLogger } from "../core/logging";
-import { findNiceValue, waitNextFrame } from "../core/utils";
+import { findNiceValue } from "../core/utils";
 import { cachebust } from "../core/cachebust";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { T, autoDetectLanguageId, updateApplicationLanguage } from "../translations";
@@ -37,7 +37,7 @@ export class PreloadState extends GameState {
         return false;
     }
 
-    onEnter(payload) {
+    onEnter() {
         this.htmlElement.classList.add("prefab_LoadingState");
 
         const elementsToRemove = ["#loadingPreload", "#fontPreload"];
@@ -52,9 +52,13 @@ export class PreloadState extends GameState {
         const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);
 
+        /** @type {HTMLElement} */
         this.statusText = this.htmlElement.querySelector(".loadingStatus > .desc");
+        /** @type {HTMLElement} */
         this.statusBar = this.htmlElement.querySelector(".loadingStatus > .bar > .inner");
+        /** @type {HTMLElement} */
         this.statusBarText = this.htmlElement.querySelector(".loadingStatus > .bar > .status");
+
         this.currentStatus = "booting";
         this.currentIndex = 0;
 
@@ -224,11 +228,7 @@ export class PreloadState extends GameState {
         this.statusBar.style.width = percentage + "%";
         this.statusBarText.innerText = findNiceValue(percentage) + "%";
 
-        if (G_IS_DEV) {
-            return Promise.resolve();
-        }
         return Promise.resolve();
-        // return waitNextFrame();
     }
 
     showFailMessage(text) {
@@ -251,12 +251,12 @@ export class PreloadState extends GameState {
                         ${this.currentStatus} failed:<br/>
                         ${text}
                     </div>
-                    
+
                     <div class="supportHelp">
                     Please send me an email with steps to reproduce and what you did before this happened:
                         <br /><a class="email" href="mailto:${email}?subject=App%20does%20not%20launch">${email}</a>
                     </div>
-                        
+
                     <div class="lower">
                         <button class="resetApp styledButton">Reset App</button>
                         <i>Build ${G_BUILD_VERSION} @ ${G_BUILD_COMMIT_HASH}</i>
@@ -275,11 +275,6 @@ export class PreloadState extends GameState {
         if (confirm("Are you sure you want to reset the app? This will delete all your savegames")) {
             this.resetApp();
         }
-        // const signals = this.dialogs.showWarning(T.preload.reset_app_warning.title, T.preload.reset_app_warning.desc, [
-        //     "delete:bad:timeout",
-        //     "cancel:good",
-        // ]);
-        // signals.delete.add(this.resetApp, this);
     }
 
     resetApp() {

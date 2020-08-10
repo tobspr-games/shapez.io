@@ -77,7 +77,6 @@ export class MetaEnergyGenerator extends MetaBuilding {
                         layer: enumLayer.wires,
                     },
                 ],
-                instantEject: true,
             })
         );
 

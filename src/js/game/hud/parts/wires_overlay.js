@@ -75,7 +75,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
 
         const scaleFactor = 1 / wiresBackgroundDpi;
 
-        parameters.context.globalAlpha = 0.9 * this.currentAlpha;
+        parameters.context.globalAlpha = this.currentAlpha;
         parameters.context.globalCompositeOperation = "darken";
         parameters.context.scale(scaleFactor, scaleFactor);
         parameters.context.fillStyle = this.cachedPatternBackground;
@@ -88,10 +88,5 @@ export class HUDWiresOverlay extends BaseHUDPart {
         parameters.context.scale(1 / scaleFactor, 1 / scaleFactor);
         parameters.context.globalCompositeOperation = "source-over";
         parameters.context.globalAlpha = 1;
-
-        // parameters.context.fillStyle = "#3a85bf";
-        // parameters.context.globalAlpha = 0.0 * this.currentAlpha;
-        // parameters.context.fillRect(bounds.x, bounds.y, bounds.w, bounds.h);
-        // parameters.context.globalAlpha = 1;
     }
 }
