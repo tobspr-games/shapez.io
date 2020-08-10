@@ -1,8 +1,7 @@
-import { compressX64 } from "../core/lzstring";
 import { globalConfig } from "../core/config";
+import { compressX64 } from "../core/lzstring";
+import { computeCrc } from "../core/sensitive_utils.encrypt";
 import { compressObject } from "../savegame/savegame_compressor";
-import { CRC_PREFIX } from "../core/sensitive_utils.encrypt";
-import crc32 from "crc/crc32";
 
 function accessNestedPropertyReverse(obj, keys) {
     let result = obj;
@@ -31,7 +30,7 @@ function performJob(job, data) {
             const optimized = compressObject(data.obj);
             const stringified = JSON.stringify(optimized);
 
-            const checksum = CRC_PREFIX + crc32(stringified + salt).toString(16);
+            const checksum = computeCrc(stringified + salt);
             return data.compressionPrefix + compressX64(checksum + stringified);
         }
         default:

@@ -2,7 +2,7 @@
 import { Application } from "../application";
 /* typehints:end */
 
-import { sha1, CRC_PREFIX } from "./sensitive_utils.encrypt";
+import { sha1, CRC_PREFIX, computeCrc } from "./sensitive_utils.encrypt";
 import { createLogger } from "./logging";
 import { FILE_NOT_FOUND } from "../platform/storage";
 import { accessNestedPropertyReverse } from "./utils";
@@ -11,7 +11,6 @@ import { ExplainedResult } from "./explained_result";
 import { decompressX64, compressX64 } from "./lzstring";
 import { asyncCompressor, compressionPrefix } from "./async_compression";
 import { compressObject, decompressObject } from "../savegame/savegame_compressor";
-import crc32 from "crc/crc32";
 
 const logger = createLogger("read_write_proxy");
 
@@ -85,7 +84,7 @@ export class ReadWriteProxy {
      */
     static serializeObject(obj) {
         const jsonString = JSON.stringify(compressObject(obj));
-        const checksum = CRC_PREFIX + crc32(jsonString + salt).toString(16);
+        const checksum = computeCrc(jsonString + salt);
         return compressionPrefix + compressX64(checksum + jsonString);
     }
 
@@ -109,7 +108,7 @@ export class ReadWriteProxy {
         const jsonString = decompressed.substr(40);
 
         const desiredChecksum = checksum.startsWith(CRC_PREFIX)
-            ? CRC_PREFIX + crc32(jsonString + salt).toString(16)
+            ? computeCrc(jsonString + salt)
             : sha1(jsonString + salt);
 
         if (desiredChecksum !== checksum) {
@@ -191,12 +190,14 @@ export class ReadWriteProxy {
                         const jsonString = decompressed.substr(40);
 
                         const desiredChecksum = checksum.startsWith(CRC_PREFIX)
-                            ? CRC_PREFIX + crc32(jsonString + salt).toString(16)
+                            ? computeCrc(jsonString + salt)
                             : sha1(jsonString + salt);
 
                         if (desiredChecksum !== checksum) {
                             // Checksum mismatch
-                            return Promise.reject("bad-content / checksum-mismatch");
+                            return Promise.reject(
+                                "bad-content / checksum-mismatch: " + desiredChecksum + " vs " + checksum
+                            );
                         }
                         return jsonString;
                     } else {
