@@ -1,4 +1,6 @@
-import CompressionWorker from "worker-loader?inline=true&fallback=false!../webworkers/compression.worker";
+// @ts-ignore
+import CompressionWorker from "../webworkers/compression.worker";
+
 import { createLogger } from "./logging";
 import { round2Digits } from "./utils";
 

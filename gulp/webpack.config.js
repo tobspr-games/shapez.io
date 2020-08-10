@@ -93,6 +93,16 @@ module.exports = ({ watch = false, standalone = false }) => {
                     ],
                 },
                 {
+                    test: /\.worker\.js$/,
+                    use: {
+                        loader: "worker-loader",
+                        options: {
+                            fallback: false,
+                            inline: true,
+                        },
+                    },
+                },
+                {
                     test: /\.ya?ml$/,
                     type: "json", // Required by Webpack v4
                     use: "yaml-loader",

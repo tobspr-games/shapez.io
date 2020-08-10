@@ -1,6 +1,7 @@
 import { Signal } from "./signal";
 
-import BackgroundAnimationFrameEmitterWorker from "worker-loader?inline=true&fallback=false!../webworkers/background_animation_frame_emittter.worker";
+// @ts-ignore
+import BackgroundAnimationFrameEmitterWorker from "../webworkers/background_animation_frame_emittter.worker";
 
 import { createLogger } from "./logging";
 const logger = createLogger("animation_frame");
