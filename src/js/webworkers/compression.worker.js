@@ -14,6 +14,8 @@ const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
 
 onmessage = function (event) {
     const { jobId, job, data } = event.data;
+    console.log("[worker] Received message:");
+    console.log(JSON.stringify(event.data));
     const result = performJob(job, data);
     postMessage({ jobId, result });
 };
