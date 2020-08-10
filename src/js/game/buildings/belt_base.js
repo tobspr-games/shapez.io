@@ -3,12 +3,9 @@ import { enumAngleToDirection, enumDirection, Vector } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
 import { T } from "../../translations";
 import { BeltComponent } from "../components/belt";
-import { ItemAcceptorComponent } from "../components/item_acceptor";
-import { ItemEjectorComponent } from "../components/item_ejector";
-import { ReplaceableMapEntityComponent } from "../components/replaceable_map_entity";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
+import { GameRoot } from "../root";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
@@ -43,6 +40,10 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return null;
     }
 
+    getIsReplaceable() {
+        return true;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
@@ -53,8 +54,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
                 direction: enumDirection.top, // updated later
             })
         );
-        // Make this entity replaceable
-        entity.addComponent(new ReplaceableMapEntityComponent());
     }
 
     /**

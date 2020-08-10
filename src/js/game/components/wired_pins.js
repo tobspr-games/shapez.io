@@ -29,17 +29,6 @@ export class WiredPinsComponent extends Component {
         return "WiredPins";
     }
 
-    static getSchema() {
-        return {
-            slots: types.array(
-                types.structured({
-                    pos: types.vector,
-                    type: types.enum(enumPinSlotType),
-                })
-            ),
-        };
-    }
-
     /**
      *
      * @param {object} param0

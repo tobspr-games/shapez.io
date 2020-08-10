@@ -65,6 +65,13 @@ export class MetaBuilding {
     }
 
     /**
+     * Returns whether this building can get replaced
+     */
+    getIsReplaceable() {
+        return false;
+    }
+
+    /**
      * Whether to flip the orientation after a building has been placed - useful
      * for tunnels.
      */
@@ -78,6 +85,14 @@ export class MetaBuilding {
      */
     getRotateAutomaticallyWhilePlacing(variant) {
         return false;
+    }
+
+    /**
+     * Returns whether this building is removable
+     * @returns {boolean}
+     */
+    getIsRemovable() {
+        return true;
     }
 
     /**

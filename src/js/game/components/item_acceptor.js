@@ -28,18 +28,6 @@ export class ItemAcceptorComponent extends Component {
         return "ItemAcceptor";
     }
 
-    static getSchema() {
-        return {
-            slots: types.array(
-                types.structured({
-                    pos: types.vector,
-                    directions: types.array(types.enum(enumDirection)),
-                    filter: types.nullable(types.enum(enumItemType)),
-                })
-            ),
-        };
-    }
-
     duplicateWithoutContents() {
         const slotsCopy = [];
         for (let i = 0; i < this.slots.length; ++i) {

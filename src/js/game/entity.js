@@ -76,8 +76,7 @@ export class Entity extends BasicSerializableObject {
     static getSchema() {
         return {
             uid: types.uint,
-            components: types.keyValueMap(types.objData(gComponentRegistry)),
-            layer: types.enum(enumLayer),
+            components: types.keyValueMap(types.objData(gComponentRegistry), false),
         };
     }
 

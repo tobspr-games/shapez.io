@@ -52,7 +52,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                             continue;
                         }
 
-                        if (otherEntity.components.ReplaceableMapEntity) {
+                        if (staticComp.getMetaBuilding().getIsReplaceable()) {
                             // Don't mind here, even if there would be a collision we
                             // could replace it
                             continue;
@@ -105,8 +105,10 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, enumLayer.wires);
 
             // If there's an entity, and it can't get removed -> That's a collision
-            if (collidingEntity && !collidingEntity.components.ReplaceableMapEntity) {
-                return true;
+            if (collidingEntity) {
+                if (!collidingEntity.components.StaticMapEntity.getMetaBuilding().getIsReplaceable()) {
+                    return true;
+                }
             }
         }
         return false;
@@ -130,7 +132,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, enumLayer.wires);
             if (collidingEntity) {
                 assertAlways(
-                    collidingEntity.components.ReplaceableMapEntity,
+                    collidingEntity.components.StaticMapEntity.getMetaBuilding().getIsReplaceable(),
                     "Tried to replace non-repleaceable entity for pins"
                 );
                 if (!this.root.logic.tryDeleteBuilding(collidingEntity)) {

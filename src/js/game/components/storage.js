@@ -12,10 +12,8 @@ export class StorageComponent extends Component {
 
     static getSchema() {
         return {
-            maximumStorage: types.uint,
             storedCount: types.uint,
             storedItem: types.nullable(types.obj(gItemRegistry)),
-            overlayOpacity: types.ufloat,
         };
     }
 

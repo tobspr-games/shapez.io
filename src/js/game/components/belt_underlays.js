@@ -7,17 +7,6 @@ export class BeltUnderlaysComponent extends Component {
         return "BeltUnderlays";
     }
 
-    static getSchema() {
-        return {
-            underlays: types.array(
-                types.structured({
-                    pos: types.vector,
-                    direction: types.enum(enumDirection),
-                })
-            ),
-        };
-    }
-
     duplicateWithoutContents() {
         const beltUnderlaysCopy = [];
         for (let i = 0; i < this.underlays.length; ++i) {

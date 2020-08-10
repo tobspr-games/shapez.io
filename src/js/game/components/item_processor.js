@@ -29,9 +29,6 @@ export class ItemProcessorComponent extends Component {
     static getSchema() {
         return {
             nextOutputSlot: types.uint,
-            type: types.enum(enumItemProcessorTypes),
-            inputsPerCharge: types.uint,
-
             inputSlots: types.array(
                 types.structured({
                     item: types.obj(gItemRegistry),

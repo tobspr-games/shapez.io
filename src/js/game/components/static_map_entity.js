@@ -6,6 +6,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { Component } from "../component";
 import { getBuildingDataFromCode } from "../building_codes";
+import { MetaBuilding } from "../meta_building";
 
 export class StaticMapEntityComponent extends Component {
     static getId() {
@@ -15,7 +16,6 @@ export class StaticMapEntityComponent extends Component {
     static getSchema() {
         return {
             origin: types.tileVector,
-            tileSize: types.tileVector,
             rotation: types.float,
             originalRotation: types.float,
 
@@ -54,6 +54,14 @@ export class StaticMapEntityComponent extends Component {
      */
     getSilhouetteColor() {
         return getBuildingDataFromCode(this.code).silhouetteColor;
+    }
+
+    /**
+     * Returns the meta building
+     * @returns {MetaBuilding}
+     */
+    getMetaBuilding() {
+        return getBuildingDataFromCode(this.code).metaInstance;
     }
 
     duplicateWithoutContents() {

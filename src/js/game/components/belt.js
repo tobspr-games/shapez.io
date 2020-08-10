@@ -40,12 +40,6 @@ export class BeltComponent extends Component {
         return "Belt";
     }
 
-    static getSchema() {
-        return {
-            direction: types.string,
-        };
-    }
-
     duplicateWithoutContents() {
         return new BeltComponent({ direction: this.direction });
     }

@@ -29,8 +29,6 @@ export class ItemEjectorComponent extends Component {
         return {
             slots: types.array(
                 types.structured({
-                    pos: types.vector,
-                    direction: types.enum(enumDirection),
                     item: types.nullable(types.obj(gItemRegistry)),
                     progress: types.float,
                 })
