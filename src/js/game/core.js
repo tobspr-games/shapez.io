@@ -349,8 +349,9 @@ export class GameCore {
         // Gather context and save all state
         const context = root.context;
         context.save();
-        if (G_IS_DEV && globalConfig.debug.testClipping) {
-            context.clearRect(0, 0, window.innerWidth * 3, window.innerHeight * 3);
+        if (G_IS_DEV) {
+            context.fillStyle = "#a10000";
+            context.fillRect(0, 0, window.innerWidth * 3, window.innerHeight * 3);
         }
 
         // Compute optimal zoom level and atlas scale
@@ -394,9 +395,9 @@ export class GameCore {
         // -----
 
         // BG / Map Resources / Belt Backgrounds
-        root.map.drawBackground(params);
-
         if (!this.root.camera.getIsMapOverlayActive()) {
+            root.map.drawBackground(params);
+
             // Underlays for splitters / balancers
             systems.beltUnderlays.drawUnderlays(params);
 
@@ -406,21 +407,21 @@ export class GameCore {
             // Items being ejected / accepted currently (animations)
             systems.itemEjector.draw(params);
             systems.itemAcceptor.draw(params);
-        }
 
-        // Miner & Static map entities
-        root.map.drawForeground(params);
+            // Miner & Static map entities
+            root.map.drawForeground(params);
 
-        if (!this.root.camera.getIsMapOverlayActive()) {
             // HUB Overlay
             systems.hub.draw(params);
 
             // Storage items
             systems.storage.draw(params);
-        }
 
-        // Green wires overlay (not within the if because it can fade)
-        root.hud.parts.wiresOverlay.draw(params);
+            // Green wires overlay
+            root.hud.parts.wiresOverlay.draw(params);
+        } else {
+            root.map.drawOverlay(params);
+        }
 
         if (this.root.currentLayer === enumLayer.wires && !this.root.camera.getIsMapOverlayActive()) {
             // Static map entities

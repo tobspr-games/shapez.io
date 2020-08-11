@@ -9,6 +9,29 @@ import { GameRoot } from "../root";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
+const overlayMatrices = {
+    [enumDirection.top]: {
+        0: [0, 1, 0, 0, 1, 0, 0, 1, 0],
+        90: [0, 0, 0, 1, 1, 1, 0, 0, 0],
+        180: [0, 1, 0, 0, 1, 0, 0, 1, 0],
+        270: [0, 0, 0, 1, 1, 1, 0, 0, 0],
+    },
+
+    [enumDirection.left]: {
+        0: [0, 0, 0, 1, 1, 0, 0, 1, 0],
+        90: [0, 1, 0, 1, 1, 0, 0, 0, 0],
+        180: [0, 1, 0, 0, 1, 1, 0, 0, 0],
+        270: [0, 0, 0, 0, 1, 1, 0, 1, 0],
+    },
+
+    [enumDirection.right]: {
+        0: [0, 0, 0, 0, 1, 1, 0, 1, 0],
+        90: [0, 0, 0, 1, 1, 0, 0, 1, 0],
+        180: [0, 1, 0, 1, 1, 0, 0, 0, 0],
+        270: [0, 1, 0, 0, 1, 1, 0, 0, 0],
+    },
+};
+
 export class MetaBeltBaseBuilding extends MetaBuilding {
     getHasDirectionLockAvailable() {
         return true;
@@ -42,6 +65,17 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
     getIsReplaceable() {
         return true;
+    }
+
+    /**
+     *
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return overlayMatrices[entity.components.Belt.direction][rotation];
     }
 
     /**

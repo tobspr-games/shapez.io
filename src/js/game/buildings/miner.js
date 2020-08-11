@@ -11,6 +11,8 @@ import { formatItemsPerSecond } from "../../core/utils";
 /** @enum {string} */
 export const enumMinerVariants = { chainable: "chainable" };
 
+const overlayMatrix = [1, 1, 1, 1, 0, 1, 1, 1, 1];
+
 export class MetaMinerBuilding extends MetaBuilding {
     constructor() {
         super("miner");
@@ -39,6 +41,16 @@ export class MetaMinerBuilding extends MetaBuilding {
             return [defaultBuildingVariant, enumMinerVariants.chainable];
         }
         return super.getAvailableVariants(root);
+    }
+
+    /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return overlayMatrix;
     }
 
     /**

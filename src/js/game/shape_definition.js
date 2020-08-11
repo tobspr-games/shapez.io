@@ -289,14 +289,14 @@ export class ShapeDefinition extends BasicSerializableObject {
         }
 
         const key = size + "/" + dpi;
-        const canvas = parameters.root.buffers.getForKey(
+        const canvas = parameters.root.buffers.getForKey({
             key,
-            this.cachedHash,
-            size,
-            size,
+            subKey: this.cachedHash,
+            w: size,
+            h: size,
             dpi,
-            this.bufferGenerator
-        );
+            redrawMethod: this.bufferGenerator,
+        });
         parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
     }
 

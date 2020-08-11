@@ -176,31 +176,36 @@ export class MapView extends BaseMap {
     }
 
     /**
+     * Draws the map overlay
+     * @param {DrawParameters} parameters
+     */
+    drawOverlay(parameters) {
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawOverlay);
+    }
+
+    /**
      * Draws the map background
      * @param {DrawParameters} parameters
      */
     drawBackground(parameters) {
-        // If not using prerendered, draw background
-        if (parameters.zoomLevel > globalConfig.mapChunkPrerenderMinZoom) {
-            if (!this.cachedBackgroundPattern) {
-                this.cachedBackgroundPattern = parameters.context.createPattern(
-                    this.cachedBackgroundCanvas,
-                    "repeat"
-                );
-            }
-
-            const dpi = this.backgroundCacheDPI;
-            parameters.context.scale(1 / dpi, 1 / dpi);
-
-            parameters.context.fillStyle = this.cachedBackgroundPattern;
-            parameters.context.fillRect(
-                parameters.visibleRect.x * dpi,
-                parameters.visibleRect.y * dpi,
-                parameters.visibleRect.w * dpi,
-                parameters.visibleRect.h * dpi
+        if (!this.cachedBackgroundPattern) {
+            this.cachedBackgroundPattern = parameters.context.createPattern(
+                this.cachedBackgroundCanvas,
+                "repeat"
             );
-            parameters.context.scale(dpi, dpi);
         }
+
+        const dpi = this.backgroundCacheDPI;
+        parameters.context.scale(1 / dpi, 1 / dpi);
+
+        parameters.context.fillStyle = this.cachedBackgroundPattern;
+        parameters.context.fillRect(
+            parameters.visibleRect.x * dpi,
+            parameters.visibleRect.y * dpi,
+            parameters.visibleRect.w * dpi,
+            parameters.visibleRect.h * dpi
+        );
+        parameters.context.scale(dpi, dpi);
 
         this.drawVisibleChunks(parameters, MapChunkView.prototype.drawBackgroundLayer);
 

@@ -66,7 +66,7 @@ export class PlatformWrapperInterface {
      * @returns {number}
      */
     getMinimumZoom() {
-        return 0.2 * this.getScreenScale();
+        return 0.1 * this.getScreenScale();
     }
 
     /**

@@ -55,6 +55,18 @@ export class MetaBuilding {
     }
 
     /**
+     * Can return a special interlaved 9 elements overlay matrix for rendering
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return null;
+    }
+
+    /**
      * Should return additional statistics about this building
      * @param {GameRoot} root
      * @param {string} variant

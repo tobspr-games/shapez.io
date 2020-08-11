@@ -256,10 +256,6 @@
             <key type="filename">sprites/buildings/rotater.png</key>
             <key type="filename">sprites/buildings/trash.png</key>
             <key type="filename">sprites/misc/wires_overlay_tile.png</key>
-            <key type="filename">sprites/wires/pin_negative_accept.png</key>
-            <key type="filename">sprites/wires/pin_negative_eject.png</key>
-            <key type="filename">sprites/wires/pin_positive_accept.png</key>
-            <key type="filename">sprites/wires/pin_positive_eject.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -358,19 +354,9 @@
             <key type="filename">sprites/blueprints/belt_left.png</key>
             <key type="filename">sprites/blueprints/belt_right.png</key>
             <key type="filename">sprites/blueprints/belt_top.png</key>
-            <key type="filename">sprites/blueprints/wire_crossings-merger.png</key>
-            <key type="filename">sprites/blueprints/wire_crossings.png</key>
-            <key type="filename">sprites/blueprints/wire_left.png</key>
-            <key type="filename">sprites/blueprints/wire_right.png</key>
-            <key type="filename">sprites/blueprints/wire_top.png</key>
             <key type="filename">sprites/buildings/belt_left.png</key>
             <key type="filename">sprites/buildings/belt_right.png</key>
             <key type="filename">sprites/buildings/belt_top.png</key>
-            <key type="filename">sprites/buildings/wire_crossings-merger.png</key>
-            <key type="filename">sprites/buildings/wire_crossings.png</key>
-            <key type="filename">sprites/buildings/wire_left.png</key>
-            <key type="filename">sprites/buildings/wire_right.png</key>
-            <key type="filename">sprites/buildings/wire_top.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -382,28 +368,6 @@
                 <rect>32,32,63,63</rect>
                 <key>scale9Paddings</key>
                 <rect>32,32,63,63</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/blueprints/advanced_processor.png</key>
-            <key type="filename">sprites/blueprints/energy_generator.png</key>
-            <key type="filename">sprites/blueprints/painter-double.png</key>
-            <key type="filename">sprites/blueprints/trash-storage.png</key>
-            <key type="filename">sprites/buildings/advanced_processor.png</key>
-            <key type="filename">sprites/buildings/energy_generator.png</key>
-            <key type="filename">sprites/buildings/painter-double.png</key>
-            <key type="filename">sprites/misc/energy_generator_overlay.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>96,96,192,192</rect>
-                <key>scale9Paddings</key>
-                <rect>96,96,192,192</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -478,6 +442,23 @@
                 <rect>48,48,96,96</rect>
                 <key>scale9Paddings</key>
                 <rect>48,48,96,96</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/blueprints/painter-double.png</key>
+            <key type="filename">sprites/blueprints/trash-storage.png</key>
+            <key type="filename">sprites/buildings/painter-double.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>96,96,192,192</rect>
+                <key>scale9Paddings</key>
+                <rect>96,96,192,192</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -580,27 +561,6 @@
                 <rect>44,22,89,43</rect>
                 <key>scale9Paddings</key>
                 <rect>44,22,89,43</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/wires/battery_empty.png</key>
-            <key type="filename">sprites/wires/battery_full.png</key>
-            <key type="filename">sprites/wires/battery_low.png</key>
-            <key type="filename">sprites/wires/battery_medium.png</key>
-            <key type="filename">sprites/wires/negative_energy.png</key>
-            <key type="filename">sprites/wires/positive_energy.png</key>
-            <key type="filename">sprites/wires/waste_piled.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>16,16,32,32</rect>
-                <key>scale9Paddings</key>
-                <rect>16,16,32,32</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
