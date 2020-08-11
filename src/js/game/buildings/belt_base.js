@@ -9,7 +9,7 @@ import { GameRoot } from "../root";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
-const overlayMatrices = {
+export const beltOverlayMatrices = {
     [enumDirection.top]: {
         0: [0, 1, 0, 0, 1, 0, 0, 1, 0],
         90: [0, 0, 0, 1, 1, 1, 0, 0, 0],
@@ -75,7 +75,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
-        return overlayMatrices[entity.components.Belt.direction][rotation];
+        return beltOverlayMatrices[entity.components.Belt.direction][rotation];
     }
 
     /**

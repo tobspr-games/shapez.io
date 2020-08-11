@@ -1,19 +1,11 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
-import { Loader } from "../../core/loader";
-import { enumDirection } from "../../core/vector";
 import { GameSystem } from "../game_system";
 import { MapChunkView } from "../map_chunk_view";
 
 export class StaticMapEntitySystem extends GameSystem {
     constructor(root) {
         super(root);
-
-        this.beltOverviewSprites = {
-            [enumDirection.top]: Loader.getSprite("sprites/map_overview/belt_forward.png"),
-            [enumDirection.right]: Loader.getSprite("sprites/map_overview/belt_right.png"),
-            [enumDirection.left]: Loader.getSprite("sprites/map_overview/belt_left.png"),
-        };
     }
 
     /**
@@ -25,8 +17,6 @@ export class StaticMapEntitySystem extends GameSystem {
         if (G_IS_DEV && globalConfig.debug.doNotRenderStatics) {
             return;
         }
-
-        const drawOutlinesOnly = parameters.zoomLevel < globalConfig.mapChunkOverviewMinZoom;
 
         const drawnUids = new Set();
 
@@ -41,26 +31,10 @@ export class StaticMapEntitySystem extends GameSystem {
                     }
                     drawnUids.add(entity.uid);
                     const staticComp = entity.components.StaticMapEntity;
-                    if (drawOutlinesOnly) {
-                        const rect = staticComp.getTileSpaceBounds();
-                        parameters.context.fillStyle = staticComp.getSilhouetteColor() || "#aaa";
-                        const beltComp = entity.components.Belt;
-                        if (beltComp) {
-                            const sprite = this.beltOverviewSprites[beltComp.direction];
-                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
-                        } else {
-                            parameters.context.fillRect(
-                                rect.x * globalConfig.tileSize,
-                                rect.y * globalConfig.tileSize,
-                                rect.w * globalConfig.tileSize,
-                                rect.h * globalConfig.tileSize
-                            );
-                        }
-                    } else {
-                        const sprite = staticComp.getSprite();
-                        if (sprite) {
-                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2);
-                        }
+
+                    const sprite = staticComp.getSprite();
+                    if (sprite) {
+                        staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2);
                     }
                 }
             }

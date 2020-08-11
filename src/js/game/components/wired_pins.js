@@ -4,10 +4,6 @@ import { types } from "../../savegame/serialization";
 
 /** @enum {string} */
 export const enumPinSlotType = {
-    positiveEnergyEjector: "positiveEnergyEjector",
-    negativeEnergyEjector: "negativeEnergyEjector",
-    positiveEnergyAcceptor: "positiveEnergyAcceptor",
-    negativeEnergyAcceptor: "negativeEnergyAcceptor",
     logicalEjector: "logicalEjector",
     logicalAcceptor: "logicalAcceptor",
 };

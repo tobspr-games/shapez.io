@@ -36,15 +36,6 @@ export class BeltSystem extends GameSystemWithFilter {
         /**
          * @type {Object.<enumDirection, Array<AtlasSprite>>}
          */
-        this.wireSprites = {
-            [enumDirection.top]: Loader.getSprite("sprites/buildings/wire_top.png"),
-            [enumDirection.left]: Loader.getSprite("sprites/buildings/wire_left.png"),
-            [enumDirection.right]: Loader.getSprite("sprites/buildings/wire_right.png"),
-        };
-
-        /**
-         * @type {Object.<enumDirection, Array<AtlasSprite>>}
-         */
         this.beltAnimations = {
             [enumDirection.top]: [],
             [enumDirection.left]: [],
@@ -485,10 +476,6 @@ export class BeltSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        if (parameters.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
-            return;
-        }
-
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
@@ -511,7 +498,6 @@ export class BeltSystem extends GameSystemWithFilter {
                 }
             }
         }
-        1;
     }
 
     /**

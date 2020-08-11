@@ -10,6 +10,7 @@ import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { StorageComponent } from "./components/storage";
 import { UndergroundBeltComponent } from "./components/underground_belt";
 import { WiredPinsComponent } from "./components/wired_pins";
+import { WireComponent } from "./components/wire";
 /* typehints:end */
 
 /**
@@ -52,6 +53,9 @@ export class EntityComponentStorage {
 
         /** @type {BeltUnderlaysComponent} */
         this.BeltUnderlays;
+
+        /** @type {WireComponent} */
+        this.Wire;
 
         /* typehints:end */
     }

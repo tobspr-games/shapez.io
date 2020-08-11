@@ -15,6 +15,7 @@ import { ItemAcceptorSystem } from "./systems/item_acceptor";
 import { StorageSystem } from "./systems/storage";
 import { WiredPinsSystem } from "./systems/wired_pins";
 import { BeltUnderlaysSystem } from "./systems/belt_underlays";
+import { WireSystem } from "./systems/wire";
 
 const logger = createLogger("game_system_manager");
 
@@ -64,6 +65,9 @@ export class GameSystemManager {
             /** @type {BeltUnderlaysSystem} */
             beltUnderlays: null,
 
+            /** @type {WireSystem} */
+            wire: null,
+
             /* typehints:end */
         };
         this.systemUpdateOrder = [];
@@ -108,6 +112,8 @@ export class GameSystemManager {
         // orientation of an entity after it is placed -> the item acceptor cache
         // then would be invalid
         add("itemAcceptor", ItemAcceptorSystem);
+
+        add("wire", WireSystem);
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }

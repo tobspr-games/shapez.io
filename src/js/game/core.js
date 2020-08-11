@@ -394,8 +394,10 @@ export class GameCore {
         // Main rendering order
         // -----
 
-        // BG / Map Resources / Belt Backgrounds
-        if (!this.root.camera.getIsMapOverlayActive()) {
+        if (this.root.camera.getIsMapOverlayActive()) {
+            // Map overview
+            root.map.drawOverlay(params);
+        } else {
             root.map.drawBackground(params);
 
             // Underlays for splitters / balancers
@@ -419,16 +421,14 @@ export class GameCore {
 
             // Green wires overlay
             root.hud.parts.wiresOverlay.draw(params);
-        } else {
-            root.map.drawOverlay(params);
-        }
 
-        if (this.root.currentLayer === enumLayer.wires && !this.root.camera.getIsMapOverlayActive()) {
-            // Static map entities
-            root.map.drawWiresForegroundLayer(params);
+            if (this.root.currentLayer === enumLayer.wires) {
+                // Static map entities
+                root.map.drawWiresForegroundLayer(params);
 
-            // pins
-            systems.wiredPins.draw(params);
+                // pins
+                systems.wiredPins.draw(params);
+            }
         }
 
         if (G_IS_DEV) {

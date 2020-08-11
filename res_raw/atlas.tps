@@ -256,6 +256,8 @@
             <key type="filename">sprites/buildings/rotater.png</key>
             <key type="filename">sprites/buildings/trash.png</key>
             <key type="filename">sprites/misc/wires_overlay_tile.png</key>
+            <key type="filename">sprites/wires/logical_acceptor.png</key>
+            <key type="filename">sprites/wires/logical_ejector.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -354,9 +356,15 @@
             <key type="filename">sprites/blueprints/belt_left.png</key>
             <key type="filename">sprites/blueprints/belt_right.png</key>
             <key type="filename">sprites/blueprints/belt_top.png</key>
+            <key type="filename">sprites/blueprints/wire-split.png</key>
+            <key type="filename">sprites/blueprints/wire-turn.png</key>
+            <key type="filename">sprites/blueprints/wire.png</key>
             <key type="filename">sprites/buildings/belt_left.png</key>
             <key type="filename">sprites/buildings/belt_right.png</key>
             <key type="filename">sprites/buildings/belt_top.png</key>
+            <key type="filename">sprites/buildings/wire-split.png</key>
+            <key type="filename">sprites/buildings/wire-turn.png</key>
+            <key type="filename">sprites/buildings/wire.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -513,9 +521,6 @@
             </struct>
             <key type="filename">sprites/debug/acceptor_slot.png</key>
             <key type="filename">sprites/debug/ejector_slot.png</key>
-            <key type="filename">sprites/map_overview/belt_forward.png</key>
-            <key type="filename">sprites/map_overview/belt_left.png</key>
-            <key type="filename">sprites/map_overview/belt_right.png</key>
             <key type="filename">sprites/misc/hub_direction_indicator.png</key>
             <key type="filename">sprites/misc/waypoint.png</key>
             <struct type="IndividualSpriteSettings">

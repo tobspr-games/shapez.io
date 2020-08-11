@@ -12,6 +12,7 @@ import { enumSplitterVariants, MetaSplitterBuilding } from "./buildings/splitter
 import { MetaStackerBuilding } from "./buildings/stacker";
 import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
 import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
+import { MetaWireBuilding } from "./buildings/wire";
 import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
 
@@ -29,6 +30,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaBeltBuilding);
     gMetaBuildingRegistry.register(MetaUndergroundBeltBuilding);
     gMetaBuildingRegistry.register(MetaHubBuilding);
+    gMetaBuildingRegistry.register(MetaWireBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
@@ -77,6 +79,11 @@ export function initMetaBuildingRegistry() {
 
     // Hub
     registerBuildingVariant(26, MetaHubBuilding);
+
+    // Wire
+    registerBuildingVariant(27, MetaWireBuilding, defaultBuildingVariant, 0);
+    registerBuildingVariant(28, MetaWireBuilding, defaultBuildingVariant, 1);
+    registerBuildingVariant(29, MetaWireBuilding, defaultBuildingVariant, 2);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

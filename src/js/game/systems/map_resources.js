@@ -10,8 +10,6 @@ export class MapResourcesSystem extends GameSystem {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        const renderItems = parameters.zoomLevel >= globalConfig.mapChunkOverviewMinZoom;
-
         parameters.context.globalAlpha = 0.5;
 
         const layer = chunk.lowerLayer;
@@ -37,31 +35,14 @@ export class MapResourcesSystem extends GameSystem {
 
                     parameters.context.fillStyle = lowerItem.getBackgroundColorAsResource();
                     parameters.context.fillRect(worldX, worldY, globalConfig.tileSize, globalConfig.tileSize);
-                    if (renderItems) {
-                        lowerItem.draw(
-                            worldX + globalConfig.halfTileSize,
-                            worldY + globalConfig.halfTileSize,
-                            parameters
-                        );
-                    }
+                    lowerItem.draw(
+                        worldX + globalConfig.halfTileSize,
+                        worldY + globalConfig.halfTileSize,
+                        parameters
+                    );
                 }
             }
         }
         parameters.context.globalAlpha = 1;
-
-        if (!renderItems) {
-            // Render patches instead
-            const patches = chunk.patches;
-            for (let i = 0; i < patches.length; ++i) {
-                const { pos, item, size } = patches[i];
-
-                item.draw(
-                    (chunk.tileX + pos.x + 0.5) * globalConfig.tileSize,
-                    (chunk.tileY + pos.y + 0.5) * globalConfig.tileSize,
-                    parameters,
-                    80
-                );
-            }
-        }
     }
 }

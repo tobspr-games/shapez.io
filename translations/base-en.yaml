@@ -537,6 +537,19 @@ buildings:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
 
+    wire:
+        default:
+            name: &wire Wire
+            description: &wire_desc Allows to connect logical components and can transfer items, colors or boolean signals.
+
+        turn:
+            name: *wire
+            description: &wire_desc
+
+        split:
+            name: *wire
+            description: &wire_desc
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -802,6 +815,7 @@ keybindings:
         mixer: *mixer
         painter: *painter
         trash: *trash
+        wire: *wire
 
         pipette: Pipette
         rotateWhilePlacing: Rotate

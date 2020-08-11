@@ -75,15 +75,17 @@ export class MapChunkView extends MapChunk {
         parameters.context.drawImage(sprite, this.x * dims, this.y * dims, dims, dims);
         parameters.context.imageSmoothingEnabled = true;
 
-        for (let i = 0; i < this.patches.length; ++i) {
-            const patch = this.patches[i];
+        if (this.root.currentLayer === enumLayer.regular) {
+            for (let i = 0; i < this.patches.length; ++i) {
+                const patch = this.patches[i];
 
-            patch.item.draw(
-                this.x * dims + patch.pos.x * globalConfig.tileSize,
-                this.y * dims + patch.pos.y * globalConfig.tileSize,
-                parameters,
-                Math.min(80, 30 / parameters.zoomLevel)
-            );
+                patch.item.draw(
+                    this.x * dims + patch.pos.x * globalConfig.tileSize,
+                    this.y * dims + patch.pos.y * globalConfig.tileSize,
+                    parameters,
+                    Math.min(80, 30 / parameters.zoomLevel)
+                );
+            }
         }
     }
 
@@ -179,6 +181,54 @@ export class MapChunkView extends MapChunk {
 
             context.fillStyle = THEME.map.wires.overlayColor;
             context.fillRect(0, 0, w, h);
+
+            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
+                const wiresArray = this.wireContents[x];
+                for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
+                    const content = wiresArray[y];
+                    if (!content) {
+                        continue;
+                    }
+                    const staticComp = content.components.StaticMapEntity;
+                    const data = getBuildingDataFromCode(staticComp.code);
+                    const metaBuilding = data.metaInstance;
+
+                    const overlayMatrix = metaBuilding.getSpecialOverlayRenderMatrix(
+                        staticComp.rotation,
+                        data.rotationVariant,
+                        data.variant,
+                        content
+                    );
+
+                    context.fillStyle = metaBuilding.getSilhouetteColor();
+                    if (overlayMatrix) {
+                        for (let dx = 0; dx < 3; ++dx) {
+                            for (let dy = 0; dy < 3; ++dy) {
+                                const isFilled = overlayMatrix[dx + dy * 3];
+                                if (isFilled) {
+                                    context.fillRect(
+                                        x * CHUNK_OVERLAY_RES + dx,
+                                        y * CHUNK_OVERLAY_RES + dy,
+                                        1,
+                                        1
+                                    );
+                                }
+                            }
+                        }
+
+                        continue;
+                    } else {
+                        context.fillRect(
+                            x * CHUNK_OVERLAY_RES,
+                            y * CHUNK_OVERLAY_RES,
+                            CHUNK_OVERLAY_RES,
+                            CHUNK_OVERLAY_RES
+                        );
+
+                        continue;
+                    }
+                }
+            }
         }
     }
 
@@ -188,6 +238,7 @@ export class MapChunkView extends MapChunk {
      */
     drawWiresForegroundLayer(parameters) {
         const systems = this.root.systemMgr.systems;
+        systems.wire.drawChunk(parameters, this);
         systems.staticMapEntities.drawWiresChunk(parameters, this);
     }
 }
