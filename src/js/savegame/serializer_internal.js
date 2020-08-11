@@ -58,6 +58,8 @@ export class SerializerInternal {
             variant: data.variant,
         });
 
+        entity.uid = payload.uid;
+
         this.deserializeComponents(entity, payload.components);
 
         root.entityMgr.registerEntity(entity, payload.uid);
