@@ -8,7 +8,7 @@ import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot, enumLayer } from "../root";
 import { globalConfig } from "../../core/config";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { T } from "../../translations";
 
 /** @enum {string} */
@@ -27,20 +27,10 @@ export const enumUndergroundBeltVariantToTier = {
 
 const overlayMatrices = [
     // Sender
-    {
-        0: [1, 1, 1, 0, 1, 0, 0, 1, 0],
-        90: [0, 0, 1, 1, 1, 1, 0, 0, 1],
-        180: [0, 1, 0, 0, 1, 0, 1, 1, 1],
-        270: [1, 0, 0, 1, 1, 1, 1, 0, 0],
-    },
+    generateMatrixRotations([1, 1, 1, 0, 1, 0, 0, 1, 0]),
 
     // Receiver
-    {
-        0: [0, 1, 0, 0, 1, 0, 1, 1, 1],
-        90: [1, 0, 0, 1, 1, 1, 1, 0, 0],
-        180: [1, 1, 1, 0, 1, 0, 0, 1, 0],
-        270: [0, 0, 1, 1, 1, 1, 0, 0, 1],
-    },
+    generateMatrixRotations([0, 1, 0, 0, 1, 0, 1, 1, 1]),
 ];
 
 export class MetaUndergroundBeltBuilding extends MetaBuilding {

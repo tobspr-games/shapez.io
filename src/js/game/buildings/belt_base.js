@@ -1,4 +1,4 @@
-import { formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { enumAngleToDirection, enumDirection, Vector } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
 import { T } from "../../translations";
@@ -10,26 +10,9 @@ import { GameRoot } from "../root";
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
 export const beltOverlayMatrices = {
-    [enumDirection.top]: {
-        0: [0, 1, 0, 0, 1, 0, 0, 1, 0],
-        90: [0, 0, 0, 1, 1, 1, 0, 0, 0],
-        180: [0, 1, 0, 0, 1, 0, 0, 1, 0],
-        270: [0, 0, 0, 1, 1, 1, 0, 0, 0],
-    },
-
-    [enumDirection.left]: {
-        0: [0, 0, 0, 1, 1, 0, 0, 1, 0],
-        90: [0, 1, 0, 1, 1, 0, 0, 0, 0],
-        180: [0, 1, 0, 0, 1, 1, 0, 0, 0],
-        270: [0, 0, 0, 0, 1, 1, 0, 1, 0],
-    },
-
-    [enumDirection.right]: {
-        0: [0, 0, 0, 0, 1, 1, 0, 1, 0],
-        90: [0, 0, 0, 1, 1, 0, 0, 1, 0],
-        180: [0, 1, 0, 1, 1, 0, 0, 0, 0],
-        270: [0, 1, 0, 0, 1, 1, 0, 0, 0],
-    },
+    [enumDirection.top]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
+    [enumDirection.left]: generateMatrixRotations([0, 0, 0, 1, 1, 0, 0, 1, 0]),
+    [enumDirection.right]: generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
 };
 
 export class MetaBeltBaseBuilding extends MetaBuilding {
