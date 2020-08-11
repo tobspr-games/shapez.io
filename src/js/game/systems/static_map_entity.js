@@ -1,10 +1,9 @@
-import { GameSystem } from "../game_system";
-import { DrawParameters } from "../../core/draw_parameters";
 import { globalConfig } from "../../core/config";
-import { MapChunkView } from "../map_chunk_view";
+import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { enumDirection } from "../../core/vector";
-import { enumLayer } from "../root";
+import { GameSystem } from "../game_system";
+import { MapChunkView } from "../map_chunk_view";
 
 export class StaticMapEntitySystem extends GameSystem {
     constructor(root) {
@@ -48,7 +47,7 @@ export class StaticMapEntitySystem extends GameSystem {
                         const beltComp = entity.components.Belt;
                         if (beltComp) {
                             const sprite = this.beltOverviewSprites[beltComp.direction];
-                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0, false);
+                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
                         } else {
                             parameters.context.fillRect(
                                 rect.x * globalConfig.tileSize,
@@ -60,7 +59,7 @@ export class StaticMapEntitySystem extends GameSystem {
                     } else {
                         const sprite = staticComp.getSprite();
                         if (sprite) {
-                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2, false);
+                            staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2);
                         }
                     }
                 }
@@ -92,7 +91,7 @@ export class StaticMapEntitySystem extends GameSystem {
 
                     const sprite = staticComp.getSprite();
                     if (sprite) {
-                        staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2, false);
+                        staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 2);
                     }
                 }
             }

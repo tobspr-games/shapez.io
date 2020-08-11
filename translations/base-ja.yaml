@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.ioは無限のマップ内で様々な"形"を資源とし、段々と複雑になっていく形の作成や合成の自動化を目指して工場を構築するゲームです。
@@ -411,7 +412,7 @@ ingame:
         cyan: シアン
         white: 白
         uncolored: 無色
-        black: Black
+        black: 黒
     shapeViewer:
         title: レイヤー
         empty: 空
@@ -491,8 +492,8 @@ buildings:
             name: 回転機 (逆)
             description: 形を反時計回り方向に90度回転します。
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: 回転機 (180)
+            description: 形を180度回転します。
 
     stacker:
         default:
@@ -533,20 +534,20 @@ buildings:
     advanced_processor:
         default:
             name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            description: 入力された色や形の色を反転します。
     energy_generator:
         deliver: Deliver
         toGenerateEnergy: For
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: エネルギー発電機
+            description: 入力された形を使って、エネルギーを発電します。
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: ワイヤー分配機
+            description: １つのワイヤーを２つのワイヤーに分配します。
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: ワイヤー合流機
+            description: ２つのワイヤーを１つのワイヤーに合流します。
 
 storyRewards:
     # Those are the rewards gained from completing the store

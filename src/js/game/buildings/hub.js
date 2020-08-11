@@ -3,9 +3,9 @@ import { enumItemType } from "../base_item";
 import { HubComponent } from "../components/hub";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
-import { UnremovableComponent } from "../components/unremovable";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
+import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 
 export class MetaHubBuilding extends MetaBuilding {
     constructor() {
@@ -33,6 +33,10 @@ export class MetaHubBuilding extends MetaBuilding {
         return null;
     }
 
+    getIsRemovable() {
+        return false;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
@@ -46,7 +50,18 @@ export class MetaHubBuilding extends MetaBuilding {
             })
         );
 
-        entity.addComponent(new UnremovableComponent());
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        type: enumPinSlotType.logicalEjector,
+                        direction: enumDirection.top,
+                    },
+                ],
+            })
+        );
+
         entity.addComponent(
             new ItemAcceptorComponent({
                 slots: [

@@ -1,6 +1,10 @@
-import { gComponentRegistry } from "../core/global_registries";
+import { createLogger } from "../core/logging";
+import { Vector } from "../core/vector";
+import { getBuildingDataFromCode } from "../game/building_codes";
 import { Entity } from "../game/entity";
-import { enumLayer, GameRoot } from "../game/root";
+import { GameRoot } from "../game/root";
+
+const logger = createLogger("serializer_internal");
 
 // Internal serializer methods
 export class SerializerInternal {
@@ -37,19 +41,29 @@ export class SerializerInternal {
      * @param {Entity} payload
      */
     deserializeEntity(root, payload) {
-        const entity = new Entity(root);
-        this.deserializeComponents(entity, payload.components);
-        entity.layer = payload.layer;
+        const staticData = payload.components.StaticMapEntity;
+        assert(staticData, "entity has no static data");
 
-        if (!enumLayer[payload.layer]) {
-            assert(false, "Invalid layer: " + payload.layer);
-        }
+        const code = staticData.code;
+        const data = getBuildingDataFromCode(code);
+
+        const metaBuilding = data.metaInstance;
+
+        const entity = metaBuilding.createEntity({
+            root,
+            origin: Vector.fromSerializedObject(staticData.origin),
+            rotation: staticData.rotation,
+            originalRotation: staticData.originalRotation,
+            rotationVariant: data.rotationVariant,
+            variant: data.variant,
+        });
+
+        entity.uid = payload.uid;
+
+        this.deserializeComponents(entity, payload.components);
 
         root.entityMgr.registerEntity(entity, payload.uid);
-
-        if (entity.components.StaticMapEntity) {
-            root.map.placeStaticEntity(entity);
-        }
+        root.map.placeStaticEntity(entity);
     }
 
     /////// COMPONENTS ////
@@ -62,10 +76,12 @@ export class SerializerInternal {
      */
     deserializeComponents(entity, data) {
         for (const componentId in data) {
-            const componentClass = gComponentRegistry.findById(componentId);
-            const componentHandle = new componentClass({});
-            entity.addComponent(componentHandle);
-            const errorStatus = componentHandle.deserialize(data[componentId]);
+            if (!entity.components[componentId]) {
+                logger.warn("Entity no longer has component:", componentId);
+                continue;
+            }
+
+            const errorStatus = entity.components[componentId].deserialize(data[componentId]);
             if (errorStatus) {
                 return errorStatus;
             }

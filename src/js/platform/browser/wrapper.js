@@ -82,7 +82,7 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
         return new Promise(resolve => {
             logger.log("Detecting storage");
 
-            if (!window.indexedDB || G_IS_DEV) {
+            if (!window.indexedDB) {
                 logger.log("Indexed DB not supported");
                 this.app.storage = new StorageImplBrowser(this.app);
                 resolve();

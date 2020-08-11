@@ -90,9 +90,6 @@ function compressObjectInternal(obj, keys = [], values = []) {
 }
 
 export function compressObject(obj) {
-    if (G_IS_DEV) {
-        return obj;
-    }
     const keys = [];
     const values = [];
     const data = compressObjectInternal(obj, keys, values);

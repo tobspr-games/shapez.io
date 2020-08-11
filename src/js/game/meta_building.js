@@ -55,6 +55,18 @@ export class MetaBuilding {
     }
 
     /**
+     * Can return a special interlaved 9 elements overlay matrix for rendering
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return null;
+    }
+
+    /**
      * Should return additional statistics about this building
      * @param {GameRoot} root
      * @param {string} variant
@@ -62,6 +74,13 @@ export class MetaBuilding {
      */
     getAdditionalStatistics(root, variant) {
         return [];
+    }
+
+    /**
+     * Returns whether this building can get replaced
+     */
+    getIsReplaceable() {
+        return false;
     }
 
     /**
@@ -78,6 +97,14 @@ export class MetaBuilding {
      */
     getRotateAutomaticallyWhilePlacing(variant) {
         return false;
+    }
+
+    /**
+     * Returns whether this building is removable
+     * @returns {boolean}
+     */
+    getIsRemovable() {
+        return true;
     }
 
     /**

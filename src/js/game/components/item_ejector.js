@@ -5,15 +5,16 @@ import { types } from "../../savegame/serialization";
 import { gItemRegistry } from "../../core/global_registries";
 import { Entity } from "../entity";
 import { enumLayer } from "../root";
+import { BeltPath } from "../belt_path";
 
 /**
  * @typedef {{
  *    pos: Vector,
  *    direction: enumDirection,
  *    item: BaseItem,
- *    layer: enumLayer,
  *    progress: number?,
  *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
+ *    cachedBeltPath?: BeltPath,
  *    cachedTargetEntity?: Entity
  * }} ItemEjectorSlot
  */
@@ -24,19 +25,12 @@ export class ItemEjectorComponent extends Component {
     }
 
     static getSchema() {
-        // The cachedDestSlot, cachedTargetEntity, and cachedConnectedSlots fields
-        // are not serialized.
+        // The cachedDestSlot, cachedTargetEntity fields are not serialized.
         return {
-            instantEject: types.bool,
             slots: types.array(
                 types.structured({
-                    pos: types.vector,
-                    direction: types.enum(enumDirection),
                     item: types.nullable(types.obj(gItemRegistry)),
                     progress: types.float,
-
-                    // TODO: Migrate
-                    layer: types.enum(enumLayer),
                 })
             ),
         };
@@ -49,32 +43,23 @@ export class ItemEjectorComponent extends Component {
             slotsCopy.push({
                 pos: slot.pos.copy(),
                 direction: slot.direction,
-                layer: slot.layer,
             });
         }
 
         return new ItemEjectorComponent({
             slots: slotsCopy,
-            instantEject: this.instantEject,
         });
     }
 
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>=} param0.slots The slots to eject on
-     * @param {boolean=} param0.instantEject If the ejection is instant
+     * @param {Array<{pos: Vector, direction: enumDirection }>=} param0.slots The slots to eject on
      */
-    constructor({ slots = [], instantEject = false }) {
+    constructor({ slots = [] }) {
         super();
 
-        // How long items take to eject
-        this.instantEject = instantEject;
-
         this.setSlots(slots);
-
-        /** @type {ItemEjectorSlot[]} */
-        this.cachedConnectedSlots = null;
 
         /**
          * Whether this ejector slot is enabled
@@ -83,7 +68,7 @@ export class ItemEjectorComponent extends Component {
     }
 
     /**
-     * @param {Array<{pos: Vector, direction: enumDirection, layer?: enumLayer}>} slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection }>} slots The slots to eject on
      */
     setSlots(slots) {
         /** @type {Array<ItemEjectorSlot>} */
@@ -95,7 +80,6 @@ export class ItemEjectorComponent extends Component {
                 direction: slot.direction,
                 item: null,
                 progress: 0,
-                layer: slot.layer || enumLayer.regular,
                 cachedDestSlot: null,
                 cachedTargetEntity: null,
             });
@@ -104,11 +88,10 @@ export class ItemEjectorComponent extends Component {
 
     /**
      * Returns where this slot ejects to
-     * @param {number} index
+     * @param {ItemEjectorSlot} slot
      * @returns {Vector}
      */
-    getSlotTargetLocalTile(index) {
-        const slot = this.slots[index];
+    getSlotTargetLocalTile(slot) {
         const directionVector = enumDirectionToVector[slot.direction];
         return slot.pos.add(directionVector);
     }
@@ -116,11 +99,10 @@ export class ItemEjectorComponent extends Component {
     /**
      * Returns whether any slot ejects to the given local tile
      * @param {Vector} tile
-     * @param {enumLayer} layer
      */
-    anySlotEjectsToLocalTile(tile, layer) {
+    anySlotEjectsToLocalTile(tile) {
         for (let i = 0; i < this.slots.length; ++i) {
-            if (this.getSlotTargetLocalTile(i).equals(tile) && this.slots[i].layer === layer) {
+            if (this.getSlotTargetLocalTile(this.slots[i]).equals(tile)) {
                 return true;
             }
         }
@@ -139,12 +121,11 @@ export class ItemEjectorComponent extends Component {
 
     /**
      * Returns the first free slot on this ejector or null if there is none
-     * @param {enumLayer} layer
      * @returns {number?}
      */
-    getFirstFreeSlot(layer) {
+    getFirstFreeSlot() {
         for (let i = 0; i < this.slots.length; ++i) {
-            if (this.canEjectOnSlot(i) && this.slots[i].layer === layer) {
+            if (this.canEjectOnSlot(i)) {
                 return i;
             }
         }
@@ -162,7 +143,7 @@ export class ItemEjectorComponent extends Component {
             return false;
         }
         this.slots[slotIndex].item = item;
-        this.slots[slotIndex].progress = this.instantEject ? 1 : 0;
+        this.slots[slotIndex].progress = 0;
         return true;
     }
 

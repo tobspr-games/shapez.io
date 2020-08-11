@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
@@ -488,8 +489,8 @@ buildings:
             name: Вращатель (Обр.)
             description: Поворачивает фигуры против часовой стрелки на 90 градусов.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Вращатель (180)
+            description: Вращает фигуры на 180 градусов.
 
     stacker:
         default:
@@ -635,9 +636,9 @@ storyRewards:
 settings:
     title: Настройки
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Основные
+        userInterface: Интерфейс
+        advanced: Продвинутые
 
     versionBadges:
         dev: Разработчик

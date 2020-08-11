@@ -76,8 +76,7 @@ export class Entity extends BasicSerializableObject {
     static getSchema() {
         return {
             uid: types.uint,
-            components: types.keyValueMap(types.objData(gComponentRegistry)),
-            layer: types.enum(enumLayer),
+            components: types.keyValueMap(types.objData(gComponentRegistry), false),
         };
     }
 
@@ -169,9 +168,6 @@ export class Entity extends BasicSerializableObject {
                 const ejectorSprite = Loader.getSprite("sprites/debug/ejector_slot.png");
                 for (let i = 0; i < ejectorComp.slots.length; ++i) {
                     const slot = ejectorComp.slots[i];
-                    if (slot.layer !== this.root.currentLayer) {
-                        continue;
-                    }
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     const direction = staticComp.localDirectionToWorld(slot.direction);
                     const directionVector = enumDirectionToVector[direction];
@@ -194,9 +190,6 @@ export class Entity extends BasicSerializableObject {
                 const acceptorSprite = Loader.getSprite("sprites/debug/acceptor_slot.png");
                 for (let i = 0; i < acceptorComp.slots.length; ++i) {
                     const slot = acceptorComp.slots[i];
-                    if (slot.layer !== this.root.currentLayer) {
-                        continue;
-                    }
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     for (let k = 0; k < slot.directions.length; ++k) {
                         const direction = staticComp.localDirectionToWorld(slot.directions[k]);

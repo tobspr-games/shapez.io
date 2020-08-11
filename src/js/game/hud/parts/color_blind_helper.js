@@ -66,9 +66,6 @@ export class HUDColorBlindHelper extends BaseHUDPart {
             if (ejectorComp) {
                 for (let i = 0; i < ejectorComp.slots.length; ++i) {
                     const slot = ejectorComp.slots[i];
-                    if (slot.layer !== this.root.currentLayer) {
-                        continue;
-                    }
                     if (slot.item && slot.item.getItemType() === enumItemType.color) {
                         return /** @type {ColorItem} */ (slot.item).color;
                     }

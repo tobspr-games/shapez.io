@@ -8,6 +8,8 @@ export const enumPinSlotType = {
     negativeEnergyEjector: "negativeEnergyEjector",
     positiveEnergyAcceptor: "positiveEnergyAcceptor",
     negativeEnergyAcceptor: "negativeEnergyAcceptor",
+    logicalEjector: "logicalEjector",
+    logicalAcceptor: "logicalAcceptor",
 };
 
 /** @typedef {{
@@ -25,17 +27,6 @@ export const enumPinSlotType = {
 export class WiredPinsComponent extends Component {
     static getId() {
         return "WiredPins";
-    }
-
-    static getSchema() {
-        return {
-            slots: types.array(
-                types.structured({
-                    pos: types.vector,
-                    type: types.enum(enumPinSlotType),
-                })
-            ),
-        };
     }
 
     /**

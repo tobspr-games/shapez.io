@@ -36,6 +36,7 @@
 # + Merger = Spajač
 # + Rotator = Obrtač
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io je igra o pravljenju fabrika za automatizaciju stvaranja i spajanja sve složenijih oblika na beskonačno velikoj mapi.

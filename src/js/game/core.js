@@ -349,8 +349,9 @@ export class GameCore {
         // Gather context and save all state
         const context = root.context;
         context.save();
-        if (G_IS_DEV && globalConfig.debug.testClipping) {
-            context.clearRect(0, 0, window.innerWidth * 3, window.innerHeight * 3);
+        if (G_IS_DEV) {
+            context.fillStyle = "#a10000";
+            context.fillRect(0, 0, window.innerWidth * 3, window.innerHeight * 3);
         }
 
         // Compute optimal zoom level and atlas scale
@@ -394,49 +395,36 @@ export class GameCore {
         // -----
 
         // BG / Map Resources / Belt Backgrounds
-        root.map.drawBackground(params);
-
         if (!this.root.camera.getIsMapOverlayActive()) {
+            root.map.drawBackground(params);
+
             // Underlays for splitters / balancers
-            systems.itemAcceptor.drawUnderlays(params, enumLayer.regular);
+            systems.beltUnderlays.drawUnderlays(params);
 
             // Belt items
-            systems.belt.drawLayerBeltItems(params, enumLayer.regular);
+            systems.belt.drawBeltItems(params);
 
             // Items being ejected / accepted currently (animations)
-            systems.itemEjector.drawLayer(params, enumLayer.regular);
-            systems.itemAcceptor.drawLayer(params, enumLayer.regular);
-        }
+            systems.itemEjector.draw(params);
+            systems.itemAcceptor.draw(params);
 
-        // Miner & Static map entities
-        root.map.drawForeground(params);
+            // Miner & Static map entities
+            root.map.drawForeground(params);
 
-        if (!this.root.camera.getIsMapOverlayActive()) {
             // HUB Overlay
             systems.hub.draw(params);
-
-            // Energy generator overlay
-            systems.energyGenerator.draw(params);
 
             // Storage items
             systems.storage.draw(params);
 
-            // Energy consumer (Battery icons)
-            systems.energyConsumer.draw(params);
+            // Green wires overlay
+            root.hud.parts.wiresOverlay.draw(params);
+        } else {
+            root.map.drawOverlay(params);
         }
 
-        // Green wires overlay (not within the if because it can fade)
-        root.hud.parts.wiresOverlay.draw(params);
-
         if (this.root.currentLayer === enumLayer.wires && !this.root.camera.getIsMapOverlayActive()) {
-            // Belt sprites & Static map entities
-            root.map.drawWiresLayer(params);
-
-            // Belt items as well as accepted / ejected items
-            systems.belt.drawLayerBeltItems(params, enumLayer.wires);
-            systems.itemEjector.drawLayer(params, enumLayer.wires);
-            systems.itemAcceptor.drawLayer(params, enumLayer.wires);
-
+            // Static map entities
             root.map.drawWiresForegroundLayer(params);
 
             // pins

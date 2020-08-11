@@ -54,14 +54,14 @@ export class ColorItem extends BaseItem {
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
         const key = size + "/" + dpi;
-        const canvas = parameters.root.buffers.getForKey(
+        const canvas = parameters.root.buffers.getForKey({
             key,
-            this.color,
-            size,
-            size,
+            subKey: this.color,
+            w: size,
+            h: size,
             dpi,
-            this.bufferGenerator
-        );
+            redrawMethod: this.bufferGenerator,
+        });
         parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
     }
     /**

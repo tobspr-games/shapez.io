@@ -25,13 +25,31 @@ export const enumUndergroundBeltVariantToTier = {
     [enumUndergroundBeltVariants.tier2]: 1,
 };
 
+const overlayMatrices = [
+    // Sender
+    {
+        0: [1, 1, 1, 0, 1, 0, 0, 1, 0],
+        90: [0, 0, 0, 1, 1, 1, 0, 0, 0],
+        180: [0, 1, 0, 0, 1, 0, 0, 1, 0],
+        270: [0, 0, 0, 1, 1, 1, 0, 0, 0],
+    },
+
+    // Receiver
+    {
+        0: [0, 1, 0, 0, 1, 0, 1, 1, 1],
+        90: [0, 1, 0, 1, 1, 0, 0, 0, 0],
+        180: [0, 1, 0, 0, 1, 1, 0, 0, 0],
+        270: [0, 0, 0, 0, 1, 1, 0, 1, 0],
+    },
+];
+
 export class MetaUndergroundBeltBuilding extends MetaBuilding {
     constructor() {
         super("underground_belt");
     }
 
     getSilhouetteColor() {
-        return "#555";
+        return "#222";
     }
 
     getFlipOrientationAfterPlacement() {
@@ -40,6 +58,16 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
 
     getStayInPlacementMode() {
         return true;
+    }
+
+    /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return overlayMatrices[rotationVariant][rotation];
     }
 
     /**

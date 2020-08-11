@@ -22,8 +22,7 @@ export class StorageSystem extends GameSystemWithFilter {
             if (storageComp.storedItem && storageComp.storedCount > 0) {
                 const ejectorComp = entity.components.ItemEjector;
 
-                /* FIXME: WIRES */
-                const nextSlot = ejectorComp.getFirstFreeSlot(enumLayer.regular);
+                const nextSlot = ejectorComp.getFirstFreeSlot();
                 if (nextSlot !== null) {
                     if (ejectorComp.tryEject(nextSlot, storageComp.storedItem)) {
                         storageComp.storedCount--;

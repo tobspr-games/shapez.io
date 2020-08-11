@@ -1,7 +1,6 @@
 import { GameRoot } from "./root";
 import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
-import { round3Digits } from "../core/utils";
 
 const logger = createLogger("dynamic_tickrate");
 

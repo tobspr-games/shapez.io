@@ -15,7 +15,6 @@ export class MinerComponent extends Component {
         // cachedMinedItem is not serialized.
         return {
             lastMiningTime: types.ufloat,
-            chainable: types.bool,
             itemChainBuffer: types.array(types.obj(gItemRegistry)),
         };
     }

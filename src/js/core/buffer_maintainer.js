@@ -95,15 +95,18 @@ export class BufferMaintainer {
     }
 
     /**
-     *
-     * @param {string} key
-     * @param {string} subKey
-     * @param {function(HTMLCanvasElement, CanvasRenderingContext2D, number, number, number, object?) : void} redrawMethod
-     * @param {object=} additionalParams
+     * @param {object} param0
+     * @param {string} param0.key
+     * @param {string} param0.subKey
+     * @param {number} param0.w
+     * @param {number} param0.h
+     * @param {number} param0.dpi
+     * @param {function(HTMLCanvasElement, CanvasRenderingContext2D, number, number, number, object?) : void} param0.redrawMethod
+     * @param {object=} param0.additionalParams
      * @returns {HTMLCanvasElement}
      *
      */
-    getForKey(key, subKey, w, h, dpi, redrawMethod, additionalParams) {
+    getForKey({ key, subKey, w, h, dpi, redrawMethod, additionalParams }) {
         // First, create parent key
         let parent = this.cache.get(key);
         if (!parent) {

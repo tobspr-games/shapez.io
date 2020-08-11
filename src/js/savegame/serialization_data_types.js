@@ -4,7 +4,7 @@ import { BasicSerializableObject } from "./serialization";
 /* typehints:end */
 
 import { Vector } from "../core/vector";
-import { round4Digits, schemaObject, accessNestedPropertyReverse } from "../core/utils";
+import { round4Digits } from "../core/utils";
 export const globalJsonSchemaDefs = {};
 
 /**
@@ -26,6 +26,19 @@ export function schemaToJsonSchema(schema) {
     }
 
     return jsonSchema;
+}
+
+/**
+ * Helper function to create a json schema object
+ * @param {any} properties
+ */
+function schemaObject(properties) {
+    return {
+        type: "object",
+        required: Object.keys(properties).slice(),
+        additionalProperties: false,
+        properties,
+    };
 }
 
 /**
@@ -75,23 +88,6 @@ export class BaseDataType {
         return {
             $ref: "#/definitions/" + key,
         };
-
-        // return this.getAsJsonSchemaUncached();
-        // if (!globalJsonSchemaDefs[key]) {
-        //     // schema.$id = key;
-        //     globalJsonSchemaDefs[key] = {
-        //         $id: key,
-        //         definitions: {
-        //             ["d-" + key]: schema
-        //         }
-        //     };
-        // }
-
-        // return {
-        //     $ref: key + "#/definitions/d-" + key
-        // }
-
-        // // return this.getAsJsonSchemaUncached();
     }
 
     /**
@@ -875,14 +871,17 @@ export class TypeArray extends BaseDataType {
      * @returns {string|void} String error code or null on success
      */
     deserialize(value, targetObject, targetKey, root) {
-        const result = new Array(value.length);
+        let destination = targetObject[targetKey];
+        if (!destination) {
+            targetObject[targetKey] = destination = new Array(value.length);
+        }
+
         for (let i = 0; i < value.length; ++i) {
-            const errorStatus = this.innerType.deserializeWithVerify(value[i], result, i, root);
+            const errorStatus = this.innerType.deserializeWithVerify(value[i], destination, i, root);
             if (errorStatus) {
                 return errorStatus;
             }
         }
-        targetObject[targetKey] = result;
     }
 
     getAsJsonSchemaUncached() {
@@ -1230,15 +1229,18 @@ export class TypeStructuredObject extends BaseDataType {
      * @returns {string|void} String error code or null on success
      */
     deserialize(value, targetObject, targetKey, root) {
-        let result = {};
+        let target = targetObject[targetKey];
+        if (!target) {
+            targetObject[targetKey] = target = {};
+        }
+
         for (const key in value) {
             const valueType = this.descriptor[key];
-            const errorCode = valueType.deserializeWithVerify(value[key], result, key, root);
+            const errorCode = valueType.deserializeWithVerify(value[key], target, key, root);
             if (errorCode) {
                 return errorCode;
             }
         }
-        targetObject[targetKey] = result;
     }
 
     getAsJsonSchemaUncached() {

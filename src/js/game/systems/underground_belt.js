@@ -395,7 +395,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             if (remainingTime <= 0) {
                 const ejectorComp = entity.components.ItemEjector;
 
-                const nextSlotIndex = ejectorComp.getFirstFreeSlot(entity.layer);
+                const nextSlotIndex = ejectorComp.getFirstFreeSlot();
                 if (nextSlotIndex !== null) {
                     if (ejectorComp.tryEject(nextSlotIndex, nextItem)) {
                         items.shift();

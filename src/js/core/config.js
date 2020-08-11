@@ -34,6 +34,7 @@ export const globalConfig = {
     assetsDpi: 192 / 32,
     assetsSharpness: 1.2,
     shapesSharpness: 1.4,
+    mapChunkSharpness: 1.0,
 
     // Production analytics
     statisticsGraphDpi: 2.5,
@@ -45,18 +46,14 @@ export const globalConfig = {
 
     // Map
     mapChunkSize: 16,
-    mapChunkPrerenderMinZoom: -1,
-    mapChunkOverviewMinZoom: 0.7,
+    mapChunkOverviewMinZoom: 0.9,
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
     beltSpeedItemsPerSecond: 2,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
-    beltItemSpacingByLayer: {
-        regular: 0.63,
-        wires: 0.4,
-    },
+    itemSpacingOnBelts: 0.63,
 
     wiresSpeedItemsPerSecond: 6,
 
@@ -116,14 +113,12 @@ globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5
 // Dynamic calculations
 if (globalConfig.debug.disableMapOverview) {
     globalConfig.mapChunkOverviewMinZoom = 0;
-    globalConfig.mapChunkPrerenderMinZoom = 0;
 }
 
 // Stuff for making the trailer
 if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
     globalConfig.debug.framePausesBetweenTicks = 32;
     // globalConfig.mapChunkOverviewMinZoom = 0.0;
-    // globalConfig.mapChunkPrerenderMinZoom = globalConfig.mapChunkOverviewMinZoom;
     // globalConfig.debug.instantBelts = true;
     // globalConfig.debug.instantProcessors = true;
     // globalConfig.debug.instantMiners = true;

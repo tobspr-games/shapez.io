@@ -47,6 +47,7 @@
 # + Rotator = Obrtač (jer mi Okretač zvuči nekako krivo)
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io je igra o izradi tvornica za automatizaciju stvaranja i spajanja sve složenijih oblika unutar beskonačno velike mape.
