@@ -281,16 +281,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             return false;
         }
 
-        const energyConsumerComp = receiver.components.EnergyConsumer;
-        if (energyConsumerComp) {
-            if (energyConsumerComp.tryAcceptItem(item, slotIndex)) {
-                // All good
-                return true;
-            }
-
-            // Energy consumer can have more components
-        }
-
         const itemProcessorComp = receiver.components.ItemProcessor;
         if (itemProcessorComp) {
             // Its an item processor ..

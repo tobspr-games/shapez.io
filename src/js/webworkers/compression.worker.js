@@ -17,6 +17,8 @@ self.addEventListener("message", event => {
     // @ts-ignore
     const { jobId, job, data } = event.data;
     const result = performJob(job, data);
+
+    // @ts-ignore
     self.postMessage({ jobId, result });
 });
 

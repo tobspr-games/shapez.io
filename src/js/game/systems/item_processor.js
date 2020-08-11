@@ -70,16 +70,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // Check if we have an empty queue and can start a new charge
             if (processorComp.itemsToEject.length === 0) {
                 if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
-                    const energyConsumerComp = entity.components.EnergyConsumer;
-                    if (energyConsumerComp) {
-                        // Check if we have enough energy
-                        if (energyConsumerComp.tryStartNextCharge()) {
-                            this.startNewCharge(entity);
-                        }
-                    } else {
-                        // No further checks required
-                        this.startNewCharge(entity);
-                    }
+                    this.startNewCharge(entity);
                 }
             }
         }
