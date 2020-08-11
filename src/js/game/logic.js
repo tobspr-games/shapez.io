@@ -1,5 +1,5 @@
 import { createLogger } from "../core/logging";
-import { round2Digits } from "../core/utils";
+import { round2Digits, rotateDirectionalObject } from "../core/utils";
 import { enumDirection, enumDirectionToVector, Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
@@ -177,6 +177,46 @@ export class GameLogic {
         this.root.entityMgr.destroyEntity(building);
         this.root.entityMgr.processDestroyList();
         return true;
+    }
+
+    /**
+     * Returns the wire connections at the given tile
+     * @param {Vector} tile
+     * @returns {import("../core/utils").DirectionalObject}
+     */
+    getLocalWireConnectionsAtTile(tile) {
+        return {
+            top: this.getTileWireConnections(tile.addScalars(0, -1)).bottom,
+            right: this.getTileWireConnections(tile.addScalars(1, 0)).left,
+            bottom: this.getTileWireConnections(tile.addScalars(0, 1)).top,
+            left: this.getTileWireConnections(tile.addScalars(-1, 0)).right,
+        };
+    }
+
+    /**
+     * Returns the wire connection at the given tile
+     * @param {Vector} tile
+     * @returns {import("../core/utils").DirectionalObject}
+     */
+    getTileWireConnections(tile) {
+        const result = {
+            top: null,
+            right: null,
+            bottom: null,
+            left: null,
+        };
+        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, enumLayer.wires);
+        if (!contents) {
+            return result;
+        }
+
+        const staticComp = contents.components.StaticMapEntity;
+        const wiresComp = contents.components.Wire;
+        if (wiresComp) {
+            const connections = wiresComp.getLocalConnections();
+            return rotateDirectionalObject(connections, staticComp.rotation);
+        }
+        return result;
     }
 
     /**

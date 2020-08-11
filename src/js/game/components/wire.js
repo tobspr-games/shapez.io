@@ -18,10 +18,43 @@ export class WireComponent extends Component {
 
     /**
      * @param {object} param0
-     * @param {enumWireType?} param0.type
+     * @param {enumWireType=} param0.type
      */
     constructor({ type = enumWireType.regular }) {
         super();
         this.type = type;
+    }
+
+    /**
+     * Returns the local connections
+     * @returns {import("../../core/utils").DirectionalObject}
+     */
+    getLocalConnections() {
+        switch (this.type) {
+            case enumWireType.regular:
+                return {
+                    top: true,
+                    right: false,
+                    bottom: true,
+                    left: false,
+                };
+            case enumWireType.turn:
+                return {
+                    top: false,
+                    right: true,
+                    bottom: true,
+                    left: false,
+                };
+            case enumWireType.split:
+                return {
+                    top: false,
+                    right: true,
+                    bottom: true,
+                    left: true,
+                };
+
+            default:
+                assertAlways(false, "Invalid wire type: " + this.type);
+        }
     }
 }

@@ -683,3 +683,33 @@ export function generateMatrixRotations(originalMatrix) {
 
     return result;
 }
+
+/**
+ *
+ * @typedef {{
+ *   top: any,
+ *   right: any,
+ *   bottom: any,
+ *   left: any
+ * }} DirectionalObject
+ */
+
+/**
+ * Rotates a directional object
+ * @param {DirectionalObject} obj
+ * @returns {DirectionalObject}
+ */
+export function rotateDirectionalObject(obj, rotation) {
+    const queue = [obj.top, obj.right, obj.bottom, obj.left];
+    while (rotation !== 0) {
+        rotation -= 90;
+        queue.push(queue.shift());
+    }
+
+    return {
+        top: queue[0],
+        right: queue[1],
+        bottom: queue[2],
+        left: queue[3],
+    };
+}
