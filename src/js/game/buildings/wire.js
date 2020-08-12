@@ -67,7 +67,7 @@ export class MetaWireBuilding extends MetaBuilding {
      */
     getIsUnlocked(root) {
         // @todo
-        return G_IS_DEV;
+        return true;
     }
 
     /**

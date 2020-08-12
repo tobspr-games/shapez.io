@@ -19,7 +19,7 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
      */
     getIsUnlocked(root) {
         // @todo
-        return G_IS_DEV;
+        return true;
     }
 
     getLayer() {
