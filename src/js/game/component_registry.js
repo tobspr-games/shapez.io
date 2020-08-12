@@ -11,6 +11,7 @@ import { StorageComponent } from "./components/storage";
 import { WiredPinsComponent } from "./components/wired_pins";
 import { BeltUnderlaysComponent } from "./components/belt_underlays";
 import { WireComponent } from "./components/wire";
+import { ConstantSignalComponent } from "./components/constant_signal";
 
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
@@ -25,6 +26,7 @@ export function initComponentRegistry() {
     gComponentRegistry.register(WiredPinsComponent);
     gComponentRegistry.register(BeltUnderlaysComponent);
     gComponentRegistry.register(WireComponent);
+    gComponentRegistry.register(ConstantSignalComponent);
 
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
 

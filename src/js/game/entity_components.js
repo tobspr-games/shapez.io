@@ -11,6 +11,7 @@ import { StorageComponent } from "./components/storage";
 import { UndergroundBeltComponent } from "./components/underground_belt";
 import { WiredPinsComponent } from "./components/wired_pins";
 import { WireComponent } from "./components/wire";
+import { ConstantSignalComponent } from "./components/constant_signal";
 /* typehints:end */
 
 /**
@@ -56,6 +57,9 @@ export class EntityComponentStorage {
 
         /** @type {WireComponent} */
         this.Wire;
+
+        /** @type {ConstantSignalComponent} */
+        this.ConstantSignal;
 
         /* typehints:end */
     }

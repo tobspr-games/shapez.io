@@ -16,6 +16,7 @@ import { StorageSystem } from "./systems/storage";
 import { WiredPinsSystem } from "./systems/wired_pins";
 import { BeltUnderlaysSystem } from "./systems/belt_underlays";
 import { WireSystem } from "./systems/wire";
+import { ConstantSignalSystem } from "./systems/constant_signal";
 
 const logger = createLogger("game_system_manager");
 
@@ -68,6 +69,9 @@ export class GameSystemManager {
             /** @type {WireSystem} */
             wire: null,
 
+            /** @type {ConstantSignalSystem} */
+            constantSignal: null,
+
             /* typehints:end */
         };
         this.systemUpdateOrder = [];
@@ -107,6 +111,8 @@ export class GameSystemManager {
         add("wiredPins", WiredPinsSystem);
 
         add("beltUnderlays", BeltUnderlaysSystem);
+
+        add("constantSignal", ConstantSignalSystem);
 
         // IMPORTANT: Must be after belt system since belt system can change the
         // orientation of an entity after it is placed -> the item acceptor cache

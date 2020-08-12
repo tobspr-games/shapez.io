@@ -1,8 +1,9 @@
 import { enumLayer } from "../../root";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaWireBuilding } from "../../buildings/wire";
+import { MetaConstantSignalBuilding } from "../../buildings/constant_signal";
 
-const supportedBuildings = [MetaWireBuilding];
+const supportedBuildings = [MetaWireBuilding, MetaConstantSignalBuilding];
 
 export class HUDWiresToolbar extends HUDBaseToolbar {
     constructor(root) {

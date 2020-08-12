@@ -5,11 +5,7 @@ import { BasicSerializableObject } from "../savegame/serialization";
 export const enumItemType = {
     shape: "shape",
     color: "color",
-    positiveEnergy: "positiveEnergy",
-    negativeEnergy: "negativeEnergy",
-
-    // Can be used for filters
-    genericEnergy: "genericEnergy",
+    boolean: "boolean",
 };
 
 /**

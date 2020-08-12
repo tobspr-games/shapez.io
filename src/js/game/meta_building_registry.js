@@ -15,6 +15,7 @@ import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buil
 import { MetaWireBuilding } from "./buildings/wire";
 import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
+import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 
 const logger = createLogger("building_registry");
 
@@ -31,6 +32,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaUndergroundBeltBuilding);
     gMetaBuildingRegistry.register(MetaHubBuilding);
     gMetaBuildingRegistry.register(MetaWireBuilding);
+    gMetaBuildingRegistry.register(MetaConstantSignalBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
@@ -85,6 +87,9 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(28, MetaWireBuilding, defaultBuildingVariant, 1);
     registerBuildingVariant(29, MetaWireBuilding, defaultBuildingVariant, 2);
     registerBuildingVariant(30, MetaWireBuilding, defaultBuildingVariant, 3);
+
+    // Constant signal
+    registerBuildingVariant(31, MetaConstantSignalBuilding);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

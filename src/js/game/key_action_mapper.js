@@ -56,6 +56,7 @@ export const KEYMAPPINGS = {
         trash: { keyCode: key("0") },
 
         wire: { keyCode: key("1") },
+        constant_signal: { keyCode: key("2") },
     },
 
     placement: {

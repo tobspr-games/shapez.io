@@ -550,6 +550,11 @@ buildings:
             name: *wire
             description: &wire_desc
 
+    constant_signal:
+        default:
+            name: &constant_signal Constant Signal
+            description: Emits a constant signal (shape, color or boolean).
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -805,6 +810,8 @@ keybindings:
         toggleFPSInfo: Toggle FPS and Debug Info
         switchLayers: Switch layers
         exportScreenshot: Export whole Base as Image
+
+        # --- Do not translate the values in this section
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -816,6 +823,8 @@ keybindings:
         painter: *painter
         trash: *trash
         wire: *wire
+        constant_signal: *constant_signal
+        # ---
 
         pipette: Pipette
         rotateWhilePlacing: Rotate
