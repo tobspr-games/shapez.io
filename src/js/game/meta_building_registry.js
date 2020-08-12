@@ -84,6 +84,7 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(27, MetaWireBuilding, defaultBuildingVariant, 0);
     registerBuildingVariant(28, MetaWireBuilding, defaultBuildingVariant, 1);
     registerBuildingVariant(29, MetaWireBuilding, defaultBuildingVariant, 2);
+    registerBuildingVariant(30, MetaWireBuilding, defaultBuildingVariant, 3);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

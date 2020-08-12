@@ -4,9 +4,8 @@ import { Rectangle } from "../../core/rectangle";
 import { AtlasSprite } from "../../core/sprites";
 import { enumDirection, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
-import { Component } from "../component";
 import { getBuildingDataFromCode } from "../building_codes";
-import { MetaBuilding } from "../meta_building";
+import { Component } from "../component";
 
 export class StaticMapEntityComponent extends Component {
     static getId() {
@@ -58,7 +57,7 @@ export class StaticMapEntityComponent extends Component {
 
     /**
      * Returns the meta building
-     * @returns {MetaBuilding}
+     * @returns {import("../meta_building").MetaBuilding}
      */
     getMetaBuilding() {
         return getBuildingDataFromCode(this.code).metaInstance;

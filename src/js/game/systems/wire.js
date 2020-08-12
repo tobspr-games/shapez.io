@@ -17,6 +17,7 @@ export class WireSystem extends GameSystemWithFilter {
             [enumWireType.regular]: Loader.getSprite("sprites/buildings/wire.png"),
             [enumWireType.turn]: Loader.getSprite("sprites/buildings/wire-turn.png"),
             [enumWireType.split]: Loader.getSprite("sprites/buildings/wire-split.png"),
+            [enumWireType.cross]: Loader.getSprite("sprites/buildings/wire-cross.png"),
         };
 
         this.root.signals.entityDestroyed.add(this.updateSurroundingWirePlacement, this);
@@ -36,7 +37,36 @@ export class WireSystem extends GameSystemWithFilter {
                 if (entity && entity.components.Wire) {
                     const wireType = entity.components.Wire.type;
                     const sprite = this.wireSprites[wireType];
-                    entity.components.StaticMapEntity.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
+                    assert(sprite, "Unknown wire type: " + wireType);
+                    const staticComp = entity.components.StaticMapEntity;
+                    staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
+
+                    if (G_IS_DEV && globalConfig.debug.renderWireRotations) {
+                        parameters.context.fillStyle = "red";
+                        parameters.context.font = "5px Tahoma";
+                        parameters.context.fillText(
+                            "" + staticComp.originalRotation,
+                            staticComp.origin.x * globalConfig.tileSize,
+                            staticComp.origin.y * globalConfig.tileSize + 5
+                        );
+
+                        parameters.context.fillStyle = "rgba(255, 0, 0, 0.2)";
+                        if (staticComp.originalRotation % 180 === 0) {
+                            parameters.context.fillRect(
+                                (staticComp.origin.x + 0.5) * globalConfig.tileSize,
+                                staticComp.origin.y * globalConfig.tileSize,
+                                3,
+                                globalConfig.tileSize
+                            );
+                        } else {
+                            parameters.context.fillRect(
+                                staticComp.origin.x * globalConfig.tileSize,
+                                (staticComp.origin.y + 0.5) * globalConfig.tileSize,
+                                globalConfig.tileSize,
+                                3
+                            );
+                        }
+                    }
                 }
             }
         }

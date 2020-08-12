@@ -5,6 +5,7 @@ import { Entity } from "../entity";
 import { formatBigNumber } from "../../core/utils";
 import { Loader } from "../../core/loader";
 import { T } from "../../translations";
+import { ShapeItem } from "../items/shape_item";
 
 export class HubSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -17,7 +18,14 @@ export class HubSystem extends GameSystemWithFilter {
         this.forEachMatchingEntityOnScreen(parameters, this.drawEntity.bind(this));
     }
 
-    update() {}
+    update() {
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            // Set hub goal
+            const entity = this.allEntities[i];
+            const pinsComp = entity.components.WiredPins;
+            pinsComp.slots[0].value = new ShapeItem(this.root.hubGoals.currentGoal.definition);
+        }
+    }
 
     /**
      * @param {DrawParameters} parameters

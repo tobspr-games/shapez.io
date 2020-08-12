@@ -1,35 +1,24 @@
 import { Loader } from "../../core/loader";
-import { rotateDirectionalObject } from "../../core/utils";
-import { Vector } from "../../core/vector";
+import { generateMatrixRotations } from "../../core/utils";
+import { enumDirection, enumDirectionToAngle, enumDirectionToVector, Vector } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
 import { enumWireType, WireComponent } from "../components/wire";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { enumLayer, GameRoot } from "../root";
 
-export const arrayWireRotationVariantToType = [enumWireType.regular, enumWireType.turn, enumWireType.split];
+export const arrayWireRotationVariantToType = [
+    enumWireType.regular,
+    enumWireType.turn,
+    enumWireType.split,
+    enumWireType.cross,
+];
 
 export const wireOverlayMatrices = {
-    [enumWireType.regular]: {
-        0: [0, 1, 0, 0, 1, 0, 0, 1, 0],
-        90: [0, 0, 0, 1, 1, 1, 0, 0, 0],
-        180: [0, 1, 0, 0, 1, 0, 0, 1, 0],
-        270: [0, 0, 0, 1, 1, 1, 0, 0, 0],
-    },
-
-    [enumWireType.split]: {
-        0: [0, 0, 0, 1, 1, 1, 0, 1, 0],
-        90: [0, 1, 0, 1, 1, 0, 0, 1, 0],
-        180: [0, 1, 0, 1, 1, 1, 0, 0, 0],
-        270: [0, 1, 0, 0, 1, 1, 0, 1, 0],
-    },
-
-    [enumWireType.turn]: {
-        0: [0, 0, 0, 0, 1, 1, 0, 1, 0],
-        90: [0, 0, 0, 1, 1, 0, 0, 1, 0],
-        180: [0, 1, 0, 1, 1, 0, 0, 0, 0],
-        270: [0, 1, 0, 0, 1, 1, 0, 0, 0],
-    },
+    [enumWireType.regular]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
+    [enumWireType.split]: generateMatrixRotations([0, 0, 0, 1, 1, 1, 0, 1, 0]),
+    [enumWireType.turn]: generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
+    [enumWireType.cross]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 0]),
 };
 
 export class MetaWireBuilding extends MetaBuilding {
@@ -121,8 +110,11 @@ export class MetaWireBuilding extends MetaBuilding {
             case enumWireType.split: {
                 return Loader.getSprite("sprites/buildings/wire-split.png");
             }
+            case enumWireType.cross: {
+                return Loader.getSprite("sprites/buildings/wire-cross.png");
+            }
             default: {
-                assertAlways(false, "Invalid belt rotation variant");
+                assertAlways(false, "Invalid wire rotation variant");
             }
         }
     }
@@ -138,8 +130,11 @@ export class MetaWireBuilding extends MetaBuilding {
             case enumWireType.split: {
                 return Loader.getSprite("sprites/blueprints/wire-split.png");
             }
+            case enumWireType.cross: {
+                return Loader.getSprite("sprites/blueprints/wire-cross.png");
+            }
             default: {
-                assertAlways(false, "Invalid belt rotation variant");
+                assertAlways(false, "Invalid wire rotation variant");
             }
         }
     }
@@ -155,20 +150,23 @@ export class MetaWireBuilding extends MetaBuilding {
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
-        const connections = root.logic.getLocalWireConnectionsAtTile(tile);
-
-        const d = rotateDirectionalObject(connections, rotation);
-
-        // "Sticky" bottom
-        connections.bottom = true;
+        const connections = {
+            top: root.logic.computeWireEdgeStatus({ tile, rotation, edge: enumDirection.top }),
+            right: root.logic.computeWireEdgeStatus({ tile, rotation, edge: enumDirection.right }),
+            bottom: root.logic.computeWireEdgeStatus({ tile, rotation, edge: enumDirection.bottom }),
+            left: root.logic.computeWireEdgeStatus({ tile, rotation, edge: enumDirection.left }),
+        };
 
         let flag = 0;
-        flag |= d.top ? 0x1000 : 0;
-        flag |= d.right ? 0x100 : 0;
-        flag |= d.bottom ? 0x10 : 0;
-        flag |= d.left ? 0x1 : 0;
+        flag |= connections.top ? 0x1000 : 0;
+        flag |= connections.right ? 0x100 : 0;
+        flag |= connections.bottom ? 0x10 : 0;
+        flag |= connections.left ? 0x1 : 0;
 
         let targetType = enumWireType.regular;
+
+        // First, reset rotation
+        rotation = 0;
 
         switch (flag) {
             case 0x0000:
@@ -177,12 +175,12 @@ export class MetaWireBuilding extends MetaBuilding {
 
             case 0x0001:
                 // Left
-                targetType = enumWireType.turn;
                 rotation += 90;
                 break;
 
             case 0x0010:
                 // Bottom
+                // END
                 break;
 
             case 0x0011:
@@ -193,12 +191,11 @@ export class MetaWireBuilding extends MetaBuilding {
 
             case 0x0100:
                 // Right
-                targetType = enumWireType.turn;
+                rotation += 90;
                 break;
 
             case 0x0101:
                 // Right | Left
-                // @todo: Might want to do rotation += 90 here
                 rotation += 90;
                 break;
 
@@ -252,7 +249,7 @@ export class MetaWireBuilding extends MetaBuilding {
 
             case 0x1111:
                 // Top | Right | Bottom | Left
-                // @todo: Crossing
+                targetType = enumWireType.cross;
                 break;
         }
 

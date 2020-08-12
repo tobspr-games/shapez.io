@@ -179,6 +179,12 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                 offsetX: 0,
                 offsetY: 0,
             });
+
+            // Draw contained item to visualize whats emitted
+            const value = slot.value;
+            if (value) {
+                value.draw(worldPos.x, worldPos.y, parameters, 12);
+            }
         }
     }
 }

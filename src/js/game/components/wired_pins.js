@@ -1,6 +1,6 @@
+import { enumDirection, Vector } from "../../core/vector";
+import { BaseItem } from "../base_item";
 import { Component } from "../component";
-import { Vector, enumDirection } from "../../core/vector";
-import { types } from "../../savegame/serialization";
 
 /** @enum {string} */
 export const enumPinSlotType = {
@@ -17,7 +17,8 @@ export const enumPinSlotType = {
 /** @typedef {{
  *   pos: Vector,
  *   type: enumPinSlotType,
- *   direction: enumDirection
+ *   direction: enumDirection,
+ *   value: BaseItem
  * }} WirePinSlot */
 
 export class WiredPinsComponent extends Component {
@@ -63,6 +64,7 @@ export class WiredPinsComponent extends Component {
                 pos: slotData.pos,
                 type: slotData.type,
                 direction: slotData.direction,
+                value: null,
             });
         }
     }
