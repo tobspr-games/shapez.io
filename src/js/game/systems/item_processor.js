@@ -1,9 +1,10 @@
 import { globalConfig } from "../../core/config";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { enumColorMixingResults } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
+import { BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 import { ColorItem } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
@@ -325,6 +326,38 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 outItems.push({
                     item: new ShapeItem(colorizedDefinition),
                 });
+
+                break;
+            }
+
+            // FILTER
+            case enumItemProcessorTypes.filter: {
+                // TODO
+                trackProduction = false;
+
+                const item = itemsBySlot[0].item;
+
+                const network = entity.components.WiredPins.slots[0].linkedNetwork;
+                if (!network || !network.currentValue) {
+                    outItems.push({
+                        item,
+                        requiredSlot: 1,
+                    });
+                    break;
+                }
+
+                const value = network.currentValue;
+                if (value.equals(BOOL_TRUE_SINGLETON) || value.equals(item)) {
+                    outItems.push({
+                        item,
+                        requiredSlot: 0,
+                    });
+                } else {
+                    outItems.push({
+                        item,
+                        requiredSlot: 1,
+                    });
+                }
 
                 break;
             }

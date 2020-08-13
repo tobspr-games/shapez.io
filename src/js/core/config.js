@@ -70,6 +70,7 @@ export const globalConfig = {
         mixer: 1 / 5,
         stacker: 1 / 6,
         advancedProcessor: 1 / 3,
+        filter: 1,
     },
 
     // Zooming

@@ -1182,7 +1182,7 @@ export class BeltPath extends BasicSerializableObject {
             const beltLength = beltComp.getEffectiveLengthTiles();
 
             // Check if the current items are on the belt
-            while (trackPos + beltLength >= currentItemPos - 1e-51) {
+            while (trackPos + beltLength >= currentItemPos - 1e-5) {
                 // Its on the belt, render it now
                 const staticComp = entity.components.StaticMapEntity;
                 assert(

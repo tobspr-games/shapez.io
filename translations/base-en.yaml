@@ -574,6 +574,12 @@ buildings:
             name: OR
             description: Emits a truthy signal if one of the inputs is truthy.
 
+    filter:
+        default:
+            name: &filter Filter
+            # TEMP
+            description: Only leaves through items who match exactly the provided shape / color. If you put in a boolean 1, it leaves everything through, if you put in a 0 it will leave nothing through.
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -845,6 +851,7 @@ keybindings:
         constant_signal: *constant_signal
         logic_gate: *logic_gate
         lever: *lever
+        filter: *filter
         # ---
 
         pipette: Pipette

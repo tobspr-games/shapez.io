@@ -59,6 +59,7 @@ export const KEYMAPPINGS = {
         constant_signal: { keyCode: key("2") },
         logic_gate: { keyCode: key("3") },
         lever: { keyCode: key("4") },
+        filter: { keyCode: key("5") },
     },
 
     placement: {

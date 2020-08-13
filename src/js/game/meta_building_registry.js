@@ -18,6 +18,7 @@ import { defaultBuildingVariant } from "./meta_building";
 import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
 import { MetaLeverBuilding } from "./buildings/lever";
+import { MetaFilterBuilding } from "./buildings/filter";
 
 const logger = createLogger("building_registry");
 
@@ -37,6 +38,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaConstantSignalBuilding);
     gMetaBuildingRegistry.register(MetaLogicGateBuilding);
     gMetaBuildingRegistry.register(MetaLeverBuilding);
+    gMetaBuildingRegistry.register(MetaFilterBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
@@ -103,6 +105,9 @@ export function initMetaBuildingRegistry() {
 
     // Lever
     registerBuildingVariant(33, MetaLeverBuilding);
+
+    // Filter
+    registerBuildingVariant(37, MetaFilterBuilding);
 
     // Propagate instances
     for (const key in gBuildingVariants) {
