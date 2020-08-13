@@ -3,6 +3,7 @@ import { Component } from "../component";
 /** @enum {string} */
 export const enumLogicGateType = {
     and: "and",
+    not: "not",
 };
 
 export class LogicGateComponent extends Component {

@@ -16,7 +16,7 @@ import { MetaWireBuilding } from "./buildings/wire";
 import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
 import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
-import { MetaLogicGateBuilding } from "./buildings/logic_gate";
+import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
 import { MetaLeverBuilding } from "./buildings/lever";
 
 const logger = createLogger("building_registry");
@@ -97,6 +97,7 @@ export function initMetaBuildingRegistry() {
 
     // Logic gate
     registerBuildingVariant(32, MetaLogicGateBuilding);
+    registerBuildingVariant(34, MetaLogicGateBuilding, enumLogicGateVariants.not);
 
     // Lever
     registerBuildingVariant(33, MetaLeverBuilding);

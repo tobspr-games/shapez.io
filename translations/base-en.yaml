@@ -564,6 +564,9 @@ buildings:
         default:
             name: &logic_gate AND Gate
             description: Emits a boolean signal if both inputs are truthy.
+        not:
+            name: NOT
+            description: Inverts the given signal
 
 storyRewards:
     # Those are the rewards gained from completing the store

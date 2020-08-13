@@ -10,6 +10,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
         this.boundOperations = {
             [enumLogicGateType.and]: this.compute_AND.bind(this),
+            [enumLogicGateType.not]: this.compute_NOT.bind(this),
         };
     }
 
@@ -74,5 +75,24 @@ export class LogicGateSystem extends GameSystemWithFilter {
         }
 
         return BOOL_FALSE_SINGLETON;
+    }
+
+    /**
+     * @param {Array<BaseItem|null>} parameters
+     * @returns {BaseItem}
+     */
+    compute_NOT(parameters) {
+        const item = parameters[0];
+        if (!item) {
+            return BOOL_FALSE_SINGLETON;
+        }
+
+        if (item.getItemType() !== enumItemType.boolean) {
+            // Not a boolean actually
+            return BOOL_FALSE_SINGLETON;
+        }
+
+        const value = /** @type {BooleanItem} */ (item).value;
+        return value ? BOOL_FALSE_SINGLETON : BOOL_TRUE_SINGLETON;
     }
 }

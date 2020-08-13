@@ -6,11 +6,14 @@ import { enumLayer, GameRoot } from "../root";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 
 /** @enum {string} */
-export const enumLogicGateVariants = {};
+export const enumLogicGateVariants = {
+    not: "not",
+};
 
 /** @enum {string} */
 export const enumVariantToGate = {
     [defaultBuildingVariant]: enumLogicGateType.and,
+    [enumLogicGateVariants.not]: enumLogicGateType.not,
 };
 
 export class MetaLogicGateBuilding extends MetaBuilding {
@@ -38,23 +41,24 @@ export class MetaLogicGateBuilding extends MetaBuilding {
         return new Vector(1, 1);
     }
 
+    getAvailableVariants() {
+        return [defaultBuildingVariant, enumLogicGateVariants.not];
+    }
+
     /**
      *
      * @param {Entity} entity
      * @param {number} rotationVariant
      */
     updateVariants(entity, rotationVariant, variant) {
-        entity.components.LogicGate.type = enumVariantToGate[variant];
-    }
+        const gateType = enumVariantToGate[variant];
+        entity.components.LogicGate.type = gateType;
 
-    /**
-     * Creates the entity at the given location
-     * @param {Entity} entity
-     */
-    setupEntityComponents(entity) {
-        entity.addComponent(
-            new WiredPinsComponent({
-                slots: [
+        const pinComp = entity.components.WiredPins;
+
+        switch (gateType) {
+            case enumLogicGateType.and: {
+                pinComp.setSlots([
                     {
                         pos: new Vector(0, 0),
                         direction: enumDirection.top,
@@ -70,7 +74,39 @@ export class MetaLogicGateBuilding extends MetaBuilding {
                         direction: enumDirection.right,
                         type: enumPinSlotType.logicalAcceptor,
                     },
-                ],
+                ]);
+                break;
+            }
+
+            case enumLogicGateType.not: {
+                pinComp.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ]);
+                break;
+            }
+
+            default:
+                assertAlways("unknown logic gate type: " + gateType);
+        }
+    }
+
+    /**
+     * Creates the entity at the given location
+     * @param {Entity} entity
+     */
+    setupEntityComponents(entity) {
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [],
             })
         );
 
