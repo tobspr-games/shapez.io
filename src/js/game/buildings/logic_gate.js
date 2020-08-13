@@ -10,6 +10,7 @@ export const enumLogicGateVariants = {
     not: "not",
     xor: "xor",
     or: "or",
+    transistor: "transistor",
 };
 
 /** @enum {string} */
@@ -18,6 +19,7 @@ export const enumVariantToGate = {
     [enumLogicGateVariants.not]: enumLogicGateType.not,
     [enumLogicGateVariants.xor]: enumLogicGateType.xor,
     [enumLogicGateVariants.or]: enumLogicGateType.or,
+    [enumLogicGateVariants.transistor]: enumLogicGateType.transistor,
 };
 
 export class MetaLogicGateBuilding extends MetaBuilding {
@@ -51,6 +53,7 @@ export class MetaLogicGateBuilding extends MetaBuilding {
             enumLogicGateVariants.not,
             enumLogicGateVariants.xor,
             enumLogicGateVariants.or,
+            enumLogicGateVariants.transistor,
         ];
     }
 
@@ -83,6 +86,26 @@ export class MetaLogicGateBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         direction: enumDirection.right,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ]);
+                break;
+            }
+            case enumLogicGateType.transistor: {
+                pinComp.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
                         type: enumPinSlotType.logicalAcceptor,
                     },
                 ]);

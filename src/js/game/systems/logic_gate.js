@@ -3,6 +3,7 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BaseItem, enumItemType } from "../base_item";
 import { enumPinSlotType } from "../components/wired_pins";
 import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON, BooleanItem } from "../items/boolean_item";
+import { enumItemProcessorTypes } from "../components/item_processor";
 
 export class LogicGateSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -13,6 +14,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
             [enumLogicGateType.not]: this.compute_NOT.bind(this),
             [enumLogicGateType.xor]: this.compute_XOR.bind(this),
             [enumLogicGateType.or]: this.compute_OR.bind(this),
+            [enumLogicGateType.transistor]: this.compute_IF.bind(this),
         };
     }
 
@@ -156,5 +158,32 @@ export class LogicGateSystem extends GameSystemWithFilter {
         }
 
         return BOOL_FALSE_SINGLETON;
+    }
+
+    /**
+     * @param {Array<BaseItem|null>} parameters
+     * @returns {BaseItem}
+     */
+    compute_IF(parameters) {
+        assert(parameters.length === 2, "bad parameter count for IF");
+
+        const flag = parameters[0];
+        const value = parameters[1];
+        if (!flag || !value) {
+            // Not enough params
+            return null;
+        }
+
+        if (flag.getItemType() !== enumItemType.boolean) {
+            // Flag is not a boolean
+            return null;
+        }
+
+        // pass through item
+        if (/** @type {BooleanItem} */ (flag).value) {
+            return value;
+        }
+
+        return null;
     }
 }

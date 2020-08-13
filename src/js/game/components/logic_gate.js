@@ -6,6 +6,7 @@ export const enumLogicGateType = {
     not: "not",
     xor: "xor",
     or: "or",
+    transistor: "transistor",
 };
 
 export class LogicGateComponent extends Component {

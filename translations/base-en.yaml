@@ -574,6 +574,10 @@ buildings:
             name: OR
             description: Emits a truthy signal if one of the inputs is truthy.
 
+        transistor:
+            name: Gate
+            description: Only forwards the bottom input if the left input is true.
+
     filter:
         default:
             name: &filter Filter
