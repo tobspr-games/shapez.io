@@ -193,46 +193,6 @@ export class GameLogic {
     }
 
     /**
-     * Returns the wire connections at the given tile
-     * @param {Vector} tile
-     * @returns {import("../core/utils").DirectionalObject}
-     */
-    getLocalWireConnectionsAtTile(tile) {
-        return {
-            top: this.getTileWireConnections(tile.addScalars(0, -1)).bottom,
-            right: this.getTileWireConnections(tile.addScalars(1, 0)).left,
-            bottom: this.getTileWireConnections(tile.addScalars(0, 1)).top,
-            left: this.getTileWireConnections(tile.addScalars(-1, 0)).right,
-        };
-    }
-
-    /**
-     * Returns the wire connection at the given tile
-     * @param {Vector} tile
-     * @returns {import("../core/utils").DirectionalObject}
-     */
-    getTileWireConnections(tile) {
-        const result = {
-            top: null,
-            right: null,
-            bottom: null,
-            left: null,
-        };
-        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, enumLayer.wires);
-        if (!contents) {
-            return result;
-        }
-
-        const staticComp = contents.components.StaticMapEntity;
-        const wiresComp = contents.components.Wire;
-        if (wiresComp) {
-            const connections = wiresComp.getLocalConnections();
-            return rotateDirectionalObject(connections, staticComp.originalRotation);
-        }
-        return result;
-    }
-
-    /**
      *
      * Computes the flag for a given tile
      * @param {object} param0
@@ -243,7 +203,7 @@ export class GameLogic {
     computeWireEdgeStatus({ tile, edge, rotation }) {
         const offset = enumDirectionToVector[edge];
         const refTile = tile.add(offset);
-        const angle = enumDirectionToAngle[edge];
+        // const angle = enumDirectionToAngle[edge];
 
         // // First, check if this edge can be connected from locally
         // const canConnectLocally = rotation === angle || (rotation + 180) % 360 === angle;
@@ -290,6 +250,7 @@ export class GameLogic {
             for (let k = 0; k < pinComp.slots.length; ++k) {
                 const pinSlot = pins[k];
                 const pinLocation = staticComp.localTileToWorld(pinSlot.pos);
+                const pinDirection = staticComp.localDirectionToWorld(pinSlot.direction);
 
                 // Check if the pin has the right location
                 if (!pinLocation.equals(tile)) {
@@ -297,7 +258,7 @@ export class GameLogic {
                 }
 
                 // Check if the pin has the right direction
-                if (pinSlot.direction !== enumInvertedDirections[edge]) {
+                if (pinDirection !== enumInvertedDirections[edge]) {
                     continue;
                 }
 

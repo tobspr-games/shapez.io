@@ -555,6 +555,11 @@ buildings:
             name: &constant_signal Constant Signal
             description: Emits a constant signal (shape, color or boolean).
 
+    logic_gate:
+        default:
+            name: &logic_gate AND Gate
+            description: Emits a boolean signal if both inputs are truthy.
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -824,6 +829,7 @@ keybindings:
         trash: *trash
         wire: *wire
         constant_signal: *constant_signal
+        logic_gate: *logic_gate
         # ---
 
         pipette: Pipette

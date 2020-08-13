@@ -1,7 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
-import { Vector } from "../../core/vector";
+import { Vector, enumDirectionToAngle } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -169,13 +169,16 @@ export class WiredPinsSystem extends GameSystemWithFilter {
 
             const worldPos = tile.toWorldSpaceCenterOfTile();
 
+            const effectiveRotation = Math.radians(
+                staticComp.rotation + enumDirectionToAngle[slot.direction]
+            );
             drawRotatedSprite({
                 parameters,
                 sprite: this.pinSprites[slot.type],
                 x: worldPos.x,
                 y: worldPos.y,
-                angle: Math.radians(staticComp.rotation),
-                size: globalConfig.tileSize,
+                angle: effectiveRotation,
+                size: globalConfig.tileSize + 2,
                 offsetX: 0,
                 offsetY: 0,
             });
@@ -183,7 +186,9 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             // Draw contained item to visualize whats emitted
             const value = slot.value;
             if (value) {
-                value.draw(worldPos.x, worldPos.y, parameters, 10);
+                const offset = new Vector(0, -5).rotated(effectiveRotation);
+
+                value.draw(worldPos.x + offset.x, worldPos.y + offset.y, parameters, 12);
             }
         }
     }

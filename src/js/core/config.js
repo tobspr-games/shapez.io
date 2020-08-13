@@ -32,9 +32,8 @@ export const globalConfig = {
 
     // Which dpi the assets have
     assetsDpi: 192 / 32,
-    assetsSharpness: 1.2,
+    assetsSharpness: 1.5,
     shapesSharpness: 1.4,
-    mapChunkSharpness: 1.0,
 
     // Production analytics
     statisticsGraphDpi: 2.5,

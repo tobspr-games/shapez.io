@@ -54,9 +54,9 @@ export class MetaHubBuilding extends MetaBuilding {
             new WiredPinsComponent({
                 slots: [
                     {
-                        pos: new Vector(3, 0),
+                        pos: new Vector(0, 2),
                         type: enumPinSlotType.logicalEjector,
-                        direction: enumDirection.top,
+                        direction: enumDirection.left,
                     },
                 ],
             })

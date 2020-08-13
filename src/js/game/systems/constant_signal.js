@@ -9,6 +9,7 @@ import trim from "trim";
 import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item";
 import { ShapeDefinition } from "../shape_definition";
 import { ShapeItem } from "../items/shape_item";
+import { BaseItem } from "../base_item";
 
 export class ConstantSignalSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -40,7 +41,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         const uid = entity.uid;
 
         const signalValueInput = new FormElementInput({
-            id: "markerName",
+            id: "signalValue",
             label: null,
             placeholder: "",
             defaultValue: "",
@@ -51,9 +52,11 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             title: "Set Signal",
             desc: "Enter a shape code, color or '0' or '1'",
             formElements: [signalValueInput],
-            buttons: ["cancel", "ok:good"],
+            buttons: ["cancel:bad:escape", "ok:good:enter"],
         });
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
+
+        // When confirmed, set the signal
         dialog.buttonSignals.ok.add(() => {
             if (!this.root || !this.root.entityMgr) {
                 // Game got stopped
@@ -74,18 +77,47 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
 
             constantComp.signal = this.parseSignalCode(signalValueInput.getValue());
         });
+
+        // When cancelled, destroy the entity again
+        dialog.buttonSignals.cancel.add(() => {
+            if (!this.root || !this.root.entityMgr) {
+                // Game got stopped
+                return;
+            }
+
+            const entityRef = this.root.entityMgr.findByUid(uid, false);
+            if (!entityRef) {
+                // outdated
+                return;
+            }
+
+            const constantComp = entityRef.components.ConstantSignal;
+            if (!constantComp) {
+                // no longer interesting
+                return;
+            }
+
+            this.root.logic.tryDeleteBuilding(entityRef);
+        });
     }
 
+    /**
+     * Tries to parse a signal code
+     * @param {string} code
+     * @returns {BaseItem}
+     */
     parseSignalCode(code) {
         code = trim(code);
-        if (enumColors[code]) {
-            return new ColorItem(code);
+        const codeLower = code.toLowerCase();
+
+        if (enumColors[codeLower]) {
+            return new ColorItem(codeLower);
         }
-        if (code === "1" || code === "true") {
+        if (code === "1" || codeLower === "true") {
             return BOOL_TRUE_SINGLETON;
         }
 
-        if (code === "0" || code === "false") {
+        if (code === "0" || codeLower === "false") {
             return BOOL_FALSE_SINGLETON;
         }
 

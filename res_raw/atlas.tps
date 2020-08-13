@@ -356,12 +356,14 @@
             <key type="filename">sprites/blueprints/belt_left.png</key>
             <key type="filename">sprites/blueprints/belt_right.png</key>
             <key type="filename">sprites/blueprints/belt_top.png</key>
+            <key type="filename">sprites/blueprints/wire-cross.png</key>
             <key type="filename">sprites/blueprints/wire-split.png</key>
             <key type="filename">sprites/blueprints/wire-turn.png</key>
             <key type="filename">sprites/blueprints/wire.png</key>
             <key type="filename">sprites/buildings/belt_left.png</key>
             <key type="filename">sprites/buildings/belt_right.png</key>
             <key type="filename">sprites/buildings/belt_top.png</key>
+            <key type="filename">sprites/buildings/wire-cross.png</key>
             <key type="filename">sprites/buildings/wire-split.png</key>
             <key type="filename">sprites/buildings/wire-turn.png</key>
             <key type="filename">sprites/buildings/wire.png</key>
@@ -376,6 +378,43 @@
                 <rect>32,32,63,63</rect>
                 <key>scale9Paddings</key>
                 <rect>32,32,63,63</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/blueprints/constant_signal.png</key>
+            <key type="filename">sprites/blueprints/miner-chainable.png</key>
+            <key type="filename">sprites/blueprints/miner.png</key>
+            <key type="filename">sprites/blueprints/rotater-ccw.png</key>
+            <key type="filename">sprites/blueprints/rotater-fl.png</key>
+            <key type="filename">sprites/blueprints/rotater.png</key>
+            <key type="filename">sprites/blueprints/splitter-compact-inverse.png</key>
+            <key type="filename">sprites/blueprints/splitter-compact.png</key>
+            <key type="filename">sprites/blueprints/trash.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry-tier2.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
+            <key type="filename">sprites/buildings/constant_signal.png</key>
+            <key type="filename">sprites/buildings/miner-chainable.png</key>
+            <key type="filename">sprites/buildings/rotater-ccw.png</key>
+            <key type="filename">sprites/buildings/rotater-fl.png</key>
+            <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
+            <key type="filename">sprites/buildings/splitter-compact.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry-tier2.png</key>
+            <key type="filename">sprites/buildings/underground_belt_entry.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
+            <key type="filename">sprites/buildings/underground_belt_exit.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>48,48,96,96</rect>
+                <key>scale9Paddings</key>
+                <rect>48,48,96,96</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -415,41 +454,6 @@
                 <rect>96,48,192,96</rect>
                 <key>scale9Paddings</key>
                 <rect>96,48,192,96</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/blueprints/miner-chainable.png</key>
-            <key type="filename">sprites/blueprints/miner.png</key>
-            <key type="filename">sprites/blueprints/rotater-ccw.png</key>
-            <key type="filename">sprites/blueprints/rotater-fl.png</key>
-            <key type="filename">sprites/blueprints/rotater.png</key>
-            <key type="filename">sprites/blueprints/splitter-compact-inverse.png</key>
-            <key type="filename">sprites/blueprints/splitter-compact.png</key>
-            <key type="filename">sprites/blueprints/trash.png</key>
-            <key type="filename">sprites/blueprints/underground_belt_entry-tier2.png</key>
-            <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
-            <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
-            <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
-            <key type="filename">sprites/buildings/miner-chainable.png</key>
-            <key type="filename">sprites/buildings/rotater-ccw.png</key>
-            <key type="filename">sprites/buildings/rotater-fl.png</key>
-            <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
-            <key type="filename">sprites/buildings/splitter-compact.png</key>
-            <key type="filename">sprites/buildings/underground_belt_entry-tier2.png</key>
-            <key type="filename">sprites/buildings/underground_belt_entry.png</key>
-            <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
-            <key type="filename">sprites/buildings/underground_belt_exit.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>48,48,96,96</rect>
-                <key>scale9Paddings</key>
-                <rect>48,48,96,96</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -566,6 +570,22 @@
                 <rect>44,22,89,43</rect>
                 <key>scale9Paddings</key>
                 <rect>44,22,89,43</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/wires/boolean_false.png</key>
+            <key type="filename">sprites/wires/boolean_true.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,16,32,32</rect>
+                <key>scale9Paddings</key>
+                <rect>16,16,32,32</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
