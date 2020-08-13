@@ -365,6 +365,14 @@ export class WireSystem extends GameSystemWithFilter {
                         });
                     }
                 }
+
+                // Check if its a tunnel, if so, go to the forwarded item
+                if (entity.components.WireTunnel) {
+                    const forwardedTile = searchTile.add(offset);
+                    contents.push(
+                        ...this.root.map.getLayersContentsMultipleXY(forwardedTile.x, forwardedTile.y)
+                    );
+                }
             }
         }
 

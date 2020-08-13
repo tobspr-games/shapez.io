@@ -542,13 +542,10 @@ buildings:
             name: &wire Wire
             description: &wire_desc Allows to connect logical components and can transfer items, colors or boolean signals.
 
-        turn:
-            name: *wire
-            description: &wire_desc
-
-        split:
-            name: *wire
-            description: &wire_desc
+    wire_tunnel:
+        default:
+            name: &wire_tunnel Wire Tunnel
+            description: Allows to cross two wires without connecting them.
 
     constant_signal:
         default:
@@ -856,6 +853,7 @@ keybindings:
         logic_gate: *logic_gate
         lever: *lever
         filter: *filter
+        wire_tunnel: *wire_tunnel
         # ---
 
         pipette: Pipette

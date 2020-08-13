@@ -1,16 +1,16 @@
 import { createLogger } from "../core/logging";
-import { round2Digits, rotateDirectionalObject } from "../core/utils";
+import { STOP_PROPAGATION } from "../core/signal";
+import { round2Digits } from "../core/utils";
 import {
     enumDirection,
-    enumDirectionToVector,
-    Vector,
     enumDirectionToAngle,
+    enumDirectionToVector,
     enumInvertedDirections,
+    Vector,
 } from "../core/vector";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
-import { GameRoot, enumLayer } from "./root";
-import { STOP_PROPAGATION } from "../core/signal";
+import { enumLayer, GameRoot } from "./root";
 
 const logger = createLogger("ingame/logic");
 
@@ -271,6 +271,12 @@ export class GameLogic {
         const targetEntity = this.root.map.getTileContent(tile, enumLayer.wires);
         if (!targetEntity) {
             return enumWireEdgeFlag.empty;
+        }
+
+        // Check if its a crossing
+        const wireTunnelComp = targetEntity.components.WireTunnel;
+        if (wireTunnelComp) {
+            return enumWireEdgeFlag.filled;
         }
 
         // Check if its a wire

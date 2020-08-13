@@ -14,6 +14,7 @@ import { WireComponent } from "./components/wire";
 import { ConstantSignalComponent } from "./components/constant_signal";
 import { LogicGateComponent } from "./components/logic_gate";
 import { LeverComponent } from "./components/lever";
+import { WireTunnelComponent } from "./components/wire_tunnel";
 
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
@@ -31,6 +32,7 @@ export function initComponentRegistry() {
     gComponentRegistry.register(ConstantSignalComponent);
     gComponentRegistry.register(LogicGateComponent);
     gComponentRegistry.register(LeverComponent);
+    gComponentRegistry.register(WireTunnelComponent);
 
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
 

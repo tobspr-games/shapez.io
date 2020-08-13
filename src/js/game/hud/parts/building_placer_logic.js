@@ -344,6 +344,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const buildingCode = contents.components.StaticMapEntity.code;
         const extracted = getBuildingDataFromCode(buildingCode);
 
+        if (extracted.metaInstance.getId() === "hub") {
+            // Disable pipetting the hub
+            this.currentMetaBuilding.set(null);
+            return;
+        }
+
         // If the building we are picking is the same as the one we have, clear the cursor.
         if (
             this.currentMetaBuilding.get() &&

@@ -56,10 +56,11 @@ export const KEYMAPPINGS = {
         trash: { keyCode: key("0") },
 
         wire: { keyCode: key("1") },
-        constant_signal: { keyCode: key("2") },
-        logic_gate: { keyCode: key("3") },
-        lever: { keyCode: key("4") },
-        filter: { keyCode: key("5") },
+        wire_tunnel: { keyCode: key("2") },
+        constant_signal: { keyCode: key("3") },
+        logic_gate: { keyCode: key("4") },
+        lever: { keyCode: key("5") },
+        filter: { keyCode: key("6") },
     },
 
     placement: {
