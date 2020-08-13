@@ -8,6 +8,7 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { enumLayer } from "../root";
 import { STOP_PROPAGATION } from "../../core/signal";
 import { drawRotatedSprite } from "../../core/draw_utils";
+import { GLOBAL_APP } from "../../core/globals";
 
 export class WiredPinsSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -187,8 +188,22 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             const value = slot.value;
             if (value) {
                 const offset = new Vector(0, -5).rotated(effectiveRotation);
-
                 value.draw(worldPos.x + offset.x, worldPos.y + offset.y, parameters, 12);
+            }
+
+            // Debug view
+            if (G_IS_DEV && globalConfig.debug.renderWireNetworkInfos) {
+                const offset = new Vector(0, -10).rotated(effectiveRotation);
+                const network = slot.linkedNetwork;
+                parameters.context.fillStyle = "blue";
+                parameters.context.font = "5px Tahoma";
+                parameters.context.textAlign = "center";
+                parameters.context.fillText(
+                    network ? "S" + network.uid : "???",
+                    (tile.x + 0.5) * globalConfig.tileSize + offset.x,
+                    (tile.y + 0.5) * globalConfig.tileSize + offset.y
+                );
+                parameters.context.textAlign = "left";
             }
         }
     }

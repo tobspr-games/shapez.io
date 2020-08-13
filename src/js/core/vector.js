@@ -43,6 +43,14 @@ export const enumAngleToDirection = {
     270: enumDirection.left,
 };
 
+/** @type {Array<enumDirection>} */
+export const arrayAllDirections = [
+    enumDirection.top,
+    enumDirection.right,
+    enumDirection.bottom,
+    enumDirection.left,
+];
+
 export class Vector {
     /**
      *

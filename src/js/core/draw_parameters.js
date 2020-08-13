@@ -13,7 +13,7 @@ export class DrawParameters {
         /** @type {Rectangle} */
         this.visibleRect = visibleRect;
 
-        /** @type {number} */
+        /** @type {string} */
         this.desiredAtlasScale = desiredAtlasScale;
 
         /** @type {number} */

@@ -28,6 +28,13 @@ export class ColorItem extends BaseItem {
     }
 
     /**
+     * @param {BaseItem} other
+     */
+    equalsImpl(other) {
+        return this.color === /** @type {ColorItem} */ (other).color;
+    }
+
+    /**
      * @param {enumColors} color
      */
     constructor(color) {

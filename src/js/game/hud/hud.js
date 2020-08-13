@@ -41,6 +41,8 @@ import { HUDChangesDebugger } from "./parts/debug_changes";
 import { queryParamOptions } from "../../core/query_parameters";
 import { HUDSandboxController } from "./parts/sandbox_controller";
 import { HUDWiresToolbar } from "./parts/wires_toolbar";
+import { HUDWireInfo } from "./parts/wire_info";
+import { HUDLeverToggle } from "./parts/lever_toggle";
 
 export class GameHUD {
     /**
@@ -66,6 +68,8 @@ export class GameHUD {
             shop: new HUDShop(this.root),
             statistics: new HUDStatistics(this.root),
             waypoints: new HUDWaypoints(this.root),
+            wireInfo: new HUDWireInfo(this.root),
+            leverToggle: new HUDLeverToggle(this.root),
 
             // Must always exist
             pinnedShapes: new HUDPinnedShapes(this.root),
@@ -250,7 +254,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     drawOverlays(parameters) {
-        const partsOrder = ["watermark"];
+        const partsOrder = ["watermark", "wireInfo"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

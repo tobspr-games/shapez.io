@@ -31,6 +31,7 @@ import { ProductionAnalytics } from "./production_analytics";
 import { randomInt } from "../core/utils";
 import { defaultBuildingVariant } from "./meta_building";
 import { DynamicTickrate } from "./dynamic_tickrate";
+import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("ingame/core");
 
@@ -449,6 +450,11 @@ export class GameCore {
 
         // Restore to screen space
         context.restore();
+
+        // Restore parameters
+        params.zoomLevel = 1;
+        params.desiredAtlasScale = "1";
+        params.visibleRect = new Rectangle(0, 0, this.root.gameWidth, this.root.gameHeight);
 
         // Draw overlays, those are screen space
         root.hud.drawOverlays(params);

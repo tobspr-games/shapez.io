@@ -24,6 +24,11 @@ export class WireComponent extends Component {
     constructor({ type = enumWireType.regular }) {
         super();
         this.type = type;
+
+        /**
+         * @type {import("../systems/wire").WireNetwork}
+         */
+        this.linkedNetwork = null;
     }
 
     /**

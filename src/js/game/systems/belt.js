@@ -13,6 +13,7 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
+import { getCodeFromBuildingData } from "../building_codes";
 
 export const BELT_ANIM_COUNT = 28;
 
@@ -168,6 +169,13 @@ export class BeltSystem extends GameSystemWithFilter {
                         // Change stuff
                         targetStaticComp.rotation = rotation;
                         metaBelt.updateVariants(targetEntity, rotationVariant, defaultBuildingVariant);
+
+                        // Update code as well
+                        targetStaticComp.code = getCodeFromBuildingData(
+                            metaBelt,
+                            defaultBuildingVariant,
+                            rotationVariant
+                        );
 
                         // Now add it again
                         this.addEntityToPaths(targetEntity);

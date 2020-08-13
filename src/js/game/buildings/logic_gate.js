@@ -1,8 +1,17 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { enumLayer, GameRoot } from "../root";
+import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
+
+/** @enum {string} */
+export const enumLogicGateVariants = {};
+
+/** @enum {string} */
+export const enumVariantToGate = {
+    [defaultBuildingVariant]: enumLogicGateType.and,
+};
 
 export class MetaLogicGateBuilding extends MetaBuilding {
     constructor() {
@@ -27,6 +36,15 @@ export class MetaLogicGateBuilding extends MetaBuilding {
 
     getDimensions() {
         return new Vector(1, 1);
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {number} rotationVariant
+     */
+    updateVariants(entity, rotationVariant, variant) {
+        entity.components.LogicGate.type = enumVariantToGate[variant];
     }
 
     /**
@@ -55,5 +73,7 @@ export class MetaLogicGateBuilding extends MetaBuilding {
                 ],
             })
         );
+
+        entity.addComponent(new LogicGateComponent({}));
     }
 }

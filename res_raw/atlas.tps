@@ -255,9 +255,9 @@
             <key type="filename">sprites/buildings/miner.png</key>
             <key type="filename">sprites/buildings/rotater.png</key>
             <key type="filename">sprites/buildings/trash.png</key>
-            <key type="filename">sprites/misc/wires_overlay_tile.png</key>
             <key type="filename">sprites/wires/logical_acceptor.png</key>
             <key type="filename">sprites/wires/logical_ejector.png</key>
+            <key type="filename">sprites/wires/overlay_tile.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -382,6 +382,7 @@
                 <false/>
             </struct>
             <key type="filename">sprites/blueprints/constant_signal.png</key>
+            <key type="filename">sprites/blueprints/logic_gate.png</key>
             <key type="filename">sprites/blueprints/miner-chainable.png</key>
             <key type="filename">sprites/blueprints/miner.png</key>
             <key type="filename">sprites/blueprints/rotater-ccw.png</key>
@@ -395,6 +396,7 @@
             <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
             <key type="filename">sprites/buildings/constant_signal.png</key>
+            <key type="filename">sprites/buildings/logic_gate.png</key>
             <key type="filename">sprites/buildings/miner-chainable.png</key>
             <key type="filename">sprites/buildings/rotater-ccw.png</key>
             <key type="filename">sprites/buildings/rotater-fl.png</key>

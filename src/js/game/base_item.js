@@ -32,6 +32,29 @@ export class BaseItem extends BasicSerializableObject {
     }
 
     /**
+     * Returns if the item equals the other itme
+     * @param {BaseItem} other
+     * @returns {boolean}
+     */
+    equals(other) {
+        if (this.getItemType() !== other.getItemType()) {
+            return false;
+        }
+        return this.equalsImpl(other);
+    }
+
+    /**
+     * Override for custom comparison
+     * @abstract
+     * @param {BaseItem} other
+     * @returns {boolean}
+     */
+    equalsImpl(other) {
+        abstract;
+        return false;
+    }
+
+    /**
      * Draws the item at the given position
      * @param {number} x
      * @param {number} y

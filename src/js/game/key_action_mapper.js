@@ -58,6 +58,7 @@ export const KEYMAPPINGS = {
         wire: { keyCode: key("1") },
         constant_signal: { keyCode: key("2") },
         logic_gate: { keyCode: key("3") },
+        lever: { keyCode: key("4") },
     },
 
     placement: {

@@ -33,6 +33,13 @@ export class BooleanItem extends BaseItem {
     }
 
     /**
+     * @param {BaseItem} other
+     */
+    equalsImpl(other) {
+        return this.value === /** @type {BooleanItem} */ (other).value;
+    }
+
+    /**
      * @param {number} x
      * @param {number} y
      * @param {number} size

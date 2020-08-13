@@ -52,6 +52,7 @@ export class MapChunkView extends MapChunk {
         const systems = this.root.systemMgr.systems;
         systems.miner.drawChunk(parameters, this);
         systems.staticMapEntities.drawChunk(parameters, this);
+        systems.lever.drawChunk(parameters, this);
     }
 
     /**

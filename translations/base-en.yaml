@@ -555,6 +555,11 @@ buildings:
             name: &constant_signal Constant Signal
             description: Emits a constant signal (shape, color or boolean).
 
+    lever:
+        default:
+            name: &lever Button
+            description: Can be toggled to emit 1 / 0
+
     logic_gate:
         default:
             name: &logic_gate AND Gate
@@ -830,6 +835,7 @@ keybindings:
         wire: *wire
         constant_signal: *constant_signal
         logic_gate: *logic_gate
+        lever: *lever
         # ---
 
         pipette: Pipette

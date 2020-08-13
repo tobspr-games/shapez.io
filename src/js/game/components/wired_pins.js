@@ -18,7 +18,8 @@ export const enumPinSlotType = {
  *   pos: Vector,
  *   type: enumPinSlotType,
  *   direction: enumDirection,
- *   value: BaseItem
+ *   value: BaseItem,
+ *   linkedNetwork: import("../systems/wire").WireNetwork
  * }} WirePinSlot */
 
 export class WiredPinsComponent extends Component {
@@ -65,6 +66,7 @@ export class WiredPinsComponent extends Component {
                 type: slotData.type,
                 direction: slotData.direction,
                 value: null,
+                linkedNetwork: null,
             });
         }
     }
