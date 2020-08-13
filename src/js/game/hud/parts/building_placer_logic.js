@@ -289,7 +289,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
-            return;
+            return false;
         }
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
@@ -298,8 +298,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (contents) {
             if (this.root.logic.tryDeleteBuilding(contents)) {
                 this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
+                return true;
             }
         }
+        return false;
     }
 
     /**
@@ -637,8 +639,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            this.deleteBelowCursor();
-            return STOP_PROPAGATION;
+            if (this.deleteBelowCursor()) {
+                return STOP_PROPAGATION;
+            }
         }
 
         // Cancel placement

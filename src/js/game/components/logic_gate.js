@@ -4,6 +4,8 @@ import { Component } from "../component";
 export const enumLogicGateType = {
     and: "and",
     not: "not",
+    xor: "xor",
+    or: "or",
 };
 
 export class LogicGateComponent extends Component {

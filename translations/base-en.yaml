@@ -563,10 +563,16 @@ buildings:
     logic_gate:
         default:
             name: &logic_gate AND Gate
-            description: Emits a boolean signal if both inputs are truthy.
+            description: Emits a truthy boolean signal if both inputs are truthy.
         not:
             name: NOT
-            description: Inverts the given signal
+            description: Inverts the given signal.
+        xor:
+            name: XOR
+            description: Emits a truthy signal if one of the inputs is truthy, but not both.
+        or:
+            name: OR
+            description: Emits a truthy signal if one of the inputs is truthy.
 
 storyRewards:
     # Those are the rewards gained from completing the store

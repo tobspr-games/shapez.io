@@ -18,6 +18,7 @@ import { createLogger } from "../../core/logging";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 import { getCodeFromBuildingData } from "../building_codes";
 import { BaseItem, enumItemType } from "../base_item";
+import { BooleanItem } from "../items/boolean_item";
 
 const logger = createLogger("wires");
 
@@ -75,10 +76,30 @@ export class WireSystem extends GameSystemWithFilter {
         super(root, [WireComponent]);
 
         this.wireSprites = {
-            [enumWireType.regular]: Loader.getSprite("sprites/buildings/wire.png"),
-            [enumWireType.turn]: Loader.getSprite("sprites/buildings/wire-turn.png"),
-            [enumWireType.split]: Loader.getSprite("sprites/buildings/wire-split.png"),
-            [enumWireType.cross]: Loader.getSprite("sprites/buildings/wire-cross.png"),
+            regular: {
+                [enumWireType.regular]: Loader.getSprite("sprites/buildings/wire.png"),
+                [enumWireType.turn]: Loader.getSprite("sprites/buildings/wire-turn.png"),
+                [enumWireType.split]: Loader.getSprite("sprites/buildings/wire-split.png"),
+                [enumWireType.cross]: Loader.getSprite("sprites/buildings/wire-cross.png"),
+            },
+            conflict: {
+                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/conflict.png"),
+                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/conflict-turn.png"),
+                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/conflict-split.png"),
+                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/conflict-cross.png"),
+            },
+            shape: {
+                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/shape.png"),
+                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/shape-turn.png"),
+                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/shape-split.png"),
+                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/shape-cross.png"),
+            },
+            color: {
+                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/color.png"),
+                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/color-turn.png"),
+                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/color-split.png"),
+                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/color-cross.png"),
+            },
         };
 
         this.root.signals.entityDestroyed.add(this.updateSurroundingWirePlacement, this);
@@ -407,6 +428,64 @@ export class WireSystem extends GameSystemWithFilter {
     }
 
     /**
+     * Returns the given tileset and opacity
+     * @param {WireComponent} wireComp
+     * @returns {{ spriteSet: Object<enumWireType, import("../../core/draw_utils").AtlasSprite>, opacity: number}}
+     */
+    getSpriteSetAndOpacityForWire(wireComp) {
+        if (!wireComp.linkedNetwork) {
+            // There is no network, it's empty
+            return {
+                spriteSet: this.wireSprites.regular,
+                opacity: 0.3,
+            };
+        }
+
+        const network = wireComp.linkedNetwork;
+        if (network.valueConflict) {
+            // There is a conflict
+            return {
+                spriteSet: this.wireSprites.conflict,
+                opacity: 1,
+            };
+        }
+
+        const value = network.currentValue;
+        if (!value) {
+            // There is no value stored
+            return {
+                spriteSet: this.wireSprites.regular,
+                opacity: 0.3,
+            };
+        }
+
+        const valueType = value.getItemType();
+        if (valueType === enumItemType.shape) {
+            return {
+                spriteSet: this.wireSprites.shape,
+                opacity: 1,
+            };
+        } else if (valueType === enumItemType.color) {
+            return {
+                spriteSet: this.wireSprites.color,
+                opacity: 1,
+            };
+        } else if (valueType === enumItemType.boolean) {
+            return {
+                spriteSet: this.wireSprites.regular,
+                opacity: /** @type {BooleanItem} */ (value).value ? 1 : 0.5,
+            };
+        } else {
+            assertAlways(false, "Unknown item type: " + valueType);
+        }
+
+        return {
+            spriteSet: this.wireSprites.regular,
+            opacity: 1,
+        };
+    }
+
+    /**
      * Draws a given chunk
      * @param {import("../../core/draw_utils").DrawParameters} parameters
      * @param {MapChunkView} chunk
@@ -421,31 +500,30 @@ export class WireSystem extends GameSystemWithFilter {
                     const wireType = wireComp.type;
                     const network = wireComp.linkedNetwork;
 
-                    let opacity = 1;
-                    let spriteSet = this.wireSprites;
+                    const { opacity, spriteSet } = this.getSpriteSetAndOpacityForWire(wireComp);
 
-                    if (!network) {
-                        opacity = 0.3;
-                    } else {
-                        if (network.valueConflict) {
-                            opacity = 1;
-                            // TODO
-                        } else {
-                            if (network.currentValue) {
-                                if (
-                                    network.currentValue.getItemType() === enumItemType.boolean &&
-                                    // @ts-ignore
-                                    network.currentValue.value === 0
-                                ) {
-                                    opacity = 0.5;
-                                } else {
-                                    opacity = 1;
-                                }
-                            } else {
-                                opacity = 0.5;
-                            }
-                        }
-                    }
+                    // if (!network) {
+                    //     opacity = 0.3;
+                    // } else {
+                    //     if (network.valueConflict) {
+                    //         opacity = 1;
+                    //         // TODO
+                    //     } else {
+                    //         if (network.currentValue) {
+                    //             if (
+                    //                 network.currentValue.getItemType() === enumItemType.boolean &&
+                    //                 // @ts-ignore
+                    //                 network.currentValue.value === 0
+                    //             ) {
+                    //                 opacity = 0.5;
+                    //             } else {
+                    //                 opacity = 1;
+                    //             }
+                    //         } else {
+                    //             opacity = 0.5;
+                    //         }
+                    //     }
+                    // }
 
                     const sprite = spriteSet[wireType];
 

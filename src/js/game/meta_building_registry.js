@@ -98,6 +98,8 @@ export function initMetaBuildingRegistry() {
     // Logic gate
     registerBuildingVariant(32, MetaLogicGateBuilding);
     registerBuildingVariant(34, MetaLogicGateBuilding, enumLogicGateVariants.not);
+    registerBuildingVariant(35, MetaLogicGateBuilding, enumLogicGateVariants.xor);
+    registerBuildingVariant(36, MetaLogicGateBuilding, enumLogicGateVariants.or);
 
     // Lever
     registerBuildingVariant(33, MetaLeverBuilding);

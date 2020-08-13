@@ -8,12 +8,16 @@ import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate"
 /** @enum {string} */
 export const enumLogicGateVariants = {
     not: "not",
+    xor: "xor",
+    or: "or",
 };
 
 /** @enum {string} */
 export const enumVariantToGate = {
     [defaultBuildingVariant]: enumLogicGateType.and,
     [enumLogicGateVariants.not]: enumLogicGateType.not,
+    [enumLogicGateVariants.xor]: enumLogicGateType.xor,
+    [enumLogicGateVariants.or]: enumLogicGateType.or,
 };
 
 export class MetaLogicGateBuilding extends MetaBuilding {
@@ -42,7 +46,12 @@ export class MetaLogicGateBuilding extends MetaBuilding {
     }
 
     getAvailableVariants() {
-        return [defaultBuildingVariant, enumLogicGateVariants.not];
+        return [
+            defaultBuildingVariant,
+            enumLogicGateVariants.not,
+            enumLogicGateVariants.xor,
+            enumLogicGateVariants.or,
+        ];
     }
 
     /**
@@ -57,7 +66,9 @@ export class MetaLogicGateBuilding extends MetaBuilding {
         const pinComp = entity.components.WiredPins;
 
         switch (gateType) {
-            case enumLogicGateType.and: {
+            case enumLogicGateType.and:
+            case enumLogicGateType.xor:
+            case enumLogicGateType.or: {
                 pinComp.setSlots([
                     {
                         pos: new Vector(0, 0),

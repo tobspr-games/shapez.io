@@ -3,8 +3,14 @@ import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaWireBuilding } from "../../buildings/wire";
 import { MetaConstantSignalBuilding } from "../../buildings/constant_signal";
 import { MetaLogicGateBuilding } from "../../buildings/logic_gate";
+import { MetaLeverBuilding } from "../../buildings/lever";
 
-const supportedBuildings = [MetaWireBuilding, MetaConstantSignalBuilding, MetaLogicGateBuilding];
+const supportedBuildings = [
+    MetaWireBuilding,
+    MetaConstantSignalBuilding,
+    MetaLogicGateBuilding,
+    MetaLeverBuilding,
+];
 
 export class HUDWiresToolbar extends HUDBaseToolbar {
     constructor(root) {

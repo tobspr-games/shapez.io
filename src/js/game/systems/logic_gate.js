@@ -11,6 +11,8 @@ export class LogicGateSystem extends GameSystemWithFilter {
         this.boundOperations = {
             [enumLogicGateType.and]: this.compute_AND.bind(this),
             [enumLogicGateType.not]: this.compute_NOT.bind(this),
+            [enumLogicGateType.xor]: this.compute_XOR.bind(this),
+            [enumLogicGateType.or]: this.compute_OR.bind(this),
         };
     }
 
@@ -94,5 +96,65 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
         const value = /** @type {BooleanItem} */ (item).value;
         return value ? BOOL_FALSE_SINGLETON : BOOL_TRUE_SINGLETON;
+    }
+
+    /**
+     * @param {Array<BaseItem|null>} parameters
+     * @returns {BaseItem}
+     */
+    compute_XOR(parameters) {
+        assert(parameters.length === 2, "bad parameter count for XOR");
+
+        const param1 = parameters[0];
+        const param2 = parameters[1];
+        if (!param1 || !param2) {
+            // Not enough params
+            return null;
+        }
+
+        const itemType = param1.getItemType();
+
+        if (itemType !== param2.getItemType()) {
+            // Differing type
+            return BOOL_FALSE_SINGLETON;
+        }
+
+        if (itemType === enumItemType.boolean) {
+            return /** @type {BooleanItem} */ (param1).value ^ /** @type {BooleanItem} */ (param2).value
+                ? BOOL_TRUE_SINGLETON
+                : BOOL_FALSE_SINGLETON;
+        }
+
+        return BOOL_FALSE_SINGLETON;
+    }
+
+    /**
+     * @param {Array<BaseItem|null>} parameters
+     * @returns {BaseItem}
+     */
+    compute_OR(parameters) {
+        assert(parameters.length === 2, "bad parameter count for OR");
+
+        const param1 = parameters[0];
+        const param2 = parameters[1];
+        if (!param1 || !param2) {
+            // Not enough params
+            return null;
+        }
+
+        const itemType = param1.getItemType();
+
+        if (itemType !== param2.getItemType()) {
+            // Differing type
+            return BOOL_FALSE_SINGLETON;
+        }
+
+        if (itemType === enumItemType.boolean) {
+            return /** @type {BooleanItem} */ (param1).value || /** @type {BooleanItem} */ (param2).value
+                ? BOOL_TRUE_SINGLETON
+                : BOOL_FALSE_SINGLETON;
+        }
+
+        return BOOL_FALSE_SINGLETON;
     }
 }
