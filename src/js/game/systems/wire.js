@@ -77,28 +77,28 @@ export class WireSystem extends GameSystemWithFilter {
 
         this.wireSprites = {
             regular: {
-                [enumWireType.regular]: Loader.getSprite("sprites/buildings/wire.png"),
-                [enumWireType.turn]: Loader.getSprite("sprites/buildings/wire-turn.png"),
-                [enumWireType.split]: Loader.getSprite("sprites/buildings/wire-split.png"),
-                [enumWireType.cross]: Loader.getSprite("sprites/buildings/wire-cross.png"),
+                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/regular_forward.png"),
+                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/regular_turn.png"),
+                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/regular_split.png"),
+                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/regular_cross.png"),
             },
             conflict: {
-                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/conflict.png"),
-                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/conflict-turn.png"),
-                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/conflict-split.png"),
-                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/conflict-cross.png"),
+                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/conflict_forward.png"),
+                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/conflict_turn.png"),
+                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/conflict_split.png"),
+                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/conflict_cross.png"),
             },
             shape: {
-                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/shape.png"),
-                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/shape-turn.png"),
-                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/shape-split.png"),
-                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/shape-cross.png"),
+                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/shape_forward.png"),
+                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/shape_turn.png"),
+                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/shape_split.png"),
+                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/shape_cross.png"),
             },
             color: {
-                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/color.png"),
-                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/color-turn.png"),
-                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/color-split.png"),
-                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/color-cross.png"),
+                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/color_forward.png"),
+                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/color_turn.png"),
+                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/color_split.png"),
+                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/color_cross.png"),
             },
         };
 

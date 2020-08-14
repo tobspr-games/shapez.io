@@ -1,8 +1,9 @@
-import { BasicSerializableObject } from "../savegame/serialization";
-import { GameRoot } from "./root";
-import { ShapeDefinition, enumSubShape } from "./shape_definition";
 import { createLogger } from "../core/logging";
+import { BasicSerializableObject } from "../savegame/serialization";
 import { enumColors } from "./colors";
+import { ShapeItem } from "./items/shape_item";
+import { GameRoot } from "./root";
+import { enumSubShape, ShapeDefinition } from "./shape_definition";
 
 const logger = createLogger("shape_definition_manager");
 
@@ -19,7 +20,16 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         super();
         this.root = root;
 
+        /**
+         * Store a cache from key -> definition
+         * @type {Object<string, ShapeDefinition>}
+         */
         this.shapeKeyToDefinition = {};
+
+        /**
+         * Store a cache from key -> item
+         */
+        this.shapeKeyToItem = {};
 
         // Caches operations in the form of 'operation:def1[:def2]'
         /** @type {Object.<string, Array<ShapeDefinition>|ShapeDefinition>} */
@@ -27,7 +37,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     }
 
     /**
-     *
+     * Returns a shape instance from a given short key
      * @param {string} hash
      * @returns {ShapeDefinition}
      */
@@ -37,6 +47,29 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
             return cached;
         }
         return (this.shapeKeyToDefinition[hash] = ShapeDefinition.fromShortKey(hash));
+    }
+
+    /**
+     * Returns a item instance from a given short key
+     * @param {string} hash
+     * @returns {ShapeItem}
+     */
+    getShapeItemFromShortKey(hash) {
+        const cached = this.shapeKeyToItem[hash];
+        if (cached) {
+            return cached;
+        }
+        const definition = this.getShapeFromShortKey(hash);
+        return (this.shapeKeyToItem[hash] = new ShapeItem(definition));
+    }
+
+    /**
+     * Returns a shape item for a given definition
+     * @param {ShapeDefinition} definition
+     * @returns {ShapeItem}
+     */
+    getShapeItemFromDefinition(definition) {
+        return this.getShapeItemFromShortKey(definition.getHash());
     }
 
     /**

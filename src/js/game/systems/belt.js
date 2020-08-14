@@ -15,7 +15,7 @@ import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
 import { getCodeFromBuildingData } from "../building_codes";
 
-export const BELT_ANIM_COUNT = 28;
+export const BELT_ANIM_COUNT = 14;
 
 const logger = createLogger("belt");
 
@@ -29,9 +29,9 @@ export class BeltSystem extends GameSystemWithFilter {
          * @type {Object.<enumDirection, Array<AtlasSprite>>}
          */
         this.beltSprites = {
-            [enumDirection.top]: Loader.getSprite("sprites/belt/forward_0.png"),
-            [enumDirection.left]: Loader.getSprite("sprites/belt/left_0.png"),
-            [enumDirection.right]: Loader.getSprite("sprites/belt/right_0.png"),
+            [enumDirection.top]: Loader.getSprite("sprites/belt/built/forward_0.png"),
+            [enumDirection.left]: Loader.getSprite("sprites/belt/built/left_0.png"),
+            [enumDirection.right]: Loader.getSprite("sprites/belt/built/right_0.png"),
         };
 
         /**
@@ -45,11 +45,13 @@ export class BeltSystem extends GameSystemWithFilter {
 
         for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
             this.beltAnimations[enumDirection.top].push(
-                Loader.getSprite("sprites/belt/forward_" + i + ".png")
+                Loader.getSprite("sprites/belt/built/forward_" + i + ".png")
             );
-            this.beltAnimations[enumDirection.left].push(Loader.getSprite("sprites/belt/left_" + i + ".png"));
+            this.beltAnimations[enumDirection.left].push(
+                Loader.getSprite("sprites/belt/built/left_" + i + ".png")
+            );
             this.beltAnimations[enumDirection.right].push(
-                Loader.getSprite("sprites/belt/right_" + i + ".png")
+                Loader.getSprite("sprites/belt/built/right_" + i + ".png")
             );
         }
 

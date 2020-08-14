@@ -232,7 +232,6 @@ export class GameHUD {
      */
     draw(parameters) {
         const partsOrder = [
-            "waypoints",
             "massSelector",
             "buildingPlacer",
             "blueprintPlacer",
@@ -252,7 +251,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     drawOverlays(parameters) {
-        const partsOrder = ["watermark", "wireInfo"];
+        const partsOrder = ["waypoints", "watermark", "wireInfo"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

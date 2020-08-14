@@ -161,6 +161,7 @@ export class Entity extends BasicSerializableObject {
                 context.stroke();
             }
         }
+
         if (G_IS_DEV && staticComp && globalConfig.debug.showAcceptorEjectors) {
             const ejectorComp = this.components.ItemEjector;
 
@@ -187,7 +188,7 @@ export class Entity extends BasicSerializableObject {
             const acceptorComp = this.components.ItemAcceptor;
 
             if (acceptorComp) {
-                const acceptorSprite = Loader.getSprite("sprites/debug/acceptor_slot.png");
+                const acceptorSprite = Loader.getSprite("sprites/misc/acceptor_slot.png");
                 for (let i = 0; i < acceptorComp.slots.length; ++i) {
                     const slot = acceptorComp.slots[i];
                     const slotTile = staticComp.localTileToWorld(slot.pos);

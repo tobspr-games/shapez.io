@@ -74,7 +74,7 @@ export class PlatformWrapperInterface {
      * @returns {number}
      */
     getMaximumZoom() {
-        return 4 * this.getScreenScale();
+        return 3.5 * this.getScreenScale();
     }
 
     getScreenScale() {

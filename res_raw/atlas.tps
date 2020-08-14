@@ -9,26 +9,9 @@
         <array>
             <struct type="AutoSDSettings">
                 <key>scale</key>
-                <double>1</double>
-                <key>extension</key>
-                <string>_100</string>
-                <key>spriteFilter</key>
-                <string></string>
-                <key>acceptFractionalValues</key>
-                <true/>
-                <key>maxTextureSize</key>
-                <QSize>
-                    <key>width</key>
-                    <int>4096</int>
-                    <key>height</key>
-                    <int>4096</int>
-                </QSize>
-            </struct>
-            <struct type="AutoSDSettings">
-                <key>scale</key>
                 <double>0.75</double>
                 <key>extension</key>
-                <string>_75</string>
+                <string>_hq</string>
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
@@ -45,7 +28,7 @@
                 <key>scale</key>
                 <double>0.5</double>
                 <key>extension</key>
-                <string>_50</string>
+                <string>_mq</string>
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
@@ -62,7 +45,7 @@
                 <key>scale</key>
                 <double>0.25</double>
                 <key>extension</key>
-                <string>_25</string>
+                <string>_lq</string>
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
@@ -70,26 +53,9 @@
                 <key>maxTextureSize</key>
                 <QSize>
                     <key>width</key>
-                    <int>1024</int>
+                    <int>2048</int>
                     <key>height</key>
-                    <int>1024</int>
-                </QSize>
-            </struct>
-            <struct type="AutoSDSettings">
-                <key>scale</key>
-                <double>0.1</double>
-                <key>extension</key>
-                <string>_10</string>
-                <key>spriteFilter</key>
-                <string></string>
-                <key>acceptFractionalValues</key>
-                <true/>
-                <key>maxTextureSize</key>
-                <QSize>
-                    <key>width</key>
-                    <int>-1</int>
-                    <key>height</key>
-                    <int>-1</int>
+                    <int>2048</int>
                 </QSize>
             </struct>
         </array>
@@ -174,7 +140,7 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
             <key>forceSquared</key>
             <false/>
             <key>maxRects</key>
@@ -249,150 +215,48 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">sprites/belt/forward_0.png</key>
-            <key type="filename">sprites/belt/forward_1.png</key>
-            <key type="filename">sprites/belt/forward_2.png</key>
-            <key type="filename">sprites/buildings/miner.png</key>
-            <key type="filename">sprites/buildings/rotater.png</key>
-            <key type="filename">sprites/buildings/trash.png</key>
-            <key type="filename">sprites/wires/logical_acceptor.png</key>
-            <key type="filename">sprites/wires/logical_ejector.png</key>
-            <key type="filename">sprites/wires/overlay_tile.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>32,32,64,64</rect>
-                <key>scale9Paddings</key>
-                <rect>32,32,64,64</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/belt/forward_10.png</key>
-            <key type="filename">sprites/belt/forward_11.png</key>
-            <key type="filename">sprites/belt/forward_12.png</key>
-            <key type="filename">sprites/belt/forward_13.png</key>
-            <key type="filename">sprites/belt/forward_14.png</key>
-            <key type="filename">sprites/belt/forward_15.png</key>
-            <key type="filename">sprites/belt/forward_16.png</key>
-            <key type="filename">sprites/belt/forward_17.png</key>
-            <key type="filename">sprites/belt/forward_18.png</key>
-            <key type="filename">sprites/belt/forward_19.png</key>
-            <key type="filename">sprites/belt/forward_20.png</key>
-            <key type="filename">sprites/belt/forward_21.png</key>
-            <key type="filename">sprites/belt/forward_22.png</key>
-            <key type="filename">sprites/belt/forward_23.png</key>
-            <key type="filename">sprites/belt/forward_24.png</key>
-            <key type="filename">sprites/belt/forward_25.png</key>
-            <key type="filename">sprites/belt/forward_26.png</key>
-            <key type="filename">sprites/belt/forward_27.png</key>
-            <key type="filename">sprites/belt/forward_3.png</key>
-            <key type="filename">sprites/belt/forward_4.png</key>
-            <key type="filename">sprites/belt/forward_5.png</key>
-            <key type="filename">sprites/belt/forward_6.png</key>
-            <key type="filename">sprites/belt/forward_7.png</key>
-            <key type="filename">sprites/belt/forward_8.png</key>
-            <key type="filename">sprites/belt/forward_9.png</key>
-            <key type="filename">sprites/belt/left_0.png</key>
-            <key type="filename">sprites/belt/left_1.png</key>
-            <key type="filename">sprites/belt/left_10.png</key>
-            <key type="filename">sprites/belt/left_11.png</key>
-            <key type="filename">sprites/belt/left_12.png</key>
-            <key type="filename">sprites/belt/left_13.png</key>
-            <key type="filename">sprites/belt/left_14.png</key>
-            <key type="filename">sprites/belt/left_15.png</key>
-            <key type="filename">sprites/belt/left_16.png</key>
-            <key type="filename">sprites/belt/left_17.png</key>
-            <key type="filename">sprites/belt/left_18.png</key>
-            <key type="filename">sprites/belt/left_19.png</key>
-            <key type="filename">sprites/belt/left_2.png</key>
-            <key type="filename">sprites/belt/left_20.png</key>
-            <key type="filename">sprites/belt/left_21.png</key>
-            <key type="filename">sprites/belt/left_22.png</key>
-            <key type="filename">sprites/belt/left_23.png</key>
-            <key type="filename">sprites/belt/left_24.png</key>
-            <key type="filename">sprites/belt/left_25.png</key>
-            <key type="filename">sprites/belt/left_26.png</key>
-            <key type="filename">sprites/belt/left_27.png</key>
-            <key type="filename">sprites/belt/left_3.png</key>
-            <key type="filename">sprites/belt/left_4.png</key>
-            <key type="filename">sprites/belt/left_5.png</key>
-            <key type="filename">sprites/belt/left_6.png</key>
-            <key type="filename">sprites/belt/left_7.png</key>
-            <key type="filename">sprites/belt/left_8.png</key>
-            <key type="filename">sprites/belt/left_9.png</key>
-            <key type="filename">sprites/belt/right_0.png</key>
-            <key type="filename">sprites/belt/right_1.png</key>
-            <key type="filename">sprites/belt/right_10.png</key>
-            <key type="filename">sprites/belt/right_11.png</key>
-            <key type="filename">sprites/belt/right_12.png</key>
-            <key type="filename">sprites/belt/right_13.png</key>
-            <key type="filename">sprites/belt/right_14.png</key>
-            <key type="filename">sprites/belt/right_15.png</key>
-            <key type="filename">sprites/belt/right_16.png</key>
-            <key type="filename">sprites/belt/right_17.png</key>
-            <key type="filename">sprites/belt/right_18.png</key>
-            <key type="filename">sprites/belt/right_19.png</key>
-            <key type="filename">sprites/belt/right_2.png</key>
-            <key type="filename">sprites/belt/right_20.png</key>
-            <key type="filename">sprites/belt/right_21.png</key>
-            <key type="filename">sprites/belt/right_22.png</key>
-            <key type="filename">sprites/belt/right_23.png</key>
-            <key type="filename">sprites/belt/right_24.png</key>
-            <key type="filename">sprites/belt/right_25.png</key>
-            <key type="filename">sprites/belt/right_26.png</key>
-            <key type="filename">sprites/belt/right_27.png</key>
-            <key type="filename">sprites/belt/right_3.png</key>
-            <key type="filename">sprites/belt/right_4.png</key>
-            <key type="filename">sprites/belt/right_5.png</key>
-            <key type="filename">sprites/belt/right_6.png</key>
-            <key type="filename">sprites/belt/right_7.png</key>
-            <key type="filename">sprites/belt/right_8.png</key>
-            <key type="filename">sprites/belt/right_9.png</key>
-            <key type="filename">sprites/blueprints/belt_left.png</key>
-            <key type="filename">sprites/blueprints/belt_right.png</key>
-            <key type="filename">sprites/blueprints/belt_top.png</key>
-            <key type="filename">sprites/blueprints/wire-cross.png</key>
-            <key type="filename">sprites/blueprints/wire-split.png</key>
-            <key type="filename">sprites/blueprints/wire-turn.png</key>
-            <key type="filename">sprites/blueprints/wire.png</key>
-            <key type="filename">sprites/buildings/belt_left.png</key>
-            <key type="filename">sprites/buildings/belt_right.png</key>
-            <key type="filename">sprites/buildings/belt_top.png</key>
-            <key type="filename">sprites/buildings/wire-cross.png</key>
-            <key type="filename">sprites/buildings/wire-split.png</key>
-            <key type="filename">sprites/buildings/wire-turn.png</key>
-            <key type="filename">sprites/buildings/wire.png</key>
-            <key type="filename">sprites/wires/sets/color-cross.png</key>
-            <key type="filename">sprites/wires/sets/color-split.png</key>
-            <key type="filename">sprites/wires/sets/color-turn.png</key>
-            <key type="filename">sprites/wires/sets/color.png</key>
-            <key type="filename">sprites/wires/sets/conflict-cross.png</key>
-            <key type="filename">sprites/wires/sets/conflict-split.png</key>
-            <key type="filename">sprites/wires/sets/conflict-turn.png</key>
-            <key type="filename">sprites/wires/sets/conflict.png</key>
-            <key type="filename">sprites/wires/sets/shape-cross.png</key>
-            <key type="filename">sprites/wires/sets/shape-split.png</key>
-            <key type="filename">sprites/wires/sets/shape-turn.png</key>
-            <key type="filename">sprites/wires/sets/shape.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>32,32,63,63</rect>
-                <key>scale9Paddings</key>
-                <rect>32,32,63,63</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
+            <key type="filename">sprites/belt/built/forward_0.png</key>
+            <key type="filename">sprites/belt/built/forward_1.png</key>
+            <key type="filename">sprites/belt/built/forward_10.png</key>
+            <key type="filename">sprites/belt/built/forward_11.png</key>
+            <key type="filename">sprites/belt/built/forward_12.png</key>
+            <key type="filename">sprites/belt/built/forward_13.png</key>
+            <key type="filename">sprites/belt/built/forward_2.png</key>
+            <key type="filename">sprites/belt/built/forward_3.png</key>
+            <key type="filename">sprites/belt/built/forward_4.png</key>
+            <key type="filename">sprites/belt/built/forward_5.png</key>
+            <key type="filename">sprites/belt/built/forward_6.png</key>
+            <key type="filename">sprites/belt/built/forward_7.png</key>
+            <key type="filename">sprites/belt/built/forward_8.png</key>
+            <key type="filename">sprites/belt/built/forward_9.png</key>
+            <key type="filename">sprites/belt/built/left_0.png</key>
+            <key type="filename">sprites/belt/built/left_1.png</key>
+            <key type="filename">sprites/belt/built/left_10.png</key>
+            <key type="filename">sprites/belt/built/left_11.png</key>
+            <key type="filename">sprites/belt/built/left_12.png</key>
+            <key type="filename">sprites/belt/built/left_13.png</key>
+            <key type="filename">sprites/belt/built/left_2.png</key>
+            <key type="filename">sprites/belt/built/left_3.png</key>
+            <key type="filename">sprites/belt/built/left_4.png</key>
+            <key type="filename">sprites/belt/built/left_5.png</key>
+            <key type="filename">sprites/belt/built/left_6.png</key>
+            <key type="filename">sprites/belt/built/left_7.png</key>
+            <key type="filename">sprites/belt/built/left_8.png</key>
+            <key type="filename">sprites/belt/built/left_9.png</key>
+            <key type="filename">sprites/belt/built/right_0.png</key>
+            <key type="filename">sprites/belt/built/right_1.png</key>
+            <key type="filename">sprites/belt/built/right_10.png</key>
+            <key type="filename">sprites/belt/built/right_11.png</key>
+            <key type="filename">sprites/belt/built/right_12.png</key>
+            <key type="filename">sprites/belt/built/right_13.png</key>
+            <key type="filename">sprites/belt/built/right_2.png</key>
+            <key type="filename">sprites/belt/built/right_3.png</key>
+            <key type="filename">sprites/belt/built/right_4.png</key>
+            <key type="filename">sprites/belt/built/right_5.png</key>
+            <key type="filename">sprites/belt/built/right_6.png</key>
+            <key type="filename">sprites/belt/built/right_7.png</key>
+            <key type="filename">sprites/belt/built/right_8.png</key>
+            <key type="filename">sprites/belt/built/right_9.png</key>
             <key type="filename">sprites/blueprints/constant_signal.png</key>
             <key type="filename">sprites/blueprints/lever.png</key>
             <key type="filename">sprites/blueprints/logic_gate-not.png</key>
@@ -431,6 +295,22 @@
             <key type="filename">sprites/buildings/underground_belt_exit.png</key>
             <key type="filename">sprites/buildings/wire_tunnel.png</key>
             <key type="filename">sprites/wires/lever_on.png</key>
+            <key type="filename">sprites/wires/sets/color_cross.png</key>
+            <key type="filename">sprites/wires/sets/color_forward.png</key>
+            <key type="filename">sprites/wires/sets/color_split.png</key>
+            <key type="filename">sprites/wires/sets/color_turn.png</key>
+            <key type="filename">sprites/wires/sets/conflict_cross.png</key>
+            <key type="filename">sprites/wires/sets/conflict_forward.png</key>
+            <key type="filename">sprites/wires/sets/conflict_split.png</key>
+            <key type="filename">sprites/wires/sets/conflict_turn.png</key>
+            <key type="filename">sprites/wires/sets/regular_cross.png</key>
+            <key type="filename">sprites/wires/sets/regular_forward.png</key>
+            <key type="filename">sprites/wires/sets/regular_split.png</key>
+            <key type="filename">sprites/wires/sets/regular_turn.png</key>
+            <key type="filename">sprites/wires/sets/shape_cross.png</key>
+            <key type="filename">sprites/wires/sets/shape_forward.png</key>
+            <key type="filename">sprites/wires/sets/shape_split.png</key>
+            <key type="filename">sprites/wires/sets/shape_turn.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -442,6 +322,34 @@
                 <rect>48,48,96,96</rect>
                 <key>scale9Paddings</key>
                 <rect>48,48,96,96</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/blueprints/belt_left.png</key>
+            <key type="filename">sprites/blueprints/belt_right.png</key>
+            <key type="filename">sprites/blueprints/belt_top.png</key>
+            <key type="filename">sprites/blueprints/wire-cross.png</key>
+            <key type="filename">sprites/blueprints/wire-split.png</key>
+            <key type="filename">sprites/blueprints/wire-turn.png</key>
+            <key type="filename">sprites/blueprints/wire.png</key>
+            <key type="filename">sprites/buildings/belt_left.png</key>
+            <key type="filename">sprites/buildings/belt_right.png</key>
+            <key type="filename">sprites/buildings/belt_top.png</key>
+            <key type="filename">sprites/buildings/wire-cross.png</key>
+            <key type="filename">sprites/buildings/wire-split.png</key>
+            <key type="filename">sprites/buildings/wire-turn.png</key>
+            <key type="filename">sprites/buildings/wire.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>32,32,63,63</rect>
+                <key>scale9Paddings</key>
+                <rect>32,32,63,63</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -537,6 +445,26 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/buildings/miner.png</key>
+            <key type="filename">sprites/buildings/rotater.png</key>
+            <key type="filename">sprites/buildings/trash.png</key>
+            <key type="filename">sprites/wires/logical_acceptor.png</key>
+            <key type="filename">sprites/wires/logical_ejector.png</key>
+            <key type="filename">sprites/wires/overlay_tile.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>32,32,64,64</rect>
+                <key>scale9Paddings</key>
+                <rect>32,32,64,64</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">sprites/buildings/trash-storage.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -570,7 +498,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/misc/deletion_marker.png</key>
             <key type="filename">sprites/misc/slot_bad_arrow.png</key>
             <key type="filename">sprites/misc/slot_good_arrow.png</key>
             <struct type="IndividualSpriteSettings">

@@ -1,20 +1,14 @@
-import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
-import {
-    clamp,
-    fastArrayDeleteValueIfContained,
-    make2DUndefinedArray,
-    fastArrayDeleteValue,
-} from "../core/utils";
+import { RandomNumberGenerator } from "../core/rng";
+import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { enumColors } from "./colors";
 import { Entity } from "./entity";
 import { ColorItem } from "./items/color_item";
-import { ShapeItem } from "./items/shape_item";
+import { enumLayer, GameRoot } from "./root";
 import { enumSubShape } from "./shape_definition";
-import { RandomNumberGenerator } from "../core/rng";
 
 const logger = createLogger("map_chunk");
 
@@ -206,7 +200,11 @@ export class MapChunk {
         }
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
-        this.internalGeneratePatch(rng, shapePatchSize, new ShapeItem(definition));
+        this.internalGeneratePatch(
+            rng,
+            shapePatchSize,
+            this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition)
+        );
     }
 
     /**
@@ -274,13 +272,13 @@ export class MapChunk {
             return true;
         }
         if (this.x === -1 && this.y === 0) {
-            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("CuCuCuCu");
-            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), globalConfig.mapChunkSize - 9, 7);
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("CuCuCuCu");
+            this.internalGeneratePatch(rng, 2, item, globalConfig.mapChunkSize - 9, 7);
             return true;
         }
         if (this.x === 0 && this.y === -1) {
-            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("RuRuRuRu");
-            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), 5, globalConfig.mapChunkSize - 7);
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("RuRuRuRu");
+            this.internalGeneratePatch(rng, 2, item, 5, globalConfig.mapChunkSize - 7);
             return true;
         }
 
@@ -290,8 +288,8 @@ export class MapChunk {
         }
 
         if (this.x === 5 && this.y === -2) {
-            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("SuSuSuSu");
-            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), 5, globalConfig.mapChunkSize - 7);
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("SuSuSuSu");
+            this.internalGeneratePatch(rng, 2, item, 5, globalConfig.mapChunkSize - 7);
             return true;
         }
 

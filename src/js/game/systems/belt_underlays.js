@@ -14,7 +14,7 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
         this.underlayBeltSprites = [];
 
         for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
-            this.underlayBeltSprites.push(Loader.getSprite("sprites/belt/forward_" + i + ".png"));
+            this.underlayBeltSprites.push(Loader.getSprite("sprites/belt/built/forward_" + i + ".png"));
         }
     }
 

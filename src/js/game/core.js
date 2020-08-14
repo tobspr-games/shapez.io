@@ -9,7 +9,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
-import { randomInt } from "../core/utils";
+import { randomInt, round2Digits } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
@@ -31,6 +31,7 @@ import { enumLayer, GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
+import { ORIGINAL_SPRITE_SCALE } from "../core/sprites";
 
 const logger = createLogger("ingame/core");
 
@@ -348,15 +349,11 @@ export class GameCore {
         const effectiveZoomLevel =
             (zoomLevel / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
 
-        let desiredAtlasScale = "0.1";
-        if (effectiveZoomLevel > 0.75 && !lowQuality) {
-            desiredAtlasScale = "1";
-        } else if (effectiveZoomLevel > 0.5 && !lowQuality) {
-            desiredAtlasScale = "0.75";
-        } else if (effectiveZoomLevel > 0.25 && !lowQuality) {
+        let desiredAtlasScale = "0.25";
+        if (effectiveZoomLevel > 0.8 && !lowQuality) {
+            desiredAtlasScale = ORIGINAL_SPRITE_SCALE;
+        } else if (effectiveZoomLevel > 0.4 && !lowQuality) {
             desiredAtlasScale = "0.5";
-        } else if (effectiveZoomLevel > 0.1) {
-            desiredAtlasScale = "0.25";
         }
 
         // Construct parameters required for drawing
@@ -441,7 +438,7 @@ export class GameCore {
 
         // Restore parameters
         params.zoomLevel = 1;
-        params.desiredAtlasScale = "1";
+        params.desiredAtlasScale = ORIGINAL_SPRITE_SCALE;
         params.visibleRect = new Rectangle(0, 0, this.root.gameWidth, this.root.gameHeight);
 
         // Draw overlays, those are screen space
@@ -457,6 +454,21 @@ export class GameCore {
             if (Math.random() > 0.95) {
                 console.log(sum);
             }
+        }
+
+        if (G_IS_DEV && globalConfig.debug.showAtlasInfo) {
+            context.font = "13px GameFont";
+            context.fillStyle = "yellow";
+            context.fillText(
+                "Atlas: " +
+                    desiredAtlasScale +
+                    " / Zoom: " +
+                    round2Digits(zoomLevel) +
+                    " / Effective Zoom: " +
+                    round2Digits(effectiveZoomLevel),
+                200,
+                20
+            );
         }
     }
 }
