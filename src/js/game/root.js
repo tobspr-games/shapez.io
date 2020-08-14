@@ -162,9 +162,6 @@ export class GameRoot {
             // Called right after game is initialized
             postLoadHook: /** @type {TypedSignal<[]>} */ (new Signal()),
 
-            // Can be used to trigger an async task
-            performAsync: /** @type {TypedSignal<[function]>} */ (new Signal()),
-
             shapeDelivered: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
             itemProduced: /** @type {TypedSignal<[BaseItem]>} */ (new Signal()),
 

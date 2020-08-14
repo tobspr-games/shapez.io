@@ -670,6 +670,7 @@ settings:
         general: General
         userInterface: User Interface
         advanced: Advanced
+        performance: Performance
 
     versionBadges:
         dev: Development
@@ -759,9 +760,9 @@ settings:
                 light: Light
 
         refreshRate:
-            title: Simulation Target
+            title: Tick Rate
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                The game will automatically adjust the tickrate to be between this target tickrate and half of it. For example, with a tickrate of 60hz, the game will try to stay at 60hz, and if your computer can't handle it it will go down until it eventually reaches 30hz.
 
         alwaysMultiplace:
             title: Multiplace
@@ -797,6 +798,22 @@ settings:
             title: Disable Cut/Delete Warnings
             description: >-
                 Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
+
+        lowQualityMapResources:
+            title: Low Quality Map Resources
+            description: >-
+                Simplifies the rendering of resources on the map when zoomed in to improve performance.
+                It even looks cleaner, so be sure to try it out!
+
+        disableTileGrid:
+            title: Disable Grid
+            description: >-
+                Disabling the tile grid can help with the performance. This also makes the game look cleaner!
+
+        lowQualityTextures:
+            title: Low quality textures (Ugly)
+            description: >-
+                Uses low quality textures to save performance. This will make the game look very ugly!
 
 keybindings:
     title: Keybindings

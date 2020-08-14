@@ -195,17 +195,19 @@ export class MapView extends BaseMap {
             );
         }
 
-        const dpi = this.backgroundCacheDPI;
-        parameters.context.scale(1 / dpi, 1 / dpi);
+        if (!this.root.app.settings.getAllSettings().disableTileGrid) {
+            const dpi = this.backgroundCacheDPI;
+            parameters.context.scale(1 / dpi, 1 / dpi);
 
-        parameters.context.fillStyle = this.cachedBackgroundPattern;
-        parameters.context.fillRect(
-            parameters.visibleRect.x * dpi,
-            parameters.visibleRect.y * dpi,
-            parameters.visibleRect.w * dpi,
-            parameters.visibleRect.h * dpi
-        );
-        parameters.context.scale(dpi, dpi);
+            parameters.context.fillStyle = this.cachedBackgroundPattern;
+            parameters.context.fillRect(
+                parameters.visibleRect.x * dpi,
+                parameters.visibleRect.y * dpi,
+                parameters.visibleRect.w * dpi,
+                parameters.visibleRect.h * dpi
+            );
+            parameters.context.scale(dpi, dpi);
+        }
 
         this.drawVisibleChunks(parameters, MapChunkView.prototype.drawBackgroundLayer);
 
@@ -233,16 +235,16 @@ export class MapView extends BaseMap {
                 for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
                     parameters.context.fillStyle = "#ffaaaa";
                     parameters.context.fillRect(
-                        chunkX * globalConfig.mapChunkSize * globalConfig.tileSize,
-                        chunkY * globalConfig.mapChunkSize * globalConfig.tileSize,
-                        globalConfig.mapChunkSize * globalConfig.tileSize,
+                        chunkX * globalConfig.mapChunkWorldSize,
+                        chunkY * globalConfig.mapChunkWorldSize,
+                        globalConfig.mapChunkWorldSize,
                         3
                     );
                     parameters.context.fillRect(
-                        chunkX * globalConfig.mapChunkSize * globalConfig.tileSize,
-                        chunkY * globalConfig.mapChunkSize * globalConfig.tileSize,
+                        chunkX * globalConfig.mapChunkWorldSize,
+                        chunkY * globalConfig.mapChunkWorldSize,
                         3,
-                        globalConfig.mapChunkSize * globalConfig.tileSize
+                        globalConfig.mapChunkWorldSize
                     );
                 }
             }

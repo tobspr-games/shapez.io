@@ -69,13 +69,14 @@ export class MapChunkView extends MapChunk {
             redrawMethod: this.generateOverlayBuffer.bind(this),
         });
 
-        const dims = globalConfig.mapChunkSize * globalConfig.tileSize;
+        const dims = globalConfig.mapChunkWorldSize;
 
+        // Draw chunk "pixel" art
         parameters.context.imageSmoothingEnabled = false;
-
         parameters.context.drawImage(sprite, this.x * dims, this.y * dims, dims, dims);
         parameters.context.imageSmoothingEnabled = true;
 
+        // Draw patch items
         if (this.root.currentLayer === enumLayer.regular) {
             for (let i = 0; i < this.patches.length; ++i) {
                 const patch = this.patches[i];

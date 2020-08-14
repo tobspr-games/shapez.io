@@ -8,7 +8,6 @@ import { TrailerMaker } from "./trailer_maker";
 
 import { Signal } from "../../core/signal";
 import { DrawParameters } from "../../core/draw_parameters";
-import { HUDProcessingOverlay } from "./parts/processing_overlay";
 import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
 import { HUDBuildingPlacer } from "./parts/building_placer";
 import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
@@ -57,7 +56,6 @@ export class GameHUD {
      */
     initialize() {
         this.parts = {
-            processingOverlay: new HUDProcessingOverlay(this.root),
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
             wiresToolbar: new HUDWiresToolbar(this.root),
             blueprintPlacer: new HUDBlueprintPlacer(this.root),

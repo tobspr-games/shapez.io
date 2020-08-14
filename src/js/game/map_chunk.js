@@ -1,7 +1,12 @@
 import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
-import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
+import {
+    clamp,
+    fastArrayDeleteValueIfContained,
+    make2DUndefinedArray,
+    fastArrayDeleteValue,
+} from "../core/utils";
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { enumColors } from "./colors";
@@ -38,6 +43,15 @@ export class MapChunk {
 
         /** @type {Array<Entity>} */
         this.containedEntities = [];
+
+        /**
+         * Which entities this chunk contains, sorted by layer
+         * @type {Object<enumLayer, Array<Entity>>}
+         */
+        this.containedEntitiesByLayer = {
+            [enumLayer.regular]: [],
+            [enumLayer.wires]: [],
+        };
 
         /**
          * Store which patches we have so we can render them in the overview
@@ -403,8 +417,9 @@ export class MapChunk {
         assert(contents === null || !oldContents, "Tile already used: " + tileX + " / " + tileY);
 
         if (oldContents) {
-            // Remove from list
+            // Remove from list (the old contents must be reigstered)
             fastArrayDeleteValueIfContained(this.containedEntities, oldContents);
+            fastArrayDeleteValueIfContained(this.containedEntitiesByLayer[layer], oldContents);
         }
 
         if (layer === enumLayer.regular) {
@@ -416,6 +431,10 @@ export class MapChunk {
         if (contents) {
             if (this.containedEntities.indexOf(contents) < 0) {
                 this.containedEntities.push(contents);
+            }
+
+            if (this.containedEntitiesByLayer[layer].indexOf(contents) < 0) {
+                this.containedEntitiesByLayer[layer].push(contents);
             }
         }
     }

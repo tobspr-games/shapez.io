@@ -1,8 +1,6 @@
 /* typehints:start */
-import { InGameState } from "../states/ingame";
 import { Application } from "../application";
 /* typehints:end */
-
 import { BufferMaintainer } from "../core/buffer_maintainer";
 import { disableImageSmoothing, enableImageSmoothing, registerCanvas } from "../core/buffer_utils";
 import { globalConfig } from "../core/config";
@@ -10,12 +8,16 @@ import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
+import { Rectangle } from "../core/rectangle";
+import { randomInt } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
+import { InGameState } from "../states/ingame";
 import { AutomaticSave } from "./automatic_save";
 import { MetaHubBuilding } from "./buildings/hub";
 import { Camera } from "./camera";
+import { DynamicTickrate } from "./dynamic_tickrate";
 import { EntityManager } from "./entity_manager";
 import { GameSystemManager } from "./game_system_manager";
 import { HubGoals } from "./hub_goals";
@@ -23,15 +25,12 @@ import { GameHUD } from "./hud/hud";
 import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
-import { GameRoot, enumLayer } from "./root";
+import { defaultBuildingVariant } from "./meta_building";
+import { ProductionAnalytics } from "./production_analytics";
+import { enumLayer, GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
-import { ProductionAnalytics } from "./production_analytics";
-import { randomInt } from "../core/utils";
-import { defaultBuildingVariant } from "./meta_building";
-import { DynamicTickrate } from "./dynamic_tickrate";
-import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("ingame/core");
 
@@ -233,10 +232,6 @@ export class GameCore {
     tick(deltaMs) {
         const root = this.root;
 
-        if (root.hud.parts.processingOverlay.hasTasks() || root.hud.parts.processingOverlay.isRunning()) {
-            return true;
-        }
-
         // Extract current real time
         root.time.updateRealtimeNow();
 
@@ -326,14 +321,6 @@ export class GameCore {
         const root = this.root;
         const systems = root.systemMgr.systems;
 
-        const taskRunner = root.hud.parts.processingOverlay;
-        if (taskRunner.hasTasks()) {
-            if (!taskRunner.isRunning()) {
-                taskRunner.process();
-            }
-            return;
-        }
-
         this.root.dynamicTickrate.onFrameRendered();
 
         if (!this.shouldRender()) {
@@ -357,15 +344,16 @@ export class GameCore {
 
         // Compute optimal zoom level and atlas scale
         const zoomLevel = root.camera.zoomLevel;
+        const lowQuality = root.app.settings.getAllSettings().lowQualityTextures;
         const effectiveZoomLevel =
             (zoomLevel / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
 
         let desiredAtlasScale = "0.1";
-        if (effectiveZoomLevel > 0.75) {
+        if (effectiveZoomLevel > 0.75 && !lowQuality) {
             desiredAtlasScale = "1";
-        } else if (effectiveZoomLevel > 0.5) {
+        } else if (effectiveZoomLevel > 0.5 && !lowQuality) {
             desiredAtlasScale = "0.75";
-        } else if (effectiveZoomLevel > 0.25) {
+        } else if (effectiveZoomLevel > 0.25 && !lowQuality) {
             desiredAtlasScale = "0.5";
         } else if (effectiveZoomLevel > 0.1) {
             desiredAtlasScale = "0.25";
@@ -380,7 +368,7 @@ export class GameCore {
             root: root,
         });
 
-        if (G_IS_DEV && (globalConfig.debug.testCulling || globalConfig.debug.hideFog)) {
+        if (G_IS_DEV && globalConfig.debug.testCulling) {
             context.clearRect(0, 0, root.gameWidth, root.gameHeight);
         }
 

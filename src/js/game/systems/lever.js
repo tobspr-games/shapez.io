@@ -4,6 +4,7 @@ import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item
 import { MapChunkView } from "../map_chunk_view";
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
+import { enumLayer } from "../root";
 
 export class LeverSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -31,23 +32,19 @@ export class LeverSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        const contents = chunk.contents;
-        for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
-            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
-                const entity = contents[x][y];
-
-                if (entity && entity.components.Lever) {
-                    const sprite = entity.components.Lever.toggled ? this.spriteOn : this.spriteOff;
-
-                    const origin = entity.components.StaticMapEntity.origin;
-                    sprite.drawCached(
-                        parameters,
-                        origin.x * globalConfig.tileSize,
-                        origin.y * globalConfig.tileSize,
-                        globalConfig.tileSize,
-                        globalConfig.tileSize
-                    );
-                }
+        const contents = chunk.containedEntitiesByLayer[enumLayer.regular];
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            if (entity && entity.components.Lever) {
+                const sprite = entity.components.Lever.toggled ? this.spriteOn : this.spriteOff;
+                const origin = entity.components.StaticMapEntity.origin;
+                sprite.drawCached(
+                    parameters,
+                    origin.x * globalConfig.tileSize,
+                    origin.y * globalConfig.tileSize,
+                    globalConfig.tileSize,
+                    globalConfig.tileSize
+                );
             }
         }
     }

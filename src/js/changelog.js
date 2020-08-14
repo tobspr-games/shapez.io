@@ -12,6 +12,7 @@ export const CHANGELOG = [
             "Fix rare crash regarding the buildings toolbar (by isaisstillalive)",
             "Fixed some phrases (by EnderDoom77)",
             "Zoom towards mouse cursor (by Dimava)",
+            "Added multiple settings to optimize the performance",
             "Updated the soundtrack again, it is now 40 minutes in total!",
             "Updated and added new translations (Thanks to all contributors!)",
             "Allow editing waypoints (by isaisstillalive)",
