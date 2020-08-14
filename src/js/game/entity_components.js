@@ -15,6 +15,7 @@ import { ConstantSignalComponent } from "./components/constant_signal";
 import { LogicGateComponent } from "./components/logic_gate";
 import { LeverComponent } from "./components/lever";
 import { WireTunnelComponent } from "./components/wire_tunnel";
+import { DisplayComponent } from "./components/display";
 /* typehints:end */
 
 /**
@@ -72,6 +73,9 @@ export class EntityComponentStorage {
 
         /** @type {WireTunnelComponent} */
         this.WireTunnel;
+
+        /** @type {DisplayComponent} */
+        this.Display;
 
         /* typehints:end */
     }

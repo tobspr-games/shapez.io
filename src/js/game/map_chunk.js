@@ -40,7 +40,7 @@ export class MapChunk {
 
         /**
          * Which entities this chunk contains, sorted by layer
-         * @type {Object<enumLayer, Array<Entity>>}
+         * @type {Object<string, Array<Entity>>}
          */
         this.containedEntitiesByLayer = {
             [enumLayer.regular]: [],

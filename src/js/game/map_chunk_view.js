@@ -53,6 +53,7 @@ export class MapChunkView extends MapChunk {
         systems.miner.drawChunk(parameters, this);
         systems.staticMapEntities.drawChunk(parameters, this);
         systems.lever.drawChunk(parameters, this);
+        systems.display.drawChunk(parameters, this);
     }
 
     /**

@@ -12,6 +12,7 @@ import { enumLayer } from "../../root";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaLeverBuilding } from "../../buildings/lever";
 import { MetaFilterBuilding } from "../../buildings/filter";
+import { MetaDisplayBuilding } from "../../buildings/display";
 
 const supportedBuildings = [
     MetaBeltBaseBuilding,
@@ -26,6 +27,7 @@ const supportedBuildings = [
     MetaTrashBuilding,
     MetaLeverBuilding,
     MetaFilterBuilding,
+    MetaDisplayBuilding,
 ];
 
 export class HUDBuildingsToolbar extends HUDBaseToolbar {

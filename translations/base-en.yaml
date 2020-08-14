@@ -581,6 +581,12 @@ buildings:
             # TEMP
             description: Only leaves through items who match exactly the provided shape / color. If you put in a boolean 1, it leaves everything through, if you put in a 0 it will leave nothing through.
 
+    display:
+        default:
+            name: &display Display
+            # TEMP
+            description: Can be connected on the wires layer to show a color or shape. When inputting a boolean item, the display will be white if the value is 1.
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -871,6 +877,7 @@ keybindings:
         lever: *lever
         filter: *filter
         wire_tunnel: *wire_tunnel
+        display: *display
         # ---
 
         pipette: Pipette
