@@ -4,7 +4,7 @@ import { Entity } from "../entity";
 import { DrawParameters } from "../../core/draw_parameters";
 import { formatBigNumber, lerp } from "../../core/utils";
 import { Loader } from "../../core/loader";
-import { enumLayer } from "../root";
+import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item";
 
 export class StorageSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -39,6 +39,7 @@ export class StorageSystem extends GameSystemWithFilter {
             storageComp.overlayOpacity = lerp(storageComp.overlayOpacity, targetAlpha, 0.05);
 
             pinsComp.slots[0].value = storageComp.storedItem;
+            pinsComp.slots[1].value = storageComp.getIsFull() ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
         }
     }
 

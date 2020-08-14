@@ -2,6 +2,8 @@ import { types } from "../../savegame/serialization";
 import { BaseItem, enumItemType } from "../base_item";
 import { Component } from "../component";
 import { typeItemSingleton } from "../item_resolver";
+import { ColorItem } from "../items/color_item";
+import { ShapeItem } from "../items/shape_item";
 
 export class StorageComponent extends Component {
     static getId() {
@@ -74,6 +76,14 @@ export class StorageComponent extends Component {
             );
         }
         return false;
+    }
+
+    /**
+     * Returns whether the storage is full
+     * @returns {boolean}
+     */
+    getIsFull() {
+        return this.storedCount >= this.maximumStorage;
     }
 
     /**
