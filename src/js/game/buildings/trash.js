@@ -9,6 +9,7 @@ import { GameRoot } from "../root";
 import { StorageComponent } from "../components/storage";
 import { T } from "../../translations";
 import { formatBigNumber } from "../../core/utils";
+import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 
 /** @enum {string} */
 export const enumTrashVariants = { storage: "storage" };
@@ -117,6 +118,9 @@ export class MetaTrashBuilding extends MetaBuilding {
                 if (entity.components.Storage) {
                     entity.removeComponent(StorageComponent);
                 }
+                if (entity.components.WiredPins) {
+                    entity.removeComponent(WiredPinsComponent);
+                }
 
                 entity.components.ItemAcceptor.setSlots([
                     {
@@ -139,6 +143,17 @@ export class MetaTrashBuilding extends MetaBuilding {
                 }
                 if (!entity.components.Storage) {
                     entity.addComponent(new StorageComponent({}));
+                }
+                if (!entity.components.WiredPins) {
+                    entity.addComponent(new WiredPinsComponent({
+                        slots: [
+                            {
+                                pos: new Vector(1, 1),
+                                direction: enumDirection.right,
+                                type: enumPinSlotType.logicalEjector
+                            }
+                        ]
+                    }));
                 }
 
                 entity.components.Storage.maximumStorage = trashSize;

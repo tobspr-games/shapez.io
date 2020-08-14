@@ -17,6 +17,7 @@ export class StorageSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const storageComp = entity.components.Storage;
+            const pinsComp = entity.components.WiredPins;
 
             // Eject from storage
             if (storageComp.storedItem && storageComp.storedCount > 0) {
@@ -36,6 +37,8 @@ export class StorageSystem extends GameSystemWithFilter {
 
             let targetAlpha = storageComp.storedCount > 0 ? 1 : 0;
             storageComp.overlayOpacity = lerp(storageComp.overlayOpacity, targetAlpha, 0.05);
+
+            pinsComp.slots[0].value = storageComp.storedItem;
         }
     }
 
