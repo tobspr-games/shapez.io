@@ -1,15 +1,14 @@
-import { ConstantSignalComponent } from "../components/constant_signal";
-import { GameSystemWithFilter } from "../game_system_with_filter";
-import { Entity } from "../entity";
+import trim from "trim";
 import { DialogWithForm } from "../../core/modal_dialog_elements";
 import { FormElementInput } from "../../core/modal_dialog_forms";
-import { enumColors } from "../colors";
-import { ColorItem } from "../items/color_item";
-import trim from "trim";
-import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item";
-import { ShapeDefinition } from "../shape_definition";
-import { ShapeItem } from "../items/shape_item";
 import { BaseItem } from "../base_item";
+import { enumColors } from "../colors";
+import { ConstantSignalComponent } from "../components/constant_signal";
+import { Entity } from "../entity";
+import { GameSystemWithFilter } from "../game_system_with_filter";
+import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
+import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
+import { ShapeDefinition } from "../shape_definition";
 
 export class ConstantSignalSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -111,7 +110,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         const codeLower = code.toLowerCase();
 
         if (enumColors[codeLower]) {
-            return new ColorItem(codeLower);
+            return COLOR_ITEM_SINGLETONS[codeLower];
         }
         if (code === "1" || codeLower === "true") {
             return BOOL_TRUE_SINGLETON;
@@ -122,7 +121,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         }
 
         if (ShapeDefinition.isValidShortKey(code)) {
-            return new ShapeItem(this.root.shapeDefinitionMgr.getShapeFromShortKey(code));
+            return this.root.shapeDefinitionMgr.getShapeItemFromShortKey(code);
         }
 
         return null;

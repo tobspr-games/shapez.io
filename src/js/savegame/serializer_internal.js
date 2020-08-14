@@ -60,7 +60,7 @@ export class SerializerInternal {
 
         entity.uid = payload.uid;
 
-        this.deserializeComponents(entity, payload.components);
+        this.deserializeComponents(root, entity, payload.components);
 
         root.entityMgr.registerEntity(entity, payload.uid);
         root.map.placeStaticEntity(entity);
@@ -70,18 +70,19 @@ export class SerializerInternal {
 
     /**
      * Deserializes components of an entity
+     * @param {GameRoot} root
      * @param {Entity} entity
      * @param {Object.<string, any>} data
      * @returns {string|void}
      */
-    deserializeComponents(entity, data) {
+    deserializeComponents(root, entity, data) {
         for (const componentId in data) {
             if (!entity.components[componentId]) {
                 logger.warn("Entity no longer has component:", componentId);
                 continue;
             }
 
-            const errorStatus = entity.components[componentId].deserialize(data[componentId]);
+            const errorStatus = entity.components[componentId].deserialize(data[componentId], root);
             if (errorStatus) {
                 return errorStatus;
             }

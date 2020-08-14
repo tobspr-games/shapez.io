@@ -1,14 +1,14 @@
 import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
-import { gItemRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
 import { epsilonCompare, round4Digits } from "../core/utils";
-import { enumDirection, enumDirectionToVector, Vector, enumInvertedDirections } from "../core/vector";
+import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
-import { GameRoot, enumLayer } from "./root";
+import { typeItemSingleton } from "./item_resolver";
+import { enumLayer, GameRoot } from "./root";
 
 const logger = createLogger("belt_path");
 
@@ -29,7 +29,7 @@ export class BeltPath extends BasicSerializableObject {
     static getSchema() {
         return {
             entityPath: types.array(types.entity),
-            items: types.array(types.pair(types.ufloat, types.obj(gItemRegistry))),
+            items: types.array(types.pair(types.ufloat, typeItemSingleton)),
             spacingToFirstItem: types.ufloat,
         };
     }

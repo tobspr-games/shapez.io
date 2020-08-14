@@ -1,11 +1,10 @@
-import { Vector, enumDirection, enumDirectionToVector } from "../../core/vector";
-import { BaseItem } from "../base_item";
-import { Component } from "../component";
+import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
-import { gItemRegistry } from "../../core/global_registries";
-import { Entity } from "../entity";
-import { enumLayer } from "../root";
+import { BaseItem } from "../base_item";
 import { BeltPath } from "../belt_path";
+import { Component } from "../component";
+import { Entity } from "../entity";
+import { typeItemSingleton } from "../item_resolver";
 
 /**
  * @typedef {{
@@ -29,7 +28,7 @@ export class ItemEjectorComponent extends Component {
         return {
             slots: types.array(
                 types.structured({
-                    item: types.nullable(types.obj(gItemRegistry)),
+                    item: types.nullable(typeItemSingleton),
                     progress: types.float,
                 })
             ),

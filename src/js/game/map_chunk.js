@@ -6,7 +6,7 @@ import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { enumColors } from "./colors";
 import { Entity } from "./entity";
-import { ColorItem } from "./items/color_item";
+import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
 import { enumLayer, GameRoot } from "./root";
 import { enumSubShape } from "./shape_definition";
 
@@ -139,7 +139,7 @@ export class MapChunk {
         if (distanceToOriginInChunks > 2) {
             availableColors.push(enumColors.blue);
         }
-        this.internalGeneratePatch(rng, colorPatchSize, new ColorItem(rng.choice(availableColors)));
+        this.internalGeneratePatch(rng, colorPatchSize, COLOR_ITEM_SINGLETONS[rng.choice(availableColors)]);
     }
 
     /**
@@ -268,7 +268,7 @@ export class MapChunk {
      */
     generatePredefined(rng) {
         if (this.x === 0 && this.y === 0) {
-            this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.red), 7, 7);
+            this.internalGeneratePatch(rng, 2, COLOR_ITEM_SINGLETONS[enumColors.red], 7, 7);
             return true;
         }
         if (this.x === -1 && this.y === 0) {
@@ -283,7 +283,7 @@ export class MapChunk {
         }
 
         if (this.x === -1 && this.y === -1) {
-            this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.green));
+            this.internalGeneratePatch(rng, 2, COLOR_ITEM_SINGLETONS[enumColors.green]);
             return true;
         }
 

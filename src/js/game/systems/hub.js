@@ -1,11 +1,10 @@
-import { GameSystemWithFilter } from "../game_system_with_filter";
-import { HubComponent } from "../components/hub";
 import { DrawParameters } from "../../core/draw_parameters";
-import { Entity } from "../entity";
-import { formatBigNumber } from "../../core/utils";
 import { Loader } from "../../core/loader";
+import { formatBigNumber } from "../../core/utils";
 import { T } from "../../translations";
-import { ShapeItem } from "../items/shape_item";
+import { HubComponent } from "../components/hub";
+import { Entity } from "../entity";
+import { GameSystemWithFilter } from "../game_system_with_filter";
 
 export class HubSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -23,7 +22,9 @@ export class HubSystem extends GameSystemWithFilter {
             // Set hub goal
             const entity = this.allEntities[i];
             const pinsComp = entity.components.WiredPins;
-            pinsComp.slots[0].value = new ShapeItem(this.root.hubGoals.currentGoal.definition);
+            pinsComp.slots[0].value = this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
+                this.root.hubGoals.currentGoal.definition
+            );
         }
     }
 

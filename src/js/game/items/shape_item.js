@@ -37,7 +37,6 @@ export class ShapeItem extends BaseItem {
      */
     constructor(definition) {
         super();
-        // logger.log("New shape item for shape definition", definition.generateId(), "created");
 
         /**
          * This property must not be modified on runtime, you have to clone the class in order to change the definition

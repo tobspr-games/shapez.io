@@ -595,10 +595,12 @@ export class TypeClass extends BaseDataType {
     /**
      *
      * @param {FactoryTemplate<*>} registry
+     * @param {(GameRoot, object) => object} customResolver
      */
-    constructor(registry) {
+    constructor(registry, customResolver = null) {
         super();
         this.registry = registry;
+        this.customResolver = customResolver;
     }
 
     serialize(value) {
@@ -640,14 +642,23 @@ export class TypeClass extends BaseDataType {
      * @returns {string|void} String error code or null on success
      */
     deserialize(value, targetObject, targetKey, root) {
-        const instanceClass = this.registry.findById(value.$);
-        if (!instanceClass || !instanceClass.prototype) {
-            return "Invalid class id (runtime-err): " + value.$ + "->" + instanceClass;
-        }
-        const instance = Object.create(instanceClass.prototype);
-        const errorState = instance.deserialize(value.data);
-        if (errorState) {
-            return errorState;
+        let instance;
+
+        if (this.customResolver) {
+            instance = this.customResolver(root, value);
+            if (!instance) {
+                return "Failed to call custom resolver";
+            }
+        } else {
+            const instanceClass = this.registry.findById(value.$);
+            if (!instanceClass || !instanceClass.prototype) {
+                return "Invalid class id (runtime-err): " + value.$ + "->" + instanceClass;
+            }
+            instance = Object.create(instanceClass.prototype);
+            const errorState = instance.deserialize(value.data);
+            if (errorState) {
+                return errorState;
+            }
         }
         targetObject[targetKey] = instance;
     }

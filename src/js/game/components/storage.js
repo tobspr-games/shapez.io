@@ -1,9 +1,7 @@
-import { Component } from "../component";
 import { types } from "../../savegame/serialization";
-import { gItemRegistry } from "../../core/global_registries";
 import { BaseItem, enumItemType } from "../base_item";
-import { ColorItem } from "../items/color_item";
-import { ShapeItem } from "../items/shape_item";
+import { Component } from "../component";
+import { typeItemSingleton } from "../item_resolver";
 
 export class StorageComponent extends Component {
     static getId() {
@@ -13,7 +11,7 @@ export class StorageComponent extends Component {
     static getSchema() {
         return {
             storedCount: types.uint,
-            storedItem: types.nullable(types.obj(gItemRegistry)),
+            storedItem: types.nullable(typeItemSingleton),
         };
     }
 

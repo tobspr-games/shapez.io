@@ -13,7 +13,6 @@ import { randomInt, round2Digits } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
-import { InGameState } from "../states/ingame";
 import { AutomaticSave } from "./automatic_save";
 import { MetaHubBuilding } from "./buildings/hub";
 import { Camera } from "./camera";
@@ -67,7 +66,7 @@ export class GameCore {
     /**
      * Initializes the root object which stores all game related data. The state
      * is required as a back reference (used sometimes)
-     * @param {InGameState} parentState
+     * @param {import("../states/ingame").InGameState} parentState
      * @param {Savegame} savegame
      */
     initializeRoot(parentState, savegame) {

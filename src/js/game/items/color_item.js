@@ -98,3 +98,13 @@ export class ColorItem extends BaseItem {
         context.fill();
     }
 }
+
+/**
+ * Singleton instances
+ * @type {Object<enumColors, ColorItem>}
+ */
+export const COLOR_ITEM_SINGLETONS = {};
+
+for (const color in enumColors) {
+    COLOR_ITEM_SINGLETONS[color] = new ColorItem(color);
+}

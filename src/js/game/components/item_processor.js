@@ -1,7 +1,7 @@
-import { gItemRegistry } from "../../core/global_registries";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
@@ -32,13 +32,13 @@ export class ItemProcessorComponent extends Component {
             nextOutputSlot: types.uint,
             inputSlots: types.array(
                 types.structured({
-                    item: types.obj(gItemRegistry),
+                    item: typeItemSingleton,
                     sourceSlot: types.uint,
                 })
             ),
             itemsToEject: types.array(
                 types.structured({
-                    item: types.obj(gItemRegistry),
+                    item: typeItemSingleton,
                     requiredSlot: types.nullable(types.uint),
                     preferredSlot: types.nullable(types.uint),
                 })
