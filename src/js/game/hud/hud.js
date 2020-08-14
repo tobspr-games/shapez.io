@@ -42,6 +42,7 @@ import { HUDSandboxController } from "./parts/sandbox_controller";
 import { HUDWiresToolbar } from "./parts/wires_toolbar";
 import { HUDWireInfo } from "./parts/wire_info";
 import { HUDLeverToggle } from "./parts/lever_toggle";
+import { HUDLayerPreview } from "./parts/layer_preview";
 
 export class GameHUD {
     /**
@@ -80,6 +81,7 @@ export class GameHUD {
             shapeViewer: new HUDShapeViewer(this.root),
 
             wiresOverlay: new HUDWiresOverlay(this.root),
+            layerPreview: new HUDLayerPreview(this.root),
 
             // Typing hints
             /* typehints:start */

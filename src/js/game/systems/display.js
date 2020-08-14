@@ -82,7 +82,7 @@ export class DisplaySystem extends GameSystemWithFilter {
                         parameters,
                         (origin.x + 0.5) * globalConfig.tileSize,
                         (origin.y + 0.5) * globalConfig.tileSize,
-                        globalConfig.tileSize + 3
+                        globalConfig.tileSize
                     );
                 } else if (value.getItemType() === enumItemType.shape) {
                     // @todo
