@@ -20,7 +20,7 @@ export class MetaTrashBuilding extends MetaBuilding {
         super("trash");
     }
 
-    isRotateable(variant) {
+    getIsRotateable(variant) {
         return variant !== defaultBuildingVariant;
     }
 

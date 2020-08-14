@@ -23,7 +23,7 @@ export class MetaLeverBuilding extends MetaBuilding {
         return true;
     }
 
-    isRotateable() {
+    getIsRotateable() {
         return false;
     }
 

@@ -20,7 +20,7 @@ export class MetaHubBuilding extends MetaBuilding {
         return "#eb5555";
     }
 
-    isRotateable() {
+    getIsRotateable() {
         return false;
     }
 

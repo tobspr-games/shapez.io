@@ -21,7 +21,7 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
         return true;
     }
 
-    isRotateable() {
+    getIsRotateable() {
         return false;
     }
 

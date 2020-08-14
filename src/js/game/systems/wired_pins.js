@@ -169,26 +169,28 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             const tile = staticComp.localTileToWorld(slot.pos);
 
             const worldPos = tile.toWorldSpaceCenterOfTile();
-
             const effectiveRotation = Math.radians(
                 staticComp.rotation + enumDirectionToAngle[slot.direction]
             );
-            drawRotatedSprite({
-                parameters,
-                sprite: this.pinSprites[slot.type],
-                x: worldPos.x,
-                y: worldPos.y,
-                angle: effectiveRotation,
-                size: globalConfig.tileSize + 2,
-                offsetX: 0,
-                offsetY: 0,
-            });
+
+            if (staticComp.getMetaBuilding().getRenderPins()) {
+                drawRotatedSprite({
+                    parameters,
+                    sprite: this.pinSprites[slot.type],
+                    x: worldPos.x,
+                    y: worldPos.y,
+                    angle: effectiveRotation,
+                    size: globalConfig.tileSize + 2,
+                    offsetX: 0,
+                    offsetY: 0,
+                });
+            }
 
             // Draw contained item to visualize whats emitted
             const value = slot.value;
             if (value) {
-                const offset = new Vector(0, -5).rotated(effectiveRotation);
-                value.draw(worldPos.x + offset.x, worldPos.y + offset.y, parameters, 12);
+                const offset = new Vector(0, -9).rotated(effectiveRotation);
+                value.draw(worldPos.x + offset.x, worldPos.y + offset.y, parameters, 9);
             }
 
             // Debug view

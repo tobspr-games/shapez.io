@@ -153,7 +153,7 @@ export class MetaBuilding {
      * @param {string} variant
      * @returns {boolean}
      */
-    isRotateable(variant) {
+    getIsRotateable(variant) {
         return true;
     }
 
@@ -170,6 +170,14 @@ export class MetaBuilding {
      */
     getSilhouetteColor() {
         return null;
+    }
+
+    /**
+     * Should return false if the pins are already included in the sprite of the building
+     * @returns {boolean}
+     */
+    getRenderPins() {
+        return true;
     }
 
     /**
@@ -225,7 +233,7 @@ export class MetaBuilding {
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
-        if (!this.isRotateable(variant)) {
+        if (!this.getIsRotateable(variant)) {
             return {
                 rotation: 0,
                 rotationVariant: 0,
