@@ -14,6 +14,7 @@ import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { enumLayer } from "../../root";
 import { getBuildingDataFromCode, getCodeFromBuildingData } from "../../building_codes";
+import { MetaHubBuilding } from "../../buildings/hub";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -344,8 +345,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const buildingCode = contents.components.StaticMapEntity.code;
         const extracted = getBuildingDataFromCode(buildingCode);
 
-        if (extracted.metaInstance.getId() === "hub") {
-            // Disable pipetting the hub
+        // Disable pipetting the hub
+        if (extracted.metaInstance.getId() === gMetaBuildingRegistry.findByClass(MetaHubBuilding).getId()) {
             this.currentMetaBuilding.set(null);
             return;
         }
