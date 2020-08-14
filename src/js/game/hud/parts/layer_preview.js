@@ -99,15 +99,6 @@ export class HUDLayerPreview extends BaseHUDPart {
                             globalConfig.tileSize
                         );
                     }
-
-                    // this.context.fillStyle = "green";
-                    // this.context.fillRect(
-                    //     dx * globalConfig.tileSize,
-                    //     dy * globalConfig.tileSize,
-
-                    //     globalConfig.tileSize,
-                    //     globalConfig.tileSize
-                    // );
                 }
             }
         }
