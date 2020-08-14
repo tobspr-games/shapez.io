@@ -309,28 +309,42 @@ export class WireSystem extends GameSystemWithFilter {
 
     /**
      * Finds surrounding entities which are not yet assigned to a network
-     * @param {Vector} tile
+     * @param {Vector} initialTile
      * @param {Array<enumDirection>} directions
      * @returns {Array<any>}
      */
-    findSurroundingWireTargets(tile, directions) {
+    findSurroundingWireTargets(initialTile, directions) {
         let result = [];
 
         VERBOSE_WIRES &&
-            logger.log("    Searching for new targets at", tile.toString(), "and d=", directions);
+            logger.log("    Searching for new targets at", initialTile.toString(), "and d=", directions);
 
         // Go over all directions we should search for
         for (let i = 0; i < directions.length; ++i) {
             const direction = directions[i];
             const offset = enumDirectionToVector[direction];
-            const searchTile = tile.add(offset);
+            const initialSearchTile = initialTile.add(offset);
 
             // Store which tunnels we already visited to avoid infinite loops
             const visitedTunnels = new Set();
 
-            const contents = this.root.map.getLayersContentsMultipleXY(searchTile.x, searchTile.y);
+            // First, find the initial connected entities
+            const initialContents = this.root.map.getLayersContentsMultipleXY(
+                initialSearchTile.x,
+                initialSearchTile.y
+            );
+
+            // Link the initial tile to the initial entities, since it may change
+            const contents = [];
+            for (let j = 0; j < initialContents.length; ++j) {
+                contents.push({
+                    entity: initialContents[j],
+                    tile: initialSearchTile,
+                });
+            }
+
             for (let k = 0; k < contents.length; ++k) {
-                const entity = contents[k];
+                const { entity, tile } = contents[k];
                 const wireComp = entity.components.Wire;
 
                 // Check for wire
@@ -353,7 +367,7 @@ export class WireSystem extends GameSystemWithFilter {
 
                         // Check if the position matches
                         const pinPos = staticComp.localTileToWorld(slot.pos);
-                        if (!pinPos.equals(searchTile)) {
+                        if (!pinPos.equals(tile)) {
                             continue;
                         }
 
@@ -375,18 +389,33 @@ export class WireSystem extends GameSystemWithFilter {
                 // Check if its a tunnel, if so, go to the forwarded item
                 if (entity.components.WireTunnel) {
                     if (!visitedTunnels.has(entity.uid)) {
+                        // Compute where this tunnel connects to
                         const forwardedTile = entity.components.StaticMapEntity.origin.add(offset);
-                        logger.log(
-                            "   Found tunnel",
-                            entity.uid,
-                            "at",
-                            searchTile,
-                            "-> forwarding to",
-                            forwardedTile
+                        VERBOSE_WIRES &&
+                            logger.log(
+                                "   Found tunnel",
+                                entity.uid,
+                                "at",
+                                tile,
+                                "-> forwarding to",
+                                forwardedTile
+                            );
+
+                        // Figure out which entities are connected
+                        const connectedContents = this.root.map.getLayersContentsMultipleXY(
+                            forwardedTile.x,
+                            forwardedTile.y
                         );
-                        contents.push(
-                            ...this.root.map.getLayersContentsMultipleXY(forwardedTile.x, forwardedTile.y)
-                        );
+
+                        // Attach the entities and the tile we search at, because it may change
+                        for (let h = 0; h < connectedContents.length; ++h) {
+                            contents.push({
+                                entity: connectedContents[h],
+                                tile: forwardedTile,
+                            });
+                        }
+
+                        // Remember this tunnel
                         visitedTunnels.add(entity.uid);
                     }
                 }
