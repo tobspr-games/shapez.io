@@ -367,6 +367,18 @@
             <key type="filename">sprites/buildings/wire-split.png</key>
             <key type="filename">sprites/buildings/wire-turn.png</key>
             <key type="filename">sprites/buildings/wire.png</key>
+            <key type="filename">sprites/wires/sets/color-cross.png</key>
+            <key type="filename">sprites/wires/sets/color-split.png</key>
+            <key type="filename">sprites/wires/sets/color-turn.png</key>
+            <key type="filename">sprites/wires/sets/color.png</key>
+            <key type="filename">sprites/wires/sets/conflict-cross.png</key>
+            <key type="filename">sprites/wires/sets/conflict-split.png</key>
+            <key type="filename">sprites/wires/sets/conflict-turn.png</key>
+            <key type="filename">sprites/wires/sets/conflict.png</key>
+            <key type="filename">sprites/wires/sets/shape-cross.png</key>
+            <key type="filename">sprites/wires/sets/shape-split.png</key>
+            <key type="filename">sprites/wires/sets/shape-turn.png</key>
+            <key type="filename">sprites/wires/sets/shape.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -382,6 +394,11 @@
                 <false/>
             </struct>
             <key type="filename">sprites/blueprints/constant_signal.png</key>
+            <key type="filename">sprites/blueprints/lever.png</key>
+            <key type="filename">sprites/blueprints/logic_gate-not.png</key>
+            <key type="filename">sprites/blueprints/logic_gate-or.png</key>
+            <key type="filename">sprites/blueprints/logic_gate-transistor.png</key>
+            <key type="filename">sprites/blueprints/logic_gate-xor.png</key>
             <key type="filename">sprites/blueprints/logic_gate.png</key>
             <key type="filename">sprites/blueprints/miner-chainable.png</key>
             <key type="filename">sprites/blueprints/miner.png</key>
@@ -395,7 +412,13 @@
             <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
+            <key type="filename">sprites/blueprints/wire_tunnel.png</key>
             <key type="filename">sprites/buildings/constant_signal.png</key>
+            <key type="filename">sprites/buildings/lever.png</key>
+            <key type="filename">sprites/buildings/logic_gate-not.png</key>
+            <key type="filename">sprites/buildings/logic_gate-or.png</key>
+            <key type="filename">sprites/buildings/logic_gate-transistor.png</key>
+            <key type="filename">sprites/buildings/logic_gate-xor.png</key>
             <key type="filename">sprites/buildings/logic_gate.png</key>
             <key type="filename">sprites/buildings/miner-chainable.png</key>
             <key type="filename">sprites/buildings/rotater-ccw.png</key>
@@ -406,6 +429,8 @@
             <key type="filename">sprites/buildings/underground_belt_entry.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit.png</key>
+            <key type="filename">sprites/buildings/wire_tunnel.png</key>
+            <key type="filename">sprites/wires/lever_on.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -439,11 +464,13 @@
                 <false/>
             </struct>
             <key type="filename">sprites/blueprints/cutter.png</key>
+            <key type="filename">sprites/blueprints/filter.png</key>
             <key type="filename">sprites/blueprints/mixer.png</key>
             <key type="filename">sprites/blueprints/painter-mirrored.png</key>
             <key type="filename">sprites/blueprints/painter.png</key>
             <key type="filename">sprites/blueprints/splitter.png</key>
             <key type="filename">sprites/blueprints/stacker.png</key>
+            <key type="filename">sprites/buildings/filter.png</key>
             <key type="filename">sprites/buildings/painter-mirrored.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

@@ -24,7 +24,7 @@ const logger = createLogger("wires");
 
 let networkUidCounter = 0;
 
-const VERBOSE_WIRES = false;
+const VERBOSE_WIRES = G_IS_DEV && false;
 
 export class WireNetwork {
     constructor() {
@@ -319,10 +319,14 @@ export class WireSystem extends GameSystemWithFilter {
         VERBOSE_WIRES &&
             logger.log("    Searching for new targets at", tile.toString(), "and d=", directions);
 
+        // Go over all directions we should search for
         for (let i = 0; i < directions.length; ++i) {
             const direction = directions[i];
             const offset = enumDirectionToVector[direction];
             const searchTile = tile.add(offset);
+
+            // Store which tunnels we already visited to avoid infinite loops
+            const visitedTunnels = new Set();
 
             const contents = this.root.map.getLayersContentsMultipleXY(searchTile.x, searchTile.y);
             for (let k = 0; k < contents.length; ++k) {
@@ -359,19 +363,32 @@ export class WireSystem extends GameSystemWithFilter {
                             continue;
                         }
 
-                        result.push({
-                            entity,
-                            slot,
-                        });
+                        if (!slot.linkedNetwork) {
+                            result.push({
+                                entity,
+                                slot,
+                            });
+                        }
                     }
                 }
 
                 // Check if its a tunnel, if so, go to the forwarded item
                 if (entity.components.WireTunnel) {
-                    const forwardedTile = searchTile.add(offset);
-                    contents.push(
-                        ...this.root.map.getLayersContentsMultipleXY(forwardedTile.x, forwardedTile.y)
-                    );
+                    if (!visitedTunnels.has(entity.uid)) {
+                        const forwardedTile = entity.components.StaticMapEntity.origin.add(offset);
+                        logger.log(
+                            "   Found tunnel",
+                            entity.uid,
+                            "at",
+                            searchTile,
+                            "-> forwarding to",
+                            forwardedTile
+                        );
+                        contents.push(
+                            ...this.root.map.getLayersContentsMultipleXY(forwardedTile.x, forwardedTile.y)
+                        );
+                        visitedTunnels.add(entity.uid);
+                    }
                 }
             }
         }
@@ -604,8 +621,6 @@ export class WireSystem extends GameSystemWithFilter {
         if (!staticComp) {
             return;
         }
-
-        logger.log("Updating surrounding wire placement");
 
         const metaWire = gMetaBuildingRegistry.findByClass(MetaWireBuilding);
 
