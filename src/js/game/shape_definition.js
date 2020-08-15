@@ -284,10 +284,10 @@ export class ShapeDefinition extends BasicSerializableObject {
             this.bufferGenerator = this.internalGenerateShapeBuffer.bind(this);
         }
 
-        const key = diameter + "/" + dpi;
+        const key = diameter + "/" + dpi + "/" + this.cachedHash;
         const canvas = parameters.root.buffers.getForKey({
-            key,
-            subKey: this.cachedHash,
+            key: "shapedef",
+            subKey: key,
             w: diameter,
             h: diameter,
             dpi,

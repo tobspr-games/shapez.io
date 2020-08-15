@@ -13,7 +13,7 @@ export class MapResourcesSystem extends GameSystem {
      */
     drawChunk(parameters, chunk) {
         const basicChunkBackground = this.root.buffers.getForKey({
-            key: "chunkres",
+            key: "mapresourcebg",
             subKey: chunk.renderKey,
             w: globalConfig.mapChunkSize,
             h: globalConfig.mapChunkSize,

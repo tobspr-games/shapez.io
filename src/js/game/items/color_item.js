@@ -62,10 +62,10 @@ export class ColorItem extends BaseItem {
 
         const realDiameter = diameter * 0.6;
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
-        const key = realDiameter + "/" + dpi;
+        const key = realDiameter + "/" + dpi + "/" + this.color;
         const canvas = parameters.root.buffers.getForKey({
-            key,
-            subKey: this.color,
+            key: "coloritem",
+            subKey: key,
             w: realDiameter,
             h: realDiameter,
             dpi,

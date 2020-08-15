@@ -9,7 +9,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
-import { randomInt, round2Digits } from "../core/utils";
+import { randomInt, round2Digits, round3Digits } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
@@ -454,7 +454,7 @@ export class GameCore {
 
         if (G_IS_DEV && globalConfig.debug.showAtlasInfo) {
             context.font = "13px GameFont";
-            context.fillStyle = "yellow";
+            context.fillStyle = "blue";
             context.fillText(
                 "Atlas: " +
                     desiredAtlasScale +
@@ -462,8 +462,22 @@ export class GameCore {
                     round2Digits(zoomLevel) +
                     " / Effective Zoom: " +
                     round2Digits(effectiveZoomLevel),
-                200,
-                20
+                20,
+                600
+            );
+
+            const stats = this.root.buffers.getStats();
+            context.fillText(
+                "Buffers: " +
+                    stats.rootKeys +
+                    " root keys, " +
+                    stats.subKeys +
+                    " sub keys / buffers / VRAM: " +
+                    round2Digits(stats.vramBytes / (1024 * 1024)) +
+                    " MB",
+
+                20,
+                620
             );
         }
 
