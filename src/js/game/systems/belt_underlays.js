@@ -7,7 +7,6 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BELT_ANIM_COUNT } from "./belt";
 import { MapChunkView } from "../map_chunk_view";
 import { DrawParameters } from "../../core/draw_parameters";
-import { enumLayer } from "../root";
 
 export class BeltUnderlaysSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -29,7 +28,7 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
-        const contents = chunk.containedEntitiesByLayer[enumLayer.regular];
+        const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
             const underlayComp = entity.components.BeltUnderlays;

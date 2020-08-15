@@ -14,7 +14,6 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
 import { getCodeFromBuildingData } from "../building_codes";
-import { enumLayer } from "../root";
 
 export const BELT_ANIM_COUNT = 14;
 
@@ -496,7 +495,7 @@ export class BeltSystem extends GameSystemWithFilter {
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
                 globalConfig.itemSpacingOnBelts
         );
-        const contents = chunk.containedEntitiesByLayer[enumLayer.regular];
+        const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
             if (entity.components.Belt) {

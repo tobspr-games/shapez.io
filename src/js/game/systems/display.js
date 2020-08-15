@@ -84,7 +84,7 @@ export class DisplaySystem extends GameSystemWithFilter {
                         globalConfig.tileSize
                     );
                 } else if (value.getItemType() === "shape") {
-                    value.draw(
+                    value.drawCentered(
                         (origin.x + 0.5) * globalConfig.tileSize,
                         (origin.y + 0.5) * globalConfig.tileSize,
                         parameters,
