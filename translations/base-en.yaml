@@ -548,7 +548,7 @@ buildings:
             description: Allows to cross two wires without connecting them.
 
         coating:
-            name: Wire Coating
+            name: Wire Insulation
             description: Allows to pass through signals without connecting to other wires on the sides.
 
     constant_signal:
