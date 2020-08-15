@@ -92,6 +92,13 @@ export class MetaBuilding {
     }
 
     /**
+     * Whether to show a preview of the wires layer when placing the building
+     */
+    getShowWiresLayerPreview() {
+        return false;
+    }
+
+    /**
      * Whether to rotate automatically in the dragging direction while placing
      * @param {string} variant
      */

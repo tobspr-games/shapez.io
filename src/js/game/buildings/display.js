@@ -26,6 +26,10 @@ export class MetaDisplayBuilding extends MetaBuilding {
         return new Vector(1, 1);
     }
 
+    getShowWiresLayerPreview() {
+        return true;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity

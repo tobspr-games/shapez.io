@@ -1,12 +1,12 @@
-import { MapChunk } from "./map_chunk";
-import { GameRoot, enumLayer } from "./root";
-import { DrawParameters } from "../core/draw_parameters";
-import { smoothenDpi } from "../core/dpi_manager";
 import { globalConfig } from "../core/config";
-import { THEME } from "./theme";
+import { DrawParameters } from "../core/draw_parameters";
 import { getBuildingDataFromCode } from "./building_codes";
+import { Entity } from "./entity";
+import { MapChunk } from "./map_chunk";
+import { enumLayer, GameRoot } from "./root";
+import { THEME } from "./theme";
 
-const CHUNK_OVERLAY_RES = 3;
+export const CHUNK_OVERLAY_RES = 3;
 
 export class MapChunkView extends MapChunk {
     /**
@@ -192,46 +192,52 @@ export class MapChunkView extends MapChunk {
                     if (!content) {
                         continue;
                     }
-                    const staticComp = content.components.StaticMapEntity;
-                    const data = getBuildingDataFromCode(staticComp.code);
-                    const metaBuilding = data.metaInstance;
-
-                    const overlayMatrix = metaBuilding.getSpecialOverlayRenderMatrix(
-                        staticComp.rotation,
-                        data.rotationVariant,
-                        data.variant,
-                        content
+                    MapChunkView.drawSingleWiresOverviewTile(
+                        context,
+                        x * CHUNK_OVERLAY_RES,
+                        y * CHUNK_OVERLAY_RES,
+                        content,
+                        CHUNK_OVERLAY_RES
                     );
+                }
+            }
+        }
+    }
 
-                    context.fillStyle = metaBuilding.getSilhouetteColor();
-                    if (overlayMatrix) {
-                        for (let dx = 0; dx < 3; ++dx) {
-                            for (let dy = 0; dy < 3; ++dy) {
-                                const isFilled = overlayMatrix[dx + dy * 3];
-                                if (isFilled) {
-                                    context.fillRect(
-                                        x * CHUNK_OVERLAY_RES + dx,
-                                        y * CHUNK_OVERLAY_RES + dy,
-                                        1,
-                                        1
-                                    );
-                                }
-                            }
-                        }
-
-                        continue;
-                    } else {
+    /**
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} x
+     * @param {number} y
+     * @param {Entity} entity
+     * @param {number} tileSizePixels
+     */
+    static drawSingleWiresOverviewTile(context, x, y, entity, tileSizePixels) {
+        const staticComp = entity.components.StaticMapEntity;
+        const data = getBuildingDataFromCode(staticComp.code);
+        const metaBuilding = data.metaInstance;
+        const overlayMatrix = metaBuilding.getSpecialOverlayRenderMatrix(
+            staticComp.rotation,
+            data.rotationVariant,
+            data.variant,
+            entity
+        );
+        context.fillStyle = metaBuilding.getSilhouetteColor();
+        if (overlayMatrix) {
+            for (let dx = 0; dx < 3; ++dx) {
+                for (let dy = 0; dy < 3; ++dy) {
+                    const isFilled = overlayMatrix[dx + dy * 3];
+                    if (isFilled) {
                         context.fillRect(
-                            x * CHUNK_OVERLAY_RES,
-                            y * CHUNK_OVERLAY_RES,
-                            CHUNK_OVERLAY_RES,
-                            CHUNK_OVERLAY_RES
+                            x + (dx * tileSizePixels) / CHUNK_OVERLAY_RES,
+                            y + (dy * tileSizePixels) / CHUNK_OVERLAY_RES,
+                            tileSizePixels / CHUNK_OVERLAY_RES,
+                            tileSizePixels / CHUNK_OVERLAY_RES
                         );
-
-                        continue;
                     }
                 }
             }
+        } else {
+            context.fillRect(x, y, tileSizePixels, tileSizePixels);
         }
     }
 

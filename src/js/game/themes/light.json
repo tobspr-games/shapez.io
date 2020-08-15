@@ -35,7 +35,8 @@
         },
 
         "wires": {
-            "overlayColor": "rgba(97, 161, 152, 0.75)"
+            "overlayColor": "rgba(97, 161, 152, 0.75)",
+            "previewColor": "rgb(97, 161, 152, 0.4)"
         }
     },
 

@@ -2,33 +2,46 @@ import { freeCanvas, makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { globalConfig } from "../../../core/config";
 import { Loader } from "../../../core/loader";
 import { Vector } from "../../../core/vector";
-import { getBuildingDataFromCode } from "../../building_codes";
+import { MapChunkView } from "../../map_chunk_view";
 import { enumLayer } from "../../root";
+import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
-
-const PREVIEW_SIZE = 512;
 
 /**
  * Helper class which allows peaking through to the wires layer
  */
 export class HUDLayerPreview extends BaseHUDPart {
     initialize() {
-        const [canvas, context] = makeOffscreenBuffer(PREVIEW_SIZE, PREVIEW_SIZE, {
+        this.initializeCanvas();
+        this.root.signals.aboutToDestruct.add(() => freeCanvas(this.canvas));
+        this.root.signals.resized.add(this.initializeCanvas, this);
+        this.previewOverlay = Loader.getSprite("sprites/wires/wires_preview.png");
+    }
+
+    /**
+     * (re) initializes the canvas
+     */
+    initializeCanvas() {
+        if (this.canvas) {
+            freeCanvas(this.canvas);
+            delete this.canvas;
+            delete this.context;
+        }
+
+        // Compute how big the preview should be
+        this.previewSize = Math.round(
+            Math.min(1024, Math.min(this.root.gameWidth, this.root.gameHeight) * 0.8)
+        );
+
+        const [canvas, context] = makeOffscreenBuffer(this.previewSize, this.previewSize, {
             smooth: true,
             label: "layerPeeker",
             reusable: true,
         });
 
-        context.clearRect(0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
-        context.fillStyle = "red";
-        context.fillRect(0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
-
+        context.clearRect(0, 0, this.previewSize, this.previewSize);
         this.canvas = canvas;
         this.context = context;
-
-        this.root.signals.aboutToDestruct.add(() => freeCanvas(this.canvas));
-
-        this.previewOverlay = Loader.getSprite("sprites/wires/wires_preview.png");
     }
 
     /**
@@ -38,11 +51,11 @@ export class HUDLayerPreview extends BaseHUDPart {
      * @param {number} scale 1 / zoomLevel
      */
     prepareCanvasForPreview(worldPos, scale) {
-        this.context.clearRect(0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
-        this.context.fillStyle = "rgba(0, 0, 0, 0.5)";
-        this.context.fillRect(0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
+        this.context.clearRect(0, 0, this.previewSize, this.previewSize);
+        this.context.fillStyle = THEME.map.wires.previewColor;
+        this.context.fillRect(0, 0, this.previewSize, this.previewSize);
 
-        const dimensions = scale * PREVIEW_SIZE;
+        const dimensions = scale * this.previewSize;
 
         const startWorldX = worldPos.x - dimensions / 2;
         const startWorldY = worldPos.y - dimensions / 2;
@@ -50,7 +63,6 @@ export class HUDLayerPreview extends BaseHUDPart {
         const startTileX = Math.floor(startWorldX / globalConfig.tileSize);
         const startTileY = Math.floor(startWorldY / globalConfig.tileSize);
         const tileDimensions = Math.ceil(dimensions / globalConfig.tileSize);
-        console.log(startTileX, startTileY);
 
         this.context.save();
         this.context.scale(1 / scale, 1 / scale);
@@ -66,46 +78,20 @@ export class HUDLayerPreview extends BaseHUDPart {
 
                 const content = this.root.map.getLayerContentXY(tileX, tileY, enumLayer.wires);
                 if (content) {
-                    const staticComp = content.components.StaticMapEntity;
-                    const data = getBuildingDataFromCode(staticComp.code);
-                    const metaBuilding = data.metaInstance;
-                    const overlayMatrix = metaBuilding.getSpecialOverlayRenderMatrix(
-                        staticComp.rotation,
-                        data.rotationVariant,
-                        data.variant,
-                        content
+                    MapChunkView.drawSingleWiresOverviewTile(
+                        this.context,
+                        dx * globalConfig.tileSize,
+                        dy * globalConfig.tileSize,
+                        content,
+                        globalConfig.tileSize
                     );
-
-                    this.context.fillStyle = metaBuilding.getSilhouetteColor();
-                    if (overlayMatrix) {
-                        for (let subX = 0; subX < 3; ++subX) {
-                            for (let subY = 0; subY < 3; ++subY) {
-                                const isFilled = overlayMatrix[subX + subY * 3];
-                                if (isFilled) {
-                                    this.context.fillRect(
-                                        dx * globalConfig.tileSize + (subX * globalConfig.tileSize) / 3,
-                                        dy * globalConfig.tileSize + (subY * globalConfig.tileSize) / 3,
-                                        globalConfig.tileSize / 3,
-                                        globalConfig.tileSize / 3
-                                    );
-                                }
-                            }
-                        }
-                    } else {
-                        this.context.fillRect(
-                            dx * globalConfig.tileSize,
-                            dy * globalConfig.tileSize,
-                            globalConfig.tileSize,
-                            globalConfig.tileSize
-                        );
-                    }
                 }
             }
         }
 
         this.context.restore();
-        this.context.globalCompositeOperation = "source-in";
-        this.previewOverlay.draw(this.context, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
+        this.context.globalCompositeOperation = "destination-in";
+        this.previewOverlay.draw(this.context, 0, 0, this.previewSize, this.previewSize);
         this.context.globalCompositeOperation = "source-over";
 
         return this.canvas;
@@ -125,12 +111,14 @@ export class HUDLayerPreview extends BaseHUDPart {
 
         const canvas = this.prepareCanvasForPreview(worldPos, scale);
 
+        parameters.context.globalAlpha = 0.3;
         parameters.context.drawImage(
             canvas,
-            worldPos.x - (scale * PREVIEW_SIZE) / 2,
-            worldPos.y - (scale * PREVIEW_SIZE) / 2,
-            scale * PREVIEW_SIZE,
-            scale * PREVIEW_SIZE
+            worldPos.x - (scale * this.previewSize) / 2,
+            worldPos.y - (scale * this.previewSize) / 2,
+            scale * this.previewSize,
+            scale * this.previewSize
         );
+        parameters.context.globalAlpha = 1;
     }
 }

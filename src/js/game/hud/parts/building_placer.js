@@ -248,7 +248,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             this.drawRegularPlacement(parameters);
         }
 
-        this.drawLayerPeek(parameters);
+        if (metaBuilding.getShowWiresLayerPreview()) {
+            this.drawLayerPeek(parameters);
+        }
     }
 
     /**
