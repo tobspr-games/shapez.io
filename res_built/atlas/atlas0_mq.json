@@ -1010,7 +1010,7 @@
 },
 "sprites/misc/slot_bad_arrow.png":
 {
-	"frame": {"x":717,"y":569,"w":24,"h":24},
+	"frame": {"x":717,"y":605,"w":24,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":24,"h":24},
@@ -1018,7 +1018,7 @@
 },
 "sprites/misc/slot_good_arrow.png":
 {
-	"frame": {"x":717,"y":539,"w":24,"h":26},
+	"frame": {"x":717,"y":575,"w":24,"h":26},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":24,"h":26},
@@ -1034,7 +1034,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":717,"y":503,"w":26,"h":32},
+	"frame": {"x":717,"y":539,"w":26,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":3,"y":0,"w":26,"h":32},
@@ -1042,7 +1042,7 @@
 },
 "sprites/wires/boolean_false.png":
 {
-	"frame": {"x":717,"y":597,"w":15,"h":20},
+	"frame": {"x":717,"y":633,"w":15,"h":20},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":7,"w":15,"h":20},
@@ -1050,7 +1050,7 @@
 },
 "sprites/wires/boolean_true.png":
 {
-	"frame": {"x":715,"y":721,"w":12,"h":21},
+	"frame": {"x":715,"y":757,"w":12,"h":21},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":6,"w":12,"h":21},
@@ -1136,6 +1136,22 @@
 	"spriteSourceSize": {"x":29,"y":0,"w":41,"h":45},
 	"sourceSize": {"w":96,"h":96}
 },
+"sprites/wires/network_conflict.png":
+{
+	"frame": {"x":440,"y":803,"w":32,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":32,"h":30},
+	"sourceSize": {"w":32,"h":32}
+},
+"sprites/wires/network_empty.png":
+{
+	"frame": {"x":717,"y":503,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
 "sprites/wires/overlay_tile.png":
 {
 	"frame": {"x":955,"y":3,"w":64,"h":64},
@@ -1186,7 +1202,7 @@
 },
 "sprites/wires/sets/conflict_forward.png":
 {
-	"frame": {"x":717,"y":621,"w":12,"h":96},
+	"frame": {"x":717,"y":657,"w":12,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":42,"y":0,"w":12,"h":96},
@@ -1287,6 +1303,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":2048},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:2d1cf13d72f57d35286eff6ea2dc4baf:37ea54415549690e46769bf06ba5be07:908b89f5ca8ff73e331a35a3b14d0604$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9bd368ae0b2aae72402b6bf839999ece:a43ffc40e72c7a025dd537be932491bf:908b89f5ca8ff73e331a35a3b14d0604$"
 }
 }

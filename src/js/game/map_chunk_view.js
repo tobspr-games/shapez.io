@@ -192,26 +192,28 @@ export class MapChunkView extends MapChunk {
                     if (!content) {
                         continue;
                     }
-                    MapChunkView.drawSingleWiresOverviewTile(
+                    MapChunkView.drawSingleWiresOverviewTile({
                         context,
-                        x * CHUNK_OVERLAY_RES,
-                        y * CHUNK_OVERLAY_RES,
-                        content,
-                        CHUNK_OVERLAY_RES
-                    );
+                        x: x * CHUNK_OVERLAY_RES,
+                        y: y * CHUNK_OVERLAY_RES,
+                        entity: content,
+                        tileSizePixels: CHUNK_OVERLAY_RES,
+                    });
                 }
             }
         }
     }
 
     /**
-     * @param {CanvasRenderingContext2D} context
-     * @param {number} x
-     * @param {number} y
-     * @param {Entity} entity
-     * @param {number} tileSizePixels
+     * @param {object} param0
+     * @param {CanvasRenderingContext2D} param0.context
+     * @param {number} param0.x
+     * @param {number} param0.y
+     * @param {Entity} param0.entity
+     * @param {number} param0.tileSizePixels
+     * @param {string=} param0.overrideColor Optionally override the color to be rendered
      */
-    static drawSingleWiresOverviewTile(context, x, y, entity, tileSizePixels) {
+    static drawSingleWiresOverviewTile({ context, x, y, entity, tileSizePixels, overrideColor = null }) {
         const staticComp = entity.components.StaticMapEntity;
         const data = getBuildingDataFromCode(staticComp.code);
         const metaBuilding = data.metaInstance;
@@ -221,7 +223,7 @@ export class MapChunkView extends MapChunk {
             data.variant,
             entity
         );
-        context.fillStyle = metaBuilding.getSilhouetteColor();
+        context.fillStyle = overrideColor || metaBuilding.getSilhouetteColor();
         if (overlayMatrix) {
             for (let dx = 0; dx < 3; ++dx) {
                 for (let dy = 0; dy < 3; ++dy) {

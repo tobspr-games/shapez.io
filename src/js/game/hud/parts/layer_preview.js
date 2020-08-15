@@ -78,13 +78,13 @@ export class HUDLayerPreview extends BaseHUDPart {
 
                 const content = this.root.map.getLayerContentXY(tileX, tileY, enumLayer.wires);
                 if (content) {
-                    MapChunkView.drawSingleWiresOverviewTile(
-                        this.context,
-                        dx * globalConfig.tileSize,
-                        dy * globalConfig.tileSize,
-                        content,
-                        globalConfig.tileSize
-                    );
+                    MapChunkView.drawSingleWiresOverviewTile({
+                        context: this.context,
+                        x: dx * globalConfig.tileSize,
+                        y: dy * globalConfig.tileSize,
+                        entity: content,
+                        tileSizePixels: globalConfig.tileSize,
+                    });
                 }
             }
         }

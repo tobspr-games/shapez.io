@@ -4,7 +4,7 @@ import { round3Digits } from "./utils";
 
 const floorSpriteCoordinates = false;
 
-export const ORIGINAL_SPRITE_SCALE = "0.5";
+export const ORIGINAL_SPRITE_SCALE = "0.75";
 
 export class BaseSprite {
     /**

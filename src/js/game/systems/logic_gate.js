@@ -62,7 +62,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
         const param2 = parameters[1];
         if (!param1 || !param2) {
             // Not enough params
-            return null;
+            return BOOL_FALSE_SINGLETON;
         }
 
         const itemType = param1.getItemType();
@@ -88,7 +88,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
     compute_NOT(parameters) {
         const item = parameters[0];
         if (!item) {
-            return BOOL_FALSE_SINGLETON;
+            return BOOL_TRUE_SINGLETON;
         }
 
         if (item.getItemType() !== enumItemType.boolean) {
@@ -109,25 +109,24 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
         const param1 = parameters[0];
         const param2 = parameters[1];
-        if (!param1 || !param2) {
+        if (!param1 && !param2) {
             // Not enough params
-            return null;
-        }
-
-        const itemType = param1.getItemType();
-
-        if (itemType !== param2.getItemType()) {
-            // Differing type
             return BOOL_FALSE_SINGLETON;
         }
 
-        if (itemType === enumItemType.boolean) {
-            return /** @type {BooleanItem} */ (param1).value ^ /** @type {BooleanItem} */ (param2).value
-                ? BOOL_TRUE_SINGLETON
-                : BOOL_FALSE_SINGLETON;
+        // Check for the right types
+        if (param1 && param1.getItemType() !== enumItemType.boolean) {
+            return BOOL_FALSE_SINGLETON;
         }
 
-        return BOOL_FALSE_SINGLETON;
+        if (param2 && param2.getItemType() !== enumItemType.boolean) {
+            return BOOL_FALSE_SINGLETON;
+        }
+
+        const valueParam1 = param1 ? /** @type {BooleanItem} */ (param1).value : 0;
+        const valueParam2 = param2 ? /** @type {BooleanItem} */ (param2).value : 0;
+
+        return valueParam1 ^ valueParam2 ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
     }
 
     /**
@@ -139,25 +138,21 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
         const param1 = parameters[0];
         const param2 = parameters[1];
-        if (!param1 || !param2) {
+        if (!param1 && !param2) {
             // Not enough params
-            return null;
-        }
-
-        const itemType = param1.getItemType();
-
-        if (itemType !== param2.getItemType()) {
-            // Differing type
             return BOOL_FALSE_SINGLETON;
         }
 
-        if (itemType === enumItemType.boolean) {
-            return /** @type {BooleanItem} */ (param1).value || /** @type {BooleanItem} */ (param2).value
-                ? BOOL_TRUE_SINGLETON
-                : BOOL_FALSE_SINGLETON;
-        }
+        const valueParam1 =
+            param1 && param1.getItemType() === enumItemType.boolean
+                ? /** @type {BooleanItem} */ (param1).value
+                : 0;
+        const valueParam2 =
+            param2 && param2.getItemType() === enumItemType.boolean
+                ? /** @type {BooleanItem} */ (param2).value
+                : 0;
 
-        return BOOL_FALSE_SINGLETON;
+        return valueParam1 || valueParam2 ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
     }
 
     /**

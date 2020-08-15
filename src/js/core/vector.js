@@ -1,4 +1,5 @@
 import { globalConfig } from "./config";
+import { safeModulo } from "./utils";
 
 const tileSize = globalConfig.tileSize;
 const halfTileSize = globalConfig.halfTileSize;
@@ -285,6 +286,15 @@ export class Vector {
         const dx = this.x - v.x;
         const dy = this.y - v.y;
         return dx * dx + dy * dy;
+    }
+
+    /**
+     * Returns x % f, y % f
+     * @param {number} f
+     * @returns {Vector} new vector
+     */
+    modScalar(f) {
+        return new Vector(safeModulo(this.x, f), safeModulo(this.y, f));
     }
 
     /**

@@ -2,9 +2,13 @@ import { createLogger } from "../core/logging";
 import { STOP_PROPAGATION } from "../core/signal";
 import { round2Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
+import { getBuildingDataFromCode } from "./building_codes";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
 import { enumLayer, GameRoot } from "./root";
+import { WireNetwork } from "./systems/wire";
+import { globalConfig } from "../core/config";
+import { CHUNK_OVERLAY_RES } from "./map_chunk_view";
 
 const logger = createLogger("ingame/logic");
 
@@ -211,6 +215,92 @@ export class GameLogic {
         if (neighbourStatus === enumWireEdgeFlag.connected) {
             return true;
         }
+    }
+
+    /**
+     * Returns all wire networks this entity participates in on the given tile
+     * @param {Entity} entity
+     * @param {Vector} tile
+     * @returns {Array<WireNetwork>|null} Null if the entity is never able to be connected at the given tile
+     */
+    getEntityWireNetworks(entity, tile) {
+        let canConnectAtAll = false;
+
+        /** @type {Set<WireNetwork>} */
+        const networks = new Set();
+
+        const staticComp = entity.components.StaticMapEntity;
+        const wireComp = entity.components.Wire;
+        if (wireComp) {
+            canConnectAtAll = true;
+            if (wireComp.linkedNetwork) {
+                networks.add(wireComp.linkedNetwork);
+            }
+        }
+
+        const tunnelComp = entity.components.WireTunnel;
+        if (tunnelComp) {
+            canConnectAtAll = true;
+            for (let i = 0; i < tunnelComp.linkedNetworks.length; ++i) {
+                networks.add(tunnelComp.linkedNetworks[i]);
+            }
+        }
+
+        const pinsComp = entity.components.WiredPins;
+        if (pinsComp) {
+            const slots = pinsComp.slots;
+            for (let i = 0; i < slots.length; ++i) {
+                const slot = slots[i];
+                const slotLocalPos = staticComp.localTileToWorld(slot.pos);
+                if (slotLocalPos.equals(tile)) {
+                    canConnectAtAll = true;
+                    if (slot.linkedNetwork) {
+                        networks.add(slot.linkedNetwork);
+                    }
+                }
+            }
+        }
+
+        if (!canConnectAtAll) {
+            return null;
+        }
+
+        return Array.from(networks);
+    }
+
+    /**
+     * Returns if the entities tile *and* his overlay matrix is intersected
+     * @param {Entity} entity
+     * @param {Vector} worldPos
+     */
+    getIsEntityIntersectedWithMatrix(entity, worldPos) {
+        const staticComp = entity.components.StaticMapEntity;
+        const tile = worldPos.toTileSpace();
+
+        if (!staticComp.getTileSpaceBounds().containsPoint(tile.x, tile.y)) {
+            // No intersection at all
+            return;
+        }
+
+        const data = getBuildingDataFromCode(staticComp.code);
+        const overlayMatrix = data.metaInstance.getSpecialOverlayRenderMatrix(
+            staticComp.rotation,
+            data.rotationVariant,
+            data.variant,
+            entity
+        );
+        // Always the same
+        if (!overlayMatrix) {
+            return true;
+        }
+
+        const localPosition = worldPos
+            .divideScalar(globalConfig.tileSize)
+            .modScalar(1)
+            .multiplyScalar(CHUNK_OVERLAY_RES)
+            .floor();
+
+        return !!overlayMatrix[localPosition.x + localPosition.y * 3];
     }
 
     /**
