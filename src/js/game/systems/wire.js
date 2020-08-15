@@ -624,7 +624,7 @@ export class WireSystem extends GameSystemWithFilter {
                     assert(sprite, "Unknown wire type: " + wireType);
                     const staticComp = entity.components.StaticMapEntity;
                     parameters.context.globalAlpha = opacity;
-                    staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
+                    staticComp.drawSpriteOnBoundsClipped(parameters, sprite, 0);
                     parameters.context.globalAlpha = 1;
 
                     if (G_IS_DEV && globalConfig.debug.renderWireRotations) {

@@ -39,7 +39,23 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                     const { pos, direction } = underlays[i];
                     const transformedPos = staticComp.localTileToWorld(pos);
 
+                    // Culling
                     if (!chunk.tileSpaceRectangle.containsPoint(transformedPos.x, transformedPos.y)) {
+                        continue;
+                    }
+
+                    const destX = transformedPos.x * globalConfig.tileSize;
+                    const destY = transformedPos.y * globalConfig.tileSize;
+
+                    // Culling, #2
+                    if (
+                        parameters.visibleRect.containsRect4Params(
+                            destX,
+                            destY,
+                            globalConfig.tileSize,
+                            globalConfig.tileSize
+                        )
+                    ) {
                         continue;
                     }
 
@@ -54,8 +70,8 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                     drawRotatedSprite({
                         parameters,
                         sprite: this.underlayBeltSprites[animationIndex % this.underlayBeltSprites.length],
-                        x: (transformedPos.x + 0.5) * globalConfig.tileSize,
-                        y: (transformedPos.y + 0.5) * globalConfig.tileSize,
+                        x: destX + globalConfig.halfTileSize,
+                        y: destY + globalConfig.halfTileSize,
                         angle: Math.radians(angle),
                         size: globalConfig.tileSize,
                     });

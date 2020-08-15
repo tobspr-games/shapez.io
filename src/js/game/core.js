@@ -329,8 +329,7 @@ export class GameCore {
             return;
         }
 
-        // Update buffers as the very first
-        root.buffers.update();
+        this.root.signals.gameFrameStarted.dispatch();
 
         root.queue.requireRedraw = false;
 
@@ -390,23 +389,17 @@ export class GameCore {
             // Map overview
             root.map.drawOverlay(params);
         } else {
+            // Background (grid, resources, etc)
             root.map.drawBackground(params);
 
             // Belt items
             systems.belt.drawBeltItems(params);
 
-            // Items being ejected / accepted currently (animations)
-            systems.itemEjector.draw(params);
-            systems.itemAcceptor.draw(params);
-
-            // Miner & Static map entities
+            // Miner & Static map entities etc.
             root.map.drawForeground(params);
 
             // HUB Overlay
             systems.hub.draw(params);
-
-            // Storage items
-            systems.storage.draw(params);
 
             // Green wires overlay
             root.hud.parts.wiresOverlay.draw(params);
@@ -414,9 +407,6 @@ export class GameCore {
             if (this.root.currentLayer === "wires") {
                 // Static map entities
                 root.map.drawWiresForegroundLayer(params);
-
-                // pins
-                systems.wiredPins.draw(params);
             }
         }
 

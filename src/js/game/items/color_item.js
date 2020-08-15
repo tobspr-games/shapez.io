@@ -5,6 +5,7 @@ import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { enumColors, enumColorsToHexCode } from "../colors";
 import { THEME } from "../theme";
+import { drawSpriteClipped } from "../../core/draw_utils";
 
 export class ColorItem extends BaseItem {
     static getId() {
@@ -54,23 +55,33 @@ export class ColorItem extends BaseItem {
      * @param {number} diameter
      * @param {DrawParameters} parameters
      */
-    drawCentered(x, y, parameters, diameter = 12) {
+    drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
         if (!this.bufferGenerator) {
             this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
         }
 
+        const realDiameter = diameter * 0.6;
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
-
-        const key = diameter + "/" + dpi;
+        const key = realDiameter + "/" + dpi;
         const canvas = parameters.root.buffers.getForKey({
             key,
             subKey: this.color,
-            w: diameter,
-            h: diameter,
+            w: realDiameter,
+            h: realDiameter,
             dpi,
             redrawMethod: this.bufferGenerator,
         });
-        parameters.context.drawImage(canvas, x - diameter / 2, y - diameter / 2, diameter, diameter);
+
+        drawSpriteClipped({
+            parameters,
+            sprite: canvas,
+            x: x - realDiameter / 2,
+            y: y - realDiameter / 2,
+            w: realDiameter,
+            h: realDiameter,
+            originalW: realDiameter * dpi,
+            originalH: realDiameter * dpi,
+        });
     }
     /**
      *

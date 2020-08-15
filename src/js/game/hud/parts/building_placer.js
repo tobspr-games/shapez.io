@@ -374,7 +374,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         // HACK to draw the entity sprite
         const previewSprite = metaBuilding.getBlueprintSprite(rotationVariant, this.currentVariant.get());
         staticComp.origin = worldPos.divideScalar(globalConfig.tileSize).subScalars(0.5, 0.5);
-        staticComp.drawSpriteOnFullEntityBounds(parameters, previewSprite);
+        staticComp.drawSpriteOnBoundsClipped(parameters, previewSprite);
         staticComp.origin = mouseTile;
 
         // Draw ejectors

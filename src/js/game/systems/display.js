@@ -66,9 +66,11 @@ export class DisplaySystem extends GameSystemWithFilter {
             if (entity && entity.components.Display) {
                 const pinsComp = entity.components.WiredPins;
                 const network = pinsComp.slots[0].linkedNetwork;
+
                 if (!network || !network.currentValue) {
                     continue;
                 }
+
                 const value = this.getDisplayItem(network.currentValue);
 
                 if (!value) {
@@ -84,7 +86,7 @@ export class DisplaySystem extends GameSystemWithFilter {
                         globalConfig.tileSize
                     );
                 } else if (value.getItemType() === "shape") {
-                    value.drawCentered(
+                    value.drawItemCenteredClipped(
                         (origin.x + 0.5) * globalConfig.tileSize,
                         (origin.y + 0.5) * globalConfig.tileSize,
                         parameters,

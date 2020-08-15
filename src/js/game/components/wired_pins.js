@@ -1,6 +1,8 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { types } from "../../savegame/serialization";
+import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumPinSlotType = {
@@ -25,6 +27,16 @@ export const enumPinSlotType = {
 export class WiredPinsComponent extends Component {
     static getId() {
         return "WiredPins";
+    }
+
+    static getSchema() {
+        return {
+            slots: types.array(
+                types.structured({
+                    value: types.nullable(typeItemSingleton),
+                })
+            ),
+        };
     }
 
     /**

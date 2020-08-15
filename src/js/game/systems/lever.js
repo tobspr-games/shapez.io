@@ -34,8 +34,9 @@ export class LeverSystem extends GameSystemWithFilter {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
-            if (entity && entity.components.Lever) {
-                const sprite = entity.components.Lever.toggled ? this.spriteOn : this.spriteOff;
+            const leverComp = entity.components.Lever;
+            if (leverComp) {
+                const sprite = leverComp.toggled ? this.spriteOn : this.spriteOff;
                 const origin = entity.components.StaticMapEntity.origin;
                 sprite.drawCached(
                     parameters,

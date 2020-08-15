@@ -52,10 +52,16 @@ export class MapChunkView extends MapChunk {
      */
     drawForegroundLayer(parameters) {
         const systems = this.root.systemMgr.systems;
+
+        systems.itemEjector.drawChunk(parameters, this);
+        systems.itemAcceptor.drawChunk(parameters, this);
+
         systems.miner.drawChunk(parameters, this);
+
         systems.staticMapEntities.drawChunk(parameters, this);
         systems.lever.drawChunk(parameters, this);
         systems.display.drawChunk(parameters, this);
+        systems.storage.drawChunk(parameters, this);
     }
 
     /**
@@ -97,11 +103,9 @@ export class MapChunkView extends MapChunk {
 
                 const destX = this.x * dims + patch.pos.x * globalConfig.tileSize;
                 const destY = this.y * dims + patch.pos.y * globalConfig.tileSize;
-                const destSize = Math.min(80, 30 / parameters.zoomLevel);
+                const diameter = Math.min(80, 30 / parameters.zoomLevel);
 
-                if (parameters.visibleRect.containsCircle(destX, destY, destSize)) {
-                    patch.item.drawCentered(destX, destY, parameters, destSize);
-                }
+                patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
             }
         }
     }
@@ -265,5 +269,6 @@ export class MapChunkView extends MapChunk {
         const systems = this.root.systemMgr.systems;
         systems.wire.drawChunk(parameters, this);
         systems.staticMapEntities.drawWiresChunk(parameters, this);
+        systems.wiredPins.drawChunk(parameters, this);
     }
 }

@@ -27,6 +27,8 @@ export class BufferMaintainer {
 
         this.iterationIndex = 1;
         this.lastIteration = 0;
+
+        this.root.signals.gameFrameStarted.add(this.update, this);
     }
 
     /**
