@@ -53,8 +53,6 @@ export class HUDWireInfo extends BaseHUDPart {
 
         if (networks.length === 0) {
             // No network at all
-            parameters.context.fillStyle = "#333";
-            this.spriteEmpty.draw(parameters.context, mousePos.x + 10, mousePos.y - 10, 40, 40);
             return;
         }
 

@@ -377,6 +377,23 @@ export class Rectangle {
     }
 
     /**
+     * Good for printing stuff
+     */
+    toString() {
+        return (
+            "[x:" +
+            round2Digits(this.x) +
+            "| y:" +
+            round2Digits(this.y) +
+            "| w:" +
+            round2Digits(this.w) +
+            "| h:" +
+            round2Digits(this.h) +
+            "]"
+        );
+    }
+
+    /**
      * Returns a new recangle in tile space which includes all tiles which are visible in this rect
      * @param {boolean=} includeHalfTiles
      * @returns {Rectangle}

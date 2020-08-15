@@ -57,7 +57,7 @@ export class HUDChangesDebugger extends BaseHUDPart {
         for (let i = 0; i < this.changes.length; ++i) {
             const change = this.changes[i];
             parameters.context.fillStyle = change.fillColor;
-            parameters.context.globalAlpha = 0.5;
+            parameters.context.globalAlpha = 0.2;
             parameters.context.fillRect(
                 change.area.x * globalConfig.tileSize,
                 change.area.y * globalConfig.tileSize,

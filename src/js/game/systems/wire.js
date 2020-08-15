@@ -2,6 +2,9 @@ import { globalConfig } from "../../core/config";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
+import { Rectangle } from "../../core/rectangle";
+import { StaleAreaDetector } from "../../core/stale_area_detector";
+import { fastArrayDeleteValueIfContained } from "../../core/utils";
 import {
     arrayAllDirections,
     enumDirection,
@@ -14,13 +17,11 @@ import { arrayWireRotationVariantToType, MetaWireBuilding } from "../buildings/w
 import { getCodeFromBuildingData } from "../building_codes";
 import { enumWireType, WireComponent } from "../components/wire";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
+import { WireTunnelComponent } from "../components/wire_tunnel";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
-import { WireTunnelComponent } from "../components/wire_tunnel";
-import { fastArrayDeleteValueIfContained } from "../../core/utils";
-import { BooleanItem } from "../items/boolean_item";
 
 const logger = createLogger("wires");
 
@@ -110,14 +111,20 @@ export class WireSystem extends GameSystemWithFilter {
             },
         };
 
-        this.root.signals.entityDestroyed.add(this.updateSurroundingWirePlacement, this);
-        this.root.signals.entityAdded.add(this.updateSurroundingWirePlacement, this);
+        this.root.signals.entityDestroyed.add(this.queuePlacementUpdate, this);
+        this.root.signals.entityAdded.add(this.queuePlacementUpdate, this);
 
         this.root.signals.entityDestroyed.add(this.queueRecomputeIfWire, this);
         this.root.signals.entityChanged.add(this.queueRecomputeIfWire, this);
         this.root.signals.entityAdded.add(this.queueRecomputeIfWire, this);
 
         this.needsRecompute = true;
+
+        this.staleArea = new StaleAreaDetector({
+            root: this.root,
+            name: "wires",
+            recomputeMethod: this.updateSurroundingWirePlacement.bind(this),
+        });
 
         /**
          * @type {Array<WireNetwork>}
@@ -134,7 +141,7 @@ export class WireSystem extends GameSystemWithFilter {
             return;
         }
 
-        if (entity.components.Wire || entity.components.WiredPins || entity.components.WireTunnel) {
+        if (this.isEntityRelevantForWires(entity)) {
             this.needsRecompute = true;
             this.networks = [];
         }
@@ -485,6 +492,8 @@ export class WireSystem extends GameSystemWithFilter {
      * Updates the wires network
      */
     update() {
+        this.staleArea.update();
+
         if (this.needsRecompute) {
             this.recomputeWiresNetwork();
         }
@@ -668,11 +677,23 @@ export class WireSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Updates the wire placement after an entity has been added / deleted
+     * Returns whether this entity is relevant for the wires network
      * @param {Entity} entity
      */
-    updateSurroundingWirePlacement(entity) {
+    isEntityRelevantForWires(entity) {
+        return entity.components.Wire || entity.components.WiredPins || entity.components.WireTunnel;
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     */
+    queuePlacementUpdate(entity) {
         if (!this.root.gameInitialized) {
+            return;
+        }
+
+        if (!this.isEntityRelevantForWires(entity)) {
             return;
         }
 
@@ -681,19 +702,21 @@ export class WireSystem extends GameSystemWithFilter {
             return;
         }
 
-        const metaWire = gMetaBuildingRegistry.findByClass(MetaWireBuilding);
-
-        // Compute affected area
+        // Invalidate affected area
         const originalRect = staticComp.getTileSpaceBounds();
         const affectedArea = originalRect.expandedInAllDirections(1);
+        this.staleArea.invalidate(affectedArea);
+    }
+
+    /**
+     * Updates the wire placement after an entity has been added / deleted
+     * @param {Rectangle} affectedArea
+     */
+    updateSurroundingWirePlacement(affectedArea) {
+        const metaWire = gMetaBuildingRegistry.findByClass(MetaWireBuilding);
 
         for (let x = affectedArea.x; x < affectedArea.right(); ++x) {
             for (let y = affectedArea.y; y < affectedArea.bottom(); ++y) {
-                if (originalRect.containsPoint(x, y)) {
-                    // Make sure we don't update the original entity
-                    continue;
-                }
-
                 const targetEntities = this.root.map.getLayersContentsMultipleXY(x, y);
                 for (let i = 0; i < targetEntities.length; ++i) {
                     const targetEntity = targetEntities[i];
