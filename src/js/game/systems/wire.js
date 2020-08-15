@@ -317,7 +317,9 @@ export class WireSystem extends GameSystemWithFilter {
 
         if (
             currentNetwork.providers.length > 0 &&
-            (currentNetwork.wires.length > 0 || currentNetwork.receivers.length > 0)
+            (currentNetwork.wires.length > 0 ||
+                currentNetwork.receivers.length > 0 ||
+                currentNetwork.tunnels.length > 0)
         ) {
             this.networks.push(currentNetwork);
             VERBOSE_WIRES && logger.log("Attached new network with uid", currentNetwork);
