@@ -1,6 +1,6 @@
 import { LogicGateComponent, enumLogicGateType } from "../components/logic_gate";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { enumPinSlotType } from "../components/wired_pins";
 import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON, BooleanItem } from "../items/boolean_item";
 import { enumItemProcessorTypes } from "../components/item_processor";
@@ -72,7 +72,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
             return BOOL_FALSE_SINGLETON;
         }
 
-        if (itemType === enumItemType.boolean) {
+        if (itemType === "boolean") {
             return /** @type {BooleanItem} */ (param1).value && /** @type {BooleanItem} */ (param2).value
                 ? BOOL_TRUE_SINGLETON
                 : BOOL_FALSE_SINGLETON;
@@ -91,7 +91,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
             return BOOL_TRUE_SINGLETON;
         }
 
-        if (item.getItemType() !== enumItemType.boolean) {
+        if (item.getItemType() !== "boolean") {
             // Not a boolean actually
             return BOOL_FALSE_SINGLETON;
         }
@@ -115,11 +115,11 @@ export class LogicGateSystem extends GameSystemWithFilter {
         }
 
         // Check for the right types
-        if (param1 && param1.getItemType() !== enumItemType.boolean) {
+        if (param1 && param1.getItemType() !== "boolean") {
             return BOOL_FALSE_SINGLETON;
         }
 
-        if (param2 && param2.getItemType() !== enumItemType.boolean) {
+        if (param2 && param2.getItemType() !== "boolean") {
             return BOOL_FALSE_SINGLETON;
         }
 
@@ -144,13 +144,9 @@ export class LogicGateSystem extends GameSystemWithFilter {
         }
 
         const valueParam1 =
-            param1 && param1.getItemType() === enumItemType.boolean
-                ? /** @type {BooleanItem} */ (param1).value
-                : 0;
+            param1 && param1.getItemType() === "boolean" ? /** @type {BooleanItem} */ (param1).value : 0;
         const valueParam2 =
-            param2 && param2.getItemType() === enumItemType.boolean
-                ? /** @type {BooleanItem} */ (param2).value
-                : 0;
+            param2 && param2.getItemType() === "boolean" ? /** @type {BooleanItem} */ (param2).value : 0;
 
         return valueParam1 || valueParam2 ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
     }
@@ -169,7 +165,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
             return null;
         }
 
-        if (flag.getItemType() !== enumItemType.boolean) {
+        if (flag.getItemType() !== "boolean") {
             // Flag is not a boolean
             return null;
         }

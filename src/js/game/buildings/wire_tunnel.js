@@ -1,7 +1,7 @@
 import { Vector } from "../../core/vector";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
+import { GameRoot } from "../root";
 import { WireTunnelComponent } from "../components/wire_tunnel";
 import { generateMatrixRotations } from "../../core/utils";
 
@@ -55,8 +55,9 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
         return [defaultBuildingVariant, enumWireTunnelVariants.coating];
     }
 
+    /** @returns {"wires"} **/
     getLayer() {
-        return enumLayer.wires;
+        return "wires";
     }
 
     getRotateAutomaticallyWhilePlacing() {

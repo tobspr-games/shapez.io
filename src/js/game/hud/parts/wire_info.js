@@ -1,6 +1,5 @@
 import { globalConfig } from "../../../core/config";
 import { MapChunkView } from "../../map_chunk_view";
-import { enumLayer } from "../../root";
 import { WireNetwork } from "../../systems/wire";
 import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
@@ -17,7 +16,7 @@ export class HUDWireInfo extends BaseHUDPart {
      * @param {import("../../../core/draw_utils").DrawParameters} parameters
      */
     drawOverlays(parameters) {
-        if (this.root.currentLayer !== enumLayer.wires) {
+        if (this.root.currentLayer !== "wires") {
             // Not in the wires layer
             return;
         }
@@ -30,7 +29,7 @@ export class HUDWireInfo extends BaseHUDPart {
 
         const worldPos = this.root.camera.screenToWorld(mousePos);
         const tile = worldPos.toTileSpace();
-        const entity = this.root.map.getLayerContentXY(tile.x, tile.y, enumLayer.wires);
+        const entity = this.root.map.getLayerContentXY(tile.x, tile.y, "wires");
 
         if (!entity) {
             // No entity

@@ -1,12 +1,8 @@
 import { DrawParameters } from "../core/draw_parameters";
 import { BasicSerializableObject } from "../savegame/serialization";
 
-/** @enum {string} */
-export const enumItemType = {
-    shape: "shape",
-    color: "color",
-    boolean: "boolean",
-};
+/** @type {ItemType[]} **/
+export const itemTypes = ["shape", "color", "boolean"];
 
 /**
  * Class for items on belts etc. Not an entity for performance reasons
@@ -25,10 +21,10 @@ export class BaseItem extends BasicSerializableObject {
         return {};
     }
 
-    /** @returns {enumItemType} */
+    /** @returns {ItemType} **/
     getItemType() {
         abstract;
-        return "";
+        return "shape";
     }
 
     /**

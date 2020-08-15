@@ -3,7 +3,6 @@ import { globalConfig } from "../../../core/config";
 import { Loader } from "../../../core/loader";
 import { Vector } from "../../../core/vector";
 import { MapChunkView } from "../../map_chunk_view";
-import { enumLayer } from "../../root";
 import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
 
@@ -76,7 +75,7 @@ export class HUDLayerPreview extends BaseHUDPart {
                 const tileX = dx + startTileX;
                 const tileY = dy + startTileY;
 
-                const content = this.root.map.getLayerContentXY(tileX, tileY, enumLayer.wires);
+                const content = this.root.map.getLayerContentXY(tileX, tileY, "wires");
                 if (content) {
                     MapChunkView.drawSingleWiresOverviewTile({
                         context: this.context,
@@ -104,7 +103,7 @@ export class HUDLayerPreview extends BaseHUDPart {
      * @param {number} scale 1 / zoomLevel
      */
     renderPreview(parameters, worldPos, scale) {
-        if (this.root.currentLayer !== enumLayer.regular) {
+        if (this.root.currentLayer !== "regular") {
             // Only supporting wires right now
             return;
         }

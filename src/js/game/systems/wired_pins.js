@@ -5,7 +5,6 @@ import { Vector, enumDirectionToAngle } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumLayer } from "../root";
 import { STOP_PROPAGATION } from "../../core/signal";
 import { drawRotatedSprite } from "../../core/draw_utils";
 import { GLOBAL_APP } from "../../core/globals";
@@ -38,7 +37,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
 
         // If this entity is placed on the wires layer, make sure we don't
         // place it above a pin
-        if (entity.layer === enumLayer.wires) {
+        if (entity.layer === "wires") {
             for (let x = rect.x; x < rect.x + rect.w; ++x) {
                 for (let y = rect.y; y < rect.y + rect.h; ++y) {
                     // Find which entities are in same tiles of both layers
@@ -103,7 +102,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             }
 
             // Check if there is any entity on that tile (Wired pins are always on the wires layer)
-            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, enumLayer.wires);
+            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
 
             // If there's an entity, and it can't get removed -> That's a collision
             if (collidingEntity) {
@@ -130,7 +129,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
         for (let i = 0; i < pinsComp.slots.length; ++i) {
             const slot = pinsComp.slots[i];
             const worldPos = entity.components.StaticMapEntity.localTileToWorld(slot.pos);
-            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, enumLayer.wires);
+            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
             if (collidingEntity) {
                 assertAlways(
                     collidingEntity.components.StaticMapEntity.getMetaBuilding().getIsReplaceable(),

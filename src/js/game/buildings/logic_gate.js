@@ -2,7 +2,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { enumLayer, GameRoot } from "../root";
+import { GameRoot } from "../root";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 
 /** @enum {string} */
@@ -39,8 +39,9 @@ export class MetaLogicGateBuilding extends MetaBuilding {
         return true;
     }
 
+    /** @returns {"wires"} **/
     getLayer() {
-        return enumLayer.wires;
+        return "wires";
     }
 
     getDimensions() {

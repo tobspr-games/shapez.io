@@ -4,7 +4,7 @@ import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
 import { MapChunkView } from "./map_chunk_view";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot } from "./root";
 
 export class BaseMap extends BasicSerializableObject {
     static getId() {
@@ -94,7 +94,7 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Returns the tile content of a given tile
      * @param {Vector} tile
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {Entity} Entity or null
      */
     getTileContent(tile, layer) {
@@ -119,7 +119,7 @@ export class BaseMap extends BasicSerializableObject {
      * Returns the tile content of a given tile
      * @param {number} x
      * @param {number} y
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {Entity} Entity or null
      */
     getLayerContentXY(x, y, layer) {
@@ -144,7 +144,7 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Checks if the tile is used
      * @param {Vector} tile
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {boolean}
      */
     isTileUsed(tile, layer) {
@@ -159,7 +159,7 @@ export class BaseMap extends BasicSerializableObject {
      * Checks if the tile is used
      * @param {number} x
      * @param {number} y
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {boolean}
      */
     isTileUsedXY(x, y, layer) {

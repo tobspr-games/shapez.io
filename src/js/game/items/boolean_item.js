@@ -1,7 +1,7 @@
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 
 export class BooleanItem extends BaseItem {
     static getId() {
@@ -20,8 +20,9 @@ export class BooleanItem extends BaseItem {
         this.value = data;
     }
 
+    /** @returns {"boolean"} **/
     getItemType() {
-        return enumItemType.boolean;
+        return "boolean";
     }
 
     /**

@@ -5,7 +5,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
+import { GameRoot } from "../root";
 import { globalConfig } from "../../core/config";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
@@ -171,7 +171,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      * @param {Vector} param0.tile
      * @param {number} param0.rotation
      * @param {string} param0.variant
-     * @param {string} param0.layer
+     * @param {Layer} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
@@ -190,7 +190,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
             tile = tile.addScalars(searchVector.x, searchVector.y);
 
             /* WIRES: FIXME */
-            const contents = root.map.getTileContent(tile, enumLayer.regular);
+            const contents = root.map.getTileContent(tile, "regular");
             if (contents) {
                 const undergroundComp = contents.components.UndergroundBelt;
                 if (undergroundComp && undergroundComp.tier === tier) {

@@ -2,7 +2,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { enumLayer, GameRoot } from "../root";
+import { GameRoot } from "../root";
 import { ConstantSignalComponent } from "../components/constant_signal";
 
 export class MetaConstantSignalBuilding extends MetaBuilding {
@@ -22,8 +22,9 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
         return true;
     }
 
+    /** @returns {"wires"} **/
     getLayer() {
-        return enumLayer.wires;
+        return "wires";
     }
 
     getDimensions() {

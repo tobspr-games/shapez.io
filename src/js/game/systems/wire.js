@@ -12,7 +12,8 @@ import {
     enumInvertedDirections,
     Vector,
 } from "../../core/vector";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
+import { BooleanItem } from "../items/boolean_item";
 import { arrayWireRotationVariantToType, MetaWireBuilding } from "../buildings/wire";
 import { getCodeFromBuildingData } from "../building_codes";
 import { enumWireType, WireComponent } from "../components/wire";
@@ -577,17 +578,17 @@ export class WireSystem extends GameSystemWithFilter {
         }
 
         const valueType = value.getItemType();
-        if (valueType === enumItemType.shape) {
+        if (valueType === "shape") {
             return {
                 spriteSet: this.wireSprites.shape,
                 opacity: 1,
             };
-        } else if (valueType === enumItemType.color) {
+        } else if (valueType === "color") {
             return {
                 spriteSet: this.wireSprites.color,
                 opacity: 1,
             };
-        } else if (valueType === enumItemType.boolean) {
+        } else if (valueType === "boolean") {
             return {
                 spriteSet: this.wireSprites.regular,
                 opacity: /** @type {BooleanItem} */ (value).value ? 1 : 0.5,
