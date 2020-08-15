@@ -3,7 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { getBuildingDataFromCode } from "./building_codes";
 import { Entity } from "./entity";
 import { MapChunk } from "./map_chunk";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot } from "./root";
 import { THEME } from "./theme";
 
 export const CHUNK_OVERLAY_RES = 3;
@@ -78,7 +78,7 @@ export class MapChunkView extends MapChunk {
         parameters.context.imageSmoothingEnabled = true;
 
         // Draw patch items
-        if (this.root.currentLayer === enumLayer.regular) {
+        if (this.root.currentLayer === "regular") {
             for (let i = 0; i < this.patches.length; ++i) {
                 const patch = this.patches[i];
 
@@ -179,7 +179,7 @@ export class MapChunkView extends MapChunk {
             }
         }
 
-        if (this.root.currentLayer === enumLayer.wires) {
+        if (this.root.currentLayer === "wires") {
             // Draw wires overlay
 
             context.fillStyle = THEME.map.wires.overlayColor;

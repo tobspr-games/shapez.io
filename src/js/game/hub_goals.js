@@ -3,7 +3,7 @@ import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/ut
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
-import { GameRoot, enumLayer } from "./root";
+import { GameRoot } from "./root";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
 import { UPGRADES } from "./upgrades";

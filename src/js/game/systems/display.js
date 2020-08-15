@@ -1,12 +1,11 @@
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { enumColors } from "../colors";
 import { DisplayComponent } from "../components/display";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { MapChunkView } from "../map_chunk_view";
-import { enumLayer } from "../root";
 import { BooleanItem } from "../items/boolean_item";
 
 export class DisplaySystem extends GameSystemWithFilter {
@@ -35,18 +34,18 @@ export class DisplaySystem extends GameSystemWithFilter {
         }
 
         switch (value.getItemType()) {
-            case enumItemType.boolean: {
+            case "boolean": {
                 return /** @type {BooleanItem} */ (value).value
                     ? COLOR_ITEM_SINGLETONS[enumColors.white]
                     : null;
             }
 
-            case enumItemType.color: {
+            case "color": {
                 const item = /**@type {ColorItem} */ (value);
                 return item.color === enumColors.uncolored ? null : item;
             }
 
-            case enumItemType.shape: {
+            case "shape": {
                 return value;
             }
 
@@ -61,7 +60,7 @@ export class DisplaySystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        const contents = chunk.containedEntitiesByLayer[enumLayer.regular];
+        const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
             if (entity && entity.components.Display) {
@@ -77,14 +76,14 @@ export class DisplaySystem extends GameSystemWithFilter {
                 }
 
                 const origin = entity.components.StaticMapEntity.origin;
-                if (value.getItemType() === enumItemType.color) {
+                if (value.getItemType() === "color") {
                     this.displaySprites[/** @type {ColorItem} */ (value).color].drawCachedCentered(
                         parameters,
                         (origin.x + 0.5) * globalConfig.tileSize,
                         (origin.y + 0.5) * globalConfig.tileSize,
                         globalConfig.tileSize
                     );
-                } else if (value.getItemType() === enumItemType.shape) {
+                } else if (value.getItemType() === "shape") {
                     // @todo
                     value.draw(
                         (origin.x + 0.5) * globalConfig.tileSize,

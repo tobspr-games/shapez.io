@@ -1,4 +1,4 @@
-import { GameRoot, enumLayer } from "../root";
+import { GameRoot } from "../root";
 import { globalConfig } from "../../core/config";
 import { Vector, mixVector } from "../../core/vector";
 import { lerp } from "../../core/utils";

@@ -5,7 +5,7 @@ import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } 
 import { getBuildingDataFromCode } from "./building_codes";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot } from "./root";
 import { WireNetwork } from "./systems/wire";
 import { globalConfig } from "../core/config";
 import { CHUNK_OVERLAY_RES } from "./map_chunk_view";
@@ -347,7 +347,7 @@ export class GameLogic {
         }
 
         // Now check if there's a connectable wire
-        const targetEntity = this.root.map.getTileContent(tile, enumLayer.wires);
+        const targetEntity = this.root.map.getTileContent(tile, "wires");
         if (!targetEntity) {
             return enumWireEdgeFlag.empty;
         }
@@ -401,7 +401,7 @@ export class GameLogic {
                     continue;
                 }
 
-                const entity = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, enumLayer.regular);
+                const entity = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, "regular");
                 if (entity) {
                     let ejectorSlots = [];
                     let acceptorSlots = [];

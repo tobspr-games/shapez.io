@@ -5,7 +5,6 @@ import { enumDirectionToVector } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumLayer } from "../root";
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {

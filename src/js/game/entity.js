@@ -3,7 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { Component } from "./component";
 /* typehints:end */
 
-import { GameRoot, enumLayer } from "./root";
+import { GameRoot } from "./root";
 import { globalConfig } from "../core/config";
 import { enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
@@ -36,8 +36,9 @@ export class Entity extends BasicSerializableObject {
 
         /**
          * On which layer this entity is
+         * @type {Layer}
          */
-        this.layer = enumLayer.regular;
+        this.layer = "regular";
 
         /**
          * Internal entity unique id, set by the @see EntityManager

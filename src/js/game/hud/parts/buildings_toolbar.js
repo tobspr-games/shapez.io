@@ -8,7 +8,6 @@ import { MetaSplitterBuilding } from "../../buildings/splitter";
 import { MetaStackerBuilding } from "../../buildings/stacker";
 import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
-import { enumLayer } from "../../root";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaLeverBuilding } from "../../buildings/lever";
 import { MetaFilterBuilding } from "../../buildings/filter";
@@ -35,7 +34,7 @@ export class HUDBuildingsToolbar extends HUDBaseToolbar {
         super(root, {
             supportedBuildings,
             visibilityCondition: () =>
-                !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === enumLayer.regular,
+                !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "regular",
             htmlElementId: "ingame_HUD_buildings_toolbar",
         });
     }

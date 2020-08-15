@@ -26,7 +26,7 @@ import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
 import { defaultBuildingVariant } from "./meta_building";
 import { ProductionAnalytics } from "./production_analytics";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
@@ -407,7 +407,7 @@ export class GameCore {
             // Green wires overlay
             root.hud.parts.wiresOverlay.draw(params);
 
-            if (this.root.currentLayer === enumLayer.wires) {
+            if (this.root.currentLayer === "wires") {
                 // Static map entities
                 root.map.drawWiresForegroundLayer(params);
 
