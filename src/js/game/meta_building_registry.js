@@ -19,7 +19,7 @@ import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
 import { MetaLeverBuilding } from "./buildings/lever";
 import { MetaFilterBuilding } from "./buildings/filter";
-import { MetaWireTunnelBuilding } from "./buildings/wire_tunnel";
+import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire_tunnel";
 import { MetaDisplayBuilding } from "./buildings/display";
 
 const logger = createLogger("building_registry");
@@ -116,6 +116,7 @@ export function initMetaBuildingRegistry() {
 
     // Wire tunnel
     registerBuildingVariant(39, MetaWireTunnelBuilding);
+    registerBuildingVariant(41, MetaWireTunnelBuilding, enumWireTunnelVariants.coating);
 
     // Display
     registerBuildingVariant(40, MetaDisplayBuilding);

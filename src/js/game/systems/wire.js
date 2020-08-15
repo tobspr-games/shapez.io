@@ -125,7 +125,7 @@ export class WireSystem extends GameSystemWithFilter {
         if (!this.root.gameInitialized) {
             return;
         }
-        if (entity.components.Wire || entity.components.WiredPins) {
+        if (entity.components.Wire || entity.components.WiredPins || entity.components.WireTunnel) {
             this.needsRecompute = true;
             this.networks = [];
         }
@@ -335,6 +335,7 @@ export class WireSystem extends GameSystemWithFilter {
             );
 
             // Link the initial tile to the initial entities, since it may change
+            /** @type {Array<{entity: Entity, tile: Vector}>} */
             const contents = [];
             for (let j = 0; j < initialContents.length; ++j) {
                 contents.push({
@@ -384,40 +385,59 @@ export class WireSystem extends GameSystemWithFilter {
                             });
                         }
                     }
+
+                    // Pin slots mean it can be nothing else
+                    continue;
                 }
 
                 // Check if its a tunnel, if so, go to the forwarded item
-                if (entity.components.WireTunnel) {
-                    if (!visitedTunnels.has(entity.uid)) {
-                        // Compute where this tunnel connects to
-                        const forwardedTile = entity.components.StaticMapEntity.origin.add(offset);
-                        VERBOSE_WIRES &&
-                            logger.log(
-                                "   Found tunnel",
-                                entity.uid,
-                                "at",
-                                tile,
-                                "-> forwarding to",
-                                forwardedTile
-                            );
+                const tunnelComp = entity.components.WireTunnel;
+                if (tunnelComp) {
+                    if (visitedTunnels.has(entity.uid)) {
+                        continue;
+                    }
 
-                        // Figure out which entities are connected
-                        const connectedContents = this.root.map.getLayersContentsMultipleXY(
-                            forwardedTile.x,
-                            forwardedTile.y
+                    const staticComp = entity.components.StaticMapEntity;
+
+                    if (
+                        !tunnelComp.multipleDirections &&
+                        !(
+                            direction === staticComp.localDirectionToWorld(enumDirection.top) ||
+                            direction === staticComp.localDirectionToWorld(enumDirection.bottom)
+                        )
+                    ) {
+                        // It's a coating, and it doesn't connect here
+                        continue;
+                    }
+
+                    // Compute where this tunnel connects to
+                    const forwardedTile = staticComp.origin.add(offset);
+                    VERBOSE_WIRES &&
+                        logger.log(
+                            "   Found tunnel",
+                            entity.uid,
+                            "at",
+                            tile,
+                            "-> forwarding to",
+                            forwardedTile
                         );
 
-                        // Attach the entities and the tile we search at, because it may change
-                        for (let h = 0; h < connectedContents.length; ++h) {
-                            contents.push({
-                                entity: connectedContents[h],
-                                tile: forwardedTile,
-                            });
-                        }
+                    // Figure out which entities are connected
+                    const connectedContents = this.root.map.getLayersContentsMultipleXY(
+                        forwardedTile.x,
+                        forwardedTile.y
+                    );
 
-                        // Remember this tunnel
-                        visitedTunnels.add(entity.uid);
+                    // Attach the entities and the tile we search at, because it may change
+                    for (let h = 0; h < connectedContents.length; ++h) {
+                        contents.push({
+                            entity: connectedContents[h],
+                            tile: forwardedTile,
+                        });
                     }
+
+                    // Remember this tunnel
+                    visitedTunnels.add(entity.uid);
                 }
             }
         }

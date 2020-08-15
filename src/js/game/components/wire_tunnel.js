@@ -6,6 +6,15 @@ export class WireTunnelComponent extends Component {
     }
 
     duplicateWithoutContents() {
-        return new WireTunnelComponent();
+        return new WireTunnelComponent({ multipleDirections: this.multipleDirections });
+    }
+
+    /**
+     * @param {object} param0
+     * @param {boolean=} param0.multipleDirections
+     */
+    constructor({ multipleDirections = true }) {
+        super();
+        this.multipleDirections = multipleDirections;
     }
 }

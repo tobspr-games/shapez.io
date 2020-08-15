@@ -1,13 +1,7 @@
 import { createLogger } from "../core/logging";
 import { STOP_PROPAGATION } from "../core/signal";
 import { round2Digits } from "../core/utils";
-import {
-    enumDirection,
-    enumDirectionToAngle,
-    enumDirectionToVector,
-    enumInvertedDirections,
-    Vector,
-} from "../core/vector";
+import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
 import { enumLayer, GameRoot } from "./root";
@@ -17,7 +11,6 @@ const logger = createLogger("ingame/logic");
 /** @enum {number} */
 export const enumWireEdgeFlag = {
     empty: 0,
-    filled: 1,
     connected: 2,
 };
 
@@ -215,10 +208,6 @@ export class GameLogic {
             return false;
         }
 
-        if (neighbourStatus === enumWireEdgeFlag.filled) {
-            return true;
-        }
-
         if (neighbourStatus === enumWireEdgeFlag.connected) {
             return true;
         }
@@ -273,10 +262,21 @@ export class GameLogic {
             return enumWireEdgeFlag.empty;
         }
 
+        const targetStaticComp = targetEntity.components.StaticMapEntity;
+
         // Check if its a crossing
         const wireTunnelComp = targetEntity.components.WireTunnel;
         if (wireTunnelComp) {
-            return enumWireEdgeFlag.filled;
+            // Check if the crossing is connected
+            if (wireTunnelComp.multipleDirections) {
+                return enumWireEdgeFlag.connected;
+            } else {
+                // Its a coating, check if it matches the direction
+                const referenceDirection = targetStaticComp.localDirectionToWorld(enumDirection.top);
+                return referenceDirection === edge || enumInvertedDirections[referenceDirection] === edge
+                    ? enumWireEdgeFlag.connected
+                    : enumWireEdgeFlag.empty;
+            }
         }
 
         // Check if its a wire
@@ -285,15 +285,9 @@ export class GameLogic {
             return enumWireEdgeFlag.empty;
         }
 
-        const refAngle = enumDirectionToAngle[edge];
-        const refRotation = targetEntity.components.StaticMapEntity.originalRotation;
-        const canConnectRemotely = refRotation === refAngle || (refRotation + 180) % 360 === refAngle;
-
-        // Check if the wire points towards the right direction
-        if (!canConnectRemotely) {
-            // Seems its not the right direction - well, still its filled
-            return enumWireEdgeFlag.filled;
-        }
+        // const refAngle = enumDirectionToAngle[edge];
+        // const refRotation = targetEntity.components.StaticMapEntity.originalRotation;
+        // const canConnectRemotely = refRotation === refAngle || (refRotation + 180) % 360 === refAngle;
 
         // Actually connected
         return enumWireEdgeFlag.connected;
