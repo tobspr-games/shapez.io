@@ -4,7 +4,7 @@ import { Entity } from "../entity";
 import { DrawParameters } from "../../core/draw_parameters";
 import { formatBigNumber, lerp } from "../../core/utils";
 import { Loader } from "../../core/loader";
-import { enumLayer } from "../root";
+import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item";
 
 export class StorageSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -17,13 +17,13 @@ export class StorageSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const storageComp = entity.components.Storage;
+            const pinsComp = entity.components.WiredPins;
 
             // Eject from storage
             if (storageComp.storedItem && storageComp.storedCount > 0) {
                 const ejectorComp = entity.components.ItemEjector;
 
-                /* FIXME: WIRES */
-                const nextSlot = ejectorComp.getFirstFreeSlot(enumLayer.regular);
+                const nextSlot = ejectorComp.getFirstFreeSlot();
                 if (nextSlot !== null) {
                     if (ejectorComp.tryEject(nextSlot, storageComp.storedItem)) {
                         storageComp.storedCount--;
@@ -37,6 +37,9 @@ export class StorageSystem extends GameSystemWithFilter {
 
             let targetAlpha = storageComp.storedCount > 0 ? 1 : 0;
             storageComp.overlayOpacity = lerp(storageComp.overlayOpacity, targetAlpha, 0.05);
+
+            pinsComp.slots[0].value = storageComp.storedItem;
+            pinsComp.slots[1].value = storageComp.getIsFull() ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
         }
     }
 
@@ -62,7 +65,7 @@ export class StorageSystem extends GameSystemWithFilter {
         if (storedItem !== null) {
             context.globalAlpha = storageComp.overlayOpacity;
             const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
-            storedItem.draw(center.x, center.y, parameters, 30);
+            storedItem.drawCentered(center.x, center.y, parameters, 30);
 
             this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
 

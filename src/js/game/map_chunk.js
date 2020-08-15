@@ -1,15 +1,15 @@
-import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
+import { RandomNumberGenerator } from "../core/rng";
 import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "../core/utils";
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { enumColors } from "./colors";
 import { Entity } from "./entity";
-import { ColorItem } from "./items/color_item";
-import { ShapeItem } from "./items/shape_item";
+import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
+import { GameRoot } from "./root";
 import { enumSubShape } from "./shape_definition";
-import { RandomNumberGenerator } from "../core/rng";
+import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("map_chunk");
 
@@ -27,29 +27,55 @@ export class MapChunk {
         this.tileX = x * globalConfig.mapChunkSize;
         this.tileY = y * globalConfig.mapChunkSize;
 
-        /** @type {Array<Array<?Entity>>} */
-        this.contents = make2DUndefinedArray(
-            globalConfig.mapChunkSize,
-            globalConfig.mapChunkSize,
-            "map-chunk@" + this.x + "|" + this.y
-        );
+        /**
+         * Stores the contents of the lower (= map resources) layer
+         *  @type {Array<Array<?BaseItem>>}
+         */
+        this.lowerLayer = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
 
-        /** @type {Array<Array<?Entity>>} */
-        this.wireContents = make2DUndefinedArray(
-            globalConfig.mapChunkSize,
-            globalConfig.mapChunkSize,
-            "map-chunk-wires@" + this.x + "|" + this.y
-        );
+        /**
+         * Stores the contents of the regular layer
+         * @type {Array<Array<?Entity>>}
+         */
+        this.contents = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
 
-        /** @type {Array<Array<?BaseItem>>} */
-        this.lowerLayer = make2DUndefinedArray(
-            globalConfig.mapChunkSize,
-            globalConfig.mapChunkSize,
-            "map-chunk-lower@" + this.x + "|" + this.y
-        );
+        /**
+         * Stores the contents of the wires layer
+         *  @type {Array<Array<?Entity>>}
+         */
+        this.wireContents = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
 
         /** @type {Array<Entity>} */
         this.containedEntities = [];
+
+        /**
+         * World space rectangle, can be used for culling
+         */
+        this.worldSpaceRectangle = new Rectangle(
+            this.tileX * globalConfig.tileSize,
+            this.tileY * globalConfig.tileSize,
+            globalConfig.mapChunkWorldSize,
+            globalConfig.mapChunkWorldSize
+        );
+
+        /**
+         * Tile space rectangle, can be used for culling
+         */
+        this.tileSpaceRectangle = new Rectangle(
+            this.tileX,
+            this.tileY,
+            globalConfig.mapChunkSize,
+            globalConfig.mapChunkSize
+        );
+
+        /**
+         * Which entities this chunk contains, sorted by layer
+         * @type {Record<Layer, Array<Entity>>}
+         */
+        this.containedEntitiesByLayer = {
+            regular: [],
+            wires: [],
+        };
 
         /**
          * Store which patches we have so we can render them in the overview
@@ -143,7 +169,7 @@ export class MapChunk {
         if (distanceToOriginInChunks > 2) {
             availableColors.push(enumColors.blue);
         }
-        this.internalGeneratePatch(rng, colorPatchSize, new ColorItem(rng.choice(availableColors)));
+        this.internalGeneratePatch(rng, colorPatchSize, COLOR_ITEM_SINGLETONS[rng.choice(availableColors)]);
     }
 
     /**
@@ -204,7 +230,11 @@ export class MapChunk {
         }
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
-        this.internalGeneratePatch(rng, shapePatchSize, new ShapeItem(definition));
+        this.internalGeneratePatch(
+            rng,
+            shapePatchSize,
+            this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition)
+        );
     }
 
     /**
@@ -268,28 +298,28 @@ export class MapChunk {
      */
     generatePredefined(rng) {
         if (this.x === 0 && this.y === 0) {
-            this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.red), 7, 7);
+            this.internalGeneratePatch(rng, 2, COLOR_ITEM_SINGLETONS[enumColors.red], 7, 7);
             return true;
         }
         if (this.x === -1 && this.y === 0) {
-            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("CuCuCuCu");
-            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), globalConfig.mapChunkSize - 9, 7);
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("CuCuCuCu");
+            this.internalGeneratePatch(rng, 2, item, globalConfig.mapChunkSize - 9, 7);
             return true;
         }
         if (this.x === 0 && this.y === -1) {
-            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("RuRuRuRu");
-            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), 5, globalConfig.mapChunkSize - 7);
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("RuRuRuRu");
+            this.internalGeneratePatch(rng, 2, item, 5, globalConfig.mapChunkSize - 7);
             return true;
         }
 
         if (this.x === -1 && this.y === -1) {
-            this.internalGeneratePatch(rng, 2, new ColorItem(enumColors.green));
+            this.internalGeneratePatch(rng, 2, COLOR_ITEM_SINGLETONS[enumColors.green]);
             return true;
         }
 
         if (this.x === 5 && this.y === -2) {
-            const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey("SuSuSuSu");
-            this.internalGeneratePatch(rng, 2, new ShapeItem(definition), 5, globalConfig.mapChunkSize - 7);
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("SuSuSuSu");
+            this.internalGeneratePatch(rng, 2, item, 5, globalConfig.mapChunkSize - 7);
             return true;
         }
 
@@ -332,7 +362,7 @@ export class MapChunk {
      * Returns the contents of this chunk from the given world space coordinates
      * @param {number} worldX
      * @param {number} worldY
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      * @returns {Entity=}
      */
     getLayerContentFromWorldCoords(worldX, worldY, layer) {
@@ -342,7 +372,7 @@ export class MapChunk {
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
-        if (layer === enumLayer.regular) {
+        if (layer === "regular") {
             return this.contents[localX][localY] || null;
         } else {
             return this.wireContents[localX][localY] || null;
@@ -395,7 +425,7 @@ export class MapChunk {
      * @param {number} tileX
      * @param {number} tileY
      * @param {Entity=} contents
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      */
     setLayerContentFromWorldCords(tileX, tileY, contents, layer) {
         const localX = tileX - this.tileX;
@@ -406,7 +436,7 @@ export class MapChunk {
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
 
         let oldContents;
-        if (layer === enumLayer.regular) {
+        if (layer === "regular") {
             oldContents = this.contents[localX][localY];
         } else {
             oldContents = this.wireContents[localX][localY];
@@ -415,11 +445,12 @@ export class MapChunk {
         assert(contents === null || !oldContents, "Tile already used: " + tileX + " / " + tileY);
 
         if (oldContents) {
-            // Remove from list
+            // Remove from list (the old contents must be reigstered)
             fastArrayDeleteValueIfContained(this.containedEntities, oldContents);
+            fastArrayDeleteValueIfContained(this.containedEntitiesByLayer[layer], oldContents);
         }
 
-        if (layer === enumLayer.regular) {
+        if (layer === "regular") {
             this.contents[localX][localY] = contents;
         } else {
             this.wireContents[localX][localY] = contents;
@@ -428,6 +459,10 @@ export class MapChunk {
         if (contents) {
             if (this.containedEntities.indexOf(contents) < 0) {
                 this.containedEntities.push(contents);
+            }
+
+            if (this.containedEntitiesByLayer[layer].indexOf(contents) < 0) {
+                this.containedEntitiesByLayer[layer].push(contents);
             }
         }
     }

@@ -131,22 +131,24 @@ declare interface Math {
     degrees(number): number;
 }
 
+declare type Class<T = unknown> = new (...args: any[]) => T;
+
 declare interface String {
     padStart(size: number, fill?: string): string;
     padEnd(size: number, fill: string): string;
 }
 
 declare interface FactoryTemplate<T> {
-    entries: Array<new (...args: any[]) => T>;
+    entries: Array<Class<T>>;
     entryIds: Array<string>;
     idToEntry: any;
 
     getId(): string;
     getAllIds(): Array<string>;
-    register(entry: new (...args: any[]) => T): void;
+    register(entry: Class<T>): void;
     hasId(id: string): boolean;
-    findById(id: string): new (...args: any[]) => T;
-    getEntries(): Array<new (...args: any[]) => T>;
+    findById(id: string): Class<T>;
+    getEntries(): Array<Class<T>>;
     getNumEntries(): number;
 }
 
@@ -156,10 +158,10 @@ declare interface SingletonFactoryTemplate<T> {
 
     getId(): string;
     getAllIds(): Array<string>;
-    register(classHandle: new (...args: any[]) => T): void;
+    register(classHandle: Class<T>): void;
     hasId(id: string): boolean;
     findById(id: string): T;
-    findByClass(classHandle: new (...args: any[]) => T): T;
+    findByClass(classHandle: Class<T>): T;
     getEntries(): Array<T>;
     getNumEntries(): number;
 }
@@ -190,6 +192,9 @@ declare interface TypedSignal<T extends Array<any>> {
 
     removeAll();
 }
+
+declare type Layer = "regular" | "wires";
+declare type ItemType = "shape" | "color" | "boolean";
 
 declare module "worker-loader?inline=true&fallback=false!*" {
     class WebpackWorker extends Worker {

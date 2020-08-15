@@ -153,11 +153,6 @@ export class GameTime extends BasicSerializableObject {
                 );
                 break;
             }
-
-            // If we queued async tasks, perform them next frame and do not update anymore
-            if (this.root.hud.parts.processingOverlay.hasTasks()) {
-                break;
-            }
         }
     }
 

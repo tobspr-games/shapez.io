@@ -6,7 +6,6 @@ import { MinerComponent } from "../components/miner";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
-import { enumLayer } from "../root";
 
 export class MinerSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -75,7 +74,7 @@ export class MinerSystem extends GameSystemWithFilter {
             const ejectingDirection = staticComp.localDirectionToWorld(ejectingSlot.direction);
 
             const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
-            const targetContents = this.root.map.getTileContent(targetTile, enumLayer.regular);
+            const targetContents = this.root.map.getTileContent(targetTile, "regular");
 
             // Check if we are connected to another miner and thus do not eject directly
             if (targetContents) {
@@ -130,7 +129,7 @@ export class MinerSystem extends GameSystemWithFilter {
                     }
 
                     if (minerComp.cachedMinedItem) {
-                        minerComp.cachedMinedItem.draw(
+                        minerComp.cachedMinedItem.drawCentered(
                             (0.5 + staticComp.origin.x) * globalConfig.tileSize,
                             (0.5 + staticComp.origin.y) * globalConfig.tileSize,
                             parameters

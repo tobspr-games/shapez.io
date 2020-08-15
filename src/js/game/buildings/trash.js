@@ -1,14 +1,15 @@
+import { formatBigNumber } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
+import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
-import { Entity } from "../entity";
-import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { enumHubGoalRewards } from "../tutorial_goals";
-import { GameRoot } from "../root";
 import { StorageComponent } from "../components/storage";
-import { T } from "../../translations";
-import { formatBigNumber } from "../../core/utils";
+import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
+import { Entity } from "../entity";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
+import { GameRoot } from "../root";
+import { enumHubGoalRewards } from "../tutorial_goals";
 
 /** @enum {string} */
 export const enumTrashVariants = { storage: "storage" };
@@ -20,7 +21,7 @@ export class MetaTrashBuilding extends MetaBuilding {
         super("trash");
     }
 
-    isRotateable(variant) {
+    getIsRotateable(variant) {
         return variant !== defaultBuildingVariant;
     }
 
@@ -117,6 +118,9 @@ export class MetaTrashBuilding extends MetaBuilding {
                 if (entity.components.Storage) {
                     entity.removeComponent(StorageComponent);
                 }
+                if (entity.components.WiredPins) {
+                    entity.removeComponent(WiredPinsComponent);
+                }
 
                 entity.components.ItemAcceptor.setSlots([
                     {
@@ -139,6 +143,24 @@ export class MetaTrashBuilding extends MetaBuilding {
                 }
                 if (!entity.components.Storage) {
                     entity.addComponent(new StorageComponent({}));
+                }
+                if (!entity.components.WiredPins) {
+                    entity.addComponent(
+                        new WiredPinsComponent({
+                            slots: [
+                                {
+                                    pos: new Vector(1, 1),
+                                    direction: enumDirection.right,
+                                    type: enumPinSlotType.logicalEjector,
+                                },
+                                {
+                                    pos: new Vector(0, 1),
+                                    direction: enumDirection.left,
+                                    type: enumPinSlotType.logicalEjector,
+                                },
+                            ],
+                        })
+                    );
                 }
 
                 entity.components.Storage.maximumStorage = trashSize;

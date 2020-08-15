@@ -28,7 +28,7 @@ export const SOUNDS = {
 };
 
 export const MUSIC = {
-    theme: "theme",
+    theme: G_IS_STANDALONE ? "theme-full" : "theme-short",
     menu: "menu",
 };
 

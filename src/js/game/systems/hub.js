@@ -1,10 +1,10 @@
-import { GameSystemWithFilter } from "../game_system_with_filter";
-import { HubComponent } from "../components/hub";
 import { DrawParameters } from "../../core/draw_parameters";
-import { Entity } from "../entity";
-import { formatBigNumber } from "../../core/utils";
 import { Loader } from "../../core/loader";
+import { formatBigNumber } from "../../core/utils";
 import { T } from "../../translations";
+import { HubComponent } from "../components/hub";
+import { Entity } from "../entity";
+import { GameSystemWithFilter } from "../game_system_with_filter";
 
 export class HubSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -19,17 +19,12 @@ export class HubSystem extends GameSystemWithFilter {
 
     update() {
         for (let i = 0; i < this.allEntities.length; ++i) {
+            // Set hub goal
             const entity = this.allEntities[i];
-
-            const hubComponent = entity.components.Hub;
-
-            const queue = hubComponent.definitionsToAnalyze;
-            for (let k = 0; k < queue.length; ++k) {
-                const definition = queue[k];
-                this.root.hubGoals.handleDefinitionDelivered(definition);
-            }
-
-            hubComponent.definitionsToAnalyze = [];
+            const pinsComp = entity.components.WiredPins;
+            pinsComp.slots[0].value = this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
+                this.root.hubGoals.currentGoal.definition
+            );
         }
     }
 
@@ -52,7 +47,7 @@ export class HubSystem extends GameSystemWithFilter {
 
         const definition = this.root.hubGoals.currentGoal.definition;
 
-        definition.draw(pos.x - 25, pos.y - 10, parameters, 40);
+        definition.drawCentered(pos.x - 25, pos.y - 10, parameters, 40);
 
         const goals = this.root.hubGoals.currentGoal;
 

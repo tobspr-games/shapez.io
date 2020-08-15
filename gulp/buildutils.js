@@ -11,6 +11,7 @@ module.exports = {
         );
         return commitHash.replace(/^\s+|\s+$/g, "");
     },
+
     getAllResourceImages() {
         return glob
             .sync("res/**/*.@(png|svg|jpg)", { cwd: ".." })
@@ -22,18 +23,6 @@ module.exports = {
                 }
                 return true;
             });
-    },
-
-    getAllAtlasImages() {
-        return glob
-            .sync("res_built/atlas/*.png", { cwd: ".." })
-            .map(s => s.replace("res_built/atlas/", "res/"));
-    },
-
-    getAllSounds() {
-        return glob
-            .sync("res_built/sounds/**/*.mp3", { cwd: ".." })
-            .map(s => s.replace("res_built/sounds/", "res/sounds/"));
     },
 
     getVersion() {

@@ -1,14 +1,14 @@
-import { globalConfig } from "../../core/config";
 import { enumDirection, Vector } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
+import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
 import { formatItemsPerSecond } from "../../core/utils";
+import { BeltUnderlaysComponent } from "../components/belt_underlays";
 
 /** @enum {string} */
 export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
@@ -88,6 +88,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 slots: [], // set later
             })
         );
+
+        entity.addComponent(new BeltUnderlaysComponent({ underlays: [] }));
     }
 
     /**
@@ -115,9 +117,9 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     { pos: new Vector(1, 0), direction: enumDirection.top },
                 ]);
 
-                entity.components.ItemAcceptor.beltUnderlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
-                    { pos: new Vector(1, 0), direction: enumDirection.top, layer: enumLayer.regular },
+                entity.components.BeltUnderlays.underlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                    { pos: new Vector(1, 0), direction: enumDirection.top },
                 ];
 
                 break;
@@ -143,8 +145,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     { pos: new Vector(0, 0), direction: enumDirection.top },
                 ]);
 
-                entity.components.ItemAcceptor.beltUnderlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top, layer: enumLayer.regular },
+                entity.components.BeltUnderlays.underlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
                 ];
 
                 break;

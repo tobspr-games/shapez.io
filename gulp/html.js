@@ -9,7 +9,7 @@ function computeIntegrityHash(fullPath, algorithm = "sha256") {
     return algorithm + "-" + hash;
 }
 
-function gulptasksHTML($, gulp, buildFolder, browserSync) {
+function gulptasksHTML($, gulp, buildFolder) {
     const commitHash = buildUtils.getRevision();
     async function buildHtml(
         apiUrl,
@@ -27,9 +27,8 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
         return gulp
             .src("../src/html/" + (standalone ? "index.standalone.html" : "index.html"))
             .pipe(
-                $.dom(function () {
-                    // @ts-ignore
-                    const document = /** @type {Document} */ (this);
+                $.dom(/** @this {Document} **/ function () {
+                    const document = this;
 
                     // Preconnect to api
                     const prefetchLink = document.createElement("link");
@@ -37,21 +36,6 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                     prefetchLink.href = apiUrl;
                     prefetchLink.setAttribute("crossorigin", "anonymous");
                     document.head.appendChild(prefetchLink);
-
-                    // // Append css preload
-                    // const cssPreload = document.createElement("link");
-                    // cssPreload.rel = "preload";
-                    // cssPreload.href = cachebust("main.css");
-                    // cssPreload.setAttribute("as", "style");
-                    // document.head.appendChild(cssPreload);
-                    // document.head.appendChild(prefetchLink);
-
-                    // // Append js preload
-                    // const jsPreload = document.createElement("link");
-                    // jsPreload.rel = "preload";
-                    // jsPreload.href = cachebust("bundle.js");
-                    // jsPreload.setAttribute("as", "script");
-                    // document.head.appendChild(jsPreload);
 
                     // Append css
                     const css = document.createElement("link");
@@ -67,17 +51,6 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         );
                     }
                     document.head.appendChild(css);
-
-                    if (analytics) {
-                        // Logrocket
-                        // const logrocketScript = document.createElement("script");
-                        // logrocketScript.src = "https://cdn.lr-ingest.io/LogRocket.min.js";
-                        // logrocketScript.setAttribute("crossorigin", "anonymous");
-                        // document.head.appendChild(logrocketScript);
-                        // const logrocketInit = document.createElement("script");
-                        // logrocketInit.textContent = "window.LogRocket && window.LogRocket.init('TODO: GET LOGROCKET ID');";
-                        // document.head.appendChild(logrocketInit);
-                    }
 
                     if (app) {
                         // Append cordova link
@@ -114,17 +87,8 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
 
                     // Do not need to preload in app or standalone
                     if (!hasLocalFiles) {
-                        // Preload images
-                        const images = buildUtils.getAllResourceImages();
-
                         // Preload essentials
                         const preloads = ["fonts/GameFont.woff2"];
-
-                        // for (let i = 0; i < images.length; ++i) {
-                        //     if (preloads.indexOf(images[i]) < 0) {
-                        //         preloads.push(images[i]);
-                        //     }
-                        // }
 
                         preloads.forEach(src => {
                             const preloadLink = document.createElement("link");
@@ -138,23 +102,6 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                             }
                             document.head.appendChild(preloadLink);
                         });
-
-                        // Sound preloads
-                        // const sounds = buildUtils.getAllSounds();
-                        // sounds.forEach((src) => {
-
-                        //     if (src.indexOf("sounds/music/") >= 0) {
-                        //         // skip music
-                        //         return;
-                        //     }
-
-                        //     const preloadLink = document.createElement("link");
-                        //     preloadLink.rel = "preload";
-                        //     preloadLink.href = cachebust(src);
-                        //     // preloadLink.setAttribute("crossorigin", "anonymous");
-                        //     preloadLink.setAttribute("as", "fetch");
-                        //     document.head.appendChild(preloadLink);
-                        // });
                     }
 
                     const loadingSvg = `background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46YXV0bztiYWNrZ3JvdW5kOjAgMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCIgZGlzcGxheT0iYmxvY2siPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM5Mzc0NyIgc3Ryb2tlLXdpZHRoPSIzIiByPSI0MiIgc3Ryb2tlLWRhc2hhcnJheT0iMTk3LjkyMDMzNzE3NjE1Njk4IDY3Ljk3MzQ0NTcyNTM4NTY2IiB0cmFuc2Zvcm09InJvdGF0ZSg0OC4yNjUgNTAgNTApIj48YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGR1cj0iNS41NTU1NTU1NTU1NTU1NTVzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIi8+PC9jaXJjbGU+PC9zdmc+")`;
@@ -167,7 +114,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         font-display: swap;
                         src: url('${cachebust("res/fonts/GameFont.woff2")}') format('woff2');
                     }
-            
+
                     #ll_fp {
                         font-family: GameFont;
                         font-size: 14px;
@@ -177,7 +124,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         left: 0;
                         opacity: 0.05;
                     }
-        
+
                     #ll_p {
                         display: flex;
                         position: fixed;
@@ -190,7 +137,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         center;
                         align-items: center;
                     }
-        
+
                     #ll_p > div {
                         position: absolute;
                         text-align: center;
@@ -201,7 +148,7 @@ function gulptasksHTML($, gulp, buildFolder, browserSync) {
                         font-family: 'GameFont', sans-serif;
                         font-size: 20px;
                     }
-        
+
                     #ll_p > span {
                         width: 60px;
                         height: 60px;

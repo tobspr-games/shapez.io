@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
@@ -447,12 +448,8 @@ buildings:
             name: &belt Conveyor Belt
             description: Transports items, hold and drag to place multiple.
 
-    wire:
-        default:
-            name: &wire Energy Wire
-            description: Allows you to transport energy.
-
-    miner: # Internal name for the Extractor
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Extractor
             description: Place over a shape or color to extract it.
@@ -461,7 +458,8 @@ buildings:
             name: Extractor (Chain)
             description: Place over a shape or color to extract it. Can be chained.
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Tunnel
             description: Allows you to tunnel resources under buildings and belts.
@@ -470,7 +468,8 @@ buildings:
             name: Tunnel Tier II
             description: Allows you to tunnel resources under buildings and belts.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Balancer
             description: Multifunctional - Evenly distributes all inputs onto all outputs.
@@ -490,11 +489,6 @@ buildings:
         quad:
             name: Cutter (Quad)
             description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
-
-    advanced_processor:
-        default:
-            name: &advanced_processor Color Inverter
-            description: Accepts a color or shape and inverts it.
 
     rotater:
         default:
@@ -529,6 +523,7 @@ buildings:
         double:
             name: Painter (Double)
             description: Colors the shapes on the left inputs with the color from the top input.
+
         quad:
             name: Painter (Quad)
             description: Allows you to color each quadrant of the shape with a different color.
@@ -542,24 +537,59 @@ buildings:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
 
-    energy_generator:
-        deliver: Deliver
-
-        # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: For
-
+    wire:
         default:
-            name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes.
+            name: &wire Wire
+            description: &wire_desc Allows to connect logical components and can transfer items, colors or boolean signals.
 
-    wire_crossings:
+    wire_tunnel:
         default:
-            name: &wire_crossings Wire Splitter
-            description: Splits a energy wire into two.
+            name: &wire_tunnel Wire Tunnel
+            description: Allows to cross two wires without connecting them.
 
-        merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+        coating:
+            name: Wire Insulation
+            description: Allows to pass through signals without connecting to other wires on the sides.
+
+    constant_signal:
+        default:
+            name: &constant_signal Constant Signal
+            description: Emits a constant signal (shape, color or boolean).
+
+    lever:
+        default:
+            name: &lever Button
+            description: Can be toggled to emit 1 / 0
+
+    logic_gate:
+        default:
+            name: &logic_gate AND Gate
+            description: Emits a truthy boolean signal if both inputs are truthy.
+        not:
+            name: NOT
+            description: Inverts the given signal.
+        xor:
+            name: XOR
+            description: Emits a truthy signal if one of the inputs is truthy, but not both.
+        or:
+            name: OR
+            description: Emits a truthy signal if one of the inputs is truthy.
+
+        transistor:
+            name: Gate
+            description: Only forwards the bottom input if the left input is true.
+
+    filter:
+        default:
+            name: &filter Filter
+            # TEMP
+            description: Only leaves through items who match exactly the provided shape / color. If you put in a boolean 1, it leaves everything through, if you put in a 0 it will leave nothing through.
+
+    display:
+        default:
+            name: &display Display
+            # TEMP
+            description: Can be connected on the wires layer to show a color or shape. When inputting a boolean item, the display will be white if the value is 1.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -637,7 +667,7 @@ storyRewards:
     no_reward:
         title: Next level
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            This level gave you no reward, but the next one will! <br><br> PS: Better not destroy your existing factory - You'll need <strong>all</strong> those shapes later to <strong>unlock upgrades</strong>!
 
     no_reward_freeplay:
         title: Next level
@@ -650,6 +680,7 @@ settings:
         general: General
         userInterface: User Interface
         advanced: Advanced
+        performance: Performance
 
     versionBadges:
         dev: Development
@@ -739,9 +770,9 @@ settings:
                 light: Light
 
         refreshRate:
-            title: Simulation Target
+            title: Tick Rate
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                The game will automatically adjust the tickrate to be between this target tickrate and half of it. For example, with a tickrate of 60hz, the game will try to stay at 60hz, and if your computer can't handle it it will go down until it eventually reaches 30hz.
 
         alwaysMultiplace:
             title: Multiplace
@@ -777,6 +808,22 @@ settings:
             title: Disable Cut/Delete Warnings
             description: >-
                 Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
+
+        lowQualityMapResources:
+            title: Low Quality Map Resources
+            description: >-
+                Simplifies the rendering of resources on the map when zoomed in to improve performance.
+                It even looks cleaner, so be sure to try it out!
+
+        disableTileGrid:
+            title: Disable Grid
+            description: >-
+                Disabling the tile grid can help with the performance. This also makes the game look cleaner!
+
+        lowQualityTextures:
+            title: Low quality textures (Ugly)
+            description: >-
+                Uses low quality textures to save performance. This will make the game look very ugly!
 
 keybindings:
     title: Keybindings
@@ -816,19 +863,26 @@ keybindings:
         toggleFPSInfo: Toggle FPS and Debug Info
         switchLayers: Switch layers
         exportScreenshot: Export whole Base as Image
+
+        # --- Do not translate the values in this section
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
         miner: *miner
         cutter: *cutter
-        advanced_processor: *advanced_processor
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer
-        energy_generator: *energy_generator
         painter: *painter
         trash: *trash
         wire: *wire
+        constant_signal: *constant_signal
+        logic_gate: *logic_gate
+        lever: *lever
+        filter: *filter
+        wire_tunnel: *wire_tunnel
+        display: *display
+        # ---
 
         pipette: Pipette
         rotateWhilePlacing: Rotate

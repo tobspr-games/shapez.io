@@ -2,7 +2,7 @@
 import { Application } from "../application";
 /* typehints:end */
 
-import { sha1 } from "./sensitive_utils.encrypt";
+import { sha1, CRC_PREFIX, computeCrc } from "./sensitive_utils.encrypt";
 import { createLogger } from "./logging";
 import { FILE_NOT_FOUND } from "../platform/storage";
 import { accessNestedPropertyReverse } from "./utils";
@@ -84,7 +84,7 @@ export class ReadWriteProxy {
      */
     static serializeObject(obj) {
         const jsonString = JSON.stringify(compressObject(obj));
-        const checksum = sha1(jsonString + salt);
+        const checksum = computeCrc(jsonString + salt);
         return compressionPrefix + compressX64(checksum + jsonString);
     }
 
@@ -106,7 +106,11 @@ export class ReadWriteProxy {
         // Compare stored checksum with actual checksum
         const checksum = decompressed.substring(0, 40);
         const jsonString = decompressed.substr(40);
-        const desiredChecksum = sha1(jsonString + salt);
+
+        const desiredChecksum = checksum.startsWith(CRC_PREFIX)
+            ? computeCrc(jsonString + salt)
+            : sha1(jsonString + salt);
+
         if (desiredChecksum !== checksum) {
             // Checksum mismatch
             throw new Error("bad-content / checksum-mismatch");
@@ -119,7 +123,7 @@ export class ReadWriteProxy {
 
     /**
      * Writes the data asychronously, fails if verify() fails
-     * @returns {Promise<string>}
+     * @returns {Promise<void>}
      */
     writeAsync() {
         const verifyResult = this.internalVerifyEntry(this.currentData);
@@ -128,35 +132,14 @@ export class ReadWriteProxy {
             logger.error("Tried to write invalid data to", this.filename, "reason:", verifyResult.reason);
             return Promise.reject(verifyResult.reason);
         }
-        const jsonString = JSON.stringify(compressObject(this.currentData));
-
-        // if (!this.app.pageVisible || this.app.unloaded) {
-        //     logger.log("Saving file sync because in unload handler");
-        //     const checksum = sha1(jsonString + salt);
-        //     let compressed = compressionPrefix + compressX64(checksum + jsonString);
-        //     if (G_IS_DEV && IS_DEBUG) {
-        //         compressed = jsonString;
-        //     }
-
-        //     if (!this.app.storage.writeFileSyncIfSupported(this.filename, compressed)) {
-        //         return Promise.reject("Failed to write " + this.filename + " sync!");
-        //     } else {
-        //         logger.log("📄 Wrote (sync!)", this.filename);
-        //         return Promise.resolve(compressed);
-        //     }
-        // }
 
         return asyncCompressor
-            .compressFileAsync(jsonString)
+            .compressObjectAsync(this.currentData)
             .then(compressed => {
-                if (G_IS_DEV && IS_DEBUG) {
-                    compressed = jsonString;
-                }
                 return this.app.storage.writeFileAsync(this.filename, compressed);
             })
             .then(() => {
                 logger.log("📄 Wrote", this.filename);
-                return jsonString;
             })
             .catch(err => {
                 logger.error("Failed to write", this.filename, ":", err);
@@ -205,10 +188,16 @@ export class ReadWriteProxy {
                         // Compare stored checksum with actual checksum
                         const checksum = decompressed.substring(0, 40);
                         const jsonString = decompressed.substr(40);
-                        const desiredChecksum = sha1(jsonString + salt);
+
+                        const desiredChecksum = checksum.startsWith(CRC_PREFIX)
+                            ? computeCrc(jsonString + salt)
+                            : sha1(jsonString + salt);
+
                         if (desiredChecksum !== checksum) {
                             // Checksum mismatch
-                            return Promise.reject("bad-content / checksum-mismatch");
+                            return Promise.reject(
+                                "bad-content / checksum-mismatch: " + desiredChecksum + " vs " + checksum
+                            );
                         }
                         return jsonString;
                     } else {

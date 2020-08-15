@@ -13,9 +13,13 @@ import { HubSystem } from "./systems/hub";
 import { StaticMapEntitySystem } from "./systems/static_map_entity";
 import { ItemAcceptorSystem } from "./systems/item_acceptor";
 import { StorageSystem } from "./systems/storage";
-import { EnergyGeneratorSystem } from "./systems/energy_generator";
 import { WiredPinsSystem } from "./systems/wired_pins";
-import { EnergyConsumerSystem } from "./systems/energy_consumer";
+import { BeltUnderlaysSystem } from "./systems/belt_underlays";
+import { WireSystem } from "./systems/wire";
+import { ConstantSignalSystem } from "./systems/constant_signal";
+import { LogicGateSystem } from "./systems/logic_gate";
+import { LeverSystem } from "./systems/lever";
+import { DisplaySystem } from "./systems/display";
 
 const logger = createLogger("game_system_manager");
 
@@ -59,14 +63,26 @@ export class GameSystemManager {
             /** @type {StorageSystem} */
             storage: null,
 
-            /** @type {EnergyGeneratorSystem} */
-            energyGenerator: null,
-
             /** @type {WiredPinsSystem} */
             wiredPins: null,
 
-            /** @type {EnergyConsumerSystem} */
-            energyConsumer: null,
+            /** @type {BeltUnderlaysSystem} */
+            beltUnderlays: null,
+
+            /** @type {WireSystem} */
+            wire: null,
+
+            /** @type {ConstantSignalSystem} */
+            constantSignal: null,
+
+            /** @type {LogicGateSystem} */
+            logicGate: null,
+
+            /** @type {LeverSystem} */
+            lever: null,
+
+            /** @type {DisplaySystem} */
+            display: null,
 
             /* typehints:end */
         };
@@ -102,18 +118,30 @@ export class GameSystemManager {
 
         add("hub", HubSystem);
 
-        add("energyGenerator", EnergyGeneratorSystem);
-
         add("staticMapEntities", StaticMapEntitySystem);
 
         add("wiredPins", WiredPinsSystem);
 
-        add("energyConsumer", EnergyConsumerSystem);
+        add("beltUnderlays", BeltUnderlaysSystem);
+
+        add("constantSignal", ConstantSignalSystem);
 
         // IMPORTANT: Must be after belt system since belt system can change the
         // orientation of an entity after it is placed -> the item acceptor cache
         // then would be invalid
         add("itemAcceptor", ItemAcceptorSystem);
+
+        // WIRES section
+        add("lever", LeverSystem);
+
+        // IMPORTANT: We have 2 phases: In phase 1 we compute the output values of all gates,
+        // processors etc. In phase 2 we propagate it through the wires network
+        add("logicGate", LogicGateSystem);
+
+        // Wires must be after all gate, signal etc logic!
+        add("wire", WireSystem);
+
+        add("display", DisplaySystem);
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }

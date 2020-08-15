@@ -1,9 +1,9 @@
-import { Rectangle } from "./rectangle";
 import { globalConfig } from "./config";
 
-/* typehints:start */
-import { GameRoot } from "../game/root";
-/* typehints:end */
+/**
+ * @typedef {import("../game/root").GameRoot} GameRoot
+ * @typedef {import("./rectangle").Rectangle} Rectangle
+ */
 
 export class DrawParameters {
     constructor({ context, visibleRect, desiredAtlasScale, zoomLevel, root }) {
@@ -13,7 +13,7 @@ export class DrawParameters {
         /** @type {Rectangle} */
         this.visibleRect = visibleRect;
 
-        /** @type {number} */
+        /** @type {string} */
         this.desiredAtlasScale = desiredAtlasScale;
 
         /** @type {number} */
@@ -22,9 +22,5 @@ export class DrawParameters {
         // FIXME: Not really nice
         /** @type {GameRoot} */
         this.root = root;
-
-        if (G_IS_DEV && globalConfig.debug.testClipping) {
-            this.visibleRect = this.visibleRect.expandedInAllDirections(-100);
-        }
     }
 }

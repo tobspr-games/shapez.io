@@ -4,8 +4,8 @@ import { Rectangle } from "../../core/rectangle";
 import { AtlasSprite } from "../../core/sprites";
 import { enumDirection, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
-import { Component } from "../component";
 import { getBuildingDataFromCode } from "../building_codes";
+import { Component } from "../component";
 
 export class StaticMapEntityComponent extends Component {
     static getId() {
@@ -15,13 +15,20 @@ export class StaticMapEntityComponent extends Component {
     static getSchema() {
         return {
             origin: types.tileVector,
-            tileSize: types.tileVector,
             rotation: types.float,
             originalRotation: types.float,
 
             // See building_codes.js
             code: types.uint,
         };
+    }
+
+    /**
+     * Returns the effective tile size
+     * @returns {Vector}
+     */
+    getTileSize() {
+        return getBuildingDataFromCode(this.code).tileSize;
     }
 
     /**
@@ -48,10 +55,17 @@ export class StaticMapEntityComponent extends Component {
         return getBuildingDataFromCode(this.code).silhouetteColor;
     }
 
+    /**
+     * Returns the meta building
+     * @returns {import("../meta_building").MetaBuilding}
+     */
+    getMetaBuilding() {
+        return getBuildingDataFromCode(this.code).metaInstance;
+    }
+
     duplicateWithoutContents() {
         return new StaticMapEntityComponent({
             origin: this.origin.copy(),
-            tileSize: this.tileSize.copy(),
             rotation: this.rotation,
             originalRotation: this.originalRotation,
             code: this.code,
@@ -81,7 +95,6 @@ export class StaticMapEntityComponent extends Component {
         );
 
         this.origin = origin;
-        this.tileSize = tileSize;
         this.rotation = rotation;
         this.code = code;
         this.originalRotation = originalRotation;
@@ -92,30 +105,16 @@ export class StaticMapEntityComponent extends Component {
      * @returns {Rectangle}
      */
     getTileSpaceBounds() {
+        const size = this.getTileSize();
         switch (this.rotation) {
             case 0:
-                return new Rectangle(this.origin.x, this.origin.y, this.tileSize.x, this.tileSize.y);
+                return new Rectangle(this.origin.x, this.origin.y, size.x, size.y);
             case 90:
-                return new Rectangle(
-                    this.origin.x - this.tileSize.y + 1,
-                    this.origin.y,
-                    this.tileSize.y,
-                    this.tileSize.x
-                );
+                return new Rectangle(this.origin.x - size.y + 1, this.origin.y, size.y, size.x);
             case 180:
-                return new Rectangle(
-                    this.origin.x - this.tileSize.x + 1,
-                    this.origin.y - this.tileSize.y + 1,
-                    this.tileSize.x,
-                    this.tileSize.y
-                );
+                return new Rectangle(this.origin.x - size.x + 1, this.origin.y - size.y + 1, size.x, size.y);
             case 270:
-                return new Rectangle(
-                    this.origin.x,
-                    this.origin.y - this.tileSize.x + 1,
-                    this.tileSize.y,
-                    this.tileSize.x
-                );
+                return new Rectangle(this.origin.x, this.origin.y - size.x + 1, size.y, size.x);
             default:
                 assert(false, "Invalid rotation");
         }
@@ -186,34 +185,35 @@ export class StaticMapEntityComponent extends Component {
         let y = 0;
         let w = 0;
         let h = 0;
+        const size = this.getTileSize();
 
         switch (this.rotation) {
             case 0: {
                 x = this.origin.x;
                 y = this.origin.y;
-                w = this.tileSize.x;
-                h = this.tileSize.y;
+                w = size.x;
+                h = size.y;
                 break;
             }
             case 90: {
-                x = this.origin.x - this.tileSize.y + 1;
+                x = this.origin.x - size.y + 1;
                 y = this.origin.y;
-                w = this.tileSize.y;
-                h = this.tileSize.x;
+                w = size.y;
+                h = size.x;
                 break;
             }
             case 180: {
-                x = this.origin.x - this.tileSize.x + 1;
-                y = this.origin.y - this.tileSize.y + 1;
-                w = this.tileSize.x;
-                h = this.tileSize.y;
+                x = this.origin.x - size.x + 1;
+                y = this.origin.y - size.y + 1;
+                w = size.x;
+                h = size.y;
                 break;
             }
             case 270: {
                 x = this.origin.x;
-                y = this.origin.y - this.tileSize.x + 1;
-                w = this.tileSize.y;
-                h = this.tileSize.x;
+                y = this.origin.y - size.x + 1;
+                w = size.y;
+                h = size.x;
                 break;
             }
             default:
@@ -233,19 +233,13 @@ export class StaticMapEntityComponent extends Component {
      * @param {DrawParameters} parameters
      * @param {AtlasSprite} sprite
      * @param {number=} extrudePixels How many pixels to extrude the sprite
-     * @param {boolean=} clipping Whether to clip
      * @param {Vector=} overridePosition Whether to drwa the entity at a different location
      */
-    drawSpriteOnFullEntityBounds(
-        parameters,
-        sprite,
-        extrudePixels = 0,
-        clipping = true,
-        overridePosition = null
-    ) {
+    drawSpriteOnFullEntityBounds(parameters, sprite, extrudePixels = 0, overridePosition = null) {
         if (!this.shouldBeDrawn(parameters) && !overridePosition) {
             return;
         }
+        const size = this.getTileSize();
         let worldX = this.origin.x * globalConfig.tileSize;
         let worldY = this.origin.y * globalConfig.tileSize;
 
@@ -258,11 +252,10 @@ export class StaticMapEntityComponent extends Component {
             // Early out, is faster
             sprite.drawCached(
                 parameters,
-                worldX - extrudePixels * this.tileSize.x,
-                worldY - extrudePixels * this.tileSize.y,
-                globalConfig.tileSize * this.tileSize.x + 2 * extrudePixels * this.tileSize.x,
-                globalConfig.tileSize * this.tileSize.y + 2 * extrudePixels * this.tileSize.y,
-                false
+                worldX - extrudePixels * size.x,
+                worldY - extrudePixels * size.y,
+                globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
+                globalConfig.tileSize * size.y + 2 * extrudePixels * size.y
             );
         } else {
             const rotationCenterX = worldX + globalConfig.halfTileSize;
@@ -270,16 +263,14 @@ export class StaticMapEntityComponent extends Component {
 
             parameters.context.translate(rotationCenterX, rotationCenterY);
             parameters.context.rotate(Math.radians(this.rotation));
-
             sprite.drawCached(
                 parameters,
-                -globalConfig.halfTileSize - extrudePixels * this.tileSize.x,
-                -globalConfig.halfTileSize - extrudePixels * this.tileSize.y,
-                globalConfig.tileSize * this.tileSize.x + 2 * extrudePixels * this.tileSize.x,
-                globalConfig.tileSize * this.tileSize.y + 2 * extrudePixels * this.tileSize.y,
-                false
+                -globalConfig.halfTileSize - extrudePixels * size.x,
+                -globalConfig.halfTileSize - extrudePixels * size.y,
+                globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
+                globalConfig.tileSize * size.y + 2 * extrudePixels * size.y,
+                false // no clipping possible here
             );
-
             parameters.context.rotate(-Math.radians(this.rotation));
             parameters.context.translate(-rotationCenterX, -rotationCenterY);
         }

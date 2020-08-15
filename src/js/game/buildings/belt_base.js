@@ -1,16 +1,19 @@
-import { formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { enumAngleToDirection, enumDirection, Vector } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
 import { T } from "../../translations";
 import { BeltComponent } from "../components/belt";
-import { ItemAcceptorComponent } from "../components/item_acceptor";
-import { ItemEjectorComponent } from "../components/item_ejector";
-import { ReplaceableMapEntityComponent } from "../components/replaceable_map_entity";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot, enumLayer } from "../root";
+import { GameRoot } from "../root";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
+
+export const beltOverlayMatrices = {
+    [enumDirection.top]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
+    [enumDirection.left]: generateMatrixRotations([0, 0, 0, 1, 1, 0, 0, 1, 0]),
+    [enumDirection.right]: generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
+};
 
 export class MetaBeltBaseBuilding extends MetaBuilding {
     getHasDirectionLockAvailable() {
@@ -23,7 +26,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const beltSpeed = root.hubGoals.getBeltBaseSpeed(enumLayer.regular);
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
 
@@ -43,6 +46,21 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return null;
     }
 
+    getIsReplaceable() {
+        return true;
+    }
+
+    /**
+     *
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return beltOverlayMatrices[entity.components.Belt.direction][rotation];
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
@@ -51,34 +69,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         entity.addComponent(
             new BeltComponent({
                 direction: enumDirection.top, // updated later
-            })
-        );
-        // Make this entity replaceabel
-        entity.addComponent(new ReplaceableMapEntityComponent());
-
-        entity.addComponent(
-            new ItemAcceptorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
-                        layer: this.getLayer(),
-                    },
-                ],
-                animated: false,
-            })
-        );
-
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.top, // updated later
-                        layer: this.getLayer(),
-                    },
-                ],
-                instantEject: true,
             })
         );
     }
@@ -90,7 +80,6 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant) {
         entity.components.Belt.direction = arrayBeltVariantToRotation[rotationVariant];
-        entity.components.ItemEjector.slots[0].direction = arrayBeltVariantToRotation[rotationVariant];
     }
 
     /**
@@ -100,7 +89,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {Vector} param0.tile
      * @param {number} param0.rotation
      * @param {string} param0.variant
-     * @param {string} param0.layer
+     * @param {Layer} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
@@ -109,7 +98,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];
         const leftDirection = enumAngleToDirection[(rotation + 270) % 360];
 
-        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile, layer);
+        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile);
 
         let hasBottomEjector = false;
         let hasRightEjector = false;

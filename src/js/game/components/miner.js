@@ -1,8 +1,7 @@
-import { globalConfig } from "../../core/config";
 import { types } from "../../savegame/serialization";
-import { Component } from "../component";
 import { BaseItem } from "../base_item";
-import { gItemRegistry } from "../../core/global_registries";
+import { Component } from "../component";
+import { typeItemSingleton } from "../item_resolver";
 
 const chainBufferSize = 3;
 
@@ -15,8 +14,7 @@ export class MinerComponent extends Component {
         // cachedMinedItem is not serialized.
         return {
             lastMiningTime: types.ufloat,
-            chainable: types.bool,
-            itemChainBuffer: types.array(types.obj(gItemRegistry)),
+            itemChainBuffer: types.array(typeItemSingleton),
         };
     }
 

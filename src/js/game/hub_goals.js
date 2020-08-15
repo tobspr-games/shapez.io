@@ -1,13 +1,12 @@
 import { globalConfig } from "../core/config";
-import { queryParamOptions } from "../core/query_parameters";
 import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/utils";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
-import { GameRoot, enumLayer } from "./root";
+import { GameRoot } from "./root";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
-import { UPGRADES, blueprintShape } from "./upgrades";
+import { UPGRADES } from "./upgrades";
 
 export class HubGoals extends BasicSerializableObject {
     static getId() {
@@ -328,9 +327,7 @@ export class HubGoals extends BasicSerializableObject {
         /** @type {Array<import("./shape_definition").ShapeLayer>} */
         let layers = [];
 
-        // @ts-ignore
         const randomColor = () => randomChoice(Object.values(enumColors));
-        // @ts-ignore
         const randomShape = () => randomChoice(Object.values(enumSubShape));
 
         let anyIsMissingTwo = false;
@@ -370,13 +367,9 @@ export class HubGoals extends BasicSerializableObject {
 
     /**
      * Belt speed
-     * @param {enumLayer} layer
      * @returns {number} items / sec
      */
-    getBeltBaseSpeed(layer) {
-        if (layer === enumLayer.wires) {
-            return globalConfig.wiresSpeedItemsPerSecond;
-        }
+    getBeltBaseSpeed() {
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
 
@@ -411,6 +404,8 @@ export class HubGoals extends BasicSerializableObject {
                 return 1e30;
             case enumItemProcessorTypes.splitter:
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
+            case enumItemProcessorTypes.filter:
+                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
 
             case enumItemProcessorTypes.mixer:
             case enumItemProcessorTypes.painter:
@@ -442,9 +437,6 @@ export class HubGoals extends BasicSerializableObject {
                     this.upgradeImprovements.processors *
                     globalConfig.buildingSpeeds[processorType]
                 );
-            }
-            case enumItemProcessorTypes.advancedProcessor: {
-                return globalConfig.beltSpeedItemsPerSecond * globalConfig.buildingSpeeds[processorType];
             }
             default:
                 assertAlways(false, "invalid processor type: " + processorType);

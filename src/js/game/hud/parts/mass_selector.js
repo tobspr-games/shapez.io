@@ -21,8 +21,6 @@ export class HUDMassSelector extends BaseHUDPart {
     createElements(parent) {}
 
     initialize() {
-        this.deletionMarker = Loader.getSprite("sprites/misc/deletion_marker.png");
-
         this.currentSelectionStartWorld = null;
         this.currentSelectionEnd = null;
         this.selectedUids = new Set();

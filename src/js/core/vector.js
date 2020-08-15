@@ -1,4 +1,5 @@
 import { globalConfig } from "./config";
+import { safeModulo } from "./utils";
 
 const tileSize = globalConfig.tileSize;
 const halfTileSize = globalConfig.halfTileSize;
@@ -42,6 +43,14 @@ export const enumAngleToDirection = {
     180: enumDirection.bottom,
     270: enumDirection.left,
 };
+
+/** @type {Array<enumDirection>} */
+export const arrayAllDirections = [
+    enumDirection.top,
+    enumDirection.right,
+    enumDirection.bottom,
+    enumDirection.left,
+];
 
 export class Vector {
     /**
@@ -277,6 +286,15 @@ export class Vector {
         const dx = this.x - v.x;
         const dy = this.y - v.y;
         return dx * dx + dy * dy;
+    }
+
+    /**
+     * Returns x % f, y % f
+     * @param {number} f
+     * @returns {Vector} new vector
+     */
+    modScalar(f) {
+        return new Vector(safeModulo(this.x, f), safeModulo(this.y, f));
     }
 
     /**

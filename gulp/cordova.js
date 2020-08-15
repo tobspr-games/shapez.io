@@ -132,25 +132,6 @@ function gulptasksCordova($, gulp, buildFolder) {
                 })
             );
     });
-
-    // gulp.task("pushToStagingRepo", (cb) => {
-    //     var cmd = spawn('../push-pgb.sh', ['https://TOKEN@github.com/tobspr/shapezapp-cordova-buildslave.git'],
-    //         { stdio: 'inherit', stdout: 'inherit', stderr: 'inherit', shell: true });
-    //     cmd.on('close', function (code) {
-    //         console.log('push staging exited with code ' + code + " / " + cmd.stdout + " / " + cmd.stderr);
-    //         cb(code);
-    //     });
-
-    // });
-
-    // gulp.task("pushToProdRepo", (cb) => {
-    //     var cmd = spawn('../push-pgb.sh', ['https://TOKEN@github.com/tobspr/shapezapp-cordova-buildslave-release.git'],
-    //         { stdio: 'inherit', stdout: 'inherit', stderr: 'inherit', shell: true });
-    //     cmd.on('close', function (code) {
-    //         console.log('push prod exited with code ' + code + " / " + cmd.stdout + " / " + cmd.stderr);
-    //         cb(code);
-    //     });
-    // });
 }
 
 module.exports = {

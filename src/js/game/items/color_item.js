@@ -2,7 +2,7 @@ import { globalConfig } from "../../core/config";
 import { smoothenDpi } from "../../core/dpi_manager";
 import { DrawParameters } from "../../core/draw_parameters";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { enumColors, enumColorsToHexCode } from "../colors";
 import { THEME } from "../theme";
 
@@ -23,8 +23,16 @@ export class ColorItem extends BaseItem {
         this.color = data;
     }
 
+    /** @returns {"color"} **/
     getItemType() {
-        return enumItemType.color;
+        return "color";
+    }
+
+    /**
+     * @param {BaseItem} other
+     */
+    equalsImpl(other) {
+        return this.color === /** @type {ColorItem} */ (other).color;
     }
 
     /**
@@ -43,26 +51,26 @@ export class ColorItem extends BaseItem {
     /**
      * @param {number} x
      * @param {number} y
-     * @param {number} size
+     * @param {number} diameter
      * @param {DrawParameters} parameters
      */
-    draw(x, y, parameters, size = 12) {
+    drawCentered(x, y, parameters, diameter = 12) {
         if (!this.bufferGenerator) {
             this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
         }
 
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
-        const key = size + "/" + dpi;
-        const canvas = parameters.root.buffers.getForKey(
+        const key = diameter + "/" + dpi;
+        const canvas = parameters.root.buffers.getForKey({
             key,
-            this.color,
-            size,
-            size,
+            subKey: this.color,
+            w: diameter,
+            h: diameter,
             dpi,
-            this.bufferGenerator
-        );
-        parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
+            redrawMethod: this.bufferGenerator,
+        });
+        parameters.context.drawImage(canvas, x - diameter / 2, y - diameter / 2, diameter, diameter);
     }
     /**
      *
@@ -90,4 +98,14 @@ export class ColorItem extends BaseItem {
         context.stroke();
         context.fill();
     }
+}
+
+/**
+ * Singleton instances
+ * @type {Object<enumColors, ColorItem>}
+ */
+export const COLOR_ITEM_SINGLETONS = {};
+
+for (const color in enumColors) {
+    COLOR_ITEM_SINGLETONS[color] = new ColorItem(color);
 }

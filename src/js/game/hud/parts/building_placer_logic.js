@@ -12,8 +12,8 @@ import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
 import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
-import { enumLayer } from "../../root";
 import { getBuildingDataFromCode, getCodeFromBuildingData } from "../../building_codes";
+import { MetaHubBuilding } from "../../buildings/hub";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -132,12 +132,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Called when the edit mode got changed
-     * @param {enumLayer} editMode
+     * @param {Layer} layer
      */
-    onEditModeChanged(editMode) {
+    onEditModeChanged(layer) {
         const metaBuilding = this.currentMetaBuilding.get();
         if (metaBuilding) {
-            if (metaBuilding.getLayer() !== editMode) {
+            if (metaBuilding.getLayer() !== layer) {
                 // This layer doesn't fit the edit mode anymore
                 this.currentMetaBuilding.set(null);
             }
@@ -289,7 +289,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
-            return;
+            return false;
         }
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
@@ -298,8 +298,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (contents) {
             if (this.root.logic.tryDeleteBuilding(contents)) {
                 this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
+                return true;
             }
         }
+        return false;
     }
 
     /**
@@ -341,6 +343,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Try to extract the building
         const buildingCode = contents.components.StaticMapEntity.code;
         const extracted = getBuildingDataFromCode(buildingCode);
+
+        // Disable pipetting the hub
+        if (extracted.metaInstance.getId() === gMetaBuildingRegistry.findByClass(MetaHubBuilding).getId()) {
+            this.currentMetaBuilding.set(null);
+            return;
+        }
 
         // If the building we are picking is the same as the one we have, clear the cursor.
         if (
@@ -637,8 +645,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            this.deleteBelowCursor();
-            return STOP_PROPAGATION;
+            if (this.deleteBelowCursor()) {
+                return STOP_PROPAGATION;
+            }
         }
 
         // Cancel placement
