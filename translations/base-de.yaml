@@ -825,7 +825,6 @@ keybindings:
         mixer: *mixer
         painter: *painter
         trash: *trash
-        wire: *wire
 
         pipette: Pipette
         rotateWhilePlacing: Rotieren

@@ -24,7 +24,6 @@ steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io adalah permainan membangun pabrik-pabrik dengan tujuan untuk mengautomatiskan pembentukan dan pemrosesan bentuk-bentuk yang bertambah semakin kompleks di dalam area permainan yang meluas secara tak terhingga.
 
-
     # This is the text shown above the discord link
     discordLink: Tautan Resmi Discord – Obrol dengan saya!
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
@@ -37,7 +36,7 @@ steamPage:
         shapez.io adalah permainan membangun pabrik-pabrik dengan tujuan untuk mengautomatiskan pembentukan dan pemrosesan bentuk-bentuk yang bertambah semakin kompleks di dalam area permainan yang meluas secara tak terhingga.
 
         Setelah pengiriman bentuk-bentuk yang diminta, Anda akan maju dalam permainan dan membuka tingkatan versi-versi mesin selanjutnya untuk mempercepat pabrik Anda.
- 
+
         Seiring meningkatnya kesulitan dari bentuk-bentuk yang diminta, Anda harus meningkatkan pabrik Anda untuk mengatasi kesulitan tersebut – Jangan lupa dengan sumber-sumber daya, Anda harus memperluas ke seluruh [b]area yang tidak terbatas[/b]!
 
         Kemudian Anda harus mencampurkan warna-warna dan mencat bentuk-bentuk dengannya – Campurkan merah, hijau, dan biru untuk memproduksi warna-warna lain dan mencat bentuk-bentuk dengannya untuk memenuhi permintaan.
@@ -176,7 +175,7 @@ dialogs:
         title: Kesalahan pada Impor
         text: >-
             Gagal memasukkan data simpanan Anda:
- 
+
     importSavegameSuccess:
         title: Impor Berhasil
         text: >-
@@ -200,7 +199,7 @@ dialogs:
     restartRequired:
         title: Diperlukan untuk Memulai Kembali
         text: >-
-            Anda harus memulai kembali permainan untuk menerapkan pengaturan.  
+            Anda harus memulai kembali permainan untuk menerapkan pengaturan.
 
     editKeybinding:
         title: Ganti Tombol Pintas
@@ -216,17 +215,17 @@ dialogs:
 
     featureRestriction:
         title: Versi Demo
-        desc: Anda mencoba untuk mengakses fitur (<feature>) yang tidak tersedia pada versi demo. Pertimbangkan untuk mendapatkan versi penuh untuk pengalaman sepenuhnya! 
+        desc: Anda mencoba untuk mengakses fitur (<feature>) yang tidak tersedia pada versi demo. Pertimbangkan untuk mendapatkan versi penuh untuk pengalaman sepenuhnya!
 
     oneSavegameLimit:
         title: Penyimpanan Permainan Terbatas
-        desc: Anda hanya dapat memiliki satu simpanan permainan dalam versi demo. Harap hapus yang telah ada atau dapatkan versi penuh! 
+        desc: Anda hanya dapat memiliki satu simpanan permainan dalam versi demo. Harap hapus yang telah ada atau dapatkan versi penuh!
 
     updateSummary:
         title: Pembaruan Baru!
         desc: >-
             Berikut perubahan-perubahan yang telah dibuat sejak Anda main terakhir kali:
- 
+
     upgradesIntroduction:
         title: Buka Tingkatan-tingkatan
         desc: >-
@@ -272,7 +271,7 @@ dialogs:
 
     exportScreenshotWarning:
         title: Ekspor Tangkapan Layar
-        desc: Anda meminta untuk mengekspor pangkalan pusat Anda sebagai tangkapan layar. Harap ketahui bahwa ini bisa menjadi lambat untuk pangkalan pusat yang besar dan bahkan dapat membuat permainan Anda mogok! 
+        desc: Anda meminta untuk mengekspor pangkalan pusat Anda sebagai tangkapan layar. Harap ketahui bahwa ini bisa menjadi lambat untuk pangkalan pusat yang besar dan bahkan dapat membuat permainan Anda mogok!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -521,7 +520,7 @@ buildings:
     painter:
         default:
             name: &painter Pencat
-            description: &painter_desc Mencat keseluruhan bentuk dari input kiri dengan warna dari input atas. 
+            description: &painter_desc Mencat keseluruhan bentuk dari input kiri dengan warna dari input atas.
         mirrored:
             name: *painter
             description: *painter_desc
@@ -569,7 +568,7 @@ storyRewards:
     reward_rotater:
         title: Memutar
         desc: <strong>Pemutar</strong> telah dibuka! Ia memutar bentuk-bentuk searah jarum jam sebesar 90 derajat.
- 
+
     reward_painter:
         title: Pengecatan
         desc: >-
@@ -615,7 +614,7 @@ storyRewards:
     reward_painter_double:
         title: Pengecatan Ganda
         desc: Anda telah membuka varian dari <strong>pencat</strong> - Ia bekerja seperti pencat biasa namun dapat memproses <strong>dua bentuk sekaligus</strong> mengonsumsi hanya satu warna daripada dua!
- 
+
     reward_painter_quad:
         title: Pengecatan Empat Bagian
         desc: Anda telah membuka varian dari <strong>pencat</strong> - Ia memungkinkan Anda untuk mencat setiap bagian dari masing-masing bentuk sendiri-sendiri!
@@ -660,7 +659,7 @@ settings:
         uiScale:
             title: Skala Antarmuka
             description: >-
-                Ganti ukuran antarmuka pengguna. Antarmuka tetap akan berskalakan berdasar resolusi peralatan Anda, tetapi pengaturan ini mengontrol besar skala. 
+                Ganti ukuran antarmuka pengguna. Antarmuka tetap akan berskalakan berdasar resolusi peralatan Anda, tetapi pengaturan ini mengontrol besar skala.
             scales:
                 super_small: Sangat kecil
                 small: Kecil
@@ -855,7 +854,7 @@ about:
     body: >-
         Permainan ini bekerja secara open source dan dikembangkan oleh <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (ini adalah saya).<br><br>
 
-       Apabila Anda ingin berkontribusi, periksa <a href="<githublink>" target="_blank">shapez.io di github</a>.<br><br>
+        Apabila Anda ingin berkontribusi, periksa <a href="<githublink>" target="_blank">shapez.io di github</a>.<br><br>
 
         Permainan ini tidak mungkin ada tanpa komunitas Discord di sekitar permainan saya – Anda hendaknya bergabung <a href="<discordlink>" target="_blank">server Discord</a>!<br><br>
 
