@@ -8,10 +8,6 @@ import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
 import { THEME } from "./theme";
 
-const rusha = require("rusha");
-
-const logger = createLogger("shape_definition");
-
 /**
  * @typedef {{
  *   subShape: enumSubShape,

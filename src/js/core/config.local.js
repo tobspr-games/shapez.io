@@ -95,5 +95,14 @@ export default {
     // Whether to items / s instead of items / m in stats
     // detailedStatistics: true,
     // -----------------------------------------------------------------------------------
+    // Shows detailed information about which atlas is used
+    // showAtlasInfo: true,
+    // -----------------------------------------------------------------------------------
+    // Renders the rotation of all wires
+    // renderWireRotations: true,
+    // -----------------------------------------------------------------------------------
+    // Renders information about wire networks
+    // renderWireNetworkInfos: true,
+    // -----------------------------------------------------------------------------------
     /* dev:end */
 };
