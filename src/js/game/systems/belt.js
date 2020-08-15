@@ -14,6 +14,7 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
 import { getCodeFromBuildingData } from "../building_codes";
+import { enumLayer } from "../root";
 
 export const BELT_ANIM_COUNT = 14;
 
@@ -495,17 +496,13 @@ export class BeltSystem extends GameSystemWithFilter {
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
                 globalConfig.itemSpacingOnBelts
         );
-        const contents = chunk.contents;
-        for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
-            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
-                const entity = contents[x][y];
-
-                if (entity && entity.components.Belt) {
-                    const direction = entity.components.Belt.direction;
-                    const sprite = this.beltAnimations[direction][animationIndex % BELT_ANIM_COUNT];
-
-                    entity.components.StaticMapEntity.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
-                }
+        const contents = chunk.containedEntitiesByLayer[enumLayer.regular];
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            if (entity.components.Belt) {
+                const direction = entity.components.Belt.direction;
+                const sprite = this.beltAnimations[direction][animationIndex % BELT_ANIM_COUNT];
+                entity.components.StaticMapEntity.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
             }
         }
     }

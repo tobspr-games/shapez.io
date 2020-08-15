@@ -22,9 +22,5 @@ export class DrawParameters {
         // FIXME: Not really nice
         /** @type {GameRoot} */
         this.root = root;
-
-        if (G_IS_DEV && globalConfig.debug.testClipping) {
-            this.visibleRect = this.visibleRect.expandedInAllDirections(-100);
-        }
     }
 }

@@ -69,7 +69,7 @@ export class HUDWireInfo extends BaseHUDPart {
             } else if (!network.currentValue) {
                 this.spriteEmpty.draw(parameters.context, mousePos.x + 10, mousePos.y - 10, 40, 40);
             } else {
-                network.currentValue.draw(mousePos.x + 20, mousePos.y, parameters, 40);
+                network.currentValue.drawCentered(mousePos.x + 20, mousePos.y, parameters, 40);
             }
         }
     }

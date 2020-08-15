@@ -71,7 +71,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
                 fadeOutDirection.x * (animProgress / 2 - 0.5),
                 fadeOutDirection.y * (animProgress / 2 - 0.5)
             );
-            item.draw(
+            item.drawCentered(
                 (finalTile.x + 0.5) * globalConfig.tileSize,
                 (finalTile.y + 0.5) * globalConfig.tileSize,
                 parameters

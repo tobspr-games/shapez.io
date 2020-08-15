@@ -369,6 +369,13 @@ export class GameCore {
         }
 
         // Transform to world space
+
+        if (G_IS_DEV && globalConfig.debug.testClipping) {
+            params.visibleRect = params.visibleRect.expandedInAllDirections(
+                -200 / this.root.camera.zoomLevel
+            );
+        }
+
         root.camera.transform(context);
 
         assert(context.globalAlpha === 1.0, "Global alpha not 1 on frame start");
@@ -384,9 +391,6 @@ export class GameCore {
             root.map.drawOverlay(params);
         } else {
             root.map.drawBackground(params);
-
-            // Underlays for splitters / balancers
-            systems.beltUnderlays.drawUnderlays(params);
 
             // Belt items
             systems.belt.drawBeltItems(params);
@@ -439,6 +443,9 @@ export class GameCore {
         params.zoomLevel = 1;
         params.desiredAtlasScale = ORIGINAL_SPRITE_SCALE;
         params.visibleRect = new Rectangle(0, 0, this.root.gameWidth, this.root.gameHeight);
+        if (G_IS_DEV && globalConfig.debug.testClipping) {
+            params.visibleRect = params.visibleRect.expandedInAllDirections(-200);
+        }
 
         // Draw overlays, those are screen space
         root.hud.drawOverlays(params);
@@ -468,6 +475,14 @@ export class GameCore {
                 200,
                 20
             );
+        }
+
+        if (G_IS_DEV && globalConfig.debug.testClipping) {
+            context.strokeStyle = "red";
+            context.lineWidth = 1;
+            context.beginPath();
+            context.rect(200, 200, this.root.gameWidth - 400, this.root.gameHeight - 400);
+            context.stroke();
         }
     }
 }

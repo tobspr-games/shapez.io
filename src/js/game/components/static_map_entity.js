@@ -255,8 +255,7 @@ export class StaticMapEntityComponent extends Component {
                 worldX - extrudePixels * size.x,
                 worldY - extrudePixels * size.y,
                 globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
-                globalConfig.tileSize * size.y + 2 * extrudePixels * size.y,
-                false
+                globalConfig.tileSize * size.y + 2 * extrudePixels * size.y
             );
         } else {
             const rotationCenterX = worldX + globalConfig.halfTileSize;
@@ -264,16 +263,14 @@ export class StaticMapEntityComponent extends Component {
 
             parameters.context.translate(rotationCenterX, rotationCenterY);
             parameters.context.rotate(Math.radians(this.rotation));
-
             sprite.drawCached(
                 parameters,
                 -globalConfig.halfTileSize - extrudePixels * size.x,
                 -globalConfig.halfTileSize - extrudePixels * size.y,
                 globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
                 globalConfig.tileSize * size.y + 2 * extrudePixels * size.y,
-                false
+                false // no clipping possible here
             );
-
             parameters.context.rotate(-Math.radians(this.rotation));
             parameters.context.translate(-rotationCenterX, -rotationCenterY);
         }

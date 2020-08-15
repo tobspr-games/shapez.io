@@ -190,7 +190,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             const value = slot.value;
             if (value) {
                 const offset = new Vector(0, -9).rotated(effectiveRotation);
-                value.draw(worldPos.x + offset.x, worldPos.y + offset.y, parameters, 9);
+                value.drawCentered(worldPos.x + offset.x, worldPos.y + offset.y, parameters, 9);
             }
 
             // Debug view

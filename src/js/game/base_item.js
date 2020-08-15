@@ -59,9 +59,9 @@ export class BaseItem extends BasicSerializableObject {
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
-     * @param {number=} size
+     * @param {number=} diameter
      */
-    draw(x, y, parameters, size) {}
+    drawCentered(x, y, parameters, diameter) {}
 
     getBackgroundColorAsResource() {
         abstract;

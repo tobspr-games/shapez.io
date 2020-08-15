@@ -9,6 +9,7 @@ import { Entity } from "./entity";
 import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
 import { enumLayer, GameRoot } from "./root";
 import { enumSubShape } from "./shape_definition";
+import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("map_chunk");
 
@@ -26,17 +27,46 @@ export class MapChunk {
         this.tileX = x * globalConfig.mapChunkSize;
         this.tileY = y * globalConfig.mapChunkSize;
 
-        /** @type {Array<Array<?Entity>>} */
+        /**
+         * Stores the contents of the lower (= map resources) layer
+         *  @type {Array<Array<?BaseItem>>}
+         */
+        this.lowerLayer = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
+
+        /**
+         * Stores the contents of the regular layer
+         * @type {Array<Array<?Entity>>}
+         */
         this.contents = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
 
-        /** @type {Array<Array<?Entity>>} */
+        /**
+         * Stores the contents of the wires layer
+         *  @type {Array<Array<?Entity>>}
+         */
         this.wireContents = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
-
-        /** @type {Array<Array<?BaseItem>>} */
-        this.lowerLayer = make2DUndefinedArray(globalConfig.mapChunkSize, globalConfig.mapChunkSize);
 
         /** @type {Array<Entity>} */
         this.containedEntities = [];
+
+        /**
+         * World space rectangle, can be used for culling
+         */
+        this.worldSpaceRectangle = new Rectangle(
+            this.tileX * globalConfig.tileSize,
+            this.tileY * globalConfig.tileSize,
+            globalConfig.mapChunkWorldSize,
+            globalConfig.mapChunkWorldSize
+        );
+
+        /**
+         * Tile space rectangle, can be used for culling
+         */
+        this.tileSpaceRectangle = new Rectangle(
+            this.tileX,
+            this.tileY,
+            globalConfig.mapChunkSize,
+            globalConfig.mapChunkSize
+        );
 
         /**
          * Which entities this chunk contains, sorted by layer

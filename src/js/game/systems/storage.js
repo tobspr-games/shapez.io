@@ -65,7 +65,7 @@ export class StorageSystem extends GameSystemWithFilter {
         if (storedItem !== null) {
             context.globalAlpha = storageComp.overlayOpacity;
             const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
-            storedItem.draw(center.x, center.y, parameters, 30);
+            storedItem.drawCentered(center.x, center.y, parameters, 30);
 
             this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
 

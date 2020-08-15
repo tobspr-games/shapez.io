@@ -42,17 +42,17 @@ export class BooleanItem extends BaseItem {
     /**
      * @param {number} x
      * @param {number} y
-     * @param {number} size
+     * @param {number} diameter
      * @param {DrawParameters} parameters
      */
-    draw(x, y, parameters, size = 12) {
+    drawCentered(x, y, parameters, diameter = 12) {
         let sprite;
         if (this.value) {
             sprite = Loader.getSprite("sprites/wires/boolean_true.png");
         } else {
             sprite = Loader.getSprite("sprites/wires/boolean_false.png");
         }
-        sprite.drawCachedCentered(parameters, x, y, size * 1.5);
+        sprite.drawCachedCentered(parameters, x, y, diameter);
     }
 }
 

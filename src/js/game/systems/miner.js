@@ -130,7 +130,7 @@ export class MinerSystem extends GameSystemWithFilter {
                     }
 
                     if (minerComp.cachedMinedItem) {
-                        minerComp.cachedMinedItem.draw(
+                        minerComp.cachedMinedItem.drawCentered(
                             (0.5 + staticComp.origin.x) * globalConfig.tileSize,
                             (0.5 + staticComp.origin.y) * globalConfig.tileSize,
                             parameters

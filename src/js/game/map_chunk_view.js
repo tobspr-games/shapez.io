@@ -5,6 +5,7 @@ import { Entity } from "./entity";
 import { MapChunk } from "./map_chunk";
 import { enumLayer, GameRoot } from "./root";
 import { THEME } from "./theme";
+import { drawSpriteClipped } from "../core/draw_utils";
 
 export const CHUNK_OVERLAY_RES = 3;
 
@@ -41,6 +42,7 @@ export class MapChunkView extends MapChunk {
     drawBackgroundLayer(parameters) {
         const systems = this.root.systemMgr.systems;
         systems.mapResources.drawChunk(parameters, this);
+        systems.beltUnderlays.drawChunk(parameters, this);
         systems.belt.drawChunk(parameters, this);
     }
 
@@ -61,11 +63,12 @@ export class MapChunkView extends MapChunk {
      * @param {DrawParameters} parameters
      */
     drawOverlay(parameters) {
+        const overlaySize = globalConfig.mapChunkSize * CHUNK_OVERLAY_RES;
         const sprite = this.root.buffers.getForKey({
             key: "chunk@" + this.root.currentLayer,
             subKey: this.renderKey,
-            w: globalConfig.mapChunkSize * CHUNK_OVERLAY_RES,
-            h: globalConfig.mapChunkSize * CHUNK_OVERLAY_RES,
+            w: overlaySize,
+            h: overlaySize,
             dpi: 1,
             redrawMethod: this.generateOverlayBuffer.bind(this),
         });
@@ -74,7 +77,17 @@ export class MapChunkView extends MapChunk {
 
         // Draw chunk "pixel" art
         parameters.context.imageSmoothingEnabled = false;
-        parameters.context.drawImage(sprite, this.x * dims, this.y * dims, dims, dims);
+        drawSpriteClipped({
+            parameters,
+            sprite,
+            x: this.x * dims,
+            y: this.y * dims,
+            w: dims,
+            h: dims,
+            originalW: overlaySize,
+            originalH: overlaySize,
+        });
+
         parameters.context.imageSmoothingEnabled = true;
 
         // Draw patch items
@@ -82,12 +95,13 @@ export class MapChunkView extends MapChunk {
             for (let i = 0; i < this.patches.length; ++i) {
                 const patch = this.patches[i];
 
-                patch.item.draw(
-                    this.x * dims + patch.pos.x * globalConfig.tileSize,
-                    this.y * dims + patch.pos.y * globalConfig.tileSize,
-                    parameters,
-                    Math.min(80, 30 / parameters.zoomLevel)
-                );
+                const destX = this.x * dims + patch.pos.x * globalConfig.tileSize;
+                const destY = this.y * dims + patch.pos.y * globalConfig.tileSize;
+                const destSize = Math.min(80, 30 / parameters.zoomLevel);
+
+                if (parameters.visibleRect.containsCircle(destX, destY, destSize)) {
+                    patch.item.drawCentered(destX, destY, parameters, destSize);
+                }
             }
         }
     }

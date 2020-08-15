@@ -3,9 +3,11 @@ import { drawRotatedSprite } from "../../core/draw_utils";
 import { Loader } from "../../core/loader";
 import { enumDirectionToAngle } from "../../core/vector";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
-import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BELT_ANIM_COUNT } from "./belt";
+import { MapChunkView } from "../map_chunk_view";
+import { DrawParameters } from "../../core/draw_parameters";
+import { enumLayer } from "../root";
 
 export class BeltUnderlaysSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -19,49 +21,47 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Draws the acceptor underlays
-     * @param {import("../../core/draw_utils").DrawParameters} parameters
+     * Draws a given chunk
+     * @param {DrawParameters} parameters
+     * @param {MapChunkView} chunk
      */
-    drawUnderlays(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawEntityUnderlays.bind(this));
-    }
-
-    /**
-     * @param {import("../../core/draw_utils").DrawParameters} parameters
-     * @param {Entity} entity
-     */
-    drawEntityUnderlays(parameters, entity) {
-        const staticComp = entity.components.StaticMapEntity;
-        const underlayComp = entity.components.BeltUnderlays;
-
-        if (!staticComp.shouldBeDrawn(parameters)) {
-            return;
-        }
-
+    drawChunk(parameters, chunk) {
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
-        const underlays = underlayComp.underlays;
-        for (let i = 0; i < underlays.length; ++i) {
-            const { pos, direction } = underlays[i];
+        const contents = chunk.containedEntitiesByLayer[enumLayer.regular];
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const underlayComp = entity.components.BeltUnderlays;
+            if (underlayComp) {
+                const staticComp = entity.components.StaticMapEntity;
+                const underlays = underlayComp.underlays;
+                for (let i = 0; i < underlays.length; ++i) {
+                    const { pos, direction } = underlays[i];
+                    const transformedPos = staticComp.localTileToWorld(pos);
 
-            const transformedPos = staticComp.localTileToWorld(pos);
-            const angle = enumDirectionToAngle[staticComp.localDirectionToWorld(direction)];
+                    if (!chunk.tileSpaceRectangle.containsPoint(transformedPos.x, transformedPos.y)) {
+                        continue;
+                    }
 
-            // SYNC with systems/belt.js:drawSingleEntity!
-            const animationIndex = Math.floor(
-                ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                    globalConfig.itemSpacingOnBelts
-            );
+                    const angle = enumDirectionToAngle[staticComp.localDirectionToWorld(direction)];
 
-            drawRotatedSprite({
-                parameters,
-                sprite: this.underlayBeltSprites[animationIndex % this.underlayBeltSprites.length],
-                x: (transformedPos.x + 0.5) * globalConfig.tileSize,
-                y: (transformedPos.y + 0.5) * globalConfig.tileSize,
-                angle: Math.radians(angle),
-                size: globalConfig.tileSize,
-            });
+                    // SYNC with systems/belt.js:drawSingleEntity!
+                    const animationIndex = Math.floor(
+                        ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
+                            globalConfig.itemSpacingOnBelts
+                    );
+
+                    drawRotatedSprite({
+                        parameters,
+                        sprite: this.underlayBeltSprites[animationIndex % this.underlayBeltSprites.length],
+                        x: (transformedPos.x + 0.5) * globalConfig.tileSize,
+                        y: (transformedPos.y + 0.5) * globalConfig.tileSize,
+                        angle: Math.radians(angle),
+                        size: globalConfig.tileSize,
+                    });
+                }
+            }
         }
     }
 }

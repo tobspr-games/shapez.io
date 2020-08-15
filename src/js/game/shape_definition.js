@@ -280,24 +280,25 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
+     * @param {number=} diameter
      */
-    draw(x, y, parameters, size = 20) {
+    drawCentered(x, y, parameters, diameter = 20) {
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
         if (!this.bufferGenerator) {
             this.bufferGenerator = this.internalGenerateShapeBuffer.bind(this);
         }
 
-        const key = size + "/" + dpi;
+        const key = diameter + "/" + dpi;
         const canvas = parameters.root.buffers.getForKey({
             key,
             subKey: this.cachedHash,
-            w: size,
-            h: size,
+            w: diameter,
+            h: diameter,
             dpi,
             redrawMethod: this.bufferGenerator,
         });
-        parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
+        parameters.context.drawImage(canvas, x - diameter / 2, y - diameter / 2, diameter, diameter);
     }
 
     /**

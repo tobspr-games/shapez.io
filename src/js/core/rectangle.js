@@ -395,22 +395,14 @@ export class Rectangle {
 
     /**
      * Returns a new recangle in tile space which includes all tiles which are visible in this rect
-     * @param {boolean=} includeHalfTiles
      * @returns {Rectangle}
      */
-    toTileCullRectangle(includeHalfTiles = true) {
-        let scaled = this.allScaled(1.0 / globalConfig.tileSize);
-
-        if (includeHalfTiles) {
-            // Increase rectangle size
-            scaled = Rectangle.fromTRBL(
-                Math.floor(scaled.y),
-                Math.ceil(scaled.right()),
-                Math.ceil(scaled.bottom()),
-                Math.floor(scaled.x)
-            );
-        }
-
-        return scaled;
+    toTileCullRectangle() {
+        return new Rectangle(
+            Math.floor(this.x / globalConfig.tileSize),
+            Math.floor(this.y / globalConfig.tileSize),
+            Math.ceil(this.w / globalConfig.tileSize),
+            Math.ceil(this.h / globalConfig.tileSize)
+        );
     }
 }

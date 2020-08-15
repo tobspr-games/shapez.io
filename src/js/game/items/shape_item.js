@@ -52,9 +52,9 @@ export class ShapeItem extends BaseItem {
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
-     * @param {number=} size
+     * @param {number=} diameter
      */
-    draw(x, y, parameters, size) {
-        this.definition.draw(x, y, parameters, size);
+    drawCentered(x, y, parameters, diameter) {
+        this.definition.drawCentered(x, y, parameters, diameter);
     }
 }

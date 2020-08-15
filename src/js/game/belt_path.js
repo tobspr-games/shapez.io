@@ -1195,7 +1195,7 @@ export class BeltPath extends BasicSerializableObject {
 
                 const distanceAndItem = this.items[currentItemIndex];
                 if (parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, 10)) {
-                    distanceAndItem[_item].draw(worldPos.x, worldPos.y, parameters);
+                    distanceAndItem[_item].drawCentered(worldPos.x, worldPos.y, parameters);
                 }
 
                 // Check for the next item

@@ -1,13 +1,10 @@
-import { GameRoot, enumLayer } from "./root";
 import { globalConfig } from "../core/config";
 import { Vector } from "../core/vector";
-import { Entity } from "./entity";
-import { createLogger } from "../core/logging";
-import { BaseItem } from "./base_item";
-import { MapChunkView } from "./map_chunk_view";
 import { BasicSerializableObject, types } from "../savegame/serialization";
-
-const logger = createLogger("map");
+import { BaseItem } from "./base_item";
+import { Entity } from "./entity";
+import { MapChunkView } from "./map_chunk_view";
+import { enumLayer, GameRoot } from "./root";
 
 export class BaseMap extends BasicSerializableObject {
     static getId() {

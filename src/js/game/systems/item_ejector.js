@@ -379,7 +379,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             const worldX = tileX * globalConfig.tileSize;
             const worldY = tileY * globalConfig.tileSize;
 
-            ejectedItem.draw(worldX, worldY, parameters);
+            ejectedItem.drawCentered(worldX, worldY, parameters);
         }
     }
 }

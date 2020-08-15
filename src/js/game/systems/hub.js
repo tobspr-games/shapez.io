@@ -47,7 +47,7 @@ export class HubSystem extends GameSystemWithFilter {
 
         const definition = this.root.hubGoals.currentGoal.definition;
 
-        definition.draw(pos.x - 25, pos.y - 10, parameters, 40);
+        definition.drawCentered(pos.x - 25, pos.y - 10, parameters, 40);
 
         const goals = this.root.hubGoals.currentGoal;
 
