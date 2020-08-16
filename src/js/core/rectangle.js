@@ -22,6 +22,38 @@ export class Rectangle {
     }
 
     /**
+     * Constructs a new square rectangle
+     * @param {number} x
+     * @param {number} y
+     * @param {number} size
+     */
+    static fromSquare(x, y, size) {
+        return new Rectangle(x, y, size, size);
+    }
+
+    /**
+     *
+     * @param {Vector} p1
+     * @param {Vector} p2
+     */
+    static fromTwoPoints(p1, p2) {
+        const left = Math.min(p1.x, p2.x);
+        const top = Math.min(p1.y, p2.y);
+        const right = Math.max(p1.x, p2.x);
+        const bottom = Math.max(p1.y, p2.y);
+        return new Rectangle(left, top, right - left, bottom - top);
+    }
+
+    /**
+     * Returns if a intersects b
+     * @param {Rectangle} a
+     * @param {Rectangle} b
+     */
+    static intersects(a, b) {
+        return a.left <= b.right && b.left <= a.right && a.top <= b.bottom && b.top <= a.bottom;
+    }
+
+    /**
      * Copies this instance
      * @returns {Rectangle}
      */
@@ -80,11 +112,71 @@ export class Rectangle {
     }
 
     /**
+     * Returns Top, Right, Bottom, Left
+     * @returns {[number, number, number, number]}
+     */
+    trbl() {
+        return [this.y, this.right(), this.bottom(), this.x];
+    }
+
+    /**
      * Returns the center of the rect
      * @returns {Vector}
      */
     getCenter() {
         return new Vector(this.x + this.w / 2, this.y + this.h / 2);
+    }
+
+    /**
+     * Sets the right side of the rect without moving it
+     * @param {number} right
+     */
+    setRight(right) {
+        this.w = right - this.x;
+    }
+
+    /**
+     * Sets the bottom side of the rect without moving it
+     * @param {number} bottom
+     */
+    setBottom(bottom) {
+        this.h = bottom - this.y;
+    }
+
+    /**
+     * Sets the top side of the rect without scaling it
+     * @param {number} top
+     */
+    setTop(top) {
+        const bottom = this.bottom();
+        this.y = top;
+        this.setBottom(bottom);
+    }
+
+    /**
+     * Sets the left side of the rect without scaling it
+     * @param {number} left
+     */
+    setLeft(left) {
+        const right = this.right();
+        this.x = left;
+        this.setRight(right);
+    }
+
+    /**
+     * Returns the top left point
+     * @returns {Vector}
+     */
+    topLeft() {
+        return new Vector(this.x, this.y);
+    }
+
+    /**
+     * Returns the bottom left point
+     * @returns {Vector}
+     */
+    bottomRight() {
+        return new Vector(this.right(), this.bottom());
     }
 
     /**
@@ -95,6 +187,15 @@ export class Rectangle {
     moveBy(x, y) {
         this.x += x;
         this.y += y;
+    }
+
+    /**
+     * Moves the rectangle by the given vector
+     * @param {Vector} vec
+     */
+    moveByVector(vec) {
+        this.x += vec.x;
+        this.y += vec.y;
     }
 
     /**
@@ -242,7 +343,7 @@ export class Rectangle {
     }
 
     /**
-     * Returns a new recangle in tile space which includes all tiles which are visible in this rect
+     * Returns a new rectangle in tile space which includes all tiles which are visible in this rect
      * @returns {Rectangle}
      */
     toTileCullRectangle() {
