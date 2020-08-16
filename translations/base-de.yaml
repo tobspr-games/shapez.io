@@ -33,18 +33,19 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io ist ein Spiel, in dem es darum geht, immer größere Produktionsketten zu bauen um zunehmend komplexere Formen, auf einer unbegrenzten Karte, automatisiert herzustellen.
-        Durch das Abliefern der produzierten Formen, kannst du im Spiel vorranschreiten, um mehr Upgrades frei zu schalten und die Produktion zu beschleunigen.
-
-        Da die Nachfrage steigt, bist du gezwungen deine Fabrik zu vergrößern - vergiss aber jedoch nicht die Ressourcen, denn du musst dich über die [b]unendliche Karte[\b] ausbreiten!
-
-        Schon bald wirst du Farben mischen und die Formen anzumalen - mische rot, grün und blau, um verschiedene Farben zu bekommen, mit denen du die Formen bemalst um der Nachfrage gerecht zu werden.
-
-        Das Spiel hat einen Umfang von 18 Level (die dich für Stunden beschäftigt halten sollten!), aber ich arbeite ständig an neuen Updates - Es ist noch sehr viel geplant.
-
-        Der Kauf des Spiels gibt dir Zugang zu der Standalone Version, welche zusätzliche Features bietet, und du bekommst Zugang zu neu Entwickelten Features.
-
-        [b]Standalone Vorteile:[/b]
+        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        
+        Upon delivering the requested shapes you'll progress within the game and unlock upgrades to speed up your factory.
+        
+        As the demand for shapes increases, you'll have to scale up your factory to meet the demand - Don't forget about resources though, you'll have to expand across the [b]infinite map[/b]!
+        
+        Soon you'll have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with them to satisfy the demand.
+        
+        This game features 18 progressive levels (Which should already keep you busy for hours!) but I'm constantly adding new content - There's a lot planned!
+        
+        Purchasing the game gives you access to the standalone version which has additional features, and you'll also receive access to newly developed features.
+        
+        [b]Standalone Vorteile[/b]
 
         [list]
             [*] Dark Mode
@@ -138,7 +139,7 @@ demoBanners:
 
 mainMenu:
     play: Spielen
-    changelog: Änderungsliste
+    changelog: Änderungsprotokoll
     importSavegame: Importieren
     openSourceHint: Dieses Spiel ist Open Source!
     discordLink: Offizieller Discord Server
@@ -223,7 +224,7 @@ dialogs:
     updateSummary:
         title: Neues Update!
         desc: >-
-            Hier sind die Änderungen, seit dem letzten mal:
+            Hier sind die Änderungen, seitdem du das letzte Mal gespielt hast:
 
     upgradesIntroduction:
         title: Upgrades Freischalten
@@ -239,10 +240,10 @@ dialogs:
     blueprintsNotUnlocked:
         title: Noch nicht freigeschaltet
         desc: >-
-            Vorlagen werden erst in Level 12 freigeschaltet!
+            Blaupausen werden erst in Level 12 freigeschaltet!
 
     keybindingsIntroduction:
-        title: Nützliche Tatenkürzel
+        title: Nützliche Hotkeys
         desc: >-
             Dieses Spiel hat viele Tastenkürzel, die den Bau von Fabriken vereinfachen und beschleunigen.
             Hier sind ein paar, aber prüfe am besten die <strong>Tastenbelegung-Einstellungen</strong>!<br><br>
@@ -269,7 +270,7 @@ dialogs:
 
     massCutInsufficientConfirm:
         title: Ausschneiden bestätigen
-        desc: Du kannst dir das einfügen nicht leisten! Bist du sicher, dass du trotzdem ausschneiden möchtest?
+        desc: Du kannst dir das Einfügen nicht leisten! Bist du sicher, dass du trotzdem Ausschneiden möchtest?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -348,7 +349,7 @@ ingame:
         dataSources:
             stored:
                 title: Gelagert
-                description: Zeigt die Menge an Formen, die im HUB gelagert sind.
+                description: Zeigt die Menge an Formen, die im Hub gelagert sind.
             produced:
                 title: Produziert
                 description: Zeigt die Menge an Formen, die deine gesamte Fabrik produziert (inkl. Zwischenprodukte).
@@ -385,7 +386,7 @@ ingame:
     # Map markers
     waypoints:
         waypoints: Markierungen
-        hub: HUB
+        hub: Hub
         description: Linksklick auf einen Marker, um dort hinzugelangen, Rechtsklick, um ihn zu löschen.<br><br>Drücke <keybinding> um einen Marker aus deinem Blickwinkel, oder <strong>rechtsklicke</strong>, um einen Marker auf der ausgewählten Position zu erschaffen.
         creationSuccessNotification: Marker wurde erstellt.
 
@@ -395,7 +396,7 @@ ingame:
         hints:
             1_1_extractor: Platziere einen <strong>Extrahierer</strong> auf der <strong>Kreisform</strong> um sie zu extrahieren!
             1_2_conveyor: >-
-                Verbinde den Extrahierer mit einem <strong>Förderband</strong> und schließe ihn am HUB an!<br><br>Tipp: <strong>Drück und ziehe</strong> das Förderband mit der Maus!
+                Verbinde den Extrahierer mit einem <strong>Förderband</strong> und schließe ihn am Hub an!<br><br>Tipp: <strong>Drück und ziehe</strong> das Förderband mit der Maus!
 
             1_3_expand: >-
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
@@ -478,14 +479,14 @@ buildings:
 
     rotater:
         default:
-            name: &rotater Rotierer
+            name: &rotater Rotierer (+90°)
             description: Rotiert Formen im Uhrzeigersinn um 90 Grad.
 
         ccw:
-            name: Rotierer
+            name: Rotierer (-90°)
             description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
         fl:
-            name: Rotierer (180°)
+            name: Rotierer (+180°)
             description: Rotiert die Formen um 180 Grad.
 
     stacker:
@@ -616,7 +617,7 @@ storyRewards:
 
     reward_freeplay:
         title: Freies Spiel
-        desc: Du hast es geschafft! Du hast das <strong>freie Spiel</strong> freigeschaltet! Das heißt, dass abzuliefernde Formen jetzt zufällig generiert werden! (Keine Sorge, für die Standaloneversion ist noch mehr geplant!)
+        desc: Du hast es geschafft! Du bist im <strong>freien Spiel</strong> angekommen! Das heißt, dass abzuliefernde Formen jetzt zufällig generiert werden! (Keine Sorge, für die Standaloneversion ist noch mehr geplant!)
 
     reward_blueprints:
         title: Blaupause
@@ -626,7 +627,7 @@ storyRewards:
     no_reward:
         title: Nächstes Level
         desc: >-
-            Dieses Level hat dir keine Belohnung gegeben, aber dafür das nächste schon! <br><br> PS: Denk daran, deine alten Fabriken nicht zu zerstören - Du wirst sie später <strong>alle</strong> noch brauchen, um <strong>Upgrades freizuschalten</strong>!
+            Dieses Level hat dir keine Belohnung gegeben, aber dafür das Nächste schon! <br><br> PS: Denk daran, deine alten Fabriken nicht zu zerstören - Du wirst sie später <strong>alle</strong> noch brauchen, um <strong>Upgrades freizuschalten</strong>!
 
     no_reward_freeplay:
         title: Nächstes Level
@@ -644,7 +645,7 @@ settings:
         dev: Entwicklung
         staging: Beta
         prod: Produktion
-    buildDate: Erstellt am <at-date>
+    buildDate: Gebaut am <at-date>
 
     labels:
         uiScale:
@@ -677,12 +678,12 @@ settings:
         soundsMuted:
             title: Geräusche stummschalten
             description: >-
-                Schaltet alle Geräusche stumm.
+                Bei der Aktivierung werden alle Geräusche stummgeschaltet.
 
         musicMuted:
             title: Musik stummschalten
             description: >-
-                Schaltet die Musik stumm.
+                Bei der  Aktivierung wird die Musik stummgeschaltet.
 
         theme:
             title: Farbmodus
@@ -693,7 +694,7 @@ settings:
                 dark: Dunkel
                 light: Hell
         refreshRate:
-            title: Bildwiederholungsrate
+            title: Bildwiederholrate
             description: >-
                 Für z.B. einen 144-Hz-Monitor kann die Bildwiederholrate hier korrekt eingestellt werden. Bei einem zu langsamen Computer kann dies die Leistung beeinträchtigen.
 
@@ -775,7 +776,7 @@ keybindings:
     resetKeybindings: Tastenbelegung zurücksetzen.
 
     categoryLabels:
-        general: Allgemein
+        general: Anwendung
         ingame: Spiel
         navigation: Navigation
         placement: Platzierung
