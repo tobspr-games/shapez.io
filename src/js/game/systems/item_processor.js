@@ -1,5 +1,5 @@
 import { globalConfig } from "../../core/config";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { enumColorMixingResults } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
@@ -345,7 +345,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 for (let i = 0; i < 4; ++i) {
                     if (colorItems[i] == null) {
                         skipped[i] = false; // make sure we never insert null item back
-                    } else if (pinValues[i].getItemType() == enumItemType.color) {
+                    } else if (pinValues[i] instanceof ColorItem) {
                         // if pin value is a color, skip anything except that color
                         // but still require any color, because it would not work on
                         // slow factories.
