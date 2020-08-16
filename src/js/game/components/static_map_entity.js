@@ -2,7 +2,7 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Rectangle } from "../../core/rectangle";
 import { AtlasSprite } from "../../core/sprites";
-import { enumDirection, Vector } from "../../core/vector";
+import { directionRotationMap, inverseAngleMap, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { getBuildingDataFromCode } from "../building_codes";
 import { Component } from "../component";
@@ -77,8 +77,8 @@ export class StaticMapEntityComponent extends Component {
      * @param {object} param0
      * @param {Vector=} param0.origin Origin (Top Left corner) of the entity
      * @param {Vector=} param0.tileSize Size of the entity in tiles
-     * @param {number=} param0.rotation Rotation in degrees. Must be multiple of 90
-     * @param {number=} param0.originalRotation Original Rotation in degrees. Must be multiple of 90
+     * @param {Angle} param0.rotation Rotation in degrees. Must be multiple of 90
+     * @param {Angle=} param0.originalRotation Original Rotation in degrees. Must be multiple of 90
      * @param {number=} param0.code Building code
      */
     constructor({
@@ -126,34 +126,25 @@ export class StaticMapEntityComponent extends Component {
      * @returns {Vector}
      */
     applyRotationToVector(vector) {
-        return vector.rotateFastMultipleOf90(this.rotation);
-    }
-
-    /**
-     * Transforms the given vector/rotation from world space to local space
-     * @param {Vector} vector
-     * @returns {Vector}
-     */
-    unapplyRotationToVector(vector) {
-        return vector.rotateFastMultipleOf90(360 - this.rotation);
+        return vector.rotate(this.rotation);
     }
 
     /**
      * Transforms the given direction from local space
-     * @param {enumDirection} direction
-     * @returns {enumDirection}
+     * @param {Direction} direction
+     * @returns {Direction}
      */
     localDirectionToWorld(direction) {
-        return Vector.transformDirectionFromMultipleOf90(direction, this.rotation);
+        return directionRotationMap[direction][this.rotation];
     }
 
     /**
      * Transforms the given direction from world to local space
-     * @param {enumDirection} direction
-     * @returns {enumDirection}
+     * @param {Direction} direction
+     * @returns {Direction}
      */
     worldDirectionToLocal(direction) {
-        return Vector.transformDirectionFromMultipleOf90(direction, 360 - this.rotation);
+        return directionRotationMap[direction][inverseAngleMap[this.rotation]];
     }
 
     /**
@@ -162,10 +153,7 @@ export class StaticMapEntityComponent extends Component {
      * @returns {Vector}
      */
     localTileToWorld(localTile) {
-        const result = localTile.rotateFastMultipleOf90(this.rotation);
-        result.x += this.origin.x;
-        result.y += this.origin.y;
-        return result;
+        return localTile.rotate(this.rotation).addInplace(this.origin);
     }
 
     /**
@@ -173,8 +161,7 @@ export class StaticMapEntityComponent extends Component {
      * @param {Vector} worldTile
      */
     worldToLocalTile(worldTile) {
-        const localUnrotated = worldTile.sub(this.origin);
-        return this.unapplyRotationToVector(localUnrotated);
+        return worldTile.sub(this.origin).rotate(inverseAngleMap[this.rotation]);
     }
 
     /**

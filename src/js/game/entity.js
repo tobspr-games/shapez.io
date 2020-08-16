@@ -5,7 +5,7 @@ import { Component } from "./component";
 
 import { GameRoot } from "./root";
 import { globalConfig } from "../core/config";
-import { enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
+import { directionAngleMap, directionVectorMap } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { EntityComponentStorage } from "./entity_components";
 import { Loader } from "../core/loader";
@@ -172,8 +172,8 @@ export class Entity extends BasicSerializableObject {
                     const slot = ejectorComp.slots[i];
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     const direction = staticComp.localDirectionToWorld(slot.direction);
-                    const directionVector = enumDirectionToVector[direction];
-                    const angle = Math.radians(enumDirectionToAngle[direction]);
+                    const directionVector = directionVectorMap[direction];
+                    const angle = Math.radians(directionAngleMap[direction]);
 
                     context.globalAlpha = slot.item ? 1 : 0.2;
                     drawRotatedSprite({
@@ -195,8 +195,8 @@ export class Entity extends BasicSerializableObject {
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     for (let k = 0; k < slot.directions.length; ++k) {
                         const direction = staticComp.localDirectionToWorld(slot.directions[k]);
-                        const directionVector = enumDirectionToVector[direction];
-                        const angle = Math.radians(enumDirectionToAngle[direction] + 180);
+                        const directionVector = directionVectorMap[direction];
+                        const angle = Math.radians(directionAngleMap[direction] + 180);
                         context.globalAlpha = 0.4;
                         drawRotatedSprite({
                             parameters,

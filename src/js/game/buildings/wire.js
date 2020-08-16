@@ -1,6 +1,6 @@
 import { Loader } from "../../core/loader";
 import { generateMatrixRotations } from "../../core/utils";
-import { enumDirection, enumDirectionToAngle, enumDirectionToVector, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
 import { enumWireType, WireComponent } from "../components/wire";
 import { Entity } from "../entity";
@@ -83,7 +83,7 @@ export class MetaWireBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      */
     updateVariants(entity, rotationVariant) {
         entity.components.Wire.type = arrayWireRotationVariantToType[rotationVariant];
@@ -91,8 +91,8 @@ export class MetaWireBuilding extends MetaBuilding {
 
     /**
      *
-     * @param {number} rotation
-     * @param {number} rotationVariant
+     * @param {Angle} rotation
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      * @param {Entity} entity
      */
@@ -145,17 +145,17 @@ export class MetaWireBuilding extends MetaBuilding {
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.tile
-     * @param {number} param0.rotation
+     * @param {Angle} param0.rotation
      * @param {string} param0.variant
      * @param {string} param0.layer
-     * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
+     * @return {{ rotation: Angle, rotationVariant: RotationVariant, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
         const connections = {
-            top: root.logic.computeWireEdgeStatus({ tile, rotation, edge: enumDirection.top }),
-            right: root.logic.computeWireEdgeStatus({ tile, rotation, edge: enumDirection.right }),
-            bottom: root.logic.computeWireEdgeStatus({ tile, rotation, edge: enumDirection.bottom }),
-            left: root.logic.computeWireEdgeStatus({ tile, rotation, edge: enumDirection.left }),
+            top: root.logic.computeWireEdgeStatus({ tile, rotation, edge: "top" }),
+            right: root.logic.computeWireEdgeStatus({ tile, rotation, edge: "right" }),
+            bottom: root.logic.computeWireEdgeStatus({ tile, rotation, edge: "bottom" }),
+            left: root.logic.computeWireEdgeStatus({ tile, rotation, edge: "left" }),
         };
 
         let flag = 0;
@@ -176,7 +176,7 @@ export class MetaWireBuilding extends MetaBuilding {
 
             case 0x0001:
                 // Left
-                rotation += 90;
+                rotation = 90;
                 break;
 
             case 0x0010:
@@ -187,17 +187,17 @@ export class MetaWireBuilding extends MetaBuilding {
             case 0x0011:
                 // Bottom | Left
                 targetType = enumWireType.turn;
-                rotation += 90;
+                rotation = 90;
                 break;
 
             case 0x0100:
                 // Right
-                rotation += 90;
+                rotation = 90;
                 break;
 
             case 0x0101:
                 // Right | Left
-                rotation += 90;
+                rotation = 90;
                 break;
 
             case 0x0110:
@@ -217,7 +217,7 @@ export class MetaWireBuilding extends MetaBuilding {
             case 0x1001:
                 // Top | Left
                 targetType = enumWireType.turn;
-                rotation += 180;
+                rotation = 180;
                 break;
 
             case 0x1010:
@@ -227,25 +227,25 @@ export class MetaWireBuilding extends MetaBuilding {
             case 0x1011:
                 // Top | Bottom | Left
                 targetType = enumWireType.split;
-                rotation += 90;
+                rotation = 90;
                 break;
 
             case 0x1100:
                 // Top | Right
                 targetType = enumWireType.turn;
-                rotation -= 90;
+                rotation = 270;
                 break;
 
             case 0x1101:
                 // Top | Right | Left
                 targetType = enumWireType.split;
-                rotation += 180;
+                rotation = 180;
                 break;
 
             case 0x1110:
                 // Top | Right | Bottom
                 targetType = enumWireType.split;
-                rotation -= 90;
+                rotation = 270;
                 break;
 
             case 0x1111:
@@ -254,10 +254,13 @@ export class MetaWireBuilding extends MetaBuilding {
                 break;
         }
 
+        const rotationVariant = /** @type {RotationVariant} **/ (arrayWireRotationVariantToType.indexOf(
+            targetType
+        ));
+
         return {
-            // Clamp rotation
-            rotation: (rotation + 360 * 10) % 360,
-            rotationVariant: arrayWireRotationVariantToType.indexOf(targetType),
+            rotation,
+            rotationVariant,
         };
     }
 }

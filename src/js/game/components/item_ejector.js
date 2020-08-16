@@ -1,4 +1,4 @@
-import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
+import { directionVectorMap, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { BeltPath } from "../belt_path";
@@ -7,9 +7,10 @@ import { Entity } from "../entity";
 import { typeItemSingleton } from "../item_resolver";
 
 /**
+ * @typedef {import("./item_acceptor").ItemAcceptorLocatedSlot} ItemAcceptorLocatedSlot
  * @typedef {{
  *    pos: Vector,
- *    direction: enumDirection,
+ *    direction: Direction,
  *    item: BaseItem,
  *    progress: number?,
  *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
@@ -53,7 +54,7 @@ export class ItemEjectorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection }>=} param0.slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: Direction }>=} param0.slots The slots to eject on
      */
     constructor({ slots = [] }) {
         super();
@@ -67,7 +68,7 @@ export class ItemEjectorComponent extends Component {
     }
 
     /**
-     * @param {Array<{pos: Vector, direction: enumDirection }>} slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: Direction }>} slots The slots to eject on
      */
     setSlots(slots) {
         /** @type {Array<ItemEjectorSlot>} */
@@ -91,7 +92,7 @@ export class ItemEjectorComponent extends Component {
      * @returns {Vector}
      */
     getSlotTargetLocalTile(slot) {
-        const directionVector = enumDirectionToVector[slot.direction];
+        const directionVector = directionVectorMap[slot.direction];
         return slot.pos.add(directionVector);
     }
 

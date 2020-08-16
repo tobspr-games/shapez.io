@@ -1,11 +1,10 @@
-import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector";
-import { types } from "../../savegame/serialization";
+import { inverseDirectionMap, Vector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 
 /** @typedef {{
  * pos: Vector,
- * directions: enumDirection[],
+ * directions: Direction[],
  * filter?: ItemType
  * }} ItemAcceptorSlot */
 
@@ -14,12 +13,12 @@ import { Component } from "../component";
  * @typedef {{
  *  slot: ItemAcceptorSlot,
  *  index: number,
- *  acceptedDirection: enumDirection
+ *  acceptedDirection: Direction
  * }} ItemAcceptorLocatedSlot */
 
 /** @typedef {{
  * pos: Vector,
- * directions: enumDirection[],
+ * directions: Direction[],
  * filter?: ItemType
  * }} ItemAcceptorSlotConfig */
 
@@ -54,7 +53,7 @@ export class ItemAcceptorComponent extends Component {
 
         /**
          * Fixes belt animations
-         * @type {Array<{ item: BaseItem, slotIndex: number, animProgress: number, direction: enumDirection }>}
+         * @type {Array<{ item: BaseItem, slotIndex: number, animProgress: number, direction: Direction }>}
          */
         this.itemConsumptionAnimations = [];
 
@@ -93,7 +92,7 @@ export class ItemAcceptorComponent extends Component {
     /**
      * Called when an item has been accepted so that
      * @param {number} slotIndex
-     * @param {enumDirection} direction
+     * @param {Direction} direction
      * @param {BaseItem} item
      */
     onItemAccepted(slotIndex, direction, item) {
@@ -108,27 +107,21 @@ export class ItemAcceptorComponent extends Component {
     /**
      * Tries to find a slot which accepts the current item
      * @param {Vector} targetLocalTile
-     * @param {enumDirection} fromLocalDirection
+     * @param {Direction} fromLocalDirection
      * @returns {ItemAcceptorLocatedSlot|null}
      */
     findMatchingSlot(targetLocalTile, fromLocalDirection) {
         // We need to invert our direction since the acceptor specifies *from* which direction
         // it accepts items, but the ejector specifies *into* which direction it ejects items.
         // E.g.: Ejector ejects into "right" direction but acceptor accepts from "left" direction.
-        const desiredDirection = enumInvertedDirections[fromLocalDirection];
+        const desiredDirection = inverseDirectionMap[fromLocalDirection];
 
         // Go over all slots and try to find a target slot
         for (let slotIndex = 0; slotIndex < this.slots.length; ++slotIndex) {
             const slot = this.slots[slotIndex];
 
-            // Make sure the acceptor slot is on the right position
-            if (!slot.pos.equals(targetLocalTile)) {
-                continue;
-            }
-
             // Check if the acceptor slot accepts items from our direction
             for (let i = 0; i < slot.directions.length; ++i) {
-                // const localDirection = targetStaticComp.localDirectionToWorld(slot.directions[l]);
                 if (desiredDirection === slot.directions[i]) {
                     return {
                         slot,

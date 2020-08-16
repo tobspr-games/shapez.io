@@ -1,5 +1,5 @@
 import { formatBigNumber } from "../../core/utils";
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -86,12 +86,7 @@ export class MetaTrashBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [
-                            enumDirection.top,
-                            enumDirection.right,
-                            enumDirection.bottom,
-                            enumDirection.left,
-                        ],
+                        directions: ["top", "right", "bottom", "left"],
                     },
                 ],
             })
@@ -101,7 +96,7 @@ export class MetaTrashBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {
@@ -125,12 +120,7 @@ export class MetaTrashBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [
-                            enumDirection.top,
-                            enumDirection.right,
-                            enumDirection.bottom,
-                            enumDirection.left,
-                        ],
+                        directions: ["top", "right", "bottom", "left"],
                     },
                 ]);
                 entity.components.ItemEjector.setSlots([]);
@@ -150,12 +140,12 @@ export class MetaTrashBuilding extends MetaBuilding {
                             slots: [
                                 {
                                     pos: new Vector(1, 1),
-                                    direction: enumDirection.right,
+                                    direction: "right",
                                     type: enumPinSlotType.logicalEjector,
                                 },
                                 {
                                     pos: new Vector(0, 1),
-                                    direction: enumDirection.left,
+                                    direction: "left",
                                     type: enumPinSlotType.logicalEjector,
                                 },
                             ],
@@ -167,22 +157,22 @@ export class MetaTrashBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                     {
                         pos: new Vector(1, 1),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                 ]);
 
                 entity.components.ItemEjector.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                     },
                     {
                         pos: new Vector(1, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                     },
                 ]);
                 break;

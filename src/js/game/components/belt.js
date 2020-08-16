@@ -1,5 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
-import { types } from "../../savegame/serialization";
+import { Vector } from "../../core/vector";
 import { BeltPath } from "../belt_path";
 import { Component } from "../component";
 
@@ -8,28 +7,28 @@ export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 /** @type {import("./item_acceptor").ItemAcceptorSlot} */
 export const FAKE_BELT_ACCEPTOR_SLOT = {
     pos: new Vector(0, 0),
-    directions: [enumDirection.bottom],
+    directions: ["bottom"],
 };
 
-/** @type {Object<enumDirection, import("./item_ejector").ItemEjectorSlot>} */
+/** @type {Object<Direction, import("./item_ejector").ItemEjectorSlot>} */
 export const FAKE_BELT_EJECTOR_SLOT_BY_DIRECTION = {
-    [enumDirection.top]: {
+    top: {
         pos: new Vector(0, 0),
-        direction: enumDirection.top,
+        direction: "top",
         item: null,
         progress: 0,
     },
 
-    [enumDirection.right]: {
+    right: {
         pos: new Vector(0, 0),
-        direction: enumDirection.right,
+        direction: "right",
         item: null,
         progress: 0,
     },
 
-    [enumDirection.left]: {
+    left: {
         pos: new Vector(0, 0),
-        direction: enumDirection.left,
+        direction: "left",
         item: null,
         progress: 0,
     },
@@ -47,9 +46,9 @@ export class BeltComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {enumDirection=} param0.direction The direction of the belt
+     * @param {Direction=} param0.direction The direction of the belt
      */
-    constructor({ direction = enumDirection.top }) {
+    constructor({ direction = "top" }) {
         super();
 
         this.direction = direction;
@@ -66,7 +65,7 @@ export class BeltComponent extends Component {
      * @returns {number}
      */
     getEffectiveLengthTiles() {
-        return this.direction === enumDirection.top ? 1.0 : curvedBeltLength;
+        return this.direction === "top" ? 1.0 : curvedBeltLength;
     }
 
     /**
@@ -99,16 +98,16 @@ export class BeltComponent extends Component {
     transformBeltToLocalSpace(progress) {
         assert(progress >= 0.0, "Invalid progress ( < 0): " + progress);
         switch (this.direction) {
-            case enumDirection.top:
+            case "top":
                 assert(progress <= 1.02, "Invalid progress: " + progress);
                 return new Vector(0, 0.5 - progress);
 
-            case enumDirection.right: {
+            case "right": {
                 assert(progress <= curvedBeltLength + 0.02, "Invalid progress 2: " + progress);
                 const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
                 return new Vector(0.5 - 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
             }
-            case enumDirection.left: {
+            case "left": {
                 assert(progress <= curvedBeltLength + 0.02, "Invalid progress 3: " + progress);
                 const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
                 return new Vector(-0.5 + 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));

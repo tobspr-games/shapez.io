@@ -2,7 +2,7 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
-import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
+import { directionVectorMap } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
@@ -132,7 +132,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             // Figure out where and into which direction we eject items
             const ejectSlotWsTile = staticComp.localTileToWorld(ejectorSlot.pos);
             const ejectSlotWsDirection = staticComp.localDirectionToWorld(ejectorSlot.direction);
-            const ejectSlotWsDirectionVector = enumDirectionToVector[ejectSlotWsDirection];
+            const ejectSlotWsDirectionVector = directionVectorMap[ejectSlotWsDirection];
             const ejectSlotTargetWsTile = ejectSlotWsTile.add(ejectSlotWsDirectionVector);
 
             // Try to find the given acceptor component to take the item
@@ -150,7 +150,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
                 // Check for belts (special case)
                 if (targetBeltComp) {
-                    const beltAcceptingDirection = targetStaticComp.localDirectionToWorld(enumDirection.top);
+                    const beltAcceptingDirection = targetStaticComp.localDirectionToWorld("top");
                     if (ejectSlotWsDirection === beltAcceptingDirection) {
                         ejectorSlot.cachedTargetEntity = targetEntity;
                         ejectorSlot.cachedBeltPath = targetBeltComp.assignedPath;
@@ -368,7 +368,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 const realDirection = staticComp.localDirectionToWorld(slot.direction);
-                const realDirectionVector = enumDirectionToVector[realDirection];
+                const realDirectionVector = directionVectorMap[realDirection];
 
                 const tileX = realPosition.x + 0.5 + realDirectionVector.x * 0.5 * slot.progress;
                 const tileY = realPosition.y + 0.5 + realDirectionVector.y * 0.5 * slot.progress;

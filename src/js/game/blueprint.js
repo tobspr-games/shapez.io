@@ -1,7 +1,6 @@
 import { DrawParameters } from "../core/draw_parameters";
-import { Loader } from "../core/loader";
 import { createLogger } from "../core/logging";
-import { Vector } from "../core/vector";
+import { clockwiseAngleMap, counterClockwiseAngleMap, Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { GameRoot } from "./root";
 import { findNiceIntegerValue } from "../core/utils";
@@ -102,41 +101,23 @@ export class Blueprint {
      */
     rotateCw() {
         for (let i = 0; i < this.entities.length; ++i) {
-            const entity = this.entities[i];
-            const staticComp = entity.components.StaticMapEntity;
-
-            staticComp.rotation = (staticComp.rotation + 90) % 360;
-            staticComp.originalRotation = (staticComp.originalRotation + 90) % 360;
-            staticComp.origin = staticComp.origin.rotateFastMultipleOf90(90);
+            const { components: { StaticMapEntity } } = this.entities[i];
+            StaticMapEntity.rotation = clockwiseAngleMap[StaticMapEntity.rotation];
+            StaticMapEntity.originalRotation = clockwiseAngleMap[StaticMapEntity.originalRotation];
+            StaticMapEntity.origin = StaticMapEntity.origin.rotate(90);
         }
     }
 
     /**
-     * Rotates the blueprint counter clock wise
+     * Rotates the blueprint counter-clockwise
      */
     rotateCcw() {
-        // Well ...
-        for (let i = 0; i < 3; ++i) {
-            this.rotateCw();
-        }
-    }
-
-    /**
-     * Checks if the blueprint can be placed at the given tile
-     * @param {GameRoot} root
-     * @param {Vector} tile
-     */
-    canPlace(root, tile) {
-        let anyPlaceable = false;
-
         for (let i = 0; i < this.entities.length; ++i) {
-            const entity = this.entities[i];
-            if (root.logic.checkCanPlaceEntity(entity, tile)) {
-                anyPlaceable = true;
-            }
+            const { components: { StaticMapEntity } } = this.entities[i];
+            StaticMapEntity.rotation = counterClockwiseAngleMap[StaticMapEntity.rotation];
+            StaticMapEntity.originalRotation = counterClockwiseAngleMap[StaticMapEntity.originalRotation];
+            StaticMapEntity.origin = StaticMapEntity.origin.rotate(270);
         }
-
-        return anyPlaceable;
     }
 
     /**

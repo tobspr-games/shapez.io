@@ -1,7 +1,7 @@
 import { createLogger } from "../core/logging";
 import { STOP_PROPAGATION } from "../core/signal";
 import { round2Digits } from "../core/utils";
-import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
+import { directionVectorMap, inverseDirectionMap, Vector } from "../core/vector";
 import { getBuildingDataFromCode } from "./building_codes";
 import { Entity } from "./entity";
 import { MetaBuilding } from "./meta_building";
@@ -19,26 +19,23 @@ export const enumWireEdgeFlag = {
 };
 
 /**
- * Typing helper
+ * @typedef {import("./components/item_ejector").ItemEjectorSlot} ItemEjectorSlot
+ * @typedef {import("./components/item_acceptor").ItemAcceptorSlot} ItemAcceptorSlot
+ *
  * @typedef {Array<{
  *  entity: Entity,
- *  slot: import("./components/item_ejector").ItemEjectorSlot,
+ *  slot: ItemEjectorSlot,
  *  fromTile: Vector,
- *  toDirection: enumDirection
+ *  toDirection: Direction
  * }>} EjectorsAffectingTile
- */
-
-/**
- * Typing helper
+ *
  * @typedef {Array<{
  *  entity: Entity,
- *  slot: import("./components/item_acceptor").ItemAcceptorSlot,
+ *  slot: ItemAcceptorSlot,
  *  toTile: Vector,
- *  fromDirection: enumDirection
+ *  fromDirection: Direction
  * }>} AcceptorsAffectingTile
- */
-
-/**
+ *
  * @typedef {{
  *     acceptors: AcceptorsAffectingTile,
  *     ejectors: EjectorsAffectingTile
@@ -95,9 +92,9 @@ export class GameLogic {
      * Attempts to place the given building
      * @param {object} param0
      * @param {Vector} param0.origin
-     * @param {number} param0.rotation
-     * @param {number} param0.originalRotation
-     * @param {number} param0.rotationVariant
+     * @param {Angle} param0.rotation
+     * @param {Angle} param0.originalRotation
+     * @param {RotationVariant} param0.rotationVariant
      * @param {string} param0.variant
      * @param {MetaBuilding} param0.building
      * @returns {Entity}
@@ -194,13 +191,12 @@ export class GameLogic {
      * Computes the flag for a given tile
      * @param {object} param0
      * @param {Vector} param0.tile The tile to check at
-     * @param {enumDirection} param0.edge The edge to check for
-     * @param {number} param0.rotation The local tiles base rotation
+     * @param {Direction} param0.edge The edge to check for
+     * @param {Angle} param0.rotation The local tiles base rotation
      */
     computeWireEdgeStatus({ tile, edge, rotation }) {
-        const offset = enumDirectionToVector[edge];
+        const offset = directionVectorMap[edge];
         const refTile = tile.add(offset);
-        // const angle = enumDirectionToAngle[edge];
 
         // // First, check if this edge can be connected from locally
         // const canConnectLocally = rotation === angle || (rotation + 180) % 360 === angle;
@@ -306,7 +302,7 @@ export class GameLogic {
     /**
      * Gets the flag at the given tile
      * @param {Vector} tile
-     * @param {enumDirection} edge
+     * @param {Direction} edge
      * @returns {enumWireEdgeFlag}
      */
     getWireEdgeFlag(tile, edge) {
@@ -337,7 +333,7 @@ export class GameLogic {
                 }
 
                 // Check if the pin has the right direction
-                if (pinDirection !== enumInvertedDirections[edge]) {
+                if (pinDirection !== inverseDirectionMap[edge]) {
                     continue;
                 }
 
@@ -362,8 +358,8 @@ export class GameLogic {
                 return enumWireEdgeFlag.connected;
             } else {
                 // Its a coating, check if it matches the direction
-                const referenceDirection = targetStaticComp.localDirectionToWorld(enumDirection.top);
-                return referenceDirection === edge || enumInvertedDirections[referenceDirection] === edge
+                const referenceDirection = targetStaticComp.localDirectionToWorld("top");
+                return referenceDirection === edge || inverseDirectionMap[referenceDirection] === edge
                     ? enumWireEdgeFlag.connected
                     : enumWireEdgeFlag.empty;
             }
@@ -374,10 +370,6 @@ export class GameLogic {
         if (!wiresComp) {
             return enumWireEdgeFlag.empty;
         }
-
-        // const refAngle = enumDirectionToAngle[edge];
-        // const refRotation = targetEntity.components.StaticMapEntity.originalRotation;
-        // const canConnectRemotely = refRotation === refAngle || (refRotation + 180) % 360 === refAngle;
 
         // Actually connected
         return enumWireEdgeFlag.connected;
@@ -390,9 +382,9 @@ export class GameLogic {
      */
     getEjectorsAndAcceptorsAtTile(tile) {
         /** @type {EjectorsAffectingTile} */
-        let ejectors = [];
+        const ejectors = [];
         /** @type {AcceptorsAffectingTile} */
-        let acceptors = [];
+        const acceptors = [];
 
         // Well .. please ignore this code! :D
         for (let dx = -1; dx <= 1; ++dx) {
@@ -430,7 +422,7 @@ export class GameLogic {
                         const slot = ejectorSlots[ejectorSlot];
                         const wsTile = staticComp.localTileToWorld(slot.pos);
                         const wsDirection = staticComp.localDirectionToWorld(slot.direction);
-                        const targetTile = wsTile.add(enumDirectionToVector[wsDirection]);
+                        const targetTile = wsTile.add(directionVectorMap[wsDirection]);
                         if (targetTile.equals(tile)) {
                             ejectors.push({
                                 entity,
@@ -448,7 +440,7 @@ export class GameLogic {
                             const direction = slot.directions[k];
                             const wsDirection = staticComp.localDirectionToWorld(direction);
 
-                            const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
+                            const sourceTile = wsTile.add(directionVectorMap[wsDirection]);
                             if (sourceTile.equals(tile)) {
                                 acceptors.push({
                                     entity,

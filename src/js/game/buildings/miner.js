@@ -1,4 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { MinerComponent } from "../components/miner";
 import { Entity } from "../entity";
@@ -44,8 +44,8 @@ export class MetaMinerBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {number} rotation
-     * @param {number} rotationVariant
+     * @param {Angle} rotation
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      * @param {Entity} entity
      */
@@ -61,7 +61,7 @@ export class MetaMinerBuilding extends MetaBuilding {
         entity.addComponent(new MinerComponent({}));
         entity.addComponent(
             new ItemEjectorComponent({
-                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+                slots: [{ pos: new Vector(0, 0), direction: "top" }],
             })
         );
     }
@@ -69,7 +69,7 @@ export class MetaMinerBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {

@@ -1,7 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { fastArrayDelete } from "../../core/utils";
-import { enumDirectionToVector } from "../../core/vector";
+import { directionVectorMap } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
@@ -64,7 +64,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];
+                const fadeOutDirection = directionVectorMap[staticComp.localDirectionToWorld(direction)];
                 const finalTile = realSlotPos.subScalars(
                     fadeOutDirection.x * (animProgress / 2 - 0.5),
                     fadeOutDirection.y * (animProgress / 2 - 0.5)

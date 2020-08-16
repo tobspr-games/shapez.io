@@ -1,4 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
@@ -43,7 +43,7 @@ export class MetaFilterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.left,
+                        direction: "left",
                         type: enumPinSlotType.logicalAcceptor,
                     },
                 ],
@@ -55,7 +55,7 @@ export class MetaFilterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                 ],
             })
@@ -66,11 +66,11 @@ export class MetaFilterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                     },
                     {
                         pos: new Vector(1, 0),
-                        direction: enumDirection.right,
+                        direction: "right",
                     },
                 ],
             })

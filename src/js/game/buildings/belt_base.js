@@ -1,5 +1,5 @@
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
-import { enumAngleToDirection, enumDirection, Vector } from "../../core/vector";
+import { angleDirectionMap, clockwiseAngleMap, counterClockwiseAngleMap, Vector } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
 import { T } from "../../translations";
 import { BeltComponent } from "../components/belt";
@@ -7,12 +7,14 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 
-export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
+/** @type {Exclude<Direction, "Bottom">[]} **/
+export const arrayBeltVariantToRotation = ["top", "left", "right"];
 
-export const beltOverlayMatrices = {
-    [enumDirection.top]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
-    [enumDirection.left]: generateMatrixRotations([0, 0, 0, 1, 1, 0, 0, 1, 0]),
-    [enumDirection.right]: generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
+/** @type {Record<Exclude<Direction, "bottom">, Object<number, Array<number>>>} **/
+const beltOverlayMatrices = {
+    top: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
+    left: generateMatrixRotations([0, 0, 0, 1, 1, 0, 0, 1, 0]),
+    right: generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
 };
 
 export class MetaBeltBaseBuilding extends MetaBuilding {
@@ -52,8 +54,8 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
     /**
      *
-     * @param {number} rotation
-     * @param {number} rotationVariant
+     * @param {Angle} rotation
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      * @param {Entity} entity
      */
@@ -68,7 +70,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
     setupEntityComponents(entity) {
         entity.addComponent(
             new BeltComponent({
-                direction: enumDirection.top, // updated later
+                direction: "top", // updated later
             })
         );
     }
@@ -76,7 +78,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      */
     updateVariants(entity, rotationVariant) {
         entity.components.Belt.direction = arrayBeltVariantToRotation[rotationVariant];
@@ -87,16 +89,16 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.tile
-     * @param {number} param0.rotation
+     * @param {Angle} param0.rotation
      * @param {string} param0.variant
      * @param {Layer} param0.layer
-     * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
+     * @return {{ rotation: Angle, rotationVariant: RotationVariant, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
-        const topDirection = enumAngleToDirection[rotation];
-        const rightDirection = enumAngleToDirection[(rotation + 90) % 360];
-        const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];
-        const leftDirection = enumAngleToDirection[(rotation + 270) % 360];
+        const topDirection = angleDirectionMap[rotation];
+        const rightDirection = angleDirectionMap[(rotation + 90) % 360];
+        const bottomDirection = angleDirectionMap[(rotation + 180) % 360];
+        const leftDirection = angleDirectionMap[(rotation + 270) % 360];
 
         const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile);
 
@@ -141,7 +143,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
 
             if (hasRightEjector && !hasLeftEjector) {
                 return {
-                    rotation: (rotation + 270) % 360,
+                    rotation: counterClockwiseAngleMap[rotation],
                     rotationVariant: 2,
                 };
             }
@@ -150,7 +152,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             // do a curve from the right to the top
             if (hasLeftEjector && !hasRightEjector) {
                 return {
-                    rotation: (rotation + 90) % 360,
+                    rotation: clockwiseAngleMap[rotation],
                     rotationVariant: 1,
                 };
             }

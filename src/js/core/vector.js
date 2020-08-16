@@ -4,53 +4,105 @@ import { safeModulo } from "./utils";
 const tileSize = globalConfig.tileSize;
 const halfTileSize = globalConfig.halfTileSize;
 
-/**
- * @enum {string}
- */
-export const enumDirection = {
-    top: "top",
-    right: "right",
-    bottom: "bottom",
-    left: "left",
+/** @type {Angle[]} **/
+export const angles = [0, 90, 180, 270];
+
+/** @type {Direction[]} **/
+export const directions = ["top", "right", "bottom", "left"];
+
+/** @type {Record<Direction, Direction>} **/
+export const inverseDirectionMap = {
+    top: "bottom",
+    right: "left",
+    bottom: "top",
+    left: "right",
+};
+
+/** @type {Record<Direction, Angle>} **/
+export const directionAngleMap = {
+    top: 0,
+    right: 90,
+    bottom: 180,
+    left: 270,
+};
+
+/** @type {Record<Angle, Direction>} **/
+export const angleDirectionMap = {
+    0: "top",
+    90: "right",
+    180: "bottom",
+    270: "left",
+};
+
+/** @type {Record<Angle, Angle>} **/
+export const inverseAngleMap = {
+    0: 0,
+    90: 270,
+    180: 180,
+    270: 90,
+};
+
+/** @type {Record<Angle, Angle>} **/
+export const clockwiseAngleMap = {
+    0: 90,
+    90: 180,
+    180: 270,
+    270: 0,
+};
+
+/** @type {Record<Angle, Angle>} **/
+export const counterClockwiseAngleMap = {
+    0: 270,
+    90: 0,
+    180: 90,
+    270: 180,
+};
+
+/** @type {Record<Direction, Record<Angle, Direction>>} **/
+export const directionRotationMap = {
+    top: {
+        0: "top",
+        90: "right",
+        180: "bottom",
+        270: "left",
+    },
+    right: {
+        0: "right",
+        90: "bottom",
+        180: "left",
+        270: "top",
+    },
+    bottom: {
+        0: "bottom",
+        90: "left",
+        180: "top",
+        270: "right",
+    },
+    left: {
+        0: "left",
+        90: "top",
+        180: "right",
+        270: "bottom",
+    },
 };
 
 /**
- * @enum {string}
+ * @param {number} n
+ * @return {n is Angle}
  */
-export const enumInvertedDirections = {
-    [enumDirection.top]: enumDirection.bottom,
-    [enumDirection.right]: enumDirection.left,
-    [enumDirection.bottom]: enumDirection.top,
-    [enumDirection.left]: enumDirection.right,
-};
+function isAngle(n) {
+    return angles.includes(/** @type {Angle} **/ (n));
+}
 
 /**
- * @enum {number}
+ * @param {number} radians
+ * @return {Angle}
  */
-export const enumDirectionToAngle = {
-    [enumDirection.top]: 0,
-    [enumDirection.right]: 90,
-    [enumDirection.bottom]: 180,
-    [enumDirection.left]: 270,
-};
-
-/**
- * @enum {enumDirection}
- */
-export const enumAngleToDirection = {
-    0: enumDirection.top,
-    90: enumDirection.right,
-    180: enumDirection.bottom,
-    270: enumDirection.left,
-};
-
-/** @type {Array<enumDirection>} */
-export const arrayAllDirections = [
-    enumDirection.top,
-    enumDirection.right,
-    enumDirection.bottom,
-    enumDirection.left,
-];
+export function snapToAngle(radians) {
+    const angle = (Math.round(Math.degrees(radians) / 90) * 90 + 360) % 360;
+    if (!isAngle(angle)) throw new Error("invalid Angle");
+    return angle;
+}
 
 export class Vector {
     /**
@@ -92,7 +144,7 @@ export class Vector {
     }
 
     /**
-     * Substracts a vector and return a new vector
+     * Subtracts a vector and return a new vector
      * @param {Vector} other
      * @returns {Vector}
      */
@@ -341,14 +393,6 @@ export class Vector {
     }
 
     /**
-     * Converts this vector from world to street space and return a new vector
-     * @returns {Vector}
-     */
-    toStreetSpace() {
-        return new Vector(Math.floor(this.x / halfTileSize + 0.25), Math.floor(this.y / halfTileSize + 0.25));
-    }
-
-    /**
      * Converts this vector to world space and return a new vector
      * @returns {Vector}
      */
@@ -438,162 +482,24 @@ export class Vector {
 
     /**
      * Rotates this vector
-     * @param {number} angle
+     * @param {Angle} angle
      * @returns {Vector} new vector
      */
-    rotated(angle) {
-        const sin = Math.sin(angle);
-        const cos = Math.cos(angle);
-        return new Vector(this.x * cos - this.y * sin, this.x * sin + this.y * cos);
-    }
-
-    /**
-     * Rotates this vector
-     * @param {number} angle
-     * @returns {Vector} this vector
-     */
-    rotateInplaceFastMultipleOf90(angle) {
-        // const sin = Math.sin(angle);
-        // const cos = Math.cos(angle);
-        // let sin = 0, cos = 1;
-        assert(angle >= 0 && angle <= 360, "Invalid angle, please clamp first: " + angle);
-
+    rotate(angle) {
+        const { x, y } = this;
         switch (angle) {
-            case 0:
-            case 360: {
-                return this;
-            }
-            case 90: {
-                // sin = 1;
-                // cos = 0;
-
-                const x = this.x;
-                this.x = -this.y;
-                this.y = x;
-                return this;
-            }
-            case 180: {
-                // sin = 0
-                // cos = -1
-                this.x = -this.x;
-                this.y = -this.y;
-                return this;
-            }
-            case 270: {
-                // sin = -1
-                // cos = 0
-                const x = this.x;
-                this.x = this.y;
-                this.y = -x;
-                return this;
-            }
-            default: {
-                assertAlways(false, "Invalid fast inplace rotation: " + angle);
-                return this;
-            }
-        }
-        // return new Vector(this.x * cos - this.y * sin, this.x * sin + this.y * cos);
-    }
-
-    /**
-     * Rotates this vector
-     * @param {number} angle
-     * @returns {Vector} new vector
-     */
-    rotateFastMultipleOf90(angle) {
-        assert(angle >= 0 && angle <= 360, "Invalid angle, please clamp first: " + angle);
-
-        switch (angle) {
-            case 360:
             case 0: {
-                return new Vector(this.x, this.y);
+                return new Vector(x, y);
             }
             case 90: {
-                return new Vector(-this.y, this.x);
+                return new Vector(-y, x);
             }
             case 180: {
-                return new Vector(-this.x, -this.y);
+                return new Vector(-x, -y);
             }
             case 270: {
-                return new Vector(this.y, -this.x);
+                return new Vector(y, -x);
             }
-            default: {
-                assertAlways(false, "Invalid fast inplace rotation: " + angle);
-                return new Vector();
-            }
-        }
-    }
-
-    /**
-     * Helper method to rotate a direction
-     * @param {enumDirection} direction
-     * @param {number} angle
-     * @returns {enumDirection}
-     */
-    static transformDirectionFromMultipleOf90(direction, angle) {
-        if (angle === 0 || angle === 360) {
-            return direction;
-        }
-        assert(angle >= 0 && angle <= 360, "Invalid angle: " + angle);
-        switch (direction) {
-            case enumDirection.top: {
-                switch (angle) {
-                    case 90:
-                        return enumDirection.right;
-                    case 180:
-                        return enumDirection.bottom;
-                    case 270:
-                        return enumDirection.left;
-                    default:
-                        assertAlways(false, "Invalid angle: " + angle);
-                        return;
-                }
-            }
-
-            case enumDirection.right: {
-                switch (angle) {
-                    case 90:
-                        return enumDirection.bottom;
-                    case 180:
-                        return enumDirection.left;
-                    case 270:
-                        return enumDirection.top;
-                    default:
-                        assertAlways(false, "Invalid angle: " + angle);
-                        return;
-                }
-            }
-
-            case enumDirection.bottom: {
-                switch (angle) {
-                    case 90:
-                        return enumDirection.left;
-                    case 180:
-                        return enumDirection.top;
-                    case 270:
-                        return enumDirection.right;
-                    default:
-                        assertAlways(false, "Invalid angle: " + angle);
-                        return;
-                }
-            }
-
-            case enumDirection.left: {
-                switch (angle) {
-                    case 90:
-                        return enumDirection.top;
-                    case 180:
-                        return enumDirection.right;
-                    case 270:
-                        return enumDirection.bottom;
-                    default:
-                        assertAlways(false, "Invalid angle: " + angle);
-                        return;
-                }
-            }
-            default:
-                assertAlways(false, "Invalid angle: " + angle);
-                return;
         }
     }
 
@@ -607,7 +513,7 @@ export class Vector {
     }
 
     /**
-     * Returns the angle
+     * Returns the angle in radians
      * @returns {number} 0 .. 2 PI
      */
     angle() {
@@ -680,9 +586,9 @@ export function mixVector(v1, v2, a) {
 
 /**
  * Mapping from string direction to actual vector
- * @enum {Vector}
+ * @type {Record<Direction, Vector>}
  */
-export const enumDirectionToVector = {
+export const directionVectorMap = {
     top: new Vector(0, -1),
     right: new Vector(1, 0),
     bottom: new Vector(0, 1),

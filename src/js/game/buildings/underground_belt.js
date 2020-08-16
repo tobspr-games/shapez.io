@@ -1,5 +1,5 @@
 import { Loader } from "../../core/loader";
-import { enumDirection, Vector, enumAngleToDirection, enumDirectionToVector } from "../../core/vector";
+import { Vector, angleDirectionMap, directionVectorMap, clockwiseAngleMap } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
@@ -51,8 +51,8 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {number} rotation
-     * @param {number} rotationVariant
+     * @param {Angle} rotation
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      * @param {Entity} entity
      */
@@ -90,7 +90,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     getPreviewSprite(rotationVariant, variant) {
@@ -110,7 +110,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     getBlueprintSprite(rotationVariant, variant) {
@@ -130,7 +130,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     getSprite(rotationVariant, variant) {
@@ -169,17 +169,17 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.tile
-     * @param {number} param0.rotation
+     * @param {Angle} param0.rotation
      * @param {string} param0.variant
      * @param {Layer} param0.layer
-     * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
+     * @return {{ rotation: Angle, rotationVariant: RotationVariant, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
-        const searchDirection = enumAngleToDirection[rotation];
-        const searchVector = enumDirectionToVector[searchDirection];
+        const searchDirection = angleDirectionMap[rotation];
+        const searchVector = directionVectorMap[searchDirection];
         const tier = enumUndergroundBeltVariantToTier[variant];
 
-        const targetRotation = (rotation + 180) % 360;
+        const targetRotation = clockwiseAngleMap[clockwiseAngleMap[rotation]];
         const targetSenderRotation = rotation;
 
         for (
@@ -209,7 +209,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                         // Draw connections to receivers
                         if (undergroundComp.mode === enumUndergroundBeltMode.receiver) {
                             return {
-                                rotation: rotation,
+                                rotation,
                                 rotationVariant: 0,
                                 connectedEntities: [contents],
                             };
@@ -230,7 +230,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {
@@ -243,7 +243,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                     },
                 ]);
                 return;
@@ -254,7 +254,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                 entity.components.ItemEjector.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                     },
                 ]);
                 return;

@@ -1,6 +1,6 @@
 import { Component } from "../component";
 import { types } from "../../savegame/serialization";
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 
 export class BeltUnderlaysComponent extends Component {
     static getId() {
@@ -24,7 +24,7 @@ export class BeltUnderlaysComponent extends Component {
 
     /**
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection}>=} param0.underlays Where to render belt underlays
+     * @param {Array<{pos: Vector, direction: Direction}>=} param0.underlays Where to render belt underlays
      */
     constructor({ underlays }) {
         super();

@@ -3,7 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
 import { epsilonCompare, round4Digits } from "../core/utils";
-import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
+import { directionVectorMap, inverseDirectionMap, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
@@ -186,7 +186,7 @@ export class BeltPath extends BasicSerializableObject {
 
     /**
      * Finds the entity which accepts our items
-     * @return {{ entity: Entity, slot: number, direction?: enumDirection }}
+     * @return {{ entity: Entity, slot: number, direction?: Direction }}
      */
     computeAcceptingEntityAndSlot() {
         const lastEntity = this.entityPath[this.entityPath.length - 1];
@@ -196,7 +196,7 @@ export class BeltPath extends BasicSerializableObject {
         // Figure out where and into which direction we eject items
         const ejectSlotWsTile = lastStatic.localTileToWorld(new Vector(0, 0));
         const ejectSlotWsDirection = lastStatic.localDirectionToWorld(lastBeltComp.direction);
-        const ejectSlotWsDirectionVector = enumDirectionToVector[ejectSlotWsDirection];
+        const ejectSlotWsDirectionVector = directionVectorMap[ejectSlotWsDirection];
         const ejectSlotTargetWsTile = ejectSlotWsTile.add(ejectSlotWsDirectionVector);
 
         // Try to find the given acceptor component to take the item
@@ -212,7 +212,7 @@ export class BeltPath extends BasicSerializableObject {
 
             // Check for belts (special case)
             if (targetBeltComp) {
-                const beltAcceptingDirection = targetStaticComp.localDirectionToWorld(enumDirection.top);
+                const beltAcceptingDirection = targetStaticComp.localDirectionToWorld("top");
                 if (ejectSlotWsDirection === beltAcceptingDirection) {
                     return {
                         entity: targetEntity,
@@ -243,7 +243,7 @@ export class BeltPath extends BasicSerializableObject {
             return {
                 entity: targetEntity,
                 slot: matchingSlot.index,
-                direction: enumInvertedDirections[ejectingDirection],
+                direction: inverseDirectionMap[ejectingDirection],
             };
         }
     }

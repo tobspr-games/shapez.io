@@ -1,6 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
-import { enumDirectionToVector } from "../../core/vector";
+import { directionVectorMap } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { MinerComponent } from "../components/miner";
 import { Entity } from "../entity";
@@ -73,7 +73,7 @@ export class MinerSystem extends GameSystemWithFilter {
             const ejectingPos = staticComp.localTileToWorld(ejectingSlot.pos);
             const ejectingDirection = staticComp.localDirectionToWorld(ejectingSlot.direction);
 
-            const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
+            const targetTile = ejectingPos.add(directionVectorMap[ejectingDirection]);
             const targetContents = this.root.map.getTileContent(targetTile, "regular");
 
             // Check if we are connected to another miner and thus do not eject directly

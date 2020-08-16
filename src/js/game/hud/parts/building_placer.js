@@ -4,13 +4,7 @@ import { DrawParameters } from "../../../core/draw_parameters";
 import { drawRotatedSprite } from "../../../core/draw_utils";
 import { Loader } from "../../../core/loader";
 import { clamp, makeDiv, removeAllChildren } from "../../../core/utils";
-import {
-    enumDirectionToAngle,
-    enumDirectionToVector,
-    enumInvertedDirections,
-    Vector,
-    enumDirection,
-} from "../../../core/vector";
+import { directionVectorMap, directionAngleMap, inverseDirectionMap, Vector } from "../../../core/vector";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant } from "../../meta_building";
@@ -208,8 +202,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             const dimensions = metaBuilding.getDimensions(variant);
             const sprite = metaBuilding.getPreviewSprite(0, variant);
             const spriteWrapper = makeDiv(element, null, ["iconWrap"]);
-            spriteWrapper.setAttribute("data-tile-w", dimensions.x);
-            spriteWrapper.setAttribute("data-tile-h", dimensions.y);
+            spriteWrapper.setAttribute("data-tile-w", `${dimensions.x}`);
+            spriteWrapper.setAttribute("data-tile-h", `${dimensions.y}`);
 
             spriteWrapper.innerHTML = sprite.getAsHTML(iconSize * dimensions.x, iconSize * dimensions.y);
 
@@ -495,7 +489,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 const worldDirection = staticComp.localDirectionToWorld(direction);
 
                 // Figure out which tile ejects to this slot
-                const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
+                const sourceTile = acceptorSlotWsTile.add(directionVectorMap[worldDirection]);
 
                 let isBlocked = false;
                 let isConnected = false;
@@ -519,7 +513,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     } else if (
                         sourceBeltComp &&
                         sourceStaticComp.localDirectionToWorld(sourceBeltComp.direction) ===
-                            enumInvertedDirections[worldDirection]
+                            inverseDirectionMap[worldDirection]
                     ) {
                         // Belt connected
                         isConnected = true;
@@ -538,7 +532,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     sprite,
                     x: acceptorSlotWsPos.x,
                     y: acceptorSlotWsPos.y,
-                    angle: Math.radians(enumDirectionToAngle[enumInvertedDirections[worldDirection]]),
+                    angle: Math.radians(directionAngleMap[inverseDirectionMap[worldDirection]]),
                     size: 13,
                     offsetY: offsetShift + 13,
                 });
@@ -550,7 +544,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorSlots.length; ++ejectorSlotIndex) {
             const slot = ejectorSlots[ejectorSlotIndex];
 
-            const ejectorSlotLocalTile = slot.pos.add(enumDirectionToVector[slot.direction]);
+            const ejectorSlotLocalTile = slot.pos.add(directionVectorMap[slot.direction]);
             const ejectorSlotWsTile = staticComp.localTileToWorld(ejectorSlotLocalTile);
 
             const ejectorSLotWsPos = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
@@ -576,7 +570,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 if (destAcceptor && destAcceptor.findMatchingSlot(destLocalTile, destLocalDir)) {
                     // This one is connected, all good
                     isConnected = true;
-                } else if (destEntity.components.Belt && destLocalDir === enumDirection.top) {
+                } else if (destEntity.components.Belt && destLocalDir === "top") {
                     // Connected to a belt
                     isConnected = true;
                 } else {
@@ -594,7 +588,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 sprite,
                 x: ejectorSLotWsPos.x,
                 y: ejectorSLotWsPos.y,
-                angle: Math.radians(enumDirectionToAngle[ejectorSlotWsDirection]),
+                angle: Math.radians(directionAngleMap[ejectorSlotWsDirection]),
                 size: 13,
                 offsetY: offsetShift,
             });

@@ -1,7 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { drawRotatedSprite } from "../../core/draw_utils";
 import { Loader } from "../../core/loader";
-import { enumDirectionToAngle } from "../../core/vector";
+import { directionAngleMap } from "../../core/vector";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BELT_ANIM_COUNT } from "./belt";
@@ -62,7 +62,7 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                const angle = enumDirectionToAngle[staticComp.localDirectionToWorld(direction)];
+                const angle = directionAngleMap[staticComp.localDirectionToWorld(direction)];
 
                 // SYNC with systems/belt.js:drawSingleEntity!
                 const animationIndex = Math.floor(

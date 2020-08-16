@@ -9,7 +9,7 @@ import { Vector } from "../core/vector";
  *   metaClass: typeof MetaBuilding,
  *   metaInstance?: MetaBuilding,
  *   variant?: string,
- *   rotationVariant?: number,
+ *   rotationVariant?: RotationVariant,
  *   tileSize?: Vector,
  *   sprite?: AtlasSprite,
  *   blueprintSprite?: AtlasSprite,
@@ -30,7 +30,7 @@ export const gBuildingVariants = {
  * @param {number} id
  * @param {typeof MetaBuilding} meta
  * @param {string} variant
- * @param {number} rotationVariant
+ * @param {RotationVariant} rotationVariant
  */
 export function registerBuildingVariant(
     id,
@@ -62,7 +62,7 @@ export function getBuildingDataFromCode(code) {
  * Finds the code for a given variant
  * @param {MetaBuilding} metaBuilding
  * @param {string} variant
- * @param {number} rotationVariant
+ * @param {RotationVariant} rotationVariant
  */
 export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) {
     for (const key in gBuildingVariants) {

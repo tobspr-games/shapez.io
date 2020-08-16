@@ -34,8 +34,8 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
 
     /**
      *
-     * @param {number} rotation
-     * @param {number} rotationVariant
+     * @param {Angle} rotation
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      * @param {Entity} entity
      */
@@ -78,7 +78,7 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
 
     /**
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {

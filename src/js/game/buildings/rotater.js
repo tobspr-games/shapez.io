@@ -1,5 +1,5 @@
 import { formatItemsPerSecond } from "../../core/utils";
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -79,7 +79,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
 
         entity.addComponent(
             new ItemEjectorComponent({
-                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+                slots: [{ pos: new Vector(0, 0), direction: "top" }],
             })
         );
         entity.addComponent(
@@ -87,7 +87,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         filter: "shape",
                     },
                 ],
@@ -98,7 +98,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {

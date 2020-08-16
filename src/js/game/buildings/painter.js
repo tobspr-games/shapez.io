@@ -1,5 +1,5 @@
 import { formatItemsPerSecond } from "../../core/utils";
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -88,7 +88,7 @@ export class MetaPainterBuilding extends MetaBuilding {
 
         entity.addComponent(
             new ItemEjectorComponent({
-                slots: [{ pos: new Vector(1, 0), direction: enumDirection.right }],
+                slots: [{ pos: new Vector(1, 0), direction: "right" }],
             })
         );
         entity.addComponent(
@@ -96,12 +96,12 @@ export class MetaPainterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        directions: ["left"],
                         filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.top],
+                        directions: ["top"],
                         filter: "color",
                     },
                 ],
@@ -112,7 +112,7 @@ export class MetaPainterBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {
@@ -122,87 +122,77 @@ export class MetaPainterBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        directions: ["left"],
                         filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [
-                            variant === defaultBuildingVariant ? enumDirection.top : enumDirection.bottom,
-                        ],
+                        directions: [variant === defaultBuildingVariant ? "top" : "bottom"],
                         filter: "color",
                     },
                 ]);
 
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.painter;
                 entity.components.ItemProcessor.inputsPerCharge = 2;
-                entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(1, 0), direction: enumDirection.right },
-                ]);
+                entity.components.ItemEjector.setSlots([{ pos: new Vector(1, 0), direction: "right" }]);
                 break;
             }
             case enumPainterVariants.double: {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        directions: ["left"],
                         filter: "shape",
                     },
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.left],
+                        directions: ["left"],
                         filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.top],
+                        directions: ["top"],
                         filter: "color",
                     },
                 ]);
 
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.painterDouble;
                 entity.components.ItemProcessor.inputsPerCharge = 3;
-
-                entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(1, 0), direction: enumDirection.right },
-                ]);
+                entity.components.ItemEjector.setSlots([{ pos: new Vector(1, 0), direction: "right" }]);
                 break;
             }
             case enumPainterVariants.quad: {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        directions: ["left"],
                         filter: "shape",
                     },
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         filter: "color",
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         filter: "color",
                     },
                     {
                         pos: new Vector(2, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         filter: "color",
                     },
                     {
                         pos: new Vector(3, 0),
-                        directions: [enumDirection.bottom],
+                        directions: ["bottom"],
                         filter: "color",
                     },
                 ]);
 
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.painterQuad;
                 entity.components.ItemProcessor.inputsPerCharge = 5;
-
-                entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                ]);
+                entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: "top" }]);
                 break;
             }
             default:

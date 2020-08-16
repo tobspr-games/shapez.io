@@ -54,27 +54,6 @@ export class Rectangle {
     }
 
     /**
-     * Returns a rectangle arround a rotated point
-     * @param {Array<Vector>} points
-     * @param {number} angle
-     * @returns {Rectangle}
-     */
-    static getAroundPointsRotated(points, angle) {
-        let minX = 1e10;
-        let minY = 1e10;
-        let maxX = -1e10;
-        let maxY = -1e10;
-        for (let i = 0; i < points.length; ++i) {
-            const rotated = points[i].rotated(angle);
-            minX = Math.min(minX, rotated.x);
-            minY = Math.min(minY, rotated.y);
-            maxX = Math.max(maxX, rotated.x);
-            maxY = Math.max(maxY, rotated.y);
-        }
-        return new Rectangle(minX, minY, maxX - minX, maxY - minY);
-    }
-
-    /**
      * Copies this instance
      * @returns {Rectangle}
      */

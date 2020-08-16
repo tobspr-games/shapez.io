@@ -3,11 +3,10 @@ import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import {
-    enumAngleToDirection,
-    enumDirection,
-    enumDirectionToAngle,
-    enumDirectionToVector,
-    enumInvertedDirections,
+    angleDirectionMap,
+    directionAngleMap,
+    directionVectorMap,
+    inverseDirectionMap,
 } from "../../core/vector";
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
 import { Entity } from "../entity";
@@ -81,9 +80,9 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             const staticComp = entity.components.StaticMapEntity;
             const tile = staticComp.origin;
 
-            const direction = enumAngleToDirection[staticComp.rotation];
-            const inverseDirection = enumInvertedDirections[direction];
-            const offset = enumDirectionToVector[inverseDirection];
+            const direction = angleDirectionMap[staticComp.rotation];
+            const inverseDirection = inverseDirectionMap[direction];
+            const offset = directionVectorMap[inverseDirection];
 
             let currentPos = tile.copy();
 
@@ -106,7 +105,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                     contentsUndergroundComp &&
                     contentsUndergroundComp.tier === undergroundComp.tier &&
                     contentsUndergroundComp.mode === enumUndergroundBeltMode.sender &&
-                    enumAngleToDirection[contentsStaticComp.rotation] === direction
+                    angleDirectionMap[contentsStaticComp.rotation] === direction
                 ) {
                     matchingEntrance = {
                         entity: contents,
@@ -143,8 +142,8 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
                 // It's a belt
                 if (
-                    contentsBeltComp.direction !== enumDirection.top ||
-                    enumAngleToDirection[contentsStaticComp.rotation] !== direction
+                    contentsBeltComp.direction !== "top" ||
+                    angleDirectionMap[contentsStaticComp.rotation] !== direction
                 ) {
                     allBeltsMatch = false;
                     break;
@@ -207,8 +206,8 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 const staticAfter = entityAfter.components.StaticMapEntity;
 
                 if (
-                    enumAngleToDirection[staticBefore.rotation] !== direction ||
-                    enumAngleToDirection[staticAfter.rotation] !== direction
+                    angleDirectionMap[staticBefore.rotation] !== direction ||
+                    angleDirectionMap[staticAfter.rotation] !== direction
                 ) {
                     // Wrong rotation
                     continue;
@@ -284,9 +283,9 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
     findRecieverForSender(entity) {
         const staticComp = entity.components.StaticMapEntity;
         const undergroundComp = entity.components.UndergroundBelt;
-        const searchDirection = staticComp.localDirectionToWorld(enumDirection.top);
-        const searchVector = enumDirectionToVector[searchDirection];
-        const targetRotation = enumDirectionToAngle[searchDirection];
+        const searchDirection = staticComp.localDirectionToWorld("top");
+        const searchVector = directionVectorMap[searchDirection];
+        const targetRotation = directionAngleMap[searchDirection];
         let currentTile = staticComp.origin;
 
         // Search in the direction of the tunnel

@@ -1,4 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
@@ -66,7 +66,7 @@ export class MetaLogicGateBuilding extends MetaBuilding {
     /**
      *
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      */
     updateVariants(entity, rotationVariant, variant) {
         const gateType = enumVariantToGate[variant];
@@ -81,17 +81,17 @@ export class MetaLogicGateBuilding extends MetaBuilding {
                 pinComp.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                         type: enumPinSlotType.logicalEjector,
                     },
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.left,
+                        direction: "left",
                         type: enumPinSlotType.logicalAcceptor,
                     },
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.right,
+                        direction: "right",
                         type: enumPinSlotType.logicalAcceptor,
                     },
                 ]);
@@ -101,17 +101,17 @@ export class MetaLogicGateBuilding extends MetaBuilding {
                 pinComp.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                         type: enumPinSlotType.logicalEjector,
                     },
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.left,
+                        direction: "left",
                         type: enumPinSlotType.logicalAcceptor,
                     },
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.bottom,
+                        direction: "bottom",
                         type: enumPinSlotType.logicalAcceptor,
                     },
                 ]);
@@ -122,12 +122,12 @@ export class MetaLogicGateBuilding extends MetaBuilding {
                 pinComp.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: "top",
                         type: enumPinSlotType.logicalEjector,
                     },
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.bottom,
+                        direction: "bottom",
                         type: enumPinSlotType.logicalAcceptor,
                     },
                 ]);

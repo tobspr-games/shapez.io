@@ -5,13 +5,7 @@ import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
 import { fastArrayDeleteValueIfContained } from "../../core/utils";
-import {
-    arrayAllDirections,
-    enumDirection,
-    enumDirectionToVector,
-    enumInvertedDirections,
-    Vector,
-} from "../../core/vector";
+import { directions, directionVectorMap, inverseDirectionMap, Vector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { BooleanItem } from "../items/boolean_item";
 import { arrayWireRotationVariantToType, MetaWireBuilding } from "../buildings/wire";
@@ -248,7 +242,7 @@ export class WireSystem extends GameSystemWithFilter {
                     wireComp.linkedNetwork = currentNetwork;
                     currentNetwork.wires.push(nextEntity);
 
-                    newSearchDirections = arrayAllDirections;
+                    newSearchDirections = directions;
                     newSearchTile = nextEntity.components.StaticMapEntity.origin;
                 }
             }
@@ -345,7 +339,7 @@ export class WireSystem extends GameSystemWithFilter {
     /**
      * Finds surrounding entities which are not yet assigned to a network
      * @param {Vector} initialTile
-     * @param {Array<enumDirection>} directions
+     * @param {Array<Direction>} directions
      * @param {WireNetwork} network
      * @returns {Array<any>}
      */
@@ -358,7 +352,7 @@ export class WireSystem extends GameSystemWithFilter {
         // Go over all directions we should search for
         for (let i = 0; i < directions.length; ++i) {
             const direction = directions[i];
-            const offset = enumDirectionToVector[direction];
+            const offset = directionVectorMap[direction];
             const initialSearchTile = initialTile.add(offset);
 
             // Store which tunnels we already visited to avoid infinite loops
@@ -410,7 +404,7 @@ export class WireSystem extends GameSystemWithFilter {
 
                         // Check if the direction (inverted) matches
                         const pinDirection = staticComp.localDirectionToWorld(slot.direction);
-                        if (pinDirection !== enumInvertedDirections[direction]) {
+                        if (pinDirection !== inverseDirectionMap[direction]) {
                             continue;
                         }
 
@@ -438,8 +432,8 @@ export class WireSystem extends GameSystemWithFilter {
                     if (
                         !tunnelComp.multipleDirections &&
                         !(
-                            direction === staticComp.localDirectionToWorld(enumDirection.top) ||
-                            direction === staticComp.localDirectionToWorld(enumDirection.bottom)
+                            direction === staticComp.localDirectionToWorld("top") ||
+                            direction === staticComp.localDirectionToWorld("bottom")
                         )
                     ) {
                         // It's a coating, and it doesn't connect here

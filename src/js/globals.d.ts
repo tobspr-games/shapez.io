@@ -193,8 +193,11 @@ declare interface TypedSignal<T extends Array<any>> {
     removeAll();
 }
 
-declare type Layer = "regular" | "wires";
+declare type Angle = 0 | 90 | 180 | 270;
+declare type Direction = "top" | "right" | "bottom" | "left";
 declare type ItemType = "shape" | "color" | "boolean";
+declare type Layer = "regular" | "wires";
+declare type RotationVariant = 0 | 1 | 2 | 3;
 
 declare module "worker-loader?inline=true&fallback=false!*" {
     class WebpackWorker extends Worker {

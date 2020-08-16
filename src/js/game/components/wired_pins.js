@@ -1,4 +1,4 @@
-import { enumDirection, Vector } from "../../core/vector";
+import { Vector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { types } from "../../savegame/serialization";
@@ -13,13 +13,13 @@ export const enumPinSlotType = {
 /** @typedef {{
  *   pos: Vector,
  *   type: enumPinSlotType,
- *   direction: enumDirection
+ *   direction: Direction
  * }} WirePinSlotDefinition */
 
 /** @typedef {{
  *   pos: Vector,
  *   type: enumPinSlotType,
- *   direction: enumDirection,
+ *   direction: Direction,
  *   value: BaseItem,
  *   linkedNetwork: import("../systems/wire").WireNetwork
  * }} WirePinSlot */

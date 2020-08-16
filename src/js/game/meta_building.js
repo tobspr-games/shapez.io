@@ -55,9 +55,9 @@ export class MetaBuilding {
     }
 
     /**
-     * Can return a special interlaved 9 elements overlay matrix for rendering
-     * @param {number} rotation
-     * @param {number} rotationVariant
+     * Can return a special interleved 9 elements overlay matrix for rendering
+     * @param {Angle} rotation
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      * @param {Entity} entity
      * @returns {Array<number>|null}
@@ -192,9 +192,9 @@ export class MetaBuilding {
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.origin Origin tile
-     * @param {number=} param0.rotation Rotation
-     * @param {number} param0.originalRotation Original Rotation
-     * @param {number} param0.rotationVariant Rotation variant
+     * @param {Angle=} param0.rotation Rotation
+     * @param {Angle} param0.originalRotation Original Rotation
+     * @param {RotationVariant} param0.rotationVariant Rotation variant
      * @param {string} param0.variant
      */
     createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
@@ -216,7 +216,7 @@ export class MetaBuilding {
 
     /**
      * Returns the sprite for a given variant
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      * @returns {AtlasSprite}
      */
@@ -234,10 +234,10 @@ export class MetaBuilding {
      * @param {object} param0
      * @param {GameRoot} param0.root
      * @param {Vector} param0.tile
-     * @param {number} param0.rotation
+     * @param {Angle} param0.rotation
      * @param {string} param0.variant
      * @param {Layer} param0.layer
-     * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
+     * @return {{ rotation: Angle, rotationVariant: RotationVariant, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
         if (!this.getIsRotateable(variant)) {
@@ -255,7 +255,7 @@ export class MetaBuilding {
     /**
      * Should update the entity to match the given variants
      * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {RotationVariant} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {}

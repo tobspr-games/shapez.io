@@ -3,7 +3,7 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { drawRotatedSprite } from "../../core/draw_utils";
 import { Loader } from "../../core/loader";
 import { STOP_PROPAGATION } from "../../core/signal";
-import { enumDirectionToAngle, Vector } from "../../core/vector";
+import { directionAngleMap, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -181,9 +181,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                const effectiveRotation = Math.radians(
-                    staticComp.rotation + enumDirectionToAngle[slot.direction]
-                );
+                const angle = directionAngleMap[staticComp.localDirectionToWorld(slot.direction)];
 
                 if (staticComp.getMetaBuilding().getRenderPins()) {
                     drawRotatedSprite({
@@ -191,7 +189,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                         sprite: this.pinSprites[slot.type],
                         x: worldPos.x,
                         y: worldPos.y,
-                        angle: effectiveRotation,
+                        angle: Math.radians(angle),
                         size: globalConfig.tileSize + 2,
                         offsetX: 0,
                         offsetY: 0,
@@ -201,7 +199,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                 // Draw contained item to visualize whats emitted
                 const value = slot.value;
                 if (value) {
-                    const offset = new Vector(0, -9).rotated(effectiveRotation);
+                    const offset = new Vector(0, -9).rotate(angle);
                     value.drawItemCenteredClipped(
                         worldPos.x + offset.x,
                         worldPos.y + offset.y,
@@ -212,7 +210,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
 
                 // Debug view
                 if (G_IS_DEV && globalConfig.debug.renderWireNetworkInfos) {
-                    const offset = new Vector(0, -10).rotated(effectiveRotation);
+                    const offset = new Vector(0, -10).rotate(angle);
                     const network = slot.linkedNetwork;
                     parameters.context.fillStyle = "blue";
                     parameters.context.font = "5px Tahoma";

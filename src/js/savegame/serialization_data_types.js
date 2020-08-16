@@ -484,7 +484,7 @@ export class TypeEnum extends BaseDataType {
     }
 
     verifySerializedValue(value) {
-        if (this.availableValues.indexOf(value) < 0) {
+        if (!this.availableValues.includes(value)) {
             return "Unknown enum value: " + value;
         }
     }
