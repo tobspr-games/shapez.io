@@ -8,6 +8,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { enumItemProcessorTypes } from "../components/item_processor";
+import { MapChunkView } from "../map_chunk_view";
 
 const logger = createLogger("systems/ejector");
 
@@ -336,50 +337,52 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Draws everything
      * @param {DrawParameters} parameters
+     * @param {MapChunkView} chunk
      */
-    draw(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawSingleEntity.bind(this));
-    }
+    drawChunk(parameters, chunk) {
+        const contents = chunk.containedEntitiesByLayer.regular;
 
-    /**
-     * @param {DrawParameters} parameters
-     * @param {Entity} entity
-     */
-    drawSingleEntity(parameters, entity) {
-        const ejectorComp = entity.components.ItemEjector;
-        const staticComp = entity.components.StaticMapEntity;
-
-        if (!staticComp.shouldBeDrawn(parameters)) {
-            return;
-        }
-
-        for (let i = 0; i < ejectorComp.slots.length; ++i) {
-            const slot = ejectorComp.slots[i];
-            const ejectedItem = slot.item;
-
-            if (!ejectedItem) {
-                // No item
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const ejectorComp = entity.components.ItemEjector;
+            if (!ejectorComp) {
                 continue;
             }
 
-            const realPosition = slot.pos.rotateFastMultipleOf90(staticComp.rotation);
-            const realDirection = Vector.transformDirectionFromMultipleOf90(
-                slot.direction,
-                staticComp.rotation
-            );
-            const realDirectionVector = enumDirectionToVector[realDirection];
+            const staticComp = entity.components.StaticMapEntity;
 
-            const tileX =
-                staticComp.origin.x + realPosition.x + 0.5 + realDirectionVector.x * 0.5 * slot.progress;
-            const tileY =
-                staticComp.origin.y + realPosition.y + 0.5 + realDirectionVector.y * 0.5 * slot.progress;
+            for (let i = 0; i < ejectorComp.slots.length; ++i) {
+                const slot = ejectorComp.slots[i];
+                const ejectedItem = slot.item;
 
-            const worldX = tileX * globalConfig.tileSize;
-            const worldY = tileY * globalConfig.tileSize;
+                if (!ejectedItem) {
+                    // No item
+                    continue;
+                }
 
-            ejectedItem.draw(worldX, worldY, parameters);
+                const realPosition = staticComp.localTileToWorld(slot.pos);
+                if (!chunk.tileSpaceRectangle.containsPoint(realPosition.x, realPosition.y)) {
+                    // Not within this chunk
+                    continue;
+                }
+
+                const realDirection = staticComp.localDirectionToWorld(slot.direction);
+                const realDirectionVector = enumDirectionToVector[realDirection];
+
+                const tileX = realPosition.x + 0.5 + realDirectionVector.x * 0.5 * slot.progress;
+                const tileY = realPosition.y + 0.5 + realDirectionVector.y * 0.5 * slot.progress;
+
+                const worldX = tileX * globalConfig.tileSize;
+                const worldY = tileY * globalConfig.tileSize;
+
+                ejectedItem.drawItemCenteredClipped(
+                    worldX,
+                    worldY,
+                    parameters,
+                    globalConfig.defaultItemDiameter
+                );
+            }
         }
     }
 }

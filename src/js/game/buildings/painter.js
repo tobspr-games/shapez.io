@@ -8,7 +8,6 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { enumItemType } from "../base_item";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 import { ProcessingRequirementComponent } from "../components/processing_requirement";
 
@@ -100,12 +99,12 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.top],
-                        filter: enumItemType.color,
+                        filter: "color",
                     },
                 ],
             })
@@ -133,14 +132,14 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [
                             variant === defaultBuildingVariant ? enumDirection.top : enumDirection.bottom,
                         ],
-                        filter: enumItemType.color,
+                        filter: "color",
                     },
                 ]);
 
@@ -163,17 +162,17 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(0, 1),
                         directions: [enumDirection.left],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.top],
-                        filter: enumItemType.color,
+                        filter: "color",
                     },
                 ]);
 
@@ -223,27 +222,27 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.color,
+                        filter: "color",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.color,
+                        filter: "color",
                     },
                     {
                         pos: new Vector(2, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.color,
+                        filter: "color",
                     },
                     {
                         pos: new Vector(3, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.color,
+                        filter: "color",
                     },
                 ]);
 

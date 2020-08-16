@@ -13,7 +13,7 @@ import { round1Digit } from "./utils";
 
 const logger = createLogger("buffers");
 
-const bufferGcDurationSeconds = 10;
+const bufferGcDurationSeconds = 5;
 
 export class BufferMaintainer {
     /**
@@ -27,6 +27,31 @@ export class BufferMaintainer {
 
         this.iterationIndex = 1;
         this.lastIteration = 0;
+
+        this.root.signals.gameFrameStarted.add(this.update, this);
+    }
+
+    /**
+     * Returns the buffer stats
+     */
+    getStats() {
+        let stats = {
+            rootKeys: 0,
+            subKeys: 0,
+            vramBytes: 0,
+        };
+        this.cache.forEach((subCache, key) => {
+            ++stats.rootKeys;
+
+            subCache.forEach((cacheEntry, subKey) => {
+                ++stats.subKeys;
+
+                const canvas = cacheEntry.canvas;
+                stats.vramBytes += canvas.width * canvas.height * 4;
+            });
+        });
+
+        return stats;
     }
 
     /**

@@ -3,9 +3,8 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { fastArrayDelete } from "../../core/utils";
 import { enumDirectionToVector } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
-import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumLayer } from "../root";
+import { MapChunkView } from "../map_chunk_view";
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -39,43 +38,45 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Draws the acceptor items
      * @param {DrawParameters} parameters
+     * @param {MapChunkView} chunk
      */
-    draw(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawEntityRegularLayer.bind(this));
-    }
+    drawChunk(parameters, chunk) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const acceptorComp = entity.components.ItemAcceptor;
+            if (!acceptorComp) {
+                continue;
+            }
 
-    /**
-     * @param {DrawParameters} parameters
-     * @param {Entity} entity
-     */
-    drawEntityRegularLayer(parameters, entity) {
-        const staticComp = entity.components.StaticMapEntity;
-        const acceptorComp = entity.components.ItemAcceptor;
+            const staticComp = entity.components.StaticMapEntity;
+            for (let animIndex = 0; animIndex < acceptorComp.itemConsumptionAnimations.length; ++animIndex) {
+                const { item, slotIndex, animProgress, direction } = acceptorComp.itemConsumptionAnimations[
+                    animIndex
+                ];
 
-        if (!staticComp.shouldBeDrawn(parameters)) {
-            return;
-        }
+                const slotData = acceptorComp.slots[slotIndex];
+                const realSlotPos = staticComp.localTileToWorld(slotData.pos);
 
-        for (let animIndex = 0; animIndex < acceptorComp.itemConsumptionAnimations.length; ++animIndex) {
-            const { item, slotIndex, animProgress, direction } = acceptorComp.itemConsumptionAnimations[
-                animIndex
-            ];
+                if (!chunk.tileSpaceRectangle.containsPoint(realSlotPos.x, realSlotPos.y)) {
+                    // Not within this chunk
+                    continue;
+                }
 
-            const slotData = acceptorComp.slots[slotIndex];
+                const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];
+                const finalTile = realSlotPos.subScalars(
+                    fadeOutDirection.x * (animProgress / 2 - 0.5),
+                    fadeOutDirection.y * (animProgress / 2 - 0.5)
+                );
 
-            const slotWorldPos = staticComp.applyRotationToVector(slotData.pos).add(staticComp.origin);
-            const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];
-            const finalTile = slotWorldPos.subScalars(
-                fadeOutDirection.x * (animProgress / 2 - 0.5),
-                fadeOutDirection.y * (animProgress / 2 - 0.5)
-            );
-            item.draw(
-                (finalTile.x + 0.5) * globalConfig.tileSize,
-                (finalTile.y + 0.5) * globalConfig.tileSize,
-                parameters
-            );
+                item.drawItemCenteredClipped(
+                    (finalTile.x + 0.5) * globalConfig.tileSize,
+                    (finalTile.y + 0.5) * globalConfig.tileSize,
+                    parameters,
+                    globalConfig.defaultItemDiameter
+                );
+            }
         }
     }
 }

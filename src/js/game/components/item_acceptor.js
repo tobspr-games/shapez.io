@@ -1,12 +1,12 @@
 import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { Component } from "../component";
 
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
- * filter?: enumItemType
+ * filter?: ItemType
  * }} ItemAcceptorSlot */
 
 /**
@@ -20,7 +20,7 @@ import { Component } from "../component";
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
- * filter?: enumItemType
+ * filter?: ItemType
  * }} ItemAcceptorSlotConfig */
 
 export class ItemAcceptorComponent extends Component {
@@ -74,7 +74,7 @@ export class ItemAcceptorComponent extends Component {
                 pos: slot.pos,
                 directions: slot.directions,
 
-                // Which type of item to accept (shape | color | all) @see enumItemType
+                // Which type of item to accept (shape | color | all) @see ItemType
                 filter: slot.filter,
             });
         }

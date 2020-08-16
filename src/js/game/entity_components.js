@@ -16,6 +16,7 @@ import { LogicGateComponent } from "./components/logic_gate";
 import { LeverComponent } from "./components/lever";
 import { WireTunnelComponent } from "./components/wire_tunnel";
 import { ProcessingRequirementComponent } from "./components/processing_requirement";
+import { DisplayComponent } from "./components/display";
 /* typehints:end */
 
 /**
@@ -76,6 +77,9 @@ export class EntityComponentStorage {
 
         /** @type {ProcessingRequirementComponent} */
         this.ProcessingRequirement;
+
+        /** @type {DisplayComponent} */
+        this.Display;
 
         /* typehints:end */
     }

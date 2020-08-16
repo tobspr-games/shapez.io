@@ -4,7 +4,7 @@ import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot } from "./root";
 import { getCodeFromBuildingData } from "./building_codes";
 
 export const defaultBuildingVariant = "default";
@@ -27,10 +27,10 @@ export class MetaBuilding {
 
     /**
      * Returns the edit layer of the building
-     * @returns {enumLayer}
+     * @returns {Layer}
      */
     getLayer() {
-        return enumLayer.regular;
+        return "regular";
     }
 
     /**
@@ -88,6 +88,13 @@ export class MetaBuilding {
      * for tunnels.
      */
     getFlipOrientationAfterPlacement() {
+        return false;
+    }
+
+    /**
+     * Whether to show a preview of the wires layer when placing the building
+     */
+    getShowWiresLayerPreview() {
         return false;
     }
 
@@ -229,7 +236,7 @@ export class MetaBuilding {
      * @param {Vector} param0.tile
      * @param {number} param0.rotation
      * @param {string} param0.variant
-     * @param {string} param0.layer
+     * @param {Layer} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {

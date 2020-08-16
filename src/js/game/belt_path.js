@@ -8,7 +8,7 @@ import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
 import { typeItemSingleton } from "./item_resolver";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot } from "./root";
 
 const logger = createLogger("belt_path");
 
@@ -203,7 +203,7 @@ export class BeltPath extends BasicSerializableObject {
         const targetEntity = this.root.map.getLayerContentXY(
             ejectSlotTargetWsTile.x,
             ejectSlotTargetWsTile.y,
-            enumLayer.regular
+            "regular"
         );
 
         if (targetEntity) {
@@ -1194,9 +1194,13 @@ export class BeltPath extends BasicSerializableObject {
                 const worldPos = staticComp.localTileToWorld(localPos).toWorldSpaceCenterOfTile();
 
                 const distanceAndItem = this.items[currentItemIndex];
-                if (parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, 10)) {
-                    distanceAndItem[_item].draw(worldPos.x, worldPos.y, parameters);
-                }
+
+                distanceAndItem[_item].drawItemCenteredClipped(
+                    worldPos.x,
+                    worldPos.y,
+                    parameters,
+                    globalConfig.defaultItemDiameter
+                );
 
                 // Check for the next item
                 currentItemPos += distanceAndItem[_nextDistance];

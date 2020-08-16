@@ -1,5 +1,5 @@
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { typeItemSingleton } from "../item_resolver";
 import { ColorItem } from "../items/color_item";
@@ -65,11 +65,11 @@ export class StorageComponent extends Component {
             return false;
         }
 
-        if (itemType === enumItemType.color) {
+        if (itemType === "color") {
             return /** @type {ColorItem} */ (this.storedItem).color === /** @type {ColorItem} */ (item).color;
         }
 
-        if (itemType === enumItemType.shape) {
+        if (itemType === "shape") {
             return (
                 /** @type {ShapeItem} */ (this.storedItem).definition.getHash() ===
                 /** @type {ShapeItem} */ (item).definition.getHash()

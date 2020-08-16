@@ -1,7 +1,6 @@
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { Vector } from "../../../core/vector";
 import { enumMouseButton } from "../../camera";
-import { enumLayer } from "../../root";
 import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDLeverToggle extends BaseHUDPart {
@@ -15,7 +14,7 @@ export class HUDLeverToggle extends BaseHUDPart {
      */
     downPreHandler(pos, button) {
         const tile = this.root.camera.screenToWorld(pos).toTileSpace();
-        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, enumLayer.regular);
+        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
         if (contents) {
             const leverComp = contents.components.Lever;
             if (leverComp) {

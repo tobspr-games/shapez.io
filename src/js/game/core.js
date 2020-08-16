@@ -9,7 +9,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
-import { randomInt, round2Digits } from "../core/utils";
+import { randomInt, round2Digits, round3Digits } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
@@ -26,7 +26,7 @@ import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
 import { defaultBuildingVariant } from "./meta_building";
 import { ProductionAnalytics } from "./production_analytics";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
@@ -329,8 +329,7 @@ export class GameCore {
             return;
         }
 
-        // Update buffers as the very first
-        root.buffers.update();
+        this.root.signals.gameFrameStarted.dispatch();
 
         root.queue.requireRedraw = false;
 
@@ -369,6 +368,13 @@ export class GameCore {
         }
 
         // Transform to world space
+
+        if (G_IS_DEV && globalConfig.debug.testClipping) {
+            params.visibleRect = params.visibleRect.expandedInAllDirections(
+                -200 / this.root.camera.zoomLevel
+            );
+        }
+
         root.camera.transform(context);
 
         assert(context.globalAlpha === 1.0, "Global alpha not 1 on frame start");
@@ -383,36 +389,24 @@ export class GameCore {
             // Map overview
             root.map.drawOverlay(params);
         } else {
+            // Background (grid, resources, etc)
             root.map.drawBackground(params);
-
-            // Underlays for splitters / balancers
-            systems.beltUnderlays.drawUnderlays(params);
 
             // Belt items
             systems.belt.drawBeltItems(params);
 
-            // Items being ejected / accepted currently (animations)
-            systems.itemEjector.draw(params);
-            systems.itemAcceptor.draw(params);
-
-            // Miner & Static map entities
+            // Miner & Static map entities etc.
             root.map.drawForeground(params);
 
             // HUB Overlay
             systems.hub.draw(params);
 
-            // Storage items
-            systems.storage.draw(params);
-
             // Green wires overlay
             root.hud.parts.wiresOverlay.draw(params);
 
-            if (this.root.currentLayer === enumLayer.wires) {
+            if (this.root.currentLayer === "wires") {
                 // Static map entities
                 root.map.drawWiresForegroundLayer(params);
-
-                // pins
-                systems.wiredPins.draw(params);
             }
         }
 
@@ -439,6 +433,9 @@ export class GameCore {
         params.zoomLevel = 1;
         params.desiredAtlasScale = ORIGINAL_SPRITE_SCALE;
         params.visibleRect = new Rectangle(0, 0, this.root.gameWidth, this.root.gameHeight);
+        if (G_IS_DEV && globalConfig.debug.testClipping) {
+            params.visibleRect = params.visibleRect.expandedInAllDirections(-200);
+        }
 
         // Draw overlays, those are screen space
         root.hud.drawOverlays(params);
@@ -457,7 +454,7 @@ export class GameCore {
 
         if (G_IS_DEV && globalConfig.debug.showAtlasInfo) {
             context.font = "13px GameFont";
-            context.fillStyle = "yellow";
+            context.fillStyle = "blue";
             context.fillText(
                 "Atlas: " +
                     desiredAtlasScale +
@@ -465,9 +462,31 @@ export class GameCore {
                     round2Digits(zoomLevel) +
                     " / Effective Zoom: " +
                     round2Digits(effectiveZoomLevel),
-                200,
-                20
+                20,
+                600
             );
+
+            const stats = this.root.buffers.getStats();
+            context.fillText(
+                "Buffers: " +
+                    stats.rootKeys +
+                    " root keys, " +
+                    stats.subKeys +
+                    " sub keys / buffers / VRAM: " +
+                    round2Digits(stats.vramBytes / (1024 * 1024)) +
+                    " MB",
+
+                20,
+                620
+            );
+        }
+
+        if (G_IS_DEV && globalConfig.debug.testClipping) {
+            context.strokeStyle = "red";
+            context.lineWidth = 1;
+            context.beginPath();
+            context.rect(200, 200, this.root.gameWidth - 400, this.root.gameHeight - 400);
+            context.stroke();
         }
     }
 }

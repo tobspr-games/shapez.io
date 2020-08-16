@@ -1,24 +1,28 @@
-import { GameSystemWithFilter } from "../game_system_with_filter";
-import { WireComponent, enumWireType } from "../components/wire";
-import { MapChunkView } from "../map_chunk_view";
 import { globalConfig } from "../../core/config";
-import { Loader } from "../../core/loader";
-import { Entity } from "../entity";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
-import { MetaWireBuilding, arrayWireRotationVariantToType } from "../buildings/wire";
+import { Loader } from "../../core/loader";
+import { createLogger } from "../../core/logging";
+import { Rectangle } from "../../core/rectangle";
+import { StaleAreaDetector } from "../../core/stale_area_detector";
+import { fastArrayDeleteValueIfContained } from "../../core/utils";
 import {
-    Vector,
+    arrayAllDirections,
     enumDirection,
     enumDirectionToVector,
-    arrayAllDirections,
     enumInvertedDirections,
+    Vector,
 } from "../../core/vector";
-import { defaultBuildingVariant } from "../meta_building";
-import { createLogger } from "../../core/logging";
-import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
-import { getCodeFromBuildingData } from "../building_codes";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { BooleanItem } from "../items/boolean_item";
+import { arrayWireRotationVariantToType, MetaWireBuilding } from "../buildings/wire";
+import { getCodeFromBuildingData } from "../building_codes";
+import { enumWireType, WireComponent } from "../components/wire";
+import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
+import { WireTunnelComponent } from "../components/wire_tunnel";
+import { Entity } from "../entity";
+import { GameSystemWithFilter } from "../game_system_with_filter";
+import { MapChunkView } from "../map_chunk_view";
+import { defaultBuildingVariant } from "../meta_building";
 
 const logger = createLogger("wires");
 
@@ -43,6 +47,12 @@ export class WireNetwork {
          * @type {Array<{ entity: Entity, slot: import("../components/wired_pins").WirePinSlot }>}
          */
         this.allSlots = [];
+
+        /**
+         * All connected tunnels
+         * @type {Array<Entity>}
+         */
+        this.tunnels = [];
 
         /**
          * Which wires are in this network
@@ -102,14 +112,20 @@ export class WireSystem extends GameSystemWithFilter {
             },
         };
 
-        this.root.signals.entityDestroyed.add(this.updateSurroundingWirePlacement, this);
-        this.root.signals.entityAdded.add(this.updateSurroundingWirePlacement, this);
+        this.root.signals.entityDestroyed.add(this.queuePlacementUpdate, this);
+        this.root.signals.entityAdded.add(this.queuePlacementUpdate, this);
 
         this.root.signals.entityDestroyed.add(this.queueRecomputeIfWire, this);
         this.root.signals.entityChanged.add(this.queueRecomputeIfWire, this);
         this.root.signals.entityAdded.add(this.queueRecomputeIfWire, this);
 
         this.needsRecompute = true;
+
+        this.staleArea = new StaleAreaDetector({
+            root: this.root,
+            name: "wires",
+            recomputeMethod: this.updateSurroundingWirePlacement.bind(this),
+        });
 
         /**
          * @type {Array<WireNetwork>}
@@ -125,7 +141,8 @@ export class WireSystem extends GameSystemWithFilter {
         if (!this.root.gameInitialized) {
             return;
         }
-        if (entity.components.Wire || entity.components.WiredPins) {
+
+        if (this.isEntityRelevantForWires(entity)) {
             this.needsRecompute = true;
             this.networks = [];
         }
@@ -144,6 +161,11 @@ export class WireSystem extends GameSystemWithFilter {
         const wireEntities = this.root.entityMgr.getAllWithComponent(WireComponent);
         for (let i = 0; i < wireEntities.length; ++i) {
             wireEntities[i].components.Wire.linkedNetwork = null;
+        }
+
+        const tunnelEntities = this.root.entityMgr.getAllWithComponent(WireTunnelComponent);
+        for (let i = 0; i < tunnelEntities.length; ++i) {
+            tunnelEntities[i].components.WireTunnel.linkedNetworks = [];
         }
 
         const pinEntities = this.root.entityMgr.getAllWithComponent(WiredPinsComponent);
@@ -280,7 +302,11 @@ export class WireSystem extends GameSystemWithFilter {
 
             if (newSearchTile) {
                 // Find new surrounding wire targets
-                const newTargets = this.findSurroundingWireTargets(newSearchTile, newSearchDirections);
+                const newTargets = this.findSurroundingWireTargets(
+                    newSearchTile,
+                    newSearchDirections,
+                    currentNetwork
+                );
 
                 VERBOSE_WIRES && logger.log("   Found", newTargets, "new targets to visit!");
                 for (let i = 0; i < newTargets.length; ++i) {
@@ -291,7 +317,9 @@ export class WireSystem extends GameSystemWithFilter {
 
         if (
             currentNetwork.providers.length > 0 &&
-            (currentNetwork.wires.length > 0 || currentNetwork.receivers.length > 0)
+            (currentNetwork.wires.length > 0 ||
+                currentNetwork.receivers.length > 0 ||
+                currentNetwork.tunnels.length > 0)
         ) {
             this.networks.push(currentNetwork);
             VERBOSE_WIRES && logger.log("Attached new network with uid", currentNetwork);
@@ -299,6 +327,13 @@ export class WireSystem extends GameSystemWithFilter {
             // Unregister network again
             for (let i = 0; i < currentNetwork.wires.length; ++i) {
                 currentNetwork.wires[i].components.Wire.linkedNetwork = null;
+            }
+
+            for (let i = 0; i < currentNetwork.tunnels.length; ++i) {
+                fastArrayDeleteValueIfContained(
+                    currentNetwork.tunnels[i].components.WireTunnel.linkedNetworks,
+                    currentNetwork
+                );
             }
 
             for (let i = 0; i < currentNetwork.allSlots.length; ++i) {
@@ -311,9 +346,10 @@ export class WireSystem extends GameSystemWithFilter {
      * Finds surrounding entities which are not yet assigned to a network
      * @param {Vector} initialTile
      * @param {Array<enumDirection>} directions
+     * @param {WireNetwork} network
      * @returns {Array<any>}
      */
-    findSurroundingWireTargets(initialTile, directions) {
+    findSurroundingWireTargets(initialTile, directions, network) {
         let result = [];
 
         VERBOSE_WIRES &&
@@ -335,6 +371,7 @@ export class WireSystem extends GameSystemWithFilter {
             );
 
             // Link the initial tile to the initial entities, since it may change
+            /** @type {Array<{entity: Entity, tile: Vector}>} */
             const contents = [];
             for (let j = 0; j < initialContents.length; ++j) {
                 contents.push({
@@ -384,40 +421,67 @@ export class WireSystem extends GameSystemWithFilter {
                             });
                         }
                     }
+
+                    // Pin slots mean it can be nothing else
+                    continue;
                 }
 
                 // Check if its a tunnel, if so, go to the forwarded item
-                if (entity.components.WireTunnel) {
-                    if (!visitedTunnels.has(entity.uid)) {
-                        // Compute where this tunnel connects to
-                        const forwardedTile = entity.components.StaticMapEntity.origin.add(offset);
-                        VERBOSE_WIRES &&
-                            logger.log(
-                                "   Found tunnel",
-                                entity.uid,
-                                "at",
-                                tile,
-                                "-> forwarding to",
-                                forwardedTile
-                            );
+                const tunnelComp = entity.components.WireTunnel;
+                if (tunnelComp) {
+                    if (visitedTunnels.has(entity.uid)) {
+                        continue;
+                    }
 
-                        // Figure out which entities are connected
-                        const connectedContents = this.root.map.getLayersContentsMultipleXY(
-                            forwardedTile.x,
-                            forwardedTile.y
+                    const staticComp = entity.components.StaticMapEntity;
+
+                    if (
+                        !tunnelComp.multipleDirections &&
+                        !(
+                            direction === staticComp.localDirectionToWorld(enumDirection.top) ||
+                            direction === staticComp.localDirectionToWorld(enumDirection.bottom)
+                        )
+                    ) {
+                        // It's a coating, and it doesn't connect here
+                        continue;
+                    }
+
+                    // Compute where this tunnel connects to
+                    const forwardedTile = staticComp.origin.add(offset);
+                    VERBOSE_WIRES &&
+                        logger.log(
+                            "   Found tunnel",
+                            entity.uid,
+                            "at",
+                            tile,
+                            "-> forwarding to",
+                            forwardedTile
                         );
 
-                        // Attach the entities and the tile we search at, because it may change
-                        for (let h = 0; h < connectedContents.length; ++h) {
-                            contents.push({
-                                entity: connectedContents[h],
-                                tile: forwardedTile,
-                            });
-                        }
+                    // Figure out which entities are connected
+                    const connectedContents = this.root.map.getLayersContentsMultipleXY(
+                        forwardedTile.x,
+                        forwardedTile.y
+                    );
 
-                        // Remember this tunnel
-                        visitedTunnels.add(entity.uid);
+                    // Attach the entities and the tile we search at, because it may change
+                    for (let h = 0; h < connectedContents.length; ++h) {
+                        contents.push({
+                            entity: connectedContents[h],
+                            tile: forwardedTile,
+                        });
                     }
+
+                    // Add the tunnel to the network
+                    if (tunnelComp.linkedNetworks.indexOf(network) < 0) {
+                        tunnelComp.linkedNetworks.push(network);
+                    }
+                    if (network.tunnels.indexOf(entity) < 0) {
+                        network.tunnels.push(entity);
+                    }
+
+                    // Remember this tunnel
+                    visitedTunnels.add(entity.uid);
                 }
             }
         }
@@ -431,6 +495,8 @@ export class WireSystem extends GameSystemWithFilter {
      * Updates the wires network
      */
     update() {
+        this.staleArea.update();
+
         if (this.needsRecompute) {
             this.recomputeWiresNetwork();
         }
@@ -514,17 +580,17 @@ export class WireSystem extends GameSystemWithFilter {
         }
 
         const valueType = value.getItemType();
-        if (valueType === enumItemType.shape) {
+        if (valueType === "shape") {
             return {
                 spriteSet: this.wireSprites.shape,
                 opacity: 1,
             };
-        } else if (valueType === enumItemType.color) {
+        } else if (valueType === "color") {
             return {
                 spriteSet: this.wireSprites.color,
                 opacity: 1,
             };
-        } else if (valueType === enumItemType.boolean) {
+        } else if (valueType === "boolean") {
             return {
                 spriteSet: this.wireSprites.regular,
                 opacity: /** @type {BooleanItem} */ (value).value ? 1 : 0.5,
@@ -552,39 +618,15 @@ export class WireSystem extends GameSystemWithFilter {
                 if (entity && entity.components.Wire) {
                     const wireComp = entity.components.Wire;
                     const wireType = wireComp.type;
-                    const network = wireComp.linkedNetwork;
 
                     const { opacity, spriteSet } = this.getSpriteSetAndOpacityForWire(wireComp);
-
-                    // if (!network) {
-                    //     opacity = 0.3;
-                    // } else {
-                    //     if (network.valueConflict) {
-                    //         opacity = 1;
-                    //         // TODO
-                    //     } else {
-                    //         if (network.currentValue) {
-                    //             if (
-                    //                 network.currentValue.getItemType() === enumItemType.boolean &&
-                    //                 // @ts-ignore
-                    //                 network.currentValue.value === 0
-                    //             ) {
-                    //                 opacity = 0.5;
-                    //             } else {
-                    //                 opacity = 1;
-                    //             }
-                    //         } else {
-                    //             opacity = 0.5;
-                    //         }
-                    //     }
-                    // }
 
                     const sprite = spriteSet[wireType];
 
                     assert(sprite, "Unknown wire type: " + wireType);
                     const staticComp = entity.components.StaticMapEntity;
                     parameters.context.globalAlpha = opacity;
-                    staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
+                    staticComp.drawSpriteOnBoundsClipped(parameters, sprite, 0);
                     parameters.context.globalAlpha = 1;
 
                     if (G_IS_DEV && globalConfig.debug.renderWireRotations) {
@@ -638,11 +680,23 @@ export class WireSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Updates the wire placement after an entity has been added / deleted
+     * Returns whether this entity is relevant for the wires network
      * @param {Entity} entity
      */
-    updateSurroundingWirePlacement(entity) {
+    isEntityRelevantForWires(entity) {
+        return entity.components.Wire || entity.components.WiredPins || entity.components.WireTunnel;
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     */
+    queuePlacementUpdate(entity) {
         if (!this.root.gameInitialized) {
+            return;
+        }
+
+        if (!this.isEntityRelevantForWires(entity)) {
             return;
         }
 
@@ -651,19 +705,21 @@ export class WireSystem extends GameSystemWithFilter {
             return;
         }
 
-        const metaWire = gMetaBuildingRegistry.findByClass(MetaWireBuilding);
-
-        // Compute affected area
+        // Invalidate affected area
         const originalRect = staticComp.getTileSpaceBounds();
         const affectedArea = originalRect.expandedInAllDirections(1);
+        this.staleArea.invalidate(affectedArea);
+    }
+
+    /**
+     * Updates the wire placement after an entity has been added / deleted
+     * @param {Rectangle} affectedArea
+     */
+    updateSurroundingWirePlacement(affectedArea) {
+        const metaWire = gMetaBuildingRegistry.findByClass(MetaWireBuilding);
 
         for (let x = affectedArea.x; x < affectedArea.right(); ++x) {
             for (let y = affectedArea.y; y < affectedArea.bottom(); ++y) {
-                if (originalRect.containsPoint(x, y)) {
-                    // Make sure we don't update the original entity
-                    continue;
-                }
-
                 const targetEntities = this.root.map.getLayersContentsMultipleXY(x, y);
                 for (let i = 0; i < targetEntities.length; ++i) {
                     const targetEntity = targetEntities[i];

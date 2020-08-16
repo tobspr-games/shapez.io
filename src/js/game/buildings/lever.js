@@ -35,6 +35,10 @@ export class MetaLeverBuilding extends MetaBuilding {
         return null;
     }
 
+    getShowWiresLayerPreview() {
+        return true;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity

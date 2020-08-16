@@ -55,12 +55,14 @@ export const KEYMAPPINGS = {
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
 
+        lever: { keyCode: key("L") },
+        filter: { keyCode: key("B") },
+        display: { keyCode: key("N") },
+
         wire: { keyCode: key("1") },
         wire_tunnel: { keyCode: key("2") },
         constant_signal: { keyCode: key("3") },
         logic_gate: { keyCode: key("4") },
-        lever: { keyCode: key("5") },
-        filter: { keyCode: key("6") },
     },
 
     placement: {

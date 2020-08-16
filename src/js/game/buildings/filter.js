@@ -29,6 +29,10 @@ export class MetaFilterBuilding extends MetaBuilding {
         return new Vector(2, 1);
     }
 
+    getShowWiresLayerPreview() {
+        return true;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity

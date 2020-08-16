@@ -1,4 +1,3 @@
-import { enumLayer } from "../../root";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaWireBuilding } from "../../buildings/wire";
 import { MetaConstantSignalBuilding } from "../../buildings/constant_signal";
@@ -19,7 +18,7 @@ export class HUDWiresToolbar extends HUDBaseToolbar {
         super(root, {
             supportedBuildings,
             visibilityCondition: () =>
-                !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === enumLayer.wires,
+                !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "wires",
             htmlElementId: "ingame_HUD_wires_toolbar",
         });
     }

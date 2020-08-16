@@ -258,6 +258,7 @@
             <key type="filename">sprites/belt/built/right_8.png</key>
             <key type="filename">sprites/belt/built/right_9.png</key>
             <key type="filename">sprites/blueprints/constant_signal.png</key>
+            <key type="filename">sprites/blueprints/display.png</key>
             <key type="filename">sprites/blueprints/lever.png</key>
             <key type="filename">sprites/blueprints/logic_gate-not.png</key>
             <key type="filename">sprites/blueprints/logic_gate-or.png</key>
@@ -278,6 +279,7 @@
             <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
             <key type="filename">sprites/blueprints/wire_tunnel.png</key>
             <key type="filename">sprites/buildings/constant_signal.png</key>
+            <key type="filename">sprites/buildings/display.png</key>
             <key type="filename">sprites/buildings/lever.png</key>
             <key type="filename">sprites/buildings/logic_gate-not.png</key>
             <key type="filename">sprites/buildings/logic_gate-or.png</key>
@@ -531,6 +533,7 @@
             </struct>
             <key type="filename">sprites/wires/boolean_false.png</key>
             <key type="filename">sprites/wires/boolean_true.png</key>
+            <key type="filename">sprites/wires/wires_preview.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -542,6 +545,27 @@
                 <rect>16,16,32,32</rect>
                 <key>scale9Paddings</key>
                 <rect>16,16,32,32</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/wires/display/blue.png</key>
+            <key type="filename">sprites/wires/display/cyan.png</key>
+            <key type="filename">sprites/wires/display/green.png</key>
+            <key type="filename">sprites/wires/display/purple.png</key>
+            <key type="filename">sprites/wires/display/red.png</key>
+            <key type="filename">sprites/wires/display/white.png</key>
+            <key type="filename">sprites/wires/display/yellow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,11,22,22</rect>
+                <key>scale9Paddings</key>
+                <rect>11,11,22,22</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

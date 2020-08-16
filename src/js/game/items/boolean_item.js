@@ -1,7 +1,8 @@
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
+import { globalConfig } from "../../core/config";
 
 export class BooleanItem extends BaseItem {
     static getId() {
@@ -20,8 +21,9 @@ export class BooleanItem extends BaseItem {
         this.value = data;
     }
 
+    /** @returns {"boolean"} **/
     getItemType() {
-        return enumItemType.boolean;
+        return "boolean";
     }
 
     /**
@@ -42,17 +44,17 @@ export class BooleanItem extends BaseItem {
     /**
      * @param {number} x
      * @param {number} y
-     * @param {number} size
+     * @param {number} diameter
      * @param {DrawParameters} parameters
      */
-    draw(x, y, parameters, size = 12) {
+    drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
         let sprite;
         if (this.value) {
             sprite = Loader.getSprite("sprites/wires/boolean_true.png");
         } else {
             sprite = Loader.getSprite("sprites/wires/boolean_false.png");
         }
-        sprite.drawCachedCentered(parameters, x, y, size * 1.5);
+        sprite.drawCachedCentered(parameters, x, y, diameter);
     }
 }
 

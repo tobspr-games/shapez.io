@@ -4,7 +4,6 @@ import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item
 import { MapChunkView } from "../map_chunk_view";
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
-import { enumLayer } from "../root";
 
 export class LeverSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -32,11 +31,12 @@ export class LeverSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        const contents = chunk.containedEntitiesByLayer[enumLayer.regular];
+        const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
-            if (entity && entity.components.Lever) {
-                const sprite = entity.components.Lever.toggled ? this.spriteOn : this.spriteOff;
+            const leverComp = entity.components.Lever;
+            if (leverComp) {
+                const sprite = leverComp.toggled ? this.spriteOn : this.spriteOff;
                 const origin = entity.components.StaticMapEntity.origin;
                 sprite.drawCached(
                     parameters,

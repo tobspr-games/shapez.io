@@ -19,6 +19,7 @@ import { WireSystem } from "./systems/wire";
 import { ConstantSignalSystem } from "./systems/constant_signal";
 import { LogicGateSystem } from "./systems/logic_gate";
 import { LeverSystem } from "./systems/lever";
+import { DisplaySystem } from "./systems/display";
 
 const logger = createLogger("game_system_manager");
 
@@ -80,6 +81,9 @@ export class GameSystemManager {
             /** @type {LeverSystem} */
             lever: null,
 
+            /** @type {DisplaySystem} */
+            display: null,
+
             /* typehints:end */
         };
         this.systemUpdateOrder = [];
@@ -136,6 +140,8 @@ export class GameSystemManager {
 
         // Wires must be after all gate, signal etc logic!
         add("wire", WireSystem);
+
+        add("display", DisplaySystem);
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }

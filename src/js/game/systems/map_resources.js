@@ -3,6 +3,7 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { GameSystem } from "../game_system";
 import { MapChunkView } from "../map_chunk_view";
 import { THEME } from "../theme";
+import { drawSpriteClipped } from "../../core/draw_utils";
 
 export class MapResourcesSystem extends GameSystem {
     /**
@@ -12,7 +13,7 @@ export class MapResourcesSystem extends GameSystem {
      */
     drawChunk(parameters, chunk) {
         const basicChunkBackground = this.root.buffers.getForKey({
-            key: "chunkres",
+            key: "mapresourcebg",
             subKey: chunk.renderKey,
             w: globalConfig.mapChunkSize,
             h: globalConfig.mapChunkSize,
@@ -21,13 +22,16 @@ export class MapResourcesSystem extends GameSystem {
         });
 
         parameters.context.imageSmoothingEnabled = false;
-        parameters.context.drawImage(
-            basicChunkBackground,
-            chunk.tileX * globalConfig.tileSize,
-            chunk.tileY * globalConfig.tileSize,
-            globalConfig.mapChunkWorldSize,
-            globalConfig.mapChunkWorldSize
-        );
+        drawSpriteClipped({
+            parameters,
+            sprite: basicChunkBackground,
+            x: chunk.tileX * globalConfig.tileSize,
+            y: chunk.tileY * globalConfig.tileSize,
+            w: globalConfig.mapChunkWorldSize,
+            h: globalConfig.mapChunkWorldSize,
+            originalW: globalConfig.mapChunkSize,
+            originalH: globalConfig.mapChunkSize,
+        });
         parameters.context.imageSmoothingEnabled = true;
 
         parameters.context.globalAlpha = 0.5;
@@ -36,13 +40,11 @@ export class MapResourcesSystem extends GameSystem {
             // LOW QUALITY: Draw patch items only
             for (let i = 0; i < chunk.patches.length; ++i) {
                 const patch = chunk.patches[i];
+                const destX = chunk.x * globalConfig.mapChunkWorldSize + patch.pos.x * globalConfig.tileSize;
+                const destY = chunk.y * globalConfig.mapChunkWorldSize + patch.pos.y * globalConfig.tileSize;
+                const diameter = Math.min(80, 40 / parameters.zoomLevel);
 
-                patch.item.draw(
-                    chunk.x * globalConfig.mapChunkWorldSize + patch.pos.x * globalConfig.tileSize,
-                    chunk.y * globalConfig.mapChunkWorldSize + patch.pos.y * globalConfig.tileSize,
-                    parameters,
-                    Math.min(80, 40 / parameters.zoomLevel)
-                );
+                patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
             }
         } else {
             // HIGH QUALITY: Draw all items
@@ -55,24 +57,14 @@ export class MapResourcesSystem extends GameSystem {
                     if (lowerItem) {
                         const worldY = (chunk.tileY + y) * globalConfig.tileSize;
 
-                        if (
-                            !parameters.visibleRect.containsRect4Params(
-                                worldX,
-                                worldY,
-                                globalConfig.tileSize,
-                                globalConfig.tileSize
-                            )
-                        ) {
-                            // Clipped
-                            continue;
-                        }
+                        const destX = worldX + globalConfig.halfTileSize;
+                        const destY = worldY + globalConfig.halfTileSize;
 
-                        // parameters.context.fillStyle = lowerItem.getBackgroundColorAsResource();
-                        // parameters.context.fillRect(worldX, worldY, globalConfig.tileSize, globalConfig.tileSize);
-                        lowerItem.draw(
-                            worldX + globalConfig.halfTileSize,
-                            worldY + globalConfig.halfTileSize,
-                            parameters
+                        lowerItem.drawItemCenteredClipped(
+                            destX,
+                            destY,
+                            parameters,
+                            globalConfig.defaultItemDiameter
                         );
                     }
                 }
@@ -93,7 +85,6 @@ export class MapResourcesSystem extends GameSystem {
     generateChunkBackground(chunk, canvas, context, w, h, dpi) {
         if (this.root.app.settings.getAllSettings().disableTileGrid) {
             // The map doesn't draw a background, so we have to
-
             context.fillStyle = THEME.map.background;
             context.fillRect(0, 0, w, h);
         } else {

@@ -1,12 +1,9 @@
+import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { BasicSerializableObject } from "../savegame/serialization";
 
-/** @enum {string} */
-export const enumItemType = {
-    shape: "shape",
-    color: "color",
-    boolean: "boolean",
-};
+/** @type {ItemType[]} **/
+export const itemTypes = ["shape", "color", "boolean"];
 
 /**
  * Class for items on belts etc. Not an entity for performance reasons
@@ -25,10 +22,10 @@ export class BaseItem extends BasicSerializableObject {
         return {};
     }
 
-    /** @returns {enumItemType} */
+    /** @returns {ItemType} **/
     getItemType() {
         abstract;
-        return "";
+        return "shape";
     }
 
     /**
@@ -59,9 +56,24 @@ export class BaseItem extends BasicSerializableObject {
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
-     * @param {number=} size
+     * @param {number=} diameter
      */
-    draw(x, y, parameters, size) {}
+    drawItemCenteredClipped(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
+        if (parameters.visibleRect.containsCircle(x, y, diameter / 2)) {
+            this.drawItemCenteredImpl(x, y, parameters, diameter);
+        }
+    }
+
+    /**
+     * INTERNAL
+     * @param {number} x
+     * @param {number} y
+     * @param {DrawParameters} parameters
+     * @param {number=} diameter
+     */
+    drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
+        abstract;
+    }
 
     getBackgroundColorAsResource() {
         abstract;

@@ -78,6 +78,7 @@ steamPage:
         Die komplette Roadmap gibt es auf dem Trello-Board zum Nachlesen!
 
         [b]Links [/b]
+
         [list]
             [*] [url=https://discord.com/invite/HN7EVzV]Offizieller Discord[/url]
             [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
@@ -140,10 +141,15 @@ demoBanners:
 
 mainMenu:
     play: Spielen
+    continue: Fortsetzen
+    newGame: Neues Spiel
     changelog: Änderungshistorie
+    subreddit: Reddit
     importSavegame: Importieren
     openSourceHint: Dieses Spiel ist Open Source!
     discordLink: Offizieller Discord Server
+    helpTranslate: Hilf beim Übersetzen!
+    madeBy: Ein Spiel von <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -151,12 +157,6 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
-
-    helpTranslate: Hilf beim Übersetzen!
-    continue: Fortsetzen
-    newGame: Neues Spiel
-    madeBy: Ein Spiel von <author-link>
-    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -238,6 +238,16 @@ dialogs:
         desc: >-
             Du löscht sehr viele Gebäude (<count> um genau zu sein)! Bist du dir sicher?
 
+    massCutConfirm:
+        title: Ausschneiden bestätigen
+        desc: >-
+            Du schneidest sehr viele Gebäude aus (<count> um genau zu sein)! Bist du dir sicher?
+
+    massCutInsufficientConfirm:
+        title: Ausschneiden bestätigen
+        desc: >-
+            Du hast aktuell nicht genug Blaupausenformen, um die Auswahl einzufügen! Möchtest du sie trotzdem ausschneiden?
+
     blueprintsNotUnlocked:
         title: Noch nicht freigeschaltet
         desc: >-
@@ -254,24 +264,15 @@ dialogs:
 
     createMarker:
         title: Neuer Marker
-        desc: Gib ihm einen griffigen Namen. Du kannst sogar die <strong>Abkürzung</strong> einer Form eingeben (Diese kann <a href="https://viewer.shapez.io" target="_blank">hier</a> generiert werden).
         titleEdit: Edit Marker
+        desc: Gib ihm einen griffigen Namen. Du kannst sogar die <strong>Abkürzung</strong> einer Form eingeben (Diese kann <a href="https://viewer.shapez.io" target="_blank">hier</a> generiert werden).
 
     markerDemoLimit:
         desc: Du kannst nur 2 benutzerdefinierte Marker in der Demo benutzen. Hol dir die Standalone, um unendlich viele Marker zu erstellen!
-    massCutConfirm:
-        title: Ausschneiden bestätigen
-        desc: >-
-            Du schneidest sehr viele Gebäude aus (<count> um genau zu sein)! Bist du dir sicher?
 
     exportScreenshotWarning:
         title: Bildschirmfoto exportieren
-        desc: >-
-            Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für extrem große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
-
-    massCutInsufficientConfirm:
-        title: Ausschneiden bestätigen
-        desc: Du hast aktuell nicht genug Blaupausenformen, um die Auswahl einzufügen! Möchtest du sie trotzdem ausschneiden?
+        desc: Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für extrem große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -296,6 +297,18 @@ ingame:
         clearSelection: Auswahl aufheben
         pipette: Pipette
         switchLayers: Ebenen wechseln
+
+    # Names of the colors, used for the color blind mode
+    colors:
+        red: Rot
+        green: Grün
+        blue: Blau
+        yellow: Gelb
+        purple: Violett
+        cyan: Cyan
+        white: Weiß
+        black: Schwarz
+        uncolored: Farblos
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -391,6 +404,12 @@ ingame:
         description: Linksklick auf einen Marker, um dort hinzugelangen, Rechtsklick, um ihn zu löschen.<br><br>Drücke <keybinding> um einen Marker aus deinem Blickwinkel, oder <strong>rechtsklicke</strong>, um einen Marker auf der ausgewählten Position zu erschaffen.
         creationSuccessNotification: Marker wurde erstellt.
 
+    # Shape viewer
+    shapeViewer:
+        title: Ebenen
+        empty: Leer
+        copyKey: Schlüssel kopieren
+
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
@@ -401,21 +420,6 @@ ingame:
 
             1_3_expand: >-
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
-
-    colors:
-        red: Rot
-        green: Grün
-        blue: Blau
-        yellow: Gelb
-        purple: Violett
-        cyan: Cyan
-        white: Weiß
-        uncolored: Farblos
-        black: Schwarz
-    shapeViewer:
-        title: Ebenen
-        empty: Leer
-        copyKey: Schlüssel kopieren
 
 # All shop upgrades
 shopUpgrades:
@@ -434,12 +438,19 @@ shopUpgrades:
 
 # Buildings and their name / description
 buildings:
+    hub:
+        deliver: Liefere
+        toUnlock: >-
+            Für folgende Belohnung:
+        levelShortcut: LVL
+
     belt:
         default:
             name: &belt Förderband
             description: Transportiert Items. Halte und ziehe um mehrere zu platzieren.
 
-    miner: # Internal name for the Extractor
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Extrahierer
             description: Platziere ihn auf einer Form oder Farbe um sie zu extrahieren.
@@ -448,7 +459,8 @@ buildings:
             name: Extrahierer (Kette)
             description: Platziere ihn auf einer Form oder Farbe um sie zu extrahieren. Kann verkettet werden.
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Tunnel
             description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten.
@@ -457,7 +469,8 @@ buildings:
             name: Tunnel Stufe II
             description: Erlaubt dir, Formen und Farbe unter Gebäuden und Förderbändern durchzuleiten. Höhere Reichweite.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Verteiler
             description: Multifunktional - Verteilt gleichmäßig vom Eingang auf den Ausgang.
@@ -482,7 +495,6 @@ buildings:
         default:
             name: &rotater Rotierer
             description: Rotiert Formen im Uhrzeigersinn um 90 Grad.
-
         ccw:
             name: Rotierer (CCW)
             description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
@@ -505,6 +517,10 @@ buildings:
             name: &painter Färber
             description: &painter_desc Färbt die ganze Form aus dem linken Eingang mit der Farbe aus dem oberen Eingang.
 
+        mirrored:
+            name: *painter
+            description: *painter_desc
+
         double:
             name: Färber (2-Fach)
             description: Färbt beide Formen aus dem linken Eingang mit der Farbe aus dem oberen Eingang.
@@ -512,9 +528,6 @@ buildings:
         quad:
             name: Färber (4-Fach)
             description: Erlaubt jedes einzelne Viertel einer Form beliebig einzufärben.
-        mirrored:
-            name: *painter
-            description: *painter_desc
 
     trash:
         default:
@@ -525,11 +538,6 @@ buildings:
             name: Lager
             description: Lagert den Überschuss bis zu einer gegebenen Kapazität. Kann als Überlauftor agieren.
 
-    hub:
-        deliver: Liefere
-        toUnlock: >-
-            Für folgende Belohnung:
-        levelShortcut: LVL
     wire:
         default:
             name: Energiekabel
@@ -660,6 +668,19 @@ settings:
                 large: Groß
                 huge: Riesig
 
+        autosaveInterval:
+            title: Intervall für automatisches Speichern
+            description: >-
+                Ändert das Intervall, in dem der Spielstand automatisch gespeichert wird. Die Funktion kann hier auch deaktiviert werden.
+
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minuten
+                five_minutes: 5 Minuten
+                ten_minutes: 10 Minuten
+                twenty_minutes: 20 Minuten
+                disabled: Deaktiviert
+
         scrollWheelSensitivity:
             title: Zoomempfindlichkeit
             description: >-
@@ -670,6 +691,28 @@ settings:
                 regular: Normal
                 fast: Schnell
                 super_fast: Sehr schnell
+
+        movementSpeed:
+            title: Bewegungsgeschwindigkeit
+            description: >-
+                Ändert die Geschwindigkeit, mit der der Bildschirm durch die Pfeiltasten bewegt wird.
+            speeds:
+                super_slow: Sehr langsam
+                slow: Langsam
+                regular: Normal
+                fast: Schnell
+                super_fast: Sehr schnell
+                extremely_fast: Extrem schnell
+
+        language:
+            title: Sprache
+            description: >-
+                Ändere die Sprache. Alle Übersetzungen werden von Nutzern erstellt und sind möglicherweise unvollständig!
+
+        enableColorBlindHelper:
+            title: Modus für Farbenblinde
+            description: >-
+                Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
 
         fullscreen:
             title: Vollbild
@@ -690,10 +733,10 @@ settings:
             title: Farbmodus
             description: >-
                 Wähle zwischen dunklem und hellem Farbmodus.
-
             themes:
                 dark: Dunkel
                 light: Hell
+
         refreshRate:
             title: Zielbildwiederholrate
             description: >-
@@ -709,21 +752,6 @@ settings:
             description: >-
                 Schaltet Hinweise und das Tutorial beim Spielen an und aus. Außerdem werden zu den Levels bestimmte Textfelder versteckt, die den Einstieg erleichtern sollen.
 
-        language:
-            title: Sprache
-            description: >-
-                Ändere die Sprache. Alle Übersetzungen werden von Nutzern erstellt und sind möglicherweise unvollständig!
-
-        movementSpeed:
-            title: Bewegungsgeschwindigkeit
-            description: Ändert die Geschwindigkeit, mit der der Bildschirm durch die Pfeiltasten bewegt wird.
-            speeds:
-                super_slow: Sehr langsam
-                slow: Langsam
-                regular: Normal
-                fast: Schnell
-                super_fast: Sehr schnell
-                extremely_fast: Extrem schnell
         enableTunnelSmartplace:
             title: Intelligente Tunnel
             description: >-
@@ -732,42 +760,22 @@ settings:
         vignette:
             title: Vignette
             description: >-
-                Aktiviert den Vignetteneffekt, der den Rand des Bildschirms zunehmend verdunkelt
-                und das Lesen der Textfelder vereinfacht.
+                Aktiviert den Vignetteneffekt, der den Rand des Bildschirms zunehmend verdunkelt und das Lesen der Textfelder vereinfacht.
 
-        autosaveInterval:
-            title: Intervall für automatisches Speichern
+        rotationByBuilding:
+            title: Rotation pro Gebäudetyp
             description: >-
-                Ändert das Intervall, in dem der Spielstand automatisch gespeichert wird.
-                Die Funktion kann hier auch deaktiviert werden.
-            intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minuten
-                five_minutes: 5 Minuten
-                ten_minutes: 10 Minuten
-                twenty_minutes: 20 Minuten
-                disabled: Deaktiviert
+                Jeder Gebäudetyp merkt sich einzeln, welche Rotation ausgewählt ist. Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen Gebäudetypen wechselst.
 
         compactBuildingInfo:
             title: Kompakte Gebäudeinformationen
             description: >-
-                Reduziert die Infoboxen der Gebäude auf ihre Arbeitsgeschwindigkeit. Anderenfalls wird ein
-                Bild mit Beschreibung angezeigt.
+                Reduziert die Infoboxen der Gebäude auf ihre Arbeitsgeschwindigkeit. Anderenfalls wird ein Bild mit Beschreibung angezeigt.
 
         disableCutDeleteWarnings:
             title: Deaktiviere Warnungsdialog beim Löschen
             description: >-
                 Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
-
-        enableColorBlindHelper:
-            title: Modus für Farbenblinde
-            description: Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
-        rotationByBuilding:
-            title: Rotation pro Gebäudetyp
-            description: >-
-                Jeder Gebäudetyp merkt sich einzeln, welche Rotation ausgewählt ist.
-                Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen
-                Gebäudetypen wechselst.
 
 keybindings:
     title: Tastenbelegung
@@ -792,6 +800,7 @@ keybindings:
         mapMoveRight: Nach rechts bewegen
         mapMoveDown: Nach unten bewegen
         mapMoveLeft: Nach links bewegen
+        mapMoveFaster: Schneller bewegen
         centerMap: Karte zentrieren
 
         mapZoomIn: Hineinzoomen
@@ -800,9 +809,12 @@ keybindings:
 
         menuOpenShop: Upgrades
         menuOpenStats: Statistiken
+        menuClose: Menü schließen
 
         toggleHud: HUD an/aus
         toggleFPSInfo: FPS und Debug-Info an/aus
+        switchLayers: Ebenen wechseln
+        exportScreenshot: Ganze Fabrik als Foto exportieren
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -814,32 +826,28 @@ keybindings:
         painter: *painter
         trash: *trash
 
+        pipette: Pipette
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
             Modifikator: stattdessen gegen den UZS rotieren
         cycleBuildingVariants: Variante wählen
         confirmMassDelete: Massenlöschung bestätigen
+        pasteLastBlueprint: Letzte Blaupause einfügen
         cycleBuildings: Gebäude rotieren
+        lockBeltDirection: Bandplaner aktivieren
+        switchDirectionLockSide: >-
+            Planer: Seite wechseln
 
         massSelectStart: Halten und ziehen zum Beginnen
         massSelectSelectMultiple: Mehrere Areale markieren
         massSelectCopy: Areal kopieren
+        massSelectCut: Areal ausschneiden
 
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Förderbandorientierung invertieren
-        pasteLastBlueprint: Letzte Blaupause einfügen
-        massSelectCut: Areal ausschneiden
-        exportScreenshot: Ganze Fabrik als Foto exportieren
-        mapMoveFaster: Schneller bewegen
-        lockBeltDirection: Bandplaner aktivieren
-        switchDirectionLockSide: "Planer: Seite wechseln"
-        pipette: Pipette
-        menuClose: Menü schließen
-        switchLayers: Ebenen wechseln
         advanced_processor: Farbnivertierer
         energy_generator: Energiegenerator
-        wire: Energiekabel
 
 about:
     title: Über dieses Spiel

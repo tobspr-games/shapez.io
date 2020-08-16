@@ -8,7 +8,6 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { enumItemType } from "../base_item";
 
 /** @enum {string} */
 export const enumRotaterVariants = { ccw: "ccw", fl: "fl" };
@@ -89,7 +88,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                 ],
             })

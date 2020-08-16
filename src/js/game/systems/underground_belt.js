@@ -13,7 +13,6 @@ import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { fastArrayDelete } from "../../core/utils";
-import { enumLayer } from "../root";
 
 const logger = createLogger("tunnels");
 
@@ -298,7 +297,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
         ) {
             currentTile = currentTile.add(searchVector);
 
-            const potentialReceiver = this.root.map.getTileContent(currentTile, enumLayer.regular);
+            const potentialReceiver = this.root.map.getTileContent(currentTile, "regular");
             if (!potentialReceiver) {
                 // Empty tile
                 continue;

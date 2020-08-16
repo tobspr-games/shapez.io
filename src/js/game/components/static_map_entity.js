@@ -162,8 +162,9 @@ export class StaticMapEntityComponent extends Component {
      * @returns {Vector}
      */
     localTileToWorld(localTile) {
-        const result = this.applyRotationToVector(localTile);
-        result.addInplace(this.origin);
+        const result = localTile.rotateFastMultipleOf90(this.rotation);
+        result.x += this.origin.x;
+        result.y += this.origin.y;
         return result;
     }
 
@@ -235,7 +236,7 @@ export class StaticMapEntityComponent extends Component {
      * @param {number=} extrudePixels How many pixels to extrude the sprite
      * @param {Vector=} overridePosition Whether to drwa the entity at a different location
      */
-    drawSpriteOnFullEntityBounds(parameters, sprite, extrudePixels = 0, overridePosition = null) {
+    drawSpriteOnBoundsClipped(parameters, sprite, extrudePixels = 0, overridePosition = null) {
         if (!this.shouldBeDrawn(parameters) && !overridePosition) {
             return;
         }
@@ -255,8 +256,7 @@ export class StaticMapEntityComponent extends Component {
                 worldX - extrudePixels * size.x,
                 worldY - extrudePixels * size.y,
                 globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
-                globalConfig.tileSize * size.y + 2 * extrudePixels * size.y,
-                false
+                globalConfig.tileSize * size.y + 2 * extrudePixels * size.y
             );
         } else {
             const rotationCenterX = worldX + globalConfig.halfTileSize;
@@ -264,16 +264,14 @@ export class StaticMapEntityComponent extends Component {
 
             parameters.context.translate(rotationCenterX, rotationCenterY);
             parameters.context.rotate(Math.radians(this.rotation));
-
             sprite.drawCached(
                 parameters,
                 -globalConfig.halfTileSize - extrudePixels * size.x,
                 -globalConfig.halfTileSize - extrudePixels * size.y,
                 globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
                 globalConfig.tileSize * size.y + 2 * extrudePixels * size.y,
-                false
+                false // no clipping possible here
             );
-
             parameters.context.rotate(-Math.radians(this.rotation));
             parameters.context.translate(-rotationCenterX, -rotationCenterY);
         }

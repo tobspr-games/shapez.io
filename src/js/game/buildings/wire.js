@@ -5,7 +5,7 @@ import { SOUNDS } from "../../platform/sound";
 import { enumWireType, WireComponent } from "../components/wire";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { enumLayer, GameRoot } from "../root";
+import { GameRoot } from "../root";
 
 export const arrayWireRotationVariantToType = [
     enumWireType.regular,
@@ -50,8 +50,9 @@ export class MetaWireBuilding extends MetaBuilding {
         return true;
     }
 
+    /** @returns {"wires"} **/
     getLayer() {
-        return enumLayer.wires;
+        return "wires";
     }
 
     getSprite() {

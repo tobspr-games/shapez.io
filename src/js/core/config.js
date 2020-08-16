@@ -53,6 +53,8 @@ export const globalConfig = {
     beltSpeedItemsPerSecond: 2,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
+    defaultItemDiameter: 20,
+
     itemSpacingOnBelts: 0.63,
 
     wiresSpeedItemsPerSecond: 6,

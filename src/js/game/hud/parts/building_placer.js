@@ -18,7 +18,7 @@ import { THEME } from "../../theme";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { HUDBuildingPlacerLogic } from "./building_placer_logic";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { enumLayer } from "../../root";
+import { layers } from "../../root";
 import { getCodeFromBuildingData } from "../../building_codes";
 
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
@@ -61,9 +61,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.currentInterpolatedCornerTile = new Vector();
 
         this.lockIndicatorSprites = {};
-        for (const layerId in enumLayer) {
-            this.lockIndicatorSprites[layerId] = this.makeLockIndicatorSprite(layerId);
-        }
+        layers.forEach(layer => {
+            this.lockIndicatorSprites[layer] = this.makeLockIndicatorSprite(layer);
+        });
 
         //
 
@@ -76,7 +76,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
     /**
      * Makes the lock indicator sprite for the given layer
-     * @param {enumLayer} layer
+     * @param {Layer} layer
      */
     makeLockIndicatorSprite(layer) {
         const dims = 48;
@@ -247,6 +247,31 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         } else {
             this.drawRegularPlacement(parameters);
         }
+
+        if (metaBuilding.getShowWiresLayerPreview()) {
+            this.drawLayerPeek(parameters);
+        }
+    }
+
+    /**
+     *
+     * @param {DrawParameters} parameters
+     */
+    drawLayerPeek(parameters) {
+        const mousePosition = this.root.app.mousePosition;
+        if (!mousePosition) {
+            // Not on screen
+            return;
+        }
+
+        const worldPosition = this.root.camera.screenToWorld(mousePosition);
+
+        // Draw peeker
+        this.root.hud.parts.layerPreview.renderPreview(
+            parameters,
+            worldPosition,
+            1 / this.root.camera.zoomLevel
+        );
     }
 
     /**
@@ -349,7 +374,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         // HACK to draw the entity sprite
         const previewSprite = metaBuilding.getBlueprintSprite(rotationVariant, this.currentVariant.get());
         staticComp.origin = worldPos.divideScalar(globalConfig.tileSize).subScalars(0.5, 0.5);
-        staticComp.drawSpriteOnFullEntityBounds(parameters, previewSprite);
+        staticComp.drawSpriteOnBoundsClipped(parameters, previewSprite);
         staticComp.origin = mouseTile;
 
         // Draw ejectors
