@@ -245,7 +245,7 @@ dialogs:
     keybindingsIntroduction:
         title: Nützliche Hotkeys
         desc: >-
-            Dieses Spiel hat viele Tastenkürzel, die den Bau von Fabriken vereinfachen und beschleunigen.
+            Dieses Spiel hat viele Hotkeys, die den Bau von Fabriken vereinfachen und beschleunigen.
             Hier sind ein paar, aber prüfe am besten die <strong>Tastenbelegung-Einstellungen</strong>!<br><br>
              <code class='keybinding'>STRG</code> + Ziehen: Wähle Areal aus.<br>
              <code class='keybinding'>UMSCH</code>: Halten, um mehrere Gebäude zu platzieren.<br>
@@ -542,7 +542,7 @@ buildings:
         toGenerateEnergy: für
         default:
             name: Stromgenerator
-            description: Erzeugt Strom, indem er Formen verbrennt.
+            description: Erzeugt Strom, indem er Formen verbraucht.
     wire_crossings:
         default:
             name: Kabelverteiler
