@@ -22,86 +22,11 @@ export class Rectangle {
     }
 
     /**
-     * Constructs a new square rectangle
-     * @param {number} x
-     * @param {number} y
-     * @param {number} size
-     */
-    static fromSquare(x, y, size) {
-        return new Rectangle(x, y, size, size);
-    }
-
-    /**
-     *
-     * @param {Vector} p1
-     * @param {Vector} p2
-     */
-    static fromTwoPoints(p1, p2) {
-        const left = Math.min(p1.x, p2.x);
-        const top = Math.min(p1.y, p2.y);
-        const right = Math.max(p1.x, p2.x);
-        const bottom = Math.max(p1.y, p2.y);
-        return new Rectangle(left, top, right - left, bottom - top);
-    }
-
-    /**
-     * Returns if a intersects b
-     * @param {Rectangle} a
-     * @param {Rectangle} b
-     */
-    static intersects(a, b) {
-        return a.left <= b.right && b.left <= a.right && a.top <= b.bottom && b.top <= a.bottom;
-    }
-
-    /**
-     * Returns a rectangle arround a rotated point
-     * @param {Array<Vector>} points
-     * @param {number} angle
-     * @returns {Rectangle}
-     */
-    static getAroundPointsRotated(points, angle) {
-        let minX = 1e10;
-        let minY = 1e10;
-        let maxX = -1e10;
-        let maxY = -1e10;
-        for (let i = 0; i < points.length; ++i) {
-            const rotated = points[i].rotated(angle);
-            minX = Math.min(minX, rotated.x);
-            minY = Math.min(minY, rotated.y);
-            maxX = Math.max(maxX, rotated.x);
-            maxY = Math.max(maxY, rotated.y);
-        }
-        return new Rectangle(minX, minY, maxX - minX, maxY - minY);
-    }
-
-    /**
      * Copies this instance
      * @returns {Rectangle}
      */
     clone() {
         return new Rectangle(this.x, this.y, this.w, this.h);
-    }
-
-    /**
-     * Ensures the rectangle contains the given square
-     * @param {number} centerX
-     * @param {number} centerY
-     * @param {number} halfWidth
-     * @param {number} halfHeight
-     */
-    extendBySquare(centerX, centerY, halfWidth, halfHeight) {
-        if (this.isEmpty()) {
-            // Just assign values since this rectangle is empty
-            this.x = centerX - halfWidth;
-            this.y = centerY - halfHeight;
-            this.w = halfWidth * 2;
-            this.h = halfHeight * 2;
-        } else {
-            this.setLeft(Math.min(this.x, centerX - halfWidth));
-            this.setRight(Math.max(this.right(), centerX + halfWidth));
-            this.setTop(Math.min(this.y, centerY - halfHeight));
-            this.setBottom(Math.max(this.bottom(), centerY + halfHeight));
-        }
     }
 
     /**
@@ -155,71 +80,11 @@ export class Rectangle {
     }
 
     /**
-     * Returns Top, Right, Bottom, Left
-     * @returns {[number, number, number, number]}
-     */
-    trbl() {
-        return [this.y, this.right(), this.bottom(), this.x];
-    }
-
-    /**
      * Returns the center of the rect
      * @returns {Vector}
      */
     getCenter() {
         return new Vector(this.x + this.w / 2, this.y + this.h / 2);
-    }
-
-    /**
-     * Sets the right side of the rect without moving it
-     * @param {number} right
-     */
-    setRight(right) {
-        this.w = right - this.x;
-    }
-
-    /**
-     * Sets the bottom side of the rect without moving it
-     * @param {number} bottom
-     */
-    setBottom(bottom) {
-        this.h = bottom - this.y;
-    }
-
-    /**
-     * Sets the top side of the rect without scaling it
-     * @param {number} top
-     */
-    setTop(top) {
-        const bottom = this.bottom();
-        this.y = top;
-        this.setBottom(bottom);
-    }
-
-    /**
-     * Sets the left side of the rect without scaling it
-     * @param {number} left
-     */
-    setLeft(left) {
-        const right = this.right();
-        this.x = left;
-        this.setRight(right);
-    }
-
-    /**
-     * Returns the top left point
-     * @returns {Vector}
-     */
-    topLeft() {
-        return new Vector(this.x, this.y);
-    }
-
-    /**
-     * Returns the bottom left point
-     * @returns {Vector}
-     */
-    bottomRight() {
-        return new Vector(this.right(), this.bottom());
     }
 
     /**
@@ -230,15 +95,6 @@ export class Rectangle {
     moveBy(x, y) {
         this.x += x;
         this.y += y;
-    }
-
-    /**
-     * Moves the rectangle by the given vector
-     * @param {Vector} vec
-     */
-    moveByVector(vec) {
-        this.x += vec.x;
-        this.y += vec.y;
     }
 
     /**
@@ -257,14 +113,6 @@ export class Rectangle {
      */
     expandedInAllDirections(amount) {
         return new Rectangle(this.x - amount, this.y - amount, this.w + 2 * amount, this.h + 2 * amount);
-    }
-
-    /**
-     * Helper for computing a culling area. Returns the top left tile
-     * @returns {Vector}
-     */
-    getMinStartTile() {
-        return new Vector(this.x, this.y).snapWorldToTile();
     }
 
     /**
