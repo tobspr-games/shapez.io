@@ -15,6 +15,7 @@ import { ConstantSignalComponent } from "./components/constant_signal";
 import { LogicGateComponent } from "./components/logic_gate";
 import { LeverComponent } from "./components/lever";
 import { WireTunnelComponent } from "./components/wire_tunnel";
+import { ProcessingRequirementComponent } from "./components/processing_requirement";
 
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
@@ -33,6 +34,7 @@ export function initComponentRegistry() {
     gComponentRegistry.register(LogicGateComponent);
     gComponentRegistry.register(LeverComponent);
     gComponentRegistry.register(WireTunnelComponent);
+    gComponentRegistry.register(ProcessingRequirementComponent);
 
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
 
@@ -41,7 +43,7 @@ export function initComponentRegistry() {
     assert(
         // @ts-ignore
         require.context("./components", false, /.*\.js/i).keys().length ===
-            gComponentRegistry.getNumEntries(),
+        gComponentRegistry.getNumEntries(),
         "Not all components are registered"
     );
 
