@@ -2,7 +2,7 @@ import trim from "trim";
 import { DialogWithForm } from "../../core/modal_dialog_elements";
 import { FormElementInput } from "../../core/modal_dialog_forms";
 import { BaseItem } from "../base_item";
-import { enumColors } from "../colors";
+import { isColor } from "../colors";
 import { ConstantSignalComponent } from "../components/constant_signal";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -109,7 +109,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         code = trim(code);
         const codeLower = code.toLowerCase();
 
-        if (enumColors[codeLower]) {
+        if (isColor(codeLower)) {
             return COLOR_ITEM_SINGLETONS[codeLower];
         }
         if (code === "1" || codeLower === "true") {

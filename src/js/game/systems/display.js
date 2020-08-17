@@ -1,7 +1,8 @@
 import { globalConfig } from "../../core/config";
+import { AtlasSprite, DrawParameters } from "../../core/draw_utils";
 import { Loader } from "../../core/loader";
 import { BaseItem } from "../base_item";
-import { enumColors } from "../colors";
+import { colors } from "../colors";
 import { DisplayComponent } from "../components/display";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
@@ -12,15 +13,12 @@ export class DisplaySystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [DisplayComponent]);
 
-        /** @type {Object<string, import("../../core/draw_utils").AtlasSprite>} */
-        this.displaySprites = {};
-
-        for (const colorId in enumColors) {
-            if (colorId === enumColors.uncolored) {
-                continue;
-            }
-            this.displaySprites[colorId] = Loader.getSprite("sprites/wires/display/" + colorId + ".png");
-        }
+        this.displaySprites = colors
+            .filter(color => !["black", "uncolored"].includes(color))
+            .reduce((sprites, color) => {
+                sprites[color] = Loader.getSprite(`sprites/wires/display/${color}.png`);
+                return sprites;
+            }, /** @type {Record<Exclude<Color, "black" | "uncolored">, AtlasSprite>} */ ({}));
     }
 
     /**
@@ -35,14 +33,12 @@ export class DisplaySystem extends GameSystemWithFilter {
 
         switch (value.getItemType()) {
             case "boolean": {
-                return /** @type {BooleanItem} */ (value).value
-                    ? COLOR_ITEM_SINGLETONS[enumColors.white]
-                    : null;
+                return /** @type {BooleanItem} */ (value).value ? COLOR_ITEM_SINGLETONS.white : null;
             }
 
             case "color": {
                 const item = /**@type {ColorItem} */ (value);
-                return item.color === enumColors.uncolored ? null : item;
+                return item.color === "uncolored" ? null : item;
             }
 
             case "shape": {
@@ -56,7 +52,7 @@ export class DisplaySystem extends GameSystemWithFilter {
 
     /**
      * Draws a given chunk
-     * @param {import("../../core/draw_utils").DrawParameters} parameters
+     * @param {DrawParameters} parameters
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {

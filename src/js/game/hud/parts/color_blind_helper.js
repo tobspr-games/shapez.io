@@ -1,7 +1,6 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
 import { TrackedState } from "../../../core/tracked_state";
-import { enumColors } from "../../colors";
 import { ColorItem } from "../../items/color_item";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { THEME } from "../../theme";
@@ -19,7 +18,7 @@ export class HUDColorBlindHelper extends BaseHUDPart {
 
     /**
      * Called when the color below the current tile changed
-     * @param {enumColors|null} color
+     * @param {Color|null} color
      */
     onColorBelowTileChanged(color) {
         this.belowTileIndicator.classList.toggle("visible", !!color);
@@ -30,7 +29,7 @@ export class HUDColorBlindHelper extends BaseHUDPart {
 
     /**
      * Computes the color below the current tile
-     * @returns {enumColors}
+     * @returns {Color}
      */
     computeColorBelowTile() {
         const mousePosition = this.root.app.mousePosition;

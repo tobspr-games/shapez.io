@@ -1,6 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
-import { enumColorMixingResults } from "../colors";
+import { colorMixingMap } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -241,12 +241,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 const color1 = item1.color;
                 const color2 = item2.color;
 
-                // Try finding mixer color, and if we can't mix it we simply return the same color
-                const mixedColor = enumColorMixingResults[color1][color2];
-                let resultColor = color1;
-                if (mixedColor) {
-                    resultColor = mixedColor;
-                }
+                const resultColor = colorMixingMap[color1][color2];
+
                 outItems.push({
                     item: COLOR_ITEM_SINGLETONS[resultColor],
                 });

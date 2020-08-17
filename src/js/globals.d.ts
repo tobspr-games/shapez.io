@@ -203,3 +203,25 @@ declare module "worker-loader?inline=true&fallback=false!*" {
 
     export default WebpackWorker;
 }
+
+declare type Color =
+    | "red"
+    | "green"
+    | "blue"
+    | "yellow"
+    | "purple"
+    | "cyan"
+    | "white"
+    | "uncolored"
+    | "black";
+
+declare type HexColor =
+    | "#ff666a"
+    | "#78ff66"
+    | "#66a7ff"
+    | "#fcf52a"
+    | "#dd66ff"
+    | "#00fcff"
+    | "#ffffff"
+    | "#aaaaaa"
+    | "#31383a";
