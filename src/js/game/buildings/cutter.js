@@ -3,7 +3,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
@@ -39,9 +39,7 @@ export class MetaCutterBuilding extends MetaBuilding {
      */
     getAdditionalStatistics(root, variant) {
         const speed = root.hubGoals.getProcessorBaseSpeed(
-            variant === enumCutterVariants.quad
-                ? enumItemProcessorTypes.cutterQuad
-                : enumItemProcessorTypes.cutter
+            variant === enumCutterVariants.quad ? "cutterQuad" : "cutter"
         );
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
@@ -71,7 +69,7 @@ export class MetaCutterBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemProcessorComponent({
                 inputsPerCharge: 1,
-                processorType: enumItemProcessorTypes.cutter,
+                processorType: "cutter",
             })
         );
         entity.addComponent(new ItemEjectorComponent({}));
@@ -101,7 +99,7 @@ export class MetaCutterBuilding extends MetaBuilding {
                     { pos: new Vector(0, 0), direction: enumDirection.top },
                     { pos: new Vector(1, 0), direction: enumDirection.top },
                 ]);
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.cutter;
+                entity.components.ItemProcessor.type = "cutter";
                 break;
             }
             case enumCutterVariants.quad: {
@@ -111,7 +109,7 @@ export class MetaCutterBuilding extends MetaBuilding {
                     { pos: new Vector(2, 0), direction: enumDirection.top },
                     { pos: new Vector(3, 0), direction: enumDirection.top },
                 ]);
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.cutterQuad;
+                entity.components.ItemProcessor.type = "cutterQuad";
                 break;
             }
 

@@ -3,7 +3,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
@@ -29,15 +29,15 @@ export class MetaRotaterBuilding extends MetaBuilding {
     getAdditionalStatistics(root, variant) {
         switch (variant) {
             case defaultBuildingVariant: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater);
+                const speed = root.hubGoals.getProcessorBaseSpeed("rotater");
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
             case enumRotaterVariants.ccw: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW);
+                const speed = root.hubGoals.getProcessorBaseSpeed("rotaterCCW");
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
             case enumRotaterVariants.fl: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterFL);
+                const speed = root.hubGoals.getProcessorBaseSpeed("rotaterFL");
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
         }
@@ -73,7 +73,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemProcessorComponent({
                 inputsPerCharge: 1,
-                processorType: enumItemProcessorTypes.rotater,
+                processorType: "rotater",
             })
         );
 
@@ -104,15 +104,15 @@ export class MetaRotaterBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         switch (variant) {
             case defaultBuildingVariant: {
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater;
+                entity.components.ItemProcessor.type = "rotater";
                 break;
             }
             case enumRotaterVariants.ccw: {
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
+                entity.components.ItemProcessor.type = "rotaterCCW";
                 break;
             }
             case enumRotaterVariants.fl: {
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterFL;
+                entity.components.ItemProcessor.type = "rotaterFL";
                 break;
             }
             default:

@@ -3,24 +3,24 @@ import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { typeItemSingleton } from "../item_resolver";
 
-/** @enum {string} */
-export const enumItemProcessorTypes = {
-    splitter: "splitter",
-    splitterWires: "splitterWires",
-    cutter: "cutter",
-    cutterQuad: "cutterQuad",
-    rotater: "rotater",
-    rotaterCCW: "rotaterCCW",
-    rotaterFL: "rotaterFL",
-    stacker: "stacker",
-    trash: "trash",
-    mixer: "mixer",
-    painter: "painter",
-    painterDouble: "painterDouble",
-    painterQuad: "painterQuad",
-    hub: "hub",
-    filter: "filter",
-};
+/** @enum {ItemProcessorType[]} */
+export const itemProcessorTypes = [
+    "splitter",
+    "splitterWires",
+    "cutter",
+    "cutterQuad",
+    "rotater",
+    "rotaterCCW",
+    "rotaterFL",
+    "stacker",
+    "trash",
+    "mixer",
+    "painter",
+    "painterDouble",
+    "painterQuad",
+    "hub",
+    "filter",
+];
 
 export class ItemProcessorComponent extends Component {
     static getId() {
@@ -47,21 +47,14 @@ export class ItemProcessorComponent extends Component {
         };
     }
 
-    duplicateWithoutContents() {
-        return new ItemProcessorComponent({
-            processorType: this.type,
-            inputsPerCharge: this.inputsPerCharge,
-        });
-    }
-
     /**
      *
      * @param {object} param0
-     * @param {enumItemProcessorTypes=} param0.processorType Which type of processor this is
-     * @param {number=} param0.inputsPerCharge How many items this machine needs until it can start working
+     * @param {ItemProcessorType} param0.processorType Which type of processor this is
+     * @param {number} param0.inputsPerCharge How many items this machine needs until it can start working
      *
      */
-    constructor({ processorType = enumItemProcessorTypes.splitter, inputsPerCharge = 1 }) {
+    constructor({ processorType, inputsPerCharge }) {
         super();
 
         // Which slot to emit next, this is only a preference and if it can't emit
@@ -95,13 +88,20 @@ export class ItemProcessorComponent extends Component {
         this.secondsUntilEject = 0;
     }
 
+    duplicateWithoutContents() {
+        return new ItemProcessorComponent({
+            processorType: this.type,
+            inputsPerCharge: this.inputsPerCharge,
+        });
+    }
+
     /**
      * Tries to take the item
      * @param {BaseItem} item
      * @param {number} sourceSlot
      */
     tryTakeItem(item, sourceSlot) {
-        if (this.type === enumItemProcessorTypes.hub || this.type === enumItemProcessorTypes.trash) {
+        if (["hub", "trash"].includes(this.type)) {
             // Hub has special logic .. not really nice but efficient.
             this.inputSlots.push({ item, sourceSlot });
             return true;

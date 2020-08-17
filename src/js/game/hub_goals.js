@@ -2,7 +2,6 @@ import { globalConfig } from "../core/config";
 import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/utils";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
-import { enumItemProcessorTypes } from "./components/item_processor";
 import { GameRoot } from "./root";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
@@ -391,55 +390,52 @@ export class HubGoals extends BasicSerializableObject {
 
     /**
      * Processor speed
-     * @param {enumItemProcessorTypes} processorType
+     * @param {ItemProcessorType} itemProcessorType
      * @returns {number} items / sec
      */
-    getProcessorBaseSpeed(processorType) {
-        switch (processorType) {
-            case enumItemProcessorTypes.splitterWires:
+    getProcessorBaseSpeed(itemProcessorType) {
+        switch (itemProcessorType) {
+            case "splitterWires":
                 return globalConfig.wiresSpeedItemsPerSecond * 2;
-
-            case enumItemProcessorTypes.trash:
-            case enumItemProcessorTypes.hub:
+            case "trash":
+            case "hub":
                 return 1e30;
-            case enumItemProcessorTypes.splitter:
+            case "splitter":
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
-            case enumItemProcessorTypes.filter:
+            case "filter":
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
-
-            case enumItemProcessorTypes.mixer:
-            case enumItemProcessorTypes.painter:
-            case enumItemProcessorTypes.painterDouble:
-            case enumItemProcessorTypes.painterQuad: {
+            case "mixer":
+            case "painter":
+            case "painterDouble":
+            case "painterQuad": {
                 assert(
-                    globalConfig.buildingSpeeds[processorType],
-                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
+                    globalConfig.buildingSpeeds.hasOwnProperty(itemProcessorType),
+                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + itemProcessorType
                 );
                 return (
                     globalConfig.beltSpeedItemsPerSecond *
                     this.upgradeImprovements.painting *
-                    globalConfig.buildingSpeeds[processorType]
+                    globalConfig.buildingSpeeds[itemProcessorType]
                 );
             }
-
-            case enumItemProcessorTypes.cutter:
-            case enumItemProcessorTypes.cutterQuad:
-            case enumItemProcessorTypes.rotater:
-            case enumItemProcessorTypes.rotaterCCW:
-            case enumItemProcessorTypes.rotaterFL:
-            case enumItemProcessorTypes.stacker: {
+            case "cutter":
+            case "cutterQuad":
+            case "rotater":
+            case "rotaterCCW":
+            case "rotaterFL":
+            case "stacker": {
                 assert(
-                    globalConfig.buildingSpeeds[processorType],
-                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
+                    globalConfig.buildingSpeeds.hasOwnProperty(itemProcessorType),
+                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + itemProcessorType
                 );
                 return (
                     globalConfig.beltSpeedItemsPerSecond *
                     this.upgradeImprovements.processors *
-                    globalConfig.buildingSpeeds[processorType]
+                    globalConfig.buildingSpeeds[itemProcessorType]
                 );
             }
             default:
-                assertAlways(false, "invalid processor type: " + processorType);
+                assertAlways(false, "invalid processor type: " + itemProcessorType);
         }
 
         return 1 / globalConfig.beltSpeedItemsPerSecond;

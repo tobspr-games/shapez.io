@@ -1,7 +1,7 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { HubComponent } from "../components/hub";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
@@ -45,7 +45,7 @@ export class MetaHubBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemProcessorComponent({
                 inputsPerCharge: 1,
-                processorType: enumItemProcessorTypes.hub,
+                processorType: "hub",
             })
         );
 

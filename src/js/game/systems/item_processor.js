@@ -1,7 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { enumColorMixingResults } from "../colors";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BOOL_TRUE_SINGLETON } from "../items/boolean_item";
@@ -107,8 +107,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         switch (processorComp.type) {
             // SPLITTER
-            case enumItemProcessorTypes.splitterWires:
-            case enumItemProcessorTypes.splitter: {
+            case "splitterWires":
+            case "splitter": {
                 trackProduction = false;
                 const availableSlots = entity.components.ItemEjector.slots.length;
 
@@ -123,7 +123,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
 
             // CUTTER
-            case enumItemProcessorTypes.cutter: {
+            case "cutter": {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);
                 assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
                 const inputDefinition = inputItem.definition;
@@ -144,7 +144,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
 
             // CUTTER (Quad)
-            case enumItemProcessorTypes.cutterQuad: {
+            case "cutterQuad": {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);
                 assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
                 const inputDefinition = inputItem.definition;
@@ -165,7 +165,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
 
             // ROTATER
-            case enumItemProcessorTypes.rotater: {
+            case "rotater": {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);
                 assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
                 const inputDefinition = inputItem.definition;
@@ -178,7 +178,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
 
             // ROTATER (CCW)
-            case enumItemProcessorTypes.rotaterCCW: {
+            case "rotaterCCW": {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);
                 assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
                 const inputDefinition = inputItem.definition;
@@ -191,7 +191,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
 
             // ROTATER (FL)
-            case enumItemProcessorTypes.rotaterFL: {
+            case "rotaterFL": {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);
                 assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
                 const inputDefinition = inputItem.definition;
@@ -205,7 +205,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // STACKER
 
-            case enumItemProcessorTypes.stacker: {
+            case "stacker": {
                 const lowerItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
                 const upperItem = /** @type {ShapeItem} */ (itemsBySlot[1].item);
 
@@ -224,14 +224,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // TRASH
 
-            case enumItemProcessorTypes.trash: {
+            case "trash": {
                 // Well this one is easy .. simply do nothing with the item
                 break;
             }
 
             // MIXER
 
-            case enumItemProcessorTypes.mixer: {
+            case "mixer": {
                 // Find both colors and combine them
                 const item1 = /** @type {ColorItem} */ (items[0].item);
                 const item2 = /** @type {ColorItem} */ (items[1].item);
@@ -256,7 +256,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // PAINTER
 
-            case enumItemProcessorTypes.painter: {
+            case "painter": {
                 const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
                 const colorItem = /** @type {ColorItem} */ (itemsBySlot[1].item);
 
@@ -274,7 +274,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // PAINTER (DOUBLE)
 
-            case enumItemProcessorTypes.painterDouble: {
+            case "painterDouble": {
                 const shapeItem1 = /** @type {ShapeItem} */ (itemsBySlot[0].item);
                 const shapeItem2 = /** @type {ShapeItem} */ (itemsBySlot[1].item);
                 const colorItem = /** @type {ColorItem} */ (itemsBySlot[2].item);
@@ -305,7 +305,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // PAINTER (QUAD)
 
-            case enumItemProcessorTypes.painterQuad: {
+            case "painterQuad": {
                 const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
                 const colorItem1 = /** @type {ColorItem} */ (itemsBySlot[1].item);
                 const colorItem2 = /** @type {ColorItem} */ (itemsBySlot[2].item);
@@ -331,7 +331,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
 
             // FILTER
-            case enumItemProcessorTypes.filter: {
+            case "filter": {
                 // TODO
                 trackProduction = false;
 
@@ -364,7 +364,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // HUB
 
-            case enumItemProcessorTypes.hub: {
+            case "hub": {
                 trackProduction = false;
 
                 const hubComponent = entity.components.Hub;

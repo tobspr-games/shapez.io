@@ -3,7 +3,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
@@ -44,15 +44,15 @@ export class MetaPainterBuilding extends MetaBuilding {
         switch (variant) {
             case defaultBuildingVariant:
             case enumPainterVariants.mirrored: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter);
+                const speed = root.hubGoals.getProcessorBaseSpeed("painter");
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
             case enumPainterVariants.double: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterDouble);
+                const speed = root.hubGoals.getProcessorBaseSpeed("painterDouble");
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed, true)]];
             }
             case enumPainterVariants.quad: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterQuad);
+                const speed = root.hubGoals.getProcessorBaseSpeed("painterQuad");
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
         }
@@ -84,7 +84,12 @@ export class MetaPainterBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        entity.addComponent(new ItemProcessorComponent({}));
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: "splitter",
+            })
+        );
 
         entity.addComponent(
             new ItemEjectorComponent({
@@ -134,7 +139,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                     },
                 ]);
 
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.painter;
+                entity.components.ItemProcessor.type = "painter";
                 entity.components.ItemProcessor.inputsPerCharge = 2;
                 entity.components.ItemEjector.setSlots([
                     { pos: new Vector(1, 0), direction: enumDirection.right },
@@ -160,7 +165,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                     },
                 ]);
 
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.painterDouble;
+                entity.components.ItemProcessor.type = "painterDouble";
                 entity.components.ItemProcessor.inputsPerCharge = 3;
 
                 entity.components.ItemEjector.setSlots([
@@ -197,7 +202,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                     },
                 ]);
 
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.painterQuad;
+                entity.components.ItemProcessor.type = "painterQuad";
                 entity.components.ItemProcessor.inputsPerCharge = 5;
 
                 entity.components.ItemEjector.setSlots([

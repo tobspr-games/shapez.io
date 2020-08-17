@@ -3,7 +3,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { ItemProcessorComponent } from "../components/item_processor";
 import { StorageComponent } from "../components/storage";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
@@ -111,7 +111,7 @@ export class MetaTrashBuilding extends MetaBuilding {
                     entity.addComponent(
                         new ItemProcessorComponent({
                             inputsPerCharge: 1,
-                            processorType: enumItemProcessorTypes.trash,
+                            processorType: "trash",
                         })
                     );
                 }
@@ -134,7 +134,7 @@ export class MetaTrashBuilding extends MetaBuilding {
                     },
                 ]);
                 entity.components.ItemEjector.setSlots([]);
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.trash;
+                entity.components.ItemProcessor.type = "trash";
                 break;
             }
             case enumTrashVariants.storage: {

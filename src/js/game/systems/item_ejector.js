@@ -7,7 +7,6 @@ import { BaseItem } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumItemProcessorTypes } from "../components/item_processor";
 import { MapChunkView } from "../map_chunk_view";
 
 const logger = createLogger("systems/ejector");
@@ -287,7 +286,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         if (itemProcessorComp) {
             // @todo HACK
             // Check if there are pins, and if so if they are connected
-            if (itemProcessorComp.type === enumItemProcessorTypes.filter) {
+            if (itemProcessorComp.type === "filter") {
                 const pinsComp = receiver.components.WiredPins;
                 if (pinsComp && pinsComp.slots.length === 1) {
                     const network = pinsComp.slots[0].linkedNetwork;

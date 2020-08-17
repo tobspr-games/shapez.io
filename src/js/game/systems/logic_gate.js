@@ -3,7 +3,6 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BaseItem } from "../base_item";
 import { enumPinSlotType } from "../components/wired_pins";
 import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON, BooleanItem } from "../items/boolean_item";
-import { enumItemProcessorTypes } from "../components/item_processor";
 
 export class LogicGateSystem extends GameSystemWithFilter {
     constructor(root) {

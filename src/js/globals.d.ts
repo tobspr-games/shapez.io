@@ -193,8 +193,24 @@ declare interface TypedSignal<T extends Array<any>> {
     removeAll();
 }
 
-declare type Layer = "regular" | "wires";
+declare type ItemProcessorType =
+    | "splitter"
+    | "splitterWires"
+    | "cutter"
+    | "cutterQuad"
+    | "rotater"
+    | "rotaterCCW"
+    | "rotaterFL"
+    | "stacker"
+    | "trash"
+    | "mixer"
+    | "painter"
+    | "painterDouble"
+    | "painterQuad"
+    | "hub"
+    | "filter";
 declare type ItemType = "shape" | "color" | "boolean";
+declare type Layer = "regular" | "wires";
 
 declare module "worker-loader?inline=true&fallback=false!*" {
     class WebpackWorker extends Worker {
