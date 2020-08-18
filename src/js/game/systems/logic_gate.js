@@ -226,6 +226,10 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
         const definition = /** @type {ShapeItem} */ (item).definition;
         const lowerLayer = /** @type {import("../shape_definition").ShapeLayer} */ (definition.layers[0]);
+        if (!lowerLayer) {
+            return [null, null];
+        }
+
         const topRightContent = lowerLayer[0];
 
         if (!topRightContent || topRightContent.subShape === null) {
@@ -263,8 +267,12 @@ export class LogicGateSystem extends GameSystemWithFilter {
         const definition = /** @type {ShapeItem} */ (item).definition;
         const result = this.root.shapeDefinitionMgr.shapeActionCutHalf(definition);
         return [
-            this.root.shapeDefinitionMgr.getShapeItemFromDefinition(result[0]),
-            this.root.shapeDefinitionMgr.getShapeItemFromDefinition(result[1]),
+            result[0].isEntirelyEmpty()
+                ? null
+                : this.root.shapeDefinitionMgr.getShapeItemFromDefinition(result[0]),
+            result[1].isEntirelyEmpty()
+                ? null
+                : this.root.shapeDefinitionMgr.getShapeItemFromDefinition(result[1]),
         ];
     }
 
