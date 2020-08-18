@@ -312,7 +312,6 @@ ingame:
         black: Schwarz
         uncolored: Farblos
 
-
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
@@ -423,7 +422,6 @@ ingame:
 
             1_3_expand: >-
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
-
 
 # All shop upgrades
 shopUpgrades:
@@ -563,7 +561,6 @@ buildings:
         merger:
             name: Kabelverbinder
             description: Verbindet zwei Energiekabel zu einem.
-
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -837,7 +834,6 @@ keybindings:
             Modifikator: stattdessen gegen den UZS rotieren
         cycleBuildingVariants: Variante wählen
         confirmMassDelete: Massenlöschung bestätigen
-        pasteLastBlueprint: Letzte Blaupause einfügen
         cycleBuildings: Gebäude rotieren
         lockBeltDirection: Bandplaner aktivieren
         switchDirectionLockSide: >-
@@ -852,14 +848,6 @@ keybindings:
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Förderbandorientierung invertieren
         pasteLastBlueprint: Letzte Blaupause einfügen
-        massSelectCut: Areal ausschneiden
-        exportScreenshot: Ganze Fabrik als Foto exportieren
-        mapMoveFaster: Schneller bewegen
-        lockBeltDirection: Bandplaner aktivieren
-        switchDirectionLockSide: "Planer: Seite wechseln"
-        pipette: Pipette
-        menuClose: Close Menu
-        switchLayers: Switch layers
         advanced_processor: Farbinvertierer
         energy_generator: Energiegenerator
         wire: Energiekabel

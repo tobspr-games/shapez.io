@@ -85,7 +85,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             return errorCode;
         }
         const definition = ShapeDefinition.fromShortKey(data);
-        this.layers = definition.layers;
+        this.layers = /** @type {Array<ShapeLayer>} */ (definition.layers);
     }
 
     serialize() {
@@ -102,7 +102,8 @@ export class ShapeDefinition extends BasicSerializableObject {
 
         /**
          * The layers from bottom to top
-         * @type {Array<ShapeLayer>} */
+         * @type {Array<ShapeLayer>}
+         */
         this.layers = layers;
 
         /** @type {string} */
