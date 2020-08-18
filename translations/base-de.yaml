@@ -696,7 +696,7 @@ settings:
         refreshRate:
             title: Tickrate
             description: >-
-                Das Spiel passt die Tickrate automatisch so an, dass sie immer zwischen diesem Wert und der hälfte bleibt. Zum Beispiel bei einer Tickrate von 60 Hz, versucht das Spiel, diese zu halten. Falls dies zu viel ist, regelt der Computer diese runter bis zu einer Untergrenze von 30Hz.
+                Das Spiel passt die Tickrate automatisch so an, dass sie immer zwischen diesem Wert und der hälfte bleibt. Zum Beispiel bei einer Tickrate von 60 Hz versucht das Spiel, diese zu halten. Falls dies zu viel ist, regelt der Computer diese runter bis zu einer Untergrenze von 30Hz.
 
         alwaysMultiplace:
             title: Mehrfachplatzierung
