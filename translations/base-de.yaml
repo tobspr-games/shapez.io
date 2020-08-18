@@ -44,6 +44,7 @@ steamPage:
 
         Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
 
+
         Wenn du das Spiel erwirbst, erhälst du Zugriff auf die zusätzlichen Features der Standalone-Version. Das bedeutet, du kannst unter anderem die neuesten Updates zuerst spielen!
 
         [b]Vorteile der Standalone[/b]
@@ -296,6 +297,7 @@ ingame:
         copySelection: Kopieren
         clearSelection: Auswahl aufheben
         pipette: Pipette
+
         switchLayers: Ebenen wechseln
 
     # Names of the colors, used for the color blind mode
@@ -309,6 +311,7 @@ ingame:
         white: Weiß
         black: Schwarz
         uncolored: Farblos
+
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -420,6 +423,7 @@ ingame:
 
             1_3_expand: >-
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
+
 
 # All shop upgrades
 shopUpgrades:
@@ -559,6 +563,7 @@ buildings:
         merger:
             name: Kabelverbinder
             description: Verbindet zwei Energiekabel zu einem.
+
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -846,8 +851,18 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Förderbandorientierung invertieren
-        advanced_processor: Farbnivertierer
+        pasteLastBlueprint: Letzte Blaupause einfügen
+        massSelectCut: Areal ausschneiden
+        exportScreenshot: Ganze Fabrik als Foto exportieren
+        mapMoveFaster: Schneller bewegen
+        lockBeltDirection: Bandplaner aktivieren
+        switchDirectionLockSide: "Planer: Seite wechseln"
+        pipette: Pipette
+        menuClose: Close Menu
+        switchLayers: Switch layers
+        advanced_processor: Farbinvertierer
         energy_generator: Energiegenerator
+        wire: Energiekabel
 
 about:
     title: Über dieses Spiel
