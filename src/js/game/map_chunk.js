@@ -8,7 +8,7 @@ import { enumColors } from "./colors";
 import { Entity } from "./entity";
 import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
 import { GameRoot } from "./root";
-import { enumSubShape } from "./shape_definition";
+import { subShapes } from "./shape_definition";
 import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("map_chunk");
@@ -179,31 +179,30 @@ export class MapChunk {
      * @param {number} distanceToOriginInChunks
      */
     internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks) {
-        /** @type {[enumSubShape, enumSubShape, enumSubShape, enumSubShape]} */
+        /** @type {[SubShape, SubShape, SubShape, SubShape]} */
         let subShapes = null;
 
-        let weights = {};
-
         // Later there is a mix of everything
-        weights = {
-            [enumSubShape.rect]: 100,
-            [enumSubShape.circle]: Math.round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
-            [enumSubShape.star]: Math.round(20 + clamp(distanceToOriginInChunks, 0, 30)),
-            [enumSubShape.windmill]: Math.round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
+        /** @type {Record<SubShape, number>} **/
+        const weights = {
+            rect: 100,
+            circle: Math.round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
+            star: Math.round(20 + clamp(distanceToOriginInChunks, 0, 30)),
+            windmill: Math.round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
         };
 
         if (distanceToOriginInChunks < 7) {
             // Initial chunks can not spawn the good stuff
-            weights[enumSubShape.star] = 0;
-            weights[enumSubShape.windmill] = 0;
+            weights.star = 0;
+            weights.windmill = 0;
         }
 
         if (distanceToOriginInChunks < 10) {
-            // Initial chunk patches always have the same shape
+            // Initial chunk patches always have the same subshape
             const subShape = this.internalGenerateRandomSubShape(rng, weights);
             subShapes = [subShape, subShape, subShape, subShape];
         } else if (distanceToOriginInChunks < 15) {
-            // Later patches can also have mixed ones
+            // Later patches can have mixed halves
             const subShapeA = this.internalGenerateRandomSubShape(rng, weights);
             const subShapeB = this.internalGenerateRandomSubShape(rng, weights);
             subShapes = [subShapeA, subShapeA, subShapeB, subShapeB];
@@ -218,15 +217,13 @@ export class MapChunk {
         }
 
         // Makes sure windmills never spawn as whole
-        let windmillCount = 0;
-        for (let i = 0; i < subShapes.length; ++i) {
-            if (subShapes[i] === enumSubShape.windmill) {
-                ++windmillCount;
-            }
-        }
+        const windmillCount = subShapes.reduce((sum, subShape) => {
+            return sum + Number(subShape === "windmill");
+        }, 0);
+
         if (windmillCount > 1) {
-            subShapes[0] = enumSubShape.rect;
-            subShapes[1] = enumSubShape.rect;
+            subShapes[0] = "rect";
+            subShapes[1] = "rect";
         }
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
@@ -240,25 +237,26 @@ export class MapChunk {
     /**
      * Chooses a random shape with the given weights
      * @param {RandomNumberGenerator} rng
-     * @param {Object.<enumSubShape, number>} weights
-     * @returns {enumSubShape}
+     * @param {Record<SubShape, number>} weights
+     * @returns {SubShape}
      */
     internalGenerateRandomSubShape(rng, weights) {
-        // @ts-ignore
         const sum = Object.values(weights).reduce((a, b) => a + b, 0);
 
         const chosenNumber = rng.nextIntRange(0, sum - 1);
+
         let accumulated = 0;
-        for (const key in weights) {
-            const weight = weights[key];
+        for (let i = 0; i < subShapes.length; i += 1) {
+            const shape = subShapes[i];
+            const weight = weights[shape];
             if (accumulated + weight > chosenNumber) {
-                return key;
+                return shape;
             }
             accumulated += weight;
         }
 
         logger.error("Failed to find matching shape in chunk generation");
-        return enumSubShape.circle;
+        return "circle";
     }
 
     /**

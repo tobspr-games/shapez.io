@@ -195,6 +195,7 @@ declare interface TypedSignal<T extends Array<any>> {
 
 declare type Layer = "regular" | "wires";
 declare type ItemType = "shape" | "color" | "boolean";
+declare type SubShape = "rect" | "circle" | "star" | "windmill";
 
 declare module "worker-loader?inline=true&fallback=false!*" {
     class WebpackWorker extends Worker {

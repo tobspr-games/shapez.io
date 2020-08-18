@@ -2,7 +2,7 @@ import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv, removeAllChildren } from "../../../core/utils";
 import { T } from "../../../translations";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
-import { ShapeDefinition } from "../../shape_definition";
+import { ShapeDefinition, ShapeLayer } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
@@ -82,12 +82,13 @@ export class HUDShapeViewer extends BaseHUDPart {
         this.currentShapeKey = definition.getHash();
 
         const layers = definition.layers;
-        this.contentDiv.setAttribute("data-layers", layers.length);
+        this.contentDiv.setAttribute("data-layers", `${layers.length}`);
 
         for (let i = 0; i < layers.length; ++i) {
             const layerElem = makeDiv(this.renderArea, null, ["layer", "layer-" + i]);
 
-            let fakeLayers = [];
+            /** @type {Array<ShapeLayer>} **/
+            const fakeLayers = [];
             for (let k = 0; k < i; ++k) {
                 fakeLayers.push([null, null, null, null]);
             }

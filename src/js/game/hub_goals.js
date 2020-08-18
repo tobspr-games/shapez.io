@@ -4,7 +4,7 @@ import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
 import { GameRoot } from "./root";
-import { enumSubShape, ShapeDefinition } from "./shape_definition";
+import { ShapeDefinition, subShapes } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
 import { UPGRADES } from "./upgrades";
 
@@ -328,7 +328,7 @@ export class HubGoals extends BasicSerializableObject {
         let layers = [];
 
         const randomColor = () => randomChoice(Object.values(enumColors));
-        const randomShape = () => randomChoice(Object.values(enumSubShape));
+        const randomShape = () => randomChoice(Object.values(subShapes));
 
         let anyIsMissingTwo = false;
 

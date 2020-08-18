@@ -3,9 +3,7 @@ import { BasicSerializableObject } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { ShapeItem } from "./items/shape_item";
 import { GameRoot } from "./root";
-import { enumSubShape, ShapeDefinition } from "./shape_definition";
-
-const logger = createLogger("shape_definition_manager");
+import { ShapeDefinition, ShapeLayer } from "./shape_definition";
 
 export class ShapeDefinitionManager extends BasicSerializableObject {
     static getId() {
@@ -246,14 +244,11 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
 
     /**
      *
-     * @param {[enumSubShape, enumSubShape, enumSubShape, enumSubShape]} subShapes
+     * @param {[SubShape, SubShape, SubShape, SubShape]} subShapes
      * @returns {ShapeDefinition}
      */
     getDefinitionFromSimpleShapes(subShapes, color = enumColors.uncolored) {
-        const shapeLayer = /** @type {import("./shape_definition").ShapeLayer} */ (subShapes.map(
-            subShape => ({ subShape, color })
-        ));
-
+        const shapeLayer = /** @type {ShapeLayer} */ (subShapes.map(subShape => ({ subShape, color })));
         return this.registerOrReturnHandle(new ShapeDefinition({ layers: [shapeLayer] }));
     }
 }
