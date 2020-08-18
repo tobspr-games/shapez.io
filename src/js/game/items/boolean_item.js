@@ -6,6 +6,12 @@ import { globalConfig } from "../../core/config";
 
 /** @typedef {0 | 1} Bit **/
 
+/** @type {Record<Bit, string>} **/
+const bitSpriteMap = {
+    0: "sprites/wires/boolean_false.png",
+    1: "sprites/wires/boolean_true.png",
+};
+
 export class BooleanItem extends BaseItem {
     static getId() {
         return "boolean_item";
@@ -50,8 +56,7 @@ export class BooleanItem extends BaseItem {
      * @param {DrawParameters} parameters
      */
     drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
-        const value = Boolean(this.value).toString();
-        const sprite = Loader.getSprite(`sprites/wires/boolean_${value}.png`);
+        const sprite = Loader.getSprite(bitSpriteMap[this.value]);
         sprite.drawCachedCentered(parameters, x, y, diameter);
     }
 }
