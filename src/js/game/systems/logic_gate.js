@@ -18,7 +18,8 @@ export class LogicGateSystem extends GameSystemWithFilter {
     }
 
     update() {
-        this.allEntities.forEach(entity => {
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
             const logicComp = entity.components.LogicGate;
             const slotComp = entity.components.WiredPins;
 
@@ -46,7 +47,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
             assert(slotComp.slots[0].type === enumPinSlotType.logicalEjector, "Slot 0 should be ejector");
 
             slotComp.slots[0].value = result;
-        });
+        }
     }
 
     /**
