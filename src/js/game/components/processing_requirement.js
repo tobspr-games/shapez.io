@@ -66,10 +66,9 @@ export class ProcessingRequirementComponent extends Component {
                     if ((netValue == null || !netValue.equals(BOOL_TRUE_SINGLETON)) && currentItem == null) {
                         let quadCount = 0;
 
-                        const quadNumber = (i + 3) % 4
                         for (let j = 0; j < 4; ++j) {
                             const layer = shapeItem.definition.layers[j];
-                            if (layer && layer[quadNumber]) {
+                            if (layer && layer[i]) {
                                 quadCount++;
                             }
                         }

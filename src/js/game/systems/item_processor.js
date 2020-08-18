@@ -1,6 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
-import { enumColorMixingResults } from "../colors";
+import { enumColors, enumColorMixingResults } from "../colors";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -320,7 +320,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 /** @type {Array<ColorItem>} */
                 const colorItems = [].fill(null, 0, 4);
 
-                for (let i = 0; i < colorItems.length; ++i) {
+                for (let i = 0; i < 4; ++i) {
                     if (itemsBySlot[i + 1]) {
                         colorItems[i] = /** @type {ColorItem} */ (itemsBySlot[i + 1].item);
                         assert(colorItems[i] instanceof ColorItem, "Input for painter is not a color");
@@ -338,7 +338,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 /** @type {Array<boolean>} */
                 let skipped = [];
-                for (let i = 0; i < pinValues.length; ++i) {
+                for (let i = 0; i < 4; ++i) {
                     skipped[i] = pinValues[i] ? pinValues[i].equals(BOOL_TRUE_SINGLETON) : false;
                 }
 
@@ -355,25 +355,18 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     }
                 }
 
+                const toColor = [
+                    (!skipped[0] && colorTL) ? colorTL.color : null,
+                    (!skipped[1] && colorTR) ? colorTR.color : null,
+                    (!skipped[2] && colorBR) ? colorBR.color : null,
+                    (!skipped[3] && colorBL) ? colorBL.color : null,
+                ];
+                console.table([colorTL, skipped[0], colorTR, skipped[1]]);
+
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
                     shapeItem.definition,
-                    [
-                        (!skipped[0] && colorTL) ? colorTL.color : null,
-                        (!skipped[1] && colorTR) ? colorTR.color : null,
-                        (!skipped[2] && colorBR) ? colorBR.color : null,
-                        (!skipped[3] && colorBL) ? colorBL.color : null,
-                    ]
+                    /** @type {[enumColors, enumColors, enumColors, enumColors]} */(toColor)
                 );
-
-                // restore items we didn't use
-                for (let i = 0; i < 4; ++i) {
-                    if (skipped[i]) {
-                        processorComp.inputSlots.push({
-                            item: colorItems[i],
-                            sourceSlot: i + 1
-                        });
-                    }
-                }
 
                 outItems.push({
                     item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition),
