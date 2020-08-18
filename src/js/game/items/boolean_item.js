@@ -4,6 +4,8 @@ import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { globalConfig } from "../../core/config";
 
+/** @typedef {0 | 1} Bit **/
+
 export class BooleanItem extends BaseItem {
     static getId() {
         return "boolean_item";
@@ -27,18 +29,18 @@ export class BooleanItem extends BaseItem {
     }
 
     /**
-     * @param {number} value
+     * @param {Bit} value
      */
     constructor(value) {
         super();
-        this.value = value ? 1 : 0;
+        this.value = value;
     }
 
     /**
-     * @param {BaseItem} other
+     * @param {BooleanItem} other
      */
     equalsImpl(other) {
-        return this.value === /** @type {BooleanItem} */ (other).value;
+        return this.value === other.value;
     }
 
     /**
@@ -48,15 +50,19 @@ export class BooleanItem extends BaseItem {
      * @param {DrawParameters} parameters
      */
     drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
-        let sprite;
-        if (this.value) {
-            sprite = Loader.getSprite("sprites/wires/boolean_true.png");
-        } else {
-            sprite = Loader.getSprite("sprites/wires/boolean_false.png");
-        }
+        const value = Boolean(this.value).toString();
+        const sprite = Loader.getSprite(`sprites/wires/boolean_${value}.png`);
         sprite.drawCachedCentered(parameters, x, y, diameter);
     }
 }
 
 export const BOOL_FALSE_SINGLETON = new BooleanItem(0);
 export const BOOL_TRUE_SINGLETON = new BooleanItem(1);
+
+/**
+ * @param {unknown} item
+ * @returns {item is BooleanItem}
+ **/
+export const isBooleanItem = item => {
+    return item instanceof BooleanItem;
+};

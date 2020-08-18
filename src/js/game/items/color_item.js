@@ -30,10 +30,10 @@ export class ColorItem extends BaseItem {
     }
 
     /**
-     * @param {BaseItem} other
+     * @param {ColorItem} other
      */
     equalsImpl(other) {
-        return this.color === /** @type {ColorItem} */ (other).color;
+        return this.color === other.color;
     }
 
     /**

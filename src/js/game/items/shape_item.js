@@ -28,10 +28,10 @@ export class ShapeItem extends BaseItem {
     }
 
     /**
-     * @param {BaseItem} other
+     * @param {ShapeItem} other
      */
     equalsImpl(other) {
-        return this.definition.getHash() === /** @type {ShapeItem} */ (other).definition.getHash();
+        return this.definition.getHash() === other.definition.getHash();
     }
 
     /**
