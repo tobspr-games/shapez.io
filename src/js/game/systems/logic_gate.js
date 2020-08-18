@@ -228,7 +228,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
         const lowerLayer = /** @type {import("../shape_definition").ShapeLayer} */ (definition.layers[0]);
         const topRightContent = lowerLayer[0];
 
-        if (!topRightContent) {
+        if (!topRightContent || topRightContent.subShape === null) {
             return [null, null];
         }
 
