@@ -1,4 +1,4 @@
-import { BaseSavegameInterface } from "../savegame_interface.js";
+import { BaseSavegameInterface } from "../savegame_interface";
 
 const schema = require("./1000.json");
 

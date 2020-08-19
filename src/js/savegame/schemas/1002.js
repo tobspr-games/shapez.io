@@ -1,6 +1,5 @@
-import { createLogger } from "../../core/logging.js";
-import { T } from "../../translations.js";
-import { SavegameInterface_V1001 } from "./1001.js";
+import { createLogger } from "../../core/logging";
+import { SavegameInterface_V1001 } from "./1001";
 
 const schema = require("./1002.json");
 const logger = createLogger("savegame_interface/1002");

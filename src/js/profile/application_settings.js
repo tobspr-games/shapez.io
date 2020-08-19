@@ -6,10 +6,14 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
-import { THEMES, THEME, applyGameTheme } from "../game/theme";
+import { THEMES, applyGameTheme } from "../game/theme";
 import { IS_DEMO } from "../core/config";
 import { T } from "../translations";
-import { LANGUAGES } from "../languages";
+import languageMap, { isLanguageTag, languageTags } from "../translations/languages";
+
+/**
+ * @typedef {import("../translations/languages").LanguageTag} LanguageTag
+ **/
 
 const logger = createLogger("application_settings");
 
@@ -126,9 +130,9 @@ export const autosaveIntervals = [
 /** @type {Array<BaseSetting>} */
 export const allApplicationSettings = [
     new EnumSetting("language", {
-        options: Object.keys(LANGUAGES),
-        valueGetter: key => key,
-        textGetter: key => LANGUAGES[key].name,
+        options: languageTags,
+        valueGetter: languageTag => languageTag,
+        textGetter: languageTag => languageMap[languageTag].name,
         category: enumCategories.general,
         restartRequired: true,
         changeCb: (app, id) => null,
@@ -279,6 +283,7 @@ class SettingsStorage {
         this.refreshRate = "60";
         this.scrollWheelSensitivity = "regular";
         this.movementSpeed = "regular";
+        /** @type {LanguageTag | "auto-detect"} **/
         this.language = "auto-detect";
         this.autosaveInterval = "two_minutes";
 
@@ -413,10 +418,12 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     // Setters
-
-    updateLanguage(id) {
-        assert(LANGUAGES[id], "Language not known: " + id);
-        return this.updateSetting("language", id);
+    /**
+     * @param {LanguageTag} languageTag
+     **/
+    updateLanguage(languageTag) {
+        assert(isLanguageTag(languageTag), "Language not known: " + languageTag);
+        return this.updateSetting("language", languageTag);
     }
 
     /**
