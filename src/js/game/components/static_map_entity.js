@@ -162,8 +162,9 @@ export class StaticMapEntityComponent extends Component {
      * @returns {Vector}
      */
     localTileToWorld(localTile) {
-        const result = this.applyRotationToVector(localTile);
-        result.addInplace(this.origin);
+        const result = localTile.rotateFastMultipleOf90(this.rotation);
+        result.x += this.origin.x;
+        result.y += this.origin.y;
         return result;
     }
 
@@ -235,7 +236,7 @@ export class StaticMapEntityComponent extends Component {
      * @param {number=} extrudePixels How many pixels to extrude the sprite
      * @param {Vector=} overridePosition Whether to drwa the entity at a different location
      */
-    drawSpriteOnFullEntityBounds(parameters, sprite, extrudePixels = 0, overridePosition = null) {
+    drawSpriteOnBoundsClipped(parameters, sprite, extrudePixels = 0, overridePosition = null) {
         if (!this.shouldBeDrawn(parameters) && !overridePosition) {
             return;
         }

@@ -317,7 +317,9 @@ export class WireSystem extends GameSystemWithFilter {
 
         if (
             currentNetwork.providers.length > 0 &&
-            (currentNetwork.wires.length > 0 || currentNetwork.receivers.length > 0)
+            (currentNetwork.wires.length > 0 ||
+                currentNetwork.receivers.length > 0 ||
+                currentNetwork.tunnels.length > 0)
         ) {
             this.networks.push(currentNetwork);
             VERBOSE_WIRES && logger.log("Attached new network with uid", currentNetwork);
@@ -624,7 +626,7 @@ export class WireSystem extends GameSystemWithFilter {
                     assert(sprite, "Unknown wire type: " + wireType);
                     const staticComp = entity.components.StaticMapEntity;
                     parameters.context.globalAlpha = opacity;
-                    staticComp.drawSpriteOnFullEntityBounds(parameters, sprite, 0);
+                    staticComp.drawSpriteOnBoundsClipped(parameters, sprite, 0);
                     parameters.context.globalAlpha = 1;
 
                     if (G_IS_DEV && globalConfig.debug.renderWireRotations) {

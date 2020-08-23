@@ -44,6 +44,7 @@ steamPage:
 
         Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
 
+
         Wenn du das Spiel erwirbst, erhälst du Zugriff auf die zusätzlichen Features der Standalone-Version. Das bedeutet, du kannst unter anderem die neuesten Updates zuerst spielen!
 
         [b]Vorteile der Standalone[/b]
@@ -296,6 +297,7 @@ ingame:
         copySelection: Kopieren
         clearSelection: Auswahl aufheben
         pipette: Pipette
+
         switchLayers: Ebenen wechseln
 
     # Names of the colors, used for the color blind mode
@@ -832,7 +834,6 @@ keybindings:
             Modifikator: stattdessen gegen den UZS rotieren
         cycleBuildingVariants: Variante wählen
         confirmMassDelete: Massenlöschung bestätigen
-        pasteLastBlueprint: Letzte Blaupause einfügen
         cycleBuildings: Gebäude rotieren
         lockBeltDirection: Bandplaner aktivieren
         switchDirectionLockSide: >-
@@ -846,8 +847,10 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Förderbandorientierung invertieren
-        advanced_processor: Farbnivertierer
+        pasteLastBlueprint: Letzte Blaupause einfügen
+        advanced_processor: Farbinvertierer
         energy_generator: Energiegenerator
+        wire: Energiekabel
 
 about:
     title: Über dieses Spiel

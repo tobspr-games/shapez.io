@@ -3,6 +3,7 @@ import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { ShapeDefinition } from "../shape_definition";
 import { THEME } from "../theme";
+import { globalConfig } from "../../core/config";
 
 export class ShapeItem extends BaseItem {
     static getId() {
@@ -55,7 +56,7 @@ export class ShapeItem extends BaseItem {
      * @param {DrawParameters} parameters
      * @param {number=} diameter
      */
-    drawCentered(x, y, parameters, diameter) {
+    drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
         this.definition.drawCentered(x, y, parameters, diameter);
     }
 }

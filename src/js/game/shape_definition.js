@@ -2,15 +2,10 @@ import { makeOffscreenBuffer } from "../core/buffer_utils";
 import { globalConfig } from "../core/config";
 import { smoothenDpi } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
-import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
 import { THEME } from "./theme";
-
-const rusha = require("rusha");
-
-const logger = createLogger("shape_definition");
 
 /**
  * @typedef {{
@@ -90,7 +85,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             return errorCode;
         }
         const definition = ShapeDefinition.fromShortKey(data);
-        this.layers = definition.layers;
+        this.layers = /** @type {Array<ShapeLayer>} */ (definition.layers);
     }
 
     serialize() {
@@ -107,7 +102,8 @@ export class ShapeDefinition extends BasicSerializableObject {
 
         /**
          * The layers from bottom to top
-         * @type {Array<ShapeLayer>} */
+         * @type {Array<ShapeLayer>}
+         */
         this.layers = layers;
 
         /** @type {string} */
@@ -289,10 +285,10 @@ export class ShapeDefinition extends BasicSerializableObject {
             this.bufferGenerator = this.internalGenerateShapeBuffer.bind(this);
         }
 
-        const key = diameter + "/" + dpi;
+        const key = diameter + "/" + dpi + "/" + this.cachedHash;
         const canvas = parameters.root.buffers.getForKey({
-            key,
-            subKey: this.cachedHash,
+            key: "shapedef",
+            subKey: key,
             w: diameter,
             h: diameter,
             dpi,

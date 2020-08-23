@@ -277,6 +277,7 @@
             <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
+            <key type="filename">sprites/blueprints/wire_tunnel-coating.png</key>
             <key type="filename">sprites/blueprints/wire_tunnel.png</key>
             <key type="filename">sprites/buildings/constant_signal.png</key>
             <key type="filename">sprites/buildings/display.png</key>
@@ -295,6 +296,7 @@
             <key type="filename">sprites/buildings/underground_belt_entry.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit.png</key>
+            <key type="filename">sprites/buildings/wire_tunnel-coating.png</key>
             <key type="filename">sprites/buildings/wire_tunnel.png</key>
             <key type="filename">sprites/wires/lever_on.png</key>
             <key type="filename">sprites/wires/sets/color_cross.png</key>
@@ -533,6 +535,8 @@
             </struct>
             <key type="filename">sprites/wires/boolean_false.png</key>
             <key type="filename">sprites/wires/boolean_true.png</key>
+            <key type="filename">sprites/wires/network_conflict.png</key>
+            <key type="filename">sprites/wires/network_empty.png</key>
             <key type="filename">sprites/wires/wires_preview.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

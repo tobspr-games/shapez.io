@@ -64,11 +64,16 @@ export class HUDWireInfo extends BaseHUDPart {
             const network = networks[0];
 
             if (network.valueConflict) {
-                this.spriteConflict.draw(parameters.context, mousePos.x + 10, mousePos.y - 10, 40, 40);
+                this.spriteConflict.draw(parameters.context, mousePos.x + 15, mousePos.y - 10, 60, 60);
             } else if (!network.currentValue) {
-                this.spriteEmpty.draw(parameters.context, mousePos.x + 10, mousePos.y - 10, 40, 40);
+                this.spriteEmpty.draw(parameters.context, mousePos.x + 15, mousePos.y - 10, 60, 60);
             } else {
-                network.currentValue.drawCentered(mousePos.x + 20, mousePos.y, parameters, 40);
+                network.currentValue.drawItemCenteredClipped(
+                    mousePos.x + 40,
+                    mousePos.y + 10,
+                    parameters,
+                    60
+                );
             }
         }
     }

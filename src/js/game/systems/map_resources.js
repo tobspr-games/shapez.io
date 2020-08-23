@@ -13,7 +13,7 @@ export class MapResourcesSystem extends GameSystem {
      */
     drawChunk(parameters, chunk) {
         const basicChunkBackground = this.root.buffers.getForKey({
-            key: "chunkres",
+            key: "mapresourcebg",
             subKey: chunk.renderKey,
             w: globalConfig.mapChunkSize,
             h: globalConfig.mapChunkSize,
@@ -42,10 +42,9 @@ export class MapResourcesSystem extends GameSystem {
                 const patch = chunk.patches[i];
                 const destX = chunk.x * globalConfig.mapChunkWorldSize + patch.pos.x * globalConfig.tileSize;
                 const destY = chunk.y * globalConfig.mapChunkWorldSize + patch.pos.y * globalConfig.tileSize;
-                const destSize = Math.min(80, 40 / parameters.zoomLevel);
-                if (parameters.visibleRect.containsCircle(destX, destY, destSize / 2)) {
-                    patch.item.drawCentered(destX, destY, parameters, destSize);
-                }
+                const diameter = Math.min(80, 40 / parameters.zoomLevel);
+
+                patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
             }
         } else {
             // HIGH QUALITY: Draw all items
@@ -61,9 +60,12 @@ export class MapResourcesSystem extends GameSystem {
                         const destX = worldX + globalConfig.halfTileSize;
                         const destY = worldY + globalConfig.halfTileSize;
 
-                        if (parameters.visibleRect.containsCircle(destX, destY, globalConfig.tileSize / 2)) {
-                            lowerItem.drawCentered(destX, destY, parameters);
-                        }
+                        lowerItem.drawItemCenteredClipped(
+                            destX,
+                            destY,
+                            parameters,
+                            globalConfig.defaultItemDiameter
+                        );
                     }
                 }
             }

@@ -1,13 +1,13 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { drawRotatedSprite } from "../../core/draw_utils";
 import { Loader } from "../../core/loader";
-import { Vector, enumDirectionToAngle } from "../../core/vector";
+import { STOP_PROPAGATION } from "../../core/signal";
+import { enumDirectionToAngle, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { STOP_PROPAGATION } from "../../core/signal";
-import { drawRotatedSprite } from "../../core/draw_utils";
-import { GLOBAL_APP } from "../../core/globals";
+import { MapChunkView } from "../map_chunk_view";
 
 export class WiredPinsSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -147,64 +147,83 @@ export class WiredPinsSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Draws the pins
-     * @param {DrawParameters} parameters
-     */
-    draw(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawSingleEntity.bind(this));
-    }
-
-    /**
      * Draws a given entity
      * @param {DrawParameters} parameters
-     * @param {Entity} entity
+     * @param {MapChunkView} chunk
      */
-    drawSingleEntity(parameters, entity) {
-        const staticComp = entity.components.StaticMapEntity;
-        const slots = entity.components.WiredPins.slots;
+    drawChunk(parameters, chunk) {
+        const contents = chunk.containedEntities;
 
-        for (let i = 0; i < slots.length; ++i) {
-            const slot = slots[i];
-            const tile = staticComp.localTileToWorld(slot.pos);
-
-            const worldPos = tile.toWorldSpaceCenterOfTile();
-            const effectiveRotation = Math.radians(
-                staticComp.rotation + enumDirectionToAngle[slot.direction]
-            );
-
-            if (staticComp.getMetaBuilding().getRenderPins()) {
-                drawRotatedSprite({
-                    parameters,
-                    sprite: this.pinSprites[slot.type],
-                    x: worldPos.x,
-                    y: worldPos.y,
-                    angle: effectiveRotation,
-                    size: globalConfig.tileSize + 2,
-                    offsetX: 0,
-                    offsetY: 0,
-                });
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const pinsComp = entity.components.WiredPins;
+            if (!pinsComp) {
+                continue;
             }
 
-            // Draw contained item to visualize whats emitted
-            const value = slot.value;
-            if (value) {
-                const offset = new Vector(0, -9).rotated(effectiveRotation);
-                value.drawCentered(worldPos.x + offset.x, worldPos.y + offset.y, parameters, 9);
-            }
+            const staticComp = entity.components.StaticMapEntity;
+            const slots = pinsComp.slots;
 
-            // Debug view
-            if (G_IS_DEV && globalConfig.debug.renderWireNetworkInfos) {
-                const offset = new Vector(0, -10).rotated(effectiveRotation);
-                const network = slot.linkedNetwork;
-                parameters.context.fillStyle = "blue";
-                parameters.context.font = "5px Tahoma";
-                parameters.context.textAlign = "center";
-                parameters.context.fillText(
-                    network ? "S" + network.uid : "???",
-                    (tile.x + 0.5) * globalConfig.tileSize + offset.x,
-                    (tile.y + 0.5) * globalConfig.tileSize + offset.y
+            for (let j = 0; j < slots.length; ++j) {
+                const slot = slots[j];
+                const tile = staticComp.localTileToWorld(slot.pos);
+
+                if (!chunk.tileSpaceRectangle.containsPoint(tile.x, tile.y)) {
+                    // Doesn't belong to this chunk
+                    continue;
+                }
+                const worldPos = tile.toWorldSpaceCenterOfTile();
+
+                // Culling
+                if (
+                    !parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, globalConfig.halfTileSize)
+                ) {
+                    continue;
+                }
+
+                const effectiveRotation = Math.radians(
+                    staticComp.rotation + enumDirectionToAngle[slot.direction]
                 );
-                parameters.context.textAlign = "left";
+
+                if (staticComp.getMetaBuilding().getRenderPins()) {
+                    drawRotatedSprite({
+                        parameters,
+                        sprite: this.pinSprites[slot.type],
+                        x: worldPos.x,
+                        y: worldPos.y,
+                        angle: effectiveRotation,
+                        size: globalConfig.tileSize + 2,
+                        offsetX: 0,
+                        offsetY: 0,
+                    });
+                }
+
+                // Draw contained item to visualize whats emitted
+                const value = slot.value;
+                if (value) {
+                    const offset = new Vector(0, -9).rotated(effectiveRotation);
+                    value.drawItemCenteredClipped(
+                        worldPos.x + offset.x,
+                        worldPos.y + offset.y,
+                        parameters,
+                        9
+                    );
+                }
+
+                // Debug view
+                if (G_IS_DEV && globalConfig.debug.renderWireNetworkInfos) {
+                    const offset = new Vector(0, -10).rotated(effectiveRotation);
+                    const network = slot.linkedNetwork;
+                    parameters.context.fillStyle = "blue";
+                    parameters.context.font = "5px Tahoma";
+                    parameters.context.textAlign = "center";
+                    parameters.context.fillText(
+                        network ? "S" + network.uid : "???",
+                        (tile.x + 0.5) * globalConfig.tileSize + offset.x,
+                        (tile.y + 0.5) * globalConfig.tileSize + offset.y
+                    );
+                    parameters.context.textAlign = "left";
+                }
             }
         }
     }

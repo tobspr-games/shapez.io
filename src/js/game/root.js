@@ -149,6 +149,8 @@ export class GameRoot {
             gameSaved: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got saved
             gameRestored: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got restored
 
+            gameFrameStarted: /** @type {TypedSignal<[]>} */ (new Signal()), // New frame
+
             storyGoalCompleted: /** @type {TypedSignal<[number, string]>} */ (new Signal()),
             upgradePurchased: /** @type {TypedSignal<[string]>} */ (new Signal()),
 

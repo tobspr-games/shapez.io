@@ -9,7 +9,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
-import { randomInt, round2Digits } from "../core/utils";
+import { randomInt, round2Digits, round3Digits } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
@@ -329,8 +329,7 @@ export class GameCore {
             return;
         }
 
-        // Update buffers as the very first
-        root.buffers.update();
+        this.root.signals.gameFrameStarted.dispatch();
 
         root.queue.requireRedraw = false;
 
@@ -390,23 +389,17 @@ export class GameCore {
             // Map overview
             root.map.drawOverlay(params);
         } else {
+            // Background (grid, resources, etc)
             root.map.drawBackground(params);
 
             // Belt items
             systems.belt.drawBeltItems(params);
 
-            // Items being ejected / accepted currently (animations)
-            systems.itemEjector.draw(params);
-            systems.itemAcceptor.draw(params);
-
-            // Miner & Static map entities
+            // Miner & Static map entities etc.
             root.map.drawForeground(params);
 
             // HUB Overlay
             systems.hub.draw(params);
-
-            // Storage items
-            systems.storage.draw(params);
 
             // Green wires overlay
             root.hud.parts.wiresOverlay.draw(params);
@@ -414,9 +407,6 @@ export class GameCore {
             if (this.root.currentLayer === "wires") {
                 // Static map entities
                 root.map.drawWiresForegroundLayer(params);
-
-                // pins
-                systems.wiredPins.draw(params);
             }
         }
 
@@ -464,7 +454,7 @@ export class GameCore {
 
         if (G_IS_DEV && globalConfig.debug.showAtlasInfo) {
             context.font = "13px GameFont";
-            context.fillStyle = "yellow";
+            context.fillStyle = "blue";
             context.fillText(
                 "Atlas: " +
                     desiredAtlasScale +
@@ -472,8 +462,22 @@ export class GameCore {
                     round2Digits(zoomLevel) +
                     " / Effective Zoom: " +
                     round2Digits(effectiveZoomLevel),
-                200,
-                20
+                20,
+                600
+            );
+
+            const stats = this.root.buffers.getStats();
+            context.fillText(
+                "Buffers: " +
+                    stats.rootKeys +
+                    " root keys, " +
+                    stats.subKeys +
+                    " sub keys / buffers / VRAM: " +
+                    round2Digits(stats.vramBytes / (1024 * 1024)) +
+                    " MB",
+
+                20,
+                620
             );
         }
 

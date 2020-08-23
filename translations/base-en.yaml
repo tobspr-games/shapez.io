@@ -591,6 +591,27 @@ buildings:
             # TEMP
             description: Can be connected on the wires layer to show a color or shape. When inputting a boolean item, the display will be white if the value is 1.
 
+    virtual_processor:
+        default:
+            name: &virtual_processor Virtual Cutter
+            description: Virtually cuts the shape input from top to bottom and returns both halfs.
+
+        analyzer:
+            name: Shape Analyzer
+            description: Analyzes the top right quadrant of the lowest layer of the shape and returns its shape and color
+
+        rotater:
+            name: Virtual Rotater
+            description: Virtually rotates the shape by 90 degrees clockwise.
+
+        unstacker:
+            name: Virtual Unstacker
+            description: Returns the topmost layer to the right, and the remaining ones on the left.
+
+        shapecompare:
+            name: Compare Shapes
+            description: Returns true if both shapes are exactly equal
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
