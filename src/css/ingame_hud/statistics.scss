@@ -22,11 +22,17 @@
             @include S(margin-left, 1px);
 
             &.displayIcons,
-            &.displayDetailed {
+            &.displayDetailed,
+            &.displaySorted {
                 background: uiResource("icons/display_list.png") center center / #{D(15px)} no-repeat;
                 &.displayIcons {
                     background-image: uiResource("icons/display_icons.png");
                     background-size: #{D(11.5px)};
+                }
+                &.displaySorted {
+                    background-image: uiResource("icons/display_sorted.png");
+                    background-size: #{D(11.5px)};
+                    margin-right: 20px;
                 }
             }
 
@@ -109,6 +115,7 @@
     .dialogInner {
         &[data-displaymode="detailed"] .displayDetailed,
         &[data-displaymode="icons"] .displayIcons,
+        &[data-sorted="true"] .displaySorted,
         &[data-datasource="produced"] .modeProduced,
         &[data-datasource="delivered"] .modeDelivered,
         &[data-datasource="stored"] .modeStored {
