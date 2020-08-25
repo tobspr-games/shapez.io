@@ -21,6 +21,7 @@ export const CHANGELOG = [
             "Fix tunnels entrances connecting to exits sometimes when they shouldn't",
             "The initial belt planner direction is now based on the cursor movement (by MizardX)",
             "Fix preferred variant not getting saved when clicking on the hud (by Danacus)",
+            "Releasing SHIFT no longer cancels the belt planner (by bcmpinc)",
         ],
     },
     {

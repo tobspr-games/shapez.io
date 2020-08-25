@@ -99,6 +99,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
          */
         this.currentDirectionLockSideIndeterminate = true;
 
+        /**
+         * Whether the player is currently drawing using direction lock.
+         * @type {boolean}
+         */
+        this.currentDirectionLockDragging = false;
+
         this.initializeBindings();
     }
 
@@ -115,7 +121,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             .add(this.switchDirectionLockSide, this);
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.startPipette, this);
-        this.root.gameState.inputReciever.keyup.add(this.checkForDirectionLockSwitch, this);
 
         // BINDINGS TO GAME EVENTS
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
@@ -186,7 +191,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         return (
             metaBuilding &&
             metaBuilding.getHasDirectionLockAvailable() &&
-            this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed
+            (this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed ||
+                this.currentDirectionLockDragging)
         );
     }
 
@@ -243,10 +249,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * Aborts any dragging
      */
     abortDragging() {
-        this.currentlyDragging = true;
+        this.currentlyDragging = false;
         this.currentlyDeleting = false;
         this.initialPlacementVector = null;
         this.lastDragTile = null;
+        this.currentDirectionLockDragging = false;
     }
 
     /**
@@ -370,19 +377,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      */
     switchDirectionLockSide() {
         this.currentDirectionLockSide = 1 - this.currentDirectionLockSide;
-    }
-
-    /**
-     * Checks if the direction lock key got released and if such, resets the placement
-     * @param {any} args
-     */
-    checkForDirectionLockSwitch({ keyCode }) {
-        if (
-            keyCode ===
-            this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).keyCode
-        ) {
-            this.abortDragging();
-        }
     }
 
     /**
@@ -631,8 +625,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentlyDeleting = false;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
 
-            // Place initial building, but only if direction lock is not active
-            if (!this.isDirectionLockActive) {
+            if (this.isDirectionLockActive) {
+                this.currentDirectionLockDragging = true;
+            } else {
+                // Direction lock is not active. Place initial building.
                 if (this.tryPlaceCurrentBuildingAt(this.lastDragTile)) {
                     this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
                 }
