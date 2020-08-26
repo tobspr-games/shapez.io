@@ -1,7 +1,7 @@
-import { gItemRegistry } from "../../core/global_registries";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
@@ -18,8 +18,8 @@ export const enumItemProcessorTypes = {
     painter: "painter",
     painterDouble: "painterDouble",
     painterQuad: "painterQuad",
-    advancedProcessor: "advancedProcessor",
     hub: "hub",
+    filter: "filter",
 };
 
 export class ItemProcessorComponent extends Component {
@@ -30,18 +30,15 @@ export class ItemProcessorComponent extends Component {
     static getSchema() {
         return {
             nextOutputSlot: types.uint,
-            type: types.enum(enumItemProcessorTypes),
-            inputsPerCharge: types.uint,
-
             inputSlots: types.array(
                 types.structured({
-                    item: types.obj(gItemRegistry),
+                    item: typeItemSingleton,
                     sourceSlot: types.uint,
                 })
             ),
             itemsToEject: types.array(
                 types.structured({
-                    item: types.obj(gItemRegistry),
+                    item: typeItemSingleton,
                     requiredSlot: types.nullable(types.uint),
                     preferredSlot: types.nullable(types.uint),
                 })

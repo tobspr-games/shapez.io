@@ -1,4 +1,4 @@
-import { GameRoot, enumLayer } from "../root";
+import { GameRoot } from "../root";
 import { globalConfig } from "../../core/config";
 import { Vector, mixVector } from "../../core/vector";
 import { lerp } from "../../core/utils";
@@ -92,7 +92,7 @@ export class TrailerMaker {
             const speed =
                 globalConfig.tileSize *
                 globalConfig.beltSpeedItemsPerSecond *
-                globalConfig.beltItemSpacingByLayer[enumLayer.regular];
+                globalConfig.itemSpacingOnBelts;
             // let time =
             //     this.currentPlaybackOrigin.distance(Vector.fromSerializedObject(nextMarker.pos)) / speed;
             const time = nextMarker.time;

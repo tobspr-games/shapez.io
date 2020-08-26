@@ -34,9 +34,9 @@
         },
 
         "wires": {
-            "pins": {
-                "energyEjector": "#c425d7"
-            }
+            "overlayColor": "rgba(97, 161, 152, 0.75)",
+            "previewColor": "rgb(97, 161, 152, 0.5)",
+            "highlightColor": "rgba(0, 0, 255, 0.5)"
         }
     },
 

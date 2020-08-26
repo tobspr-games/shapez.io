@@ -54,12 +54,16 @@ export const KEYMAPPINGS = {
         mixer: { keyCode: key("8") },
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
-        energy_generator: { keyCode: key("O") },
-        advanced_processor: { keyCode: key("P") },
 
-        // Wires layer
+        lever: { keyCode: key("L") },
+        filter: { keyCode: key("B") },
+        display: { keyCode: key("N") },
+
         wire: { keyCode: key("1") },
-        wire_crossings: { keyCode: key("2") },
+        wire_tunnel: { keyCode: key("2") },
+        constant_signal: { keyCode: key("3") },
+        logic_gate: { keyCode: key("4") },
+        virtual_processor: { keyCode: key("5") },
     },
 
     placement: {

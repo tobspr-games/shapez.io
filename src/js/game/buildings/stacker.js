@@ -8,7 +8,6 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { enumItemType } from "../base_item";
 
 export class MetaStackerBuilding extends MetaBuilding {
     constructor() {
@@ -63,12 +62,12 @@ export class MetaStackerBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                 ],
             })

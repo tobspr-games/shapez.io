@@ -381,17 +381,6 @@ export class InGameState extends GameState {
             }
         }
 
-        // // Check if we can show an ad
-        // // DISABLED
-        // if (this.stage === stages.s10_gameRunning && !this.core.root.hud.parts.processingOverlay.hasTasks()) {
-        //     if (this.app.isRenderable() && this.app.adProvider.getCanShowVideoAd()) {
-        //         this.saveThenGoToState("WatchAdState", {
-        //             nextStateId: "RunningGameState",
-        //             nextStatePayload: this.creationPayload,
-        //         });
-        //     }
-        // }
-
         if (this.stage === stages.s10_gameRunning) {
             this.core.tick(dt);
         }

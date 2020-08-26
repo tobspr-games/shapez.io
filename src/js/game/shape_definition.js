@@ -2,21 +2,10 @@ import { makeOffscreenBuffer } from "../core/buffer_utils";
 import { globalConfig } from "../core/config";
 import { smoothenDpi } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
-import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
-import {
-    enumColors,
-    enumColorsToHexCode,
-    enumColorToShortcode,
-    enumShortcodeToColor,
-    enumInvertedColors,
-} from "./colors";
+import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
 import { THEME } from "./theme";
-
-const rusha = require("rusha");
-
-const logger = createLogger("shape_definition");
 
 /**
  * @typedef {{
@@ -96,7 +85,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             return errorCode;
         }
         const definition = ShapeDefinition.fromShortKey(data);
-        this.layers = definition.layers;
+        this.layers = /** @type {Array<ShapeLayer>} */ (definition.layers);
     }
 
     serialize() {
@@ -113,7 +102,8 @@ export class ShapeDefinition extends BasicSerializableObject {
 
         /**
          * The layers from bottom to top
-         * @type {Array<ShapeLayer>} */
+         * @type {Array<ShapeLayer>}
+         */
         this.layers = layers;
 
         /** @type {string} */
@@ -286,24 +276,25 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
+     * @param {number=} diameter
      */
-    draw(x, y, parameters, size = 20) {
+    drawCentered(x, y, parameters, diameter = 20) {
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
         if (!this.bufferGenerator) {
             this.bufferGenerator = this.internalGenerateShapeBuffer.bind(this);
         }
 
-        const key = size + "/" + dpi;
-        const canvas = parameters.root.buffers.getForKey(
-            key,
-            this.cachedHash,
-            size,
-            size,
+        const key = diameter + "/" + dpi + "/" + this.cachedHash;
+        const canvas = parameters.root.buffers.getForKey({
+            key: "shapedef",
+            subKey: key,
+            w: diameter,
+            h: diameter,
             dpi,
-            this.bufferGenerator
-        );
-        parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
+            redrawMethod: this.bufferGenerator,
+        });
+        parameters.context.drawImage(canvas, x - diameter / 2, y - diameter / 2, diameter, diameter);
     }
 
     /**
@@ -592,23 +583,6 @@ export class ShapeDefinition extends BasicSerializableObject {
                 const item = quadrants[quadrantIndex];
                 if (item) {
                     item.color = color;
-                }
-            }
-        }
-        return new ShapeDefinition({ layers: newLayers });
-    }
-
-    /**
-     * Clones the shape and inverts all colors
-     */
-    cloneAndInvertColors() {
-        const newLayers = this.internalCloneLayers();
-        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
-            const quadrants = newLayers[layerIndex];
-            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                const item = quadrants[quadrantIndex];
-                if (item) {
-                    item.color = enumInvertedColors[item.color];
                 }
             }
         }

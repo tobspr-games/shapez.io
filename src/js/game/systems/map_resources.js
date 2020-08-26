@@ -1,7 +1,9 @@
-import { GameSystem } from "../game_system";
-import { DrawParameters } from "../../core/draw_parameters";
 import { globalConfig } from "../../core/config";
+import { DrawParameters } from "../../core/draw_parameters";
+import { GameSystem } from "../game_system";
 import { MapChunkView } from "../map_chunk_view";
+import { THEME } from "../theme";
+import { drawSpriteClipped } from "../../core/draw_utils";
 
 export class MapResourcesSystem extends GameSystem {
     /**
@@ -10,57 +12,95 @@ export class MapResourcesSystem extends GameSystem {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        const renderItems = parameters.zoomLevel >= globalConfig.mapChunkOverviewMinZoom;
+        const basicChunkBackground = this.root.buffers.getForKey({
+            key: "mapresourcebg",
+            subKey: chunk.renderKey,
+            w: globalConfig.mapChunkSize,
+            h: globalConfig.mapChunkSize,
+            dpi: 1,
+            redrawMethod: this.generateChunkBackground.bind(this, chunk),
+        });
+
+        parameters.context.imageSmoothingEnabled = false;
+        drawSpriteClipped({
+            parameters,
+            sprite: basicChunkBackground,
+            x: chunk.tileX * globalConfig.tileSize,
+            y: chunk.tileY * globalConfig.tileSize,
+            w: globalConfig.mapChunkWorldSize,
+            h: globalConfig.mapChunkWorldSize,
+            originalW: globalConfig.mapChunkSize,
+            originalH: globalConfig.mapChunkSize,
+        });
+        parameters.context.imageSmoothingEnabled = true;
 
         parameters.context.globalAlpha = 0.5;
 
-        const layer = chunk.lowerLayer;
-        for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
-            const row = layer[x];
-            const worldX = (chunk.tileX + x) * globalConfig.tileSize;
-            for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
-                const lowerItem = row[y];
-                if (lowerItem) {
-                    const worldY = (chunk.tileY + y) * globalConfig.tileSize;
+        if (this.root.app.settings.getAllSettings().lowQualityMapResources) {
+            // LOW QUALITY: Draw patch items only
+            for (let i = 0; i < chunk.patches.length; ++i) {
+                const patch = chunk.patches[i];
+                const destX = chunk.x * globalConfig.mapChunkWorldSize + patch.pos.x * globalConfig.tileSize;
+                const destY = chunk.y * globalConfig.mapChunkWorldSize + patch.pos.y * globalConfig.tileSize;
+                const diameter = Math.min(80, 40 / parameters.zoomLevel);
 
-                    if (
-                        !parameters.visibleRect.containsRect4Params(
-                            worldX,
-                            worldY,
-                            globalConfig.tileSize,
-                            globalConfig.tileSize
-                        )
-                    ) {
-                        // Clipped
-                        continue;
-                    }
+                patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
+            }
+        } else {
+            // HIGH QUALITY: Draw all items
+            const layer = chunk.lowerLayer;
+            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
+                const row = layer[x];
+                const worldX = (chunk.tileX + x) * globalConfig.tileSize;
+                for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
+                    const lowerItem = row[y];
+                    if (lowerItem) {
+                        const worldY = (chunk.tileY + y) * globalConfig.tileSize;
 
-                    parameters.context.fillStyle = lowerItem.getBackgroundColorAsResource();
-                    parameters.context.fillRect(worldX, worldY, globalConfig.tileSize, globalConfig.tileSize);
-                    if (renderItems) {
-                        lowerItem.draw(
-                            worldX + globalConfig.halfTileSize,
-                            worldY + globalConfig.halfTileSize,
-                            parameters
+                        const destX = worldX + globalConfig.halfTileSize;
+                        const destY = worldY + globalConfig.halfTileSize;
+
+                        lowerItem.drawItemCenteredClipped(
+                            destX,
+                            destY,
+                            parameters,
+                            globalConfig.defaultItemDiameter
                         );
                     }
                 }
             }
         }
         parameters.context.globalAlpha = 1;
+    }
 
-        if (!renderItems) {
-            // Render patches instead
-            const patches = chunk.patches;
-            for (let i = 0; i < patches.length; ++i) {
-                const { pos, item, size } = patches[i];
+    /**
+     *
+     * @param {MapChunkView} chunk
+     * @param {HTMLCanvasElement} canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} w
+     * @param {number} h
+     * @param {number} dpi
+     */
+    generateChunkBackground(chunk, canvas, context, w, h, dpi) {
+        if (this.root.app.settings.getAllSettings().disableTileGrid) {
+            // The map doesn't draw a background, so we have to
+            context.fillStyle = THEME.map.background;
+            context.fillRect(0, 0, w, h);
+        } else {
+            context.clearRect(0, 0, w, h);
+        }
 
-                item.draw(
-                    (chunk.tileX + pos.x + 0.5) * globalConfig.tileSize,
-                    (chunk.tileY + pos.y + 0.5) * globalConfig.tileSize,
-                    parameters,
-                    80
-                );
+        context.globalAlpha = 0.5;
+        const layer = chunk.lowerLayer;
+        for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
+            const row = layer[x];
+            for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
+                const item = row[y];
+                if (item) {
+                    context.fillStyle = item.getBackgroundColorAsResource();
+                    context.fillRect(x, y, 1, 1);
+                }
             }
         }
     }

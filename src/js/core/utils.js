@@ -632,3 +632,93 @@ export function formatItemsPerSecond(speed, double = false, separator = T.global
               round2Digits(speed).toString().replace(".", separator)
           ) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
 }
+
+/**
+ * Rotates a flat 3x3 matrix clockwise
+ * Entries:
+ * 0 lo
+ * 1 mo
+ * 2 ro
+ * 3 lm
+ * 4 mm
+ * 5 rm
+ * 6 lu
+ * 7 mu
+ * 8 ru
+ * @param {Array<number>} flatMatrix
+ */
+
+export function rotateFlatMatrix3x3(flatMatrix) {
+    return [
+        flatMatrix[6],
+        flatMatrix[3],
+        flatMatrix[0],
+        flatMatrix[7],
+        flatMatrix[4],
+        flatMatrix[1],
+        flatMatrix[8],
+        flatMatrix[5],
+        flatMatrix[2],
+    ];
+}
+
+/**
+ * Generates rotated variants of the matrix
+ * @param {Array<number>} originalMatrix
+ * @returns {Object<number, Array<number>>}
+ */
+export function generateMatrixRotations(originalMatrix) {
+    const result = {
+        0: originalMatrix,
+    };
+
+    originalMatrix = rotateFlatMatrix3x3(originalMatrix);
+    result[90] = originalMatrix;
+
+    originalMatrix = rotateFlatMatrix3x3(originalMatrix);
+    result[180] = originalMatrix;
+
+    originalMatrix = rotateFlatMatrix3x3(originalMatrix);
+    result[270] = originalMatrix;
+
+    return result;
+}
+
+/**
+ *
+ * @typedef {{
+ *   top: any,
+ *   right: any,
+ *   bottom: any,
+ *   left: any
+ * }} DirectionalObject
+ */
+
+/**
+ * Rotates a directional object
+ * @param {DirectionalObject} obj
+ * @returns {DirectionalObject}
+ */
+export function rotateDirectionalObject(obj, rotation) {
+    const queue = [obj.top, obj.right, obj.bottom, obj.left];
+    while (rotation !== 0) {
+        rotation -= 90;
+        queue.push(queue.shift());
+    }
+
+    return {
+        top: queue[0],
+        right: queue[1],
+        bottom: queue[2],
+        left: queue[3],
+    };
+}
+
+/**
+ * Modulo which works for negative numbers
+ * @param {number} n
+ * @param {number} m
+ */
+export function safeModulo(n, m) {
+    return ((n % m) + m) % m;
+}

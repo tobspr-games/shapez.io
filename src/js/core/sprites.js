@@ -4,7 +4,7 @@ import { round3Digits } from "./utils";
 
 const floorSpriteCoordinates = false;
 
-const ORIGINAL_SCALE = "1";
+export const ORIGINAL_SPRITE_SCALE = "0.75";
 
 export class BaseSprite {
     /**
@@ -73,7 +73,7 @@ export class AtlasSprite extends BaseSprite {
     }
 
     getRawTexture() {
-        return this.linksByResolution[ORIGINAL_SCALE].atlas;
+        return this.linksByResolution[ORIGINAL_SPRITE_SCALE].atlas;
     }
 
     /**
@@ -85,11 +85,15 @@ export class AtlasSprite extends BaseSprite {
             assert(context instanceof CanvasRenderingContext2D, "Not a valid context");
         }
 
-        const link = this.linksByResolution[ORIGINAL_SCALE];
+        const link = this.linksByResolution[ORIGINAL_SPRITE_SCALE];
 
         assert(
             link,
-            "Link not known: " + ORIGINAL_SCALE + " (having " + Object.keys(this.linksByResolution) + ")"
+            "Link not known: " +
+                ORIGINAL_SPRITE_SCALE +
+                " (having " +
+                Object.keys(this.linksByResolution) +
+                ")"
         );
 
         const width = w || link.w;

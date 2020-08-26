@@ -6,7 +6,6 @@ import { MinerComponent } from "../components/miner";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
-import { enumLayer } from "../root";
 
 export class MinerSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -75,7 +74,7 @@ export class MinerSystem extends GameSystemWithFilter {
             const ejectingDirection = staticComp.localDirectionToWorld(ejectingSlot.direction);
 
             const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
-            const targetContents = this.root.map.getTileContent(targetTile, enumLayer.regular);
+            const targetContents = this.root.map.getTileContent(targetTile, "regular");
 
             // Check if we are connected to another miner and thus do not eject directly
             if (targetContents) {
@@ -103,41 +102,39 @@ export class MinerSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        const contents = chunk.contents;
-        for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
-            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
-                const entity = contents[x][y];
+        const contents = chunk.containedEntitiesByLayer.regular;
 
-                if (entity && entity.components.Miner) {
-                    const staticComp = entity.components.StaticMapEntity;
-                    const minerComp = entity.components.Miner;
-                    if (!staticComp.shouldBeDrawn(parameters)) {
-                        continue;
-                    }
-                    if (!minerComp.cachedMinedItem) {
-                        continue;
-                    }
-
-                    if (minerComp.cachedMinedItem) {
-                        const padding = 3;
-                        parameters.context.fillStyle = minerComp.cachedMinedItem.getBackgroundColorAsResource();
-                        parameters.context.fillRect(
-                            staticComp.origin.x * globalConfig.tileSize + padding,
-                            staticComp.origin.y * globalConfig.tileSize + padding,
-                            globalConfig.tileSize - 2 * padding,
-                            globalConfig.tileSize - 2 * padding
-                        );
-                    }
-
-                    if (minerComp.cachedMinedItem) {
-                        minerComp.cachedMinedItem.draw(
-                            (0.5 + staticComp.origin.x) * globalConfig.tileSize,
-                            (0.5 + staticComp.origin.y) * globalConfig.tileSize,
-                            parameters
-                        );
-                    }
-                }
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const minerComp = entity.components.Miner;
+            if (!minerComp) {
+                continue;
             }
+
+            const staticComp = entity.components.StaticMapEntity;
+            if (!minerComp.cachedMinedItem) {
+                continue;
+            }
+
+            // Draw the item background - this is to hide the ejected item animation from
+            // the item ejecto
+
+            const padding = 3;
+            const destX = staticComp.origin.x * globalConfig.tileSize + padding;
+            const destY = staticComp.origin.y * globalConfig.tileSize + padding;
+            const dimensions = globalConfig.tileSize - 2 * padding;
+
+            if (parameters.visibleRect.containsRect4Params(destX, destY, dimensions, dimensions)) {
+                parameters.context.fillStyle = minerComp.cachedMinedItem.getBackgroundColorAsResource();
+                parameters.context.fillRect(destX, destY, dimensions, dimensions);
+            }
+
+            minerComp.cachedMinedItem.drawItemCenteredClipped(
+                (0.5 + staticComp.origin.x) * globalConfig.tileSize,
+                (0.5 + staticComp.origin.y) * globalConfig.tileSize,
+                parameters,
+                globalConfig.defaultItemDiameter
+            );
         }
     }
 }

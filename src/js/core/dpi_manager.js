@@ -15,8 +15,8 @@ export function getDeviceDPI() {
  * @returns {number} Smoothed dpi
  */
 export function smoothenDpi(dpi) {
-    if (dpi < 0.05) {
-        return 0.05;
+    if (dpi < 0.02) {
+        return 0.02;
     } else if (dpi < 0.1) {
         return round2Digits(dpi);
     } else if (dpi < 1) {

@@ -3,11 +3,10 @@ import { Component } from "./component";
 import { Entity } from "./entity";
 /* typehints:end */
 
-import { GameRoot, enumLayer } from "./root";
+import { GameRoot } from "./root";
 import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
-import { DrawParameters } from "../core/draw_parameters";
-import { globalConfig } from "../core/config";
+
 export class GameSystemWithFilter extends GameSystem {
     /**
      * Constructs a new game system with the given component filter. It will process
@@ -33,88 +32,6 @@ export class GameSystemWithFilter extends GameSystem {
 
         this.root.signals.postLoadHook.add(this.internalPostLoadHook, this);
         this.root.signals.bulkOperationFinished.add(this.refreshCaches, this);
-    }
-
-    /**
-     * Calls a function for each matching entity on the screen, useful for drawing them
-     * @param {DrawParameters} parameters
-     * @param {function} callback
-     * @param {enumLayer=} layerFilter Can be null for no filter
-     */
-    forEachMatchingEntityOnScreen(parameters, callback, layerFilter = null) {
-        const cullRange = parameters.visibleRect.toTileCullRectangle();
-        if (this.allEntities.length < 100) {
-            // So, its much quicker to simply perform per-entity checking
-
-            for (let i = 0; i < this.allEntities.length; ++i) {
-                const entity = this.allEntities[i];
-                if (cullRange.containsRect(entity.components.StaticMapEntity.getTileSpaceBounds())) {
-                    if (!layerFilter || entity.layer === layerFilter) {
-                        callback(parameters, entity);
-                    }
-                }
-            }
-            return;
-        }
-
-        const top = cullRange.top();
-        const right = cullRange.right();
-        const bottom = cullRange.bottom();
-        const left = cullRange.left();
-
-        const border = 1;
-        const minY = top - border;
-        const maxY = bottom + border;
-        const minX = left - border;
-        const maxX = right + border - 1;
-
-        const map = this.root.map;
-
-        let seenUids = new Set();
-
-        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
-
-        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
-
-        const requiredComponents = this.requiredComponentIds;
-
-        // Render y from top down for proper blending
-        for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
-            for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
-                const chunk = map.getChunk(chunkX, chunkY, false);
-                if (!chunk) {
-                    continue;
-                }
-
-                // BIG TODO: CULLING ON AN ENTITY BASIS
-
-                const entities = chunk.containedEntities;
-                entityLoop: for (let i = 0; i < entities.length; ++i) {
-                    const entity = entities[i];
-
-                    // Avoid drawing non-layer contents
-                    if (layerFilter && entity.layer !== layerFilter) {
-                        continue;
-                    }
-
-                    // Avoid drawing twice
-                    if (seenUids.has(entity.uid)) {
-                        continue;
-                    }
-
-                    seenUids.add(entity.uid);
-
-                    for (let i = 0; i < requiredComponents.length; ++i) {
-                        if (!entity.components[requiredComponents[i]]) {
-                            continue entityLoop;
-                        }
-                    }
-                    callback(parameters, entity);
-                }
-            }
-        }
     }
 
     /**

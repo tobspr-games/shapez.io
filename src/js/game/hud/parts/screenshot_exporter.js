@@ -63,7 +63,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         }
         logger.log("ChunkSizePixels:", chunkSizePixels);
 
-        const chunkScale = chunkSizePixels / (globalConfig.mapChunkSize * globalConfig.tileSize);
+        const chunkScale = chunkSizePixels / globalConfig.mapChunkWorldSize;
         logger.log("Scale:", chunkScale);
 
         logger.log("Allocating buffer, if the factory grew too big it will crash here");
@@ -79,10 +79,10 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         logger.log("Got buffer, rendering now ...");
 
         const visibleRect = new Rectangle(
-            minChunk.x * globalConfig.mapChunkSize * globalConfig.tileSize,
-            minChunk.y * globalConfig.mapChunkSize * globalConfig.tileSize,
-            dimensions.x * globalConfig.mapChunkSize * globalConfig.tileSize,
-            dimensions.y * globalConfig.mapChunkSize * globalConfig.tileSize
+            minChunk.x * globalConfig.mapChunkWorldSize,
+            minChunk.y * globalConfig.mapChunkWorldSize,
+            dimensions.x * globalConfig.mapChunkWorldSize,
+            dimensions.y * globalConfig.mapChunkWorldSize
         );
         const parameters = new DrawParameters({
             context,

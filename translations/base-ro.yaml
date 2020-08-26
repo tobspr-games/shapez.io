@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io este un joc despre construirea fabricilor pentru a automatiza crearea și combinarea a din ce in ce mai complexe forme într-o hartă infinită.

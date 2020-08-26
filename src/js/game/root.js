@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import { Signal } from "../core/signal";
 import { RandomNumberGenerator } from "../core/rng";
 import { createLogger } from "../core/logging";
@@ -32,14 +31,8 @@ import { Vector } from "../core/vector";
 
 const logger = createLogger("game/root");
 
-/** @enum {string} */
-export const enumLayer = {
-    regular: "regular",
-    wires: "wires",
-};
-
-/** @type {Array<enumLayer>} */
-export const arrayLayers = [enumLayer.regular, enumLayer.wires];
+/** @type {Array<Layer>} */
+export const layers = ["regular", "wires"];
 
 /**
  * The game root is basically the whole game state at a given point,
@@ -134,8 +127,8 @@ export class GameRoot {
         /** @type {DynamicTickrate} */
         this.dynamicTickrate = null;
 
-        /** @type {enumLayer} */
-        this.currentLayer = enumLayer.regular;
+        /** @type {Layer} */
+        this.currentLayer = "regular";
 
         this.signals = {
             // Entities
@@ -156,21 +149,20 @@ export class GameRoot {
             gameSaved: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got saved
             gameRestored: /** @type {TypedSignal<[]>} */ (new Signal()), // Game got restored
 
+            gameFrameStarted: /** @type {TypedSignal<[]>} */ (new Signal()), // New frame
+
             storyGoalCompleted: /** @type {TypedSignal<[number, string]>} */ (new Signal()),
             upgradePurchased: /** @type {TypedSignal<[string]>} */ (new Signal()),
 
             // Called right after game is initialized
             postLoadHook: /** @type {TypedSignal<[]>} */ (new Signal()),
 
-            // Can be used to trigger an async task
-            performAsync: /** @type {TypedSignal<[function]>} */ (new Signal()),
-
             shapeDelivered: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
             itemProduced: /** @type {TypedSignal<[BaseItem]>} */ (new Signal()),
 
             bulkOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
 
-            editModeChanged: /** @type {TypedSignal<[enumLayer]>} */ (new Signal()),
+            editModeChanged: /** @type {TypedSignal<[Layer]>} */ (new Signal()),
 
             // Called to check if an entity can be placed, second parameter is an additional offset.
             // Use to introduce additional placement checks

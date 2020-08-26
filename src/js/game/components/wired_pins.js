@@ -1,13 +1,13 @@
+import { enumDirection, Vector } from "../../core/vector";
+import { BaseItem } from "../base_item";
 import { Component } from "../component";
-import { Vector, enumDirection } from "../../core/vector";
 import { types } from "../../savegame/serialization";
+import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumPinSlotType = {
-    positiveEnergyEjector: "positiveEnergyEjector",
-    negativeEnergyEjector: "negativeEnergyEjector",
-    positiveEnergyAcceptor: "positiveEnergyAcceptor",
-    negativeEnergyAcceptor: "negativeEnergyAcceptor",
+    logicalEjector: "logicalEjector",
+    logicalAcceptor: "logicalAcceptor",
 };
 
 /** @typedef {{
@@ -19,7 +19,9 @@ export const enumPinSlotType = {
 /** @typedef {{
  *   pos: Vector,
  *   type: enumPinSlotType,
- *   direction: enumDirection
+ *   direction: enumDirection,
+ *   value: BaseItem,
+ *   linkedNetwork: import("../systems/wire").WireNetwork
  * }} WirePinSlot */
 
 export class WiredPinsComponent extends Component {
@@ -31,8 +33,7 @@ export class WiredPinsComponent extends Component {
         return {
             slots: types.array(
                 types.structured({
-                    pos: types.vector,
-                    type: types.enum(enumPinSlotType),
+                    value: types.nullable(typeItemSingleton),
                 })
             ),
         };
@@ -76,6 +77,8 @@ export class WiredPinsComponent extends Component {
                 pos: slotData.pos,
                 type: slotData.type,
                 direction: slotData.direction,
+                value: null,
+                linkedNetwork: null,
             });
         }
     }

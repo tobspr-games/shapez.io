@@ -456,7 +456,7 @@ export class TypeEnum extends BaseDataType {
      */
     constructor(enumeration = {}) {
         super();
-        this.availableValues = Object.keys(enumeration);
+        this.availableValues = Object.values(enumeration);
     }
 
     serialize(value) {
@@ -595,10 +595,12 @@ export class TypeClass extends BaseDataType {
     /**
      *
      * @param {FactoryTemplate<*>} registry
+     * @param {(GameRoot, object) => object} customResolver
      */
-    constructor(registry) {
+    constructor(registry, customResolver = null) {
         super();
         this.registry = registry;
+        this.customResolver = customResolver;
     }
 
     serialize(value) {
@@ -640,14 +642,23 @@ export class TypeClass extends BaseDataType {
      * @returns {string|void} String error code or null on success
      */
     deserialize(value, targetObject, targetKey, root) {
-        const instanceClass = this.registry.findById(value.$);
-        if (!instanceClass || !instanceClass.prototype) {
-            return "Invalid class id (runtime-err): " + value.$ + "->" + instanceClass;
-        }
-        const instance = Object.create(instanceClass.prototype);
-        const errorState = instance.deserialize(value.data);
-        if (errorState) {
-            return errorState;
+        let instance;
+
+        if (this.customResolver) {
+            instance = this.customResolver(root, value);
+            if (!instance) {
+                return "Failed to call custom resolver";
+            }
+        } else {
+            const instanceClass = this.registry.findById(value.$);
+            if (!instanceClass || !instanceClass.prototype) {
+                return "Invalid class id (runtime-err): " + value.$ + "->" + instanceClass;
+            }
+            instance = Object.create(instanceClass.prototype);
+            const errorState = instance.deserialize(value.data);
+            if (errorState) {
+                return errorState;
+            }
         }
         targetObject[targetKey] = instance;
     }
@@ -871,14 +882,17 @@ export class TypeArray extends BaseDataType {
      * @returns {string|void} String error code or null on success
      */
     deserialize(value, targetObject, targetKey, root) {
-        const result = new Array(value.length);
+        let destination = targetObject[targetKey];
+        if (!destination) {
+            targetObject[targetKey] = destination = new Array(value.length);
+        }
+
         for (let i = 0; i < value.length; ++i) {
-            const errorStatus = this.innerType.deserializeWithVerify(value[i], result, i, root);
+            const errorStatus = this.innerType.deserializeWithVerify(value[i], destination, i, root);
             if (errorStatus) {
                 return errorStatus;
             }
         }
-        targetObject[targetKey] = result;
     }
 
     getAsJsonSchemaUncached() {
@@ -1226,15 +1240,18 @@ export class TypeStructuredObject extends BaseDataType {
      * @returns {string|void} String error code or null on success
      */
     deserialize(value, targetObject, targetKey, root) {
-        let result = {};
+        let target = targetObject[targetKey];
+        if (!target) {
+            targetObject[targetKey] = target = {};
+        }
+
         for (const key in value) {
             const valueType = this.descriptor[key];
-            const errorCode = valueType.deserializeWithVerify(value[key], result, key, root);
+            const errorCode = valueType.deserializeWithVerify(value[key], target, key, root);
             if (errorCode) {
                 return errorCode;
             }
         }
-        targetObject[targetKey] = result;
     }
 
     getAsJsonSchemaUncached() {

@@ -9,7 +9,8 @@ function tick() {
     const delta = now - lastTick;
     lastTick = now;
 
-    postMessage({ delta });
+    // @ts-ignore
+    self.postMessage({ delta });
 }
 
 setInterval(tick, desiredMsDelay);

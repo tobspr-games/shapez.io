@@ -19,6 +19,7 @@
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io é um jogo cujo objetivo é construir fábricas para automatizar a criação e fusão de formas geométricas cada vez mais complexas num mapa infinito.

@@ -47,9 +47,11 @@ export class HUDStatistics extends BaseHUDPart {
             this.trackClicks(button, () => this.setDataSource(dataSource));
         }
 
+        const buttonDisplaySorted = makeButton(this.filtersDisplayMode, ["displaySorted"]);
         const buttonDisplayDetailed = makeButton(this.filtersDisplayMode, ["displayDetailed"]);
         const buttonDisplayIcons = makeButton(this.filtersDisplayMode, ["displayIcons"]);
 
+        this.trackClicks(buttonDisplaySorted, () => this.toggleSorted());
         this.trackClicks(buttonDisplayIcons, () => this.setDisplayMode(enumDisplayMode.icons));
         this.trackClicks(buttonDisplayDetailed, () => this.setDisplayMode(enumDisplayMode.detailed));
 
@@ -80,6 +82,21 @@ export class HUDStatistics extends BaseHUDPart {
         }
     }
 
+    /**
+     * @param {boolean} sorted
+     */
+    setSorted(sorted) {
+        this.sorted = sorted;
+        this.dialogInner.setAttribute("data-sorted", sorted);
+        if (this.visible) {
+            this.rerenderFull();
+        }
+    }
+
+    toggleSorted() {
+        this.setSorted(!this.sorted);
+    }
+
     initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
@@ -95,6 +112,7 @@ export class HUDStatistics extends BaseHUDPart {
         /** @type {Object.<string, HUDShapeStatisticsHandle>} */
         this.activeHandles = {};
 
+        this.setSorted(true);
         this.setDataSource(enumAnalyticsDataSource.produced);
         this.setDisplayMode(enumDisplayMode.detailed);
 
@@ -183,7 +201,13 @@ export class HUDStatistics extends BaseHUDPart {
             }
         }
 
-        entries.sort((a, b) => b[1] - a[1]);
+        entries.sort((a, b) => {
+            // Sort by shape key for some consistency
+            if (!this.sorted || b[1] == a[1]) {
+                return b[0].localeCompare(a[0]);
+            }
+            return b[1] - a[1];
+        });
 
         let rendered = new Set();
 

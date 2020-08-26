@@ -1,10 +1,8 @@
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
-import { MetaAdvancedProcessorBuilding } from "./buildings/advanced_processor";
 import { MetaBeltBuilding } from "./buildings/belt";
 import { MetaBeltBaseBuilding } from "./buildings/belt_base";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
-import { MetaEnergyGenerator } from "./buildings/energy_generator";
 import { MetaHubBuilding } from "./buildings/hub";
 import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
 import { MetaMixerBuilding } from "./buildings/mixer";
@@ -14,10 +12,16 @@ import { enumSplitterVariants, MetaSplitterBuilding } from "./buildings/splitter
 import { MetaStackerBuilding } from "./buildings/stacker";
 import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
 import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
-import { MetaWireBaseBuilding } from "./buildings/wire_base";
-import { enumWireCrossingVariants, MetaWireCrossingsBuilding } from "./buildings/wire_crossings";
+import { MetaWireBuilding } from "./buildings/wire";
 import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
+import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
+import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
+import { MetaLeverBuilding } from "./buildings/lever";
+import { MetaFilterBuilding } from "./buildings/filter";
+import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire_tunnel";
+import { MetaDisplayBuilding } from "./buildings/display";
+import { MetaVirtualProcessorBuilding, enumVirtualProcessorVariants } from "./buildings/virtual_processor";
 
 const logger = createLogger("building_registry");
 
@@ -33,10 +37,14 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaBeltBuilding);
     gMetaBuildingRegistry.register(MetaUndergroundBeltBuilding);
     gMetaBuildingRegistry.register(MetaHubBuilding);
-    gMetaBuildingRegistry.register(MetaEnergyGenerator);
-    gMetaBuildingRegistry.register(MetaWireBaseBuilding);
-    gMetaBuildingRegistry.register(MetaAdvancedProcessorBuilding);
-    gMetaBuildingRegistry.register(MetaWireCrossingsBuilding);
+    gMetaBuildingRegistry.register(MetaWireBuilding);
+    gMetaBuildingRegistry.register(MetaConstantSignalBuilding);
+    gMetaBuildingRegistry.register(MetaLogicGateBuilding);
+    gMetaBuildingRegistry.register(MetaLeverBuilding);
+    gMetaBuildingRegistry.register(MetaFilterBuilding);
+    gMetaBuildingRegistry.register(MetaWireTunnelBuilding);
+    gMetaBuildingRegistry.register(MetaDisplayBuilding);
+    gMetaBuildingRegistry.register(MetaVirtualProcessorBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
@@ -86,20 +94,41 @@ export function initMetaBuildingRegistry() {
     // Hub
     registerBuildingVariant(26, MetaHubBuilding);
 
-    // Energy generator
-    registerBuildingVariant(27, MetaEnergyGenerator);
-
     // Wire
-    registerBuildingVariant(28, MetaWireBaseBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(29, MetaWireBaseBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(30, MetaWireBaseBuilding, defaultBuildingVariant, 2);
+    registerBuildingVariant(27, MetaWireBuilding, defaultBuildingVariant, 0);
+    registerBuildingVariant(28, MetaWireBuilding, defaultBuildingVariant, 1);
+    registerBuildingVariant(29, MetaWireBuilding, defaultBuildingVariant, 2);
+    registerBuildingVariant(30, MetaWireBuilding, defaultBuildingVariant, 3);
 
-    // Advanced processor
-    registerBuildingVariant(31, MetaAdvancedProcessorBuilding);
+    // Constant signal
+    registerBuildingVariant(31, MetaConstantSignalBuilding);
 
-    // Wire crossing
-    registerBuildingVariant(32, MetaWireCrossingsBuilding);
-    registerBuildingVariant(33, MetaWireCrossingsBuilding, enumWireCrossingVariants.merger);
+    // Logic gate
+    registerBuildingVariant(32, MetaLogicGateBuilding);
+    registerBuildingVariant(34, MetaLogicGateBuilding, enumLogicGateVariants.not);
+    registerBuildingVariant(35, MetaLogicGateBuilding, enumLogicGateVariants.xor);
+    registerBuildingVariant(36, MetaLogicGateBuilding, enumLogicGateVariants.or);
+    registerBuildingVariant(38, MetaLogicGateBuilding, enumLogicGateVariants.transistor);
+
+    // Lever
+    registerBuildingVariant(33, MetaLeverBuilding);
+
+    // Filter
+    registerBuildingVariant(37, MetaFilterBuilding);
+
+    // Wire tunnel
+    registerBuildingVariant(39, MetaWireTunnelBuilding);
+    registerBuildingVariant(41, MetaWireTunnelBuilding, enumWireTunnelVariants.coating);
+
+    // Display
+    registerBuildingVariant(40, MetaDisplayBuilding);
+
+    // Virtual Processor
+    registerBuildingVariant(42, MetaVirtualProcessorBuilding);
+    registerBuildingVariant(43, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.analyzer);
+    registerBuildingVariant(44, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.rotater);
+    registerBuildingVariant(45, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.unstacker);
+    registerBuildingVariant(46, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.shapecompare);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

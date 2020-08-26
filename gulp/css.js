@@ -77,7 +77,6 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
                 .pipe($.plumber())
                 .pipe($.sass.sync({ outputStyle: "compressed" }).on("error", $.sass.logError))
                 .pipe($.postcss(postcssPlugins(true, { cachebust: true })))
-                // .pipe($.cssbeautify())
                 .pipe(gulp.dest(buildFolder))
         );
     });
@@ -90,7 +89,6 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
                 .pipe($.plumber())
                 .pipe($.sass.sync({ outputStyle: "compressed" }).on("error", $.sass.logError))
                 .pipe($.postcss(postcssPlugins(true, { cachebust: false })))
-                // .pipe($.cssbeautify())
                 .pipe(gulp.dest(buildFolder))
         );
     });
