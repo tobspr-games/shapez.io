@@ -60,9 +60,9 @@ steamPage:
         [/list]
 
         [b]Zukünftige Updates:[/b]
-        
+
         Ich update das Spiel sehr oft, und versuche wöchentlich ein Update zu veröffentlichen!
-        
+
         [list]
             [*] Verschiedene Karten und Herausforderungen (z.B. Karten mit Hindernissen)
             [*] Herausforderungen (liefere die geforderte Form mit einer beschränkten Karte / anzahl an Gebäuden ab)
@@ -72,7 +72,6 @@ steamPage:
             [*] Performanceverbesserungen (Das Spiel läuft bereits sehr gut!)
             [*] Und vieles mehr!
         [/list]
-        
 
         [b]Das Spiel ist open source![/b]
 
@@ -250,8 +249,7 @@ dialogs:
 
     massCutInsufficientConfirm:
         title: Ausschneiden bestätigen
-        desc: >-
-            Du hast aktuell nicht genug Blaupausenformen, um die Auswahl einzufügen! Möchtest du sie trotzdem ausschneiden?
+        desc: Du kannst dir das Einfügen nicht leisten! Bist du sicher, dass du trotzdem Ausschneiden möchtest?
 
     blueprintsNotUnlocked:
         title: Noch nicht freigeschaltet
@@ -274,19 +272,11 @@ dialogs:
 
     markerDemoLimit:
         desc: Du kannst nur 2 Marker in der Demo benutzen. Hol dir die Standalone, um unendlich viele Marker zu erstellen!
-    massCutConfirm:
-        title: Ausschneiden bestätigen
-        desc: >-
-            Du schneidest sehr viele Gebäude aus (<count> um genau zu sein)! Bist du dir sicher?
-
+    
     exportScreenshotWarning:
         title: Bildschirmfoto exportieren
         desc: >-
             Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für extrem große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
-
-    massCutInsufficientConfirm:
-        title: Ausschneiden bestätigen
-        desc: Du kannst dir das Einfügen nicht leisten! Bist du sicher, dass du trotzdem Ausschneiden möchtest?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -434,22 +424,7 @@ ingame:
 
             1_3_expand: >-
                 Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
-
-    colors:
-        red: Rot
-        green: Grün
-        blue: Blau
-        yellow: Gelb
-        purple: Violett
-        cyan: Cyan
-        white: Weiß
-        uncolored: Farblos
-        black: Schwarz
-    shapeViewer:
-        title: Ebenen
-        empty: Leer
-        copyKey: Key kopieren
-
+     
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -791,11 +766,6 @@ settings:
             description: >-
                 Aktiviert den Vignetteneffekt, der den Rand des Bildschirms zunehmend verdunkelt und das Lesen der Textfelder vereinfacht.
 
-        rotationByBuilding:
-            title: Rotation pro Gebäudetyp
-            description: >-
-                Jeder Gebäudetyp merkt sich einzeln, welche Rotation ausgewählt ist. Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen Gebäudetypen wechselst.
-
         compactBuildingInfo:
             title: Kompakte Gebäudeinformationen
             description: >-
@@ -805,10 +775,7 @@ settings:
             title: Deaktiviere Warnungsdialog beim Löschen
             description: >-
                 Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
-
-        enableColorBlindHelper:
-            title: Modus für Farbenblinde
-            description: Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
+            
         rotationByBuilding:
             title: Rotation pro Gebäudetyp
             description: >-
@@ -885,14 +852,6 @@ keybindings:
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Förderbandorientierung invertieren
         pasteLastBlueprint: Letzte Blaupause einfügen
-        massSelectCut: Areal ausschneiden
-        exportScreenshot: Ganze Fabrik als Foto exportieren
-        mapMoveFaster: Schneller bewegen
-        lockBeltDirection: Bandplaner aktivieren
-        switchDirectionLockSide: "Planer: Seite wechseln"
-        pipette: Pipette
-        menuClose: Menü schließen
-        switchLayers: Schicht wechseln
         advanced_processor: Farbinvertierer
         energy_generator: Stromgenerator
         wire: Stromkabel
