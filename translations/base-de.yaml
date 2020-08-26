@@ -271,7 +271,7 @@ dialogs:
 
     markerDemoLimit:
         desc: Du kannst nur 2 Marker in der Demo benutzen. Hol dir die Standalone, um unendlich viele Marker zu erstellen!
-        
+
     exportScreenshotWarning:
         title: Bildschirmfoto exportieren
         desc: >-
