@@ -106,7 +106,7 @@ global:
         trillions: T
 
     # Shown for infinitely big numbers
-    infinite: unend
+    infinite: unendlich
 
     time:
         # Used for formatting past time dates
