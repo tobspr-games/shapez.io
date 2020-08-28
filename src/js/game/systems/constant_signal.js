@@ -52,6 +52,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             desc: "Enter a shape code, color or '0' or '1'",
             formElements: [signalValueInput],
             buttons: ["cancel:bad:escape", "ok:good:enter"],
+            closeButton: false,
         });
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
 
