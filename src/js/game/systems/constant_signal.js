@@ -107,6 +107,11 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
      * @returns {BaseItem}
      */
     parseSignalCode(code) {
+        if (!this.root || !this.root.shapeDefinitionMgr) {
+            // Stale reference
+            return null;
+        }
+
         code = trim(code);
         const codeLower = code.toLowerCase();
 
