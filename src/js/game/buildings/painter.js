@@ -3,13 +3,12 @@ import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { enumItemProcessorTypes, ItemProcessorComponent, enumItemProcessorRequirements } from "../components/item_processor";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
-import { ProcessingRequirementComponent } from "../components/processing_requirement";
 
 /** @enum {string} */
 export const enumPainterVariants = { mirrored: "mirrored", double: "double", quad: "quad" };
@@ -124,9 +123,6 @@ export class MetaPainterBuilding extends MetaBuilding {
                 if (entity.components.WiredPins) {
                     entity.removeComponent(WiredPinsComponent)
                 }
-                if (entity.components.ProcessingRequirement) {
-                    entity.removeComponent(ProcessingRequirementComponent);
-                }
 
                 entity.components.ItemAcceptor.setSlots([
                     {
@@ -144,7 +140,9 @@ export class MetaPainterBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.painter;
+                entity.components.ItemProcessor.processingRequirement = null;
                 entity.components.ItemProcessor.inputsPerCharge = 2;
+
                 entity.components.ItemEjector.setSlots([
                     { pos: new Vector(1, 0), direction: enumDirection.right },
                 ]);
@@ -153,9 +151,6 @@ export class MetaPainterBuilding extends MetaBuilding {
             case enumPainterVariants.double: {
                 if (entity.components.WiredPins) {
                     entity.removeComponent(WiredPinsComponent)
-                }
-                if (entity.components.ProcessingRequirement) {
-                    entity.removeComponent(ProcessingRequirementComponent);
                 }
 
                 entity.components.ItemAcceptor.setSlots([
@@ -177,6 +172,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.painterDouble;
+                entity.components.ItemProcessor.processingRequirement = null;
                 entity.components.ItemProcessor.inputsPerCharge = 3;
 
                 entity.components.ItemEjector.setSlots([
@@ -212,12 +208,6 @@ export class MetaPainterBuilding extends MetaBuilding {
                     }));
                 }
 
-                if (!entity.components.ProcessingRequirement) {
-                    entity.addComponent(new ProcessingRequirementComponent({
-                        processorType: enumItemProcessorTypes.painterQuad
-                    }));
-                }
-
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -247,6 +237,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.painterQuad;
+                entity.components.ItemProcessor.processingRequirement = enumItemProcessorRequirements.painterQuad;
                 entity.components.ItemProcessor.inputsPerCharge = 5;
 
                 entity.components.ItemEjector.setSlots([

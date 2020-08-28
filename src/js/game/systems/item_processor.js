@@ -1,7 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { enumColors, enumColorMixingResults } from "../colors";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { enumItemProcessorTypes, ItemProcessorComponent, enumItemProcessorRequirements } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item";
@@ -72,16 +72,74 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             // Check if we have an empty queue and can start a new charge
             if (processorComp.itemsToEject.length === 0) {
-                const procRequirementComp = entity.components.ProcessingRequirement;
-
-                if (procRequirementComp) {
-                    if (procRequirementComp.canProcess(entity)) {
+                if (entity.components.ItemProcessor.processingRequirement) {
+                    if (this.canProcess(entity)) {
                         this.startNewCharge(entity);
                     }
                 } else if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
                     this.startNewCharge(entity);
                 }
             }
+        }
+    }
+
+    /**
+     * Checks whether it's possible to process something
+     * @param {Entity} entity
+     */
+    canProcess(entity) {
+        switch (entity.components.ItemProcessor.processingRequirement) {
+            case enumItemProcessorRequirements.painterQuad: {
+                // For quad-painter, pins match slots
+                // boolean true means "disable input"
+                // a color means "disable if not matched"
+
+                const processorComp = entity.components.ItemProcessor;
+                const pinsComp = entity.components.WiredPins;
+
+                /** @type {Object.<string, { item: BaseItem, sourceSlot: number }>} */
+                const itemsBySlot = {};
+                for (let i = 0; i < processorComp.inputSlots.length; ++i) {
+                    itemsBySlot[processorComp.inputSlots[i].sourceSlot] = processorComp.inputSlots[i];
+                }
+
+                // first slot is the shape
+                if (!itemsBySlot[0]) return false;
+                const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+
+                // Here we check just basic things`
+                // Stop processing if anything except TRUE is
+                // set and there is no item.
+                for (let i = 0; i < 4; ++i) {
+                    const netValue = pinsComp.slots[i].linkedNetwork ?
+                        pinsComp.slots[i].linkedNetwork.currentValue :
+                        null;
+
+                    const currentItem = itemsBySlot[i + 1];
+
+                    if ((netValue == null || !netValue.equals(BOOL_TRUE_SINGLETON)) && currentItem == null) {
+                        let quadCount = 0;
+
+                        for (let j = 0; j < 4; ++j) {
+                            const layer = shapeItem.definition.layers[j];
+                            if (layer && layer[i]) {
+                                quadCount++;
+                            }
+                        }
+
+                        if (quadCount > 0) {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+            default:
+                assertAlways(
+                    false,
+                    "Unknown requirement for " + entity.components.ItemProcessor.processingRequirement
+                );
         }
     }
 
@@ -361,7 +419,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     (!skipped[2] && colorBR) ? colorBR.color : null,
                     (!skipped[3] && colorBL) ? colorBL.color : null,
                 ];
-                console.table([colorTL, skipped[0], colorTR, skipped[1]]);
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
                     shapeItem.definition,
