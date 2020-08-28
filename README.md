@@ -59,7 +59,7 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 
 1. Create the component file in `src/js/game/components/<name_lowercase>.js`
 2. Create a component class (e.g. `MyFancyComponent`) which `extends Component`
-3. Create a `static getId()` method which should return the `CamelCaseName` without component (e.g. `MyFancy`)
+3. Create a `static getId()` method which should return the `PascalCaseName` without component (e.g. `MyFancy`)
 4. If any data needs to be persisted, create a `static getSchema()` which should return the properties to be saved (See other components)
 5. Add a constructor. **The constructor must be called with optional parameters only!** `new MyFancyComponent({})` should always work.
 6. Add any props you need in the constructor.
