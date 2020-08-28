@@ -377,8 +377,8 @@ ingame:
                 description: Displaying shapes which are delivered to your central building.
         noShapesProduced: No shapes have been produced so far.
 
-        # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        # Displays the shapes per second, e.g. '523 / s'
+        shapesPerSecond: <shapes> / s
 
     # Settings menu, when you press "ESC"
     settingsMenu:
