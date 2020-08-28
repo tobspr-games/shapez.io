@@ -87,7 +87,7 @@ export class HUDStatistics extends BaseHUDPart {
      */
     setSorted(sorted) {
         this.sorted = sorted;
-        this.dialogInner.setAttribute("data-sorted", sorted);
+        this.dialogInner.setAttribute("data-sorted", String(sorted));
         if (this.visible) {
             this.rerenderFull();
         }
@@ -201,7 +201,16 @@ export class HUDStatistics extends BaseHUDPart {
             }
         }
 
+        const pinnedShapes = this.root.hud.parts.pinnedShapes;
+
         entries.sort((a, b) => {
+            const aPinned = pinnedShapes.isShapePinned(a[0]);
+            const bPinned = pinnedShapes.isShapePinned(b[0]);
+
+            if (aPinned !== bPinned) {
+                return aPinned ? -1 : 1;
+            }
+
             // Sort by shape key for some consistency
             if (!this.sorted || b[1] == a[1]) {
                 return b[0].localeCompare(a[0]);

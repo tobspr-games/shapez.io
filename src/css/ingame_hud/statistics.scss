@@ -18,8 +18,18 @@
             @include S(min-width, 30px);
             color: #fff;
             opacity: 0.25;
-            @include S(margin-left, 1px);
             @include S(border-radius, $globalBorderRadius);
+
+            border-radius: 0;
+            &:first-child {
+                @include S(border-top-left-radius, $globalBorderRadius);
+                @include S(border-bottom-left-radius, $globalBorderRadius);
+            }
+
+            &:last-child {
+                @include S(border-top-right-radius, $globalBorderRadius);
+                @include S(border-bottom-right-radius, $globalBorderRadius);
+            }
 
             &.displayIcons,
             &.displayDetailed,
@@ -32,7 +42,7 @@
                 &.displaySorted {
                     background-image: uiResource("icons/display_sorted.png");
                     background-size: #{D(11.5px)};
-                    margin-right: 20px;
+                    margin-right: 4px;
                     @include S(padding, 1px, 0);
                 }
             }
@@ -89,14 +99,22 @@
             display: grid;
             @include S(border-radius, $globalBorderRadius);
 
-            @include DarkThemeOverride {
-                background: #222428;
-            }
-
             grid-template-columns: 1fr auto;
             @include S(padding, 5px);
             &:last-child {
                 margin-bottom: 0;
+            }
+
+            &.pinned {
+                background: #e3e5e9;
+            }
+
+            @include DarkThemeOverride {
+                background: #222428;
+
+                &.pinned {
+                    background: darken(#222428, 10);
+                }
             }
 
             canvas.icon {
@@ -108,7 +126,6 @@
 
             .counter {
                 @include SuperSmallText;
-
                 @include S(padding, 0, 3px);
             }
         }
@@ -141,7 +158,6 @@
                 .counter {
                     grid-column: 1 / 2;
                     grid-row: 2 / 3;
-                    background: rgba(0, 10, 20, 0.05);
                     justify-self: end;
                 }
             }

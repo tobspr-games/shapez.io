@@ -74,6 +74,11 @@ export class HUDShapeStatisticsHandle {
             return;
         }
 
+        this.element.classList.toggle(
+            "pinned",
+            this.root.hud.parts.pinnedShapes.isShapePinned(this.definition.getHash())
+        );
+
         switch (dataSource) {
             case enumAnalyticsDataSource.stored: {
                 this.counter.innerText = formatBigNumber(
