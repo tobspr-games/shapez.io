@@ -22,7 +22,7 @@
 ---
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io giderek karmaşıklaşan şekillerin sonsuz bir harita üzerinde üretimi ve birleştirilmesi hakında bir oyundur.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -31,56 +31,57 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to Hız up your factory.
+        shapez.io giderek karmaşıklaşan şekillerin sonsuz bir harita üzerinde üretimi ve birleştirilmesi hakında bir oyundur.
+        Talep edilen şekilleri verdikten sonra oyundaki geliştirmeleri açıp fabrikanızı hızlandırabilirsiniz.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Şekiller için talep artınca fabrikanı büyütüp talebi karşılamalısın - Kaynakları unutma! Sonsuz [b]sonsuz haritada[/b] genişlemen gerekecek!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Yakında renkleri karıştırman ve şekileri boyaman gerekecek - Talebi karşılamak için kırmızı, mavi ve yeşili karıştırıp şekilleri boyacaksın
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Bu oyun 18 kademeli seviye içerir (Seni saatlerce meşgul tutumalı) ama sürekli yeni şeyler ekliyorum - Ekleyecek çok şey var!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Bu oyunu satın almak indirilebilir versiyonuna (Ek özellikler var) ve yeni özeliklerine erişebileceksiniz.
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
+        [b]İndirebilir versiyonun avantajları[/b]
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Karanlık mod
+            [*] Sonsuz işaret
+            [*] Sonsuz kayıt alanı
+            [*] Ek ayarlar
+            [*] Yakında geliyor: Kablo ve enerji! Temmuz sonunu hedefliyorum.
+            [*] Yakında geliyor: Daha fazla seviyeler
+            [*] Shapez.io'yu geliştirmeme izin veriyor ❤️
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Gelecek güncellemeler[/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Oyunu sık sık güncelliyorum ve en az haftada bir güncellemeye çalışıyorum!
+
+        [list]
+            [*] Farklı haritalar ve görevler (Örneğin engelli haritalar)
+            [*] Yapbozlar (İstenen şekilleri kısıtlı bir alanda / belli yapılar ile)
+            [*] Hikaye modu ile yapıların maliyeti olacak.
+            [*] Ayarlanabilir harita yapımı(Ayarlanabilir kaynak/şekil  boyut/sıklığı, seedler ve daha fazlası)
+            [*] Ek şekiller
+            [*] Performans optimizasyonları (oyun zaten iyi çalışıyor)
+            [*] Ve daha fazlası
+        [/list]
+
+        [b]Bu oyun açık kaynaklı![/b]
+
+        Bu oyuna herkes katkıda bulunabilir! Aktif olarak toplulukğa katkıda bulunuyorum ve bütün önerileri gözden geçirmeye çalışıyorum.
+        Yol planıma Trello'dan bakmayı unutmayın!
+        
 
         [b]Links[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Dİscord'umuz[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]yol planı[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]KAynak kodu (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Çevirmeye yardımcı olun[/url]
         [/list]
 
     discordLink: Official Discord - Chat with me!
