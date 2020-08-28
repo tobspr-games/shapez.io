@@ -334,6 +334,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         }
 
         // Synchronize rotation and origin
+        this.fakeEntity.layer = metaBuilding.getLayer();
         const staticComp = this.fakeEntity.components.StaticMapEntity;
         staticComp.origin = mouseTile;
         staticComp.rotation = rotation;

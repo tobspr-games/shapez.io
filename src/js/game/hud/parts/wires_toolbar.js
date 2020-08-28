@@ -4,6 +4,7 @@ import { MetaConstantSignalBuilding } from "../../buildings/constant_signal";
 import { MetaLogicGateBuilding } from "../../buildings/logic_gate";
 import { MetaLeverBuilding } from "../../buildings/lever";
 import { MetaWireTunnelBuilding } from "../../buildings/wire_tunnel";
+import { MetaVirtualProcessorBuilding } from "../../buildings/virtual_processor";
 
 const supportedBuildings = [
     MetaWireBuilding,
@@ -11,6 +12,7 @@ const supportedBuildings = [
     MetaConstantSignalBuilding,
     MetaLogicGateBuilding,
     MetaLeverBuilding,
+    MetaVirtualProcessorBuilding,
 ];
 
 export class HUDWiresToolbar extends HUDBaseToolbar {

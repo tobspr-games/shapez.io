@@ -28,7 +28,7 @@ export class MetaCutterBuilding extends MetaBuilding {
             case enumCutterVariants.quad:
                 return new Vector(4, 1);
             default:
-                assertAlways(false, "Unknown splitter variant: " + variant);
+                assertAlways(false, "Unknown cutter variant: " + variant);
         }
     }
 

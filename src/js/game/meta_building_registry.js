@@ -21,6 +21,7 @@ import { MetaLeverBuilding } from "./buildings/lever";
 import { MetaFilterBuilding } from "./buildings/filter";
 import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire_tunnel";
 import { MetaDisplayBuilding } from "./buildings/display";
+import { MetaVirtualProcessorBuilding, enumVirtualProcessorVariants } from "./buildings/virtual_processor";
 
 const logger = createLogger("building_registry");
 
@@ -43,6 +44,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaFilterBuilding);
     gMetaBuildingRegistry.register(MetaWireTunnelBuilding);
     gMetaBuildingRegistry.register(MetaDisplayBuilding);
+    gMetaBuildingRegistry.register(MetaVirtualProcessorBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
@@ -53,6 +55,8 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(4, MetaSplitterBuilding);
     registerBuildingVariant(5, MetaSplitterBuilding, enumSplitterVariants.compact);
     registerBuildingVariant(6, MetaSplitterBuilding, enumSplitterVariants.compactInverse);
+    registerBuildingVariant(47, MetaSplitterBuilding, enumSplitterVariants.compactMerge);
+    registerBuildingVariant(48, MetaSplitterBuilding, enumSplitterVariants.compactMergeInverse);
 
     // Miner
     registerBuildingVariant(7, MetaMinerBuilding);
@@ -120,6 +124,13 @@ export function initMetaBuildingRegistry() {
 
     // Display
     registerBuildingVariant(40, MetaDisplayBuilding);
+
+    // Virtual Processor
+    registerBuildingVariant(42, MetaVirtualProcessorBuilding);
+    registerBuildingVariant(43, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.analyzer);
+    registerBuildingVariant(44, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.rotater);
+    registerBuildingVariant(45, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.unstacker);
+    registerBuildingVariant(46, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.shapecompare);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

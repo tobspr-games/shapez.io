@@ -153,10 +153,11 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Sorry, but the game is known to run slow on your browser! Get the standalone version or download Google Chrome for the full experience.
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
+    savegameUnnamed: Unnamed
 
 dialogs:
     buttons:
@@ -274,6 +275,10 @@ dialogs:
         title: Export screenshot
         desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
 
+    renameSavegame:
+        title: Rename Savegame
+        desc: You can rename your savegame here.
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -304,7 +309,7 @@ ingame:
         green: Green
         blue: Blue
         yellow: Yellow
-        purple: Purple
+        purple: Magenta
         cyan: Cyan
         white: White
         black: Black
@@ -372,8 +377,8 @@ ingame:
                 description: Displaying shapes which are delivered to your central building.
         noShapesProduced: No shapes have been produced so far.
 
-        # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        # Displays the shapes per second, e.g. '523 / s'
+        shapesPerSecond: <shapes> / s
 
     # Settings menu, when you press "ESC"
     settingsMenu:
@@ -481,6 +486,14 @@ buildings:
         compact-inverse:
             name: Merger (compact)
             description: Merges two conveyor belts into one.
+
+        compact-merge:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+
+        compact-merge-inverse:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
 
     cutter:
         default:
@@ -591,11 +604,32 @@ buildings:
             # TEMP
             description: Can be connected on the wires layer to show a color or shape. When inputting a boolean item, the display will be white if the value is 1.
 
+    virtual_processor:
+        default:
+            name: &virtual_processor Virtual Cutter
+            description: Virtually cuts the shape input from top to bottom and returns both halfs.
+
+        analyzer:
+            name: Shape Analyzer
+            description: Analyzes the top right quadrant of the lowest layer of the shape and returns its shape and color
+
+        rotater:
+            name: Virtual Rotater
+            description: Virtually rotates the shape by 90 degrees clockwise.
+
+        unstacker:
+            name: Virtual Unstacker
+            description: Returns the topmost layer to the right, and the remaining ones on the left.
+
+        shapecompare:
+            name: Compare Shapes
+            description: Returns true if both shapes are exactly equal
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes in half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I have given you the trash can, which destroys everything you put into it!
 
     reward_rotater:
         title: Rotating
@@ -819,6 +853,11 @@ settings:
             title: Disable Grid
             description: >-
                 Disabling the tile grid can help with the performance. This also makes the game look cleaner!
+
+        clearCursorOnDeleteWhilePlacing:
+            title: Clear Cursor on Right Click
+            description: >-
+                Enabled by default, clears the cursor whenever you right click while you have a building selected for placement. If disabled, you can delete buildings by right-clicking while placing a building.
 
         lowQualityTextures:
             title: Low quality textures (Ugly)

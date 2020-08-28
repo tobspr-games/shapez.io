@@ -27,6 +27,7 @@
  *   version: number,
  *   internalId: string,
  *   level: number
+ *   name: string|null
  * }} SavegameMetadata
  *
  * @typedef {{

@@ -23,10 +23,6 @@ export class MetaLeverBuilding extends MetaBuilding {
         return true;
     }
 
-    getIsRotateable() {
-        return false;
-    }
-
     getDimensions() {
         return new Vector(1, 1);
     }

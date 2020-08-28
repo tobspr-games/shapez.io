@@ -37,7 +37,7 @@ export class SavegameManager extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 1001;
+        return 1002;
     }
 
     /**
@@ -62,6 +62,13 @@ export class SavegameManager extends ReadWriteProxy {
                 savegame.level = 0;
             });
             data.version = 1001;
+        }
+
+        if (data.version < 1002) {
+            data.savegames.forEach(savegame => {
+                savegame.name = null;
+            });
+            data.version = 1002;
         }
 
         return ExplainedResult.good();

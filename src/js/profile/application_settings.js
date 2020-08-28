@@ -243,6 +243,7 @@ export const allApplicationSettings = [
     }),
 
     new BoolSetting("alwaysMultiplace", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("clearCursorOnDeleteWhilePlacing", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("vignette", enumCategories.userInterface, (app, value) => {}),
     new BoolSetting("compactBuildingInfo", enumCategories.userInterface, (app, value) => {}),
@@ -289,6 +290,7 @@ class SettingsStorage {
         this.compactBuildingInfo = false;
         this.disableCutDeleteWarnings = false;
         this.rotationByBuilding = true;
+        this.clearCursorOnDeleteWhilePlacing = true;
 
         this.enableColorBlindHelper = false;
 
@@ -495,7 +497,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 21;
+        return 22;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -586,6 +588,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 21) {
             data.settings.lowQualityTextures = false;
             data.version = 21;
+        }
+
+        if (data.version < 22) {
+            data.settings.clearCursorOnDeleteWhilePlacing = true;
+            data.version = 22;
         }
 
         return ExplainedResult.good();

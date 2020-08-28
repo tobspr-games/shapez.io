@@ -271,10 +271,19 @@ export class HUDMassSelector extends BaseHUDPart {
 
             parameters.context.fillStyle = THEME.map.selectionOverlay;
 
+            const renderedUids = new Set();
+
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     const contents = this.root.map.getLayerContentXY(x, y, this.root.currentLayer);
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
+                        // Prevent rendering the overlay twice
+                        const uid = contents.uid;
+                        if (renderedUids.has(uid)) {
+                            continue;
+                        }
+                        renderedUids.add(uid);
+
                         const staticComp = contents.components.StaticMapEntity;
                         const bounds = staticComp.getTileSpaceBounds();
                         parameters.context.beginRoundedRect(

@@ -74,6 +74,11 @@ export class HUDShapeStatisticsHandle {
             return;
         }
 
+        this.element.classList.toggle(
+            "pinned",
+            this.root.hud.parts.pinnedShapes.isShapePinned(this.definition.getHash())
+        );
+
         switch (dataSource) {
             case enumAnalyticsDataSource.stored: {
                 this.counter.innerText = formatBigNumber(
@@ -87,15 +92,10 @@ export class HUDShapeStatisticsHandle {
                     (this.root.productionAnalytics.getCurrentShapeRate(dataSource, this.definition) /
                         globalConfig.analyticsSliceDurationSeconds) *
                     60;
-                this.counter.innerText = T.ingame.statistics.shapesPerMinute.replace(
+                this.counter.innerText = T.ingame.statistics.shapesPerSecond.replace(
                     "<shapes>",
-                    formatBigNumber(rate)
+                    formatBigNumber(rate / 60)
                 );
-
-                if (G_IS_DEV && globalConfig.debug.detailedStatistics) {
-                    this.counter.innerText = "" + round2Digits(rate / 60) + " /s";
-                }
-
                 break;
             }
         }

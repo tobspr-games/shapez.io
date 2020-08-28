@@ -37,14 +37,7 @@ export class LeverSystem extends GameSystemWithFilter {
             const leverComp = entity.components.Lever;
             if (leverComp) {
                 const sprite = leverComp.toggled ? this.spriteOn : this.spriteOff;
-                const origin = entity.components.StaticMapEntity.origin;
-                sprite.drawCached(
-                    parameters,
-                    origin.x * globalConfig.tileSize,
-                    origin.y * globalConfig.tileSize,
-                    globalConfig.tileSize,
-                    globalConfig.tileSize
-                );
+                entity.components.StaticMapEntity.drawSpriteOnBoundsClipped(parameters, sprite);
             }
         }
     }

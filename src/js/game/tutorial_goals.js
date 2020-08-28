@@ -24,6 +24,9 @@ export const enumHubGoalRewards = {
     reward_painter_quad: "reward_painter_quad",
     reward_storage: "reward_storage",
 
+    // @todo: unlock
+    reward_merger_compact: "reward_compact_merger",
+
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
 
