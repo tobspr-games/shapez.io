@@ -271,7 +271,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
             parameters.context.fillStyle = THEME.map.selectionOverlay;
 
-            let renderedUids = new Set();
+            const renderedUids = new Set();
 
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
