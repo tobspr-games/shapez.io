@@ -55,6 +55,8 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(4, MetaSplitterBuilding);
     registerBuildingVariant(5, MetaSplitterBuilding, enumSplitterVariants.compact);
     registerBuildingVariant(6, MetaSplitterBuilding, enumSplitterVariants.compactInverse);
+    registerBuildingVariant(47, MetaSplitterBuilding, enumSplitterVariants.compactMerge);
+    registerBuildingVariant(48, MetaSplitterBuilding, enumSplitterVariants.compactMergeInverse);
 
     // Miner
     registerBuildingVariant(7, MetaMinerBuilding);

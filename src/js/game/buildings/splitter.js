@@ -11,7 +11,12 @@ import { formatItemsPerSecond } from "../../core/utils";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 
 /** @enum {string} */
-export const enumSplitterVariants = { compact: "compact", compactInverse: "compact-inverse" };
+export const enumSplitterVariants = {
+    compact: "compact",
+    compactInverse: "compact-inverse",
+    compactMerge: "compact-merge",
+    compactMergeInverse: "compact-merge-inverse",
+};
 
 export class MetaSplitterBuilding extends MetaBuilding {
     constructor() {
@@ -24,6 +29,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 return new Vector(2, 1);
             case enumSplitterVariants.compact:
             case enumSplitterVariants.compactInverse:
+            case enumSplitterVariants.compactMerge:
+            case enumSplitterVariants.compactMergeInverse:
                 return new Vector(1, 1);
             default:
                 assertAlways(false, "Unknown splitter variant: " + variant);
@@ -48,14 +55,17 @@ export class MetaSplitterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
+        let available = [defaultBuildingVariant];
+
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_splitter_compact)) {
-            return [
-                defaultBuildingVariant,
-                enumSplitterVariants.compact,
-                enumSplitterVariants.compactInverse,
-            ];
+            available.push(enumSplitterVariants.compact, enumSplitterVariants.compactInverse);
         }
-        return super.getAvailableVariants(root);
+
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_merger_compact)) {
+            available.push(enumSplitterVariants.compactMerge, enumSplitterVariants.compactMergeInverse);
+        }
+
+        return available;
     }
 
     /**
@@ -151,8 +161,37 @@ export class MetaSplitterBuilding extends MetaBuilding {
 
                 break;
             }
+            case enumSplitterVariants.compactMerge:
+            case enumSplitterVariants.compactMergeInverse: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                ]);
+
+                entity.components.ItemEjector.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction:
+                            variant === enumSplitterVariants.compactMergeInverse
+                                ? enumDirection.left
+                                : enumDirection.right,
+                    },
+                ]);
+
+                entity.components.BeltUnderlays.underlays = [
+                    { pos: new Vector(0, 0), direction: enumDirection.top },
+                ];
+
+                break;
+            }
             default:
-                assertAlways(false, "Unknown painter variant: " + variant);
+                assertAlways(false, "Unknown splitter variant: " + variant);
         }
     }
 }

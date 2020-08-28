@@ -482,6 +482,14 @@ buildings:
             name: Merger (compact)
             description: Merges two conveyor belts into one.
 
+        compact-merge:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+
+        compact-merge-inverse:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+
     cutter:
         default:
             name: &cutter Cutter
