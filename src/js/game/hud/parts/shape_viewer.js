@@ -84,7 +84,7 @@ export class HUDShapeViewer extends BaseHUDPart {
         const layers = definition.layers;
         this.contentDiv.setAttribute("data-layers", layers.length);
 
-        for (let i = 0; i < layers.length; ++i) {
+        for (let i = layers.length - 1; i >= 0; --i) {
             const layerElem = makeDiv(this.renderArea, null, ["layer", "layer-" + i]);
 
             let fakeLayers = [];
