@@ -841,6 +841,11 @@ settings:
             description: >-
                 Disabling the tile grid can help with the performance. This also makes the game look cleaner!
 
+        clearCursorOnDeleteWhilePlacing:
+            title: Clear Cursor on Right Click
+            description: >-
+                Enabled by default, clears the cursor whenever you right click while you have a building selected for placement. If disabled, you can delete buildings by right-clicking while placing a building.
+
         lowQualityTextures:
             title: Low quality textures (Ugly)
             description: >-

@@ -641,7 +641,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         // Deletion
-        if (button === enumMouseButton.right && !metaBuilding) {
+        if (
+            button === enumMouseButton.right &&
+            (!metaBuilding || !this.root.app.settings.getAllSettings().clearCursorOnDeleteWhilePlacing)
+        ) {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
