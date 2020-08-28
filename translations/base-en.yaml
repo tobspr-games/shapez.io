@@ -153,7 +153,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Sorry, but the game is known to run slow on your browser! Get the standalone version or download Google Chrome for the full experience.
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
@@ -624,7 +624,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes in half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I have given you the trash can, which destroys everything you put into it!
 
     reward_rotater:
         title: Rotating
