@@ -47,16 +47,23 @@ export class MapChunkView extends MapChunk {
     }
 
     /**
-     * Draws the foreground layer
+     * Draws the dynamic foreground layer
      * @param {DrawParameters} parameters
      */
-    drawForegroundLayer(parameters) {
+    drawForegroundDynamicLayer(parameters) {
         const systems = this.root.systemMgr.systems;
 
         systems.itemEjector.drawChunk(parameters, this);
         systems.itemAcceptor.drawChunk(parameters, this);
-
         systems.miner.drawChunk(parameters, this);
+    }
+
+    /**
+     * Draws the static foreground layer
+     * @param {DrawParameters} parameters
+     */
+    drawForegroundStaticLayer(parameters) {
+        const systems = this.root.systemMgr.systems;
 
         systems.staticMapEntities.drawChunk(parameters, this);
         systems.lever.drawChunk(parameters, this);

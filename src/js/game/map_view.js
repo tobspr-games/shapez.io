@@ -131,7 +131,8 @@ export class MapView extends BaseMap {
      * @param {DrawParameters} parameters
      */
     drawForeground(parameters) {
-        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundLayer);
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundDynamicLayer);
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundStaticLayer);
     }
 
     /**

@@ -277,6 +277,11 @@
             <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-analyzer.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-rotater.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-shapecompare.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-unstacker.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor.png</key>
             <key type="filename">sprites/blueprints/wire_tunnel-coating.png</key>
             <key type="filename">sprites/blueprints/wire_tunnel.png</key>
             <key type="filename">sprites/buildings/constant_signal.png</key>
@@ -296,6 +301,11 @@
             <key type="filename">sprites/buildings/underground_belt_entry.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit.png</key>
+            <key type="filename">sprites/buildings/virtual_processor-analyzer.png</key>
+            <key type="filename">sprites/buildings/virtual_processor-rotater.png</key>
+            <key type="filename">sprites/buildings/virtual_processor-shapecompare.png</key>
+            <key type="filename">sprites/buildings/virtual_processor-unstacker.png</key>
+            <key type="filename">sprites/buildings/virtual_processor.png</key>
             <key type="filename">sprites/buildings/wire_tunnel-coating.png</key>
             <key type="filename">sprites/buildings/wire_tunnel.png</key>
             <key type="filename">sprites/wires/lever_on.png</key>
