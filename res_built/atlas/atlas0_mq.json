@@ -2,7 +2,7 @@
 
 "sprites/belt/built/forward_0.png":
 {
-	"frame": {"x":943,"y":816,"w":78,"h":96},
+	"frame": {"x":943,"y":842,"w":78,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":0,"w":78,"h":96},
@@ -98,7 +98,7 @@
 },
 "sprites/belt/built/forward_12.png":
 {
-	"frame": {"x":859,"y":1474,"w":78,"h":96},
+	"frame": {"x":859,"y":1500,"w":78,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":0,"w":78,"h":96},
@@ -106,7 +106,7 @@
 },
 "sprites/belt/built/forward_13.png":
 {
-	"frame": {"x":941,"y":1474,"w":78,"h":96},
+	"frame": {"x":941,"y":1500,"w":78,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":0,"w":78,"h":96},
@@ -138,7 +138,7 @@
 },
 "sprites/belt/built/left_3.png":
 {
-	"frame": {"x":880,"y":1201,"w":87,"h":87},
+	"frame": {"x":880,"y":1227,"w":87,"h":87},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":9,"w":87,"h":87},
@@ -298,7 +298,7 @@
 },
 "sprites/belt/built/right_9.png":
 {
-	"frame": {"x":872,"y":1383,"w":87,"h":87},
+	"frame": {"x":872,"y":1409,"w":87,"h":87},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":9,"w":87,"h":87},
@@ -314,7 +314,7 @@
 },
 "sprites/belt/built/right_11.png":
 {
-	"frame": {"x":880,"y":1292,"w":87,"h":87},
+	"frame": {"x":880,"y":1318,"w":87,"h":87},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":9,"w":87,"h":87},
@@ -402,10 +402,10 @@
 },
 "sprites/blueprints/lever.png":
 {
-	"frame": {"x":946,"y":734,"w":74,"h":78},
+	"frame": {"x":946,"y":752,"w":75,"h":86},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":11,"w":74,"h":78},
+	"spriteSourceSize": {"x":11,"y":3,"w":75,"h":86},
 	"sourceSize": {"w":96,"h":96}
 },
 "sprites/blueprints/logic_gate-not.png":
@@ -450,7 +450,7 @@
 },
 "sprites/blueprints/miner-chainable.png":
 {
-	"frame": {"x":929,"y":916,"w":92,"h":96},
+	"frame": {"x":929,"y":942,"w":92,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":3,"y":0,"w":92,"h":96},
@@ -658,7 +658,7 @@
 },
 "sprites/blueprints/virtual_processor.png":
 {
-	"frame": {"x":921,"y":1016,"w":96,"h":94},
+	"frame": {"x":921,"y":1042,"w":96,"h":94},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":2,"w":96,"h":94},
@@ -730,7 +730,7 @@
 },
 "sprites/buildings/belt_top.png":
 {
-	"frame": {"x":943,"y":816,"w":78,"h":96},
+	"frame": {"x":943,"y":842,"w":78,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":0,"w":78,"h":96},
@@ -786,10 +786,10 @@
 },
 "sprites/buildings/lever.png":
 {
-	"frame": {"x":948,"y":574,"w":73,"h":76},
+	"frame": {"x":948,"y":574,"w":73,"h":85},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":12,"y":12,"w":73,"h":76},
+	"spriteSourceSize": {"x":12,"y":3,"w":73,"h":85},
 	"sourceSize": {"w":96,"h":96}
 },
 "sprites/buildings/logic_gate-not.png":
@@ -802,7 +802,7 @@
 },
 "sprites/buildings/logic_gate-or.png":
 {
-	"frame": {"x":921,"y":1114,"w":96,"h":83},
+	"frame": {"x":921,"y":1140,"w":96,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":83},
@@ -1226,10 +1226,10 @@
 },
 "sprites/wires/lever_on.png":
 {
-	"frame": {"x":948,"y":654,"w":73,"h":76},
+	"frame": {"x":948,"y":663,"w":73,"h":85},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":12,"y":12,"w":73,"h":76},
+	"spriteSourceSize": {"x":12,"y":3,"w":73,"h":85},
 	"sourceSize": {"w":96,"h":96}
 },
 "sprites/wires/logical_acceptor.png":
@@ -1415,6 +1415,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":2048},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:08681e4829dd28022d582f5c5beb81ea:2b9c9868c6813470f9fc9b10b3e460f6:908b89f5ca8ff73e331a35a3b14d0604$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d6bb69bae482079b7b9180885d6f0a69:b9802306293268b06c81f7fa1ec420be:908b89f5ca8ff73e331a35a3b14d0604$"
 }
 }

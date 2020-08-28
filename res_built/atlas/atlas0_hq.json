@@ -362,7 +362,7 @@
 },
 "sprites/blueprints/constant_signal.png":
 {
-	"frame": {"x":1937,"y":759,"w":105,"h":127},
+	"frame": {"x":1938,"y":759,"w":105,"h":127},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":20,"y":0,"w":105,"h":127},
@@ -402,10 +402,10 @@
 },
 "sprites/blueprints/lever.png":
 {
-	"frame": {"x":1823,"y":732,"w":110,"h":116},
+	"frame": {"x":1823,"y":732,"w":111,"h":129},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":17,"y":17,"w":110,"h":116},
+	"spriteSourceSize": {"x":17,"y":4,"w":111,"h":129},
 	"sourceSize": {"w":144,"h":144}
 },
 "sprites/blueprints/logic_gate-not.png":
@@ -426,7 +426,7 @@
 },
 "sprites/blueprints/logic_gate-transistor.png":
 {
-	"frame": {"x":1820,"y":970,"w":101,"h":144},
+	"frame": {"x":1820,"y":996,"w":101,"h":144},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":101,"h":144},
@@ -522,7 +522,7 @@
 },
 "sprites/blueprints/rotater.png":
 {
-	"frame": {"x":1899,"y":1156,"w":143,"h":144},
+	"frame": {"x":1899,"y":1169,"w":143,"h":144},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":143,"h":144},
@@ -554,7 +554,7 @@
 },
 "sprites/blueprints/splitter-compact.png":
 {
-	"frame": {"x":1844,"y":1591,"w":139,"h":138},
+	"frame": {"x":1844,"y":1604,"w":139,"h":138},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":2,"w":139,"h":138},
@@ -634,7 +634,7 @@
 },
 "sprites/blueprints/virtual_processor-rotater.png":
 {
-	"frame": {"x":1925,"y":1008,"w":118,"h":144},
+	"frame": {"x":1925,"y":1021,"w":118,"h":144},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":14,"y":0,"w":118,"h":144},
@@ -682,7 +682,7 @@
 },
 "sprites/blueprints/wire-turn.png":
 {
-	"frame": {"x":1813,"y":1118,"w":82,"h":82},
+	"frame": {"x":1813,"y":1144,"w":82,"h":82},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":62,"y":62,"w":82,"h":82},
@@ -786,10 +786,10 @@
 },
 "sprites/buildings/lever.png":
 {
-	"frame": {"x":1823,"y":852,"w":109,"h":114},
+	"frame": {"x":1823,"y":865,"w":109,"h":127},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":18,"y":18,"w":109,"h":114},
+	"spriteSourceSize": {"x":18,"y":5,"w":109,"h":127},
 	"sourceSize": {"w":144,"h":144}
 },
 "sprites/buildings/logic_gate-not.png":
@@ -818,7 +818,7 @@
 },
 "sprites/buildings/logic_gate-xor.png":
 {
-	"frame": {"x":1897,"y":1304,"w":143,"h":143},
+	"frame": {"x":1897,"y":1317,"w":143,"h":143},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":143,"h":143},
@@ -914,7 +914,7 @@
 },
 "sprites/buildings/splitter-compact-inverse.png":
 {
-	"frame": {"x":1884,"y":1451,"w":141,"h":136},
+	"frame": {"x":1884,"y":1464,"w":141,"h":136},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":3,"w":141,"h":136},
@@ -1066,7 +1066,7 @@
 },
 "sprites/buildings/wire-turn.png":
 {
-	"frame": {"x":1812,"y":1204,"w":81,"h":81},
+	"frame": {"x":1812,"y":1230,"w":81,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":63,"y":63,"w":81,"h":81},
@@ -1146,7 +1146,7 @@
 },
 "sprites/misc/waypoint.png":
 {
-	"frame": {"x":1987,"y":1643,"w":38,"h":48},
+	"frame": {"x":1987,"y":1656,"w":38,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":0,"w":38,"h":48},
@@ -1218,7 +1218,7 @@
 },
 "sprites/wires/display/yellow.png":
 {
-	"frame": {"x":1793,"y":1544,"w":47,"h":47},
+	"frame": {"x":1793,"y":1570,"w":47,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":47,"h":47},
@@ -1226,10 +1226,10 @@
 },
 "sprites/wires/lever_on.png":
 {
-	"frame": {"x":1936,"y":890,"w":109,"h":114},
+	"frame": {"x":1936,"y":890,"w":109,"h":127},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":18,"y":18,"w":109,"h":114},
+	"spriteSourceSize": {"x":18,"y":5,"w":109,"h":127},
 	"sourceSize": {"w":144,"h":144}
 },
 "sprites/wires/logical_acceptor.png":
@@ -1250,7 +1250,7 @@
 },
 "sprites/wires/network_conflict.png":
 {
-	"frame": {"x":1793,"y":1595,"w":47,"h":44},
+	"frame": {"x":1793,"y":1621,"w":47,"h":44},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":2,"w":47,"h":44},
@@ -1258,7 +1258,7 @@
 },
 "sprites/wires/network_empty.png":
 {
-	"frame": {"x":1987,"y":1591,"w":41,"h":48},
+	"frame": {"x":1987,"y":1604,"w":41,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":0,"w":41,"h":48},
@@ -1298,7 +1298,7 @@
 },
 "sprites/wires/sets/color_turn.png":
 {
-	"frame": {"x":1812,"y":1289,"w":81,"h":81},
+	"frame": {"x":1812,"y":1315,"w":81,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":63,"y":63,"w":81,"h":81},
@@ -1330,7 +1330,7 @@
 },
 "sprites/wires/sets/conflict_turn.png":
 {
-	"frame": {"x":1799,"y":1374,"w":81,"h":81},
+	"frame": {"x":1799,"y":1400,"w":81,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":63,"y":63,"w":81,"h":81},
@@ -1362,7 +1362,7 @@
 },
 "sprites/wires/sets/regular_turn.png":
 {
-	"frame": {"x":1812,"y":1204,"w":81,"h":81},
+	"frame": {"x":1812,"y":1230,"w":81,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":63,"y":63,"w":81,"h":81},
@@ -1394,7 +1394,7 @@
 },
 "sprites/wires/sets/shape_turn.png":
 {
-	"frame": {"x":1799,"y":1459,"w":81,"h":81},
+	"frame": {"x":1799,"y":1485,"w":81,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":63,"y":63,"w":81,"h":81},
@@ -1415,6 +1415,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "0.75",
-	"smartupdate": "$TexturePacker:SmartUpdate:08681e4829dd28022d582f5c5beb81ea:2b9c9868c6813470f9fc9b10b3e460f6:908b89f5ca8ff73e331a35a3b14d0604$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d6bb69bae482079b7b9180885d6f0a69:b9802306293268b06c81f7fa1ec420be:908b89f5ca8ff73e331a35a3b14d0604$"
 }
 }
