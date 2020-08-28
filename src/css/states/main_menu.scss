@@ -310,6 +310,12 @@
                     @include PlainText;
                     display: inline-flex;
                     align-items: center;
+
+                    > span {
+                        display: inline-flex;
+                        @include S(max-width, 140px);
+                        overflow: hidden;
+                    }
                 }
 
                 button.resumeGame,
@@ -363,6 +369,8 @@
                     &:hover {
                         opacity: 0.35;
                     }
+
+                    @include DarkThemeInvert;
                 }
 
                 button.resumeGame {

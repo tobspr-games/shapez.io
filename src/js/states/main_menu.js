@@ -398,7 +398,7 @@ export class MainMenuState extends GameState {
                     elem,
                     null,
                     ["name"],
-                    games[i].name ? games[i].name : T.mainMenu.savegameUnnamed
+                    "<span>" + (games[i].name ? games[i].name : T.mainMenu.savegameUnnamed) + "</span>"
                 );
 
                 const deleteButton = document.createElement("button");
