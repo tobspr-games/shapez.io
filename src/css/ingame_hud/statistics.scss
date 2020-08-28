@@ -14,12 +14,12 @@
             @include S(padding, 1px, 10px);
             border: 0;
             box-shadow: none;
-            border-radius: 0;
             @include IncreasedClickArea(1px);
             @include S(min-width, 30px);
             color: #fff;
             opacity: 0.25;
             @include S(margin-left, 1px);
+            @include S(border-radius, $globalBorderRadius);
 
             &.displayIcons,
             &.displayDetailed,
@@ -33,6 +33,7 @@
                     background-image: uiResource("icons/display_sorted.png");
                     background-size: #{D(11.5px)};
                     margin-right: 20px;
+                    @include S(padding, 1px, 0);
                 }
             }
 
@@ -86,6 +87,7 @@
             background: #f4f4f4;
             @include S(margin-bottom, 4px);
             display: grid;
+            @include S(border-radius, $globalBorderRadius);
 
             @include DarkThemeOverride {
                 background: #222428;
