@@ -17,6 +17,7 @@ export const CHANGELOG = [
             "Added a button to the statistics dialog to disable the sorting (by squeek502)",
             "Updated and added new translations (Thanks to all contributors!)",
             "Added setting to be able to delete buildings while placing (inspired by hexy)",
+            "Mark pinned shapes in statistics dialog and show them first (inspired by davidburhans)",
             "Allow editing waypoints (by isaisstillalive)",
             "Show confirmation when cutting area which is too expensive to get pasted again (by isaisstillalive)",
             "Show mouse and camera tile on debug overlay (F4) (by dengr)",
