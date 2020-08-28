@@ -14,6 +14,8 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { T } from "../translations";
 import { getApplicationSettingById } from "../profile/application_settings";
+import { FormElementInput } from "../core/modal_dialog_forms";
+import { DialogWithForm } from "../core/modal_dialog_elements";
 
 /**
  * @typedef {import("../savegame/savegame_typedefs").SavegameMetadata} SavegameMetadata
@@ -392,6 +394,13 @@ export class MainMenuState extends GameState {
                         : T.mainMenu.savegameLevelUnknown
                 );
 
+                const name = makeDiv(
+                    elem,
+                    null,
+                    ["name"],
+                    games[i].name ? games[i].name : T.mainMenu.savegameUnnamed
+                );
+
                 const deleteButton = document.createElement("button");
                 deleteButton.classList.add("styledButton", "deleteGame");
                 elem.appendChild(deleteButton);
@@ -400,6 +409,10 @@ export class MainMenuState extends GameState {
                 downloadButton.classList.add("styledButton", "downloadGame");
                 elem.appendChild(downloadButton);
 
+                const renameButton = document.createElement("button");
+                renameButton.classList.add("styledButton", "renameGame");
+                name.appendChild(renameButton);
+
                 const resumeButton = document.createElement("button");
                 resumeButton.classList.add("styledButton", "resumeGame");
                 elem.appendChild(resumeButton);
@@ -407,8 +420,39 @@ export class MainMenuState extends GameState {
                 this.trackClicks(deleteButton, () => this.deleteGame(games[i]));
                 this.trackClicks(downloadButton, () => this.downloadGame(games[i]));
                 this.trackClicks(resumeButton, () => this.resumeGame(games[i]));
+                this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
             }
         }
+    }
+
+    /**
+     * @param {SavegameMetadata} game
+     */
+    requestRenameSavegame(game) {
+        const regex = /^[a-zA-Z0-9_\- ]{1,20}$/;
+
+        const nameInput = new FormElementInput({
+            id: "nameInput",
+            label: null,
+            placeholder: "",
+            defaultValue: game.name || "",
+            validator: val => val.match(regex),
+        });
+        const dialog = new DialogWithForm({
+            app: this.app,
+            title: T.dialogs.renameSavegame.title,
+            desc: T.dialogs.renameSavegame.desc,
+            formElements: [nameInput],
+            buttons: ["cancel:bad:escape", "ok:good:enter"],
+        });
+        this.dialogs.internalShowDialog(dialog);
+
+        // When confirmed, save the name
+        dialog.buttonSignals.ok.add(() => {
+            game.name = nameInput.getValue();
+            this.app.savegameMgr.writeAsync();
+            this.renderSavegames();
+        });
     }
 
     /**
@@ -473,7 +517,8 @@ export class MainMenuState extends GameState {
         const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
         savegame.readAsync().then(() => {
             const data = ReadWriteProxy.serializeObject(savegame.currentData);
-            generateFileDownload(savegame.filename, data);
+            const filename = (game.name || "unnamed") + ".bin";
+            generateFileDownload(filename, data);
         });
     }
 
