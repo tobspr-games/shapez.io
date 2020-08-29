@@ -59,7 +59,7 @@ export const globalConfig = {
 
     wiresSpeedItemsPerSecond: 6,
 
-    undergroundBeltMaxTilesByTier: [5, 8],
+    undergroundBeltMaxTilesByTier: [5, 9],
 
     readerAnalyzeIntervalSeconds: G_IS_DEV ? 3 : 10,
 
