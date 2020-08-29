@@ -31,6 +31,10 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
         return new Vector(1, 1);
     }
 
+    getRenderPins() {
+        return false;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity

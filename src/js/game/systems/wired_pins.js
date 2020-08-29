@@ -9,6 +9,13 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 
+/** @type {Object<ItemType, number>} */
+const enumTypeToSize = {
+    boolean: 9,
+    shape: 9,
+    color: 14,
+};
+
 export class WiredPinsSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [WiredPinsComponent]);
@@ -142,9 +149,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
         }
     }
 
-    update() {
-        // TODO
-    }
+    update() {}
 
     /**
      * Draws a given entity
@@ -201,12 +206,13 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                 // Draw contained item to visualize whats emitted
                 const value = slot.value;
                 if (value) {
-                    const offset = new Vector(0, -9).rotated(effectiveRotation);
+                    const offset = new Vector(0, -9.1).rotated(effectiveRotation);
+
                     value.drawItemCenteredClipped(
                         worldPos.x + offset.x,
                         worldPos.y + offset.y,
                         parameters,
-                        9
+                        enumTypeToSize[value.getItemType()]
                     );
                 }
 
