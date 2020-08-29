@@ -123,6 +123,15 @@ export const autosaveIntervals = [
     },
 ];
 
+const refreshRateOptions = ["60", "75", "100", "120", "144", "165", "250", "500"];
+
+if (G_IS_DEV) {
+    refreshRateOptions.push("1000");
+    refreshRateOptions.push("2000");
+    refreshRateOptions.push("5000");
+    refreshRateOptions.push("10000");
+}
+
 /** @type {Array<BaseSetting>} */
 export const allApplicationSettings = [
     new EnumSetting("language", {
@@ -251,7 +260,7 @@ export const allApplicationSettings = [
     new BoolSetting("rotationByBuilding", enumCategories.advanced, (app, value) => {}),
 
     new EnumSetting("refreshRate", {
-        options: ["60", "75", "100", "120", "144", "165", "250", "500"],
+        options: refreshRateOptions,
         valueGetter: rate => rate,
         textGetter: rate => rate + " Hz",
         category: enumCategories.performance,

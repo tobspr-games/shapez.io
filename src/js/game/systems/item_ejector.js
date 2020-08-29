@@ -2,12 +2,11 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
-import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
+import { enumDirection, enumDirectionToVector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumItemProcessorTypes } from "../components/item_processor";
 import { MapChunkView } from "../map_chunk_view";
 
 const logger = createLogger("systems/ejector");

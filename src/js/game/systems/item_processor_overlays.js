@@ -53,11 +53,11 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
 
             switch (requirement) {
                 case enumItemProcessorRequirements.painterQuad: {
-                    this.drawConnectedSlotRequirement(parameters, entity);
+                    this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: true });
                     break;
                 }
                 case enumItemProcessorRequirements.filter: {
-                    this.drawConnectedSlotRequirement(parameters, entity);
+                    this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: false });
                     break;
                 }
             }
@@ -100,8 +100,10 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
      *
      * @param {import("../../core/draw_utils").DrawParameters} parameters
      * @param {Entity} entity
+     * @param {object} param0
+     * @param {boolean=} param0.drawIfFalse
      */
-    drawConnectedSlotRequirement(parameters, entity) {
+    drawConnectedSlotRequirement(parameters, entity, { drawIfFalse = true }) {
         const staticComp = entity.components.StaticMapEntity;
         const pinsComp = entity.components.WiredPins;
 
@@ -114,7 +116,7 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
             if (network && network.currentValue) {
                 anySlotConnected = true;
 
-                if (isTrueItem(network.currentValue)) {
+                if (isTrueItem(network.currentValue) || !drawIfFalse) {
                     // No need to draw anything
                     return;
                 }

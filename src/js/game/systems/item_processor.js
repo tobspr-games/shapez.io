@@ -117,14 +117,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     return false;
                 }
 
-                // Check if "false" was passed in
-                const item = network.currentValue;
-                if (item.getItemType() === "boolean") {
-                    if (!(/** @type {BooleanItem} */ (item).value)) {
-                        return false;
-                    }
-                }
-
                 // Otherwise, all good
                 return true;
             }
