@@ -1,8 +1,15 @@
 import { Component } from "../component";
+import { types } from "../../savegame/serialization";
 
 export class LeverComponent extends Component {
     static getId() {
         return "Lever";
+    }
+
+    static getSchema() {
+        return {
+            toggled: types.bool,
+        };
     }
 
     duplicateWithoutContents() {
