@@ -271,6 +271,8 @@
             <key type="filename">sprites/blueprints/rotater-fl.png</key>
             <key type="filename">sprites/blueprints/rotater.png</key>
             <key type="filename">sprites/blueprints/splitter-compact-inverse.png</key>
+            <key type="filename">sprites/blueprints/splitter-compact-merge-inverse.png</key>
+            <key type="filename">sprites/blueprints/splitter-compact-merge.png</key>
             <key type="filename">sprites/blueprints/splitter-compact.png</key>
             <key type="filename">sprites/blueprints/trash.png</key>
             <key type="filename">sprites/blueprints/underground_belt_entry-tier2.png</key>
@@ -296,6 +298,8 @@
             <key type="filename">sprites/buildings/rotater-ccw.png</key>
             <key type="filename">sprites/buildings/rotater-fl.png</key>
             <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
+            <key type="filename">sprites/buildings/splitter-compact-merge-inverse.png</key>
+            <key type="filename">sprites/buildings/splitter-compact-merge.png</key>
             <key type="filename">sprites/buildings/splitter-compact.png</key>
             <key type="filename">sprites/buildings/underground_belt_entry-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_entry.png</key>
