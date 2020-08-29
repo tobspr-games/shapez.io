@@ -261,6 +261,7 @@ export const allApplicationSettings = [
     new BoolSetting("compactBuildingInfo", enumCategories.userInterface, (app, value) => {}),
     new BoolSetting("disableCutDeleteWarnings", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("rotationByBuilding", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("displayChunkBorders", enumCategories.advanced, (app, value) => {}),
 
     new EnumSetting("refreshRate", {
         options: refreshRateOptions,
@@ -303,6 +304,7 @@ class SettingsStorage {
         this.disableCutDeleteWarnings = false;
         this.rotationByBuilding = true;
         this.clearCursorOnDeleteWhilePlacing = true;
+        this.displayChunkBorders = false;
 
         this.enableColorBlindHelper = false;
 
@@ -509,7 +511,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 22;
+        return 23;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -605,6 +607,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 22) {
             data.settings.clearCursorOnDeleteWhilePlacing = true;
             data.version = 22;
+        }
+
+        if (data.version < 23) {
+            data.settings.displayChunkBorders = false;
+            data.version = 23;
         }
 
         return ExplainedResult.good();

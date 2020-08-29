@@ -9,6 +9,8 @@
         "selectionOutline": "rgba(74, 163, 223, 0.5)",
         "selectionBackground": "rgba(74, 163, 223, 0.2)",
 
+        "chunkBorders": "rgba(127, 190, 255, 0.04)",
+
         "directionLock": {
             "regular": {
                 "color": "rgb(74, 237, 134)",

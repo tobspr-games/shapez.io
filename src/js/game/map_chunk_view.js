@@ -133,6 +133,12 @@ export class MapChunkView extends MapChunk {
                 : THEME.map.chunkOverview.empty;
         context.fillRect(0, 0, w, h);
 
+        if (this.root.app.settings.getAllSettings().displayChunkBorders) {
+            context.fillStyle = THEME.map.chunkBorders;
+            context.fillRect(0, 0, w, 1);
+            context.fillRect(0, 1, 1, h);
+        }
+
         for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
             const lowerArray = this.lowerLayer[x];
             const upperArray = this.contents[x];

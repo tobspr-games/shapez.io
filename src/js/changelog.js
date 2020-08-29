@@ -18,6 +18,7 @@ export const CHANGELOG = [
             "Updated and added new translations (Thanks to all contributors!)",
             "Added setting to be able to delete buildings while placing (inspired by hexy)",
             "Mark pinned shapes in statistics dialog and show them first (inspired by davidburhans)",
+            "Added setting to show chunk borders",
             "Quad painters have been reworked! They now are integrated with the wires, and only paint the shape when the value is 1 (inspired by dengr1605)",
             "There are now compact 1x1 splitters available to be unlocked!",
             "Allow editing waypoints (by isaisstillalive)",

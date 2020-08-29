@@ -9,7 +9,8 @@ import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
-import { randomInt, round2Digits, round3Digits } from "../core/utils";
+import { ORIGINAL_SPRITE_SCALE } from "../core/sprites";
+import { lerp, randomInt, round2Digits } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Savegame } from "../savegame/savegame";
 import { SavegameSerializer } from "../savegame/savegame_serializer";
@@ -30,7 +31,6 @@ import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
-import { ORIGINAL_SPRITE_SCALE } from "../core/sprites";
 
 const logger = createLogger("ingame/core");
 
@@ -61,6 +61,12 @@ export class GameCore {
 
         // Cached
         this.boundInternalTick = this.updateLogic.bind(this);
+
+        /**
+         * Opacity of the overview alpha
+         * @TODO Doesn't belong here
+         */
+        this.overlayAlpha = 0;
     }
 
     /**
@@ -385,10 +391,10 @@ export class GameCore {
         // Main rendering order
         // -----
 
-        if (this.root.camera.getIsMapOverlayActive()) {
-            // Map overview
-            root.map.drawOverlay(params);
-        } else {
+        const desiredOverlayAlpha = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
+        this.overlayAlpha = lerp(this.overlayAlpha, desiredOverlayAlpha, 0.25);
+
+        if (this.overlayAlpha < 0.99) {
             // Background (grid, resources, etc)
             root.map.drawBackground(params);
 
@@ -408,6 +414,13 @@ export class GameCore {
                 // Static map entities
                 root.map.drawWiresForegroundLayer(params);
             }
+        }
+
+        if (this.overlayAlpha > 0.01) {
+            // Map overview
+            context.globalAlpha = this.overlayAlpha;
+            root.map.drawOverlay(params);
+            context.globalAlpha = 1;
         }
 
         if (G_IS_DEV) {

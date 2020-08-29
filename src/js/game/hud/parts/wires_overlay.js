@@ -63,10 +63,6 @@ export class HUDWiresOverlay extends BaseHUDPart {
             return;
         }
 
-        if (this.root.camera.getIsMapOverlayActive()) {
-            return;
-        }
-
         if (!this.cachedPatternBackground) {
             this.cachedPatternBackground = parameters.context.createPattern(this.tilePatternCanvas, "repeat");
         }

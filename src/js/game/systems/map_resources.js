@@ -103,5 +103,11 @@ export class MapResourcesSystem extends GameSystem {
                 }
             }
         }
+
+        if (this.root.app.settings.getAllSettings().displayChunkBorders) {
+            context.fillStyle = THEME.map.chunkBorders;
+            context.fillRect(0, 0, w, 1);
+            context.fillRect(0, 1, 1, h);
+        }
     }
 }

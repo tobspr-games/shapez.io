@@ -196,6 +196,7 @@ export class MapView extends BaseMap {
             );
         }
 
+        // Render tile grid
         if (!this.root.app.settings.getAllSettings().disableTileGrid) {
             const dpi = this.backgroundCacheDPI;
             parameters.context.scale(1 / dpi, 1 / dpi);

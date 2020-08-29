@@ -571,7 +571,7 @@ buildings:
 
     lever:
         default:
-            name: &lever Button
+            name: &lever Switch
             description: Can be toggled to emit 1 / 0
 
     logic_gate:
@@ -869,6 +869,11 @@ settings:
             title: Low quality textures (Ugly)
             description: >-
                 Uses low quality textures to save performance. This will make the game look very ugly!
+
+        displayChunkBorders:
+            title: Display Chunk Borders
+            description: >-
+                The game is divided into chunks of 16x16 tiles, if this setting is enabled the borders of each chunk are displayed.
 
 keybindings:
     title: Keybindings
