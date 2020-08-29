@@ -142,13 +142,13 @@ export class GameSystemManager {
         // WIRES section
         add("lever", LeverSystem);
 
+        // Wires must be before all gate, signal etc logic!
+        add("wire", WireSystem);
+
         // IMPORTANT: We have 2 phases: In phase 1 we compute the output values of all gates,
         // processors etc. In phase 2 we propagate it through the wires network
         add("logicGate", LogicGateSystem);
         add("beltReader", BeltReaderSystem);
-
-        // Wires must be after all gate, signal etc logic!
-        add("wire", WireSystem);
 
         add("display", DisplaySystem);
 

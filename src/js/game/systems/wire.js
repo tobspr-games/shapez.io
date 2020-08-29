@@ -120,6 +120,7 @@ export class WireSystem extends GameSystemWithFilter {
         this.root.signals.entityAdded.add(this.queueRecomputeIfWire, this);
 
         this.needsRecompute = true;
+        this.isFirstRecompute = true;
 
         this.staleArea = new StaleAreaDetector({
             root: this.root,
@@ -157,23 +158,28 @@ export class WireSystem extends GameSystemWithFilter {
 
         this.networks = [];
 
-        // Clear all network references
         const wireEntities = this.root.entityMgr.getAllWithComponent(WireComponent);
-        for (let i = 0; i < wireEntities.length; ++i) {
-            wireEntities[i].components.Wire.linkedNetwork = null;
-        }
-
         const tunnelEntities = this.root.entityMgr.getAllWithComponent(WireTunnelComponent);
-        for (let i = 0; i < tunnelEntities.length; ++i) {
-            tunnelEntities[i].components.WireTunnel.linkedNetworks = [];
-        }
-
         const pinEntities = this.root.entityMgr.getAllWithComponent(WiredPinsComponent);
-        for (let i = 0; i < pinEntities.length; ++i) {
-            const slots = pinEntities[i].components.WiredPins.slots;
-            for (let k = 0; k < slots.length; ++k) {
-                slots[k].linkedNetwork = null;
+
+        // Clear all network references, but not on the first update since thats the deserializing one
+        if (!this.isFirstRecompute) {
+            for (let i = 0; i < wireEntities.length; ++i) {
+                wireEntities[i].components.Wire.linkedNetwork = null;
             }
+            for (let i = 0; i < tunnelEntities.length; ++i) {
+                tunnelEntities[i].components.WireTunnel.linkedNetworks = [];
+            }
+
+            for (let i = 0; i < pinEntities.length; ++i) {
+                const slots = pinEntities[i].components.WiredPins.slots;
+                for (let k = 0; k < slots.length; ++k) {
+                    slots[k].linkedNetwork = null;
+                }
+            }
+        } else {
+            logger.log("Recomputing wires first time");
+            this.isFirstRecompute = false;
         }
 
         VERBOSE_WIRES && logger.log("Recomputing slots");

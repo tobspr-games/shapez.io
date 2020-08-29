@@ -26,7 +26,7 @@ export class SerializerInternal {
     /**
      *
      * @param {GameRoot} root
-     * @param {Array<any>} array
+     * @param {Array<Entity>} array
      * @returns {string|void}
      */
     deserializeEntityArray(root, array) {
