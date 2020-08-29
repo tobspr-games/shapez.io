@@ -1,10 +1,10 @@
 import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
-import { enumColorMixingResults } from "../colors";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { enumColors, enumColorMixingResults } from "../colors";
+import { enumItemProcessorTypes, ItemProcessorComponent, enumItemProcessorRequirements } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_TRUE_SINGLETON } from "../items/boolean_item";
+import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
@@ -68,12 +68,78 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 }
             }
 
+
+
             // Check if we have an empty queue and can start a new charge
             if (processorComp.itemsToEject.length === 0) {
-                if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
+                if (entity.components.ItemProcessor.processingRequirement) {
+                    if (this.canProcess(entity)) {
+                        this.startNewCharge(entity);
+                    }
+                } else if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
                     this.startNewCharge(entity);
                 }
             }
+        }
+    }
+
+    /**
+     * Checks whether it's possible to process something
+     * @param {Entity} entity
+     */
+    canProcess(entity) {
+        switch (entity.components.ItemProcessor.processingRequirement) {
+            case enumItemProcessorRequirements.painterQuad: {
+                // For quad-painter, pins match slots
+                // boolean true means "disable input"
+                // a color means "disable if not matched"
+
+                const processorComp = entity.components.ItemProcessor;
+                const pinsComp = entity.components.WiredPins;
+
+                /** @type {Object.<string, { item: BaseItem, sourceSlot: number }>} */
+                const itemsBySlot = {};
+                for (let i = 0; i < processorComp.inputSlots.length; ++i) {
+                    itemsBySlot[processorComp.inputSlots[i].sourceSlot] = processorComp.inputSlots[i];
+                }
+
+                // first slot is the shape
+                if (!itemsBySlot[0]) return false;
+                const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+
+                // Here we check just basic things`
+                // Stop processing if anything except TRUE is
+                // set and there is no item.
+                for (let i = 0; i < 4; ++i) {
+                    const netValue = pinsComp.slots[i].linkedNetwork ?
+                        pinsComp.slots[i].linkedNetwork.currentValue :
+                        null;
+
+                    const currentItem = itemsBySlot[i + 1];
+
+                    if ((netValue == null || !netValue.equals(BOOL_TRUE_SINGLETON)) && currentItem == null) {
+                        let quadCount = 0;
+
+                        for (let j = 0; j < 4; ++j) {
+                            const layer = shapeItem.definition.layers[j];
+                            if (layer && layer[i]) {
+                                quadCount++;
+                            }
+                        }
+
+                        if (quadCount > 0) {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+            default:
+                assertAlways(
+                    false,
+                    "Unknown requirement for " + entity.components.ItemProcessor.processingRequirement
+                );
         }
     }
 
@@ -307,20 +373,56 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             case enumItemProcessorTypes.painterQuad: {
                 const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
-                const colorItem1 = /** @type {ColorItem} */ (itemsBySlot[1].item);
-                const colorItem2 = /** @type {ColorItem} */ (itemsBySlot[2].item);
-                const colorItem3 = /** @type {ColorItem} */ (itemsBySlot[3].item);
-                const colorItem4 = /** @type {ColorItem} */ (itemsBySlot[4].item);
-
                 assert(shapeItem instanceof ShapeItem, "Input for painter is not a shape");
-                assert(colorItem1 instanceof ColorItem, "Input for painter is not a color");
-                assert(colorItem2 instanceof ColorItem, "Input for painter is not a color");
-                assert(colorItem3 instanceof ColorItem, "Input for painter is not a color");
-                assert(colorItem4 instanceof ColorItem, "Input for painter is not a color");
+
+                /** @type {Array<ColorItem>} */
+                const colorItems = [].fill(null, 0, 4);
+
+                for (let i = 0; i < 4; ++i) {
+                    if (itemsBySlot[i + 1]) {
+                        colorItems[i] = /** @type {ColorItem} */ (itemsBySlot[i + 1].item);
+                        assert(colorItems[i] instanceof ColorItem, "Input for painter is not a color");
+                    }
+                }
+
+                const pinValues = entity.components.WiredPins.slots
+                    .map(slot => slot.linkedNetwork ? slot.linkedNetwork.currentValue : BOOL_FALSE_SINGLETON);
+
+                // @todo cleanup
+                const colorTL = colorItems[0];
+                const colorTR = colorItems[1];
+                const colorBR = colorItems[2];
+                const colorBL = colorItems[3];
+
+                /** @type {Array<boolean>} */
+                let skipped = [];
+                for (let i = 0; i < 4; ++i) {
+                    skipped[i] = pinValues[i] ? pinValues[i].equals(BOOL_TRUE_SINGLETON) : false;
+                }
+
+                for (let i = 0; i < 4; ++i) {
+                    if (colorItems[i] == null) {
+                        skipped[i] = false; // make sure we never insert null item back
+                    } else if (pinValues[i] instanceof ColorItem) {
+                        // if pin value is a color, skip anything except that color
+                        // but still require any color, because it would not work on
+                        // slow factories.
+                        if (!colorItems[i].equals(pinValues[i])) {
+                            skipped[i] = true;
+                        }
+                    }
+                }
+
+                const toColor = [
+                    (!skipped[0] && colorTL) ? colorTL.color : null,
+                    (!skipped[1] && colorTR) ? colorTR.color : null,
+                    (!skipped[2] && colorBR) ? colorBR.color : null,
+                    (!skipped[3] && colorBL) ? colorBL.color : null,
+                ];
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
                     shapeItem.definition,
-                    [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color]
+                    /** @type {[enumColors, enumColors, enumColors, enumColors]} */(toColor)
                 );
 
                 outItems.push({
