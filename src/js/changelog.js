@@ -15,7 +15,7 @@ export const CHANGELOG = [
             "Added multiple settings to optimize the performance",
             "Updated the soundtrack again, it is now 40 minutes in total!",
             "Added a button to the statistics dialog to disable the sorting (by squeek502)",
-            "Tier 2 tunnels are now 9 tiles wide, so the gap between is 8 tiles (double the range as tier1)",
+            "Tier 2 tunnels are now 9 tiles wide, so the gap between is 8 tiles (double the tier 1 range)",
             "Updated and added new translations (Thanks to all contributors!)",
             "Added setting to be able to delete buildings while placing (inspired by hexy)",
             "Mark pinned shapes in statistics dialog and show them first (inspired by davidburhans)",
