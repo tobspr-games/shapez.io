@@ -58,6 +58,7 @@ export const KEYMAPPINGS = {
         lever: { keyCode: key("L") },
         filter: { keyCode: key("B") },
         display: { keyCode: key("N") },
+        reader: { keyCode: key("J") },
 
         wire: { keyCode: key("1") },
         wire_tunnel: { keyCode: key("2") },

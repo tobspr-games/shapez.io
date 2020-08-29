@@ -8,7 +8,7 @@ import {
 } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_TRUE_SINGLETON, isTrueItem } from "../items/boolean_item";
+import { BOOL_TRUE_SINGLETON, isTrueItem, BooleanItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
@@ -506,8 +506,20 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 break;
             }
 
-            // HUB
+            // READER
+            case enumItemProcessorTypes.reader: {
+                // Pass through the item
+                const item = itemsBySlot[0].item;
+                outItems.push({ item });
 
+                // Track the item
+                const readerComp = entity.components.BeltReader;
+                readerComp.lastItemTimes.push(this.root.time.now());
+                readerComp.lastItem = item;
+                break;
+            }
+
+            // HUB
             case enumItemProcessorTypes.hub: {
                 trackProduction = false;
 

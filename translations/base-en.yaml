@@ -604,6 +604,12 @@ buildings:
             # TEMP
             description: Can be connected on the wires layer to show a color or shape. When inputting a boolean item, the display will be white if the value is 1.
 
+    reader:
+        default:
+            name: &reader Belt Reader
+            # TEMP
+            description: Allows to read the current item from a belt, as well as measuring the throughput.
+
     virtual_processor:
         default:
             name: &virtual_processor Virtual Cutter
@@ -921,6 +927,7 @@ keybindings:
         filter: *filter
         wire_tunnel: *wire_tunnel
         display: *display
+        reader: *reader
         # ---
 
         pipette: Pipette

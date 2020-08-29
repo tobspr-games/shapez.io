@@ -20,6 +20,7 @@ export const enumItemProcessorTypes = {
     painterQuad: "painterQuad",
     hub: "hub",
     filter: "filter",
+    reader: "reader",
 };
 
 /** @enum {string} */

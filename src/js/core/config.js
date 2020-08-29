@@ -61,6 +61,8 @@ export const globalConfig = {
 
     undergroundBeltMaxTilesByTier: [5, 8],
 
+    readerAnalyzeIntervalSeconds: 10,
+
     buildingSpeeds: {
         cutter: 1 / 4,
         cutterQuad: 1 / 4,
@@ -72,8 +74,6 @@ export const globalConfig = {
         painterQuad: 1 / 8,
         mixer: 1 / 5,
         stacker: 1 / 6,
-        advancedProcessor: 1 / 3,
-        filter: 1,
     },
 
     // Zooming

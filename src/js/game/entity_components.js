@@ -16,6 +16,7 @@ import { LogicGateComponent } from "./components/logic_gate";
 import { LeverComponent } from "./components/lever";
 import { WireTunnelComponent } from "./components/wire_tunnel";
 import { DisplayComponent } from "./components/display";
+import { BeltReaderComponent } from "./components/belt_reader";
 /* typehints:end */
 
 /**
@@ -76,6 +77,9 @@ export class EntityComponentStorage {
 
         /** @type {DisplayComponent} */
         this.Display;
+
+        /** @type {BeltReaderComponent} */
+        this.BeltReader;
 
         /* typehints:end */
     }

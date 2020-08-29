@@ -1,11 +1,11 @@
-import { GameSystem } from "../game_system";
-import { MapChunkView } from "../map_chunk_view";
-import { enumItemProcessorRequirements } from "../components/item_processor";
-import { Entity } from "../entity";
-import { isTrueItem } from "../items/boolean_item";
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
 import { smoothPulse } from "../../core/utils";
+import { enumItemProcessorRequirements, enumItemProcessorTypes } from "../components/item_processor";
+import { Entity } from "../entity";
+import { GameSystem } from "../game_system";
+import { isTrueItem } from "../items/boolean_item";
+import { MapChunkView } from "../map_chunk_view";
 
 export class ItemProcessorOverlaysSystem extends GameSystem {
     constructor(root) {
@@ -13,6 +13,8 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
 
         this.spriteDisabled = Loader.getSprite("sprites/misc/processor_disabled.png");
         this.spriteDisconnected = Loader.getSprite("sprites/misc/processor_disconnected.png");
+
+        this.readerOverlaySprite = Loader.getSprite("sprites/misc/reader_overlay.png");
 
         this.drawnUids = new Set();
 
@@ -38,7 +40,8 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
             }
 
             const requirement = processorComp.processingRequirement;
-            if (!requirement) {
+
+            if (!requirement && processorComp.type !== enumItemProcessorTypes.reader) {
                 continue;
             }
 
@@ -58,7 +61,39 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
                     break;
                 }
             }
+
+            if (processorComp.type === enumItemProcessorTypes.reader) {
+                this.drawReaderOverlays(parameters, entity);
+            }
         }
+    }
+
+    /**
+     *
+     * @param {import("../../core/draw_utils").DrawParameters} parameters
+     * @param {Entity} entity
+     */
+    drawReaderOverlays(parameters, entity) {
+        const staticComp = entity.components.StaticMapEntity;
+        const readerComp = entity.components.BeltReader;
+
+        this.readerOverlaySprite.drawCachedCentered(
+            parameters,
+            (staticComp.origin.x + 0.5) * globalConfig.tileSize,
+            (staticComp.origin.y + 0.5) * globalConfig.tileSize,
+            globalConfig.tileSize
+        );
+
+        parameters.context.fillStyle = "#333439";
+        parameters.context.textAlign = "center";
+        parameters.context.font = "bold 10px GameFont";
+        parameters.context.fillText(
+            "" + Math.round(readerComp.lastThroughput * 10) / 10,
+            (staticComp.origin.x + 0.5) * globalConfig.tileSize,
+            (staticComp.origin.y + 0.62) * globalConfig.tileSize
+        );
+
+        parameters.context.textAlign = "left";
     }
 
     /**

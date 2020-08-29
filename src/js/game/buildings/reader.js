@@ -1,23 +1,21 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import {
-    enumItemProcessorRequirements,
-    enumItemProcessorTypes,
-    ItemProcessorComponent,
-} from "../components/item_processor";
+import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { BeltUnderlaysComponent } from "../components/belt_underlays";
+import { BeltReaderComponent } from "../components/belt_reader";
 
-export class MetaFilterBuilding extends MetaBuilding {
+export class MetaReaderBuilding extends MetaBuilding {
     constructor() {
-        super("filter");
+        super("reader");
     }
 
     getSilhouetteColor() {
-        return "#c45c2e";
+        return "#25fff2";
     }
 
     /**
@@ -29,7 +27,7 @@ export class MetaFilterBuilding extends MetaBuilding {
     }
 
     getDimensions() {
-        return new Vector(2, 1);
+        return new Vector(1, 1);
     }
 
     getShowWiresLayerPreview() {
@@ -46,8 +44,13 @@ export class MetaFilterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
                         direction: enumDirection.left,
-                        type: enumPinSlotType.logicalAcceptor,
+                        type: enumPinSlotType.logicalEjector,
                     },
                 ],
             })
@@ -71,20 +74,28 @@ export class MetaFilterBuilding extends MetaBuilding {
                         pos: new Vector(0, 0),
                         direction: enumDirection.top,
                     },
-                    {
-                        pos: new Vector(1, 0),
-                        direction: enumDirection.right,
-                    },
                 ],
             })
         );
 
         entity.addComponent(
             new ItemProcessorComponent({
-                processorType: enumItemProcessorTypes.filter,
+                processorType: enumItemProcessorTypes.reader,
                 inputsPerCharge: 1,
-                processingRequirement: enumItemProcessorRequirements.filter,
             })
         );
+
+        entity.addComponent(
+            new BeltUnderlaysComponent({
+                underlays: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                ],
+            })
+        );
+
+        entity.addComponent(new BeltReaderComponent());
     }
 }
