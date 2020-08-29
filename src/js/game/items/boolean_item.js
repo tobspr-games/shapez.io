@@ -60,3 +60,11 @@ export class BooleanItem extends BaseItem {
 
 export const BOOL_FALSE_SINGLETON = new BooleanItem(0);
 export const BOOL_TRUE_SINGLETON = new BooleanItem(1);
+
+/**
+ *
+ * @param {BaseItem} item
+ */
+export function isTrueItem(item) {
+    return item && item.getItemType() === "boolean" && /** @type {BooleanItem} */ (item).value;
+}

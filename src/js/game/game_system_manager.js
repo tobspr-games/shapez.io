@@ -20,6 +20,7 @@ import { ConstantSignalSystem } from "./systems/constant_signal";
 import { LogicGateSystem } from "./systems/logic_gate";
 import { LeverSystem } from "./systems/lever";
 import { DisplaySystem } from "./systems/display";
+import { ItemProcessorOverlaysSystem } from "./systems/item_processor_overlays";
 
 const logger = createLogger("game_system_manager");
 
@@ -84,6 +85,9 @@ export class GameSystemManager {
             /** @type {DisplaySystem} */
             display: null,
 
+            /** @type {ItemProcessorOverlaysSystem} */
+            itemProcessorOverlays: null,
+
             /* typehints:end */
         };
         this.systemUpdateOrder = [];
@@ -142,6 +146,8 @@ export class GameSystemManager {
         add("wire", WireSystem);
 
         add("display", DisplaySystem);
+
+        add("itemProcessorOverlays", ItemProcessorOverlaysSystem);
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }

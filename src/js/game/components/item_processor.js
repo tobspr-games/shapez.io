@@ -24,7 +24,8 @@ export const enumItemProcessorTypes = {
 
 /** @enum {string} */
 export const enumItemProcessorRequirements = {
-    painterQuad: "painterQuad"
+    painterQuad: "painterQuad",
+    filter: "filter",
 };
 
 export class ItemProcessorComponent extends Component {
@@ -71,7 +72,7 @@ export class ItemProcessorComponent extends Component {
     constructor({
         processorType = enumItemProcessorTypes.splitter,
         processingRequirement = null,
-        inputsPerCharge = 1
+        inputsPerCharge = 1,
     }) {
         super();
 

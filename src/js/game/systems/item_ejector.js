@@ -285,16 +285,9 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
         const itemProcessorComp = receiver.components.ItemProcessor;
         if (itemProcessorComp) {
-            // @todo HACK
-            // Check if there are pins, and if so if they are connected
-            if (itemProcessorComp.type === enumItemProcessorTypes.filter) {
-                const pinsComp = receiver.components.WiredPins;
-                if (pinsComp && pinsComp.slots.length === 1) {
-                    const network = pinsComp.slots[0].linkedNetwork;
-                    if (!network || !network.currentValue) {
-                        return false;
-                    }
-                }
+            // Check for potential filters
+            if (!this.root.systemMgr.systems.itemProcessor.checkRequirements(receiver, item, slotIndex)) {
+                return false;
             }
 
             // Its an item processor ..

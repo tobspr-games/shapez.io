@@ -6,7 +6,11 @@ import { GameRoot } from "../root";
 import { LeverComponent } from "../components/lever";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import { ItemProcessorComponent, enumItemProcessorTypes } from "../components/item_processor";
+import {
+    ItemProcessorComponent,
+    enumItemProcessorTypes,
+    enumItemProcessorRequirements,
+} from "../components/item_processor";
 
 export class MetaFilterBuilding extends MetaBuilding {
     constructor() {
@@ -80,6 +84,7 @@ export class MetaFilterBuilding extends MetaBuilding {
             new ItemProcessorComponent({
                 processorType: enumItemProcessorTypes.filter,
                 inputsPerCharge: 1,
+                processingRequirement: enumItemProcessorRequirements.filter,
             })
         );
     }

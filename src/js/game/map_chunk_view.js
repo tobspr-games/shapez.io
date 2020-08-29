@@ -69,6 +69,7 @@ export class MapChunkView extends MapChunk {
         systems.lever.drawChunk(parameters, this);
         systems.display.drawChunk(parameters, this);
         systems.storage.drawChunk(parameters, this);
+        systems.itemProcessorOverlays.drawChunk(parameters, this);
     }
 
     /**

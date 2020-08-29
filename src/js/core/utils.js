@@ -722,3 +722,12 @@ export function rotateDirectionalObject(obj, rotation) {
 export function safeModulo(n, m) {
     return ((n % m) + m) % m;
 }
+
+/**
+ * Returns a smooth pulse between 0 and 1
+ * @param {number} time time in seconds
+ * @returns {number}
+ */
+export function smoothPulse(time) {
+    return Math.sin(time * 4) * 0.5 + 0.5;
+}

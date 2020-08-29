@@ -3,7 +3,7 @@ import { enumColors } from "../colors";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 import { enumPinSlotType } from "../components/wired_pins";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, BooleanItem } from "../items/boolean_item";
+import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTrueItem } from "../items/boolean_item";
 import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
 import { ShapeItem } from "../items/shape_item";
@@ -76,28 +76,9 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_AND(parameters) {
         assert(parameters.length === 2, "bad parameter count for AND");
-
-        const param1 = parameters[0];
-        const param2 = parameters[1];
-        if (!param1 || !param2) {
-            // Not enough params
-            return BOOL_FALSE_SINGLETON;
-        }
-
-        const itemType = param1.getItemType();
-
-        if (itemType !== param2.getItemType()) {
-            // Differing type
-            return BOOL_FALSE_SINGLETON;
-        }
-
-        if (itemType === "boolean") {
-            return /** @type {BooleanItem} */ (param1).value && /** @type {BooleanItem} */ (param2).value
-                ? BOOL_TRUE_SINGLETON
-                : BOOL_FALSE_SINGLETON;
-        }
-
-        return BOOL_FALSE_SINGLETON;
+        return isTrueItem(parameters[0]) && isTrueItem(parameters[1])
+            ? BOOL_TRUE_SINGLETON
+            : BOOL_FALSE_SINGLETON;
     }
 
     /**
@@ -105,18 +86,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
      * @returns {BaseItem}
      */
     compute_NOT(parameters) {
-        const item = parameters[0];
-        if (!item) {
-            return BOOL_TRUE_SINGLETON;
-        }
-
-        if (item.getItemType() !== "boolean") {
-            // Not a boolean actually
-            return BOOL_FALSE_SINGLETON;
-        }
-
-        const value = /** @type {BooleanItem} */ (item).value;
-        return value ? BOOL_FALSE_SINGLETON : BOOL_TRUE_SINGLETON;
+        return isTrueItem(parameters[0]) ? BOOL_FALSE_SINGLETON : BOOL_TRUE_SINGLETON;
     }
 
     /**
@@ -125,27 +95,9 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_XOR(parameters) {
         assert(parameters.length === 2, "bad parameter count for XOR");
-
-        const param1 = parameters[0];
-        const param2 = parameters[1];
-        if (!param1 && !param2) {
-            // Not enough params
-            return BOOL_FALSE_SINGLETON;
-        }
-
-        // Check for the right types
-        if (param1 && param1.getItemType() !== "boolean") {
-            return BOOL_FALSE_SINGLETON;
-        }
-
-        if (param2 && param2.getItemType() !== "boolean") {
-            return BOOL_FALSE_SINGLETON;
-        }
-
-        const valueParam1 = param1 ? /** @type {BooleanItem} */ (param1).value : 0;
-        const valueParam2 = param2 ? /** @type {BooleanItem} */ (param2).value : 0;
-
-        return valueParam1 ^ valueParam2 ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
+        return isTrueItem(parameters[0]) ^ isTrueItem(parameters[1])
+            ? BOOL_TRUE_SINGLETON
+            : BOOL_FALSE_SINGLETON;
     }
 
     /**
@@ -154,20 +106,9 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_OR(parameters) {
         assert(parameters.length === 2, "bad parameter count for OR");
-
-        const param1 = parameters[0];
-        const param2 = parameters[1];
-        if (!param1 && !param2) {
-            // Not enough params
-            return BOOL_FALSE_SINGLETON;
-        }
-
-        const valueParam1 =
-            param1 && param1.getItemType() === "boolean" ? /** @type {BooleanItem} */ (param1).value : 0;
-        const valueParam2 =
-            param2 && param2.getItemType() === "boolean" ? /** @type {BooleanItem} */ (param2).value : 0;
-
-        return valueParam1 || valueParam2 ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
+        return isTrueItem(parameters[0]) || isTrueItem(parameters[1])
+            ? BOOL_TRUE_SINGLETON
+            : BOOL_FALSE_SINGLETON;
     }
 
     /**
@@ -176,21 +117,11 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_IF(parameters) {
         assert(parameters.length === 2, "bad parameter count for IF");
-
         const flag = parameters[0];
         const value = parameters[1];
-        if (!flag || !value) {
-            // Not enough params
-            return null;
-        }
-
-        if (flag.getItemType() !== "boolean") {
-            // Flag is not a boolean
-            return null;
-        }
 
         // pass through item
-        if (/** @type {BooleanItem} */ (flag).value) {
+        if (isTrueItem(flag)) {
             return value;
         }
 

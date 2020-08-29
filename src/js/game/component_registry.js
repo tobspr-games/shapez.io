@@ -43,7 +43,7 @@ export function initComponentRegistry() {
     assert(
         // @ts-ignore
         require.context("./components", false, /.*\.js/i).keys().length ===
-        gComponentRegistry.getNumEntries(),
+            gComponentRegistry.getNumEntries(),
         "Not all components are registered"
     );
 

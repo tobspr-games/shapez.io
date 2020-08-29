@@ -4,9 +4,9 @@ import { BaseItem } from "../base_item";
 import { enumColors } from "../colors";
 import { DisplayComponent } from "../components/display";
 import { GameSystemWithFilter } from "../game_system_with_filter";
+import { isTrueItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { MapChunkView } from "../map_chunk_view";
-import { BooleanItem } from "../items/boolean_item";
 
 export class DisplaySystem extends GameSystemWithFilter {
     constructor(root) {
@@ -35,9 +35,7 @@ export class DisplaySystem extends GameSystemWithFilter {
 
         switch (value.getItemType()) {
             case "boolean": {
-                return /** @type {BooleanItem} */ (value).value
-                    ? COLOR_ITEM_SINGLETONS[enumColors.white]
-                    : null;
+                return isTrueItem(value) ? COLOR_ITEM_SINGLETONS[enumColors.white] : null;
             }
 
             case "color": {

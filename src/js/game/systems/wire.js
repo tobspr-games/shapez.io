@@ -13,7 +13,7 @@ import {
     Vector,
 } from "../../core/vector";
 import { BaseItem } from "../base_item";
-import { BooleanItem } from "../items/boolean_item";
+import { isTrueItem } from "../items/boolean_item";
 import { arrayWireRotationVariantToType, MetaWireBuilding } from "../buildings/wire";
 import { getCodeFromBuildingData } from "../building_codes";
 import { enumWireType, WireComponent } from "../components/wire";
@@ -593,7 +593,7 @@ export class WireSystem extends GameSystemWithFilter {
         } else if (valueType === "boolean") {
             return {
                 spriteSet: this.wireSprites.regular,
-                opacity: /** @type {BooleanItem} */ (value).value ? 1 : 0.5,
+                opacity: isTrueItem(value) ? 1 : 0.5,
             };
         } else {
             assertAlways(false, "Unknown item type: " + valueType);
