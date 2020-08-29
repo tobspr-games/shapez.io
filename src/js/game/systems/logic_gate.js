@@ -3,7 +3,7 @@ import { enumColors } from "../colors";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 import { enumPinSlotType } from "../components/wired_pins";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTrueItem } from "../items/boolean_item";
+import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTrueItem, isTruthyItem } from "../items/boolean_item";
 import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
 import { ShapeItem } from "../items/shape_item";
@@ -76,7 +76,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_AND(parameters) {
         assert(parameters.length === 2, "bad parameter count for AND");
-        return isTrueItem(parameters[0]) && isTrueItem(parameters[1])
+        return isTruthyItem(parameters[0]) && isTruthyItem(parameters[1])
             ? BOOL_TRUE_SINGLETON
             : BOOL_FALSE_SINGLETON;
     }
@@ -86,7 +86,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
      * @returns {BaseItem}
      */
     compute_NOT(parameters) {
-        return isTrueItem(parameters[0]) ? BOOL_FALSE_SINGLETON : BOOL_TRUE_SINGLETON;
+        return isTruthyItem(parameters[0]) ? BOOL_FALSE_SINGLETON : BOOL_TRUE_SINGLETON;
     }
 
     /**
@@ -95,7 +95,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_XOR(parameters) {
         assert(parameters.length === 2, "bad parameter count for XOR");
-        return isTrueItem(parameters[0]) ^ isTrueItem(parameters[1])
+        return isTruthyItem(parameters[0]) ^ isTruthyItem(parameters[1])
             ? BOOL_TRUE_SINGLETON
             : BOOL_FALSE_SINGLETON;
     }
@@ -106,7 +106,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_OR(parameters) {
         assert(parameters.length === 2, "bad parameter count for OR");
-        return isTrueItem(parameters[0]) || isTrueItem(parameters[1])
+        return isTruthyItem(parameters[0]) || isTruthyItem(parameters[1])
             ? BOOL_TRUE_SINGLETON
             : BOOL_FALSE_SINGLETON;
     }
@@ -121,7 +121,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
         const value = parameters[1];
 
         // pass through item
-        if (isTrueItem(flag)) {
+        if (isTruthyItem(flag)) {
             return value;
         }
 

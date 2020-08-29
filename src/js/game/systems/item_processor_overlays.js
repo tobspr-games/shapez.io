@@ -1,10 +1,10 @@
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
-import { smoothPulse } from "../../core/utils";
+import { smoothPulse, round4Digits } from "../../core/utils";
 import { enumItemProcessorRequirements, enumItemProcessorTypes } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystem } from "../game_system";
-import { isTrueItem } from "../items/boolean_item";
+import { isTruthyItem } from "../items/boolean_item";
 import { MapChunkView } from "../map_chunk_view";
 
 export class ItemProcessorOverlaysSystem extends GameSystem {
@@ -88,7 +88,10 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
         parameters.context.textAlign = "center";
         parameters.context.font = "bold 10px GameFont";
         parameters.context.fillText(
-            "" + Math.round(readerComp.lastThroughput * 10) / 10,
+            "" +
+                (G_IS_DEV
+                    ? round4Digits(readerComp.lastThroughput)
+                    : Math.round(readerComp.lastThroughput * 10) / 10),
             (staticComp.origin.x + 0.5) * globalConfig.tileSize,
             (staticComp.origin.y + 0.62) * globalConfig.tileSize
         );
@@ -116,7 +119,7 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
             if (network && network.currentValue) {
                 anySlotConnected = true;
 
-                if (isTrueItem(network.currentValue) || !drawIfFalse) {
+                if (isTruthyItem(network.currentValue) || !drawIfFalse) {
                     // No need to draw anything
                     return;
                 }

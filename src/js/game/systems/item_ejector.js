@@ -222,6 +222,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                             globalConfig.itemSpacingOnBelts
                 );
 
+                if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
+                    sourceSlot.progress = 1.0;
+                }
+
                 // Check if we are still in the process of ejecting, can't proceed then
                 if (sourceSlot.progress < 1.0) {
                     continue;

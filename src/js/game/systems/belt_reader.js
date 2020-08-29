@@ -31,9 +31,24 @@ export class BeltReaderSystem extends GameSystemWithFilter {
                     : BOOL_FALSE_SINGLETON;
 
             if (now - readerComp.lastThroughputComputation > 0.5) {
+                // Compute throughput
                 readerComp.lastThroughputComputation = now;
-                readerComp.lastThroughput =
-                    readerComp.lastItemTimes.length / globalConfig.readerAnalyzeIntervalSeconds;
+
+                let throughput = 0;
+                if (readerComp.lastItemTimes.length < 2) {
+                    throughput = 0;
+                } else {
+                    let averageSpacing = 0;
+                    let averageSpacingNum = 0;
+                    for (let i = 0; i < readerComp.lastItemTimes.length - 1; ++i) {
+                        averageSpacing += readerComp.lastItemTimes[i + 1] - readerComp.lastItemTimes[i];
+                        ++averageSpacingNum;
+                    }
+
+                    throughput = 1 / (averageSpacing / averageSpacingNum);
+                }
+
+                readerComp.lastThroughput = throughput;
             }
         }
     }

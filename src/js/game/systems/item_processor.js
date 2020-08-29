@@ -8,7 +8,7 @@ import {
 } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_TRUE_SINGLETON, isTrueItem, BooleanItem } from "../items/boolean_item";
+import { BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
@@ -103,7 +103,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Check the network value at the given slot
                 const network = pinsComp.slots[slotIndex - 1].linkedNetwork;
-                const slotIsEnabled = network && isTrueItem(network.currentValue);
+                const slotIsEnabled = network && isTruthyItem(network.currentValue);
                 if (!slotIsEnabled) {
                     return false;
                 }
@@ -168,7 +168,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         : null;
 
                     // If there is no "1" on that slot, don't paint there
-                    if (!isTrueItem(networkValue)) {
+                    if (!isTruthyItem(networkValue)) {
                         slotStatus.push(false);
                         continue;
                     }

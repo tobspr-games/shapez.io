@@ -62,9 +62,27 @@ export const BOOL_FALSE_SINGLETON = new BooleanItem(0);
 export const BOOL_TRUE_SINGLETON = new BooleanItem(1);
 
 /**
- *
+ * Returns whether the item is Boolean and TRUE
  * @param {BaseItem} item
+ * @returns {boolean}
  */
 export function isTrueItem(item) {
-    return item && item.getItemType() === "boolean" && /** @type {BooleanItem} */ (item).value;
+    return item && item.getItemType() === "boolean" && !!(/** @type {BooleanItem} */ (item).value);
+}
+
+/**
+ * Returns whether the item is truthy
+ * @param {BaseItem} item
+ * @returns {boolean}
+ */
+export function isTruthyItem(item) {
+    if (!item) {
+        return false;
+    }
+
+    if (item.getItemType() === "boolean") {
+        return !!(/** @type {BooleanItem} */ (item).value);
+    }
+
+    return true;
 }

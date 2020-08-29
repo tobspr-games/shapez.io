@@ -104,5 +104,8 @@ export default {
     // Renders information about wire networks
     // renderWireNetworkInfos: true,
     // -----------------------------------------------------------------------------------
+    // Disables ejector animations and processing
+    // disableEjectorProcessing: true,
+    // -----------------------------------------------------------------------------------
     /* dev:end */
 };
