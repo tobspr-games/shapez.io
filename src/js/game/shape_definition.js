@@ -601,7 +601,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 const item = quadrants[quadrantIndex];
                 if (item) {
-                    item.color = colors[quadrantIndex];
+                    item.color = colors[quadrantIndex] || item.color;
                 }
             }
         }

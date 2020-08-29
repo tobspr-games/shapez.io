@@ -22,6 +22,11 @@ export const enumItemProcessorTypes = {
     filter: "filter",
 };
 
+/** @enum {string} */
+export const enumItemProcessorRequirements = {
+    painterQuad: "painterQuad"
+};
+
 export class ItemProcessorComponent extends Component {
     static getId() {
         return "ItemProcessor";
@@ -50,6 +55,7 @@ export class ItemProcessorComponent extends Component {
     duplicateWithoutContents() {
         return new ItemProcessorComponent({
             processorType: this.type,
+            processingRequirement: this.processingRequirement,
             inputsPerCharge: this.inputsPerCharge,
         });
     }
@@ -58,10 +64,15 @@ export class ItemProcessorComponent extends Component {
      *
      * @param {object} param0
      * @param {enumItemProcessorTypes=} param0.processorType Which type of processor this is
+     * @param {enumItemProcessorRequirements=} param0.processingRequirement Applied processing requirement
      * @param {number=} param0.inputsPerCharge How many items this machine needs until it can start working
      *
      */
-    constructor({ processorType = enumItemProcessorTypes.splitter, inputsPerCharge = 1 }) {
+    constructor({
+        processorType = enumItemProcessorTypes.splitter,
+        processingRequirement = null,
+        inputsPerCharge = 1
+    }) {
         super();
 
         // Which slot to emit next, this is only a preference and if it can't emit
@@ -71,6 +82,9 @@ export class ItemProcessorComponent extends Component {
 
         // Type of the processor
         this.type = processorType;
+
+        // Type of processing requirement
+        this.processingRequirement = processingRequirement;
 
         // How many inputs we need for one charge
         this.inputsPerCharge = inputsPerCharge;
