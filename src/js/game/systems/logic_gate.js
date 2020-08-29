@@ -3,8 +3,8 @@ import { enumColors } from "../colors";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 import { enumPinSlotType } from "../components/wired_pins";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTrueItem, isTruthyItem } from "../items/boolean_item";
-import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
+import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTruthyItem, BooleanItem } from "../items/boolean_item";
+import { COLOR_ITEM_SINGLETONS, ColorItem } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
 import { ShapeItem } from "../items/shape_item";
 
@@ -245,13 +245,38 @@ export class LogicGateSystem extends GameSystemWithFilter {
         const itemA = parameters[0];
         const itemB = parameters[1];
 
-        return itemA &&
-            itemB &&
-            itemA.getItemType() === "shape" &&
-            itemB.getItemType() === "shape" &&
-            /** @type {ShapeItem} */ (itemA).definition.getHash() ===
-                /** @type {ShapeItem} */ (itemB).definition.getHash()
-            ? BOOL_TRUE_SINGLETON
-            : BOOL_FALSE_SINGLETON;
+        if (!itemA || !itemB) {
+            // Empty
+            return BOOL_FALSE_SINGLETON;
+        }
+
+        if (itemA.getItemType() !== itemB.getItemType()) {
+            // Not the same type
+            return BOOL_FALSE_SINGLETON;
+        }
+
+        switch (itemA.getItemType()) {
+            case "shape": {
+                return /** @type {ShapeItem} */ (itemA).definition.getHash() ===
+                    /** @type {ShapeItem} */ (itemB).definition.getHash()
+                    ? BOOL_TRUE_SINGLETON
+                    : BOOL_FALSE_SINGLETON;
+            }
+            case "color": {
+                return /** @type {ColorItem} */ (itemA).color === /** @type {ColorItem} */ (itemB).color
+                    ? BOOL_TRUE_SINGLETON
+                    : BOOL_FALSE_SINGLETON;
+            }
+
+            case "boolean": {
+                return /** @type {BooleanItem} */ (itemA).value === /** @type {BooleanItem} */ (itemB).value
+                    ? BOOL_TRUE_SINGLETON
+                    : BOOL_FALSE_SINGLETON;
+            }
+
+            default: {
+                assertAlways(false, "Bad item type: " + itemA.getItemType());
+            }
+        }
     }
 }

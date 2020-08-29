@@ -628,8 +628,8 @@ buildings:
             description: Returns the topmost layer to the right, and the remaining ones on the left.
 
         shapecompare:
-            name: Compare Shapes
-            description: Returns true if both shapes are exactly equal
+            name: Compare
+            description: Returns true if both items are exactly equal. Can compare shapes, items and booleans.
 
 storyRewards:
     # Those are the rewards gained from completing the store
