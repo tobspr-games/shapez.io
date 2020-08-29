@@ -109,6 +109,11 @@ export class ItemProcessorComponent extends Component {
          * How long it takes until we are done with the current items
          */
         this.secondsUntilEject = 0;
+
+        /**
+         * How much processing time we have lest from the last tick
+         */
+        this.bonusFromLastTick = 0;
     }
 
     /**

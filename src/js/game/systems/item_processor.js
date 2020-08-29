@@ -25,10 +25,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const ejectorComp = entity.components.ItemEjector;
 
             // First of all, process the current recipe
-            processorComp.secondsUntilEject = Math.max(
-                0,
-                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
-            );
+            const newSecondsUntilEject =
+                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds;
+
+            processorComp.secondsUntilEject = Math.max(0, newSecondsUntilEject);
+
+            if (newSecondsUntilEject < 0) {
+                processorComp.bonusFromLastTick -= newSecondsUntilEject;
+            }
 
             if (G_IS_DEV && globalConfig.debug.instantProcessors) {
                 processorComp.secondsUntilEject = 0;
@@ -233,7 +237,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        processorComp.secondsUntilEject = 1 / baseSpeed;
+
+        // Substract one tick because we already process it this frame
+        processorComp.secondsUntilEject = Math.max(0, 1 / baseSpeed - processorComp.bonusFromLastTick);
+        processorComp.bonusFromLastTick = 0;
 
         /** @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>} */
         const outItems = [];

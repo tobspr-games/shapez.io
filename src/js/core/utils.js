@@ -460,67 +460,6 @@ export function removeAllChildren(elem) {
 }
 
 /**
- * Fixes lockstep simulation by converting times like 34.0000000003 to 34.00.
- * We use 3 digits of precision, this allows us to store precision of 1 ms without
- * the risking simulation errors due to resync issues
- * @param {number} value
- */
-export function quantizeFloat(value) {
-    return Math.round(value * 1000.0) / 1000.0;
-}
-
-/**
- * Safe check to check if a timer is expired. quantizes numbers
- * @param {number} now Current time
- * @param {number} lastTick Last tick of the timer
- * @param {number} tickRate Interval of the timer
- */
-export function checkTimerExpired(now, lastTick, tickRate) {
-    if (G_IS_DEV) {
-        if (quantizeFloat(now) !== now) {
-            console.error("Got non-quantizied time:" + now + " vs " + quantizeFloat(now));
-            now = quantizeFloat(now);
-        }
-        if (quantizeFloat(lastTick) !== lastTick) {
-            // FIXME: REENABLE
-            // console.error("Got non-quantizied timer:" + lastTick + " vs " + quantizeFloat(lastTick));
-            lastTick = quantizeFloat(lastTick);
-        }
-    } else {
-        // just to be safe
-        now = quantizeFloat(now);
-        lastTick = quantizeFloat(lastTick);
-    }
-    /*
-    Ok, so heres the issue (Died a bit while debugging it):
-
-    In multiplayer lockstep simulation, client A will simulate everything at T, but client B
-    will simulate it at T + 3. So we are running into the following precision issue:
-    Lets say on client A the time is T = 30. Then on clientB the time is T = 33.
-    Now, our timer takes 0.1 seconds and ticked at 29.90 - What does happen now?
-    Client A computes the timer and checks T > lastTick + interval. He computes
-
-    30 >= 29.90 + 0.1   <=> 30 >= 30.0000  <=> True  <=> Tick performed
-
-    However, this is what it looks on client B:
-
-    33 >= 32.90 + 0.1   <=> 33 >= 32.999999999999998 <=> False <=> No tick performed!
-
-    This means that Client B will only tick at the *next* frame, which means it from now is out
-    of sync by one tick, which means the game will resync further or later and be not able to recover,
-    since it will run into the same issue over and over.
-    */
-
-    // The next tick, in our example it would be 30.0000 / 32.99999999998. In order to fix it, we quantize
-    // it, so its now 30.0000 / 33.0000
-    const nextTick = quantizeFloat(lastTick + tickRate);
-
-    // This check is safe, but its the only check where you may compare times. You always need to use
-    // this method!
-    return now >= nextTick;
-}
-
-/**
  * Returns if the game supports this browser
  */
 export function isSupportedBrowser() {

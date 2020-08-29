@@ -126,6 +126,9 @@ export const autosaveIntervals = [
 const refreshRateOptions = ["60", "75", "100", "120", "144", "165", "250", "500"];
 
 if (G_IS_DEV) {
+    refreshRateOptions.unshift("30");
+    refreshRateOptions.unshift("10");
+    refreshRateOptions.unshift("5");
     refreshRateOptions.push("1000");
     refreshRateOptions.push("2000");
     refreshRateOptions.push("5000");

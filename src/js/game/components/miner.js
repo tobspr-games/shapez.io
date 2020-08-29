@@ -3,7 +3,7 @@ import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { typeItemSingleton } from "../item_resolver";
 
-const chainBufferSize = 3;
+const chainBufferSize = 6;
 
 export class MinerComponent extends Component {
     static getId() {
