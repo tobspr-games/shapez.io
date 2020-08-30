@@ -146,14 +146,21 @@ class MusicInstance extends MusicInstanceInterface {
         return this.playing;
     }
 
-    play() {
+    play(volume) {
         if (this.howl) {
             this.playing = true;
+            this.howl.volume(volume);
             if (this.instance) {
                 this.howl.play(this.instance);
             } else {
                 this.instance = this.howl.play();
             }
+        }
+    }
+
+    setVolume(volume) {
+        if (this.howl) {
+            this.howl.volume(volume);
         }
     }
 

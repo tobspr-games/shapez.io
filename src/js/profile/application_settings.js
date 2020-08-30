@@ -3,7 +3,7 @@ import { Application } from "../application";
 /* typehints:end */
 
 import { ReadWriteProxy } from "../core/read_write_proxy";
-import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
+import { BoolSetting, EnumSetting, RangeSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
 import { THEMES, THEME, applyGameTheme } from "../game/theme";
@@ -23,8 +23,7 @@ export const enumCategories = {
     advanced: "advanced",
 };
 
-export const uiScales = [
-    {
+export const uiScales = [{
         id: "super_small",
         size: 0.6,
     },
@@ -46,8 +45,7 @@ export const uiScales = [
     },
 ];
 
-export const scrollWheelSensitivities = [
-    {
+export const scrollWheelSensitivities = [{
         id: "super_slow",
         scale: 0.25,
     },
@@ -69,8 +67,7 @@ export const scrollWheelSensitivities = [
     },
 ];
 
-export const movementSpeeds = [
-    {
+export const movementSpeeds = [{
         id: "super_slow",
         multiplier: 0.25,
     },
@@ -96,8 +93,7 @@ export const movementSpeeds = [
     },
 ];
 
-export const autosaveIntervals = [
-    {
+export const autosaveIntervals = [{
         id: "one_minute",
         seconds: 60,
     },
@@ -154,9 +150,9 @@ export const allApplicationSettings = [
         category: enumCategories.userInterface,
         restartRequired: false,
         changeCb:
-            /**
-             * @param {Application} app
-             */
+        /**
+         * @param {Application} app
+         */
             (app, id) => app.updateAfterUiScaleChanged(),
     }),
 
@@ -176,6 +172,22 @@ export const allApplicationSettings = [
          */
         (app, value) => app.sound.setMusicMuted(value)
     ),
+    new RangeSetting(
+        "soundVolume",
+        enumCategories.general,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setSoundVolume(value / 100.0)
+    ),
+    new RangeSetting(
+        "musicVolume",
+        enumCategories.general,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setMusicVolume(value / 100.0)
+    ),
 
     new BoolSetting(
         "fullscreen",
@@ -187,8 +199,7 @@ export const allApplicationSettings = [
             if (app.platformWrapper.getSupportsFullscreen()) {
                 app.platformWrapper.setFullscreen(value);
             }
-        },
-        !IS_DEMO
+        }, !IS_DEMO
     ),
 
     new BoolSetting(
@@ -209,13 +220,13 @@ export const allApplicationSettings = [
         category: enumCategories.userInterface,
         restartRequired: false,
         changeCb:
-            /**
-             * @param {Application} app
-             */
+        /**
+         * @param {Application} app
+         */
             (app, id) => {
-                applyGameTheme(id);
-                document.documentElement.setAttribute("data-theme", id);
-            },
+            applyGameTheme(id);
+            document.documentElement.setAttribute("data-theme", id);
+        },
         enabled: !IS_DEMO,
     }),
 
@@ -226,9 +237,9 @@ export const allApplicationSettings = [
         category: enumCategories.advanced,
         restartRequired: false,
         changeCb:
-            /**
-             * @param {Application} app
-             */
+        /**
+         * @param {Application} app
+         */
             (app, id) => null,
     }),
 
@@ -239,9 +250,9 @@ export const allApplicationSettings = [
         category: enumCategories.advanced,
         restartRequired: false,
         changeCb:
-            /**
-             * @param {Application} app
-             */
+        /**
+         * @param {Application} app
+         */
             (app, id) => app.updateAfterUiScaleChanged(),
     }),
 
@@ -289,6 +300,9 @@ class SettingsStorage {
 
         this.soundsMuted = false;
         this.musicMuted = false;
+        this.soundVolume = 1.0;
+        this.musicVolume = 1.0;
+
         this.theme = "light";
         this.refreshRate = "60";
         this.scrollWheelSensitivity = "regular";
@@ -336,7 +350,7 @@ export class ApplicationSettings extends ReadWriteProxy {
                 }
             })
 
-            .then(() => this.writeAsync());
+        .then(() => this.writeAsync());
     }
 
     save() {
@@ -437,7 +451,7 @@ export class ApplicationSettings extends ReadWriteProxy {
 
     /**
      * @param {string} key
-     * @param {string|boolean} value
+     * @param {string|boolean|number} value
      */
     updateSetting(key, value) {
         for (let i = 0; i < allApplicationSettings.length; ++i) {
@@ -472,12 +486,12 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string} id
      */
     resetKeybindingOverride(id) {
-        delete this.getAllSettings().keybindingOverrides[id];
-        return this.writeAsync();
-    }
-    /**
-     * Resets all keybinding overrides
-     */
+            delete this.getAllSettings().keybindingOverrides[id];
+            return this.writeAsync();
+        }
+        /**
+         * Resets all keybinding overrides
+         */
     resetKeybindingOverrides() {
         this.getAllSettings().keybindingOverrides = {};
         return this.writeAsync();
@@ -511,7 +525,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 23;
+        return 24;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -612,6 +626,12 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 23) {
             data.settings.displayChunkBorders = false;
             data.version = 23;
+        }
+
+        if (data.version < 24) {
+            data.settings.musicVolume = 1.0;
+            data.settings.soundVolume = 1.0;
+            data.version = 24;
         }
 
         return ExplainedResult.good();

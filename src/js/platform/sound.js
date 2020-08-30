@@ -61,7 +61,11 @@ export class MusicInstanceInterface {
         abstract;
     }
 
-    play() {
+    play(volume) {
+        abstract;
+    }
+
+    setVolume(volume) {
         abstract;
     }
 
@@ -101,6 +105,9 @@ export class SoundInterface {
 
         this.musicMuted = false;
         this.soundsMuted = false;
+
+        this.musicVolume = 1.0;
+        this.soundVolume = 1.0;
     }
 
     /**
@@ -122,6 +129,8 @@ export class SoundInterface {
 
         this.musicMuted = this.app.settings.getAllSettings().musicMuted;
         this.soundsMuted = this.app.settings.getAllSettings().soundsMuted;
+        this.musicVolume = this.app.settings.getAllSettings().musicVolume;
+        this.soundVolume = this.app.settings.getAllSettings().soundsVolume;
 
         if (G_IS_DEV && globalConfig.debug.disableMusic) {
             this.musicMuted = true;
@@ -189,7 +198,7 @@ export class SoundInterface {
             }
         } else {
             if (this.currentMusic) {
-                this.currentMusic.play();
+                this.currentMusic.play(this.musicVolume);
             }
         }
     }
@@ -203,6 +212,41 @@ export class SoundInterface {
     }
 
     /**
+     * Returns the music volume
+     * @returns {number}
+     */
+    getMusicVolume() {
+        return this.musicVolume;
+    }
+
+    /**
+     * Returns the sound volume
+     * @returns {number}
+     */
+    getSoundVolume() {
+        return this.soundVolume;
+    }
+
+    /**
+     * Sets the music volume
+     * @param {number} volume
+     */
+    setMusicVolume(volume) {
+        this.musicVolume = clamp(volume, 0, 1);;
+        if (this.currentMusic) {
+            this.currentMusic.setVolume(this.musicVolume);
+        }
+    }
+
+    /**
+     * Sets the sound volume
+     * @param {number} volume 
+     */
+    setSoundVolume(volume) {
+        this.soundVolume = clamp(volume, 0, 1);
+    }
+
+    /**
      * Focus change handler, called by the pap
      * @param {boolean} pageIsVisible
      */
@@ -211,7 +255,7 @@ export class SoundInterface {
         if (this.currentMusic) {
             if (pageIsVisible) {
                 if (!this.currentMusic.isPlaying() && !this.musicMuted) {
-                    this.currentMusic.play();
+                    this.currentMusic.play(this.musicVolume);
                 }
             } else {
                 this.currentMusic.stop();
@@ -230,7 +274,7 @@ export class SoundInterface {
             logger.warn("Sound", key, "not found, probably not loaded yet");
             return;
         }
-        this.sounds[key].play(1.0);
+        this.sounds[key].play(this.soundVolume);
     }
 
     /**
@@ -253,9 +297,9 @@ export class SoundInterface {
             return;
         }
 
-        let volume = 1.0;
+        let volume = this.soundVolume;
         if (!root.camera.isWorldPointOnScreen(worldPosition)) {
-            volume = 0.2;
+            volume = this.soundVolume / 5; // In the old implementation this value was fixed to 0.2 => 20% of 1.0
         }
         volume *= clamp(root.camera.zoomLevel / 3);
         this.sounds[key].play(clamp(volume));
@@ -277,7 +321,7 @@ export class SoundInterface {
             this.currentMusic = music;
             if (music && this.pageIsVisible && !this.musicMuted) {
                 logger.log("Starting", this.currentMusic.key);
-                music.play();
+                music.play(this.musicVolume);
             }
         }
     }
