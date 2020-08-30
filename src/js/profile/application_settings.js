@@ -164,14 +164,6 @@ export const allApplicationSettings = [
          */
         (app, value) => app.sound.setSoundsMuted(value)
     ),
-    new BoolSetting(
-        "musicMuted",
-        enumCategories.general,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => app.sound.setMusicMuted(value)
-    ),
     new RangeSetting(
         "soundVolume",
         enumCategories.general,
@@ -179,6 +171,14 @@ export const allApplicationSettings = [
          * @param {Application} app
          */
         (app, value) => app.sound.setSoundVolume(value / 100.0)
+    ),
+    new BoolSetting(
+        "musicMuted",
+        enumCategories.general,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setMusicMuted(value)
     ),
     new RangeSetting(
         "musicVolume",
