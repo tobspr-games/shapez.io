@@ -44,48 +44,45 @@ steamPage:
 
         Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
 
-
         Wenn du das Spiel erwirbst, erhälst du Zugriff auf die zusätzlichen Features der Standalone-Version. Das bedeutet, du kannst unter anderem die neuesten Updates zuerst spielen!
 
         [b]Vorteile der Standalone[/b]
 
         [list]
-            [*] Dark Mode
-            [*] unbegrenzte Anzahl an Wegpunkten
-            [*] unbegrenzte Anzahl an Speicherständen
-            [*] zusätzliche Einstellungen
-            [*] Bald: Strom & Kabel! (Ungefähr) geplant für ende Juli 2020.
-            [*] Bald: mehr Level
-            [*] Erlaubt es mir shapez.io weiter zu entwickeln ❤️
+            [*] Dark-Mode
+            [*] Unbegrenzte Anzahl an Wegpunkten
+            [*] Unbegrenzte Anzahl an Speicherständen
+            [*] Zusätzliche Einstellungen
+            [*] Es kommen: Kabel & Energie! Voraussichtlich gegen Ende Juli 2020
+            [*] Es kommen: Mehr Levels
+            [*] Unterstütze die Entwicklung von shapez.io ❤️
         [/list]
 
-        [b]Zukünftige Updates:[/b]
+        [b]Geplante Funktionen[/b]
 
-        Ich update das Spiel sehr oft, und versuche wöchentlich ein Update zu veröffentlichen!
+        Ich bin aktiv mit der Entwicklung beschäftigt und versuche jede Woche ein Update oder den aktuellen Stand der Entwicklung zu veröffentlichen.
 
         [list]
             [*] Verschiedene Karten und Herausforderungen (z.B. Karten mit Hindernissen)
-            [*] Herausforderungen (liefere die geforderte Form mit einer beschränkten Karte / anzahl an Gebäuden ab)
-            [*] Eine Kampange, in der die Gebäude einen Preis haben.
-            [*] einen konfigurierbaren Kartengenerator (bestimme Ressourcen / Größe / Dichte, den Seed und viel mehr)
-            [*] zusätzliche Formen
+            [*] Puzzle (Liefere die geforderte Form mit begrenztem Platz/limitierten Gebäuden)
+            [*] Eine Kampagne mit Gebäudekosten
+            [*] Konfigurierbarer Kartengenerator (Ändere die Grösse/Anzahl/Dichte der Ressourcenflecken, den Seed und viel mehr)
+            [*] Mehr Formentypen
             [*] Performanceverbesserungen (Das Spiel läuft bereits sehr gut!)
             [*] Und vieles mehr!
         [/list]
 
-        [b]Das Spiel ist open source![/b]
+        [b]Das Spiel ist Open Source![/b]
 
-        Jeder kann dazu beitragen. Ich bin aktiv in der Communtiy involviert und versuche alle Vorschläge zu lesen und beziehe so viel Feedback wie möglich mit in die Entwicklung ein.
-        Die komplette Roadmap gibt es auf dem Trello-Board zum Nachlesen!
+        Jeder kann dazu beitragen! Ich bin aktiv in die Community involviert, versuche alle Vorschläge zu lesen und beziehe so viel Feedback wie möglich mit in die Entwicklung ein.
+        Die komplette Roadmap gibt es auf dem Trello-Board zum Nachlesen.
 
-        [b]Links [/b]
+        [b]Links[/b]
 
         [list]
             [*] [url=https://discord.com/invite/HN7EVzV]Offizieller Discord[/url]
             [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Hilf zu übersetzen[/url]
             [*] [url=https://github.com/tobspr/shapez.io]Quelltext (GitHub)[/url]
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Hilf beim Übersetzen[/url]
         [/list]
@@ -156,7 +153,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, aber das Spiel wird in deinem Browser langsam laufen! Kaufe die Standalone-Version oder downloade Chrome für die beste Erfahrung!
+        Sorry, aber das Spiel wird in deinem Browser langsam laufen! Kaufe die Standalone-Version oder verwende Chrome für die beste Erfahrung!
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
@@ -274,8 +271,7 @@ dialogs:
 
     exportScreenshotWarning:
         title: Bildschirmfoto exportieren
-        desc: >-
-            Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für extrem große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
+        desc: Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für extrem große Fabriken kann das jedoch sehr lange dauern und ggf. zum Spielabsturz führen!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -373,7 +369,7 @@ ingame:
             delivered:
                 title: Abgeliefert
                 description: Zeigt die Menge an Formen, die im zentralen Gebäude abgeliefert werden.
-        noShapesProduced: Bisher wurden keine Formen produziert.
+        noShapesProduced: Es werden noch keine Formen produziert oder abgeliefert.
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesPerMinute: <shapes> / m
@@ -502,7 +498,7 @@ buildings:
             name: Rotierer (+90°)
             description: Rotiert Formen gegen den Uhrzeigersinn um 90 Grad.
         fl:
-            name: Rotierer (+180°)
+            name: Rotierer (180°)
             description: Rotiert die Formen um 180 Grad.
 
     stacker:
@@ -760,10 +756,17 @@ settings:
             description: >-
                 Aktiviert das automatische Entfernen von überflüssigen Förderbändern bei der Platzierung von Tunneln.
                 Außerdem funktioniert das Ziehen von Tunneln und überschüssige werden ebenfalls entfernt.
+
         vignette:
             title: Vignette
             description: >-
                 Aktiviert den Vignetteneffekt, der den Rand des Bildschirms zunehmend verdunkelt und das Lesen der Textfelder vereinfacht.
+
+        rotationByBuilding:
+            title: Rotation pro Gebäudetyp
+            description: >-
+                Jeder Gebäudetyp merkt sich einzeln, in welche Richtung er zeigt.
+                Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen Gebäudetypen wechselst.
 
         compactBuildingInfo:
             title: Kompakte Gebäudeinformationen
@@ -774,13 +777,6 @@ settings:
             title: Deaktiviere Warnungsdialog beim Löschen
             description: >-
                 Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
-
-        rotationByBuilding:
-            title: Rotation pro Gebäudetyp
-            description: >-
-                Jeder Gebäudetyp merkt sich einzeln, in welche Richtung er zeigt.
-                Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen
-                Gebäudetypen wechselst.
 
 keybindings:
     title: Tastenbelegung
@@ -820,6 +816,8 @@ keybindings:
         toggleFPSInfo: FPS und Debug-Info an/aus
         switchLayers: Ebenen wechseln
         exportScreenshot: Ganze Fabrik als Foto exportieren
+
+        # --- Do not translate the values in this section
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -830,6 +828,7 @@ keybindings:
         mixer: *mixer
         painter: *painter
         trash: *trash
+        # ---
 
         pipette: Pipette
         rotateWhilePlacing: Rotieren
@@ -837,6 +836,7 @@ keybindings:
             Modifikator: stattdessen gegen den UZS rotieren
         cycleBuildingVariants: Variante wählen
         confirmMassDelete: Massenlöschung bestätigen
+        pasteLastBlueprint: Letzte Blaupause einfügen
         cycleBuildings: Gebäude rotieren
         lockBeltDirection: Bandplaner aktivieren
         switchDirectionLockSide: >-
@@ -850,7 +850,6 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Förderbandorientierung invertieren
-        pasteLastBlueprint: Letzte Blaupause einfügen
         advanced_processor: Farbinvertierer
         energy_generator: Stromgenerator
         wire: Stromkabel
@@ -871,9 +870,8 @@ about:
         Der Soundtrack wurde von <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> komponiert! Klasse Typ.<br><br>
 
-        Abschließend möchte ich meinem Kumpel <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> danken! Ohne unsere
-        etlichen gemeinsamen Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
+        Abschließend möchte ich meinem Kumpel <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> danken!
+        Ohne unsere etlichen gemeinsamen Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
 
 changelog:
     title: Änderungen
