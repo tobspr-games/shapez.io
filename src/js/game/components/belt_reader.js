@@ -1,5 +1,6 @@
 import { Component } from "../component";
 import { BaseItem } from "../base_item";
+import { typeItemSingleton } from "../item_resolver";
 
 export class BeltReaderComponent extends Component {
     static getId() {
@@ -8,6 +9,12 @@ export class BeltReaderComponent extends Component {
 
     duplicateWithoutContents() {
         return new BeltReaderComponent();
+    }
+
+    static getSchema() {
+        return {
+            lastItem: typeItemSingleton,
+        };
     }
 
     constructor() {
