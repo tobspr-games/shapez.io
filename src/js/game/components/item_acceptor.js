@@ -54,7 +54,12 @@ export class ItemAcceptorComponent extends Component {
 
         /**
          * Fixes belt animations
-         * @type {Array<{ item: BaseItem, slotIndex: number, animProgress: number, direction: enumDirection }>}
+         * @type {Array<{
+         *  item: BaseItem,
+         * slotIndex: number,
+         * animProgress: number,
+         * direction: enumDirection
+         * }>}
          */
         this.itemConsumptionAnimations = [];
 
@@ -95,13 +100,14 @@ export class ItemAcceptorComponent extends Component {
      * @param {number} slotIndex
      * @param {enumDirection} direction
      * @param {BaseItem} item
+     * @param {number} remainingProgress World space remaining progress, can be set to set the start position of the item
      */
-    onItemAccepted(slotIndex, direction, item) {
+    onItemAccepted(slotIndex, direction, item, remainingProgress = 0.0) {
         this.itemConsumptionAnimations.push({
             item,
             slotIndex,
             direction,
-            animProgress: 0.0,
+            animProgress: Math.min(1, remainingProgress * 2),
         });
     }
 

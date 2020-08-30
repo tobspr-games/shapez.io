@@ -110,6 +110,10 @@ export class GameSystemManager {
 
         // Order is important!
 
+        // IMPORTANT: Item acceptor must be before the belt, because it may not tick after the belt
+        // has put in the item into the acceptor animation, otherwise its off
+        add("itemAcceptor", ItemAcceptorSystem);
+
         add("belt", BeltSystem);
 
         add("undergroundBelt", UndergroundBeltSystem);
@@ -133,11 +137,6 @@ export class GameSystemManager {
         add("beltUnderlays", BeltUnderlaysSystem);
 
         add("constantSignal", ConstantSignalSystem);
-
-        // IMPORTANT: Must be after belt system since belt system can change the
-        // orientation of an entity after it is placed -> the item acceptor cache
-        // then would be invalid
-        add("itemAcceptor", ItemAcceptorSystem);
 
         // WIRES section
         add("lever", LeverSystem);

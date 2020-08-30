@@ -123,10 +123,9 @@ export const autosaveIntervals = [
     },
 ];
 
-const refreshRateOptions = ["60", "75", "100", "120", "144", "165", "250", "500"];
+const refreshRateOptions = ["30", "60", "120", "180", "240"];
 
 if (G_IS_DEV) {
-    refreshRateOptions.unshift("30");
     refreshRateOptions.unshift("10");
     refreshRateOptions.unshift("5");
     refreshRateOptions.push("1000");
@@ -511,7 +510,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 23;
+        return 24;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -612,6 +611,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 23) {
             data.settings.displayChunkBorders = false;
             data.version = 23;
+        }
+
+        if (data.version < 24) {
+            data.settings.refreshRate = "60";
+            data.version = 24;
         }
 
         return ExplainedResult.good();

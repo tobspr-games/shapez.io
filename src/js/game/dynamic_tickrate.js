@@ -23,7 +23,7 @@ export class DynamicTickrate {
 
         this.averageFps = 60;
 
-        this.setTickRate(60);
+        this.setTickRate(this.root.app.settings.getDesiredFps());
 
         if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
             this.setTickRate(300);
@@ -101,12 +101,13 @@ export class DynamicTickrate {
 
             const desiredFps = this.root.app.settings.getDesiredFps();
 
-            if (this.averageFps > desiredFps * 0.9) {
-                // if (average < maxTickDuration) {
-                this.increaseTickRate();
-            } else if (this.averageFps < desiredFps * 0.7) {
-                this.decreaseTickRate();
-            }
+            // Disabled for now: Dynamicall adjusting tick rate
+            // if (this.averageFps > desiredFps * 0.9) {
+            //     // if (average < maxTickDuration) {
+            //     this.increaseTickRate();
+            // } else if (this.averageFps < desiredFps * 0.7) {
+            //     this.decreaseTickRate();
+            // }
 
             this.capturedTicks = [];
         }

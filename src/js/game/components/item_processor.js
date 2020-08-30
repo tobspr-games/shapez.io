@@ -29,6 +29,17 @@ export const enumItemProcessorRequirements = {
     filter: "filter",
 };
 
+/** @typedef {{
+ *  item: BaseItem,
+ *  requiredSlot?: number,
+ *  preferredSlot?: number
+ * }} EjectorItemToEject */
+
+/** @typedef {{
+ *  remainingTime: number,
+ *  items: Array<EjectorItemToEject>,
+ * }} EjectorCharge */
+
 export class ItemProcessorComponent extends Component {
     static getId() {
         return "ItemProcessor";
@@ -37,20 +48,6 @@ export class ItemProcessorComponent extends Component {
     static getSchema() {
         return {
             nextOutputSlot: types.uint,
-            inputSlots: types.array(
-                types.structured({
-                    item: typeItemSingleton,
-                    sourceSlot: types.uint,
-                })
-            ),
-            itemsToEject: types.array(
-                types.structured({
-                    item: typeItemSingleton,
-                    requiredSlot: types.nullable(types.uint),
-                    preferredSlot: types.nullable(types.uint),
-                })
-            ),
-            secondsUntilEject: types.float,
         };
     }
 
@@ -101,21 +98,15 @@ export class ItemProcessorComponent extends Component {
          * What we are currently processing, empty if we don't produce anything rn
          * requiredSlot: Item *must* be ejected on this slot
          * preferredSlot: Item *can* be ejected on this slot, but others are fine too if the one is not usable
-         * @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>}
+         * @type {Array<EjectorCharge>}
          */
-        this.itemsToEject = [];
-
-        /**
-         * How long it takes until we are done with the current items
-         * @type {number}
-         */
-        this.secondsUntilEject = 0;
+        this.ongoingCharges = [];
 
         /**
          * How much processing time we have left from the last tick
          * @type {number}
          */
-        this.bonusFromLastTick = 0;
+        this.bonusTime = 0;
     }
 
     /**

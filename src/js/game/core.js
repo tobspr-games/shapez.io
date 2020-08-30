@@ -125,6 +125,24 @@ export class GameCore {
             // @ts-ignore
             window.globalRoot = root;
         }
+
+        // @todo Find better place
+        if (G_IS_DEV && globalConfig.debug.manualTickOnly) {
+            this.root.gameState.inputReciever.keydown.add(key => {
+                if (key.keyCode === 84) {
+                    // 'T'
+
+                    // Extract current real time
+                    this.root.time.updateRealtimeNow();
+
+                    // Perform logic ticks
+                    this.root.time.performTicks(this.root.dynamicTickrate.deltaMs, this.boundInternalTick);
+
+                    // Update analytics
+                    root.productionAnalytics.update();
+                }
+            });
+        }
     }
 
     /**
@@ -244,11 +262,13 @@ export class GameCore {
         // Camera is always updated, no matter what
         root.camera.update(deltaMs);
 
-        // Perform logic ticks
-        this.root.time.performTicks(deltaMs, this.boundInternalTick);
+        if (!(G_IS_DEV && globalConfig.debug.manualTickOnly)) {
+            // Perform logic ticks
+            this.root.time.performTicks(deltaMs, this.boundInternalTick);
 
-        // Update analytics
-        root.productionAnalytics.update();
+            // Update analytics
+            root.productionAnalytics.update();
+        }
 
         // Update automatic save after everything finished
         root.automaticSave.update();

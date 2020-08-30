@@ -107,5 +107,9 @@ export default {
     // Disables ejector animations and processing
     // disableEjectorProcessing: true,
     // -----------------------------------------------------------------------------------
+    // Allows manual ticking
+    // manualTickOnly: true,
+    // -----------------------------------------------------------------------------------
+
     /* dev:end */
 };

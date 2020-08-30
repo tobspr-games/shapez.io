@@ -267,6 +267,7 @@
             <key type="filename">sprites/blueprints/logic_gate.png</key>
             <key type="filename">sprites/blueprints/miner-chainable.png</key>
             <key type="filename">sprites/blueprints/miner.png</key>
+            <key type="filename">sprites/blueprints/reader.png</key>
             <key type="filename">sprites/blueprints/rotater-ccw.png</key>
             <key type="filename">sprites/blueprints/rotater-fl.png</key>
             <key type="filename">sprites/blueprints/rotater.png</key>
@@ -295,6 +296,7 @@
             <key type="filename">sprites/buildings/logic_gate-xor.png</key>
             <key type="filename">sprites/buildings/logic_gate.png</key>
             <key type="filename">sprites/buildings/miner-chainable.png</key>
+            <key type="filename">sprites/buildings/reader.png</key>
             <key type="filename">sprites/buildings/rotater-ccw.png</key>
             <key type="filename">sprites/buildings/rotater-fl.png</key>
             <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
@@ -312,6 +314,7 @@
             <key type="filename">sprites/buildings/virtual_processor.png</key>
             <key type="filename">sprites/buildings/wire_tunnel-coating.png</key>
             <key type="filename">sprites/buildings/wire_tunnel.png</key>
+            <key type="filename">sprites/misc/reader_overlay.png</key>
             <key type="filename">sprites/wires/lever_on.png</key>
             <key type="filename">sprites/wires/sets/color_cross.png</key>
             <key type="filename">sprites/wires/sets/color_forward.png</key>
@@ -466,6 +469,8 @@
             <key type="filename">sprites/buildings/miner.png</key>
             <key type="filename">sprites/buildings/rotater.png</key>
             <key type="filename">sprites/buildings/trash.png</key>
+            <key type="filename">sprites/misc/processor_disabled.png</key>
+            <key type="filename">sprites/misc/processor_disconnected.png</key>
             <key type="filename">sprites/wires/logical_acceptor.png</key>
             <key type="filename">sprites/wires/logical_ejector.png</key>
             <key type="filename">sprites/wires/overlay_tile.png</key>

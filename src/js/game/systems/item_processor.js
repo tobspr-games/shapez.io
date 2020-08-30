@@ -1,4 +1,3 @@
-import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { enumColorMixingResults, enumColors } from "../colors";
 import {
@@ -12,6 +11,11 @@ import { BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
+/**
+ * We need to allow queuing charges, otherwise the throughput will stall
+ */
+const MAX_QUEUED_CHARGES = 2;
+
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemProcessorComponent]);
@@ -24,60 +28,64 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const processorComp = entity.components.ItemProcessor;
             const ejectorComp = entity.components.ItemEjector;
 
-            // First of all, process the current recipe
-            const newSecondsUntilEject =
-                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds;
+            const currentCharge = processorComp.ongoingCharges[0];
 
-            processorComp.secondsUntilEject = Math.max(0, newSecondsUntilEject);
+            if (currentCharge) {
+                // Process next charge
+                if (currentCharge.remainingTime > 0.0) {
+                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds;
+                    if (currentCharge.remainingTime < 0.0) {
+                        // Add bonus time, this is the time we spent too much
+                        processorComp.bonusTime += -currentCharge.remainingTime;
+                    }
+                }
 
-            if (newSecondsUntilEject < 0) {
-                processorComp.bonusFromLastTick -= newSecondsUntilEject;
-            }
+                // Check if it finished
+                if (currentCharge.remainingTime <= 0.0) {
+                    const itemsToEject = currentCharge.items;
 
-            if (G_IS_DEV && globalConfig.debug.instantProcessors) {
-                processorComp.secondsUntilEject = 0;
-            }
+                    // Go over all items and try to eject them
+                    for (let j = 0; j < itemsToEject.length; ++j) {
+                        const { item, requiredSlot, preferredSlot } = itemsToEject[j];
 
-            // Check if we have any finished items we can eject
-            if (
-                processorComp.secondsUntilEject === 0 && // it was processed in time
-                processorComp.itemsToEject.length > 0 // we have some items left to eject
-            ) {
-                for (let itemIndex = 0; itemIndex < processorComp.itemsToEject.length; ++itemIndex) {
-                    const { item, requiredSlot, preferredSlot } = processorComp.itemsToEject[itemIndex];
-
-                    let slot = null;
-                    if (requiredSlot !== null && requiredSlot !== undefined) {
-                        // We have a slot override, check if that is free
-                        if (ejectorComp.canEjectOnSlot(requiredSlot)) {
-                            slot = requiredSlot;
-                        }
-                    } else if (preferredSlot !== null && preferredSlot !== undefined) {
-                        // We have a slot preference, try using it but otherwise use a free slot
-                        if (ejectorComp.canEjectOnSlot(preferredSlot)) {
-                            slot = preferredSlot;
+                        let slot = null;
+                        if (requiredSlot !== null && requiredSlot !== undefined) {
+                            // We have a slot override, check if that is free
+                            if (ejectorComp.canEjectOnSlot(requiredSlot)) {
+                                slot = requiredSlot;
+                            }
+                        } else if (preferredSlot !== null && preferredSlot !== undefined) {
+                            // We have a slot preference, try using it but otherwise use a free slot
+                            if (ejectorComp.canEjectOnSlot(preferredSlot)) {
+                                slot = preferredSlot;
+                            } else {
+                                slot = ejectorComp.getFirstFreeSlot();
+                            }
                         } else {
+                            // We can eject on any slot
                             slot = ejectorComp.getFirstFreeSlot();
                         }
-                    } else {
-                        // We can eject on any slot
-                        slot = ejectorComp.getFirstFreeSlot();
+
+                        if (slot !== null) {
+                            // Alright, we can actually eject
+                            if (!ejectorComp.tryEject(slot, item)) {
+                                assert(false, "Failed to eject");
+                            } else {
+                                itemsToEject.splice(j, 1);
+                                j -= 1;
+                            }
+                        }
                     }
 
-                    if (slot !== null) {
-                        // Alright, we can actually eject
-                        if (!ejectorComp.tryEject(slot, item)) {
-                            assert(false, "Failed to eject");
-                        } else {
-                            processorComp.itemsToEject.splice(itemIndex, 1);
-                            itemIndex -= 1;
-                        }
+                    // If the charge was entirely emptied to the outputs, start the next charge
+                    if (itemsToEject.length === 0) {
+                        processorComp.ongoingCharges.shift();
                     }
                 }
             }
 
             // Check if we have an empty queue and can start a new charge
-            if (processorComp.itemsToEject.length === 0) {
+            if (processorComp.ongoingCharges.length < MAX_QUEUED_CHARGES) {
                 if (this.canProcess(entity)) {
                     this.startNewCharge(entity);
                 }
@@ -235,12 +243,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         for (let i = 0; i < items.length; ++i) {
             itemsBySlot[items[i].sourceSlot] = items[i];
         }
-
-        const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-
-        // Substract one tick because we already process it this frame
-        processorComp.secondsUntilEject = Math.max(0, 1 / baseSpeed - processorComp.bonusFromLastTick);
-        processorComp.bonusFromLastTick = 0;
 
         /** @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>} */
         const outItems = [];
@@ -544,6 +546,35 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
         }
 
-        processorComp.itemsToEject = outItems;
+        // Queue Charge
+        const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
+        const originalTime = 1 / baseSpeed;
+
+        const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
+        const timeToProcess = originalTime - bonusTimeToApply;
+
+        // Substract one tick because we already process it this frame
+        // if (processorComp.bonusTime > originalTime) {
+        // if (processorComp.type === enumItemProcessorTypes.reader) {
+        //     console.log(
+        //         "Bonus time",
+        //         round4Digits(processorComp.bonusTime),
+        //         "Original time",
+        //         round4Digits(originalTime),
+        //         "Overcomit by",
+        //         round4Digits(processorComp.bonusTime - originalTime),
+        //         "->",
+        //         round4Digits(timeToProcess),
+        //         "reduced by",
+        //         round4Digits(bonusTimeToApply)
+        //     );
+        // }
+        // }
+        processorComp.bonusTime -= bonusTimeToApply;
+
+        processorComp.ongoingCharges.push({
+            items: outItems,
+            remainingTime: timeToProcess,
+        });
     }
 }
