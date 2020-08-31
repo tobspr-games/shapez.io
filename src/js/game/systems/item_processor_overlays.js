@@ -88,10 +88,7 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
         parameters.context.textAlign = "center";
         parameters.context.font = "bold 10px GameFont";
         parameters.context.fillText(
-            "" +
-                (G_IS_DEV
-                    ? round4Digits(readerComp.lastThroughput)
-                    : Math.round(readerComp.lastThroughput * 10) / 10),
+            "" + Math.round(readerComp.lastThroughput * 10) / 10,
             (staticComp.origin.x + 0.5) * globalConfig.tileSize,
             (staticComp.origin.y + 0.62) * globalConfig.tileSize
         );

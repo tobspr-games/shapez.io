@@ -2,7 +2,7 @@ import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
-import { epsilonCompare, round4Digits } from "../core/utils";
+import { epsilonCompare, round4Digits, clamp } from "../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
@@ -982,28 +982,50 @@ export class BeltPath extends BasicSerializableObject {
             beltSpeed *= 100;
         }
 
-        let minimumDistance = 0;
+        // Store whether this is the first item we processed, so premature
+        // item ejection is available
+        let isFirstItemProcessed = true;
 
-        // Try to reduce spacing
-        let remainingAmount = beltSpeed;
+        // Store how much velocity (strictly its distance, not velocity) we have to distribute over all items
+        let remainingVelocity = beltSpeed;
+
         for (let i = this.items.length - 1; i >= 0; --i) {
             const nextDistanceAndItem = this.items[i];
-            const minimumSpacing = minimumDistance;
 
-            const takeAway = Math.max(
+            // Compute how much spacing we need at least
+            const minimumSpacing = i === this.items.length - 1 ? 0 : globalConfig.itemSpacingOnBelts;
+
+            // Compute how much we can advance
+            const clampedProgress = Math.max(
                 0,
-                Math.min(remainingAmount, nextDistanceAndItem[_nextDistance] - minimumSpacing)
+                Math.min(remainingVelocity, nextDistanceAndItem[_nextDistance] - minimumSpacing)
             );
 
-            remainingAmount -= takeAway;
-            nextDistanceAndItem[_nextDistance] -= takeAway;
+            // Reduce our velocity by the amount we consumed
+            remainingVelocity -= clampedProgress;
 
-            this.spacingToFirstItem += takeAway;
-            if (remainingAmount < 0.01) {
-                break;
+            // Reduce the spacing
+            nextDistanceAndItem[_nextDistance] -= clampedProgress;
+
+            // If the last item can be ejected, eject it and reduce the spacing, because otherwise
+            // we lose velocity
+            if (isFirstItemProcessed && nextDistanceAndItem[_nextDistance] < 1e-7) {
+                // Store how much velocity we "lost" because we bumped the item to the end of the
+                // belt but couldn't move it any farther. We need this to tell the item acceptor
+                // animation to start a tad later, so everything matches up. Yes I'm a perfectionist.
+                const excessVelocity = beltSpeed - clampedProgress;
+
+                // Try to directly get rid of the item
+                if (this.tryHandOverItem(nextDistanceAndItem[_item], excessVelocity)) {
+                    this.items.pop();
+                }
             }
 
-            minimumDistance = globalConfig.itemSpacingOnBelts;
+            isFirstItemProcessed = false;
+            this.spacingToFirstItem += clampedProgress;
+            if (remainingVelocity < 0.01) {
+                break;
+            }
         }
 
         // Check if we have an item which is ready to be emitted
@@ -1023,7 +1045,7 @@ export class BeltPath extends BasicSerializableObject {
      * Tries to hand over the item to the end entity
      * @param {BaseItem} item
      */
-    tryHandOverItem(item) {
+    tryHandOverItem(item, remainingProgress = 0.0) {
         if (!this.acceptorTarget) {
             return;
         }
@@ -1050,7 +1072,8 @@ export class BeltPath extends BasicSerializableObject {
                 targetAcceptorComp.onItemAccepted(
                     this.acceptorTarget.slot,
                     this.acceptorTarget.direction,
-                    item
+                    item,
+                    remainingProgress
                 );
             }
 

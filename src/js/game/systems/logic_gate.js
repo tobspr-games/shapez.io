@@ -35,18 +35,40 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
             const slotValues = [];
 
+            // Store if any conflict was found
+            let anyConflict = false;
+
+            // Gather inputs from all connected networks
             for (let i = 0; i < slotComp.slots.length; ++i) {
                 const slot = slotComp.slots[i];
                 if (slot.type !== enumPinSlotType.logicalAcceptor) {
                     continue;
                 }
                 if (slot.linkedNetwork) {
+                    if (slot.linkedNetwork.valueConflict) {
+                        anyConflict = true;
+                        break;
+                    }
+
                     slotValues.push(slot.linkedNetwork.currentValue);
                 } else {
                     slotValues.push(null);
                 }
             }
 
+            // Handle conflicts
+            if (anyConflict) {
+                for (let i = 0; i < slotComp.slots.length; ++i) {
+                    const slot = slotComp.slots[i];
+                    if (slot.type !== enumPinSlotType.logicalEjector) {
+                        continue;
+                    }
+                    slot.value = null;
+                }
+                continue;
+            }
+
+            // Compute actual result
             const result = this.boundOperations[logicComp.type](slotValues);
 
             if (Array.isArray(result)) {

@@ -51,7 +51,7 @@ export default {
     // testClipping: true,
     // -----------------------------------------------------------------------------------
     // Allows to render slower, useful for recording at half speed to avoid stuttering
-    // framePausesBetweenTicks: 1,
+    // framePausesBetweenTicks: 250,
     // -----------------------------------------------------------------------------------
     // Replace all translations with emojis to see which texts are translateable
     // testTranslations: true,
@@ -106,6 +106,9 @@ export default {
     // -----------------------------------------------------------------------------------
     // Disables ejector animations and processing
     // disableEjectorProcessing: true,
+    // -----------------------------------------------------------------------------------
+    // Allows manual ticking
+    // manualTickOnly: true,
     // -----------------------------------------------------------------------------------
     /* dev:end */
 };

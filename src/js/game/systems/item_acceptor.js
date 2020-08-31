@@ -12,7 +12,11 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     }
 
     update() {
-        const progress = this.root.dynamicTickrate.deltaSeconds * 2; // * 2 because its only a half tile
+        const progress =
+            this.root.dynamicTickrate.deltaSeconds *
+            2 *
+            this.root.hubGoals.getBeltBaseSpeed() *
+            globalConfig.itemSpacingOnBelts; // * 2 because its only a half tile
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
@@ -22,15 +26,9 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             // Process item consumption animations to avoid items popping from the belts
             for (let animIndex = 0; animIndex < animations.length; ++animIndex) {
                 const anim = animations[animIndex];
-                anim.animProgress +=
-                    progress * this.root.hubGoals.getBeltBaseSpeed() * globalConfig.itemSpacingOnBelts;
+                anim.animProgress += progress;
                 if (anim.animProgress > 1) {
-                    // Original
-                    // animations.splice(animIndex, 1);
-
-                    // Faster variant
                     fastArrayDelete(animations, animIndex);
-
                     animIndex -= 1;
                 }
             }
