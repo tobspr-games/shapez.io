@@ -85,7 +85,8 @@ export class BaseSetting {
 
 export class EnumSetting extends BaseSetting {
     constructor(
-        id, {
+        id,
+        {
             options,
             valueGetter,
             textGetter,
@@ -110,7 +111,7 @@ export class EnumSetting extends BaseSetting {
     }
 
     getHtml() {
-            return `
+        return `
             <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
                 ${this.enabled ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
                 <div class="row">
@@ -221,7 +222,16 @@ export class BoolSetting extends BaseSetting {
 }
 
 export class RangeSetting extends BaseSetting {
-    constructor(id, category, changeCb = null, enabled = true, defaultValue = 100, minValue = 0, maxValue = 100, stepSize = 1) {
+    constructor(
+        id,
+        category,
+        changeCb = null,
+        enabled = true,
+        defaultValue = 100,
+        minValue = 0,
+        maxValue = 100,
+        stepSize = 1
+    ) {
         super(id, category, changeCb, enabled);
 
         this.defaultValue = defaultValue;
@@ -239,7 +249,9 @@ export class RangeSetting extends BaseSetting {
                 <label>${T.settings.labels[this.id].title}</label>
                 <div class="value range" data-setting="${this.id}">
                     <label class="range-label">${this.defaultValue}</label>
-                    <input class="range-input" type="range" value="${this.defaultValue}" min="${this.minValue}" max="${this.maxValue}" step="${this.stepSize}">
+                    <input class="range-input" type="range" value="${this.defaultValue}" min="${
+            this.minValue
+        }" max="${this.maxValue}" step="${this.stepSize}">
                 </div>
             </div>
             <div class="desc">

@@ -232,7 +232,7 @@ export class SoundInterface {
      * @param {number} volume
      */
     setMusicVolume(volume) {
-        this.musicVolume = clamp(volume, 0, 1);;
+        this.musicVolume = clamp(volume, 0, 1);
         if (this.currentMusic) {
             this.currentMusic.setVolume(this.musicVolume);
         }
@@ -240,7 +240,7 @@ export class SoundInterface {
 
     /**
      * Sets the sound volume
-     * @param {number} volume 
+     * @param {number} volume
      */
     setSoundVolume(volume) {
         this.soundVolume = clamp(volume, 0, 1);

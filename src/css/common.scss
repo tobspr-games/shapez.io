@@ -438,7 +438,7 @@ canvas {
         text-transform: uppercase;
     }
     opacity: 0.6;
-    >* {
+    > * {
         opacity: 0.5 !important;
     }
 }
@@ -479,7 +479,7 @@ canvas {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        >.bar {
+        > .bar {
             display: none;
             @include S(margin-top, 15px);
             width: 80vw;
@@ -610,7 +610,7 @@ canvas {
     @include PlainText;
     @include S(border-radius, $globalBorderRadius);
     &,
-    >span {
+    > span {
         @include S(font-size, 9px);
         @include S(line-height, 11px);
         font-weight: bold !important;
