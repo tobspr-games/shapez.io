@@ -117,7 +117,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_XOR(parameters) {
         assert(parameters.length === 2, "bad parameter count for XOR");
-        return isTruthyItem(parameters[0]) ^ isTruthyItem(parameters[1])
+        return isTruthyItem(parameters[0]) !== isTruthyItem(parameters[1])
             ? BOOL_TRUE_SINGLETON
             : BOOL_FALSE_SINGLETON;
     }
