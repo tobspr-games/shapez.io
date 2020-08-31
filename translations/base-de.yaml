@@ -592,7 +592,7 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Gegen UZS Rotieren
-        desc: Du hast eine zweite Variante des <strong>Rotierers</strong> freigeschaltet! Damit können Items gegen den Uhrzeigensinn gedreht werden. Wähle den Rotierer aus und <strong>drück 'T', um auf verschiedene Varianten zuzugreifen</strong>.
+        desc: Du hast eine zweite Variante des <strong>Rotierers</strong> freigeschaltet! Damit können Items gegen den Uhrzeigensinn gedreht werden. Wähle den Rotierer aus und <strong>drücke 'T', um auf verschiedene Varianten zuzugreifen</strong>.
 
     reward_miner_chainable:
         title: Extrahierer (Kette)
@@ -629,7 +629,7 @@ storyRewards:
 
     reward_blueprints:
         title: Blaupause
-        desc: Jetzt kannst du Teile deiner Fabrik <strong>kopieren und einfügen</strong>! Wähle ein Areal aus (Halte STRG und ziehe mit deiner Maus) und drück 'C', um zu kopieren.<br><br>Einfügen ist <strong>nicht kostenlos</strong>, du musst <strong>Blaupausenformen</strong> produzieren, um die Kopierkosten zu decken (Welche du gerade produziert hast)!
+        desc: Jetzt kannst du Teile deiner Fabrik <strong>kopieren und einfügen</strong>! Wähle ein Areal aus (Halte STRG und ziehe mit deiner Maus) und drücke 'C', um zu kopieren.<br><br>Einfügen ist <strong>nicht kostenlos</strong>, du musst <strong>Blaupausenformen</strong> produzieren, um die Kopierkosten zu decken (Welche du gerade produziert hast)!
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
