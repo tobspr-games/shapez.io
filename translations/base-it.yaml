@@ -31,18 +31,18 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        
+
         In shapez.io potrai costruire delle fabbriche per automatizzare la creazione e la combinazione di forme sempre più complesse, in una mappa infinita.
 
         Una volta che avrai consegnato le forme richieste, progredirai nel gioco e sbloccherai dei miglioramenti per rendere la tua fabbrica più veloce.
-        
-        Per rispondere alla crescente richiesta di forme, dovrai ingrandire la tua fabbrica - Non dimenticarti delle risorse, però; dovrai espanderti attraverso la [b]mappa infinita[/b]! 
+
+        Per rispondere alla crescente richiesta di forme, dovrai ingrandire la tua fabbrica - Non dimenticarti delle risorse, però; dovrai espanderti attraverso la [b]mappa infinita[/b]!
 
         Presto dovrai mescolare colori e usarli per verniciare le tue forme - Combina le risorse dei colori rosso, verde e blu per produrre colori differenti, verniciare le forme con essi e soddisfare la richiesta.
 
         Nel gioco sono presenti 18 livelli progressivi (Che già dovrebbero tenerti occupato per ore) Ma sto costantemente aggiungendo nuovi contenuti - C'è molto in programma!
- 
-        Acquistare il gioco ti darà accesso alla versione standalone, con caratteristiche aggiuntive e l'accesso ai nuovi contenuti sviluppati. 
+
+        Acquistare il gioco ti darà accesso alla versione standalone, con caratteristiche aggiuntive e l'accesso ai nuovi contenuti sviluppati.
 
         [b]Vantaggi della versione completa[/b]
 
@@ -59,7 +59,7 @@ steamPage:
         [b]Aggiornamenti futuri[/b]
 
         Sto aggiornando il gioco molto di frequente e cerco di pubblicare un nuovo aggiornamento almeno una volta a settimana.
-       
+
         [list]
             [*] Mappe diverse e sfide (ad esempio mappe con ostacoli)
             [*] Rompicapi (Consegna la forma richiesta utilizzando un'area limitata o un insieme ristretto di edifici)
@@ -326,7 +326,8 @@ ingame:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Livello <level>
         completed: Completato
-        unlockText: Sbloccato: <reward>!
+        unlockText: >-
+            Sbloccato: <reward>!
         buttonNextLevel: Prossimo livello
 
     # Notifications on the lower right
