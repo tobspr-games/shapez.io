@@ -72,7 +72,7 @@ steamPage:
 
         Bu oyuna herkes katkıda bulunabilir! Aktif olarak toplulukğa katkıda bulunuyorum ve bütün önerileri gözden geçirmeye çalışıyorum.
         Yol planıma Trello'dan bakmayı unutmayın!
-        
+
 
         [b]Links[/b]
 
@@ -273,7 +273,6 @@ dialogs:
     massCutInsufficientConfirm:
         title: Kesmeyi onayla
         desc: Seçili yapıları yapıştırmak için yeterli kaynağınız yok! Kesmek istediğinize emin misiniz?
-
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -618,7 +617,7 @@ storyRewards:
         title: Özgür Mod
         desc: Başardın! <strong>Özgür mod</strong> açıldı! Merkeze istenilen şekiller artık rastgele oluşturulacak! (Merak etme, yeni içerikler planlanıyor!)
 
-    reward_blueprints:  # 'Taslaklar' yerine 'planlar' da kullanılabilir.
+    reward_blueprints: # 'Taslaklar' yerine 'planlar' da kullanılabilir.
         title: Taslaklar
         desc: Fabrikanın bölümlerini artık <strong>kopyalayıp yapıştırabilirsin</strong>! Bir alan seç (CTRL tuşuna bas ve fareyi sol-tık tuşuna basarak sürükle), ve kopyalamak için 'C' tuşuna bas.<br><br>Kopyaladığın taslağı <strong>bedel karşılığı</strong> yapıştırabilmek için <strong>taslak şekilleri</strong> üretmelisin! (Az önce teslim ettiğin şekiller).
 
@@ -640,7 +639,7 @@ settings:
         userInterface: Kullanıcı Arayüzü
         advanced: Gelİşmİş
 
-    versionBadges:  # Development, Staging, Production
+    versionBadges: # Development, Staging, Production
         dev: Geliştirme
         staging: Yükseltme
         prod: Üretim
