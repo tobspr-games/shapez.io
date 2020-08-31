@@ -1,5 +1,5 @@
 #
-#  GAME TRANSLATIONS
+# GAME TRANSLATIONS
 #
 #  Contributing:
 #
@@ -800,6 +800,16 @@ settings:
             title: Mute Music
             description: >-
                 If enabled, mutes all music.
+
+        soundVolume:
+            title: Sound Volume
+            description: >-
+                Set the volume for sound effects
+
+        musicVolume:
+            title: Music Volume
+            description: >-
+                Set the volume for music
 
         theme:
             title: Game theme

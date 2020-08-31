@@ -3,7 +3,7 @@ import { Application } from "../application";
 /* typehints:end */
 
 import { ReadWriteProxy } from "../core/read_write_proxy";
-import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
+import { BoolSetting, EnumSetting, RangeSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
 import { THEMES, THEME, applyGameTheme } from "../game/theme";
@@ -167,6 +167,14 @@ export const allApplicationSettings = [
          */
         (app, value) => app.sound.setSoundsMuted(value)
     ),
+    new RangeSetting(
+        "soundVolume",
+        enumCategories.general,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setSoundVolume(value / 100.0)
+    ),
     new BoolSetting(
         "musicMuted",
         enumCategories.general,
@@ -174,6 +182,14 @@ export const allApplicationSettings = [
          * @param {Application} app
          */
         (app, value) => app.sound.setMusicMuted(value)
+    ),
+    new RangeSetting(
+        "musicVolume",
+        enumCategories.general,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setMusicVolume(value / 100.0)
     ),
 
     new BoolSetting(
@@ -288,6 +304,9 @@ class SettingsStorage {
 
         this.soundsMuted = false;
         this.musicMuted = false;
+        this.soundVolume = 1.0;
+        this.musicVolume = 1.0;
+
         this.theme = "light";
         this.refreshRate = "60";
         this.scrollWheelSensitivity = "regular";
@@ -436,7 +455,7 @@ export class ApplicationSettings extends ReadWriteProxy {
 
     /**
      * @param {string} key
-     * @param {string|boolean} value
+     * @param {string|boolean|number} value
      */
     updateSetting(key, value) {
         for (let i = 0; i < allApplicationSettings.length; ++i) {
@@ -614,6 +633,8 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 24) {
+            data.settings.musicVolume = 1.0;
+            data.settings.soundVolume = 1.0;
             data.settings.refreshRate = "60";
             data.version = 24;
         }

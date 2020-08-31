@@ -728,6 +728,16 @@ settings:
             description: >-
                 Bei der  Aktivierung wird die Musik stummgeschaltet.
 
+        soundVolume:
+            title: Geräuschlautstärke
+            description: >-
+                Ändert die Lautstärke von Geräuschen.
+
+        musicVolume:
+            title: Musiklautstärke
+            description: >-
+                Ändert die Lautstärke der Musik.
+
         theme:
             title: Farbmodus
             description: >-

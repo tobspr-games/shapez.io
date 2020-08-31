@@ -220,3 +220,78 @@ export class BoolSetting extends BaseSetting {
         return typeof value === "boolean";
     }
 }
+
+export class RangeSetting extends BaseSetting {
+    constructor(
+        id,
+        category,
+        changeCb = null,
+        enabled = true,
+        defaultValue = 100,
+        minValue = 0,
+        maxValue = 100,
+        stepSize = 1
+    ) {
+        super(id, category, changeCb, enabled);
+
+        this.defaultValue = defaultValue;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+        this.stepSize = stepSize;
+    }
+
+    getHtml() {
+        return `
+        <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
+            ${this.enabled ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
+
+            <div class="row">
+                <label>${T.settings.labels[this.id].title}</label>
+                <div class="value range" data-setting="${this.id}">
+                    <label class="range-label">${this.defaultValue}</label>
+                    <input class="range-input" type="range" value="${this.defaultValue}" min="${
+            this.minValue
+        }" max="${this.maxValue}" step="${this.stepSize}">
+                </div>
+            </div>
+            <div class="desc">
+                ${T.settings.labels[this.id].description}
+            </div>
+        </div>`;
+    }
+
+    bind(app, element, dialogs) {
+        this.app = app;
+        this.element = element;
+        this.dialogs = dialogs;
+
+        this.element.querySelector(".range-input").addEventListener("input", () => {
+            this.modify();
+        });
+    }
+
+    syncValueToElement() {
+        const value = this.app.settings.getSetting(this.id);
+        /** @type {HTMLInputElement} */
+        const rangeInput = this.element.querySelector(".range-input"),
+            rangeLabel = this.element.querySelector(".range-label");
+        rangeInput.value = value;
+        rangeLabel.innerHTML = value;
+    }
+
+    modify() {
+        /** @type {HTMLInputElement} */
+        const rangeInput = this.element.querySelector(".range-input");
+        const newValue = Number(rangeInput.value);
+        this.app.settings.updateSetting(this.id, newValue);
+        this.syncValueToElement();
+
+        if (this.changeCb) {
+            this.changeCb(this.app, newValue);
+        }
+    }
+
+    validate(value) {
+        return typeof value === "number";
+    }
+}
