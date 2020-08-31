@@ -255,7 +255,7 @@ dialogs:
 
     createMarker:
         title: Nuovo segnapunto
-        desc: Dagli un magnifico nome, puoi anche includere il <strong>codice</strong> di una figura (Che puoi generare <a href="https://viewer.shapez.io" target="_blank">qui</a>)
+        desc: Dagli un nome con un significato, puoi anche includere il <strong>codice</strong> di una figura (Che puoi generare <a href="https://viewer.shapez.io" target="_blank">qui</a>)
         titleEdit: Modifica segnapunto
 
     markerDemoLimit:
@@ -392,7 +392,7 @@ ingame:
         waypoints: Segnapunti
         hub: HUB
         description: Click sinistro su un segnapunto per raggiungerlo, click destro per cancellarlo. <br><br>Premi <keybinding> per creare un segnapunto dalla visuale corrente, oppure <strong>click destro</strong> per creare un segnapunto nella posizione selezionata.
-        creationSuccessNotification: Marker has been created.
+        creationSuccessNotification: Il segnapunto è stato creato.
 
     # Interactive tutorial
     interactiveTutorial:
