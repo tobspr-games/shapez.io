@@ -454,6 +454,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const ejectorComp = this.fakeEntity.components.ItemEjector;
         const staticComp = this.fakeEntity.components.StaticMapEntity;
         const beltComp = this.fakeEntity.components.Belt;
+        const minerComp = this.fakeEntity.components.Miner;
 
         const goodArrowSprite = Loader.getSprite("sprites/misc/slot_good_arrow.png");
         const badArrowSprite = Loader.getSprite("sprites/misc/slot_bad_arrow.png");
@@ -571,6 +572,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 const destEntity = destEntities[i];
                 const destAcceptor = destEntity.components.ItemAcceptor;
                 const destStaticComp = destEntity.components.StaticMapEntity;
+                const destMiner = destEntity.components.Miner;
 
                 const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
                 const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
@@ -579,6 +581,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     isConnected = true;
                 } else if (destEntity.components.Belt && destLocalDir === enumDirection.top) {
                     // Connected to a belt
+                    isConnected = true;
+                } else if (minerComp && minerComp.chainable && destMiner && destMiner.chainable) {
+                    // Chainable miners connected to eachother
                     isConnected = true;
                 } else {
                     // This one is blocked
