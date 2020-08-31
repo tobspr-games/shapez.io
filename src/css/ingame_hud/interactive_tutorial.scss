@@ -29,6 +29,15 @@
         }
     }
 
+    pointer-events: all;
+
+    &:hover {
+        opacity: 10%;
+        .buildingImage {
+            opacity: 0%;
+        }
+    }
+
     .title {
         color: #fff;
         opacity: 0.5;

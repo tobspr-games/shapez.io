@@ -18,6 +18,15 @@
         background-color: #55585a;
     }
 
+    pointer-events: all;
+
+    &:hover {
+        opacity: 10%;
+        .buildingImage {
+            opacity: 0%;
+        }
+    }
+
     .buildingLabel {
         @include PlainText;
         @include S(margin-bottom, 2px);
