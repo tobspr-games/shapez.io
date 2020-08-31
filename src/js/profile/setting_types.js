@@ -272,12 +272,17 @@ export class RangeSetting extends BaseSetting {
 
     syncValueToElement() {
         const value = this.app.settings.getSetting(this.id);
-        this.element.querySelector(".range-input").value = value;
-        this.element.querySelector(".range-label").innerText = value;
+        /** @type {HTMLInputElement} */
+        const rangeInput = this.element.querySelector(".range-input"),
+            rangeLabel = this.element.querySelector(".range-label");
+        rangeInput.value = value;
+        rangeLabel.innerHTML = value;
     }
 
     modify() {
-        const newValue = Number(this.element.querySelector(".range-input").value);
+        /** @type {HTMLInputElement} */
+        const rangeInput = this.element.querySelector(".range-input");
+        const newValue = Number(rangeInput.value);
         this.app.settings.updateSetting(this.id, newValue);
         this.syncValueToElement();
 

@@ -130,7 +130,7 @@ export class SoundInterface {
         this.musicMuted = this.app.settings.getAllSettings().musicMuted;
         this.soundsMuted = this.app.settings.getAllSettings().soundsMuted;
         this.musicVolume = this.app.settings.getAllSettings().musicVolume;
-        this.soundVolume = this.app.settings.getAllSettings().soundsVolume;
+        this.soundVolume = this.app.settings.getAllSettings().soundVolume;
 
         if (G_IS_DEV && globalConfig.debug.disableMusic) {
             this.musicMuted = true;
