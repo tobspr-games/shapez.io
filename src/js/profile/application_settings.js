@@ -161,7 +161,7 @@ export const allApplicationSettings = [
 
     new BoolSetting(
         "soundsMuted",
-        enumCategories.general,#
+        enumCategories.general,
         /**
          * @param {Application} app
          */
