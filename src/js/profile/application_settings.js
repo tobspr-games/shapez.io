@@ -529,7 +529,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 24;
+        return 25;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -633,10 +633,14 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 24) {
-            data.settings.musicVolume = 1.0;
-            data.settings.soundVolume = 1.0;
             data.settings.refreshRate = "60";
             data.version = 24;
+        }
+
+        if (data.version < 25) {
+            data.settings.musicVolume = 1.0;
+            data.settings.soundVolume = 1.0;
+            data.version = 25;
         }
 
         return ExplainedResult.good();
