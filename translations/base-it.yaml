@@ -31,7 +31,6 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-
         In shapez.io potrai costruire delle fabbriche per automatizzare la creazione e la combinazione di forme sempre più complesse, in una mappa infinita.
 
         Una volta che avrai consegnato le forme richieste, progredirai nel gioco e sbloccherai dei miglioramenti per rendere la tua fabbrica più veloce.
@@ -333,7 +332,8 @@ ingame:
     # Notifications on the lower right
     notifications:
         newUpgrade: È disponibile un nuovo aggiornamento!
-        gameSaved:  Partita salvata.
+        gameSaved: Partita salvata.
+        
     # The "Upgrades" window
     shop:
         title: Miglioramenti
@@ -410,7 +410,7 @@ ingame:
         green: Verde
         blue: Blu
         yellow: Giallo
-        purple: Viola #shouldn't be "Magenta"?
+        purple: Viola
         cyan: Azzurro
         white: Bianco
         uncolored: No colore
@@ -479,8 +479,7 @@ buildings:
             description: Taglia le forme verticalmente e restituisce le metà destra e sinistra. <strong>Se usi solo una parte, distruggi l'altra o la macchina si fermerà!</strong>
         quad:
             name: Tagliatrice (4x)
-            description: Taglia le forme in quattro parti. <strong>Se usi solo una parte, distruggi le altre o la macchina si fermerà!
-</strong>
+            description: Taglia le forme in quattro parti. <strong>Se usi solo una parte, distruggi le altre o la macchina si fermerà!</strong>
 
     rotater:
         default:
@@ -571,9 +570,10 @@ storyRewards:
         title: Mix colori
         desc: Il <strong>mixer</strong> è stato sbloccato - Con questo edificio, puoi combinare due colori mediante <strong>sintesi additiva</strong>!
 
-    reward_stacker:
+    rreward_stacker:
         title: Impilatrice
-        desc: Ora puoi unire forme con l'<strong>impilatrice</strong>! Le forme in ingresso vengono combinate: se possono essere poste l'una accanto all'altra verranno <strong>fuse</strong>, altrimenti le forme dall'ingresso destro vengono <strong>impilate sopra</strong> quelle dal sisnstro!
+        desc: >-
+            Ora puoi unire forme con l'<strong>impilatrice</strong>! Le forme in ingresso vengono combinate: se possono essere poste l'una accanto all'altra verranno <strong>fuse</strong>, altrimenti le forme dall'ingresso destro vengono <strong>impilate sopra</strong> quelle dal sinistro!
 
     reward_splitter:
         title: Separatore/Agrregatore
@@ -665,7 +665,7 @@ settings:
             description: >-
                 Determina quanto è sensibile lo zoom (Sia rotella del mouse che trackpad).
             sensitivity:
-                ssuper_slow: Molto lento
+                super_slow: Molto lento
                 slow: Lento
                 regular: Regolare
                 fast: Veloce
@@ -729,7 +729,7 @@ settings:
             title: Tunnel intelligenti
             description: >-
                 Se abilitato, piazzare un tunnel rimuoverà anche qualsiasi nastro superfluo.
-                Consente anche di trascinare i tunnel: i tunnel in eccesso verrano rimossi. 
+                Consente anche di trascinare i tunnel: i tunnel in eccesso verrano rimossi.
         vignette:
             title: Vignettatura
             description: >-
@@ -738,7 +738,7 @@ settings:
         autosaveInterval:
             title: Intervallo salvataggio automatico
             description: >-
-                Determina ogni quanto il gioco salva automaticamente. 
+                Determina ogni quanto il gioco salva automaticamente.
                 Qui puoi anche disabilitarlo completamente.
             intervals:
                 one_minute: 1 Minuto
@@ -748,7 +748,7 @@ settings:
                 twenty_minutes: 20 Minuti
                 disabled: Disabilitato
         compactBuildingInfo:
-            title: Info edifici compatte.
+            title: Info edifici compatte
             description: >-
                 Accorcia le informazioni sugli edifici mostrandone solo la velocità. In caso contrario saranno mostrate immagine e descrizione.
         disableCutDeleteWarnings:
@@ -768,7 +768,7 @@ settings:
 keybindings:
     title: Comandi
     hint: >-
-        Tip: Usa spesso CTRL, MAIUSC e ALT! Abilitano opzioni di posizionamento alternative.
+        Suggerimento: Usa spesso CTRL, MAIUSC e ALT! Abilitano opzioni di posizionamento alternative.
 
     resetKeybindings: Reimposta comandi
 
@@ -812,7 +812,7 @@ keybindings:
 
         rotateWhilePlacing: Ruota
         rotateInverseModifier: >-
-            Modifier: Ruota in senso antiorario
+            Modificatore: Ruota in senso antiorario
         cycleBuildingVariants: Cicla varianti
         confirmMassDelete: Conferma eliminazione di massa
         cycleBuildings: Cicla edifici
