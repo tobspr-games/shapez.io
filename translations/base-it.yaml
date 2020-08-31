@@ -333,7 +333,7 @@ ingame:
     notifications:
         newUpgrade: È disponibile un nuovo aggiornamento!
         gameSaved: Partita salvata.
-        
+
     # The "Upgrades" window
     shop:
         title: Miglioramenti
@@ -410,7 +410,7 @@ ingame:
         green: Verde
         blue: Blu
         yellow: Giallo
-        purple: Viola
+        purple: Magenta
         cyan: Azzurro
         white: Bianco
         uncolored: No colore
