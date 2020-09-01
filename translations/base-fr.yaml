@@ -252,7 +252,7 @@ dialogs:
         desc: >-
             Le jeu a de nombreux raccourcis facilitant la construction de grandes usines.
             En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong> !<br><br>
-            <code class='keybinding'>CTRL</code> + Glisser: Sélectionne une zone à copier / effacer.<br>
+            <code class='keybinding'>CTRL</code> + glisser: Sélectionne une zone à copier / effacer.<br>
             <code class='keybinding'>MAJ</code>: Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
             <code class='keybinding'>ALT</code>: Inverse l'orientation des convoyeurs placés.<br>
 
@@ -419,7 +419,7 @@ ingame:
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Convoyeurs, Distributeurs et Tunnels
+        name: Convoyeurs, distributeurs et tunnels
         description: Vitesse x<currentMult> → x<newMult>
 
     miner:
@@ -427,11 +427,11 @@ shopUpgrades:
         description: Vitesse x<currentMult> → x<newMult>
 
     processors:
-        name: Découpage, Rotation et Empilage
+        name: Découpage, rotation et empilage
         description: Vitesse x<currentMult> → x<newMult>
 
     painting:
-        name: Mélange et Peinture
+        name: Mélange et peinture
         description: Vitesse x<currentMult> → x<newMult>
 
 # Buildings and their name / description
@@ -456,7 +456,7 @@ buildings:
             description: Permet de faire passer des ressources en dessous de bâtiments et de convoyeurs.
 
         tier2:
-            name: Tunnel Niveau II
+            name: Tunnel niveau II
             description: Permet de faire passer des ressources en dessous de bâtiments et de convoyeurs.
 
     splitter: # Internal name for the Balancer
@@ -477,7 +477,7 @@ buildings:
             name: &cutter Découpeur
             description: Coupe une forme de haut en bas et sort les deux parties. <strong>Si vous n'utilisez qu'une seule partie, assurez-vous de détruire l'autre ou sinon, gare au blocage !</strong>
         quad:
-            name: Découpeur (Quatre)
+            name: Découpeur (quatre)
             description: Coupe une forme en quatre parties. <strong>Si vous n'utilisez pas toutes les parties, assurez-vous de détruire les autres ou sinon, gare au blocage !</strong>
 
     rotater:
@@ -506,10 +506,10 @@ buildings:
             name: &painter Peintre
             description: &painter_desc Colorie entièrement la forme de gauche avec la couleur de droite.
         double:
-            name: Peintre (Double)
+            name: Peintre (double)
             description: Colorie les deux formes de gauche avec la couleur de droite.
         quad:
-            name: Peintre (Quadruple)
+            name: Peintre (quadruple)
             description: Permet de colorier chaque quadrant d'une forme avec une couleur différente.
         mirrored:
             name: *painter
@@ -573,7 +573,7 @@ storyRewards:
         desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles peuvent être mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche après avoir été légèrement réduite.
 
     reward_splitter:
-        title: Distributeur/Rassembleur
+        title: Distributeur/rassembleur
         desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué - Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les formes</strong> entre plusieurs convoyeurs !<br><br>
 
     reward_tunnel:
@@ -636,7 +636,7 @@ settings:
     title: Options
     categories:
         general: Général
-        userInterface: Interface Utilisateur
+        userInterface: Interface utilisateur
         advanced: Avancé
 
     versionBadges:
