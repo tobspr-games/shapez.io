@@ -529,7 +529,7 @@ buildings:
         levelShortcut: NV
     wire:
         default:
-            name: Ligne énergétique
+            name: Câble
             description: Permet de transporter de l'énergie.
     advanced_processor:
         default:
@@ -543,11 +543,11 @@ buildings:
             description: Genère de l'énergie en consommant des formes.
     wire_crossings:
         default:
-            name: Duplicateur de ligne
-            description: Sépare une ligne énergétique en deux.
+            name: Duplicateur de câble
+            description: Sépare un câble en deux.
         merger:
-            name: Fusionneur de ligne
-            description: Fusionne deux lignes énergétiques en une seule.
+            name: Fusionneur de câble
+            description: Fusionne deux câbles en un seul.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -831,7 +831,7 @@ keybindings:
         switchLayers: Échanger les calques
         advanced_processor: Inverseur de couleur
         energy_generator: Générateur d'énergie
-        wire: Ligne énergétique
+        wire: Câble
 
 about:
     title: À propos de ce jeu
