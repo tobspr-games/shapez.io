@@ -844,10 +844,10 @@ keybindings:
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
             Modifikator: stattdessen gegen den UZS rotieren
-        cycleBuildingVariants: nächste Variante auswählen
+        cycleBuildingVariants: Nächste Variante auswählen
         confirmMassDelete: Massenlöschung bestätigen
         pasteLastBlueprint: Letzte Blaupause einfügen
-        cycleBuildings: nächstes Gebäude auswählen
+        cycleBuildings: Nächstes Gebäude auswählen
         lockBeltDirection: Bandplaner aktivieren
         switchDirectionLockSide: >-
             Bandplaner: Seite wechseln
