@@ -22,7 +22,7 @@ export class EntityManager extends BasicSerializableObject {
         /** @type {Array<Entity>} */
         this.entities = [];
 
-        // We store a seperate list with entities to destroy, since we don't destroy
+        // We store a separate list with entities to destroy, since we don't destroy
         // them instantly
         /** @type {Array<Entity>} */
         this.destroyList = [];
