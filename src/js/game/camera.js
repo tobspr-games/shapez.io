@@ -123,7 +123,7 @@ export class Camera extends BasicSerializableObject {
         this.clampZoomLevel();
     }
 
-    // Simple geters & setters
+    // Simple getters & setters
 
     addScreenShake(amount) {
         const currentShakeAmount = this.currentShake.length();

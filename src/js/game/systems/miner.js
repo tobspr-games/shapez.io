@@ -121,7 +121,7 @@ export class MinerSystem extends GameSystemWithFilter {
             }
 
             // Draw the item background - this is to hide the ejected item animation from
-            // the item ejecto
+            // the item ejector
 
             const padding = 3;
             const destX = staticComp.origin.x * globalConfig.tileSize + padding;
