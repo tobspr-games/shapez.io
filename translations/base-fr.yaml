@@ -828,7 +828,7 @@ keybindings:
         switchDirectionLockSide: "Planificateur : changer de côté"
         pipette: Pipette
         menuClose: Fermer le menu
-        switchLayers: Changer de calque
+        switchLayers: Basculer le calque
         advanced_processor: Inverseur de couleur
         energy_generator: Générateur d'énergie
         wire: Câble
