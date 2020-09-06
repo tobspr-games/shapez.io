@@ -809,7 +809,7 @@ keybindings:
 
         rotateWhilePlacing: Pivoter
         rotateInverseModifier: >-
-            Variante: Pivote à gauche
+            Variante : Pivote à gauche
         cycleBuildingVariants: Alterner entre les variantes
         confirmMassDelete: Confirmer la suppression de la sélection
         cycleBuildings: Alterner entre les bâtiments
