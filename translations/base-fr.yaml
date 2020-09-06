@@ -82,7 +82,7 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Aidez à traduire[/url]
         [/list]
 
-    discordLink: Discord officiel — Parlez avec moi!
+    discordLink: Discord officiel — Parlez avec moi !
 
 global:
     loading: Chargement
@@ -400,7 +400,7 @@ ingame:
                 Connectez l’extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce : <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
 
             1_3_expand: >-
-                Ceci n’est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d extracteurs et de convoyeurs pour atteindre plus vite votre but.<br><br>Astuce : Gardez <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+                Ceci n’est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d’extracteurs et de convoyeurs pour atteindre plus vite votre but.<br><br>Astuce : Gardez <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
     colors:
         red: Rouge
@@ -523,7 +523,7 @@ buildings:
 
         storage:
             name: Stockage
-            description: Stocke les formes en trop jusqu…à une certaine capacité. Peut être utilisé comme tampon.
+            description: Stocke les formes en trop jusqu’à une certaine capacité. Peut être utilisé comme tampon.
     hub:
         deliver: Délivrez
         toUnlock: pour débloquer
@@ -826,7 +826,7 @@ keybindings:
         exportScreenshot: Exporter toute la base en tant qu’image.
         mapMoveFaster: Se déplacer plus vite
         lockBeltDirection: Utiliser le planificateur de convoyeurs
-        switchDirectionLockSide: "Planificateur: changer de côté"
+        switchDirectionLockSide: "Planificateur : changer de côté"
         pipette: Pipette
         menuClose: Fermer le menu
         switchLayers: Échanger les calques
