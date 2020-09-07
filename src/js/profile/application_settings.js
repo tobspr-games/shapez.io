@@ -10,6 +10,7 @@ import { THEMES, THEME, applyGameTheme } from "../game/theme";
 import { IS_DEMO } from "../core/config";
 import { T } from "../translations";
 import { LANGUAGES } from "../languages";
+import { globalConfig, IS_DEBUG } from "../core/config";
 
 const logger = createLogger("application_settings");
 
@@ -21,6 +22,7 @@ export const enumCategories = {
     userInterface: "userInterface",
     performance: "performance",
     advanced: "advanced",
+    debug: "debug",
 };
 
 export const uiScales = [
@@ -293,6 +295,21 @@ export const allApplicationSettings = [
     new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
 ];
 
+if (IS_DEBUG) {
+    for (let k in globalConfig.debug) {
+        if (k.startsWith('_')) continue;
+        const setting = new BoolSetting(`debug_${ k }`, enumCategories.debug, (app, value) => {
+            globalConfig.debug[k] = value;
+        });
+        setting.validate = () => true;
+        T.settings.labels[`debug_${ k }`] = {
+            title: k.replace(/(?!^)([A-Z])/g, " $1"),
+            description: globalConfig.debug[`_${ k }`],
+        };
+        allApplicationSettings.push(setting);
+    }
+}
+
 export function getApplicationSettingById(id) {
     return allApplicationSettings.find(setting => setting.id === id);
 }
@@ -374,7 +391,9 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string} key
      */
     getSetting(key) {
-        assert(this.getAllSettings().hasOwnProperty(key), "Setting not known: " + key);
+        if (!key.startsWith('debug_')) {
+            assert(this.getAllSettings().hasOwnProperty(key), "Setting not known: " + key);
+        }
         return this.getAllSettings()[key];
     }
 
