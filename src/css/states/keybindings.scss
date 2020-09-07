@@ -1,5 +1,12 @@
-#state_KeybindingsState {
+#state_SettingsState {
+
+    $colorCategoryButton: #eee;
+    $colorCategoryButtonSelected: #5f748b;
+
     .content {
+        display: flex;
+        overflow-y: scroll;
+
         .topEntries {
             display: grid;
             grid-template-columns: 1fr auto;
@@ -47,6 +54,148 @@
                         cursor: default;
                         opacity: 0.1 !important;
                     }
+                }
+            }
+        }
+
+        .categoryContainer {
+            width: 100%;
+
+            .category {
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+
+                .setting {
+                    @include S(padding, 10px);
+                    background: #eeeff5;
+                    @include S(border-radius, $globalBorderRadius);
+                    @include S(margin-bottom, 5px);
+
+                    label {
+                        text-transform: uppercase;
+                        @include Text;
+                    }
+
+                    .desc {
+                        @include S(margin-top, 5px);
+                        @include SuperSmallText;
+                        color: #aaadb2;
+                    }
+
+                    > .row {
+                        display: grid;
+                        align-items: center;
+                        grid-template-columns: 1fr auto;
+                    }
+
+                    &.disabled {
+                        // opacity: 0.3;
+                        pointer-events: none;
+                        * {
+                            pointer-events: none !important;
+                            cursor: default !important;
+                        }
+                        position: relative;
+                        .standaloneOnlyHint {
+                            @include PlainText;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            pointer-events: all;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: rgba(#fff, 0.5);
+                            text-transform: uppercase;
+                            color: $colorRedBright;
+                        }
+                    }
+
+                    .value.enum {
+                        background: #fff;
+                        @include PlainText;
+                        display: flex;
+                        align-items: flex-start;
+                        pointer-events: all;
+                        cursor: pointer;
+                        justify-content: center;
+                        @include S(min-width, 100px);
+                        @include S(border-radius, $globalBorderRadius);
+                        @include S(padding, 4px);
+                        @include S(padding-right, 15px);
+
+                        background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
+                            calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
+
+                        transition: background-color 0.12s ease-in-out;
+                        &:hover {
+                            background-color: #fafafa;
+                        }
+                    }
+                }
+            }
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            @include S(min-width, 210px);
+            @include S(max-width, 320px);
+            width: 30%;
+            height: 100%;
+            position: sticky;
+            top: 0;
+            @include S(margin-left, 20px);
+            @include S(margin-right, 32px);
+
+            .other {
+                margin-top: auto;
+            }
+
+            button {
+                @include S(margin-top, 4px);
+                width: calc(100% - #{D(20px)});
+                text-align: start;
+
+                &::after {
+                    content: unset;
+                }
+            }
+
+            button.categoryButton,
+            button.about {
+                background-color: $colorCategoryButton;
+                color: #777a7f;
+
+                &.active {
+                    background-color: $colorCategoryButtonSelected;
+                    color: #fff;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+
+                &.pressed {
+                    transform: none !important;
+                }
+            }
+
+            .versionbar {
+                @include S(margin-top, 20px);
+                @include SuperSmallText;
+                display: grid;
+                align-items: center;
+                grid-template-columns: 1fr auto;
+                .buildVersion {
+                    display: flex;
+                    flex-direction: column;
+                    color: #aaadaf;
                 }
             }
         }

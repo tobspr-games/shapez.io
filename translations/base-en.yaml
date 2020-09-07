@@ -722,6 +722,7 @@ settings:
         advanced: Advanced
         performance: Performance
         debug: Debug
+        keybindings: Keybindings
 
     versionBadges:
         dev: Development
