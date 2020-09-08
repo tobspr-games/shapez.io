@@ -238,8 +238,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const items = processorComp.inputSlots;
         processorComp.inputSlots = [];
 
-        /** @type {Object.<string, { item: BaseItem, sourceSlot: number }>} */
-        const itemsBySlot = {};
+        /** @type {Array<{ item: BaseItem, sourceSlot: number }>} */
+        const itemsBySlot = [];
         for (let i = 0; i < items.length; ++i) {
             itemsBySlot[items[i].sourceSlot] = items[i];
         }

@@ -19,7 +19,7 @@ import { Vector } from "../core/vector";
 
 /**
  * Stores a lookup table for all building variants (for better performance)
- * @type {Object<number, BuildingVariantIdentifier>}
+ * @type {Object<string | number, BuildingVariantIdentifier>}
  */
 export const gBuildingVariants = {
     // Set later
@@ -27,7 +27,7 @@ export const gBuildingVariants = {
 
 /**
  * Registers a new variant
- * @param {number} id
+ * @param {number | string} id
  * @param {typeof MetaBuilding} meta
  * @param {string} variant
  * @param {number} rotationVariant
@@ -50,7 +50,7 @@ export function registerBuildingVariant(
 
 /**
  *
- * @param {number} code
+ * @param {number | string} code
  * @returns {BuildingVariantIdentifier}
  */
 export function getBuildingDataFromCode(code) {
@@ -72,7 +72,7 @@ export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) 
             data.variant === variant &&
             data.rotationVariant === rotationVariant
         ) {
-            return +key;
+            return key;
         }
     }
     assertAlways(
