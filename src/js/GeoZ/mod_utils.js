@@ -14,3 +14,17 @@ export function getFileAsDataURI(url) {
 		});
 	});
 }
+
+/**
+ *
+ * @param {number | string} key 
+ */
+export function keyCodeOf(key) {
+    if (typeof key === "number") {
+        return key;
+    }
+    if (key.match(/F\d+/)) {
+        return 111 + +key.slice(1);
+    }
+    return key.toUpperCase().charCodeAt(0);
+}

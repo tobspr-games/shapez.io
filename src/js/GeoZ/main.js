@@ -3,6 +3,7 @@ import { ModComponent } from "./mod_component";
 import { ModItem } from "./mod_item";
 import { ModProcessor } from "./mod_processor";
 import { ModSystem, ModSystemWithFilter } from "./mod_system";
+import { keyCodeOf } from "./mod_utils";
 import { gComponentRegistry, gItemRegistry, gMetaBuildingRegistry } from "../core/global_registries";
 import { GameSystemManager } from "../game/game_system_manager";
 import { GameCore } from "../game/core";
@@ -11,6 +12,7 @@ import { registerBuildingVariant } from "../game/building_codes";
 import { supportedBuildings } from "../game/hud/parts/buildings_toolbar";
 import { KEYMAPPINGS, key } from "../game/key_action_mapper";
 import { T } from "../translations";
+import { globalConfig } from "../core/config";
 
 export { MetaModBuilding } from "./mod_building";
 export { ModComponent } from "./mod_component";
@@ -211,7 +213,7 @@ export async function initMods() {
 
 				supportedBuildings.push(building);
 
-				KEYMAPPINGS.buildings[base_id] = { keyCode: key(building.getKeybinding()) };
+				KEYMAPPINGS.buildings[base_id] = { keyCode: keyCodeOf(building.getKeybinding()), id: base_id };
 
 				const translations = building.getTranslations();
 
@@ -227,11 +229,7 @@ export async function initMods() {
 		logger.log(mod_infos);
 	}
 	
-	for (const categoryId in KEYMAPPINGS) {
-		for (const mappingId in KEYMAPPINGS[categoryId]) {
-			KEYMAPPINGS[categoryId][mappingId].id = mappingId;
-		}
-	}
+    initShapes();
 
     logger.log(`${Mods.length} mods loaded`);
 }
