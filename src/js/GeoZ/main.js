@@ -231,20 +231,20 @@ export async function initMods() {
 					T.buildings[base_id][variant] = translations.variants[variant];
 				}
             }
-
-            if(mod.shapes) {
-                mod_infos += `${mod.shapes.length} shapes, `;
-                for (const shape of mod.shapes) {
-                    ModShapes.push(shape);
-                    allShapeData[shape.id] = shape;
-                }
+        }
+        
+        if(mod.shapes) {
+            mod_infos += `${mod.shapes.length} shapes, `;
+            for (const shape of mod.shapes) {
+                ModShapes.push(shape);
+                allShapeData[shape.id] = shape;
             }
-		}
+        }
 		
 		logger.log(mod_infos);
     }
     
     initShapes();
-    
+
     logger.log(`${Mods.length} mods loaded`);
 }

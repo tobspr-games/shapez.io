@@ -47,13 +47,6 @@ console.log("%cDEVCODE BUILT IN", "color: #f77");
 
 logSection("Boot Process", "#f9a825");
 
-initMods();
-initDrawUtils();
-initComponentRegistry();
-initItemRegistry();
-initMetaBuildingRegistry();
-initGameSpeedRegistry();
-
 let app = null;
 
 function bootApp() {
@@ -61,5 +54,14 @@ function bootApp() {
     app = new Application();
     app.boot();
 }
+
+(async () => {
+    await initMods();
+    initDrawUtils();
+    initComponentRegistry();
+    initItemRegistry();
+    initMetaBuildingRegistry();
+    initGameSpeedRegistry(); 
+})();
 
 window.addEventListener("load", bootApp);
