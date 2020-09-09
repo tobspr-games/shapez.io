@@ -75,7 +75,7 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
-                <span class="updateLabel">GeoZ!</span>
+                <span class="updateLabel">Geo<span style="color:#66bb6a">Z</span></span>
             </div>
 
 
