@@ -12,6 +12,7 @@ import { registerBuildingVariant } from "../game/building_codes";
 import { supportedBuildings } from "../game/hud/parts/buildings_toolbar";
 import { KEYMAPPINGS, key } from "../game/key_action_mapper";
 import { T } from "../translations";
+import { ShapeData, allShapeData, initShapes } from "../game/shapes";
 import { globalConfig } from "../core/config";
 
 export { MetaModBuilding } from "./mod_building";
@@ -28,6 +29,7 @@ export { ModSystem, ModSystemWithFilter } from "./mod_system";
  * @property {Array<typeof ModItem>=} items
  * @property {Array<typeof ModProcessor>=} processors
  * @property {Array<typeof ModSystem | typeof ModSystemWithFilter>=} systems
+ * @property {Array<ShapeData>=} shapes
  */
 
  const logger = createLogger("GeoZ");
@@ -49,6 +51,9 @@ export const ModItems = [];
 
 /** @type {Array<typeof MetaModBuilding>} */
 export const ModBuildings = [];
+
+/** @type {Array<ShapeData>} */
+export const ModShapes = [];
 
 const GameSystemManager_internalInitSystems_original = GameSystemManager.prototype.internalInitSystems;
 GameSystemManager.prototype.internalInitSystems = function () {
@@ -223,6 +228,14 @@ export async function initMods() {
 				for (const variant in translations.variants) {
 					T.buildings[base_id][variant] = translations.variants[variant];
 				}
+            }
+
+            if(mod.shapes) {
+                mod_infos += `${mod.shapes.length} shapes, `;
+                for (const shape of mod.shapes) {
+                    ModShapes.push(shape);
+                    allShapeData[shape.id] = shape;
+                }
             }
 		}
 		

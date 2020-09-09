@@ -6,6 +6,7 @@ import { Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
 import { THEME } from "./theme";
+import { allShapeData, ShapeData, enumShortcodeToSubShape, enumSubShapeToShortcode, enumSubShape } from "./shapes";
 
 /**
  * @typedef {{
@@ -25,28 +26,6 @@ const arrayQuadrantIndexToOffset = [
     new Vector(-1, 1), // bl
     new Vector(-1, -1), // tl
 ];
-
-/** @enum {string} */
-export const enumSubShape = {
-    rect: "rect",
-    circle: "circle",
-    star: "star",
-    windmill: "windmill",
-};
-
-/** @enum {string} */
-export const enumSubShapeToShortcode = {
-    [enumSubShape.rect]: "R",
-    [enumSubShape.circle]: "C",
-    [enumSubShape.star]: "S",
-    [enumSubShape.windmill]: "W",
-};
-
-/** @enum {enumSubShape} */
-export const enumShortcodeToSubShape = {};
-for (const key in enumSubShapeToShortcode) {
-    enumShortcodeToSubShape[enumSubShapeToShortcode[key]] = key;
-}
 
 /**
  * Converts the given parameters to a valid shape definition
@@ -85,6 +64,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             return errorCode;
         }
         const definition = ShapeDefinition.fromShortKey(data);
+        /** @type {Array<ShapeLayer>} */
         this.layers = /** @type {Array<ShapeLayer>} */ (definition.layers);
     }
 
@@ -336,97 +316,98 @@ export class ShapeDefinition extends BasicSerializableObject {
         for (let layerIndex = 0; layerIndex < this.layers.length; ++layerIndex) {
             const quadrants = this.layers[layerIndex];
 
+            let quads = quadrants
+                .map((e, i) => ({ e, i }))
+                .filter(e => e.e)
+                .map(e => ({ ...e.e, quadrantIndex: e.i }))
             const layerScale = Math.max(0.1, 0.9 - layerIndex * 0.22);
 
-            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                if (!quadrants[quadrantIndex]) {
+            for (let quad of quads) {
+                if (!quad) {
                     continue;
                 }
-                const { subShape, color } = quadrants[quadrantIndex];
+                const { subShape, color, quadrantIndex } = quad;
+                if (subShape == "-") {
+                    continue;
+                }
 
                 const quadrantPos = arrayQuadrantIndexToOffset[quadrantIndex];
+
                 const centerQuadrantX = quadrantPos.x * quadrantHalfSize;
                 const centerQuadrantY = quadrantPos.y * quadrantHalfSize;
 
                 const rotation = Math.radians(quadrantIndex * 90);
 
+                context.save();
                 context.translate(centerQuadrantX, centerQuadrantY);
                 context.rotate(rotation);
 
                 context.fillStyle = enumColorsToHexCode[color];
                 context.strokeStyle = THEME.items.outline;
-                context.lineWidth = THEME.items.outlineWidth;
+                const lineWidth = THEME.items.outlineWidth * Math.pow(0.8, layerIndex);
+                context.lineWidth = lineWidth;
 
                 const insetPadding = 0.0;
 
-                switch (subShape) {
-                    case enumSubShape.rect: {
-                        context.beginPath();
-                        const dims = quadrantSize * layerScale;
-                        context.rect(
-                            insetPadding + -quadrantHalfSize,
-                            -insetPadding + quadrantHalfSize - dims,
-                            dims,
-                            dims
-                        );
-
-                        break;
+                const dims = quadrantSize * layerScale;
+                const innerDims = insetPadding - quadrantHalfSize;
+                
+                let began = null;
+                // eslint-disable-next-line no-inner-declarations
+                /** @type {import("./shapes").BeginDrawShape} */
+                function begin(args) {
+                    context.save();
+                    context.translate(innerDims, -innerDims);
+                    context.scale(dims, -dims);
+                    context.lineWidth = lineWidth / dims / (args.scale || 1);
+                    if (args.scale) {
+                        context.scale(args.scale, args.scale);
                     }
-                    case enumSubShape.star: {
+                    if (args.beginPath) {
                         context.beginPath();
-                        const dims = quadrantSize * layerScale;
-
-                        let originX = insetPadding - quadrantHalfSize;
-                        let originY = -insetPadding + quadrantHalfSize - dims;
-
-                        const moveInwards = dims * 0.4;
-                        context.moveTo(originX, originY + moveInwards);
-                        context.lineTo(originX + dims, originY);
-                        context.lineTo(originX + dims - moveInwards, originY + dims);
-                        context.lineTo(originX, originY + dims);
+                    }
+                    if (args.moveToZero) {
+                        context.moveTo(0, 0);
+                    }
+                    began = args;
+                }
+                // eslint-disable-next-line no-inner-declarations
+                function end() {
+                    if (!began) {
+                        return;
+                    }
+                    if (began.path) {
                         context.closePath();
-                        break;
                     }
-
-                    case enumSubShape.windmill: {
-                        context.beginPath();
-                        const dims = quadrantSize * layerScale;
-
-                        let originX = insetPadding - quadrantHalfSize;
-                        let originY = -insetPadding + quadrantHalfSize - dims;
-                        const moveInwards = dims * 0.4;
-                        context.moveTo(originX, originY + moveInwards);
-                        context.lineTo(originX + dims, originY);
-                        context.lineTo(originX + dims, originY + dims);
-                        context.lineTo(originX, originY + dims);
-                        context.closePath();
-                        break;
-                    }
-
-                    case enumSubShape.circle: {
-                        context.beginPath();
-                        context.moveTo(insetPadding + -quadrantHalfSize, -insetPadding + quadrantHalfSize);
-                        context.arc(
-                            insetPadding + -quadrantHalfSize,
-                            -insetPadding + quadrantHalfSize,
-                            quadrantSize * layerScale,
-                            -Math.PI * 0.5,
-                            0
-                        );
-                        context.closePath();
-                        break;
-                    }
-
-                    default: {
-                        assertAlways(false, "Unkown sub shape: " + subShape);
-                    }
+                    context.restore();
                 }
 
-                context.fill();
-                context.stroke();
+                /** @type {ShapeData} */
+                let shape = allShapeData[subShape];
+                assertAlways(shape.draw, "shape should be drawable!");
+                if (typeof shape.draw === "string") {
+                    let draw = shape.draw;
+                    begin({ scale: 1 });
+                    let p = new Path2D(draw);
+                    context.fill(p);
+                    context.stroke(p);
+                    end();
+                } else {
+                    shape.draw({
+                        dims,
+                        innerDims,
+                        layer: layerIndex,
+                        quadrant: quadrantIndex,
+                        context,
+                        color,
+                        begin,
+                    });
+                    end();
+                    context.fill();
+                    context.stroke();
+                }
 
-                context.rotate(-rotation);
-                context.translate(-centerQuadrantX, -centerQuadrantY);
+                context.restore();
             }
         }
     }
