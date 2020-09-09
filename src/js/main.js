@@ -10,6 +10,7 @@ import { initDrawUtils } from "./core/draw_utils";
 import { initItemRegistry } from "./game/item_registry";
 import { initMetaBuildingRegistry } from "./game/meta_building_registry";
 import { initGameSpeedRegistry } from "./game/game_speed_registry";
+import { initMods } from "./GeoZ/main";
 
 const logger = createLogger("main");
 
@@ -77,6 +78,7 @@ console.log("%cDEVCODE BUILT IN", "color: #f77");
 
 logSection("Boot Process", "#f9a825");
 
+initMods();
 initDrawUtils();
 initComponentRegistry();
 initItemRegistry();
