@@ -19,7 +19,7 @@ import { Vector } from "../core/vector";
 
 /**
  * Stores a lookup table for all building variants (for better performance)
- * @type {Object<string | number, BuildingVariantIdentifier>}
+ * @type {{[x: string]: BuildingVariantIdentifier, [x: number]: BuildingVariantIdentifier}}
  */
 export const gBuildingVariants = {
     // Set later
@@ -79,5 +79,5 @@ export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) 
         false,
         "Building not found by data: " + metaBuilding.getId() + " / " + variant + " / " + rotationVariant
     );
-    return 0;
+    return "0";
 }

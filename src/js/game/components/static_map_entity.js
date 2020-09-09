@@ -19,7 +19,7 @@ export class StaticMapEntityComponent extends Component {
             originalRotation: types.float,
 
             // See building_codes.js
-            code: types.uint,
+            code: types.string,
         };
     }
 
@@ -96,7 +96,7 @@ export class StaticMapEntityComponent extends Component {
 
         this.origin = origin;
         this.rotation = rotation;
-        this.code = code;
+        this.code = code.toString();
         this.originalRotation = originalRotation;
     }
 

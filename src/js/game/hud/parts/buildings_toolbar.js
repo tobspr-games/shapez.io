@@ -13,8 +13,12 @@ import { MetaLeverBuilding } from "../../buildings/lever";
 import { MetaFilterBuilding } from "../../buildings/filter";
 import { MetaDisplayBuilding } from "../../buildings/display";
 import { MetaReaderBuilding } from "../../buildings/reader";
+import { MetaBuilding } from "../../meta_building";
 
-const supportedBuildings = [
+/**
+ * @type {Array<typeof MetaBuilding>}
+ */
+export const supportedBuildings = [
     MetaBeltBaseBuilding,
     MetaSplitterBuilding,
     MetaUndergroundBeltBuilding,
