@@ -8,6 +8,7 @@ import { GameRoot } from "./root";
 import { ShapeDefinition, ShapeLayer } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
 import { UPGRADES } from "./upgrades";
+import { ModProcessors } from "../GeoZ/main";
 
 export class HubGoals extends BasicSerializableObject {
     static getId() {
@@ -440,8 +441,17 @@ export class HubGoals extends BasicSerializableObject {
                     globalConfig.buildingSpeeds[processorType]
                 );
             }
-            default:
+            default: {
+                if (ModProcessors[processorType]) {
+                    return (
+                        globalConfig.beltSpeedItemsPerSecond *
+                        this.upgradeImprovements.processors *
+                        globalConfig.buildingSpeeds[processorType]
+                    );
+                }
+
                 assertAlways(false, "invalid processor type: " + processorType);
+            }
         }
 
         return 1 / globalConfig.beltSpeedItemsPerSecond;

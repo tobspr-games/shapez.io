@@ -192,7 +192,9 @@ export async function initMods() {
         if (mod.processors) {
             mod_infos += `${mod.processors.length} processors, `;
             for (const processor of mod.processors) {
-                ModProcessors[processor.getType()] = processor;
+                const type = processor.getType();
+                ModProcessors[type] = processor;
+                globalConfig.buildingSpeeds[type] = processor.getBaseSpeed();
             }
         }
 
@@ -240,9 +242,9 @@ export async function initMods() {
 		}
 		
 		logger.log(mod_infos);
-	}
-	
+    }
+    
     initShapes();
-
+    
     logger.log(`${Mods.length} mods loaded`);
 }
