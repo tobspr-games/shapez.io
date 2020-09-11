@@ -55,13 +55,4 @@ function bootApp() {
     app.boot();
 }
 
-(async () => {
-    await initMods();
-    initDrawUtils();
-    initComponentRegistry();
-    initItemRegistry();
-    initMetaBuildingRegistry();
-    initGameSpeedRegistry(); 
-})();
-
 window.addEventListener("load", bootApp);

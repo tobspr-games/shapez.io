@@ -160,12 +160,16 @@ export async function initMods() {
     }
 
     for (const url of external_mods) {
-        let temp = await fetch(url);
-        const text = await temp.text();
-        const mod = /** @type {Mod} */ (eval(text));
+        try {
+            let temp = await fetch(url);
+            const text = await temp.text();
+            const mod = /** @type {Mod} */ (eval(text));
 
-        if (mod.name) {
-            Mods.push(mod);
+            if (mod.name) {
+                Mods.push(mod);
+            }
+        } catch {
+            logger.log(`🛑 Failed to load mod at : ${url}`)
         }
     }
 
