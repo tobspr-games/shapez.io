@@ -35,8 +35,7 @@ export class ModProcessor {
 	 * @returns {Boolean}
      */
 	static canProcess(entity) {
-		abstract;
-		return false;
+		return true;
 	}
 
 	/**
