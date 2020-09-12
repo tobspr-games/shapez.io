@@ -885,6 +885,11 @@ settings:
             description: >-
                 The game is divided into chunks of 16x16 tiles, if this setting is enabled the borders of each chunk are displayed.
 
+        pickMinerOnPatch:
+            title: Pick miner on resource patch
+            description: >-
+                Enabled by default, selects the miner if you use the pipette when hovering a resource patch.
+
 keybindings:
     title: Keybindings
     hint: >-
