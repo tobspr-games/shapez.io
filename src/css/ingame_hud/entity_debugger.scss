@@ -1,7 +1,12 @@
 #ingame_HUD_EntityDebugger {
     position: absolute;
     @include S(right, 30px);
-    @include S(top, 200px);
+
+    bottom: 0;
+    height: calc(100vh - 200px * var(--ui-scale));
+
+    display: grid;
+    grid-template-rows: auto auto 1fr;
 
     font-size: 14px;
     line-height: 16px;
@@ -24,20 +29,27 @@
         }
     }
 
-    .components {
-        @include S(margin-top, 4px);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        @include S(grid-gap, 3px);
-        .component {
-            @include S(padding, 2px);
-            background: #333;
-            display: flex;
-            flex-direction: column;
+    .entityInfo {
+        overflow-y: auto;
+        .components {
+            @include S(margin-top, 4px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: auto;
+            @include S(grid-gap, 3px);
+            .component {
+                @include S(padding, 2px);
+                background: #333;
+                display: flex;
+                flex-direction: column;
 
-            .data {
                 @include S(width, 150px);
-                @include S(height, 130px);
+                @include S(height, 150px);
+
+                .data {
+                    resize: vertical;
+                    flex-grow: 1;
+                }
             }
         }
     }

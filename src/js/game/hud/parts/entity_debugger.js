@@ -9,8 +9,8 @@ export class HUDEntityDebugger extends BaseHUDPart {
             "ingame_HUD_EntityDebugger",
             [],
             `
-            Tile below cursor: <span class="mousePos"></span><br>
-            Chunk below cursor: <span class="chunkPos"></span><br>
+            <div>Tile below cursor: <span class="mousePos"></span></div>
+            <div>Chunk below cursor: <span class="chunkPos"></span></div>
             <div class="entityInfo"></div>
         `
         );
@@ -41,7 +41,7 @@ export class HUDEntityDebugger extends BaseHUDPart {
         const entity = this.root.map.getTileContent(worldTile, this.root.currentLayer);
         if (entity) {
             removeAllChildren(this.entityInfoElem);
-            let html = "Entity";
+            let html = "<div>Entity</div>";
 
             const flag = (name, val) =>
                 `<span class='flag' data-value='${val ? "1" : "0"}'><u>${name}</u> ${val}</span>`;
