@@ -25,6 +25,12 @@ export class LogicGateSystem extends GameSystemWithFilter {
             [enumLogicGateType.unstacker]: this.compute_UNSTACK.bind(this),
             [enumLogicGateType.shapecompare]: this.compute_SHAPECOMPARE.bind(this),
         };
+
+        const { ModWireProcessors } = require("../../GeoZ/main");
+        for (const type in ModWireProcessors) {
+            //@ts-ignore
+            this.boundOperations[type] = ModWireProcessors[type].compute.bind(null, this);
+        }
     }
 
     update() {

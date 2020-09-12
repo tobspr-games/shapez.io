@@ -1,9 +1,13 @@
+//Mod imports
 import { MetaModBuilding } from "./mod_building";
 import { ModComponent } from "./mod_component";
 import { ModItem } from "./mod_item";
 import { ModProcessor } from "./mod_processor";
+import { ModWireProcessor } from "./mod_wireprocessor";
 import { ModSystem, ModSystemWithFilter } from "./mod_system";
 import { keyCodeOf } from "./mod_utils";
+
+//Game imports
 import { gComponentRegistry, gItemRegistry, gMetaBuildingRegistry } from "../core/global_registries";
 import { GameSystemManager } from "../game/game_system_manager";
 import { GameCore } from "../game/core";
@@ -19,6 +23,7 @@ export { MetaModBuilding } from "./mod_building";
 export { ModComponent } from "./mod_component";
 export { ModItem } from "./mod_item";
 export { ModProcessor } from "./mod_processor";
+export { ModWireProcessor } from "./mod_wireprocessor";
 export { ModSystem, ModSystemWithFilter } from "./mod_system";
 
 /**
@@ -28,6 +33,7 @@ export { ModSystem, ModSystemWithFilter } from "./mod_system";
  * @property {Array<typeof ModComponent>=} components
  * @property {Array<typeof ModItem>=} items
  * @property {Array<typeof ModProcessor>=} processors
+ * @property {Array<typeof ModWireProcessor>=} wireProcessors
  * @property {Array<typeof ModSystem | typeof ModSystemWithFilter>=} systems
  * @property {Array<ShapeData>=} shapes
  */
@@ -45,6 +51,9 @@ export const ModSystems = [];
 
 /** @type {Object.<string, typeof ModProcessor>} */
 export const ModProcessors = {};
+
+/** @type {Object.<string, typeof ModWireProcessor>} */
+export const ModWireProcessors = {};
 
 /** @type {Array<typeof ModItem>} */
 export const ModItems = [];
@@ -202,6 +211,14 @@ export async function initMods() {
             }
         }
 
+        if (mod.wireProcessors) {
+            mod_infos += `${mod.wireProcessors.length} wire processors, `;
+            for (const wireProcessor of mod.wireProcessors) {
+                const type = wireProcessor.getType();
+                ModWireProcessors[type] = wireProcessor;
+            }
+        }
+
         if (mod.items) {
             mod_infos += `${mod.items.length} items, `;
             for (const item of mod.items) {
@@ -219,7 +236,7 @@ export async function initMods() {
 				registerBuildingVariant(base_id, building);
 
 				for (const variant of building.getVariants()) {
-					registerBuildingVariant(`${base_id}-${variant}`, building);
+					registerBuildingVariant(`${base_id}-${variant}`, building, variant);
 				}
 
 				supportedBuildings.push(building);
