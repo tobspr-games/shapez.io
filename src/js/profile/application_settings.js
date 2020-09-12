@@ -640,7 +640,7 @@ export class ApplicationSettings extends ReadWriteProxy {
             data.settings.refreshRate = "60";
         }
 
-        if(data.version < 25) {
+        if (data.version < 25) {
             data.settings.pickMinerOnPatch = true;
             data.version = 25;
         }
