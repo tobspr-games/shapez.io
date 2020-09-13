@@ -792,7 +792,7 @@ settings:
         displayChunkBorders:
             title: Monter les blocs
             description: >-
-                Le jeu est divisé en blocs de 16×16 cases. Si ce réglage est activé, les limites de chaque bloc sont affichées.
+                Le jeu est divisé en blocs de 16×16 cases. Si ce réglage est activé, les limites de chaque bloc sont affichées.
 
 keybindings:
     title: Contrôles
