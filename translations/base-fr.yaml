@@ -780,9 +780,9 @@ settings:
                 Désactiver la grille de placement peut améliorer les performances. Ça rend aussi l’apparence plus unie !
 
         clearCursorOnDeleteWhilePlacing:
-            title: Vider le curseur avec le clic droit
+            title: Déselectionner avec le clic droit
             description: >-
-                Activé par défaut, remet à zéro le curseur lorsque vous faites un clic droit en ayant un bâtiment selectionné pour la construction. Si désactivé, vous pouvez détruire les bâtiments avec un clic droit puis continuer de placer un bâtiment.
+                Activé par défaut. Désélectionne le bâtiment choisi pour la construction lorsque vous faites un clic droit sur un bâtiment existant. Si désactivé, vous pouvez détruire des bâtiments avec un clic droit puis continuer de placer le bâtiment sélectionné.
 
         lowQualityTextures:
             title: Textures de basse résolution (moche)
@@ -790,9 +790,9 @@ settings:
                 Utilise des textures de basse qualité pour améliorer les performances. Rend le jeu très moche !
 
         displayChunkBorders:
-            title: Monter les blocs
+            title: Monter les secteurs
             description: >-
-                Le jeu est divisé en blocs de 16×16 cases. Si ce réglage est activé, les limites de chaque bloc sont affichées.
+                Le jeu est divisé en secteurs de 16×16 cases. Si ce réglage est activé, les limites de chaque secteur sont affichées.
 
 keybindings:
     title: Contrôles
