@@ -523,7 +523,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 25;
+        return 26;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -631,11 +631,6 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 25) {
-            data.settings.pickMinerOnPatch = true;
-            data.version = 25;
-        }
-
-        if (data.version < 25) {
             data.settings.musicVolume = 0.5;
             data.settings.soundVolume = 0.5;
 
@@ -644,6 +639,11 @@ export class ApplicationSettings extends ReadWriteProxy {
             // @ts-ignore
             delete data.settings.soundsMuted;
             data.version = 25;
+        }
+
+        if (data.version < 26) {
+            data.settings.pickMinerOnPatch = true;
+            data.version = 26;
         }
 
         return ExplainedResult.good();
