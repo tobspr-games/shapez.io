@@ -17,6 +17,7 @@ export const CHANGELOG = [
             "Added a button to the statistics dialog to disable the sorting (by squeek502)",
             "Tier 2 tunnels are now 9 tiles wide, so the gap between is 8 tiles (double the tier 1 range)",
             "Updated and added new translations (Thanks to all contributors!)",
+            "Show connected chained miners on hover",
             "Added setting to be able to delete buildings while placing (inspired by hexy)",
             "You can now adjust the sound and music volumes! (inspired by  Yoshie2000)",
             "Some hud elements now have reduced opacity when hovering, so you can see through (inspired by mvb005)",

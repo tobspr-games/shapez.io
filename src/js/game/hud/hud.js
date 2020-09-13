@@ -43,6 +43,7 @@ import { HUDWiresToolbar } from "./parts/wires_toolbar";
 import { HUDWireInfo } from "./parts/wire_info";
 import { HUDLeverToggle } from "./parts/lever_toggle";
 import { HUDLayerPreview } from "./parts/layer_preview";
+import { HUDMinerHighlight } from "./parts/miner_highlight";
 
 export class GameHUD {
     /**
@@ -82,6 +83,8 @@ export class GameHUD {
 
             wiresOverlay: new HUDWiresOverlay(this.root),
             layerPreview: new HUDLayerPreview(this.root),
+
+            minerHighlight: new HUDMinerHighlight(this.root),
 
             // Typing hints
             /* typehints:start */
@@ -239,6 +242,7 @@ export class GameHUD {
             "blueprintPlacer",
             "colorBlindHelper",
             "changesDebugger",
+            "minerHighlight",
         ];
 
         for (let i = 0; i < partsOrder.length; ++i) {

@@ -39,6 +39,13 @@
             "overlayColor": "rgba(97, 161, 152, 0.75)",
             "previewColor": "rgb(97, 161, 152, 0.5)",
             "highlightColor": "rgba(0, 0, 255, 0.5)"
+        },
+
+        "connectedMiners": {
+            "overlay": "rgba(40, 50, 60, 0.5)",
+            "textColor": "#fff",
+            "textColorCapped": "#ef5072",
+            "background": "rgba(40, 50, 60, 0.8)"
         }
     },
 

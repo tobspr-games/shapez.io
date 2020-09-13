@@ -1,6 +1,7 @@
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { Entity } from "../entity";
 import { typeItemSingleton } from "../item_resolver";
 
 const chainBufferSize = 6;
@@ -40,6 +41,13 @@ export class MinerComponent extends Component {
          * @type {BaseItem}
          */
         this.cachedMinedItem = null;
+
+        /**
+         * Which miner this miner ejects to, in case its a chainable one.
+         * If the value is false, it means there is no entity, and we don't have to re-check
+         * @type {Entity|null|false}
+         */
+        this.cachedChainedMiner = null;
     }
 
     /**
