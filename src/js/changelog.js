@@ -19,7 +19,7 @@ export const CHANGELOG = [
             "Updated and added new translations (Thanks to all contributors!)",
             "Added setting to be able to delete buildings while placing (inspired by hexy)",
             "You can now adjust the sound and music volumes! (inspired by  Yoshie2000)",
-            "Some hud elements now have reduced opacity when hovering, so you can see through (by mvb005)",
+            "Some hud elements now have reduced opacity when hovering, so you can see through (inspired by mvb005)",
             "Mark pinned shapes in statistics dialog and show them first (inspired by davidburhans)",
             "Added setting to show chunk borders",
             "Quad painters have been reworked! They now are integrated with the wires, and only paint the shape when the value is 1 (inspired by dengr1605)",
