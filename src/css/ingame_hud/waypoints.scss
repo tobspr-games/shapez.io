@@ -34,6 +34,18 @@
     flex-direction: column;
     @include DarkThemeInvert();
 
+    max-height: 50vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: all;
+    @include S(padding-right, 5px);
+
+    // Scrollbar
+    &::-webkit-scrollbar {
+        @include S(width, 2px);
+        @include S(height, 6px);
+    }
+
     .waypoint {
         @include SuperSmallText;
         pointer-events: all;
