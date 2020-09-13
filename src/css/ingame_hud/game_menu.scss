@@ -34,19 +34,6 @@
             &:hover {
                 opacity: 0.8;
             }
-            &.music {
-                background-image: uiResource("icons/music_on.png");
-                &.muted {
-                    background-image: uiResource("icons/music_off.png");
-                }
-            }
-
-            &.sfx {
-                background-image: uiResource("icons/sound_on.png");
-                &.muted {
-                    background-image: uiResource("icons/sound_off.png");
-                }
-            }
 
             &.save {
                 background-image: uiResource("icons/save.png");

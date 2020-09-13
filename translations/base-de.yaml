@@ -303,7 +303,7 @@ ingame:
         green: Grün
         blue: Blau
         yellow: Gelb
-        purple: Violett
+        purple: Magenta
         cyan: Cyan
         white: Weiß
         black: Schwarz
@@ -400,7 +400,7 @@ ingame:
     waypoints:
         waypoints: Markierungen
         hub: Hub
-        description: Linksklick auf einen Marker, um dort hinzugelangen, Rechtsklick, um ihn zu löschen.<br><br>Drücke <keybinding> um einen Marker aus deinem Blickwinkel, oder <strong>rechtsklicke</strong>, um einen Marker auf der ausgewählten Position zu erschaffen.
+        description: Linksklick auf einen Marker, um dort hinzugelangen. Rechtsklick, um ihn zu löschen.<br><br>Drücke <keybinding>, um einen Marker aus deinem Blickwinkel, oder <strong>rechtsklicke</strong>, um einen Marker auf der ausgewählten Position zu erschaffen.
         creationSuccessNotification: Marker wurde erstellt.
 
     # Shape viewer
@@ -413,12 +413,12 @@ ingame:
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Platziere einen <strong>Extrahierer</strong> auf der <strong>Kreisform</strong> um sie zu extrahieren!
+            1_1_extractor: Platziere einen <strong>Extrahierer</strong> auf der <strong>Kreisform</strong>, um sie zu extrahieren!
             1_2_conveyor: >-
                 Verbinde den Extrahierer mit einem <strong>Förderband</strong> und schließe ihn am Hub an!<br><br>Tipp: <strong>Drücke und ziehe</strong> das Förderband mit der Maus!
 
             1_3_expand: >-
-                Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong> um sie zu rotieren.
+                Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp: Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren und nutze <strong>R</strong>, um sie zu rotieren.
 
 # All shop upgrades
 shopUpgrades:
@@ -446,17 +446,17 @@ buildings:
     belt:
         default:
             name: &belt Förderband
-            description: Transportiert Items. Halte und ziehe um mehrere zu platzieren.
+            description: Transportiert Items. Halte und ziehe, um mehrere zu platzieren.
 
     # Internal name for the Extractor
     miner:
         default:
             name: &miner Extrahierer
-            description: Platziere ihn auf einer Form oder Farbe um sie zu extrahieren.
+            description: Platziere ihn auf einer Form oder Farbe, um sie zu extrahieren.
 
         chainable:
             name: Extrahierer (Kette)
-            description: Platziere ihn auf einer Form oder Farbe um sie zu extrahieren. Kann verkettet werden.
+            description: Platziere ihn auf einer Form oder Farbe, um sie zu extrahieren. Kann verkettet werden.
 
     # Internal name for the Tunnel
     underground_belt:
@@ -472,15 +472,15 @@ buildings:
     splitter:
         default:
             name: &splitter Verteiler
-            description: Multifunktional - Verteilt gleichmäßig vom Eingang auf den Ausgang.
+            description: Multifunktional - Verteilt gleichmäßig von den Eingängen auf die Ausgänge.
 
         compact:
             name: Kombinierer (Kompakt)
-            description: Vereint zwei Förderbänder zu einem.
+            description: Vereint zwei Eingänge zu einem Ausgang.
 
         compact-inverse:
             name: Kombinierer (Kompakt)
-            description: Vereint zwei Förderbänder zu einem.
+            description: Vereint zwei Eingänge zu einem Ausgang.
 
     cutter:
         default:
@@ -521,12 +521,12 @@ buildings:
             description: *painter_desc
 
         double:
-            name: Färber (2-Fach)
+            name: Färber (2-fach)
             description: Färbt beide Formen aus dem linken Eingang mit der Farbe aus dem oberen Eingang.
 
         quad:
-            name: Färber (4-Fach)
-            description: Erlaubt jedes einzelne Viertel einer Form beliebig einzufärben.
+            name: Färber (4-fach)
+            description: Erlaubt es, jedes einzelne Viertel einer Form beliebig einzufärben.
 
     trash:
         default:
@@ -535,7 +535,7 @@ buildings:
 
         storage:
             name: Lager
-            description: Lagert den Überschuss bis zu einer gegebenen Kapazität. Kann als Überlauftor agieren.
+            description: Lagert Items bis zu einer gegebenen Kapazität und verwaltet den Überlauf.
 
     wire:
         default:
@@ -563,24 +563,24 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Formen zerschneiden
-        desc: Du hast den <strong>Schneider</strong> freigeschaltet! - Er zerschneidet Formen von <strong>oben nach unten</strong>, unabhängig von ihrer Orientierung!<br><br>Stelle sicher, dass du den Abfall loswirst, sonst <strong>verstopft die Maschine</strong>! - Dafür habe ich dir extra einen Mülleimer freigeschaltet.
+        desc: Du hast den <strong>Schneider</strong> freigeschaltet! Er zerschneidet Formen von <strong>oben nach unten</strong>, unabhängig von ihrer Orientierung.<br><br>Stelle sicher, dass du den Abfall loswirst, sonst <strong>verstopft die Maschine</strong>! Dafür habe ich dir extra einen Mülleimer freigeschaltet.
 
     reward_rotater:
         title: Rotieren
-        desc: Der <strong>Rotierer</strong> wurde freigeschaltet! Er rotiert Formen im Uhrzeigersinn um 90 Grad!
+        desc: Der <strong>Rotierer</strong> wurde freigeschaltet! Er rotiert Formen im Uhrzeigersinn um 90 Grad.
 
     reward_painter:
         title: Färben
         desc: >-
-            Der <strong>Färber</strong> wurde freigeschaltet. Extrahiere ein paar Farben (genauso wie bei Formen) und färbe damit eine Form im Färber!<br><br>PS: Falls du Farbenblind bist, es gibt einen <strong>Modus für Farbenblinde</strong> in den Einstellungen!
+            Der <strong>Färber</strong> wurde freigeschaltet. Extrahiere ein paar Farben (genauso wie bei Formen) und färbe damit eine Form im Färber.<br><br>PS: Falls du Farbenblind bist, gibt es einen <strong>Modus für Farbenblinde</strong> in den Einstellungen!
 
     reward_mixer:
         title: Farben mischen
-        desc: Der <strong>Farbmischer</strong> wurde freigeschaltet! Kombiniere mit diesem Gebäude zwei Farben getreu der <strong>additiven Farbmischung</strong>!
+        desc: Der <strong>Farbmischer</strong> wurde freigeschaltet! Kombiniere mit diesem Gebäude zwei Farben getreu der <strong>additiven Farbmischung</strong>.
 
     reward_stacker:
         title: Stapler
-        desc: Mit dem <strong>Stapler</strong> kannst du nun Formen kombinieren! Passen sie nebeneinander, werden sie <strong>verschmolzen</strong>. Anderenfalls wird die rechte auf die linke Form <strong>gestapelt</strong>!
+        desc: Mit dem <strong>Stapler</strong> kannst du nun Formen kombinieren! Passen sie nebeneinander, werden sie <strong>verschmolzen</strong>. Anderenfalls wird die rechte auf die linke Form <strong>gestapelt</strong>.
 
     reward_splitter:
         title: Verteiler/Kombinierer
@@ -588,11 +588,11 @@ storyRewards:
 
     reward_tunnel:
         title: Tunnel
-        desc: Der <strong>Tunnel</strong> wurde freigeschaltet! Du kannst Items nun unter Gebäuden oder Förderbändern hindurchleiten!
+        desc: Der <strong>Tunnel</strong> wurde freigeschaltet! Du kannst Items nun unter Gebäuden oder Förderbändern hindurchleiten.
 
     reward_rotater_ccw:
         title: Gegen UZS Rotieren
-        desc: Du hast eine zweite Variante des <strong>Rotierers</strong> freigeschaltet! Damit können Items gegen den Uhrzeigensinn gedreht werden. Wähle den Rotierer aus und <strong>drücke 'T', um auf verschiedene Varianten zuzugreifen</strong>!
+        desc: Du hast eine zweite Variante des <strong>Rotierers</strong> freigeschaltet! Damit können Items gegen den Uhrzeigensinn gedreht werden. Wähle den Rotierer aus und <strong>drücke 'T', um auf verschiedene Varianten zuzugreifen</strong>.
 
     reward_miner_chainable:
         title: Extrahierer (Kette)
@@ -600,28 +600,28 @@ storyRewards:
 
     reward_underground_belt_tier_2:
         title: Tunnel Stufe II
-        desc: Du hast eine neue Variante des <strong>Tunnels</strong> freigeschaltet! Dieser hat eine <strong>höhere Reichweite</strong> und du kannst beide Tunnel miteinander mischen!
+        desc: Du hast eine neue Variante des <strong>Tunnels</strong> freigeschaltet! Dieser hat eine <strong>höhere Reichweite</strong> und du kannst beide Tunnel miteinander mischen.
 
     reward_splitter_compact:
         title: Kompakter Kombinierer
         desc: >-
-            Du hast eine kompakte Variante des <strong>Kombinierers</strong> freigeschaltet! Er hat zwei Eingänge und gibt zwei Förderbänder als eines aus!
+            Du hast eine kompakte Variante des <strong>Kombinierers</strong> freigeschaltet! Er hat zwei Eingänge und vereint diese zu einem Ausgang.
 
     reward_cutter_quad:
         title: Schneider (4-fach)
-        desc: Du hast eine neue Variante des <strong>Schneiders</strong> freigeschaltet! Damit kannst du Formen in alle <strong>vier Teile</strong> zerschneiden!
+        desc: Du hast eine neue Variante des <strong>Schneiders</strong> freigeschaltet! Damit kannst du Formen in alle <strong>vier Teile</strong> zerschneiden.
 
     reward_painter_double:
         title: Färber (2-fach)
-        desc: Du hast eine neue Variante des <strong>Färbers</strong> freigeschaltet! Hiermit kannst du <strong>zwei Formen auf einmal</strong> färben und verbrauchst nur eine Farbe!
+        desc: Du hast eine neue Variante des <strong>Färbers</strong> freigeschaltet! Hiermit kannst du <strong>zwei Formen auf einmal</strong> färben und verbrauchst nur eine Farbe.
 
     reward_painter_quad:
         title: Färber (4-fach)
-        desc: Du hast eine neue Variante des <strong>Färbers</strong> freigeschaltet! Er kann jedes Viertel einer Form einzeln färben, verbraucht aber auch jeweils eine Farbe!
+        desc: Du hast eine neue Variante des <strong>Färbers</strong> freigeschaltet! Er kann jedes Viertel einer Form einzeln färben, verbraucht aber auch jeweils eine Farbe.
 
     reward_storage:
         title: Zwischenlager
-        desc: Du hast eine neue Variante des <strong>Mülleimers</strong> freigeschaltet! Bis zu einer gewissen Kapazität können hier Items zwischengelagert werden!
+        desc: Du hast eine neue Variante des <strong>Mülleimers</strong> freigeschaltet! Bis zu einer gewissen Kapazität können hier Items zwischengelagert werden.
 
     reward_freeplay:
         title: Freies Spiel
@@ -635,7 +635,7 @@ storyRewards:
     no_reward:
         title: Nächstes Level
         desc: >-
-            Dieses Level hat dir keine Belohnung gegeben, aber im Nächsten gibt es eine! <br><br> PS: Denk daran, deine alten Fabriken nicht zu zerstören - Du wirst sie später <strong>alle</strong> noch brauchen, um <strong>Upgrades freizuschalten</strong>!
+            Dieses Level hat dir keine Belohnung gegeben, aber im Nächsten gibt es eine! <br><br> PS: Denke daran, deine alten Fabriken nicht zu zerstören - Du wirst sie später <strong>alle</strong> noch brauchen, um <strong>Upgrades freizuschalten</strong>!
 
     no_reward_freeplay:
         title: Nächstes Level
@@ -721,22 +721,22 @@ settings:
         soundsMuted:
             title: Geräusche stummschalten
             description: >-
-                Bei der Aktivierung werden alle Geräusche stummgeschaltet.
+                Bei Aktivierung werden alle Geräusche stummgeschaltet.
 
         musicMuted:
             title: Musik stummschalten
             description: >-
-                Bei der  Aktivierung wird die Musik stummgeschaltet.
+                Bei Aktivierung wird die Musik stummgeschaltet.
 
         soundVolume:
             title: Geräuschlautstärke
             description: >-
-                Ändert die Lautstärke von Geräuschen.
+                Regler für die Lautstärke von Geräuschen.
 
         musicVolume:
             title: Musiklautstärke
             description: >-
-                Ändert die Lautstärke der Musik.
+                Regler für die Lautstärke der Musik.
 
         theme:
             title: Farbmodus
@@ -749,12 +749,12 @@ settings:
         refreshRate:
             title: Tickrate
             description: >-
-                Das Spiel passt die Tickrate automatisch so an, dass sie immer zwischen diesem Wert und der hälfte bleibt. Zum Beispiel bei einer Tickrate von 60 Hz versucht das Spiel, diese zu halten. Falls dies zu viel ist, regelt der Computer diese runter bis zu einer Untergrenze von 30Hz.
+                Das Spiel passt die Tickrate automatisch so an, dass sie immer zwischen diesem Wert und der Hälfte bleibt. Zum Beispiel bei einer Tickrate von 60 Hz versucht das Spiel, diese zu halten. Bei Bedarf regelt der Computer diese bis zu einer Untergrenze von 30 Hz herunter.
 
         alwaysMultiplace:
             title: Mehrfachplatzierung
             description: >-
-                Bei Aktivierung wird das platzierte Gebäude nicht abgewählt. Das hat den gleichen Effekt wie beim Platzieren UMSCH gedrückt zu halten.
+                Bei Aktivierung wird das platzierte Gebäude nicht abgewählt. Das hat den gleichen Effekt, wie beim Platzieren UMSCH gedrückt zu halten.
 
         offerHints:
             title: Hinweise & Tutorials
@@ -793,7 +793,7 @@ keybindings:
     hint: >-
         Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene Platzierungsoptionen.
 
-    resetKeybindings: Tastenbelegung zurücksetzen.
+    resetKeybindings: Tastenbelegung zurücksetzen
 
     categoryLabels:
         general: Anwendung
@@ -844,13 +844,13 @@ keybindings:
         rotateWhilePlacing: Rotieren
         rotateInverseModifier: >-
             Modifikator: stattdessen gegen den UZS rotieren
-        cycleBuildingVariants: Variante wählen
+        cycleBuildingVariants: Nächste Variante auswählen
         confirmMassDelete: Massenlöschung bestätigen
         pasteLastBlueprint: Letzte Blaupause einfügen
-        cycleBuildings: Gebäude rotieren
+        cycleBuildings: Nächstes Gebäude auswählen
         lockBeltDirection: Bandplaner aktivieren
         switchDirectionLockSide: >-
-            Planer: Seite wechseln
+            Bandplaner: Seite wechseln
 
         massSelectStart: Halten und ziehen zum Beginnen
         massSelectSelectMultiple: Mehrere Areale markieren
