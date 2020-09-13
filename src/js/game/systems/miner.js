@@ -10,6 +10,24 @@ import { MapChunkView } from "../map_chunk_view";
 export class MinerSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [MinerComponent]);
+
+        this.needsRecompute = true;
+
+        this.root.signals.entityAdded.add(this.onEntityChanged, this);
+        this.root.signals.entityChanged.add(this.onEntityChanged, this);
+        this.root.signals.entityDestroyed.add(this.onEntityChanged, this);
+    }
+
+    /**
+     * Called whenever an entity got changed
+     * @param {Entity} entity
+     */
+    onEntityChanged(entity) {
+        const minerComp = entity.components.Miner;
+        if (minerComp && minerComp.chainable) {
+            // Miner component, need to recompute
+            this.needsRecompute = true;
+        }
     }
 
     update() {
@@ -20,10 +38,14 @@ export class MinerSystem extends GameSystemWithFilter {
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
+            const minerComp = entity.components.Miner;
+
+            // Reset everything on recompute
+            if (this.needsRecompute) {
+                minerComp.cachedChainedMiner = null;
+            }
 
             // Check if miner is above an actual tile
-
-            const minerComp = entity.components.Miner;
 
             if (!minerComp.cachedMinedItem) {
                 const staticComp = entity.components.StaticMapEntity;
@@ -59,6 +81,36 @@ export class MinerSystem extends GameSystemWithFilter {
                 }
             }
         }
+
+        // After this frame we are done
+        this.needsRecompute = false;
+    }
+
+    /**
+     * Finds the target chained miner for a given entity
+     * @param {Entity} entity
+     * @returns {Entity|false} The chained entity or null if not found
+     */
+    findChainedMiner(entity) {
+        const ejectComp = entity.components.ItemEjector;
+        const staticComp = entity.components.StaticMapEntity;
+
+        const ejectingSlot = ejectComp.slots[0];
+        const ejectingPos = staticComp.localTileToWorld(ejectingSlot.pos);
+        const ejectingDirection = staticComp.localDirectionToWorld(ejectingSlot.direction);
+
+        const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
+        const targetContents = this.root.map.getTileContent(targetTile, "regular");
+
+        // Check if we are connected to another miner and thus do not eject directly
+        if (targetContents) {
+            const targetMinerComp = targetContents.components.Miner;
+            if (targetMinerComp && targetMinerComp.chainable) {
+                return targetContents;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -69,26 +121,23 @@ export class MinerSystem extends GameSystemWithFilter {
     tryPerformMinerEject(entity, item) {
         const minerComp = entity.components.Miner;
         const ejectComp = entity.components.ItemEjector;
-        const staticComp = entity.components.StaticMapEntity;
 
         // Check if we are a chained miner
         if (minerComp.chainable) {
-            const ejectingSlot = ejectComp.slots[0];
-            const ejectingPos = staticComp.localTileToWorld(ejectingSlot.pos);
-            const ejectingDirection = staticComp.localDirectionToWorld(ejectingSlot.direction);
+            const targetEntity = minerComp.cachedChainedMiner;
 
-            const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
-            const targetContents = this.root.map.getTileContent(targetTile, "regular");
+            // Check if the cache has to get recomputed
+            if (targetEntity === null) {
+                minerComp.cachedChainedMiner = this.findChainedMiner(entity);
+            }
 
-            // Check if we are connected to another miner and thus do not eject directly
-            if (targetContents) {
-                const targetMinerComp = targetContents.components.Miner;
-                if (targetMinerComp) {
-                    if (targetMinerComp.tryAcceptChainedItem(item)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+            // Check if we now have a target
+            if (targetEntity) {
+                const targetMinerComp = targetEntity.components.Miner;
+                if (targetMinerComp.tryAcceptChainedItem(item)) {
+                    return true;
+                } else {
+                    return false;
                 }
             }
         }
@@ -97,6 +146,7 @@ export class MinerSystem extends GameSystemWithFilter {
         if (ejectComp.tryEject(0, item)) {
             return true;
         }
+
         return false;
     }
 

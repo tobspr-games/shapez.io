@@ -36,6 +36,7 @@
         "core-js": "3",
         "crc": "^3.8.0",
         "cssnano-preset-advanced": "^4.0.7",
+        "debounce-promise": "^3.1.2",
         "email-validator": "^2.0.4",
         "eslint": "7.1.0",
         "fastdom": "^1.0.8",

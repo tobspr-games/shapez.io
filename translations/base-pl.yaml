@@ -83,7 +83,7 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Pomóż w tłumaczeniu[/url]
         [/list]
 
-    discordLink: Oficjalna Discord - Porozmawiaj ze mną!
+    discordLink: Oficjalny serwer Discord - Porozmawiaj ze mną!
 
 global:
     loading: Ładowanie
@@ -274,8 +274,8 @@ dialogs:
             Czy na pewno chcesz kontynuować?
 
     massCutInsufficientConfirm:
-        title: Potwierdź cięcie
-        desc: Nie możesz sobie pozwolić na wklejenie tego obszaru! Czy na pewno chcesz to wyciąć?
+        title: Potwierdź wycinanie
+        desc: Nie posiadasz wystarczająco kształtów schematów na wklejenie tego obszaru! Czy na pewno chcesz go wyciąć?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -299,7 +299,7 @@ ingame:
         copySelection: Skopiuj
         clearSelection: Wyczyść zaznaczenie
         pipette: Wybierz obiekt z mapy
-        switchLayers: Switch layers
+        switchLayers: Przełącz warstwy
 
     # Names of the colors, used for the color blind mode
     colors:
@@ -311,7 +311,7 @@ ingame:
         cyan: Cyjanowy
         white: Biały
         uncolored: Brak koloru
-        black: Black
+        black: Czarny
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -414,7 +414,7 @@ ingame:
     shapeViewer:
         title: Poziomy
         empty: Puste
-        copyKey: Copy Key
+        copyKey: Skopiuj kod
 
     # Interactive tutorial
     interactiveTutorial:
@@ -539,25 +539,25 @@ buildings:
             description: Magazynuje obiekty, do określonego limitu. Może zostać użyty jako bramka przepełnienia.
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Przewód energetyczny
+            description: Pozwala na transportowanie energii.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Odwracacz kolorów
+            description: Przyjmuje barwnik lub kształt i odwraca jego kolory.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Dostarcz
+        toGenerateEnergy: Za
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Generator energii
+            description: Generuje energię poprzez zużywanie kształtów.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Rozdzielacz przewodów
+            description: Rozdziela przewód energetyczny na dwa.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Łącznik przewodów
+            description: Łączy dwa przewody energetyczne w jeden.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -656,9 +656,9 @@ storyRewards:
 settings:
     title: Ustawienia
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Ogólne
+        userInterface: Interfejs
+        advanced: Zaawansowane
 
     versionBadges:
         dev: Wersja Rozwojowa
@@ -780,7 +780,7 @@ settings:
                 100 budynków.
 
         enableColorBlindHelper:
-            title: Tryb ślepy na kolory
+            title: Tryb dla daltonistów
             description: Włącza różne narzędzia, które pozwalają ci grać, jeśli jesteś daltonistą.
         rotationByBuilding:
             title: Obrót według typu budynku
@@ -823,6 +823,7 @@ keybindings:
 
         toggleHud: Przełącz widoczność interfejsu
         toggleFPSInfo: Pokaż Licznik FPS i informacje do debugowania
+
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -847,7 +848,7 @@ keybindings:
 
         placementDisableAutoOrientation: Wyłącz automatyczną orientację
         placeMultiple: Pozostań w trybie stawiania
-        placeInverse: Odwróć automatyczną orientację pasów
+        placeInverse: Odwróć automatyczną orientację taśmociągów
         pasteLastBlueprint: Wklej ostatnio skopiowany obszar
         massSelectCut: Wytnij obszar
         exportScreenshot: Wyeksportuj całą fabrykę jako zrzut ekranu
@@ -856,10 +857,10 @@ keybindings:
             Planowanie taśmociągu: Zmień stronę
         pipette: Wybieranie obiektów z mapy
         menuClose: Zamknij Menu
-        switchLayers: zamknij menu
+        switchLayers: Przełącz warstwy
         advanced_processor: Kolor Falownika
         energy_generator: Generator Energii
-        wire: Drut Energetyczny
+        wire: Przewód Energetyczny
 
 about:
     title: O Grze

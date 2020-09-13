@@ -212,43 +212,5 @@ export class MapView extends BaseMap {
         }
 
         this.drawVisibleChunks(parameters, MapChunkView.prototype.drawBackgroundLayer);
-
-        if (G_IS_DEV && globalConfig.debug.showChunkBorders) {
-            const cullRange = parameters.visibleRect.toTileCullRectangle();
-            const top = cullRange.top();
-            const right = cullRange.right();
-            const bottom = cullRange.bottom();
-            const left = cullRange.left();
-
-            const border = 1;
-            const minY = top - border;
-            const maxY = bottom + border;
-            const minX = left - border;
-            const maxX = right + border - 1;
-
-            const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
-            const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
-
-            const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
-            const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
-
-            for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
-                for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
-                    parameters.context.fillStyle = "#ffaaaa";
-                    parameters.context.fillRect(
-                        chunkX * globalConfig.mapChunkWorldSize,
-                        chunkY * globalConfig.mapChunkWorldSize,
-                        globalConfig.mapChunkWorldSize,
-                        3
-                    );
-                    parameters.context.fillRect(
-                        chunkX * globalConfig.mapChunkWorldSize,
-                        chunkY * globalConfig.mapChunkWorldSize,
-                        3,
-                        globalConfig.mapChunkWorldSize
-                    );
-                }
-            }
-        }
     }
 }

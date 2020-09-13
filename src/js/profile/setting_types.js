@@ -231,10 +231,10 @@ export class RangeSetting extends BaseSetting {
         category,
         changeCb = null,
         enabled = true,
-        defaultValue = 100,
+        defaultValue = 1.0,
         minValue = 0,
-        maxValue = 100,
-        stepSize = 1
+        maxValue = 1.0,
+        stepSize = 0.0001
     ) {
         super(id, category, changeCb, enabled);
 
@@ -251,9 +251,9 @@ export class RangeSetting extends BaseSetting {
 
             <div class="row">
                 <label>${T.settings.labels[this.id].title}</label>
-                <div class="value range" data-setting="${this.id}">
-                    <label class="range-label">${this.defaultValue}</label>
-                    <input class="range-input" type="range" value="${this.defaultValue}" min="${
+                <div class="value rangeInputContainer noPressEffect" data-setting="${this.id}">
+                    <label>${this.defaultValue}</label>
+                    <input class="rangeInput" type="range" value="${this.defaultValue}" min="${
             this.minValue
         }" max="${this.maxValue}" step="${this.stepSize}">
                 </div>
@@ -269,33 +269,58 @@ export class RangeSetting extends BaseSetting {
         this.element = element;
         this.dialogs = dialogs;
 
-        this.element.querySelector(".range-input").addEventListener("input", () => {
+        this.getRangeInputElement().addEventListener("input", () => {
+            this.updateLabels();
+        });
+
+        this.getRangeInputElement().addEventListener("change", () => {
             this.modify();
         });
     }
 
     syncValueToElement() {
         const value = this.app.settings.getSetting(this.id);
-        /** @type {HTMLInputElement} */
-        const rangeInput = this.element.querySelector(".range-input"),
-            rangeLabel = this.element.querySelector(".range-label");
-        rangeInput.value = value;
-        rangeLabel.innerHTML = value;
+        this.setElementValue(value);
+    }
+
+    /**
+     * Sets the elements value to the given value
+     * @param {number} value
+     */
+    setElementValue(value) {
+        const rangeInput = this.getRangeInputElement();
+        const rangeLabel = this.element.querySelector("label");
+        rangeInput.value = String(value);
+        rangeLabel.innerHTML = T.settings.rangeSliderPercentage.replace(
+            "<amount>",
+            String(Math.round(value * 100.0))
+        );
+    }
+
+    updateLabels() {
+        const value = Number(this.getRangeInputElement().value);
+        this.setElementValue(value);
+    }
+
+    /**
+     * @returns {HTMLInputElement}
+     */
+    getRangeInputElement() {
+        return this.element.querySelector("input.rangeInput");
     }
 
     modify() {
-        /** @type {HTMLInputElement} */
-        const rangeInput = this.element.querySelector(".range-input");
-        const newValue = Number(rangeInput.value);
+        const rangeInput = this.getRangeInputElement();
+        const newValue = Math.round(Number(rangeInput.value) * 100.0) / 100.0;
         this.app.settings.updateSetting(this.id, newValue);
         this.syncValueToElement();
-
+        console.log("SET", newValue);
         if (this.changeCb) {
             this.changeCb(this.app, newValue);
         }
     }
 
     validate(value) {
-        return typeof value === "number";
+        return typeof value === "number" && value >= this.minValue && value <= this.maxValue;
     }
 }

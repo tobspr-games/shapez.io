@@ -12,6 +12,8 @@ import { decompressX64, compressX64 } from "./lzstring";
 import { asyncCompressor, compressionPrefix } from "./async_compression";
 import { compressObject, decompressObject } from "../savegame/savegame_compressor";
 
+const debounce = require("debounce-promise");
+
 const logger = createLogger("read_write_proxy");
 
 const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
@@ -36,6 +38,11 @@ export class ReadWriteProxy {
                 );
             });
         }
+
+        /**
+         * Store a debounced handler to prevent double writes
+         */
+        this.debouncedWrite = debounce(this.doWriteAsync.bind(this), 50);
     }
 
     // -- Methods to override
@@ -122,7 +129,8 @@ export class ReadWriteProxy {
     }
 
     /**
-     * Writes the data asychronously, fails if verify() fails
+     * Writes the data asychronously, fails if verify() fails.
+     * Debounces the operation by up to 50ms
      * @returns {Promise<void>}
      */
     writeAsync() {
@@ -133,6 +141,14 @@ export class ReadWriteProxy {
             return Promise.reject(verifyResult.reason);
         }
 
+        return this.debouncedWrite();
+    }
+
+    /**
+     * Actually writes the data asychronously
+     * @returns {Promise<void>}
+     */
+    doWriteAsync() {
         return asyncCompressor
             .compressObjectAsync(this.currentData)
             .then(compressed => {

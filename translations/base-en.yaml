@@ -426,6 +426,12 @@ ingame:
             1_3_expand: >-
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
 
+    # Connected miners
+    connectedMiners:
+        one_miner: 1 Miner
+        n_miners: <amount> Miners
+        limited_items: Limited to <max_throughput>
+
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -596,7 +602,7 @@ buildings:
         default:
             name: &filter Filter
             # TEMP
-            description: Only leaves through items who match exactly the provided shape / color. If you put in a boolean 1, it leaves everything through, if you put in a 0 it will leave nothing through.
+            description: Only allows through items which match exactly the provided shape / color. If you put in a boolean 1, it allows everything through, if you put in a 0 it will allow nothing through.
 
     display:
         default:
@@ -729,6 +735,8 @@ settings:
         staging: Staging
         prod: Production
     buildDate: Built <at-date>
+
+    rangeSliderPercentage: <amount> %
 
     labels:
         uiScale:
@@ -886,6 +894,11 @@ settings:
             title: Display Chunk Borders
             description: >-
                 The game is divided into chunks of 16x16 tiles, if this setting is enabled the borders of each chunk are displayed.
+
+        pickMinerOnPatch:
+            title: Pick miner on resource patch
+            description: >-
+                Enabled by default, selects the miner if you use the pipette when hovering a resource patch.
 
 keybindings:
     title: Keybindings
