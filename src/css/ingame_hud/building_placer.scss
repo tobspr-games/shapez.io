@@ -18,6 +18,14 @@
         background-color: #55585a;
     }
 
+    transition: opacity 0.1s ease-out;
+    &.hovered {
+        opacity: 0.1;
+        .buildingImage {
+            opacity: 0;
+        }
+    }
+
     .buildingLabel {
         @include PlainText;
         @include S(margin-bottom, 2px);
@@ -70,6 +78,7 @@
         @include S(height, 100px);
         background: top left / 100% 100% no-repeat;
         @include S(border-radius, $globalBorderRadius);
+        transition: opacity 0.1s ease-in-out;
     }
 
     @include StyleBelowWidth(700px) {

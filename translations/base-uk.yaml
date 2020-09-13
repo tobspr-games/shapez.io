@@ -3,7 +3,7 @@
 #
 #  Translators:
 #
-#    Prosta4ok_ua 07.07.2020 — 04.08.2020
+#    Prosta4ok_ua 07.07.2020 — 05.09.2020
 #
 #  Contributing:
 #
@@ -31,6 +31,7 @@
 # range дальність
 # storage сховище
 # shape форма
+# layer шар
 
 ---
 steamPage:
@@ -272,7 +273,7 @@ dialogs:
             Ось декілька, але обов’язково <strong>ознайомтеся з прив’язками клавіш</strong>!<br><br>
             <code class='keybinding'>CTRL</code> + тягніть: виділити зону.<br>
             <code class='keybinding'>SHIFT</code>: тримайте, щоб розмістити декілька одного будинку.<br>
-            <code class='keybinding'>ALT</code>: змінити орієнтацію розміщеної конвеєрної стрічки.<br>
+            <code class='keybinding'>ALT</code>: змінити сторону розміщеної конвеєрної стрічки.<br>
 
     createMarker:
         title: Нова позначка
@@ -367,7 +368,7 @@ ingame:
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: МАКСИМАЛЬНИЙ РІВЕНЬ (Швидкість <currentMult>х)
+        maximumLevel: МАКСИМАЛЬНИЙ РІВЕНЬ (Швидкість x<currentMult>)
 
     # The "Statistics" window
     statistics:
@@ -489,7 +490,7 @@ buildings:
     splitter:
         default:
             name: &splitter Розподілювач
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            description: Багатофункціональний. Рівномірно розподіляє все, що входить.
 
         compact:
             name: З’єднувач
@@ -526,128 +527,128 @@ buildings:
     stacker:
         default:
             name: &stacker Укладальник
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            description: Складає обидва елементи. Якщо їх неможливо об’єднати, правий елемент розміщується над лівим елементом.
 
     mixer:
         default:
-            name: &mixer Змішувач кольо8рів
+            name: &mixer Змішувач кольорів
             description: Змішує два кольори за допомогою добавки.
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the top input.
+            name: &painter Фарбувач
+            description: &painter_desc Забирає форму з лівого входу, а колір з верхнього.
 
         mirrored:
             name: *painter
             description: *painter_desc
 
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Фарбувач (подв.)
+            description: Фарбує фігури, що надійшла з лівого входу, кольором, що надійшов з верхнього.
         quad:
-            name: Painter (Quad)
-            description: Allows you to color each quadrant of the shape with a different color.
+            name: Фарбувач (чотири)
+            description: Дозволяє вам фарбувати кожну четвертину форми у різний колір.
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Смітник
+            description: Приймає форми зі всіх сторін і руйнує їх. Назавжди.
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Сховище
+            description: Зберігає зайві предмети до заданої місткості. Може використовуватися для зберігання надлишкових речей.
 
     energy_generator:
-        deliver: Deliver
+        deliver: Доставте
 
         # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: For
+        toGenerateEnergy: За
 
         default:
-            name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes. Each energy generator requires a different shape.
+            name: &energy_generator Енергетичний генератор
+            description: Створює енергію споживаючи форми. Кожний енергетичний генератор потрібує свою форму.
 
     wire_crossings:
         default:
-            name: &wire_crossings Wire Splitter
-            description: Splits a wire into two
+            name: &wire_crossings Дротовий розподілювач
+            description: Ділить дріт надвоє.
 
         merger:
-            name: Wire Merger
-            description: Merges two wires into one
+            name: Дротовий з’єднувач
+            description: Об’єднує два дроти в один.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Різання фігур
-        desc: Ви тільки-но розблокували <strong>різця</strong>. Він розрізає фігури наполовину з <strong>вершини до низу</strong> незалежно від його орієнтації!<br><br>Обов’язково позбудьтесь відходів або  <strong>він зупиниться</strong>. Для цього є сміттєбак, який знищує все, що входить в нього.
+        desc: Ви тільки-но розблокували <strong>різця</strong>. Він розрізає фігури наполовину з <strong>вершини до низу</strong> незалежно від його орієнтації!<br><br>Обов’язково позбудьтесь відходів або  <strong>він зупиниться</strong>. Для цього є смітник, який знищує все, що входить в нього.
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Обертання
+        desc: <strong>Обертач</strong> розблоковано! Він повертає форми за годинниковою стрілкою на 90 градусів.
 
     reward_painter:
-        title: Painting
+        title: Фарбування
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>colorblind mode</strong> in the settings!
+            <strong>Фарбувач</strong> розблоковано. Видобудьте трохи кольорів з відповідних жилок (як ви зробили це з формами) і об’єднуйте їх з формами у фарбувачі, щоб розфарбувати форми!<br><br>До речі, якщо ви дальтонік, то в увімкніть <strong>режим високої контрастності</strong> в налаштуваннях!
 
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: Змішування кольорів
+        desc: <strong>Змішування кольорів</strong> розблоковано. Об’єднуйте два кольори у цій будівлі.
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Поєднувач форм
+        desc: Тепер ви можете поєднувати фігури з <strong>поєднувачем форм</strong>! Форми об’єднуються з двох сторін, і якщо їх можна поставити поруч, вони будуть <strong>з’єднані</strong>. Якщо ні, то форма, що подана з правого входу, <strong>застрягне на горі</strong> лівого входу.
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: Багатофункціональний <strong> балансир </strong> було розблоковано. Його можна використовувати для створення великих фабрик, <strong>розділяючи та об’єднуючи предмети </strong> на кілька стрічок!<br><br>
+        title: Розподілювач (з’єднувач)
+        desc: Багатофункціональний <strong>розподілювач</strong> було розблоковано. Його можна використовувати для створення великих фабрик, <strong>розділяючи та об’єднуючи предмети </strong> на кілька стрічок!<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
+        title: Тунель
+        desc: <strong>Тунель</strong> розблоковано. Ви можете створювати тунелі для преметів через стрічки і будівлі.
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows you to rotate shapes counter-clockwise! To build it, select the rotater and <strong>press 'T' to cycle through its variants</strong>!
+        title: Обертання проти годинникової стрілки
+        desc: Ви розблокували новий варіант <strong>обертача</strong>. Він дозволяє обертати проти годинникової стрілки! Щоб побудувати його виберіть обертач, <strong>натисніть «T», щоб переглянути всі варіанти, та оберіть потрібний</strong>!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: Екстрактор (ланцюг.)
+        desc: Ви розблокували <strong>ланцюговий екстрактор</strong>! Він може <strong>пересилати свої ресурси</strong> іншим екстракторам, щоб ви могли ефективніше видобувати ресурси!
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: Тунель II
+        desc: Ви розблокували новий варіант <strong>тунеля</strong>. Він має <strong>більшу дальність</strong>, і ви можете також змішувати і зіставляти ці тунелі!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Компактний розподілювач
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
+            Ви розблокували компактний варіант <strong>розподілювача</strong>. Він приймає з двох сторін і об’єднує на одну стрічку!
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Різчик (чотири)
+        desc: Ви розблокували інший варіант <strong>різчика</strong>. Він може розрізати форми на <strong>чотири частини</strong> замість двох.
 
     reward_painter_double:
         title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        desc: Ви розблокували інший варіант <strong>фарбувача</strong>. Він працює як звичайний фарбувач, але обробляє <strong>дві фігури одночасно</strong>, споживаючи лише один колір замість двох!
 
     reward_painter_quad:
         title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows you to paint each part of the shape individually!
+        desc: Ви розблокували інший варіант <strong>фарбувача</strong>. Він дозволяє фарбувати кожну частину форми індивідуально!
 
     reward_storage:
         title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows you to store items up to a given capacity!
+        desc: Ви розблокували інший варіант <strong>trash</strong> - It allows you to store items up to a given capacity!
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Пісочниця
+        desc: Ви зробили це! Ви розблокували <strong>вільний режим</strong>! Це означає, що форми тут створюватимуться випадкові! Не хвилюйтеся, більше контенту планується для окремого режиму!
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: Креслення
+        desc: Ви вже можете <strong>копіювати і вставляти</strong> частини вашої фабрики. Виберіть зону (утримуйте CTRL, а тоді тягніть мишою), і натисніть «C», щоб скопіювати.<br><br>Вставляти креслення — <strong>річ не безкоштовна</strong>, спочатку вам потрібно створити <strong>форми креслень</strong>, щоб собі це дозволити! (ті, що ви щойно доставили).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -668,10 +669,10 @@ settings:
         advanced: Передове
 
     versionBadges:
-        dev: Development
-        staging: Staging
-        prod: Production
-    buildDate: Built <at-date>
+        dev: Розробка
+        staging: Тестування
+        prod: Виробництво
+    buildDate: Створено <at-date>
 
     labels:
         uiScale:
@@ -724,7 +725,7 @@ settings:
         language:
             title: Мова
             description: >-
-                Змініть мову. Усі переклади зроблені користувачами і можуть бути незавершеними!
+                Зміна мови. Усі переклади зроблені користувачами і можуть бути незавершеними!
 
         enableColorBlindHelper:
             title: Режим високої контрастності
@@ -770,55 +771,55 @@ settings:
                 Якщо увімкнено, то пропонує підказки та посібники під час гри. Також приховує певні елементи інтерфейсу до заданого рівня, щоб полегшити потрапляння в гру.
 
         enableTunnelSmartplace:
-            title: Розумні Tunnels
+            title: Розумні тунелі
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables you to drag tunnels and excess tunnels will get removed.
+                Якщо увімкнено, то розміщення тунелів видалить непотрібні стрічки. Це також дозволяє вам перетягувати тунелі і видаляти автоматично зайві тунелі.
 
         vignette:
-            title: Vignette
+            title: Віньєтка
             description: >-
-                Enables the vignette, which darkens the screen corners and makes text easier to read.
+                Вмикає віньєтку, яка затемнює кути екрану і робить текст легшим для читання.
 
         rotationByBuilding:
-            title: Rotation by building type
+            title: Обертання за типом будівлі
             description: >-
-                Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
+                Кожний тип будівлі запам’ятовує обертання, яке ви встановили. Це може бути зручнішим, якщо ви часто перемикаєтесь між розміщенням різних типів будівель.
 
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Компактна інформація про будівлі
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
+                Скорочує інформаційні поля для будівель, лише показуючи їх співвідношення. В іншому випадку відображається опис та зображення.
 
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Вимкнути попердження про вирізання та видалення
             description: >-
-                Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
+                Вимикає діалогові вікна попередження, що з’являються під час вирізання/видалення більше 100 об’єктів.
 
 keybindings:
     title: Гарячі клавіши
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Tip: Упевніться, що ви можете використовувати CTRL, SHIFT і ALT! Вони дозволяють різні варіанти розміщення.
 
     resetKeybindings: Скинути гарячі клавіші
 
     categoryLabels:
         general: Застосунок
         ingame: Гра
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        navigation: Навігація
+        placement: Розміщення
+        massSelect: Масовий вибір
+        buildings: Гарячі клавіши будівництва
+        placementModifiers: Модифікатори розміщення
 
     mappings:
         confirm: Підтвердити
         back: Назад
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        mapMoveFaster: Move Faster
-        centerMap: Center Map
+        mapMoveUp: Угору
+        mapMoveRight: Праворуч
+        mapMoveDown: Униз
+        mapMoveLeft: Ліворуч
+        mapMoveFaster: Пришвидшитися
+        centerMap: Центрувати мапу
 
         mapZoomIn: Приблизити
         mapZoomOut: Віддалити
@@ -828,10 +829,10 @@ keybindings:
         menuOpenStats: Статистика
         menuClose: Закрити меню
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
-        switchLayers: Switch layers
-        exportScreenshot: Export whole Base as Image
+        toggleHud: Перемкнути користувацький інтерфейс
+        toggleFPSInfo: Перемкнути інформацію про FPS та зневадження
+        switchLayers: Перемкнути шари
+        exportScreenshot: Експортувати цілу базу у вигляді зображення
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -846,26 +847,26 @@ keybindings:
         trash: *trash
         wire: *wire
 
-        pipette: Pipetteї
+        pipette: Піпетка
         rotateWhilePlacing: Повернути
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
+            Modifier: Повернути проти годинникової стрілки натомість
+        cycleBuildingVariants: Повторювати варіанти циклічно
         confirmMassDelete: Видалити ділянку
-        pasteLastBlueprint: Paste last blueprint
-        cycleBuildings: Cycle Buildings
-        lockBeltDirection: Enable belt planner
+        pasteLastBlueprint: Вставити останнє креслення
+        cycleBuildings: Перемикання будівль
+        lockBeltDirection: Увімкнути планувальник конвеєрних стрічок
         switchDirectionLockSide: >-
-            Planner: Switch side
+            Planner: Змінити сторону
 
-        massSelectStart: Hold and drag to start
+        massSelectStart: Утримуйте і перетягуйте, щоб розпочати
         massSelectSelectMultiple:
         massSelectCopy: Копіювати ділянку
         massSelectCut: Вирізати ділянку
 
         placementDisableAutoOrientation: Вимкнути автоматичну орієнтацію
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
+        placeMultiple: Залишатися у режимі розміщення
+        placeInverse: Перевернути автоматичну орієнтацію стрічки
 
 about:
     title: Про гру
