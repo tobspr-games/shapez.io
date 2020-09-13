@@ -55,7 +55,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.signals.variantChanged.add(this.rerenderVariants, this);
         this.root.hud.signals.buildingSelectedForPlacement.add(this.startSelection, this);
 
-        this.domAttach = new DynamicDomAttach(this.root, this.element, {});
+        this.domAttach = new DynamicDomAttach(this.root, this.element, { trackHover: true });
         this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
 
         this.currentInterpolatedCornerTile = new Vector();

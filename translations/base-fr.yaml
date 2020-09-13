@@ -639,6 +639,7 @@ settings:
         general: Général
         userInterface: Interface utilisateur
         advanced: Avancé
+        performance: Performance
 
     versionBadges:
         dev: Développement
@@ -723,11 +724,13 @@ settings:
                 fast: Rapide
                 super_fast: Très rapide
                 extremely_fast: Extrêmement rapide
+
         enableTunnelSmartplace:
             title: Tunnels intelligents
             description: >-
                 Si cette option est sélectionnée, placer des tunnels effacera automatiquement les convoyeurs inutiles.
-                Cela permet aussi d’étirer les tunnels et les tunnels en surnombre seront effacés.
+                Cela permet aussi d’étirer les tunnels, et les tunnels en surnombre seront effacés.
+
         vignette:
             title: Effet de vignette
             description: >-
@@ -744,10 +747,12 @@ settings:
                 ten_minutes: 10 minutes
                 twenty_minutes: 20 minutes
                 disabled: Désactivé
+
         compactBuildingInfo:
             title: Informations réduites sur les bâtiments
             description: >-
                 Raccourcit les panneaux d’information sur les bâtiments en n’affichant que les ratios. Si désactivé, montre une description et une image.
+
         disableCutDeleteWarnings:
             title: Désactive les avertissements pour Couper / Effacer
             description: >-
@@ -756,11 +761,38 @@ settings:
         enableColorBlindHelper:
             title: Mode daltonien
             description: Active divers outils qui permettent de jouer à ce jeu si vous êtes daltonien.
+
         rotationByBuilding:
             title: Rotation par catégorie de bâtiment
             description: >-
                 Chaque catégorie de bâtiment enregistre le sens de rotation que vous lui avez assigné la dernière fois, de manière individuelle.
                 Cela sera sans doute plus agréable si vous alternez fréquemment entre le placement de différents types de bâtiments.
+
+        lowQualityMapResources:
+            title: Ressources de la carte de plus basse qualité
+            description: >-
+                Simplifie le rendu des ressources sur la carte lorsqu’elle est zoomée pour améliorer les performances.
+                Ça donne un rendu encore plus propre, alors essayez-le !
+
+        disableTileGrid:
+            title: Désactiver la grille de placement
+            description: >-
+                Désactiver la grille de placement peut améliorer les performances. Ça rend aussi l’apparence plus unie !
+
+        clearCursorOnDeleteWhilePlacing:
+            title: Vider le curseur avec le clic droit
+            description: >-
+                Activé par défaut, remet à zéro le curseur lorsque vous faites un clic droit en ayant un bâtiment selectionné pour la construction. Si désactivé, vous pouvez détruire les bâtiments avec un clic droit puis continuer de placer un bâtiment.
+
+        lowQualityTextures:
+            title: Textures de basse résolution (moche)
+            description: >-
+                Utilise des textures de basse qualité pour améliorer les performances. Rend le jeu très moche !
+
+        displayChunkBorders:
+            title: Monter les blocs
+            description: >-
+                Le jeu est divisé en blocs de 16×16 cases. Si ce réglage est activé, les limites de chaque bloc sont affichées.
 
 keybindings:
     title: Contrôles
@@ -869,6 +901,4 @@ demo:
 # French translation version v0.5 based on english v1.1.8 by Didier WEERTS 'The Corsaire'
 #
 
-# French translation completed (and corrected) by Pascal Grossé and Withers001
-
-# French translation entirely completed and corrected by martypiton
+# French translation completed (and corrected) by Pascal Grossé, martypiton and Withers001.

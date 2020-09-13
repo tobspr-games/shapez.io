@@ -22,11 +22,6 @@
                     @include S(border-radius, $globalBorderRadius);
                     @include S(margin-bottom, 5px);
 
-                    label {
-                        text-transform: uppercase;
-                        @include Text;
-                    }
-
                     .desc {
                         @include S(margin-top, 5px);
                         @include SuperSmallText;
@@ -37,6 +32,11 @@
                         display: grid;
                         align-items: center;
                         grid-template-columns: 1fr auto;
+
+                        > label {
+                            text-transform: uppercase;
+                            @include Text;
+                        }
                     }
 
                     &.disabled {
