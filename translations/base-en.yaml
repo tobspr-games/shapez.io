@@ -596,7 +596,7 @@ buildings:
         default:
             name: &filter Filter
             # TEMP
-            description: Only leaves through items who match exactly the provided shape / color. If you put in a boolean 1, it leaves everything through, if you put in a 0 it will leave nothing through.
+            description: Only allows through items which match exactly the provided shape / color. If you put in a boolean 1, it allows everything through, if you put in a 0 it will allow nothing through.
 
     display:
         default:
