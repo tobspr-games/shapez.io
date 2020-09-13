@@ -213,12 +213,12 @@ dialogs:
         desc: 모든 키바인딩이 기본값으로 재설정 되었습니다!
 
     featureRestriction:
-        title: 데모 버전
-        desc: 데모 버전에는 없는 콘텐츠(<feature>)로 시도했습니다. 유료 버전을 구입해서 모든 콘텐츠를 사용해보세요!
+        title: 체험판 버전
+        desc: 체험판 버전에는 없는 콘텐츠(<feature>)로 시도했습니다. 유료 버전을 구입해서 모든 콘텐츠를 사용해보세요!
 
     oneSavegameLimit:
         title: 저장파일 개수 제한
-        desc: 데모 버전에서는 저장 파일을 한 번에 한 개만 사용할 수 있습니다. 이미 있는 저장 파일을 지우거나 유료 버전을 구입 해주새요.
+        desc: 체험판 버전에서는 저장 파일을 한 번에 한 개만 사용할 수 있습니다. 이미 있는 저장 파일을 지우거나 유료 버전을 구입 해주새요.
 
     updateSummary:
         title: 신규 버전!
@@ -261,7 +261,7 @@ dialogs:
         titleEdit: 마커 변경
 
     markerDemoLimit:
-        desc: 데모 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
+        desc: 체험판 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
 
     exportScreenshotWarning:
         title: 스크린샷 내보내기
@@ -460,7 +460,7 @@ buildings:
 
         tier2:
             name: 터널 티어 II
-            description: 도형을 건물과 벨트 밑으로 통과시킴.
+            description: 도형을 건물과 벨트 밑으로 터널 보다 빨리 통과시킴.
 
     splitter: # Internal name for the Balancer
         default:
@@ -543,10 +543,10 @@ buildings:
     wire_crossings:
         default:
             name: 전선 분배기
-            description: Splits a energy wire into two.
+            description: 에너지 와이어를 두 개로 분할합니다.
         merger:
             name: 전선 병합기
-            description: Merges two energy wires into one.
+            description: 두 개의 에너지 와이어를 하나로 병합합니다.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -634,9 +634,9 @@ storyRewards:
 settings:
     title: 설정
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: 일반
+        userInterface: 유저 인터페이스
+        advanced: 고급
 
     versionBadges:
         dev: 개발
@@ -654,7 +654,7 @@ settings:
                 small: 작게
                 regular: 보통
                 large: 크게
-                huge: 거대하게
+                huge: 매우 크게
 
         scrollWheelSensitivity:
             title: 확대 민감도
@@ -682,7 +682,7 @@ settings:
         language:
             title: 언어
             description: >-
-                언어 바꾸기 - 모든 언어팩은 사용자들이 만든 것이므로 완성되지 않았을 수 있습니다!
+                언어 바꾸기 - 모든 언어팩은 사용자들이 만든 것이므로 정확하지 않을 수 있습니다!
 
         fullscreen:
             title: 전체화면
@@ -745,7 +745,7 @@ settings:
                 twenty_minutes: 20분
                 disabled: 기능 끄기
         compactBuildingInfo:
-            title: 간결한 건물 정보
+            title: 간단한 건물 정보
             description: >-
                 건물의 정보창을 해당 건물의 능률만 보이도록 줄입니다.
                 아니면, 설명과 이미지가 보입니다.
@@ -862,7 +862,7 @@ demo:
         restoringGames: 게임 자장 파일 리스토어 하기
         importingGames: 게임 저장 파일 불러오기
         oneGameLimit: 게임 저장 파일 최대 1개
-        customizeKeybindings: 키바인딩 설정하기
+        customizeKeybindings: 키 설정하기
         exportingBase: 공장 전체를 이미지로 내보내기
 
-    settingNotAvailable: 데모 버전에서 사용 불가
+    settingNotAvailable: 체험판 버전에서 사용 불가
