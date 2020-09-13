@@ -233,8 +233,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             return;
         }
 
-        this.domAttach.update(this.currentMetaBuilding.get());
-        this.variantsAttach.update(this.currentMetaBuilding.get());
+        this.domAttach.update(!!this.currentMetaBuilding.get());
+        this.variantsAttach.update(!!this.currentMetaBuilding.get());
         const metaBuilding = this.currentMetaBuilding.get();
 
         if (!metaBuilding) {
