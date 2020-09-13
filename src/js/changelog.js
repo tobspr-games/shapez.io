@@ -24,6 +24,7 @@ export const CHANGELOG = [
             "Added setting to show chunk borders",
             "Quad painters have been reworked! They now are integrated with the wires, and only paint the shape when the value is 1 (inspired by dengr1605)",
             "There are now compact 1x1 splitters available to be unlocked!",
+            "Replaced level completion sound to be less distracting",
             "Allow editing waypoints (by isaisstillalive)",
             "Show confirmation when cutting area which is too expensive to get pasted again (by isaisstillalive)",
             "Show mouse and camera tile on debug overlay (F4) (by dengr)",
