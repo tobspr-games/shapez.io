@@ -159,29 +159,13 @@ export const allApplicationSettings = [
             (app, id) => app.updateAfterUiScaleChanged(),
     }),
 
-    new BoolSetting(
-        "soundsMuted",
-        enumCategories.general,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => app.sound.setSoundsMuted(value)
-    ),
     new RangeSetting(
         "soundVolume",
         enumCategories.general,
         /**
          * @param {Application} app
          */
-        (app, value) => app.sound.setSoundVolume(value / 100.0)
-    ),
-    new BoolSetting(
-        "musicMuted",
-        enumCategories.general,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => app.sound.setMusicMuted(value)
+        (app, value) => app.sound.setSoundVolume(value)
     ),
     new RangeSetting(
         "musicVolume",
@@ -189,7 +173,7 @@ export const allApplicationSettings = [
         /**
          * @param {Application} app
          */
-        (app, value) => app.sound.setMusicVolume(value / 100.0)
+        (app, value) => app.sound.setMusicVolume(value)
     ),
 
     new BoolSetting(
@@ -302,8 +286,6 @@ class SettingsStorage {
         this.uiScale = "regular";
         this.fullscreen = G_IS_STANDALONE;
 
-        this.soundsMuted = false;
-        this.musicMuted = false;
         this.soundVolume = 1.0;
         this.musicVolume = 1.0;
 
@@ -515,7 +497,17 @@ export class ApplicationSettings extends ReadWriteProxy {
             const setting = allApplicationSettings[i];
             const storedValue = settings[setting.id];
             if (!setting.validate(storedValue)) {
-                return ExplainedResult.bad("Bad setting value for " + setting.id + ": " + storedValue);
+                return ExplainedResult.bad(
+                    "Bad setting value for " +
+                        setting.id +
+                        ": " +
+                        storedValue +
+                        " @ settings version " +
+                        data.version +
+                        " (latest is " +
+                        this.getCurrentVersion() +
+                        ")"
+                );
             }
         }
         return ExplainedResult.good();
@@ -529,7 +521,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 24;
+        return 25;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -633,10 +625,19 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 24) {
-            data.settings.musicVolume = 1.0;
-            data.settings.soundVolume = 1.0;
             data.settings.refreshRate = "60";
             data.version = 24;
+        }
+
+        if (data.version < 25) {
+            data.settings.musicVolume = 0.5;
+            data.settings.soundVolume = 0.5;
+
+            // @ts-ignore
+            delete data.settings.musicMuted;
+            // @ts-ignore
+            delete data.settings.soundsMuted;
+            data.version = 25;
         }
 
         return ExplainedResult.good();

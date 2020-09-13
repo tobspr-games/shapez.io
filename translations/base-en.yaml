@@ -728,6 +728,8 @@ settings:
         prod: Production
     buildDate: Built <at-date>
 
+    rangeSliderPercentage: <amount> %
+
     labels:
         uiScale:
             title: Interface scale
