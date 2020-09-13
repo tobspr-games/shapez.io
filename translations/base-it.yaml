@@ -523,8 +523,9 @@ buildings:
 
         storage:
             name: Stoccaggio
-            description: Immagazzina gli oggetti in eccesso, fino ad una certa capacità. Può essere usato come varco per le eccedenze #Literal translation, quite ugly, might need rephrasing
 
+            #Literal translation, quite ugly, might need rephrasing
+            description: Immagazzina gli oggetti in eccesso, fino ad una certa capacità. Può essere usato come varco per le eccedenze
     hub:
         deliver: Consegna
         toUnlock: per sbloccare
