@@ -261,6 +261,7 @@ export const allApplicationSettings = [
     new BoolSetting("disableCutDeleteWarnings", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("rotationByBuilding", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("displayChunkBorders", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("pickMinerOnPatch", enumCategories.advanced, (app, value) => {}),
 
     new EnumSetting("refreshRate", {
         options: refreshRateOptions,
@@ -305,6 +306,7 @@ class SettingsStorage {
         this.rotationByBuilding = true;
         this.clearCursorOnDeleteWhilePlacing = true;
         this.displayChunkBorders = false;
+        this.pickMinerOnPatch = true;
 
         this.enableColorBlindHelper = false;
 
@@ -626,7 +628,11 @@ export class ApplicationSettings extends ReadWriteProxy {
 
         if (data.version < 24) {
             data.settings.refreshRate = "60";
-            data.version = 24;
+        }
+
+        if (data.version < 25) {
+            data.settings.pickMinerOnPatch = true;
+            data.version = 25;
         }
 
         if (data.version < 25) {
