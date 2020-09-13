@@ -31,7 +31,8 @@
 
     pointer-events: all;
 
-    &:hover {
+    transition: opacity 0.1s ease-out;
+    &.hovered {
         opacity: 10%;
         .helperGif {
             opacity: 0%;
@@ -57,5 +58,6 @@
         @include S(margin-top, 5px);
         @include S(height, 150px);
         background: center center / contain no-repeat;
+        transition: opacity 0.1s ease-out;
     }
 }
