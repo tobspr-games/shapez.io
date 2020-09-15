@@ -146,14 +146,21 @@ class MusicInstance extends MusicInstanceInterface {
         return this.playing;
     }
 
-    play() {
+    play(volume) {
         if (this.howl) {
             this.playing = true;
+            this.howl.volume(volume);
             if (this.instance) {
                 this.howl.play(this.instance);
             } else {
                 this.instance = this.howl.play();
             }
+        }
+    }
+
+    setVolume(volume) {
+        if (this.howl) {
+            this.howl.volume(volume);
         }
     }
 
@@ -178,6 +185,9 @@ export class SoundImplBrowser extends SoundInterface {
     }
 
     initialize() {
+        // NOTICE: We override the initialize() method here with custom logic because
+        // we have a sound sprites instance
+
         this.sfxHandle = new SoundSpritesContainer();
 
         // @ts-ignore
@@ -191,11 +201,11 @@ export class SoundImplBrowser extends SoundInterface {
             this.music[musicPath] = music;
         }
 
-        this.musicMuted = this.app.settings.getAllSettings().musicMuted;
-        this.soundsMuted = this.app.settings.getAllSettings().soundsMuted;
+        this.musicVolume = this.app.settings.getAllSettings().musicVolume;
+        this.soundVolume = this.app.settings.getAllSettings().soundVolume;
 
         if (G_IS_DEV && globalConfig.debug.disableMusic) {
-            this.musicMuted = true;
+            this.musicVolume = 0.0;
         }
 
         return Promise.resolve();

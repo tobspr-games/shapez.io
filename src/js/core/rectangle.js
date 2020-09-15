@@ -1,5 +1,5 @@
 import { globalConfig } from "./config";
-import { clamp, epsilonCompare, round2Digits } from "./utils";
+import { epsilonCompare, round2Digits } from "./utils";
 import { Vector } from "./vector";
 
 export class Rectangle {
@@ -54,54 +54,11 @@ export class Rectangle {
     }
 
     /**
-     * Returns a rectangle arround a rotated point
-     * @param {Array<Vector>} points
-     * @param {number} angle
-     * @returns {Rectangle}
-     */
-    static getAroundPointsRotated(points, angle) {
-        let minX = 1e10;
-        let minY = 1e10;
-        let maxX = -1e10;
-        let maxY = -1e10;
-        for (let i = 0; i < points.length; ++i) {
-            const rotated = points[i].rotated(angle);
-            minX = Math.min(minX, rotated.x);
-            minY = Math.min(minY, rotated.y);
-            maxX = Math.max(maxX, rotated.x);
-            maxY = Math.max(maxY, rotated.y);
-        }
-        return new Rectangle(minX, minY, maxX - minX, maxY - minY);
-    }
-
-    /**
      * Copies this instance
      * @returns {Rectangle}
      */
     clone() {
         return new Rectangle(this.x, this.y, this.w, this.h);
-    }
-
-    /**
-     * Ensures the rectangle contains the given square
-     * @param {number} centerX
-     * @param {number} centerY
-     * @param {number} halfWidth
-     * @param {number} halfHeight
-     */
-    extendBySquare(centerX, centerY, halfWidth, halfHeight) {
-        if (this.isEmpty()) {
-            // Just assign values since this rectangle is empty
-            this.x = centerX - halfWidth;
-            this.y = centerY - halfHeight;
-            this.w = halfWidth * 2;
-            this.h = halfHeight * 2;
-        } else {
-            this.setLeft(Math.min(this.x, centerX - halfWidth));
-            this.setRight(Math.max(this.right(), centerX + halfWidth));
-            this.setTop(Math.min(this.y, centerY - halfHeight));
-            this.setBottom(Math.max(this.bottom(), centerY + halfHeight));
-        }
     }
 
     /**
@@ -260,14 +217,6 @@ export class Rectangle {
     }
 
     /**
-     * Helper for computing a culling area. Returns the top left tile
-     * @returns {Vector}
-     */
-    getMinStartTile() {
-        return new Vector(this.x, this.y).snapWorldToTile();
-    }
-
-    /**
      * Returns if the given rectangle is contained
      * @param {Rectangle} rect
      * @returns {boolean}
@@ -377,23 +326,32 @@ export class Rectangle {
     }
 
     /**
-     * Returns a new recangle in tile space which includes all tiles which are visible in this rect
-     * @param {boolean=} includeHalfTiles
+     * Good for printing stuff
+     */
+    toString() {
+        return (
+            "[x:" +
+            round2Digits(this.x) +
+            "| y:" +
+            round2Digits(this.y) +
+            "| w:" +
+            round2Digits(this.w) +
+            "| h:" +
+            round2Digits(this.h) +
+            "]"
+        );
+    }
+
+    /**
+     * Returns a new rectangle in tile space which includes all tiles which are visible in this rect
      * @returns {Rectangle}
      */
-    toTileCullRectangle(includeHalfTiles = true) {
-        let scaled = this.allScaled(1.0 / globalConfig.tileSize);
-
-        if (includeHalfTiles) {
-            // Increase rectangle size
-            scaled = Rectangle.fromTRBL(
-                Math.floor(scaled.y),
-                Math.ceil(scaled.right()),
-                Math.ceil(scaled.bottom()),
-                Math.floor(scaled.x)
-            );
-        }
-
-        return scaled;
+    toTileCullRectangle() {
+        return new Rectangle(
+            Math.floor(this.x / globalConfig.tileSize),
+            Math.floor(this.y / globalConfig.tileSize),
+            Math.ceil(this.w / globalConfig.tileSize),
+            Math.ceil(this.h / globalConfig.tileSize)
+        );
     }
 }

@@ -15,10 +15,11 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
@@ -30,66 +31,69 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте.
+        Развивайтесь в игре и открывайте улучшения для ускорения фабрики, после доставки запрошенных ресурсов.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        По мере увеличения спроса на фигуры вам придется увеличивать свою фабрику, чтобы удовлетворить спрос. Однако, не забывайте о ресурсах, несмотря на то что вы будете расширятся на [b]бесконечной карте[/b]!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Вскоре вам придется смешивать цвета и красить ими фигуры. Комбинируйте красный, зеленый и синий красители для получения разных цветов и красьте ими фигуры, чтобы удовлетворить спрос.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Эта игра имеет 18 уровней развития (но и они займут вас на часы!), но я постоянно добавляю новый контент - там многое запланировано!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Покупка игры даст доступ к полной версии, которая имеет дополнительные функции, а также вы получите доступ к недавно разработанным функциям.
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
+        [b]Преимущества полной версии[/b]
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Темный Режим
+            [*] Неограниченные Метки
+            [*] Неограниченные Сохранения
+            [*] Дополнительные настройки
+            [*] Скоро: Провода & Энергия! Запланировано (примерно) на конец июля 2020 года.
+            [*] Скоро: Больше уровней
+            [*] Позволит мне дальше разрабатывать shapez.io ❤️
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Будущие обновления[/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
-
-        [b]Links[/b]
+        Я очень часто обновляю игру и пытаюсь обновлять ее как минимум каждую неделю!
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] Различные карты и испытания (например, карты с препятствиями)
+            [*] Пазлы (Доставить запрошенную фигуру с ограничением пространства / набора зданий)
+            [*] Режим истории, где здания стоят фигуры
+            [*] Настраиваемый генератор карт (настройка ресурса / размера фигуры / плотности, семя и т.д.)
+            [*] Дополнительные типы фигур
+            [*] Улучшения производительности (игра уже работает довольно хорошо!)
+            [*] И многое другое!
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+        [b]Это игра с открытым исходным кодом![/b]
+
+        Любой может внести свой вклад, я активно участвую в жизни сообщества и пытаюсь рассмотреть все предложения и по возможности принять во внимание отзывы.
+        Не забудьте проверить мою доску Trello со всеми планами!
+
+        [b]Ссылки[/b]
+
+        [list]
+            [*] [url=https://discord.com/invite/HN7EVzV]Официальный Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Планы[/url]
+            [*] [url=https://www.reddit.com/r/shapezio]Сабреддит[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Исходный код (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Помочь с переводом[/url]
+        [/list]
+
+    discordLink: Официальный Discord - Общайся со мной!
 
 global:
     loading: Загрузка
     error: Ошибка
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: ","
+    thousandsDivider: " "
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -139,7 +143,7 @@ mainMenu:
     changelog: Список изменений
     importSavegame: Импорт
     openSourceHint: Это игра с открытым исходным кодом!
-    discordLink: Оффициальный Дискорд Сервер
+    discordLink: Офици- альный Дискорд
     helpTranslate: Помоги с переводом!
 
     # This is shown when using firefox and other browsers which are not supported.
@@ -148,7 +152,6 @@ mainMenu:
 
     savegameLevel: Уровень <x>
     savegameLevelUnknown: Неизвестный уровень
-
 
     continue: Продолжить
     newGame: Новая Игра
@@ -205,7 +208,7 @@ dialogs:
 
     resetKeybindingsConfirmation:
         title: Сброс управления
-        desc: Это сбросит все настройки управления к их значениям по умолчанию. Пожалуйста подтвердите.
+        desc: Это сбросит все настройки управления к их значениям по умолчанию. Подтвердите это действие.
 
     keybindingsResetOk:
         title: Сброс управления
@@ -233,12 +236,12 @@ dialogs:
     massDeleteConfirm:
         title: Подтвердить удаление
         desc: >-
-            Вы удаляете много построек (точнее: <count>)! Вы действительно хотите сделать это?
+            Вы собираетесь удалить много построек (точнее: <count>)! Вы действительно хотите сделать это?
 
     blueprintsNotUnlocked:
         title: Еще не открыто
         desc: >-
-            Чертежи еще не открыты! Завершите больше уровней, что-бы открыть их.
+            Чертежи еще не открыты! Завершите больше уровней, чтобы открыть их.
 
     keybindingsIntroduction:
         title: Полезные горячие клавиши
@@ -252,26 +255,26 @@ dialogs:
     createMarker:
         title: Новый маркер
         desc: Дайте ему содержательное имя, также можно добавить <strong>сокращение</strong> в виде фигуры (Которое можно сгенерировать <a href="https://viewer.shapez.io" target="_blank">здесь</a>)
-        titleEdit: Edit Marker
+        titleEdit: Редактирование маркера
 
     markerDemoLimit:
         desc: Вы можете создать только 2 своих маркера в демо-версии. Приобретите полную версию для безлимитных маркеров.
     massCutConfirm:
         title: Подтвердите вырезку
         desc: >-
-            Вы вырезаете много зданий (точнее: <count>)! Вы уверены,
+            Вы собираетесь вырезать много зданий (точнее: <count>)! Вы уверены,
             что хотите это сделать?
 
     exportScreenshotWarning:
         title: Экспорт скриншота
         desc: >-
-            Вы запросили экспортировать вашу базу в виде скриншота. Обратите внимание,
+            Вы собираетесь экспортировать вашу базу в виде скриншота. Обратите внимание,
             что это может быть довольно медленным процессом для большой базы
             и даже привести к аварийному завершению игры!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Подтвердите вырезку
+        desc: Вы не можете позволить себе вставить эту область! Вы уверены, что хотите вырезать ее?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -295,7 +298,7 @@ ingame:
         copySelection: Копировать
         clearSelection: Отменить
         pipette: Пипетка
-        switchLayers: Switch layers
+        switchLayers: Переключить слои
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -355,7 +358,7 @@ ingame:
                 title: Производится
                 description: Показывает производящиеся фигуры, включая промежуточное производство.
             delivered:
-                title: Доставлено
+                title: Доставляется
                 description: Показывает фигуры, которые доставляются в хаб.
         noShapesProduced: Фигуры еще не произведены.
 
@@ -388,8 +391,8 @@ ingame:
     waypoints:
         waypoints: Маркеры
         hub: ХАБ
-        description: ЛКМ по маркеру, чтобы переместится к нему, ПКМ что-бы удалить. <br><br>Нажмите <keybinding> чтобы создать маркер в текущей позиции или <strong>ПКМ</strong> чтобы выбрать другое место для сождания маркера.
-        creationSuccessNotification: Маркер был создан.
+        description: ЛКМ по маркеру, чтобы переместиться к нему, ПКМ, чтобы удалить. <br><br>Нажмите <keybinding> чтобы создать маркер в текущей позиции или <strong>ПКМ</strong>, чтобы выбрать другое место для создания маркера.
+        creationSuccessNotification: Маркер создан.
 
     # Interactive tutorial
     interactiveTutorial:
@@ -411,11 +414,11 @@ ingame:
         cyan: Бирюзовый
         white: Белый
         uncolored: Бесцветный
-        black: Black
+        black: Черный
     shapeViewer:
         title: Слои
         empty: Пусто
-        copyKey: Copy Key
+        copyKey: Копировать
 
 # All shop upgrades
 shopUpgrades:
@@ -437,7 +440,7 @@ buildings:
     belt:
         default:
             name: &belt Конвейер
-            description: Транспортирует предметы, держите и тащите, чтобы разместить несколько.
+            description: Транспортирует предметы. Держите и тащите, чтобы разместить несколько.
 
     miner: # Internal name for the Extractor
         default:
@@ -445,7 +448,7 @@ buildings:
             description: Поместите над жилой с фигурами или красителями, чтобы добыть ресурс.
 
         chainable:
-            name: Экстрактор(Цеп.)
+            name: Цеп. экстрактор
             description: Поместите над жилой с фигурами или красителями, чтобы добыть ресурс. Может последовательно соединяться в цепь.
 
     underground_belt: # Internal name for the Tunnel
@@ -472,11 +475,11 @@ buildings:
 
     cutter:
         default:
-            name: &cutter Резчик
-            description: Разрезает фигуры сверху вниз и выводит обе половины. <strong>Используя только одну часть -  уничтожьте другую, иначе производство остановится!</strong>
+            name: &cutter Резак
+            description: Разрезает фигуры сверху вниз и выводит обе половины. <strong>Если Вы собираетесь использовать только одну часть, уничтожьте другую, иначе производство остановится!</strong>
         quad:
-            name: Резчик (4Вых.)
-            description: Разрезает фигуры на четыре части. <strong>Используя не все части - уничтожьте оставшиеся, иначе производство остановится!</strong>
+            name: Резак (4Вых.)
+            description: Разрезает фигуры на четыре части. <strong>Если Вы собираетесь использовать не все части - уничтожьте оставшиеся, иначе производство остановится!</strong>
 
     rotater:
         default:
@@ -485,6 +488,9 @@ buildings:
         ccw:
             name: Вращатель (Обр.)
             description: Поворачивает фигуры против часовой стрелки на 90 градусов.
+        fl:
+            name: Вращатель (180)
+            description: Вращает фигуры на 180 градусов.
 
     stacker:
         default:
@@ -513,42 +519,42 @@ buildings:
     trash:
         default:
             name: &trash Мусорка
-            description: Имеет входы со всех сторон. Уничтожает все что принимает, навсегда.
+            description: Имеет входы со всех сторон. Уничтожает все принимаемые ресурсы.
 
         storage:
             name: Хранилище
-            description: Хранит лишние предметы, до заданной вместимости. Может использоваться в качестве ворот для пропускания излишков.
+            description: Хранит лишние предметы до заданной вместимости. Может использоваться в качестве ворот для пропускания излишков.
     hub:
         deliver: Доставить
         toUnlock: чтобы открыть
         levelShortcut: Ур.
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Энерг. провод
+            description: Позволяет транспортировать энергию.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Инвертор цвета
+            description: Инвертирует цвета красителей или фигур.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Доставить
+        toGenerateEnergy: Для
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Генератор энергии
+            description: Производит энергию из фигур.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Разделитель провода
+            description: Разделяет энергетический провод на два.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Соединитель проводов
+            description: Соединяет два энергетических провода в один.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Разрезание Фигур
-        desc: Вы только что открыли <strong>резчик</strong> -  он разрезает фигуры пополам <strong>сверху вниз</strong> независимо от их ориентации!<br><br> Обязательно избавьтесь от отходов, иначе <strong>он остановится</strong> - для этого я дал вам мусорку, которая уничтожит все, что в нее поместить!
+        desc: Вы только что открыли <strong>резак</strong> - он разрезает фигуры пополам <strong>сверху вниз</strong> независимо от их ориентации!<br><br> Обязательно избавьтесь от отходов, иначе <strong>он остановится</strong> - для этого я дал вам мусорку, которая уничтожит все, что в нее поместить!
 
     reward_rotater:
         title: Вращение
@@ -557,7 +563,7 @@ storyRewards:
     reward_painter:
         title: Покраска
         desc: >-
-            Разблокирован <strong>покрасчик</strong>! Добудьте краситель из жилы (так же как и фигуры) и объедините его с фигурой в покрасчике, чтобы раскрасить ее!<br><br>PS: Если вы дальтоник, то в настройках есть <strong>Режим Дальтоника</strong>!
+            Разблокирован <strong>покрасчик</strong>! Добудьте краситель из жилы (так же, как и фигуры) и объедините его с фигурой в покрасчике, чтобы раскрасить ее!<br><br>PS: Если вы дальтоник, то в настройках есть <strong>Режим Дальтоника</strong>!
 
     reward_mixer:
         title: Смешивание Цветов
@@ -573,11 +579,11 @@ storyRewards:
 
     reward_tunnel:
         title: Туннель
-        desc: Разблокирован <strong>туннель</strong>! Теперь вы можете транспортировать предметы сквозь конвейеры и здания!
+        desc: Разблокирован <strong>туннель</strong>! Теперь вы можете транспортировать предметы под другими конвейерами и зданиями!
 
     reward_rotater_ccw:
         title: Вращатель (обратный)
-        desc: Разблокирован вариант <strong>вращателя</strong>, он позволяет вращать фигуры против часовой стрелки! Чтобы построить его, выберите вращатель и <strong>нажмите 'T' чтобы переключаться между вариантами</strong>!
+        desc: Разблокирован вариант <strong>вращателя</strong>, вращающий фигуры против часовой стрелки! Чтобы построить его, выберите вращатель и <strong>нажмите 'T', чтобы переключить вариант</strong>!
 
     reward_miner_chainable:
         title: Цепной Экстрактор
@@ -589,12 +595,11 @@ storyRewards:
 
     reward_splitter_compact:
         title: Компактный Соединитель
-        desc: >-
-            Разблокирован компактный вариант <strong>разделителя</strong>, он объединяет воедино потоки предметов из двух входов!
+        desc: Разблокирован компактный вариант <strong>разделителя</strong>, объединяющий потоки предметов из двух входов!
 
     reward_cutter_quad:
-        title: Резчик (4 Выхода)
-        desc: Разблокирован вариант <strong>резчика</strong> - он позволяет разрезать фигуры на <strong>четыре части</strong> вместо, всего лишь двух!
+        title: Резак (4 Выхода)
+        desc: Разблокирован вариант <strong>резака</strong>, разрезающий фигуры на <strong>четыре части</strong> вместо двух!
 
     reward_painter_double:
         title: Двойной Покрасчик
@@ -602,7 +607,7 @@ storyRewards:
 
     reward_painter_quad:
         title: Покрасчик (4 Входа)
-        desc: Разблокирован вариант <strong>покрасчика</strong> - он позволяет отдельно раскрашивать каждую часть фигуры!
+        desc: Разблокирован вариант <strong>покрасчика</strong> - он позволяет отдельно раскрашивать каждую четверть фигуры!
 
     reward_storage:
         title: Буферное Хранилище
@@ -614,13 +619,13 @@ storyRewards:
 
     reward_blueprints:
         title: Чертежи
-        desc: Теперь вы можете <strong>копировать и вставлять</strong> части вашей фабрики! Выберите область (Удерживая CTRL, перетащите мышь) и нажмите 'C' чтобы скопировать ее.<br><br>Вставка <strong>не бесплатна</strong>, чтобы позволить себе это вам необходимо произвести <strong>фигуры для чертежей</strong>! (Которые вы только что доставили).
+        desc: Теперь вы можете <strong>копировать и вставлять</strong> части вашей фабрики! Выберите область (Удерживая CTRL, перетащите мышь) и нажмите 'C', чтобы скопировать ее.<br><br>Вставка <strong>не бесплатна</strong>, для этого необходимо произвести <strong>фигуры для чертежей</strong>! (Которые вы только что доставили).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: Следующий уровень
         desc: >-
-            Этот уровень не дал вам награды, но следующий даст! <br><br> PS: Лучше не разрушайте вашу существующую фабрику - Вам понадобятся  <strong>все</strong> эти фигуры позже, чтобы <strong>разблокировать улучшения</strong>!
+            Этот уровень не дал вам награды, но следующий даст! <br><br> PS: Лучше не разрушайте вашу существующую фабрику - Вам понадобятся <strong>все</strong> эти фигуры позже, чтобы <strong>разблокировать улучшения</strong>!
 
     no_reward_freeplay:
         title: Следующий уровень
@@ -630,8 +635,9 @@ storyRewards:
 settings:
     title: Настройки
     categories:
-        game: Игровые
-        app: Основные
+        general: Основные
+        userInterface: Интерфейс
+        advanced: Продвинутые
 
     versionBadges:
         dev: Разработчик
@@ -730,7 +736,7 @@ settings:
             title: Интервал авто-сохранения
             description: >-
                 Управляет тем, как часто игра автоматически сохраняется.
-                А также здесь можно полностью отключить авто-сохранение.
+                Также здесь можно полностью отключить авто-сохранение.
             intervals:
                 one_minute: 1 Минута
                 two_minutes: 2 Минуты
@@ -744,7 +750,7 @@ settings:
                 Сокращает отображаемую информацию о зданиях, показывая только их множители.
                 Иначе информация отображается с описанием и изображением.
         disableCutDeleteWarnings:
-            title: Отключить Предупреждение о Вырезании\Удалении
+            title: Отключить Предупреждение о Вырезании/Удалении
             description: >-
                 Отключает диалоговые окна с предупреждениями, появляющиеся при
                 вырезании/удалении более 100 объектов.
@@ -825,11 +831,11 @@ keybindings:
         lockBeltDirection: Включает конвейерный планировщик
         switchDirectionLockSide: "Планировщик: Переключение сторон"
         pipette: Пипетка
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Закрыть меню
+        switchLayers: Переключить слои
+        advanced_processor: Инвертор цвета
+        energy_generator: Генератор энергии
+        wire: Энергетический провод
 
 about:
     title: Об игре
@@ -837,19 +843,19 @@ about:
         Эта игра с открытым исходным кодом, разработана <a href="https://github.com/tobspr"
         target="_blank">Тобиасом Спрингером</a> (это я).<br><br>
 
-        Если вы хотите внести свой вклад то вам сюда - <a href="<githublink>"
+        Если вы хотите внести свой вклад игре - <a href="<githublink>"
         target="_blank">shapez.io в github</a>.<br><br>
 
         Эта игра не была бы возможна без большого сообщества в дискорде, которое собралось
-        вокруг моих игр - Вы действительно должны присоединиться к <a href="<discordlink>"
-        target="_blank">серверу в дискорде</a>!<br><br>
+        вокруг моих игр - Вам действительно стоит присоединиться к <a href="<discordlink>"
+        target="_blank">серверу Discord!</a>!<br><br>
 
         Саундтрек сделал <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Он потрясающий.<br><br>
 
         Наконец, огромное спасибо моему лучшему другу <a
         href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Без наших
-        игровых сессий в factorio эта игра никогда не существовала бы.
+        игровых сессий в Factorio эта игра никогда не существовала бы.
 
 changelog:
     title: Список изменений

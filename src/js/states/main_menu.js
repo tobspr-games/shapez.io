@@ -1,11 +1,10 @@
 import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
-import { globalConfig, IS_DEBUG, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
+import { globalConfig, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
 import {
     makeDiv,
     makeButtonElement,
     formatSecondsToTimeAgo,
-    generateFileDownload,
     waitNextFrame,
     isSupportedBrowser,
     makeButton,
@@ -14,9 +13,31 @@ import {
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { T } from "../translations";
-import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { getApplicationSettingById } from "../profile/application_settings";
-import { EnumSetting } from "../profile/setting_types";
+import { FormElementInput } from "../core/modal_dialog_forms";
+import { DialogWithForm } from "../core/modal_dialog_elements";
+
+/**
+ * @typedef {import("../savegame/savegame_typedefs").SavegameMetadata} SavegameMetadata
+ * @typedef {import("../profile/setting_types").EnumSetting} EnumSetting
+ */
+
+/**
+ * Generates a file download
+ * @param {string} filename
+ * @param {string} text
+ */
+function generateFileDownload(filename, text) {
+    var element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    element.setAttribute("download", filename);
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+    document.body.removeChild(element);
+}
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -46,7 +67,7 @@ export class MainMenuState extends GameState {
                     : ""
             }
             </div>
-            
+
             <video autoplay muted loop class="fullscreenBackgroundVideo">
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
             </video>
@@ -92,10 +113,10 @@ export class MainMenuState extends GameState {
                     <a class="redditLink">${T.mainMenu.subreddit}</a>
 
                     <a class="changelog">${T.changelog.title}</a>
-                
+
                     <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
                 </div>
-            
+
                 <div class="author">${T.mainMenu.madeBy.replace(
                     "<author-link>",
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
@@ -128,7 +149,6 @@ export class MainMenuState extends GameState {
                     const closeLoader = this.dialogs.showLoadingDialog();
                     const reader = new FileReader();
                     reader.addEventListener("load", event => {
-                        // @ts-ignore
                         const contents = event.target.result;
                         let realContent;
 
@@ -217,11 +237,6 @@ export class MainMenuState extends GameState {
         this.trackClicks(qs(".redditLink"), this.onRedditClicked);
         this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
         this.trackClicks(qs(".helpTranslate"), this.onTranslationHelpLinkClicked);
-
-        const contestButton = qs(".participateContest");
-        if (contestButton) {
-            this.trackClicks(contestButton, this.onContestClicked);
-        }
 
         if (G_IS_STANDALONE) {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
@@ -312,15 +327,6 @@ export class MainMenuState extends GameState {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.reddit);
     }
 
-    onContestClicked() {
-        this.app.analytics.trackUiClick("contest_click");
-
-        this.dialogs.showInfo(
-            T.mainMenu.contests.contest_01_03062020.title,
-            T.mainMenu.contests.contest_01_03062020.longDesc
-        );
-    }
-
     onLanguageChooseClicked() {
         this.app.analytics.trackUiClick("choose_language");
         const setting = /** @type {EnumSetting} */ (getApplicationSettingById("language"));
@@ -388,6 +394,13 @@ export class MainMenuState extends GameState {
                         : T.mainMenu.savegameLevelUnknown
                 );
 
+                const name = makeDiv(
+                    elem,
+                    null,
+                    ["name"],
+                    "<span>" + (games[i].name ? games[i].name : T.mainMenu.savegameUnnamed) + "</span>"
+                );
+
                 const deleteButton = document.createElement("button");
                 deleteButton.classList.add("styledButton", "deleteGame");
                 elem.appendChild(deleteButton);
@@ -396,6 +409,10 @@ export class MainMenuState extends GameState {
                 downloadButton.classList.add("styledButton", "downloadGame");
                 elem.appendChild(downloadButton);
 
+                const renameButton = document.createElement("button");
+                renameButton.classList.add("styledButton", "renameGame");
+                name.appendChild(renameButton);
+
                 const resumeButton = document.createElement("button");
                 resumeButton.classList.add("styledButton", "resumeGame");
                 elem.appendChild(resumeButton);
@@ -403,12 +420,43 @@ export class MainMenuState extends GameState {
                 this.trackClicks(deleteButton, () => this.deleteGame(games[i]));
                 this.trackClicks(downloadButton, () => this.downloadGame(games[i]));
                 this.trackClicks(resumeButton, () => this.resumeGame(games[i]));
+                this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
             }
         }
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
+     */
+    requestRenameSavegame(game) {
+        const regex = /^[a-zA-Z0-9_\- ]{1,20}$/;
+
+        const nameInput = new FormElementInput({
+            id: "nameInput",
+            label: null,
+            placeholder: "",
+            defaultValue: game.name || "",
+            validator: val => val.match(regex),
+        });
+        const dialog = new DialogWithForm({
+            app: this.app,
+            title: T.dialogs.renameSavegame.title,
+            desc: T.dialogs.renameSavegame.desc,
+            formElements: [nameInput],
+            buttons: ["cancel:bad:escape", "ok:good:enter"],
+        });
+        this.dialogs.internalShowDialog(dialog);
+
+        // When confirmed, save the name
+        dialog.buttonSignals.ok.add(() => {
+            game.name = nameInput.getValue();
+            this.app.savegameMgr.writeAsync();
+            this.renderSavegames();
+        });
+    }
+
+    /**
+     * @param {SavegameMetadata} game
      */
     resumeGame(game) {
         this.app.analytics.trackUiClick("resume_game");
@@ -433,7 +481,7 @@ export class MainMenuState extends GameState {
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
      */
     deleteGame(game) {
         this.app.analytics.trackUiClick("delete_game");
@@ -461,7 +509,7 @@ export class MainMenuState extends GameState {
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
      */
     downloadGame(game) {
         this.app.analytics.trackUiClick("download_game");
@@ -469,7 +517,8 @@ export class MainMenuState extends GameState {
         const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
         savegame.readAsync().then(() => {
             const data = ReadWriteProxy.serializeObject(savegame.currentData);
-            generateFileDownload(savegame.filename, data);
+            const filename = (game.name || "unnamed") + ".bin";
+            generateFileDownload(filename, data);
         });
     }
 

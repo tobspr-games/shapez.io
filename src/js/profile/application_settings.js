@@ -3,7 +3,7 @@ import { Application } from "../application";
 /* typehints:end */
 
 import { ReadWriteProxy } from "../core/read_write_proxy";
-import { BoolSetting, EnumSetting, BaseSetting } from "./setting_types";
+import { BoolSetting, EnumSetting, RangeSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
 import { THEMES, THEME, applyGameTheme } from "../game/theme";
@@ -13,8 +13,15 @@ import { LANGUAGES } from "../languages";
 
 const logger = createLogger("application_settings");
 
-const categoryGame = "game";
-const categoryApp = "app";
+/**
+ * @enum {string}
+ */
+export const enumCategories = {
+    general: "general",
+    userInterface: "userInterface",
+    performance: "performance",
+    advanced: "advanced",
+};
 
 export const uiScales = [
     {
@@ -116,13 +123,24 @@ export const autosaveIntervals = [
     },
 ];
 
+const refreshRateOptions = ["30", "60", "120", "180", "240"];
+
+if (G_IS_DEV) {
+    refreshRateOptions.unshift("10");
+    refreshRateOptions.unshift("5");
+    refreshRateOptions.push("1000");
+    refreshRateOptions.push("2000");
+    refreshRateOptions.push("5000");
+    refreshRateOptions.push("10000");
+}
+
 /** @type {Array<BaseSetting>} */
 export const allApplicationSettings = [
     new EnumSetting("language", {
         options: Object.keys(LANGUAGES),
         valueGetter: key => key,
         textGetter: key => LANGUAGES[key].name,
-        category: categoryApp,
+        category: enumCategories.general,
         restartRequired: true,
         changeCb: (app, id) => null,
         magicValue: "auto-detect",
@@ -132,7 +150,7 @@ export const allApplicationSettings = [
         options: uiScales.sort((a, b) => a.size - b.size),
         valueGetter: scale => scale.id,
         textGetter: scale => T.settings.labels.uiScale.scales[scale.id],
-        category: categoryApp,
+        category: enumCategories.userInterface,
         restartRequired: false,
         changeCb:
             /**
@@ -141,9 +159,26 @@ export const allApplicationSettings = [
             (app, id) => app.updateAfterUiScaleChanged(),
     }),
 
+    new RangeSetting(
+        "soundVolume",
+        enumCategories.general,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setSoundVolume(value)
+    ),
+    new RangeSetting(
+        "musicVolume",
+        enumCategories.general,
+        /**
+         * @param {Application} app
+         */
+        (app, value) => app.sound.setMusicVolume(value)
+    ),
+
     new BoolSetting(
         "fullscreen",
-        categoryApp,
+        enumCategories.general,
         /**
          * @param {Application} app
          */
@@ -156,39 +191,21 @@ export const allApplicationSettings = [
     ),
 
     new BoolSetting(
-        "soundsMuted",
-        categoryApp,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => app.sound.setSoundsMuted(value)
-    ),
-    new BoolSetting(
-        "musicMuted",
-        categoryApp,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => app.sound.setMusicMuted(value)
-    ),
-
-    new BoolSetting(
         "enableColorBlindHelper",
-        categoryApp,
+        enumCategories.general,
         /**
          * @param {Application} app
          */
         (app, value) => null
     ),
 
-    // GAME
-    new BoolSetting("offerHints", categoryGame, (app, value) => {}),
+    new BoolSetting("offerHints", enumCategories.userInterface, (app, value) => {}),
 
     new EnumSetting("theme", {
         options: Object.keys(THEMES),
         valueGetter: theme => theme,
         textGetter: theme => T.settings.labels.theme.themes[theme],
-        category: categoryGame,
+        category: enumCategories.userInterface,
         restartRequired: false,
         changeCb:
             /**
@@ -205,7 +222,7 @@ export const allApplicationSettings = [
         options: autosaveIntervals,
         valueGetter: interval => interval.id,
         textGetter: interval => T.settings.labels.autosaveInterval.intervals[interval.id],
-        category: categoryGame,
+        category: enumCategories.advanced,
         restartRequired: false,
         changeCb:
             /**
@@ -214,21 +231,11 @@ export const allApplicationSettings = [
             (app, id) => null,
     }),
 
-    new EnumSetting("refreshRate", {
-        options: ["60", "100", "120", "144", "165", "250", G_IS_DEV ? "10" : "500"],
-        valueGetter: rate => rate,
-        textGetter: rate => rate + " Hz",
-        category: categoryGame,
-        restartRequired: false,
-        changeCb: (app, id) => {},
-        enabled: !IS_DEMO,
-    }),
-
     new EnumSetting("scrollWheelSensitivity", {
         options: scrollWheelSensitivities.sort((a, b) => a.scale - b.scale),
         valueGetter: scale => scale.id,
         textGetter: scale => T.settings.labels.scrollWheelSensitivity.sensitivity[scale.id],
-        category: categoryGame,
+        category: enumCategories.advanced,
         restartRequired: false,
         changeCb:
             /**
@@ -241,17 +248,34 @@ export const allApplicationSettings = [
         options: movementSpeeds.sort((a, b) => a.multiplier - b.multiplier),
         valueGetter: multiplier => multiplier.id,
         textGetter: multiplier => T.settings.labels.movementSpeed.speeds[multiplier.id],
-        category: categoryGame,
+        category: enumCategories.advanced,
         restartRequired: false,
         changeCb: (app, id) => {},
     }),
 
-    new BoolSetting("alwaysMultiplace", categoryGame, (app, value) => {}),
-    new BoolSetting("enableTunnelSmartplace", categoryGame, (app, value) => {}),
-    new BoolSetting("vignette", categoryGame, (app, value) => {}),
-    new BoolSetting("compactBuildingInfo", categoryGame, (app, value) => {}),
-    new BoolSetting("disableCutDeleteWarnings", categoryGame, (app, value) => {}),
-    new BoolSetting("rotationByBuilding", categoryGame, (app, value) => {}),
+    new BoolSetting("alwaysMultiplace", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("clearCursorOnDeleteWhilePlacing", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("enableTunnelSmartplace", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("vignette", enumCategories.userInterface, (app, value) => {}),
+    new BoolSetting("compactBuildingInfo", enumCategories.userInterface, (app, value) => {}),
+    new BoolSetting("disableCutDeleteWarnings", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("rotationByBuilding", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("displayChunkBorders", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("pickMinerOnPatch", enumCategories.advanced, (app, value) => {}),
+
+    new EnumSetting("refreshRate", {
+        options: refreshRateOptions,
+        valueGetter: rate => rate,
+        textGetter: rate => rate + " Hz",
+        category: enumCategories.performance,
+        restartRequired: false,
+        changeCb: (app, id) => {},
+        enabled: !IS_DEMO,
+    }),
+
+    new BoolSetting("lowQualityMapResources", enumCategories.performance, (app, value) => {}),
+    new BoolSetting("disableTileGrid", enumCategories.performance, (app, value) => {}),
+    new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -263,8 +287,9 @@ class SettingsStorage {
         this.uiScale = "regular";
         this.fullscreen = G_IS_STANDALONE;
 
-        this.soundsMuted = false;
-        this.musicMuted = false;
+        this.soundVolume = 1.0;
+        this.musicVolume = 1.0;
+
         this.theme = "light";
         this.refreshRate = "60";
         this.scrollWheelSensitivity = "regular";
@@ -279,8 +304,15 @@ class SettingsStorage {
         this.compactBuildingInfo = false;
         this.disableCutDeleteWarnings = false;
         this.rotationByBuilding = true;
+        this.clearCursorOnDeleteWhilePlacing = true;
+        this.displayChunkBorders = false;
+        this.pickMinerOnPatch = true;
 
         this.enableColorBlindHelper = false;
+
+        this.lowQualityMapResources = false;
+        this.disableTileGrid = false;
+        this.lowQualityTextures = false;
 
         /**
          * @type {Object.<string, number>}
@@ -407,7 +439,7 @@ export class ApplicationSettings extends ReadWriteProxy {
 
     /**
      * @param {string} key
-     * @param {string|boolean} value
+     * @param {string|boolean|number} value
      */
     updateSetting(key, value) {
         for (let i = 0; i < allApplicationSettings.length; ++i) {
@@ -467,7 +499,17 @@ export class ApplicationSettings extends ReadWriteProxy {
             const setting = allApplicationSettings[i];
             const storedValue = settings[setting.id];
             if (!setting.validate(storedValue)) {
-                return ExplainedResult.bad("Bad setting value for " + setting.id + ": " + storedValue);
+                return ExplainedResult.bad(
+                    "Bad setting value for " +
+                        setting.id +
+                        ": " +
+                        storedValue +
+                        " @ settings version " +
+                        data.version +
+                        " (latest is " +
+                        this.getCurrentVersion() +
+                        ")"
+                );
             }
         }
         return ExplainedResult.good();
@@ -481,7 +523,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 18;
+        return 26;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -557,6 +599,51 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 18) {
             data.settings.rotationByBuilding = true;
             data.version = 18;
+        }
+
+        if (data.version < 19) {
+            data.settings.lowQualityMapResources = false;
+            data.version = 19;
+        }
+
+        if (data.version < 20) {
+            data.settings.disableTileGrid = false;
+            data.version = 20;
+        }
+
+        if (data.version < 21) {
+            data.settings.lowQualityTextures = false;
+            data.version = 21;
+        }
+
+        if (data.version < 22) {
+            data.settings.clearCursorOnDeleteWhilePlacing = true;
+            data.version = 22;
+        }
+
+        if (data.version < 23) {
+            data.settings.displayChunkBorders = false;
+            data.version = 23;
+        }
+
+        if (data.version < 24) {
+            data.settings.refreshRate = "60";
+        }
+
+        if (data.version < 25) {
+            data.settings.musicVolume = 0.5;
+            data.settings.soundVolume = 0.5;
+
+            // @ts-ignore
+            delete data.settings.musicMuted;
+            // @ts-ignore
+            delete data.settings.soundsMuted;
+            data.version = 25;
+        }
+
+        if (data.version < 26) {
+            data.settings.pickMinerOnPatch = true;
+            data.version = 26;
         }
 
         return ExplainedResult.good();

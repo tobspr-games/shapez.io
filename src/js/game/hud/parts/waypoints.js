@@ -15,6 +15,8 @@ import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumNotificationType } from "./notifications";
 import { ShapeDefinition } from "../../shape_definition";
+import { BaseItem } from "../../base_item";
+import { ShapeItem } from "../../items/shape_item";
 
 /** @typedef {{
  *   label: string | null,
@@ -25,8 +27,6 @@ import { ShapeDefinition } from "../../shape_definition";
 /**
  * Used when a shape icon is rendered instead
  */
-const SHAPE_LABEL_PLACEHOLDER = "      ";
-
 const MAX_LABEL_LENGTH = 71;
 
 export class HUDWaypoints extends BaseHUDPart {
@@ -133,8 +133,42 @@ export class HUDWaypoints extends BaseHUDPart {
          */
         this.cachedKeyToCanvas = {};
 
+        /**
+         * Store cached text widths
+         * @type {Object<string, number>}
+         */
+        this.cachedTextWidths = {};
+
         // Initial render
         this.rerenderWaypointList();
+    }
+
+    /**
+     * Returns how long a text will be rendered
+     * @param {string} text
+     * @returns {number}
+     */
+    getTextWidth(text) {
+        if (this.cachedTextWidths[text]) {
+            return this.cachedTextWidths[text];
+        }
+
+        this.dummyBuffer.font = "bold " + this.getTextScale() + "px GameFont";
+        return (this.cachedTextWidths[text] = this.dummyBuffer.measureText(text).width);
+    }
+
+    /**
+     * Returns how big the text should be rendered
+     */
+    getTextScale() {
+        return this.getWaypointUiScale() * 12;
+    }
+
+    /**
+     * Returns the scale for rendering waypoints
+     */
+    getWaypointUiScale() {
+        return this.root.app.getEffectiveUiScale();
     }
 
     /**
@@ -214,7 +248,7 @@ export class HUDWaypoints extends BaseHUDPart {
         }
 
         assert(ShapeDefinition.isValidShortKey(key), "Invalid short key: " + key);
-        const definition = ShapeDefinition.fromShortKey(key);
+        const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(key);
         const preRendered = definition.generateAsCanvas(48);
         return (this.cachedKeyToCanvas[key] = preRendered);
     }
@@ -368,6 +402,51 @@ export class HUDWaypoints extends BaseHUDPart {
     }
 
     /**
+     * Returns the screen space bounds of the given waypoint or null
+     * if it couldn't be determined. Also returns wheter its a shape or not
+     * @param {Waypoint} waypoint
+     * @return {{
+     *   screenBounds: Rectangle
+     *   item: BaseItem|null,
+     *   text: string
+     * }}
+     */
+    getWaypointScreenParams(waypoint) {
+        if (!this.root.camera.getIsMapOverlayActive()) {
+            return null;
+        }
+
+        // Find parameters
+        const scale = this.getWaypointUiScale();
+        const screenPos = this.root.camera.worldToScreen(new Vector(waypoint.center.x, waypoint.center.y));
+
+        // Distinguish between text and item waypoints -> Figure out parameters
+        const originalLabel = this.getWaypointLabel(waypoint);
+        let text, item, textWidth;
+
+        if (ShapeDefinition.isValidShortKey(originalLabel)) {
+            // If the label is actually a key, render the shape icon
+            item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey(originalLabel);
+            textWidth = 40;
+        } else {
+            // Otherwise render a regular waypoint
+            text = originalLabel;
+            textWidth = this.getTextWidth(text);
+        }
+
+        return {
+            screenBounds: new Rectangle(
+                screenPos.x - 7 * scale,
+                screenPos.y - 12 * scale,
+                15 * scale + textWidth,
+                15 * scale
+            ),
+            item,
+            text,
+        };
+    }
+
+    /**
      * Finds the currently intersected waypoint on the map overview under
      * the cursor.
      *
@@ -379,34 +458,10 @@ export class HUDWaypoints extends BaseHUDPart {
             return;
         }
 
-        if (!this.root.camera.getIsMapOverlayActive()) {
-            return;
-        }
-
-        const scale = this.root.app.getEffectiveUiScale();
-
-        this.dummyBuffer.font = "bold " + 12 * scale + "px GameFont";
-
         for (let i = 0; i < this.waypoints.length; ++i) {
             const waypoint = this.waypoints[i];
-            const screenPos = this.root.camera.worldToScreen(
-                new Vector(waypoint.center.x, waypoint.center.y)
-            );
-
-            let label = this.getWaypointLabel(waypoint);
-
-            // Special case for icons
-            if (ShapeDefinition.isValidShortKey(label)) {
-                label = SHAPE_LABEL_PLACEHOLDER;
-            }
-
-            const intersectionRect = new Rectangle(
-                screenPos.x - 7 * scale,
-                screenPos.y - 12 * scale,
-                15 * scale + this.dummyBuffer.measureText(label).width,
-                15 * scale
-            );
-            if (intersectionRect.containsPoint(mousePos.x, mousePos.y)) {
+            const params = this.getWaypointScreenParams(waypoint);
+            if (params && params.screenBounds.containsPoint(mousePos.x, mousePos.y)) {
                 return waypoint;
             }
         }
@@ -449,18 +504,21 @@ export class HUDWaypoints extends BaseHUDPart {
      * Rerenders the compass
      */
     rerenderWaypointsCompass() {
-        const context = this.compassBuffer.context;
         const dims = 48;
-        context.clearRect(0, 0, dims, dims);
         const indicatorSize = 30;
-
         const cameraPos = this.root.camera.center;
+
+        const context = this.compassBuffer.context;
+        context.clearRect(0, 0, dims, dims);
 
         const distanceToHub = cameraPos.length();
         const compassVisible = distanceToHub > (10 * globalConfig.tileSize) / this.root.camera.zoomLevel;
         const targetCompassAlpha = compassVisible ? 1 : 0;
+
+        // Fade the compas in / out
         this.currentCompassOpacity = lerp(this.currentCompassOpacity, targetCompassAlpha, 0.08);
 
+        // Render the compass
         if (this.currentCompassOpacity > 0.01) {
             context.globalAlpha = this.currentCompassOpacity;
             const angle = cameraPos.angle() + Math.radians(45) + Math.PI / 2;
@@ -472,9 +530,9 @@ export class HUDWaypoints extends BaseHUDPart {
             context.globalAlpha = 1;
         }
 
+        // Render the regualr icon
         const iconOpacity = 1 - this.currentCompassOpacity;
         if (iconOpacity > 0.01) {
-            // Draw icon
             context.globalAlpha = iconOpacity;
             this.waypointSprite.drawCentered(context, dims / 2, dims / 2, dims * 0.7);
             context.globalAlpha = 1;
@@ -485,7 +543,8 @@ export class HUDWaypoints extends BaseHUDPart {
      * Draws the waypoints on the map
      * @param {DrawParameters} parameters
      */
-    draw(parameters) {
+    drawOverlays(parameters) {
+        const mousePos = this.root.app.mousePosition;
         const desiredOpacity = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
         this.currentMarkerOpacity = lerp(this.currentMarkerOpacity, desiredOpacity, 0.08);
 
@@ -496,61 +555,73 @@ export class HUDWaypoints extends BaseHUDPart {
             return;
         }
 
-        // Find waypoint below cursor
-        const selected = this.findCurrentIntersectedWaypoint();
-
         // Determine rendering scale
-        const scale = (1 / this.root.camera.zoomLevel) * this.root.app.getEffectiveUiScale();
+        const scale = this.getWaypointUiScale();
 
-        // Render all of 'em
+        // Set the font size
+        const textSize = this.getTextScale();
+        parameters.context.font = "bold " + textSize + "px GameFont";
+        parameters.context.textBaseline = "middle";
+
+        // Loop over all waypoints
         for (let i = 0; i < this.waypoints.length; ++i) {
             const waypoint = this.waypoints[i];
 
-            const pos = waypoint.center;
-            parameters.context.globalAlpha = this.currentMarkerOpacity * (selected === waypoint ? 1 : 0.7);
-
-            const yOffset = -5 * scale;
-            const originalLabel = this.getWaypointLabel(waypoint);
-            let renderLabel = originalLabel;
-            let isShapeIcon = false;
-
-            if (ShapeDefinition.isValidShortKey(originalLabel)) {
-                renderLabel = SHAPE_LABEL_PLACEHOLDER;
-                isShapeIcon = true;
+            const waypointData = this.getWaypointScreenParams(waypoint);
+            if (!waypointData) {
+                // Not relevant
+                continue;
             }
 
+            if (!parameters.visibleRect.containsRect(waypointData.screenBounds)) {
+                // Out of screen
+                continue;
+            }
+
+            const bounds = waypointData.screenBounds;
+            const contentPaddingX = 7 * scale;
+            const isSelected = mousePos && bounds.containsPoint(mousePos.x, mousePos.y);
+
             // Render the background rectangle
-            parameters.context.font = "bold " + 12 * scale + "px GameFont";
+            parameters.context.globalAlpha = this.currentMarkerOpacity * (isSelected ? 1 : 0.7);
             parameters.context.fillStyle = "rgba(255, 255, 255, 0.7)";
-            parameters.context.fillRect(
-                pos.x - 7 * scale,
-                pos.y - 12 * scale,
-                15 * scale + this.dummyBuffer.measureText(renderLabel).width / this.root.camera.zoomLevel,
-                15 * scale
-            );
+            parameters.context.fillRect(bounds.x, bounds.y, bounds.w, bounds.h);
 
             // Render the text
-            if (isShapeIcon) {
+            if (waypointData.item) {
                 const canvas = this.getWaypointCanvas(waypoint);
+                const itemSize = 14 * scale;
                 parameters.context.drawImage(
                     canvas,
-                    pos.x + 6 * scale,
-                    pos.y - 11.5 * scale,
-                    14 * scale,
-                    14 * scale
+                    bounds.x + contentPaddingX + 6 * scale,
+                    bounds.y + bounds.h / 2 - itemSize / 2,
+                    itemSize,
+                    itemSize
                 );
-            } else {
+            } else if (waypointData.text) {
                 // Render the text
                 parameters.context.fillStyle = "#000";
                 parameters.context.textBaseline = "middle";
-                parameters.context.fillText(renderLabel, pos.x + 6 * scale, pos.y + 0.5 * scale + yOffset);
+                parameters.context.fillText(
+                    waypointData.text,
+                    bounds.x + contentPaddingX + 6 * scale,
+                    bounds.y + bounds.h / 2
+                );
                 parameters.context.textBaseline = "alphabetic";
+            } else {
+                assertAlways(false, "Waypoint has no item and text");
             }
 
             // Render the small icon on the left
-            this.waypointSprite.drawCentered(parameters.context, pos.x, pos.y + yOffset, 10 * scale);
+            this.waypointSprite.drawCentered(
+                parameters.context,
+                bounds.x + contentPaddingX,
+                bounds.y + bounds.h / 2,
+                bounds.h * 0.7
+            );
         }
 
+        parameters.context.textBaseline = "alphabetic";
         parameters.context.globalAlpha = 1;
     }
 }

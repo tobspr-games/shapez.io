@@ -15,13 +15,17 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+
+    # This is the text shown above the Discord link
+    discordLink: Official Discord - Chat with me!
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -31,15 +35,16 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Upon delivering the requested shapes you'll progress within the game and unlock upgrades to speed up your factory.
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        As the demand for shapes increases, you'll have to scale up your factory to meet the demand - Don't forget about resources though, you'll have to expand across the [b]infinite map[/b]!
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Soon you'll have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with them to satisfy the demand.
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        This game features 18 progressive levels (Which should already keep you busy for hours!) but I'm constantly adding new content - There's a lot planned!
+
+        Purchasing the game gives you access to the standalone version which has additional features, and you'll also receive access to newly developed features.
 
         [b]Standalone Advantages[/b]
 
@@ -55,7 +60,7 @@ steamPage:
 
         [b]Future Updates[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        I am updating the game often and trying to push an update at least once every week!
 
         [list]
             [*] Different maps and challenges (e.g. maps with obstacles)
@@ -82,14 +87,15 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
-
 global:
     loading: Loading
     error: Error
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -135,11 +141,15 @@ demoBanners:
 
 mainMenu:
     play: Play
+    continue: Continue
+    newGame: New Game
     changelog: Changelog
+    subreddit: Reddit
     importSavegame: Import
     openSourceHint: This game is open source!
     discordLink: Official Discord Server
     helpTranslate: Help translate!
+    madeBy: Made by <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
@@ -147,12 +157,6 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
-
-
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
-    subreddit: Reddit
 
 dialogs:
     buttons:
@@ -163,7 +167,7 @@ dialogs:
         restart: Restart
         reset: Reset
         getStandalone: Get Standalone
-        deleteGame: I know what I do
+        deleteGame: I know what I am doing
         viewUpdate: View Update
         showUpgrades: Show Upgrades
         showKeybindings: Show Keybindings
@@ -212,11 +216,11 @@ dialogs:
 
     featureRestriction:
         title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider getting the standalone version for the full experience!
 
     oneSavegameLimit:
         title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone version!
 
     updateSummary:
         title: New update!
@@ -234,6 +238,16 @@ dialogs:
         desc: >-
             You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
 
+    massCutConfirm:
+        title: Confirm cut
+        desc: >-
+            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+
+    massCutInsufficientConfirm:
+        title: Confirm cut
+        desc: >-
+            You can not afford to paste this area! Are you sure you want to cut it?
+
     blueprintsNotUnlocked:
         title: Not unlocked yet
         desc: >-
@@ -250,26 +264,15 @@ dialogs:
 
     createMarker:
         title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
         titleEdit: Edit Marker
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
-    massCutConfirm:
-        title: Confirm cut
-        desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
 
     exportScreenshotWarning:
         title: Export screenshot
-        desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
-
-    massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -281,19 +284,31 @@ ingame:
         rotateBuilding: Rotate building
         placeMultiple: Place multiple
         reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
+        disableAutoOrientation: Disable auto-orientation
         toggleHud: Toggle HUD
         placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
+        createMarker: Create marker
+        delete: Delete
         pasteLastBlueprint: Paste last blueprint
         lockBeltDirection: Enable belt planner
         plannerSwitchSide: Flip planner side
         cutSelection: Cut
         copySelection: Copy
-        clearSelection: Clear Selection
+        clearSelection: Clear selection
         pipette: Pipette
         switchLayers: Switch layers
+
+    # Names of the colors, used for the color blind mode
+    colors:
+        red: Red
+        green: Green
+        blue: Blue
+        yellow: Yellow
+        purple: Purple
+        cyan: Cyan
+        white: White
+        black: Black
+        uncolored: Gray
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -389,6 +404,12 @@ ingame:
         description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
         creationSuccessNotification: Marker has been created.
 
+    # Shape viewer
+    shapeViewer:
+        title: Layers
+        empty: Empty
+        copyKey: Copy Key
+
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
@@ -399,21 +420,6 @@ ingame:
 
             1_3_expand: >-
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
-
-    colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
-        black: Black
-    shapeViewer:
-        title: Layers
-        empty: Empty
-        copyKey: Copy Key
 
 # All shop upgrades
 shopUpgrades:
@@ -442,7 +448,13 @@ buildings:
             name: &belt Conveyor Belt
             description: Transports items, hold and drag to place multiple.
 
-    miner: # Internal name for the Extractor
+    wire:
+        default:
+            name: &wire Energy Wire
+            description: Allows you to transport energy.
+
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Extractor
             description: Place over a shape or color to extract it.
@@ -451,16 +463,18 @@ buildings:
             name: Extractor (Chain)
             description: Place over a shape or color to extract it. Can be chained.
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            description: Allows you to tunnel resources under buildings and belts.
 
         tier2:
             name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            description: Allows you to tunnel resources under buildings and belts.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Balancer
             description: Multifunctional - Evenly distributes all inputs onto all outputs.
@@ -476,10 +490,15 @@ buildings:
     cutter:
         default:
             name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
         quad:
             name: Cutter (Quad)
             description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
+
+    advanced_processor:
+        default:
+            name: &advanced_processor Color Inverter
+            description: Accepts a color or shape and inverts it.
 
     rotater:
         default:
@@ -487,7 +506,10 @@ buildings:
             description: Rotates shapes clockwise by 90 degrees.
         ccw:
             name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            description: Rotates shapes counter-clockwise by 90 degrees.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -503,15 +525,17 @@ buildings:
         default:
             name: &painter Painter
             description: &painter_desc Colors the whole shape on the left input with the color from the top input.
+
+        mirrored:
+            name: *painter
+            description: *painter_desc
+
         double:
             name: Painter (Double)
             description: Colors the shapes on the left inputs with the color from the top input.
         quad:
             name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
-        mirrored:
-            name: *painter
-            description: *painter_desc
+            description: Allows you to color each quadrant of the shape with a different color.
 
     trash:
         default:
@@ -521,24 +545,22 @@ buildings:
         storage:
             name: Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
-    wire:
-        default:
-            name: Energy Wire
-            description: Allows you to transport energy.
-    advanced_processor:
-        default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+
     energy_generator:
         deliver: Deliver
+
+        # This will be shown before the amount, so for example 'For 123 Energy'
         toGenerateEnergy: For
+
         default:
-            name: Energy Generator
+            name: &energy_generator Energy Generator
             description: Generates energy by consuming shapes.
+
     wire_crossings:
         default:
-            name: Wire Splitter
+            name: &wire_crossings Wire Splitter
             description: Splits a energy wire into two.
+
         merger:
             name: Wire Merger
             description: Merges two energy wires into one.
@@ -556,7 +578,7 @@ storyRewards:
     reward_painter:
         title: Painting
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>colorblind mode</strong> in the settings!
 
     reward_mixer:
         title: Color Mixing
@@ -576,7 +598,7 @@ storyRewards:
 
     reward_rotater_ccw:
         title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows you to rotate shapes counter-clockwise! To build it, select the rotater and <strong>press 'T' to cycle through its variants</strong>!
 
     reward_miner_chainable:
         title: Chaining Extractor
@@ -589,7 +611,7 @@ storyRewards:
     reward_splitter_compact:
         title: Compact Balancer
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
 
     reward_cutter_quad:
         title: Quad Cutting
@@ -601,11 +623,11 @@ storyRewards:
 
     reward_painter_quad:
         title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        desc: You have unlocked a variant of the <strong>painter</strong> - It allows you to paint each part of the shape individually!
 
     reward_storage:
         title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        desc: You have unlocked a variant of the <strong>trash</strong> - It allows you to store items up to a given capacity!
 
     reward_freeplay:
         title: Freeplay
@@ -629,8 +651,9 @@ storyRewards:
 settings:
     title: Settings
     categories:
-        game: Game
-        app: Application
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Development
@@ -642,13 +665,26 @@ settings:
         uiScale:
             title: Interface scale
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                Changes the size of the user interface. The interface will still scale based on your device's resolution, but this setting controls the amount of scaling.
             scales:
                 super_small: Super small
                 small: Small
                 regular: Regular
                 large: Large
                 huge: Huge
+
+        autosaveInterval:
+            title: Autosave Interval
+            description: >-
+                Controls how often the game saves automatically. You can also disable it entirely here.
+
+            intervals:
+                one_minute: 1 Minute
+                two_minutes: 2 Minutes
+                five_minutes: 5 Minutes
+                ten_minutes: 10 Minutes
+                twenty_minutes: 20 Minutes
+                disabled: Disabled
 
         scrollWheelSensitivity:
             title: Zoom sensitivity
@@ -661,10 +697,27 @@ settings:
                 fast: Fast
                 super_fast: Super fast
 
+        movementSpeed:
+            title: Movement speed
+            description: >-
+                Changes how fast the view moves when using the keyboard.
+            speeds:
+                super_slow: Super slow
+                slow: Slow
+                regular: Regular
+                fast: Fast
+                super_fast: Super Fast
+                extremely_fast: Extremely Fast
+
         language:
             title: Language
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Change the language. All translations are user-contributed and might be incomplete!
+
+        enableColorBlindHelper:
+            title: Color Blind Mode
+            description: >-
+                Enables various tools which allow you to play the game if you are color blind.
 
         fullscreen:
             title: Fullscreen
@@ -702,63 +755,32 @@ settings:
         offerHints:
             title: Hints & Tutorials
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                Whether to offer hints and tutorials while playing. Also hides certain UI elements up to a given level to make it easier to get into the game.
 
-        movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
-            speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
         enableTunnelSmartplace:
             title: Smart Tunnels
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables you to drag tunnels and excess tunnels will get removed.
+
         vignette:
             title: Vignette
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Enables the vignette, which darkens the screen corners and makes text easier to read.
 
-        autosaveInterval:
-            title: Autosave Interval
+        rotationByBuilding:
+            title: Rotation by building type
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
-            intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
 
         compactBuildingInfo:
             title: Compact Building Infos
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Shortens info boxes for buildings by only showing their ratios. Otherwise a description and image is shown.
 
         disableCutDeleteWarnings:
             title: Disable Cut/Delete Warnings
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
-
-        enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
-        rotationByBuilding:
-            title: Rotation by building type
-            description: >-
-                Each building type remembers the rotation you last set it to individually.
-                This may be more comfortable if you frequently switch between placing
-                different building types.
+                Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
 
 keybindings:
     title: Keybindings
@@ -783,6 +805,7 @@ keybindings:
         mapMoveRight: Move Right
         mapMoveDown: Move Down
         mapMoveLeft: Move Left
+        mapMoveFaster: Move Faster
         centerMap: Center Map
 
         mapZoomIn: Zoom in
@@ -791,66 +814,59 @@ keybindings:
 
         menuOpenShop: Upgrades
         menuOpenStats: Statistics
+        menuClose: Close Menu
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
+        switchLayers: Switch layers
+        exportScreenshot: Export whole Base as Image
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
         miner: *miner
         cutter: *cutter
+        advanced_processor: *advanced_processor
         rotater: *rotater
         stacker: *stacker
         mixer: *mixer
+        energy_generator: *energy_generator
         painter: *painter
         trash: *trash
+        wire: *wire
 
+        pipette: Pipette
         rotateWhilePlacing: Rotate
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
+        confirmMassDelete: Delete area
+        pasteLastBlueprint: Paste last blueprint
         cycleBuildings: Cycle Buildings
+        lockBeltDirection: Enable belt planner
+        switchDirectionLockSide: >-
+            Planner: Switch side
 
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area
+        massSelectCut: Cut area
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
         placeInverse: Invert automatic belt orientation
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
-        pipette: Pipette
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
 
 about:
     title: About this Game
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on GitHub</a>.<br><br>
 
-        This game wouldn't have been possible without the great discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        This game wouldn't have been possible without the great Discord community around my games - You should really join the <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our Factorio sessions, this game would never have existed.
 
 changelog:
     title: Changelog

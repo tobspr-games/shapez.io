@@ -1,7 +1,7 @@
-import { gItemRegistry } from "../../core/global_registries";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
@@ -11,15 +11,34 @@ export const enumItemProcessorTypes = {
     cutterQuad: "cutterQuad",
     rotater: "rotater",
     rotaterCCW: "rotaterCCW",
+    rotaterFL: "rotaterFL",
     stacker: "stacker",
     trash: "trash",
     mixer: "mixer",
     painter: "painter",
     painterDouble: "painterDouble",
     painterQuad: "painterQuad",
-    advancedProcessor: "advancedProcessor",
     hub: "hub",
+    filter: "filter",
+    reader: "reader",
 };
+
+/** @enum {string} */
+export const enumItemProcessorRequirements = {
+    painterQuad: "painterQuad",
+    filter: "filter",
+};
+
+/** @typedef {{
+ *  item: BaseItem,
+ *  requiredSlot?: number,
+ *  preferredSlot?: number
+ * }} EjectorItemToEject */
+
+/** @typedef {{
+ *  remainingTime: number,
+ *  items: Array<EjectorItemToEject>,
+ * }} EjectorCharge */
 
 export class ItemProcessorComponent extends Component {
     static getId() {
@@ -29,29 +48,13 @@ export class ItemProcessorComponent extends Component {
     static getSchema() {
         return {
             nextOutputSlot: types.uint,
-            type: types.enum(enumItemProcessorTypes),
-            inputsPerCharge: types.uint,
-
-            inputSlots: types.array(
-                types.structured({
-                    item: types.obj(gItemRegistry),
-                    sourceSlot: types.uint,
-                })
-            ),
-            itemsToEject: types.array(
-                types.structured({
-                    item: types.obj(gItemRegistry),
-                    requiredSlot: types.nullable(types.uint),
-                    preferredSlot: types.nullable(types.uint),
-                })
-            ),
-            secondsUntilEject: types.float,
         };
     }
 
     duplicateWithoutContents() {
         return new ItemProcessorComponent({
             processorType: this.type,
+            processingRequirement: this.processingRequirement,
             inputsPerCharge: this.inputsPerCharge,
         });
     }
@@ -60,10 +63,15 @@ export class ItemProcessorComponent extends Component {
      *
      * @param {object} param0
      * @param {enumItemProcessorTypes=} param0.processorType Which type of processor this is
+     * @param {enumItemProcessorRequirements=} param0.processingRequirement Applied processing requirement
      * @param {number=} param0.inputsPerCharge How many items this machine needs until it can start working
      *
      */
-    constructor({ processorType = enumItemProcessorTypes.splitter, inputsPerCharge = 1 }) {
+    constructor({
+        processorType = enumItemProcessorTypes.splitter,
+        processingRequirement = null,
+        inputsPerCharge = 1,
+    }) {
         super();
 
         // Which slot to emit next, this is only a preference and if it can't emit
@@ -73,6 +81,9 @@ export class ItemProcessorComponent extends Component {
 
         // Type of the processor
         this.type = processorType;
+
+        // Type of processing requirement
+        this.processingRequirement = processingRequirement;
 
         // How many inputs we need for one charge
         this.inputsPerCharge = inputsPerCharge;
@@ -87,14 +98,15 @@ export class ItemProcessorComponent extends Component {
          * What we are currently processing, empty if we don't produce anything rn
          * requiredSlot: Item *must* be ejected on this slot
          * preferredSlot: Item *can* be ejected on this slot, but others are fine too if the one is not usable
-         * @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>}
+         * @type {Array<EjectorCharge>}
          */
-        this.itemsToEject = [];
+        this.ongoingCharges = [];
 
         /**
-         * How long it takes until we are done with the current items
+         * How much processing time we have left from the last tick
+         * @type {number}
          */
-        this.secondsUntilEject = 0;
+        this.bonusTime = 0;
     }
 
     /**

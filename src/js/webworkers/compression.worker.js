@@ -1,6 +1,7 @@
-import { compressX64 } from "../core/lzstring";
 import { globalConfig } from "../core/config";
-import { sha1 } from "../core/sensitive_utils.encrypt";
+import { compressX64 } from "../core/lzstring";
+import { computeCrc } from "../core/sensitive_utils.encrypt";
+import { compressObject } from "../savegame/savegame_compressor";
 
 function accessNestedPropertyReverse(obj, keys) {
     let result = obj;
@@ -12,25 +13,27 @@ function accessNestedPropertyReverse(obj, keys) {
 
 const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
 
-onmessage = function (event) {
+self.addEventListener("message", event => {
+    // @ts-ignore
     const { jobId, job, data } = event.data;
     const result = performJob(job, data);
 
     // @ts-ignore
-    postMessage({
-        jobId,
-        result,
-    });
-};
+    self.postMessage({ jobId, result });
+});
 
 function performJob(job, data) {
     switch (job) {
         case "compressX64": {
             return compressX64(data);
         }
-        case "compressFile": {
-            const checksum = sha1(data.text + salt);
-            return data.compressionPrefix + compressX64(checksum + data.text);
+
+        case "compressObject": {
+            const optimized = compressObject(data.obj);
+            const stringified = JSON.stringify(optimized);
+
+            const checksum = computeCrc(stringified + salt);
+            return data.compressionPrefix + compressX64(checksum + stringified);
         }
         default:
             throw new Error("Webworker: Unknown job: " + job);

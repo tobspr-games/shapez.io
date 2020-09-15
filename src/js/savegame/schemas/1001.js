@@ -1,6 +1,7 @@
 import { SavegameInterface_V1000 } from "./1000.js";
 import { createLogger } from "../../core/logging.js";
 import { T } from "../../translations.js";
+import { TypeVector, TypeNumber, TypeString, TypeNullable } from "../serialization_data_types.js";
 
 const schema = require("./1001.json");
 
@@ -43,6 +44,25 @@ export class SavegameInterface_V1001 extends SavegameInterface_V1000 {
         for (let i = 0; i < entities.length; ++i) {
             const entity = entities[i];
 
+            /**
+             * @typedef {{
+             *   origin: TypeVector,
+             *   tileSize: TypeVector,
+             *   rotation: TypeNumber,
+             *   originalRotation: TypeNumber,
+             *   spriteKey?: string,
+             *   blueprintSpriteKey: string,
+             *   silhouetteColor: string
+             * }} OldStaticMapEntity
+             */
+
+            // Here we mock the old type of the StaticMapEntity before the change to using
+            // a building ID based system (see building_codes.js) to stop the linter from
+            // complaining that the type doesn't have the properties.
+            // The ignored error is the error that the types do not overlap.  In the case
+            // of a v1000 save though, the data will match the mocked type above.
+            /** @type OldStaticMapEntity **/
+            // @ts-ignore
             const staticComp = entity.components.StaticMapEntity;
             const beltComp = entity.components.Belt;
             if (staticComp) {

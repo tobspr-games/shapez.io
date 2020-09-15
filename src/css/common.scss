@@ -1,5 +1,4 @@
 // Common classes and style
-
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +13,6 @@ body {
     overflow: hidden;
     font-family: $mainFont;
     font-synthesis: none;
-
     position: fixed;
     top: 0;
     left: 0;
@@ -26,19 +24,15 @@ html {
     position: fixed;
     // scroll-behavior: smooth;
     background: $mainBgColor;
-
     // Disable zooming and thus
     -ms-touch-action: pan-x, pan-y;
     touch-action: pan-x, pan-y;
     -ms-content-zooming: none;
-
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-
     background: #dee1ea;
-
     @include DarkThemeOverride {
         background: $darkModeGameBackground;
     }
@@ -50,7 +44,6 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     background: inherit !important;
-
     text-transform: none;
     white-space: normal;
     word-break: normal;
@@ -66,16 +59,17 @@ body {
     scrollbar-width: 6px;
     -webkit-font-smoothing: antialiased;
     // -webkit-overflow-scrolling: touch; /* stop scrolling immediately */
-    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
-
+    -webkit-touch-callout: none;
+    /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;
+    /* prevent webkit from resizing text to fit */
     // Internet explorer
     scrollbar-face-color: #888;
     scrollbar-track-color: rgba(255, 255, 255, 0.1);
-
+    // Firefox
+    scrollbar-color: #cdd0d4 rgba(#000, 0.05);
     overflow: hidden;
     @include Text;
-
     &.externalAdOpen {
         &::before {
             text-transform: uppercase;
@@ -94,7 +88,6 @@ body {
             justify-content: center;
             align-items: center;
             color: #fff;
-
             @include InlineAnimation(1s ease-in-out infinite) {
                 50% {
                     transform: scale(1.05);
@@ -102,9 +95,7 @@ body {
             }
         }
     }
-
     // For recording the bg video
-
     // filter: blur(5px);
     // &::after {
     //   position: fixed;
@@ -119,20 +110,24 @@ body {
 }
 
 img {
-    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-touch-callout: none;
+    /* prevent callout to copy image, etc when tap to hold */
 }
 
 i {
     font-style: normal;
 }
+
 b,
 strong {
     font-weight: normal;
 }
+
 u,
 a {
     text-decoration: none;
 }
+
 input,
 textarea,
 select {
@@ -149,7 +144,6 @@ button {
     cursor: pointer;
     position: relative;
     @include TextShadow3D;
-
     &.prefab_BuyButtonWithResources {
         display: flex;
         box-sizing: border-box;
@@ -160,27 +154,23 @@ button {
         justify-content: center;
         align-items: center;
         @include S(width, 85px);
-
         &.tooExpensive {
             color: $colorRedBright;
             background-color: #555;
             cursor: default;
         }
-
         .cost_entry {
             display: flex;
             flex-grow: 1;
             justify-content: center;
             align-items: center;
         }
-
         b {
             display: flex;
             flex-grow: 1;
             justify-content: center;
             align-items: center;
         }
-
         &.tooExpensive {
             cursor: default !important;
             background-color: #565859 !important;
@@ -205,13 +195,12 @@ button {
     border: 0;
     background: $colorBlueBright;
     color: #fff;
-
+    @include S(border-radius, $globalBorderRadius);
     // border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
     @include S(border-bottom-width, 2px);
     // color: $accentColorDark;
     letter-spacing: 0.05em !important;
     // box-shadow: 0 #{D(1px)} #{D(2px)} 0 rgba(0, 10, 20, 0.2);
-
     .keybinding {
         @include S(bottom, -2.5px);
         @include S(right, -2px);
@@ -223,10 +212,13 @@ button {
 }
 
 ::selection {
-    background: $colorGreenBright; /* WebKit/Blink Browsers */
+    background: $colorGreenBright;
+    /* WebKit/Blink Browsers */
 }
+
 ::-moz-selection {
-    background: $colorGreenBright; /* Gecko Browsers */
+    background: $colorGreenBright;
+    /* Gecko Browsers */
 }
 
 input[type="text"],
@@ -241,35 +233,27 @@ input[type="email"] {
     background: lighten($mainBgColor, 8);
     color: #eee;
     text-align: left;
-
     user-select: text !important;
     pointer-events: all !important;
-
     @include Text;
     @include IncreasedClickArea(15px);
     @include S(border-radius, $globalBorderRadius);
-
     &::placeholder {
         color: #fff;
         opacity: 0.4;
     }
-
     transition: background-color 0.1s ease-in-out !important;
     @include TextShadow3D(#fff);
     @include BoxShadow3D(lighten($mainBgColor, 30));
-
     &:focus {
         @include BoxShadow3D(lighten($mainBgColor, 35));
     }
-
     &.errored {
         @include BoxShadow3D(mix(lighten($mainBgColor, 30), #f77, 25%));
-
         &:focus {
             @include BoxShadow3D(mix(lighten($mainBgColor, 50), #f77, 25%));
         }
     }
-
     &.input-token {
         @include SuperHeading;
         text-align: center;
@@ -315,13 +299,12 @@ input {
 
 canvas {
     pointer-events: all;
-    image-rendering: auto;
+    // image-rendering: pixelated;
     // &.smoothed {
-    // }
+    // }1
     // &.unsmoothed {
     // }
     letter-spacing: 0 !important;
-
     transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -345,6 +328,7 @@ canvas {
 
 ::-webkit-scrollbar-thumb {
     // border-radius: 4px;
+    @include S(border-radius, $globalBorderRadius);
     background: #cdd0d4;
 }
 
@@ -367,12 +351,12 @@ canvas {
     box-sizing: border-box;
 }
 
-.pressed {
-    transform: scale(0.95) !important;
+.pressed:not(.noPressEffect) {
+    transform: scale(0.98) !important;
     animation: none !important;
 }
 
-.pressedSmallElement {
+.pressedSmallElement:not(.noPressEffect) {
     transform: scale(0.88) !important;
     animation: none !important;
 }
@@ -400,13 +384,11 @@ canvas {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-
     @include Text;
     @include TextShadow3D;
     opacity: 1;
     z-index: 20;
     color: #393747;
-
     &::after {
         content: " ";
         background: uiResource("loading.svg") center center / contain no-repeat;
@@ -417,7 +399,6 @@ canvas {
         display: inline-block;
         vertical-align: middle;
     }
-
     @include DarkThemeOverride {
         color: #fff;
     }
@@ -439,7 +420,6 @@ canvas {
 
 .prefab_FeatureComingSoon {
     position: relative;
-
     &::after {
         @include S(top, -5px);
         @include S(left, -5px);
@@ -457,9 +437,7 @@ canvas {
         @include PlainText;
         text-transform: uppercase;
     }
-
     opacity: 0.6;
-
     > * {
         opacity: 0.5 !important;
     }
@@ -484,14 +462,12 @@ canvas {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
     .loadingImage {
         background: uiResource("loading.svg") center center / #{D(60px)} no-repeat;
         width: 100%;
         display: flex;
         flex-grow: 1;
     }
-
     .loadingStatus {
         position: absolute;
         @include S(left, 20px);
@@ -499,12 +475,10 @@ canvas {
         @include S(bottom, 30px);
         @include Text;
         @include TextShadow3D(#aaa);
-
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
         > .bar {
             display: none;
             @include S(margin-top, 15px);
@@ -513,7 +487,6 @@ canvas {
             position: relative;
             @include TextShadow3D(#fff);
             height: 2px;
-
             .inner {
                 position: absolute !important;
                 top: 0;
@@ -522,9 +495,7 @@ canvas {
                 z-index: 1;
                 @include BoxShadow3D($themeColor, $size: 1px);
                 @include S(border-radius, $globalBorderRadius);
-
                 transform-origin: 0% 50%;
-
                 @include InlineAnimation(1.3s ease-in-out infinite) {
                     0% {
                         background-color: darken($themeColor, 5);
@@ -540,7 +511,6 @@ canvas {
                     }
                 }
             }
-
             .status {
                 display: none;
                 position: relative;
@@ -575,11 +545,9 @@ canvas {
     &.loading {
         opacity: 0.2;
     }
-
     &:hover {
         background-color: darken($bgColor, 5);
     }
-
     .knob {
         @include S(width, 20px);
         @include S(height, 17px);
@@ -590,16 +558,57 @@ canvas {
         @include BorderRadius(20px);
         @include BoxShadow3D(#fff, $size: 1px);
     }
-
     &.checked {
         background-color: $themeColor;
         @include BoxShadow3D($themeColor, $size: 2px);
         .knob {
             @include S(margin-left, 15px);
         }
-
         &:hover {
             background-color: lighten($themeColor, 15);
+        }
+    }
+}
+
+.rangeInputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    label {
+        @include S(margin-right, 5px);
+        &,
+        & * {
+            @include PlainText;
+        }
+    }
+}
+
+input.rangeInput {
+    cursor: pointer;
+    background-color: transparent;
+    @include S(width, 100px);
+    @include S(height, 16px);
+
+    &::-webkit-slider-runnable-track {
+        background-color: darken($mainBgColor, 3);
+        color: darken($mainBgColor, 3);
+        // @include S(height, 16px);
+        @include S(border-radius, 8px);
+    }
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        -webkit-appearance: none;
+        box-shadow: inset 0 0 0 D(10px) $themeColor;
+        border-radius: 50%;
+
+        transition: box-shadow 0.3s;
+    }
+
+    &:hover {
+        &::-webkit-slider-thumb {
+            box-shadow: inset 0 0 0 D(10px) lighten($themeColor, 15);
         }
     }
 }
@@ -618,7 +627,6 @@ canvas {
         text-shadow: none !important;
         // font-family: Arial, sans-serif !important;
     }
-
     font-weight: bold;
     color: $accentColorDark;
     text-align: center;
@@ -634,7 +642,6 @@ canvas {
     @include S(height, 12px);
     overflow: hidden;
     border: #{D(0px)} solid $accentColorDark;
-
     .keybinding_space {
         @include S(font-size, 17px);
         @include S(line-height, 11px);
@@ -647,7 +654,6 @@ canvas {
     .xpaystation-widget-lightbox-overlay {
         background: rgba($mainBgColor, 0.94);
     }
-
     &,
     iframe {
         pointer-events: all;
@@ -660,7 +666,7 @@ iframe {
     user-select: all;
 }
 
-// Steam overlay fiy
+// Steam overlay fix
 #steamOverlayCanvasFix {
     position: fixed;
     top: 0px;
@@ -688,9 +694,7 @@ iframe {
     * {
         pointer-events: all;
     }
-
     background: rgba($mainBgColor, 0.94) !important;
-
     .cpmsvideoclosebanner {
         font-family: GameFont !important;
         font-size: 16px !important;

@@ -131,7 +131,8 @@ export class MapView extends BaseMap {
      * @param {DrawParameters} parameters
      */
     drawForeground(parameters) {
-        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundLayer);
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundDynamicLayer);
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundStaticLayer);
     }
 
     /**
@@ -140,23 +141,23 @@ export class MapView extends BaseMap {
      * @param {function} method
      */
     drawVisibleChunks(parameters, method) {
-        const cullRange = parameters.visibleRect.toTileCullRectangle();
+        const cullRange = parameters.visibleRect.allScaled(1 / globalConfig.tileSize);
         const top = cullRange.top();
         const right = cullRange.right();
         const bottom = cullRange.bottom();
         const left = cullRange.left();
 
-        const border = 1;
+        const border = 0;
         const minY = top - border;
         const maxY = bottom + border;
         const minX = left - border;
-        const maxX = right + border - 1;
+        const maxX = right + border;
 
         const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
         const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
 
-        const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
-        const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
+        const chunkEndX = Math.floor(maxX / globalConfig.mapChunkSize);
+        const chunkEndY = Math.floor(maxY / globalConfig.mapChunkSize);
 
         // Render y from top down for proper blending
         for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
@@ -168,14 +169,6 @@ export class MapView extends BaseMap {
     }
 
     /**
-     * Draws the wires background
-     * @param {DrawParameters} parameters
-     */
-    drawWiresLayer(parameters) {
-        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawWiresLayer);
-    }
-
-    /**
      * Draws the wires foreground
      * @param {DrawParameters} parameters
      */
@@ -184,19 +177,27 @@ export class MapView extends BaseMap {
     }
 
     /**
+     * Draws the map overlay
+     * @param {DrawParameters} parameters
+     */
+    drawOverlay(parameters) {
+        this.drawVisibleChunks(parameters, MapChunkView.prototype.drawOverlay);
+    }
+
+    /**
      * Draws the map background
      * @param {DrawParameters} parameters
      */
     drawBackground(parameters) {
-        // If not using prerendered, draw background
-        if (parameters.zoomLevel > globalConfig.mapChunkPrerenderMinZoom) {
-            if (!this.cachedBackgroundPattern) {
-                this.cachedBackgroundPattern = parameters.context.createPattern(
-                    this.cachedBackgroundCanvas,
-                    "repeat"
-                );
-            }
+        if (!this.cachedBackgroundPattern) {
+            this.cachedBackgroundPattern = parameters.context.createPattern(
+                this.cachedBackgroundCanvas,
+                "repeat"
+            );
+        }
 
+        // Render tile grid
+        if (!this.root.app.settings.getAllSettings().disableTileGrid) {
             const dpi = this.backgroundCacheDPI;
             parameters.context.scale(1 / dpi, 1 / dpi);
 
@@ -211,44 +212,5 @@ export class MapView extends BaseMap {
         }
 
         this.drawVisibleChunks(parameters, MapChunkView.prototype.drawBackgroundLayer);
-
-        if (G_IS_DEV && globalConfig.debug.showChunkBorders) {
-            const cullRange = parameters.visibleRect.toTileCullRectangle();
-            const top = cullRange.top();
-            const right = cullRange.right();
-            const bottom = cullRange.bottom();
-            const left = cullRange.left();
-
-            const border = 1;
-            const minY = top - border;
-            const maxY = bottom + border;
-            const minX = left - border;
-            const maxX = right + border - 1;
-
-            const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
-            const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
-
-            const chunkEndX = Math.ceil(maxX / globalConfig.mapChunkSize);
-            const chunkEndY = Math.ceil(maxY / globalConfig.mapChunkSize);
-
-            // Render y from top down for proper blending
-            for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
-                for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
-                    parameters.context.fillStyle = "#ffaaaa";
-                    parameters.context.fillRect(
-                        chunkX * globalConfig.mapChunkSize * globalConfig.tileSize,
-                        chunkY * globalConfig.mapChunkSize * globalConfig.tileSize,
-                        globalConfig.mapChunkSize * globalConfig.tileSize,
-                        3
-                    );
-                    parameters.context.fillRect(
-                        chunkX * globalConfig.mapChunkSize * globalConfig.tileSize,
-                        chunkY * globalConfig.mapChunkSize * globalConfig.tileSize,
-                        3,
-                        globalConfig.mapChunkSize * globalConfig.tileSize
-                    );
-                }
-            }
-        }
     }
 }

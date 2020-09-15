@@ -55,7 +55,7 @@
         opacity: 0;
         display: none;
         transform: translate(50%, 50%);
-        filter: blur(10px);
+        filter: blur(D(3px));
 
         $opacity: 0.2;
         &.loaded {
@@ -178,6 +178,10 @@
                     transform: translateX(50%) rotate(-7deg) scale(1.1);
                 }
             }
+
+            @include DarkThemeOverride {
+                color: $colorBlueBright;
+            }
         }
     }
 
@@ -200,33 +204,6 @@
         .standaloneBanner {
             flex-grow: 1;
             @include S(margin-bottom, 10px);
-        }
-
-        .contest {
-            flex-grow: 1;
-            background: rgb(32, 187, 166);
-            @include S(padding, 15px);
-
-            h3 {
-                @include Heading;
-                color: #fff;
-                font-weight: bold;
-                text-transform: uppercase;
-                @include S(margin-bottom, 5px);
-            }
-            p {
-                color: #fff;
-                @include Text;
-                strong {
-                    font-weight: bold;
-                }
-                @include S(margin-bottom, 5px);
-            }
-
-            button {
-                background: #fff;
-                color: #333538;
-            }
         }
     }
 
@@ -265,13 +242,15 @@
             @include S(min-width, 130px);
             @include S(padding, 15px, 20px);
             letter-spacing: 0.3em !important;
-
+            @include IncreasedClickArea(0px);
             font-weight: bold;
             color: #fff;
             background-color: $colorGreenBright;
-            transition: transform 0.12s ease-in-out;
+            transition: transform 0.12s ease-in-out, background-color 0.12s ease-in-out;
+
             &:hover {
-                transform: scale(1.02);
+                background-color: darken($colorGreenBright, 4);
+                opacity: 1;
             }
 
             &.continueButton {
@@ -281,9 +260,11 @@
 
         .importButton {
             @include S(margin-top, 15px);
+            @include IncreasedClickArea(0px);
         }
 
         .newGameButton {
+            @include IncreasedClickArea(0px);
             @include S(margin-top, 15px);
             @include S(margin-left, 15px);
         }
@@ -304,13 +285,13 @@
                 @include S(border-radius, $globalBorderRadius);
                 @include S(padding, 5px);
                 display: grid;
-                grid-template-columns: 1fr auto auto;
+                grid-template-columns: 1fr 1fr auto auto;
                 grid-template-rows: auto auto;
-                @include S(grid-column-gap, 5px);
-                @include S(grid-row-gap, 3px);
+                @include S(grid-column-gap, 4px);
+                @include S(grid-row-gap, 1px);
 
                 .playtime {
-                    grid-column: 1 / 2;
+                    grid-column: 2 / 3;
                     grid-row: 2 / 3;
                     @include SuperSmallText;
                     opacity: 0.5;
@@ -318,36 +299,50 @@
 
                 .level {
                     grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                    @include SuperSmallText;
+                    opacity: 0.5;
+                }
+
+                .name {
+                    grid-column: 1 / 3;
                     grid-row: 1 / 2;
                     @include PlainText;
+                    display: inline-flex;
+                    align-items: center;
+
+                    > span {
+                        display: inline-flex;
+                        @include S(max-width, 140px);
+                        overflow: hidden;
+                    }
                 }
 
                 button.resumeGame,
                 button.downloadGame,
-                button.deleteGame {
-                    grid-column: 3 / 4;
-                    grid-row: 1 / 3;
-                    @include S(width, 30px);
-                    @include S(height, 30px);
+                button.deleteGame,
+                button.renameGame {
                     padding: 0;
                     align-self: center;
+                    justify-self: center;
                     @include IncreasedClickArea(0px);
                     background: #44484a uiResource("icons/play.png") center center / 40% no-repeat;
                 }
 
                 button.downloadGame {
-                    grid-column: 2 / 3;
+                    grid-column: 3 / 4;
                     grid-row: 1 / 2;
+                    background-color: $colorBlueBright;
                     background-image: uiResource("icons/download.png");
                     @include S(width, 15px);
                     @include IncreasedClickArea(0px);
                     @include S(height, 15px);
-                    align-self: end;
                     background-size: 60%;
+                    align-self: start;
                 }
 
                 button.deleteGame {
-                    grid-column: 2 / 3;
+                    grid-column: 3 / 4;
                     grid-row: 2 / 3;
                     background-color: $colorRedBright;
                     @include IncreasedClickArea(0px);
@@ -356,6 +351,34 @@
                     @include S(height, 15px);
                     align-self: end;
                     background-size: 60%;
+                }
+
+                button.renameGame {
+                    background-color: transparent;
+                    @include IncreasedClickArea(2px);
+                    background-image: uiResource("icons/edit_key.png");
+                    @include S(width, 10px);
+                    @include S(height, 10px);
+                    align-self: center;
+                    justify-self: center;
+
+                    background-size: 90%;
+                    opacity: 0.25;
+                    @include S(margin-left, 4px);
+
+                    &:hover {
+                        opacity: 0.35;
+                    }
+
+                    @include DarkThemeInvert;
+                }
+
+                button.resumeGame {
+                    grid-column: 4 / 5;
+                    grid-row: 1 / 3;
+                    margin: 0;
+                    @include S(width, 32px);
+                    height: 100%;
                 }
             }
         }
@@ -370,7 +393,7 @@
         grid-template-columns: auto auto auto 1fr;
         @include S(padding, 10px);
         box-sizing: border-box;
-        @include S(grid-gap, 5px);
+        @include S(grid-gap, 4px);
 
         .author {
             flex-grow: 1;
@@ -390,7 +413,7 @@
             grid-template-columns: 1fr auto;
 
             justify-content: center;
-            background: #fdfdfd;
+            background: #fdfdfd uiResource("icons/link.png") top D(3px) right D(3px) / D(9px) no-repeat;
             @include S(padding, 5px);
             @include S(padding-left, 10px);
             @include S(border-radius, $globalBorderRadius);
@@ -401,15 +424,14 @@
             text-transform: uppercase;
             color: #616266;
 
-            transition: all 0.12s ease-in-out;
-            transition-property: background-color, transform;
+            transition: background-color 0.12s ease-in-out;
             pointer-events: all;
             @include S(width, 120px);
             @include S(height, 60px);
 
             cursor: pointer;
             &:hover {
-                background-color: #fff;
+                background-color: #f0f6ff;
             }
 
             .thirdpartyLogo {
@@ -432,7 +454,7 @@
             align-items: flex-start;
             justify-content: flex-start;
             grid-template-rows: 1fr 1fr 1fr;
-            @include S(grid-gap, 2px);
+            @include S(grid-gap, 3px);
             @include S(height, 60px);
 
             > a {
@@ -441,7 +463,7 @@
                 height: 100%;
 
                 &:hover {
-                    background-color: #fff;
+                    background-color: #f0f6ff;
                 }
                 @include SuperSmallText;
                 text-transform: uppercase;
@@ -457,6 +479,9 @@
                 background-position: #{D(5px)} center;
                 background-size: #{D(12px)};
                 background-repeat: no-repeat;
+                @include S(border-radius, $globalBorderRadius);
+
+                transition: background-color 0.12s ease-in-out;
 
                 &.redditLink {
                     background-image: uiResource("main_menu/reddit.svg");

@@ -15,7 +15,7 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
@@ -45,6 +45,7 @@
 # Painter：上色機
 # Trash：垃圾桶
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io 是一款在一個無邊際的地圖上建造工廠、自動化生產與組合愈加複雜圖形的遊戲。
@@ -56,50 +57,50 @@ steamPage:
     # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+        shapez.io 是一款在一個無邊無際的地圖上建造工廠、將生產與組合愈加複雜圖形自動化的遊戲。
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        在指定圖形送達基地後，你會晉級且解鎖能加速生產的新功能。
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        當指定圖形的數量增加時，你必須擴充你的工廠才能應付訂單 -- 但別忘記資源，你需要在[b]無邊無際的地圖[/b]上擴充。
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        不久後你將需要混色並為圖形上色 -- 混和紅、綠、藍以創造新顏色再將圖形上色來達成目標。
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        遊戲目前有十八關(應該也夠你忙一陣子了)，而我還有很多計畫，持續更新中!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        購買獨立版的你即擁有額外內容，也會優先接觸新開發內容。
 
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
+        [b]獨立版的額外內容[/b]
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] 深色主題
+            [*] 地圖標記數量無限制
+            [*] 存檔數量無限制
+            [*] 更多設定
+            [*] 即將到來: 電線與能源! 目標在2020年七月底(左右)問世。
+            [*] 即將到來: 更多新關卡
+            [*] 幫助我繼續開發 shapez.io ❤️
         [/list]
 
-        [b]This game is open source![/b]
+        [b]未來更新[/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        我時常更新遊戲，希望能周更!
 
-        [b]Links[/b]
+        [list]
+            [*] 不同的地圖與挑戰(像是有障礙物的地圖)
+            [*] 迷宮(在地圖受限制或只能使用特定建築的情況下送達圖形)
+            [*] 一個蓋建築物需要成本的故事模式
+            [*] 可調控的地圖生成器(資源/圖形/密度可調整、隨機生成種子等等)
+            [*] 更多圖形種類
+            [*] 遊戲效能提升(即使目前已經不錯了)
+            [*] 還有更多更多!
+        [/list]
+
+        [b]這個遊戲是開源的![/b]
+
+        任何人都可以貢獻，我在社群裡很活耀、嘗試回復所有的建議並盡量參考大家的意見。
+        欲知詳情，別忘了造訪我的 Trello 喔!
+
+        [b]連結[/b]
 
         [list]
             [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
@@ -117,6 +118,9 @@ global:
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
@@ -174,7 +178,6 @@ mainMenu:
 
     savegameLevel: Level <x>
     savegameLevelUnknown: 未知關卡
-
 
     continue: 繼續
     newGame: 新遊戲
@@ -510,6 +513,9 @@ buildings:
         ccw:
             name: 旋轉機（逆時針）
             description: 將圖形逆時針旋轉90度。
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -655,8 +661,9 @@ storyRewards:
 settings:
     title: 設置
     categories:
-        game: 遊戲內容
-        app: 應用
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: 開發版本 # Development

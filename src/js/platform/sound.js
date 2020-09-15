@@ -28,7 +28,7 @@ export const SOUNDS = {
 };
 
 export const MUSIC = {
-    theme: "theme",
+    theme: G_IS_STANDALONE ? "theme-full" : "theme-short",
     menu: "menu",
 };
 
@@ -61,7 +61,11 @@ export class MusicInstanceInterface {
         abstract;
     }
 
-    play() {
+    play(volume) {
+        abstract;
+    }
+
+    setVolume(volume) {
         abstract;
     }
 
@@ -99,8 +103,8 @@ export class SoundInterface {
 
         this.pageIsVisible = true;
 
-        this.musicMuted = false;
-        this.soundsMuted = false;
+        this.musicVolume = 1.0;
+        this.soundVolume = 1.0;
     }
 
     /**
@@ -120,11 +124,11 @@ export class SoundInterface {
             this.music[musicPath] = music;
         }
 
-        this.musicMuted = this.app.settings.getAllSettings().musicMuted;
-        this.soundsMuted = this.app.settings.getAllSettings().soundsMuted;
+        this.musicVolume = this.app.settings.getAllSettings().musicVolume;
+        this.soundVolume = this.app.settings.getAllSettings().soundVolume;
 
         if (G_IS_DEV && globalConfig.debug.disableMusic) {
-            this.musicMuted = true;
+            this.musicVolume = 0.0;
         }
 
         return Promise.resolve();
@@ -162,44 +166,38 @@ export class SoundInterface {
     }
 
     /**
-     * Returns if the music is muted
-     * @returns {boolean}
+     * Returns the music volume
+     * @returns {number}
      */
-    getMusicMuted() {
-        return this.musicMuted;
+    getMusicVolume() {
+        return this.musicVolume;
     }
 
     /**
-     * Returns if sounds are muted
-     * @returns {boolean}
+     * Returns the sound volume
+     * @returns {number}
      */
-    getSoundsMuted() {
-        return this.soundsMuted;
+    getSoundVolume() {
+        return this.soundVolume;
     }
 
     /**
-     * Sets if the music is muted
-     * @param {boolean} muted
+     * Sets the music volume
+     * @param {number} volume
      */
-    setMusicMuted(muted) {
-        this.musicMuted = muted;
-        if (this.musicMuted) {
-            if (this.currentMusic) {
-                this.currentMusic.stop();
-            }
-        } else {
-            if (this.currentMusic) {
-                this.currentMusic.play();
-            }
+    setMusicVolume(volume) {
+        this.musicVolume = clamp(volume, 0, 1);
+        if (this.currentMusic) {
+            this.currentMusic.setVolume(this.musicVolume);
         }
     }
 
     /**
-     * Sets if the sounds are muted
-     * @param {boolean} muted
+     * Sets the sound volume
+     * @param {number} volume
      */
-    setSoundsMuted(muted) {
-        this.soundsMuted = muted;
+    setSoundVolume(volume) {
+        this.soundVolume = clamp(volume, 0, 1);
     }
 
     /**
@@ -210,8 +208,8 @@ export class SoundInterface {
         this.pageIsVisible = pageIsVisible;
         if (this.currentMusic) {
             if (pageIsVisible) {
-                if (!this.currentMusic.isPlaying() && !this.musicMuted) {
-                    this.currentMusic.play();
+                if (!this.currentMusic.isPlaying()) {
+                    this.currentMusic.play(this.musicVolume);
                 }
             } else {
                 this.currentMusic.stop();
@@ -223,14 +221,11 @@ export class SoundInterface {
      * @param {string} key
      */
     playUiSound(key) {
-        if (this.soundsMuted) {
-            return;
-        }
         if (!this.sounds[key]) {
             logger.warn("Sound", key, "not found, probably not loaded yet");
             return;
         }
-        this.sounds[key].play(1.0);
+        this.sounds[key].play(this.soundVolume);
     }
 
     /**
@@ -244,7 +239,7 @@ export class SoundInterface {
             logger.warn("Music", key, "not found, probably not loaded yet");
             return;
         }
-        if (!this.pageIsVisible || this.soundsMuted) {
+        if (!this.pageIsVisible) {
             return;
         }
 
@@ -253,9 +248,9 @@ export class SoundInterface {
             return;
         }
 
-        let volume = 1.0;
+        let volume = this.soundVolume;
         if (!root.camera.isWorldPointOnScreen(worldPosition)) {
-            volume = 0.2;
+            volume = this.soundVolume / 5; // In the old implementation this value was fixed to 0.2 => 20% of 1.0
         }
         volume *= clamp(root.camera.zoomLevel / 3);
         this.sounds[key].play(clamp(volume));
@@ -275,9 +270,9 @@ export class SoundInterface {
                 this.currentMusic.stop();
             }
             this.currentMusic = music;
-            if (music && this.pageIsVisible && !this.musicMuted) {
+            if (music && this.pageIsVisible) {
                 logger.log("Starting", this.currentMusic.key);
-                music.play();
+                music.play(this.musicVolume);
             }
         }
     }

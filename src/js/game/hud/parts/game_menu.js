@@ -1,10 +1,9 @@
 import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv, randomInt } from "../../../core/utils";
+import { makeDiv } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
 import { enumNotificationType } from "./notifications";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { IS_DEMO } from "../../../core/config";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
 export class HUDGameMenu extends BaseHUDPart {
@@ -89,19 +88,13 @@ export class HUDGameMenu extends BaseHUDPart {
 
         const menuButtons = makeDiv(this.element, null, ["menuButtons"]);
 
-        this.musicButton = makeDiv(menuButtons, null, ["button", "music"]);
-        this.sfxButton = makeDiv(menuButtons, null, ["button", "sfx"]);
         this.saveButton = makeDiv(menuButtons, null, ["button", "save", "animEven"]);
         this.settingsButton = makeDiv(menuButtons, null, ["button", "settings"]);
 
-        this.trackClicks(this.musicButton, this.toggleMusic);
-        this.trackClicks(this.sfxButton, this.toggleSfx);
         this.trackClicks(this.saveButton, this.startSave);
         this.trackClicks(this.settingsButton, this.openSettings);
-
-        this.musicButton.classList.toggle("muted", this.root.app.settings.getAllSettings().musicMuted);
-        this.sfxButton.classList.toggle("muted", this.root.app.settings.getAllSettings().soundsMuted);
     }
+
     initialize() {
         this.root.signals.gameSaved.add(this.onGameSaved, this);
     }
@@ -112,7 +105,7 @@ export class HUDGameMenu extends BaseHUDPart {
 
         // Update visibility of buttons
         for (let i = 0; i < this.visibilityToUpdate.length; ++i) {
-            const { button, condition, domAttach } = this.visibilityToUpdate[i];
+            const { condition, domAttach } = this.visibilityToUpdate[i];
             domAttach.update(condition());
         }
 
@@ -172,18 +165,5 @@ export class HUDGameMenu extends BaseHUDPart {
 
     openSettings() {
         this.root.hud.parts.settingsMenu.show();
-    }
-
-    toggleMusic() {
-        const newValue = !this.root.app.settings.getAllSettings().musicMuted;
-        this.root.app.settings.updateSetting("musicMuted", newValue);
-
-        this.musicButton.classList.toggle("muted", newValue);
-    }
-
-    toggleSfx() {
-        const newValue = !this.root.app.settings.getAllSettings().soundsMuted;
-        this.root.app.settings.updateSetting("soundsMuted", newValue);
-        this.sfxButton.classList.toggle("muted", newValue);
     }
 }

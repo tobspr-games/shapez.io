@@ -55,6 +55,7 @@
         .dialogInner {
             opacity: 1;
         }
+        backdrop-filter: blur(D(3px));
     }
 
     .dialogInner {

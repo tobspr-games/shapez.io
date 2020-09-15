@@ -1,11 +1,19 @@
 import { InputReceiver } from "../../../core/input_receiver";
-import { makeButton, makeDiv, removeAllChildren, capitalizeFirstLetter } from "../../../core/utils";
+import { makeButton, makeDiv, removeAllChildren } from "../../../core/utils";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { enumAnalyticsDataSource } from "../../production_analytics";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumDisplayMode, HUDShapeStatisticsHandle } from "./statistics_handle";
 import { T } from "../../../translations";
+
+/**
+ * Capitalizes the first letter
+ * @param {string} str
+ */
+function capitalizeFirstLetter(str) {
+    return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase();
+}
 
 export class HUDStatistics extends BaseHUDPart {
     createElements(parent) {
@@ -39,9 +47,11 @@ export class HUDStatistics extends BaseHUDPart {
             this.trackClicks(button, () => this.setDataSource(dataSource));
         }
 
+        const buttonDisplaySorted = makeButton(this.filtersDisplayMode, ["displaySorted"]);
         const buttonDisplayDetailed = makeButton(this.filtersDisplayMode, ["displayDetailed"]);
         const buttonDisplayIcons = makeButton(this.filtersDisplayMode, ["displayIcons"]);
 
+        this.trackClicks(buttonDisplaySorted, () => this.toggleSorted());
         this.trackClicks(buttonDisplayIcons, () => this.setDisplayMode(enumDisplayMode.icons));
         this.trackClicks(buttonDisplayDetailed, () => this.setDisplayMode(enumDisplayMode.detailed));
 
@@ -72,6 +82,21 @@ export class HUDStatistics extends BaseHUDPart {
         }
     }
 
+    /**
+     * @param {boolean} sorted
+     */
+    setSorted(sorted) {
+        this.sorted = sorted;
+        this.dialogInner.setAttribute("data-sorted", String(sorted));
+        if (this.visible) {
+            this.rerenderFull();
+        }
+    }
+
+    toggleSorted() {
+        this.setSorted(!this.sorted);
+    }
+
     initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
@@ -87,6 +112,7 @@ export class HUDStatistics extends BaseHUDPart {
         /** @type {Object.<string, HUDShapeStatisticsHandle>} */
         this.activeHandles = {};
 
+        this.setSorted(true);
         this.setDataSource(enumAnalyticsDataSource.produced);
         this.setDisplayMode(enumDisplayMode.detailed);
 
@@ -175,7 +201,22 @@ export class HUDStatistics extends BaseHUDPart {
             }
         }
 
-        entries.sort((a, b) => b[1] - a[1]);
+        const pinnedShapes = this.root.hud.parts.pinnedShapes;
+
+        entries.sort((a, b) => {
+            const aPinned = pinnedShapes.isShapePinned(a[0]);
+            const bPinned = pinnedShapes.isShapePinned(b[0]);
+
+            if (aPinned !== bPinned) {
+                return aPinned ? -1 : 1;
+            }
+
+            // Sort by shape key for some consistency
+            if (!this.sorted || b[1] == a[1]) {
+                return b[0].localeCompare(a[0]);
+            }
+            return b[1] - a[1];
+        });
 
         let rendered = new Set();
 

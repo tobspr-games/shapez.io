@@ -15,10 +15,11 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io on peli tehtaiden rakentamisesta, joiden avulla automatisoidaan yhä monimutkaisempien muotojen luonti and yhdisteleminen loputtomassa maailmassa.
@@ -91,6 +92,9 @@ global:
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
 
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
+
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: k
@@ -151,8 +155,6 @@ mainMenu:
 
     savegameLevel: Taso <x>
     savegameLevelUnknown: Tuntematon Taso
-
-
 
 dialogs:
     buttons:
@@ -498,6 +500,9 @@ buildings:
         ccw:
             name: Rotate (Vastapäivään)
             description: Kääntää muotoja 90 astetta vastapäivään.
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -637,8 +642,9 @@ storyRewards:
 settings:
     title: Asetukset
     categories:
-        game: Peli
-        app: Sovellus
+        general: General
+        userInterface: User Interface
+        advanced: Advanced
 
     versionBadges:
         dev: Kehitys
@@ -847,7 +853,7 @@ about:
 
         Jos haluat osallistua, tarkista <a href="<githublink>" target="_blank">shapez.io githubissa</a>.<br><br>
 
-        Tämä peli ei olisi ollut mahdollinen ilman suurta discord yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">discord palvelimelleni</a>!<br><br>
+        Tämä peli ei olisi ollut mahdollinen ilman suurta Discord yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
 
         Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on mahtava.<br><br>
 

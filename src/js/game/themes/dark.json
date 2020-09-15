@@ -9,6 +9,8 @@
         "selectionOutline": "rgba(74, 163, 223, 0.5)",
         "selectionBackground": "rgba(74, 163, 223, 0.2)",
 
+        "chunkBorders": "rgba(127, 190, 255, 0.04)",
+
         "directionLock": {
             "regular": {
                 "color": "rgb(74, 237, 134)",
@@ -34,9 +36,16 @@
         },
 
         "wires": {
-            "pins": {
-                "energyEjector": "#c425d7"
-            }
+            "overlayColor": "rgba(97, 161, 152, 0.75)",
+            "previewColor": "rgb(97, 161, 152, 0.5)",
+            "highlightColor": "rgba(0, 0, 255, 0.5)"
+        },
+
+        "connectedMiners": {
+            "overlay": "rgba(40, 50, 60, 0.5)",
+            "textColor": "#fff",
+            "textColorCapped": "#ef5072",
+            "background": "rgba(40, 50, 60, 0.8)"
         }
     },
 

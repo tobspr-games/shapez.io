@@ -1,11 +1,20 @@
-import { globalConfig } from "../../core/config";
-import { BaseItem, enumItemType } from "../base_item";
-import { enumColorMixingResults, enumInvertedColors } from "../colors";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { BaseItem } from "../base_item";
+import { enumColorMixingResults, enumColors } from "../colors";
+import {
+    enumItemProcessorRequirements,
+    enumItemProcessorTypes,
+    ItemProcessorComponent,
+} from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { ColorItem } from "../items/color_item";
+import { BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
+import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
+
+/**
+ * We need to allow queuing charges, otherwise the throughput will stall
+ */
+const MAX_QUEUED_CHARGES = 2;
 
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -19,69 +28,202 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const processorComp = entity.components.ItemProcessor;
             const ejectorComp = entity.components.ItemEjector;
 
-            // First of all, process the current recipe
-            processorComp.secondsUntilEject = Math.max(
-                0,
-                processorComp.secondsUntilEject - this.root.dynamicTickrate.deltaSeconds
-            );
+            const currentCharge = processorComp.ongoingCharges[0];
 
-            if (G_IS_DEV && globalConfig.debug.instantProcessors) {
-                processorComp.secondsUntilEject = 0;
-            }
+            if (currentCharge) {
+                // Process next charge
+                if (currentCharge.remainingTime > 0.0) {
+                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds;
+                    if (currentCharge.remainingTime < 0.0) {
+                        // Add bonus time, this is the time we spent too much
+                        processorComp.bonusTime += -currentCharge.remainingTime;
+                    }
+                }
 
-            // Check if we have any finished items we can eject
-            if (
-                processorComp.secondsUntilEject === 0 && // it was processed in time
-                processorComp.itemsToEject.length > 0 // we have some items left to eject
-            ) {
-                for (let itemIndex = 0; itemIndex < processorComp.itemsToEject.length; ++itemIndex) {
-                    const { item, requiredSlot, preferredSlot } = processorComp.itemsToEject[itemIndex];
+                // Check if it finished
+                if (currentCharge.remainingTime <= 0.0) {
+                    const itemsToEject = currentCharge.items;
 
-                    let slot = null;
-                    if (requiredSlot !== null && requiredSlot !== undefined) {
-                        // We have a slot override, check if that is free
-                        if (ejectorComp.canEjectOnSlot(requiredSlot)) {
-                            slot = requiredSlot;
-                        }
-                    } else if (preferredSlot !== null && preferredSlot !== undefined) {
-                        // We have a slot preference, try using it but otherwise use a free slot
-                        if (ejectorComp.canEjectOnSlot(preferredSlot)) {
-                            slot = preferredSlot;
+                    // Go over all items and try to eject them
+                    for (let j = 0; j < itemsToEject.length; ++j) {
+                        const { item, requiredSlot, preferredSlot } = itemsToEject[j];
+
+                        let slot = null;
+                        if (requiredSlot !== null && requiredSlot !== undefined) {
+                            // We have a slot override, check if that is free
+                            if (ejectorComp.canEjectOnSlot(requiredSlot)) {
+                                slot = requiredSlot;
+                            }
+                        } else if (preferredSlot !== null && preferredSlot !== undefined) {
+                            // We have a slot preference, try using it but otherwise use a free slot
+                            if (ejectorComp.canEjectOnSlot(preferredSlot)) {
+                                slot = preferredSlot;
+                            } else {
+                                slot = ejectorComp.getFirstFreeSlot();
+                            }
                         } else {
-                            slot = ejectorComp.getFirstFreeSlot(entity.layer);
+                            // We can eject on any slot
+                            slot = ejectorComp.getFirstFreeSlot();
                         }
-                    } else {
-                        // We can eject on any slot
-                        slot = ejectorComp.getFirstFreeSlot(entity.layer);
+
+                        if (slot !== null) {
+                            // Alright, we can actually eject
+                            if (!ejectorComp.tryEject(slot, item)) {
+                                assert(false, "Failed to eject");
+                            } else {
+                                itemsToEject.splice(j, 1);
+                                j -= 1;
+                            }
+                        }
                     }
 
-                    if (slot !== null) {
-                        // Alright, we can actually eject
-                        if (!ejectorComp.tryEject(slot, item)) {
-                            assert(false, "Failed to eject");
-                        } else {
-                            processorComp.itemsToEject.splice(itemIndex, 1);
-                            itemIndex -= 1;
-                        }
+                    // If the charge was entirely emptied to the outputs, start the next charge
+                    if (itemsToEject.length === 0) {
+                        processorComp.ongoingCharges.shift();
                     }
                 }
             }
 
             // Check if we have an empty queue and can start a new charge
-            if (processorComp.itemsToEject.length === 0) {
-                if (processorComp.inputSlots.length >= processorComp.inputsPerCharge) {
-                    const energyConsumerComp = entity.components.EnergyConsumer;
-                    if (energyConsumerComp) {
-                        // Check if we have enough energy
-                        if (energyConsumerComp.tryStartNextCharge()) {
-                            this.startNewCharge(entity);
-                        }
-                    } else {
-                        // No further checks required
-                        this.startNewCharge(entity);
-                    }
+            if (processorComp.ongoingCharges.length < MAX_QUEUED_CHARGES) {
+                if (this.canProcess(entity)) {
+                    this.startNewCharge(entity);
                 }
             }
+        }
+    }
+
+    /**
+     * Returns true if the entity should accept the given item on the given slot.
+     * This should only be called with matching items! I.e. if a color item is expected
+     * on the given slot, then only a color item must be passed.
+     * @param {Entity} entity
+     * @param {BaseItem} item The item to accept
+     * @param {number} slotIndex The slot index
+     * @returns {boolean}
+     */
+    checkRequirements(entity, item, slotIndex) {
+        const itemProcessorComp = entity.components.ItemProcessor;
+        const pinsComp = entity.components.WiredPins;
+
+        switch (itemProcessorComp.processingRequirement) {
+            case enumItemProcessorRequirements.painterQuad: {
+                if (slotIndex === 0) {
+                    // Always accept the shape
+                    return true;
+                }
+
+                // Check the network value at the given slot
+                const network = pinsComp.slots[slotIndex - 1].linkedNetwork;
+                const slotIsEnabled = network && isTruthyItem(network.currentValue);
+                if (!slotIsEnabled) {
+                    return false;
+                }
+                return true;
+            }
+
+            case enumItemProcessorRequirements.filter: {
+                const network = pinsComp.slots[0].linkedNetwork;
+                if (!network || !network.currentValue) {
+                    // Item filter is not connected
+                    return false;
+                }
+
+                // Otherwise, all good
+                return true;
+            }
+
+            // By default, everything is accepted
+            default:
+                return true;
+        }
+    }
+
+    /**
+     * Checks whether it's possible to process something
+     * @param {Entity} entity
+     */
+    canProcess(entity) {
+        const processorComp = entity.components.ItemProcessor;
+
+        switch (processorComp.processingRequirement) {
+            // DEFAULT
+            // By default, we can start processing once all inputs are there
+            case null: {
+                return processorComp.inputSlots.length >= processorComp.inputsPerCharge;
+            }
+
+            // QUAD PAINTER
+            // For the quad painter, it might be possible to start processing earlier
+            case enumItemProcessorRequirements.painterQuad: {
+                const pinsComp = entity.components.WiredPins;
+
+                /** @type {Object.<number, { item: BaseItem, sourceSlot: number }>} */
+                const itemsBySlot = {};
+                for (let i = 0; i < processorComp.inputSlots.length; ++i) {
+                    itemsBySlot[processorComp.inputSlots[i].sourceSlot] = processorComp.inputSlots[i];
+                }
+
+                // First slot is the shape, so if it's not there we can't do anything
+                if (!itemsBySlot[0]) {
+                    return false;
+                }
+
+                const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
+                const slotStatus = [];
+
+                // Check which slots are enabled
+                for (let i = 0; i < 4; ++i) {
+                    // Extract the network value on the Nth pin
+                    const networkValue = pinsComp.slots[i].linkedNetwork
+                        ? pinsComp.slots[i].linkedNetwork.currentValue
+                        : null;
+
+                    // If there is no "1" on that slot, don't paint there
+                    if (!isTruthyItem(networkValue)) {
+                        slotStatus.push(false);
+                        continue;
+                    }
+
+                    slotStatus.push(true);
+                }
+
+                // All slots are disabled
+                if (!slotStatus.includes(true)) {
+                    return false;
+                }
+
+                // Check if all colors of the enabled slots are there
+                for (let i = 0; i < slotStatus.length; ++i) {
+                    if (slotStatus[i] && !itemsBySlot[1 + i]) {
+                        // A slot which is enabled wasn't enabled. Make sure if there is anything on the quadrant,
+                        // it is not possible to paint, but if there is nothing we can ignore it
+                        for (let j = 0; j < 4; ++j) {
+                            const layer = shapeItem.definition.layers[j];
+                            if (layer && layer[i]) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+                return true;
+            }
+
+            // FILTER
+            // Double check with linked network
+            case enumItemProcessorRequirements.filter: {
+                const network = entity.components.WiredPins.slots[0].linkedNetwork;
+                if (!network || !network.currentValue) {
+                    // Item filter is not connected
+                    return false;
+                }
+
+                return processorComp.inputSlots.length >= processorComp.inputsPerCharge;
+            }
+
+            default:
+                assertAlways(false, "Unknown requirement for " + processorComp.processingRequirement);
         }
     }
 
@@ -101,9 +243,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         for (let i = 0; i < items.length; ++i) {
             itemsBySlot[items[i].sourceSlot] = items[i];
         }
-
-        const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        processorComp.secondsUntilEject = 1 / baseSpeed;
 
         /** @type {Array<{item: BaseItem, requiredSlot?: number, preferredSlot?: number}>} */
         const outItems = [];
@@ -142,7 +281,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     const definition = cutDefinitions[i];
                     if (!definition.isEntirelyEmpty()) {
                         outItems.push({
-                            item: new ShapeItem(definition),
+                            item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
                             requiredSlot: i,
                         });
                     }
@@ -163,7 +302,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     const definition = cutDefinitions[i];
                     if (!definition.isEntirelyEmpty()) {
                         outItems.push({
-                            item: new ShapeItem(definition),
+                            item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
                             requiredSlot: i,
                         });
                     }
@@ -180,12 +319,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCW(inputDefinition);
                 outItems.push({
-                    item: new ShapeItem(rotatedDefinition),
+                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
                 });
                 break;
             }
 
-            // ROTATER ( CCW)
+            // ROTATER (CCW)
             case enumItemProcessorTypes.rotaterCCW: {
                 const inputItem = /** @type {ShapeItem} */ (items[0].item);
                 assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
@@ -193,7 +332,20 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCCW(inputDefinition);
                 outItems.push({
-                    item: new ShapeItem(rotatedDefinition),
+                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
+                });
+                break;
+            }
+
+            // ROTATER (FL)
+            case enumItemProcessorTypes.rotaterFL: {
+                const inputItem = /** @type {ShapeItem} */ (items[0].item);
+                assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
+                const inputDefinition = inputItem.definition;
+
+                const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateFL(inputDefinition);
+                outItems.push({
+                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
                 });
                 break;
             }
@@ -212,7 +364,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     upperItem.definition
                 );
                 outItems.push({
-                    item: new ShapeItem(stackedDefinition),
+                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(stackedDefinition),
                 });
                 break;
             }
@@ -243,7 +395,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     resultColor = mixedColor;
                 }
                 outItems.push({
-                    item: new ColorItem(resultColor),
+                    item: COLOR_ITEM_SINGLETONS[resultColor],
                 });
 
                 break;
@@ -261,7 +413,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 );
 
                 outItems.push({
-                    item: new ShapeItem(colorizedDefinition),
+                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition),
                 });
 
                 break;
@@ -288,11 +440,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     colorItem.color
                 );
                 outItems.push({
-                    item: new ShapeItem(colorizedDefinition1),
+                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition1),
                 });
 
                 outItems.push({
-                    item: new ShapeItem(colorizedDefinition2),
+                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition2),
                 });
 
                 break;
@@ -302,31 +454,73 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             case enumItemProcessorTypes.painterQuad: {
                 const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
-                const colorItem1 = /** @type {ColorItem} */ (itemsBySlot[1].item);
-                const colorItem2 = /** @type {ColorItem} */ (itemsBySlot[2].item);
-                const colorItem3 = /** @type {ColorItem} */ (itemsBySlot[3].item);
-                const colorItem4 = /** @type {ColorItem} */ (itemsBySlot[4].item);
-
                 assert(shapeItem instanceof ShapeItem, "Input for painter is not a shape");
-                assert(colorItem1 instanceof ColorItem, "Input for painter is not a color");
-                assert(colorItem2 instanceof ColorItem, "Input for painter is not a color");
-                assert(colorItem3 instanceof ColorItem, "Input for painter is not a color");
-                assert(colorItem4 instanceof ColorItem, "Input for painter is not a color");
+
+                /** @type {Array<enumColors>} */
+                const colors = [null, null, null, null];
+                for (let i = 0; i < 4; ++i) {
+                    if (itemsBySlot[i + 1]) {
+                        colors[i] = /** @type {ColorItem} */ (itemsBySlot[i + 1].item).color;
+                    }
+                }
 
                 const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(
                     shapeItem.definition,
-                    [colorItem2.color, colorItem3.color, colorItem4.color, colorItem1.color]
+                    /** @type {[string, string, string, string]} */ (colors)
                 );
 
                 outItems.push({
-                    item: new ShapeItem(colorizedDefinition),
+                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition),
                 });
+                break;
+            }
+
+            // FILTER
+            case enumItemProcessorTypes.filter: {
+                // TODO
+                trackProduction = false;
+
+                const item = itemsBySlot[0].item;
+
+                const network = entity.components.WiredPins.slots[0].linkedNetwork;
+                if (!network || !network.currentValue) {
+                    outItems.push({
+                        item,
+                        requiredSlot: 1,
+                    });
+                    break;
+                }
+
+                const value = network.currentValue;
+                if (value.equals(BOOL_TRUE_SINGLETON) || value.equals(item)) {
+                    outItems.push({
+                        item,
+                        requiredSlot: 0,
+                    });
+                } else {
+                    outItems.push({
+                        item,
+                        requiredSlot: 1,
+                    });
+                }
 
                 break;
             }
 
-            // HUB
+            // READER
+            case enumItemProcessorTypes.reader: {
+                // Pass through the item
+                const item = itemsBySlot[0].item;
+                outItems.push({ item });
 
+                // Track the item
+                const readerComp = entity.components.BeltReader;
+                readerComp.lastItemTimes.push(this.root.time.now());
+                readerComp.lastItem = item;
+                break;
+            }
+
+            // HUB
             case enumItemProcessorTypes.hub: {
                 trackProduction = false;
 
@@ -334,37 +528,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 assert(hubComponent, "Hub item processor has no hub component");
 
                 for (let i = 0; i < items.length; ++i) {
-                    const shapeItem = /** @type {ShapeItem} */ (items[i].item);
-                    hubComponent.queueShapeDefinition(shapeItem.definition);
-                }
-
-                break;
-            }
-
-            // ADVANCED PROCESSING
-
-            case enumItemProcessorTypes.advancedProcessor: {
-                const item = items[0].item;
-
-                if (item.getItemType() === enumItemType.color) {
-                    const colorItem = /** @type {ColorItem} */ (items[0].item);
-                    const newColor = enumInvertedColors[colorItem.color];
-                    outItems.push({
-                        item: new ColorItem(newColor),
-                        requiredSlot: 0,
-                    });
-                } else if (item.getItemType() === enumItemType.shape) {
-                    const shapeItem = /** @type {ShapeItem} */ (items[0].item);
-                    const newItem = this.root.shapeDefinitionMgr.shapeActionInvertColors(
-                        shapeItem.definition
-                    );
-
-                    outItems.push({
-                        item: new ShapeItem(newItem),
-                        requiredSlot: 0,
-                    });
-                } else {
-                    assertAlways(false, "Bad item type: " + item.getItemType() + " for advanced processor.");
+                    const item = /** @type {ShapeItem} */ (items[i].item);
+                    this.root.hubGoals.handleDefinitionDelivered(item.definition);
                 }
 
                 break;
@@ -381,6 +546,35 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
         }
 
-        processorComp.itemsToEject = outItems;
+        // Queue Charge
+        const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
+        const originalTime = 1 / baseSpeed;
+
+        const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
+        const timeToProcess = originalTime - bonusTimeToApply;
+
+        // Substract one tick because we already process it this frame
+        // if (processorComp.bonusTime > originalTime) {
+        // if (processorComp.type === enumItemProcessorTypes.reader) {
+        //     console.log(
+        //         "Bonus time",
+        //         round4Digits(processorComp.bonusTime),
+        //         "Original time",
+        //         round4Digits(originalTime),
+        //         "Overcomit by",
+        //         round4Digits(processorComp.bonusTime - originalTime),
+        //         "->",
+        //         round4Digits(timeToProcess),
+        //         "reduced by",
+        //         round4Digits(bonusTimeToApply)
+        //     );
+        // }
+        // }
+        processorComp.bonusTime -= bonusTimeToApply;
+
+        processorComp.ongoingCharges.push({
+            items: outItems,
+            remainingTime: timeToProcess,
+        });
     }
 }

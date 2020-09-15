@@ -3,7 +3,7 @@ import { Loader } from "../core/loader";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
-import { GameRoot, enumLayer } from "./root";
+import { GameRoot } from "./root";
 import { findNiceIntegerValue } from "../core/utils";
 import { blueprintShape } from "./upgrades";
 import { globalConfig } from "../core/config";
@@ -20,11 +20,11 @@ export class Blueprint {
 
     /**
      * Returns the layer of this blueprint
-     * @returns {enumLayer}
+     * @returns {Layer}
      */
     get layer() {
         if (this.entities.length === 0) {
-            return enumLayer.regular;
+            return "regular";
         }
         return this.entities[0].layer;
     }
@@ -81,10 +81,6 @@ export class Blueprint {
         for (let i = 0; i < this.entities.length; ++i) {
             const entity = this.entities[i];
             const staticComp = entity.components.StaticMapEntity;
-            if (!staticComp.blueprintSpriteKey) {
-                logger.warn("Blueprint entity without sprite!");
-                return;
-            }
             const newPos = staticComp.origin.add(tile);
 
             const rect = staticComp.getTileSpaceBounds();
@@ -96,13 +92,7 @@ export class Blueprint {
                 parameters.context.globalAlpha = 1;
             }
 
-            staticComp.drawSpriteOnFullEntityBounds(
-                parameters,
-                Loader.getSprite(staticComp.blueprintSpriteKey),
-                0,
-                true,
-                newPos
-            );
+            staticComp.drawSpriteOnBoundsClipped(parameters, staticComp.getBlueprintSprite(), 0, newPos);
         }
         parameters.context.globalAlpha = 1;
     }

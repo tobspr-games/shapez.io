@@ -15,10 +15,11 @@
 #
 #  Adding a new language:
 #
-#    If you want to add a new language, ask me in the discord and I will setup
+#    If you want to add a new language, ask me in the Discord and I will setup
 #    the basic structure so the game also detects it.
 #
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
@@ -30,66 +31,68 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        shapez.io est un jeu dans lequel vous devrez construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
+        Lors de la livraison des formes requises vous progresserez et débloquerez des améliorations pour accélerer votre usine.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Au vu de l'augmentation des demandes de formes, vous devrez agrandir votre usine pour répondre à la forte demande - Mais n'oubliez pas les ressources, vous drevrez vous étendre au milieu de cette [b]carte infinie[/b] !
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Bientôt vous devrez mixer les couleurs et peindre vos formes avec - Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec pour satisfaire la demande.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper quelques heures !) mais j'ajoute constamment de nouveau contenus - Il y en a beaucoup de prévus !
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Acheter le jeu vous donne accès à la version complète qui a des fonctionnalités additionnelles et vous recevrez aussi un accès à des fonctionnalités fraîchement développées.
 
-        [b]Standalone Advantages[/b]
+        [b]Avantages de la version complète (standalone)[/b]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] Mode sombre
+            [*] Balises infinies
+            [*] Parties infinies
+            [*] Plus d'options
+            [*] Prochainement: Câbles et énergie ! Prévu pour (environ) fin Juillet 2020.
+            [*] Prochainement: Plus de niveaux
+            [*] Aidez moi à continuer de développer shapez.io ❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]Mises à jour futures[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Je fais souvent des mises à jour et essaye d'en sortir une par semaine!
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Différentes cartes et challenges (e.g. carte avec obstacles)
+            [*] Puzzles (Délivrer la forme requise avec une zone limitée/jeu de bâtiments)
+            [*] Un mode histoire où les bâtiments ont un coût
+            [*] Générateur de carte configurable (configuration des ressources/formes/taille/densitée, seed et plus)
+            [*] Plus de formes
+            [*] Amélioration des performances (Le jeu tourne déjà plutot bien !)
+            [*] Et bien plus !
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Ce jeu est open source ![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
-
-        [b]Links[/b]
+        Tout le monde peut contribuer, je suis très impliqué dans la communauté et j'essaye de répondre à toutes les suggestions et prendre en compte vos retours si possible.
+        Jetez un coup d'œil à mon Trello pour le suivi du projet et la planification du développement !
+        [b]Liens[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Discord officiel[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Trello[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Code source (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Aidez à traduire[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Discord officiel - Parlez avec moi!
 
 global:
     loading: Chargement
     error: Erreur
 
     # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: "."
+    thousandsDivider: " "
+
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: ","
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.   cf wikipedia système international d'unité
     # For french: https://fr.wikipedia.org/wiki/Pr%C3%A9fixes_du_Syst%C3%A8me_international_d%27unit%C3%A9s
@@ -125,7 +128,7 @@ global:
         control: CTRL
         alt: ALT
         escape: ESC
-        shift: SHIFT
+        shift: MAJ
         space: ESPACE
 
 demoBanners:
@@ -144,11 +147,10 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Désolé, mais ce jeu est connu pour tourner lentement sur votre navigateur web ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
+        Désolé, ce jeu est connu pour tourner lentement sur votre navigateur web ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
-
 
     continue: Continuer
     newGame: Nouvelle partie
@@ -165,7 +167,7 @@ dialogs:
         reset: Réinitialiser
         getStandalone: Se procurer la version complète
         deleteGame: Je sais ce que je fais
-        viewUpdate: Voir les mises-à-jour
+        viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
 
@@ -180,7 +182,7 @@ dialogs:
             Votre sauvegarde a été importée avec succès.
 
     gameLoadFailure:
-        title: Le jeu est cassé
+        title: La sauvegarde est corrompue
         text: >-
             Impossible de charger votre sauvegarde:
 
@@ -201,7 +203,7 @@ dialogs:
 
     editKeybinding:
         title: Changer les contrôles
-        desc: Appuyez sur la touche que vous voulez assigner, ou Escape pour annuler.
+        desc: Appuyez sur la touche que vous voulez assigner, ou Échap pour annuler.
 
     resetKeybindingsConfirmation:
         title: Réinitialiser les contrôles
@@ -220,7 +222,7 @@ dialogs:
         desc: Vous ne pouvez avoir qu'une seule sauvegarde en même temps dans la version démo. Merci d'effacer celle en cours ou alternativement de vous procurer la version complète !
 
     updateSummary:
-        title: Nouvel mise-à-jour !
+        title: Nouvelle mise à jour !
         desc: >-
             Voici les modifications depuis votre dernière session:
 
@@ -233,13 +235,12 @@ dialogs:
     massDeleteConfirm:
         title: Confirmation de suppression
         desc: >-
-            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Êtes vous certains de vouloir faire cela ?
+            Vous allez supprimer pas mal de bâtiments (<count> pour être exact) ! Êtes vous certains de vouloir faire ça ?
 
     massCutConfirm:
         title: Confirmer la coupure
         desc: >-
-            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être précis) ! Êtes-vous
-            certains de vouloir faire cela ?
+            Vous vous apprêtez à couper beaucoup de bâtiments (<count> pour être précis) ! Êtes-vous certains de vouloir faire ça ?
 
     blueprintsNotUnlocked:
         title: Pas encore débloqué
@@ -249,7 +250,7 @@ dialogs:
     keybindingsIntroduction:
         title: Raccourcis utiles
         desc: >-
-            Le jeu a plein de raccourcis facilitant la construction de grandes usines.
+            Le jeu a de nombreux raccourcis facilitant la construction de grandes usines.
             En voici quelques uns, n'hésitez pas à aller <strong>découvrir les raccourcis</strong> !<br><br>
             <code class='keybinding'>CTRL</code> + Glisser: Sélectionne une zone à copier / effacer.<br>
             <code class='keybinding'>SHIFT</code>: Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
@@ -258,7 +259,7 @@ dialogs:
     createMarker:
         title: Nouvelle balise
         desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci </strong> d'une forme (Que vous pouvez générer <a href="https://viewer.shapez.io" target="_blank">ici</a>)
-        titleEdit: Edit Marker
+        titleEdit: Éditer cette balise
 
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version complète pour en faire autant que vous voulez !
@@ -266,11 +267,11 @@ dialogs:
     exportScreenshotWarning:
         title: Exporter une capture d'écran
         desc: >-
-            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même planter votre jeu !
+            Vous avez demandé à exporter votre base sous la forme d'une capture d'écran. Soyez conscient que cela peut s'avérer passablement lent pour une grande base, voire même faire planter votre jeu !
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Confirmer la coupe
+        desc: Vous n'avez pas les moyens de copier cette zone ! Etes vous certain de vouloir la couper ?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -294,7 +295,7 @@ ingame:
         copySelection: Copier
         clearSelection: Effacer la sélection
         pipette: Pipette
-        switchLayers: Switch layers
+        switchLayers: Échanger les calques
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -351,10 +352,10 @@ ingame:
                 description: Affiche le nombre de formes stockées dans votre bâtiment central.
             produced:
                 title: Produit
-                description: Affiche tous les formes que votre usine entière produit, en incluant les formes intermédiaires.
+                description: Affiche tous les formes que votre usine produit, en incluant les formes intermédiaires.
             delivered:
                 title: Délivré
-                description: Affiche les formes qui ont été livrées dans votre centre.
+                description: Affiche les formes qui ont été livrées dans votre bâtiment central.
         noShapesProduced: Aucune forme n'a été produite jusqu'à présent.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -398,7 +399,7 @@ ingame:
                 Connectez l'extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce: <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
 
             1_3_expand: >-
-                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>SHIFT</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+                Ceci n'est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d'extracteurs et de convoyeurs pour atteindre plus vite votre votre but.<br><br>Astuce: Gardez <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
     colors:
         red: Rouge
@@ -409,11 +410,11 @@ ingame:
         cyan: Cyan
         white: Blanc
         uncolored: Non coloré
-        black: Black
+        black: Noir
     shapeViewer:
         title: Calques
         empty: Vide
-        copyKey: Copy Key
+        copyKey: Copier la clé de forme
 
 # All shop upgrades
 shopUpgrades:
@@ -486,6 +487,9 @@ buildings:
         ccw:
             name: Pivoteur inversé
             description: Fait pivoter une forme de 90 degrés vers la gauche.
+        fl:
+            name: Retourneur
+            description: Tourne la forme de 180 degrés.
 
     stacker:
         default:
@@ -525,25 +529,25 @@ buildings:
         levelShortcut: NV
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Ligne énergétique
+            description: Permet de transporter de l'énergie.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Inverseur de couleur
+            description: Accepte une couleur ou une forme et l'inverse.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Délivrer
+        toGenerateEnergy: Pour
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Générateur d'énergie
+            description: Genère de l'énergie en consommant des formes.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Duplicateur de ligne
+            description: Sépare une ligne énergétique en deux.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Fusionneur de ligne
+            description: Fusionne deux lignes énergétiques en une seule.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -566,7 +570,7 @@ storyRewards:
 
     reward_stacker:
         title: Combineur
-        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinée et si elles ne peuvent êtres mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche après avoir été légèrement réduite.
+        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles ne peuvent êtres mises l'une à côté de l'autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au dessus</strong> de la forme de gauche après avoir été légèrement réduite.
 
     reward_splitter:
         title: Distributeur/Rassembleur
@@ -617,8 +621,6 @@ storyRewards:
         title: Patrons
         desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usines ! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n'est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (les mêmes que celles que vous venez de livrer).
 
-    # Question from the translator: Should shortcuts be hardcoded in this message ?
-
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: Niveau suivant
@@ -633,8 +635,10 @@ storyRewards:
 settings:
     title: Options
     categories:
-        game: Jeu
-        app: Application
+        general: Général
+        userInterface: Interface Utilisateur
+        advanced: Avancé
+        performance: Performance
 
     versionBadges:
         dev: Développement
@@ -705,9 +709,9 @@ settings:
                 Affiche ou non le bouton 'Afficher un indice' dans le coin inférieur gauche.
 
         language:
-            title: Langage
+            title: Langue
             description: >-
-                Change le langage. Toutes les traductions sont des contributions des utilisateurs et pourraient être partiellement incomplètes !
+                Change la langue. Toutes les traductions sont des contributions des utilisateurs et pourraient être partiellement incomplètes !
 
         movementSpeed:
             title: Vitesse de déplacement
@@ -719,11 +723,13 @@ settings:
                 fast: Rapide
                 super_fast: Très rapide
                 extremely_fast: Extrêmement rapide
+
         enableTunnelSmartplace:
             title: Tunnels intelligents
             description: >-
                 Si cette option est sélectionnée, placer des tunnels effacera automatiquement les convoyeurs inutiles.
                 Cela permet aussi d'étirer les tunnels et les tunnels en surnombre seront effacés.
+
         vignette:
             title: Effet de vignette
             description: >-
@@ -740,10 +746,12 @@ settings:
                 ten_minutes: 10 Minutes
                 twenty_minutes: 20 Minutes
                 disabled: Désactivé
+
         compactBuildingInfo:
             title: Informations réduites sur les bâtiments
             description: >-
                 Raccourcit les panneaux d'information sur les bâtiments en n'affichant que les ratios. Dans le cas contraire, une description et une imagine sont présentés.
+
         disableCutDeleteWarnings:
             title: Désactive les avertissement pour Couper/Effacer
             description: >-
@@ -752,11 +760,38 @@ settings:
         enableColorBlindHelper:
             title: Mode Daltonien
             description: Active divers outils qui permettent de jouer à ce jeu si vous êtes daltonien.
+
         rotationByBuilding:
             title: Rotation par catégorie de bâtiment
             description: >-
                 Chaque catégorie de bâtiment enregistre le sens de rotation que vous lui avez assigné la dernière fois, de manière individuelle.
                 Cela sera sans doute plus confortable si vous alternez fréquemment entre le placement de différents types de bâtiments.
+
+        lowQualityMapResources:
+            title: Ressources de la carte de plus basse qualité
+            description: >-
+                Simplifie le rendu des ressources sur la carte lorsqu'elle est zoomée opur améliorer les performances.
+                C'est encore plus clean, n'oubliez pas d'essayer !
+
+        disableTileGrid:
+            title: Desactiver la grille de placement
+            description: >-
+                Desactiver la grille de placement peut aider les performances. Ça rend aussi le jeu encore plus uni!
+
+        clearCursorOnDeleteWhilePlacing:
+            title: Effacer le curseur avec clic droit
+            description: >-
+                Activé par défaut, efface le curseur lorsque vous faites un clic droit en ayant un bâtiment selectioné pour la constructio. Si desactivé, vous pouvez detruire les bâtiments en faisant un clic droit tout en placant un bâtiment.
+
+        lowQualityTextures:
+            title: Textures de basse résolution (Moche)
+            description: >-
+                Utilise des textures de basse qualité pour augmenter les performances. Cela va rendre le jeu moche!
+
+        displayChunkBorders:
+            title: Monter les bordures de chunks
+            description: >-
+                Le jeu est divisé en parties de 16x16 cases, si ce réglage est activé, les bordures de chaque partie sont affichées.
 
 keybindings:
     title: Contrôles
@@ -824,11 +859,11 @@ keybindings:
         lockBeltDirection: Utiliser le plannificateur de convoyeurs
         switchDirectionLockSide: "Plannificateur: changer de côté"
         pipette: Pipette
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Fermer le menu
+        switchLayers: Échanger les calques
+        advanced_processor: Inverseur de couleur
+        energy_generator: Générateur d'énergie
+        wire: Ligne énergétique
 
 about:
     title: À propos de ce jeu
@@ -839,9 +874,9 @@ about:
         Si vous souhaitez contribuer, allez voir <a href="<githublink>"
         target="_blank">shapez.io sur github</a>.<br><br>
 
-        Ce jeu n'aurait pu être réalisé sans la précieuse communauté discord autour de
+        Ce jeu n'aurait pu être réalisé sans la précieuse communauté Discord autour de
         mes jeux - Vous devriez vraiment envisager de joindre le <a href="<discordlink>"
-        target="_blank">serveur discord</a> !<br><br>
+        target="_blank">serveur Discord</a> !<br><br>
 
         La bande son a été créée par <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Il est impressionnant !<br><br>
@@ -865,4 +900,4 @@ demo:
 # French translation version v0.5 based on english v1.1.8 by Didier WEERTS 'The Corsaire'
 #
 
-# French translation completed (and corrected) by Pascal Grossé and Withers001
+# French translation completed (and corrected) by Pascal Grossé, martypiton and Withers001.

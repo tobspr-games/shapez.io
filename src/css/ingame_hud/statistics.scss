@@ -14,19 +14,36 @@
             @include S(padding, 1px, 10px);
             border: 0;
             box-shadow: none;
-            border-radius: 0;
             @include IncreasedClickArea(1px);
             @include S(min-width, 30px);
             color: #fff;
             opacity: 0.25;
-            @include S(margin-left, 1px);
+            @include S(border-radius, $globalBorderRadius);
+
+            border-radius: 0;
+            &:first-child {
+                @include S(border-top-left-radius, $globalBorderRadius);
+                @include S(border-bottom-left-radius, $globalBorderRadius);
+            }
+
+            &:last-child {
+                @include S(border-top-right-radius, $globalBorderRadius);
+                @include S(border-bottom-right-radius, $globalBorderRadius);
+            }
 
             &.displayIcons,
-            &.displayDetailed {
+            &.displayDetailed,
+            &.displaySorted {
                 background: uiResource("icons/display_list.png") center center / #{D(15px)} no-repeat;
                 &.displayIcons {
                     background-image: uiResource("icons/display_icons.png");
                     background-size: #{D(11.5px)};
+                }
+                &.displaySorted {
+                    background-image: uiResource("icons/display_sorted.png");
+                    background-size: #{D(11.5px)};
+                    margin-right: 4px;
+                    @include S(padding, 1px, 0);
                 }
             }
 
@@ -80,15 +97,24 @@
             background: #f4f4f4;
             @include S(margin-bottom, 4px);
             display: grid;
-
-            @include DarkThemeOverride {
-                background: #222428;
-            }
+            @include S(border-radius, $globalBorderRadius);
 
             grid-template-columns: 1fr auto;
             @include S(padding, 5px);
             &:last-child {
                 margin-bottom: 0;
+            }
+
+            &.pinned {
+                background: #e3e5e9;
+            }
+
+            @include DarkThemeOverride {
+                background: #222428;
+
+                &.pinned {
+                    background: darken(#222428, 10);
+                }
             }
 
             canvas.icon {
@@ -100,7 +126,6 @@
 
             .counter {
                 @include SuperSmallText;
-
                 @include S(padding, 0, 3px);
             }
         }
@@ -109,6 +134,7 @@
     .dialogInner {
         &[data-displaymode="detailed"] .displayDetailed,
         &[data-displaymode="icons"] .displayIcons,
+        &[data-sorted="true"] .displaySorted,
         &[data-datasource="produced"] .modeProduced,
         &[data-datasource="delivered"] .modeDelivered,
         &[data-datasource="stored"] .modeStored {
@@ -132,7 +158,6 @@
                 .counter {
                     grid-column: 1 / 2;
                     grid-row: 2 / 3;
-                    background: rgba(0, 10, 20, 0.05);
                     justify-self: end;
                 }
             }

@@ -14,13 +14,9 @@ import { AdProviderInterface } from "./platform/ad_provider";
 import { NoAdProvider } from "./platform/ad_providers/no_ad_provider";
 import { AnalyticsInterface } from "./platform/analytics";
 import { GoogleAnalyticsImpl } from "./platform/browser/google_analytics";
-import { NoGameAnalytics } from "./platform/browser/no_game_analytics";
 import { SoundImplBrowser } from "./platform/browser/sound";
 import { PlatformWrapperImplBrowser } from "./platform/browser/wrapper";
 import { PlatformWrapperImplElectron } from "./platform/electron/wrapper";
-import { GameAnalyticsInterface } from "./platform/game_analytics";
-import { SoundInterface } from "./platform/sound";
-import { StorageInterface } from "./platform/storage";
 import { PlatformWrapperInterface } from "./platform/wrapper";
 import { ApplicationSettings } from "./profile/application_settings";
 import { SavegameManager } from "./savegame/savegame_manager";
@@ -33,6 +29,12 @@ import { MobileWarningState } from "./states/mobile_warning";
 import { PreloadState } from "./states/preload";
 import { SettingsState } from "./states/settings";
 import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
+
+/**
+ * @typedef {import("./platform/game_analytics").GameAnalyticsInterface} GameAnalyticsInterface
+ * @typedef {import("./platform/sound").SoundInterface} SoundInterface
+ * @typedef {import("./platform/storage").StorageInterface} StorageInterface
+ */
 
 const logger = createLogger("application");
 
@@ -385,7 +387,7 @@ export class Application {
             }
 
             const scale = this.getEffectiveUiScale();
-            waitNextFrame().then(() => document.documentElement.style.setProperty("--ui-scale", scale));
+            waitNextFrame().then(() => document.documentElement.style.setProperty("--ui-scale", `${scale}`));
             window.focus();
         }
     }

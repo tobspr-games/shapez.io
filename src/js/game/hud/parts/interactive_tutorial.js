@@ -48,7 +48,7 @@ export class HUDInteractiveTutorial extends BaseHUDPart {
     }
 
     initialize() {
-        this.domAttach = new DynamicDomAttach(this.root, this.element);
+        this.domAttach = new DynamicDomAttach(this.root, this.element, { trackHover: true });
         this.currentHintId = new TrackedState(this.onHintChanged, this);
     }
 

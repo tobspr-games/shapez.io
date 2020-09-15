@@ -1,5 +1,6 @@
 # Czech translation
 
+---
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io je hra o stavbě továren pro automatizaci výroby a kombinování čím dál složitějších tvarů na nekonečné mapě.
@@ -72,6 +73,9 @@ global:
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
 
+    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    decimalSeparator: "."
+
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: k
@@ -128,7 +132,6 @@ mainMenu:
 
     savegameLevel: Úroveň <x>
     savegameLevelUnknown: Neznámá úroveň
-
 
     continue: Pokračovat
     newGame: Nová hra
@@ -231,8 +234,8 @@ dialogs:
 
     createMarker:
         title: Nová značka
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Edit Marker
+        desc: Pojmenuj jí nějak výstižně, též ji můžeš doplnit <strong>zkratkou</strong> pro tvar (Kterou si můžete vytvořit <a href="https://viewer.shapez.io" target="_blank">zde</a>)
+        titleEdit: Upravit značku
 
     markerDemoLimit:
         desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro neomezený počet značek!
@@ -249,8 +252,8 @@ dialogs:
             může zejména u větších základen dlouho trvat, nebo dokonce shodit hru!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Potvrdit vyjmutí
+        desc: Nemůžeš si dovolit vložení této oblasti! Skutečně ji chceš vyjmout?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -469,6 +472,9 @@ buildings:
         ccw:
             name: Rotor (opačný)
             description: Otáčí tvary o 90 stupňů proti směru hodinových ručiček
+        fl:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
@@ -504,25 +510,25 @@ buildings:
             description: Skladuje věci navíc až do naplnění kapacity. Může být použit na skladování surovin navíc.
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Kabel
+            description: Dovoluje přenos energie.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Invertor barev
+            description: Přijme barvu či tvar a převrátí jej.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Dodej
+        toGenerateEnergy: Pro
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Generátor energie
+            description: Vyrábí energii zpracováním tvarů.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Dělič kabelů
+            description: Rozdělí kabel na dva.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Slučovač kabelů
+            description: Spojí dva kabely do jednoho.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -537,7 +543,7 @@ storyRewards:
     reward_painter:
         title: Barvení
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            <strong>Barvič</strong> byl právě odemčen - Vytěžte nějaká ložiska barev (podobně jako těžíte tvary) a spojte je s tvarem v barviči pro jeho obarvení!<br><br>PS: Pokud jste barvoslepý, v nastavení naleznete <strong>režim pro barvoslepé</strong>!
 
     reward_mixer:
         title: Míchání barev
@@ -581,7 +587,7 @@ storyRewards:
         desc: Odemknuli jste variantu <strong>barviče</strong> - Funguje stejně jako normální, ale nabarví <strong>dva tvary naráz</strong> pomocí jedné barvy!
 
     reward_painter_quad:
-        title: Quad Painting
+        title: Čtyřstranné barvení
         desc: Odemknuli jste variantu <strong>painter</strong> - Umožní vám nabarvit každou čtvrtinu tvaru jinou barvou!
 
     reward_storage:
@@ -610,8 +616,9 @@ storyRewards:
 settings:
     title: Nastavení
     categories:
-        game: Hra
-        app: Aplikace
+        general: Obecné
+        userInterface: Uživatelské rozhraní
+        advanced: Rozšířené
 
     versionBadges:
         dev: Vývojová verze
@@ -821,9 +828,9 @@ about:
         Pokud se chceš na hře podílet, podívej se na <a href="<githublink>"
         target="_blank">shapez.io na githubu</a>.<br><br>
 
-        Tato hra by nebyla ani možná bez skvělé discord komunity
+        Tato hra by nebyla ani možná bez skvělé Discord komunity
         okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        target="_blank">Discord server</a>!<br><br>
 
         Soundtrack udělal <a href="https://soundcloud.com/pettersumelius"
         target="_blank">Peppsen</a> - Je úžasnej.<br><br>

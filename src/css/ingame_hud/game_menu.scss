@@ -22,6 +22,7 @@
             cursor: pointer;
             transition: all 0.12s ease-in-out;
             transition-property: opacity, transform;
+            will-change: opacity;
             opacity: 0.9;
             @include S(margin-left, 5px);
             position: relative;
@@ -32,19 +33,6 @@
 
             &:hover {
                 opacity: 0.8;
-            }
-            &.music {
-                background-image: uiResource("icons/music_on.png");
-                &.muted {
-                    background-image: uiResource("icons/music_off.png");
-                }
-            }
-
-            &.sfx {
-                background-image: uiResource("icons/sound_on.png");
-                &.muted {
-                    background-image: uiResource("icons/sound_off.png");
-                }
             }
 
             &.save {

@@ -39,3 +39,15 @@ jobs:
             - name: Lint
               run: |
                   yarn lint
+
+            - name: YAML Lint
+              uses: ibiqlik/action-yamllint@v1.0.0
+              with:
+                  file_or_dir: translations/*.yaml
+
+            - name: TSLint
+              run: |
+                  cd gulp
+                  yarn gulp translations.fullBuild
+                  cd ..
+                  yarn tslint

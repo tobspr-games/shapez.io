@@ -40,7 +40,7 @@ export class BaseSetting {
 
     /**
      * @param {Application} app
-     * @param {Element} element
+     * @param {HTMLElement} element
      * @param {any} dialogs
      */
     bind(app, element, dialogs) {
@@ -188,7 +188,7 @@ export class BoolSetting extends BaseSetting {
         return `
         <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
             ${this.enabled ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
-                
+
             <div class="row">
                 <label>${T.settings.labels[this.id].title}</label>
                 <div class="value checkbox checked" data-setting="${this.id}">
@@ -218,5 +218,105 @@ export class BoolSetting extends BaseSetting {
 
     validate(value) {
         return typeof value === "boolean";
+    }
+}
+
+export class RangeSetting extends BaseSetting {
+    constructor(
+        id,
+        category,
+        changeCb = null,
+        enabled = true,
+        defaultValue = 1.0,
+        minValue = 0,
+        maxValue = 1.0,
+        stepSize = 0.0001
+    ) {
+        super(id, category, changeCb, enabled);
+
+        this.defaultValue = defaultValue;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+        this.stepSize = stepSize;
+    }
+
+    getHtml() {
+        return `
+        <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
+            ${this.enabled ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
+
+            <div class="row">
+                <label>${T.settings.labels[this.id].title}</label>
+                <div class="value rangeInputContainer noPressEffect" data-setting="${this.id}">
+                    <label>${this.defaultValue}</label>
+                    <input class="rangeInput" type="range" value="${this.defaultValue}" min="${
+            this.minValue
+        }" max="${this.maxValue}" step="${this.stepSize}">
+                </div>
+            </div>
+            <div class="desc">
+                ${T.settings.labels[this.id].description}
+            </div>
+        </div>`;
+    }
+
+    bind(app, element, dialogs) {
+        this.app = app;
+        this.element = element;
+        this.dialogs = dialogs;
+
+        this.getRangeInputElement().addEventListener("input", () => {
+            this.updateLabels();
+        });
+
+        this.getRangeInputElement().addEventListener("change", () => {
+            this.modify();
+        });
+    }
+
+    syncValueToElement() {
+        const value = this.app.settings.getSetting(this.id);
+        this.setElementValue(value);
+    }
+
+    /**
+     * Sets the elements value to the given value
+     * @param {number} value
+     */
+    setElementValue(value) {
+        const rangeInput = this.getRangeInputElement();
+        const rangeLabel = this.element.querySelector("label");
+        rangeInput.value = String(value);
+        rangeLabel.innerHTML = T.settings.rangeSliderPercentage.replace(
+            "<amount>",
+            String(Math.round(value * 100.0))
+        );
+    }
+
+    updateLabels() {
+        const value = Number(this.getRangeInputElement().value);
+        this.setElementValue(value);
+    }
+
+    /**
+     * @returns {HTMLInputElement}
+     */
+    getRangeInputElement() {
+        return this.element.querySelector("input.rangeInput");
+    }
+
+    modify() {
+        const rangeInput = this.getRangeInputElement();
+        const newValue = Math.round(Number(rangeInput.value) * 100.0) / 100.0;
+        this.app.settings.updateSetting(this.id, newValue);
+        this.syncValueToElement();
+        console.log("SET", newValue);
+        if (this.changeCb) {
+            this.changeCb(this.app, newValue);
+        }
+    }
+
+    validate(value) {
+        return typeof value === "number" && value >= this.minValue && value <= this.maxValue;
     }
 }

@@ -28,8 +28,6 @@ const ADDER_TOKEN = "+";
  */
 
 export class HUDKeybindingOverlay extends BaseHUDPart {
-    initialize() {}
-
     /**
      * HELPER / Returns if there is a building selected for placement
      * @returns {boolean}
@@ -310,6 +308,12 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
         }
     }
 
+    initialize() {
+        this.domAttach = new DynamicDomAttach(this.root, this.element, {
+            trackHover: true,
+        });
+    }
+
     update() {
         for (let i = 0; i < this.keybindings.length; ++i) {
             const handle = this.keybindings[i];
@@ -319,5 +323,8 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 handle.cachedElement.classList.toggle("visible", visibility);
             }
         }
+
+        // Required for hover
+        this.domAttach.update(true);
     }
 }

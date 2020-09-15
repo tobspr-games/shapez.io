@@ -368,9 +368,18 @@ export class DialogWithForm extends Dialog {
      * @param {array=} param0.buttons
      * @param {string=} param0.confirmButtonId
      * @param {string=} param0.extraButton
+     * @param {boolean=} param0.closeButton
      * @param {Array<FormElement>} param0.formElements
      */
-    constructor({ app, title, desc, formElements, buttons = ["cancel", "ok:good"], confirmButtonId = "ok" }) {
+    constructor({
+        app,
+        title,
+        desc,
+        formElements,
+        buttons = ["cancel", "ok:good"],
+        confirmButtonId = "ok",
+        closeButton = true,
+    }) {
         let html = "";
         html += desc + "<br>";
         for (let i = 0; i < formElements.length; ++i) {
@@ -383,7 +392,7 @@ export class DialogWithForm extends Dialog {
             contentHTML: html,
             buttons: buttons,
             type: "info",
-            closeButton: true,
+            closeButton,
         });
         this.confirmButtonId = confirmButtonId;
         this.formElements = formElements;

@@ -3,7 +3,7 @@ export default {
     /* dev:start */
     // -----------------------------------------------------------------------------------
     // Quickly enters the game and skips the main menu - good for fast iterating
-    fastGameEnter: true,
+    // fastGameEnter: true,
     // -----------------------------------------------------------------------------------
     // Skips any delays like transitions between states and such
     // noArtificialDelays: true,
@@ -33,13 +33,13 @@ export default {
     // rewardsInstant: true,
     // -----------------------------------------------------------------------------------
     // Unlocks all buildings
-    allBuildingsUnlocked: true,
+    // allBuildingsUnlocked: true,
     // -----------------------------------------------------------------------------------
     // Disables cost of blueprints
-    blueprintsNoCost: true,
+    // blueprintsNoCost: true,
     // -----------------------------------------------------------------------------------
     // Disables cost of upgrades
-    upgradesNoCost: true,
+    // upgradesNoCost: true,
     // -----------------------------------------------------------------------------------
     // Disables the dialog when completing a level
     // disableUnlockDialog: true,
@@ -51,7 +51,7 @@ export default {
     // testClipping: true,
     // -----------------------------------------------------------------------------------
     // Allows to render slower, useful for recording at half speed to avoid stuttering
-    // framePausesBetweenTicks: 1,
+    // framePausesBetweenTicks: 250,
     // -----------------------------------------------------------------------------------
     // Replace all translations with emojis to see which texts are translateable
     // testTranslations: true,
@@ -78,7 +78,7 @@ export default {
     // instantMiners: true,
     // -----------------------------------------------------------------------------------
     // When using fastGameEnter, controls whether a new game is started or the last one is resumed
-    resumeGameOnFastEnter: true,
+    // resumeGameOnFastEnter: true,
     // -----------------------------------------------------------------------------------
     // Special option used to render the trailer
     // renderForTrailer: true,
@@ -94,6 +94,21 @@ export default {
     // -----------------------------------------------------------------------------------
     // Whether to items / s instead of items / m in stats
     // detailedStatistics: true,
+    // -----------------------------------------------------------------------------------
+    // Shows detailed information about which atlas is used
+    // showAtlasInfo: true,
+    // -----------------------------------------------------------------------------------
+    // Renders the rotation of all wires
+    // renderWireRotations: true,
+    // -----------------------------------------------------------------------------------
+    // Renders information about wire networks
+    // renderWireNetworkInfos: true,
+    // -----------------------------------------------------------------------------------
+    // Disables ejector animations and processing
+    // disableEjectorProcessing: true,
+    // -----------------------------------------------------------------------------------
+    // Allows manual ticking
+    // manualTickOnly: true,
     // -----------------------------------------------------------------------------------
     /* dev:end */
 };
