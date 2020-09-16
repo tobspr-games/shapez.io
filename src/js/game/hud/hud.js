@@ -108,7 +108,7 @@ export class GameHUD {
             this.parts.keybindingOverlay = new HUDKeybindingOverlay(this.root);
         }
 
-        if (G_IS_DEV && globalConfig.debug.enableEntityInspector) {
+        if (queryParamOptions.sandboxMode || (G_IS_DEV && globalConfig.debug.enableEntityInspector)) {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 

@@ -1,6 +1,7 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv, removeAllChildren } from "../../../core/utils";
 import { globalConfig } from "../../../core/config";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
 
 export class HUDEntityDebugger extends BaseHUDPart {
     createElements(parent) {
@@ -9,9 +10,14 @@ export class HUDEntityDebugger extends BaseHUDPart {
             "ingame_HUD_EntityDebugger",
             [],
             `
-            Tile below cursor: <span class="mousePos"></span><br>
-            Chunk below cursor: <span class="chunkPos"></span><br>
-            <div class="entityInfo"></div>
+            <label>Entity Debugger</label>
+            <span class="hint">Use F8 to toggle this overlay</span>
+
+            <div class="propertyTable">
+                <div>Tile below cursor</div> <span class="mousePos"></span>
+                <div>Chunk below cursor</div> <span class="chunkPos"></span>
+                <div class="entityComponents"></div>
+            </div>
         `
         );
 
@@ -19,11 +25,57 @@ export class HUDEntityDebugger extends BaseHUDPart {
         this.mousePosElem = this.element.querySelector(".mousePos");
         /** @type {HTMLElement} */
         this.chunkPosElem = this.element.querySelector(".chunkPos");
-        this.entityInfoElem = this.element.querySelector(".entityInfo");
+        this.componentsElem = this.element.querySelector(".entityComponents");
     }
 
     initialize() {
+        this.root.gameState.inputReciever.keydown.add(key => {
+            if (key.keyCode === 119) {
+                // F8
+                this.toggle();
+            }
+        });
+
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
+
+        this.visible = !G_IS_DEV;
+        this.domAttach = new DynamicDomAttach(this.root, this.element);
+    }
+
+    toggle() {
+        this.visible = !this.visible;
+    }
+
+    propertyToHTML(name, val, indent = 0) {
+        if (val !== null && typeof val === "object") {
+            if (indent > 10) {
+                return "";
+            }
+
+            // Array is displayed like object, with indexes
+            const typeName = `(${val.constructor ? val.constructor.name : "unknown"})`;
+            const colorStyle = `color: hsl(${30 * indent}, 100%, 80%)`;
+
+            let html = `<details class="object" style="${colorStyle}">
+                            <summary>${name} ${typeName}</summary>
+                            <div>`;
+
+            for (const property in val) {
+                const isRoot = val[property] == this.root;
+
+                html += this.propertyToHTML(property, isRoot ? "<root>" : val[property], indent + 1);
+            }
+
+            html += "</div></details>";
+
+            return html;
+        }
+
+        const displayValue = (val + "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;");
+        return `<label>${name}</label> <span>${displayValue}</span>`;
     }
 
     update() {
@@ -40,33 +92,31 @@ export class HUDEntityDebugger extends BaseHUDPart {
 
         const entity = this.root.map.getTileContent(worldTile, this.root.currentLayer);
         if (entity) {
-            removeAllChildren(this.entityInfoElem);
-            let html = "Entity";
+            removeAllChildren(this.componentsElem);
+            let html = "";
 
-            const flag = (name, val) =>
-                `<span class='flag' data-value='${val ? "1" : "0"}'><u>${name}</u> ${val}</span>`;
+            const property = (strings, val) => `<label>${strings[0]}</label> <span>${val}</span>`;
 
-            html += "<div class='entityFlags'>";
-            html += flag("registered", entity.registered);
-            html += flag("uid", entity.uid);
-            html += flag("destroyed", entity.destroyed);
-            html += "</div>";
-
-            html += "<div class='components'>";
+            html += property`registered ${entity.registered}`;
+            html += property`uid ${entity.uid}`;
+            html += property`destroyed ${entity.destroyed}`;
 
             for (const componentId in entity.components) {
                 const data = entity.components[componentId];
-                html += "<div class='component'>";
-                html += "<strong class='name'>" + componentId + "</strong>";
-                html += "<textarea class='data'>" + JSON.stringify(data.serialize(), null, 2) + "</textarea>";
+                html += "<details class='object'>";
+                html += "<summary>" + componentId + "</summary><div>";
 
-                html += "</div>";
+                for (const property in data) {
+                    html += this.propertyToHTML(property, data[property]);
+                }
+
+                html += "</div></details>";
             }
 
-            html += "</div>";
-
-            this.entityInfoElem.innerHTML = html;
+            this.componentsElem.innerHTML = html;
         }
+
+        this.domAttach.update(this.visible);
     }
 
     onMouseDown() {}
