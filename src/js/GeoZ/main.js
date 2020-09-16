@@ -38,7 +38,7 @@ export { ModSystem, ModSystemWithFilter } from "./mod_system";
  * @property {Array<ShapeData>=} shapes
  */
 
- const logger = createLogger("GeoZ");
+export const logger = createLogger("GeoZ");
 
 /** @type {Array<Mod>} */
 export const Mods = [];
@@ -63,59 +63,6 @@ export const ModBuildings = [];
 
 /** @type {Array<ShapeData>} */
 export const ModShapes = [];
-
-const GameSystemManager_internalInitSystems_original = GameSystemManager.prototype.internalInitSystems;
-GameSystemManager.prototype.internalInitSystems = function () {
-    GameSystemManager_internalInitSystems_original.call(this);
-
-    for (const system of ModSystems) {
-        //add(system.getId(), system);
-        const before = system.getUpdateBefore();
-        const after = system.getUpdateAfter();
-        const system_id = system.getId();
-        let override = false;
-
-        if (this.systems[system_id]) {
-            logger.log(
-                `⚠️ WARNING ⚠️ A system with the ID "${system_id}" already exists and will be overriden`
-            );
-            override = true;
-        }
-        this.systems[system_id] = new system(this.root);
-
-        if (!override) {
-            if (before) {
-                const i = this.systemUpdateOrder.indexOf(before);
-                if (i !== -1) {
-                    this.systemUpdateOrder.splice(i, 0, system_id);
-                    continue;
-                }
-                logger.log(
-                    `⚠️ WARNING ⚠️ System "${before}" not found and so system "${system_id}" can't be updated before it`
-                );
-            }
-
-            if (after) {
-                const i = this.systemUpdateOrder.indexOf(after);
-                if (i !== -1) {
-                    this.systemUpdateOrder.splice(i + 1, 0, system_id);
-                    continue;
-                }
-                logger.log(
-                    `⚠️ WARNING ⚠️ System "${after}" not found and so system "${system_id}" can't be updated after it`
-                );
-            }
-        }
-
-        if (!this.systemUpdateOrder.includes(system_id)) {
-            this.systemUpdateOrder.push(system_id);
-        }
-
-        if (override) {
-            logger.log(`System "${system_id}" update order : ${this.systemUpdateOrder.indexOf(system_id)}`);
-        }
-    }
-};
 
 // @ts-ignore
 const webpack_require = require.context("../", true, /\.js$/);
@@ -143,12 +90,12 @@ export async function initMods() {
         `${style} color: #7f7;`,
         `${style} color: #aaa; font-size: 15px;`,
         "color: #ff4300"
-	);
+    );
 
-	// @ts-ignore
+    // @ts-ignore
     window.GeoZ = GeoZ;
-	
-	// @ts-ignore
+
+    // @ts-ignore
     const local_mods = require.context("./mods", true, /.*\.mod\.js/i);
     for (let key of local_mods.keys()) {
         let mod = /** @type {Mod} */ (local_mods(key).default);
@@ -178,7 +125,7 @@ export async function initMods() {
                 Mods.push(mod);
             }
         } catch {
-            logger.log(`🛑 Failed to load mod at : ${url}`)
+            logger.log(`🛑 Failed to load mod at : ${url}`);
         }
     }
 
@@ -225,46 +172,49 @@ export async function initMods() {
                 ModItems.push(item);
                 gItemRegistry.register(item);
             }
-		}
-		
-		if (mod.buildings) {
+        }
+
+        if (mod.buildings) {
             mod_infos += `${mod.buildings.length} buildings, `;
             for (const building of mod.buildings) {
                 ModBuildings.push(building);
-				gMetaBuildingRegistry.register(building);
-				const base_id = building.getId();
-				registerBuildingVariant(base_id, building);
+                gMetaBuildingRegistry.register(building);
+                const base_id = building.getId();
+                registerBuildingVariant(base_id, building);
 
-				for (const variant of building.getVariants()) {
-					registerBuildingVariant(`${base_id}-${variant}`, building, variant);
-				}
+                for (const variant of building.getVariants()) {
+                    registerBuildingVariant(`${base_id}-${variant}`, building, variant);
+                }
 
-				supportedBuildings.push(building);
+                supportedBuildings.push(building);
 
-				KEYMAPPINGS.buildings[base_id] = { keyCode: keyCodeOf(building.getKeybinding()), id: base_id };
+                KEYMAPPINGS.buildings[base_id] = {
+                    keyCode: keyCodeOf(building.getKeybinding()),
+                    id: base_id,
+                };
 
-				const translations = building.getTranslations();
+                const translations = building.getTranslations();
 
-				T.keybindings.mappings[base_id] = translations.keybinding;
+                T.keybindings.mappings[base_id] = translations.keybinding;
 
-				T.buildings[base_id] = {};
-				for (const variant in translations.variants) {
-					T.buildings[base_id][variant] = translations.variants[variant];
-				}
+                T.buildings[base_id] = {};
+                for (const variant in translations.variants) {
+                    T.buildings[base_id][variant] = translations.variants[variant];
+                }
             }
         }
-        
-        if(mod.shapes) {
+
+        if (mod.shapes) {
             mod_infos += `${mod.shapes.length} shapes, `;
             for (const shape of mod.shapes) {
                 ModShapes.push(shape);
                 allShapeData[shape.id] = shape;
             }
         }
-		
-		logger.log(mod_infos);
+
+        logger.log(mod_infos);
     }
-    
+
     initShapes();
 
     logger.log(`${Mods.length} mods loaded`);
