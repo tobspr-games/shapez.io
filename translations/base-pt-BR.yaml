@@ -22,7 +22,7 @@
 ---
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io é um jogo sobre construir fábricas, automatizando a criação e combinação de formas cada vez mais complexas num mapa infinito.
+    shortText: Shapez.io é um jogo sobre construir fábricas, automatizando a criação e combinação de formas cada vez mais complexas num mapa infinito.
 
     # This is the text shown above the Discord link
     discordLink: Discord Oficial - Converse comigo!
@@ -34,17 +34,17 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io é um jogo sobre construir fábricas, automatizando a criação e combinação de formas cada vez mais complexas num mapa infinito.
+        Shapez.io é um jogo sobre construir fábricas, automatizando a criação e combinação de formas cada vez mais complexas num mapa infinito.
 
-        Após a entrega das formas requisitadas você progredirá no jogo e desbloqueará melhorias para acelerar sua fábrica.
+        Após a entrega das formas requisitadas, você avançará no jogo e desbloqueará melhorias para acelerar sua produção.
 
-        Conforme sua demanda por formas aumenta, você irá que aumentar sua fábrica para alcançar-la - Mas não se esqueça dos recursos, você precisará expandir pelo [b]mapa infinito[/b]!
+        Conforme sua demanda por formas aumenta, você terá que aumentar sua fábrica para alcançá-la - Mas não se esqueça dos recursos, você precisará expandir pelo [b]mapa infinito[/b]!
 
-        Rapidamente você vai ter que misturar cores e pintar suas formas com elas - Combine recursos vermelhos, verdes e azuis para produzir cores diferentes e pintar formas com elas para satisfazer a demanda.
+        Em pouco tempo você terá que misturar cores e pintar suas formas com elas - Combine recursos vermelhos, verdes e azuis para produzir cores diferentes e pintar formas com elas para satisfazer a demanda.
 
-        O jogo contém 18 níveis progressivos (Que já devem manter você ocupado por horas!) mas eu adiciono novo contéudo constantemente - Tem bastante coisa já planejada!
+        O jogo contém 18 níveis progressivos (que já devem manter você ocupado por horas!) mas eu adiciono novo contéudo constantemente - Tem bastante coisa já planejada!
 
-        Comprando o jogo você terá acesso à versão completa, que contém recursos adicionais, e além disso você também terá acesso aos recursos que seram desenvolvidos.
+        Comprando o jogo você terá acesso à versão completa, que contém recursos adicionais, e além disso você também terá acesso aos recursos que serão desenvolvidos.
 
         [b]Vantagens da versão completa[/b]
 
@@ -60,15 +60,15 @@ steamPage:
 
         [b]Atualizações Futuras[/b]
 
-        Eu lanço atualizações frequentemente e estou tentando lançar pelo menos um por semana!
+        Eu lanço atualizações frequentemente e estou tentando lançar pelo menos uma por semana!
 
         [list]
             [*] Mapas diferentes e desafios (por exemplo mapas com obstáculos)
             [*] Puzzles (Entregue a forma pedida com uma área restringida ou um certo conjunto de construções)
             [*] Um modo história onde as construções têm um custo
-            [*] Um geredor de mapa customizável (Configure recursos, forma, tamanho, densidade, semente e mais)
+            [*] Um gerador de mapa customizável (configure recursos, formas, tamanho, densidade, semente e mais)
             [*] Mais tipos de formas
-            [*] Melhorias de desempenho (O jogo já roda bem!)
+            [*] Melhorias de desempenho (o jogo já roda bem!)
             [*] E muito mais!
         [/list]
 
@@ -130,8 +130,8 @@ global:
         control: CTRL
         alt: ALT
         escape: ESC
-        shift: SHIFT
-        space: ESPAÇO
+        shift: Shift
+        space: Espaço
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
@@ -145,7 +145,7 @@ mainMenu:
     newGame: Novo jogo
     changelog: Changelog
     subreddit: Reddit
-    importSavegame: Importar
+    importSavegame: Importar save
     openSourceHint: Esse jogo tem código aberto!
     discordLink: Discord oficial
     helpTranslate: Ajude a traduzir!
@@ -183,7 +183,7 @@ dialogs:
             Seu jogo salvo foi importado com sucesso.
 
     gameLoadFailure:
-        title: Jogo salvo quebrado
+        title: Jogo salvo corrompido
         text: >-
             Houve uma falha ao carregar seu jogo salvo:
 
@@ -198,13 +198,13 @@ dialogs:
             Houve uma falha ao deletar seu jogo salvo:
 
     restartRequired:
-        title: Ação necessária
+        title: Reinicialização necessária
         text: >-
             Você precisa reiniciar o jogo para aplicar as mudanças.
 
     editKeybinding:
         title: Alterar tecla
-        desc: Pressiona a tecla que deseja vincular, ou ESC para cancelar.
+        desc: Pressione a tecla que deseja vincular, ou ESC para cancelar.
 
     resetKeybindingsConfirmation:
         title: Resetar controles
@@ -234,17 +234,17 @@ dialogs:
             O guia de melhorias pode ser encontrado no canto superior direito da tela.
 
     massDeleteConfirm:
-        title: Deletar
+        title: Deletar?
         desc: >-
             Você está deletando vários objetos (<count> para ser exato)! Você quer continuar?
 
     massCutConfirm:
-        title: Confirmar corte
+        title: Confirmar corte?
         desc: >-
             Você está cortando vários objetos (<count> para ser exato)! Você quer continuar?
 
     massCutInsufficientConfirm:
-        title: Confirmar Corte
+        title: Confirmar Corte?
         desc: >-
             You can not afford to paste this area! Are you sure you want to cut it?
 
@@ -290,8 +290,8 @@ ingame:
         createMarker: Criar marcador
         delete: Destruir
         pasteLastBlueprint: Colar último projeto
-        lockBeltDirection: Ativar Planejador de Esteiras
-        plannerSwitchSide: Girar Planejador
+        lockBeltDirection: Ativar Planejamento de Esteiras
+        plannerSwitchSide: Girar Planejamento
         cutSelection: Cortar
         copySelection: Copiar
         clearSelection: Limpar Seleção
@@ -363,13 +363,13 @@ ingame:
         dataSources:
             stored:
                 title: Estoque
-                description: Exibindo a quantidade de formas armazenadas em sua construção central.
+                description: Exibindo a quantidade de formas armazenadas no seu HUB.
             produced:
                 title: Produção
                 description: Exibindo todas as formas que toda a sua fábrica produz, incluindo produtos intermediários..
             delivered:
                 title: Entregue
-                description: Exibindo formas entregues na sua construção central.
+                description: Exibindo formas entregues no seu HUB.
         noShapesProduced: Nenhuma forma foi produzida até o momento.
 
         # Displays the shapes per minute, e.g. '523 / m'
@@ -384,14 +384,14 @@ ingame:
 
         buttons:
             continue: Continuar
-            settings: Definições
+            settings: Configurações
             menu: Voltar ao menu
 
     # Bottom left tutorial hints
     tutorialHints:
         title: Quer ajuda?
         showHint: Mostrar dica
-        hideHint: Fechar
+        hideHint: Esconder dica
 
     # When placing a blueprint
     blueprintPlacer:
@@ -401,7 +401,7 @@ ingame:
     waypoints:
         waypoints: Marcadores
         hub: HUB
-        description: Clique com o botão esquerdo do mouse em um marcador para pular, clique com o botão direito do mouse para excluí-lo. <br><br> Pressione <keybinding> para criar um marcador a partir da exibição atual ou <strong>clique com o botão direito do mouse</strong> para criar um marcador no local selecionado.
+        description: Clique com o botão esquerdo do mouse em um marcador para pular, clique com o botão direito do mouse para excluí-lo. <br><br> Pressione <keybinding> para criar um marcador à partir da exibição atual ou <strong>clique com o botão direito do mouse</strong> para criar um marcador no local selecionado.
         creationSuccessNotification: Marcador criado.
 
     # Shape viewer
@@ -419,7 +419,7 @@ ingame:
                 Conecte o extrator com uma <strong>esteira transportadora</strong> até a sua base!<br><br>Dica, <strong>clique e arraste</strong> a esteira com o mouse!
 
             1_3_expand: >-
-                Este <strong>NÃO</strong> é um jogo inativo! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.<br><br>Dica, segure <strong>SHIFT</strong> para colocar vários extratores e use <strong>R</strong> para girá-los.
+                Este <strong>NÃO</strong> é um jogo idle! Construa mais extratores e esteiras para concluir o objetivo mais rapidamente.<br><br>Dica, segure <strong>SHIFT</strong> para colocar vários extratores e use <strong>R</strong> para girá-los.
 
 # All shop upgrades
 shopUpgrades:
@@ -433,7 +433,7 @@ shopUpgrades:
         name: Corte, Rotação e Montagem
         description: Velocidade x<currentMult> → x<newMult>
     painting:
-        name: Mistura e Pintura
+        name: Mistura de cores e Pintura
         description: Velocidade x<currentMult> → x<newMult>
 
 # Buildings and their name / description
@@ -469,7 +469,7 @@ buildings:
 
         tier2:
             name: Túnel Classe II
-            description: Permite transportar recursos por baixo de construções e esteiras.
+            description: Permite transportar recursos por baixo de construções e outras esteiras.
 
     splitter: # Internal name for the Balancer
         default:
@@ -541,7 +541,7 @@ buildings:
 
         storage:
             name: Estoque
-            description: Armazena itens em excesso, até uma determinada capacidade. Pode ser usado como uma porta de transbordamento.
+            description: Armazena itens em excesso, até uma determinada capacidade. Pode ser usado como uma eclusa.
 
     energy_generator:
         deliver: Entregar
@@ -575,7 +575,7 @@ storyRewards:
     reward_painter:
         title: Pintura
         desc: >-
-            O <strong>Pintor</strong> foi desbloqueado - Extrai alguns pigmentos coloridos (assim como você fez com as formas) e combina-os com uma forma no pintor para os colorir!<br><br>PS: Se for daltônico, existe um <strong>modo daltônico</strong> nas definições!
+            O <strong>Pintor</strong> foi desbloqueado - Extraia alguns pigmentos coloridos (assim como você fez com as formas) e combine-os com uma forma no pintor para colorí-las!<br><br>PS: Se for daltônico, existe um <strong>modo daltônico</strong> nas definições!
 
     reward_mixer:
         title: Misturando cores
@@ -591,7 +591,7 @@ storyRewards:
 
     reward_tunnel:
         title: Túnel
-        desc: O <strong>túnel</strong> foi desbloqueado - Agora você pode canalizar itens sob construções!
+        desc: O <strong>túnel</strong> foi desbloqueado - Agora você pode transportar itens abaixo do solo!
 
     reward_rotater_ccw:
         title: Rotação anti-horária
@@ -646,7 +646,7 @@ storyRewards:
             Parabéns! Aliás, mais conteúdo vindo na versão completa!
 
 settings:
-    title: opções
+    title: Opções
     categories:
         general: Geral
         userInterface: Interface de Usuário
@@ -671,7 +671,7 @@ settings:
                 huge: Gigante
 
         autosaveInterval:
-            title: Intervalo de gravação automática
+            title: Intervalo de save automático
             description: >-
                 Controla a frequência com que o jogo salva automaticamente. Você também pode desativá-lo totalmente aqui.
 
@@ -714,7 +714,7 @@ settings:
         enableColorBlindHelper:
             title: Modo daltônico.
             description: >-
-                Permite várias ferramentas que permitem jogar se você é daltônico.
+                Habilita várias ferramentas que te permitem jogar se você é daltônico.
 
         fullscreen:
             title: Tela Cheia
@@ -745,24 +745,24 @@ settings:
                 Se você possui um monitor de 144 hz, altere a taxa de atualização aqui para que o jogo seja simulado corretamente com taxas de atualização mais altas. Isso diminuir o FPS consideravelmente se o computador for muito lento.
 
         alwaysMultiplace:
-            title: Multiplicidade
+            title: Posicionamento Múltiplo
             description: >-
                 Se ativado, todas as construções permanecerão selecionadas após o posicionamento até que você a cancele. Isso é equivalente a pressionar  SHIFT permanentemente.
 
         offerHints:
-            title: Dicas e tutoriais
+            title: Dicas e Tutoriais
             description: >-
                 Se ativado, oferece dicas e tutoriais enquanto se joga. Além disso, esconde certos elementos da interface até certo ponto, para facilitar o começo do jogo.
 
         enableTunnelSmartplace:
-            title: Túneis inteligentes
+            title: Túneis Inteligentes
             description: >-
                 Quando colocados, irão remover automaticamente esteiras desnecessárias. Isso também permite arrastar túneis e túneis em excesso serão removidos.
 
         vignette:
             title: Vinheta
             description: >-
-                Permite o modo vinheta que escurece os cantos da tela e facilita a leitura do texto.
+                Habilita o modo vinheta que escurece os cantos da tela e facilita a leitura do texto.
 
         rotationByBuilding:
             title: Rotação por tipo de construção
@@ -777,7 +777,7 @@ settings:
         disableCutDeleteWarnings:
             title: Desativar avisos de recorte / exclusão
             description: >-
-                Desative as caixas de diálogo de aviso exibidas ao cortar / excluir mais de 100 entidades.
+                Desativa as caixas de diálogo de aviso exibidas ao cortar / excluir mais de 100 entidades.
 
 keybindings:
     title: Controles
@@ -790,9 +790,9 @@ keybindings:
         general: Geral
         ingame: Jogo
         navigation: Navegação
-        placement: Construção
-        massSelect: Seleção
-        buildings: Atalhos de objetos
+        placement: Posicionamento
+        massSelect: Seleção em Massa
+        buildings: Construções
         placementModifiers: Modificadores
 
     mappings:
@@ -807,7 +807,7 @@ keybindings:
 
         mapZoomIn: Aproximar
         mapZoomOut: Distanciar
-        createMarker: Criar marcação
+        createMarker: Criar marcador
 
         menuOpenShop: Melhorias
         menuOpenStats: Estatísticas
@@ -839,7 +839,7 @@ keybindings:
         confirmMassDelete: Confirmar exclusão em massa
         pasteLastBlueprint: Colar último projeto
         cycleBuildings: Trocar de construção
-        lockBeltDirection: Ativar planejador de correia
+        lockBeltDirection: Ativar planejamento de esteira
         switchDirectionLockSide: >-
             Planejador: Mudar de lado
 
