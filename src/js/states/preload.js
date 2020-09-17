@@ -8,6 +8,12 @@ import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { CHANGELOG } from "../changelog";
 import { globalConfig } from "../core/config";
 
+import { initComponentRegistry } from "../game/component_registry";
+import { initDrawUtils } from "../core/draw_utils";
+import { initItemRegistry } from "../game/item_registry";
+import { initMetaBuildingRegistry } from "../game/meta_building_registry";
+import { initGameSpeedRegistry } from "../game/game_speed_registry";
+
 const logger = createLogger("state/preload");
 
 export class PreloadState extends GameState {
@@ -106,6 +112,18 @@ export class PreloadState extends GameState {
             .then(() => this.setStatus("Initializing settings"))
             .then(() => {
                 return this.app.settings.initialize();
+            })
+
+            .then(() => this.setStatus("Loading GeoZ mods"))
+            .then(() => require("../GeoZ/main").initMods())
+
+            .then(() => this.setStatus("Initializing registeries"))
+            .then(() => {
+                initDrawUtils();
+                initComponentRegistry();
+                initItemRegistry();
+                initMetaBuildingRegistry();
+                initGameSpeedRegistry(); 
             })
 
             .then(() => {

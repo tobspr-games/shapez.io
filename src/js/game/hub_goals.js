@@ -2,11 +2,13 @@ import { globalConfig } from "../core/config";
 import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/utils";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
+import { allShapeData } from "./shapes";
 import { enumItemProcessorTypes } from "./components/item_processor";
 import { GameRoot } from "./root";
-import { enumSubShape, ShapeDefinition } from "./shape_definition";
+import { ShapeDefinition, ShapeLayer } from "./shape_definition";
 import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
 import { UPGRADES } from "./upgrades";
+import { ModProcessors } from "../GeoZ/main";
 
 export class HubGoals extends BasicSerializableObject {
     static getId() {
@@ -324,16 +326,16 @@ export class HubGoals extends BasicSerializableObject {
      */
     createRandomShape() {
         const layerCount = clamp(this.level / 25, 2, 4);
-        /** @type {Array<import("./shape_definition").ShapeLayer>} */
+        /** @type {Array<ShapeLayer>} */
         let layers = [];
 
         const randomColor = () => randomChoice(Object.values(enumColors));
-        const randomShape = () => randomChoice(Object.values(enumSubShape));
+        const randomShape = () => randomChoice(Object.values(allShapeData).map(d => d.id));
 
         let anyIsMissingTwo = false;
 
         for (let i = 0; i < layerCount; ++i) {
-            /** @type {import("./shape_definition").ShapeLayer} */
+            /** @type {ShapeLayer} */
             const layer = [null, null, null, null];
 
             for (let quad = 0; quad < 4; ++quad) {
@@ -439,8 +441,17 @@ export class HubGoals extends BasicSerializableObject {
                     globalConfig.buildingSpeeds[processorType]
                 );
             }
-            default:
+            default: {
+                if (ModProcessors[processorType]) {
+                    return (
+                        globalConfig.beltSpeedItemsPerSecond *
+                        this.upgradeImprovements.processors *
+                        globalConfig.buildingSpeeds[processorType]
+                    );
+                }
+
                 assertAlways(false, "invalid processor type: " + processorType);
+            }
         }
 
         return 1 / globalConfig.beltSpeedItemsPerSecond;

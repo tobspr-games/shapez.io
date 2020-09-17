@@ -22,6 +22,7 @@ import { LeverSystem } from "./systems/lever";
 import { DisplaySystem } from "./systems/display";
 import { ItemProcessorOverlaysSystem } from "./systems/item_processor_overlays";
 import { BeltReaderSystem } from "./systems/belt_reader";
+import { ModSystems, logger as GeoZLogger } from "../GeoZ/main";
 
 const logger = createLogger("game_system_manager");
 
@@ -152,6 +153,55 @@ export class GameSystemManager {
         add("display", DisplaySystem);
 
         add("itemProcessorOverlays", ItemProcessorOverlaysSystem);
+
+        for (const system of ModSystems) {
+            const before = system.getUpdateBefore();
+            const after = system.getUpdateAfter();
+            const system_id = system.getId();
+            let override = false;
+
+            if (this.systems[system_id]) {
+                GeoZLogger.log(
+                    `⚠️ WARNING ⚠️ A system with the ID "${system_id}" already exists and will be overriden`
+                );
+                override = true;
+            }
+            this.systems[system_id] = new system(this.root);
+
+            if (!override) {
+                if (before) {
+                    const i = this.systemUpdateOrder.indexOf(before);
+                    if (i !== -1) {
+                        this.systemUpdateOrder.splice(i, 0, system_id);
+                        continue;
+                    }
+                    GeoZLogger.log(
+                        `⚠️ WARNING ⚠️ System "${before}" not found and so system "${system_id}" can't be updated before it`
+                    );
+                }
+
+                if (after) {
+                    const i = this.systemUpdateOrder.indexOf(after);
+                    if (i !== -1) {
+                        this.systemUpdateOrder.splice(i + 1, 0, system_id);
+                        continue;
+                    }
+                    GeoZLogger.log(
+                        `⚠️ WARNING ⚠️ System "${after}" not found and so system "${system_id}" can't be updated after it`
+                    );
+                }
+            }
+
+            if (!this.systemUpdateOrder.includes(system_id)) {
+                this.systemUpdateOrder.push(system_id);
+            }
+
+            if (override) {
+                GeoZLogger.log(
+                    `System "${system_id}" update order : ${this.systemUpdateOrder.indexOf(system_id)}`
+                );
+            }
+        }
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }

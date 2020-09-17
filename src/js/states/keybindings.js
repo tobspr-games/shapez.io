@@ -4,39 +4,58 @@ import { T } from "../translations";
 import { KEYMAPPINGS, getStringForKeyCode } from "../game/key_action_mapper";
 import { Dialog } from "../core/modal_dialog_elements";
 import { IS_DEMO } from "../core/config";
+import { SettingsState } from "./settings";
 
-export class KeybindingsState extends TextualGameState {
-    constructor() {
-        super("KeybindingsState");
-    }
+export class KeybindingsState extends SettingsState {
+    // constructor() {
+    // super();
+    // super("KeybindingsState");
+    // this.settingsState = settingsState;
+    // }
 
-    getStateHeaderTitle() {
-        return T.keybindings.title;
-    }
+    // getStateHeaderTitle() {
+    //     return T.keybindings.title;
+    // }
 
     getMainContentHTML() {
         return `
+            <div class="sidebar">
+                ${this.getCategoryButtonsHtml()}
 
-            <div class="topEntries">
-                <span class="hint">${T.keybindings.hint}</span>
-                <button class="styledButton resetBindings">${T.keybindings.resetKeybindings}</button>
-            
+                <div class="other">
+                    <button class="styledButton about">${T.about.title}</button>
+
+                    <div class="versionbar">
+                        <div class="buildVersion">${T.global.loading} ...</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="keybindings">
+            <div class="categoryContainer">
+
+                <div class="category keybindings" data-category="keybindings">
+                    <div class="topEntries">
+                        <span class="hint">${T.keybindings.hint}</span>
+                        <button class="styledButton resetBindings">${T.keybindings.resetKeybindings}</button>
+                    </div>
+                </div>
+
+                ${this.getSettingsHtml()}
 
             </div>
         `;
     }
 
     onEnter() {
+        this.onEnterCommon();
+
         const keybindingsElem = this.htmlElement.querySelector(".keybindings");
 
         this.trackClicks(this.htmlElement.querySelector(".resetBindings"), this.resetBindings);
 
         for (const category in KEYMAPPINGS) {
             const categoryDiv = document.createElement("div");
-            categoryDiv.classList.add("category");
+            categoryDiv.classList.add("keyCategory");
             keybindingsElem.appendChild(categoryDiv);
 
             const labelDiv = document.createElement("strong");
@@ -173,7 +192,7 @@ export class KeybindingsState extends TextualGameState {
         });
     }
 
-    getDefaultPreviousState() {
-        return "SettingsState";
-    }
+    // getDefaultPreviousState() {
+    //     return "SettingsState";
+    // }
 }

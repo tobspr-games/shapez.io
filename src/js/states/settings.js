@@ -4,8 +4,8 @@ import { allApplicationSettings, enumCategories } from "../profile/application_s
 import { T } from "../translations";
 
 export class SettingsState extends TextualGameState {
-    constructor() {
-        super("SettingsState");
+    constructor(key = "SettingsState") {
+        super(key);
     }
 
     getStateHeaderTitle() {
@@ -92,7 +92,7 @@ export class SettingsState extends TextualGameState {
             </span>`;
     }
 
-    onEnter(payload) {
+    onEnterCommon() {
         this.renderBuildText();
         this.trackClicks(this.htmlElement.querySelector(".about"), this.onAboutClicked, {
             preventDefault: false,
@@ -109,6 +109,12 @@ export class SettingsState extends TextualGameState {
 
         this.htmlElement.querySelector(".category").classList.add("active");
         this.htmlElement.querySelector(".categoryButton").classList.add("active");
+
+        this.setActiveCategory(enumCategories.general);
+    }
+
+    onEnter(payload) {
+        this.onEnterCommon();
     }
 
     setActiveCategory(category) {
@@ -164,6 +170,6 @@ export class SettingsState extends TextualGameState {
     }
 
     onKeybindingsClicked() {
-        this.moveToStateAddGoBack("KeybindingsState");
+        this.switchToState("KeybindingsState");
     }
 }
