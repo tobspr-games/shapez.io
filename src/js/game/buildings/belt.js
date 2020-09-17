@@ -1,7 +1,7 @@
 import { Loader } from "../../core/loader";
 import { enumDirection } from "../../core/vector";
 import { SOUNDS } from "../../platform/sound";
-import { arrayBeltVariantToRotation, MetaBeltBaseBuilding } from "./belt_base";
+import { arrayBeltVariantToRotation, DefaultBeltBaseVariant, MetaBeltBaseBuilding } from "./belt_base";
 
 export class MetaBeltBuilding extends MetaBeltBaseBuilding {
     constructor() {
@@ -16,7 +16,13 @@ export class MetaBeltBuilding extends MetaBeltBaseBuilding {
         return SOUNDS.placeBelt;
     }
 
-    getPreviewSprite(rotationVariant) {
+    getAvailableVariants() {
+        return [DefaultBeltVariant];
+    }
+}
+
+export class DefaultBeltVariant extends DefaultBeltBaseVariant {
+    static getPreviewSprite(rotationVariant) {
         switch (arrayBeltVariantToRotation[rotationVariant]) {
             case enumDirection.top: {
                 return Loader.getSprite("sprites/buildings/belt_top.png");
@@ -33,7 +39,7 @@ export class MetaBeltBuilding extends MetaBeltBaseBuilding {
         }
     }
 
-    getBlueprintSprite(rotationVariant) {
+    static getBlueprintSprite(rotationVariant) {
         switch (arrayBeltVariantToRotation[rotationVariant]) {
             case enumDirection.top: {
                 return Loader.getSprite("sprites/blueprints/belt_top.png");

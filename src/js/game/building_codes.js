@@ -34,12 +34,12 @@ export const gBuildingVariants = {
  */
 export function registerBuildingVariant(id, meta, variant, rotationVariant = 0) {
     assert(!gBuildingVariants[id], "Duplicate id: " + id);
-    gBuildingVariants[id] = {
+    gBuildingVariants[id.toString()] = {
         metaClass: meta,
         variant,
         rotationVariant,
         // @ts-ignore
-        tileSize: new meta().getDimensions(variant),
+        tileSize: variant.getDimensions(),
     };
 }
 
@@ -67,7 +67,7 @@ export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) 
             data.variant === variant &&
             data.rotationVariant === rotationVariant
         ) {
-            return +key;
+            return key;
         }
     }
     assertAlways(
@@ -79,5 +79,5 @@ export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) 
             " / " +
             rotationVariant
     );
-    return 0;
+    return "0";
 }

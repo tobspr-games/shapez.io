@@ -4,7 +4,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 import { BeltReaderComponent } from "../components/belt_reader";
@@ -18,16 +18,16 @@ export class MetaReaderBuilding extends MetaBuilding {
         return "#25fff2";
     }
 
+    getAvailableVariants() {
+        return [DefaultReaderVariant];
+    }
+
     /**
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
         // @todo
         return true;
-    }
-
-    getDimensions() {
-        return new Vector(1, 1);
     }
 
     getShowWiresLayerPreview() {
@@ -97,5 +97,11 @@ export class MetaReaderBuilding extends MetaBuilding {
         );
 
         entity.addComponent(new BeltReaderComponent());
+    }
+}
+
+export class DefaultReaderVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
     }
 }

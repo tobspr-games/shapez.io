@@ -10,7 +10,7 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
-import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
+import { MetaMinerBuilding, enumMinerVariants, ChainableMinerVariant } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { getBuildingDataFromCode, getCodeFromBuildingData } from "../../building_codes";
 import { MetaHubBuilding } from "../../buildings/hub";
@@ -332,7 +332,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
                 // Select chained miner if available, since thats always desired once unlocked
                 if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
-                    this.currentVariant.set(enumMinerVariants.chainable);
+                    this.currentVariant.set(ChainableMinerVariant);
                 }
             } else {
                 this.currentMetaBuilding.set(null);

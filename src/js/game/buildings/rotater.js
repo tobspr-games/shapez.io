@@ -5,7 +5,7 @@ import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
@@ -22,38 +22,16 @@ export class MetaRotaterBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {GameRoot} root
-     * @param {string} variant
-     * @returns {Array<[string, string]>}
-     */
-    getAdditionalStatistics(root, variant) {
-        switch (variant) {
-            case defaultBuildingVariant: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater);
-                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
-            }
-            case enumRotaterVariants.ccw: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW);
-                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
-            }
-            case enumRotaterVariants.fl: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterFL);
-                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
-            }
-        }
-    }
-
-    /**
      *
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
-        let variants = [defaultBuildingVariant];
+        let variants = [DefaultRotaterVariant];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw)) {
-            variants.push(enumRotaterVariants.ccw);
+            variants.push(CCWRotaterVariant);
         }
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_fl)) {
-            variants.push(enumRotaterVariants.fl);
+            variants.push(FLRotaterVariant);
         }
         return variants;
     }
@@ -94,29 +72,76 @@ export class MetaRotaterBuilding extends MetaBuilding {
             })
         );
     }
+}
+
+export class DefaultRotaterVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @returns {Array<[string, string]>}
+     */
+    static getAdditionalStatistics(root) {
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater);
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+    }
 
     /**
      *
      * @param {Entity} entity
      * @param {number} rotationVariant
-     * @param {string} variant
      */
-    updateVariants(entity, rotationVariant, variant) {
-        switch (variant) {
-            case defaultBuildingVariant: {
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater;
-                break;
-            }
-            case enumRotaterVariants.ccw: {
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
-                break;
-            }
-            case enumRotaterVariants.fl: {
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterFL;
-                break;
-            }
-            default:
-                assertAlways(false, "Unknown rotater variant: " + variant);
-        }
+    static updateEntityComponents(entity, rotationVariant) {
+        entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater;
+    }
+}
+
+export class CCWRotaterVariant extends MetaBuildingVariant {
+    static getId() {
+        return enumRotaterVariants.ccw;
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @returns {Array<[string, string]>}
+     */
+    static getAdditionalStatistics(root) {
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW);
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {number} rotationVariant
+     */
+    static updateEntityComponents(entity, rotationVariant) {
+        entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
+    }
+}
+
+export class FLRotaterVariant extends MetaBuildingVariant {
+    static getId() {
+        return enumRotaterVariants.fl;
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @returns {Array<[string, string]>}
+     */
+    static getAdditionalStatistics(root) {
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterFL);
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+    }
+
+    /**
+     *
+     * @param {Entity} entity
+     * @param {number} rotationVariant
+     */
+    static updateEntityComponents(entity, rotationVariant) {
+        entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterFL;
     }
 }

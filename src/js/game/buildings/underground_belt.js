@@ -4,12 +4,13 @@ import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
 import { Entity } from "../entity";
-import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
+import { MetaBuilding, defaultBuildingVariant, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { globalConfig } from "../../core/config";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { T } from "../../translations";
+import { DefaultWireTunnelVariant } from "./wire_tunnel";
 
 /** @enum {string} */
 export const arrayUndergroundRotationVariantToMode = [
@@ -51,90 +52,15 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {number} rotation
-     * @param {number} rotationVariant
-     * @param {string} variant
-     * @param {Entity} entity
-     */
-    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
-        return overlayMatrices[rotationVariant][rotation];
-    }
-
-    /**
-     * @param {GameRoot} root
-     * @param {string} variant
-     * @returns {Array<[string, string]>}
-     */
-    getAdditionalStatistics(root, variant) {
-        const rangeTiles =
-            globalConfig.undergroundBeltMaxTilesByTier[enumUndergroundBeltVariantToTier[variant]];
-
-        const beltSpeed = root.hubGoals.getUndergroundBeltBaseSpeed();
-        return [
-            [
-                T.ingame.buildingPlacement.infoTexts.range,
-                T.ingame.buildingPlacement.infoTexts.tiles.replace("<x>", "" + rangeTiles),
-            ],
-            [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)],
-        ];
-    }
-
-    /**
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
+        /** @type {Array<typeof MetaBuildingVariant>} */
+        const variants = [DefaultUndergroundBeltVariant];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_underground_belt_tier_2)) {
-            return [defaultBuildingVariant, enumUndergroundBeltVariants.tier2];
+            variants.push(Tier2UndergroundBeltVariant);
         }
-        return super.getAvailableVariants(root);
-    }
-
-    /**
-     * @param {number} rotationVariant
-     * @param {string} variant
-     */
-    getPreviewSprite(rotationVariant, variant) {
-        let suffix = "";
-        if (variant !== defaultBuildingVariant) {
-            suffix = "-" + variant;
-        }
-
-        switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
-            case enumUndergroundBeltMode.sender:
-                return Loader.getSprite("sprites/buildings/underground_belt_entry" + suffix + ".png");
-            case enumUndergroundBeltMode.receiver:
-                return Loader.getSprite("sprites/buildings/underground_belt_exit" + suffix + ".png");
-            default:
-                assertAlways(false, "Invalid rotation variant");
-        }
-    }
-
-    /**
-     * @param {number} rotationVariant
-     * @param {string} variant
-     */
-    getBlueprintSprite(rotationVariant, variant) {
-        let suffix = "";
-        if (variant !== defaultBuildingVariant) {
-            suffix = "-" + variant;
-        }
-
-        switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
-            case enumUndergroundBeltMode.sender:
-                return Loader.getSprite("sprites/blueprints/underground_belt_entry" + suffix + ".png");
-            case enumUndergroundBeltMode.receiver:
-                return Loader.getSprite("sprites/blueprints/underground_belt_exit" + suffix + ".png");
-            default:
-                assertAlways(false, "Invalid rotation variant");
-        }
-    }
-
-    /**
-     * @param {number} rotationVariant
-     * @param {string} variant
-     */
-    getSprite(rotationVariant, variant) {
-        return this.getPreviewSprite(rotationVariant, variant);
+        return variants;
     }
 
     /**
@@ -163,6 +89,87 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
             })
         );
     }
+}
+
+export class DefaultUndergroundBeltVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
+    }
+
+    /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {Entity} entity
+     */
+    static getSpecialOverlayRenderMatrix(rotation, rotationVariant, entity) {
+        return overlayMatrices[rotationVariant][rotation];
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @returns {Array<[string, string]>}
+     */
+    static getAdditionalStatistics(root) {
+        const rangeTiles =
+            globalConfig.undergroundBeltMaxTilesByTier[enumUndergroundBeltVariantToTier[this.getId()]];
+
+        const beltSpeed = root.hubGoals.getUndergroundBeltBaseSpeed();
+        return [
+            [
+                T.ingame.buildingPlacement.infoTexts.range,
+                T.ingame.buildingPlacement.infoTexts.tiles.replace("<x>", "" + rangeTiles),
+            ],
+            [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)],
+        ];
+    }
+
+    /**
+     * @param {number} rotationVariant
+     * @param {MetaBuilding} building
+     */
+    static getPreviewSprite(rotationVariant, building) {
+        let suffix = "";
+        if (this.getId() !== defaultBuildingVariant) {
+            suffix = "-" + this.getId();
+        }
+
+        switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
+            case enumUndergroundBeltMode.sender:
+                return Loader.getSprite("sprites/buildings/underground_belt_entry" + suffix + ".png");
+            case enumUndergroundBeltMode.receiver:
+                return Loader.getSprite("sprites/buildings/underground_belt_exit" + suffix + ".png");
+            default:
+                assertAlways(false, "Invalid rotation variant");
+        }
+    }
+
+    /**
+     * @param {number} rotationVariant
+     * @param {MetaBuilding} building
+     */
+    static getBlueprintSprite(rotationVariant, building) {
+        let suffix = "";
+        if (this.getId() !== defaultBuildingVariant) {
+            suffix = "-" + this.getId();
+        }
+
+        switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
+            case enumUndergroundBeltMode.sender:
+                return Loader.getSprite("sprites/blueprints/underground_belt_entry" + suffix + ".png");
+            case enumUndergroundBeltMode.receiver:
+                return Loader.getSprite("sprites/blueprints/underground_belt_exit" + suffix + ".png");
+            default:
+                assertAlways(false, "Invalid rotation variant");
+        }
+    }
+
+    /**
+     * @param {number} rotationVariant
+     * @param {MetaBuilding} building
+     */
+    static getSprite(rotationVariant, building) {
+        return this.getPreviewSprite(rotationVariant, building);
+    }
 
     /**
      * Should compute the optimal rotation variant on the given tile
@@ -170,14 +177,13 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      * @param {GameRoot} param0.root
      * @param {Vector} param0.tile
      * @param {number} param0.rotation
-     * @param {string} param0.variant
      * @param {Layer} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
+    static computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, layer }) {
         const searchDirection = enumAngleToDirection[rotation];
         const searchVector = enumDirectionToVector[searchDirection];
-        const tier = enumUndergroundBeltVariantToTier[variant];
+        const tier = enumUndergroundBeltVariantToTier[this.getId()];
 
         const targetRotation = (rotation + 180) % 360;
         const targetSenderRotation = rotation;
@@ -231,10 +237,10 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      *
      * @param {Entity} entity
      * @param {number} rotationVariant
-     * @param {string} variant
+     * @param {GameRoot} root
      */
-    updateVariants(entity, rotationVariant, variant) {
-        entity.components.UndergroundBelt.tier = enumUndergroundBeltVariantToTier[variant];
+    static updateEntityComponents(entity, rotationVariant, root) {
+        entity.components.UndergroundBelt.tier = enumUndergroundBeltVariantToTier[this.getId()];
 
         switch (arrayUndergroundRotationVariantToMode[rotationVariant]) {
             case enumUndergroundBeltMode.sender: {
@@ -262,5 +268,11 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
             default:
                 assertAlways(false, "Invalid rotation variant");
         }
+    }
+}
+
+export class Tier2UndergroundBeltVariant extends DefaultUndergroundBeltVariant {
+    static getId() {
+        return enumUndergroundBeltVariants.tier2;
     }
 }

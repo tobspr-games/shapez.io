@@ -8,7 +8,7 @@ import {
 } from "../components/item_processor";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 
 export class MetaFilterBuilding extends MetaBuilding {
@@ -20,16 +20,16 @@ export class MetaFilterBuilding extends MetaBuilding {
         return "#c45c2e";
     }
 
+    getAvailableVariants() {
+        return [DefaultFilterVariant];
+    }
+
     /**
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
         // @todo
         return true;
-    }
-
-    getDimensions() {
-        return new Vector(2, 1);
     }
 
     getShowWiresLayerPreview() {
@@ -86,5 +86,15 @@ export class MetaFilterBuilding extends MetaBuilding {
                 processingRequirement: enumItemProcessorRequirements.filter,
             })
         );
+    }
+}
+
+export class DefaultFilterVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
+    }
+
+    static getDimensions() {
+        return new Vector(2, 1);
     }
 }

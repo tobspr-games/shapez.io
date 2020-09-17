@@ -183,9 +183,7 @@ export class MetaBuildingVariant {
      * @param {number} rotationVariant
      * @param {GameRoot} root
      */
-    static updateEntityComponents(entity, rotationVariant, root) {
-        abstract;
-    }
+    static updateEntityComponents(entity, rotationVariant, root) {}
 
     /**
      * Returns whether this building is rotateable

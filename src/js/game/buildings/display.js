@@ -1,7 +1,7 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { DisplayComponent } from "../components/display";
 
@@ -14,16 +14,16 @@ export class MetaDisplayBuilding extends MetaBuilding {
         return "#aaaaaa";
     }
 
+    getAvailableVariants() {
+        return [DefaultDisplayVariant];
+    }
+
     /**
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
         // @todo
         return true;
-    }
-
-    getDimensions() {
-        return new Vector(1, 1);
     }
 
     getShowWiresLayerPreview() {
@@ -47,5 +47,11 @@ export class MetaDisplayBuilding extends MetaBuilding {
             })
         );
         entity.addComponent(new DisplayComponent());
+    }
+}
+
+export class DefaultDisplayVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
     }
 }

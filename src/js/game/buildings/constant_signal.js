@@ -1,7 +1,7 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { ConstantSignalComponent } from "../components/constant_signal";
 
@@ -12,6 +12,10 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
 
     getSilhouetteColor() {
         return "#2bafda";
+    }
+
+    getAvailableVariants() {
+        return [DefaultConstantSignalVariant];
     }
 
     /**
@@ -25,10 +29,6 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
     /** @returns {"wires"} **/
     getLayer() {
         return "wires";
-    }
-
-    getDimensions() {
-        return new Vector(1, 1);
     }
 
     getRenderPins() {
@@ -52,5 +52,11 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
             })
         );
         entity.addComponent(new ConstantSignalComponent({}));
+    }
+}
+
+export class DefaultConstantSignalVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
     }
 }

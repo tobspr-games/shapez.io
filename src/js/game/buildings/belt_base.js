@@ -4,7 +4,7 @@ import { SOUNDS } from "../../platform/sound";
 import { T } from "../../translations";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
@@ -20,21 +20,7 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return true;
     }
 
-    /**
-     * @param {GameRoot} root
-     * @param {string} variant
-     * @returns {Array<[string, string]>}
-     */
-    getAdditionalStatistics(root, variant) {
-        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
-        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
-    }
-
     getStayInPlacementMode() {
-        return true;
-    }
-
-    getRotateAutomaticallyWhilePlacing() {
         return true;
     }
 
@@ -42,23 +28,8 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
         return SOUNDS.placeBelt;
     }
 
-    getSprite() {
-        return null;
-    }
-
     getIsReplaceable() {
         return true;
-    }
-
-    /**
-     *
-     * @param {number} rotation
-     * @param {number} rotationVariant
-     * @param {string} variant
-     * @param {Entity} entity
-     */
-    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
-        return beltOverlayMatrices[entity.components.Belt.direction][rotation];
     }
 
     /**
@@ -72,13 +43,46 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
             })
         );
     }
+}
+
+export class DefaultBeltBaseVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @returns {Array<[string, string]>}
+     */
+    static getAdditionalStatistics(root) {
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
+    }
+
+    static getRotateAutomaticallyWhilePlacing() {
+        return true;
+    }
+
+    static getSprite() {
+        return null;
+    }
+
+    /**
+     *
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {Entity} entity
+     */
+    static getSpecialOverlayRenderMatrix(rotation, rotationVariant, entity) {
+        return beltOverlayMatrices[entity.components.Belt.direction][rotation];
+    }
 
     /**
      *
      * @param {Entity} entity
      * @param {number} rotationVariant
      */
-    updateVariants(entity, rotationVariant) {
+    static updateEntityComponents(entity, rotationVariant) {
         entity.components.Belt.direction = arrayBeltVariantToRotation[rotationVariant];
     }
 
@@ -88,11 +92,10 @@ export class MetaBeltBaseBuilding extends MetaBuilding {
      * @param {GameRoot} param0.root
      * @param {Vector} param0.tile
      * @param {number} param0.rotation
-     * @param {string} param0.variant
      * @param {Layer} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
-    computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
+    static computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, layer }) {
         const topDirection = enumAngleToDirection[rotation];
         const rightDirection = enumAngleToDirection[(rotation + 90) % 360];
         const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];

@@ -96,7 +96,7 @@ export class StaticMapEntityComponent extends Component {
 
         this.origin = origin;
         this.rotation = rotation;
-        this.code = code;
+        this.code = code.toString();
         this.originalRotation = originalRotation;
     }
 

@@ -1,28 +1,90 @@
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
-import { MetaBeltBuilding } from "./buildings/belt";
-import { MetaBeltBaseBuilding } from "./buildings/belt_base";
-import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
-import { MetaHubBuilding } from "./buildings/hub";
-import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
-import { MetaMixerBuilding } from "./buildings/mixer";
-import { enumPainterVariants, MetaPainterBuilding } from "./buildings/painter";
-import { enumRotaterVariants, MetaRotaterBuilding } from "./buildings/rotater";
-import { enumSplitterVariants, MetaSplitterBuilding } from "./buildings/splitter";
-import { MetaStackerBuilding } from "./buildings/stacker";
-import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
-import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
-import { MetaWireBuilding } from "./buildings/wire";
+import { DefaultBeltVariant, MetaBeltBuilding } from "./buildings/belt";
+import { DefaultBeltBaseVariant, MetaBeltBaseBuilding } from "./buildings/belt_base";
+import {
+    DefaultCutterVariant,
+    enumCutterVariants,
+    MetaCutterBuilding,
+    QuadCutterVariant,
+} from "./buildings/cutter";
+import { DefaultHubVariant, MetaHubBuilding } from "./buildings/hub";
+import {
+    ChainableMinerVariant,
+    DefaultMinerVariant,
+    enumMinerVariants,
+    MetaMinerBuilding,
+} from "./buildings/miner";
+import { DefaultMixerVariant, MetaMixerBuilding } from "./buildings/mixer";
+import {
+    DefaultPainterVariant,
+    DoublePainterVariant,
+    enumPainterVariants,
+    MetaPainterBuilding,
+    MirroredPainterVariant,
+    QuadPainterVariant,
+} from "./buildings/painter";
+import {
+    CCWRotaterVariant,
+    DefaultRotaterVariant,
+    enumRotaterVariants,
+    FLRotaterVariant,
+    MetaRotaterBuilding,
+} from "./buildings/rotater";
+import {
+    CompactInverseMergerVariant,
+    CompactInverseSplitterVariant,
+    CompactMergerVariant,
+    CompactSplitterVariant,
+    DefaultSplitterVariant,
+    enumSplitterVariants,
+    MetaSplitterBuilding,
+} from "./buildings/splitter";
+import { DefaultStackerVariant, MetaStackerBuilding } from "./buildings/stacker";
+import {
+    DefaultTrashVariant,
+    enumTrashVariants,
+    MetaTrashBuilding,
+    StorageTrashVariant,
+} from "./buildings/trash";
+import {
+    DefaultUndergroundBeltVariant,
+    enumUndergroundBeltVariants,
+    MetaUndergroundBeltBuilding,
+    Tier2UndergroundBeltVariant,
+} from "./buildings/underground_belt";
+import { DefaultWireVariant, MetaWireBuilding } from "./buildings/wire";
 import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
-import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
-import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
-import { MetaLeverBuilding } from "./buildings/lever";
-import { MetaFilterBuilding } from "./buildings/filter";
-import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire_tunnel";
-import { MetaDisplayBuilding } from "./buildings/display";
-import { MetaVirtualProcessorBuilding, enumVirtualProcessorVariants } from "./buildings/virtual_processor";
-import { MetaReaderBuilding } from "./buildings/reader";
+import { DefaultConstantSignalVariant, MetaConstantSignalBuilding } from "./buildings/constant_signal";
+import {
+    MetaLogicGateBuilding,
+    enumLogicGateVariants,
+    ANDGateVariant,
+    NOTGateVariant,
+    XORGateVariant,
+    ORGateVariant,
+    TransistorVariant,
+} from "./buildings/logic_gate";
+import { DefaultLeverVariant, MetaLeverBuilding } from "./buildings/lever";
+import { DefaultFilterVariant, MetaFilterBuilding } from "./buildings/filter";
+import {
+    MetaWireTunnelBuilding,
+    enumWireTunnelVariants,
+    DefaultWireTunnelVariant,
+    CoatedWireTunnelVariant,
+} from "./buildings/wire_tunnel";
+import { DefaultDisplayVariant, MetaDisplayBuilding } from "./buildings/display";
+import {
+    MetaVirtualProcessorBuilding,
+    enumVirtualProcessorVariants,
+    CutterVirtualProcessorVariant,
+    AnalyzerVirtualProcessorVariant,
+    RotaterVirtualProcessorVariant,
+    UnstackerVirtualProcessorVariant,
+    ShapeCompareProcessorVariant,
+} from "./buildings/virtual_processor";
+import { DefaultReaderVariant, MetaReaderBuilding } from "./buildings/reader";
 
 const logger = createLogger("building_registry");
 
@@ -49,93 +111,93 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaReaderBuilding);
 
     // Belt
-    registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(2, MetaBeltBaseBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(3, MetaBeltBaseBuilding, defaultBuildingVariant, 2);
+    registerBuildingVariant(1, MetaBeltBaseBuilding, DefaultBeltVariant, 0);
+    registerBuildingVariant(2, MetaBeltBaseBuilding, DefaultBeltVariant, 1);
+    registerBuildingVariant(3, MetaBeltBaseBuilding, DefaultBeltVariant, 2);
 
     // Splitter
-    registerBuildingVariant(4, MetaSplitterBuilding);
-    registerBuildingVariant(5, MetaSplitterBuilding, enumSplitterVariants.compact);
-    registerBuildingVariant(6, MetaSplitterBuilding, enumSplitterVariants.compactInverse);
-    registerBuildingVariant(47, MetaSplitterBuilding, enumSplitterVariants.compactMerge);
-    registerBuildingVariant(48, MetaSplitterBuilding, enumSplitterVariants.compactMergeInverse);
+    registerBuildingVariant(4, MetaSplitterBuilding, DefaultSplitterVariant);
+    registerBuildingVariant(5, MetaSplitterBuilding, CompactSplitterVariant);
+    registerBuildingVariant(6, MetaSplitterBuilding, CompactInverseSplitterVariant);
+    registerBuildingVariant(47, MetaSplitterBuilding, CompactMergerVariant);
+    registerBuildingVariant(48, MetaSplitterBuilding, CompactInverseMergerVariant);
 
     // Miner
-    registerBuildingVariant(7, MetaMinerBuilding);
-    registerBuildingVariant(8, MetaMinerBuilding, enumMinerVariants.chainable);
+    registerBuildingVariant(7, MetaMinerBuilding, DefaultMinerVariant);
+    registerBuildingVariant(8, MetaMinerBuilding, ChainableMinerVariant);
 
     // Cutter
-    registerBuildingVariant(9, MetaCutterBuilding);
-    registerBuildingVariant(10, MetaCutterBuilding, enumCutterVariants.quad);
+    registerBuildingVariant(9, MetaCutterBuilding, DefaultCutterVariant);
+    registerBuildingVariant(10, MetaCutterBuilding, QuadCutterVariant);
 
     // Rotater
-    registerBuildingVariant(11, MetaRotaterBuilding);
-    registerBuildingVariant(12, MetaRotaterBuilding, enumRotaterVariants.ccw);
-    registerBuildingVariant(13, MetaRotaterBuilding, enumRotaterVariants.fl);
+    registerBuildingVariant(11, MetaRotaterBuilding, DefaultRotaterVariant);
+    registerBuildingVariant(12, MetaRotaterBuilding, CCWRotaterVariant);
+    registerBuildingVariant(13, MetaRotaterBuilding, FLRotaterVariant);
 
     // Stacker
-    registerBuildingVariant(14, MetaStackerBuilding);
+    registerBuildingVariant(14, MetaStackerBuilding, DefaultStackerVariant);
 
     // Mixer
-    registerBuildingVariant(15, MetaMixerBuilding);
+    registerBuildingVariant(15, MetaMixerBuilding, DefaultMixerVariant);
 
     // Painter
-    registerBuildingVariant(16, MetaPainterBuilding);
-    registerBuildingVariant(17, MetaPainterBuilding, enumPainterVariants.mirrored);
-    registerBuildingVariant(18, MetaPainterBuilding, enumPainterVariants.double);
-    registerBuildingVariant(19, MetaPainterBuilding, enumPainterVariants.quad);
+    registerBuildingVariant(16, MetaPainterBuilding, DefaultPainterVariant);
+    registerBuildingVariant(17, MetaPainterBuilding, MirroredPainterVariant);
+    registerBuildingVariant(18, MetaPainterBuilding, DoublePainterVariant);
+    registerBuildingVariant(19, MetaPainterBuilding, QuadPainterVariant);
 
     // Trash
-    registerBuildingVariant(20, MetaTrashBuilding);
-    registerBuildingVariant(21, MetaTrashBuilding, enumTrashVariants.storage);
+    registerBuildingVariant(20, MetaTrashBuilding, DefaultTrashVariant);
+    registerBuildingVariant(21, MetaTrashBuilding, StorageTrashVariant);
 
     // Underground belt
-    registerBuildingVariant(22, MetaUndergroundBeltBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(23, MetaUndergroundBeltBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(24, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 0);
-    registerBuildingVariant(25, MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2, 1);
+    registerBuildingVariant(22, MetaUndergroundBeltBuilding, DefaultUndergroundBeltVariant, 0);
+    registerBuildingVariant(23, MetaUndergroundBeltBuilding, DefaultUndergroundBeltVariant, 1);
+    registerBuildingVariant(24, MetaUndergroundBeltBuilding, Tier2UndergroundBeltVariant, 0);
+    registerBuildingVariant(25, MetaUndergroundBeltBuilding, Tier2UndergroundBeltVariant, 1);
 
     // Hub
-    registerBuildingVariant(26, MetaHubBuilding);
+    registerBuildingVariant(26, MetaHubBuilding, DefaultHubVariant);
 
     // Wire
-    registerBuildingVariant(27, MetaWireBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(28, MetaWireBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(29, MetaWireBuilding, defaultBuildingVariant, 2);
-    registerBuildingVariant(30, MetaWireBuilding, defaultBuildingVariant, 3);
+    registerBuildingVariant(27, MetaWireBuilding, DefaultWireVariant, 0);
+    registerBuildingVariant(28, MetaWireBuilding, DefaultWireVariant, 1);
+    registerBuildingVariant(29, MetaWireBuilding, DefaultWireVariant, 2);
+    registerBuildingVariant(30, MetaWireBuilding, DefaultWireVariant, 3);
 
     // Constant signal
-    registerBuildingVariant(31, MetaConstantSignalBuilding);
+    registerBuildingVariant(31, MetaConstantSignalBuilding, DefaultConstantSignalVariant);
 
     // Logic gate
-    registerBuildingVariant(32, MetaLogicGateBuilding);
-    registerBuildingVariant(34, MetaLogicGateBuilding, enumLogicGateVariants.not);
-    registerBuildingVariant(35, MetaLogicGateBuilding, enumLogicGateVariants.xor);
-    registerBuildingVariant(36, MetaLogicGateBuilding, enumLogicGateVariants.or);
-    registerBuildingVariant(38, MetaLogicGateBuilding, enumLogicGateVariants.transistor);
+    registerBuildingVariant(32, MetaLogicGateBuilding, ANDGateVariant);
+    registerBuildingVariant(34, MetaLogicGateBuilding, NOTGateVariant);
+    registerBuildingVariant(35, MetaLogicGateBuilding, XORGateVariant);
+    registerBuildingVariant(36, MetaLogicGateBuilding, ORGateVariant);
+    registerBuildingVariant(38, MetaLogicGateBuilding, TransistorVariant);
 
     // Lever
-    registerBuildingVariant(33, MetaLeverBuilding);
+    registerBuildingVariant(33, MetaLeverBuilding, DefaultLeverVariant);
 
     // Filter
-    registerBuildingVariant(37, MetaFilterBuilding);
+    registerBuildingVariant(37, MetaFilterBuilding, DefaultFilterVariant);
 
     // Wire tunnel
-    registerBuildingVariant(39, MetaWireTunnelBuilding);
-    registerBuildingVariant(41, MetaWireTunnelBuilding, enumWireTunnelVariants.coating);
+    registerBuildingVariant(39, MetaWireTunnelBuilding, DefaultWireTunnelVariant);
+    registerBuildingVariant(41, MetaWireTunnelBuilding, CoatedWireTunnelVariant);
 
     // Display
-    registerBuildingVariant(40, MetaDisplayBuilding);
+    registerBuildingVariant(40, MetaDisplayBuilding, DefaultDisplayVariant);
 
     // Virtual Processor
-    registerBuildingVariant(42, MetaVirtualProcessorBuilding);
-    registerBuildingVariant(43, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.analyzer);
-    registerBuildingVariant(44, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.rotater);
-    registerBuildingVariant(45, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.unstacker);
-    registerBuildingVariant(46, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.shapecompare);
+    registerBuildingVariant(42, MetaVirtualProcessorBuilding, CutterVirtualProcessorVariant);
+    registerBuildingVariant(43, MetaVirtualProcessorBuilding, AnalyzerVirtualProcessorVariant);
+    registerBuildingVariant(44, MetaVirtualProcessorBuilding, RotaterVirtualProcessorVariant);
+    registerBuildingVariant(45, MetaVirtualProcessorBuilding, UnstackerVirtualProcessorVariant);
+    registerBuildingVariant(46, MetaVirtualProcessorBuilding, ShapeCompareProcessorVariant);
 
     // Reader
-    registerBuildingVariant(49, MetaReaderBuilding);
+    registerBuildingVariant(49, MetaReaderBuilding, DefaultReaderVariant);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

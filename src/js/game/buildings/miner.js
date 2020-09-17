@@ -2,7 +2,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { MinerComponent } from "../components/miner";
 import { Entity } from "../entity";
-import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
+import { MetaBuilding, defaultBuildingVariant, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
@@ -23,34 +23,16 @@ export class MetaMinerBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {GameRoot} root
-     * @param {string} variant
-     * @returns {Array<[string, string]>}
-     */
-    getAdditionalStatistics(root, variant) {
-        const speed = root.hubGoals.getMinerBaseSpeed();
-        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
-    }
-
-    /**
      *
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
+        /** @type {Array<typeof MetaBuildingVariant>} */
+        const variants = [DefaultMinerVariant];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
-            return [defaultBuildingVariant, enumMinerVariants.chainable];
+            variants.push(ChainableMinerVariant);
         }
-        return super.getAvailableVariants(root);
-    }
-
-    /**
-     * @param {number} rotation
-     * @param {number} rotationVariant
-     * @param {string} variant
-     * @param {Entity} entity
-     */
-    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
-        return overlayMatrix;
+        return variants;
     }
 
     /**
@@ -65,14 +47,44 @@ export class MetaMinerBuilding extends MetaBuilding {
             })
         );
     }
+}
+
+export class DefaultMinerVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
+    }
 
     /**
-     *
-     * @param {Entity} entity
-     * @param {number} rotationVariant
+     * @param {GameRoot} root
      * @param {string} variant
+     * @returns {Array<[string, string]>}
      */
-    updateVariants(entity, rotationVariant, variant) {
-        entity.components.Miner.chainable = variant === enumMinerVariants.chainable;
+    getAdditionalStatistics(root, variant) {
+        const speed = root.hubGoals.getMinerBaseSpeed();
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+    }
+
+    static getSpecialOverlayRenderMatrix() {
+        return overlayMatrix;
+    }
+
+    /**
+     * @param {Entity} entity
+     */
+    static updateEntityComponents(entity) {
+        entity.components.Miner.chainable = false;
+    }
+}
+
+export class ChainableMinerVariant extends DefaultMinerVariant {
+    static getId() {
+        return enumMinerVariants.chainable;
+    }
+
+    /**
+     * @param {Entity} entity
+     */
+    static updateEntityComponents(entity) {
+        entity.components.Miner.chainable = true;
     }
 }

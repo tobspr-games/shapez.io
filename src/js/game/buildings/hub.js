@@ -3,7 +3,7 @@ import { HubComponent } from "../components/hub";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../meta_building";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 
 export class MetaHubBuilding extends MetaBuilding {
@@ -11,25 +11,12 @@ export class MetaHubBuilding extends MetaBuilding {
         super("hub");
     }
 
-    getDimensions() {
-        return new Vector(4, 4);
-    }
-
     getSilhouetteColor() {
         return "#eb5555";
     }
 
-    getIsRotateable() {
-        return false;
-    }
-
-    getBlueprintSprite() {
-        return null;
-    }
-
-    getSprite() {
-        // We render it ourself
-        return null;
+    getAvailableVariants() {
+        return [DefaultHubVariant];
     }
 
     getIsRemovable() {
@@ -137,5 +124,28 @@ export class MetaHubBuilding extends MetaBuilding {
                 ],
             })
         );
+    }
+}
+
+export class DefaultHubVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
+    }
+
+    static getIsRotateable() {
+        return false;
+    }
+
+    static getBlueprintSprite() {
+        return null;
+    }
+
+    static getSprite() {
+        // We render it ourself
+        return null;
+    }
+
+    static getDimensions() {
+        return new Vector(4, 4);
     }
 }

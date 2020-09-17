@@ -1,6 +1,6 @@
 import { Vector } from "../../core/vector";
 import { Entity } from "../entity";
-import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
+import { MetaBuilding, defaultBuildingVariant, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { WireTunnelComponent } from "../components/wire_tunnel";
 import { generateMatrixRotations } from "../../core/utils";
@@ -32,36 +32,13 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
         return true;
     }
 
-    /**
-     *
-     * @param {number} rotation
-     * @param {number} rotationVariant
-     * @param {string} variant
-     * @param {Entity} entity
-     */
-    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
-        return wireTunnelOverlayMatrices[variant][rotation];
-    }
-
-    getIsRotateable(variant) {
-        return variant !== defaultBuildingVariant;
-    }
-
-    getDimensions() {
-        return new Vector(1, 1);
-    }
-
     getAvailableVariants() {
-        return [defaultBuildingVariant, enumWireTunnelVariants.coating];
+        return [DefaultWireTunnelVariant, CoatedWireTunnelVariant];
     }
 
     /** @returns {"wires"} **/
     getLayer() {
         return "wires";
-    }
-
-    getRotateAutomaticallyWhilePlacing() {
-        return true;
     }
 
     getStayInPlacementMode() {
@@ -75,13 +52,58 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
     setupEntityComponents(entity) {
         entity.addComponent(new WireTunnelComponent({}));
     }
+}
+
+export class DefaultWireTunnelVariant extends MetaBuildingVariant {
+    /**
+     * @returns {string} Variant id
+     */
+    static getId() {
+        return defaultBuildingVariant;
+    }
+
+    /**
+     *
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {Entity} entity
+     */
+    static getSpecialOverlayRenderMatrix(rotation, rotationVariant, entity) {
+        return wireTunnelOverlayMatrices[this.getId()][rotation];
+    }
+
+    static getRotateAutomaticallyWhilePlacing() {
+        return true;
+    }
 
     /**
      * @param {Entity} entity
-     * @param {number} rotationVariant
-     * @param {string} variant
      */
-    updateVariants(entity, rotationVariant, variant) {
-        entity.components.WireTunnel.multipleDirections = variant === defaultBuildingVariant;
+    static updateEntityComponents(entity) {
+        entity.components.WireTunnel.multipleDirections = true;
+    }
+
+    static getIsRotateable() {
+        return false;
+    }
+}
+
+export class CoatedWireTunnelVariant extends DefaultWireTunnelVariant {
+    /**
+     * @returns {string} Variant id
+     */
+    static getId() {
+        return "coating";
+    }
+
+    /**
+     * @param {Entity} entity
+     */
+    static updateEntityComponents(entity) {
+        entity.components.WireTunnel.multipleDirections = false;
+    }
+
+    static getIsRotateable() {
+        return true;
     }
 }

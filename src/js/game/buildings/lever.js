@@ -1,7 +1,7 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { LeverComponent } from "../components/lever";
 
@@ -15,20 +15,16 @@ export class MetaLeverBuilding extends MetaBuilding {
         return "#1a678b";
     }
 
+    getAvailableVariants() {
+        return [DefaultLeverVariant];
+    }
+
     /**
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
         // @todo
         return true;
-    }
-
-    getDimensions() {
-        return new Vector(1, 1);
-    }
-
-    getSprite() {
-        return null;
     }
 
     getShowWiresLayerPreview() {
@@ -53,5 +49,19 @@ export class MetaLeverBuilding extends MetaBuilding {
         );
 
         entity.addComponent(new LeverComponent({}));
+    }
+}
+
+export class DefaultLeverVariant extends MetaBuildingVariant {
+    static getId() {
+        return defaultBuildingVariant;
+    }
+
+    static getDimensions() {
+        return new Vector(1, 1);
+    }
+
+    static getSprite() {
+        return null;
     }
 }
