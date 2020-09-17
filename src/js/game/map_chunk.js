@@ -5,11 +5,10 @@ import { clamp, fastArrayDeleteValueIfContained, make2DUndefinedArray } from "..
 import { Vector } from "../core/vector";
 import { BaseItem } from "./base_item";
 import { enumColors } from "./colors";
-import { allShapeData } from "./shapes";
 import { Entity } from "./entity";
 import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
 import { GameRoot } from "./root";
-import { enumSubShape } from "./shapes";
+import { enumSubShape } from "./shape_definition";
 import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("map_chunk");
@@ -181,58 +180,56 @@ export class MapChunk {
      */
     internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks) {
         /** @type {[enumSubShape, enumSubShape, enumSubShape, enumSubShape]} */
-        let quads = null;
+        let subShapes = null;
 
         let weights = {};
-        for (let s in allShapeData) {
-            const data = allShapeData[s];
-            if (!data.spawnData || distanceToOriginInChunks < data.spawnData.minDistance) {
-                continue;
-            }
-            const chances = data.spawnData.chances;
-            const chance = Math.round(
-                clamp(
-                    chances.min + (distanceToOriginInChunks - data.spawnData.minDistance) * chances.distanceMultiplier,
-                    0,
-                    chances.max
-                )
-            );
-            if (chance) {
-                weights[data.id] = chance;
-            }
+
+        // Later there is a mix of everything
+        weights = {
+            [enumSubShape.rect]: 100,
+            [enumSubShape.circle]: Math.round(50 + clamp(distanceToOriginInChunks * 2, 0, 50)),
+            [enumSubShape.star]: Math.round(20 + clamp(distanceToOriginInChunks, 0, 30)),
+            [enumSubShape.windmill]: Math.round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
+        };
+
+        if (distanceToOriginInChunks < 7) {
+            // Initial chunks can not spawn the good stuff
+            weights[enumSubShape.star] = 0;
+            weights[enumSubShape.windmill] = 0;
         }
-        quads = [
-            this.internalGenerateRandomSubShape(rng, weights),
-            this.internalGenerateRandomSubShape(rng, weights),
-            this.internalGenerateRandomSubShape(rng, weights),
-            this.internalGenerateRandomSubShape(rng, weights),
-        ];
+
         if (distanceToOriginInChunks < 10) {
             // Initial chunk patches always have the same shape
-            quads = [quads[0], quads[0], quads[0], quads[0]];
+            const subShape = this.internalGenerateRandomSubShape(rng, weights);
+            subShapes = [subShape, subShape, subShape, subShape];
         } else if (distanceToOriginInChunks < 15) {
             // Later patches can also have mixed ones
-            quads = [quads[0], quads[0], quads[1], quads[1]];
+            const subShapeA = this.internalGenerateRandomSubShape(rng, weights);
+            const subShapeB = this.internalGenerateRandomSubShape(rng, weights);
+            subShapes = [subShapeA, subShapeA, subShapeB, subShapeB];
         } else {
-            // if (quads[0] == quads[2] && quads[0] != quads[3] && quads[0] != quads[1]) {
-            //     quads = [quads[0], quads[2], quads[1], quads[3]];
-            // }
-            // if (quads[1] == quads[3] && quads[1] != quads[0] && quads[1] != quads[2]) {
-            //     quads = [quads[0], quads[2], quads[1], quads[3]];
-            // }
+            // Finally there is a mix of everything
+            subShapes = [
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+            ];
         }
 
-        if (
-            quads.filter(q => q == quads[0]).length > allShapeData[quads[0]].spawnData.maxQuarters ||
-            quads.filter(q => q == quads[1]).length > allShapeData[quads[1]].spawnData.maxQuarters ||
-            quads.filter(q => q == quads[2]).length > allShapeData[quads[2]].spawnData.maxQuarters
-        ) {
-            return this.internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks);
+        // Makes sure windmills never spawn as whole
+        let windmillCount = 0;
+        for (let i = 0; i < subShapes.length; ++i) {
+            if (subShapes[i] === enumSubShape.windmill) {
+                ++windmillCount;
+            }
+        }
+        if (windmillCount > 1) {
+            subShapes[0] = enumSubShape.rect;
+            subShapes[1] = enumSubShape.rect;
         }
 
-        let colors = /** @type {[string, string, string, string]} */ (quads.map(q => allShapeData[q].spawnData.color));
-
-        const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapesAndColors(quads, colors);
+        const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
         this.internalGeneratePatch(
             rng,
             shapePatchSize,

@@ -75,7 +75,7 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
-                <span class="updateLabel">Geo<span style="color:#66bb6a">Z</span></span>
+                <span class="updateLabel">Wires update!</span>
             </div>
 
 
@@ -119,7 +119,7 @@ export class MainMenuState extends GameState {
 
                 <div class="author">${T.mainMenu.madeBy.replace(
                     "<author-link>",
-                    '<a class="producerLink" target="_blank">Tobias Springer & modded by Exund</a>'
+                    '<a class="producerLink" target="_blank">Tobias Springer</a>'
                 )}</div>
 
             </div>

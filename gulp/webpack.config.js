@@ -14,9 +14,6 @@ module.exports = ({ watch = false, standalone = false }) => {
             "bundle.js": [path.resolve(__dirname, "../src/js/main.js")],
         },
         watch,
-        watchOptions: {
-            poll: 1000
-        },
         node: {
             fs: "empty",
         },

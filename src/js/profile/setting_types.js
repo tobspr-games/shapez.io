@@ -185,10 +185,6 @@ export class BoolSetting extends BaseSetting {
     }
 
     getHtml() {
-        if (!T.settings.labels[this.id].description) {
-            let a = T;
-            let b = a;
-        }
         return `
         <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
             ${this.enabled ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}

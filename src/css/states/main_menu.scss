@@ -164,28 +164,24 @@
 
         position: relative;
         .updateLabel {
-            background-color: $mainBgColor;
-            border-radius: 999em;
-            padding: 0px 10px;
             position: absolute;
-            transform: translateX(50%) rotate(-5deg) scale(1.5);
-            color: #7d808a;
-            //color: $colorRedBright;
+            transform: translateX(50%) rotate(-5deg);
+            color: $colorRedBright;
             @include Heading;
-            //text-transform: uppercase;
+            text-transform: uppercase;
             font-weight: bold;
             @include S(right, 40px);
             @include S(bottom, 20px);
 
             @include InlineAnimation(1.3s ease-in-out infinite) {
                 50% {
-                    transform: translateX(50%) rotate(-7deg) scale(1.65);
+                    transform: translateX(50%) rotate(-7deg) scale(1.1);
                 }
             }
 
-            /*@include DarkThemeOverride {
+            @include DarkThemeOverride {
                 color: $colorBlueBright;
-            }*/
+            }
         }
     }
 

@@ -7,7 +7,7 @@ import { Application } from "../application";
 import { Signal, STOP_PROPAGATION } from "../core/signal";
 import { IS_MOBILE } from "../core/config";
 import { T } from "../translations";
-export function key(str) {
+function key(str) {
     return str.toUpperCase().charCodeAt(0);
 }
 
