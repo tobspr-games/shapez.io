@@ -4,7 +4,7 @@ import { round2Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { getBuildingDataFromCode } from "./building_codes";
 import { Entity } from "./entity";
-import { MetaBuilding } from "./meta_building";
+import { MetaBuilding, MetaBuildingVariant } from "./meta_building";
 import { GameRoot } from "./root";
 import { WireNetwork } from "./systems/wire";
 import { globalConfig } from "../core/config";
@@ -98,7 +98,7 @@ export class GameLogic {
      * @param {number} param0.rotation
      * @param {number} param0.originalRotation
      * @param {number} param0.rotationVariant
-     * @param {string} param0.variant
+     * @param {typeof MetaBuildingVariant} param0.variant
      * @param {MetaBuilding} param0.building
      * @returns {Entity}
      */
@@ -283,10 +283,9 @@ export class GameLogic {
         }
 
         const data = getBuildingDataFromCode(staticComp.code);
-        const overlayMatrix = data.metaInstance.getSpecialOverlayRenderMatrix(
+        const overlayMatrix = data.variant.getSpecialOverlayRenderMatrix(
             staticComp.rotation,
             data.rotationVariant,
-            data.variant,
             entity
         );
         // Always the same

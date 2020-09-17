@@ -116,8 +116,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         const variant = this.currentVariant.get();
 
-        this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id][variant].name;
-        this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id][variant].description;
+        this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id][variant.getId()].name;
+        this.buildingInfoElements.descText.innerHTML =
+            T.buildings[metaBuilding.id][variant.getId()].description;
 
         const binding = this.root.keyMapper.getBinding(KEYMAPPINGS.buildings[metaBuilding.getId()]);
         this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace(
@@ -129,12 +130,12 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             "data-icon",
             "building_tutorials/" +
                 metaBuilding.getId() +
-                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                (variant === metaBuilding.getDefaultVariant(this.root) ? "" : "-" + variant.getId()) +
                 ".png"
         );
 
         removeAllChildren(this.buildingInfoElements.additionalInfo);
-        const additionalInfo = metaBuilding.getAdditionalStatistics(this.root, this.currentVariant.get());
+        const additionalInfo = this.currentVariant.get().getAdditionalStatistics(this.root);
         for (let i = 0; i < additionalInfo.length; ++i) {
             const [label, contents] = additionalInfo[i];
             this.buildingInfoElements.additionalInfo.innerHTML += `
@@ -201,12 +202,12 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
             const element = makeDiv(container, null, ["variant"]);
             element.classList.toggle("active", variant === this.currentVariant.get());
-            makeDiv(element, null, ["label"], variant);
+            makeDiv(element, null, ["label"], variant.getId());
 
             const iconSize = 64;
 
-            const dimensions = metaBuilding.getDimensions(variant);
-            const sprite = metaBuilding.getPreviewSprite(0, variant);
+            const dimensions = variant.getDimensions();
+            const sprite = variant.getPreviewSprite(0, metaBuilding);
             const spriteWrapper = makeDiv(element, null, ["iconWrap"]);
             spriteWrapper.setAttribute("data-tile-w", dimensions.x);
             spriteWrapper.setAttribute("data-tile-h", dimensions.y);
@@ -294,11 +295,10 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             rotation,
             rotationVariant,
             connectedEntities,
-        } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile({
+        } = this.currentVariant.get().computeOptimalDirectionAndRotationVariantAtTile({
             root: this.root,
             tile: mouseTile,
             rotation: this.currentBaseRotation,
-            variant: this.currentVariant.get(),
             layer: metaBuilding.getLayer(),
         });
 
@@ -338,7 +338,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const staticComp = this.fakeEntity.components.StaticMapEntity;
         staticComp.origin = mouseTile;
         staticComp.rotation = rotation;
-        metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
+        //metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
+        this.currentVariant.get().updateEntityComponents(this.fakeEntity, rotationVariant, this.root);
         staticComp.code = getCodeFromBuildingData(
             this.currentMetaBuilding.get(),
             this.currentVariant.get(),
@@ -373,7 +374,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         parameters.context.globalAlpha = 1;
 
         // HACK to draw the entity sprite
-        const previewSprite = metaBuilding.getBlueprintSprite(rotationVariant, this.currentVariant.get());
+        const previewSprite = this.currentVariant.get().getBlueprintSprite(rotationVariant, metaBuilding);
         staticComp.origin = worldPos.divideScalar(globalConfig.tileSize).subScalars(0.5, 0.5);
         staticComp.drawSpriteOnBoundsClipped(parameters, previewSprite);
         staticComp.origin = mouseTile;

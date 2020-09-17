@@ -151,9 +151,9 @@ export function initMetaBuildingRegistry() {
         if (typeof variant.rotationVariant === "undefined") {
             variant.rotationVariant = 0;
         }
-        if (typeof variant.variant === "undefined") {
+        /*if (typeof variant.variant === "undefined") {
             variant.variant = defaultBuildingVariant;
-        }
+        }*/
     }
 
     logger.log("Registered", gMetaBuildingRegistry.getNumEntries(), "buildings");
@@ -168,10 +168,10 @@ export function initBuildingCodesAfterResourcesLoaded() {
     for (const key in gBuildingVariants) {
         const variant = gBuildingVariants[key];
 
-        variant.sprite = variant.metaInstance.getSprite(variant.rotationVariant, variant.variant);
-        variant.blueprintSprite = variant.metaInstance.getBlueprintSprite(
+        variant.sprite = variant.variant.getSprite(variant.rotationVariant, variant.metaInstance);
+        variant.blueprintSprite = variant.variant.getBlueprintSprite(
             variant.rotationVariant,
-            variant.variant
+            variant.metaInstance
         );
         variant.silhouetteColor = variant.metaInstance.getSilhouetteColor();
     }

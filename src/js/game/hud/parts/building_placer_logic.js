@@ -7,7 +7,7 @@ import { enumMouseButton } from "../../camera";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
+import { defaultBuildingVariant, MetaBuilding, MetaBuildingVariant } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
 import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
@@ -64,7 +64,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         /**
          * Current building variant
-         * @type {TypedTrackedState<string>}
+         * @type {TypedTrackedState<typeof MetaBuildingVariant>}
          */
         this.currentVariant = new TrackedState(() => this.signals.variantChanged.dispatch());
 
@@ -77,7 +77,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         /**
          * Stores which variants for each building we prefer, this is based on what
          * the user last selected
-         * @type {Object.<string, string>}
+         * @type {Object.<string, typeof MetaBuildingVariant>}
          */
         this.preferredVariants = {};
 
@@ -396,11 +396,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         const metaBuilding = this.currentMetaBuilding.get();
-        const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile({
+        const {
+            rotation,
+            rotationVariant,
+        } = this.currentVariant.get().computeOptimalDirectionAndRotationVariantAtTile({
             root: this.root,
             tile,
             rotation: this.currentBaseRotation,
-            variant: this.currentVariant.get(),
             layer: metaBuilding.getLayer(),
         });
 
@@ -448,13 +450,16 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     cycleVariants() {
         const metaBuilding = this.currentMetaBuilding.get();
         if (!metaBuilding) {
-            this.currentVariant.set(defaultBuildingVariant);
+            this.currentVariant.set(null);
         } else {
             const availableVariants = metaBuilding.getAvailableVariants(this.root);
             const index = availableVariants.indexOf(this.currentVariant.get());
             assert(
                 index >= 0,
-                "Current variant was invalid: " + this.currentVariant.get() + " out of " + availableVariants
+                "Current variant was invalid: " +
+                    this.currentVariant.get().getId +
+                    " out of " +
+                    availableVariants
             );
             const newIndex = (index + 1) % availableVariants.length;
             const newVariant = availableVariants[newIndex];
@@ -464,7 +469,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Sets the current variant to the given variant
-     * @param {string} variant
+     * @param {typeof MetaBuildingVariant} variant
      */
     setVariant(variant) {
         const metaBuilding = this.currentMetaBuilding.get();
@@ -589,7 +594,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.abortDragging();
         this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
         if (metaBuilding) {
-            const variant = this.preferredVariants[metaBuilding.getId()] || defaultBuildingVariant;
+            const variant =
+                this.preferredVariants[metaBuilding.getId()] || metaBuilding.getDefaultVariant(this.root);
             this.currentVariant.set(variant);
 
             this.fakeEntity = new Entity(null);
@@ -599,11 +605,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 new StaticMapEntityComponent({
                     origin: new Vector(0, 0),
                     rotation: 0,
-                    tileSize: metaBuilding.getDimensions(this.currentVariant.get()).copy(),
+                    tileSize: variant.getDimensions().copy(),
                     code: getCodeFromBuildingData(metaBuilding, variant, 0),
                 })
             );
-            metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
+            variant.updateEntityComponents(this.fakeEntity, 0, this.root);
+            //metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
         } else {
             this.fakeEntity = null;
         }
@@ -689,7 +696,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 // Automatic Direction
                 if (
                     metaBuilding &&
-                    metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
+                    this.currentVariant.get().getRotateAutomaticallyWhilePlacing() &&
                     !this.root.keyMapper.getBinding(
                         KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation
                     ).pressed

@@ -155,13 +155,14 @@ export class GameCore {
         this.root.map.seed = randomInt(0, 100000);
 
         // Place the hub
-        const hub = gMetaBuildingRegistry.findByClass(MetaHubBuilding).createEntity({
+        const metaBuilding = gMetaBuildingRegistry.findByClass(MetaHubBuilding);
+        const hub = metaBuilding.createEntity({
             root: this.root,
             origin: new Vector(-2, -2),
             rotation: 0,
             originalRotation: 0,
             rotationVariant: 0,
-            variant: defaultBuildingVariant,
+            variant: metaBuilding.getDefaultVariant(this.root),
         });
         this.root.map.placeStaticEntity(hub);
         this.root.entityMgr.registerEntity(hub);
