@@ -25,11 +25,13 @@
         pointer-events: all;
     }
 
+    .propertyTable {
+        @include S(margin-top, 8px);
+    }
+
     .propertyTable,
     .entityComponents,
     .entityComponents .object > div {
-        @include S(margin-top, 5px);
-
         display: grid;
         grid-template-columns: 1fr auto;
         @include S(column-gap, 10px);
@@ -37,13 +39,15 @@
 
     .entityComponents {
         grid-column: 1 / 3;
+        @include S(margin-top, 5px);
+
         font-family: "Roboto Mono", "Fira Code", monospace;
         font-size: 90%;
         @include S(letter-spacing, -0.5px);
 
         label,
         span {
-            line-height: 140%;
+            line-height: 1.5em;
 
             &:not(span) {
                 opacity: 0.5;
@@ -52,7 +56,7 @@
 
         .object {
             grid-column: 1 / 3;
-            line-height: 140%;
+            line-height: 1.5em;
 
             > div {
                 @include S(margin-left, 4px);

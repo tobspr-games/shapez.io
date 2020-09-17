@@ -46,13 +46,12 @@ export class HUDEntityDebugger extends BaseHUDPart {
         this.visible = !this.visible;
     }
 
-    propertyToHTML(name, val, indent = 0) {
+    propertyToHTML(name, val, indent = 0, recursion = []) {
         if (val !== null && typeof val === "object") {
-            if (indent > 10) {
-                return "";
-            }
-
             // Array is displayed like object, with indexes
+            recursion.push(val);
+
+            // Get type class name (like Array, Object, Vector...)
             const typeName = `(${val.constructor ? val.constructor.name : "unknown"})`;
             const colorStyle = `color: hsl(${30 * indent}, 100%, 80%)`;
 
@@ -62,8 +61,20 @@ export class HUDEntityDebugger extends BaseHUDPart {
 
             for (const property in val) {
                 const isRoot = val[property] == this.root;
+                const isRecursive = recursion.includes(val[property]);
 
-                html += this.propertyToHTML(property, isRoot ? "<root>" : val[property], indent + 1);
+                let hiddenValue = isRoot ? "<root>" : null;
+                if (isRecursive) {
+                    // Avoid recursion by not "expanding" object more than once
+                    hiddenValue = "<recursion>";
+                }
+
+                html += this.propertyToHTML(
+                    property,
+                    hiddenValue ? hiddenValue : val[property],
+                    indent + 1,
+                    [...recursion] // still expand same value in other "branches"
+                );
             }
 
             html += "</div></details>";
@@ -91,6 +102,7 @@ export class HUDEntityDebugger extends BaseHUDPart {
         this.chunkPosElem.innerText = chunk.x + " / " + chunk.y;
 
         const entity = this.root.map.getTileContent(worldTile, this.root.currentLayer);
+
         if (entity) {
             removeAllChildren(this.componentsElem);
             let html = "";
@@ -107,7 +119,8 @@ export class HUDEntityDebugger extends BaseHUDPart {
                 html += "<summary>" + componentId + "</summary><div>";
 
                 for (const property in data) {
-                    html += this.propertyToHTML(property, data[property]);
+                    // Put entity into recursion list, so it won't get "expanded"
+                    html += this.propertyToHTML(property, data[property], 0, [entity]);
                 }
 
                 html += "</div></details>";
@@ -119,5 +132,14 @@ export class HUDEntityDebugger extends BaseHUDPart {
         this.domAttach.update(this.visible);
     }
 
-    onMouseDown() {}
+    onMouseDown() {
+        // On click, update current entity
+
+        const mousePos = this.root.app.mousePosition;
+        if (!mousePos) {
+            return;
+        }
+        const worldPos = this.root.camera.screenToWorld(mousePos);
+        const worldTile = worldPos.toTileSpace();
+    }
 }
