@@ -198,9 +198,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const sourceEntity = this.allEntities[i];
             const sourceEjectorComp = sourceEntity.components.ItemEjector;
-            if (!sourceEjectorComp.enabled) {
-                continue;
-            }
 
             const slots = sourceEjectorComp.slots;
             for (let j = 0; j < slots.length; ++j) {
@@ -210,8 +207,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     // No item available to be ejected
                     continue;
                 }
-
-                const targetEntity = sourceSlot.cachedTargetEntity;
 
                 // Advance items on the slot
                 sourceSlot.progress = Math.min(
@@ -245,15 +240,16 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Check if the target acceptor can actually accept this item
+                const destEntity = sourceSlot.cachedTargetEntity;
                 const destSlot = sourceSlot.cachedDestSlot;
                 if (destSlot) {
-                    const targetAcceptorComp = targetEntity.components.ItemAcceptor;
+                    const targetAcceptorComp = destEntity.components.ItemAcceptor;
                     if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
                         continue;
                     }
 
                     // Try to hand over the item
-                    if (this.tryPassOverItem(item, targetEntity, destSlot.index)) {
+                    if (this.tryPassOverItem(item, destEntity, destSlot.index)) {
                         // Handover successful, clear slot
                         targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
                         sourceSlot.item = null;
@@ -354,6 +350,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
                 if (!ejectedItem) {
                     // No item
+                    continue;
+                }
+
+                if (!ejectorComp.renderFloatingItems && !slot.cachedTargetEntity) {
+                    // Not connected to any building
                     continue;
                 }
 
