@@ -6,6 +6,7 @@ import { Entity } from "./entity";
 import { GameRoot } from "./root";
 import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
+import { globalConfig } from "../core/config";
 
 export class GameSystemWithFilter extends GameSystem {
     /**
@@ -44,7 +45,11 @@ export class GameSystemWithFilter extends GameSystem {
             }
         }
 
-        assert(this.allEntities.indexOf(entity) < 0, "entity already in list: " + entity);
+        // This is slow!
+        if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts) {
+            assert(this.allEntities.indexOf(entity) < 0, "entity already in list: " + entity);
+        }
+
         this.internalRegisterEntity(entity);
     }
 

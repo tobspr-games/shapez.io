@@ -4,6 +4,7 @@ import { GameRoot } from "./root";
 import { Entity } from "./entity";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { createLogger } from "../core/logging";
+import { globalConfig } from "../core/config";
 
 const logger = createLogger("entity_manager");
 
@@ -61,7 +62,9 @@ export class EntityManager extends BasicSerializableObject {
      * @param {number=} uid Optional predefined uid
      */
     registerEntity(entity, uid = null) {
-        assert(this.entities.indexOf(entity) < 0, `RegisterEntity() called twice for entity ${entity}`);
+        if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts) {
+            assert(this.entities.indexOf(entity) < 0, `RegisterEntity() called twice for entity ${entity}`);
+        }
         assert(!entity.destroyed, `Attempting to register destroyed entity ${entity}`);
 
         if (G_IS_DEV && uid !== null) {
@@ -90,18 +93,6 @@ export class EntityManager extends BasicSerializableObject {
         entity.registered = true;
 
         this.root.signals.entityAdded.dispatch(entity);
-    }
-
-    /**
-     * Sorts all entitiy lists after a resync
-     */
-    sortEntityLists() {
-        this.entities.sort((a, b) => a.uid - b.uid);
-        this.destroyList.sort((a, b) => a.uid - b.uid);
-
-        for (const key in this.componentToEntity) {
-            this.componentToEntity[key].sort((a, b) => a.uid - b.uid);
-        }
     }
 
     /**
