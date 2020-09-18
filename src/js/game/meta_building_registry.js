@@ -1,7 +1,6 @@
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { MetaBeltBuilding } from "./buildings/belt";
-import { MetaBeltBaseBuilding } from "./buildings/belt_base";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
 import { MetaHubBuilding } from "./buildings/hub";
 import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
@@ -49,9 +48,9 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaReaderBuilding);
 
     // Belt
-    registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(2, MetaBeltBaseBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(3, MetaBeltBaseBuilding, defaultBuildingVariant, 2);
+    registerBuildingVariant(1, MetaBeltBuilding, defaultBuildingVariant, 0);
+    registerBuildingVariant(2, MetaBeltBuilding, defaultBuildingVariant, 1);
+    registerBuildingVariant(3, MetaBeltBuilding, defaultBuildingVariant, 2);
 
     // Splitter
     registerBuildingVariant(4, MetaSplitterBuilding);

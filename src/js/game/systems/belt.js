@@ -7,13 +7,13 @@ import { AtlasSprite } from "../../core/sprites";
 import { fastArrayDeleteValue } from "../../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
 import { BeltPath } from "../belt_path";
-import { arrayBeltVariantToRotation, MetaBeltBaseBuilding } from "../buildings/belt_base";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
 import { getCodeFromBuildingData } from "../building_codes";
+import { arrayBeltVariantToRotation, MetaBeltBuilding } from "../buildings/belt";
 
 export const BELT_ANIM_COUNT = 14;
 
@@ -123,7 +123,7 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        const metaBelt = gMetaBuildingRegistry.findByClass(MetaBeltBaseBuilding);
+        const metaBelt = gMetaBuildingRegistry.findByClass(MetaBeltBuilding);
         // Compute affected area
         const originalRect = staticComp.getTileSpaceBounds();
         const affectedArea = originalRect.expandedInAllDirections(1);

@@ -133,7 +133,7 @@ export class MainMenuState extends GameState {
             !this.app.platformWrapper.getHasUnlimitedSavegames()
         ) {
             this.app.analytics.trackUiClick("importgame_slot_limit_show");
-            this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
+            this.showSavegameSlotLimit();
             return;
         }
 
@@ -522,6 +522,21 @@ export class MainMenuState extends GameState {
         });
     }
 
+    /**
+     * Shows a hint that the slot limit has been reached
+     */
+    showSavegameSlotLimit() {
+        const { getStandalone } = this.dialogs.showWarning(
+            T.dialogs.oneSavegameLimit.title,
+            T.dialogs.oneSavegameLimit.desc,
+            ["cancel:bad", "getStandalone:good"]
+        );
+        getStandalone.add(() => {
+            this.app.analytics.trackUiClick("visit_steampage_from_slot_limit");
+            this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
+        });
+    }
+
     onSettingsButtonClicked() {
         this.moveToState("SettingsState");
     }
@@ -540,7 +555,7 @@ export class MainMenuState extends GameState {
             !this.app.platformWrapper.getHasUnlimitedSavegames()
         ) {
             this.app.analytics.trackUiClick("startgame_slot_limit_show");
-            this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
+            this.showSavegameSlotLimit();
             return;
         }
 
