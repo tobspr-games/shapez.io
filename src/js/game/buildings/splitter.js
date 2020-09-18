@@ -96,6 +96,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [], // set later
+                renderFloatingItems: false,
             })
         );
 
