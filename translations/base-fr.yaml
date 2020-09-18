@@ -22,7 +22,7 @@
 ---
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io est un jeu qui consiste à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
+    shortText: shapez.io est un jeu consistant à construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -32,15 +32,15 @@ steamPage:
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
         shapez.io est un jeu dans lequel vous devrez construire des usines pour automatiser la création et la combinaison de formes de plus en plus complexes sur une carte infinie.
-        Lors de la livraison des formes requises vous progresserez et débloquerez des améliorations pour accélerer votre usine.
+        Lors de la livraison des formes requises, vous progresserez et débloquerez des améliorations pour accélerer votre usine.
 
-        Au vu de l'augmentation des demandes de formes, vous devrez agrandir votre usine pour répondre à la forte demande - Mais n'oubliez pas les ressources, vous drevrez vous étendre au milieu de cette [b]carte infinie[/b] !
+        Au vu de la diversification des formes demandées, vous devrez agrandir votre usine pour répondre à cette forte demande - Mais n'oubliez pas les ressources, vous drevrez vous étendre au milieu de cette [b]carte infinie[/b] !
 
-        Bientôt vous devrez mixer les couleurs et peindre vos formes avec - Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec pour satisfaire la demande.
+        Vous devrez rapidement mixer les couleurs et peindre vos formes avec - Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs, et avec elles peindre les formes pour satisfaire la demande.
 
-        Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper quelques heures !) mais j'ajoute constamment de nouveau contenus - Il y en a beaucoup de prévus !
+        Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper quelques heures !), mais j'ajoute constamment de nouveaux contenus - Il y en a beaucoup de prévus !
 
-        Acheter le jeu vous donne accès à la version complète qui a des fonctionnalités additionnelles et vous recevrez aussi un accès à des fonctionnalités fraîchement développées.
+        Acheter le jeu vous donne accès à la version complète qui possède des fonctionnalités additionnelles, et vous recevrez aussi un accès aux fonctionnalités fraîchement développées.
 
         [b]Avantages de la version complète (standalone)[/b]
 
@@ -56,7 +56,7 @@ steamPage:
 
         [b]Mises à jour futures[/b]
 
-        Je fais souvent des mises à jour et essaye d'en sortir une par semaine!
+        Je fais souvent des mises à jour et essaye d'en sortir une par semaine !
 
         [list]
             [*] Différentes cartes et challenges (e.g. carte avec obstacles)
@@ -70,7 +70,7 @@ steamPage:
 
         [b]Ce jeu est open source ![/b]
 
-        Tout le monde peut contribuer, je suis très impliqué dans la communauté et j'essaye de répondre à toutes les suggestions et prendre en compte vos retours si possible.
+        Tout le monde peut contribuer, je suis très impliqué dans la communauté et j'essaye de répondre à toutes les suggestions et de prendre en compte vos retours si possible.
         Jetez un coup d'œil à mon Trello pour le suivi du projet et la planification du développement !
         [b]Liens[/b]
 
@@ -82,7 +82,7 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Aidez à traduire[/url]
         [/list]
 
-    discordLink: Discord officiel - Parlez avec moi!
+    discordLink: Discord officiel - Parlez avec moi !
 
 global:
     loading: Chargement
@@ -147,7 +147,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Désolé, ce jeu est connu pour tourner lentement sur votre navigateur web ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
+        Désolé, votre navigateur web est connu pour faire tourner le jeu trop lentement ! Procurez-vous la version complète ou téléchargez Chrome pour une meilleure expérience.
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
@@ -189,7 +189,7 @@ dialogs:
     confirmSavegameDelete:
         title: Confirmez la suppression
         text: >-
-            Êtes-vous certains de vouloir supprimer votre partie ?
+            Êtes-vous certain de vouloir supprimer votre partie ?
 
     savegameDeletionError:
         title: Impossible de supprimer
