@@ -553,25 +553,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
         const timeToProcess = originalTime - bonusTimeToApply;
 
-        // Substract one tick because we already process it this frame
-        // if (processorComp.bonusTime > originalTime) {
-        // if (processorComp.type === enumItemProcessorTypes.reader) {
-        //     console.log(
-        //         "Bonus time",
-        //         round4Digits(processorComp.bonusTime),
-        //         "Original time",
-        //         round4Digits(originalTime),
-        //         "Overcomit by",
-        //         round4Digits(processorComp.bonusTime - originalTime),
-        //         "->",
-        //         round4Digits(timeToProcess),
-        //         "reduced by",
-        //         round4Digits(bonusTimeToApply)
-        //     );
-        // }
-        // }
         processorComp.bonusTime -= bonusTimeToApply;
-
         processorComp.ongoingCharges.push({
             items: outItems,
             remainingTime: timeToProcess,

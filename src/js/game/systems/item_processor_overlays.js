@@ -1,6 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
-import { smoothPulse, round4Digits } from "../../core/utils";
+import { smoothPulse } from "../../core/utils";
 import { enumItemProcessorRequirements, enumItemProcessorTypes } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystem } from "../game_system";
@@ -17,7 +17,6 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
         this.readerOverlaySprite = Loader.getSprite("sprites/misc/reader_overlay.png");
 
         this.drawnUids = new Set();
-
         this.root.signals.gameFrameStarted.add(this.clearDrawnUids, this);
     }
 
@@ -40,7 +39,6 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
             }
 
             const requirement = processorComp.processingRequirement;
-
             if (!requirement && processorComp.type !== enumItemProcessorTypes.reader) {
                 continue;
             }
