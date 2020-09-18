@@ -267,7 +267,7 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                 const clipRect = enumUnderlayTypeToClipRect[underlayType];
                 if (!clipRect) {
                     // Empty
-                    return;
+                    continue;
                 }
 
                 // Actually draw the sprite
