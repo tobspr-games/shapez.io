@@ -56,6 +56,17 @@
                         transform: scale(1.1, 1.1);
                     }
                 }
+
+                &.saving {
+                    @include InlineAnimation(0.4s ease-in-out infinite) {
+                        50% {
+                            opacity: 0.5;
+                            transform: scale(0.8);
+                        }
+                    }
+                    pointer-events: none;
+                    cursor: default;
+                }
             }
 
             &.settings {

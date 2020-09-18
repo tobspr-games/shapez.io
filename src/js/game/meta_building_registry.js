@@ -12,7 +12,7 @@ import { MetaStackerBuilding } from "./buildings/stacker";
 import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
 import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
 import { MetaWireBuilding } from "./buildings/wire";
-import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
+import { buildBuildingCodeCache, gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
 import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
@@ -174,4 +174,7 @@ export function initBuildingCodesAfterResourcesLoaded() {
         );
         variant.silhouetteColor = variant.metaInstance.getSilhouetteColor();
     }
+
+    // Update caches
+    buildBuildingCodeCache();
 }

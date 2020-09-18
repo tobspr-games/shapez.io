@@ -5,6 +5,7 @@ import { enumNotificationType } from "./notifications";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { TrackedState } from "../../../core/tracked_state";
 
 export class HUDGameMenu extends BaseHUDPart {
     createElements(parent) {
@@ -97,11 +98,16 @@ export class HUDGameMenu extends BaseHUDPart {
 
     initialize() {
         this.root.signals.gameSaved.add(this.onGameSaved, this);
+
+        this.trackedIsSaving = new TrackedState(this.onIsSavingChanged, this);
     }
 
     update() {
         let playSound = false;
         let notifications = new Set();
+
+        // Check whether we are saving
+        this.trackedIsSaving.set(!!this.root.gameState.currentSavePromise);
 
         // Update visibility of buttons
         for (let i = 0; i < this.visibilityToUpdate.length; ++i) {
@@ -152,6 +158,10 @@ export class HUDGameMenu extends BaseHUDPart {
         notifications.forEach(([notification, type]) => {
             this.root.hud.signals.notification.dispatch(notification, type);
         });
+    }
+
+    onIsSavingChanged(isSaving) {
+        this.saveButton.classList.toggle("saving", isSaving);
     }
 
     onGameSaved() {

@@ -67,11 +67,8 @@ export class EntityManager extends BasicSerializableObject {
         }
         assert(!entity.destroyed, `Attempting to register destroyed entity ${entity}`);
 
-        if (G_IS_DEV && uid !== null) {
+        if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts && uid !== null) {
             assert(!this.findByUid(uid, false), "Entity uid already taken: " + uid);
-        }
-
-        if (uid !== null) {
             assert(uid >= 0 && uid < Number.MAX_SAFE_INTEGER, "Invalid uid passed: " + uid);
         }
 
