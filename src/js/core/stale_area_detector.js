@@ -40,9 +40,9 @@ export class StaleAreaDetector {
      * Makes this detector recompute the area of an entity whenever
      * it changes in any way
      * @param {Array<typeof Component>} components
-     * @param {number} tilesAround
+     * @param {number} tilesAround How many tiles arround to expand the area
      */
-    recomputeOnComponentsChanged(components, tilesAround = 1) {
+    recomputeOnComponentsChanged(components, tilesAround) {
         const componentIds = components.map(component => component.getId());
 
         /**
@@ -50,6 +50,10 @@ export class StaleAreaDetector {
          * @param {Entity} entity
          */
         const checker = entity => {
+            if (!this.root.gameInitialized) {
+                return;
+            }
+
             // Check for all components
             for (let i = 0; i < componentIds.length; ++i) {
                 if (entity.components[componentIds[i]]) {
