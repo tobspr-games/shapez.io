@@ -248,4 +248,8 @@ export class HUDShop extends BaseHUDPart {
         // Nothing
         this.root.hubGoals.tryUnlockUpgrade(upgradeId);
     }
+
+    isBlockingOverlay() {
+        return this.visible;
+    }
 }

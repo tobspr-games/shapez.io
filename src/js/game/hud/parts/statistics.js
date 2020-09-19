@@ -155,6 +155,10 @@ export class HUDStatistics extends BaseHUDPart {
         document.body.classList.remove("ingameDialogOpen");
     }
 
+    isBlockingOverlay() {
+        return this.visible;
+    }
+
     show() {
         this.visible = true;
         document.body.classList.add("ingameDialogOpen");

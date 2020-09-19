@@ -872,6 +872,10 @@ export class Camera extends BasicSerializableObject {
             return;
         }
 
+        if (this.root.hud.shouldPauseGame() || this.root.hud.hasBlockingOverlayOpen()) {
+            return;
+        }
+
         if (this.desiredCenter || this.desiredZoom || this.currentlyMoving || this.currentlyPinching) {
             // Performing another method of movement right now
             return;

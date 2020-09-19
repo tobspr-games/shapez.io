@@ -194,9 +194,6 @@ export class GameHUD {
      * Returns true if the rendering can be paused
      */
     hasBlockingOverlayOpen() {
-        if (this.root.camera.getIsMapOverlayActive()) {
-            return true;
-        }
         for (const key in this.parts) {
             if (this.parts[key].isBlockingOverlay()) {
                 return true;

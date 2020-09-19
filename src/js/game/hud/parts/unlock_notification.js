@@ -109,6 +109,10 @@ export class HUDUnlockNotification extends BaseHUDPart {
         }
     }
 
+    isBlockingOverlay() {
+        return this.visible;
+    }
+
     requestClose() {
         this.root.app.adProvider.showVideoAd().then(() => {
             this.close();

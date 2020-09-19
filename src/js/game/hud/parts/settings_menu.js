@@ -54,6 +54,10 @@ export class HUDSettingsMenu extends BaseHUDPart {
         }
     }
 
+    isBlockingOverlay() {
+        return this.visible;
+    }
+
     returnToMenu() {
         this.root.gameState.goBackToMenu();
     }
