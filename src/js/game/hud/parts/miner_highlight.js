@@ -45,6 +45,12 @@ export class HUDMinerHighlight extends BaseHUDPart {
             return;
         }
 
+        const lowerContents = this.root.map.getLowerLayerContentXY(hoveredTile.x, hoveredTile.y);
+        if (!lowerContents) {
+            // Not connected
+            return;
+        }
+
         parameters.context.fillStyle = THEME.map.connectedMiners.overlay;
 
         const connectedEntities = this.findConnectedMiners(contents);
