@@ -191,7 +191,7 @@ dialogs:
     confirmSavegameDelete:
         title: Confirm deletion
         text: >-
-            Are you sure you want to delete the following game?<br><br>            
+            Are you sure you want to delete the following game?<br><br>
             '<savegameName>' at level <savegameLevel><br><br>
             This can not be undone!
 
