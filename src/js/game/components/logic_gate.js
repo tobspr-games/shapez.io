@@ -22,10 +22,6 @@ export class LogicGateComponent extends Component {
         return "LogicGate";
     }
 
-    duplicateWithoutContents() {
-        return new LogicGateComponent({ type: this.type });
-    }
-
     /**
      *
      * @param {object} param0

@@ -30,21 +30,6 @@ export class BeltUnderlaysComponent extends Component {
         return "BeltUnderlays";
     }
 
-    duplicateWithoutContents() {
-        const beltUnderlaysCopy = [];
-        for (let i = 0; i < this.underlays.length; ++i) {
-            const underlay = this.underlays[i];
-            beltUnderlaysCopy.push({
-                pos: underlay.pos.copy(),
-                direction: underlay.direction,
-            });
-        }
-
-        return new BeltUnderlaysComponent({
-            underlays: beltUnderlaysCopy,
-        });
-    }
-
     /**
      * @param {object} param0
      * @param {Array<BeltUnderlayTile>=} param0.underlays Where to render belt underlays

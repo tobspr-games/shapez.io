@@ -15,8 +15,12 @@ export class ConstantSignalComponent extends Component {
         };
     }
 
-    duplicateWithoutContents() {
-        return new ConstantSignalComponent({ signal: this.signal });
+    /**
+     * Copy the current state to another component
+     * @param {ConstantSignalComponent} otherComponent
+     */
+    copyAdditionalStateTo(otherComponent) {
+        otherComponent.signal = this.signal;
     }
 
     /**
