@@ -14,7 +14,7 @@
         flex-direction: column;
     }
 
-    .hint {
+    .prefab_GameHint {
         position: absolute;
         @include S(bottom, 40px);
         @include S(left, 20px);

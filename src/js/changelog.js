@@ -29,6 +29,7 @@ export const CHANGELOG = [
             "Allow editing waypoints (by isaisstillalive)",
             "Show confirmation when cutting area which is too expensive to get pasted again (by isaisstillalive)",
             "Show mouse and camera tile on debug overlay (F4) (by dengr)",
+            "Added confirmation when deleting a savegame",
             "Fixed tunnels entrances connecting to exits sometimes when they shouldn't",
             "Added setting to auto select the extractor when pipetting a resource patch (by Exund)",
             "The initial belt planner direction is now based on the cursor movement (by MizardX)",

@@ -27,7 +27,7 @@ export class PreloadState extends GameState {
                 </span>
                 </div>
             </div>
-            <span class="hint"></span>
+            <span class="prefab_GameHint"></span>
         `;
     }
 
@@ -62,7 +62,7 @@ export class PreloadState extends GameState {
         this.statusBarText = this.htmlElement.querySelector(".loadingStatus > .bar > .status");
 
         /** @type {HTMLElement} */
-        this.hintsText = this.htmlElement.querySelector(".hint");
+        this.hintsText = this.htmlElement.querySelector(".prefab_GameHint");
         this.lastHintShown = -1000;
         this.nextHintDuration = 0;
 

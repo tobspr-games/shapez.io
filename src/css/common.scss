@@ -480,7 +480,7 @@ canvas {
         }
     }
 
-    .hint {
+    .prefab_GameHint {
         position: absolute;
         @include S(left, 20px);
         @include S(right, 20px);

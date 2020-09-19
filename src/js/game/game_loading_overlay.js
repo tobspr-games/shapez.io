@@ -65,7 +65,7 @@ export class GameLoadingOverlay {
     internalAddHint(element) {
         const hint = document.createElement("span");
         hint.innerHTML = randomChoice(T.tips);
-        hint.classList.add("hint");
+        hint.classList.add("prefab_GameHint");
         element.appendChild(hint);
     }
 }
