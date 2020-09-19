@@ -253,6 +253,7 @@ export const allApplicationSettings = [
         changeCb: (app, id) => {},
     }),
 
+    new BoolSetting("enableMousePan", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("alwaysMultiplace", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("clearCursorOnDeleteWhilePlacing", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", enumCategories.advanced, (app, value) => {}),
@@ -308,6 +309,7 @@ class SettingsStorage {
         this.clearCursorOnDeleteWhilePlacing = true;
         this.displayChunkBorders = false;
         this.pickMinerOnPatch = true;
+        this.enableMousePan = true;
 
         this.enableColorBlindHelper = false;
 
@@ -525,7 +527,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 27;
+        return 28;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -651,6 +653,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 27) {
             data.settings.simplifiedBelts = false;
             data.version = 27;
+        }
+
+        if (data.version < 28) {
+            data.settings.enableMousePan = true;
+            data.version = 28;
         }
 
         return ExplainedResult.good();

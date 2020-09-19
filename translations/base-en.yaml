@@ -785,7 +785,7 @@ settings:
         movementSpeed:
             title: Movement speed
             description: >-
-                Changes how fast the view moves when using the keyboard.
+                Changes how fast the view moves when using the keyboard or moving the mouse to the screen borders.
             speeds:
                 super_slow: Super slow
                 slow: Slow
@@ -840,7 +840,7 @@ settings:
         refreshRate:
             title: Tick Rate
             description: >-
-                The game will automatically adjust the tickrate to be between this target tickrate and half of it. For example, with a tickrate of 60hz, the game will try to stay at 60hz, and if your computer can't handle it it will go down until it eventually reaches 30hz.
+                This determines how many game ticks happen per second. In general, a higher tick rate means better precision but also worse performance. On lower tickrates, the throughput may not be exact.
 
         alwaysMultiplace:
             title: Multiplace
@@ -911,7 +911,12 @@ settings:
         simplifiedBelts:
             title: Simplified Belts (Ugly)
             description: >-
-                Does not render belt items except when hovering the belt, to save performance.
+                Does not render belt items except when hovering the belt to save performance. I do not recommend to play with this setting if you do not absolutely need the performance.
+
+        enableMousePan:
+            title: Enable Mouse Pan
+            description: >-
+                Allows to move the map by moving the cursor to the edges of the screen. The speed depends on the Movement Speed setting.
 
 keybindings:
     title: Keybindings

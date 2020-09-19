@@ -31,6 +31,7 @@ export const CHANGELOG = [
             "Show mouse and camera tile on debug overlay (F4) (by dengr)",
             "Added confirmation when deleting a savegame",
             "Fixed tunnels entrances connecting to exits sometimes when they shouldn't",
+            "You can now pan the map with your mouse by moving the cursor to the edges of the screen!",
             "Added setting to auto select the extractor when pipetting a resource patch (by Exund)",
             "The initial belt planner direction is now based on the cursor movement (by MizardX)",
             "Fix preferred variant not getting saved when clicking on the hud (by Danacus)",
