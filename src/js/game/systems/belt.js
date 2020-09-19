@@ -501,7 +501,7 @@ export class BeltSystem extends GameSystemWithFilter {
             // POTATO Mode: Only show items when belt is hovered
             let hoveredBeltPath = null;
             const mousePos = this.root.app.mousePosition;
-            if (mousePos) {
+            if (mousePos && this.root.currentLayer === "regular") {
                 const tile = this.root.camera.screenToWorld(mousePos).toTileSpace();
                 const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
                 if (contents && contents.components.Belt) {

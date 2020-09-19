@@ -1190,6 +1190,11 @@ export class BeltPath extends BasicSerializableObject {
             return false;
         }
 
+        if (this.root.currentLayer !== "regular") {
+            // Not in regular layer
+            return true;
+        }
+
         const mousePos = this.root.app.mousePosition;
         if (!mousePos) {
             // Mouse not registered
