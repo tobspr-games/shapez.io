@@ -1,6 +1,6 @@
 #state_SettingsState {
     $colorCategoryButton: #eeeff5;
-    $colorCategoryButtonSelected: #5f748b;
+    $colorCategoryButtonSelected: $colorBlueBright;
 
     $layoutBreak: 1000px;
 
@@ -177,10 +177,12 @@
             .sidebar {
                 button.categoryButton,
                 button.about {
-                    background-color: #3f3f47;
+                    color: #ccc;
+                    background-color: darken($darkModeControlsBackground, 5);
 
                     &.active {
-                        background-color: $colorBlueBright;
+                        color: #fff;
+                        background-color: $colorCategoryButtonSelected;
                     }
                 }
             }
@@ -192,8 +194,13 @@
 
                         .value.enum {
                             // dirty but works
-                            filter: invert(0.78) sepia(40%) hue-rotate(190deg);
-                            color: #222;
+                            // color: #222;
+                            background-color: $darkModeControlsBackground;
+                            background-image: uiResource("icons/enum_selector_white.png");
+                            color: #ddd;
+                            &:hover {
+                                background-color: darken($darkModeControlsBackground, 2);
+                            }
                         }
 
                         .value.checkbox {

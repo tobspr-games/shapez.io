@@ -488,8 +488,10 @@ export class MainMenuState extends GameState {
 
         const signals = this.dialogs.showWarning(
             T.dialogs.confirmSavegameDelete.title,
-            T.dialogs.confirmSavegameDelete.text,
-            ["delete:bad", "cancel:good"]
+            T.dialogs.confirmSavegameDelete.text
+                .replace("<savegameName>", game.name || T.mainMenu.savegameUnnamed)
+                .replace("<savegameLevel>", String(game.level)),
+            ["cancel:good", "delete:bad:timeout"]
         );
 
         signals.delete.add(() => {

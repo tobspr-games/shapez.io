@@ -12,11 +12,10 @@
     transition: transform 120ms ease-in-out;
     will-change: transform;
 
-    background-color: rgba(mix(#ddd, $colorBlueBright, 90%), 0.5);
-    backdrop-filter: blur(D(3px));
+    backdrop-filter: blur(D(5px));
 
     @include DarkThemeOverride {
-        background-color: #222428;
+        background-color: darken($darkModeGameBackground, 15);
     }
 
     &:not(.visible) {
@@ -89,12 +88,18 @@
                     }
                 }
 
+                &.pressed {
+                    transform: scale(0.9) !important;
+                }
+
                 &.selected {
-                    transform: scale(1.05);
+                    // transform: scale(1.05);
 
                     &::before {
-                        background-color: $colorBlueBright;
-                        opacity: 0.6;
+                        background-color: rgba($colorBlueBright, 0.2);
+                        opacity: 1;
+                        border-top: D(3px) solid $colorBlueBright;
+                        @include S(top, -3px);
                     }
 
                     .keybinding {

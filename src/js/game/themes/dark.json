@@ -1,7 +1,7 @@
 {
     "uiStyle": "dark",
     "map": {
-        "background": "#2e2f37",
+        "background": "#3e3f47",
         "grid": "rgba(255, 255, 255, 0.02)",
         "gridLineWidth": 0.5,
 
@@ -25,10 +25,10 @@
         "colorBlindPickerTile": "rgba(255, 255, 255, 0.5)",
 
         "resources": {
-            "shape": "#3d3f4a",
-            "red": "#4a3d3f",
-            "green": "#3e4a3d",
-            "blue": "#35384a"
+            "shape": "#5d5f6a",
+            "red": "#854f56",
+            "green": "#667964",
+            "blue": "#5e7ca4"
         },
         "chunkOverview": {
             "empty": "#444856",

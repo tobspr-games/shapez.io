@@ -21,6 +21,12 @@
         @include S(right, 20px);
         @include PlainText;
         text-align: center;
+
+        color: #666;
+
+        @include DarkThemeOverride() {
+            color: lighten($darkModeGameBackground, 50);
+        }
     }
 
     #ingame_Canvas {

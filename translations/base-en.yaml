@@ -191,7 +191,9 @@ dialogs:
     confirmSavegameDelete:
         title: Confirm deletion
         text: >-
-            Are you sure you want to delete the game?
+            Are you sure you want to delete the following game?<br><br>            
+            '<savegameName>' at level <savegameLevel><br><br>
+            This can not be undone!
 
     savegameDeletionError:
         title: Failed to delete
@@ -390,7 +392,7 @@ ingame:
         buttons:
             continue: Continue
             settings: Settings
-            menu: Return to menu
+            menu: Menu
 
     # Bottom left tutorial hints
     tutorialHints:
@@ -908,7 +910,7 @@ keybindings:
     hint: >-
         Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
 
-    resetKeybindings: Reset Keybindings
+    resetKeybindings: Reset
 
     categoryLabels:
         general: Application

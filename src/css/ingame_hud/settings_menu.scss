@@ -2,21 +2,25 @@
     .statsElement {
         position: absolute;
         @include S(left, 30px);
-        @include S(top, 30px);
+        @include S(right, 30px);
+        @include S(bottom, 30px);
         color: #fff;
-        display: flex;
-        grid-template-rows: 1fr auto;
-        flex-direction: column;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-auto-columns: 1fr;
+        align-items: center;
+        justify-items: center;
 
         strong {
             text-transform: uppercase;
             @include PlainText;
             opacity: 0.5;
+            grid-row: 1;
         }
 
         span {
-            @include S(margin-bottom, 25px);
             @include Heading;
+            grid-row: 2;
         }
     }
 
@@ -27,15 +31,31 @@
 
     .buttons {
         display: grid;
-        grid-auto-flow: row;
-        @include S(grid-gap, 10px);
-        background: rgba(0, 10, 20, 0.1);
-        @include S(padding, 10px);
-        @include S(border-radius, $globalBorderRadius);
+        grid-auto-flow: column;
+        @include S(grid-gap, 50px);
+        @include S(margin-top, -10px);
 
         button {
-            background-color: #eee;
-            color: #55585a;
+            background: transparent;
+            filter: invert(1);
+
+            background: uiResource("icons/settings_menu_play.png") center top / contain no-repeat;
+            content: "";
+            opacity: 0.8;
+            @include S(width, 35px);
+            @include S(height, 35px);
+
+            &.settings {
+                background-image: uiResource("icons/settings_menu_settings.png");
+            }
+
+            &.menu {
+                background-image: uiResource("icons/settings_menu_exit.png");
+            }
+
+            &:hover {
+                opacity: 0.6;
+            }
         }
     }
 }

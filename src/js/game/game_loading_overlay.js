@@ -55,7 +55,6 @@ export class GameLoadingOverlay {
     internalAddSpinnerAndText(element) {
         const inner = document.createElement("span");
         inner.classList.add("prefab_LoadingTextWithAnim");
-        inner.innerText = T.global.loading;
         element.appendChild(inner);
     }
 

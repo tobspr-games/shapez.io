@@ -21,7 +21,7 @@
             }
 
             @include DarkThemeOverride {
-                background: #55585a;
+                background: $darkModeControlsBackground;
             }
 
             .title {

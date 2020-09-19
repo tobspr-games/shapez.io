@@ -277,7 +277,6 @@ export class DialogLoading extends Dialog {
         const loader = document.createElement("div");
         loader.classList.add("prefab_LoadingTextWithAnim");
         loader.classList.add("loadingIndicator");
-        loader.innerText = T.global.loading;
         elem.appendChild(loader);
 
         this.app.inputMgr.pushReciever(this.inputReciever);
