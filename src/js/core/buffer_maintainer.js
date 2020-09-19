@@ -99,7 +99,7 @@ export class BufferMaintainer {
             ")",
 
             "(",
-            (bufferStats.backlog + "").padStart(4),
+            (bufferStats.backlogSize + "").padStart(4),
             "backlog",
             ")",
 
