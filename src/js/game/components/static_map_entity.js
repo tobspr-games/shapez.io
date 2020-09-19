@@ -48,14 +48,6 @@ export class StaticMapEntityComponent extends Component {
     }
 
     /**
-     * Returns the silhouette color
-     * @returns {string}
-     */
-    getSilhouetteColor() {
-        return getBuildingDataFromCode(this.code).silhouetteColor;
-    }
-
-    /**
      * Returns the meta building
      * @returns {import("../meta_building").MetaBuilding}
      */

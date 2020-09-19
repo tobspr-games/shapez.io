@@ -12,8 +12,7 @@ import { Vector } from "../core/vector";
  *   rotationVariant?: number,
  *   tileSize?: Vector,
  *   sprite?: AtlasSprite,
- *   blueprintSprite?: AtlasSprite,
- *   silhouetteColor?: string
+ *   blueprintSprite?: AtlasSprite
  * }} BuildingVariantIdentifier
  */
 
