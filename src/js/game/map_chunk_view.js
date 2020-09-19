@@ -103,6 +103,8 @@ export class MapChunkView extends MapChunk {
             originalH: overlaySize,
         });
 
+        this.root.systemMgr.systems.lever.drawChunkOverlay(parameters, this);
+        this.root.systemMgr.systems.display.drawChunkOverlay(parameters, this);
         parameters.context.imageSmoothingEnabled = true;
 
         // Draw patch items

@@ -1,7 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
 import { BaseItem } from "../base_item";
-import { enumColors } from "../colors";
+import { enumColors, enumColorsToHexCode } from "../colors";
 import { DisplayComponent } from "../components/display";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { isTrueItem } from "../items/boolean_item";
@@ -91,6 +91,52 @@ export class DisplaySystem extends GameSystemWithFilter {
                         30
                     );
                 }
+            }
+        }
+    }
+
+    /**
+     * Draws overlay of a given chunk
+     * @param {import("../../core/draw_utils").DrawParameters} parameters
+     * @param {MapChunkView} chunk
+     */
+    drawChunkOverlay(parameters, chunk) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            if (!entity || !entity.components.Display) {
+                continue;
+            }
+
+            const pinsComp = entity.components.WiredPins;
+            const network = pinsComp.slots[0].linkedNetwork;
+
+            if (!network || !network.currentValue) {
+                continue;
+            }
+
+            const value = this.getDisplayItem(network.currentValue);
+
+            if (!value) {
+                continue;
+            }
+
+            const origin = entity.components.StaticMapEntity.origin;
+            if (value instanceof ColorItem) {
+                this.displaySprites[value.color].drawCachedCentered(
+                    parameters,
+                    (origin.x + 0.5) * globalConfig.tileSize,
+                    (origin.y + 0.5) * globalConfig.tileSize,
+                    globalConfig.tileSize
+                );
+
+                parameters.context.fillStyle = enumColorsToHexCode[value.color];
+                parameters.context.fillRect(
+                    origin.x * globalConfig.tileSize,
+                    origin.y * globalConfig.tileSize,
+                    globalConfig.tileSize,
+                    globalConfig.tileSize
+                );
             }
         }
     }
