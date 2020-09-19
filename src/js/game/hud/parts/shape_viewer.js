@@ -48,6 +48,10 @@ export class HUDShapeViewer extends BaseHUDPart {
         this.close();
     }
 
+    isBlockingOverlay() {
+        return this.visible;
+    }
+
     /**
      * Called when the copying of a key was requested
      */
