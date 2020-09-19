@@ -380,7 +380,10 @@ ingame:
         noShapesProduced: No shapes have been produced so far.
 
         # Displays the shapes per second, e.g. '523 / s'
-        shapesPerSecond: <shapes> / s
+        shapesDisplayUnits:
+            second: <shapes> / s
+            minute: <shapes> / m
+            hour: <shapes> / h
 
     # Settings menu, when you press "ESC"
     settingsMenu:

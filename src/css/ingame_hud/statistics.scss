@@ -33,18 +33,39 @@
 
             &.displayIcons,
             &.displayDetailed,
+            &.displaySorted,
+            &.displayIterateUnit {
+                background: transparent center center / #{D(15px)} no-repeat;
+            }
+
+            &.displayDetailed {
+                background-image: uiResource("icons/display_list.png");
+            }
+
+            &.displayIcons {
+                background-image: uiResource("icons/display_icons.png");
+                background-size: #{D(11.5px)};
+            }
+
+            &.displayDetailed {
+                @include S(border-top-left-radius, $globalBorderRadius);
+                @include S(border-bottom-left-radius, $globalBorderRadius);
+            }
+
             &.displaySorted {
-                background: uiResource("icons/display_list.png") center center / #{D(15px)} no-repeat;
-                &.displayIcons {
-                    background-image: uiResource("icons/display_icons.png");
-                    background-size: #{D(11.5px)};
-                }
-                &.displaySorted {
-                    background-image: uiResource("icons/display_sorted.png");
-                    background-size: #{D(11.5px)};
-                    margin-right: 4px;
-                    @include S(padding, 1px, 0);
-                }
+                background-image: uiResource("icons/display_sorted.png");
+                background-size: #{D(11.5px)};
+                margin-right: 5px;
+                @include S(border-top-right-radius, $globalBorderRadius);
+                @include S(border-bottom-right-radius, $globalBorderRadius);
+
+                @include S(padding, 1px, 0);
+            }
+
+            &.displayIterateUnit {
+                background-image: uiResource("icons/toggle_unit.png");
+                opacity: 0.8;
+                @include S(padding, 1px, 0);
             }
 
             background-color: #44484a !important;
