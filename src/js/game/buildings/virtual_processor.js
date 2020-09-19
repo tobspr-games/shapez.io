@@ -11,6 +11,8 @@ export const enumVirtualProcessorVariants = {
     rotater: "rotater",
     unstacker: "unstacker",
     shapecompare: "shapecompare",
+    stacker: "stacker",
+    painter: "painter",
 };
 
 /** @enum {string} */
@@ -20,6 +22,8 @@ export const enumVariantToGate = {
     [enumVirtualProcessorVariants.rotater]: enumLogicGateType.rotater,
     [enumVirtualProcessorVariants.unstacker]: enumLogicGateType.unstacker,
     [enumVirtualProcessorVariants.shapecompare]: enumLogicGateType.shapecompare,
+    [enumVirtualProcessorVariants.stacker]: enumLogicGateType.stacker,
+    [enumVirtualProcessorVariants.painter]: enumLogicGateType.painter,
 };
 
 export class MetaVirtualProcessorBuilding extends MetaBuilding {
@@ -54,6 +58,8 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
             enumVirtualProcessorVariants.rotater,
             enumVirtualProcessorVariants.unstacker,
             enumVirtualProcessorVariants.analyzer,
+            enumVirtualProcessorVariants.stacker,
+            enumVirtualProcessorVariants.painter,
             enumVirtualProcessorVariants.shapecompare,
         ];
     }
@@ -120,6 +126,27 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         direction: enumDirection.left,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ]);
+                break;
+            }
+            case enumLogicGateType.stacker:
+            case enumLogicGateType.painter: {
+                pinComp.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
                         type: enumPinSlotType.logicalAcceptor,
                     },
                     {

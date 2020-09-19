@@ -13,6 +13,8 @@ export const enumLogicGateType = {
     unstacker: "unstacker",
     cutter: "cutter",
     shapecompare: "shapecompare",
+    stacker: "stacker",
+    painter: "painter",
 };
 
 export class LogicGateComponent extends Component {

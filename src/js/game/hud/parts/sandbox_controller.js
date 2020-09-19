@@ -13,7 +13,7 @@ export class HUDSandboxController extends BaseHUDPart {
             [],
             `
             <label>Sandbox Options</label>
-            <span class="hint">Use F6 to toggle this overlay</span>
+            <span class="sandboxHint">Use F6 to toggle this overlay</span>
 
             <div class="buttons">
                 <div class="levelToggle plusMinus">

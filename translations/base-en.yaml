@@ -639,6 +639,14 @@ buildings:
             name: Compare
             description: Returns true if both items are exactly equal. Can compare shapes, items and booleans.
 
+        stacker:
+            name: Virtual Stacker
+            description: Virtually stacks the right shape onto the left.
+
+        painter:
+            name: Virtual Painter
+            description: Virtually paints the shape from the bottom input with the shape on the right input.
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
