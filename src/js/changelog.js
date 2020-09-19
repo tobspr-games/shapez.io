@@ -29,6 +29,7 @@ export const CHANGELOG = [
             "Allow editing waypoints (by isaisstillalive)",
             "Show confirmation when cutting area which is too expensive to get pasted again (by isaisstillalive)",
             "Show mouse and camera tile on debug overlay (F4) (by dengr)",
+            "Fix belt planner placing the belt when a dialog opens in the meantime",
             "Added confirmation when deleting a savegame",
             "Fixed tunnels entrances connecting to exits sometimes when they shouldn't",
             "You can now pan the map with your mouse by moving the cursor to the edges of the screen!",
