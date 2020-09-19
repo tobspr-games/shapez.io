@@ -1,11 +1,7 @@
 import { enumDirection, Vector } from "../../core/vector";
+import { FilterComponent } from "../components/filter";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import {
-    enumItemProcessorRequirements,
-    enumItemProcessorTypes,
-    ItemProcessorComponent,
-} from "../components/item_processor";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
@@ -79,12 +75,6 @@ export class MetaFilterBuilding extends MetaBuilding {
             })
         );
 
-        entity.addComponent(
-            new ItemProcessorComponent({
-                processorType: enumItemProcessorTypes.filter,
-                inputsPerCharge: 1,
-                processingRequirement: enumItemProcessorRequirements.filter,
-            })
-        );
+        entity.addComponent(new FilterComponent());
     }
 }

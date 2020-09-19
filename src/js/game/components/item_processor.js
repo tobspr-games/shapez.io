@@ -24,7 +24,6 @@ export const enumItemProcessorTypes = {
 /** @enum {string} */
 export const enumItemProcessorRequirements = {
     painterQuad: "painterQuad",
-    filter: "filter",
 };
 
 /** @typedef {{

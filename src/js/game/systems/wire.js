@@ -79,6 +79,14 @@ export class WireNetwork {
          */
         this.uid = ++networkUidCounter;
     }
+
+    /**
+     * Returns whether this network currently has a value
+     * @returns {boolean}
+     */
+    hasValue() {
+        return !!this.currentValue && !this.valueConflict;
+    }
 }
 
 export class WireSystem extends GameSystemWithFilter {

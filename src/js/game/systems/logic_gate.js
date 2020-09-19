@@ -47,13 +47,13 @@ export class LogicGateSystem extends GameSystemWithFilter {
                 if (slot.type !== enumPinSlotType.logicalAcceptor) {
                     continue;
                 }
-                if (slot.linkedNetwork) {
-                    if (slot.linkedNetwork.valueConflict) {
+                const network = slot.linkedNetwork;
+                if (network) {
+                    if (network.valueConflict) {
                         anyConflict = true;
                         break;
                     }
-
-                    slotValues.push(slot.linkedNetwork.currentValue);
+                    slotValues.push(network.currentValue);
                 } else {
                     slotValues.push(null);
                 }

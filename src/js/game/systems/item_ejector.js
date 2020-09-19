@@ -282,6 +282,15 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             return false;
         }
 
+        const filterComp = receiver.components.Filter;
+        if (filterComp) {
+            // It's a filter! Unfortunately the filter has to know a lot about it's
+            // surrounding state and components, so it can't be within the component itself.
+            if (this.root.systemMgr.systems.filter.tryAcceptItem(receiver, slotIndex, item)) {
+                return true;
+            }
+        }
+
         return false;
     }
 

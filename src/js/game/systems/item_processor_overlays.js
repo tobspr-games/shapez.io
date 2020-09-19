@@ -34,34 +34,40 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
             const processorComp = entity.components.ItemProcessor;
-            if (!processorComp) {
-                continue;
-            }
+            const filterComp = entity.components.Filter;
 
-            const requirement = processorComp.processingRequirement;
-            if (!requirement && processorComp.type !== enumItemProcessorTypes.reader) {
-                continue;
-            }
-
-            if (this.drawnUids.has(entity.uid)) {
-                continue;
-            }
-
-            this.drawnUids.add(entity.uid);
-
-            switch (requirement) {
-                case enumItemProcessorRequirements.painterQuad: {
-                    this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: true });
-                    break;
+            // Draw processor overlays
+            if (processorComp) {
+                const requirement = processorComp.processingRequirement;
+                if (!requirement && processorComp.type !== enumItemProcessorTypes.reader) {
+                    continue;
                 }
-                case enumItemProcessorRequirements.filter: {
-                    this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: false });
-                    break;
+
+                if (this.drawnUids.has(entity.uid)) {
+                    continue;
+                }
+                this.drawnUids.add(entity.uid);
+
+                switch (requirement) {
+                    case enumItemProcessorRequirements.painterQuad: {
+                        this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: true });
+                        break;
+                    }
+                }
+
+                if (processorComp.type === enumItemProcessorTypes.reader) {
+                    this.drawReaderOverlays(parameters, entity);
                 }
             }
 
-            if (processorComp.type === enumItemProcessorTypes.reader) {
-                this.drawReaderOverlays(parameters, entity);
+            // Draw filter overlays
+            else if (filterComp) {
+                if (this.drawnUids.has(entity.uid)) {
+                    continue;
+                }
+                this.drawnUids.add(entity.uid);
+
+                this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: false });
             }
         }
     }
@@ -111,7 +117,7 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
         for (let i = 0; i < pinsComp.slots.length; ++i) {
             const slot = pinsComp.slots[i];
             const network = slot.linkedNetwork;
-            if (network && network.currentValue) {
+            if (network && network.hasValue()) {
                 anySlotConnected = true;
 
                 if (isTruthyItem(network.currentValue) || !drawIfFalse) {

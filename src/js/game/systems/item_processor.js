@@ -58,7 +58,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             [enumItemProcessorTypes.painterDouble]: this.process_PAINTER_DOUBLE,
             [enumItemProcessorTypes.painterQuad]: this.process_PAINTER_QUAD,
             [enumItemProcessorTypes.hub]: this.process_HUB,
-            [enumItemProcessorTypes.filter]: this.process_FILTER,
             [enumItemProcessorTypes.reader]: this.process_READER,
         };
 
@@ -162,21 +161,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Check the network value at the given slot
                 const network = pinsComp.slots[slotIndex - 1].linkedNetwork;
-                const slotIsEnabled = network && isTruthyItem(network.currentValue);
+                const slotIsEnabled = network && network.hasValue() && isTruthyItem(network.currentValue);
                 if (!slotIsEnabled) {
                     return false;
                 }
-                return true;
-            }
-
-            case enumItemProcessorRequirements.filter: {
-                const network = pinsComp.slots[0].linkedNetwork;
-                if (!network || !network.currentValue) {
-                    // Item filter is not connected
-                    return false;
-                }
-
-                // Otherwise, all good
                 return true;
             }
 
@@ -222,9 +210,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 // Check which slots are enabled
                 for (let i = 0; i < 4; ++i) {
                     // Extract the network value on the Nth pin
-                    const networkValue = pinsComp.slots[i].linkedNetwork
-                        ? pinsComp.slots[i].linkedNetwork.currentValue
-                        : null;
+                    const network = pinsComp.slots[i].linkedNetwork;
+                    const networkValue = network && network.hasValue() ? network.currentValue : null;
 
                     // If there is no "1" on that slot, don't paint there
                     if (!isTruthyItem(networkValue)) {
@@ -255,18 +242,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 }
 
                 return true;
-            }
-
-            // FILTER
-            // Double check with linked network
-            case enumItemProcessorRequirements.filter: {
-                const network = entity.components.WiredPins.slots[0].linkedNetwork;
-                if (!network || !network.currentValue) {
-                    // Item filter is not connected
-                    return false;
-                }
-
-                return processorComp.inputSlots.length >= processorComp.inputsPerCharge;
             }
 
             default:
@@ -551,38 +526,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition),
         });
-    }
-
-    /**
-     * @param {ProcessorImplementationPayload} payload
-     */
-    process_FILTER(payload) {
-        const item = payload.itemsBySlot[0];
-
-        const network = payload.entity.components.WiredPins.slots[0].linkedNetwork;
-        if (!network || !network.currentValue) {
-            payload.outItems.push({
-                item,
-                requiredSlot: 1,
-                doNotTrack: true,
-            });
-            return;
-        }
-
-        const value = network.currentValue;
-        if (value.equals(BOOL_TRUE_SINGLETON) || value.equals(item)) {
-            payload.outItems.push({
-                item,
-                requiredSlot: 0,
-                doNotTrack: true,
-            });
-        } else {
-            payload.outItems.push({
-                item,
-                requiredSlot: 1,
-                doNotTrack: true,
-            });
-        }
     }
 
     /**
