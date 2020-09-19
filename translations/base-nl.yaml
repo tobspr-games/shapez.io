@@ -87,7 +87,7 @@ steamPage:
 
 global:
     loading: Laden
-    error: Error
+    error: Fout
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
@@ -172,7 +172,7 @@ dialogs:
         showKeybindings: Zie Sneltoetsen
 
     importSavegameError:
-        title: Importeer error
+        title: Importeerfout
         text: >-
             Het importeren van je savegame is mislukt:
 
