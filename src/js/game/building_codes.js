@@ -19,7 +19,7 @@ import { Vector } from "../core/vector";
 
 /**
  * Stores a lookup table for all building variants (for better performance)
- * @type {Object<number, BuildingVariantIdentifier>}
+ * @type {Object<string, BuildingVariantIdentifier>}
  */
 export const gBuildingVariants = {
     // Set later
@@ -38,12 +38,7 @@ const variantsCache = new Map();
  * @param {typeof MetaBuildingVariant} variant
  * @param {number} rotationVariant
  */
-export function registerBuildingVariant(
-    code,
-    meta,
-    variant,
-    rotationVariant = 0
-) {
+export function registerBuildingVariant(code, meta, variant, rotationVariant = 0) {
     assert(!gBuildingVariants[code], "Duplicate id: " + code);
     gBuildingVariants[code.toString()] = {
         metaClass: meta,
@@ -71,7 +66,7 @@ export function buildBuildingCodeCache() {
     for (const code in gBuildingVariants) {
         const data = gBuildingVariants[code];
         const hash = data.metaInstance.getId() + "/" + data.variant + "/" + data.rotationVariant;
-        variantsCache.set(hash, +code);
+        variantsCache.set(hash, code);
     }
 }
 

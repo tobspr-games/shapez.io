@@ -53,7 +53,7 @@ import {
     Tier2UndergroundBeltVariant,
 } from "./buildings/underground_belt";
 import { DefaultWireVariant, MetaWireBuilding } from "./buildings/wire";
-import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
+import { buildBuildingCodeCache, gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
 import { DefaultConstantSignalVariant, MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import {
