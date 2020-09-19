@@ -8,53 +8,6 @@
 
     backdrop-filter: blur(D(1px));
 
-    // > .menuButtons {
-    //     position: relative;
-    //     display: flex;
-    //     flex-grow: 1;
-    //     @include S(padding, 5px, 4px);
-    //     justify-content: flex-end;
-    //     @include S(margin-left, 20px);
-
-    //     > .button {
-    //         @include S(width, 30px);
-    //         @include S(height, 30px);
-    //         display: inline-block;
-    //         background: center center / 60% no-repeat;
-    //         pointer-events: all;
-    //         cursor: pointer;
-    //         transition: all 0.12s ease-in-out;
-    //         transition-property: opacity, transform;
-    //         will-change: opacity;
-    //         opacity: 0.5;
-    //         &:hover {
-    //             opacity: 0.7;
-    //         }
-
-    //         @include DarkThemeOverride {
-    //             opacity: 0.9;
-    //             &:hover {
-    //                 opacity: 0.6;
-    //             }
-    //         }
-    //         @include S(margin-left, 5px);
-    //         position: relative;
-
-    //         @include IncreasedClickArea(0px);
-
-    //         @include DarkThemeInvert;
-
-    //         &.save {
-    //             background-image: uiResource("icons/save.png");
-    //
-    //         }
-
-    //         &.settings {
-    //             background-image: uiResource("icons/settings_menu_settings.png");
-    //         }
-    //     }
-    // }
-
     > button,
     > .button {
         @include PlainText;

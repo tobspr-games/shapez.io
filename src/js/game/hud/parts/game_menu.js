@@ -17,8 +17,7 @@ export class HUDGameMenu extends BaseHUDPart {
                 label: "Upgrades",
                 handler: () => this.root.hud.parts.shop.show(),
                 keybinding: KEYMAPPINGS.ingame.menuOpenShop,
-                // badge: () => this.root.hubGoals.getAvailableUpgradeCount(),
-                badge: () => 1,
+                badge: () => this.root.hubGoals.getAvailableUpgradeCount(),
                 notification: /** @type {[string, enumNotificationType]} */ ([
                     T.ingame.notifications.newUpgrade,
                     enumNotificationType.upgrade,
