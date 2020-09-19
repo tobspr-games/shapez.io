@@ -88,15 +88,16 @@ export class GameSystemWithFilter extends GameSystem {
     }
 
     refreshCaches() {
-        this.allEntities.sort((a, b) => a.uid - b.uid);
-
         // Remove all entities which are queued for destroy
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             if (entity.queuedForDestroy || entity.destroyed) {
                 this.allEntities.splice(i, 1);
+                i -= 1;
             }
         }
+
+        this.allEntities.sort((a, b) => a.uid - b.uid);
     }
 
     /**

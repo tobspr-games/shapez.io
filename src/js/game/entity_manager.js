@@ -156,6 +156,24 @@ export class EntityManager extends BasicSerializableObject {
     }
 
     /**
+     * Returns a map which gives a mapping from UID to Entity.
+     * This map is not updated.
+     *
+     * @returns {Map<number, Entity>}
+     */
+    getFrozenUidSearchMap() {
+        const result = new Map();
+        const array = this.entities;
+        for (let i = 0, len = array.length; i < len; ++i) {
+            const entity = array[i];
+            if (!entity.queuedForDestroy && !entity.destroyed) {
+                result.set(entity.uid, entity);
+            }
+        }
+        return result;
+    }
+
+    /**
      * Returns all entities having the given component
      * @param {typeof Component} componentHandle
      * @returns {Array<Entity>} entities
@@ -206,7 +224,7 @@ export class EntityManager extends BasicSerializableObject {
             this.unregisterEntityComponents(entity);
 
             entity.registered = false;
-            entity.internalDestroyCallback();
+            entity.destroyed = true;
 
             this.root.signals.entityDestroyed.dispatch(entity);
         }
