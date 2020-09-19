@@ -142,7 +142,7 @@ mainMenu:
     play: Mulai Permainan
     continue: Lanjutkan Permainan
     newGame: Permainan Baru
-    changelog: Catatan Perubahan 
+    changelog: Catatan Perubahan
     subreddit: Reddit
     importSavegame: Impor Data Simpanan
     openSourceHint: Permainan ini bekerja secara open source!
