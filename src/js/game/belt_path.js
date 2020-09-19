@@ -1233,9 +1233,10 @@ export class BeltPath extends BasicSerializableObject {
                     this.entityPath.length - 1
                 );
                 const medianBelt = this.entityPath[medianBeltIndex];
+                const beltComp = medianBelt.components.Belt;
                 const staticComp = medianBelt.components.StaticMapEntity;
-                const centerPosLocal = medianBelt.components.Belt.transformBeltToLocalSpace(
-                    this.entityPath.length % 2 === 0 ? 1 : 0.5
+                const centerPosLocal = beltComp.transformBeltToLocalSpace(
+                    this.entityPath.length % 2 === 0 ? beltComp.getEffectiveLengthTiles() : 0.5
                 );
                 const centerPos = staticComp.localTileToWorld(centerPosLocal).toWorldSpaceCenterOfTile();
 
