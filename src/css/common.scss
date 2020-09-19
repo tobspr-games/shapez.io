@@ -468,13 +468,24 @@ canvas {
         display: flex;
         flex-grow: 1;
     }
+
+    .hint {
+        position: absolute;
+        @include S(left, 20px);
+        @include S(right, 20px);
+        @include S(bottom, 60px);
+        @include Text;
+        color: #666;
+    }
+
     .loadingStatus {
         position: absolute;
         @include S(left, 20px);
         @include S(right, 20px);
         @include S(bottom, 30px);
         @include Text;
-        @include TextShadow3D(#aaa);
+        @include PlainText;
+        color: #aaa;
         display: flex;
         flex-direction: column;
         justify-content: center;

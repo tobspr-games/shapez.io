@@ -84,8 +84,8 @@ export const globalConfig = {
     // Global game speed
     gameSpeed: 1,
 
-    warmupTimeSecondsFast: 0.1,
-    warmupTimeSecondsRegular: 1,
+    warmupTimeSecondsFast: 0.5,
+    warmupTimeSecondsRegular: 3,
 
     smoothing: {
         smoothMainCanvas: smoothCanvas && true,
@@ -132,5 +132,5 @@ if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
 }
 
 if (globalConfig.debug.fastGameEnter) {
-    globalConfig.debug.noArtificalDelays = true;
+    globalConfig.debug.noArtificialDelays = true;
 }

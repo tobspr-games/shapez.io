@@ -43,16 +43,6 @@ export class BeltSystem extends GameSystemWithFilter {
             [enumDirection.right]: [],
         };
 
-        /**
-         * Stores simplified sprites of a belt
-         * @type {Object<enumDirection, AtlasSprite>}
-         */
-        this.potatoBeltSprites = {
-            [enumDirection.top]: Loader.getSprite("sprites/belt/potato_mode/forward.png"),
-            [enumDirection.right]: Loader.getSprite("sprites/belt/potato_mode/right.png"),
-            [enumDirection.left]: Loader.getSprite("sprites/belt/potato_mode/left.png"),
-        };
-
         for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
             this.beltAnimations[enumDirection.top].push(
                 Loader.getSprite("sprites/belt/built/forward_" + i + ".png")
@@ -523,7 +513,7 @@ export class BeltSystem extends GameSystemWithFilter {
                 const entity = contents[i];
                 if (entity.components.Belt) {
                     const direction = entity.components.Belt.direction;
-                    let sprite = this.potatoBeltSprites[direction];
+                    let sprite = this.beltAnimations[direction][0];
 
                     if (entity.components.Belt.assignedPath === hoveredBeltPath) {
                         sprite = this.beltAnimations[direction][animationIndex % BELT_ANIM_COUNT];
