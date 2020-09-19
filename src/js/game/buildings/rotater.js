@@ -10,7 +10,7 @@ import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 /** @enum {string} */
-export const enumRotaterVariants = { ccw: "ccw", fl: "fl" };
+export const enumRotaterVariants = { ccw: "ccw", rotate180: "rotate180" };
 
 export class MetaRotaterBuilding extends MetaBuilding {
     constructor() {
@@ -36,8 +36,8 @@ export class MetaRotaterBuilding extends MetaBuilding {
                 const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
-            case enumRotaterVariants.fl: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterFL);
+            case enumRotaterVariants.rotate180: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater180);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
         }
@@ -52,8 +52,8 @@ export class MetaRotaterBuilding extends MetaBuilding {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw)) {
             variants.push(enumRotaterVariants.ccw);
         }
-        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_fl)) {
-            variants.push(enumRotaterVariants.fl);
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_180)) {
+            variants.push(enumRotaterVariants.rotate180);
         }
         return variants;
     }
@@ -111,8 +111,8 @@ export class MetaRotaterBuilding extends MetaBuilding {
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
                 break;
             }
-            case enumRotaterVariants.fl: {
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterFL;
+            case enumRotaterVariants.rotate180: {
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater180;
                 break;
             }
             default:

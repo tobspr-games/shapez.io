@@ -518,7 +518,7 @@ buildings:
         ccw:
             name: Rotate (CCW)
             description: Rotates shapes counter-clockwise by 90 degrees.
-        fl:
+        rotate180:
             name: Rotate (180)
             description: Rotates shapes by 180 degrees.
 

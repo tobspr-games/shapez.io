@@ -33,7 +33,7 @@ export const enumHubGoalRewardsToContentUnlocked = {
     [enumHubGoalRewards.reward_tunnel]: typed([[MetaUndergroundBeltBuilding, defaultBuildingVariant]]),
 
     [enumHubGoalRewards.reward_rotater_ccw]: typed([[MetaRotaterBuilding, enumRotaterVariants.ccw]]),
-    [enumHubGoalRewards.reward_rotater_fl]: typed([[MetaRotaterBuilding, enumRotaterVariants.fl]]),
+    [enumHubGoalRewards.reward_rotater_180]: typed([[MetaRotaterBuilding, enumRotaterVariants.rotate180]]),
     [enumHubGoalRewards.reward_miner_chainable]: typed([[MetaMinerBuilding, enumMinerVariants.chainable]]),
     [enumHubGoalRewards.reward_underground_belt_tier_2]: typed([
         [MetaUndergroundBeltBuilding, enumUndergroundBeltVariants.tier2],

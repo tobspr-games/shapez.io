@@ -1,17 +1,15 @@
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
-import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
     splitter: "splitter",
-    splitterWires: "splitterWires",
     cutter: "cutter",
     cutterQuad: "cutterQuad",
     rotater: "rotater",
     rotaterCCW: "rotaterCCW",
-    rotaterFL: "rotaterFL",
+    rotater180: "rotater180",
     stacker: "stacker",
     trash: "trash",
     mixer: "mixer",

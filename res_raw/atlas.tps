@@ -197,7 +197,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>2</uint>
+            <uint>4</uint>
             <key>trimThreshold</key>
             <uint>2</uint>
             <key>trimMargin</key>
@@ -281,6 +281,7 @@
             <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
             <key type="filename">sprites/blueprints/virtual_processor-analyzer.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-painter.png</key>
             <key type="filename">sprites/blueprints/virtual_processor-rotater.png</key>
             <key type="filename">sprites/blueprints/virtual_processor-shapecompare.png</key>
             <key type="filename">sprites/blueprints/virtual_processor-stacker.png</key>
@@ -309,6 +310,7 @@
             <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit.png</key>
             <key type="filename">sprites/buildings/virtual_processor-analyzer.png</key>
+            <key type="filename">sprites/buildings/virtual_processor-painter.png</key>
             <key type="filename">sprites/buildings/virtual_processor-rotater.png</key>
             <key type="filename">sprites/buildings/virtual_processor-shapecompare.png</key>
             <key type="filename">sprites/buildings/virtual_processor-stacker.png</key>

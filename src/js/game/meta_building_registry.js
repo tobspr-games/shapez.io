@@ -70,7 +70,7 @@ export function initMetaBuildingRegistry() {
     // Rotater
     registerBuildingVariant(11, MetaRotaterBuilding);
     registerBuildingVariant(12, MetaRotaterBuilding, enumRotaterVariants.ccw);
-    registerBuildingVariant(13, MetaRotaterBuilding, enumRotaterVariants.fl);
+    registerBuildingVariant(13, MetaRotaterBuilding, enumRotaterVariants.rotate180);
 
     // Stacker
     registerBuildingVariant(14, MetaStackerBuilding);
