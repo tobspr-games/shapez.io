@@ -330,7 +330,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             if (tileBelow && this.root.app.settings.getAllSettings().pickMinerOnPatch) {
                 this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
 
-                // Select chained miner if available, since thats always desired once unlocked
+                // Select chained miner if available, since that's always desired once unlocked
                 if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
                     this.currentVariant.set(enumMinerVariants.chainable);
                 }

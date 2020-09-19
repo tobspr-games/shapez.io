@@ -1091,7 +1091,7 @@ export class BeltPath extends BasicSerializableObject {
     computePositionFromProgress(progress) {
         let currentLength = 0;
 
-        // floating point issuses ..
+        // floating point issues ..
         assert(progress <= this.totalLength + 0.02, "Progress too big: " + progress);
 
         for (let i = 0; i < this.entityPath.length; ++i) {
@@ -1206,7 +1206,7 @@ export class BeltPath extends BasicSerializableObject {
 
             // Check if the current items are on the belt
             while (trackPos + beltLength >= currentItemPos - 1e-5) {
-                // Its on the belt, render it now
+                // It's on the belt, render it now
                 const staticComp = entity.components.StaticMapEntity;
                 assert(
                     currentItemPos - trackPos >= 0,

@@ -360,7 +360,7 @@ export class BeltSystem extends GameSystemWithFilter {
         const followUpTile = staticComp.origin.add(followUpVector);
         const followUpEntity = this.root.map.getLayerContentXY(followUpTile.x, followUpTile.y, entity.layer);
 
-        // Check if theres a belt at the tile we point to
+        // Check if there's a belt at the tile we point to
         if (followUpEntity) {
             const followUpBeltComp = followUpEntity.components.Belt;
             if (followUpBeltComp) {
@@ -390,7 +390,7 @@ export class BeltSystem extends GameSystemWithFilter {
         const supplyTile = staticComp.origin.add(supplyVector);
         const supplyEntity = this.root.map.getLayerContentXY(supplyTile.x, supplyTile.y, entity.layer);
 
-        // Check if theres a belt at the tile we point to
+        // Check if there's a belt at the tile we point to
         if (supplyEntity) {
             const supplyBeltComp = supplyEntity.components.Belt;
             if (supplyBeltComp) {

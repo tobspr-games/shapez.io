@@ -206,7 +206,7 @@ export class AtlasSprite extends BaseSprite {
             srcX,
             srcY,
 
-            // atlas src siize
+            // atlas src size
             srcW,
             srcH,
 

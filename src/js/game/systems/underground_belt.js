@@ -71,7 +71,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             const range = globalConfig.undergroundBeltMaxTilesByTier[tier];
 
             // FIND ENTRANCE
-            // Search for the entrance which is furthes apart (this is why we can't reuse logic here)
+            // Search for the entrance which is farthest apart (this is why we can't reuse logic here)
             let matchingEntrance = null;
             for (let i = 0; i < range; ++i) {
                 currentPos.addInplace(offset);

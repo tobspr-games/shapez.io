@@ -224,7 +224,7 @@ export class ReadWriteProxy {
                     return rawData;
                 })
 
-                // Parse JSON, this could throw but thats fine
+                // Parse JSON, this could throw but that's fine
                 .then(res => {
                     try {
                         return JSON.parse(res);

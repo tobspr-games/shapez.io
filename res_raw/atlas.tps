@@ -283,6 +283,7 @@
             <key type="filename">sprites/blueprints/virtual_processor-analyzer.png</key>
             <key type="filename">sprites/blueprints/virtual_processor-rotater.png</key>
             <key type="filename">sprites/blueprints/virtual_processor-shapecompare.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-stacker.png</key>
             <key type="filename">sprites/blueprints/virtual_processor-unstacker.png</key>
             <key type="filename">sprites/blueprints/virtual_processor.png</key>
             <key type="filename">sprites/blueprints/wire_tunnel-coating.png</key>
@@ -310,6 +311,7 @@
             <key type="filename">sprites/buildings/virtual_processor-analyzer.png</key>
             <key type="filename">sprites/buildings/virtual_processor-rotater.png</key>
             <key type="filename">sprites/buildings/virtual_processor-shapecompare.png</key>
+            <key type="filename">sprites/buildings/virtual_processor-stacker.png</key>
             <key type="filename">sprites/buildings/virtual_processor-unstacker.png</key>
             <key type="filename">sprites/buildings/virtual_processor.png</key>
             <key type="filename">sprites/buildings/wire_tunnel-coating.png</key>
