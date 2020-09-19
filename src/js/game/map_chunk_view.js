@@ -88,16 +88,17 @@ export class MapChunkView extends MapChunk {
         });
 
         const dims = globalConfig.mapChunkWorldSize;
+        const extrude = 0.05;
 
         // Draw chunk "pixel" art
         parameters.context.imageSmoothingEnabled = false;
         drawSpriteClipped({
             parameters,
             sprite,
-            x: this.x * dims,
-            y: this.y * dims,
-            w: dims,
-            h: dims,
+            x: this.x * dims - extrude,
+            y: this.y * dims - extrude,
+            w: dims + 2 * extrude,
+            h: dims + 2 * extrude,
             originalW: overlaySize,
             originalH: overlaySize,
         });

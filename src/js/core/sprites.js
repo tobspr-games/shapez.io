@@ -5,6 +5,8 @@ import { round3Digits } from "./utils";
 export const ORIGINAL_SPRITE_SCALE = "0.75";
 export const FULL_CLIP_RECT = new Rectangle(0, 0, 1, 1);
 
+const EXTRUDE = 0.1;
+
 export class BaseSprite {
     /**
      * Returns the raw handle
@@ -211,10 +213,10 @@ export class AtlasSprite extends BaseSprite {
             srcH,
 
             // dest pos and size
-            destX,
-            destY,
-            destW,
-            destH
+            destX - EXTRUDE,
+            destY - EXTRUDE,
+            destW + 2 * EXTRUDE,
+            destH + 2 * EXTRUDE
         );
     }
 
@@ -267,10 +269,10 @@ export class AtlasSprite extends BaseSprite {
             srcH,
 
             // dest pos and size
-            destX,
-            destY,
-            destW,
-            destH
+            destX - EXTRUDE,
+            destY - EXTRUDE,
+            destW + 2 * EXTRUDE,
+            destH + 2 * EXTRUDE
         );
     }
 

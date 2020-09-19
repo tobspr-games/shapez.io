@@ -202,7 +202,13 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     // Try to hand over the item
                     if (this.tryPassOverItem(item, destEntity, destSlot.index)) {
                         // Handover successful, clear slot
-                        targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
+                        if (!this.root.app.settings.getAllSettings().simplifiedBelts) {
+                            targetAcceptorComp.onItemAccepted(
+                                destSlot.index,
+                                destSlot.acceptedDirection,
+                                item
+                            );
+                        }
                         sourceSlot.item = null;
                         continue;
                     }
@@ -284,6 +290,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        if (this.root.app.settings.getAllSettings().simplifiedBelts) {
+            // Disabled in potato mode
+            return;
+        }
+
         const contents = chunk.containedEntitiesByLayer.regular;
 
         for (let i = 0; i < contents.length; ++i) {

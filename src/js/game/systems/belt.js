@@ -7,13 +7,13 @@ import { AtlasSprite } from "../../core/sprites";
 import { fastArrayDeleteValue } from "../../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
 import { BeltPath } from "../belt_path";
+import { arrayBeltVariantToRotation, MetaBeltBuilding } from "../buildings/belt";
+import { getCodeFromBuildingData } from "../building_codes";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
-import { getCodeFromBuildingData } from "../building_codes";
-import { arrayBeltVariantToRotation, MetaBeltBuilding } from "../buildings/belt";
 
 export const BELT_ANIM_COUNT = 14;
 
@@ -41,6 +41,16 @@ export class BeltSystem extends GameSystemWithFilter {
             [enumDirection.top]: [],
             [enumDirection.left]: [],
             [enumDirection.right]: [],
+        };
+
+        /**
+         * Stores simplified sprites of a belt
+         * @type {Object<enumDirection, AtlasSprite>}
+         */
+        this.potatoBeltSprites = {
+            [enumDirection.top]: Loader.getSprite("sprites/belt/potato_mode/forward.png"),
+            [enumDirection.right]: Loader.getSprite("sprites/belt/potato_mode/right.png"),
+            [enumDirection.left]: Loader.getSprite("sprites/belt/potato_mode/left.png"),
         };
 
         for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
@@ -496,14 +506,43 @@ export class BeltSystem extends GameSystemWithFilter {
                 globalConfig.itemSpacingOnBelts
         );
         const contents = chunk.containedEntitiesByLayer.regular;
-        for (let i = 0; i < contents.length; ++i) {
-            const entity = contents[i];
-            if (entity.components.Belt) {
-                const direction = entity.components.Belt.direction;
-                const sprite = this.beltAnimations[direction][animationIndex % BELT_ANIM_COUNT];
 
-                // Culling happens within the static map entity component
-                entity.components.StaticMapEntity.drawSpriteOnBoundsClipped(parameters, sprite, 0);
+        if (this.root.app.settings.getAllSettings().simplifiedBelts) {
+            // POTATO Mode: Only show items when belt is hovered
+            let hoveredBeltPath = null;
+            const mousePos = this.root.app.mousePosition;
+            if (mousePos) {
+                const tile = this.root.camera.screenToWorld(mousePos).toTileSpace();
+                const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
+                if (contents && contents.components.Belt) {
+                    hoveredBeltPath = contents.components.Belt.assignedPath;
+                }
+            }
+
+            for (let i = 0; i < contents.length; ++i) {
+                const entity = contents[i];
+                if (entity.components.Belt) {
+                    const direction = entity.components.Belt.direction;
+                    let sprite = this.potatoBeltSprites[direction];
+
+                    if (entity.components.Belt.assignedPath === hoveredBeltPath) {
+                        sprite = this.beltAnimations[direction][animationIndex % BELT_ANIM_COUNT];
+                    }
+
+                    // Culling happens within the static map entity component
+                    entity.components.StaticMapEntity.drawSpriteOnBoundsClipped(parameters, sprite, 0);
+                }
+            }
+        } else {
+            for (let i = 0; i < contents.length; ++i) {
+                const entity = contents[i];
+                if (entity.components.Belt) {
+                    const direction = entity.components.Belt.direction;
+                    const sprite = this.beltAnimations[direction][animationIndex % BELT_ANIM_COUNT];
+
+                    // Culling happens within the static map entity component
+                    entity.components.StaticMapEntity.drawSpriteOnBoundsClipped(parameters, sprite, 0);
+                }
             }
         }
     }

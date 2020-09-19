@@ -898,6 +898,11 @@ settings:
             description: >-
                 Enabled by default, selects the miner if you use the pipette when hovering a resource patch.
 
+        simplifiedBelts:
+            title: Simplified Belts (Ugly)
+            description: >-
+                Does not render belt items except when hovering the belt, to save performance.
+
 keybindings:
     title: Keybindings
     hint: >-
@@ -1004,3 +1009,53 @@ demo:
         exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Not available in the demo.
+
+tips:
+    - The hub accepts input of any kind, not just the current shape!
+    - Make sure your factories are stackable - it will pay out!
+    - Don't build too close to the hub, or it will be a huge chaos!
+    - If stacking does not work, try switching the inputs.
+    - You can toggle the belt planner direction by pressing <b>R</b>.
+    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
+    - Ratios stay the same, as long as all upgrades are on the same Tier.
+    - Serial execution is more efficient than parallel.
+    - You will unlock more variants of buildings later in the game!
+    - You can use <b>T</b> to switch between different variants.
+    - Symmetry is key!
+    - You can weave different tiers of tunnels.
+    - Try to build compact factories - it will pay out!
+    - The painter has a mirrored variant which you can select with <b>T</b>
+    - Having the right building ratios will maximize efficiency.
+    - At maximum level, 5 extractors will fill a single belt.
+    - Don't forget about tunnels!
+    - You don't need to divide up items evenly for full efficiency.
+    - Holding <b>SHIFT</b> will activate the belt planner, letting you place long lines of belts easily.
+    - Cutters always cut vertically, regardless of their orientation.
+    - To get white mix all three colors.
+    - The storage buffer priorities the first output.
+    - Invest time to build repeatable designs - it's worth it!
+    - Holding <b>CTRL</b> allows to place multiple buildings.
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
+    - Efficiency is key!
+    - Shape patches that are further away from the hub are more complex.
+    - Machines have a limited speed, divide them up for maximum efficiency.
+    - Use balancers to maximize your efficiency.
+    - Organization is important. Try not to cross conveyors too much.
+    - Plan in advance, or it will be a huge chaos!
+    - Don't remove your old factories! You'll need them to unlock upgrades.
+    - Try beating level 18 on your own before seeking for help!
+    - Don't complicate things, try to stay simple and you'll go far.
+    - You may need to re-use factories later in the game. Plan your factories to be re-usable.
+    - Sometimes, you can find a needed shape in the map without creating it with stackers.
+    - Full windmills / pinwheels can never spawn naturally.
+    - Color your shapes before cutting for maximum efficiency.
+    - With modules, space is merely a perception; a concern for mortal men.
+    - Make a separate blueprint factory. They're important for modules.
+    - Have a closer look on the color mixer, and your questions will be answered.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
+    - The pin icon next to each shape in the upgrade list pins it to the screen.
+    - Mix all primary colours together to make white!
+    - You have an infinite map, don't cramp your factory, expand!
+    - Also try Factorio! It's my favourite game.
+    - The quad cutter cuts counter-clockwise starting from the top right!

@@ -15,6 +15,11 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     }
 
     update() {
+        if (this.root.app.settings.getAllSettings().simplifiedBelts) {
+            // Disabled in potato mode
+            return;
+        }
+
         // This system doesn't render anything while in map overview,
         // so simply accumulate ticks
         if (this.root.camera.getIsMapOverlayActive()) {
@@ -56,6 +61,11 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        if (this.root.app.settings.getAllSettings().simplifiedBelts) {
+            // Disabled in potato mode
+            return;
+        }
+
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
