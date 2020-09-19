@@ -53,13 +53,27 @@
                 opacity: 0.5;
             }
         }
+        &,
+        * {
+            @include SuperSmallText;
+            @include S(font-size, 7px, $important: true);
+            @include S(line-height, 12px, $important: true);
+        }
 
         .object {
             grid-column: 1 / 3;
             line-height: 1.5em;
 
+            > summary {
+                transition: opacity 0.1s ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
             > div {
                 @include S(margin-left, 4px);
+                cursor: pointer;
             }
         }
     }
