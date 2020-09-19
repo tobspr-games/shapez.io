@@ -40,10 +40,6 @@ export class BeltComponent extends Component {
         return "Belt";
     }
 
-    duplicateWithoutContents() {
-        return new BeltComponent({ direction: this.direction });
-    }
-
     /**
      *
      * @param {object} param0
