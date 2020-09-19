@@ -1022,7 +1022,7 @@ demo:
 
 tips:
     - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are stackable - it will pay out!
+    - Make sure your factories are modular - it will pay out!
     - Don't build too close to the hub, or it will be a huge chaos!
     - If stacking does not work, try switching the inputs.
     - You can toggle the belt planner direction by pressing <b>R</b>.
