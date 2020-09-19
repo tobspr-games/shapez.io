@@ -4,6 +4,7 @@ import { GameRoot } from "./root";
 import { Entity } from "./entity";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { createLogger } from "../core/logging";
+import { globalConfig } from "../core/config";
 
 const logger = createLogger("entity_manager");
 
@@ -22,7 +23,7 @@ export class EntityManager extends BasicSerializableObject {
         /** @type {Array<Entity>} */
         this.entities = [];
 
-        // We store a seperate list with entities to destroy, since we don't destroy
+        // We store a separate list with entities to destroy, since we don't destroy
         // them instantly
         /** @type {Array<Entity>} */
         this.destroyList = [];
@@ -61,14 +62,13 @@ export class EntityManager extends BasicSerializableObject {
      * @param {number=} uid Optional predefined uid
      */
     registerEntity(entity, uid = null) {
-        assert(this.entities.indexOf(entity) < 0, `RegisterEntity() called twice for entity ${entity}`);
+        if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts) {
+            assert(this.entities.indexOf(entity) < 0, `RegisterEntity() called twice for entity ${entity}`);
+        }
         assert(!entity.destroyed, `Attempting to register destroyed entity ${entity}`);
 
-        if (G_IS_DEV && uid !== null) {
+        if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts && uid !== null) {
             assert(!this.findByUid(uid, false), "Entity uid already taken: " + uid);
-        }
-
-        if (uid !== null) {
             assert(uid >= 0 && uid < Number.MAX_SAFE_INTEGER, "Invalid uid passed: " + uid);
         }
 
@@ -90,18 +90,6 @@ export class EntityManager extends BasicSerializableObject {
         entity.registered = true;
 
         this.root.signals.entityAdded.dispatch(entity);
-    }
-
-    /**
-     * Sorts all entitiy lists after a resync
-     */
-    sortEntityLists() {
-        this.entities.sort((a, b) => a.uid - b.uid);
-        this.destroyList.sort((a, b) => a.uid - b.uid);
-
-        for (const key in this.componentToEntity) {
-            this.componentToEntity[key].sort((a, b) => a.uid - b.uid);
-        }
     }
 
     /**
@@ -168,6 +156,24 @@ export class EntityManager extends BasicSerializableObject {
     }
 
     /**
+     * Returns a map which gives a mapping from UID to Entity.
+     * This map is not updated.
+     *
+     * @returns {Map<number, Entity>}
+     */
+    getFrozenUidSearchMap() {
+        const result = new Map();
+        const array = this.entities;
+        for (let i = 0, len = array.length; i < len; ++i) {
+            const entity = array[i];
+            if (!entity.queuedForDestroy && !entity.destroyed) {
+                result.set(entity.uid, entity);
+            }
+        }
+        return result;
+    }
+
+    /**
      * Returns all entities having the given component
      * @param {typeof Component} componentHandle
      * @returns {Array<Entity>} entities
@@ -218,7 +224,7 @@ export class EntityManager extends BasicSerializableObject {
             this.unregisterEntityComponents(entity);
 
             entity.registered = false;
-            entity.internalDestroyCallback();
+            entity.destroyed = true;
 
             this.root.signals.entityDestroyed.dispatch(entity);
         }

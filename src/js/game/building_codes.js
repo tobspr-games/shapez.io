@@ -26,15 +26,26 @@ export const gBuildingVariants = {
 };
 
 /**
+ * Mapping from 'metaBuildingId/variant/rotationVariant' to building code
+ * @type {Map<string, string>}
+ */
+const variantsCache = new Map();
+
+/**
  * Registers a new variant
- * @param {number | string} id
+ * @param {number | string} code
  * @param {typeof MetaBuilding} meta
  * @param {typeof MetaBuildingVariant} variant
  * @param {number} rotationVariant
  */
-export function registerBuildingVariant(id, meta, variant, rotationVariant = 0) {
-    assert(!gBuildingVariants[id], "Duplicate id: " + id);
-    gBuildingVariants[id.toString()] = {
+export function registerBuildingVariant(
+    code,
+    meta,
+    variant,
+    rotationVariant = 0
+) {
+    assert(!gBuildingVariants[code], "Duplicate id: " + code);
+    gBuildingVariants[code.toString()] = {
         metaClass: meta,
         variant,
         rotationVariant,
@@ -54,30 +65,28 @@ export function getBuildingDataFromCode(code) {
 }
 
 /**
+ * Builds the cache for the codes
+ */
+export function buildBuildingCodeCache() {
+    for (const code in gBuildingVariants) {
+        const data = gBuildingVariants[code];
+        const hash = data.metaInstance.getId() + "/" + data.variant + "/" + data.rotationVariant;
+        variantsCache.set(hash, +code);
+    }
+}
+
+/**
  * Finds the code for a given variant
  * @param {MetaBuilding} metaBuilding
  * @param {typeof MetaBuildingVariant} variant
  * @param {number} rotationVariant
+ * @returns {string}
  */
 export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) {
-    for (const key in gBuildingVariants) {
-        const data = gBuildingVariants[key];
-        if (
-            data.metaInstance.getId() === metaBuilding.getId() &&
-            data.variant === variant &&
-            data.rotationVariant === rotationVariant
-        ) {
-            return key;
-        }
+    const hash = metaBuilding.getId() + "/" + variant.getId() + "/" + rotationVariant;
+    const result = variantsCache.get(hash);
+    if (G_IS_DEV) {
+        assertAlways(!!result, "Building not found by data: " + hash);
     }
-    assertAlways(
-        false,
-        "Building not found by data: " +
-            metaBuilding.getId() +
-            " / " +
-            variant.getId() +
-            " / " +
-            rotationVariant
-    );
-    return "0";
+    return result;
 }

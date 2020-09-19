@@ -162,7 +162,7 @@ export class WireSystem extends GameSystemWithFilter {
         const tunnelEntities = this.root.entityMgr.getAllWithComponent(WireTunnelComponent);
         const pinEntities = this.root.entityMgr.getAllWithComponent(WiredPinsComponent);
 
-        // Clear all network references, but not on the first update since thats the deserializing one
+        // Clear all network references, but not on the first update since that's the deserializing one
         if (!this.isFirstRecompute) {
             for (let i = 0; i < wireEntities.length; ++i) {
                 wireEntities[i].components.Wire.linkedNetwork = null;
@@ -432,7 +432,7 @@ export class WireSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                // Check if its a tunnel, if so, go to the forwarded item
+                // Check if it's a tunnel, if so, go to the forwarded item
                 const tunnelComp = entity.components.WireTunnel;
                 if (tunnelComp) {
                     if (visitedTunnels.has(entity.uid)) {

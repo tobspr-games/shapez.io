@@ -46,7 +46,6 @@ export class MinerSystem extends GameSystemWithFilter {
             }
 
             // Check if miner is above an actual tile
-
             if (!minerComp.cachedMinedItem) {
                 const staticComp = entity.components.StaticMapEntity;
                 const tileBelow = this.root.map.getLowerLayerContentXY(
@@ -171,7 +170,7 @@ export class MinerSystem extends GameSystemWithFilter {
             }
 
             // Draw the item background - this is to hide the ejected item animation from
-            // the item ejecto
+            // the item ejector
 
             const padding = 3;
             const destX = staticComp.origin.x * globalConfig.tileSize + padding;

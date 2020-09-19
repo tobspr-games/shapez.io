@@ -236,4 +236,7 @@ export function initBuildingCodesAfterResourcesLoaded() {
         );
         variant.silhouetteColor = variant.metaInstance.getSilhouetteColor();
     }
+
+    // Update caches
+    buildBuildingCodeCache();
 }

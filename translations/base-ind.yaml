@@ -22,10 +22,10 @@
 ---
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io adalah permainan membangun pabrik-pabrik dengan tujuan untuk mengautomatiskan pembentukan dan pemrosesan bentuk-bentuk yang bertambah semakin kompleks di dalam area permainan yang meluas secara tak terhingga.
+    shortText: Shapez.io adalah game tentang membangun pabrik untuk mengotomatiskan pembuatan dan pemrosesan bentuk-bentuk yang semakin kompleks di peta yang meluas tanpa batas.
 
     # This is the text shown above the discord link
-    discordLink: Tautan Resmi Discord – Obrol dengan saya!
+    discordLink: Tautan Resmi Discord – Mari mengobrol dengan saya!
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
     # - Do not translate the first line (This is the gif image at the start of the store)
@@ -33,13 +33,13 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io adalah permainan membangun pabrik-pabrik dengan tujuan untuk mengautomatiskan pembentukan dan pemrosesan bentuk-bentuk yang bertambah semakin kompleks di dalam area permainan yang meluas secara tak terhingga.
+        shapez.io adalah permainan membangun pabrik dengan tujuan untuk mengautomatiskan pembentukan dan pemrosesan bentuk-bentuk yang bertambah semakin kompleks di peta yang meluas tanpa batas.
 
         Setelah pengiriman bentuk-bentuk yang diminta, Anda akan maju dalam permainan dan membuka tingkatan versi-versi mesin selanjutnya untuk mempercepat pabrik Anda.
 
-        Seiring meningkatnya kesulitan dari bentuk-bentuk yang diminta, Anda harus meningkatkan pabrik Anda untuk mengatasi kesulitan tersebut – Jangan lupa dengan sumber-sumber daya, Anda harus memperluas ke seluruh [b]area yang tidak terbatas[/b]!
+        Seiring meningkatnya kesulitan dari bentuk-bentuk yang diminta, Anda harus meningkatkan pabrik Anda untuk mengatasi kesulitan tersebut – Jangan lupa dengan sumber daya, Anda harus memperluas ke seluruh [b]area yang tidak terbatas[/b]!
 
-        Kemudian Anda harus mencampurkan warna-warna dan mencat bentuk-bentuk dengannya – Campurkan merah, hijau, dan biru untuk memproduksi warna-warna lain dan mencat bentuk-bentuk dengannya untuk memenuhi permintaan.
+        Kemudian Anda harus mencampurkan warna-warna dan mencat bentuk-bentuk tersebut – Campurkan merah, hijau, dan biru untuk memproduksi warna-warna lain dan mencat bentuk-bentuk tersebut untuk memenuhi permintaan.
 
         Permainan ini mempunyai 18 level-level progresif (yang mana akan membuat Anda sibuk berjam-jam!), akan tetapi saya akan terus menambahkan konten-konten baru – Ada banyak yang direncanakan!
 
@@ -48,16 +48,16 @@ steamPage:
         [b]Keuntungan Versi Penuh[/b]
 
         [list]
-            [*] Versi Permainan Gelap
+            [*] Mode Malam
             [*] Titik Arah Tak Terhingga
             [*] Penyimpanan Permainan Tak Terhingga
             [*] Pengaturan-pengaturan Tambahan
-            [*] Akan datang: Kawat & Energi! Akan dicoba untuk dicapai untuk (kira-kira) akhir Juli 2020.
+            [*] Akan datang: Kawat & Energi! Akan dicoba untuk dicapai sekitar akhir Juli 2020.
             [*] Akan datang: Level-level tambahan
-            [*] Memperkenankan saya untuk terus mengembangkan shapez.io ❤️
+            [*] Mendukung saya untuk terus mengembangkan shapez.io ❤️
         [/list]
 
-        [b]Pembaruan di Masa Depan[/b]
+        [b]Pembaruan di masa yang akan datang[/b]
 
         Saya seringkali membarui permainan ini dan terus mencoba untuk menciptakan pembaruan paling sedikit sekali seminggu!
 
@@ -87,8 +87,8 @@ steamPage:
         [/list]
 
 global:
-    loading: Memuat
-    error: Terdapat kesalahan
+    loading: Sedang memuat
+    error: Terjadi kesalahan
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -98,9 +98,9 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: k
-        millions: M
-        billions: B
+        thousands: K
+        millions: J
+        billions: M
         trillions: T
 
     # Shown for infinitely big numbers
@@ -108,13 +108,13 @@ global:
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: satu detik yang lalu
+        oneSecondAgo: sedetik yang lalu
         xSecondsAgo: <x> detik yang lalu
-        oneMinuteAgo: satu menit yang lalu
+        oneMinuteAgo: semenit yang lalu
         xMinutesAgo: <x> menit yang lalu
-        oneHourAgo: satu jam yang lalu
+        oneHourAgo: sejam yang lalu
         xHoursAgo: <x> jam yang lalu
-        oneDayAgo: satu hari yang lalu
+        oneDayAgo: sehari yang lalu
         xDaysAgo: <x> hari yang lalu
 
         # Short formats for times, e.g. '5h 23m'
@@ -142,7 +142,7 @@ mainMenu:
     play: Mulai Permainan
     continue: Lanjutkan Permainan
     newGame: Permainan Baru
-    changelog: Ganti Data Log
+    changelog: Catatan Perubahan
     subreddit: Reddit
     importSavegame: Impor Data Simpanan
     openSourceHint: Permainan ini bekerja secara open source!
@@ -166,7 +166,7 @@ dialogs:
         restart: Mulai Ulang
         reset: Setel Ulang
         getStandalone: Dapatkan Versi Penuh
-        deleteGame: Saya tahu apa yang saya kerjakan
+        deleteGame: Saya tahu apa yang saya lakukan
         viewUpdate: Tampilkan Pembaruan
         showUpgrades: Tunjukkan Tingkatan
         showKeybindings: Tunjukan Tombol Pintas

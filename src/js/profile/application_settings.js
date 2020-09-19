@@ -276,6 +276,7 @@ export const allApplicationSettings = [
     new BoolSetting("lowQualityMapResources", enumCategories.performance, (app, value) => {}),
     new BoolSetting("disableTileGrid", enumCategories.performance, (app, value) => {}),
     new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
+    new BoolSetting("simplifiedBelts", enumCategories.performance, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -313,6 +314,7 @@ class SettingsStorage {
         this.lowQualityMapResources = false;
         this.disableTileGrid = false;
         this.lowQualityTextures = false;
+        this.simplifiedBelts = false;
 
         /**
          * @type {Object.<string, number>}
@@ -523,7 +525,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 26;
+        return 27;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -644,6 +646,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 26) {
             data.settings.pickMinerOnPatch = true;
             data.version = 26;
+        }
+
+        if (data.version < 27) {
+            data.settings.simplifiedBelts = false;
+            data.version = 27;
         }
 
         return ExplainedResult.good();

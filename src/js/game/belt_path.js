@@ -2,7 +2,7 @@ import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
-import { epsilonCompare, round4Digits, clamp } from "../core/utils";
+import { clamp, epsilonCompare, round4Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
@@ -1069,12 +1069,14 @@ export class BeltPath extends BasicSerializableObject {
             // Trigger animation on the acceptor comp
             const targetAcceptorComp = this.acceptorTarget.entity.components.ItemAcceptor;
             if (targetAcceptorComp) {
-                targetAcceptorComp.onItemAccepted(
-                    this.acceptorTarget.slot,
-                    this.acceptorTarget.direction,
-                    item,
-                    remainingProgress
-                );
+                if (!this.root.app.settings.getAllSettings().simplifiedBelts) {
+                    targetAcceptorComp.onItemAccepted(
+                        this.acceptorTarget.slot,
+                        this.acceptorTarget.direction,
+                        item,
+                        remainingProgress
+                    );
+                }
             }
 
             return true;
@@ -1091,7 +1093,7 @@ export class BeltPath extends BasicSerializableObject {
     computePositionFromProgress(progress) {
         let currentLength = 0;
 
-        // floating point issuses ..
+        // floating point issues ..
         assert(progress <= this.totalLength + 0.02, "Progress too big: " + progress);
 
         for (let i = 0; i < this.entityPath.length; ++i) {
@@ -1180,6 +1182,35 @@ export class BeltPath extends BasicSerializableObject {
     }
 
     /**
+     * Checks if this belt path should render simplified
+     */
+    checkIsPotatoMode() {
+        // POTATO Mode: Only show items when belt is hovered
+        if (!this.root.app.settings.getAllSettings().simplifiedBelts) {
+            return false;
+        }
+
+        const mousePos = this.root.app.mousePosition;
+        if (!mousePos) {
+            // Mouse not registered
+            return true;
+        }
+
+        const tile = this.root.camera.screenToWorld(mousePos).toTileSpace();
+        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
+        if (!contents || !contents.components.Belt) {
+            // Nothing below
+            return true;
+        }
+
+        if (contents.components.Belt.assignedPath !== this) {
+            // Not this path
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Draws the path
      * @param {DrawParameters} parameters
      */
@@ -1190,6 +1221,30 @@ export class BeltPath extends BasicSerializableObject {
 
         if (this.items.length === 0) {
             // Early out
+            return;
+        }
+
+        if (this.checkIsPotatoMode()) {
+            const firstItem = this.items[0];
+            if (this.entityPath.length > 1 && firstItem) {
+                const medianBeltIndex = clamp(
+                    Math.round(this.entityPath.length / 2 - 1),
+                    0,
+                    this.entityPath.length - 1
+                );
+                const medianBelt = this.entityPath[medianBeltIndex];
+                const beltComp = medianBelt.components.Belt;
+                const staticComp = medianBelt.components.StaticMapEntity;
+                const centerPosLocal = beltComp.transformBeltToLocalSpace(
+                    this.entityPath.length % 2 === 0 ? beltComp.getEffectiveLengthTiles() : 0.5
+                );
+                const centerPos = staticComp.localTileToWorld(centerPosLocal).toWorldSpaceCenterOfTile();
+
+                parameters.context.globalAlpha = 0.5;
+                firstItem[_item].drawItemCenteredClipped(centerPos.x, centerPos.y, parameters);
+                parameters.context.globalAlpha = 1;
+            }
+
             return;
         }
 
@@ -1206,7 +1261,7 @@ export class BeltPath extends BasicSerializableObject {
 
             // Check if the current items are on the belt
             while (trackPos + beltLength >= currentItemPos - 1e-5) {
-                // Its on the belt, render it now
+                // It's on the belt, render it now
                 const staticComp = entity.components.StaticMapEntity;
                 assert(
                     currentItemPos - trackPos >= 0,

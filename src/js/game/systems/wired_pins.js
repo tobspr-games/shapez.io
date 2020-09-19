@@ -149,8 +149,6 @@ export class WiredPinsSystem extends GameSystemWithFilter {
         }
     }
 
-    update() {}
-
     /**
      * Draws a given entity
      * @param {DrawParameters} parameters

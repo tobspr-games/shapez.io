@@ -1,6 +1,8 @@
 /* typehints:start */
 import { Application } from "../application";
 /* typehints:end */
+
+import { randomChoice } from "../core/utils";
 import { T } from "../translations";
 
 export class GameLoadingOverlay {
@@ -43,6 +45,7 @@ export class GameLoadingOverlay {
         this.element.classList.add("gameLoadingOverlay");
         this.parent.appendChild(this.element);
         this.internalAddSpinnerAndText(this.element);
+        this.internalAddHint(this.element);
     }
 
     /**
@@ -54,5 +57,16 @@ export class GameLoadingOverlay {
         inner.classList.add("prefab_LoadingTextWithAnim");
         inner.innerText = T.global.loading;
         element.appendChild(inner);
+    }
+
+    /**
+     * Adds a random hint
+     * @param {HTMLElement} element
+     */
+    internalAddHint(element) {
+        const hint = document.createElement("span");
+        hint.innerHTML = randomChoice(T.tips);
+        hint.classList.add("hint");
+        element.appendChild(hint);
     }
 }

@@ -14,6 +14,15 @@
         flex-direction: column;
     }
 
+    .hint {
+        position: absolute;
+        @include S(bottom, 40px);
+        @include S(left, 20px);
+        @include S(right, 20px);
+        @include PlainText;
+        text-align: center;
+    }
+
     #ingame_Canvas {
         position: absolute;
         top: 0;

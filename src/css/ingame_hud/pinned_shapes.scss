@@ -18,7 +18,6 @@
         @include S(margin-bottom, 4px);
         color: #333438;
         // text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.2);
-        filter: drop-shadow(#{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.2));
 
         &.unpinable {
             > canvas {

@@ -94,14 +94,6 @@ export class Entity extends BasicSerializableObject {
     }
 
     /**
-     * Internal destroy callback
-     */
-    internalDestroyCallback() {
-        assert(!this.destroyed, "Can not destroy entity twice");
-        this.destroyed = true;
-    }
-
-    /**
      * Adds a new component, only possible until the entity is registered on the entity manager,
      * after that use @see EntityManager.addDynamicComponent
      * @param {Component} componentInstance

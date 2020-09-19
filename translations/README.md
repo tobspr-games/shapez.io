@@ -38,7 +38,7 @@ The base language is English and can be found [here](base-en.yaml).
 
 ## Editing existing translations
 
-If you want to edit an existing translation (Fixing typos, Updating it to a newer version, etc), you can just use the github file editor to edit the file.
+If you want to edit an existing translation (Fixing typos, updating it to a newer version, etc), you can just use the github file editor to edit the file.
 
 -   Click the language you want to edit from the list above
 -   Click the small "edit" symbol on the top right
@@ -61,6 +61,8 @@ If you want to edit an existing translation (Fixing typos, Updating it to a newe
 
 Please DM me on Discord (tobspr#5407), so I can add the language template for you.
 
+**Important: I am currently not accepting new languages until the wires update is out!**
+
 Please use the following template:
 
 ```
@@ -77,4 +79,4 @@ PS: I'm super busy, but I'll give my best to do it quickly!
 
 ## Updating a language to the latest version
 
-Run `yarn syncTranslations` in the root directory to synchronize all translations to the latest version! This will remove obsolete keys and add newly added keys. (Run `yarn` before to install packes).
+Run `yarn syncTranslations` in the root directory to synchronize all translations to the latest version! This will remove obsolete keys and add newly added keys. (Run `yarn` before to install packages).

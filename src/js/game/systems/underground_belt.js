@@ -2,6 +2,8 @@ import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
+import { StaleAreaDetector } from "../../core/stale_area_detector";
+import { fastArrayDelete } from "../../core/utils";
 import {
     enumAngleToDirection,
     enumDirection,
@@ -12,7 +14,6 @@ import {
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { fastArrayDelete } from "../../core/utils";
 
 const logger = createLogger("tunnels");
 
@@ -29,41 +30,20 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             ),
         };
 
+        this.staleAreaWatcher = new StaleAreaDetector({
+            root: this.root,
+            name: "underground-belt",
+            recomputeMethod: this.recomputeArea.bind(this),
+        });
+
         this.root.signals.entityManuallyPlaced.add(this.onEntityManuallyPlaced, this);
 
-        /**
-         * @type {Rectangle}
-         */
-        this.areaToRecompute = null;
-
-        this.root.signals.entityAdded.add(this.onEntityChanged, this);
-        this.root.signals.entityDestroyed.add(this.onEntityChanged, this);
-    }
-
-    /**
-     * Called when an entity got added or removed
-     * @param {Entity} entity
-     */
-    onEntityChanged(entity) {
-        if (!this.root.gameInitialized) {
-            return;
-        }
-        const undergroundComp = entity.components.UndergroundBelt;
-        if (!undergroundComp) {
-            return;
-        }
-
-        const affectedArea = entity.components.StaticMapEntity.getTileSpaceBounds().expandedInAllDirections(
-            globalConfig.undergroundBeltMaxTilesByTier[
-                globalConfig.undergroundBeltMaxTilesByTier.length - 1
-            ] + 1
+        // NOTICE: Once we remove a tunnel, we need to update the whole area to
+        // clear outdated handles
+        this.staleAreaWatcher.recomputeOnComponentsChanged(
+            [UndergroundBeltComponent],
+            globalConfig.undergroundBeltMaxTilesByTier[globalConfig.undergroundBeltMaxTilesByTier.length - 1]
         );
-
-        if (this.areaToRecompute) {
-            this.areaToRecompute = this.areaToRecompute.getUnion(affectedArea);
-        } else {
-            this.areaToRecompute = affectedArea;
-        }
     }
 
     /**
@@ -91,7 +71,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             const range = globalConfig.undergroundBeltMaxTilesByTier[tier];
 
             // FIND ENTRANCE
-            // Search for the entrance which is furthes apart (this is why we can't reuse logic here)
+            // Search for the entrance which is farthest apart (this is why we can't reuse logic here)
             let matchingEntrance = null;
             for (let i = 0; i < range; ++i) {
                 currentPos.addInplace(offset);
@@ -223,14 +203,9 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
     /**
      * Recomputes the cache in the given area, invalidating all entries there
+     * @param {Rectangle} area
      */
-    recomputeArea() {
-        const area = this.areaToRecompute;
-        logger.log("Recomputing area:", area.x, area.y, "/", area.w, area.h);
-        if (G_IS_DEV && globalConfig.debug.renderChanges) {
-            this.root.hud.parts.changesDebugger.renderChange("tunnels", this.areaToRecompute, "#fc03be");
-        }
-
+    recomputeArea(area) {
         for (let x = area.x; x < area.right(); ++x) {
             for (let y = area.y; y < area.bottom(); ++y) {
                 const entities = this.root.map.getLayersContentsMultipleXY(x, y);
@@ -240,7 +215,6 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                     if (!undergroundComp) {
                         continue;
                     }
-
                     undergroundComp.cachedLinkedEntity = null;
                 }
             }
@@ -248,10 +222,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
     }
 
     update() {
-        if (this.areaToRecompute) {
-            this.recomputeArea();
-            this.areaToRecompute = null;
-        }
+        this.staleAreaWatcher.update();
 
         const delta = this.root.dynamicTickrate.deltaSeconds;
 
@@ -334,21 +305,13 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
         const undergroundComp = entity.components.UndergroundBelt;
 
         // Find the current receiver
-        let receiver = undergroundComp.cachedLinkedEntity;
-        if (!receiver) {
-            // We don't have a receiver, compute it
-            receiver = undergroundComp.cachedLinkedEntity = this.findRecieverForSender(entity);
-
-            if (G_IS_DEV && globalConfig.debug.renderChanges) {
-                this.root.hud.parts.changesDebugger.renderChange(
-                    "sender",
-                    entity.components.StaticMapEntity.getTileSpaceBounds(),
-                    "#fc03be"
-                );
-            }
+        let cacheEntry = undergroundComp.cachedLinkedEntity;
+        if (!cacheEntry) {
+            // Need to recompute cache
+            cacheEntry = undergroundComp.cachedLinkedEntity = this.findRecieverForSender(entity);
         }
 
-        if (!receiver.entity) {
+        if (!cacheEntry.entity) {
             // If there is no connection to a receiver, ignore this one
             return;
         }
@@ -364,9 +327,9 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             if (remainingTime === 0) {
                 // Check if the receiver can accept it
                 if (
-                    receiver.entity.components.UndergroundBelt.tryAcceptTunneledItem(
+                    cacheEntry.entity.components.UndergroundBelt.tryAcceptTunneledItem(
                         nextItem,
-                        receiver.distance,
+                        cacheEntry.distance,
                         this.root.hubGoals.getUndergroundBeltBaseSpeed()
                     )
                 ) {
