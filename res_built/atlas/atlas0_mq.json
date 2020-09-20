@@ -520,7 +520,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
 	"sourceSize": {"w":96,"h":96}
 },
-"sprites/blueprints/rotater-fl.png":
+"sprites/blueprints/rotater-rotate180.png":
 {
 	"frame": {"x":525,"y":1100,"w":95,"h":96},
 	"rotated": false,
@@ -928,7 +928,7 @@
 	"spriteSourceSize": {"x":1,"y":0,"w":95,"h":96},
 	"sourceSize": {"w":96,"h":96}
 },
-"sprites/buildings/rotater-fl.png":
+"sprites/buildings/rotater-rotate180.png":
 {
 	"frame": {"x":213,"y":1234,"w":95,"h":96},
 	"rotated": false,
