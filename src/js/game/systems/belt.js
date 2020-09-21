@@ -165,6 +165,8 @@ export class BeltSystem extends GameSystemWithFilter {
                     const newDirection = arrayBeltVariantToRotation[rotationVariant];
 
                     if (targetStaticComp.rotation !== rotation || newDirection !== targetBeltComp.direction) {
+                        const originalPath = targetBeltComp.assignedPath;
+
                         // Ok, first remove it from its current path
                         this.deleteEntityFromPath(targetBeltComp.assignedPath, targetEntity);
 
@@ -178,6 +180,9 @@ export class BeltSystem extends GameSystemWithFilter {
                             defaultBuildingVariant,
                             rotationVariant
                         );
+
+                        // Update the original path since it might have picked up the entit1y
+                        originalPath.onPathChanged();
 
                         // Now add it again
                         this.addEntityToPaths(targetEntity);

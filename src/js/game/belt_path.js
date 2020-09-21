@@ -186,9 +186,12 @@ export class BeltPath extends BasicSerializableObject {
 
     /**
      * Finds the entity which accepts our items
+     * @param {boolean=} debug_Silent Whether debug output should be silent
      * @return {{ entity: Entity, slot: number, direction?: enumDirection }}
      */
-    computeAcceptingEntityAndSlot() {
+    computeAcceptingEntityAndSlot(debug_Silent = false) {
+        DEBUG && !debug_Silent && logger.log("Recomputing acceptor target");
+
         const lastEntity = this.entityPath[this.entityPath.length - 1];
         const lastStatic = lastEntity.components.StaticMapEntity;
         const lastBeltComp = lastEntity.components.Belt;
@@ -207,12 +210,23 @@ export class BeltPath extends BasicSerializableObject {
         );
 
         if (targetEntity) {
+            DEBUG && !debug_Silent && logger.log("  Found target entity", targetEntity.uid);
             const targetStaticComp = targetEntity.components.StaticMapEntity;
             const targetBeltComp = targetEntity.components.Belt;
 
             // Check for belts (special case)
             if (targetBeltComp) {
                 const beltAcceptingDirection = targetStaticComp.localDirectionToWorld(enumDirection.top);
+                DEBUG &&
+                    !debug_Silent &&
+                    logger.log(
+                        "  Entity is accepting items from",
+                        ejectSlotWsDirection,
+                        "vs",
+                        beltAcceptingDirection,
+                        "Rotation:",
+                        targetStaticComp.rotation
+                    );
                 if (ejectSlotWsDirection === beltAcceptingDirection) {
                     return {
                         entity: targetEntity,
@@ -376,6 +390,41 @@ export class BeltPath extends BasicSerializableObject {
         const actualBounds = this.computeBounds();
         if (!actualBounds.equalsEpsilon(this.worldBounds, 0.01)) {
             return fail("Bounds are stale");
+        }
+
+        // Check acceptor
+        const acceptor = this.computeAcceptingEntityAndSlot(true);
+        if (!!acceptor !== !!this.acceptorTarget) {
+            return fail("Acceptor target mismatch, acceptor", !!acceptor, "vs stored", !!this.acceptorTarget);
+        }
+
+        if (acceptor) {
+            if (this.acceptorTarget.entity !== acceptor.entity) {
+                return fail(
+                    "Mismatching entity on acceptor target:",
+                    acceptor.entity.uid,
+                    "vs",
+                    this.acceptorTarget.entity.uid
+                );
+            }
+
+            if (this.acceptorTarget.slot !== acceptor.slot) {
+                return fail(
+                    "Mismatching entity on acceptor target:",
+                    acceptor.slot,
+                    "vs stored",
+                    this.acceptorTarget.slot
+                );
+            }
+
+            if (this.acceptorTarget.direction !== acceptor.direction) {
+                return fail(
+                    "Mismatching direction on acceptor target:",
+                    acceptor.direction,
+                    "vs stored",
+                    this.acceptorTarget.direction
+                );
+            }
         }
     }
 
