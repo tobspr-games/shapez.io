@@ -886,10 +886,10 @@ export class Camera extends BasicSerializableObject {
         }
 
         if (
-            mousePos.x <= 0 ||
-            mousePos.y <= 0 ||
-            mousePos.x >= this.root.gameWidth ||
-            mousePos.y >= this.root.gameHeight
+            mousePos.x < 0 ||
+            mousePos.y < 0 ||
+            mousePos.x > this.root.gameWidth ||
+            mousePos.y > this.root.gameHeight
         ) {
             // Out of screen
             return;
