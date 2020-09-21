@@ -86,27 +86,30 @@ export class BufferMaintainer {
         // Make sure our backlog never gets too big
         clearBufferBacklog();
 
-        const bufferStats = getBufferStats();
-        const mbUsed = round1Digit(bufferStats.vramUsage / (1024 * 1024));
-        logger.log(
-            "GC: Remove",
-            (deletedKeys + "").padStart(4),
-            ", Remain",
-            (totalKeys + "").padStart(4),
-            "(",
-            (bufferStats.bufferCount + "").padStart(4),
-            "total",
-            ")",
+        // @ts-ignore
+        if (G_IS_DEV && false) {
+            const bufferStats = getBufferStats();
+            const mbUsed = round1Digit(bufferStats.vramUsage / (1024 * 1024));
+            logger.log(
+                "GC: Remove",
+                (deletedKeys + "").padStart(4),
+                ", Remain",
+                (totalKeys + "").padStart(4),
+                "(",
+                (bufferStats.bufferCount + "").padStart(4),
+                "total",
+                ")",
 
-            "(",
-            (bufferStats.backlogSize + "").padStart(4),
-            "backlog",
-            ")",
+                "(",
+                (bufferStats.backlogSize + "").padStart(4),
+                "backlog",
+                ")",
 
-            "VRAM:",
-            mbUsed,
-            "MB"
-        );
+                "VRAM:",
+                mbUsed,
+                "MB"
+            );
+        }
 
         ++this.iterationIndex;
     }
