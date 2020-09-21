@@ -269,7 +269,7 @@
             <key type="filename">sprites/blueprints/miner.png</key>
             <key type="filename">sprites/blueprints/reader.png</key>
             <key type="filename">sprites/blueprints/rotater-ccw.png</key>
-            <key type="filename">sprites/blueprints/rotater-fl.png</key>
+            <key type="filename">sprites/blueprints/rotater-rotate180.png</key>
             <key type="filename">sprites/blueprints/rotater.png</key>
             <key type="filename">sprites/blueprints/splitter-compact-inverse.png</key>
             <key type="filename">sprites/blueprints/splitter-compact-merge-inverse.png</key>
@@ -300,7 +300,7 @@
             <key type="filename">sprites/buildings/miner-chainable.png</key>
             <key type="filename">sprites/buildings/reader.png</key>
             <key type="filename">sprites/buildings/rotater-ccw.png</key>
-            <key type="filename">sprites/buildings/rotater-fl.png</key>
+            <key type="filename">sprites/buildings/rotater-rotate180.png</key>
             <key type="filename">sprites/buildings/splitter-compact-inverse.png</key>
             <key type="filename">sprites/buildings/splitter-compact-merge-inverse.png</key>
             <key type="filename">sprites/buildings/splitter-compact-merge.png</key>
