@@ -22,7 +22,7 @@
 ---
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
+    shortText: Στο shapez.io χτήζεις εργοστάσια για να αυτοματοποιήσεις την δημιουργία και τον συνδιασμό σχημάτων αυξανόμενης πολυπλοκότητας σε έναν ατέλειωτο χάρτη.
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
@@ -31,63 +31,63 @@ steamPage:
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-        Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
+        Στο shapez.io χτήζεις εργοστάσια για να αυτοματοποιήσεις την δημιουργία και τον συνδιασμό σχημάτων αυξανόμενης πολυπλοκότητας σε έναν ατέλειωτο χάρτη.
+        Όταν παραδώσεις τα απαιτούμενα σχήματα, θα προχωρήσεις στο παιχνίδι και θα ξεκλειδώσεις αναβαθμήσεις για να επιταχύνεις το εργοστάσιό σου.
 
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
+        Επειδή η ζήτηση για σχήματα αυξάνεται συνεχώς, θα πρέπει να επεκτείνεις το εργοστάσιό σου για να την ικανοποιήσεις - Μήν ξεχάσεις, για να βρείς όλους τους πόρους που χρειάζεσαι θα πρέπει να εξαπλωθείς στον [b]άτελείωτο χάρτη[/b]!
 
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
+        Σύντομα θα πρέπει να αναμείξεις χρώματα και να βάψεις σχήματα - Ανάμειξε κόκκινο, πράσινο και μπλέ για να φτιάξεις διαφορετικά χρώματα και να βάψεις σχήματα ώστε να ικανοποιήσεις την ζήτηση.
 
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
+        Το παιχνίδι έχει 18 βαθμιαία επίπεδα (που ήδη θα σε απασχολήσουν για ώρες!) και συνεχίζω να προσθέτω περιεχόμενο - Έχω ακόμα πολλά σχέδια!
 
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
+        Αγόράζοντας το παιχνίδι λαμβάνεις την αυτόνομη έκδοση (standalone) με πολλές επιπλέον δυνατότητες, καθώς και πρόσβαση σε νέες δυνατότητες που ακόμα αναπτύσσονται. 
 
-        [b]Standalone Advantages[/b]
+        [b]Πλεονεκτήματα Αυτόνομης Έκδοσης[/b]
 
         [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
+            [*] Σκοτεινή λειτουργία
+            [*] Απεριόριστα σημεία γρήγορης κίνησης της κάμερας στον χάρτη
+            [*] Απεριόριστα αποθηκευμένα παιχνίδια
+            [*] Πρόσθετες ρυθμίσεις
+            [*] Στο κοντινό μέλλον: Καλώδια και ενέργεια! Aναμένεται (περίπου) τέλος Ιουλίου 2020.
+            [*] Στο κοντινό μέλλον: Περισσότερα επίπεδα
+            [*] Μου επιτρέπει να αναπτήξω περεταίρω το shapez.io ❤️
         [/list]
 
-        [b]Future Updates[/b]
+        [b]Μελλοντικές ενημερώσεις[/b]
 
-        I am updating the game very often and trying to push an update at least every week!
+        Ενημερώνω το παιχνίδι πολύ συχνά και προσπαθώ να προωγώ ενημερώσεις σχεδόν κάθε εβδομάδα!
 
         [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
+            [*] Διαφορετικοί χάρτες και προκλήσεις (π.χ. χάρτες με εμπόδια)
+            [*] Πάζλ (Παράδωσε το αιτούμενο σχήμα με περιορισμένο χώρο / κτήρια)
+            [*] Ένα σενάριο όπου τα κτήρια έχουν κόστος
+            [*] Διαμορφώσιμη δημιουργία χάρτη (Με επιλογές για το μέγεθος και την πυκνότητα των πόρων και άλλα)
+            [*] Επιπλέον σχήματα!
+            [*] Βελτιώσεις απόδοσης (Το παιχνίδι λειτουργεί ήδη πολύ καλά!)
+            [*] Και πολλά άλλα!
         [/list]
 
-        [b]This game is open source![/b]
+        [b]Αυτό το παιχνίδι είναι ανοιχτού κώδικα![/b]
 
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
-        Be sure to check out my trello board for the full roadmap!
+        Όλοι μπορούν να συνεισφέρουν, συμμετέχω ενεργά στην κοινότητα και προσπαθώ να εξετάσω όλες τις προτάσεις και να λάβω υπόψη τα σχόλια όπου είναι δυνατόν.
+        Δείτε το trello board μου για τον πλήρη χάρτη πορείας!
 
-        [b]Links[/b]
+        [b]Σύνδεσμοι[/b]
 
         [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
+            [*] [url=https://discord.com/invite/HN7EVzV]Επίσημο Discord[/url]
+            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Χάρτης πορείας[/url]
             [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
+            [*] [url=https://github.com/tobspr/shapez.io]Πηγαίος κώδικας (GitHub)[/url]
+            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Βοήθησε με μεταφράσεις[/url]
         [/list]
 
-    discordLink: Official Discord - Chat with me!
+    discordLink: Επίσημο Discord - Συνομίλησε μαζί μου!
 
 global:
-    loading: Loading
-    error: Error
+    loading: Φόρτωση
+    error: Σφάλμα
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -97,31 +97,31 @@ global:
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
-        thousands: k
-        millions: M
-        billions: B
-        trillions: T
+        thousands: χλ.
+        millions: εκ.
+        billions: δισ.
+        trillions: τρισ.
 
     # Shown for infinitely big numbers
-    infinite: inf
+    infinite: άπειρο
 
     time:
         # Used for formatting past time dates
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: πριν ένα δευτερόλεπτο 
+        xSecondsAgo: πριν <x> δευτερόλεπτα
+        oneMinuteAgo: πριν ένα λεπτό
+        xMinutesAgo: πριν <x> λεπτά
+        oneHourAgo: πριν μία ώρα
+        xHoursAgo: πριν <x> ώρες
+        oneDayAgo: πριν μία ημέρα
+        xDaysAgo: πριν <x> ημέρες
 
         # Short formats for times, e.g. '5h 23m'
-        secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>s
+        secondsShort: <seconds>δ
+        minutesAndSecondsShort: <minutes>λ <seconds>δ
+        hoursAndMinutesShort: <hours>ω <minutes>λ
 
-        xMinutes: <x> minutes
+        xMinutes: <x> λεπτά
 
     keys:
         tab: TAB
@@ -138,506 +138,504 @@ demoBanners:
         Get the standalone to unlock all features!
 
 mainMenu:
-    play: Play
+    play: Παίξε
     changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    importSavegame: Εισαγωγή αποθηκευμένου παιχνιδιού
+    openSourceHint: Αυτό το παιχνίδι είναι ανοιχτού κώδικα!
+    discordLink: Επίσημο Discord Server
+    helpTranslate: Βοήθησε με μεταφράσεις!
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download chrome for the full experience.
+        Δυστυχώς, το παιχνίδι τρέχει αργά στο πρόγραμμα περιήγησής σας! Αποκτήστε την αυτόνομη έκδοση ή κατεβάστε το chrome για την πλήρη εμπειρία.
 
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
+    savegameLevel: Επίπεδο <x>
+    savegameLevelUnknown: Άγνωστο Επίπεδο
 
-    continue: Continue
-    newGame: New Game
+    continue: Συνέχεια
+    newGame: Καινούριο παιχνίδι
     madeBy: Made by <author-link>
     subreddit: Reddit
 
 dialogs:
     buttons:
         ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        delete: Διαγραφή
+        cancel: Άκυρο
+        later: Αργότερα
+        restart: Επανεκκίνηση
+        reset: Επαναφορά
+        getStandalone: Απόκτησε την Αυτόνομη έκδοση
+        deleteGame: Ξέρω τί κάνω
+        viewUpdate: Προβολή ενημέρωσης
+        showUpgrades: Εμφάνιση αναβαθμίσεων
+        showKeybindings: Συνδυασμοί πλήκτρων
 
     importSavegameError:
-        title: Import Error
+        title: Σφάλμα εισαγωγής
         text: >-
-            Failed to import your savegame:
+            Αποτυχία εισαγωγής του αποθηκευμένου παιχνιδιού:
 
     importSavegameSuccess:
-        title: Savegame Imported
+        title: Εισαγωγή αποθηκευμένου παιχνιδιού
         text: >-
-            Your savegame has been successfully imported.
+            Η Εισαγωγή του αποθηκευμένου παιχνιδιού ήταν επιτυχής.
 
     gameLoadFailure:
-        title: Game is broken
+        title: Το παιχνίδι είναι κατεστραμμένο
         text: >-
-            Failed to load your savegame:
+            Η φώρτοση του αποθηκευμένου παιχνιδιού ήταν αποτυχής:
 
     confirmSavegameDelete:
-        title: Confirm deletion
+        title: Επιβεβαίωση διαγραφής
         text: >-
-            Are you sure you want to delete the game?
+            Είσαι βέβαιος/η ότι θέλεις να διαγράψεις το παιχνίδι;
 
     savegameDeletionError:
-        title: Failed to delete
+        title: Αποτυχία διαγραφής
         text: >-
-            Failed to delete the savegame:
+            Η διαγραφή του αποθηκευμένου παιχνιδιού ήταν αποτυχής:
 
     restartRequired:
-        title: Restart required
+        title: Χρειάζεται επανεκκίνηση
         text: >-
-            You need to restart the game to apply the settings.
+            Πρέπει να επανεκκινήσεις το παιχνίδι για να εφαρμόσεις τις ρυθμίσεις.
 
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Αλλαγή συνδιασμών πλήκτρων
+        desc: Πάτησε το πλήκτρο ή το κουμπί του ποντικιού που θέλεις να αντιστοιχίσεις, ή escape για ακύρωση.
 
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Επαναφορά συνδιασμών πλήκτρων
+        desc: Όλες οι συνδιασμών πλήκτρων θα επαναφερθούν στις προεπιλεγμένες τιμές τους. Επιβεβαίωση;
 
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        title: Συνδιασμοί πλήκτρων επαναφέρθηκαν
+        desc: Οι συνδιασμών πλήκτρων επαναφέρθηκαν στις προεπιλεγμένες τιμές τους!
 
     featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider to get the standalone for the full experience!
+        title: Έκδοση Demo
+        desc: Προσπάθησες να χρησιμοποιήσεις μία δυνατότητα που δεν είναι διαθέσιμη στην έκδοση demo. Αποκτήστε την αυτόνομη έκδοση για την ολοκληρομένη εμπειρία!
 
     oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone!
+        title: Περιορισμένα αποθηκευμένα παιχνίδια
+        desc: Στην demo έκδοση μπορείς να έχεις μόνο ένα αποθηκευμένο παιχνίδι. Παρακαλώ διάγραψε το υπάρχον αποθηκευμένο παιχνίδι ή απόκτησε την αθτόνομη έκδοση!
 
     updateSummary:
-        title: New update!
+        title: Νέα αναβάθμιση!
         desc: >-
-            Here are the changes since you last played:
+            Αυτές είναι οι αλλαγές από την τελευταία φορά που έπαιξες:
 
     upgradesIntroduction:
-        title: Unlock Upgrades
+        title: Ξεκλείδωμα αναβαθμίσεων
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
-            The upgrades tab can be found on the top right corner of the screen.
+            Όλα τα σχήματα που παράγεις μπορούν να χρησιμοποιηθούν για να ξεκλειδώσεις αναβαθμίσεις - <strong> Μην καταστρέψεις τα παλιά σου εργοστάσια! </strong>
+            Η καρτέλα αναβαθμίσεων βρίσκεται στην επάνω δεξιά γωνία της οθόνης.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Επιβεβαίωση διαγραφής
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Ετοιμάζεσαι να διαγράψεις πολλά κτήρια (<count> για την ακρίβεια)! Είσαι βέβαιος/η ότι θέλεις να το κάνεις αυτό;
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title: Αυτή η δυνατότητα δεν έχει ξεκλειδωθεί ακόμα
         desc: >-
-            Blueprints have not been unlocked yet! Complete more levels to unlock them.
+            Τα σχεδιαγράμματα δεν έχουν ξεκλειδωθεί ακόμα! Ολοκλήρωσε περισσότερα επίπεδα για να τα ξεκλειδώσεις.
 
     keybindingsIntroduction:
-        title: Useful keybindings
+        title: Χρήσιμοι Συνδιασμοί πλήκτρων
         desc: >-
-            This game has a lot of keybindings which make it easier to build big factories.
-            Here are a few, but be sure to <strong>check out the keybindings</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Drag: Select area to copy / delete.<br>
-            <code class='keybinding'>SHIFT</code>: Hold to place multiple of one building.<br>
-            <code class='keybinding'>ALT</code>: Invert orientation of placed belts.<br>
+            Αυτό το παιχνίδι έχει πολλούς συνδιασμούς πλήκτρων που διευκολύνουν στο χτήσιμο μεγάλων εργοστασίων.
+            Εδώ είναι μερικοί από αυτούς. Για τους υπόλοιπους αναφέρσου στην ενότητα <strong>Συνδιασμοί πλήκτρων</strong><br><br>
+            <code class='keybinding'>CTRL</code> + Σύρε: Επιλογή περιοχής για αντιγραφή / διαγραφή.<br>
+            <code class='keybinding'>SHIFT</code>: Κράτα πατημένο για να χτίσεις πάνω από ένα κτήριο.<br>
+            <code class='keybinding'>ALT</code>: Αντιστρέφει τον προσανατολισμό των τοποθετούμενων ιμάντων.<br>
 
     createMarker:
-        title: New Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
-        titleEdit: Edit Marker
+        title: Νέο Σημάδι
+        desc: Δώσ' του ένα όνομα με νόημα. Μπορείς επίσης να χρησημοποιήσεις και τον <strong>σύντομο κώδικα</strong> ενός σχήματος (τον οποίο μπορείς να βρείς <a href="https://viewer.shapez.io" target="_blank">εδώ</a>)
+        titleEdit: Επεξεργασία Σημαδιού
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: Στην έκδωση demo μπορείς να βάλεις μέχρι δύο σημάδια στον χάρτη. Αποκτήστε  την αυτόνομη έκδοση για να μπορείς να βάλεις απεριόριστα σημάδια στον χάρτη!
     massCutConfirm:
-        title: Confirm cut
+        title: Επιβεβαίωση αποκοπής
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
+            Ετοιμάζεσαι να αποκόψεις πολλά κτήρια (<count> φια την ακρίβεια)! Είσαι βέβαιος/η ότι θέλεις να το κάνεις αυτό;
 
     exportScreenshotWarning:
-        title: Export screenshot
+        title: Εξαγωγή στιγμιότυπου οθόνης
         desc: >-
-            You requested to export your base as a screenshot. Please note that this can
-            be quite slow for a big base and even crash your game!
+            Ζήτησες να εξαγάγεις τη βάση σου ως στιγμιότυπο οθόνης. Λάβε υπόψη ότι αυτό μπορεί να είναι αρκετά αργό για μια μεγάλη βάση και μπορεί ακόμη και να διακόψει (crash) το παιχνίδι σου!
 
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Επιβεβαίωση αποκοπής
+        desc: Δεν έχεις τους πόρους να επικολλήσεις αυτήν την περιοχή! Είσαι βέβαιος/η ότι θέλεις να την αποκόψεις;
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create Marker
-        delete: Destroy
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear Selection
-        pipette: Pipette
-        switchLayers: Switch layers
+        moveMap: Κίνηση
+        selectBuildings: Επιλογή περιοχής
+        stopPlacement: Διακοπή τοποθέτησης
+        rotateBuilding: Περιστροφή κτηρίου
+        placeMultiple: Τοποθέτηση πολλαπλών κτηρίων
+        reverseOrientation: Αντιστροφή προσανατολισμού ιμάντα
+        disableAutoOrientation: Απενεργοποίηση αυτόματου προσανατολισμού
+        toggleHud: Εναλλαγή HUD
+        placeBuilding: Τοποθέτηση κτηρίου
+        createMarker: Δημιουργία σημαδιού
+        delete: Διαγραφή
+        pasteLastBlueprint: Επικόλληση τελευταίου σχεδιαγράμματος
+        lockBeltDirection: Ενεργοποίηση σχεδιαστή ιμάντα
+        plannerSwitchSide: Αλλαγή πλευράς σχεδιαστή
+        cutSelection: Αποκοπή
+        copySelection: Αντιγραφή
+        clearSelection: Εκκαθαρισμός επιλογής
+        pipette: Σταγονόμετρο
+        switchLayers: Εναλλαγή στρώματος
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
     buildingPlacement:
         # Buildings can have different variants which are unlocked at later levels,
         # and this is the hint shown when there are multiple variants available.
-        cycleBuildingVariants: Press <key> to cycle variants.
+        cycleBuildingVariants: Πάτησε <key> για εναλλαγή μεταξύ παραλλαγών.
 
         # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: >-
             Hotkey: <key>
 
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            speed: Ταχύτητα
+            range: Απόσταση
+            storage: Αποθηκευτικός χώρος
+            oneItemPerSecond: 1 είδος / δευτερόλεπτο
+            itemsPerSecond: <x> είδη / δ
             itemsPerSecondDouble: (x2)
 
-            tiles: <x> tiles
+            tiles: <x> πλακάκια
 
     # The notification when completing a level
     levelCompleteNotification:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: Επίπεδο <level>
+        completed: Ολοκληρώθηκε
+        unlockText: Ξεκλειδώθηκε <reward>!
+        buttonNextLevel: Επόμενο επίπεδο
 
     # Notifications on the lower right
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
+        newUpgrade: Μια νέα αναβάθμιση είναι διαθέσιμη!
+        gameSaved: Το παιχνίδι έχει αποθηκευτεί.
 
     # The "Upgrades" window
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
+        title: Αναβαθμίσεις
+        buttonUnlock: Αναβάθμιση
 
         # Gets replaced to e.g. "Tier IX"
-        tier: Tier <x>
+        tier: Βαθμίδα <x>
 
         # The roman number for each tier
         tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
 
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        maximumLevel: ΜΕΓΙΣΤΟ ΕΠΙΠΕΔΟ (Ταχύτητα x<currentMult>)
 
     # The "Statistics" window
     statistics:
-        title: Statistics
+        title: Στατιστικά
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: Αποθηκευμένα
+                description: Εμφάνιση ποσού αποθηκευμένων σχημάτων στο κεντρικό σου κτήριο.
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                title: Παραγμένα
+                description: Εμφάνιση όλων των σχημάτων που παράγει ολόκληρο το εργοστάσιό σου, συμπεριλαμβανομένων των ενδιάμεσων προϊόντων.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: Παραδωμένα
+                description: Εμφάνιση σχημάτων που παραδίδονται στο κεντρικό σου κτήριο.
+        noShapesProduced: Δεν έχεις παράξει σχήματα ακόμα.
 
         # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / m
+        shapesPerMinute: <shapes> / λ
 
     # Settings menu, when you press "ESC"
     settingsMenu:
-        playtime: Playtime
+        playtime: Χρόνος που έπαιξες
 
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        buildingsPlaced: Κτήρια
+        beltsPlaced: Ιμάντες
 
         buttons:
-            continue: Continue
-            settings: Settings
-            menu: Return to menu
+            continue: Συνέχεια
+            settings: Ρυθμίσεις
+            menu: Επιστροφή στο μενού
 
     # Bottom left tutorial hints
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: Χρειάζεσε βοήθεια;
+        showHint: Εμφάνιση υπόδειξης
+        hideHint: Kλείσιμο
 
     # When placing a blueprint
     blueprintPlacer:
-        cost: Cost
+        cost: Κόστος
 
     # Map markers
     waypoints:
-        waypoints: Markers
+        waypoints: Σημάδι
         hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
-        creationSuccessNotification: Marker has been created.
+        description: Κάνε αριστερό κλικ σε ένα σημάδι για να μεταβείς σε αυτό, κάνε δεξί κλικ για να το διαγράψεις.<br><br> Πάτησε <keybinding> για να δημιουργήσεις ένα σημάδι από την τρέχουσα προβολή ή <strong>δεξί κλικ</strong> για να δημιουργήσεις ένα σημάδι στην επιλεγμένη τοποθεσία.
+        creationSuccessNotification: Το σημάδι δημιουργήθηκε.
 
     # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: Τοποθέτησε έναν <strong>αποσπαστή</strong> πάνω από ένα <strong>σχήμα κύκλου</strong> για να το αποσπάεις!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                Σύνδεσε τον αποσπαστή με έναν <strong>μεταφορικό ιμάντα</strong> στο κεντρικό σου κτήριο!<br><br>Συμβουλή: <strong>Κάνε κλικ και σύρε</strong> τη ζώνη με το ποντίκι σου!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                Αυτό <strong>ΔΕΝ</strong> είναι ένα αδρανές παιχνίδι! Δημιούργησε περισσότερους αποσπαστές και ιμάντες για να ολοκληρώσεις τον στόχο σου πιο γρήγορα.<br><br>Συμβουλή: Κράτησε το πλήκτρο <strong>SHIFT</strong> για να τοποθετήσεις πολλούς αποσπαστές και χρησιμοποιήστε το <strong>R</strong> για να τους περιστρέψεις.
 
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        uncolored: No color
-        black: Black
+        red: Κόκκινο
+        green: Πράσινο
+        blue: Μπλε
+        yellow: Κίτρινο
+        purple: Μωβ
+        cyan: Γαλάζιο
+        white: Λευκό
+        uncolored: Χωρίς χρώμα
+        black: Μαύρο
     shapeViewer:
-        title: Layers
-        empty: Empty
-        copyKey: Copy Key
+        title: Στρώματα
+        empty: Κενό
+        copyKey: Αντιγραφή κώδικα
 
 # All shop upgrades
 shopUpgrades:
     belt:
-        name: Belts, Distributor & Tunnels
-        description: Speed x<currentMult> → x<newMult>
+        name: Ιμάντες, Διανομείς & Σήραγγες
+        description: Ταχύτητα x<currentMult> → x<newMult>
     miner:
-        name: Extraction
-        description: Speed x<currentMult> → x<newMult>
+        name: Απόσπαση
+        description: Ταχύτητα x<currentMult> → x<newMult>
     processors:
-        name: Cutting, Rotating & Stacking
-        description: Speed x<currentMult> → x<newMult>
+        name: Κοπή, Περιστροφή & Στοίβαξη
+        description: Ταχύτητα x<currentMult> → x<newMult>
     painting:
-        name: Mixing & Painting
-        description: Speed x<currentMult> → x<newMult>
+        name: Ανάμειξη & Βαφή
+        description: Ταχύτητα x<currentMult> → x<newMult>
 
 # Buildings and their name / description
 buildings:
     belt:
         default:
-            name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            name: &belt Μεταφορικός Ιμάντας
+            description: Μεταφέρει είδη. Κράτα πατημένο και σύρε για να τοποθετήσεις πολλαπλούς ιμάντες.
 
     miner: # Internal name for the Extractor
         default:
-            name: &miner Extractor
-            description: Place over a shape or color to extract it.
+            name: &miner Αποσπαστής
+            description: Τοποθέτησε πάνω από ένα σχήμα ή χρώμα για να το αποσπάσεις.
 
         chainable:
-            name: Extractor (Chain)
-            description: Place over a shape or color to extract it. Can be chained.
+            name: Αποσπαστής (Αλυσιδωτός)
+            description: Τοποθέτησε πάνω από ένα σχήμα ή χρώμα για να το αποσπάσεις. Μπορούν να συνδεθούν σε σειρά.
 
     underground_belt: # Internal name for the Tunnel
         default:
-            name: &underground_belt Tunnel
-            description: Allows to tunnel resources under buildings and belts.
+            name: &underground_belt Σήραγγα
+            description: Μεταφέρει είδη κάτω από κτήρια και μεταφορικούς ιμάντες.
 
         tier2:
-            name: Tunnel Tier II
-            description: Allows to tunnel resources under buildings and belts.
+            name: Σήραγγα Βαθμίδα II
+            description: Μεταφέρει είδη κάτω από κτήρια και μεταφορικούς ιμάντες.
 
     splitter: # Internal name for the Balancer
         default:
-            name: &splitter Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: &splitter Ισορροπηστής
+            description: Πολυλειτουργικό - κατανέμει ομοιόμορφα είδη από όλες τις εισόδους σε όλες τις εξόδους.
 
         compact:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Συγχωνευτής (συμπαγής)
+            description: Συγχωνεύει δύο μεταφορικούς ιμάντες σε έναν.
 
         compact-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Συγχωνευτής (συμπαγής)
+            description: Συγχωνεύει δύο μεταφορικούς ιμάντες σε έναν.
 
     cutter:
         default:
-            name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halfs. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: &cutter Κόπτης
+            description: Κόβει σχήματα από πάνω προς τα κάτω και παράγει και τα δύο μισά. <strong>Εάν χρησιμοποιείς μόνο το ένα κομμάτι, φρόντισε να καταστρέψεις το άλλο κομμάτι, διαφορετικά η λειτουργία θα σταματήσει!</strong>
         quad:
-            name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            name: Κόπτης (Τετάρτων)
+            description: Κόβει σχήματα σε τέσσερα κομμάτια. <strong>Εάν χρησιμοποιείς μόνο το ένα κομμάτι, φρόντισε να καταστρέψεις τα άλλα κομμάτια, διαφορετικά η λειτουργία θα σταματήσει!</strong>
 
     rotater:
         default:
-            name: &rotater Rotate
-            description: Rotates shapes clockwise by 90 degrees.
+            name: &rotater Περιστροφέας
+            description: Περιστρέφει τα σχήματα δεξιόστροφα κατά 90 μοίρες.
         ccw:
-            name: Rotate (CCW)
-            description: Rotates shapes counter clockwise by 90 degrees.
+            name: Περιστροφέας (Αρστ.)
+            description: Περιστρέφει τα σχήματα αριστερόστροφα κατά 90 μοίρες.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Περιστροφέας (180)
+            description: Περιστρέφει τα σχήματα κατά 180 μοίρες.
 
     stacker:
         default:
-            name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            name: &stacker Στοίβαχτής
+            description: Στοιβάζει και τα δύο είδη. Εάν δεν μπορούν να συγχωνευτούν, το δεξί είδος τοποθετείται πάνω από το αριστερό είδος.
 
     mixer:
         default:
-            name: &mixer Color Mixer
-            description: Mixes two colors using additive blending.
+            name: &mixer Αναμείκτης Χρωμάτων
+            description: Αναμειγνύει δύο χρώματα χρησιμοποιώντας ανάμιξη πρόσθετων.
 
     painter:
         default:
-            name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the right input.
+            name: &painter Βαφέας
+            description: &painter_desc Χρωματίζει ολόκληρο το σχήμα στην αριστερή είσοδο με το χρώμα από τη δεξιά είσοδο.
         double:
-            name: Painter (Double)
-            description: Colors the shapes on the left inputs with the color from the top input.
+            name: Βαφέας (Διπλός)
+            description: Χρωματίζει τα σχήματα από τις αριστερές εισόδους με το χρώμα από την επάνω είσοδο.
         quad:
-            name: Painter (Quad)
-            description: Allows to color each quadrant of the shape with a different color.
+            name: Βαφέας (Τετάρτων)
+            description: Επιτρέπει να χρωματίσει κάθε τεταρτημόριο του σχήματος με διαφορετικό χρώμα.
         mirrored:
             name: *painter
             description: *painter_desc
 
     trash:
         default:
-            name: &trash Trash
-            description: Accepts inputs from all sides and destroys them. Forever.
+            name: &trash Κάδος απορριμμάτων
+            description: Δέχεται είδη από όλες τις πλευρές και τα καταστρέφει. Για πάντα.
 
         storage:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            name: Αποθήκη
+            description: Αποθηκεύει επιπλέον είδη, έως μια δεδομένη χωρητικότητα. Μπορεί να χρησιμοποιηθεί ως πύλη υπερχείλισης.
 
     hub:
-        deliver: Deliver
-        toUnlock: to unlock
+        deliver: Παράδωσε
+        toUnlock: για να ξεκλειδώσεις
         levelShortcut: LVL
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: Καλώδιο ενέργειας
+            description: Σου επιτρέπει να μεταφέρεις ενέργεια.
     advanced_processor:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
+            name: Μετατροπέας χρώματος
+            description: Δέχεται ένα χρώμα ή σχήμα και το αντιστρέφει.
     energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
+        deliver: Παράδωσε
+        toGenerateEnergy: Για
         default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
+            name: Γεννήτρια ενέργειας
+            description: Παράγει ενέργεια καταναλώνοντας σχήματα.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Διαχωριστής καλωδίων
+            description: Χωρίζει ένα καλώδιο ενέργειας σε δύο.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Συγχωνευτής καλωδίων
+            description: Συγχωνεύει δύο καλώδια ενέργειας σε ένα.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
-        title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
+        title: Κοπή σχημάτων
+        desc: Μόλις ξεκλείδωσες τον <strong>κόπτη</strong> - κόβει σχήματα κατά το ήμισυ από <strong>πάνω προς τα κάτω</strong> ανεξάρτητα από τον προσανατολισμό του!<br><br>Φρόντισε να καταστρέψεις κομμάτια που δεω χρησημοποιείς αλλιώς η λειτουργία <strong>θα σταματήσει</strong> - Για το σκοπό αυτό σου έδωσα τον κάδο απορριμμάτων, ο οποίος καταστρέφει ό,τι είδη μεταφερθούν εκεί!
 
     reward_rotater:
-        title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
+        title: Περιστροφή
+        desc: Ο <strong>Περιστροφέας</strong> ξεκλειδώθηκε! Το κτήριο αυτό περιστρέφει τα σχήματα δεξιόστροφα κατά 90 μοίρες.
 
     reward_painter:
-        title: Painting
+        title: Βαφή
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
+            Μόλις ξεκλειδώθηκε ο <strong>Βαφέας</strong> - Απόσπασε μερικά χρώματα (όπως κάνεις με τα σχήματα) και συνδύασέ τα με ένα σχήμα στον βαφέα για να τα χρωματίσεις!<br><br>PS: Εάν πάσχεις από αχρωματοψία, τυφλοί, υπάρχει η <strong>λειτουργία αχρωματοψίας</strong> στις ρυθμίσεις!
 
     reward_mixer:
-        title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        title: Ανάμιξη Χρωμάτων
+        desc: Ο <strong>Αναμείκτης χρωμάτων</strong> είναι διαθέσιμος - Συνδύαστε δύο χρώματα ακολουθόντας <strong>ανάμιξη πρόσθετων</strong> με αυτό το κτήριο!
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Στοίβαχτής
+        desc: Τώρα μπορείς να συνδυάσεις σχήματα με τον <strong>Στοίβαχτής</strong>! Εαν τα σχήματα από τις δύο εισόδους μπορούν να τοποθετηθούν το ένα δίπλα στο άλλο θα <strong>συμπτυχθούν</strong>. Εάν όχι, το σχήμα της δεηιάς εισώδου <strong>στοιβάζεται πάνω</strong> από το σχήμα της αριστερής!
 
     reward_splitter:
-        title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        title: Διαχωρισμός/Συγχώνευση
+        desc: Ο πολυλειτουργικός <strong>Ισορροπηστής</strong> είναι πλέον διαθέσιμος - Μπορεί να χρησιμοποιηθεί για την κατασκευή μεγαλύτερων εργοστασίων με <strong>διαχωρισμό και συγχώνευση ειδών</strong> σε/από πολλούς μεταφορικούς ιμάντες!<br><br>
 
     reward_tunnel:
-        title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
+        title: Σήραγγα
+        desc: Το <strong>Σήραγγα</strong> είναι πλέον διαθέσιμο - Τώρα μπορείς να διοχετεύσεις είδη κάτω από ιμάντες και κτήρια!
 
     reward_rotater_ccw:
-        title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
+        title: Περιστροφή (Αρστ.)
+        desc: Ξεκλείδωσες μια παραλλαγή του <strong>Περιστροφέα</strong> - Επιτρέπει αριστερόστροφη περιστροφή! Για να τον τοποθετήσεις, επίλεξε τον περιστροφέα και <strong>πάτησε 'T' για να κυλίσεις ανάμεσα στις παραλλαγές του</strong>!
 
     reward_miner_chainable:
-        title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
+        title: Αλυσιδωτός Αποσπαστής
+        desc: Ξεκλείδωσες τον <strong>Αλυσιδωτός Αποσπαστής</strong>! Μπορεί να <strong>προωθήσει τους αποσπασμένους πόρους</strong> σε άλλους αποσπαστές, ώστε να μπορείτε να αποσπάσεις πιο αποτελεσματικά πόρους!
 
     reward_underground_belt_tier_2:
-        title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
+        title: Σήραγγα Βαθμίδα II
+        desc: Ξεκλείδωσες μια νέα παραλλαγή της <strong>Σήραγγας</strong> - Καλύπτει <strong>μεγαλύτερη απόσταση</strong> και επιτρέπει το "πλέξιμο" διαφορετικών βαθμίδων σήραγγας!
 
     reward_splitter_compact:
-        title: Compact Balancer
+        title: Συμπαγής Ισορροπηστής
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
+            Ξεκλείδωσες μια συμπαγή παραλλαγή του <strong>Ισορροπηστή</strong>. Δέχεται είδη από δύο ιμάντες και τους συγχωνεύει σε έναν!
 
     reward_cutter_quad:
-        title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
+        title: Κόπτης Τετάρτων
+        desc: Ξεκλείδωσες μια παραλλαγή του <strong>Κόπτη</strong> - Σου επιτρέπει να κόψεις σχήματα σε <strong>τέσσερα κομμάτια</strong> αντί για δύο!
 
     reward_painter_double:
-        title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        title: Διπλός Βαφέας
+        desc: Ξεκλείδωσες μια παραλλαγή του <strong>Βαφέα</strong> - Λειτουργεί όπως ο κανονικός βαφέας, αλλά επεξεργάζεται <strong>δύο σχήματα ταυτόχρονα</strong>, καταναλώνοντας μόνο ένα χρώμα αντί για δύο!
 
     reward_painter_quad:
-        title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
+        title: Βαφέας Τετάρτων
+        desc: Ξεκλείδωσες μια παραλλαγή του <strong>Βαφέα</strong> - Σου επιτρέπει να βάψεις κάθε τεταρτημόριο του σχήματος ξεχωριστά!
 
     reward_storage:
-        title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
+        title: Αποθηκευτικός χώρος
+        desc: Ξεκλείδωσες μια παραλλαγή του <strong>Κάδου Απορριμμάτων</strong> - Επιτρέπει την αποθήκευση ειδών έως μια δεδομένη χωρητικότητα!
 
     reward_freeplay:
-        title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
+        title: Ελεύθερο παιχνίδι
+        desc: Τα κατάφερες! Ξεκλείδωσες την <strong>λειτουργία ελεύθερου παιχνιδιού</strong>! Από εδώ και πέρα τα σχήματα δημιουργούνται τυχαία! (Μην ανυσηχείς, περισσότερο περιεχόμενο έρχεται σύντομα στην αυτόνομη έκδοση!)
 
     reward_blueprints:
-        title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        title: Σχεδιαγράμματα
+        desc: Μπορείς πλέον να κάνεις <strong>αντιγραφή και επικόλληση</strong> στα μέρη του εργοστασίου σου! Επίλεξε μια περιοχή (Κράτα πατημένο το CTRL, και τράβα το ποντίκι σου), και πάτησε 'C' για να αντιγράψεις τα κτήρια στην επιλεγμένη περιοχή.<br><br>Η επικόλληση <strong>δεν είναι δωρεάν</strong>, θα πρέπει να παράγεις <strong>σχήματα σχεδιαγράμματος</strong> για να χρησημοποιήσεις αυτή την δυνατότητα! (Τα σχήματα που μόλις παρέδωσες).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
-        title: Next level
+        title: Επόμενο Επίπεδο
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
+            Αυτό το επίπεδο δεν σου παρήχε κάποια αμοιβή, άλλα το επόμενο επίπεδο θα σου δώσει! <br><br> Υ.Γ.: Καλύτερα μην καταστρέψεις το υπάρχον σου εργοστάσιο - θα χρειαστείς <strong>όλα</strong> αυτά τα σχήματα ξανά αργότερα για να <strong>ξεκλειδώσεις αναβαθμίσεις</strong>!
 
     no_reward_freeplay:
-        title: Next level
+        title: Επόμενο Επίπεδο
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Συγχαριτήρια! Παρεμπιπτόντως, περισσότερο περιεχόμενο θα έρθει σύντομα στην αυτόνομη έκδοση!
 
 settings:
-    title: Settings
+    title: Ρυθμίσεις
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Γενικές
+        userInterface: Περιβάλλον χρήστη
+        advanced: Προχωρημένα
 
     versionBadges:
         dev: Development
@@ -647,161 +645,162 @@ settings:
 
     labels:
         uiScale:
-            title: Interface scale
+            title: Κλίμακα περιβάλλοντος χρήστη
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+                Αλλάζει το μέγεθος του περιβάλλοντος χρήστη. Το περιβάλλον χρήστη θα κλιμακωθεί με βάση την ανάλυση της συσκευής σας, αλλά αυτή η ρύθμιση ελέγχει το μέγεθος εντώς αυτής της κλίμακας.
             scales:
-                super_small: Super small
-                small: Small
-                regular: Regular
-                large: Large
-                huge: Huge
+                super_small: Πολύ μικρό
+                small: Μικρό
+                regular: Κανονικό
+                large: Μεγάλο
+                huge: Πολύ μεγάλο
 
         scrollWheelSensitivity:
-            title: Zoom sensitivity
+            title: Ευαισθησία ζουμ
             description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+                Αλλάζει πόσο ευαίσθητο είναι το ζουμ (Είτε με τον τροχό ποντικιού ή με trackpad).
             sensitivity:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super fast
+                super_slow: Πολύ αργό
+                slow: Αργό
+                regular: Κανονικό
+                fast: Γρήγορο
+                super_fast: Πολύ γρήγορο
 
         language:
-            title: Language
+            title: Γλώσσα
             description: >-
-                Change the language. All translations are user contributed and might be incomplete!
+                Αλλάξτε τη γλώσσα. Γιά όλες τις μεταφράσεις έχουν συνεισφέρει χρήστες. Μερικές μεταφράσεις ενδέχεται να είναι ελλιπείς!
 
         fullscreen:
-            title: Fullscreen
+            title: Λειτουργία πλήρους οθόνης
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                Για την καλύτερη δυνατή εμπειρία συνιστάται η λειτουργία πλήρους οθόνης. Διατίθεται μόνο στην αυτόνομη έκδοση.
 
         soundsMuted:
-            title: Mute Sounds
+            title: Σίγαση ήχων
             description: >-
-                If enabled, mutes all sound effects.
+                Εάν είναι ενεργοποιημένο, σβήνει όλα τα ηχητικά εφέ.
 
         musicMuted:
-            title: Mute Music
+            title: Σίγαση μουσικής
             description: >-
-                If enabled, mutes all music.
+                Εάν είναι ενεργοποιημένο, σβήνει την μουσική.
 
         theme:
-            title: Game theme
+            title: Λειτουργία παιχνιδιού
             description: >-
-                Choose the game theme (light / dark).
+                Επίλεξε το την λειτουργία του παιχνιδιού (Φωτεινή / Σκοτεινή).
 
             themes:
-                dark: Dark
-                light: Light
+                dark: Σκοτεινή
+                light: Φωτεινή
 
         refreshRate:
-            title: Simulation Target
+            title: Στόχος Προσομοίωσης
             description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
+                Εάν έχεις οθόνη 144hz, άλλαξε τον ρυθμό ανανέωσης εδώ, ώστε το παιχνίδι να προσομοιωθεί σωστά σε υψηλότερους ρυθμούς ανανέωσης. Μπορεί να μειώσει τα FPS εάν ο υπολογιστής σου είναι πολύ αργός.
 
         alwaysMultiplace:
-            title: Multiplace
+            title: Πολλαπλή τοποθέτηση
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                Εάν είναι ενεργοποιημένο, όλα τα κτίρια θα παραμείνουν επιλεγμένα μετά την τοποθέτηση έως ότου ακυρώσεις την επιλογή. Αυτό ισοδυναμεί με μόνιμο κράτημα του SHIFT.
 
         offerHints:
-            title: Hints & Tutorials
+            title: Συμβουλές & Οδηγίες
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
+                Αν θέλεις να προσφέρονται συμβουλές και οδηγίες ενώ παίζεις. Επίσης κρύβει ορισμένα στοιχεία του περιβάλλοντος χρήστη έως ένα δεδομένο επίπεδο, για να διευκολύνει το παιχνίδι για νέους χρήστες.
 
         movementSpeed:
-            title: Movement speed
-            description: Changes how fast the view moves when using the keyboard.
+            title: Ταχύτητα κίνησης
+            description: Αλλάζει την ταχύτητα κίνησης όταν χρησιμοποιείς το πληκτρολόγιο.
             speeds:
-                super_slow: Super slow
-                slow: Slow
-                regular: Regular
-                fast: Fast
-                super_fast: Super Fast
-                extremely_fast: Extremely Fast
+                super_slow: Πολύ αργή
+                slow: Αργή
+                regular: Κανονική
+                fast: Γρήγορη
+                super_fast: Πολύ γρήγορη
+                extremely_fast: Πάρα πολύ γρήγορη
         enableTunnelSmartplace:
-            title: Smart Tunnels
+            title: Έξυπνες σήραγγες
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+                Όταν ενεργοποιηθεί, η τοποθέτηση σηράγγων θα αφαιρέσει αυτόματα τις περιττές ζώνες.
+                Αυτό σου επιτρέπει επίσης να σύρεις το ποντίκι με την σήραγγα επιλεγμένη, και οι περιττές σήραγγες θα αφαιρεθούν.
+
         vignette:
-            title: Vignette
+            title: Βινιέτα
             description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
+                Ενεργοποιεί την Βιωιέτα, που σκουραίνει τις γωνίες της οθόνης και διευκολύνει την ανάγνωση του κειμένου.
 
         autosaveInterval:
-            title: Autosave Interval
+            title: Διάστημα μεταξύ αυτόματων αποθηκεύσεων
             description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+                Ελέγχει πόσο συχνά το παιχνίδι αποθηκεύεται αυτόματα.
+                Εδώ μπορείς επίσης να απενεργοποιήσεις την λειτουργία εντελώς.
+
             intervals:
-                one_minute: 1 Minute
-                two_minutes: 2 Minutes
-                five_minutes: 5 Minutes
-                ten_minutes: 10 Minutes
-                twenty_minutes: 20 Minutes
-                disabled: Disabled
+                one_minute: 1 Λεπτό
+                two_minutes: 2 Λεπτά
+                five_minutes: 5 Λεπτά
+                ten_minutes: 10 Λεπτά
+                twenty_minutes: 20 Λεπτά
+                disabled: Απενεργοποιημένο
 
         compactBuildingInfo:
-            title: Compact Building Infos
+            title: Σύντομες πληροφορίες κτηρίων
             description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+                Συντομεύει τα πλαίσια πληροφοριών για κτίρια δείχνοντας μόνο την ταχύτητα λειτουργίας τους. 
+                Διαφορετικά εμφανίζεται μια περιγραφή και εικόνα.
 
         disableCutDeleteWarnings:
-            title: Disable Cut/Delete Warnings
+            title: Απενεργοποίηση προειδοποιήσεων αποκοπής / διαγραφής
             description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
+                Απενεργοποιεί τους διαλόγους προειδοποίησης που εμφανίζονται όταν κόβεις / διαγράφεις περισσότερα από 100 κτήρια.
 
         enableColorBlindHelper:
-            title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            title: Λειτουργία αχρωματοψίας
+            description: Ενεργοποιεί διάφορα εργαλεία που επιτρέπουν να παίξεiw το παιχνίδι αν πάσχεις από αχρωματοψία.
         rotationByBuilding:
-            title: Rotation by building type
+            title: Περιστροφή ανά τύπο κτιρίου
             description: >-
-                Each building type remembers the rotation you last set it to individually.
-                This may be more comfortable if you frequently switch between placing
-                different building types.
+                Κάθε τύπος κτιρίου θυμάται την περιστροφή που όρισες στην τελευταία χρήση. 
+                Μπορεί να είναι πιο άνετο εάν κάνεις εναλλαγή κτηρίων μεταξύ τοποθέτησης διαφορετικών τύπων κτηρίων.
 
 keybindings:
-    title: Keybindings
+    title: Συνδιασμοί πλήκτρων
     hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
+        Συμβουλή: Φρόντισε να χρησιμοποιήσεις τα πλήκτρα CTRL, SHIFT και ALT! Ενεργοποιούν διαφορετικές επιλογές τοποθέτησης.
 
-    resetKeybindings: Reset Keyinbindings
+    resetKeybindings: Επαναφορά συνδιασμών πλήκτρων
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Εφαρμογή
+        ingame: Παιχνίδι
+        navigation: Πλοήγηση
+        placement: Τοποθέτηση
+        massSelect: Μαζική Επιλογή
+        buildings: Συντομεύσεις Κτηρίων
+        placementModifiers: Τροποποιητές τοποθέτησης
 
     mappings:
-        confirm: Confirm
-        back: Back
-        mapMoveUp: Move Up
-        mapMoveRight: Move Right
-        mapMoveDown: Move Down
-        mapMoveLeft: Move Left
-        centerMap: Center Map
+        confirm: Επιβεβαίωση
+        back: Πίσω
+        mapMoveUp: Κίνηση προς τα Πάνω
+        mapMoveRight: Κίνηση προς τα Δεξιά
+        mapMoveDown: Κίνηση προς τα Κάτω
+        mapMoveLeft: Κίνηση προς τα Αριστερά
+        centerMap: Kεντράρισμα του χάρτη
 
-        mapZoomIn: Zoom in
-        mapZoomOut: Zoom out
-        createMarker: Create Marker
+        mapZoomIn: Μεγέθυνση
+        mapZoomOut: Σμίκρυνση
+        createMarker: Δημηουργία Σημαδιού
 
-        menuOpenShop: Upgrades
-        menuOpenStats: Statistics
+        menuOpenShop: Αναβαθμίσεις
+        menuOpenStats: Στατιστικές
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS and Debug Info
+        toggleHud: Εναλλαγή HUD
+        toggleFPSInfo: Εναλλαγή FPS και Πληροφοριών εντοπισμού σφαλμάτων
+
+        # --- Do not translate the values in this section
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt
@@ -812,63 +811,67 @@ keybindings:
         mixer: *mixer
         painter: *painter
         trash: *trash
+        # ---
 
-        rotateWhilePlacing: Rotate
+        rotateWhilePlacing: Περιστροφή
         rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
-        cycleBuildingVariants: Cycle Variants
-        confirmMassDelete: Confirm Mass Delete
-        cycleBuildings: Cycle Buildings
+            Modifier: Αριστερόστροφη περιστροφή
+        cycleBuildingVariants: Επιλογή Παραλλαγής
+        confirmMassDelete: Επιβεβαίωση μαζικής διαγραφής
+        cycleBuildings: Επιλογή Κτηρίου
 
-        massSelectStart: Hold and drag to start
-        massSelectSelectMultiple: Select multiple areas
-        massSelectCopy: Copy area
+        massSelectStart: Κράτησε πατημένο και σείρε για να ξεκινήσεις
+        massSelectSelectMultiple: Επίλεξε πολλές περιοχές
+        massSelectCopy: Αντιγραφή περιοχής
 
-        placementDisableAutoOrientation: Disable automatic orientation
-        placeMultiple: Stay in placement mode
-        placeInverse: Invert automatic belt orientation
-        pasteLastBlueprint: Paste last blueprint
-        massSelectCut: Cut area
-        exportScreenshot: Export whole Base as Image
-        mapMoveFaster: Move Faster
-        lockBeltDirection: Enable belt planner
-        switchDirectionLockSide: "Planner: Switch side"
-        pipette: Pipette
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        placementDisableAutoOrientation: Απενεργοποίηση αυτόματου προσανατολισμού
+        placeMultiple: Παραμονή σε λειτουργία τοποθέτησης
+        placeInverse: Αντιστροφή αυτόματου προσανατολισμό του ιμάντα
+        pasteLastBlueprint: Επικόλληση τελευταίου σχεδιαγράμματος
+        massSelectCut: Αποκοπή περιοχής
+        exportScreenshot: Εξαγωγή ολόκληρης της βάσης ως εικόνα
+        mapMoveFaster: Ταχλυτερη κίνηση
+        lockBeltDirection: Ενεργοποίηση σχεδιαστή ιμάντα
+        switchDirectionLockSide: >-
+            Σχεδιαστής: Αλλαγή πλευράς
+
+        pipette: Σταγονόμετρο
+        menuClose: Κλείσιμο μενού
+        switchLayers: Εναλλαγή επιπέδων
+        advanced_processor: Μετατροπέας χρώματος
+        energy_generator: Γεννήτρια ενέργειας
+        wire: Καλώδιο ενέργειας
 
 about:
-    title: About this Game
+    title: Σχετικά με αυτό το παιχνίδι
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+       Αυτό το παιχνίδι είναι ανοιχτού κώδικα και αναπτύχθηκε από τους <a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (αυτός είμαι εγώ).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        Αν θέλεις να συνεισφέρεις, δες το <a href="<githublink>"
+        target="_blank">shapez.io στο github</a>.<br><br>
 
-        This game wouldn't have been possible without the great Discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">discord server</a>!<br><br>
+        Αυτό το παιχνίδι δεν θα ήταν δυνατό χωρίς τη μεγάλη κοινότητα Discord 
+        γύρω από τα παιχνίδια μου - Σας συνιστώ πραγματικά να εγγραφείτε στον 
+        <a href="<discordlink>" target="_blank">discord server</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Το soundtrack δημιουργήθηκε από τους <a
+        href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> - Είναι φοβεροί.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
+        Τέλος, ευχαριστώ πολύ τον καλύτερο μου φίλο <a 
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Χωρίς
+        τις συνεδρίες μασ στο Factorio αυτό το παιχνίδι δεν θα υπήρχε.
 
 changelog:
     title: Changelog
 
 demo:
     features:
-        restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
-        customizeKeybindings: Customizing Keybindings
-        exportingBase: Exporting whole Base as Image
+        restoringGames: Επαναφορά αποθηκευμένων παιχνιδιών
+        importingGames: Εισαγωγή αποθηκευμένων παιχνιδιών
+        oneGameLimit: Περιορίζεται σε ένα αποθηκευμένο παιχνίδι
+        customizeKeybindings: Προσαρμογή συνδιασμών πλήκτρων
+        exportingBase: Εξαγωγή ολόκληρης της βάσης ως εικόνα
 
-    settingNotAvailable: Not available in the demo.
+    settingNotAvailable: Δεν είναι διαθέσιμο στο demo.
