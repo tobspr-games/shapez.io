@@ -231,15 +231,7 @@ export class Application {
      * @param {MouseEvent} event
      */
     handleMousemove(event) {
-        let x = event.clientX;
-        let y = event.clientY;
-
-        if (event.type === "mouseout" || event.type === "mouseleave") {
-            x = -1;
-            y = -1;
-        }
-
-        this.mousePosition = new Vector(x, y);
+        this.mousePosition = new Vector(event.clientX, event.clientY);
     }
 
     /**
