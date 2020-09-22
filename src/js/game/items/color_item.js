@@ -1,11 +1,10 @@
 import { globalConfig } from "../../core/config";
-import { smoothenDpi } from "../../core/dpi_manager";
 import { DrawParameters } from "../../core/draw_parameters";
+import { Loader } from "../../core/loader";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
-import { enumColors, enumColorsToHexCode } from "../colors";
+import { enumColors } from "../colors";
 import { THEME } from "../theme";
-import { drawSpriteClipped } from "../../core/draw_utils";
 
 export class ColorItem extends BaseItem {
     static getId() {
@@ -42,7 +41,6 @@ export class ColorItem extends BaseItem {
     constructor(color) {
         super();
         this.color = color;
-        this.bufferGenerator = null;
     }
 
     getBackgroundColorAsResource() {
@@ -55,59 +53,12 @@ export class ColorItem extends BaseItem {
      * @param {number} diameter
      * @param {DrawParameters} parameters
      */
-    drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
-        if (!this.bufferGenerator) {
-            this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
-        }
-
+    drawItemCenteredClipped(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
         const realDiameter = diameter * 0.6;
-        const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
-        const key = realDiameter + "/" + dpi + "/" + this.color;
-        const canvas = parameters.root.buffers.getForKey({
-            key: "coloritem",
-            subKey: key,
-            w: realDiameter,
-            h: realDiameter,
-            dpi,
-            redrawMethod: this.bufferGenerator,
-        });
-
-        drawSpriteClipped({
-            parameters,
-            sprite: canvas,
-            x: x - realDiameter / 2,
-            y: y - realDiameter / 2,
-            w: realDiameter,
-            h: realDiameter,
-            originalW: realDiameter * dpi,
-            originalH: realDiameter * dpi,
-        });
-    }
-    /**
-     *
-     * @param {HTMLCanvasElement} canvas
-     * @param {CanvasRenderingContext2D} context
-     * @param {number} w
-     * @param {number} h
-     * @param {number} dpi
-     */
-    internalGenerateColorBuffer(canvas, context, w, h, dpi) {
-        context.translate((w * dpi) / 2, (h * dpi) / 2);
-        context.scale((dpi * w) / 12, (dpi * h) / 12);
-
-        context.fillStyle = enumColorsToHexCode[this.color];
-        context.strokeStyle = THEME.items.outline;
-        context.lineWidth = 2 * THEME.items.outlineWidth;
-        context.beginCircle(2, -1, 3);
-        context.stroke();
-        context.fill();
-        context.beginCircle(-2, -1, 3);
-        context.stroke();
-        context.fill();
-        context.beginCircle(0, 2, 3);
-        context.closePath();
-        context.stroke();
-        context.fill();
+        if (!this.cachedSprite) {
+            this.cachedSprite = Loader.getSprite("sprites/colors/" + this.color + ".png");
+        }
+        this.cachedSprite.drawCachedCentered(parameters, x, y, realDiameter);
     }
 }
 

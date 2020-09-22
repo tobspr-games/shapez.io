@@ -197,7 +197,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>4</uint>
+            <uint>3</uint>
             <key>trimThreshold</key>
             <uint>2</uint>
             <key>trimMargin</key>
@@ -504,6 +504,28 @@
                 <rect>144,144,288,288</rect>
                 <key>scale9Paddings</key>
                 <rect>144,144,288,288</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/colors/blue.png</key>
+            <key type="filename">sprites/colors/cyan.png</key>
+            <key type="filename">sprites/colors/green.png</key>
+            <key type="filename">sprites/colors/purple.png</key>
+            <key type="filename">sprites/colors/red.png</key>
+            <key type="filename">sprites/colors/uncolored.png</key>
+            <key type="filename">sprites/colors/white.png</key>
+            <key type="filename">sprites/colors/yellow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>18,18,36,36</rect>
+                <key>scale9Paddings</key>
+                <rect>18,18,36,36</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
