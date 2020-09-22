@@ -7,7 +7,7 @@ import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
 import { MetaMixerBuilding } from "./buildings/mixer";
 import { enumPainterVariants, MetaPainterBuilding } from "./buildings/painter";
 import { enumRotaterVariants, MetaRotaterBuilding } from "./buildings/rotater";
-import { enumSplitterVariants, MetaSplitterBuilding } from "./buildings/splitter";
+import { enumBalancerVariants, MetaBalancerBuilding } from "./buildings/balancer";
 import { MetaStackerBuilding } from "./buildings/stacker";
 import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
 import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
@@ -26,7 +26,7 @@ import { MetaReaderBuilding } from "./buildings/reader";
 const logger = createLogger("building_registry");
 
 export function initMetaBuildingRegistry() {
-    gMetaBuildingRegistry.register(MetaSplitterBuilding);
+    gMetaBuildingRegistry.register(MetaBalancerBuilding);
     gMetaBuildingRegistry.register(MetaMinerBuilding);
     gMetaBuildingRegistry.register(MetaCutterBuilding);
     gMetaBuildingRegistry.register(MetaRotaterBuilding);
@@ -52,12 +52,12 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(2, MetaBeltBuilding, defaultBuildingVariant, 1);
     registerBuildingVariant(3, MetaBeltBuilding, defaultBuildingVariant, 2);
 
-    // Splitter
-    registerBuildingVariant(4, MetaSplitterBuilding);
-    registerBuildingVariant(5, MetaSplitterBuilding, enumSplitterVariants.compact);
-    registerBuildingVariant(6, MetaSplitterBuilding, enumSplitterVariants.compactInverse);
-    registerBuildingVariant(47, MetaSplitterBuilding, enumSplitterVariants.compactMerge);
-    registerBuildingVariant(48, MetaSplitterBuilding, enumSplitterVariants.compactMergeInverse);
+    // Balancer
+    registerBuildingVariant(4, MetaBalancerBuilding);
+    registerBuildingVariant(5, MetaBalancerBuilding, enumBalancerVariants.merger);
+    registerBuildingVariant(6, MetaBalancerBuilding, enumBalancerVariants.mergerInverse);
+    registerBuildingVariant(47, MetaBalancerBuilding, enumBalancerVariants.splitter);
+    registerBuildingVariant(48, MetaBalancerBuilding, enumBalancerVariants.splitterInverse);
 
     // Miner
     registerBuildingVariant(7, MetaMinerBuilding);

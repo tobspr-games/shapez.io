@@ -4,7 +4,7 @@ import { Component } from "../component";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
-    splitter: "splitter",
+    balancer: "balancer",
     cutter: "cutter",
     cutterQuad: "cutterQuad",
     rotater: "rotater",
@@ -57,14 +57,14 @@ export class ItemProcessorComponent extends Component {
      *
      */
     constructor({
-        processorType = enumItemProcessorTypes.splitter,
+        processorType = enumItemProcessorTypes.balancer,
         processingRequirement = null,
         inputsPerCharge = 1,
     }) {
         super();
 
         // Which slot to emit next, this is only a preference and if it can't emit
-        // it will take the other one. Some machines ignore this (e.g. the splitter) to make
+        // it will take the other one. Some machines ignore this (e.g. the balancer) to make
         // sure the outputs always match
         this.nextOutputSlot = 0;
 

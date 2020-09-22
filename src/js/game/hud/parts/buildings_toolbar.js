@@ -8,7 +8,7 @@ import { MetaMixerBuilding } from "../../buildings/mixer";
 import { MetaPainterBuilding } from "../../buildings/painter";
 import { MetaReaderBuilding } from "../../buildings/reader";
 import { MetaRotaterBuilding } from "../../buildings/rotater";
-import { MetaSplitterBuilding } from "../../buildings/splitter";
+import { MetaBalancerBuilding } from "../../buildings/balancer";
 import { MetaStackerBuilding } from "../../buildings/stacker";
 import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
@@ -16,7 +16,7 @@ import { HUDBaseToolbar } from "./base_toolbar";
 
 const supportedBuildings = [
     MetaBeltBuilding,
-    MetaSplitterBuilding,
+    MetaBalancerBuilding,
     MetaUndergroundBeltBuilding,
     MetaMinerBuilding,
     MetaCutterBuilding,

@@ -7,7 +7,7 @@ import { enumMinerVariants, MetaMinerBuilding } from "../../game/buildings/miner
 import { MetaMixerBuilding } from "../../game/buildings/mixer.js";
 import { enumPainterVariants, MetaPainterBuilding } from "../../game/buildings/painter.js";
 import { enumRotaterVariants, MetaRotaterBuilding } from "../../game/buildings/rotater.js";
-import { enumSplitterVariants, MetaSplitterBuilding } from "../../game/buildings/splitter.js";
+import { enumBalancerVariants, MetaBalancerBuilding } from "../../game/buildings/balancer.js";
 import { MetaStackerBuilding } from "../../game/buildings/stacker.js";
 import { enumTrashVariants, MetaTrashBuilding } from "../../game/buildings/trash.js";
 import {
@@ -33,6 +33,15 @@ function findCode(metaBuilding, variant = defaultBuildingVariant, rotationVarian
     return getCodeFromBuildingData(gMetaBuildingRegistry.findByClass(metaBuilding), variant, rotationVariant);
 }
 
+/**
+ * Rebalances a value from the old balancing to the new one
+ * @param {number} value
+ * @returns {number}
+ */
+function rebalance(value) {
+    return Math.round(Math.pow(value, 0.75));
+}
+
 export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
     getVersion() {
         return 1006;
@@ -49,15 +58,15 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             "sprites/blueprints/belt_left.png": findCode(MetaBeltBuilding, defaultBuildingVariant, 1),
             "sprites/blueprints/belt_right.png": findCode(MetaBeltBuilding, defaultBuildingVariant, 2),
 
-            // Splitter
-            "sprites/blueprints/splitter.png": findCode(MetaSplitterBuilding),
+            // Splitter (=Balancer)
+            "sprites/blueprints/splitter.png": findCode(MetaBalancerBuilding),
             "sprites/blueprints/splitter-compact.png": findCode(
-                MetaSplitterBuilding,
-                enumSplitterVariants.compact
+                MetaBalancerBuilding,
+                enumBalancerVariants.merger
             ),
             "sprites/blueprints/splitter-compact-inverse.png": findCode(
-                MetaSplitterBuilding,
-                enumSplitterVariants.compactInverse
+                MetaBalancerBuilding,
+                enumBalancerVariants.mergerInverse
             ),
 
             // Underground belt
@@ -131,6 +140,17 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
         const dump = data.dump;
         if (!dump) {
             return true;
+        }
+
+        // Reduce stored shapes
+        const stored = dump.hubGoals.storedShapes;
+        for (const shapeKey in stored) {
+            stored[shapeKey] = rebalance(stored[shapeKey]);
+        }
+
+        // Reduce goals
+        if (dump.hubGoals.currentGoal) {
+            dump.hubGoals.currentGoal.required = rebalance(dump.hubGoals.currentGoal.required);
         }
 
         // Update entities

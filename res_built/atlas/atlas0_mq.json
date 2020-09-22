@@ -336,6 +336,46 @@
 	"spriteSourceSize": {"x":9,"y":9,"w":87,"h":87},
 	"sourceSize": {"w":96,"h":96}
 },
+"sprites/blueprints/balancer-merger-inverse.png":
+{
+	"frame": {"x":453,"y":1170,"w":95,"h":93},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":95,"h":93},
+	"sourceSize": {"w":96,"h":96}
+},
+"sprites/blueprints/balancer-merger.png":
+{
+	"frame": {"x":4,"y":1320,"w":93,"h":93},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":93,"h":93},
+	"sourceSize": {"w":96,"h":96}
+},
+"sprites/blueprints/balancer-splitter-inverse.png":
+{
+	"frame": {"x":348,"y":1180,"w":95,"h":93},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":95,"h":93},
+	"sourceSize": {"w":96,"h":96}
+},
+"sprites/blueprints/balancer-splitter.png":
+{
+	"frame": {"x":694,"y":1113,"w":93,"h":93},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":93,"h":93},
+	"sourceSize": {"w":96,"h":96}
+},
+"sprites/blueprints/balancer.png":
+{
+	"frame": {"x":184,"y":581,"w":172,"h":96},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":172,"h":96},
+	"sourceSize": {"w":192,"h":96}
+},
 "sprites/blueprints/belt_left.png":
 {
 	"frame": {"x":479,"y":1639,"w":87,"h":87},
@@ -378,7 +418,7 @@
 },
 "sprites/blueprints/cutter.png":
 {
-	"frame": {"x":184,"y":581,"w":172,"h":96},
+	"frame": {"x":362,"y":616,"w":172,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":0,"w":172,"h":96},
@@ -535,46 +575,6 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
 	"sourceSize": {"w":96,"h":96}
-},
-"sprites/blueprints/splitter-compact-inverse.png":
-{
-	"frame": {"x":453,"y":1170,"w":95,"h":93},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":1,"w":95,"h":93},
-	"sourceSize": {"w":96,"h":96}
-},
-"sprites/blueprints/splitter-compact-merge-inverse.png":
-{
-	"frame": {"x":348,"y":1180,"w":95,"h":93},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":1,"w":95,"h":93},
-	"sourceSize": {"w":96,"h":96}
-},
-"sprites/blueprints/splitter-compact-merge.png":
-{
-	"frame": {"x":4,"y":1320,"w":93,"h":93},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":1,"w":93,"h":93},
-	"sourceSize": {"w":96,"h":96}
-},
-"sprites/blueprints/splitter-compact.png":
-{
-	"frame": {"x":694,"y":1113,"w":93,"h":93},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":1,"w":93,"h":93},
-	"sourceSize": {"w":96,"h":96}
-},
-"sprites/blueprints/splitter.png":
-{
-	"frame": {"x":362,"y":616,"w":172,"h":96},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":0,"w":172,"h":96},
-	"sourceSize": {"w":192,"h":96}
 },
 "sprites/blueprints/stacker.png":
 {
@@ -736,6 +736,46 @@
 	"spriteSourceSize": {"x":2,"y":2,"w":93,"h":91},
 	"sourceSize": {"w":96,"h":96}
 },
+"sprites/buildings/balancer-merger-inverse.png":
+{
+	"frame": {"x":105,"y":1237,"w":94,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":94,"h":91},
+	"sourceSize": {"w":96,"h":96}
+},
+"sprites/buildings/balancer-merger.png":
+{
+	"frame": {"x":554,"y":1174,"w":93,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":2,"w":93,"h":91},
+	"sourceSize": {"w":96,"h":96}
+},
+"sprites/buildings/balancer-splitter-inverse.png":
+{
+	"frame": {"x":246,"y":1183,"w":95,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":95,"h":91},
+	"sourceSize": {"w":96,"h":96}
+},
+"sprites/buildings/balancer-splitter.png":
+{
+	"frame": {"x":449,"y":1269,"w":93,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":2,"w":93,"h":91},
+	"sourceSize": {"w":96,"h":96}
+},
+"sprites/buildings/balancer.png":
+{
+	"frame": {"x":740,"y":807,"w":171,"h":96},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":171,"h":96},
+	"sourceSize": {"w":192,"h":96}
+},
 "sprites/buildings/belt_left.png":
 {
 	"frame": {"x":200,"y":1441,"w":87,"h":87},
@@ -778,7 +818,7 @@
 },
 "sprites/buildings/cutter.png":
 {
-	"frame": {"x":740,"y":807,"w":171,"h":96},
+	"frame": {"x":4,"y":683,"w":171,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":0,"w":171,"h":96},
@@ -943,46 +983,6 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":95,"h":96},
 	"sourceSize": {"w":96,"h":96}
-},
-"sprites/buildings/splitter-compact-inverse.png":
-{
-	"frame": {"x":105,"y":1237,"w":94,"h":91},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":2,"w":94,"h":91},
-	"sourceSize": {"w":96,"h":96}
-},
-"sprites/buildings/splitter-compact-merge-inverse.png":
-{
-	"frame": {"x":246,"y":1183,"w":95,"h":91},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":2,"w":95,"h":91},
-	"sourceSize": {"w":96,"h":96}
-},
-"sprites/buildings/splitter-compact-merge.png":
-{
-	"frame": {"x":554,"y":1174,"w":93,"h":91},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":2,"w":93,"h":91},
-	"sourceSize": {"w":96,"h":96}
-},
-"sprites/buildings/splitter-compact.png":
-{
-	"frame": {"x":449,"y":1269,"w":93,"h":91},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":2,"w":93,"h":91},
-	"sourceSize": {"w":96,"h":96}
-},
-"sprites/buildings/splitter.png":
-{
-	"frame": {"x":4,"y":683,"w":171,"h":96},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":0,"w":171,"h":96},
-	"sourceSize": {"w":192,"h":96}
 },
 "sprites/buildings/stacker.png":
 {
@@ -1551,6 +1551,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":2048},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:6428a34334a71261053e6374332fbd0f:de76d600c9c903298cb6652e0ef02898:908b89f5ca8ff73e331a35a3b14d0604$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c57f50d18c59efc0edbd4a3a732323a4:3fcf23da2ddc6370c437cf41f6d44ed0:908b89f5ca8ff73e331a35a3b14d0604$"
 }
 }

@@ -108,9 +108,9 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
         // Check if this shape is required for any upgrade
         for (const upgradeId in UPGRADES) {
-            const { tiers } = UPGRADES[upgradeId];
+            const upgradeTiers = UPGRADES[upgradeId];
             const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
-            const tierHandle = tiers[currentTier];
+            const tierHandle = upgradeTiers[currentTier];
 
             if (!tierHandle) {
                 // Max level

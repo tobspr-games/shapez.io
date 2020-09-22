@@ -895,7 +895,7 @@ export class Camera extends BasicSerializableObject {
             return;
         }
 
-        const panAreaPixels = Math.min(this.root.gameWidth, this.root.gameHeight) * 0.015;
+        const panAreaPixels = 2;
 
         const panVelocity = new Vector();
         if (mousePos.x < panAreaPixels) {

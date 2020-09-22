@@ -484,25 +484,25 @@ buildings:
             name: Tunnel Tier II
             description: Allows you to tunnel resources under buildings and belts.
 
-    # Internal name for the Balancer
-    splitter:
+    # Balancer
+    balancer:
         default:
-            name: &splitter Balancer
+            name: &balancer Balancer
             description: Multifunctional - Evenly distributes all inputs onto all outputs.
 
-        compact:
+        merger:
             name: Merger (compact)
             description: Merges two conveyor belts into one.
 
-        compact-inverse:
+        merger-inverse:
             name: Merger (compact)
             description: Merges two conveyor belts into one.
 
-        compact-merge:
+        splitter:
             name: Splitter (compact)
             description: Splits one conveyor belt into two.
 
-        compact-merge-inverse:
+        splitter-inverse:
             name: Splitter (compact)
             description: Splits one conveyor belt into two.
 
@@ -673,8 +673,8 @@ storyRewards:
         title: Combiner
         desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
 
-    reward_splitter:
-        title: Splitter/Merger
+    reward_balancer:
+        title: Balancer
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
 
     reward_tunnel:
@@ -693,10 +693,15 @@ storyRewards:
         title: Tunnel Tier II
         desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
 
-    reward_splitter_compact:
-        title: Compact Balancer
+    reward_merger:
+        title: Compact Merger
         desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
+            You have unlocked a merger variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
+
+    reward_splitter:
+        title: Compact Splitter
+        desc: >-
+            You have unlocked a merger variant of the <strong>balancer</strong> - It accepts one input and splits them into two!
 
     reward_cutter_quad:
         title: Quad Cutting
@@ -721,6 +726,10 @@ storyRewards:
     reward_blueprints:
         title: Blueprints
         desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+
+    reward_rotater_180:
+        title: Rotater (180 degrees)
+        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows you to rotate a shape by 180 degress (Surprise! :D)
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -962,7 +971,7 @@ keybindings:
 
         # --- Do not translate the values in this section
         belt: *belt
-        splitter: *splitter
+        balancer: *balancer
         underground_belt: *underground_belt
         miner: *miner
         cutter: *cutter

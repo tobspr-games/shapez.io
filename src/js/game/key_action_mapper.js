@@ -45,7 +45,7 @@ export const KEYMAPPINGS = {
 
     buildings: {
         belt: { keyCode: key("1") },
-        splitter: { keyCode: key("2") },
+        balancer: { keyCode: key("2") },
         underground_belt: { keyCode: key("3") },
         miner: { keyCode: key("4") },
         cutter: { keyCode: key("5") },

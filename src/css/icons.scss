@@ -1,4 +1,4 @@
-$buildings: belt, cutter, miner, mixer, painter, rotater, splitter, stacker, trash, underground_belt, wire,
+$buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, trash, underground_belt, wire,
     constant_signal, logic_gate, lever, filter, wire_tunnel, display, virtual_processor, reader;
 
 @each $building in $buildings {
@@ -7,7 +7,7 @@ $buildings: belt, cutter, miner, mixer, painter, rotater, splitter, stacker, tra
     }
 }
 
-$buildingsAndVariants: belt, splitter, splitter-compact, splitter-compact-inverse, underground_belt,
+$buildingsAndVariants: belt, balancer, balancer-merger, balancer-splitter, underground_belt,
     underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, rotater-fl,
     stacker, mixer, painter, painter-double, painter-quad, trash, trash-storage;
 @each $building in $buildingsAndVariants {
@@ -16,9 +16,17 @@ $buildingsAndVariants: belt, splitter, splitter-compact, splitter-compact-invers
     }
 }
 
-// Special case
+// @TODO: New buildings (balancer, wires, etc)
+
+// Special cases for mirrored vairants
 [data-icon="building_tutorials/painter-mirrored.png"] {
     background-image: uiResource("res/ui/building_tutorials/painter.png") !important;
+}
+[data-icon="building_tutorials/balancer-merger-inverse.png"] {
+    background-image: uiResource("res/ui/building_tutorials/balancer-merger.png") !important;
+}
+[data-icon="building_tutorials/balancer-splitter-inverse.png"] {
+    background-image: uiResource("res/ui/building_tutorials/balancer-splitter.png") !important;
 }
 
 $icons: notification_saved, notification_success, notification_upgrade;
