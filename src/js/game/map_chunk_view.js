@@ -109,12 +109,12 @@ export class MapChunkView extends MapChunk {
         if (this.root.currentLayer === "regular") {
             for (let i = 0; i < this.patches.length; ++i) {
                 const patch = this.patches[i];
-
-                const destX = this.x * dims + patch.pos.x * globalConfig.tileSize;
-                const destY = this.y * dims + patch.pos.y * globalConfig.tileSize;
-                const diameter = Math.min(80, 30 / parameters.zoomLevel);
-
-                patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
+                if (patch.item.getItemType() === "shape") {
+                    const destX = this.x * dims + patch.pos.x * globalConfig.tileSize;
+                    const destY = this.y * dims + patch.pos.y * globalConfig.tileSize;
+                    const diameter = 100 / Math.pow(parameters.zoomLevel, 0.35);
+                    patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
+                }
             }
         }
     }
