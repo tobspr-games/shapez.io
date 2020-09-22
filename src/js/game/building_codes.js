@@ -86,7 +86,10 @@ export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) 
     const hash = metaBuilding.getId() + "/" + variant + "/" + rotationVariant;
     const result = variantsCache.get(hash);
     if (G_IS_DEV) {
-        assertAlways(!!result, "Building not found by data: " + hash);
+        if (!result) {
+            console.warn("Known hashes:", Array.from(variantsCache.keys()));
+            assertAlways(false, "Building not found by data: " + hash);
+        }
     }
     return result;
 }

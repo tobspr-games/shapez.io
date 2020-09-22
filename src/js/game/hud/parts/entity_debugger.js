@@ -68,6 +68,10 @@ export class HUDEntityDebugger extends BaseHUDPart {
      * @param {Array} recursion
      */
     propertyToHTML(name, val, indent = 0, recursion = []) {
+        if (indent > 20) {
+            return;
+        }
+
         if (val !== null && typeof val === "object") {
             // Array is displayed like object, with indexes
             recursion.push(val);

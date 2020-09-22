@@ -16,8 +16,6 @@ export const beltOverlayMatrices = {
     [enumDirection.right]: generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
 };
 
-export class MetaBeltBaseBuilding extends MetaBuilding {}
-
 export class MetaBeltBuilding extends MetaBuilding {
     constructor() {
         super("belt");

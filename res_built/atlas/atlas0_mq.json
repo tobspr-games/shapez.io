@@ -520,7 +520,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
 	"sourceSize": {"w":96,"h":96}
 },
-"sprites/blueprints/rotater-fl.png":
+"sprites/blueprints/rotater-rotate180.png":
 {
 	"frame": {"x":525,"y":1100,"w":95,"h":96},
 	"rotated": false,
@@ -928,7 +928,7 @@
 	"spriteSourceSize": {"x":1,"y":0,"w":95,"h":96},
 	"sourceSize": {"w":96,"h":96}
 },
-"sprites/buildings/rotater-fl.png":
+"sprites/buildings/rotater-rotate180.png":
 {
 	"frame": {"x":213,"y":1234,"w":95,"h":96},
 	"rotated": false,
@@ -1487,6 +1487,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":2048},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:c38df9b4e442ab7ca6aca0b780d0839e:99e8394e24df838bd0f576e1caf16c3d:908b89f5ca8ff73e331a35a3b14d0604$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f21861f754636ac30e87fdbab4b77dbd:161fc7d539e5ffa693c8470dcc931f75:908b89f5ca8ff73e331a35a3b14d0604$"
 }
 }

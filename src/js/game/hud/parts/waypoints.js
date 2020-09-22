@@ -6,17 +6,16 @@ import { DialogWithForm } from "../../../core/modal_dialog_elements";
 import { FormElementInput } from "../../../core/modal_dialog_forms";
 import { Rectangle } from "../../../core/rectangle";
 import { STOP_PROPAGATION } from "../../../core/signal";
-import { arrayDeleteValue, lerp, makeDiv, removeAllChildren, clamp } from "../../../core/utils";
+import { arrayDeleteValue, lerp, makeDiv, removeAllChildren } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
 import { T } from "../../../translations";
+import { BaseItem } from "../../base_item";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumNotificationType } from "./notifications";
-import { ShapeDefinition } from "../../shape_definition";
-import { BaseItem } from "../../base_item";
-import { ShapeItem } from "../../items/shape_item";
 
 /** @typedef {{
  *   label: string | null,
