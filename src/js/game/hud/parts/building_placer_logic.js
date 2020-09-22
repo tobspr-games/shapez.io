@@ -253,6 +253,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @see BaseHUDPart.update
      */
     update() {
+        // Abort placement if a dialog was shown in the meantime
+        if (this.root.hud.hasBlockingOverlayOpen()) {
+            this.abortPlacement();
+            return;
+        }
+
         // Always update since the camera might have moved
         const mousePos = this.root.app.mousePosition;
         if (mousePos) {
@@ -330,7 +336,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             if (tileBelow && this.root.app.settings.getAllSettings().pickMinerOnPatch) {
                 this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
 
-                // Select chained miner if available, since thats always desired once unlocked
+                // Select chained miner if available, since that's always desired once unlocked
                 if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
                     this.currentVariant.set(enumMinerVariants.chainable);
                 }

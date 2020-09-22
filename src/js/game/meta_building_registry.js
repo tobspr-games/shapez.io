@@ -1,19 +1,18 @@
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
 import { MetaBeltBuilding } from "./buildings/belt";
-import { MetaBeltBaseBuilding } from "./buildings/belt_base";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
 import { MetaHubBuilding } from "./buildings/hub";
 import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
 import { MetaMixerBuilding } from "./buildings/mixer";
 import { enumPainterVariants, MetaPainterBuilding } from "./buildings/painter";
 import { enumRotaterVariants, MetaRotaterBuilding } from "./buildings/rotater";
-import { enumSplitterVariants, MetaSplitterBuilding } from "./buildings/splitter";
+import { enumBalancerVariants, MetaBalancerBuilding } from "./buildings/balancer";
 import { MetaStackerBuilding } from "./buildings/stacker";
 import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
 import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
 import { MetaWireBuilding } from "./buildings/wire";
-import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
+import { buildBuildingCodeCache, gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
 import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
@@ -27,7 +26,7 @@ import { MetaReaderBuilding } from "./buildings/reader";
 const logger = createLogger("building_registry");
 
 export function initMetaBuildingRegistry() {
-    gMetaBuildingRegistry.register(MetaSplitterBuilding);
+    gMetaBuildingRegistry.register(MetaBalancerBuilding);
     gMetaBuildingRegistry.register(MetaMinerBuilding);
     gMetaBuildingRegistry.register(MetaCutterBuilding);
     gMetaBuildingRegistry.register(MetaRotaterBuilding);
@@ -49,16 +48,16 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaReaderBuilding);
 
     // Belt
-    registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(2, MetaBeltBaseBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(3, MetaBeltBaseBuilding, defaultBuildingVariant, 2);
+    registerBuildingVariant(1, MetaBeltBuilding, defaultBuildingVariant, 0);
+    registerBuildingVariant(2, MetaBeltBuilding, defaultBuildingVariant, 1);
+    registerBuildingVariant(3, MetaBeltBuilding, defaultBuildingVariant, 2);
 
-    // Splitter
-    registerBuildingVariant(4, MetaSplitterBuilding);
-    registerBuildingVariant(5, MetaSplitterBuilding, enumSplitterVariants.compact);
-    registerBuildingVariant(6, MetaSplitterBuilding, enumSplitterVariants.compactInverse);
-    registerBuildingVariant(47, MetaSplitterBuilding, enumSplitterVariants.compactMerge);
-    registerBuildingVariant(48, MetaSplitterBuilding, enumSplitterVariants.compactMergeInverse);
+    // Balancer
+    registerBuildingVariant(4, MetaBalancerBuilding);
+    registerBuildingVariant(5, MetaBalancerBuilding, enumBalancerVariants.merger);
+    registerBuildingVariant(6, MetaBalancerBuilding, enumBalancerVariants.mergerInverse);
+    registerBuildingVariant(47, MetaBalancerBuilding, enumBalancerVariants.splitter);
+    registerBuildingVariant(48, MetaBalancerBuilding, enumBalancerVariants.splitterInverse);
 
     // Miner
     registerBuildingVariant(7, MetaMinerBuilding);
@@ -71,7 +70,7 @@ export function initMetaBuildingRegistry() {
     // Rotater
     registerBuildingVariant(11, MetaRotaterBuilding);
     registerBuildingVariant(12, MetaRotaterBuilding, enumRotaterVariants.ccw);
-    registerBuildingVariant(13, MetaRotaterBuilding, enumRotaterVariants.fl);
+    registerBuildingVariant(13, MetaRotaterBuilding, enumRotaterVariants.rotate180);
 
     // Stacker
     registerBuildingVariant(14, MetaStackerBuilding);
@@ -133,6 +132,8 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(44, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.rotater);
     registerBuildingVariant(45, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.unstacker);
     registerBuildingVariant(46, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.shapecompare);
+    registerBuildingVariant(50, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.stacker);
+    registerBuildingVariant(51, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.painter);
 
     // Reader
     registerBuildingVariant(49, MetaReaderBuilding);
@@ -175,4 +176,7 @@ export function initBuildingCodesAfterResourcesLoaded() {
         );
         variant.silhouetteColor = variant.metaInstance.getSilhouetteColor();
     }
+
+    // Update caches
+    buildBuildingCodeCache();
 }

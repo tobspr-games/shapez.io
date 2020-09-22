@@ -46,6 +46,10 @@ export class HUDModalDialogs extends BaseHUDPart {
         this.dialogParent = element;
     }
 
+    isBlockingOverlay() {
+        return this.dialogStack.length > 0;
+    }
+
     // Methods
 
     /**

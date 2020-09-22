@@ -163,13 +163,6 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             },
 
             {
-                // Pipette
-                label: T.ingame.keybindingsOverlay.pipette,
-                keys: [k.placement.pipette],
-                condition: () => !this.mapOverviewActive && !this.blueprintPlacementActive,
-            },
-
-            {
                 // Cancel placement
                 label: T.ingame.keybindingsOverlay.stopPlacement,
                 keys: [KEYCODE_RMB],
@@ -182,6 +175,13 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 keys: [KEYCODE_RMB],
                 condition: () =>
                     !this.anyPlacementActive && !this.mapOverviewActive && !this.anythingSelectedOnMap,
+            },
+
+            {
+                // Pipette
+                label: T.ingame.keybindingsOverlay.pipette,
+                keys: [k.placement.pipette],
+                condition: () => !this.mapOverviewActive && !this.blueprintPlacementActive,
             },
 
             {

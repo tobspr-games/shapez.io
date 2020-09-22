@@ -1,111 +1,95 @@
 #ingame_HUD_GameMenu {
     position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    grid-auto-flow: column;
+    @include S(top, 10px);
+    @include S(right, 10px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    @include S(grid-gap, 6px);
 
-    > .menuButtons {
+    backdrop-filter: blur(D(1px));
+
+    > button,
+    > .button {
+        @include PlainText;
+        @include IncreasedClickArea(0px);
+        background: green;
+        @include S(width, 30px);
+        @include S(height, 30px);
+
+        pointer-events: all;
+        cursor: pointer;
         position: relative;
-        display: flex;
-        flex-grow: 1;
-        @include S(padding, 5px, 4px);
-        justify-content: flex-end;
-        @include S(margin-left, 20px);
+        transition: all 0.12s ease-in-out;
+        transition-property: opacity, transform;
 
-        > .button {
-            @include S(width, 30px);
-            @include S(height, 30px);
-            display: inline-block;
-            background: center center / 60% no-repeat;
-            pointer-events: all;
-            cursor: pointer;
-            transition: all 0.12s ease-in-out;
-            transition-property: opacity, transform;
-            will-change: opacity;
-            opacity: 0.9;
-            @include S(margin-left, 5px);
-            position: relative;
+        display: inline-flex;
+        background: center center / 70% no-repeat;
+        grid-row: 1;
 
-            @include IncreasedClickArea(0px);
+        &.pressed {
+            transform: scale(0.9) !important;
+        }
 
-            @include DarkThemeInvert;
+        opacity: 0.7;
+        &:hover {
+            opacity: 0.9 !important;
+        }
 
-            &:hover {
-                opacity: 0.8;
-            }
+        @include DarkThemeInvert;
 
-            &.save {
-                background-image: uiResource("icons/save.png");
-                @include MakeAnimationWrappedEvenOdd(0.5s ease-in-out) {
-                    0% {
-                        transform: scale(1, 1);
-                    }
+        &.shop {
+            background-image: uiResource("icons/shop.png");
+            grid-column: 1;
+        }
 
-                    70% {
-                        transform: scale(1.5, 1.5) rotate(20deg);
-                        opacity: 0.2;
-                    }
+        &.stats {
+            background-image: uiResource("icons/statistics.png");
+            grid-column: 2;
+        }
 
-                    85% {
-                        transform: scale(0.9, 0.9);
-                        opacity: 1;
-                    }
+        &.save {
+            background-image: uiResource("icons/save.png");
+            grid-column: 3;
+            @include MakeAnimationWrappedEvenOdd(0.5s ease-in-out) {
+                0% {
+                    transform: scale(1, 1);
+                }
 
-                    90% {
-                        transform: scale(1.1, 1.1);
-                    }
+                70% {
+                    transform: scale(1.5, 1.5) rotate(20deg);
+                    opacity: 0.2;
+                }
+
+                85% {
+                    transform: scale(0.9, 0.9);
+                    opacity: 1;
+                }
+
+                90% {
+                    transform: scale(1.1, 1.1);
                 }
             }
 
-            &.settings {
-                background-image: uiResource("icons/settings.png");
+            &.saving {
+                @include InlineAnimation(0.4s ease-in-out infinite) {
+                    50% {
+                        opacity: 0.5;
+                        transform: scale(0.8);
+                    }
+                }
+                pointer-events: none;
+                cursor: default;
             }
         }
-    }
 
-    .buttonContainer button {
-        @include PlainText;
-        color: #fff;
-        border-color: rgba(0, 0, 0, 0.1);
-        @include S(padding, 5px, 5px, 5px);
-
-        @include S(padding-left, 30px);
-        @include S(margin-right, 3px);
-        @include IncreasedClickArea(0px);
-        @include ButtonText;
-        @include S(min-height, 40px);
-        transition: all 0.12s ease-in-out;
-        transition-property: opacity, transform;
-        display: inline-flex;
-        background: center #{D(13px)} / #{D(20px)} no-repeat;
-        background-color: $colorGreenBright;
-
-        &[data-button-id="shop"] {
-            background-color: rgb(93, 103, 250);
-            background-image: uiResource("icons/shop.png");
-            background-size: #{D(18px)};
-        }
-        &[data-button-id="stats"] {
-            background-color: rgb(85, 199, 138);
-            background-image: uiResource("icons/statistics.png");
+        &.settings {
+            background-image: uiResource("icons/settings_menu_settings.png");
+            grid-column: 4;
         }
 
         &:hover {
             opacity: 0.9;
-        }
-
-        .keybinding {
-            border: 0;
-            color: #fff;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            bottom: unset;
-            background: transparent;
-            @include S(top, 0px);
-            right: unset;
-            left: 50%;
-            transform: translateX(-50%);
+            transform: translateY(0);
         }
 
         &:not(.hasBadge) .badge {
@@ -113,34 +97,27 @@
         }
 
         &.hasBadge {
-            transform-origin: 50% 0%;
-            @include InlineAnimation(1s ease-in-out infinite) {
+            &.shop {
+                filter: none;
+                background-image: uiResource("icons/shop_active.png");
+                opacity: 0.9;
+            }
+            transform-origin: 50% 50%;
+            @include InlineAnimation(0.8s ease-in-out infinite) {
                 50% {
-                    transform: scale(1.02);
+                    transform: scale(1.3) rotate(6deg);
                 }
             }
 
             .badge {
                 position: absolute;
-                @include S(bottom, -8px);
+                top: 50%;
                 left: 50%;
-                transform: translateX(-50%);
-
-                background: #333;
+                transform: translate(-50%, -50%);
                 @include PlainText;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                @include S(min-width, 5px);
-                @include S(height, 10px);
-                @include S(padding, 1px, 3px, 2px);
-                @include S(border-radius, $globalBorderRadius);
-                border: #{D(1px)} solid #fff;
-                @include InlineAnimation(1s ease-in-out infinite) {
-                    50% {
-                        transform: translateX(-50%) scale(1.05);
-                    }
-                }
             }
         }
     }

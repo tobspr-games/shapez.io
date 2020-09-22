@@ -65,7 +65,7 @@ export class DisplaySystem extends GameSystemWithFilter {
                 const pinsComp = entity.components.WiredPins;
                 const network = pinsComp.slots[0].linkedNetwork;
 
-                if (!network || !network.currentValue) {
+                if (!network || !network.hasValue()) {
                     continue;
                 }
 

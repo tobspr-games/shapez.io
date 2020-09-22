@@ -13,7 +13,7 @@ export class HUDSandboxController extends BaseHUDPart {
             [],
             `
             <label>Sandbox Options</label>
-            <span class="hint">Use F6 to toggle this overlay</span>
+            <span class="sandboxHint">Use F6 to toggle this overlay</span>
 
             <div class="buttons">
                 <div class="levelToggle plusMinus">
@@ -89,8 +89,8 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     modifyUpgrade(id, amount) {
-        const handle = UPGRADES[id];
-        const maxLevel = handle.tiers.length;
+        const upgradeTiers = UPGRADES[id];
+        const maxLevel = upgradeTiers.length;
 
         this.root.hubGoals.upgradeLevels[id] = Math.max(
             0,
@@ -100,7 +100,7 @@ export class HUDSandboxController extends BaseHUDPart {
         // Compute improvement
         let improvement = 1;
         for (let i = 0; i < this.root.hubGoals.upgradeLevels[id]; ++i) {
-            improvement += handle.tiers[i].improvement;
+            improvement += upgradeTiers[i].improvement;
         }
         this.root.hubGoals.upgradeImprovements[id] = improvement;
         this.root.signals.upgradePurchased.dispatch(id);

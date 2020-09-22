@@ -43,11 +43,11 @@ export class HubGoals extends BasicSerializableObject {
 
         // Compute upgrade improvements
         for (const upgradeId in UPGRADES) {
-            const upgradeHandle = UPGRADES[upgradeId];
+            const tiers = UPGRADES[upgradeId];
             const level = this.upgradeLevels[upgradeId] || 0;
-            let totalImprovement = upgradeHandle.baseValue || 1;
+            let totalImprovement = 1;
             for (let i = 0; i < level; ++i) {
-                totalImprovement += upgradeHandle.tiers[i].improvement;
+                totalImprovement += tiers[i].improvement;
             }
             this.upgradeImprovements[upgradeId] = totalImprovement;
         }
@@ -98,7 +98,7 @@ export class HubGoals extends BasicSerializableObject {
          */
         this.upgradeImprovements = {};
         for (const key in UPGRADES) {
-            this.upgradeImprovements[key] = UPGRADES[key].baseValue || 1;
+            this.upgradeImprovements[key] = 1;
         }
 
         this.createNextGoal();
@@ -212,7 +212,7 @@ export class HubGoals extends BasicSerializableObject {
         this.currentGoal = {
             /** @type {ShapeDefinition} */
             definition: this.createRandomShape(),
-            required: 10000 + findNiceIntegerValue(this.level * 2000),
+            required: findNiceIntegerValue(5000 + Math.pow(this.level * 2000, 0.75)),
             reward: enumHubGoalRewards.no_reward_freeplay,
         };
     }
@@ -243,10 +243,10 @@ export class HubGoals extends BasicSerializableObject {
      * @param {string} upgradeId
      */
     canUnlockUpgrade(upgradeId) {
-        const handle = UPGRADES[upgradeId];
+        const tiers = UPGRADES[upgradeId];
         const currentLevel = this.getUpgradeLevel(upgradeId);
 
-        if (currentLevel >= handle.tiers.length) {
+        if (currentLevel >= tiers.length) {
             // Max level
             return false;
         }
@@ -255,7 +255,7 @@ export class HubGoals extends BasicSerializableObject {
             return true;
         }
 
-        const tierData = handle.tiers[currentLevel];
+        const tierData = tiers[currentLevel];
 
         for (let i = 0; i < tierData.required.length; ++i) {
             const requirement = tierData.required[i];
@@ -290,10 +290,10 @@ export class HubGoals extends BasicSerializableObject {
             return false;
         }
 
-        const handle = UPGRADES[upgradeId];
+        const upgradeTiers = UPGRADES[upgradeId];
         const currentLevel = this.getUpgradeLevel(upgradeId);
 
-        const tierData = handle.tiers[currentLevel];
+        const tierData = upgradeTiers[currentLevel];
         if (!tierData) {
             return false;
         }
@@ -396,15 +396,11 @@ export class HubGoals extends BasicSerializableObject {
      */
     getProcessorBaseSpeed(processorType) {
         switch (processorType) {
-            case enumItemProcessorTypes.splitterWires:
-                return globalConfig.wiresSpeedItemsPerSecond * 2;
-
             case enumItemProcessorTypes.trash:
             case enumItemProcessorTypes.hub:
                 return 1e30;
-            case enumItemProcessorTypes.splitter:
+            case enumItemProcessorTypes.balancer:
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
-            case enumItemProcessorTypes.filter:
             case enumItemProcessorTypes.reader:
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
 
@@ -427,7 +423,7 @@ export class HubGoals extends BasicSerializableObject {
             case enumItemProcessorTypes.cutterQuad:
             case enumItemProcessorTypes.rotater:
             case enumItemProcessorTypes.rotaterCCW:
-            case enumItemProcessorTypes.rotaterFL:
+            case enumItemProcessorTypes.rotater180:
             case enumItemProcessorTypes.stacker: {
                 assert(
                     globalConfig.buildingSpeeds[processorType],

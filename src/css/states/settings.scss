@@ -1,13 +1,95 @@
 #state_SettingsState {
-    $colorCategoryButton: #eee;
-    $colorCategoryButtonSelected: #5f748b;
+    $colorCategoryButton: #eeeff5;
+    $colorCategoryButtonSelected: $colorBlueBright;
+
+    $layoutBreak: 1000px;
 
     .container .content {
-        display: flex;
-        overflow-y: scroll;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        @include S(grid-gap, 10px);
+
+        @include StyleBelowWidth($layoutBreak) {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+            display: grid;
+            @include S(min-width, 210px);
+            @include S(max-width, 320px);
+            @include S(grid-gap, 3px);
+            grid-template-rows: auto auto auto auto auto 1fr;
+
+            @include StyleBelowWidth($layoutBreak) {
+                grid-template-rows: 1fr 1fr;
+                grid-template-columns: auto auto;
+                max-width: unset !important;
+            }
+
+            button {
+                text-align: left;
+                &::after {
+                    content: unset;
+                }
+                width: 100%;
+                box-sizing: border-box;
+
+                @include StyleBelowWidth($layoutBreak) {
+                    text-align: center;
+                }
+            }
+
+            .other {
+                @include S(margin-top, 10px);
+                align-self: end;
+
+                @include StyleBelowWidth($layoutBreak) {
+                    margin-top: 0;
+                }
+            }
+
+            button.categoryButton,
+            button.about {
+                background-color: $colorCategoryButton;
+                color: #777a7f;
+
+                &.active {
+                    background-color: $colorCategoryButtonSelected;
+                    color: #fff;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+
+                &.pressed {
+                    transform: none !important;
+                }
+            }
+
+            .versionbar {
+                @include S(margin-top, 10px);
+
+                @include StyleBelowWidth($layoutBreak) {
+                    display: none;
+                }
+
+                @include SuperSmallText;
+                display: grid;
+                align-items: center;
+                grid-template-columns: 1fr auto;
+                .buildVersion {
+                    display: flex;
+                    flex-direction: column;
+                    color: #aaadaf;
+                }
+            }
+        }
 
         .categoryContainer {
-            width: 100%;
+            overflow-y: scroll;
+            pointer-events: all;
+            @include S(padding-right, 10px);
 
             .category {
                 display: none;
@@ -88,65 +170,6 @@
                 }
             }
         }
-
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            @include S(min-width, 210px);
-            @include S(max-width, 320px);
-            width: 30%;
-            height: 100%;
-            position: sticky;
-            top: 0;
-            @include S(margin-left, 20px);
-            @include S(margin-right, 32px);
-
-            .other {
-                margin-top: auto;
-            }
-
-            button {
-                @include S(margin-top, 4px);
-                width: calc(100% - #{D(20px)});
-                text-align: start;
-
-                &::after {
-                    content: unset;
-                }
-            }
-
-            button.categoryButton,
-            button.about {
-                background-color: $colorCategoryButton;
-                color: #777a7f;
-
-                &.active {
-                    background-color: $colorCategoryButtonSelected;
-                    color: #fff;
-
-                    &:hover {
-                        opacity: 1;
-                    }
-                }
-
-                &.pressed {
-                    transform: none !important;
-                }
-            }
-
-            .versionbar {
-                @include S(margin-top, 20px);
-                @include SuperSmallText;
-                display: grid;
-                align-items: center;
-                grid-template-columns: 1fr auto;
-                .buildVersion {
-                    display: flex;
-                    flex-direction: column;
-                    color: #aaadaf;
-                }
-            }
-        }
     }
 
     @include DarkThemeOverride {
@@ -154,10 +177,12 @@
             .sidebar {
                 button.categoryButton,
                 button.about {
-                    background-color: #3f3f47;
+                    color: #ccc;
+                    background-color: darken($darkModeControlsBackground, 5);
 
                     &.active {
-                        background-color: $colorBlueBright;
+                        color: #fff;
+                        background-color: $colorCategoryButtonSelected;
                     }
                 }
             }
@@ -169,8 +194,13 @@
 
                         .value.enum {
                             // dirty but works
-                            filter: invert(0.78) sepia(40%) hue-rotate(190deg);
-                            color: #222;
+                            // color: #222;
+                            background-color: $darkModeControlsBackground;
+                            background-image: uiResource("icons/enum_selector_white.png");
+                            color: #ddd;
+                            &:hover {
+                                background-color: darken($darkModeControlsBackground, 2);
+                            }
                         }
 
                         .value.checkbox {

@@ -1,3 +1,4 @@
+import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { getBuildingDataFromCode } from "../game/building_codes";
@@ -78,7 +79,9 @@ export class SerializerInternal {
     deserializeComponents(root, entity, data) {
         for (const componentId in data) {
             if (!entity.components[componentId]) {
-                logger.warn("Entity no longer has component:", componentId);
+                if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts) {
+                    logger.warn("Entity no longer has component:", componentId);
+                }
                 continue;
             }
 

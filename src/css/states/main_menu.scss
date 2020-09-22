@@ -25,13 +25,15 @@
             background: uiResource("icons/main_menu_settings.png") center center / contain no-repeat;
             transition: opacity 0.12s ease-in-out;
             @include IncreasedClickArea(2px);
+            opacity: 0.7;
             &:hover {
-                opacity: 0.9;
+                opacity: 1;
             }
         }
 
         .exitAppButton {
             background-image: uiResource("icons/main_menu_exit.png");
+            background-size: 90%;
         }
 
         .languageChoose {
@@ -40,6 +42,7 @@
             background-color: #fff;
             @include S(border-width, 2px);
             background-size: cover;
+            opacity: 0.8;
         }
     }
 
@@ -57,7 +60,7 @@
         transform: translate(50%, 50%);
         filter: blur(D(3px));
 
-        $opacity: 0.2;
+        $opacity: 0.07;
         &.loaded {
             display: block;
             opacity: $opacity;
@@ -121,10 +124,13 @@
             }
 
             .steamLink {
+                align-self: center;
+                justify-self: center;
                 width: 100%;
                 @include S(height, 40px);
+                @include S(width, 180px);
 
-                background: uiResource("get_on_steam.png") center center / contain no-repeat;
+                background: #171a23 uiResource("get_on_steam.png") center center / contain no-repeat;
                 overflow: hidden;
                 display: block;
                 text-indent: -999em;
@@ -134,8 +140,11 @@
                 transition: all 0.12s ease-in;
                 transition-property: opacity, transform;
                 transform: skewX(-0.5deg);
+
+                @include S(border-radius, $globalBorderRadius);
+
                 &:hover {
-                    transform: skewX(-1deg) scale(1.02);
+                    transform: scale(1.02);
                     opacity: 0.9;
                 }
             }
@@ -332,25 +341,39 @@
                 button.downloadGame {
                     grid-column: 3 / 4;
                     grid-row: 1 / 2;
-                    background-color: $colorBlueBright;
+                    background-color: transparent;
                     background-image: uiResource("icons/download.png");
                     @include S(width, 15px);
                     @include IncreasedClickArea(0px);
                     @include S(height, 15px);
-                    background-size: 60%;
+                    background-size: 80%;
                     align-self: start;
+                    opacity: 0.4;
+
+                    &:hover {
+                        opacity: 0.5;
+                    }
+
+                    @include DarkThemeInvert;
                 }
 
                 button.deleteGame {
                     grid-column: 3 / 4;
                     grid-row: 2 / 3;
-                    background-color: $colorRedBright;
+                    background-color: transparent;
                     @include IncreasedClickArea(0px);
                     background-image: uiResource("icons/delete.png");
                     @include S(width, 15px);
                     @include S(height, 15px);
                     align-self: end;
-                    background-size: 60%;
+                    background-size: 80%;
+                    opacity: 0.4;
+
+                    &:hover {
+                        opacity: 0.5;
+                    }
+
+                    @include DarkThemeInvert;
                 }
 
                 button.renameGame {
@@ -363,11 +386,11 @@
                     justify-self: center;
 
                     background-size: 90%;
-                    opacity: 0.25;
+                    opacity: 0.4;
                     @include S(margin-left, 4px);
 
                     &:hover {
-                        opacity: 0.35;
+                        opacity: 0.5;
                     }
 
                     @include DarkThemeInvert;
@@ -379,6 +402,11 @@
                     margin: 0;
                     @include S(width, 32px);
                     height: 100%;
+                    @include S(margin-left, 4px);
+
+                    @include DarkThemeOverride {
+                        background-color: lighten($darkModeControlsBackground, 10);
+                    }
                 }
             }
         }
@@ -407,13 +435,17 @@
 
         @include S(padding, 15px);
 
+        $linkBg: #fdfdff;
+        $linkBgHover: darken($linkBg, 2);
+        $linkColor: #55586a;
+
         > .boxLink {
             display: grid;
             align-items: center;
             grid-template-columns: 1fr auto;
 
             justify-content: center;
-            background: #fdfdfd uiResource("icons/link.png") top D(3px) right D(3px) / D(9px) no-repeat;
+            background: $linkBg uiResource("icons/link.png") top D(3px) right D(3px) / D(9px) no-repeat;
             @include S(padding, 5px);
             @include S(padding-left, 10px);
             @include S(border-radius, $globalBorderRadius);
@@ -422,7 +454,7 @@
             font-weight: bold;
             box-sizing: border-box;
             text-transform: uppercase;
-            color: #616266;
+            color: $linkColor;
 
             transition: background-color 0.12s ease-in-out;
             pointer-events: all;
@@ -431,7 +463,7 @@
 
             cursor: pointer;
             &:hover {
-                background-color: #f0f6ff;
+                background-color: $linkBgHover;
             }
 
             .thirdpartyLogo {
@@ -458,12 +490,12 @@
             @include S(height, 60px);
 
             > a {
-                color: #616266;
-                background: #fdfdfd;
+                color: $linkColor;
+                background: $linkBg;
                 height: 100%;
 
                 &:hover {
-                    background-color: #f0f6ff;
+                    background-color: $linkBgHover;
                 }
                 @include SuperSmallText;
                 text-transform: uppercase;
@@ -499,19 +531,11 @@
     @include DarkThemeOverride {
         background: $darkModeGameBackground center center / cover !important;
 
-        .topButtons {
-            filter: invert(1);
-
-            .languageChoose {
-                filter: invert(1);
-            }
-        }
-
         .mainContainer {
-            background: darken($darkModeGameBackground, 10);
+            background: $darkModeControlsBackground;
 
             .savegames .savegame {
-                background: darken($darkModeGameBackground, 15);
+                background: darken($darkModeControlsBackground, 5);
                 color: white;
             }
         }
@@ -519,11 +543,11 @@
         .footer {
             > a,
             .sidelinks > a {
-                background-color: darken($darkModeGameBackground, 10);
+                background-color: $darkModeControlsBackground;
                 color: #eee;
 
                 &:hover {
-                    background-color: darken($darkModeGameBackground, 8);
+                    background-color: darken($darkModeControlsBackground, 5);
                 }
             }
 

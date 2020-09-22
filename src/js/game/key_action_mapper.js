@@ -45,7 +45,7 @@ export const KEYMAPPINGS = {
 
     buildings: {
         belt: { keyCode: key("1") },
-        splitter: { keyCode: key("2") },
+        balancer: { keyCode: key("2") },
         underground_belt: { keyCode: key("3") },
         miner: { keyCode: key("4") },
         cutter: { keyCode: key("5") },
@@ -204,22 +204,20 @@ export function getStringForKeyCode(code) {
         case 115:
             return "F4";
         case 116:
-            return "F4";
-        case 117:
             return "F5";
-        case 118:
+        case 117:
             return "F6";
-        case 119:
+        case 118:
             return "F7";
-        case 120:
+        case 119:
             return "F8";
-        case 121:
+        case 120:
             return "F9";
-        case 122:
+        case 121:
             return "F10";
-        case 123:
+        case 122:
             return "F11";
-        case 124:
+        case 123:
             return "F12";
 
         case 144:

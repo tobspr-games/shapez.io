@@ -11,6 +11,7 @@ import { EntityComponentStorage } from "./entity_components";
 import { Loader } from "../core/loader";
 import { drawRotatedSprite } from "../core/draw_utils";
 import { gComponentRegistry } from "../core/global_registries";
+import { getBuildingDataFromCode } from "./building_codes";
 
 export class Entity extends BasicSerializableObject {
     /**
@@ -82,23 +83,26 @@ export class Entity extends BasicSerializableObject {
     }
 
     /**
-     * Returns a clone of this entity without contents
+     * Returns a clone of this entity
      */
-    duplicateWithoutContents() {
-        const clone = new Entity(this.root);
-        for (const key in this.components) {
-            clone.components[key] = this.components[key].duplicateWithoutContents();
-        }
-        clone.layer = this.layer;
-        return clone;
-    }
+    clone() {
+        const staticComp = this.components.StaticMapEntity;
+        const buildingData = getBuildingDataFromCode(staticComp.code);
 
-    /**
-     * Internal destroy callback
-     */
-    internalDestroyCallback() {
-        assert(!this.destroyed, "Can not destroy entity twice");
-        this.destroyed = true;
+        const clone = buildingData.metaInstance.createEntity({
+            root: this.root,
+            origin: staticComp.origin,
+            originalRotation: staticComp.originalRotation,
+            rotation: staticComp.rotation,
+            rotationVariant: buildingData.rotationVariant,
+            variant: buildingData.variant,
+        });
+
+        for (const key in this.components) {
+            /** @type {Component} */ (this.components[key]).copyAdditionalStateTo(clone.components[key]);
+        }
+
+        return clone;
     }
 
     /**

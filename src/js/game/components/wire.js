@@ -13,10 +13,6 @@ export class WireComponent extends Component {
         return "Wire";
     }
 
-    duplicateWithoutContents() {
-        return new WireComponent({ type: this.type });
-    }
-
     /**
      * @param {object} param0
      * @param {enumWireType=} param0.type

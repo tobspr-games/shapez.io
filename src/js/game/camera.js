@@ -123,7 +123,7 @@ export class Camera extends BasicSerializableObject {
         this.clampZoomLevel();
     }
 
-    // Simple geters & setters
+    // Simple getters & setters
 
     addScreenShake(amount) {
         const currentShakeAmount = this.currentShake.length();
@@ -769,6 +769,7 @@ export class Camera extends BasicSerializableObject {
             this.cameraUpdateTimeBucket -= physicsStepSizeMs;
 
             this.internalUpdatePanning(now, physicsStepSizeMs);
+            this.internalUpdateMousePanning(now, physicsStepSizeMs);
             this.internalUpdateZooming(now, physicsStepSizeMs);
             this.internalUpdateCentering(now, physicsStepSizeMs);
             this.internalUpdateShake(now, physicsStepSizeMs);
@@ -853,6 +854,69 @@ export class Camera extends BasicSerializableObject {
             this.currentPan = mixVector(this.currentPan, this.desiredPan, 0.06);
             this.center = this.center.add(this.currentPan.multiplyScalar((0.5 * dt) / this.zoomLevel));
         }
+    }
+
+    /**
+     * Internal screen panning handler
+     * @param {number} now
+     * @param {number} dt
+     */
+    internalUpdateMousePanning(now, dt) {
+        if (!this.root.app.focused) {
+            return;
+        }
+
+        if (!this.root.app.settings.getAllSettings().enableMousePan) {
+            // Not enabled
+            return;
+        }
+
+        const mousePos = this.root.app.mousePosition;
+        if (!mousePos) {
+            return;
+        }
+
+        if (this.root.hud.shouldPauseGame() || this.root.hud.hasBlockingOverlayOpen()) {
+            return;
+        }
+
+        if (this.desiredCenter || this.desiredZoom || this.currentlyMoving || this.currentlyPinching) {
+            // Performing another method of movement right now
+            return;
+        }
+
+        if (
+            mousePos.x < 0 ||
+            mousePos.y < 0 ||
+            mousePos.x > this.root.gameWidth ||
+            mousePos.y > this.root.gameHeight
+        ) {
+            // Out of screen
+            return;
+        }
+
+        const panAreaPixels = 2;
+
+        const panVelocity = new Vector();
+        if (mousePos.x < panAreaPixels) {
+            panVelocity.x -= 1;
+        }
+        if (mousePos.x > this.root.gameWidth - panAreaPixels) {
+            panVelocity.x += 1;
+        }
+
+        if (mousePos.y < panAreaPixels) {
+            panVelocity.y -= 1;
+        }
+        if (mousePos.y > this.root.gameHeight - panAreaPixels) {
+            panVelocity.y += 1;
+        }
+
+        this.center = this.center.add(
+            panVelocity.multiplyScalar(
+                ((0.5 * dt) / this.zoomLevel) * this.root.app.settings.getMovementSpeed()
+            )
+        );
     }
 
     /**

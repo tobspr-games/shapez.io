@@ -49,11 +49,20 @@ export class MapResourcesSystem extends GameSystem {
         } else {
             // HIGH QUALITY: Draw all items
             const layer = chunk.lowerLayer;
+            const layerEntities = chunk.contents;
             for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
                 const row = layer[x];
+                const rowEntities = layerEntities[x];
                 const worldX = (chunk.tileX + x) * globalConfig.tileSize;
                 for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
                     const lowerItem = row[y];
+
+                    const entity = rowEntities[y];
+                    if (entity) {
+                        // Don't draw if there is an entity above
+                        continue;
+                    }
+
                     if (lowerItem) {
                         const worldY = (chunk.tileY + y) * globalConfig.tileSize;
 

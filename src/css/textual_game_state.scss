@@ -74,7 +74,7 @@
         }
 
         > .container > .content {
-            background: darken($darkModeGameBackground, 3);
+            background: $darkModeControlsBackground;
             color: #eee;
         }
     }

@@ -21,7 +21,7 @@
         }
     }
 
-    $darkModeDialogBg: darken($darkModeGameBackground, 10);
+    $darkModeDialogBg: darken($darkModeGameBackground, 5);
 
     @include DarkThemeOverride {
         background: rgba($darkModeDialogBg, 0.9);
@@ -37,10 +37,10 @@
 
         > .dialogInner.optionChooserDialog .optionParent {
             .option {
-                background: #3d3f42;
+                background: $darkModeControlsBackground;
 
                 &:hover {
-                    background-color: #424348;
+                    background-color: lighten($darkModeControlsBackground, 5);
                 }
 
                 &.active {
@@ -79,7 +79,7 @@
         pointer-events: all;
 
         @include DarkThemeOverride {
-            background: #333438;
+            background: darken($darkModeControlsBackground, 5);
         }
 
         &.optionChooserDialog {
@@ -91,7 +91,9 @@
                     pointer-events: all;
                     cursor: pointer;
                     @include S(padding, 10px);
+
                     background: #eee;
+
                     transition: background-color 0.12s ease-in-out;
 
                     &:hover {

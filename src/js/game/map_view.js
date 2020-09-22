@@ -66,32 +66,34 @@ export class MapView extends BaseMap {
      * @param {DrawParameters} drawParameters
      */
     drawStaticEntityDebugOverlays(drawParameters) {
-        const cullRange = drawParameters.visibleRect.toTileCullRectangle();
-        const top = cullRange.top();
-        const right = cullRange.right();
-        const bottom = cullRange.bottom();
-        const left = cullRange.left();
+        if (G_IS_DEV && (globalConfig.debug.showAcceptorEjectors || globalConfig.debug.showEntityBounds)) {
+            const cullRange = drawParameters.visibleRect.toTileCullRectangle();
+            const top = cullRange.top();
+            const right = cullRange.right();
+            const bottom = cullRange.bottom();
+            const left = cullRange.left();
 
-        const border = 1;
+            const border = 1;
 
-        const minY = top - border;
-        const maxY = bottom + border;
-        const minX = left - border;
-        const maxX = right + border - 1;
+            const minY = top - border;
+            const maxY = bottom + border;
+            const minX = left - border;
+            const maxX = right + border - 1;
 
-        // Render y from top down for proper blending
-        for (let y = minY; y <= maxY; ++y) {
-            for (let x = minX; x <= maxX; ++x) {
-                // const content = this.tiles[x][y];
-                const chunk = this.getChunkAtTileOrNull(x, y);
-                if (!chunk) {
-                    continue;
-                }
-                const content = chunk.getTileContentFromWorldCoords(x, y);
-                if (content) {
-                    let isBorder = x <= left - 1 || x >= right + 1 || y <= top - 1 || y >= bottom + 1;
-                    if (!isBorder) {
-                        content.drawDebugOverlays(drawParameters);
+            // Render y from top down for proper blending
+            for (let y = minY; y <= maxY; ++y) {
+                for (let x = minX; x <= maxX; ++x) {
+                    // const content = this.tiles[x][y];
+                    const chunk = this.getChunkAtTileOrNull(x, y);
+                    if (!chunk) {
+                        continue;
+                    }
+                    const content = chunk.getTileContentFromWorldCoords(x, y);
+                    if (content) {
+                        let isBorder = x <= left - 1 || x >= right + 1 || y <= top - 1 || y >= bottom + 1;
+                        if (!isBorder) {
+                            content.drawDebugOverlays(drawParameters);
+                        }
                     }
                 }
             }

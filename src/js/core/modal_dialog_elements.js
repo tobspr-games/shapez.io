@@ -30,10 +30,10 @@ export class Dialog {
      * @param {string} param0.title Title of the dialog
      * @param {string} param0.contentHTML Inner dialog html
      * @param {Array<string>} param0.buttons
-     *  Button list, each button contains of up to 3 parts seperated by ':'.
+     *  Button list, each button contains of up to 3 parts separated by ':'.
      *  Part 0: The id, one of the one defined in dialog_buttons.yaml
      *  Part 1: The style, either good, bad or misc
-     *  Part 2 (optional): Additional parameters seperated by '/', available are:
+     *  Part 2 (optional): Additional parameters separated by '/', available are:
      *    timeout: This button is only available after some waiting time
      *    kb_enter: This button is triggered by the enter key
      *    kb_escape This button is triggered by the escape key
@@ -277,7 +277,6 @@ export class DialogLoading extends Dialog {
         const loader = document.createElement("div");
         loader.classList.add("prefab_LoadingTextWithAnim");
         loader.classList.add("loadingIndicator");
-        loader.innerText = T.global.loading;
         elem.appendChild(loader);
 
         this.app.inputMgr.pushReciever(this.inputReciever);

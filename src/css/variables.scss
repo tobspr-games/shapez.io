@@ -31,14 +31,15 @@ $mainBgColor: #dee1ea;
 $accentColorBright: #e1e4ed;
 $accentColorDark: #7d808a;
 $colorGreenBright: #66bb6a;
-$colorBlueBright: rgb(74, 163, 223);
+$colorBlueBright: rgb(74, 151, 223);
 $colorRedBright: #ef5072;
 $themeColor: #393747;
 $ingameHudBg: rgba(#333438, 0.9);
 
 $text3dColor: #f4ffff;
 
-$darkModeGameBackground: #5c606c;
+$darkModeGameBackground: #535866;
+$darkModeControlsBackground: darken($darkModeGameBackground, 5);
 
 // Dialog properties
 $modalDialogBg: rgba(160, 165, 180, 0.8);

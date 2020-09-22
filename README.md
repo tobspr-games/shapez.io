@@ -64,7 +64,7 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 5. Add a constructor. **The constructor must be called with optional parameters only!** `new MyFancyComponent({})` should always work.
 6. Add any props you need in the constructor.
 7. Add the component in `src/js/game/component_registry.js`
-8. Add the componetn in `src/js/game/entity_components.js`
+8. Add the component in `src/js/game/entity_components.js`
 9. Done! You can use your component now
 
 #### Adding a new building
@@ -96,6 +96,6 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 
 For most assets I use Adobe Photoshop, you can find them in `assets/`.
 
-You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when thats done.
+You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when that's done.
 
 <img src="https://i.imgur.com/W25Fkl0.png" alt="shapez.io Screenshot">

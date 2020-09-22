@@ -1,6 +1,8 @@
+import { Component } from "../game/component";
+import { Entity } from "../game/entity";
+import { globalConfig } from "./config";
 import { createLogger } from "./logging";
 import { Rectangle } from "./rectangle";
-import { globalConfig } from "./config";
 
 const logger = createLogger("stale_areas");
 
@@ -32,6 +34,44 @@ export class StaleAreaDetector {
         } else {
             this.staleArea = area.clone();
         }
+    }
+
+    /**
+     * Makes this detector recompute the area of an entity whenever
+     * it changes in any way
+     * @param {Array<typeof Component>} components
+     * @param {number} tilesAround How many tiles arround to expand the area
+     */
+    recomputeOnComponentsChanged(components, tilesAround) {
+        const componentIds = components.map(component => component.getId());
+
+        /**
+         * Internal checker method
+         * @param {Entity} entity
+         */
+        const checker = entity => {
+            if (!this.root.gameInitialized) {
+                return;
+            }
+
+            // Check for all components
+            for (let i = 0; i < componentIds.length; ++i) {
+                if (entity.components[componentIds[i]]) {
+                    // Entity is relevant, compute affected area
+                    const area = entity.components.StaticMapEntity.getTileSpaceBounds().expandedInAllDirections(
+                        tilesAround
+                    );
+                    this.invalidate(area);
+                    return;
+                }
+            }
+        };
+
+        this.root.signals.entityAdded.add(checker);
+        this.root.signals.entityChanged.add(checker);
+        this.root.signals.entityComponentRemoved.add(checker);
+        this.root.signals.entityGotNewComponent.add(checker);
+        this.root.signals.entityDestroyed.add(checker);
     }
 
     /**

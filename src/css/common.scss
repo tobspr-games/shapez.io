@@ -392,13 +392,18 @@ canvas {
     &::after {
         content: " ";
         background: uiResource("loading.svg") center center / contain no-repeat;
-        @include S(width, 15px);
-        @include S(height, 15px);
-        @include S(margin-top, 1px);
-        @include S(margin-left, 5px);
+        @include S(width, 35px);
+        @include S(height, 35px);
         display: inline-block;
         vertical-align: middle;
     }
+
+    @include InlineAnimation(1.5s ease-in-out infinite) {
+        50% {
+            transform: scale(1.2) rotate(160deg);
+        }
+    }
+
     @include DarkThemeOverride {
         color: #fff;
     }
@@ -463,18 +468,44 @@ canvas {
     justify-content: center;
     flex-direction: column;
     .loadingImage {
-        background: uiResource("loading.svg") center center / #{D(60px)} no-repeat;
+        background: uiResource("loading.svg") center center / #{D(40px)} no-repeat;
         width: 100%;
         display: flex;
         flex-grow: 1;
+
+        @include InlineAnimation(1.5s ease-in-out infinite) {
+            50% {
+                transform: scale(1.2) rotate(160deg);
+            }
+        }
     }
+
+    .prefab_GameHint {
+        position: absolute;
+        @include S(left, 20px);
+        @include S(right, 20px);
+        @include S(bottom, 60px);
+        @include Text;
+        color: #666;
+
+        @include DarkThemeOverride() {
+            color: lighten($darkModeGameBackground, 50);
+        }
+    }
+
     .loadingStatus {
         position: absolute;
         @include S(left, 20px);
         @include S(right, 20px);
         @include S(bottom, 30px);
         @include Text;
-        @include TextShadow3D(#aaa);
+        @include PlainText;
+        color: #aaa;
+
+        @include DarkThemeOverride {
+            color: lighten($darkModeGameBackground, 20);
+        }
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -568,6 +599,13 @@ canvas {
             background-color: lighten($themeColor, 15);
         }
     }
+
+    @include DarkThemeOverride {
+        background-color: $darkModeGameBackground !important;
+        &.checked {
+            background-color: $colorBlueBright !important;
+        }
+    }
 }
 
 .rangeInputContainer {
@@ -595,6 +633,16 @@ input.rangeInput {
         color: darken($mainBgColor, 3);
         // @include S(height, 16px);
         @include S(border-radius, 8px);
+    }
+
+    @include DarkThemeOverride {
+        &::-webkit-slider-runnable-track {
+            background-color: $darkModeControlsBackground;
+        }
+
+        &::-webkit-slider-thumb {
+            box-shadow: inset 0 0 0 D(10px) #eee;
+        }
     }
 
     &::-webkit-slider-thumb {

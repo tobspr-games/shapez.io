@@ -59,11 +59,11 @@ export class HUDShop extends BaseHUDPart {
     rerenderFull() {
         for (const upgradeId in this.upgradeToElements) {
             const handle = this.upgradeToElements[upgradeId];
-            const { tiers } = UPGRADES[upgradeId];
+            const upgradeTiers = UPGRADES[upgradeId];
 
             const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
             const currentTierMultiplier = this.root.hubGoals.upgradeImprovements[upgradeId];
-            const tierHandle = tiers[currentTier];
+            const tierHandle = upgradeTiers[currentTier];
 
             // Set tier
             handle.elemTierLabel.innerText = T.ingame.shop.tier.replace(
@@ -247,5 +247,9 @@ export class HUDShop extends BaseHUDPart {
     tryUnlockNextTier(upgradeId) {
         // Nothing
         this.root.hubGoals.tryUnlockUpgrade(upgradeId);
+    }
+
+    isBlockingOverlay() {
+        return this.visible;
     }
 }
