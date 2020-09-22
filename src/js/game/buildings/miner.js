@@ -38,7 +38,7 @@ export class MetaMinerBuilding extends MetaBuilding {
      */
     getAvailableVariants(root) {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
-            return [defaultBuildingVariant, enumMinerVariants.chainable];
+            return [enumMinerVariants.chainable];
         }
         return super.getAvailableVariants(root);
     }
