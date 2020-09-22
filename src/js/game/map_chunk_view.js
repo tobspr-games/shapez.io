@@ -112,7 +112,7 @@ export class MapChunkView extends MapChunk {
                 if (patch.item.getItemType() === "shape") {
                     const destX = this.x * dims + patch.pos.x * globalConfig.tileSize;
                     const destY = this.y * dims + patch.pos.y * globalConfig.tileSize;
-                    const diameter = 100 / Math.pow(parameters.zoomLevel, 0.35);
+                    const diameter = 80 / Math.pow(parameters.zoomLevel, 0.35);
                     patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
                 }
             }
