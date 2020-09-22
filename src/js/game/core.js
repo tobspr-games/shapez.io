@@ -416,6 +416,11 @@ export class GameCore {
         const desiredOverlayAlpha = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
         this.overlayAlpha = lerp(this.overlayAlpha, desiredOverlayAlpha, 0.25);
 
+        // On low performance, skip the fade
+        if (this.root.entityMgr.entities.length > 5000 || this.root.dynamicTickrate.averageFps < 50) {
+            this.overlayAlpha = desiredOverlayAlpha;
+        }
+
         if (this.overlayAlpha < 0.99) {
             // Background (grid, resources, etc)
             root.map.drawBackground(params);
