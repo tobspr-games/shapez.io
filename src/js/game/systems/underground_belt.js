@@ -224,21 +224,9 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
     update() {
         this.staleAreaWatcher.update();
 
-        const delta = this.root.dynamicTickrate.deltaSeconds;
-
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const undergroundComp = entity.components.UndergroundBelt;
-            const pendingItems = undergroundComp.pendingItems;
-
-            // Decrease remaining time of all items in belt
-            for (let k = 0; k < pendingItems.length; ++k) {
-                const item = pendingItems[k];
-                item[1] = Math.max(0, item[1] - delta);
-                if (G_IS_DEV && globalConfig.debug.instantBelts) {
-                    item[1] = 0;
-                }
-            }
             if (undergroundComp.mode === enumUndergroundBeltMode.sender) {
                 this.handleSender(entity);
             } else {
@@ -316,26 +304,22 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        // Check if we have any item
-        if (undergroundComp.pendingItems.length > 0) {
+        // Check if we have any items to eject
+        const nextItemAndDuration = undergroundComp.pendingItems[0];
+        if (nextItemAndDuration) {
             assert(undergroundComp.pendingItems.length === 1, "more than 1 pending");
-            const nextItemAndDuration = undergroundComp.pendingItems[0];
-            const remainingTime = nextItemAndDuration[1];
-            const nextItem = nextItemAndDuration[0];
 
-            // Check if the item is ready to be emitted
-            if (remainingTime === 0) {
-                // Check if the receiver can accept it
-                if (
-                    cacheEntry.entity.components.UndergroundBelt.tryAcceptTunneledItem(
-                        nextItem,
-                        cacheEntry.distance,
-                        this.root.hubGoals.getUndergroundBeltBaseSpeed()
-                    )
-                ) {
-                    // Drop this item
-                    fastArrayDelete(undergroundComp.pendingItems, 0);
-                }
+            // Check if the receiver can accept it
+            if (
+                cacheEntry.entity.components.UndergroundBelt.tryAcceptTunneledItem(
+                    nextItemAndDuration[0],
+                    cacheEntry.distance,
+                    this.root.hubGoals.getUndergroundBeltBaseSpeed(),
+                    this.root.time.now()
+                )
+            ) {
+                // Drop this item
+                fastArrayDelete(undergroundComp.pendingItems, 0);
             }
         }
     }
@@ -348,19 +332,15 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
         const undergroundComp = entity.components.UndergroundBelt;
 
         // Try to eject items, we only check the first one because it is sorted by remaining time
-        const items = undergroundComp.pendingItems;
-        if (items.length > 0) {
-            const nextItemAndDuration = undergroundComp.pendingItems[0];
-            const remainingTime = nextItemAndDuration[1];
-            const nextItem = nextItemAndDuration[0];
-
-            if (remainingTime <= 0) {
+        const nextItemAndDuration = undergroundComp.pendingItems[0];
+        if (nextItemAndDuration) {
+            if (this.root.time.now() > nextItemAndDuration[1]) {
                 const ejectorComp = entity.components.ItemEjector;
 
                 const nextSlotIndex = ejectorComp.getFirstFreeSlot();
                 if (nextSlotIndex !== null) {
-                    if (ejectorComp.tryEject(nextSlotIndex, nextItem)) {
-                        items.shift();
+                    if (ejectorComp.tryEject(nextSlotIndex, nextItemAndDuration[0])) {
+                        undergroundComp.pendingItems.shift();
                     }
                 }
             }
