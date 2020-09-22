@@ -31,6 +31,7 @@ export const CHANGELOG = [
             "Show mouse and camera tile on debug overlay (F4) (by dengr)",
             "Fix belt planner placing the belt when a dialog opens in the meantime",
             "Added confirmation when deleting a savegame",
+            "Make chained mainer the default and only option after unlocking it",
             "Fixed tunnels entrances connecting to exits sometimes when they shouldn't",
             "You can now pan the map with your mouse by moving the cursor to the edges of the screen!",
             "Added setting to auto select the extractor when pipetting a resource patch (by Exund)",

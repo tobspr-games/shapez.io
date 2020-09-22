@@ -38,7 +38,7 @@ export const UPGRADES = {
             required: [{ shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", amount: 20000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 75000 }],
+            required: [{ shape: finalGameShape, amount: 50000 }],
             excludePrevious: true,
         },
     ],
@@ -60,7 +60,7 @@ export const UPGRADES = {
             required: [{ shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", amount: 30000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 85000 }],
+            required: [{ shape: finalGameShape, amount: 65000 }],
             excludePrevious: true,
         },
     ],
@@ -82,7 +82,7 @@ export const UPGRADES = {
             required: [{ shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", amount: 30000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 100000 }],
+            required: [{ shape: finalGameShape, amount: 75000 }],
             excludePrevious: true,
         },
     ],
@@ -104,7 +104,7 @@ export const UPGRADES = {
             required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp:CwCwCwCw", amount: 30000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 125000 }],
+            required: [{ shape: finalGameShape, amount: 100000 }],
             excludePrevious: true,
         },
     ],

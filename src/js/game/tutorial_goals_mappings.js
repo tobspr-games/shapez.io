@@ -12,6 +12,9 @@ import { MetaTrashBuilding, enumTrashVariants } from "./buildings/trash";
 /** @typedef {Array<[typeof MetaBuilding, string]>} TutorialGoalReward */
 
 import { enumHubGoalRewards } from "./tutorial_goals";
+import { MetaReaderBuilding } from "./buildings/reader";
+import { MetaDisplayBuilding } from "./buildings/display";
+import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 
 /**
  * Helper method for proper types
@@ -45,6 +48,14 @@ export const enumHubGoalRewardsToContentUnlocked = {
     [enumHubGoalRewards.reward_painter_quad]: typed([[MetaPainterBuilding, enumPainterVariants.quad]]),
     [enumHubGoalRewards.reward_storage]: typed([[MetaTrashBuilding, enumTrashVariants.storage]]),
 
+    [enumHubGoalRewards.reward_belt_reader]: typed([[MetaReaderBuilding, defaultBuildingVariant]]),
+    [enumHubGoalRewards.reward_display]: typed([[MetaDisplayBuilding, defaultBuildingVariant]]),
+    [enumHubGoalRewards.reward_constant_signal]: typed([
+        [MetaConstantSignalBuilding, defaultBuildingVariant],
+    ]),
+    [enumHubGoalRewards.reward_second_wire]: null, // @TODO!
+
+    [enumHubGoalRewards.reward_wires_filters_and_levers]: null,
     [enumHubGoalRewards.reward_freeplay]: null,
     [enumHubGoalRewards.no_reward]: null,
     [enumHubGoalRewards.no_reward_freeplay]: null,

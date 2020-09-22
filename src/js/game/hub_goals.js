@@ -212,7 +212,7 @@ export class HubGoals extends BasicSerializableObject {
         this.currentGoal = {
             /** @type {ShapeDefinition} */
             definition: this.createRandomShape(),
-            required: findNiceIntegerValue(5000 + Math.pow(this.level * 2000, 0.75)),
+            required: findNiceIntegerValue(1000 + Math.pow(this.level * 2000, 0.8)),
             reward: enumHubGoalRewards.no_reward_freeplay,
         };
     }
