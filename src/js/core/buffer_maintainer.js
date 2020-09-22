@@ -86,8 +86,7 @@ export class BufferMaintainer {
         // Make sure our backlog never gets too big
         clearBufferBacklog();
 
-        // @ts-ignore
-        if (G_IS_DEV && false) {
+        if (G_IS_DEV) {
             const bufferStats = getBufferStats();
             const mbUsed = round1Digit(bufferStats.vramUsage / (1024 * 1024));
             logger.log(
