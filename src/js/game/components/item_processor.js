@@ -1,7 +1,6 @@
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
-import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {

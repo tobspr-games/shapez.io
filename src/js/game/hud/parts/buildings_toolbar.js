@@ -13,6 +13,7 @@ import { MetaLeverBuilding } from "../../buildings/lever";
 import { MetaFilterBuilding } from "../../buildings/filter";
 import { MetaDisplayBuilding } from "../../buildings/display";
 import { MetaReaderBuilding } from "../../buildings/reader";
+import {MetaPortableHubBuilding} from "../../buildings/portable_hub";
 
 const supportedBuildings = [
     MetaBeltBaseBuilding,
@@ -29,6 +30,7 @@ const supportedBuildings = [
     MetaFilterBuilding,
     MetaDisplayBuilding,
     MetaReaderBuilding,
+    MetaPortableHubBuilding,
 ];
 
 export class HUDBuildingsToolbar extends HUDBaseToolbar {

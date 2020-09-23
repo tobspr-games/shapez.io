@@ -65,6 +65,8 @@ export const KEYMAPPINGS = {
         constant_signal: { keyCode: key("3") },
         logic_gate: { keyCode: key("4") },
         virtual_processor: { keyCode: key("5") },
+
+        portable_hub: { keyCode: key("P") },
     },
 
     placement: {

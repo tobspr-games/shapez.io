@@ -637,6 +637,11 @@ buildings:
             name: Compare
             description: Returns true if both items are exactly equal. Can compare shapes, items and booleans.
 
+    portable_hub:
+        default:
+            name: &portable_hub Portable hub
+            description: Like the hub but mini
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -956,6 +961,7 @@ keybindings:
         wire_tunnel: *wire_tunnel
         display: *display
         reader: *reader
+        portable_hub: *portable_hub
         # ---
 
         pipette: Pipette

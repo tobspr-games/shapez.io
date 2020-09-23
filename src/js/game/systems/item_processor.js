@@ -116,10 +116,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 // Check the network value at the given slot
                 const network = pinsComp.slots[slotIndex - 1].linkedNetwork;
                 const slotIsEnabled = network && isTruthyItem(network.currentValue);
-                if (!slotIsEnabled) {
-                    return false;
-                }
-                return true;
+                return slotIsEnabled;
+
             }
 
             case enumItemProcessorRequirements.filter: {
@@ -523,9 +521,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // HUB
             case enumItemProcessorTypes.hub: {
                 trackProduction = false;
-
-                const hubComponent = entity.components.Hub;
-                assert(hubComponent, "Hub item processor has no hub component");
 
                 for (let i = 0; i < items.length; ++i) {
                     const item = /** @type {ShapeItem} */ (items[i].item);

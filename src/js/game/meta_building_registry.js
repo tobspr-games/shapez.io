@@ -23,6 +23,7 @@ import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire
 import { MetaDisplayBuilding } from "./buildings/display";
 import { MetaVirtualProcessorBuilding, enumVirtualProcessorVariants } from "./buildings/virtual_processor";
 import { MetaReaderBuilding } from "./buildings/reader";
+import {MetaPortableHubBuilding} from "./buildings/portable_hub";
 
 const logger = createLogger("building_registry");
 
@@ -47,6 +48,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaDisplayBuilding);
     gMetaBuildingRegistry.register(MetaVirtualProcessorBuilding);
     gMetaBuildingRegistry.register(MetaReaderBuilding);
+    gMetaBuildingRegistry.register(MetaPortableHubBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
@@ -136,6 +138,9 @@ export function initMetaBuildingRegistry() {
 
     // Reader
     registerBuildingVariant(49, MetaReaderBuilding);
+
+    // Portable hub
+    registerBuildingVariant(50, MetaPortableHubBuilding);
 
     // Propagate instances
     for (const key in gBuildingVariants) {
