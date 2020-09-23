@@ -584,7 +584,7 @@
 	"spriteSourceSize": {"x":13,"y":0,"w":261,"h":144},
 	"sourceSize": {"w":288,"h":144}
 },
-"sprites/blueprints/trash-storage.png":
+"sprites/blueprints/storage.png":
 {
 	"frame": {"x":4,"y":1001,"w":250,"h":288},
 	"rotated": false,
@@ -992,7 +992,7 @@
 	"spriteSourceSize": {"x":14,"y":0,"w":260,"h":143},
 	"sourceSize": {"w":288,"h":144}
 },
-"sprites/buildings/trash-storage.png":
+"sprites/buildings/storage.png":
 {
 	"frame": {"x":4,"y":1295,"w":248,"h":288},
 	"rotated": false,
@@ -1551,6 +1551,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "0.75",
-	"smartupdate": "$TexturePacker:SmartUpdate:c57f50d18c59efc0edbd4a3a732323a4:3fcf23da2ddc6370c437cf41f6d44ed0:908b89f5ca8ff73e331a35a3b14d0604$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5aa559a5b0e7b321ad8bc0595f1e8ec0:3fcf23da2ddc6370c437cf41f6d44ed0:908b89f5ca8ff73e331a35a3b14d0604$"
 }
 }

@@ -557,8 +557,9 @@ buildings:
             name: &trash Trash
             description: Accepts inputs from all sides and destroys them. Forever.
 
-        storage:
-            name: Storage
+    storage:
+        default:
+            name: &storage Storage
             description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
 
     wire:
@@ -726,7 +727,9 @@ storyRewards:
 
     reward_storage:
         title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows you to store items up to a given capacity!
+        desc: >-
+            You have unlocked the <strong>storage</strong> building - It allows you to store items up to a given capacity!<br><br>
+            It priorities the left output, so you can also use it as an <strong>overflow gate</strong>!
 
     reward_blueprints:
         title: Blueprints
@@ -1030,6 +1033,7 @@ keybindings:
         mixer: *mixer
         painter: *painter
         trash: *trash
+        storage: *storage
         wire: *wire
         constant_signal: *constant_signal
         logic_gate: *logic_gate
@@ -1038,6 +1042,7 @@ keybindings:
         wire_tunnel: *wire_tunnel
         display: *display
         reader: *reader
+        virtual_processor: *virtual_processor
         # ---
 
         pipette: Pipette

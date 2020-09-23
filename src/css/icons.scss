@@ -1,5 +1,5 @@
 $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, trash, underground_belt, wire,
-    constant_signal, logic_gate, lever, filter, wire_tunnel, display, virtual_processor, reader;
+    constant_signal, logic_gate, lever, filter, wire_tunnel, display, virtual_processor, reader, storage;
 
 @each $building in $buildings {
     [data-icon="building_icons/#{$building}.png"] {
@@ -9,7 +9,7 @@ $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, tra
 
 $buildingsAndVariants: belt, balancer, balancer-merger, balancer-splitter, underground_belt,
     underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, rotater-fl,
-    stacker, mixer, painter, painter-double, painter-quad, trash, trash-storage;
+    stacker, mixer, painter, painter-double, painter-quad, trash, storage;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
         background-image: uiResource("res/ui/building_tutorials/#{$building}.png") !important;

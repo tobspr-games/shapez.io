@@ -13,6 +13,7 @@ import { MetaStackerBuilding } from "../../buildings/stacker";
 import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { HUDBaseToolbar } from "./base_toolbar";
+import { MetaStorageBuilding } from "../../buildings/storage";
 
 const supportedBuildings = [
     MetaBeltBuilding,
@@ -25,6 +26,7 @@ const supportedBuildings = [
     MetaMixerBuilding,
     MetaPainterBuilding,
     MetaTrashBuilding,
+    MetaStorageBuilding,
     MetaLeverBuilding,
     MetaFilterBuilding,
     MetaDisplayBuilding,
