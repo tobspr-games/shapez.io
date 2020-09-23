@@ -579,12 +579,12 @@ buildings:
     constant_signal:
         default:
             name: &constant_signal Constant Signal
-            description: Emits a constant signal (shape, color or boolean).
+            description: Emits a constant signal, which can be either a shape, color or boolean.
 
     lever:
         default:
             name: &lever Switch
-            description: Can be toggled to emit 1 / 0
+            description: Can be toggled to emit a boolean signal, which can then be used to control for example an item filter.
 
     logic_gate:
         default:
@@ -607,14 +607,12 @@ buildings:
     filter:
         default:
             name: &filter Filter
-            # TEMP
-            description: Only allows through items which match exactly the provided shape / color. If you put in a boolean 1, it allows everything through, if you put in a 0 it will allow nothing through.
+            description: Connect with a signal to route all matching items to the top and the remaining to the right. Can be controlled with boolean signals too.
 
     display:
         default:
             name: &display Display
-            # TEMP
-            description: Can be connected on the wires layer to show a color or shape. When inputting a boolean item, the display will be white if the value is 1.
+            description: Connect a signal to show it on the display! It can be a shape, color or boolean.
 
     reader:
         default:
@@ -703,7 +701,7 @@ storyRewards:
     reward_splitter:
         title: Compact Splitter
         desc: >-
-            You have unlocked a merger variant of the <strong>balancer</strong> - It accepts one input and splits them into two!
+            You have unlocked a splitter variant of the <strong>balancer</strong> - It accepts one input and splits them into two!
 
     reward_belt_reader:
         title: Belt reader

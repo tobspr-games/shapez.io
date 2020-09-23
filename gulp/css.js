@@ -72,7 +72,8 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
             )
             .pipe($.rename("async-resources.css"))
             .pipe($.postcss(postcssPlugins(isProd, { cachebust })))
-            .pipe(gulp.dest(buildFolder));
+            .pipe(gulp.dest(buildFolder))
+            .pipe(browserSync.stream());
     }
 
     // Builds the css resources
@@ -104,7 +105,8 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
                 ])
             )
             .pipe($.postcss(postcssPlugins(isProd, { cachebust })))
-            .pipe(gulp.dest(buildFolder));
+            .pipe(gulp.dest(buildFolder))
+            .pipe(browserSync.stream());
     }
 
     // Builds the css main

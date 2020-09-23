@@ -344,10 +344,14 @@
                     align-self: center;
                     justify-self: center;
                     @include IncreasedClickArea(0px);
+                    background: #44484a center center / 40% no-repeat;
+                }
 
+                button.resumeGame {
+                    background-color: #44484a;
                     & {
                         /* @load-async */
-                        background: #44484a uiResource("icons/play.png") center center / 40% no-repeat;
+                        background-image: uiResource("icons/play.png");
                     }
                 }
 

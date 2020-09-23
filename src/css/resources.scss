@@ -10,7 +10,8 @@ $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, tra
 
 $buildingsAndVariants: belt, balancer, balancer-merger, balancer-splitter, underground_belt,
     underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, rotater-fl,
-    stacker, mixer, painter, painter-double, painter-quad, trash, storage, reader;
+    stacker, mixer, painter, painter-double, painter-quad, trash, storage, reader, rotater-rotate180, lever,
+    display, constant_signal;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
         /* @load-async */
@@ -32,6 +33,10 @@ $buildingsAndVariants: belt, balancer, balancer-merger, balancer-splitter, under
 [data-icon="building_tutorials/balancer-splitter-inverse.png"] {
     /* @load-async */
     background-image: uiResource("res/ui/building_tutorials/balancer-splitter.png") !important;
+}
+[data-icon="building_tutorials/filter.png"] {
+    /* @load-async */
+    background-image: uiResource("res/ui/building_tutorials/lever.png") !important;
 }
 
 $icons: notification_saved, notification_success, notification_upgrade;
