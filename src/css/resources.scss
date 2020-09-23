@@ -9,9 +9,9 @@ $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, tra
 }
 
 $buildingsAndVariants: belt, balancer, balancer-merger, balancer-splitter, underground_belt,
-    underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, rotater-fl,
-    stacker, mixer, painter, painter-double, painter-quad, trash, storage, reader, rotater-rotate180, lever,
-    display, constant_signal;
+    underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, stacker, mixer,
+    painter, painter-double, painter-quad, trash, storage, reader, rotater-rotate180, lever, display,
+    constant_signal;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
         /* @load-async */
