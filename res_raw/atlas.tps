@@ -421,8 +421,9 @@
                 <false/>
             </struct>
             <key type="filename">sprites/blueprints/painter-double.png</key>
-            <key type="filename">sprites/blueprints/trash-storage.png</key>
+            <key type="filename">sprites/blueprints/storage.png</key>
             <key type="filename">sprites/buildings/painter-double.png</key>
+            <key type="filename">sprites/buildings/storage.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -489,21 +490,6 @@
                 <rect>32,32,64,64</rect>
                 <key>scale9Paddings</key>
                 <rect>32,32,64,64</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/buildings/trash-storage.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>144,144,288,288</rect>
-                <key>scale9Paddings</key>
-                <rect>144,144,288,288</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
