@@ -123,13 +123,6 @@ export class DisplaySystem extends GameSystemWithFilter {
 
             const origin = entity.components.StaticMapEntity.origin;
             if (value instanceof ColorItem) {
-                this.displaySprites[value.color].drawCachedCentered(
-                    parameters,
-                    (origin.x + 0.5) * globalConfig.tileSize,
-                    (origin.y + 0.5) * globalConfig.tileSize,
-                    globalConfig.tileSize
-                );
-
                 parameters.context.fillStyle = enumColorsToHexCode[value.color];
                 parameters.context.fillRect(
                     origin.x * globalConfig.tileSize,
