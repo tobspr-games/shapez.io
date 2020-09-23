@@ -4,6 +4,7 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { DisplayComponent } from "../components/display";
+import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaDisplayBuilding extends MetaBuilding {
     constructor() {
@@ -18,8 +19,7 @@ export class MetaDisplayBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display);
     }
 
     getDimensions() {

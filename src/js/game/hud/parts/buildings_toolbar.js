@@ -15,28 +15,28 @@ import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaStorageBuilding } from "../../buildings/storage";
 
-const supportedBuildings = [
-    MetaBeltBuilding,
-    MetaBalancerBuilding,
-    MetaUndergroundBeltBuilding,
-    MetaMinerBuilding,
-    MetaCutterBuilding,
-    MetaRotaterBuilding,
-    MetaStackerBuilding,
-    MetaMixerBuilding,
-    MetaPainterBuilding,
-    MetaTrashBuilding,
-    MetaStorageBuilding,
-    MetaLeverBuilding,
-    MetaFilterBuilding,
-    MetaDisplayBuilding,
-    MetaReaderBuilding,
-];
-
 export class HUDBuildingsToolbar extends HUDBaseToolbar {
     constructor(root) {
         super(root, {
-            supportedBuildings,
+            primaryBuildings: [
+                MetaBeltBuilding,
+                MetaBalancerBuilding,
+                MetaUndergroundBeltBuilding,
+                MetaMinerBuilding,
+                MetaCutterBuilding,
+                MetaRotaterBuilding,
+                MetaStackerBuilding,
+                MetaMixerBuilding,
+                MetaPainterBuilding,
+                MetaTrashBuilding,
+            ],
+            secondaryBuildings: [
+                MetaStorageBuilding,
+                MetaLeverBuilding,
+                MetaFilterBuilding,
+                MetaDisplayBuilding,
+                MetaReaderBuilding,
+            ],
             visibilityCondition: () =>
                 !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "regular",
             htmlElementId: "ingame_HUD_buildings_toolbar",

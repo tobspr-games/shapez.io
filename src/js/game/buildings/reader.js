@@ -8,6 +8,7 @@ import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 import { BeltReaderComponent } from "../components/belt_reader";
+import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaReaderBuilding extends MetaBuilding {
     constructor() {
@@ -22,8 +23,7 @@ export class MetaReaderBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_belt_reader);
     }
 
     getDimensions() {
