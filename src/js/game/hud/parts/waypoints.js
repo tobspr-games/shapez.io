@@ -319,9 +319,7 @@ export class HUDWaypoints extends BaseHUDPart {
         this.waypoints.push({
             label,
             center: { x: position.x, y: position.y },
-            // Make sure the zoom is *just* a bit above the zoom level where the map overview
-            // starts, so you always see all buildings
-            zoomLevel: Math.max(this.root.camera.zoomLevel, globalConfig.mapChunkOverviewMinZoom + 0.05),
+            zoomLevel: this.root.camera.zoomLevel,
         });
 
         this.sortWaypoints();

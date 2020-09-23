@@ -612,7 +612,7 @@ buildings:
     display:
         default:
             name: &display Display
-            description: Connect a signal to show it on the display! It can be a shape, color or boolean.
+            description: Connect a signal to show it on the display - It can be a shape, color or boolean.
 
     reader:
         default:
