@@ -45,7 +45,7 @@ export const enumHubGoalRewardsToContentUnlocked = {
     [enumHubGoalRewards.reward_cutter_quad]: typed([[MetaCutterBuilding, enumCutterVariants.quad]]),
     [enumHubGoalRewards.reward_painter_double]: typed([[MetaPainterBuilding, enumPainterVariants.double]]),
     [enumHubGoalRewards.reward_painter_quad]: typed([[MetaPainterBuilding, enumPainterVariants.quad]]),
-    [enumHubGoalRewards.reward_storage]: typed([[MetaStorageBuilding]]),
+    [enumHubGoalRewards.reward_storage]: typed([[MetaStorageBuilding, defaultBuildingVariant]]),
 
     [enumHubGoalRewards.reward_belt_reader]: typed([[MetaReaderBuilding, defaultBuildingVariant]]),
     [enumHubGoalRewards.reward_display]: typed([[MetaDisplayBuilding, defaultBuildingVariant]]),

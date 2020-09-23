@@ -122,12 +122,15 @@
                 opacity: 0.7;
                 @include S(width, 20px);
                 @include S(height, 20px);
-                background: uiResource("icons/close.png") center center / 80% no-repeat;
                 cursor: pointer;
                 pointer-events: all;
                 transition: opacity 0.2s ease-in-out;
                 &:hover {
                     opacity: 0.4;
+                }
+                & {
+                    /* @load-async */
+                    background: uiResource("icons/close.png") center center / 80% no-repeat;
                 }
             }
         }

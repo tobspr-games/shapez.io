@@ -203,7 +203,10 @@ export function initBuildingCodesAfterResourcesLoaded() {
             variant.rotationVariant,
             variant.variant
         );
-        variant.silhouetteColor = variant.metaInstance.getSilhouetteColor();
+        variant.silhouetteColor = variant.metaInstance.getSilhouetteColor(
+            variant.variant,
+            variant.rotationVariant
+        );
     }
 
     // Update caches

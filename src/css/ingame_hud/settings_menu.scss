@@ -39,22 +39,28 @@
             background: transparent;
             filter: invert(1);
 
-            background: uiResource("icons/settings_menu_play.png") center top / contain no-repeat;
             content: "";
             opacity: 0.8;
             @include S(width, 35px);
             @include S(height, 35px);
 
             &.settings {
+                /* @load-async */
                 background-image: uiResource("icons/settings_menu_settings.png");
             }
 
             &.menu {
+                /* @load-async */
                 background-image: uiResource("icons/settings_menu_exit.png");
             }
 
             &:hover {
                 opacity: 0.6;
+            }
+
+            & {
+                /* @load-async */
+                background: uiResource("icons/settings_menu_play.png") center top / contain no-repeat;
             }
         }
     }

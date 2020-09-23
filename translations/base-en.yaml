@@ -560,7 +560,7 @@ buildings:
     storage:
         default:
             name: &storage Storage
-            description: Stores excess items, up to a given capacity. Can be used as an overflow gate.
+            description: Stores excess items, up to a given capacity. Prioritizes the left output and can be used as an overflow gate.
 
     wire:
         default:
@@ -619,8 +619,7 @@ buildings:
     reader:
         default:
             name: &reader Belt Reader
-            # TEMP
-            description: Allows to read the current item from a belt, as well as measuring the throughput.
+            description: Allows to measure belt throughput. Outputs the last read item on the wires layer (once unlocked).
 
     virtual_processor:
         default:
@@ -671,8 +670,8 @@ storyRewards:
         desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
 
     reward_stacker:
-        title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        title: Stacker
+        desc: You can now combine shapes with the <strong>stacker</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
 
     reward_balancer:
         title: Balancer
@@ -712,7 +711,7 @@ storyRewards:
             You have now unlocked the <strong>belt reader</strong>! It allows you to measure the throughput of a belt.<br><br>And wait until you unlock wires - then it gets really useful!
 
     reward_cutter_quad:
-        title: Quad Cutting
+        title: Quad Cutter
         desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
 
     reward_painter_double:
