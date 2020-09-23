@@ -174,8 +174,10 @@ export class MetaBuilding {
 
     /**
      * Should return a silhouette color for the map overview or null if not set
+     * @param {string} variant
+     * @param {number} rotationVariant
      */
-    getSilhouetteColor() {
+    getSilhouetteColor(variant, rotationVariant) {
         return null;
     }
 

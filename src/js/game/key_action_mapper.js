@@ -54,6 +54,7 @@ export const KEYMAPPINGS = {
         mixer: { keyCode: key("8") },
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
+        storage: { keyCode: key("I") },
 
         lever: { keyCode: key("L") },
         filter: { keyCode: key("B") },
@@ -352,6 +353,13 @@ export class KeyActionMapper {
                 }
 
                 this.keybindings[key] = new Keybinding(this, this.root.app, payload);
+
+                if (G_IS_DEV) {
+                    // Sanity
+                    if (!T.keybindings.mappings[key]) {
+                        assertAlways(false, "Keybinding " + key + " has no translation!");
+                    }
+                }
             }
         }
 

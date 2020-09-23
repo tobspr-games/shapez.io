@@ -22,7 +22,10 @@
             @include S(height, 25px);
             pointer-events: all;
             cursor: pointer;
-            background: uiResource("icons/main_menu_settings.png") center center / contain no-repeat;
+            & {
+                /* @load-async */
+                background: uiResource("icons/main_menu_settings.png") center center / contain no-repeat;
+            }
             transition: opacity 0.12s ease-in-out;
             @include IncreasedClickArea(2px);
             opacity: 0.7;
@@ -32,6 +35,7 @@
         }
 
         .exitAppButton {
+            /* @load-async */
             background-image: uiResource("icons/main_menu_exit.png");
             background-size: 90%;
         }
@@ -129,8 +133,10 @@
                 width: 100%;
                 @include S(height, 40px);
                 @include S(width, 180px);
-
-                background: #171a23 uiResource("get_on_steam.png") center center / contain no-repeat;
+                & {
+                    /* @load-async */
+                    background: #171a23 uiResource("get_on_steam.png") center center / contain no-repeat;
+                }
                 overflow: hidden;
                 display: block;
                 text-indent: -999em;
@@ -167,7 +173,10 @@
             @include S(margin, 10px, 0);
             @include S(width, 100px);
             @include S(height, 30px);
-            background: uiResource("demo_badge.png") center center / contain no-repeat;
+            & {
+                /* @load-async */
+                background: uiResource("demo_badge.png") center center / contain no-repeat;
+            }
             display: inline-block;
         }
 
@@ -335,14 +344,26 @@
                     align-self: center;
                     justify-self: center;
                     @include IncreasedClickArea(0px);
-                    background: #44484a uiResource("icons/play.png") center center / 40% no-repeat;
+                    background: #44484a center center / 40% no-repeat;
+                }
+
+                button.resumeGame {
+                    background-color: #44484a;
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("icons/play.png");
+                    }
                 }
 
                 button.downloadGame {
                     grid-column: 3 / 4;
                     grid-row: 1 / 2;
                     background-color: transparent;
-                    background-image: uiResource("icons/download.png");
+
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("icons/download.png");
+                    }
                     @include S(width, 15px);
                     @include IncreasedClickArea(0px);
                     @include S(height, 15px);
@@ -362,7 +383,11 @@
                     grid-row: 2 / 3;
                     background-color: transparent;
                     @include IncreasedClickArea(0px);
-                    background-image: uiResource("icons/delete.png");
+
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("icons/delete.png");
+                    }
                     @include S(width, 15px);
                     @include S(height, 15px);
                     align-self: end;
@@ -379,7 +404,11 @@
                 button.renameGame {
                     background-color: transparent;
                     @include IncreasedClickArea(2px);
-                    background-image: uiResource("icons/edit_key.png");
+
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("icons/edit_key.png");
+                    }
                     @include S(width, 10px);
                     @include S(height, 10px);
                     align-self: center;
@@ -445,7 +474,11 @@
             grid-template-columns: 1fr auto;
 
             justify-content: center;
-            background: $linkBg uiResource("icons/link.png") top D(3px) right D(3px) / D(9px) no-repeat;
+
+            & {
+                /* @load-async */
+                background: $linkBg uiResource("icons/link.png") top D(3px) right D(3px) / D(9px) no-repeat;
+            }
             @include S(padding, 5px);
             @include S(padding-left, 10px);
             @include S(border-radius, $globalBorderRadius);
@@ -472,9 +505,11 @@
                 @include S(height, 50px);
                 background: center center / 80% no-repeat;
                 &.githubLogo {
+                    /* @load-async */
                     background-image: uiResource("main_menu/github.png");
                 }
                 &.discordLogo {
+                    /* @load-async */
                     background-image: uiResource("main_menu/discord.png");
                     background-size: 95%;
                 }
@@ -516,12 +551,15 @@
                 transition: background-color 0.12s ease-in-out;
 
                 &.redditLink {
+                    /* @load-async */
                     background-image: uiResource("main_menu/reddit.svg");
                 }
                 &.changelog {
+                    /* @load-async */
                     background-image: uiResource("main_menu/changelog.svg");
                 }
                 &.helpTranslate {
+                    /* @load-async */
                     background-image: uiResource("main_menu/translate.svg");
                 }
             }

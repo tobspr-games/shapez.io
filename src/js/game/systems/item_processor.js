@@ -94,6 +94,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     for (let j = 0; j < itemsToEject.length; ++j) {
                         const { item, requiredSlot, preferredSlot } = itemsToEject[j];
 
+                        assert(ejectorComp, "To eject items, the building needs to have an ejector");
+
                         let slot = null;
                         if (requiredSlot !== null && requiredSlot !== undefined) {
                             // We have a slot override, check if that is free
@@ -306,6 +308,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_BALANCER(payload) {
+        assert(
+            payload.entity.components.ItemEjector,
+            "To be a balancer, the building needs to have an ejector"
+        );
         const availableSlots = payload.entity.components.ItemEjector.slots.length;
         const processorComp = payload.entity.components.ItemProcessor;
 

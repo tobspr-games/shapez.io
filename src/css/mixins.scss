@@ -257,53 +257,6 @@ button,
 }
 
 // ----------------------------------------
-/* Shine animation prefab, useful for buttons etc. Adds a bright shine which moves over
-  the button like a reflection. Performance heavy. */
-@mixin ShineAnimation($duration, $bgColor, $w: 200px, $shineAlpha: 0.25, $lightenAmount: 7, $bgAnim: true) {
-    $bgBase: darken($bgColor, 5);
-    background-color: $bgBase;
-
-    @include HighQualityOrMore {
-        position: relative;
-        // overflow: hidden;
-        // overflow: visible;
-
-        &:before {
-            content: " ";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: uiResource("misc/shine_bg.png") 0px center / 100% 100% no-repeat;
-
-            @include InlineAnimation($duration ease-in-out infinite) {
-                0% {
-                    background-position-x: #{D(-$w)};
-                }
-                100% {
-                    background-position-x: #{D($w)};
-                }
-            }
-        }
-
-        @if ($bgAnim) {
-            @include InlineAnimation($duration ease-in-out infinite) {
-                0% {
-                    background-color: $bgBase;
-                }
-                50% {
-                    background-color: lighten($bgBase, $lightenAmount);
-                }
-                100% {
-                    background-color: $bgBase;
-                }
-            }
-        }
-    }
-}
-
-// ----------------------------------------
 /* String replacement */
 @function str-replace($string, $search, $replace: "") {
     $index: str-index($string, $search);

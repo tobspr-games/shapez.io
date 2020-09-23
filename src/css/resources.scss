@@ -1,17 +1,20 @@
 $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, trash, underground_belt, wire,
-    constant_signal, logic_gate, lever, filter, wire_tunnel, display, virtual_processor, reader;
+    constant_signal, logic_gate, lever, filter, wire_tunnel, display, virtual_processor, reader, storage;
 
 @each $building in $buildings {
     [data-icon="building_icons/#{$building}.png"] {
+        /* @load-async */
         background-image: uiResource("res/ui/building_icons/#{$building}.png") !important;
     }
 }
 
 $buildingsAndVariants: belt, balancer, balancer-merger, balancer-splitter, underground_belt,
-    underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, rotater-fl,
-    stacker, mixer, painter, painter-double, painter-quad, trash, trash-storage;
+    underground_belt-tier2, miner, miner-chainable, cutter, cutter-quad, rotater, rotater-ccw, stacker, mixer,
+    painter, painter-double, painter-quad, trash, storage, reader, rotater-rotate180, lever, display,
+    constant_signal;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
+        /* @load-async */
         background-image: uiResource("res/ui/building_tutorials/#{$building}.png") !important;
     }
 }
@@ -20,18 +23,26 @@ $buildingsAndVariants: belt, balancer, balancer-merger, balancer-splitter, under
 
 // Special cases for mirrored vairants
 [data-icon="building_tutorials/painter-mirrored.png"] {
+    /* @load-async */
     background-image: uiResource("res/ui/building_tutorials/painter.png") !important;
 }
 [data-icon="building_tutorials/balancer-merger-inverse.png"] {
+    /* @load-async */
     background-image: uiResource("res/ui/building_tutorials/balancer-merger.png") !important;
 }
 [data-icon="building_tutorials/balancer-splitter-inverse.png"] {
+    /* @load-async */
     background-image: uiResource("res/ui/building_tutorials/balancer-splitter.png") !important;
+}
+[data-icon="building_tutorials/filter.png"] {
+    /* @load-async */
+    background-image: uiResource("res/ui/building_tutorials/lever.png") !important;
 }
 
 $icons: notification_saved, notification_success, notification_upgrade;
 @each $icon in $icons {
     [data-icon="icons/#{$icon}.png"] {
+        /* @load-async */
         background-image: uiResource("res/ui/icons/#{$icon}.png") !important;
     }
 }
@@ -41,6 +52,7 @@ $languages: en, de, cs, da, et, es-419, fr, it, pt-BR, sv, tr, el, ru, uk, zh-TW
 
 @each $language in $languages {
     [data-languageicon="#{$language}"] {
+        /* @load-async */
         background-image: uiResource("languages/#{$language}.svg") !important;
     }
 }

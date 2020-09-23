@@ -9,7 +9,7 @@ import { enumPainterVariants, MetaPainterBuilding } from "./buildings/painter";
 import { enumRotaterVariants, MetaRotaterBuilding } from "./buildings/rotater";
 import { enumBalancerVariants, MetaBalancerBuilding } from "./buildings/balancer";
 import { MetaStackerBuilding } from "./buildings/stacker";
-import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
+import { MetaTrashBuilding } from "./buildings/trash";
 import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
 import { MetaWireBuilding } from "./buildings/wire";
 import { buildBuildingCodeCache, gBuildingVariants, registerBuildingVariant } from "./building_codes";
@@ -22,6 +22,9 @@ import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire
 import { MetaDisplayBuilding } from "./buildings/display";
 import { MetaVirtualProcessorBuilding, enumVirtualProcessorVariants } from "./buildings/virtual_processor";
 import { MetaReaderBuilding } from "./buildings/reader";
+import { MetaStorageBuilding } from "./buildings/storage";
+import { KEYMAPPINGS } from "./key_action_mapper";
+import { T } from "../translations";
 
 const logger = createLogger("building_registry");
 
@@ -34,6 +37,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaMixerBuilding);
     gMetaBuildingRegistry.register(MetaPainterBuilding);
     gMetaBuildingRegistry.register(MetaTrashBuilding);
+    gMetaBuildingRegistry.register(MetaStorageBuilding);
     gMetaBuildingRegistry.register(MetaBeltBuilding);
     gMetaBuildingRegistry.register(MetaUndergroundBeltBuilding);
     gMetaBuildingRegistry.register(MetaHubBuilding);
@@ -86,7 +90,9 @@ export function initMetaBuildingRegistry() {
 
     // Trash
     registerBuildingVariant(20, MetaTrashBuilding);
-    registerBuildingVariant(21, MetaTrashBuilding, enumTrashVariants.storage);
+
+    // Storage
+    registerBuildingVariant(21, MetaStorageBuilding);
 
     // Underground belt
     registerBuildingVariant(22, MetaUndergroundBeltBuilding, defaultBuildingVariant, 0);
@@ -157,6 +163,29 @@ export function initMetaBuildingRegistry() {
         }
     }
 
+    // Check for valid keycodes
+    if (G_IS_DEV) {
+        gMetaBuildingRegistry.entries.forEach(metaBuilding => {
+            const id = metaBuilding.getId();
+            if (!["hub"].includes(id)) {
+                if (!KEYMAPPINGS.buildings[id]) {
+                    assertAlways(
+                        false,
+                        "Building " + id + " has no keybinding assigned! Add it to key_action_mapper.js"
+                    );
+                }
+
+                if (!T.buildings[id]) {
+                    assertAlways(false, "Translation for building " + id + " missing!");
+                }
+
+                if (!T.buildings[id].default) {
+                    assertAlways(false, "Translation for building " + id + " missing (default variant)!");
+                }
+            }
+        });
+    }
+
     logger.log("Registered", gMetaBuildingRegistry.getNumEntries(), "buildings");
     logger.log("Registered", Object.keys(gBuildingVariants).length, "building codes");
 }
@@ -174,7 +203,10 @@ export function initBuildingCodesAfterResourcesLoaded() {
             variant.rotationVariant,
             variant.variant
         );
-        variant.silhouetteColor = variant.metaInstance.getSilhouetteColor();
+        variant.silhouetteColor = variant.metaInstance.getSilhouetteColor(
+            variant.variant,
+            variant.rotationVariant
+        );
     }
 
     // Update caches

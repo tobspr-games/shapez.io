@@ -26,9 +26,11 @@
             @include S(height, 30px);
             @include S(margin-right, 10px);
             @include S(margin-left, -5px);
-            background: uiResource("icons/state_back_button.png") center center / 70% no-repeat;
+            & {
+                /* @load-async */
+                background: uiResource("icons/state_back_button.png") center center / 70% no-repeat;
+            }
         }
-
         @include S(margin-bottom, 20px);
     }
 

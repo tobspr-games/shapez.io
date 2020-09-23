@@ -77,7 +77,6 @@
         > .infoButton {
             @include S(width, 8px);
             @include S(height, 8px);
-            background: uiResource("icons/info_button.png") center center / 95% no-repeat;
             position: absolute;
             opacity: 0.7;
             @include S(top, 13px);
@@ -89,6 +88,11 @@
 
             &:hover {
                 opacity: 0.8;
+            }
+
+            & {
+                /* @load-async */
+                background: uiResource("icons/info_button.png") center center / 95% no-repeat;
             }
         }
 
@@ -107,11 +111,13 @@
 
             &.goal .amountLabel {
                 &::after {
+                    /* @load-async */
                     background-image: uiResource("icons/current_goal_marker.png");
                     background-size: 90%;
                 }
                 @include DarkThemeOverride {
                     &::after {
+                        /* @load-async */
                         background-image: uiResource("icons/current_goal_marker_inverted.png") !important;
                     }
                 }
@@ -119,11 +125,13 @@
 
             &.blueprint .amountLabel {
                 &::after {
+                    /* @load-async */
                     background-image: uiResource("icons/blueprint_marker.png");
                     background-size: 90%;
                 }
                 @include DarkThemeOverride {
                     &::after {
+                        /* @load-async */
                         background-image: uiResource("icons/blueprint_marker_inverted.png") !important;
                     }
                 }

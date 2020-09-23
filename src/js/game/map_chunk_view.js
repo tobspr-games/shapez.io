@@ -170,7 +170,10 @@ export class MapChunkView extends MapChunk {
                             );
                         }
 
-                        context.fillStyle = metaBuilding.getSilhouetteColor();
+                        context.fillStyle = metaBuilding.getSilhouetteColor(
+                            data.variant,
+                            data.rotationVariant
+                        );
                         for (let dx = 0; dx < 3; ++dx) {
                             for (let dy = 0; dy < 3; ++dy) {
                                 const isFilled = overlayMatrix[dx + dy * 3];
@@ -187,7 +190,10 @@ export class MapChunkView extends MapChunk {
 
                         continue;
                     } else {
-                        context.fillStyle = metaBuilding.getSilhouetteColor();
+                        context.fillStyle = metaBuilding.getSilhouetteColor(
+                            data.variant,
+                            data.rotationVariant
+                        );
                         context.fillRect(
                             x * CHUNK_OVERLAY_RES,
                             y * CHUNK_OVERLAY_RES,
@@ -256,7 +262,8 @@ export class MapChunkView extends MapChunk {
             data.variant,
             entity
         );
-        context.fillStyle = overrideColor || metaBuilding.getSilhouetteColor();
+        context.fillStyle =
+            overrideColor || metaBuilding.getSilhouetteColor(data.variant, data.rotationVariant);
         if (overlayMatrix) {
             for (let dx = 0; dx < 3; ++dx) {
                 for (let dy = 0; dy < 3; ++dy) {

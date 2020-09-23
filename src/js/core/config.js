@@ -65,13 +65,13 @@ export const globalConfig = {
 
     buildingSpeeds: {
         cutter: 1 / 4,
-        cutterQuad: 1 / 4,
+        cutterQuad: 1 / 3,
         rotater: 1 / 1,
         rotaterCCW: 1 / 1,
         rotater180: 1 / 1,
         painter: 1 / 6,
         painterDouble: 1 / 8,
-        painterQuad: 1 / 8,
+        painterQuad: 1 / 2,
         mixer: 1 / 5,
         stacker: 1 / 6,
     },

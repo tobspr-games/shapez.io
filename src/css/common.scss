@@ -391,11 +391,15 @@ canvas {
     color: #393747;
     &::after {
         content: " ";
-        background: uiResource("loading.svg") center center / contain no-repeat;
         @include S(width, 35px);
         @include S(height, 35px);
         display: inline-block;
         vertical-align: middle;
+
+        & {
+            /* @load-async */
+            background: uiResource("loading.svg") center center / contain no-repeat;
+        }
     }
 
     @include InlineAnimation(1.5s ease-in-out infinite) {
@@ -451,7 +455,6 @@ canvas {
 .prefab_InfoIcon {
     @include S(width, 25px);
     @include S(height, 25px);
-    // background: uiResource("icons_small/info.png") center center / contain no-repeat;
     z-index: 100;
     opacity: 0.8;
     cursor: pointer;
@@ -468,7 +471,6 @@ canvas {
     justify-content: center;
     flex-direction: column;
     .loadingImage {
-        background: uiResource("loading.svg") center center / #{D(40px)} no-repeat;
         width: 100%;
         display: flex;
         flex-grow: 1;
@@ -477,6 +479,11 @@ canvas {
             50% {
                 transform: scale(1.2) rotate(160deg);
             }
+        }
+
+        & {
+            /* @load-async */
+            background: uiResource("loading.svg") center center / #{D(40px)} no-repeat;
         }
     }
 

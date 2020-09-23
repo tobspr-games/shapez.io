@@ -18,12 +18,19 @@ export const enumHubGoalRewards = {
     reward_rotater_180: "reward_rotater_180",
     reward_miner_chainable: "reward_miner_chainable",
     reward_underground_belt_tier_2: "reward_underground_belt_tier_2",
+    reward_belt_reader: "reward_belt_reader",
     reward_splitter: "reward_splitter",
     reward_cutter_quad: "reward_cutter_quad",
     reward_painter_double: "reward_painter_double",
     reward_painter_quad: "reward_painter_quad",
     reward_storage: "reward_storage",
     reward_merger: "reward_merger",
+    reward_wires_filters_and_levers: "reward_wires_filters_and_levers",
+    reward_display: "reward_display",
+    reward_constant_signal: "reward_constant_signal",
+    reward_logic_gates: "reward_logic_gates",
+    reward_virtual_processing: "reward_virtual_processing",
+    reward_second_wire: "reward_second_wire",
 
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
@@ -99,11 +106,11 @@ export const tutorialGoals = [
     {
         shape: "CpCpCpCp", // belts t3
         required: 800,
-        reward: enumHubGoalRewards.reward_splitter,
+        reward: enumHubGoalRewards.reward_merger,
     },
 
     // 10
-    // Star shape + cyan
+    // STACKER: Star shape + cyan
     {
         shape: "ScScScSc", // miners t3
         required: 900,
@@ -111,7 +118,7 @@ export const tutorialGoals = [
     },
 
     // 11
-    // Stacker
+    // Chainable miner
     {
         shape: "CgScScCg", // processors t3
         required: 1000,
@@ -127,6 +134,7 @@ export const tutorialGoals = [
     },
 
     // 13
+    // Tunnel Tier 2
     {
         shape: "RpRpRpRp:CwCwCwCw", // painting t3
         required: 5000,
@@ -134,44 +142,121 @@ export const tutorialGoals = [
     },
 
     // 14
+    // Belt reader
+    {
+        // @todo
+        shape: "CuCuCuCu",
+        required: 7000,
+        reward: enumHubGoalRewards.reward_belt_reader,
+    },
+
+    // 15
+    // Storage
     {
         shape: "SrSrSrSr:CyCyCyCy", // unused
         required: 7500,
         reward: enumHubGoalRewards.reward_storage,
     },
 
-    // 15
+    // 16
+    // Quad Cutter
     {
         shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
-        required: 15000,
+        required: 12500,
         reward: enumHubGoalRewards.reward_cutter_quad,
     },
 
-    // 16
+    // 17
+    // Double painter
     {
         shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
-        required: 20000,
+        required: 15000,
         reward: enumHubGoalRewards.reward_painter_double,
     },
 
-    // 17
+    // 18
+    // Rotater (180deg)
     {
-        shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // rotater 180
-        required: 25000,
+        // @TODO
+        shape: "CuCuCuCu",
+        required: 20000,
         reward: enumHubGoalRewards.reward_rotater_180,
     },
 
-    // 18
+    // 19
+    // Compact splitter
     {
-        shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two variants)
-        required: 30000,
-        reward: enumHubGoalRewards.reward_painter_quad,
+        // @TODO
+        shape: "CuCuCuCu",
+        required: 25000,
+        reward: enumHubGoalRewards.reward_splitter,
     },
 
-    // 19
+    // 20
+    // WIRES
     {
         shape: finalGameShape,
         required: 50000,
+        reward: enumHubGoalRewards.reward_wires_filters_and_levers,
+    },
+
+    // 21
+    // Display
+    {
+        // @TODO
+        shape: "CuCuCuCu",
+        required: 25000,
+        reward: enumHubGoalRewards.reward_display,
+    },
+
+    // 22
+    // Constant signal
+    {
+        // @TODO
+        shape: "CuCuCuCu",
+        required: 30000,
+        reward: enumHubGoalRewards.reward_constant_signal,
+    },
+
+    // 23
+    // Quad Painter
+    {
+        // @TODO
+        shape: "CuCuCuCu",
+        // shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two variants)
+        required: 35000,
+        reward: enumHubGoalRewards.reward_painter_quad,
+    },
+
+    // 24 Logic gates
+    {
+        // @TODO
+        shape: "CuCuCuCu",
+        required: 40000,
+        reward: enumHubGoalRewards.reward_logic_gates,
+    },
+
+    // 25 Virtual Processing
+    {
+        // @TODO
+        shape: "CuCuCuCu",
+        required: 45000,
+        reward: enumHubGoalRewards.reward_virtual_processing,
+    },
+
+    // 26 Secondary type of wire
+    {
+        // @TODO
+        shape: "CuCuCuCu",
+        required: 50000,
+        reward: enumHubGoalRewards.reward_second_wire,
+    },
+
+    // 27 Freeplay
+    {
+        // @TODO
+        shape: "CuCuCuCu",
+        required: 100000,
         reward: enumHubGoalRewards.reward_freeplay,
     },
 ];

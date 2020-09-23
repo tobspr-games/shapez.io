@@ -11,6 +11,7 @@
 
         @include StyleBelowWidth($layoutBreak) {
             grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
         }
 
         .sidebar {
@@ -159,8 +160,11 @@
                         @include S(padding, 4px);
                         @include S(padding-right, 15px);
 
-                        background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
-                            calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
+                        & {
+                            /* @load-async */
+                            background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
+                                calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
+                        }
 
                         transition: background-color 0.12s ease-in-out;
                         &:hover {
@@ -196,7 +200,11 @@
                             // dirty but works
                             // color: #222;
                             background-color: $darkModeControlsBackground;
-                            background-image: uiResource("icons/enum_selector_white.png");
+
+                            & {
+                                /* @load-async */
+                                background-image: uiResource("icons/enum_selector_white.png");
+                            }
                             color: #ddd;
                             &:hover {
                                 background-color: darken($darkModeControlsBackground, 2);

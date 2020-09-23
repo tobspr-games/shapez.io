@@ -1,5 +1,6 @@
 import { gMetaBuildingRegistry } from "../../core/global_registries.js";
 import { createLogger } from "../../core/logging.js";
+import { enumBalancerVariants, MetaBalancerBuilding } from "../../game/buildings/balancer.js";
 import { MetaBeltBuilding } from "../../game/buildings/belt.js";
 import { enumCutterVariants, MetaCutterBuilding } from "../../game/buildings/cutter.js";
 import { MetaHubBuilding } from "../../game/buildings/hub.js";
@@ -7,9 +8,9 @@ import { enumMinerVariants, MetaMinerBuilding } from "../../game/buildings/miner
 import { MetaMixerBuilding } from "../../game/buildings/mixer.js";
 import { enumPainterVariants, MetaPainterBuilding } from "../../game/buildings/painter.js";
 import { enumRotaterVariants, MetaRotaterBuilding } from "../../game/buildings/rotater.js";
-import { enumBalancerVariants, MetaBalancerBuilding } from "../../game/buildings/balancer.js";
 import { MetaStackerBuilding } from "../../game/buildings/stacker.js";
-import { enumTrashVariants, MetaTrashBuilding } from "../../game/buildings/trash.js";
+import { MetaStorageBuilding } from "../../game/buildings/storage.js";
+import { MetaTrashBuilding } from "../../game/buildings/trash.js";
 import {
     enumUndergroundBeltVariants,
     MetaUndergroundBeltBuilding,
@@ -126,9 +127,11 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             ),
             "sprites/blueprints/painter-quad.png": findCode(MetaPainterBuilding, enumPainterVariants.quad),
 
-            // Trash / Storage
+            // Trash
             "sprites/blueprints/trash.png": findCode(MetaTrashBuilding),
-            "sprites/blueprints/trash-storage.png": findCode(MetaTrashBuilding, enumTrashVariants.storage),
+
+            // Storage
+            "sprites/blueprints/trash-storage.png": findCode(MetaStorageBuilding),
         };
     }
 

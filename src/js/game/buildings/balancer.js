@@ -7,7 +7,7 @@ import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
-import { formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 
 /** @enum {string} */
@@ -16,6 +16,14 @@ export const enumBalancerVariants = {
     mergerInverse: "merger-inverse",
     splitter: "splitter",
     splitterInverse: "splitter-inverse",
+};
+
+const overlayMatrices = {
+    [defaultBuildingVariant]: null,
+    [enumBalancerVariants.merger]: generateMatrixRotations([0, 1, 0, 0, 1, 1, 0, 1, 0]),
+    [enumBalancerVariants.mergerInverse]: generateMatrixRotations([0, 1, 0, 1, 1, 0, 0, 1, 0]),
+    [enumBalancerVariants.splitter]: generateMatrixRotations([0, 1, 0, 0, 1, 1, 0, 1, 0]),
+    [enumBalancerVariants.splitterInverse]: generateMatrixRotations([0, 1, 0, 1, 1, 0, 0, 1, 0]),
 };
 
 export class MetaBalancerBuilding extends MetaBuilding {
@@ -38,17 +46,42 @@ export class MetaBalancerBuilding extends MetaBuilding {
     }
 
     /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        const matrix = overlayMatrices[variant];
+        if (matrix) {
+            return matrix[rotation];
+        }
+        return null;
+    }
+
+    /**
      * @param {GameRoot} root
      * @param {string} variant
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.balancer);
+        let speedMultiplier = 2;
+        switch (variant) {
+            case enumBalancerVariants.merger:
+            case enumBalancerVariants.mergerInverse:
+            case enumBalancerVariants.splitter:
+            case enumBalancerVariants.splitterInverse:
+                speedMultiplier = 1;
+        }
+
+        const speed =
+            (root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.balancer) / 2) * speedMultiplier;
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
     getSilhouetteColor() {
-        return "#444";
+        return "#555759";
     }
 
     /**

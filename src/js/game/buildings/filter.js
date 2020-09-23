@@ -6,6 +6,7 @@ import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaFilterBuilding extends MetaBuilding {
     constructor() {
@@ -20,8 +21,7 @@ export class MetaFilterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_filters_and_levers);
     }
 
     getDimensions() {

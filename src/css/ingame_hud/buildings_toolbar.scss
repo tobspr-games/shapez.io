@@ -4,24 +4,13 @@
     left: 50%;
     transform: translateX(-50%);
 
-    // NOTE: This flex rule may not be necessary. Need to find out intent.
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+
     background: transparent;
     transition: transform 120ms ease-in-out;
     will-change: transform;
-
-    backdrop-filter: blur(D(3px));
-    background-color: rgba(0, 40, 80, 0.05);
-    @include S(border-radius, $globalBorderRadius);
-
-    @include DarkThemeOverride {
-        background-color: rgba(darken($darkModeGameBackground, 15), 0.4);
-
-        &#ingame_HUD_wires_toolbar {
-            background-color: rgba(darken($darkModeGameBackground, 5), 0.1);
-        }
-    }
 
     &:not(.visible) {
         transform: translateX(-50%) translateY(#{D(100px)});
@@ -30,6 +19,34 @@
     .buildings {
         display: grid;
         grid-auto-flow: column;
+        justify-items: center;
+        align-self: center;
+        grid-row: 2 / 3;
+
+        background-color: rgba(240, 241, 243, 0.5);
+        @include S(border-radius, $globalBorderRadius);
+
+        @include DarkThemeOverride {
+            background-color: rgba(darken($darkModeGameBackground, 15), 0.4);
+        }
+
+        &.secondary {
+            grid-row: 1 / 2;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            .building {
+                @include S(width, 30px);
+                @include S(height, 22px);
+                background-size: 45%;
+
+                &:not(.unlocked) {
+                    &::before {
+                        background-size: #{D(13px)};
+                    }
+                }
+            }
+        }
 
         .building {
             color: $accentColorDark;
@@ -52,14 +69,18 @@
 
                 &::before {
                     content: " ";
-                    background: uiResource("locked_building.png") center center / #{D(20px)} #{D(20px)}
-                        no-repeat;
+
                     position: absolute;
                     top: 0;
                     right: 0;
                     bottom: 0;
                     left: 0;
                     z-index: 4;
+                    & {
+                        /* @load-async */
+                        background: uiResource("locked_building.png") center center / #{D(20px)} #{D(20px)}
+                            no-repeat;
+                    }
                 }
             }
 

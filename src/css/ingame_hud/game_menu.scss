@@ -38,17 +38,26 @@
         @include DarkThemeInvert;
 
         &.shop {
-            background-image: uiResource("icons/shop.png");
             grid-column: 1;
+            & {
+                /* @load-async */
+                background-image: uiResource("icons/shop.png");
+            }
         }
 
         &.stats {
-            background-image: uiResource("icons/statistics.png");
             grid-column: 2;
+            & {
+                /* @load-async */
+                background-image: uiResource("icons/statistics.png");
+            }
         }
 
         &.save {
-            background-image: uiResource("icons/save.png");
+            & {
+                /* @load-async */
+                background-image: uiResource("icons/save.png");
+            }
             grid-column: 3;
             @include MakeAnimationWrappedEvenOdd(0.5s ease-in-out) {
                 0% {
@@ -83,8 +92,11 @@
         }
 
         &.settings {
-            background-image: uiResource("icons/settings_menu_settings.png");
             grid-column: 4;
+            & {
+                /* @load-async */
+                background-image: uiResource("icons/settings_menu_settings.png");
+            }
         }
 
         &:hover {
@@ -99,9 +111,14 @@
         &.hasBadge {
             &.shop {
                 filter: none;
-                background-image: uiResource("icons/shop_active.png");
                 opacity: 0.9;
+
+                & {
+                    /* @load-async */
+                    background-image: uiResource("icons/shop_active.png");
+                }
             }
+
             transform-origin: 50% 50%;
             @include InlineAnimation(0.8s ease-in-out infinite) {
                 50% {

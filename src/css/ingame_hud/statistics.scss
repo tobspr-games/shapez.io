@@ -39,10 +39,12 @@
             }
 
             &.displayDetailed {
+                /* @load-async */
                 background-image: uiResource("icons/display_list.png");
             }
 
             &.displayIcons {
+                /* @load-async */
                 background-image: uiResource("icons/display_icons.png");
                 background-size: #{D(11.5px)};
             }
@@ -53,7 +55,10 @@
             }
 
             &.displaySorted {
-                background-image: uiResource("icons/display_sorted.png");
+                & {
+                    /* @load-async */
+                    background-image: uiResource("icons/display_sorted.png");
+                }
                 background-size: #{D(11.5px)};
                 margin-right: 5px;
                 @include S(border-top-right-radius, $globalBorderRadius);
@@ -63,7 +68,10 @@
             }
 
             &.displayIterateUnit {
-                background-image: uiResource("icons/toggle_unit.png");
+                & {
+                    /* @load-async */
+                    background-image: uiResource("icons/toggle_unit.png");
+                }
                 opacity: 0.8;
                 @include S(padding, 1px, 0);
             }

@@ -5,7 +5,6 @@ import { BaseItem } from "../base_item";
 import { MinerComponent } from "../components/miner";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { statisticsUnitsSeconds } from "../hud/parts/statistics_handle";
 import { MapChunkView } from "../map_chunk_view";
 
 export class MinerSystem extends GameSystemWithFilter {
