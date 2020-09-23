@@ -29,13 +29,6 @@ export class UndergroundBeltComponent extends Component {
         };
     }
 
-    duplicateWithoutContents() {
-        return new UndergroundBeltComponent({
-            mode: this.mode,
-            tier: this.tier,
-        });
-    }
-
     /**
      *
      * @param {object} param0
@@ -55,7 +48,7 @@ export class UndergroundBeltComponent extends Component {
          * Used on both receiver and sender.
          * Reciever: Used to store the next item to transfer, and to block input while doing this
          * Sender: Used to store which items are currently "travelling"
-         * @type {Array<[BaseItem, number]>} Format is [Item, remaining seconds until transfer/ejection]
+         * @type {Array<[BaseItem, number]>} Format is [Item, ingame time to eject the item]
          */
         this.pendingItems = [];
 
@@ -92,8 +85,9 @@ export class UndergroundBeltComponent extends Component {
      * @param {BaseItem} item
      * @param {number} travelDistance How many tiles this item has to travel
      * @param {number} beltSpeed How fast this item travels
+     * @param {number} now Current ingame time
      */
-    tryAcceptTunneledItem(item, travelDistance, beltSpeed) {
+    tryAcceptTunneledItem(item, travelDistance, beltSpeed, now) {
         if (this.mode !== enumUndergroundBeltMode.receiver) {
             // Only receivers can accept tunneled items
             return false;
@@ -112,11 +106,7 @@ export class UndergroundBeltComponent extends Component {
         // Additionally it takes 1 tile for the acceptor which we just add on top.
         const travelDuration = (travelDistance + 1.5) / beltSpeed / globalConfig.itemSpacingOnBelts;
 
-        this.pendingItems.push([item, travelDuration]);
-
-        // Sort so we can only look at the first ones
-        this.pendingItems.sort((a, b) => a[1] - b[1]);
-
+        this.pendingItems.push([item, now + travelDuration]);
         return true;
     }
 }

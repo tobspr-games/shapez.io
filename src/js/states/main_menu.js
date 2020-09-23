@@ -17,6 +17,8 @@ import { getApplicationSettingById } from "../profile/application_settings";
 import { FormElementInput } from "../core/modal_dialog_forms";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 
+const trim = require("trim");
+
 /**
  * @typedef {import("../savegame/savegame_typedefs").SavegameMetadata} SavegameMetadata
  * @typedef {import("../profile/setting_types").EnumSetting} EnumSetting
@@ -133,7 +135,7 @@ export class MainMenuState extends GameState {
             !this.app.platformWrapper.getHasUnlimitedSavegames()
         ) {
             this.app.analytics.trackUiClick("importgame_slot_limit_show");
-            this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
+            this.showSavegameSlotLimit();
             return;
         }
 
@@ -436,7 +438,7 @@ export class MainMenuState extends GameState {
             label: null,
             placeholder: "",
             defaultValue: game.name || "",
-            validator: val => val.match(regex),
+            validator: val => val.match(regex) && trim(val).length > 0,
         });
         const dialog = new DialogWithForm({
             app: this.app,
@@ -449,7 +451,7 @@ export class MainMenuState extends GameState {
 
         // When confirmed, save the name
         dialog.buttonSignals.ok.add(() => {
-            game.name = nameInput.getValue();
+            game.name = trim(nameInput.getValue());
             this.app.savegameMgr.writeAsync();
             this.renderSavegames();
         });
@@ -488,8 +490,10 @@ export class MainMenuState extends GameState {
 
         const signals = this.dialogs.showWarning(
             T.dialogs.confirmSavegameDelete.title,
-            T.dialogs.confirmSavegameDelete.text,
-            ["delete:bad", "cancel:good"]
+            T.dialogs.confirmSavegameDelete.text
+                .replace("<savegameName>", game.name || T.mainMenu.savegameUnnamed)
+                .replace("<savegameLevel>", String(game.level)),
+            ["cancel:good", "delete:bad:timeout"]
         );
 
         signals.delete.add(() => {
@@ -522,6 +526,21 @@ export class MainMenuState extends GameState {
         });
     }
 
+    /**
+     * Shows a hint that the slot limit has been reached
+     */
+    showSavegameSlotLimit() {
+        const { getStandalone } = this.dialogs.showWarning(
+            T.dialogs.oneSavegameLimit.title,
+            T.dialogs.oneSavegameLimit.desc,
+            ["cancel:bad", "getStandalone:good"]
+        );
+        getStandalone.add(() => {
+            this.app.analytics.trackUiClick("visit_steampage_from_slot_limit");
+            this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
+        });
+    }
+
     onSettingsButtonClicked() {
         this.moveToState("SettingsState");
     }
@@ -540,7 +559,7 @@ export class MainMenuState extends GameState {
             !this.app.platformWrapper.getHasUnlimitedSavegames()
         ) {
             this.app.analytics.trackUiClick("startgame_slot_limit_show");
-            this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
+            this.showSavegameSlotLimit();
             return;
         }
 

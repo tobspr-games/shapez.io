@@ -5,6 +5,7 @@ import { enumNotificationType } from "./notifications";
 import { T } from "../../../translations";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { TrackedState } from "../../../core/tracked_state";
 
 export class HUDGameMenu extends BaseHUDPart {
     createElements(parent) {
@@ -51,18 +52,15 @@ export class HUDGameMenu extends BaseHUDPart {
          * }>} */
         this.visibilityToUpdate = [];
 
-        this.buttonsElement = makeDiv(this.element, null, ["buttonContainer"]);
-
         buttons.forEach(({ id, label, handler, keybinding, badge, notification, visible }) => {
             const button = document.createElement("button");
-            button.setAttribute("data-button-id", id);
-            this.buttonsElement.appendChild(button);
+            button.classList.add(id);
+            this.element.appendChild(button);
             this.trackClicks(button, handler);
 
             if (keybinding) {
                 const binding = this.root.keyMapper.getBinding(keybinding);
                 binding.add(handler);
-                binding.appendLabelToElement(button);
             }
 
             if (visible) {
@@ -86,10 +84,8 @@ export class HUDGameMenu extends BaseHUDPart {
             }
         });
 
-        const menuButtons = makeDiv(this.element, null, ["menuButtons"]);
-
-        this.saveButton = makeDiv(menuButtons, null, ["button", "save", "animEven"]);
-        this.settingsButton = makeDiv(menuButtons, null, ["button", "settings"]);
+        this.saveButton = makeDiv(this.element, null, ["button", "save", "animEven"]);
+        this.settingsButton = makeDiv(this.element, null, ["button", "settings"]);
 
         this.trackClicks(this.saveButton, this.startSave);
         this.trackClicks(this.settingsButton, this.openSettings);
@@ -97,11 +93,16 @@ export class HUDGameMenu extends BaseHUDPart {
 
     initialize() {
         this.root.signals.gameSaved.add(this.onGameSaved, this);
+
+        this.trackedIsSaving = new TrackedState(this.onIsSavingChanged, this);
     }
 
     update() {
         let playSound = false;
         let notifications = new Set();
+
+        // Check whether we are saving
+        this.trackedIsSaving.set(!!this.root.gameState.currentSavePromise);
 
         // Update visibility of buttons
         for (let i = 0; i < this.visibilityToUpdate.length; ++i) {
@@ -152,6 +153,10 @@ export class HUDGameMenu extends BaseHUDPart {
         notifications.forEach(([notification, type]) => {
             this.root.hud.signals.notification.dispatch(notification, type);
         });
+    }
+
+    onIsSavingChanged(isSaving) {
+        this.saveButton.classList.toggle("saving", isSaving);
     }
 
     onGameSaved() {

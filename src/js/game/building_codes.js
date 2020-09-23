@@ -26,20 +26,26 @@ export const gBuildingVariants = {
 };
 
 /**
+ * Mapping from 'metaBuildingId/variant/rotationVariant' to building code
+ * @type {Map<string, number>}
+ */
+const variantsCache = new Map();
+
+/**
  * Registers a new variant
- * @param {number} id
+ * @param {number} code
  * @param {typeof MetaBuilding} meta
  * @param {string} variant
  * @param {number} rotationVariant
  */
 export function registerBuildingVariant(
-    id,
+    code,
     meta,
     variant = "default" /* FIXME: Circular dependency, actually its defaultBuildingVariant */,
     rotationVariant = 0
 ) {
-    assert(!gBuildingVariants[id], "Duplicate id: " + id);
-    gBuildingVariants[id] = {
+    assert(!gBuildingVariants[code], "Duplicate id: " + code);
+    gBuildingVariants[code] = {
         metaClass: meta,
         variant,
         rotationVariant,
@@ -59,25 +65,31 @@ export function getBuildingDataFromCode(code) {
 }
 
 /**
+ * Builds the cache for the codes
+ */
+export function buildBuildingCodeCache() {
+    for (const code in gBuildingVariants) {
+        const data = gBuildingVariants[code];
+        const hash = data.metaInstance.getId() + "/" + data.variant + "/" + data.rotationVariant;
+        variantsCache.set(hash, +code);
+    }
+}
+
+/**
  * Finds the code for a given variant
  * @param {MetaBuilding} metaBuilding
  * @param {string} variant
  * @param {number} rotationVariant
+ * @returns {number}
  */
 export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) {
-    for (const key in gBuildingVariants) {
-        const data = gBuildingVariants[key];
-        if (
-            data.metaInstance.getId() === metaBuilding.getId() &&
-            data.variant === variant &&
-            data.rotationVariant === rotationVariant
-        ) {
-            return +key;
+    const hash = metaBuilding.getId() + "/" + variant + "/" + rotationVariant;
+    const result = variantsCache.get(hash);
+    if (G_IS_DEV) {
+        if (!result) {
+            console.warn("Known hashes:", Array.from(variantsCache.keys()));
+            assertAlways(false, "Building not found by data: " + hash);
         }
     }
-    assertAlways(
-        false,
-        "Building not found by data: " + metaBuilding.getId() + " / " + variant + " / " + rotationVariant
-    );
-    return 0;
+    return result;
 }

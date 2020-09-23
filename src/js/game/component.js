@@ -18,12 +18,10 @@ export class Component extends BasicSerializableObject {
     }
 
     /**
-     * Should duplicate the component but without its contents
-     * @returns {object}
+     * Copy the current state to another component
+     * @param {Component} otherComponent
      */
-    duplicateWithoutContents() {
-        abstract;
-    }
+    copyAdditionalStateTo(otherComponent) {}
 
     /* dev:start */
 

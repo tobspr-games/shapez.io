@@ -49,20 +49,6 @@ export class WiredPinsComponent extends Component {
         this.setSlots(slots);
     }
 
-    duplicateWithoutContents() {
-        const slots = [];
-        for (let i = 0; i < this.slots.length; ++i) {
-            const slot = this.slots[i];
-            slots.push({
-                pos: slot.pos.copy(),
-                type: slot.type,
-                direction: slot.direction,
-            });
-        }
-
-        return new WiredPinsComponent({ slots });
-    }
-
     /**
      * Sets the slots of this building
      * @param {Array<WirePinSlotDefinition>} slots

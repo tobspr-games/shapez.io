@@ -63,7 +63,11 @@ export class StaticMapEntityComponent extends Component {
         return getBuildingDataFromCode(this.code).metaInstance;
     }
 
-    duplicateWithoutContents() {
+    /**
+     * Copy the current state to another component
+     * @param {Component} otherComponent
+     */
+    copyAdditionalStateTo(otherComponent) {
         return new StaticMapEntityComponent({
             origin: this.origin.copy(),
             rotation: this.rotation,

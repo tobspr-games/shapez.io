@@ -87,7 +87,7 @@ steamPage:
 
 global:
     loading: Laden
-    error: Error
+    error: Fout
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: "."
@@ -172,7 +172,7 @@ dialogs:
         showKeybindings: Zie Sneltoetsen
 
     importSavegameError:
-        title: Importeer error
+        title: Importeerfout
         text: >-
             Het importeren van je savegame is mislukt:
 
@@ -322,7 +322,7 @@ ingame:
         # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Level <level>
         completed: Voltooid
-        unlockText: Ontgrendeld <reward>!
+        unlockText: <reward> ontgrendeld!
         buttonNextLevel: Volgende Level
 
     # Notifications on the lower right
@@ -633,9 +633,9 @@ storyRewards:
 settings:
     title: Opties
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Algemeen
+        userInterface: Opmaak
+        advanced: Geavanceerd
 
     versionBadges:
         dev: Ontwikkeling
@@ -795,8 +795,8 @@ keybindings:
         menuOpenShop: Upgrades
         menuOpenStats: Statistieken
 
-        toggleHud: Toggle HUD
-        toggleFPSInfo: Toggle FPS en Debug Info
+        toggleHud: Schakel HUD
+        toggleFPSInfo: Schakel FPS en Debug Info
         belt: *belt
         splitter: *splitter
         underground_belt: *underground_belt

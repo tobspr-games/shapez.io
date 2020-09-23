@@ -14,6 +14,21 @@
         flex-direction: column;
     }
 
+    .prefab_GameHint {
+        position: absolute;
+        @include S(bottom, 40px);
+        @include S(left, 20px);
+        @include S(right, 20px);
+        @include PlainText;
+        text-align: center;
+
+        color: #666;
+
+        @include DarkThemeOverride() {
+            color: lighten($darkModeGameBackground, 50);
+        }
+    }
+
     #ingame_Canvas {
         position: absolute;
         top: 0;

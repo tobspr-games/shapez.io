@@ -7,34 +7,57 @@ import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
-import { formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 
 /** @enum {string} */
-export const enumSplitterVariants = {
-    compact: "compact",
-    compactInverse: "compact-inverse",
-    compactMerge: "compact-merge",
-    compactMergeInverse: "compact-merge-inverse",
+export const enumBalancerVariants = {
+    merger: "merger",
+    mergerInverse: "merger-inverse",
+    splitter: "splitter",
+    splitterInverse: "splitter-inverse",
 };
 
-export class MetaSplitterBuilding extends MetaBuilding {
+const overlayMatrices = {
+    [defaultBuildingVariant]: null,
+    [enumBalancerVariants.merger]: generateMatrixRotations([0, 1, 0, 0, 1, 1, 0, 1, 0]),
+    [enumBalancerVariants.mergerInverse]: generateMatrixRotations([0, 1, 0, 1, 1, 0, 0, 1, 0]),
+    [enumBalancerVariants.splitter]: generateMatrixRotations([0, 1, 0, 0, 1, 1, 0, 1, 0]),
+    [enumBalancerVariants.splitterInverse]: generateMatrixRotations([0, 1, 0, 1, 1, 0, 0, 1, 0]),
+};
+
+export class MetaBalancerBuilding extends MetaBuilding {
     constructor() {
-        super("splitter");
+        super("balancer");
     }
 
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
                 return new Vector(2, 1);
-            case enumSplitterVariants.compact:
-            case enumSplitterVariants.compactInverse:
-            case enumSplitterVariants.compactMerge:
-            case enumSplitterVariants.compactMergeInverse:
+            case enumBalancerVariants.merger:
+            case enumBalancerVariants.mergerInverse:
+            case enumBalancerVariants.splitter:
+            case enumBalancerVariants.splitterInverse:
                 return new Vector(1, 1);
             default:
-                assertAlways(false, "Unknown splitter variant: " + variant);
+                assertAlways(false, "Unknown balancer variant: " + variant);
         }
+    }
+
+    /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        const matrix = overlayMatrices[variant];
+        if (matrix) {
+            return matrix[rotation];
+        }
+        return null;
     }
 
     /**
@@ -43,12 +66,22 @@ export class MetaSplitterBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.splitter);
+        let speedMultiplier = 2;
+        switch (variant) {
+            case enumBalancerVariants.merger:
+            case enumBalancerVariants.mergerInverse:
+            case enumBalancerVariants.splitter:
+            case enumBalancerVariants.splitterInverse:
+                speedMultiplier = 1;
+        }
+
+        const speed =
+            (root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.balancer) / 2) * speedMultiplier;
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 
     getSilhouetteColor() {
-        return "#444";
+        return "#555759";
     }
 
     /**
@@ -57,12 +90,12 @@ export class MetaSplitterBuilding extends MetaBuilding {
     getAvailableVariants(root) {
         let available = [defaultBuildingVariant];
 
-        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_splitter_compact)) {
-            available.push(enumSplitterVariants.compact, enumSplitterVariants.compactInverse);
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_merger)) {
+            available.push(enumBalancerVariants.merger, enumBalancerVariants.mergerInverse);
         }
 
-        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_merger_compact)) {
-            available.push(enumSplitterVariants.compactMerge, enumSplitterVariants.compactMergeInverse);
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_splitter)) {
+            available.push(enumBalancerVariants.splitter, enumBalancerVariants.splitterInverse);
         }
 
         return available;
@@ -72,7 +105,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_splitter);
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_balancer);
     }
 
     /**
@@ -89,13 +122,14 @@ export class MetaSplitterBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemProcessorComponent({
                 inputsPerCharge: 1,
-                processorType: enumItemProcessorTypes.splitter,
+                processorType: enumItemProcessorTypes.balancer,
             })
         );
 
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [], // set later
+                renderFloatingItems: false,
             })
         );
 
@@ -134,8 +168,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
 
                 break;
             }
-            case enumSplitterVariants.compact:
-            case enumSplitterVariants.compactInverse: {
+            case enumBalancerVariants.merger:
+            case enumBalancerVariants.mergerInverse: {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -144,7 +178,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [
-                            variant === enumSplitterVariants.compactInverse
+                            variant === enumBalancerVariants.mergerInverse
                                 ? enumDirection.left
                                 : enumDirection.right,
                         ],
@@ -161,8 +195,8 @@ export class MetaSplitterBuilding extends MetaBuilding {
 
                 break;
             }
-            case enumSplitterVariants.compactMerge:
-            case enumSplitterVariants.compactMergeInverse: {
+            case enumBalancerVariants.splitter:
+            case enumBalancerVariants.splitterInverse: {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -178,7 +212,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         direction:
-                            variant === enumSplitterVariants.compactMergeInverse
+                            variant === enumBalancerVariants.splitterInverse
                                 ? enumDirection.left
                                 : enumDirection.right,
                     },
@@ -191,7 +225,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                 break;
             }
             default:
-                assertAlways(false, "Unknown splitter variant: " + variant);
+                assertAlways(false, "Unknown balancer variant: " + variant);
         }
     }
 }

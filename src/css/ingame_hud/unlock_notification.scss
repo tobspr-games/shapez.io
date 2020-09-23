@@ -4,11 +4,15 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(#333538, 0.98) uiResource("dialog_bg_pattern.png") top left / #{D(10px)} repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     pointer-events: all;
+
+    & {
+        /* @load-async */
+        background: rgba(#333538, 0.98) uiResource("dialog_bg_pattern.png") top left / #{D(10px)} repeat;
+    }
 
     @include InlineAnimation(0.1s ease-in-out) {
         0% {

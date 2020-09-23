@@ -64,7 +64,7 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 5. Add a constructor. **The constructor must be called with optional parameters only!** `new MyFancyComponent({})` should always work.
 6. Add any props you need in the constructor.
 7. Add the component in `src/js/game/component_registry.js`
-8. Add the componetn in `src/js/game/entity_components.js`
+8. Add the component in `src/js/game/entity_components.js`
 9. Done! You can use your component now
 
 #### Adding a new building
@@ -81,7 +81,7 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 8. In `translations/base-en.yaml` add it to two sections: `buildings.[my_building].XXX` (See other buildings) and also `keybindings.mappings.[my_building]`. Be sure to do it the same way as other buildings do!
 9. Create a icon (128x128, [prefab](https://github.com/tobspr/shapez.io-artwork/blob/master/ui/toolbar-icons.psd)) for your building and save it in `res/ui/buildings_icons` with the id of your building
 10. Create a tutorial image (600x600) for your building and save it in `res/ui/building_tutorials`
-11. In `src/css/icons.scss` add your building to `$buildings` as well as `$buildingAndVariants`
+11. In `src/css/resources.scss` add your building to `$buildings` as well as `$buildingAndVariants`
 12. Done! Optional: Add a new reward for unlocking your building at some point.
 
 #### Adding a new game system
@@ -96,6 +96,6 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 
 For most assets I use Adobe Photoshop, you can find them in `assets/`.
 
-You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when thats done.
+You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when that's done.
 
 <img src="https://i.imgur.com/W25Fkl0.png" alt="shapez.io Screenshot">

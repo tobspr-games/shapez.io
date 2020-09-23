@@ -168,7 +168,7 @@ dialogs:
         deleteGame: Tiedän mitä olen tekemässä
         viewUpdate: Näytä päivitys
         showUpgrades: Näytä Päivitykset
-        showKeybindings: Show Keybindings
+        showKeybindings: Näytä pikanäppäimet
 
     importSavegameError:
         title: Tuonti Virhe
@@ -258,7 +258,7 @@ dialogs:
     createMarker:
         title: Uusi Merkki
         desc: Anna merkille kuvaava nimi, voit myös sisällyttää muodon <strong>lyhyen avaimen</strong> siihen. (Lyhyen avaimen voit luoda <a href="https://viewer.shapez.io" target="_blank">täällä</a>)
-        titleEdit: Edit Marker
+        titleEdit: Muokkaa merkkiä
 
     markerDemoLimit:
         desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki itsenäinen versio saadaksesi loputtoman määrän merkkejä!
@@ -267,8 +267,8 @@ dialogs:
         title: Vie kuvakaappaus
         desc: Pyysit tukikohtasi viemistä kuvakaappauksena. Huomaa, että tämä voi olla melko hidasta isolla tukikohdalla ja voi jopa kaataa pelisi!
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Vahvista leikkaus
+        desc: Sinulla ei ole varaa leikata tätä aluetta! Oletko varma että haluat leikata sen?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -303,8 +303,8 @@ ingame:
         purple: Violetti
         cyan: Syaani
         white: Valkoinen
-        uncolored: Ei Väriä
-        black: Black
+        uncolored: Väritön
+        black: Musta
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -465,7 +465,7 @@ buildings:
 
         tier2:
             name: Tunneli Taso II
-            description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
+            description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta pidemmältä kantamalta.
 
     splitter: # Internal name for the Balancer
         default:
@@ -498,11 +498,11 @@ buildings:
             name: &rotater Kääntäjä
             description: Kääntää muotoja 90 astetta myötäpäivään.
         ccw:
-            name: Rotate (Vastapäivään)
+            name: Kääntäjä (Vastapäivään)
             description: Kääntää muotoja 90 astetta vastapäivään.
         fl:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Kääntäkä (180)
+            description: Kääntää muotoja 180 astetta.
 
     stacker:
         default:
@@ -550,11 +550,11 @@ buildings:
             description: Tuottaa sähköä kuluttamalla muotoja. Jokainen sähkögeneraattori vaatii eri muotoja.
     wire_crossings:
         default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Johdon jakaja
+            description: Jakaa energiajohdon kahteen.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
+            name: Johtojen yhdistäjä
+            description: Yhdistää kaksi energiajohtoa yhteen.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -642,9 +642,9 @@ storyRewards:
 settings:
     title: Asetukset
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
+        general: Yleinen
+        userInterface: Käyttöliittyma
+        advanced: Kehittynyt
 
     versionBadges:
         dev: Kehitys
@@ -736,17 +736,17 @@ settings:
         refreshRate:
             title: Simulaatiotavoite
             description: >-
-                Jos sinulla on 144hz näyttö, muuta virkistystaajuus täällä jotta pelin simulaatio toimii oikein isommilla virkistystaajuuksilla. Tämä voi laskea FPS nopeutta jos tietokoneesi on liian hidas.
+                Jos sinulla on 144hz näyttö, muuta virkistystaajuus täällä jotta pelin simulaatio toimii oikein isommilla virkistystaajuuksilla. Tämä voi laskea FPS nopeutta, jos tietokoneesi on liian hidas.
 
         alwaysMultiplace:
             title: Monisijoitus
             description: >-
-                Jos käytössä, kaikki rakennukset pysyvät valittuina sijoittamisen jälkeen kunnes peruutat sen. Tämä vastaa SHIFT:in pitämistö pohjassa ikuisesti.
+                Jos käytössä, kaikki rakennukset pysyvät valittuina sijoittamisen jälkeen kunnes peruutat sen. Tämä vastaa SHIFT:in pitämistä pohjassa ikuisesti.
 
         offerHints:
             title: Vihjeet & Oppaat
             description: >-
-                Tarjotaanko pelaamisen aikana vihjeitä ja oppaita. Myös piilottaa tietyt käyttöliittymäelementit tietyn tason mukaan, jotta alkuunpääseminen olisi helpompaa.
+                Tarjoaa pelaamisen aikana vihjeitä ja oppaita. Myös piilottaa tietyt käyttöliittymäelementit tietyn tason mukaan, jotta alkuunpääseminen olisi helpompaa.
 
         enableTunnelSmartplace:
             title: Älykkäät Tunnelit
@@ -771,12 +771,12 @@ settings:
         disableCutDeleteWarnings:
             title: Poista Leikkaus/Poisto Varoitukset
             description: >-
-                Poista varoitusikkunat dialogs brought up when cutting/deleting more than 100 entities.
+                Poista varoitusikkunat jotka ilmestyy kun leikkaat/poistat enemmän kuin 100 entiteettiä
 
 keybindings:
     title: Pikanäppäimet
     hint: >-
-        Tip: Muista käyttää CTRL, VAIHTO and ALT! Ne ottavat käyttöön erilaisia sijoitteluvaihtoehtoja.
+        Tip: Muista käyttää CTRL, VAIHTO ja ALT! Ne ottavat käyttöön erilaisia sijoitteluvaihtoehtoja.
 
     resetKeybindings: Nollaa Pikanäppäimet
 
@@ -843,13 +843,13 @@ keybindings:
 
         placementDisableAutoOrientation: Poista automaattinen suunta käytöstä
         placeMultiple: Pysy sijoittamistilassa
-        placeInverse: Käännä automaattinen hihnan suunta
-        menuClose: Close Menu
+        placeInverse: Käännä automaattinen hihnan suunta päinvastoin
+        menuClose: Sulje valikko
 
 about:
     title: Tietoja tästä pelistä
     body: >-
-        Tämä peli on avoimen lähdekoodin ja kehitettä on <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (tämä on minä).<br><br>
+        Tämä peli on avointa lähdekoodia ja kehittäjä on <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (tämä on minä).<br><br>
 
         Jos haluat osallistua, tarkista <a href="<githublink>" target="_blank">shapez.io githubissa</a>.<br><br>
 

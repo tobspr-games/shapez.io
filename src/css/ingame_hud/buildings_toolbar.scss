@@ -1,34 +1,52 @@
 .ingame_buildingsToolbar {
-    position: fixed;
-    @include S(bottom, 0px);
+    position: absolute;
+    @include S(bottom, 5px);
     left: 50%;
     transform: translateX(-50%);
 
-    // NOTE: This flex rule may not be necessary. Need to find out intent.
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+
     background: transparent;
-    border-bottom-width: 0;
     transition: transform 120ms ease-in-out;
     will-change: transform;
-
-    background-color: rgba(mix(#ddd, $colorBlueBright, 90%), 0.5);
-    backdrop-filter: blur(D(3px));
-
-    @include DarkThemeOverride {
-        background-color: #222428;
-    }
 
     &:not(.visible) {
         transform: translateX(-50%) translateY(#{D(100px)});
     }
 
-    @include S(border-top-left-radius, $globalBorderRadius);
-    @include S(border-top-right-radius, $globalBorderRadius);
-
     .buildings {
         display: grid;
         grid-auto-flow: column;
+        justify-items: center;
+        align-self: center;
+        grid-row: 2 / 3;
+
+        background-color: rgba(240, 241, 243, 0.5);
+        @include S(border-radius, $globalBorderRadius);
+
+        @include DarkThemeOverride {
+            background-color: rgba(darken($darkModeGameBackground, 15), 0.4);
+        }
+
+        &.secondary {
+            grid-row: 1 / 2;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            .building {
+                @include S(width, 30px);
+                @include S(height, 22px);
+                background-size: 45%;
+
+                &:not(.unlocked) {
+                    &::before {
+                        background-size: #{D(13px)};
+                    }
+                }
+            }
+        }
 
         .building {
             color: $accentColorDark;
@@ -42,7 +60,7 @@
             @include S(width, 35px);
             @include S(height, 40px);
 
-            background: center center / 65% no-repeat;
+            background: center center / 70% no-repeat;
 
             &:not(.unlocked) {
                 @include S(width, 20px);
@@ -51,14 +69,18 @@
 
                 &::before {
                     content: " ";
-                    background: uiResource("locked_building.png") center center / #{D(20px)} #{D(20px)}
-                        no-repeat;
+
                     position: absolute;
                     top: 0;
                     right: 0;
                     bottom: 0;
                     left: 0;
                     z-index: 4;
+                    & {
+                        /* @load-async */
+                        background: uiResource("locked_building.png") center center / #{D(20px)} #{D(20px)}
+                            no-repeat;
+                    }
                 }
             }
 
@@ -68,34 +90,19 @@
                 pointer-events: all;
                 transition: all 50ms ease-in-out;
                 transition-property: background-color, transform;
-                cursor: pointer;
-                will-change: transform;
 
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    background-color: $accentColorDark;
-                    opacity: 0;
-                    will-change: opacity;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgba(30, 40, 90, 0.1);
                 }
 
-                &:hover {
-                    &::before {
-                        opacity: 0.1;
-                    }
+                &.pressed {
+                    transform: scale(0.9) !important;
                 }
 
                 &.selected {
-                    transform: scale(1.05);
-
-                    &::before {
-                        background-color: $colorBlueBright;
-                        opacity: 0.6;
-                    }
+                    // transform: scale(1.05);
+                    background-color: rgba(lighten($colorBlueBright, 9), 0.4);
 
                     .keybinding {
                         color: #111;

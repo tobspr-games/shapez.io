@@ -9,14 +9,35 @@ import { MapChunkView } from "../map_chunk_view";
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemAcceptorComponent]);
+
+        // Well ... it's better to be verbose I guess?
+        this.accumulatedTicksWhileInMapOverview = 0;
     }
 
     update() {
+        if (this.root.app.settings.getAllSettings().simplifiedBelts) {
+            // Disabled in potato mode
+            return;
+        }
+
+        // This system doesn't render anything while in map overview,
+        // so simply accumulate ticks
+        if (this.root.camera.getIsMapOverlayActive()) {
+            ++this.accumulatedTicksWhileInMapOverview;
+            return;
+        }
+
+        // Compute how much ticks we missed
+        const numTicks = 1 + this.accumulatedTicksWhileInMapOverview;
         const progress =
             this.root.dynamicTickrate.deltaSeconds *
             2 *
             this.root.hubGoals.getBeltBaseSpeed() *
-            globalConfig.itemSpacingOnBelts; // * 2 because its only a half tile
+            globalConfig.itemSpacingOnBelts * // * 2 because its only a half tile
+            numTicks;
+
+        // Reset accumulated ticks
+        this.accumulatedTicksWhileInMapOverview = 0;
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
@@ -40,6 +61,11 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        if (this.root.app.settings.getAllSettings().simplifiedBelts) {
+            // Disabled in potato mode
+            return;
+        }
+
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];

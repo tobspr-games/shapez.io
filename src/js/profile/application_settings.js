@@ -253,6 +253,7 @@ export const allApplicationSettings = [
         changeCb: (app, id) => {},
     }),
 
+    new BoolSetting("enableMousePan", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("alwaysMultiplace", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("clearCursorOnDeleteWhilePlacing", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("enableTunnelSmartplace", enumCategories.advanced, (app, value) => {}),
@@ -276,6 +277,7 @@ export const allApplicationSettings = [
     new BoolSetting("lowQualityMapResources", enumCategories.performance, (app, value) => {}),
     new BoolSetting("disableTileGrid", enumCategories.performance, (app, value) => {}),
     new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
+    new BoolSetting("simplifiedBelts", enumCategories.performance, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -307,12 +309,14 @@ class SettingsStorage {
         this.clearCursorOnDeleteWhilePlacing = true;
         this.displayChunkBorders = false;
         this.pickMinerOnPatch = true;
+        this.enableMousePan = true;
 
         this.enableColorBlindHelper = false;
 
         this.lowQualityMapResources = false;
         this.disableTileGrid = false;
         this.lowQualityTextures = false;
+        this.simplifiedBelts = false;
 
         /**
          * @type {Object.<string, number>}
@@ -523,7 +527,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 26;
+        return 28;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -644,6 +648,16 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 26) {
             data.settings.pickMinerOnPatch = true;
             data.version = 26;
+        }
+
+        if (data.version < 27) {
+            data.settings.simplifiedBelts = false;
+            data.version = 27;
+        }
+
+        if (data.version < 28) {
+            data.settings.enableMousePan = true;
+            data.version = 28;
         }
 
         return ExplainedResult.good();

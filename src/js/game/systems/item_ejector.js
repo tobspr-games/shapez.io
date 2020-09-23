@@ -2,8 +2,11 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
+import { StaleAreaDetector } from "../../core/stale_area_detector";
 import { enumDirection, enumDirectionToVector } from "../../core/vector";
 import { BaseItem } from "../base_item";
+import { BeltComponent } from "../components/belt";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -15,102 +18,52 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemEjectorComponent]);
 
-        this.root.signals.entityAdded.add(this.checkForCacheInvalidation, this);
-        this.root.signals.entityDestroyed.add(this.checkForCacheInvalidation, this);
-        this.root.signals.postLoadHook.add(this.recomputeCache, this);
+        this.staleAreaDetector = new StaleAreaDetector({
+            root: this.root,
+            name: "item-ejector",
+            recomputeMethod: this.recomputeArea.bind(this),
+        });
 
-        /**
-         * @type {Rectangle}
-         */
-        this.areaToRecompute = null;
+        this.staleAreaDetector.recomputeOnComponentsChanged(
+            [ItemEjectorComponent, ItemAcceptorComponent, BeltComponent],
+            1
+        );
+
+        this.root.signals.postLoadHook.add(this.recomputeCacheFull, this);
     }
 
     /**
-     *
-     * @param {Entity} entity
+     * Recomputes an area after it changed
+     * @param {Rectangle} area
      */
-    checkForCacheInvalidation(entity) {
-        if (!this.root.gameInitialized) {
-            return;
-        }
-        if (!entity.components.StaticMapEntity) {
-            return;
-        }
-
-        // Optimize for the common case: adding or removing one building at a time. Clicking
-        // and dragging can cause up to 4 add/remove signals.
-        const staticComp = entity.components.StaticMapEntity;
-        const bounds = staticComp.getTileSpaceBounds();
-        const expandedBounds = bounds.expandedInAllDirections(2);
-
-        if (this.areaToRecompute) {
-            this.areaToRecompute = this.areaToRecompute.getUnion(expandedBounds);
-        } else {
-            this.areaToRecompute = expandedBounds;
-        }
-    }
-
-    /**
-     * Precomputes the cache, which makes up for a huge performance improvement
-     */
-    recomputeCache() {
-        if (this.areaToRecompute) {
-            logger.log("Recomputing cache using rectangle");
-            if (G_IS_DEV && globalConfig.debug.renderChanges) {
-                this.root.hud.parts.changesDebugger.renderChange(
-                    "ejector-area",
-                    this.areaToRecompute,
-                    "#fe50a6"
-                );
-            }
-            this.recomputeAreaCache();
-            this.areaToRecompute = null;
-        } else {
-            logger.log("Full cache recompute");
-            if (G_IS_DEV && globalConfig.debug.renderChanges) {
-                this.root.hud.parts.changesDebugger.renderChange(
-                    "ejector-full",
-                    new Rectangle(-1000, -1000, 2000, 2000),
-                    "#fe50a6"
-                );
-            }
-
-            // Try to find acceptors for every ejector
-            for (let i = 0; i < this.allEntities.length; ++i) {
-                const entity = this.allEntities[i];
-                this.recomputeSingleEntityCache(entity);
-            }
-        }
-    }
-
-    /**
-     * Recomputes the cache in the given area
-     */
-    recomputeAreaCache() {
-        const area = this.areaToRecompute;
-        let entryCount = 0;
-
-        logger.log("Recomputing area:", area.x, area.y, "/", area.w, area.h);
-
-        // Store the entities we already recomputed, so we don't do work twice
-        const recomputedEntities = new Set();
-
-        for (let x = area.x; x < area.right(); ++x) {
-            for (let y = area.y; y < area.bottom(); ++y) {
-                const entities = this.root.map.getLayersContentsMultipleXY(x, y);
-                for (let i = 0; i < entities.length; ++i) {
-                    const entity = entities[i];
-
-                    // Recompute the entity in case its relevant for this system and it
-                    // hasn't already been computed
-                    if (!recomputedEntities.has(entity.uid) && entity.components.ItemEjector) {
-                        recomputedEntities.add(entity.uid);
-                        this.recomputeSingleEntityCache(entity);
+    recomputeArea(area) {
+        /** @type {Set<number>} */
+        const seenUids = new Set();
+        for (let x = 0; x < area.w; ++x) {
+            for (let y = 0; y < area.h; ++y) {
+                const tileX = area.x + x;
+                const tileY = area.y + y;
+                // @NOTICE: Item ejector currently only supports regular layer
+                const contents = this.root.map.getLayerContentXY(tileX, tileY, "regular");
+                if (contents && contents.components.ItemEjector) {
+                    if (!seenUids.has(contents.uid)) {
+                        seenUids.add(contents.uid);
+                        this.recomputeSingleEntityCache(contents);
                     }
                 }
             }
         }
-        return entryCount;
+    }
+
+    /**
+     * Recomputes the whole cache after the game has loaded
+     */
+    recomputeCacheFull() {
+        logger.log("Full cache recompute in post load hook");
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            this.recomputeSingleEntityCache(entity);
+        }
     }
 
     /**
@@ -183,9 +136,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     }
 
     update() {
-        if (this.areaToRecompute) {
-            this.recomputeCache();
-        }
+        this.staleAreaDetector.update();
 
         // Precompute effective belt speed
         let progressGrowth = 2 * this.root.dynamicTickrate.deltaSeconds;
@@ -198,9 +149,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const sourceEntity = this.allEntities[i];
             const sourceEjectorComp = sourceEntity.components.ItemEjector;
-            if (!sourceEjectorComp.enabled) {
-                continue;
-            }
 
             const slots = sourceEjectorComp.slots;
             for (let j = 0; j < slots.length; ++j) {
@@ -210,8 +158,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     // No item available to be ejected
                     continue;
                 }
-
-                const targetEntity = sourceSlot.cachedTargetEntity;
 
                 // Advance items on the slot
                 sourceSlot.progress = Math.min(
@@ -245,17 +191,24 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Check if the target acceptor can actually accept this item
+                const destEntity = sourceSlot.cachedTargetEntity;
                 const destSlot = sourceSlot.cachedDestSlot;
                 if (destSlot) {
-                    const targetAcceptorComp = targetEntity.components.ItemAcceptor;
+                    const targetAcceptorComp = destEntity.components.ItemAcceptor;
                     if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
                         continue;
                     }
 
                     // Try to hand over the item
-                    if (this.tryPassOverItem(item, targetEntity, destSlot.index)) {
+                    if (this.tryPassOverItem(item, destEntity, destSlot.index)) {
                         // Handover successful, clear slot
-                        targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.acceptedDirection, item);
+                        if (!this.root.app.settings.getAllSettings().simplifiedBelts) {
+                            targetAcceptorComp.onItemAccepted(
+                                destSlot.index,
+                                destSlot.acceptedDirection,
+                                item
+                            );
+                        }
                         sourceSlot.item = null;
                         continue;
                     }
@@ -329,6 +282,15 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             return false;
         }
 
+        const filterComp = receiver.components.Filter;
+        if (filterComp) {
+            // It's a filter! Unfortunately the filter has to know a lot about it's
+            // surrounding state and components, so it can't be within the component itself.
+            if (this.root.systemMgr.systems.filter.tryAcceptItem(receiver, slotIndex, item)) {
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -337,6 +299,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        if (this.root.app.settings.getAllSettings().simplifiedBelts) {
+            // Disabled in potato mode
+            return;
+        }
+
         const contents = chunk.containedEntitiesByLayer.regular;
 
         for (let i = 0; i < contents.length; ++i) {
@@ -354,6 +321,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
                 if (!ejectedItem) {
                     // No item
+                    continue;
+                }
+
+                if (!ejectorComp.renderFloatingItems && !slot.cachedTargetEntity) {
+                    // Not connected to any building
                     continue;
                 }
 

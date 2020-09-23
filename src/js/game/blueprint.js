@@ -44,7 +44,7 @@ export class Blueprint {
             const entity = root.entityMgr.findByUid(uids[i]);
             assert(entity, "Entity for blueprint not found:" + uids[i]);
 
-            const clone = entity.duplicateWithoutContents();
+            const clone = entity.clone();
             newEntities.push(clone);
 
             const pos = entity.components.StaticMapEntity.getTileSpaceBounds().getCenter();
@@ -160,7 +160,7 @@ export class Blueprint {
                     continue;
                 }
 
-                const clone = entity.duplicateWithoutContents();
+                const clone = entity.clone();
                 clone.components.StaticMapEntity.origin.addInplace(tile);
                 root.logic.freeEntityAreaBeforeBuild(clone);
                 root.map.placeStaticEntity(clone);
