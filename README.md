@@ -96,7 +96,6 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 
 This is a quick checklist, if a new building is added this points should be fulfilled:
 
-1. The meta class of the building has been added in all relevant places (See above)
 2. The translation for all variants is done and finalized
 3. The artwork (regular sprite) is finalized
 4. The blueprint sprite has been generated and is up to date

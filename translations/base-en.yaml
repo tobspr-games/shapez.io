@@ -528,7 +528,7 @@ buildings:
     stacker:
         default:
             name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            description: Combines both items side by side. If this is not possible, they are stacked on top of each other.
 
     mixer:
         default:
@@ -538,11 +538,11 @@ buildings:
     painter:
         default:
             name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the top input.
+            description: &painter_desc Paints the whole shape on the left input with the color from the top input.
 
         mirrored:
             name: *painter
-            description: *painter_desc
+            description: Paints the whole shape on the left input with the color from the bottom input.
 
         double:
             name: Painter (Double)
@@ -661,7 +661,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes in half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I have given you the trash can, which destroys everything you put into it!
+        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
 
     reward_rotater:
         title: Rotating
@@ -674,7 +674,7 @@ storyRewards:
 
     reward_mixer:
         title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        desc: The <strong>mixer</strong> has been unlocked - It mixes two colors using <strong>additive blending</strong>!
 
     reward_stacker:
         title: Stacker
@@ -705,12 +705,12 @@ storyRewards:
     reward_merger:
         title: Compact Merger
         desc: >-
-            You have unlocked a merger variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
+            You have unlocked a <strong>merger</strong> variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
 
     reward_splitter:
         title: Compact Splitter
         desc: >-
-            You have unlocked a splitter variant of the <strong>balancer</strong> - It accepts one input and splits them into two!
+            You have unlocked a <strong>splitter</strong> variant of the <strong>balancer</strong> - It accepts one input and splits them into two!
 
     reward_belt_reader:
         title: Belt reader
