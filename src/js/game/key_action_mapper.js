@@ -69,14 +69,13 @@ export const KEYMAPPINGS = {
         constant_signal: { keyCode: key("3") },
 
         portable_hub: { keyCode: key("P") },
-      
+
         lever_wires: { keyCode: key("4") },
         logic_gate: { keyCode: key("5") },
         virtual_processor: { keyCode: key("6") },
         transistor: { keyCode: key("7") },
         analyzer: { keyCode: key("8") },
         comparator: { keyCode: key("9") },
-
     },
 
     placement: {
