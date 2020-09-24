@@ -1,8 +1,8 @@
 import { MetaBuilding } from "../meta_building";
-import {ItemAcceptorComponent} from "../components/item_acceptor";
-import {enumDirection, Vector} from "../../core/vector";
-import {enumItemProcessorTypes, ItemProcessorComponent} from "../components/item_processor";
-import {enumPinSlotType, WiredPinsComponent} from "../components/wired_pins";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
+import { enumDirection, Vector } from "../../core/vector";
+import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
+import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 
 export class MetaPortableHubBuilding extends MetaBuilding {
     constructor() {
