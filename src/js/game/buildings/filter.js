@@ -1,4 +1,6 @@
+import { formatItemsPerSecond } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
+import { T } from "../../translations";
 import { FilterComponent } from "../components/filter";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -30,6 +32,16 @@ export class MetaFilterBuilding extends MetaBuilding {
 
     getShowWiresLayerPreview() {
         return true;
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
 
     /**

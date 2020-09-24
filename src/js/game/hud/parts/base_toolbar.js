@@ -15,14 +15,19 @@ export class HUDBaseToolbar extends BaseHUDPart {
      * @param {Array<typeof MetaBuilding>=} param0.secondaryBuildings
      * @param {function} param0.visibilityCondition
      * @param {string} param0.htmlElementId
+     * @param {Layer=} param0.layer
      */
-    constructor(root, { primaryBuildings, secondaryBuildings = [], visibilityCondition, htmlElementId }) {
+    constructor(
+        root,
+        { primaryBuildings, secondaryBuildings = [], visibilityCondition, htmlElementId, layer = "regular" }
+    ) {
         super(root);
 
         this.primaryBuildings = primaryBuildings;
         this.secondaryBuildings = secondaryBuildings;
         this.visibilityCondition = visibilityCondition;
         this.htmlElementId = htmlElementId;
+        this.layer = layer;
 
         /** @type {Object.<string, {
          * metaBuilding: MetaBuilding,
@@ -67,7 +72,13 @@ export class HUDBaseToolbar extends BaseHUDPart {
 
         for (let i = 0; i < allBuildings.length; ++i) {
             const metaBuilding = gMetaBuildingRegistry.findByClass(allBuildings[i]);
-            const binding = actionMapper.getBinding(KEYMAPPINGS.buildings[metaBuilding.getId()]);
+
+            let rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId() + "_" + this.layer];
+            if (!rawBinding) {
+                rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId()];
+            }
+
+            const binding = actionMapper.getBinding(rawBinding);
 
             const itemContainer = makeDiv(
                 this.primaryBuildings.includes(allBuildings[i]) ? rowPrimary : rowSecondary,

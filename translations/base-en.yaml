@@ -584,7 +584,7 @@ buildings:
     lever:
         default:
             name: &lever Switch
-            description: Can be toggled to emit a boolean signal, which can then be used to control for example an item filter.
+            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer, which can then be used to control for example an item filter.
 
     logic_gate:
         default:
@@ -612,7 +612,7 @@ buildings:
     filter:
         default:
             name: &filter Filter
-            description: Connect with a signal to route all matching items to the top and the remaining to the right. Can be controlled with boolean signals too.
+            description: Connect a signal to route all matching items to the top and the remaining to the right. Can be controlled with boolean signals too.
 
     display:
         default:
@@ -758,7 +758,8 @@ storyRewards:
     reward_constant_signal:
         title: Constant Signal
         desc: >-
-            You can now emit a <strong>constant signal</strong> on the wires layer! This is useful to connect it to <strong>item filters</strong> for example!
+            You unlocked the <strong>constant signal</strong> building on the wires layer! This is useful to connect it to <strong>item filters</strong> for example.<br><br>
+            The constant signal can emit a <strong>shape</strong>, <strong>color</strong> or <strong>boolean</strong> (1 / 0).
 
     reward_logic_gates:
         title: Logic Gates
@@ -1035,7 +1036,8 @@ keybindings:
         wire: *wire
         constant_signal: *constant_signal
         logic_gate: Logic Gate
-        lever: *lever
+        lever: Switch (regular)
+        lever_wires: Switch (wires)
         filter: *filter
         wire_tunnel: *wire_tunnel
         display: *display

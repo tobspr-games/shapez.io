@@ -16,16 +16,17 @@ export class HUDWiresToolbar extends HUDBaseToolbar {
                 MetaWireBuilding,
                 MetaWireTunnelBuilding,
                 MetaConstantSignalBuilding,
+                MetaLeverBuilding,
                 MetaTransistorBuilding,
                 MetaLogicGateBuilding,
                 MetaAnalyzerBuilding,
-                MetaLeverBuilding,
                 MetaVirtualProcessorBuilding,
                 MetaComparatorBuilding,
             ],
             visibilityCondition: () =>
                 !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "wires",
             htmlElementId: "ingame_HUD_wires_toolbar",
+            layer: "wires",
         });
     }
 }
