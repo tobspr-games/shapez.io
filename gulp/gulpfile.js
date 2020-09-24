@@ -306,6 +306,17 @@ gulp.task(
     gulp.series("utils.cleanup", "step.standalone-prod.all", "step.postbuild")
 );
 
+// OS X build and release upload
+gulp.task(
+    "build.darwin64-prod",
+    gulp.series(
+        "build.standalone-prod",
+        "standalone.prepare",
+        "standalone.package.prod.darwin64",
+        "standalone.uploadRelease.darwin64"
+    )
+);
+
 // Deploying!
 gulp.task(
     "main.deploy.alpha",

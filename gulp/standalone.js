@@ -80,8 +80,9 @@ function gulptasksStandalone($, gulp) {
      * @param {'win32'|'linux'|'darwin'} platform
      * @param {'x64'|'ia32'} arch
      * @param {function():void} cb
+     * @param {boolean=} isRelease
      */
-    function packageStandalone(platform, arch, cb) {
+    function packageStandalone(platform, arch, cb, isRelease = true) {
         const tomlFile = fs.readFileSync(path.join(__dirname, ".itch.toml"));
 
         packager({
@@ -99,7 +100,7 @@ function gulptasksStandalone($, gulp) {
             overwrite: true,
             appBundleId: "io.shapez.standalone",
             appCategoryType: "public.app-category.games",
-            ...(platform === "darwin" && {
+            ...(isRelease && platform === "darwin" && {
                 osxSign: {
                     identity: process.env.SHAPEZ_CLI_APPLE_CERT_NAME,
                     "hardened-runtime": true,
@@ -189,6 +190,7 @@ function gulptasksStandalone($, gulp) {
     gulp.task("standalone.package.prod.linux64", cb => packageStandalone("linux", "x64", cb));
     gulp.task("standalone.package.prod.linux32", cb => packageStandalone("linux", "ia32", cb));
     gulp.task("standalone.package.prod.darwin64", cb => packageStandalone("darwin", "x64", cb));
+    gulp.task("standalone.package.prod.darwin64.unsigned", cb => packageStandalone("darwin", "x64", cb, false));
 
     gulp.task(
         "standalone.package.prod",
