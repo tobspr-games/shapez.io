@@ -27,17 +27,11 @@ import { MetaWireBuilding } from "./buildings/wire";
 import { MetaWireTunnelBuilding } from "./buildings/wire_tunnel";
 import { buildBuildingCodeCache, gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { defaultBuildingVariant } from "./meta_building";
-import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
-import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
-import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire_tunnel";
-import { MetaVirtualProcessorBuilding, enumVirtualProcessorVariants } from "./buildings/virtual_processor";
 import { MetaPortableHubBuilding } from "./buildings/portable_hub";
-import { MetaStorageBuilding } from "./buildings/storage";
 
 import { enumWireVariant } from "./components/wire";
 
 import { KEYMAPPINGS } from "./key_action_mapper";
-import { defaultBuildingVariant } from "./meta_building";
 
 const logger = createLogger("building_registry");
 
@@ -65,7 +59,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaReaderBuilding);
 
     gMetaBuildingRegistry.register(MetaPortableHubBuilding);
-  
+
     gMetaBuildingRegistry.register(MetaTransistorBuilding);
     gMetaBuildingRegistry.register(MetaAnalyzerBuilding);
     gMetaBuildingRegistry.register(MetaComparatorBuilding);
