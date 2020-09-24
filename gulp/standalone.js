@@ -99,6 +99,20 @@ function gulptasksStandalone($, gulp) {
             overwrite: true,
             appBundleId: "io.shapez.standalone",
             appCategoryType: "public.app-category.games",
+            ...(platform === "darwin" && {
+                osxSign: {
+                    identity: process.env.SHAPEZ_CLI_APPLE_CERT_NAME,
+                    "hardened-runtime": true,
+                    hardenedRuntime: true,
+                    entitlements: 'entitlements.plist',
+                    'entitlements-inherit': 'entitlements.plist',
+                    'signature-flags': 'library'
+                  },
+                osxNotarize: {
+                    appleId: process.env.SHAPEZ_CLI_APPLE_ID,
+                    appleIdPassword: "@keychain:SHAPEZ_CLI_APPLE_ID"
+                }
+            })
         }).then(
             appPaths => {
                 console.log("Packages created:", appPaths);

@@ -42,6 +42,8 @@ const envVars = [
     "SHAPEZ_CLI_STAGING_FTP_PW",
     "SHAPEZ_CLI_LIVE_FTP_USER",
     "SHAPEZ_CLI_LIVE_FTP_PW",
+    "SHAPEZ_CLI_APPLE_ID",
+    "SHAPEZ_CLI_APPLE_CERT_NAME",
 ];
 
 for (let i = 0; i < envVars.length; ++i) {
