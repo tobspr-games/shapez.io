@@ -64,8 +64,11 @@ export const KEYMAPPINGS = {
         wire: { keyCode: key("1") },
         wire_tunnel: { keyCode: key("2") },
         constant_signal: { keyCode: key("3") },
+        transistor: { keyCode: key("6") },
         logic_gate: { keyCode: key("4") },
         virtual_processor: { keyCode: key("5") },
+        analyzer: { keyCode: key("7") },
+        comparator: { keyCode: key("8") },
     },
 
     placement: {

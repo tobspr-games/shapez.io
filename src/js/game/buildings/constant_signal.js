@@ -4,6 +4,9 @@ import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { ConstantSignalComponent } from "../components/constant_signal";
+import { generateMatrixRotations } from "../../core/utils";
+
+const overlayMatrix = generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]);
 
 export class MetaConstantSignalBuilding extends MetaBuilding {
     constructor() {
@@ -11,7 +14,7 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
     }
 
     getSilhouetteColor() {
-        return "#2bafda";
+        return "#2b84fd";
     }
 
     /**
@@ -33,6 +36,10 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
 
     getRenderPins() {
         return false;
+    }
+
+    getSpecialOverlayRenderMatrix(rotation) {
+        return overlayMatrix[rotation];
     }
 
     /**

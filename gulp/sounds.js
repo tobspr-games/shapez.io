@@ -18,7 +18,7 @@ function gulptasksSounds($, gulp, buildFolder) {
 
     function getFileCacheValue(file) {
         const { _isVinyl, base, cwd, contents, history, stat, path } = file;
-        const encodedContents = Buffer.from(contents).toString('base64');
+        const encodedContents = Buffer.from(contents).toString("base64");
         return { _isVinyl, base, cwd, contents: encodedContents, history, stat, path };
     }
 
@@ -118,7 +118,6 @@ function gulptasksSounds($, gulp, buildFolder) {
         return gulp
             .src(path.join(builtSoundsDir, "**", "*.mp3"))
             .pipe($.plumber())
-            .pipe($.cached("sounds.copy"))
             .pipe(gulp.dest(path.join(buildFolder, "res", "sounds")));
     });
 

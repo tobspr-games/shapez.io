@@ -3,6 +3,7 @@ import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
+import { AtlasSprite } from "../../core/sprites";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
 import { fastArrayDeleteValueIfContained } from "../../core/utils";
 import {
@@ -13,16 +14,15 @@ import {
     Vector,
 } from "../../core/vector";
 import { BaseItem } from "../base_item";
-import { isTrueItem } from "../items/boolean_item";
 import { arrayWireRotationVariantToType, MetaWireBuilding } from "../buildings/wire";
 import { getCodeFromBuildingData } from "../building_codes";
-import { enumWireType, WireComponent } from "../components/wire";
+import { enumWireType, enumWireVariant, WireComponent } from "../components/wire";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { WireTunnelComponent } from "../components/wire_tunnel";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
+import { isTruthyItem } from "../items/boolean_item";
 import { MapChunkView } from "../map_chunk_view";
-import { defaultBuildingVariant } from "../meta_building";
 
 const logger = createLogger("wires");
 
@@ -93,32 +93,22 @@ export class WireSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [WireComponent]);
 
-        this.wireSprites = {
-            regular: {
-                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/regular_forward.png"),
-                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/regular_turn.png"),
-                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/regular_split.png"),
-                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/regular_cross.png"),
-            },
-            conflict: {
-                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/conflict_forward.png"),
-                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/conflict_turn.png"),
-                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/conflict_split.png"),
-                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/conflict_cross.png"),
-            },
-            shape: {
-                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/shape_forward.png"),
-                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/shape_turn.png"),
-                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/shape_split.png"),
-                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/shape_cross.png"),
-            },
-            color: {
-                [enumWireType.regular]: Loader.getSprite("sprites/wires/sets/color_forward.png"),
-                [enumWireType.turn]: Loader.getSprite("sprites/wires/sets/color_turn.png"),
-                [enumWireType.split]: Loader.getSprite("sprites/wires/sets/color_split.png"),
-                [enumWireType.cross]: Loader.getSprite("sprites/wires/sets/color_cross.png"),
-            },
-        };
+        /**
+         * @type {Object<enumWireVariant, Object<enumWireType, AtlasSprite>>}
+         */
+        this.wireSprites = {};
+
+        const variants = ["conflict", ...Object.keys(enumWireVariant)];
+        for (let i = 0; i < variants.length; ++i) {
+            const wireVariant = variants[i];
+            const sprites = {};
+            for (const wireType in enumWireType) {
+                sprites[wireType] = Loader.getSprite(
+                    "sprites/wires/sets/" + wireVariant + "_" + wireType + ".png"
+                );
+            }
+            this.wireSprites[wireVariant] = sprites;
+        }
 
         this.root.signals.entityDestroyed.add(this.queuePlacementUpdate, this);
         this.root.signals.entityAdded.add(this.queuePlacementUpdate, this);
@@ -230,6 +220,13 @@ export class WireSystem extends GameSystemWithFilter {
             },
         ];
 
+        /**
+         * Once we occur a wire, we store its variant so we don't connect to
+         * mismatching ones
+         * @type {enumWireVariant}
+         */
+        let variantMask = null;
+
         while (entitiesToVisit.length > 0) {
             const nextData = entitiesToVisit.pop();
             const nextEntity = nextData.entity;
@@ -257,13 +254,18 @@ export class WireSystem extends GameSystemWithFilter {
                 );
 
                 if (!wireComp.linkedNetwork) {
-                    // This one is new! :D
-                    VERBOSE_WIRES && logger.log("  Visited new wire:", staticComp.origin.toString());
-                    wireComp.linkedNetwork = currentNetwork;
-                    currentNetwork.wires.push(nextEntity);
+                    if (variantMask && wireComp.variant !== variantMask) {
+                        // Mismatching variant
+                    } else {
+                        // This one is new! :D
+                        VERBOSE_WIRES && logger.log("  Visited new wire:", staticComp.origin.toString());
+                        wireComp.linkedNetwork = currentNetwork;
+                        currentNetwork.wires.push(nextEntity);
 
-                    newSearchDirections = arrayAllDirections;
-                    newSearchTile = nextEntity.components.StaticMapEntity.origin;
+                        newSearchDirections = arrayAllDirections;
+                        newSearchTile = nextEntity.components.StaticMapEntity.origin;
+                        variantMask = wireComp.variant;
+                    }
                 }
             }
 
@@ -319,7 +321,8 @@ export class WireSystem extends GameSystemWithFilter {
                 const newTargets = this.findSurroundingWireTargets(
                     newSearchTile,
                     newSearchDirections,
-                    currentNetwork
+                    currentNetwork,
+                    variantMask
                 );
 
                 VERBOSE_WIRES && logger.log("   Found", newTargets, "new targets to visit!");
@@ -361,13 +364,21 @@ export class WireSystem extends GameSystemWithFilter {
      * @param {Vector} initialTile
      * @param {Array<enumDirection>} directions
      * @param {WireNetwork} network
+     * @param {enumWireVariant=} variantMask Only accept connections to this mask
      * @returns {Array<any>}
      */
-    findSurroundingWireTargets(initialTile, directions, network) {
+    findSurroundingWireTargets(initialTile, directions, network, variantMask = null) {
         let result = [];
 
         VERBOSE_WIRES &&
-            logger.log("    Searching for new targets at", initialTile.toString(), "and d=", directions);
+            logger.log(
+                "    Searching for new targets at",
+                initialTile.toString(),
+                "and d=",
+                directions,
+                "with mask=",
+                variantMask
+            );
 
         // Go over all directions we should search for
         for (let i = 0; i < directions.length; ++i) {
@@ -399,7 +410,11 @@ export class WireSystem extends GameSystemWithFilter {
                 const wireComp = entity.components.Wire;
 
                 // Check for wire
-                if (wireComp && !wireComp.linkedNetwork) {
+                if (
+                    wireComp &&
+                    !wireComp.linkedNetwork &&
+                    (!variantMask || wireComp.variant === variantMask)
+                ) {
                     // Wires accept connections from everywhere
                     result.push({
                         entity,
@@ -448,17 +463,6 @@ export class WireSystem extends GameSystemWithFilter {
                     }
 
                     const staticComp = entity.components.StaticMapEntity;
-
-                    if (
-                        !tunnelComp.multipleDirections &&
-                        !(
-                            direction === staticComp.localDirectionToWorld(enumDirection.top) ||
-                            direction === staticComp.localDirectionToWorld(enumDirection.bottom)
-                        )
-                    ) {
-                        // It's a coating, and it doesn't connect here
-                        continue;
-                    }
 
                     // Compute where this tunnel connects to
                     const forwardedTile = staticComp.origin.add(offset);
@@ -570,8 +574,8 @@ export class WireSystem extends GameSystemWithFilter {
         if (!wireComp.linkedNetwork) {
             // There is no network, it's empty
             return {
-                spriteSet: this.wireSprites.regular,
-                opacity: 0.3,
+                spriteSet: this.wireSprites[wireComp.variant],
+                opacity: 0.5,
             };
         }
 
@@ -584,38 +588,9 @@ export class WireSystem extends GameSystemWithFilter {
             };
         }
 
-        const value = network.currentValue;
-        if (!value) {
-            // There is no value stored
-            return {
-                spriteSet: this.wireSprites.regular,
-                opacity: 0.3,
-            };
-        }
-
-        const valueType = value.getItemType();
-        if (valueType === "shape") {
-            return {
-                spriteSet: this.wireSprites.shape,
-                opacity: 1,
-            };
-        } else if (valueType === "color") {
-            return {
-                spriteSet: this.wireSprites.color,
-                opacity: 1,
-            };
-        } else if (valueType === "boolean") {
-            return {
-                spriteSet: this.wireSprites.regular,
-                opacity: isTrueItem(value) ? 1 : 0.5,
-            };
-        } else {
-            assertAlways(false, "Unknown item type: " + valueType);
-        }
-
         return {
-            spriteSet: this.wireSprites.regular,
-            opacity: 1,
+            spriteSet: this.wireSprites[wireComp.variant],
+            opacity: isTruthyItem(network.currentValue) ? 1 : 0.5,
         };
     }
 
@@ -641,9 +616,10 @@ export class WireSystem extends GameSystemWithFilter {
                     const staticComp = entity.components.StaticMapEntity;
                     parameters.context.globalAlpha = opacity;
                     staticComp.drawSpriteOnBoundsClipped(parameters, sprite, 0);
-                    parameters.context.globalAlpha = 1;
 
+                    // DEBUG Rendering
                     if (G_IS_DEV && globalConfig.debug.renderWireRotations) {
+                        parameters.context.globalAlpha = 1;
                         parameters.context.fillStyle = "red";
                         parameters.context.font = "5px Tahoma";
                         parameters.context.fillText(
@@ -691,6 +667,8 @@ export class WireSystem extends GameSystemWithFilter {
                 }
             }
         }
+
+        parameters.context.globalAlpha = 1;
     }
 
     /**
@@ -746,6 +724,8 @@ export class WireSystem extends GameSystemWithFilter {
                         continue;
                     }
 
+                    const variant = targetStaticComp.getVariant();
+
                     const {
                         rotation,
                         rotationVariant,
@@ -753,7 +733,7 @@ export class WireSystem extends GameSystemWithFilter {
                         root: this.root,
                         tile: new Vector(x, y),
                         rotation: targetStaticComp.originalRotation,
-                        variant: defaultBuildingVariant,
+                        variant,
                         layer: targetEntity.layer,
                     });
 
@@ -763,14 +743,10 @@ export class WireSystem extends GameSystemWithFilter {
                     if (targetStaticComp.rotation !== rotation || newType !== targetWireComp.type) {
                         // Change stuff
                         targetStaticComp.rotation = rotation;
-                        metaWire.updateVariants(targetEntity, rotationVariant, defaultBuildingVariant);
+                        metaWire.updateVariants(targetEntity, rotationVariant, variant);
 
                         // Update code as well
-                        targetStaticComp.code = getCodeFromBuildingData(
-                            metaWire,
-                            defaultBuildingVariant,
-                            rotationVariant
-                        );
+                        targetStaticComp.code = getCodeFromBuildingData(metaWire, variant, rotationVariant);
 
                         // Make sure the chunks know about the update
                         this.root.signals.entityChanged.dispatch(targetEntity);

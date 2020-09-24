@@ -3,11 +3,9 @@ import { enumColors } from "../colors";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 import { enumPinSlotType } from "../components/wired_pins";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTruthyItem, BooleanItem } from "../items/boolean_item";
-import { COLOR_ITEM_SINGLETONS, ColorItem } from "../items/color_item";
+import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
+import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
-import { ShapeItem } from "../items/shape_item";
-import { enumInvertedDirections } from "../../core/vector";
 
 export class LogicGateSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -24,7 +22,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
             [enumLogicGateType.analyzer]: this.compute_ANALYZE.bind(this),
             [enumLogicGateType.cutter]: this.compute_CUT.bind(this),
             [enumLogicGateType.unstacker]: this.compute_UNSTACK.bind(this),
-            [enumLogicGateType.shapecompare]: this.compute_SHAPECOMPARE.bind(this),
+            [enumLogicGateType.compare]: this.compute_COMPARE.bind(this),
             [enumLogicGateType.stacker]: this.compute_STACKER.bind(this),
             [enumLogicGateType.painter]: this.compute_PAINTER.bind(this),
         };
@@ -318,7 +316,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
      * @param {Array<BaseItem|null>} parameters
      * @returns {BaseItem}
      */
-    compute_SHAPECOMPARE(parameters) {
+    compute_COMPARE(parameters) {
         const itemA = parameters[0];
         const itemB = parameters[1];
 

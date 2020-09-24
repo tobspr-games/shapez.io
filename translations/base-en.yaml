@@ -566,15 +566,17 @@ buildings:
         default:
             name: &wire Wire
             description: &wire_desc Allows to connect logical components and can transfer items, colors or boolean signals.
+        second:
+            name: Wire (Type 2)
+            description: &wire_desc_second Allows to connect logical components and can transfer items, colors or boolean signals. Different colored wires do not connect.
+        third:
+            name: Wire (Type 3)
+            description: *wire_desc_second
 
     wire_tunnel:
         default:
             name: &wire_tunnel Wire Tunnel
             description: Allows to cross two wires without connecting them.
-
-        coating:
-            name: Wire Insulation
-            description: Allows to pass through signals without connecting to other wires on the sides.
 
     constant_signal:
         default:
@@ -589,20 +591,25 @@ buildings:
     logic_gate:
         default:
             name: &logic_gate AND Gate
-            description: Emits a truthy boolean signal if both inputs are truthy.
+            description: Emits a boolean "1" if both inputs are truthy.
         not:
-            name: NOT
-            description: Inverts the given signal.
+            name: NOT Gate
+            description: Emits a boolean "1" if the input is not truthy.
         xor:
-            name: XOR
-            description: Emits a truthy signal if one of the inputs is truthy, but not both.
+            name: XOR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
         or:
-            name: OR
-            description: Emits a truthy signal if one of the inputs is truthy.
+            name: OR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy.
 
-        transistor:
-            name: Gate
-            description: Only forwards the bottom input if the left input is true.
+    transistor:
+        default:
+            name: &transistor Gate
+            description: &transistor_desc Forwards the bottom input if the side input is truthy (a shape, color or "1").
+
+        mirrored:
+            name: *transistor
+            description: *transistor_desc
 
     filter:
         default:
@@ -619,14 +626,20 @@ buildings:
             name: &reader Belt Reader
             description: Allows to measure belt throughput. Outputs the last read item on the wires layer (once unlocked).
 
+    analyzer:
+        default:
+            name: &analyzer Shape Analyzer
+            description: Analyzes the top right quadrant of the lowest layer of the shape and returns its shape and color.
+
+    comparator:
+        default:
+            name: &comparator Compare
+            description: Returns boolean "1" if both items are exactly equal. Can compare shapes, items and booleans.
+
     virtual_processor:
         default:
             name: &virtual_processor Virtual Cutter
-            description: Virtually cuts the shape input from top to bottom and returns both halfs.
-
-        analyzer:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape and returns its shape and color
+            description: Computes
 
         rotater:
             name: Virtual Rotater
@@ -635,10 +648,6 @@ buildings:
         unstacker:
             name: Virtual Unstacker
             description: Returns the topmost layer to the right, and the remaining ones on the left.
-
-        shapecompare:
-            name: Compare
-            description: Returns true if both items are exactly equal. Can compare shapes, items and booleans.
 
         stacker:
             name: Virtual Stacker
@@ -1040,6 +1049,9 @@ keybindings:
         display: *display
         reader: *reader
         virtual_processor: *virtual_processor
+        transistor: *transistor
+        analyzer: *analyzer
+        comparator: *comparator
         # ---
 
         pipette: Pipette

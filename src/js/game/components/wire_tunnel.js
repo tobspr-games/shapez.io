@@ -5,13 +5,8 @@ export class WireTunnelComponent extends Component {
         return "WireTunnel";
     }
 
-    /**
-     * @param {object} param0
-     * @param {boolean=} param0.multipleDirections
-     */
-    constructor({ multipleDirections = true }) {
+    constructor() {
         super();
-        this.multipleDirections = multipleDirections;
 
         /**
          * Linked network, only if its not multiple directions
