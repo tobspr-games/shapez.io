@@ -30,7 +30,6 @@ export const enumHubGoalRewards = {
     reward_constant_signal: "reward_constant_signal",
     reward_logic_gates: "reward_logic_gates",
     reward_virtual_processing: "reward_virtual_processing",
-    reward_second_wire: "reward_second_wire",
 
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
@@ -244,15 +243,7 @@ export const tutorialGoals = [
         reward: enumHubGoalRewards.reward_virtual_processing,
     },
 
-    // 26 Secondary type of wire
-    {
-        // @TODO
-        shape: "CuCuCuCu",
-        required: 50000,
-        reward: enumHubGoalRewards.reward_second_wire,
-    },
-
-    // 27 Freeplay
+    // 26 Freeplay
     {
         // @TODO
         shape: "CuCuCuCu",

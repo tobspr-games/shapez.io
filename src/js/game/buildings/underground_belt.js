@@ -25,7 +25,7 @@ export const enumUndergroundBeltVariantToTier = {
     [enumUndergroundBeltVariants.tier2]: 1,
 };
 
-const colorsByRotationVariant = ["#6d9dff", "#9cad40"];
+const colorsByRotationVariant = ["#6d9dff", "#71ff9c"];
 
 const overlayMatrices = [
     // Sender

@@ -565,10 +565,11 @@ buildings:
     wire:
         default:
             name: &wire Wire
-            description: &wire_desc Allows to connect logical components and can transfer items, colors or boolean signals.
+            description: &wire_desc Transfers signals, which can be items, colors or booleans (1 / 0). Different colored wires do not connect.
+
         second:
-            name: Wire
-            description: Allows to connect logical components and can transfer items, colors or boolean signals. Different colored wires do not connect.
+            name: *wire
+            description: *wire_desc
 
     wire_tunnel:
         default:
@@ -578,7 +579,7 @@ buildings:
     constant_signal:
         default:
             name: &constant_signal Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or boolean.
+            description: Emits a constant signal, which can be either a shape, color or boolean (1 / 0).
 
     lever:
         default:
@@ -587,7 +588,7 @@ buildings:
 
     logic_gate:
         default:
-            name: &logic_gate AND Gate
+            name: AND Gate
             description: Emits a boolean "1" if both inputs are truthy.
         not:
             name: NOT Gate
@@ -683,7 +684,7 @@ storyRewards:
 
     reward_tunnel:
         title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
+        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items below belts and buildings with it!
 
     reward_rotater_ccw:
         title: CCW Rotating
@@ -774,12 +775,6 @@ storyRewards:
             - Build an <strong>automated machine</strong> to create any possible shape requested by the hub (This is cool, I swear!).<br><br>
             - Build something cool with wires.<br><br>
             - Continue to play regulary.
-
-    reward_second_wire:
-        title: Second Wire Type
-        desc: >-
-            Annoyed by wires automatically connecting? I just gave you another <strong>type of wire</strong>!<br><br>
-            Different types of wires do not connect to each other, so you can now build much compacter circuits.
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
