@@ -44,6 +44,8 @@ const envVars = [
     "SHAPEZ_CLI_LIVE_FTP_PW",
     "SHAPEZ_CLI_APPLE_ID",
     "SHAPEZ_CLI_APPLE_CERT_NAME",
+    "SHAPEZ_CLI_GITHUB_USER",
+    "SHAPEZ_CLI_GITHUB_TOKEN",
 ];
 
 for (let i = 0; i < envVars.length; ++i) {
@@ -79,6 +81,9 @@ docs.gulptasksDocs($, gulp, buildFolder);
 
 const standalone = require("./standalone");
 standalone.gulptasksStandalone($, gulp, buildFolder);
+
+const releaseUploader = require("./release-uploader");
+releaseUploader.gulptasksReleaseUploader($, gulp, buildFolder);
 
 const translations = require("./translations");
 translations.gulptasksTranslations($, gulp, buildFolder);
