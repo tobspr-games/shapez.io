@@ -32,10 +32,10 @@ export class HUDBuildingsToolbar extends HUDBaseToolbar {
             ],
             secondaryBuildings: [
                 MetaStorageBuilding,
+                MetaReaderBuilding,
                 MetaLeverBuilding,
                 MetaFilterBuilding,
                 MetaDisplayBuilding,
-                MetaReaderBuilding,
             ],
             visibilityCondition: () =>
                 !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "regular",

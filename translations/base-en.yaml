@@ -331,7 +331,7 @@ ingame:
         infoTexts:
             speed: Speed
             range: Range
-            storage: Storage
+            storage: Capacity
             oneItemPerSecond: 1 item / second
             itemsPerSecond: <x> items / s
             itemsPerSecondDouble: (x2)
@@ -601,7 +601,7 @@ buildings:
 
     transistor:
         default:
-            name: &transistor Gate
+            name: &transistor Transistor
             description: &transistor_desc Forwards the bottom input if the side input is truthy (a shape, color or "1").
 
         mirrored:
@@ -1039,7 +1039,7 @@ keybindings:
         storage: *storage
         wire: *wire
         constant_signal: *constant_signal
-        logic_gate: *logic_gate
+        logic_gate: Logic Gate
         lever: *lever
         filter: *filter
         wire_tunnel: *wire_tunnel
