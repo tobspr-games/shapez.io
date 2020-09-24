@@ -14,11 +14,7 @@ import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaStorageBuilding } from "../../buildings/storage";
-import { MetaLeverBuilding } from "../../buildings/lever";
-import { MetaFilterBuilding } from "../../buildings/filter";
-import { MetaDisplayBuilding } from "../../buildings/display";
-import { MetaReaderBuilding } from "../../buildings/reader";
-import {MetaPortableHubBuilding} from "../../buildings/portable_hub";
+import { MetaPortableHubBuilding } from "../../buildings/portable_hub";
 
 export class HUDBuildingsToolbar extends HUDBaseToolbar {
     constructor(root) {
