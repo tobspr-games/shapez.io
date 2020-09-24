@@ -257,13 +257,47 @@
             <key type="filename">sprites/belt/built/right_7.png</key>
             <key type="filename">sprites/belt/built/right_8.png</key>
             <key type="filename">sprites/belt/built/right_9.png</key>
+            <key type="filename">sprites/blueprints/analyzer.png</key>
             <key type="filename">sprites/blueprints/balancer-merger-inverse.png</key>
             <key type="filename">sprites/blueprints/balancer-merger.png</key>
             <key type="filename">sprites/blueprints/balancer-splitter-inverse.png</key>
+            <key type="filename">sprites/blueprints/balancer-splitter.png</key>
+            <key type="filename">sprites/blueprints/belt_left.png</key>
+            <key type="filename">sprites/blueprints/belt_right.png</key>
+            <key type="filename">sprites/blueprints/belt_top.png</key>
+            <key type="filename">sprites/blueprints/comparator.png</key>
+            <key type="filename">sprites/blueprints/constant_signal.png</key>
+            <key type="filename">sprites/blueprints/display.png</key>
+            <key type="filename">sprites/blueprints/lever.png</key>
+            <key type="filename">sprites/blueprints/logic_gate-not.png</key>
+            <key type="filename">sprites/blueprints/logic_gate-or.png</key>
+            <key type="filename">sprites/blueprints/logic_gate-xor.png</key>
+            <key type="filename">sprites/blueprints/logic_gate.png</key>
+            <key type="filename">sprites/blueprints/miner-chainable.png</key>
+            <key type="filename">sprites/blueprints/miner.png</key>
+            <key type="filename">sprites/blueprints/reader.png</key>
+            <key type="filename">sprites/blueprints/rotater-ccw.png</key>
+            <key type="filename">sprites/blueprints/rotater-rotate180.png</key>
+            <key type="filename">sprites/blueprints/rotater.png</key>
+            <key type="filename">sprites/blueprints/transistor-mirrored.png</key>
+            <key type="filename">sprites/blueprints/transistor.png</key>
+            <key type="filename">sprites/blueprints/trash.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry-tier2.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_entry.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit-tier2.png</key>
+            <key type="filename">sprites/blueprints/underground_belt_exit.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-painter.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-rotater.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-stacker.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor-unstacker.png</key>
+            <key type="filename">sprites/blueprints/virtual_processor.png</key>
+            <key type="filename">sprites/blueprints/wire_tunnel.png</key>
+            <key type="filename">sprites/buildings/analyzer.png</key>
             <key type="filename">sprites/buildings/balancer-merger-inverse.png</key>
             <key type="filename">sprites/buildings/balancer-merger.png</key>
             <key type="filename">sprites/buildings/balancer-splitter-inverse.png</key>
             <key type="filename">sprites/buildings/balancer-splitter.png</key>
+            <key type="filename">sprites/buildings/comparator.png</key>
             <key type="filename">sprites/buildings/constant_signal.png</key>
             <key type="filename">sprites/buildings/display.png</key>
             <key type="filename">sprites/buildings/lever.png</key>
@@ -281,10 +315,8 @@
             <key type="filename">sprites/buildings/underground_belt_entry.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit-tier2.png</key>
             <key type="filename">sprites/buildings/underground_belt_exit.png</key>
-            <key type="filename">sprites/buildings/virtual_processor-analyzer.png</key>
             <key type="filename">sprites/buildings/virtual_processor-painter.png</key>
             <key type="filename">sprites/buildings/virtual_processor-rotater.png</key>
-            <key type="filename">sprites/buildings/virtual_processor-shapecompare.png</key>
             <key type="filename">sprites/buildings/virtual_processor-stacker.png</key>
             <key type="filename">sprites/buildings/virtual_processor-unstacker.png</key>
             <key type="filename">sprites/buildings/virtual_processor.png</key>
@@ -303,10 +335,6 @@
             <key type="filename">sprites/wires/sets/second_forward.png</key>
             <key type="filename">sprites/wires/sets/second_split.png</key>
             <key type="filename">sprites/wires/sets/second_turn.png</key>
-            <key type="filename">sprites/wires/sets/third_cross.png</key>
-            <key type="filename">sprites/wires/sets/third_forward.png</key>
-            <key type="filename">sprites/wires/sets/third_split.png</key>
-            <key type="filename">sprites/wires/sets/third_turn.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -321,6 +349,13 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/blueprints/balancer.png</key>
+            <key type="filename">sprites/blueprints/cutter.png</key>
+            <key type="filename">sprites/blueprints/filter.png</key>
+            <key type="filename">sprites/blueprints/mixer.png</key>
+            <key type="filename">sprites/blueprints/painter-mirrored.png</key>
+            <key type="filename">sprites/blueprints/painter.png</key>
+            <key type="filename">sprites/blueprints/stacker.png</key>
             <key type="filename">sprites/buildings/balancer.png</key>
             <key type="filename">sprites/buildings/filter.png</key>
             <key type="filename">sprites/buildings/painter-mirrored.png</key>
@@ -338,6 +373,42 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites/blueprints/cutter-quad.png</key>
+            <key type="filename">sprites/blueprints/painter-quad.png</key>
+            <key type="filename">sprites/buildings/cutter-quad.png</key>
+            <key type="filename">sprites/buildings/painter-quad.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>192,48,384,96</rect>
+                <key>scale9Paddings</key>
+                <rect>192,48,384,96</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/blueprints/painter-double.png</key>
+            <key type="filename">sprites/blueprints/storage.png</key>
+            <key type="filename">sprites/buildings/painter-double.png</key>
+            <key type="filename">sprites/buildings/storage.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>96,96,192,192</rect>
+                <key>scale9Paddings</key>
+                <rect>96,96,192,192</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">sprites/buildings/belt_left.png</key>
             <key type="filename">sprites/buildings/belt_right.png</key>
             <key type="filename">sprites/buildings/belt_top.png</key>
@@ -352,22 +423,6 @@
                 <rect>32,32,63,63</rect>
                 <key>scale9Paddings</key>
                 <rect>32,32,63,63</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/buildings/cutter-quad.png</key>
-            <key type="filename">sprites/buildings/painter-quad.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>192,48,384,96</rect>
-                <key>scale9Paddings</key>
-                <rect>192,48,384,96</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -423,22 +478,6 @@
                 <rect>32,32,64,64</rect>
                 <key>scale9Paddings</key>
                 <rect>32,32,64,64</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/buildings/painter-double.png</key>
-            <key type="filename">sprites/buildings/storage.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>96,96,192,192</rect>
-                <key>scale9Paddings</key>
-                <rect>96,96,192,192</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

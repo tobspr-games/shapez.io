@@ -13,19 +13,12 @@ $buildingsAndVariants: belt, balancer, underground_belt, underground_belt-tier2,
     cutter, cutter-quad, rotater, rotater-ccw, stacker, mixer, painter-double, painter-quad, trash, storage,
     reader, rotater-rotate180, display, constant_signal, wire, wire_tunnel, logic_gate-or, logic_gate-not,
     logic_gate-xor, analyzer, virtual_processor-rotater, virtual_processor-unstacker,
-    virtual_processor-stacker, virtual_processor-painter;
+    virtual_processor-stacker, virtual_processor-painter, wire-second, painter, painter-mirrored;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
         /* @load-async */
         background-image: uiResource("res/ui/building_tutorials/#{$building}.png") !important;
     }
-}
-
-// Special cases for mirrored vairants
-[data-icon="building_tutorials/painter.png"],
-[data-icon="building_tutorials/painter-mirrored.png"] {
-    /* @load-async */
-    background-image: uiResource("res/ui/building_tutorials/painter.png") !important;
 }
 
 [data-icon="building_tutorials/balancer-merger.png"],
@@ -51,13 +44,6 @@ $buildingsAndVariants: belt, balancer, underground_belt, underground_belt-tier2,
 [data-icon="building_tutorials/lever.png"] {
     /* @load-async */
     background-image: uiResource("res/ui/building_tutorials/lever.png") !important;
-}
-
-// Wire types share tutorials
-[data-icon="building_tutorials/wire-second.png"],
-[data-icon="building_tutorials/wire-third.png"] {
-    /* @load-async */
-    background-image: uiResource("res/ui/building_tutorials/wire-second.png") !important;
 }
 
 // Logic gate

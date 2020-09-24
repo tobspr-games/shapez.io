@@ -550,7 +550,7 @@ buildings:
 
         quad:
             name: Painter (Quad)
-            description: Allows you to color each quadrant of the shape with a different color.
+            description: Allows you to color each quadrant of the shape individually. Only slots with a <strong>truthy signal</strong> on the wires layer will be painted!
 
     trash:
         default:
@@ -567,11 +567,8 @@ buildings:
             name: &wire Wire
             description: &wire_desc Allows to connect logical components and can transfer items, colors or boolean signals.
         second:
-            name: Wire (Type 2)
-            description: &wire_desc_second Allows to connect logical components and can transfer items, colors or boolean signals. Different colored wires do not connect.
-        third:
-            name: Wire (Type 3)
-            description: *wire_desc_second
+            name: Wire
+            description: Allows to connect logical components and can transfer items, colors or boolean signals. Different colored wires do not connect.
 
     wire_tunnel:
         default:
@@ -723,13 +720,13 @@ storyRewards:
 
     reward_painter_double:
         title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        desc: You have unlocked a variant of the <strong>painter</strong> - It works similar to the regular painter but processes <strong>two shapes at once</strong>, consuming just one color instead of two!
 
     reward_painter_quad:
         title: Quad Painting
         desc: >-
             You have unlocked a variant of the <strong>painter</strong> - It allows you to paint each part of the shape individually!<br><br>
-            To use it, connect each slot which should be painted on the wires layer!
+            Connect each slot you'd like to paint with a <strong>truthy signal</strong> (shape, item or boolean "1") on the wires layer!
 
     reward_storage:
         title: Storage Buffer

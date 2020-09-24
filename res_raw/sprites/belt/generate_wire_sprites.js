@@ -15,8 +15,7 @@ const lowerLineSize = 32;
 
 const variants = {
     first: "#61ef6f",
-    second: "#f0bd65",
-    third: "#5fb2f1",
+    second: "#5fb2f1",
     conflict: "#f74c4c",
 };
 
