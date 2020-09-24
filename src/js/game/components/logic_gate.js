@@ -12,7 +12,7 @@ export const enumLogicGateType = {
     rotater: "rotater",
     unstacker: "unstacker",
     cutter: "cutter",
-    shapecompare: "shapecompare",
+    compare: "compare",
     stacker: "stacker",
     painter: "painter",
 };

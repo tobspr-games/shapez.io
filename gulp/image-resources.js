@@ -61,17 +61,13 @@ function gulptasksImageResources($, gulp, buildFolder) {
 
     // Copies the atlas to the final destination
     gulp.task("imgres.atlas", () => {
-        return gulp
-            .src(["../res_built/atlas/*.png"])
-            .pipe($.cached("imgres.atlas"))
-            .pipe(gulp.dest(resourcesDestFolder));
+        return gulp.src(["../res_built/atlas/*.png"]).pipe(gulp.dest(resourcesDestFolder));
     });
 
     // Copies the atlas to the final destination after optimizing it (lossy compression)
     gulp.task("imgres.atlasOptimized", () => {
         return gulp
             .src(["../res_built/atlas/*.png"])
-            .pipe($.cached("imgres.atlasOptimized"))
             .pipe(
                 $.if(
                     fname => fileMustBeLossless(fname.history[0]),
@@ -86,17 +82,15 @@ function gulptasksImageResources($, gulp, buildFolder) {
 
     // Copies all resources which are no ui resources
     gulp.task("imgres.copyNonImageResources", () => {
-        return gulp
-            .src(nonImageResourcesGlobs)
-            .pipe($.cached("imgres.copyNonImageResources"))
-            .pipe(gulp.dest(resourcesDestFolder));
+        return gulp.src(nonImageResourcesGlobs).pipe(gulp.dest(resourcesDestFolder));
     });
 
     // Copies all ui resources
     gulp.task("imgres.copyImageResources", () => {
         return gulp
             .src(imageResourcesGlobs)
-            .pipe($.cached("copyImageResources"))
+
+            .pipe($.cached("imgres.copyImageResources"))
             .pipe(gulp.dest(path.join(resourcesDestFolder)));
     });
 
@@ -104,7 +98,6 @@ function gulptasksImageResources($, gulp, buildFolder) {
     gulp.task("imgres.copyImageResourcesOptimized", () => {
         return gulp
             .src(imageResourcesGlobs)
-            .pipe($.cached("imgres.copyImageResourcesOptimized"))
             .pipe(
                 $.if(
                     fname => fileMustBeLossless(fname.history[0]),

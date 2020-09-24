@@ -2,10 +2,16 @@ import { Component } from "../component";
 
 /** @enum {string} */
 export const enumWireType = {
-    regular: "regular",
+    forward: "forward",
     turn: "turn",
     split: "split",
     cross: "cross",
+};
+
+/** @enum {string} */
+export const enumWireVariant = {
+    first: "first",
+    second: "second",
 };
 
 export class WireComponent extends Component {
@@ -16,54 +22,21 @@ export class WireComponent extends Component {
     /**
      * @param {object} param0
      * @param {enumWireType=} param0.type
+     * @param {enumWireVariant=} param0.variant
      */
-    constructor({ type = enumWireType.regular }) {
+    constructor({ type = enumWireType.forward, variant = enumWireVariant.first }) {
         super();
         this.type = type;
+
+        /**
+         * The variant of the wire, different variants do not connect
+         * @type {enumWireVariant}
+         */
+        this.variant = variant;
 
         /**
          * @type {import("../systems/wire").WireNetwork}
          */
         this.linkedNetwork = null;
-    }
-
-    /**
-     * Returns the local connections
-     * @returns {import("../../core/utils").DirectionalObject}
-     */
-    getLocalConnections() {
-        return {
-            top: true,
-            right: false,
-            bottom: true,
-            left: false,
-        };
-
-        // switch (this.type) {
-        //     case enumWireType.regular:
-        //         return {
-        //             top: true,
-        //             right: false,
-        //             bottom: true,
-        //             left: false,
-        //         };
-        //     case enumWireType.turn:
-        //         return {
-        //             top: false,
-        //             right: true,
-        //             bottom: true,
-        //             left: false,
-        //         };
-        //     case enumWireType.split:
-        //         return {
-        //             top: false,
-        //             right: true,
-        //             bottom: true,
-        //             left: true,
-        //         };
-
-        //     default:
-        //         assertAlways(false, "Invalid wire type: " + this.type);
-        // }
     }
 }

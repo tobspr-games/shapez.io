@@ -1,22 +1,17 @@
+import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { STOP_PROPAGATION } from "../core/signal";
 import { round2Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { getBuildingDataFromCode } from "./building_codes";
+import { enumWireVariant } from "./components/wire";
 import { Entity } from "./entity";
+import { CHUNK_OVERLAY_RES } from "./map_chunk_view";
 import { MetaBuilding } from "./meta_building";
 import { GameRoot } from "./root";
 import { WireNetwork } from "./systems/wire";
-import { globalConfig } from "../core/config";
-import { CHUNK_OVERLAY_RES } from "./map_chunk_view";
 
 const logger = createLogger("ingame/logic");
-
-/** @enum {number} */
-export const enumWireEdgeFlag = {
-    empty: 0,
-    connected: 2,
-};
 
 /**
  * Typing helper
@@ -193,28 +188,72 @@ export class GameLogic {
      *
      * Computes the flag for a given tile
      * @param {object} param0
+     * @param {enumWireVariant} param0.wireVariant
      * @param {Vector} param0.tile The tile to check at
      * @param {enumDirection} param0.edge The edge to check for
-     * @param {number} param0.rotation The local tiles base rotation
      */
-    computeWireEdgeStatus({ tile, edge, rotation }) {
+    computeWireEdgeStatus({ wireVariant, tile, edge }) {
         const offset = enumDirectionToVector[edge];
-        const refTile = tile.add(offset);
-        // const angle = enumDirectionToAngle[edge];
+        const targetTile = tile.add(offset);
 
-        // // First, check if this edge can be connected from locally
-        // const canConnectLocally = rotation === angle || (rotation + 180) % 360 === angle;
+        // Search for relevant pins
+        const pinEntities = this.root.map.getLayersContentsMultipleXY(targetTile.x, targetTile.y);
 
-        const neighbourStatus = this.getWireEdgeFlag(refTile, edge);
+        // Go over all entities which could have a pin
+        for (let i = 0; i < pinEntities.length; ++i) {
+            const pinEntity = pinEntities[i];
+            const pinComp = pinEntity.components.WiredPins;
+            const staticComp = pinEntity.components.StaticMapEntity;
 
-        if (neighbourStatus === enumWireEdgeFlag.empty) {
-            // It's empty, no point in connecting
+            // Skip those who don't have pins
+            if (!pinComp) {
+                continue;
+            }
+
+            // Go over all pins
+            const pins = pinComp.slots;
+            for (let k = 0; k < pinComp.slots.length; ++k) {
+                const pinSlot = pins[k];
+                const pinLocation = staticComp.localTileToWorld(pinSlot.pos);
+                const pinDirection = staticComp.localDirectionToWorld(pinSlot.direction);
+
+                // Check if the pin has the right location
+                if (!pinLocation.equals(targetTile)) {
+                    continue;
+                }
+
+                // Check if the pin has the right direction
+                if (pinDirection !== enumInvertedDirections[edge]) {
+                    continue;
+                }
+
+                // Found a pin!
+                return true;
+            }
+        }
+
+        // Now check if there's a connectable entity on the wires layer
+        const targetEntity = this.root.map.getTileContent(targetTile, "wires");
+        if (!targetEntity) {
             return false;
         }
 
-        if (neighbourStatus === enumWireEdgeFlag.connected) {
+        const targetStaticComp = targetEntity.components.StaticMapEntity;
+
+        // Check if its a crossing
+        const wireTunnelComp = targetEntity.components.WireTunnel;
+        if (wireTunnelComp) {
             return true;
         }
+
+        // Check if its a wire
+        const wiresComp = targetEntity.components.Wire;
+        if (!wiresComp) {
+            return false;
+        }
+
+        // It's connected if its the same variant
+        return wiresComp.variant === wireVariant;
     }
 
     /**
@@ -303,85 +342,7 @@ export class GameLogic {
         return !!overlayMatrix[localPosition.x + localPosition.y * 3];
     }
 
-    /**
-     * Gets the flag at the given tile
-     * @param {Vector} tile
-     * @param {enumDirection} edge
-     * @returns {enumWireEdgeFlag}
-     */
-    getWireEdgeFlag(tile, edge) {
-        // Search for relevant pins
-        const pinEntities = this.root.map.getLayersContentsMultipleXY(tile.x, tile.y);
-
-        // Go over all entities which could have a pin
-        for (let i = 0; i < pinEntities.length; ++i) {
-            const pinEntity = pinEntities[i];
-            const pinComp = pinEntity.components.WiredPins;
-            const staticComp = pinEntity.components.StaticMapEntity;
-
-            // Skip those who don't have pins
-            if (!pinComp) {
-                continue;
-            }
-
-            // Go over all pins
-            const pins = pinComp.slots;
-            for (let k = 0; k < pinComp.slots.length; ++k) {
-                const pinSlot = pins[k];
-                const pinLocation = staticComp.localTileToWorld(pinSlot.pos);
-                const pinDirection = staticComp.localDirectionToWorld(pinSlot.direction);
-
-                // Check if the pin has the right location
-                if (!pinLocation.equals(tile)) {
-                    continue;
-                }
-
-                // Check if the pin has the right direction
-                if (pinDirection !== enumInvertedDirections[edge]) {
-                    continue;
-                }
-
-                // Found a pin!
-                return enumWireEdgeFlag.connected;
-            }
-        }
-
-        // Now check if there's a connectable wire
-        const targetEntity = this.root.map.getTileContent(tile, "wires");
-        if (!targetEntity) {
-            return enumWireEdgeFlag.empty;
-        }
-
-        const targetStaticComp = targetEntity.components.StaticMapEntity;
-
-        // Check if its a crossing
-        const wireTunnelComp = targetEntity.components.WireTunnel;
-        if (wireTunnelComp) {
-            // Check if the crossing is connected
-            if (wireTunnelComp.multipleDirections) {
-                return enumWireEdgeFlag.connected;
-            } else {
-                // Its a coating, check if it matches the direction
-                const referenceDirection = targetStaticComp.localDirectionToWorld(enumDirection.top);
-                return referenceDirection === edge || enumInvertedDirections[referenceDirection] === edge
-                    ? enumWireEdgeFlag.connected
-                    : enumWireEdgeFlag.empty;
-            }
-        }
-
-        // Check if its a wire
-        const wiresComp = targetEntity.components.Wire;
-        if (!wiresComp) {
-            return enumWireEdgeFlag.empty;
-        }
-
-        // const refAngle = enumDirectionToAngle[edge];
-        // const refRotation = targetEntity.components.StaticMapEntity.originalRotation;
-        // const canConnectRemotely = refRotation === refAngle || (refRotation + 180) % 360 === refAngle;
-
-        // Actually connected
-        return enumWireEdgeFlag.connected;
-    }
+    g(tile, edge) {}
 
     /**
      * Returns the acceptors and ejectors which affect the current tile

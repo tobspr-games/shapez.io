@@ -64,6 +64,14 @@ export class StaticMapEntityComponent extends Component {
     }
 
     /**
+     * Returns the buildings variant
+     * @returns {string}
+     */
+    getVariant() {
+        return getBuildingDataFromCode(this.code).variant;
+    }
+
+    /**
      * Copy the current state to another component
      * @param {Component} otherComponent
      */

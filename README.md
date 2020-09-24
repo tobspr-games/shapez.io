@@ -92,6 +92,28 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 4. Add the system in `src/js/game/game_system_manager.js` (To `this.systems` and also call `add` in the `internalInitSystems()` method)
 5. If your system should draw stuff, this is a bit more complicated. Have a look at existing systems on how they do it.
 
+#### Checklist for a new building / testing it
+
+This is a quick checklist, if a new building is added this points should be fulfilled:
+
+2. The translation for all variants is done and finalized
+3. The artwork (regular sprite) is finalized
+4. The blueprint sprite has been generated and is up to date
+5. The building has been added to the appropriate toolbar
+6. The building has a keybinding which makes sense
+7. The building has a reward assigned and is unlocked at a meaningful point
+8. The reward for the building has a proper translation
+9. The reward for the building has a proper image
+10. The building has a proper tutorial image assigned
+11. The buliding has a proper toolbar icon
+12. The reward requires a proper shape
+13. The building has a proper silhouette color
+14. The building has a proper matrix for being rendered on the minimap
+15. The building has proper statistics in the dialog
+16. The building properly contributes to the shapes produced analytics
+17. The building is properly persisted in the savegame
+18. The building is explained properly, ideally via an interactive tutorial
+
 ### Assets
 
 For most assets I use Adobe Photoshop, you can find them in `assets/`.

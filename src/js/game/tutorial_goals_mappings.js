@@ -53,7 +53,6 @@ export const enumHubGoalRewardsToContentUnlocked = {
     [enumHubGoalRewards.reward_constant_signal]: typed([
         [MetaConstantSignalBuilding, defaultBuildingVariant],
     ]),
-    [enumHubGoalRewards.reward_second_wire]: null, // @TODO!
     [enumHubGoalRewards.reward_logic_gates]: null, // @TODO!
     [enumHubGoalRewards.reward_virtual_processing]: null, // @TODO!
 

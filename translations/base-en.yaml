@@ -331,7 +331,7 @@ ingame:
         infoTexts:
             speed: Speed
             range: Range
-            storage: Storage
+            storage: Capacity
             oneItemPerSecond: 1 item / second
             itemsPerSecond: <x> items / s
             itemsPerSecondDouble: (x2)
@@ -528,7 +528,7 @@ buildings:
     stacker:
         default:
             name: &stacker Stacker
-            description: Stacks both items. If they can not be merged, the right item is placed above the left item.
+            description: Combines both items side by side. If this is not possible, they are stacked on top of each other.
 
     mixer:
         default:
@@ -538,11 +538,11 @@ buildings:
     painter:
         default:
             name: &painter Painter
-            description: &painter_desc Colors the whole shape on the left input with the color from the top input.
+            description: &painter_desc Paints the whole shape on the left input with the color from the top input.
 
         mirrored:
             name: *painter
-            description: *painter_desc
+            description: Paints the whole shape on the left input with the color from the bottom input.
 
         double:
             name: Painter (Double)
@@ -550,7 +550,7 @@ buildings:
 
         quad:
             name: Painter (Quad)
-            description: Allows you to color each quadrant of the shape with a different color.
+            description: Allows you to color each quadrant of the shape individually. Only slots with a <strong>truthy signal</strong> on the wires layer will be painted!
 
     trash:
         default:
@@ -565,49 +565,54 @@ buildings:
     wire:
         default:
             name: &wire Wire
-            description: &wire_desc Allows to connect logical components and can transfer items, colors or boolean signals.
+            description: &wire_desc Transfers signals, which can be items, colors or booleans (1 / 0). Different colored wires do not connect.
+
+        second:
+            name: *wire
+            description: *wire_desc
 
     wire_tunnel:
         default:
             name: &wire_tunnel Wire Tunnel
             description: Allows to cross two wires without connecting them.
 
-        coating:
-            name: Wire Insulation
-            description: Allows to pass through signals without connecting to other wires on the sides.
-
     constant_signal:
         default:
             name: &constant_signal Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or boolean.
+            description: Emits a constant signal, which can be either a shape, color or boolean (1 / 0).
 
     lever:
         default:
             name: &lever Switch
-            description: Can be toggled to emit a boolean signal, which can then be used to control for example an item filter.
+            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer, which can then be used to control for example an item filter.
 
     logic_gate:
         default:
-            name: &logic_gate AND Gate
-            description: Emits a truthy boolean signal if both inputs are truthy.
+            name: AND Gate
+            description: Emits a boolean "1" if both inputs are truthy.
         not:
-            name: NOT
-            description: Inverts the given signal.
+            name: NOT Gate
+            description: Emits a boolean "1" if the input is not truthy.
         xor:
-            name: XOR
-            description: Emits a truthy signal if one of the inputs is truthy, but not both.
+            name: XOR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
         or:
-            name: OR
-            description: Emits a truthy signal if one of the inputs is truthy.
+            name: OR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy.
 
-        transistor:
-            name: Gate
-            description: Only forwards the bottom input if the left input is true.
+    transistor:
+        default:
+            name: &transistor Transistor
+            description: &transistor_desc Forwards the bottom input if the side input is truthy (a shape, color or "1").
+
+        mirrored:
+            name: *transistor
+            description: *transistor_desc
 
     filter:
         default:
             name: &filter Filter
-            description: Connect with a signal to route all matching items to the top and the remaining to the right. Can be controlled with boolean signals too.
+            description: Connect a signal to route all matching items to the top and the remaining to the right. Can be controlled with boolean signals too.
 
     display:
         default:
@@ -619,14 +624,20 @@ buildings:
             name: &reader Belt Reader
             description: Allows to measure belt throughput. Outputs the last read item on the wires layer (once unlocked).
 
+    analyzer:
+        default:
+            name: &analyzer Shape Analyzer
+            description: Analyzes the top right quadrant of the lowest layer of the shape and returns its shape and color.
+
+    comparator:
+        default:
+            name: &comparator Compare
+            description: Returns boolean "1" if both items are exactly equal. Can compare shapes, items and booleans.
+
     virtual_processor:
         default:
             name: &virtual_processor Virtual Cutter
-            description: Virtually cuts the shape input from top to bottom and returns both halfs.
-
-        analyzer:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape and returns its shape and color
+            description: Computes
 
         rotater:
             name: Virtual Rotater
@@ -635,16 +646,7 @@ buildings:
         unstacker:
             name: Virtual Unstacker
             description: Returns the topmost layer to the right, and the remaining ones on the left.
-
-        shapecompare:
-            name: Compare
-            description: Returns true if both items are exactly equal. Can compare shapes, items and booleans.
-
-    portable_hub:
-        default:
-            name: &portable_hub Portable hub
-            description: Like the hub but mini
-
+        
         stacker:
             name: Virtual Stacker
             description: Virtually stacks the right shape onto the left.
@@ -653,11 +655,20 @@ buildings:
             name: Virtual Painter
             description: Virtually paints the shape from the bottom input with the shape on the right input.
 
+        shapecompare:
+            name: Compare
+            description: Returns true if both items are exactly equal. Can compare shapes, items and booleans.
+
+        portable_hub:
+            default:
+                name: &portable_hub Portable hub
+                description: Like the hub but mini
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes in half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I have given you the trash can, which destroys everything you put into it!
+        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
 
     reward_rotater:
         title: Rotating
@@ -670,7 +681,7 @@ storyRewards:
 
     reward_mixer:
         title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
+        desc: The <strong>mixer</strong> has been unlocked - It mixes two colors using <strong>additive blending</strong>!
 
     reward_stacker:
         title: Stacker
@@ -682,7 +693,7 @@ storyRewards:
 
     reward_tunnel:
         title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items through belts and buildings with it!
+        desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items below belts and buildings with it!
 
     reward_rotater_ccw:
         title: CCW Rotating
@@ -701,12 +712,12 @@ storyRewards:
     reward_merger:
         title: Compact Merger
         desc: >-
-            You have unlocked a merger variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
+            You have unlocked a <strong>merger</strong> variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one belt!
 
     reward_splitter:
         title: Compact Splitter
         desc: >-
-            You have unlocked a splitter variant of the <strong>balancer</strong> - It accepts one input and splits them into two!
+            You have unlocked a <strong>splitter</strong> variant of the <strong>balancer</strong> - It accepts one input and splits them into two!
 
     reward_belt_reader:
         title: Belt reader
@@ -719,13 +730,13 @@ storyRewards:
 
     reward_painter_double:
         title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
+        desc: You have unlocked a variant of the <strong>painter</strong> - It works similar to the regular painter but processes <strong>two shapes at once</strong>, consuming just one color instead of two!
 
     reward_painter_quad:
         title: Quad Painting
         desc: >-
             You have unlocked a variant of the <strong>painter</strong> - It allows you to paint each part of the shape individually!<br><br>
-            To use it, connect each slot which should be painted on the wires layer!
+            Connect each slot you'd like to paint with a <strong>truthy signal</strong> (shape, item or boolean "1") on the wires layer!
 
     reward_storage:
         title: Storage Buffer
@@ -756,7 +767,8 @@ storyRewards:
     reward_constant_signal:
         title: Constant Signal
         desc: >-
-            You can now emit a <strong>constant signal</strong> on the wires layer! This is useful to connect it to <strong>item filters</strong> for example!
+            You unlocked the <strong>constant signal</strong> building on the wires layer! This is useful to connect it to <strong>item filters</strong> for example.<br><br>
+            The constant signal can emit a <strong>shape</strong>, <strong>color</strong> or <strong>boolean</strong> (1 / 0).
 
     reward_logic_gates:
         title: Logic Gates
@@ -773,12 +785,6 @@ storyRewards:
             - Build an <strong>automated machine</strong> to create any possible shape requested by the hub (This is cool, I swear!).<br><br>
             - Build something cool with wires.<br><br>
             - Continue to play regulary.
-
-    reward_second_wire:
-        title: Second Wire Type
-        desc: >-
-            Annoyed by wires automatically connecting? I just gave you another <strong>type of wire</strong>!<br><br>
-            Different types of wires do not connect to each other, so you can now build much compacter circuits.
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -1038,14 +1044,18 @@ keybindings:
         storage: *storage
         wire: *wire
         constant_signal: *constant_signal
-        logic_gate: *logic_gate
-        lever: *lever
+        logic_gate: Logic Gate
+        lever: Switch (regular)
+        lever_wires: Switch (wires)
         filter: *filter
         wire_tunnel: *wire_tunnel
         display: *display
         reader: *reader
         portable_hub: *portable_hub
         virtual_processor: *virtual_processor
+        transistor: *transistor
+        analyzer: *analyzer
+        comparator: *comparator
         # ---
 
         pipette: Pipette
@@ -1148,3 +1158,4 @@ tips:
     - This game has a lot of useful keybindings! Be sure to check out the settings page.
     - This game has a lot of settings, be sure to check them out!
     - The marker to your hub has a small compass to indicate its direction!
+    - To clear belts, cut the area and then paste it at the same location.

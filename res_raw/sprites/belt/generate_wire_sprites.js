@@ -10,8 +10,14 @@ const path = require("path");
 const outputFolder = path.join(__dirname, "..", "wires", "sets");
 
 const dimensions = 192;
-const lineSize = 12;
-const lowerLineSize = 20;
+const lineSize = 14;
+const lowerLineSize = 32;
+
+const variants = {
+    first: "#61ef6f",
+    second: "#5fb2f1",
+    conflict: "#f74c4c",
+};
 
 function hexToRGB(h) {
     let r = 0,
@@ -122,13 +128,6 @@ function HSLToRGB(h, s, l) {
 async function run() {
     console.log("Running");
 
-    const variants = {
-        regular: "#25fff2",
-        color: "#eba458",
-        shape: "#8858eb",
-        conflict: "#ff3e3e",
-    };
-
     const promises = [];
 
     for (const variantId in variants) {
@@ -163,19 +162,29 @@ async function run() {
             context.quality = "best";
             context.clearRect(0, 0, dimensions, dimensions);
 
-            context.strokeStyle = hexDarkenedColor;
-            context.lineWidth = lowerLineSize;
-            context.lineCap = "square";
-            context.imageSmoothingEnabled = false;
+            const lineCanvas = createCanvas(dimensions, dimensions);
+            const lineContext = lineCanvas.getContext("2d");
+            lineContext.quality = "best";
+            lineContext.clearRect(0, 0, dimensions, dimensions);
+            lineContext.strokeStyle = hexDarkenedColor;
+            lineContext.lineWidth = lowerLineSize;
+            lineContext.lineCap = "square";
+            lineContext.imageSmoothingEnabled = false;
 
             // Draw lower lines
             partLines.forEach(([x1, y1, x2, y2]) => {
-                context.beginPath();
-                context.moveTo(x1 * dimensions, y1 * dimensions);
-                context.lineTo(x2 * dimensions, y2 * dimensions);
-                context.stroke();
+                lineContext.beginPath();
+                lineContext.moveTo(x1 * dimensions, y1 * dimensions);
+                lineContext.lineTo(x2 * dimensions, y2 * dimensions);
+                lineContext.stroke();
             });
 
+            context.globalAlpha = 0.4;
+            context.drawImage(lineCanvas, 0, 0, dimensions, dimensions);
+
+            context.globalAlpha = 1;
+            context.imageSmoothingEnabled = false;
+            context.lineCap = "square";
             context.strokeStyle = variantColor;
             context.lineWidth = lineSize;
 
@@ -196,29 +205,6 @@ async function run() {
 
     console.log("Waiting for completion");
     await Promise.all(promises);
-
-    // Also wait a bit more
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    console.log("Copying files to all locations");
-
-    // // Copy other files
-    fs.copyFileSync(
-        path.join(outputFolder, "regular_forward.png"),
-        path.join(__dirname, "..", "buildings", "wire.png")
-    );
-    fs.copyFileSync(
-        path.join(outputFolder, "regular_turn.png"),
-        path.join(__dirname, "..", "buildings", "wire-turn.png")
-    );
-    fs.copyFileSync(
-        path.join(outputFolder, "regular_split.png"),
-        path.join(__dirname, "..", "buildings", "wire-split.png")
-    );
-    fs.copyFileSync(
-        path.join(outputFolder, "regular_cross.png"),
-        path.join(__dirname, "..", "buildings", "wire-cross.png")
-    );
 
     console.log("Done!");
 }

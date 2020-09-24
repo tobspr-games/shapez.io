@@ -26,7 +26,7 @@ export const KEYMAPPINGS = {
         exportScreenshot: { keyCode: 114 }, // F3PS
         toggleFPSInfo: { keyCode: 115 }, // F4
 
-        switchLayers: { keyCode: key("Y") },
+        switchLayers: { keyCode: key("E") },
     },
 
     navigation: {
@@ -44,6 +44,7 @@ export const KEYMAPPINGS = {
     },
 
     buildings: {
+        // Primary Toolbar
         belt: { keyCode: key("1") },
         balancer: { keyCode: key("2") },
         underground_belt: { keyCode: key("3") },
@@ -54,20 +55,28 @@ export const KEYMAPPINGS = {
         mixer: { keyCode: key("8") },
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
-        storage: { keyCode: key("I") },
 
-        lever: { keyCode: key("L") },
-        filter: { keyCode: key("B") },
-        display: { keyCode: key("N") },
-        reader: { keyCode: key("J") },
+        // Secondary toolbar
+        storage: { keyCode: key("Y") },
+        reader: { keyCode: key("U") },
+        lever: { keyCode: key("I") },
+        filter: { keyCode: key("O") },
+        display: { keyCode: key("P") },
 
+        // Wires toolbar
         wire: { keyCode: key("1") },
         wire_tunnel: { keyCode: key("2") },
         constant_signal: { keyCode: key("3") },
-        logic_gate: { keyCode: key("4") },
-        virtual_processor: { keyCode: key("5") },
 
         portable_hub: { keyCode: key("P") },
+      
+        lever_wires: { keyCode: key("4") },
+        logic_gate: { keyCode: key("5") },
+        virtual_processor: { keyCode: key("6") },
+        transistor: { keyCode: key("7") },
+        analyzer: { keyCode: key("8") },
+        comparator: { keyCode: key("9") },
+
     },
 
     placement: {
