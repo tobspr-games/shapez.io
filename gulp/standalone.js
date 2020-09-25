@@ -1,3 +1,4 @@
+require('colors');
 const packager = require("electron-packager");
 const path = require("path");
 const { getVersion } = require("./buildutils");
@@ -138,7 +139,11 @@ function gulptasksStandalone($, gulp) {
                         fs.chmodSync(path.join(appPath, "play.sh"), 0o775);
                     }
 
-                    if (platform === "darwin") {
+                    if (process.platform === "win32" && platform === "darwin") {
+                        console.warn("Cross-building for macOS on Windows: dereferencing symlinks.\n".red +
+                        "This will nearly double app size and make code signature invalid. Sorry!\n".red.bold +
+                        "For more information, see " + "https://github.com/electron/electron-packager/issues/71".underline);
+
                         // Clear up framework folders
                         fs.writeFileSync(
                             path.join(appPath, "play.sh"),
