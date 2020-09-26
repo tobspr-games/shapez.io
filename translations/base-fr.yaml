@@ -540,19 +540,19 @@ buildings:
     painter:
         default:
             name: &painter Peintre
-            description: &painter_desc Colorie entièrement la forme de gauche avec la couleur de droite.
+            description: &painter_desc Colorie entièrement la forme venant de gauche avec la couleur entrant en haut.
 
         mirrored:
             name: *painter
-            description: Colorie entièrement la forme de gauche avec la couleur de gauche.
+            description: Colorie entièrement la forme venant de gauche avec la couleur entrant en bas.
 
         double:
             name: Peintre (double)
-            description: Colorie les deux formes de gauche avec la couleur de droite.
+            description: Colorie les deux formes venant de gauche avec la couleur entrant en haut.
 
         quad:
             name: Peintre (quadruple)
-            description: Colorie chaque quadrant d’une forme avec une couleur différente.
+            description: Colorie chaque quadrant d’une forme avec une couleur différente. Seulement les parties avec un <strong>signal vrai</strong> du calque de câblage sera peint !
 
     trash:
         default:
