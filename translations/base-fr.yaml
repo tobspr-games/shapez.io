@@ -195,7 +195,7 @@ dialogs:
         text: >-
             Êtes-vous sûr de vouloir supprimer cette partie ?<br><br>
             '<savegameName>' au niveau <savegameLevel><br><br>
-            Cela sera définitif!
+            Cela sera définitif !
 
     savegameDeletionError:
         title: Impossible de supprimer
@@ -435,7 +435,7 @@ ingame:
 
     # Connected miners
     connectedMiners:
-        one_miner: 1 Extracteur
+        one_miner: 1 extracteur
         n_miners: <amount> Extracteurs
         limited_items: Limité à <max_throughput>
 
@@ -870,14 +870,14 @@ settings:
                 Le jeu est divisé en secteurs de 16×16 cases. Si ce réglage est activé, les limites de chaque secteur sont affichées.
 
         pickMinerOnPatch:
-            title: Choisir un extracteur sur un emplacement de ressource.
+            title: Choisir un extracteur sur une mine de ressource.
             description: >-
-                Activé par défaut, sélectionne l'extracteur si vous utilisez la pipette lors du survol d'un emplacement de ressource.
+                Activé par défaut, sélectionne l'extracteur si vous utilisez la pipette lors du survol d'une mine de ressource.
 
         simplifiedBelts:
-            title: Convoyeurs simplifiés (Laid)
+            title: Convoyeurs simplifiés (Moche)
             description: >-
-                Désactive le rendu des éléments des convoyeurs sauf lors du survol du convoyeurs pour économiser des performances. Je ne recommande pas de jouer avec ce réglage si vous n'avez pas absolument besoin de performance.
+                Désactive le rendu des éléments des convoyeurs sauf lors du survol du convoyeur pour économiser des performances. Je ne recommande pas de jouer avec ce réglage si vous n'avez pas absolument besoin de performance.
 
         enableMousePan:
             title: Activer le déplacement à la souris
