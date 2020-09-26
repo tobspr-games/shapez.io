@@ -159,7 +159,7 @@ mainMenu:
 
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
-    savegameUnnamed: Sans nom
+    savegameUnnamed: Sans titre
 
 dialogs:
     buttons:
