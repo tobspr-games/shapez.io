@@ -23,19 +23,19 @@ const fixedImprovements = [0.5, 0.5, 1, 1, 2, 2];
 export const UPGRADES = {
     belt: [
         {
-            required: [{ shape: "CuCuCuCu", amount: 150 }],
+            required: [{ shape: "CuCuCuCu", amount: 60 }],
         },
         {
-            required: [{ shape: "--CuCu--", amount: 1000 }],
+            required: [{ shape: "--CuCu--", amount: 500 }],
         },
         {
-            required: [{ shape: "CpCpCpCp", amount: 5000 }],
+            required: [{ shape: "CpCpCpCp", amount: 1000 }],
         },
         {
-            required: [{ shape: "SrSrSrSr:CyCyCyCy", amount: 12000 }],
+            required: [{ shape: "SrSrSrSr:CyCyCyCy", amount: 6000 }],
         },
         {
-            required: [{ shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", amount: 20000 }],
+            required: [{ shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", amount: 25000 }],
         },
         {
             required: [{ shape: finalGameShape, amount: 50000 }],
@@ -45,73 +45,73 @@ export const UPGRADES = {
 
     miner: [
         {
-            required: [{ shape: "RuRuRuRu", amount: 400 }],
+            required: [{ shape: "RuRuRuRu", amount: 300 }],
         },
         {
-            required: [{ shape: "Cu------", amount: 3000 }],
+            required: [{ shape: "Cu------", amount: 800 }],
         },
         {
-            required: [{ shape: "ScScScSc", amount: 7000 }],
+            required: [{ shape: "ScScScSc", amount: 3500 }],
         },
         {
-            required: [{ shape: "CwCwCwCw:WbWbWbWb", amount: 15000 }],
+            required: [{ shape: "CwCwCwCw:WbWbWbWb", amount: 23000 }],
         },
         {
-            required: [{ shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", amount: 30000 }],
+            required: [{ shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", amount: 50000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 65000 }],
+            required: [{ shape: finalGameShape, amount: 50000 }],
             excludePrevious: true,
         },
     ],
 
     processors: [
         {
-            required: [{ shape: "SuSuSuSu", amount: 600 }],
+            required: [{ shape: "SuSuSuSu", amount: 500 }],
         },
         {
-            required: [{ shape: "RuRu----", amount: 2000 }],
+            required: [{ shape: "RuRu----", amount: 600 }],
         },
         {
-            required: [{ shape: "CgScScCg", amount: 15000 }],
+            required: [{ shape: "CgScScCg", amount: 3500 }],
         },
         {
-            required: [{ shape: "CwCrCwCr:SgSgSgSg", amount: 20000 }],
+            required: [{ shape: "CwCrCwCr:SgSgSgSg", amount: 25000 }],
         },
         {
-            required: [{ shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", amount: 30000 }],
+            required: [{ shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", amount: 50000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 75000 }],
+            required: [{ shape: finalGameShape, amount: 50000 }],
             excludePrevious: true,
         },
     ],
 
     painting: [
         {
-            required: [{ shape: "RbRb----", amount: 1000 }],
+            required: [{ shape: "RbRb----", amount: 600 }],
         },
         {
-            required: [{ shape: "WrWrWrWr", amount: 3000 }],
+            required: [{ shape: "WrWrWrWr", amount: 3800 }],
         },
         {
-            required: [{ shape: "RpRpRpRp:CwCwCwCw", amount: 15000 }],
+            required: [{ shape: "RpRpRpRp:CwCwCwCw", amount: 6500 }],
         },
         {
-            required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp", amount: 20000 }],
+            required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp", amount: 25000 }],
         },
         {
-            required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp:CwCwCwCw", amount: 30000 }],
+            required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp:CwCwCwCw", amount: 50000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 100000 }],
+            required: [{ shape: finalGameShape, amount: 50000 }],
             excludePrevious: true,
         },
     ],
 };
 
 // Tiers need % of the previous tier as requirement too
-const tierGrowth = 1.8;
+const tierGrowth = 2.5;
 
 // Automatically generate tier levels
 for (const upgradeId in UPGRADES) {

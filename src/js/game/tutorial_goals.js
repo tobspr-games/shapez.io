@@ -43,7 +43,7 @@ export const tutorialGoals = [
     // Circle
     {
         shape: "CuCuCuCu", // belts t1
-        required: 40,
+        required: 30,
         reward: enumHubGoalRewards.reward_cutter_and_trash,
     },
 
@@ -59,14 +59,14 @@ export const tutorialGoals = [
     // Rectangle
     {
         shape: "RuRuRuRu", // miners t1
-        required: 85,
+        required: 70,
         reward: enumHubGoalRewards.reward_balancer,
     },
 
     // 4
     {
         shape: "RuRu----", // processors t2
-        required: 100,
+        required: 70,
         reward: enumHubGoalRewards.reward_rotater,
     },
 
@@ -74,14 +74,14 @@ export const tutorialGoals = [
     // Rotater
     {
         shape: "Cu----Cu", // belts t2
-        required: 175,
+        required: 170,
         reward: enumHubGoalRewards.reward_tunnel,
     },
 
     // 6
     {
         shape: "Cu------", // miners t2
-        required: 250,
+        required: 270,
         reward: enumHubGoalRewards.reward_painter,
     },
 
@@ -89,14 +89,14 @@ export const tutorialGoals = [
     // Painter
     {
         shape: "CrCrCrCr", // unused
-        required: 500,
+        required: 300,
         reward: enumHubGoalRewards.reward_rotater_ccw,
     },
 
     // 8
     {
         shape: "RbRb----", // painter t2
-        required: 700,
+        required: 480,
         reward: enumHubGoalRewards.reward_mixer,
     },
 
@@ -104,7 +104,7 @@ export const tutorialGoals = [
     // Mixing (purple)
     {
         shape: "CpCpCpCp", // belts t3
-        required: 800,
+        required: 600,
         reward: enumHubGoalRewards.reward_merger,
     },
 
@@ -112,7 +112,7 @@ export const tutorialGoals = [
     // STACKER: Star shape + cyan
     {
         shape: "ScScScSc", // miners t3
-        required: 900,
+        required: 800,
         reward: enumHubGoalRewards.reward_stacker,
     },
 
@@ -128,7 +128,7 @@ export const tutorialGoals = [
     // Blueprints
     {
         shape: "CbCbCbRb:CwCwCwCw",
-        required: 1250,
+        required: 1000,
         reward: enumHubGoalRewards.reward_blueprints,
     },
 
@@ -136,7 +136,7 @@ export const tutorialGoals = [
     // Tunnel Tier 2
     {
         shape: "RpRpRpRp:CwCwCwCw", // painting t3
-        required: 5000,
+        required: 3800,
         reward: enumHubGoalRewards.reward_underground_belt_tier_2,
     },
 
@@ -145,7 +145,7 @@ export const tutorialGoals = [
     {
         // @todo
         shape: "CuCuCuCu",
-        required: 7000,
+        required: 0,
         reward: enumHubGoalRewards.reward_belt_reader,
     },
 
@@ -153,7 +153,7 @@ export const tutorialGoals = [
     // Storage
     {
         shape: "SrSrSrSr:CyCyCyCy", // unused
-        required: 7500,
+        required: 10000,
         reward: enumHubGoalRewards.reward_storage,
     },
 
@@ -161,7 +161,7 @@ export const tutorialGoals = [
     // Quad Cutter
     {
         shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
-        required: 12500,
+        required: 6000,
         reward: enumHubGoalRewards.reward_cutter_quad,
     },
 
@@ -169,7 +169,7 @@ export const tutorialGoals = [
     // Double painter
     {
         shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
-        required: 15000,
+        required: 20000,
         reward: enumHubGoalRewards.reward_painter_double,
     },
 

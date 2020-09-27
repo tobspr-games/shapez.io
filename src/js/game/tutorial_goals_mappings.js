@@ -4,6 +4,7 @@ import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
 import { MetaDisplayBuilding } from "./buildings/display";
 import { MetaLeverBuilding } from "./buildings/lever";
+import { MetaLogicGateBuilding } from "./buildings/logic_gate";
 import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
 import { MetaMixerBuilding } from "./buildings/mixer";
 import { enumPainterVariants, MetaPainterBuilding } from "./buildings/painter";
@@ -53,7 +54,7 @@ export const enumHubGoalRewardsToContentUnlocked = {
     [enumHubGoalRewards.reward_constant_signal]: typed([
         [MetaConstantSignalBuilding, defaultBuildingVariant],
     ]),
-    [enumHubGoalRewards.reward_logic_gates]: null, // @TODO!
+    [enumHubGoalRewards.reward_logic_gates]: typed([[MetaLogicGateBuilding, defaultBuildingVariant]]),
     [enumHubGoalRewards.reward_virtual_processing]: null, // @TODO!
 
     [enumHubGoalRewards.reward_wires_filters_and_levers]: typed([

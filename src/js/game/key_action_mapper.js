@@ -70,9 +70,9 @@ export const KEYMAPPINGS = {
         lever_wires: { keyCode: key("4") },
         logic_gate: { keyCode: key("5") },
         virtual_processor: { keyCode: key("6") },
-        transistor: { keyCode: key("7") },
-        analyzer: { keyCode: key("8") },
-        comparator: { keyCode: key("9") },
+        analyzer: { keyCode: key("7") },
+        comparator: { keyCode: key("8") },
+        transistor: { keyCode: key("9") },
     },
 
     placement: {

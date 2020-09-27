@@ -573,7 +573,7 @@ buildings:
 
     wire_tunnel:
         default:
-            name: &wire_tunnel Wire Tunnel
+            name: &wire_tunnel Wire Crossing
             description: Allows to cross two wires without connecting them.
 
     constant_signal:
@@ -589,16 +589,16 @@ buildings:
     logic_gate:
         default:
             name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy.
+            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape, color or boolean "1")
         not:
             name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy.
+            description: Emits a boolean "1" if the input is not truthy. (Truthy means shape, color or boolean "1")
         xor:
             name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
+            description: Emits a boolean "1" if one of the inputs is truthy, but not both. (Truthy means shape, color or boolean "1")
         or:
             name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy.
+            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means shape, color or boolean "1")
 
     transistor:
         default:
@@ -622,7 +622,7 @@ buildings:
     reader:
         default:
             name: &reader Belt Reader
-            description: Allows to measure belt throughput. Outputs the last read item on the wires layer (once unlocked).
+            description: Allows to measure the average belt throughput. Outputs the last read item on the wires layer (once unlocked).
 
     analyzer:
         default:
@@ -632,20 +632,20 @@ buildings:
     comparator:
         default:
             name: &comparator Compare
-            description: Returns boolean "1" if both items are exactly equal. Can compare shapes, items and booleans.
+            description: Returns boolean "1" if both signals are exactly equal. Can compare shapes, items and booleans.
 
     virtual_processor:
         default:
             name: &virtual_processor Virtual Cutter
-            description: Computes
+            description: Virtually cuts the shape into two halves.
 
         rotater:
             name: Virtual Rotater
-            description: Virtually rotates the shape by 90 degrees clockwise.
+            description: Virtually rotates the shape, both clockwise and counter-clockwise.
 
         unstacker:
             name: Virtual Unstacker
-            description: Returns the topmost layer to the right, and the remaining ones on the left.
+            description: Virtually extracts the topmost layer to the right output and the remaining ones to the left.
 
         stacker:
             name: Virtual Stacker
@@ -753,7 +753,7 @@ storyRewards:
     reward_display:
         title: Display
         desc: >-
-            You have unlocked the <strong>Display</strong>! Connect a wires signal to it to present a color, shape or boolean!
+            You have unlocked the <strong>Display</strong> - Connect a signal on the wires layer to visualize its contents!
 
     reward_constant_signal:
         title: Constant Signal
@@ -765,17 +765,19 @@ storyRewards:
         title: Logic Gates
         desc: >-
             You unlocked <strong>logic gates</strong>! You don't have to be excited about this, but it's actually super cool!<br><br>
-            With those gates you can now perform AND, OR, XOR and NOT boolean operations!
+            With those gates you can now compute AND, OR, XOR and NOT operations.<br><br>
+            As a bonus on top I also just gave you a <strong>transistor</strong>!
 
     reward_virtual_processing:
         title: Virtual Processing
         desc: >-
             I just gave a whole bunch of new buildings which allow you to <strong>simulate the processing of shapes</strong>!<br><br>
-            You can now simulate a cutter, rotater, stacker and more on the wires layer!<br><br>
+            You can now simulate a cutter, rotater, stacker and more on the wires layer!
             With this you now have three options to continue the game:<br><br>
-            - Build an <strong>automated machine</strong> to create any possible shape requested by the hub (This is cool, I swear!).<br><br>
+            - Build an <strong>automated machine</strong> to create any possible shape requested by the HUB (I recommend to try it!).<br><br>
             - Build something cool with wires.<br><br>
-            - Continue to play regulary.
+            - Continue to play regulary.<br><br>
+            Whatever you choose, remember to have fun!
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -792,7 +794,8 @@ storyRewards:
         title: Freeplay
         desc: >-
             You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will only require low quantities, I highly recommend to build a machine which automatically delivers the requested shape!
+            Since the hub will only require low quantities from now on, I highly recommend to build a machine which automatically delivers the requested shape!<br><br>
+            The HUB outputs the requested shape on the wires layer, so all you have to do is to analyze it and automatically configure your factory based on that.
 
 settings:
     title: Settings
@@ -1128,7 +1131,7 @@ tips:
     - Organization is important. Try not to cross conveyors too much.
     - Plan in advance, or it will be a huge chaos!
     - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 18 on your own before seeking for help!
+    - Try beating level 20 on your own before seeking for help!
     - Don't complicate things, try to stay simple and you'll go far.
     - You may need to re-use factories later in the game. Plan your factories to be re-usable.
     - Sometimes, you can find a needed shape in the map without creating it with stackers.
@@ -1149,3 +1152,5 @@ tips:
     - This game has a lot of settings, be sure to check them out!
     - The marker to your hub has a small compass to indicate its direction!
     - To clear belts, cut the area and then paste it at the same location.
+    - Press F4 to show your FPS and Tick Rate.
+    - Press F4 twice to show the tile of your mouse and camera.

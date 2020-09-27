@@ -92,6 +92,11 @@ export class HubGoals extends BasicSerializableObject {
          */
         this.upgradeLevels = {};
 
+        // Reset levels
+        for (const key in UPGRADES) {
+            this.upgradeLevels[key] = 0;
+        }
+
         /**
          * Stores the improvements for all upgrades
          * @type {Object<string, number>}
