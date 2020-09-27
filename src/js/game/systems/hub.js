@@ -26,8 +26,8 @@ export class HubSystem extends GameSystemWithFilter {
      */
     draw(parameters) {
         for (
-            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
-            (entity = arr[i]) && i >= 0;
+            let i = this.allEntitiesArray.length - 1, entity;
+            (entity = this.allEntitiesArray[i]) && i >= 0;
             --i
         ) {
             this.drawEntity(parameters, entity);
@@ -36,8 +36,8 @@ export class HubSystem extends GameSystemWithFilter {
 
     update() {
         for (
-            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
-            (entity = arr[i]) && i >= 0;
+            let i = this.allEntitiesArray.length - 1, entity;
+            (entity = this.allEntitiesArray[i]) && i >= 0;
             --i
         ) {
             const pinsComp = entity.components.WiredPins;

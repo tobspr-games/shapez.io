@@ -5,7 +5,7 @@ import { Entity } from "./entity";
 
 import { GameRoot } from "./root";
 import { GameSystem } from "./game_system";
-import { arrayDelete, arrayDeleteValue } from "../core/utils";
+import { arrayDelete, arrayDeleteValue, fastArrayDelete } from "../core/utils";
 
 export class GameSystemWithFilter extends GameSystem {
     /**
@@ -36,15 +36,8 @@ export class GameSystemWithFilter extends GameSystem {
         this.root.signals.bulkOperationFinished.add(this.refreshCaches, this);
     }
 
-    getUpdateEntitiesArray() {
-        if (!this.allEntitiesArrayIsOutdated) {
-            return this.allEntitiesArray;
-        }
-
+    tryUpdateEntitiesArray() {
         this.allEntitiesArray = [...this.allEntitiesSet.values()];
-
-        this.allEntitiesArrayIsOutdated = true;
-        return this.allEntitiesArray;
     }
 
     /**
@@ -98,22 +91,15 @@ export class GameSystemWithFilter extends GameSystem {
 
     refreshCaches() {
         //this.allEntities.sort((a, b) => a.uid - b.uid);
-
         // Remove all entities which are queued for destroy
-        // for (let i = 0; i < this.allEntities.length; ++i) {
-        //     const entity = this.allEntities[i];
-        //     if (entity.queuedForDestroy || entity.destroyed) {
-        //         this.allEntities.splice(i, 1);
-        //     }
-        // }
 
-        for (
-            let arr = [...this.allEntitiesSet.values()], i = arr.length - 1, entity;
-            (entity = arr[i]) && i >= 0;
-            --i
-        ) {
+        this.tryUpdateEntitiesArray();
+
+        for (let i = 0; i < this.allEntitiesArray.length; ++i) {
+            const entity = this.allEntitiesArray[i];
             if (entity.queuedForDestroy || entity.destroyed) {
-                this.allEntitiesArrayIsOutdated = this.allEntitiesSet.delete(entity);
+                this.allEntitiesSet.delete(this.allEntitiesArray[i]);
+                fastArrayDelete(this.allEntitiesArray, i);
             }
         }
     }
@@ -131,7 +117,7 @@ export class GameSystemWithFilter extends GameSystem {
      */
     internalRegisterEntity(entity) {
         this.allEntitiesSet.add(entity);
-        this.allEntitiesArrayIsOutdated = true;
+        this.allEntitiesArray.push(entity);
 
         // if (this.root.gameInitialized && !this.root.bulkOperationRunning) {
         //     // Sort entities by uid so behaviour is predictable

@@ -14,8 +14,8 @@ export class BeltReaderSystem extends GameSystemWithFilter {
         const minimumTimeForThroughput = now - 1;
 
         for (
-            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
-            (entity = arr[i]) && i >= 0;
+            let i = this.allEntitiesArray.length - 1, entity;
+            (entity = this.allEntitiesArray[i]) && i >= 0;
             --i
         ) {
             const readerComp = entity.components.BeltReader;

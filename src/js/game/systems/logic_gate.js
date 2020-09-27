@@ -3,8 +3,9 @@ import { enumColors } from "../colors";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 import { enumPinSlotType } from "../components/wired_pins";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
-import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
+import { BooleanItem, BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
+import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
+import { ShapeItem } from "../items/shape_item";
 import { ShapeDefinition } from "../shape_definition";
 
 export class LogicGateSystem extends GameSystemWithFilter {
@@ -30,8 +31,8 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
     update() {
         for (
-            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
-            (entity = arr[i]) && i >= 0;
+            let i = this.allEntitiesArray.length - 1, entity;
+            (entity = this.allEntitiesArray[i]) && i >= 0;
             --i
         ) {
             const logicComp = entity.components.LogicGate;

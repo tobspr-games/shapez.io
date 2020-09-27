@@ -3,6 +3,7 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
+import { dirInterval } from "../../core/utils";
 import { enumDirection, enumDirectionToVector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { BeltComponent } from "../components/belt";
@@ -61,8 +62,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     recomputeCacheFull() {
         logger.log("Full cache recompute in post load hook");
         for (
-            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
-            (entity = arr[i]) && i >= 0;
+            let i = this.allEntitiesArray.length - 1, entity;
+            (entity = this.allEntitiesArray[i]) && i >= 0;
             --i
         ) {
             this.recomputeSingleEntityCache(entity);
@@ -149,9 +150,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         }
 
         // Go over all cache entries
+        dirInterval("ejectorItems", 30, this.allEntitiesArray);
         for (
-            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, sourceEntity;
-            (sourceEntity = arr[i]) && i >= 0;
+            let i = this.allEntitiesArray.length - 1, sourceEntity;
+            (sourceEntity = this.allEntitiesArray[i]) && i >= 0;
             --i
         ) {
             const sourceEjectorComp = sourceEntity.components.ItemEjector;
