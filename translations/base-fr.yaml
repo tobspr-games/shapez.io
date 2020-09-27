@@ -194,8 +194,8 @@ dialogs:
         title: Confirmez la suppression
         text: >-
             Êtes-vous sûr de vouloir supprimer cette partie ?<br><br>
-            '<savegameName>' au niveau <savegameLevel><br><br>
-            Cela sera définitif !
+            “<savegameName>” au niveau <savegameLevel><br><br>
+            Ce sera définitif !
 
     savegameDeletionError:
         title: Impossible de supprimer
@@ -383,9 +383,9 @@ ingame:
 
         # Displays the shapes per minute, e.g. '523 / m'
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> ⁄ s
+            minute: <shapes> ⁄ m
+            hour: <shapes> ⁄ h
 
     # Settings menu, when you press "ESC"
     settingsMenu:
@@ -436,7 +436,7 @@ ingame:
     # Connected miners
     connectedMiners:
         one_miner: 1 extracteur
-        n_miners: <amount> Extracteurs
+        n_miners: <amount> extracteurs
         limited_items: Limité à <max_throughput>
 
 # All shop upgrades
@@ -552,7 +552,7 @@ buildings:
 
         quad:
             name: Peintre (quadruple)
-            description: Colorie chaque quadrant d’une forme avec une couleur différente. Seulement les parties avec un <strong>signal vrai</strong> du calque de câblage sera peint !
+            description: Colorie chaque quadrant d’une forme avec une couleur différente. Seules les entrées recevant un <strong>signal vrai</strong> sur le calque de câblage seront peintes !
 
     trash:
         default:
@@ -567,7 +567,7 @@ buildings:
     wire:
         default:
             name: Câble
-            description: &wire_desc Transfère des signaux, qui peuvent être des éléments, des couleurs ou des booléens (1 / 0). Les câbles de couleurs différentes ne se connectent pas.
+            description: &wire_desc Transfère des signaux, qui peuvent être des formes, des couleurs ou des booléens (1 / 0). Les câbles de couleurs différentes ne se connectent pas.
 
         second:
             name: *wire
@@ -581,31 +581,31 @@ buildings:
     constant_signal:
         default:
             name: &constant_signal Constante
-            description: Émets un signal constant, qui peut être une forme, une couleur ou un booléen (1 / 0).
+            description: Émet un signal constant, qui peut être une forme, une couleur ou un booléen (1 / 0).
 
     lever:
         default:
             name: &lever Interrupteur
-            description: Peut être basculé pour émettre un signal booléen (1 / 0) dans le calque de câblage, qui peut être utilisé pour contrôler un filtre de forme par exemple.
+            description: Peut être basculé pour émettre un signal booléen (1 / 0) dans le calque de câblage, qui peut être utilisé pour contrôler par exemple un filtre à formes.
 
     logic_gate:
         default:
             name: Porte ET
-            description: Émets un booléen "1" si les deux entrées sont vraies.
+            description: Émet un “1” booléen si les deux entrées sont vraies.
         not:
             name: Porte INVERSEUR
-            description: Émets un booléen "1" si l'entrée n'est pas vraie.
+            description: Émet un “1” booléen si l'entrée n'est pas vraie.
         xor:
             name: Porte OU-EXCLUSIF
-            description: Émets un booléen "1" si une des entrée est vraie, mais pas les deux.
+            description: Émet un “1” booléen si une des entrées est vraie, mais pas les deux.
         or:
             name: Porte OU
-            description: Émets un booléen "1" si une des entrée est vraie.
+            description: Émet un “1” booléen si une des entrées est vraie.
 
     transistor:
         default:
             name: &transistor Transistor
-            description: &transistor_desc Transmet l'entrée inférieure si l'entrée latérale est vraie (une forme, couleur ou "1").
+            description: &transistor_desc Transmet l’entrée du bas si l'entrée du côté est vraie (une forme, couleur ou “1”).
 
         mirrored:
             name: *transistor
@@ -650,7 +650,7 @@ storyRewards:
         title: Extracteur en série
         desc: >-
             Vous avez débloqué <strong>l’extracteur en série</strong> ! Il permet de <strong>transférer ses ressources</strong> à d’autres extracteurs pour augmenter le débit sortant !<br><br>
-            Note : L'ancien extracteur a été remplacé dans votre barre d'outils maintenant !
+            Note : Il remplace l’ancien extracteur dans votre barre d’outils.
 
     reward_underground_belt_tier_2:
         title: Tunnel niveau II
@@ -710,7 +710,7 @@ settings:
         prod: Production
     buildDate: Créé <at-date>
 
-    rangeSliderPercentage: <amount> %
+    rangeSliderPercentage: <amount> %
 
     labels:
         uiScale:
@@ -870,19 +870,19 @@ settings:
                 Le jeu est divisé en secteurs de 16×16 cases. Si ce réglage est activé, les limites de chaque secteur sont affichées.
 
         pickMinerOnPatch:
-            title: Choisir un extracteur sur une mine de ressource.
+            title: Choisir l’extracteur sur une mine de ressources
             description: >-
-                Activé par défaut, sélectionne l'extracteur si vous utilisez la pipette lors du survol d'une mine de ressource.
+                Activé par défaut, sélectionne l’extracteur si vous utilisez la pipette en survolant une mine de ressources.
 
         simplifiedBelts:
-            title: Convoyeurs simplifiés (Moche)
+            title: Convoyeurs simplifiés (moche)
             description: >-
-                Désactive le rendu des éléments des convoyeurs sauf lors du survol du convoyeur pour économiser des performances. Je ne recommande pas de jouer avec ce réglage si vous n'avez pas absolument besoin de performance.
+                Désactive le rendu des formes et couleurs sur les convoyeurs sauf lors du survol du convoyeur pour améliorer les performances. Je ne recommande pas de jouer avec ce réglage si vous n’avez pas absolument besoin de performance.
 
         enableMousePan:
             title: Activer le déplacement à la souris
             description: >-
-                Permet de déplacer la carte en déplaçant le curseur sur les bords de l'écran. La vitesse dépend du réglage de la vitesse de déplacement.
+                Permet de déplacer la carte en déplaçant le curseur sur les bords de l’écran. La vitesse dépend du réglage de la vitesse de déplacement.
 
 keybindings:
     title: Contrôles
@@ -937,9 +937,9 @@ keybindings:
         storage: *storage
         wire: *wire
         constant_signal: *constant_signal
-        logic_gate: Logic Gate
-        lever: Switch (regular)
-        lever_wires: Switch (wires)
+        logic_gate: Porte logique
+        lever: Interrupteur (normal)
+        lever_wires: Interrupteur (à câbles)
         filter: *filter
         wire_tunnel: *wire_tunnel
         display: *display
