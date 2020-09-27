@@ -227,6 +227,7 @@ export class EntityManager extends BasicSerializableObject {
 
             // Remove from entities list
             this.entities.delete(entity);
+            this.entitiesByUid.delete(entity.uid);
 
             // Remove from componentToEntity list
             this.unregisterEntityComponents(entity);
