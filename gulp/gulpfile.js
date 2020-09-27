@@ -42,6 +42,10 @@ const envVars = [
     "SHAPEZ_CLI_STAGING_FTP_PW",
     "SHAPEZ_CLI_LIVE_FTP_USER",
     "SHAPEZ_CLI_LIVE_FTP_PW",
+    "SHAPEZ_CLI_APPLE_ID",
+    "SHAPEZ_CLI_APPLE_CERT_NAME",
+    "SHAPEZ_CLI_GITHUB_USER",
+    "SHAPEZ_CLI_GITHUB_TOKEN",
 ];
 
 for (let i = 0; i < envVars.length; ++i) {
@@ -77,6 +81,9 @@ docs.gulptasksDocs($, gulp, buildFolder);
 
 const standalone = require("./standalone");
 standalone.gulptasksStandalone($, gulp, buildFolder);
+
+const releaseUploader = require("./release-uploader");
+releaseUploader.gulptasksReleaseUploader($, gulp, buildFolder);
 
 const translations = require("./translations");
 translations.gulptasksTranslations($, gulp, buildFolder);
@@ -297,6 +304,17 @@ gulp.task(
 gulp.task(
     "build.standalone-prod",
     gulp.series("utils.cleanup", "step.standalone-prod.all", "step.postbuild")
+);
+
+// OS X build and release upload
+gulp.task(
+    "build.darwin64-prod",
+    gulp.series(
+        "build.standalone-prod",
+        "standalone.prepare",
+        "standalone.package.prod.darwin64",
+        "standalone.uploadRelease.darwin64"
+    )
 );
 
 // Deploying!

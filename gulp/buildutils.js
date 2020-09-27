@@ -25,6 +25,14 @@ module.exports = {
             });
     },
 
+    getTag() {
+        try {
+            return execSync("git describe --tag --exact-match").toString("ascii");
+        } catch (e) {
+            throw new Error('Current git HEAD is not a version tag');
+        }
+    },
+
     getVersion() {
         return trim(fs.readFileSync(path.join(__dirname, "..", "version")).toString());
     },
