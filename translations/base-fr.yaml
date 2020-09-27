@@ -382,7 +382,7 @@ ingame:
                 description: Affiche les formes qui ont été livrées dans votre bâtiment central.
         noShapesProduced: Aucune forme produite pour le moment.
 
-        # Displays the shapes per minute, e.g. '523 / m'
+        # Displays the shapes per second, e.g. '523 / s'
         shapesDisplayUnits:
             second: <shapes> ⁄ s
             minute: <shapes> ⁄ m
@@ -622,18 +622,18 @@ buildings:
 
     display:
         default:
-            name: &display Affichage
+            name: &display Afficheur
             description: Connectez un signal pour l’afficher. Ça peut être une forme, une couleur, ou un booléen.
 
     reader:
         default:
             name: &reader Débitmètre
-            description: Mesure le débit d’un convoyeur. Émet sur le calque de câblage la dernière forme ou couleur mesurée.
+            description: Mesure le débit d’un convoyeur. Émet sur le calque de câblage (une fois déverrouillé) la dernière forme ou couleur mesurée.
 
     analyzer:
         default:
             name: &analyzer Analyseur de formes
-            description: Analyse le quadrant en haut à droite de la couche la plus basse d’une forme, et émet sa forme et sa couleur.
+            description: Analyse le quadrant supérieur droit de la couche la plus basse d’une forme, et renvoie sa forme et sa couleur.
 
     comparator:
         default:
@@ -647,19 +647,19 @@ buildings:
 
         rotater:
             name: Pivoteur virtuel
-            description: Virtually rotates the shape by 90 degrees clockwise.
+            description: Fait pivoter virtuellement la forme de 90 degrés vers la droite.
 
         unstacker:
             name: Décombineur virtuel
-            description: Émet la couche du haut à droite, et les couches restantes à gauche.
+            description: Renvoie la couche supérieur à droite, et les couches restantes à gauche.
 
         stacker:
             name: Combineur virtuel
-            description: Combine virtuellement la forme de gauche avec celle de droite.
+            description: Combine virtuellement la forme de droite sur celle de gauche.
 
         painter:
             name: Peintre virtuel
-            description: Peint virtuellement la forme du bas avec la couleur de droite/
+            description: Peint virtuellement la forme du bas avec la couleur de droite.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -690,7 +690,7 @@ storyRewards:
             <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au-dessus</strong> de la forme de gauche.
 
     reward_splitter:
-        title: Distributeur / rassembleur
+        title: Répartiteur
         desc: >-
             Le <strong>répartiteur</strong> multifonctionnel a été débloqué — Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les
             formes</strong> entre plusieurs convoyeurs !<br><br>
@@ -715,10 +715,20 @@ storyRewards:
         title: Tunnel niveau II
         desc: Vous avez débloqué une nouvelle variante du <strong>tunnel</strong> — Elle a une <strong>portée plus grande</strong>, et vous pouvez superposer les deux variantes de tunnels !
 
-    reward_splitter_compact:
+    reward_merger:
+        title: Fusionneur compact
+        desc: >-
+            Vous avez déverrouillé une variante du <strong>fusionneur</strong> du <strong>répartiteur</strong>. Il accepte deux entrées et les fusionne en un seul convoyeur !
+
+    reward_splitter:
         title: Répartiteur compact
         desc: >-
             Vous avez débloqué une variante compacte du <strong>répartiteur</strong> — Elle accepte deux entrées et les rassemble en une sortie !
+
+    reward_belt_reader:
+        title: Lecteur de convoyeur
+        desc: >-
+            Vous avez maintenant déverrouillé le <strong>lecteur de convoyeur</strong> ! Il vous permet de mesurer le débit d'un convoyeur.<br><br>Et attendez de déverrouiller les câbles, alors cela deviendra vraiment utile !
 
     reward_cutter_quad:
         title: Quadruple découpeur
@@ -732,23 +742,58 @@ storyRewards:
 
     reward_painter_quad:
         title: Quadruple peintre
-        desc: Vous avez débloqué une variante du <strong>peintre</strong> — Elle permet de colorier chaque partie d’une forme individuellement !
+        desc: >-
+            Vous avez débloqué une variante du <strong>peintre</strong> — Elle permet de colorier chaque partie d’une forme individuellement !
+            Connectez chaque emplacement que vous souhaitez peindre avec un <strong>signal vrai</strong> (forme, élément ou booléen "1") sur le calque de câblage !
 
     reward_storage:
         title: Tampon de stockage
-        desc: Vous avez débloqué une variante de <strong>la poubelle</strong> — Elle permet de stocker des formes jusqu’à une certaine limite !
-
-    reward_freeplay:
-        title: Mode libre
-        desc: >-
-            Vous y êtes arrivé ! Vous avez débloqué le <strong>mode libre</strong> ! Cela veut dire que dorénavant, les formes sont générées aléatoirement ! (Ne vous en faites pas, encore plus de
-            contenu est prévu pour la version complète !)
+        Vous avez débloqué le bâtiment de <strong>stockage</strong>. Il permet de stocker des objets jusqu’à une certaine limite !<br><br>
+        Il priorise la sortie gauche, vous pouvez donc également l'utiliser comme <strong>porte de débordement</strong> !
 
     reward_blueprints:
         title: Patrons
         desc: >-
             Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usine ! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour
             la copier.<br><br>Coller n’est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (les mêmes que celles que vous venez de livrer).
+
+    reward_rotater_180:
+        title: Retourneur
+        desc: Vous venez de déverrouiller le <strong>retourneur</strong> ! Il vous permet de faire pivoter une forme de 180 degrés (Surprise ! :D)
+
+    reward_wires_filters_and_levers:
+        title: >-
+            Wires: Filtres & Interrupteurs
+        desc: >-
+            Vous venez de déverrouiller le <strong>calque de câblage</strong> ! Il s'agit d'un calque séparé au-dessus du calque normal qui introduit de nombreuses nouvelles mécaniques !<br><br>
+            Comme cela peut être un peu impressionnant, j'ai ajouté un petit tutoriel. Assurez-vous d'avoir les <strong>tutoriels activés</strong> dans les paramètres !
+
+    reward_display:
+        title: Afficheur
+        desc: >-
+            Vous avez déverrouillé l'<strong>afficheur</strong> ! Connectez-y un câble signal pour visualiser une couleur, une forme ou un booléen !
+
+    reward_constant_signal:
+        title: Constante
+        desc: >-
+            Vous avez déverrouillé la <strong>constante</strong> basé sur le calque de câblage ! Elle est utile pour la connecter à des <strong>filtres d'éléments</strong> par exemple.<br><br>
+            La constante peut émettre une <strong>forme</strong>, une <strong>couleur</strong> ou un <strong>booléen</strong> (1 / 0).
+
+    reward_logic_gates:
+        title: Portes logiques
+        desc: >-
+            Vous avez déverrouillé les <strong>portes logiques</strong> ! Vous n'êtes pas obligé d'être excité à ce sujet, mais c'est vraiment super cool !<br><br>
+            Avec ces portes, vous pouvez maintenant effectuer des opérations booléennes ET, OU, OU-EXCLUSIF et INVERSEUR !
+
+    reward_virtual_processing:
+        title: Traitement virtuel
+        desc: >-
+            Je viens de donner tout un tas de nouveaux bâtiments qui vous permettent de <strong>simuler du traitement de forme</strong> !<br><br>
+            Vous pouvez maintenant simuler un découpeur, un pivoteur, un combineur et plus encore sur le calque de câblage !<br><br>
+            Avec cela, vous avez maintenant trois options pour continuer le jeu :<br><br>
+            - Construire une <strong>machine automatisée</strong> pour créer toute forme possible demandée par le centre (c'est cool, je le jure !).<br><br>
+            - Construire quelque chose de cool avec des câbles.<br><br>
+            - Continuer à jouer régulièrement.
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
@@ -761,6 +806,12 @@ storyRewards:
         title: Niveau suivant
         desc: >-
             Bravo ! À propos, plus de contenu est prévu pour la version complète !
+
+    reward_freeplay:
+        title: Mode libre
+        desc: >-
+        Vous y êtes arrivé ! Vous avez débloqué le <strong>mode libre</strong> ! Cela veut dire que dorénavant, les formes sont générées <strong>aléatoirement</strong> !<br><br>
+        Étant donné que le centre ne demandera que de faibles quantités, je recommande fortement de construire une machine qui délivre automatiquement la forme demandée !
 
 settings:
     title: Options
@@ -1068,8 +1119,60 @@ demo:
         exportingBase: Exporter une image de toute la base
 
     settingNotAvailable: Indisponible dans la démo.
-#
-# French translation version v0.5 based on english v1.1.8 by Didier WEERTS 'The Corsaire'
-#
+
+tips:
+    - Le centre accepte les entrées de toutes sortes, pas seulement la forme actuelle !
+    - Assurez-vous que vos usines soient modulaires, cela paiera !
+    - Ne construisez pas trop près du centre, ou ce sera un énorme chaos !
+    - Si l'empilement ne fonctionne pas, essayez d'échanger les entrées.
+    - Vous pouvez changer le sens du planificateur de convoyeur en appuyant sur <b>R</b>.
+    - Maintenir <b>CTRL</b> permet de déposer les convoyeurs sans auto-orientation.
+    - Les ratios restent les mêmes, tant que toutes les améliorations sont de même niveau.
+    - L'exécution en série est plus efficace qu'en parallèle.
+    - Vous débloquerez plus de variantes de bâtiments plus tard dans le jeu !
+    - Vous pouvez utiliser <b>T</b> pour basculer entre différentes variantes.
+    - La symétrie est la clé !
+    - Vous pouvez entrelacer différents niveaux de tunnels.
+    - Essayez de construire des usines compactes, cela paiera !
+    - Le peintre a une variante en miroir que vous pouvez sélectionner avec <b>T</b>
+    - Avoir les bons ratios de construction maximisera l'efficacité.
+    - Au niveau maximum, 5 extracteurs rempliront un seul convoyeur.
+    - N'oubliez pas les tunnels !
+    - Vous n'avez pas besoin de répartir les objets uniformément pour une efficacité totale.
+    - Maintenir <b>MAJ</b> activera le planificateur de convoyeur, vous permettant de placer facilement de longues lignes de convoyeur.
+    - Les découpeurs coupent toujours verticalement, quelle que soit leur orientation.
+    - Pour obtenir du blanc, mélangez les trois couleurs.
+    - Le stockage priorise la première sortie.
+    - Investissez du temps pour créer des designs reproductibles, ça vaut le coup !
+    - Maintenir <b>CTRL</b> permet de placer plusieurs bâtiments.
+    - Vous pouvez maintenir <b>ALT</b> pour inverser la direction des ceintures placées.
+    - L'efficacité est la clé !
+    - Les patchs de forme plus éloignés du moyeu sont plus complexes.
+    - Les machines ont une vitesse limitée, divisez-les pour une efficacité maximale.
+    - Utilisez des équilibreurs pour maximiser votre efficacité.
+    - L'organisation est importante. Essayez de ne pas trop traverser les convoyeurs.
+    - Planifiez à l'avance, ou ce sera un énorme chaos !
+    - Ne supprimez pas vos anciennes usines ! Vous en aurez besoin pour débloquer des améliorations.
+    - Essayez de battre le niveau 18 par vous-même avant de demander de l'aide !
+    - Ne compliquez pas les choses, essayez de rester simple et vous irez loin.
+    - Vous devrez peut-être réutiliser les usines plus tard dans le jeu. Planifiez vos usines pour qu'elles soient réutilisables.
+    - Parfois, vous pouvez trouver une forme nécessaire sur la carte sans la créer avec des combineurs.
+    - Les formes en moulins à vent complet ne peuvent jamais apparaître naturellement.
+    - Colorez vos formes avant de les découper pour une efficacité maximale.
+    - Avec les modules, l'espace n'est qu'une perception; une préoccupation pour les hommes mortels.
+    - Créez une usine de patrons distincte. Ils sont importants pour les modules.
+    - Regardez de plus près le mélangeur de couleur et vous aurez la réponse à vos questions.
+    - Utilisez <b>CTRL</b> + clic pour sélectionner une zone.
+    - Construire trop près du centre peut gêner les projets futurs.
+    - L'icône d'épingle à côté de chaque forme dans la liste d'améliorations l'épingle à l'écran.
+    - Mélangez toutes les couleurs primaires ensemble pour faire du blanc !
+    - Vous avez une carte infinie, n'encombrez pas votre usine, développez-vous !
+    - Essayez également Factorio ! C'est mon jeu préféré.
+    - Le découpeur quadruple coupe dans le sens des aiguilles d'une montre à partir du coin supérieur droit !
+    - Vous pouvez télécharger vos sauvegardes dans le menu principal !
+    - Ce jeu a beaucoup de raccourcis clavier utiles ! Assurez-vous de consulter la page des paramètres.
+    - Ce jeu a beaucoup de paramètres, assurez-vous de les vérifier !
+    - Le marqueur de votre centre a une petite boussole pour indiquer sa direction !
+    - Pour nettoyer les convoyeurs, coupez la zone puis collez-la au même endroit.
 
 # French translation completed (and corrected) by Pascal Grossé, martypiton and Withers001.
