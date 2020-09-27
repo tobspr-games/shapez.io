@@ -415,7 +415,7 @@ ingame:
         waypoints: Balise
         hub: Centre
         description: >-
-            Cliquez sur une balise pour vous y rendre, clic-droit pour l’effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong>pour en
+            Cliquez sur une balise pour vous y rendre, clic-droit pour l’effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en
             créer une sur l’endroit pointé.
         creationSuccessNotification: La balise a été créée.
 
@@ -565,12 +565,12 @@ buildings:
 
     storage:
         default:
-            name: Stockage
+            name: &storage Stockage
             description: Stocke les formes en trop jusqu’à une certaine capacité. Peut être utilisé pour absorber un surplus.
 
     wire:
         default:
-            name: Câble
+            name: &wire Câble
             description: &wire_desc Transfère des signaux, qui peuvent être des formes, des couleurs ou des booléens (1 / 0). Les câbles de couleurs différentes ne se connectent pas.
 
         second:
@@ -598,7 +598,7 @@ buildings:
             description: Émet un “1” booléen si les deux entrées sont vraies.
         not:
             name: Porte INVERSEUR
-            description: Émet un “1” booléen si l'entrée n'est pas vraie.
+            description: Émet un “1” booléen si l’entrée n'est pas vraie.
         xor:
             name: Porte OU-EXCLUSIF
             description: Émet un “1” booléen si une des entrées est vraie, mais pas les deux.
@@ -609,11 +609,57 @@ buildings:
     transistor:
         default:
             name: &transistor Transistor
-            description: &transistor_desc Transmet l’entrée du bas si l'entrée du côté est vraie (une forme, couleur ou “1”).
+            description: &transistor_desc Transmet l’entrée du bas si l’entrée du côté est vraie (une forme, couleur ou “1”).
 
         mirrored:
             name: *transistor
             description: *transistor_desc
+
+    filter:
+        default:
+            name: &filter Filtre
+            description: Connectez un signal pour envoyer toutes les formes et couleurs correspondantes en haut, et tout le reste à droite. Fonctionne aussi avec un signal booléen.
+
+    display:
+        default:
+            name: &display Affichage
+            description: Connectez un signal pour l’afficher. Ça peut être une forme, une couleur, ou un booléen.
+
+    reader:
+        default:
+            name: &reader Débitmètre
+            description: Mesure le débit d’un convoyeur. Émet sur le calque de câblage la dernière forme ou couleur mesurée.
+
+    analyzer:
+        default:
+            name: &analyzer Analyseur de formes
+            description: Analyse le quadrant en haut à droite de la couche la plus basse d’une forme, et émet sa forme et sa couleur.
+
+    comparator:
+        default:
+            name: &comparator Comparateur
+            description: Émet un “1” booléen si les deux entrées sont exactement les mêmes. Peut comparer des formes, des couleurs, et des booléens.
+
+    virtual_processor:
+        default:
+            name: &virtual_processor Découpeur virtuel
+            description: Découpe virtuellement une forme.
+
+        rotater:
+            name: Pivoteur virtuel
+            description: Virtually rotates the shape by 90 degrees clockwise.
+
+        unstacker:
+            name: Décombineur virtuel
+            description: Émet la couche du haut à droite, et les couches restantes à gauche.
+
+        stacker:
+            name: Combineur virtuel
+            description: Combine virtuellement la forme de gauche avec celle de droite.
+
+        painter:
+            name: Peintre virtuel
+            description: Peint virtuellement la forme du bas avec la couleur de droite/
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -889,7 +935,7 @@ settings:
                 Utilise des textures de basse qualité pour améliorer les performances. Rend le jeu très moche !
 
         displayChunkBorders:
-            title: Monter les secteurs
+            title: Montrer les secteurs
             description: >-
                 Le jeu est divisé en secteurs de 16×16 cases. Si ce réglage est activé, les limites de chaque secteur sont affichées.
 
