@@ -812,8 +812,8 @@ storyRewards:
     reward_freeplay:
         title: Mode libre
         desc: >-
-        Vous y êtes arrivé ! Vous avez débloqué le <strong>mode libre</strong> ! Cela veut dire que dorénavant, les formes sont générées <strong>aléatoirement</strong> !<br><br>
-        Étant donné que le centre ne demandera que de faibles quantités, je recommande fortement de construire une machine qui délivre automatiquement la forme demandée !
+            Vous y êtes arrivé ! Vous avez débloqué le <strong>mode libre</strong> ! Cela veut dire que dorénavant, les formes sont générées <strong>aléatoirement</strong> !<br><br>
+            Étant donné que le centre ne demandera que de faibles quantités, je recommande fortement de construire une machine qui délivre automatiquement la forme demandée !
 
 settings:
     title: Options
