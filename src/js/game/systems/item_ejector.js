@@ -150,7 +150,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         }
 
         // Go over all cache entries
-        dirInterval("ejectorItems", 30, this.allEntitiesArray);
         for (
             let i = this.allEntitiesArray.length - 1, sourceEntity;
             (sourceEntity = this.allEntitiesArray[i]) && i >= 0;
