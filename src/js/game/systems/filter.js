@@ -20,11 +20,8 @@ export class FilterSystem extends GameSystemWithFilter {
 
         const requiredProgress = 1 - progress;
 
-        for (
-            let i = this.allEntitiesArray.length - 1, entity;
-            (entity = this.allEntitiesArray[i]) && i >= 0;
-            --i
-        ) {
+        for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
+            const entity = this.allEntitiesArray[i];
             const filterComp = entity.components.Filter;
             const ejectorComp = entity.components.ItemEjector;
 

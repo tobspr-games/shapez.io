@@ -37,7 +37,10 @@ export class GameSystemWithFilter extends GameSystem {
     }
 
     tryUpdateEntitiesArray() {
-        this.allEntitiesArray = [...this.allEntitiesSet.values()];
+        if (this.allEntitiesArrayIsOutdated) {
+            this.allEntitiesArray = [...this.allEntitiesSet.values()];
+            this.allEntitiesArrayIsOutdated = false;
+        }
     }
 
     /**
@@ -93,15 +96,16 @@ export class GameSystemWithFilter extends GameSystem {
         //this.allEntities.sort((a, b) => a.uid - b.uid);
         // Remove all entities which are queued for destroy
 
-        this.tryUpdateEntitiesArray();
-
-        for (let i = 0; i < this.allEntitiesArray.length; ++i) {
+        for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
             const entity = this.allEntitiesArray[i];
             if (entity.queuedForDestroy || entity.destroyed) {
                 this.allEntitiesSet.delete(this.allEntitiesArray[i]);
                 fastArrayDelete(this.allEntitiesArray, i);
             }
         }
+
+        // called here in case a delete executed mid frame
+        this.tryUpdateEntitiesArray();
     }
 
     /**

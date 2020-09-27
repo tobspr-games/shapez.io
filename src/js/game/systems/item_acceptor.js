@@ -39,11 +39,8 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
         // Reset accumulated ticks
         this.accumulatedTicksWhileInMapOverview = 0;
 
-        for (
-            let i = this.allEntitiesArray.length - 1, entity;
-            (entity = this.allEntitiesArray[i]) && i >= 0;
-            --i
-        ) {
+        for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
+            const entity = this.allEntitiesArray[i];
             const aceptorComp = entity.components.ItemAcceptor;
             const animations = aceptorComp.itemConsumptionAnimations;
 
