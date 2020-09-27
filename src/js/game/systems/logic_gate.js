@@ -4,7 +4,8 @@ import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate"
 import { enumPinSlotType } from "../components/wired_pins";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
-import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
+import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
+import { ShapeItem } from "../items/shape_item";
 import { ShapeDefinition } from "../shape_definition";
 
 export class LogicGateSystem extends GameSystemWithFilter {
@@ -153,18 +154,22 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
     /**
      * @param {Array<BaseItem|null>} parameters
-     * @returns {BaseItem}
+     * @returns {[BaseItem, BaseItem]}
      */
     compute_ROTATE(parameters) {
         const item = parameters[0];
         if (!item || item.getItemType() !== "shape") {
             // Not a shape
-            return null;
+            return [null, null];
         }
 
         const definition = /** @type {ShapeItem} */ (item).definition;
-        const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCW(definition);
-        return this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition);
+        const rotatedDefinitionCCW = this.root.shapeDefinitionMgr.shapeActionRotateCCW(definition);
+        const rotatedDefinitionCW = this.root.shapeDefinitionMgr.shapeActionRotateCW(definition);
+        return [
+            this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinitionCCW),
+            this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinitionCW),
+        ];
     }
 
     /**

@@ -118,7 +118,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>3</uint>
+        <uint>4</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>

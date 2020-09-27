@@ -220,7 +220,7 @@
                         content: " ";
                         display: inline-block;
                         background: rgba(#fff, 0.6);
-                        @include InlineAnimation(5s linear) {
+                        @include InlineAnimation(3s linear) {
                             0% {
                                 width: 100%;
                             }

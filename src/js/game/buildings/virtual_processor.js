@@ -110,7 +110,12 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
                 pinComp.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.top,
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
                         type: enumPinSlotType.logicalEjector,
                     },
                     {
