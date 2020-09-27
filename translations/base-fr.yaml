@@ -40,7 +40,8 @@ steamPage:
 
         Vous devrez agrandir votre usine pour répondre à l’augmentation de la demande en formes — Mais n’oubliez pas les ressources, vous devrez vous étendre au milieu de cette [b]carte infinie[/b] !
 
-        Bientôt, vous devrez mélanger les couleurs et peindre vos formes avec — Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec pour satisfaire la demande.
+        Bientôt, vous devrez mélanger les couleurs et peindre vos formes avec — Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec
+        pour satisfaire la demande.
 
         Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper quelques heures !) mais je développe constamment plus de contenu — Il y a beaucoup de choses prévues !
 
@@ -413,7 +414,9 @@ ingame:
     waypoints:
         waypoints: Balise
         hub: Centre
-        description: Cliquez sur une balise pour vous y rendre, clic-droit pour l’effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer une sur l’endroit pointé.
+        description: >-
+            Cliquez sur une balise pour vous y rendre, clic-droit pour l’effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong>pour en
+            créer une sur l’endroit pointé.
         creationSuccessNotification: La balise a été créée.
 
     # Shape viewer
@@ -431,7 +434,8 @@ ingame:
                 Connectez l’extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce : <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
 
             1_3_expand: >-
-                Ceci n’est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d’extracteurs et de convoyeurs pour atteindre plus vite votre but.<br><br>Astuce : Gardez <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+                Ceci n’est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d’extracteurs et de convoyeurs pour atteindre plus vite votre but.<br><br>Astuce : Gardez
+                <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
     # Connected miners
     connectedMiners:
@@ -615,7 +619,9 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> — il coupe des formes en deux <strong>de haut en bas</strong> quelle que soit son orientation !<br><br>Assurez-vous de vous débarrasser des déchets, sinon <strong>gare au blocage</strong> — À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: >-
+            Vous venez de débloquer le <strong>découpeur</strong> — il coupe des formes en deux <strong>de haut en bas</strong> quelle que soit son orientation !<br><br>Assurez-vous de vous
+            débarrasser des déchets, sinon <strong>gare au blocage</strong> — À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
 
     reward_rotater:
         title: Rotation
@@ -624,7 +630,8 @@ storyRewards:
     reward_painter:
         title: Peintre
         desc: >-
-            Le <strong>peintre</strong> a été débloqué — Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez-les avec une forme dans un peintre pour les colorier !<br><br>PS : Si vous êtes daltonien, il y a un <strong>mode daltonien</strong> paramétrable dans les préférences !
+            Le <strong>peintre</strong> a été débloqué — Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez-les avec une forme dans un peintre pour les
+            colorier !<br><br>PS : Si vous êtes daltonien, il y a un <strong>mode daltonien</strong> paramétrable dans les préférences !
 
     reward_mixer:
         title: Mélangeur de couleurs
@@ -632,11 +639,15 @@ storyRewards:
 
     reward_stacker:
         title: Combineur
-        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles peuvent être mises l’une à côté de l’autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au-dessus</strong> de la forme de gauche.
+        desc: >-
+            Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles peuvent être mises l’une à côté de l’autre, elles sont
+            <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au-dessus</strong> de la forme de gauche.
 
     reward_splitter:
         title: Distributeur / rassembleur
-        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué — Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les formes</strong> entre plusieurs convoyeurs !<br><br>
+        desc: >-
+            Le <strong>répartiteur</strong> multifonctionnel a été débloqué — Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les
+            formes</strong> entre plusieurs convoyeurs !<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -644,7 +655,9 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Pivoteur inversé
-        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> — Elle permet de faire pivoter vers la gauche ! Pour le construire, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour alterner entre les variantes</strong> !
+        desc: >-
+            Vous avez débloqué une variante du <strong>pivoteur</strong> — Elle permet de faire pivoter vers la gauche ! Pour le construire, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour
+            alterner entre les variantes</strong> !
 
     reward_miner_chainable:
         title: Extracteur en série
@@ -667,7 +680,9 @@ storyRewards:
 
     reward_painter_double:
         title: Double peintre
-        desc: Vous avez débloqué une variante du <strong>peintre</strong> — Elle fonctionne comme le peintre de base, mais elle permet de traiter <strong>deux formes à la fois</strong> en ne consommant qu’une couleur au lieu de deux !
+        desc: >-
+            Vous avez débloqué une variante du <strong>peintre</strong> — Elle fonctionne comme le peintre de base, mais elle permet de traiter <strong>deux formes à la fois</strong> en ne consommant
+            qu’une couleur au lieu de deux !
 
     reward_painter_quad:
         title: Quadruple peintre
@@ -679,17 +694,22 @@ storyRewards:
 
     reward_freeplay:
         title: Mode libre
-        desc: Vous y êtes arrivé ! Vous avez débloqué le <strong>mode libre</strong> ! Cela veut dire que dorénavant, les formes sont générées aléatoirement ! (Ne vous en faites pas, encore plus de contenu est prévu pour la version complète !)
+        desc: >-
+            Vous y êtes arrivé ! Vous avez débloqué le <strong>mode libre</strong> ! Cela veut dire que dorénavant, les formes sont générées aléatoirement ! (Ne vous en faites pas, encore plus de
+            contenu est prévu pour la version complète !)
 
     reward_blueprints:
         title: Patrons
-        desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usine ! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n’est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (les mêmes que celles que vous venez de livrer).
+        desc: >-
+            Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usine ! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour
+            la copier.<br><br>Coller n’est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (les mêmes que celles que vous venez de livrer).
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: Niveau suivant
         desc: >-
-            Ce niveau n’a pas de récompense mais le prochain, si !<br><br>PS : Ne détruisez pas votre usine actuelle — Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour <strong>débloquer des améliorations</strong>.
+            Ce niveau n’a pas de récompense mais le prochain, si !<br><br>PS : Ne détruisez pas votre usine actuelle — Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour
+            <strong>débloquer des améliorations</strong>.
 
     no_reward_freeplay:
         title: Niveau suivant
@@ -806,7 +826,8 @@ settings:
         refreshRate:
             title: Fréquence de simulation
             description: >-
-                Si vous avez un moniteur à fréquence élevée, changez le taux de rafraichissement pour que le jeu fonctionne correctement à cette haute fréquence. Ceci pourrait cependant diminuer vos IPS (itérations par seconde) si votre ordinateur est trop lent.
+                Si vous avez un moniteur à fréquence élevée, changez le taux de rafraichissement pour que le jeu fonctionne correctement à cette haute fréquence. Ceci pourrait cependant diminuer vos
+                IPS (itérations par seconde) si votre ordinateur est trop lent.
 
         alwaysMultiplace:
             title: Placement multiple
@@ -821,7 +842,8 @@ settings:
         enableTunnelSmartplace:
             title: Tunnels intelligents
             description: >-
-                Si cette option est sélectionnée, placer des tunnels effacera automatiquement les convoyeurs inutiles. Cela permet aussi d’étirer les tunnels, et les tunnels en surnombre seront effacés.
+                Si cette option est sélectionnée, placer des tunnels effacera automatiquement les convoyeurs inutiles. Cela permet aussi d’étirer les tunnels, et les tunnels en surnombre seront
+                effacés.
 
         vignette:
             title: Effet de vignette
@@ -831,7 +853,8 @@ settings:
         rotationByBuilding:
             title: Rotation par catégorie de bâtiment
             description: >-
-                Chaque catégorie de bâtiment enregistre le sens de rotation que vous lui avez assigné la dernière fois, de manière individuelle. Cela sera sans doute plus agréable si vous alternez fréquemment entre le placement de différents types de bâtiments.
+                Chaque catégorie de bâtiment enregistre le sens de rotation que vous lui avez assigné la dernière fois, de manière individuelle. Cela sera sans doute plus agréable si vous alternez
+                fréquemment entre le placement de différents types de bâtiments.
 
         compactBuildingInfo:
             title: Informations réduites sur les bâtiments
@@ -857,7 +880,8 @@ settings:
         clearCursorOnDeleteWhilePlacing:
             title: Déselectionner avec le clic droit
             description: >-
-                Activé par défaut. Désélectionne le bâtiment choisi pour la construction lorsque vous faites un clic droit sur un bâtiment existant. Si désactivé, vous pouvez détruire des bâtiments avec un clic droit puis continuer de placer le bâtiment sélectionné.
+                Activé par défaut. Désélectionne le bâtiment choisi pour la construction lorsque vous faites un clic droit sur un bâtiment existant. Si désactivé, vous pouvez détruire des bâtiments
+                avec un clic droit puis continuer de placer le bâtiment sélectionné.
 
         lowQualityTextures:
             title: Textures de basse résolution (moche)
@@ -877,7 +901,8 @@ settings:
         simplifiedBelts:
             title: Convoyeurs simplifiés (moche)
             description: >-
-                Désactive le rendu des formes et couleurs sur les convoyeurs sauf lors du survol du convoyeur pour améliorer les performances. Je ne recommande pas de jouer avec ce réglage si vous n’avez pas absolument besoin de performance.
+                Désactive le rendu des formes et couleurs sur les convoyeurs sauf lors du survol du convoyeur pour améliorer les performances. Je ne recommande pas de jouer avec ce réglage si vous
+                n’avez pas absolument besoin de performance.
 
         enableMousePan:
             title: Activer le déplacement à la souris
@@ -978,7 +1003,8 @@ about:
 
         Si vous souhaitez contribuer, allez voir <a href="<githublink>" target="_blank">shapez.io sur GitHub</a>.<br><br>
 
-        Ce jeu n’aurait pas pu être réalisé sans la précieuse communauté Discord autour de mes jeux — Vous devriez vraiment rejoindre le <a href="<discordlink>" target="_blank">serveur Discord</a> !<br><br>
+        Ce jeu n’aurait pas pu être réalisé sans la précieuse communauté Discord autour de mes jeux — Vous devriez vraiment rejoindre le
+        <a href="<discordlink>" target="_blank">serveur Discord</a> !<br><br>
 
         La bande son a été créée par <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> — Il est génial !<br><br>
 
