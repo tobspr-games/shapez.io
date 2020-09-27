@@ -689,7 +689,7 @@ storyRewards:
             Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles peuvent être mises l’une à côté de l’autre, elles sont
             <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au-dessus</strong> de la forme de gauche.
 
-    reward_splitter:
+    reward_balancer:
         title: Répartiteur
         desc: >-
             Le <strong>répartiteur</strong> multifonctionnel a été débloqué — Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les
@@ -728,7 +728,8 @@ storyRewards:
     reward_belt_reader:
         title: Lecteur de convoyeur
         desc: >-
-            Vous avez maintenant déverrouillé le <strong>lecteur de convoyeur</strong> ! Il vous permet de mesurer le débit d'un convoyeur.<br><br>Et attendez de déverrouiller les câbles, alors cela deviendra vraiment utile !
+            Vous avez maintenant déverrouillé le <strong>lecteur de convoyeur</strong> ! Il vous permet de mesurer le débit d'un convoyeur.<br><br>
+            Et attendez de déverrouiller les câbles, alors cela deviendra vraiment utile !
 
     reward_cutter_quad:
         title: Quadruple découpeur
@@ -748,8 +749,9 @@ storyRewards:
 
     reward_storage:
         title: Tampon de stockage
-        Vous avez débloqué le bâtiment de <strong>stockage</strong>. Il permet de stocker des objets jusqu’à une certaine limite !<br><br>
-        Il priorise la sortie gauche, vous pouvez donc également l'utiliser comme <strong>porte de débordement</strong> !
+        desc: >-
+            Vous avez débloqué le bâtiment de <strong>stockage</strong>. Il permet de stocker des objets jusqu’à une certaine limite !<br><br>
+            Il priorise la sortie gauche, vous pouvez donc également l'utiliser comme <strong>porte de débordement</strong> !
 
     reward_blueprints:
         title: Patrons
