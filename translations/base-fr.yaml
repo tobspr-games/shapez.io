@@ -40,7 +40,8 @@ steamPage:
 
         Vous devrez agrandir votre usine pour répondre à l’augmentation de la demande en formes — Mais n’oubliez pas les ressources, vous devrez vous étendre au milieu de cette [b]carte infinie[/b] !
 
-        Bientôt, vous devrez mélanger les couleurs et peindre vos formes avec — Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec pour satisfaire la demande.
+        Bientôt, vous devrez mélanger les couleurs et peindre vos formes avec — Combinez les ressources de couleurs rouge, verte et bleue pour produire différentes couleurs et peindre les formes avec
+        pour satisfaire la demande.
 
         Ce jeu propose 18 niveaux progressifs (qui devraient déjà vous occuper quelques heures !) mais je développe constamment plus de contenu — Il y a beaucoup de choses prévues !
 
@@ -194,8 +195,8 @@ dialogs:
         title: Confirmez la suppression
         text: >-
             Êtes-vous sûr de vouloir supprimer cette partie ?<br><br>
-            '<savegameName>' au niveau <savegameLevel><br><br>
-            Cela sera définitif !
+            “<savegameName>” au niveau <savegameLevel><br><br>
+            Ce sera définitif !
 
     savegameDeletionError:
         title: Impossible de supprimer
@@ -383,9 +384,9 @@ ingame:
 
         # Displays the shapes per second, e.g. '523 / s'
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> ⁄ s
+            minute: <shapes> ⁄ m
+            hour: <shapes> ⁄ h
 
     # Settings menu, when you press "ESC"
     settingsMenu:
@@ -413,7 +414,9 @@ ingame:
     waypoints:
         waypoints: Balise
         hub: Centre
-        description: Cliquez sur une balise pour vous y rendre, clic-droit pour l’effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer une sur l’endroit pointé.
+        description: >-
+            Cliquez sur une balise pour vous y rendre, clic-droit pour l’effacer.<br><br>Appuyez sur <keybinding> pour créer une balise sur la vue actuelle, ou <strong>clic-droit</strong> pour en
+            créer une sur l’endroit pointé.
         creationSuccessNotification: La balise a été créée.
 
     # Shape viewer
@@ -431,12 +434,13 @@ ingame:
                 Connectez l’extracteur avec un <strong>convoyeur</strong> vers votre centre !<br><br>Astuce : <strong>Cliquez et faites glisser</strong> le convoyeur avec votre souris !
 
             1_3_expand: >-
-                Ceci n’est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d’extracteurs et de convoyeurs pour atteindre plus vite votre but.<br><br>Astuce : Gardez <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
+                Ceci n’est <strong>PAS</strong> un jeu incrémental et inactif ! Construisez plus d’extracteurs et de convoyeurs pour atteindre plus vite votre but.<br><br>Astuce : Gardez
+                <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs, et utilisez <strong>R</strong> pour les faire pivoter.
 
     # Connected miners
     connectedMiners:
         one_miner: 1 extracteur
-        n_miners: <amount> Extracteurs
+        n_miners: <amount> extracteurs
         limited_items: Limité à <max_throughput>
 
 # All shop upgrades
@@ -552,7 +556,7 @@ buildings:
 
         quad:
             name: Peintre (quadruple)
-            description: Colorie chaque quadrant d’une forme avec une couleur différente. Seulement les parties avec un <strong>signal vrai</strong> du calque de câblage sera peint !
+            description: Colorie chaque quadrant d’une forme avec une couleur différente. Seules les entrées recevant un <strong>signal vrai</strong> sur le calque de câblage seront peintes !
 
     trash:
         default:
@@ -561,13 +565,13 @@ buildings:
 
     storage:
         default:
-            name: Stockage
+            name: &storage Stockage
             description: Stocke les formes en trop jusqu’à une certaine capacité. Peut être utilisé pour absorber un surplus.
 
     wire:
         default:
-            name: Câble
-            description: &wire_desc Transfère des signaux, qui peuvent être des éléments, des couleurs ou des booléens (1 / 0). Les câbles de couleurs différentes ne se connectent pas.
+            name: &wire Câble
+            description: &wire_desc Transfère des signaux, qui peuvent être des formes, des couleurs ou des booléens (1 / 0). Les câbles de couleurs différentes ne se connectent pas.
 
         second:
             name: *wire
@@ -581,31 +585,31 @@ buildings:
     constant_signal:
         default:
             name: &constant_signal Constante
-            description: Émets un signal constant, qui peut être une forme, une couleur ou un booléen (1 / 0).
+            description: Émet un signal constant, qui peut être une forme, une couleur ou un booléen (1 / 0).
 
     lever:
         default:
             name: &lever Interrupteur
-            description: Peut être basculé pour émettre un signal booléen (1 / 0) dans le calque de câblage, qui peut être utilisé pour contrôler un filtre de forme par exemple.
+            description: Peut être basculé pour émettre un signal booléen (1 / 0) dans le calque de câblage, qui peut être utilisé pour contrôler par exemple un filtre à formes.
 
     logic_gate:
         default:
             name: Porte ET
-            description: Émets un booléen "1" si les deux entrées sont vraies.
+            description: Émet un “1” booléen si les deux entrées sont vraies.
         not:
             name: Porte INVERSEUR
-            description: Émets un booléen "1" si l'entrée n'est pas vraie.
+            description: Émet un “1” booléen si l’entrée n'est pas vraie.
         xor:
             name: Porte OU-EXCLUSIF
-            description: Émets un booléen "1" si une des entrée est vraie, mais pas les deux.
+            description: Émet un “1” booléen si une des entrées est vraie, mais pas les deux.
         or:
             name: Porte OU
-            description: Émets un booléen "1" si une des entrée est vraie.
+            description: Émet un “1” booléen si une des entrées est vraie.
 
     transistor:
         default:
             name: &transistor Transistor
-            description: &transistor_desc Transmet l'entrée inférieure si l'entrée latérale est vraie (une forme, couleur ou "1").
+            description: &transistor_desc Transmet l’entrée du bas si l’entrée du côté est vraie (une forme, couleur ou “1”).
 
         mirrored:
             name: *transistor
@@ -614,40 +618,40 @@ buildings:
     filter:
         default:
             name: &filter Filtre
-            description: Connectez un signal pour acheminer tous les éléments correspondants vers le haut et les autres vers la droite. Peut également être contrôlé avec des signaux booléens.
+            description: Connectez un signal pour envoyer toutes les formes et couleurs correspondantes en haut, et tout le reste à droite. Fonctionne aussi avec un signal booléen.
 
     display:
         default:
             name: &display Afficheur
-            description: Connectez un signal pour le voir sur l'afficheur. Il peut s'agir d'une forme, d'une couleur ou d'un booléen.
+            description: Connectez un signal pour l’afficher. Ça peut être une forme, une couleur, ou un booléen.
 
     reader:
         default:
-            name: &reader Lecteur de convoyeur
-            description: Permet de mesurer le débit de convoyeur. Sort le dernier élément lu sur le calque de câblage (une fois déverrouillé).
+            name: &reader Débitmètre
+            description: Mesure le débit d’un convoyeur. Émet sur le calque de câblage (une fois déverrouillé) la dernière forme ou couleur mesurée.
 
     analyzer:
         default:
-            name: &analyzer Analyseur de forme
-            description: Analyse le quadrant supérieur droit du calque le plus bas de la forme et renvoie sa forme et sa couleur.
+            name: &analyzer Analyseur de formes
+            description: Analyse le quadrant supérieur droit de la couche la plus basse d’une forme, et renvoie sa forme et sa couleur.
 
     comparator:
         default:
             name: &comparator Comparateur
-            description: Renvoie la valeur booléenne "1" si les deux éléments sont exactement égaux. Peut comparer des formes, des éléments et des booléens.
+            description: Émet un “1” booléen si les deux entrées sont exactement les mêmes. Peut comparer des formes, des couleurs, et des booléens.
 
     virtual_processor:
         default:
             name: &virtual_processor Découpeur virtuel
-            description: Calculateur
+            description: Découpe virtuellement une forme.
 
         rotater:
-            name: Virtual Rotater
+            name: Pivoteur virtuel
             description: Fait pivoter virtuellement la forme de 90 degrés vers la droite.
 
         unstacker:
             name: Décombineur virtuel
-            description: Renvoie le calque du dessus à droite et les autres à gauche.
+            description: Renvoie la couche supérieur à droite, et les couches restantes à gauche.
 
         stacker:
             name: Combineur virtuel
@@ -655,13 +659,15 @@ buildings:
 
         painter:
             name: Peintre virtuel
-            description: Peint virtuellement la forme depuis l'entrée inférieure avec la forme de l'entrée de droite.
+            description: Peint virtuellement la forme du bas avec la couleur de droite.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> — il coupe des formes en deux <strong>de haut en bas</strong> quelle que soit son orientation !<br><br>Assurez-vous de vous débarrasser des déchets, sinon <strong>gare au blocage</strong> — À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: >-
+            Vous venez de débloquer le <strong>découpeur</strong> — il coupe des formes en deux <strong>de haut en bas</strong> quelle que soit son orientation !<br><br>Assurez-vous de vous
+            débarrasser des déchets, sinon <strong>gare au blocage</strong> — À cet effet, je mets à votre disposition la poubelle, qui détruit tout ce que vous y mettez !
 
     reward_rotater:
         title: Rotation
@@ -670,7 +676,8 @@ storyRewards:
     reward_painter:
         title: Peintre
         desc: >-
-            Le <strong>peintre</strong> a été débloqué — Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez-les avec une forme dans un peintre pour les colorier !<br><br>PS : Si vous êtes daltonien, il y a un <strong>mode daltonien</strong> paramétrable dans les préférences !
+            Le <strong>peintre</strong> a été débloqué — Extrayez des pigments de couleur (comme vous le faites avec les formes) et combinez-les avec une forme dans un peintre pour les
+            colorier !<br><br>PS : Si vous êtes daltonien, il y a un <strong>mode daltonien</strong> paramétrable dans les préférences !
 
     reward_mixer:
         title: Mélangeur de couleurs
@@ -678,11 +685,15 @@ storyRewards:
 
     reward_stacker:
         title: Combineur
-        desc: Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles peuvent être mises l’une à côté de l’autre, elles sont <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au-dessus</strong> de la forme de gauche.
+        desc: >-
+            Vous pouvez maintenant combiner deux formes avec le <strong>combineur</strong> ! Les deux entrées sont combinées et si elles peuvent être mises l’une à côté de l’autre, elles sont
+            <strong>fusionnées</strong>. Sinon, la forme de droite est <strong>placée au-dessus</strong> de la forme de gauche.
 
-    reward_balancer:
+    reward_splitter:
         title: Répartiteur
-        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué — Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les formes</strong> entre plusieurs convoyeurs !<br><br>
+        desc: >-
+            Le <strong>répartiteur</strong> multifonctionnel a été débloqué — Il peut être utilisé pour construire de plus grandes usines en <strong>distribuant équitablement et rassemblant les
+            formes</strong> entre plusieurs convoyeurs !<br><br>
 
     reward_tunnel:
         title: Tunnel
@@ -690,13 +701,15 @@ storyRewards:
 
     reward_rotater_ccw:
         title: Pivoteur inversé
-        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> — Elle permet de faire pivoter vers la gauche ! Pour le construire, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour alterner entre les variantes</strong> !
+        desc: >-
+            Vous avez débloqué une variante du <strong>pivoteur</strong> — Elle permet de faire pivoter vers la gauche ! Pour le construire, sélectionnez le pivoteur et <strong>appuyez sur 'T' pour
+            alterner entre les variantes</strong> !
 
     reward_miner_chainable:
         title: Extracteur en série
         desc: >-
             Vous avez débloqué <strong>l’extracteur en série</strong> ! Il permet de <strong>transférer ses ressources</strong> à d’autres extracteurs pour augmenter le débit sortant !<br><br>
-            Note : L'ancien extracteur a été remplacé dans votre barre d'outils maintenant !
+            Note : Il remplace l’ancien extracteur dans votre barre d’outils.
 
     reward_underground_belt_tier_2:
         title: Tunnel niveau II
@@ -723,7 +736,9 @@ storyRewards:
 
     reward_painter_double:
         title: Double peintre
-        desc: Vous avez débloqué une variante du <strong>peintre</strong> — Elle fonctionne comme le peintre de base, mais elle permet de traiter <strong>deux formes à la fois</strong> en ne consommant qu’une couleur au lieu de deux !
+        desc: >-
+            Vous avez débloqué une variante du <strong>peintre</strong> — Elle fonctionne comme le peintre de base, mais elle permet de traiter <strong>deux formes à la fois</strong> en ne consommant
+            qu’une couleur au lieu de deux !
 
     reward_painter_quad:
         title: Quadruple peintre
@@ -733,13 +748,14 @@ storyRewards:
 
     reward_storage:
         title: Tampon de stockage
-        desc: >-
         Vous avez débloqué le bâtiment de <strong>stockage</strong>. Il permet de stocker des objets jusqu’à une certaine limite !<br><br>
         Il priorise la sortie gauche, vous pouvez donc également l'utiliser comme <strong>porte de débordement</strong> !
 
     reward_blueprints:
         title: Patrons
-        desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usine ! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour la copier.<br><br>Coller n’est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (les mêmes que celles que vous venez de livrer).
+        desc: >-
+            Vous pouvez maintenant <strong>copier et coller</strong> des parties de votre usine ! Sélectionnez une zone (Appuyez sur CTRL, et sélectionnez avec votre souris), et appuyez sur 'C' pour
+            la copier.<br><br>Coller n’est <strong>pas gratuit</strong>, vous devez produire <strong>des formes de patrons</strong> pour vous le payer (les mêmes que celles que vous venez de livrer).
 
     reward_rotater_180:
         title: Retourneur
@@ -783,7 +799,8 @@ storyRewards:
     no_reward:
         title: Niveau suivant
         desc: >-
-            Ce niveau n’a pas de récompense mais le prochain, si !<br><br>PS : Ne détruisez pas votre usine actuelle — Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour <strong>débloquer des améliorations</strong>.
+            Ce niveau n’a pas de récompense mais le prochain, si !<br><br>PS : Ne détruisez pas votre usine actuelle — Vous aurez besoin de <strong>toutes</strong> ces formes plus tard pour
+            <strong>débloquer des améliorations</strong>.
 
     no_reward_freeplay:
         title: Niveau suivant
@@ -810,7 +827,7 @@ settings:
         prod: Production
     buildDate: Créé <at-date>
 
-    rangeSliderPercentage: <amount> %
+    rangeSliderPercentage: <amount> %
 
     labels:
         uiScale:
@@ -906,7 +923,8 @@ settings:
         refreshRate:
             title: Fréquence de simulation
             description: >-
-                Si vous avez un moniteur à fréquence élevée, changez le taux de rafraichissement pour que le jeu fonctionne correctement à cette haute fréquence. Ceci pourrait cependant diminuer vos IPS (itérations par seconde) si votre ordinateur est trop lent.
+                Si vous avez un moniteur à fréquence élevée, changez le taux de rafraichissement pour que le jeu fonctionne correctement à cette haute fréquence. Ceci pourrait cependant diminuer vos
+                IPS (itérations par seconde) si votre ordinateur est trop lent.
 
         alwaysMultiplace:
             title: Placement multiple
@@ -921,7 +939,8 @@ settings:
         enableTunnelSmartplace:
             title: Tunnels intelligents
             description: >-
-                Si cette option est sélectionnée, placer des tunnels effacera automatiquement les convoyeurs inutiles. Cela permet aussi d’étirer les tunnels, et les tunnels en surnombre seront effacés.
+                Si cette option est sélectionnée, placer des tunnels effacera automatiquement les convoyeurs inutiles. Cela permet aussi d’étirer les tunnels, et les tunnels en surnombre seront
+                effacés.
 
         vignette:
             title: Effet de vignette
@@ -931,7 +950,8 @@ settings:
         rotationByBuilding:
             title: Rotation par catégorie de bâtiment
             description: >-
-                Chaque catégorie de bâtiment enregistre le sens de rotation que vous lui avez assigné la dernière fois, de manière individuelle. Cela sera sans doute plus agréable si vous alternez fréquemment entre le placement de différents types de bâtiments.
+                Chaque catégorie de bâtiment enregistre le sens de rotation que vous lui avez assigné la dernière fois, de manière individuelle. Cela sera sans doute plus agréable si vous alternez
+                fréquemment entre le placement de différents types de bâtiments.
 
         compactBuildingInfo:
             title: Informations réduites sur les bâtiments
@@ -957,7 +977,8 @@ settings:
         clearCursorOnDeleteWhilePlacing:
             title: Déselectionner avec le clic droit
             description: >-
-                Activé par défaut. Désélectionne le bâtiment choisi pour la construction lorsque vous faites un clic droit sur un bâtiment existant. Si désactivé, vous pouvez détruire des bâtiments avec un clic droit puis continuer de placer le bâtiment sélectionné.
+                Activé par défaut. Désélectionne le bâtiment choisi pour la construction lorsque vous faites un clic droit sur un bâtiment existant. Si désactivé, vous pouvez détruire des bâtiments
+                avec un clic droit puis continuer de placer le bâtiment sélectionné.
 
         lowQualityTextures:
             title: Textures de basse résolution (moche)
@@ -965,24 +986,25 @@ settings:
                 Utilise des textures de basse qualité pour améliorer les performances. Rend le jeu très moche !
 
         displayChunkBorders:
-            title: Monter les secteurs
+            title: Montrer les secteurs
             description: >-
                 Le jeu est divisé en secteurs de 16×16 cases. Si ce réglage est activé, les limites de chaque secteur sont affichées.
 
         pickMinerOnPatch:
-            title: Choisir un extracteur sur une mine de ressource.
+            title: Choisir l’extracteur sur une mine de ressources
             description: >-
-                Activé par défaut, sélectionne l'extracteur si vous utilisez la pipette lors du survol d'une mine de ressource.
+                Activé par défaut, sélectionne l’extracteur si vous utilisez la pipette en survolant une mine de ressources.
 
         simplifiedBelts:
-            title: Convoyeurs simplifiés (Moche)
+            title: Convoyeurs simplifiés (moche)
             description: >-
-                Désactive le rendu des éléments des convoyeurs sauf lors du survol du convoyeur pour économiser des performances. Je ne recommande pas de jouer avec ce réglage si vous n'avez pas absolument besoin de performance.
+                Désactive le rendu des formes et couleurs sur les convoyeurs sauf lors du survol du convoyeur pour améliorer les performances. Je ne recommande pas de jouer avec ce réglage si vous
+                n’avez pas absolument besoin de performance.
 
         enableMousePan:
             title: Activer le déplacement à la souris
             description: >-
-                Permet de déplacer la carte en déplaçant le curseur sur les bords de l'écran. La vitesse dépend du réglage de la vitesse de déplacement.
+                Permet de déplacer la carte en déplaçant le curseur sur les bords de l’écran. La vitesse dépend du réglage de la vitesse de déplacement.
 
 keybindings:
     title: Contrôles
@@ -1037,9 +1059,9 @@ keybindings:
         storage: *storage
         wire: *wire
         constant_signal: *constant_signal
-        logic_gate: Logic Gate
-        lever: Switch (regular)
-        lever_wires: Switch (wires)
+        logic_gate: Porte logique
+        lever: Interrupteur (normal)
+        lever_wires: Interrupteur (à câbles)
         filter: *filter
         wire_tunnel: *wire_tunnel
         display: *display
@@ -1078,7 +1100,8 @@ about:
 
         Si vous souhaitez contribuer, allez voir <a href="<githublink>" target="_blank">shapez.io sur GitHub</a>.<br><br>
 
-        Ce jeu n’aurait pas pu être réalisé sans la précieuse communauté Discord autour de mes jeux — Vous devriez vraiment rejoindre le <a href="<discordlink>" target="_blank">serveur Discord</a> !<br><br>
+        Ce jeu n’aurait pas pu être réalisé sans la précieuse communauté Discord autour de mes jeux — Vous devriez vraiment rejoindre le
+        <a href="<discordlink>" target="_blank">serveur Discord</a> !<br><br>
 
         La bande son a été créée par <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> — Il est génial !<br><br>
 
