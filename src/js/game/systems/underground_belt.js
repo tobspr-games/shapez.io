@@ -255,8 +255,11 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
         const delta = this.root.dynamicTickrate.deltaSeconds;
 
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
+        for (
+            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
+            (entity = arr[i]) && i >= 0;
+            --i
+        ) {
             const undergroundComp = entity.components.UndergroundBelt;
             const pendingItems = undergroundComp.pendingItems;
 

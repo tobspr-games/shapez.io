@@ -28,8 +28,11 @@ export class LogicGateSystem extends GameSystemWithFilter {
     }
 
     update() {
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
+        for (
+            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
+            (entity = arr[i]) && i >= 0;
+            --i
+        ) {
             const logicComp = entity.components.LogicGate;
             const slotComp = entity.components.WiredPins;
 

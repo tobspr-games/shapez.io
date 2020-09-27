@@ -36,8 +36,11 @@ export class MinerSystem extends GameSystemWithFilter {
             miningSpeed *= 100;
         }
 
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
+        for (
+            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
+            (entity = arr[i]) && i >= 0;
+            --i
+        ) {
             const minerComp = entity.components.Miner;
 
             // Reset everything on recompute

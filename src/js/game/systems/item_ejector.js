@@ -76,8 +76,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
 
             // Try to find acceptors for every ejector
-            for (let i = 0; i < this.allEntities.length; ++i) {
-                const entity = this.allEntities[i];
+            for (
+                let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
+                (entity = arr[i]) && i >= 0;
+                --i
+            ) {
                 this.recomputeSingleEntityCache(entity);
             }
         }
@@ -195,8 +198,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         }
 
         // Go over all cache entries
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const sourceEntity = this.allEntities[i];
+        for (
+            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, sourceEntity;
+            (sourceEntity = arr[i]) && i >= 0;
+            --i
+        ) {
             const sourceEjectorComp = sourceEntity.components.ItemEjector;
             if (!sourceEjectorComp.enabled) {
                 continue;

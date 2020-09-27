@@ -18,8 +18,11 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             this.root.hubGoals.getBeltBaseSpeed() *
             globalConfig.itemSpacingOnBelts; // * 2 because its only a half tile
 
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
+        for (
+            let arr = this.getUpdateEntitiesArray(), i = arr.length - 1, entity;
+            (entity = arr[i]) && i >= 0;
+            --i
+        ) {
             const aceptorComp = entity.components.ItemAcceptor;
             const animations = aceptorComp.itemConsumptionAnimations;
 
