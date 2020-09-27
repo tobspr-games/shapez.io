@@ -45,6 +45,12 @@ export class HUDMinerHighlight extends BaseHUDPart {
             return;
         }
 
+        const lowerContents = this.root.map.getLowerLayerContentXY(hoveredTile.x, hoveredTile.y);
+        if (!lowerContents) {
+            // Not connected
+            return;
+        }
+
         parameters.context.fillStyle = THEME.map.connectedMiners.overlay;
 
         const connectedEntities = this.findConnectedMiners(contents);
@@ -67,7 +73,7 @@ export class HUDMinerHighlight extends BaseHUDPart {
 
         const maxThroughput = this.root.hubGoals.getBeltBaseSpeed();
 
-        const screenPos = this.root.camera.screenToWorld(mousePos);
+        const tooltipLocation = this.root.camera.screenToWorld(mousePos);
 
         const scale = (1 / this.root.camera.zoomLevel) * this.root.app.getEffectiveUiScale();
 
@@ -76,8 +82,8 @@ export class HUDMinerHighlight extends BaseHUDPart {
         // Background
         parameters.context.fillStyle = THEME.map.connectedMiners.background;
         parameters.context.beginRoundedRect(
-            screenPos.x + 5 * scale,
-            screenPos.y - 3 * scale,
+            tooltipLocation.x + 5 * scale,
+            tooltipLocation.y - 3 * scale,
             (isCapped ? 100 : 65) * scale,
             (isCapped ? 45 : 30) * scale,
             2
@@ -89,8 +95,8 @@ export class HUDMinerHighlight extends BaseHUDPart {
         parameters.context.font = "bold " + scale * 10 + "px GameFont";
         parameters.context.fillText(
             formatItemsPerSecond(throughput),
-            screenPos.x + 10 * scale,
-            screenPos.y + 10 * scale
+            tooltipLocation.x + 10 * scale,
+            tooltipLocation.y + 10 * scale
         );
 
         // Amount of miners
@@ -100,8 +106,8 @@ export class HUDMinerHighlight extends BaseHUDPart {
             connectedEntities.length === 1
                 ? T.ingame.connectedMiners.one_miner
                 : T.ingame.connectedMiners.n_miners.replace("<amount>", String(connectedEntities.length)),
-            screenPos.x + 10 * scale,
-            screenPos.y + 22 * scale
+            tooltipLocation.x + 10 * scale,
+            tooltipLocation.y + 22 * scale
         );
 
         parameters.context.globalAlpha = 1;
@@ -113,8 +119,8 @@ export class HUDMinerHighlight extends BaseHUDPart {
                     "<max_throughput>",
                     formatItemsPerSecond(maxThroughput)
                 ),
-                screenPos.x + 10 * scale,
-                screenPos.y + 34 * scale
+                tooltipLocation.x + 10 * scale,
+                tooltipLocation.y + 34 * scale
             );
         }
     }

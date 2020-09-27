@@ -168,6 +168,9 @@ export class Application {
 
         if (!G_IS_MOBILE_APP && !IS_MOBILE) {
             window.addEventListener("mousemove", this.handleMousemove.bind(this));
+            window.addEventListener("mouseout", this.handleMousemove.bind(this));
+            window.addEventListener("mouseover", this.handleMousemove.bind(this));
+            window.addEventListener("mouseleave", this.handleMousemove.bind(this));
         }
 
         // Unload events

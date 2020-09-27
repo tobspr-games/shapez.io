@@ -487,10 +487,10 @@ export class ShapeDefinition extends BasicSerializableObject {
     }
 
     /**
-     * Returns a definition which was rotated 180 degrees (flipped)
+     * Returns a definition which was rotated 180 degrees
      * @returns {ShapeDefinition}
      */
-    cloneRotateFL() {
+    cloneRotate180() {
         const newLayers = this.internalCloneLayers();
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];

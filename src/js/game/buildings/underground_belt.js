@@ -25,6 +25,8 @@ export const enumUndergroundBeltVariantToTier = {
     [enumUndergroundBeltVariants.tier2]: 1,
 };
 
+const colorsByRotationVariant = ["#6d9dff", "#71ff9c"];
+
 const overlayMatrices = [
     // Sender
     generateMatrixRotations([1, 1, 1, 0, 1, 0, 0, 1, 0]),
@@ -38,8 +40,8 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         super("underground_belt");
     }
 
-    getSilhouetteColor() {
-        return "#222";
+    getSilhouetteColor(variant, rotationVariant) {
+        return colorsByRotationVariant[rotationVariant];
     }
 
     getFlipOrientationAfterPlacement() {

@@ -11,16 +11,23 @@ export class HUDBaseToolbar extends BaseHUDPart {
     /**
      * @param {GameRoot} root
      * @param {object} param0
-     * @param {Array<typeof MetaBuilding>} param0.supportedBuildings
+     * @param {Array<typeof MetaBuilding>} param0.primaryBuildings
+     * @param {Array<typeof MetaBuilding>=} param0.secondaryBuildings
      * @param {function} param0.visibilityCondition
      * @param {string} param0.htmlElementId
+     * @param {Layer=} param0.layer
      */
-    constructor(root, { supportedBuildings, visibilityCondition, htmlElementId }) {
+    constructor(
+        root,
+        { primaryBuildings, secondaryBuildings = [], visibilityCondition, htmlElementId, layer = "regular" }
+    ) {
         super(root);
 
-        this.supportedBuildings = supportedBuildings;
+        this.primaryBuildings = primaryBuildings;
+        this.secondaryBuildings = secondaryBuildings;
         this.visibilityCondition = visibilityCondition;
         this.htmlElementId = htmlElementId;
+        this.layer = layer;
 
         /** @type {Object.<string, {
          * metaBuilding: MetaBuilding,
@@ -40,17 +47,46 @@ export class HUDBaseToolbar extends BaseHUDPart {
         this.element = makeDiv(parent, this.htmlElementId, ["ingame_buildingsToolbar"], "");
     }
 
+    /**
+     * Returns all buildings
+     * @returns {Array<typeof MetaBuilding>}
+     */
+    get allBuildings() {
+        return [...this.primaryBuildings, ...this.secondaryBuildings];
+    }
+
     initialize() {
         const actionMapper = this.root.keyMapper;
+        let rowSecondary;
+        if (this.secondaryBuildings.length > 0) {
+            rowSecondary = makeDiv(this.element, null, ["buildings", "secondary"]);
 
-        const items = makeDiv(this.element, null, ["buildings"]);
+            this.secondaryDomAttach = new DynamicDomAttach(this.root, rowSecondary, {
+                attachClass: "visible",
+            });
+        }
 
-        for (let i = 0; i < this.supportedBuildings.length; ++i) {
-            const metaBuilding = gMetaBuildingRegistry.findByClass(this.supportedBuildings[i]);
-            const binding = actionMapper.getBinding(KEYMAPPINGS.buildings[metaBuilding.getId()]);
+        const rowPrimary = makeDiv(this.element, null, ["buildings", "primary"]);
 
-            const itemContainer = makeDiv(items, null, ["building"]);
+        const allBuildings = this.allBuildings;
+
+        for (let i = 0; i < allBuildings.length; ++i) {
+            const metaBuilding = gMetaBuildingRegistry.findByClass(allBuildings[i]);
+
+            let rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId() + "_" + this.layer];
+            if (!rawBinding) {
+                rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId()];
+            }
+
+            const binding = actionMapper.getBinding(rawBinding);
+
+            const itemContainer = makeDiv(
+                this.primaryBuildings.includes(allBuildings[i]) ? rowPrimary : rowSecondary,
+                null,
+                ["building"]
+            );
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
+            itemContainer.setAttribute("data-id", metaBuilding.getId());
 
             binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
@@ -88,13 +124,28 @@ export class HUDBaseToolbar extends BaseHUDPart {
         this.domAttach.update(visible);
 
         if (visible) {
+            let recomputeSecondaryToolbarVisibility = false;
             for (const buildingId in this.buildingHandles) {
                 const handle = this.buildingHandles[buildingId];
                 const newStatus = handle.metaBuilding.getIsUnlocked(this.root);
                 if (handle.unlocked !== newStatus) {
                     handle.unlocked = newStatus;
                     handle.element.classList.toggle("unlocked", newStatus);
+                    recomputeSecondaryToolbarVisibility = true;
                 }
+            }
+
+            if (recomputeSecondaryToolbarVisibility && this.secondaryDomAttach) {
+                let anyUnlocked = false;
+                for (let i = 0; i < this.secondaryBuildings.length; ++i) {
+                    const metaClass = gMetaBuildingRegistry.findByClass(this.secondaryBuildings[i]);
+                    if (metaClass.getIsUnlocked(this.root)) {
+                        anyUnlocked = true;
+                        break;
+                    }
+                }
+
+                this.secondaryDomAttach.update(anyUnlocked);
             }
         }
     }
@@ -110,9 +161,9 @@ export class HUDBaseToolbar extends BaseHUDPart {
 
         let newBuildingFound = false;
         let newIndex = this.lastSelectedIndex;
-        for (let i = 0; i < this.supportedBuildings.length; ++i, ++newIndex) {
-            newIndex %= this.supportedBuildings.length;
-            const metaBuilding = gMetaBuildingRegistry.findByClass(this.supportedBuildings[newIndex]);
+        for (let i = 0; i < this.primaryBuildings.length; ++i, ++newIndex) {
+            newIndex %= this.primaryBuildings.length;
+            const metaBuilding = gMetaBuildingRegistry.findByClass(this.primaryBuildings[newIndex]);
             const handle = this.buildingHandles[metaBuilding.id];
             if (!handle.selected && handle.unlocked) {
                 newBuildingFound = true;
@@ -122,7 +173,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
         if (!newBuildingFound) {
             return;
         }
-        const metaBuildingClass = this.supportedBuildings[newIndex];
+        const metaBuildingClass = this.primaryBuildings[newIndex];
         const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
         this.selectBuildingForPlacement(metaBuilding);
     }

@@ -3,10 +3,9 @@ import { enumColors } from "../colors";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 import { enumPinSlotType } from "../components/wired_pins";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTruthyItem, BooleanItem } from "../items/boolean_item";
-import { COLOR_ITEM_SINGLETONS, ColorItem } from "../items/color_item";
+import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
+import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
-import { ShapeItem } from "../items/shape_item";
 
 export class LogicGateSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -23,7 +22,9 @@ export class LogicGateSystem extends GameSystemWithFilter {
             [enumLogicGateType.analyzer]: this.compute_ANALYZE.bind(this),
             [enumLogicGateType.cutter]: this.compute_CUT.bind(this),
             [enumLogicGateType.unstacker]: this.compute_UNSTACK.bind(this),
-            [enumLogicGateType.shapecompare]: this.compute_SHAPECOMPARE.bind(this),
+            [enumLogicGateType.compare]: this.compute_COMPARE.bind(this),
+            [enumLogicGateType.stacker]: this.compute_STACKER.bind(this),
+            [enumLogicGateType.painter]: this.compute_PAINTER.bind(this),
         };
     }
 
@@ -47,13 +48,13 @@ export class LogicGateSystem extends GameSystemWithFilter {
                 if (slot.type !== enumPinSlotType.logicalAcceptor) {
                     continue;
                 }
-                if (slot.linkedNetwork) {
-                    if (slot.linkedNetwork.valueConflict) {
+                const network = slot.linkedNetwork;
+                if (network) {
+                    if (network.valueConflict) {
                         anyConflict = true;
                         break;
                     }
-
-                    slotValues.push(slot.linkedNetwork.currentValue);
+                    slotValues.push(network.currentValue);
                 } else {
                     slotValues.push(null);
                 }
@@ -266,13 +267,65 @@ export class LogicGateSystem extends GameSystemWithFilter {
      * @param {Array<BaseItem|null>} parameters
      * @returns {BaseItem}
      */
-    compute_SHAPECOMPARE(parameters) {
+    compute_STACKER(parameters) {
+        const lowerItem = parameters[0];
+        const upperItem = parameters[1];
+
+        if (!lowerItem || !upperItem) {
+            // Empty
+            return null;
+        }
+
+        if (lowerItem.getItemType() !== "shape" || upperItem.getItemType() !== "shape") {
+            // Bad type
+            return null;
+        }
+
+        const stackedShape = this.root.shapeDefinitionMgr.shapeActionStack(
+            /** @type {ShapeItem} */ (lowerItem).definition,
+            /** @type {ShapeItem} */ (upperItem).definition
+        );
+
+        return this.root.shapeDefinitionMgr.getShapeItemFromDefinition(stackedShape);
+    }
+
+    /**
+     * @param {Array<BaseItem|null>} parameters
+     * @returns {BaseItem}
+     */
+    compute_PAINTER(parameters) {
+        const shape = parameters[0];
+        const color = parameters[1];
+
+        if (!shape || !color) {
+            // Empty
+            return null;
+        }
+
+        if (shape.getItemType() !== "shape" || color.getItemType() !== "color") {
+            // Bad type
+            return null;
+        }
+
+        const coloredShape = this.root.shapeDefinitionMgr.shapeActionPaintWith(
+            /** @type {ShapeItem} */ (shape).definition,
+            /** @type {ColorItem} */ (color).color
+        );
+
+        return this.root.shapeDefinitionMgr.getShapeItemFromDefinition(coloredShape);
+    }
+
+    /**
+     * @param {Array<BaseItem|null>} parameters
+     * @returns {BaseItem}
+     */
+    compute_COMPARE(parameters) {
         const itemA = parameters[0];
         const itemB = parameters[1];
 
         if (!itemA || !itemB) {
             // Empty
-            return BOOL_FALSE_SINGLETON;
+            return null;
         }
 
         if (itemA.getItemType() !== itemB.getItemType()) {

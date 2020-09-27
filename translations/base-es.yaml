@@ -240,7 +240,7 @@ dialogs:
     massCutConfirm:
         title: Confirmar corte
         desc: >-
-            ¡Estás cortando muchos edificios (<count> para ser exactos)! ¿Estas seguro de             que quieres hacer esto?
+            ¡Estás cortando muchos edificios (<count> para ser exactos)! ¿Estas seguro de que quieres hacer esto?
 
     massCutInsufficientConfirm:
         title: Confirm cut
@@ -264,7 +264,7 @@ dialogs:
     createMarker:
         title: Nuevo marcador
         titleEdit: Editar marcador
-        desc: Dale un nombre significativo, también puedes agregarle una <strong>clave</strong> de una forma (La cual puedes generar <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
+        desc: Dale un nombre significativo, también puedes agregarle la <strong>clave</strong> de una forma (La cual puedes generar <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
 
     markerDemoLimit:
         desc: Solo puedes crear dos marcadores en la versión de prueba. ¡Obtén el juego completo para marcadores ilimitados!
@@ -294,7 +294,7 @@ ingame:
         cutSelection: Cortar
         copySelection: Copiar
         clearSelection: Limpiar selección
-        pipette: Pipette
+        pipette: Cuentagotas
         switchLayers: Cambiar capas
 
     # Names of the colors, used for the color blind mode
@@ -536,7 +536,7 @@ buildings:
     trash:
         default:
             name: &trash Basurero
-            description: Acepta entradas desde todos los lados y los destruye. Para siempre.
+            description: Acepta formas desde todos los lados y las destruye. Para siempre.
 
         storage:
             name: Almacenamiento.
@@ -648,7 +648,7 @@ settings:
     categories:
         general: General
         userInterface: User Interface
-        advanced: Advanced
+        advanced: Avanzado
 
     versionBadges:
         dev: Desarrollo
@@ -829,7 +829,7 @@ keybindings:
         trash: *trash
         wire: *wire
 
-        pipette: Pipette
+        pipette: Cuentagotas
         rotateWhilePlacing: Rotar
         rotateInverseModifier: >-
             Modificador: Rotar inversamente

@@ -6,6 +6,7 @@ import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
 import { Loader } from "../../../core/loader";
 import { lerp } from "../../../core/utils";
+import { enumHubGoalRewards } from "../../tutorial_goals";
 
 const wiresBackgroundDpi = 4;
 
@@ -26,7 +27,9 @@ export class HUDWiresOverlay extends BaseHUDPart {
      */
     switchLayers() {
         if (this.root.currentLayer === "regular") {
-            this.root.currentLayer = "wires";
+            if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_filters_and_levers)) {
+                this.root.currentLayer = "wires";
+            }
         } else {
             this.root.currentLayer = "regular";
         }

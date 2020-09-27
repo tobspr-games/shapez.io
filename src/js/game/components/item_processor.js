@@ -1,17 +1,15 @@
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
-import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
-    splitter: "splitter",
-    splitterWires: "splitterWires",
+    balancer: "balancer",
     cutter: "cutter",
     cutterQuad: "cutterQuad",
     rotater: "rotater",
     rotaterCCW: "rotaterCCW",
-    rotaterFL: "rotaterFL",
+    rotater180: "rotater180",
     stacker: "stacker",
     trash: "trash",
     mixer: "mixer",
@@ -26,7 +24,6 @@ export const enumItemProcessorTypes = {
 /** @enum {string} */
 export const enumItemProcessorRequirements = {
     painterQuad: "painterQuad",
-    filter: "filter",
 };
 
 /** @typedef {{
@@ -51,14 +48,6 @@ export class ItemProcessorComponent extends Component {
         };
     }
 
-    duplicateWithoutContents() {
-        return new ItemProcessorComponent({
-            processorType: this.type,
-            processingRequirement: this.processingRequirement,
-            inputsPerCharge: this.inputsPerCharge,
-        });
-    }
-
     /**
      *
      * @param {object} param0
@@ -68,14 +57,14 @@ export class ItemProcessorComponent extends Component {
      *
      */
     constructor({
-        processorType = enumItemProcessorTypes.splitter,
+        processorType = enumItemProcessorTypes.balancer,
         processingRequirement = null,
         inputsPerCharge = 1,
     }) {
         super();
 
         // Which slot to emit next, this is only a preference and if it can't emit
-        // it will take the other one. Some machines ignore this (e.g. the splitter) to make
+        // it will take the other one. Some machines ignore this (e.g. the balancer) to make
         // sure the outputs always match
         this.nextOutputSlot = 0;
 

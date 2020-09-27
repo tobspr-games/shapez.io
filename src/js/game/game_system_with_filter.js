@@ -131,6 +131,7 @@ export class GameSystemWithFilter extends GameSystem {
      */
     internalRegisterEntity(entity) {
         this.allEntitiesSet.add(entity);
+        this.allEntitiesArrayIsOutdated = true;
 
         // if (this.root.gameInitialized && !this.root.bulkOperationRunning) {
         //     // Sort entities by uid so behaviour is predictable
@@ -147,6 +148,6 @@ export class GameSystemWithFilter extends GameSystem {
             // We do this in refreshCaches afterwards
             return;
         }
-        this.allEntitiesSet.delete(entity);
+        this.allEntitiesArrayIsOutdated = this.allEntitiesSet.delete(entity);
     }
 }

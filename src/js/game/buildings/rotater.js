@@ -1,4 +1,4 @@
-import { formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
@@ -10,7 +10,13 @@ import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 /** @enum {string} */
-export const enumRotaterVariants = { ccw: "ccw", fl: "fl" };
+export const enumRotaterVariants = { ccw: "ccw", rotate180: "rotate180" };
+
+const overlayMatrices = {
+    [defaultBuildingVariant]: generateMatrixRotations([0, 1, 1, 1, 1, 0, 0, 1, 1]),
+    [enumRotaterVariants.ccw]: generateMatrixRotations([1, 1, 0, 0, 1, 1, 1, 1, 0]),
+    [enumRotaterVariants.rotate180]: generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 1]),
+};
 
 export class MetaRotaterBuilding extends MetaBuilding {
     constructor() {
@@ -19,6 +25,21 @@ export class MetaRotaterBuilding extends MetaBuilding {
 
     getSilhouetteColor() {
         return "#7dc6cd";
+    }
+
+    /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        const matrix = overlayMatrices[variant];
+        if (matrix) {
+            return matrix[rotation];
+        }
+        return null;
     }
 
     /**
@@ -36,8 +57,8 @@ export class MetaRotaterBuilding extends MetaBuilding {
                 const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
-            case enumRotaterVariants.fl: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterFL);
+            case enumRotaterVariants.rotate180: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater180);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
         }
@@ -52,8 +73,8 @@ export class MetaRotaterBuilding extends MetaBuilding {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw)) {
             variants.push(enumRotaterVariants.ccw);
         }
-        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_fl)) {
-            variants.push(enumRotaterVariants.fl);
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_180)) {
+            variants.push(enumRotaterVariants.rotate180);
         }
         return variants;
     }
@@ -111,8 +132,8 @@ export class MetaRotaterBuilding extends MetaBuilding {
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
                 break;
             }
-            case enumRotaterVariants.fl: {
-                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterFL;
+            case enumRotaterVariants.rotate180: {
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater180;
                 break;
             }
             default:

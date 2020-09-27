@@ -192,10 +192,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
         // Check if its required to unlock an upgrade
         for (const upgradeKey in UPGRADES) {
-            const handle = UPGRADES[upgradeKey];
-            const tiers = handle.tiers;
-            for (let i = 0; i < tiers.length; ++i) {
-                const tier = tiers[i];
+            const upgradeTiers = UPGRADES[upgradeKey];
+            for (let i = 0; i < upgradeTiers.length; ++i) {
+                const tier = upgradeTiers[i];
                 const required = tier.required;
                 for (let k = 0; k < required.length; ++k) {
                     if (required[k].shape === key) {

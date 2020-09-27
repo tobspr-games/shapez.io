@@ -13,7 +13,7 @@ import { round1Digit } from "./utils";
 
 const logger = createLogger("buffers");
 
-const bufferGcDurationSeconds = 5;
+const bufferGcDurationSeconds = 0.5;
 
 export class BufferMaintainer {
     /**
@@ -86,27 +86,29 @@ export class BufferMaintainer {
         // Make sure our backlog never gets too big
         clearBufferBacklog();
 
-        const bufferStats = getBufferStats();
-        const mbUsed = round1Digit(bufferStats.vramUsage / (1024 * 1024));
-        logger.log(
-            "GC: Remove",
-            (deletedKeys + "").padStart(4),
-            ", Remain",
-            (totalKeys + "").padStart(4),
-            "(",
-            (bufferStats.bufferCount + "").padStart(4),
-            "total",
-            ")",
+        // if (G_IS_DEV) {
+        //     const bufferStats = getBufferStats();
+        //     const mbUsed = round1Digit(bufferStats.vramUsage / (1024 * 1024));
+        //     logger.log(
+        //         "GC: Remove",
+        //         (deletedKeys + "").padStart(4),
+        //         ", Remain",
+        //         (totalKeys + "").padStart(4),
+        //         "(",
+        //         (bufferStats.bufferCount + "").padStart(4),
+        //         "total",
+        //         ")",
 
-            "(",
-            (bufferStats.backlog + "").padStart(4),
-            "backlog",
-            ")",
+        //         "(",
+        //         (bufferStats.backlogSize + "").padStart(4),
+        //         "backlog",
+        //         ")",
 
-            "VRAM:",
-            mbUsed,
-            "MB"
-        );
+        //         "VRAM:",
+        //         mbUsed,
+        //         "MB"
+        //     );
+        // }
 
         ++this.iterationIndex;
     }

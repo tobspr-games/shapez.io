@@ -35,35 +35,17 @@ export class ItemEjectorComponent extends Component {
         };
     }
 
-    duplicateWithoutContents() {
-        const slotsCopy = [];
-        for (let i = 0; i < this.slots.length; ++i) {
-            const slot = this.slots[i];
-            slotsCopy.push({
-                pos: slot.pos.copy(),
-                direction: slot.direction,
-            });
-        }
-
-        return new ItemEjectorComponent({
-            slots: slotsCopy,
-        });
-    }
-
     /**
      *
      * @param {object} param0
      * @param {Array<{pos: Vector, direction: enumDirection }>=} param0.slots The slots to eject on
+     * @param {boolean=} param0.renderFloatingItems Whether to render items even if they are not connected
      */
-    constructor({ slots = [] }) {
+    constructor({ slots = [], renderFloatingItems = true }) {
         super();
 
         this.setSlots(slots);
-
-        /**
-         * Whether this ejector slot is enabled
-         */
-        this.enabled = true;
+        this.renderFloatingItems = renderFloatingItems;
     }
 
     /**

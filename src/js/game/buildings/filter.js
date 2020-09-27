@@ -1,15 +1,14 @@
+import { formatItemsPerSecond } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
+import { T } from "../../translations";
+import { FilterComponent } from "../components/filter";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import {
-    enumItemProcessorRequirements,
-    enumItemProcessorTypes,
-    ItemProcessorComponent,
-} from "../components/item_processor";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaFilterBuilding extends MetaBuilding {
     constructor() {
@@ -24,8 +23,7 @@ export class MetaFilterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_filters_and_levers);
     }
 
     getDimensions() {
@@ -34,6 +32,16 @@ export class MetaFilterBuilding extends MetaBuilding {
 
     getShowWiresLayerPreview() {
         return true;
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Array<[string, string]>}
+     */
+    getAdditionalStatistics(root, variant) {
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
+        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
 
     /**
@@ -79,12 +87,6 @@ export class MetaFilterBuilding extends MetaBuilding {
             })
         );
 
-        entity.addComponent(
-            new ItemProcessorComponent({
-                processorType: enumItemProcessorTypes.filter,
-                inputsPerCharge: 1,
-                processingRequirement: enumItemProcessorRequirements.filter,
-            })
-        );
+        entity.addComponent(new FilterComponent());
     }
 }

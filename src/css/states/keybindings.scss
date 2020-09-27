@@ -35,10 +35,12 @@
                     background: transparent center center / 40% no-repeat;
                     opacity: 0.9;
                     &.editKeybinding {
+                        /* @load-async */
                         background-image: uiResource("icons/edit_key.png");
                     }
 
                     &.resetKeybinding {
+                        /* @load-async */
                         background-image: uiResource("icons/reset_key.png");
                     }
 
@@ -55,7 +57,7 @@
     @include DarkThemeOverride {
         .content {
             .hint {
-                background: #3b3d40;
+                background: darken($darkModeControlsBackground, 4);
             }
 
             .category .entry {

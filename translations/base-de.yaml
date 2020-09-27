@@ -66,7 +66,7 @@ steamPage:
             [*] Verschiedene Karten und Herausforderungen (z.B. Karten mit Hindernissen)
             [*] Puzzle (Liefere die geforderte Form mit begrenztem Platz/limitierten Gebäuden)
             [*] Eine Kampagne mit Gebäudekosten
-            [*] Konfigurierbarer Kartengenerator (Ändere die Grösse/Anzahl/Dichte der Ressourcenflecken, den Seed und viel mehr)
+            [*] Konfigurierbarer Kartengenerator (Ändere die Grösse/Anzahl/Dichte der Ressourcenflecken, den Seed und vieles mehr)
             [*] Mehr Formentypen
             [*] Performanceverbesserungen (Das Spiel läuft bereits sehr gut!)
             [*] Und vieles mehr!
@@ -256,7 +256,7 @@ dialogs:
         title: Nützliche Hotkeys
         desc: >-
             Dieses Spiel hat viele Hotkeys, die den Bau von Fabriken vereinfachen und beschleunigen.
-            Hier sind ein paar, aber prüfe am besten die <strong>Tastenbelegung-Einstellungen</strong>!<br><br>
+            Hier sind ein paar Beispiele, aber prüfe am besten die <strong>Tastenbelegung-Einstellungen</strong>!<br><br>
              <code class='keybinding'>STRG</code> + Ziehen: Wähle Areal aus.<br>
              <code class='keybinding'>UMSCH</code>: Halten, um mehrere Gebäude zu platzieren.<br>
              <code class='keybinding'>ALT</code>: Invertiere die Platzierungsrichtung der Förderbänder.<br>
@@ -635,7 +635,7 @@ storyRewards:
     no_reward:
         title: Nächstes Level
         desc: >-
-            Dieses Level hat dir keine Belohnung gegeben, aber dafür das Nächste schon! <br><br> PS: Denke daran, deine alten Fabriken nicht zu zerstören - Du wirst sie später <strong>alle</strong> noch brauchen, um <strong>Upgrades freizuschalten</strong>!
+            Dieses Level hat dir keine Belohnung gegeben, aber im Nächsten gibt es eine! <br><br> PS: Denke daran, deine alten Fabriken nicht zu zerstören - Du wirst sie später <strong>alle</strong> noch brauchen, um <strong>Upgrades freizuschalten</strong>!
 
     no_reward_freeplay:
         title: Nächstes Level
@@ -694,7 +694,7 @@ settings:
         movementSpeed:
             title: Bewegungsgeschwindigkeit
             description: >-
-                Ändert die Geschwindigkeit, mit der der Bildschirm durch die Pfeiltasten bewegt wird.
+                Ändert die Geschwindigkeit, mit welcher der Bildschirm durch die Pfeiltasten bewegt wird.
             speeds:
                 super_slow: Sehr langsam
                 slow: Langsam
@@ -711,7 +711,7 @@ settings:
         enableColorBlindHelper:
             title: Modus für Farbenblinde
             description: >-
-                Aktiviert verschiedene Werkzeuge, die dir das Spielen trotz Farbenblindheit ermöglichen.
+                Aktiviert verschiedene Werkzeuge, welche dir das Spielen trotz Farbenblindheit ermöglichen.
 
         fullscreen:
             title: Vollbild
@@ -775,7 +775,7 @@ settings:
         rotationByBuilding:
             title: Rotation pro Gebäudetyp
             description: >-
-                Jeder Gebäudetyp merkt sich einzeln, in welche Richtung er zeigt.
+                Jeder Gebäudetyp merkt sich eigenständig, in welche Richtung er zeigt.
                 Das fühlt sich möglicherweise besser an, wenn du häufig zwischen verschiedenen Gebäudetypen wechselst.
 
         compactBuildingInfo:
@@ -786,7 +786,7 @@ settings:
         disableCutDeleteWarnings:
             title: Deaktiviere Warnungsdialog beim Löschen
             description: >-
-                Deaktiviert die Warnung, die beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
+                Deaktiviert die Warnung, welche beim Löschen und Ausschneiden von mehr als 100 Feldern angezeigt wird.
 
 keybindings:
     title: Tastenbelegung

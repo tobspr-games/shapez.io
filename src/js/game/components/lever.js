@@ -12,8 +12,12 @@ export class LeverComponent extends Component {
         };
     }
 
-    duplicateWithoutContents() {
-        return new LeverComponent({ toggled: this.toggled });
+    /**
+     * Copy the current state to another component
+     * @param {LeverComponent} otherComponent
+     */
+    copyAdditionalStateTo(otherComponent) {
+        otherComponent.toggled = this.toggled;
     }
 
     /**

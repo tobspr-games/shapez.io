@@ -1,43 +1,79 @@
 #ingame_HUD_EntityDebugger {
     position: absolute;
+    background: $ingameHudBg;
+    @include S(padding, 5px);
     @include S(right, 30px);
-    @include S(top, 200px);
 
-    font-size: 14px;
-    line-height: 16px;
-    color: #fff;
-    background: rgba(0, 10, 20, 0.7);
-    padding: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include SuperSmallText;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+
+    > label {
+        text-transform: uppercase;
+    }
+
+    .hint {
+        color: #aaa;
+    }
+
     &,
     * {
         pointer-events: all;
     }
 
-    .flag {
-        display: inline-block;
-        background: #333438;
-        @include S(padding, 2px);
-        @include S(margin-right, 2px);
-
-        u {
-            opacity: 0.5;
-        }
+    .propertyTable {
+        @include S(margin-top, 8px);
     }
 
-    .components {
-        @include S(margin-top, 4px);
+    .propertyTable,
+    .entityComponents,
+    .entityComponents .object > div {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        @include S(grid-gap, 3px);
-        .component {
-            @include S(padding, 2px);
-            background: #333;
-            display: flex;
-            flex-direction: column;
+        grid-template-columns: 1fr auto;
+        @include S(column-gap, 10px);
+    }
 
-            .data {
-                @include S(width, 150px);
-                @include S(height, 130px);
+    .entityComponents {
+        grid-column: 1 / 3;
+        @include S(margin-top, 5px);
+
+        font-family: "Roboto Mono", "Fira Code", monospace;
+        font-size: 90%;
+        @include S(letter-spacing, -0.5px);
+
+        label,
+        span {
+            line-height: 1.5em;
+
+            &:not(span) {
+                opacity: 0.5;
+            }
+        }
+        &,
+        * {
+            @include SuperSmallText;
+            @include S(font-size, 7px, $important: true);
+            @include S(line-height, 12px, $important: true);
+        }
+
+        .object {
+            grid-column: 1 / 3;
+            line-height: 1.5em;
+
+            > summary {
+                transition: opacity 0.1s ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+            > div {
+                @include S(margin-left, 4px);
+                cursor: pointer;
             }
         }
     }

@@ -12,16 +12,14 @@ export const enumLogicGateType = {
     rotater: "rotater",
     unstacker: "unstacker",
     cutter: "cutter",
-    shapecompare: "shapecompare",
+    compare: "compare",
+    stacker: "stacker",
+    painter: "painter",
 };
 
 export class LogicGateComponent extends Component {
     static getId() {
         return "LogicGate";
-    }
-
-    duplicateWithoutContents() {
-        return new LogicGateComponent({ type: this.type });
     }
 
     /**

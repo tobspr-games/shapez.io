@@ -19,12 +19,6 @@ export class MinerComponent extends Component {
         };
     }
 
-    duplicateWithoutContents() {
-        return new MinerComponent({
-            chainable: this.chainable,
-        });
-    }
-
     constructor({ chainable = false }) {
         super();
         this.lastMiningTime = 0;

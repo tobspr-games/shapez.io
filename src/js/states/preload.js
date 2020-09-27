@@ -1,12 +1,13 @@
+import { CHANGELOG } from "../changelog";
+import { cachebust } from "../core/cachebust";
+import { globalConfig } from "../core/config";
 import { GameState } from "../core/game_state";
 import { createLogger } from "../core/logging";
 import { findNiceValue } from "../core/utils";
-import { cachebust } from "../core/cachebust";
-import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
-import { T, autoDetectLanguageId, updateApplicationLanguage } from "../translations";
+import { getRandomHint } from "../game/hints";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
-import { CHANGELOG } from "../changelog";
-import { globalConfig } from "../core/config";
+import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
+import { autoDetectLanguageId, T, updateApplicationLanguage } from "../translations";
 
 const logger = createLogger("state/preload");
 
@@ -24,8 +25,9 @@ export class PreloadState extends GameState {
                     <span class="inner" style="width: 0%"></span>
                     <span class="status">0%</span>
                 </span>
+                </div>
             </div>
-            </div>
+            <span class="prefab_GameHint"></span>
         `;
     }
 
@@ -58,6 +60,11 @@ export class PreloadState extends GameState {
         this.statusBar = this.htmlElement.querySelector(".loadingStatus > .bar > .inner");
         /** @type {HTMLElement} */
         this.statusBarText = this.htmlElement.querySelector(".loadingStatus > .bar > .status");
+
+        /** @type {HTMLElement} */
+        this.hintsText = this.htmlElement.querySelector(".prefab_GameHint");
+        this.lastHintShown = -1000;
+        this.nextHintDuration = 0;
 
         this.currentStatus = "booting";
         this.currentIndex = 0;
@@ -216,6 +223,35 @@ export class PreloadState extends GameState {
             );
     }
 
+    update() {
+        const now = performance.now();
+        if (now - this.lastHintShown > this.nextHintDuration) {
+            this.lastHintShown = now;
+            const hintText = getRandomHint();
+
+            this.hintsText.innerHTML = hintText;
+
+            /**
+             * Compute how long the user will need to read the hint.
+             * We calculate with 130 words per minute, with an average of 5 chars
+             * that is 650 characters / minute
+             */
+            this.nextHintDuration = Math.max(2500, (hintText.length / 650) * 60 * 1000);
+        }
+    }
+
+    onRender() {
+        this.update();
+    }
+
+    onBackgroundTick() {
+        this.update();
+    }
+
+    /**
+     *
+     * @param {string} text
+     */
     setStatus(text) {
         logger.log("✅ " + text);
         this.currentIndex += 1;
@@ -269,10 +305,12 @@ export class PreloadState extends GameState {
 
         const resetBtn = subElement.querySelector("button.resetApp");
         this.trackClicks(resetBtn, this.showResetConfirm);
+
+        this.hintsText.remove();
     }
 
     showResetConfirm() {
-        if (confirm("Are you sure you want to reset the app? This will delete all your savegames")) {
+        if (confirm("Are you sure you want to reset the app? This will delete all your savegames!")) {
             this.resetApp();
         }
     }
