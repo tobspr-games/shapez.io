@@ -26,6 +26,7 @@ export class GameSystemWithFilter extends GameSystem {
         this.allEntitiesSet = new Set();
         this.allEntitiesArray = [];
         this.allEntitiesArrayIsOutdated = true;
+        this.entitiesQueuedToDelete = [];
 
         this.root.signals.entityAdded.add(this.internalPushEntityIfMatching, this);
         this.root.signals.entityGotNewComponent.add(this.internalReconsiderEntityToAdd, this);
@@ -95,13 +96,11 @@ export class GameSystemWithFilter extends GameSystem {
     refreshCaches() {
         //this.allEntities.sort((a, b) => a.uid - b.uid);
         // Remove all entities which are queued for destroy
-
-        for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
-            const entity = this.allEntitiesArray[i];
-            if (entity.queuedForDestroy || entity.destroyed) {
-                this.allEntitiesSet.delete(this.allEntitiesArray[i]);
-                fastArrayDelete(this.allEntitiesArray, i);
+        if (this.entitiesQueuedToDelete.length > 0) {
+            for (let i = this.entitiesQueuedToDelete.length - 1; i >= 0; --i) {
+                this.allEntitiesSet.delete(this.entitiesQueuedToDelete[i]);
             }
+            this.entitiesQueuedToDelete = [];
         }
 
         // called here in case a delete executed mid frame
@@ -135,7 +134,7 @@ export class GameSystemWithFilter extends GameSystem {
      */
     internalPopEntityIfMatching(entity) {
         if (this.root.bulkOperationRunning) {
-            // We do this in refreshCaches afterwards
+            this.entitiesQueuedToDelete.push(entity);
             return;
         }
         this.allEntitiesArrayIsOutdated = this.allEntitiesSet.delete(entity);
