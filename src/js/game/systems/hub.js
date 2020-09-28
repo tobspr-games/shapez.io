@@ -77,10 +77,8 @@ export class HubSystem extends GameSystemWithFilter {
         const delivered = this.root.hubGoals.getCurrentGoalDelivered();
         const deliveredText = "" + formatBigNumber(delivered);
 
-        if (delivered > 9999) {
+        if (delivered > 999) {
             context.font = "bold 16px GameFont";
-        } else if (delivered > 999) {
-            context.font = "bold 20px GameFont";
         } else {
             context.font = "bold 25px GameFont";
         }
