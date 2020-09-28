@@ -1,9 +1,13 @@
+import { BaseItem } from "../game/base_item";
 import { ClickDetector } from "./click_detector";
+import { Signal } from "./signal";
 
 export class FormElement {
     constructor(id, label) {
         this.id = id;
         this.label = label;
+
+        this.valueChosen = new Signal();
     }
 
     getHtml() {
@@ -147,4 +151,71 @@ export class FormElementCheckbox extends FormElement {
     }
 
     focus(parent) {}
+}
+
+export class FormElementItemChooser extends FormElement {
+    /**
+     *
+     * @param {object} param0
+     * @param {string} param0.id
+     * @param {string=} param0.label
+     * @param {Array<BaseItem>} param0.items
+     */
+    constructor({ id, label, items = [] }) {
+        super(id, label);
+        this.items = items;
+        this.element = null;
+
+        /**
+         * @type {BaseItem}
+         */
+        this.chosenItem = null;
+    }
+
+    getHtml() {
+        let classes = [];
+
+        return `
+            <div class="formElement">
+                ${this.label ? `<label>${this.label}</label>` : ""}
+                <div class="ingameItemChooser input" data-formId="${this.id}"></div>
+            </div>
+            `;
+    }
+
+    /**
+     * @param {HTMLElement} parent
+     * @param {Array<ClickDetector>} clickTrackers
+     */
+    bindEvents(parent, clickTrackers) {
+        this.element = this.getFormElement(parent);
+
+        for (let i = 0; i < this.items.length; ++i) {
+            const item = this.items[i];
+
+            const canvas = document.createElement("canvas");
+            canvas.width = 128;
+            canvas.height = 128;
+            const context = canvas.getContext("2d");
+            item.drawFullSizeOnCanvas(context, 128);
+            this.element.appendChild(canvas);
+
+            const detector = new ClickDetector(canvas, {});
+            clickTrackers.push(detector);
+            detector.click.add(() => {
+                this.chosenItem = item;
+                this.valueChosen.dispatch(item);
+            });
+        }
+    }
+
+    isValid() {
+        return true;
+    }
+
+    getValue() {
+        return null;
+    }
+
+    focus() {}
 }

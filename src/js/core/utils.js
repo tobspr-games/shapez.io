@@ -298,9 +298,7 @@ export function formatBigNumber(num, separator = T.global.decimalSeparator, prec
     }
     const suffix = T.global.suffix[bigNumberSuffixTranslationKeys[suffixIndex]];
     const leadingDigitsRounded = Number(leadingDigits.toPrecision(precision));
-    const leadingDigitsNoTrailingDecimal = leadingDigitsRounded
-        .toString()
-        .replace(".", separator);
+    const leadingDigitsNoTrailingDecimal = leadingDigitsRounded.toString().replace(".", separator);
     return sign + leadingDigitsNoTrailingDecimal + suffix;
 }
 
@@ -668,4 +666,15 @@ export function safeModulo(n, m) {
  */
 export function smoothPulse(time) {
     return Math.sin(time * 4) * 0.5 + 0.5;
+}
+
+/**
+ * Fills in a <link> tag
+ * @param {string} translation
+ * @param {string} link
+ */
+export function fillInLinkIntoTranslation(translation, link) {
+    return translation
+        .replace("<link>", "<a href='" + link + "' target='_blank'>")
+        .replace("</link>", "</a>");
 }

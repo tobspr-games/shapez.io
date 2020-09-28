@@ -4,11 +4,12 @@ import { makeDiv } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
 import { T } from "../../../translations";
 import { defaultBuildingVariant } from "../../meta_building";
-import { enumHubGoalRewards } from "../../tutorial_goals";
+import { enumHubGoalRewards, tutorialGoals } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumHubGoalRewardsToContentUnlocked } from "../../tutorial_goals_mappings";
 import { InputReceiver } from "../../../core/input_receiver";
+import { enumNotificationType } from "./notifications";
 
 export class HUDUnlockNotification extends BaseHUDPart {
     initialize() {
@@ -50,6 +51,14 @@ export class HUDUnlockNotification extends BaseHUDPart {
      * @param {enumHubGoalRewards} reward
      */
     showForLevel(level, reward) {
+        if (level > tutorialGoals.length) {
+            this.root.hud.signals.notification.dispatch(
+                T.ingame.notifications.freeplayLevelComplete.replace("<level>", String(level)),
+                enumNotificationType.success
+            );
+            return;
+        }
+
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.elemTitle.innerText = T.ingame.levelCompleteNotification.levelTitle.replace(
             "<level>",

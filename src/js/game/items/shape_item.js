@@ -28,6 +28,13 @@ export class ShapeItem extends BaseItem {
     }
 
     /**
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        return this.definition.getHash();
+    }
+
+    /**
      * @param {BaseItem} other
      */
     equalsImpl(other) {
@@ -48,6 +55,15 @@ export class ShapeItem extends BaseItem {
 
     getBackgroundColorAsResource() {
         return THEME.map.resources.shape;
+    }
+
+    /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        this.definition.drawFullSizeOnCanvas(context, size);
     }
 
     /**

@@ -20,6 +20,7 @@ export const THIRDPARTY_URLS = {
     discord: "https://discord.gg/HN7EVzV",
     github: "https://github.com/tobspr/shapez.io",
     reddit: "https://www.reddit.com/r/shapezio",
+    shapeViewer: "https://viewer.shapez.io",
 
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
 };

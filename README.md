@@ -22,8 +22,6 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 
 ## Building
 
--   Make sure git `git lfs` extension is on your path
--   Run `git lfs pull` to download sound assets
 -   Make sure `ffmpeg` is on your path
 -   Install Node.js and Yarn
 -   Run `yarn` in the root folder

@@ -25,6 +25,7 @@ export const SOUNDS = {
     destroyBuilding: "destroy_building",
     placeBuilding: "place_building",
     placeBelt: "place_belt",
+    copy: "copy",
 };
 
 export const MUSIC = {

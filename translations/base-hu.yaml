@@ -1,36 +1,8 @@
-#
-#  GAME TRANSLATIONS
-#
-#  Contributing:
-#
-#    If you want to contribute, please make a pull request on this respository
-#    and I will have a look.
-#
-#  Placeholders:
-#
-#    Do *not* replace placeholders! Placeholders have a special syntax like
-#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
-#    translation for this one in German for example would be: `Taste: <key>` (notice
-#    how the placeholder stayed '<key>' and was not replaced!)
-#
-#  Adding a new language:
-#
-#    If you want to add a new language, ask me in the Discord and I will setup
-#    the basic structure so the game also detects it.
-#
-
----
 steamPage:
-    # This is the short text appearing on the steam page
-    shortText: A shapez.io-ban gyárak építésével kell automatizálni az egyre összetettebb alakzatok gyártását és kombinálását egy végtelen méretű térképen.
-
-    # This is the text shown above the Discord link
+    shortText: A shapez.io-ban gyárak építésével kell automatizálni az egyre
+        összetettebb alakzatok gyártását és kombinálását egy végtelen méretű
+        térképen.
     discordLink: Hivatalos Discord - Beszélgessünk!
-
-    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
-    # NOTICE:
-    # - Do not translate the first line (This is the gif image at the start of the store)
-    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
@@ -74,8 +46,7 @@ steamPage:
 
         [b]A játék nyílt forráskódú![/b]
 
-        Bárki közreműködhet. Aktív részese vagyok a közösségnek, és igyekszem minden javaslatot és visszajelzéset figyelembe venni.
-        Mindenképpen látogass el a Trello-mra a teljes ütemtervért!
+        Bárki közreműködhet. Aktív részese vagyok a közösségnek, és igyekszem minden javaslatot és visszajelzéset figyelembe venni. Mindenképpen látogass el a Trello-mra a teljes ütemtervért!
 
         [b]Linkek[/b]
 
@@ -86,29 +57,18 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io]Forráskód (GitHub)[/url]
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Segíts lefordítani[/url]
         [/list]
-
 global:
     loading: Betöltés
     error: Hiba
-
-    # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: "."
-
-    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    thousandsDivider: .
     decimalSeparator: ","
-
-    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: e
         millions: M
         billions: Mrd
         trillions: Tr
-
-    # Shown for infinitely big numbers
     infinite: végtelen
-
     time:
-        # Used for formatting past time dates
         oneSecondAgo: egy másodperccel ezelőtt
         xSecondsAgo: <x> másodperccel ezelőtt
         oneMinuteAgo: egy perccel ezelőtt
@@ -117,14 +77,10 @@ global:
         xHoursAgo: <x> órával ezelőtt
         oneDayAgo: egy nappal ezelőtt
         xDaysAgo: <x> nappal ezelőtt
-
-        # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>mp
         minutesAndSecondsShort: <minutes>p <seconds>mp
         hoursAndMinutesShort: <hours>ó <minutes>p
-
         xMinutes: <x> perc
-
     keys:
         tab: TAB
         control: CTRL
@@ -132,13 +88,9 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
-
 demoBanners:
-    # This is the "advertisement" shown in the main menu and other various places
     title: Demó verzió
-    intro: >-
-        Vásárold meg az önálló verziót a teljes játékélményért!
-
+    intro: Vásárold meg az önálló verziót a teljes játékélményért!
 mainMenu:
     play: Játék
     continue: Folytatás
@@ -150,14 +102,12 @@ mainMenu:
     discordLink: Hivatalos Discord Szerver
     helpTranslate: Segíts fordítani!
     madeBy: Készítette <author-link>
-
-    # This is shown when using firefox and other browsers which are not supported.
-    browserWarning: >-
-        Elnézést, de a játék ezen a böngészőn problémásan fut. Vásárold meg az Önálló Verziót, vagy töltsd le a Chrome-ot a teljes játékélményért.
-
+    browserWarning: Elnézést, de a játék ezen a böngészőn problémásan fut. Vásárold
+        meg az Önálló Verziót, vagy töltsd le a Chrome-ot a teljes
+        játékélményért.
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
-
+    savegameUnnamed: Unnamed
 dialogs:
     buttons:
         ok: OK
@@ -171,112 +121,99 @@ dialogs:
         viewUpdate: Frissítés Megtekintése
         showUpgrades: Fejlesztések
         showKeybindings: Irányítás
-
     importSavegameError:
         title: Importálás Hiba
-        text: >-
-            Nem sikerült importálni a mentésed:
-
+        text: "Nem sikerült importálni a mentésed:"
     importSavegameSuccess:
         title: Mentés Importálva
-        text: >-
-            A mentésed sikeresen importálva lett.
-
+        text: A mentésed sikeresen importálva lett.
     gameLoadFailure:
         title: A játék elromlott
-        text: >-
-            Nem sikerült betölteni a mentésed:
-
+        text: "Nem sikerült betölteni a mentésed:"
     confirmSavegameDelete:
         title: Törlés megerősítése
-        text: >-
-            Biztos, hogy ki akarod törölni?
-
+        text: Biztos, hogy ki akarod törölni?
     savegameDeletionError:
         title: Sikertelen törlés
-        text: >-
-            Nem sikerült törölni a mentésed:
-
+        text: "Nem sikerült törölni a mentésed:"
     restartRequired:
         title: Újraindítás szükséges
-        text: >-
-            Újra kell indítanod a játékot, hogy életbe lépjenek a módosítások.
-
+        text: Újra kell indítanod a játékot, hogy életbe lépjenek a módosítások.
     editKeybinding:
         title: Gyorsbillentyű módosítása
-        desc: Nyomd meg a billentyűt vagy egérgombot, amit használni szeretnél, vagy nyomj ESC-et, ha mégse.
-
+        desc: Nyomd meg a billentyűt vagy egérgombot, amit használni szeretnél, vagy
+            nyomj ESC-et, ha mégse.
     resetKeybindingsConfirmation:
         title: Gyorsbillentyűk visszaállítása
-        desc: Ez minden gyorsbillentyűt visszaállít az eredeti állapotára. Biztos vagy benne?
-
+        desc: Ez minden gyorsbillentyűt visszaállít az eredeti állapotára. Biztos vagy
+            benne?
     keybindingsResetOk:
         title: Gyorsbillentyűk visszaállítva
         desc: A gyorsbillentyűk az eredeti értékekre visszaállítva!
-
     featureRestriction:
         title: Demó Verzió
-        desc: Egy olyan funkciót próbáltál elérni (<feature>), amely nem elérhető a Demóban. Vásárold meg an Önálló verziót a teljes játékélményért!
-
+        desc: Egy olyan funkciót próbáltál elérni (<feature>), amely nem elérhető a
+            Demóban. Vásárold meg an Önálló verziót a teljes játékélményért!
     oneSavegameLimit:
         title: Egy Játékmentés
-        desc: A Demó verzióban egyszerre csak egy játékmentésed lehet. Töröld a meglévő mentésedet, vagy vásárold meg az Önálló verziót!
-
+        desc: A Demó verzióban egyszerre csak egy játékmentésed lehet. Töröld a meglévő
+            mentésedet, vagy vásárold meg az Önálló verziót!
     updateSummary:
         title: Új frissítés!
-        desc: >-
-            Íme a változások a legutóbbi játékod óta:
-
+        desc: "Íme a változások a legutóbbi játékod óta:"
     upgradesIntroduction:
         title: Szerezz Fejlesztéseket
-        desc: >-
-            Minden legyártott alakzatot felhasználhatsz a fejlesztésekhez - <strong>Ne töröld ki a régi gyáraidat!</strong>
-            A Fejlesztések lap a képernyő jobb felső sarkában található.
-
+        desc: Minden legyártott alakzatot felhasználhatsz a fejlesztésekhez - <strong>Ne
+            töröld ki a régi gyáraidat!</strong> A Fejlesztések lap a képernyő
+            jobb felső sarkában található.
     massDeleteConfirm:
         title: Törlés megerősítése
-        desc: >-
-            Egy csomó épületet akarsz egyszerre törölni (egészen pontosan <count>-t)! Biztos, hogy ezt szeretnéd?
-
+        desc: Egy csomó épületet akarsz egyszerre törölni (egészen pontosan <count>-t)!
+            Biztos, hogy ezt szeretnéd?
     massCutConfirm:
         title: Biztosan kivágod?
-        desc: >-
-            Egy csomó épületet akarsz egyszerre kivágni (egészen pontosan <count>-t)! Biztos, hogy ezt szeretnéd?
-
+        desc: Egy csomó épületet akarsz egyszerre kivágni (egészen pontosan <count>-t)!
+            Biztos, hogy ezt szeretnéd?
     massCutInsufficientConfirm:
         title: Kivágás megerősítése
-        desc: Nincs elég Tervrajzod ennek a beillsztéséhez! Egészen biztos, hogy kivágod?
-
+        desc: Nincs elég Tervrajzod ennek a beillsztéséhez! Egészen biztos, hogy
+            kivágod?
     blueprintsNotUnlocked:
         title: Még nincs feloldva
-        desc: >-
-            A Tervrajzokat a 12-es szinten fogod feloldani.
-
+        desc: A Tervrajzokat a 12-es szinten fogod feloldani.
     keybindingsIntroduction:
         title: Hasznos billentyűk
-        desc: >-
-            A játék sok hasznos gyorsbillentyűt tartalmaz, amelyek megkönnyítik a gyárépítést.
-            Íme, néhány, de feltétlenül <strong>nézd meg a gyorsbillentyűket</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Húzás: Terület kijelölése másolás/törléshez.<br>
-            <code class='keybinding'>SHIFT</code>: Egyszerre több épületet rak le.<br>
-            <code class='keybinding'>ALT</code>: Megfordítja a futószalagok irányát lehelyezéskor.<br>
-
+        desc: "A játék sok hasznos gyorsbillentyűt tartalmaz, amelyek megkönnyítik a
+            gyárépítést. Íme, néhány, de feltétlenül <strong>nézd meg a
+            gyorsbillentyűket</strong>!<br><br> <code
+            class='keybinding'>CTRL</code> + Húzás: Terület kijelölése
+            másolás/törléshez.<br> <code class='keybinding'>SHIFT</code>:
+            Egyszerre több épületet rak le.<br> <code
+            class='keybinding'>ALT</code>: Megfordítja a futószalagok irányát
+            lehelyezéskor.<br>"
     createMarker:
         title: Új Jelölő
-        desc: Adj neki egy nevet, vagy egy alakzat <strong>gyorskódját</strong> (amit <a href="https://viewer.shapez.io" target="_blank">itt</a> tudsz legenerálni)
+        desc: Adj neki egy nevet, vagy egy alakzat <strong>gyorskódját</strong> (amit <a
+            href="https://viewer.shapez.io" target="_blank">itt</a> tudsz
+            legenerálni)
         titleEdit: Jelölő Szerkesztése
-
     markerDemoLimit:
-        desc: A Demó verzióban csak két Jelölőd lehet. Vásárold meg az Önálló verziót, hogy feloldd ezt a korlátozást!
-
+        desc: A Demó verzióban csak két Jelölőd lehet. Vásárold meg az Önálló verziót,
+            hogy feloldd ezt a korlátozást!
     exportScreenshotWarning:
         title: Képernyőkép exportálása
-        desc: >-
-            A teljes bázisod képének lementését választottad. Vedd figyelembe, hogy ez nagy méretű bázisoknál igen lassú lehet, de akár a játék összeomlását is okozhatja!
-
+        desc: A teljes bázisod képének lementését választottad. Vedd figyelembe, hogy ez
+            nagy méretű bázisoknál igen lassú lehet, de akár a játék
+            összeomlását is okozhatja!
+    editSignal:
+        title: Set Signal
+        descItems: "Choose a pre-defined item:"
+        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
+            can generate <link>here</link>)
+    renameSavegame:
+        title: Rename Savegame
+        desc: You can rename your savegame here.
 ingame:
-    # This is shown in the top left corner and displays useful keybindings in
-    # every situation
     keybindingsOverlay:
         moveMap: Mozgatás
         selectBuildings: Terület kijelölése
@@ -297,8 +234,6 @@ ingame:
         clearSelection: Kijelölés megszüntetése
         pipette: Pipetta
         switchLayers: Réteg váltás
-
-    # Names of the colors, used for the color blind mode
     colors:
         red: Piros
         green: Zöld
@@ -309,18 +244,9 @@ ingame:
         white: Fehér
         black: Fekete
         uncolored: Színezetlen
-
-    # Everything related to placing buildings (I.e. as soon as you selected a building
-    # from the toolbar)
     buildingPlacement:
-        # Buildings can have different variants which are unlocked at later levels,
-        # and this is the hint shown when there are multiple variants available.
         cycleBuildingVariants: Nyomd meg a <key>-t, a variációk váltogatásához.
-
-        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
-        hotkeyLabel: >-
-            Gyorsbillentyű: <key>
-
+        hotkeyLabel: "Gyorsbillentyű: <key>"
         infoTexts:
             speed: Sebesség
             range: Távolság
@@ -328,36 +254,42 @@ ingame:
             oneItemPerSecond: 1 tárgy / mp
             itemsPerSecond: <x> tárgy / mp
             itemsPerSecondDouble: (x2)
-
             tiles: <x> csempe
-
-    # The notification when completing a level
     levelCompleteNotification:
-        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: <level>. Szint
         completed: Teljesítve
         unlockText: <reward> Feloldva!
         buttonNextLevel: Következő Szint
-
-    # Notifications on the lower right
     notifications:
         newUpgrade: Egy új fejlesztés elérhető!
         gameSaved: A játékállás mentve.
-
-    # The "Upgrades" window
+        freeplayLevelComplete: Level <level> has been completed!
     shop:
         title: Fejlesztések
         buttonUnlock: Fejlesztés
-
-        # Gets replaced to e.g. "Tier IX"
         tier: <x>. Szint
-
-        # The roman number for each tier
-        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
-
+        tierLabels:
+            - I
+            - II
+            - III
+            - IV
+            - V
+            - VI
+            - VII
+            - VIII
+            - IX
+            - X
+            - XI
+            - XII
+            - XIII
+            - XIV
+            - XV
+            - XVI
+            - XVII
+            - XVIII
+            - XIX
+            - XX
         maximumLevel: LEGMAGASABB SZINT (<currentMult>x Sebesség)
-
-    # The "Statistics" window
     statistics:
         title: Statisztikák
         dataSources:
@@ -366,62 +298,58 @@ ingame:
                 description: Az összes tárolt alakzatod a központi épületben.
             produced:
                 title: Gyártva
-                description: Az összes eddig legyártott alakzatod, beleértve a köztes alakzatokat is.
+                description: Az összes eddig legyártott alakzatod, beleértve a köztes
+                    alakzatokat is.
             delivered:
                 title: Beszállítva
                 description: Az összes alakzat, amely jelenleg kézbesítés alatt van a központba.
         noShapesProduced: Még nem gyártottál egy alazkatot sem.
-
-        # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / p
-
-    # Settings menu, when you press "ESC"
+        shapesDisplayUnits:
+            second: <shapes> / s
+            minute: <shapes> / m
+            hour: <shapes> / h
     settingsMenu:
         playtime: Játékidő
-
         buildingsPlaced: Épületek száma
         beltsPlaced: Futószalagok hossza
-
         buttons:
             continue: Folytatás
             settings: Beállítások
             menu: Vissza a menübe
-
-    # Bottom left tutorial hints
     tutorialHints:
         title: Segítségre van szükséged?
         showHint: Segítség mutatása
         hideHint: Bezárás
-
-    # When placing a blueprint
     blueprintPlacer:
         cost: Ár
-
-    # Map markers
     waypoints:
         waypoints: Jelölők
         hub: KÖZPONT
-        description: Bal klikk egy jelölőre az odaugráshoz, jobb klikk a törléshez.<br><br>Nyomj <keybinding>-t egy jelölő készítéséhez a jelenlegi nézetből, vagy <strong>jobb klikk</strong> egy jelölő készítéséhez a kiválasztott helyre.
+        description: Bal klikk egy jelölőre az odaugráshoz, jobb klikk a
+            törléshez.<br><br>Nyomj <keybinding>-t egy jelölő készítéséhez a
+            jelenlegi nézetből, vagy <strong>jobb klikk</strong> egy jelölő
+            készítéséhez a kiválasztott helyre.
         creationSuccessNotification: Jelölő létrehozva.
-
-    # Shape viewer
     shapeViewer:
         title: Rétegek
         empty: Üres
         copyKey: Gyorskód másolása
-
-    # Interactive tutorial
     interactiveTutorial:
         title: Oktatás
         hints:
-            1_1_extractor: Helyezz egy <strong>bányát</strong> egy <strong>kör alakzat</strong> tetejére a kibányászásához!
-            1_2_conveyor: >-
-                Kösd össze a bányát egy <strong>futószalag</strong> segítségével a Központi épülettel!<br><br>Tipp: <strong>Kattints és húzd</strong> a futószalagot az egérrel!
-
-            1_3_expand: >-
-                Ez <strong>NEM</strong> egy tétlen játék! Építs több bányát és futószalagot, hogy hamarabb elérd a célt.<br><br>Tipp: Tartsd lenyomva a <strong>SHIFT</strong>-et, hogy egyszerre több bányát helyezz le, és nyomj <strong>R</strong>-t a forgatáshoz.
-
-# All shop upgrades
+            1_1_extractor: Helyezz egy <strong>bányát</strong> egy <strong>kör
+                alakzat</strong> tetejére a kibányászásához!
+            1_2_conveyor: "Kösd össze a bányát egy <strong>futószalag</strong> segítségével
+                a Központi épülettel!<br><br>Tipp: <strong>Kattints és
+                húzd</strong> a futószalagot az egérrel!"
+            1_3_expand: "Ez <strong>NEM</strong> egy tétlen játék! Építs több bányát és
+                futószalagot, hogy hamarabb elérd a célt.<br><br>Tipp: Tartsd
+                lenyomva a <strong>SHIFT</strong>-et, hogy egyszerre több bányát
+                helyezz le, és nyomj <strong>R</strong>-t a forgatáshoz."
+    connectedMiners:
+        one_miner: 1 Miner
+        n_miners: <amount> Miners
+        limited_items: Limited to <max_throughput>
 shopUpgrades:
     belt:
         name: Futószalagok, Elosztók & Alagutak
@@ -435,300 +363,404 @@ shopUpgrades:
     painting:
         name: Keverés & Festés
         description: <currentMult>x → <newMult>x Sebesség
-
-# Buildings and their name / description
 buildings:
     hub:
         deliver: Deliver
         toUnlock: to unlock
         levelShortcut: LVL
-
     belt:
         default:
-            name: &belt Futószalag
-            description: Elemeket szállít, tartsd nyomva az egérgombot egyszerre több lerakásához.
-
+            name: Futószalag
+            description: Elemeket szállít, tartsd nyomva az egérgombot egyszerre több
+                lerakásához.
     wire:
         default:
-            name: &wire Energy Wire
+            name: Energy Wire
             description: Allows you to transport energy.
-
-    # Internal name for the Extractor
+        second:
+            name: Wire
+            description: Transfers signals, which can be items, colors or booleans (1 / 0).
+                Different colored wires do not connect.
     miner:
         default:
-            name: &miner Bányász
+            name: Bányász
             description: Tedd egy alakzatra vagy színre a kibányászásához.
-
         chainable:
             name: Bányász (összekapcsolható)
-            description: Tedd egy alakzatra vagy színre a kibányászásához. Több egymáshoz kapcsolható.
-
-    # Internal name for the Tunnel
+            description: Tedd egy alakzatra vagy színre a kibányászásához. Több egymáshoz
+                kapcsolható.
     underground_belt:
         default:
-            name: &underground_belt Alagút
+            name: Alagút
             description: Segítségével futószalagok és épületek alatt átvezethetők az elemek.
-
         tier2:
             name: Alagút II
             description: Segítségével futószalagok és épületek alatt átvezethetők az elemek.
-
-    # Internal name for the Balancer
-    splitter:
-        default:
-            name: &splitter Elosztó
-            description: Többfunkciós - Egyenletesen szétosztja a bementeket a kimenetekre.
-
-        compact:
-            name: Egyesítő (kompakt)
-            description: Két futószalagot egyesít.
-
-        compact-inverse:
-            name: Egyesítő (kompakt)
-            description: Két futószalagot egyesít.
-
     cutter:
         default:
-            name: &cutter Vágó
-            description: Függőlegesen félbevágja az alakzatokat. <strong>Ha csak az egyik felet akarod használni, ne felejtsd el a másikat kukába küldeni, különben eldugítja!</strong>
+            name: Vágó
+            description: Függőlegesen félbevágja az alakzatokat. <strong>Ha csak az egyik
+                felet akarod használni, ne felejtsd el a másikat kukába küldeni,
+                különben eldugítja!</strong>
         quad:
             name: Vágó (negyedelő)
-            description: Négyfelé vágja az alakzatokat. Cuts shapes into four parts. <strong>Ha csak az egyik felet akarod használni, ne felejtsd el a többit a kukába küldeni, különben eldugítja!</strong>
-
-    advanced_processor:
-        default:
-            name: &advanced_processor Color Inverter
-            description: Accepts a color or shape and inverts it.
-
+            description: Négyfelé vágja az alakzatokat. Cuts shapes into four parts.
+                <strong>Ha csak az egyik felet akarod használni, ne felejtsd el
+                a többit a kukába küldeni, különben eldugítja!</strong>
     rotater:
         default:
-            name: &rotater Forgató
+            name: Forgató
             description: Elforgatja az alakzatot óramutató irányában 90 fokkal.
         ccw:
             name: Forgató (fordított)
             description: Elforgatja az alakzatot óramutatóval ellentétesen 90 fokkal.
-        fl:
-            name: Forgató (180)
-            description: Elforgatja az alakzatot 180 fokkal.
-
+        rotate180:
+            name: Rotate (180)
+            description: Rotates shapes by 180 degrees.
     stacker:
         default:
-            name: &stacker Egyesítő
-            description: Egyesít két elemet. Ha nem lehet összeilleszteni őket, a jobboldali elem a baloldali tetejére kerül.
-
+            name: Egyesítő
+            description: Egyesít két elemet. Ha nem lehet összeilleszteni őket, a jobboldali
+                elem a baloldali tetejére kerül.
     mixer:
         default:
-            name: &mixer Színkeverő
+            name: Színkeverő
             description: Összekever két színt összeadó színkeveréssel.
-
     painter:
         default:
-            name: &painter Festő
-            description: &painter_desc Beszínezi az alakzatot a baloldali bemeneten a jobboldali bemeneten érkező színnel.
-
+            name: Festő
+            description: Beszínezi az alakzatot a baloldali bemeneten a jobboldali bemeneten
+                érkező színnel.
         mirrored:
-            name: *painter
-            description: *painter_desc
-
+            name: Festő
+            description: Beszínezi az alakzatot a baloldali bemeneten a jobboldali bemeneten
+                érkező színnel.
         double:
             name: Festő (Dupla)
-            description: Beszínezi az alakzatokat a baloldali bemeneteken a fenti bemeneten érkező színnel.
-
+            description: Beszínezi az alakzatokat a baloldali bemeneteken a fenti bemeneten
+                érkező színnel.
         quad:
             name: Festő (Négyszeres)
             description: Az alakzat négy negyedét különböző színekkel lehet vele színezni.
-
     trash:
         default:
-            name: &trash Kuka
-            description: Bármelyik irányból lehet hozzá csatlakozni, és megsemmisíti a beleküldött elemeket. Örökre.
-
-        storage:
-            name: Tároló
-            description: Tárolja a fölös elemeket egy bizonyos kapacitásig.
-
-    energy_generator:
-        deliver: Deliver
-
-        # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: For
-
+            name: Kuka
+            description: Bármelyik irányból lehet hozzá csatlakozni, és megsemmisíti a
+                beleküldött elemeket. Örökre.
+    balancer:
         default:
-            name: &energy_generator Energy Generator
-            description: Generates energy by consuming shapes.
-
-    wire_crossings:
-        default:
-            name: &wire_crossings Wire Splitter
-            description: Splits a energy wire into two.
-
+            name: Balancer
+            description: Multifunctional - Evenly distributes all inputs onto all outputs.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
-
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+        merger-inverse:
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+        splitter:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+        splitter-inverse:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+    storage:
+        default:
+            name: Storage
+            description: Stores excess items, up to a given capacity. Prioritizes the left
+                output and can be used as an overflow gate.
+    wire_tunnel:
+        default:
+            name: Wire Crossing
+            description: Allows to cross two wires without connecting them.
+    constant_signal:
+        default:
+            name: Constant Signal
+            description: Emits a constant signal, which can be either a shape, color or
+                boolean (1 / 0).
+    lever:
+        default:
+            name: Switch
+            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
+                which can then be used to control for example an item filter.
+    logic_gate:
+        default:
+            name: AND Gate
+            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
+                color or boolean "1")
+        not:
+            name: NOT Gate
+            description: Emits a boolean "1" if the input is not truthy. (Truthy means
+                shape, color or boolean "1")
+        xor:
+            name: XOR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
+                (Truthy means shape, color or boolean "1")
+        or:
+            name: OR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
+                shape, color or boolean "1")
+    transistor:
+        default:
+            name: Transistor
+            description: Forwards the bottom input if the side input is truthy (a shape,
+                color or "1").
+        mirrored:
+            name: Transistor
+            description: Forwards the bottom input if the side input is truthy (a shape,
+                color or "1").
+    filter:
+        default:
+            name: Filter
+            description: Connect a signal to route all matching items to the top and the
+                remaining to the right. Can be controlled with boolean signals
+                too.
+    display:
+        default:
+            name: Display
+            description: Connect a signal to show it on the display - It can be a shape,
+                color or boolean.
+    reader:
+        default:
+            name: Belt Reader
+            description: Allows to measure the average belt throughput. Outputs the last
+                read item on the wires layer (once unlocked).
+    analyzer:
+        default:
+            name: Shape Analyzer
+            description: Analyzes the top right quadrant of the lowest layer of the shape
+                and returns its shape and color.
+    comparator:
+        default:
+            name: Compare
+            description: Returns boolean "1" if both signals are exactly equal. Can compare
+                shapes, items and booleans.
+    virtual_processor:
+        default:
+            name: Virtual Cutter
+            description: Virtually cuts the shape into two halves.
+        rotater:
+            name: Virtual Rotater
+            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+        unstacker:
+            name: Virtual Unstacker
+            description: Virtually extracts the topmost layer to the right output and the
+                remaining ones to the left.
+        stacker:
+            name: Virtual Stacker
+            description: Virtually stacks the right shape onto the left.
+        painter:
+            name: Virtual Painter
+            description: Virtually paints the shape from the bottom input with the shape on
+                the right input.
 storyRewards:
-    # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from <strong>top to bottom</strong> regardless of its orientation!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I gave you a trash, which destroys everything you put into it!
-
+        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from
+            <strong>top to bottom</strong> regardless of its
+            orientation!<br><br>Be sure to get rid of the waste, or otherwise
+            <strong>it will stall</strong> - For this purpose I gave you a
+            trash, which destroys everything you put into it!
     reward_rotater:
         title: Rotating
-        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes clockwise by 90 degrees.
-
+        desc: The <strong>rotater</strong> has been unlocked! It rotates shapes
+            clockwise by 90 degrees.
     reward_painter:
         title: Painting
-        desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>color blind mode</strong> in the settings!
-
+        desc: "The <strong>painter</strong> has been unlocked - Extract some color veins
+            (just as you do with shapes) and combine it with a shape in the
+            painter to color them!<br><br>PS: If you are colorblind, there is a
+            <strong>color blind mode</strong> in the settings!"
     reward_mixer:
         title: Color Mixing
-        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using <strong>additive blending</strong> with this building!
-
+        desc: The <strong>mixer</strong> has been unlocked - Combine two colors using
+            <strong>additive blending</strong> with this building!
     reward_stacker:
         title: Combiner
-        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
-
+        desc: You can now combine shapes with the <strong>combiner</strong>! Both inputs
+            are combined, and if they can be put next to each other, they will
+            be <strong>fused</strong>. If not, the right input is
+            <strong>stacked on top</strong> of the left input!
     reward_splitter:
         title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
-
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!<br><br>
     reward_tunnel:
         title: Tunnel
-        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items through belts and buildings with it!
-
+        desc: The <strong>tunnel</strong> has been unlocked - You can now pipe items
+            through belts and buildings with it!
     reward_rotater_ccw:
         title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to rotate counter clockwise! To build it, select the rotater and <strong>press 'T' to cycle its variants</strong>!
-
+        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows to
+            rotate counter clockwise! To build it, select the rotater and
+            <strong>press 'T' to cycle its variants</strong>!
     reward_miner_chainable:
         title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!
-
+        desc: You have unlocked the <strong>chaining extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!
     reward_underground_belt_tier_2:
         title: Tunnel Tier II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a <strong>bigger range</strong>, and you can also mix-n-match those tunnels now!
-
-    reward_splitter_compact:
-        title: Compact Balancer
-        desc: >-
-            You have unlocked a compact variant of the <strong>balancer</strong> - It accepts two inputs and merges them into one!
-
+        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a
+            <strong>bigger range</strong>, and you can also mix-n-match those
+            tunnels now!
     reward_cutter_quad:
         title: Quad Cutting
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you to cut shapes in <strong>four parts</strong> instead of just two!
-
+        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you
+            to cut shapes in <strong>four parts</strong> instead of just two!
     reward_painter_double:
         title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works as the regular painter but processes <strong>two shapes at once</strong> consuming just one color instead of two!
-
+        desc: You have unlocked a variant of the <strong>painter</strong> - It works as
+            the regular painter but processes <strong>two shapes at
+            once</strong> consuming just one color instead of two!
     reward_painter_quad:
         title: Quad Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to paint each part of the shape individually!
-
+        desc: You have unlocked a variant of the <strong>painter</strong> - It allows to
+            paint each part of the shape individually!
     reward_storage:
         title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to store items up to a given capacity!
-
+        desc: You have unlocked a variant of the <strong>trash</strong> - It allows to
+            store items up to a given capacity!
     reward_freeplay:
         title: Freeplay
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now randomly generated! (No worries, more content is planned for the standalone!)
-
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now randomly generated! (No worries, more content is
+            planned for the standalone!)
     reward_blueprints:
         title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
-
-    # Special reward, which is shown when there is no reward actually
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select
+            an area (Hold CTRL, then drag with your mouse), and press 'C' to
+            copy it.<br><br>Pasting it is <strong>not free</strong>, you need to
+            produce <strong>blueprint shapes</strong> to afford it! (Those you
+            just delivered).
     no_reward:
         title: Next level
-        desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better don't destroy your existing factory - You need <strong>all</strong> those shapes later again to <strong>unlock upgrades</strong>!
-
+        desc: "This level gave you no reward, but the next one will! <br><br> PS: Better
+            don't destroy your existing factory - You need <strong>all</strong>
+            those shapes later again to <strong>unlock upgrades</strong>!"
     no_reward_freeplay:
         title: Next level
-        desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
-
+        desc: Congratulations! By the way, more content is planned for the standalone!
+    reward_balancer:
+        title: Balancer
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!<br><br>
+    reward_merger:
+        title: Compact Merger
+        desc: You have unlocked a <strong>merger</strong> variant of the
+            <strong>balancer</strong> - It accepts two inputs and merges them
+            into one belt!
+    reward_belt_reader:
+        title: Belt reader
+        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
+            measure the throughput of a belt.<br><br>And wait until you unlock
+            wires - then it gets really useful!
+    reward_rotater_180:
+        title: Rotater (180 degrees)
+        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
+            you to rotate a shape by 180 degress (Surprise! :D)
+    reward_wires_filters_and_levers:
+        title: "Wires: Filters & Levers"
+        desc: You just unlocked the <strong>wires layer</strong>! It is a separate layer
+            on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> Since it can be overwhelming a bit, I added a
+            small tutorial - Be sure to have <strong>tutorials enabled</strong>
+            in the settings!
+    reward_display:
+        title: Display
+        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize its contents!
+    reward_constant_signal:
+        title: Constant Signal
+        desc: You unlocked the <strong>constant signal</strong> building on the wires
+            layer! This is useful to connect it to <strong>item filters</strong>
+            for example.<br><br> The constant signal can emit a
+            <strong>shape</strong>, <strong>color</strong> or
+            <strong>boolean</strong> (1 / 0).
+    reward_logic_gates:
+        title: Logic Gates
+        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
+            about this, but it's actually super cool!<br><br> With those gates
+            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
+            bonus on top I also just gave you a <strong>transistor</strong>!
+    reward_virtual_processing:
+        title: Virtual Processing
+        desc: I just gave a whole bunch of new buildings which allow you to
+            <strong>simulate the processing of shapes</strong>!<br><br> You can
+            now simulate a cutter, rotater, stacker and more on the wires layer!
+            With this you now have three options to continue the game:<br><br> -
+            Build an <strong>automated machine</strong> to create any possible
+            shape requested by the HUB (I recommend to try it!).<br><br> - Build
+            something cool with wires.<br><br> - Continue to play
+            regulary.<br><br> Whatever you choose, remember to have fun!
 settings:
     title: Beállítások
     categories:
         general: General
         userInterface: User Interface
         advanced: Advanced
-
+        performance: Performance
     versionBadges:
         dev: Development
         staging: Staging
         prod: Production
     buildDate: Built <at-date>
-
     labels:
         uiScale:
             title: Interfész nagyság
-            description: >-
-                Changes the size of the user interface. The interface will still scale based on your device resolution, but this setting controls the amount of scale.
+            description: Changes the size of the user interface. The interface will still
+                scale based on your device resolution, but this setting controls
+                the amount of scale.
             scales:
                 super_small: Szuper kicsi
                 small: Kicsi
                 regular: Közepes
                 large: Nagy
                 huge: Hatalmas
-
         scrollWheelSensitivity:
             title: Zoom sensitivity
-            description: >-
-                Changes how sensitive the zoom is (Either mouse wheel or trackpad).
+            description: Changes how sensitive the zoom is (Either mouse wheel or trackpad).
             sensitivity:
                 super_slow: Szuper lassú
                 slow: Lassú
                 regular: Közepes
                 fast: Gyors
                 super_fast: Szuper gyors
-
         language:
             title: Nyelv
-            description: >-
-                Change the language. All translations are user contributed and might be incomplete!
-
+            description: Change the language. All translations are user contributed and
+                might be incomplete!
         fullscreen:
             title: Fullscreen
-            description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
-
+            description: It is recommended to play the game in fullscreen to get the best
+                experience. Only available in the standalone.
         soundsMuted:
             title: Hangok Némítása
-            description: >-
-                If enabled, mutes all sound effects.
-
+            description: If enabled, mutes all sound effects.
         musicMuted:
             title: Zene Némítása
-            description: >-
-                If enabled, mutes all music.
-
+            description: If enabled, mutes all music.
         theme:
             title: Game theme
-            description: >-
-                Choose the game theme (light / dark).
-
+            description: Choose the game theme (light / dark).
             themes:
                 dark: Sötét
                 light: Világos
-
         refreshRate:
             title: Simulation Target
-            description: >-
-                If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
-
+            description: If you have a 144hz monitor, change the refresh rate here so the
+                game will properly simulate at higher refresh rates. This might
+                actually decrease the FPS if your computer is too slow.
         alwaysMultiplace:
             title: Multiplace
-            description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
-
+            description: If enabled, all buildings will stay selected after placement until
+                you cancel it. This is equivalent to holding SHIFT permanently.
         offerHints:
             title: Hints & Tutorials
-            description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
-
+            description: Whether to offer hints and tutorials while playing. Also hides
+                certain UI elements onto a given level to make it easier to get
+                into the game.
         movementSpeed:
             title: Movement speed
             description: Changes how fast the view moves when using the keyboard.
@@ -741,20 +773,17 @@ settings:
                 extremely_fast: Extremely Fast
         enableTunnelSmartplace:
             title: Smart Tunnels
-            description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts.
-                This also enables to drag tunnels and excess tunnels will get removed.
+            description: When enabled, placing tunnels will automatically remove unnecessary
+                belts. This also enables to drag tunnels and excess tunnels will
+                get removed.
         vignette:
             title: Vignette
-            description: >-
-                Enables the vignette which darkens the screen corners and makes text easier
-                to read.
-
+            description: Enables the vignette which darkens the screen corners and makes
+                text easier to read.
         autosaveInterval:
             title: Autosave Interval
-            description: >-
-                Controls how often the game saves automatically. You can also disable it
-                entirely here.
+            description: Controls how often the game saves automatically. You can also
+                disable it entirely here.
             intervals:
                 one_minute: 1 Minute
                 two_minutes: 2 Minutes
@@ -764,32 +793,69 @@ settings:
                 disabled: Disabled
         compactBuildingInfo:
             title: Compact Building Infos
-            description: >-
-                Shortens info boxes for buildings by only showing their ratios. Otherwise a
-                description and image is shown.
+            description: Shortens info boxes for buildings by only showing their ratios.
+                Otherwise a description and image is shown.
         disableCutDeleteWarnings:
             title: Disable Cut/Delete Warnings
-            description: >-
-                Disable the warning dialogs brought up when cutting/deleting more than 100
-                entities.
-
+            description: Disable the warning dialogs brought up when cutting/deleting more
+                than 100 entities.
         enableColorBlindHelper:
             title: Color Blind Mode
-            description: Enables various tools which allow to play the game if you are color blind.
+            description: Enables various tools which allow to play the game if you are color
+                blind.
         rotationByBuilding:
             title: Rotation by building type
-            description: >-
-                Each building type remembers the rotation you last set it to individually.
-                This may be more comfortable if you frequently switch between placing
-                different building types.
-
+            description: Each building type remembers the rotation you last set it to
+                individually. This may be more comfortable if you frequently
+                switch between placing different building types.
+        soundVolume:
+            title: Sound Volume
+            description: Set the volume for sound effects
+        musicVolume:
+            title: Music Volume
+            description: Set the volume for music
+        lowQualityMapResources:
+            title: Low Quality Map Resources
+            description: Simplifies the rendering of resources on the map when zoomed in to
+                improve performance. It even looks cleaner, so be sure to try it
+                out!
+        disableTileGrid:
+            title: Disable Grid
+            description: Disabling the tile grid can help with the performance. This also
+                makes the game look cleaner!
+        clearCursorOnDeleteWhilePlacing:
+            title: Clear Cursor on Right Click
+            description: Enabled by default, clears the cursor whenever you right click
+                while you have a building selected for placement. If disabled,
+                you can delete buildings by right-clicking while placing a
+                building.
+        lowQualityTextures:
+            title: Low quality textures (Ugly)
+            description: Uses low quality textures to save performance. This will make the
+                game look very ugly!
+        displayChunkBorders:
+            title: Display Chunk Borders
+            description: The game is divided into chunks of 16x16 tiles, if this setting is
+                enabled the borders of each chunk are displayed.
+        pickMinerOnPatch:
+            title: Pick miner on resource patch
+            description: Enabled by default, selects the miner if you use the pipette when
+                hovering a resource patch.
+        simplifiedBelts:
+            title: Simplified Belts (Ugly)
+            description: Does not render belt items except when hovering the belt to save
+                performance. I do not recommend to play with this setting if you
+                do not absolutely need the performance.
+        enableMousePan:
+            title: Enable Mouse Pan
+            description: Allows to move the map by moving the cursor to the edges of the
+                screen. The speed depends on the Movement Speed setting.
+    rangeSliderPercentage: <amount> %
 keybindings:
     title: Keybindings
-    hint: >-
-        Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different placement options.
-
+    hint: "Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different
+        placement options."
     resetKeybindings: Reset Keyinbindings
-
     categoryLabels:
         general: Application
         ingame: Game
@@ -798,7 +864,6 @@ keybindings:
         massSelect: Mass Select
         buildings: Building Shortcuts
         placementModifiers: Placement Modifiers
-
     mappings:
         confirm: Confirm
         back: Vissza
@@ -807,38 +872,30 @@ keybindings:
         mapMoveDown: Move Down
         mapMoveLeft: Move Left
         centerMap: Center Map
-
         mapZoomIn: Zoom in
         mapZoomOut: Zoom out
         createMarker: Create Marker
-
         menuOpenShop: Fejlesztések
         menuOpenStats: Statisztikák
-
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
-        belt: *belt
-        splitter: *splitter
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        painter: *painter
-        trash: *trash
-
+        belt: Futószalag
+        underground_belt: Alagút
+        miner: Bányász
+        cutter: Vágó
+        rotater: Forgató
+        stacker: Egyesítő
+        mixer: Színkeverő
+        painter: Festő
+        trash: Kuka
         rotateWhilePlacing: Rotate
-        rotateInverseModifier: >-
-            Modifier: Rotate CCW instead
+        rotateInverseModifier: "Modifier: Rotate CCW instead"
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Confirm Mass Delete
         cycleBuildings: Cycle Buildings
-
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area
-
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
         placeInverse: Invert automatic belt orientation
@@ -851,33 +908,37 @@ keybindings:
         pipette: Pipette
         menuClose: Close Menu
         switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
         wire: Energy Wire
-
+        balancer: Balancer
+        storage: Storage
+        constant_signal: Constant Signal
+        logic_gate: Logic Gate
+        lever: Switch (regular)
+        lever_wires: Switch (wires)
+        filter: Filter
+        wire_tunnel: Wire Crossing
+        display: Display
+        reader: Belt Reader
+        virtual_processor: Virtual Cutter
+        transistor: Transistor
+        analyzer: Shape Analyzer
+        comparator: Compare
 about:
     title: A játékról
     body: >-
-        This game is open source and developed by <a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (this is me).<br><br>
+        This game is open source and developed by <a
+        href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
+        (this is me).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>"
-        target="_blank">shapez.io on github</a>.<br><br>
+        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
 
-        This game wouldn't have been possible without the great Discord community
-        around my games - You should really join the <a href="<discordlink>"
-        target="_blank">Discord server</a>!<br><br>
+        This game wouldn't have been possible without the great Discord community around my games - You should really join the <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a> - He's awesome.<br><br>
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
 
-        Finally, huge thanks to my best friend <a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our
-        factorio sessions this game would never have existed.
-
+        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our factorio sessions this game would never have existed.
 changelog:
     title: Changelog
-
 demo:
     features:
         restoringGames: Mentések visszaállítása
@@ -885,5 +946,64 @@ demo:
         oneGameLimit: Egy mentésre van limitálva
         customizeKeybindings: Customizing Keybindings
         exportingBase: Exporting whole Base as Image
-
     settingNotAvailable: Nem elérhető a demóban.
+tips:
+    - The hub accepts input of any kind, not just the current shape!
+    - Make sure your factories are modular - it will pay out!
+    - Don't build too close to the hub, or it will be a huge chaos!
+    - If stacking does not work, try switching the inputs.
+    - You can toggle the belt planner direction by pressing <b>R</b>.
+    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
+    - Ratios stay the same, as long as all upgrades are on the same Tier.
+    - Serial execution is more efficient than parallel.
+    - You will unlock more variants of buildings later in the game!
+    - You can use <b>T</b> to switch between different variants.
+    - Symmetry is key!
+    - You can weave different tiers of tunnels.
+    - Try to build compact factories - it will pay out!
+    - The painter has a mirrored variant which you can select with <b>T</b>
+    - Having the right building ratios will maximize efficiency.
+    - At maximum level, 5 extractors will fill a single belt.
+    - Don't forget about tunnels!
+    - You don't need to divide up items evenly for full efficiency.
+    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
+      long lines of belts easily.
+    - Cutters always cut vertically, regardless of their orientation.
+    - To get white mix all three colors.
+    - The storage buffer priorities the first output.
+    - Invest time to build repeatable designs - it's worth it!
+    - Holding <b>CTRL</b> allows to place multiple buildings.
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
+    - Efficiency is key!
+    - Shape patches that are further away from the hub are more complex.
+    - Machines have a limited speed, divide them up for maximum efficiency.
+    - Use balancers to maximize your efficiency.
+    - Organization is important. Try not to cross conveyors too much.
+    - Plan in advance, or it will be a huge chaos!
+    - Don't remove your old factories! You'll need them to unlock upgrades.
+    - Try beating level 20 on your own before seeking for help!
+    - Don't complicate things, try to stay simple and you'll go far.
+    - You may need to re-use factories later in the game. Plan your factories to
+      be re-usable.
+    - Sometimes, you can find a needed shape in the map without creating it with
+      stackers.
+    - Full windmills / pinwheels can never spawn naturally.
+    - Color your shapes before cutting for maximum efficiency.
+    - With modules, space is merely a perception; a concern for mortal men.
+    - Make a separate blueprint factory. They're important for modules.
+    - Have a closer look on the color mixer, and your questions will be answered.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
+    - The pin icon next to each shape in the upgrade list pins it to the screen.
+    - Mix all primary colors together to make white!
+    - You have an infinite map, don't cramp your factory, expand!
+    - Also try Factorio! It's my favorite game.
+    - The quad cutter cuts clockwise starting from the top right!
+    - You can download your savegames in the main menu!
+    - This game has a lot of useful keybindings! Be sure to check out the
+      settings page.
+    - This game has a lot of settings, be sure to check them out!
+    - The marker to your hub has a small compass to indicate its direction!
+    - To clear belts, cut the area and then paste it at the same location.
+    - Press F4 to show your FPS and Tick Rate.
+    - Press F4 twice to show the tile of your mouse and camera.

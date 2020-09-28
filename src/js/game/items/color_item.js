@@ -29,6 +29,13 @@ export class ColorItem extends BaseItem {
     }
 
     /**
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        return this.color;
+    }
+
+    /**
      * @param {BaseItem} other
      */
     equalsImpl(other) {
@@ -45,6 +52,18 @@ export class ColorItem extends BaseItem {
 
     getBackgroundColorAsResource() {
         return THEME.map.resources[this.color];
+    }
+
+    /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        if (!this.cachedSprite) {
+            this.cachedSprite = Loader.getSprite("sprites/colors/" + this.color + ".png");
+        }
+        this.cachedSprite.drawCentered(context, size / 2, size / 2, size);
     }
 
     /**

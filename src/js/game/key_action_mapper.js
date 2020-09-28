@@ -67,12 +67,11 @@ export const KEYMAPPINGS = {
         wire: { keyCode: key("1") },
         wire_tunnel: { keyCode: key("2") },
         constant_signal: { keyCode: key("3") },
-        lever_wires: { keyCode: key("4") },
-        logic_gate: { keyCode: key("5") },
-        virtual_processor: { keyCode: key("6") },
-        analyzer: { keyCode: key("7") },
-        comparator: { keyCode: key("8") },
-        transistor: { keyCode: key("9") },
+        logic_gate: { keyCode: key("4") },
+        virtual_processor: { keyCode: key("5") },
+        analyzer: { keyCode: key("6") },
+        comparator: { keyCode: key("7") },
+        transistor: { keyCode: key("8") },
     },
 
     placement: {
@@ -82,6 +81,8 @@ export const KEYMAPPINGS = {
         cycleBuildingVariants: { keyCode: key("T") },
         cycleBuildings: { keyCode: 9 }, // TAB
         switchDirectionLockSide: { keyCode: key("R") },
+
+        copyWireValue: { keyCode: key("Z") },
     },
 
     massSelect: {

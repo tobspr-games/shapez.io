@@ -54,19 +54,19 @@ function gulptasksHTML($, gulp, buildFolder) {
                         document.head.appendChild(css);
 
                         // Append async css
-                        const asyncCss = document.createElement("link");
-                        asyncCss.rel = "stylesheet";
-                        asyncCss.type = "text/css";
-                        asyncCss.media = "none";
-                        asyncCss.setAttribute("onload", "this.media='all'");
-                        asyncCss.href = cachebust("async-resources.css");
-                        if (integrity) {
-                            asyncCss.setAttribute(
-                                "integrity",
-                                computeIntegrityHash(path.join(buildFolder, "async-resources.css"))
-                            );
-                        }
-                        document.head.appendChild(asyncCss);
+                        // const asyncCss = document.createElement("link");
+                        // asyncCss.rel = "stylesheet";
+                        // asyncCss.type = "text/css";
+                        // asyncCss.media = "none";
+                        // asyncCss.setAttribute("onload", "this.media='all'");
+                        // asyncCss.href = cachebust("async-resources.css");
+                        // if (integrity) {
+                        //     asyncCss.setAttribute(
+                        //         "integrity",
+                        //         computeIntegrityHash(path.join(buildFolder, "async-resources.css"))
+                        //     );
+                        // }
+                        // document.head.appendChild(asyncCss);
 
                         if (app) {
                             // Append cordova link

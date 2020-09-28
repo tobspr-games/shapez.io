@@ -268,7 +268,13 @@ dialogs:
     createMarker:
         title: New Marker
         titleEdit: Edit Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <link>here</link>)
+
+    editSignal:
+        title: Set Signal
+        descItems: >-
+            Choose a pre-defined item:
+        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you can generate <link>here</link>)
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
@@ -280,6 +286,10 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
+
+    entityWarning:
+        title: Performance Warning
+        desc: You have placed a lot of buildings, this is just a friendly reminder that the game can not handle an endless count of buildings - So try to keep your factories compact!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -350,6 +360,7 @@ ingame:
     notifications:
         newUpgrade: A new upgrade is available!
         gameSaved: Your game has been saved.
+        freeplayLevelComplete: Level <level> has been completed!
 
     # The "Upgrades" window
     shop:
@@ -360,7 +371,8 @@ ingame:
         tier: Tier <x>
 
         # The roman number for each tier
-        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+        tierLabels:
+            [I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII, XIII, XIV, XV, XVI, XVII, XVIII, XIX, XX]
 
         maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
 
@@ -788,13 +800,13 @@ storyRewards:
     no_reward_freeplay:
         title: Next level
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Congratulations!
 
     reward_freeplay:
         title: Freeplay
         desc: >-
             You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will only require low quantities from now on, I highly recommend to build a machine which automatically delivers the requested shape!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now on, I highly recommend to build a machine which automatically delivers the requested shape!<br><br>
             The HUB outputs the requested shape on the wires layer, so all you have to do is to analyze it and automatically configure your factory based on that.
 
 settings:
@@ -1039,8 +1051,7 @@ keybindings:
         wire: *wire
         constant_signal: *constant_signal
         logic_gate: Logic Gate
-        lever: Switch (regular)
-        lever_wires: Switch (wires)
+        lever: *lever
         filter: *filter
         wire_tunnel: *wire_tunnel
         display: *display
@@ -1062,7 +1073,8 @@ keybindings:
         lockBeltDirection: Enable belt planner
         switchDirectionLockSide: >-
             Planner: Switch side
-
+        copyWireValue: >-
+            Wires: Copy value below cursor
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area

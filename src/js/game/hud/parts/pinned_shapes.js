@@ -4,6 +4,8 @@ import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
 import { blueprintShape, UPGRADES } from "../../upgrades";
 import { enumHubGoalRewards } from "../../tutorial_goals";
+import { enumAnalyticsDataSource } from "../../production_analytics";
+import { T } from "../../../translations";
 
 /**
  * Manages the pinned shapes on the left side of the screen
@@ -22,11 +24,13 @@ export class HUDPinnedShapes extends BaseHUDPart {
          * convenient. Also allows for cleaning up handles.
          * @type {Array<{
          *  key: string,
+         *  definition: ShapeDefinition,
          *  amountLabel: HTMLElement,
          *  lastRenderedValue: string,
          *  element: HTMLElement,
          *  detector?: ClickDetector,
-         *  infoDetector?: ClickDetector
+         *  infoDetector?: ClickDetector,
+         *  throughputOnly?: boolean
          * }>}
          */
         this.handles = [];
@@ -163,29 +167,40 @@ export class HUDPinnedShapes extends BaseHUDPart {
         this.handles = [];
 
         // Pin story goal
-        this.internalPinShape(currentKey, false, "goal");
+        this.internalPinShape({
+            key: currentKey,
+            canUnpin: false,
+            className: "goal",
+            throughputOnly: currentGoal.throughputOnly,
+        });
 
         // Pin blueprint shape as well
         if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
-            this.internalPinShape(blueprintShape, false, "blueprint");
+            this.internalPinShape({
+                key: blueprintShape,
+                canUnpin: false,
+                className: "blueprint",
+            });
         }
 
         // Pin manually pinned shapes
         for (let i = 0; i < this.pinnedShapes.length; ++i) {
             const key = this.pinnedShapes[i];
             if (key !== currentKey) {
-                this.internalPinShape(key);
+                this.internalPinShape({ key });
             }
         }
     }
 
     /**
      * Pins a new shape
-     * @param {string} key
-     * @param {boolean} canUnpin
-     * @param {string=} className
+     * @param {object} param0
+     * @param {string} param0.key
+     * @param {boolean=} param0.canUnpin
+     * @param {string=} param0.className
+     * @param {boolean=} param0.throughputOnly
      */
-    internalPinShape(key, canUnpin = true, className = null) {
+    internalPinShape({ key, canUnpin = true, className = null, throughputOnly = false }) {
         const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(key);
 
         const element = makeDiv(this.element, null, ["shape"]);
@@ -229,11 +244,13 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
         this.handles.push({
             key,
+            definition,
             element,
             amountLabel,
             lastRenderedValue: "",
             detector,
             infoDetector,
+            throughputOnly,
         });
     }
 
@@ -244,8 +261,20 @@ export class HUDPinnedShapes extends BaseHUDPart {
         for (let i = 0; i < this.handles.length; ++i) {
             const handle = this.handles[i];
 
-            const currentValue = this.root.hubGoals.getShapesStoredByKey(handle.key);
-            const currentValueFormatted = formatBigNumber(currentValue);
+            let currentValue = this.root.hubGoals.getShapesStoredByKey(handle.key);
+            let currentValueFormatted = formatBigNumber(currentValue);
+
+            if (handle.throughputOnly) {
+                currentValue = this.root.productionAnalytics.getCurrentShapeRate(
+                    enumAnalyticsDataSource.delivered,
+                    handle.definition
+                );
+                currentValueFormatted = T.ingame.statistics.shapesDisplayUnits.second.replace(
+                    "<shapes>",
+                    String(currentValue)
+                );
+            }
+
             if (currentValueFormatted !== handle.lastRenderedValue) {
                 handle.lastRenderedValue = currentValueFormatted;
                 handle.amountLabel.innerText = currentValueFormatted;

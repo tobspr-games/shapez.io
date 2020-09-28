@@ -2,9 +2,27 @@ import { findNiceIntegerValue } from "../core/utils";
 import { ShapeDefinition } from "./shape_definition";
 
 export const finalGameShape = "RuCw--Cw:----Ru--";
+export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 export const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
 const fixedImprovements = [0.5, 0.5, 1, 1, 2, 2];
+
+const numEndgameUpgrades = G_IS_DEV || G_IS_STANDALONE ? 20 - fixedImprovements.length - 1 : 0;
+
+function generateEndgameUpgrades() {
+    return new Array(numEndgameUpgrades).fill(null).map((_, i) => ({
+        required: [
+            { shape: blueprintShape, amount: 30000 + i * 10000 },
+            { shape: finalGameShape, amount: 20000 + i * 5000 },
+            { shape: rocketShape, amount: 20000 + i * 5000 },
+        ],
+        excludePrevious: true,
+    }));
+}
+
+for (let i = 0; i < numEndgameUpgrades; ++i) {
+    fixedImprovements.push(0.1);
+}
 
 /** @typedef {{
  *   shape: string,
@@ -41,6 +59,7 @@ export const UPGRADES = {
             required: [{ shape: finalGameShape, amount: 50000 }],
             excludePrevious: true,
         },
+        ...generateEndgameUpgrades(),
     ],
 
     miner: [
@@ -63,6 +82,7 @@ export const UPGRADES = {
             required: [{ shape: finalGameShape, amount: 50000 }],
             excludePrevious: true,
         },
+        ...generateEndgameUpgrades(),
     ],
 
     processors: [
@@ -85,6 +105,7 @@ export const UPGRADES = {
             required: [{ shape: finalGameShape, amount: 50000 }],
             excludePrevious: true,
         },
+        ...generateEndgameUpgrades(),
     ],
 
     painting: [
@@ -107,6 +128,7 @@ export const UPGRADES = {
             required: [{ shape: finalGameShape, amount: 50000 }],
             excludePrevious: true,
         },
+        ...generateEndgameUpgrades(),
     ],
 };
 

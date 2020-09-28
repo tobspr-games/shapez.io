@@ -53,6 +53,6 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        entity.addComponent(new WireTunnelComponent({}));
+        entity.addComponent(new WireTunnelComponent());
     }
 }
