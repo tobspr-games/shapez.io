@@ -6,4 +6,19 @@
     color: $colorRedBright;
     @include Heading;
     text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h2 {
+        @include PlainText;
+    }
+
+    span {
+        color: #555;
+        @include SuperSmallText;
+    }
 }
