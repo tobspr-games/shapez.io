@@ -350,6 +350,7 @@ ingame:
     notifications:
         newUpgrade: A new upgrade is available!
         gameSaved: Your game has been saved.
+        freeplayLevelComplete: Level <level> has been completed!
 
     # The "Upgrades" window
     shop:
@@ -360,7 +361,8 @@ ingame:
         tier: Tier <x>
 
         # The roman number for each tier
-        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
+        tierLabels:
+            [I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII, XIII, XIV, XV, XVI, XVII, XVIII, XIX, XX]
 
         maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
 
@@ -788,13 +790,13 @@ storyRewards:
     no_reward_freeplay:
         title: Next level
         desc: >-
-            Congratulations! By the way, more content is planned for the standalone!
+            Congratulations!
 
     reward_freeplay:
         title: Freeplay
         desc: >-
             You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will only require low quantities from now on, I highly recommend to build a machine which automatically delivers the requested shape!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now on, I highly recommend to build a machine which automatically delivers the requested shape!<br><br>
             The HUB outputs the requested shape on the wires layer, so all you have to do is to analyze it and automatically configure your factory based on that.
 
 settings:

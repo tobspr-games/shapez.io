@@ -143,10 +143,10 @@ export const tutorialGoals = [
     // 14
     // Belt reader
     {
-        // @todo
-        shape: "CuCuCuCu",
-        required: 0,
+        shape: "--Cg----:--Cr----", // unused
+        required: 16, // Per second!
         reward: enumHubGoalRewards.reward_belt_reader,
+        throughputOnly: true,
     },
 
     // 15
@@ -176,8 +176,7 @@ export const tutorialGoals = [
     // 18
     // Rotater (180deg)
     {
-        // @TODO
-        shape: "CuCuCuCu",
+        shape: "Sg----Sg:CgCgCgCg:--CyCy--", // unused
         required: 20000,
         reward: enumHubGoalRewards.reward_rotater_180,
     },
@@ -185,8 +184,7 @@ export const tutorialGoals = [
     // 19
     // Compact splitter
     {
-        // @TODO
-        shape: "CuCuCuCu",
+        shape: "CpRpCp--:SwSwSwSw",
         required: 25000,
         reward: enumHubGoalRewards.reward_splitter,
     },
@@ -202,8 +200,7 @@ export const tutorialGoals = [
     // 21
     // Display
     {
-        // @TODO
-        shape: "CuCuCuCu",
+        shape: "CrCrCrCr:CwCwCwCw:CrCrCrCr:CwCwCwCw",
         required: 25000,
         reward: enumHubGoalRewards.reward_display,
     },
@@ -211,43 +208,37 @@ export const tutorialGoals = [
     // 22
     // Constant signal
     {
-        // @TODO
-        shape: "CuCuCuCu",
-        required: 30000,
+        shape: "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
+        required: 25000,
         reward: enumHubGoalRewards.reward_constant_signal,
     },
 
     // 23
     // Quad Painter
     {
-        // @TODO
-        shape: "CuCuCuCu",
-        // shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", // processors t4 (two variants)
-        required: 35000,
+        shape: "CcSyCcSy:SyCcSyCc:CcSyCcSy",
+        required: 5000,
         reward: enumHubGoalRewards.reward_painter_quad,
     },
 
     // 24 Logic gates
     {
-        // @TODO
-        shape: "CuCuCuCu",
-        required: 40000,
+        shape: "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
+        required: 10000,
         reward: enumHubGoalRewards.reward_logic_gates,
     },
 
     // 25 Virtual Processing
     {
-        // @TODO
-        shape: "CuCuCuCu",
-        required: 45000,
+        shape: "Rg--Rg--:CwRwCwRw:--Rg--Rg",
+        required: 10000,
         reward: enumHubGoalRewards.reward_virtual_processing,
     },
 
     // 26 Freeplay
     {
-        // @TODO
-        shape: "CuCuCuCu",
-        required: 100000,
+        shape: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
+        required: 10000,
         reward: enumHubGoalRewards.reward_freeplay,
     },
 ];

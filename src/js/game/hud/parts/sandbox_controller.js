@@ -113,7 +113,7 @@ export class HUDSandboxController extends BaseHUDPart {
     modifyLevel(amount) {
         const hubGoals = this.root.hubGoals;
         hubGoals.level = Math.max(1, hubGoals.level + amount);
-        hubGoals.createNextGoal();
+        hubGoals.computeNextGoal();
 
         // Clear all shapes of this level
         hubGoals.storedShapes[hubGoals.currentGoal.definition.getHash()] = 0;

@@ -44,6 +44,7 @@ import { HUDWireInfo } from "./parts/wire_info";
 import { HUDLeverToggle } from "./parts/lever_toggle";
 import { HUDLayerPreview } from "./parts/layer_preview";
 import { HUDMinerHighlight } from "./parts/miner_highlight";
+import { HUDBetaOverlay } from "./parts/beta_overlay";
 
 export class GameHUD {
     /**
@@ -75,7 +76,6 @@ export class GameHUD {
             pinnedShapes: new HUDPinnedShapes(this.root),
             notifications: new HUDNotifications(this.root),
             settingsMenu: new HUDSettingsMenu(this.root),
-            // betaOverlay: new HUDBetaOverlay(this.root),
             debugInfo: new HUDDebugInfo(this.root),
             dialogs: new HUDModalDialogs(this.root),
             screenshotExporter: new HUDScreenshotExporter(this.root),
@@ -135,6 +135,10 @@ export class GameHUD {
 
         if (queryParamOptions.sandboxMode || G_IS_DEV) {
             this.parts.sandboxController = new HUDSandboxController(this.root);
+        }
+
+        if (!G_IS_RELEASE) {
+            this.parts.betaOverlay = new HUDBetaOverlay(this.root);
         }
 
         const frag = document.createDocumentFragment();
