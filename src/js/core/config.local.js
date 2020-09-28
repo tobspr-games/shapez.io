@@ -9,7 +9,7 @@ export default {
     // noArtificialDelays: true,
     // -----------------------------------------------------------------------------------
     // Disables writing of savegames, useful for testing the same savegame over and over
-    // disableSavegameWrite: true,
+    disableSavegameWrite: true,
     // -----------------------------------------------------------------------------------
     // Shows bounds of all entities
     // showEntityBounds: true,
@@ -33,7 +33,7 @@ export default {
     // allBuildingsUnlocked: true,
     // -----------------------------------------------------------------------------------
     // Disables cost of blueprints
-    // blueprintsNoCost: true,
+    blueprintsNoCost: true,
     // -----------------------------------------------------------------------------------
     // Disables cost of upgrades
     // upgradesNoCost: true,
@@ -75,7 +75,7 @@ export default {
     // instantMiners: true,
     // -----------------------------------------------------------------------------------
     // When using fastGameEnter, controls whether a new game is started or the last one is resumed
-    // resumeGameOnFastEnter: true,
+    resumeGameOnFastEnter: true,
     // -----------------------------------------------------------------------------------
     // Special option used to render the trailer
     // renderForTrailer: true,
