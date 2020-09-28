@@ -939,6 +939,7 @@ export class Camera extends BasicSerializableObject {
                 this.zoomLevel = this.zoomLevel * fade + this.desiredZoom * (1 - fade);
                 assert(Number.isFinite(this.zoomLevel), "Zoom level is NaN after fade: " + this.zoomLevel);
             } else {
+                this.zoomLevel = this.desiredZoom;
                 this.desiredZoom = null;
             }
         }
