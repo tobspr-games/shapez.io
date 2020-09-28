@@ -8,6 +8,7 @@ import { Signal } from "./signal";
 import { SOUNDS, MUSIC } from "../platform/sound";
 import { AtlasDefinition, atlasFiles } from "./atlas_definitions";
 import { initBuildingCodesAfterResourcesLoaded } from "../game/meta_building_registry";
+import { cachebust } from "./cachebust";
 
 const logger = createLogger("background_loader");
 
@@ -110,6 +111,7 @@ export class BackgroundResourcesLoader {
             essentialBareGameSounds,
             essentialBareGameAtlases
         )
+            .then(() => this.internalPreloadCss("async-resources.scss"))
             .catch(err => {
                 logger.warn("⏰ Failed to load essentials for bare game:", err);
             })
@@ -134,6 +136,21 @@ export class BackgroundResourcesLoader {
                 this.additionalReady = true;
                 this.signalAdditionalLoaded.dispatch();
             });
+    }
+
+    internalPreloadCss(name) {
+        return new Promise((resolve, reject) => {
+            const link = document.createElement("link");
+
+            link.onload = resolve;
+            link.onerror = reject;
+
+            link.setAttribute("rel", "stylesheet");
+            link.setAttribute("media", "all");
+            link.setAttribute("type", "text/css");
+            link.setAttribute("href", cachebust("async-resources.css"));
+            document.head.appendChild(link);
+        });
     }
 
     /**

@@ -1,63 +1,8 @@
-#
-#  GAME TRANSLATIONS
-#
-#  Contributing:
-#
-#    If you want to contribute, please make a pull request on this respository
-#    and I will have a look.
-#
-#  Placeholders:
-#
-#    Do *not* replace placeholders! Placeholders have a special syntax like
-#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
-#    translation for this one in German for example would be: `Taste: <key>` (notice
-#    how the placeholder stayed '<key>' and was not replaced!)
-#
-#  Adding a new language:
-#
-#    If you want to add a new language, ask me in the Discord and I will setup
-#    the basic structure so the game also detects it.
-#
-
-# Chinese (traditional) translation dictionary. TODO: better names for the buildings.
-# Standalone：獨立版
-# Demo：演示版
-# Level：關
-# Shape：圖形
-# tile：格子
-# Keybind：按鍵設置
-# Menu：主選單
-# Center/Hub：基地
-# Upgrade：升級
-# Efficiency：效率
-# Building：建築
-# Variant：建築變體
-# Belt: 傳送帶
-# Balancer：平衡機
-# Compact Balancer：小型合流機
-# Merger：合併機
-# Tunnel：隧道
-# Extractor：開採機
-# Cutter：切割機
-# Rotate：旋轉機
-# Stacker：混合機
-# Color Mixer：混色機
-# Painter：上色機
-# Trash：垃圾桶
-
----
 steamPage:
-    # This is the short text appearing on the steam page
     shortText: shapez.io 是一款在一個無邊際的地圖上建造工廠、自動化生產與組合愈加複雜圖形的遊戲。
-    # shortText: shapez.io is a game about building factories to automate the creation and combination of increasingly complex shapes within an infinite map.
-
-    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
-    # NOTICE:
-    # - Do not translate the first line (This is the gif image at the start of the store)
-    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-        shapez.io 是一款在一個無邊無際的地圖上建造工廠、將生產與組合愈加複雜圖形自動化的遊戲。
+        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img] shapez.io
+        是一款在一個無邊無際的地圖上建造工廠、將生產與組合愈加複雜圖形自動化的遊戲。
 
         在指定圖形送達基地後，你會晉級且解鎖能加速生產的新功能。
 
@@ -97,8 +42,7 @@ steamPage:
 
         [b]這個遊戲是開源的![/b]
 
-        任何人都可以貢獻，我在社群裡很活耀、嘗試回復所有的建議並盡量參考大家的意見。
-        欲知詳情，別忘了造訪我的 Trello 喔!
+        任何人都可以貢獻，我在社群裡很活耀、嘗試回復所有的建議並盡量參考大家的意見。 欲知詳情，別忘了造訪我的 Trello 喔!
 
         [b]連結[/b]
 
@@ -109,31 +53,19 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
         [/list]
-
     discordLink: Official Discord - Chat with me!
-
 global:
     loading: 加載中
     error: 錯誤
-
-    # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
-
-    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
-    decimalSeparator: "."
-
-    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
+    decimalSeparator: .
     suffix:
         thousands: 千
         millions: 百萬
         billions: 十億
         trillions: 兆
-
-    # Shown for infinitely big numbers
     infinite: 無限
-
     time:
-        # Used for formatting past time dates
         oneSecondAgo: 1秒前
         xSecondsAgo: <x>秒前
         oneMinuteAgo: 1分鐘前
@@ -142,14 +74,10 @@ global:
         xHoursAgo: <x>小時前
         oneDayAgo: 1天前
         xDaysAgo: <x>天前
-
-        # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>秒
         minutesAndSecondsShort: <minutes>分 <seconds>秒
         hoursAndMinutesShort: <hours>小時 <minutes>秒
-
         xMinutes: <x>分鐘
-
     keys:
         tab: TAB
         control: CTRL
@@ -157,13 +85,9 @@ global:
         escape: ESC
         shift: SHIFT
         space: 空格
-
 demoBanners:
-    # This is the "advertisement" shown in the main menu and other various places
     title: 演示版
-    intro: >-
-        獲取獨立版以解鎖所有功能！
-
+    intro: 獲取獨立版以解鎖所有功能！
 mainMenu:
     play: 開始遊戲
     changelog: 更新日誌
@@ -171,19 +95,14 @@ mainMenu:
     openSourceHint: 本遊戲已開源！
     discordLink: 官方Discord伺服器
     helpTranslate: 幫助我們翻譯！
-
-    # This is shown when using firefox and other browsers which are not supported.
-    browserWarning: >-
-        很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用chrome或者獲取獨立版以得到更好的體驗。
-
+    browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用chrome或者獲取獨立版以得到更好的體驗。
     savegameLevel: Level <x>
     savegameLevelUnknown: 未知關卡
-
     continue: 繼續
     newGame: 新遊戲
     madeBy: 作者：<author-link>
     subreddit: Reddit
-
+    savegameUnnamed: Unnamed
 dialogs:
     buttons:
         ok: 確認
@@ -197,111 +116,82 @@ dialogs:
         viewUpdate: 查看更新
         showUpgrades: 顯示建築升級
         showKeybindings: 顯示按鍵設置
-
     importSavegameError:
         title: 匯入錯誤
-        text: >-
-            存檔匯入失敗：
-
+        text: 存檔匯入失敗：
     importSavegameSuccess:
         title: 匯入成功
-        text: >-
-            存檔匯入成功
-
+        text: 存檔匯入成功
     gameLoadFailure:
         title: 存檔損毀
-        text: >-
-            存檔載入失敗：
-
+        text: 存檔載入失敗：
     confirmSavegameDelete:
         title: 確認刪除
-        text: >-
-            你確定要刪除這存檔嗎？
-
+        text: 你確定要刪除這存檔嗎？
     savegameDeletionError:
         title: 刪除錯誤
-        text: >-
-            存檔刪除失敗
-
+        text: 存檔刪除失敗
     restartRequired:
         title: 需要重啟
-        text: >-
-            你需要重啟遊戲以套用變更的設置。
-
+        text: 你需要重啟遊戲以套用變更的設置。
     editKeybinding:
         title: 更改按鍵設置
         desc: 請按下你想要使用的按鍵，或者按下ESC鍵來取消設置。
-
     resetKeybindingsConfirmation:
         title: 重置所有按鍵
         desc: 這將會重置所有按鍵，請確認。
-
     keybindingsResetOk:
         title: 重置了所有按鍵
         desc: 成功重置了所有按鍵！
-
     featureRestriction:
         title: 演示版
         desc: 你嘗試使用了 <feature> 功能。該功能在演示版中不可用。請考慮購買獨立版以獲得更好的體驗。
-
     oneSavegameLimit:
         title: 存檔數量限制
         desc: 演示版中只能保存一份存檔。請刪除舊存檔或者獲取獨立版！
-
     updateSummary:
         title: 更新了！
-        desc: >-
-            以下為自上次遊戲以來更新的內容:
-
+        desc: "以下為自上次遊戲以來更新的內容:"
     upgradesIntroduction:
         title: 解鎖建築升級
-        desc: >-
-            你生產過的所有圖形可以被用來升級建築。<strong>不要銷毀你之前建造的工廠！</strong>
-            升級選單在屏幕右上角。
-
+        desc: 你生產過的所有圖形可以被用來升級建築。<strong>不要銷毀你之前建造的工廠！</strong> 升級選單在屏幕右上角。
     massDeleteConfirm:
         title: 確認刪除
-        desc: >-
-            你將要刪除很多建築，準確來說有<count>幢！你確定要這麼做嗎？
-
+        desc: 你將要刪除很多建築，準確來說有<count>幢！你確定要這麼做嗎？
     blueprintsNotUnlocked:
         title: 未解鎖
-        desc: >-
-            你還沒有解鎖藍圖功能！完成更多的關卡來解鎖藍圖。
-
+        desc: 你還沒有解鎖藍圖功能！完成更多的關卡來解鎖藍圖。
     keybindingsIntroduction:
         title: 實用按鍵
-        desc: >-
-            這個遊戲有很多能幫助搭建工廠的使用按鍵。
-            以下是其中的一些，記得在<strong>按鍵設置</strong>中查看其他的！ <br><br>
-            <code class='keybinding'>CTRL</code> + 拖動：選擇區域以復製或刪除。 <br>
-            <code class='keybinding'>SHIFT</code>: 按住以放置多個。 <br>
-            <code class='keybinding'>ALT</code>: 反向放置傳送帶。 <br>
-
+        desc: "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設置</strong>中查看其他的！ <br><br>
+            <code class='keybinding'>CTRL</code> + 拖動：選擇區域以復製或刪除。 <br> <code
+            class='keybinding'>SHIFT</code>: 按住以放置多個。 <br> <code
+            class='keybinding'>ALT</code>: 反向放置傳送帶。 <br>"
     createMarker:
         title: 創建標記
-        desc: 給地圖標記起一個的名字。你可以在名字中加入一個<strong>短代碼</strong>以加入圖形。 （你可以在<a href="https://viewer.shapez.io" target="_blank">這裡</a>生成短代碼。）
+        desc: 給地圖標記起一個的名字。你可以在名字中加入一個<strong>短代碼</strong>以加入圖形。 （你可以在<a
+            href="https://viewer.shapez.io" target="_blank">這裡</a>生成短代碼。）
         titleEdit: Edit Marker
-
     markerDemoLimit:
         desc: 在演示版中你只能創建兩個地圖標記。請獲取獨立版以創建更多標記。
     massCutConfirm:
         title: 確認剪下
-        desc: >-
-            你將要剪下很多建築，準確來說有<count>幢！你確定要這麼做嗎？
-
+        desc: 你將要剪下很多建築，準確來說有<count>幢！你確定要這麼做嗎？
     exportScreenshotWarning:
         title: 工廠截圖
-        desc: >-
-            你將要匯出你的工廠的截圖。如果你的基地很大，截圖過程將會很慢，甚至有可能導致遊戲當掉！
-
+        desc: 你將要匯出你的工廠的截圖。如果你的基地很大，截圖過程將會很慢，甚至有可能導致遊戲當掉！
     massCutInsufficientConfirm:
         title: Confirm cut
         desc: You can not afford to paste this area! Are you sure you want to cut it?
-
+    editSignal:
+        title: Set Signal
+        descItems: "Choose a pre-defined item:"
+        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
+            can generate <link>here</link>)
+    renameSavegame:
+        title: Rename Savegame
+        desc: You can rename your savegame here.
 ingame:
-    # This is shown in the top left corner and displays useful keybindings in
-    # every situation
     keybindingsOverlay:
         moveMap: 移動
         selectBuildings: 選擇區域
@@ -322,18 +212,9 @@ ingame:
         clearSelection: 清空選取
         pipette: 吸附
         switchLayers: Switch layers
-
-    # Everything related to placing buildings (I.e. as soon as you selected a building
-    # from the toolbar)
     buildingPlacement:
-        # Buildings can have different variants which are unlocked at later levels,
-        # and this is the hint shown when there are multiple variants available.
         cycleBuildingVariants: 按<key>鍵以選擇建築變體.
-
-        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
-        hotkeyLabel: >-
-            快捷鍵: <key>
-
+        hotkeyLabel: "快捷鍵: <key>"
         infoTexts:
             speed: 效率
             range: 範圍
@@ -341,37 +222,42 @@ ingame:
             oneItemPerSecond: 1個/秒
             itemsPerSecond: <x>個/秒
             itemsPerSecondDouble: （2倍）
-
             tiles: <x>格
-
-    # The notification when completing a level
     levelCompleteNotification:
-        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Level <level>
         completed: 完成
         unlockText: 解鎖<reward>！
         buttonNextLevel: 下一關
-
-    # Notifications on the lower right
     notifications:
         newUpgrade: 有新的更新啦！
         gameSaved: 遊戲已保存。
-
-    # The "Upgrades" window
+        freeplayLevelComplete: Level <level> has been completed!
     shop:
         title: 建築升級
         buttonUnlock: 升級
-
-        # Gets replaced to e.g. "Tier IX"
         tier: <x>級
-
-        # The roman number for each tier
-        # Chinese translation： Chinese characters for each tier
-        tierLabels: [壹, 貳, 叁, 肆, 伍, 陸, 柒, 捌, 玖, 拾]
-
+        tierLabels:
+            - 壹
+            - 貳
+            - 叁
+            - 肆
+            - 伍
+            - 陸
+            - 柒
+            - 捌
+            - 玖
+            - 拾
+            - XI
+            - XII
+            - XIII
+            - XIV
+            - XV
+            - XVI
+            - XVII
+            - XVIII
+            - XIX
+            - XX
         maximumLevel: 最高級（<currentMult>倍效率）
-
-    # The "Statistics" window
     statistics:
         title: 統計資訊
         dataSources:
@@ -385,51 +271,38 @@ ingame:
                 title: 送達
                 description: 顯示圖形送達基地的速度。
         noShapesProduced: 你還沒有生產任何圖形。
-
-        # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes>個/分鐘
-
-    # Settings menu, when you press "ESC"
+        shapesDisplayUnits:
+            second: <shapes> / s
+            minute: <shapes> / m
+            hour: <shapes> / h
     settingsMenu:
         playtime: 遊戲時間
-
         buildingsPlaced: 建築數量
         beltsPlaced: 傳送帶數量
-
         buttons:
             continue: 繼續
             settings: 設置
             menu: 回到主選單
-
-    # Bottom left tutorial hints
     tutorialHints:
         title: 需要幫助？
         showHint: 顯示
         hideHint: 關閉
-
-    # When placing a blueprint
     blueprintPlacer:
         cost: 需要
-
-    # Map markers
     waypoints:
         waypoints: 地圖標記
         hub: 基地
-        description: 滑鼠左鍵按標記跳轉到它，按右鍵將其刪除。<br> <br>按<keybinding>從當前視圖創建一個標記，或<strong>按右鍵</ strong>創建一個標記。 所選位置的標記。
+        description: 滑鼠左鍵按標記跳轉到它，按右鍵將其刪除。<br>
+            <br>按<keybinding>從當前視圖創建一個標記，或<strong>按右鍵</ strong>創建一個標記。 所選位置的標記。
         creationSuccessNotification: 成功創建地圖標記。
-
-    # Interactive tutorial
     interactiveTutorial:
         title: 教程
         hints:
             1_1_extractor: 在<strong>圓形礦脈</strong>上放一個<strong>開採機</strong>來獲取圓形！
-            1_2_conveyor: >-
-                用<strong>傳送帶</strong>將你的開採機連接到基地上！ <br><br>提示：用你的游標<strong>按下並拖動</strong>傳送帶！
-
-            1_3_expand: >-
-                這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
+            1_2_conveyor: 用<strong>傳送帶</strong>將你的開採機連接到基地上！
+                <br><br>提示：用你的游標<strong>按下並拖動</strong>傳送帶！
+            1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
-
     colors:
         red: 紅
         green: 綠
@@ -444,8 +317,10 @@ ingame:
         title: 層
         empty: 空
         copyKey: Copy Key
-
-# All shop upgrades
+    connectedMiners:
+        one_miner: 1 Miner
+        n_miners: <amount> Miners
+        limited_items: Limited to <max_throughput>
 shopUpgrades:
     belt:
         name: 傳送帶、平衡機、隧道
@@ -459,78 +334,54 @@ shopUpgrades:
     painting:
         name: 混色、上色
         description: 效率 <currentMult>倍 → <newMult>倍
-
-# Buildings and their name / description
 buildings:
     belt:
         default:
-            name: &belt 傳送帶
+            name: 傳送帶
             description: 運送物品，按住並拖動來放置多個。
-
-    miner: # Internal name for the Extractor
+    miner:
         default:
-            name: &miner 開採機
+            name: 開採機
             description: 在圖形或者顏色上放置來開採他們。
-
         chainable:
             name: 鏈式開採機
             description: 在圖形或者顏色上放置來開採他們。可以被鏈接在一起。
-
-    underground_belt: # Internal name for the Tunnel
+    underground_belt:
         default:
-            name: &underground_belt 隧道
+            name: 隧道
             description: 可以從其他傳送帶或建築底下方運送物品。
-
         tier2:
             name: 貳級隧道
             description: 可以從其他傳送帶或建築底下方運送物品。
-
-    splitter: # Internal name for the Balancer
-        default:
-            name: &splitter 平衡機
-            description: 多功能——將所有輸入平均分配到所有輸出。
-
-        compact:
-            name: 小型合流機
-            description: 把兩個輸入合併到一個輸出上。
-
-        compact-inverse:
-            name: 小型合流機 (反轉)
-            description: 把兩個輸入合併到一個輸出上。
-
     cutter:
         default:
-            name: &cutter 切割機
+            name: 切割機
             description: 將圖形從上到下切開並輸出。 <strong>如果你只需要其中一半，記得把另一半銷毀掉，否則切割機會停止運作！ </strong>
         quad:
             name: 切割機（四分）
             description: 將輸入的圖形切成四塊。 <strong>如果你只需要其中一塊，記得把其他的銷毀掉，否則切割機會停止運作！ </strong>
-
     rotater:
         default:
-            name: &rotater 旋轉機
+            name: 旋轉機
             description: 將圖形順時針旋轉90度。
         ccw:
             name: 旋轉機（逆時針）
             description: 將圖形逆時針旋轉90度。
-        fl:
+        rotate180:
             name: Rotate (180)
             description: Rotates shapes by 180 degrees.
-
     stacker:
         default:
-            name: &stacker 混合機
+            name: 混合機
             description: 將輸入的圖形拼貼在一起。如果不能被直接拼貼，右邊的圖形會被疊在左邊的圖形上面.
-
     mixer:
         default:
-            name: &mixer 混色機
+            name: 混色機
             description: 將兩個顏色加在一起。
-
     painter:
         default:
-            name: &painter 上色機
-            description: &painter_desc 將整個圖形塗上輸入的顏色。
+            name: 上色機
+            description: 將整個圖形塗上輸入的顏色。
         double:
             name: 上色機（雙倍）
             description: 同時為兩個輸入的圖形上色，每次上色只消耗一份顏色塗料。
@@ -538,17 +389,12 @@ buildings:
             name: 上色機（四向）
             description: 為圖形的四個角塗上不同的顏色。
         mirrored:
-            name: *painter
-            description: *painter_desc
-
+            name: 上色機
+            description: 將整個圖形塗上輸入的顏色。
     trash:
         default:
-            name: &trash 垃圾桶
+            name: 垃圾桶
             description: 從所有四個方向上輸入物品並永遠銷毀它們。
-
-        storage:
-            name: 倉庫
-            description: 儲存多餘的物品，有一定儲存上限。可以被用來作為溢流門。最多五千個。
     hub:
         deliver: 交付
         toUnlock: 來解鎖
@@ -557,193 +403,289 @@ buildings:
         default:
             name: Energy Wire
             description: Allows you to transport energy.
-    advanced_processor:
+        second:
+            name: Wire
+            description: Transfers signals, which can be items, colors or booleans (1 / 0).
+                Different colored wires do not connect.
+    balancer:
         default:
-            name: Color Inverter
-            description: Accepts a color or shape and inverts it.
-    energy_generator:
-        deliver: Deliver
-        toGenerateEnergy: For
-        default:
-            name: Energy Generator
-            description: Generates energy by consuming shapes.
-    wire_crossings:
-        default:
-            name: Wire Splitter
-            description: Splits a energy wire into two.
+            name: Balancer
+            description: Multifunctional - Evenly distributes all inputs onto all outputs.
         merger:
-            name: Wire Merger
-            description: Merges two energy wires into one.
-
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+        merger-inverse:
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+        splitter:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+        splitter-inverse:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+    storage:
+        default:
+            name: Storage
+            description: Stores excess items, up to a given capacity. Prioritizes the left
+                output and can be used as an overflow gate.
+    wire_tunnel:
+        default:
+            name: Wire Crossing
+            description: Allows to cross two wires without connecting them.
+    constant_signal:
+        default:
+            name: Constant Signal
+            description: Emits a constant signal, which can be either a shape, color or
+                boolean (1 / 0).
+    lever:
+        default:
+            name: Switch
+            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
+                which can then be used to control for example an item filter.
+    logic_gate:
+        default:
+            name: AND Gate
+            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
+                color or boolean "1")
+        not:
+            name: NOT Gate
+            description: Emits a boolean "1" if the input is not truthy. (Truthy means
+                shape, color or boolean "1")
+        xor:
+            name: XOR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
+                (Truthy means shape, color or boolean "1")
+        or:
+            name: OR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
+                shape, color or boolean "1")
+    transistor:
+        default:
+            name: Transistor
+            description: Forwards the bottom input if the side input is truthy (a shape,
+                color or "1").
+        mirrored:
+            name: Transistor
+            description: Forwards the bottom input if the side input is truthy (a shape,
+                color or "1").
+    filter:
+        default:
+            name: Filter
+            description: Connect a signal to route all matching items to the top and the
+                remaining to the right. Can be controlled with boolean signals
+                too.
+    display:
+        default:
+            name: Display
+            description: Connect a signal to show it on the display - It can be a shape,
+                color or boolean.
+    reader:
+        default:
+            name: Belt Reader
+            description: Allows to measure the average belt throughput. Outputs the last
+                read item on the wires layer (once unlocked).
+    analyzer:
+        default:
+            name: Shape Analyzer
+            description: Analyzes the top right quadrant of the lowest layer of the shape
+                and returns its shape and color.
+    comparator:
+        default:
+            name: Compare
+            description: Returns boolean "1" if both signals are exactly equal. Can compare
+                shapes, items and booleans.
+    virtual_processor:
+        default:
+            name: Virtual Cutter
+            description: Virtually cuts the shape into two halves.
+        rotater:
+            name: Virtual Rotater
+            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+        unstacker:
+            name: Virtual Unstacker
+            description: Virtually extracts the topmost layer to the right output and the
+                remaining ones to the left.
+        stacker:
+            name: Virtual Stacker
+            description: Virtually stacks the right shape onto the left.
+        painter:
+            name: Virtual Painter
+            description: Virtually paints the shape from the bottom input with the shape on
+                the right input.
 storyRewards:
-    # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: 切割圖形
-        desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。 <br><br>記得把不需要的部分處理掉，否則這個這個建築會停止運作。為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
-
+        desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。
+            <br><br>記得把不需要的部分處理掉，否則這個這個建築會停止運作。為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
         title: 順時針旋轉
         desc: <strong>旋轉機</strong>已解鎖。它會順時針旋轉輸入的圖形90度。
-
     reward_painter:
         title: 上色
-        desc: >-
-            <strong>上色機</strong>已解鎖。開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設置中有<strong>色盲模式</strong>可以選。
-
+        desc: <strong>上色機</strong>已解鎖。開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設置中有<strong>色盲模式</strong>可以選。
     reward_mixer:
         title: 混色
         desc: <strong>混色器</strong>已解鎖-在此建築物中使用<strong>附加混合</strong>結合兩種顏色！
-
     reward_stacker:
         title: 混合
         desc: <strong>混合機</strong>已解鎖。如果沒有重疊的部分，混合機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
-
     reward_splitter:
         title: 分離/合併
-        desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合併或分離</strong>多個傳送帶上的物品。 <br><br>
-
+        desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合併或分離</strong>多個傳送帶上的物品。
+            <br><br>
     reward_tunnel:
         title: 隧道
         desc: <strong>隧道</strong>已解鎖。你現在可以從其他傳送帶或建築底下運送物品了！
-
     reward_rotater_ccw:
         title: 逆時針旋轉
-        desc: 您已解鎖了<strong>旋轉器</ strong>的變體-它可以逆時針旋轉！ 要構建它，請選擇旋轉器，然後<strong>按“T”鍵切換其變種</ strong>！
-
+        desc: 您已解鎖了<strong>旋轉器</ strong>的變體-它可以逆時針旋轉！ 要構建它，請選擇旋轉器，然後<strong>按“T”鍵切換其變種</
+            strong>！
     reward_miner_chainable:
         title: 鏈式開採機
         desc: <strong>鏈式開採機</strong>變體已解鎖。它是開採機的一個變體。它可以將開採出來的資源<strong>傳遞</strong>給其他的開採機，使得資源提取更加高效！
-
     reward_underground_belt_tier_2:
         title: 貳級隧道
         desc: <strong>貳級隧道</strong>變體已解鎖。這個隧道有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
-
-    reward_splitter_compact:
-        title: 小型合流機
-        desc: >-
-            <strong>小型合流機</strong>變體已解鎖。它可以把兩個輸入合併到一個輸出上。
-
     reward_cutter_quad:
         title: 四分切割機
         desc: 您已解鎖了<strong>四分切割機</ strong>的變體-它允許您將形狀直接切割為<strong>四個部分</ strong>，而不是兩個！
-
     reward_painter_double:
         title: 雙倍上色機
-        desc: 您已經解鎖了<strong>雙倍上色機</ strong>的變體-它可以作為常規畫家使用，但一次只能處理<strong>兩個形狀</ strong>，而只消耗一種顏色而不是兩種顏色！
-
+        desc: 您已經解鎖了<strong>雙倍上色機</ strong>的變體-它可以作為常規畫家使用，但一次只能處理<strong>兩個形狀</
+            strong>，而只消耗一種顏色而不是兩種顏色！
     reward_painter_quad:
         title: 四向上色機
         desc: <strong>上色機</strong>四向變體已解鎖。它可以在一個圖形的四個角上塗不同的顏色！
-
     reward_storage:
         title: 倉庫
         desc: <strong>倉庫</strong>變體已解鎖。它可以暫時儲存一些材料，有容量上限。
-
     reward_freeplay:
         title: 自由模式
         desc: 恭喜你！你解鎖了<strong>自由模式</strong>！現在圖形將會是隨機生成的！ （不用擔心，我計劃在獨立版本中加入更多內容！）
-
     reward_blueprints:
         title: 藍圖
-        desc: 現在，您可以<strong>複製並貼上</ strong>工廠的各個部分！ 選擇一個區域（按住CTRL，然後用游標拖動），然後按'C'將其複制。<br> <br>複製<strong>不是免費的</strong>，您需要用<strong>藍圖 形狀</ strong>來支付！ （您剛交付的那些）。
-
-    # Special reward, which is shown when there is no reward actually
+        desc: 現在，您可以<strong>複製並貼上</ strong>工廠的各個部分！
+            選擇一個區域（按住CTRL，然後用游標拖動），然後按'C'將其複制。<br>
+            <br>複製<strong>不是免費的</strong>，您需要用<strong>藍圖 形狀</ strong>來支付！
+            （您剛交付的那些）。
     no_reward:
         title: 下一關
-        desc: >-
-            這一關沒有獎勵，但是下一關有！ <br><br> PS: 你生產過的<strong>所有</strong>圖形都會被用來<strong>升級建築</strong>。
-
+        desc: "這一關沒有獎勵，但是下一關有！ <br><br> PS:
+            你生產過的<strong>所有</strong>圖形都會被用來<strong>升級建築</strong>。"
     no_reward_freeplay:
         title: 下一關
-        desc: >-
-            恭喜你！另外，我們已經計劃在獨立版中加入更多內容！
-
+        desc: 恭喜你！另外，我們已經計劃在獨立版中加入更多內容！
+    reward_balancer:
+        title: Balancer
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!<br><br>
+    reward_merger:
+        title: Compact Merger
+        desc: You have unlocked a <strong>merger</strong> variant of the
+            <strong>balancer</strong> - It accepts two inputs and merges them
+            into one belt!
+    reward_belt_reader:
+        title: Belt reader
+        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
+            measure the throughput of a belt.<br><br>And wait until you unlock
+            wires - then it gets really useful!
+    reward_rotater_180:
+        title: Rotater (180 degrees)
+        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
+            you to rotate a shape by 180 degress (Surprise! :D)
+    reward_wires_filters_and_levers:
+        title: "Wires: Filters & Levers"
+        desc: You just unlocked the <strong>wires layer</strong>! It is a separate layer
+            on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> Since it can be overwhelming a bit, I added a
+            small tutorial - Be sure to have <strong>tutorials enabled</strong>
+            in the settings!
+    reward_display:
+        title: Display
+        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize its contents!
+    reward_constant_signal:
+        title: Constant Signal
+        desc: You unlocked the <strong>constant signal</strong> building on the wires
+            layer! This is useful to connect it to <strong>item filters</strong>
+            for example.<br><br> The constant signal can emit a
+            <strong>shape</strong>, <strong>color</strong> or
+            <strong>boolean</strong> (1 / 0).
+    reward_logic_gates:
+        title: Logic Gates
+        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
+            about this, but it's actually super cool!<br><br> With those gates
+            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
+            bonus on top I also just gave you a <strong>transistor</strong>!
+    reward_virtual_processing:
+        title: Virtual Processing
+        desc: I just gave a whole bunch of new buildings which allow you to
+            <strong>simulate the processing of shapes</strong>!<br><br> You can
+            now simulate a cutter, rotater, stacker and more on the wires layer!
+            With this you now have three options to continue the game:<br><br> -
+            Build an <strong>automated machine</strong> to create any possible
+            shape requested by the HUB (I recommend to try it!).<br><br> - Build
+            something cool with wires.<br><br> - Continue to play
+            regulary.<br><br> Whatever you choose, remember to have fun!
 settings:
     title: 設置
     categories:
         general: General
         userInterface: User Interface
         advanced: Advanced
-
+        performance: Performance
     versionBadges:
-        dev: 開發版本 # Development
-        staging: 預覽版本 # Staging
-        prod: 正式版本 # Production
+        dev: 開發版本
+        staging: 預覽版本
+        prod: 正式版本
     buildDate: 於<at-date>創建
-
     labels:
         uiScale:
             title: 用戶界面大小
-            description: >-
-                改變用戶界面大小。用戶界面會隨著設備分辨率縮放，這個設置決定縮放比例。
+            description: 改變用戶界面大小。用戶界面會隨著設備分辨率縮放，這個設置決定縮放比例。
             scales:
                 super_small: 最小
                 small: 較小
                 regular: 正常
                 large: 較大
                 huge: 最大
-
         scrollWheelSensitivity:
             title: 縮放靈敏度
-            description: >-
-                改變縮放靈敏度（鼠標滾輪或者觸控板）。
+            description: 改變縮放靈敏度（鼠標滾輪或者觸控板）。
             sensitivity:
                 super_slow: 最低
                 slow: 較低
                 regular: 正常
                 fast: 較高
                 super_fast: 最高
-
         language:
             title: 語言
-            description: >-
-                改變語言。所有的翻譯皆由玩家提供，且有可能正在施工中！
-
+            description: 改變語言。所有的翻譯皆由玩家提供，且有可能正在施工中！
         fullscreen:
             title: 全螢幕
-            description: >-
-                全螢幕以獲得更好的遊戲體驗。僅在獨立版中可用。
-
+            description: 全螢幕以獲得更好的遊戲體驗。僅在獨立版中可用。
         soundsMuted:
             title: 關閉音效
-            description: >-
-                關閉所有音效。
-
+            description: 關閉所有音效。
         musicMuted:
             title: 關閉音樂
-            description: >-
-                關閉所有音樂。
-
+            description: 關閉所有音樂。
         theme:
             title: 界面主題
-            description: >-
-                選擇界面主題（深色或淺色）。
-
+            description: 選擇界面主題（深色或淺色）。
             themes:
                 dark: 深色
                 light: 淺色
-
         refreshRate:
             title: 模擬頻率、刷新頻率
-            description: >-
-                如果你的顯示器是144hz的，請在這裡更改刷新頻率，這樣遊戲可以正確地根據你的螢幕進行模擬。但是如果你的電腦性能不佳，提高刷新頻率可能降低幀數。
-            # description: >-
-            # If you have a 144hz monitor, change the refresh rate here so the game will properly simulate at higher refresh rates. This might actually decrease the FPS if your computer is too slow.
-
+            description: 如果你的顯示器是144hz的，請在這裡更改刷新頻率，這樣遊戲可以正確地根據你的螢幕進行模擬。但是如果你的電腦性能不佳，提高刷新頻率可能降低幀數。
         alwaysMultiplace:
             title: 多重放置
-            description: >-
-                開啟這個選項之後放下建築將不會取消建築選擇。等同於一直按下SHIFT鍵。
-            # description: >-
-            # If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
-
+            description: 開啟這個選項之後放下建築將不會取消建築選擇。等同於一直按下SHIFT鍵。
         offerHints:
             title: 提示與教程
-            description: >-
-                是否顯示提示、教程以及一些其他的幫助理解遊戲的UI元素。
-            # description: >-
-            # Whether to offer hints and tutorials while playing. Also hides certain UI elements onto a given level to make it easier to get into the game.
-
+            description: 是否顯示提示、教程以及一些其他的幫助理解遊戲的UI元素。
         movementSpeed:
             title: 移動速度
             description: 改變攝像頭移動速度
@@ -754,21 +696,15 @@ settings:
                 fast: 較快
                 super_fast: 非常快
                 extremely_fast: 最快
-
         enableTunnelSmartplace:
             title: 智能隧道放置
-            description: >-
-                啟用後，放置隧道時會將多餘的傳送帶移除。
-                此外，拖動隧道可以快速鋪設隧道，以及移除不必要的隧道。
+            description: 啟用後，放置隧道時會將多餘的傳送帶移除。 此外，拖動隧道可以快速鋪設隧道，以及移除不必要的隧道。
         vignette:
             title: 暈映
-            description: >-
-                啟用暈映，將屏幕角落裡的顏色變深，更容易閱讀文字。
-
+            description: 啟用暈映，將屏幕角落裡的顏色變深，更容易閱讀文字。
         autosaveInterval:
             title: 自動刷新時間
-            description: >-
-                控制遊戲自動刷新的頻率。 您也可以禁用它。
+            description: 控制遊戲自動刷新的頻率。 您也可以禁用它。
             intervals:
                 one_minute: 1分鐘
                 two_minutes: 2分鐘
@@ -778,31 +714,65 @@ settings:
                 disabled: 停用
         compactBuildingInfo:
             title: 省略建築信息
-            description: >-
+            description: |-
                 通過顯示建築物的比率來縮短建築物的資訊框。 否則
                  顯示所有說明+圖像。
         disableCutDeleteWarnings:
             title: 停用剪下/刪除的警告
-            description: >-
-                剪下/刪除超過100幢建築物時不顯示警告。
-
+            description: 剪下/刪除超過100幢建築物時不顯示警告。
         enableColorBlindHelper:
             title: 色盲模式
             description: 如果您是色盲者，啟用了這設定，就可以玩遊戲了。
-
         rotationByBuilding:
             title: 依建築類型旋轉
-            description: >-
-                每個建築類型，將會分別記住您最後一次使用的旋轉方向。
-                如果您常常切換不同類型的建築，這樣可能會更方便。
-
+            description: 每個建築類型，將會分別記住您最後一次使用的旋轉方向。 如果您常常切換不同類型的建築，這樣可能會更方便。
+        soundVolume:
+            title: Sound Volume
+            description: Set the volume for sound effects
+        musicVolume:
+            title: Music Volume
+            description: Set the volume for music
+        lowQualityMapResources:
+            title: Low Quality Map Resources
+            description: Simplifies the rendering of resources on the map when zoomed in to
+                improve performance. It even looks cleaner, so be sure to try it
+                out!
+        disableTileGrid:
+            title: Disable Grid
+            description: Disabling the tile grid can help with the performance. This also
+                makes the game look cleaner!
+        clearCursorOnDeleteWhilePlacing:
+            title: Clear Cursor on Right Click
+            description: Enabled by default, clears the cursor whenever you right click
+                while you have a building selected for placement. If disabled,
+                you can delete buildings by right-clicking while placing a
+                building.
+        lowQualityTextures:
+            title: Low quality textures (Ugly)
+            description: Uses low quality textures to save performance. This will make the
+                game look very ugly!
+        displayChunkBorders:
+            title: Display Chunk Borders
+            description: The game is divided into chunks of 16x16 tiles, if this setting is
+                enabled the borders of each chunk are displayed.
+        pickMinerOnPatch:
+            title: Pick miner on resource patch
+            description: Enabled by default, selects the miner if you use the pipette when
+                hovering a resource patch.
+        simplifiedBelts:
+            title: Simplified Belts (Ugly)
+            description: Does not render belt items except when hovering the belt to save
+                performance. I do not recommend to play with this setting if you
+                do not absolutely need the performance.
+        enableMousePan:
+            title: Enable Mouse Pan
+            description: Allows to move the map by moving the cursor to the edges of the
+                screen. The speed depends on the Movement Speed setting.
+    rangeSliderPercentage: <amount> %
 keybindings:
     title: 按鍵設置
-    hint: >-
-        提示：使用CTRL、SHIFT、ALT! 這些建在放置建築時有不同的效果。
-
+    hint: 提示：使用CTRL、SHIFT、ALT! 這些建在放置建築時有不同的效果。
     resetKeybindings: 重置按鍵設置
-
     categoryLabels:
         general: 通用
         ingame: 遊戲
@@ -811,7 +781,6 @@ keybindings:
         massSelect: 批量選擇
         buildings: 建築快捷鍵
         placementModifiers: 放置建築修飾鍵
-
     mappings:
         confirm: 確認
         back: 返回
@@ -820,37 +789,30 @@ keybindings:
         mapMoveDown: 下
         mapMoveLeft: 左
         centerMap: 回到基地
-
         mapZoomIn: 放大
         mapZoomOut: 縮小
         createMarker: 創建地圖標記
-
         menuOpenShop: 升級選單
         menuOpenStats: 統計選單
-
         toggleHud: 開關HUD
         toggleFPSInfo: 開關幀數與調試信息
-        belt: *belt
-        splitter: *splitter
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        painter: *painter
-        trash: *trash
-
+        belt: 傳送帶
+        underground_belt: 隧道
+        miner: 開採機
+        cutter: 切割機
+        rotater: 旋轉機
+        stacker: 混合機
+        mixer: 混色機
+        painter: 上色機
+        trash: 垃圾桶
         rotateWhilePlacing: 順時針旋轉
-        rotateInverseModifier: >-
-            修飾鍵: 改為逆時針旋轉
+        rotateInverseModifier: "修飾鍵: 改為逆時針旋轉"
         cycleBuildingVariants: 選擇建築變體
         confirmMassDelete: 確認批量刪除
         cycleBuildings: 選擇建築
         massSelectStart: 開始批量選擇
         massSelectSelectMultiple: 選擇多個區域
         massSelectCopy: 複製
-
         placementDisableAutoOrientation: 取消自動定向
         placeMultiple: 繼續放置
         placeInverse: 反向放置傳送帶
@@ -858,44 +820,106 @@ keybindings:
         massSelectCut: 剪切
         exportScreenshot: 匯出截圖
         mapMoveFaster: 快速移動
-
         lockBeltDirection: 啟用傳送帶規劃
-        switchDirectionLockSide: "規劃器：換邊"
+        switchDirectionLockSide: 規劃器：換邊
         pipette: Pipette
         menuClose: Close Menu
         switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
         wire: Energy Wire
-
+        balancer: Balancer
+        storage: Storage
+        constant_signal: Constant Signal
+        logic_gate: Logic Gate
+        lever: Switch (regular)
+        lever_wires: Switch (wires)
+        filter: Filter
+        wire_tunnel: Wire Crossing
+        display: Display
+        reader: Belt Reader
+        virtual_processor: Virtual Cutter
+        transistor: Transistor
+        analyzer: Shape Analyzer
+        comparator: Compare
 about:
     title: 關於遊戲
-    # title: About this Game
     body: >-
-        本遊戲由<a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a>（我）開發，並且已經開源。 <br><br>
+        本遊戲由<a href="https://github.com/tobspr" target="_blank">Tobias
+        Springer</a>（我）開發，並且已經開源。 <br><br>
 
-        如果你想參與開發，請查看<a href="<githublink>"
-        target="_blank">shapez.io on github</a>。 <br><br>
+        如果你想參與開發，請查看<a href="<githublink>" target="_blank">shapez.io on github</a>。 <br><br>
 
-        這個遊戲的開發少不了熱情的Discord社區。請加入我們的<a href="<discordlink>"
-        target="_blank">Discord 服務器</a>！ <br><br>
+        這個遊戲的開發少不了熱情的Discord社區。請加入我們的<a href="<discordlink>" target="_blank">Discord 服務器</a>！ <br><br>
 
-        本遊戲的音樂由<a href="https://soundcloud.com/pettersumelius"
-        target="_blank">Peppsen</a>製作——他是個很棒的伙伴。 <br><br>
+        本遊戲的音樂由<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a>製作——他是個很棒的伙伴。 <br><br>
 
-        最後，我想感謝我最好的朋友<a
-        href="https://github.com/niklas-dahl" target="_blank">Niklas</a>——如果沒有與他的異星工廠（factorio）的遊戲體驗，shapez.io將不會存在。
-
+        最後，我想感謝我最好的朋友<a href="https://github.com/niklas-dahl" target="_blank">Niklas</a>——如果沒有與他的異星工廠（factorio）的遊戲體驗，shapez.io將不會存在。
 changelog:
     title: 版本日誌
-
 demo:
     features:
-        restoringGames: 恢復存檔 #中？
-        importingGames: 匯入存檔 #中？
+        restoringGames: 恢復存檔
+        importingGames: 匯入存檔
         oneGameLimit: 最多一個存檔
         customizeKeybindings: 按鍵設置
-        # customizeKeybindings: Customizing Keybindings
         exportingBase: 匯出工廠截圖
     settingNotAvailable: 在演示版中不可用。
+tips:
+    - The hub accepts input of any kind, not just the current shape!
+    - Make sure your factories are modular - it will pay out!
+    - Don't build too close to the hub, or it will be a huge chaos!
+    - If stacking does not work, try switching the inputs.
+    - You can toggle the belt planner direction by pressing <b>R</b>.
+    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
+    - Ratios stay the same, as long as all upgrades are on the same Tier.
+    - Serial execution is more efficient than parallel.
+    - You will unlock more variants of buildings later in the game!
+    - You can use <b>T</b> to switch between different variants.
+    - Symmetry is key!
+    - You can weave different tiers of tunnels.
+    - Try to build compact factories - it will pay out!
+    - The painter has a mirrored variant which you can select with <b>T</b>
+    - Having the right building ratios will maximize efficiency.
+    - At maximum level, 5 extractors will fill a single belt.
+    - Don't forget about tunnels!
+    - You don't need to divide up items evenly for full efficiency.
+    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
+      long lines of belts easily.
+    - Cutters always cut vertically, regardless of their orientation.
+    - To get white mix all three colors.
+    - The storage buffer priorities the first output.
+    - Invest time to build repeatable designs - it's worth it!
+    - Holding <b>CTRL</b> allows to place multiple buildings.
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
+    - Efficiency is key!
+    - Shape patches that are further away from the hub are more complex.
+    - Machines have a limited speed, divide them up for maximum efficiency.
+    - Use balancers to maximize your efficiency.
+    - Organization is important. Try not to cross conveyors too much.
+    - Plan in advance, or it will be a huge chaos!
+    - Don't remove your old factories! You'll need them to unlock upgrades.
+    - Try beating level 20 on your own before seeking for help!
+    - Don't complicate things, try to stay simple and you'll go far.
+    - You may need to re-use factories later in the game. Plan your factories to
+      be re-usable.
+    - Sometimes, you can find a needed shape in the map without creating it with
+      stackers.
+    - Full windmills / pinwheels can never spawn naturally.
+    - Color your shapes before cutting for maximum efficiency.
+    - With modules, space is merely a perception; a concern for mortal men.
+    - Make a separate blueprint factory. They're important for modules.
+    - Have a closer look on the color mixer, and your questions will be answered.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
+    - The pin icon next to each shape in the upgrade list pins it to the screen.
+    - Mix all primary colors together to make white!
+    - You have an infinite map, don't cramp your factory, expand!
+    - Also try Factorio! It's my favorite game.
+    - The quad cutter cuts clockwise starting from the top right!
+    - You can download your savegames in the main menu!
+    - This game has a lot of useful keybindings! Be sure to check out the
+      settings page.
+    - This game has a lot of settings, be sure to check them out!
+    - The marker to your hub has a small compass to indicate its direction!
+    - To clear belts, cut the area and then paste it at the same location.
+    - Press F4 to show your FPS and Tick Rate.
+    - Press F4 twice to show the tile of your mouse and camera.

@@ -27,6 +27,13 @@ export class BooleanItem extends BaseItem {
     }
 
     /**
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        return this.value ? "1" : "0";
+    }
+
+    /**
      * @param {number} value
      */
     constructor(value) {
@@ -55,6 +62,21 @@ export class BooleanItem extends BaseItem {
             sprite = Loader.getSprite("sprites/wires/boolean_false.png");
         }
         sprite.drawCachedCentered(parameters, x, y, diameter);
+    }
+
+    /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        let sprite;
+        if (this.value) {
+            sprite = Loader.getSprite("sprites/wires/boolean_true.png");
+        } else {
+            sprite = Loader.getSprite("sprites/wires/boolean_false.png");
+        }
+        sprite.drawCentered(context, size / 2, size / 2, size);
     }
 }
 

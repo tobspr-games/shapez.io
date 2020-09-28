@@ -1,53 +1,7 @@
-#
-#  GAME TRANSLATIONS
-#
-#  Contributing:
-#
-#    If you want to contribute, please make a pull request on this respository
-#    and I will have a look.
-#
-#  Placeholders:
-#
-#    Do *not* replace placeholders! Placeholders have a special syntax like
-#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
-#    translation for this one in German for example would be: `Taste: <key>` (notice
-#    how the placeholder stayed '<key>' and was not replaced!)
-#
-#  Adding a new language:
-#
-#    If you want to add a new language, ask me in the Discord and I will setup
-#    the basic structure so the game also detects it.
-#
-#
-#
-#   Hvala https://github.com/ivanbratovic na idejama za prevod. Alal ti vera na prevodu :)
-#
-# + HUB = Središte
-# + Area = Oblast
-# + Shape = Oblik
-# + Upgrade = Nadogradnja
-# + Waypoint/Marker = Putokaz
-# + Blueprint = Nacrt
-# + Extractor = Rudar
-# + Extractor (chain) = Rudar (lančani)
-# + Conveyor Belt = Pokretna Traka
-# + Belt = Traka
-# + Tunnel = Tunel
-# + Merger = Spajač
-# + Rotator = Obrtač
-
----
 steamPage:
-    # This is the short text appearing on the steam page
-    shortText: shapez.io je igra o pravljenju fabrika za automatizaciju stvaranja i spajanja sve složenijih oblika na beskonačno velikoj mapi.
-
-    # This is the text shown above the Discord link
+    shortText: shapez.io je igra o pravljenju fabrika za automatizaciju stvaranja i
+        spajanja sve složenijih oblika na beskonačno velikoj mapi.
     discordLink: Oficijalni Discord server
-    # TODO
-    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
-    # NOTICE:
-    # - Do not translate the first line (This is the gif image at the start of the store)
-    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
     longText: >-
         [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
 
@@ -92,8 +46,7 @@ steamPage:
         [b]Ovo je igra otvorenog koda![/b]
 
 
-        Svako može da doprinese igri, Aktivno interagujem sa zajednicom i, kad god je to moguće, pokušavam i uzmem u obzir sve predloge i povratne informacije.
-        Obavezno posetite potpuni plan koji se nalazi na trello tabli!
+        Svako može da doprinese igri, Aktivno interagujem sa zajednicom i, kad god je to moguće, pokušavam i uzmem u obzir sve predloge i povratne informacije. Obavezno posetite potpuni plan koji se nalazi na trello tabli!
 
         [b]Links[/b]
 
@@ -104,29 +57,18 @@ steamPage:
             [*] [url=https://github.com/tobspr/shapez.io]Izvorni kod (GitHub)[/url]
             [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Pomozite sa prevođenjem[/url]
         [/list]
-
 global:
     loading: Učitavanje
     error: Greška
-
-    # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
-
-    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
-    decimalSeparator: "."
-
-    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
+    decimalSeparator: .
     suffix:
         thousands: hilj.
         millions: mil.
         billions: mlrd.
         trillions: tril.
-
-    # Shown for infinitely big numbers
     infinite: beskonačno
-
     time:
-        # Used for formatting past time dates
         oneSecondAgo: pre jedne sekunde
         xSecondsAgo: pre <x> sekundi
         oneMinuteAgo: pre jednog minuta
@@ -135,14 +77,10 @@ global:
         xHoursAgo: pre <x> sati
         oneDayAgo: pre jednog dana
         xDaysAgo: pre <x> dana
-
-        # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
-
         xMinutes: <x> min
-
     keys:
         tab: TAB
         control: CTRL
@@ -150,13 +88,9 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
-
 demoBanners:
-    # This is the "advertisement" shown in the main menu and other various places
     title: Demo Verzija
-    intro: >-
-        Nabavite punu igru kako biste otključali sve funkcije!
-
+    intro: Nabavite punu igru kako biste otključali sve funkcije!
 mainMenu:
     play: Igraj
     continue: Nastavi
@@ -168,14 +102,12 @@ mainMenu:
     discordLink: Oficijalni Diskord server
     helpTranslate: Pomozite sa prevođenjem!
     madeBy: Napravio <author-link>
-
-    # This is shown when using firefox and other browsers which are not supported.
-    browserWarning: >-
-        Izvinjavamo se, pošto je poznato da se ova igra koči u pretraživaču! Za puno iskustvo nabavite samostalnu verziju ili koristite chrome.
-
+    browserWarning: Izvinjavamo se, pošto je poznato da se ova igra koči u
+        pretraživaču! Za puno iskustvo nabavite samostalnu verziju ili koristite
+        chrome.
     savegameLevel: Nivo <x>
     savegameLevelUnknown: Nepoznat Nivo
-
+    savegameUnnamed: Unnamed
 dialogs:
     buttons:
         ok: OK
@@ -189,112 +121,95 @@ dialogs:
         viewUpdate: Pogledajte ažuriranje
         showUpgrades: Prikaži Nadogradnje
         showKeybindings: Prikaži podešavanje tastera
-
     importSavegameError:
         title: Greška prilikom uvoza
-        text: >-
-            Neuspešan uvoz sačuvane igre:
-
+        text: "Neuspešan uvoz sačuvane igre:"
     importSavegameSuccess:
         title: Uvoz sačuvane igre
-        text: >-
-            Uspešno uvezena sačuvana igra.
-
+        text: Uspešno uvezena sačuvana igra.
     gameLoadFailure:
         title: Igra je pukla
-        text: >-
-            Neuspešno učitavanje sačuvane igre:
-
+        text: "Neuspešno učitavanje sačuvane igre:"
     confirmSavegameDelete:
         title: Potrvrdi brisanje
-        text: >-
-            Da li ste sigurni da želite da obrišete sačuvanu igru?
-
+        text: Da li ste sigurni da želite da obrišete sačuvanu igru?
     savegameDeletionError:
         title: Greška prilikom brisanja
-        text: >-
-            Neuspešno brisanje sačuvane igre:
-
+        text: "Neuspešno brisanje sačuvane igre:"
     restartRequired:
         title: Potrebno je ponovno pokretanje
-        text: >-
-            Da bi primenili podešavanja, potrebno je da ponovo pokrenute igru.
-
+        text: Da bi primenili podešavanja, potrebno je da ponovo pokrenute igru.
     editKeybinding:
         title: Promeni podešavanja tastera
-        desc: Pritisnite taster ili dugme na mišu koje žeite da dodelite, ili Escape za otkazivanje.
-
+        desc: Pritisnite taster ili dugme na mišu koje žeite da dodelite, ili Escape za
+            otkazivanje.
     resetKeybindingsConfirmation:
         title: Resetuj podešavanja tastera
-        desc: Ovo će resetovati sve tastere na njihove početne vrednosti. Potrebno je potvrditi.
-
+        desc: Ovo će resetovati sve tastere na njihove početne vrednosti. Potrebno je
+            potvrditi.
     keybindingsResetOk:
         title: Podešavanja tastera su resetovana
         desc: Podešavanja tastera su resetovana na njihove početne vrednosti!
-
     featureRestriction:
         title: Demo Verzija
-        desc: Pokušali ste da pristupite funkciji (<feature>) koja nije dostupna u demo verziji. Za puno iskustvo, nabavite samostalnu igru!
-
+        desc: Pokušali ste da pristupite funkciji (<feature>) koja nije dostupna u demo
+            verziji. Za puno iskustvo, nabavite samostalnu igru!
     oneSavegameLimit:
         title: Ograničen broj sačuvanih igara
-        desc: Možete imati samo jednu sačuvanu igru u demo verziji. Izbrišite postojeću ili nabavite samostalnu igru!
-
+        desc: Možete imati samo jednu sačuvanu igru u demo verziji. Izbrišite postojeću
+            ili nabavite samostalnu igru!
     updateSummary:
         title: Novo ažuriranje!
-        desc: >-
-            OVo su promene od zadnjeg igranja:
-
+        desc: "OVo su promene od zadnjeg igranja:"
     upgradesIntroduction:
         title: Oktključaj Nadogradnje
-        desc: >-
-            Svi oblici koje napravite mogu se iskoristiti za oktljučavanje nadogradnji - <strong>Ne uništavajte stare fabrike!</strong>
-            Karticu za nadogradnje možete pronaći u gornjem desnom uglu ekrana.
-
+        desc: Svi oblici koje napravite mogu se iskoristiti za oktljučavanje nadogradnji
+            - <strong>Ne uništavajte stare fabrike!</strong> Karticu za
+            nadogradnje možete pronaći u gornjem desnom uglu ekrana.
     massDeleteConfirm:
         title: Potvrdi brisanje
-        desc: >-
-            <count> građevina će biti obrisano! Da li ste sigurni da to želite?
-
+        desc: <count> građevina će biti obrisano! Da li ste sigurni da to želite?
     massCutConfirm:
         title: Potvrdi rezanje
-        desc: >-
-            <count> građevina će biti izrezano! Da li ste sigurni da to želite?
-
+        desc: <count> građevina će biti izrezano! Da li ste sigurni da to želite?
     massCutInsufficientConfirm:
         title: Potvrdi rezanje
-        desc: >-
-            Ne možete da priuštite nalepljivanje ove oblasti! Da li ste sigurni da želite da je izrežete?
-
+        desc: Ne možete da priuštite nalepljivanje ove oblasti! Da li ste sigurni da
+            želite da je izrežete?
     blueprintsNotUnlocked:
         title: Zaključano
-        desc: >-
-            Završite nivo 12 kako bi otključali Nacrte!
-
+        desc: Završite nivo 12 kako bi otključali Nacrte!
     keybindingsIntroduction:
         title: Korisne kombinacije tastera
-        desc: >-
-            Ova igra ima dosta kombinacija tastera koji olakšavaju izgradnju velikih fabrika.
-            Ovo su neki, ali se preporučuje da <strong>pogledate sve kombinacije</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Miš: Biranje oblasti.<br>
-            <code class='keybinding'>SHIFT</code>: Držato za postavljanje više istih zgrada odjednom.<br>
-            <code class='keybinding'>ALT</code>: Okrenite smer postavljenh pokretnih traka.<br>
-
+        desc: "Ova igra ima dosta kombinacija tastera koji olakšavaju izgradnju velikih
+            fabrika. Ovo su neki, ali se preporučuje da <strong>pogledate sve
+            kombinacije</strong>!<br><br> <code class='keybinding'>CTRL</code> +
+            Miš: Biranje oblasti.<br> <code class='keybinding'>SHIFT</code>:
+            Držato za postavljanje više istih zgrada odjednom.<br> <code
+            class='keybinding'>ALT</code>: Okrenite smer postavljenh pokretnih
+            traka.<br>"
     createMarker:
         title: Novi Putokaz
         titleEdit: Uredi Putokaz
-        desc: Dajte mu smisleno ime. Možete koristiti i <strong>kod</strong> oblika (Koji možete napraviti <a href="https://viewer.shapez.io" target="_blank">ovde</a>)
-
+        desc: Dajte mu smisleno ime. Možete koristiti i <strong>kod</strong> oblika
+            (Koji možete napraviti <a href="https://viewer.shapez.io"
+            target="_blank">ovde</a>)
     markerDemoLimit:
-        desc: U demo verziji možete imati samo dva putokaza istovremeno. Nabavite samostalnu igru za beskonačno mnogo putokaza!
-
+        desc: U demo verziji možete imati samo dva putokaza istovremeno. Nabavite
+            samostalnu igru za beskonačno mnogo putokaza!
     exportScreenshotWarning:
         title: Izvezi sliku ekrana
-        desc: Hoćete da izvezete sliku cele fabrike kao snimak ekrana. Ovaj proces može biti prilično spor za velike fabrike, može se desiti i pucanje igre!
-
+        desc: Hoćete da izvezete sliku cele fabrike kao snimak ekrana. Ovaj proces može
+            biti prilično spor za velike fabrike, može se desiti i pucanje igre!
+    editSignal:
+        title: Set Signal
+        descItems: "Choose a pre-defined item:"
+        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
+            can generate <link>here</link>)
+    renameSavegame:
+        title: Rename Savegame
+        desc: You can rename your savegame here.
 ingame:
-    # This is shown in the top left corner and displays useful keybindings in
-    # every situation
     keybindingsOverlay:
         moveMap: Kretanje
         selectBuildings: Odaberi oblast
@@ -315,8 +230,6 @@ ingame:
         clearSelection: Očisti odabir
         pipette: Pipeta
         switchLayers: Promeni sloj
-
-    # Names of the colors, used for the color blind mode
     colors:
         red: Crvena
         green: Zelena
@@ -327,18 +240,9 @@ ingame:
         white: Bela
         black: Crna
         uncolored: Bez boje
-
-    # Everything related to placing buildings (I.e. as soon as you selected a building
-    # from the toolbar)
     buildingPlacement:
-        # Buildings can have different variants which are unlocked at later levels,
-        # and this is the hint shown when there are multiple variants available.
         cycleBuildingVariants: Pritisni <key> za različite varijacije građevine.
-
-        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
-        hotkeyLabel: >-
-            Taster: <key>
-
+        hotkeyLabel: "Taster: <key>"
         infoTexts:
             speed: Brzina
             range: Domet
@@ -346,36 +250,42 @@ ingame:
             oneItemPerSecond: 1 premet / sekundi
             itemsPerSecond: <x> predmeta / s
             itemsPerSecondDouble: (x2)
-
             tiles: <x> polja
-
-    # The notification when completing a level
     levelCompleteNotification:
-        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Nivo <level>
         completed: Završen
         unlockText: Otključali ste <reward>!
         buttonNextLevel: Sledeći nivo
-
-    # Notifications on the lower right
     notifications:
         newUpgrade: Nova nadogradnja je dostupna!
         gameSaved: Igra je sačuvana.
-
-    # The "Upgrades" window
+        freeplayLevelComplete: Level <level> has been completed!
     shop:
         title: Nadogradnje
         buttonUnlock: Nadogradi
-
-        # Gets replaced to e.g. "Tier IX"
         tier: <x> red
-
-        # The roman number for each tier
-        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
-
+        tierLabels:
+            - I
+            - II
+            - III
+            - IV
+            - V
+            - VI
+            - VII
+            - VIII
+            - IX
+            - X
+            - XI
+            - XII
+            - XIII
+            - XIV
+            - XV
+            - XVI
+            - XVII
+            - XVIII
+            - XIX
+            - XX
         maximumLevel: MAKSIMALNI LEVEL (Brzina x<currentMult>)
-
-    # The "Statistics" window
     statistics:
         title: Statistika
         dataSources:
@@ -384,62 +294,58 @@ ingame:
                 description: Količina skladištenih oblika u središtu.
             produced:
                 title: Proizvedeno
-                description: Svi oblici koje proizvodi cela fabrika, uključujući i međuproizvode.
+                description: Svi oblici koje proizvodi cela fabrika, uključujući i
+                    međuproizvode.
             delivered:
                 title: Dostavljeno
                 description: Oblici koji su dostavljeni središtu.
         noShapesProduced: Za sada nema proizvedenih oblika.
-
-        # Displays the shapes per minute, e.g. '523 / m'
-        shapesPerMinute: <shapes> / min
-
-    # Settings menu, when you press "ESC"
+        shapesDisplayUnits:
+            second: <shapes> / s
+            minute: <shapes> / m
+            hour: <shapes> / h
     settingsMenu:
         playtime: Vreme igranja
-
         buildingsPlaced: Građevine
         beltsPlaced: Trake
-
         buttons:
             continue: Nastavi
             settings: Podešavanja
             menu: Povratak na glavni meni
-
-    # Bottom left tutorial hints
     tutorialHints:
         title: Potrebna pomoć?
         showHint: Prikaži savet
         hideHint: Zatvori
-
-    # When placing a blueprint
     blueprintPlacer:
         cost: Cena
-
-    # Map markers
     waypoints:
         waypoints: Putokazi
         hub: Središte
-        description: Klikni levim klikom na putokaz kako bi skočio na njegovu lokaciju, a izbriši ga desnim klikom. <br><br>Za stvaranje putokaza pritisni <keybinding>, ili <strong>desnim klikom</strong> napravi putokaz na odabranoj lokaciji.
+        description: Klikni levim klikom na putokaz kako bi skočio na njegovu lokaciju,
+            a izbriši ga desnim klikom. <br><br>Za stvaranje putokaza pritisni
+            <keybinding>, ili <strong>desnim klikom</strong> napravi putokaz na
+            odabranoj lokaciji.
         creationSuccessNotification: Putokaz kreiran.
-
-    # Shape viewer
     shapeViewer:
         title: Slojevi
         empty: Prazno
         copyKey: Kopiraj kod oblika
-
-    # Interactive tutorial
     interactiveTutorial:
         title: Tutorijal
         hints:
-            1_1_extractor: Postavi <strong>Rudara</strong> na <strong>oblik kruga</strong> kako bi ga iskopao!
-            1_2_conveyor: >-
-                Spoji rudara na središte koristeći <strong>pokretnu traku</strong>.<br><br>Savet: <strong>Pritisni i prevuci</strong> traku mišem!
-
-            1_3_expand: >-
-                Ovo <strong>NIJE</strong> pasivna igra čekanja! Više rudara i pokretnih traka će ubrzati napredak do cilja.<br><br>Savet: Drži <strong>SHIFT</strong> za postavljanje više rudara istovremeno, a pritisni <strong>R</strong> za okretanje.
-
-# All shop upgrades
+            1_1_extractor: Postavi <strong>Rudara</strong> na <strong>oblik kruga</strong>
+                kako bi ga iskopao!
+            1_2_conveyor: "Spoji rudara na središte koristeći <strong>pokretnu
+                traku</strong>.<br><br>Savet: <strong>Pritisni i
+                prevuci</strong> traku mišem!"
+            1_3_expand: "Ovo <strong>NIJE</strong> pasivna igra čekanja! Više rudara i
+                pokretnih traka će ubrzati napredak do cilja.<br><br>Savet: Drži
+                <strong>SHIFT</strong> za postavljanje više rudara istovremeno,
+                a pritisni <strong>R</strong> za okretanje."
+    connectedMiners:
+        one_miner: 1 Miner
+        n_miners: <amount> Miners
+        limited_items: Limited to <max_throughput>
 shopUpgrades:
     belt:
         name: Trake, Delioci i Tuneli
@@ -453,246 +359,358 @@ shopUpgrades:
     painting:
         name: Mešanje i Farbanje
         description: Brzina x<currentMult> → x<newMult>
-
-# Buildings and their name / description
 buildings:
     hub:
         deliver: Dostavite
         toUnlock: kako bi otključali
         levelShortcut: LVL
-
     belt:
         default:
-            name: &belt Pokretna traka
+            name: Pokretna traka
             description: Prenosi predmete, drži i prevuci za postavku više njih.
-
     wire:
         default:
-            name: &wire Žica
+            name: Žica
             description: Omogućava prenos energije.
-
-    miner: # Internal name for the Extractor
+        second:
+            name: Wire
+            description: Transfers signals, which can be items, colors or booleans (1 / 0).
+                Different colored wires do not connect.
+    miner:
         default:
-            name: &miner Rudar
+            name: Rudar
             description: Postavite ga na oblik koji želite da iskopate.
-
         chainable:
             name: Rudar (Lančani)
-            description: Postavite ga na oblik koji želite da iskopate. Mogu se ređati jedan u drugi.
-
-    underground_belt: # Internal name for the Tunnel
+            description: Postavite ga na oblik koji želite da iskopate. Mogu se ređati jedan
+                u drugi.
+    underground_belt:
         default:
-            name: &underground_belt Tunel
+            name: Tunel
             description: Omogućava prenos predmeta ispod građevina i traka.
-
         tier2:
             name: Tunel II Reda
             description: Omogućava prenos predmeta ispod građevina i traka.
-
-    splitter: # Internal name for the Balancer
-        default:
-            name: &splitter Balanser
-            description: Multifunkcionalan - Jednako raspoređuje sve ulaze na sve izlaze.
-
-        compact:
-            name: Spajač (kompaktni)
-            description: Spaja dve pokretne trake u jednu.
-
-        compact-inverse:
-            name: Spajač (kompaktni)
-            description: Spaja dve pokretne trake u jednu.
-
     cutter:
         default:
-            name: &cutter Rezač
-            description: Reže oblike od vrha prema dnu i na izlaze daje obe polovine. <strong>Ako se koristi samo jedan deo, drugi se mora uništiti da bi se sprečio zastoj!</strong>
+            name: Rezač
+            description: Reže oblike od vrha prema dnu i na izlaze daje obe polovine.
+                <strong>Ako se koristi samo jedan deo, drugi se mora uništiti da
+                bi se sprečio zastoj!</strong>
         quad:
             name: Rezač (četvorostruki)
-            description: Reže oblike na četiri dela. <strong>Ako se koristi samo jedan deo, ostali se moraju uništiti da bi se sprečio zastoj!</strong>
-    #TODO
-    advanced_processor:
-        default:
-            name: &advanced_processor Okretač boje
-            description: Prihvata boju ili oblik i izokreće je.
-
+            description: Reže oblike na četiri dela. <strong>Ako se koristi samo jedan deo,
+                ostali se moraju uništiti da bi se sprečio zastoj!</strong>
     rotater:
         default:
-            name: &rotater Obrtač (↻)
+            name: Obrtač (↻)
             description: Okreće oblike za 90 stepeni u smeru kazaljke na satu.
         ccw:
             name: Obrtač (↺)
             description: Okreće oblike za 90 stepeni u smeru suprotnom od kazaljke na satu.
-        fl:
+        rotate180:
             name: Rotate (180)
             description: Rotates shapes by 180 degrees.
-
     stacker:
         default:
-            name: &stacker Slagač
-            description: Slaže jedan oblik na drugi. Ako se oblici ne mogu spojiti, desni oblik se postavlja na vrh levog.
-
+            name: Slagač
+            description: Slaže jedan oblik na drugi. Ako se oblici ne mogu spojiti, desni
+                oblik se postavlja na vrh levog.
     mixer:
         default:
-            name: &mixer Mešalica boja
+            name: Mešalica boja
             description: Spaja dve boje koristeći aditivno mešanje boja.
-
     painter:
         default:
-            name: &painter Farbač
-            description: &painter_desc Farba ceo oblik na levom ulazu bojom sa gornjeg ulaza.
-
+            name: Farbač
+            description: Farba ceo oblik na levom ulazu bojom sa gornjeg ulaza.
         mirrored:
-            name: *painter
-            description: *painter_desc
-
+            name: Farbač
+            description: Farba ceo oblik na levom ulazu bojom sa gornjeg ulaza.
         double:
             name: Farbač (dupli)
             description: Farba ceo oblik na levom ulazu bojom sa gornjeg ulaza.
         quad:
             name: Farbač (četvorostruki)
             description: Omogućava farbanje svake četvrtine oblika različitom bojom.
-
     trash:
         default:
-            name: &trash Smeće
+            name: Smeće
             description: Prima stvar sa svih strana i zauvek ih uništava.
-
-        storage:
-            name: Skladište
-            description: Skladišti višak predmeta do određenog kapaciteta. Može se koristiti kao zaštita od prelivanja.
-
-    energy_generator:
-        deliver: Dostavi
-
-        # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: Za
-
+    balancer:
         default:
-            name: &energy_generator Generator
-            description: Pretvara oblike u energiju.
-    #TODO
-    wire_crossings:
-        default:
-            name: &wire_crossings Razdelnik žica
-            description: Deli žicu na dva dela.
-
+            name: Balancer
+            description: Multifunctional - Evenly distributes all inputs onto all outputs.
         merger:
-            name: Spajač žica
-            description: Spaja dve žice u jednu.
-
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+        merger-inverse:
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+        splitter:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+        splitter-inverse:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+    storage:
+        default:
+            name: Storage
+            description: Stores excess items, up to a given capacity. Prioritizes the left
+                output and can be used as an overflow gate.
+    wire_tunnel:
+        default:
+            name: Wire Crossing
+            description: Allows to cross two wires without connecting them.
+    constant_signal:
+        default:
+            name: Constant Signal
+            description: Emits a constant signal, which can be either a shape, color or
+                boolean (1 / 0).
+    lever:
+        default:
+            name: Switch
+            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
+                which can then be used to control for example an item filter.
+    logic_gate:
+        default:
+            name: AND Gate
+            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
+                color or boolean "1")
+        not:
+            name: NOT Gate
+            description: Emits a boolean "1" if the input is not truthy. (Truthy means
+                shape, color or boolean "1")
+        xor:
+            name: XOR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
+                (Truthy means shape, color or boolean "1")
+        or:
+            name: OR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
+                shape, color or boolean "1")
+    transistor:
+        default:
+            name: Transistor
+            description: Forwards the bottom input if the side input is truthy (a shape,
+                color or "1").
+        mirrored:
+            name: Transistor
+            description: Forwards the bottom input if the side input is truthy (a shape,
+                color or "1").
+    filter:
+        default:
+            name: Filter
+            description: Connect a signal to route all matching items to the top and the
+                remaining to the right. Can be controlled with boolean signals
+                too.
+    display:
+        default:
+            name: Display
+            description: Connect a signal to show it on the display - It can be a shape,
+                color or boolean.
+    reader:
+        default:
+            name: Belt Reader
+            description: Allows to measure the average belt throughput. Outputs the last
+                read item on the wires layer (once unlocked).
+    analyzer:
+        default:
+            name: Shape Analyzer
+            description: Analyzes the top right quadrant of the lowest layer of the shape
+                and returns its shape and color.
+    comparator:
+        default:
+            name: Compare
+            description: Returns boolean "1" if both signals are exactly equal. Can compare
+                shapes, items and booleans.
+    virtual_processor:
+        default:
+            name: Virtual Cutter
+            description: Virtually cuts the shape into two halves.
+        rotater:
+            name: Virtual Rotater
+            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+        unstacker:
+            name: Virtual Unstacker
+            description: Virtually extracts the topmost layer to the right output and the
+                remaining ones to the left.
+        stacker:
+            name: Virtual Stacker
+            description: Virtually stacks the right shape onto the left.
+        painter:
+            name: Virtual Painter
+            description: Virtually paints the shape from the bottom input with the shape on
+                the right input.
 storyRewards:
-    # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Rezanje Oblika
-        desc: <strong>Rezač</strong> je otključan! On reže oblike <strong>od vrha prema dnu</strong> bez obzira na orijentaciju građevine!<br><br>Višak se mora odbaciti kako bi se izbegao <strong>zastoj</strong>. - Za tu svrhu postoji smeće, koje uništava sve što uđe u njega.
-
+        desc: <strong>Rezač</strong> je otključan! On reže oblike <strong>od vrha prema
+            dnu</strong> bez obzira na orijentaciju građevine!<br><br>Višak se
+            mora odbaciti kako bi se izbegao <strong>zastoj</strong>. - Za tu
+            svrhu postoji smeće, koje uništava sve što uđe u njega.
     reward_rotater:
         title: Obrtanje
-        desc: <strong>Obrtač</strong> je otključan! On okreće oblike za 90 stepeni u smeru kazaljke na satu.
-
+        desc: <strong>Obrtač</strong> je otključan! On okreće oblike za 90 stepeni u
+            smeru kazaljke na satu.
     reward_painter:
         title: Farbanje
-        desc: >-
-            <strong>Farbač</strong> je otključan - Boja se (kao i oblici) može rudariti i spojiti s oblikom u farbaču!<br><br>PS: Postoji <strong>opcija za daltonizam</strong> u podešavanjima!
-
+        desc: "<strong>Farbač</strong> je otključan - Boja se (kao i oblici) može
+            rudariti i spojiti s oblikom u farbaču!<br><br>PS: Postoji
+            <strong>opcija za daltonizam</strong> u podešavanjima!"
     reward_mixer:
         title: Mešalica boja
-        desc: <strong>Mešalica boja</strong> je otključana - Ona spaja dve boje koristeći <strong>aditivno mešanje</strong>!
-
+        desc: <strong>Mešalica boja</strong> je otključana - Ona spaja dve boje
+            koristeći <strong>aditivno mešanje</strong>!
     reward_stacker:
         title: Slagač
-        desc: Dva oblika mogu spojiti <strong>slagačem</strong>! Oblici sa oba ulaza se spajaju - ako se mogu staviti jedan kraj drugoga, biće <strong>spojeni</strong>. Ako ne, desni ulaz se slaže <strong>na vrh</strong> levog!
-
+        desc: Dva oblika mogu spojiti <strong>slagačem</strong>! Oblici sa oba ulaza se
+            spajaju - ako se mogu staviti jedan kraj drugoga, biće
+            <strong>spojeni</strong>. Ako ne, desni ulaz se slaže <strong>na
+            vrh</strong> levog!
     reward_splitter:
         title: Deljenje/Spajanje
-        desc: Multifunkcionalni <strong>balanser</strong> je otključan! Može ga se iskoristiti za <strong>deljenje i spajanje oblika</strong> na više pokretnih traka!<br><br>
-
+        desc: Multifunkcionalni <strong>balanser</strong> je otključan! Može ga se
+            iskoristiti za <strong>deljenje i spajanje oblika</strong> na više
+            pokretnih traka!<br><br>
     reward_tunnel:
         title: Tunel
-        desc: <strong>Tunel</strong> je otključan - Omogućava prenos stvari ispod traka i ostalih građevina!
-
+        desc: <strong>Tunel</strong> je otključan - Omogućava prenos stvari ispod traka
+            i ostalih građevina!
     reward_rotater_ccw:
         title: Rotacija u smeru suprotnom od kazaljke na satu
-        desc: Varijacija <strong>obrtača</strong> je otključana - Omogućuje okretanje u smeru suprotnom od kazaljke na satu! Odaberi obrtač i <strong>pritisni 'T' za menjanje njegove varijacije</strong>!
-
+        desc: Varijacija <strong>obrtača</strong> je otključana - Omogućuje okretanje u
+            smeru suprotnom od kazaljke na satu! Odaberi obrtač i
+            <strong>pritisni 'T' za menjanje njegove varijacije</strong>!
     reward_miner_chainable:
         title: Lančani rudar
-        desc: Otključan je <strong>lančani rudar</strong>! On može da <strong>prosledi svoje resurse</strong> drugim rudarima radi efikasnijeg rudarenja!
-
+        desc: Otključan je <strong>lančani rudar</strong>! On može da <strong>prosledi
+            svoje resurse</strong> drugim rudarima radi efikasnijeg rudarenja!
     reward_underground_belt_tier_2:
         title: Tunel II Reda
-        desc: Otključana je nova varijacija <strong>tunela</strong> - On ima <strong>veći domet</strong>, a uz to se sada mogu kombinovati vrste tunela.
-
-    reward_splitter_compact:
-        title: Kompaktni Balanser
-        desc: >-
-            Varijacija <strong>balansera</strong> je otključana - On prihvata dva ulaza i spaja ih u jednu traku!
-
+        desc: Otključana je nova varijacija <strong>tunela</strong> - On ima
+            <strong>veći domet</strong>, a uz to se sada mogu kombinovati vrste
+            tunela.
     reward_cutter_quad:
         title: Četvorostruki Rezač
-        desc: Varijacija <strong>rezača</strong> je otključana - Omogućava rezanje oblika na <strong>četiri dela</strong> umesto na samo dva!
-
+        desc: Varijacija <strong>rezača</strong> je otključana - Omogućava rezanje
+            oblika na <strong>četiri dela</strong> umesto na samo dva!
     reward_painter_double:
         title: Dupli Farbač
-        desc: Varijacija <strong>farbača</strong> je otključana - Radi isti posao kao običan farbač, ali može ofarbati <strong>dva oblika odjednom</strong> po ceni jedne boje umesto dve!
-
+        desc: Varijacija <strong>farbača</strong> je otključana - Radi isti posao kao
+            običan farbač, ali može ofarbati <strong>dva oblika
+            odjednom</strong> po ceni jedne boje umesto dve!
     reward_painter_quad:
         title: Četvorostruki Farbač
-        desc: Varijacija <strong>farbača</strong> je otključana - Omogućava farbanje pojedinačnih delova oblika!
-
+        desc: Varijacija <strong>farbača</strong> je otključana - Omogućava farbanje
+            pojedinačnih delova oblika!
     reward_storage:
         title: Skladište
-        desc: Varijacija <strong>smeća</strong> je otključana - Omogućava skladištenje predmeta do određenog kapaciteta!
-
+        desc: Varijacija <strong>smeća</strong> je otključana - Omogućava skladištenje
+            predmeta do određenog kapaciteta!
     reward_freeplay:
         title: Slobodna Igra
-        desc: Uspeli ste! Otključali ste <strong>mod slobodne igre</strong>! Oblici su od sada nasumično generisani! (Bez brige, više sadržaja je planirano za samostalnu igru!)
-
+        desc: Uspeli ste! Otključali ste <strong>mod slobodne igre</strong>! Oblici su
+            od sada nasumično generisani! (Bez brige, više sadržaja je planirano
+            za samostalnu igru!)
     reward_blueprints:
         title: Nacrti
-        desc: Sada možete da <strong>kopirate i nalepljujete</strong> delove fabrike! Odaberite oblast (držite CTRL, prevucite mišem), i pritisnite 'C' da biste kopirali.<br><br>Nalepljivanje <strong>nije besplatno</strong>, potrebno je da napravite <strong>oblike za nacrte</strong> da biste ga priuštili! (To su oblici koje ste do malopre dostavljali).
-
-    # Special reward, which is shown when there is no reward actually
+        desc: Sada možete da <strong>kopirate i nalepljujete</strong> delove fabrike!
+            Odaberite oblast (držite CTRL, prevucite mišem), i pritisnite 'C' da
+            biste kopirali.<br><br>Nalepljivanje <strong>nije
+            besplatno</strong>, potrebno je da napravite <strong>oblike za
+            nacrte</strong> da biste ga priuštili! (To su oblici koje ste do
+            malopre dostavljali).
     no_reward:
         title: Sledeći Nivo
-        desc: >-
-            Ovaj nivo je bio bez nagrade, ali sledeći neće! <br><br> PS: Nemojte uništavati stare fabrike - <strong>Svi</strong> ti oblici će vam biti potrebni kasnije da biste <strong>otključali nadogradnje</strong>!
-
+        desc: "Ovaj nivo je bio bez nagrade, ali sledeći neće! <br><br> PS: Nemojte
+            uništavati stare fabrike - <strong>Svi</strong> ti oblici će vam
+            biti potrebni kasnije da biste <strong>otključali
+            nadogradnje</strong>!"
     no_reward_freeplay:
         title: Sledeći Nivo
-        desc: >-
-            Svaka čast! Više sadržaja je u planu za samostalnu igru!
-
+        desc: Svaka čast! Više sadržaja je u planu za samostalnu igru!
+    reward_balancer:
+        title: Balancer
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!<br><br>
+    reward_merger:
+        title: Compact Merger
+        desc: You have unlocked a <strong>merger</strong> variant of the
+            <strong>balancer</strong> - It accepts two inputs and merges them
+            into one belt!
+    reward_belt_reader:
+        title: Belt reader
+        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
+            measure the throughput of a belt.<br><br>And wait until you unlock
+            wires - then it gets really useful!
+    reward_rotater_180:
+        title: Rotater (180 degrees)
+        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
+            you to rotate a shape by 180 degress (Surprise! :D)
+    reward_wires_filters_and_levers:
+        title: "Wires: Filters & Levers"
+        desc: You just unlocked the <strong>wires layer</strong>! It is a separate layer
+            on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> Since it can be overwhelming a bit, I added a
+            small tutorial - Be sure to have <strong>tutorials enabled</strong>
+            in the settings!
+    reward_display:
+        title: Display
+        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize its contents!
+    reward_constant_signal:
+        title: Constant Signal
+        desc: You unlocked the <strong>constant signal</strong> building on the wires
+            layer! This is useful to connect it to <strong>item filters</strong>
+            for example.<br><br> The constant signal can emit a
+            <strong>shape</strong>, <strong>color</strong> or
+            <strong>boolean</strong> (1 / 0).
+    reward_logic_gates:
+        title: Logic Gates
+        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
+            about this, but it's actually super cool!<br><br> With those gates
+            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
+            bonus on top I also just gave you a <strong>transistor</strong>!
+    reward_virtual_processing:
+        title: Virtual Processing
+        desc: I just gave a whole bunch of new buildings which allow you to
+            <strong>simulate the processing of shapes</strong>!<br><br> You can
+            now simulate a cutter, rotater, stacker and more on the wires layer!
+            With this you now have three options to continue the game:<br><br> -
+            Build an <strong>automated machine</strong> to create any possible
+            shape requested by the HUB (I recommend to try it!).<br><br> - Build
+            something cool with wires.<br><br> - Continue to play
+            regulary.<br><br> Whatever you choose, remember to have fun!
 settings:
     title: Podešavanja
     categories:
         general: General
         userInterface: User Interface
         advanced: Advanced
-
+        performance: Performance
     versionBadges:
         dev: Razvoj
-        staging: Skela #TODO
+        staging: Skela
         prod: produkcija
     buildDate: Izgrađeno <at-date>
-
     labels:
         uiScale:
             title: Veličina interfejsa
-            description: >-
-                Menja veličinu korisničkog interfejsa. Veličina interfejsa će i dalje zavisiti od vaše rezolucije uređaja.Ova opcija kontroliše tu veličinu interfejsa.
+            description: Menja veličinu korisničkog interfejsa. Veličina interfejsa će i
+                dalje zavisiti od vaše rezolucije uređaja.Ova opcija kontroliše
+                tu veličinu interfejsa.
             scales:
                 super_small: Maleno
                 small: Malo
                 regular: Normalno
                 large: Veliko
                 huge: Ogromno
-
         autosaveInterval:
             title: Interval Automatskog Čuvanja Igre
-            description: >-
-                Kontroliše koliko često će se igra automatski čuvati. Ovu opciju možete i da onemogućite.
-
+            description: Kontroliše koliko često će se igra automatski čuvati. Ovu opciju
+                možete i da onemogućite.
             intervals:
                 one_minute: 1 minut
                 two_minutes: 2 minuta
@@ -700,22 +718,19 @@ settings:
                 ten_minutes: 10 minuta
                 twenty_minutes: 20 minuta
                 disabled: Onemogućeno
-
         scrollWheelSensitivity:
             title: Osetljivost zumiranja
-            description: >-
-                Kontroliše koliko je zumiranje osetljivo (Točkić na mišu ili trackpad).
+            description: Kontroliše koliko je zumiranje osetljivo (Točkić na mišu ili
+                trackpad).
             sensitivity:
                 super_slow: Najsporije
                 slow: Sporo
                 regular: Normalno
                 fast: Brzo
                 super_fast: Najbrže
-
         movementSpeed:
             title: Brzina kretanja
-            description: >-
-                Menja brzinu kretanja kamere pri korišćenju tastature.
+            description: Menja brzinu kretanja kamere pri korišćenju tastature.
             speeds:
                 super_slow: Najsporije
                 slow: Sporo
@@ -723,87 +738,113 @@ settings:
                 fast: Brzo
                 super_fast: Najbrže
                 extremely_fast: Brže od najbržeg
-
         language:
             title: Jezik
-            description: >-
-                Promenite jezik igre. Svi prevodi su delo volontera i mogu biti nezavršeni!
-
+            description: Promenite jezik igre. Svi prevodi su delo volontera i mogu biti
+                nezavršeni!
         enableColorBlindHelper:
             title: Opcija za daltonizam
-            description: >-
-                Omogućuje razne alate koji pomažu pri igranju igre sa nekim oblikom daltonizma.
-
+            description: Omogućuje razne alate koji pomažu pri igranju igre sa nekim oblikom
+                daltonizma.
         fullscreen:
             title: Ceo ekran
-            description: >-
-                Preporučljivo je, radi najboljeg iskustva, da igrate ovu igru na celom ekranu. Opcija dostupna samo u samostalnoj igri.
-
+            description: Preporučljivo je, radi najboljeg iskustva, da igrate ovu igru na
+                celom ekranu. Opcija dostupna samo u samostalnoj igri.
         soundsMuted:
             title: Utišajte Zvukove
-            description: >-
-                Ako je odabrana, ova opcija isključuje sve zvučne efekte.
-
+            description: Ako je odabrana, ova opcija isključuje sve zvučne efekte.
         musicMuted:
             title: Utišajte Muziku
-            description: >-
-                Ako je odabrana, ova opcija isključuje svu muziku.
-
+            description: Ako je odabrana, ova opcija isključuje svu muziku.
         theme:
             title: Tema Igre
-            description: >-
-                Odaberite temu igre (svetla / tamna).
+            description: Odaberite temu igre (svetla / tamna).
             themes:
                 dark: Tamna
                 light: Svetla
-
         refreshRate:
             title: Simulacija na 144 Hz
-            description: >-
-                Opcija za monitore visoke frekvencije osvežavanja. Ovo može smanjiti FPS ako je vaš računar prespor.
-
+            description: Opcija za monitore visoke frekvencije osvežavanja. Ovo može
+                smanjiti FPS ako je vaš računar prespor.
         alwaysMultiplace:
             title: Višestruko Postavljanje
-            description: >-
-                Ako je omogućeno, sve građevine će ostati odabrane nakon što su postavljene. Ova opcija je ekvivalenta stalnom držanju dugmeta SHIFT.
-
+            description: Ako je omogućeno, sve građevine će ostati odabrane nakon što su
+                postavljene. Ova opcija je ekvivalenta stalnom držanju dugmeta
+                SHIFT.
         offerHints:
             title: Saveti i Tutorijali
-            description: >-
-                Opcija za prikazivanje saveta i tutorijala za vreme igre. Dodatno krije određene elemente interfejsa, dok ih ne budete otključali, radi lakše igre.
-
+            description: Opcija za prikazivanje saveta i tutorijala za vreme igre. Dodatno
+                krije određene elemente interfejsa, dok ih ne budete otključali,
+                radi lakše igre.
         enableTunnelSmartplace:
             title: Pametni Tuneli
-            description: >-
-                Ako je omogućeno, postavljanje tunela automatski briše nepotrebne pokretne trake. Takođe omogućuje prevlačenje tunela i brisanje višak tunela.
-
+            description: Ako je omogućeno, postavljanje tunela automatski briše nepotrebne
+                pokretne trake. Takođe omogućuje prevlačenje tunela i brisanje
+                višak tunela.
         vignette:
             title: Vinjeta
-            description: >-
-                Omogućeva vinjetu - zatamnjuje ivice ekrana da bi tekst bio čitljiviji.
-
-        rotationByBuilding: #TODO
+            description: Omogućeva vinjetu - zatamnjuje ivice ekrana da bi tekst bio
+                čitljiviji.
+        rotationByBuilding:
             title: Okretanje prema vrsti građevine
-            description: >-
-                Svaka građevina pamti smer na koji je bila okrenuta. Ova opcija je preporučuje ako često menjate vrste građevina koje postavljate.
-
+            description: Svaka građevina pamti smer na koji je bila okrenuta. Ova opcija je
+                preporučuje ako često menjate vrste građevina koje postavljate.
         compactBuildingInfo:
             title: Skraćene Informacije o Građevinama
-            description: >-
-                Skraćuje deo sa informacijama građevine tako da prikazuje samo njihove odnose. U suptornom prikazuje opis i sliku građevine.
-
+            description: Skraćuje deo sa informacijama građevine tako da prikazuje samo
+                njihove odnose. U suptornom prikazuje opis i sliku građevine.
         disableCutDeleteWarnings:
             title: Onemogući upozorenje za Rezanje/Brisanje
-            description: >-
-                Onemogućuje upozorenje koje se javlja kada režete/brišete više od 100 stvari.
-
+            description: Onemogućuje upozorenje koje se javlja kada režete/brišete više od
+                100 stvari.
+        soundVolume:
+            title: Sound Volume
+            description: Set the volume for sound effects
+        musicVolume:
+            title: Music Volume
+            description: Set the volume for music
+        lowQualityMapResources:
+            title: Low Quality Map Resources
+            description: Simplifies the rendering of resources on the map when zoomed in to
+                improve performance. It even looks cleaner, so be sure to try it
+                out!
+        disableTileGrid:
+            title: Disable Grid
+            description: Disabling the tile grid can help with the performance. This also
+                makes the game look cleaner!
+        clearCursorOnDeleteWhilePlacing:
+            title: Clear Cursor on Right Click
+            description: Enabled by default, clears the cursor whenever you right click
+                while you have a building selected for placement. If disabled,
+                you can delete buildings by right-clicking while placing a
+                building.
+        lowQualityTextures:
+            title: Low quality textures (Ugly)
+            description: Uses low quality textures to save performance. This will make the
+                game look very ugly!
+        displayChunkBorders:
+            title: Display Chunk Borders
+            description: The game is divided into chunks of 16x16 tiles, if this setting is
+                enabled the borders of each chunk are displayed.
+        pickMinerOnPatch:
+            title: Pick miner on resource patch
+            description: Enabled by default, selects the miner if you use the pipette when
+                hovering a resource patch.
+        simplifiedBelts:
+            title: Simplified Belts (Ugly)
+            description: Does not render belt items except when hovering the belt to save
+                performance. I do not recommend to play with this setting if you
+                do not absolutely need the performance.
+        enableMousePan:
+            title: Enable Mouse Pan
+            description: Allows to move the map by moving the cursor to the edges of the
+                screen. The speed depends on the Movement Speed setting.
+    rangeSliderPercentage: <amount> %
 keybindings:
     title: Tasteri
-    hint: >-
-        Savet: Koristite CTRL, SHIFT i ALT! Oni omogućuju razne opcije postavljanja građevina.
-
+    hint: "Savet: Koristite CTRL, SHIFT i ALT! Oni omogućuju razne opcije
+        postavljanja građevina."
     resetKeybindings: Resetuj podešavanja tastera
-
     categoryLabels:
         general: Aplikacija
         ingame: Igra
@@ -812,7 +853,6 @@ keybindings:
         massSelect: Masovno Odabiranje
         buildings: Prečice za građevine
         placementModifiers: Modifikatori Postavljanja
-
     mappings:
         confirm: Potvrdi
         back: Nazad
@@ -822,58 +862,62 @@ keybindings:
         mapMoveLeft: Idi Levo
         mapMoveFaster: Brže kretanje
         centerMap: Centar mape
-
         mapZoomIn: Zumiraj
         mapZoomOut: Odzumiraj
         createMarker: Napravi Putokaz
-
         menuOpenShop: Nadogradnje
         menuOpenStats: Statistika
         menuClose: Zatvori Meni
-
         toggleHud: Uključi/Isključi Interfejs
         toggleFPSInfo: Uključi/Isključi FPS i infomacije o traženju grešaka u kodu
         switchLayers: Promeni Sloj
         exportScreenshot: Izvoz slike cele fabrike kao snimak ekrana
-        belt: *belt
-        splitter: *splitter
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        advanced_processor: *advanced_processor
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        energy_generator: *energy_generator
-        painter: *painter
-        trash: *trash
-        wire: *wire
-
+        belt: Pokretna traka
+        underground_belt: Tunel
+        miner: Rudar
+        cutter: Rezač
+        rotater: Obrtač (↻)
+        stacker: Slagač
+        mixer: Mešalica boja
+        painter: Farbač
+        trash: Smeće
+        wire: Žica
         pipette: Pipeta
         rotateWhilePlacing: Okreni građevinu
-        rotateInverseModifier: >-
-            Modifikator: Rotiraj u smeru suprotnom od kazaljke na satu
+        rotateInverseModifier: "Modifikator: Rotiraj u smeru suprotnom od kazaljke na satu"
         cycleBuildingVariants: Promena Varijacije
         confirmMassDelete: Uništite Oblast
         pasteLastBlueprint: Nalepite posledji nacrt
         cycleBuildings: Promena Građevine
         lockBeltDirection: Omogući planer pokretnih traka
-        switchDirectionLockSide: >-
-            Planer: Okreni stranu
-
+        switchDirectionLockSide: "Planer: Okreni stranu"
         massSelectStart: Pritisni i zadrži za za početak
         massSelectSelectMultiple: Odabir više oblasti
         massSelectCopy: Kopiranje oblasti
         massSelectCut: Izrezivanje oblasti
-
         placementDisableAutoOrientation: Onemogućite automatsku orijentaciju
         placeMultiple: Ostanite u modu za postavljanje
         placeInverse: Automatski okreni orijentaciju pokretnih traka
-
+        balancer: Balancer
+        storage: Storage
+        constant_signal: Constant Signal
+        logic_gate: Logic Gate
+        lever: Switch (regular)
+        lever_wires: Switch (wires)
+        filter: Filter
+        wire_tunnel: Wire Crossing
+        display: Display
+        reader: Belt Reader
+        virtual_processor: Virtual Cutter
+        transistor: Transistor
+        analyzer: Shape Analyzer
+        comparator: Compare
 about:
     title: O Igri
     body: >-
-        Ova igra je otvorenog koda i napravljena je od strane <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (to sam ja).<br><br>
+        Ova igra je otvorenog koda i napravljena je od strane <a
+        href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (to
+        sam ja).<br><br>
 
         Ako želite da doprinesete razvoju, bacite pogled na <a href="<githublink>" target="_blank">shapez.io github</a>.<br><br>
 
@@ -882,10 +926,8 @@ about:
         <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> je komponovao muziku za igru - On je super.<br><br>
 
         Na kraju svega, veliko hvala mom najboljem prijatelju <a href="https://github.com/niklas-dahl" target="_blank">Niklas-u</a> - Bez naših factorio sesija, ova igra nikad ne bi postojala.
-
 changelog:
     title: Promene
-
 demo:
     features:
         restoringGames: Obnavljanje sačuvanih igara
@@ -893,5 +935,64 @@ demo:
         oneGameLimit: Ograničenje od jedne sačuvane igre
         customizeKeybindings: Prilagođena Podešavanja Tastera
         exportingBase: Izvoz slike cele fabrike kao snimak ekrana
-
     settingNotAvailable: Nije dostupno u demo verziji.
+tips:
+    - The hub accepts input of any kind, not just the current shape!
+    - Make sure your factories are modular - it will pay out!
+    - Don't build too close to the hub, or it will be a huge chaos!
+    - If stacking does not work, try switching the inputs.
+    - You can toggle the belt planner direction by pressing <b>R</b>.
+    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
+    - Ratios stay the same, as long as all upgrades are on the same Tier.
+    - Serial execution is more efficient than parallel.
+    - You will unlock more variants of buildings later in the game!
+    - You can use <b>T</b> to switch between different variants.
+    - Symmetry is key!
+    - You can weave different tiers of tunnels.
+    - Try to build compact factories - it will pay out!
+    - The painter has a mirrored variant which you can select with <b>T</b>
+    - Having the right building ratios will maximize efficiency.
+    - At maximum level, 5 extractors will fill a single belt.
+    - Don't forget about tunnels!
+    - You don't need to divide up items evenly for full efficiency.
+    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
+      long lines of belts easily.
+    - Cutters always cut vertically, regardless of their orientation.
+    - To get white mix all three colors.
+    - The storage buffer priorities the first output.
+    - Invest time to build repeatable designs - it's worth it!
+    - Holding <b>CTRL</b> allows to place multiple buildings.
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
+    - Efficiency is key!
+    - Shape patches that are further away from the hub are more complex.
+    - Machines have a limited speed, divide them up for maximum efficiency.
+    - Use balancers to maximize your efficiency.
+    - Organization is important. Try not to cross conveyors too much.
+    - Plan in advance, or it will be a huge chaos!
+    - Don't remove your old factories! You'll need them to unlock upgrades.
+    - Try beating level 20 on your own before seeking for help!
+    - Don't complicate things, try to stay simple and you'll go far.
+    - You may need to re-use factories later in the game. Plan your factories to
+      be re-usable.
+    - Sometimes, you can find a needed shape in the map without creating it with
+      stackers.
+    - Full windmills / pinwheels can never spawn naturally.
+    - Color your shapes before cutting for maximum efficiency.
+    - With modules, space is merely a perception; a concern for mortal men.
+    - Make a separate blueprint factory. They're important for modules.
+    - Have a closer look on the color mixer, and your questions will be answered.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
+    - The pin icon next to each shape in the upgrade list pins it to the screen.
+    - Mix all primary colors together to make white!
+    - You have an infinite map, don't cramp your factory, expand!
+    - Also try Factorio! It's my favorite game.
+    - The quad cutter cuts clockwise starting from the top right!
+    - You can download your savegames in the main menu!
+    - This game has a lot of useful keybindings! Be sure to check out the
+      settings page.
+    - This game has a lot of settings, be sure to check them out!
+    - The marker to your hub has a small compass to indicate its direction!
+    - To clear belts, cut the area and then paste it at the same location.
+    - Press F4 to show your FPS and Tick Rate.
+    - Press F4 twice to show the tile of your mouse and camera.

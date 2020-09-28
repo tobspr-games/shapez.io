@@ -3,7 +3,6 @@
 const fs = require("fs");
 const matchAll = require("match-all");
 const path = require("path");
-const YAWN = require("yawn-yaml/cjs");
 const YAML = require("yaml");
 
 const files = fs
@@ -55,8 +54,6 @@ function match(originalObj, translatedObj, path = "/") {
         } else {
             console.warn(" | Unknown type: ", typeof valueOriginal);
         }
-
-        // const matching = translatedObj[key];
     }
 
     for (const key in translatedObj) {
@@ -71,12 +68,13 @@ for (let i = 0; i < files.length; ++i) {
     const filePath = path.join(__dirname, "translations", files[i]);
     console.log("Processing", files[i]);
     const translatedContents = fs.readFileSync(filePath).toString("utf-8");
-    const translated = YAML.parse(translatedContents);
-    const handle = new YAWN(translatedContents);
 
-    const json = handle.json;
+    const json = YAML.parse(translatedContents);
     match(original, json, "/");
-    handle.json = json;
 
-    fs.writeFileSync(filePath, handle.yaml, "utf-8");
+    const stringified = YAML.stringify(json, {
+        indent: 4,
+        simpleKeys: true,
+    });
+    fs.writeFileSync(filePath, stringified, "utf-8");
 }

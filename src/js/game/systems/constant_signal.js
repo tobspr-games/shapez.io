@@ -1,6 +1,9 @@
 import trim from "trim";
+import { THIRDPARTY_URLS } from "../../core/config";
 import { DialogWithForm } from "../../core/modal_dialog_elements";
-import { FormElementInput } from "../../core/modal_dialog_forms";
+import { FormElementInput, FormElementItemChooser } from "../../core/modal_dialog_forms";
+import { fillInLinkIntoTranslation } from "../../core/utils";
+import { T } from "../../translations";
 import { BaseItem } from "../base_item";
 import { enumColors } from "../colors";
 import { ConstantSignalComponent } from "../components/constant_signal";
@@ -9,6 +12,7 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
+import { blueprintShape } from "../upgrades";
 
 export class ConstantSignalSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -41,23 +45,35 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
 
         const signalValueInput = new FormElementInput({
             id: "signalValue",
-            label: null,
+            label: fillInLinkIntoTranslation(T.dialogs.editSignal.descShortKey, THIRDPARTY_URLS.shapeViewer),
             placeholder: "",
             defaultValue: "",
             validator: val => this.parseSignalCode(val),
         });
+
+        const itemInput = new FormElementItemChooser({
+            id: "signalItem",
+            label: null,
+            items: [
+                BOOL_FALSE_SINGLETON,
+                BOOL_TRUE_SINGLETON,
+                ...Object.values(COLOR_ITEM_SINGLETONS),
+                this.root.shapeDefinitionMgr.getShapeItemFromShortKey(blueprintShape),
+            ],
+        });
+
         const dialog = new DialogWithForm({
             app: this.root.app,
-            title: "Set Signal",
-            desc: "Enter a shape code, color or '0' or '1'",
-            formElements: [signalValueInput],
+            title: T.dialogs.editSignal.title,
+            desc: T.dialogs.editSignal.descItems,
+            formElements: [itemInput, signalValueInput],
             buttons: ["cancel:bad:escape", "ok:good:enter"],
             closeButton: false,
         });
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
 
         // When confirmed, set the signal
-        dialog.buttonSignals.ok.add(() => {
+        const closeHandler = () => {
             if (!this.root || !this.root.entityMgr) {
                 // Game got stopped
                 return;
@@ -75,8 +91,16 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
                 return;
             }
 
-            constantComp.signal = this.parseSignalCode(signalValueInput.getValue());
-        });
+            if (itemInput.chosenItem) {
+                console.log(itemInput.chosenItem);
+                constantComp.signal = itemInput.chosenItem;
+            } else {
+                constantComp.signal = this.parseSignalCode(signalValueInput.getValue());
+            }
+        };
+
+        dialog.buttonSignals.ok.add(closeHandler);
+        dialog.valueChosen.add(closeHandler);
 
         // When cancelled, destroy the entity again
         dialog.buttonSignals.cancel.add(() => {

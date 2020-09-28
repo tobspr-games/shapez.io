@@ -298,6 +298,15 @@ export class ShapeDefinition extends BasicSerializableObject {
     }
 
     /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        this.internalGenerateShapeBuffer(null, context, size, size, 1);
+    }
+
+    /**
      * Generates this shape as a canvas
      * @param {number} size
      */

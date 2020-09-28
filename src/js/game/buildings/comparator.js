@@ -4,6 +4,7 @@ import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaComparatorBuilding extends MetaBuilding {
     constructor() {
@@ -18,8 +19,7 @@ export class MetaComparatorBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing);
     }
 
     /** @returns {"wires"} **/
