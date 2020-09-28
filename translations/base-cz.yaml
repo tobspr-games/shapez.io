@@ -274,10 +274,10 @@ ingame:
         lockBeltDirection: Zamknout směr pásu
         plannerSwitchSide: Otočit strany plánovače
         cutSelection: Vyjmout
-        copySelection: Kopířovat
+        copySelection: Kopírovat
         clearSelection: Zrušit výběr
         pipette: Kapátko
-        switchLayers: Switch layers
+        switchLayers: Změnit vrstvi
 
     # Everything related to placing buildings (I.e. as soon as you selected a building
     # from the toolbar)
@@ -813,11 +813,11 @@ keybindings:
         lockBeltDirection: Zamknout směr pásu
         switchDirectionLockSide: Otočit strany zámku plánovače
         pipette: Kapátko
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        advanced_processor: Color Inverter
-        energy_generator: Energy Generator
-        wire: Energy Wire
+        menuClose: Zavřít menu
+        switchLayers: Změnit vrstvi
+        advanced_processor: Měnič barev
+        energy_generator: Generátor energie
+        wire: Kabel
 
 about:
     title: O hře
