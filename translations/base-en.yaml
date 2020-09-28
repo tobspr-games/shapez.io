@@ -287,6 +287,10 @@ dialogs:
         title: Rename Savegame
         desc: You can rename your savegame here.
 
+    entityWarning:
+        title: Performance Warning
+        desc: You have placed a lot of buildings, this is just a friendly reminder that the game can not handle an endless count of buildings - So try to keep your factories compact!
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
