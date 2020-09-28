@@ -140,8 +140,6 @@ export class BackgroundResourcesLoader {
 
     internalPreloadCss(name) {
         return new Promise((resolve, reject) => {
-            console.log("TODO");
-
             const link = document.createElement("link");
 
             link.onload = resolve;

@@ -193,7 +193,7 @@ export const tutorialGoals = [
     // WIRES
     {
         shape: finalGameShape,
-        required: 50000,
+        required: 25000,
         reward: enumHubGoalRewards.reward_wires_filters_and_levers,
     },
 
