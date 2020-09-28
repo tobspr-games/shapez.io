@@ -266,9 +266,10 @@ export function findNiceIntegerValue(num) {
  * Formats a big number
  * @param {number} num
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
+ * @param {number=} number of significant figures to include (for values >= 1000)
  * @returns {string}
  */
-export function formatBigNumber(num, separator = T.global.decimalSeparator) {
+export function formatBigNumber(num, separator = T.global.decimalSeparator, precision = 3) {
     const sign = num < 0 ? "-" : "";
     num = Math.abs(num);
 
@@ -286,23 +287,21 @@ export function formatBigNumber(num, separator = T.global.decimalSeparator) {
 
     if (num < 1000) {
         return sign + "" + num;
-    } else {
-        let leadingDigits = num;
-        let suffix = "";
-        for (let suffixIndex = 0; suffixIndex < bigNumberSuffixTranslationKeys.length; ++suffixIndex) {
-            leadingDigits = leadingDigits / 1000;
-            suffix = T.global.suffix[bigNumberSuffixTranslationKeys[suffixIndex]];
-            if (leadingDigits < 1000) {
-                break;
-            }
-        }
-        const leadingDigitsRounded = round1Digit(leadingDigits);
-        const leadingDigitsNoTrailingDecimal = leadingDigitsRounded
-            .toString()
-            .replace(".0", "")
-            .replace(".", separator);
-        return sign + leadingDigitsNoTrailingDecimal + suffix;
     }
+    let leadingDigits = num;
+    let suffixIndex = 0;
+    for (; suffixIndex < bigNumberSuffixTranslationKeys.length; ++suffixIndex) {
+        leadingDigits = leadingDigits / 1000;
+        if (leadingDigits < 1000) {
+            break;
+        }
+    }
+    const suffix = T.global.suffix[bigNumberSuffixTranslationKeys[suffixIndex]];
+    const leadingDigitsRounded = Number(leadingDigits.toPrecision(precision));
+    const leadingDigitsNoTrailingDecimal = leadingDigitsRounded
+        .toString()
+        .replace(".", separator);
+    return sign + leadingDigitsNoTrailingDecimal + suffix;
 }
 
 /**
