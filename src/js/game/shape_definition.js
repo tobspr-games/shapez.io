@@ -302,7 +302,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @param {CanvasRenderingContext2D} context
      * @param {number} size
      */
-    drawRaw(context, size) {
+    drawFullSizeOnCanvas(context, size) {
         this.internalGenerateShapeBuffer(null, context, size, size, 1);
     }
 

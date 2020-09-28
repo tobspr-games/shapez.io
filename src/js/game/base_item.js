@@ -56,7 +56,7 @@ export class BaseItem extends BasicSerializableObject {
      * @param {CanvasRenderingContext2D} context
      * @param {number} size
      */
-    drawRaw(context, size) {
+    drawFullSizeOnCanvas(context, size) {
         abstract;
     }
 

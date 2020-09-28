@@ -52,7 +52,7 @@ export class ColorItem extends BaseItem {
      * @param {CanvasRenderingContext2D} context
      * @param {number} size
      */
-    drawRaw(context, size) {
+    drawFullSizeOnCanvas(context, size) {
         if (!this.cachedSprite) {
             this.cachedSprite = Loader.getSprite("sprites/colors/" + this.color + ".png");
         }

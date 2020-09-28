@@ -197,7 +197,7 @@ export class FormElementItemChooser extends FormElement {
             canvas.width = 128;
             canvas.height = 128;
             const context = canvas.getContext("2d");
-            item.drawRaw(context, 128);
+            item.drawFullSizeOnCanvas(context, 128);
             this.element.appendChild(canvas);
 
             const detector = new ClickDetector(canvas, {});

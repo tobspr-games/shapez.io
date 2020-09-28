@@ -55,8 +55,8 @@ export class ShapeItem extends BaseItem {
      * @param {CanvasRenderingContext2D} context
      * @param {number} size
      */
-    drawRaw(context, size) {
-        this.definition.drawRaw(context, size);
+    drawFullSizeOnCanvas(context, size) {
+        this.definition.drawFullSizeOnCanvas(context, size);
     }
 
     /**

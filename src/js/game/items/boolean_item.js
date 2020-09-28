@@ -62,7 +62,7 @@ export class BooleanItem extends BaseItem {
      * @param {CanvasRenderingContext2D} context
      * @param {number} size
      */
-    drawRaw(context, size) {
+    drawFullSizeOnCanvas(context, size) {
         let sprite;
         if (this.value) {
             sprite = Loader.getSprite("sprites/wires/boolean_true.png");
