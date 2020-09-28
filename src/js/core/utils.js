@@ -298,9 +298,7 @@ export function formatBigNumber(num, separator = T.global.decimalSeparator, prec
     }
     const suffix = T.global.suffix[bigNumberSuffixTranslationKeys[suffixIndex]];
     const leadingDigitsRounded = Number(leadingDigits.toPrecision(precision));
-    const leadingDigitsNoTrailingDecimal = leadingDigitsRounded
-        .toString()
-        .replace(".", separator);
+    const leadingDigitsNoTrailingDecimal = leadingDigitsRounded.toString().replace(".", separator);
     return sign + leadingDigitsNoTrailingDecimal + suffix;
 }
 
