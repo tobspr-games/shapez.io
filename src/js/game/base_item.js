@@ -52,6 +52,15 @@ export class BaseItem extends BasicSerializableObject {
     }
 
     /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawRaw(context, size) {
+        abstract;
+    }
+
+    /**
      * Draws the item at the given position
      * @param {number} x
      * @param {number} y

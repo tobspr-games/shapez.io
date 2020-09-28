@@ -56,6 +56,21 @@ export class BooleanItem extends BaseItem {
         }
         sprite.drawCachedCentered(parameters, x, y, diameter);
     }
+
+    /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawRaw(context, size) {
+        let sprite;
+        if (this.value) {
+            sprite = Loader.getSprite("sprites/wires/boolean_true.png");
+        } else {
+            sprite = Loader.getSprite("sprites/wires/boolean_false.png");
+        }
+        sprite.drawCentered(context, size / 2, size / 2, size);
+    }
 }
 
 export const BOOL_FALSE_SINGLETON = new BooleanItem(0);

@@ -268,7 +268,13 @@ dialogs:
     createMarker:
         title: New Marker
         titleEdit: Edit Marker
-        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <a href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short key</strong> of a shape (Which you can generate <link>here</link>)
+
+    editSignal:
+        title: Set Signal
+        descItems: >-
+            Choose a pre-defined item:
+        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you can generate <link>here</link>)
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!

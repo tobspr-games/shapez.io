@@ -670,3 +670,14 @@ export function safeModulo(n, m) {
 export function smoothPulse(time) {
     return Math.sin(time * 4) * 0.5 + 0.5;
 }
+
+/**
+ * Fills in a <link> tag
+ * @param {string} translation
+ * @param {string} link
+ */
+export function fillInLinkIntoTranslation(translation, link) {
+    return translation
+        .replace("<link>", "<a href='" + link + "' target='_blank'>")
+        .replace("</link>", "</a>");
+}

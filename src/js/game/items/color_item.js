@@ -48,6 +48,18 @@ export class ColorItem extends BaseItem {
     }
 
     /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawRaw(context, size) {
+        if (!this.cachedSprite) {
+            this.cachedSprite = Loader.getSprite("sprites/colors/" + this.color + ".png");
+        }
+        this.cachedSprite.drawCentered(context, size / 2, size / 2, size);
+    }
+
+    /**
      * @param {number} x
      * @param {number} y
      * @param {number} diameter

@@ -51,6 +51,15 @@ export class ShapeItem extends BaseItem {
     }
 
     /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawRaw(context, size) {
+        this.definition.drawRaw(context, size);
+    }
+
+    /**
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
