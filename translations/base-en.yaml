@@ -1070,7 +1070,8 @@ keybindings:
         lockBeltDirection: Enable belt planner
         switchDirectionLockSide: >-
             Planner: Switch side
-
+        copyWireValue: >-
+            Wires: Copy value below cursor
         massSelectStart: Hold and drag to start
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area

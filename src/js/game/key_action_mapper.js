@@ -82,6 +82,8 @@ export const KEYMAPPINGS = {
         cycleBuildingVariants: { keyCode: key("T") },
         cycleBuildings: { keyCode: 9 }, // TAB
         switchDirectionLockSide: { keyCode: key("R") },
+
+        copyWireValue: { keyCode: key("Z") },
     },
 
     massSelect: {

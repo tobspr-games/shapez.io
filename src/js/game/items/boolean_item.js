@@ -27,6 +27,13 @@ export class BooleanItem extends BaseItem {
     }
 
     /**
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        return this.value ? "1" : "0";
+    }
+
+    /**
      * @param {number} value
      */
     constructor(value) {

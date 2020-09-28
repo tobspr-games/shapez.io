@@ -28,6 +28,13 @@ export class ShapeItem extends BaseItem {
     }
 
     /**
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        return this.definition.getHash();
+    }
+
+    /**
      * @param {BaseItem} other
      */
     equalsImpl(other) {

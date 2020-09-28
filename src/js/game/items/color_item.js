@@ -29,6 +29,13 @@ export class ColorItem extends BaseItem {
     }
 
     /**
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        return this.color;
+    }
+
+    /**
      * @param {BaseItem} other
      */
     equalsImpl(other) {
