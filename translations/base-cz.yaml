@@ -334,15 +334,15 @@ ingame:
         cyan: Tyrkysová
         white: Bílá
         uncolored: Bez barvy
-        black: Black
+        black: Černá
     shapeViewer:
         title: Vrstvy
         empty: Prázdné
         copyKey: Copy Key
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        one_miner: 1 Extraktor
+        n_miners: <amount> Extraktorů
+        limited_items: Limit je <max_throughput>
 shopUpgrades:
     belt:
         name: Pásy, distribuce & tunely
@@ -400,8 +400,8 @@ buildings:
             name: Rotor (opačný)
             description: Otáčí tvary o 90 stupňů proti směru hodinových ručiček
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Rotor (180)
+            description: Otáčí tvary o 180 stupňů.
     stacker:
         default:
             name: Kombinátor
@@ -433,114 +433,101 @@ buildings:
             name: Kabel
             description: Dovoluje přenos energie.
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: Kabel
+            description: Dovoluje přenos energie.
     balancer:
         default:
-            name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: Vyvažovač
+            description: Multifunkční - Rozděluje vstupy do výstupy.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Spojka (kompaktní)
+            description: Spojí dva pásy do jednoho.
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Spojka (kompaktní)
+            description: Spojí dva pásy do jednoho.
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Rozdělovač (kompaktní)
+            description: Rozdělí jeden pás na dva.
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Rozdělovač (kompaktní)
+            description: Rozdělí jeden pás na dva.
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: Sklad
+            description: Skladuje věci navíc až do naplnění kapacity. Může být použit na skladová ní surovin navíc.
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: Křížení kabelů
+            description: Umožňuje křížení dvou kabeů bez jejich spojení.
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: Konstantní signál
+            description: Vydává konstantní signál, který může mít tvar, barvu nebo logickou hodnotu (1 / 0).
     lever:
         default:
-            name: Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            name: Přepínač
+            description: Lze přepínat, aby vydával signál (1/0) na vrstvě vodičů, pomocí kterého lze například 
+                ovládat filtr tvarů a barev.
     logic_gate:
         default:
             name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
-                color or boolean "1")
+            description: Vysílá signál "1" pokud oba vstupy vysílají signál.
         not:
             name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            description: Vysílá signál "1" pokud oba vstupy nevysílají signál.
         xor:
             name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            description:  Vysílá signál "1" pokud jeden vstup vysílá signál, ale druhý vstup nevysílá signál.
         or:
             name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
-                shape, color or boolean "1")
+            description: Vysílá signál "1" pokud jeden vstup vysílá signál.
     transistor:
         default:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: Tranzistor
+            description: Přeposílá spodní vstup, pokud boční vstup vysílá signál.
         mirrored:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: Tranzistor
+            description: Přeposílá spodní vstup, pokud boční vstup vysílá signál.
     filter:
         default:
-            name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            name: Filtr
+            description: Připojte signál k třídění tvarů a barev. 
     display:
         default:
             name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            description: Připojte signál a zobrazte jej na displeji - může to být tvar nebo
+                barva.
     reader:
         default:
-            name: Belt Reader
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            name: Čtečka pásů
+            description: Umožňuje měřit průměrnou propustnost pásu. Výstup čte poslední
+                 položku ve vrstvě kabelů.
     analyzer:
         default:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            name: Analyzátor tvarů
+            description: Analyzuje pravou horní část nejnižší vrstvy tvaru  a vrací tvar a barvu.
     comparator:
         default:
-            name: Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            name: Porovnávač
+            description: Vrátí signál „1“, pokud jsou oba signály přesně stejné. Může srovnávat
+                tvary, předměty a signály.
     virtual_processor:
         default:
-            name: Virtual Cutter
-            description: Virtually cuts the shape into two halves.
+            name: Virtuální pila
+            description: Virtuálně rozřízne tvar svisle na dvě části.
         rotater:
-            name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            name: Virtuální rotor
+            description: Virtuálně Otáčí tvary o 90 stupňů po směru hodinových ručiček.
         unstacker:
-            name: Virtual Unstacker
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            name: Virtuální extrahátor
+            description: Virtuálně extrahuje nejvyšší vrstvu do pravého výstupu a zbývající do levé.
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: Virtuální kombinátor
+            description: Virtuálně Spojí tvary dohromady. Pokud nemohou být spojeny, pravý tvar je
+                položen na levý.
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: Virtual barvič
+            description: Virtuálně obarví celý tvar v levém vstupu barvou z pravého vstupu.
 storyRewards:
     reward_cutter_and_trash:
         title: Řezání tvarů
