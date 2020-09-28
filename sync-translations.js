@@ -77,5 +77,4 @@ for (let i = 0; i < files.length; ++i) {
         simpleKeys: true,
     });
     fs.writeFileSync(filePath, stringified, "utf-8");
-    break;
 }
