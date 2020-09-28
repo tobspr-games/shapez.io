@@ -5,7 +5,7 @@ import { DrawParameters } from "../../../core/draw_parameters";
 import { Entity } from "../../entity";
 import { Loader } from "../../../core/loader";
 import { globalConfig } from "../../../core/config";
-import { makeDiv, formatBigNumber, formatBigNumberFull } from "../../../core/utils";
+import { makeDiv, formatBigNumber, formatBigNumberFull, dirInterval } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { createLogger } from "../../../core/logging";
 import { enumMouseButton } from "../../camera";
@@ -23,7 +23,12 @@ export class HUDMassSelector extends BaseHUDPart {
     initialize() {
         this.currentSelectionStartWorld = null;
         this.currentSelectionEnd = null;
-        this.selectedUids = new Set();
+
+        /** @type {Set<Entity>} */
+        this.selectedEntities = new Set();
+
+        /** @type {number} */
+        this.selectedUids = 42;
 
         this.root.signals.entityQueuedForDestroy.add(this.onEntityDestroyed, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.clearSelection, this);
@@ -43,6 +48,20 @@ export class HUDMassSelector extends BaseHUDPart {
         this.root.signals.editModeChanged.add(this.clearSelection, this);
     }
 
+    clear() {
+        this.selectedEntities.clear();
+    }
+
+    // getUidArray() {
+    //     if (this.selectedEntities.size <= 0) return [];
+    //     const uids = [];
+    //     const arr = [...this.selectedEntities.values()];
+    //     for (let i = arr.length - 1; i >= 0; --i) {
+    //         uids.push(arr[i].uid);
+    //     }
+    //     return uids;
+    // }
+
     /**
      * Handles the destroy callback and makes sure we clean our list
      * @param {Entity} entity
@@ -51,7 +70,7 @@ export class HUDMassSelector extends BaseHUDPart {
         if (this.root.bulkOperationRunning) {
             return;
         }
-        this.selectedUids.delete(entity.uid);
+        this.selectedEntities.delete(entity);
     }
 
     /**
@@ -59,8 +78,8 @@ export class HUDMassSelector extends BaseHUDPart {
      */
     onBack() {
         // Clear entities on escape
-        if (this.selectedUids.size > 0) {
-            this.selectedUids = new Set();
+        if (this.selectedEntities.size > 0) {
+            this.clear();
             return STOP_PROPAGATION;
         }
     }
@@ -69,19 +88,19 @@ export class HUDMassSelector extends BaseHUDPart {
      * Clears the entire selection
      */
     clearSelection() {
-        this.selectedUids = new Set();
+        this.clear();
     }
 
     confirmDelete() {
         if (
             !this.root.app.settings.getAllSettings().disableCutDeleteWarnings &&
-            this.selectedUids.size > 100
+            this.selectedEntities.size > 100
         ) {
             const { ok } = this.root.hud.parts.dialogs.showWarning(
                 T.dialogs.massDeleteConfirm.title,
                 T.dialogs.massDeleteConfirm.desc.replace(
                     "<count>",
-                    "" + formatBigNumberFull(this.selectedUids.size)
+                    "" + formatBigNumberFull(this.selectedEntities.size)
                 ),
                 ["cancel:good:escape", "ok:bad:enter"]
             );
@@ -92,35 +111,26 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     doDelete() {
-        const entityUids = Array.from(this.selectedUids);
-
         // Build mapping from uid to entity
         /**
          * @type {Map<number, Entity>}
          */
-        const mapUidToEntity = this.root.entityMgr.getFrozenUidSearchMap();
+        //const mapUidToEntity = this.root.entityMgr.getFrozenUidSearchMap();
 
         this.root.logic.performBulkOperation(() => {
-            for (let i = 0; i < entityUids.length; ++i) {
-                const uid = entityUids[i];
-                const entity = mapUidToEntity.get(uid);
-                if (!entity) {
-                    logger.error("Entity not found by uid:", uid);
-                    continue;
-                }
-
-                if (!this.root.logic.tryDeleteBuilding(entity)) {
+            const arr = [...this.selectedEntities.values()];
+            for (let i = arr.length - 1; i >= 0; --i) {
+                if (!this.root.logic.tryDeleteBuilding(arr[i])) {
                     logger.error("Error in mass delete, could not remove building");
                 }
             }
         });
 
-        // Clear uids later
-        this.selectedUids = new Set();
+        this.clear();
     }
 
     startCopy() {
-        if (this.selectedUids.size > 0) {
+        if (this.selectedEntities.size > 0) {
             if (!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
                 this.root.hud.parts.dialogs.showInfo(
                     T.dialogs.blueprintsNotUnlocked.title,
@@ -128,8 +138,10 @@ export class HUDMassSelector extends BaseHUDPart {
                 );
                 return;
             }
-            this.root.hud.signals.buildingsSelectedForCopy.dispatch(Array.from(this.selectedUids));
-            this.selectedUids = new Set();
+            const uids = [];
+
+            this.root.hud.signals.buildingsSelectedForCopy.dispatch([...this.selectedEntities.values()]);
+            this.selectedEntities.clear();
             this.root.soundProxy.playUiClick();
         } else {
             this.root.soundProxy.playUiError();
@@ -144,13 +156,13 @@ export class HUDMassSelector extends BaseHUDPart {
             );
         } else if (
             !this.root.app.settings.getAllSettings().disableCutDeleteWarnings &&
-            this.selectedUids.size > 100
+            this.selectedEntities.size > 100
         ) {
             const { ok } = this.root.hud.parts.dialogs.showWarning(
                 T.dialogs.massCutConfirm.title,
                 T.dialogs.massCutConfirm.desc.replace(
                     "<count>",
-                    "" + formatBigNumberFull(this.selectedUids.size)
+                    "" + formatBigNumberFull(this.selectedEntities.size)
                 ),
                 ["cancel:good:escape", "ok:bad:enter"]
             );
@@ -161,26 +173,26 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     doCut() {
-        if (this.selectedUids.size > 0) {
-            const entityUids = Array.from(this.selectedUids);
-
-            const cutAction = () => {
+        if (this.selectedEntities.size > 0) {
+            const cutAction = argArray => {
+                const arr = argArray || [...this.selectedEntities.values()];
                 // copy code relies on entities still existing, so must copy before deleting.
-                this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
 
-                for (let i = 0; i < entityUids.length; ++i) {
-                    const uid = entityUids[i];
-                    const entity = this.root.entityMgr.findByUid(uid);
+                this.root.hud.signals.buildingsSelectedForCopy.dispatch(arr);
+
+                for (let i = arr.length - 1; i >= 0; --i) {
+                    const entity = arr[i];
                     if (!this.root.logic.tryDeleteBuilding(entity)) {
                         logger.error("Error in mass cut, could not remove building");
-                        this.selectedUids.delete(uid);
+                        this.selectedEntities.delete(entity);
                     }
                 }
             };
 
-            const blueprint = Blueprint.fromUids(this.root, entityUids);
+            const arr = [...this.selectedEntities.values()];
+            const blueprint = Blueprint.fromEntities(arr);
             if (blueprint.canAfford(this.root)) {
-                cutAction();
+                cutAction(arr);
             } else {
                 const { cancel, ok } = this.root.hud.parts.dialogs.showWarning(
                     T.dialogs.massCutInsufficientConfirm.title,
@@ -212,7 +224,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
         if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).pressed) {
             // Start new selection
-            this.selectedUids = new Set();
+            this.clear();
         }
 
         this.currentSelectionStartWorld = this.root.camera.screenToWorld(pos.copy());
@@ -245,7 +257,7 @@ export class HUDMassSelector extends BaseHUDPart {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     const contents = this.root.map.getLayerContentXY(x, y, this.root.currentLayer);
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
-                        this.selectedUids.add(contents.uid);
+                        this.selectedEntities.add(contents);
                     }
                 }
             }
@@ -319,18 +331,22 @@ export class HUDMassSelector extends BaseHUDPart {
         }
 
         parameters.context.fillStyle = THEME.map.selectionOverlay;
-        this.selectedUids.forEach(uid => {
-            const entity = this.root.entityMgr.findByUid(uid);
-            const staticComp = entity.components.StaticMapEntity;
-            const bounds = staticComp.getTileSpaceBounds();
-            parameters.context.beginRoundedRect(
-                bounds.x * globalConfig.tileSize + boundsBorder,
-                bounds.y * globalConfig.tileSize + boundsBorder,
-                bounds.w * globalConfig.tileSize - 2 * boundsBorder,
-                bounds.h * globalConfig.tileSize - 2 * boundsBorder,
-                2
-            );
-            parameters.context.fill();
-        });
+
+        if (this.selectedEntities.size > 0) {
+            const arr = [...this.selectedEntities.values()];
+            for (let i = arr.length - 1; i >= 0; --i) {
+                const entity = arr[i];
+                const staticComp = entity.components.StaticMapEntity;
+                const bounds = staticComp.getTileSpaceBounds();
+                parameters.context.beginRoundedRect(
+                    bounds.x * globalConfig.tileSize + boundsBorder,
+                    bounds.y * globalConfig.tileSize + boundsBorder,
+                    bounds.w * globalConfig.tileSize - 2 * boundsBorder,
+                    bounds.h * globalConfig.tileSize - 2 * boundsBorder,
+                    2
+                );
+                parameters.context.fill();
+            }
+        }
     }
 }

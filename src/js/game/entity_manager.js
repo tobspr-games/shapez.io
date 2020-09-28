@@ -95,7 +95,7 @@ export class EntityManager extends BasicSerializableObject {
         }
 
         // Give each entity a unique id
-        entity.uid = uid ? uid : this.generateUid();
+        entity.uid = uid || this.generateUid();
 
         this.entities.add(entity);
         this.entitiesByUid.set(uid, entity);

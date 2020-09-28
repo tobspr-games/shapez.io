@@ -44,6 +44,7 @@ import { HUDWireInfo } from "./parts/wire_info";
 import { HUDLeverToggle } from "./parts/lever_toggle";
 import { HUDLayerPreview } from "./parts/layer_preview";
 import { HUDMinerHighlight } from "./parts/miner_highlight";
+import { Entity } from "../entity";
 
 export class GameHUD {
     /**
@@ -99,7 +100,7 @@ export class GameHUD {
             shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
             shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
             notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
-            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
+            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<Entity>]>} */ (new Signal()),
             pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
             viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
         };
