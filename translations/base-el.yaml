@@ -438,7 +438,8 @@ buildings:
             name: &belt Μεταφορικός Ιμάντας
             description: Μεταφέρει είδη. Κράτα πατημένο και σύρε για να τοποθετήσεις πολλαπλούς ιμάντες.
 
-    miner: # Internal name for the Extractor
+    # Internal name for the Extractor
+    miner:
         default:
             name: &miner Αποσπαστής
             description: Τοποθέτησε πάνω από ένα σχήμα ή χρώμα για να το αποσπάσεις.
@@ -447,7 +448,8 @@ buildings:
             name: Αποσπαστής (Αλυσιδωτός)
             description: Τοποθέτησε πάνω από ένα σχήμα ή χρώμα για να το αποσπάσεις. Μπορούν να συνδεθούν σε σειρά.
 
-    underground_belt: # Internal name for the Tunnel
+    # Internal name for the Tunnel
+    underground_belt:
         default:
             name: &underground_belt Σήραγγα
             description: Μεταφέρει είδη κάτω από κτήρια και μεταφορικούς ιμάντες.
@@ -456,7 +458,8 @@ buildings:
             name: Σήραγγα Βαθμίδα II
             description: Μεταφέρει είδη κάτω από κτήρια και μεταφορικούς ιμάντες.
 
-    splitter: # Internal name for the Balancer
+    # Internal name for the Balancer
+    splitter:
         default:
             name: &splitter Ισορροπηστής
             description: Πολυλειτουργικό - κατανέμει ομοιόμορφα είδη από όλες τις εισόδους σε όλες τις εξόδους.
