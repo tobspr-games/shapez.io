@@ -1047,8 +1047,7 @@ keybindings:
         wire: *wire
         constant_signal: *constant_signal
         logic_gate: Logic Gate
-        lever: Switch (regular)
-        lever_wires: Switch (wires)
+        lever: *lever
         filter: *filter
         wire_tunnel: *wire_tunnel
         display: *display
