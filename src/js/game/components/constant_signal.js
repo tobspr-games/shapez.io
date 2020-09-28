@@ -31,5 +31,6 @@ export class ConstantSignalComponent extends Component {
     constructor({ signal = null }) {
         super();
         this.signal = signal;
+		this.clicked = false;
     }
 }
