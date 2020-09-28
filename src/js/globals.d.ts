@@ -19,9 +19,6 @@ declare const G_BUILD_VERSION: string;
 declare const G_ALL_UI_IMAGES: Array<string>;
 declare const G_IS_RELEASE: boolean;
 
-// Node require
-declare function require(...args): any;
-
 // Polyfills
 declare interface String {
     replaceAll(search: string, replacement: string): string;
