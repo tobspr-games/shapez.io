@@ -19,6 +19,7 @@ import { getCodeFromBuildingData } from "../../game/building_codes.js";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity.js";
 import { Entity } from "../../game/entity.js";
 import { defaultBuildingVariant, MetaBuilding } from "../../game/meta_building.js";
+import { finalGameShape } from "../../game/upgrades.js";
 import { SavegameInterface_V1005 } from "./1005.js";
 
 const schema = require("./1006.json");
@@ -151,10 +152,25 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             stored[shapeKey] = rebalance(stored[shapeKey]);
         }
 
+        stored[finalGameShape] = 0;
+
         // Reduce goals
         if (dump.hubGoals.currentGoal) {
             dump.hubGoals.currentGoal.required = rebalance(dump.hubGoals.currentGoal.required);
         }
+
+        let level = Math.min(19, dump.hubGoals.level);
+
+        const levelMapping = {
+            14: 15,
+            15: 16,
+            16: 17,
+            17: 18,
+            18: 19,
+            19: 20,
+        };
+
+        dump.hubGoals.level = levelMapping[level] || level;
 
         // Update entities
         const entities = dump.entities;
