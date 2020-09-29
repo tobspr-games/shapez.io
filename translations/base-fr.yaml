@@ -2,21 +2,18 @@ steamPage:
     shortText: shapez.io est un jeu qui consiste à construire des usines pour
         automatiser la création et la combinaison de formes de plus en plus
         complexes sur une carte infinie.
-    discordLinkShort: Official Discord
+    discordLinkShort: Discord officiel
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        You like automation games? Then you are in the right place!
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
-
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
 
         Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
     title_advantages: Standalone Advantages
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
+        - <b>12 New Levels</b> for a total of 26 levels
         - <b>18 New Buildings</b> for a fully automated factory!
         - <b>20 Upgrade Tiers</b> for many hours of fun!
         - <b>Wires Update</b> for an entirely new dimension!
@@ -26,7 +23,7 @@ steamPage:
         - Support me! ❤️
     title_future: Planned Content
     planned:
-        - Blueprint Library (Standalone Exclusive)
+        - Blueprint Library
         - Steam Achievements
         - Puzzle Mode
         - Minimap
@@ -34,6 +31,12 @@ steamPage:
         - Sandbox mode
         - ... and a lot more!
     title_open_source: This game is open source!
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
     title_links: Links
     links:
         discord: Official Discord
@@ -41,16 +44,10 @@ steamPage:
         subreddit: Subreddit
         source_code: Source code (GitHub)
         translate: Help translate
-    text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
-
-        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Chargement
     error: Erreur
-    thousandsDivider: ","
+    thousandsDivider: " "
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -60,17 +57,17 @@ global:
     infinite: inf
     time:
         oneSecondAgo: il y a une seconde
-        xSecondsAgo: il y a <x> secondes
+        xSecondsAgo: il y a <x> secondes
         oneMinuteAgo: il y a une minute
-        xMinutesAgo: il y a <x> minutes
+        xMinutesAgo: il y a <x> minutes
         oneHourAgo: il y a une heure
-        xHoursAgo: il y a <x> heures
+        xHoursAgo: il y a <x> heures
         oneDayAgo: il y a un jour
-        xDaysAgo: il y a <x> jours
-        secondsShort: <seconds> s
-        minutesAndSecondsShort: <minutes> m <seconds> s
-        hoursAndMinutesShort: <hours> h <minutes> m
-        xMinutes: <x> minutes
+        xDaysAgo: il y a <x> jours
+        secondsShort: <seconds> s
+        minutesAndSecondsShort: <minutes> m <seconds> s
+        hoursAndMinutesShort: <hours> h <minutes> m
+        xMinutes: <x> minutes
     keys:
         tab: TAB
         control: CTRL
@@ -95,7 +92,7 @@ mainMenu:
     browserWarning: Désolé, ce jeu sera lent sur votre navigateur web !
         Procurez-vous la version complète ou téléchargez Chrome pour une
         meilleure expérience.
-    savegameLevel: Niveau <x>
+    savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
     savegameUnnamed: Sans titre
 dialogs:
@@ -113,20 +110,20 @@ dialogs:
         showKeybindings: Montrer les raccourcis
     importSavegameError:
         title: Erreur d’importation
-        text: "Impossible d’importer votre sauvegarde :"
+        text: "Impossible d’importer votre sauvegarde:"
     importSavegameSuccess:
         title: Sauvegarde importée
         text: Votre sauvegarde a été importée avec succès.
     gameLoadFailure:
         title: La sauvegarde est corrompue
-        text: "Impossible de charger votre sauvegarde :"
+        text: "Impossible de charger votre sauvegarde:"
     confirmSavegameDelete:
         title: Confirmez la suppression
         text: Êtes-vous sûr de vouloir supprimer cette partie ?<br><br> “<savegameName>”
             au niveau <savegameLevel><br><br> Ce sera définitif !
     savegameDeletionError:
         title: Impossible de supprimer
-        text: "Impossible de supprimer votre sauvegarde :"
+        text: "Impossible de supprimer votre sauvegarde:"
     restartRequired:
         title: Redémarrage requis
         text: Vous devez relancer le jeu pour appliquer les modifications.
@@ -151,7 +148,7 @@ dialogs:
             version complète !
     updateSummary:
         title: Nouvelle mise à jour !
-        desc: "Voici les changements depuis votre dernière session :"
+        desc: "Voici les changements depuis votre dernière session :"
     upgradesIntroduction:
         title: Débloquer les améliorations
         desc: Toutes les formes que vous produisez peuvent être utilisées pour débloquer
@@ -172,17 +169,17 @@ dialogs:
             la couper ?
     blueprintsNotUnlocked:
         title: Pas encore débloqué
-        desc: Les patrons n’ont pas encore été débloqués ! Terminez le niveau 12 pour y
+        desc: Les patrons n’ont pas encore été débloqués ! Terminez le niveau 12 pour y
             avoir accès.
     keybindingsIntroduction:
         title: Raccourcis utiles
         desc: "Le jeu a de nombreux raccourcis facilitant la construction de grandes
             usines. En voici quelques-uns, n’hésitez pas à aller
             <strong>découvrir les raccourcis</strong> !<br><br> <code
-            class='keybinding'>CTRL</code> + glisser : Sélectionne une zone à
-            copier / effacer.<br> <code class='keybinding'>MAJ</code> : Laissez
+            class='keybinding'>CTRL</code> + glisser : Sélectionne une zone à
+            copier / effacer.<br> <code class='keybinding'>MAJ</code> : Laissez
             appuyé pour placer plusieurs fois le même bâtiment.<br> <code
-            class='keybinding'>ALT</code> : Inverse l’orientation des convoyeurs
+            class='keybinding'>ALT</code> : Inverse l’orientation des convoyeurs
             placés.<br>"
     createMarker:
         title: Nouvelle balise
@@ -190,6 +187,11 @@ dialogs:
         desc: Donnez-lui un nom, vous pouvez aussi inclure <strong>le raccourci</strong>
             d’une forme (que vous pouvez générer <a
             href="https://viewer.shapez.io" target="_blank">ici</a>).
+    editSignal:
+        title: Définir le signal
+        descItems: "Choisissez un objet prédéfini:"
+        descShortKey: ... ou entrez le <strong>symbole</strong> d'une forme (que vous
+            pouvez générer <link>ici</link>)
     markerDemoLimit:
         desc: Vous ne pouvez créer que deux balises dans la démo. Achetez la version
             complète pour en placer autant que vous voulez !
@@ -201,16 +203,11 @@ dialogs:
     renameSavegame:
         title: Renommer la sauvegarde
         desc: Vous pouvez renommer la sauvegarde ici.
-    editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: Avertissement de performance
+        desc: Vous avez placé beaucoup de bâtiments, ceci est juste un rappel amical que
+            le jeu ne peut pas gérer un nombre infini de bâtiments, alors
+            essayez de gardez vos usines compactes !
 ingame:
     keybindingsOverlay:
         moveMap: Déplacer
@@ -244,17 +241,17 @@ ingame:
         uncolored: Sans couleur
     buildingPlacement:
         cycleBuildingVariants: Appuyez sur <key> pour alterner entre les variantes.
-        hotkeyLabel: "Raccourci : <key>"
+        hotkeyLabel: "Raccourci: <key>"
         infoTexts:
             speed: Vitesse
             range: Portée
             storage: Espace de stockage
-            oneItemPerSecond: 1 forme ⁄ s
-            itemsPerSecond: <x> formes ⁄ s
+            oneItemPerSecond: 1 forme ⁄ s
+            itemsPerSecond: <x> formes ⁄ s
             itemsPerSecondDouble: (×2)
-            tiles: <x> cases
+            tiles: <x> cases
     levelCompleteNotification:
-        levelTitle: Niveau <level>
+        levelTitle: Niveau <level>
         completed: Terminé
         unlockText: <reward> débloqué !
         buttonNextLevel: Niveau suivant
@@ -265,7 +262,7 @@ ingame:
     shop:
         title: Améliorations
         buttonUnlock: Améliorer
-        tier: Niveau <x>
+        tier: Niveau <x>
         tierLabels:
             - I
             - II
@@ -303,9 +300,9 @@ ingame:
                 description: Affiche les formes qui ont été livrées dans votre bâtiment central.
         noShapesProduced: Aucune forme produite pour le moment.
         shapesDisplayUnits:
-            second: <shapes> ⁄ s
-            minute: <shapes> ⁄ m
-            hour: <shapes> ⁄ h
+            second: <shapes> ⁄ s
+            minute: <shapes> ⁄ m
+            hour: <shapes> ⁄ h
     settingsMenu:
         playtime: Temps de jeu
         buildingsPlaced: Bâtiments
@@ -331,18 +328,18 @@ ingame:
     shapeViewer:
         title: Calques
         empty: Vide
-        copyKey: Copier le raccourci de la forme
+        copyKey: Copier le symbole
     interactiveTutorial:
         title: Tutoriel
         hints:
             1_1_extractor: Placez un <strong>extracteur</strong> sur une <strong>forme en
                 cercle</strong> pour l’extraire !
             1_2_conveyor: "Connectez l’extracteur avec un <strong>convoyeur</strong> vers
-                votre centre !<br><br>Astuce : <strong>Cliquez et faites
+                votre centre !<br><br>Astuce : <strong>Cliquez et faites
                 glisser</strong> le convoyeur avec votre souris !"
             1_3_expand: "Ceci n’est <strong>PAS</strong> un jeu incrémental et inactif !
                 Construisez plus d’extracteurs et de convoyeurs pour atteindre
-                plus vite votre but.<br><br>Astuce : Gardez <strong>MAJ</strong>
+                plus vite votre but.<br><br>Astuce : Gardez <strong>MAJ</strong>
                 enfoncé pour placer plusieurs extracteurs, et utilisez
                 <strong>R</strong> pour les faire pivoter."
     connectedMiners:
@@ -350,37 +347,37 @@ ingame:
         n_miners: <amount> extracteurs
         limited_items: Limité à <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: Version de Démo
+        desc: Cliquez ici pour voir les avantages de la version Steam !
+        get_on_steam: Obtenir sur Steam
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Obtenir la version complète !
+        no_thanks: Non merci !
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 nouveaux niveaux
+                desc: Pour un total de 26 niveaux !
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 nouveaux bâtiments
+                desc: Automatisez entièrement votre usine !
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: Sauvegardes ∞
+                desc: Autant que votre cœur le désire !
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 niveaux d'amélioration
+                desc: Cette version de démonstration n'en a que 5 !
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: Balises ∞
+                desc: Ne vous perdez plus jamais dans votre usine !
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: Câblages
+                desc: Une toute nouvelle dimension !
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: Mode sombre
+                desc: Plus jamais mal aux yeux !
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: Me soutenir
+                desc: Je le développe pendant mon temps libre !
 shopUpgrades:
     belt:
         name: Convoyeurs, distributeurs et tunnels
@@ -399,7 +396,7 @@ buildings:
         deliver: Livrez
         toUnlock: pour débloquer
         levelShortcut: NV
-        endOfDemo: End of Demo
+        endOfDemo: Fin de la Démo
     belt:
         default:
             name: Convoyeur
@@ -453,13 +450,13 @@ buildings:
     rotater:
         default:
             name: Pivoteur
-            description: Fait pivoter une forme de 90 degrés vers la droite.
+            description: Fait pivoter une forme de 90 degrés vers la droite.
         ccw:
             name: Pivoteur inversé
-            description: Fait pivoter une forme de 90 degrés vers la gauche.
+            description: Fait pivoter une forme de 90 degrés vers la gauche.
         rotate180:
             name: Retourneur
-            description: Tourne une forme de 180 degrés.
+            description: Tourne une forme de 180 degrés.
     stacker:
         default:
             name: Combineur
@@ -592,32 +589,31 @@ buildings:
             description: Peint virtuellement la forme du bas avec la couleur de droite.
     item_producer:
         default:
-            name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            name: Générateur d'objet
+            description: Disponible en mode bac à sable uniquement, renvoie le signal du
+                calque de câblage sur le calque normal.
 storyRewards:
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: Vous venez de débloquer le <strong>découpeur</strong> — il coupe des
-            formes en deux <strong>de haut en bas</strong> quelle que soit son
+        desc: Vous venez de débloquer le <strong>découpeur</strong>. Il coupe des formes
+            en deux <strong>de haut en bas</strong> quelle que soit son
             orientation !<br><br>Assurez-vous de vous débarrasser des déchets,
-            sinon <strong>gare au blocage</strong> — À cet effet, je mets à
-            votre disposition la poubelle, qui détruit tout ce que vous y
-            mettez !
+            sinon <strong>gare au blocage</strong>. À cet effet, je mets à votre
+            disposition la poubelle, qui détruit tout ce que vous y mettez !
     reward_rotater:
         title: Rotation
-        desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de
-            90 degrés vers la droite.
+        desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
+            degrés vers la droite.
     reward_painter:
         title: Peintre
-        desc: "Le <strong>peintre</strong> a été débloqué — Extrayez des pigments de
+        desc: "Le <strong>peintre</strong> a été débloqué. Extrayez des pigments de
             couleur (comme vous le faites avec les formes) et combinez-les avec
-            une forme dans un peintre pour les colorier !<br><br>PS : Si vous
+            une forme dans un peintre pour les colorier !<br><br>PS : Si vous
             êtes daltonien, il y a un <strong>mode daltonien</strong>
             paramétrable dans les préférences !"
     reward_mixer:
         title: Mélangeur de couleurs
-        desc: Le <strong>mélangeur</strong> a été débloqué — Combinez deux couleurs en
+        desc: Le <strong>mélangeur</strong> a été débloqué. Combinez deux couleurs en
             utilisant <strong>la synthèse additive des couleurs</strong> avec ce
             bâtiment !
     reward_stacker:
@@ -629,17 +625,17 @@ storyRewards:
             <strong>placée au-dessus</strong> de la forme de gauche.
     reward_balancer:
         title: Répartiteur
-        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué — Il peut
+        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué. Il peut
             être utilisé pour construire de plus grandes usines en
             <strong>distribuant équitablement et rassemblant les formes</strong>
             entre plusieurs convoyeurs !<br><br>
     reward_tunnel:
         title: Tunnel
-        desc: Le <strong>tunnel</strong> a été débloqué — Vous pouvez maintenant faire
+        desc: Le <strong>tunnel</strong> a été débloqué. Vous pouvez maintenant faire
             passer des formes sous les convoyeurs et les bâtiments !
     reward_rotater_ccw:
         title: Pivoteur inversé
-        desc: Vous avez débloqué une variante du <strong>pivoteur</strong> — Elle permet
+        desc: Vous avez débloqué une variante du <strong>pivoteur</strong>. Elle permet
             de faire pivoter vers la gauche ! Pour le construire, sélectionnez
             le pivoteur et <strong>appuyez sur 'T' pour alterner entre les
             variantes</strong> !
@@ -647,7 +643,7 @@ storyRewards:
         title: Extracteur en série
         desc: "Vous avez débloqué <strong>l’extracteur en série</strong> ! Il permet de
             <strong>transférer ses ressources</strong> à d’autres extracteurs
-            pour augmenter le débit sortant !<br><br> Note : Il remplace
+            pour augmenter le débit sortant !<br><br> Note : Il remplace
             l’ancien extracteur dans votre barre d’outils."
     reward_underground_belt_tier_2:
         title: Tunnel niveau II
@@ -698,6 +694,21 @@ storyRewards:
         title: Retourneur
         desc: Vous venez de déverrouiller le <strong>retourneur</strong> ! Il vous
             permet de faire pivoter une forme de 180 degrés (Surprise ! :D)
+    reward_wires_painter_and_levers:
+        title: Câblages & Quadruple peintre
+        desc: "Vous venez de déverrouiller le <strong>calque de câblage</strong>: Il
+            s'agit d'un calque au-dessus du calque normal qui introduit beaucoup
+            de nouvelle mécanique de jeu !<br><br> Pour commencer, je vous ai
+            débloqué le <strong>quadruple peintre</strong>. Connectez les
+            emplacements à peindre sur le calque de câblage !<br><br> Pour
+            basculer sur le calque de câblage, appuyez sur <strong>E</strong>."
+    reward_filter:
+        title: Filtre d'objet
+        desc: Vous avez déverrouillé le <strong>filtre d'objet</strong> ! Il acheminera
+            les objets en haut ou à gauche selon qu'ils correspondent au signal
+            provenant de la couche de câblage ou non.<br><br> Vous pouvez
+            utiliser un signal booléen (1 / 0) pour l'activer ou le désactiver
+            complètement.
     reward_display:
         title: Afficheur
         desc: Vous avez déverrouillé l'<strong>afficheur</strong> ! Connectez-y un câble
@@ -721,15 +732,15 @@ storyRewards:
             de <strong>simuler du traitement de forme</strong> !<br><br> Vous
             pouvez maintenant simuler un découpeur, un pivoteur, un combineur et
             plus encore sur le calque de câblage !<br><br> Avec cela, vous avez
-            maintenant trois options pour continuer le jeu :<br><br> -
-            Construire une <strong>machine automatisée</strong> pour créer toute
-            forme possible demandée par le centre (c'est cool, je le jure
-            !).<br><br> - Construire quelque chose de cool avec des
-            câbles.<br><br> - Continuer à jouer régulièrement.
+            maintenant trois options pour continuer le jeu :<br><br>. Construire
+            une <strong>machine automatisée</strong> pour créer toute forme
+            possible demandée par le centre (c'est cool, je le jure!).<br><br>.
+            Construire quelque chose de cool avec des câbles.<br><br>. Continuer
+            à jouer régulièrement.
     no_reward:
         title: Niveau suivant
-        desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br>PS : Ne
-            détruisez pas votre usine actuelle — Vous aurez besoin de
+        desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne
+            détruisez pas votre usine actuelle. Vous aurez besoin de
             <strong>toutes</strong> ces formes plus tard pour <strong>débloquer
             des améliorations</strong>."
     no_reward_freeplay:
@@ -743,23 +754,9 @@ storyRewards:
             ne demandera que de faibles quantités, je recommande fortement de
             construire une machine qui délivre automatiquement la forme demandée
             !
-    reward_wires_painter_and_levers:
-        title: Wires & Quad Painter
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>."
-    reward_filter:
-        title: Item Filter
-        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
-            to the top or the right output depending on whether they match the
-            signal from the wires layer or not.<br><br> You can also pass in a
-            boolean signal (1 / 0) to entirely activate or disable it.
     reward_demo_end:
-        title: End of Demo
-        desc: You have reached the end of the demo version!
+        title: Fin de la Démo
+        desc: Vous avez atteint la fin de la version démo !
 settings:
     title: Options
     categories:
@@ -791,11 +788,11 @@ settings:
                 automatiquement. Vous pouvez aussi entièrement désactiver cette
                 fonctionnalité ici.
             intervals:
-                one_minute: 1 minute
-                two_minutes: 2 minutes
-                five_minutes: 5 minutes
-                ten_minutes: 10 minutes
-                twenty_minutes: 20 minutes
+                one_minute: 1 minute
+                two_minutes: 2 minutes
+                five_minutes: 5 minutes
+                ten_minutes: 10 minutes
+                twenty_minutes: 20 minutes
                 disabled: Désactivé
         scrollWheelSensitivity:
             title: Sensibilité du zoom
@@ -888,7 +885,7 @@ settings:
         disableCutDeleteWarnings:
             title: Désactive les avertissements pour Couper / Effacer
             description: Désactive la boîte de dialogue qui s’affiche lorsque vous vous
-                apprêtez à couper / effacer plus de 100 entités.
+                apprêtez à couper / effacer plus de 100 entités.
         lowQualityMapResources:
             title: Ressources de la carte de plus basse qualité
             description: Simplifie le rendu des ressources sur la carte lorsqu’elle est
@@ -910,7 +907,7 @@ settings:
                 performances. Rend le jeu très moche !
         displayChunkBorders:
             title: Montrer les secteurs
-            description: Le jeu est divisé en secteurs de 16×16 cases. Si ce réglage est
+            description: Le jeu est divisé en secteurs de 16×16 cases. Si ce réglage est
                 activé, les limites de chaque secteur sont affichées.
         pickMinerOnPatch:
             title: Choisir l’extracteur sur une mine de ressources
@@ -929,7 +926,7 @@ settings:
                 déplacement.
 keybindings:
     title: Contrôles
-    hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
+    hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
         différentes options de placement."
     resetKeybindings: Réinitialiser les contrôles
     categoryLabels:
@@ -983,15 +980,17 @@ keybindings:
         transistor: Transistor
         analyzer: Analyseur de formes
         comparator: Comparateur
+        item_producer: Générateur d'objets (bac à sable)
         pipette: Pipette
         rotateWhilePlacing: Pivoter
-        rotateInverseModifier: "Variante : Pivote à gauche"
+        rotateInverseModifier: "Variante : Pivote à gauche"
         cycleBuildingVariants: Alterner entre les variantes
         confirmMassDelete: Confirmer la suppression de la sélection
         pasteLastBlueprint: Copier le dernier patron
         cycleBuildings: Alterner entre les bâtiments
         lockBeltDirection: Utiliser le planificateur de convoyeurs
-        switchDirectionLockSide: "Planificateur : changer de côté"
+        switchDirectionLockSide: "Planificateur : changer de côté"
+        copyWireValue: "Câblage : Copier la valeur sous le curseur"
         massSelectStart: Cliquez et glissez pour commencer
         massSelectSelectMultiple: Sélectionner plusieurs zones
         massSelectCopy: Copier la sélection
@@ -999,8 +998,6 @@ keybindings:
         placementDisableAutoOrientation: Désactiver l’orientation automatique
         placeMultiple: Rester en mode placement
         placeInverse: Inverser le mode d’orientation automatique
-        item_producer: Item Producer (Sandbox)
-        copyWireValue: "Wires: Copy value below cursor"
 about:
     title: À propos de ce jeu
     body: >-
