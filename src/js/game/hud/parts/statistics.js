@@ -151,17 +151,12 @@ export class HUDStatistics extends BaseHUDPart {
         }
     }
 
-    cleanup() {
-        document.body.classList.remove("ingameDialogOpen");
-    }
-
     isBlockingOverlay() {
         return this.visible;
     }
 
     show() {
         this.visible = true;
-        document.body.classList.add("ingameDialogOpen");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.rerenderFull();
         this.update();
@@ -169,7 +164,6 @@ export class HUDStatistics extends BaseHUDPart {
 
     close() {
         this.visible = false;
-        document.body.classList.remove("ingameDialogOpen");
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }

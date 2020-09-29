@@ -312,7 +312,7 @@ export class MainMenuState extends GameState {
 
     onSteamLinkClicked() {
         this.app.analytics.trackUiClick("main_menu_steam_link_2");
-        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage + "?ref=mmsl2");
         return false;
     }
 
@@ -537,7 +537,7 @@ export class MainMenuState extends GameState {
         );
         getStandalone.add(() => {
             this.app.analytics.trackUiClick("visit_steampage_from_slot_limit");
-            this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
+            this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage + "?reF=ssll");
         });
     }
 

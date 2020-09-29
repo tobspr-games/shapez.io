@@ -51,6 +51,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
      * @param {enumHubGoalRewards} reward
      */
     showForLevel(level, reward) {
+        this.root.soundProxy.playUi(SOUNDS.levelComplete);
+
         if (level > tutorialGoals.length) {
             this.root.hud.signals.notification.dispatch(
                 T.ingame.notifications.freeplayLevelComplete.replace("<level>", String(level)),
@@ -92,7 +94,6 @@ export class HUDUnlockNotification extends BaseHUDPart {
 
         this.elemContents.innerHTML = html;
         this.visible = true;
-        this.root.soundProxy.playUi(SOUNDS.levelComplete);
 
         if (this.buttonShowTimeout) {
             clearTimeout(this.buttonShowTimeout);

@@ -259,7 +259,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 label: T.ingame.keybindingsOverlay.switchLayers,
                 keys: [k.ingame.switchLayers],
                 condition: () =>
-                    this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_filters_and_levers),
+                    this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers),
             },
         ];
 

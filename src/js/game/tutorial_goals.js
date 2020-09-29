@@ -1,3 +1,4 @@
+import { IS_DEMO } from "../core/config";
 import { ShapeDefinition } from "./shape_definition";
 import { finalGameShape } from "./upgrades";
 
@@ -22,14 +23,16 @@ export const enumHubGoalRewards = {
     reward_splitter: "reward_splitter",
     reward_cutter_quad: "reward_cutter_quad",
     reward_painter_double: "reward_painter_double",
-    reward_painter_quad: "reward_painter_quad",
     reward_storage: "reward_storage",
     reward_merger: "reward_merger",
-    reward_wires_filters_and_levers: "reward_wires_filters_and_levers",
+    reward_wires_painter_and_levers: "reward_wires_painter_and_levers",
     reward_display: "reward_display",
     reward_constant_signal: "reward_constant_signal",
     reward_logic_gates: "reward_logic_gates",
     reward_virtual_processing: "reward_virtual_processing",
+    reward_filter: "reward_filter",
+
+    reward_demo_end: "reward_demo_end",
 
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
@@ -140,107 +143,118 @@ export const tutorialGoals = [
         reward: enumHubGoalRewards.reward_underground_belt_tier_2,
     },
 
-    // 14
-    // Belt reader
-    {
-        shape: "--Cg----:--Cr----", // unused
-        required: 16, // Per second!
-        reward: enumHubGoalRewards.reward_belt_reader,
-        throughputOnly: true,
-    },
+    // DEMO STOPS HERE
+    ...(IS_DEMO
+        ? [
+              {
+                  shape: "RpRpRpRp:CwCwCwCw",
+                  required: 0,
+                  reward: enumHubGoalRewards.reward_demo_end,
+              },
+          ]
+        : [
+              // 14
+              // Belt reader
+              {
+                  shape: "--Cg----:--Cr----", // unused
+                  required: 16, // Per second!
+                  reward: enumHubGoalRewards.reward_belt_reader,
+                  throughputOnly: true,
+              },
 
-    // 15
-    // Storage
-    {
-        shape: "SrSrSrSr:CyCyCyCy", // unused
-        required: 10000,
-        reward: enumHubGoalRewards.reward_storage,
-    },
+              // 15
+              // Storage
+              {
+                  shape: "SrSrSrSr:CyCyCyCy", // unused
+                  required: 10000,
+                  reward: enumHubGoalRewards.reward_storage,
+              },
 
-    // 16
-    // Quad Cutter
-    {
-        shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
-        required: 6000,
-        reward: enumHubGoalRewards.reward_cutter_quad,
-    },
+              // 16
+              // Quad Cutter
+              {
+                  shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
+                  required: 6000,
+                  reward: enumHubGoalRewards.reward_cutter_quad,
+              },
 
-    // 17
-    // Double painter
-    {
-        shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
-        required: 20000,
-        reward: enumHubGoalRewards.reward_painter_double,
-    },
+              // 17
+              // Double painter
+              {
+                  shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
+                  required: 20000,
+                  reward: enumHubGoalRewards.reward_painter_double,
+              },
 
-    // 18
-    // Rotater (180deg)
-    {
-        shape: "Sg----Sg:CgCgCgCg:--CyCy--", // unused
-        required: 20000,
-        reward: enumHubGoalRewards.reward_rotater_180,
-    },
+              // 18
+              // Rotater (180deg)
+              {
+                  shape: "Sg----Sg:CgCgCgCg:--CyCy--", // unused
+                  required: 20000,
+                  reward: enumHubGoalRewards.reward_rotater_180,
+              },
 
-    // 19
-    // Compact splitter
-    {
-        shape: "CpRpCp--:SwSwSwSw",
-        required: 25000,
-        reward: enumHubGoalRewards.reward_splitter,
-    },
+              // 19
+              // Compact splitter
+              {
+                  shape: "CpRpCp--:SwSwSwSw",
+                  required: 25000,
+                  reward: enumHubGoalRewards.reward_splitter,
+              },
 
-    // 20
-    // WIRES
-    {
-        shape: finalGameShape,
-        required: 25000,
-        reward: enumHubGoalRewards.reward_wires_filters_and_levers,
-    },
+              // 20
+              // WIRES
+              {
+                  shape: finalGameShape,
+                  required: 25000,
+                  reward: enumHubGoalRewards.reward_wires_painter_and_levers,
+              },
 
-    // 21
-    // Display
-    {
-        shape: "CrCrCrCr:CwCwCwCw:CrCrCrCr:CwCwCwCw",
-        required: 25000,
-        reward: enumHubGoalRewards.reward_display,
-    },
+              // 21
+              // Filter
+              {
+                  shape: "CrCwCrCw:CwCrCwCr:CrCwCrCw:CwCrCwCr",
+                  required: 25000,
+                  reward: enumHubGoalRewards.reward_filter,
+              },
 
-    // 22
-    // Constant signal
-    {
-        shape: "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
-        required: 25000,
-        reward: enumHubGoalRewards.reward_constant_signal,
-    },
+              // 22
+              // Constant signal
+              {
+                  shape: "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
+                  required: 25000,
+                  reward: enumHubGoalRewards.reward_constant_signal,
+              },
 
-    // 23
-    // Quad Painter
-    {
-        shape: "CcSyCcSy:SyCcSyCc:CcSyCcSy",
-        required: 5000,
-        reward: enumHubGoalRewards.reward_painter_quad,
-    },
+              // 23
+              // Display
+              {
+                  shape: "CcSyCcSy:SyCcSyCc:CcSyCcSy",
+                  required: 25000,
+                  reward: enumHubGoalRewards.reward_display,
+              },
 
-    // 24 Logic gates
-    {
-        shape: "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
-        required: 10000,
-        reward: enumHubGoalRewards.reward_logic_gates,
-    },
+              // 24 Logic gates
+              {
+                  shape: "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
+                  required: 25000,
+                  reward: enumHubGoalRewards.reward_logic_gates,
+              },
 
-    // 25 Virtual Processing
-    {
-        shape: "Rg--Rg--:CwRwCwRw:--Rg--Rg",
-        required: 10000,
-        reward: enumHubGoalRewards.reward_virtual_processing,
-    },
+              // 25 Virtual Processing
+              {
+                  shape: "Rg--Rg--:CwRwCwRw:--Rg--Rg",
+                  required: 25000,
+                  reward: enumHubGoalRewards.reward_virtual_processing,
+              },
 
-    // 26 Freeplay
-    {
-        shape: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
-        required: 10000,
-        reward: enumHubGoalRewards.reward_freeplay,
-    },
+              // 26 Freeplay
+              {
+                  shape: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
+                  required: 50000,
+                  reward: enumHubGoalRewards.reward_freeplay,
+              },
+          ]),
 ];
 
 if (G_IS_DEV) {

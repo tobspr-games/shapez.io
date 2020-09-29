@@ -122,7 +122,7 @@ export class HUDModalDialogs extends BaseHUDPart {
 
         dialog.buttonSignals.getStandalone.add(() => {
             this.app.analytics.trackUiClick("demo_dialog_click");
-            window.open(THIRDPARTY_URLS.standaloneStorePage);
+            window.open(THIRDPARTY_URLS.standaloneStorePage + "?ref=ddc");
         });
 
         return dialog.buttonSignals;

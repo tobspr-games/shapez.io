@@ -180,11 +180,13 @@
             }
 
             .ingameItemChooser {
-                @include S(margin, 20px, 0);
+                @include S(margin, 10px, 0);
                 display: grid;
-                grid-auto-flow: column;
-                grid-auto-columns: 1fr;
                 @include S(grid-column-gap, 3px);
+                @include S(grid-row-gap, 5px);
+                grid-template-columns: repeat(10, 1fr);
+                align-items: center;
+                justify-items: center;
 
                 canvas {
                     pointer-events: all;

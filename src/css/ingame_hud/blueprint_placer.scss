@@ -1,6 +1,6 @@
 #ingame_HUD_BlueprintPlacer {
     position: absolute;
-    @include S(top, 50px);
+    @include S(top, 70px);
     left: 50%;
     transform: translateX(-50%);
     color: #333;
@@ -13,6 +13,7 @@
     @include S(width, 120px);
     align-items: center;
     justify-content: center;
+    @include S(border-radius, $globalBorderRadius);
 
     .label {
         @include PlainText;
