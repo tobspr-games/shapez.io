@@ -4,49 +4,49 @@ steamPage:
         infinita.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        Shapez.io è un gioco tranquillo nel quale dovrai costruire delle fabbriche
+        per la produzione automatizzata di forme geometriche.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        All'aumentare del livello, le forme diventeranno sempre più complesse e dovrai espanderti sempre di più nella mappa infinita.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        E come se non bastasse, dovrai produrre esponenzialmente di più per soddisfare le richieste, l'unica possibilità è andare su grande scala!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        All'inizio lavorerai solo con le forme, ma in seguito dovrai colorarle; a questo scopo dovrai estrarre e mescolare i colori!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Comprare il gioco su Steam ti garantirà l'accesso alla versone completa, ma puoi anche giocare una demo su shapez.io e decidere in seguito!
+    title_advantages: Vantaggi della versione completa
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - <b>12 Nuovi livelli</b> per un totale di 26 livelli
+        - <b>18 Nuovi edifici</b> per una fabbrica completamente automatizzata!
+        - <b>20 Gradi di miglioramenti</b> per molte ore di divertimento!
+        - <b>L'aggiornamento dei Cavi</b> per una dimensione completamente nuova!
+        - <b>Modalità scura</b>!
+        - Salvataggi illimitati
+        - Segnapunti illimitati
+        - Mi sostieni! ❤️
+    title_future: Contenuti pianificati
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - Archivio dei progetti (Esclusiva della versione completa)
+        - Achievement di steam
+        - Modalità puzzle
+        - Minimappa
+        - Mod
+        - Modalità sandbox
+        - ... e molto altro!
+    title_open_source: Questo gioco è open source!
+    title_links: Link
     links:
-        discord: Official Discord
-        roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        discord: Server Discord ufficiale
+        roadmap: Tabella di marcia
+        subreddit: Reddit
+        source_code: Codice sorgente (GitHub)
+        translate: Aiutaci a tradurre
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        Chiunque può contribuire, partecipo attivamente nella community e
+        cerco di leggere tutti i suggerimenti e di prendere in considerazione 
+        tutti i feedback, quando possibile.
 
-        Be sure to check out my trello board for the full roadmap!
+        Controlla la mia pagina di trello per la tabella di marcia completa!
 global:
     loading: Caricamento
     error: Errore
@@ -96,7 +96,7 @@ mainMenu:
     newGame: Nuova partita
     madeBy: Creato da <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Senza nome
 dialogs:
     buttons:
         ok: OK
@@ -197,18 +197,19 @@ dialogs:
         desc: Non puoi permetterti di incollare quest'area! Sei sicuro di volerla
             tagliare?
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: Imposta il segnale
+        descItems: "Scegli un oggetto predefinito:"
+        descShortKey: ... o inserisci il <strong>codice</strong> di una forma (Che 
+        puoi generare <link>qui</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Rinomina salvataggio.
+        desc: Qui puoi cambiare il nome del salvataggio.
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: Attento alle prestazioni
+        desc: Hai posizionato molti edifici, questo messaggio serve a ricordarti che
+            il gioco non può gestire una quantità infinita di edifici. Quindi cerca 
+            di mantenere le tue fabbriche compatte!
+
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -344,41 +345,41 @@ ingame:
         empty: Vuoto
         copyKey: Copia codice
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        one_miner: 1 trivella
+        n_miners: <amount> trivelle
+        limited_items: Limitato a <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: Versione demo
+        desc: Clicca qui per vedere i vantaggi della versione Steam!
+        get_on_steam: Ottieni su steam
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Ottieni la versione completa!
+        no_thanks: No, grazie!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 Nuovi livelli!
+                desc: Per un totale di 26 livelli!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 Nuovi edifici
+                desc: Automatizza completamente la tua fabbrica!
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: ∞ Salvataggi
+                desc: Quanti ne desideri!
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 gradi di miglioramenti
+                desc: Questa demo ne ha solo 5!
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: ∞ Segnapunti
+                desc: Non perderti nella tua fabbrica!
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: Cavi
+                desc: Un'intera nuova dimensione!
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: Modalità scura
+                desc: Smettila di maltrattare i tuoi occhi!
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: Sostienimi
+                desc: Lo sviluppo nel tempo libero!
 shopUpgrades:
     belt:
         name: Nastri, distribuzione e tunnel
@@ -468,63 +469,63 @@ buildings:
         deliver: Consegna
         toUnlock: per sbloccare
         levelShortcut: LVL
-        endOfDemo: End of Demo
+        endOfDemo: Fine della demo
     wire:
         default:
             name: Cavo energetico
             description: Ti consente di trasportare energia.
         second:
             name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            description: Trasmette segnali, che possono essere oggetti, colori o booleani (1 / 0).
+                Cavi di colore diverso non si connettono.
     balancer:
         default:
-            name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: Bilanciatore
+            description: Multifunzionale, distribuisce equamente gli ogetti in ingresso tra tutte le uscite.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Aggregatore (compatto)
+            description: Unisce due nastri in uno.
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Aggregatore (compatto)
+            description: Unisce due nastri in uno.
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Divisore (compatto)
+            description: Divide un nastro in due.
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Divisore (compatto)
+            description: Divide un nastro in due.
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: Stoccaggio
+            description: Immagazzina gli oggetti in eccesso, fino ad una capacità massima. Prioritizza l'uscita sinistra
+                e può quindi essere usato per gestire le eccedenze.
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: Incrocio cavi
+            description: Consente a due cavi di attraversarsi senza connettersi.
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: Segnale costante
+            description: Emette un segnale costante, che può essere una forma, un colore o un 
+            booleano (1 / 0).
     lever:
         default:
-            name: Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            name: Bottone
+            description: Può essere azionato per emettere un segnale booleano (1 / 0) nel livello dei cavi,
+                che può essere usato per controllare, per esempio, un filtro.
     logic_gate:
         default:
-            name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
-                color or boolean "1")
+            name: Porta AND 
+            description: Emette un "1" booleano se entrambi gli ingressi sono veri. (Vero significa forma,
+                colore o "1" boolean)
         not:
-            name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            name: Porta NOT
+            description: Emette un "1" booleano se l'ingresso è falso. (Vero significa forma,
+                colore o "1" booleano)
         xor:
-            name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            name: Porta XOR
+            description: Emette un "1" booleano se uno degli ingressi è vero, ma non se lo sono entrambi.
+                (Vero significa forma, colore o "1" booleano)
         or:
             name: OR Gate
             description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
