@@ -16,31 +16,31 @@ steamPage:
         Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
     title_advantages: Standalone Advantages
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - <b>12 Nowych Poziomów</b> dla łącznie 26 poziomów!
+        - <b>18 Nowych Struktur</b> dla w pełni zautomatyzowanej fabryki!
+        - <b>20 Poziomów Ulepszeń</b> dla wielu godzin zabawy!
+        - <b>Aktualizacja Przewodowa</b> dla kompletnie nowego wymiaru!
+        - <b>Tryb Ciemny</b>!
+        - Nie limitowana ilość zapisów gry!
+        - Nie limitowana ilość znaczników!
+        - Wspomóż mi! ❤️
+    title_future: Zaplanowana zawartość
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
+        - Biblioteka Na Schematy (Tylko na Steam)
+        - Osiągnięcia Steam
+        - Tryb Puzzli
+        - Minimapa
+        - Mody
+        - Tryb Piaskownicy
+        - ... i wiele więcej!
     title_open_source: This game is open source!
-    title_links: Links
+    title_links: Linki
     links:
-        discord: Official Discord
-        roadmap: Roadmap
+        discord: Oficjalny server Discord
+        roadmap: Mapa planowanych aktualizacji
         subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        source_code: Kod Źródłowy (GitHub)
+        translate: Pomóż tłumaczyć
     text_open_source: >-
         Anybody can contribute, I'm actively involved in the community and
         attempt to review all suggestions and take feedback into consideration
@@ -96,7 +96,7 @@ mainMenu:
     savegameLevelUnknown: Nieznany poziom
     madeBy: Gra wykonana przez <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Nienazwany
 dialogs:
     buttons:
         ok: OK
@@ -197,18 +197,15 @@ dialogs:
         desc: Nie posiadasz wystarczająco kształtów schematów na wklejenie tego obszaru!
             Czy na pewno chcesz go wyciąć?
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: Ustaw Sygał
+        descItems: "Wybierz wstępnie zdefiniowany przedmiot:"
+        descShortKey: ... albo wprowadź <strong>short key</strong> kształtu (Którego możesz wygenerować <link>tutaj</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Zmień nazwę zapisu gry
+        desc: Możesz zmienić nazwę zapisu gry tutaj.
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: Ostrzeżenie o Wydajności!
+        desc: Umieściłeś dużo budynków, ta wiadomość to tylko przypomninie, że gra nie wytrzyma nieskończonych ilości budynków. Próbuj trzymać kompaktowo swoje fabryki!
 ingame:
     keybindingsOverlay:
         moveMap: Ruch
@@ -259,7 +256,7 @@ ingame:
     notifications:
         newUpgrade: Nowe ulepszenie dostępne!
         gameSaved: Postęp gry został zapisany.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Poziom <level> został zakończony!
     shop:
         title: Ulepszenia
         buttonUnlock: Ulepsz
@@ -344,41 +341,41 @@ ingame:
                 postawić wiele ekstraktorów. Naciśnij <strong>R</strong>, by je
                 obracać.'
     connectedMiners:
-        one_miner: 1 Miner
+        one_miner: 1 Ekstraktor
         n_miners: <amount> Miners
         limited_items: Limited to <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: Wersja Demo
+        desc: Kliknij tutaj aby zobaczyć korzyści wersji na Steam!
+        get_on_steam: Zdobądź na Steam
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Zdobądź pełną wersję!
+        no_thanks: Nie, dziękuję!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 Nowych Poziomów
+                desc: dla łącznie 26 poziomów!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 Nowych Budynków
+                desc: Zautomatyzuj swoją fabrykę!
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: ∞ ilość Zapisów Gry
+                desc: Tyle ile sobie życzysz!
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 Poziomów Ulepszeń
+                desc: Ta Demówka ma tylko 5!
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: ∞ ilość Znaczników
+                desc: Już się nigdy nie zgubisz w swojej fabryce!
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: Przewody
+                desc: Klompletnie nowy wymiar!
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: Tryb Ciemny
+                desc: Przestań się ranić w oczy!
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: Wspomóż mnie
+                desc: Robudowuję tę grę w swoim wolnym czasie!
 shopUpgrades:
     belt:
         name: Taśmociągi, Dystrybutory & Tunele
@@ -397,7 +394,7 @@ buildings:
         deliver: Dostarcz
         toUnlock: by odblokować
         levelShortcut: Poz.
-        endOfDemo: End of Demo
+        endOfDemo: Koniec Demo
     belt:
         default:
             name: Taśmociąg
@@ -437,8 +434,8 @@ buildings:
             name: Obracacz (Przeciwny kierunek)
             description: Obraca kształt przeciwnie do ruchu wskazówek zegara o 90 stopni.
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Obracacz (180°)
+            description: Obraca kształty o 180 stopni.
     stacker:
         default:
             name: Sklejacz
@@ -472,25 +469,24 @@ buildings:
             name: Przewód energetyczny
             description: Pozwala na transportowanie energii.
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: Przewód
+            description: Przenosi sygały, które mogą być przedmiotami, kolorami lub typem boolowskim (0/1). Przewody różnych kolorów nie łączą się razem.
     balancer:
         default:
-            name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: Równoważnik
+            description: Multifunkcjonalny - porówno dystrybuuje wszystkie wejścia do wszystkich wyjść.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Łącznik (kompaktowy)
+            description: Łączy dwa przenośniki taśmowe w jeden.
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Łącznik (kompaktowy)
+            description: Łączy dwa przenośniki taśmowe w jeden.
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Rozdzielacz (kompaktowy)
+            description: Rozdziela jeden przenośnik taśmowy na dwa.
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Rozdzielacz (kompaktowy)
+            description: Rozdziela jeden przenośnik taśmowy na dwa.
     storage:
         default:
             name: Storage
