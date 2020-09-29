@@ -144,9 +144,11 @@ export class HubGoals extends BasicSerializableObject {
      */
     getCurrentGoalDelivered() {
         if (this.currentGoal.throughputOnly) {
-            return this.root.productionAnalytics.getCurrentShapeRate(
-                enumAnalyticsDataSource.delivered,
-                this.currentGoal.definition
+            return (
+                this.root.productionAnalytics.getCurrentShapeRate(
+                    enumAnalyticsDataSource.delivered,
+                    this.currentGoal.definition
+                ) / globalConfig.analyticsSliceDurationSeconds
             );
         }
 

@@ -14,6 +14,10 @@ export class MetaItemProducerBuilding extends MetaBuilding {
         return "#b37dcd";
     }
 
+    getShowWiresLayerPreview() {
+        return true;
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
