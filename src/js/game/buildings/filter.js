@@ -23,7 +23,7 @@ export class MetaFilterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_filters_and_levers);
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_filter);
     }
 
     getDimensions() {

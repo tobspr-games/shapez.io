@@ -70,7 +70,6 @@ export class HUDPartTutorialHints extends BaseHUDPart {
 
     close() {
         this.enlarged = false;
-        document.body.classList.remove("ingameDialogOpen");
         this.element.classList.remove("enlarged", "noBlur");
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
@@ -79,8 +78,6 @@ export class HUDPartTutorialHints extends BaseHUDPart {
     show() {
         this.root.app.analytics.trackUiClick("tutorial_hint_show");
         this.root.app.analytics.trackUiClick("tutorial_hint_show_lvl_" + this.root.hubGoals.level);
-
-        document.body.classList.add("ingameDialogOpen");
         this.element.classList.add("enlarged", "noBlur");
         this.enlarged = true;
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);

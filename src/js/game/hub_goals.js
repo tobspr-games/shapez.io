@@ -1,4 +1,4 @@
-import { globalConfig } from "../core/config";
+import { globalConfig, IS_DEMO } from "../core/config";
 import { RandomNumberGenerator } from "../core/rng";
 import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/utils";
 import { BasicSerializableObject, types } from "../savegame/serialization";
@@ -27,6 +27,10 @@ export class HubGoals extends BasicSerializableObject {
         const errorCode = super.deserialize(data);
         if (errorCode) {
             return errorCode;
+        }
+
+        if (IS_DEMO) {
+            this.level = Math.min(this.level, tutorialGoals.length);
         }
 
         // Compute gained rewards
@@ -102,11 +106,21 @@ export class HubGoals extends BasicSerializableObject {
                 if (ev.key === "b") {
                     // root is not guaranteed to exist within ~0.5s after loading in
                     if (this.root && this.root.app && this.root.app.gameAnalytics) {
-                        this.onGoalCompleted();
+                        if (!this.isEndOfDemoReached()) {
+                            this.onGoalCompleted();
+                        }
                     }
                 }
             });
         }
+    }
+
+    /**
+     * Returns whether the end of the demo is reached
+     * @returns {boolean}
+     */
+    isEndOfDemoReached() {
+        return IS_DEMO && this.level >= tutorialGoals.length;
     }
 
     /**
@@ -144,9 +158,11 @@ export class HubGoals extends BasicSerializableObject {
      */
     getCurrentGoalDelivered() {
         if (this.currentGoal.throughputOnly) {
-            return this.root.productionAnalytics.getCurrentShapeRate(
-                enumAnalyticsDataSource.delivered,
-                this.currentGoal.definition
+            return (
+                this.root.productionAnalytics.getCurrentShapeRate(
+                    enumAnalyticsDataSource.delivered,
+                    this.currentGoal.definition
+                ) / globalConfig.analyticsSliceDurationSeconds
             );
         }
 
@@ -188,7 +204,9 @@ export class HubGoals extends BasicSerializableObject {
             this.getCurrentGoalDelivered() >= this.currentGoal.required ||
             (G_IS_DEV && globalConfig.debug.rewardsInstant)
         ) {
-            this.onGoalCompleted();
+            if (!this.isEndOfDemoReached()) {
+                this.onGoalCompleted();
+            }
         }
     }
 
@@ -209,10 +227,8 @@ export class HubGoals extends BasicSerializableObject {
             return;
         }
 
-        const required = 4 + (this.level - 27) * 0.25;
-
+        const required = Math.min(200, 4 + (this.level - 27) * 0.25);
         this.currentGoal = {
-            /** @type {ShapeDefinition} */
             definition: this.computeFreeplayShape(this.level),
             required,
             reward: enumHubGoalRewards.no_reward_freeplay,
@@ -251,6 +267,11 @@ export class HubGoals extends BasicSerializableObject {
 
         if (currentLevel >= tiers.length) {
             // Max level
+            return false;
+        }
+
+        if (IS_DEMO && currentLevel >= 4) {
+            // DEMO
             return false;
         }
 
