@@ -4,46 +4,45 @@ steamPage:
         complexes sur une carte infinie.
     discordLinkShort: Discord officiel
     intro: >-
-        You like automation games? Then you are in the right place!
+        Vous aimez les jeux d'automatisation ? Alors vous êtes à la bonne place !
 
-        shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        shapez.io est un jeu relaxant dans lequel vous devez construire des usines de production automatisée de formes géométriques.  Alors que les niveaux augmentent, les formes sont de plus en plus complexes, et vous devez vous étaler sur la carte infinie.
+        
+        Et comme si ce n'était pas assez, vous allez aussi devoir produire de manière exponentielle pour satisfaire les demandes - la seule chose qui aide, c'est l'expansion !  Alors que vous ne traitez que les formes au début, you allez devoir les peindre plus tard - pour cela, vous devrez extraire et melanger les couleurs !
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
-
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Acheter le jeu sur Steam vous donne accès à la version complète, mais vous pouvez aussi jouer la démo sur shapez.io d'abords et décider plus tard !
+    title_advantages: Avantage version complête
     advantages:
-        - <b>12 New Levels</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - <b>12 nouveaux niveaux</b> pour un total de 26 niveaux.
+        - <b>18 nouveaux bâtiments</b> pour une usine complêtement autonome!
+        - <b>20 paliers de mise à niveau</b> pour des heures de fun!
+        - <b>Mise à jour : Cable</b> pour une nouvelle dimension!
+        - <b>Mode nuit</b>!
+        - Sauvegardes illimitées
+        - Marqueurs illimités
+        - Supportez-moi! ❤️
+    title_future: Contenu prévu
     planned:
-        - Blueprint Library
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
+        - Bibliothèque de plans
+        - Haut faits Steam
+        - Mode puzzle
+        - Minicarte
+        - Plugins
+        - Mode bac-à-sable
+        - ... et beaucoup plus!
+    title_open_source: Ce jeu est open source!
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        N'importe qui peut contribuer, je suis très impliqué dans la communauté et
+        j'essaye de prendre toutes les suggestions et retours en compte quand c'est possible
 
-        Be sure to check out my trello board for the full roadmap!
-    title_links: Links
+        N'hésitez pas à aller voir mon trello pour la roadmap complête !
+    title_links: Liens
     links:
-        discord: Official Discord
+        discord: Discord officiel
         roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        subreddit: Sub-reddit
+        source_code: Code source (GitHub)
+        translate: Aidez à la traduction
 global:
     loading: Chargement
     error: Erreur
@@ -1099,6 +1098,6 @@ tips:
       direction !
     - Pour nettoyer les convoyeurs, coupez la zone puis collez-la au même
       endroit.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - Appuyez sur F4 pour voir votre FPS et Tick Rate.
+    - Appuyez sur F4 2x pour montrer l'emplacement de votre souris et camera.
+    - Vous pouvez cliquer une forme épinglée sur le coté gauche pour la dépingler.
