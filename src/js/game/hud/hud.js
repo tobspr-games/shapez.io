@@ -47,6 +47,7 @@ import { HUDMinerHighlight } from "./parts/miner_highlight";
 import { HUDBetaOverlay } from "./parts/beta_overlay";
 import { HUDPerformanceWarning } from "./parts/performance_warning";
 import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
+import { HUDCatMemes } from "./parts/cat_memes";
 
 export class GameHUD {
     /**
@@ -118,6 +119,7 @@ export class GameHUD {
         if (IS_DEMO) {
             this.parts.watermark = new HUDWatermark(this.root);
             this.parts.standaloneAdvantages = new HUDStandaloneAdvantages(this.root);
+            this.parts.catMemes = new HUDCatMemes(this.root);
         }
 
         if (G_IS_DEV && globalConfig.debug.renderChanges) {

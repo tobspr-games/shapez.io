@@ -42,7 +42,7 @@ export class HUDBuildingsToolbar extends HUDBaseToolbar {
             ],
             visibilityCondition: () =>
                 !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "regular",
-            htmlElementId: "ingame_HUD_buildings_toolbar",
+            htmlElementId: "ingame_HUD_BuildingsToolbar",
         });
     }
 }
