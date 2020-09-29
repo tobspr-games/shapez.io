@@ -25,7 +25,7 @@ export class SavegameInterface_V1007 extends SavegameInterface_V1006 {
 
         const waypoints = dump.waypoints.waypoints;
 
-        // clear ejector slots
+        // set waypoint layer to "regular"
         for (let i = 0; i < waypoints.length; ++i) {
             const waypoint = waypoints[i];
             waypoint.layer = "regular";
