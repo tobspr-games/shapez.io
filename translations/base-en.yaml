@@ -137,7 +137,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo Version
     intro: >-
-        Get the standalone to unlock all features!
+        Get the full game to unlock all features and content!
 
 mainMenu:
     play: Play

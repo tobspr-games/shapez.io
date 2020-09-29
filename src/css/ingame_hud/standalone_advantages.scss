@@ -16,6 +16,7 @@
         grid-template-rows: #{D(40px)};
         align-items: center;
     }
+
     .lowerBar {
         width: 100%;
         display: flex;
@@ -57,10 +58,7 @@
             @include S(margin, 0);
             @include S(width, 180px);
             @include S(height, 40px);
-            & {
-                /* @load-async */
-                background: #171a23 uiResource("get_on_steam.png") center center / contain no-repeat;
-            }
+            background: #171a23 center center / contain no-repeat;
 
             @include S(border-radius, $globalBorderRadius);
         }

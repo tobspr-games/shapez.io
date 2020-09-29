@@ -1,6 +1,6 @@
 import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
-import { globalConfig, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
+import { A_B_TESTING_LINK_TYPE, globalConfig, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
 import {
     makeDiv,
     makeButtonElement,
@@ -52,7 +52,7 @@ export class MainMenuState extends GameState {
 
             <p>${T.demoBanners.intro}</p>
 
-            <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
+            <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">Get the shapez.io standalone!</a>
         `;
 
         return `
@@ -311,8 +311,11 @@ export class MainMenuState extends GameState {
     }
 
     onSteamLinkClicked() {
-        this.app.analytics.trackUiClick("main_menu_steam_link_2");
-        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage + "?ref=mmsl2");
+        this.app.analytics.trackUiClick("main_menu_steam_link_" + A_B_TESTING_LINK_TYPE);
+        this.app.platformWrapper.openExternalLink(
+            THIRDPARTY_URLS.standaloneStorePage + "?ref=mmsl2&prc=" + A_B_TESTING_LINK_TYPE
+        );
+
         return false;
     }
 
