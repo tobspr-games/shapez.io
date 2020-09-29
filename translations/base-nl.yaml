@@ -2,7 +2,7 @@ steamPage:
     shortText: shapez.io is een spel dat draait om het bouwen van fabrieken voor het
         produceren en automatiseren van steeds complexere vormen in een oneindig
         groot speelveld.
-    discordLinkShort: Officiële Discord
+    discordLinkShort: Officiële Discord-server (Engelstalig)
     intro: >-
         Shapez.io is een relaxend spel waar je fabrieken moet bouwen voor het
         automatiseren van productie van geometrische vormen.  
@@ -13,34 +13,34 @@ steamPage:
 
         While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+        De game kopen op steam geeft je toegang tot de volledige versie, maar je kan ook de demo spelen op shapez.io en later beslissen!
     title_advantages: Standalone Voordelen
     advantages:
         - <b>12 Nieuwe Levels</b> voor een total van 26 levels!
         - <b>18 Nieuwe Gebouwen</b> voor een volledig geautomatiseerde fabriek!
         - <b>20 Upgrade Niveaus</b> voor veel uren plezier!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
+        - <b>Wires Update</b> voor een kompleet nieuwe dimensie!
+        - <b>Donkere Modus</b>!
         - Onbeperkte Savegames
         - Onbeperkte Markers
         - Support me! ❤️
-    title_future: Planned Content
+    title_future: Geplande inhoud
     planned:
         - Blauwprint Bibliotheek (Standalone Exclusief)
         - Steam Achievements
-        - Puzzle Mode
+        - Puzzel Modus
         - Minimap
         - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
+        - Sandbox modus
+        - ... en nog veel meer!
+    title_open_source: Dit spel is open source!
     title_links: Links
     links:
         discord: Officiële Discord
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Source code (GitHub)
-        translate: Help translate
+        translate: Help met vertalen
     text_open_source: >-
         Anybody can contribute, I'm actively involved in the community and
         attempt to review all suggestions and take feedback into consideration
