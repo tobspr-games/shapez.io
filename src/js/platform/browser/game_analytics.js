@@ -8,6 +8,7 @@ import { blueprintShape, UPGRADES } from "../../game/upgrades";
 import { tutorialGoals } from "../../game/tutorial_goals";
 import { BeltComponent } from "../../game/components/belt";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
+import { queryParamOptions } from "../../core/query_parameters";
 
 const logger = createLogger("game_analytics");
 
@@ -19,6 +20,10 @@ const analyticsLocalFile = "shapez_token_123.bin";
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     get environment() {
+        if (queryParamOptions.sandboxMode) {
+            return "sandbox";
+        }
+
         if (G_IS_DEV) {
             return "dev";
         }
