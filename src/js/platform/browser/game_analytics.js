@@ -31,7 +31,11 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             return "prod";
         }
 
-        return "beta";
+        if (window.location.host.indexOf("alpha") >= 0) {
+            return "alpha";
+        } else {
+            return "beta";
+        }
     }
 
     /**

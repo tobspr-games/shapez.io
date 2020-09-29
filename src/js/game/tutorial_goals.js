@@ -217,21 +217,21 @@ export const tutorialGoals = [
     // Display
     {
         shape: "CcSyCcSy:SyCcSyCc:CcSyCcSy",
-        required: 5000,
+        required: 25000,
         reward: enumHubGoalRewards.reward_display,
     },
 
     // 24 Logic gates
     {
         shape: "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
-        required: 10000,
+        required: 25000,
         reward: enumHubGoalRewards.reward_logic_gates,
     },
 
     // 25 Virtual Processing
     {
         shape: "Rg--Rg--:CwRwCwRw:--Rg--Rg",
-        required: 10000,
+        required: 25000,
         reward: enumHubGoalRewards.reward_virtual_processing,
     },
 

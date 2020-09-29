@@ -772,7 +772,8 @@ storyRewards:
     reward_display:
         title: Display
         desc: >-
-            You have unlocked the <strong>Display</strong> - Connect a signal on the wires layer to visualize its contents!
+            You have unlocked the <strong>Display</strong> - Connect a signal on the wires layer to visualize it!<br><br>
+            PS: Did you notice the belt reader and storage output their last read item? Try showing it on a display!
 
     reward_constant_signal:
         title: Constant Signal
