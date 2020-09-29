@@ -211,7 +211,7 @@ export class HubGoals extends BasicSerializableObject {
             return;
         }
 
-        const required = 4 + (this.level - 27) * 0.25;
+        const required = Math.min(200, 4 + (this.level - 27) * 0.25);
         this.currentGoal = {
             definition: this.computeFreeplayShape(this.level),
             required,
