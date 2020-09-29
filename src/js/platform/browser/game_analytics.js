@@ -20,15 +20,14 @@ const analyticsLocalFile = "shapez_token_123.bin";
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     get environment() {
-        if (queryParamOptions.sandboxMode) {
-            return "sandbox";
-        }
-
         if (G_IS_DEV) {
             return "dev";
         }
 
         if (G_IS_STANDALONE) {
+            if (queryParamOptions.sandboxMode) {
+                return "steam-sandbox";
+            }
             return "steam";
         }
 
@@ -37,8 +36,14 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         }
 
         if (window.location.host.indexOf("alpha") >= 0) {
+            if (queryParamOptions.sandboxMode) {
+                return "alpha-sandbox";
+            }
             return "alpha";
         } else {
+            if (queryParamOptions.sandboxMode) {
+                return "beta-sandbox";
+            }
             return "beta";
         }
     }
