@@ -25,7 +25,7 @@ steamPage:
     shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
 
     # This is the text shown above the Discord link
-    discordLink: Official Discord - Chat with me!
+    discordLinkShort: Official Discord
 
     # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
     # NOTICE:
