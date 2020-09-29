@@ -1,6 +1,7 @@
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { globalConfig, IS_DEMO, THIRDPARTY_URLS } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { Loader } from "../../../core/loader";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
 import { FormElementInput } from "../../../core/modal_dialog_forms";
@@ -16,6 +17,7 @@ import {
 import { Vector } from "../../../core/vector";
 import { T } from "../../../translations";
 import { BaseItem } from "../../base_item";
+import { MetaHubBuilding } from "../../buildings/hub";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { layers } from "../../root";
@@ -100,7 +102,7 @@ export class HUDWaypoints extends BaseHUDPart {
                 label: null,
                 center: { x: 0, y: 0 },
                 zoomLevel: 3,
-                layer: layers[0],
+                layer: gMetaBuildingRegistry.findByClass(MetaHubBuilding).getLayer(),
             },
         ];
 
