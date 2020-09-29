@@ -210,9 +210,7 @@ export class HubGoals extends BasicSerializableObject {
         }
 
         const required = 4 + (this.level - 27) * 0.25;
-
         this.currentGoal = {
-            /** @type {ShapeDefinition} */
             definition: this.computeFreeplayShape(this.level),
             required,
             reward: enumHubGoalRewards.no_reward_freeplay,

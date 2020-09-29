@@ -22,14 +22,14 @@ export const enumHubGoalRewards = {
     reward_splitter: "reward_splitter",
     reward_cutter_quad: "reward_cutter_quad",
     reward_painter_double: "reward_painter_double",
-    reward_painter_quad: "reward_painter_quad",
     reward_storage: "reward_storage",
     reward_merger: "reward_merger",
-    reward_wires_filters_and_levers: "reward_wires_filters_and_levers",
+    reward_wires_painter_and_levers: "reward_wires_painter_and_levers",
     reward_display: "reward_display",
     reward_constant_signal: "reward_constant_signal",
     reward_logic_gates: "reward_logic_gates",
     reward_virtual_processing: "reward_virtual_processing",
+    reward_filter: "reward_filter",
 
     reward_blueprints: "reward_blueprints",
     reward_freeplay: "reward_freeplay",
@@ -194,15 +194,15 @@ export const tutorialGoals = [
     {
         shape: finalGameShape,
         required: 25000,
-        reward: enumHubGoalRewards.reward_wires_filters_and_levers,
+        reward: enumHubGoalRewards.reward_wires_painter_and_levers,
     },
 
     // 21
-    // Display
+    // Filter
     {
-        shape: "CrCrCrCr:CwCwCwCw:CrCrCrCr:CwCwCwCw",
+        shape: "CrCwCrCw:CwCrCwCr:CrCwCrCw:CwCrCwCr",
         required: 25000,
-        reward: enumHubGoalRewards.reward_display,
+        reward: enumHubGoalRewards.reward_filter,
     },
 
     // 22
@@ -214,11 +214,11 @@ export const tutorialGoals = [
     },
 
     // 23
-    // Quad Painter
+    // Display
     {
         shape: "CcSyCcSy:SyCcSyCc:CcSyCcSy",
         required: 5000,
-        reward: enumHubGoalRewards.reward_painter_quad,
+        reward: enumHubGoalRewards.reward_display,
     },
 
     // 24 Logic gates
@@ -238,7 +238,7 @@ export const tutorialGoals = [
     // 26 Freeplay
     {
         shape: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
-        required: 10000,
+        required: 50000,
         reward: enumHubGoalRewards.reward_freeplay,
     },
 ];

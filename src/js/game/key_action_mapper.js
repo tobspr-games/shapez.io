@@ -56,6 +56,9 @@ export const KEYMAPPINGS = {
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
 
+        // Sandbox
+        item_producer: { keyCode: key("L") },
+
         // Secondary toolbar
         storage: { keyCode: key("Y") },
         reader: { keyCode: key("U") },

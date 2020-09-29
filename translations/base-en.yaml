@@ -534,7 +534,7 @@ buildings:
             name: Rotate (CCW)
             description: Rotates shapes counter-clockwise by 90 degrees.
         rotate180:
-            name: Rotate (180)
+            name: Rotate (180°)
             description: Rotates shapes by 180 degrees.
 
     stacker:
@@ -667,6 +667,11 @@ buildings:
             name: Virtual Painter
             description: Virtually paints the shape from the bottom input with the shape on the right input.
 
+    item_producer:
+        default:
+            name: Item Producer
+            description: Available in sandbox mode only, outputs the given signal from the wires layer on the regular layer.
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -735,14 +740,8 @@ storyRewards:
         title: Double Painting
         desc: You have unlocked a variant of the <strong>painter</strong> - It works similar to the regular painter but processes <strong>two shapes at once</strong>, consuming just one color instead of two!
 
-    reward_painter_quad:
-        title: Quad Painting
-        desc: >-
-            You have unlocked a variant of the <strong>painter</strong> - It allows you to paint each part of the shape individually!<br><br>
-            Connect each slot you'd like to paint with a <strong>truthy signal</strong> (shape, item or boolean "1") on the wires layer!
-
     reward_storage:
-        title: Storage Buffer
+        title: Storage
         desc: >-
             You have unlocked the <strong>storage</strong> building - It allows you to store items up to a given capacity!<br><br>
             It priorities the left output, so you can also use it as an <strong>overflow gate</strong>!
@@ -752,15 +751,23 @@ storyRewards:
         desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
 
     reward_rotater_180:
-        title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows you to rotate a shape by 180 degress (Surprise! :D)
+        title: Rotater (180°)
+        desc: You just unlocked the 180 degrees <strong>rotater</strong>! - It allows you to rotate a shape by 180 degress (Surprise! :D)
 
-    reward_wires_filters_and_levers:
+    reward_wires_painter_and_levers:
         title: >-
-            Wires: Filters & Levers
+            Wires & Quad Painter
         desc: >-
-            You just unlocked the <strong>wires layer</strong>! It is a separate layer on top of the regular layer and introduces a lot of new mechanics!<br><br>
-            Since it can be overwhelming a bit, I added a small tutorial - Be sure to have <strong>tutorials enabled</strong> in the settings!
+            You just unlocked the <strong>Wires Layer</strong>: It is a separate layer on top of the regular layer and introduces a lot of new mechanics!<br><br>
+            For the beginning I unlocked you the <strong>Quad Painter</strong> - Connect the slots you would like to paint with on the wires layer!<br><br>
+            To switch to the wires layer, press <strong>E</strong>.
+
+    reward_filter:
+        title: >-
+            Item Filter
+        desc: >-
+            You unlocked the <strong>Item Filter</strong>! It will route items either to the top or the right output depending on whether they match the signal from the wires layer or not.<br><br>
+            You can also pass in a boolean signal (1 / 0) to entirely activate or disable it.
 
     reward_display:
         title: Display
@@ -1060,6 +1067,7 @@ keybindings:
         transistor: *transistor
         analyzer: *analyzer
         comparator: *comparator
+        item_producer: Item Producer (Sandbox)
         # ---
 
         pipette: Pipette
@@ -1166,3 +1174,4 @@ tips:
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.

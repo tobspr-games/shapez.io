@@ -58,7 +58,13 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
                 BOOL_FALSE_SINGLETON,
                 BOOL_TRUE_SINGLETON,
                 ...Object.values(COLOR_ITEM_SINGLETONS),
+                this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
+                    this.root.hubGoals.currentGoal.definition
+                ),
                 this.root.shapeDefinitionMgr.getShapeItemFromShortKey(blueprintShape),
+                ...this.root.hud.parts.pinnedShapes.pinnedShapes.map(key =>
+                    this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key)
+                ),
             ],
         });
 
