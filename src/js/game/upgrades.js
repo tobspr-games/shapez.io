@@ -1,3 +1,4 @@
+import { IS_DEMO } from "../core/config";
 import { findNiceIntegerValue } from "../core/utils";
 import { ShapeDefinition } from "./shape_definition";
 
@@ -8,7 +9,7 @@ export const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
 const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
 
-const numEndgameUpgrades = G_IS_DEV || G_IS_STANDALONE ? 20 - fixedImprovements.length - 1 : 0;
+const numEndgameUpgrades = !IS_DEMO ? 20 - fixedImprovements.length - 1 : 0;
 
 function generateEndgameUpgrades() {
     return new Array(numEndgameUpgrades).fill(null).map((_, i) => ({
