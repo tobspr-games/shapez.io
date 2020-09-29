@@ -1,61 +1,47 @@
 steamPage:
     shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen
         Maschinen durch Kombination immer komplexere Formen zu erschaffen.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+    intro: >-
+        Du magst Automatisierungsspiele? Dann bist du hier genau richtig!
 
-        In shapez.io musst du Maschinen geschickt verbinden, damit Formen automatisiert erstellt, bearbeitet und kombiniert werden.
+        shapez.io ist ein entspanntes Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst. Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten.
 
-        Liefere die gewünschten, stetig komplexer werdenden Formen an dein Hauptgebäude, um im Spiel voranzukommen. Schalte mit ihnen außerdem Upgrades frei, die deine Maschinen und somit auch deine Fabriken beschleunigen!
+        Und als ob das noch nicht genug wäre, musst du auch exponentiell mehr produzieren, um die Anforderungen zu befriedigen - Da hilft nur skalieren! Während du am Anfang nur Formen verarbeitest, musst du diese später einfärben - Dafür musst du Farben extrahieren und mischen!
 
-        Da die Nachfrage sowohl in der Komplexität, als auch der Menge steigt, wirst du deine Fabriken erweitern müssen. Vergiss nicht, dass du die dafür benötigten Ressourcen beschaffen musst und expandiere auf der [b]unendlichen Karte[/b]!
+        Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, du kannst aber auch zuerst eine Demo auf shapez.io spielen und dich später entscheiden!
+    title_advantages: Vorteile der Standalone
+    advantages:
+        - <b>12 Neue Level</b> für insgesamt 26 Level
+        - <b>18 Neue Gebäude</b> für eine komplett automatisierte Fabrik!
+        - <b>20 Upgrade Stufen</b> für viele Stunden Spielspaß
+        - <b>Wires Update</b> für eine komplett neue Dimension!
+        - <b>Dark Mode</b>!
+        - Unbegrenzte Speicherstände
+        - Unbegrenzte Wegpunkten
+        - Unterstütze mich! ❤️
+    discordLinkShort: Offizieller Discord
+    title_future: Geplante Inhalte
+    planned:
+        - Blaupausen-Bibliothek
+        - Steam Errungenschaften
+        - Puzzel-Modus
+        - Minimap
+        - Mod Unterstützung
+        - Sandkasten - Modus
+        - ... und noch viel mehr!
+    title_open_source: Dieses Spiel ist Quelloffen!
+    text_open_source: >-
+        Jeder kann etwas zum Spiel beitragen! Ich engagiere mich aktiv in der
+        Community und versuche alle Vorschläge zu berücksichtigen.
 
-        Bald wirst du Farben mischen und deine Formen damit bemalen lassen. Staple dann deine fertigen Formen aufeinander und lasse so die wildesten Kreationen entstehen.
-
-        Nutze dein gesammeltes Wissen über die Maschinen und lasse deine Fabriken die gewünschten Formen der 18 verschiedenen Level abliefern. Schalte mit jedem Level neue Arbeitsschritte oder Gebäude frei. Das sollte dich schon für Stunden beschäftigt halten! Danach werden im Freispielmodus zufällige Formen generiert, die du ebenfalls abliefern kannst. Ich füge regelmäßig neue Funktionen hinzu und davon sind eine ganze Menge geplant!
-
-        Wenn du das Spiel erwirbst, erhälst du Zugriff auf die zusätzlichen Features der Standalone-Version. Das bedeutet, du kannst unter anderem die neuesten Updates zuerst spielen!
-
-        [b]Vorteile der Standalone[/b]
-
-        [list]
-            [*] Dark-Mode
-            [*] Unbegrenzte Anzahl an Wegpunkten
-            [*] Unbegrenzte Anzahl an Speicherständen
-            [*] Zusätzliche Einstellungen
-            [*] Es kommen: Kabel & Energie! Voraussichtlich gegen Ende Juli 2020
-            [*] Es kommen: Mehr Levels
-            [*] Unterstütze die Entwicklung von shapez.io ❤️
-        [/list]
-
-        [b]Geplante Funktionen[/b]
-
-        Ich bin aktiv mit der Entwicklung beschäftigt und versuche jede Woche ein Update oder den aktuellen Stand der Entwicklung zu veröffentlichen.
-
-        [list]
-            [*] Verschiedene Karten und Herausforderungen (z.B. Karten mit Hindernissen)
-            [*] Puzzle (Liefere die geforderte Form mit begrenztem Platz/limitierten Gebäuden)
-            [*] Eine Kampagne mit Gebäudekosten
-            [*] Konfigurierbarer Kartengenerator (Ändere die Grösse/Anzahl/Dichte der Ressourcenflecken, den Seed und vieles mehr)
-            [*] Mehr Formentypen
-            [*] Performanceverbesserungen (Das Spiel läuft bereits sehr gut!)
-            [*] Und vieles mehr!
-        [/list]
-
-        [b]Das Spiel ist Open Source![/b]
-
-        Jeder kann dazu beitragen! Ich bin aktiv in die Community involviert, versuche alle Vorschläge zu lesen und beziehe so viel Feedback wie möglich mit in die Entwicklung ein. Die komplette Roadmap gibt es auf dem Trello-Board zum Nachlesen.
-
-        [b]Links[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Offizieller Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Quelltext (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Hilf beim Übersetzen[/url]
-        [/list]
-    discordLinkShort: Official Discord
+        Die vollständige Roadmap findet ihr in meinem Trello-Board!
+    title_links: Links
+    links:
+        discord: Offizieller Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Quellcode (GitHub)
+        translate: Hilf beim Übersetzen
 global:
     loading: Laden
     error: Fehler

@@ -29,6 +29,7 @@ function match(originalObj, translatedObj, path = "/") {
         const valueMatching = translatedObj[key];
         if (typeof valueOriginal !== typeof valueMatching) {
             console.warn(" | MISMATCHING type (obj|non-obj) in", path + key);
+            translatedObj[key] = originalObj[key];
             continue;
         }
 

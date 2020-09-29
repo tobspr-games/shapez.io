@@ -2,61 +2,51 @@ steamPage:
     shortText: shapez.io és un joc que té com a objectiu construir i automatitzar
         fàbriques per tal de produir figures cada cop més complexes en un mapa
         infinit.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io és un joc que té com a objectiu construir i automatitzar fàbriques per tal de produir figures cada cop més complexes en un mapa infinit.
-
-        Al lliurar les formes geomètriques sol·licitades, progressaràs i desbloquejaràs millores per accelerar la teva fàbrica.
-
-        Com que la demanda de figures va augmentant, hauràs de augmentar proporcionalment la teva fàbrica per satisfer la demanda. Però no t'oblidis dels recursos, ja que t'hauràs d'expandre a través del [b]mapa infinit[/b]!
-
-        Sovint, hauràs de començar a mesclar color i pintar les figures amb aquests; combina roig, verd i blau per produïr diferents colors i pintar les figures amb aquests per satisfer la demanda.
-
-        Aquest joc presenta 18 nivells progressius (Els quals ja haurien de mantenir-te ocupat durant hores!) però estic constantment afegint nou contingut. Tenim moltes coses planejades!
-
-        La compra del joc et dona accés a versió independent amb característiques adicionals, i també rebràs accés a les noves característiques que es desenvolupin.
-
-        [b]Ventatges de la Versió Independent[/b]
-
-        [list]
-            [*] Mode Oscur
-            [*] Punts d'interès il·limitats
-            [*] Guardar partides il·limitades
-            [*] Configuracions Adicionals
-            [*] Pròximament: Cables i Energia! Objectiu (aproximadament) per finals de Juliol del 2020.
-            [*] Pròximament: Més Nivells
-            [*] Em permet seguir desenvolupant shapez.io ❤️
-        [/list]
-
-        [b]Futures Actualitzacions[/b]
-
-        Actualitzo el joc sovint i intent treure una actualització nova per setmana!
-
-        [list]
-            [*] Mapes i reptes diferents (p.e. mapes amb obstacles)
-            [*] Trencaclosques (Entrega la figura amb una àrea/conjunt d'edificis delimitats)
-            [*] Un "Mode Història" on els edificis tenen un cost
-            [*] Generador de mapes configurable (Configura el tamany/densitat de les formes/recursos, llavors i més)
-            [*] Formes geomètriques adicionals
-            [*] Millores de rendiment (El joc ja funciona força bé!)
-            [*] Moltes coses més!
-        [/list]
-
-        [b]Aquest joc és de codi obert![/b]
-
-        Qualsevol pot contribuir, estic involucrat activament en la comunitat i intento revisar tots els suggeriments i tenir en compte els comentaris sempre que sigui possible. Assegureu-vos de consultar el meu tauler de trello per obtenir el full de ruta complet!
-
-        [b]Enllaços[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Carregant
     error: Error

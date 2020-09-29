@@ -1,59 +1,51 @@
 steamPage:
     shortText: shapez.io — это игра о строительстве фабрик для автоматизации
         создания и объединения все более сложных фигур на бесконечной карте.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io — это игра о строительстве фабрик для автоматизации создания и объединения все более сложных фигур на бесконечной карте. Развивайтесь в игре и открывайте улучшения для ускорения фабрики, после доставки запрошенных ресурсов.
-
-        По мере увеличения спроса на фигуры вам придется увеличивать свою фабрику, чтобы удовлетворить спрос. Однако, не забывайте о ресурсах, несмотря на то что вы будете расширятся на [b]бесконечной карте[/b]!
-
-        Вскоре вам придется смешивать цвета и красить ими фигуры. Комбинируйте красный, зеленый и синий красители для получения разных цветов и красьте ими фигуры, чтобы удовлетворить спрос.
-
-        Эта игра имеет 18 уровней развития (но и они займут вас на часы!), но я постоянно добавляю новый контент - там многое запланировано!
-
-        Покупка игры даст доступ к полной версии, которая имеет дополнительные функции, а также вы получите доступ к недавно разработанным функциям.
-
-        [b]Преимущества полной версии[/b]
-
-        [list]
-            [*] Темный Режим
-            [*] Неограниченные Метки
-            [*] Неограниченные Сохранения
-            [*] Дополнительные настройки
-            [*] Скоро: Провода & Энергия! Запланировано (примерно) на конец июля 2020 года.
-            [*] Скоро: Больше уровней
-            [*] Позволит мне дальше разрабатывать shapez.io ❤️
-        [/list]
-
-        [b]Будущие обновления[/b]
-
-        Я очень часто обновляю игру и пытаюсь обновлять ее как минимум каждую неделю!
-
-        [list]
-            [*] Различные карты и испытания (например, карты с препятствиями)
-            [*] Пазлы (Доставить запрошенную фигуру с ограничением пространства / набора зданий)
-            [*] Режим истории, где здания стоят фигуры
-            [*] Настраиваемый генератор карт (настройка ресурса / размера фигуры / плотности, семя и т.д.)
-            [*] Дополнительные типы фигур
-            [*] Улучшения производительности (игра уже работает довольно хорошо!)
-            [*] И многое другое!
-        [/list]
-
-        [b]Это игра с открытым исходным кодом![/b]
-
-        Любой может внести свой вклад, я активно участвую в жизни сообщества и пытаюсь рассмотреть все предложения и по возможности принять во внимание отзывы. Не забудьте проверить мою доску Trello со всеми планами!
-
-        [b]Ссылки[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Официальный Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Планы[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Сабреддит[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Исходный код (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Помочь с переводом[/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Загрузка
     error: Ошибка

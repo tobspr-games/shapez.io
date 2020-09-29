@@ -1,59 +1,51 @@
 steamPage:
     shortText: shapez.io — це гра про будування фабрик для автоматизації створення
         та обробки все більш складних форм на нескінченно розширюваній мапі.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io — це гра про будування фабрик для автоматизації створення та обробки все більш складних форм на нескінченно розширюваній мапі. Після доставки потрібних форм ви просунетеся в грі та розблокуєте поліпшення, щоб пришвидшити свою фабрику.
-
-        Коли попит на форми зростає, вам доведеться збільшити масштаб своєї фабрики, щоб задовольнити попит. Однак не забувайте про ресурси, вам доведеться розширюватися на [b]нескінченній мапі[/b]!
-
-        Незабаром ви зможете змішути кольори і з їхньою допомогою фарбувати свої форми. Поєднуйте червоний, зелений та синій ресурси кольорів, щоб виготовити різноманітні кольори і пофарувати форми як вам заманеться.
-
-        У цій грі є 18 передових рівнів, які повинні утримувати вас годинами. Але не турбуйтеся, я постійно додаю новий вміст — ще багато чого заплановано!
-
-        Купуючи гру, ви отримуєте доступ до окремої версії, яка має додаткові функції, а також ви отримаєте доступ до нещодавно розроблених функцій.
-
-        [img]{STEAM_APP_IMAGE}/extras/header_standalone_advantages.png[/img]
-
-        [list]
-            [*] Темний режим
-            [*] Необмежені позначки
-            [*] Необмежені збереження
-            [*] Додаткові налаштування
-            [*] Незабаром: дроти й енергія! Гадаю, оновлення вийде у кінці липня 2020 року.
-            [*] Незабаром: більше рівнів.
-            [*] Дозволяє мені розвиватися далі shapez.io ❤️
-        [/list]
-
-        [img]{STEAM_APP_IMAGE}/extras/header_future_updates.png[/img]
-
-        Я оновлюю гру надпрочуд часто і намагаюся випускати оновлення щотижня!
-
-        [list]
-            [*] Різноманітні мапи та випробування (наприклад, мапи з перешкодами)
-            [*] Пазли (надайте потрібну форму з обмеженою площею/набором будівель)
-            [*] Режим історії, де будівлі матимуть вартість
-            [*] Генератор мап, який можна налаштувати (ресурс/розмір/щільність форми, зерно та багато іншого)
-            [*] Додаткові типи форм
-            [*] Поліпшення продуктивності (Гра вже працює досить добре!)
-            [*] Та багато чого іншого!
-        [/list]
-
-        [img]{STEAM_APP_IMAGE}/extras/header_open_source.png[/img]
-
-        Будь-хто може зробити внесок, я активно беру участь у спільноті і намагаюся оцінити всі пропозиції і відгуки, та взяти до уваги, де це можливо. Не забудьте перевірити мою дошку Trello заради повної дорожньої карти!
-
-        [img]{STEAM_APP_IMAGE}/extras/header_links.png[/img]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Офіційний Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Дорожня карта[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Спільнота на Reddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Вихідний код на GitHub[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Допоможіть з перекладом[/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Завантаження
     error: Помилка
@@ -954,7 +946,7 @@ keybindings:
         lockBeltDirection: Увімкнути планувальник конвеєрних стрічок
         switchDirectionLockSide: "Planner: Змінити сторону"
         massSelectStart: Утримуйте і перетягуйте, щоб розпочати
-        massSelectSelectMultiple: null
+        massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Копіювати ділянку
         massSelectCut: Вирізати ділянку
         placementDisableAutoOrientation: Вимкнути автоматичну орієнтацію

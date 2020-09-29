@@ -1,60 +1,51 @@
 steamPage:
     shortText: shapez.io giderek karmaşıklaşan şekillerin sonsuz bir harita üzerinde
         üretimi ve birleştirilmesi hakında bir oyundur.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io giderek karmaşıklaşan şekillerin sonsuz bir harita üzerinde üretimi ve birleştirilmesi hakında bir oyundur. Talep edilen şekilleri verdikten sonra oyundaki geliştirmeleri açıp fabrikanızı hızlandırabilirsiniz.
-
-        Şekiller için talep artınca fabrikanı büyütüp talebi karşılamalısın - Kaynakları unutma! Sonsuz [b]sonsuz haritada[/b] genişlemen gerekecek!
-
-        Yakında renkleri karıştırman ve şekileri boyaman gerekecek - Talebi karşılamak için kırmızı, mavi ve yeşili karıştırıp şekilleri boyacaksın
-
-        Bu oyun 18 kademeli seviye içerir (Seni saatlerce meşgul tutumalı) ama sürekli yeni şeyler ekliyorum - Ekleyecek çok şey var!
-
-        Bu oyunu satın almak indirilebilir versiyonuna (Ek özellikler var) ve yeni özeliklerine erişebileceksiniz.
-
-        [b]İndirebilir versiyonun avantajları[/b]
-
-        [list]
-            [*] Karanlık mod
-            [*] Sonsuz işaret
-            [*] Sonsuz kayıt alanı
-            [*] Ek ayarlar
-            [*] Yakında geliyor: Kablo ve enerji! Temmuz sonunu hedefliyorum.
-            [*] Yakında geliyor: Daha fazla seviyeler
-            [*] Shapez.io'yu geliştirmeme izin veriyor ❤️
-        [/list]
-
-        [b]Gelecek güncellemeler[/b]
-
-        Oyunu sık sık güncelliyorum ve en az haftada bir güncellemeye çalışıyorum!
-
-        [list]
-            [*] Farklı haritalar ve görevler (Örneğin engelli haritalar)
-            [*] Yapbozlar (İstenen şekilleri kısıtlı bir alanda / belli yapılar ile)
-            [*] Hikaye modu ile yapıların maliyeti olacak.
-            [*] Ayarlanabilir harita yapımı(Ayarlanabilir kaynak/şekil  boyut/sıklığı, seedler ve daha fazlası)
-            [*] Ek şekiller
-            [*] Performans optimizasyonları (oyun zaten iyi çalışıyor)
-            [*] Ve daha fazlası
-        [/list]
-
-        [b]Bu oyun açık kaynaklı![/b]
-
-        Bu oyuna herkes katkıda bulunabilir! Aktif olarak toplulukğa katkıda bulunuyorum ve bütün önerileri gözden geçirmeye çalışıyorum. Yol planıma Trello'dan bakmayı unutmayın!
-
-
-        [b]Links[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Dİscord'umuz[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]yol planı[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]KAynak kodu (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Çevirmeye yardımcı olun[/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Yüklenİyor
     error: Hata

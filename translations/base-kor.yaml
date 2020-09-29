@@ -1,58 +1,50 @@
 steamPage:
     shortText: shapez.io는 무한한 공간에서 점점 더 복잡한 도형의 생산과 조합을 자동화하는 공장을 짓는 게임입니다.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io는 무한한 공간에서 점점 더 복잡한 도형의 생산과 조합을 자동화하는 공장을 짓는 게임입니다. 요청된 도형을 전달해 게임을 진행하고 업그레이드를 통해 공장을 가속시킬 수 있습니다.
-
-        도형에 대한 수요가 증가함에 따라, 여러분은 수요에 맞게 공장을 확장해야 합니다. - [b]무한한 공간[/b]으로 확장하여 도형 재료를 구하는 것도 잊지 마세요.
-
-        곧이어 여러분은 색을 섞고 도형을 색칠 할 것입니다. - 빨강, 초록, 파랑 색을 섞어서 만든 다양한 색으로 수요를 만족시키세요.
-
-        이 게임에는 18개의 레벨이 있습니다 (이것 만으로도 여러분은 이미 몇시간이 걸렸을 거예요!) 하지만 저는 항상 새로운 콘텐츠를 추가하고 있습니다 - 계획해 놓은 것들이 많습니다!
-
-        게임을 구입하면 추가 기능이 있는 독립 실행형 버전을 이용할 수 있으며 새로 개발된 기능도 이용할 수 있습니다.
-
-        [b]유료 버전의 장점[/b]
-
-        [list]
-            [*] 다크 모드
-            [*] 제한 없는 마커
-            [*] 제한 없는 저장
-            [*] 더 다양한 설정
-            [*] 출시 예고: 전선 & 에너지! 2020년 7월 말을 목표로 하는 중.
-            [*] 출시 예고: 더 많은 레벨
-            [*] shapez.io를 개발하는 데 도움이 됨 ❤️
-        [/list]
-
-        [b]향후 업데이트[/b]
-
-        저는 게임을 자주 업데이트하고 있고 적어도 매주마다 업데이트를 추진하려고 노력 중입니다!
-
-        [list]
-            [*] 다양한 맵과 챌린지 (e.g. 장애물이 있는 맵)
-            [*] 퍼즐 (제한된 영역/건물만으로 도형 전달하기)
-            [*] 건물에 비용이 드는 스토리 모드
-            [*] 설정 가능한 맵 생성기 (자원/도형, 크기/밀도, 시드 등)
-            [*] 더 많은 종류의 도형
-            [*] 성능 향상 (지금도 게임이 잘 되긴 합니다!)
-            [*] 그 외 다수!
-        [/list]
-
-        [b]이 게임은 오픈소스 입니다![/b]
-
-        누구나 참여할 수 있으며, 저는 커뮤니티에 적극적으로 참여하고 있고 가능한 경우 모든 제안을 검토하고 피드백을 고려하려고 합니다. 전체 로드맵을 위해 반드시 내 Trello 보드를 확인하세요!
-
-        [b]링크[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]공식 디스코드[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]로드맵[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]서브레딧[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]소스 코드 (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]번역을 도와주세요![/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: 로딩중
     error: 에러

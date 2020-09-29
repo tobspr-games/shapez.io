@@ -2,59 +2,51 @@ steamPage:
     shortText: Στο shapez.io χτήζεις εργοστάσια για να αυτοματοποιήσεις την
         δημιουργία και τον συνδιασμό σχημάτων αυξανόμενης πολυπλοκότητας σε έναν
         ατέλειωτο χάρτη.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        Στο shapez.io χτήζεις εργοστάσια για να αυτοματοποιήσεις την δημιουργία και τον συνδιασμό σχημάτων αυξανόμενης πολυπλοκότητας σε έναν ατέλειωτο χάρτη. Όταν παραδώσεις τα απαιτούμενα σχήματα, θα προχωρήσεις στο παιχνίδι και θα ξεκλειδώσεις αναβαθμήσεις για να επιταχύνεις το εργοστάσιό σου.
-
-        Επειδή η ζήτηση για σχήματα αυξάνεται συνεχώς, θα πρέπει να επεκτείνεις το εργοστάσιό σου για να την ικανοποιήσεις - Μήν ξεχάσεις, για να βρείς όλους τους πόρους που χρειάζεσαι θα πρέπει να εξαπλωθείς στον [b]άτελείωτο χάρτη[/b]!
-
-        Σύντομα θα πρέπει να αναμείξεις χρώματα και να βάψεις σχήματα - Ανάμειξε κόκκινο, πράσινο και μπλέ για να φτιάξεις διαφορετικά χρώματα και να βάψεις σχήματα ώστε να ικανοποιήσεις την ζήτηση.
-
-        Το παιχνίδι έχει 18 βαθμιαία επίπεδα (που ήδη θα σε απασχολήσουν για ώρες!) και συνεχίζω να προσθέτω περιεχόμενο - Έχω ακόμα πολλά σχέδια!
-
-        Αγόράζοντας το παιχνίδι λαμβάνεις την αυτόνομη έκδοση (standalone) με πολλές επιπλέον δυνατότητες, καθώς και πρόσβαση σε νέες δυνατότητες που ακόμα αναπτύσσονται.
-
-        [b]Πλεονεκτήματα Αυτόνομης Έκδοσης[/b]
-
-        [list]
-            [*] Σκοτεινή λειτουργία
-            [*] Απεριόριστα σημεία γρήγορης κίνησης της κάμερας στον χάρτη
-            [*] Απεριόριστα αποθηκευμένα παιχνίδια
-            [*] Πρόσθετες ρυθμίσεις
-            [*] Στο κοντινό μέλλον: Καλώδια και ενέργεια! Aναμένεται (περίπου) τέλος Ιουλίου 2020.
-            [*] Στο κοντινό μέλλον: Περισσότερα επίπεδα
-            [*] Μου επιτρέπει να αναπτήξω περεταίρω το shapez.io ❤️
-        [/list]
-
-        [b]Μελλοντικές ενημερώσεις[/b]
-
-        Ενημερώνω το παιχνίδι πολύ συχνά και προσπαθώ να προωγώ ενημερώσεις σχεδόν κάθε εβδομάδα!
-
-        [list]
-            [*] Διαφορετικοί χάρτες και προκλήσεις (π.χ. χάρτες με εμπόδια)
-            [*] Πάζλ (Παράδωσε το αιτούμενο σχήμα με περιορισμένο χώρο / κτήρια)
-            [*] Ένα σενάριο όπου τα κτήρια έχουν κόστος
-            [*] Διαμορφώσιμη δημιουργία χάρτη (Με επιλογές για το μέγεθος και την πυκνότητα των πόρων και άλλα)
-            [*] Επιπλέον σχήματα!
-            [*] Βελτιώσεις απόδοσης (Το παιχνίδι λειτουργεί ήδη πολύ καλά!)
-            [*] Και πολλά άλλα!
-        [/list]
-
-        [b]Αυτό το παιχνίδι είναι ανοιχτού κώδικα![/b]
-
-        Όλοι μπορούν να συνεισφέρουν, συμμετέχω ενεργά στην κοινότητα και προσπαθώ να εξετάσω όλες τις προτάσεις και να λάβω υπόψη τα σχόλια όπου είναι δυνατόν. Δείτε το trello board μου για τον πλήρη χάρτη πορείας!
-
-        [b]Σύνδεσμοι[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Επίσημο Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Χάρτης πορείας[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Πηγαίος κώδικας (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Βοήθησε με μεταφράσεις[/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Φόρτωση
     error: Σφάλμα

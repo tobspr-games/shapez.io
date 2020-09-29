@@ -2,61 +2,51 @@ steamPage:
     shortText: Shapez.io adalah game tentang membangun pabrik untuk mengotomatiskan
         pembuatan dan pemrosesan bentuk-bentuk yang semakin kompleks di peta
         yang meluas tanpa batas.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io adalah permainan membangun pabrik dengan tujuan untuk mengautomatiskan pembentukan dan pemrosesan bentuk-bentuk yang bertambah semakin kompleks di peta yang meluas tanpa batas.
-
-        Setelah pengiriman bentuk-bentuk yang diminta, Anda akan maju dalam permainan dan membuka tingkatan versi-versi mesin selanjutnya untuk mempercepat pabrik Anda.
-
-        Seiring meningkatnya kesulitan dari bentuk-bentuk yang diminta, Anda harus meningkatkan pabrik Anda untuk mengatasi kesulitan tersebut – Jangan lupa dengan sumber daya, Anda harus memperluas ke seluruh [b]area yang tidak terbatas[/b]!
-
-        Kemudian Anda harus mencampurkan warna-warna dan mencat bentuk-bentuk tersebut – Campurkan merah, hijau, dan biru untuk memproduksi warna-warna lain dan mencat bentuk-bentuk tersebut untuk memenuhi permintaan.
-
-        Permainan ini mempunyai 18 level-level progresif (yang mana akan membuat Anda sibuk berjam-jam!), akan tetapi saya akan terus menambahkan konten-konten baru – Ada banyak yang direncanakan!
-
-        Membeli permainan ini akan memberikan Anda akses ke versi penuh yang memiliki fitur-fitur tambahan, dan Anda juga akan menerima akses ke fitur-fitur yang baru dikembangkan.
-
-        [b]Keuntungan Versi Penuh[/b]
-
-        [list]
-            [*] Mode Malam
-            [*] Titik Arah Tak Terhingga
-            [*] Penyimpanan Permainan Tak Terhingga
-            [*] Pengaturan-pengaturan Tambahan
-            [*] Akan datang: Kawat & Energi! Akan dicoba untuk dicapai sekitar akhir Juli 2020.
-            [*] Akan datang: Level-level tambahan
-            [*] Mendukung saya untuk terus mengembangkan shapez.io ❤️
-        [/list]
-
-        [b]Pembaruan di masa yang akan datang[/b]
-
-        Saya seringkali membarui permainan ini dan terus mencoba untuk menciptakan pembaruan paling sedikit sekali seminggu!
-
-        [list]
-            [*] Peta-peta dan tantangan-tantangan berbeda (contohnya, peta-peta dengan berbagai rintangan)
-            [*] Berbagai teka-teki (Kirim bentuk yang diminta dengan area terbatas atau sekelompok bangunan tertentu)
-            [*] Modus cerita dimana bangunan-bangunan memiliki biaya.
-            [*] Generator peta yang dapat dikonfigurasi (Konfigurasikan sumber daya/ukuran bentuk/kepadatan, benih dan lainnya)
-            [*] Tipe-tipe bentuk tambahan
-            [*] Peningkatan kinerja (Permainannya sudah bekerja cukup baik!)
-            [*] Dan masih banyak lagi!
-        [/list]
-
-        [b]Permainan ini bekerja secara open source![/b]
-
-        Siapa saja dapat berkontribusi, saya terlibat aktif di dalam komunitas dan akan mencoba untuk meninjau dan menerima semua saran untuk dipertimbangkan dimana memungkinkan. Pastikan Anda periksa papan trello saya untuk peta perencanaan yang lengkap!
-
-        [b]Tautan-tautan[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Sedang memuat
     error: Terjadi kesalahan
