@@ -7,14 +7,6 @@ export const CHANGELOG = [
         ],
     },
     {
-        version: "1.1.19",
-        date: "02.07.2020",
-        entries: [
-            "There are now notifications every 15 minutes in the demo version to buy the full version (For further details and the reason, check the #surveys channel in the Discord)",
-            "I'm still working on the wires update, I hope to release it mid july!",
-        ],
-    },
-    {
         version: "1.1.18",
         date: "27.06.2020",
         entries: [
