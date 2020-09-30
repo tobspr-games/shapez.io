@@ -998,63 +998,59 @@ demo:
         exportingBase: Ganze Fabrik als Foto exportieren
     settingNotAvailable: Nicht verfügbar in der Demo.
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
-    - Ratios stay the same, as long as all upgrades are on the same Tier.
-    - Serial execution is more efficient than parallel.
-    - You will unlock more variants of buildings later in the game!
-    - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
-    - You can weave different tiers of tunnels.
-    - Try to build compact factories - it will pay out!
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
-    - At maximum level, 5 extractors will fill a single belt.
-    - Don't forget about tunnels!
-    - You don't need to divide up items evenly for full efficiency.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
-    - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
-    - The storage buffer priorities the first output.
-    - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
-    - Shape patches that are further away from the hub are more complex.
-    - Machines have a limited speed, divide them up for maximum efficiency.
-    - Use balancers to maximize your efficiency.
-    - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
-    - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
-    - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to
-      be re-usable.
-    - Sometimes, you can find a needed shape in the map without creating it with
-      stackers.
-    - Full windmills / pinwheels can never spawn naturally.
-    - Color your shapes before cutting for maximum efficiency.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
-    - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - Der Hub akzeptiert jedes Item, nicht nur die aktuelle Form!
+    - Stell sicher, dass deine Fabriken modular sind - es zahlt aus!
+    - Bau nicht zu nah am Hub, oder es wird ein grosses Chaos!
+    - Falls stapeln nicht funktioniert, versuch die Eingänge zu wechseln.
+    - Du kannst mittels <b>R</b> die Richtung des Bandplaners umkehren.
+    - Halte <b>CTRL</b> um die Färderbänder ohne automatische Orientierung zu platzieren.
+    - Die Verhältnisse bleiben gleich, so lang die die Upgrades auf der selben Stufen sind.
+    - Serielle Ausführung ist effizienter als Parallele.
+    - Du wirst mehr Varianten von Gebäuden später im Spiel freischalten!
+    - Du kanst <b>T</b> drücken, um auf andere Varianten des Gebäude zu wechseln.
+    - Symmetrie ist der Schlüssel!
+    - Du kannst verschiedene Arten von Tunnels miteinander verweben.
+    - Versuch kompakte Fabriken zu bauen - es zahlt sich aus!
+    - Der Färber hat eine spiegelverkehrte Variante, die du mittels <b>T</b> auswählen kannst.
+    - Das richtige Verhältnis der Gebäude maximiert die Effizienz.
+    - Auf dem maximalen Level, 5 Extrahierer genügen für ein einzelnes Förderband.
+    - Versuch die Tunnels nicht!
+    - Du musst nicht die Items gleichmässig aufteilen für maximale Effizienz.
+    - Das Halten von <b>SHIFT</b> aktiviert den Bandplaner, der dir das Platzieren langer Linier vereinfacht.
+    - Schneider schneiden immer vertikal, egal deren Orientierung.
+    - Um Weiss zu erhalten, mixe alle Farben zusammen.
+    - Der Lagerpuffer priorisiert das erste Input.
+    - Investieren Zeit um modularisierte Designs - sie ist es wert!
+    - Das Halten von <b>CTRL</b> ermöglicht dir mehrere Gebäude zu platzieren.
+    - Du kanst <b>ALT</b> gedrückt halten, um die Richtung der Förderbänder umzukehren.
+    - Effizienz ist der Schlüssel!
+    - Form Quellen die weiter vom Hub entfernt sind, sind komplexer.
+    - Gebäude haben eine limitierte Geschwindigkeit, teile sie auf für maximale Effizienz.
+    - Benutze Balancer um deine Effizienz zu maximieren.
+    - Organisation ist wichtig. Versuch das Kreuzen von Förderbändern zu minimieren.
+    - Plane im Voraus, oder es gibt ein riesigen Chaos!
+    - Lösche deine alten Fabriken nicht! Du benötigst sie um Upgrades freizuschalten.
+    - Versuch Level 20 alleine zu meistern, bevor du nach Hilfe suchst!
+    - Mach es dir nicht zu kompliziert, versuch es einfach zu halten und du wirst weit vorankommen.
+    - Du wirst vielleicht Fabriken später im Spiel benötigen. Plane für Wiederverwendbarkeit dieser.
+    - Manchmal kannst du die gewünschte Form auf der Karte finden, ohne sie mit Staplern zu erstellen
+    - Vollständige Windmühlen werden nicht natürlich generiert.
+    - Färbe deine Formen vor dem Schneiden ein für maximale Effizienz.
+    - Bei Modulen ist Raum lediglich eine Wahrnehmung; eine Sorge um sterbliche Männer.
+    - Mach eine separate Blaupasen Fabrik. Diese sind wichtig für Module.
+    - Schau dir den Farbmischer genauer an, deine Fragen werden beantwortet.
+    - Benutze <b>CTRL</b> + rechter Mausklick, um einen Bereich zu selektieren.
+    - Das nahe Bauen am Hub kann dir den Platz für zukünftige Projekte nehmen..
+    - Das Stecknadel Icon neben der From in den Upgrade-Stufen, heftet die Form auf der Hauptseite an.
+    - Mische alle Primärfarben zusammen um Weiss zu erhalten!
+    - Du hast eine unendlich grosse Karte, nutze den Platz, expandiere!
+    - Versuch auch mal Factorio! Es ist mein Lieblingsspiel.
+    - Der Schneider (4-Fach) scheidet im Uhrzeigersinn beginnend mit dem oberen rechten Teil!
+    - Du kannst deine Speicherstände im Hauptmenü herunterladen!
+    - Diese Spiel hat viele nützliche Tastenbelegungen! Schau sie dir in den Einstellungen an.
+    - Dieses Spiel hat viele Einstellungen, schau sie dir einmal an!
+    - Die Markierung des Hubs hat einen kleinen Kompass, um die dessen Richtung anzuzeigen!
+    - Um die Förderbänder zu leeren, schneide den Bereich aus und füge ihn in der gleichen Position wieder ein.
+    - Drücke F4 um deine FPS und Tick Rate anzuzeigen.
+    - Drücke doppelt F4 um die Kachel des Zeigers und der Kamera anzuzeigen.
+    - Du kannst die angehefteten Formen auf der linken Seite ablösen.
