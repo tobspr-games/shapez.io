@@ -2,51 +2,51 @@ steamPage:
     shortText: shapez.io er et spill som handler om å bygge fabrikker for å
         automatisere produksjon og kombinasjon av former med økende kompleksitet
         på et uendelig ekspanderende brett.
-    discordLinkShort: Official Discord
+    discordLinkShort: Offissiell Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        Shapez.io er et avslappende spill der du skal bygge fabrikker for 
+        automatisert produksjon av geometriske former.
+        
+        Etterhvert som du når høyere nivåer blir formene mer og mer komplekse, og du må spre deg ut over det uendelige kartet.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
-
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
-
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
-
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Og som om det ikke var nok må du også produsere eksponensielt for å tilfredsstille etterspørselen - det eneste som hjelper er skalering!
+        
+        Mens du kun produserer former i starten må du fargelegge de senere - for å gjøre dette må du hente ut og blande farger!
+        
+        Ved å kjøpe spillet på Steam får du tilgang til fullversjonen, men du kan også spille en demo på shapez.io først og bestemme deg senere!
+    title_advantages: Fordeler med fullversjonen
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - <b>12 Nye nivåer</b> til totalt 26 nivåer
+        - <b>18 Nye byggninger</b> For en helautomatisert fabrikk!
+        - <b>20 Oppgraderingsnivåer</b> for mange timer med moro!
+        - <b>Kabeloppdateringen</b> For en helt ny dimensjon!
+        - <b>Mørkt tema</b>!
+        - Uendelige lagringsplasser
+        - Uendelige markører
+        - Støtt meg! ❤️
+    title_future: Planlagt innhold
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
+        - Blåkopibibliotek (Eksklusivt til fullversjonen)
+        - Steam-medaljer
+        - Puslemodus
+        - Minikart
         - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - Sandkassemodus
+        - ... og masse mer!
+    title_open_source: Dette spillet har åpen kildekode!
+    title_links: Lenker
     links:
-        discord: Official Discord
-        roadmap: Roadmap
+        discord: Offisiell Discord
+        roadmap: Veikart
         subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        source_code: Kildekode (GitHub)
+        translate: Hjelp til med å oversette
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
-
-        Be sure to check out my trello board for the full roadmap!
+        Alle kan bidra, jeg er aktivt involvert i sammfunnet og prøver å
+        se gjennom alle forslagene og tar tilbakemeldinger i betraktning 
+        der det er mulig.
+        
+        Sjekk også mitt Trello-brett for hele veikartet!
 global:
     loading: Laster
     error: Feil
