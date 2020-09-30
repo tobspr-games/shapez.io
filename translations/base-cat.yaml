@@ -4,49 +4,47 @@ steamPage:
         infinit.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        Shapez.io es un joc relaxant en el qual has de construir fàbriques per a la producció automàtica de formes geomètriques.  
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        A mesura que el nivell augmenta, les formes esdevenen més complexes, i has d'explorar el mapa infinit.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        Per si això no era suficient, la demanda de formes creixerà exponencialment, pel que hauràs d'escalar les teves fàbriques!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        Mentre que al principi només processes formes, més envant les hauràs de colorejar, pel que necessitaràs extreure y mesclar colors!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Si compres el joc a Steam tendràs accés al joc complet, però també pots jugar a la demo a shapez.io primer i decidir-te més tard!
+    title_advantages: Avantatges de la versió completa:
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - <b>12 Nous nivells</b> per a un total de 26 nivells
+        - <b>18 Nous edificis</b> per construir una fàbrica completament automatitzada!
+        - <b>20 Nivells de millora</b> per més hores de diversió!
+        - <b>Actualització de Cablejat</b> per a una dimensió totalment nova!
+        - <b>Mode Oscur</b>!
+        - Pots guardar jocs il·limitats
+        - Marcadors il·limitats
+        - Em dones suport! ❤️
+    title_future: Contingut Planejat
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
+        - Llibreria de plànols (Exclusiu de la versió completa)
+        - Trofeus d'Steam
+        - Mode Puzzle
+        - Minimapa
         - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - Mode Sandbox
+        - ... i mot més!
+    title_open_source: Aquest joc és de codi obert!
+    title_links: Enllaços
     links:
-        discord: Official Discord
-        roadmap: Roadmap
+        discord: Discord Oficial
+        roadmap: Full de ruta
         subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        source_code: Codi font (GitHub)
+        translate: Ajuda a traduir-lo
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        Qualsevol pot contribuir, i estic activament involucrat en la comunitat i intent prestar atenció a tots els suggeriments
+        i tenir en compte tots el comentaris.
 
-        Be sure to check out my trello board for the full roadmap!
+        Assegura't de mirar el meu tauler de Trello per al full de ruta complet!
 global:
     loading: Carregant
     error: Error
@@ -344,39 +342,39 @@ ingame:
     connectedMiners:
         one_miner: 1 Miner
         n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        limited_items: Limitat a <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: Versió demo
+        desc: Premeu aquí per veure les avantatges d'Steam!
+        get_on_steam: Comprar a Steam
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Aconsegueix la versió completa!
+        no_thanks: No, gràcies!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 Nivells now
+                desc: Per a un total de 26 nivells!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 Nous edificis
+                desc: Automatitza la teva fàbrica completament!
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: Guarda ∞ partides
+                desc: Tantes com vulguis!
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 Nivells de millora
+                desc: La versió demo només en té 5!
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: ∞ Marcadors
+                desc: Mai et perdis per el mapa!
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: Cables
+                desc: Una nova dimensió!
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: Mode Oscur
+                desc: Deixa de fer-te mal als ulls!
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: Dona'm suport
+                desc: EL desenvolupo en el meu temps lliure!
 shopUpgrades:
     belt:
         name: Cintes transportadores, Distribuidors i Túnels
@@ -395,7 +393,7 @@ buildings:
         deliver: Envia
         toUnlock: per a desbloquejar
         levelShortcut: NVL
-        endOfDemo: End of Demo
+        endOfDemo: Fi de la Demo
     belt:
         default:
             name: Cinta transportadora
@@ -967,63 +965,63 @@ demo:
         exportingBase: Exportar la base com a Imatge
     settingNotAvailable: No disponible en la versió de demostració.
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
-    - Ratios stay the same, as long as all upgrades are on the same Tier.
-    - Serial execution is more efficient than parallel.
-    - You will unlock more variants of buildings later in the game!
-    - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
-    - You can weave different tiers of tunnels.
-    - Try to build compact factories - it will pay out!
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
-    - At maximum level, 5 extractors will fill a single belt.
-    - Don't forget about tunnels!
-    - You don't need to divide up items evenly for full efficiency.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
-    - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
-    - The storage buffer priorities the first output.
-    - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
-    - Shape patches that are further away from the hub are more complex.
-    - Machines have a limited speed, divide them up for maximum efficiency.
-    - Use balancers to maximize your efficiency.
-    - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
-    - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
-    - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to
-      be re-usable.
-    - Sometimes, you can find a needed shape in the map without creating it with
-      stackers.
-    - Full windmills / pinwheels can never spawn naturally.
-    - Color your shapes before cutting for maximum efficiency.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
-    - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - El NEXE accepta qualsevol tipus d’entrada, no només la forma actual.
+    - Assegureu-vos que les vostres fàbriques siguin modulars; donarà els seus fruits.
+    - No construïu massa a prop del NEXE, ja que serà un enorme caos.
+    - Si l'apilament no funciona, proveu de canviar les entrades.
+    - Podeu canviar la direcció del planificador de cinturons prement <b> R </b>.
+    - Mantenir premut <b> CTRL </b> permet arrossegar cinturons sense orientació automàtica.
+    - Les proporcions continuen igual, sempre que totes les millores de velocitat es facin al mateix nivell.
+    - L’execució en sèrie és més eficient que la paral·lela.
+    - Desbloquejaràs més variants d’edificis més endavant en el joc.
+    - Podeu utilitzar <b> T </b> per canviar entre diferents variants.
+    - La simetria és clau!
+    - Podeu teixir diferents nivells de túnels.
+    - Intenteu construir fàbriques compactes: donarà els seus fruits!
+    - El pintor té una variant reflectida que podeu seleccionar amb <b> T </b>
+    - Tenir les relacions constructives adequades maximitzarà l’eficiència.
+    - Al nivell màxim, 5 extractors ompliran un sol cinturó.
+    - No us oblideu dels túnels!
+    - No cal dividir els articles de manera uniforme per obtenir una eficiència completa.
+    - Mantenint premut <b> SHIFT </b> s’activarà el planificador de cinturons, cosa que us permetrà col·locar
+      llargues línies de cinturons fàcilment.
+    - Els talladors sempre tallen verticalment, independentment de la seva orientació.
+    - Per obtenir blanc barregeu els tres colors primaris.
+    - La memòria intermèdia d’emmagatzematge prioritza la primera sortida.
+    - Invertiu temps per crear dissenys repetibles: val la pena.
+    - Si mantingueu <b> CTRL </b> permet col·locar diversos edificis.
+    - Podeu mantenir premut <b> ALT </b> per invertir la direcció dels cinturons col·locats.
+    - L’eficiència és clau!
+    - Les formes geomètriques que apareixen més lluny del NEXE són més complexes.
+    - Les màquines tenen una velocitat limitada, dividiu-les per obtenir la màxima eficiència.
+    - Utilitzeu equilibradors per maximitzar la vostra eficiència.
+    - L’organització és important. Intenteu no creuar massa els transportadors.
+    - Planifiqueu amb antelació, o serà un enorme caos!
+    - No borreu les vostres antigues fàbriques! Les necessitareu per desbloquejar actualitzacions.
+    - Proveu de superar el nivell 20 pel vostre compte abans de buscar ajuda.
+    - No compliqueu les coses, intenteu ser senzill i arribareu molt lluny.
+    - És possible que hàgiu de tornar a utilitzar fàbriques més endavant del joc. Planifiqueu les vostres fàbriques
+      de forma que puguin ser reutilitzables.
+    - De vegades, podeu trobar una forma necessària al mapa sense crear-la amb
+      apiladors.
+    - Els molins de vent o molins de vent complets mai no poden generar de forma natural.
+    - Pinteu les formes abans de tallar per obtenir la màxima eficiència.
+    - Amb els mòduls, l’espai és només una percepció; una preocupació per als homes mortals.
+    - Feu una fàbrica de plànols independent. Són importants per als mòduls.
+    - Feu una ullada més de prop al mesclador de colors i les vostres preguntes seran contestades.
+    - Utilitzeu <b> CTRL </b> + Feu clic per seleccionar una àrea.
+    - Construir massa a prop del centre pot dificultar els projectes posteriors.
+    - La icona de fixació situada al costat de cada forma de la llista d'actualitzacions la fixa a la pantalla.
+    - Barregeu tots els colors primaris per fer blanc.
+    - Teniu un mapa infinit, no restringiu la vostra fàbrica, amplieu-la.
+    - També proveu Factorio! És el meu joc preferit.
+    - El tallador de quadres talla en sentit horari a partir de la part superior dreta.
+    - Podeu descarregar els vostres jocs desats al menú principal.
+    - Aquest joc té moltes combinacions de tecles útils. Assegureu-vos de consultar el fitxer
+      pàgina de configuració.
+    - Aquest joc té moltes opcions de configuració, no oblideu consultar-les.
+    - El marcador del concentrador té una petita brúixola per indicar-ne la direcció.
+    - Per netejar els cinturons, talleu la zona i enganxeu-la al mateix lloc.
+    - Premeu F4 per mostrar la vostra tarifa FPS i Tick.
+    - Premeu F4 dues vegades per mostrar el mosaic del ratolí i la càmera.
+    - Podeu fer clic a una forma fixada al costat esquerre per desenganxar-la.
