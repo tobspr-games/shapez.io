@@ -200,7 +200,7 @@ dialogs:
         title: Imposta il segnale
         descItems: "Scegli un oggetto predefinito:"
         descShortKey: ... o inserisci il <strong>codice</strong> di una forma (Che
-        puoi generare <link>qui</link>)
+            puoi generare <link>qui</link>)
     renameSavegame:
         title: Rinomina salvataggio.
         desc: Qui puoi cambiare il nome del salvataggio.
