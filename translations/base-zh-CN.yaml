@@ -1,55 +1,54 @@
+---
 steamPage:
     shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。
-    discordLinkShort: Official Discord
+    discordLinkShort: 官方 Discord 服务器
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        Shapez.io 是一个休闲游戏，在其中，您将建造工厂以生产各种各样的几何图形。
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        随着等级提升，您需要生产的图形将会越来越复杂，您需要在无尽的地图中不断的扩建您的工厂。
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        如果这些还不够的话，您的生产目标是指数性增长的 - 您需要持续的增大工厂的规模！
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        虽然您刚开始只需要生产图形，但您之后还可以给这些图形上色 - 您需要开采并混合颜料！
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        您可以在 Steam 游戏商城购买此游戏的完整版, 但您可以先游玩试玩版并体验游戏！
+    title_advantages: 完整版内容
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - <b>12 个全新关卡</b> 总共 26 个不同关卡
+        - <b>18 个全新建筑</b> 用于建造全自动工厂！
+        - <b>20 个等级升级</b> 不停的愉快游玩！
+        - <b>导线更新包</b> 解锁更多可能
+        - <b>暗色模式</b>!
+        - 无限数量存档
+        - 无限数量地图标记
+        - 支持作者！ ❤️
+    title_future: 预计更新
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - 建筑蓝图库
+        - Steam 成就
+        - 解密模式
+        - 小地图
+        - 模组
+        - 沙盒模式
+        - ... 以及更多！
+    title_open_source: 这个游戏是开源的！
+    title_links: 链接
     links:
-        discord: Official Discord
+        discord: 官方 Discord 服务器
         roadmap: Roadmap
         subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        source_code: 源代码 (GitHub)
+        translate: 帮助汉化（翻译）组！
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        任何人都可以对这个游戏做出贡献，我会活跃在游戏社区中并
+        尽最大可能积极参考大家对这个游戏的的全部建议和反馈。
 
-        Be sure to check out my trello board for the full roadmap!
+        请关注我的 trello board 以获取 the full roadmap！
 global:
     loading: 加载中
     error: 错误
-    thousandsDivider: ""
-    decimalSeparator: .
+    thousandsDivider: ","
+    decimalSeparator: "."
     suffix:
         thousands: K
         millions: M
@@ -67,7 +66,7 @@ global:
         xDaysAgo: <x>天前
         secondsShort: <seconds>秒
         minutesAndSecondsShort: <minutes>分 <seconds>秒
-        hoursAndMinutesShort: <hours>小时 <minutes>秒
+        hoursAndMinutesShort: <hours>时 <minutes>秒
         xMinutes: <x>分钟
     keys:
         tab: TAB
@@ -77,8 +76,8 @@ global:
         shift: SHIFT
         space: 空格
 demoBanners:
-    title: 演示版
-    intro: 获取独立版以解锁所有功能！
+    title: 试玩版
+    intro: 获取独立版以解锁所有游戏内容！
 mainMenu:
     play: 开始游戏
     changelog: 更新日志
@@ -93,7 +92,7 @@ mainMenu:
     newGame: 新游戏
     madeBy: 作者：<author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: 未命名
 dialogs:
     buttons:
         ok: 确认
@@ -135,11 +134,11 @@ dialogs:
         title: 重置所有按键
         desc: 成功重置所有按键！
     featureRestriction:
-        title: 演示版
-        desc: 你尝试使用了<feature>功能。该功能在演示版中不可用。请考虑购买独立版以获得更好的体验。
+        title: 试玩版
+        desc: 你尝试使用了<feature>功能。该功能在试玩版中不可用。请考虑购买独立版以获得更好的体验。
     oneSavegameLimit:
         title: 存档数量限制
-        desc: 演示版中只能保存一份存档。请删除旧存档或者获取独立版！
+        desc: 试玩版中只能保存一份存档。请删除旧存档或者获取独立版！
     updateSummary:
         title: 更新啦！
         desc: "以下为自上次游戏以来更新的内容:"
@@ -162,9 +161,9 @@ dialogs:
         title: 创建地图标记
         desc: 给地图标记起一个的名字。你可以在名字中加入一个<strong>短代码</strong>以加入图形。（你可以在<a
             href="https://viewer.shapez.io" target="_blank">这里</a>生成短代码。）
-        titleEdit: Edit Marker
+        titleEdit: 编辑地图标记
     markerDemoLimit:
-        desc: 在演示版中你只能创建两个地图标记。请获取独立版以创建更多标记。
+        desc: 在试玩版中你只能创建两个地图标记。请获取独立版以创建更多标记。
     massCutConfirm:
         title: 确认剪切
         desc: 你将要剪切很多建筑，准确来说有<count>幢！ 你确定要这么做吗？
@@ -180,13 +179,11 @@ dialogs:
         descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
             can generate <link>here</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: 重命名存档
+        desc: 您可以在此重命名存档。
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: 性能警告
+        desc: 您有非常多建筑，善意的提醒您，这个游戏无法处理过多的建筑 - 尝试将您的工厂压缩！
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -243,16 +240,16 @@ ingame:
             - 八
             - 九
             - 十
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
+            - 十一
+            - 十二
+            - 十三
+            - 十四
+            - 十五
+            - 十六
+            - 十七
+            - 十八
+            - 十九
+            - 二十
         maximumLevel: 最高级（<currentMult>倍效率）
     statistics:
         title: 统计信息
@@ -268,9 +265,9 @@ ingame:
                 description: 显示图形送达基地并交付的速度。
         noShapesProduced: 你还没有生产任何图形。
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / 秒
+            minute: <shapes> / 分
+            hour: <shapes> / 时
     settingsMenu:
         playtime: 游戏时间
         buildingsPlaced: 建筑数量
@@ -313,41 +310,41 @@ ingame:
         empty: 空
         copyKey: 复制短代码
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        one_miner: 1 个开采机
+        n_miners: <amount> 个开采机
+        limited_items: 限制在 <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: 试玩版
+        desc: 点击这里 了解完整版内容
+        get_on_steam: 在 steam 商城购买
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: 购买完整版！
+        no_thanks: 不需要，谢谢
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 个全新关卡!
+                desc: 总共 26 个不同关卡!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 个全新建筑
+                desc: 用于建造全自动工厂！
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: 无限数量存档
+                desc: 存档功能可以尽情使用
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 个等级升级
+                desc: 试玩版只有 5 个等级！
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: 无限数量地图标记
+                desc: 再也不会找不到自己的工厂了
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: 导线更新包
+                desc: 解锁更多可能！
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: 暗色模式
+                desc: 优雅且护眼的配色
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: 支持作者
+                desc: 我使用闲暇时间开发游戏！
 shopUpgrades:
     belt:
         name: 传送带、平衡机、隧道
@@ -395,8 +392,8 @@ buildings:
             name: 旋转机（逆时针）
             description: 将图形逆时针旋转90度。
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: 旋转机 (180度)
+            description: 将图形旋转180度。
     stacker:
         default:
             name: 堆叠机
@@ -416,7 +413,7 @@ buildings:
             name: 上色机（四向）
             description: 为图形的四个角涂上不同的颜色。
         mirrored:
-            name: 上色机
+            name: 上色机 (镜像)
             description: 将整个图形涂上输入的颜色。
     trash:
         default:
@@ -426,15 +423,15 @@ buildings:
         deliver: 交付
         toUnlock: 来解锁
         levelShortcut: LVL
-        endOfDemo: End of Demo
+        endOfDemo: 试玩版结束
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: 能量导线
+            description: 用于传输能量。
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: 导线
+            description: 传输信号，信号可以是物品，颜色或者布尔值。
+                不同颜色的导线不会互相连接。
     balancer:
         default:
             name: Balancer
@@ -897,7 +894,7 @@ demo:
         oneGameLimit: 最多一个存档
         customizeKeybindings: 按键设置
         exportingBase: 导出工厂截图
-    settingNotAvailable: 在演示版中不可用。
+    settingNotAvailable: 在试玩版中不可用。
 tips:
     - The hub accepts input of any kind, not just the current shape!
     - Make sure your factories are modular - it will pay out!
