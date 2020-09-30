@@ -872,7 +872,7 @@ settings:
         disableTileGrid:
             title: Disattiva griglia
             description: Disattivare la griglia può migliorare le prestazioni.
-            Rende anche il gioco visualmente più pulito!
+                Rende anche il gioco visualmente più pulito!
         clearCursorOnDeleteWhilePlacing:
             title: Deseleziona edificio con il clic destro
             description: Abilitato di default, se hai un edificio selezionato
