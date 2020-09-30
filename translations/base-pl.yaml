@@ -96,7 +96,7 @@ mainMenu:
     savegameLevelUnknown: Nieznany poziom
     madeBy: Gra wykonana przez <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Bez nazwy
 dialogs:
     buttons:
         ok: OK
@@ -197,18 +197,18 @@ dialogs:
         desc: Nie posiadasz wystarczająco kształtów schematów na wklejenie tego obszaru!
             Czy na pewno chcesz go wyciąć?
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: Ustaw Sygnał
+        descItems: "Ustaw wstępnie zdefiniowany przedmiot:"
+        descShortKey: ... albo wpisz <strong>mały klucz</strong> figury (Którą możesz
+            wygenerować <link>tutaj</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Zmień nazwę zapisu gry
+        desc: Tutaj możesz zmienić nazwę zapisu gry.
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: Uwaga o Wydajności gry
+        desc: Postawiłeś dużo budynków, to jest tylko przyjacielskie przypomnienie, że
+            gra nie może utrzymać nieskończonej ilości budynków - Więc spróbuj zrobić swoje
+            budowle kompaktowe!
 ingame:
     keybindingsOverlay:
         moveMap: Ruch
@@ -259,7 +259,7 @@ ingame:
     notifications:
         newUpgrade: Nowe ulepszenie dostępne!
         gameSaved: Postęp gry został zapisany.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Poziom <level> został ukończony!
     shop:
         title: Ulepszenia
         buttonUnlock: Ulepsz
@@ -301,9 +301,9 @@ ingame:
                 description: Wyświetla kształty dostarczone do budynku głównego.
         noShapesProduced: Brak wyprodukowanych kształtów.
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / sek.
+            minute: <shapes> / min.
+            hour: <shapes> / godz.
     settingsMenu:
         playtime: Czas Gry
         buildingsPlaced: Budynki
@@ -348,19 +348,19 @@ ingame:
         n_miners: <amount> Miners
         limited_items: Limited to <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: Wersja demo
+        desc: Kliknij tutaj, aby zobaczyć co potrafi wersja Steam!
+        get_on_steam: Kup na Steam
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Kup pełną wersję!
+        no_thanks: Nie, dziękuję!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 Nowych Poziomów
+                desc: Aby otrzymać 26 poziomów!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 Nowych Budynków
+                desc: W pełni zautomatyzuj produkcję!
             savegames:
                 title: ∞ Savegames
                 desc: As many as your heart desires!
