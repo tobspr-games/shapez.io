@@ -16,9 +16,9 @@ steamPage:
         Comprare il gioco su Steam ti garantirà l'accesso alla versone completa, ma puoi anche giocare una demo su shapez.io e decidere in seguito!
     title_advantages: Vantaggi della versione completa
     advantages:
-        - <b>12 Nuovi livelli</b> per un totale di 26 livelli
-        - <b>18 Nuovi edifici</b> per una fabbrica completamente automatizzata!
-        - <b>20 Gradi di miglioramenti</b> per molte ore di divertimento!
+        - <b>12 nuovi livelli</b> per un totale di 26 livelli
+        - <b>18 nuovi edifici</b> per una fabbrica completamente automatizzata!
+        - <b>20 gradi di miglioramenti</b> per molte ore di divertimento!
         - <b>L'aggiornamento dei Cavi</b> per una dimensione completamente nuova!
         - <b>Modalità scura</b>!
         - Salvataggi illimitati
@@ -26,7 +26,7 @@ steamPage:
         - Mi sostieni! ❤️
     title_future: Contenuti pianificati
     planned:
-        - Archivio dei progetti (Esclusiva della versione completa)
+        - Archivio dei progetti (esclusiva della versione completa)
         - Achievement di steam
         - Modalità puzzle
         - Minimappa
@@ -126,7 +126,7 @@ dialogs:
         title: Impossibile eliminare
         text: "Impossibile eliminare il salvataggio:"
     restartRequired:
-        title: Restart richiesto
+        title: Riavvio richiesto
         text: Per applicare le nuove impostazioni è necessario riavviare del gioco.
     editKeybinding:
         title: Cambia comandi
@@ -153,7 +153,7 @@ dialogs:
         desc: "Qui puoi trovare i cambiamenti dall'ultima volta che hai giocato:"
     upgradesIntroduction:
         title: Miglioramenti sbloccati
-        desc: Tutte le forme che produci possono essere utilizzate per i miglioramenti -
+        desc: Tutte le forme che produci possono essere utilizzate per i miglioramenti.
             <strong>Non distruggere le tue vecchie fabbriche!</strong> Puoi
             trovare i miglioramenti nell'angolo in alto a destra dello schermo.
     massDeleteConfirm:
@@ -290,7 +290,7 @@ ingame:
             delivered:
                 title: Consegnate
                 description: Mostra le forme che vengono consegnate all'edificio centrale.
-        noShapesProduced: No shapes have been produced so far.
+        noShapesProduced: Nessuna forma prodotta finora.
         shapesDisplayUnits:
             second: <shapes> / s
             minute: <shapes> / m
@@ -312,7 +312,7 @@ ingame:
     waypoints:
         waypoints: Segnapunti
         hub: HUB
-        description: Click sinistro su un segnapunto per raggiungerlo, click destro per
+        description: Clic sinistro su un segnapunto per raggiungerlo, clic destro per
             cancellarlo. <br><br>Premi <keybinding> per creare un segnapunto
             dalla visuale corrente, oppure <strong>click destro</strong> per
             creare un segnapunto nella posizione selezionata.
@@ -357,19 +357,19 @@ ingame:
         no_thanks: No, grazie!
         points:
             levels:
-                title: 12 Nuovi livelli!
+                title: 12 nuovi livelli!
                 desc: Per un totale di 26 livelli!
             buildings:
-                title: 18 Nuovi edifici
+                title: 18 nuovi edifici
                 desc: Automatizza completamente la tua fabbrica!
             savegames:
-                title: ∞ Salvataggi
+                title: ∞ salvataggi
                 desc: Quanti ne desideri!
             upgrades:
                 title: 20 gradi di miglioramenti
                 desc: Questa demo ne ha solo 5!
             markers:
-                title: ∞ Segnapunti
+                title: ∞ segnapunti
                 desc: Non perderti nella tua fabbrica!
             wires:
                 title: Cavi
@@ -612,16 +612,16 @@ storyRewards:
             combinare due colori mediante <strong>sintesi additiva</strong>!
     reward_splitter:
         title: Separatore/Agrregatore
-        desc: Il <strong>bilanciatore</strong> multifunzione è stato sbloccato - Può
+        desc: Il <strong>bilanciatore</strong> multifunzione è stato sbloccato. Può
             essere usato per costruire fabbriche più grandi <strong>unendo o
             dividendo gli oggetti</strong> tra diversi nastri!<br><br>
     reward_tunnel:
         title: Tunnel
-        desc: Il <strong>tunnel</strong> è stato sbloccato - In questo modo puoi
+        desc: Il <strong>tunnel</strong> è stato sbloccato. In questo modo puoi
             trasportare oggetti al di sotto di nastri ed edifici!
     reward_rotater_ccw:
         title: Rotazione antioraria
-        desc: Hai sbloccato una variante della <strong>ruotatrice</strong> - Consente di
+        desc: Hai sbloccato una variante della <strong>ruotatrice</strong>. Consente di
             ruotare in senso antiorario! Per costruirla, seleziona la ruotatrice
             e <strong>premi 'T' per cambiare variante</strong>!
     reward_miner_chainable:
@@ -631,22 +631,22 @@ storyRewards:
             puoi estrarre risorse in modo più efficiente!
     reward_underground_belt_tier_2:
         title: Tunnel grado II
-        desc: Hai sbloccato una nuova variante del <strong>tunnel</strong> - Ha un
+        desc: Hai sbloccato una nuova variante del <strong>tunnel</strong>. Ha un
             <strong>raggio più ampio</strong> e puoi anche mischiare le due
             varianti ora!
     reward_cutter_quad:
         title: Taglio quadruplo
-        desc: Hai sbloccato una variante della <strong>tagliatrice</strong> - Cconsente
+        desc: Hai sbloccato una variante della <strong>tagliatrice</strong>. Cconsente
             di tagliare le forme in <strong>quattro parti</strong> invece che in
             due!
     reward_painter_double:
         title: Verniciatura doppia
-        desc: Hai sbloccato una variante della <strong>verniciatrice</strong> - Funziona
+        desc: Hai sbloccato una variante della <strong>verniciatrice</strong>. Funziona
             come una normale verniciatrice, ma processa <strong>due forme alla
             volta</strong> consumando solo un'unità di colore invece che due!
     reward_storage:
         title: Unità di stoccaggio
-        desc: Hai sbloccato una variante del <strong>cestino</strong> - Consente di
+        desc: Hai sbloccato una variante del <strong>cestino</strong>. Consente di
             immagazzinare oggetti fino ad una certa capacità!
     reward_freeplay:
         title: Modalità libera
@@ -664,7 +664,7 @@ storyRewards:
     no_reward:
         title: Prossimo livello
         desc: "Questo livello non ti ha dato alcuna ricompensa, ma il prossimo lo farà!
-            <br><br> PS: Meglio non distruggere la fabbrica che hai costruito -
+            <br><br> PS: Meglio non distruggere la fabbrica che hai costruito.
             Successivamente avrai bisogno di <strong>tutte</strong> quelle forme
             per <strong>sbloccare i miglioramenti</strong>!"
     no_reward_freeplay:
@@ -725,7 +725,7 @@ storyRewards:
             <br><br> Qualsiasi cosa tu scelga, riordati di divertirti!
     reward_wires_painter_and_levers:
         title: Cavi e Verniciatrice quadrupla
-        desc: "Hai appena sbloccato il <strong>Livello dei cavi</strong>: È un livello
+        desc: "Hai appena sbloccato il <strong>livello dei cavi</strong>: È un livello
             separato al di sopra di quello normale e introduce un sacco di nuove
             meccaniche!<br><br> Per il momento ti ho sbloccato la <strong>Verniciatrice
             quadrupla</strong>. Collega gli ingressi con i quali vuoi dipingere nel
@@ -733,7 +733,7 @@ storyRewards:
             <strong>E</strong>."
     reward_filter:
         title: Filtro oggetti
-        desc: Hai sbloccato il <strong>Filtro oggetti</strong>! Smisterà gli oggetti
+        desc: Hai sbloccato il <strong>filtro oggetti</strong>! Smisterà gli oggetti
             verso l'alto o verso destra a seconda che corrispondano al
             sengale dal livello dei cavi o no.<br><br> Puoi anche mandargli un
             segnale booleano (1 / 0) per attivarlo o disattivarlo completamente.
