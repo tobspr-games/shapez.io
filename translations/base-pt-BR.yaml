@@ -3,23 +3,23 @@ steamPage:
         e combinação de formas cada vez mais complexas num mapa infinito.
     discordLinkShort: Discord Oficial
     intro: >-
-        Shapez.io é um jogo relaxante no qual você deve construir fábricas para
+        Shapez.io é um jogo descontraído no qual você deve construir fábricas para
         a produção automatizada de formas geométricas.
 
-        Conforme os níveis aumentam, as formas se tornam mais e mais complexas, e você precisará espalhar pelo mapa infinito.
+        Conforme os níveis aumentam, as formas se tornam mais e mais complexas, e você precisará expandir pelo mapa infinito.
 
-        E como isso não fosse suficiente, você também deverá produzir mais exponencialmente para satisfazer as demandas - a única coisa que ajuda é escalonar!
+        E como se não bastasse, você também deverá produzir mais exponencialmente para satisfazer as demandas - a única coisa que ajuda é escalonar!
 
         Enquanto você processa apenas formas no começo, você precisará colori-las mais tarde - para isso você precisará extrair e misturar cores!
 
-        Comprar o jogo na Steam te dá acesso à versão completa, mas você também pode primeiro jogar uma demo em shapez.io e decidir depois!
+        Obter o jogo na Steam te dá acesso à versão completa, mas você também pode primeiro jogar uma demo em shapez.io e decidir depois!
     title_advantages: Vantagens da versão completa
     advantages:
         - <b>12 Níveis Novos</b> para um total de 26 níveis
         - <b>18 Construções Novas</b> para uma fábrica totalmente automatizada!
         - <b>20 Estágios de Melhorias</b> para muitas horas de diversão!
         - <b>Atualização de Fiação</b> para uma dimensão totalmente nova!
-        - <b>Modo Escuro</b>!
+        - <b>Tema Escuro</b>!
         - Jogos salvos ilimitados
         - Marcadores ilimitados
         - Me apoie! ❤️
@@ -369,10 +369,10 @@ ingame:
                 title: Fiação
                 desc: Uma dimensão totalmente nova!
             darkmode:
-                title: Modo Escuro
+                title: Tema Escuro
                 desc: Chega de fazer seus olhos sofrerem!
             support:
-                title: Me apoie
+                title: Apoie-me
                 desc: Eu desenvolvo o jogo no meu tempo livre!
 shopUpgrades:
     belt:
@@ -712,16 +712,8 @@ storyRewards:
             fios! Com isso agora você tem três opções para continuar o jogo:<br><br>
             - Construir uma <strong>máquina automática</strong> para criar qualquer 
             forma possível solicitada pelo HUB (recomendo tentar!).<br><br>
-             - Construir algo legal com os fios.<br><br> - Continuar jogando
-             normalmente.<br><br>
-              I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Seja qual for sua escolha, lembre-se de se divertir!
+            - Construir algo legal com os fios.<br><br> - Continuar jogando
+             normalmente.<br><br> Seja qual for sua escolha, lembre-se de se divertir!
     reward_wires_painter_and_levers:
         title: Fios e Pintor Quádruplo
         desc: "Você acabou de desbloquear a <strong>Camada de Fios</strong>: É uma
@@ -888,9 +880,9 @@ settings:
             description: O jogo é dividido em blocos de 16x16 pedaços, se essa configuração
                 for habilitada as bordas de cada bloco serão mostradas.
         pickMinerOnPatch:
-            title: Pick miner on resource patch
-            description: Enabled by default, selects the miner if you use the pipette when
-                hovering a resource patch.
+            title: Pigar extrator sobre mancha de recurso
+            description: Habilitado por padrão, seleciona o extrator se você usar o
+                conta-gotas quando passar o mouse sobre uma mancha de recurso no mapa.
         simplifiedBelts:
             title: Esteiras Simplificadas (Feio)
             description: Não renderiza itens nas esteiras exceto quando passando com o
