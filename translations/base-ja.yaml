@@ -1,50 +1,48 @@
 steamPage:
     shortText: shapez.ioは無限のマップ内で様々な"形"を資源とし、段々と複雑になっていく形の作成や合成の自動化を目指して工場を構築するゲームです。
-    discordLinkShort: 公用のDiscord
+    discordLinkShort: 公式Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        Shapez.ioは、様々な幾何学的形状を生成するために工場を建設する、落ち着いたゲームです。  
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        レベルが上がる毎に生成すべき形はどんどん複雑になり、工場を無限に広がるマップに拡張する必要があります。
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        しかし、それだけでは不十分です。需要は指数関数的に上昇し、より多くの形状を生産する必要があり――"スケーリング"が、唯一の対抗策と成り得ます。
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        最初は形状を加工するだけですが、後々着色も必要になってきます――それには色を抽出して、混ぜ合わせることが必要です。
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Steamでゲームを購入するとフルバージョンで遊ぶことができますが、まずshapez.ioでデモをプレイし、その後で決めることもできます。
+    title_advantages: スタンドアロン版の特典
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>新しい12個のレベル</b>が追加され、全部で26個のレベルになります。
+        - <b>新しい18個のパーツ</b>が自動化工場建設のために使用できます。
+        - <b>20個のアップデートティア</b>によって多くの時間楽しむことができます。
+        - <b>ワイヤアップデート</b>によって全く新次元の体験を得られます。
         - <b>ダークモード</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - セーブ数の上限がなくなります。
+        - マップマーカー数の上限がなくなります。
+        - 私をサポートできる！❤️
+    title_future: 計画中の要素
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
+        - ブループリント (スタンドアロン版専用)
+        - Steamの実績
         - パズルモード
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - ミニマップ
+        - MOD対応
+        - サンドボックスモード
+        - ……あともっとたくさんの要素!
+    title_open_source: このゲームはオープンソースです！
+    title_links: リンク
     links:
-        discord: 公用のDiscord
-        roadmap: Roadmap
+        discord: 公式Discord
+        roadmap: ロードマップ
         subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        source_code: ソースコード(GitHub)
+        translate: 翻訳を助けてください！
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        誰でも参加することができます。私はコミュニティに積極的に参加し、すべての提案を確認し、
+        可能な場合はフィードバックしようとしています。
 
-        Be sure to check out my trello board for the full roadmap!
+        完全なロードマップについては、Trello boardを確認してください！
 global:
     loading: ロード中
     error: エラー
@@ -93,7 +91,7 @@ mainMenu:
     newGame: 新規ゲーム
     madeBy: 制作者 <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: 無名のデータ
 dialogs:
     buttons:
         ok: OK
@@ -176,18 +174,16 @@ dialogs:
         title: スクリーンショット出力
         desc: スクリーンショット出力を実行します。この処理は工場の全体像があまりに大きいと、 ゲームが遅くなったりクラッシュしてしまう可能性があります！
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: 信号をセット
+        descItems: "プリセットを選択:"
+        descShortKey: もしくは形を表す<strong>短いキー</strong>を入力してください。 (<link>ここ</link>から生成できます)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: セーブデータの名前を変更
+        desc: セーブデータの名前を変更することができます
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: パフォーマンスの警告
+        desc: あなたは沢山の工場を配置しましたが、このゲームは無限の建物を処理できるわけではありません。
+            これは友好的なリマインダですが、より工場をコンパクトにすることに挑戦してみてください。
 ingame:
     keybindingsOverlay:
         moveMap: マップ移動
@@ -208,7 +204,7 @@ ingame:
         copySelection: コピー
         clearSelection: 選択範囲をクリア
         pipette: ピペット
-        switchLayers: Switch layers
+        switchLayers: レイヤーを変更
     buildingPlacement:
         cycleBuildingVariants: <key> キーを押して変更
         hotkeyLabel: "ホットキー: <key>"
@@ -228,7 +224,7 @@ ingame:
     notifications:
         newUpgrade: 新しいアップグレードが利用可能です！
         gameSaved: ゲームをセーブしました。
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: レベル <level> をクリアしました!
     shop:
         title: アップグレード
         buttonUnlock: アップグレード
@@ -269,9 +265,9 @@ ingame:
                 description: 中央の建造物に納品された形の総数です。
         noShapesProduced: まだ形が生産されていません。
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / 秒
+            minute: <shapes> / 分
+            hour: <shapes> / 時間
     settingsMenu:
         playtime: プレイ時間
         buildingsPlaced: 建造物
@@ -303,55 +299,55 @@ ingame:
                 <strong>SHIFT</strong>
                 キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。"
     colors:
-        red: 赤い
-        green: 緑色
-        blue: 青い
-        yellow: 黄色
-        purple: 紫色
+        red: 赤
+        green: 緑
+        blue: 青
+        yellow: 黄
+        purple: 紫
         cyan: シアン
-        white: 白い
+        white: 白
         uncolored: 無色
-        black: 黒い
+        black: 黒
     shapeViewer:
         title: レイヤー
         empty: 空
-        copyKey: Copy Key
+        copyKey: キーをコピー
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        one_miner: 1個の抽出機
+        n_miners: <amount>個の抽出機
+        limited_items: <max_throughput>に制限されます
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: デモバージョン
+        desc: Steamバージョンの特典を確認するには、ここをクリックしてください！
+        get_on_steam: steamで購入
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: フルバージョンを購入
+        no_thanks: いいえ、結構です
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 新しい12個のレベル
+                desc: 全部で26個のレベルになります！
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 新しい18個の設置物
+                desc: あなたの工場を完全自動化しましょう！
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: 無限個のセーブデータ
+                desc: あなたが望むだけデータを作成できます！
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20個のアップデートティア
+                desc: このデモバージョンでは5ティアのみです！
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: 無限個のマップマーカー
+                desc: これでもうあなたの工場を見失いません！
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: ワイヤ
+                desc: 新次元の体験を得られます！
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: ダークモード
+                desc: 目に優しい！
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: 製作者をサポート
+                desc: 余暇に制作しています！
 shopUpgrades:
     belt:
         name: ベルト、ディストリビュータ & トンネル
@@ -370,7 +366,7 @@ buildings:
         deliver: 納品
         toUnlock: 解除
         levelShortcut: レベル
-        endOfDemo: End of Demo
+        endOfDemo: お試し終了
     belt:
         default:
             name: コンベアベルト
@@ -404,8 +400,8 @@ buildings:
             name: 回転機 (逆)
             description: 形を反時計回り方向に90度回転します。
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: 回転機 (180度)
+            description: 形を180度回転します。
     stacker:
         default:
             name: 積層機
@@ -433,122 +429,111 @@ buildings:
             description: すべての辺からの入力を破棄します。永遠に。
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: エネルギーワイヤ
+            description: エネルギーを運ぶことができます。
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: ワイヤ
+            description: 形状、色、真偽値(1/0)の信号を運ぶことができます。
+                異なる色のワイヤは互いに接続しません。
     balancer:
         default:
-            name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: 分配機/合流機
+            description: 多機能 - すべての入力をすべての出力に均等に分配します。
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 合流機(コンパクト)
+            description: 2つの入力を1つの出力に合流させます。
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 合流機(コンパクト)
+            description: 2つの入力を1つの出力に合流させます。
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: 分配機(コンパクト)
+            description: 1つの入力を2つの出力に分配します。
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: 分配機(コンパクト)
+            description: 1つの入力を2つの出力に分配します。
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: ストレージ
+            description: 所定の容量まで、アイテムを蓄えることができます。左側の出力が優先され、右側は
+            左側が詰まった際に使用されます。
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: 交差ワイヤ
+            description: 2本のワイヤを接続させることなく交差させることができます。
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: 定数信号
+            description: 常に同じ値を出力します。形状、色、真偽値(1/0)が使用できます。
     lever:
         default:
-            name: Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            name: スイッチ
+            description: ワイヤ上に真偽値(1/0)を出力できます。スイッチを押すことで1と0を切り替えることができ、
+            それを利用してアイテムフィルタ等を制御できます。
     logic_gate:
         default:
-            name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
-                color or boolean "1")
+            name: ANDゲート
+            description: 両方の入力が真らしいなら、真偽値"1"を出力します。(真らしいとは、形状、色、または真偽値"1"のことです)
         not:
-            name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            name: NOTゲート
+            description: 入力が真らしくないなら、真偽値"1"を出力します。(真らしいとは、形状、色、または真偽値"1"のことです)
         xor:
-            name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            name: XORゲート
+            description: 両方の入力のうち片方のみが真らしいなら、真偽値"1"を出力します。(真らしいとは、形状、色、または真偽値"1"のことです)
         or:
-            name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
-                shape, color or boolean "1")
+            name: ORゲート
+            description: 両方の入力のうち少なくとも片方が真らしいなら、真偽値"1"を出力します。(真らしいとは、形状、色、または真偽値"1"のことです)
     transistor:
         default:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: トランジスタ
+            description: 横からの入力が真らしいなら、下からの入力を通過させます。(真らしいとは、形状、色、または真偽値"1"のことです)
         mirrored:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: トランジスタ
+            description: 横からの入力が真らしいなら、下からの入力を通過させます。(真らしいとは、形状、色、または真偽値"1"のことです)
     filter:
         default:
-            name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            name: アイテムフィルタ
+            description: 入力された信号と一致するアイテムを上部に通過させ、残りを右側に通過させます。
+            真偽値(1/0)でも制御できます。
     display:
         default:
-            name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            name: ディスプレイ
+            description: 入力された信号をディスプレイに表示します。
+            形状、色、真偽値のいずれでも可能です。
     reader:
         default:
-            name: Belt Reader
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            name: ベルトリーダ
+            description: 平均スループットを計測できます。 アンロック後は、
+            最後に通過したアイテムの情報を出力します。
     analyzer:
         default:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            name: 形状解析機
+            description: 形状の最下層の右上の形状を分析し、形状と色に分解します。
     comparator:
         default:
-            name: Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            name: 比較機
+            description: 両方の信号が完全に一致している場合、真偽値"1"を出力します。
+            形状、色、真偽値を比較できます。
     virtual_processor:
         default:
-            name: Virtual Cutter
-            description: Virtually cuts the shape into two halves.
+            name: 仮想切断機
+            description: 形状の信号を2つに切断できます。
         rotater:
-            name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            name: 仮想回転機
+            description: 形状の信号を時計回り、反時計回りに回転させます。
         unstacker:
-            name: Virtual Unstacker
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            name: 仮想分離機
+            description: 形状の信号の最上層を右側に出力し、残りの層を左側に出力します。
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: 仮想積層機
+            description: 左側の形状の信号の上に右側の形状の信号を合成します。
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: 仮想着色機
+            description: 下の形状の信号を右の色の信号で着色します。
     item_producer:
         default:
-            name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            name: なんでも抽出機
+            description: サンドボックスモードでのみ使用可能で、ワイヤレイヤーで与えられた信号の形状を
+            通常レイヤーに出力します。
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
@@ -559,10 +544,9 @@ storyRewards:
         desc: <strong>回転機</strong>が利用可能になりました。形を時計回り方向に90度回転させます。
     reward_painter:
         title: 着色
-        desc: "The <strong>painter</strong> has been unlocked - Extract some color veins
-            (just as you do with shapes) and combine it with a shape in the
-            painter to color them!<br><br>PS: If you are colorblind, there is a
-            <strong>color blind mode</strong> in the settings!"
+        desc: <strong>着色機</strong>が利用可能になりました。(今まで形状でやってきた方法で)色を抽出し、
+            形状と合成することで着色します！<br><br>追伸: もし色覚特性をお持ちでしたら、
+            設定に<strong>色覚特性モード</strong>があります！
     reward_mixer:
         title: 色の混合
         desc: <strong>混合機</strong>が利用可能になりました。 -
@@ -615,80 +599,68 @@ storyRewards:
         title: 次のレベル
         desc: おめでとうございます！　スタンドアローン版ではさらなる追加要素が計画されています！
     reward_balancer:
-        title: Balancer
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+        title: 分配機/合流機
+        desc: 多機能な<strong>分配機</strong>が利用可能になりました！
+            複数のベルトによる分配や合流が可能になり、より大きな工場が建設できます！
     reward_merger:
-        title: Compact Merger
-        desc: You have unlocked a <strong>merger</strong> variant of the
-            <strong>balancer</strong> - It accepts two inputs and merges them
-            into one belt!
+        title: コンパクトな合流機
+        desc: <strong>合流機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！
+            2つの入力を1つの出力に合流させます！
     reward_belt_reader:
-        title: Belt reader
-        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
-            measure the throughput of a belt.<br><br>And wait until you unlock
-            wires - then it gets really useful!
+        title: ベルトリーダ
+        desc: <strong>ベルトリーダ</strong>が利用可能になりました！
+            ベルトのスループットを計測できます！
+            ワイヤーのロックが解除されれば、より便利になります！
     reward_rotater_180:
-        title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
-            you to rotate a shape by 180 degress (Surprise! :D)
+        title: 180度の回転
+        desc: <strong>回転機</strong>のバリエーションが利用可能になりました！
+            180度の回転ができるようになります！(サプライズ！ :D)
     reward_display:
-        title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        title: ディスプレイ
+        desc: <strong>ディスプレイ</strong>が利用可能になりました！ ワイヤレイヤで信号を
+            接続することで、その内容を視認することができます！
     reward_constant_signal:
-        title: Constant Signal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 / 0).
+        title: 定数信号
+        desc: <strong>定数信号</strong>が利用可能になりました！
+            これは、例えばアイテムフィルタに接続する場合に便利です。
+            定数信号は、<strong>形状</strong>、<strong>色</strong>、または<strong>真偽値(1/0)</strong>を出力できます。
     reward_logic_gates:
-        title: Logic Gates
-        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
-            about this, but it's actually super cool!<br><br> With those gates
-            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
-            bonus on top I also just gave you a <strong>transistor</strong>!
+        title: 論理ゲート
+        desc: <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは
+            ありませんが、これらは非常に優秀です！<br><br>
+            AND, OR, XOR and NOTを計算できます！<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
     reward_virtual_processing:
-        title: Virtual Processing
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Whatever you choose, remember to have fun!
+        title: 仮想処理
+        desc: <strong>形状処理をシミュレート</strong>できる新しい部品を沢山追加しました！<br><br>
+            ワイヤレイヤで切断、回転、積層をシミュレートできるようになりました。
+            これからゲームを続けるにあたり、3つの方法があります:<br><br> -
+            <strong>完全自動化された機械</strong>を構築し、HUBが要求する形状を作成する(試してみることをオススメします！)。<br><br>
+            ワイヤでイカしたものを作る。<br><br>今までのように工場を建設する。<br><br>いずれにしても、楽しんでください！
     reward_wires_painter_and_levers:
-        title: Wires & Quad Painter
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>."
+        title: ワイヤ＆着色機(四分割)
+        desc: <strong>ワイヤレイヤ</strong>が利用可能になりました！: 通常レイヤとは別のレイヤーであり、異なる機能が使用できます！<br><br>
+            最初に、<strong>着色機(四分割)</strong>が利用可能です。着色したいスロットを、ワイヤレイヤで接続します。<br><br>
+            ワイヤレイヤに切り替えるには、<strong>E</strong>を押します。
     reward_filter:
-        title: Item Filter
-        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
-            to the top or the right output depending on whether they match the
-            signal from the wires layer or not.<br><br> You can also pass in a
-            boolean signal (1 / 0) to entirely activate or disable it.
+        title: アイテムフィルタ
+        desc: <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
+            アイテムを上部または右側の出力に分離します。<br><br>真偽値(0/1)信号を利用することで
+            どんなアイテムでも通過させるか、または通過させないかを選ぶこともできます。
     reward_demo_end:
-        title: End of Demo
-        desc: You have reached the end of the demo version!
+        title: お試し終了
+        desc: デモ版の最後に到達しました！
 settings:
     title: 設定
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
-        performance: Performance
+        general: 一般設定
+        userInterface: ユーザーインターフェイス
+        advanced: 高度な設定
+        performance: パフォーマンス
     versionBadges:
-        dev: Development
+        dev: 開発
         staging: Staging
         prod: Production
-    buildDate: Built <at-date>
+    buildDate: <at-date>にビルド
     labels:
         uiScale:
             title: 画面表示サイズ
@@ -756,11 +728,11 @@ settings:
             title: オートセーブ間隔
             description: ゲームが自動的にセーブされる頻度を設定します。無効化することも可能です。
             intervals:
-                one_minute: 一分
-                two_minutes: ニ分
-                five_minutes: 五分
-                ten_minutes: 十分
-                twenty_minutes: 二十分
+                one_minute: 1分
+                two_minutes: 2分
+                five_minutes: 5分
+                ten_minutes: 10分
+                twenty_minutes: 20分
                 disabled: 無効
         compactBuildingInfo:
             title: コンパクトな建造物情報
@@ -770,54 +742,46 @@ settings:
             description: 100個以上のエンティティをカット/削除する際に表示される警告ダイアログを無効にします。
         enableColorBlindHelper:
             title: 色覚モード
-            description: 色覚異常を持っていてもゲームがプレイできるようにするための各種ツールを有効化します。
+            description: 色覚特性を持っていてもゲームがプレイできるようにするための各種ツールを有効化します。
         rotationByBuilding:
-            title: Rotation by building type
-            description: Each building type remembers the rotation you last set it to
-                individually. This may be more comfortable if you frequently
-                switch between placing different building types.
+            title: 回転の記憶(部品別)
+            description: それぞれの部品ごとの回転を記憶させます。頻繁に設置物を変更する場合、より快適に建設が行なえます。
         soundVolume:
-            title: Sound Volume
-            description: Set the volume for sound effects
+            title: 音量(SE)
+            description: 効果音の音量を設定してください。
         musicVolume:
-            title: Music Volume
-            description: Set the volume for music
+            title: 音量(BGM)
+            description: 音楽の音量を設定してください。
         lowQualityMapResources:
-            title: Low Quality Map Resources
-            description: Simplifies the rendering of resources on the map when zoomed in to
-                improve performance. It even looks cleaner, so be sure to try it
-                out!
+            title: リソース表示の簡易化
+            description: ズームインしたときのリソース表示を簡素化して、パフォーマンスを向上させます。
+                外見もすっきりしますので、ぜひお試しください！
         disableTileGrid:
-            title: Disable Grid
-            description: Disabling the tile grid can help with the performance. This also
-                makes the game look cleaner!
+            title: グリッドの無効化
+            description: 配置用のグリッドを無効にして、パフォーマンスを向上させます。
+                これにより、ゲームの見た目もすっきりします。
         clearCursorOnDeleteWhilePlacing:
-            title: Clear Cursor on Right Click
-            description: Enabled by default, clears the cursor whenever you right click
-                while you have a building selected for placement. If disabled,
-                you can delete buildings by right-clicking while placing a
-                building.
+            title: 右クリックで配置をキャンセル
+            description: デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
+                無効にすると、建物の設置中に右クリックで建物を削除できます。
         lowQualityTextures:
-            title: Low quality textures (Ugly)
-            description: Uses low quality textures to save performance. This will make the
-                game look very ugly!
+            title: 低品質のテクスチャ(視認性低下)
+            description: 低品質のテクスチャを使用してパフォーマンスを向上させます。
+                ゲームの視認性が非常に低下します！
         displayChunkBorders:
-            title: Display Chunk Borders
-            description: The game is divided into chunks of 16x16 tiles, if this setting is
-                enabled the borders of each chunk are displayed.
+            title: チャンクの境界線を表示する
+            description: このゲームでは16x16タイルのチャンクで構成されています。
+                有効にすると、チャンクの境界線が表示されます。
         pickMinerOnPatch:
-            title: Pick miner on resource patch
-            description: Enabled by default, selects the miner if you use the pipette when
-                hovering a resource patch.
+            title: 資源で抽出機を選択
+            description: デフォルトで有効です。資源の上でスポイトを使用すると、抽出機を選択します。
         simplifiedBelts:
-            title: Simplified Belts (Ugly)
-            description: Does not render belt items except when hovering the belt to save
-                performance. I do not recommend to play with this setting if you
-                do not absolutely need the performance.
+            title: ベルトを単純化(視認性低下)
+            description: ベルトにカーソルを合わせているとき以外、ベルトで運ばれているアイテムを描画しません。
+                パフォーマンスを向上させますが、パフォーマンスが極端に必要な場合以外でこの設定で遊ぶことは推奨しません。
         enableMousePan:
-            title: Enable Mouse Pan
-            description: Allows to move the map by moving the cursor to the edges of the
-                screen. The speed depends on the Movement Speed setting.
+            title: マウスで画面を移動
+            description: 画面の端にカーソルを合わせることで移動できます。移動速度を設定することで、速度を変更できます。
     rangeSliderPercentage: <amount> %
 keybindings:
     title: キー設定
@@ -873,24 +837,24 @@ keybindings:
         mapMoveFaster: より速く移動
         lockBeltDirection: ベルトプランナーを有効化
         switchDirectionLockSide: "プランナー: 通る側を切り替え"
-        pipette: ピペット
-        switchLayers: Switch layers
-        wire: Energy Wire
-        balancer: Balancer
-        storage: Storage
-        constant_signal: Constant Signal
-        logic_gate: Logic Gate
-        lever: Switch (regular)
-        filter: Filter
-        wire_tunnel: Wire Crossing
-        display: Display
-        reader: Belt Reader
-        virtual_processor: Virtual Cutter
-        transistor: Transistor
-        analyzer: Shape Analyzer
-        comparator: Compare
-        item_producer: Item Producer (Sandbox)
-        copyWireValue: "Wires: Copy value below cursor"
+        pipette: スポイト
+        switchLayers: レイヤを変更
+        wire: 電力ワイヤ
+        balancer: 分配機/合流機
+        storage: ストレージ
+        constant_signal: 定数信号
+        logic_gate: 論理ゲート
+        lever: スイッチ
+        filter: アイテムフィルタ
+        wire_tunnel: 交差ワイヤ
+        display: ディスプレイ
+        reader: ベルトリーダ
+        virtual_processor: 仮想処理機
+        transistor: トランジスタ
+        analyzer: 形状解析機
+        comparator: 比較機
+        item_producer: なんでも抽出機(サンドボックス)
+        copyWireValue: カーソルに合っている形状信号をキーとしてコピー
 about:
     title: このゲームについて
     body: >-
@@ -915,63 +879,60 @@ demo:
         exportingBase: 工場の全体像の画像出力
     settingNotAvailable: デモ版では利用できません。
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
-    - Ratios stay the same, as long as all upgrades are on the same Tier.
-    - Serial execution is more efficient than parallel.
-    - You will unlock more variants of buildings later in the game!
-    - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
-    - You can weave different tiers of tunnels.
-    - Try to build compact factories - it will pay out!
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
-    - At maximum level, 5 extractors will fill a single belt.
-    - Don't forget about tunnels!
-    - You don't need to divide up items evenly for full efficiency.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
-    - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
-    - The storage buffer priorities the first output.
-    - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
-    - Shape patches that are further away from the hub are more complex.
-    - Machines have a limited speed, divide them up for maximum efficiency.
-    - Use balancers to maximize your efficiency.
-    - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
-    - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
-    - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to
-      be re-usable.
-    - Sometimes, you can find a needed shape in the map without creating it with
-      stackers.
-    - Full windmills / pinwheels can never spawn naturally.
-    - Color your shapes before cutting for maximum efficiency.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
-    - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - ハブは現在指定されている形状だけではなく、あらゆる種類の入力を受け付けることができます。
+    - あなたの工場が拡張可能か確認してください - あとで報われるでしょう！
+    - ハブのすぐ近くに建設しないでください。ぐちゃぐちゃになりますよ。
+    - 積層が上手く行かない場合は、入力を入れ替えてみてください。
+    - <b>R</b>を押すと、ベルトプランナーの経由方向を切り替えることができます。
+    - <b>CTRL</b>を押したままドラッグすると、向きを保ったままベルトを設置できます。
+    - アップグレードが同じティアなら、お互いの比率は同じです。
+    - 直列処理は、並列処理より効率的です。
+    - 後半になると、より多くの建物のバリエーションを解除できます。
+    - <b>T</b>を押すと、建物のバリエーションを切り替えることができます。
+    - 対称性が重要です！
+    - ティアの違うトンネル同士は、同じラインに重ねることができます。
+    - コンパクトに工場を作ってみてください - あとで報われるでしょう！
+    - 着色機には鏡写しのバリエーションがあり、<b>T</b>で選択できます。
+    - 適切な比率で建設することで、効率が最大化できます。
+    - 最大レベルでは、1つのベルトは5つの抽出機で満たすことができます。
+    - トンネルを忘れないでください。
+    - 最大限の効率を得るためには、アイテムを均等に分割する必要はありません。
+    - <b>SHIFT</b>を押したままベルトを設置するとベルトプランナーが有効になり、
+      長いベルトを簡単に設置できます。
+    - 切断機は向きを考慮せず、常に垂直に切断します。
+    - 白を作るためには、3色全てを混ぜます。
+    - ストレージは優先出力を優先して出力します。
+    - 増築可能なデザインを作るために時間を使ってください - それには価値があります！
+    - <b>SHIFT</b>を使用すると複数の建物を配置できます。
+    - <b>ALT</b>を押しながらベルトを設置すると、逆向きに設置できます。
+    - 効率が重要です！
+    - ハブから遠くに離れるほど、形状資源はより複雑な形になります。
+    - 機械の速度には上限があるので、最大効率を得るためには入力を分割します。
+    - 効率を最大化するために分配機/合流機を使用できます。
+    - 構成が重要です。ベルトを交差させすぎないようにしてください。
+    - 事前設計が重要です。さもないとぐちゃぐちゃになりますよ！
+    - 旧い工場を撤去しないでください！アップグレードを行うために、それらが必要になります。
+    - 助けなしでレベル20をクリアしてみてください！
+    - 複雑にしないでください。単純に保つことができれば、成功することができるでしょう。
+    - ゲームの後半で工場を再利用する必要があるかもしれません。
+    - 積層機を使用することなく、必要な形状資源を発見することができるかもしれません。
+    - 完全な風車の形は資源としては生成されません。
+    - 最大の効率を得るためには、切断する前に着色をしてください。
+    - モジュールとは、知覚こそが空間を生むものである。これは、人間である限り。
+    - 工場の設計図を蓄えておいてください。それらを再利用することで、新たな工場が作成できます。
+    - 混合機をよく見ると、色の混ぜ方が解ります。
+    - <b>CTRL</b> + クリックで範囲選択ができます。
+    - ハブに近すぎる設計物を作ると、のちの設計の邪魔になる可能性があります。
+    - アップグレードリストの各形状の横にあるピンのアイコンは、それを画面左に固定します。
+    - 原色全てを混ぜ合わせると白になります！
+    - マップは無限の広さがあります。臆せずに拡張してください。
+    - Factorioもプレイしてみてください！私のお気に入りのゲームです。
+    - 切断機(四分割)は右上から時計回りに切断します！
+    - メインメニューからセーブデータを保存できます！
+    - このゲームには便利なキーバインドがたくさんあります！設定ページを見てみてください。
+    - このゲームにはたくさんの設定があります！是非チェックしてみてください！
+    - ハブを示すマーカーには、その方向を示す小さなコンパスがあります。
+    - ベルトをクリアするには、範囲選択して同じ場所に貼り付けをします。
+    - F4を押すことで、FPSを表示することができます。
+    - F4を2回押すと、マウスとカメラの座標を表示することができます。
+    - 左のピン留めされた図形をクリックして、固定を解除できます。
