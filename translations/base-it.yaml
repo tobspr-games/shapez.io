@@ -698,7 +698,7 @@ storyRewards:
             Consente di ruotare una forma di 180 gradi (Sorpresa! :D)
     reward_display:
         title: Display
-        desc: Hai sbloccato il <strong>Display</strong>.
+        desc: Hai sbloccato il <strong>display</strong>.
             Collega un segnale dal livello dei cavi per visualizzarne il contenuto!
     reward_constant_signal:
         title: Sengale costante
