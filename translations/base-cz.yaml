@@ -3,49 +3,49 @@ steamPage:
         kombinování čím dál složitějších tvarů na nekonečné mapě.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        Shapez.io je relaxační hra, ve které musíte stavět továrny na
+         automatizaci výroba geometrických tvarů.  
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozložit na nekonečné mapě.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        Zatímco tvary zpracováváte pouze na začátku, musíte je obarvit později - k tomu musíte těžit a míchat barvy!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Koupemín hry na Steam vám dá přístup k plné verzi hry, ale taky můžete hrát demo verzi na shapez.io a potom se můžete rozhodnou jsestli hru koupíte!
+    title_advantages: Samostatné výhody
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>12 Nových úrovní</b> celkem 26 úrovní
+        - <b>18 Nových budov</b> pro plně automatizovanou továrnu!
+        - <b>20 vylepšení</b> pro mnoho hodin zábavy!
+        - <b>Wires Update</b> pro zcela nové rozměry!
         - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - Neomezené Savegames
+        - Neomezené markery
+        - Podpořte mě! ❤️
+    title_future: Plánovaní kontent
     planned:
-        - Blueprint Library (Standalone Exclusive)
+        - Blueprintová knihovna (Samostatně exkluzivní)
         - Steam Achievements
         - Puzzle Mode
-        - Minimap
-        - Mods
+        - Minnimapa
+        - Mody
         - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - ... a o hodně víc!
+    title_open_source: Tato hra je open source!
+    title_links: Odkazi
     links:
-        discord: Official Discord
+        discord: Officiální Discord
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Source code (GitHub)
-        translate: Help translate
+        translate: Pomožte přeložit hru!
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
-
-        Be sure to check out my trello board for the full roadmap!
+        Kdokoli může přispět, aktivně  se zapojit do komunity a
+         pokusit se zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu
+         kde je to možné.
+         
+        Nezapomeňte se podívat na můj trello board, kde najdete kompletní plán!
 global:
     loading: Načítám
     error: Chyba
@@ -96,7 +96,7 @@ mainMenu:
     newGame: Nová hra
     madeBy: Vytvořil <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Nepojmenovaný
 dialogs:
     buttons:
         ok: OK
@@ -191,18 +191,18 @@ dialogs:
         title: Potvrdit vyjmutí
         desc: Nemůžeš si dovolit vložení této oblasti! Skutečně ji chceš vyjmout?
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: Nastavte signál
+        descItems: "Vyberte předdefinovanou položku:"
+        descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (který jste
+             může vygenerovat <link>zde</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Přejmenovat Savegame
+        desc: Zde můžeš přejmenovat svůj savegame.
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: Varování výkonu
+        desc: Umístili jste spoustu budov, to je jen přátelská připomínka
+             hra nezvládne nekonečný počet budov - zkuste to
+             udržujte své továrny kompaktní!
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -243,7 +243,7 @@ ingame:
     notifications:
         newUpgrade: Nová aktualizace je k dispozici!
         gameSaved: Hra byla uložena.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Level <level> byl dokončen!
     shop:
         title: Vylepšení
         buttonUnlock: Vylepšit
@@ -341,37 +341,37 @@ ingame:
         n_miners: <amount> Extraktorů
         limited_items: Limit je <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: Demo verze
+        desc: Kliknutím sem zobrazíte výhody Steam verze!
+        get_on_steam: Získejte na steamu
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Získejte plnou verzy!
+        no_thanks: Ne, děkuju!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 Nových levlů
+                desc: Celkem 26 levlů!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 Nových budov
+                desc: Plně automatizujte svou továrnu!
             savegames:
                 title: ∞ Savegames
-                desc: As many as your heart desires!
+                desc: Tolik, kolik vaše srdce touží!
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 vylepšení
+                desc: Tato demo verze má pouze 5!
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: ∞ Markrů
+                desc: Nikdy se neztraťte ve své továrně!
             wires:
                 title: Wires
-                desc: An entirely new dimension!
+                desc: Zcela nový rozměr!
             darkmode:
                 title: Dark Mode
-                desc: Stop hurting your eyes!
+                desc: Přestanou vás bolet oči!
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: Podpořte mě
+                desc: Vyvíjím to ve svém volném čase!
 shopUpgrades:
     belt:
         name: Pásy, distribuce & tunely
