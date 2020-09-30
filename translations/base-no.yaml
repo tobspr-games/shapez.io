@@ -4,15 +4,15 @@ steamPage:
         på et uendelig ekspanderende brett.
     discordLinkShort: Offissiell Discord
     intro: >-
-        Shapez.io er et avslappende spill der du skal bygge fabrikker for 
-        automatisert produksjon av geometriske former.
-        
+        Shapez.io er et avslappende spill der du skal bygge fabrikker
+        for  automatisert produksjon av geometriske former.
+
         Etterhvert som du når høyere nivåer blir formene mer og mer komplekse, og du må spre deg ut over det uendelige kartet.
 
         Og som om det ikke var nok må du også produsere eksponensielt for å tilfredsstille etterspørselen - det eneste som hjelper er skalering!
-        
+
         Mens du kun produserer former i starten må du fargelegge de senere - for å gjøre dette må du hente ut og blande farger!
-        
+
         Ved å kjøpe spillet på Steam får du tilgang til fullversjonen, men du kan også spille en demo på shapez.io først og bestemme deg senere!
     title_advantages: Fordeler med fullversjonen
     advantages:
@@ -42,10 +42,10 @@ steamPage:
         source_code: Kildekode (GitHub)
         translate: Hjelp til med å oversette
     text_open_source: >-
-        Alle kan bidra, jeg er aktivt involvert i sammfunnet og prøver å
-        se gjennom alle forslagene og tar tilbakemeldinger i betraktning 
-        der det er mulig.
-        
+        Alle kan bidra, jeg er aktivt involvert i sammfunnet og prøver å se
+        gjennom alle forslagene og tar tilbakemeldinger i betraktning  der det
+        er mulig.
+
         Sjekk også mitt Trello-brett for hele veikartet!
 global:
     loading: Laster

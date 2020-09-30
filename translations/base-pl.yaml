@@ -207,8 +207,8 @@ dialogs:
     entityWarning:
         title: Uwaga o Wydajności gry
         desc: Postawiłeś dużo budynków, to jest tylko przyjacielskie przypomnienie, że
-            gra nie może utrzymać nieskończonej ilości budynków - Więc spróbuj zrobić swoje
-            budowle kompaktowe!
+            gra nie może utrzymać nieskończonej ilości budynków - Więc spróbuj
+            zrobić swoje budowle kompaktowe!
 ingame:
     keybindingsOverlay:
         moveMap: Ruch

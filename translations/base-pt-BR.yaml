@@ -3,7 +3,8 @@ steamPage:
         e combinação de formas cada vez mais complexas num mapa infinito.
     discordLinkShort: Discord Oficial
     intro: >-
-        Shapez.io é um jogo relaxante no qual você deve construir fábricas para produzir formas geométricas automaticamente.  
+        Shapez.io é um jogo relaxante no qual você deve construir fábricas para
+        produzir formas geométricas automaticamente.  
 
         Conforme os níveis aumentam, as formas se tornam mais complexas, e você terá que explorar o mapa infinito.
 
@@ -40,8 +41,8 @@ steamPage:
         source_code: Código-fonte (GitHub)
         translate: Ajude a traduzir
     text_open_source: >-
-        Qualquer um pode contribuir, estou ativamente envolvido com a comunidade e
-        tento ler todas as sugestões e receber críticas quando possível.
+        Qualquer um pode contribuir, estou ativamente envolvido com a comunidade
+        e tento ler todas as sugestões e receber críticas quando possível.
 
         Cheque minha lousa no trello para a linha do tempo completa!
 global:
@@ -192,16 +193,16 @@ dialogs:
     editSignal:
         title: Defina o sinal
         descItems: "Escolha um item pré-definido:"
-        descShortKey: ... ou insira o <strong>código</strong> de uma forma (Você 
-        pode gerá-lo <link>aqui</link>)
+        descShortKey: ... ou insira o <strong>código</strong> de uma forma (Você  pode
+            gerá-lo <link>aqui</link>)
     renameSavegame:
         title: Renomear Save
         desc: Você pode renomear seu save aqui.
     entityWarning:
         title: Aviso de Performance
-        desc: Você colocou muitas construções, isso é apenas um aviso amigável de que
-        o jogo não suporta construções infinitas - Então tente manter suas fábricas 
-        compactas!
+        desc: Você colocou muitas construções, isso é apenas um aviso amigável de que o
+            jogo não suporta construções infinitas - Então tente manter suas
+            fábricas  compactas!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -402,8 +403,8 @@ buildings:
             description: Permite transportar energia.
         second:
             name: Fio
-            description: Transfere sinais, que podem ser de itens, cores or binários (1 / 0).
-                Fios com cores diferentes não se conectam.
+            description: Transfere sinais, que podem ser de itens, cores or binários (1 /
+                0). Fios com cores diferentes não se conectam.
     miner:
         default:
             name: Extrator
@@ -472,7 +473,8 @@ buildings:
     balancer:
         default:
             name: Balanceador
-            description: Multifuncional - Distribui igualmente todas as entradas para todas as saídas.
+            description: Multifuncional - Distribui igualmente todas as entradas para todas
+                as saídas.
         merger:
             name: Unificador (compacto)
             description: Une duas esteiras em uma.
@@ -497,49 +499,54 @@ buildings:
     constant_signal:
         default:
             name: Sinal Constante
-            description: Emite um sinal constante, que pode ser uma forma, cor ou
-                binário (1 / 0).
+            description: Emite um sinal constante, que pode ser uma forma, cor ou binário (1
+                / 0).
     lever:
         default:
             name: Interruptor
-            description: Pode ser ativado para emitir um sinal binário (1 / 0) no plano da fiação,
-                que pode então ser usado para controlar um filtro, por exemplo.
+            description: Pode ser ativado para emitir um sinal binário (1 / 0) no plano da
+                fiação, que pode então ser usado para controlar um filtro, por
+                exemplo.
     logic_gate:
         default:
             name: Portão E (AND)
-            description: Emite um sinal binário "1" se ambas as entradas forem verdadeiras. (Ser verdadeira significa receber um sinal de forma,
-                cor or binário "1")
+            description: Emite um sinal binário "1" se ambas as entradas forem verdadeiras.
+                (Ser verdadeira significa receber um sinal de forma, cor or
+                binário "1")
         not:
             name: Portão NEGAR (NOT)
-            description: Emite um sinal binário "1" se a entrada for falsa. (Ser verdadeira significa receber um sinal de forma,
-                cor or binário "1")
+            description: Emite um sinal binário "1" se a entrada for falsa. (Ser verdadeira
+                significa receber um sinal de forma, cor or binário "1")
         xor:
             name: Portão OU EXCLUSIVO (XOR)
-            description: Emite um sinal binário "1" se uma das entradas for verdadeira, mas não duas.
-                (Ser verdadeira significa receber um sinal de forma, cor or binário "1")
+            description: Emite um sinal binário "1" se uma das entradas for verdadeira, mas
+                não duas. (Ser verdadeira significa receber um sinal de forma,
+                cor or binário "1")
         or:
             name: Portão OU (OR)
-            description: Emite um sinal binário "1" se uma das entradas for verdadeira. (Ser verdadeira significa receber um sinal de forma,
-            cor or binário "1")
+            description: Emite um sinal binário "1" se uma das entradas for verdadeira. (Ser
+                verdadeira significa receber um sinal de forma, cor or binário
+                "1")
     transistor:
         default:
             name: Transistor
             description: Envia o sinal adiante se a entrada for verdadeira. (Ser verdadeira
-            significa receber um sinal de forma, cor or binário "1")
+                significa receber um sinal de forma, cor or binário "1")
         mirrored:
             name: Transistor
             description: Envia o sinal adiante se a entrada for verdadeira. (Ser verdadeira
-            significa receber um sinal de forma, cor or binário "1")
+                significa receber um sinal de forma, cor or binário "1")
     filter:
         default:
             name: Filtro
-            description: Conecte um sinal para rotear todos os itens desejador para o topo e o
-                restante para a direita. Pode ser controlado por sinais binários também.
+            description: Conecte um sinal para rotear todos os itens desejador para o topo e
+                o restante para a direita. Pode ser controlado por sinais
+                binários também.
     display:
         default:
             name: Display
-            description: Conecte um sinal para exibí-lo no display - Pode ser uma forma,
-                cor ou binário.
+            description: Conecte um sinal para exibí-lo no display - Pode ser uma forma, cor
+                ou binário.
     reader:
         default:
             name: Leitor de Esteira
@@ -553,31 +560,33 @@ buildings:
     comparator:
         default:
             name: Comparador
-            description: Devolve um sinal binário "1" se ambos os sinais forem idênticos. Pode comparar
-                formas, itens e binário.
+            description: Devolve um sinal binário "1" se ambos os sinais forem idênticos.
+                Pode comparar formas, itens e binário.
     virtual_processor:
         default:
             name: Cortador Virtual
             description: Corta virtualmente as formas em duas metades.
         rotater:
             name: Rotacionador Virtual
-            description: Rotaciona virtualmente a forma, tanto no sentido horário quanto no anti-horário.
+            description: Rotaciona virtualmente a forma, tanto no sentido horário quanto no
+                anti-horário.
         unstacker:
             name: Separador Virtual
-            description: Extrai virtualmente a camada mais acima para a saída direita e as 
+            description: Extrai virtualmente a camada mais acima para a saída direita e as
                 restantes para a esquerda.
         stacker:
             name: Empilhador Virtual
-            description: Empilha virtualmente a forma da direita em cima da forma da esquerda.
+            description: Empilha virtualmente a forma da direita em cima da forma da
+                esquerda.
         painter:
             name: Pintor Virtual
-            description: Pinta virtualmente a forma da entrada inferior com a forma da 
+            description: Pinta virtualmente a forma da entrada inferior com a forma da
                 entrada direita.
     item_producer:
         default:
             name: Fábricante de Itens
-            description: Disponível no modo sandbox apenas, envia o sinal recebido do
-                plano de fios para o plano regular.
+            description: Disponível no modo sandbox apenas, envia o sinal recebido do plano
+                de fios para o plano regular.
 storyRewards:
     reward_cutter_and_trash:
         title: Cortando formas
@@ -678,54 +687,57 @@ storyRewards:
             em uma esteira!
     reward_belt_reader:
         title: Leitor de Esteira
-        desc: Você desbloqueou o <strong>leitor de esteira</strong>! Ele permite que você
-            meça a passagem de itens em uma esteira.<br><br>Espere até você desbloquear os
-            fios - ele se torna muito útil!
+        desc: Você desbloqueou o <strong>leitor de esteira</strong>! Ele permite que
+            você meça a passagem de itens em uma esteira.<br><br>Espere até você
+            desbloquear os fios - ele se torna muito útil!
     reward_rotater_180:
         title: Rotacionador (180 graus)
-        desc: Você acabou de desbloquear o <strong>rotacionador</strong> de 180 graus! - Ele permite
-            que você rotacione uma forma em 180 graus (Surpresa! :D)
+        desc: Você acabou de desbloquear o <strong>rotacionador</strong> de 180 graus! -
+            Ele permite que você rotacione uma forma em 180 graus (Surpresa! :D)
     reward_display:
         title: Display
-        desc: Você desbloqueou o <strong>Display</strong> - Conecte um sinal no
-            plano de fios para visualizar o que ele emite!
+        desc: Você desbloqueou o <strong>Display</strong> - Conecte um sinal no plano de
+            fios para visualizar o que ele emite!
     reward_constant_signal:
         title: Sinal Constante
-        desc: Você desbloqueou a construção que emite um <strong>sinal constante</strong> no plano de
-            fios! Isso é útil para conectar no <strong>filtro de itens</strong>
-            por exemplo.<br><br> O sinal constante pode emitir um sinal de 
-            <strong>forma</strong>, <strong>cor</strong> ou
-            <strong>binário</strong> (1 / 0).
+        desc: Você desbloqueou a construção que emite um <strong>sinal
+            constante</strong> no plano de fios! Isso é útil para conectar no
+            <strong>filtro de itens</strong> por exemplo.<br><br> O sinal
+            constante pode emitir um sinal de <strong>forma</strong>,
+            <strong>cor</strong> ou <strong>binário</strong> (1 / 0).
     reward_logic_gates:
         title: Portões Lógicos
-        desc: Você desbloqueou <strong>portões lógicos</strong>! Você não precisa se animar
-            com isso, mas na verdade é SUPER legal!<br><br> Com estes portões
-            você pode computar operações E (AND), OU (OR), OU EXCLUSIVO (XOR) e NEGAR (NOT).<br><br>c
-            E para a cereja do bolo, eu também te dei um <strong>transistor</strong>!
+        desc: Você desbloqueou <strong>portões lógicos</strong>! Você não precisa se
+            animar com isso, mas na verdade é SUPER legal!<br><br> Com estes
+            portões você pode computar operações E (AND), OU (OR), OU EXCLUSIVO
+            (XOR) e NEGAR (NOT).<br><br>c E para a cereja do bolo, eu também te
+            dei um <strong>transistor</strong>!
     reward_virtual_processing:
         title: Processamento Virtual
         desc: Eu acabei de te dar um monte de novas construções que te permitem
-            <strong>simular o processamento de formas</strong>!<br><br> Você pode
-            simular um cortador, rotacionador, empilhador e mais no plano de fiação!
-            Com isso você tem agora três maneiras de continuar jogando:<br><br> -
-            Construir uma <strong>máquina automática</strong> para criar qualquer forma
-            possível pedida pelo HUB (Você deveria tentar!).<br><br> - Construir
-            algo legal com os fios.<br><br> - Continuar jogando
-            normalmente.<br><br> Independente da sua escolha, lembre de se divertir!
+            <strong>simular o processamento de formas</strong>!<br><br> Você
+            pode simular um cortador, rotacionador, empilhador e mais no plano
+            de fiação! Com isso você tem agora três maneiras de continuar
+            jogando:<br><br> - Construir uma <strong>máquina automática</strong>
+            para criar qualquer forma possível pedida pelo HUB (Você deveria
+            tentar!).<br><br> - Construir algo legal com os fios.<br><br> -
+            Continuar jogando normalmente.<br><br> Independente da sua escolha,
+            lembre de se divertir!
     reward_wires_painter_and_levers:
         title: Fios e Pintor Quádruplo
-        desc: "Você acabou de desbloquear o <strong>Plano de Fiação</strong>: Ele é um plano
-            separado no topo do plano comum e introduz um monte de novas
+        desc: "Você acabou de desbloquear o <strong>Plano de Fiação</strong>: Ele é um
+            plano separado no topo do plano comum e introduz um monte de novas
             mecânicas!<br><br> Para começar eu te dou o <strong>Pintor
-            Quádruplo</strong> - Conecte a entrada que você quer que seja colorida com
-            o plano da fiação!<br><br> Para mudar de plano, aperte
+            Quádruplo</strong> - Conecte a entrada que você quer que seja
+            colorida com o plano da fiação!<br><br> Para mudar de plano, aperte
             <strong>E</strong>."
     reward_filter:
         title: Filtro de Itens
-        desc: Você desbloqueou o <strong>Filtro de Itens</strong>! Ele irá rotear os itens para
-            a saída superior ou da direit dependendo se eles batem com o sinal vindo do
-            plano dos fios ou não.<br><br> Você também pode inserir um
-            sinal binário (1 / 0) para ativá-lo ou desativá-lo completamente
+        desc: Você desbloqueou o <strong>Filtro de Itens</strong>! Ele irá rotear os
+            itens para a saída superior ou da direit dependendo se eles batem
+            com o sinal vindo do plano dos fios ou não.<br><br> Você também pode
+            inserir um sinal binário (1 / 0) para ativá-lo ou desativá-lo
+            completamente
     reward_demo_end:
         title: Fim da Demo
         desc: Você chegou no fim da versão demo!
@@ -855,39 +867,42 @@ settings:
             description: Defina um volume para a música
         lowQualityMapResources:
             title: Recursos do Mapa em Baixa Qualidade
-            description: Simplifica a renderização de recursos no mapa com o zoom aplicado para
-                melhorar a performance. Parece até mais limpo, então tenha certeza de testar!
+            description: Simplifica a renderização de recursos no mapa com o zoom aplicado
+                para melhorar a performance. Parece até mais limpo, então tenha
+                certeza de testar!
         disableTileGrid:
             title: Desabilite a Grade
-            description: Desabilitar a grade pode ajudar com a performance. Isso também
-                faz o jogo parecer mais limpo!
+            description: Desabilitar a grade pode ajudar com a performance. Isso também faz
+                o jogo parecer mais limpo!
         clearCursorOnDeleteWhilePlacing:
             title: Limpar Cursor com Clique Direito
-            description: Habilitado por padrão, limpa o cursor sempre que você clica com o botão direito
-                enquanto você tem uma construção selecionada. Se desabilitado,
-                você pode deletar construções clicando com o botão direito enquanto tiver algo
-                selecionado.
+            description: Habilitado por padrão, limpa o cursor sempre que você clica com o
+                botão direito enquanto você tem uma construção selecionada. Se
+                desabilitado, você pode deletar construções clicando com o botão
+                direito enquanto tiver algo selecionado.
         lowQualityTextures:
             title: Texturas de Baixa Qualidade (Feio)
-            description: Usa texturas de baixa qualidade para ajudar com a performance. Vai deixar o jogo
-                bem feio!
+            description: Usa texturas de baixa qualidade para ajudar com a performance. Vai
+                deixar o jogo bem feio!
         displayChunkBorders:
             title: Mostrar Bordas das Chunks
-            description: O jogo é dividido em chunks de 16x16 ladrilhos, se está configuração
-                estiver habilitada, as bordas de cada chunk ficarão à mostra.
+            description: O jogo é dividido em chunks de 16x16 ladrilhos, se está
+                configuração estiver habilitada, as bordas de cada chunk ficarão
+                à mostra.
         pickMinerOnPatch:
             title: Selecionar Extrator em uma Fonte de Recursos
-            description: Habilitador por padrão, seleciona o extrator se você usar o conta-gotas
-                em uma fonte de recursos.
+            description: Habilitador por padrão, seleciona o extrator se você usar o
+                conta-gotas em uma fonte de recursos.
         simplifiedBelts:
             title: Esteiras Simplificadas (Feio)
-            description: Não renderiza itens nas esteiras, exceto quando o cursor estiver em cima da esteira, 
-                para melhorar a performance. Eu não recomendo jogar com essa configuração habilitada se você
-                não precisar muito da melhoria de performance.
+            description: Não renderiza itens nas esteiras, exceto quando o cursor estiver em
+                cima da esteira, para melhorar a performance. Eu não recomendo
+                jogar com essa configuração habilitada se você não precisar
+                muito da melhoria de performance.
         enableMousePan:
             title: Habilitar Movimento com o Mouse
-            description: Permite mover o mapa ao mover o cursor para as bordas da
-                tela. A velocidade depende da configuração Velocidade de Movimento.
+            description: Permite mover o mapa ao mover o cursor para as bordas da tela. A
+                velocidade depende da configuração Velocidade de Movimento.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Controles
@@ -993,7 +1008,8 @@ tips:
     - Se o empilhamento não funcionar, tente inverter as entradas.
     - Você pode mudar a direção do planejador de esteiras apertando <b>R</b>.
     - Segurar <b>CTRL</b> permite arrastar esteiras sem a orientação automática.
-    - As proporções se matém, desde que todas as melhorias estejam no mesmo nível.
+    - As proporções se matém, desde que todas as melhorias estejam no mesmo
+      nível.
     - Execução em série é mais eficiete que a paralela.
     - Você desbloqueará variantes de construções mais para frente no jogo!
     - Você pode usar <b>T</b> para mudar para diferentes variantes.
@@ -1005,8 +1021,8 @@ tips:
     - No nível máximo, 5 extratores vão encher uma única esteira.
     - Não se esqueça dos túneis!
     - Você não precisa dividir os itens igualmente para ter máxima eficiência.
-    - Segurar <b>SHIFT</b> vai ativar o planejamento de esteiras, te permitindo colocar
-      longas esteiras mais facilmente.
+    - Segurar <b>SHIFT</b> vai ativar o planejamento de esteiras, te permitindo
+      colocar longas esteiras mais facilmente.
     - Cortadores sempre cortam verticalmente, independente da orientação.
     - Misture todas as cores para obter branco.
     - O armazenamento prioriza a saída primária.
@@ -1015,36 +1031,43 @@ tips:
     - Segure <b>ALT</b> para inverter a direção de esteiras posicionadas.
     - Efficiência é a chave!
     - Fontes de recursos mais distantes do HUB são mais complexas.
-    - Máquinas tem uma velocidade máxima, divida os itens para uma eficiência máxima.
+    - Máquinas tem uma velocidade máxima, divida os itens para uma eficiência
+      máxima.
     - Use balanceadores para maximizar sua eficiência.
     - Organização é importante. Tente não entrelaçar muitas esteiras.
     - Planeje com antecedência, ou tudo será um caos!
-    - Não remova suas fábricas antigas! Você precisará delas para desbloquear melhorias.
+    - Não remova suas fábricas antigas! Você precisará delas para desbloquear
+      melhorias.
     - Tente passar do nível 20 sozinho antes de pedir ajuda!
     - Não complique as coisas, tente manter tudo simples e você irá longe.
-    - Talvez você precise reusar fábricas antigas no futuro. Planeje-as para que sejam
-      reutilizáveis.
+    - Talvez você precise reusar fábricas antigas no futuro. Planeje-as para que
+      sejam reutilizáveis.
     - As vezes, você pode encontrar uma forma necessária no mapa sem criá-la com
       empilhadores.
     - Moinhos completos nunca vão aparecer naturalmente.
     - Pinte suas formas antes de cortar para ter máxima eficiência.
-    - Com módulos, espaço é meramente uma percepção; uma preocupação para mortais.
-    - Faça uma fábrica separada para projetos. Eles são importantes para os módulos.
-    - Dê uma olhada mais de perto no misturador de cores, e suas perguntas serão respondidas.
+    - Com módulos, espaço é meramente uma percepção; uma preocupação para
+      mortais.
+    - Faça uma fábrica separada para projetos. Eles são importantes para os
+      módulos.
+    - Dê uma olhada mais de perto no misturador de cores, e suas perguntas serão
+      respondidas.
     - Use <b>CTRL</b> + Clique para selecionar uma área.
     - Construções muito perto do HUB podem entrar no caminho de projetos futuros.
-    - O ícone de pin ao lado de cada forma na lista de melhorias fixa essa forma na tela.
+    - O ícone de pin ao lado de cada forma na lista de melhorias fixa essa forma
+      na tela.
     - Misture todas as cores primárias para fazer tinta branca!
     - Você tem um mapa infinito, não amontoe sua fábrica, expanda!
     - Tente também Factorio! É meu jogo favorito.
-    - O cortador quádruplo corta no sentido anti-horário começando pelo topo direito!
+    - O cortador quádruplo corta no sentido anti-horário começando pelo topo
+      direito!
     - Você pode baixar seus saves no menu principal!
-    - Este jogo tem um monte de teclas úteis! Tenha certeza de checar a
-      aba de configurações.
+    - Este jogo tem um monte de teclas úteis! Tenha certeza de checar a aba de
+      configurações.
     - Este jogo tem muitas configurações, então dê uma olhada!
     - O marcador para o HUB tem uma pequena bússola para indicar sua direção!
     - Para limpar as esteiras, corte a área e cole-a no mesmo lugar.
     - Pressione F4 para mostrar seu FPS e taxa de tiques.
     - Pressione F4 duas vezes para mostrar o ladrilho do seu mouse e da câmera.
     - Você pode clicar em uma forma fixada na esquerda para tirá-la de lá.
-    - Agradeça ao Fuskaka por este easter egg!
+    - null

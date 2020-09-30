@@ -4,7 +4,8 @@ steamPage:
         infinit.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io es un joc relaxant en el qual has de construir fàbriques per a la producció automàtica de formes geomètriques.  
+        Shapez.io es un joc relaxant en el qual has de construir fàbriques per a
+        la producció automàtica de formes geomètriques.  
 
         A mesura que el nivell augmenta, les formes esdevenen més complexes, i has d'explorar el mapa infinit.
 
@@ -13,10 +14,11 @@ steamPage:
         Mentre que al principi només processes formes, més envant les hauràs de colorejar, pel que necessitaràs extreure y mesclar colors!
 
         Si compres el joc a Steam tendràs accés al joc complet, però també pots jugar a la demo a shapez.io primer i decidir-te més tard!
-    title_advantages: Avantatges de la versió completa:
+    title_advantages: "Avantatges de la versió completa:"
     advantages:
         - <b>12 Nous nivells</b> per a un total de 26 nivells
-        - <b>18 Nous edificis</b> per construir una fàbrica completament automatitzada!
+        - <b>18 Nous edificis</b> per construir una fàbrica completament
+          automatitzada!
         - <b>20 Nivells de millora</b> per més hores de diversió!
         - <b>Actualització de Cablejat</b> per a una dimensió totalment nova!
         - <b>Mode Oscur</b>!
@@ -41,8 +43,9 @@ steamPage:
         source_code: Codi font (GitHub)
         translate: Ajuda a traduir-lo
     text_open_source: >-
-        Qualsevol pot contribuir, i estic activament involucrat en la comunitat i intent prestar atenció a tots els suggeriments
-        i tenir en compte tots el comentaris.
+        Qualsevol pot contribuir, i estic activament involucrat en la comunitat
+        i intent prestar atenció a tots els suggeriments i tenir en compte tots
+        el comentaris.
 
         Assegura't de mirar el meu tauler de Trello per al full de ruta complet!
 global:
@@ -196,14 +199,16 @@ dialogs:
     editSignal:
         title: Configura la Senyal
         descItems: "Tria un ítem predefinit:"
-        descShortKey: ... o introdueix un<strong>códi de forma</strong>  (El qual pots generar <link>aqui</link>)
+        descShortKey: ... o introdueix un<strong>códi de forma</strong>  (El qual pots
+            generar <link>aqui</link>)
     renameSavegame:
         title: Canviar el nom.
         desc: Canviar el nom de la partida guardada.
     entityWarning:
         title: Alerta de rendiment
         desc: Has col·locat molts edificis, això és una alerta amistosa de que el joc no
-        pot suportar edificis infinits, així que intenta mantenir els teus dissenys minimament compactes!
+            pot suportar edificis infinits, així que intenta mantenir els teus
+            dissenys minimament compactes!
 ingame:
     keybindingsOverlay:
         moveMap: Moure
@@ -405,7 +410,8 @@ buildings:
             description: Permet transportar energia.
         second:
             name: Cable
-            description: Transfereix senyals, que poden ser ítems, colors o booleà. Cables de diferents colors no es connecten entre ells.
+            description: Transfereix senyals, que poden ser ítems, colors o booleà. Cables
+                de diferents colors no es connecten entre ells.
     miner:
         default:
             name: Extractor
@@ -472,7 +478,8 @@ buildings:
     balancer:
         default:
             name: Equilibrador
-            description: Multifuncional - Reparteix uniformament totes les entrades a totes les sortides.
+            description: Multifuncional - Reparteix uniformament totes les entrades a totes
+                les sortides.
         merger:
             name: Fusionador (compacte)
             description: Fusiona dues cintes transportadores en una.
@@ -489,7 +496,8 @@ buildings:
         default:
             name: Emmagatzematge
             description: Emmagatzema articles en excés fins a una capacitat determinada.
-            Prioritza la sortida esquerra i es pot utilitzar com a porta de desbordament.
+                Prioritza la sortida esquerra i es pot utilitzar com a porta de
+                desbordament.
     wire_tunnel:
         default:
             name: Encreuament de cablejat
@@ -497,11 +505,13 @@ buildings:
     constant_signal:
         default:
             name: Senyal Constant
-            description: EEmet una senyal constant, que pot esser una forma, color o booleana (1 / 0).
+            description: EEmet una senyal constant, que pot esser una forma, color o
+                booleana (1 / 0).
     lever:
         default:
             name: Interruptor
-            description: Pot esser alternat per emetre una senyal booleana (1 / 0) a la capa de cablejat.
+            description: Pot esser alternat per emetre una senyal booleana (1 / 0) a la capa
+                de cablejat.
     logic_gate:
         default:
             name: Porta AND
@@ -509,47 +519,54 @@ buildings:
                 color or boolean "1")
         not:
             name: NOT Gate
-            description: Emet una senyal booleana "1" si les dues entrades són vertaderes. (Vertadera significa que la senyal
-            és una forma, un color o la senyal booleana "1").
+            description: Emet una senyal booleana "1" si les dues entrades són vertaderes.
+                (Vertadera significa que la senyal és una forma, un color o la
+                senyal booleana "1").
         xor:
             name: Porta XOR
-            description: Emet una senyal booleana "1" si  i només si una de les senyals és vertadera.
-                (Vertadera significa que la senyal és una forma, un color o la senyal booleana "1").
+            description: Emet una senyal booleana "1" si  i només si una de les senyals és
+                vertadera. (Vertadera significa que la senyal és una forma, un
+                color o la senyal booleana "1").
         or:
             name: Porta OR
             description: Emet una senyal booleana "1" si una de les senyals és vertadera.
-                (Vertadera significa que la senyal és una forma, un color o la senyal booleana "1").
+                (Vertadera significa que la senyal és una forma, un color o la
+                senyal booleana "1").
     transistor:
         default:
             name: Transistor
-            description: Deixa passar la senyal inferior si la senyal lateral és vertadera (una forma,
-            color o "1").
+            description: Deixa passar la senyal inferior si la senyal lateral és vertadera
+                (una forma, color o "1").
         mirrored:
             name: Transistor
-            description: Deixa passar la senyal inferior si la senyal lateral és vertadera (una forma,
-            color o "1").
+            description: Deixa passar la senyal inferior si la senyal lateral és vertadera
+                (una forma, color o "1").
     filter:
         default:
             name: Filtre
-            description: Conecta una senyal per redirigir tots els ítems que coincideixin amb la senyal a la part superior,
-            i la resta a la dreta. També es pot controlar amb senyals booleanes.
+            description: Conecta una senyal per redirigir tots els ítems que coincideixin
+                amb la senyal a la part superior, i la resta a la dreta. També
+                es pot controlar amb senyals booleanes.
     display:
         default:
             name: Pantalla
-            description: Conecta una senyal per que es mostri a la pantalla. Pot ser una forma, color o booleà
+            description: Conecta una senyal per que es mostri a la pantalla. Pot ser una
+                forma, color o booleà
     reader:
         default:
             name: Lector de cinta
-            description: Permet mesurar el rendiment de la cinta. Emet el darrer ítem llegit a la capa de cablejat
-            (un pic desbloquejada).
+            description: Permet mesurar el rendiment de la cinta. Emet el darrer ítem llegit
+                a la capa de cablejat (un pic desbloquejada).
     analyzer:
         default:
             name: Analitzador de formes
-            description: Analitza el quadrant superior dret de la capa més baixa de la forma i retorna el color i la forma.
+            description: Analitza el quadrant superior dret de la capa més baixa de la forma
+                i retorna el color i la forma.
     comparator:
         default:
             name: Comparador
-            description: Retorna una senyal booleana "1" si les dues senyals són exactament iguales.Pot comparar formes, colors i booleans.
+            description: Retorna una senyal booleana "1" si les dues senyals són exactament
+                iguales.Pot comparar formes, colors i booleans.
     virtual_processor:
         default:
             name: Tallador virtual
@@ -559,25 +576,28 @@ buildings:
             description: Rota la forma virtual, tant en sentit horari com antihorari.
         unstacker:
             name: Desapilador Virtual
-            description: Extreu la capa superior a la sortida dreta i la resta a la sortida esquerra.
+            description: Extreu la capa superior a la sortida dreta i la resta a la sortida
+                esquerra.
         stacker:
             name: Apilador Virtual
             description: Apila la figura de l'entrada dreta damunt l'entrada esquerra.
         painter:
             name: Pintador Virtual
-            description: Pinta la capa de l'entrada inferior amb la figura de la entrada dreta.
+            description: Pinta la capa de l'entrada inferior amb la figura de la entrada
+                dreta.
     item_producer:
         default:
             name: Productor d'ítems
-            description: Només avaliable en mode "sandbox", emet la senyal de la capa de cablejat a la capa normal.
+            description: Només avaliable en mode "sandbox", emet la senyal de la capa de
+                cablejat a la capa normal.
 storyRewards:
     reward_cutter_and_trash:
         title: Tallar figures
-        desc: Acabes de desbloquejar la <strong>Tallador</strong> - talla les figures per
-            la meitat <strong>de dalt a baix</strong>; sense importar la seva/ua
-            orientació!<br><br>Assegura't d'eliminar les parts que no utilitzes,
-            si no <strong>es pararà</strong> - Es per això que t'he donat una
-            paperera, utilitza-la!
+        desc: Acabes de desbloquejar la <strong>Tallador</strong> - talla les figures
+            per la meitat <strong>de dalt a baix</strong>; sense importar la
+            seva/ua orientació!<br><br>Assegura't d'eliminar les parts que no
+            utilitzes, si no <strong>es pararà</strong> - Es per això que t'he
+            donat una paperera, utilitza-la!
     reward_rotater:
         title: Rotar
         desc: El <strong>Rotador</strong> s'ha desbloquejat! Rota formes en sentit
@@ -664,53 +684,66 @@ storyRewards:
             completa - fora del web!
     reward_balancer:
         title: Equilibrador
-        desc: Has desbloquejat el multifuncional <strong>equilibrador</strong>! Pot ésser emprat
-        per construir fàbriques més grans <strong>dividint i fusionant ítems</strong> a múltiples cintes!<br><br>
+        desc: Has desbloquejat el multifuncional <strong>equilibrador</strong>! Pot
+            ésser emprat per construir fàbriques més grans <strong>dividint i
+            fusionant ítems</strong> a múltiples cintes!<br><br>
     reward_merger:
         title: Fusionador Compacte
-        desc: Has desbloquejat una variant <strong>fusionadora</strong> de l'<strong>equilibrador</strong>. Accepta dues
-        entrades i les fusiona en una cinta!
+        desc: Has desbloquejat una variant <strong>fusionadora</strong> de
+            l'<strong>equilibrador</strong>. Accepta dues entrades i les fusiona
+            en una cinta!
     reward_belt_reader:
         title: Lector de cinta
         desc: Has desbloquejat el <strong>lector de cinta</strong>! Et permet mesurar el
-        rendiment d'una cinta. I espera a desbloquejar els cables, et serà encara més útil!
+            rendiment d'una cinta. I espera a desbloquejar els cables, et serà
+            encara més útil!
     reward_rotater_180:
         title: Rotador (180 graus)
-        desc: Acabes de desbloquejar un altre <strong>rotador</strong>!. Et permet rotar una forma 180
-        graus.
+        desc: Acabes de desbloquejar un altre <strong>rotador</strong>!. Et permet rotar
+            una forma 180 graus.
     reward_display:
         title: Pantalla
-        desc: Has desbloquejat la <strong>Pantalla</strong>. Conecta una senyal a la capa de cables per visualitzar
-        el contingut de la senyal!
+        desc: Has desbloquejat la <strong>Pantalla</strong>. Conecta una senyal a la
+            capa de cables per visualitzar el contingut de la senyal!
     reward_constant_signal:
         title: Senyal constant
-        desc: Has desbloquejat l'emisor de <strong>senyal constant</strong> a la capa de cables!
-        És molt util per conectar-los a <strong>filtres d'ítems</strong>, per exemple.<br><br>
-        Pot emetre una <strong>forma</strong>, <strong>color</strong> or
-            <strong>booleà</strong> (1 / 0).
+        desc: >-
+            Has desbloquejat l'emisor de <strong>senyal constant</strong> a la
+            capa de cables! És molt util per conectar-los a <strong>filtres
+            d'ítems</strong>, per exemple.<br><br> Pot emetre una
+            <strong>forma</strong>, <strong>color</strong> or
+                <strong>booleà</strong> (1 / 0).
     reward_logic_gates:
         title: Portes lògiques
-        desc: Has desbloquejat les <strong>portes lògiques</strong>! No fa falta t'emocionis per això,
-        però és molt guai!<br><br> Amb aquestes portes lògiques pots computar operacions AND, OR, XOR i NOT. <br><br>
-        També tens disponible un <strong>transistor</strong>!
+        desc: Has desbloquejat les <strong>portes lògiques</strong>! No fa falta
+            t'emocionis per això, però és molt guai!<br><br> Amb aquestes portes
+            lògiques pots computar operacions AND, OR, XOR i NOT. <br><br> També
+            tens disponible un <strong>transistor</strong>!
     reward_virtual_processing:
         title: Processament Virtual
-        desc: Acabes de desbloquejar un munt de nous edificis que et permeten <strong>simular el processament de figures</strong>!<br><br> 
-        Ara pots simular una tallador, rotador, apilador i més a la capa de cables!
-        Amb això ara tens tres opcions per continuar el joc:<br><br> 
-        - Construir una <strong>màquina automàtica</strong> que crea totes les formes demanades per el NEXE (Recoman provar-ho!).<br><br> 
-        - Construir algo guai amb cables.<br><br>
-        - Continua jugant normalment.<br><br> Triis el que triis, recorda passar-ho bé!
+        desc: Acabes de desbloquejar un munt de nous edificis que et permeten
+            <strong>simular el processament de figures</strong>!<br><br>  Ara
+            pots simular una tallador, rotador, apilador i més a la capa de
+            cables! Amb això ara tens tres opcions per continuar el
+            joc:<br><br>  - Construir una <strong>màquina automàtica</strong>
+            que crea totes les formes demanades per el NEXE (Recoman
+            provar-ho!).<br><br>  - Construir algo guai amb cables.<br><br> -
+            Continua jugant normalment.<br><br> Triis el que triis, recorda
+            passar-ho bé!
     reward_wires_painter_and_levers:
         title: Cables i Pintador Quàdruple
-        desc: "Has desbloquejat la <strong>Capa de Cables</strong>: És una capa separada damunt la capa normal i introdueix moltes
-        mecàniques noves!<br><br> Per començar t'he desbloquejat el <strong>Pintador Quàdruple</strong>. Conecta les ranures
-        que vols pintar a la capa de Cables!<br><br> Per canviar a la capa de Cables, prem <strong>E</strong>."
+        desc: "\"Has desbloquejat la <strong>Capa de Cables</strong>: És una capa
+            separada damunt la capa normal i introdueix moltes mecàniques
+            noves!<br><br> Per començar t'he desbloquejat el <strong>Pintador
+            Quàdruple</strong>. Conecta les ranures que vols pintar a la capa de
+            Cables!<br><br> Per canviar a la capa de Cables, prem
+            <strong>E</strong>.\""
     reward_filter:
         title: Filtre d'Ítems
-        desc: Has desbloquejat el <strong>Filtre d'Ítems</strong>! Filtrarà els ítems a la part superior o a la part dreta 
-        depenent de si coincideixen amb la senyal de la capa de Cables o no.<br><br> També pots conectar-li una senyal booleana (1 / 0) per encendra-la
-        per complet o apagarla.
+        desc: Has desbloquejat el <strong>Filtre d'Ítems</strong>! Filtrarà els ítems a
+            la part superior o a la part dreta  depenent de si coincideixen amb
+            la senyal de la capa de Cables o no.<br><br> També pots conectar-li
+            una senyal booleana (1 / 0) per encendra-la per complet o apagarla.
     reward_demo_end:
         title: Final de la Demo
         desc: Has arribat al final de la Demo!
@@ -840,32 +873,41 @@ settings:
             description: Defineix el volum de la música
         lowQualityMapResources:
             title: Map de Recursos de Baixa Qualitat
-            description: Simplifica la renderització dels recursos en el mapa al fer zoom per 
-            millorar el rendiment. Fins i tot es veu més net, així que assegureu-vos de provar-ho!
+            description: Simplifica la renderització dels recursos en el mapa al fer zoom
+                per  millorar el rendiment. Fins i tot es veu més net, així que
+                assegureu-vos de provar-ho!
         disableTileGrid:
             title: Desactiva la Graella
-            description: Desactivar la graella pot ajudar al rendiment. També fa que el joc es vegi més net!
+            description: Desactivar la graella pot ajudar al rendiment. També fa que el joc
+                es vegi més net!
         clearCursorOnDeleteWhilePlacing:
             title: Esborreu el cursor en fer clic amb el botó dret
-            description: Encés per defecte, borra el cursor quan es prem el botó dret mentres hi ha un edifici seleccionat. 
-            Si es desactiva, pots eliminar edificis prement amb el botó dret mentres col·loques un altre edifici.
+            description: Encés per defecte, borra el cursor quan es prem el botó dret
+                mentres hi ha un edifici seleccionat.  Si es desactiva, pots
+                eliminar edificis prement amb el botó dret mentres col·loques un
+                altre edifici.
         lowQualityTextures:
             title: Textures de baixa qualitat (Molt lleig)
-            description: Emprar textures de baixa qualitat per millorar el rendiment. Aixó farà que el joc sigui molt lleig!
+            description: Emprar textures de baixa qualitat per millorar el rendiment. Aixó
+                farà que el joc sigui molt lleig!
         displayChunkBorders:
             title: Mostrar les vores dels Chunks
-            description: El joc està dividit en chunks de 16x16 caselles. Si es selecciona aquesta opció, les vores dels chunks es mostraràn.
+            description: El joc està dividit en chunks de 16x16 caselles. Si es selecciona
+                aquesta opció, les vores dels chunks es mostraràn.
         pickMinerOnPatch:
             title: Triar el miner a la zona de recursos
-            description: Seleccionat per defecte, es selecciona el miner si empres la pipeta damunt una zona de recursos.
+            description: Seleccionat per defecte, es selecciona el miner si empres la pipeta
+                damunt una zona de recursos.
         simplifiedBelts:
             title: Cintes simplificades (Lleig)
-            description: No renderitze els ítems de les cintes fins que passis el ratolí per sobre, per millorar el rendiment.No recoman
-            usar aquesta opció si no necessites un augment de rendiment.
+            description: No renderitze els ítems de les cintes fins que passis el ratolí per
+                sobre, per millorar el rendiment.No recoman usar aquesta opció
+                si no necessites un augment de rendiment.
         enableMousePan:
             title: Activa el desplaçament del ratolí
-            description: Permet moure el mapa quan mous el cursor a les vores de la pantalla. La velocitat de moviment depèn de la configuració
-            de Velocitat de Moviment.
+            description: Permet moure el mapa quan mous el cursor a les vores de la
+                pantalla. La velocitat de moviment depèn de la configuració de
+                Velocitat de Moviment.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Combinacions de tecles
@@ -966,61 +1008,76 @@ demo:
     settingNotAvailable: No disponible en la versió de demostració.
 tips:
     - El NEXE accepta qualsevol tipus d’entrada, no només la forma actual.
-    - Assegureu-vos que les vostres fàbriques siguin modulars; donarà els seus fruits.
+    - Assegureu-vos que les vostres fàbriques siguin modulars; donarà els seus
+      fruits.
     - No construïu massa a prop del NEXE, ja que serà un enorme caos.
     - Si l'apilament no funciona, proveu de canviar les entrades.
     - Podeu canviar la direcció del planificador de cinturons prement <b> R </b>.
-    - Mantenir premut <b> CTRL </b> permet arrossegar cinturons sense orientació automàtica.
-    - Les proporcions continuen igual, sempre que totes les millores de velocitat es facin al mateix nivell.
+    - Mantenir premut <b> CTRL </b> permet arrossegar cinturons sense orientació
+      automàtica.
+    - Les proporcions continuen igual, sempre que totes les millores de
+      velocitat es facin al mateix nivell.
     - L’execució en sèrie és més eficient que la paral·lela.
     - Desbloquejaràs més variants d’edificis més endavant en el joc.
     - Podeu utilitzar <b> T </b> per canviar entre diferents variants.
     - La simetria és clau!
     - Podeu teixir diferents nivells de túnels.
-    - Intenteu construir fàbriques compactes: donarà els seus fruits!
+    - "Intenteu construir fàbriques compactes: donarà els seus fruits!"
     - El pintor té una variant reflectida que podeu seleccionar amb <b> T </b>
     - Tenir les relacions constructives adequades maximitzarà l’eficiència.
     - Al nivell màxim, 5 extractors ompliran un sol cinturó.
     - No us oblideu dels túnels!
-    - No cal dividir els articles de manera uniforme per obtenir una eficiència completa.
-    - Mantenint premut <b> SHIFT </b> s’activarà el planificador de cinturons, cosa que us permetrà col·locar
-      llargues línies de cinturons fàcilment.
-    - Els talladors sempre tallen verticalment, independentment de la seva orientació.
+    - No cal dividir els articles de manera uniforme per obtenir una eficiència
+      completa.
+    - Mantenint premut <b> SHIFT </b> s’activarà el planificador de cinturons,
+      cosa que us permetrà col·locar llargues línies de cinturons fàcilment.
+    - Els talladors sempre tallen verticalment, independentment de la seva
+      orientació.
     - Per obtenir blanc barregeu els tres colors primaris.
     - La memòria intermèdia d’emmagatzematge prioritza la primera sortida.
-    - Invertiu temps per crear dissenys repetibles: val la pena.
+    - "Invertiu temps per crear dissenys repetibles: val la pena."
     - Si mantingueu <b> CTRL </b> permet col·locar diversos edificis.
-    - Podeu mantenir premut <b> ALT </b> per invertir la direcció dels cinturons col·locats.
+    - Podeu mantenir premut <b> ALT </b> per invertir la direcció dels cinturons
+      col·locats.
     - L’eficiència és clau!
     - Les formes geomètriques que apareixen més lluny del NEXE són més complexes.
-    - Les màquines tenen una velocitat limitada, dividiu-les per obtenir la màxima eficiència.
+    - Les màquines tenen una velocitat limitada, dividiu-les per obtenir la
+      màxima eficiència.
     - Utilitzeu equilibradors per maximitzar la vostra eficiència.
     - L’organització és important. Intenteu no creuar massa els transportadors.
     - Planifiqueu amb antelació, o serà un enorme caos!
-    - No borreu les vostres antigues fàbriques! Les necessitareu per desbloquejar actualitzacions.
+    - No borreu les vostres antigues fàbriques! Les necessitareu per
+      desbloquejar actualitzacions.
     - Proveu de superar el nivell 20 pel vostre compte abans de buscar ajuda.
     - No compliqueu les coses, intenteu ser senzill i arribareu molt lluny.
-    - És possible que hàgiu de tornar a utilitzar fàbriques més endavant del joc. Planifiqueu les vostres fàbriques
-      de forma que puguin ser reutilitzables.
+    - És possible que hàgiu de tornar a utilitzar fàbriques més endavant del
+      joc. Planifiqueu les vostres fàbriques de forma que puguin ser
+      reutilitzables.
     - De vegades, podeu trobar una forma necessària al mapa sense crear-la amb
       apiladors.
-    - Els molins de vent o molins de vent complets mai no poden generar de forma natural.
+    - Els molins de vent o molins de vent complets mai no poden generar de forma
+      natural.
     - Pinteu les formes abans de tallar per obtenir la màxima eficiència.
-    - Amb els mòduls, l’espai és només una percepció; una preocupació per als homes mortals.
+    - Amb els mòduls, l’espai és només una percepció; una preocupació per als
+      homes mortals.
     - Feu una fàbrica de plànols independent. Són importants per als mòduls.
-    - Feu una ullada més de prop al mesclador de colors i les vostres preguntes seran contestades.
+    - Feu una ullada més de prop al mesclador de colors i les vostres preguntes
+      seran contestades.
     - Utilitzeu <b> CTRL </b> + Feu clic per seleccionar una àrea.
     - Construir massa a prop del centre pot dificultar els projectes posteriors.
-    - La icona de fixació situada al costat de cada forma de la llista d'actualitzacions la fixa a la pantalla.
+    - La icona de fixació situada al costat de cada forma de la llista
+      d'actualitzacions la fixa a la pantalla.
     - Barregeu tots els colors primaris per fer blanc.
     - Teniu un mapa infinit, no restringiu la vostra fàbrica, amplieu-la.
     - També proveu Factorio! És el meu joc preferit.
-    - El tallador de quadres talla en sentit horari a partir de la part superior dreta.
+    - El tallador de quadres talla en sentit horari a partir de la part superior
+      dreta.
     - Podeu descarregar els vostres jocs desats al menú principal.
-    - Aquest joc té moltes combinacions de tecles útils. Assegureu-vos de consultar el fitxer
-      pàgina de configuració.
+    - Aquest joc té moltes combinacions de tecles útils. Assegureu-vos de
+      consultar el fitxer pàgina de configuració.
     - Aquest joc té moltes opcions de configuració, no oblideu consultar-les.
-    - El marcador del concentrador té una petita brúixola per indicar-ne la direcció.
+    - El marcador del concentrador té una petita brúixola per indicar-ne la
+      direcció.
     - Per netejar els cinturons, talleu la zona i enganxeu-la al mateix lloc.
     - Premeu F4 per mostrar la vostra tarifa FPS i Tick.
     - Premeu F4 dues vegades per mostrar el mosaic del ratolí i la càmera.
