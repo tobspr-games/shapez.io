@@ -43,7 +43,7 @@ steamPage:
         translate: Aiutaci a tradurre
     text_open_source: >-
         Chiunque può contribuire, partecipo attivamente nella community e
-        cerco di leggere tutti i suggerimenti e di prendere in considerazione 
+        cerco di leggere tutti i suggerimenti e di prendere in considerazione
         tutti i feedback, quando possibile.
 
         Controlla la mia pagina di trello per la tabella di marcia completa!
@@ -199,7 +199,7 @@ dialogs:
     editSignal:
         title: Imposta il segnale
         descItems: "Scegli un oggetto predefinito:"
-        descShortKey: ... o inserisci il <strong>codice</strong> di una forma (Che 
+        descShortKey: ... o inserisci il <strong>codice</strong> di una forma (Che
         puoi generare <link>qui</link>)
     renameSavegame:
         title: Rinomina salvataggio.
@@ -207,7 +207,7 @@ dialogs:
     entityWarning:
         title: Attento alle prestazioni
         desc: Hai posizionato molti edifici, questo messaggio serve a ricordarti che
-            il gioco non può gestire una quantità infinita di edifici. Quindi cerca 
+            il gioco non può gestire una quantità infinita di edifici. Quindi cerca
             di mantenere le tue fabbriche compatte!
 
 ingame:
@@ -506,7 +506,7 @@ buildings:
     constant_signal:
         default:
             name: Segnale costante
-            description: Emette un segnale costante, che può essere una forma, un colore o un 
+            description: Emette un segnale costante, che può essere una forma, un colore o un
             booleano (1 / 0).
     lever:
         default:
@@ -515,7 +515,7 @@ buildings:
                 che può essere usato per controllare, per esempio, un filtro.
     logic_gate:
         default:
-            name: Porta AND 
+            name: Porta AND
             description: Emette un "1" booleano se entrambi gli ingressi sono veri. (Vero significa forma,
                 colore o "1" boolean)
         not:
@@ -547,7 +547,7 @@ buildings:
     display:
         default:
             name: Display
-            description: Collega un segnale per mostrarlo sul display. 
+            description: Collega un segnale per mostrarlo sul display.
                 Può essere una forma, un colore o un booleano.
     reader:
         default:
@@ -563,7 +563,7 @@ buildings:
         default:
             name: Comparatore
             description: Emette un "1" booleano se i due segnali sono identici.
-                Può comparare forme, colori e booleani. 
+                Può comparare forme, colori e booleani.
     virtual_processor:
         default:
             name: Tagliatrice virtuale
@@ -580,7 +580,7 @@ buildings:
             description: Impila visrtualmente la forma destra sulla sinistra.
         painter:
             name: Verniciatrice virtuale
-            description: Vernicia virtualmente la forma dall'ingresso inferiore con il colore 
+            description: Vernicia virtualmente la forma dall'ingresso inferiore con il colore
                 dall'ingresso destro.
     item_producer:
         default:
@@ -673,7 +673,7 @@ storyRewards:
             completa!
     reward_stacker:
         title: Impilatrice
-        desc: Ora puoi combinare forme con <strong>l'impilatrice</strong>! I due ingressi 
+        desc: Ora puoi combinare forme con <strong>l'impilatrice</strong>! I due ingressi
                 vengono combinati e se possono essere messi uno accanto all'altro, verranno
                 <strong>fusi</strong>. Altrimenti, l'ingresso destro è
                 <strong>impilato sopra</strong> il sinistro!
@@ -685,7 +685,7 @@ storyRewards:
     reward_merger:
         title: Aggregatore compatto
         desc: Hai sbloccato un <strong>aggregatore</strong>, variante del
-            <strong>bilanciatore</strong>. Acetta due ingressi e li 
+            <strong>bilanciatore</strong>. Acetta due ingressi e li
             aggrega su un unico nastro!
     reward_belt_reader:
         title: Lettore di nastri
@@ -720,7 +720,7 @@ storyRewards:
             simulare una tagliatrice, una ruotatrice, un'impilatrice e molto altro
             sul livello dei cavi! In questo modo hai tre opzioni per continuare il gioco:<br><br>
             -Costruisci una <strong>macchina automatica</strong> per creare ogni possibile
-            forma richiesta dall'HUB (ti consiglio di provarci!).<br><br> - Costruisci 
+            forma richiesta dall'HUB (ti consiglio di provarci!).<br><br> - Costruisci
             qualcosa di interessante con i cavi.<br><br> - Continua a giocare normalmente.
             <br><br> Qualsiasi cosa tu scelga, riordati di divertirti!
     reward_wires_painter_and_levers:
@@ -1048,7 +1048,7 @@ tips:
     - Usa <b>CTRL</b> + Clic per selezionare un'area.
     - Costruire troppo vicino all'hub potrebbe intralciare progetti futuri.
     - Premere la puntina vicino a ogni forma nel menù miglioramenti
-      la farà visualizzare sempre a schermo 
+      la farà visualizzare sempre a schermo
     - Mescola tutti i colori primari per fare il bianco!
     - Hai una mappa finita, non incastrare la tua fabbrica, espanditi!
     - Prova anhe factorio! È il mio gioco preferito.
