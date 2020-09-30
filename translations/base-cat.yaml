@@ -183,7 +183,7 @@ dialogs:
             transportadores ja col·locades.<br>"
     createMarker:
         title: Nou Marcador
-        titleEdit: Edit Marker
+        titleEdit: Editar Marcador
         desc: 'Dona-li un nom significatiu, també pots usar <strong>claus</strong> de
             les figures (Pots generarles a: <a href="https://viewer.shapez.io"
             target="_blank">aquí</a>)'
@@ -196,18 +196,16 @@ dialogs:
             conte que aquest procés pot ser molt lent i inclús crashear el teu
             joc!
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: Configura la Senyal
+        descItems: "Tria un ítem predefinit:"
+        descShortKey: ... o introdueix un<strong>códi de forma</strong>  (El qual pots generar <link>aqui</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Canviar el nom.
+        desc: Canviar el nom de la partida guardada.
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: Alerta de rendiment
+        desc: Has col·locat molts edificis, això és una alerta amistosa de que el joc no
+        pot suportar edificis infinits, així que intenta mantenir els teus dissenys minimament compactes!
 ingame:
     keybindingsOverlay:
         moveMap: Moure
@@ -408,9 +406,8 @@ buildings:
             name: Cable
             description: Permet transportar energia.
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: Cable
+            description: Transfereix senyals, que poden ser ítems, colors o booleà. Cables de diferents colors no es connecten entre ells.
     miner:
         default:
             name: Extractor
@@ -428,12 +425,12 @@ buildings:
             description: Permet transportar recursos per sota d'edificis i cintes.
     cutter:
         default:
-            name: Cisalla
+            name: Tallador
             description: Talla figures de dalt a baix i produeix les dues meitats.
                 <strong>Si utilitzes sols una part, assegura't de destruir
                 l'altra o es pararà!</strong>
         quad:
-            name: Cisalla (Quàdruple)
+            name: Tallador (Quàdruple)
             description: Talla figures en quatre parts. <strong>Si no utilitzes totes les
                 parts, assegura't de destruir les altres o es pararà!</strong>
     rotater:
@@ -444,8 +441,8 @@ buildings:
             name: Rotador (Antihorari)
             description: Rota formes en sentit antihorari 90 graus.
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Rotador (180)
+            description: Rota formes 180 graus.
     stacker:
         default:
             name: Apilador
@@ -476,118 +473,109 @@ buildings:
             description: Acepta objectes de tots els costats i els destrueix. Permanentment.
     balancer:
         default:
-            name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: Equilibrador
+            description: Multifuncional - Reparteix uniformament totes les entrades a totes les sortides.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Fusionador (compacte)
+            description: Fusiona dues cintes transportadores en una.
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Fusionador (compacte)
+            description: Fusiona dues cintes transportadores en una.
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Divisor (compacte)
+            description: Divideix una cinta transportadora en dues.
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Divisor (compacte)
+            description: Divideix una cinta transportadora en dues.
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: Emmagatzematge
+            description: Emmagatzema articles en excés fins a una capacitat determinada.
+            Prioritza la sortida esquerra i es pot utilitzar com a porta de desbordament.
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: Encreuament de cablejat
+            description: Permet creuar dos cables sense conectar-los.
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: Senyal Constant
+            description: EEmet una senyal constant, que pot esser una forma, color o booleana (1 / 0).
     lever:
         default:
-            name: Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            name: Interruptor
+            description: Pot esser alternat per emetre una senyal booleana (1 / 0) a la capa de cablejat.
     logic_gate:
         default:
-            name: AND Gate
+            name: Porta AND
             description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
                 color or boolean "1")
         not:
             name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            description: Emet una senyal booleana "1" si les dues entrades són vertaderes. (Vertadera significa que la senyal
+            és una forma, un color o la senyal booleana "1").
         xor:
-            name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            name: Porta XOR
+            description: Emet una senyal booleana "1" si  i només si una de les senyals és vertadera.
+                (Vertadera significa que la senyal és una forma, un color o la senyal booleana "1").
         or:
-            name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
-                shape, color or boolean "1")
+            name: Porta OR
+            description: Emet una senyal booleana "1" si una de les senyals és vertadera.
+                (Vertadera significa que la senyal és una forma, un color o la senyal booleana "1").
     transistor:
         default:
             name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            description: Deixa passar la senyal inferior si la senyal lateral és vertadera (una forma,
+            color o "1").
         mirrored:
             name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            description: Deixa passar la senyal inferior si la senyal lateral és vertadera (una forma,
+            color o "1").
     filter:
         default:
-            name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            name: Filtre
+            description: Conecta una senyal per redirigir tots els ítems que coincideixin amb la senyal a la part superior,
+            i la resta a la dreta. També es pot controlar amb senyals booleanes.
     display:
         default:
-            name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            name: Pantalla
+            description: Conecta una senyal per que es mostri a la pantalla. Pot ser una forma, color o booleà
     reader:
         default:
-            name: Belt Reader
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            name: Lector de cinta
+            description: Permet mesurar el rendiment de la cinta. Emet el darrer ítem llegit a la capa de cablejat
+            (un pic desbloquejada).
     analyzer:
         default:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            name: Analitzador de formes
+            description: Analitza el quadrant superior dret de la capa més baixa de la forma i retorna el color i la forma.
     comparator:
         default:
-            name: Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            name: Comparador
+            description: Retorna una senyal booleana "1" si les dues senyals són exactament iguales.Pot comparar formes, colors i booleans.
     virtual_processor:
         default:
-            name: Virtual Cutter
-            description: Virtually cuts the shape into two halves.
+            name: Tallador virtual
+            description: Talla la forma virtual en dues parts.
         rotater:
-            name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            name: Rotador Virtual
+            description: Rota la forma virtual, tant en sentit horari com antihorari.
         unstacker:
-            name: Virtual Unstacker
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            name: Desapilador Virtual
+            description: Extreu la capa superior a la sortida dreta i la resta a la sortida esquerra.
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: Apilador Virtual
+            description: Apila la figura de l'entrada dreta damunt l'entrada esquerra.
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: Pintador Virtual
+            description: Pinta la capa de l'entrada inferior amb la figura de la entrada dreta.
     item_producer:
         default:
-            name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            name: Productor d'ítems
+            description: Només avaliable en mode "sandbox", emet la senyal de la capa de cablejat a la capa normal.
 storyRewards:
     reward_cutter_and_trash:
         title: Tallar figures
-        desc: Acabes de desbloquejar la <strong>Cisalla</strong> - talla les figures per
+        desc: Acabes de desbloquejar la <strong>Tallador</strong> - talla les figures per
             la meitat <strong>de dalt a baix</strong>; sense importar la seva/ua
             orientació!<br><br>Assegura't d'eliminar les parts que no utilitzes,
             si no <strong>es pararà</strong> - Es per això que t'he donat una
@@ -640,8 +628,8 @@ storyRewards:
             <strong>major distància màxima</strong>, i ara pots mesclar tipus de
             túnels!
     reward_cutter_quad:
-        title: Cisalla quàdruple
-        desc: Has desbloquejat una variant de la <strong>cisalla</strong> - Et permet
+        title: Tallador quàdruple
+        desc: Has desbloquejat una variant de la <strong>tallador</strong> - Et permet
             tallar figures en <strong>quatre parts</strong> en lloc de sols en
             dos!
     reward_painter_double:
@@ -677,78 +665,67 @@ storyRewards:
         desc: Enhorabona! Per cert, hi ha més contingut planejat per a la versió
             completa - fora del web!
     reward_balancer:
-        title: Balancer
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+        title: Equilibrador
+        desc: Has desbloquejat el multifuncional <strong>equilibrador</strong>! Pot ésser emprat
+        per construir fàbriques més grans <strong>dividint i fusionant ítems</strong> a múltiples cintes!<br><br>
     reward_merger:
-        title: Compact Merger
-        desc: You have unlocked a <strong>merger</strong> variant of the
-            <strong>balancer</strong> - It accepts two inputs and merges them
-            into one belt!
+        title: Fusionador Compacte
+        desc: Has desbloquejat una variant <strong>fusionadora</strong> de l'<strong>equilibrador</strong>. Accepta dues
+        entrades i les fusiona en una cinta!
     reward_belt_reader:
-        title: Belt reader
-        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
-            measure the throughput of a belt.<br><br>And wait until you unlock
-            wires - then it gets really useful!
+        title: Lector de cinta
+        desc: Has desbloquejat el <strong>lector de cinta</strong>! Et permet mesurar el
+        rendiment d'una cinta. I espera a desbloquejar els cables, et serà encara més útil!
     reward_rotater_180:
-        title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
-            you to rotate a shape by 180 degress (Surprise! :D)
+        title: Rotador (180 graus)
+        desc: Acabes de desbloquejar un altre <strong>rotador</strong>!. Et permet rotar una forma 180
+        graus.
     reward_display:
-        title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        title: Pantalla
+        desc: Has desbloquejat la <strong>Pantalla</strong>. Conecta una senyal a la capa de cables per visualitzar
+        el contingut de la senyal!
     reward_constant_signal:
-        title: Constant Signal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 / 0).
+        title: Senyal constant
+        desc: Has desbloquejat l'emisor de <strong>senyal constant</strong> a la capa de cables!
+        És molt util per conectar-los a <strong>filtres d'ítems</strong>, per exemple.<br><br>
+        Pot emetre una <strong>forma</strong>, <strong>color</strong> or
+            <strong>booleà</strong> (1 / 0).
     reward_logic_gates:
-        title: Logic Gates
-        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
-            about this, but it's actually super cool!<br><br> With those gates
-            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
-            bonus on top I also just gave you a <strong>transistor</strong>!
+        title: Portes lògiques
+        desc: Has desbloquejat les <strong>portes lògiques</strong>! No fa falta t'emocionis per això,
+        però és molt guai!<br><br> Amb aquestes portes lògiques pots computar operacions AND, OR, XOR i NOT. <br><br>
+        També tens disponible un <strong>transistor</strong>!
     reward_virtual_processing:
-        title: Virtual Processing
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Whatever you choose, remember to have fun!
+        title: Processament Virtual
+        desc: Acabes de desbloquejar un munt de nous edificis que et permeten <strong>simular el processament de figures</strong>!<br><br> 
+        Ara pots simular una tallador, rotador, apilador i més a la capa de cables!
+        Amb això ara tens tres opcions per continuar el joc:<br><br> 
+        - Construir una <strong>màquina automàtica</strong> que crea totes les formes demanades per el NEXE (Recoman provar-ho!).<br><br> 
+        - Construir algo guai amb cables.<br><br>
+        - Continua jugant normalment.<br><br> Triis el que triis, recorda passar-ho bé!
     reward_wires_painter_and_levers:
-        title: Wires & Quad Painter
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>."
+        title: Cables i Pintador Quàdruple
+        desc: "Has desbloquejat la <strong>Capa de Cables</strong>: És una capa separada damunt la capa normal i introdueix moltes
+        mecàniques noves!<br><br> Per començar t'he desbloquejat el <strong>Pintador Quàdruple</strong>. Conecta les ranures
+        que vols pintar a la capa de Cables!<br><br> Per canviar a la capa de Cables, prem <strong>E</strong>."
     reward_filter:
-        title: Item Filter
-        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
-            to the top or the right output depending on whether they match the
-            signal from the wires layer or not.<br><br> You can also pass in a
-            boolean signal (1 / 0) to entirely activate or disable it.
+        title: Filtre d'Ítems
+        desc: Has desbloquejat el <strong>Filtre d'Ítems</strong>! Filtrarà els ítems a la part superior o a la part dreta 
+        depenent de si coincideixen amb la senyal de la capa de Cables o no.<br><br> També pots conectar-li una senyal booleana (1 / 0) per encendra-la
+        per complet o apagarla.
     reward_demo_end:
-        title: End of Demo
-        desc: You have reached the end of the demo version!
+        title: Final de la Demo
+        desc: Has arribat al final de la Demo!
 settings:
     title: Opcions
     categories:
         general: General
-        userInterface: User Interface
-        advanced: Advanced
-        performance: Performance
+        userInterface: Interfície d'Usuari
+        advanced: Avançat
+        performance: Rendiment
     versionBadges:
         dev: Desenvolupament
-        staging: Staging
+        staging: Posada en escena
         prod: Producció
     buildDate: Generat <at-date>
     labels:
@@ -858,47 +835,39 @@ settings:
             description: Desactiva els diàlegs d'advertència que es mostren en tallar /
                 suprimir més de 100 entitats.
         soundVolume:
-            title: Sound Volume
-            description: Set the volume for sound effects
+            title: Volum de sò
+            description: Defineix el volum dels sons
         musicVolume:
-            title: Music Volume
-            description: Set the volume for music
+            title: Volum de música
+            description: Defineix el volum de la música
         lowQualityMapResources:
-            title: Low Quality Map Resources
-            description: Simplifies the rendering of resources on the map when zoomed in to
-                improve performance. It even looks cleaner, so be sure to try it
-                out!
+            title: Map de Recursos de Baixa Qualitat
+            description: Simplifica la renderització dels recursos en el mapa al fer zoom per 
+            millorar el rendiment. Fins i tot es veu més net, així que assegureu-vos de provar-ho!
         disableTileGrid:
-            title: Disable Grid
-            description: Disabling the tile grid can help with the performance. This also
-                makes the game look cleaner!
+            title: Desactiva la Graella
+            description: Desactivar la graella pot ajudar al rendiment. També fa que el joc es vegi més net!
         clearCursorOnDeleteWhilePlacing:
-            title: Clear Cursor on Right Click
-            description: Enabled by default, clears the cursor whenever you right click
-                while you have a building selected for placement. If disabled,
-                you can delete buildings by right-clicking while placing a
-                building.
+            title: Esborreu el cursor en fer clic amb el botó dret
+            description: Encés per defecte, borra el cursor quan es prem el botó dret mentres hi ha un edifici seleccionat. 
+            Si es desactiva, pots eliminar edificis prement amb el botó dret mentres col·loques un altre edifici.
         lowQualityTextures:
-            title: Low quality textures (Ugly)
-            description: Uses low quality textures to save performance. This will make the
-                game look very ugly!
+            title: Textures de baixa qualitat (Molt lleig)
+            description: Emprar textures de baixa qualitat per millorar el rendiment. Aixó farà que el joc sigui molt lleig!
         displayChunkBorders:
-            title: Display Chunk Borders
-            description: The game is divided into chunks of 16x16 tiles, if this setting is
-                enabled the borders of each chunk are displayed.
+            title: Mostrar les vores dels Chunks
+            description: El joc està dividit en chunks de 16x16 caselles. Si es selecciona aquesta opció, les vores dels chunks es mostraràn.
         pickMinerOnPatch:
-            title: Pick miner on resource patch
-            description: Enabled by default, selects the miner if you use the pipette when
-                hovering a resource patch.
+            title: Triar el miner a la zona de recursos
+            description: Seleccionat per defecte, es selecciona el miner si empres la pipeta damunt una zona de recursos.
         simplifiedBelts:
-            title: Simplified Belts (Ugly)
-            description: Does not render belt items except when hovering the belt to save
-                performance. I do not recommend to play with this setting if you
-                do not absolutely need the performance.
+            title: Cintes simplificades (Lleig)
+            description: No renderitze els ítems de les cintes fins que passis el ratolí per sobre, per millorar el rendiment.No recoman
+            usar aquesta opció si no necessites un augment de rendiment.
         enableMousePan:
-            title: Enable Mouse Pan
-            description: Allows to move the map by moving the cursor to the edges of the
-                screen. The speed depends on the Movement Speed setting.
+            title: Activa el desplaçament del ratolí
+            description: Permet moure el mapa quan mous el cursor a les vores de la pantalla. La velocitat de moviment depèn de la configuració
+            de Velocitat de Moviment.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Combinacions de tecles
@@ -935,7 +904,7 @@ keybindings:
         belt: Cinta transportadora
         underground_belt: Túnel
         miner: Extractor
-        cutter: Cisalla
+        cutter: Tallador
         rotater: Rotador
         stacker: Apilador
         mixer: Mesclador de colors
@@ -944,13 +913,13 @@ keybindings:
         wire: Cable
         pipette: Pipeta
         rotateWhilePlacing: Rotar
-        rotateInverseModifier: "Modifier: Rotar en sentit antihorari"
+        rotateInverseModifier: "Modificador: Rotar en sentit antihorari"
         cycleBuildingVariants: Rotar les Variants
         confirmMassDelete: Eliminar àrea
         pasteLastBlueprint: Afferar el darrer pla
         cycleBuildings: Rotar els Buildings
         lockBeltDirection: Habilitar el planificador de cintes transportadores
-        switchDirectionLockSide: "Planner: Canviar costat"
+        switchDirectionLockSide: "Planificador: Canviar costat"
         massSelectStart: Manteniu premut i arrossegueu per començar
         massSelectSelectMultiple: Seleccionar múltiples àrees
         massSelectCopy: Copiar àrea
@@ -958,21 +927,21 @@ keybindings:
         placementDisableAutoOrientation: Desactivar orientació automàtica
         placeMultiple: Mantenir-se en mode de col·locació
         placeInverse: Invertir orientació automàtica de les cintes transportadores
-        balancer: Balancer
-        storage: Storage
-        constant_signal: Constant Signal
-        logic_gate: Logic Gate
-        lever: Switch (regular)
-        filter: Filter
-        wire_tunnel: Wire Crossing
-        display: Display
-        reader: Belt Reader
-        virtual_processor: Virtual Cutter
+        balancer: Equilibrador
+        storage: Emmagatzematge
+        constant_signal: Senyal Constant
+        logic_gate: Porta lògica
+        lever: Interruptor (regular)
+        filter: Filtre
+        wire_tunnel: Creuament de Cables
+        display: Pantalla
+        reader: Lector de cinta
+        virtual_processor: Tallador Virtual
         transistor: Transistor
-        analyzer: Shape Analyzer
-        comparator: Compare
-        item_producer: Item Producer (Sandbox)
-        copyWireValue: "Wires: Copy value below cursor"
+        analyzer: Analitzador de Figura
+        comparator: Comparador
+        item_producer: Productor d'items (Sandbox)
+        copyWireValue: "Cables: Copiar valor davall el cursor"
 about:
     title: Sobre aquest Joc
     body: >-
