@@ -2,7 +2,7 @@ steamPage:
     shortText: In shapez.io potrai costruire delle fabbriche per automatizzare la
         creazione e la combinazione di forme sempre più complesse, in una mappa
         infinita.
-    discordLinkShort: Official Discord
+    discordLinkShort: Discord ufficiale
     intro: >-
         Shapez.io è un gioco tranquillo nel quale dovrai costruire delle fabbriche
         per la produzione automatizzata di forme geometriche.
@@ -351,7 +351,7 @@ ingame:
     watermark:
         title: Versione demo
         desc: Clicca qui per vedere i vantaggi della versione Steam!
-        get_on_steam: Ottieni su steam
+        get_on_steam: Ottieni su Steam
     standaloneAdvantages:
         title: Ottieni la versione completa!
         no_thanks: No, grazie!
@@ -674,9 +674,9 @@ storyRewards:
     reward_stacker:
         title: Impilatrice
         desc: Ora puoi combinare forme con <strong>l'impilatrice</strong>! I due ingressi
-                vengono combinati e se possono essere messi uno accanto all'altro, verranno
-                <strong>fusi</strong>. Altrimenti, l'ingresso destro è
-                <strong>impilato sopra</strong> il sinistro!
+            vengono combinati e se possono essere messi uno accanto all'altro, verranno
+            <strong>fusi</strong>. Altrimenti, l'ingresso destro è
+            <strong>impilato sopra</strong> il sinistro!
     reward_balancer:
         title: Bilanciatore
         desc: Il <strong>bilanciatore</strong> multifunzione è stato sbloccato.
