@@ -268,6 +268,7 @@
             <key type="filename">sprites/blueprints/comparator.png</key>
             <key type="filename">sprites/blueprints/constant_signal.png</key>
             <key type="filename">sprites/blueprints/display.png</key>
+            <key type="filename">sprites/blueprints/item_producer.png</key>
             <key type="filename">sprites/blueprints/lever.png</key>
             <key type="filename">sprites/blueprints/logic_gate-not.png</key>
             <key type="filename">sprites/blueprints/logic_gate-or.png</key>
@@ -300,6 +301,7 @@
             <key type="filename">sprites/buildings/comparator.png</key>
             <key type="filename">sprites/buildings/constant_signal.png</key>
             <key type="filename">sprites/buildings/display.png</key>
+            <key type="filename">sprites/buildings/item_producer.png</key>
             <key type="filename">sprites/buildings/lever.png</key>
             <key type="filename">sprites/buildings/logic_gate-not.png</key>
             <key type="filename">sprites/buildings/logic_gate-or.png</key>

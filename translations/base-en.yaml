@@ -673,7 +673,7 @@ buildings:
     comparator:
         default:
             name: &comparator Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare shapes, items and booleans.
+            description: Returns boolean "1" if both signals are exactly equal. Can compare shapes, colors and booleans.
 
     virtual_processor:
         default:
@@ -694,7 +694,7 @@ buildings:
 
         painter:
             name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on the right input.
+            description: Virtually paints the shape from the bottom input with the color on the right input.
 
     item_producer:
         default:
