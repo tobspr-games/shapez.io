@@ -507,7 +507,7 @@ buildings:
         default:
             name: Segnale costante
             description: Emette un segnale costante, che può essere una forma, un colore o un
-            booleano (1 / 0).
+                booleano (1 / 0).
     lever:
         default:
             name: Bottone
@@ -529,16 +529,16 @@ buildings:
         or:
             name: Porta OR
             description: Emette un "1" booleano se uno degli ingressi è vero. (Vero significa forma,
-            colore o "1" booleano)
+                colore o "1" booleano)
     transistor:
         default:
             name: Transistor
             description: Inoltra il segnale dall'ingresso inferiore se l'ingresso laterale è vero
-            (una forma, un colore o "1").
+                (una forma, un colore o "1").
         mirrored:
             name: Transistor
             description: Inoltra il segnale dall'ingresso inferiore se l'ingresso laterale è vero
-            (una forma, un colore o "1").
+                (una forma, un colore o "1").
     filter:
         default:
             name: Filtro
