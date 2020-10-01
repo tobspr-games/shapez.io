@@ -183,9 +183,8 @@ dialogs:
     createMarker:
         title: Nouvelle balise
         titleEdit: Modifier cette balise
-        desc: Donnez-lui un nom. Vous pouvez aussi inclure <strong>le raccourci</strong>
-            d’une forme (que vous pouvez générer <a
-            href="https://viewer.shapez.io" target="_blank">ici</a>).
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
     editSignal:
         title: Définir le signal
         descItems: "Choisissez un objet prédéfini :"
@@ -597,11 +596,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: Vous avez débloqué le <strong>découpeur</strong>. Il coupe des formes en
-            deux <strong>de haut en bas</strong> quelle que soit son
-            orientation !<br><br> Assurez-vous de vous débarrasser des déchets,
-            sinon <strong>gare au blocage</strong>. À cet effet, je mets à votre
-            disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotation
         desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
@@ -654,12 +654,14 @@ storyRewards:
             les deux variantes de tunnels !
     reward_merger:
         title: Fusionneur compact
-        desc: Vous avez débloqué une variante du <strong>répartiteur</strong>. Il
-            accepte deux entrées et les fusionne en un seul convoyeur !
+        desc: You have unlocked a <strong>merger</strong> variant of the
+            <strong>balancer</strong> - It accepts two inputs and merges them
+            into one belt!
     reward_splitter:
         title: Répartiteur compact
-        desc: Vous avez débloqué une variante compacte du <strong>répartiteur</strong> —
-            Il accepte une seule entrée et la divise en deux sorties !
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_belt_reader:
         title: Lecteur de débit
         desc: Vous avez débloqué le <strong>lecteur de débit</strong> ! Il vous permet
@@ -733,17 +735,14 @@ storyRewards:
             <strong>transistor</strong> !"
     reward_virtual_processing:
         title: Traitement virtuel
-        desc: Je viens de vous donner tout un tas de nouveaux bâtiments qui vous
-            permettent de <strong>simuler le traitement des
-            formes</strong> !<br><br> Vous pouvez maintenant simuler un
-            découpeur, un pivoteur, un combineur et plus encore sur le calque de
-            câblage !<br><br> Avec ça, vous avez trois possibilités pour
-            continuer le jeu :<br><br> - Construire une <strong>machine
-            automatisée</strong> pour fabriquer n’importe quelle forme demandée
-            par le centre (je conseille d’essayer !).<br><br> - Construire
-            quelque chose de cool avec des câbles.<br><br> - Continuer à jouer
-            normalement.<br><br> Dans tous les cas, l’important c’est de
-            s’amuser !
+        desc: I just gave a whole bunch of new buildings which allow you to
+            <strong>simulate the processing of shapes</strong>!<br><br> You can
+            now simulate a cutter, rotater, stacker and more on the wires layer!
+            With this you now have three options to continue the game:<br><br> -
+            Build an <strong>automated machine</strong> to create any possible
+            shape requested by the HUB (I recommend to try it!).<br><br> - Build
+            something cool with wires.<br><br> - Continue to play
+            regulary.<br><br> Whatever you choose, remember to have fun!
     no_reward:
         title: Niveau suivant
         desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne

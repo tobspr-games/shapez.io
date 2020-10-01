@@ -121,7 +121,9 @@ dialogs:
         text: "Kunde inte ladda sparfil:"
     confirmSavegameDelete:
         title: Bekräfta radering
-        text: Är du säker på att du vill radera spelet?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Kunde inte radera
         text: "Kunde inte radera sparfil:"
@@ -175,9 +177,8 @@ dialogs:
             rullband.<br>"
     createMarker:
         title: Ny Markör
-        desc: Ge den ett meningsfullt namn, du kan också inkludera en <strong>kort
-            kod</strong> av en form (Vilket du kan generera här <a
-            href="https://viewer.shapez.io" target="_blank"></a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
         desc: Du kan endast ha två markörer i demoversionen. Skaffa den fristående
@@ -450,7 +451,9 @@ buildings:
             description: Färgar formerna på de vänstra ingångarna med färgen från den högra.
         quad:
             name: Färgläggare (Quad)
-            description: Låter dig färglägga varje hörn av formen med olika färger.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: Färgläggare
             description: Färgar hela formen på den vänstra ingången med färgen från den
@@ -585,11 +588,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Att klippa former
-        desc: Du låste just upp <strong>klipparen</strong> - den klipper former på
-            hälften från <strong>topp till botten</strong> oavsett dess
-            orientation!<br><br> Se till att ta bort allt överskott, annars
-            kommer det att <strong>skapa uppehåll</strong> - Av denna anledning
-            gav jag dig skräphantering, vilket förstör allt du inputtar!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotation
         desc: <strong>Roteraren</strong> har blivit upplåst! Den roterar former 90
@@ -612,10 +616,9 @@ storyRewards:
             <strong>staplas över</strong> den vänstra!
     reward_splitter:
         title: Delning/Sammanslagning
-        desc: Den multifunktionella <strong>balanseraren</strong> har blivit upplåst -
-            Den kan användas för att bygga större fabriker genom att
-            <strong>dela eller slå ihop objekt</strong> till flera
-            rullband!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunnel
         desc: <strong>Tunneln</strong> blivit upplåst- Du kan nu transportera saker
@@ -627,9 +630,10 @@ storyRewards:
             <strong>tryck ned 'T' för att bläddra genom dess varianter</strong>!
     reward_miner_chainable:
         title: Kedjeextraktor
-        desc: Du har låst upp <strong>Kedjeextraktorn</strong>! Den kan <strong>föra
-            sina resurser framåt</strong> till andra extraktorer så att du kan
-            mer effektivt extrahera resurser!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunnel Tier II
         desc: Du har låst upp en ny variant av <strong>tunneln</strong> - Den har en
@@ -648,13 +652,18 @@ storyRewards:
             två!
     reward_storage:
         title: Förvaringsbuffert
-        desc: Du har låst upp en ny variant av <strong>skräphantering</strong> - Den
-            låter dig förvara objekt upp till en viss kapacitet!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Friläge
-        desc: Du gjorde det! Du låste upp <strong>friläge</strong>! Det betyder att
-            former är nu slumpmässigt genererade! (oroa dig inte, mer innehåll
-            är planerat för den fristående versionen!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Ritningar
         desc: Du kan nu <strong>kopiera och klistra in</strong> delar av din fabrik!
@@ -694,8 +703,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

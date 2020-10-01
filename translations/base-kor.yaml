@@ -119,7 +119,9 @@ dialogs:
         text: "저장 파일을 불러오지 못했습니다:"
     confirmSavegameDelete:
         title: 삭제 확인
-        text: 이 게임 파일을 정말로 삭제하겠습니까?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: 삭제 실패
         text: 저장 파일을 삭제하지 못했습니다.
@@ -166,8 +168,8 @@ dialogs:
             컨베이어 벨트의 방향을 바꾸세요.<br>"
     createMarker:
         title: 새로운 마커
-        desc: 이 장소에 이름을 지어주세요, 당신은 원하는 모양으로 <strong>단축키</strong>를 생성할 수 있습니다. (<a
-            href="https://viewer.shapez.io" target="_blank">여기</a>에서 만들 수 있습니다.)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: 마커 변경
     markerDemoLimit:
         desc: 체험판 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
@@ -426,7 +428,9 @@ buildings:
             description: 왼쪽에 입력되는 도형을 위에서 입력되는 색소로 색칠한다.
         quad:
             name: 4단 도형 색칠기
-            description: 도형의 4가지 분단을 각각 다른 색으로 색칠할 수 있다.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: 도형 색칠기
             description: 도형을 색소로 색칠한다.
@@ -555,9 +559,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 절단기
-        desc: <strong>절단기</strong>가 잠금 해제되었습니다! 절단기는 도형을 <strong>세로로</strong> 잘라 반으로
-            나눕니다.<br><br>사용하지 않는 도형은 휴지통에 버려주세요. 그렇지 않으면 절단기가 <strong>멈출
-            것입니다.</strong>
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: 회전기
         desc: <strong>회전기</strong>가 잠금 해제되었습니다! 이것은 도형을 시계방향으로 90도 회전 시킵니다.
@@ -576,8 +583,9 @@ storyRewards:
             쌓이게</strong>됩니다.
     reward_splitter:
         title: 배분기
-        desc: 다양한 용도로 쓰이는 <strong>배분기</strong>가 잠금 해제되었습니다! 배분기로 도형들을 여러 개의 벨트에
-            <strong>합하거나 나누어서</strong> 큰 공장을 지을 수 있습니다.<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: 터널
         desc: <strong>터널</strong>이 잠금 해제되었습니다! 자원을 건물과 벨트 밑으로 운송 할 수 있습니다.
@@ -587,8 +595,10 @@ storyRewards:
             <strong>T</strong>를 눌러서 변형된 버전을 사용하세요!
     reward_miner_chainable:
         title: 체인 추출기
-        desc: <strong>체인 추출기</strong>가 잠금 해제되었습니다! 체인 추출기는 <strong>자원을 다른 추출기로
-            전달하여</strong> 효율적으로 추출할 수 있게 합니다.
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: 터널 티어 II
         desc: 새로운 종류의 <strong>터널</strong>이 잠금 해제되었습니다! 새 터널은 <strong>보다 넓은 범위</strong>를
@@ -603,16 +613,25 @@ storyRewards:
             도형</strong>을 색칠할 수 있습니다.
     reward_storage:
         title: 저장소
-        desc: <strong>저장소</strong>가 잠금 해제되었습니다! 주어진 용량만큼 자원을 저장할 수 있습니다!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: 자유 모드
-        desc: 해내셨군요! <strong>자유 모드</strong>가 잠금 해제되었습니다! 이제 도형이 랜덤으로 생성됩니다! (걱정 마세요,
-            유료버전에는 더 많은 컨텐츠가 계획되어 있습니다!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: 청사진
-        desc: 이제부터는 공장의 일부 영역을 <strong>복사하여 붙여넣기</strong> 할 수 있습니다! CTRL을 누르면서 드래그해서 먼저
-            영역을 선택하세요. <br><br> 그 다음에는 C, DEL, ESC 로 복사하거나, 지우거나, 취소
-            하세요.<br><br> 복사는 무료가 이닙니다. 특별한 "화폐" 도형으로 돈을 지불하고 복사가 됩니다.
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select
+            an area (Hold CTRL, then drag with your mouse), and press 'C' to
+            copy it.<br><br>Pasting it is <strong>not free</strong>, you need to
+            produce <strong>blueprint shapes</strong> to afford it! (Those you
+            just delivered).
     no_reward:
         title: 다음 레벨
         desc: "이 단계는 아무런 보상이 없습니다. 하지만 다음 단계에는 있죠! <br><br> 추신: 현존하는 공장을 부수지 않는 것이 좋습니다.
@@ -642,8 +661,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

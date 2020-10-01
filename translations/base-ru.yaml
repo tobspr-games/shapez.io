@@ -121,7 +121,9 @@ dialogs:
         text: Не удалось загрузить сохранение игры.
     confirmSavegameDelete:
         title: Подтвердите удаление.
-        text: Вы действительно хотите удалить сохранение игры?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Ошибка удаления
         text: Не удалось удалить сохранение игры.
@@ -175,10 +177,8 @@ dialogs:
             Инвертировать направление размещаемых конвейерных лент.<br>"
     createMarker:
         title: Новый маркер
-        desc: Дайте ему содержательное имя, также можно добавить
-            <strong>сокращение</strong> в виде фигуры (Которое можно
-            сгенерировать <a href="https://viewer.shapez.io"
-            target="_blank">здесь</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Редактирование маркера
     markerDemoLimit:
         desc: Вы можете создать только 2 своих маркера в демо-версии. Приобретите полную
@@ -452,7 +452,9 @@ buildings:
             description: Красит фигуру из левых входов красителем из перпендикулярного.
         quad:
             name: Покрасчик (4Вх.)
-            description: Позволяет раскрасить каждую четверть фигуры разными цветами.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: Покрасчик
             description: Красит всю фигуру из левого входа красителем из перпендикулярного.
@@ -586,11 +588,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Разрезание Фигур
-        desc: Вы только что открыли <strong>резак</strong> - он разрезает фигуры пополам
-            <strong>сверху вниз</strong> независимо от их ориентации!<br><br>
-            Обязательно избавьтесь от отходов, иначе <strong>он
-            остановится</strong> - для этого я дал вам мусорку, которая
-            уничтожит все, что в нее поместить!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Вращение
         desc: Разблокирован <strong>вращатель</strong>! Он поворачивает фигуры по
@@ -613,9 +616,9 @@ storyRewards:
             правого входа <strong>наложится</strong> на фигуру из левого!
     reward_splitter:
         title: Разделитель / Соединитель
-        desc: Разблокирован многофункциональный <strong>разделитель</strong>! Его можно
-            использовать для создания больших фабрик путем <strong>разделения и
-            соединения</strong> конвейеров!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Туннель
         desc: Разблокирован <strong>туннель</strong>! Теперь вы можете транспортировать
@@ -627,9 +630,10 @@ storyRewards:
             <strong>нажмите 'T', чтобы переключить вариант</strong>!
     reward_miner_chainable:
         title: Цепной Экстрактор
-        desc: Разблокирован <strong>цепной экстрактор</strong>! Он может
-            <strong>передавать свои ресурсы</strong> другим экстракторам, чтобы
-            вы могли эффективнее извлекать ресурсы!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Туннель II
         desc: Разблокирован новый вариант <strong>туннеля</strong> с <strong>большей
@@ -645,13 +649,18 @@ storyRewards:
             одновременно</strong>, потребляя только один краситель вместо двух!
     reward_storage:
         title: Буферное Хранилище
-        desc: Разблокирован вариант <strong>мусорки</strong> - он позволяет хранить
-            предметы до заданной вместимости!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Свободная игра
-        desc: У вас получилось! Разблокирован <strong>режим свободной игры</strong>! Это
-            означает, что фигуры теперь генерируются случайным образом! (Не
-            беспокойтесь, больше контента планируется в полной версии!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Чертежи
         desc: Теперь вы можете <strong>копировать и вставлять</strong> части вашей
@@ -689,8 +698,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

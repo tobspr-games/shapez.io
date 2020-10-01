@@ -121,7 +121,9 @@ dialogs:
         text: Не вдалося завантажити вашу збережену гру.
     confirmSavegameDelete:
         title: Підтвердження
-        text: Ви справді хочете видалити гру?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Виникла помилка при видаленні
         text: Не вдалося видалити збережену гру.
@@ -182,9 +184,8 @@ dialogs:
     createMarker:
         title: Нова позначка
         titleEdit: Редагувати позначку
-        desc: Дайте їй змістовну назву. Ви також можете додати <strong>короткий
-            ключ</strong> форми, що можно згенерувати <a
-            href="https://viewer.shapez.io" target="_blank">тут</a>.
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
     markerDemoLimit:
         desc: Ви можете створити тільки 2 позначки в демоверсії. Отримайте окрему версії
             для створення необмеженної кількості позначок.
@@ -467,7 +468,9 @@ buildings:
                 верхнього.
         quad:
             name: Фарбувач (чотири)
-            description: Дозволяє вам фарбувати кожну четвертину форми у різний колір.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
     trash:
         default:
             name: Смітник
@@ -585,11 +588,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Різання фігур
-        desc: Ви тільки-но розблокували <strong>різця</strong>. Він розрізає фігури
-            наполовину з <strong>вершини до низу</strong> незалежно від його
-            орієнтації!<br><br>Обов’язково позбудьтесь відходів або  <strong>він
-            зупиниться</strong>. Для цього є смітник, який знищує все, що
-            входить в нього.
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Обертання
         desc: <strong>Обертач</strong> розблоковано! Він повертає форми за годинниковою
@@ -603,8 +607,8 @@ storyRewards:
             контрастності</strong> в налаштуваннях!
     reward_mixer:
         title: Змішування кольорів
-        desc: <strong>Змішування кольорів</strong> розблоковано. Об’єднуйте два кольори
-            у цій будівлі.
+        desc: The <strong>mixer</strong> has been unlocked - It mixes two colors using
+            <strong>additive blending</strong>!
     reward_stacker:
         title: Поєднувач форм
         desc: Тепер ви можете поєднувати фігури з <strong>поєднувачем форм</strong>!
@@ -613,10 +617,9 @@ storyRewards:
             з правого входу, <strong>застрягне на горі</strong> лівого входу.
     reward_splitter:
         title: Розподілювач (з’єднувач)
-        desc: Багатофункціональний <strong>розподілювач</strong> було розблоковано. Його
-            можна використовувати для створення великих фабрик,
-            <strong>розділяючи та об’єднуючи предмети </strong> на кілька
-            стрічок!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Тунель
         desc: <strong>Тунель</strong> розблоковано. Ви можете створювати тунелі для
@@ -629,9 +632,10 @@ storyRewards:
             оберіть потрібний</strong>!
     reward_miner_chainable:
         title: Екстрактор (ланцюг.)
-        desc: Ви розблокували <strong>ланцюговий екстрактор</strong>! Він може
-            <strong>пересилати свої ресурси</strong> іншим екстракторам, щоб ви
-            могли ефективніше видобувати ресурси!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Тунель II
         desc: Ви розблокували новий варіант <strong>тунеля</strong>. Він має
@@ -648,13 +652,18 @@ storyRewards:
             одночасно</strong>, споживаючи лише один колір замість двох!
     reward_storage:
         title: Storage Buffer
-        desc: Ви розблокували інший варіант <strong>trash</strong> - It allows you to
-            store items up to a given capacity!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Пісочниця
-        desc: Ви зробили це! Ви розблокували <strong>вільний режим</strong>! Це означає,
-            що форми тут створюватимуться випадкові! Не хвилюйтеся, більше
-            контенту планується для окремого режиму!
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Креслення
         desc: Ви вже можете <strong>копіювати і вставляти</strong> частини вашої
@@ -665,9 +674,9 @@ storyRewards:
             щойно доставили).
     no_reward:
         title: Наступний рівень
-        desc: Цей рівень не дав нагороди, але в наступному... щось буде. <br><br> До
-            речі, краще не руйнуйте свою поточну фабрику. Вам знадобляться всі
-            ті форми пізніше, щоб <strong>розблокувати поліпшення</strong>!
+        desc: "This level gave you no reward, but the next one will! <br><br> PS: Better
+            not destroy your existing factory - You'll need <strong>all</strong>
+            those shapes later to <strong>unlock upgrades</strong>!"
     no_reward_freeplay:
         title: Наступний рівень
         desc: Вітаємо! До речі, більше контенту планується в окремій версії!
@@ -692,8 +701,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

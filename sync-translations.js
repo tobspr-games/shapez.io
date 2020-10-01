@@ -16,7 +16,7 @@ const originalContents = fs
 
 const original = YAML.parse(originalContents);
 
-const placeholderRegexp = /[[<]([a-zA-Z_0-9]+)[\]<]/gi;
+const placeholderRegexp = /[[<]([a-zA-Z_0-9/-_]+?)[\]>]/gi;
 
 function match(originalObj, translatedObj, path = "/") {
     for (const key in originalObj) {

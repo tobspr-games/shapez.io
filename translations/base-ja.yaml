@@ -118,7 +118,9 @@ dialogs:
         text: "セーブデータのロードに失敗しました:"
     confirmSavegameDelete:
         title: 削除確認
-        text: 本当に削除しますか？
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: 削除に失敗
         text: "セーブデータの削除に失敗しました:"
@@ -162,8 +164,8 @@ dialogs:
     createMarker:
         title: マーカーを設置
         titleEdit: マーカーを編集
-        desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<a
-            href="https://viewer.shapez.io" target="_blank">ここ</a>から生成できます）
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
     markerDemoLimit:
         desc: デモ版ではマーカー設置は2つまでに制限されています。スタンドアローン版は無制限です！
     massCutConfirm:
@@ -423,7 +425,9 @@ buildings:
             description: 左から入力された形を、上から入力された色で着色します。
         quad:
             name: 着色機 (四分割)
-            description: 入力された形を四分割づつ別の色で塗り分けられます。
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: 着色機
             description: 左から入力された形の全体を、右から入力された色で着色します。
@@ -552,8 +556,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
-        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong>
-            - このためにゴミ箱も用意しました。入力アイテムをすべて破棄できます。
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: 回転
         desc: <strong>回転機</strong>が利用可能になりました。形を時計回り方向に90度回転させます。
@@ -572,8 +580,9 @@ storyRewards:
         desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>
     reward_splitter:
         title: 分配機/合流機
-        desc: 多機能な<strong>分配機/合流機</strong>が利用可能になりました。 -
-            より大規模な工場を構築するため、複数のベルト間で<strong>アイテムを合流、分配</strong>できます！<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: トンネル
         desc: <strong>トンネル</strong>が利用可能になりました。 - 他のベルトや建造物の地下を通してベルトが配置可能です！
@@ -583,7 +592,10 @@ storyRewards:
             反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
     reward_miner_chainable:
         title: 連鎖抽出機
-        desc: <strong>連鎖抽出機</strong>が利用可能になりました。他の抽出機に<strong>出力を渡す</strong>ことができるので、資源の抽出がより効率的になります！
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
         desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 -
@@ -598,11 +610,18 @@ storyRewards:
             通常の着色機と同様に機能しますが、ひとつの色の消費で<strong>一度に2つの形</strong>を着色処理できます！
     reward_storage:
         title: 余剰の貯蓄
-        desc: <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: フリープレイ
-        desc: やりましたね！　<strong>フリープレイモード</strong>が利用可能になりました。 - これからは形はランダムに生成されます！
-            (ご心配なく。スタンドアローン版はさらなる追加コンテンツが計画されています)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: ブループリント
         desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
@@ -635,8 +654,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

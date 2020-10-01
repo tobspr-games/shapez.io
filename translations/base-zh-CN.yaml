@@ -110,7 +110,9 @@ dialogs:
         text: 未能导入你的存档：
     confirmSavegameDelete:
         title: 确认删除
-        text: 你确定要删除这个存档吗？
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: 删除错误
         text: 未能删除你的存档
@@ -152,8 +154,8 @@ dialogs:
             class='keybinding'>ALT</code>: 反向放置传送带。<br>"
     createMarker:
         title: 创建地图标记
-        desc: 给地图标记起一个的名字。你可以在名字中加入一个<strong>短代码</strong>以加入图形。（你可以在<a
-            href="https://viewer.shapez.io" target="_blank">这里</a>生成短代码。）
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: 编辑地图标记
     markerDemoLimit:
         desc: 在试玩版中你只能创建两个地图标记。请获取独立版以创建更多标记。
@@ -404,7 +406,9 @@ buildings:
             description: 同时为两个输入的图形上色，每次上色只消耗一份颜色。
         quad:
             name: 上色机（四向）
-            description: 为图形的四个角涂上不同的颜色。
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: 上色机 (镜像)
             description: 将整个图形涂上输入的颜色。
@@ -537,7 +541,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 切割图形
-        desc: 恭喜！你解锁了<strong>切割机</strong>。切割机会把图形<strong>从上到下</strong>切成两半。注意切割的方向和切割机的朝向无关。<br><br>记得把不需要的部分处理掉，否则这个这个建筑会停止工作。为此我给你准备了<strong>垃圾桶</strong>，它会把所有放进去的物品销毁掉。
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: 顺时针旋转
         desc: 恭喜！你解锁了<strong>旋转机</strong>。它会顺时针旋转输入的图形90度。
@@ -553,7 +562,9 @@ storyRewards:
         desc: 恭喜！你解锁了<strong>堆叠机</strong>。堆叠机会尝试把两个输入的图形<strong>拼贴</strong>在一起。如果有重叠的部分，右边的输入会被<strong>堆叠</strong>在左边的输入上方！
     reward_splitter:
         title: 分离与合并
-        desc: 恭喜！你解锁了<strong>平衡机</strong>。在大型工厂中，平衡机负责<strong>合并或分离</strong>多个传送带上的物品。<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: 隧道
         desc: 恭喜！你解锁了<strong>隧道</strong>。你现在可以从其他传送带或建筑底下运送物品了！
@@ -562,7 +573,10 @@ storyRewards:
         desc: 恭喜！你解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。这个变体可以逆时针旋转图形。选择旋转机然后按"T"键来选取这个变体。
     reward_miner_chainable:
         title: 链式开采机
-        desc: 你解锁了<strong>链式开采机</strong>! 它能够<strong>把资源传递给</strong>其他开采机，让你可以更高效率的开采资源！
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: 二级隧道
         desc: 恭喜！你解锁了<strong>二级隧道</strong>。这是隧道的一个变体。二级隧道有<strong>更长的传输距离</strong>。你还可以混用不同的隧道变体！
@@ -574,10 +588,18 @@ storyRewards:
         desc: 恭喜！你解锁了<strong>上色机</strong>的<strong>双倍</strong>变体。它可以同时为两个图形上色，每次只消耗一份颜色！
     reward_storage:
         title: 仓库
-        desc: 恭喜！你解锁了<strong>垃圾桶</strong>的变体。他可以存储一定数量的物品！
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: 自由模式
-        desc: 恭喜你！你解锁了<strong>自由模式</strong>。现在图形将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: 蓝图
         desc: 你现在可以<strong>复制粘贴</strong>你的工厂的一部分了！按住 CTRL
@@ -610,8 +632,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

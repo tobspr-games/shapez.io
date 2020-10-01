@@ -88,7 +88,8 @@ mainMenu:
     helpTranslate: Hilf beim Übersetzen!
     madeBy: Ein Spiel von <author-link>
     browserWarning: Sorry, aber das Spiel wird in deinem Browser langsam laufen!
-        Kaufe die Vollversion oder verwende Google Chrome für die beste Erfahrung!
+        Kaufe die Vollversion oder verwende Google Chrome für die beste
+        Erfahrung!
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
     savegameUnnamed: Unbenannt
@@ -116,7 +117,9 @@ dialogs:
         text: Der Speicherstand konnte nicht geladen werden. Sorry!
     confirmSavegameDelete:
         title: Löschen bestätigen
-        text: Bist du sicher, dass du den Speicherstand löschen willst?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Löschen gescheitert
         text: "Das Löschen des Spiels ist gescheitert:"
@@ -176,10 +179,8 @@ dialogs:
              <code class='keybinding'>ALT</code>: Invertiere die Platzierungsrichtung der Förderbänder.<br>
     createMarker:
         title: Neuer Marker
-        desc: Gib ihm einen griffigen Namen. Du kannst sogar die
-            <strong>Abkürzung</strong> einer Form eingeben (Diese kann <a
-            href="https://viewer.shapez.io" target="_blank">hier</a> generiert
-            werden).
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Marker bearbeiten
     markerDemoLimit:
         desc: Du kannst nur 2 Marker in der Demo benutzen. Hol dir die Standalone, um
@@ -455,7 +456,9 @@ buildings:
                 oberen Eingang.
         quad:
             name: Färber (4-fach)
-            description: Erlaubt es, jedes einzelne Viertel einer Form beliebig einzufärben.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
     trash:
         default:
             name: Mülleimer
@@ -582,11 +585,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Formen zerschneiden
-        desc: Du hast den <strong>Schneider</strong> freigeschaltet! Er zerschneidet
-            Formen von <strong>oben nach unten</strong>, unabhängig von ihrer
-            Orientierung.<br><br>Stelle sicher, dass du den Abfall loswirst,
-            sonst <strong>verstopft die Maschine</strong>! Dafür habe ich dir
-            extra einen Mülleimer freigeschaltet.
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotieren
         desc: Der <strong>Rotierer</strong> wurde freigeschaltet! Er rotiert Formen im
@@ -610,10 +614,9 @@ storyRewards:
             <strong>gestapelt</strong>.
     reward_splitter:
         title: Verteiler/Kombinierer
-        desc: Der multifunktionale <strong>Verteiler</strong> wurde freigeschaltet! Er
-            ermöglicht die Konstruktion größerer Fabriken, indem er Items auf
-            mehrere Förderbänder <strong>verteilt oder diese
-            zusammenführt</strong>!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunnel
         desc: Der <strong>Tunnel</strong> wurde freigeschaltet! Du kannst Items nun
@@ -626,9 +629,10 @@ storyRewards:
             verschiedene Varianten zuzugreifen</strong>.
     reward_miner_chainable:
         title: Extrahierer (Kette)
-        desc: Du hast den <strong>Extrahierer (Kette)</strong> freigeschaltet! Damit
-            können die Ressourcen an den Nächsten <strong>weitergegeben</strong>
-            werden, um Ressourcen effizienter zu extrahieren.
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunnel Stufe II
         desc: Du hast eine neue Variante des <strong>Tunnels</strong> freigeschaltet!
@@ -646,15 +650,18 @@ storyRewards:
             verbrauchst nur eine Farbe.
     reward_storage:
         title: Zwischenlager
-        desc: Du hast eine neue Variante des <strong>Mülleimers</strong> freigeschaltet!
-            Bis zu einer gewissen Kapazität können hier Items zwischengelagert
-            werden.
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Freies Spiel
-        desc: Du hast es geschafft! Du bist im <strong>freien Spiel</strong> angekommen!
-            Das heißt, dass abzuliefernde Formen jetzt zufällig generiert
-            werden! (Keine Sorge, für die Standaloneversion ist noch mehr
-            geplant!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Blaupause
         desc: Jetzt kannst du Teile deiner Fabrik <strong>kopieren und
@@ -694,8 +701,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
@@ -1002,54 +1011,70 @@ tips:
     - Baue nicht zu nah am Hub, sonst wird es ein riesiges Chaos geben!
     - Wenn das Stapeln nicht funktioniert, versuche die Eingänge zu wechseln.
     - Du kannst mittels <b>R</b> die Richtung des Bandplaners umkehren.
-    - Halte <b>STRG</b> um die Förderbänder ohne automatische Orientierung zu platzieren.
-    - Die Ratios bleiben gleich, solange die die Upgrades auf der selben Stufen sind.
+    - Halte <b>STRG</b> um die Förderbänder ohne automatische Orientierung zu
+      platzieren.
+    - Die Ratios bleiben gleich, solange die die Upgrades auf der selben Stufen
+      sind.
     - Serielle Ausführung ist effizienter als parallele.
     - Du wirst später im Spiel mehr Varianten von Gebäuden freischalten!
     - Du kanst <b>T</b> drücken, um auf andere Varianten des Gebäude zu wechseln.
     - Symmetrie ist der Schlüssel!
     - Du kannst verschiedene Arten von Tunneln miteinander verweben.
     - Versuche kompakte Fabriken zu bauen - es zahlt sich aus!
-    - Der Färber hat eine spiegelverkehrte Variante, die du mittels <b>T</b> auswählen kannst.
+    - Der Färber hat eine spiegelverkehrte Variante, die du mittels <b>T</b>
+      auswählen kannst.
     - Das richtige Verhältnis der Gebäude maximiert die Effizienz.
     - Auf dem maximalen Level genügen 5 Extrahierer für ein einzelnes Förderband.
     - Vergiss die Tunnel nicht!
     - Du musst die Items für maximale Effizienz nicht gleichmässig aufteilen.
-    - Das Halten von <b>UMSCH</b> aktiviert den Bandplaner, der dir das Platzieren langer Linien vereinfacht.
+    - Das Halten von <b>UMSCH</b> aktiviert den Bandplaner, der dir das
+      Platzieren langer Linien vereinfacht.
     - Schneider schneiden immer vertikal, egal deren Orientierung.
     - Um Weiss zu erhalten, mixe alle Farben zusammen.
     - Der Speicher priorisiert den linken Ausgang.
     - Investiere Zeit, um wiederholbare Designs zu erstellen - es lohnt sich!
     - Das Halten von <b>STRG</b> ermöglicht dir mehrere Gebäude zu platzieren.
-    - Du kanst <b>ALT</b> gedrückt halten, um die Richtung der Förderbänder umzukehren.
+    - Du kanst <b>ALT</b> gedrückt halten, um die Richtung der Förderbänder
+      umzukehren.
     - Effizienz ist der Schlüssel!
     - Formflecken, die weiter vom Hub entfernt sind, sind komplexer.
-    - Gebäude haben eine limitierte Geschwindigkeit, teile sie auf für maximale Effizienz.
+    - Gebäude haben eine limitierte Geschwindigkeit, teile sie auf für maximale
+      Effizienz.
     - Benutze Verteiler um deine Effizienz zu maximieren.
-    - Organisation ist wichtig. Versuch das Kreuzen von Förderbändern zu minimieren.
+    - Organisation ist wichtig. Versuch das Kreuzen von Förderbändern zu
+      minimieren.
     - Plane im Voraus, oder es gibt ein riesigen Chaos!
-    - Lösche deine alten Fabriken nicht! Du benötigst sie um Upgrades freizuschalten.
+    - Lösche deine alten Fabriken nicht! Du benötigst sie um Upgrades
+      freizuschalten.
     - Versuch Level 20 alleine zu meistern, bevor du nach Hilfe suchst!
-    - Mach es dir nicht zu kompliziert, versuch es einfach zu halten und du wirst weit vorankommen.
-    - Vielleicht musst du Fabriken später im Spiel wiederverwenden. Plane deine Fabriken so, dass sie wiederverwendbar sind.
-    - Manchmal kannst du die gewünschte Form auf der Karte finden, ohne sie mit Staplern zu erstellen.
+    - Mach es dir nicht zu kompliziert, versuch es einfach zu halten und du
+      wirst weit vorankommen.
+    - Vielleicht musst du Fabriken später im Spiel wiederverwenden. Plane deine
+      Fabriken so, dass sie wiederverwendbar sind.
+    - Manchmal kannst du die gewünschte Form auf der Karte finden, ohne sie mit
+      Staplern zu erstellen.
     - Vollständige Windmühlen werden nicht natürlich generiert.
     - Färbe deine Formen vor dem Schneiden für maximale Effizienz.
-    - Mit Modulen ist der Raum nur eine Wahrnehmung; eine Sorge für die sterblichen Menschen.
+    - Mit Modulen ist der Raum nur eine Wahrnehmung; eine Sorge für die
+      sterblichen Menschen.
     - Mache eine separate Blaupausenfabrik. Sie sind wichtig für Module.
     - Schau dir den Farbmischer genauer an, und deine Fragen werden beantwortet.
     - Benutze <b>STRG</b> + rechter Mausklick, um einen Bereich zu selektieren.
     - Zu nahe am Hub zu bauen, kann späteren Projekten im Weg stehen.
-    - Das Pin-Symbol neben jeder Form in der Upgrade-Liste heftet sie an den Bildschirm.
+    - Das Pin-Symbol neben jeder Form in der Upgrade-Liste heftet sie an den
+      Bildschirm.
     - Mische alle drei Grundfarben, um Weiß zu erhalten!
     - Du hast eine unendlich grosse Karte, nutze den Platz, expandiere!
     - Probier auch mal Factorio! Es ist mein Lieblingsspiel.
     - Der Vierfachschneider schneidet im Uhrzeigersinn von oben rechts beginnend!
     - Du kannst deine Speicherstände im Hauptmenü herunterladen!
-    - Diese Spiel hat viele nützliche Tastenbelegungen! Schau sie dir in den Einstellungen an.
+    - Diese Spiel hat viele nützliche Tastenbelegungen! Schau sie dir in den
+      Einstellungen an.
     - Dieses Spiel hat viele Einstellungen, schau sie dir einmal an!
-    - Die Markierung des Hubs hat einen kleinen Kompass, der die Richtung anzeigt!
-    - Um die Förderbänder zu leeren, schneide den Bereich aus und füge ihn in der gleichen Position wieder ein.
+    - Die Markierung des Hubs hat einen kleinen Kompass, der die Richtung
+      anzeigt!
+    - Um die Förderbänder zu leeren, schneide den Bereich aus und füge ihn in
+      der gleichen Position wieder ein.
     - Drücke F4 um deine FPS und Tick Rate anzuzeigen.
     - Drücke doppelt F4 um die Kachel des Zeigers und der Kamera anzuzeigen.
     - Du kannst die angehefteten Formen auf der linken Seite ablösen.

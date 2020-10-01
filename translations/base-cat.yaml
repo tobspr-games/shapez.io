@@ -123,7 +123,9 @@ dialogs:
         text: "Ha ocurrit un error al intentar carregar la teva partida:"
     confirmSavegameDelete:
         title: Eliminar
-        text: Estàs segur que vols eliminar la partida guardada?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Error en eliminar
         text: "Ha ocurrit un error al intentar eliminar la teva partida:"
@@ -185,9 +187,8 @@ dialogs:
     createMarker:
         title: Nou Marcador
         titleEdit: Editar Marcador
-        desc: 'Dona-li un nom significatiu, també pots usar <strong>claus</strong> de
-            les figures (Pots generarles a: <a href="https://viewer.shapez.io"
-            target="_blank">aquí</a>)'
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
     markerDemoLimit:
         desc: En la Demo només pots crear dos marcadors, aconsegueix la versió completa
             per gaudir de l'experiència completa!
@@ -470,7 +471,9 @@ buildings:
             description: Pinta les figures de l'esquerra amb el color de dalt.
         quad:
             name: Pintor (Quàdruple)
-            description: Permet pintar cadascun dels quadrants de forma diferent.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
     trash:
         default:
             name: Paperera
@@ -593,11 +596,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Tallar figures
-        desc: Acabes de desbloquejar la <strong>Tallador</strong> - talla les figures
-            per la meitat <strong>de dalt a baix</strong>; sense importar la
-            seva/ua orientació!<br><br>Assegura't d'eliminar les parts que no
-            utilitzes, si no <strong>es pararà</strong> - Es per això que t'he
-            donat una paperera, utilitza-la!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotar
         desc: El <strong>Rotador</strong> s'ha desbloquejat! Rota formes en sentit
@@ -621,10 +625,9 @@ storyRewards:
             <strong>s'apilarà damunt</strong> de la de l'esquerra!
     reward_splitter:
         title: Distribuïdor
-        desc: El <strong>distribuïdor</strong> multifuncional s'ha desbloquejat - Pot
-            ser utilitzat per a construir fàbriques més grans per mitjà de la
-            <strong>separació i fusió</strong> de figures de diferents
-            cintes!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Túnel
         desc: El <strong>túnel</strong> s'ha desbloquejat - Ara pots passar objectes a
@@ -637,9 +640,10 @@ storyRewards:
             variants</strong>!
     reward_miner_chainable:
         title: Extractor en cadena
-        desc: Has desbloquejat el <strong>extractor en cadena</strong>! Pot
-            <strong>passar els seus recursos</strong> a altres extractors perquè
-            pugues extraure recursos més eficientment!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Túnel de Nivell II
         desc: Has desbloquejat una nova variant del <strong>túnel</strong> - Té una
@@ -657,14 +661,18 @@ storyRewards:
             consumint sols un color en lloc de dos!
     reward_storage:
         title: Magatzem de reserva
-        desc: Has desbloquejat una variant de la <strong>paperera</strong> - Et permet
-            emmagatzemar objectes fins a una capacitat màxima!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Joc lliure
-        desc: Ho has fet! Has desbloquejat el <strong>mode de joc lliure</strong>! Això
-            significa que les figures ara són generades aleatòriament! (No
-            t'angoixis/es, hi ha més contingut planejat per a la versió completa
-            - fora del web)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Plànols
         desc: Ara pots <strong>copiar i apegar/enxegar</strong> parts de la teva/ua
@@ -694,17 +702,19 @@ storyRewards:
             en una cinta!
     reward_belt_reader:
         title: Lector de cinta
-        desc: Has desbloquejat el <strong>lector de cinta</strong>! Et permet mesurar el
-            rendiment d'una cinta. I espera a desbloquejar els cables, et serà
-            encara més útil!
+        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
+            measure the throughput of a belt.<br><br>And wait until you unlock
+            wires - then it gets really useful!
     reward_rotater_180:
         title: Rotador (180 graus)
         desc: Acabes de desbloquejar un altre <strong>rotador</strong>!. Et permet rotar
             una forma 180 graus.
     reward_display:
         title: Pantalla
-        desc: Has desbloquejat la <strong>Pantalla</strong>. Conecta una senyal a la
-            capa de cables per visualitzar el contingut de la senyal!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Senyal constant
         desc: >-

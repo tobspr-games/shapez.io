@@ -40,7 +40,7 @@ steamPage:
         subreddit: Subreddit
         source_code: Source code (GitHub)
         translate: Pomožte přeložit hru!
-    text_open_source: >-
+    text_open_source: |-
         Kdokoli může přispět, aktivně  se zapojit do komunity a
          pokusit se zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu
          kde je to možné.
@@ -121,7 +121,9 @@ dialogs:
         text: "Nepovedlo se načíst vaši uloženou hru:"
     confirmSavegameDelete:
         title: Potvrdit smazání
-        text: Opravdu chcete smazat hru?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Chyba mazání
         text: "Nepovedlo se smazat vaši uloženou hru:"
@@ -171,9 +173,8 @@ dialogs:
             umístěných pásů.<br>"
     createMarker:
         title: Nová značka
-        desc: Pojmenuj jí nějak výstižně, též ji můžeš doplnit <strong>zkratkou</strong>
-            pro tvar (Kterou si můžete vytvořit <a
-            href="https://viewer.shapez.io" target="_blank">zde</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Upravit značku
     markerDemoLimit:
         desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro
@@ -194,15 +195,14 @@ dialogs:
         title: Nastavte signál
         descItems: "Vyberte předdefinovanou položku:"
         descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (který jste
-             může vygenerovat <link>zde</link>)
+            může vygenerovat <link>zde</link>)
     renameSavegame:
         title: Přejmenovat Savegame
         desc: Zde můžeš přejmenovat svůj savegame.
     entityWarning:
         title: Varování výkonu
-        desc: Umístili jste spoustu budov, to je jen přátelská připomínka
-             hra nezvládne nekonečný počet budov - zkuste to
-             udržujte své továrny kompaktní!
+        desc: Umístili jste spoustu budov, to je jen přátelská připomínka hra nezvládne
+            nekonečný počet budov - zkuste to udržujte své továrny kompaktní!
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -450,7 +450,9 @@ buildings:
             description: Obarví tvary z levých vstupů barvou z horního vstupu.
         quad:
             name: Barvič (čtyřnásobný)
-            description: Umožňuje obarvit každý dílek tvaru samostatně.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: Barvič
             description: Obarví celý tvar v levém vstupu barvou z pravého vstupu.
@@ -571,11 +573,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Řezání tvarů
-        desc: Právě jste odemknuli <strong>pilu</strong> - řeže tvary
-            <strong>svisle</strong> bez ohledu na svou
-            orientaci!<br><br>Nezapomeňte se zbavovat odpadu, jinak <strong>se
-            vám zasekne produkce</strong> - pro tento účel jsem vám odemknul
-            koš, který můžete použít na mazání odpadu!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Otáčení
         desc: <strong>Rotor</strong> byl právě odemčen! Otáčí tvary po směru hodinových
@@ -597,9 +600,9 @@ storyRewards:
             vpravo se <strong>nalepí na</strong> tvar vlevo!
     reward_splitter:
         title: Rozřazování/Spojování pásu
-        desc: Multifuknční <strong>balancer</strong> byl právě odemčen - Může být použít
-            pro stavbu větších továren díky tomu, že <strong>rozřazuje</strong>
-            tvary mezi dva pásy!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunel
         desc: <strong>Tunel</strong> byl právě odemčen - Umožňuje vézt suroviny pod
@@ -611,9 +614,10 @@ storyRewards:
             'T' pro přepnutí mezi variantami</strong>!
     reward_miner_chainable:
         title: Napojovací extraktor
-        desc: Odemknuli jste variantu <strong>extraktoru</strong>! Může
-            <strong>přesměrovat vytěžené zdroje</strong> do dalších extraktorů
-            pro efektivnější těžbu!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunel II. úrovně
         desc: Odemknuli jste <strong>tunel II. úrovně</strong> - Má <strong>delší
@@ -629,13 +633,18 @@ storyRewards:
             barvy!
     reward_storage:
         title: Sklad
-        desc: Odemknuli jste variantu <strong>koše</strong> - Umožňuje vám skladovat
-            věci až do určité kapacity!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Volná hra
-        desc: Dokázali jste to! Odemknuli jste <strong>volnou hru</strong>! Další tvary
-            jsou již náhodně generované! (pro plnou verzi plánujeme více
-            obsahu!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Plány
         desc: Nyní můžete <strong>kopírovat a vkládat</strong> části továrny! Vyberte
@@ -673,8 +682,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

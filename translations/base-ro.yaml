@@ -121,7 +121,9 @@ dialogs:
         text: "Încercarea de încărcat savegame-ul a eșuat:"
     confirmSavegameDelete:
         title: Confirmă ștergerea
-        text: Ești sigur că vrei să ștergi acest joc?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Eroare la ștergere
         text: "Nu a reușit să se ștearga savegame-ul:"
@@ -176,9 +178,8 @@ dialogs:
             rulante.<br>"
     createMarker:
         title: Nou waypoint
-        desc: Dă-i un nume plin de înțeles, de asemenea poți include a <strong>codul
-            scurt</strong> al unei forme (Pe care îl poți genera <a
-            href="https://viewer.shapez.io" target="_blank">here</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Edit Marker
     markerDemoLimit:
         desc: Poți crea decât două waypoint-uri personalizate în demo. Ia standalone-ul
@@ -453,8 +454,9 @@ buildings:
                 input-ul de sus.
         quad:
             name: Mașină de pictat (Quad)
-            description: Permite colorarea fiecărui cadrant al formei cu o culoare diferită
-                .
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: Mașină de pictat
             description: Colorează întreaga formă din input-ul stâng folosind culoarea din
@@ -590,10 +592,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Tăierea formelor
-        desc: Tocmai ai deblocat <strong>tăietorul</strong> - taie forme pe jumate de
-            <strong>jos în sus</strong> indiferent de orientație!<br><br>Ține
-            minte să scapi de deșeuri, altfel <strong>se va opri</strong> - În
-            acest scop ți-am dat un gunoi, care distruge tot ce pui în el!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotitul
         desc: <strong>rotater-ul</strong> a fost deblocat! El rotește formele la 90 de
@@ -616,10 +620,9 @@ storyRewards:
             <strong>pus peste</strong> input-ul stâng!
     reward_splitter:
         title: Distribuitor/Combinator
-        desc: Multifuncționalul <strong>distribuitor</strong> a fost deblocat - El poate
-            fi folosit pentru a construi fabrici mai mari prin
-            <strong>distribuirea și combinarea obiectelor</strong> pe benzi
-            multiple!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunel
         desc: <strong>Tunelul</strong> a fost deblocat - Acum poți deplasa obiecte prin
@@ -632,9 +635,10 @@ storyRewards:
             printre variante</strong>!
     reward_miner_chainable:
         title: Chaining Extractor
-        desc: Ai deblocat <strong>Extractorul în lanț</strong>! El își poate
-            <strong>transmite resursele</strong> la alte extractoare ca tu să
-            poți extrage resurse mai eficient!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunnel Tier II
         desc: Ai deblocat o variantă nouă a <strong>tunelului</strong> - El are
@@ -651,13 +655,18 @@ storyRewards:
             forme odată</strong> consumând doar o culoare în loc de două!
     reward_storage:
         title: Depozitul
-        desc: Ai deblocat o variantă a <strong>gunoiului</strong> - El permite să
-            depoziți obiecte până într-o capacitate dată!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Jocul liber
-        desc: Ai făcut-o! Ai deblocat <strong>modul de joc liber</strong>! Asta înseamnă
-            că formele sunt acum generate aleatoriu! (Fără griji, mai mult
-            conținut este planificat pentru versiunea standalone!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Planuri
         desc: Acum poți <strong>copia și lipi</strong> părți ale fabrici tale!
@@ -697,8 +706,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

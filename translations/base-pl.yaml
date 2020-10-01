@@ -121,7 +121,9 @@ dialogs:
         text: "Nie udało się wczytać twojego zapisu gry:"
     confirmSavegameDelete:
         title: Potwierdź usuwanie
-        text: Jesteś pewien, że chcesz usunąć zapis?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Błąd usuwania
         text: "Nie udało się usunąć zapisu:"
@@ -175,9 +177,8 @@ dialogs:
             taśmociągów.<br>"
     createMarker:
         title: Nowy Znacznik
-        desc: Podaj nazwę znacznika. Możesz w niej zawrzeć <strong>kod
-            kształtu</strong>, który możesz wygenerować <a
-            href="https://viewer.shapez.io" target="_blank">tutaj</a>.
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Edytuj Znacznik
     markerDemoLimit:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną
@@ -458,8 +459,9 @@ buildings:
                 kształty używając 1 barwnika.
         quad:
             name: Malarz (Poczwórny)
-            description: Koloruje każdą ćwiartkę kształtu na inny kolor, używając
-                dostarczonych kolorów.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: Malarz
             description: Koloruje kształt za pomocą koloru dostarczonego od boku.
@@ -588,11 +590,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Przecinanie Kształtów
-        desc: "Odblokowano nową maszynę: <strong>Przecinak</strong> - tnie kształt na
-            pół <strong>pionowo - od góry do dołu</strong>, niezależnie od
-            orientacji!<br><br>Upewnij się, że zniszczysz niechciane kawałki,
-            ponieważ <strong>może się zatkać</strong> - Na potrzeby tego
-            otrzymujesz też kosz - niszczy wszystko co do niego przekierujesz!"
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Obracanie
         desc: "Odblokowano nową maszynę: <strong>Obracacz</strong>! Obraca wejście o 90
@@ -616,9 +619,9 @@ storyRewards:
             kształt po prawej jest <strong>kładziony na</strong> ten z lewej!"
     reward_splitter:
         title: Rozdzielacz/Łącznik
-        desc: Wielofunkcyjne urządzenie <strong>balansujące</strong> zostało odblokowane
-            - Może zostać wykorzystane do tworzenia większych fabryk poprzez
-            <strong>rozdzielanie i łączenie taśmociągów</strong>!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunel
         desc: <strong>Tunel</strong> został odblokowany - Możesz teraz prowadzić
@@ -630,9 +633,10 @@ storyRewards:
             <strong>naciśnij 'T', by zmieniać warianty</strong>!
     reward_miner_chainable:
         title: Wydobycie Łańcuchowe
-        desc: Odblokowano nowy wariant <strong>ekstraktora</strong>! Może
-            <strong>przekierować obiekty</strong> do ekstraktorów przed nim,
-            zwiększając efektywność wydobycia!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunel Poziomu II
         desc: Odblokowano nowy wariant <strong>tunelu</strong> - Posiada większy
@@ -649,13 +653,18 @@ storyRewards:
             raz</strong>, pobierając wyłącznie jeden barwnik!
     reward_storage:
         title: Magazyn
-        desc: Odblokowano nowy wariant <strong>Kosza</strong> - Pozwala przechować pewną
-            ilość obiektów!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Tryb swobodny
-        desc: Gratulacje! Odblokowano <strong>tryb swobodny</strong>! Oznacza to, iż
-            kształty są teraz generowane losowo! (Nie przejmuj się, więcej
-            zawartości jest w planach dla wersji pełnej!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Schematy
         desc: Możesz teraz <strong>kopiować i wklejać</strong> części swojej fabryki!
@@ -694,8 +703,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
