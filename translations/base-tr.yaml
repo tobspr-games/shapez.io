@@ -583,12 +583,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Şekİllerİ Kesmek
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: Biraz önce <strong>kesiciyi</strong> açtın. Kesici, şekilleri
+            yukarıdan aşağı <strong>yönüne bağlı olmaksızın
+            </strong> keser!<br><br>Gereksinim duyulmayan parçaları yok etmeyi unutma,
+            yoksa <strong>kesiciyi tıkayıp durdurur</strong> - sana bu amaçla
+            <strong>çöp'ü</strong>verdim, içine atılan herşeyi yok eder. 
+           
     reward_rotater:
         title: Döndürme
         desc: <strong>Döndürücü</strong> açıldı! Döndürücü şekilleri saat yönüne 90
@@ -611,9 +611,8 @@ storyRewards:
             <strong>üzerine kaynaştırılır</strong>!
     reward_splitter:
         title: Ayırıcı/Bİrleştİrİcİ
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        desc: <strong>Ayırıcıyı</strong> açtın! <strong>dengeleyicin</strong>
+            başka bir türü - Tek giriş alıp ikiye ayırır
     reward_tunnel:
         title: Tünel
         desc: <strong>Tünel</strong> açıldı - Artık eşyaları taşıma bantları ve yapılar
@@ -626,10 +625,10 @@ storyRewards:
             bas</strong>!
     reward_miner_chainable:
         title: Zincirleme Üretİm
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: " <strong>zincirleme çıkarıcıyı</strong>açtın! bununla
+            <strong>kaynakalrını</strong> diğer çıkarıcılarla paylaşıp 
+            daha verimli bir şekilde çıkartabilirsin!<br><br> not: Eskilerini 
+            yenileri ile değiştirdim!"
     reward_underground_belt_tier_2:
         title: Tünel Aşama II
         desc: <strong>Tünelin</strong> başka bir türünü açtın - Bu tünelin menzili
@@ -646,9 +645,9 @@ storyRewards:
             boya yerine sadece bir boya harcar!
     reward_storage:
         title: Depo Sağlayıcı
-        desc: You have unlocked the <strong>storage</strong> building - It allows you to
-            store items up to a given capacity!<br><br> It priorities the left
-            output, so you can also use it as an <strong>overflow gate</strong>!
+        desc: <strong>depolamayı</strong>açtın - BU eşyaları depolamayı sağlar
+            <br><br> sol çıkışa öncelik verir.
+            buyüzden onu <strong>taşma deposu</strong>olarak kullanabilirsin!
     reward_blueprints:
         title: Taslaklar
         desc: Fabrikanın bölümlerini artık <strong>kopyalayıp
@@ -659,21 +658,20 @@ storyRewards:
             (Az önce teslim ettiğin şekiller).
     no_reward:
         title: Sonrakİ Sevİye
-        desc: "This level gave you no reward, but the next one will! <br><br> PS: Better
-            not destroy your existing factory - You'll need <strong>all</strong>
-            those shapes later to <strong>unlock upgrades</strong>!"
+        desc: "Bu seviya sana birşey vermedi ancak bir sonraki verecek! <br><br> not: Eski 
+            fabrikalarını yok etme! Onlara daha sonra ihtiyacın olacak - <strong>Bütün</strong>
+            bu şekillere <strong>geliştirmeleri açmak</strong>için ihtiyacın olacak!"
     no_reward_freeplay:
         title: Sonrakİ Sevİye
         desc: Tebrikler!
     reward_freeplay:
         title: Özgür Mod
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+        desc: Sonunda buraya kadar geldin! <strong>serbest modu</strong> açtın! bu
+            bundan sonraki şekillerin <strong>rastgele</strong> üretilceği anlamına geliyor!<br><br>
+            Bundan sonra Hub <strong>hacme</strong> bakacağı için
+            sana otomatik olarak istenilen şekli üreten bir makine yapmanı
+            öneririm!<br><br> Hub istediği şekli KAblo katanında gönderdiği için
+            gelen siynali analiz edip fabrikanı otomatik olarak ayarlaman gerekecek.
     reward_demo_end:
         title: Deneme Sürümünün Sonu
         desc: Deneme sürümünün sonuna geldin!
@@ -684,9 +682,8 @@ storyRewards:
             items</strong> onto multiple belts!<br><br>
     reward_merger:
         title: Tekil Birleştirici
-        desc: You have unlocked a <strong>merger</strong> variant of the
-            <strong>balancer</strong> - It accepts two inputs and merges them
-            into one belt!
+        desc: <strong>Birleştiriciyi</strong> açtın ! 
+            <strong>dengeleyecinin</strong> bir türü - İki giriş alıp tek banta atar.
     reward_belt_reader:
         title: Bant Okuyucu
         desc: <strong>Bant okuyucu</strong> açıldı! Bu yapı taşıma bandındaki akış
@@ -694,14 +691,13 @@ storyRewards:
             çok kullanışlı olacak.
     reward_rotater_180:
         title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
-            you to rotate a shape by 180 degress (Surprise! :D)
+        desc: 180 derece çeviren <strong>döndürücüyü</strong> açtın! - Şekilleri soğuk espiri yapılmış gibi 180 derece döndürür (Şoğuk espiriyi soğuk espiri ile sundum)
     reward_display:
         title: Display
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        desc: "<strong>Göstergeyi</strong> açtın - kablolar katmanındaki
+            bir sinyal bağlayarak sinyali görebilirsin!<br><br> Not: 
+            Konveyor okuyucu ve depolama son okunan eşyayı çıktı verdiğini
+             farkına vardınmı? görgeyi bağla ve ne olduğunu gözlemle:) : "
     reward_constant_signal:
         title: Sabit Sinyal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
