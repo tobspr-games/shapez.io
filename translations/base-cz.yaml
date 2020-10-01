@@ -390,7 +390,7 @@ buildings:
         deliver: Dodejte
         toUnlock: pro odemčení
         levelShortcut: LVL
-        endOfDemo: End of Demo
+        endOfDemo: konec Demo verze
     belt:
         default:
             name: Dopravníkový pás
