@@ -13,7 +13,7 @@ steamPage:
         Ondanks het feit dat je in het begin alleen vormen maakt, komt er het punt waarop je ze moet kleuren. Deze kleuren moet je vinden en mengen!
 
         Door het spel op Steam te kopen kun je de volledige versie spelen. Je kunt echter ook een demo versie spelen op shapez.io en later beslissen.
-    title_advantages: Losstaande Voordelen
+    title_advantages: Standalone Voordelen
     advantages:
         - <b>12 Nieuwe Levels</b> met een totaal van 26 levels
         - <b>18 Nieuwe Gebouwen</b> voor een volledig geautomatiseerde fabriek!
@@ -27,7 +27,7 @@ steamPage:
     planned:
         - Blueprint Bibliotheek (Alleen volledige versie)
         - Steam Prestaties
-        - Puzzle Modus
+        - Puzzel Modus
         - Minimap
         - Mods
         - Sandbox modus
@@ -35,7 +35,7 @@ steamPage:
     title_open_source: Dit spel is open source!
     title_links: Links
     links:
-        discord: Officiele Discord
+        discord: Officiële Discord
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Source code (GitHub)
@@ -341,7 +341,8 @@ ingame:
     connectedMiners:
         one_miner: 1 Miner
         n_miners: <amount> Miners
-        limited_items: Limiet ingesteld op: <max_throughput>
+        limited_items: >-
+            Gelimiteerd tot: <max_throughput>
     watermark:
         title: Demo versie
         desc: Klik hier om het spel op Steam te bekijken!
@@ -559,7 +560,7 @@ buildings:
         painter:
             name: Virtuele Schilder
             description: Schildert de vorm virtueel vanaf de onderste invoer met de vorm aan
-                 de rechter ingang.
+                de rechter ingang.
     item_producer:
         default:
             name: Item Producent
