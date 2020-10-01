@@ -93,13 +93,15 @@ export class HUDEditConstantSignal extends BaseHUDPart {
                             console.log(itemInput.chosenItem);
                             constantComp.signal = itemInput.chosenItem;
                         } else {
-                            constantComp.signal = this.root.systemMgr.systems.constantSignal.parseSignalCode(signalValueInput.getValue());
+                            constantComp.signal = this.root.systemMgr.systems.constantSignal.parseSignalCode(
+                                signalValueInput.getValue()
+                            );
                         }
                     };
 
                     dialog.buttonSignals.ok.add(closeHandler);
                     dialog.valueChosen.add(closeHandler);
-                    
+
                     return STOP_PROPAGATION;
                 } else if (button === enumMouseButton.right) {
                     this.root.logic.tryDeleteBuilding(entity);
