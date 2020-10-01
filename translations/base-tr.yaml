@@ -338,8 +338,8 @@ ingame:
         empty: Boş
         copyKey: Şekil Kodunu Kopyala
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
+        one_miner: 1 Üretici
+        n_miners: <amount> Üretici
         limited_items: Sınır <max_throughput>
     watermark:
         title: Deneme sürümü
@@ -378,7 +378,7 @@ shopUpgrades:
         name: Taşıma Bandı, Dağıtıcılar & Tüneller
         description: Hız x<currentMult> → x<newMult>
     miner:
-        name: Üretme
+        name: Üretici
         description: Hız x<currentMult> → x<newMult>
     processors:
         name: Kesme, Döndürme & Kaynaştırıcı
@@ -391,7 +391,7 @@ buildings:
         deliver: Teslİm et
         toUnlock: Açılacak
         levelShortcut: SVY
-        endOfDemo: End of Demo
+        endOfDemo: Deneme Sürümünün Sonu
     belt:
         default:
             name: Taşıma Bandı
@@ -432,7 +432,7 @@ buildings:
             name: Döndürücü (Saat Yönünün Tersİ)
             description: Şekilleri saat yönünün tersinde 90 derece döndürür.
         rotate180:
-            name: Rotate (180)
+            name: Dödürücü (180 Derece)
             description: Şekilleri 180 derece döndürür.
     stacker:
         default:
@@ -448,7 +448,7 @@ buildings:
             name: Boyayıcı
             description: Sol girdideki bütün şekli sağ girdideki renk ile boyar.
         double:
-            name: Boyayıcı (Çİft)
+            name: Boyayıcı (İkili)
             description: Sol girdideki şekilleri yukarı girdideki renk ile boyar.
         quad:
             name: Boyayıcı (Dörtlü)
@@ -486,10 +486,10 @@ buildings:
             name: Birleştİrİcİ (tekİl)
             description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
         splitter:
-            name: Ayırıcı (compact)
+            name: Ayırıcı (tekİl)
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
         splitter-inverse:
-            name: Ayırıcı (compact)
+            name: Ayırıcı (tekİl)
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
     storage:
         default:
@@ -526,11 +526,11 @@ buildings:
                 gönderir. (Doğru; bir şekil, renk veya "1" girdisi demektir.)
     transistor:
         default:
-            name: Transistor
+            name: Transistör
             description: Eğer yan girdi doğruysa aşağı doğru sinyal akışına izin verir.
                 (Şekil, renk veya "1").
         mirrored:
-            name: Transistor
+            name: Transistör
             description: Eğer yan girdi doğruysa aşağı doğru sinyal akışına izin verir.
                 (Şekil, renk veya "1").
     filter:
@@ -546,7 +546,7 @@ buildings:
                 veya ikili değer (1/0) olabilir.
     reader:
         default:
-            name: Belt Reader
+            name: Band Okuyucu
             description: Bant üzerindeki ortalama hızı ölçer. Kablo katmanında son okunan
                 eşyayı gösterir (açıldığında).
     analyzer:
@@ -584,12 +584,10 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Şekİllerİ Kesmek
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: <strong>Kesici</strong> açıldı, bu alet şekilleri <strong>yönelimi ne 
+            olursa olsun</strong> ortadan ikiye böler!<br><br> Çıkan şekilleri kullanmayı veya
+            çöpe atmayı unutma yoksa <strong>makine tıkanır</strong>! - Bu nedenle sana gönderdiğin
+            bütün her şeyi yok eden <strong>çöpü</strong> de verdim!
     reward_rotater:
         title: Döndürme
         desc: <strong>Döndürücü</strong> açıldı! Döndürücü şekilleri saat yönüne 90
@@ -598,7 +596,7 @@ storyRewards:
         title: Boyama
         desc: "<strong>Boyayıcı</strong> açıldı - Biraz renk üretin (tıpkı şekiller
             gibi) ve şekil boyamak için rengi boyayıcıda bir şekille
-            birleştirin!<br><br>NOT: Renkleri daha kolay ayırt etmek için
+            birleştirin!<br><br> NOT: Renkleri daha kolay ayırt etmek için
             ayarlardan <strong>renk körü modunu</strong> kullanabilirsiniz!"
     reward_mixer:
         title: Renk Karıştırma
@@ -612,9 +610,7 @@ storyRewards:
             <strong>üzerine kaynaştırılır</strong>!
     reward_splitter:
         title: Ayırıcı/Bİrleştİrİcİ
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        desc: Bir taşıma bandını iki çıktı verecek şekilde birleştirir!
     reward_tunnel:
         title: Tünel
         desc: <strong>Tünel</strong> açıldı - Artık eşyaları taşıma bantları ve yapılar
@@ -627,10 +623,9 @@ storyRewards:
             bas</strong>!
     reward_miner_chainable:
         title: Zincirleme Üretİm
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: "<strong>Zincirleme Üreticiyi</strong> açtın! <strong> Çıkardığı eşyayı önündeki
+            üreticiye aktarabilir</strong> böylelikle madenleri daha efektif kullana bilirsin!<br><br> 
+            NOT: Eski üretici Zincirleme Üretici ile değiştirildi!"
     reward_underground_belt_tier_2:
         title: Tünel Aşama II
         desc: <strong>Tünelin</strong> başka bir türünü açtın - Bu tünelin menzili
@@ -646,10 +641,10 @@ storyRewards:
             gibi çalışır, fakat <strong>iki şekli birden</strong> boyayarak iki
             boya yerine sadece bir boya harcar!
     reward_storage:
-        title: Depo Sağlayıcı
-        desc: You have unlocked the <strong>storage</strong> building - It allows you to
-            store items up to a given capacity!<br><br> It priorities the left
-            output, so you can also use it as an <strong>overflow gate</strong>!
+        title: Depo
+        desc: <strong>Depoyu</strong> açtınız! - Gönderdiğin eşyaları içinde biriktirir!<br><br>
+            Öncelikli olarak sol tarafından eşyaları gönderir eğer sol taraf tıkanırsa sağ taraftan gödermeye başlar.
+            Bunu <strong>fazlalık eşyaları</strong> değerlendirmek için kullanabilirsin!
     reward_blueprints:
         title: Taslaklar
         desc: Fabrikanın bölümlerini artık <strong>kopyalayıp
@@ -660,56 +655,45 @@ storyRewards:
             (Az önce teslim ettiğin şekiller).
     no_reward:
         title: Sonrakİ Sevİye
-        desc: "This level gave you no reward, but the next one will! <br><br> PS: Better
-            not destroy your existing factory - You'll need <strong>all</strong>
-            those shapes later to <strong>unlock upgrades</strong>!"
+        desc: "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu anki fabrikalarını yok etmemeni öneririm
+             - Daha sonra <strong>Geliştirmeleri açmak için </strong> <strong>bütün hepsine</strong> ihtiyacın olacak!"
     no_reward_freeplay:
         title: Sonrakİ Sevİye
         desc: Tebrikler!
     reward_freeplay:
         title: Özgür Mod
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+        desc: Başardın! <strong>Özgür modu</strong> açtın! Bu artık gelen şekillerin
+            <strong>rastgele</strong> oluşacağı anlamına geliyor!<br><br>
+            Bundan sonra ana bölge belirli bir miktar eşya değil <strong>belirli bir miktar eşya geliş hızına</strong>
+            bağlı olarak level atlayacaksın, istenilen şekilleri otomatik olarak yapacak bir fabrika inşa etmeni
+            öneririm!<br><br> Ana bölgenin istediği şekil kablo katmanında sol taraftan sinyal olarak gönderiliyor,
+            yani sadece bu şekli analiz ederek üretecek tamen otomatik bir alet yapman yeterli.
     reward_demo_end:
         title: Deneme Sürümünün Sonu
         desc: Deneme sürümünün sonuna geldin!
     reward_balancer:
         title: Dengeleyici
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+        desc: Çok işlevli - bütün girdileri eşit olarak bütün çıkışlara dağıtır.!<br><br>
     reward_merger:
         title: Tekil Birleştirici
-        desc: You have unlocked a <strong>merger</strong> variant of the
-            <strong>balancer</strong> - It accepts two inputs and merges them
-            into one belt!
+        desc: İki taşıma bandını bir çıktı verecek şekilde birleştirir!
     reward_belt_reader:
         title: Bant Okuyucu
         desc: <strong>Bant okuyucu</strong> açıldı! Bu yapı taşıma bandındaki akış
             hızını ölçmeyi sağlar.<br><br>Kabloları açana kadar bekle - o zaman
             çok kullanışlı olacak.
     reward_rotater_180:
-        title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
-            you to rotate a shape by 180 degress (Surprise! :D)
+        title: Dödürücü (180 derece)
+        desc: 180 derece <strong>döndürücüyü</strong> açtınız! - Şekilleri
+            180 derece döndürür (Süpriz! :D)
     reward_display:
-        title: Display
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        title: Ekran
+        desc: "Ekranda göstermek için bir sinyal bağla - Bu sinyal bir şekil, renk
+            veya ikili değer (1/0) olabilir"
     reward_constant_signal:
         title: Sabit Sinyal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 or 0).
+        desc: Şekil, renk veya ikili değer (1 / 0) olan sabit bir sinyal
+            gönderir.
     reward_logic_gates:
         title: Mantık Kapıları
         desc: <strong>Mantık kapıları</strong> açıldı! Çok heyecanlanmana gerek yok, ama
