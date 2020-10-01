@@ -1,11 +1,14 @@
+---
 steamPage:
     shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen
         Maschinen durch Kombination immer komplexere Formen zu erschaffen.
     discordLinkShort: Offizieller Discord
     intro: >-
         Du magst Automatisierungsspiele? Dann bist du hier genau richtig!
-        shapez.io ist ein ruhiges Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst. Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten.
-        Und wenn dir das noch nicht genug wäre, musst du auch exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren! Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen!
+        shapez.io ist ein ruhiges Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
+        Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten.
+        Und wenn dir das noch nicht genug wäre, musst du auch exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
+        Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen!
         Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
     title_advantages: Vorteile der Vollversion
     advantages:
@@ -658,7 +661,7 @@ storyRewards:
     reward_rotater_180:
         title: Rotierer (180°)
         desc: Du hast eine weitere Variante des <strong>Rotierers</strong> freigeschaltet! Mit ihm
-        kannst du Formen um 180° drehen (Überraschung! :D).
+            kannst du Formen um 180° drehen (Überraschung! :D).
     reward_wires_painter_and_levers:
         title: Wires & Quad Painter
         desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
@@ -964,9 +967,11 @@ about:
         href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
         (das bin ich!) entwickelt.<br><br>
         Wenn du etwas zum Spiel beitragen möchtest, dann schaue dir <a href="<githublink>" target="_blank">shapez.io auf GitHub</a> an.<br><br>
-        Das Spiel wurde erst durch die großartige Discord-Community um meine Spiele möglich gemacht. Komm doch einfach mal auf dem <a href="<discordlink>" target="_blank">Discord-Server</a> vorbei!<br><br>
+        Das Spiel wurde erst durch die großartige Discord-Community um meine Spiele möglich gemacht.
+        Komm doch einfach mal auf dem <a href="<discordlink>" target="_blank">Discord-Server</a> vorbei!<br><br>
         Der Soundtrack wurde von <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> komponiert! Klasse Typ.<br><br>
-        Abschließend möchte ich meinem Kumpel <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> danken! Ohne unsere etlichen gemeinsamen Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
+        Abschließend möchte ich meinem Kumpel <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> danken!
+        Ohne unsere etlichen gemeinsamen Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
 changelog:
     title: Änderungen
 demo:
