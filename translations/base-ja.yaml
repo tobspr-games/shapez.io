@@ -20,8 +20,8 @@ steamPage:
         - セーブ数の上限がなくなります。
         - マップマーカー数の上限がなくなります。
         - 私をサポートできる！❤️
-    title_future: 計画中の要素
 
+    title_future: 計画中の要素
     planned:
         - ブループリント (スタンドアロン版専用)
         - Steamの実績
@@ -36,6 +36,7 @@ steamPage:
         誰でも参加することができます。私はコミュニティに積極的に参加し、すべての提案を確認し、可能な場合はフィードバックしようとしています。
 
         完全なロードマップについては、Trello boardを確認してください！
+
     title_links: リンク
     links:
         discord: 公式Discord
@@ -164,7 +165,8 @@ dialogs:
 
     updateSummary:
         title: 新アップデート！
-        desc: 前回からの変更点:
+        desc: >-
+            前回からの変更点:
 
 
     upgradesIntroduction:
@@ -196,7 +198,7 @@ dialogs:
     keybindingsIntroduction:
         title: 便利なキー設定
         desc: >-
-        	このゲームには大規模な工場の構築をスムーズにするため、沢山のキー設定があります。
+            このゲームには大規模な工場の構築をスムーズにするため、沢山のキー設定があります。
             以下に数例を示します。詳細は<strong>キー設定を確認してください</strong>！<br><br>
             <code class='keybinding'>CTRL</code> + ドラッグ: 削除範囲を指定<br>
             <code class='keybinding'>SHIFT</code>: 押し続けると1種の建造物を連続配置<br>
@@ -205,12 +207,11 @@ dialogs:
     createMarker:
         title: マーカーを設置
         titleEdit: マーカーを編集
-        desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<a
-            href="https://viewer.shapez.io" target="_blank">ここ</a>から生成できます）
+        desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<link>ここ</link>から生成できます）
     editSignal:
         title: 信号を設定
         descItems: >-
-        	プリセットを選択:
+            プリセットを選択:
         descShortKey: もしくは形を表す<strong>短いキー</strong>を入力してください。 (<link>ここ</link>から生成できます)
 
     markerDemoLimit:
@@ -226,8 +227,8 @@ dialogs:
 
     entityWarning:
         title: パフォーマンスの警告
-        desc: あなたは沢山の工場を配置しましたが、このゲームは無限の建物を処理できるわけではありません。
-            これは友好的なリマインダですが、より工場をコンパクトにすることに挑戦してみてください。
+        desc: あなたは沢山の工場を配置しましたが、このゲームは無限の建物を処理できるわけではありません。これは友好的なリマインダですが、より工場をコンパクトにすることに挑戦してみてください。
+        
 ingame:
 
 
@@ -361,7 +362,7 @@ ingame:
         waypoints: マーカー
         hub: HUB
         description: >-
-        	マーカーを左クリックでその場所にジャンプ、右クリックで削除します。<br><br>
+            マーカーを左クリックでその場所にジャンプ、右クリックで削除します。<br><br>
             <keybinding>キーを押すことで現在地にマーカーを設置します。選択した位置で<strong>右クリック</strong>することでもマーカー設置できます。
         creationSuccessNotification: マーカーを設置しました
     shapeViewer:
@@ -456,7 +457,7 @@ buildings:
         tier2:
             name: トンネル レベルII
             description: 建造物や他のベルトの地下を通してベルトを配置できます。
-balancer:
+    balancer:
         default:
             name: &balancer 分配機/合流機
             description: 多機能 - すべての入力をすべての出力に均等に分配します。
@@ -509,7 +510,7 @@ balancer:
             description: 左から入力された形を、上から入力された色で着色します。
         quad:
             name: 着色機 (四分割)
-            description: 入力された形を四分割づつ別の色で塗り分けられます。
+            description: 入力された形を四分割づつ別の色で塗り分けられます。 <strong>真らしい信号</strong>が流れているスロットのみがペイントされます！
 
     trash:
         default:
@@ -614,7 +615,7 @@ balancer:
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
-        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong> - このために<strong>ゴミ箱</strong>も用意しました。入力アイテムをすべて破棄できます。
+        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong> - このために<strong>ゴミ箱</strong>も用意しました。入力アイテムをすべて破棄できます！
     reward_rotater:
         title: 回転
         desc: <strong>回転機</strong>が利用可能になりました。形を時計回り方向に90度回転させます。
@@ -626,45 +627,40 @@ storyRewards:
             設定に<strong>色覚特性モード</strong>があります！
     reward_mixer:
         title: 色の混合
-        desc: >-
-            <strong>混合機</strong>が利用可能になりました。 -
-            この建造物は2つの色を<strong>加算混合で</strong>混ぜ合わせます。
+        desc: <strong>混合機</strong>が利用可能になりました。 - この建造物は2つの色を<strong>加算混合で</strong>混ぜ合わせます。
     reward_stacker:
         title: 積層機
         desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>
     reward_balancer:
         title: 分配機/合流機
         desc: >-
-            多機能な<strong>分配機/合流機</strong>が利用可能になりました。 -
-            より大規模な工場を構築するため、複数のベルト間で<strong>アイテムを合流、分配</strong>できます！<br><br>
+            多機能な<strong>分配機/合流機</strong>が利用可能になりました。 - より大規模な工場を構築するため、複数のベルト間で<strong>アイテムを合流、分配</strong>できます！<br><br>
     reward_tunnel:
         title: トンネル
         desc: <strong>トンネル</strong>が利用可能になりました。 - 他のベルトや建造物の地下を通してベルトが配置可能です！
     reward_rotater_ccw:
         title: 反時計回りの回転
-        desc: <strong>回転機</strong>のバリエーションが利用可能になりました。 -
-            反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
+        desc: <strong>回転機</strong>のバリエーションが利用可能になりました。 - 反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
     reward_miner_chainable:
         title: 連鎖抽出機
-        desc: <strong>連鎖抽出機</strong>が利用可能になりました。他の抽出機に<strong>出力を渡す</strong>ことができるので、資源の抽出がより効率的になります！
+        desc: >-
+            <strong>連鎖抽出機</strong>が利用可能になりました。他の抽出機に<strong>出力を渡す</strong>ことができるので、資源の抽出がより効率的になります！
+            補足: ツールバーの旧い抽出機が置き換えられました！
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
-        desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 -
-            <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用することができます！
+        desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 - <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用することができます！
     reward_merger:
         title: コンパクトな合流機
-        desc: <strong>合流機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！
-            2つの入力を1つの出力に合流させます！
-    reward_splitter:
-        title: Compact Splitter
         desc: >-
-            You have unlocked a <strong>splitter</strong> variant of the <strong>balancer</strong> - It accepts one input and splits them into two!
+            <strong>合流機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ - 2つの入力を1つの出力に合流させます！
+    reward_splitter:
+        title: コンパクトな分配機
+        desc: >-
+            <strong>分配機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ - 1つの入力を2つの出力に分配します！
     reward_belt_reader:
         title: ベルトリーダ
         desc: >-
-            <strong>ベルトリーダ</strong>が利用可能になりました！
-            ベルトのスループットを計測できます！
-            ワイヤーのロックが解除されれば、より便利になります！
+            <strong>ベルトリーダ</strong>が利用可能になりました！ベルトのスループットを計測できます。<br><br>ワイヤーのロックが解除されれば、より便利になります！
     reward_cutter_quad:
         title: 四分割
         desc: >-
@@ -678,7 +674,8 @@ storyRewards:
     reward_storage:
         title: 余剰の貯蓄
         desc: >-
-            <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！
+            <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
+            左側の出力を優先するため、<strong>オーバーフローゲート</strong>としても使用できます！
 
     reward_blueprints:
         title: ブループリント
@@ -702,16 +699,19 @@ storyRewards:
             どんなアイテムでも通過させるか、または通過させないかを選ぶこともできます。
     reward_display:
         title: ディスプレイ
-        desc: <strong>ディスプレイ</strong>が利用可能になりました！ ワイヤレイヤで信号を
-            接続することで、その内容を視認することができます！
+        desc: >-
+            <strong>ディスプレイ</strong>が利用可能になりました！ ワイヤレイヤで信号を接続することで、その内容を視認することができます！
+            補足: ベルトリーダーとストレージが最後に通過したアイテムを出力していることに気づきましたか？ディスプレイに表示するのを試してみてください！
     reward_constant_signal:
         title: 定数信号
-        desc: <strong>定数信号</strong>が利用可能になりました！
+        desc: >-
+            <strong>定数信号</strong>が利用可能になりました！
             これは、例えばアイテムフィルタに接続する場合に便利です。
             定数信号は、<strong>形状</strong>、<strong>色</strong>、または<strong>真偽値(1/0)</strong>を出力できます。
     reward_logic_gates:
         title: 論理ゲート
-        desc: <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは
+        desc: >-
+            <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは
             ありませんが、これらは非常に優秀です！<br><br>
             AND, OR, XOR and NOTを計算できます！<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
     reward_virtual_processing:
