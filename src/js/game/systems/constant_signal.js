@@ -18,7 +18,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ConstantSignalComponent]);
 
-        this.root.signals.entityManuallyPlaced.add(this.querySigalValue, this);
+        this.root.signals.entityManuallyPlaced.add(this.querySignalValue, this);
     }
 
     update() {
@@ -34,20 +34,23 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
     /**
      * Asks the entity to enter a valid signal code
      * @param {Entity} entity
+     * @param {Boolean} isEditing
      */
-    querySigalValue(entity) {
+    querySignalValue(entity, isEditing=false) {
         if (!entity.components.ConstantSignal) {
             return;
         }
 
         // Ok, query, but also save the uid because it could get stale
         const uid = entity.uid;
+        // Get the ConstantSignal component
+        const signalComp = entity.components.ConstantSignal;
 
         const signalValueInput = new FormElementInput({
             id: "signalValue",
             label: fillInLinkIntoTranslation(T.dialogs.editSignal.descShortKey, THIRDPARTY_URLS.shapeViewer),
             placeholder: "",
-            defaultValue: "",
+            defaultValue: signalComp.signal ? signalComp.signal.getAsCopyableKey() : "",
             validator: val => this.parseSignalCode(val),
         });
 
@@ -103,26 +106,29 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         dialog.valueChosen.add(closeHandler);
 
         // When cancelled, destroy the entity again
-        dialog.buttonSignals.cancel.add(() => {
-            if (!this.root || !this.root.entityMgr) {
-                // Game got stopped
-                return;
-            }
-
-            const entityRef = this.root.entityMgr.findByUid(uid, false);
-            if (!entityRef) {
-                // outdated
-                return;
-            }
-
-            const constantComp = entityRef.components.ConstantSignal;
-            if (!constantComp) {
-                // no longer interesting
-                return;
-            }
-
-            this.root.logic.tryDeleteBuilding(entityRef);
-        });
+        if (!isEditing) {
+            dialog.buttonSignals.cancel.add(() => {
+                if (!this.root || !this.root.entityMgr) {
+                    // Game got stopped
+                    return;
+                }
+    
+                const entityRef = this.root.entityMgr.findByUid(uid, false);
+                if (!entityRef) {
+                    // outdated
+                    return;
+                }
+    
+                const constantComp = entityRef.components.ConstantSignal;
+                if (!constantComp) {
+                    // no longer interesting
+                    return;
+                }
+    
+                this.root.logic.tryDeleteBuilding(entityRef);
+            });
+        }
+        
     }
 
     /**
