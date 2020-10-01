@@ -4,12 +4,12 @@ steamPage:
     intro: >-
         Du magst Automatisierungsspiele? Dann bist du hier genau richtig!
 
-        shapez.io ist ein entspanntes Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst. Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten.
+        shapez.io ist ein ruhiges Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst. Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten.
 
-        Und als ob das noch nicht genug wäre, musst du auch exponentiell mehr produzieren, um die Anforderungen zu befriedigen - Da hilft nur skalieren! Während du am Anfang nur Formen verarbeitest, musst du diese später einfärben - Dafür musst du Farben extrahieren und mischen!
+        Und als ob das noch nicht genug wäre, musst du auch exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren! Während du am Anfang nur Formen verarbeitest, musst du diese später einfärben - Dafür musst du Farben extrahieren und mischen!
 
         Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, du kannst aber auch zuerst eine Demo auf shapez.io spielen und dich später entscheiden!
-    title_advantages: Vorteile der Standalone
+    title_advantages: Vorteile der Vollversion
     advantages:
         - <b>12 Neue Level</b> für insgesamt 26 Level
         - <b>18 Neue Gebäude</b> für eine komplett automatisierte Fabrik!
@@ -17,7 +17,7 @@ steamPage:
         - <b>Wires Update</b> für eine komplett neue Dimension!
         - <b>Dark Mode</b>!
         - Unbegrenzte Speicherstände
-        - Unbegrenzte Wegpunkten
+        - Unbegrenzte Wegpunkte
         - Unterstütze mich! ❤️
     discordLinkShort: Offizieller Discord
     title_future: Geplante Inhalte
@@ -75,7 +75,7 @@ global:
         space: LEER
 demoBanners:
     title: Demo Version
-    intro: Kauf die Standalone für alle Features!
+    intro: Kauf die Vollversion für alle Features!
 mainMenu:
     play: Spielen
     changelog: Änderungsprotokoll
@@ -88,11 +88,10 @@ mainMenu:
     helpTranslate: Hilf beim Übersetzen!
     madeBy: Ein Spiel von <author-link>
     browserWarning: Sorry, aber das Spiel wird in deinem Browser langsam laufen!
-        Kaufe die Standalone-Version oder verwende Chrome für die beste
-        Erfahrung!
+        Kaufe die Vollversion oder verwende Google Chrome für die beste Erfahrung!
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Unbenannt
 dialogs:
     buttons:
         ok: OK
@@ -101,23 +100,23 @@ dialogs:
         later: Später
         restart: Neustart
         reset: Zurücksetzen
-        getStandalone: Standalone Ansehen
-        deleteGame: Ich weiß, was ich tue!
+        getStandalone: Zur Vollversion
+        deleteGame: Ich weiß, was ich tue
         viewUpdate: Update anzeigen
         showUpgrades: Upgrades anzeigen
         showKeybindings: Kürzel anzeigen
     importSavegameError:
-        title: Importierfehler
-        text: "Fehler beim Importieren deines Spielstands:"
+        title: Importfehler
+        text: "Fehler beim Importieren deines Speicherstand:"
     importSavegameSuccess:
-        title: Spielstand importieren
-        text: Dein Spielstand wurde erfolgreich importiert.
+        title: Speicherstand Importieren
+        text: Dein Speicherstand wurde erfolgreich importiert.
     gameLoadFailure:
-        title: Der Spielstand ist kaputt
-        text: Der Spielstand konnte nicht geladen werden.
+        title: Der Speicherstand ist kaputt
+        text: Der Speicherstand konnte nicht geladen werden. Sorry!
     confirmSavegameDelete:
         title: Löschen bestätigen
-        text: Bist du sicher, dass du den Spielstand löschen willst?
+        text: Bist du sicher, dass du den Speicherstand löschen willst?
     savegameDeletionError:
         title: Löschen gescheitert
         text: "Das Löschen des Spiels ist gescheitert:"
@@ -998,63 +997,59 @@ demo:
         exportingBase: Ganze Fabrik als Foto exportieren
     settingNotAvailable: Nicht verfügbar in der Demo.
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
-    - Ratios stay the same, as long as all upgrades are on the same Tier.
-    - Serial execution is more efficient than parallel.
-    - You will unlock more variants of buildings later in the game!
-    - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
-    - You can weave different tiers of tunnels.
-    - Try to build compact factories - it will pay out!
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
-    - At maximum level, 5 extractors will fill a single belt.
-    - Don't forget about tunnels!
-    - You don't need to divide up items evenly for full efficiency.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
-    - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
-    - The storage buffer priorities the first output.
-    - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
-    - Shape patches that are further away from the hub are more complex.
-    - Machines have a limited speed, divide them up for maximum efficiency.
-    - Use balancers to maximize your efficiency.
-    - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
-    - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
-    - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to
-      be re-usable.
-    - Sometimes, you can find a needed shape in the map without creating it with
-      stackers.
-    - Full windmills / pinwheels can never spawn naturally.
-    - Color your shapes before cutting for maximum efficiency.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
-    - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - Der Hub akzeptiert jede Art von Form, nicht nur die aktuelle!
+    - Stelle sicher, dass deine Fabriken modular sind - es zahlt sich aus!
+    - Baue nicht zu nah am Hub, sonst wird es ein riesiges Chaos geben!
+    - Wenn das Stapeln nicht funktioniert, versuche die Eingänge zu wechseln.
+    - Du kannst mittels <b>R</b> die Richtung des Bandplaners umkehren.
+    - Halte <b>STRG</b> um die Förderbänder ohne automatische Orientierung zu platzieren.
+    - Die Ratios bleiben gleich, solange die die Upgrades auf der selben Stufen sind.
+    - Serielle Ausführung ist effizienter als parallele.
+    - Du wirst später im Spiel mehr Varianten von Gebäuden freischalten!
+    - Du kanst <b>T</b> drücken, um auf andere Varianten des Gebäude zu wechseln.
+    - Symmetrie ist der Schlüssel!
+    - Du kannst verschiedene Arten von Tunneln miteinander verweben.
+    - Versuche kompakte Fabriken zu bauen - es zahlt sich aus!
+    - Der Färber hat eine spiegelverkehrte Variante, die du mittels <b>T</b> auswählen kannst.
+    - Das richtige Verhältnis der Gebäude maximiert die Effizienz.
+    - Auf dem maximalen Level genügen 5 Extrahierer für ein einzelnes Förderband.
+    - Vergiss die Tunnel nicht!
+    - Du musst die Items für maximale Effizienz nicht gleichmässig aufteilen.
+    - Das Halten von <b>UMSCH</b> aktiviert den Bandplaner, der dir das Platzieren langer Linien vereinfacht.
+    - Schneider schneiden immer vertikal, egal deren Orientierung.
+    - Um Weiss zu erhalten, mixe alle Farben zusammen.
+    - Der Speicher priorisiert den linken Ausgang.
+    - Investiere Zeit, um wiederholbare Designs zu erstellen - es lohnt sich!
+    - Das Halten von <b>STRG</b> ermöglicht dir mehrere Gebäude zu platzieren.
+    - Du kanst <b>ALT</b> gedrückt halten, um die Richtung der Förderbänder umzukehren.
+    - Effizienz ist der Schlüssel!
+    - Formflecken, die weiter vom Hub entfernt sind, sind komplexer.
+    - Gebäude haben eine limitierte Geschwindigkeit, teile sie auf für maximale Effizienz.
+    - Benutze Verteiler um deine Effizienz zu maximieren.
+    - Organisation ist wichtig. Versuch das Kreuzen von Förderbändern zu minimieren.
+    - Plane im Voraus, oder es gibt ein riesigen Chaos!
+    - Lösche deine alten Fabriken nicht! Du benötigst sie um Upgrades freizuschalten.
+    - Versuch Level 20 alleine zu meistern, bevor du nach Hilfe suchst!
+    - Mach es dir nicht zu kompliziert, versuch es einfach zu halten und du wirst weit vorankommen.
+    - Vielleicht musst du Fabriken später im Spiel wiederverwenden. Plane deine Fabriken so, dass sie wiederverwendbar sind.
+    - Manchmal kannst du die gewünschte Form auf der Karte finden, ohne sie mit Staplern zu erstellen.
+    - Vollständige Windmühlen werden nicht natürlich generiert.
+    - Färbe deine Formen vor dem Schneiden für maximale Effizienz.
+    - Mit Modulen ist der Raum nur eine Wahrnehmung; eine Sorge für die sterblichen Menschen.
+    - Mache eine separate Blaupausenfabrik. Sie sind wichtig für Module.
+    - Schau dir den Farbmischer genauer an, und deine Fragen werden beantwortet.
+    - Benutze <b>STRG</b> + rechter Mausklick, um einen Bereich zu selektieren.
+    - Zu nahe am Hub zu bauen, kann späteren Projekten im Weg stehen.
+    - Das Pin-Symbol neben jeder Form in der Upgrade-Liste heftet sie an den Bildschirm.
+    - Mische alle drei Grundfarben, um Weiß zu erhalten!
+    - Du hast eine unendlich grosse Karte, nutze den Platz, expandiere!
+    - Probier auch mal Factorio! Es ist mein Lieblingsspiel.
+    - Der Vierfachschneider schneidet im Uhrzeigersinn von oben rechts beginnend!
+    - Du kannst deine Speicherstände im Hauptmenü herunterladen!
+    - Diese Spiel hat viele nützliche Tastenbelegungen! Schau sie dir in den Einstellungen an.
+    - Dieses Spiel hat viele Einstellungen, schau sie dir einmal an!
+    - Die Markierung des Hubs hat einen kleinen Kompass, der die Richtung anzeigt!
+    - Um die Förderbänder zu leeren, schneide den Bereich aus und füge ihn in der gleichen Position wieder ein.
+    - Drücke F4 um deine FPS und Tick Rate anzuzeigen.
+    - Drücke doppelt F4 um die Kachel des Zeigers und der Kamera anzuzeigen.
+    - Du kannst die angehefteten Formen auf der linken Seite ablösen.
