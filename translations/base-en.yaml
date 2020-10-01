@@ -32,9 +32,9 @@ steamPage:
 
         shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only have to process shapes at the beginning, you will later have to color them - by extracting and mixing colors!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+        Buying the game on Steam gives you access to the full version, but you can also play a demo at shapez.io first and decide later!
 
     title_advantages: Standalone Advantages
     advantages:
@@ -138,7 +138,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download Google Chrome for the full experience.
+        Sorry, but the game is known to run slowly on your browser! Get the standalone version or download Google Chrome for the full experience.
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
@@ -200,7 +200,7 @@ dialogs:
 
     keybindingsResetOk:
         title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        desc: All keybindings have been reset to their defaults values!
 
     featureRestriction:
         title: Demo Version
@@ -218,7 +218,7 @@ dialogs:
     upgradesIntroduction:
         title: Unlock Upgrades
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
+            All shapes you produce can be used to unlock upgrades - <strong>don't destroy your old factories!</strong>
             The upgrades tab can be found on the top right corner of the screen.
 
     massDeleteConfirm:
@@ -266,7 +266,7 @@ dialogs:
 
     exportScreenshotWarning:
         title: Export screenshot
-        desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
+        desc: You requested to export your base as a screenshot. Please note that this will be quite slow for a bigger base and could potentially crash your game!
 
     renameSavegame:
         title: Rename Savegame
@@ -274,7 +274,7 @@ dialogs:
 
     entityWarning:
         title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that the game can not handle an endless count of buildings - So try to keep your factories compact!
+        desc: You have placed a lot of buildings, this is just a friendly reminder that the game can not handle an endless number of buildings - try to keep your factories compact!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -367,13 +367,13 @@ ingame:
         dataSources:
             stored:
                 title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                description: All shapes stored within the Hub.
             produced:
                 title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                description: All shapes produced within your factory, including intermediate products.
             delivered:
                 title: Delivered
-                description: Displaying shapes which are delivered to your central building.
+                description: Shapes which are being delivered to the Hub.
         noShapesProduced: No shapes have been produced so far.
 
         # Displays the shapes per second, e.g. '523 / s'
@@ -437,8 +437,8 @@ ingame:
     # Pops up in the demo every few minutes
     watermark:
         title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        desc: Click here to see the advantages of the standalone version!
+        get_on_steam: Get on Steam
 
     standaloneAdvantages:
         title: Get the full version!
@@ -550,10 +550,10 @@ buildings:
     cutter:
         default:
             name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will clog and stall!</strong>
         quad:
             name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
+            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will clog and stall!</strong>
 
     rotater:
         default:
@@ -569,7 +569,7 @@ buildings:
     stacker:
         default:
             name: &stacker Stacker
-            description: Combines both items side by side. If this is not possible, they are stacked on top of each other.
+            description: Combines its inputs, on the same layer if possible, otherwise the right input is stacked on top of the left input.
 
     mixer:
         default:
@@ -606,7 +606,7 @@ buildings:
     wire:
         default:
             name: &wire Wire
-            description: &wire_desc Transfers signals, which can be items, colors or booleans (1 / 0). Different colored wires do not connect.
+            description: &wire_desc Transfers signals, which can be items, colours or booleans (1 or 0). Differently-coloured wires do not connect to each other.
 
         second:
             name: *wire
@@ -615,17 +615,17 @@ buildings:
     wire_tunnel:
         default:
             name: &wire_tunnel Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            description: Allows two wires to cross without connecting to each other.
 
     constant_signal:
         default:
             name: &constant_signal Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or boolean (1 / 0).
+            description: Emits a constant signal, which can be either a shape, color or boolean (1 or 0).
 
     lever:
         default:
             name: &lever Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer, which can then be used to control for example an item filter.
+            description: Can be toggled to emit a boolean signal (1 or 0) on the wires layer, which can then be used to control components, for example an item filter.
 
     logic_gate:
         default:
@@ -705,7 +705,7 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will clog and stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
 
     reward_rotater:
         title: Rotating
@@ -796,7 +796,7 @@ storyRewards:
             Item Filter
         desc: >-
             You unlocked the <strong>Item Filter</strong>! It will route items either to the top or the right output depending on whether they match the signal from the wires layer or not.<br><br>
-            You can also pass in a boolean signal (1 / 0) to entirely activate or disable it.
+            You can also pass in a boolean signal (1 or 0) to entirely activate or disable it.
 
     reward_display:
         title: Display
@@ -808,13 +808,13 @@ storyRewards:
         title: Constant Signal
         desc: >-
             You unlocked the <strong>constant signal</strong> building on the wires layer! This is useful to connect it to <strong>item filters</strong> for example.<br><br>
-            The constant signal can emit a <strong>shape</strong>, <strong>color</strong> or <strong>boolean</strong> (1 / 0).
+            The constant signal can emit a <strong>shape</strong>, <strong>color</strong> or <strong>boolean</strong> (1 or 0).
 
     reward_logic_gates:
         title: Logic Gates
         desc: >-
             You unlocked <strong>logic gates</strong>! You don't have to be excited about this, but it's actually super cool!<br><br>
-            With those gates you can now compute AND, OR, XOR and NOT operations.<br><br>
+            With logic gates you can now compute AND, OR, XOR and NOT operations.<br><br>
             As a bonus on top I also just gave you a <strong>transistor</strong>!
 
     reward_virtual_processing:
@@ -966,7 +966,7 @@ settings:
         alwaysMultiplace:
             title: Multiplace
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to constantly holding SHIFT.
 
         offerHints:
             title: Hints & Tutorials
@@ -996,7 +996,7 @@ settings:
         disableCutDeleteWarnings:
             title: Disable Cut/Delete Warnings
             description: >-
-                Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
+                Disables the warning dialogues brought up when cutting/deleting more than 100 entities.
 
         lowQualityMapResources:
             title: Low Quality Map Resources
@@ -1025,9 +1025,9 @@ settings:
                 The game is divided into chunks of 16x16 tiles, if this setting is enabled the borders of each chunk are displayed.
 
         pickMinerOnPatch:
-            title: Pick miner on resource patch
+            title: Select extractor on resource patch
             description: >-
-                Enabled by default, selects the miner if you use the pipette when hovering a resource patch.
+                Enabled by default, selects the extractor if you use the pipette when hovering a resource patch.
 
         simplifiedBelts:
             title: Simplified Belts (Ugly)
@@ -1035,9 +1035,9 @@ settings:
                 Does not render belt items except when hovering the belt to save performance. I do not recommend to play with this setting if you do not absolutely need the performance.
 
         enableMousePan:
-            title: Enable Mouse Pan
+            title: Screen Edge Panning
             description: >-
-                Allows to move the map by moving the cursor to the edges of the screen. The speed depends on the Movement Speed setting.
+                Allows panning the map by moving the cursor to the edges of the screen. The scroll speed depends on the Movement Speed setting.
 
 keybindings:
     title: Keybindings
@@ -1175,7 +1175,7 @@ tips:
     - Holding <b>SHIFT</b> will activate the belt planner, letting you place long lines of belts easily.
     - Cutters always cut vertically, regardless of their orientation.
     - To get white mix all three colors.
-    - The storage buffer priorities the first output.
+    - The storage buffer prioritises the left output.
     - Invest time to build repeatable designs - it's worth it!
     - Holding <b>CTRL</b> allows to place multiple buildings.
     - You can hold <b>ALT</b> to invert the direction of placed belts.
@@ -1190,15 +1190,15 @@ tips:
     - Don't complicate things, try to stay simple and you'll go far.
     - You may need to re-use factories later in the game. Plan your factories to be re-usable.
     - Sometimes, you can find a needed shape in the map without creating it with stackers.
-    - Full windmills / pinwheels can never spawn naturally.
+    - Full windmills/pinwheels can never spawn naturally.
     - Color your shapes before cutting for maximum efficiency.
     - With modules, space is merely a perception; a concern for mortal men.
     - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
+    - Have a closer look at the color mixer, and your questions will be answered.
     - Use <b>CTRL</b> + Click to select an area.
     - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
+    - Mix all three primary colors to make white!
     - You have an infinite map, don't cramp your factory, expand!
     - Also try Factorio! It's my favorite game.
     - The quad cutter cuts clockwise starting from the top right!
