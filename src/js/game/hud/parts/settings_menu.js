@@ -43,7 +43,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
         ];
 
         for (let i = 0; i < buttons.length; ++i) {
-            const { title, action, id } = buttons[i];
+            const { action, id } = buttons[i];
 
             const element = document.createElement("button");
             element.classList.add("styledButton");

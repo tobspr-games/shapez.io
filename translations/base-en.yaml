@@ -385,14 +385,8 @@ ingame:
     # Settings menu, when you press "ESC"
     settingsMenu:
         playtime: Playtime
-
         buildingsPlaced: Buildings
         beltsPlaced: Belts
-
-        buttons:
-            continue: Continue
-            settings: Settings
-            menu: Menu
 
     # Bottom left tutorial hints
     tutorialHints:
@@ -430,8 +424,8 @@ ingame:
 
     # Connected miners
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
+        one_miner: 1 Extractor
+        n_miners: <amount> Extractors
         limited_items: Limited to <max_throughput>
 
     # Pops up in the demo every few minutes
@@ -726,7 +720,7 @@ storyRewards:
 
     reward_balancer:
         title: Balancer
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!
 
     reward_tunnel:
         title: Tunnel
