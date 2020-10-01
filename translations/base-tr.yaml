@@ -120,9 +120,8 @@ dialogs:
         text: "Oyun yükleme başarısız:"
     confirmSavegameDelete:
         title: Silme işlemini onayla
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: <br><br> kayıdı silmek istiyor musunuz?
+            '<savegameName>'  <savegameLevel><br><br>. seviyede. Bu geri alınamaz!
     savegameDeletionError:
         title: Silme başarısız
         text: "Oyun kaydını silme başarısız:"
@@ -174,8 +173,8 @@ dialogs:
             taşıma bantlarının yönünü ters çevirir.<br>"
     createMarker:
         title: Yeni Konum İşareti
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        desc: Anlamlı bir isim ver. Ayrıca  <strong>Şekil koduda</strong>
+            koyabilirsiniz (<link>Buradan</link> kod yapabilirisinz )
         titleEdit: Konum İşaretini Düzenle
     markerDemoLimit:
         desc: Deneme sürümünde sadece iki adet yer imi oluşturabilirsiniz. Sınırsız yer
