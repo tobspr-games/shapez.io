@@ -36,7 +36,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
      * @param {Entity} entity
      * @param {Boolean} isEditing
      */
-    querySignalValue(entity, isEditing=false) {
+    querySignalValue(entity, isEditing = false) {
         if (!entity.components.ConstantSignal) {
             return;
         }
@@ -112,23 +112,22 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
                     // Game got stopped
                     return;
                 }
-    
+
                 const entityRef = this.root.entityMgr.findByUid(uid, false);
                 if (!entityRef) {
                     // outdated
                     return;
                 }
-    
+
                 const constantComp = entityRef.components.ConstantSignal;
                 if (!constantComp) {
                     // no longer interesting
                     return;
                 }
-    
+
                 this.root.logic.tryDeleteBuilding(entityRef);
             });
         }
-        
     }
 
     /**

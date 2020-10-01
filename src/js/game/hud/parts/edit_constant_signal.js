@@ -31,7 +31,7 @@ export class HUDEditConstantSignal extends BaseHUDPart {
             const signalComp = entity.components.ConstantSignal;
             if (signalComp) {
                 if (button === enumMouseButton.left) {
-                    this.root.systemMgr.systems.constantSignal.querySignalValue(entity, true)
+                    this.root.systemMgr.systems.constantSignal.querySignalValue(entity, true);
                     return STOP_PROPAGATION;
                 } else if (button === enumMouseButton.right) {
                     this.root.logic.tryDeleteBuilding(entity);
