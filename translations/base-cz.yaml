@@ -395,7 +395,7 @@ buildings:
         default:
             name: Dopravníkový pás
             description: Přepravuje tvary a barvy, přidržením můžete tahem umístit více pásů
-                za sebe.
+                za sebou.
     miner:
         default:
             name: Extraktor
@@ -459,7 +459,7 @@ buildings:
     trash:
         default:
             name: Koš
-            description: Příjímá tvary a barvy ze všech stran a smaže je. Navždy.
+            description: Přijímá tvary a barvy ze všech stran a smaže je. Navždy.
     wire:
         default:
             name: Kabel
@@ -663,7 +663,7 @@ storyRewards:
         desc: Gratuluji! Mimochodem, více obsahu najdete v plné verzi!
     reward_balancer:
         title: Vyvažovač
-        desc: Multifunkčni <strong>vyvažovač</strong> byl odemknut - Může
+        desc: Multifunkční <strong>vyvažovač</strong> byl odemknut - Může
             být použit ke zvětšení vašich továren <strong>rozdělováním a spojováním
             předmětů</strong> na několik pásu!<br><br>
     reward_merger:
@@ -678,7 +678,7 @@ storyRewards:
             kabelů - později to bude velmi užitečné!
     reward_rotater_180:
         title: Rotor (180°)
-        desc: Právě jste odemkli 180 stupňoví <strong>rotor</strong>! - Umožnuje
+        desc: Právě jste odemkli 180 stupňoví <strong>rotor</strong>! - Umožňuje
             vám otáčet tvar o 180 stupňů!
     reward_display:
         title: Display
@@ -867,7 +867,7 @@ settings:
                 zhorší vzhled hry!
         displayChunkBorders:
             title: Zobrazit hranice oblastí
-            description: THra je rozdělena na oblasti 16x16 částic. Pokud je toto nastavení povolené,
+            description: Hra je rozdělena na oblasti 16x16 částic. Pokud je toto nastavení povolené,
                 zobrazí se hranice těchto oblastí.
         pickMinerOnPatch:
             title: Vybrat extraktor na naležistě zdrojů
@@ -881,7 +881,7 @@ settings:
         enableMousePan:
             title: Posouvání myší
             description: Umožnuje posouvání po mapě, pokud myší přejedete na okraj
-                obrazovky. Rychlost žáleží na nastevní rychlosti pohybu.
+                obrazovky. Rychlost žáleží na nastavení rychlosti pohybu.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Klávesové zkratky
@@ -989,7 +989,7 @@ tips:
     - Držení klávesy <b>CTRL</b> umožnuje natažení pásů bez auto-orientace.
     - Poměry zůstávají stejné, dokud jsou všechny vylepšení na stejné úrovní.
     - Sériové zapojení je efektivnější nez paralelní.
-    - V průběhu hry později odemknete další varianta mnoha budov!
+    - V průběhu hry později odemknete další varianty mnoha budov!
     - Můžete použít klávesu <b>T</b> k přepnutí mezi různými variantami.
     - Symetrie je klíčová!
     - Můžete proplétat různé úrovně tunelů.
@@ -1000,18 +1000,18 @@ tips:
     - Nezapomeňte na tunely!
     - Pro plnou efektivitu nemusíte rozdělovat předměty rovnoměrně.
     - Držení klávesy <b>SHIFT</b> spolu s pásy aktivuje plánovač pásy, který vám snadno umožní
-      postavit dlouhé řady pásu.
+      postavit dlouhé řady pásů.
     - Pily řežou vždy svisle, bez ohledu na jejich orientaci.
     - Smícháním všech 3 barev získáte bílou barvu.
     - Sklad preferuje levý výstup.
-    - Investujte čas pro vytvoření opakovatelnách designů - ulehčí vám to pozdější expanzy!
+    - Investujte čas pro vytvoření opakovatelných designů - ulehčí vám to pozdější expanzy!
     - Držení klávesy <b>CTRL</b> umožnuje postavit více budov stejného typu.
     - Můžete podržet klávesu <b>ALT</b> k obrácení směru pokládaných pásů.
     - Efektivita je klíčová!
     - Nalezistě zdrojů, které jsou více vzdálené od Hubu, jsou větší.
     - Továrny mají omezenou rychlost, rozdělte předměty pro vyšší efektivitu.
     - Použijte vyvažovače pro maximalizaci efektivity.
-    - Oraganizace je důležitá. Zkuste nekřížit příliš mnoho pásů.
+    - Organizace je důležitá. Zkuste nekřížit příliš mnoho pásů.
     - Plánujte dopředu, abyste předešli vzniku velkého chaosu!
     - Neodstraňujte své staré továrny! Budete je potřebovat pro další vylepšení.
     - Před vyhledáním pomoci zkuste sami porazit úroveň 20!
@@ -1028,7 +1028,7 @@ tips:
     - Použijte klávesu <b>CTRL</b> a myš pro označení oblasti.
     - Pokud stavíte příliš blízko Hubu, v budoucnu můžete narazit na problémy s dalšími projekty.
     - Ikona připínáčku vedle každého tvaru vám umožnuje připnout tvar, čímž se vám bude neustále zobrazovat vlevo na obrazovce.
-    - Smíchjte všechny základní barvy pro vytvoření bílé barvy!
+    - Smíchejte všechny základní barvy pro vytvoření bílé barvy!
     - Vaše mapa je nekonečná, nesnažte se postavit továrnu na malinkém prostoru, rozšiřte se do okolí!
     - Neváhejte vyzkoušet hru Factorio! Je to má oblíbená hra.
     - Rozebírač funguje po směru hodinových ručiček, počínaje pravým horním rohem!
@@ -1036,8 +1036,8 @@ tips:
     - Tato hra má spoustu užitečných klávesových zkratek! Určitě si je projděte v
       nastavení.
     - Tato hra má spoustu nastavení, určitě si je projděte!
-    - Značka Hubu má vedle sebe mylý kompas, který ukazuje směr k Hubu!
-    - Pro vyšistění pásů, vyjměte budovy v prostoru a pak je zkopírujte zpět na stejné místo.
+    - Značka Hubu má vedle sebe malý kompas, který ukazuje směr k Hubu!
+    - Pro vyčistění pásů, vyjměte budovy z prostoru a pak je zkopírujte zpět na stejné místo.
     - Stisknutím F4 zobrazíte FPS a rychlost ticků.
     - Stisknutím F4 dvakrát zobrazíte častici myši a kamery.
     - Můžete kliknout na připínáček vlevo vedle připnutého tvaru k jeho odepnutí.
