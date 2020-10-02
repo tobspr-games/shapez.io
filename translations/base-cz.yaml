@@ -614,10 +614,10 @@ storyRewards:
             'T' pro přepnutí mezi variantami</strong>!
     reward_miner_chainable:
         title: Napojovací extraktor
-        desc: Právě jste odemkli <strong>napojovací extraktor</strong>! Může
+        desc: "Právě jste odemkli <strong>napojovací extraktor</strong>! Může
             <strong>předat své zdroje</strong> ostatním extraktorům, čímž
             můžete efektivněji těžit více zdrojů!<br><br> PS: Starý
-            extraktor bude od teď nahrazen ve vašem panelu nástrojů!
+            extraktor bude od teď nahrazen ve vašem panelu nástrojů!"
     reward_underground_belt_tier_2:
         title: Tunel II. úrovně
         desc: Odemknuli jste <strong>tunel II. úrovně</strong> - Má <strong>delší
@@ -682,10 +682,10 @@ storyRewards:
             vám otáčet tvar o 180 stupňů!
     reward_display:
         title: Display
-        desc: Právě jste odemkli <strong>Display</strong> - Připojte signál ve
+        desc: "Právě jste odemkli <strong>Display</strong> - Připojte signál ve
             vrstvě kabelů pro vizualizaci!<br><br> PS: Všimli jste si, že čtečka
             pásů a sklad vysílájí jejich poslední přečtěný předmět? Zkuste ho ukázat na
-            displeji!
+            displeji!"
     reward_constant_signal:
         title: Konstantní signál
         desc: Právě jste odemkli <strong>konstantní signál</strong> na vrstvě
@@ -711,12 +711,12 @@ storyRewards:
             pravidelně.<br><br> Bez ohledu na tvou volbu, nezapomeň si svou hru užít!
     reward_wires_painter_and_levers:
         title: Kabely a čtyřnásobný barvič
-        desc: Právě jste odemkli <strong>vrstvu kabelů</strong>: Je to samostatná
+        desc: "Právě jste odemkli <strong>vrstvu kabelů</strong>: Je to samostatná
             vrstva navíc oproti běžné vrstvě a představuje spoustu nových
             možností!<br><br> Do začátku jsem zpřístupnil <strong>čtyřnásobný
             barvič</strong> - Připojte vstupy, které byste chtěli obarvit
             na vrstvě kabelů!<br><br> Pro přepnutí mezi vrstvami stiskněte klávesu
-            <strong>E</strong>.
+            <strong>E</strong>."
     reward_filter:
         title: Filtr předmětů
         desc: Právě jste odemkli <strong>filtr předmětů</strong>! Nasměruje předměty buď
