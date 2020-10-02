@@ -26,11 +26,6 @@ export class MapView extends BaseMap {
 
         /** @type {CanvasRenderingContext2D} */
         this.cachedBackgroundContext = null;
-        /**
-         * Cached pattern of the stripes background
-         * @type {CanvasPattern} */
-        this.cachedBackgroundPattern = null;
-
         this.internalInitializeCachedBackgroundCanvases();
         this.root.signals.aboutToDestruct.add(this.cleanup, this);
 
@@ -42,7 +37,6 @@ export class MapView extends BaseMap {
     cleanup() {
         freeCanvas(this.cachedBackgroundCanvas);
         this.cachedBackgroundCanvas = null;
-        this.cachedBackgroundPattern = null;
     }
 
     /**
@@ -191,19 +185,15 @@ export class MapView extends BaseMap {
      * @param {DrawParameters} parameters
      */
     drawBackground(parameters) {
-        if (!this.cachedBackgroundPattern) {
-            this.cachedBackgroundPattern = parameters.context.createPattern(
-                this.cachedBackgroundCanvas,
-                "repeat"
-            );
-        }
-
         // Render tile grid
         if (!this.root.app.settings.getAllSettings().disableTileGrid) {
             const dpi = this.backgroundCacheDPI;
             parameters.context.scale(1 / dpi, 1 / dpi);
 
-            parameters.context.fillStyle = this.cachedBackgroundPattern;
+            parameters.context.fillStyle = parameters.context.createPattern(
+                this.cachedBackgroundCanvas,
+                "repeat"
+            );
             parameters.context.fillRect(
                 parameters.visibleRect.x * dpi,
                 parameters.visibleRect.y * dpi,

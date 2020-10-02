@@ -28,7 +28,7 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 -   Cd into `gulp` folder
 -   Run `yarn` and then `yarn gulp` - it should now open in your browser
 
-**Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
+**Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify [`src/js/core/config.js`](src/js/core/config.js).
 
 ## Helping translate
 

@@ -14,6 +14,8 @@ import { MetaTrashBuilding } from "../../buildings/trash";
 import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaStorageBuilding } from "../../buildings/storage";
+import { MetaItemProducerBuilding } from "../../buildings/item_producer";
+import { queryParamOptions } from "../../../core/query_parameters";
 
 export class HUDBuildingsToolbar extends HUDBaseToolbar {
     constructor(root) {
@@ -29,6 +31,7 @@ export class HUDBuildingsToolbar extends HUDBaseToolbar {
                 MetaMixerBuilding,
                 MetaPainterBuilding,
                 MetaTrashBuilding,
+                ...(queryParamOptions.sandboxMode || G_IS_DEV ? [MetaItemProducerBuilding] : []),
             ],
             secondaryBuildings: [
                 MetaStorageBuilding,
@@ -39,7 +42,7 @@ export class HUDBuildingsToolbar extends HUDBaseToolbar {
             ],
             visibilityCondition: () =>
                 !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "regular",
-            htmlElementId: "ingame_HUD_buildings_toolbar",
+            htmlElementId: "ingame_HUD_BuildingsToolbar",
         });
     }
 }

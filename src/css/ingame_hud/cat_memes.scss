@@ -1,0 +1,23 @@
+#ingame_HUD_CatMemes {
+    position: absolute;
+    @include S(width, 150px);
+    @include S(height, 150px);
+    background: transparent center center / contain no-repeat;
+
+    right: 0;
+    @include S(bottom, 150px);
+
+    & {
+        /* @load-async */
+        background-image: uiResource("res/ui/memes/cat1.png") !important;
+    }
+
+    @include InlineAnimation(0.5s ease-in-out) {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: none;
+        }
+    }
+}

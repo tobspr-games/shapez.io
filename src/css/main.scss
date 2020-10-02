@@ -52,6 +52,8 @@
 @import "ingame_hud/color_blind_helper";
 @import "ingame_hud/shape_viewer";
 @import "ingame_hud/sandbox_controller";
+@import "ingame_hud/standalone_advantages";
+@import "ingame_hud/cat_memes";
 
 // prettier-ignore
 $elements: 
@@ -73,10 +75,11 @@ ingame_HUD_DebugInfo,
 ingame_HUD_EntityDebugger,
 ingame_HUD_InteractiveTutorial,
 ingame_HUD_TutorialHints,
-ingame_HUD_buildings_toolbar,
+ingame_HUD_BuildingsToolbar,
 ingame_HUD_wires_toolbar,
 ingame_HUD_BlueprintPlacer,
 ingame_HUD_Waypoints_Hint,
+ingame_HUD_WatermarkClicker,
 ingame_HUD_Watermark,
 ingame_HUD_ColorBlindBelowTileHelper,
 ingame_HUD_SandboxController,
@@ -88,9 +91,11 @@ ingame_HUD_BetaOverlay,
 ingame_HUD_Shop,
 ingame_HUD_Statistics,
 ingame_HUD_ShapeViewer,
+ingame_HUD_StandaloneAdvantages,
 ingame_HUD_UnlockNotification,
 ingame_HUD_SettingsMenu,
-ingame_HUD_ModalDialogs;
+ingame_HUD_ModalDialogs,
+ingame_HUD_CatMemes;
 
 $zindex: 100;
 

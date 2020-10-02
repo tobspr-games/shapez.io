@@ -2,59 +2,51 @@ steamPage:
     shortText: shapez.io er et spill som handler om å bygge fabrikker for å
         automatisere produksjon og kombinasjon av former med økende kompleksitet
         på et uendelig ekspanderende brett.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+    discordLinkShort: Offissiell Discord
+    intro: >-
+        Shapez.io er et avslappende spill der du skal bygge fabrikker
+        for  automatisert produksjon av geometriske former.
 
-        Shapez.io er et spill som handler om å bygge fabrikker for å automatisere produksjon og kombinasjon av former med økende kompleksitet på et uendelig ekspanderende brett. Ved leveranse av de forespurte formene vil du komme videre i spillet og låse opp oppgraderinger for å øke farten på fabrikken din
+        Etterhvert som du når høyere nivåer blir formene mer og mer komplekse, og du må spre deg ut over det uendelige kartet.
 
-        Etter hvert som forespørselen av former øker, vil du være nødt til å utvide fabrikken din for å møte etterspørselen - Ikke glem ressursene, du vil bli nødt til å utvide over det [b]uendelige brettet[/b]!
+        Og som om det ikke var nok må du også produsere eksponensielt for å tilfredsstille etterspørselen - det eneste som hjelper er skalering!
 
-        Snart blir du nødt til å plande farger og male formene dine med dem - Kombiner røde, grønne og blåe farge ressurser for å produsere forskjellige farger og male former med dem for å tilfredstille etterspørselen.
+        Mens du kun produserer former i starten må du fargelegge de senere - for å gjøre dette må du hente ut og blande farger!
 
-        Dette spillet har 18 progressive nivåer (Noe som burde holde deg opptatt i flere timer allerede!) men jeg legger stadig til nytt innhold - Det er mye som er planlagt!
+        Ved å kjøpe spillet på Steam får du tilgang til fullversjonen, men du kan også spille en demo på shapez.io først og bestemme deg senere!
+    title_advantages: Fordeler med fullversjonen
+    advantages:
+        - <b>12 Nye nivåer</b> til totalt 26 nivåer
+        - <b>18 Nye byggninger</b> For en helautomatisert fabrikk!
+        - <b>20 Oppgraderingsnivåer</b> for mange timer med moro!
+        - <b>Kabeloppdateringen</b> For en helt ny dimensjon!
+        - <b>Mørkt tema</b>!
+        - Uendelige lagringsplasser
+        - Uendelige markører
+        - Støtt meg! ❤️
+    title_future: Planlagt innhold
+    planned:
+        - Blåkopibibliotek (Eksklusivt til fullversjonen)
+        - Steam-medaljer
+        - Puslemodus
+        - Minikart
+        - Mods
+        - Sandkassemodus
+        - ... og masse mer!
+    title_open_source: Dette spillet har åpen kildekode!
+    title_links: Lenker
+    links:
+        discord: Offisiell Discord
+        roadmap: Veikart
+        subreddit: Subreddit
+        source_code: Kildekode (GitHub)
+        translate: Hjelp til med å oversette
+    text_open_source: >-
+        Alle kan bidra, jeg er aktivt involvert i sammfunnet og prøver å se
+        gjennom alle forslagene og tar tilbakemeldinger i betraktning  der det
+        er mulig.
 
-        Kjøp av spillet gir deg tilgang til den frittstående versjonen som har mange tilleggsfunksjoner og du vil også få tilgang til nyutviklede funksjoner.
-
-        [b]Frittstående fordeler[/b]
-
-        [list]
-            [*] Mørk Modus
-            [*] Ubegrensede Veipunkter
-            [*] Uendelige Lagringsfiler
-            [*] Tilleggsinnstillinger
-            [*] Kommer snart: Ledninger og strøm! Sikter mot (omtrent) slutten av Juli 2020.
-            [*] Kommer snart: Flere Nivåer
-            [*] Tillater meg å fortsette å utvikle shapez.io ❤️
-        [/list]
-
-        [b]Fremtidige Oppdateringer[/b]
-
-        Jeg oppdaterer spillet veldig ofte og prøver å presse inn minst en oppdatering hver uke!
-
-        [list]
-            [*] Forskjellige nivåer og utfordringer (f.eks. nivåer med hindringer)
-            [*] Gåter (lever den forspurte formen med et begrenset område / sett med bygninger)
-            [*] En historiemodus der bygninger har en pris
-            [*] Konfigurerbar kartgenerator (Konfigurer ressurser/former, størrelse/tetthet, seed og mer)
-            [*] Flere typer former
-            [*] Ytelsesforbedringer (Spillet kjører allerede ganske bra!)
-            [*] Og mye mer!
-        [/list]
-
-        [b]Dette spillet er åpen kildekode![/b]
-
-        Hvem som helst kan bidra, Jeg er aktivt involvert i samfunnet og forsøker å gå gjennom alle forslag og ta tilbakemelding i betraktning der det er mulig. Sørg for å sjekke trello panelet mitt for hele veikartet!
-
-        [b]Lenker[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Offisiell Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Veikart[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Kildekode (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Hjelp til å oversette[/url]
-        [/list]
-    discordLink: Offisiell Discord - Chat med meg!
+        Sjekk også mitt Trello-brett for hele veikartet!
 global:
     loading: Laster
     error: Feil
@@ -130,7 +122,9 @@ dialogs:
         text: "Kunne ikke laste inn lagringsfilen:"
     confirmSavegameDelete:
         title: Bekreft sletting
-        text: Er du sikker på at du ønsker å slette lagringsfilen?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Kunne ikke slette
         text: "Kunne ikke slette lagringsfilen:"
@@ -186,9 +180,8 @@ dialogs:
             samlebånd.<br>"
     createMarker:
         title: Ny Markør
-        desc: Gi markøren et meningsfullt navn, du kan også inkludere en <strong>"short
-            key"</strong> av et objekt (Som du kan generere <a
-            href="https://viewer.shapez.io" target="_blank">her</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Rediger markør
     markerDemoLimit:
         desc: Du kan kun ha to markører i demoverjsonen. Skaff deg den frittstående
@@ -210,6 +203,11 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
+    entityWarning:
+        title: Performance Warning
+        desc: You have placed a lot of buildings, this is just a friendly reminder that
+            the game can not handle an endless count of buildings - So try to
+            keep your factories compact!
 ingame:
     keybindingsOverlay:
         moveMap: Beveg
@@ -347,6 +345,38 @@ ingame:
         one_miner: 1 Miner
         n_miners: <amount> Miners
         limited_items: Limited to <max_throughput>
+    watermark:
+        title: Demo version
+        desc: Click here to see the Steam version advantages!
+        get_on_steam: Get on steam
+    standaloneAdvantages:
+        title: Get the full version!
+        no_thanks: No, thanks!
+        points:
+            levels:
+                title: 12 New Levels
+                desc: For a total of 26 levels!
+            buildings:
+                title: 18 New Buildings
+                desc: Fully automate your factory!
+            savegames:
+                title: ∞ Savegames
+                desc: As many as your heart desires!
+            upgrades:
+                title: 20 Upgrade Tiers
+                desc: This demo version has only 5!
+            markers:
+                title: ∞ Markers
+                desc: Never get lost in your factory!
+            wires:
+                title: Wires
+                desc: An entirely new dimension!
+            darkmode:
+                title: Dark Mode
+                desc: Stop hurting your eyes!
+            support:
+                title: Support me
+                desc: I develop it in my spare time!
 shopUpgrades:
     belt:
         name: Belter, Distributører & Tunneler
@@ -365,6 +395,7 @@ buildings:
         deliver: Lever
         toUnlock: for å låse opp
         levelShortcut: nivå
+        endOfDemo: End of Demo
     belt:
         default:
             name: Samlebånd
@@ -427,7 +458,9 @@ buildings:
                 inngang.
         quad:
             name: Maler (Firedobbel)
-            description: Farger hvert hjørne av formen med forskjellige farger.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: Maler
             description: Maler hele formen på venstre inngang med fargen fra øverste
@@ -550,14 +583,20 @@ buildings:
             name: Virtual Painter
             description: Virtually paints the shape from the bottom input with the shape on
                 the right input.
+    item_producer:
+        default:
+            name: Item Producer
+            description: Available in sandbox mode only, outputs the given signal from the
+                wires layer on the regular layer.
 storyRewards:
     reward_cutter_and_trash:
         title: Kutt Objekter
-        desc: Du åpnet nettop <strong>kutter</strong> - den kutter former i to fra
-            <strong>topp til bunn</strong> uavhengig av rotasjon!<br><br>Husk å
-            kvitt deg med alt søppel, ellers <strong>kiler det seg fast</strong>
-            - Derfor har jeg gitt deg søplekassen, som ødelegger alt du putter i
-            den!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotering
         desc: <strong>Rotereren</strong> har blitt tilgjengelig! Den roterer objekter
@@ -581,9 +620,9 @@ storyRewards:
             <strong>plassert over</strong> venstre inngang!
     reward_splitter:
         title: Fordeler/Sammenslåer
-        desc: Den multifunksjonelle <strong>fordeleren</strong> har blitt tilgjengelig -
-            Den kan brukes til å bygge større fabrikker ved å <strong>fordele og
-            slå sammen objekter</strong> til flere samlebånd!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunnel
         desc: <strong>Tunnelen</strong> har blitt tilgjengelig - Du kan nå transportere
@@ -595,9 +634,10 @@ storyRewards:
             <strong>trykk 'T' for å veksle mellom variantene</strong>!
     reward_miner_chainable:
         title: Kjedeutdrager
-        desc: Du har åpnet <strong>kjedeutdrageren</strong>! Den sender <strong>sine
-            resurser videre</strong> til andre utdragere så de kan hente ut
-            ressurser mer effektivt!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunnel Nivå II
         desc: Du har åpnet en ny variant av <strong>tunnelen</strong> - Den har
@@ -612,19 +652,20 @@ storyRewards:
         desc: Du har åpnet en variant av <strong>maleren</strong> - Den fungerer som
             vanlig maler, men maler <strong>to objekter om gangen</strong>,
             konsumerer bare en farge istedenfor to!
-    reward_painter_quad:
-        title: 4-Veis Maling
-        desc: Du har åpnet en variant av <strong>maleren</strong> - Den lar deg male
-            hver del av objektet individuelt!
     reward_storage:
         title: Lagringsbuffer
-        desc: Du har åpnet en variant av <strong>søpplekassen</strong> - Den lar deg
-            lagre objekter opp til en viss mengde!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Frispill
-        desc: Du klarte det! Du åpnet <strong>frispillmodus</strong>! Dette betyr at
-            formene er nå tilfeldig generert! (Ikke vær redd, mer innhold er
-            planlagt for den frittstående versjonen!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Blåkopier
         desc: Du kan nå <strong>kopiere og lime inn</strong> deler av fabrikken din!
@@ -661,17 +702,12 @@ storyRewards:
         title: Rotater (180 degrees)
         desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
             you to rotate a shape by 180 degress (Surprise! :D)
-    reward_wires_filters_and_levers:
-        title: "Wires: Filters & Levers"
-        desc: You just unlocked the <strong>wires layer</strong>! It is a separate layer
-            on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> Since it can be overwhelming a bit, I added a
-            small tutorial - Be sure to have <strong>tutorials enabled</strong>
-            in the settings!
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
@@ -695,6 +731,23 @@ storyRewards:
             shape requested by the HUB (I recommend to try it!).<br><br> - Build
             something cool with wires.<br><br> - Continue to play
             regulary.<br><br> Whatever you choose, remember to have fun!
+    reward_wires_painter_and_levers:
+        title: Wires & Quad Painter
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>."
+    reward_filter:
+        title: Item Filter
+        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
+            to the top or the right output depending on whether they match the
+            signal from the wires layer or not.<br><br> You can also pass in a
+            boolean signal (1 / 0) to entirely activate or disable it.
+    reward_demo_end:
+        title: End of Demo
+        desc: You have reached the end of the demo version!
 settings:
     title: Instillinger
     categories:
@@ -917,7 +970,6 @@ keybindings:
         constant_signal: Constant Signal
         logic_gate: Logic Gate
         lever: Switch (regular)
-        lever_wires: Switch (wires)
         filter: Filter
         wire_tunnel: Wire Crossing
         display: Display
@@ -926,6 +978,8 @@ keybindings:
         transistor: Transistor
         analyzer: Shape Analyzer
         comparator: Compare
+        item_producer: Item Producer (Sandbox)
+        copyWireValue: "Wires: Copy value below cursor"
 about:
     title: Om dette spillet
     body: >-
@@ -1010,3 +1064,4 @@ tips:
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.

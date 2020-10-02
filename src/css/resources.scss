@@ -1,6 +1,6 @@
 $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, trash, underground_belt, wire,
     constant_signal, logic_gate, lever, filter, wire_tunnel, display, virtual_processor, reader, storage,
-    transistor, analyzer, comparator;
+    transistor, analyzer, comparator, item_producer;
 
 @each $building in $buildings {
     [data-icon="building_icons/#{$building}.png"] {
@@ -12,7 +12,7 @@ $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, tra
 $buildingsAndVariants: belt, balancer, underground_belt, underground_belt-tier2, miner, miner-chainable,
     cutter, cutter-quad, rotater, rotater-ccw, stacker, mixer, painter-double, painter-quad, trash, storage,
     reader, rotater-rotate180, display, constant_signal, wire, wire_tunnel, logic_gate-or, logic_gate-not,
-    logic_gate-xor, analyzer, virtual_processor-rotater, virtual_processor-unstacker,
+    logic_gate-xor, analyzer, virtual_processor-rotater, virtual_processor-unstacker, item_producer,
     virtual_processor-stacker, virtual_processor-painter, wire-second, painter, painter-mirrored, comparator;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
@@ -74,4 +74,18 @@ $languages: en, de, cs, da, et, es-419, fr, it, pt-BR, sv, tr, el, ru, uk, zh-TW
         /* @load-async */
         background-image: uiResource("languages/#{$language}.svg") !important;
     }
+}
+
+/*
+PRICE
+*/
+
+.steam_1_pr {
+    /* @load-async */
+    background-image: uiResource("get_on_steam_with_price.png") !important;
+}
+
+.steam_2_npr {
+    /* @load-async */
+    background-image: uiResource("get_on_steam.png") !important;
 }

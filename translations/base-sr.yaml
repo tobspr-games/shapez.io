@@ -1,62 +1,51 @@
 steamPage:
     shortText: shapez.io je igra o pravljenju fabrika za automatizaciju stvaranja i
         spajanja sve složenijih oblika na beskonačno velikoj mapi.
-    discordLink: Oficijalni Discord server
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+    discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
 
-        shapez.io je igra o pravljenju fabrika za automatizaciju stvaranja i spajanja sve složenijih oblika na beskonačno velikoj mapi.
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
-        Nakon dostavljanja zahtevanog oblika napredovaćete u igri i oključaćete nadogradnje za bržu fabriku.
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
 
-        Kako potražnja za oblicima raste, da bi zadovoljili potražnju, moraćete da uvećate fabriku - Ne zaboravite na resurse, proširićete se na [b]beskonačnoj mapi[/b]!
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
 
-        Vrlo brzo moraćete da mešate boje i farbate oblike - Pomešajte crvenu, zelenu i plavu rudu boje da biste dobili različite boje i ofarbajte oblik kako bi ispunili zahteve potražnje.
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
 
-        Igra sadrži 18 progresivnih nivoa (Koji će vas zaokupirati satima!) i stalno dodajem nove stvari - Mnogo toga je planirano!
-
-        Kupovinom igre dobijate pristup samostalnoj verziji koja poseduje dodatne funkcije, a dobićete i pristup novorazvijenim funkcijama.
-
-        [b]Prednosti samostalne igre[/b]
-
-        [list]
-            [*] Tamna tema
-            [*] Neobraničen broj putokaza
-            [*] Neograničen broj sačuvanih igara
-            [*] Dodatna podešavanja
-            [*] Uskoro: Žice i Energija! Predviđeno (otprilike) za kraj Jula 2020.
-            [*] Uskoro: Više nivoa
-            [*] Omogućavate mi da dalje radim na shapez.io ❤️
-        [/list]
-
-        [b]Buduća ažuriranja[/b]
-
-        Trudim se da stalno ažuriram igru i da dostavim ažuriranje makar jednom nedeljno!
-
-        [list]
-            [*] Različite mape i izazovi (npr. mapa sa preprekama)
-            [*] Slagalice (Dostavite odgovaraćuji oblik, ali uz ograničen broj građevina / oblasti)
-            [*] Način igre u kojem građevine imaju cenu
-            [*] Podesiv generator mapa (Prilagođena veličina/gustina oblika/resursa, i još.)
-            [*] Dodatne vrste oblika
-            [*] Poboljšanje performansi (Igra je već prilično fluidna!)
-            [*] I još mnogo toga!
-        [/list]
-
-        [b]Ovo je igra otvorenog koda![/b]
-
-
-        Svako može da doprinese igri, Aktivno interagujem sa zajednicom i, kad god je to moguće, pokušavam i uzmem u obzir sve predloge i povratne informacije. Obavezno posetite potpuni plan koji se nalazi na trello tabli!
-
-        [b]Links[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Oficijalni Discord server[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Plan[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Izvorni kod (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Pomozite sa prevođenjem[/url]
-        [/list]
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Učitavanje
     error: Greška
@@ -132,7 +121,9 @@ dialogs:
         text: "Neuspešno učitavanje sačuvane igre:"
     confirmSavegameDelete:
         title: Potrvrdi brisanje
-        text: Da li ste sigurni da želite da obrišete sačuvanu igru?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Greška prilikom brisanja
         text: "Neuspešno brisanje sačuvane igre:"
@@ -191,9 +182,8 @@ dialogs:
     createMarker:
         title: Novi Putokaz
         titleEdit: Uredi Putokaz
-        desc: Dajte mu smisleno ime. Možete koristiti i <strong>kod</strong> oblika
-            (Koji možete napraviti <a href="https://viewer.shapez.io"
-            target="_blank">ovde</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
     markerDemoLimit:
         desc: U demo verziji možete imati samo dva putokaza istovremeno. Nabavite
             samostalnu igru za beskonačno mnogo putokaza!
@@ -209,6 +199,11 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
+    entityWarning:
+        title: Performance Warning
+        desc: You have placed a lot of buildings, this is just a friendly reminder that
+            the game can not handle an endless count of buildings - So try to
+            keep your factories compact!
 ingame:
     keybindingsOverlay:
         moveMap: Kretanje
@@ -346,6 +341,38 @@ ingame:
         one_miner: 1 Miner
         n_miners: <amount> Miners
         limited_items: Limited to <max_throughput>
+    watermark:
+        title: Demo version
+        desc: Click here to see the Steam version advantages!
+        get_on_steam: Get on steam
+    standaloneAdvantages:
+        title: Get the full version!
+        no_thanks: No, thanks!
+        points:
+            levels:
+                title: 12 New Levels
+                desc: For a total of 26 levels!
+            buildings:
+                title: 18 New Buildings
+                desc: Fully automate your factory!
+            savegames:
+                title: ∞ Savegames
+                desc: As many as your heart desires!
+            upgrades:
+                title: 20 Upgrade Tiers
+                desc: This demo version has only 5!
+            markers:
+                title: ∞ Markers
+                desc: Never get lost in your factory!
+            wires:
+                title: Wires
+                desc: An entirely new dimension!
+            darkmode:
+                title: Dark Mode
+                desc: Stop hurting your eyes!
+            support:
+                title: Support me
+                desc: I develop it in my spare time!
 shopUpgrades:
     belt:
         name: Trake, Delioci i Tuneli
@@ -364,6 +391,7 @@ buildings:
         deliver: Dostavite
         toUnlock: kako bi otključali
         levelShortcut: LVL
+        endOfDemo: End of Demo
     belt:
         default:
             name: Pokretna traka
@@ -432,7 +460,9 @@ buildings:
             description: Farba ceo oblik na levom ulazu bojom sa gornjeg ulaza.
         quad:
             name: Farbač (četvorostruki)
-            description: Omogućava farbanje svake četvrtine oblika različitom bojom.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
     trash:
         default:
             name: Smeće
@@ -542,13 +572,20 @@ buildings:
             name: Virtual Painter
             description: Virtually paints the shape from the bottom input with the shape on
                 the right input.
+    item_producer:
+        default:
+            name: Item Producer
+            description: Available in sandbox mode only, outputs the given signal from the
+                wires layer on the regular layer.
 storyRewards:
     reward_cutter_and_trash:
         title: Rezanje Oblika
-        desc: <strong>Rezač</strong> je otključan! On reže oblike <strong>od vrha prema
-            dnu</strong> bez obzira na orijentaciju građevine!<br><br>Višak se
-            mora odbaciti kako bi se izbegao <strong>zastoj</strong>. - Za tu
-            svrhu postoji smeće, koje uništava sve što uđe u njega.
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Obrtanje
         desc: <strong>Obrtač</strong> je otključan! On okreće oblike za 90 stepeni u
@@ -570,9 +607,9 @@ storyRewards:
             vrh</strong> levog!
     reward_splitter:
         title: Deljenje/Spajanje
-        desc: Multifunkcionalni <strong>balanser</strong> je otključan! Može ga se
-            iskoristiti za <strong>deljenje i spajanje oblika</strong> na više
-            pokretnih traka!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunel
         desc: <strong>Tunel</strong> je otključan - Omogućava prenos stvari ispod traka
@@ -584,8 +621,10 @@ storyRewards:
             <strong>pritisni 'T' za menjanje njegove varijacije</strong>!
     reward_miner_chainable:
         title: Lančani rudar
-        desc: Otključan je <strong>lančani rudar</strong>! On može da <strong>prosledi
-            svoje resurse</strong> drugim rudarima radi efikasnijeg rudarenja!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunel II Reda
         desc: Otključana je nova varijacija <strong>tunela</strong> - On ima
@@ -600,19 +639,20 @@ storyRewards:
         desc: Varijacija <strong>farbača</strong> je otključana - Radi isti posao kao
             običan farbač, ali može ofarbati <strong>dva oblika
             odjednom</strong> po ceni jedne boje umesto dve!
-    reward_painter_quad:
-        title: Četvorostruki Farbač
-        desc: Varijacija <strong>farbača</strong> je otključana - Omogućava farbanje
-            pojedinačnih delova oblika!
     reward_storage:
         title: Skladište
-        desc: Varijacija <strong>smeća</strong> je otključana - Omogućava skladištenje
-            predmeta do određenog kapaciteta!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Slobodna Igra
-        desc: Uspeli ste! Otključali ste <strong>mod slobodne igre</strong>! Oblici su
-            od sada nasumično generisani! (Bez brige, više sadržaja je planirano
-            za samostalnu igru!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Nacrti
         desc: Sada možete da <strong>kopirate i nalepljujete</strong> delove fabrike!
@@ -649,17 +689,12 @@ storyRewards:
         title: Rotater (180 degrees)
         desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
             you to rotate a shape by 180 degress (Surprise! :D)
-    reward_wires_filters_and_levers:
-        title: "Wires: Filters & Levers"
-        desc: You just unlocked the <strong>wires layer</strong>! It is a separate layer
-            on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> Since it can be overwhelming a bit, I added a
-            small tutorial - Be sure to have <strong>tutorials enabled</strong>
-            in the settings!
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
@@ -683,6 +718,23 @@ storyRewards:
             shape requested by the HUB (I recommend to try it!).<br><br> - Build
             something cool with wires.<br><br> - Continue to play
             regulary.<br><br> Whatever you choose, remember to have fun!
+    reward_wires_painter_and_levers:
+        title: Wires & Quad Painter
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>."
+    reward_filter:
+        title: Item Filter
+        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
+            to the top or the right output depending on whether they match the
+            signal from the wires layer or not.<br><br> You can also pass in a
+            boolean signal (1 / 0) to entirely activate or disable it.
+    reward_demo_end:
+        title: End of Demo
+        desc: You have reached the end of the demo version!
 settings:
     title: Podešavanja
     categories:
@@ -903,7 +955,6 @@ keybindings:
         constant_signal: Constant Signal
         logic_gate: Logic Gate
         lever: Switch (regular)
-        lever_wires: Switch (wires)
         filter: Filter
         wire_tunnel: Wire Crossing
         display: Display
@@ -912,6 +963,8 @@ keybindings:
         transistor: Transistor
         analyzer: Shape Analyzer
         comparator: Compare
+        item_producer: Item Producer (Sandbox)
+        copyWireValue: "Wires: Copy value below cursor"
 about:
     title: O Igri
     body: >-
@@ -996,3 +1049,4 @@ tips:
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.

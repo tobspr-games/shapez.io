@@ -6,6 +6,7 @@ import { blueprintShape, UPGRADES } from "../../upgrades";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { enumAnalyticsDataSource } from "../../production_analytics";
 import { T } from "../../../translations";
+import { globalConfig } from "../../../core/config";
 
 /**
  * Manages the pinned shapes on the left side of the screen
@@ -265,10 +266,11 @@ export class HUDPinnedShapes extends BaseHUDPart {
             let currentValueFormatted = formatBigNumber(currentValue);
 
             if (handle.throughputOnly) {
-                currentValue = this.root.productionAnalytics.getCurrentShapeRate(
-                    enumAnalyticsDataSource.delivered,
-                    handle.definition
-                );
+                currentValue =
+                    this.root.productionAnalytics.getCurrentShapeRate(
+                        enumAnalyticsDataSource.delivered,
+                        handle.definition
+                    ) / globalConfig.analyticsSliceDurationSeconds;
                 currentValueFormatted = T.ingame.statistics.shapesDisplayUnits.second.replace(
                     "<shapes>",
                     String(currentValue)

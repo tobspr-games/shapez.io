@@ -1,18 +1,20 @@
+import { IS_DEMO } from "../core/config";
 import { findNiceIntegerValue } from "../core/utils";
 import { ShapeDefinition } from "./shape_definition";
 
+export const preparementShape = "CpRpCp--:SwSwSwSw";
 export const finalGameShape = "RuCw--Cw:----Ru--";
 export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 export const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
-const fixedImprovements = [0.5, 0.5, 1, 1, 2, 2];
+const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
 
-const numEndgameUpgrades = G_IS_DEV || G_IS_STANDALONE ? 20 - fixedImprovements.length - 1 : 0;
+const numEndgameUpgrades = !IS_DEMO ? 20 - fixedImprovements.length - 1 : 0;
 
 function generateEndgameUpgrades() {
     return new Array(numEndgameUpgrades).fill(null).map((_, i) => ({
         required: [
-            { shape: blueprintShape, amount: 30000 + i * 10000 },
+            { shape: preparementShape, amount: 30000 + i * 10000 },
             { shape: finalGameShape, amount: 20000 + i * 5000 },
             { shape: rocketShape, amount: 20000 + i * 5000 },
         ],
@@ -56,7 +58,14 @@ export const UPGRADES = {
             required: [{ shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", amount: 25000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 50000 }],
+            required: [{ shape: preparementShape, amount: 25000 }],
+            excludePrevious: true,
+        },
+        {
+            required: [
+                { shape: preparementShape, amount: 25000 },
+                { shape: finalGameShape, amount: 50000 },
+            ],
             excludePrevious: true,
         },
         ...generateEndgameUpgrades(),
@@ -79,7 +88,14 @@ export const UPGRADES = {
             required: [{ shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", amount: 50000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 50000 }],
+            required: [{ shape: preparementShape, amount: 25000 }],
+            excludePrevious: true,
+        },
+        {
+            required: [
+                { shape: preparementShape, amount: 25000 },
+                { shape: finalGameShape, amount: 50000 },
+            ],
             excludePrevious: true,
         },
         ...generateEndgameUpgrades(),
@@ -102,7 +118,14 @@ export const UPGRADES = {
             required: [{ shape: "WrRgWrRg:CwCrCwCr:SgSgSgSg", amount: 50000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 50000 }],
+            required: [{ shape: preparementShape, amount: 25000 }],
+            excludePrevious: true,
+        },
+        {
+            required: [
+                { shape: preparementShape, amount: 25000 },
+                { shape: finalGameShape, amount: 50000 },
+            ],
             excludePrevious: true,
         },
         ...generateEndgameUpgrades(),
@@ -125,7 +148,14 @@ export const UPGRADES = {
             required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp:CwCwCwCw", amount: 50000 }],
         },
         {
-            required: [{ shape: finalGameShape, amount: 50000 }],
+            required: [{ shape: preparementShape, amount: 25000 }],
+            excludePrevious: true,
+        },
+        {
+            required: [
+                { shape: preparementShape, amount: 25000 },
+                { shape: finalGameShape, amount: 50000 },
+            ],
             excludePrevious: true,
         },
         ...generateEndgameUpgrades(),

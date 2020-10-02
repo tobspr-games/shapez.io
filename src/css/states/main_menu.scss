@@ -133,10 +133,7 @@
                 width: 100%;
                 @include S(height, 40px);
                 @include S(width, 180px);
-                & {
-                    /* @load-async */
-                    background: #171a23 uiResource("get_on_steam.png") center center / contain no-repeat;
-                }
+                background: #171a23 center center / contain no-repeat;
                 overflow: hidden;
                 display: block;
                 text-indent: -999em;

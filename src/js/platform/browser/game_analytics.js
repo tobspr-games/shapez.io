@@ -8,6 +8,7 @@ import { blueprintShape, UPGRADES } from "../../game/upgrades";
 import { tutorialGoals } from "../../game/tutorial_goals";
 import { BeltComponent } from "../../game/components/belt";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
+import { queryParamOptions } from "../../core/query_parameters";
 
 const logger = createLogger("game_analytics");
 
@@ -24,6 +25,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         }
 
         if (G_IS_STANDALONE) {
+            if (queryParamOptions.sandboxMode) {
+                return "steam-sandbox";
+            }
             return "steam";
         }
 
@@ -31,7 +35,17 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             return "prod";
         }
 
-        return "beta";
+        if (window.location.host.indexOf("alpha") >= 0) {
+            if (queryParamOptions.sandboxMode) {
+                return "alpha-sandbox";
+            }
+            return "alpha";
+        } else {
+            if (queryParamOptions.sandboxMode) {
+                return "beta-sandbox";
+            }
+            return "beta";
+        }
     }
 
     /**

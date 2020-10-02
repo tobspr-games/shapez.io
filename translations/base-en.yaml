@@ -25,67 +25,52 @@ steamPage:
     shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
 
     # This is the text shown above the Discord link
-    discordLink: Official Discord - Chat with me!
+    discordLinkShort: Official Discord
 
-    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
-    # NOTICE:
-    # - Do not translate the first line (This is the gif image at the start of the store)
-    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+    intro: >-
+        You like automation games? Then you are in the right place!
 
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+        shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
-        Upon delivering the requested shapes you'll progress within the game and unlock upgrades to speed up your factory.
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only have to process shapes at the beginning, you will later have to color them - by extracting and mixing colors!
 
-        As the demand for shapes increases, you'll have to scale up your factory to meet the demand - Don't forget about resources though, you'll have to expand across the [b]infinite map[/b]!
+        Buying the game on Steam gives you access to the full version, but you can also play a demo at shapez.io first and decide later!
 
-        Soon you'll have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with them to satisfy the demand.
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Levels</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
 
-        This game features 18 progressive levels (Which should already keep you busy for hours!) but I'm constantly adding new content - There's a lot planned!
+    title_future: Planned Content
+    planned:
+        - Blueprint Library
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
 
-        Purchasing the game gives you access to the standalone version which has additional features, and you'll also receive access to newly developed features.
-
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game often and trying to push an update at least once every week!
-
-        [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
-        [/list]
-
-        [b]This game is open source![/b]
-
+    title_open_source: This game is open source!
+    text_open_source: >-
         Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+
         Be sure to check out my trello board for the full roadmap!
 
-        [b]Links[/b]
+    title_links: Links
 
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
-        [/list]
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
 
 global:
     loading: Loading
@@ -137,7 +122,7 @@ demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo Version
     intro: >-
-        Get the standalone to unlock all features!
+        Get the full game to unlock all features and content!
 
 mainMenu:
     play: Play
@@ -153,7 +138,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slow on your browser! Get the standalone version or download Google Chrome for the full experience.
+        Sorry, but the game is known to run slowly on your browser! Get the standalone version or download Google Chrome for the full experience.
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
@@ -215,7 +200,7 @@ dialogs:
 
     keybindingsResetOk:
         title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
+        desc: All keybindings have been reset to their defaults values!
 
     featureRestriction:
         title: Demo Version
@@ -233,7 +218,7 @@ dialogs:
     upgradesIntroduction:
         title: Unlock Upgrades
         desc: >-
-            All shapes you produce can be used to unlock upgrades - <strong>Don't destroy your old factories!</strong>
+            All shapes you produce can be used to unlock upgrades - <strong>don't destroy your old factories!</strong>
             The upgrades tab can be found on the top right corner of the screen.
 
     massDeleteConfirm:
@@ -281,7 +266,7 @@ dialogs:
 
     exportScreenshotWarning:
         title: Export screenshot
-        desc: You requested to export your base as a screenshot. Please note that this can be quite slow for a big base and even crash your game!
+        desc: You requested to export your base as a screenshot. Please note that this will be quite slow for a bigger base and could potentially crash your game!
 
     renameSavegame:
         title: Rename Savegame
@@ -289,7 +274,7 @@ dialogs:
 
     entityWarning:
         title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that the game can not handle an endless count of buildings - So try to keep your factories compact!
+        desc: You have placed a lot of buildings, this is just a friendly reminder that the game can not handle an endless number of buildings - try to keep your factories compact!
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -382,13 +367,13 @@ ingame:
         dataSources:
             stored:
                 title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                description: All shapes stored within the Hub.
             produced:
                 title: Produced
-                description: Displaying all shapes your whole factory produces, including intermediate products.
+                description: All shapes produced within your factory, including intermediate products.
             delivered:
                 title: Delivered
-                description: Displaying shapes which are delivered to your central building.
+                description: Shapes which are being delivered to the Hub.
         noShapesProduced: No shapes have been produced so far.
 
         # Displays the shapes per second, e.g. '523 / s'
@@ -400,14 +385,8 @@ ingame:
     # Settings menu, when you press "ESC"
     settingsMenu:
         playtime: Playtime
-
         buildingsPlaced: Buildings
         beltsPlaced: Belts
-
-        buttons:
-            continue: Continue
-            settings: Settings
-            menu: Menu
 
     # Bottom left tutorial hints
     tutorialHints:
@@ -445,9 +424,52 @@ ingame:
 
     # Connected miners
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
+        one_miner: 1 Extractor
+        n_miners: <amount> Extractors
         limited_items: Limited to <max_throughput>
+
+    # Pops up in the demo every few minutes
+    watermark:
+        title: Demo version
+        desc: Click here to see the advantages of the standalone version!
+        get_on_steam: Get on Steam
+
+    standaloneAdvantages:
+        title: Get the full version!
+        no_thanks: No, thanks!
+
+        points:
+            levels:
+                title: 12 New Levels
+                desc: For a total of 26 levels!
+
+            buildings:
+                title: 18 New Buildings
+                desc: Fully automate your factory!
+
+            savegames:
+                title: ∞ Savegames
+                desc: As many as your heart desires!
+
+            upgrades:
+                title: 20 Upgrade Tiers
+                desc: This demo version has only 5!
+
+            markers:
+                title: ∞ Markers
+                desc: Never get lost in your factory!
+
+            wires:
+                title: Wires
+                desc: An entirely new dimension!
+
+            darkmode:
+                title: Dark Mode
+                desc: Stop hurting your eyes!
+
+            support:
+                title: Support me
+                desc: I develop it in my spare time!
 
 # All shop upgrades
 shopUpgrades:
@@ -470,6 +492,7 @@ buildings:
         deliver: Deliver
         toUnlock: to unlock
         levelShortcut: LVL
+        endOfDemo: End of Demo
 
     belt:
         default:
@@ -521,10 +544,10 @@ buildings:
     cutter:
         default:
             name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will stall!</strong>
+            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will clog and stall!</strong>
         quad:
             name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will stall!</strong>
+            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will clog and stall!</strong>
 
     rotater:
         default:
@@ -534,13 +557,13 @@ buildings:
             name: Rotate (CCW)
             description: Rotates shapes counter-clockwise by 90 degrees.
         rotate180:
-            name: Rotate (180)
+            name: Rotate (180°)
             description: Rotates shapes by 180 degrees.
 
     stacker:
         default:
             name: &stacker Stacker
-            description: Combines both items side by side. If this is not possible, they are stacked on top of each other.
+            description: Combines its inputs, on the same layer if possible, otherwise the right input is stacked on top of the left input.
 
     mixer:
         default:
@@ -577,7 +600,7 @@ buildings:
     wire:
         default:
             name: &wire Wire
-            description: &wire_desc Transfers signals, which can be items, colors or booleans (1 / 0). Different colored wires do not connect.
+            description: &wire_desc Transfers signals, which can be items, colours or booleans (1 or 0). Differently-coloured wires do not connect to each other.
 
         second:
             name: *wire
@@ -586,17 +609,17 @@ buildings:
     wire_tunnel:
         default:
             name: &wire_tunnel Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            description: Allows two wires to cross without connecting to each other.
 
     constant_signal:
         default:
             name: &constant_signal Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or boolean (1 / 0).
+            description: Emits a constant signal, which can be either a shape, color or boolean (1 or 0).
 
     lever:
         default:
             name: &lever Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer, which can then be used to control for example an item filter.
+            description: Can be toggled to emit a boolean signal (1 or 0) on the wires layer, which can then be used to control components, for example an item filter.
 
     logic_gate:
         default:
@@ -644,7 +667,7 @@ buildings:
     comparator:
         default:
             name: &comparator Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare shapes, items and booleans.
+            description: Returns boolean "1" if both signals are exactly equal. Can compare shapes, colors and booleans.
 
     virtual_processor:
         default:
@@ -665,13 +688,18 @@ buildings:
 
         painter:
             name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on the right input.
+            description: Virtually paints the shape from the bottom input with the color on the right input.
+
+    item_producer:
+        default:
+            name: Item Producer
+            description: Available in sandbox mode only, outputs the given signal from the wires layer on the regular layer.
 
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will clog and stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
 
     reward_rotater:
         title: Rotating
@@ -692,7 +720,7 @@ storyRewards:
 
     reward_balancer:
         title: Balancer
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!
 
     reward_tunnel:
         title: Tunnel
@@ -735,14 +763,8 @@ storyRewards:
         title: Double Painting
         desc: You have unlocked a variant of the <strong>painter</strong> - It works similar to the regular painter but processes <strong>two shapes at once</strong>, consuming just one color instead of two!
 
-    reward_painter_quad:
-        title: Quad Painting
-        desc: >-
-            You have unlocked a variant of the <strong>painter</strong> - It allows you to paint each part of the shape individually!<br><br>
-            Connect each slot you'd like to paint with a <strong>truthy signal</strong> (shape, item or boolean "1") on the wires layer!
-
     reward_storage:
-        title: Storage Buffer
+        title: Storage
         desc: >-
             You have unlocked the <strong>storage</strong> building - It allows you to store items up to a given capacity!<br><br>
             It priorities the left output, so you can also use it as an <strong>overflow gate</strong>!
@@ -752,32 +774,41 @@ storyRewards:
         desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
 
     reward_rotater_180:
-        title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows you to rotate a shape by 180 degress (Surprise! :D)
+        title: Rotater (180°)
+        desc: You just unlocked the 180 degrees <strong>rotater</strong>! - It allows you to rotate a shape by 180 degress (Surprise! :D)
 
-    reward_wires_filters_and_levers:
+    reward_wires_painter_and_levers:
         title: >-
-            Wires: Filters & Levers
+            Wires & Quad Painter
         desc: >-
-            You just unlocked the <strong>wires layer</strong>! It is a separate layer on top of the regular layer and introduces a lot of new mechanics!<br><br>
-            Since it can be overwhelming a bit, I added a small tutorial - Be sure to have <strong>tutorials enabled</strong> in the settings!
+            You just unlocked the <strong>Wires Layer</strong>: It is a separate layer on top of the regular layer and introduces a lot of new mechanics!<br><br>
+            For the beginning I unlocked you the <strong>Quad Painter</strong> - Connect the slots you would like to paint with on the wires layer!<br><br>
+            To switch to the wires layer, press <strong>E</strong>.
+
+    reward_filter:
+        title: >-
+            Item Filter
+        desc: >-
+            You unlocked the <strong>Item Filter</strong>! It will route items either to the top or the right output depending on whether they match the signal from the wires layer or not.<br><br>
+            You can also pass in a boolean signal (1 or 0) to entirely activate or disable it.
 
     reward_display:
         title: Display
         desc: >-
-            You have unlocked the <strong>Display</strong> - Connect a signal on the wires layer to visualize its contents!
+            You have unlocked the <strong>Display</strong> - Connect a signal on the wires layer to visualize it!<br><br>
+            PS: Did you notice the belt reader and storage output their last read item? Try showing it on a display!
 
     reward_constant_signal:
         title: Constant Signal
         desc: >-
             You unlocked the <strong>constant signal</strong> building on the wires layer! This is useful to connect it to <strong>item filters</strong> for example.<br><br>
-            The constant signal can emit a <strong>shape</strong>, <strong>color</strong> or <strong>boolean</strong> (1 / 0).
+            The constant signal can emit a <strong>shape</strong>, <strong>color</strong> or <strong>boolean</strong> (1 or 0).
 
     reward_logic_gates:
         title: Logic Gates
         desc: >-
             You unlocked <strong>logic gates</strong>! You don't have to be excited about this, but it's actually super cool!<br><br>
-            With those gates you can now compute AND, OR, XOR and NOT operations.<br><br>
+            With logic gates you can now compute AND, OR, XOR and NOT operations.<br><br>
             As a bonus on top I also just gave you a <strong>transistor</strong>!
 
     reward_virtual_processing:
@@ -808,6 +839,11 @@ storyRewards:
             You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now <strong>randomly</strong> generated!<br><br>
             Since the hub will require a <strong>throughput</strong> from now on, I highly recommend to build a machine which automatically delivers the requested shape!<br><br>
             The HUB outputs the requested shape on the wires layer, so all you have to do is to analyze it and automatically configure your factory based on that.
+
+    reward_demo_end:
+        title: End of Demo
+        desc: >-
+            You have reached the end of the demo version!
 
 settings:
     title: Settings
@@ -924,7 +960,7 @@ settings:
         alwaysMultiplace:
             title: Multiplace
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to holding SHIFT permanently.
+                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to constantly holding SHIFT.
 
         offerHints:
             title: Hints & Tutorials
@@ -954,7 +990,7 @@ settings:
         disableCutDeleteWarnings:
             title: Disable Cut/Delete Warnings
             description: >-
-                Disables the warning dialogs brought up when cutting/deleting more than 100 entities.
+                Disables the warning dialogues brought up when cutting/deleting more than 100 entities.
 
         lowQualityMapResources:
             title: Low Quality Map Resources
@@ -983,9 +1019,9 @@ settings:
                 The game is divided into chunks of 16x16 tiles, if this setting is enabled the borders of each chunk are displayed.
 
         pickMinerOnPatch:
-            title: Pick miner on resource patch
+            title: Select extractor on resource patch
             description: >-
-                Enabled by default, selects the miner if you use the pipette when hovering a resource patch.
+                Enabled by default, selects the extractor if you use the pipette when hovering a resource patch.
 
         simplifiedBelts:
             title: Simplified Belts (Ugly)
@@ -993,9 +1029,9 @@ settings:
                 Does not render belt items except when hovering the belt to save performance. I do not recommend to play with this setting if you do not absolutely need the performance.
 
         enableMousePan:
-            title: Enable Mouse Pan
+            title: Screen Edge Panning
             description: >-
-                Allows to move the map by moving the cursor to the edges of the screen. The speed depends on the Movement Speed setting.
+                Allows panning the map by moving the cursor to the edges of the screen. The scroll speed depends on the Movement Speed setting.
 
 keybindings:
     title: Keybindings
@@ -1060,6 +1096,7 @@ keybindings:
         transistor: *transistor
         analyzer: *analyzer
         comparator: *comparator
+        item_producer: Item Producer (Sandbox)
         # ---
 
         pipette: Pipette
@@ -1132,7 +1169,7 @@ tips:
     - Holding <b>SHIFT</b> will activate the belt planner, letting you place long lines of belts easily.
     - Cutters always cut vertically, regardless of their orientation.
     - To get white mix all three colors.
-    - The storage buffer priorities the first output.
+    - The storage buffer prioritises the left output.
     - Invest time to build repeatable designs - it's worth it!
     - Holding <b>CTRL</b> allows to place multiple buildings.
     - You can hold <b>ALT</b> to invert the direction of placed belts.
@@ -1147,15 +1184,15 @@ tips:
     - Don't complicate things, try to stay simple and you'll go far.
     - You may need to re-use factories later in the game. Plan your factories to be re-usable.
     - Sometimes, you can find a needed shape in the map without creating it with stackers.
-    - Full windmills / pinwheels can never spawn naturally.
+    - Full windmills/pinwheels can never spawn naturally.
     - Color your shapes before cutting for maximum efficiency.
     - With modules, space is merely a perception; a concern for mortal men.
     - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
+    - Have a closer look at the color mixer, and your questions will be answered.
     - Use <b>CTRL</b> + Click to select an area.
     - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
+    - Mix all three primary colors to make white!
     - You have an infinite map, don't cramp your factory, expand!
     - Also try Factorio! It's my favorite game.
     - The quad cutter cuts clockwise starting from the top right!
@@ -1166,3 +1203,4 @@ tips:
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.

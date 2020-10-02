@@ -4,6 +4,7 @@ import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { enumHubGoalRewards } from "../tutorial_goals";
 import { MetaCutterBuilding } from "./cutter";
 import { MetaPainterBuilding } from "./painter";
 import { MetaRotaterBuilding } from "./rotater";
@@ -47,8 +48,7 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing);
     }
 
     /** @returns {"wires"} **/

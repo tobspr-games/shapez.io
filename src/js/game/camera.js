@@ -353,7 +353,7 @@ export class Camera extends BasicSerializableObject {
             .add(() => (this.desiredZoom = this.zoomLevel * 1.2));
         mapper
             .getBinding(KEYMAPPINGS.navigation.mapZoomOut)
-            .add(() => (this.desiredZoom = this.zoomLevel * 0.8));
+            .add(() => (this.desiredZoom = this.zoomLevel / 1.2));
 
         mapper.getBinding(KEYMAPPINGS.navigation.centerMap).add(() => this.centerOnMap());
     }
@@ -502,10 +502,10 @@ export class Camera extends BasicSerializableObject {
         }
         const prevZoom = this.zoomLevel;
 
-        const delta = Math.sign(event.deltaY) * -0.15 * this.root.app.settings.getScrollWheelSensitivity();
-        assert(Number.isFinite(delta), "Got invalid delta in mouse wheel event: " + event.deltaY);
+        const scale = 1 + 0.15 * this.root.app.settings.getScrollWheelSensitivity();
+        assert(Number.isFinite(scale), "Got invalid scale in mouse wheel event: " + event.deltaY);
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *before* wheel: " + this.zoomLevel);
-        this.zoomLevel *= 1 + delta;
+        this.zoomLevel *= event.deltaY < 0 ? scale : 1 / scale;
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *after* wheel: " + this.zoomLevel);
 
         this.clampZoomLevel();
@@ -939,6 +939,7 @@ export class Camera extends BasicSerializableObject {
                 this.zoomLevel = this.zoomLevel * fade + this.desiredZoom * (1 - fade);
                 assert(Number.isFinite(this.zoomLevel), "Zoom level is NaN after fade: " + this.zoomLevel);
             } else {
+                this.zoomLevel = this.desiredZoom;
                 this.desiredZoom = null;
             }
         }

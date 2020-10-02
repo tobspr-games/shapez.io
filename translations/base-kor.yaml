@@ -1,58 +1,50 @@
 steamPage:
     shortText: shapez.io는 무한한 공간에서 점점 더 복잡한 도형의 생산과 조합을 자동화하는 공장을 짓는 게임입니다.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+    discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.  
 
-        shapez.io는 무한한 공간에서 점점 더 복잡한 도형의 생산과 조합을 자동화하는 공장을 짓는 게임입니다. 요청된 도형을 전달해 게임을 진행하고 업그레이드를 통해 공장을 가속시킬 수 있습니다.
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
-        도형에 대한 수요가 증가함에 따라, 여러분은 수요에 맞게 공장을 확장해야 합니다. - [b]무한한 공간[/b]으로 확장하여 도형 재료를 구하는 것도 잊지 마세요.
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
 
-        곧이어 여러분은 색을 섞고 도형을 색칠 할 것입니다. - 빨강, 초록, 파랑 색을 섞어서 만든 다양한 색으로 수요를 만족시키세요.
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
 
-        이 게임에는 18개의 레벨이 있습니다 (이것 만으로도 여러분은 이미 몇시간이 걸렸을 거예요!) 하지만 저는 항상 새로운 콘텐츠를 추가하고 있습니다 - 계획해 놓은 것들이 많습니다!
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
 
-        게임을 구입하면 추가 기능이 있는 독립 실행형 버전을 이용할 수 있으며 새로 개발된 기능도 이용할 수 있습니다.
-
-        [b]유료 버전의 장점[/b]
-
-        [list]
-            [*] 다크 모드
-            [*] 제한 없는 마커
-            [*] 제한 없는 저장
-            [*] 더 다양한 설정
-            [*] 출시 예고: 전선 & 에너지! 2020년 7월 말을 목표로 하는 중.
-            [*] 출시 예고: 더 많은 레벨
-            [*] shapez.io를 개발하는 데 도움이 됨 ❤️
-        [/list]
-
-        [b]향후 업데이트[/b]
-
-        저는 게임을 자주 업데이트하고 있고 적어도 매주마다 업데이트를 추진하려고 노력 중입니다!
-
-        [list]
-            [*] 다양한 맵과 챌린지 (e.g. 장애물이 있는 맵)
-            [*] 퍼즐 (제한된 영역/건물만으로 도형 전달하기)
-            [*] 건물에 비용이 드는 스토리 모드
-            [*] 설정 가능한 맵 생성기 (자원/도형, 크기/밀도, 시드 등)
-            [*] 더 많은 종류의 도형
-            [*] 성능 향상 (지금도 게임이 잘 되긴 합니다!)
-            [*] 그 외 다수!
-        [/list]
-
-        [b]이 게임은 오픈소스 입니다![/b]
-
-        누구나 참여할 수 있으며, 저는 커뮤니티에 적극적으로 참여하고 있고 가능한 경우 모든 제안을 검토하고 피드백을 고려하려고 합니다. 전체 로드맵을 위해 반드시 내 Trello 보드를 확인하세요!
-
-        [b]링크[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]공식 디스코드[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]로드맵[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]서브레딧[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]소스 코드 (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]번역을 도와주세요![/url]
-        [/list]
-    discordLink: 공식 디스코드 - 채팅해요!
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: 로딩중
     error: 에러
@@ -127,7 +119,9 @@ dialogs:
         text: "저장 파일을 불러오지 못했습니다:"
     confirmSavegameDelete:
         title: 삭제 확인
-        text: 이 게임 파일을 정말로 삭제하겠습니까?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: 삭제 실패
         text: 저장 파일을 삭제하지 못했습니다.
@@ -174,8 +168,8 @@ dialogs:
             컨베이어 벨트의 방향을 바꾸세요.<br>"
     createMarker:
         title: 새로운 마커
-        desc: 이 장소에 이름을 지어주세요, 당신은 원하는 모양으로 <strong>단축키</strong>를 생성할 수 있습니다. (<a
-            href="https://viewer.shapez.io" target="_blank">여기</a>에서 만들 수 있습니다.)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: 마커 변경
     markerDemoLimit:
         desc: 체험판 버전에서는 마커를 2개 까지만 놓을 수 있습니다. 유료 버전을 구입하면 마커를 무제한으로 놓을 수 있습니다!
@@ -194,6 +188,11 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
+    entityWarning:
+        title: Performance Warning
+        desc: You have placed a lot of buildings, this is just a friendly reminder that
+            the game can not handle an endless count of buildings - So try to
+            keep your factories compact!
 ingame:
     keybindingsOverlay:
         moveMap: 움직이기
@@ -325,6 +324,38 @@ ingame:
         one_miner: 1 Miner
         n_miners: <amount> Miners
         limited_items: Limited to <max_throughput>
+    watermark:
+        title: Demo version
+        desc: Click here to see the Steam version advantages!
+        get_on_steam: Get on steam
+    standaloneAdvantages:
+        title: Get the full version!
+        no_thanks: No, thanks!
+        points:
+            levels:
+                title: 12 New Levels
+                desc: For a total of 26 levels!
+            buildings:
+                title: 18 New Buildings
+                desc: Fully automate your factory!
+            savegames:
+                title: ∞ Savegames
+                desc: As many as your heart desires!
+            upgrades:
+                title: 20 Upgrade Tiers
+                desc: This demo version has only 5!
+            markers:
+                title: ∞ Markers
+                desc: Never get lost in your factory!
+            wires:
+                title: Wires
+                desc: An entirely new dimension!
+            darkmode:
+                title: Dark Mode
+                desc: Stop hurting your eyes!
+            support:
+                title: Support me
+                desc: I develop it in my spare time!
 shopUpgrades:
     belt:
         name: 컨베이어 벨트, 배분기, 터널
@@ -343,6 +374,7 @@ buildings:
         deliver: 목표
         toUnlock: 보상
         levelShortcut: 레벨
+        endOfDemo: End of Demo
     belt:
         default:
             name: 컨베이어 벨트
@@ -396,7 +428,9 @@ buildings:
             description: 왼쪽에 입력되는 도형을 위에서 입력되는 색소로 색칠한다.
         quad:
             name: 4단 도형 색칠기
-            description: 도형의 4가지 분단을 각각 다른 색으로 색칠할 수 있다.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: 도형 색칠기
             description: 도형을 색소로 색칠한다.
@@ -517,12 +551,20 @@ buildings:
             name: Virtual Painter
             description: Virtually paints the shape from the bottom input with the shape on
                 the right input.
+    item_producer:
+        default:
+            name: Item Producer
+            description: Available in sandbox mode only, outputs the given signal from the
+                wires layer on the regular layer.
 storyRewards:
     reward_cutter_and_trash:
         title: 절단기
-        desc: <strong>절단기</strong>가 잠금 해제되었습니다! 절단기는 도형을 <strong>세로로</strong> 잘라 반으로
-            나눕니다.<br><br>사용하지 않는 도형은 휴지통에 버려주세요. 그렇지 않으면 절단기가 <strong>멈출
-            것입니다.</strong>
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: 회전기
         desc: <strong>회전기</strong>가 잠금 해제되었습니다! 이것은 도형을 시계방향으로 90도 회전 시킵니다.
@@ -541,8 +583,9 @@ storyRewards:
             쌓이게</strong>됩니다.
     reward_splitter:
         title: 배분기
-        desc: 다양한 용도로 쓰이는 <strong>배분기</strong>가 잠금 해제되었습니다! 배분기로 도형들을 여러 개의 벨트에
-            <strong>합하거나 나누어서</strong> 큰 공장을 지을 수 있습니다.<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: 터널
         desc: <strong>터널</strong>이 잠금 해제되었습니다! 자원을 건물과 벨트 밑으로 운송 할 수 있습니다.
@@ -552,8 +595,10 @@ storyRewards:
             <strong>T</strong>를 눌러서 변형된 버전을 사용하세요!
     reward_miner_chainable:
         title: 체인 추출기
-        desc: <strong>체인 추출기</strong>가 잠금 해제되었습니다! 체인 추출기는 <strong>자원을 다른 추출기로
-            전달하여</strong> 효율적으로 추출할 수 있게 합니다.
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: 터널 티어 II
         desc: 새로운 종류의 <strong>터널</strong>이 잠금 해제되었습니다! 새 터널은 <strong>보다 넓은 범위</strong>를
@@ -566,21 +611,27 @@ storyRewards:
         title: 색칠기 (2단)
         desc: 새로운 종류의 <strong>색칠기</strong>가 잠금 해제되었습니다! 새 색칠기는 <strong>색소 하나로 2개의
             도형</strong>을 색칠할 수 있습니다.
-    reward_painter_quad:
-        title: 색칠기 (4단)
-        desc: <strong>4단 도형 색칠기</strong>가 잠금 해제되었습니다! 도형의 4분단을 각각 다른 색으로 색칠할 수 있습니다!
     reward_storage:
         title: 저장소
-        desc: <strong>저장소</strong>가 잠금 해제되었습니다! 주어진 용량만큼 자원을 저장할 수 있습니다!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: 자유 모드
-        desc: 해내셨군요! <strong>자유 모드</strong>가 잠금 해제되었습니다! 이제 도형이 랜덤으로 생성됩니다! (걱정 마세요,
-            유료버전에는 더 많은 컨텐츠가 계획되어 있습니다!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: 청사진
-        desc: 이제부터는 공장의 일부 영역을 <strong>복사하여 붙여넣기</strong> 할 수 있습니다! CTRL을 누르면서 드래그해서 먼저
-            영역을 선택하세요. <br><br> 그 다음에는 C, DEL, ESC 로 복사하거나, 지우거나, 취소
-            하세요.<br><br> 복사는 무료가 이닙니다. 특별한 "화폐" 도형으로 돈을 지불하고 복사가 됩니다.
+        desc: You can now <strong>copy and paste</strong> parts of your factory! Select
+            an area (Hold CTRL, then drag with your mouse), and press 'C' to
+            copy it.<br><br>Pasting it is <strong>not free</strong>, you need to
+            produce <strong>blueprint shapes</strong> to afford it! (Those you
+            just delivered).
     no_reward:
         title: 다음 레벨
         desc: "이 단계는 아무런 보상이 없습니다. 하지만 다음 단계에는 있죠! <br><br> 추신: 현존하는 공장을 부수지 않는 것이 좋습니다.
@@ -608,17 +659,12 @@ storyRewards:
         title: Rotater (180 degrees)
         desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
             you to rotate a shape by 180 degress (Surprise! :D)
-    reward_wires_filters_and_levers:
-        title: "Wires: Filters & Levers"
-        desc: You just unlocked the <strong>wires layer</strong>! It is a separate layer
-            on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> Since it can be overwhelming a bit, I added a
-            small tutorial - Be sure to have <strong>tutorials enabled</strong>
-            in the settings!
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
@@ -642,6 +688,23 @@ storyRewards:
             shape requested by the HUB (I recommend to try it!).<br><br> - Build
             something cool with wires.<br><br> - Continue to play
             regulary.<br><br> Whatever you choose, remember to have fun!
+    reward_wires_painter_and_levers:
+        title: Wires & Quad Painter
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>."
+    reward_filter:
+        title: Item Filter
+        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
+            to the top or the right output depending on whether they match the
+            signal from the wires layer or not.<br><br> You can also pass in a
+            boolean signal (1 / 0) to entirely activate or disable it.
+    reward_demo_end:
+        title: End of Demo
+        desc: You have reached the end of the demo version!
 settings:
     title: 설정
     categories:
@@ -847,7 +910,6 @@ keybindings:
         constant_signal: Constant Signal
         logic_gate: Logic Gate
         lever: Switch (regular)
-        lever_wires: Switch (wires)
         filter: Filter
         wire_tunnel: Wire Crossing
         display: Display
@@ -856,6 +918,8 @@ keybindings:
         transistor: Transistor
         analyzer: Shape Analyzer
         comparator: Compare
+        item_producer: Item Producer (Sandbox)
+        copyWireValue: "Wires: Copy value below cursor"
 about:
     title: 이 게임의 정보
     body: >-
@@ -939,3 +1003,4 @@ tips:
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.
