@@ -669,7 +669,7 @@ storyRewards:
     reward_merger:
         title: Kompaktní spojovač
         desc: Právě jste odemkli <strong>spojovací</strong> variantu
-            <strong>vyvažovače</strong> - Příjímá dva vstupy a spojí je
+            <strong>vyvažovače</strong> - Přijímá dva vstupy a spojí je
             do jednoho!
     reward_belt_reader:
         title: Čtečka pásů
