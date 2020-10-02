@@ -475,7 +475,7 @@ buildings:
             name: Fio Elétrico
             description: Transfere sinais, que podem ser itens, cores ou boleanos (1 / 0). Fios com cores diferentes não conectam.
         second:
-          name: Fio Elétrico
+            name: Fio Elétrico
             description: Transfere sinais, que podem ser itens, cores ou boleanos (1 / 0). Fios com cores diferentes não conectam.
     balancer:
         default:
@@ -686,19 +686,19 @@ storyRewards:
         <strong>cor</strong> ou um <strong>booleano</strong> (1 / 0).
     reward_logic_gates:
         title: Portões Lógicos
-        desc: Tu desbloqueaste os <strong>portões lógicos</strong>! Não tens de estar excitado sobre isto,
+        desc: "Tu desbloqueaste os <strong>portões lógicos</strong>! Não tens de estar excitado sobre isto,
         mas é na verdade super fixe!<br><br> Com estes portões agora podes fazer operações booleanas
-        AND, OR, XOR e NOT!
+        AND, OR, XOR e NOT!"
     reward_virtual_processing:
         title: Processamento Virtual
         desc: >-
-        Acabei de te dar um monte de novos edifícios que permitem-te
-        <strong>simular o processamento de formas</strong>!<br><br> Podes agora
-        simular um cortador, rodar, empilhador e mais na camada de fios!<br><br>
-        Com isto tens agora três opções para continuar o jogo:<br><br> - Construir
-        uma <strong>máquina automatizada</strong> para criar qualquer forma requerida
-        pelo edifício central (Isto é fixe, eu prometo!).<br><br> - Construir algo fixe com
-        fios.<br><br> - Continuar a jogar regularmente. Seja lá o que escolheres, lembra-te de te divertires!
+            Acabei de te dar um monte de novos edifícios que permitem-te
+            <strong>simular o processamento de formas</strong>!<br><br> Podes agora
+            simular um cortador, rodar, empilhador e mais na camada de fios!<br><br>
+            Com isto tens agora três opções para continuar o jogo:<br><br> - Construir
+            uma <strong>máquina automatizada</strong> para criar qualquer forma requerida
+            pelo edifício central (Isto é fixe, eu prometo!).<br><br> - Construir algo fixe com
+            fios.<br><br> - Continuar a jogar regularmente. Seja lá o que escolheres, lembra-te de te divertires!
     reward_wires_painter_and_levers:
         title: Fios e Pintor Quádruplo
         desc: "Acabaste de desbloquear a <strong>Camada de Fios</strong>: É uma camada separada
