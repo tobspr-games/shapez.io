@@ -13,8 +13,7 @@ RUN apt-get update \
     && apt-get dist-upgrade -y \
     && apt-get install -y --no-install-recommends \
     ffmpeg \
-    && rm -rf /var/lib/apt/lists/* \
-    && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+    && rm -rf /var/lib/apt/lists/* 
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
