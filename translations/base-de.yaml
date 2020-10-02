@@ -7,7 +7,7 @@ steamPage:
         Du magst Automatisierungsspiele? Dann bist du hier genau richtig!
         shapez.io ist ein ruhiges Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
         Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten.
-        Und wenn dir das noch nicht genug wäre, musst du auch exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
+        Das ist noch nicht alles, denn du musst exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
         Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen!
         Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
     title_advantages: Vorteile der Vollversion
@@ -179,10 +179,10 @@ dialogs:
     createMarker:
         title: Neuer Marker
         titleEdit: Marker bearbeiten
-        desc: Gib ihr einen griffigen Namen. Du kannst auch den <strong>Kurz-Code</strong> einer Form eingeben (Welchen du <link>hier</link> generieren kannst).
+        desc: Gib ihm einen griffigen Namen. Du kannst auch den <strong>Kurz-Code</strong> einer Form eingeben (Welchen du <link>hier</link> generieren kannst).
     editSignal:
         title: Signal setzen
-        descItems: "Wähle ein vordefiniertes item:"
+        descItems: "Wähle ein vordefiniertes Item:"
         descShortKey: ... oder gib den <strong>Kurz-Code</strong> einer Form an (Welchen du <link>hier</link> generieren kannst).
     markerDemoLimit:
         desc: Du kannst nur 2 Marker in der Demo benutzen. Hole dir die Vollversion, um
@@ -319,9 +319,9 @@ ingame:
         hints:
             1_1_extractor: Platziere einen <strong>Extrahierer</strong> auf der
                 <strong>Kreisform</strong>, um sie zu extrahieren!
-            1_2_conveyor: "Verbinde den Extrahierer mit einem <strong>Förderband</strong>
+            1_2_conveyor: "Verbinde den Extrahierer mit einem <strong>Fließband</strong>
                 und schließe ihn am Hub an!<br><br>Tipp: <strong>Drücke und
-                ziehe</strong> das Förderband mit der Maus!"
+                ziehe</strong> das Fließband mit der Maus!"
             1_3_expand: "Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und
                 Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp:
                 Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren
@@ -337,13 +337,13 @@ ingame:
 
     standaloneAdvantages:
         title: Vorteile der Vollversion
-        no_thanks: Nein, Danke!
+        no_thanks: Nein, danke!
         points:
             levels:
-                title: 12 neue Level
+                title: 12 Neue Level
                 desc: Für insgesamt 26 Level!
             buildings:
-                title: 18 neue Gebäude
+                title: 18 Neue Gebäude
                 desc: Automatisiere deine Fabrik!
             savegames:
                 title: ∞ Speicherstände
@@ -353,15 +353,15 @@ ingame:
                 desc: Diese Demo hat nur 5!
             markers:
                 title: ∞ Marker
-                desc: Verliere dich nie wieder in deiner Fabrik!
+                desc: Verliere nie den Überblick!
             wires:
                 title: Wires
                 desc: Eine ganz neue Dimension!
             darkmode:
-                title: Dark Mode
+                title: Dark-Mode
                 desc: Werde nicht mehr geblendet!
             support:
-                title: Unterstütze mich
+                title: Unterstütze Mich
                 desc: Ich entwickle in meiner Freizeit!
 shopUpgrades:
     belt:
@@ -379,12 +379,12 @@ shopUpgrades:
 buildings:
     hub:
         deliver: Liefere
-        toUnlock: "zum freischalten:"
+        toUnlock: "und schalte frei:"
         levelShortcut: LVL
         endOfDemo: Ende der Demo
     belt:
         default:
-            name: Förderband
+            name: Fließband
             description: Transportiert Items. Halte und ziehe, um mehrere zu platzieren.
     miner:
         default:
@@ -425,7 +425,7 @@ buildings:
             description: Zerschneidet Formen von oben nach unten. <strong>Benutze oder
                 zerstöre beide Hälften, sonst verstopft die Maschine!</strong>
         quad:
-            name: Schneider (4-fach)
+            name: Schneider (vierfach)
             description: Zerschneidet Formen in vier Teile. <strong>Benutze oder zerstöre
                 alle Viertel, sonst verstopft die Maschine!</strong>
     rotater:
@@ -457,11 +457,11 @@ buildings:
             description: Färbt die ganze Form aus dem linken Eingang mit der Farbe aus dem
                 oberen Eingang.
         double:
-            name: Färber (2-fach)
+            name: Färber (zweifach)
             description: Färbt beide Formen aus dem linken Eingang mit der Farbe aus dem
                 oberen Eingang.
         quad:
-            name: Färber (4-fach)
+            name: Färber (vierfach)
             description: Erlaubt dir, jeden Quadranten der Form individuell zu färben. Nur
                 Quadranten mit einem <strong>wahren Signal</strong> auf der Wires-Ebene
                 werden angemalt!
@@ -513,7 +513,7 @@ buildings:
                 (wahr bedeutet Form, Farbe oder "1").
         or:
             name: ODER Gatter
-            description: Gibt eine "1" aus, wenn einer der Eingäge wahr ist (wahr bedeutet Form, Farbe oder "1").
+            description: Gibt eine "1" aus, wenn einer der Eingänge wahr ist (wahr bedeutet Form, Farbe oder "1").
     transistor:
         default:
             name: Transistor
@@ -919,8 +919,8 @@ keybindings:
         toggleFPSInfo: FPS und Debug-Info an/aus
         switchLayers: Ebenen wechseln
         exportScreenshot: Ganze Fabrik als Foto exportieren
-        belt: Förderband
-        balancer: Balancer
+        belt: Fließband
+        balancer: Verteiler
         underground_belt: Tunnel
         miner: Extrahierer
         cutter: Schneider
@@ -929,15 +929,15 @@ keybindings:
         mixer: Farbmischer
         painter: Färber
         trash: Mülleimer
-        storage: Storage
+        storage: Lager
         wire: Stromkabel
-        constant_signal: Constant Signal
+        constant_signal: Konstantes Signal
         logic_gate: Logikgatter
         lever: Schalter (regulär)
         filter: Filter
         wire_tunnel: Kabelkreuzung
         display: Anzeige
-        reader: Förderbandkontrolle
+        reader: Fließbandkontrolle
         virtual_processor: Virtueller Schneider
         transistor: Transistor
         analyzer: Formanalyse
@@ -959,7 +959,7 @@ keybindings:
         massSelectCut: Areal ausschneiden
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
-        placeInverse: Automatische Förderbandorientierung invertieren
+        placeInverse: Automatische Fließbandorientierung invertieren
 about:
     title: Über dieses Spiel
     body: >-
@@ -998,7 +998,7 @@ tips:
     - Versuche kompakte Fabriken zu bauen. Es zahlt sich aus!
     - Der Färber hat eine spiegelverkehrte Variante, die du mit <b>T</b> auswählen kannst.
     - Das richtige Verhältnis der Gebäude maximiert die Effizienz.
-    - Auf der gleichen Upgrade-Stufe genügen 5 Extrahierer für ein ganzes Förderband.
+    - Auf der gleichen Upgrade-Stufe genügen 5 Extrahierer für ein ganzes Fließband.
     - Vergiss die Tunnel nicht!
     - Für maximale Effizienz musst du die Items nicht gleichmässig aufteilen.
     - Das Halten von <b>UMSCH</b> aktiviert den Bandplaner, der lange Förderbänder ganz einfach platziert.
