@@ -489,7 +489,7 @@ buildings:
             description: Erschafft eine isolierte Kreuzung zweier Kabel.
     constant_signal:
         default:
-            name: Konstantes Signal
+            name: Signalgeber
             description: Sendet ein konstantes Signal. Du wählst zwischen Formen, Farben oder
                 Wahrheitswerten (1 oder 0).
     lever:
@@ -931,7 +931,7 @@ keybindings:
         trash: Mülleimer
         storage: Lager
         wire: Stromkabel
-        constant_signal: Konstantes Signal
+        constant_signal: Signalgeber
         logic_gate: Logikgatter
         lever: Schalter (regulär)
         filter: Filter
