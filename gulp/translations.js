@@ -2,8 +2,6 @@ const path = require("path");
 const fs = require("fs");
 const gulpYaml = require("gulp-yaml");
 const YAML = require("yaml");
-const stripIndent = require("strip-indent");
-const trim = require("trim");
 
 const translationsSourceDir = path.join(__dirname, "..", "translations");
 const translationsJsonDir = path.join(__dirname, "..", "src", "js", "built-temp");
@@ -75,7 +73,7 @@ function gulptasksTranslations($, gulp) {
 
                     `;
 
-                fs.writeFileSync(destpath, trim(content.replace(/(\n[ \t\r]*)/gi, "\n")), {
+                fs.writeFileSync(destpath, content.replace(/(\n[ \t\r]*)/gi, "\n").trim(), {
                     encoding: "utf-8",
                 });
             });

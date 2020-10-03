@@ -1,4 +1,3 @@
-import trim from "trim";
 import { THIRDPARTY_URLS } from "../../core/config";
 import { DialogWithForm } from "../../core/modal_dialog_elements";
 import { FormElementInput, FormElementItemChooser } from "../../core/modal_dialog_forms";
@@ -142,7 +141,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             return null;
         }
 
-        code = trim(code);
+        code = code.trim();
         const codeLower = code.toLowerCase();
 
         if (enumColors[codeLower]) {
