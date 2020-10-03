@@ -108,7 +108,12 @@ export class RandomNumberGenerator {
         assert(max > min, "rng: max <= min");
         return Math.floor(this.next() * (max - min) + min);
     }
+
     /**
+     * Generates a number between min and max, inclusive.
+     * note that it will only choose the numbers at the edge half as often
+     * as the rest of the set. For example with 0, 2 as inputs it will
+     * choose 1 twice as often as 0 or two.
      * @param {number} min
      * @param {number} max
      * @returns {number} Integer in range [min, max]
