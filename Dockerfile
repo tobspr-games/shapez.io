@@ -15,15 +15,10 @@ RUN apt-get update \
     ffmpeg \
     && rm -rf /var/lib/apt/lists/* 
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    git-lfs
-
 FROM base as shape_base
 
 WORKDIR /shapez.io
 
-RUN git-lfs pull
 RUN yarn
 
 WORKDIR /shapez.io/gulp
