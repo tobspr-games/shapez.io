@@ -248,6 +248,8 @@ export function getStringForKeyCode(code) {
             return ",";
         case 189:
             return "-";
+        case 190:
+            return ".";
         case 191:
             return "/";
         case 219:
@@ -260,7 +262,7 @@ export function getStringForKeyCode(code) {
             return "'";
     }
 
-    return String.fromCharCode(code);
+    return "�";
 }
 
 export class Keybinding {
