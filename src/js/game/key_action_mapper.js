@@ -262,7 +262,7 @@ export function getStringForKeyCode(code) {
             return "'";
     }
 
-    return "�";
+    return code >= 65 && code <= 90 ? String.fromCharCode(code) : "�";
 }
 
 export class Keybinding {
