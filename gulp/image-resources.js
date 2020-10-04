@@ -9,7 +9,7 @@ const execute = command =>
     });
 
 // Globs for atlas resources
-const rawImageResourcesGlobs = ["../res_raw/config.json", "../res_raw/**/*.png"];
+const rawImageResourcesGlobs = ["../res_raw/atlas.json", "../res_raw/**/*.png"];
 
 // Globs for non-ui resources
 const nonImageResourcesGlobs = ["../res/**/*.woff2", "../res/*.ico", "../res/**/*.webm"];

@@ -117,6 +117,6 @@ This is a quick checklist, if a new building is added this points should be fulf
 
 For most assets I use Adobe Photoshop, you can find them <a href="//github.com/tobspr/shapez.io-artwork" target="_blank">here</a>.
 
-You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when that's done.
+All assets will be automatically rebuilt into the atlas once changed (Thanks to dengr1065!)
 
 <img src="https://i.imgur.com/W25Fkl0.png" alt="shapez.io Screenshot">
