@@ -74,7 +74,7 @@ export class MainMenuState extends GameState {
                                 <span class="timerDay">9th October, 10 AM CEST</span>
                             </div>
                             <p>
-                            The BIGGEST UPDATE in the games history! Click <strong>here</strong> for more information! 
+                            The BIGGEST UPDATE in the game's history! Click <strong>here</strong> for more information! 
                         </p>
                     </div>
                 </div>
