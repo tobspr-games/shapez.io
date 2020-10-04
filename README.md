@@ -24,11 +24,12 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 
 -   Make sure `ffmpeg` is on your path
 -   Install Node.js and Yarn
+-   Install Java (required for textures)
 -   Run `yarn` in the root folder
 -   Cd into `gulp` folder
 -   Run `yarn` and then `yarn gulp` - it should now open in your browser
 
-**Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify `config.js`.
+**Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify [`src/js/core/config.js`](src/js/core/config.js).
 
 ## Helping translate
 
@@ -114,8 +115,8 @@ This is a quick checklist, if a new building is added this points should be fulf
 
 ### Assets
 
-For most assets I use Adobe Photoshop, you can find them in `assets/`.
+For most assets I use Adobe Photoshop, you can find them <a href="//github.com/tobspr/shapez.io-artwork" target="_blank">here</a>.
 
-You will need a <a href="https://www.codeandweb.com/texturepacker" target="_blank">Texture Packer</a> license in order to regenerate the atlas. If you don't have one but want to contribute assets, let me know and I might compile it for you. I'm currently switching to an open source solution but I can't give an estimate when that's done.
+All assets will be automatically rebuilt into the atlas once changed (Thanks to dengr1065!)
 
 <img src="https://i.imgur.com/W25Fkl0.png" alt="shapez.io Screenshot">

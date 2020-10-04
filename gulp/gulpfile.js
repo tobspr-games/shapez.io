@@ -8,23 +8,6 @@ const path = require("path");
 const deleteEmpty = require("delete-empty");
 const execSync = require("child_process").execSync;
 
-const lfsOutput = execSync("git lfs install", { encoding: "utf-8" });
-if (!lfsOutput.toLowerCase().includes("git lfs initialized")) {
-    console.error(`
-    Git LFS is not installed, unable to build.
-
-    To install Git LFS on Linux:
-      - Arch:
-        sudo pacman -S git-lfs
-      - Debian/Ubuntu:
-        sudo apt install git-lfs
-
-    For other systems, see:
-    https://github.com/git-lfs/git-lfs/wiki/Installation
-    `);
-    process.exit(1);
-}
-
 // Load other plugins dynamically
 const $ = require("gulp-load-plugins")({
     scope: ["devDependencies"],
@@ -191,10 +174,12 @@ function serve({ standalone }) {
     );
 
     // Watch resource files and copy them on change
+    gulp.watch(imgres.rawImageResourcesGlobs, gulp.series("imgres.buildAtlas"));
     gulp.watch(imgres.nonImageResourcesGlobs, gulp.series("imgres.copyNonImageResources"));
     gulp.watch(imgres.imageResourcesGlobs, gulp.series("imgres.copyImageResources"));
 
     // Watch .atlas files and recompile the atlas on change
+    gulp.watch("../res_built/atlas/*.atlas", gulp.series("imgres.atlasToJson"));
     gulp.watch("../res_built/atlas/*.json", gulp.series("imgres.atlas"));
 
     // Watch the build folder and reload when anything changed
@@ -232,6 +217,8 @@ gulp.task(
     gulp.series(
         "utils.cleanup",
         "utils.copyAdditionalBuildFiles",
+        "imgres.buildAtlas",
+        "imgres.atlasToJson",
         "imgres.atlas",
         "sounds.dev",
         "imgres.copyImageResources",

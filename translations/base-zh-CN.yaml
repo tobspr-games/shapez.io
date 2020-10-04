@@ -148,7 +148,8 @@ dialogs:
         desc: 你还没有解锁蓝图功能！完成更多的关卡来解锁蓝图。
     keybindingsIntroduction:
         title: 实用按键
-        desc: "这个游戏有很多能帮助搭建工厂的使用按键。 以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
+        desc:
+            "这个游戏有很多能帮助搭建工厂的使用按键。 以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
             <code class='keybinding'>CTRL</code> + 拖动：选择区域以复制或删除。<br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多个。<br> <code
             class='keybinding'>ALT</code>: 反向放置传送带。<br>"
@@ -288,7 +289,8 @@ ingame:
         hints:
             1_1_extractor: 在<strong>圆形矿脉</strong>上放一个<strong>开采机</strong>来获取圆形！
             1_2_conveyor: 用<strong>传送带</strong>将你的开采机连接到基地上！<br><br>提示：用你的鼠标<strong>按下并拖动</strong>传送带！
-            1_3_expand: 这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br> 提示：按住
+            1_3_expand:
+                这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br> 提示：按住
                 <strong>SHIFT</strong> 键来放置多个开采机，用 <strong>R</strong> 键旋转它们。
     colors:
         red: 红色

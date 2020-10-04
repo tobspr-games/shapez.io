@@ -4,7 +4,7 @@ steamPage:
     discordLinkShort: Discord Oficial
     intro: >-
         Shapez.io é um jogo relaxante no qual você deve construir fábricas para
-        produzir formas geométricas automaticamente.  
+        produzir formas geométricas automaticamente.
 
         Conforme os níveis aumentam, as formas se tornam mais complexas, e você terá que explorar o mapa infinito.
 
@@ -25,7 +25,7 @@ steamPage:
         - Me ajuda! ❤️
     title_future: Conteúdo Planejado
     planned:
-        - Biblioteca de esquemas (Exclusivo para a versão completa)
+        - Biblioteca de projetos (Exclusivo para a versão completa)
         - Conquistas da Steam
         - Modo Puzzle
         - Minimapa
@@ -94,7 +94,7 @@ mainMenu:
         completa ou baixe o Chrome para obter uma experiência completa.
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Sem nome
 dialogs:
     buttons:
         ok: OK
@@ -119,9 +119,9 @@ dialogs:
         text: "Houve uma falha ao carregar seu jogo salvo:"
     confirmSavegameDelete:
         title: Confirmar exclusão
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: Tem certeza que deseja deletar o jogo a seguir?<br><br>
+            '<savegameName>' no nível <savegameLevel><br><br> Isso não
+            pode ser revertido!
     savegameDeletionError:
         title: Falha ao deletar
         text: "Houve uma falha ao deletar seu jogo salvo:"
@@ -135,14 +135,14 @@ dialogs:
         title: Resetar controles
         desc: Essa opção deixa os controles nas definições padrão.
     keybindingsResetOk:
-        title: Resetar controles
+        title: Controles resetados
         desc: Os controles foram resetados para as definições padrão.
     featureRestriction:
         title: Versão Demo
         desc: Você tentou acessar um recurso (<feature>) que não está disponível na
             demo. Considere obter a versão completa para a proceder!
     oneSavegameLimit:
-        title: Jogo salvo limitado
+        title: Limite de jogos salvos
         desc: Você pode ter apenas um jogo salvo por vez na versão demo. Remova o
             existente ou obtenha a versão completa!
     updateSummary:
@@ -164,7 +164,7 @@ dialogs:
             continuar?
     massCutInsufficientConfirm:
         title: Confirmar Corte?
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        desc: Você não conseguirá colar essa área! Tem certeza que quer cortá-la??
     blueprintsNotUnlocked:
         title: Não desbloqueado ainda
         desc: Os projetos ainda não foram desbloqueados! Complete mais níveis para
@@ -181,8 +181,8 @@ dialogs:
     createMarker:
         title: Nova Marcação
         titleEdit: Editar Marcador
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        desc: Dê um nome significativo, você também pode incluir um <strong>código
+            </strong> de uma forma (Você pode gerá-lo <link>aqui</link>)
     markerDemoLimit:
         desc: Você só pode criar dois marcadores na versão demo. Adquira a versão
             completa para marcadores ilimitados!
@@ -404,7 +404,7 @@ buildings:
             description: Permite transportar energia.
         second:
             name: Fio
-            description: Transfere sinais, que podem ser de itens, cores or binários (1 /
+            description: Transfere sinais, que podem ser de itens, cores ou binários (1 /
                 0). Fios com cores diferentes não se conectam.
     miner:
         default:
@@ -466,9 +466,9 @@ buildings:
             description: Colore as formas na entrada esquerda com a cor da entrada superior.
         quad:
             name: Pintor (Quádruplo)
-            description: Allows you to color each quadrant of the shape individually. Only
-                slots with a <strong>truthy signal</strong> on the wires layer
-                will be painted!
+            description: Permite que você pinte cada quadrante da forma individualmente. Apenas
+                entrada com um <strong>sinal verdadeiro</strong> no plano de fios
+                serão pintadas!
     trash:
         default:
             name: Lixo
@@ -514,31 +514,31 @@ buildings:
         default:
             name: Portão E (AND)
             description: Emite um sinal binário "1" se ambas as entradas forem verdadeiras.
-                (Ser verdadeira significa receber um sinal de forma, cor or
+                (Ser verdadeira significa receber um sinal de forma, cor ou
                 binário "1")
         not:
             name: Portão NEGAR (NOT)
             description: Emite um sinal binário "1" se a entrada for falsa. (Ser verdadeira
-                significa receber um sinal de forma, cor or binário "1")
+                significa receber um sinal de forma, cor ou binário "1")
         xor:
             name: Portão OU EXCLUSIVO (XOR)
             description: Emite um sinal binário "1" se uma das entradas for verdadeira, mas
                 não duas. (Ser verdadeira significa receber um sinal de forma,
-                cor or binário "1")
+                cor ou binário "1")
         or:
             name: Portão OU (OR)
             description: Emite um sinal binário "1" se uma das entradas for verdadeira. (Ser
-                verdadeira significa receber um sinal de forma, cor or binário
+                verdadeira significa receber um sinal de forma, cor ou binário
                 "1")
     transistor:
         default:
             name: Transistor
             description: Envia o sinal adiante se a entrada for verdadeira. (Ser verdadeira
-                significa receber um sinal de forma, cor or binário "1")
+                significa receber um sinal de forma, cor ou binário "1")
         mirrored:
             name: Transistor
             description: Envia o sinal adiante se a entrada for verdadeira. (Ser verdadeira
-                significa receber um sinal de forma, cor or binário "1")
+                significa receber um sinal de forma, cor ou binário "1")
     filter:
         default:
             name: Filtro
@@ -593,12 +593,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Cortando formas
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: Você acabou de desbloquear o <strong>cortador</strong>, que corta formas pela metade
+            de cima para baixo <strong>independente de sua
+            orientação</strong>!<br><br>Lembre-se de se livrar do lixo, caso
+            contrário, <strong>a máquina irá entupir</strong> - Por isso
+            eu te dei o <strong>lixo</strong>, que destrói
+            tudo que você coloca nele!
     reward_rotater:
         title: Rotação
         desc: O <strong>rotacionador</strong> foi desbloqueado! Gira as formas no
@@ -662,13 +662,13 @@ storyRewards:
             output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Modo Livre
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+        desc: Você conseguiu! Você desbloqueou o <strong>modo livre</strong>! Isso significa
+            que formas agora são geradas <strong>aleatóriamente</strong>!<br><br>
+            Já que o HUB vai precisar de uma entrada <strong>constante</strong> a partir de
+            agora, eu altamente recomendo que você construa uma máquina que entregue
+            automaticamente as formas pedidas!<br><br> O HUB emite a forma pedida
+            no plano dos fios, então tudo que você precisa fazer é analizá-la e
+            automaticamente configurar sua fábrica baseado nessa análise.
     reward_blueprints:
         title: Projetos
         desc: Agora você pode <strong>copiar e colar</strong> partes de sua fábrica!
@@ -706,10 +706,10 @@ storyRewards:
             Ele permite que você rotacione uma forma em 180 graus (Surpresa! :D)
     reward_display:
         title: Display
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        desc: "Você desbloqueou o <strong>Display</strong> - Conecte um sinal no
+            plano de fios para poder vê-lo!<br><br> PS: Você percebeu que ambos o leitor
+            de esteiras e o armazenamento emitem o último item lido? Tente mostrar
+            isso em um display!"
     reward_constant_signal:
         title: Sinal Constante
         desc: Você desbloqueou a construção que emite um <strong>sinal
@@ -1082,4 +1082,3 @@ tips:
     - Pressione F4 para mostrar seu FPS e taxa de tiques.
     - Pressione F4 duas vezes para mostrar o ladrilho do seu mouse e da câmera.
     - Você pode clicar em uma forma fixada na esquerda para tirá-la de lá.
-    - null

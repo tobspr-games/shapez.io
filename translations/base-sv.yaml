@@ -1,10 +1,10 @@
 steamPage:
     shortText: shapez.io är ett spel som går ut på att automatisera skapandet av
         former med ökande komplexitet inom den oändligt stora världen.
-    discordLinkShort: Official Discord
+    discordLinkShort: Officiel Discord
     intro: >-
         Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        automated production of geometric shapes.
 
         As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
@@ -121,9 +121,8 @@ dialogs:
         text: "Kunde inte ladda sparfil:"
     confirmSavegameDelete:
         title: Bekräfta radering
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: Är du säker på att du vill ta bort följande spel?<br><br>
+            '<savegameName>' på nivå <savegameLevel><br><br> Detta kan inte ångras!
     savegameDeletionError:
         title: Kunde inte radera
         text: "Kunde inte radera sparfil:"
@@ -202,13 +201,11 @@ dialogs:
         descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
             can generate <link>here</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Byt namn på sparfil
+        desc: Du kan byta namn på din sparfil här.
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: Prestanda varning
+        desc: Du har placerat väldigt många byggnader, det här är bara en vänlig påminnelse att spelet inte klarar av ett oändligt antal av byggnader - så försök hålla dina fabriker kompakta!
 ingame:
     keybindingsOverlay:
         moveMap: Flytta
@@ -232,7 +229,7 @@ ingame:
         switchLayers: Byt lager
     buildingPlacement:
         cycleBuildingVariants: Tryck ned <key> För att bläddra igenom varianter.
-        hotkeyLabel: "Hotkey: <key>"
+        hotkeyLabel: "Snabbtangent: <key>"
         infoTexts:
             speed: Hastighet
             range: Räckvidd
@@ -249,7 +246,7 @@ ingame:
     notifications:
         newUpgrade: En ny uppgradering är tillgänglig!
         gameSaved: Ditt spel har sparats.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Nivå <level> har blivit avklarad!
     shop:
         title: Upgraderingar
         buttonUnlock: Upgradera
@@ -341,43 +338,43 @@ ingame:
     shapeViewer:
         title: Lager
         empty: Tom
-        copyKey: Copy Key
+        copyKey: Kopiera nyckel
     connectedMiners:
         one_miner: 1 Miner
         n_miners: <amount> Miners
         limited_items: Limited to <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: Demo-version
+        desc: Klicka här för att se fördelarna med Steam-versionen!
+        get_on_steam: Skaffa på Steam
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Skaffa den fulla versionen!
+        no_thanks: Nej tack!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 nya nivåer!
+                desc: Totalt 26 nivåer!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 nya byggnader!
+                desc: Automatisera din fabrik fullkomligt!
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: ∞ med sparfiler
+                desc: Så många som du bara vill!
             upgrades:
                 title: 20 Upgrade Tiers
                 desc: This demo version has only 5!
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: ∞ med markeringar!
+                desc: Tappa aldrig bort dig i din fabrik längre!
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: Kablar
+                desc: En helt ny dimension!
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: Mörkt läge
+                desc: Sluta skada dina ögon!
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: Stöd mig
+                desc: Jag utvecklar det på min fritid!
 shopUpgrades:
     belt:
         name: Rullband, Distributörer & Tunnlar
@@ -698,9 +695,8 @@ storyRewards:
             measure the throughput of a belt.<br><br>And wait until you unlock
             wires - then it gets really useful!
     reward_rotater_180:
-        title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
-            you to rotate a shape by 180 degress (Surprise! :D)
+        title: Roterare (180 grader)
+        desc: Du låste precis upp <strong>roteraren</strong>! - Den låter dig rotera former med 180 grader (Vilken överraskning! :D)
     reward_display:
         title: Display
         desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
@@ -745,8 +741,8 @@ storyRewards:
             signal from the wires layer or not.<br><br> You can also pass in a
             boolean signal (1 / 0) to entirely activate or disable it.
     reward_demo_end:
-        title: End of Demo
-        desc: You have reached the end of the demo version!
+        title: Slutet av demo-versionen
+        desc: Du har nått slutet av demo-versionen!
 settings:
     title: Inställningar
     categories:
@@ -863,11 +859,11 @@ settings:
                 individuellt. Detta kan vara mer bekvämt om du ofta bytar
                 byggnader som du placerar.
         soundVolume:
-            title: Sound Volume
-            description: Set the volume for sound effects
+            title: Ljudvolym
+            description: Ställ in volymen för ljudeffekter
         musicVolume:
-            title: Music Volume
-            description: Set the volume for music
+            title: Musikvolym
+            description: Ställ in volymen för musiken
         lowQualityMapResources:
             title: Low Quality Map Resources
             description: Simplifies the rendering of resources on the map when zoomed in to
@@ -960,12 +956,12 @@ keybindings:
         lockBeltDirection: Sätt på rullbandsplanerare
         switchDirectionLockSide: "Planerare: Byt sida"
         pipette: Pipett
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        wire: Energy Wire
+        menuClose: Stäng meny
+        switchLayers: Byt lager
+        wire: Elkabel
         balancer: Balancer
-        storage: Storage
-        constant_signal: Constant Signal
+        storage: Lagring
+        constant_signal: Konstant signal
         logic_gate: Logic Gate
         lever: Switch (regular)
         filter: Filter
@@ -1003,12 +999,12 @@ demo:
         exportingBase: Exportera hela fabriken som en bild
     settingNotAvailable: Inte tillgänglig i demoversionen.
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
+    - Hubben accepterar alla sorters former, inte bara den nuvarande formen!
+    - Se till så dina fabriker är flexibla - det lönar sig!
+    - Bygg inte för nära hubben, det blir kaos!
+    - Om staplingen inte fungerar som förväntat kan du prova byta om dess inputs.
+    - Du kan ändra på bältplanneranens riktning genom att trycka <b>R</b>.
+    - Genom att hålla nere <b>CTRL</b> kan du dra belt utan auto-orientering.
     - Ratios stay the same, as long as all upgrades are on the same Tier.
     - Serial execution is more efficient than parallel.
     - You will unlock more variants of buildings later in the game!

@@ -222,7 +222,7 @@ ingame:
         placeBuilding: Plaats gebouw
         createMarker: Plaats markering
         delete: Vernietig
-        pasteLastBlueprint: Plak laatst gekopiëerde blauwdruk
+        pasteLastBlueprint: Plak laatst gekopieerde blauwdruk
         lockBeltDirection: Gebruik lopende band planner
         plannerSwitchSide: Draai de richting van de planner
         cutSelection: Knip
@@ -325,7 +325,7 @@ ingame:
             1_2_conveyor: "Verbind de ontginner met een <strong>lopende band</strong> aan je
                 hub!<br><br>Tip: <strong>Klik en sleep</strong> de lopende band
                 met je muis!"
-            1_3_expand: "Dit is <strong>GEEN</strong> nietsdoen-spel! bouw meer ontginners
+            1_3_expand: "Dit is <strong>GEEN</strong> nietsdoen-spel! Bouw meer ontginners
                 en lopende banden om het doel sneller te behalen.<br><br>Tip:
                 Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te
                 plaatsen en gebruik <strong>R</strong> om ze te draaien."
@@ -342,7 +342,7 @@ ingame:
     shapeViewer:
         title: Lagen
         empty: Leeg
-        copyKey: Kopiëer sleutel
+        copyKey: Kopieer sleutel
     connectedMiners:
         one_miner: 1 Miner
         n_miners: <amount> Miners
@@ -861,7 +861,7 @@ settings:
                 kunt spelen wanneer je kleurenblind bent.
         rotationByBuilding:
             title: Rotatie per type gebouw
-            description: Elk type gebouw onthoud apart de rotatie waarin je het voor het
+            description: Elk type gebouw onthoudt apart de rotatie waarin je het voor het
                 laatst geplaatst hebt. Dit kan handig zijn wanneer je vaak
                 tussen verschillende soorten gebouwen wisselt.
         soundVolume:
