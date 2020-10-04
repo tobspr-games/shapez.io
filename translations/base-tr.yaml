@@ -677,9 +677,9 @@ storyRewards:
         desc: Deneme sürümünün sonuna geldin!
     reward_balancer:
         title: Dengeleyici
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+        desc:  Çok fonksioynlu <strong>dengeleyeliyiciyi</strong> açtın!! - daha büyük 
+        fabrikalar yaratmmak için <strong>eşyaları</strong> birden çok konveyorlara ayırıp 
+        birleştirmek için kullanılabilir!<br><br>
     reward_merger:
         title: Tekil Birleştirici
         desc: <strong>Birleştiriciyi</strong> açtın ! 
@@ -700,11 +700,10 @@ storyRewards:
              farkına vardınmı? görgeyi bağla ve ne olduğunu gözlemle:) : "
     reward_constant_signal:
         title: Sabit Sinyal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 or 0).
+        desc:  <strong>Sabit sinyali</strong> açtın - kablo seviyesindeki yapı! Bu <strong>eşya filtrelerine</strong> bağlamak için yararlı olabilir.
+            <br><br> Sabit sinyal 
+            <strong>şekil</strong>, <strong>renk</strong> veya
+            <strong>boolean değeri</strong> (1 veya 0) üretebilir.
     reward_logic_gates:
         title: Mantık Kapıları
         desc: <strong>Mantık kapıları</strong> açıldı! Çok heyecanlanmana gerek yok, ama
@@ -888,8 +887,8 @@ settings:
                 kullanılırsa, üreteç yapısı inşa için seçilir.
         simplifiedBelts:
             title: Sadeleştİrİlmİş Bantlar (Çirkin)
-            description: Taşıma bandı üzerindeki eşyalar görüntülenmez, eğer fare imleci
-                taşıma bandı üzerinde değilse. Eğer gerçekten performansa
+            description: Taşıma bandı üzerindeki eşyalar fare imleci üzerinde değilse görüntülenmez.
+                Eğer gerçekten performansa
                 ihtiyacınız yoksa bu ayarla oynamanız tavsiye edilmez.
         enableMousePan:
             title: Fare Kaydırarak Hareket Etme
