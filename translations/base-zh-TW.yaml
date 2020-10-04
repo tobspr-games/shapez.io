@@ -3,7 +3,7 @@ steamPage:
     discordLinkShort: Official Discord
     intro: >-
         Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        automated production of geometric shapes.
 
         As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
@@ -156,7 +156,8 @@ dialogs:
         desc: 你還沒有解鎖藍圖功能！完成更多的關卡來解鎖藍圖。
     keybindingsIntroduction:
         title: 實用按鍵
-        desc: "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設置</strong>中查看其他的！ <br><br>
+        desc:
+            "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設置</strong>中查看其他的！ <br><br>
             <code class='keybinding'>CTRL</code> + 拖動：選擇區域以復製或刪除。 <br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多個。 <br> <code
             class='keybinding'>ALT</code>: 反向放置傳送帶。 <br>"
@@ -301,7 +302,8 @@ ingame:
             1_1_extractor: 在<strong>圓形礦脈</strong>上放一個<strong>開採機</strong>來獲取圓形！
             1_2_conveyor: 用<strong>傳送帶</strong>將你的開採機連接到基地上！
                 <br><br>提示：用你的游標<strong>按下並拖動</strong>傳送帶！
-            1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
+            1_3_expand:
+                這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
     colors:
         red: 紅

@@ -4,7 +4,7 @@ steamPage:
     discordLinkShort: Official Discord
     intro: >-
         Shapez.io je relaxační hra, ve které musíte stavět továrny pro
-         automatizaci výroby geometrických tvarů.  
+         automatizaci výroby geometrických tvarů.
 
         Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
 
@@ -44,7 +44,7 @@ steamPage:
         Kdokoli může přispět, aktivně se zapojit do komunity,
          pokusit se zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu
          kde je to možné.
-         
+
         Nezapomeňte se podívat na můj trello board, kde najdete kompletní plán!
 global:
     loading: Načítám
@@ -633,7 +633,7 @@ storyRewards:
             barvy!
     reward_storage:
         title: Sklad
-        desc: Právě jste odemkli <strong>sklad</strong> - Umožnuje skladovat přebytečné věci 
+        desc: Právě jste odemkli <strong>sklad</strong> - Umožnuje skladovat přebytečné věci
             až do naplnění kapacity!<br><br> Dává prioritu levému
             výstupu, takže ho také můžete použít jako <strong>průtokovou bránu</strong>!
     reward_freeplay:

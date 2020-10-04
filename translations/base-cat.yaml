@@ -5,7 +5,7 @@ steamPage:
     discordLinkShort: Official Discord
     intro: >-
         Shapez.io es un joc relaxant en el qual has de construir fàbriques per a
-        la producció automàtica de formes geomètriques.  
+        la producció automàtica de formes geomètriques.
 
         A mesura que el nivell augmenta, les formes esdevenen més complexes, i has d'explorar el mapa infinit.
 
@@ -94,7 +94,7 @@ mainMenu:
     helpTranslate: Ajuda a traduir-lo!
     madeBy: Creat per <author-link>
     browserWarning: >-
-        
+
         Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarrega't chrome per una millor experiència.
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut

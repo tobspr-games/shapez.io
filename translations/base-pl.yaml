@@ -5,7 +5,7 @@ steamPage:
     discordLinkShort: Oficjalny serwer Discord
     intro: >-
         Shapez.io jest spokojną grą, której celem jest budowanie automatycznych fabryk
-        produkujących różne kształty geometryczne. 
+        produkujących różne kształty geometryczne.
 
         W miarę zwiększania się poziomów, kształty będą stawać się coraz bardziej skomplikowane, a Twoja fabryka będzie musiała się rozpszetrzenić na mapie o nieskończonej wielkości.
 
@@ -705,7 +705,7 @@ storyRewards:
         title: Stały sygnał
         desc: >-
             Właśnie odblokowałeś budynek emitujący <strong>stały sygnał</strong> na warstwie przewodów!
-            Jest on przydatny na przykład: do ustawiania <strong>filtrów</strong><br><br> 
+            Jest on przydatny na przykład: do ustawiania <strong>filtrów</strong><br><br>
             Sygnał może być <strong>kształtem</strong>, <strong>kolorem</strong> lub wartością
             <strong>Prawda/Fałsz</strong>.
     reward_logic_gates:
