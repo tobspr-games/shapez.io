@@ -584,7 +584,7 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Şekİllerİ Kesmek
-        desc: <strong>Kesici</strong> açıldı, bu alet şekilleri <strong>yönelimi ne 
+        desc: <strong>Kesici</strong> açıldı, bu alet şekilleri <strong>yönelimi ne
             olursa olsun</strong> ortadan ikiye böler!<br><br> Çıkan şekilleri kullanmayı veya
             çöpe atmayı unutma yoksa <strong>makine tıkanır</strong>! - Bu nedenle sana gönderdiğin
             bütün her şeyi yok eden <strong>çöpü</strong> de verdim!
@@ -624,7 +624,7 @@ storyRewards:
     reward_miner_chainable:
         title: Zincirleme Üretİm
         desc: "<strong>Zincirleme Üreticiyi</strong> açtın! <strong> Çıkardığı eşyayı önündeki
-            üreticiye aktarabilir</strong> böylelikle madenleri daha efektif kullana bilirsin!<br><br> 
+            üreticiye aktarabilir</strong> böylelikle madenleri daha efektif kullana bilirsin!<br><br>
             NOT: Eski üretici Zincirleme Üretici ile değiştirildi!"
     reward_underground_belt_tier_2:
         title: Tünel Aşama II
@@ -655,8 +655,9 @@ storyRewards:
             (Az önce teslim ettiğin şekiller).
     no_reward:
         title: Sonrakİ Sevİye
-        desc: "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu anki fabrikalarını yok etmemeni öneririm
-             - Daha sonra <strong>Geliştirmeleri açmak için </strong> <strong>bütün hepsine</strong> ihtiyacın olacak!"
+        desc:
+            "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu anki fabrikalarını yok etmemeni öneririm
+            - Daha sonra <strong>Geliştirmeleri açmak için </strong> <strong>bütün hepsine</strong> ihtiyacın olacak!"
     no_reward_freeplay:
         title: Sonrakİ Sevİye
         desc: Tebrikler!

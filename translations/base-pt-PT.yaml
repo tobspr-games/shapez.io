@@ -4,7 +4,7 @@ steamPage:
         complexas num mapa infinito.
     discordLinkShort: Discord Oficial
     intro: >-
-        Shapez.io é um jogo relaxante onde tens que construir fábricas para a produção automatizada de formas geométricas.  
+        Shapez.io é um jogo relaxante onde tens que construir fábricas para a produção automatizada de formas geométricas.
 
         Enquanto o nível aumenta, as formas ficam cada vez mais e mais complexas, e tens de te expandir por um mapa infinito.
 
@@ -434,8 +434,8 @@ buildings:
             description: Roda as formas 90º no sentido contrário ao dos ponteiros do relógio.
 
         rotate180:
-          name: Rodar (180)
-          description: Roda as formas 180º.
+            name: Rodar (180)
+            description: Roda as formas 180º.
     stacker:
         default:
             name: Empilhador
@@ -494,26 +494,26 @@ buildings:
             name: Divisor (compacto)
             description: Divide um tapete rolante em dois.
     storage:
-      default:
-        name: Armazém
-        description: >-
-          Guarda itens em excesso, até uma quantidade determinada. Prioritiza a entrada esquerda
-          e pode ser usada como um portão de transbordar.
+        default:
+            name: Armazém
+            description: >-
+                Guarda itens em excesso, até uma quantidade determinada. Prioritiza a entrada esquerda
+                e pode ser usada como um portão de transbordar.
     wire_tunnel:
-      default:
-        name: Túnel de Fio
-        description: Permite cruzar dois fios sem os conectar.
+        default:
+            name: Túnel de Fio
+            description: Permite cruzar dois fios sem os conectar.
     constant_signal:
-      default:
-        name: Sinal constante
-        description: >-
-          Emite um sinal constante, que pode ser uma forma, cor ou um booleano (1 / 0).
+        default:
+            name: Sinal constante
+            description: >-
+                Emite um sinal constante, que pode ser uma forma, cor ou um booleano (1 / 0).
     lever:
-      default:
-        name: Interruptor
-        description: >-
-          Pode ser alternado para emitir um sinal booleano (1 / 0) na camada de fios, que pode então ser usada 
-          para controlar por exemplo um filtro de itens.
+        default:
+            name: Interruptor
+            description: >-
+                Pode ser alternado para emitir um sinal booleano (1 / 0) na camada de fios, que pode então ser usada
+                para controlar por exemplo um filtro de itens.
     logic_gate:
         default:
             name: Portão AND
@@ -537,28 +537,28 @@ buildings:
     filter:
         default:
             name: Filtro
-            description: Conecta um sinal para encaminhar todos os itens correspondentes para o topo e o resto 
+            description: Conecta um sinal para encaminhar todos os itens correspondentes para o topo e o resto
               para a direita. Pode ser controlado com sinais booleanos também.
     display:
-      default:
-        name: Display
-        description: Conecta um sinal para mostrar no display - Pode ser uma forma, cor ou 
-          booleano.
+        default:
+            name: Display
+            description: Conecta um sinal para mostrar no display - Pode ser uma forma, cor ou
+                booleano.
     reader:
-      default:
-        name: Leitor de Tapete
-        description: Permite medir o rendimento do tapete. Produz o último item lido na camada de 
-          fios (quando desbloqueada).
+        default:
+            name: Leitor de Tapete
+            description: Permite medir o rendimento do tapete. Produz o último item lido na camada de
+                fios (quando desbloqueada).
     analyzer:
-      default:
-        name: Analizador de Forma
-        description: Analiza o quadrante do topo direito da camada mais baixa da forma e produz 
-          a forma ou cor.    
+        default:
+            name: Analizador de Forma
+            description: Analiza o quadrante do topo direito da camada mais baixa da forma e produz
+                a forma ou cor.
     comparator:
-      default:
-        name: Comparar
-        description: Produz o booleano "1" se ambos os itens são exatamente iguais. Pode comparar formas,
-          itens e booleanos.
+        default:
+            name: Comparar
+            description: Produz o booleano "1" se ambos os itens são exatamente iguais. Pode comparar formas,
+                itens e booleanos.
     virtual_processor:
         default:
             name: Cortador Virtual
@@ -658,32 +658,32 @@ storyRewards:
         title: Próximo nível
         desc: Parabéns! Já agora, está planeado mais conteúdo para o jogo completo!
     reward_balancer:
-      title: Balanceador
-      desc: O multifunctional <strong>balanceador</strong> foi desbloqueado - Pode ser usado
-        para construir fábricas maiores <strong>dividindo e juntando itens</strong>
-        por vários tapetes!<br><br>
+        title: Balanceador
+        desc: O multifunctional <strong>balanceador</strong> foi desbloqueado - Pode ser usado
+            para construir fábricas maiores <strong>dividindo e juntando itens</strong>
+            por vários tapetes!<br><br>
     reward_merger:
-      title: Junção (Compacto)
-      desc: Destravaste a <strong>junção</strong> variante do
-        <strong>balanceador</strong> - Aceita duas entradas e junta-as num só tapete!
+        title: Junção (Compacto)
+        desc: Destravaste a <strong>junção</strong> variante do
+            <strong>balanceador</strong> - Aceita duas entradas e junta-as num só tapete!
     reward_belt_reader:
-      title: Leitor de Tapete
-      desc: Tu desbloqueaste o <strong>leitor de tapete</strong>! Permite-te medir
-        o rendimento dum tapete.<br><br>E espera até desbloqueares fios - aí é que é super útil!
+        title: Leitor de Tapete
+        desc: Tu desbloqueaste o <strong>leitor de tapete</strong>! Permite-te medir
+            o rendimento dum tapete.<br><br>E espera até desbloqueares fios - aí é que é super útil!
     reward_rotater_180:
-      title: Rodar (180 degrees)
-      desc: Acabaste de desbloquear a versão de 180º do <strong>Rotador</strong>! - Deixa-te rodar formas por 180º (Surpresa! :D)
+        title: Rodar (180 degrees)
+        desc: Acabaste de desbloquear a versão de 180º do <strong>Rotador</strong>! - Deixa-te rodar formas por 180º (Surpresa! :D)
     reward_display:
-      title: Display
-      desc: >-
-        Destravaste o <strong>Display</strong> - Conecta um sinal elétrico na camada de fios para visualizar-lo!<br><br> PS:
-        Reparaste que o leitor de tapetes e o armazém produz o último item lido por eles na camada de fios? Tenta mostrar isso num display!
+        title: Display
+        desc: >-
+            Destravaste o <strong>Display</strong> - Conecta um sinal elétrico na camada de fios para visualizar-lo!<br><br> PS:
+            Reparaste que o leitor de tapetes e o armazém produz o último item lido por eles na camada de fios? Tenta mostrar isso num display!
     reward_constant_signal:
-      title: Sinal Constante
-      desc: Acabaste de destravar o edifício <strong>sinal constante</strong> na camada de fios!
-        Isto é útil conectado a um <strong>filtro de itens</strong> por exemplo.<br><br>
-        O sinal constante pode emitir uma <strong>forma</strong>,
-        <strong>cor</strong> ou um <strong>booleano</strong> (1 / 0).
+        title: Sinal Constante
+        desc: Acabaste de destravar o edifício <strong>sinal constante</strong> na camada de fios!
+            Isto é útil conectado a um <strong>filtro de itens</strong> por exemplo.<br><br>
+            O sinal constante pode emitir uma <strong>forma</strong>,
+            <strong>cor</strong> ou um <strong>booleano</strong> (1 / 0).
     reward_logic_gates:
         title: Portões Lógicos
         desc: "Tu desbloqueaste os <strong>portões lógicos</strong>! Não tens de estar excitado sobre isto,
@@ -832,46 +832,46 @@ settings:
                 Esta definição pode ser mais confortável se alterares frequentemente
                 a colocação de diferentes tipos de construções.
         soundVolume:
-          title: Volume do Som
-          description: Define o volume para efeitos sonoros
+            title: Volume do Som
+            description: Define o volume para efeitos sonoros
         musicVolume:
-          title: Volume da Música
-          description: Define o volume para música
+            title: Volume da Música
+            description: Define o volume para música
         lowQualityMapResources:
-          title: Recursos de Mapa de Baixa Qualidade
-          description: >-
-            Simplifica a renderização de recursos quanto o mapa está ampliado para melhorar o desempenho. Até parece mais limpo, então lembra-te de experimentar!
+            title: Recursos de Mapa de Baixa Qualidade
+            description: >-
+                Simplifica a renderização de recursos quanto o mapa está ampliado para melhorar o desempenho. Até parece mais limpo, então lembra-te de experimentar!
         disableTileGrid:
-          title: Desativar Grelha
-          description: >-
-            Desativar a grelha pode ajudar com o desempenho. Isto também faz o jogo estar mais limpo!
+            title: Desativar Grelha
+            description: >-
+                Desativar a grelha pode ajudar com o desempenho. Isto também faz o jogo estar mais limpo!
         clearCursorOnDeleteWhilePlacing:
-          title: Limpar Cursor com Clique Direito
-          description: >-
-            Ativado por default, limpa o cursos sempre que clicas no botão direito do rato enquanto tens um edifício selecionado para colocamento.
-            Se desativado, podes apagar edifícios fazendo um clique direito enquanto colocas um edifício.
+            title: Limpar Cursor com Clique Direito
+            description: >-
+                Ativado por default, limpa o cursos sempre que clicas no botão direito do rato enquanto tens um edifício selecionado para colocamento.
+                Se desativado, podes apagar edifícios fazendo um clique direito enquanto colocas um edifício.
         lowQualityTextures:
-          title: Texturas de baixa qualidade (Feio)
-          description: >-
-            Usa texturas de baixa qualidade para melhorar o desempenho. Isto vai tornar o jogo muito feio!
+            title: Texturas de baixa qualidade (Feio)
+            description: >-
+                Usa texturas de baixa qualidade para melhorar o desempenho. Isto vai tornar o jogo muito feio!
         displayChunkBorders:
-          title: Mostrar bordas de Chunks
-          description: >-
-            O jogo está dividido em pedaços de 16x16 quadrados, se esta definição estiver ativada
-            as bordas de cada pedaço são mostradas.
+            title: Mostrar bordas de Chunks
+            description: >-
+                O jogo está dividido em pedaços de 16x16 quadrados, se esta definição estiver ativada
+                as bordas de cada pedaço são mostradas.
         pickMinerOnPatch:
-          title: Selecionar extrator num remendo de recursos
-          description: >-
-            Ativado por default, seleciona o extrator se usares a pipeta enquanto estás num remendo de recursos.
+            title: Selecionar extrator num remendo de recursos
+            description: >-
+                Ativado por default, seleciona o extrator se usares a pipeta enquanto estás num remendo de recursos.
         simplifiedBelts:
-          title: Tapetes rolantes simplificados (Feio)
-          description: >-
-            Não renderiza itens em tapetes excepto quando tens o rato em cima do tapete para salvar desempenho.
-            Não recomendo jogares com esta definição a menos que absolutamente precisas do desempenho.
+            title: Tapetes rolantes simplificados (Feio)
+            description: >-
+                Não renderiza itens em tapetes excepto quando tens o rato em cima do tapete para salvar desempenho.
+                Não recomendo jogares com esta definição a menos que absolutamente precisas do desempenho.
         enableMousePan:
-          title: Ativar Mouse Pan
-          description: >-
-            Permite-te mover o mapa apenas movendo o rato aos cantos do ecrã. A velocidade depende da definição Velocidade de movimentação.
+            title: Ativar Mouse Pan
+            description: >-
+                Permite-te mover o mapa apenas movendo o rato aos cantos do ecrã. A velocidade depende da definição Velocidade de movimentação.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atalhos

@@ -4,7 +4,7 @@ steamPage:
     discordLinkShort: Officiel Discord
     intro: >-
         Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        automated production of geometric shapes.
 
         As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
@@ -205,7 +205,7 @@ dialogs:
         desc: Du kan byta namn på din sparfil här.
     entityWarning:
         title: Prestanda varning
-        desc: Du har placerat väldigt många byggnader, det här är bara en vänlig påminnelse att spelet inte klarar av ett oändligt antal av byggnader - så försök hålla dina fabriker kompakta! 
+        desc: Du har placerat väldigt många byggnader, det här är bara en vänlig påminnelse att spelet inte klarar av ett oändligt antal av byggnader - så försök hålla dina fabriker kompakta!
 ingame:
     keybindingsOverlay:
         moveMap: Flytta
