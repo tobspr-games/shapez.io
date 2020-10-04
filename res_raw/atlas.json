@@ -1,0 +1,16 @@
+{
+    "pot": false,
+    "paddingX": 1,
+    "paddingY": 1,
+    "edgePadding": false,
+    "rotation": false,
+    "maxWidth": 2048,
+    "maxHeight": 4096,
+    "stripWhitespaceX": true,
+    "stripWhitespaceY": true,
+    "alias": true,
+    "combineSubdirectories": true,
+    "flattenPaths": false,
+    "scale": [ 0.25, 0.5, 0.75 ],
+    "scaleSuffix": [ "_lq", "_mq", "_hq" ]
+}
