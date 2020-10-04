@@ -861,7 +861,7 @@ settings:
                 kunt spelen wanneer je kleurenblind bent.
         rotationByBuilding:
             title: Rotatie per type gebouw
-            description: Elk type gebouw onthoud apart de rotatie waarin je het voor het
+            description: Elk type gebouw onthoudt apart de rotatie waarin je het voor het
                 laatst geplaatst hebt. Dit kan handig zijn wanneer je vaak
                 tussen verschillende soorten gebouwen wisselt.
         soundVolume:
