@@ -1,7 +1,7 @@
 steamPage:
     shortText: shapez.io je hra o stavbě továren pro automatizaci výroby a
         kombinování čím dál složitějších tvarů na nekonečné mapě.
-    discordLinkShort: Official Discord
+    discordLinkShort: Oficiální Discord
     intro: >-
         Shapez.io je relaxační hra, ve které musíte stavět továrny pro
          automatizaci výroby geometrických tvarů.
@@ -13,29 +13,29 @@ steamPage:
         Zatímco tvary zpracováváte pouze na začátku, musíte je později obarvit - k tomu musíte těžit a míchat barvy!
 
         Koupením hry na platformě Steam vám dá přístup k plné verzi hry, ale také můžete hrát demo verzi na shapez.io a potom se můžete rozhodnou jestli hru koupíte!
-    title_advantages: Samostatné výhody
+    title_advantages: Výhody samostatné verze hry
     advantages:
         - <b>12 Nových úrovní</b> celkem 26 úrovní
         - <b>18 Nových budov</b> pro plně automatizovanou továrnu!
         - <b>20 vylepšení</b> pro mnoho hodin zábavy!
         - <b>Wires Update</b> pro zcela nové rozměry!
         - <b>Dark Mode</b>!
-        - Neomezené Savegames
+        - Neomezený počet uložených her
         - Neomezené značky
         - Podpořte mě! ❤️
     title_future: Plánovaný kontent
     planned:
-        - Blueprintová knihovna (Samostatně exkluzivní)
+        - Blueprintová knihovna
         - Steam Achievements
-        - Puzzle Mode
-        - Minnimapa
-        - Mody
-        - Sandbox mode
+        - Puzzle Mód
+        - Minimapa
+        - Módy
+        - Sandbox Mód
         - ... a o hodně víc!
     title_open_source: Tato hra je open source!
     title_links: Odkazy
     links:
-        discord: Officiální Discord
+        discord: Oficiální Discord
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Source code (GitHub)
