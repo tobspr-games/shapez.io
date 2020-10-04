@@ -65,6 +65,18 @@ export class MainMenuState extends GameState {
 
                 <div class="sideContainer">
                     ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
+
+                    <div class="wiresAnnouncement">
+                        
+                            <div class="announcementHeader">
+                                <h3>Wires</h3>
+                                <span class="timer">-</span>
+                                <span class="timerDay">9th October, 10 AM CEST</span>
+                            </div>
+                            <p>
+                            The BIGGEST UPDATE in the games history! Click <strong>here</strong> for more information! 
+                        </p>
+                    </div>
                 </div>
 
                 <div class="mainContainer">
@@ -260,6 +272,28 @@ export class MainMenuState extends GameState {
             () => this.app.platformWrapper.openExternalLink("https://tobspr.com"),
             { preventClick: true }
         );
+
+        const wiresAnnouncement = qs(".wiresAnnouncement");
+        if (wiresAnnouncement) {
+            this.trackClicks(wiresAnnouncement, () => {
+                this.app.analytics.trackUiClick("main_menu_wires");
+                this.app.platformWrapper.openExternalLink("https://shapez.io/wires");
+            });
+        }
+    }
+
+    onRender() {
+        const now = new Date();
+        const releaseDate = Date.parse("09 Oct 2020 10:00:00 UTC+2");
+        const seconds = Math.max(0, Math.floor((+releaseDate - +now) / 1000.0));
+
+        const secondsLeft = seconds % 60;
+        const minutesLeft = Math.floor(seconds / 60) % 60;
+        const hoursLeft = Math.floor(seconds / 3600) % 24;
+        const daysLeft = Math.floor(seconds / (24 * 3600));
+
+        const text = `${daysLeft}d ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
+        this.htmlElement.querySelector(".wiresAnnouncement .timer").innerText = text;
     }
 
     renderMainMenu() {
