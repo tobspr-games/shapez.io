@@ -1,7 +1,6 @@
 steamPage:
-    shortText: shapez.io is a game about building factories to automate the creation
-        and processing of increasingly complex shapes across an infinitely
-        expanding map.
+    shortText: لعبة شيبز (أشكال) هي لعبة تدور حول بناء مصانع وتوصيلها حتى تقوم بشكل
+                آلي بصناعة أشكال مختلفة تزداد تعقيدا في خريطة لانهائية.
     discordLinkShort: Official Discord
     intro: >-
         Shapez.io is a relaxed game in which you have to build factories for the
