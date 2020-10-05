@@ -7,7 +7,14 @@ export const finalGameShape = "RuCw--Cw:----Ru--";
 export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 export const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
-const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
+const fixedImprovements = [];
+
+for (let i = 0; i < 6; i++) {
+    fixedImprovements.push(0.25);
+}
+for (let i = 0; i < 1; i++) {
+    fixedImprovements.push(0.5);
+}
 
 const numEndgameUpgrades = !IS_DEMO ? 20 - fixedImprovements.length - 1 : 0;
 
@@ -22,8 +29,13 @@ function generateEndgameUpgrades() {
     }));
 }
 
-for (let i = 0; i < numEndgameUpgrades; ++i) {
-    fixedImprovements.push(0.1);
+if (numEndgameUpgrades != 0) {
+    for (let i = 0; i < 8; i++) {
+        fixedImprovements.push(0.5);
+    }
+    for (let i = 0; i < 4; i++) {
+        fixedImprovements.push(0.75);
+    }
 }
 
 /** @typedef {{
