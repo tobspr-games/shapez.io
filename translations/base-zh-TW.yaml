@@ -596,7 +596,7 @@ storyRewards:
             once</strong>, consuming just one color instead of two!
     reward_storage:
         title: 倉庫
-        desc: <strong>倉庫</strong> 已解鎖： 
+        desc: <strong>倉庫</strong> 已解鎖：
             可以儲存多餘的物品，有一定儲存上限。<br><br>優先從左側輸出，可以被用來作為<strong>溢流門</strong>。
     reward_freeplay:
         title: 自由模式
