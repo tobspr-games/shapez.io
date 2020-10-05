@@ -565,6 +565,10 @@ buildings:
             name: &stacker Stacker
             description: Combines its inputs, on the same layer if possible, otherwise the right input is stacked on top of the left input.
 
+        mirrored:
+            name: *stacker
+            description: test
+
     mixer:
         default:
             name: &mixer Color Mixer

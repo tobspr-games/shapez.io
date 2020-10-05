@@ -5,9 +5,12 @@ import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
+
+/** @enum {string} */
+export const enumStackerVariants = { mirrored: "mirrored" };
 
 export class MetaStackerBuilding extends MetaBuilding {
     constructor() {
@@ -35,6 +38,14 @@ export class MetaStackerBuilding extends MetaBuilding {
     /**
      * @param {GameRoot} root
      */
+    getAvailableVariants(root) {
+        let variants = [defaultBuildingVariant, enumStackerVariants.mirrored];
+        return variants;
+    }
+
+    /**
+     * @param {GameRoot} root
+     */
     getIsUnlocked(root) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_stacker);
     }
@@ -56,6 +67,7 @@ export class MetaStackerBuilding extends MetaBuilding {
                 slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
             })
         );
+
         entity.addComponent(
             new ItemAcceptorComponent({
                 slots: [
@@ -73,4 +85,27 @@ export class MetaStackerBuilding extends MetaBuilding {
             })
         );
     }
+    /**
+     *
+     * @param {Entity} entity
+     * @param {number} rotationVariant
+     * @param {string} variant
+     */
+    updateVariants(entity, rotationVariant, variant) {
+        let inv = variant === defaultBuildingVariant ? 0 : 1;
+        entity.components.ItemAcceptor.setSlots([
+            {
+                pos: new Vector(inv, 0),
+                directions: [enumDirection.bottom],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(1 - inv, 0),
+                directions: [enumDirection.bottom],
+                filter: "shape",
+            },
+        ]);
+        entity.components.ItemEjector.setSlots([{ pos: new Vector(inv, 0), direction: enumDirection.top }])
+    }
 }
+

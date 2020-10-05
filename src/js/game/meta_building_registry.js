@@ -18,7 +18,7 @@ import { MetaMixerBuilding } from "./buildings/mixer";
 import { enumPainterVariants, MetaPainterBuilding } from "./buildings/painter";
 import { MetaReaderBuilding } from "./buildings/reader";
 import { enumRotaterVariants, MetaRotaterBuilding } from "./buildings/rotater";
-import { MetaStackerBuilding } from "./buildings/stacker";
+import { enumStackerVariants, MetaStackerBuilding } from "./buildings/stacker";
 import { MetaStorageBuilding } from "./buildings/storage";
 import { enumTransistorVariants, MetaTransistorBuilding } from "./buildings/transistor";
 import { MetaTrashBuilding } from "./buildings/trash";
@@ -87,6 +87,7 @@ export function initMetaBuildingRegistry() {
 
     // Stacker
     registerBuildingVariant(14, MetaStackerBuilding);
+    registerBuildingVariant(62, MetaStackerBuilding, enumStackerVariants.mirrored);
 
     // Mixer
     registerBuildingVariant(15, MetaMixerBuilding);
