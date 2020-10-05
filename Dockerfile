@@ -12,7 +12,7 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get dist-upgrade -y \
     && apt-get install -y --no-install-recommends \
-    ffmpeg \
+    ffmpeg default-jre \
     && rm -rf /var/lib/apt/lists/* 
 
 FROM base as shape_base
