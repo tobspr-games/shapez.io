@@ -30,7 +30,7 @@ function generateEndgameUpgrades() {
 }
 
 if (numEndgameUpgrades != 0) {
-    for (let i = 0; i < numEndgameUpgrades - 4; i++) {
+    for (let i = 0; i < 8; i++) {
         fixedImprovements.push(0.5);
     }
     for (let i = 0; i < numEndgameUpgrades - 8; i++) {
