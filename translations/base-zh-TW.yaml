@@ -6,8 +6,8 @@ steamPage:
         Shapez.io 是一款建造工廠、自動化生產與組合圖形的休閒遊戲。
         每當玩家不斷晉級，形狀會越來越複雜，你的工廠將在一個無邊際的地圖上不斷擴展。
         除此之外，你也必須不斷累加你的生產量來達到升級的需求，達成目標的方法無他，只有不段地擴張！
-        遊戲初期只需要組合特定圖形，接著玩家會被要求幫圖形上色，有時甚至需要先混色才能達到目標。       
-        玩家可以在 Steam 購買本游戲的單機版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！       
+        遊戲初期只需要組合特定圖形，接著玩家會被要求幫圖形上色，有時甚至需要先混色才能達到目標。
+        玩家可以在 Steam 購買本游戲的單機版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！
     title_advantages: 單機版優點
     advantages:
         - <b>12 個新關卡</b> （總共有26關）
@@ -112,7 +112,7 @@ dialogs:
     confirmSavegameDelete:
         title: 確認刪除
         text: 你確定要刪除這個存檔？<br><br>
-            '<savegameName>' 在第 <savegameLevel><br><br> 級 
+            '<savegameName>' 在第 <savegameLevel><br><br> 級
             不能反悔喔！
     savegameDeletionError:
         title: 刪除錯誤
