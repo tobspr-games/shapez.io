@@ -1,27 +1,24 @@
 steamPage:
     shortText: shapez.io 是一款在一個無邊際的地圖上建造工廠、自動化生產與組合愈加複雜圖形的遊戲。
-    discordLinkShort: Official Discord
+    discordLinkShort: Discord 官方伺服器
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
-
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
-
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
-
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
-
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        你喜歡自動化生產的遊戲類型嗎？那你來對地方了！
+        Shapez.io 是一款建造工廠、自動化生產與組合圖形的休閒遊戲。
+        每當玩家不斷晉級，形狀會越來越複雜，你的工廠將在一個無邊際的地圖上不斷擴展。
+        除此之外，你也必須不斷累加你的生產量來達到升級的需求，達成目標的方法無他，只有不段地擴張！      
+        遊戲初期只需要組合特定圖形，接著玩家會被要求幫圖形上色，有時甚至需要先混色才能達到目標。      
+        玩家可以在 Steam 購買本游戲的完整版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！
+        
+    title_advantages: 完整版優點
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
+        - <b>12 個新關卡</b> （總共有26關）
+        - <b>18 個新建築</b> 幫助玩家自動化整個工廠！
+        - <b>20 個升級</b> 讓遊玩時間更久！
+        - <b>電路更新</b> 帶給玩家新次元體驗！
+        - <b>黑暗模式</b>！
+        - 無限存檔
+        - 無限標記
+        - 支持我！ ❤️
     title_future: Planned Content
     planned:
         - Blueprint Library (Standalone Exclusive)
