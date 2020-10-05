@@ -467,7 +467,7 @@ buildings:
         quad:
             name: Pintor (Quádruplo)
             description: Permite que você pinte cada quadrante da forma individualmente. Apenas
-                entrada com um <strong>sinal verdadeiro</strong> no plano de fios
+                entradas com um <strong>sinal verdadeiro</strong> no plano de fios
                 serão pintadas!
     trash:
         default:
@@ -620,10 +620,10 @@ storyRewards:
             da outra, serão <strong>fundidas</strong>. Caso contrário, a entrada
             direita é <strong>empilhada em cima</strong> da entrada esquerda!
     reward_splitter:
-        title: Distribuidor
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        title: Divisor
+        desc: Você desbloqueou uma variante <strong>divisora</strong> do
+            <strong>balanceador</strong> - Ela aceita uma entrada e a divide
+            em duas saídas!
     reward_tunnel:
         title: Túnel
         desc: O <strong>túnel</strong> foi desbloqueado - Agora você pode transportar
