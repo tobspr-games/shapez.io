@@ -122,8 +122,9 @@ dialogs:
         title: O jogo está em baixo
         text: "Erro ao carregar o teu savegame:"
     confirmSavegameDelete:
-        title:Confirmar eliminação
-        text: Tens a certeza que queres apagar o seguinte jogo?<br><br>
+        title: Confirmar eliminação
+        text: >-
+            Tens a certeza que queres apagar o seguinte jogo?<br><br>
             '<savegameName>' no nível <savegameLevel><br><br> Isto não pode ser
             desfeito!
     savegameDeletionError:
@@ -432,8 +433,8 @@ buildings:
             description: Roda as formas 90º no sentido dos ponteiros do relógio.
         ccw:
             name: Rodar (CCW)
-            description: Roda as formas 90º no sentido contrário ao dos ponteiros do 
-            relógio.
+            description: Roda as formas 90º no sentido contrário ao dos ponteiros do
+                relógio.
 
         rotate180:
             name: Rodar (180º)
@@ -521,29 +522,34 @@ buildings:
     logic_gate:
         default:
             name: Portão AND
-            description: Emite um sinal binário "1" se ambas as entradas forem verdadeiras. (Verdadeiro significa:
-            forma, cor ou sinal binário "1")
+            description: >-
+                Emite um sinal binário "1" se ambas as entradas forem verdadeiras. (Verdadeiro significa:
+                forma, cor ou sinal binário "1")
         not:
             name: Portão NOT
-            description: Emite um sinal binário "1" se a entrada não for verdadeira. (Verdadeiro significa:
-            forma, cor ou sinal binário "1")
+            description: >-
+                Emite um sinal binário "1" se a entrada não for verdadeira. (Verdadeiro significa:
+                forma, cor ou sinal binário "1")
         xor:
             name: Portão XOR
-            description: Emite um sinal binário "1" se uma das entradas for verdadeira, mas não as duas. (Verdadeiro significa:
-            forma, cor ou sinal binário "1")
+            description: >-
+                Emite um sinal binário "1" se uma das entradas for verdadeira, mas não as duas. (Verdadeiro significa:
+                forma, cor ou sinal binário "1")
         or:
             name: Portão OR
-            description: Emite um sinal binário "1" se uma entrada é verdadeira. (Verdadeiro significa:
-            forma, cor ou sinal binário "1")
+            description: >-
+                Emite um sinal binário "1" se uma entrada é verdadeira. (Verdadeiro significa:
+                forma, cor ou sinal binário "1")
     transistor:
         default:
             name: Transístor
             description: Encaminha a entrada inferior se a entrada lateral for verdade
-            (uma forma, cor ou "1").
+                (uma forma, cor ou "1").
+
         mirrored:
             name: Transístor
             description: Encaminha a entrada inferior se a entrada lateral for verdade
-            (uma forma, cor ou "1").
+                (uma forma, cor ou "1").
     filter:
         default:
             name: Filtro de Itens
@@ -558,7 +564,8 @@ buildings:
     reader:
         default:
             name: Leitor de Tapete
-            description: Permite medir a passagem média de itens no tapete. Fornece o último item lido na camada de
+            description:
+                Permite medir a passagem média de itens no tapete. Fornece o último item lido na camada de
                 fios (quando desbloqueada).
     analyzer:
         default:
@@ -568,7 +575,8 @@ buildings:
     comparator:
         default:
             name: Comparador
-            description: Produz o sinal binário "1" se ambos os itens são exatamente iguais. Pode comparar formas,
+            description:
+                Produz o sinal binário "1" se ambos os itens são exatamente iguais. Pode comparar formas,
                 itens e sinais binários.
     virtual_processor:
         default:
@@ -715,7 +723,7 @@ storyRewards:
             de tapete e o armazém emitem o último item lido por eles? tenta mostrar isso
             num visor!"
     reward_constant_signal:
-        title: Sinal Constante 
+        title: Sinal Constante
         desc: Desbloqueaste o <strong>sinal constante</strong> contruido na camada
             de fios! Isto é útil conectado com um <strong>filtro de itens</strong>
             por exemplo.<br><br> O sinal constante pode emitir uma
@@ -1012,13 +1020,13 @@ demo:
         exportingBase: Exportar base como uma imagem
     settingNotAvailable: Não disponível no Demo.
 tips:
-    - 'O edifício central aceita qualquer entrada, não apenas a forma atual!'
+    - "O edifício central aceita qualquer entrada, não apenas a forma atual!"
     - Tem a certeza que as tuas fábricas são modulares - vai valer a pena!
-    - 'Não construas demasiado perto do edifício, ou vai ser um grande caos!'
-    - 'Se empilhar não funciona, tenta trocar as entradas.'
+    - "Não construas demasiado perto do edifício, ou vai ser um grande caos!"
+    - "Se empilhar não funciona, tenta trocar as entradas."
     - Podes alternar a direção do planeador de tapete rolante ao pressionar <b>R</b>.
     - Ao segurar <b>CTRL</b> podes arrastar tapetes rolantes sem auto-orientação.
-    - 'Os rácios continuam os mesmos, desde que todos os upgrades estejam no mesmo Nível.'
+    - "Os rácios continuam os mesmos, desde que todos os upgrades estejam no mesmo Nível."
     - Execução em série é mais eficiente que em paralelo.
     - Vais desbloquear mais variações de edifícios mais tarde no jogo!
     - Podes usar <b>T</b> para trocar entre as diferentes variantes.
@@ -1027,11 +1035,11 @@ tips:
     - Tenta construir fábricas compactas - vai valer a pena!
     - O pintor tem uma variante espelhada que podes selectionar com <b>T</b>
     - Ter os rácios de edifícios corretos vai maximizar a eficiência.
-    - 'No nível máximo, 5 extratores vão encher um tapete.'
+    - "No nível máximo, 5 extratores vão encher um tapete."
     - Não te esqueças dos túneis!
     - Não tens de dividir os itens uniformemente para eficiência máxima.
     - Segurar <b>SHIFT</b> vai ativar o planeador de tapetes, deixando-te colocar longas linhas de tapetes facilmente.
-    - 'Os cortadores cortam sempre verticalmente, independentemente da sua orientação.'
+    - "Os cortadores cortam sempre verticalmente, independentemente da sua orientação."
     - Para obter branco junta as três cores.
     - O buffer do armazém prioritiza a primeira saída.
     - Investe tempo para costruir designs repetiveis - vale a pena!
@@ -1039,32 +1047,32 @@ tips:
     - Podes segurar <b>ALT</b> para inverter a direção de tapetes colocados.
     - Eficiência é a solução!
     - As formas que estão mais longes do edifício central são mais complexas.
-    - 'As Máquinas têm uma velocidade limitada, divide-as para eficiência máxima.'
+    - "As Máquinas têm uma velocidade limitada, divide-as para eficiência máxima."
     - Usa balanceadores para maximizar a tua eficiência.
     - Organização é importante. Tenta não cruzar tapetes demasiado.
-    - 'Planeja antecipadamente, ou vai ser um grande caos!'
+    - "Planeja antecipadamente, ou vai ser um grande caos!"
     - Não removas as tuas fábricas antigas! Vais precisar delas para desbloquear upgrades.
     - Tenta superar o nível 18 sozinho sem procurar ajuda!
-    - 'Não complicas as coisas, tenta continuar simples e irás muito longe.'
+    - "Não complicas as coisas, tenta continuar simples e irás muito longe."
     - Talvez precises de reusar fábricas mais tarde no jogo. Planeia as tuas fábricas para serem reutilizáveis.
     - Às vezes, podes encontrar uma forma necessária no mapa sem criar-la com empilhadoras.
     - Moinhos de vento e cataventos completos nunca aparecem naturalmente.
     - Pinta as tuas formas antes de cortar-las para eficiência máxima.
-    - 'Com módulos, o espaço é apenas uma percepção; uma preocupação para pessoas mortais.'
+    - "Com módulos, o espaço é apenas uma percepção; uma preocupação para pessoas mortais."
     - Faz uma fábrica de diagramas separada. São importantes para módulos.
-    - 'Dá uma olhada ao misturador de cores, e as tuas questões serão respondidas.'
+    - "Dá uma olhada ao misturador de cores, e as tuas questões serão respondidas."
     - Use <b>CTRL</b> + Clique para selecionar uma área.
     - Construir demasiado perto do edifício central pode ficar no caminho de projetos futuros.
     - O ícone de alfinete perto duma forma na lista de upgrades vai afixar-la ao ecrã.
     - Junta todas as cores primárias juntas para fazer branco!
-    - 'Tu tens um mapa infinito, não limites a tua fábrica, expande!'
+    - "Tu tens um mapa infinito, não limites a tua fábrica, expande!"
     - Tenta também Factorio! É o meu jogo favorito.
     - O cortador quádruplo corta no sentido dos ponteiros começando no canto superior direito!
     - Podes fazer download dos teus savegames no menu principal!
     - Este jogo tem muitos atalhos de teclado úteis! Não te esqueças de verificar a página de configurações.
-    - 'Este jogo tem muitas definições, não te esqueças de as verificar!'
+    - "Este jogo tem muitas definições, não te esqueças de as verificar!"
     - O marco para o teu edifício central tem uma pequena bússola para indicar a sua direção!
-    - 'Para limpar tapetes, corta a área e cola-a na mesma localização.'
+    - "Para limpar tapetes, corta a área e cola-a na mesma localização."
     - Pressiona F4 para mostrar os teus FPS e Tick Rate.
     - Pressiona F4 duas vezes para mostrar a tile do teu rato e câmara.
     - Podes clicar numa forma afixada no lado direito para desafixar-la.
