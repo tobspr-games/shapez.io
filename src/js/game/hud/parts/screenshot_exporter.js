@@ -87,7 +87,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         const parameters = new DrawParameters({
             context,
             visibleRect,
-            desiredAtlasScale: chunkScale,
+            desiredAtlasScale: 0.25,
             root: this.root,
             zoomLevel: chunkScale,
         });
