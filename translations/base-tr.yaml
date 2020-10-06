@@ -685,7 +685,7 @@ storyRewards:
     reward_balancer:
         title: Dengeleyici
 
-        desc:  Çok fonksiyonlu <strong>dengeleyeliyiciyi</strong> açtın!! - daha büyük
+        desc: Çok fonksiyonlu <strong>dengeleyeliyiciyi</strong> açtın!! - daha büyük
         fabrikalar yaratmak için <strong>eşyaları</strong> birden çok bantlara ayırıp
         birleştirmek için kullanılabilir!<br><br>
     reward_merger:
