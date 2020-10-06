@@ -120,8 +120,8 @@ dialogs:
         text: "Oyun yükleme başarısız:"
     confirmSavegameDelete:
         title: Silme işlemini onayla
-        text: <br><br> kayıdı silmek istiyor musunuz?
-            '<savegameName>'  <savegameLevel><br><br>. seviyede. Bu geri alınamaz!
+        text: <br><br> Bu kayıdı silmek istiyor musunuz?
+            '<savegameName>'  <savegameLevel><br><br>. seviyede. Bu işlem geri alınamaz!
     savegameDeletionError:
         title: Silme başarısız
         text: "Oyun kaydını silme başarısız:"
@@ -625,11 +625,11 @@ storyRewards:
             seç ve <strong>türler arası geçiş yapmak için 'T' tuşuna
             bas</strong>!
     reward_miner_chainable:
-        title: Zincirleme Çıkartıcı
+        title: Zincirleme Üretici
 
-        desc: " <strong>zincirleme çıkarıcıyı</strong>açtın! bununla
-            <strong>kaynakalrını</strong> diğer çıkarıcılarla paylaşıp 
-            daha verimli bir şekilde çıkartabilirsin!<br><br> not: Eskilerini 
+        desc: " <strong>zincirleme üreticiyi</strong>açtın! bununla
+            <strong>kaynaklarını</strong> diğer çıkarıcılarla paylaşıp
+            daha verimli bir şekilde çıkartabilirsin!<br><br> not: Eskilerini
             yenileri ile değiştirdim!"
 
     reward_underground_belt_tier_2:
@@ -686,12 +686,12 @@ storyRewards:
     reward_balancer:
         title: Dengeleyici
 
-        desc:  Çok fonksioynlu <strong>dengeleyeliyiciyi</strong> açtın!! - daha büyük 
-        fabrikalar yaratmmak için <strong>eşyaları</strong> birden çok konveyorlara ayırıp 
+        desc:  Çok fonksiyonlu <strong>dengeleyeliyiciyi</strong> açtın!! - daha büyük
+        fabrikalar yaratmak için <strong>eşyaları</strong> birden çok bantlara ayırıp
         birleştirmek için kullanılabilir!<br><br>
     reward_merger:
         title: Tekil Birleştirici
-        desc: <strong>Birleştiriciyi</strong> açtın ! 
+        desc: <strong>Birleştiriciyi</strong> açtın !
             <strong>dengeleyecinin</strong> bir türü - İki giriş alıp tek banta atar.
 
     reward_belt_reader:
@@ -699,7 +699,7 @@ storyRewards:
         desc: <strong>Bant okuyucu</strong> açıldı! Bu yapı taşıma bandındaki akış
             hızını ölçmeyi sağlar.<br><br>Kabloları açana kadar bekle - o zaman
             çok kullanışlı olacak.
-
+    reward_rotater_180:
         title: Dödürücü (180 derece)
         desc: 180 derece <strong>döndürücüyü</strong> açtınız! - Şekilleri
             180 derece döndürür (Süpriz! :D)
