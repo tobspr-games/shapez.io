@@ -1,30 +1,31 @@
 FROM node:12 as base
 
+EXPOSE 3001 3005
+
 WORKDIR /shapez.io
 
-COPY . .
-
-EXPOSE 3005
-EXPOSE 3001
-
-RUN apt-get update \
-    && apt-get update \
-    && apt-get upgrade -y \
-    && apt-get dist-upgrade -y \
-    && apt-get install -y --no-install-recommends \
-    ffmpeg \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg default-jre \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/* 
 
-FROM base as shape_base
+COPY package.json yarn.lock ./
+RUN yarn
+
+COPY gulp ./gulp
+WORKDIR /shapez.io/gulp
+RUN yarn
 
 WORKDIR /shapez.io
-
-RUN yarn
+COPY res ./res
+COPY src/html ./src/html
+COPY src/css ./src/css
+COPY version ./version
+COPY sync-translations.js ./
+COPY translations ./translations
+COPY src/js ./src/js
+COPY res_raw ./res_raw
+COPY .git ./.git
 
 WORKDIR /shapez.io/gulp
-
-RUN yarn
-
-WORKDIR /shapez.io/gulp
-
 ENTRYPOINT ["yarn", "gulp"]
