@@ -647,11 +647,10 @@ storyRewards:
             gibi çalışır, fakat <strong>iki şekli birden</strong> boyayarak iki
             boya yerine sadece bir boya harcar!
     reward_storage:
-
-        title: Depo Sağlayıcı
-        desc: <strong>depolamayı</strong>açtın - Bu eşyaları depolamayı sağlar
-            <br><br> sol çıkışa öncelik verir.
-            buyüzden onu <strong>taşma deposu</strong>olarak kullanabilirsin!
+        title: Depo
+        desc: <strong>Depoyu</strong> açtınız! - Gönderdiğin eşyaları içinde biriktirir!<br><br>
+            Öncelikli olarak sol tarafından eşyaları gönderir eğer sol taraf tıkanırsa sağ taraftan göndermeye başlar.
+            Bunu <strong>fazlalık eşyaları</strong> değerlendirmek için kullanabilirsin!
 
     reward_blueprints:
         title: Taslaklar
