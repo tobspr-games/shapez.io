@@ -105,7 +105,6 @@ export class MetaStackerBuilding extends MetaBuilding {
                 filter: "shape",
             },
         ]);
-        entity.components.ItemEjector.setSlots([{ pos: new Vector(inv, 0), direction: enumDirection.top }])
+        entity.components.ItemEjector.setSlots([{ pos: new Vector(inv, 0), direction: enumDirection.top }]);
     }
 }
-
