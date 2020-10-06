@@ -1,50 +1,43 @@
 steamPage:
     shortText: shapez.io 是一款在一個無邊際的地圖上建造工廠、自動化生產與組合愈加複雜圖形的遊戲。
-    discordLinkShort: Official Discord
-    intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
-
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
-
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
-
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
-
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+    discordLinkShort: 官方 Discord 伺服器
+    intro: |-
+        你喜歡自動化生產的遊戲類型嗎？那你來對地方了！
+        Shapez.io 是一款建造工廠、自動化生產與組合圖形的休閒遊戲。
+        每當玩家不斷晉級，形狀會越來越複雜，你的工廠將在一個無邊際的地圖上不斷擴展。
+        除此之外，你也必須不斷累加你的生產量來達到升級的需求，達成目標的方法無他，只有不段地擴張！
+        遊戲初期只需要組合特定圖形，接著玩家會被要求幫圖形上色，有時甚至需要先混色才能達到目標。
+        玩家可以在 Steam 購買本游戲的單機版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！
+    title_advantages: 單機版優點
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
+        - <b>12 個新關卡</b> （總共有26關）
+        - <b>18 個新建築</b> 幫助玩家自動化整個工廠！
+        - <b>20 個升級</b> 讓遊玩時間更久！
+        - <b>電路更新</b> 帶給玩家新次元體驗！
+        - <b>深色模式</b>！
+        - 無限存檔
+        - 無限標記
+        - 支持我！ ❤️
     title_future: Planned Content
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - 藍圖圖庫（單機版獨有）
+        - Steam 成就
+        - 拼圖模式
+        - 迷你地圖
+        - 模組
+        - 沙盒模式
+        - ... 還有更多！
+    title_open_source: 本遊戲已開源！
+    title_links: 連結
     links:
-        discord: Official Discord
+        discord: 官方 Discord 伺服器
         roadmap: Roadmap
-        subreddit: Subreddit
+        subreddit: Reddit
         source_code: Source code (GitHub)
-        translate: Help translate
-    text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
-
-        Be sure to check out my trello board for the full roadmap!
+        translate: 幫助我們翻譯！
+    text_open_source: |-
+        任何人都可以幫助我開發遊戲或提供建議，我很活躍於各個社群媒體，也會讀所有的建議與回饋、並嘗試改善。
+        記得查看我的 trello board 以了解我的完整計畫！
 global:
     loading: 加載中
     error: 錯誤
@@ -78,13 +71,13 @@ global:
         space: 空格
 demoBanners:
     title: 演示版
-    intro: 獲取獨立版以解鎖所有功能！
+    intro: 獲取單機版以解鎖所有功能！
 mainMenu:
     play: 開始遊戲
     changelog: 更新日誌
     importSavegame: 導入
     openSourceHint: 本遊戲已開源！
-    discordLink: 官方Discord伺服器
+    discordLink: 官方 Discord 伺服器
     helpTranslate: 幫助我們翻譯！
     browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用chrome或者獲取獨立版以得到更好的體驗。
     savegameLevel: Level <x>
@@ -93,7 +86,7 @@ mainMenu:
     newGame: 新遊戲
     madeBy: 作者：<author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: 未命名
 dialogs:
     buttons:
         ok: 確認
@@ -118,9 +111,9 @@ dialogs:
         text: 存檔載入失敗：
     confirmSavegameDelete:
         title: 確認刪除
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: 你確定要刪除這個存檔？<br><br>
+            '<savegameName>' 在第 <savegameLevel><br><br> 級
+            不能反悔喔！
     savegameDeletionError:
         title: 刪除錯誤
         text: 存檔刪除失敗
@@ -167,7 +160,7 @@ dialogs:
             key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Edit Marker
     markerDemoLimit:
-        desc: 在演示版中你只能創建兩個地圖標記。請獲取獨立版以創建更多標記。
+        desc: 在演示版中你只能創建兩個地圖標記。請獲取單機版以創建更多標記。
     massCutConfirm:
         title: 確認剪下
         desc: 你將要剪下很多建築，準確來說有<count>幢！你確定要這麼做嗎？
@@ -175,21 +168,19 @@ dialogs:
         title: 工廠截圖
         desc: 你將要匯出你的工廠的截圖。如果你的基地很大，截圖過程將會很慢，甚至有可能導致遊戲當掉！
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: 確認剪下
+        desc: 你的複製圖形不夠貼上！你確定要剪下嗎？
     editSignal:
         title: Set Signal
         descItems: "Choose a pre-defined item:"
         descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
             can generate <link>here</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: 重新命名存檔
+        desc: 你可以在這裡重新命名存檔
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: 效能警告
+        desc: 你放置太多建築了，遊戲沒有辦法支撐無限數量的建築，善意提醒：最好降低工廠佔用的空間！
 ingame:
     keybindingsOverlay:
         moveMap: 移動
@@ -210,7 +201,7 @@ ingame:
         copySelection: 複製選取
         clearSelection: 清空選取
         pipette: 吸附
-        switchLayers: Switch layers
+        switchLayers: 切換層
     buildingPlacement:
         cycleBuildingVariants: 按<key>鍵以選擇建築變體.
         hotkeyLabel: "快捷鍵: <key>"
@@ -223,14 +214,14 @@ ingame:
             itemsPerSecondDouble: （2倍）
             tiles: <x>格
     levelCompleteNotification:
-        levelTitle: Level <level>
+        levelTitle: 第<level>級
         completed: 完成
         unlockText: 解鎖<reward>！
         buttonNextLevel: 下一關
     notifications:
         newUpgrade: 有新的更新啦！
         gameSaved: 遊戲已保存。
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: 已完成第<level>級！
     shop:
         title: 建築升級
         buttonUnlock: 升級
@@ -246,16 +237,16 @@ ingame:
             - 捌
             - 玖
             - 拾
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
+            - 拾壹
+            - 拾貳
+            - 拾叁
+            - 拾肆
+            - 拾伍
+            - 拾陸
+            - 拾柒
+            - 拾捌
+            - 拾玖
+            - 貳拾
         maximumLevel: 最高級（<currentMult>倍效率）
     statistics:
         title: 統計資訊
@@ -271,9 +262,9 @@ ingame:
                 description: 顯示圖形送達基地的速度。
         noShapesProduced: 你還沒有生產任何圖形。
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / 秒
+            minute: <shapes> / 分
+            hour: <shapes> / 時
     settingsMenu:
         playtime: 遊戲時間
         buildingsPlaced: 建築數量
@@ -291,10 +282,8 @@ ingame:
     waypoints:
         waypoints: 地圖標記
         hub: 基地
-        description: Left-click a marker to jump to it, right-click to delete
-            it.<br><br>Press <keybinding> to create a marker from the current
-            view, or <strong>right-click</strong> to create a marker at the
-            selected location.
+        description: 在標記上按左鍵以快速移動到標記區域，在標記上按右鍵以刪除該標記。
+            <br><br>按 <keybinding> 為當前區域建立地圖標記或按 <strong>right-click</strong> 為選取區域建立地圖標記。
         creationSuccessNotification: 成功創建地圖標記。
     interactiveTutorial:
         title: 教程
@@ -328,33 +317,33 @@ ingame:
         desc: Click here to see the Steam version advantages!
         get_on_steam: Get on steam
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: 取得單機版！
+        no_thanks: 不用了，謝謝！
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 個新關卡
+                desc: 總共26關！
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 個新建築
+                desc: 邁向完全自動化！
             savegames:
-                title: ∞ Savegames
+                title: ∞ 個存檔
                 desc: As many as your heart desires!
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 個等級
+                desc: 試玩版只有 5 個。
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: ∞ 個地圖標記
+                desc: 再也不會迷失在一望無際的地圖裡！
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: 電路
+                desc: 全新次元！
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: 深色模式
+                desc: 要保養眼球～
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: 支持我
+                desc: 遊戲使我利用閒暇時間做的！
 shopUpgrades:
     belt:
         name: 傳送帶、平衡機、隧道
@@ -402,8 +391,8 @@ buildings:
             name: 旋轉機（逆時針）
             description: 將圖形逆時針旋轉90度。
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: 旋轉機 (180度)
+            description: 將圖形旋轉180度。
     stacker:
         default:
             name: 混合機
@@ -421,9 +410,8 @@ buildings:
             description: 同時為兩個輸入的圖形上色，每次上色只消耗一份顏色塗料。
         quad:
             name: 上色機（四向）
-            description: Allows you to color each quadrant of the shape individually. Only
-                slots with a <strong>truthy signal</strong> on the wires layer
-                will be painted!
+            description: 分別為圖形的四個部分上色。
+                只有 <strong>truthy signal</strong> 的格子會被上色。
         mirrored:
             name: 上色機
             description: 將整個圖形塗上輸入的顏色。
@@ -435,36 +423,35 @@ buildings:
         deliver: 交付
         toUnlock: 來解鎖
         levelShortcut: LVL
-        endOfDemo: End of Demo
+        endOfDemo: 試玩結束
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: 能量電線
+            description: 傳輸能量。
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: 電線
+            description: 傳輸訊號，訊號可以是物件，顏色或布林值（0或1）。
+                不同顏色的電線無法互相連接。
     balancer:
         default:
-            name: Balancer
+            name: 平衡機
             description: Multifunctional - Evenly distributes all inputs onto all outputs.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 合流機（右）
+            description: 將兩個傳送帶整合成一個。
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 合流機（左）
+            description: 將兩個傳送帶整合成一個。
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: 分流機（右）
+            description: 將單個傳送帶分流成兩個。
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: 分流機（左）
+            description: 將單個傳送帶分流成兩個。
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: 倉庫
+            description: 儲存多餘的物品，有一定儲存上限。優先從左側輸出，可以被用來作為溢流門。
     wire_tunnel:
         default:
             name: Wire Crossing
@@ -609,18 +596,13 @@ storyRewards:
             once</strong>, consuming just one color instead of two!
     reward_storage:
         title: 倉庫
-        desc: You have unlocked the <strong>storage</strong> building - It allows you to
-            store items up to a given capacity!<br><br> It priorities the left
-            output, so you can also use it as an <strong>overflow gate</strong>!
+        desc: <strong>倉庫</strong> 已解鎖：
+            可以儲存多餘的物品，有一定儲存上限。<br><br>優先從左側輸出，可以被用來作為<strong>溢流門</strong>。
     reward_freeplay:
         title: 自由模式
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+        desc: 你做到了！你解鎖了<strong>自由模式</strong>！現在圖形將會是<strong>隨機</strong>生成的！<br><br>
+            從現在開始，基地會要求<strong>流量</strong>下限，因此我強烈建議你建造全自動化的生產線。<br><br>
+            基地會在電路層輸出他需要的形狀，你只需要分析這些訊號，然後依照需求自動調整你的工廠。
     reward_blueprints:
         title: 藍圖
         desc: You can now <strong>copy and paste</strong> parts of your factory! Select
