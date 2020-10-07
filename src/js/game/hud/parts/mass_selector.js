@@ -19,7 +19,7 @@ import { Blueprint } from "../../blueprint";
 const logger = createLogger("hud/mass_selector");
 
 export class HUDMassSelector extends BaseHUDPart {
-    createElements(parent) { }
+    createElements(parent) {}
 
     initialize() {
         this.currentSelectionStartWorld = null;
@@ -49,7 +49,7 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {Entity} entity
      */
     onEntityDestroyed(entity) {
-        if(this.root.bulkOperationRunning) {
+        if (this.root.bulkOperationRunning) {
             return;
         }
         this.selectedUids.delete(entity.uid);
@@ -60,7 +60,7 @@ export class HUDMassSelector extends BaseHUDPart {
      */
     onBack() {
         // Clear entities on escape
-        if(this.selectedUids.size > 0) {
+        if (this.selectedUids.size > 0) {
             this.selectedUids = new Set();
             return STOP_PROPAGATION;
         }
@@ -74,7 +74,7 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     confirmDelete() {
-        if(
+        if (
             !this.root.app.settings.getAllSettings().disableCutDeleteWarnings &&
             this.selectedUids.size > 100
         ) {
@@ -102,15 +102,15 @@ export class HUDMassSelector extends BaseHUDPart {
         const mapUidToEntity = this.root.entityMgr.getFrozenUidSearchMap();
 
         this.root.logic.performBulkOperation(() => {
-            for(let i = 0; i < entityUids.length; ++i) {
+            for (let i = 0; i < entityUids.length; ++i) {
                 const uid = entityUids[i];
                 const entity = mapUidToEntity.get(uid);
-                if(!entity) {
+                if (!entity) {
                     logger.error("Entity not found by uid:", uid);
                     continue;
                 }
 
-                if(!this.root.logic.tryDeleteBuilding(entity)) {
+                if (!this.root.logic.tryDeleteBuilding(entity)) {
                     logger.error("Error in mass delete, could not remove building");
                 }
             }
@@ -121,8 +121,8 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     startCopy() {
-        if(this.selectedUids.size > 0) {
-            if(!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
+        if (this.selectedUids.size > 0) {
+            if (!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
                 this.root.hud.parts.dialogs.showInfo(
                     T.dialogs.blueprintsNotUnlocked.title,
                     T.dialogs.blueprintsNotUnlocked.desc
@@ -138,12 +138,12 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     confirmCut() {
-        if(!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
+        if (!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
             this.root.hud.parts.dialogs.showInfo(
                 T.dialogs.blueprintsNotUnlocked.title,
                 T.dialogs.blueprintsNotUnlocked.desc
             );
-        } else if(
+        } else if (
             !this.root.app.settings.getAllSettings().disableCutDeleteWarnings &&
             this.selectedUids.size > 100
         ) {
@@ -162,17 +162,17 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     doCut() {
-        if(this.selectedUids.size > 0) {
+        if (this.selectedUids.size > 0) {
             const entityUids = Array.from(this.selectedUids);
 
             const cutAction = () => {
                 // copy code relies on entities still existing, so must copy before deleting.
                 this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
 
-                for(let i = 0; i < entityUids.length; ++i) {
+                for (let i = 0; i < entityUids.length; ++i) {
                     const uid = entityUids[i];
                     const entity = this.root.entityMgr.findByUid(uid);
-                    if(!this.root.logic.tryDeleteBuilding(entity)) {
+                    if (!this.root.logic.tryDeleteBuilding(entity)) {
                         logger.error("Error in mass cut, could not remove building");
                         this.selectedUids.delete(uid);
                     }
@@ -180,7 +180,7 @@ export class HUDMassSelector extends BaseHUDPart {
             };
 
             const blueprint = Blueprint.fromUids(this.root, entityUids);
-            if(blueprint.canAfford(this.root)) {
+            if (blueprint.canAfford(this.root)) {
                 cutAction();
             } else {
                 const { cancel, ok } = this.root.hud.parts.dialogs.showWarning(
@@ -203,15 +203,15 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {enumMouseButton} mouseButton
      */
     onMouseDown(pos, mouseButton) {
-        if(!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).pressed) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).pressed) {
             return;
         }
 
-        if(mouseButton !== enumMouseButton.left) {
+        if (mouseButton !== enumMouseButton.left) {
             return;
         }
 
-        if(!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).pressed) {
+        if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).pressed) {
             // Start new selection
             this.selectedUids = new Set();
         }
@@ -226,13 +226,13 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {Vector} pos
      */
     onMouseMove(pos) {
-        if(this.currentSelectionStartWorld) {
+        if (this.currentSelectionStartWorld) {
             this.currentSelectionEnd = pos.copy();
         }
     }
 
     onMouseUp() {
-        if(this.currentSelectionStartWorld) {
+        if (this.currentSelectionStartWorld) {
             const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
 
@@ -242,18 +242,19 @@ export class HUDMassSelector extends BaseHUDPart {
             const realTileStart = tileStart.min(tileEnd);
             const realTileEnd = tileStart.max(tileEnd);
 
-            for(let x = realTileStart.x; x <= realTileEnd.x; ++x) {
-                for(let y = realTileStart.y; y <= realTileEnd.y; ++y) {
-
-                    let entities = []
-                    if(this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer).pressed) 
+            for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
+                for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
+                    let entities = [];
+                    if (
+                        this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer)
+                            .pressed
+                    )
                         entities = this.root.map.getLayersContentsMultipleXY(x, y);
-                    else				
-                        entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
-                    
-                    for(let i = 0; i < entities.length; ++i){
+                    else entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
+
+                    for (let i = 0; i < entities.length; ++i) {
                         let entity = entities[i];
-                        if(entity !== null && this.root.logic.canDeleteBuilding(entity))
+                        if (entity !== null && this.root.logic.canDeleteBuilding(entity))
                             this.selectedUids.add(entity.uid);
                     }
                 }
@@ -271,7 +272,7 @@ export class HUDMassSelector extends BaseHUDPart {
     draw(parameters) {
         const boundsBorder = 2;
 
-        if(this.currentSelectionStartWorld) {
+        if (this.currentSelectionStartWorld) {
             const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
 
@@ -299,36 +300,32 @@ export class HUDMassSelector extends BaseHUDPart {
 
             const renderedUids = new Set();
 
-            
-            let isMultiLayerPressed = this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer).pressed;
+            let isMultiLayerPressed = this.root.keyMapper.getBinding(
+                KEYMAPPINGS.massSelect.massSelectSelectMultiLayer
+            ).pressed;
 
+            for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
+                for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
+                    let entities = [];
+                    if (isMultiLayerPressed) entities = this.root.map.getLayersContentsMultipleXY(x, y);
+                    else entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
 
-            for(let x = realTileStart.x; x <= realTileEnd.x; ++x) {
-                for(let y = realTileStart.y; y <= realTileEnd.y; ++y) {
-
-                    let entities = []
-                    if(isMultiLayerPressed) 
-                        entities = this.root.map.getLayersContentsMultipleXY(x, y);
-                    else				
-                        entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
-
-                    for(let i = 0; i < entities.length; ++i) {
-                        let component  = entities[i];
-                        if(component && this.root.logic.canDeleteBuilding(component)) {
+                    for (let i = 0; i < entities.length; ++i) {
+                        let component = entities[i];
+                        if (component && this.root.logic.canDeleteBuilding(component)) {
                             // Prevent rendering the overlay twice
                             const uid = component.uid;
-                            if(renderedUids.has(uid)) {
+                            if (renderedUids.has(uid)) {
                                 continue;
                             }
                             renderedUids.add(uid);
 
-                            
                             const staticComp = component.components.StaticMapEntity;
-                            
+
                             const bounds = staticComp.getTileSpaceBounds();
-                            
+
                             parameters.context.beginPath();
-                            if(this.root.currentLayer === "wires" || component.layer === "regular"){
+                            if (this.root.currentLayer === "wires" || component.layer === "regular") {
                                 parameters.context.fillStyle = THEME.map.selectionOverlay;
                                 parameters.context.beginRoundedRect(
                                     bounds.x * globalConfig.tileSize + boundsBorder,
@@ -337,7 +334,7 @@ export class HUDMassSelector extends BaseHUDPart {
                                     bounds.h * globalConfig.tileSize - 2 * boundsBorder,
                                     2
                                 );
-                            }else{
+                            } else {
                                 MapChunkView.drawSingleWiresOverviewTile({
                                     context: parameters.context,
                                     x: bounds.x * globalConfig.tileSize + boundsBorder,
@@ -354,13 +351,12 @@ export class HUDMassSelector extends BaseHUDPart {
             }
         }
 
-        parameters.context.fillStyle = THEME.map.selectionOverlay;
         this.selectedUids.forEach(uid => {
             const entity = this.root.entityMgr.findByUid(uid);
             const staticComp = entity.components.StaticMapEntity;
             const bounds = staticComp.getTileSpaceBounds();
             parameters.context.beginPath();
-            if(this.root.currentLayer === "wires" || entity.layer === "regular"){
+            if (this.root.currentLayer === "wires" || entity.layer === "regular") {
                 parameters.context.fillStyle = THEME.map.selectionOverlay;
                 parameters.context.beginRoundedRect(
                     bounds.x * globalConfig.tileSize + boundsBorder,
@@ -369,7 +365,7 @@ export class HUDMassSelector extends BaseHUDPart {
                     bounds.h * globalConfig.tileSize - 2 * boundsBorder,
                     2
                 );
-            }else{
+            } else {
                 MapChunkView.drawSingleWiresOverviewTile({
                     context: parameters.context,
                     x: bounds.x * globalConfig.tileSize + boundsBorder,
