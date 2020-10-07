@@ -541,7 +541,7 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 切割圖形
-        desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。 
+        desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。
             <br><br>記得把不需要的部分處理掉，否則這個這個建築會<strong>停止運作</strong>。
             為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
