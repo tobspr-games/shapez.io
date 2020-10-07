@@ -145,6 +145,11 @@ export class PreloadState extends GameState {
                 this.app.backgroundResourceLoader.startLoading();
             })
 
+            .then(() => this.setStatus("Initializing restrictions"))
+            .then(() => {
+                return this.app.restrictionMgr.initialize();
+            })
+
             .then(() => this.setStatus("Initializing savegame"))
             .then(() => {
                 return this.app.savegameMgr.initialize().catch(err => {

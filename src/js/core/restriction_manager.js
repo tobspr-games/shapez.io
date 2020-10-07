@@ -1,4 +1,5 @@
 import { Application } from "../application";
+import { IS_MAC } from "./config";
 import { ExplainedResult } from "./explained_result";
 import { queryParamOptions } from "./query_parameters";
 import { ReadWriteProxy } from "./read_write_proxy";
@@ -9,6 +10,8 @@ export class RestrictionManager extends ReadWriteProxy {
      */
     constructor(app) {
         super(app, "restriction-flags.bin");
+
+        this.currentData = this.getDefaultData();
     }
 
     // -- RW Proxy Impl
@@ -24,6 +27,7 @@ export class RestrictionManager extends ReadWriteProxy {
      */
     getDefaultData() {
         return {
+            version: this.getCurrentVersion(),
             savegameV1119Imported: false,
         };
     }
@@ -42,17 +46,53 @@ export class RestrictionManager extends ReadWriteProxy {
         return ExplainedResult.good();
     }
 
+    initialize() {
+        return this.readAsync().then(() => {
+            if (this.currentData.savegameV1119Imported) {
+                console.warn("Levelunlock is granted to current user due to past savegame");
+            }
+        });
+    }
+
     // -- End RW Proxy Impl
+
+    /**
+     * Checks if there are any savegames from the 1.1.19 version
+     */
+    onHasLegacySavegamesChanged(has119Savegames = false) {
+        if (has119Savegames && !this.currentData.savegameV1119Imported) {
+            this.currentData.savegameV1119Imported = true;
+            console.warn("Current user now has access to all levels due to 1119 savegame");
+            return this.writeAsync();
+        }
+        return Promise.resolve();
+    }
 
     /**
      * Returns if the app is currently running as the limited version
      * @returns {boolean}
      */
     isLimitedVersion() {
-        return queryParamOptions.fullVersion
-            ? false
-            : (!G_IS_DEV && !G_IS_STANDALONE) ||
-                  (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
+        if (IS_MAC) {
+            // On mac, the full version is always active
+            return false;
+        }
+
+        if (G_IS_STANDALONE) {
+            // Standalone is never limited
+            return false;
+        }
+
+        if (queryParamOptions.fullVersion) {
+            // Full version is activated via flag
+            return false;
+        }
+
+        if (G_IS_DEV) {
+            return typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0;
+        }
+
+        return true;
     }
 
     /**
@@ -93,5 +133,21 @@ export class RestrictionManager extends ReadWriteProxy {
      */
     getHasExtendedSettings() {
         return !this.isLimitedVersion();
+    }
+
+    /**
+     * Returns if all upgrades are available
+     * @returns {boolean}
+     */
+    getHasExtendedUpgrades() {
+        return !this.isLimitedVersion() || this.currentData.savegameV1119Imported;
+    }
+
+    /**
+     * Returns if all levels & freeplay is available
+     * @returns {boolean}
+     */
+    getHasExtendedLevelsAndFreeplay() {
+        return !this.isLimitedVersion() || this.currentData.savegameV1119Imported;
     }
 }

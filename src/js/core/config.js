@@ -1,5 +1,3 @@
-import { queryParamOptions } from "./query_parameters";
-
 export const IS_DEBUG =
     G_IS_DEV &&
     typeof window !== "undefined" &&
@@ -8,6 +6,8 @@ export const IS_DEBUG =
     window.location.search.indexOf("nodebug") < 0;
 
 export const SUPPORT_TOUCH = false;
+
+export const IS_MAC = navigator.platform.toLowerCase().indexOf("mac") >= 0;
 
 const smoothCanvas = true;
 
