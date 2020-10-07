@@ -4,17 +4,17 @@ steamPage:
         yang meluas tanpa batas.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
+        Shapez.io adalah game santai dimana anda harus membuat pabrik untuk
+        mengotomatiskan produksi bentuk-bentuk geometris.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        Semakin meningkatnya level, bentuk-bentuknya menjadi lebih kompleks, dan anda perlu meluas di peta yang tak terbatas.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        Dan jita itu tidak cukup, anda juga perlu untuk memproduksi secara ekxponensial untuk memenuhkan kebutuhan - hal yang membantu hanyalah memperbesar pabrik!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        Walaupun anda hanya memproses bentuk di awal, anda perlu mewarnainya untuk nanti - untuk ini, anda perlu untuk mengekstrak dan mencampur warna!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Membeli game ini di Steam memberikan anda akses ke versi lengkap, namun anda juga dapat mencoba demo dan memutuskan nanti!
+    title_advantages: Keuntungan versi penuh
     advantages:
         - <b>12 New Level</b> for a total of 26 levels
         - <b>18 New Buildings</b> for a fully automated factory!
@@ -411,12 +411,12 @@ buildings:
                 beberapa.
     wire:
         default:
-            name: Kawat Energi
-            description: Memungkinkan anda untuk mengangkut energi.
+            name: Kabel
+            description: Memungkinkan anda untuk mengangkut Energi.
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: Kabel
+            description: Mentransfer sinyal, dapat berupa bentuk, warna, atau boolean (1 / 0).
+                Kabel dengan warna berbeda tidak akan menyambung.
     miner:
         default:
             name: Ekstraktor
@@ -455,13 +455,13 @@ buildings:
             name: Pemutar (Berlawanan Arah Jarum Jam)
             description: Memutar bentuk berlawanan arah jarum jam sebesar 90 derajat.
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Pemutar (180)
+            description: Memutar bentuk searah jarum jam sebesar 180 derajat.
     stacker:
         default:
-            name: Penyusun
-            description: Menggabungkan kedua artikel. Apabila mereka tidak dapat
-                digabungkan, artikel kanan akan diletakkan diatas artikel kiri.
+            name: Penumpuk
+            description: Menumpukkan kedua bentuk. Apabila mereka tidak dapat
+                digabungkan, bentuk kanan akan diletakkan diatas bentuk kiri.
     mixer:
         default:
             name: Pencampur Warna
@@ -489,123 +489,120 @@ buildings:
             description: Menerima input dari semua sisi dan menghancurkannya. Selamanya.
     balancer:
         default:
-            name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: Pengimbang
+            description: Multifungsional - Mendistribusikan seluruh input secara merata ke seluruh output.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Penggabung (Kompak)
+            description: Menggabungkan dua sabuk konveyor menjadi satu.
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Penggabung (Kompak)
+            description: Menggabungkan dua sabuk konveyor menjadi satu.
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Pemisah (Kompak)
+            description: Memisahkan satu sabuk konveyor menjadi dua.
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Pemisah (Kompak)
+            description: Memisahkan satu sabuk konveyor menjadi dua.
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: Tempat Penyimpanan
+            description: Menyumpan bentuk yang berlebuhan, hingga kapasitas yang tertentu. Memprioritaskan output dari kiri
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: Penyebrangan Kabel
+            description: Memungkinkan untuk menyebrangkan 2 kabel tanpa menyambungkannya.
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: Sinyal Konstan
+            description: Mengeluarkan sinyal yang konstan, dapat berupa bentuk, warna atau boolean (1 / 0).
     lever:
         default:
-            name: Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            name: Saklar
+            description: Dapat diubah untuk mengeluarkan sinyal boolean (1 / 0) pada lapisan kabel,
+                yang bisa digunakan untuk mengontrol seperti penyaring.
     logic_gate:
         default:
-            name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
-                color or boolean "1")
+            name: Gerbang AND
+            description: Mengeluarkan boolean "1" jika kedua input adalah benar. (Benar berarti sebuah bentuk,
+                warna atau boolean "1")
         not:
-            name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            name: Gerbang NOT
+            description: Mengeluarkan  boolean "1" jika input adalah tidak benar. (Benar berarti sebuah bentuk,
+                warna atau boolean "1")
         xor:
-            name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            name: Gerbang XOR
+            description: Mengeluarkan boolean "1" jika kedua input adalah benar, namun bukan keduanya.
+                (Benar berarti sebuah bentuk, warna atau boolean "1")
         or:
-            name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
-                shape, color or boolean "1")
+            name: Gerbang OR
+            description: Mengeluarkan boolean "1" jika satu input adalah benar. (Benar berarti sebuah bentuk,
+                warna atau boolean "1")
     transistor:
         default:
             name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar (sebuah bentuk,
+                warna atau boolean "1")
         mirrored:
             name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar (sebuah bentuk,
+                warna atau boolean "1")
     filter:
         default:
             name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            description: Hubungkan sebuah sinyal untuk merutekan semua benda yang cocok ke atas dan
+                sisanya ke kanan. Dapat juga dikontrol dengan sinyal boolean
     display:
         default:
-            name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            name: Layar
+            description: Hubungkan dengan sebuah sinyal untuk ditunjukkan pada layar - Dapat berupa bentuk,
+                warna atau boolean.
     reader:
         default:
-            name: Belt Reader
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            name: Pembaca Sabuk Konveyor
+            description: Memungkinkan untuk mengukur rata-rata benda yang melewati sabuk konveyor. Mengeluarkan output benda terakhir
+                yang dilewati pada lapisan kabel (Setelah terbuka).
     analyzer:
         default:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            name: Penganalisa bentuk
+            description: Menganalisa perempat bentuk pada kanan atas dan lapisan terbawah
+                lalu mengeluarkan bentuk dan warnanya.
     comparator:
         default:
-            name: Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            name: Pembanding
+            description: Mengeluarkan boolean "1" jika kedua sinya adalah sama. Dapat membandingkan
+                Bentuk, warna dan boolean.
     virtual_processor:
         default:
-            name: Virtual Cutter
-            description: Virtually cuts the shape into two halves.
+            name: Pemotong Virtual
+            description: Memotong bentuk secara virtual menjadi dua bagian.
         rotater:
-            name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            name: Pemutar Virtual
+            description: Memutar bentuk secara virtual, searah jarum jam dan tidak searah jarum jam.
         unstacker:
-            name: Virtual Unstacker
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            name: Pemisah Tumpukan Virtual
+            description: Memisahkan lapisan teratas secara virtual ke output kanan dan
+                sisanya ke output kiri.
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: Penumpuk Virtual
+            description: Menumpuk bentuk kanan ke bentuk kiri secara virtual.
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: Pencat Virtual
+            description: Mengecat bentuk dari input bawah dengan warna
+                dari input kanan.
     item_producer:
         default:
-            name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            name: Pembuat Artikel
+            description: Hanya tersedia di dalam mode sandbox , Mengeluarkan sinyal yang diberikan dari
+                lapisan kabel ke lapisan biasa.
 storyRewards:
     reward_cutter_and_trash:
         title: Memotong Bentuk
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: <strong>Pemotong</strong> telah dibuka, yang dapat memotong bentuk menjadi dua
+            secara vertikal <strong>apapun
+            orientasinya</strong>!<br><br>Pastikan untuk membuang sisanya, jika
+            tidak <strong>ini dapat menghambat dan memperlambat</strong> - karena ini
+            anda diberikan <strong>Tong sampah</strong>, yang menghapus
+            semua yang anda masukkan!
     reward_rotater:
         title: Memutar
         desc: <strong>Pemutar</strong> telah dibuka! Ia memutar bentuk-bentuk searah
