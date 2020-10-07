@@ -531,7 +531,7 @@ buildings:
                 warna atau boolean "1")
         xor:
             name: Gerbang XOR
-            description: , namun bukan keduanya.
+            description: Mengeluarkan boolean "1" jika kedua input adalah benar, namun bukan keduanya.
                 (Benar berarti sebuah bentuk, warna atau boolean "1")
         or:
             name: Gerbang OR
@@ -551,7 +551,6 @@ buildings:
             name: Filter
             description: Hubungkan sebuah sinyal untuk merutekan semua benda yang cocok ke atas dan
                 sisanya ke kanan. Dapat juga dikontrol dengan sinyal boolean
-                
     display:
         default:
             name: Layar
@@ -560,7 +559,7 @@ buildings:
     reader:
         default:
             name: Pembaca Sabuk Konveyor
-            description: Memungkinkan untuk mengukur rata-rata benda yang melewati sabuk konveyor. Mengeluarkan output benda terakhir 
+            description: Memungkinkan untuk mengukur rata-rata benda yang melewati sabuk konveyor. Mengeluarkan output benda terakhir
                 yang dilewati pada lapisan kabel (Setelah terbuka).
     analyzer:
         default:
@@ -581,14 +580,14 @@ buildings:
             description: Memutar bentuk secara virtual, searah jarum jam dan tidak searah jarum jam.
         unstacker:
             name: Pemisah Tumpukan Virtual
-            description: Memisahkan lapisan teratas secara virtual ke output kanan dan 
+            description: Memisahkan lapisan teratas secara virtual ke output kanan dan
                 sisanya ke output kiri.
         stacker:
-            name: Penumpuk Virtual 
+            name: Penumpuk Virtual
             description: Menumpuk bentuk kanan ke bentuk kiri secara virtual.
         painter:
             name: Pencat Virtual
-            description: Mengecat bentuk dari input bawah dengan warna 
+            description: Mengecat bentuk dari input bawah dengan warna
                 dari input kanan.
     item_producer:
         default:
