@@ -1025,6 +1025,11 @@ settings:
             description: >-
                 Allows panning the map by moving the cursor to the edges of the screen. The scroll speed depends on the Movement Speed setting.
 
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: >-
+                If activated the zoom will happen in the direction of your mouse position, otherwise in the middle of the screen.
+
 keybindings:
     title: Keybindings
     hint: >-

@@ -511,7 +511,11 @@ export class Camera extends BasicSerializableObject {
         this.clampZoomLevel();
         this.desiredZoom = null;
 
-        const mousePosition = this.root.app.mousePosition;
+        let mousePosition = this.root.app.mousePosition;
+        if (!this.root.app.settings.getAllSettings().zoomToCursor) {
+            mousePosition = new Vector(this.root.gameWidth / 2, this.root.gameHeight / 2);
+        }
+
         if (mousePosition) {
             const worldPos = this.root.camera.screenToWorld(mousePosition);
             const worldDelta = worldPos.sub(this.center);
