@@ -59,7 +59,7 @@ export const globalConfig = {
 
     undergroundBeltMaxTilesByTier: [5, 9],
 
-    readerAnalyzeIntervalSeconds: G_IS_DEV ? 3 : 10,
+    readerAnalyzeIntervalSeconds: 10,
 
     buildingSpeeds: {
         cutter: 1 / 4,
