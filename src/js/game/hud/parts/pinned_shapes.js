@@ -217,11 +217,11 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
         let detector = null;
         if (canUnpin) {
-            element.classList.add("unpinable");
+            element.classList.add("removable");
             detector = new ClickDetector(element, {
                 consumeEvents: true,
                 preventDefault: true,
-                targetOnly: true,
+                targetOnly: false,
             });
             detector.click.add(() => this.unpinShape(key));
         } else {
@@ -294,6 +294,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
      * @param {string} key
      */
     unpinShape(key) {
+        console.log("unpin", key);
         arrayDeleteValue(this.pinnedShapes, key);
         this.rerenderFull();
     }
