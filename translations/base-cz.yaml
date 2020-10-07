@@ -105,8 +105,8 @@ dialogs:
         later: Později
         restart: Restart
         reset: Reset
-        getStandalone: Získejte Plnou verzi
-        deleteGame: Vím co dělám
+        getStandalone: Získejte plnou verzi
+        deleteGame: Vím, co dělám
         viewUpdate: Zobrazit aktualizaci
         showUpgrades: Zobrazit vylepšení
         showKeybindings: Zobrazit klávesové zkratky
@@ -345,7 +345,7 @@ ingame:
         desc: Kliknutím sem zobrazíte výhody Steam verze!
         get_on_steam: Získejte na steamu
     standaloneAdvantages:
-        title: Získejte plnou verzy!
+        title: Získejte plnou verzi!
         no_thanks: Ne, děkuji!
         points:
             levels:
@@ -399,10 +399,10 @@ buildings:
     miner:
         default:
             name: Extraktor
-            description: Umístěte na náleziště tvaru nebo barvy pro zahájení těžby.
+            description: Umístěte na naleziště tvaru nebo barvy pro zahájení těžby.
         chainable:
             name: Extraktor (Navazující)
-            description: Umístěte na náleziště tvaru nebo barvy pro zahájení těžby. Lze
+            description: Umístěte na naleziště tvaru nebo barvy pro zahájení těžby. Lze
                 zapojit po skupinách.
     underground_belt:
         default:
@@ -470,7 +470,7 @@ buildings:
     balancer:
         default:
             name: Vyvažovač
-            description: Multifunkční - Rozděluje vstupy do výstupy.
+            description: Multifunkční - Rovnoměrně rozděluje vstupy na výstupech.
         merger:
             name: Spojovač (kompaktní)
             description: Spojí dva pásy do jednoho.
@@ -535,7 +535,7 @@ buildings:
     reader:
         default:
             name: Čtečka pásů
-            description: Umožňuje měřit průměrnou propustnost pásu. Výstup čte poslední
+            description: Umožňuje změřit průměrnou propustnost pásu. Výstup čte poslední
                 položku ve vrstvě kabelů.
     analyzer:
         default:
@@ -732,7 +732,7 @@ settings:
         general: Obecné
         userInterface: Uživatelské rozhraní
         advanced: Rozšířené
-        performance: Performance
+        performance: Výkon
     versionBadges:
         dev: Vývojová verze
         staging: Testovací verze
@@ -742,7 +742,7 @@ settings:
         uiScale:
             title: Škálování UI
             description: Změní velikost uživatelského rozhraní. Rozhraní se bude stále
-                přizpůsobovoat rozlišení vaší obrazovky, toto nastavení pouze
+                přizpůsobovat rozlišení vaší obrazovky, toto nastavení pouze
                 mění jeho škálu.
             scales:
                 super_small: Velmi malé
@@ -751,7 +751,7 @@ settings:
                 large: Velké
                 huge: Obrovské
         scrollWheelSensitivity:
-            title: Citlivost přibížení
+            title: Citlivost přiblížení
             description: Změní citlivost přiblížení (kolečkem myši nebo trackpadem).
             sensitivity:
                 super_slow: Hodně pomalé
@@ -801,8 +801,8 @@ settings:
                 slow: Pomalá
                 regular: Normální
                 fast: Rychlá
-                super_fast: Hodně Rychlá
-                extremely_fast: Extrémně Rychlá
+                super_fast: Hodně rychlá
+                extremely_fast: Extrémně rychlá
         enableTunnelSmartplace:
             title: Chytré tunely
             description: Pokládání tunelů po zapnutí bude samo odstraňovat nepotřebné pásy.
@@ -829,7 +829,7 @@ settings:
                 koeficient. V opačném případě zobrazí popis a obrázek.
         disableCutDeleteWarnings:
             title: Zakázat upozornění o vyjmutí nebo odstranění
-            description: Deaktivujte varovná dialogová okna vyvolaná při vymutí/mazání více
+            description: Deaktivujte varovná dialogová okna vyvolaná při vyjmutí/mazání více
                 než 100 entit.
         enableColorBlindHelper:
             title: Režim pro barvoslepé
@@ -965,7 +965,7 @@ about:
 
         Pokud se chceš na hře podílet, podívej se na <a href="<githublink>" target="_blank">shapez.io na githubu</a>.<br><br>
 
-        Tato hra by nebyla ani možná bez skvělé Discord komunity okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
+        Tato hra by nebyla možná ani bez skvělé Discord komunity okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
         Soundtrack udělal <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Je úžasnej.<br><br>
 
