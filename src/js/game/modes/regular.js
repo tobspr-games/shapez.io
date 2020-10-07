@@ -31,7 +31,15 @@ function generateUpgrades(limitedVersion = false) {
 
     // Fill in endgame upgrades
     for (let i = 0; i < numEndgameUpgrades; ++i) {
-        fixedImprovements.push(0.1);
+        if (i < 20) {
+            fixedImprovements.push(0.1);
+        } else if (i < 50) {
+            fixedImprovements.push(0.05);
+        } else if (i < 100) {
+            fixedImprovements.push(0.025);
+        } else {
+            fixedImprovements.push(0.0125);
+        }
     }
 
     const upgrades = {

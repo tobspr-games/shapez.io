@@ -1,4 +1,6 @@
+/* typehints:start */
 import { Application } from "../application";
+/* typehints:end */
 import { IS_MAC } from "./config";
 import { ExplainedResult } from "./explained_result";
 import { queryParamOptions } from "./query_parameters";

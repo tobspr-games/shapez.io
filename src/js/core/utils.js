@@ -713,3 +713,40 @@ export function startFileChoose(acceptedType = ".bin") {
         input.click();
     });
 }
+
+const romanLiterals = [
+    "0", // NULL
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI",
+    "VII",
+    "VIII",
+    "IX",
+    "X",
+    "XI",
+    "XII",
+    "XIII",
+    "XIV",
+    "XV",
+    "XVI",
+    "XVII",
+    "XVIII",
+    "XIX",
+    "XX",
+];
+
+/**
+ *
+ * @param {number} number
+ * @returns {string}
+ */
+export function getRomanNumber(number) {
+    number = Math.max(0, Math.round(number));
+    if (number < romanLiterals.length) {
+        return romanLiterals[number];
+    }
+    return String(number);
+}

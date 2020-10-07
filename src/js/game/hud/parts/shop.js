@@ -1,6 +1,6 @@
 import { ClickDetector } from "../../../core/click_detector";
 import { InputReceiver } from "../../../core/input_receiver";
-import { formatBigNumber, makeDiv } from "../../../core/utils";
+import { formatBigNumber, getRomanNumber, makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
@@ -67,7 +67,7 @@ export class HUDShop extends BaseHUDPart {
             // Set tier
             handle.elemTierLabel.innerText = T.ingame.shop.tier.replace(
                 "<x>",
-                "" + T.ingame.shop.tierLabels[currentTier]
+                getRomanNumber(currentTier + 1)
             );
 
             handle.elemTierLabel.setAttribute("data-tier", currentTier);
