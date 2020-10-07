@@ -7,6 +7,7 @@ import { Loader } from "../../../core/loader";
 import { globalConfig } from "../../../core/config";
 import { makeDiv, formatBigNumber, formatBigNumberFull } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { MapChunkView } from "../../map_chunk_view";
 import { createLogger } from "../../../core/logging";
 import { enumMouseButton } from "../../camera";
 import { T } from "../../../translations";
@@ -244,9 +245,16 @@ export class HUDMassSelector extends BaseHUDPart {
             for(let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for(let y = realTileStart.y; y <= realTileEnd.y; ++y) {
 
-                    for(let contents of this.root.map.getLayersContentsMultipleXY(x, y)){
-                        if(this.root.logic.canDeleteBuilding(contents))
-                            this.selectedUids.add(contents.uid);
+					let entities = []
+					if(this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer).pressed) 
+						entities = this.root.map.getLayersContentsMultipleXY(x, y);
+					else				
+						entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
+					
+                    for(let i = 0; i < entities.length; ++i){
+						let entity = entities[i];
+                        if(entity !== null && this.root.logic.canDeleteBuilding(entity))
+                            this.selectedUids.add(entity.uid);
                     }
                 }
             }
@@ -289,32 +297,56 @@ export class HUDMassSelector extends BaseHUDPart {
             parameters.context.fill();
             parameters.context.stroke();
 
-            parameters.context.fillStyle = THEME.map.selectionOverlay;
-
             const renderedUids = new Set();
+
+			
+			let isMultiLayerPressed = this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer).pressed;
+
 
             for(let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for(let y = realTileStart.y; y <= realTileEnd.y; ++y) {
 
-                    for(let component of this.root.map.getLayersContentsMultipleXY(x, y)) {
-                        
+					let entities = []
+					if(isMultiLayerPressed) 
+						entities = this.root.map.getLayersContentsMultipleXY(x, y);
+					else				
+						entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
+
+                    for(let i = 0; i < entities.length; ++i) {
+						let component  = entities[i];
                         if(component && this.root.logic.canDeleteBuilding(component)) {
                             // Prevent rendering the overlay twice
                             const uid = component.uid;
                             if(renderedUids.has(uid)) {
                                 continue;
                             }
-                            renderedUids.add(uid);
+							renderedUids.add(uid);
 
-                            const staticComp = component.components.StaticMapEntity;
-                            const bounds = staticComp.getTileSpaceBounds();
-                            parameters.context.beginRoundedRect(
-                                bounds.x * globalConfig.tileSize + boundsBorder,
-                                bounds.y * globalConfig.tileSize + boundsBorder,
-                                bounds.w * globalConfig.tileSize - 2 * boundsBorder,
-                                bounds.h * globalConfig.tileSize - 2 * boundsBorder,
-                                2
-                            );
+							
+							const staticComp = component.components.StaticMapEntity;
+							
+							const bounds = staticComp.getTileSpaceBounds();
+							
+							parameters.context.beginPath();
+							if(this.root.currentLayer === "wires" || component.layer === "regular"){
+								parameters.context.fillStyle = THEME.map.selectionOverlay;
+								parameters.context.beginRoundedRect(
+									bounds.x * globalConfig.tileSize + boundsBorder,
+									bounds.y * globalConfig.tileSize + boundsBorder,
+									bounds.w * globalConfig.tileSize - 2 * boundsBorder,
+									bounds.h * globalConfig.tileSize - 2 * boundsBorder,
+									2
+								);
+							}else{
+								MapChunkView.drawSingleWiresOverviewTile({
+									context: parameters.context,
+									x: bounds.x * globalConfig.tileSize + boundsBorder,
+									y: bounds.y * globalConfig.tileSize + boundsBorder,
+									entity: component,
+									tileSizePixels: globalConfig.tileSize * 1.01,
+								});
+							}
+
                             parameters.context.fill();
                         }
                     }
@@ -327,13 +359,26 @@ export class HUDMassSelector extends BaseHUDPart {
             const entity = this.root.entityMgr.findByUid(uid);
             const staticComp = entity.components.StaticMapEntity;
             const bounds = staticComp.getTileSpaceBounds();
-            parameters.context.beginRoundedRect(
-                bounds.x * globalConfig.tileSize + boundsBorder,
-                bounds.y * globalConfig.tileSize + boundsBorder,
-                bounds.w * globalConfig.tileSize - 2 * boundsBorder,
-                bounds.h * globalConfig.tileSize - 2 * boundsBorder,
-                2
-            );
+			parameters.context.beginPath();
+			if(this.root.currentLayer === "wires" || entity.layer === "regular"){
+				parameters.context.fillStyle = THEME.map.selectionOverlay;
+				parameters.context.beginRoundedRect(
+					bounds.x * globalConfig.tileSize + boundsBorder,
+					bounds.y * globalConfig.tileSize + boundsBorder,
+					bounds.w * globalConfig.tileSize - 2 * boundsBorder,
+					bounds.h * globalConfig.tileSize - 2 * boundsBorder,
+					2
+				);
+			}else{
+				MapChunkView.drawSingleWiresOverviewTile({
+					context: parameters.context,
+					x: bounds.x * globalConfig.tileSize + boundsBorder,
+					y: bounds.y * globalConfig.tileSize + boundsBorder,
+					entity: entity,
+					tileSizePixels: globalConfig.tileSize * 1.01,
+				});
+			}
+
             parameters.context.fill();
         });
     }
