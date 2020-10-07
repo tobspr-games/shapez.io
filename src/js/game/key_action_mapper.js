@@ -90,8 +90,8 @@ export const KEYMAPPINGS = {
 
     massSelect: {
         massSelectStart: { keyCode: 17 }, // CTRL
-		massSelectSelectMultiple: { keyCode: 16 }, // SHIFT
-		massSelectSelectMultiLayer: { keyCode: 18 }, // Alt
+        massSelectSelectMultiple: { keyCode: 16 }, // SHIFT
+        massSelectSelectMultiLayer: { keyCode: 18 }, // Alt
         massSelectCopy: { keyCode: key("C") },
         massSelectCut: { keyCode: key("X") },
         confirmMassDelete: { keyCode: 46 }, // DEL
