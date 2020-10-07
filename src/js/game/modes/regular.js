@@ -11,6 +11,7 @@ const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
 const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
 
+// @FIXME @TODO
 const numEndgameUpgrades = !IS_DEMO ? 20 - fixedImprovements.length - 1 : 0;
 
 function generateEndgameUpgrades() {

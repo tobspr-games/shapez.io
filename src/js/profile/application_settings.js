@@ -6,8 +6,7 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import { BoolSetting, EnumSetting, RangeSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
-import { THEMES, THEME, applyGameTheme } from "../game/theme";
-import { IS_DEMO } from "../core/config";
+import { THEMES, applyGameTheme } from "../game/theme";
 import { T } from "../translations";
 import { LANGUAGES } from "../languages";
 
@@ -187,7 +186,9 @@ export const allApplicationSettings = [
                 app.platformWrapper.setFullscreen(value);
             }
         },
-        !IS_DEMO
+        /**
+         * @param {Application} app
+         */ app => app.restrictionMgr.getHasExtendedSettings()
     ),
 
     new BoolSetting(
@@ -215,7 +216,9 @@ export const allApplicationSettings = [
                 applyGameTheme(id);
                 document.documentElement.setAttribute("data-theme", id);
             },
-        enabled: !IS_DEMO,
+        enabledCb: /**
+         * @param {Application} app
+         */ app => app.restrictionMgr.getHasExtendedSettings(),
     }),
 
     new EnumSetting("autosaveInterval", {
@@ -271,7 +274,9 @@ export const allApplicationSettings = [
         category: enumCategories.performance,
         restartRequired: false,
         changeCb: (app, id) => {},
-        enabled: !IS_DEMO,
+        enabledCb: /**
+         * @param {Application} app
+         */ app => app.restrictionMgr.getHasExtendedSettings(),
     }),
 
     new BoolSetting("lowQualityMapResources", enumCategories.performance, (app, value) => {}),
@@ -355,7 +360,7 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @returns {SettingsStorage}
      */
     getAllSettings() {
-        return this.getCurrentData().settings;
+        return this.currentData.settings;
     }
 
     /**

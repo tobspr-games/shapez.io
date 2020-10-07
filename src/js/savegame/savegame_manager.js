@@ -40,13 +40,6 @@ export class SavegameManager extends ReadWriteProxy {
         return 1002;
     }
 
-    /**
-     * @returns {SavegamesData}
-     */
-    getCurrentData() {
-        return super.getCurrentData();
-    }
-
     verify(data) {
         // TODO / FIXME!!!!
         return ExplainedResult.good();

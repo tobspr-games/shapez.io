@@ -1,5 +1,5 @@
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { globalConfig, IS_DEMO, THIRDPARTY_URLS } from "../../../core/config";
+import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { Loader } from "../../../core/loader";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
@@ -302,7 +302,7 @@ export class HUDWaypoints extends BaseHUDPart {
                 // Show info that you can have only N markers in the demo,
                 // actually show this *after* entering the name so you want the
                 // standalone even more (I'm evil :P)
-                if (IS_DEMO && this.waypoints.length > 2) {
+                if (this.waypoints.length > this.root.app.restrictionMgr.getMaximumWaypoints()) {
                     this.root.hud.parts.dialogs.showFeatureRestrictionInfo(
                         "",
                         T.dialogs.markerDemoLimit.desc

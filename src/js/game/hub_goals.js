@@ -1,4 +1,4 @@
-import { globalConfig, IS_DEMO } from "../core/config";
+import { globalConfig } from "../core/config";
 import { RandomNumberGenerator } from "../core/rng";
 import { clamp } from "../core/utils";
 import { BasicSerializableObject, types } from "../savegame/serialization";
@@ -278,11 +278,6 @@ export class HubGoals extends BasicSerializableObject {
 
         if (currentLevel >= tiers.length) {
             // Max level
-            return false;
-        }
-
-        if (IS_DEMO && currentLevel >= 4) {
-            // DEMO
             return false;
         }
 

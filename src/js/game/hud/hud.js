@@ -15,7 +15,7 @@ import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
 import { HUDShop } from "./parts/shop";
-import { IS_MOBILE, globalConfig, IS_DEMO } from "../../core/config";
+import { IS_MOBILE, globalConfig } from "../../core/config";
 import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
@@ -116,7 +116,7 @@ export class GameHUD {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 
-        if (IS_DEMO) {
+        if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
             this.parts.watermark = new HUDWatermark(this.root);
             this.parts.standaloneAdvantages = new HUDStandaloneAdvantages(this.root);
             this.parts.catMemes = new HUDCatMemes(this.root);

@@ -81,10 +81,6 @@ export class ReadWriteProxy {
         return this.writeAsync();
     }
 
-    getCurrentData() {
-        return this.currentData;
-    }
-
     /**
      *
      * @param {object} obj
