@@ -804,7 +804,7 @@ settings:
                 extremely_fast: Velocissimo
         enableTunnelSmartplace:
             title: Tunnel intelligenti
-            description: Se abilitato, piazzare un tunnel rimuoverà anche qualsiasi nastro
+            description: "Se abilitato, piazzare un tunnel rimuoverà anche qualsiasi nastro
                 superfluo. Consente anche di trascinare i tunnel: i tunnel in
                 eccesso verrano rimossi."
         vignette:
