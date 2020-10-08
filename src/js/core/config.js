@@ -1,5 +1,3 @@
-import { queryParamOptions } from "./query_parameters";
-
 export const IS_DEBUG =
     G_IS_DEV &&
     typeof window !== "undefined" &&
@@ -7,12 +5,9 @@ export const IS_DEBUG =
     (window.location.host.indexOf("localhost:") >= 0 || window.location.host.indexOf("192.168.0.") >= 0) &&
     window.location.search.indexOf("nodebug") < 0;
 
-export const IS_DEMO = queryParamOptions.fullVersion
-    ? false
-    : (!G_IS_DEV && !G_IS_STANDALONE) ||
-      (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
-
 export const SUPPORT_TOUCH = false;
+
+export const IS_MAC = navigator.platform.toLowerCase().indexOf("mac") >= 0;
 
 const smoothCanvas = true;
 
@@ -64,7 +59,7 @@ export const globalConfig = {
 
     undergroundBeltMaxTilesByTier: [5, 9],
 
-    readerAnalyzeIntervalSeconds: G_IS_DEV ? 3 : 10,
+    readerAnalyzeIntervalSeconds: 10,
 
     buildingSpeeds: {
         cutter: 1 / 4,

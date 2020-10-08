@@ -120,9 +120,8 @@ dialogs:
         text: "Oyun yükleme başarısız:"
     confirmSavegameDelete:
         title: Silme işlemini onayla
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: <br><br> Bu kayıdı silmek istiyor musunuz?
+            '<savegameName>'  <savegameLevel><br><br>. seviyede. Bu işlem geri alınamaz!
     savegameDeletionError:
         title: Silme başarısız
         text: "Oyun kaydını silme başarısız:"
@@ -174,8 +173,8 @@ dialogs:
             taşıma bantlarının yönünü ters çevirir.<br>"
     createMarker:
         title: Yeni Konum İşareti
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        desc: Anlamlı bir isim ver. Ayrıca  <strong>Şekil koduda</strong>
+            koyabilirsiniz (<link>Buradan</link> kod yapabilirisinz )
         titleEdit: Konum İşaretini Düzenle
     markerDemoLimit:
         desc: Deneme sürümünde sadece iki adet yer imi oluşturabilirsiniz. Sınırsız yer
@@ -584,10 +583,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Şekİllerİ Kesmek
-        desc: <strong>Kesici</strong> açıldı, bu alet şekilleri <strong>yönelimi ne 
+
+        desc: <strong>Kesici</strong> açıldı, bu alet şekilleri <strong>yönelimi ne
             olursa olsun</strong> ortadan ikiye böler!<br><br> Çıkan şekilleri kullanmayı veya
             çöpe atmayı unutma yoksa <strong>makine tıkanır</strong>! - Bu nedenle sana gönderdiğin
             bütün her şeyi yok eden <strong>çöpü</strong> de verdim!
+
     reward_rotater:
         title: Döndürme
         desc: <strong>Döndürücü</strong> açıldı! Döndürücü şekilleri saat yönüne 90
@@ -610,7 +611,9 @@ storyRewards:
             <strong>üzerine kaynaştırılır</strong>!
     reward_splitter:
         title: Ayırıcı/Bİrleştİrİcİ
-        desc: Bir taşıma bandını iki çıktı verecek şekilde birleştirir!
+
+        desc: <strong>Ayırıcıyı</strong> açtın! <strong>dengeleyicin</strong>
+            başka bir türü - Tek giriş alıp ikiye ayırır
     reward_tunnel:
         title: Tünel
         desc: <strong>Tünel</strong> açıldı - Artık eşyaları taşıma bantları ve yapılar
@@ -622,10 +625,13 @@ storyRewards:
             seç ve <strong>türler arası geçiş yapmak için 'T' tuşuna
             bas</strong>!
     reward_miner_chainable:
-        title: Zincirleme Üretİm
-        desc: "<strong>Zincirleme Üreticiyi</strong> açtın! <strong> Çıkardığı eşyayı önündeki
-            üreticiye aktarabilir</strong> böylelikle madenleri daha efektif kullana bilirsin!<br><br> 
-            NOT: Eski üretici Zincirleme Üretici ile değiştirildi!"
+        title: Zincirleme Üretici
+
+        desc: " <strong>zincirleme üreticiyi</strong>açtın! bununla
+            <strong>kaynaklarını</strong> diğer çıkarıcılarla paylaşıp
+            daha verimli bir şekilde çıkartabilirsin!<br><br> not: Eskilerini
+            yenileri ile değiştirdim!"
+
     reward_underground_belt_tier_2:
         title: Tünel Aşama II
         desc: <strong>Tünelin</strong> başka bir türünü açtın - Bu tünelin menzili
@@ -643,8 +649,9 @@ storyRewards:
     reward_storage:
         title: Depo
         desc: <strong>Depoyu</strong> açtınız! - Gönderdiğin eşyaları içinde biriktirir!<br><br>
-            Öncelikli olarak sol tarafından eşyaları gönderir eğer sol taraf tıkanırsa sağ taraftan gödermeye başlar.
+            Öncelikli olarak sol tarafından eşyaları gönderir eğer sol taraf tıkanırsa sağ taraftan göndermeye başlar.
             Bunu <strong>fazlalık eşyaları</strong> değerlendirmek için kullanabilirsin!
+
     reward_blueprints:
         title: Taslaklar
         desc: Fabrikanın bölümlerini artık <strong>kopyalayıp
@@ -655,28 +662,37 @@ storyRewards:
             (Az önce teslim ettiğin şekiller).
     no_reward:
         title: Sonrakİ Sevİye
-        desc: "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu anki fabrikalarını yok etmemeni öneririm
-             - Daha sonra <strong>Geliştirmeleri açmak için </strong> <strong>bütün hepsine</strong> ihtiyacın olacak!"
+        desc:
+            "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu anki fabrikalarını yok etmemeni öneririm
+            - Daha sonra <strong>Geliştirmeleri açmak için </strong> <strong>bütün hepsine</strong> ihtiyacın olacak!"
+
     no_reward_freeplay:
         title: Sonrakİ Sevİye
         desc: Tebrikler!
     reward_freeplay:
         title: Özgür Mod
+
         desc: Başardın! <strong>Özgür modu</strong> açtın! Bu artık gelen şekillerin
             <strong>rastgele</strong> oluşacağı anlamına geliyor!<br><br>
             Bundan sonra ana bölge belirli bir miktar eşya değil <strong>belirli bir miktar eşya geliş hızına</strong>
             bağlı olarak level atlayacaksın, istenilen şekilleri otomatik olarak yapacak bir fabrika inşa etmeni
             öneririm!<br><br> Ana bölgenin istediği şekil kablo katmanında sol taraftan sinyal olarak gönderiliyor,
             yani sadece bu şekli analiz ederek üretecek tamen otomatik bir alet yapman yeterli.
+
     reward_demo_end:
         title: Deneme Sürümünün Sonu
         desc: Deneme sürümünün sonuna geldin!
     reward_balancer:
         title: Dengeleyici
-        desc: Çok işlevli - bütün girdileri eşit olarak bütün çıkışlara dağıtır.!<br><br>
+
+        desc: Çok fonksiyonlu <strong>dengeleyeliyiciyi</strong> açtın! - daha büyük
+            fabrikalar yaratmak için <strong>eşyaları</strong><br><br> birden çok bantlara ayırıp
+            birleştirmek için kullanılabilir!
     reward_merger:
         title: Tekil Birleştirici
-        desc: İki taşıma bandını bir çıktı verecek şekilde birleştirir!
+        desc: <strong>Birleştiriciyi</strong> açtın !
+            <strong>dengeleyecinin</strong> bir türü - İki giriş alıp tek banta atar.
+
     reward_belt_reader:
         title: Bant Okuyucu
         desc: <strong>Bant okuyucu</strong> açıldı! Bu yapı taşıma bandındaki akış
@@ -694,6 +710,7 @@ storyRewards:
         title: Sabit Sinyal
         desc: Şekil, renk veya ikili değer (1 / 0) olan sabit bir sinyal
             gönderir.
+
     reward_logic_gates:
         title: Mantık Kapıları
         desc: <strong>Mantık kapıları</strong> açıldı! Çok heyecanlanmana gerek yok, ama
@@ -877,8 +894,8 @@ settings:
                 kullanılırsa, üreteç yapısı inşa için seçilir.
         simplifiedBelts:
             title: Sadeleştİrİlmİş Bantlar (Çirkin)
-            description: Taşıma bandı üzerindeki eşyalar görüntülenmez, eğer fare imleci
-                taşıma bandı üzerinde değilse. Eğer gerçekten performansa
+            description: Taşıma bandı üzerindeki eşyalar fare imleci üzerinde değilse görüntülenmez.
+                Eğer gerçekten performansa
                 ihtiyacınız yoksa bu ayarla oynamanız tavsiye edilmez.
         enableMousePan:
             title: Fare Kaydırarak Hareket Etme

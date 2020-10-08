@@ -272,10 +272,6 @@ dialogs:
         title: Rename Savegame
         desc: You can rename your savegame here.
 
-    entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that the game can not handle an endless number of buildings - try to keep your factories compact!
-
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -354,10 +350,6 @@ ingame:
 
         # Gets replaced to e.g. "Tier IX"
         tier: Tier <x>
-
-        # The roman number for each tier
-        tierLabels:
-            [I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII, XIII, XIV, XV, XVI, XVII, XVIII, XIX, XX]
 
         maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
 
@@ -1032,6 +1024,11 @@ settings:
             title: Screen Edge Panning
             description: >-
                 Allows panning the map by moving the cursor to the edges of the screen. The scroll speed depends on the Movement Speed setting.
+
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: >-
+                If activated the zoom will happen in the direction of your mouse position, otherwise in the middle of the screen.
 
 keybindings:
     title: Keybindings

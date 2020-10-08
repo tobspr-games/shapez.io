@@ -1,4 +1,4 @@
-import { globalConfig, IS_DEMO } from "../../core/config";
+import { globalConfig } from "../../core/config";
 import { smoothenDpi } from "../../core/dpi_manager";
 import { DrawParameters } from "../../core/draw_parameters";
 import { drawSpriteClipped } from "../../core/draw_utils";

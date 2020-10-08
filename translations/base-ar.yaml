@@ -1,20 +1,17 @@
 steamPage:
-    shortText: shapez.io is a game about building factories to automate the creation
-        and processing of increasingly complex shapes across an infinitely
-        expanding map.
+    shortText: لعبة شيبز (أشكال) هي لعبة تدور حول بناء مصانع وتوصيلها حتى تقوم بشكل
+                .آلي بصناعة أشكال مختلفة تزداد تعقيدا في خريطة لانهائية.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.  
+        لعبة شيبز (أشكال) هي لعبة مريحة تقوم فيها ببناء مصانع ووتشغيلها آليا لصناعة أشكال هندسية.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        مع التقدم في المستوى، تزداد الأشكال تعقيداً، فيتوجب عليك التوسع في الخريطة اللانهائية، وذلك ليس كافياً للتقدم في مستوى اللعبة
+        حيث عليك صناعة المزيد بأضعاف مضاعفة لتلبية الطلب، الشيء الوحيد الذي يمكنه مساعدتك هو التوسع.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        بينما في البداية تقوم بصناعة أشكال مختلفة، تتطلب منك المراحل المتقدمة تلوين هذه الأشكال، حيث يتوجب عليك استخراج وخلط الألوان.
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
-
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        عند شراءك اللعبة على ستيم (Steam) تحصل على الإصدار الكامل للعبة، ولكن يمكن أيضاً لعبة نسخة تجريبية على موقع shapez.io  ثم يمكنك القرار لاحقا
+    title_advantages: ميزات نسخة الحاسوب
     advantages:
         - <b>12 New Level</b> for a total of 26 levels
         - <b>18 New Buildings</b> for a fully automated factory!

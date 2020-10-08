@@ -1,14 +1,13 @@
-import { globalConfig, IS_DEMO } from "../core/config";
+import { globalConfig } from "../core/config";
 import { RandomNumberGenerator } from "../core/rng";
-import { clamp, findNiceIntegerValue, randomChoice, randomInt } from "../core/utils";
+import { clamp } from "../core/utils";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
 import { enumAnalyticsDataSource } from "./production_analytics";
 import { GameRoot } from "./root";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
-import { enumHubGoalRewards, tutorialGoals } from "./tutorial_goals";
-import { UPGRADES } from "./upgrades";
+import { enumHubGoalRewards } from "./tutorial_goals";
 
 export class HubGoals extends BasicSerializableObject {
     static getId() {
@@ -23,27 +22,36 @@ export class HubGoals extends BasicSerializableObject {
         };
     }
 
-    deserialize(data) {
+    /**
+     *
+     * @param {*} data
+     * @param {GameRoot} root
+     */
+    deserialize(data, root) {
         const errorCode = super.deserialize(data);
         if (errorCode) {
             return errorCode;
         }
 
-        if (IS_DEMO) {
-            this.level = Math.min(this.level, tutorialGoals.length);
+        const levels = root.gameMode.getLevelDefinitions();
+
+        // If freeplay is not available, clamp the level
+        if (!root.gameMode.getIsFreeplayAvailable()) {
+            this.level = Math.min(this.level, levels.length);
         }
 
         // Compute gained rewards
         for (let i = 0; i < this.level - 1; ++i) {
-            if (i < tutorialGoals.length) {
-                const reward = tutorialGoals[i].reward;
+            if (i < levels.length) {
+                const reward = levels[i].reward;
                 this.gainedRewards[reward] = (this.gainedRewards[reward] || 0) + 1;
             }
         }
 
         // Compute upgrade improvements
-        for (const upgradeId in UPGRADES) {
-            const tiers = UPGRADES[upgradeId];
+        const upgrades = this.root.gameMode.getUpgrades();
+        for (const upgradeId in upgrades) {
+            const tiers = upgrades[upgradeId];
             const level = this.upgradeLevels[upgradeId] || 0;
             let totalImprovement = 1;
             for (let i = 0; i < level; ++i) {
@@ -84,17 +92,16 @@ export class HubGoals extends BasicSerializableObject {
          */
         this.upgradeLevels = {};
 
-        // Reset levels
-        for (const key in UPGRADES) {
-            this.upgradeLevels[key] = 0;
-        }
-
         /**
          * Stores the improvements for all upgrades
          * @type {Object<string, number>}
          */
         this.upgradeImprovements = {};
-        for (const key in UPGRADES) {
+
+        // Reset levels first
+        const upgrades = this.root.gameMode.getUpgrades();
+        for (const key in upgrades) {
+            this.upgradeLevels[key] = 0;
             this.upgradeImprovements[key] = 1;
         }
 
@@ -120,7 +127,10 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {boolean}
      */
     isEndOfDemoReached() {
-        return IS_DEMO && this.level >= tutorialGoals.length;
+        return (
+            !this.root.gameMode.getIsFreeplayAvailable() &&
+            this.level >= this.root.gameMode.getLevelDefinitions().length
+        );
     }
 
     /**
@@ -215,8 +225,9 @@ export class HubGoals extends BasicSerializableObject {
      */
     computeNextGoal() {
         const storyIndex = this.level - 1;
-        if (storyIndex < tutorialGoals.length) {
-            const { shape, required, reward, throughputOnly } = tutorialGoals[storyIndex];
+        const levels = this.root.gameMode.getLevelDefinitions();
+        if (storyIndex < levels.length) {
+            const { shape, required, reward, throughputOnly } = levels[storyIndex];
             this.currentGoal = {
                 /** @type {ShapeDefinition} */
                 definition: this.root.shapeDefinitionMgr.getShapeFromShortKey(shape),
@@ -254,7 +265,7 @@ export class HubGoals extends BasicSerializableObject {
      * Returns whether we are playing in free-play
      */
     isFreePlay() {
-        return this.level >= tutorialGoals.length;
+        return this.level >= this.root.gameMode.getLevelDefinitions().length;
     }
 
     /**
@@ -262,16 +273,11 @@ export class HubGoals extends BasicSerializableObject {
      * @param {string} upgradeId
      */
     canUnlockUpgrade(upgradeId) {
-        const tiers = UPGRADES[upgradeId];
+        const tiers = this.root.gameMode.getUpgrades()[upgradeId];
         const currentLevel = this.getUpgradeLevel(upgradeId);
 
         if (currentLevel >= tiers.length) {
             // Max level
-            return false;
-        }
-
-        if (IS_DEMO && currentLevel >= 4) {
-            // DEMO
             return false;
         }
 
@@ -296,7 +302,7 @@ export class HubGoals extends BasicSerializableObject {
      */
     getAvailableUpgradeCount() {
         let count = 0;
-        for (const upgradeId in UPGRADES) {
+        for (const upgradeId in this.root.gameMode.getUpgrades()) {
             if (this.canUnlockUpgrade(upgradeId)) {
                 ++count;
             }
@@ -314,7 +320,7 @@ export class HubGoals extends BasicSerializableObject {
             return false;
         }
 
-        const upgradeTiers = UPGRADES[upgradeId];
+        const upgradeTiers = this.root.gameMode.getUpgrades()[upgradeId];
         const currentLevel = this.getUpgradeLevel(upgradeId);
 
         const tierData = upgradeTiers[currentLevel];
@@ -363,7 +369,7 @@ export class HubGoals extends BasicSerializableObject {
         if (allowUncolored) {
             universalColors.push(enumColors.uncolored);
         }
-        const index = rng.nextIntRangeInclusive(0, colorWheel.length - 3);
+        const index = rng.nextIntRange(0, colorWheel.length - 2);
         const pickedColors = colorWheel.slice(index, index + 3);
         pickedColors.push(rng.choice(universalColors));
         return pickedColors;

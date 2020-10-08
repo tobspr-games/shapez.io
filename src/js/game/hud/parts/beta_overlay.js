@@ -7,7 +7,7 @@ export class HUDBetaOverlay extends BaseHUDPart {
             parent,
             "ingame_HUD_BetaOverlay",
             [],
-            "<h2>UNSTABLE BETA VERSION</h2><span>Steam Release: 9th October 2020!</span>"
+            "<h2>UNSTABLE BETA VERSION</h2><span>Unfinalized & potential buggy content!</span>"
         );
     }
 

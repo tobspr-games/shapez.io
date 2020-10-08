@@ -4,7 +4,7 @@ steamPage:
     discordLinkShort: 公式Discord
     intro: >-
         工場の自動化ゲームはお好きですか？それなら間違いないでしょう！
-    
+
         Shapez.ioは、様々な幾何学的形状を生成するために工場を建設する、落ち着いたゲームです。レベルが上がる毎に生成すべき形はどんどん複雑になり、工場を無限に広がるマップに拡張する必要があります。
 
         しかし、それだけでは不十分です。需要は指数関数的に上昇し、より多くの形状を生産する必要があり――"スケーリング"が、唯一の対抗策と成り得ます。最初は形状を加工するだけですが、後々着色も必要になってきます――それには色を抽出して、混ぜ合わせることが必要です！
@@ -120,18 +120,17 @@ dialogs:
         title: セーブデータのインポートに成功
         text: セーブデータをインポートしました。
 
-
     gameLoadFailure:
         title: ゲームが壊れています
         text: >-
-             セーブデータのロードに失敗しました:
+            セーブデータのロードに失敗しました:
 
     confirmSavegameDelete:
         title: 削除確認
         text: >-
             本当に削除しますか？<br><br>
             レベル<savegameLevel>: '<savegameName>'<br><br>
-            この操作は取り消しできません！	
+            この操作は取り消しできません！
 
     savegameDeletionError:
         title: 削除に失敗
@@ -141,7 +140,6 @@ dialogs:
     restartRequired:
         title: 再起動が必要
         text: 設定を反映するには再起動が必要です
-
 
     editKeybinding:
         title: キー設定の変更
@@ -168,32 +166,25 @@ dialogs:
         desc: >-
             前回からの変更点:
 
-
     upgradesIntroduction:
         title: アップグレード解除
         desc: すべての納品された形はアップグレードの解除のためにカウントされています。<strong>作った生産ラインを削除しないようにしてください！</strong>　アップグレードタブは画面の右上から確認できます。
-
-
 
     massDeleteConfirm:
         title: 削除確認
         desc: 多数の建造物を削除しようとしています！ (<count> 個の選択) 続行しますか？
 
-
     massCutConfirm:
         title: カット確認
         desc: 多数の建造物をカットしようとしています！ (<count> 個の選択) 続行しますか？
-
 
     massCutInsufficientConfirm:
         title: カット確認
         desc: 設置コストが不足しています！ 続行しますか？
 
-
     blueprintsNotUnlocked:
         title: 未解除
         desc: レベル12をクリアしてブループリント機能を解除してください！
-
 
     keybindingsIntroduction:
         title: 便利なキー設定
@@ -228,10 +219,8 @@ dialogs:
     entityWarning:
         title: パフォーマンスの警告
         desc: あなたは沢山の工場を配置しましたが、このゲームは無限の建物を処理できるわけではありません。これは友好的なリマインダですが、より工場をコンパクトにすることに挑戦してみてください。
-        
+
 ingame:
-
-
     keybindingsOverlay:
         moveMap: マップ移動
         selectBuildings: 範囲選択
@@ -253,7 +242,6 @@ ingame:
         pipette: ピペット
         switchLayers: レイヤーを変更
 
-
     colors:
         red: 赤
         green: 緑
@@ -265,16 +253,9 @@ ingame:
         black: 黒
         uncolored: 無色
 
-
-
     buildingPlacement:
         cycleBuildingVariants: <key> キーを押して変更
         hotkeyLabel: "ホットキー: <key>"
-
-
-
-
-
 
         infoTexts:
             speed: スピード
@@ -285,35 +266,25 @@ ingame:
             itemsPerSecondDouble: (x2)
             tiles: <x> タイル
 
-
-
     levelCompleteNotification:
         levelTitle: レベル <level>
         completed: 完了
         unlockText: <reward> を解除！
         buttonNextLevel: 次のレベル
 
-
-
     notifications:
         newUpgrade: 新しいアップグレードが利用可能です！
         gameSaved: ゲームをセーブしました。
         freeplayLevelComplete: レベル <level> をクリアしました!
-
 
     shop:
         title: アップグレード
         buttonUnlock: アップグレード
         tier: 第 <x> 段階
 
-
-
-
         tierLabels:
             [I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII, XIII, XIV, XV, XVI, XVII, XVIII, XIX, XX]
         maximumLevel: 最大レベル (スピード x<currentMult>)
-
-
 
     statistics:
         title: 統計情報
@@ -329,16 +300,14 @@ ingame:
                 description: 中央の建造物に納品された形の総数です。
         noShapesProduced: まだ形が生産されていません。
 
-
         shapesDisplayUnits:
             second: <shapes> / 秒
             minute: <shapes> / 分
             hour: <shapes> / 時間
 
-
     settingsMenu:
         playtime: プレイ時間
-        
+
         buildingsPlaced: 建造物
         beltsPlaced: ベルト
 
@@ -347,16 +316,13 @@ ingame:
             settings: 設定
             menu: メニューに戻る
 
-
     tutorialHints:
         title: ヒントが必要ですか？
         showHint: ヒントを見る
         hideHint: 閉じる
 
-
     blueprintPlacer:
         cost: コスト
-
 
     waypoints:
         waypoints: マーカー
@@ -369,7 +335,6 @@ ingame:
         title: レイヤー
         empty: 空
         copyKey: キーをコピー
-
 
     interactiveTutorial:
         title: チュートリアル
@@ -528,7 +493,7 @@ buildings:
         second:
             name: *wire
             description: *wire_desc
-    
+
     wire_tunnel:
         default:
             name: &wire_tunnel 交差ワイヤ
@@ -572,13 +537,13 @@ buildings:
     display:
         default:
             name: &display ディスプレイ
-            description: >- 
+            description: >-
                 入力された信号をディスプレイに表示します。
                 形状、色、真偽値のいずれでも可能です。
     reader:
         default:
             name: &reader ベルトリーダ
-            description: >-     
+            description: >-
                 平均スループットを計測できます。 アンロック後は、
                 最後に通過したアイテムの情報を出力します。
     analyzer:
@@ -773,7 +738,7 @@ settings:
             title: オートセーブ間隔
             description: >-
                 ゲームが自動的にセーブされる頻度を設定します。無効化することも可能です。
-            
+
             intervals:
                 one_minute: 1分
                 two_minutes: 2分
@@ -818,7 +783,7 @@ settings:
         soundVolume:
             title: 音量(SE)
             description: 効果音の音量を設定してください。
-            
+
         musicVolume:
             title: 音量(BGM)
             description: 音楽の音量を設定してください。
@@ -866,7 +831,8 @@ settings:
                 これにより、ゲームの見た目もすっきりします。
         clearCursorOnDeleteWhilePlacing:
             title: 右クリックで配置をキャンセル
-            description: デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
+            description:
+                デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
                 無効にすると、建物の設置中に右クリックで建物を削除できます。
         lowQualityTextures:
             title: 低品質のテクスチャ(視認性低下)
@@ -911,20 +877,20 @@ keybindings:
         mapMoveLeft: 左移動
         mapMoveFaster: より速く移動
         centerMap: マップ中央移動
-        
+
         mapZoomIn: ズームイン
         mapZoomOut: ズームアウト
         createMarker: マーカー設置
-        
+
         menuOpenShop: アップグレード
         menuOpenStats: 統計情報
         menuClose: メニューを閉じる
-        
+
         toggleHud: HUD切り替え
         toggleFPSInfo: FPS、デバッグ情報表示切り替え
         switchLayers: レイヤを変更
         exportScreenshot: 工場の全体像を画像出力
-        
+
         # --- Do not translate the values in this section
         belt: *belt
         balancer: *balancer
@@ -951,7 +917,7 @@ keybindings:
         comparator: *comparator
         item_producer: なんでも抽出機(サンドボックス)
         # ---
-        
+
         pipette: スポイト
         rotateWhilePlacing: 回転
         rotateInverseModifier: >-
