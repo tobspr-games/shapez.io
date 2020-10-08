@@ -639,10 +639,10 @@ storyRewards:
             potertelo permettere! (Quelle che hai appena consegnato).
     no_reward:
         title: Prossimo livello
-        desc: Questo livello non ti ha dato alcuna ricompensa, ma il prossimo lo farà!
+        desc: "Questo livello non ti ha dato alcuna ricompensa, ma il prossimo lo farà!
             <br><br> PS: Meglio non distruggere la fabbrica che hai costruito.
             Successivamente avrai bisogno di <strong>tutte</strong> quelle forme
-            per <strong>sbloccare i miglioramenti</strong>!
+            per <strong>sbloccare i miglioramenti</strong>!"
     no_reward_freeplay:
         title: Prossimo livello
         desc: Congratulazioni! Ci sono altri contenuti in prgramma per la versione
