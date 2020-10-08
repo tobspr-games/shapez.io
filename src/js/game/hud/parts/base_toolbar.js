@@ -160,7 +160,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
         }
 
         let newBuildingFound = false;
-        let direction = !this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed * 2 + 1;
+        let direction =
+            !this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed * 2 + 1;
         let newIndex = this.lastSelectedIndex;
         for (let i = 0; i < this.primaryBuildings.length; ++i, newIndex += direction) {
             newIndex %= this.primaryBuildings.length;
