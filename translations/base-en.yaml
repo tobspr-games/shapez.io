@@ -668,7 +668,7 @@ buildings:
 
         rotater:
             name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            description: Virtually rotates the shape clockwise.
 
         unstacker:
             name: Virtual Unstacker

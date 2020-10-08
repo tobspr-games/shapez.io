@@ -5,9 +5,11 @@ steamPage:
     discordLinkShort: Offizieller Discord
     intro: >-
         Du magst Automatisierungsspiele? Dann bist du hier genau richtig!
-        shapez.io ist ein ruhiges Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
+        shapez.io ist ein entspanntes Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
+
         Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten.
         Das ist noch nicht alles, denn du musst exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
+
         Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen!
         Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
     title_advantages: Vorteile der Vollversion
@@ -15,7 +17,7 @@ steamPage:
         - <b>12 Neue Level</b> für insgesamt 26 Level
         - <b>18 Neue Gebäude</b> für eine komplett automatisierte Fabrik!
         - <b>20 Upgrade-Stufen</b> für viele Stunden Spielspaß
-        - <b>Kabelupdate</b> für eine komplett neue Dimension!
+        - <b>Wires-Update</b> für eine komplett neue Dimension!
         - <b>Dark-Mode</b>!
         - Unbegrenzte Speicherstände
         - Unbegrenzte Wegpunkte
@@ -355,7 +357,7 @@ ingame:
                 title: ∞ Marker
                 desc: Verliere nie den Überblick!
             wires:
-                title: Signalkabel
+                title: Wires-Ebene
                 desc: Eine ganz neue Dimension!
             darkmode:
                 title: Dark-Mode
@@ -464,7 +466,7 @@ buildings:
             name: Färber (vierfach)
             description: Erlaubt dir, jeden Quadranten der Form individuell zu färben. Nur
                 Quadranten mit einem <strong>wahren Signal</strong> (Form, Farbe oder "1")
-                auf der Leiterebene werden angemalt!
+                auf der Wires-Ebene werden angemalt!
     trash:
         default:
             name: Mülleimer
@@ -496,7 +498,7 @@ buildings:
         default:
             name: Schalter
             description:
-                Sendet einen Wahrheitswert (1 oder 0) auf der Leiterebene abhängig von seiner Stellung,
+                Sendet einen Wahrheitswert (1 oder 0) auf der Wires-Ebene abhängig von seiner Stellung,
                 welcher dann z.B. zur Steuerung eines Filters verwendet werden kann.
     logic_gate:
         default:
@@ -522,7 +524,7 @@ buildings:
         default:
             name: Itemfilter
             description: Lässt nur die Items durch, die dem eingespeisten Signal entsprechen und sortiert die
-                restlichen aus. Mit Wahrheitswerten konfiguriert, fungiert er als Itemschranke.
+                restlichen aus. Mit Wahrheitswerten konfiguriert fungiert er als Schranke.
     display:
         default:
             name: Anzeige
@@ -532,7 +534,7 @@ buildings:
         default:
             name: Fließbandkontrolle
             description: Misst den gemittelten Durchsatz des Fließbandes. Gibt zuätzlich den zuletzt
-                passierten Gegenstand auf der Leiterebene aus (sobald freigeschaltet).
+                passierten Gegenstand auf der Wires-Ebene aus (sobald freigeschaltet).
     analyzer:
         default:
             name: Formanalyse
@@ -548,7 +550,7 @@ buildings:
             description: Schneidet die Form virtuell in zwei Hälften.
         rotater:
             name: Virtueller Rotierer
-            description: Dreht die Form virtuell sowohl im als auch gegen den Uhrzeigersinn.
+            description: Dreht die Form virtuell im Uhrzeigersinn.
         unstacker:
             name: Virtueller Entstapler
             description: Extrahiert virtuell die oberste Ebene nach rechts und die
@@ -562,7 +564,7 @@ buildings:
     item_producer:
         default:
             name: Item-Produzent
-            description: Nur im Sandkastenmodus verfügbar. Gibt das Signal aus der Leiterebene als Item aus.
+            description: Nur im Sandkastenmodus verfügbar. Gibt das Signal aus der Wires-Ebene als Item aus.
 storyRewards:
     reward_cutter_and_trash:
         title: Formen zerschneiden
@@ -658,11 +660,11 @@ storyRewards:
         desc: Du hast eine weitere Variante des <strong>Rotierers</strong> freigeschaltet! Mit ihm
             kannst du Formen um 180° drehen (Überraschung! :D).
     reward_wires_painter_and_levers:
-        title: Leiterebene & vierfacher Färber
-        desc: Du hast soeben die <strong>Leiterebene</strong> freigeschaltet! Diese separate Ebene
+        title: Wires-Ebene & vierfacher Färber
+        desc: Du hast soeben die <strong>Wires-Ebene</strong> freigeschaltet! Diese separate Ebene
             befindet sich unter deinen Gebäuden und gibt dir viele neue Möglichkeiten.<br><br>
             Für den Anfang bekommst du einen <strong>vierfachen Färber</strong>.
-            Schließe die Eingänge, mit denen du die Quadranten färben möchtest, an ein Signalkabel auf der Leiterebene an!<br><br>
+            Schließe die Eingänge, mit denen du die Quadranten färben möchtest, an ein Signalkabel auf der Wires-Ebene an!<br><br>
             Mit <strong>E</strong> wechselst du zwischen den Ebenen.
     reward_filter:
         title: Itemfilter
@@ -678,13 +680,15 @@ storyRewards:
             und Lager das zuletzt passierte Item ausgeben können? Lasse es dir doch gleich mal anzeigen!
     reward_constant_signal:
         title: Signalgeber
-        desc: Du hast den <strong>Signalgeber</strong> freigeschaltet! Du kannst das Gebäude auf der Leiterebene
+        desc:
+            Du hast den <strong>Signalgeber</strong> freigeschaltet! Du kannst das Gebäude auf der Wires-Ebene
             platzieren und z.B. mit einem <strong>Itemfilter</strong> verbinden.<br><br>
             Der Signalgeber kann dir <strong>Formen</strong>, <strong>Farben</strong> oder
             <strong>Wahrheitswerte</strong> (1 oder 0) zur Verfügung stellen.
     reward_logic_gates:
         title: Logikgatter
-        desc: Du hast nun eine Reihe an <strong>Logikgattern</strong> freigeschaltet! Das muss dich jetzt nicht
+        desc:
+            Du hast nun eine Reihe an <strong>Logikgattern</strong> freigeschaltet! Das muss dich jetzt nicht
             nervös machen, die Funktionsweise ist simpel und ziemlich cool.<br><br>
             Mit Logikgattern kannst du UND-, ODER-, XODER- und NICHT-Operationen ausführen.<br><br>
             Als Sahnehäubchen obendrauf stelle ich dir noch einen <strong>Transistor</strong> zur Verfügung.<br><br>
@@ -694,11 +698,11 @@ storyRewards:
         desc: >-
             Du hast gerade eine Menge neue Gebäude freigeschaltet! Mit ihnen kannst du die
             <strong>Verarbeitung von Formen komplett simulieren</strong>.<br><br>
-            Das beinhaltet einen Schneider, Rotierer, Stapler und mehr für die Kabelebene!
+            Das beinhaltet einen Schneider, Rotierer, Stapler und mehr für die Wires-Ebene!
             Damit bleiben dir ab jetzt drei Optionen offen:<br><br>
             - Ich empfehle dir, eine <strong>automatisierte Maschine</strong> zu bauen, die jede beliebige Form
             am Hub abgreift und herstellt. (Probiere es wenigstens!)<br><br>
-            - Werde kreativ und lasse dir etwas Cooles einfallen, das du auf der Leiterebene umsetzen kannst.
+            - Werde kreativ und lasse dir etwas Cooles einfallen, das du auf der Wires-Ebene umsetzen kannst.
             (Und teile es auf dem Discord!)<br><br>
             - Spiele dich weiter durch die Level. Auf deine Art!<br><br>
             Das Wichstigste an deiner Entscheidung ist: Vergiss nicht, dabei Spaß zu haben!
@@ -717,7 +721,7 @@ storyRewards:
             dass die abzuliefernden Formen jetzt <strong>zufällig</strong> erzeugt werden!<br><br>
             Da der Hub ab jetzt einen bestimmten <strong>Durchsatz</strong> benötigt, empfehle ich dringend, eine Maschine zu bauen,
             die automatisch die gewünschte Form liefert!<br><br>
-            Der Hub gibt die gewünschte Form auf der Leiterebene aus. Also musst du sie nur analysieren und
+            Der Hub gibt die gewünschte Form auf der Wires-Ebene aus. Also musst du sie nur analysieren und
             basierend darauf automatisch deine Fabrik konfigurieren.
     reward_demo_end:
         title: Ende der Demo
@@ -860,7 +864,8 @@ settings:
                 es die Darstellung!
         clearCursorOnDeleteWhilePlacing:
             title: Abwählen mit Rechtsklick
-            description: Standardmäßig eingeschaltet, wählt es das aktuelle, zur Platzierung ausgewählte Gebäude
+            description:
+                Standardmäßig eingeschaltet, wählt es das aktuelle, zur Platzierung ausgewählte Gebäude
                 ab, wenn du die rechte Masutaste drückst. Wenn du es abschaltest, kannst du mit der rechten
                 Maustaste Gebäude löschen, während du im Platzierungsmodus bist.
         lowQualityTextures:
