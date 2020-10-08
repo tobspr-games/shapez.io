@@ -2,18 +2,6 @@ import { STOP_PROPAGATION } from "../../../core/signal";
 import { Vector } from "../../../core/vector";
 import { enumMouseButton } from "../../camera";
 import { BaseHUDPart } from "../base_hud_part";
-import { FormElementInput, FormElementItemChooser } from "../../../core/modal_dialog_forms";
-import { fillInLinkIntoTranslation } from "../../../core/utils";
-import { T } from "../../../translations";
-import { THIRDPARTY_URLS } from "../../../core/config";
-import { BaseItem } from "../../base_item";
-import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../../items/boolean_item";
-import { DialogWithForm } from "../../../core/modal_dialog_elements";
-import { COLOR_ITEM_SINGLETONS } from "../../items/color_item";
-import { blueprintShape } from "../../upgrades";
-import trim from "trim";
-import { ShapeDefinition } from "../../shape_definition";
-import { enumColors } from "../../colors";
 
 export class HUDEditConstantSignal extends BaseHUDPart {
     initialize() {
