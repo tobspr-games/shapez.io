@@ -369,7 +369,7 @@ export class HubGoals extends BasicSerializableObject {
         if (allowUncolored) {
             universalColors.push(enumColors.uncolored);
         }
-        const index = rng.nextIntRangeInclusive(0, colorWheel.length - 3);
+        const index = rng.nextIntRange(0, colorWheel.length - 2);
         const pickedColors = colorWheel.slice(index, index + 3);
         pickedColors.push(rng.choice(universalColors));
         return pickedColors;

@@ -463,35 +463,35 @@ buildings:
                 boolean (1 / 0).
     lever:
         default:
-            name: Switch
+            name: 信號切換器
             description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
                 which can then be used to control for example an item filter.
     logic_gate:
         default:
-            name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
-                color or boolean "1")
+            name: AND 邏輯閘
+            description: 當輸入均為「真」時，輸出才為1。
+                （「真」值代表：形狀正確、顏色正確或布林值為1）
         not:
-            name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            name: NOT 邏輯閘
+            description: 當輸入之ㄧ為「假」時，輸出才為1。
+                （「假」值代表：形狀不正確、顏色不正確或布林值為0）
         xor:
-            name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            name: XOR 邏輯閘
+            description: 當輸入均為「假」時，輸出才為1。
+                （「假」值代表：形狀不正確、顏色不正確或布林值為0）
         or:
-            name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
-                shape, color or boolean "1")
+            name: OR 邏輯閘
+            description: 當輸入之ㄧ為「真」時，輸出才為1。
+                （「真」值代表：形狀正確、顏色正確或布林值為1）
     transistor:
         default:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: 電晶體
+            description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
+                （「真」值代表：形狀正確、顏色正確或布林值為1）
         mirrored:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: 電晶體
+            description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
+                （「真」值代表：形狀正確、顏色正確或布林值為1）
     filter:
         default:
             name: Filter
@@ -505,51 +505,45 @@ buildings:
                 color or boolean.
     reader:
         default:
-            name: Belt Reader
+            name: 傳送帶讀取機
             description: Allows to measure the average belt throughput. Outputs the last
                 read item on the wires layer (once unlocked).
     analyzer:
         default:
-            name: Shape Analyzer
+            name: 形狀分析機
             description: Analyzes the top right quadrant of the lowest layer of the shape
                 and returns its shape and color.
     comparator:
         default:
-            name: Compare
+            name: 比較機
             description: Returns boolean "1" if both signals are exactly equal. Can compare
                 shapes, items and booleans.
     virtual_processor:
         default:
-            name: Virtual Cutter
-            description: Virtually cuts the shape into two halves.
+            name: 虛擬切割機
+            description: 虛擬地將圖形從上到下切開並輸出。
         rotater:
-            name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            name: 虛擬旋轉機
+            description: 虛擬地將圖形順時針或逆時針旋轉。
         unstacker:
-            name: Virtual Unstacker
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            name: 虛擬提取機
+            description: 虛擬地提取最上層的圖形到右方輸出，剩下的圖形由左方輸出。
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: 虛擬堆疊機
+            description: 虛擬地將輸入的圖形拼貼在一起。如果不能被直接拼貼，右邊的圖形會被疊在左邊的圖形上面。
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: 虛擬上色機
+            description: 虛擬地將整個圖形塗上輸入的顏色。
     item_producer:
         default:
-            name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            name: 物品製造機
+            description: 沙盒模式專有，將電路層的輸入轉化成一般層的輸出。
 storyRewards:
     reward_cutter_and_trash:
         title: 切割圖形
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。
+            <br><br>記得把不需要的部分處理掉，否則這個這個建築會<strong>停止運作</strong>。
+            為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
         title: 順時針旋轉
         desc: <strong>旋轉機</strong>已解鎖。它會順時針旋轉輸入的圖形90度。
@@ -563,10 +557,9 @@ storyRewards:
         title: 混合
         desc: <strong>混合機</strong>已解鎖。如果沒有重疊的部分，混合機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
     reward_splitter:
-        title: 分離/合併
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        title: 分流
+        desc: <strong>分流機</strong>（平衡機變體）已解鎖。
+            將單個傳送帶上的物品分流到兩個傳送帶上。
     reward_tunnel:
         title: 隧道
         desc: <strong>隧道</strong>已解鎖。你現在可以從其他傳送帶或建築底下運送物品了！
@@ -577,7 +570,7 @@ storyRewards:
             rotater and <strong>press 'T' to cycle through its
             variants</strong>!
     reward_miner_chainable:
-        title: 鏈式開採機
+        title: 鏈式開採
         desc: "You have unlocked the <strong>chained extractor</strong>! It can
             <strong>forward its resources</strong> to other extractors so you
             can more efficiently extract resources!<br><br> PS: The old
@@ -586,11 +579,11 @@ storyRewards:
         title: 貳級隧道
         desc: <strong>貳級隧道</strong>變體已解鎖。這個隧道有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
     reward_cutter_quad:
-        title: 四分切割機
+        title: 四分切割
         desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you
             to cut shapes in <strong>four parts</strong> instead of just two!
     reward_painter_double:
-        title: 雙倍上色機
+        title: 雙倍上色
         desc: You have unlocked a variant of the <strong>painter</strong> - It works
             similar to the regular painter but processes <strong>two shapes at
             once</strong>, consuming just one color instead of two!
@@ -616,17 +609,14 @@ storyRewards:
             你生產過的<strong>所有</strong>圖形都會被用來<strong>升級建築</strong>。"
     no_reward_freeplay:
         title: 下一關
-        desc: 恭喜你！另外，我們已經計劃在獨立版中加入更多內容！
+        desc: 恭喜你！另外，我們已經計劃在單機版中加入更多內容！
     reward_balancer:
-        title: Balancer
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+        title: 平衡物流
+        desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合流或分流</strong>多個傳送帶上的物品。
     reward_merger:
-        title: Compact Merger
-        desc: You have unlocked a <strong>merger</strong> variant of the
-            <strong>balancer</strong> - It accepts two inputs and merges them
-            into one belt!
+        title: 合流
+        desc: <strong>合流機</strong>（平衡機變體）已解鎖。
+            將兩個傳送帶上的物品合流到單個傳送帶上。
     reward_belt_reader:
         title: Belt reader
         desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
@@ -781,11 +771,11 @@ settings:
             title: 依建築類型旋轉
             description: 每個建築類型，將會分別記住您最後一次使用的旋轉方向。 如果您常常切換不同類型的建築，這樣可能會更方便。
         soundVolume:
-            title: Sound Volume
-            description: Set the volume for sound effects
+            title: 音效
+            description: 音效設定
         musicVolume:
-            title: Music Volume
-            description: Set the volume for music
+            title: 音樂
+            description: 音樂設定
         lowQualityMapResources:
             title: Low Quality Map Resources
             description: Simplifies the rendering of resources on the map when zoomed in to
@@ -878,7 +868,7 @@ keybindings:
         switchDirectionLockSide: 規劃器：換邊
         pipette: Pipette
         menuClose: Close Menu
-        switchLayers: Switch layers
+        switchLayers: 更換層
         wire: Energy Wire
         balancer: Balancer
         storage: Storage
