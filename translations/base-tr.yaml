@@ -879,7 +879,7 @@ settings:
         mapResourcesScale:
             title: Uzak Bakışta Kaynakların Büyüklüğü
             description: Haritaya uzaktan bakıldığında, haritadaki şekillerin
-            büyüklüğünü ayarlar.
+                büyüklüğünü ayarlar.
 keybindings:
     title: Tuş Atamaları
     hint: "İpucu: CTRL, SHIFT ve ALT tuşlarından yararlanın! Farklı yerleştirme
