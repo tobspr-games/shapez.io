@@ -567,7 +567,7 @@ buildings:
 
         mirrored:
             name: *stacker
-            description: test
+            description: Combines its inputs, on the same layer if possible, otherwise the left input is stacked on top of the right input.
 
     mixer:
         default:

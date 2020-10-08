@@ -87,7 +87,8 @@ export function initMetaBuildingRegistry() {
 
     // Stacker
     registerBuildingVariant(14, MetaStackerBuilding);
-    registerBuildingVariant(62, MetaStackerBuilding, enumStackerVariants.mirrored);
+    //TODO: CHANGE BEFORE RELEASE
+    registerBuildingVariant(10000001, MetaStackerBuilding, enumStackerVariants.mirrored); //Temporary ID to avoid id collisions in development.
 
     // Mixer
     registerBuildingVariant(15, MetaMixerBuilding);
