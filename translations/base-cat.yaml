@@ -94,7 +94,7 @@ mainMenu:
     helpTranslate: Ajuda a traduir-lo!
     madeBy: Creat per <author-link>
     browserWarning: >-
-        
+
         Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarrega't chrome per una millor experiència.
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut
@@ -712,12 +712,12 @@ storyRewards:
             passar-ho bé!
     reward_wires_painter_and_levers:
         title: Cables i Pintador Quàdruple
-        desc: "\"Has desbloquejat la <strong>Capa de Cables</strong>: És una capa
+        desc: '"Has desbloquejat la <strong>Capa de Cables</strong>: És una capa
             separada damunt la capa normal i introdueix moltes mecàniques
-            noves!<br><br> Per començar t'he desbloquejat el <strong>Pintador
+            noves!<br><br> Per començar t''he desbloquejat el <strong>Pintador
             Quàdruple</strong>. Conecta les ranures que vols pintar a la capa de
             Cables!<br><br> Per canviar a la capa de Cables, prem
-            <strong>E</strong>.\""
+            <strong>E</strong>."'
     reward_filter:
         title: Filtre d'Ítems
         desc: Has desbloquejat el <strong>Filtre d'Ítems</strong>! Filtrarà els ítems a
