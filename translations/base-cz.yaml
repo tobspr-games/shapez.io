@@ -40,7 +40,7 @@ steamPage:
         subreddit: Subreddit
         source_code: Source code (GitHub)
         translate: Pomozte přeložit hru!
-    text_open_source: |-
+    text_open_source: >-
         Kdokoli může přispět, jsem aktivně zapojený do komunity,
          pokouším se zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu všude,
          kde je to možné.
@@ -194,15 +194,11 @@ dialogs:
     editSignal:
         title: Nastavte signál
         descItems: "Vyberte předdefinovanou položku:"
-        descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (který
-            můžete vygenerovat <link>zde</link>)
+        descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (který můžete
+            vygenerovat <link>zde</link>)
     renameSavegame:
         title: Přejmenovat uloženou hru
         desc: Zde můžeš přejmenovat svoji uloženou hru.
-    entityWarning:
-        title: Varování výkonu
-        desc: Umístili jste spoustu budov, to je jen přátelská připomínka. Hra nezvládne
-            nekonečný počet budov - zkuste udržet své továrny kompaktní!
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -248,27 +244,6 @@ ingame:
         title: Vylepšení
         buttonUnlock: Vylepšit
         tier: Úroveň <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: MAXIMÁLNÍ ÚROVEŇ (Rychlost x<currentMult>)
     statistics:
         title: Statistiky
@@ -291,10 +266,6 @@ ingame:
         playtime: Herní čas
         buildingsPlaced: Budovy
         beltsPlaced: Pásy
-        buttons:
-            continue: Pokračovat
-            settings: Nastavení
-            menu: Návrat do menu
     tutorialHints:
         title: Potřebujete pomoct?
         showHint: Zobrazit nápovědu
@@ -450,9 +421,9 @@ buildings:
             description: Obarví tvary z levých vstupů barvou z horního vstupu.
         quad:
             name: Barvič (čtyřnásobný)
-            description: Umožnuje obarvit každou čtvrtinu tvaru individuálně. Jen
-                čtvrtiny se vstupy barev s <strong>logickým signálem</strong> na vrstvě kabelů
-                budou obarveny!
+            description: Umožnuje obarvit každou čtvrtinu tvaru individuálně. Jen čtvrtiny
+                se vstupy barev s <strong>logickým signálem</strong> na vrstvě
+                kabelů budou obarveny!
         mirrored:
             name: Barvič
             description: Obarví celý tvar v levém vstupu barvou z pravého vstupu.
@@ -486,8 +457,8 @@ buildings:
     storage:
         default:
             name: Sklad
-            description: Skladuje přebytečné věci až do naplnění kapacity. Může být použit na
-                skladování surovin navíc.
+            description: Skladuje přebytečné věci až do naplnění kapacity. Může být použit
+                na skladování surovin navíc.
     wire_tunnel:
         default:
             name: Křížení kabelů
@@ -568,17 +539,16 @@ buildings:
     item_producer:
         default:
             name: Výrobník předmětů
-            description: Dostupný pouze v sandboxovém módu, vydává daný signál z
-                vrstvy kabelů na běžnou vrstvu.
+            description: Dostupný pouze v sandboxovém módu, vydává daný signál z vrstvy
+                kabelů na běžnou vrstvu.
 storyRewards:
     reward_cutter_and_trash:
         title: Řezání tvarů
-        desc: Právě jste odemkli <strong>pilu</strong>, která řeže tvary
-            svisle na poloviny <strong>bez ohledu na její
+        desc: Právě jste odemkli <strong>pilu</strong>, která řeže tvary svisle na
+            poloviny <strong>bez ohledu na její
             orientaci</strong>!<br><br>Nezapoměňte se zbavit zbytku tvarů, jinak
-            se <strong>vám produkce zasekne</strong> - za tímto účelem
-            jsem vám dal <strong>koš</strong>, který smaže
-            vše, co do něj vložíte!
+            se <strong>vám produkce zasekne</strong> - za tímto účelem jsem vám
+            dal <strong>koš</strong>, který smaže vše, co do něj vložíte!
     reward_rotater:
         title: Otáčení
         desc: <strong>Rotor</strong> byl právě odemčen! Otáčí tvary po směru hodinových
@@ -601,8 +571,8 @@ storyRewards:
     reward_splitter:
         title: Rozřazování/Spojování pásu
         desc: Právě jste odemkli <strong>rozdělovací</strong> variantu
-            <strong>vyvažovače</strong> - Přijímá jeden vstup a rozdělí ho
-            na dva!
+            <strong>vyvažovače</strong> - Přijímá jeden vstup a rozdělí ho na
+            dva!
     reward_tunnel:
         title: Tunel
         desc: <strong>Tunel</strong> byl právě odemčen - Umožňuje vézt suroviny pod
@@ -615,9 +585,9 @@ storyRewards:
     reward_miner_chainable:
         title: Napojovací extraktor
         desc: "Právě jste odemkli <strong>napojovací extraktor</strong>! Může
-            <strong>předat své zdroje</strong> ostatním extraktorům, čímž
-            můžete efektivněji těžit více zdrojů!<br><br> PS: Starý
-            extraktor bude od teď nahrazen ve vašem panelu nástrojů!"
+            <strong>předat své zdroje</strong> ostatním extraktorům, čímž můžete
+            efektivněji těžit více zdrojů!<br><br> PS: Starý extraktor bude od
+            teď nahrazen ve vašem panelu nástrojů!"
     reward_underground_belt_tier_2:
         title: Tunel II. úrovně
         desc: Odemknuli jste <strong>tunel II. úrovně</strong> - Má <strong>delší
@@ -633,17 +603,17 @@ storyRewards:
             barvy!
     reward_storage:
         title: Sklad
-        desc: Právě jste odemkli <strong>sklad</strong> - Umožnuje skladovat přebytečné věci
-            až do naplnění kapacity!<br><br> Dává prioritu levému
-            výstupu, takže ho také můžete použít jako <strong>průtokovou bránu</strong>!
+        desc: Právě jste odemkli <strong>sklad</strong> - Umožnuje skladovat přebytečné
+            věci až do naplnění kapacity!<br><br> Dává prioritu levému výstupu,
+            takže ho také můžete použít jako <strong>průtokovou bránu</strong>!
     reward_freeplay:
         title: Volná hra
         desc: Zvládli jste to! Odemkli jste <strong>mód volné hry</strong>! To znamená,
-            budou od teď <strong>náhodně</strong> generovány!<br><br>
-            Vzhledem k tomu, že Hub nadále potřebuje <strong>propustnost</strong>
-            , především doporučuji postavit továrnu, která automaticky
-            doručí požadovaný tvar!<br><br> Hub vysílá požadovaný
-            tvar na vrstvu kabelů, takže jediné co musíte udělat, je analyzovat tvar a
+            budou od teď <strong>náhodně</strong> generovány!<br><br> Vzhledem k
+            tomu, že Hub nadále potřebuje <strong>propustnost</strong> ,
+            především doporučuji postavit továrnu, která automaticky doručí
+            požadovaný tvar!<br><br> Hub vysílá požadovaný tvar na vrstvu
+            kabelů, takže jediné co musíte udělat, je analyzovat tvar a
             automaticky nastavit svou továrnu dle této analýzy.
     reward_blueprints:
         title: Plány
@@ -663,66 +633,67 @@ storyRewards:
         desc: Gratuluji! Mimochodem, více obsahu najdete v plné verzi!
     reward_balancer:
         title: Vyvažovač
-        desc: Multifunkční <strong>vyvažovač</strong> byl odemknut - Může
-            být použit ke zvětšení vašich továren <strong>rozdělováním a spojováním
-            předmětů</strong> na několik pásu!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_merger:
         title: Kompaktní spojovač
         desc: Právě jste odemkli <strong>spojovací</strong> variantu
-            <strong>vyvažovače</strong> - Přijímá dva vstupy a spojí je
-            do jednoho!
+            <strong>vyvažovače</strong> - Přijímá dva vstupy a spojí je do
+            jednoho!
     reward_belt_reader:
         title: Čtečka pásů
-        desc: Právě jste odemkli <strong>čtečku pásů</strong>! Umožnuje vám
-            změřit propustnost pásu.<br><br>A počkejte na odemčení
-            kabelů - později to bude velmi užitečné!
+        desc: Právě jste odemkli <strong>čtečku pásů</strong>! Umožnuje vám změřit
+            propustnost pásu.<br><br>A počkejte na odemčení kabelů - později to
+            bude velmi užitečné!
     reward_rotater_180:
         title: Rotor (180°)
-        desc: Právě jste odemkli 180 stupňoví <strong>rotor</strong>! - Umožňuje
-            vám otáčet tvar o 180 stupňů!
+        desc: Právě jste odemkli 180 stupňoví <strong>rotor</strong>! - Umožňuje vám
+            otáčet tvar o 180 stupňů!
     reward_display:
         title: Display
-        desc: "Právě jste odemkli <strong>Display</strong> - Připojte signál ve
-            vrstvě kabelů pro vizualizaci!<br><br> PS: Všimli jste si, že čtečka
-            pásů a sklad vysílájí jejich poslední přečtěný předmět? Zkuste ho ukázat na
+        desc: "Právě jste odemkli <strong>Display</strong> - Připojte signál ve vrstvě
+            kabelů pro vizualizaci!<br><br> PS: Všimli jste si, že čtečka pásů a
+            sklad vysílájí jejich poslední přečtěný předmět? Zkuste ho ukázat na
             displeji!"
     reward_constant_signal:
         title: Konstantní signál
-        desc: Právě jste odemkli <strong>konstantní signál</strong> na vrstvě
-            kabelů! Tohle je například užitečné pro připojení k <strong>filtrům předmětů</strong>
-            .<br><br> Konstantní signál může vysílat
-            <strong>tvar</strong>, <strong>barvu</strong> nebo
-            <strong>logickou hodnotu</strong> (1 / 0).
+        desc: Právě jste odemkli <strong>konstantní signál</strong> na vrstvě kabelů!
+            Tohle je například užitečné pro připojení k <strong>filtrům
+            předmětů</strong> .<br><br> Konstantní signál může vysílat
+            <strong>tvar</strong>, <strong>barvu</strong> nebo <strong>logickou
+            hodnotu</strong> (1 / 0).
     reward_logic_gates:
         title: Logické brány
-        desc: Právě jste odemkli <strong>logické brány</strong>! Nemusíte být zrovna nadšení,
-            ale ve skutečnosti je to celkem cool!<br><br> S těmito bránami
-            můžete propočítat AND, OR, XOR a NOT operace.<br><br> Jako
+        desc: Právě jste odemkli <strong>logické brány</strong>! Nemusíte být zrovna
+            nadšení, ale ve skutečnosti je to celkem cool!<br><br> S těmito
+            bránami můžete propočítat AND, OR, XOR a NOT operace.<br><br> Jako
             bonus navíc vám také zpřístupním <strong>tranzistor</strong>!
     reward_virtual_processing:
         title: Virtuální zpracování
         desc: Právě jsem zpřístupnil spoustu nových budov, které vám umožní
-            <strong>simulovat výrobu různých tvarů</strong>!<br><br> Můžete
-            teď také simulovat pilu, rotor, kombinátor a mnoho dalšího na vrstvě kabelů!
-            Nadále máte tři možnosti, jak pokračovat ve hře:<br><br> -
-            Postavit <strong>automatickou továrnu</strong> k vytvoření jakéhokoliv
-            tvaru požadovaného Hubem (Doporučuji to alespoň vyzkoušet!).<br><br> - Postavit
-            něco zajímavého s použitím kabelů.<br><br> - Pokračovat ve hře
-            pravidelně.<br><br> Bez ohledu na tvou volbu, nezapomeň si svou hru užít!
+            <strong>simulovat výrobu různých tvarů</strong>!<br><br> Můžete teď
+            také simulovat pilu, rotor, kombinátor a mnoho dalšího na vrstvě
+            kabelů! Nadále máte tři možnosti, jak pokračovat ve hře:<br><br> -
+            Postavit <strong>automatickou továrnu</strong> k vytvoření
+            jakéhokoliv tvaru požadovaného Hubem (Doporučuji to alespoň
+            vyzkoušet!).<br><br> - Postavit něco zajímavého s použitím
+            kabelů.<br><br> - Pokračovat ve hře pravidelně.<br><br> Bez ohledu
+            na tvou volbu, nezapomeň si svou hru užít!
     reward_wires_painter_and_levers:
         title: Kabely a čtyřnásobný barvič
         desc: "Právě jste odemkli <strong>vrstvu kabelů</strong>: Je to samostatná
             vrstva navíc oproti běžné vrstvě a představuje spoustu nových
             možností!<br><br> Do začátku jsem zpřístupnil <strong>čtyřnásobný
-            barvič</strong> - Připojte vstupy, které byste chtěli obarvit
-            na vrstvě kabelů!<br><br> Pro přepnutí mezi vrstvami stiskněte klávesu
+            barvič</strong> - Připojte vstupy, které byste chtěli obarvit na
+            vrstvě kabelů!<br><br> Pro přepnutí mezi vrstvami stiskněte klávesu
             <strong>E</strong>."
     reward_filter:
         title: Filtr předmětů
         desc: Právě jste odemkli <strong>filtr předmětů</strong>! Nasměruje předměty buď
-            na horní nebo pravý výstup podle toho, zda se shodují
-            nebo neshodují se signálem na vrstvě kabelů.<br><br> Také můžete vyslat logickou hodnotu
-            (1 / 0) pro zapnutí nebo kompletní vypnutí filtru.
+            na horní nebo pravý výstup podle toho, zda se shodují nebo neshodují
+            se signálem na vrstvě kabelů.<br><br> Také můžete vyslat logickou
+            hodnotu (1 / 0) pro zapnutí nebo kompletní vypnutí filtru.
     reward_demo_end:
         title: Konec demo verze
         desc: Právě jste dosáhli konce demo verze!
@@ -837,8 +808,8 @@ settings:
                 barvoslepí.
         rotationByBuilding:
             title: Rotace dle typu budov
-            description: Každý typ budovy si zapamatuje poslední rotaci, na kterou jste je individuálně
-                nastavili. Tohle může být pohodlnější pokud často
+            description: Každý typ budovy si zapamatuje poslední rotaci, na kterou jste je
+                individuálně nastavili. Tohle může být pohodlnější pokud často
                 přepínáte mezi pokládáním budov různých typů.
         soundVolume:
             title: Hlasitost zvuků
@@ -848,40 +819,48 @@ settings:
             description: Nastavte hlasitost hudby
         lowQualityMapResources:
             title: Nižší kvalita zdrojů na mapě
-            description: Zjednoduší vykreslování zdrojů na mapě při přiblížení pro
-                zlepšení výkonu. Také to zlepšuje vzhled hry, takže neváhejte toto nastavení
-                vyzkoušet!
+            description: Zjednoduší vykreslování zdrojů na mapě při přiblížení pro zlepšení
+                výkonu. Také to zlepšuje vzhled hry, takže neváhejte toto
+                nastavení vyzkoušet!
         disableTileGrid:
             title: Vypnout mřížku
             description: Vypnutí mřížky částic může pomoct s výkonem. Toto nastavení
                 zlepšuje vzhled hry!
         clearCursorOnDeleteWhilePlacing:
             title: Uvolní kurzor při kliknutím pravým tlačitkem
-            description: Povoleno dle výchozího nastavení, uvolní kurzor pokaždé co kliknete pravým tlačítkem,
-                když máte budovu vybranou pro pokládání. Při vypnutí,
-                můžete smazat budovy při kliknutí pravým tlačikem spolu s položením dalších
-                budov.
+            description: Povoleno dle výchozího nastavení, uvolní kurzor pokaždé co kliknete
+                pravým tlačítkem, když máte budovu vybranou pro pokládání. Při
+                vypnutí, můžete smazat budovy při kliknutí pravým tlačikem spolu
+                s položením dalších budov.
         lowQualityTextures:
             title: Nižší kvalita textur (Horší vzhled)
             description: Používá nižší kvalitu textur pro zlepšení výkonu. Toto nastavení
                 zhorší vzhled hry!
         displayChunkBorders:
             title: Zobrazit hranice oblastí
-            description: Hra je rozdělena na oblasti 16x16 částic. Pokud je toto nastavení povolené,
-                zobrazí se hranice těchto oblastí.
+            description: Hra je rozdělena na oblasti 16x16 částic. Pokud je toto nastavení
+                povolené, zobrazí se hranice těchto oblastí.
         pickMinerOnPatch:
             title: Vybrat extraktor na naležistě zdrojů
-            description: Povoleno dle výchozího nastavení, vybere extraktor, pokud použijete kapátko pro
-                kliknutí na nalezistě zdrojů.
+            description: Povoleno dle výchozího nastavení, vybere extraktor, pokud použijete
+                kapátko pro kliknutí na nalezistě zdrojů.
         simplifiedBelts:
             title: Zjednodušené pásy (Horší vzhled)
-            description: Nevykresluje předměty na pásech, pokud nad nimi nepřejíždíte kurzorem, pro ušetření
-                výkonu. Nedoporučuji hrát s tímto nastavením, pokud
-                opravdu nepotřebujete ušetřit výkon.
+            description: Nevykresluje předměty na pásech, pokud nad nimi nepřejíždíte
+                kurzorem, pro ušetření výkonu. Nedoporučuji hrát s tímto
+                nastavením, pokud opravdu nepotřebujete ušetřit výkon.
         enableMousePan:
             title: Posouvání myší
             description: Umožnuje posouvání po mapě, pokud myší přejedete na okraj
                 obrazovky. Rychlost žáleží na nastavení rychlosti pohybu.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Klávesové zkratky
@@ -994,17 +973,19 @@ tips:
     - Symetrie je klíčová!
     - Můžete proplétat různé úrovně tunelů.
     - Snažte se postavit kompaktní továrny - vyplatí se to!
-    - Barvič má zrcadlově otočenou variantu, kterou můžete vybrat klávesou <b>T</b>
+    - Barvič má zrcadlově otočenou variantu, kterou můžete vybrat klávesou
+      <b>T</b>
     - Užití správné kombinace vylepšení maximalizuje efektivitu.
     - Na maximální úrovní, 5 extraktorů zaplní jeden celý pás.
     - Nezapomeňte na tunely!
     - Pro plnou efektivitu nemusíte rozdělovat předměty rovnoměrně.
-    - Držení klávesy <b>SHIFT</b> spolu s pásy aktivuje plánovač pásy, který vám snadno umožní
-      postavit dlouhé řady pásů.
+    - Držení klávesy <b>SHIFT</b> spolu s pásy aktivuje plánovač pásy, který vám
+      snadno umožní postavit dlouhé řady pásů.
     - Pily řežou vždy svisle, bez ohledu na jejich orientaci.
     - Smícháním všech 3 barev získáte bílou barvu.
     - Sklad preferuje levý výstup.
-    - Investujte čas pro vytvoření opakovatelných designů - ulehčí vám to pozdější expanzy!
+    - Investujte čas pro vytvoření opakovatelných designů - ulehčí vám to
+      pozdější expanzy!
     - Držení klávesy <b>CTRL</b> umožnuje postavit více budov stejného typu.
     - Můžete podržet klávesu <b>ALT</b> k obrácení směru pokládaných pásů.
     - Efektivita je klíčová!
@@ -1015,29 +996,36 @@ tips:
     - Plánujte dopředu, abyste předešli vzniku velkého chaosu!
     - Neodstraňujte své staré továrny! Budete je potřebovat pro další vylepšení.
     - Před vyhledáním pomoci zkuste sami porazit úroveň 20!
-    - Snažte se věci nekomplikovat, zůstaňtě u jednoduchých designů a dostanete se daleko.
-    - Možná budete muset použít stejné továrny i v budoucnu. Vytvořte své továrny takovým stylem,
-      abyste je mohli použít i v dalších případech.
-    - V nektěrých případech můžete najít celý požadovaný tvar bez nutnosti jeho výroby s pomocí
-      kombinátorů.
+    - Snažte se věci nekomplikovat, zůstaňtě u jednoduchých designů a dostanete
+      se daleko.
+    - Možná budete muset použít stejné továrny i v budoucnu. Vytvořte své
+      továrny takovým stylem, abyste je mohli použít i v dalších případech.
+    - V nektěrých případech můžete najít celý požadovaný tvar bez nutnosti jeho
+      výroby s pomocí kombinátorů.
     - Celý tvar typu mlýnu se na mapě nikdy nevyskytne.
     - Obarvěte své tvary před řezáním pro zvýšení efektivity.
     - S moduly, prostor je pouze vnímáním; starost pro smrtelníky.
-    - Vytvořtě si samostatnou továrnu jen na plány (blueprinty). Jsou důležité pro moduly.
+    - Vytvořtě si samostatnou továrnu jen na plány (blueprinty). Jsou důležité
+      pro moduly.
     - Podívejte se zblízka na míchač barev, a vaše otázky budou odpovězeny.
     - Použijte klávesu <b>CTRL</b> a myš pro označení oblasti.
-    - Pokud stavíte příliš blízko Hubu, v budoucnu můžete narazit na problémy s dalšími projekty.
-    - Ikona připínáčku vedle každého tvaru vám umožnuje připnout tvar, čímž se vám bude neustále zobrazovat vlevo na obrazovce.
+    - Pokud stavíte příliš blízko Hubu, v budoucnu můžete narazit na problémy s
+      dalšími projekty.
+    - Ikona připínáčku vedle každého tvaru vám umožnuje připnout tvar, čímž se
+      vám bude neustále zobrazovat vlevo na obrazovce.
     - Smíchejte všechny základní barvy pro vytvoření bílé barvy!
-    - Vaše mapa je nekonečná, nesnažte se postavit továrnu na malinkém prostoru, rozšiřte se do okolí!
+    - Vaše mapa je nekonečná, nesnažte se postavit továrnu na malinkém prostoru,
+      rozšiřte se do okolí!
     - Neváhejte vyzkoušet hru Factorio! Je to má oblíbená hra.
-    - Rozebírač funguje po směru hodinových ručiček, počínaje pravým horním rohem!
+    - Rozebírač funguje po směru hodinových ručiček, počínaje pravým horním
+      rohem!
     - V hlavním menu můžete stáhnout své uložené hry!
-    - Tato hra má spoustu užitečných klávesových zkratek! Určitě si je projděte v
-      nastavení.
+    - Tato hra má spoustu užitečných klávesových zkratek! Určitě si je projděte
+      v nastavení.
     - Tato hra má spoustu nastavení, určitě si je projděte!
     - Značka Hubu má vedle sebe malý kompas, který ukazuje směr k Hubu!
-    - Pro vyčistění pásů, vyjměte budovy z prostoru a pak je zkopírujte zpět na stejné místo.
+    - Pro vyčistění pásů, vyjměte budovy z prostoru a pak je zkopírujte zpět na
+      stejné místo.
     - Stisknutím F4 zobrazíte FPS a rychlost ticků.
     - Stisknutím F4 dvakrát zobrazíte častici myši a kamery.
     - Můžete kliknout na připínáček vlevo vedle připnutého tvaru k jeho odepnutí.

@@ -111,9 +111,7 @@ dialogs:
         text: 存檔載入失敗：
     confirmSavegameDelete:
         title: 確認刪除
-        text: 你確定要刪除這個存檔？<br><br>
-            '<savegameName>' 在第 <savegameLevel><br><br> 級
-            不能反悔喔！
+        text: 你確定要刪除這個存檔？<br><br> '<savegameName>' 在第 <savegameLevel><br><br> 級 不能反悔喔！
     savegameDeletionError:
         title: 刪除錯誤
         text: 存檔刪除失敗
@@ -149,8 +147,7 @@ dialogs:
         desc: 你還沒有解鎖藍圖功能！完成更多的關卡來解鎖藍圖。
     keybindingsIntroduction:
         title: 實用按鍵
-        desc:
-            "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設置</strong>中查看其他的！ <br><br>
+        desc: "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設置</strong>中查看其他的！ <br><br>
             <code class='keybinding'>CTRL</code> + 拖動：選擇區域以復製或刪除。 <br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多個。 <br> <code
             class='keybinding'>ALT</code>: 反向放置傳送帶。 <br>"
@@ -178,9 +175,6 @@ dialogs:
     renameSavegame:
         title: 重新命名存檔
         desc: 你可以在這裡重新命名存檔
-    entityWarning:
-        title: 效能警告
-        desc: 你放置太多建築了，遊戲沒有辦法支撐無限數量的建築，善意提醒：最好降低工廠佔用的空間！
 ingame:
     keybindingsOverlay:
         moveMap: 移動
@@ -226,27 +220,6 @@ ingame:
         title: 建築升級
         buttonUnlock: 升級
         tier: <x>級
-        tierLabels:
-            - 壹
-            - 貳
-            - 叁
-            - 肆
-            - 伍
-            - 陸
-            - 柒
-            - 捌
-            - 玖
-            - 拾
-            - 拾壹
-            - 拾貳
-            - 拾叁
-            - 拾肆
-            - 拾伍
-            - 拾陸
-            - 拾柒
-            - 拾捌
-            - 拾玖
-            - 貳拾
         maximumLevel: 最高級（<currentMult>倍效率）
     statistics:
         title: 統計資訊
@@ -269,10 +242,6 @@ ingame:
         playtime: 遊戲時間
         buildingsPlaced: 建築數量
         beltsPlaced: 傳送帶數量
-        buttons:
-            continue: 繼續
-            settings: 設置
-            menu: 回到主選單
     tutorialHints:
         title: 需要幫助？
         showHint: 顯示
@@ -282,8 +251,8 @@ ingame:
     waypoints:
         waypoints: 地圖標記
         hub: 基地
-        description: 在標記上按左鍵以快速移動到標記區域，在標記上按右鍵以刪除該標記。
-            <br><br>按 <keybinding> 為當前區域建立地圖標記或按 <strong>right-click</strong> 為選取區域建立地圖標記。
+        description: 在標記上按左鍵以快速移動到標記區域，在標記上按右鍵以刪除該標記。 <br><br>按 <keybinding>
+            為當前區域建立地圖標記或按 <strong>right-click</strong> 為選取區域建立地圖標記。
         creationSuccessNotification: 成功創建地圖標記。
     interactiveTutorial:
         title: 教程
@@ -291,8 +260,7 @@ ingame:
             1_1_extractor: 在<strong>圓形礦脈</strong>上放一個<strong>開採機</strong>來獲取圓形！
             1_2_conveyor: 用<strong>傳送帶</strong>將你的開採機連接到基地上！
                 <br><br>提示：用你的游標<strong>按下並拖動</strong>傳送帶！
-            1_3_expand:
-                這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
+            1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
     colors:
         red: 紅
@@ -410,8 +378,7 @@ buildings:
             description: 同時為兩個輸入的圖形上色，每次上色只消耗一份顏色塗料。
         quad:
             name: 上色機（四向）
-            description: 分別為圖形的四個部分上色。
-                只有 <strong>truthy signal</strong> 的格子會被上色。
+            description: 分別為圖形的四個部分上色。 只有 <strong>truthy signal</strong> 的格子會被上色。
         mirrored:
             name: 上色機
             description: 將整個圖形塗上輸入的顏色。
@@ -430,8 +397,7 @@ buildings:
             description: 傳輸能量。
         second:
             name: 電線
-            description: 傳輸訊號，訊號可以是物件，顏色或布林值（0或1）。
-                不同顏色的電線無法互相連接。
+            description: 傳輸訊號，訊號可以是物件，顏色或布林值（0或1）。 不同顏色的電線無法互相連接。
     balancer:
         default:
             name: 平衡機
@@ -469,20 +435,16 @@ buildings:
     logic_gate:
         default:
             name: AND 邏輯閘
-            description: 當輸入均為「真」時，輸出才為1。
-                （「真」值代表：形狀正確、顏色正確或布林值為1）
+            description: 當輸入均為「真」時，輸出才為1。 （「真」值代表：形狀正確、顏色正確或布林值為1）
         not:
             name: NOT 邏輯閘
-            description: 當輸入之ㄧ為「假」時，輸出才為1。
-                （「假」值代表：形狀不正確、顏色不正確或布林值為0）
+            description: 當輸入之ㄧ為「假」時，輸出才為1。 （「假」值代表：形狀不正確、顏色不正確或布林值為0）
         xor:
             name: XOR 邏輯閘
-            description: 當輸入均為「假」時，輸出才為1。
-                （「假」值代表：形狀不正確、顏色不正確或布林值為0）
+            description: 當輸入均為「假」時，輸出才為1。 （「假」值代表：形狀不正確、顏色不正確或布林值為0）
         or:
             name: OR 邏輯閘
-            description: 當輸入之ㄧ為「真」時，輸出才為1。
-                （「真」值代表：形狀正確、顏色正確或布林值為1）
+            description: 當輸入之ㄧ為「真」時，輸出才為1。 （「真」值代表：形狀正確、顏色正確或布林值為1）
     transistor:
         default:
             name: 電晶體
@@ -558,8 +520,9 @@ storyRewards:
         desc: <strong>混合機</strong>已解鎖。如果沒有重疊的部分，混合機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
     reward_splitter:
         title: 分流
-        desc: <strong>分流機</strong>（平衡機變體）已解鎖。
-            將單個傳送帶上的物品分流到兩個傳送帶上。
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: 隧道
         desc: <strong>隧道</strong>已解鎖。你現在可以從其他傳送帶或建築底下運送物品了！
@@ -615,8 +578,9 @@ storyRewards:
         desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合流或分流</strong>多個傳送帶上的物品。
     reward_merger:
         title: 合流
-        desc: <strong>合流機</strong>（平衡機變體）已解鎖。
-            將兩個傳送帶上的物品合流到單個傳送帶上。
+        desc: You have unlocked a <strong>merger</strong> variant of the
+            <strong>balancer</strong> - It accepts two inputs and merges them
+            into one belt!
     reward_belt_reader:
         title: Belt reader
         desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
@@ -812,6 +776,14 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 按鍵設置

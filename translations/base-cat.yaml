@@ -94,7 +94,7 @@ mainMenu:
     helpTranslate: Ajuda a traduir-lo!
     madeBy: Creat per <author-link>
     browserWarning: >-
-
+        
         Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarrega't chrome per una millor experiència.
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut
@@ -205,11 +205,6 @@ dialogs:
     renameSavegame:
         title: Canviar el nom.
         desc: Canviar el nom de la partida guardada.
-    entityWarning:
-        title: Alerta de rendiment
-        desc: Has col·locat molts edificis, això és una alerta amistosa de que el joc no
-            pot suportar edificis infinits, així que intenta mantenir els teus
-            dissenys minimament compactes!
 ingame:
     keybindingsOverlay:
         moveMap: Moure
@@ -265,27 +260,6 @@ ingame:
         title: Millores
         buttonUnlock: Millorar
         tier: Nivell <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: NIVELL MÀXIM (Velocitat x<currentMult>)
     statistics:
         title: Estadístiques
@@ -310,10 +284,6 @@ ingame:
         playtime: Temps de joc
         buildingsPlaced: Edificis
         beltsPlaced: Cintes transportadores
-        buttons:
-            continue: Continuar
-            settings: Configuració
-            menu: Tornar al menú
     tutorialHints:
         title: Necessites ajuda?
         showHint: Mostrar pista
@@ -692,9 +662,9 @@ storyRewards:
             completa - fora del web!
     reward_balancer:
         title: Equilibrador
-        desc: Has desbloquejat el multifuncional <strong>equilibrador</strong>! Pot
-            ésser emprat per construir fàbriques més grans <strong>dividint i
-            fusionant ítems</strong> a múltiples cintes!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_merger:
         title: Fusionador Compacte
         desc: Has desbloquejat una variant <strong>fusionadora</strong> de
@@ -918,6 +888,14 @@ settings:
             description: Permet moure el mapa quan mous el cursor a les vores de la
                 pantalla. La velocitat de moviment depèn de la configuració de
                 Velocitat de Moviment.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Combinacions de tecles

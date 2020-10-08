@@ -121,8 +121,8 @@ dialogs:
         text: "Kunde inte ladda sparfil:"
     confirmSavegameDelete:
         title: Bekräfta radering
-        text: Är du säker på att du vill ta bort följande spel?<br><br>
-            '<savegameName>' på nivå <savegameLevel><br><br> Detta kan inte ångras!
+        text: Är du säker på att du vill ta bort följande spel?<br><br> '<savegameName>'
+            på nivå <savegameLevel><br><br> Detta kan inte ångras!
     savegameDeletionError:
         title: Kunde inte radera
         text: "Kunde inte radera sparfil:"
@@ -203,9 +203,6 @@ dialogs:
     renameSavegame:
         title: Byt namn på sparfil
         desc: Du kan byta namn på din sparfil här.
-    entityWarning:
-        title: Prestanda varning
-        desc: Du har placerat väldigt många byggnader, det här är bara en vänlig påminnelse att spelet inte klarar av ett oändligt antal av byggnader - så försök hålla dina fabriker kompakta!
 ingame:
     keybindingsOverlay:
         moveMap: Flytta
@@ -251,27 +248,6 @@ ingame:
         title: Upgraderingar
         buttonUnlock: Upgradera
         tier: Tier <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: MAXNIVÅ (Hastighet x<currentMult>)
     statistics:
         title: Statistik
@@ -295,10 +271,6 @@ ingame:
         playtime: Speltid
         buildingsPlaced: Byggnader
         beltsPlaced: Rullband
-        buttons:
-            continue: Fortsätt
-            settings: Inställningar
-            menu: Återvänd till meny
     tutorialHints:
         title: Behöver hjälp?
         showHint: Visa tips
@@ -683,7 +655,7 @@ storyRewards:
         title: Balancer
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Compact Merger
         desc: You have unlocked a <strong>merger</strong> variant of the
@@ -696,7 +668,8 @@ storyRewards:
             wires - then it gets really useful!
     reward_rotater_180:
         title: Roterare (180 grader)
-        desc: Du låste precis upp <strong>roteraren</strong>! - Den låter dig rotera former med 180 grader (Vilken överraskning! :D)
+        desc: Du låste precis upp <strong>roteraren</strong>! - Den låter dig rotera
+            former med 180 grader (Vilken överraskning! :D)
     reward_display:
         title: Display
         desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
@@ -900,6 +873,14 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Snabbtangenter

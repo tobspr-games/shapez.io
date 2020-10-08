@@ -1,8 +1,9 @@
 steamPage:
     shortText: shapez.io는 무한한 공간에서 점점 더 복잡한 도형의 생산과 조합을 자동화하는 공장을 짓는 게임입니다.
     discordLinkShort: 공식 Discord
-    intro:
-        Shapez.io는 다양한 기하학적 도형을 만드는 공장을 건설하는 편안한 게임입니다. 레벨이 올라갈수록 더욱 복잡한 도형을 만들어야 하고 그만큼 무한히 커지는 지도 안에 당신의 공장을 세워야 합니다.
+    intro: >-
+        Shapez.io는 다양한 기하학적 도형을 만드는 공장을 건설하는 편안한 게임입니다. 레벨이 올라갈수록 더욱 복잡한 도형을
+        만들어야 하고 그만큼 무한히 커지는 지도 안에 당신의 공장을 세워야 합니다.
 
         심지어 그것만으로는 충분하지 않을 겁니다. 수요는 기하급수적으로 늘어나게 될 것이고, 더욱 복잡한 도형을 더욱 많이 생산하여야 하므로, 유일하게 도움이 되는 것은 끊임없이 확장을 하는 것입니다! 처음에는 단순한 도형만을 만들지만, 나중에는 색소를 추출하고 혼합하여 도형에 색칠을 해야 합니다!
 
@@ -34,15 +35,16 @@ steamPage:
         subreddit: Subreddit
         source_code: 소스 코드 (GitHub)
         translate: 번역에 도움주세요
-    text_open_source:
-        누구나 번역에 기여하실 수 있으며, 저는 커뮤니티에서 적극적으로 참여하여 모든 제안을 검토하고 가능한 모든 피드백도 고려하고자 합니다.
+    text_open_source: >-
+        누구나 번역에 기여하실 수 있으며, 저는 커뮤니티에서 적극적으로 참여하여 모든 제안을 검토하고 가능한 모든 피드백도 고려하고자
+        합니다.
 
         모든 로드맵을 보시려면 저의 trello 보드를 참고해주세요.
 global:
     loading: 불러오는 중
     error: 오류
     thousandsDivider: ","
-    decimalSeparator: "."
+    decimalSeparator: .
     suffix:
         thousands: k
         millions: M
@@ -79,7 +81,8 @@ mainMenu:
     openSourceHint: 이 게임은 오픈 소스입니다!
     discordLink: 공식 디스코드 서버
     helpTranslate: 번역을 도와주세요!
-    browserWarning: 이 게임은 현재 브라우저에서 느리게 작동하는 것으로 알려져 있습니다! 더 좋은 성능을 위해 정식 버전을 구매하거나 Google Chrome 브라우저를 다운로드하세요.
+    browserWarning: 이 게임은 현재 브라우저에서 느리게 작동하는 것으로 알려져 있습니다! 더 좋은 성능을 위해 정식 버전을 구매하거나
+        Google Chrome 브라우저를 다운로드하세요.
     savegameLevel: 레벨 <x>
     savegameLevelUnknown: 미확인 레벨
     continue: 계속하기
@@ -102,20 +105,17 @@ dialogs:
         showKeybindings: 조작법 보기
     importSavegameError:
         title: 불러오기 오류
-        text:
-            세이브 파일을 불러오지 못했습니다:
+        text: "Failed to import your savegame:"
     importSavegameSuccess:
         title: 세이브 파일 불러오기 성공
         text: 세이브 파일을 성공적으로 불러왔습니다.
     gameLoadFailure:
         title: 세이브 파일 에러
-        text:
-            세이브 파일을 불러오지 못했습니다:
+        text: "Failed to load your savegame:"
     confirmSavegameDelete:
         title: 삭제 확인
-        text: 이 세이브 파일을 정말로 삭제하시겠습니까?<br><br>
-            '<savegameName>' <savegameLevel> 레벨<br><br>
-            이 작업은 되돌릴 수 없습니다!
+        text: 이 세이브 파일을 정말로 삭제하시겠습니까?<br><br> '<savegameName>' <savegameLevel>
+            레벨<br><br> 이 작업은 되돌릴 수 없습니다!
     savegameDeletionError:
         title: 삭제 실패
         text: 세이브 파일을 삭제하지 못했습니다.
@@ -142,8 +142,7 @@ dialogs:
         desc: 지난번 플레이 이후 변경 사항은 다음과 같습니다.
     upgradesIntroduction:
         title: 업그레이드 하기
-        desc:
-            <strong>기존의 공장을 허물지 마세요!</strong> 여러분이 그동안 만들어 수집한 모든 도형은 업그레이드에 사용됩니다.
+        desc: <strong>기존의 공장을 허물지 마세요!</strong> 여러분이 그동안 만들어 수집한 모든 도형은 업그레이드에 사용됩니다.
             업그레이드 버튼은 화면의 오른쪽 위에 있습니다.
     massDeleteConfirm:
         title: 삭제 확인
@@ -156,36 +155,32 @@ dialogs:
         desc: 12 레벨부터 청사진 기능이 해금됩니다!
     keybindingsIntroduction:
         title: 유용한 조작법
-        desc: >-
-            이 게임에는 거대한 공장을 수월하게 세우기 위한 많은 조작법이 있습니다.
-            아래는 그 대표적인 것이며, 자세한 조작법은 <strong>조작법 설정</strong>을 참고해주세요!<br><br>
-            <code class='keybinding'>CTRL</code> + 드래그: 영역을 선택합니다.<br>
-            <code class='keybinding'>SHIFT</code>: 누르는 동안 같은 건물을 여러개 배치할 수 있습니다.<br>
-            <code class='keybinding'>ALT</code>: 배치된 벨트의 방향을 반전시킵니다.<br>
+        desc: "이 게임에는 거대한 공장을 수월하게 세우기 위한 많은 조작법이 있습니다. 아래는 그 대표적인 것이며, 자세한 조작법은
+            <strong>조작법 설정</strong>을 참고해주세요!<br><br> <code
+            class='keybinding'>CTRL</code> + 드래그: 영역을 선택합니다.<br> <code
+            class='keybinding'>SHIFT</code>: 누르는 동안 같은 건물을 여러개 배치할 수 있습니다.<br>
+            <code class='keybinding'>ALT</code>: 배치된 벨트의 방향을 반전시킵니다.<br>"
     createMarker:
         title: 새로운 마커
         titleEdit: 마커 변경
-        desc: 의미있는 이름을 정해주거나 <strong>단축키</strong>를 통해 도형을 직접 삽입할 수도 있습니다. (<link>여기</link>에서 만드실 수 있습니다).
-
+        desc: 의미있는 이름을 정해주거나 <strong>단축키</strong>를 통해 도형을 직접 삽입할 수도 있습니다.
+            (<link>여기</link>에서 만드실 수 있습니다).
     markerDemoLimit:
         desc: 체험판 버전에서는 마커를 2개 까지만 배치할 수 있습니다. 정식 버전을 구입하면 마커를 무제한으로 배치할 수 있습니다!
     exportScreenshotWarning:
         title: 스크린샷 내보내기
-        desc: 당신의 공장을 스크린샷으로 내보내려 합니다. 매우 거대한 크기의 공장이라면 그 처리 시간이 상당히 오래 걸릴 것이며, 최악의 경우 게임이 중단될 수 있습니다!
+        desc: 당신의 공장을 스크린샷으로 내보내려 합니다. 매우 거대한 크기의 공장이라면 그 처리 시간이 상당히 오래 걸릴 것이며, 최악의 경우
+            게임이 중단될 수 있습니다!
     massCutInsufficientConfirm:
         title: 자르기 확인
         desc: 이 영역에는 붙여넣기를 할 수 없습니다! 정말 자르시겠습니까?
     editSignal:
         title: 신호 설정
-        descItems:
-            미리 정의된 아이템을 선택합니다:
+        descItems: "Choose a pre-defined item:"
         descShortKey: ... 또는 도형 <strong>단축키</strong>를 사용합니다 (<link>여기</link>에서 만드실 수 있습니다).
     renameSavegame:
         title: 세이브 파일 이름 설정
         desc: 여기에서 세이브 파일의 이름을 바꿀 수 있습니다.
-    entityWarning:
-        title: 성능 경고
-        desc: 너무 많은 건물을 배치했습니다. 이것은 단지 게임이 무한할 정도로 많은 건물을 처리할 수 없다는 것을 알려주는 친절한 알림일 뿐입니다. 공장을 작게 유지해주세요!
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -209,8 +204,7 @@ ingame:
         switchLayers: 레이어 전환
     buildingPlacement:
         cycleBuildingVariants: <key> 키를 눌러 변형 전환
-        hotkeyLabel:
-            단축키: <key>
+        hotkeyLabel: "Hotkey: <key>"
         infoTexts:
             speed: 속도
             range: 최대 거리
@@ -232,27 +226,6 @@ ingame:
         title: 업그레이드
         buttonUnlock: 업그레이드
         tier: <x> 티어
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: 최종 레벨 (속도 x<currentMult>)
     statistics:
         title: 통계
@@ -275,10 +248,6 @@ ingame:
         playtime: 플레이 시간
         buildingsPlaced: 건물 수
         beltsPlaced: 벨트 수
-        buttons:
-            continue: 계속하기
-            settings: 설정
-            menu: 메뉴로 돌아가기
     tutorialHints:
         title: 도움이 필요하세요?
         showHint: 힌트 보기
@@ -288,16 +257,22 @@ ingame:
     waypoints:
         waypoints: 마커
         hub: 허브
-        description: 마커를 좌클릭하여 그곳으로 이동하고, 우클릭으로 삭제할 수 있습니다.<br><br>마커를 배치하기 위해 <keybinding> 키로 지금 있는 위치에 혹은 <strong>우클릭</strong>하여 원하는 위치에 배치할 수 있습니다.
+        description: 마커를 좌클릭하여 그곳으로 이동하고, 우클릭으로 삭제할 수 있습니다.<br><br>마커를 배치하기 위해
+            <keybinding> 키로 지금 있는 위치에 혹은 <strong>우클릭</strong>하여 원하는 위치에 배치할 수
+            있습니다.
         creationSuccessNotification: 마커가 성공적으로 생성되었습니다.
     interactiveTutorial:
         title: 튜토리얼
         hints:
-            1_1_extractor: <strong>원형 도형</strong>을 추출하기 위해 그 위에 <strong>추출기</strong>를 선택한 뒤 배치하여 추출하세요!
-            1_2_conveyor:
-                이제 <strong>컨베이어 벨트</strong>를 추출기와 허브를 서로 연결하세요!<br><br>팁: 벨트를 마우스로 <strong>클릭한 뒤 드래그</strong>하세요!
-            1_3_expand:
-                이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와 벨트를 만들어 지정된 목표를 빨리 달성하세요.<br><br>팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게 배치할 수 있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다.
+            1_1_extractor: <strong>원형 도형</strong>을 추출하기 위해 그 위에 <strong>추출기</strong>를 선택한 뒤
+                배치하여 추출하세요!
+            1_2_conveyor: "Connect the extractor with a <strong>conveyor belt</strong> to
+                your hub!<br><br>Tip: <strong>Click and drag</strong> the belt
+                with your mouse!"
+            1_3_expand: "This is <strong>NOT</strong> an idle game! Build more extractors
+                and belts to finish the goal quicker.<br><br>Tip: Hold
+                <strong>SHIFT</strong> to place multiple extractors, and use
+                <strong>R</strong> to rotate them."
     colors:
         red: 빨간색
         green: 초록색
@@ -388,10 +363,12 @@ buildings:
     cutter:
         default:
             name: 절단기
-            description: 도형을 수직으로 잘라 두 가지 도형으로 나눕니다. <strong>한쪽만 사용할 경우라면 다른 부분을 파괴하지 않을 경우 절단기가 막혀 멈추게 됩니다!</strong>
+            description: 도형을 수직으로 잘라 두 가지 도형으로 나눕니다. <strong>한쪽만 사용할 경우라면 다른 부분을 파괴하지 않을 경우
+                절단기가 막혀 멈추게 됩니다!</strong>
         quad:
             name: 4단 절단기
-            description: 도형을 즉시 네 개로 자릅니다. <strong>한쪽만 사용할 경우라면 다른 부분을 파괴하지 않을 경우 절단기가 막혀 멈추게 됩니다!</strong>
+            description: 도형을 즉시 네 개로 자릅니다. <strong>한쪽만 사용할 경우라면 다른 부분을 파괴하지 않을 경우 절단기가 막혀
+                멈추게 됩니다!</strong>
     rotater:
         default:
             name: 회전기
@@ -405,7 +382,8 @@ buildings:
     stacker:
         default:
             name: 결합기
-            description: 도형을 서로 결합하고 쌓습니다. 서로 결합할 수 있다면 두 도형을 붙여 하나로 만들고, 그렇지 않으면 오른쪽 도형이 왼쪽 도형 위에 쌓이게 됩니다.
+            description: 도형을 서로 결합하고 쌓습니다. 서로 결합할 수 있다면 두 도형을 붙여 하나로 만들고, 그렇지 않으면 오른쪽 도형이 왼쪽
+                도형 위에 쌓이게 됩니다.
     mixer:
         default:
             name: 색소 혼합기
@@ -419,7 +397,8 @@ buildings:
             description: 색소를 이용해 도형을 색칠합니다. 위쪽에서 받는 색소로 왼쪽에서 받는 도형 전체를 색칠합니다.
         quad:
             name: 4단 색칠기
-            description: 도형의 각 사분면에 개별적으로 색상을 칠할 수 있습니다. 전선 레이어를 통해 <strong>참 신호</strong>가 있는 슬롯만 칠해집니다!
+            description: 도형의 각 사분면에 개별적으로 색상을 칠할 수 있습니다. 전선 레이어를 통해 <strong>참 신호</strong>가
+                있는 슬롯만 칠해집니다!
         mirrored:
             name: 색칠기
             description: 색소를 이용해 도형을 색칠합니다. 아래쪽에서 받는 색소로 왼쪽에서 받는 도형 전체를 색칠합니다.
@@ -465,7 +444,8 @@ buildings:
     lever:
         default:
             name: 스위치
-            description: 전선 레이어에서 불 값 (1 또는 0)를 방출하도록 전환할 수 있으며, 그 후 아이템 선별같은 구성 요소를 제어하는 데 사용될 수 있습니다.
+            description: 전선 레이어에서 불 값 (1 또는 0)를 방출하도록 전환할 수 있으며, 그 후 아이템 선별같은 구성 요소를 제어하는 데
+                사용될 수 있습니다.
     logic_gate:
         default:
             name: AND 회로
@@ -475,7 +455,8 @@ buildings:
             description: 입력이 거짓일 경우 불 값 "1"을 내보냅니다 (참은 도형, 색상, 불 값 "1"을 의미합니다).
         xor:
             name: XOR 회로
-            description: 입력 중 하나만 참이고 둘 다 같지 않을 경우 불 값 "1"을 내보냅니다 (참은 도형, 색상, 불 값 "1"을 의미합니다).
+            description: 입력 중 하나만 참이고 둘 다 같지 않을 경우 불 값 "1"을 내보냅니다 (참은 도형, 색상, 불 값 "1"을
+                의미합니다).
         or:
             name: OR 회로
             description: 입력 중 하나 이상이 참일 경우 불 값 "1"을 내보냅니다 (참은 도형, 색상, 불 값 "1"을 의미합니다).
@@ -529,113 +510,132 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 절단기
-        desc: <strong>절단기</strong>가 잠금 해제되었습니다! 절단기는 들어오는 도형이 어떤 모양을 하고 있던 수직으로 잘라 <strong>반으로 나눕니다</strong>!<br><br> 쓰지 않는 도형은 쓰레기로 처리하세요. 그렇지 않으면 <strong>작동을 멈출 것입니다</strong>!<br><br> 이러한 목적을 위해 <strong>휴지통</strong>도 함께 지급되었습니다. 휴지통에 들어간 것은 모두 파괴됩니다!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: 회전기
         desc: <strong>회전기</strong>가 잠금 해제되었습니다! 회전기는 들어오는 도형을 시계 방향으로 90도 회전시켜줍니다.
     reward_painter:
         title: 색칠기
-        desc: >-
-            <strong>색칠기</strong>가 잠금 해제되었습니다! 도형과 마찬가지로 색소를 추출하고 색칠기에 넣거 도형과 결합하여 색칠된 도형을 만들도록 하세요!<br><br>추신: 만약 당신이 색맹이라면, 설정에서 <strong>색맹 모드</strong>를 활성화하세요!
+        desc: "<strong>색칠기</strong>가 잠금 해제되었습니다! 도형과 마찬가지로 색소를 추출하고 색칠기에 넣거 도형과 결합하여 색칠된
+            도형을 만들도록 하세요!<br><br>추신: 만약 당신이 색맹이라면, 설정에서 <strong>색맹 모드</strong>를
+            활성화하세요!"
     reward_mixer:
         title: 혼합기
-        desc: <strong>혼합기</strong>가 잠금 해제되었습니다! 서로 다른 두 색소를 혼합하여 새로운 <strong>혼합 색소</strong>를 얻을 수 있습니다!
+        desc: <strong>혼합기</strong>가 잠금 해제되었습니다! 서로 다른 두 색소를 혼합하여 새로운 <strong>혼합
+            색소</strong>를 얻을 수 있습니다!
     reward_stacker:
         title: 결합기
-        desc: <strong>결합기</strong>가 잠금 해제되었습니다! 이제 결합기를 통해 여러 도형을 붙이고 결합할 수 있습니다! 들어오는 두 도형의 모양이 서로 나란히 붙일 수 있다면, 하나의 도형으로 <strong>결합</strong>됩니다. 만약 서로 겹쳐진다면, 오른쪽 도형이 왼쪽 도형의 <strong>위에 쌓이게</strong> 됩니다!
+        desc: <strong>결합기</strong>가 잠금 해제되었습니다! 이제 결합기를 통해 여러 도형을 붙이고 결합할 수 있습니다! 들어오는 두
+            도형의 모양이 서로 나란히 붙일 수 있다면, 하나의 도형으로 <strong>결합</strong>됩니다. 만약 서로
+            겹쳐진다면, 오른쪽 도형이 왼쪽 도형의 <strong>위에 쌓이게</strong> 됩니다!
     reward_splitter:
         title: 압축형 분배기
-        desc: <strong>밸런서</strong>의 새로운 형태인 <strong>분배기</strong>가 잠금 해제되었습니다! 이제 벨트 한 줄을 즉시 두 줄로 분배합니다!
+        desc: <strong>밸런서</strong>의 새로운 형태인 <strong>분배기</strong>가 잠금 해제되었습니다! 이제 벨트 한 줄을
+            즉시 두 줄로 분배합니다!
     reward_tunnel:
         title: 터널
         desc: <strong>터널</strong>이 잠금 해제되었습니다! 이제 벨트와 건물 아래로 공간을 만들어내 옮길 수 있습니다!
     reward_rotater_ccw:
         title: 반시계 방향 회전기
-        desc: <strong>반시계 방향 회전기</strong>가 잠금 해제되었습니다! 반시계 방향 회전기는 회전기의 다른 형태로, 이름처럼 들어오는 도형을 반시계 방향으로 90도만큼 회전시킵니다! 제작하려면 회전기를 선택한 후 <strong>'T' 키를 눌러 다른 형태로 전환</strong>하세요!
+        desc: <strong>반시계 방향 회전기</strong>가 잠금 해제되었습니다! 반시계 방향 회전기는 회전기의 다른 형태로, 이름처럼
+            들어오는 도형을 반시계 방향으로 90도만큼 회전시킵니다! 제작하려면 회전기를 선택한 후 <strong>'T' 키를 눌러
+            다른 형태로 전환</strong>하세요!
     reward_miner_chainable:
         title: 연쇄 추출기
-        desc: >-
-            <strong>연쇄 추출기</strong>가 잠금 해제되었습니다! 자원을 보다 더욱 효율적으로 추출할 수 있도록 <strong>앞에 있는 추출기로 자원을 보낼 수 있습니다</strong>!<br><br>
-            추신: 이제 툴바에 있는 기존 추출기는 연쇄 추출기로 대체되었습니다!
+        desc: "<strong>연쇄 추출기</strong>가 잠금 해제되었습니다! 자원을 보다 더욱 효율적으로 추출할 수 있도록 <strong>앞에
+            있는 추출기로 자원을 보낼 수 있습니다</strong>!<br><br> 추신: 이제 툴바에 있는 기존 추출기는 연쇄
+            추출기로 대체되었습니다!"
     reward_underground_belt_tier_2:
         title: 터널 티어 II
-        desc: <strong>터널</strong>의 새로운 형태가 잠금 해제되었습니다! 터널 티어 II는 <strong>더욱 긴 거리</strong>를 운송할 수 있고 기존 터널과 겹쳐지지 않고도 자원을 보낼 수 있습니다!
+        desc: <strong>터널</strong>의 새로운 형태가 잠금 해제되었습니다! 터널 티어 II는 <strong>더욱 긴
+            거리</strong>를 운송할 수 있고 기존 터널과 겹쳐지지 않고도 자원을 보낼 수 있습니다!
     reward_cutter_quad:
         title: 4단 절단기
-        desc: 새로운 종류의 <strong>절단기</strong>가 잠금 해제되었습니다! 4단 절단기는 도형을 두 조각이 아닌 <strong>네 조각</strong>으로 자를 수 있습니다!
+        desc: 새로운 종류의 <strong>절단기</strong>가 잠금 해제되었습니다! 4단 절단기는 도형을 두 조각이 아닌 <strong>네
+            조각</strong>으로 자를 수 있습니다!
     reward_painter_double:
         title: 2단 색칠기
-        desc: 새로운 종류의 <strong>절단기</strong>가 잠금 해제되었습니다! 일반적인 색칠기와 거의 동일하지만, 하나의 색소를 사용하여 <strong>동시에 두 개의 도형을 색칠</strong>할 수 있습니다!
+        desc: 새로운 종류의 <strong>절단기</strong>가 잠금 해제되었습니다! 일반적인 색칠기와 거의 동일하지만, 하나의 색소를 사용하여
+            <strong>동시에 두 개의 도형을 색칠</strong>할 수 있습니다!
     reward_storage:
         title: 저장고
-        desc:
-            <strong>저장고</strong>가 잠금 해제되었습니다! 저장고는 최대 용량까지 도형을 저장할 수 있습니다!<br><br>
-            왼쪽 출력이 우선되므로 <strong>오버플로 회로</strong>로도 활용될 수 있습니다!
+        desc: <strong>저장고</strong>가 잠금 해제되었습니다! 저장고는 최대 용량까지 도형을 저장할 수 있습니다!<br><br> 왼쪽
+            출력이 우선되므로 <strong>오버플로 회로</strong>로도 활용될 수 있습니다!
     reward_freeplay:
         title: 자유플레이
-        desc:
-            드디어 해내셨군요! <strong>자유플레이 모드</strong>가 잠금 해제되었습니다! 이는 즉 앞으로 도형이 <strong>무작위</strong>로 생성됩니다.<br><br>
-            이제부터 허브는 <strong>처리량</strong>이 필요하므로 요청하는 도형을 자동으로 전달하는 공장을 구축하는 것이 좋습니다.<br><br>
-            허브는 요청된 도형을 전선 레이어에서 출력하므로 이를 분석하고 기반으로 하여 공장을 자동으로 구성하기만 하면 됩니다.
+        desc: 드디어 해내셨군요! <strong>자유플레이 모드</strong>가 잠금 해제되었습니다! 이는 즉 앞으로 도형이
+            <strong>무작위</strong>로 생성됩니다.<br><br> 이제부터 허브는 <strong>처리량</strong>이
+            필요하므로 요청하는 도형을 자동으로 전달하는 공장을 구축하는 것이 좋습니다.<br><br> 허브는 요청된 도형을 전선
+            레이어에서 출력하므로 이를 분석하고 기반으로 하여 공장을 자동으로 구성하기만 하면 됩니다.
     reward_blueprints:
         title: 청사진
-        desc: 이제 공장의 일부를 <strong>복사하고 붙여넣는 기능</strong>을 사용할 수 있습니다! 영역을 선택 (CTRL 키를 누른 채 마우스로 드래그)한 뒤 'C' 키를 눌러 복사할 수 있습니다.<br><br>하지만 <strong>공짜는 아닙니다</strong>, <strong>청사진 모양 도형</strong>을 허브에 저장하고 그것을 일부 사용해 붙여넣기 기능을 사용할 수 있습니다! (방금 당신이 만든 것입니다.)
+        desc: 이제 공장의 일부를 <strong>복사하고 붙여넣는 기능</strong>을 사용할 수 있습니다! 영역을 선택 (CTRL 키를 누른 채
+            마우스로 드래그)한 뒤 'C' 키를 눌러 복사할 수 있습니다.<br><br>하지만 <strong>공짜는
+            아닙니다</strong>, <strong>청사진 모양 도형</strong>을 허브에 저장하고 그것을 일부 사용해 붙여넣기
+            기능을 사용할 수 있습니다! (방금 당신이 만든 것입니다.)
     no_reward:
         title: 다음 레벨
-        desc:
-            이번 레벨의 보상은 없네요. 대신 다음 레벨에서 줄겁니다!<br><br> 추신: 기존 공장을 파괴하는 것은 좋지 않은 선택입니다. 나중에 <strong>업그레이드를 잠금 해제</strong>하려면 <strong>기존의 모든</strong> 도형이 필요합니다!
+        desc: "This level gave you no reward, but the next one will! <br><br> PS: Better
+            not destroy your existing factory - You'll need <strong>all</strong>
+            those shapes later to <strong>unlock upgrades</strong>!"
     no_reward_freeplay:
         title: 다음 레벨
         desc: 축하드립니다!
     reward_balancer:
         title: 밸런서
-        desc: <strong>밸런서</strong>가 잠금 해제되었습니다! 다목적 밸런서를 통해 여러 벨트의 아이템을 서로 <strong>다른 벨트로 분할하거나 합침</strong>으로써 더욱 거대한 공장을 만들 수 있습니다!
+        desc: <strong>밸런서</strong>가 잠금 해제되었습니다! 다목적 밸런서를 통해 여러 벨트의 아이템을 서로 <strong>다른
+            벨트로 분할하거나 합침</strong>으로써 더욱 거대한 공장을 만들 수 있습니다!
     reward_merger:
         title: 압축형 병합기
-        desc: <strong>밸런서</strong>의 새로운 형태인 <strong>병합기</strong>가 잠금 해제되었습니다! 이제 벨트 두 줄을 즉시 한 줄로 병합합니다!
+        desc: <strong>밸런서</strong>의 새로운 형태인 <strong>병합기</strong>가 잠금 해제되었습니다! 이제 벨트 두 줄을
+            즉시 한 줄로 병합합니다!
     reward_belt_reader:
         title: 벨트 판독기
-        desc: <strong>벨트 판독기</strong>가 잠금 해제되었습니다! 이제 벨트의 처리량을 확인할 수 있습니다.<br><br>그리고, 전선이 잠금 해제될 때 까지 기다리신다면 정말 유용하게 사용할 수 있을 겁니다!
+        desc: <strong>벨트 판독기</strong>가 잠금 해제되었습니다! 이제 벨트의 처리량을 확인할 수 있습니다.<br><br>그리고,
+            전선이 잠금 해제될 때 까지 기다리신다면 정말 유용하게 사용할 수 있을 겁니다!
     reward_rotater_180:
         title: 180도 회전기
-        desc: <strong>180도 회전기</strong>가 잠금 해제되었습니다! 이제 도형을 바로 180도로 회전시킬 수 있습니다. (짜잔! :D)
+        desc: <strong>180도 회전기</strong>가 잠금 해제되었습니다! 이제 도형을 바로 180도로 회전시킬 수 있습니다. (짜잔!
+            :D)
     reward_display:
         title: 디스플레이
-        desc: >-
-            <strong>디스플레이</strong>가 잠금 해제되었습니다! 이제 신호를 전선 레이어에 연결해 시각화할 수 있습니다.<br><br>
-            추신: 벨트 판독기와 저장고가 마지막으로 읽은 아이템을 출력했나요? 디스플레이로 한번 봐보세요!
+        desc: "<strong>디스플레이</strong>가 잠금 해제되었습니다! 이제 신호를 전선 레이어에 연결해 시각화할 수
+            있습니다.<br><br> 추신: 벨트 판독기와 저장고가 마지막으로 읽은 아이템을 출력했나요? 디스플레이로 한번 봐보세요!"
     reward_constant_signal:
         title: 일정 신호
-        desc:
-            전선 레이어에서 구축할 수 있는 <strong>일정 신호</strong>가 잠금 해제되었습니다! 간단한 예시로, <strong>아이템 선별</strong>에 연결하여 사용하는 데 유용합니다.<br><br>
-            일정 신호는 <strong>도형</strong>, <strong>색상</strong>, 혹은 <strong>불 값</strong> (1 혹은 0)을 출력할 수 있습니다.
+        desc: 전선 레이어에서 구축할 수 있는 <strong>일정 신호</strong>가 잠금 해제되었습니다! 간단한 예시로, <strong>아이템
+            선별</strong>에 연결하여 사용하는 데 유용합니다.<br><br> 일정 신호는 <strong>도형</strong>,
+            <strong>색상</strong>, 혹은 <strong>불 값</strong> (1 혹은 0)을 출력할 수 있습니다.
     reward_logic_gates:
         title: 논리 회로
-        desc:
-            <strong>논리 회로</strong>가 잠금 해제되었습니다! 굳이 흥분할 필요는 없지만, 진짜 멋진 기술입니다!<br><br>
-            논리 회로를 통해 이제 AND, OR, XOR, NOT 논리 연산을 할 수 있습니다.<br><br>
-            보너스로, <strong>트랜지스터</strong>도 지급되었습니다!
+        desc: <strong>논리 회로</strong>가 잠금 해제되었습니다! 굳이 흥분할 필요는 없지만, 진짜 멋진 기술입니다!<br><br>
+            논리 회로를 통해 이제 AND, OR, XOR, NOT 논리 연산을 할 수 있습니다.<br><br> 보너스로,
+            <strong>트랜지스터</strong>도 지급되었습니다!
     reward_virtual_processing:
         title: 가상 처리
-        desc:
-            <strong>도형의 처리를 시뮬레이션</strong>할 수 있는 다양한 새로운 건물이 잠금 해제되었습니다!<br><br>
-            이제 전선 레이어에서 도형에 대한 절단기, 회전기, 결합기 등을 가상으로 시뮬레이션할 수 있습니다!
-            이제 게임 진행에 있어 다음 세 가지의 방법이 존재합니다:<br><br>
-            - <strong>완전 자동화된 기계</strong>를 구축하고 허브에서 요구되는 도형을 제작합니다. (먼저 시도해볼 것을 권합니다!).<br><br>
-            - 전선을 통해 멋진 것들 만듭니다.<br><br>
-            - 평소처럼 게임을 진행합니다.<br><br>
-            어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
+        desc: <strong>도형의 처리를 시뮬레이션</strong>할 수 있는 다양한 새로운 건물이 잠금 해제되었습니다!<br><br> 이제 전선
+            레이어에서 도형에 대한 절단기, 회전기, 결합기 등을 가상으로 시뮬레이션할 수 있습니다! 이제 게임 진행에 있어 다음 세
+            가지의 방법이 존재합니다:<br><br> - <strong>완전 자동화된 기계</strong>를 구축하고 허브에서 요구되는
+            도형을 제작합니다. (먼저 시도해볼 것을 권합니다!).<br><br> - 전선을 통해 멋진 것들 만듭니다.<br><br>
+            - 평소처럼 게임을 진행합니다.<br><br> 어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
     reward_wires_painter_and_levers:
         title: 전선과 4단 색칠기
-        desc:
-            이제 <strong>전선 레이어</strong>를 사용할 수 있게 되었습니다! 전서 ㄴ레이어는 일반 레이어 위에 존재하는 별도의 레이어로, 이를 통한 다양하고 새로운 메커니즘을 소개하겠습니다!<br><br>
-            우선 <strong>4단 색칠기</strong>가 잠금 해제되었습니다. 전선 레이어에서 색칠하고 싶은 슬롯에 전선을 연결하세요!
-            전선 레이어로 전환하려면 <strong>E</strong> 키를 누르세요.
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>."
     reward_filter:
         title: 아이템 선별기
-        desc:
-            <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽 출력이나 오른쪽 출력으로 보냅니다.<br><br>
-            불 값 (1 또는 0)을 전달하여 완전히 활성화과 비활성화를 전환할 수 있습니다.
+        desc: <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽
+            출력이나 오른쪽 출력으로 보냅니다.<br><br> 불 값 (1 또는 0)을 전달하여 완전히 활성화과 비활성화를 전환할 수
+            있습니다.
     reward_demo_end:
         title: 체험판 끝
         desc: 체험판 콘텐츠가 모두 끝이 났습니다!
@@ -654,7 +654,8 @@ settings:
     labels:
         uiScale:
             title: UI 크기
-            description: 사용자 인터페이스의 크기를 변경합니다. 인터페이스는 당신의 해상도에 따라 확장되는데 이 설정은 그 확장의 정도를 제어합니다.
+            description: 사용자 인터페이스의 크기를 변경합니다. 인터페이스는 당신의 해상도에 따라 확장되는데 이 설정은 그 확장의 정도를
+                제어합니다.
             scales:
                 super_small: 매우 작게
                 small: 작게
@@ -700,13 +701,16 @@ settings:
                 light: 라이트
         refreshRate:
             title: 틱 빈도
-            description: 이것은 초당 발생하는 게임 틱 수를 결정합니다. 일반적으로 틱 속도가 높을수록 정밀도는 향상되나 성능은 낮아집니다. 낮은 틱 빈도에서는 처리량이 정확하지 않을 수 있습니다.
+            description: 이것은 초당 발생하는 게임 틱 수를 결정합니다. 일반적으로 틱 속도가 높을수록 정밀도는 향상되나 성능은 낮아집니다. 낮은
+                틱 빈도에서는 처리량이 정확하지 않을 수 있습니다.
         alwaysMultiplace:
             title: 다수 배치 항시 켜기
-            description: 활성화할 경우 모든 건물은 배치한 후 취소할 때 까지 커서에 선택된 상태를 유지합니다. 이 기능은 SHIFT 키를 계속 누르는 것과 같습니다.
+            description: 활성화할 경우 모든 건물은 배치한 후 취소할 때 까지 커서에 선택된 상태를 유지합니다. 이 기능은 SHIFT 키를 계속
+                누르는 것과 같습니다.
         offerHints:
             title: 힌트와 튜토리얼
-            description: 게임 플레이하는 동안 힌트와 튜토리얼을 보여줄 지를 결정합니다. 또한 게임에 더 쉽게 빠져들 수 있도록 특정 레벨까지 특정한 UI 요소를 숨깁니다.
+            description: 게임 플레이하는 동안 힌트와 튜토리얼을 보여줄 지를 결정합니다. 또한 게임에 더 쉽게 빠져들 수 있도록 특정 레벨까지
+                특정한 UI 요소를 숨깁니다.
         enableTunnelSmartplace:
             title: 지능적인 터널 배치
             description: 활성화할 경우 터널을 설치할 때 터널 사이에 있는 불필요한 벨트를 제거합니다. 또한 터널을 당겨서 남는 터널을 없앱니다.
@@ -734,7 +738,8 @@ settings:
             description: 색맹 사용자를 위해 게임을 플레이하는 데 도움을 주는 다양한 도구를 활성화합니다.
         rotationByBuilding:
             title: 건물 유형에 따른 방향
-            description: 각 건물 유형마다 개별적으로 마지막으로 설정했던 방향을 기억하도록 합니다. 다른 건물 변형을 자주 전환하는 경우 이 방법이 더욱 편할 수 있습니다.
+            description: 각 건물 유형마다 개별적으로 마지막으로 설정했던 방향을 기억하도록 합니다. 다른 건물 변형을 자주 전환하는 경우 이
+                방법이 더욱 편할 수 있습니다.
         soundVolume:
             title: 효과음 볼륨
             description: 효과음의 볼륨을 조절합니다.
@@ -743,14 +748,14 @@ settings:
             description: 음악 볼륨을 조절합니다.
         lowQualityMapResources:
             title: 저품질 지도 자원
-            description: 성능 향상을 위해 지도 확대 시 자원의 렌더링을 단순화합니다.
-                더욱 깨끗해 보이는 편이니 꼭 해보세요!
+            description: 성능 향상을 위해 지도 확대 시 자원의 렌더링을 단순화합니다. 더욱 깨끗해 보이는 편이니 꼭 해보세요!
         disableTileGrid:
             title: 그리드 비활성화
             description: 성능 향상을 위해 타일 그리드를 비활성화할 수 있습니다. 이 역시 게임을 더욱 깨끗하게 보여줍니다!
         clearCursorOnDeleteWhilePlacing:
             title: 우클릭 시 커서 지우기
-            description: 기본적으로 활성화되어 있으며, 배치할 건물을 선택한 상태에서 마우스 우클릭 시 커서를 지웁니다. 비활성화할 경우, 건물을 커서에 선택한 채로 우클릭하면 바로 건물을 삭제할 수 있습니다.
+            description: 기본적으로 활성화되어 있으며, 배치할 건물을 선택한 상태에서 마우스 우클릭 시 커서를 지웁니다. 비활성화할 경우, 건물을
+                커서에 선택한 채로 우클릭하면 바로 건물을 삭제할 수 있습니다.
         lowQualityTextures:
             title: 저품질 텍스처 (못생김)
             description: 성능 향상을 위해 낮은 품질의 텍스처를 사용합니다. 이것은 게임을 아주 못생기게 만들 겁니다!
@@ -762,15 +767,24 @@ settings:
             description: 기본적으로 활성화되어 있으며, 자원 패치에서 피펫 기능을 사용 시 즉시 추출기를 선택합니다.
         simplifiedBelts:
             title: 벨트 단순화 (못생김)
-            description: 성능 향상을 위해 벨트를 가리킬 때를 제외한 모든 상황에서 벨트 아이템을 렌더링하지 않습니다. 이 기능을 사용할 할 정도로 심각한 성능 문제가 일어나지 않는 한, 이 설정을 사용할 필요는 없습니다.
+            description: 성능 향상을 위해 벨트를 가리킬 때를 제외한 모든 상황에서 벨트 아이템을 렌더링하지 않습니다. 이 기능을 사용할 할
+                정도로 심각한 성능 문제가 일어나지 않는 한, 이 설정을 사용할 필요는 없습니다.
         enableMousePan:
             title: 화면 가장자리 패닝
             description: 커서를 화면 가장자리로 옮기면 스크롤되어 지도를 이동할 수 있습니다. 스크롤 속도는 이동 속도 설정에 따릅니다.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 조작법
-    hint:
-        팁: CTRL, SHIFT, ALT를 적절히 사용하세요! 건물을 배치할 때 유용합니다.
+    hint: "Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different
+        placement options."
     resetKeybindings: 초기화
     categoryLabels:
         general: 애플리케이션
@@ -805,8 +819,7 @@ keybindings:
         painter: 색칠기
         trash: 휴지통
         rotateWhilePlacing: 회전
-        rotateInverseModifier:
-            변경: 대신 반시계 방향
+        rotateInverseModifier: "Modifier: Rotate CCW instead"
         cycleBuildingVariants: 형태 전환
         confirmMassDelete: 대량 삭제
         pasteLastBlueprint: 마지막 청사진 붙여넣기
@@ -821,8 +834,7 @@ keybindings:
         exportScreenshot: 공장 전체를 이미지로 내보내기
         mapMoveFaster: 더 빠르게 움직이기
         lockBeltDirection: 벨트 계획기 활성화
-        switchDirectionLockSide:
-            계획기: 방향 바꾸기
+        switchDirectionLockSide: "Planner: Switch side"
         pipette: 피펫
         menuClose: 메뉴 닫기
         switchLayers: 레이어 전환
@@ -841,11 +853,11 @@ keybindings:
         analyzer: 도형 분석기
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
-        copyWireValue:
-            전선: 커서 아래 값 복사
+        copyWireValue: "Wires: Copy value below cursor"
 about:
     title: 게임 정보
-    body: 이 게임은 오픈소스이고, <a href="https://github.com/tobspr" target="_blank">Tobias
+    body: >-
+        이 게임은 오픈소스이고, <a href="https://github.com/tobspr" target="_blank">Tobias
         Springer</a>가 개발했습니다.<br><br>
 
         이 게임을 위해 기여하고 싶다면, <a href="<githublink>" target="_blank">shapez.io on github</a>를 확인하세요.<br><br>
@@ -884,7 +896,8 @@ tips:
     - 최대 레벨에서, 한 줄의 벨트를 채우기 위해 다섯 개의 추출기가 필요합니다.
     - 터널을 잊지 마세요!
     - 완벽한 효율성을 위해 굳이 아이템을 균등하게 배분할 필요는 없습니다.
-    - b>SHIFT</b>키를 누르면 벨트 계획기가 활성화되어 긴 길이의 벨트 한 줄을 쉽게 배치할 수 있습니다.
+    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
+      long lines of belts easily.
     - 절단기는 들어오는 도형과 배치된 절단기의 방향에 관계 없이, 언제나 수직으로 자릅니다.
     - 흰색은 세 가지의 색소를 혼합해야 합니다.
     - 저장고의 양쪽 출력 중 왼쪽 출력이 가장 우선됩니다.
