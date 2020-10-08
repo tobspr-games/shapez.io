@@ -21,10 +21,6 @@ export class PreloadState extends GameState {
             <div class="loadingImage"></div>
             <div class="loadingStatus">
                 <span class="desc">Booting</span>
-                <span class="bar">
-                    <span class="inner" style="width: 0%"></span>
-                    <span class="status">0%</span>
-                </span>
                 </div>
             </div>
             <span class="prefab_GameHint"></span>
@@ -56,10 +52,6 @@ export class PreloadState extends GameState {
 
         /** @type {HTMLElement} */
         this.statusText = this.htmlElement.querySelector(".loadingStatus > .desc");
-        /** @type {HTMLElement} */
-        this.statusBar = this.htmlElement.querySelector(".loadingStatus > .bar > .inner");
-        /** @type {HTMLElement} */
-        this.statusBarText = this.htmlElement.querySelector(".loadingStatus > .bar > .status");
 
         /** @type {HTMLElement} */
         this.hintsText = this.htmlElement.querySelector(".prefab_GameHint");
@@ -67,7 +59,6 @@ export class PreloadState extends GameState {
         this.nextHintDuration = 0;
 
         this.currentStatus = "booting";
-        this.currentIndex = 0;
 
         this.startLoading();
     }
@@ -259,16 +250,8 @@ export class PreloadState extends GameState {
      */
     setStatus(text) {
         logger.log("✅ " + text);
-        this.currentIndex += 1;
         this.currentStatus = text;
         this.statusText.innerText = text;
-
-        const numSteps = 10; // FIXME
-
-        const percentage = (this.currentIndex / numSteps) * 100.0;
-        this.statusBar.style.width = percentage + "%";
-        this.statusBarText.innerText = findNiceValue(percentage) + "%";
-
         return Promise.resolve();
     }
 

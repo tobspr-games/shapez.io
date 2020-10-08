@@ -71,10 +71,6 @@ releaseUploader.gulptasksReleaseUploader($, gulp, buildFolder);
 const translations = require("./translations");
 translations.gulptasksTranslations($, gulp, buildFolder);
 
-// FIXME
-// const cordova = require("./cordova");
-// cordova.gulptasksCordova($, gulp, buildFolder);
-
 /////////////////////  BUILD TASKS  /////////////////////
 
 // Cleans up everything

@@ -11,6 +11,7 @@ import { ShapeItem } from "../../items/shape_item";
 import { WireComponent } from "../../components/wire";
 import { LeverComponent } from "../../components/lever";
 
+// @todo: Make dictionary
 const tutorialsByLevel = [
     // Level 1
     [

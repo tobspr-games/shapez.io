@@ -44,7 +44,6 @@ export class RestrictionManager extends ReadWriteProxy {
      * @param {any} data
      */
     migrate(data) {
-        // Todo
         return ExplainedResult.good();
     }
 

@@ -183,23 +183,6 @@ export class EntityManager extends BasicSerializableObject {
     }
 
     /**
-     * Return all of a given class. This is SLOW!
-     * @param {object} entityClass
-     * @returns {Array<Entity>} entities
-     */
-    getAllOfClass(entityClass) {
-        // FIXME: Slow
-        const result = [];
-        for (let i = 0; i < this.entities.length; ++i) {
-            const entity = this.entities[i];
-            if (entity instanceof entityClass) {
-                result.push(entity);
-            }
-        }
-        return result;
-    }
-
-    /**
      * Unregisters all components of an entity from the component to entity mapping
      * @param {Entity} entity
      */
