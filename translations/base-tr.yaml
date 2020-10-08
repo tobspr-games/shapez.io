@@ -671,9 +671,9 @@ storyRewards:
             döndürür (Süpriz! :D)
     reward_display:
         title: Ekran
-        desc: "<strong>Ekranı</strong> açtın. - Kablo katmanında bir sinyal 
-            bağla ve onu ekranda göster! <br><br> Not: Bant okuyucunun ve 
-            deponun son okudukları eşyayı çıkardığını fark ettin mi? 
+        desc: "<strong>Ekranı</strong> açtın. - Kablo katmanında bir sinyal
+            bağla ve onu ekranda göster! <br><br> Not: Bant okuyucunun ve
+            deponun son okudukları eşyayı çıkardığını fark ettin mi?
             Bunu ekranda göstermeyi dene!"
     reward_constant_signal:
         title: Sabit Sinyal
@@ -725,6 +725,7 @@ settings:
         staging: Yükseltme
         prod: Üretim
     buildDate: <at-date> derlendi
+    rangeSliderPercentage: <amount> %
     labels:
         uiScale:
             title: Arayüz Ölçeğİ
@@ -873,13 +874,12 @@ settings:
             description: Fareyi ekranın köşelerine getirerek hareket ettirmeyi sağlar.
         zoomToCursor:
             title: Farenin Konumuna Yakınlaştırma
-            description: Eğer etkinleştirilirse zaman ekran yakınlaştırılması fare imlecinin bulunduğu 
+            description: Eğer etkinleştirilirse zaman ekran yakınlaştırılması fare imlecinin bulunduğu
                 yere doğru olur. Etkinleştirilmezse yakınlaştırma ekranın ortasına doğru olur.
         mapResourcesScale:
             title: Uzak Bakışta Kaynakların Büyüklüğü
-            description: Haritaya uzaktan bakıldığında, haritadaki şekillerin 
+            description: Haritaya uzaktan bakıldığında, haritadaki şekillerin
             büyüklüğünü ayarlar.
-    rangeSliderPercentage: <amount> %
 keybindings:
     title: Tuş Atamaları
     hint: "İpucu: CTRL, SHIFT ve ALT tuşlarından yararlanın! Farklı yerleştirme
