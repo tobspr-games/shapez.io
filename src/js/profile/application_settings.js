@@ -676,6 +676,10 @@ export class ApplicationSettings extends ReadWriteProxy {
 
         if (data.version < 30) {
             data.settings.mapResourcesScale = 0.5;
+
+            // Re-enable hints as well
+            data.settings.offerHints = true;
+
             data.version = 30;
         }
 
