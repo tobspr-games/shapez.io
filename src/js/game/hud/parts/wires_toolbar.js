@@ -11,6 +11,7 @@ import { MetaComparatorBuilding } from "../../buildings/comparator";
 import { MetaReaderBuilding } from "../../buildings/reader";
 import { MetaFilterBuilding } from "../../buildings/filter";
 import { MetaDisplayBuilding } from "../../buildings/display";
+import { MetaStorageBuilding } from "../../buildings/storage";
 
 export class HUDWiresToolbar extends HUDBaseToolbar {
     constructor(root) {
@@ -26,6 +27,7 @@ export class HUDWiresToolbar extends HUDBaseToolbar {
                 MetaTransistorBuilding,
             ],
             secondaryBuildings: [
+                MetaStorageBuilding,
                 MetaReaderBuilding,
                 MetaLeverBuilding,
                 MetaFilterBuilding,
