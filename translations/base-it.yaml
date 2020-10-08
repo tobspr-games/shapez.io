@@ -177,7 +177,7 @@ dialogs:
             trasportatori.<br>"
     createMarker:
         title: Nuova etichetta
-        desc: Dagli un nome significativo, puoi anche inserire un <strong>codice</strong> 
+        desc: Dagli un nome significativo, puoi anche inserire un <strong>codice</strong>
             di una forma (Che puoi generare <link>qui</link>)
         titleEdit: Modifica etichetta
     markerDemoLimit:
@@ -424,7 +424,7 @@ buildings:
                 superiore.
         quad:
             name: Verniciatore (4x)
-            description: Ti permette di colorare ogni quadrante della forma individualmente. Solo gli spazi con un 
+            description: Ti permette di colorare ogni quadrante della forma individualmente. Solo gli spazi con un
                 <strong>Vero</strong> sul livello elettrico saranno colorati!
         mirrored:
             name: Verniciatore
@@ -564,8 +564,8 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Taglio forme
-        desc: Il <strong>taglierino</strong> è stato bloccato! Taglia le forme a metà da sopra a sotto 
-            <strong>indipendentemente dal suo orientamento</strong>!<br><br> Assicurati di buttare via lo scarto, sennò <strong>si intaserà e andrà in stallo </strong> 
+        desc: Il <strong>taglierino</strong> è stato bloccato! Taglia le forme a metà da sopra a sotto
+            <strong>indipendentemente dal suo orientamento</strong>!<br><br> Assicurati di buttare via lo scarto, sennò <strong>si intaserà e andrà in stallo </strong>
             - Per questo ti ho dato il <strong>certino</strong>, che distrugge tutto quello che riceve!
     reward_rotater:
         title: Rotazione
@@ -597,10 +597,10 @@ storyRewards:
             e <strong>premi 'T' per cambiare variante</strong>!
     reward_miner_chainable:
         title: Estrattore a catena
-        desc: L'<strong>estrattore a catena</strong> è stato sbloccato! Può
+        desc: "L'<strong>estrattore a catena</strong> è stato sbloccato! Può
             <strong>passare le sue risorse</strong> agli altri estrattori, così tu
             puoi estrarre le risorse in modo più efficiente!<br><br> PS: Il primo
-            estrattore è stato rimpiazzato nel tuo inventario!
+            estrattore è stato rimpiazzato nel tuo inventario!"
     reward_underground_belt_tier_2:
         title: Tunnel grado II
         desc: Hai sbloccato una variante del <strong>tunnel</strong>! Ha un
@@ -618,7 +618,7 @@ storyRewards:
             volta</strong> consumando solo un'unità di colore invece che due!
     reward_storage:
         title: Unità di stoccaggio
-        desc: Hai sbloccato il <strong>magazzino</strong>! Ti permette di immagazzinare le forme fino a un certo 
+        desc: Hai sbloccato il <strong>magazzino</strong>! Ti permette di immagazzinare le forme fino a un certo
             limite!<br><br> Dà priorità all'uscita a sinistra,
             puoi quindi usarlo per gestire le <strong>eccedenze</strong>!
     reward_freeplay:
@@ -979,7 +979,8 @@ about:
 
         La colonna sonora è stata composta da<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - È un grande.<br><br>
 
-        Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
+        Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> -
+        Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
 changelog:
     title: Registro modifiche
 demo:
@@ -1015,7 +1016,7 @@ tips:
       efficienza.
     - Tenere premuto <b>SHIFT</b> attiva il pianificatore nastri, facilitando il
       posizionamento dei nastri più lunghi
-    - I taglierini tagliano sempre in verticale, indipendentemente 
+    - I taglierini tagliano sempre in verticale, indipendentemente
       dall'orientamento.
     - Mischia tutti i tre colori per fare il bianco.
     - Il magazzino prioritizza la prima uscita.
