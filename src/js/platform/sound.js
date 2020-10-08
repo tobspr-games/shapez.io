@@ -6,7 +6,7 @@ import { GameRoot } from "../game/root";
 
 import { newEmptyMap, clamp } from "../core/utils";
 import { createLogger } from "../core/logging";
-import { globalConfig, IS_DEMO } from "../core/config";
+import { globalConfig } from "../core/config";
 
 const logger = createLogger("sound");
 
@@ -29,7 +29,9 @@ export const SOUNDS = {
 };
 
 export const MUSIC = {
-    theme: IS_DEMO ? "theme-short" : "theme-full",
+    // The theme always depends on the standalone only, even if running the full
+    // version in the browser
+    theme: G_IS_STANDALONE ? "theme-full" : "theme-short",
     menu: "menu",
 };
 

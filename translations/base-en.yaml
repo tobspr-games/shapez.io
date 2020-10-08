@@ -272,10 +272,6 @@ dialogs:
         title: Rename Savegame
         desc: You can rename your savegame here.
 
-    entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that the game can not handle an endless number of buildings - try to keep your factories compact!
-
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -355,10 +351,6 @@ ingame:
         # Gets replaced to e.g. "Tier IX"
         tier: Tier <x>
 
-        # The roman number for each tier
-        tierLabels:
-            [I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII, XIII, XIV, XV, XVI, XVII, XVIII, XIX, XX]
-
         maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
 
     # The "Statistics" window
@@ -421,6 +413,22 @@ ingame:
 
             1_3_expand: >-
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+
+            2_1_place_cutter: >-
+                Now place a <strong>Cutter</strong> to cut the circles in two halves!<br><br>
+                PS: The cutter always cuts from <strong>top to bottom</strong> regardless of its orientation.
+
+            2_2_place_trash: >-
+                The cutter can <strong>clog and stall</strong>!<br><br>
+                Use a <strong>trash</strong> to get rid of the currently (!) not needed waste.
+
+            2_3_more_cutters: >-
+                Good job! Now place <strong>2 more cutters</strong> to speed up this slow process!<br><br>
+                PS: Use the <strong>0-9 hotkeys</strong> to access buildings faster!
+
+            3_1_rectangles: >-
+                Now let's extract some rectangles! <strong>Build 4 extractors</strong> and connect them to the hub.<br><br>
+                PS: Hold <strong>SHIFT</strong> while dragging a belt to activate the belt planner!
 
     # Connected miners
     connectedMiners:
@@ -676,7 +684,7 @@ buildings:
 
         rotater:
             name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            description: Virtually rotates the shape clockwise.
 
         unstacker:
             name: Virtual Unstacker
@@ -1032,6 +1040,16 @@ settings:
             title: Screen Edge Panning
             description: >-
                 Allows panning the map by moving the cursor to the edges of the screen. The scroll speed depends on the Movement Speed setting.
+
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: >-
+                If activated the zoom will happen in the direction of your mouse position, otherwise in the middle of the screen.
+
+        mapResourcesScale:
+            title: Map Resources Size
+            description: >-
+                Controls the size of the shapes on the map overview (when zooming out).
 
 keybindings:
     title: Keybindings

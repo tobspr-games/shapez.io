@@ -31,7 +31,7 @@ export class WiredPinsComponent extends Component {
 
     static getSchema() {
         return {
-            slots: types.array(
+            slots: types.fixedSizeArray(
                 types.structured({
                     value: types.nullable(typeItemSingleton),
                 })

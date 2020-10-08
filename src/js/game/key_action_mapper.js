@@ -122,6 +122,7 @@ export const KEYCODE_RMB = 3;
  * @returns {string}
  */
 export function getStringForKeyCode(code) {
+    // @todo: Refactor into dictionary
     switch (code) {
         case KEYCODE_LMB:
             return "LMB";

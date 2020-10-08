@@ -2,29 +2,29 @@ steamPage:
     shortText: shapez.io es un juego sobre construir fábricas para automatizar la
         creación y combinación de figuras cada vez más complejas en un mapa
         infinito.
-    discordLinkShort: Official Discord
+    discordLinkShort: Discord oficial
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
+        Shapez.io es un juego tranquilo en el que tienes que construir fábricas
+        para la producción automatizada de formas geométricas.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        A medida que el nivel aumenta, las formas se vuelven más y más complejas, y tienes que extenderte en un mapa infinito.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        Y por si fuera poco, también tienes que producir exponencialmente más para satisfacer las demandas - ¡lo único que ayuda es escalar!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar los colores!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
+    title_advantages: Ventajas del juego
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>12 nuevos niveles</b> de un total de 26 niveles
+        - <b>18 nuevos edificios</b> ¡para una fábrica totalmente automatizada!
         - <b>20 Upgrade Tiers</b> for many hours of fun!
         - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
+        - <b>Modo oscuro</b>!
+        - Partidad guardadas ilimitadas
+        - Marcadores ilimitados
         - Support me! ❤️
-    title_future: Planned Content
+    title_future: Contenido futuro
     planned:
         - Blueprint Library (Standalone Exclusive)
         - Steam Achievements
@@ -204,11 +204,6 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
-    entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -264,27 +259,6 @@ ingame:
         title: Mejoras
         buttonUnlock: Mejorar
         tier: Nivel <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: NIVEL MÁXIMO (Velocidad x<currentMult>)
     statistics:
         title: Estadísticas
@@ -308,10 +282,6 @@ ingame:
         playtime: Tiempo de juego
         buildingsPlaced: Edificios
         beltsPlaced: Cintas transportadoras
-        buttons:
-            continue: Continuar
-            settings: Opciones
-            menu: Volver al menú principal
     tutorialHints:
         title: ¿Necesitas ayuda?
         showHint: Mostrar pista
@@ -690,7 +660,7 @@ storyRewards:
         title: Balancer
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Compact Merger
         desc: You have unlocked a <strong>merger</strong> variant of the
@@ -910,6 +880,14 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atajos de teclado

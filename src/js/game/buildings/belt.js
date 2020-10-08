@@ -7,6 +7,7 @@ import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { THEME } from "../theme";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
 
@@ -22,7 +23,7 @@ export class MetaBeltBuilding extends MetaBuilding {
     }
 
     getSilhouetteColor() {
-        return "#777";
+        return THEME.map.chunkOverview.beltColor;
     }
 
     getPlacementSound() {

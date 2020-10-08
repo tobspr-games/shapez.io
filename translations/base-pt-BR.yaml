@@ -119,9 +119,8 @@ dialogs:
         text: "Houve uma falha ao carregar seu jogo salvo:"
     confirmSavegameDelete:
         title: Confirmar exclusão
-        text: Tem certeza que deseja deletar o jogo a seguir?<br><br>
-            '<savegameName>' no nível <savegameLevel><br><br> Isso não
-            pode ser revertido!
+        text: Tem certeza que deseja deletar o jogo a seguir?<br><br> '<savegameName>'
+            no nível <savegameLevel><br><br> Isso não pode ser revertido!
     savegameDeletionError:
         title: Falha ao deletar
         text: "Houve uma falha ao deletar seu jogo salvo:"
@@ -199,11 +198,6 @@ dialogs:
     renameSavegame:
         title: Renomear Save
         desc: Você pode renomear seu save aqui.
-    entityWarning:
-        title: Aviso de Performance
-        desc: Você colocou muitas construções, isso é apenas um aviso amigável de que o
-            jogo não suporta construções infinitas - Então tente manter suas
-            fábricas  compactas!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -259,27 +253,6 @@ ingame:
         title: Melhorias
         buttonUnlock: Melhorar
         tier: Nível <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: NÍVEL MÁXIMO (Velocidade x<currentMult>)
     statistics:
         title: Estatísticas
@@ -303,10 +276,6 @@ ingame:
         playtime: Tempo de Jogo
         buildingsPlaced: Construções
         beltsPlaced: Esteiras
-        buttons:
-            continue: Continuar
-            settings: Configurações
-            menu: Voltar ao menu
     tutorialHints:
         title: Quer ajuda?
         showHint: Mostrar dica
@@ -466,9 +435,9 @@ buildings:
             description: Colore as formas na entrada esquerda com a cor da entrada superior.
         quad:
             name: Pintor (Quádruplo)
-            description: Permite que você pinte cada quadrante da forma individualmente. Apenas
-                entrada com um <strong>sinal verdadeiro</strong> no plano de fios
-                serão pintadas!
+            description: Permite que você pinte cada quadrante da forma individualmente.
+                Apenas entradas com um <strong>sinal verdadeiro</strong> no
+                plano de fios serão pintadas!
     trash:
         default:
             name: Lixo
@@ -593,12 +562,11 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Cortando formas
-        desc: Você acabou de desbloquear o <strong>cortador</strong>, que corta formas pela metade
-            de cima para baixo <strong>independente de sua
+        desc: Você acabou de desbloquear o <strong>cortador</strong>, que corta formas
+            pela metade de cima para baixo <strong>independente de sua
             orientação</strong>!<br><br>Lembre-se de se livrar do lixo, caso
-            contrário, <strong>a máquina irá entupir</strong> - Por isso
-            eu te dei o <strong>lixo</strong>, que destrói
-            tudo que você coloca nele!
+            contrário, <strong>a máquina irá entupir</strong> - Por isso eu te
+            dei o <strong>lixo</strong>, que destrói tudo que você coloca nele!
     reward_rotater:
         title: Rotação
         desc: O <strong>rotacionador</strong> foi desbloqueado! Gira as formas no
@@ -620,10 +588,10 @@ storyRewards:
             da outra, serão <strong>fundidas</strong>. Caso contrário, a entrada
             direita é <strong>empilhada em cima</strong> da entrada esquerda!
     reward_splitter:
-        title: Distribuidor
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        title: Divisor
+        desc: Você desbloqueou uma variante <strong>divisora</strong> do
+            <strong>balanceador</strong> - Ela aceita uma entrada e a divide em
+            duas saídas!
     reward_tunnel:
         title: Túnel
         desc: O <strong>túnel</strong> foi desbloqueado - Agora você pode transportar
@@ -662,13 +630,15 @@ storyRewards:
             output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Modo Livre
-        desc: Você conseguiu! Você desbloqueou o <strong>modo livre</strong>! Isso significa
-            que formas agora são geradas <strong>aleatóriamente</strong>!<br><br>
-            Já que o HUB vai precisar de uma entrada <strong>constante</strong> a partir de
-            agora, eu altamente recomendo que você construa uma máquina que entregue
-            automaticamente as formas pedidas!<br><br> O HUB emite a forma pedida
-            no plano dos fios, então tudo que você precisa fazer é analizá-la e
-            automaticamente configurar sua fábrica baseado nessa análise.
+        desc: Você conseguiu! Você desbloqueou o <strong>modo livre</strong>! Isso
+            significa que formas agora são geradas
+            <strong>aleatóriamente</strong>!<br><br> Já que o HUB vai precisar
+            de uma entrada <strong>constante</strong> a partir de agora, eu
+            altamente recomendo que você construa uma máquina que entregue
+            automaticamente as formas pedidas!<br><br> O HUB emite a forma
+            pedida no plano dos fios, então tudo que você precisa fazer é
+            analizá-la e automaticamente configurar sua fábrica baseado nessa
+            análise.
     reward_blueprints:
         title: Projetos
         desc: Agora você pode <strong>copiar e colar</strong> partes de sua fábrica!
@@ -687,9 +657,9 @@ storyRewards:
         desc: Parabéns! Aliás, mais conteúdo vindo na versão completa!
     reward_balancer:
         title: Balanceador
-        desc: O <strong>balanceador</strong> multifuncional foi desbloqueado - Ele pode
-            ser usado para construir fábricas maiores <strong>dividindo e unindo
-            itens</strong> em múltiplas esteiras!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_merger:
         title: Unificador Compacto
         desc: Você desbloqueou uma variante <strong>unificadora</strong> do
@@ -706,10 +676,10 @@ storyRewards:
             Ele permite que você rotacione uma forma em 180 graus (Surpresa! :D)
     reward_display:
         title: Display
-        desc: "Você desbloqueou o <strong>Display</strong> - Conecte um sinal no
-            plano de fios para poder vê-lo!<br><br> PS: Você percebeu que ambos o leitor
-            de esteiras e o armazenamento emitem o último item lido? Tente mostrar
-            isso em um display!"
+        desc: "Você desbloqueou o <strong>Display</strong> - Conecte um sinal no plano
+            de fios para poder vê-lo!<br><br> PS: Você percebeu que ambos o
+            leitor de esteiras e o armazenamento emitem o último item lido?
+            Tente mostrar isso em um display!"
     reward_constant_signal:
         title: Sinal Constante
         desc: Você desbloqueou a construção que emite um <strong>sinal
@@ -915,6 +885,14 @@ settings:
             title: Habilitar Movimento com o Mouse
             description: Permite mover o mapa ao mover o cursor para as bordas da tela. A
                 velocidade depende da configuração Velocidade de Movimento.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Controles

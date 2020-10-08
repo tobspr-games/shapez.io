@@ -173,6 +173,8 @@ function gulptasksImageResources($, gulp, buildFolder) {
     gulp.task(
         "imgres.allOptimized",
         gulp.parallel(
+            "imgres.buildAtlas",
+            "imgres.atlasToJson",
             "imgres.atlasOptimized",
             "imgres.copyNonImageResources",
             "imgres.copyImageResourcesOptimized"

@@ -122,7 +122,7 @@ export class BaseDataType {
                 "serialization verify failed: " +
                 errorCode +
                 " [value " +
-                JSON.stringify(value).substr(0, 100) +
+                (JSON.stringify(value) || "").substr(0, 100) +
                 "]"
             );
         }
@@ -859,8 +859,9 @@ export class TypeArray extends BaseDataType {
     /**
      * @param {BaseDataType} innerType
      */
-    constructor(innerType) {
+    constructor(innerType, fixedSize = false) {
         super();
+        this.fixedSize = fixedSize;
         this.innerType = innerType;
     }
 
@@ -887,7 +888,9 @@ export class TypeArray extends BaseDataType {
             targetObject[targetKey] = destination = new Array(value.length);
         }
 
-        for (let i = 0; i < value.length; ++i) {
+        const size = this.fixedSize ? Math.min(value.length, destination.length) : value.length;
+
+        for (let i = 0; i < size; ++i) {
             const errorStatus = this.innerType.deserializeWithVerify(value[i], destination, i, root);
             if (errorStatus) {
                 return errorStatus;

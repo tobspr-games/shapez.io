@@ -17,13 +17,10 @@
         grid-template-rows: 1fr 1fr;
         @include S(margin-bottom, 4px);
         color: #333438;
-        // text-shadow: #{D(1px)} #{D(1px)} 0 rgba(0, 10, 20, 0.2);
 
-        &.unpinable {
-            > canvas {
-                cursor: pointer;
-                pointer-events: all;
-            }
+        &.removable {
+            cursor: pointer;
+            pointer-events: all;
         }
 
         > canvas {
@@ -31,16 +28,9 @@
             @include S(height, 25px);
             grid-column: 1 / 2;
             grid-row: 1 / 3;
-            pointer-events: all;
-            transition: transform 0.1s ease-in-out;
-            transform-origin: D(2px) center;
-            will-change: transform;
-            position: relative;
+            pointer-events: none;
             z-index: 20;
-            &:hover {
-                transform: scale(2);
-                z-index: 21;
-            }
+            position: relative;
         }
 
         > .amountLabel,

@@ -13,6 +13,17 @@ import { getStringForKeyCode } from "../game/key_action_mapper";
 import { createLogger } from "./logging";
 import { T } from "../translations";
 
+/*
+ * ***************************************************
+ *
+ *  LEGACY CODE WARNING
+ *
+ *  This is old code from yorg3.io and needs to be refactored
+ *  @TODO
+ *
+ * ***************************************************
+ */
+
 const kbEnter = 13;
 const kbCancel = 27;
 

@@ -4,48 +4,49 @@ steamPage:
         complexas num mapa infinito.
     discordLinkShort: Discord Oficial
     intro: >-
-        Shapez.io é um jogo relaxante onde tens que construir fábricas para a produção automatizada de formas geométricas.
+        Shapez.io é um jogo relaxante onde tens de construir fábricas para
+        autumatizar a produção de formas geométricas.
 
-        Enquanto o nível aumenta, as formas ficam cada vez mais e mais complexas, e tens de te expandir por um mapa infinito.
+        Com o aumento do nível, as formas começam a ser cada vez mais e mais complexas, e tu terás de te expandir num mapa infinito.
 
-        E como se isso não fosse suficiente, também tens de produzir cada vez mais para satisfazer a demanda - a única coisa que ajuda é aumentar!
+        E como se isso não fosse suficiente, tu também terás de produzir de forma exponencial para satisfazeres as tuas necessidades - a única coisa que ajuda é aumentar!
 
-        Enquanto só podes processar formas no inicio, vais ter de as colorir mais tarde - para isto vais ter de extrair e juntar cores!
+        Embora no inicio apenas tenhas de processar formas,  mais tarde, vais ter de as colorir - para isto terás de extrair e misturar cores!
 
-        Comprar o jogo na Steam dá-te acesso à versão completa, mas também podes jogar a demo em shapez.io primeiro e decidir depois!
-    title_advantages: Vantagens Standalone
+        Comprar o jogo na Steam dar-te-á acesso à versão completa, mas também podes jogar a versão demo em shapez.io primeiro e decidir mais tarde!
+    title_advantages: Vantagens da versão completa
     advantages:
-        - <b>12 Novos Níveis</b> para um total de 26 níveis
-        - <b>18 Novos Edifícios</b> para uma fábrica totalmente automatizada!
-        - <b>20 Níveis de Upgrade</b> para muitas horas de diversão!
-        - <b>Atualização de Fios</b> para uma completamente nova dimensão!
-        - <b>Modo Escuro</b>!
-        - Savegames Ilimitados
-        - Marcos Ilimitados
-        - Suporta-me! ❤️
+        - <b>12 Novos Níveis</b> para um total de 26 Níves
+        - <b>18 Novas Construções</b> para uma fábrica totalmente automatizada!
+        - <b>20 Níveis de Melhoria</b> para muitas horas de diversão!
+        - <b>Atualização de Fios</b> para uma dimensão totalmente nova!
+        - <b>Modo escuro</b>!
+        - Savegames ilimitados
+        - Marcos ilimitados
+        - Ajuda-me! ❤️
     title_future: Conteúdo Planeado
     planned:
-        - Blueprint Library (Exclusivo Standalone)
-        - Steam Achievements
+        - Biblioteca Blueprint (Exclusivo na versão Completa)
+        - Conquistas na Steam
         - Modo Puzzle
-        - Minimap
-        - Mods
+        - Minimapa
+        - Modos
         - Modo Sandbox
-        - ... e muito mais!
-    title_open_source: Este jogo é código aberto!
+        - ... e Muito Mais!
+    title_open_source: Este jogo é open source (código aberto)!
     title_links: Links
     links:
         discord: Discord Oficial
-        roadmap: Roadmap
+        roadmap: Roteiro de desenvolvimento
         subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Ajuda a traduzir
+        source_code: Código Fonte (GitHub)
+        translate: Ajuda a Traduzir
     text_open_source: >-
-        Qualquer pessoa pode contribuir, estou ativamente envolvido na comunidade e
-        tento rever todas as sugestões e levo o feedback em consideração sempre que possível.
+        Qualquer um pode contribuir, estou ativamente envolvido na comunidade e
+        tento ver todas as sugestões e ter em consideração o feedback recebido
+        assim que possível.
 
-        Verifique o meu trello board para o roadmap completo!
-
+        Segue o meu trello board para veres todo o roteiro de desenvolvimento!
 global:
     loading: A Carregar
     error: Erro
@@ -97,7 +98,6 @@ mainMenu:
     madeBy: Criado por <author-link>
     subreddit: Reddit
     savegameUnnamed: Sem Nome
-
 dialogs:
     buttons:
         ok: OK
@@ -122,9 +122,8 @@ dialogs:
         text: "Erro ao carregar o teu savegame:"
     confirmSavegameDelete:
         title: Confirmar eliminação
-        text: Tens que queres apagar o seguinte jogo?<br><br>
-            '<savegameName>' no Nível <savegameLevel><br><br> Isto não pode
-            desfeito!
+        text: Tens a certeza que queres apagar o seguinte jogo?<br><br> '<savegameName>'
+            no nível <savegameLevel><br><br> Isto não pode ser desfeito!
     savegameDeletionError:
         title: Erro de eliminação
         text: "Erro ao eliminar o teu savegame:"
@@ -179,8 +178,9 @@ dialogs:
             class='keybinding'>ALT</code>: Inverte as posições.<br>"
     createMarker:
         title: Novo Marco
-        desc: Dá-lhe um nome com significado, também poderás adicionar <strong>um
-            pequeno código</strong> de uma forma (Que podes gerar aqui <link>here</link>)
+        desc: Dá-lhe um nome com significado, também poderás adicionar um
+            <strong>pequeno código</strong> de uma forma. (Pode ser gerado
+            <link>aqui</link>)
         titleEdit: Editar Marco
     markerDemoLimit:
         desc: Apenas podes criar dois marcos na versão Demo. Adquire o jogo completo
@@ -199,17 +199,13 @@ dialogs:
         desc: Não consegues pagar para colar esta área! Tens a certeza que pretendes
             cortá-la?
     editSignal:
-        title: Definir Sinal
+        title: Define o Sinal
         descItems: "Escolhe um item pre-definido:"
-        descShortKey: ... ou entra o <strong>atalho</strong> duma forma (Que podes
-            gerar <link>aqui</link>)
+        descShortKey: ... ou insere o <strong>pequeno código</strong> de uma forma (Pode
+            ser gerado <link>aqui</link>)
     renameSavegame:
         title: Renomear Savegame
         desc: Podes renomear o teu savegame aqui.
-    entityWarning:
-        title: Aviso de Desempenho
-        desc: Tu colocaste muitos edifícios, isto é apenas um lembrete amigável que o jogo não consegue aguentar com um número infinito de edifícios - Tenta meter as tuas fábricas compactas!
-
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -255,27 +251,6 @@ ingame:
         title: Upgrades
         buttonUnlock: Upgrade
         tier: Nível <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: NÍVEL MÁXIMO (Velocidade x<currentMult>)
     statistics:
         title: Estatísticas
@@ -295,15 +270,10 @@ ingame:
             second: <shapes> / s
             minute: <shapes> / m
             hour: <shapes> / h
-
     settingsMenu:
         playtime: Tempo de jogo
         buildingsPlaced: Construções
         beltsPlaced: Tapetes rolantes
-        buttons:
-            continue: Continuar
-            settings: Definições
-            menu: Voltar ao menu
     tutorialHints:
         title: Precisas de ajuda?
         showHint: Mostrar dica
@@ -345,42 +315,41 @@ ingame:
         empty: Vazio
         copyKey: Chave de cópia
     connectedMiners:
-        one_miner: 1 Minerador
-        n_miners: <amount> Mineradores
-        limited_items: Limitado a <max_throughput>
+        one_miner: 1 Extrator
+        n_miners: <amount> Extratores
+        limited_items: Limite de <max_throughput>
     watermark:
         title: Versão Demo
-        desc: Clica aqui para ver as vantagens da versão Steam!
-        get_on_steam: Compra na steam
+        desc: Clica aqui para veres as vantagens da versão na Steam!
+        get_on_steam: Compra na Steam
     standaloneAdvantages:
         title: Obtém a versão completa!
         no_thanks: Não, obrigado!
         points:
             levels:
                 title: 12 Novos Níveis
-                desc: Para um total de 26 níveis!
+                desc: Para um total de 26 Níveis!
             buildings:
-                title: 18 Novos Edifícios
-                desc: Automatiza completamente a tua fábrica!
+                title: 18 Novas contruções
+                desc: Para uma fábrica totalmente automatizada!
             savegames:
                 title: Savegames ∞
-                desc: Quantos o teu coração quiser!
+                desc: Tantos quanto o teu corção desejar!
             upgrades:
-                title: 20 Níveis de Upgrades
-                desc: Esta versão demo só tem 5!
+                title: 20 Níveis de melhoria
+                desc: Nesta versão demo apenas tens 5!
             markers:
                 title: Marcos ∞
-                desc: Nunca te percas na tua fábrica!
+                desc: Nunca te percas na tua Fábrica!
             wires:
                 title: Fios
-                desc: Uma completamente nova dimensão!
+                desc: Uma dimensão totalmente nova!!
             darkmode:
                 title: Modo Escuro
-                desc: Para de magoar os meus olhos!
+                desc: Não magoes os teus olhos!
             support:
-                title: Suporta-me
-                desc: Eu desenvolvo o jogo no meu tempo livre!
-
+                title: Ajuda-me
+                desc: Eu desenvolvo este jogo no meu tempo livre!
 shopUpgrades:
     belt:
         name: Tapetes, Distribuidores e Túneis
@@ -398,7 +367,7 @@ buildings:
     belt:
         default:
             name: Tapete Rolante
-            description: Transporta items. Mantém pressionado e arrasta para colocar vários.
+            description: Transporta itens. Mantém pressionado e arrasta para colocar vários.
     miner:
         default:
             name: Extrator
@@ -431,10 +400,10 @@ buildings:
             description: Roda as formas 90º no sentido dos ponteiros do relógio.
         ccw:
             name: Rodar (CCW)
-            description: Roda as formas 90º no sentido contrário ao dos ponteiros do relógio.
-
+            description: Roda as formas 90º no sentido contrário ao dos ponteiros do
+                relógio.
         rotate180:
-            name: Rodar (180)
+            name: Rodar (180º)
             description: Roda as formas 180º.
     stacker:
         default:
@@ -456,7 +425,9 @@ buildings:
                 entrada superior.
         quad:
             name: Pintor (Quádruplo)
-            description: Pinta cada quadrante da forma geométrica com uma cor diferente. Apenas slots com um <strong>sinal verdadeiro</strong> na camada de fios vão ser pintados!
+            description: Permite colorir cada quadrante da forma individualmente. Apenas
+                entradas com um <strong>sinal verdadeira</strong> na camada de
+                fios irá ser pintada!
         mirrored:
             name: Pintor
             description: Pinta a forma geométrica da entrada esquerda com a cor da entrada
@@ -465,28 +436,31 @@ buildings:
         default:
             name: Lixo
             description: Aceita entradas de todos os lados e destrói-os. Para sempre.
-
     hub:
         deliver: Entrega
         toUnlock: para desbloquear
         levelShortcut: NVL
+        endOfDemo: Fim do Demo
     wire:
         default:
             name: Fio Elétrico
-            description: Transfere sinais, que podem ser itens, cores ou boleanos (1 / 0). Fios com cores diferentes não conectam.
+            description: Tranfere sinais, que podem ser itens, cores ou um sinal binário (1
+                ou 0). Fios de cores diferestes não se conectam.
         second:
             name: Fio Elétrico
-            description: Transfere sinais, que podem ser itens, cores ou boleanos (1 / 0). Fios com cores diferentes não conectam.
+            description: Tranfere sinais, que podem ser itens, cores ou um sinal binário (1
+                ou 0). Fios de cores diferestes não se conectam.
     balancer:
         default:
-            name: Balanceador
-            description: Multifuncional - Distribui uniformemente todas as entradas para todas as saídas.
+            name: Distribuidor
+            description: Multifunções - Distribui igualmente todas as entradas por todas as
+                saídas.
         merger:
-            name: Junção (compacto)
-            description: Junta um tapete rolante em dois.
+            name: Misturador (comp.)
+            description: Junta dois tapetes rolantes num só.
         merger-inverse:
-            name: Junção (compacto)
-            description: Junta um tapete rolante em dois.
+            name: Misturador (comp.)
+            description: Junta dois tapetes rolantes num só.
         splitter:
             name: Divisor (compacto)
             description: Divide um tapete rolante em dois.
@@ -496,97 +470,111 @@ buildings:
     storage:
         default:
             name: Armazém
-            description: >-
-                Guarda itens em excesso, até uma quantidade determinada. Prioritiza a entrada esquerda
-                e pode ser usada como um portão de transbordar.
+            description: Armazena itens em excesso, até uma determinada capacidade. Dá
+                prioridade à saída da esquerda e pode ser usado como uma porta
+                de transbordo.
     wire_tunnel:
         default:
-            name: Túnel de Fio
-            description: Permite cruzar dois fios sem os conectar.
+            name: Túnel de Fios
+            description: Permite que dois fios cruzem sem conectarem-se um ao outro.
     constant_signal:
         default:
-            name: Sinal constante
-            description: >-
-                Emite um sinal constante, que pode ser uma forma, cor ou um booleano (1 / 0).
+            name: Sinal Constante
+            description: Emite um sinal constante , que pode ser uma forma, cor ou um sinal
+                binário (1 ou 0).
     lever:
         default:
             name: Interruptor
-            description: >-
-                Pode ser alternado para emitir um sinal booleano (1 / 0) na camada de fios, que pode então ser usada
-                para controlar por exemplo um filtro de itens.
+            description: Pode emitir alternadamente um sinal binário (1 ou 0) na camada de
+                fios, que pode posteriormente ser usado, por exemplo, num filtro
+                de itens.
     logic_gate:
         default:
             name: Portão AND
-            description: Emite um booleano "1" se ambas as entradas são verdadeiras. (Verdadeiro significa forma, cor ou booleano "1")
+            description: 'Emite um sinal binário "1" se ambas as entradas forem verdadeiras.
+                (Verdadeiro significa: forma, cor ou sinal binário "1")'
         not:
             name: Portão NOT
-            description: Emite um booleano "1" se a entrada não é verdadeira. (Verdadeiro significa forma, cor ou booleano "1")
+            description: 'Emite um sinal binário "1" se a entrada não for verdadeira.
+                (Verdadeiro significa: forma, cor ou sinal binário "1")'
         xor:
             name: Portão XOR
-            description: Emite um booleano "1" se uma das entradas é verdadeira, mas não as duas. (Verdadeiro significa forma, cor ou booleano "1")
+            description: 'Emite um sinal binário "1" se uma das entradas for verdadeira, mas
+                não as duas. (Verdadeiro significa: forma, cor ou sinal binário
+                "1")'
         or:
             name: Portão OR
-            description: Emite um booleano "1" se uma entrada é verdadeira. (Verdadeiro significa forma, cor ou booleano "1")
+            description: 'Emite um sinal binário "1" se uma entrada é verdadeira.
+                (Verdadeiro significa: forma, cor ou sinal binário "1")'
     transistor:
         default:
-            name: Transistor
-            description: Encaminha a entrada inferior se a entrada lateral for verdade (uma forma, cor ou "1").
+            name: Transístor
+            description: Encaminha a entrada inferior se a entrada lateral for verdade (uma
+                forma, cor ou "1").
         mirrored:
-            name: Transistor
-            description: Encaminha a entrada inferior se a entrada lateral for verdade (uma forma, cor ou "1").
+            name: Transístor
+            description: Encaminha a entrada inferior se a entrada lateral for verdade (uma
+                forma, cor ou "1").
     filter:
         default:
-            name: Filtro
-            description: Conecta um sinal para encaminhar todos os itens correspondentes para o topo e o resto
-              para a direita. Pode ser controlado com sinais booleanos também.
+            name: Filtro de Itens
+            description: Conecta um sinal que irá encaminhar todos os itens correspondentes
+                para o topo e os restantes para a direita. Também pode ser
+                controlado com sinais binários.
     display:
         default:
-            name: Display
-            description: Conecta um sinal para mostrar no display - Pode ser uma forma, cor ou
-                booleano.
+            name: Visor
+            description: Conecta um sinal para mostrar no Visor - Pode ser uma forma, cor ou
+                um sinal binário.
     reader:
         default:
             name: Leitor de Tapete
-            description: Permite medir o rendimento do tapete. Produz o último item lido na camada de
-                fios (quando desbloqueada).
+            description: Permite medir a passagem média de itens no tapete. Fornece o último
+                item lido na camada de fios (quando desbloqueada).
     analyzer:
         default:
             name: Analizador de Forma
-            description: Analiza o quadrante do topo direito da camada mais baixa da forma e produz
-                a forma ou cor.
+            description: Analiza o quadrante superior direito da camada mais baixa da forma
+                e retorna a forma ou cor.
     comparator:
         default:
-            name: Comparar
-            description: Produz o booleano "1" se ambos os itens são exatamente iguais. Pode comparar formas,
-                itens e booleanos.
+            name: Comparador
+            description: Produz o sinal binário "1" se ambos os itens são exatamente iguais.
+                Pode comparar formas, itens e sinais binários.
     virtual_processor:
         default:
             name: Cortador Virtual
-            description: Computa
+            description: Virtualmente, corta as formas em duas metades.
         rotater:
-            name: Rodar Virtual
-            description: Roda virtualmente as formas 90º no sentido dos ponteiros do relógio.
+            name: Rodador Virtual
+            description: Virtualmente, roda a forma tanto no sentido horário quanto no
+                anti-horário.
         unstacker:
             name: Desempilhador Virtual
-            description: Produz a camada no topo para a direita, e o resto para esquerda.
+            description: Virtualmente, remove a camada do topo para a saída da direita e o
+                restante para a da esquerda.
         stacker:
             name: Empilhador Virtual
-            description: Empilha virtualmente o item da direita em cima do item da esquerda.
+            description: Virtualmente empilhada a forma da direita em cima do item da
+                esquerda.
         painter:
             name: Pintor Virtual
-            description: Pinta virtualmente a forma de baixo com a forma da direita.
+            description: Virtualmente, pinta a forma a forma da entrada de baixo com o item
+                da entrada da direita.
     item_producer:
         default:
             name: Produtor de Itens
-            description: Disponível apenas no modo sandbox, produz o sinal dado da camada de fios na camala normal.
-
+            description: Disponível apenas no modo sandbox, produz o sinal dado na camada de
+                fios na camada normal.
 storyRewards:
     reward_cutter_and_trash:
         title: Corte de formas
-        desc: Acabaste de desbloquear o <strong>Cortador</strong>, que corta as formas
-            geométricas ao meio de cima para baixo <strong>independentemente da orientação</strong>!<br><br>Certifica-te de que te
-            livras do desperdício, caso contrário <strong>encravará</strong> -
-            Por isso, dou-te um lixo, que destruirá tudo o que lá colocares!
+        desc: Acabaste de desbloquear o <strong>cortador</strong>, que corta as formas
+            ao meio de cima para baixo <strong>independentemente da sua
+            orientação</strong>!<br><br>Certefica-te de que te livras do
+            desperdício, caso contrário <strong>irá encravar e parar</strong> -
+            Para este propósito eu dei-te um <strong>lixo</strong>, que destrói
+            tudo o que lá colocares!
     reward_rotater:
         title: Rotação
         desc: O <strong>Rodador</strong> foi desbloqueado! Ele roda as formas
@@ -610,8 +598,9 @@ storyRewards:
             esquerda!
     reward_splitter:
         title: Divisor
-        desc: Desbloqueaste o <strong>divisor</strong>, variante do
-            <strong>balanceador</strong> - Aceita uma entrada e divide-a em duas!
+        desc: Desbloqueaste o <strong>dvisor</strong> uma variante do
+            <strong>distribuidor</strong> - Aceita uma entradae divide-a em
+            duas!
     reward_tunnel:
         title: Túnel
         desc: O <strong>Túnel</strong> foi desbloqueado - Com ele podes passar itens
@@ -624,94 +613,125 @@ storyRewards:
             variantes</strong>!
     reward_miner_chainable:
         title: Extração em série
-        desc: >-
-            Desbloqueaste o <strong>Extrator em série</strong>! Permite <strong>enviar
-            o recurso extraído</strong> para outros extratores, permitindo uma
-            extração mais eficiente!<br><br> PS: O velho extrator já foi trocado na tua toolbar!
+        desc: "Desbloqueaste o <strong>extrator em séire</strong>! Permite
+            <strong>enviar os recursos</strong> para outros extratores, sendo
+            assim permite uma extração de recursos mais eficiente!<br><br> PS: O
+            extrator antigo já foi trocado na tua lista de construções!"
     reward_underground_belt_tier_2:
         title: Túnel Nível II
-        desc: Desbloqueaste uma nova variante do <strong>Túnel</strong> - Tem um <strong>maior alcance</strong>, e podes interlaçar as duas variantes entre si!
+        desc: Desbloqueaste uma nova variante do <strong>Túnel</strong> - Tem um
+            <strong>maior alcance</strong>, e podes interlaçar as duas variantes
+            entre si!
     reward_cutter_quad:
         title: Corte quádruplo
-        desc: Desbloqueaste a variante do <strong>Cortador</strong> - Permite cortar formas geométricas em <strong>quatro partes</strong> em vez de apenas duas!
+        desc: Desbloqueaste a variante do <strong>Cortador</strong> - Permite cortar
+            formas geométricas em <strong>quatro partes</strong> em vez de
+            apenas duas!
     reward_painter_double:
         title: Pintura dupla
-        desc: Desbloqueaste uma variante do <strong>Pintor</strong> - Funciona como um pintor normal mas processa <strong>duas formas ao mesmo tempo</strong> consumindo apenas uma cor em vez de duas!
+        desc: Desbloqueaste uma variante do <strong>Pintor</strong> - Funciona como um
+            pintor normal mas processa <strong>duas formas ao mesmo
+            tempo</strong> consumindo apenas uma cor em vez de duas!
     reward_storage:
         title: Armazém
-        desc: Desbloqueaste uma variante do <strong>Lixo</strong> - Permite armazenar items até uma determinada capacidade!<br><br> Prioritiza a saída esquerda, por isso também o podes usar como um portão de transbordar.
+        desc: Desbloqueaste uma variante do <strong>lixo</strong> - Permite armazenar
+            itens, até uma determinada capacidade!<br><br> Dá prioridade à saída
+            da esquerda e pode ser usado como uma <strong>porta de
+            transbordo</strong>!
     reward_freeplay:
         title: Jogo livre
-        desc: Conseguiste! Desbloqueaste o <strong>modo jogo livre</strong>! Isto significa que agora as formas são geradas <strong>aleatoriamente</strong>!<br><br>
-            Como o edifício central vai precisar de uma <strong>taxa de transferência</strong> a partir de
-            agora, eu recomendo contruires uma máquina que automaticamente
-            entrega a forma pedida!<br><br> O edifício central produz a forma pedida na camada de fios,
-            então tudo o que tens de fazer é analizar-la e automaticamente configurar a tua fábrica à volta disso.
+        desc: Conseguiste! Desbloqueaste o <strong>modo jogo livre</strong>! Isto
+            significa que agora as formas são geradas
+            <strong>aleatoriamente</strong>!<br><br> Como o edifício central vai
+            precisar de uma <strong>taxa de rendimento</strong> a partir de
+            agora, recomendo vivamente a contruires uma máquina que,
+            automaticamente, entraga as formas pedidas!<br><br> O edifício
+            central emite a forma pedida na camada de fios,sendo assim tudo o
+            que tens a fazer é analiza-la e automaticamente configurares a tua
+            fábrica baseada nisso.
     reward_blueprints:
         title: Projetos
-        desc: Agora podes <strong>copiar e colar</strong> partes da tua fábrica! Seleciona uma área (Mantém pressionado CTRL e arrasta com o rato), e pressiona 'C' para copiar.<br><br>Colar não é <strong>gratuito</strong>, precisas de produzir <strong>formas projeto</strong> para o pagares! (Aquelas que acabaste de entregar).
+        desc: Agora podes <strong>copiar e colar</strong> partes da tua fábrica!
+            Seleciona uma área (Mantém pressionado CTRL e arrasta com o rato), e
+            pressiona 'C' para copiar.<br><br>Colar não é
+            <strong>gratuito</strong>, precisas de produzir <strong>formas
+            projeto</strong> para o pagares! (Aquelas que acabaste de entregar).
     no_reward:
         title: Próximo nível
-        desc: >-
-            Este nível não te deu nenhuma recompensa, mas o próximo dará! <br><br> PS: É melhor não destruires a tua fábrica atual - Precisarás de <strong>todas</strong> essas formas no futuro para <strong>desbloquear upgrades</strong>!
+        desc: "Este nível não te deu nenhuma recompensa, mas o próximo dará! <br><br>
+            PS: É melhor não destruires a tua fábrica atual - Precisarás de
+            <strong>todas</strong> essas formas no futuro para
+            <strong>desbloquear upgrades</strong>!"
     no_reward_freeplay:
         title: Próximo nível
         desc: Parabéns! Já agora, está planeado mais conteúdo para o jogo completo!
     reward_balancer:
-        title: Balanceador
-        desc: O multifunctional <strong>balanceador</strong> foi desbloqueado - Pode ser usado
-            para construir fábricas maiores <strong>dividindo e juntando itens</strong>
-            por vários tapetes!<br><br>
+        title: Distribuidor
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_merger:
-        title: Junção (Compacto)
-        desc: Destravaste a <strong>junção</strong> variante do
-            <strong>balanceador</strong> - Aceita duas entradas e junta-as num só tapete!
+        title: Misturador (compacto)
+        desc: Desbloqueaste um <strong>misturador</strong>, uma variante do
+            <strong>distribuidor</strong> - Aceita duas entradas e junta-as num
+            só tapete rolante!
     reward_belt_reader:
         title: Leitor de Tapete
-        desc: Tu desbloqueaste o <strong>leitor de tapete</strong>! Permite-te medir
-            o rendimento dum tapete.<br><br>E espera até desbloqueares fios - aí é que é super útil!
+        desc: Desbloqueaste o <strong>leitor de tapete</strong>! Permite-te medires a
+            passagem média de itens no tapete.<br><br>E espera por desbloqueares
+            os fios - aí é que vão ser bastante úteis!
     reward_rotater_180:
-        title: Rodar (180 degrees)
-        desc: Acabaste de desbloquear a versão de 180º do <strong>Rotador</strong>! - Deixa-te rodar formas por 180º (Surpresa! :D)
+        title: Rodar (180º)
+        desc: Desbloqueaste o <strong>rodador</strong> de 180 graus! - Permite-te
+            rodares formas 180 graus (Surpresa! :D)
     reward_display:
-        title: Display
-        desc: >-
-            Destravaste o <strong>Display</strong> - Conecta um sinal elétrico na camada de fios para visualizar-lo!<br><br> PS:
-            Reparaste que o leitor de tapetes e o armazém produz o último item lido por eles na camada de fios? Tenta mostrar isso num display!
+        title: Visor
+        desc: "Desbloqueaste o <strong>Visor</strong> - Conecta um sinal na camada de
+            fios para o visualizares!<br><br> PS: Reparaste que o leitor de
+            tapete e o armazém emitem o último item lido por eles? tenta mostrar
+            isso num visor!"
     reward_constant_signal:
         title: Sinal Constante
-        desc: Acabaste de destravar o edifício <strong>sinal constante</strong> na camada de fios!
-            Isto é útil conectado a um <strong>filtro de itens</strong> por exemplo.<br><br>
-            O sinal constante pode emitir uma <strong>forma</strong>,
-            <strong>cor</strong> ou um <strong>booleano</strong> (1 / 0).
+        desc: Desbloqueaste o <strong>sinal constante</strong> contruido na camada de
+            fios! Isto é útil conectado com um <strong>filtro de itens</strong>
+            por exemplo.<br><br> O sinal constante pode emitir uma
+            <strong>forma</strong>, <strong>cor</strong> ou <strong>sinal
+            binário</strong> (1 ou 0).
     reward_logic_gates:
         title: Portões Lógicos
-        desc: "Tu desbloqueaste os <strong>portões lógicos</strong>! Não tens de estar excitado sobre isto,
-        mas é na verdade super fixe!<br><br> Com estes portões agora podes fazer operações booleanas
-        AND, OR, XOR e NOT!"
+        desc: Desbloqueaste os <strong>portões lógicos</strong>! N tens de te excitar
+            com isto, mas é realmente super fixe!<br><br> Com estes portões
+            agora podes realizar operações AND, OR, XOR and NOT.<br><br> Como um
+            bónus anteriormente já de dei um <strong>transístor</strong>!
     reward_virtual_processing:
         title: Processamento Virtual
-        desc: >-
-            Acabei de te dar um monte de novos edifícios que permitem-te
-            <strong>simular o processamento de formas</strong>!<br><br> Podes agora
-            simular um cortador, rodar, empilhador e mais na camada de fios!<br><br>
-            Com isto tens agora três opções para continuar o jogo:<br><br> - Construir
-            uma <strong>máquina automatizada</strong> para criar qualquer forma requerida
-            pelo edifício central (Isto é fixe, eu prometo!).<br><br> - Construir algo fixe com
-            fios.<br><br> - Continuar a jogar regularmente. Seja lá o que escolheres, lembra-te de te divertires!
+        desc: Acadei de te dar um monte de novas construções, que te vão permitir
+            <strong>simular o processamento de formas</strong>!<br><br> Agora
+            podes simular um cortador,um rodador, um empilhador e muito mais na
+            camada de fios! Com isto, agora tens três opções para continuares o
+            jogo:<br><br> - Construir uma <strong>máquina automática</strong>
+            para criar qualquer forma possível pedida pelo Edifício Central
+            (Reconmento-te a experimentares!).<br><br> - Contruir algo fixe com
+            os fios.<br><br> - Continuar a jogar regularmente.<br><br>
+            Independentemente da tua escolha, lembra-te de te divertires!
     reward_wires_painter_and_levers:
-        title: Fios e Pintor Quádruplo
-        desc: "Acabaste de desbloquear a <strong>Camada de Fios</strong>: É uma camada separada
-            no topo da camada normal e introduz um monte de novas mecânicas!<br><br>
-            Para o início eu dei-te o <strong>Pintor Quádruplo</strong> - Conecta os slots que queres pintar na
-            camada de fios!<br><br> Para trocar para a camada de fios, pressiona <strong>E</strong>."
+        title: Fios & Pintor Quádruplo
+        desc: "Desbloquaste a <strong>Camada de Fios</strong>: É uma camada separada no
+            topo da camada normal e introduz um monte de novas
+            mecânicas!<br><br> Para o inicio eu dei-te o <strong>Pintor
+            Quádruplo</strong> - Conecta as entradasque queres pintar na camada
+            de fios!<br><br> Para trocares para a camada de fios, pressiona a
+            tecla <strong>E</strong>."
     reward_filter:
         title: Filtro de Itens
-        desc: Desbloqueaste o <strong>Filtro de Itens</strong>! Vai mandar items para a saída de topo ou para a saída da direita
-            dependendo se são iguais ao sinal da camada de fios.<br><br> Também podes passar um sinal booleano (1 / 0) para ativar-lo ou desativar-lo completamente.
+        desc: Desbloquaste o <strong>Filtro de Itens</strong>! Vai mandar itens ou para
+            o topo ou para a saída da esquerda dependendo depending se são
+            iguais ao sinal da camada de fios ou não.<br><br> Também podes
+            passar um sinal binário (1 ou 0) para ativa-lo ou desativa-lo
+            totalmente.
     reward_demo_end:
         title: Fim da Demo
-        desc: Chegaste ao fim da versão demo!
+        desc: Tu chegaste ao fim da versão demo!
 settings:
     title: Definições
     categories:
@@ -727,8 +747,9 @@ settings:
     labels:
         uiScale:
             title: Escala da interface
-            description: >-
-                Altera o tamanho da interface do utilizador. A interface será redimensionada com base na resolução do teu dispositivo, mas esta definição controla a escala.
+            description: Altera o tamanho da interface do utilizador. A interface será
+                redimensionada com base na resolução do teu dispositivo, mas
+                esta definição controla a escala.
             scales:
                 super_small: Super pequeno
                 small: Pequeno
@@ -737,8 +758,7 @@ settings:
                 huge: Enorme
         scrollWheelSensitivity:
             title: Sensibilidade do zoom
-            description: >-
-                Define o quão sensível é o zoom (Roda do rato ou trackpad).
+            description: Define o quão sensível é o zoom (Roda do rato ou trackpado).
             sensitivity:
                 super_slow: Muito lento
                 slow: Lento
@@ -747,39 +767,41 @@ settings:
                 super_fast: Muito rápido
         language:
             title: Língua
-            description: >-
-                Muda a língua. Todas as traduções são contribuições dos utilizadores e podem estar incompletas!
+            description: Muda a língua. Todas as traduções são contribuições dos
+                utilizadores e podem estar incompletas!
         fullscreen:
             title: Ecrã inteiro
-            description: >-
-                É recomendado jogar o jogo em ecrã inteiro para a melhor experiência. Apenas disponível no jogo completo.
+            description: É recomendado jogar o jogo em ecrã inteiro para a melhor
+                experiência. Apenas disponível no jogo completo.
         soundsMuted:
             title: Desativar sons
-            description: >-
-                Se ativado, desativa todos os sons.
+            description: Se ativado, desativa todos os sons.
         musicMuted:
             title: Desativar música
-            description: >-
-                Se ativado, desativa todas as músicas.
+            description: Se ativado, desativa todas as músicas.
         theme:
             title: Tema do jogo
-            description: >-
-                Escolhe o tema do jogo (claro / escuro).
+            description: Escolhe o tema do jogo (claro / escuro).
             themes:
                 dark: Escuro
                 light: Claro
         refreshRate:
             title: Frequência
-            description: >-
-                Isto determina quantos game ticks ocorrem por segundo. No geral, uma frequência alta significa melhor precisão mas também pior desempenho. Em frequências baixas, o rendimento pode não ser exato.
+            description: Se tens um monitor 144hz, muda a frequência para que o jogo simule
+                corretamente frequências de autalização altas. Isto pode
+                resultar em perda de FPS se o teu computador for demasiado
+                lento.
         alwaysMultiplace:
             title: Colocação múltipla
-            description: >-
-                Se ativado, todas as construções permanecerão selecionadas após a colocação até cancelares. Isto é equivalente a pressionares SHIFT permanentemente.
+            description: Se ativado, todas as construções permanecerão selecionadas após a
+                colocação até cancelares. Isto é equivalente a pressionares
+                SHIFT permanentemente.
         offerHints:
             title: Dicas e tutoriais
-            description: >-
-                Se ativado, dá dicas e tutoriais de apoio ao jogo. Adicionalmente, esconde certos elementos da interface do utilizador até ao nível em que são desbloqueados de forma a simplificar o início do jogo.
+            description: Se ativado, dá dicas e tutoriais de apoio ao jogo. Adicionalmente,
+                esconde certos elementos da interface do utilizador até ao nível
+                em que são desbloqueados de forma a simplificar o início do
+                jogo.
         movementSpeed:
             title: Velocidade de movimentação
             description: Define quão rápida é a movimentação usando o teclado.
@@ -792,19 +814,17 @@ settings:
                 extremely_fast: Extremamente rápida
         enableTunnelSmartplace:
             title: Túneis inteligentes
-            description: >-
-                Quando ativado, a colocação de túneis removerá tapetes desnecessários automaticamente.
-                Isto também permite arrastar túneis e túneis em excesso serão removidos.
+            description: Quando ativado, a colocação de túneis removerá tapetes
+                desnecessários automaticamente. Isto também permite arrastar
+                túneis e túneis em excesso serão removidos.
         vignette:
             title: Vinheta
-            description: >-
-                Ativa a vinheta, que escurece os cantos do ecrã e torna a leitura do texto
-                mais fácil.
+            description: Ativa a vinheta, que escurece os cantos do ecrã e torna a leitura
+                do texto mais fácil.
         autosaveInterval:
             title: Intervalo de gravação automática
-            description: >-
-                Define o quão frequentemente o jogo grava automaticamente. Também podes desativar
-                aqui.
+            description: Define o quão frequentemente o jogo grava automaticamente. Também
+                podes desativar aqui.
             intervals:
                 one_minute: 1 Minuto
                 two_minutes: 2 Minutos
@@ -814,23 +834,21 @@ settings:
                 disabled: Desligado
         compactBuildingInfo:
             title: Informações de construções compactas
-            description: >-
-                Encurta caixas de informação e apenas mostra os respetivos rácios. Caso contrário
-                é mostrada a descrição e a imagem.
+            description: Encurta caixas de informação e apenas mostra os respetivos rácios.
+                Caso contrário é mostrada a descrição e a imagem.
         disableCutDeleteWarnings:
             title: Desativar Avisos de Corte/Eliminação
-            description: >-
-                Desativa os avisos mostrados quando é feito o corte ou a eliminação de mais de 100
-                entidades.
+            description: Desativa os avisos mostrados quando é feito o corte ou a eliminação
+                de mais de 100 entidades.
         enableColorBlindHelper:
             title: Modo Daltónico
-            description: Ativa várias ferramentas que te permitirão jogar o jogo se fores daltónico.
+            description: Ativa várias ferramentas que te permitirão jogar o jogo se fores
+                daltónico.
         rotationByBuilding:
             title: Rotação por tipo de construção
-            description: >-
-                Cada tipo de construção lembra-se da última rotação que definiste.
-                Esta definição pode ser mais confortável se alterares frequentemente
-                a colocação de diferentes tipos de construções.
+            description: Cada tipo construção lembra-se da última rotação que definiste.
+                Esta definição pode ser mais confortável se alterares
+                frequentemente a colocação de diferentes tipos de construções.
         soundVolume:
             title: Volume do Som
             description: Define o volume para efeitos sonoros
@@ -839,44 +857,55 @@ settings:
             description: Define o volume para música
         lowQualityMapResources:
             title: Recursos de Mapa de Baixa Qualidade
-            description: >-
-                Simplifica a renderização de recursos quanto o mapa está ampliado para melhorar o desempenho. Até parece mais limpo, então lembra-te de experimentar!
+            description: Simplifica a renderização de recursos quando o mapa está ampliado
+                para melhorar o desempenho. Até parece mais limpo, então
+                lembra-te de experimentares!
         disableTileGrid:
             title: Desativar Grelha
-            description: >-
-                Desativar a grelha pode ajudar com o desempenho. Isto também faz o jogo estar mais limpo!
+            description: Desativar a grelha pode ajudar com o desempenho. Isto também fazz o
+                jogo parecer mais limpo!
         clearCursorOnDeleteWhilePlacing:
             title: Limpar Cursor com Clique Direito
-            description: >-
-                Ativado por default, limpa o cursos sempre que clicas no botão direito do rato enquanto tens um edifício selecionado para colocamento.
-                Se desativado, podes apagar edifícios fazendo um clique direito enquanto colocas um edifício.
+            description: Ativado por padrão, limpa o cursor sempre que pressionas o botão
+                direito do rato enquanto tens um edifício para colocamento. Se
+                desativado, podes apagar construções pressionando o botão
+                direito do rato enquanto colocas um edifício.
         lowQualityTextures:
             title: Texturas de baixa qualidade (Feio)
-            description: >-
-                Usa texturas de baixa qualidade para melhorar o desempenho. Isto vai tornar o jogo muito feio!
+            description: sa texturas de baixa qualidade para melhorar o desempenho. sto vai
+                tornar o jogo parecer muito feio!
         displayChunkBorders:
-            title: Mostrar bordas de Chunks
-            description: >-
-                O jogo está dividido em pedaços de 16x16 quadrados, se esta definição estiver ativada
-                as bordas de cada pedaço são mostradas.
+            title: Mostrar bordas de limites (chunk borders)
+            description: O jogo está dividido em partes de 16x16 quadrados, se esta
+                dedinição estiver ativada as bordas de cada limitece são
+                mostradas.
         pickMinerOnPatch:
-            title: Selecionar extrator num remendo de recursos
-            description: >-
-                Ativado por default, seleciona o extrator se usares a pipeta enquanto estás num remendo de recursos.
+            title: Selecionar extrator num quadrado de recurso
+            description: Ativado por padrão, seleciona um extrator se usares a pipeta quando
+                estiveres com o rato em cima de um quadrado de recurso.
         simplifiedBelts:
             title: Tapetes rolantes simplificados (Feio)
-            description: >-
-                Não renderiza itens em tapetes excepto quando tens o rato em cima do tapete para salvar desempenho.
-                Não recomendo jogares com esta definição a menos que absolutamente precisas do desempenho.
+            description: Não renderiza os intens nos tapetes excepto quando tens o rato em
+                cima do tapete para melhorar o desempenho. Não recomendo a
+                jogares com esta definição ativada a não ser que precises mesmo
+                de melhorar o desempenho.
         enableMousePan:
-            title: Ativar Mouse Pan
-            description: >-
-                Permite-te mover o mapa apenas movendo o rato aos cantos do ecrã. A velocidade depende da definição Velocidade de movimentação.
+            title: Ativar rato panorâmico
+            description: Permite-te mover o mapa movento o rato nos cantos do ecrâ. A
+                velociade depende da definição de velocidade de movimentação.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atalhos
-    hint: >-
-        Tip: Utiliza o CTRL, o SHIFT e o ALT! Eles permitem diferentes opções de posicionamento.
+    hint: "Dica: Utiliza o CTRL, o SHIFT e o ALT! Eles permitem diferentes opções de
+        posicionamento."
     resetKeybindings: Resetar Atalhos
     categoryLabels:
         general: Aplicação
@@ -931,13 +960,12 @@ keybindings:
         menuClose: Fechar Menu
         switchLayers: Troca de camadas
         wire: Fio Elétrico
-        balancer: Balanceador
+        balancer: Distribuidor
         storage: Armazém
         constant_signal: Sinal Constante
         logic_gate: Portões Lógicos
         lever: Interruptor (normal)
-        lever_wires: Interruptor (fios)
-        filter: Filtro
+        filter: Filtro de itens
         wire_tunnel: Túnel de Fio
         display: Display
         reader: Leitor de Tapete
@@ -972,13 +1000,15 @@ demo:
         exportingBase: Exportar base como uma imagem
     settingNotAvailable: Não disponível no Demo.
 tips:
-    - 'O edifício central aceita qualquer entrada, não apenas a forma atual!'
+    - O edifício central aceita qualquer entrada, não apenas a forma atual!
     - Tem a certeza que as tuas fábricas são modulares - vai valer a pena!
-    - 'Não construas demasiado perto do edifício, ou vai ser um grande caos!'
-    - 'Se empilhar não funciona, tenta trocar as entradas.'
-    - Podes alternar a direção do planeador de tapete rolante ao pressionar <b>R</b>.
+    - Não construas demasiado perto do edifício, ou vai ser um grande caos!
+    - Se empilhar não funciona, tenta trocar as entradas.
+    - Podes alternar a direção do planeador de tapete rolante ao pressionar
+      <b>R</b>.
     - Ao segurar <b>CTRL</b> podes arrastar tapetes rolantes sem auto-orientação.
-    - 'Os rácios continuam os mesmos, desde que todos os upgrades estejam no mesmo Nível.'
+    - Os rácios continuam os mesmos, desde que todos os upgrades estejam no
+      mesmo Nível.
     - Execução em série é mais eficiente que em paralelo.
     - Vais desbloquear mais variações de edifícios mais tarde no jogo!
     - Podes usar <b>T</b> para trocar entre as diferentes variantes.
@@ -987,11 +1017,13 @@ tips:
     - Tenta construir fábricas compactas - vai valer a pena!
     - O pintor tem uma variante espelhada que podes selectionar com <b>T</b>
     - Ter os rácios de edifícios corretos vai maximizar a eficiência.
-    - 'No nível máximo, 5 extratores vão encher um tapete.'
+    - No nível máximo, 5 extratores vão encher um tapete.
     - Não te esqueças dos túneis!
     - Não tens de dividir os itens uniformemente para eficiência máxima.
-    - Segurar <b>SHIFT</b> vai ativar o planeador de tapetes, deixando-te colocar longas linhas de tapetes facilmente.
-    - 'Os cortadores cortam sempre verticalmente, independentemente da sua orientação.'
+    - Segurar <b>SHIFT</b> vai ativar o planeador de tapetes, deixando-te
+      colocar longas linhas de tapetes facilmente.
+    - Os cortadores cortam sempre verticalmente, independentemente da sua
+      orientação.
     - Para obter branco junta as três cores.
     - O buffer do armazém prioritiza a primeira saída.
     - Investe tempo para costruir designs repetiveis - vale a pena!
@@ -999,32 +1031,41 @@ tips:
     - Podes segurar <b>ALT</b> para inverter a direção de tapetes colocados.
     - Eficiência é a solução!
     - As formas que estão mais longes do edifício central são mais complexas.
-    - 'As Máquinas têm uma velocidade limitada, divide-as para eficiência máxima.'
+    - As Máquinas têm uma velocidade limitada, divide-as para eficiência máxima.
     - Usa balanceadores para maximizar a tua eficiência.
     - Organização é importante. Tenta não cruzar tapetes demasiado.
-    - 'Planeja antecipadamente, ou vai ser um grande caos!'
-    - Não removas as tuas fábricas antigas! Vais precisar delas para desbloquear upgrades.
+    - Planeja antecipadamente, ou vai ser um grande caos!
+    - Não removas as tuas fábricas antigas! Vais precisar delas para desbloquear
+      upgrades.
     - Tenta superar o nível 18 sozinho sem procurar ajuda!
-    - 'Não complicas as coisas, tenta continuar simples e irás muito longe.'
-    - Talvez precises de reusar fábricas mais tarde no jogo. Planeia as tuas fábricas para serem reutilizáveis.
-    - Às vezes, podes encontrar uma forma necessária no mapa sem criar-la com empilhadoras.
+    - Não complicas as coisas, tenta continuar simples e irás muito longe.
+    - Talvez precises de reusar fábricas mais tarde no jogo. Planeia as tuas
+      fábricas para serem reutilizáveis.
+    - Às vezes, podes encontrar uma forma necessária no mapa sem criar-la com
+      empilhadoras.
     - Moinhos de vento e cataventos completos nunca aparecem naturalmente.
     - Pinta as tuas formas antes de cortar-las para eficiência máxima.
-    - 'Com módulos, o espaço é apenas uma percepção; uma preocupação para pessoas mortais.'
+    - Com módulos, o espaço é apenas uma percepção; uma preocupação para pessoas
+      mortais.
     - Faz uma fábrica de diagramas separada. São importantes para módulos.
-    - 'Dá uma olhada ao misturador de cores, e as tuas questões serão respondidas.'
+    - Dá uma olhada ao misturador de cores, e as tuas questões serão respondidas.
     - Use <b>CTRL</b> + Clique para selecionar uma área.
-    - Construir demasiado perto do edifício central pode ficar no caminho de projetos futuros.
-    - O ícone de alfinete perto duma forma na lista de upgrades vai afixar-la ao ecrã.
+    - Construir demasiado perto do edifício central pode ficar no caminho de
+      projetos futuros.
+    - O ícone de alfinete perto duma forma na lista de upgrades vai afixar-la ao
+      ecrã.
     - Junta todas as cores primárias juntas para fazer branco!
-    - 'Tu tens um mapa infinito, não limites a tua fábrica, expande!'
+    - Tu tens um mapa infinito, não limites a tua fábrica, expande!
     - Tenta também Factorio! É o meu jogo favorito.
-    - O cortador quádruplo corta no sentido dos ponteiros começando no canto superior direito!
+    - O cortador quádruplo corta no sentido dos ponteiros começando no canto
+      superior direito!
     - Podes fazer download dos teus savegames no menu principal!
-    - Este jogo tem muitos atalhos de teclado úteis! Não te esqueças de verificar a página de configurações.
-    - 'Este jogo tem muitas definições, não te esqueças de as verificar!'
-    - O marco para o teu edifício central tem uma pequena bússola para indicar a sua direção!
-    - 'Para limpar tapetes, corta a área e cola-a na mesma localização.'
+    - Este jogo tem muitos atalhos de teclado úteis! Não te esqueças de
+      verificar a página de configurações.
+    - Este jogo tem muitas definições, não te esqueças de as verificar!
+    - O marco para o teu edifício central tem uma pequena bússola para indicar a
+      sua direção!
+    - Para limpar tapetes, corta a área e cola-a na mesma localização.
     - Pressiona F4 para mostrar os teus FPS e Tick Rate.
     - Pressiona F4 duas vezes para mostrar a tile do teu rato e câmara.
     - Podes clicar numa forma afixada no lado direito para desafixar-la.

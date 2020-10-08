@@ -86,8 +86,16 @@ gulp.task("utils.cleanBuildTempFolder", () => {
         .src(path.join(__dirname, "..", "src", "js", "built-temp"), { read: false, allowEmpty: true })
         .pipe($.clean({ force: true }));
 });
+gulp.task("utils.cleanImageBuildFolder", () => {
+    return gulp
+        .src(path.join(__dirname, "res_built"), { read: false, allowEmpty: true })
+        .pipe($.clean({ force: true }));
+});
 
-gulp.task("utils.cleanup", gulp.series("utils.cleanBuildFolder", "utils.cleanBuildTempFolder"));
+gulp.task(
+    "utils.cleanup",
+    gulp.series("utils.cleanBuildFolder", "utils.cleanImageBuildFolder", "utils.cleanBuildTempFolder")
+);
 
 // Requires no uncomitted files
 gulp.task("utils.requireCleanWorkingTree", cb => {
@@ -234,12 +242,13 @@ gulp.task(
     "build.standalone.dev",
     gulp.series(
         "utils.cleanup",
+        "imgres.buildAtlas",
+        "imgres.atlasToJson",
         "imgres.atlas",
         "sounds.dev",
         "imgres.copyImageResources",
         "imgres.copyNonImageResources",
         "translations.fullBuild",
-        "js.standalone-dev",
         "css.dev",
         "html.standalone-dev"
     )

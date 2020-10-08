@@ -29,14 +29,6 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
         return false;
     }
 
-    getHasUnlimitedSavegames() {
-        return true;
-    }
-
-    getShowDemoBadges() {
-        return false;
-    }
-
     performRestart() {
         logger.log(this, "Performing restart");
         window.location.reload(true);

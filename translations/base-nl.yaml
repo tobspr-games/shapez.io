@@ -204,11 +204,6 @@ dialogs:
     renameSavegame:
         title: Hernoem opgeslagen spel
         desc: Geef je opgeslagen spel een nieuwe naam.
-    entityWarning:
-        title: Performance Waarschuwing
-        desc: Je hebt veel gebouwen geplaatst. Dit is een vriendelijke herinnering dat
-            het spel niet oneindig veel gebouwen kan bewaren. Probeer je
-            fabrieken compact te houden.
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg speelveld
@@ -254,27 +249,6 @@ ingame:
         title: Upgrades
         buttonUnlock: Upgrade
         tier: Niveau <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: MAXIMAAL NIVEAU (Snelheid x<currentMult>)
     statistics:
         title: Statistieken
@@ -298,10 +272,6 @@ ingame:
         playtime: Speeltijd
         buildingsPlaced: Gebouwen
         beltsPlaced: Lopende banden
-        buttons:
-            continue: Verder spelen
-            settings: Opties
-            menu: Terug naar het Menu
     tutorialHints:
         title: Hulp nodig?
         showHint: Zie hint
@@ -683,9 +653,9 @@ storyRewards:
             uitgebereid in de standalone!
     reward_balancer:
         title: Verdeler
-        desc: De multifunctionele <strong>verdeler</strong> is vrijgespeeld - Dit gebouw
-            can worden gebruikt om je fabrieken nog groter te maken door lopende
-            banden te <strong>splitsen en samen te voegen</strong>!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_merger:
         title: Compacte samenvoeger
         desc: Je hebt een variant op de <strong>samenvoeger</strong> van de
@@ -907,6 +877,14 @@ settings:
             description: Schakel deze functie in om met je muis het veld te kunnen bewegen.
                 Plaats de cursor boven, rechts, links of onder om daar naartoe
                 te bewegen.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Sneltoetsen
