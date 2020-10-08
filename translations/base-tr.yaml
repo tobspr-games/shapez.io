@@ -653,9 +653,9 @@ storyRewards:
         desc: Deneme sürümünün sonuna geldin!
     reward_balancer:
         title: Dengeleyici
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Çok fonksiyonlu <strong>dengeleyici</strong> açıldı. - Eşyaları
+            bantlara ayırarak ve bantları birleştirerek daha büyük
+            fabrikalar kurmak için kullanılabilir!
     reward_merger:
         title: Tekil Birleştirici
         desc: <strong>Birleştiriciyi</strong> açtın ! <strong>dengeleyecinin</strong>
@@ -671,17 +671,17 @@ storyRewards:
             döndürür (Süpriz! :D)
     reward_display:
         title: Ekran
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        desc: "<strong>Ekranı</strong> açtın. - Kablo katmanında bir sinyal
+            bağla ve onu ekranda göster! <br><br> Not: Bant okuyucunun ve
+            deponun son okudukları eşyayı çıkardığını fark ettin mi?
+            Bunu ekranda göstermeyi dene!"
     reward_constant_signal:
         title: Sabit Sinyal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 or 0).
+        desc: Kablo katmanında inşa edilebilen <strong>sabit sinyal</strong>'i açtın!
+            Bu yapı <strong>eşya filtrelerine</strong> bağlanabilir.
+            Sabit sinyal <strong>şekil</strong>,
+            <strong>renk</strong> veya <strong>ikili değer</strong> (1 veya 0)
+            gönderelebilir.
     reward_logic_gates:
         title: Mantık Kapıları
         desc: <strong>Mantık kapıları</strong> açıldı! Çok heyecanlanmana gerek yok, ama
@@ -725,6 +725,7 @@ settings:
         staging: Yükseltme
         prod: Üretim
     buildDate: <at-date> derlendi
+    rangeSliderPercentage: <amount> %
     labels:
         uiScale:
             title: Arayüz Ölçeğİ
@@ -872,14 +873,13 @@ settings:
             title: Fare Kaydırarak Hareket Etme
             description: Fareyi ekranın köşelerine getirerek hareket ettirmeyi sağlar.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Farenin Konumuna Yakınlaştırma
+            description: Eğer etkinleştirilirse zaman ekran yakınlaştırılması fare imlecinin bulunduğu
+                yere doğru olur. Etkinleştirilmezse yakınlaştırma ekranın ortasına doğru olur.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
-    rangeSliderPercentage: <amount> %
+            title: Uzak Bakışta Kaynakların Büyüklüğü
+            description: Haritaya uzaktan bakıldığında, haritadaki şekillerin
+                büyüklüğünü ayarlar.
 keybindings:
     title: Tuş Atamaları
     hint: "İpucu: CTRL, SHIFT ve ALT tuşlarından yararlanın! Farklı yerleştirme
