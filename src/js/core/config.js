@@ -132,3 +132,8 @@ if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
 if (globalConfig.debug.fastGameEnter) {
     globalConfig.debug.noArtificialDelays = true;
 }
+
+if (G_IS_DEV && globalConfig.debug.noArtificialDelays) {
+    globalConfig.warmupTimeSecondsFast = 0;
+    globalConfig.warmupTimeSecondsRegular = 0;
+}

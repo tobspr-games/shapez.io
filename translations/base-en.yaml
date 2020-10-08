@@ -414,6 +414,22 @@ ingame:
             1_3_expand: >-
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
 
+            2_1_place_cutter: >-
+                Now place a <strong>Cutter</strong> to cut the circles in two halves!<br><br>
+                PS: The cutter always cuts from <strong>top to bottom</strong> regardless of its orientation.
+
+            2_2_place_trash: >-
+                The cutter can <strong>clog and stall</strong>!<br><br>
+                Use a <strong>trash</strong> to get rid of the currently (!) not needed waste.
+
+            2_3_more_cutters: >-
+                Good job! Now place <strong>2 more cutters</strong> to speed up this slow process!<br><br>
+                PS: Use the <strong>0-9 hotkeys</strong> to access buildings faster!
+
+            3_1_rectangles: >-
+                Now let's extract some rectangles! <strong>Build 4 extractors</strong> and connect them to the hub.<br><br>
+                PS: Hold <strong>SHIFT</strong> while dragging a belt to activate the belt planner!
+
     # Connected miners
     connectedMiners:
         one_miner: 1 Extractor

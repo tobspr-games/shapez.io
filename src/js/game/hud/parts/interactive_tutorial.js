@@ -6,6 +6,8 @@ import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { TrackedState } from "../../../core/tracked_state";
 import { cachebust } from "../../../core/cachebust";
 import { T } from "../../../translations";
+import { enumItemProcessorTypes, ItemProcessorComponent } from "../../components/item_processor";
+import { ShapeItem } from "../../items/shape_item";
 
 const tutorialsByLevel = [
     // Level 1
@@ -28,6 +30,68 @@ const tutorialsByLevel = [
         {
             id: "1_3_expand",
             condition: () => true,
+        },
+    ],
+    // Level 2
+    [
+        // 2.1 place a cutter
+        {
+            id: "2_1_place_cutter",
+            condition: /** @param {GameRoot} root */ root => {
+                return (
+                    root.entityMgr
+                        .getAllWithComponent(ItemProcessorComponent)
+                        .filter(e => e.components.ItemProcessor.type === enumItemProcessorTypes.cutter)
+                        .length === 0
+                );
+            },
+        },
+        // 2.2 place trash
+        {
+            id: "2_2_place_trash",
+            condition: /** @param {GameRoot} root */ root => {
+                return (
+                    root.entityMgr
+                        .getAllWithComponent(ItemProcessorComponent)
+                        .filter(e => e.components.ItemProcessor.type === enumItemProcessorTypes.trash)
+                        .length === 0
+                );
+            },
+        },
+        // 2.3 place more cutters
+        {
+            id: "2_3_more_cutters",
+            condition: /** @param {GameRoot} root */ root => {
+                return (
+                    root.entityMgr
+                        .getAllWithComponent(ItemProcessorComponent)
+                        .filter(e => e.components.ItemProcessor.type === enumItemProcessorTypes.cutter)
+                        .length < 3
+                );
+            },
+        },
+    ],
+
+    // Level 2
+    [
+        // 3.1. rectangles
+        {
+            id: "3_1_rectangles",
+            condition: /** @param {GameRoot} root */ root => {
+                return (
+                    // 4 miners placed above rectangles and 10 delivered
+                    root.hubGoals.getCurrentGoalDelivered() < 10 ||
+                    root.entityMgr.getAllWithComponent(MinerComponent).filter(entity => {
+                        const tile = entity.components.StaticMapEntity.origin;
+                        const below = root.map.getLowerLayerContentXY(tile.x, tile.y);
+                        if (below && below.getItemType() === "shape") {
+                            const shape = /** @type {ShapeItem} */ (below).definition.getHash();
+                            return shape === "RuRuRuRu";
+                        }
+                        return false;
+                    }).length < 4
+                );
+            },
         },
     ],
 ];

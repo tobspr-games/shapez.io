@@ -45,7 +45,7 @@ function generateUpgrades(limitedVersion = false) {
     const upgrades = {
         belt: [
             {
-                required: [{ shape: "CuCuCuCu", amount: 60 }],
+                required: [{ shape: "CuCuCuCu", amount: 30 }],
             },
             {
                 required: [{ shape: "--CuCu--", amount: 500 }],
