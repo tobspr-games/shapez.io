@@ -674,10 +674,10 @@ storyRewards:
             di ruotare una forma di 180 gradi (Sorpresa! :D)
     reward_display:
         title: Display
-        desc: Hai sbloccato il <strong>Display</strong>! Connetti un segnale sul
+        desc: "Hai sbloccato il <strong>Display</strong>! Connetti un segnale sul
             livello elettrico per visualizzarlo!<br><br> PS: Hai notato che il lettore di nastri
             e il magazzino mostrano l'ultimo oggetto da loro letto? Prova a mostrarlo su di un
-            display!
+            display!"
     reward_constant_signal:
         title: Sengale costante
         desc: Hai sblocatto l'edificio <strong>segnale costante</strong> sul livello elettrico!
