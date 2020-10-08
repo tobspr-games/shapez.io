@@ -108,17 +108,6 @@ export class RandomNumberGenerator {
         assert(max > min, "rng: max <= min");
         return Math.floor(this.next() * (max - min) + min);
     }
-    /**
-     * @param {number} min
-     * @param {number} max
-     * @returns {number} Integer in range [min, max]
-     */
-    nextIntRangeInclusive(min, max) {
-        assert(Number.isFinite(min), "Minimum is no integer");
-        assert(Number.isFinite(max), "Maximum is no integer");
-        assert(max > min, "rng: max <= min");
-        return Math.round(this.next() * (max - min) + min);
-    }
 
     /**
      * @param {number} min
