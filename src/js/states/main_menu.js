@@ -320,20 +320,23 @@ export class MainMenuState extends GameState {
         });
 
         optionSelected.add(value => {
-            this.app.settings.updateLanguage(value);
-            if (setting.restartRequired) {
-                if (this.app.platformWrapper.getSupportsRestart()) {
-                    this.app.platformWrapper.performRestart();
-                } else {
-                    this.dialogs.showInfo(T.dialogs.restartRequired.title, T.dialogs.restartRequired.text, [
-                        "ok:good",
-                    ]);
+            this.app.settings.updateLanguage(value).then(() => {
+                if (setting.restartRequired) {
+                    if (this.app.platformWrapper.getSupportsRestart()) {
+                        this.app.platformWrapper.performRestart();
+                    } else {
+                        this.dialogs.showInfo(
+                            T.dialogs.restartRequired.title,
+                            T.dialogs.restartRequired.text,
+                            ["ok:good"]
+                        );
+                    }
                 }
-            }
 
-            if (setting.changeCb) {
-                setting.changeCb(this.app, value);
-            }
+                if (setting.changeCb) {
+                    setting.changeCb(this.app, value);
+                }
+            });
 
             // Update current icon
             this.htmlElement.querySelector("button.languageChoose").setAttribute("data-languageIcon", value);
