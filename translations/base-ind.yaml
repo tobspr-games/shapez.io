@@ -5,7 +5,7 @@ steamPage:
     discordLinkShort: Discord Resmi
     intro: >-
         Anda suka game otomasi? Maka anda berada di tempat yang tepat!
-    
+
         Shapez.io adalah game santai dimana anda harus membuat pabrik untuk mengotomatiskan produksi bentuk-bentuk geometris. Semakin meningkatnya level, bentuk-bentuknya menjadi lebih kompleks, dan anda perlu meluas di peta yang tak terbatas.
 
         Dan jita itu tidak cukup, anda juga perlu untuk memproduksi secara ekxponensial untuk memenuhkan kebutuhan - hal yang membantu hanyalah memperbesar pabrik! Walaupun anda hanya memproses bentuk di awal, nantinya anda harus memberinya warna - dengan mengekstrak dan mencampur warna!
@@ -120,7 +120,7 @@ dialogs:
     confirmSavegameDelete:
         title: Konfirmasi Penghapusan
         text: Apakah anda yakin ingin menghapus game berikut?<br><br>
-            '<savegameName>' pada level <savegameLevel><br><br> 
+            '<savegameName>' pada level <savegameLevel><br><br>
             Hal ini tak dapat diulang!
     savegameDeletionError:
         title: Gagal Menghapus
@@ -658,7 +658,7 @@ storyRewards:
         title: Permainan Bebas
         desc: Anda berhasil! Anda telah membuka <strong>mode permainan bebas</strong>! Ini artinya
             bentuk-bentuk akan dibuat secara <strong>acak</strong>!<br><br>
-            Karena pusat pangkalan akan membutuhkan <strong>penghasilan</strong> dari sekarang, 
+            Karena pusat pangkalan akan membutuhkan <strong>penghasilan</strong> dari sekarang,
             Saya sangat menyarankan untuk membangun mesin yang secara otomatis
             mengirim bentuk yang diminta!<br><br> Pusat pangkalan mengeluarkan bentuk
             yang diminta pada lapisan kabel, jadi yang harus anda lakukan adalah menganalisa dan
@@ -685,7 +685,7 @@ storyRewards:
     reward_balancer:
         title: Penyeimbang
         desc: <strong>Penyeimbang</strong> yang multifungsional telah terbuka - Ia dapat
-            digunakan untuk membuat pabrik yang lebih besar dengan cara 
+            digunakan untuk membuat pabrik yang lebih besar dengan cara
             <strong>memisahkan atau menggabungkan item</strong> ke beberapa sabuk konveyor!<br><br>
     reward_merger:
         title: Penggabung Sederhana
