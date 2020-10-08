@@ -2,59 +2,51 @@ steamPage:
     shortText: Στο shapez.io χτήζεις εργοστάσια για να αυτοματοποιήσεις την
         δημιουργία και τον συνδιασμό σχημάτων αυξανόμενης πολυπλοκότητας σε έναν
         ατέλειωτο χάρτη.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        Στο shapez.io χτήζεις εργοστάσια για να αυτοματοποιήσεις την δημιουργία και τον συνδιασμό σχημάτων αυξανόμενης πολυπλοκότητας σε έναν ατέλειωτο χάρτη. Όταν παραδώσεις τα απαιτούμενα σχήματα, θα προχωρήσεις στο παιχνίδι και θα ξεκλειδώσεις αναβαθμήσεις για να επιταχύνεις το εργοστάσιό σου.
-
-        Επειδή η ζήτηση για σχήματα αυξάνεται συνεχώς, θα πρέπει να επεκτείνεις το εργοστάσιό σου για να την ικανοποιήσεις - Μήν ξεχάσεις, για να βρείς όλους τους πόρους που χρειάζεσαι θα πρέπει να εξαπλωθείς στον [b]άτελείωτο χάρτη[/b]!
-
-        Σύντομα θα πρέπει να αναμείξεις χρώματα και να βάψεις σχήματα - Ανάμειξε κόκκινο, πράσινο και μπλέ για να φτιάξεις διαφορετικά χρώματα και να βάψεις σχήματα ώστε να ικανοποιήσεις την ζήτηση.
-
-        Το παιχνίδι έχει 18 βαθμιαία επίπεδα (που ήδη θα σε απασχολήσουν για ώρες!) και συνεχίζω να προσθέτω περιεχόμενο - Έχω ακόμα πολλά σχέδια!
-
-        Αγόράζοντας το παιχνίδι λαμβάνεις την αυτόνομη έκδοση (standalone) με πολλές επιπλέον δυνατότητες, καθώς και πρόσβαση σε νέες δυνατότητες που ακόμα αναπτύσσονται.
-
-        [b]Πλεονεκτήματα Αυτόνομης Έκδοσης[/b]
-
-        [list]
-            [*] Σκοτεινή λειτουργία
-            [*] Απεριόριστα σημεία γρήγορης κίνησης της κάμερας στον χάρτη
-            [*] Απεριόριστα αποθηκευμένα παιχνίδια
-            [*] Πρόσθετες ρυθμίσεις
-            [*] Στο κοντινό μέλλον: Καλώδια και ενέργεια! Aναμένεται (περίπου) τέλος Ιουλίου 2020.
-            [*] Στο κοντινό μέλλον: Περισσότερα επίπεδα
-            [*] Μου επιτρέπει να αναπτήξω περεταίρω το shapez.io ❤️
-        [/list]
-
-        [b]Μελλοντικές ενημερώσεις[/b]
-
-        Ενημερώνω το παιχνίδι πολύ συχνά και προσπαθώ να προωγώ ενημερώσεις σχεδόν κάθε εβδομάδα!
-
-        [list]
-            [*] Διαφορετικοί χάρτες και προκλήσεις (π.χ. χάρτες με εμπόδια)
-            [*] Πάζλ (Παράδωσε το αιτούμενο σχήμα με περιορισμένο χώρο / κτήρια)
-            [*] Ένα σενάριο όπου τα κτήρια έχουν κόστος
-            [*] Διαμορφώσιμη δημιουργία χάρτη (Με επιλογές για το μέγεθος και την πυκνότητα των πόρων και άλλα)
-            [*] Επιπλέον σχήματα!
-            [*] Βελτιώσεις απόδοσης (Το παιχνίδι λειτουργεί ήδη πολύ καλά!)
-            [*] Και πολλά άλλα!
-        [/list]
-
-        [b]Αυτό το παιχνίδι είναι ανοιχτού κώδικα![/b]
-
-        Όλοι μπορούν να συνεισφέρουν, συμμετέχω ενεργά στην κοινότητα και προσπαθώ να εξετάσω όλες τις προτάσεις και να λάβω υπόψη τα σχόλια όπου είναι δυνατόν. Δείτε το trello board μου για τον πλήρη χάρτη πορείας!
-
-        [b]Σύνδεσμοι[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Επίσημο Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Χάρτης πορείας[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Πηγαίος κώδικας (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Βοήθησε με μεταφράσεις[/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Φόρτωση
     error: Σφάλμα
@@ -130,7 +122,9 @@ dialogs:
         text: "Η φώρτοση του αποθηκευμένου παιχνιδιού ήταν αποτυχής:"
     confirmSavegameDelete:
         title: Επιβεβαίωση διαγραφής
-        text: Είσαι βέβαιος/η ότι θέλεις να διαγράψεις το παιχνίδι;
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Αποτυχία διαγραφής
         text: "Η διαγραφή του αποθηκευμένου παιχνιδιού ήταν αποτυχής:"
@@ -150,9 +144,9 @@ dialogs:
         desc: Οι συνδιασμών πλήκτρων επαναφέρθηκαν στις προεπιλεγμένες τιμές τους!
     featureRestriction:
         title: Έκδοση Demo
-        desc: Προσπάθησες να χρησιμοποιήσεις μία δυνατότητα που δεν είναι διαθέσιμη στην
-            έκδοση demo. Αποκτήστε την αυτόνομη έκδοση για την ολοκληρομένη
-            εμπειρία!
+        desc: You tried to access a feature (<feature>) which is not available in the
+            demo. Consider getting the standalone version for the full
+            experience!
     oneSavegameLimit:
         title: Περιορισμένα αποθηκευμένα παιχνίδια
         desc: Στην demo έκδοση μπορείς να έχεις μόνο ένα αποθηκευμένο παιχνίδι. Παρακαλώ
@@ -187,9 +181,8 @@ dialogs:
             τον προσανατολισμό των τοποθετούμενων ιμάντων.<br>"
     createMarker:
         title: Νέο Σημάδι
-        desc: Δώσ' του ένα όνομα με νόημα. Μπορείς επίσης να χρησημοποιήσεις και τον
-            <strong>σύντομο κώδικα</strong> ενός σχήματος (τον οποίο μπορείς να
-            βρείς <a href="https://viewer.shapez.io" target="_blank">εδώ</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Επεξεργασία Σημαδιού
     markerDemoLimit:
         desc: Στην έκδωση demo μπορείς να βάλεις μέχρι δύο σημάδια στον χάρτη.
@@ -469,8 +462,9 @@ buildings:
                 την επάνω είσοδο.
         quad:
             name: Βαφέας (Τετάρτων)
-            description: Επιτρέπει να χρωματίσει κάθε τεταρτημόριο του σχήματος με
-                διαφορετικό χρώμα.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
             name: Βαφέας
             description: Χρωματίζει ολόκληρο το σχήμα στην αριστερή είσοδο με το χρώμα από
@@ -605,12 +599,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Κοπή σχημάτων
-        desc: Μόλις ξεκλείδωσες τον <strong>κόπτη</strong> - κόβει σχήματα κατά το ήμισυ
-            από <strong>πάνω προς τα κάτω</strong> ανεξάρτητα από τον
-            προσανατολισμό του!<br><br>Φρόντισε να καταστρέψεις κομμάτια που δεω
-            χρησημοποιείς αλλιώς η λειτουργία <strong>θα σταματήσει</strong> -
-            Για το σκοπό αυτό σου έδωσα τον κάδο απορριμμάτων, ο οποίος
-            καταστρέφει ό,τι είδη μεταφερθούν εκεί!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Περιστροφή
         desc: Ο <strong>Περιστροφέας</strong> ξεκλειδώθηκε! Το κτήριο αυτό περιστρέφει
@@ -636,10 +630,9 @@ storyRewards:
             αριστερής!
     reward_splitter:
         title: Διαχωρισμός/Συγχώνευση
-        desc: Ο πολυλειτουργικός <strong>Ισορροπηστής</strong> είναι πλέον διαθέσιμος -
-            Μπορεί να χρησιμοποιηθεί για την κατασκευή μεγαλύτερων εργοστασίων
-            με <strong>διαχωρισμό και συγχώνευση ειδών</strong> σε/από πολλούς
-            μεταφορικούς ιμάντες!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Σήραγγα
         desc: Το <strong>Σήραγγα</strong> είναι πλέον διαθέσιμο - Τώρα μπορείς να
@@ -652,10 +645,10 @@ storyRewards:
             παραλλαγές του</strong>!
     reward_miner_chainable:
         title: Αλυσιδωτός Αποσπαστής
-        desc: Ξεκλείδωσες τον <strong>Αλυσιδωτός Αποσπαστής</strong>! Μπορεί να
-            <strong>προωθήσει τους αποσπασμένους πόρους</strong> σε άλλους
-            αποσπαστές, ώστε να μπορείτε να αποσπάσεις πιο αποτελεσματικά
-            πόρους!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Σήραγγα Βαθμίδα II
         desc: Ξεκλείδωσες μια νέα παραλλαγή της <strong>Σήραγγας</strong> - Καλύπτει
@@ -672,14 +665,18 @@ storyRewards:
             ταυτόχρονα</strong>, καταναλώνοντας μόνο ένα χρώμα αντί για δύο!
     reward_storage:
         title: Αποθηκευτικός χώρος
-        desc: Ξεκλείδωσες μια παραλλαγή του <strong>Κάδου Απορριμμάτων</strong> -
-            Επιτρέπει την αποθήκευση ειδών έως μια δεδομένη χωρητικότητα!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Ελεύθερο παιχνίδι
-        desc: Τα κατάφερες! Ξεκλείδωσες την <strong>λειτουργία ελεύθερου
-            παιχνιδιού</strong>! Από εδώ και πέρα τα σχήματα δημιουργούνται
-            τυχαία! (Μην ανυσηχείς, περισσότερο περιεχόμενο έρχεται σύντομα στην
-            αυτόνομη έκδοση!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Σχεδιαγράμματα
         desc: Μπορείς πλέον να κάνεις <strong>αντιγραφή και επικόλληση</strong> στα μέρη
@@ -720,8 +717,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

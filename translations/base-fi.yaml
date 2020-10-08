@@ -2,59 +2,51 @@ steamPage:
     shortText: shapez.io on peli tehtaiden rakentamisesta, joiden avulla
         automatisoidaan yhä monimutkaisempien muotojen luonti and yhdisteleminen
         loputtomassa maailmassa.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map. Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
-
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
-
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
-
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
-
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
-
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
-
-        [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
-        [/list]
-
-        [b]This game is open source![/b]
-
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible. Be sure to check out my trello board for the full roadmap!
-
-        [b]Links[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
-        [/list]
     discordLinkShort: Official Discord
+    intro: >-
+        Shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes.
+
+        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+
+        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+
+        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
+    title_advantages: Standalone Advantages
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Ladataan
     error: Virhe
@@ -129,7 +121,9 @@ dialogs:
         text: "Tallennuksen lataus epäonnistui:"
     confirmSavegameDelete:
         title: Varmista poisto
-        text: Oletko varma että haluat poistaa tallennuksen?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Poisto epäonnistui
         text: "Tallennuksen poisto epäonnistui:"
@@ -185,9 +179,8 @@ dialogs:
             Käännä sijoitettavien hihnojen suunta.<br>"
     createMarker:
         title: Uusi Merkki
-        desc: Anna merkille kuvaava nimi, voit myös sisällyttää muodon <strong>lyhyen
-            avaimen</strong> siihen. (Lyhyen avaimen voit luoda <a
-            href="https://viewer.shapez.io" target="_blank">täällä</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
         titleEdit: Muokkaa merkkiä
     markerDemoLimit:
         desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki itsenäinen
@@ -475,7 +468,9 @@ buildings:
                 sisääntulosta tulevalla värillä.
         quad:
             name: Painter (Neljännes)
-            description: Sallii muodon neljäsosien värjäämisen eri väreillä.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
     trash:
         default:
             name: Roskakori
@@ -593,11 +588,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
-        desc: Avasit <strong>Leikkurin</strong> - se leikkaa muotoja puoliksi
-            <strong>ylhäältä alaspäin</strong> riippumatta sen
-            suunnasta!<br><br>Varmista, että pääset eroon jätteistä, tai muuten
-            <strong>se jumittuu</strong> - Tätä varten saat Roskiksen, joka
-            tuhoaa kaiken mitä laitat sinne!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Kääntö
         desc: Avasit <strong>Kääntäjän</strong>! Se kääntää muotoja myötäpäivään 90
@@ -621,9 +617,9 @@ storyRewards:
             päälle!
     reward_splitter:
         title: Tasaaja
-        desc: Avasit monikäyttöisen <strong>Tasaajan</strong> - Sitä voidaan käyttää
-            isompien tehtaiden rakennukseen <strong>jakamaan ja yhdistämään
-            tavaroita</strong> monille hihnoille!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunneli
         desc: Avasit <strong>Tunnelin</strong> - Nyt voit kuljettaa tavaroita
@@ -635,9 +631,10 @@ storyRewards:
             <strong>painamalla 'T' vaihtaaksesi sen muotoja</strong>!
     reward_miner_chainable:
         title: Sarja Kaivaja
-        desc: Avasit <strong>Sarja Kaivajan</strong>! Se voi <strong>välittää sen
-            resurssit</strong> muille kaivajille, jotta voit kaivaa resursseja
-            tehokkaammin!
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunneli Taso II
         desc: Avasit uuden muodon <strong>Tunnelista</strong> - Siinä on <strong>pidempi
@@ -653,13 +650,18 @@ storyRewards:
             kerrallaan</strong> käyttäen vain yhden värin kahden sijaan!
     reward_storage:
         title: Varasto Puskuri
-        desc: Avasit muodon <strong>Roskiksesta</strong> - Se sallii resurssien
-            säilyttämisen tiettyyn kapasiteettiin asti!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Vapaapeli
-        desc: Sinä teit sen! Avasit <strong>Vapaapelitilan</strong>! Tämä tarkoittaa
-            sitä, että muodot tehdään nyt satunnaisesti! (Ei hätää, lisää
-            sisältöä on suunnitteilla itsenäiseen peliin!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Piirustukset
         desc: Nyt voit <strong>Kopioida ja Liittää</strong> paloja tehtaastasi! Valitse
@@ -697,8 +699,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

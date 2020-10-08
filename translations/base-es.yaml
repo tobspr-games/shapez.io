@@ -2,59 +2,51 @@ steamPage:
     shortText: shapez.io es un juego sobre construir fábricas para automatizar la
         creación y combinación de figuras cada vez más complejas en un mapa
         infinito.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+    discordLinkShort: Discord oficial
+    intro: >-
+        Shapez.io es un juego tranquilo en el que tienes que construir fábricas para la
+        producción automatizada de formas geométricas.
 
-        shapez.io es un juego basado en la construcción de fábricas para automatizar la creación y combinación de figuras en un mapa que se expande infinitamente. Entrega las figuras requeridas para progresar y desbloquear mejoras para aumentar la velocidad de tu fábrica.
+        A medida que el nivel aumenta, las formas se vuelven más y más complejas, y tienes que extenderte en un mapa infinito.
 
-        Al aumentar la demanda, necesitarás escalar tu fábrica para ajustarte a las necesidades - ¡No te olvides de los recursos, necesitarás expandirte en el [b]mapa infinito[/b]!
+        Y por si fuera poco, también tienes que producir exponencialmente más para satisfacer las demandas - ¡lo único que ayuda es escalar!
 
-        Después necesitarás mezclar colores para pintar las figuras - Combina recursos de colores rojo, verde y azul para producir diferentes colores y pintar figuras para satisfacer la demanda.
+        Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar los colores!
 
-        Este juego cuenta con 18 niveles (¡Que te mantendrán ocupado durante horas!) pero estoy constantemente añadiendo nuevo contenido - ¡Hay mucho planeado!
+        Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
+    title_advantages: Ventajas del juego
+    advantages:
+        - <b>12 nuevos niveles</b> de un total de 26 niveles
+        - <b>18 nuevos edificios</b> ¡para una fábrica totalmente automatizada!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Modo oscuro</b>!
+        - Partidad guardadas ilimitadas
+        - Marcadores ilimitados
+        - Support me! ❤️
+    title_future: Contenido futuro
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
 
-        Comprando el juego tendrás acceso a la versión completa con contenido adicional, además del contenido en desarrollo.
-
-        [b]Ventajas del juego completo[/b]
-
-        [list]
-            [*] Modo oscuro
-            [*] Puntos de referencia ilimitados
-            [*] Partidas guardadas ilimitadas
-            [*] Ajustes adicionales
-            [*] Próximamente: ¡Cables y Energía! Aproximadamente para finales de julio de 2020.
-            [*] Próximamente: Más niveles
-            [*] Ayúdame a seguir desarrollando shapez.io ❤️
-        [/list]
-
-        [b]Futuras actualizaciones[/b]
-
-        ¡Estoy actualizando el juego muy a menudo e intentando subir actualizaciones al menos una vez a la semana!
-
-        [list]
-            [*] Diferentes mapas y desafíos (por ejemplo: mapas con obstáculos)
-            [*] Puzles (Entrega la forma requerida con una zona o conjunto de edificios restringidos)
-            [*] Modo historia en el que los edificios tengan un coste
-            [*] Generador de mapas configurable (Configurar recursos, forma, tamaño, densidad, semilla y más)
-            [*] Más tipos de figuras
-            [*] Mejoras de rendimiento (¡Aunque el juego ya funciona muy bien!)
-            [*] ¡Y mucho más!
-        [/list]
-
-        [b]¡Este juego es de código abierto![/b]
-
-        Cualquiera puede contribuir, estoy activamente involucrado en la comunidad e intento leer todas las sugerencias y considerar todas las propuestas planteadas. ¡Comprueba mi tablero de Trello para ver todo lo planificado!
-
-        [b]Enlaces[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Discord oficial[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Hoja de ruta[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Código fuente (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Ayuda a traducir[/url]
-        [/list]
-    discordLinkShort: Official Discord
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Cargando
     error: Error
@@ -129,7 +121,9 @@ dialogs:
         text: "No se ha podido cargar la partida guardada:"
     confirmSavegameDelete:
         title: Confirmar borrado
-        text: ¿Seguro que quieres borrar la partida?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Fallo al borrar
         text: "Fallo al borrar la partida guardada:"
@@ -192,9 +186,8 @@ dialogs:
     createMarker:
         title: Nuevo marcador
         titleEdit: Editar marcador
-        desc: Dale un nombre significativo, también puedes agregarle la
-            <strong>clave</strong> de una forma (La cual puedes generar <a
-            href="https://viewer.shapez.io" target="_blank">aquí</a>)
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
     markerDemoLimit:
         desc: Solo puedes crear dos marcadores en la versión de prueba. ¡Obtén el juego
             completo para marcadores ilimitados!
@@ -480,8 +473,9 @@ buildings:
                 la entrada de arriba.
         quad:
             name: Pintor (Cuádruple)
-            description: Permite colorear cada cuadrante de una figura con un color
-                distinto.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
     trash:
         default:
             name: Basurero
@@ -599,11 +593,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Cortador de figuras
-        desc: ¡Acabas de desbloquear el <strong>cortador</strong> - corta las figuras
-            por la mitad <strong>de arriba abajo</strong> sin importar su
-            orientación!<br><br>Asegúrate de deshacerte de lo que no vayas a
-            usar o <strong>se parará</strong> - ¡Para eso te he dado un
-            basurero, que destruye todo lo que le pongas!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotador
         desc: ¡El <strong>rotador</strong> se ha desbloqueado! Rota figuras en sentido
@@ -627,9 +622,9 @@ storyRewards:
             será <strong>apilada encima</strong> de la entrada izquierda!
     reward_splitter:
         title: Separador/Fusionador
-        desc: El <strong>balanceador</strong> multiusos se ha desbloqueado - ¡Se puede
-            usar para construir fábricas más grandes <strong>separando y uniendo
-            elementos</strong> en varias cintas transportadoras!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Túnel
         desc: El <strong>túnel</strong> se ha desbloqueado - ¡Ahora puedes transportar
@@ -641,9 +636,10 @@ storyRewards:
             y <strong>pulsa 'T' para ciclar por sus variantes</strong>
     reward_miner_chainable:
         title: Extractor en cadena
-        desc: ¡Has desbloqueado el <strong>extractor en cadena</strong>! Puede
-            <strong>enviar los recursos</strong> a otros extractores, extrayendo
-            recursos más eficientemente.
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Túnel nivel II
         desc: Has desbloqueado una nueva variante del <strong>túnel</strong> - ¡Tiene un
@@ -660,14 +656,18 @@ storyRewards:
             consumiendo solo un color en vez de dos!
     reward_storage:
         title: Almacenamiento intermedio
-        desc: Has desbloqueado una variante del <strong>basurero</strong> - ¡Permite
-            almacenar elementos hasta una cierta capacidad!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Juego libre
-        desc: ¡Lo has conseguido! ¡Has desbloqueado el <strong>Juego Libre</strong>!
-            ¡Esto significa que ahora las figuras se generan aleatoriamente!
-            (¡No te preocupes, hay más contenido planeado para el juego
-            completo!)
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Planos
         desc: ¡Ahora puedes <strong>copiar y pegar</strong> partes de tu fábrica!
@@ -707,8 +707,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

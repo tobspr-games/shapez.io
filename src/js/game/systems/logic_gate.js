@@ -154,22 +154,18 @@ export class LogicGateSystem extends GameSystemWithFilter {
 
     /**
      * @param {Array<BaseItem|null>} parameters
-     * @returns {[BaseItem, BaseItem]}
+     * @returns {BaseItem}
      */
     compute_ROTATE(parameters) {
         const item = parameters[0];
         if (!item || item.getItemType() !== "shape") {
             // Not a shape
-            return [null, null];
+            return null;
         }
 
         const definition = /** @type {ShapeItem} */ (item).definition;
-        const rotatedDefinitionCCW = this.root.shapeDefinitionMgr.shapeActionRotateCCW(definition);
         const rotatedDefinitionCW = this.root.shapeDefinitionMgr.shapeActionRotateCW(definition);
-        return [
-            this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinitionCCW),
-            this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinitionCW),
-        ];
+        return this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinitionCW);
     }
 
     /**

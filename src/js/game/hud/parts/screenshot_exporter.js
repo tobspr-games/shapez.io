@@ -1,13 +1,13 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { KEYMAPPINGS } from "../../key_action_mapper";
-import { IS_DEMO, globalConfig } from "../../../core/config";
-import { T } from "../../../translations";
-import { createLogger } from "../../../core/logging";
-import { StaticMapEntityComponent } from "../../components/static_map_entity";
-import { Vector } from "../../../core/vector";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
+import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
+import { createLogger } from "../../../core/logging";
 import { Rectangle } from "../../../core/rectangle";
+import { Vector } from "../../../core/vector";
+import { T } from "../../../translations";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { KEYMAPPINGS } from "../../key_action_mapper";
+import { BaseHUDPart } from "../base_hud_part";
 
 const logger = createLogger("screenshot_exporter");
 
@@ -19,7 +19,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
     }
 
     startExport() {
-        if (IS_DEMO) {
+        if (!this.root.app.restrictionMgr.getIsExportingScreenshotsPossible()) {
             this.root.hud.parts.dialogs.showFeatureRestrictionInfo(T.demo.features.exportingBase);
             return;
         }
@@ -87,7 +87,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         const parameters = new DrawParameters({
             context,
             visibleRect,
-            desiredAtlasScale: chunkScale,
+            desiredAtlasScale: 0.25,
             root: this.root,
             zoomLevel: chunkScale,
         });

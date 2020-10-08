@@ -68,7 +68,7 @@ export class SettingsState extends TextualGameState {
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
 
-            categoriesHTML[setting.categoryId] += setting.getHtml();
+            categoriesHTML[setting.categoryId] += setting.getHtml(this.app);
         }
 
         return Object.keys(categoriesHTML)

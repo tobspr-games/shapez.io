@@ -1,9 +1,7 @@
-import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
+import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { blueprintShape, UPGRADES } from "../../upgrades";
 import { enumNotificationType } from "./notifications";
-import { tutorialGoals } from "../../tutorial_goals";
 
 export class HUDSandboxController extends BaseHUDPart {
     createElements(parent) {
@@ -75,10 +73,11 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     giveBlueprints() {
-        if (!this.root.hubGoals.storedShapes[blueprintShape]) {
-            this.root.hubGoals.storedShapes[blueprintShape] = 0;
+        const shape = this.root.gameMode.getBlueprintShapeKey();
+        if (!this.root.hubGoals.storedShapes[shape]) {
+            this.root.hubGoals.storedShapes[shape] = 0;
         }
-        this.root.hubGoals.storedShapes[blueprintShape] += 1e9;
+        this.root.hubGoals.storedShapes[shape] += 1e9;
     }
 
     maxOutAll() {
@@ -89,7 +88,7 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     modifyUpgrade(id, amount) {
-        const upgradeTiers = UPGRADES[id];
+        const upgradeTiers = this.root.gameMode.getUpgrades()[id];
         const maxLevel = upgradeTiers.length;
 
         this.root.hubGoals.upgradeLevels[id] = Math.max(
@@ -122,9 +121,10 @@ export class HUDSandboxController extends BaseHUDPart {
 
         // Compute gained rewards
         hubGoals.gainedRewards = {};
+        const levels = this.root.gameMode.getLevelDefinitions();
         for (let i = 0; i < hubGoals.level - 1; ++i) {
-            if (i < tutorialGoals.length) {
-                const reward = tutorialGoals[i].reward;
+            if (i < levels.length) {
+                const reward = levels[i].reward;
                 hubGoals.gainedRewards[reward] = (hubGoals.gainedRewards[reward] || 0) + 1;
             }
         }

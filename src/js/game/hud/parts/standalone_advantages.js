@@ -1,4 +1,4 @@
-import { THIRDPARTY_URLS } from "../../../core/config";
+import { A_B_TESTING_LINK_TYPE, THIRDPARTY_URLS } from "../../../core/config";
 import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
@@ -33,16 +33,17 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             </div>
 
             <div class="lowerBar">
-            <button class="steamLinkButton">
+            <button class="steamLinkButton ${A_B_TESTING_LINK_TYPE}"></button>
             <button class="otherCloseButton">${T.ingame.standaloneAdvantages.no_thanks}</button>
-                </button>
             </div>
         `
         );
 
         this.trackClicks(this.contentDiv.querySelector("button.steamLinkButton"), () => {
             this.root.app.analytics.trackUiClick("standalone_advantage_visit_steam");
-            this.root.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage + "?ref=savs");
+            this.root.app.platformWrapper.openExternalLink(
+                THIRDPARTY_URLS.standaloneStorePage + "?ref=savs&prc=" + A_B_TESTING_LINK_TYPE
+            );
             this.close();
         });
         this.trackClicks(this.contentDiv.querySelector("button.otherCloseButton"), () => {

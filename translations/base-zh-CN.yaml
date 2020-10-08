@@ -1,62 +1,46 @@
 steamPage:
     shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map. Upon delivering the requested shapes you will progress within the game and unlock upgrades to speed up your factory.
-
-        As the demand for shapes increases, you will have to scale up your factory to meet the demand - Don't forget about resources though, you will have to expand across the [b]infinite map[/b]!
-
-        Soon you will have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with it to satisfy the demand.
-
-        This game features 18 progressive levels (Which should keep you busy for hours already!) but I'm constantly adding new content - There is a lot planned!
-
-        Purchasing the game gives you access to the standalone version which has additional features and you'll also receive access to newly developed features.
-
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game very often and trying to push an update at least every week!
-
-        [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
-        [/list]
-
-        [b]This game is open source![/b]
-
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible. Be sure to check out my trello board for the full roadmap!
-
-        [b]Links[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
-        [/list]
-    discordLinkShort: Official Discord
+    discordLinkShort: 官方 Discord 服务器
+    intro: |-
+        Shapez.io 是一个休闲游戏，在其中，您将建造工厂以生产各种各样的几何图形。
+        随着等级提升，您需要生产的图形将会越来越复杂，您需要在无尽的地图中不断的扩建您的工厂。
+        如果这些还不够的话，您的生产目标是指数性增长的 - 您需要持续的增大工厂的规模！
+        虽然您刚开始只需要生产图形，但您之后还可以给这些图形上色 - 您需要开采并混合颜料！
+        您可以在 Steam 游戏商城购买此游戏的完整版, 但您可以先游玩试玩版并体验游戏！
+    title_advantages: 完整版内容
+    advantages:
+        - <b>12 个全新关卡</b> 总共 26 个不同关卡
+        - <b>18 个全新建筑</b> 用于建造全自动工厂！
+        - <b>20 个等级升级</b> 不停的愉快游玩！
+        - <b>导线更新包</b> 解锁更多可能
+        - <b>暗色模式</b>!
+        - 无限数量存档
+        - 无限数量地图标记
+        - 支持作者！ ❤️
+    title_future: 预计更新
+    planned:
+        - 建筑蓝图库
+        - Steam 成就
+        - 解密模式
+        - 小地图
+        - 模组
+        - 沙盒模式
+        - ... 以及更多！
+    title_open_source: 这个游戏是开源的！
+    title_links: 链接
+    links:
+        discord: 官方 Discord 服务器
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: 源代码 (GitHub)
+        translate: 帮助汉化（翻译）组！
+    text_open_source: |-
+        任何人都可以对这个游戏做出贡献，我会活跃在游戏社区中并 尽最大可能积极参考大家对这个游戏的的全部建议和反馈。
+        请关注我的 trello board 以获取 the full roadmap！
 global:
     loading: 加载中
     error: 错误
-    thousandsDivider: ""
+    thousandsDivider: ","
     decimalSeparator: .
     suffix:
         thousands: K
@@ -75,7 +59,7 @@ global:
         xDaysAgo: <x>天前
         secondsShort: <seconds>秒
         minutesAndSecondsShort: <minutes>分 <seconds>秒
-        hoursAndMinutesShort: <hours>小时 <minutes>秒
+        hoursAndMinutesShort: <hours>时 <minutes>秒
         xMinutes: <x>分钟
     keys:
         tab: TAB
@@ -85,8 +69,8 @@ global:
         shift: SHIFT
         space: 空格
 demoBanners:
-    title: 演示版
-    intro: 获取独立版以解锁所有功能！
+    title: 试玩版
+    intro: 获取独立版以解锁所有游戏内容！
 mainMenu:
     play: 开始游戏
     changelog: 更新日志
@@ -101,7 +85,7 @@ mainMenu:
     newGame: 新游戏
     madeBy: 作者：<author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: 未命名
 dialogs:
     buttons:
         ok: 确认
@@ -126,7 +110,9 @@ dialogs:
         text: 未能导入你的存档：
     confirmSavegameDelete:
         title: 确认删除
-        text: 你确定要删除这个存档吗？
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: 删除错误
         text: 未能删除你的存档
@@ -143,11 +129,11 @@ dialogs:
         title: 重置所有按键
         desc: 成功重置所有按键！
     featureRestriction:
-        title: 演示版
-        desc: 你尝试使用了<feature>功能。该功能在演示版中不可用。请考虑购买独立版以获得更好的体验。
+        title: 试玩版
+        desc: 你尝试使用了<feature>功能。该功能在试玩版中不可用。请考虑购买独立版以获得更好的体验。
     oneSavegameLimit:
         title: 存档数量限制
-        desc: 演示版中只能保存一份存档。请删除旧存档或者获取独立版！
+        desc: 试玩版中只能保存一份存档。请删除旧存档或者获取独立版！
     updateSummary:
         title: 更新啦！
         desc: "以下为自上次游戏以来更新的内容:"
@@ -162,17 +148,18 @@ dialogs:
         desc: 你还没有解锁蓝图功能！完成更多的关卡来解锁蓝图。
     keybindingsIntroduction:
         title: 实用按键
-        desc: "这个游戏有很多能帮助搭建工厂的使用按键。 以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
+        desc:
+            "这个游戏有很多能帮助搭建工厂的使用按键。 以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
             <code class='keybinding'>CTRL</code> + 拖动：选择区域以复制或删除。<br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多个。<br> <code
             class='keybinding'>ALT</code>: 反向放置传送带。<br>"
     createMarker:
         title: 创建地图标记
-        desc: 给地图标记起一个的名字。你可以在名字中加入一个<strong>短代码</strong>以加入图形。（你可以在<a
-            href="https://viewer.shapez.io" target="_blank">这里</a>生成短代码。）
-        titleEdit: Edit Marker
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
+        titleEdit: 编辑地图标记
     markerDemoLimit:
-        desc: 在演示版中你只能创建两个地图标记。请获取独立版以创建更多标记。
+        desc: 在试玩版中你只能创建两个地图标记。请获取独立版以创建更多标记。
     massCutConfirm:
         title: 确认剪切
         desc: 你将要剪切很多建筑，准确来说有<count>幢！ 你确定要这么做吗？
@@ -188,13 +175,11 @@ dialogs:
         descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
             can generate <link>here</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: 重命名存档
+        desc: 您可以在此重命名存档。
     entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+        title: 性能警告
+        desc: 您有非常多建筑，善意的提醒您，这个游戏无法处理过多的建筑 - 尝试将您的工厂压缩！
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -251,16 +236,16 @@ ingame:
             - 八
             - 九
             - 十
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
+            - 十一
+            - 十二
+            - 十三
+            - 十四
+            - 十五
+            - 十六
+            - 十七
+            - 十八
+            - 十九
+            - 二十
         maximumLevel: 最高级（<currentMult>倍效率）
     statistics:
         title: 统计信息
@@ -276,9 +261,9 @@ ingame:
                 description: 显示图形送达基地并交付的速度。
         noShapesProduced: 你还没有生产任何图形。
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / 秒
+            minute: <shapes> / 分
+            hour: <shapes> / 时
     settingsMenu:
         playtime: 游戏时间
         buildingsPlaced: 建筑数量
@@ -304,7 +289,8 @@ ingame:
         hints:
             1_1_extractor: 在<strong>圆形矿脉</strong>上放一个<strong>开采机</strong>来获取圆形！
             1_2_conveyor: 用<strong>传送带</strong>将你的开采机连接到基地上！<br><br>提示：用你的鼠标<strong>按下并拖动</strong>传送带！
-            1_3_expand: 这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br> 提示：按住
+            1_3_expand:
+                这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br> 提示：按住
                 <strong>SHIFT</strong> 键来放置多个开采机，用 <strong>R</strong> 键旋转它们。
     colors:
         red: 红色
@@ -321,41 +307,41 @@ ingame:
         empty: 空
         copyKey: 复制短代码
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        one_miner: 1 个开采机
+        n_miners: <amount> 个开采机
+        limited_items: 限制在 <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: 试玩版
+        desc: 点击这里 了解完整版内容
+        get_on_steam: 在 steam 商城购买
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: 购买完整版！
+        no_thanks: 不需要，谢谢
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 个全新关卡!
+                desc: 总共 26 个不同关卡!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 个全新建筑
+                desc: 用于建造全自动工厂！
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: 无限数量存档
+                desc: 存档功能可以尽情使用
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 个等级升级
+                desc: 试玩版只有 5 个等级！
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: 无限数量地图标记
+                desc: 再也不会找不到自己的工厂了
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: 导线更新包
+                desc: 解锁更多可能！
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: 暗色模式
+                desc: 优雅且护眼的配色
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: 支持作者
+                desc: 我使用闲暇时间开发游戏！
 shopUpgrades:
     belt:
         name: 传送带、平衡机、隧道
@@ -403,8 +389,8 @@ buildings:
             name: 旋转机（逆时针）
             description: 将图形逆时针旋转90度。
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: 旋转机 (180度)
+            description: 将图形旋转180度。
     stacker:
         default:
             name: 堆叠机
@@ -422,9 +408,11 @@ buildings:
             description: 同时为两个输入的图形上色，每次上色只消耗一份颜色。
         quad:
             name: 上色机（四向）
-            description: 为图形的四个角涂上不同的颜色。
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
         mirrored:
-            name: 上色机
+            name: 上色机 (镜像)
             description: 将整个图形涂上输入的颜色。
     trash:
         default:
@@ -434,15 +422,14 @@ buildings:
         deliver: 交付
         toUnlock: 来解锁
         levelShortcut: LVL
-        endOfDemo: End of Demo
+        endOfDemo: 试玩版结束
     wire:
         default:
-            name: Energy Wire
-            description: Allows you to transport energy.
+            name: 能量导线
+            description: 用于传输能量。
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: 导线
+            description: 传输信号，信号可以是物品，颜色或者布尔值。 不同颜色的导线不会互相连接。
     balancer:
         default:
             name: Balancer
@@ -556,7 +543,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 切割图形
-        desc: 恭喜！你解锁了<strong>切割机</strong>。切割机会把图形<strong>从上到下</strong>切成两半。注意切割的方向和切割机的朝向无关。<br><br>记得把不需要的部分处理掉，否则这个这个建筑会停止工作。为此我给你准备了<strong>垃圾桶</strong>，它会把所有放进去的物品销毁掉。
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: 顺时针旋转
         desc: 恭喜！你解锁了<strong>旋转机</strong>。它会顺时针旋转输入的图形90度。
@@ -572,7 +564,9 @@ storyRewards:
         desc: 恭喜！你解锁了<strong>堆叠机</strong>。堆叠机会尝试把两个输入的图形<strong>拼贴</strong>在一起。如果有重叠的部分，右边的输入会被<strong>堆叠</strong>在左边的输入上方！
     reward_splitter:
         title: 分离与合并
-        desc: 恭喜！你解锁了<strong>平衡机</strong>。在大型工厂中，平衡机负责<strong>合并或分离</strong>多个传送带上的物品。<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: 隧道
         desc: 恭喜！你解锁了<strong>隧道</strong>。你现在可以从其他传送带或建筑底下运送物品了！
@@ -581,7 +575,10 @@ storyRewards:
         desc: 恭喜！你解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。这个变体可以逆时针旋转图形。选择旋转机然后按"T"键来选取这个变体。
     reward_miner_chainable:
         title: 链式开采机
-        desc: 你解锁了<strong>链式开采机</strong>! 它能够<strong>把资源传递给</strong>其他开采机，让你可以更高效率的开采资源！
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: 二级隧道
         desc: 恭喜！你解锁了<strong>二级隧道</strong>。这是隧道的一个变体。二级隧道有<strong>更长的传输距离</strong>。你还可以混用不同的隧道变体！
@@ -593,10 +590,18 @@ storyRewards:
         desc: 恭喜！你解锁了<strong>上色机</strong>的<strong>双倍</strong>变体。它可以同时为两个图形上色，每次只消耗一份颜色！
     reward_storage:
         title: 仓库
-        desc: 恭喜！你解锁了<strong>垃圾桶</strong>的变体。他可以存储一定数量的物品！
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: 自由模式
-        desc: 恭喜你！你解锁了<strong>自由模式</strong>。现在图形将会是随机生成的！（不用担心，我计划在独立版本中加入更多内容！）
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: 蓝图
         desc: 你现在可以<strong>复制粘贴</strong>你的工厂的一部分了！按住 CTRL
@@ -629,8 +634,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
@@ -905,7 +912,7 @@ demo:
         oneGameLimit: 最多一个存档
         customizeKeybindings: 按键设置
         exportingBase: 导出工厂截图
-    settingNotAvailable: 在演示版中不可用。
+    settingNotAvailable: 在试玩版中不可用。
 tips:
     - The hub accepts input of any kind, not just the current shape!
     - Make sure your factories are modular - it will pay out!

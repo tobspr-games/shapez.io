@@ -35,19 +35,23 @@ jobs:
                   cd gulp/
                   yarn
                   cd ..
-
             - name: Lint
               run: |
                   yarn lint
-
-            - name: YAML Lint
-              uses: ibiqlik/action-yamllint@v1.0.0
-              with:
-                  file_or_dir: translations/*.yaml
-
             - name: TSLint
               run: |
                   cd gulp
                   yarn gulp translations.fullBuild
                   cd ..
                   yarn tslint
+
+    yaml-lint:
+        name: yaml-lint
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v2
+            - name: YAML Lint
+              uses: ibiqlik/action-yamllint@v1.0.0
+              with:
+                  file_or_dir: translations/*.yaml

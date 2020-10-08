@@ -29,6 +29,8 @@ export const SOUNDS = {
 };
 
 export const MUSIC = {
+    // The theme always depends on the standalone only, even if running the full
+    // version in the browser
     theme: G_IS_STANDALONE ? "theme-full" : "theme-short",
     menu: "menu",
 };

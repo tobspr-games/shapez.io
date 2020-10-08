@@ -1,62 +1,49 @@
 steamPage:
-    shortText: shapez.io is a game about building factories to automate the creation
-        and processing of increasingly complex shapes across an infinitely
-        expanding map.
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
-
-        shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
-
-        Upon delivering the requested shapes you'll progress within the game and unlock upgrades to speed up your factory.
-
-        As the demand for shapes increases, you'll have to scale up your factory to meet the demand - Don't forget about resources though, you'll have to expand across the [b]infinite map[/b]!
-
-        Soon you'll have to mix colors and paint your shapes with them - Combine red, green and blue color resources to produce different colors and paint shapes with them to satisfy the demand.
-
-        This game features 18 progressive levels (Which should already keep you busy for hours!) but I'm constantly adding new content - There's a lot planned!
-
-        Purchasing the game gives you access to the standalone version which has additional features, and you'll also receive access to newly developed features.
-
-        [b]Standalone Advantages[/b]
-
-        [list]
-            [*] Dark Mode
-            [*] Unlimited Waypoints
-            [*] Unlimited Savegames
-            [*] Additional settings
-            [*] Coming soon: Wires & Energy! Aiming for (roughly) end of July 2020.
-            [*] Coming soon: More Levels
-            [*] Allows me to further develop shapez.io ❤️
-        [/list]
-
-        [b]Future Updates[/b]
-
-        I am updating the game often and trying to push an update at least once every week!
-
-        [list]
-            [*] Different maps and challenges (e.g. maps with obstacles)
-            [*] Puzzles (Deliver the requested shape with a restricted area / set of buildings)
-            [*] A story mode where buildings have a cost
-            [*] Configurable map generator (Configure resource/shape size/density, seed and more)
-            [*] Additional types of shapes
-            [*] Performance improvements (The game already runs pretty well!)
-            [*] And much more!
-        [/list]
-
-        [b]This game is open source![/b]
-
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible. Be sure to check out my trello board for the full roadmap!
-
-        [b]Links[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Official Discord[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Roadmap[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Source code (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Help translate[/url]
-        [/list]
+    shortText: لعبة شيبز (أشكال) هي لعبة تدور حول بناء مصانع وتوصيلها حتى تقوم بشكل
+                .آلي بصناعة أشكال مختلفة تزداد تعقيدا في خريطة لانهائية.
     discordLinkShort: Official Discord
+    intro: >-
+        لعبة شيبز (أشكال) هي لعبة مريحة تقوم فيها ببناء مصانع ووتشغيلها آليا لصناعة أشكال هندسية.
+
+        مع التقدم في المستوى، تزداد الأشكال تعقيداً، فيتوجب عليك التوسع في الخريطة اللانهائية، وذلك ليس كافياً للتقدم في مستوى اللعبة
+        حيث عليك صناعة المزيد بأضعاف مضاعفة لتلبية الطلب، الشيء الوحيد الذي يمكنه مساعدتك هو التوسع.
+
+        بينما في البداية تقوم بصناعة أشكال مختلفة، تتطلب منك المراحل المتقدمة تلوين هذه الأشكال، حيث يتوجب عليك استخراج وخلط الألوان.
+
+        عند شراءك اللعبة على ستيم (Steam) تحصل على الإصدار الكامل للعبة، ولكن يمكن أيضاً لعبة نسخة تجريبية على موقع shapez.io  ثم يمكنك القرار لاحقا
+    title_advantages: ميزات نسخة الحاسوب
+    advantages:
+        - <b>12 New Level</b> for a total of 26 levels
+        - <b>18 New Buildings</b> for a fully automated factory!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Dark Mode</b>!
+        - Unlimited Savegames
+        - Unlimited Markers
+        - Support me! ❤️
+    title_future: Planned Content
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
+
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Loading
     error: Error
@@ -131,7 +118,9 @@ dialogs:
         text: "Failed to load your savegame:"
     confirmSavegameDelete:
         title: Confirm deletion
-        text: Are you sure you want to delete the game?
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Failed to delete
         text: "Failed to delete the savegame:"
@@ -191,8 +180,7 @@ dialogs:
         title: New Marker
         titleEdit: Edit Marker
         desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <a
-            href="https://viewer.shapez.io" target="_blank">here</a>)
+            key</strong> of a shape (Which you can generate <link>here</link>)
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for
             unlimited markers!
@@ -471,8 +459,9 @@ buildings:
                 input.
         quad:
             name: Painter (Quad)
-            description: Allows you to color each quadrant of the shape with a different
-                color.
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
     trash:
         default:
             name: Trash
@@ -590,11 +579,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong> - it cuts shapes half from
-            <strong>top to bottom</strong> regardless of its
-            orientation!<br><br>Be sure to get rid of the waste, or otherwise
-            <strong>it will stall</strong> - For this purpose I gave you a
-            trash, which destroys everything you put into it!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotating
         desc: The <strong>rotater</strong> has been unlocked! It rotates shapes
@@ -617,9 +607,9 @@ storyRewards:
             <strong>stacked on top</strong> of the left input!
     reward_splitter:
         title: Splitter/Merger
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Tunnel
         desc: The <strong>tunnel</strong> has been unlocked - You can now tunnel items
@@ -632,9 +622,10 @@ storyRewards:
             variants</strong>!
     reward_miner_chainable:
         title: Chaining Extractor
-        desc: You have unlocked the <strong>chaining extractor</strong>! It can
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
             <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Tunnel Tier II
         desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a
@@ -651,13 +642,18 @@ storyRewards:
             once</strong> consuming just one color instead of two!
     reward_storage:
         title: Storage Buffer
-        desc: You have unlocked a variant of the <strong>trash</strong> - It allows you
-            to store items up to a given capacity!
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Freeplay
         desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now randomly generated! (No worries, more content is
-            planned for the standalone!)
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Blueprints
         desc: You can now <strong>copy and paste</strong> parts of your factory! Select
@@ -694,8 +690,10 @@ storyRewards:
             you to rotate a shape by 180 degress (Surprise! :D)
     reward_display:
         title: Display
-        desc: You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize its contents!
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires

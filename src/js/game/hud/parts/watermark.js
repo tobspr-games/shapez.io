@@ -4,6 +4,9 @@ import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
+const watermarkShowIntervalSeconds = G_IS_DEV ? 120 : 7 * 60;
+const watermarkShowDuration = 5;
+
 export class HUDWatermark extends BaseHUDPart {
     createElements(parent) {
         this.element = makeDiv(
@@ -38,7 +41,9 @@ export class HUDWatermark extends BaseHUDPart {
     }
 
     update() {
-        this.domAttach.update(this.root.time.realtimeNow() % (G_IS_DEV ? 20 : 180) < 5);
+        this.domAttach.update(
+            this.root.time.realtimeNow() % watermarkShowIntervalSeconds < watermarkShowDuration
+        );
     }
 
     onWatermarkClick() {
