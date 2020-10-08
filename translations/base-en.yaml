@@ -1030,6 +1030,11 @@ settings:
             description: >-
                 If activated the zoom will happen in the direction of your mouse position, otherwise in the middle of the screen.
 
+        mapResourcesScale:
+            title: Map Resources Size
+            description: >-
+                Controls the size of the shapes on the map overview (when zooming out).
+
 keybindings:
     title: Keybindings
     hint: >-
