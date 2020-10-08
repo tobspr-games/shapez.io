@@ -13,6 +13,17 @@ import { getStringForKeyCode } from "../game/key_action_mapper";
 import { createLogger } from "./logging";
 import { T } from "../translations";
 
+/*
+ * ***************************************************
+ *
+ *  LEGACY CODE WARNING
+ *
+ *  This is old code from yorg3.io and needs to be refactored
+ *  @TODO
+ *
+ * ***************************************************
+ */
+
 const kbEnter = 13;
 const kbCancel = 27;
 
@@ -59,6 +70,8 @@ export class Dialog {
             const buttonId = this.buttonIds[i].split(":")[0];
             this.buttonSignals[buttonId] = new Signal();
         }
+
+        this.valueChosen = new Signal();
 
         this.timeouts = [];
         this.clickDetectors = [];
@@ -164,7 +177,7 @@ export class Dialog {
                     const timeout = setTimeout(() => {
                         button.classList.remove("timedButton");
                         arrayDeleteValue(this.timeouts, timeout);
-                    }, 5000);
+                    }, 3000);
                     this.timeouts.push(timeout);
                 }
                 if (isEnter || isEscape) {
@@ -431,10 +444,12 @@ export class DialogWithForm extends Dialog {
         for (let i = 0; i < this.formElements.length; ++i) {
             const elem = this.formElements[i];
             elem.bindEvents(div, this.clickDetectors);
+            elem.valueChosen.add(this.closeRequested.dispatch, this.closeRequested);
+            elem.valueChosen.add(this.valueChosen.dispatch, this.valueChosen);
         }
 
         waitNextFrame().then(() => {
-            this.formElements[0].focus();
+            this.formElements[this.formElements.length - 1].focus();
         });
 
         return div;

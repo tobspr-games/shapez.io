@@ -178,6 +178,29 @@
                     display: list-item;
                 }
             }
+
+            .ingameItemChooser {
+                @include S(margin, 10px, 0);
+                display: grid;
+                @include S(grid-column-gap, 3px);
+                @include S(grid-row-gap, 5px);
+                grid-template-columns: repeat(10, 1fr);
+                align-items: center;
+                justify-items: center;
+
+                canvas {
+                    pointer-events: all;
+                    @include S(width, 25px);
+                    @include S(height, 25px);
+                    position: relative;
+                    cursor: pointer;
+                    @include IncreasedClickArea(3px);
+
+                    &:hover {
+                        opacity: 0.9;
+                    }
+                }
+            }
         }
 
         > .buttons {
@@ -220,7 +243,7 @@
                         content: " ";
                         display: inline-block;
                         background: rgba(#fff, 0.6);
-                        @include InlineAnimation(5s linear) {
+                        @include InlineAnimation(3s linear) {
                             0% {
                                 width: 100%;
                             }

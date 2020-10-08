@@ -6,7 +6,6 @@ import { Vector } from "../../../core/vector";
 import { T } from "../../../translations";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { blueprintShape } from "../../upgrades";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { Blueprint } from "../../blueprint";
@@ -15,7 +14,9 @@ import { Entity } from "../../entity";
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
-        const blueprintCostShape = this.root.shapeDefinitionMgr.getShapeFromShortKey(blueprintShape);
+        const blueprintCostShape = this.root.shapeDefinitionMgr.getShapeFromShortKey(
+            this.root.gameMode.getBlueprintShapeKey()
+        );
         const blueprintCostShapeCanvas = blueprintCostShape.generateAsCanvas(80);
 
         this.costDisplayParent = makeDiv(parent, "ingame_HUD_BlueprintPlacer", [], ``);
@@ -124,7 +125,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         const tile = worldPos.toTileSpace();
         if (blueprint.tryPlace(this.root, tile)) {
             const cost = blueprint.getCost();
-            this.root.hubGoals.takeShapeByKey(blueprintShape, cost);
+            this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
             this.root.soundProxy.playUi(SOUNDS.placeBuilding);
         }
     }

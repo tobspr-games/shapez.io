@@ -3,7 +3,8 @@ import { enumBalancerVariants, MetaBalancerBuilding } from "./buildings/balancer
 import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
 import { MetaDisplayBuilding } from "./buildings/display";
-import { MetaLeverBuilding } from "./buildings/lever";
+import { MetaFilterBuilding } from "./buildings/filter";
+import { MetaLogicGateBuilding } from "./buildings/logic_gate";
 import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
 import { MetaMixerBuilding } from "./buildings/mixer";
 import { enumPainterVariants, MetaPainterBuilding } from "./buildings/painter";
@@ -45,7 +46,6 @@ export const enumHubGoalRewardsToContentUnlocked = {
     [enumHubGoalRewards.reward_merger]: typed([[MetaBalancerBuilding, enumBalancerVariants.merger]]),
     [enumHubGoalRewards.reward_cutter_quad]: typed([[MetaCutterBuilding, enumCutterVariants.quad]]),
     [enumHubGoalRewards.reward_painter_double]: typed([[MetaPainterBuilding, enumPainterVariants.double]]),
-    [enumHubGoalRewards.reward_painter_quad]: typed([[MetaPainterBuilding, enumPainterVariants.quad]]),
     [enumHubGoalRewards.reward_storage]: typed([[MetaStorageBuilding, defaultBuildingVariant]]),
 
     [enumHubGoalRewards.reward_belt_reader]: typed([[MetaReaderBuilding, defaultBuildingVariant]]),
@@ -53,16 +53,18 @@ export const enumHubGoalRewardsToContentUnlocked = {
     [enumHubGoalRewards.reward_constant_signal]: typed([
         [MetaConstantSignalBuilding, defaultBuildingVariant],
     ]),
-    [enumHubGoalRewards.reward_logic_gates]: null, // @TODO!
-    [enumHubGoalRewards.reward_virtual_processing]: null, // @TODO!
+    [enumHubGoalRewards.reward_logic_gates]: typed([[MetaLogicGateBuilding, defaultBuildingVariant]]),
+    [enumHubGoalRewards.reward_filter]: typed([[MetaFilterBuilding, defaultBuildingVariant]]),
+    [enumHubGoalRewards.reward_virtual_processing]: null,
 
-    [enumHubGoalRewards.reward_wires_filters_and_levers]: typed([
-        [MetaLeverBuilding, defaultBuildingVariant],
+    [enumHubGoalRewards.reward_wires_painter_and_levers]: typed([
+        [MetaPainterBuilding, enumPainterVariants.quad],
     ]),
     [enumHubGoalRewards.reward_freeplay]: null,
     [enumHubGoalRewards.reward_blueprints]: null,
     [enumHubGoalRewards.no_reward]: null,
     [enumHubGoalRewards.no_reward_freeplay]: null,
+    [enumHubGoalRewards.reward_demo_end]: null,
 };
 
 if (G_IS_DEV) {

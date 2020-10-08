@@ -56,6 +56,9 @@ export const KEYMAPPINGS = {
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
 
+        // Sandbox
+        item_producer: { keyCode: key("L") },
+
         // Secondary toolbar
         storage: { keyCode: key("Y") },
         reader: { keyCode: key("U") },
@@ -67,12 +70,11 @@ export const KEYMAPPINGS = {
         wire: { keyCode: key("1") },
         wire_tunnel: { keyCode: key("2") },
         constant_signal: { keyCode: key("3") },
-        lever_wires: { keyCode: key("4") },
-        logic_gate: { keyCode: key("5") },
-        virtual_processor: { keyCode: key("6") },
-        transistor: { keyCode: key("7") },
-        analyzer: { keyCode: key("8") },
-        comparator: { keyCode: key("9") },
+        logic_gate: { keyCode: key("4") },
+        virtual_processor: { keyCode: key("5") },
+        analyzer: { keyCode: key("6") },
+        comparator: { keyCode: key("7") },
+        transistor: { keyCode: key("8") },
     },
 
     placement: {
@@ -82,6 +84,8 @@ export const KEYMAPPINGS = {
         cycleBuildingVariants: { keyCode: key("T") },
         cycleBuildings: { keyCode: 9 }, // TAB
         switchDirectionLockSide: { keyCode: key("R") },
+
+        copyWireValue: { keyCode: key("Z") },
     },
 
     massSelect: {
@@ -118,6 +122,7 @@ export const KEYCODE_RMB = 3;
  * @returns {string}
  */
 export function getStringForKeyCode(code) {
+    // @todo: Refactor into dictionary
     switch (code) {
         case KEYCODE_LMB:
             return "LMB";
@@ -244,6 +249,8 @@ export function getStringForKeyCode(code) {
             return ",";
         case 189:
             return "-";
+        case 190:
+            return ".";
         case 191:
             return "/";
         case 219:
@@ -256,7 +263,9 @@ export function getStringForKeyCode(code) {
             return "'";
     }
 
-    return String.fromCharCode(code);
+    return (48 <= code && code <= 57) || (65 <= code && code <= 90)
+        ? String.fromCharCode(code)
+        : "[" + code + "]";
 }
 
 export class Keybinding {

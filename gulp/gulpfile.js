@@ -8,23 +8,6 @@ const path = require("path");
 const deleteEmpty = require("delete-empty");
 const execSync = require("child_process").execSync;
 
-const lfsOutput = execSync("git lfs install", { encoding: "utf-8" });
-if (!lfsOutput.toLowerCase().includes("git lfs initialized")) {
-    console.error(`
-    Git LFS is not installed, unable to build.
-
-    To install Git LFS on Linux:
-      - Arch:
-        sudo pacman -S git-lfs
-      - Debian/Ubuntu:
-        sudo apt install git-lfs
-
-    For other systems, see:
-    https://github.com/git-lfs/git-lfs/wiki/Installation
-    `);
-    process.exit(1);
-}
-
 // Load other plugins dynamically
 const $ = require("gulp-load-plugins")({
     scope: ["devDependencies"],
@@ -42,6 +25,10 @@ const envVars = [
     "SHAPEZ_CLI_STAGING_FTP_PW",
     "SHAPEZ_CLI_LIVE_FTP_USER",
     "SHAPEZ_CLI_LIVE_FTP_PW",
+    "SHAPEZ_CLI_APPLE_ID",
+    "SHAPEZ_CLI_APPLE_CERT_NAME",
+    "SHAPEZ_CLI_GITHUB_USER",
+    "SHAPEZ_CLI_GITHUB_TOKEN",
 ];
 
 for (let i = 0; i < envVars.length; ++i) {
@@ -78,12 +65,11 @@ docs.gulptasksDocs($, gulp, buildFolder);
 const standalone = require("./standalone");
 standalone.gulptasksStandalone($, gulp, buildFolder);
 
+const releaseUploader = require("./release-uploader");
+releaseUploader.gulptasksReleaseUploader($, gulp, buildFolder);
+
 const translations = require("./translations");
 translations.gulptasksTranslations($, gulp, buildFolder);
-
-// FIXME
-// const cordova = require("./cordova");
-// cordova.gulptasksCordova($, gulp, buildFolder);
 
 /////////////////////  BUILD TASKS  /////////////////////
 
@@ -96,8 +82,16 @@ gulp.task("utils.cleanBuildTempFolder", () => {
         .src(path.join(__dirname, "..", "src", "js", "built-temp"), { read: false, allowEmpty: true })
         .pipe($.clean({ force: true }));
 });
+gulp.task("utils.cleanImageBuildFolder", () => {
+    return gulp
+        .src(path.join(__dirname, "res_built"), { read: false, allowEmpty: true })
+        .pipe($.clean({ force: true }));
+});
 
-gulp.task("utils.cleanup", gulp.series("utils.cleanBuildFolder", "utils.cleanBuildTempFolder"));
+gulp.task(
+    "utils.cleanup",
+    gulp.series("utils.cleanBuildFolder", "utils.cleanImageBuildFolder", "utils.cleanBuildTempFolder")
+);
 
 // Requires no uncomitted files
 gulp.task("utils.requireCleanWorkingTree", cb => {
@@ -184,10 +178,12 @@ function serve({ standalone }) {
     );
 
     // Watch resource files and copy them on change
+    gulp.watch(imgres.rawImageResourcesGlobs, gulp.series("imgres.buildAtlas"));
     gulp.watch(imgres.nonImageResourcesGlobs, gulp.series("imgres.copyNonImageResources"));
     gulp.watch(imgres.imageResourcesGlobs, gulp.series("imgres.copyImageResources"));
 
     // Watch .atlas files and recompile the atlas on change
+    gulp.watch("../res_built/atlas/*.atlas", gulp.series("imgres.atlasToJson"));
     gulp.watch("../res_built/atlas/*.json", gulp.series("imgres.atlas"));
 
     // Watch the build folder and reload when anything changed
@@ -225,6 +221,8 @@ gulp.task(
     gulp.series(
         "utils.cleanup",
         "utils.copyAdditionalBuildFiles",
+        "imgres.buildAtlas",
+        "imgres.atlasToJson",
         "imgres.atlas",
         "sounds.dev",
         "imgres.copyImageResources",
@@ -240,12 +238,13 @@ gulp.task(
     "build.standalone.dev",
     gulp.series(
         "utils.cleanup",
+        "imgres.buildAtlas",
+        "imgres.atlasToJson",
         "imgres.atlas",
         "sounds.dev",
         "imgres.copyImageResources",
         "imgres.copyNonImageResources",
         "translations.fullBuild",
-        "js.standalone-dev",
         "css.dev",
         "html.standalone-dev"
     )
@@ -297,6 +296,17 @@ gulp.task(
 gulp.task(
     "build.standalone-prod",
     gulp.series("utils.cleanup", "step.standalone-prod.all", "step.postbuild")
+);
+
+// OS X build and release upload
+gulp.task(
+    "build.darwin64-prod",
+    gulp.series(
+        "build.standalone-prod",
+        "standalone.prepare",
+        "standalone.package.prod.darwin64",
+        "standalone.uploadRelease.darwin64"
+    )
 );
 
 // Deploying!

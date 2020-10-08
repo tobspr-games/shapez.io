@@ -334,7 +334,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
 
             // Check if there's a shape or color item below, if so select the miner
-            if (tileBelow && this.root.app.settings.getAllSettings().pickMinerOnPatch) {
+            if (
+                tileBelow &&
+                this.root.app.settings.getAllSettings().pickMinerOnPatch &&
+                this.root.currentLayer === "regular"
+            ) {
                 this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
 
                 // Select chained miner if available, since that's always desired once unlocked

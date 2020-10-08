@@ -29,6 +29,15 @@ export class BaseItem extends BasicSerializableObject {
     }
 
     /**
+     * Returns a string id of the item
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        abstract;
+        return "";
+    }
+
+    /**
      * Returns if the item equals the other itme
      * @param {BaseItem} other
      * @returns {boolean}
@@ -49,6 +58,15 @@ export class BaseItem extends BasicSerializableObject {
     equalsImpl(other) {
         abstract;
         return false;
+    }
+
+    /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        abstract;
     }
 
     /**

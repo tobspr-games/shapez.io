@@ -40,15 +40,8 @@ export class SavegameManager extends ReadWriteProxy {
         return 1002;
     }
 
-    /**
-     * @returns {SavegamesData}
-     */
-    getCurrentData() {
-        return super.getCurrentData();
-    }
-
     verify(data) {
-        // TODO / FIXME!!!!
+        // @TODO
         return ExplainedResult.good();
     }
 
@@ -94,6 +87,14 @@ export class SavegameManager extends ReadWriteProxy {
             return null;
         }
         return new Savegame(this.app, { internalId, metaDataRef: metadata });
+    }
+
+    /**
+     * Returns if this manager has any savegame of a 1.1.19 version, which
+     * enables all levels
+     */
+    getHasAnyLegacySavegames() {
+        return this.currentData.savegames.some(savegame => savegame.version === 1005 || savegame.level > 14);
     }
 
     /**
@@ -149,7 +150,9 @@ export class SavegameManager extends ReadWriteProxy {
         });
 
         this.currentData.savegames.push(metaData);
-        this.sortSavegames();
+
+        // Notice: This is async and happening in the background
+        this.updateAfterSavegamesChanged();
 
         return new Savegame(this.app, {
             internalId: id,
@@ -157,8 +160,16 @@ export class SavegameManager extends ReadWriteProxy {
         });
     }
 
+    /**
+     * Attempts to import a savegame
+     * @param {object} data
+     */
     importSavegame(data) {
         const savegame = this.createNewSavegame();
+
+        // Track legacy savegames
+        const isOldSavegame = data.version < 1006;
+
         const migrationResult = savegame.migrate(data);
         if (migrationResult.isBad()) {
             return Promise.reject("Failed to migrate: " + migrationResult.reason);
@@ -170,7 +181,19 @@ export class SavegameManager extends ReadWriteProxy {
             return Promise.reject("Verification failed: " + verification.result);
         }
 
-        return savegame.writeSavegameAndMetadata().then(() => this.sortSavegames());
+        return savegame
+            .writeSavegameAndMetadata()
+            .then(() => this.updateAfterSavegamesChanged())
+            .then(() => this.app.restrictionMgr.onHasLegacySavegamesChanged(isOldSavegame));
+    }
+
+    /**
+     * Hook after the savegames got changed
+     */
+    updateAfterSavegamesChanged() {
+        return this.sortSavegames()
+            .then(() => this.writeAsync())
+            .then(() => this.app.restrictionMgr.onHasLegacySavegamesChanged(this.getHasAnyLegacySavegames()));
     }
 
     /**
@@ -219,7 +242,7 @@ export class SavegameManager extends ReadWriteProxy {
             if (G_IS_DEV && globalConfig.debug.disableSavegameWrite) {
                 return Promise.resolve();
             }
-            return this.sortSavegames().then(() => this.writeAsync());
+            return this.updateAfterSavegamesChanged();
         });
     }
 }

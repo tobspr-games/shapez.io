@@ -1,12 +1,18 @@
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { globalConfig, IS_DEMO } from "../../../core/config";
+import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { Loader } from "../../../core/loader";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
 import { FormElementInput } from "../../../core/modal_dialog_forms";
 import { Rectangle } from "../../../core/rectangle";
 import { STOP_PROPAGATION } from "../../../core/signal";
-import { arrayDeleteValue, lerp, makeDiv, removeAllChildren } from "../../../core/utils";
+import {
+    arrayDeleteValue,
+    fillInLinkIntoTranslation,
+    lerp,
+    makeDiv,
+    removeAllChildren,
+} from "../../../core/utils";
 import { Vector } from "../../../core/vector";
 import { T } from "../../../translations";
 import { BaseItem } from "../../base_item";
@@ -272,7 +278,7 @@ export class HUDWaypoints extends BaseHUDPart {
         const dialog = new DialogWithForm({
             app: this.root.app,
             title: waypoint ? T.dialogs.createMarker.titleEdit : T.dialogs.createMarker.title,
-            desc: T.dialogs.createMarker.desc,
+            desc: fillInLinkIntoTranslation(T.dialogs.createMarker.desc, THIRDPARTY_URLS.shapeViewer),
             formElements: [markerNameInput],
             buttons: waypoint ? ["delete:bad", "cancel", "ok:good"] : ["cancel", "ok:good"],
         });
@@ -296,7 +302,7 @@ export class HUDWaypoints extends BaseHUDPart {
                 // Show info that you can have only N markers in the demo,
                 // actually show this *after* entering the name so you want the
                 // standalone even more (I'm evil :P)
-                if (IS_DEMO && this.waypoints.length > 2) {
+                if (this.waypoints.length > this.root.app.restrictionMgr.getMaximumWaypoints()) {
                     this.root.hud.parts.dialogs.showFeatureRestrictionInfo(
                         "",
                         T.dialogs.markerDemoLimit.desc

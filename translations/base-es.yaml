@@ -1,113 +1,64 @@
-#
-#  GAME TRANSLATIONS
-#
-#  Contributing:
-#
-#    If you want to contribute, please make a pull request on this respository
-#    and I will have a look.
-#
-#  Placeholders:
-#
-#    Do *not* replace placeholders! Placeholders have a special syntax like
-#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
-#    translation for this one in German for example would be: `Taste: <key>` (notice
-#    how the placeholder stayed '<key>' and was not replaced!)
-#
-#  Adding a new language:
-#
-#    If you want to add a new language, ask me in the Discord and I will setup
-#    the basic structure so the game also detects it.
-#
-
----
 steamPage:
-    # This is the short text appearing on the steam page
-    shortText: shapez.io es un juego sobre construir fábricas para automatizar la creación y combinación de figuras cada vez más complejas en un mapa infinito.
+    shortText: shapez.io es un juego sobre construir fábricas para automatizar la
+        creación y combinación de figuras cada vez más complejas en un mapa
+        infinito.
+    discordLinkShort: Discord oficial
+    intro: >-
+        Shapez.io es un juego tranquilo en el que tienes que construir fábricas
+        para la producción automatizada de formas geométricas.
 
-    # This is the text shown above the Discord link
-    discordLink: Discord oficial - ¡Chatea conmigo!
+        A medida que el nivel aumenta, las formas se vuelven más y más complejas, y tienes que extenderte en un mapa infinito.
 
-    # This is the long description for the steam page - It is contained here so you can help to translate it, and I will regulary update the store page.
-    # NOTICE:
-    # - Do not translate the first line (This is the gif image at the start of the store)
-    # - Please keep the markup (Stuff like [b], [list] etc) in the same format
-    longText: >-
-        [img]{STEAM_APP_IMAGE}/extras/store_page_gif.gif[/img]
+        Y por si fuera poco, también tienes que producir exponencialmente más para satisfacer las demandas - ¡lo único que ayuda es escalar!
 
-        shapez.io es un juego basado en la construcción de fábricas para automatizar la creación y combinación de figuras en un mapa que se expande infinitamente.
-        Entrega las figuras requeridas para progresar y desbloquear mejoras para aumentar la velocidad de tu fábrica.
+        Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar los colores!
 
-        Al aumentar la demanda, necesitarás escalar tu fábrica para ajustarte a las necesidades - ¡No te olvides de los recursos, necesitarás expandirte en el [b]mapa infinito[/b]!
+        Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
+    title_advantages: Ventajas del juego
+    advantages:
+        - <b>12 nuevos niveles</b> de un total de 26 niveles
+        - <b>18 nuevos edificios</b> ¡para una fábrica totalmente automatizada!
+        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Modo oscuro</b>!
+        - Partidad guardadas ilimitadas
+        - Marcadores ilimitados
+        - Support me! ❤️
+    title_future: Contenido futuro
+    planned:
+        - Blueprint Library (Standalone Exclusive)
+        - Steam Achievements
+        - Puzzle Mode
+        - Minimap
+        - Mods
+        - Sandbox mode
+        - ... and a lot more!
+    title_open_source: This game is open source!
+    title_links: Links
+    links:
+        discord: Official Discord
+        roadmap: Roadmap
+        subreddit: Subreddit
+        source_code: Source code (GitHub)
+        translate: Help translate
+    text_open_source: >-
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
 
-        Después necesitarás mezclar colores para pintar las figuras - Combina recursos de colores rojo, verde y azul para producir diferentes colores y pintar figuras para satisfacer la demanda.
-
-        Este juego cuenta con 18 niveles (¡Que te mantendrán ocupado durante horas!) pero estoy constantemente añadiendo nuevo contenido - ¡Hay mucho planeado!
-
-        Comprando el juego tendrás acceso a la versión completa con contenido adicional, además del contenido en desarrollo.
-
-        [b]Ventajas del juego completo[/b]
-
-        [list]
-            [*] Modo oscuro
-            [*] Puntos de referencia ilimitados
-            [*] Partidas guardadas ilimitadas
-            [*] Ajustes adicionales
-            [*] Próximamente: ¡Cables y Energía! Aproximadamente para finales de julio de 2020.
-            [*] Próximamente: Más niveles
-            [*] Ayúdame a seguir desarrollando shapez.io ❤️
-        [/list]
-
-        [b]Futuras actualizaciones[/b]
-
-        ¡Estoy actualizando el juego muy a menudo e intentando subir actualizaciones al menos una vez a la semana!
-
-        [list]
-            [*] Diferentes mapas y desafíos (por ejemplo: mapas con obstáculos)
-            [*] Puzles (Entrega la forma requerida con una zona o conjunto de edificios restringidos)
-            [*] Modo historia en el que los edificios tengan un coste
-            [*] Generador de mapas configurable (Configurar recursos, forma, tamaño, densidad, semilla y más)
-            [*] Más tipos de figuras
-            [*] Mejoras de rendimiento (¡Aunque el juego ya funciona muy bien!)
-            [*] ¡Y mucho más!
-        [/list]
-
-        [b]¡Este juego es de código abierto![/b]
-
-        Cualquiera puede contribuir, estoy activamente involucrado en la comunidad e intento leer todas las sugerencias y considerar todas las propuestas planteadas.
-        ¡Comprueba mi tablero de Trello para ver todo lo planificado!
-
-        [b]Enlaces[/b]
-
-        [list]
-            [*] [url=https://discord.com/invite/HN7EVzV]Discord oficial[/url]
-            [*] [url=https://trello.com/b/ISQncpJP/shapezio]Hoja de ruta[/url]
-            [*] [url=https://www.reddit.com/r/shapezio]Subreddit[/url]
-            [*] [url=https://github.com/tobspr/shapez.io]Código fuente (GitHub)[/url]
-            [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]Ayuda a traducir[/url]
-        [/list]
-
+        Be sure to check out my trello board for the full roadmap!
 global:
     loading: Cargando
     error: Error
-
-    # How big numbers are rendered, e.g. "10,000"
-    thousandsDivider: "."
-
-    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    thousandsDivider: .
     decimalSeparator: ","
-
-    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: k
         millions: M
         billions: B
         trillions: T
-
-    # Shown for infinitely big numbers
     infinite: inf
-
     time:
-        # Used for formatting past time dates
         oneSecondAgo: hace un segundo
         xSecondsAgo: hace <x> segundos
         oneMinuteAgo: hace un minuto
@@ -116,14 +67,10 @@ global:
         xHoursAgo: hace <x> horas
         oneDayAgo: hace un día
         xDaysAgo: hace <x> días
-
-        # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>min <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>min
-
         xMinutes: <x> minutos
-
     keys:
         tab: TAB
         control: CTRL
@@ -131,13 +78,9 @@ global:
         escape: ESC
         shift: SHIFT
         space: ESPACIO
-
 demoBanners:
-    # This is the "advertisement" shown in the main menu and other various places
     title: Versión de prueba
-    intro: >-
-        ¡Obtén el juego completo para desbloquear todas las características!
-
+    intro: ¡Obtén el juego completo para desbloquear todas las características!
 mainMenu:
     play: Jugar
     continue: Continuar
@@ -149,14 +92,11 @@ mainMenu:
     discordLink: Servidor de Discord oficial
     helpTranslate: ¡Ayuda a traducirlo!
     madeBy: Desarrollado por <author-link>
-
-    # This is shown when using firefox and other browsers which are not supported.
-    browserWarning: >-
-        ¡Lo siento, pero el juego funcionará despacio en tu navegador! Obtén el juego completo o descarga Chrome para la experiencia completa.
-
+    browserWarning: ¡Lo siento, pero el juego funcionará despacio en tu navegador!
+        Obtén el juego completo o descarga Chrome para la experiencia completa.
     savegameLevel: Nivel <x>
     savegameLevelUnknown: Nivel desconocido
-
+    savegameUnnamed: Unnamed
 dialogs:
     buttons:
         ok: OK
@@ -170,112 +110,101 @@ dialogs:
         viewUpdate: Ver actualización
         showUpgrades: Ver mejoras
         showKeybindings: Ver atajos de teclado
-
     importSavegameError:
         title: Error de importación
-        text: >-
-            Fallo al importar tu partida guardada:
-
+        text: "Fallo al importar tu partida guardada:"
     importSavegameSuccess:
         title: Partida guardada importada
-        text: >-
-            Tu partida guardada ha sido importada con éxito.
-
+        text: Tu partida guardada ha sido importada con éxito.
     gameLoadFailure:
         title: Error de carga
-        text: >-
-            No se ha podido cargar la partida guardada:
-
+        text: "No se ha podido cargar la partida guardada:"
     confirmSavegameDelete:
         title: Confirmar borrado
-        text: >-
-            ¿Seguro que quieres borrar la partida?
-
+        text: Are you sure you want to delete the following game?<br><br>
+            '<savegameName>' at level <savegameLevel><br><br> This can not be
+            undone!
     savegameDeletionError:
         title: Fallo al borrar
-        text: >-
-            Fallo al borrar la partida guardada:
-
+        text: "Fallo al borrar la partida guardada:"
     restartRequired:
         title: Reinicio requerido
-        text: >-
-            Tienes que reinciar la partida para aplicar los cambios.
-
+        text: Tienes que reinciar la partida para aplicar los cambios.
     editKeybinding:
         title: Cambiar atajos de teclado
-        desc: Pulsa la tecla o botón del ratón que quieras asignar, o escape para cancelar.
-
+        desc: Pulsa la tecla o botón del ratón que quieras asignar, o escape para
+            cancelar.
     resetKeybindingsConfirmation:
         title: Reiniciar atajos de teclado
-        desc: Esto devolverá todos los atajos de teclado a los valores por defecto. Por favor, confirma.
-
+        desc: Esto devolverá todos los atajos de teclado a los valores por defecto. Por
+            favor, confirma.
     keybindingsResetOk:
         title: Atajos de teclado reiniciados
         desc: ¡Los atajos de teclado han sito reiniciados a los valores por defecto!
-
     featureRestriction:
         title: Versión de prueba
-        desc: Has intentado acceder a una característica (<feature>) que no está disponible en la versión de prueba. ¡Considera obtener el juego completo para la experiencia completa!
-
+        desc: Has intentado acceder a una característica (<feature>) que no está
+            disponible en la versión de prueba. ¡Considera obtener el juego
+            completo para la experiencia completa!
     oneSavegameLimit:
         title: Partidas guardadas limitadas
-        desc: Solo puedes tener una partida guardada a la vez en la versión de prueba. ¡Por favor, elimina la ya existente u obtén el juego completo!
-
+        desc: Solo puedes tener una partida guardada a la vez en la versión de prueba.
+            ¡Por favor, elimina la ya existente u obtén el juego completo!
     updateSummary:
         title: ¡Nueva actualización!
-        desc: >-
-            Estos son los cambios desde la última vez que jugaste:
-
+        desc: "Estos son los cambios desde la última vez que jugaste:"
     upgradesIntroduction:
         title: Desbloquear mejoras
-        desc: >-
-            Todas las figuras se pueden usar para desbloquear mejoras - <strong>¡No destruyas tus fábricas anteriores!</strong>
-            La pestaña de mejoras está en la esquina superior derecha de la pantalla.
-
+        desc: Todas las figuras se pueden usar para desbloquear mejoras - <strong>¡No
+            destruyas tus fábricas anteriores!</strong> La pestaña de mejoras
+            está en la esquina superior derecha de la pantalla.
     massDeleteConfirm:
         title: Confirmar borrado
-        desc: >-
-            ¡Estás borrando muchos edificios (<count> para ser exactos)! ¿Estás seguro de querer hacer esto?
-
+        desc: ¡Estás borrando muchos edificios (<count> para ser exactos)! ¿Estás seguro
+            de querer hacer esto?
     massCutConfirm:
         title: Confirmar corte
-        desc: >-
-            ¡Estás cortando muchos edificios (<count> para ser exactos)! ¿Estas seguro de que quieres hacer esto?
-
+        desc: ¡Estás cortando muchos edificios (<count> para ser exactos)! ¿Estas seguro
+            de que quieres hacer esto?
     massCutInsufficientConfirm:
         title: Confirm cut
-        desc: >-
-            ¡No puedes permitirte pegar este área! ¿Estás seguro de que quieres cortarlo?
-
+        desc: ¡No puedes permitirte pegar este área! ¿Estás seguro de que quieres
+            cortarlo?
     blueprintsNotUnlocked:
         title: No desbloqueado todavía
-        desc: >-
-            ¡Completa el nivel 12 para desbloquear los Planos!
-
+        desc: ¡Completa el nivel 12 para desbloquear los Planos!
     keybindingsIntroduction:
         title: Atajos de teclado útiles
-        desc: >-
-            El juego tiene muchos atajos de teclado que facilitan la tarea de construir grandes fábricas.
-            ¡Aquí hay algunos, pero asegúrate de <strong>comprobar los atajos de teclado</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Arrastrar: Selecciona un área.<br>
-            <code class='keybinding'>SHIFT</code>: Mánten pulsado para colocar varias veces un edificio.<br>
-            <code class='keybinding'>ALT</code>: Invierte la orientación de las cintas transportadoras colocadas.<br>
-
+        desc: "El juego tiene muchos atajos de teclado que facilitan la tarea de
+            construir grandes fábricas. ¡Aquí hay algunos, pero asegúrate de
+            <strong>comprobar los atajos de teclado</strong>!<br><br> <code
+            class='keybinding'>CTRL</code> + Arrastrar: Selecciona un área.<br>
+            <code class='keybinding'>SHIFT</code>: Mánten pulsado para colocar
+            varias veces un edificio.<br> <code class='keybinding'>ALT</code>:
+            Invierte la orientación de las cintas transportadoras
+            colocadas.<br>"
     createMarker:
         title: Nuevo marcador
         titleEdit: Editar marcador
-        desc: Dale un nombre significativo, también puedes agregarle la <strong>clave</strong> de una forma (La cual puedes generar <a href="https://viewer.shapez.io" target="_blank">aquí</a>)
-
+        desc: Give it a meaningful name, you can also include a <strong>short
+            key</strong> of a shape (Which you can generate <link>here</link>)
     markerDemoLimit:
-        desc: Solo puedes crear dos marcadores en la versión de prueba. ¡Obtén el juego completo para marcadores ilimitados!
-
+        desc: Solo puedes crear dos marcadores en la versión de prueba. ¡Obtén el juego
+            completo para marcadores ilimitados!
     exportScreenshotWarning:
         title: Exportar captura de pantalla
-        desc: Has solicitado una captura de pantalla de tu base. Por favor, ten en cuenta que puede tardar bastante en las bases grandes. ¡E incluso crashear tu juego!
-
+        desc: Has solicitado una captura de pantalla de tu base. Por favor, ten en
+            cuenta que puede tardar bastante en las bases grandes. ¡E incluso
+            crashear tu juego!
+    editSignal:
+        title: Set Signal
+        descItems: "Choose a pre-defined item:"
+        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
+            can generate <link>here</link>)
+    renameSavegame:
+        title: Rename Savegame
+        desc: You can rename your savegame here.
 ingame:
-    # This is shown in the top left corner and displays useful keybindings in
-    # every situation
     keybindingsOverlay:
         moveMap: Mover
         selectBuildings: Seleccionar área
@@ -296,8 +225,6 @@ ingame:
         clearSelection: Limpiar selección
         pipette: Cuentagotas
         switchLayers: Cambiar capas
-
-    # Names of the colors, used for the color blind mode
     colors:
         red: Rojo
         green: Verde
@@ -308,18 +235,9 @@ ingame:
         white: Blanco
         black: Negro
         uncolored: Gris
-
-    # Everything related to placing buildings (I.e. as soon as you selected a building
-    # from the toolbar)
     buildingPlacement:
-        # Buildings can have different variants which are unlocked at later levels,
-        # and this is the hint shown when there are multiple variants available.
         cycleBuildingVariants: Pulsa <key> para rotar por las distintas variantes.
-
-        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
-        hotkeyLabel: >-
-            Tecla: <key>
-
+        hotkeyLabel: "Tecla: <key>"
         infoTexts:
             speed: Velocidad
             range: Rango
@@ -327,36 +245,21 @@ ingame:
             oneItemPerSecond: 1 elemento / segundo
             itemsPerSecond: <x> elementos / s
             itemsPerSecondDouble: (x2)
-
             tiles: <x> casillas
-
-    # The notification when completing a level
     levelCompleteNotification:
-        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Nivel <level>
         completed: Completado
         unlockText: ¡Has desbloqueado <reward>!
         buttonNextLevel: Siguiente nivel
-
-    # Notifications on the lower right
     notifications:
         newUpgrade: ¡Una nueva mejora está disponible!
         gameSaved: Se ha guardado la partida.
-
-    # The "Upgrades" window
+        freeplayLevelComplete: Level <level> has been completed!
     shop:
         title: Mejoras
         buttonUnlock: Mejorar
-
-        # Gets replaced to e.g. "Tier IX"
         tier: Nivel <x>
-
-        # The roman number for each tier
-        tierLabels: [I, II, III, IV, V, VI, VII, VIII, IX, X]
-
         maximumLevel: NIVEL MÁXIMO (Velocidad x<currentMult>)
-
-    # The "Statistics" window
     statistics:
         title: Estadísticas
         dataSources:
@@ -365,62 +268,88 @@ ingame:
                 description: Muestra la cantidad de figuras guardadas en tu edificio central.
             produced:
                 title: Producido
-                description: Muestra todas las figuras que tu fábrica al completo produce, incluyendo productos intermedios.
+                description: Muestra todas las figuras que tu fábrica al completo produce,
+                    incluyendo productos intermedios.
             delivered:
                 title: Entregados
                 description: Muestra las figuras que son entregadas a tu edificio central.
         noShapesProduced: Todavía no se han producido figuras.
-
-        # Displays the shapes per minute, e.g. '523 / min'
-        shapesPerMinute: <shapes> / min
-
-    # Settings menu, when you press "ESC"
+        shapesDisplayUnits:
+            second: <shapes> / s
+            minute: <shapes> / m
+            hour: <shapes> / h
     settingsMenu:
         playtime: Tiempo de juego
-
         buildingsPlaced: Edificios
         beltsPlaced: Cintas transportadoras
-
-        buttons:
-            continue: Continuar
-            settings: Opciones
-            menu: Volver al menú principal
-
-    # Bottom left tutorial hints
     tutorialHints:
         title: ¿Necesitas ayuda?
         showHint: Mostrar pista
         hideHint: Cerrar
-
-    # When placing a blueprint
     blueprintPlacer:
         cost: Coste
-
-    # Map markers
     waypoints:
         waypoints: Marcadores
         hub: Edificio Central
-        description: Click izquierdo sobre un marcador para ir ahí, click derecho para borrarlo. <br><br> Pulsa <keybinding> para crear un marcador de la vista actual o <strong>click derecho</strong> para crear un marcador en la posición seleccionada.
+        description: Click izquierdo sobre un marcador para ir ahí, click derecho para
+            borrarlo. <br><br> Pulsa <keybinding> para crear un marcador de la
+            vista actual o <strong>click derecho</strong> para crear un marcador
+            en la posición seleccionada.
         creationSuccessNotification: El marcador ha sido creado.
-
-    # Shape viewer
     shapeViewer:
         title: Capas
         empty: Vacío
         copyKey: Copiar
-
-    # Interactive tutorial
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: ¡Coloca un <strong>extractor</strong> encima de un <strong>círculo</strong> para extraerlo!
-            1_2_conveyor: >-
-                ¡Conecta el extractor con una <strong>cinta transportadora</strong> a tu edificio central!<br><br> Pista: ¡<strong>Pulsa y arrastra</strong> la cinta transportadora con el ratón!
-
-            1_3_expand: >-
-                ¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más extractores y cintas transportadoras para completar el objetivo más rápido.<br><br> Pista: Mantén pulsado <strong>SHIFT</strong> para colocar varios extractores y usa <strong>R</strong> para rotarlos.
-
-# All shop upgrades
+            1_1_extractor: ¡Coloca un <strong>extractor</strong> encima de un
+                <strong>círculo</strong> para extraerlo!
+            1_2_conveyor: "¡Conecta el extractor con una <strong>cinta
+                transportadora</strong> a tu edificio central!<br><br> Pista:
+                ¡<strong>Pulsa y arrastra</strong> la cinta transportadora con
+                el ratón!"
+            1_3_expand: '¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más
+                extractores y cintas transportadoras para completar el objetivo
+                más rápido.<br><br> Pista: Mantén pulsado <strong>SHIFT</strong>
+                para colocar varios extractores y usa <strong>R</strong> para
+                rotarlos.'
+    connectedMiners:
+        one_miner: 1 Miner
+        n_miners: <amount> Miners
+        limited_items: Limited to <max_throughput>
+    watermark:
+        title: Demo version
+        desc: Click here to see the Steam version advantages!
+        get_on_steam: Get on steam
+    standaloneAdvantages:
+        title: Get the full version!
+        no_thanks: No, thanks!
+        points:
+            levels:
+                title: 12 New Levels
+                desc: For a total of 26 levels!
+            buildings:
+                title: 18 New Buildings
+                desc: Fully automate your factory!
+            savegames:
+                title: ∞ Savegames
+                desc: As many as your heart desires!
+            upgrades:
+                title: 20 Upgrade Tiers
+                desc: This demo version has only 5!
+            markers:
+                title: ∞ Markers
+                desc: Never get lost in your factory!
+            wires:
+                title: Wires
+                desc: An entirely new dimension!
+            darkmode:
+                title: Dark Mode
+                desc: Stop hurting your eyes!
+            support:
+                title: Support me
+                desc: I develop it in my spare time!
 shopUpgrades:
     belt:
         name: Cintas transportadoras, Distribuidores y Túneles
@@ -434,245 +363,392 @@ shopUpgrades:
     painting:
         name: Mezclado y Pintado
         description: Velocidad x<currentMult> → x<newMult>
-
-# Buildings and their name / description
 buildings:
     hub:
         deliver: Entregar
         toUnlock: para desbloquear
         levelShortcut: LVL
-
+        endOfDemo: End of Demo
     belt:
         default:
-            name: &belt Cinta Transportadora
-            description: Transporta elementos, mantén pulsado y arrastra para colocar varios.
-
+            name: Cinta Transportadora
+            description: Transporta elementos, mantén pulsado y arrastra para colocar
+                varios.
     wire:
         default:
-            name: &wire Cable
+            name: Cable
             description: Te permite transportar energía
-
-    miner: # Internal name for the Extractor
+        second:
+            name: Wire
+            description: Transfers signals, which can be items, colors or booleans (1 / 0).
+                Different colored wires do not connect.
+    miner:
         default:
-            name: &miner Extractor
+            name: Extractor
             description: Colócalo sobre una figura o un color para extraerlo.
-
         chainable:
             name: Extractor (Encadenado)
-            description: Colócalo sobre una figura o un color para extraerlo. Puede ser encadenado.
-
-    underground_belt: # Internal name for the Tunnel
+            description: Colócalo sobre una figura o un color para extraerlo. Puede ser
+                encadenado.
+    underground_belt:
         default:
-            name: &underground_belt Túnel
-            description: Permite contruir un túnel para transportar los elementos por debajo de edificios y otras cintas transportadoras.
-
+            name: Túnel
+            description: Permite contruir un túnel para transportar los elementos por debajo
+                de edificios y otras cintas transportadoras.
         tier2:
             name: Túnel nivel II
-            description: Permite contruir un túnel para transportar los elementos por debajo de edificios y otras cintas transportadoras.
-
-    splitter: # Internal name for the Balancer
-        default:
-            name: &splitter Balanceador
-            description: Multifuncional - Distribuye equitativamente todas las entradas a todas las salidas.
-
-        compact:
-            name: Fusionador (compacto)
-            description: Junta dos cintas transportadoras en una.
-
-        compact-inverse:
-            name: Fusionador (compacto)
-            description: Junta dos cintas transportadoras en una.
-
+            description: Permite contruir un túnel para transportar los elementos por debajo
+                de edificios y otras cintas transportadoras.
     cutter:
         default:
-            name: &cutter Cortador
-            description: Corta las figuras de arriba abajo y saca ambas mitades. <strong> ¡Si solo usas una parte, asegúrate de destruir la otra parte o se parará!</strong>
+            name: Cortador
+            description: Corta las figuras de arriba abajo y saca ambas mitades. <strong>
+                ¡Si solo usas una parte, asegúrate de destruir la otra parte o
+                se parará!</strong>
         quad:
             name: Cortador (Cuádruple)
-            description: Corta figuras en cuatro partes. <strong> ¡Si solo usas una parte, asegúrate de destruir las otras partes o se parará!</strong>
-
-    advanced_processor:
-        default:
-            name: &advanced_processor Inversor de color
-            description: Invierte un color o una figura
-
+            description: Corta figuras en cuatro partes. <strong> ¡Si solo usas una parte,
+                asegúrate de destruir las otras partes o se parará!</strong>
     rotater:
         default:
-            name: &rotater Rotador
+            name: Rotador
             description: Rota las figuras en sentido horario 90 grados.
         ccw:
             name: Rotador (Inverso)
             description: Rota las figuras en sentido antihorario 90 grados.
-        fl:
+        rotate180:
             name: Rotate (180)
             description: Rotates shapes by 180 degrees.
-
     stacker:
         default:
-            name: &stacker Apilador
-            description: Apila ambos elementos. Si no se pueden unir, el elemento de la derecha se coloca encima del elemento de la izquierda.
-
+            name: Apilador
+            description: Apila ambos elementos. Si no se pueden unir, el elemento de la
+                derecha se coloca encima del elemento de la izquierda.
     mixer:
         default:
-            name: &mixer Mezclador de colores
+            name: Mezclador de colores
             description: Mezcla dos colores usando mezcla aditiva.
-
     painter:
         default:
-            name: &painter Pintor
-            description: &painter_desc Colorea la figura completa de la entrada izquierda con el color de la entrada de arriba.
-
+            name: Pintor
+            description: Colorea la figura completa de la entrada izquierda con el color de
+                la entrada de arriba.
         mirrored:
-            name: *painter
-            description: *painter_desc
-
+            name: Pintor
+            description: Colorea la figura completa de la entrada izquierda con el color de
+                la entrada de arriba.
         double:
             name: Pintor (Doble)
-            description: Colorea las figuras de las entradas de la izquierda con el color de la entrada de arriba.
+            description: Colorea las figuras de las entradas de la izquierda con el color de
+                la entrada de arriba.
         quad:
             name: Pintor (Cuádruple)
-            description: Permite colorear cada cuadrante de una figura con un color distinto.
-
+            description: Allows you to color each quadrant of the shape individually. Only
+                slots with a <strong>truthy signal</strong> on the wires layer
+                will be painted!
     trash:
         default:
-            name: &trash Basurero
+            name: Basurero
             description: Acepta formas desde todos los lados y las destruye. Para siempre.
-
-        storage:
-            name: Almacenamiento.
-            description: Guarda el exceso de elementos, hasta cierta cantidad. Puede ser usado para controlar el desborde de elementos.
-
-    energy_generator:
-        deliver: Entregar
-
-        # This will be shown before the amount, so for example 'For 123 Energy'
-        toGenerateEnergy: Para
-
+    balancer:
         default:
-            name: &energy_generator Generador de energía
-            description: Genera energía consumiendo figuras.
-
-    wire_crossings:
-        default:
-            name: &wire_crossings Divisor de cables
-            description: Divide un cable en dos
-
+            name: Balancer
+            description: Multifunctional - Evenly distributes all inputs onto all outputs.
         merger:
-            name: Fusionador de cables
-            description: Fusiona dos cables en uno
-
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+        merger-inverse:
+            name: Merger (compact)
+            description: Merges two conveyor belts into one.
+        splitter:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+        splitter-inverse:
+            name: Splitter (compact)
+            description: Splits one conveyor belt into two.
+    storage:
+        default:
+            name: Storage
+            description: Stores excess items, up to a given capacity. Prioritizes the left
+                output and can be used as an overflow gate.
+    wire_tunnel:
+        default:
+            name: Wire Crossing
+            description: Allows to cross two wires without connecting them.
+    constant_signal:
+        default:
+            name: Constant Signal
+            description: Emits a constant signal, which can be either a shape, color or
+                boolean (1 / 0).
+    lever:
+        default:
+            name: Switch
+            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
+                which can then be used to control for example an item filter.
+    logic_gate:
+        default:
+            name: AND Gate
+            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
+                color or boolean "1")
+        not:
+            name: NOT Gate
+            description: Emits a boolean "1" if the input is not truthy. (Truthy means
+                shape, color or boolean "1")
+        xor:
+            name: XOR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
+                (Truthy means shape, color or boolean "1")
+        or:
+            name: OR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
+                shape, color or boolean "1")
+    transistor:
+        default:
+            name: Transistor
+            description: Forwards the bottom input if the side input is truthy (a shape,
+                color or "1").
+        mirrored:
+            name: Transistor
+            description: Forwards the bottom input if the side input is truthy (a shape,
+                color or "1").
+    filter:
+        default:
+            name: Filter
+            description: Connect a signal to route all matching items to the top and the
+                remaining to the right. Can be controlled with boolean signals
+                too.
+    display:
+        default:
+            name: Display
+            description: Connect a signal to show it on the display - It can be a shape,
+                color or boolean.
+    reader:
+        default:
+            name: Belt Reader
+            description: Allows to measure the average belt throughput. Outputs the last
+                read item on the wires layer (once unlocked).
+    analyzer:
+        default:
+            name: Shape Analyzer
+            description: Analyzes the top right quadrant of the lowest layer of the shape
+                and returns its shape and color.
+    comparator:
+        default:
+            name: Compare
+            description: Returns boolean "1" if both signals are exactly equal. Can compare
+                shapes, items and booleans.
+    virtual_processor:
+        default:
+            name: Virtual Cutter
+            description: Virtually cuts the shape into two halves.
+        rotater:
+            name: Virtual Rotater
+            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+        unstacker:
+            name: Virtual Unstacker
+            description: Virtually extracts the topmost layer to the right output and the
+                remaining ones to the left.
+        stacker:
+            name: Virtual Stacker
+            description: Virtually stacks the right shape onto the left.
+        painter:
+            name: Virtual Painter
+            description: Virtually paints the shape from the bottom input with the shape on
+                the right input.
+    item_producer:
+        default:
+            name: Item Producer
+            description: Available in sandbox mode only, outputs the given signal from the
+                wires layer on the regular layer.
 storyRewards:
-    # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cortador de figuras
-        desc: ¡Acabas de desbloquear el <strong>cortador</strong> - corta las figuras por la mitad <strong>de arriba abajo</strong> sin importar su orientación!<br><br>Asegúrate de deshacerte de lo que no vayas a usar o <strong>se parará</strong> - ¡Para eso te he dado un basurero, que destruye todo lo que le pongas!
-
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotador
-        desc: ¡El <strong>rotador</strong> se ha desbloqueado! Rota figuras en sentido horario 90 grados.
-
+        desc: ¡El <strong>rotador</strong> se ha desbloqueado! Rota figuras en sentido
+            horario 90 grados.
     reward_painter:
         title: Pintor
-        desc: >-
-            El <strong>pintor</strong> se ha desbloqueado - ¡Extrae vetas de color (igual que lo haces con las figuras) y combínalas con una figura en el pintor para colorearlas! <br><br>PD: Si tienes alguna forma de daltonismo, ¡hay un <strong>modo para daltónicos</strong> en los ajustes!
-
+        desc: "El <strong>pintor</strong> se ha desbloqueado - ¡Extrae vetas de color
+            (igual que lo haces con las figuras) y combínalas con una figura en
+            el pintor para colorearlas! <br><br>PD: Si tienes alguna forma de
+            daltonismo, ¡hay un <strong>modo para daltónicos</strong> en los
+            ajustes!"
     reward_mixer:
         title: Mezclador de color
-        desc: El <strong>mezclador</strong> se ha desbloqueado - ¡Combina dos colores usando <strong>mezcla aditiva</strong> con este edificio!
-
+        desc: El <strong>mezclador</strong> se ha desbloqueado - ¡Combina dos colores
+            usando <strong>mezcla aditiva</strong> con este edificio!
     reward_stacker:
         title: Apilador
-        desc: ¡Ahora puedes combinar figuras con el <strong>apilador</strong>! Ambas entradas son combinadas, y si pueden ser colocadas una junto a la otra serán <strong>fusionadas</strong>. ¡Si no, la entrada derecha será <strong>apilada encima</strong> de la entrada izquierda!
-
+        desc: ¡Ahora puedes combinar figuras con el <strong>apilador</strong>! Ambas
+            entradas son combinadas, y si pueden ser colocadas una junto a la
+            otra serán <strong>fusionadas</strong>. ¡Si no, la entrada derecha
+            será <strong>apilada encima</strong> de la entrada izquierda!
     reward_splitter:
         title: Separador/Fusionador
-        desc: El <strong>balanceador</strong> multiusos se ha desbloqueado - ¡Se puede usar para construir fábricas más grandes <strong>separando y uniendo elementos</strong> en varias cintas transportadoras!<br><br>
-
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_tunnel:
         title: Túnel
-        desc: El <strong>túnel</strong> se ha desbloqueado - ¡Ahora puedes transportar elementos por debajo de edificios u otras cintas!
-
+        desc: El <strong>túnel</strong> se ha desbloqueado - ¡Ahora puedes transportar
+            elementos por debajo de edificios u otras cintas!
     reward_rotater_ccw:
         title: Rotador inverso
-        desc: Has desbloqueado una variante del <strong>rotador</strong> - ¡Te permite rotar en sentido antihorario! Para construirlo selecciona el rotador y <strong>pulsa 'T' para ciclar por sus variantes</strong>
-
+        desc: Has desbloqueado una variante del <strong>rotador</strong> - ¡Te permite
+            rotar en sentido antihorario! Para construirlo selecciona el rotador
+            y <strong>pulsa 'T' para ciclar por sus variantes</strong>
     reward_miner_chainable:
         title: Extractor en cadena
-        desc: ¡Has desbloqueado el <strong>extractor en cadena</strong>! Puede <strong>enviar los recursos</strong> a otros extractores, extrayendo recursos más eficientemente.
-
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: Túnel nivel II
-        desc: Has desbloqueado una nueva variante del <strong>túnel</strong> - ¡Tiene un <strong>mayor rango</strong>, y ahora puedes mezclar los distintos tipos de túneles!
-
-    reward_splitter_compact:
-        title: Balanceador compacto
-        desc: Has desbloqueado una variante compacta del <strong>balanceador</strong> - ¡Acepta dos entradas y las junta en una salida!
-
+        desc: Has desbloqueado una nueva variante del <strong>túnel</strong> - ¡Tiene un
+            <strong>mayor rango</strong>, y ahora puedes mezclar los distintos
+            tipos de túneles!
     reward_cutter_quad:
         title: Cortador cuádruple
-        desc: Has desbloqueado una variante del <strong>cortador</strong> - ¡Permite cortar figuras en <strong>cuatro partes</strong> en vez de solo dos!
-
+        desc: Has desbloqueado una variante del <strong>cortador</strong> - ¡Permite
+            cortar figuras en <strong>cuatro partes</strong> en vez de solo dos!
     reward_painter_double:
         title: Pintor doble
-        desc: Has desbloqueado una variante del <strong>pintor</strong> - ¡Funciona como un pintor normal pero procesa <strong>dos figuras a la vez</strong>, consumiendo solo un color en vez de dos!
-
-    reward_painter_quad:
-        title: Pintor cuádruple
-        desc: Has desbloqueado una variante del <strong>pintor</strong> - ¡Permite pintar cada parte de una figura individualmente!
-
+        desc: Has desbloqueado una variante del <strong>pintor</strong> - ¡Funciona como
+            un pintor normal pero procesa <strong>dos figuras a la vez</strong>,
+            consumiendo solo un color en vez de dos!
     reward_storage:
         title: Almacenamiento intermedio
-        desc: Has desbloqueado una variante del <strong>basurero</strong> - ¡Permite almacenar elementos hasta una cierta capacidad!
-
+        desc: You have unlocked the <strong>storage</strong> building - It allows you to
+            store items up to a given capacity!<br><br> It priorities the left
+            output, so you can also use it as an <strong>overflow gate</strong>!
     reward_freeplay:
         title: Juego libre
-        desc: ¡Lo has conseguido! ¡Has desbloqueado el <strong>Juego Libre</strong>! ¡Esto significa que ahora las figuras se generan aleatoriamente! (¡No te preocupes, hay más contenido planeado para el juego completo!)
-
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
     reward_blueprints:
         title: Planos
-        desc: ¡Ahora puedes <strong>copiar y pegar</strong> partes de tu fábrica! Selecciona un área (mantén pulsado CTRL, después arrastra con el ratón), y pulsa 'C' para copiarlo.<br><br>Pegarlo <strong>no es gratis</strong>, necesitas producir <strong>figuras de planos</strong> para poder permitírtelo (Esas que acabas de entregar).
-
-    # Special reward, which is shown when there is no reward actually
+        desc: ¡Ahora puedes <strong>copiar y pegar</strong> partes de tu fábrica!
+            Selecciona un área (mantén pulsado CTRL, después arrastra con el
+            ratón), y pulsa 'C' para copiarlo.<br><br>Pegarlo <strong>no es
+            gratis</strong>, necesitas producir <strong>figuras de
+            planos</strong> para poder permitírtelo (Esas que acabas de
+            entregar).
     no_reward:
         title: Siguiente nivel
-        desc: >-
-            Este nivel no da recompensa, ¡pero el siguiente sí! <br><br> PD: Es mejor que no destruyas la fábrica que tienes - ¡Necesitarás <strong>todas</strong> esas figuras más adelante para <strong>desbloquear mejoras</strong>!
-
+        desc: "Este nivel no da recompensa, ¡pero el siguiente sí! <br><br> PD: Es mejor
+            que no destruyas la fábrica que tienes - ¡Necesitarás
+            <strong>todas</strong> esas figuras más adelante para
+            <strong>desbloquear mejoras</strong>!"
     no_reward_freeplay:
         title: Siguiente nivel
-        desc: >-
-            ¡Felicidades! ¡Por cierto, hay más contenido planeado para el juego completo!
-
+        desc: ¡Felicidades! ¡Por cierto, hay más contenido planeado para el juego
+            completo!
+    reward_balancer:
+        title: Balancer
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
+    reward_merger:
+        title: Compact Merger
+        desc: You have unlocked a <strong>merger</strong> variant of the
+            <strong>balancer</strong> - It accepts two inputs and merges them
+            into one belt!
+    reward_belt_reader:
+        title: Belt reader
+        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
+            measure the throughput of a belt.<br><br>And wait until you unlock
+            wires - then it gets really useful!
+    reward_rotater_180:
+        title: Rotater (180 degrees)
+        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
+            you to rotate a shape by 180 degress (Surprise! :D)
+    reward_display:
+        title: Display
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
+    reward_constant_signal:
+        title: Constant Signal
+        desc: You unlocked the <strong>constant signal</strong> building on the wires
+            layer! This is useful to connect it to <strong>item filters</strong>
+            for example.<br><br> The constant signal can emit a
+            <strong>shape</strong>, <strong>color</strong> or
+            <strong>boolean</strong> (1 / 0).
+    reward_logic_gates:
+        title: Logic Gates
+        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
+            about this, but it's actually super cool!<br><br> With those gates
+            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
+            bonus on top I also just gave you a <strong>transistor</strong>!
+    reward_virtual_processing:
+        title: Virtual Processing
+        desc: I just gave a whole bunch of new buildings which allow you to
+            <strong>simulate the processing of shapes</strong>!<br><br> You can
+            now simulate a cutter, rotater, stacker and more on the wires layer!
+            With this you now have three options to continue the game:<br><br> -
+            Build an <strong>automated machine</strong> to create any possible
+            shape requested by the HUB (I recommend to try it!).<br><br> - Build
+            something cool with wires.<br><br> - Continue to play
+            regulary.<br><br> Whatever you choose, remember to have fun!
+    reward_wires_painter_and_levers:
+        title: Wires & Quad Painter
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>."
+    reward_filter:
+        title: Item Filter
+        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
+            to the top or the right output depending on whether they match the
+            signal from the wires layer or not.<br><br> You can also pass in a
+            boolean signal (1 / 0) to entirely activate or disable it.
+    reward_demo_end:
+        title: End of Demo
+        desc: You have reached the end of the demo version!
 settings:
     title: Opciones
     categories:
         general: General
         userInterface: User Interface
         advanced: Avanzado
-
+        performance: Performance
     versionBadges:
         dev: Desarrollo
         staging: Escenificación
         prod: Producción
     buildDate: Generado <at-date>
-
     labels:
         uiScale:
             title: Escala de la interfaz
-            description: >-
-                Cambia el tamaño de la interfaz de usuario. La interfaz se seguirá escalando dependiendo de la resolución de tu dispositivo, pero esta opción controla la cantidad de escalado.
+            description: Cambia el tamaño de la interfaz de usuario. La interfaz se seguirá
+                escalando dependiendo de la resolución de tu dispositivo, pero
+                esta opción controla la cantidad de escalado.
             scales:
                 super_small: Muy pequeño
                 small: Pequeño
                 regular: Mediano
                 large: Grande
                 huge: Enorme
-
         autosaveInterval:
             title: Intervalo de autoguardado
-            description: >-
-                Controla con qué frecuencia se guarda el juego automáticamente. También se puede desactivar por completo.
-
+            description: Controla con qué frecuencia se guarda el juego automáticamente.
+                También se puede desactivar por completo.
             intervals:
                 one_minute: 1 minuto
                 two_minutes: 2 minutos
@@ -680,22 +756,19 @@ settings:
                 ten_minutes: 10 minutos
                 twenty_minutes: 20 minutos
                 disabled: Desactivado
-
         scrollWheelSensitivity:
             title: Sensibilidad del zoom
-            description: >-
-                Cambia cómo de sensible es el zoom (Tanto la rueda del ratón como el panel táctil)
+            description: Cambia cómo de sensible es el zoom (Tanto la rueda del ratón como
+                el panel táctil)
             sensitivity:
                 super_slow: Muy lento
                 slow: Lento
                 regular: Normal
                 fast: Rápido
                 super_fast: Muy rápido
-
         movementSpeed:
             title: Velocidad de movimiento
-            description: >-
-                Cambia cómo de rápido se mueve la vista usando el teclado.
+            description: Cambia cómo de rápido se mueve la vista usando el teclado.
             speeds:
                 super_slow: Super lento
                 slow: Lento
@@ -703,87 +776,124 @@ settings:
                 fast: Rápido
                 super_fast: Súper rápido
                 extremely_fast: Extremadamente rápido
-
         language:
             title: Idioma
-            description: >-
-                Cambia el idioma. ¡Todas las traducciones son contribuciones de los usuarios y pueden estar incompletas!
-
+            description: Cambia el idioma. ¡Todas las traducciones son contribuciones de los
+                usuarios y pueden estar incompletas!
         enableColorBlindHelper:
             title: Modo para daltónicos
-            description: >-
-                Activa varias herramientas que facilitan jugar si tienes alguna forma de daltonismo.
-
+            description: Activa varias herramientas que facilitan jugar si tienes alguna
+                forma de daltonismo.
         fullscreen:
             title: Pantalla Completa
-            description: >-
-                Se recomienda jugar en pantalla completa para conseguir la mejor experiencia. Solo disponible en el juego completo.
-
+            description: Se recomienda jugar en pantalla completa para conseguir la mejor
+                experiencia. Solo disponible en el juego completo.
         soundsMuted:
             title: Silenciar sonidos
-            description: >-
-                Si está habilitado, silencia todos los efectos de sonido.
-
+            description: Si está habilitado, silencia todos los efectos de sonido.
         musicMuted:
             title: Silenciar música
-            description: >-
-                Si está habilitado, silencia toda la música.
-
+            description: Si está habilitado, silencia toda la música.
         theme:
             title: Tema del juego
-            description: >-
-                Elige el tema del juego (claro/oscuro).
+            description: Elige el tema del juego (claro/oscuro).
             themes:
                 dark: Oscuro
                 light: Claro
-
         refreshRate:
             title: Objetivo de simulación
-            description: >-
-                Si tienes un monitor de 144hz, cambia la tasa de refresco. Así el juego se ejecutará correctamente a una mayor tasa de refresco. Esto puede disminuir los FPS si tu ordenador no es lo suficientemente rápido.
-
+            description: Si tienes un monitor de 144hz, cambia la tasa de refresco. Así el
+                juego se ejecutará correctamente a una mayor tasa de refresco.
+                Esto puede disminuir los FPS si tu ordenador no es lo
+                suficientemente rápido.
         alwaysMultiplace:
             title: Colocación múltiple
-            description: >-
-                Si está activado, todos los edificios se quedarán seleccionados después de colocarlos hasta que lo canceles. Equivale a pulsar SHIFT permanentemente.
-
+            description: Si está activado, todos los edificios se quedarán seleccionados
+                después de colocarlos hasta que lo canceles. Equivale a pulsar
+                SHIFT permanentemente.
         offerHints:
             title: Pistas y tutoriales
-            description: >-
-                Actívalo para recibir pistas y tutoriales mientras juegas. También oculta algunos elementos de la interfaz hasta cierto nivel para hacer más fácil la introducción al juego.
-
+            description: Actívalo para recibir pistas y tutoriales mientras juegas. También
+                oculta algunos elementos de la interfaz hasta cierto nivel para
+                hacer más fácil la introducción al juego.
         enableTunnelSmartplace:
             title: Túneles inteligentes
-            description: >-
-                Si está activado, al colocar túneles se eliminará automáticamente las cintas transportadoras innecesarias. También te permite arrastrar con el ratón y los túneles restantes serán eliminados.
-
+            description: Si está activado, al colocar túneles se eliminará automáticamente
+                las cintas transportadoras innecesarias. También te permite
+                arrastrar con el ratón y los túneles restantes serán eliminados.
         vignette:
             title: Viñeta
-            description: >-
-                Activa el efecto viñeta que oscurece las esquinas de la pantalla y hace el texto más fácil de leer.
-
+            description: Activa el efecto viñeta que oscurece las esquinas de la pantalla y
+                hace el texto más fácil de leer.
         rotationByBuilding:
             title: Rotación por tipo de edificio
-            description: >-
-                Cada tipo de edificio recuerda la última rotación que le diste individualmente. Esto puede ser más cómodo si cambias a menudo entre colocar diferentes tipos de edificio.
-
+            description: Cada tipo de edificio recuerda la última rotación que le diste
+                individualmente. Esto puede ser más cómodo si cambias a menudo
+                entre colocar diferentes tipos de edificio.
         compactBuildingInfo:
             title: Información compacta de edificios
-            description: >-
-                Acorta la caja de información mostrando solo sus ratios. Si no, se mostrará una descripción y una imagen.
-
+            description: Acorta la caja de información mostrando solo sus ratios. Si no, se
+                mostrará una descripción y una imagen.
         disableCutDeleteWarnings:
             title: Deshabilitar las advertencias de cortar/eliminar
-            description: >-
-                Deshabilita los diálogos de advertencia que se muestran cuando se cortan/eliminan más de 100 elementos.
-
+            description: Deshabilita los diálogos de advertencia que se muestran cuando se
+                cortan/eliminan más de 100 elementos.
+        soundVolume:
+            title: Sound Volume
+            description: Set the volume for sound effects
+        musicVolume:
+            title: Music Volume
+            description: Set the volume for music
+        lowQualityMapResources:
+            title: Low Quality Map Resources
+            description: Simplifies the rendering of resources on the map when zoomed in to
+                improve performance. It even looks cleaner, so be sure to try it
+                out!
+        disableTileGrid:
+            title: Disable Grid
+            description: Disabling the tile grid can help with the performance. This also
+                makes the game look cleaner!
+        clearCursorOnDeleteWhilePlacing:
+            title: Clear Cursor on Right Click
+            description: Enabled by default, clears the cursor whenever you right click
+                while you have a building selected for placement. If disabled,
+                you can delete buildings by right-clicking while placing a
+                building.
+        lowQualityTextures:
+            title: Low quality textures (Ugly)
+            description: Uses low quality textures to save performance. This will make the
+                game look very ugly!
+        displayChunkBorders:
+            title: Display Chunk Borders
+            description: The game is divided into chunks of 16x16 tiles, if this setting is
+                enabled the borders of each chunk are displayed.
+        pickMinerOnPatch:
+            title: Pick miner on resource patch
+            description: Enabled by default, selects the miner if you use the pipette when
+                hovering a resource patch.
+        simplifiedBelts:
+            title: Simplified Belts (Ugly)
+            description: Does not render belt items except when hovering the belt to save
+                performance. I do not recommend to play with this setting if you
+                do not absolutely need the performance.
+        enableMousePan:
+            title: Enable Mouse Pan
+            description: Allows to move the map by moving the cursor to the edges of the
+                screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
+    rangeSliderPercentage: <amount> %
 keybindings:
     title: Atajos de teclado
-    hint: >-
-        Pista: ¡Asegúrate de usar CTRL, SHIFT y ALT! Habilitan distintas opciones de colocación.
-
+    hint: "Pista: ¡Asegúrate de usar CTRL, SHIFT y ALT! Habilitan distintas opciones
+        de colocación."
     resetKeybindings: Reestablecer atajos de teclado
-
     categoryLabels:
         general: Aplicación
         ingame: Juego
@@ -792,7 +902,6 @@ keybindings:
         massSelect: Selección masiva
         buildings: Atajos de edificios
         placementModifiers: Modificadores de colocación
-
     mappings:
         confirm: Confirmar
         back: Atrás
@@ -802,58 +911,63 @@ keybindings:
         mapMoveLeft: Mover a la izquierda
         mapMoveFaster: Mover más rápido
         centerMap: Centrar mapa
-
         mapZoomIn: Acercarse
         mapZoomOut: Alejarse
         createMarker: Crear marcador
-
         menuOpenShop: Mejoras
         menuOpenStats: Estadísticas
         menuClose: Cerrar menú
-
         toggleHud: Activar HUD
         toggleFPSInfo: Activar FPS e información de depurado
         switchLayers: Cambiar capas
         exportScreenshot: Exportar la base completa como imagen
-        belt: *belt
-        splitter: *splitter
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        advanced_processor: *advanced_processor
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        energy_generator: *energy_generator
-        painter: *painter
-        trash: *trash
-        wire: *wire
-
+        belt: Cinta Transportadora
+        underground_belt: Túnel
+        miner: Extractor
+        cutter: Cortador
+        rotater: Rotador
+        stacker: Apilador
+        mixer: Mezclador de colores
+        painter: Pintor
+        trash: Basurero
+        wire: Cable
         pipette: Cuentagotas
         rotateWhilePlacing: Rotar
-        rotateInverseModifier: >-
-            Modificador: Rotar inversamente
+        rotateInverseModifier: "Modificador: Rotar inversamente"
         cycleBuildingVariants: Ciclar variantes
         confirmMassDelete: Borrar área
         pasteLastBlueprint: Pegar último plano
         cycleBuildings: Ciclar edificios
         lockBeltDirection: Activar planificador de cintas transportadoras
-        switchDirectionLockSide: >-
-            Planner: Cambiar sentido
-
+        switchDirectionLockSide: "Planner: Cambiar sentido"
         massSelectStart: Mantén pulsado y arrastra para empezar
         massSelectSelectMultiple: Seleccionar múltiples áreas
         massSelectCopy: Copiar área
         massSelectCut: Cortar área
-
         placementDisableAutoOrientation: Desactivar orientación automática
         placeMultiple: Permanecer en modo de construcción
         placeInverse: Invierte automáticamente la orientación de las cintas transportadoras
-
+        balancer: Balancer
+        storage: Storage
+        constant_signal: Constant Signal
+        logic_gate: Logic Gate
+        lever: Switch (regular)
+        filter: Filter
+        wire_tunnel: Wire Crossing
+        display: Display
+        reader: Belt Reader
+        virtual_processor: Virtual Cutter
+        transistor: Transistor
+        analyzer: Shape Analyzer
+        comparator: Compare
+        item_producer: Item Producer (Sandbox)
+        copyWireValue: "Wires: Copy value below cursor"
 about:
     title: Sobre el juego
     body: >-
-        Este juego es de código abierto y ha sido desarrollado por <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (Ese soy yo).<br><br>
+        Este juego es de código abierto y ha sido desarrollado por <a
+        href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
+        (Ese soy yo).<br><br>
 
         Si quieres contribuir, revisa <a href="<githublink>" target="_blank">shapez.io en github</a>.<br><br>
 
@@ -862,10 +976,8 @@ about:
         La banda sonora ha sido creada por <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Es genial.<br><br>
 
         Por último, muchísimas gracias a mi amigo <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Sin nuestras sesiones de Factorio, este juego nunca existiría.
-
 changelog:
     title: Historial de cambios
-
 demo:
     features:
         restoringGames: Recuperando partidas guardadas
@@ -873,5 +985,65 @@ demo:
         oneGameLimit: Limitado a una partida guardada
         customizeKeybindings: Personalizando atajos de teclado
         exportingBase: Exportando la base completa como imagen
-
     settingNotAvailable: No disponible en la versión de prueba.
+tips:
+    - The hub accepts input of any kind, not just the current shape!
+    - Make sure your factories are modular - it will pay out!
+    - Don't build too close to the hub, or it will be a huge chaos!
+    - If stacking does not work, try switching the inputs.
+    - You can toggle the belt planner direction by pressing <b>R</b>.
+    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
+    - Ratios stay the same, as long as all upgrades are on the same Tier.
+    - Serial execution is more efficient than parallel.
+    - You will unlock more variants of buildings later in the game!
+    - You can use <b>T</b> to switch between different variants.
+    - Symmetry is key!
+    - You can weave different tiers of tunnels.
+    - Try to build compact factories - it will pay out!
+    - The painter has a mirrored variant which you can select with <b>T</b>
+    - Having the right building ratios will maximize efficiency.
+    - At maximum level, 5 extractors will fill a single belt.
+    - Don't forget about tunnels!
+    - You don't need to divide up items evenly for full efficiency.
+    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
+      long lines of belts easily.
+    - Cutters always cut vertically, regardless of their orientation.
+    - To get white mix all three colors.
+    - The storage buffer priorities the first output.
+    - Invest time to build repeatable designs - it's worth it!
+    - Holding <b>CTRL</b> allows to place multiple buildings.
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
+    - Efficiency is key!
+    - Shape patches that are further away from the hub are more complex.
+    - Machines have a limited speed, divide them up for maximum efficiency.
+    - Use balancers to maximize your efficiency.
+    - Organization is important. Try not to cross conveyors too much.
+    - Plan in advance, or it will be a huge chaos!
+    - Don't remove your old factories! You'll need them to unlock upgrades.
+    - Try beating level 20 on your own before seeking for help!
+    - Don't complicate things, try to stay simple and you'll go far.
+    - You may need to re-use factories later in the game. Plan your factories to
+      be re-usable.
+    - Sometimes, you can find a needed shape in the map without creating it with
+      stackers.
+    - Full windmills / pinwheels can never spawn naturally.
+    - Color your shapes before cutting for maximum efficiency.
+    - With modules, space is merely a perception; a concern for mortal men.
+    - Make a separate blueprint factory. They're important for modules.
+    - Have a closer look on the color mixer, and your questions will be answered.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
+    - The pin icon next to each shape in the upgrade list pins it to the screen.
+    - Mix all primary colors together to make white!
+    - You have an infinite map, don't cramp your factory, expand!
+    - Also try Factorio! It's my favorite game.
+    - The quad cutter cuts clockwise starting from the top right!
+    - You can download your savegames in the main menu!
+    - This game has a lot of useful keybindings! Be sure to check out the
+      settings page.
+    - This game has a lot of settings, be sure to check them out!
+    - The marker to your hub has a small compass to indicate its direction!
+    - To clear belts, cut the area and then paste it at the same location.
+    - Press F4 to show your FPS and Tick Rate.
+    - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.

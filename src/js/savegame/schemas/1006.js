@@ -151,13 +151,30 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             stored[shapeKey] = rebalance(stored[shapeKey]);
         }
 
+        // Reset final game shape
+        stored["RuCw--Cw:----Ru--"] = 0;
+
         // Reduce goals
         if (dump.hubGoals.currentGoal) {
             dump.hubGoals.currentGoal.required = rebalance(dump.hubGoals.currentGoal.required);
         }
 
+        let level = Math.min(19, dump.hubGoals.level);
+
+        const levelMapping = {
+            14: 15,
+            15: 16,
+            16: 17,
+            17: 18,
+            18: 19,
+            19: 20,
+        };
+
+        dump.hubGoals.level = levelMapping[level] || level;
+
         // Update entities
-        const entities = dump.entities;
+        const entities = Array.isArray(dump.entities) ? dump.entities : [...dump.entities.values()];
+
         for (let i = 0; i < entities.length; ++i) {
             const entity = entities[i];
             const components = entity.components;
@@ -232,7 +249,7 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             if (components.Storage) {
                 // @ts-ignore
                 components.Storage = {
-                    storedCount: 0,
+                    storedCount: rebalance(components.Storage.storedCount),
                     storedItem: null,
                 };
             }
@@ -259,7 +276,9 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
          *  but we do have this attribute called code
          */
 
+        // @ts-ignore
         if (staticComp.blueprintSpriteKey) {
+            // @ts-ignore
             newStaticComp.code = spriteMapping[staticComp.blueprintSpriteKey];
         } else newStaticComp.code = staticComp.code;
 

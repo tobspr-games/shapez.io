@@ -1,0 +1,169 @@
+#ingame_HUD_StandaloneAdvantages {
+    .content {
+        @include S(width, 440px);
+        @include S(min-height, 300px);
+    }
+    p {
+        @include PlainText;
+    }
+
+    .points {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @include S(grid-column-gap, 10px);
+        @include S(grid-row-gap, 20px);
+        @include S(margin, 10px, 0, 20px);
+        grid-template-rows: #{D(40px)};
+        align-items: center;
+    }
+
+    .lowerBar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        > button {
+            transition: opacity 0.12s ease-in-out;
+            &:hover {
+                opacity: 0.85;
+            }
+        }
+
+        .otherCloseButton {
+            @include SuperSmallText;
+            @include S(margin-right, 30px);
+            color: #aaa;
+            @include S(margin, 0);
+            @include IncreasedClickArea(0px);
+            @include S(margin-top, 15px);
+
+            @include InlineAnimation(5s ease-in-out) {
+                0% {
+                    opacity: 0.05;
+                }
+                50% {
+                    opacity: 0.05;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .steamLinkButton {
+            @include IncreasedClickArea(5px);
+            @include S(margin, 0);
+            @include S(width, 180px);
+            @include S(height, 40px);
+            background: #171a23 center center / contain no-repeat;
+
+            @include S(border-radius, $globalBorderRadius);
+        }
+    }
+
+    .point {
+        display: grid;
+        grid-template-columns: #{D(55px)} auto;
+        grid-template-rows: 1fr 1fr;
+
+        > strong {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            @include PlainText;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        > p {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            @include SuperSmallText;
+            opacity: 0.8;
+        }
+
+        background: transparent #{D(10px)} center / #{D(30px)} no-repeat;
+
+        &.levels {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_new_levels.png");
+            }
+            > strong {
+                color: #f13555;
+            }
+        }
+
+        &.upgrades {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_upgrades.png");
+            }
+            > strong {
+                color: #8a00ff;
+            }
+        }
+
+        &.buildings {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_buildings.png");
+            }
+            > strong {
+                color: #3fce8b;
+            }
+        }
+
+        &.wires {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_wires.png");
+            }
+            > strong {
+                color: #ef2fdb;
+            }
+        }
+
+        &.markers {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_markers.png");
+            }
+            > strong {
+                color: #4294ff;
+            }
+        }
+
+        &.savegames {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_savegames.png");
+            }
+            > strong {
+                color: #ff9500;
+            }
+        }
+
+        &.darkmode {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_dark_mode.png");
+            }
+            > strong {
+                color: #292c32;
+            }
+        }
+
+        &.support {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_support.png");
+            }
+            > strong {
+                color: #e72d2d;
+            }
+        }
+    }
+}

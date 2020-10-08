@@ -1,15 +1,15 @@
+import { globalConfig } from "../../core/config";
+import { smoothenDpi } from "../../core/dpi_manager";
 import { DrawParameters } from "../../core/draw_parameters";
+import { drawSpriteClipped } from "../../core/draw_utils";
 import { Loader } from "../../core/loader";
+import { Rectangle } from "../../core/rectangle";
+import { ORIGINAL_SPRITE_SCALE } from "../../core/sprites";
 import { formatBigNumber } from "../../core/utils";
 import { T } from "../../translations";
 import { HubComponent } from "../components/hub";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { globalConfig } from "../../core/config";
-import { smoothenDpi } from "../../core/dpi_manager";
-import { drawSpriteClipped } from "../../core/draw_utils";
-import { Rectangle } from "../../core/rectangle";
-import { ORIGINAL_SPRITE_SCALE } from "../../core/sprites";
 
 const HUB_SIZE_TILES = 4;
 const HUB_SIZE_PIXELS = HUB_SIZE_TILES * globalConfig.tileSize;
@@ -73,64 +73,77 @@ export class HubSystem extends GameSystemWithFilter {
         const textOffsetX = 70;
         const textOffsetY = 61;
 
-        // Deliver count
-        const delivered = this.root.hubGoals.getCurrentGoalDelivered();
-        const deliveredText = "" + formatBigNumber(delivered);
+        if (goals.throughputOnly) {
+            // Throughput
+            const deliveredText = T.ingame.statistics.shapesDisplayUnits.second.replace(
+                "<shapes>",
+                formatBigNumber(goals.required)
+            );
 
-        if (delivered > 9999) {
-            context.font = "bold 16px GameFont";
-        } else if (delivered > 999) {
-            context.font = "bold 20px GameFont";
+            context.font = "bold 12px GameFont";
+            context.fillStyle = "#64666e";
+            context.textAlign = "left";
+            context.fillText(deliveredText, textOffsetX, textOffsetY);
         } else {
-            context.font = "bold 25px GameFont";
-        }
-        context.fillStyle = "#64666e";
-        context.textAlign = "left";
-        context.fillText(deliveredText, textOffsetX, textOffsetY);
+            // Deliver count
+            const delivered = this.root.hubGoals.getCurrentGoalDelivered();
+            const deliveredText = "" + formatBigNumber(delivered);
 
-        // Required
-        context.font = "13px GameFont";
-        context.fillStyle = "#a4a6b0";
-        context.fillText("/ " + formatBigNumber(goals.required), textOffsetX, textOffsetY + 13);
+            if (delivered > 9999) {
+                context.font = "bold 16px GameFont";
+            } else if (delivered > 999) {
+                context.font = "bold 20px GameFont";
+            } else {
+                context.font = "bold 25px GameFont";
+            }
+            context.fillStyle = "#64666e";
+            context.textAlign = "left";
+            context.fillText(deliveredText, textOffsetX, textOffsetY);
 
-        // Reward
-        const rewardText = T.storyRewards[goals.reward].title.toUpperCase();
-        if (rewardText.length > 12) {
-            context.font = "bold 8px GameFont";
-        } else {
+            // Required
+            context.font = "13px GameFont";
+            context.fillStyle = "#a4a6b0";
+            context.fillText("/ " + formatBigNumber(goals.required), textOffsetX, textOffsetY + 13);
+
+            // Reward
+            const rewardText = T.storyRewards[goals.reward].title.toUpperCase();
+            if (rewardText.length > 12) {
+                context.font = "bold 8px GameFont";
+            } else {
+                context.font = "bold 10px GameFont";
+            }
+            context.fillStyle = "#fd0752";
+            context.textAlign = "center";
+
+            context.fillText(rewardText, HUB_SIZE_PIXELS / 2, 105);
+
+            // Level "8"
             context.font = "bold 10px GameFont";
-        }
-        context.fillStyle = "#fd0752";
-        context.textAlign = "center";
+            context.fillStyle = "#fff";
+            context.fillText("" + this.root.hubGoals.level, 27, 32);
 
-        context.fillText(rewardText, HUB_SIZE_PIXELS / 2, 105);
+            // "LVL"
+            context.textAlign = "center";
+            context.fillStyle = "#fff";
+            context.font = "bold 6px GameFont";
+            context.fillText(T.buildings.hub.levelShortcut, 27, 22);
 
-        // Level "8"
-        context.font = "bold 10px GameFont";
-        context.fillStyle = "#fff";
-        context.fillText("" + this.root.hubGoals.level, 27, 32);
-
-        // "LVL"
-        context.textAlign = "center";
-        context.fillStyle = "#fff";
-        context.font = "bold 6px GameFont";
-        context.fillText(T.buildings.hub.levelShortcut, 27, 22);
-
-        // "Deliver"
-        context.fillStyle = "#64666e";
-        context.font = "bold 10px GameFont";
-        context.fillText(T.buildings.hub.deliver.toUpperCase(), HUB_SIZE_PIXELS / 2, 30);
-
-        // "To unlock"
-        const unlockText = T.buildings.hub.toUnlock.toUpperCase();
-        if (unlockText.length > 15) {
-            context.font = "bold 8px GameFont";
-        } else {
+            // "Deliver"
+            context.fillStyle = "#64666e";
             context.font = "bold 10px GameFont";
-        }
-        context.fillText(T.buildings.hub.toUnlock.toUpperCase(), HUB_SIZE_PIXELS / 2, 92);
+            context.fillText(T.buildings.hub.deliver.toUpperCase(), HUB_SIZE_PIXELS / 2, 30);
 
-        context.textAlign = "left";
+            // "To unlock"
+            const unlockText = T.buildings.hub.toUnlock.toUpperCase();
+            if (unlockText.length > 15) {
+                context.font = "bold 8px GameFont";
+            } else {
+                context.font = "bold 10px GameFont";
+            }
+            context.fillText(T.buildings.hub.toUnlock.toUpperCase(), HUB_SIZE_PIXELS / 2, 92);
+
+            context.textAlign = "left";
+        }
     }
 
     /**

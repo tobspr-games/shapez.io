@@ -25,9 +25,12 @@ export const SOUNDS = {
     destroyBuilding: "destroy_building",
     placeBuilding: "place_building",
     placeBelt: "place_belt",
+    copy: "copy",
 };
 
 export const MUSIC = {
+    // The theme always depends on the standalone only, even if running the full
+    // version in the browser
     theme: G_IS_STANDALONE ? "theme-full" : "theme-short",
     menu: "menu",
 };

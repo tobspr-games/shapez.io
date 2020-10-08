@@ -1112,7 +1112,7 @@ export class BeltPath extends BasicSerializableObject {
 
             isFirstItemProcessed = false;
             this.spacingToFirstItem += clampedProgress;
-            if (remainingVelocity < 0.01) {
+            if (remainingVelocity < 1e-7) {
                 break;
             }
         }

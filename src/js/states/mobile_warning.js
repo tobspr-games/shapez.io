@@ -21,7 +21,7 @@ export class MobileWarningState extends GameState {
 
             
             <a href="${
-                THIRDPARTY_URLS.standaloneStorePage
+                THIRDPARTY_URLS.standaloneStorePage + "?ref=mobile"
             }" class="standaloneLink" target="_blank">Get the shapez.io standalone!</a>
         `;
     }

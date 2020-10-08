@@ -41,7 +41,7 @@ const variantsCache = new Map();
 export function registerBuildingVariant(
     code,
     meta,
-    variant = "default" /* FIXME: Circular dependency, actually its defaultBuildingVariant */,
+    variant = "default" /* @TODO: Circular dependency, actually its defaultBuildingVariant */,
     rotationVariant = 0
 ) {
     assert(!gBuildingVariants[code], "Duplicate id: " + code);

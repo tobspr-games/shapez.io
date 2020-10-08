@@ -1,14 +1,9 @@
+import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
-import { Loader } from "../core/loader";
-import { createLogger } from "../core/logging";
+import { findNiceIntegerValue } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { GameRoot } from "./root";
-import { findNiceIntegerValue } from "../core/utils";
-import { blueprintShape } from "./upgrades";
-import { globalConfig } from "../core/config";
-
-const logger = createLogger("blueprint");
 
 export class Blueprint {
     /**
@@ -174,7 +169,7 @@ export class Blueprint {
      * @param {GameRoot} root
      */
     canAfford(root) {
-        return root.hubGoals.getShapesStoredByKey(blueprintShape) >= this.getCost();
+        return root.hubGoals.getShapesStoredByKey(root.gameMode.getBlueprintShapeKey()) >= this.getCost();
     }
 
     /**

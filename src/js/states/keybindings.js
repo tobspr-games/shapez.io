@@ -1,9 +1,8 @@
+import { Dialog } from "../core/modal_dialog_elements";
 import { TextualGameState } from "../core/textual_game_state";
+import { getStringForKeyCode, KEYMAPPINGS } from "../game/key_action_mapper";
 import { SOUNDS } from "../platform/sound";
 import { T } from "../translations";
-import { KEYMAPPINGS, getStringForKeyCode } from "../game/key_action_mapper";
-import { Dialog } from "../core/modal_dialog_elements";
-import { IS_DEMO } from "../core/config";
 
 export class KeybindingsState extends TextualGameState {
     constructor() {
@@ -82,11 +81,6 @@ export class KeybindingsState extends TextualGameState {
     }
 
     editKeybinding(id) {
-        // if (IS_DEMO) {
-        //     this.dialogs.showFeatureRestrictionInfo(T.demo.features.customizeKeybindings);
-        //     return;
-        // }
-
         const dialog = new Dialog({
             app: this.app,
             title: T.dialogs.editKeybinding.title,
