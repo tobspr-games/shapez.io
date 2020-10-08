@@ -18,7 +18,7 @@ steamPage:
         - 無限存檔
         - 無限標記
         - 支持我！ ❤️
-    title_future: Planned Content
+    title_future: 未來計劃
     planned:
         - 藍圖圖庫（單機版獨有）
         - Steam 成就
@@ -79,8 +79,8 @@ mainMenu:
     openSourceHint: 本遊戲已開源！
     discordLink: 官方 Discord 伺服器
     helpTranslate: 幫助我們翻譯！
-    browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用chrome或者獲取獨立版以得到更好的體驗。
-    savegameLevel: Level <x>
+    browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用chrome或者獲取單機版以得到更好的體驗。
+    savegameLevel: <x>級
     savegameLevelUnknown: 未知關卡
     continue: 繼續
     newGame: 新遊戲
@@ -95,7 +95,7 @@ dialogs:
         later: 之後
         restart: 重啟
         reset: 重置
-        getStandalone: 獲得獨立版
+        getStandalone: 獲得單機版
         deleteGame: 我知道我在做什麼
         viewUpdate: 查看更新
         showUpgrades: 顯示建築升級
@@ -129,10 +129,10 @@ dialogs:
         desc: 成功重置了所有按鍵！
     featureRestriction:
         title: 演示版
-        desc: 你嘗試使用了 <feature> 功能。該功能在演示版中不可用。請考慮購買獨立版以獲得更好的體驗。
+        desc: 你嘗試使用了 <feature> 功能。該功能在演示版中不可用。請考慮購買單機版以獲得更好的體驗。
     oneSavegameLimit:
         title: 存檔數量限制
-        desc: 演示版中只能保存一份存檔。請刪除舊存檔或者獲取獨立版！
+        desc: 演示版中只能保存一份存檔。請刪除舊存檔或者獲取單機版！
     updateSummary:
         title: 更新了！
         desc: "以下為自上次遊戲以來更新的內容:"
@@ -153,9 +153,10 @@ dialogs:
             class='keybinding'>ALT</code>: 反向放置傳送帶。 <br>"
     createMarker:
         title: 創建標記
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
-        titleEdit: Edit Marker
+        desc: 給地圖標記起一個的名字。
+            你可以在名字中加入一個<strong>短代碼</strong>以加入圖形。
+            （你可以在 <link>here</link> 生成短代碼。）
+        titleEdit: 修改標記
     markerDemoLimit:
         desc: 在演示版中你只能創建兩個地圖標記。請獲取單機版以創建更多標記。
     massCutConfirm:
@@ -277,13 +278,13 @@ ingame:
         empty: 空
         copyKey: Copy Key
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
+        one_miner: 1 個開採機
+        n_miners: <amount> 個開採機
         limited_items: Limited to <max_throughput>
     watermark:
         title: Demo version
         desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        get_on_steam: 在 Steam 上取得
     standaloneAdvantages:
         title: 取得單機版！
         no_thanks: 不用了，謝謝！
@@ -296,7 +297,7 @@ ingame:
                 desc: 邁向完全自動化！
             savegames:
                 title: ∞ 個存檔
-                desc: As many as your heart desires!
+                desc: 隨心所欲！
             upgrades:
                 title: 20 個等級
                 desc: 試玩版只有 5 個。
@@ -401,7 +402,7 @@ buildings:
     balancer:
         default:
             name: 平衡機
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            description: 多功能——將所有輸入平均分配到所有輸出。
         merger:
             name: 合流機（右）
             description: 將兩個傳送帶整合成一個。
@@ -508,7 +509,7 @@ storyRewards:
             為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
         title: 順時針旋轉
-        desc: <strong>旋轉機</strong>已解鎖。它會順時針旋轉輸入的圖形90度。
+        desc: <strong>順時針旋轉機</strong>已解鎖。它會順時針旋轉輸入的圖形90度。
     reward_painter:
         title: 上色
         desc: <strong>上色機</strong>已解鎖。開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設置中有<strong>色盲模式</strong>可以選。
@@ -528,28 +529,24 @@ storyRewards:
         desc: <strong>隧道</strong>已解鎖。你現在可以從其他傳送帶或建築底下運送物品了！
     reward_rotater_ccw:
         title: 逆時針旋轉
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows
-            you to rotate shapes counter-clockwise! To build it, select the
-            rotater and <strong>press 'T' to cycle through its
-            variants</strong>!
+        desc: <strong>逆時針旋轉機</strong>已解鎖。它會逆時針旋轉輸入的圖形90度。
+            逆時針旋轉機是順時針旋轉機的變體。選擇「順時針旋轉機」並<strong>按「T」來切換變體</strong>就能創建。
     reward_miner_chainable:
         title: 鏈式開採
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: <strong>鏈式開採機</strong>變體已解鎖。它是開採機的一個變體。
+            它可以將開採出來的資源<strong>傳遞</strong>給其他的開採機，使得資源提取更加高效！
+            <br><br> PS: 工具列中舊的開採機已被取代。
     reward_underground_belt_tier_2:
         title: 貳級隧道
         desc: <strong>貳級隧道</strong>變體已解鎖。這個隧道有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
     reward_cutter_quad:
         title: 四分切割
-        desc: You have unlocked a variant of the <strong>cutter</strong> - It allows you
-            to cut shapes in <strong>four parts</strong> instead of just two!
+        desc: 您已解鎖了<strong>切割機</strong>的變體：四分切割機。
+            它允許您將形狀直接切割為<strong>四個部分</strong>，而不是兩個！
     reward_painter_double:
         title: 雙倍上色
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works
-            similar to the regular painter but processes <strong>two shapes at
-            once</strong>, consuming just one color instead of two!
+        desc: 您已經解鎖了<strong>上色機</strong>的變體：雙倍上色機。
+            它的運作方式跟上色機類似，但一次能處理<strong>兩個形狀</strong>，而且只消耗一種顏色而不是兩種顏色！
     reward_storage:
         title: 倉庫
         desc: <strong>倉庫</strong> 已解鎖：
@@ -561,11 +558,9 @@ storyRewards:
             基地會在電路層輸出他需要的形狀，你只需要分析這些訊號，然後依照需求自動調整你的工廠。
     reward_blueprints:
         title: 藍圖
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select
-            an area (Hold CTRL, then drag with your mouse), and press 'C' to
-            copy it.<br><br>Pasting it is <strong>not free</strong>, you need to
-            produce <strong>blueprint shapes</strong> to afford it! (Those you
-            just delivered).
+        desc: 現在，你可以<strong>複製並貼上</ strong>工廠的各個部分！
+            選擇一個區域（按住CTRL，然後用游標拖動），然後按「C」將其複制。<br><br>
+            複製<strong>不是免費的</strong>，你需要用<strong>藍圖形狀</strong>來支付！（剛交付的那些）。
     no_reward:
         title: 下一關
         desc: "這一關沒有獎勵，但是下一關有！ <br><br> PS:
@@ -672,7 +667,7 @@ settings:
             description: 改變語言。所有的翻譯皆由玩家提供，且有可能正在施工中！
         fullscreen:
             title: 全螢幕
-            description: 全螢幕以獲得更好的遊戲體驗。僅在獨立版中可用。
+            description: 全螢幕以獲得更好的遊戲體驗。僅在單機版中可用。
         soundsMuted:
             title: 關閉音效
             description: 關閉所有音效。
