@@ -248,7 +248,7 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             if (components.Storage) {
                 // @ts-ignore
                 components.Storage = {
-                    storedCount: 0,
+                    storedCount: rebalance(components.Storage.storedCount),
                     storedItem: null,
                 };
             }
