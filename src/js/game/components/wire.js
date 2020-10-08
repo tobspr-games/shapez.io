@@ -12,6 +12,7 @@ export const enumWireType = {
 export const enumWireVariant = {
     first: "first",
     second: "second",
+    third: "third",
 };
 
 export class WireComponent extends Component {

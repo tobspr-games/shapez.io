@@ -121,7 +121,12 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(52, MetaWireBuilding, enumWireVariant.second, 0);
     registerBuildingVariant(53, MetaWireBuilding, enumWireVariant.second, 1);
     registerBuildingVariant(54, MetaWireBuilding, enumWireVariant.second, 2);
-    registerBuildingVariant(55, MetaWireBuilding, enumWireVariant.second, 3);
+	registerBuildingVariant(55, MetaWireBuilding, enumWireVariant.second, 3);
+	
+    registerBuildingVariant(62, MetaWireBuilding, enumWireVariant.third, 0);
+    registerBuildingVariant(63, MetaWireBuilding, enumWireVariant.third, 1);
+    registerBuildingVariant(64, MetaWireBuilding, enumWireVariant.third, 2);
+    registerBuildingVariant(65, MetaWireBuilding, enumWireVariant.third, 3);
 
     // Constant signal
     registerBuildingVariant(31, MetaConstantSignalBuilding);

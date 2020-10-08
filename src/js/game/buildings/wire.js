@@ -25,11 +25,13 @@ export const wireOverlayMatrices = {
 /** @enum {string} */
 export const wireVariants = {
     second: "second",
+    third: "third"
 };
 
 const enumWireVariantToVariant = {
     [defaultBuildingVariant]: enumWireVariant.first,
     [wireVariants.second]: enumWireVariant.second,
+    [wireVariants.third]: enumWireVariant.third,
 };
 
 export class MetaWireBuilding extends MetaBuilding {
@@ -46,7 +48,7 @@ export class MetaWireBuilding extends MetaBuilding {
     }
 
     getAvailableVariants() {
-        return [defaultBuildingVariant, wireVariants.second];
+        return [defaultBuildingVariant, wireVariants.second, wireVariants.third];
     }
 
     getDimensions() {

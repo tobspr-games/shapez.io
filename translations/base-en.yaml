@@ -636,6 +636,10 @@ buildings:
             name: *wire
             description: *wire_desc
 
+        third:
+            name: *wire
+            description: *wire_desc
+
     wire_tunnel:
         default:
             name: &wire_tunnel Wire Crossing
