@@ -94,7 +94,6 @@ mainMenu:
     helpTranslate: Ajuda a traduir-lo!
     madeBy: Creat per <author-link>
     browserWarning: >-
-        
         Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarrega't chrome per una millor experiència.
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut

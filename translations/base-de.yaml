@@ -542,7 +542,7 @@ buildings:
             description: Dreht die Form virtuell im Uhrzeigersinn.
         unstacker:
             name: Virtueller Entstapler
-            description: Extrahiert virtuell die oberste Ebene nach rechts und die die
+            description: Extrahiert virtuell die oberste Ebene nach rechts und die
                 restlichen Ebenen nach links.
         stacker:
             name: Virtueller Stapler
