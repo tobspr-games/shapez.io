@@ -5,7 +5,6 @@ import { Entity } from "./entity";
 
 import { GameRoot } from "./root";
 import { GameSystem } from "./game_system";
-import { arrayDelete, arrayDeleteValue, fastArrayDelete } from "../core/utils";
 
 export class GameSystemWithFilter extends GameSystem {
     /**
@@ -71,7 +70,6 @@ export class GameSystemWithFilter extends GameSystem {
         for (let i = 0; i < this.requiredComponentIds.length; ++i) {
             if (!entity.components[this.requiredComponentIds[i]]) {
                 // Entity is not interesting anymore
-                //arrayDeleteValue(this.allEntities, entity);
                 this.allEntitiesArrayIsOutdated = this.allEntitiesSet.delete(entity);
             }
         }
@@ -94,7 +92,6 @@ export class GameSystemWithFilter extends GameSystem {
     }
 
     refreshCaches() {
-        //this.allEntities.sort((a, b) => a.uid - b.uid);
         // Remove all entities which are queued for destroy
         if (this.entitiesQueuedToDelete.length > 0) {
             for (let i = this.entitiesQueuedToDelete.length - 1; i >= 0; --i) {
@@ -121,11 +118,6 @@ export class GameSystemWithFilter extends GameSystem {
     internalRegisterEntity(entity) {
         this.allEntitiesSet.add(entity);
         this.allEntitiesArray.push(entity);
-
-        // if (this.root.gameInitialized && !this.root.bulkOperationRunning) {
-        //     // Sort entities by uid so behaviour is predictable
-        //     this.allEntities.sort((a, b) => a.uid - b.uid);
-        // }
     }
 
     /**

@@ -1,19 +1,17 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { Vector } from "../../../core/vector";
-import { STOP_PROPAGATION } from "../../../core/signal";
-import { DrawParameters } from "../../../core/draw_parameters";
-import { Entity } from "../../entity";
-import { Loader } from "../../../core/loader";
 import { globalConfig } from "../../../core/config";
-import { makeDiv, formatBigNumber, formatBigNumberFull, dirInterval } from "../../../core/utils";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { DrawParameters } from "../../../core/draw_parameters";
 import { createLogger } from "../../../core/logging";
-import { enumMouseButton } from "../../camera";
+import { STOP_PROPAGATION } from "../../../core/signal";
+import { formatBigNumberFull } from "../../../core/utils";
+import { Vector } from "../../../core/vector";
 import { T } from "../../../translations";
+import { Blueprint } from "../../blueprint";
+import { enumMouseButton } from "../../camera";
+import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
-import { Blueprint } from "../../blueprint";
+import { BaseHUDPart } from "../base_hud_part";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -51,16 +49,6 @@ export class HUDMassSelector extends BaseHUDPart {
     clear() {
         this.selectedEntities.clear();
     }
-
-    // getUidArray() {
-    //     if (this.selectedEntities.size <= 0) return [];
-    //     const uids = [];
-    //     const arr = [...this.selectedEntities.values()];
-    //     for (let i = arr.length - 1; i >= 0; --i) {
-    //         uids.push(arr[i].uid);
-    //     }
-    //     return uids;
-    // }
 
     /**
      * Handles the destroy callback and makes sure we clean our list
@@ -115,7 +103,6 @@ export class HUDMassSelector extends BaseHUDPart {
         /**
          * @type {Map<number, Entity>}
          */
-        //const mapUidToEntity = this.root.entityMgr.getFrozenUidSearchMap();
 
         this.root.logic.performBulkOperation(() => {
             const arr = [...this.selectedEntities.values()];
@@ -138,8 +125,8 @@ export class HUDMassSelector extends BaseHUDPart {
                 );
                 return;
             }
-            const uids = [];
 
+            // @ts-ignore
             this.root.hud.signals.buildingsSelectedForCopy.dispatch([...this.selectedEntities.values()]);
             this.selectedEntities.clear();
             this.root.soundProxy.playUiClick();

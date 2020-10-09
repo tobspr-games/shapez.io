@@ -68,7 +68,7 @@ export class SavegameSerializer {
 
         // Check for duplicate UIDS
         const entities = [...savegame.entities.values()];
-        for (let i = 0; i < entities.length; ++i) {
+        for (let i = entities.length - 1; i >= 0; --i) {
             /** @type {Entity} */
             const entity = entities[i];
 

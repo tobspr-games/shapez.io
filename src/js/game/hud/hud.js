@@ -44,7 +44,6 @@ import { HUDWireInfo } from "./parts/wire_info";
 import { HUDLeverToggle } from "./parts/lever_toggle";
 import { HUDLayerPreview } from "./parts/layer_preview";
 import { HUDMinerHighlight } from "./parts/miner_highlight";
-import { Entity } from "../entity";
 import { HUDBetaOverlay } from "./parts/beta_overlay";
 import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
 import { HUDCatMemes } from "./parts/cat_memes";

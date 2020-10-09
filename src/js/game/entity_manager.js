@@ -1,4 +1,3 @@
-import { arrayDeleteValue, newEmptyMap, fastArrayDeleteValue } from "../core/utils";
 import { Component } from "./component";
 import { GameRoot } from "./root";
 import { Entity } from "./entity";
@@ -9,9 +8,6 @@ import { globalConfig } from "../core/config";
 const logger = createLogger("entity_manager");
 
 // Manages all entities
-
-// NOTICE: We use arrayDeleteValue instead of fastArrayDeleteValue since that does not preserve the order
-// This is slower but we need it for the street path generation
 
 /** @typedef {number} EntityUid */
 /** @typedef {string} ComponentId */
@@ -36,11 +32,6 @@ export class EntityManager extends BasicSerializableObject {
         // them instantly
         /** @type {Array<Entity>} */
         this.destroyList = [];
-
-        // Store a map from componentid to entities - This is used by the game system
-        // for faster processing
-        ///** @type {Object.<string, Array<Entity>>} */
-        //this.componentToEntity = newEmptyMap();
 
         // Store the next uid to use
         this.nextUid = 10000;

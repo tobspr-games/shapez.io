@@ -169,10 +169,13 @@ export class Savegame extends ReadWriteProxy {
      * Returns if this game has a serialized game dump
      */
     hasGameDump() {
-        return (
-            !!this.currentData.dump &&
-            (this.currentData.dump.entities.length > 0 || this.currentData.dump.entities.size > 0)
-        );
+        if(!this.currentData.dump) return false;
+        if(Array.isArray(this.currentData.dump.entities)) {
+            return this.currentData.dump.entities.length;
+        }
+        else {
+            return this.currentData.dump.entities.size;
+        }
     }
 
     /**
