@@ -3,7 +3,7 @@
 #
 #  Contributing:
 #
-#    If you want to contribute, please make a pull request on this respository
+#    If you want to contribute, please make a pull request on this repository
 #    and I will have a look.
 #
 #  Placeholders:
@@ -22,7 +22,10 @@
 ---
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+    shortText: >-
+        shapez.io is a game about building factories to automate the creation
+        and processing of increasingly complex shapes across an infinitely
+        expanding map.
 
     # This is the text shown above the Discord link
     discordLinkShort: Official Discord
@@ -30,9 +33,15 @@ steamPage:
     intro: >-
         Do you like automation games? Then you are in the right place!
 
-        shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        shapez.io is a relaxed game in which you have to build factories for the
+        automated production of geometric shapes. As the level increases, the
+        shapes become more and more complex, and you have to spread out on the
+        infinite map.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only have to process shapes at the beginning, you will later have to color them - by extracting and mixing colors!
+        And as if that wasn't enough, you also have to produce exponentially
+        more to satisfy the demands - the only thing that helps is scaling!
+        While you only have to process shapes at the beginning, you will later
+        have to color them - by extracting and mixing colors!
 
         Buying the game on Steam gives you access to the full version, but you can also play a demo at shapez.io first and decide later!
 
@@ -59,7 +68,9 @@ steamPage:
 
     title_open_source: This game is open source!
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and attempt to review all suggestions and take feedback into consideration where possible.
+        Anybody can contribute, I'm actively involved in the community and
+        attempt to review all suggestions and take feedback into consideration
+        where possible.
 
         Be sure to check out my trello board for the full roadmap!
 
@@ -79,7 +90,7 @@ global:
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
 
-    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    # What symbol to use to separate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
@@ -138,7 +149,8 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slowly on your browser! Get the standalone version or download Google Chrome for the full experience.
+        Sorry, but the game is known to run slowly on your browser! Get the
+        standalone version or download Google Chrome for the full experience.
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
@@ -204,7 +216,10 @@ dialogs:
 
     featureRestriction:
         title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider getting the standalone version for the full experience!
+        desc: >-
+            You tried to access a feature (<feature>) which is not available in
+            the demo. Consider getting the standalone version for the full
+            experience!
 
     oneSavegameLimit:
         title: Limited savegames
@@ -402,7 +417,11 @@ ingame:
     waypoints:
         waypoints: Markers
         hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        description: >-
+            Left-click a marker to jump to it, right-click to delete
+            it.<br><br>Press <keybinding> to create a marker from the current
+            view, or <strong>right-click</strong> to create a marker at the
+            selected location.
         creationSuccessNotification: Marker has been created.
 
     # Shape viewer
@@ -415,12 +434,18 @@ ingame:
     interactiveTutorial:
         title: Tutorial
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
+            1_1_extractor: >-
+                Place an <strong>extractor</strong> on top of a <strong>circle shape</strong> to extract it!
             1_2_conveyor: >-
-                Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
+                Connect the extractor with a <strong>conveyor belt</strong> to
+                your hub!<br><br>Tip: <strong>Click and drag</strong> the belt
+                with your mouse!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                This is <strong>NOT</strong> an idle game! Build more extractors
+                and belts to finish the goal quicker.<br><br>Tip: Hold
+                <strong>SHIFT</strong> to place multiple extractors, and use
+                <strong>R</strong> to rotate them.
 
             2_1_place_cutter: >-
                 Now place a <strong>Cutter</strong> to cut the circles in two halves!<br><br>
@@ -574,7 +599,10 @@ buildings:
     cutter:
         default:
             name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will clog and stall!</strong>
+            description: >-
+                Cuts shapes from top to bottom and outputs both halves.
+                <strong>If you use only one part, be sure to destroy the other
+                part or it will clog and stall!</strong>
         quad:
             name: Cutter (Quad)
             description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will clog and stall!</strong>
@@ -729,7 +757,13 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will clog and stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
+        desc: >-
+            You just unlocked the <strong>cutter</strong>, which cuts shapes in
+            half from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
 
     reward_rotater:
         title: Rotating
@@ -738,7 +772,10 @@ storyRewards:
     reward_painter:
         title: Painting
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>colorblind mode</strong> in the settings!
+            The <strong>painter</strong> has been unlocked - Extract some color
+            veins (just as you do with shapes) and combine it with a shape in
+            the painter to color them!<br><br>PS: If you are colorblind, there
+            is a <strong>colorblind mode</strong> in the settings!
 
     reward_mixer:
         title: Color Mixing
@@ -746,11 +783,18 @@ storyRewards:
 
     reward_stacker:
         title: Stacker
-        desc: You can now combine shapes with the <strong>stacker</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        desc: >-
+            You can now combine shapes with the <strong>stacker</strong>! Both
+            inputs are combined, and if they can be put next to each other, they
+            will be <strong>fused</strong>. If not, the right input is
+            <strong>stacked on top</strong> of the left input!
 
     reward_balancer:
         title: Balancer
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can be used to build bigger factories by <strong>splitting and merging items</strong> onto multiple belts!
+        desc: >-
+            The multifunctional <strong>balancer</strong> has been unlocked - It
+            can be used to build bigger factories by <strong>splitting and
+            merging items</strong> onto multiple belts!
 
     reward_tunnel:
         title: Tunnel
@@ -758,13 +802,19 @@ storyRewards:
 
     reward_rotater_ccw:
         title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotater</strong> - It allows you to rotate shapes counter-clockwise! To build it, select the rotater and <strong>press 'T' to cycle through its variants</strong>!
+        desc: >-
+            You have unlocked a variant of the
+            <strong>rotater</strong> - It allows you to rotate shapes
+            counter-clockwise! To build it, select the rotater and <strong>press 'T'
+            to cycle through its variants</strong>!
 
     reward_miner_chainable:
         title: Chaining Extractor
         desc: >-
-            You have unlocked the <strong>chained extractor</strong>! It can <strong>forward its resources</strong> to other extractors so you can more efficiently extract resources!<br><br>
-            PS: The old extractor has been replaced in your toolbar now!
+            You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!
 
     reward_underground_belt_tier_2:
         title: Tunnel Tier II
@@ -783,7 +833,9 @@ storyRewards:
     reward_belt_reader:
         title: Belt reader
         desc: >-
-            You have now unlocked the <strong>belt reader</strong>! It allows you to measure the throughput of a belt.<br><br>And wait until you unlock wires - then it gets really useful!
+            You have now unlocked the <strong>belt reader</strong>! It allows
+            you to measure the throughput of a belt.<br><br>And wait until you
+            unlock wires - then it gets really useful!
 
     reward_cutter_quad:
         title: Quad Cutter
@@ -791,7 +843,10 @@ storyRewards:
 
     reward_painter_double:
         title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works similar to the regular painter but processes <strong>two shapes at once</strong>, consuming just one color instead of two!
+        desc: >-
+            You have unlocked a variant of the <strong>painter</strong> - It
+            works similar to the regular painter but processes <strong>two
+            shapes at once</strong>, consuming just one color instead of two!
 
     reward_storage:
         title: Storage
@@ -801,27 +856,38 @@ storyRewards:
 
     reward_blueprints:
         title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        desc: >-
+            You can now <strong>copy and paste</strong> parts of your factory!
+            Select an area (Hold CTRL, then drag with your mouse), and press 'C'
+            to copy it.<br><br>Pasting it is <strong>not free</strong>, you need
+            to produce <strong>blueprint shapes</strong> to afford it! (Those
+            you just delivered).
 
     reward_rotater_180:
         title: Rotater (180°)
-        desc: You just unlocked the 180 degrees <strong>rotater</strong>! - It allows you to rotate a shape by 180 degress (Surprise! :D)
+        desc: You just unlocked the 180 degrees <strong>rotater</strong>! - It allows you to rotate a shape by 180 degrees (Surprise! :D)
 
     reward_wires_painter_and_levers:
         title: >-
             Wires & Quad Painter
         desc: >-
-            You just unlocked the <strong>Wires Layer</strong>: It is a separate layer on top of the regular layer and introduces a lot of new mechanics!<br><br>
-            For the beginning I unlocked you the <strong>Quad Painter</strong> - Connect the slots you would like to paint with on the wires layer!<br><br>
-            To switch to the wires layer, press <strong>E</strong>. <br><br>
-            PS: <strong>Enable hints</strong> in the settings to activate the wires tutorial!
+            You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!
 
     reward_filter:
         title: >-
             Item Filter
         desc: >-
-            You unlocked the <strong>Item Filter</strong>! It will route items either to the top or the right output depending on whether they match the signal from the wires layer or not.<br><br>
-            You can also pass in a boolean signal (1 or 0) to entirely activate or disable it.
+            You unlocked the <strong>Item Filter</strong>! It will route items
+            either to the top or the right output depending on whether they
+            match the signal from the wires layer or not.<br><br> You can also
+            pass in a boolean signal (1 or 0) to entirely activate or disable
+            it.
 
     reward_display:
         title: Display
@@ -832,8 +898,11 @@ storyRewards:
     reward_constant_signal:
         title: Constant Signal
         desc: >-
-            You unlocked the <strong>constant signal</strong> building on the wires layer! This is useful to connect it to <strong>item filters</strong> for example.<br><br>
-            The constant signal can emit a <strong>shape</strong>, <strong>color</strong> or <strong>boolean</strong> (1 or 0).
+            You unlocked the <strong>constant signal</strong> building on the
+            wires layer! This is useful to connect it to <strong>item
+            filters</strong> for example.<br><br> The constant signal can emit a
+            <strong>shape</strong>, <strong>color</strong> or
+            <strong>boolean</strong> (1 or 0).
 
     reward_logic_gates:
         title: Logic Gates
@@ -850,14 +919,17 @@ storyRewards:
             With this you now have three options to continue the game:<br><br>
             - Build an <strong>automated machine</strong> to create any possible shape requested by the HUB (I recommend to try it!).<br><br>
             - Build something cool with wires.<br><br>
-            - Continue to play regulary.<br><br>
+            - Continue to play regularly.<br><br>
             Whatever you choose, remember to have fun!
 
     # Special reward, which is shown when there is no reward actually
     no_reward:
         title: Next level
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better not destroy your existing factory - You'll need <strong>all</strong> those shapes later to <strong>unlock upgrades</strong>!
+            This level gave you no reward, but the next one will! <br><br> PS:
+            Better not destroy your existing factory - You'll need
+            <strong>all</strong> those shapes later to <strong>unlock
+            upgrades</strong>!
 
     no_reward_freeplay:
         title: Next level
@@ -867,9 +939,14 @@ storyRewards:
     reward_freeplay:
         title: Freeplay
         desc: >-
-            You did it! You unlocked the <strong>free-play mode</strong>! This means that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now on, I highly recommend to build a machine which automatically delivers the requested shape!<br><br>
-            The HUB outputs the requested shape on the wires layer, so all you have to do is to analyze it and automatically configure your factory based on that.
+            You did it! You unlocked the <strong>free-play mode</strong>! This
+            means that shapes are now <strong>randomly</strong>
+            generated!<br><br> Since the hub will require a
+            <strong>throughput</strong> from now on, I highly recommend to build
+            a machine which automatically delivers the requested shape!<br><br>
+            The HUB outputs the requested shape on the wires layer, so all you
+            have to do is to analyze it and automatically configure your factory
+            based on that.
 
     reward_demo_end:
         title: End of Demo
@@ -896,7 +973,9 @@ settings:
         uiScale:
             title: Interface scale
             description: >-
-                Changes the size of the user interface. The interface will still scale based on your device's resolution, but this setting controls the amount of scaling.
+                Changes the size of the user interface. The interface will still
+                scale based on your device's resolution, but this setting
+                controls the amount of scaling.
             scales:
                 super_small: Super small
                 small: Small
@@ -986,22 +1065,31 @@ settings:
         refreshRate:
             title: Tick Rate
             description: >-
-                This determines how many game ticks happen per second. In general, a higher tick rate means better precision but also worse performance. On lower tickrates, the throughput may not be exact.
+                This determines how many game ticks happen per second. In
+                general, a higher tick rate means better precision but also
+                worse performance. On lower tickrates, the throughput may not be
+                exact.
 
         alwaysMultiplace:
             title: Multiplace
             description: >-
-                If enabled, all buildings will stay selected after placement until you cancel it. This is equivalent to constantly holding SHIFT.
+                If enabled, all buildings will stay selected after placement
+                until you cancel it. This is equivalent to constantly holding
+                SHIFT.
 
         offerHints:
             title: Hints & Tutorials
             description: >-
-                Whether to offer hints and tutorials while playing. Also hides certain UI elements up to a given level to make it easier to get into the game.
+                Whether to offer hints and tutorials while playing. Also hides
+                certain UI elements up to a given level to make it easier to get
+                into the game.
 
         enableTunnelSmartplace:
             title: Smart Tunnels
             description: >-
-                When enabled, placing tunnels will automatically remove unnecessary belts. This also enables you to drag tunnels and excess tunnels will get removed.
+                When enabled, placing tunnels will automatically remove
+                unnecessary belts. This also enables you to drag tunnels and
+                excess tunnels will get removed.
 
         vignette:
             title: Vignette
@@ -1011,7 +1099,9 @@ settings:
         rotationByBuilding:
             title: Rotation by building type
             description: >-
-                Each building type remembers the rotation you last set it to individually. This may be more comfortable if you frequently switch between placing different building types.
+                Each building type remembers the rotation you last set it to
+                individually. This may be more comfortable if you frequently
+                switch between placing different building types.
 
         compactBuildingInfo:
             title: Compact Building Infos
@@ -1037,7 +1127,10 @@ settings:
         clearCursorOnDeleteWhilePlacing:
             title: Clear Cursor on Right Click
             description: >-
-                Enabled by default, clears the cursor whenever you right click while you have a building selected for placement. If disabled, you can delete buildings by right-clicking while placing a building.
+                Enabled by default, clears the cursor whenever you right click
+                while you have a building selected for placement. If disabled,
+                you can delete buildings by right-clicking while placing a
+                building.
 
         lowQualityTextures:
             title: Low quality textures (Ugly)
@@ -1057,17 +1150,21 @@ settings:
         simplifiedBelts:
             title: Simplified Belts (Ugly)
             description: >-
-                Does not render belt items except when hovering the belt to save performance. I do not recommend to play with this setting if you do not absolutely need the performance.
+                Does not render belt items except when hovering the belt to save
+                performance. I do not recommend to play with this setting if you
+                do not absolutely need the performance.
 
         enableMousePan:
             title: Screen Edge Panning
             description: >-
-                Allows panning the map by moving the cursor to the edges of the screen. The scroll speed depends on the Movement Speed setting.
+                Allows panning the map by moving the cursor to the edges of the
+                screen. The scroll speed depends on the Movement Speed setting.
 
         zoomToCursor:
             title: Zoom towards Cursor
             description: >-
-                If activated the zoom will happen in the direction of your mouse position, otherwise in the middle of the screen.
+                If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
 
         mapResourcesScale:
             title: Map Resources Size
@@ -1169,11 +1266,15 @@ about:
 
         If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on GitHub</a>.<br><br>
 
-        This game wouldn't have been possible without the great Discord community around my games - You should really join the <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
+        This game wouldn't have been possible without the great Discord
+        community around my games - You should really join the <a
+        href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
         The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
 
-        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our Factorio sessions, this game would never have existed.
+        Finally, huge thanks to my best friend <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> -
+        Without our Factorio sessions, this game would never have existed.
 
 changelog:
     title: Changelog
@@ -1210,7 +1311,7 @@ tips:
     - Holding <b>SHIFT</b> will activate the belt planner, letting you place long lines of belts easily.
     - Cutters always cut vertically, regardless of their orientation.
     - To get white mix all three colors.
-    - The storage buffer prioritises the left output.
+    - The storage buffer prioritizes the left output.
     - Invest time to build repeatable designs - it's worth it!
     - Holding <b>CTRL</b> allows to place multiple buildings.
     - You can hold <b>ALT</b> to invert the direction of placed belts.

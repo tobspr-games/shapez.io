@@ -5,11 +5,18 @@ steamPage:
     intro: >-
         Máte rádi automatizaci? Tak to jste na správném místě!
 
-        shapez.io je relaxační hra, ve které musíte stavět továrny na automatizaci výroby geometrických tvarů. Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
+        shapez.io je relaxační hra, ve které musíte stavět továrny na
+        automatizaci výroby geometrických tvarů. Jak se zvyšuje úroveň, tvary se
+        stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
 
-        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování! Zatímco na začátku tvary pouze zpracováváte, později je musíte obarvit - těžbou a mícháním barev!
+        A jako by to nestačilo, musíte také produkovat exponenciálně více,
+        abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování!
+        Zatímco na začátku tvary pouze zpracováváte, později je musíte obarvit -
+        těžbou a mícháním barev!
 
-        Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale také můžete nejdříve hrát demo verzi na shapez.io a až potom se rozhodnout!
+        Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale
+        také můžete nejdříve hrát demo verzi na shapez.io a až potom se
+        rozhodnout!
     title_advantages: Výhody samostatné verze hry
     advantages:
         - <b>12 Nových úrovní</b> z celkových 26 úrovní
@@ -35,7 +42,7 @@ steamPage:
         zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu všude, kde je
         to možné.
 
-        Nezapomeňte se podívat na můj trello board pro kompletní plán!    
+        Nezapomeňte se podívat na můj trello board pro kompletní plán!
     title_links: Odkazy
     links:
         discord: Oficiální Discord
@@ -974,11 +981,16 @@ about:
 
         Pokud se chceš na hře podílet, podívej se na <a href="<githublink>" target="_blank">shapez.io na githubu</a>.<br><br>
 
-        Tato hra by nebyla možná ani bez skvělé Discord komunity okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
+        Tato hra by nebyla možná ani bez skvělé Discord komunity okolo
+        Tobiasových her - Vážně by ses měl přijít mrknout na <a
+        href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
         Soundtrack udělal <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Je úžasnej.<br><br>
 
-        V neposlední řadě by Tobias (já jen tlumočím) rád poděkoval skvělému kamarádovi <a href="https://github.com/niklas-dahl" target="_blank">Niklasi</a> - Bez hodin strávených u factoria by tato hra nikdy neexistovala.
+        V neposlední řadě by Tobias (já jen tlumočím) rád poděkoval skvělému
+        kamarádovi <a href="https://github.com/niklas-dahl"
+        target="_blank">Niklasi</a> - Bez hodin strávených u factoria by tato
+        hra nikdy neexistovala.
 changelog:
     title: Seznam změn
 demo:

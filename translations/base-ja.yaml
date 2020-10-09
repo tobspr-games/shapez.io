@@ -530,7 +530,8 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
-        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong>
+        desc:
+            <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong>
             - このために<strong>ゴミ箱</strong>も用意しました。入力アイテムをすべて破棄できます！
     reward_rotater:
         title: 回転
@@ -590,11 +591,17 @@ storyRewards:
             通常の着色機と同様に機能しますが、ひとつの色の消費で<strong>一度に2つの形</strong>を着色処理できます！
     reward_storage:
         title: 余剰の貯蓄
-        desc: <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
+        desc:
+            <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
             左側の出力を優先するため、<strong>オーバーフローゲート</strong>としても使用できます！
     reward_blueprints:
         title: ブループリント
-        desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
+        desc: >-
+            工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりまし
+            た！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'
+            キーを押すことでコピーができます。<br><br>ペーストは<strong>タダでは
+            ありません。</strong><strong>ブループリントの形</strong>を生産するこ
+            とで可能になります！(たった今納品したものです)
     reward_rotater_180:
         title: 180度の回転
         desc: <strong>回転機</strong>のバリエーションが利用可能になりました！ 180度の回転ができるようになります！(サプライズ！ :D)
@@ -609,7 +616,8 @@ storyRewards:
             the settings to activate the wires tutorial!"
     reward_filter:
         title: アイテムフィルタ
-        desc: <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
+        desc:
+            <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
             アイテムを上部または右側の出力に分離します。<br><br>真偽値(0/1)信号を利用することで
             どんなアイテムでも通過させるか、または通過させないかを選ぶこともできます。
     reward_display:
@@ -627,7 +635,8 @@ storyRewards:
             <strong>boolean</strong> (1 or 0).
     reward_logic_gates:
         title: 論理ゲート
-        desc: <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは ありませんが、これらは非常に優秀です！<br><br>
+        desc:
+            <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは ありませんが、これらは非常に優秀です！<br><br>
             AND, OR, XOR and
             NOTを計算できます！<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
     reward_virtual_processing:
@@ -639,7 +648,8 @@ storyRewards:
             - ワイヤでイカしたものを作る。<br><br> - 今までのように工場を建設する。<br><br> いずれにしても、楽しんでください！
     no_reward:
         title: 次のレベル
-        desc: "このレベルには報酬はありません。次にはあるでしょう！ <br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
+        desc:
+            "このレベルには報酬はありません。次にはあるでしょう！ <br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
             生産された形は<strong>すべて</strong>、後に<strong>アップグレードの解除</strong>のために必要になりま\
             す！"
     no_reward_freeplay:
@@ -766,7 +776,8 @@ settings:
             description: 配置用のグリッドを無効にして、パフォーマンスを向上させます。 これにより、ゲームの見た目もすっきりします。
         clearCursorOnDeleteWhilePlacing:
             title: 右クリックで配置をキャンセル
-            description: デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
+            description:
+                デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
                 無効にすると、建物の設置中に右クリックで建物を削除できます。
         lowQualityTextures:
             title: 低品質のテクスチャ(視認性低下)

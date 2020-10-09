@@ -994,11 +994,15 @@ about:
 
         Jos haluat osallistua, tarkista <a href="<githublink>" target="_blank">shapez.io githubissa</a>.<br><br>
 
-        Tämä peli ei olisi ollut mahdollinen ilman suurta Discord yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
+        Tämä peli ei olisi ollut mahdollinen ilman suurta Discord yhteisöä
+        pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>"
+        target="_blank">Discord palvelimelleni</a>!<br><br>
 
         Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on mahtava.<br><br>
 
-        Lopuksi, isot kiitokset minun parhaalle kaverilleni <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Ilman meidän factorio istuntoja tätä peliä ei olisi koskaan ollut olemassa.
+        Lopuksi, isot kiitokset minun parhaalle kaverilleni <a
+        href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Ilman
+        meidän factorio istuntoja tätä peliä ei olisi koskaan ollut olemassa.
 changelog:
     title: Muutosloki
 demo:
