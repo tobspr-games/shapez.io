@@ -40,8 +40,8 @@ steamPage:
         translate: Bantu menterjemahkan
     text_open_source: >-
         Semua orang bisa berpartisipasi, saya aktif terlibat dalam komunitas dan
-        mencoba untuk meninjau semua saran dan mempertimbangkan segala umpan balik
-        jika memungkinkan.
+        mencoba untuk meninjau semua saran dan mempertimbangkan segala umpan
+        balik jika memungkinkan.
 
         Pastikan untuk memeriksa papan trello saya untuk peta jalan lengkapnya!
 global:
@@ -90,8 +90,8 @@ mainMenu:
     helpTranslate: Bantu Terjemahkan!
     madeBy: Dibuat oleh <author-link>
     browserWarning: Maaf, tetapi permainan ini biasanya lambat pada perambah
-        (browser) Anda! Dapatkan versi lengkap atau unduh Chrome untuk pengalaman
-        sepenuhnya.
+        (browser) Anda! Dapatkan versi lengkap atau unduh Chrome untuk
+        pengalaman sepenuhnya.
     savegameLevel: Level <x>
     savegameLevelUnknown: Level tidak diketahui
     savegameUnnamed: Unnamed
@@ -119,9 +119,8 @@ dialogs:
         text: "Gagal memuat data simpanan Anda:"
     confirmSavegameDelete:
         title: Konfirmasi Penghapusan
-        text: Apakah anda yakin ingin menghapus game berikut?<br><br>
-            '<savegameName>' pada level <savegameLevel><br><br>
-            Hal ini tak dapat diulang!
+        text: Apakah anda yakin ingin menghapus game berikut?<br><br> '<savegameName>'
+            pada level <savegameLevel><br><br> Hal ini tak dapat diulang!
     savegameDeletionError:
         title: Gagal Menghapus
         text: "Gagal untuk menghapus data simpanan:"
@@ -186,10 +185,11 @@ dialogs:
         title: Penanda Baru
         titleEdit: Sunting Penanda
         desc: Berikan nama yang berguna, anda juga bisa memasukkan <strong>kunci
-            pintas</strong> dari sebuah bentuk (Yang bisa anda buat sendiri <link>disini</link>)
+            pintas</strong> dari sebuah bentuk (Yang bisa anda buat sendiri
+            <link>disini</link>)
     markerDemoLimit:
-        desc: Anda hanya dapat memuat dua penanda pada versi demo. Dapatkan versi lengkap
-            untuk penanda-penanda tak terhingga!
+        desc: Anda hanya dapat memuat dua penanda pada versi demo. Dapatkan versi
+            lengkap untuk penanda-penanda tak terhingga!
     exportScreenshotWarning:
         title: Ekspor Tangkapan Layar
         desc: Anda meminta untuk mengekspor pangkalan pusat Anda sebagai tangkapan
@@ -198,14 +198,19 @@ dialogs:
     editSignal:
         title: Atur Tanda
         descItems: "Pilih item yang telah ditentukan sebelumnya:"
-        descShortKey: ... atau masukkan <strong>kunci pintas</strong> dari bentuk (Yang bisa anda buat sendiri <link>disini</link>)
+        descShortKey: ... atau masukkan <strong>kunci pintas</strong> dari bentuk (Yang
+            bisa anda buat sendiri <link>disini</link>)
     renameSavegame:
         title: Ganti Nama Data Simpanan
         desc: Anda bisa mengganti nama data simpanan di sini.
-    entityWarning:
-        title: Peringatan Kapasitas
-        desc: Anda telah membangun banyak bangunan, ini hanya sebuah peringatan kecil bahwa
-            game ini tidak dapat menangani jumlah bangunan yang tak terbatas - Jadi cobalah untuk membangun pabrik yang rapat.
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: Pindahkan
@@ -261,27 +266,6 @@ ingame:
         title: Tingkatan-tingkatan
         buttonUnlock: Tingkatkan
         tier: Tingkat <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: LEVEL MAKSIMUM (Kecepatan x<currentMult>)
     statistics:
         title: Statistika
@@ -307,10 +291,6 @@ ingame:
         playtime: Waktu bermain
         buildingsPlaced: Bangunan
         beltsPlaced: Sabuk konveyor
-        buttons:
-            continue: Lanjutkan
-            settings: Pengaturan
-            menu: Kembali ke menu
     tutorialHints:
         title: Butuh bantuan?
         showHint: Tampilkan petunjuk
@@ -320,9 +300,9 @@ ingame:
     waypoints:
         waypoints: Penanda
         hub: PUSAT
-        description: Klik tombol kiri mouse pada penanda untuk melompat kepadanya,
-            klik tombol kanan untuk menghapusnya. <br><br>Tekan <keybinding>
-            untuk membuat penanda dari sudut pandang saat ini, atau <strong>klik
+        description: Klik tombol kiri mouse pada penanda untuk melompat kepadanya, klik
+            tombol kanan untuk menghapusnya. <br><br>Tekan <keybinding> untuk
+            membuat penanda dari sudut pandang saat ini, atau <strong>klik
             tombol kanan</strong> untuk membuat penanda pada lokasi yang
             dipilih.
         creationSuccessNotification: Penanda telah dibuat.
@@ -340,10 +320,33 @@ ingame:
                 seret</strong> sabuk konveyor dengan mouse!"
             1_3_expand: "Ini <strong>BUKAN</strong> permainan menganggur! Bangun lebih
                 banyak ekstraktor dan sabuk konveyor untuk menyelesaikan
-                obyektif dengan lebih cepat. <br><br>Kiat: Tahan
-                tombol <strong>SHIFT</strong> untuk meletakkan beberapa
-                ekstraktor, dan gunakan tombol <strong>R</strong> untuk
-                memutar."
+                obyektif dengan lebih cepat. <br><br>Kiat: Tahan tombol
+                <strong>SHIFT</strong> untuk meletakkan beberapa ekstraktor, dan
+                gunakan tombol <strong>R</strong> untuk memutar."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     connectedMiners:
         one_miner: 1 Ekstraktor
         n_miners: <amount> Ekstraktor
@@ -402,16 +405,15 @@ buildings:
     belt:
         default:
             name: Sabuk Konveyor
-            description: Mengangkut sumber daya, tahan dan seret untuk meletakkan
-                beberapa.
+            description: Mengangkut sumber daya, tahan dan seret untuk meletakkan beberapa.
     wire:
         default:
             name: Kabel
             description: Memungkinkan anda untuk mengangkut Energi.
         second:
             name: Kabel
-            description: Mentransfer sinyal, dapat berupa bentuk, warna, atau boolean (1 atau 0).
-                Kabel dengan warna berbeda tidak akan menyambung.
+            description: Mentransfer sinyal, dapat berupa bentuk, warna, atau boolean (1
+                atau 0). Kabel dengan warna berbeda tidak akan menyambung.
     miner:
         default:
             name: Ekstraktor
@@ -455,8 +457,8 @@ buildings:
     stacker:
         default:
             name: Penumpuk
-            description: Menumpukkan kedua bentuk. Apabila mereka tidak dapat
-                digabungkan, bentuk kanan akan diletakkan diatas bentuk kiri.
+            description: Menumpukkan kedua bentuk. Apabila mereka tidak dapat digabungkan,
+                bentuk kanan akan diletakkan diatas bentuk kiri.
     mixer:
         default:
             name: Pencampur Warna
@@ -472,11 +474,13 @@ buildings:
                 atas.
         double:
             name: Pengecat (Ganda)
-            description: Mengecat bentuk-bentuk dari input kiri dengan warna dari input atas.
+            description: Mengecat bentuk-bentuk dari input kiri dengan warna dari input
+                atas.
         quad:
             name: Pengecat (Empat Bagian)
-            description: Memungkinkan anda untuk mengecat tiap kuadrannya masing - masing pada bentuk. Hanya menyambung dengan
-                <strong>sinyal yang benar</strong> pada lapisan kabel yang akan dicat!
+            description: Memungkinkan anda untuk mengecat tiap kuadrannya masing - masing
+                pada bentuk. Hanya menyambung dengan <strong>sinyal yang
+                benar</strong> pada lapisan kabel yang akan dicat!
     trash:
         default:
             name: Tong Sampah
@@ -484,7 +488,8 @@ buildings:
     balancer:
         default:
             name: Penyeimbang
-            description: Multifungsional - Mendistribusikan seluruh input secara merata ke seluruh output.
+            description: Multifungsional - Mendistribusikan seluruh input secara merata ke
+                seluruh output.
         merger:
             name: Penggabung Sederhana
             description: Menggabungkan dua sabuk konveyor menjadi satu.
@@ -500,7 +505,8 @@ buildings:
     storage:
         default:
             name: Tempat Penyimpanan
-            description: Menyumpan bentuk yang berlebihan, hingga kapasitas yang tertentu. Memprioritaskan output dari kiri
+            description: Menyumpan bentuk yang berlebihan, hingga kapasitas yang tertentu.
+                Memprioritaskan output dari kiri
     wire_tunnel:
         default:
             name: Penyebrangan Kabel
@@ -508,53 +514,57 @@ buildings:
     constant_signal:
         default:
             name: Sinyal Konstan
-            description: Mengeluarkan sinyal yang konstan, dapat berupa bentuk, warna atau boolean (1 atau 0).
+            description: Mengeluarkan sinyal yang konstan, dapat berupa bentuk, warna atau
+                boolean (1 atau 0).
     lever:
         default:
             name: Saklar
-            description: Dapat diubah untuk mengeluarkan sinyal boolean (1 atau 0) pada lapisan kabel,
-                yang bisa digunakan untuk mengontrol seperti penyaring.
+            description: Dapat diubah untuk mengeluarkan sinyal boolean (1 atau 0) pada
+                lapisan kabel, yang bisa digunakan untuk mengontrol seperti
+                penyaring.
     logic_gate:
         default:
             name: Gerbang AND
-            description: Mengeluarkan boolean "1" jika kedua input adalah benar. (Benar berarti sebuah bentuk,
-                warna atau boolean "1")
+            description: Mengeluarkan boolean "1" jika kedua input adalah benar. (Benar
+                berarti sebuah bentuk, warna atau boolean "1")
         not:
             name: Gerbang NOT
-            description: Mengeluarkan  boolean "1" jika input adalah tidak benar. (Benar berarti sebuah bentuk,
-                warna atau boolean "1")
+            description: Mengeluarkan  boolean "1" jika input adalah tidak benar. (Benar
+                berarti sebuah bentuk, warna atau boolean "1")
         xor:
             name: Gerbang XOR
-            description: Mengeluarkan boolean "1" jika kedua input adalah benar, namun bukan keduanya.
-                (Benar berarti sebuah bentuk, warna atau boolean "1")
+            description: Mengeluarkan boolean "1" jika kedua input adalah benar, namun bukan
+                keduanya. (Benar berarti sebuah bentuk, warna atau boolean "1")
         or:
             name: Gerbang OR
-            description: Mengeluarkan boolean "1" jika satu input adalah benar. (Benar berarti sebuah bentuk,
-                warna atau boolean "1")
+            description: Mengeluarkan boolean "1" jika satu input adalah benar. (Benar
+                berarti sebuah bentuk, warna atau boolean "1")
     transistor:
         default:
             name: Transistor
-            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar (sebuah bentuk,
-                warna atau boolean "1")
+            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar
+                (sebuah bentuk, warna atau boolean "1")
         mirrored:
             name: Transistor
-            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar (sebuah bentuk,
-                warna atau boolean "1")
+            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar
+                (sebuah bentuk, warna atau boolean "1")
     filter:
         default:
             name: Filter
-            description: Hubungkan sebuah sinyal untuk merutekan semua benda yang cocok ke atas dan
-                sisanya ke kanan. Dapat juga dikontrol dengan sinyal boolean
+            description: Hubungkan sebuah sinyal untuk merutekan semua benda yang cocok ke
+                atas dan sisanya ke kanan. Dapat juga dikontrol dengan sinyal
+                boolean
     display:
         default:
             name: Layar
-            description: Hubungkan dengan sebuah sinyal untuk ditunjukkan pada layar - Dapat berupa bentuk,
-                warna atau boolean.
+            description: Hubungkan dengan sebuah sinyal untuk ditunjukkan pada layar - Dapat
+                berupa bentuk, warna atau boolean.
     reader:
         default:
             name: Pembaca Sabuk Konveyor
-            description: Memungkinkan untuk mengukur rata-rata benda yang melewati sabuk konveyor. Mengeluarkan output benda terakhir
-                yang dilewati pada lapisan kabel (Setelah terbuka).
+            description: Memungkinkan untuk mengukur rata-rata benda yang melewati sabuk
+                konveyor. Mengeluarkan output benda terakhir yang dilewati pada
+                lapisan kabel (Setelah terbuka).
     analyzer:
         default:
             name: Penganalisa bentuk
@@ -563,15 +573,16 @@ buildings:
     comparator:
         default:
             name: Pembanding
-            description: Mengeluarkan boolean "1" jika kedua sinya adalah sama. Dapat membandingkan
-                Bentuk, warna dan boolean.
+            description: Mengeluarkan boolean "1" jika kedua sinya adalah sama. Dapat
+                membandingkan Bentuk, warna dan boolean.
     virtual_processor:
         default:
             name: Pemotong Virtual
             description: Memotong bentuk secara virtual menjadi dua bagian.
         rotater:
             name: Pemutar Virtual
-            description: Memutar bentuk secara virtual, searah jarum jam dan tidak searah jarum jam.
+            description: Memutar bentuk secara virtual, searah jarum jam dan tidak searah
+                jarum jam.
         unstacker:
             name: Pemisah Tumpukan Virtual
             description: Memisahkan lapisan teratas secara virtual ke output kanan dan
@@ -581,31 +592,32 @@ buildings:
             description: Menumpuk bentuk kanan ke bentuk kiri secara virtual.
         painter:
             name: Pengecat Virtual
-            description: Mengecat bentuk dari input bawah dengan warna
-                dari input kanan.
+            description: Mengecat bentuk dari input bawah dengan warna dari input kanan.
     item_producer:
         default:
             name: Pembuat Bentuk
-            description: Hanya tersedia di dalam mode sandbox , Mengeluarkan sinyal yang diberikan dari
-                lapisan kabel ke lapisan biasa.
+            description: Hanya tersedia di dalam mode sandbox , Mengeluarkan sinyal yang
+                diberikan dari lapisan kabel ke lapisan biasa.
 storyRewards:
     reward_cutter_and_trash:
         title: Memotong Bentuk
-        desc: <strong>Pemotong</strong> telah dibuka, yang dapat memotong bentuk menjadi dua
-            secara vertikal <strong>apapun
+        desc: <strong>Pemotong</strong> telah dibuka, yang dapat memotong bentuk menjadi
+            dua secara vertikal <strong>apapun
             orientasinya</strong>!<br><br>Pastikan untuk membuang sisanya, jika
-            tidak <strong>ini dapat menghambat dan memperlambat</strong> - karena ini
-            anda diberikan <strong>Tong sampah</strong>, yang menghapus
-            semua yang anda masukkan!
+            tidak <strong>ini dapat menghambat dan memperlambat</strong> -
+            karena ini anda diberikan <strong>Tong sampah</strong>, yang
+            menghapus semua yang anda masukkan!
     reward_rotater:
         title: Memutar
         desc: <strong>Pemutar</strong> telah dibuka! Ia memutar bentuk-bentuk searah
             jarum jam sebesar 90 derajat.
     reward_painter:
         title: Mengecat
-        desc: "<strong>Pengecat</strong> telah dibuka – Ekstraksi beberapa warna (seperti yang Anda lakukan dengan bentuk) dan kemudian kombinasikan dengan bentuk di dalam pengecat untuk mewarnai mereka!<br><br> Catatan:
-            Apabila Anda buta warna, terdapat <strong>mode buta warna</strong>
-            di dalam pengaturan!"
+        desc: "<strong>Pengecat</strong> telah dibuka – Ekstraksi beberapa warna
+            (seperti yang Anda lakukan dengan bentuk) dan kemudian kombinasikan
+            dengan bentuk di dalam pengecat untuk mewarnai mereka!<br><br>
+            Catatan: Apabila Anda buta warna, terdapat <strong>mode buta
+            warna</strong> di dalam pengaturan!"
     reward_mixer:
         title: Mencampur Warna
         desc: <strong>Pencampur</strong> telah dibuka – Kombinasikan dua warna
@@ -620,7 +632,8 @@ storyRewards:
     reward_splitter:
         title: Membagi
         desc: Anda telah membuka varian <strong>pembagi</strong> dari
-            <strong>penyeimbang</strong> - Menerima satu input dan membaginya menjadi 2!
+            <strong>penyeimbang</strong> - Menerima satu input dan membaginya
+            menjadi 2!
     reward_tunnel:
         title: Terowongan
         desc: <strong>Terowongan</strong> telah dibuka – Sekarang Anda dapat memindahkan
@@ -634,7 +647,11 @@ storyRewards:
             varian</strong>!
     reward_miner_chainable:
         title: Ekstraktor Merantai
-        desc: "Anda telah membuka <strong>Ekstraktor (Berantai)</strong>! Ia dapat <strong>mengoper sumber daya</strong> ke ekstraktor depannya sehingga anda dapat mengekstrak sumber daya denga lebih efisien!<br><br> NB: Ekstraktor yang lama sudah diganti pada toolbar anda sekarang!"
+        desc: "Anda telah membuka <strong>Ekstraktor (Berantai)</strong>! Ia dapat
+            <strong>mengoper sumber daya</strong> ke ekstraktor depannya
+            sehingga anda dapat mengekstrak sumber daya denga lebih
+            efisien!<br><br> NB: Ekstraktor yang lama sudah diganti pada toolbar
+            anda sekarang!"
     reward_underground_belt_tier_2:
         title: Terowongan Tingkat II
         desc: Anda telah membuka varian baru <strong>terowongan</strong> - Ia memiliki
@@ -652,17 +669,20 @@ storyRewards:
             sekaligus</strong> mengonsumsi hanya satu warna daripada dua!
     reward_storage:
         title: Tempat Penyimpanan
-        desc: Anda telah membuka <strong>Tempat Penyimpanan</strong> - Ia memungkinkan anda untuk
-            menyimpan item hingga kapasitas tertentu!<br><br> Ia mengutamakan output kiri, sehingga anda dapat menggunakannya sebagai <strong>gerbang luapan</strong>!
+        desc: Anda telah membuka <strong>Tempat Penyimpanan</strong> - Ia memungkinkan
+            anda untuk menyimpan item hingga kapasitas tertentu!<br><br> Ia
+            mengutamakan output kiri, sehingga anda dapat menggunakannya sebagai
+            <strong>gerbang luapan</strong>!
     reward_freeplay:
         title: Permainan Bebas
-        desc: Anda berhasil! Anda telah membuka <strong>mode permainan bebas</strong>! Ini artinya
-            bentuk-bentuk akan dibuat secara <strong>acak</strong>!<br><br>
-            Karena pusat pangkalan akan membutuhkan <strong>penghasilan</strong> dari sekarang,
-            Saya sangat menyarankan untuk membangun mesin yang secara otomatis
-            mengirim bentuk yang diminta!<br><br> Pusat pangkalan mengeluarkan bentuk
-            yang diminta pada lapisan kabel, jadi yang harus anda lakukan adalah menganalisa dan
-            membangun pabrik secara otomatis berdasarkan itu.
+        desc: Anda berhasil! Anda telah membuka <strong>mode permainan bebas</strong>!
+            Ini artinya bentuk-bentuk akan dibuat secara
+            <strong>acak</strong>!<br><br> Karena pusat pangkalan akan
+            membutuhkan <strong>penghasilan</strong> dari sekarang, Saya sangat
+            menyarankan untuk membangun mesin yang secara otomatis mengirim
+            bentuk yang diminta!<br><br> Pusat pangkalan mengeluarkan bentuk
+            yang diminta pada lapisan kabel, jadi yang harus anda lakukan adalah
+            menganalisa dan membangun pabrik secara otomatis berdasarkan itu.
     reward_blueprints:
         title: Cetak Biru
         desc: Anda sekarang dapat <strong>menyalin dan meletakkan</strong> bagian dari
@@ -684,25 +704,31 @@ storyRewards:
             penuh!
     reward_balancer:
         title: Penyeimbang
-        desc: <strong>Penyeimbang</strong> yang multifungsional telah terbuka - Ia dapat
-            digunakan untuk membuat pabrik yang lebih besar dengan cara
-            <strong>memisahkan atau menggabungkan item</strong> ke beberapa sabuk konveyor!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_merger:
         title: Penggabung Sederhana
         desc: Anda telah membuka varian<strong>penggabung</strong> dari
-            <strong>penyeimbang</strong> - Ia menerima dua input dan menggabungkannya dalam satu sabuk konveyor!
+            <strong>penyeimbang</strong> - Ia menerima dua input dan
+            menggabungkannya dalam satu sabuk konveyor!
     reward_belt_reader:
         title: Pembaca Sabuk Konveyor
-        desc: Anda telah membuka <strong>pembaca sabuk konveyor</strong>! Ini memungkinkan anda untuk
-            mengukur penghasilan dalam sebuah sabuk konveyor.<br><br> Dan tunggu sampai anda membuka
-            kabel - maka ini akan sangat berguna!
+        desc: Anda telah membuka <strong>pembaca sabuk konveyor</strong>! Ini
+            memungkinkan anda untuk mengukur penghasilan dalam sebuah sabuk
+            konveyor.<br><br> Dan tunggu sampai anda membuka kabel - maka ini
+            akan sangat berguna!
     reward_rotater_180:
         title: Pemutar (180 derajat)
-        desc: Anda telah membuka <strong>pemutar</strong> 180 derajat! - Ini memungkinkan
-            anda untuk memutar bentuk dalam 180 derajat (Kejutan! :D)
+        desc: Anda telah membuka <strong>pemutar</strong> 180 derajat! - Ini
+            memungkinkan anda untuk memutar bentuk dalam 180 derajat (Kejutan!
+            :D)
     reward_display:
         title: Layar
-        desc: "Anda baru saja membuka <strong>Layar</strong> - Hubungkan sebuah sinyal dalam lapisan kabel untuk memvisualisasikannya!<br><br> NB: Apakah anda memperhatikan pembaca sabuk dan penyimpanan mengeluarkan item bacaan terakhir? Coba tampilkan pada layar!"
+        desc: "Anda baru saja membuka <strong>Layar</strong> - Hubungkan sebuah sinyal
+            dalam lapisan kabel untuk memvisualisasikannya!<br><br> NB: Apakah
+            anda memperhatikan pembaca sabuk dan penyimpanan mengeluarkan item
+            bacaan terakhir? Coba tampilkan pada layar!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
@@ -733,7 +759,8 @@ storyRewards:
             mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
             Painter</strong> - Connect the slots you would like to paint with on
             the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>."
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Item Filter
         desc: You unlocked the <strong>Item Filter</strong>! It will route items either
@@ -906,6 +933,14 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Tombol pintas

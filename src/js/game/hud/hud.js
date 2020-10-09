@@ -48,6 +48,7 @@ import { Entity } from "../entity";
 import { HUDBetaOverlay } from "./parts/beta_overlay";
 import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
 import { HUDCatMemes } from "./parts/cat_memes";
+import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
 
 export class GameHUD {
     /**
@@ -61,6 +62,18 @@ export class GameHUD {
      * Initializes the hud parts
      */
     initialize() {
+        this.signals = {
+            buildingSelectedForPlacement: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
+            selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
+            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
+            notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
+            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
+            pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
+            viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            unlockNotificationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
+        };
+
         this.parts = {
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
             wiresToolbar: new HUDWiresToolbar(this.root),
@@ -88,23 +101,13 @@ export class GameHUD {
             layerPreview: new HUDLayerPreview(this.root),
 
             minerHighlight: new HUDMinerHighlight(this.root),
+            tutorialVideoOffer: new HUDTutorialVideoOffer(this.root),
 
             // Typing hints
             /* typehints:start */
             /** @type {HUDChangesDebugger} */
             changesDebugger: null,
             /* typehints:end */
-        };
-
-        this.signals = {
-            buildingSelectedForPlacement: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
-            selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
-            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
-            shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
-            notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
-            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<Entity>]>} */ (new Signal()),
-            pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
-            viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {

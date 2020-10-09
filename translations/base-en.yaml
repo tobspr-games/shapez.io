@@ -28,7 +28,7 @@ steamPage:
     discordLinkShort: Official Discord
 
     intro: >-
-        You like automation games? Then you are in the right place!
+        Do you like automation games? Then you are in the right place!
 
         shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
@@ -271,6 +271,14 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
+
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to watch it?
+
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only available in English. Would you like to watch it?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in

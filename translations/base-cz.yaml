@@ -1,55 +1,53 @@
 steamPage:
-    shortText: shapez.io je hra o stavbě továren pro automatizaci výroby a
+    shortText: shapez.io je hra o stavbě továren na automatizaci výroby a
         kombinování čím dál složitějších tvarů na nekonečné mapě.
     discordLinkShort: Oficiální Discord
     intro: >-
-        Shapez.io je relaxační hra, ve které musíte stavět továrny pro automatizaci výroby geometrických tvarů.
+        Máte rádi automatizaci? Tak to jste na správném místě!
 
-        Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
+        shapez.io je relaxační hra, ve které musíte stavět továrny na automatizaci výroby geometrických tvarů. Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
 
-        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování!
+        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování! Zatímco na začátku tvary pouze zpracováváte, později je musíte obarvit - těžbou a mícháním barev!
 
-        Zatímco tvary zpracováváte pouze na začátku, musíte je později obarvit - k tomu musíte těžit a míchat barvy!
-
-        Koupením hry na platformě Steam vám dá přístup k plné verzi hry, ale také můžete hrát demo verzi na shapez.io a potom se můžete rozhodnou jestli hru koupíte!
+        Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale také můžete nejdříve hrát demo verzi na shapez.io a až potom se rozhodnout!
     title_advantages: Výhody samostatné verze hry
     advantages:
-        - <b>12 Nových úrovní</b> celkem 26 úrovní
+        - <b>12 Nových úrovní</b> z celkových 26 úrovní
         - <b>18 Nových budov</b> pro plně automatizovanou továrnu!
-        - <b>20 vylepšení</b> pro mnoho hodin zábavy!
-        - <b>Wires Update</b> pro zcela nové rozměry!
-        - <b>Dark Mode</b>!
+        - <b>20 Řad vylepšení</b> pro mnoho hodin zábavy!
+        - <b>Wires Update</b> pro zcela novou dimenzi!
+        - <b>Tmavý mód</b>!
         - Neomezený počet uložených her
         - Neomezené značky
         - Podpořte mě! ❤️
-    title_future: Plánovaný kontent
+    title_future: Plánovaný obsah
     planned:
         - Blueprintová knihovna
         - Steam Achievements
-        - Puzzle Mód
+        - Puzzle mód
         - Minimapa
         - Módy
-        - Sandbox Mód
-        - ... a o hodně víc!
+        - Sandbox mód
+        - ... a mnohem víc!
     title_open_source: Tato hra je open source!
+    text_open_source: >-
+        Kdokoli může přispět, jsem aktivně zapojený do komunity, pokouším se
+        zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu všude, kde je
+        to možné.
+
+        Nezapomeňte se podívat na můj trello board pro kompletní plán!    
     title_links: Odkazy
     links:
         discord: Oficiální Discord
         roadmap: Roadmap
         subreddit: Subreddit
-        source_code: Source code (GitHub)
+        source_code: Zdrojový kód (GitHub)
         translate: Pomozte přeložit hru!
-    text_open_source: >-
-        Kdokoli může přispět, jsem aktivně zapojený do komunity,
-         pokouším se zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu všude,
-         kde je to možné.
-
-        Nezapomeňte se podívat na můj trello board, kde najdete kompletní plán!
 global:
-    loading: Načítám
+    loading: Načítání
     error: Chyba
     thousandsDivider: " "
-    decimalSeparator: .
+    decimalSeparator: ","
     suffix:
         thousands: k
         millions: M
@@ -78,23 +76,23 @@ global:
         space: SPACE
 demoBanners:
     title: Demo verze
-    intro: Získejte plnou verzi pro odemknutí všech funkcí!
+    intro: Získejte plnou verzi pro odemknutí všech funkcí a obsahu!
 mainMenu:
     play: Hrát
-    changelog: Změny
+    continue: Pokračovat
+    newGame: Nová hra
+    changelog: Seznam změn
+    subreddit: Reddit
     importSavegame: Importovat
     openSourceHint: Tato hra je open source!
     discordLink: Oficiální Discord Server
     helpTranslate: Pomozte přeložit hru!
-    browserWarning: Hrajete v nepodporovaném prohlížeči, je možné že hra poběží
-        pomalu! Pořiďte si samostatnou verzi nebo vyzkoušejte prohlížeč Chrome
-        pro plnohodnotný zážitek.
+    madeBy: Vytvořil <author-link>
+    browserWarning: Promiňte, ale víme, že hra poběží pomalu ve vašem prohlížeči!
+        Pořiďte si samostatnou verzi nebo si stíhněte Google Chrome pro
+        plnohodnotný zážitek.
     savegameLevel: Úroveň <x>
     savegameLevelUnknown: Neznámá úroveň
-    continue: Pokračovat
-    newGame: Nová hra
-    madeBy: Vytvořil <author-link>
-    subreddit: Reddit
     savegameUnnamed: Nepojmenovaný
 dialogs:
     buttons:
@@ -131,39 +129,46 @@ dialogs:
         text: Pro aplikování nastavení musíte restartovat hru.
     editKeybinding:
         title: Změna klávesové zkratky
-        desc: Zmáčkněte klávesu nebo tlačítko na myši pro přiřazení nebo Escape pro
+        desc: Zmáčkněte klávesu nebo tlačítko myši pro přiřazení nebo Escape pro
             zrušení.
     resetKeybindingsConfirmation:
         title: Reset klávesových zkratek
-        desc: Opravdu chcete vrátit klávesové zkratky zpět do původního nastavení?
+        desc: Toto vrátí všechny klávesové zkratky do původního nastavení. Prosím
+            potvrďte.
     keybindingsResetOk:
         title: Reset klávesových zkratek
-        desc: Vaše klávesové zkratky byly resetovány do původního nastavení!
+        desc: Všechny klávesové zkratky byly vráceny do původního nastavení!
     featureRestriction:
         title: Demo verze
-        desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Pořiďte si
-            plnou verzi pro lepší zážitek!
+        desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Zvažte
+            pořízení plné verze pro kompletní zážitek!
     oneSavegameLimit:
         title: Omezené ukládání
-        desc: Ve zkušební verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající
+        desc: Ve demo verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající
             uloženou hru nebo si pořiďte plnou verzi!
     updateSummary:
         title: Nová aktualizace!
-        desc: "Tady jsou změny od posledně:"
+        desc: "Tady jsou změny od posledního hraní:"
     upgradesIntroduction:
         title: Odemknout vylepšení
         desc: Všechny tvary, které vytvoříte, lze použít k odemčení vylepšení -
-            <strong>Neničte své staré továrny!</strong> Karta vylepšení se
-            nachází v pravém horním rohu obrazovky.
+            <strong>Neničte své staré továrny!</strong> Kartu vylepšení lze
+            najít v pravém horním rohu obrazovky.
     massDeleteConfirm:
         title: Potvrdit smazání
         desc: Odstraňujete spoustu budov (přesněji <count>)! Opravdu je chcete smazat?
+    massCutConfirm:
+        title: Potvrdit vyjmutí
+        desc: Vyjímáte spoustu budov (přesněji <count>)! Opravdu je chcete vyjmout?
+    massCutInsufficientConfirm:
+        title: Potvrdit vyjmutí
+        desc: Nemůžete si dovolit vložení této oblasti! Opravdu ji chcete vyjmout?
     blueprintsNotUnlocked:
         title: Zatím neodemčeno
-        desc: Plány ještě nebyly odemčeny! Chcete-li je odemknout, dokončete úroveň 12.
+        desc: Dokončete úroveň 12 pro odemčení Plánů!
     keybindingsIntroduction:
         title: Užitečné klávesové zkratky
-        desc: "Hra má spoustu klávesových zkratek, které usnadňují stavbu velkých
+        desc: "Tato hra má spoustu klávesových zkratek, které usnadňují stavbu velkých
             továren. Zde jsou některé, ale nezapomeňte se podívat i na
             <strong>ostatní klávesové zkratky</strong>!<br><br> <code
             class='keybinding'>CTRL</code> + Táhnout: Vybrání oblasti.<br> <code
@@ -172,32 +177,33 @@ dialogs:
             umístěných pásů.<br>"
     createMarker:
         title: Nová značka
-        desc: Použijte smysluplný název, můžete také zahrnout <strong>krátký
-            klíč</strong> tvaru (který můžete vygenerovat <link>zde</link>)
         titleEdit: Upravit značku
-    markerDemoLimit:
-        desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro
-            neomezený počet značek!
-    massCutConfirm:
-        title: Potvrdit vyjmutí
-        desc: Chceš vyjmout spoustu budov (přesněji řečeno <count>)! Vážně to chceš
-            udělat?
-    exportScreenshotWarning:
-        title: Exportuj snímek obrazovky
-        desc: Zažádal jsi o exportování své základny jako obrázek. Měj prosím na paměti,
-            že to může zejména u větších základen dlouho trvat, nebo dokonce
-            shodit hru!
-    massCutInsufficientConfirm:
-        title: Potvrdit vyjmutí
-        desc: Nemůžeš si dovolit vložení této oblasti! Skutečně ji chceš vyjmout?
+        desc: Použijte smysluplný název, můžete také zahrnout <strong>krátký
+            klíč</strong> tvaru (Ten můžete vygenerovat <link>zde</link>)
     editSignal:
         title: Nastavte signál
         descItems: "Vyberte předdefinovanou položku:"
-        descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (který můžete
+        descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (Ten můžete
             vygenerovat <link>zde</link>)
+    markerDemoLimit:
+        desc: V demo verzi můžete vytvořit pouze dvě značky. Pořiďte si plnou verzi pro
+            neomezený počet značek!
+    exportScreenshotWarning:
+        title: Exportuj snímek obrazovky
+        desc: Chcete exportovat svou základnu jako snímek obrazovky. Mějte prosím na
+            paměti, že to bude docela pomalé u větších základen a může dokonce
+            dojít k pádu hry!
     renameSavegame:
         title: Přejmenovat uloženou hru
-        desc: Zde můžeš přejmenovat svoji uloženou hru.
+        desc: Zde můžete přejmenovat svoji uloženou hru.
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -292,6 +298,30 @@ ingame:
                 a pásy, abyste dosáhli cíle rychleji.<br><br>Tip: Chcete-li
                 umístit více extraktorů, podržte <strong>SHIFT</strong>. Pomocí
                 <strong>R</strong> je můžete otočit."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     colors:
         red: Červená
         green: Zelená
@@ -681,12 +711,13 @@ storyRewards:
             na tvou volbu, nezapomeň si svou hru užít!
     reward_wires_painter_and_levers:
         title: Kabely a čtyřnásobný barvič
-        desc: "Právě jste odemkli <strong>vrstvu kabelů</strong>: Je to samostatná
-            vrstva navíc oproti běžné vrstvě a představuje spoustu nových
-            možností!<br><br> Do začátku jsem zpřístupnil <strong>čtyřnásobný
-            barvič</strong> - Připojte vstupy, které byste chtěli obarvit na
-            vrstvě kabelů!<br><br> Pro přepnutí mezi vrstvami stiskněte klávesu
-            <strong>E</strong>."
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Filtr předmětů
         desc: Právě jste odemkli <strong>filtr předmětů</strong>! Nasměruje předměty buď
