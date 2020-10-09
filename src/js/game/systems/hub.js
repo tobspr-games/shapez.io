@@ -25,15 +25,15 @@ export class HubSystem extends GameSystemWithFilter {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            this.drawEntity(parameters, this.allEntities[i]);
+        for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
+            const entity = this.allEntitiesArray[i];
+            this.drawEntity(parameters, entity);
         }
     }
 
     update() {
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            // Set hub goal
-            const entity = this.allEntities[i];
+        for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
+            const entity = this.allEntitiesArray[i];
             const pinsComp = entity.components.WiredPins;
             pinsComp.slots[0].value = this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
                 this.root.hubGoals.currentGoal.definition
@@ -64,17 +64,6 @@ export class HubSystem extends GameSystemWithFilter {
         context.clearRect(0, 0, w, h);
 
         this.hubSprite.draw(context, 0, 0, w, h);
-
-        if (this.root.hubGoals.isEndOfDemoReached()) {
-            // End of demo
-            context.font = "bold 12px GameFont";
-            context.fillStyle = "#fd0752";
-            context.textAlign = "center";
-            context.fillText(T.buildings.hub.endOfDemo.toUpperCase(), w / 2, h / 2 + 6);
-            context.textAlign = "left";
-
-            return;
-        }
 
         const definition = this.root.hubGoals.currentGoal.definition;
         definition.drawCentered(45, 58, parameters, 36);
@@ -115,46 +104,46 @@ export class HubSystem extends GameSystemWithFilter {
             context.font = "13px GameFont";
             context.fillStyle = "#a4a6b0";
             context.fillText("/ " + formatBigNumber(goals.required), textOffsetX, textOffsetY + 13);
-        }
 
-        // Reward
-        const rewardText = T.storyRewards[goals.reward].title.toUpperCase();
-        if (rewardText.length > 12) {
-            context.font = "bold 8px GameFont";
-        } else {
+            // Reward
+            const rewardText = T.storyRewards[goals.reward].title.toUpperCase();
+            if (rewardText.length > 12) {
+                context.font = "bold 8px GameFont";
+            } else {
+                context.font = "bold 10px GameFont";
+            }
+            context.fillStyle = "#fd0752";
+            context.textAlign = "center";
+
+            context.fillText(rewardText, HUB_SIZE_PIXELS / 2, 105);
+
+            // Level "8"
             context.font = "bold 10px GameFont";
-        }
-        context.fillStyle = "#fd0752";
-        context.textAlign = "center";
+            context.fillStyle = "#fff";
+            context.fillText("" + this.root.hubGoals.level, 27, 32);
 
-        context.fillText(rewardText, HUB_SIZE_PIXELS / 2, 105);
+            // "LVL"
+            context.textAlign = "center";
+            context.fillStyle = "#fff";
+            context.font = "bold 6px GameFont";
+            context.fillText(T.buildings.hub.levelShortcut, 27, 22);
 
-        // Level "8"
-        context.font = "bold 10px GameFont";
-        context.fillStyle = "#fff";
-        context.fillText("" + this.root.hubGoals.level, 27, 32);
-
-        // "LVL"
-        context.textAlign = "center";
-        context.fillStyle = "#fff";
-        context.font = "bold 6px GameFont";
-        context.fillText(T.buildings.hub.levelShortcut, 27, 22);
-
-        // "Deliver"
-        context.fillStyle = "#64666e";
-        context.font = "bold 10px GameFont";
-        context.fillText(T.buildings.hub.deliver.toUpperCase(), HUB_SIZE_PIXELS / 2, 30);
-
-        // "To unlock"
-        const unlockText = T.buildings.hub.toUnlock.toUpperCase();
-        if (unlockText.length > 15) {
-            context.font = "bold 8px GameFont";
-        } else {
+            // "Deliver"
+            context.fillStyle = "#64666e";
             context.font = "bold 10px GameFont";
-        }
-        context.fillText(T.buildings.hub.toUnlock.toUpperCase(), HUB_SIZE_PIXELS / 2, 92);
+            context.fillText(T.buildings.hub.deliver.toUpperCase(), HUB_SIZE_PIXELS / 2, 30);
 
-        context.textAlign = "left";
+            // "To unlock"
+            const unlockText = T.buildings.hub.toUnlock.toUpperCase();
+            if (unlockText.length > 15) {
+                context.font = "bold 8px GameFont";
+            } else {
+                context.font = "bold 10px GameFont";
+            }
+            context.fillText(T.buildings.hub.toUnlock.toUpperCase(), HUB_SIZE_PIXELS / 2, 92);
+
+            context.textAlign = "left";
+        }
     }
 
     /**

@@ -169,7 +169,7 @@ export class ReadWriteProxy {
                 // Check for errors during read
                 .catch(err => {
                     if (err === FILE_NOT_FOUND) {
-                        logger.log("File not found, using default data");
+                        logger.error("File not found, using default data");
 
                         // File not found or unreadable, assume default file
                         return Promise.resolve(null);

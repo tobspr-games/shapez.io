@@ -67,9 +67,10 @@ export class SavegameSerializer {
         const seenUids = new Set();
 
         // Check for duplicate UIDS
-        for (let i = 0; i < savegame.entities.length; ++i) {
+        const entities = [...savegame.entities.values()];
+        for (let i = 0; i < entities.length; ++i) {
             /** @type {Entity} */
-            const entity = savegame.entities[i];
+            const entity = entities[i];
 
             const uid = entity.uid;
             if (!Number.isInteger(uid)) {
@@ -133,7 +134,8 @@ export class SavegameSerializer {
         errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals, root);
         errorReason = errorReason || root.hud.parts.pinnedShapes.deserialize(savegame.pinnedShapes);
         errorReason = errorReason || root.hud.parts.waypoints.deserialize(savegame.waypoints);
-        errorReason = errorReason || this.internal.deserializeEntityArray(root, savegame.entities);
+        errorReason =
+            errorReason || this.internal.deserializeEntityArray(root, [...savegame.entities.values()]);
         errorReason = errorReason || root.systemMgr.systems.belt.deserializePaths(savegame.beltPaths);
 
         // Check for errors

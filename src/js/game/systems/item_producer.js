@@ -7,8 +7,8 @@ export class ItemProducerSystem extends GameSystemWithFilter {
     }
 
     update() {
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
+        for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
+            const entity = this.allEntitiesArray[i];
             const pinsComp = entity.components.WiredPins;
             const pin = pinsComp.slots[0];
             const network = pin.linkedNetwork;

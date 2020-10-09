@@ -3,13 +3,14 @@ import { STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
 import { makeDiv } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
-import { SOUNDS } from "../../../platform/sound";
 import { T } from "../../../translations";
-import { Blueprint } from "../../blueprint";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { Blueprint } from "../../blueprint";
+import { SOUNDS } from "../../../platform/sound";
+import { Entity } from "../../entity";
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
@@ -141,13 +142,13 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     /**
      * Called when an array of bulidings was selected
-     * @param {Array<number>} uids
+     * @param {Array<Entity>} entities
      */
-    createBlueprintFromBuildings(uids) {
-        if (uids.length === 0) {
+    createBlueprintFromBuildings(entities) {
+        if (entities.length === 0) {
             return;
         }
-        this.currentBlueprint.set(Blueprint.fromUids(this.root, uids));
+        this.currentBlueprint.set(Blueprint.fromEntities(entities));
     }
 
     /**
