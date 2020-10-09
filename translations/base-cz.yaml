@@ -173,7 +173,7 @@ dialogs:
             <strong>ostatní klávesové zkratky</strong>!<br><br> <code
             class='keybinding'>CTRL</code> + Táhnout: Vybrání oblasti.<br> <code
             class='keybinding'>SHIFT</code>: Podržením můžete umístit více budov
-            za sebout.<br> <code class='keybinding'>ALT</code>: Změnit orientaci
+            za sebou.<br> <code class='keybinding'>ALT</code>: Změnit orientaci
             umístěných pásů.<br>"
     createMarker:
         title: Nová značka
