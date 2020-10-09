@@ -249,10 +249,9 @@ export class HUDMassSelector extends BaseHUDPart {
                     if (
                         this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer)
                             .pressed
-                    ){
+                    ) {
                         entities = this.root.map.getLayersContentsMultipleXY(x, y);
-                    }
-                    else{
+                    } else {
                         entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
                     }
 
@@ -274,7 +273,6 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-
         if (this.currentSelectionStartWorld) {
             const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
@@ -310,9 +308,9 @@ export class HUDMassSelector extends BaseHUDPart {
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     let entities = [];
-                    if (isMultiLayerPressed){
+                    if (isMultiLayerPressed) {
                         entities = this.root.map.getLayersContentsMultipleXY(x, y);
-                    }else {
+                    } else {
                         entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
                     }
 
@@ -335,16 +333,16 @@ export class HUDMassSelector extends BaseHUDPart {
         //EXTREMELY SLOW. There must be a better way. (Possibly use a Array)wa
         this.selectedUids.forEach(uid => {
             const entity = this.root.entityMgr.findByUid(uid);
-            
+
             this.RenderSelectonPreviewTile(parameters, entity);
         });
     }
     /**
-     * 
-     * @param {DrawParameters} parameters 
-     * @param {Entity} entity 
+     *
+     * @param {DrawParameters} parameters
+     * @param {Entity} entity
      */
-    RenderSelectonPreviewTile(parameters, entity){
+    RenderSelectonPreviewTile(parameters, entity) {
         const staticComp = entity.components.StaticMapEntity;
 
         parameters.context.beginPath();
