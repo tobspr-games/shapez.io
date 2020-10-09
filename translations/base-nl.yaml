@@ -240,8 +240,8 @@ ingame:
             speed: Snelheid
             range: Bereik
             storage: Opslag
-            oneItemPerSecond: 1 voorwerp / s
-            itemsPerSecond: <x> voorwerpen / s
+            oneItemPerSecond: 1 voorwerp/s
+            itemsPerSecond: <x> voorwerpen/s
             itemsPerSecondDouble: (x2)
             tiles: <x> tegels
     levelCompleteNotification:
@@ -273,9 +273,9 @@ ingame:
                 description: Geeft alle vormen weer die in de HUB worden bezorgd.
         noShapesProduced: Er zijn nog geen vormen geproduceerd.
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes>/s
+            minute: <shapes>/m
+            hour: <shapes>/h
     settingsMenu:
         playtime: Speeltijd
         buildingsPlaced: Gebouwen
@@ -517,18 +517,18 @@ buildings:
         default:
             name: AND poort
             description: Zend een 1 uit als beide invoeren hetzelfde zijn. (Kan een vorm,
-                kleur of boolean (1 / 0) zijn)
+                kleur of boolean (1/0) zijn)
         not:
             name: NOT poort
             description: Zend een 1 uit als de invoer een 0 is.
         xor:
             name: XOR poort
             description: Zend een 1 uit als de invoeren niet hetzelfde zijn. (Kan een vorm,
-                kleur of boolean (1 / 0) zijn)
+                kleur of boolean (1/0) zijn)
         or:
             name: OR poort
             description: Zend een 1 uit als de invoeren wel of niet hetzelfde zijn, maar
-                niet uit zijn. (Kan een vorm, kleur of boolean (1 / 0) zijn)
+                niet uit zijn. (Kan een vorm, kleur of boolean (1/0) zijn)
     transistor:
         default:
             name: Transistor
@@ -545,7 +545,7 @@ buildings:
         default:
             name: Scherm
             description: Verbind een signaal met het scherm om de soort weer te geven. Kan
-                een vorm, kleur of boolean (1 / 0) zijn.
+                een vorm, kleur of boolean (1/0) zijn.
     reader:
         default:
             name: Lopende band lezer
@@ -560,7 +560,7 @@ buildings:
         default:
             name: Vergelijker
             description: Zend 1 uit als beiden invoeren gelijk zijn, kunnen vormen, kleuren
-                of booleans (1 / 0) zijn
+                of booleans (1/0) zijn
     virtual_processor:
         default:
             name: Virtuele Snijder
@@ -714,7 +714,7 @@ storyRewards:
             dimensie! Dit gebouw is handig in samenwerking met <strong>item
             filters</strong>.<br><br> Het constante signaal kan een
             <strong>vorm</strong>, <strong>kleur</strong> of
-            <strong>boolean</strong> (1 / 0) zijn.
+            <strong>boolean</strong> (1/0) zijn.
     reward_logic_gates:
         title: Logische poorten
         desc: Je hebt de <strong>logische poorten</strong> vrijgespeeld! Misschien word
@@ -745,7 +745,7 @@ storyRewards:
         title: Item Filter
         desc: Je hebt de <strong>Item Filter</strong> vrijgespeeld! Items worden naar
             rechts of naar boven gestuurd, afhankelijk van de invoer.<br><br> Er
-            kan ook een boolean (1 / 0) worden ingevoerd om de filter in en uit
+            kan ook een boolean (1/0) worden ingevoerd om de filter in en uit
             te schakelen.
     reward_demo_end:
         title: Einde van de Demo
@@ -799,7 +799,7 @@ settings:
             description: Wanneer dit aan staat wordt alle muziek uitgeschakeld.
         theme:
             title: Donkere modus
-            description: Kies de gewenste weergave (licht / donker).
+            description: Kies de gewenste weergave (licht/donker).
             themes:
                 dark: Donker
                 light: Licht
