@@ -1191,7 +1191,7 @@ demo:
 tips:
     - The hub will accept any input, not just the current shape!
     - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be mess!
+    - Don't build too close to the hub, or it will be a mess!
     - If stacking does not work, try switching the inputs.
     - You can toggle the belt planner direction by pressing <b>R</b>.
     - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
