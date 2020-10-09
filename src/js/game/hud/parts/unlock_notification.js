@@ -129,6 +129,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
         this.root.app.adProvider.showVideoAd().then(() => {
             this.close();
 
+            this.root.hud.signals.unlockNotificationFinished.dispatch();
+
             if (!this.root.app.settings.getAllSettings().offerHints) {
                 return;
             }
