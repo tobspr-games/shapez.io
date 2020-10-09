@@ -15,6 +15,7 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { Blueprint } from "../../blueprint";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -248,9 +249,10 @@ export class HUDMassSelector extends BaseHUDPart {
                     if (
                         this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer)
                             .pressed
-                    ) {
+                    ){
                         entities = this.root.map.getLayersContentsMultipleXY(x, y);
-                    } else {
+                    }
+                    else{
                         entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
                     }
 
@@ -272,6 +274,7 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
+
         if (this.currentSelectionStartWorld) {
             const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
@@ -307,13 +310,13 @@ export class HUDMassSelector extends BaseHUDPart {
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     let entities = [];
-                    if (isMultiLayerPressed) {
+                    if (isMultiLayerPressed){
                         entities = this.root.map.getLayersContentsMultipleXY(x, y);
-                    } else {
+                    }else {
                         entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
                     }
 
-                    for (let i = 0; i < Math.min(1, entities.length); ++i) {
+                    for (let i = 0; i < entities.length; ++i) {
                         let entity = entities[i];
                         if (entity && this.root.logic.canDeleteBuilding(entity)) {
                             // Prevent rendering the overlay twice
@@ -323,52 +326,31 @@ export class HUDMassSelector extends BaseHUDPart {
                             }
                             renderedUids.add(uid);
 
-                            const staticComp = entity.components.StaticMapEntity;
-
-                            const bounds = staticComp.getTileSpaceBounds();
-
-                            this.RenderSelectonPreviewTile(parameters, bounds, entity);
+                            this.RenderSelectonPreviewTile(parameters, entity);
                         }
                     }
                 }
             }
         }
-        const renderedPositions = new Set();
+        //EXTREMELY SLOW. There must be a better way. (Possibly use a Array)wa
         this.selectedUids.forEach(uid => {
             const entity = this.root.entityMgr.findByUid(uid);
-            const staticComp = entity.components.StaticMapEntity;
-            const bounds = staticComp.getTileSpaceBounds();
-            if (renderedPositions.has(bounds.toCompareableString())) {
-                return;
-            }
-            renderedPositions.add(bounds.toCompareableString());
-            this.RenderSelectonPreviewTile(parameters, bounds, entity);
+            
+            this.RenderSelectonPreviewTile(parameters, entity);
         });
     }
-
-    RenderSelectonPreviewTile(parameters, bounds, entity) {
-        const boundsBorder = 2;
+    /**
+     * 
+     * @param {DrawParameters} parameters 
+     * @param {Entity} entity 
+     */
+    RenderSelectonPreviewTile(parameters, entity){
+        const staticComp = entity.components.StaticMapEntity;
 
         parameters.context.beginPath();
 
-        //if (this.root.currentLayer === "wires" || entity.layer === "regular") {
-        parameters.context.fillStyle = THEME.map.selectionOverlay;
-        parameters.context.beginRoundedRect(
-            bounds.x * globalConfig.tileSize + boundsBorder,
-            bounds.y * globalConfig.tileSize + boundsBorder,
-            bounds.w * globalConfig.tileSize - 2 * boundsBorder,
-            bounds.h * globalConfig.tileSize - 2 * boundsBorder,
-            2
-        );
-        /*} else {
-            MapChunkView.drawSingleWiresOverviewTile({
-                context: parameters.context,
-                x: bounds.x * globalConfig.tileSize + boundsBorder,
-                y: bounds.y * globalConfig.tileSize + boundsBorder,
-                entity: entity,
-                tileSizePixels: globalConfig.tileSize * 1.01,
-            });
-        }*/
+        staticComp.drawSpriteOnBoundsClipped(parameters, staticComp.getBlueprintSprite(), 0);
+
         parameters.context.fill();
     }
 }
