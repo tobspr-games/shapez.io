@@ -868,11 +868,11 @@ settings:
                 laatst geplaatst hebt. Dit kan handig zijn wanneer je vaak
                 tussen verschillende soorten gebouwen wisselt.
         soundVolume:
-            title: Sound Volume
-            description: Set the volume for sound effects
+            title: Geluidsvolume
+            description: Stel het volume voor geluidseffecten in.
         musicVolume:
-            title: Music Volume
-            description: Set the volume for music
+            title: Muziekvolume
+            description: Stel het volume voor muziek in.
         lowQualityMapResources:
             title: Lage kwaliteit van resources
             description: Versimpeldde resources op de wereld wanneer ingezoomd om de
