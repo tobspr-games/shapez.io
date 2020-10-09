@@ -3,6 +3,7 @@ import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { Signal, STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
 import { Vector } from "../../../core/vector";
+import { safeModulo } from "../../../core/utils";
 import { enumMouseButton } from "../../camera";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { Entity } from "../../entity";
@@ -471,10 +472,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 .pressed
                 ? -1
                 : 1;
-            let newIndex = (index + direction) % availableVariants.length;
-            if (newIndex < 0) {
-                newIndex += availableVariants.length;
-            }
+            let newIndex = safeModulo(index + direction, availableVariants.length);
             const newVariant = availableVariants[newIndex];
             this.setVariant(newVariant);
         }
