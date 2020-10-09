@@ -164,11 +164,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
             ? -1
             : 1;
         let newIndex = this.lastSelectedIndex;
-        for (let i = 0; i < this.primaryBuildings.length; ++i, newIndex += direction) {
-            newIndex %= this.primaryBuildings.length;
-            if (newIndex < 0) {
-                newIndex += this.primaryBuildings.length;
-            }
+        for (let i = 0; i < this.primaryBuildings.length; ++i) {
+            newIndex = safeModulo(newIndex + direction, this.primaryBuildings.length);
             const metaBuilding = gMetaBuildingRegistry.findByClass(this.primaryBuildings[newIndex]);
             const handle = this.buildingHandles[metaBuilding.id];
             if (!handle.selected && handle.unlocked) {
