@@ -968,9 +968,9 @@ keybindings:
 about:
     title: O hře
     body: >-
-        Tato hra je open source a je vyvíjená <a
+        Tato hra je open source. Je vyvíjená <a
         href="https://github.com/tobspr" target="_blank">Tobiasem Springerem</a>
-        (česky neumí, ale je to fakt frajer :) ).<br><br>
+        (česky neumí, ale je fakt frajer :) ).<br><br>
 
         Pokud se chceš na hře podílet, podívej se na <a href="<githublink>" target="_blank">shapez.io na githubu</a>.<br><br>
 
