@@ -197,13 +197,12 @@ dialogs:
         title: Speicherstand umbenennen
         desc: Hier kannst du deinen Speicherstand umbenennen.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Tutorial verfügbar
+        desc: Für dieses Level ist ein Tutorial-Video verfügbar. Willst du es anschauen?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Tutorial verfügbar
+        desc: Für dieses Level ist ein Tutorial-Video verfügbar, allerdings nur auf
+            Englisch. Willst du es trotzdem anschauen?
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -311,30 +310,32 @@ ingame:
                 Fließbänder, um das Ziel schneller zu erreichen.<br><br>Tipp:
                 Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren
                 und nutze <strong>R</strong>, um sie zu rotieren."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Platziere nun einen <strong>Schneider</strong> um die Kreise
+                in zwei Hälften zu zerteilen.<br><br> Übrigens: Der Schneider
+                schneidet immer von <strong>oben nach unten</strong>, unabhängig
+                seiner Orientierung!"
+            2_2_place_trash: Der Schneider kann <strong>verstopfen</strong>!<br><br>Benutze
+                einen <strong>Mülleimer</strong> um den aktuell (!) nicht
+                benötigten Rest loszuwerden.
+            2_3_more_cutters: "Gut gemacht! Platziere noch <strong>2 mehr Schneider</strong>
+                um das ganze zu beschleunigen.<br><br> Übrigens: Benutze die
+                <strong>Tasten 0-9</strong> um Gebäude schneller auszuwählen!"
+            3_1_rectangles: "Lass uns ein paar Quadrate extrahieren! <strong>Baue 4
+                Extrahierer</strong> und verbinde sie mit deinem HUB.<br><br>
+                PS: Halte <strong>SHIFT</strong> während du ein Fließband
+                ziehst, um den Fließbandplaner zu aktivieren!"
+            21_1_place_quad_painter: Platzier den <strong>Vierfach-Färber</strong> und
+                organisier ein paar <strong>Kreise</strong>,
+                <strong>weiße</strong> und <strong>rote</strong> Farbe!
+            21_2_switch_to_wires: Wechsle in die Wires-Ebene indem du <strong>E</strong>
+                drückst!<br><br> Verbinde danach <strong>alle vier
+                Eingänge</strong> mit Signalkabeln!
+            21_3_place_button: Perfekt! Platziere jetzt einen <strong>Schalter</strong> und
+                verbinde ihn mit Signalkabeln.
+            21_4_press_button: "Drücke den Schalter damit er ein <strong>wahres
+                Signal</strong> ausgibt, und damit den Färber aktiviert.<br><br>
+                PS: Du musst nicht alle Eingänge verbinden! Probiere mal nur 2
+                aus."
     connectedMiners:
         one_miner: Ein Extrahierer
         n_miners: <amount> Extrahierer
@@ -690,14 +691,14 @@ storyRewards:
             (Überraschung! :D).
     reward_wires_painter_and_levers:
         title: Wires-Ebene & vierfacher Färber
-        desc: >-
-            Du hast soeben die <strong>Wires-Ebene</strong> freigeschaltet! Diese
+        desc: "Du hast soeben die <strong>Wires-Ebene</strong> freigeschaltet! Diese
             separate Ebene befindet sich unter deinen Gebäuden und gibt dir
             viele neue Möglichkeiten.<br><br> Für den Anfang bekommst du einen
             <strong>vierfachen Färber</strong>. Schließe die Eingänge, mit denen
             du die Quadranten färben möchtest, an ein Signalkabel auf der
             Wires-Ebene an!<br><br> Mit <strong>E</strong> wechselst du zwischen
-            den Ebenen. PS: <strong>Aktiviere Hinweise</strong> in den Einstellungen um das Tutorial anzuzeigen!
+            den Ebenen. <br><br>PS: <strong>Aktiviere Hinweise</strong> in den
+            Einstellungen um das Tutorial anzuzeigen!"
     reward_filter:
         title: Itemfilter
         desc: Du hast den <strong>Itemfilter</strong> freigeschaltet! Items, die dem
