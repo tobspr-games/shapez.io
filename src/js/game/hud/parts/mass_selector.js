@@ -25,9 +25,6 @@ export class HUDMassSelector extends BaseHUDPart {
         /** @type {Set<Entity>} */
         this.selectedEntities = new Set();
 
-        /** @type {number} */
-        this.selectedUids = 42;
-
         this.root.signals.entityQueuedForDestroy.add(this.onEntityDestroyed, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.clearSelection, this);
 

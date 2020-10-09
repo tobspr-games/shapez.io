@@ -28,6 +28,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     initialize() {
+        // @ts-ignore
         this.root.hud.signals.buildingsSelectedForCopy.add(this.createBlueprintFromBuildings, this);
 
         /** @type {TypedTrackedState<Blueprint?>} */
