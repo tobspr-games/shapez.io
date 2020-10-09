@@ -200,8 +200,8 @@ dialogs:
     editSignal:
         title: Stel het signaal in.
         descItems: "Kies een ingesteld item:"
-        descShortKey: ... of voer de <strong>short key</strong> van een vorm (Die je
-            <link>hier</link> kunt vinden) in.
+        descShortKey: ... of voer de <strong>hotkey</strong> in van een vorm (Die je
+            <link>hier</link> kunt vinden).
     renameSavegame:
         title: Hernoem opgeslagen spel
         desc: Geef je opgeslagen spel een nieuwe naam.
@@ -315,7 +315,7 @@ ingame:
                 nodige afval vanaf te geraken.
             2_3_more_cutters: "Goed gedaan! Plaats nu <strong>2 extra knippers</strong> om dit traag
                 process te versnellen! <br><br> PS: Gebruik de <strong>0-9
-                hotkeys</strong> om gebouwen sneller te selecteren."
+                sneltoetsen</strong> om gebouwen sneller te selecteren."
             3_1_rectangles: "Laten we nu rechthoeken ontginnen! <strong>Bouw 4 
                 ontginners</strong> en verbind ze met de lever.<br><br> PS:
                 Houd <strong>SHIFT</strong> Ingedrukt terwijl je lopende banden plaats
