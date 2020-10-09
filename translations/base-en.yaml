@@ -1209,7 +1209,6 @@ tips:
     - You don't need to divide up items evenly for full efficiency.
     - Holding <b>SHIFT</b> will activate the belt planner, letting you place long lines of belts easily.
     - Cutters always cut vertically, regardless of their orientation.
-    - To get white, mix all three colors.
     - The storage buffer prioritises the left output.
     - Invest time to build repeatable designs - it's worth it!
     - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
@@ -1231,8 +1230,9 @@ tips:
     - Make a separate blueprint factory. They're important for modules.
     - Have a closer look at the color mixer, and your questions will be answered.
     - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way for later projects.
+    - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
+    - Mix all three primary colors to make white!
     - You have an infinite map. Don't cramp your factory, expand!
     - Also try Factorio! It's my favorite game.
     - The quad cutter cuts clockwise, starting from the top right.
