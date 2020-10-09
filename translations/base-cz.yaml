@@ -148,7 +148,7 @@ dialogs:
             uloženou hru nebo si pořiďte plnou verzi!
     updateSummary:
         title: Nová aktualizace!
-        desc: "Tady jsou změny od posledního hraní:"
+        desc: "Zde jsou změny od doby, kdy jste naposledy hráli:"
     upgradesIntroduction:
         title: Odemknout vylepšení
         desc: Všechny tvary, které vytvoříte, lze použít k odemčení vylepšení -
@@ -197,13 +197,13 @@ dialogs:
         title: Přejmenovat uloženou hru
         desc: Zde můžete přejmenovat svoji uloženou hru.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Dostupný tutoriál
+        desc: Pro tuto úroveň je k dispozici tutoriál! Chtěli byste se na
+            něj podívat?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Dostupný tutoriál
+        desc: Pro tuto úroveň je k dispozici tutoriál, ale je dostupný
+            pouze v angličtině. Chtěli byste se na něj podívat?
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
