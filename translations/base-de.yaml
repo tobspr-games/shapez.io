@@ -5,8 +5,7 @@ steamPage:
     intro: >-
         Du magst Automatisierungsspiele? Dann bist du hier genau richtig!
 
-        shapez.io ist ein entspanntes Spiel, in dem du Fabriken zur
-        automatisierten Produktion von geometrischen Formen bauen musst.
+        shapez.io ist ein entspanntes Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
 
         Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten. Das ist noch nicht alles, denn du musst exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
 
@@ -197,6 +196,14 @@ dialogs:
     renameSavegame:
         title: Speicherstand umbenennen
         desc: Hier kannst du deinen Speicherstand umbenennen.
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -304,6 +311,30 @@ ingame:
                 Fließbänder, um das Ziel schneller zu erreichen.<br><br>Tipp:
                 Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren
                 und nutze <strong>R</strong>, um sie zu rotieren."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     connectedMiners:
         one_miner: Ein Extrahierer
         n_miners: <amount> Extrahierer
@@ -588,8 +619,9 @@ storyRewards:
             <strong>gestapelt</strong>.
     reward_balancer:
         title: Verteiler
-        desc: Der multifunktionale <strong>Verteiler</strong> wurde freigeschaltet! Er kann
-            benutzt werden, um größere Fabriken zu bauen, indem Fließbänder <strong>aufgeteilt oder zusammengelegt</strong> werden!
+        desc: Der multifunktionale <strong>Verteiler</strong> wurde freigeschaltet! Er
+            kann benutzt werden, um größere Fabriken zu bauen, indem Fließbänder
+            <strong>aufgeteilt oder zusammengelegt</strong> werden!
     reward_tunnel:
         title: Tunnel
         desc: Der <strong>Tunnel</strong> wurde freigeschaltet! Du kannst Items nun
@@ -658,13 +690,14 @@ storyRewards:
             (Überraschung! :D).
     reward_wires_painter_and_levers:
         title: Wires-Ebene & vierfacher Färber
-        desc: Du hast soeben die <strong>Wires-Ebene</strong> freigeschaltet! Diese
+        desc: >-
+            Du hast soeben die <strong>Wires-Ebene</strong> freigeschaltet! Diese
             separate Ebene befindet sich unter deinen Gebäuden und gibt dir
             viele neue Möglichkeiten.<br><br> Für den Anfang bekommst du einen
             <strong>vierfachen Färber</strong>. Schließe die Eingänge, mit denen
             du die Quadranten färben möchtest, an ein Signalkabel auf der
             Wires-Ebene an!<br><br> Mit <strong>E</strong> wechselst du zwischen
-            den Ebenen.
+            den Ebenen. PS: <strong>Aktiviere Hinweise</strong> in den Einstellungen um das Tutorial anzuzeigen!
     reward_filter:
         title: Itemfilter
         desc: Du hast den <strong>Itemfilter</strong> freigeschaltet! Items, die dem
@@ -687,12 +720,13 @@ storyRewards:
             <strong>Wahrheitswerte</strong> (1 oder 0) zur Verfügung stellen.
     reward_logic_gates:
         title: Logikgatter
-        desc: >-
-            Du hast nun eine Reihe an <strong>Logikgattern</strong> freigeschaltet! Das muss dich jetzt nicht
-            nervös machen, die Funktionsweise ist simpel und ziemlich cool.<br><br>
-            Mit Logikgattern kannst du UND-, ODER-, XODER- und NICHT-Operationen ausführen.<br><br>
-            Als Sahnehäubchen obendrauf stelle ich dir noch einen <strong>Transistor</strong> zur Verfügung.
-            Houston, wir sind Turing-vollständig!
+        desc: Du hast nun eine Reihe an <strong>Logikgattern</strong> freigeschaltet!
+            Das muss dich jetzt nicht nervös machen, die Funktionsweise ist
+            simpel und ziemlich cool.<br><br> Mit Logikgattern kannst du UND-,
+            ODER-, XODER- und NICHT-Operationen ausführen.<br><br> Als
+            Sahnehäubchen obendrauf stelle ich dir noch einen
+            <strong>Transistor</strong> zur Verfügung. Houston, wir sind
+            Turing-vollständig!
     reward_virtual_processing:
         title: Virtuelle Verarbeitung
         desc: "Du hast gerade eine Menge neue Gebäude freigeschaltet! Mit ihnen kannst

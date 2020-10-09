@@ -181,6 +181,14 @@ dialogs:
     renameSavegame:
         title: 세이브 파일 이름 설정
         desc: 여기에서 세이브 파일의 이름을 바꿀 수 있습니다.
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -266,12 +274,35 @@ ingame:
         hints:
             1_1_extractor: <strong>원형 도형</strong>을 추출하기 위해 그 위에 <strong>추출기</strong>를 선택한 뒤
                 배치하여 추출하세요!
-            1_2_conveyor: "이제 <strong>컨베이어 벨트</strong>를 추출기와 허브를 서로 연결하세요!<br><br>
-                팁: 벨트를 마우스로 <strong>클릭한 뒤 드래그</strong>하세요!"
-            1_3_expand: "이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와
-                벨트를 만들어 지정된 목표를 빨리 달성하세요.<br><br>
-                팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게
-                배치할 수 있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다."
+            1_2_conveyor: "이제 <strong>컨베이어 벨트</strong>를 추출기와 허브를 서로 연결하세요!<br><br> 팁: 벨트를
+                마우스로 <strong>클릭한 뒤 드래그</strong>하세요!"
+            1_3_expand: "이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와 벨트를 만들어 지정된 목표를 빨리
+                달성하세요.<br><br> 팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게 배치할 수
+                있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     colors:
         red: 빨간색
         green: 초록색
@@ -509,12 +540,10 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 절단기
-        desc: <strong>절단기</strong>가 잠금 해제되었습니다! 절단기는 들어오는 도형이
-            어떤 모양을 하고 있던 수직으로 잘라
-            <strong>반으로 나눕니다</strong>!<br><br> 쓰지 않는 도형은 쓰레기로 처리하세요,
-            그렇지 않으면 <strong>작동을 멈출 것입니다</strong>! 이러한 목적을 위해
-            <strong>휴지통</strong>도 함께 지급되었습니다.
-            휴지통에 들어간 것은 모두 파괴됩니다!
+        desc: <strong>절단기</strong>가 잠금 해제되었습니다! 절단기는 들어오는 도형이 어떤 모양을 하고 있던 수직으로 잘라
+            <strong>반으로 나눕니다</strong>!<br><br> 쓰지 않는 도형은 쓰레기로 처리하세요, 그렇지 않으면
+            <strong>작동을 멈출 것입니다</strong>! 이러한 목적을 위해 <strong>휴지통</strong>도 함께
+            지급되었습니다. 휴지통에 들어간 것은 모두 파괴됩니다!
     reward_rotater:
         title: 회전기
         desc: <strong>회전기</strong>가 잠금 해제되었습니다! 회전기는 들어오는 도형을 시계 방향으로 90도 회전시켜줍니다.
@@ -579,9 +608,8 @@ storyRewards:
             기능을 사용할 수 있습니다! (방금 당신이 만든 것입니다.)
     no_reward:
         title: 다음 레벨
-        desc: "이번 레벨의 보상은 없네요. 대신 다음 레벨에서 줄겁니다!<br><br> 추신:
-            기존 공장을 파괴하지는 마세요. 후에 <strong>업그레이드 잠금 해제</strong>되면
-            <strong>기존의 모든</strong> 도형이 필요합니다!"
+        desc: "이번 레벨의 보상은 없네요. 대신 다음 레벨에서 줄겁니다!<br><br> 추신: 기존 공장을 파괴하지는 마세요. 후에
+            <strong>업그레이드 잠금 해제</strong>되면 <strong>기존의 모든</strong> 도형이 필요합니다!"
     no_reward_freeplay:
         title: 다음 레벨
         desc: 축하드립니다!
@@ -624,11 +652,13 @@ storyRewards:
             - 평소처럼 게임을 진행합니다.<br><br> 어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
     reward_wires_painter_and_levers:
         title: 전선과 4단 색칠기
-        desc: "<strong>전선 레이어</strong>가 잠금 해제되었습니다! 전선 레이어는
-            일반 레이어 위에 존재하는 별도의 레이어로, 이를 통한 다양하고 새로운
-            메커니즘을 소개하겠습니다!<br><br> 우선 <strong>4단 색칠기</strong>가
-            잠금 해제되었습니다. 전선 레이어에서 색칠하고 싶은 슬롯에 전선을 연결하세요!
-            전선 레이어로 전환하려면 <strong>E</strong> 키를 누르세요."
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: 아이템 선별기
         desc: <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽
@@ -772,16 +802,14 @@ settings:
             description: 커서를 화면 가장자리로 옮기면 스크롤되어 지도를 이동할 수 있습니다. 스크롤 속도는 이동 속도 설정에 따릅니다.
         zoomToCursor:
             title: 커서를 기준으로 줌
-            description: 활성화할 경우 화면 줌 인 아웃이 마우스 커서가 있는 지점을 기준이 되며,
-                아닐 경우 화면 중앙이 기준이 됩니다.
+            description: 활성화할 경우 화면 줌 인 아웃이 마우스 커서가 있는 지점을 기준이 되며, 아닐 경우 화면 중앙이 기준이 됩니다.
         mapResourcesScale:
             title: 지도 자원 크기
             description: 지도를 축소할 때 나타나는 도형의 크기를 제어합니다.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 조작법
-    hint: "팁: CTRL, SHIFT, ALT를 적절히 사용하세요!
-        건물을 배치할 때 유용합니다."
+    hint: "팁: CTRL, SHIFT, ALT를 적절히 사용하세요! 건물을 배치할 때 유용합니다."
     resetKeybindings: 초기화
     categoryLabels:
         general: 애플리케이션
@@ -893,8 +921,7 @@ tips:
     - 최대 레벨에서, 한 줄의 벨트를 채우기 위해 다섯 개의 추출기가 필요합니다.
     - 터널을 잊지 마세요!
     - 완벽한 효율성을 위해 굳이 아이템을 균등하게 배분할 필요는 없습니다.
-    - <b>SHIFT</b>키를 누르면 벨트 계획기가 활성화되어
-      긴 길이의 벨트 한 줄을 쉽게 배치할 수 있습니다.
+    - <b>SHIFT</b>키를 누르면 벨트 계획기가 활성화되어 긴 길이의 벨트 한 줄을 쉽게 배치할 수 있습니다.
     - 절단기는 들어오는 도형과 배치된 절단기의 방향에 관계 없이, 언제나 수직으로 자릅니다.
     - 흰색은 세 가지의 색소를 혼합해야 합니다.
     - 저장고의 양쪽 출력 중 왼쪽 출력이 가장 우선됩니다.
