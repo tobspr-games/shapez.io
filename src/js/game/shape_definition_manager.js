@@ -185,7 +185,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     shapeActionStack(lowerDefinition, upperDefinition) {
-        const key = "stack:" + lowerDefinition.getHash() + ":" + upperDefinition.getHash();
+        const key = "stack:" + lowerDefinition.getHash() + "+" + upperDefinition.getHash();
         if (this.operationCache[key]) {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
@@ -202,7 +202,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     shapeActionPaintWith(definition, color) {
-        const key = "paint:" + definition.getHash() + ":" + color;
+        const key = "paint:" + definition.getHash() + "+" + color;
         if (this.operationCache[key]) {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
@@ -219,7 +219,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     shapeActionPaintWith4Colors(definition, colors) {
-        const key = "paint4:" + definition.getHash() + ":" + colors.join(",");
+        const key = "paint4:" + definition.getHash() + "+" + colors.join(",");
         if (this.operationCache[key]) {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
