@@ -374,7 +374,7 @@ ingame:
                 desc: Vyvíjím to ve svém volném čase!
 shopUpgrades:
     belt:
-        name: Pásy, distribuce & tunely
+        name: Pásy, distribuce a tunely
         description: Rychlost x<currentMult> → x<newMult>
     miner:
         name: Extrakce
