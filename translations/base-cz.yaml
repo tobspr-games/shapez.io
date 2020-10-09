@@ -1,62 +1,99 @@
+#
+# PŘEKLADY HRY
+#
+#  Přispívání:
+#
+#    Pokud chceš přispět, prosím udělej pull request na tento repozitář
+#    a já se na to podívám.
+#
+#  Zástupné symboly:
+#
+#    *Nepřekládej* zástupné symboly! Zástupné symboly mají speciální syntaxi jako
+#    `Hotkey: <key>`. Jsou ohraničeny pomocí špičatých závorek. Správný překlad
+#    tohoto v Němčině by bylo například: `Taste: <key>` (všimni si jak zástupný znak
+#    zůstal '<key>' a nebyl přeložen!)
+#
+#  Pravidla překladu:
+#    - Udržuj stejné formátování a pořadí jako ve zdrojové angličtině.
+#    - Používej druhou osobu množného čísla (vykání).  
+#
+#
+
+---
 steamPage:
-    shortText: shapez.io je hra o stavbě továren pro automatizaci výroby a
-        kombinování čím dál složitějších tvarů na nekonečné mapě.
+    # Toto je krátký text zobrazený na steam stránce
+    shortText: shapez.io je hra o stavbě továren na automatizaci výroby a kombinování čím dál složitějších tvarů na nekonečné mapě.
+    
+    # Toto je text zobrazený nad odkazem na Discord
     discordLinkShort: Oficiální Discord
+    
     intro: >-
-        Shapez.io je relaxační hra, ve které musíte stavět továrny pro automatizaci výroby geometrických tvarů.
+        Máte rádi automatizaci? Tak to jste na správném místě!
+    
+        shapez.io je relaxační hra, ve které musíte stavět továrny na automatizaci výroby geometrických tvarů. Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
 
-        Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
+        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování! Zatímco na začátku tvary pouze zpracováváte, později je musíte obarvit - těžbou a mícháním barev!
 
-        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování!
+        Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale také můžete nejdříve hrát demo verzi na shapez.io a až potom se rozhodnout!
 
-        Zatímco tvary zpracováváte pouze na začátku, musíte je později obarvit - k tomu musíte těžit a míchat barvy!
-
-        Koupením hry na platformě Steam vám dá přístup k plné verzi hry, ale také můžete hrát demo verzi na shapez.io a potom se můžete rozhodnou jestli hru koupíte!
     title_advantages: Výhody samostatné verze hry
     advantages:
-        - <b>12 Nových úrovní</b> celkem 26 úrovní
+        - <b>12 Nových úrovní</b> z celkových 26 úrovní
         - <b>18 Nových budov</b> pro plně automatizovanou továrnu!
-        - <b>20 vylepšení</b> pro mnoho hodin zábavy!
-        - <b>Wires Update</b> pro zcela nové rozměry!
-        - <b>Dark Mode</b>!
+        - <b>20 Řad vylepšení</b> pro mnoho hodin zábavy!
+        - <b>Wires Update</b> pro zcela novou dimenzi!
+        - <b>Tmavý mód</b>!
         - Neomezený počet uložených her
         - Neomezené značky
         - Podpořte mě! ❤️
-    title_future: Plánovaný kontent
+    
+    title_future: Plánovaný obsah
     planned:
         - Blueprintová knihovna
         - Steam Achievements
-        - Puzzle Mód
+        - Puzzle mód
         - Minimapa
         - Módy
-        - Sandbox Mód
-        - ... a o hodně víc!
+        - Sandbox mód
+        - ... a mnohem víc!
+        
     title_open_source: Tato hra je open source!
+    text_open_source: >-
+        Kdokoli může přispět, jsem aktivně zapojený do komunity, pokouším se zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu všude, kde je to možné.
+        
+        Nezapomeňte se podívat na můj trello board pro kompletní plán!    
+    
     title_links: Odkazy
+    
     links:
         discord: Oficiální Discord
         roadmap: Roadmap
         subreddit: Subreddit
-        source_code: Source code (GitHub)
+        source_code: Zdrojový kód (GitHub)
         translate: Pomozte přeložit hru!
-    text_open_source: >-
-        Kdokoli může přispět, jsem aktivně zapojený do komunity,
-         pokouším se zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu všude,
-         kde je to možné.
-
-        Nezapomeňte se podívat na můj trello board, kde najdete kompletní plán!
+        
 global:
-    loading: Načítám
+    loading: Načítání
     error: Chyba
+    
+    # Jak jsou zobrazena velká čísla, např. "10 000"
     thousandsDivider: " "
-    decimalSeparator: .
+    
+    # Jaký symbol použít pro oddělené celých čísel od desetinných, např: "0,4"
+    decimalSeparator: ","
+    
+    # Přípona pro velká čísla, např: 1.3k, 400.2M, atd.
     suffix:
         thousands: k
         millions: M
         billions: B
         trillions: T
+
+    # Zobrazeno pro nekonečně velká čísla
     infinite: nekonečno
+    
     time:
+        # Použito pro formátování minulých časů
         oneSecondAgo: před sekundou
         xSecondsAgo: před <x> sekundami
         oneMinuteAgo: před minutou
@@ -65,10 +102,14 @@ global:
         xHoursAgo: před <x> hodinami
         oneDayAgo: včera
         xDaysAgo: před <x> dny
+        
+        # Krátké formáty pro časy, např. '5h 23m'
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
+        
         xMinutes: <x> minut
+        
     keys:
         tab: TAB
         control: CTRL
@@ -76,26 +117,33 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
+        
 demoBanners:
+    # Toto je "reklama" zobrazená v hlavním menu a na dalších místech
     title: Demo verze
-    intro: Získejte plnou verzi pro odemknutí všech funkcí!
+    intro: >-
+        Získejte plnou verzi pro odemknutí všech funkcí a obsahu!
+    
 mainMenu:
     play: Hrát
-    changelog: Změny
+    continue: Pokračovat
+    newGame: Nová hra
+    changelog: Seznam změn
+    subreddit: Reddit
     importSavegame: Importovat
     openSourceHint: Tato hra je open source!
     discordLink: Oficiální Discord Server
     helpTranslate: Pomozte přeložit hru!
-    browserWarning: Hrajete v nepodporovaném prohlížeči, je možné že hra poběží
-        pomalu! Pořiďte si samostatnou verzi nebo vyzkoušejte prohlížeč Chrome
-        pro plnohodnotný zážitek.
+    madeBy: Vytvořil <author-link>
+    
+    # Toto je zobrazeno při použití Firefox a dalších nepodporovaných prohlížečů
+    browserWarning: >-
+        Promiňte, ale víme, že hra poběží pomalu ve vašem prohlížeči! Pořiďte si samostatnou verzi nebo si stíhněte Google Chrome pro plnohodnotný zážitek.
+        
     savegameLevel: Úroveň <x>
     savegameLevelUnknown: Neznámá úroveň
-    continue: Pokračovat
-    newGame: Nová hra
-    madeBy: Vytvořil <author-link>
-    subreddit: Reddit
     savegameUnnamed: Nepojmenovaný
+    
 dialogs:
     buttons:
         ok: OK
@@ -109,95 +157,121 @@ dialogs:
         viewUpdate: Zobrazit aktualizaci
         showUpgrades: Zobrazit vylepšení
         showKeybindings: Zobrazit klávesové zkratky
+        
     importSavegameError:
         title: Chyba Importu
-        text: "Nepovedlo se importovat vaši uloženou hru:"
+        text: >-
+            Nepovedlo se importovat vaši uloženou hru:
+            
     importSavegameSuccess:
         title: Uložená hra importována
-        text: Vaše uložená hra byla úspěšně importována.
+        text: >-
+            Vaše uložená hra byla úspěšně importována.
+            
     gameLoadFailure:
         title: Uložená hra je poškozená
-        text: "Nepovedlo se načíst vaši uloženou hru:"
+        text: >-
+            Nepovedlo se načíst vaši uloženou hru:
+            
     confirmSavegameDelete:
         title: Potvrdit smazání
-        text: Jste si jisti, že chcete smazat tuto uloženou hru?<br><br>
-            '<savegameName>' s úrovní <savegameLevel><br><br> Tato akce je
-            nevratná!
+        text: >-
+            Jste si jisti, že chcete smazat tuto uloženou hru?<br><br>
+            '<savegameName>' s úrovní <savegameLevel><br><br>
+            Tato akce je nevratná!
+            
     savegameDeletionError:
         title: Chyba mazání
-        text: "Nepovedlo se smazat vaši uloženou hru:"
+        text: >-
+            Nepovedlo se smazat vaši uloženou hru:
+        
     restartRequired:
         title: Vyžadován restart
-        text: Pro aplikování nastavení musíte restartovat hru.
+        text: >-
+            Pro aplikování nastavení musíte restartovat hru.
+            
     editKeybinding:
         title: Změna klávesové zkratky
-        desc: Zmáčkněte klávesu nebo tlačítko na myši pro přiřazení nebo Escape pro
-            zrušení.
+        desc: Zmáčkněte klávesu nebo tlačítko myši pro přiřazení nebo Escape pro zrušení.
+        
     resetKeybindingsConfirmation:
         title: Reset klávesových zkratek
-        desc: Opravdu chcete vrátit klávesové zkratky zpět do původního nastavení?
+        desc: Toto vrátí všechny klávesové zkratky do původního nastavení. Prosím potvrďte.
+        
     keybindingsResetOk:
         title: Reset klávesových zkratek
-        desc: Vaše klávesové zkratky byly resetovány do původního nastavení!
+        desc: Všechny klávesové zkratky byly vráceny do původního nastavení!
+        
     featureRestriction:
         title: Demo verze
-        desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Pořiďte si
-            plnou verzi pro lepší zážitek!
+        desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Zvažte pořízení plné verze pro kompletní zážitek!
+            
     oneSavegameLimit:
         title: Omezené ukládání
-        desc: Ve zkušební verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající
-            uloženou hru nebo si pořiďte plnou verzi!
+        desc: Ve demo verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající uloženou hru nebo si pořiďte plnou verzi!
+            
     updateSummary:
         title: Nová aktualizace!
-        desc: "Tady jsou změny od posledně:"
+        desc: >-
+            Tady jsou změny od posledního hraní:
+        
     upgradesIntroduction:
         title: Odemknout vylepšení
-        desc: Všechny tvary, které vytvoříte, lze použít k odemčení vylepšení -
-            <strong>Neničte své staré továrny!</strong> Karta vylepšení se
-            nachází v pravém horním rohu obrazovky.
+        desc: >-
+            Všechny tvary, které vytvoříte, lze použít k odemčení vylepšení - <strong>Neničte své staré továrny!</strong>
+            Kartu vylepšení lze najít v pravém horním rohu obrazovky.
+            
     massDeleteConfirm:
         title: Potvrdit smazání
-        desc: Odstraňujete spoustu budov (přesněji <count>)! Opravdu je chcete smazat?
-    blueprintsNotUnlocked:
-        title: Zatím neodemčeno
-        desc: Plány ještě nebyly odemčeny! Chcete-li je odemknout, dokončete úroveň 12.
-    keybindingsIntroduction:
-        title: Užitečné klávesové zkratky
-        desc: "Hra má spoustu klávesových zkratek, které usnadňují stavbu velkých
-            továren. Zde jsou některé, ale nezapomeňte se podívat i na
-            <strong>ostatní klávesové zkratky</strong>!<br><br> <code
-            class='keybinding'>CTRL</code> + Táhnout: Vybrání oblasti.<br> <code
-            class='keybinding'>SHIFT</code>: Podržením můžete umístit více budov
-            za sebout.<br> <code class='keybinding'>ALT</code>: Změnit orientaci
-            umístěných pásů.<br>"
-    createMarker:
-        title: Nová značka
-        desc: Použijte smysluplný název, můžete také zahrnout <strong>krátký
-            klíč</strong> tvaru (který můžete vygenerovat <link>zde</link>)
-        titleEdit: Upravit značku
-    markerDemoLimit:
-        desc: V ukázce můžete vytvořit pouze dvě značky. Získejte plnou verzi pro
-            neomezený počet značek!
+        desc: >-
+            Odstraňujete spoustu budov (přesněji <count>)! Opravdu je chcete smazat?
+    
     massCutConfirm:
         title: Potvrdit vyjmutí
-        desc: Chceš vyjmout spoustu budov (přesněji řečeno <count>)! Vážně to chceš
-            udělat?
-    exportScreenshotWarning:
-        title: Exportuj snímek obrazovky
-        desc: Zažádal jsi o exportování své základny jako obrázek. Měj prosím na paměti,
-            že to může zejména u větších základen dlouho trvat, nebo dokonce
-            shodit hru!
+        desc: >-
+            Vyjímáte spoustu budov (přesněji <count>)! Opravdu je chcete vyjmout?
+    
     massCutInsufficientConfirm:
         title: Potvrdit vyjmutí
-        desc: Nemůžeš si dovolit vložení této oblasti! Skutečně ji chceš vyjmout?
+        desc: >-
+            Nemůžete si dovolit vložení této oblasti! Opravdu ji chcete vyjmout?
+        
+    blueprintsNotUnlocked:
+        title: Zatím neodemčeno
+        desc: >-
+            Dokončete úroveň 12 pro odemčení Plánů!
+            
+    keybindingsIntroduction:
+        title: Užitečné klávesové zkratky
+        desc: >-
+            Tato hra má spoustu klávesových zkratek, které usnadňují stavbu velkých továren.
+            Zde jsou některé, ale nezapomeňte se podívat i na <strong>ostatní klávesové zkratky</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Táhnout: Vybrání oblasti.<br>
+            <code class='keybinding'>SHIFT</code>: Podržením můžete umístit více budov za sebout.<br>
+            <code class='keybinding'>ALT</code>: Změnit orientaci umístěných pásů.<br>
+            
+    createMarker:
+        title: Nová značka
+        titleEdit: Upravit značku
+        desc: Použijte smysluplný název, můžete také zahrnout <strong>krátký klíč</strong> tvaru (Ten můžete vygenerovat <link>zde</link>)
+
     editSignal:
         title: Nastavte signál
-        descItems: "Vyberte předdefinovanou položku:"
-        descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (který můžete
-            vygenerovat <link>zde</link>)
+        descItems: >-
+            Vyberte předdefinovanou položku:
+        descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (Ten můžete vygenerovat <link>zde</link>)
+        
+    markerDemoLimit:
+        desc: V demo verzi můžete vytvořit pouze dvě značky. Pořiďte si plnou verzi pro neomezený počet značek!
+    
+    exportScreenshotWarning:
+        title: Exportuj snímek obrazovky
+        desc: Chcete exportovat svou základnu jako snímek obrazovky. Mějte prosím na paměti, že to bude docela pomalé u větších základen a může dokonce dojít k pádu hry!
+    
     renameSavegame:
         title: Přejmenovat uloženou hru
-        desc: Zde můžeš přejmenovat svoji uloženou hru.
+        desc: Zde můžete přejmenovat svoji uloženou hru.
+        
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
