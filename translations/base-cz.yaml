@@ -298,30 +298,30 @@ ingame:
                 a pásy, abyste dosáhli cíle rychleji.<br><br>Tip: Chcete-li
                 umístit více extraktorů, podržte <strong>SHIFT</strong>. Pomocí
                 <strong>R</strong> je můžete otočit."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Teď umístěte <strong>pilu</strong> k rozřezání kruhového tvaru na dvě
+                poloviny!<br><br> PS: Pila řeže tvary vždy <strong>svisle na
+                poloviny</strong> bez ohledu na její orientaci."
+            2_2_place_trash: Pila se může <strong>zaseknout a zastavit vaši produkci</strong>!<br><br> Použijte
+                <strong>koš</strong> ke smazání (!) nepotřebných
+                částí tvarů.
+            2_3_more_cutters: "Dobrá práce! Teď postavte <strong>více pil</strong> pro zrychlení
+                tohoto pomalého procesu!<br><br> PS: Použijte <strong>0-9
+                na klávesnici</strong> pro rychlejší přístup k budovám!"
+            3_1_rectangles: "Teď vytěžte nějaké obdelníkové tvary! <strong>Postavte 4
+                extraktory</strong> a připojte je k HUBu.<br><br> PS:
+                Podržením klávesy <strong>SHIFT</strong> a tažením pásu aktivujete
+                plánovač pásů!"
+            21_1_place_quad_painter: Postavte <strong>čtyřnásobný barvič</strong> a získejte nějaké
+                <strong>kruhové tvary</strong>, <strong>bílou</strong> a
+                <strong>červenou</strong> barvu!
+            21_2_switch_to_wires: Změňte vrstvy na vrstvu kabelů stisknutím klávesy
+                <strong>E</strong>!<br><br> Pak <strong>připojte všechny čtyři
+                vstupy</strong> barviče s pomocí kabelů!
+            21_3_place_button: Úžasné! Teď postavte <strong>přepínač</strong> a připojte ho
+                pomocí kabelů!
+            21_4_press_button: "Stiskněte přepínač pro změnu <strong>vysílaného logického
+                signálu</strong> a tím aktivujte barvič.<br><br> PS: Nemusíte
+                připojit veškeré vstupy! Zkuste spojit pouze dva."
     colors:
         red: Červená
         green: Zelená
@@ -335,7 +335,7 @@ ingame:
     shapeViewer:
         title: Vrstvy
         empty: Prázdné
-        copyKey: Copy Key
+        copyKey: Zkopírovat klíč
     connectedMiners:
         one_miner: 1 Extraktor
         n_miners: <amount> Extraktorů
@@ -662,9 +662,9 @@ storyRewards:
         desc: Gratuluji! Mimochodem, více obsahu najdete v plné verzi!
     reward_balancer:
         title: Vyvažovač
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Multifunkční <strong>vyvažovač</strong> byl odemknut - Může
+            být použit ke zvětšení vašich továren <strong>rozdělováním a spojováním
+            předmětů</strong> na několik pásu!
     reward_merger:
         title: Kompaktní spojovač
         desc: Právě jste odemkli <strong>spojovací</strong> variantu
@@ -711,13 +711,13 @@ storyRewards:
             na tvou volbu, nezapomeň si svou hru užít!
     reward_wires_painter_and_levers:
         title: Kabely a čtyřnásobný barvič
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Právě jste odemkli <strong>vrstvu kabelů</strong>: Je to samostatná
+            vrstva navíc oproti běžné vrstvě a představuje spoustu nových
+            možností!<br><br> Do začátku jsem zpřístupnil <strong>čtyřnásobný
+            barvič</strong> - Připojte vstupy, které byste chtěli obarvit
+            na vrstvě kabelů!<br><br> Pro přepnutí mezi vrstvami stiskněte klávesu
+            <strong>E</strong>. <br><br> PS: <strong>Aktivujte nápovědy</strong> v
+            nastavení pro spuštění tutoriálu o kabelech!"
     reward_filter:
         title: Filtr předmětů
         desc: Právě jste odemkli <strong>filtr předmětů</strong>! Nasměruje předměty buď
@@ -787,7 +787,7 @@ settings:
         alwaysMultiplace:
             title: Několikanásobné pokládání
             description: Pokud bude zapnuté, zůstanou budovy vybrané i po postavení do té
-                doby než je zrušíte. Má to stejný efekt jako držení klávesy
+                doby, než je zrušíte. Má to stejný efekt jako držení klávesy
                 SHIFT.
         offerHints:
             title: Tipy & Nápovědy
@@ -884,13 +884,13 @@ settings:
             description: Umožnuje posouvání po mapě, pokud myší přejedete na okraj
                 obrazovky. Rychlost žáleží na nastavení rychlosti pohybu.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Přiblížení ke kurzoru
+            description: Při zapnutí dojde k přibližování ve směru polohy
+                kurzoru, jinak ve středu obrazovky.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Velikost zdrojů na mapě
+            description: Určuje velikost ikon tvarů na náhledu mapy (při
+                oddálení).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Klávesové zkratky
