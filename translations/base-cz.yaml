@@ -598,7 +598,7 @@ storyRewards:
             jde, oba tvary se <strong>slepí</strong> k sobě. Pokud ne, tvar
             vpravo se <strong>nalepí na</strong> tvar vlevo!
     reward_splitter:
-        title: Rozřazování/Spojování pásu
+        title: Kompaktní rozdělovač
         desc: Právě jste odemkli <strong>rozdělovací</strong> variantu
             <strong>vyvažovače</strong> - Přijímá jeden vstup a rozdělí ho na
             dva!
@@ -834,7 +834,7 @@ settings:
                 než 100 entit.
         enableColorBlindHelper:
             title: Režim pro barvoslepé
-            description: Zapné různé nástroje, které vám umožní hrát hru i pokud jste
+            description: Zapne různé nástroje, které vám umožní hrát hru i pokud jste
                 barvoslepí.
         rotationByBuilding:
             title: Rotace dle typu budov
