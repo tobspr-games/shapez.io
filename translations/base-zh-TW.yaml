@@ -870,11 +870,11 @@ keybindings:
         pipette: Pipette
         menuClose: Close Menu
         switchLayers: 更換層
-        wire: Energy Wire
-        balancer: Balancer
+        wire: 電線
+        balancer: 平衡機
         storage: Storage
         constant_signal: Constant Signal
-        logic_gate: Logic Gate
+        logic_gate: 邏輯閘
         lever: Switch (regular)
         filter: Filter
         wire_tunnel: Wire Crossing
@@ -882,9 +882,9 @@ keybindings:
         reader: Belt Reader
         virtual_processor: Virtual Cutter
         transistor: Transistor
-        analyzer: Shape Analyzer
-        comparator: Compare
-        item_producer: Item Producer (Sandbox)
+        analyzer: 形狀分析機
+        comparator: 比對機
+        item_producer: 物品生產機(沙盒模式)
         copyWireValue: "Wires: Copy value below cursor"
 about:
     title: 關於遊戲
@@ -894,7 +894,7 @@ about:
 
         如果你想參與開發，請查看<a href="<githublink>" target="_blank">shapez.io on github</a>。 <br><br>
 
-        這個遊戲的開發少不了熱情的Discord社區。請加入我們的<a href="<discordlink>" target="_blank">Discord 服務器</a>！ <br><br>
+        這個遊戲的開發少不了熱情的 Discord 社區。請加入我們的<a href="<discordlink>" target="_blank">Discord 伺服器</a>！ <br><br>
 
         本遊戲的音樂由<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a>製作——他是個很棒的伙伴。 <br><br>
 
@@ -910,63 +910,59 @@ demo:
         exportingBase: 匯出工廠截圖
     settingNotAvailable: 在演示版中不可用。
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
-    - Ratios stay the same, as long as all upgrades are on the same Tier.
-    - Serial execution is more efficient than parallel.
-    - You will unlock more variants of buildings later in the game!
-    - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
-    - You can weave different tiers of tunnels.
-    - Try to build compact factories - it will pay out!
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
-    - At maximum level, 5 extractors will fill a single belt.
-    - Don't forget about tunnels!
-    - You don't need to divide up items evenly for full efficiency.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
-    - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
-    - The storage buffer priorities the first output.
-    - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
-    - Shape patches that are further away from the hub are more complex.
-    - Machines have a limited speed, divide them up for maximum efficiency.
-    - Use balancers to maximize your efficiency.
-    - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
-    - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
-    - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to
-      be re-usable.
-    - Sometimes, you can find a needed shape in the map without creating it with
-      stackers.
-    - Full windmills / pinwheels can never spawn naturally.
-    - Color your shapes before cutting for maximum efficiency.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
-    - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - 基地接受任何輸入，不只是當前要求的圖形!
+    - 盡量讓工廠模組化，會有回報的!
+    - 建築不要距離基地太近，否則容易混亂!
+    - 如果堆疊不如預期，嘗試將輸入端互換。
+    - 輸送帶的方向可以按 <b>R</b> 更換。
+    - 按住 <b>CTRL</b> 來防止輸送帶自動轉向。
+    - 同等級的生產比例會是一樣的。
+    - 串聯比並聯更有效率。
+    - 遊戲後期可以解鎖更多建築變體!
+    - 玩家可以按 <b>T</b> 來選擇不同變體。
+    - 對稱是關鍵!
+    - 不同等級的隧道可以相互交織。
+    - 盡量讓工廠保持緊密，會有回報的!
+    - 上色機有對稱的變體。按 <b>T</b> 來選擇不同變體。
+    - 正確的建築比例可以將效率最大化。
+    - 最高級時，五個開採機可填滿一個輸送帶。
+    - 別忘記使用隧道!
+    - 最高效率不一定來自均勻切割。
+    - 按住 <b>SHIFT</b> 輕鬆規劃長距離輸送帶。
+    - 不論擺放方向，切割機永遠做垂直切割。
+    - 白 = 紅 + 綠 + 藍。
+    - 倉庫優先從左側輸出。
+    - 花點時間研究可以重複利用的設計，會有回報的!
+    - 按住 <b>CTRL</b> 可以一次放置多個建築。
+    - 按住 <b>ALT</b> 以反轉輸送帶的放置方向。
+    - 效率是關鍵!
+    - 離基地越遠得圖形叢越複雜。
+    - 機器的運作速度有上限，多放幾個增加生產效率。
+    - 用平衡機讓效率最大化。
+    - 規劃很重要，盡量別讓輸送帶錯綜複雜。
+    - 預先規劃，不然會混亂不堪!
+    - 不要刪除舊的工廠，解鎖更新能會需要它們。
+    - 先試著靠自己破第20關再去尋求幫助。
+    - 不要讓東西複雜化，保持簡單則行的遠。
+    - 遊戲中有時需要重複利用工廠，設計時記得考量重複利用性。
+    - 有些圖形地圖上就找的到，不必自行堆疊。
+    - 地圖永遠部會自然生成完整的風車圖形。
+    - 先上色再切割會比較有效率。
+    - 有了模組，空間淪為假議題、凡夫俗子的憂思。
+    - 創建一個藍圖工廠，這對模組化很有幫助。
+    - 靠近一點看混色機，你會找到解答。
+    - 按 <b>CTRL</b> + 點選想選取的區域。
+    - 離基地太近的建築可能在未來會礙事。
+    - 更新目錄的每個圖形旁都有圖釘，點選即可把圖形釘在螢幕上(目標圖形旁)。
+    - 混合所有基本色就會得到白色!
+    - 地圖是無限延展的，別執著，擴張吧!
+    - Factorio 是我最喜歡的遊戲，非常推薦!
+    - 四分切割機從右上角順時鐘地輸出圖形的四個區塊。
+    - 你可以從主畫面下載存檔。
+    - 去設定頁看看，有很多有用的按鍵組合!
+    - 有很多東西都可以設定，有空的話去設定頁看看。
+    - 看不見基地時，基地的標示左側有個小指南針會提醒你它的方位。
+    - 清除輸送帶有個方法:複製它再原地貼上。
+    - 按 F4 來顯示螢幕的幀數(FPS)與刷新率(Tick Rate)。
+    - 按 F4 兩次來顯示相機和游標的絕對位置。
+    - 在已標記的圖形上按左鍵去除標記。
