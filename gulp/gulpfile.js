@@ -6,7 +6,15 @@ const gulp = require("gulp");
 const browserSync = require("browser-sync").create({});
 const path = require("path");
 const deleteEmpty = require("delete-empty");
-const execSync = require("child_process").execSync;
+
+/**
+ * @param {string} cmd
+ * @returns {string}
+ */
+const execSync = cmd =>
+    require("child_process").execSync(cmd, {
+        encoding: "utf-8",
+    });
 
 // Load other plugins dynamically
 const $ = require("gulp-load-plugins")({
@@ -54,7 +62,7 @@ const js = require("./js");
 js.gulptasksJS($, gulp, buildFolder, browserSync);
 
 const html = require("./html");
-html.gulptasksHTML($, gulp, buildFolder, browserSync);
+html.gulptasksHTML($, gulp, buildFolder);
 
 const ftp = require("./ftp");
 ftp.gulptasksFTP($, gulp, buildFolder);
@@ -63,13 +71,13 @@ const docs = require("./docs");
 docs.gulptasksDocs($, gulp, buildFolder);
 
 const standalone = require("./standalone");
-standalone.gulptasksStandalone($, gulp, buildFolder);
+standalone.gulptasksStandalone($, gulp);
 
 const releaseUploader = require("./release-uploader");
 releaseUploader.gulptasksReleaseUploader($, gulp, buildFolder);
 
 const translations = require("./translations");
-translations.gulptasksTranslations($, gulp, buildFolder);
+translations.gulptasksTranslations($, gulp);
 
 /////////////////////  BUILD TASKS  /////////////////////
 
@@ -95,7 +103,7 @@ gulp.task(
 
 // Requires no uncomitted files
 gulp.task("utils.requireCleanWorkingTree", cb => {
-    let output = $.trim(execSync("git status -su").toString("ascii")).replace(/\r/gi, "").split("\n");
+    let output = execSync("git status -su").trim().replace(/\r/gi, "").split("\n");
 
     // Filter files which are OK to be untracked
     output = output

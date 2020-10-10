@@ -71,11 +71,19 @@ function gulptasksStandalone($, gulp) {
     });
 
     gulp.task("standalone.killRunningInstances", cb => {
-        try {
-            execSync("taskkill /F /IM shapezio.exe");
-        } catch (ex) {
-            console.warn("Failed to kill running instances, maybe none are up.");
+        const commands = ["taskkill /F /IM shapezio.exe", "killall -SIGKILL shapezio"];
+
+        while (commands.length) {
+            try {
+                execSync(commands.shift());
+                break;
+            } catch (ex) {
+                if (!commands.length) {
+                    console.warn("Failed to kill running instances, maybe none are up.");
+                }
+            }
         }
+
         cb();
     });
 

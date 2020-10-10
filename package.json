@@ -1,6 +1,6 @@
 {
     "name": "shapez.io",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "main": "index.js",
     "repository": "https://github.com/tobspr/shapez.io",
     "author": "Tobias Springer <tobias.springer1@gmail.com>",
@@ -95,7 +95,6 @@
         "prettier": "^2.0.4",
         "sass-unused": "^0.3.0",
         "strip-json-comments": "^3.0.1",
-        "trim": "^0.0.1",
         "yarn": "^1.22.4"
     }
 }
