@@ -594,7 +594,7 @@ storyRewards:
             eden <strong>çöpü</strong> de verdim!
     reward_rotater:
         title: Döndürme
-        desc: <strong>Döndürücü</strong> açıldı! Döndürücü şekilleri saat yönüne 90
+        desc: <strong>Döndürücü</strong> açıldı! Döndürücü şekilleri saat yönünde 90
             derece döndürür.
     reward_painter:
         title: Boyama
