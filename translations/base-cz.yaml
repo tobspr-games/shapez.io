@@ -28,7 +28,7 @@ steamPage:
         - Minimapa
         - Módy
         - Sandbox mód
-        - ... a mnohem víc!
+        - ... a mnohem více!
     title_open_source: Tato hra je open source!
     text_open_source: >-
         Kdokoli může přispět, jsem aktivně zapojený do komunity, pokouším se
@@ -258,10 +258,10 @@ ingame:
                 description: Tvary uložené ve vaší centrální budově.
             produced:
                 title: Vyprodukováno
-                description: Tvary která vaše továrna produkuje, včetně meziproduktů.
+                description: Tvary, která vaše továrna produkuje, včetně meziproduktů.
             delivered:
                 title: Dodáno
-                description: Tvary které jsou dodávány do vaší centrální budovy.
+                description: Tvary, které jsou dodávány do vaší centrální budovy.
         noShapesProduced: Žádné tvary zatím nebyly vyprodukovány.
         shapesDisplayUnits:
             second: <shapes> / s
@@ -294,7 +294,7 @@ ingame:
             1_2_conveyor: "Připojte extraktor pomocí <strong>dopravníkového pásu</strong> k
                 vašemu HUBu!<br><br>Tip: <strong>Klikněte a táhněte</strong>
                 myší pro položení více pásů!"
-            1_3_expand: "Toto <strong>NENÍ</strong> hra o čekání! Sestavte další extraktory
+            1_3_expand: "Toto <strong>NENÍ</strong> hra o čekání! Postavte další extraktory
                 a pásy, abyste dosáhli cíle rychleji.<br><br>Tip: Chcete-li
                 umístit více extraktorů, podržte <strong>SHIFT</strong>. Pomocí
                 <strong>R</strong> je můžete otočit."
