@@ -4,18 +4,18 @@ steamPage:
         di dalam peta yang meluas tanpa batas.
     discordLinkShort: Server Discord Resmi
     intro: >-
-        Anda suka game otomasi? Maka Anda berada di tempat yang tepat!
+        Kamu suka game otomasi? Maka kamu berada di tempat yang tepat!
 
-        shapez.io adalah game santai dimana Anda harus membuat pabrik untuk mengotomatiskan produksi bentuk-bentuk geometris. Semakin meningkatnya level, bentuk-bentuknya menjadi lebih kompleks, dan Anda perlu meluaskan pabrik Anda semakin jauh lagi.
+        shapez.io adalah game santai dimana kamu harus membuat pabrik untuk mengotomatiskan produksi bentuk-bentuk geometris. Semakin meningkatnya level, bentuk-bentuknya menjadi lebih kompleks, dan kamu perlu meluaskan pabrikmu semakin jauh lagi.
 
-        Dan jita itu tidak cukup, Anda juga perlu untuk memproduksi secara ekponensial untuk memenuhkan kebutuhan - hal yang membantu hanyalah memperbesar pabrik! Walaupun Anda hanya perlu memproses bentuk di awal, nantinya Anda harus memberinya warna - dengan mengekstrak dan mencampur warna!
+        Dan jita itu tidak cukup, kamu juga perlu memproduksi bentuk secara eksponensial untuk memenuhkan kebutuhan - hal yang membantu hanyalah memperbesar pabrik! Walaupun kamu hanya perlu memproses bentuk di awal, nantinya kamu harus memberinya warna - dengan mengekstrak dan mencampur warna!
 
-        Membeli game ini di Steam memberikan Anda akses ke versi lengkap, namun Anda juga dapat mencoba demo dan memutuskan nanti!
+        Membeli game ini di Steam memberikan kamu akses ke versi lengkap, namun kamu juga dapat mencoba demo dan memutuskan nanti!
     title_advantages: Keuntungan Versi Lengkap
     advantages:
         - <b>12 Level Baru</b> dengan total 26 level
         - <b>18 Bangunan Baru</b> untuk membuat pabrik yang otomatis sepenuhnya!
-        - <b>20 Tingkat Upgrade</b> untuk keseruan berjam-jam!
+        - <b>20 Tingkatan Upgrade</b> untuk keseruan berjam-jam!
         - <b>Update Kabel</b> untuk dimensi yang benar-benar baru!
         - <b>Mode Gelap</b>!
         - Data Simpanan Tidak Terbatas
@@ -24,14 +24,14 @@ steamPage:
     title_future: Konten Terencana
     planned:
         - Penyimpanan Cetak Biru (Eksklusif Versi Lengkap)
-        - Steam Achievements
+        - Achievement Steam
         - Mode Puzzle
         - Peta Kecil
-        - Mods
+        - Modifikasi
         - Mode Sandbox
         - ... dan masih banyak lagi!
     title_open_source: Game ini open source!
-    title_links: Links
+    title_links: Tautan (Links)
     links:
         discord: Server Discord Resmi
         roadmap: Peta Jalan
@@ -43,7 +43,7 @@ steamPage:
         mencoba untuk meninjau semua saran dan mempertimbangkan segala umpan
         balik jika memungkinkan.
 
-        Pastikan untuk memeriksa papan trello saya untuk peta jalan lengkapnya!
+        Pastikan untuk memeriksa papan trello saya untuk peta jalan selengkapnya!
 global:
     loading: Memuat
     error: Terjadi kesalahan
@@ -89,12 +89,12 @@ mainMenu:
     discordLink: Server Discord Resmi
     helpTranslate: Bantu Terjemahkan!
     madeBy: Dibuat oleh <author-link>
-    browserWarning: Maaf, tetapi permainan ini biasanya lambat pada perambah
-        (browser) Anda! Dapatkan versi lengkap atau unduh Chrome untuk
+    browserWarning: Maaf, tetapi permainan ini biasanya lambat pada
+        browser kamu! Dapatkan versi lengkap atau unduh Chrome untuk
         pengalaman sepenuhnya.
     savegameLevel: Level <x>
     savegameLevelUnknown: Level tidak diketahui
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Tidak Dinamai
 dialogs:
     buttons:
         ok: OK
@@ -104,35 +104,35 @@ dialogs:
         restart: Mulai Ulang
         reset: Setel Ulang
         getStandalone: Dapatkan Versi Lengkap
-        deleteGame: Saya tahu apa yang saya lakukan
+        deleteGame: Aku tahu apa yang aku lakukan
         viewUpdate: Tampilkan Update
         showUpgrades: Tunjukkan Tingkatan
         showKeybindings: Tunjukkan Tombol Pintas
     importSavegameError:
         title: Kesalahan pada Impor
-        text: "Gagal memasukkan data simpanan Anda:"
+        text: "Gagal memasukkan data simpanan kamu:"
     importSavegameSuccess:
         title: Impor Berhasil
-        text: Data simpanan Anda berhasil dimasukkan.
+        text: Data simpanan kamu berhasil dimasukkan.
     gameLoadFailure:
         title: Permainan Rusak
-        text: "Gagal memuat data simpanan Anda:"
+        text: "Gagal memuat data simpanan kamu:"
     confirmSavegameDelete:
         title: Konfirmasi Penghapusan
-        text: Apakah Anda yakin ingin menghapus game berikut?<br><br> '<savegameName>'
+        text: Apakah kamu yakin ingin menghapus game berikut?<br><br> '<savegameName>'
             pada level <savegameLevel><br><br> Hal ini tak dapat diulang!
     savegameDeletionError:
         title: Gagal Menghapus
         text: "Gagal untuk menghapus data simpanan:"
     restartRequired:
-        title: Diperlukan untuk Memulai Kembali
-        text: Anda harus memulai kembali permainan untuk menerapkan pengaturan.
+        title: Diperlukan untuk Restart
+        text: kamu harus memulai kembali permainan untuk menerapkan pengaturan.
     editKeybinding:
-        title: Ganti Tombol Pintas
-        desc: Tekan tombol pada keyboard atau mouse yang ingin Anda ganti, atau
+        title: Ganti Tombol Pintas (Keybinding)
+        desc: Tekan tombol pada keyboard atau mouse yang ingin kamu ganti, atau
             tekan escape untuk membatalkan.
     resetKeybindingsConfirmation:
-        title: Setel Ulang Tombol-tombol Pintas
+        title: Setel Ulang Tombol-tombol Pintas (Keybinding)
         desc: Ini akan menyetel ulang semua tombol pintas kepada pengaturan awalnya.
             Harap konfirmasi.
     keybindingsResetOk:
@@ -140,42 +140,42 @@ dialogs:
         desc: Tombol-tombol pintas sudah disetel ulang ke pengaturan awalnya!
     featureRestriction:
         title: Versi Demo
-        desc: Anda mencoba untuk mengakses fitur (<feature>) yang tidak tersedia pada
+        desc: Kamu mencoba untuk mengakses fitur (<feature>) yang tidak tersedia pada
             versi demo. Pertimbangkan untuk mendapatkan versi lengkap untuk
             pengalaman sepenuhnya!
     oneSavegameLimit:
         title: Penyimpanan Permainan Terbatas
-        desc: Anda hanya dapat memiliki satu data simpanan dalam versi demo. Harap
+        desc: Kamu hanya dapat memiliki satu data simpanan dalam versi demo. Harap
             hapus yang telah ada atau dapatkan versi lengkap!
     updateSummary:
         title: Update Baru!
-        desc: "Berikut perubahan-perubahan yang telah dibuat sejak Anda main terakhir
+        desc: "Berikut perubahan-perubahan yang telah dibuat sejak kamu main terakhir
             kali:"
     upgradesIntroduction:
         title: Buka Tingkatan-tingkatan
-        desc: Semua bentuk yang Anda produksi dapat digunakan untuk membuka tingkatan
-            baru - <strong>Jangan hancurkan pabrik-pabrik lama Anda!</strong>
-            Tab tingkatan dapat ditemukan di sudut kanan atas layar Anda.
+        desc: Semua bentuk yang kamu produksi dapat digunakan untuk membuka tingkatan
+            baru - <strong>Jangan hancurkan pabrik-pabrik lama kamu!</strong>
+            Tab tingkatan dapat ditemukan di sudut kanan atas layar kamu.
     massDeleteConfirm:
         title: Konfirmasi Penghapusan
-        desc: Anda akan menghapus banyak bangunan (tepatnya <count>)! Apakah Anda yakin
+        desc: Kamu akan menghapus banyak bangunan (tepatnya <count>)! Apakah kamu yakin
             untuk melakukannya?
     massCutConfirm:
-        title: Pastikan Pemindahan
-        desc: Anda akan memindahkan banyak bangunan (tepatnya <count>)! Apakah Anda
+        title: Konfirmasi Pemindahan (Cut)
+        desc: Kamu akan memindahkan (cut) banyak bangunan (tepatnya <count>)! Apakah kamu
             yakin untuk melakukannya?
     massCutInsufficientConfirm:
         title: Tidak Mampu Memindahkan
-        desc: Anda tidak mampu menanggung biaya pemindahan area ini! Apakah Anda yakin
+        desc: Kamu tidak mampu menanggung biaya pemindahan area ini! Apakah kamu yakin
             untuk memindahkannya?
     blueprintsNotUnlocked:
         title: Belum Terbuka
         desc: Selesaikan level 12 untuk membuka Cetak Biru!
     keybindingsIntroduction:
-        title: Tombol Pintas Berguna
+        title: Tombol Pintas (Keybindings) Berguna
         desc: "Permainan ini memiliki banyak tombol pintas yang membuatnya lebih mudah
             untuk membangun pabrik-pabrik besar. Berikut adalah beberapa, namun
-            pastikan Anda <strong>perhatikan tombol-tombol
+            pastikan kamu <strong>perhatikan tombol-tombol
             pintasnya</strong>!<br><br> <code class='keybinding'>CTRL</code> +
             Tarik: Pilih sebuah area.<br> <code class='keybinding'>SHIFT</code>:
             Tahan untuk meletakkan beberapa bangunan sekaligus.<br> <code
@@ -184,32 +184,32 @@ dialogs:
     createMarker:
         title: Penanda Baru
         titleEdit: Sunting Penanda
-        desc: Berikan nama yang berguna, Anda juga bisa memasukkan <strong>short key
-            </strong> dari sebuah bentuk (Yang bisa Anda buat sendiri
+        desc: Berikan nama yang berguna, kamu juga bisa memasukkan <strong>short key
+            </strong> dari sebuah bentuk (Yang bisa kamu buat sendiri
             <link>disini</link>)
     markerDemoLimit:
-        desc: Anda hanya dapat membuat dua penanda pada versi demo. Dapatkan versi
+        desc: Kamu hanya dapat membuat dua penanda pada versi demo. Dapatkan versi
             lengkap untuk penanda-penanda tak terhingga!
     exportScreenshotWarning:
         title: Ekspor Screenshot
-        desc: Anda meminta untuk mengekspor pabrik Anda sebagai screenshot. 
+        desc: Kamu meminta untuk mengekspor pabrikmu sebagai screenshot. 
             Harap ketahui bahwa ini bisa menjadi lambat untuk pabrik 
-            yang besar dan bahkan dapat membuat permainan Anda berhenti!
+            yang besar dan bahkan dapat membuat permainanmu berhenti!
     editSignal:
         title: Atur Tanda
         descItems: "Pilih item yang telah ditentukan sebelumnya:"
         descShortKey: ... atau masukkan <strong>shortkey</strong> dari bentuk (Yang
-            bisa Anda buat sendiri <link>disini</link>)
+            bisa Kamu buat sendiri <link>disini</link>)
     renameSavegame:
         title: Ganti Nama Data Simpanan
-        desc: Anda bisa mengganti nama data simpanan di sini.
+        desc: Kamu bisa mengganti nama data simpanan di sini.
     tutorialVideoAvailable:
         title: Tutorial Tersedia
-        desc: Ada video tutorial yang tersedia untuk level ini! Apakah Anda ingin menontonnya?
+        desc: Ada video tutorial yang tersedia untuk level ini! Apakah kamu ingin menontonnya?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Tersedia
         desc: Ada video tutorial yang tersedia untuk level ini, tetapi hanya dalam Bahasa Inggris. 
-        Apakaha Anda ingin menontonnya?
+        Apakaha kamu ingin menontonnya?
 ingame:
     keybindingsOverlay:
         moveMap: Geser
@@ -223,11 +223,11 @@ ingame:
         placeBuilding: Letakan bangunan
         createMarker: Buat penanda
         delete: Hapus
-        pasteLastBlueprint: Tempel cetak biru terakhir
+        pasteLastBlueprint: Tempel (paste) cetak biru terakhir
         lockBeltDirection: Aktifkan perencana sabuk konveyor
         plannerSwitchSide: Balikkan sisi perencana
-        cutSelection: Pindahkan
-        copySelection: Salin
+        cutSelection: Pindahkan (Cut)
+        copySelection: Salin (Copy)
         clearSelection: Hapus pilihan
         pipette: Pipet
         switchLayers: Ganti lapisan
@@ -248,8 +248,8 @@ ingame:
             speed: Kecepatan
             range: Jangkauan
             storage: Penyimpanan
-            oneItemPerSecond: 1 item / dtk
-            itemsPerSecond: <x> item / dtk
+            oneItemPerSecond: 1 item/dtk
+            itemsPerSecond: <x> item/dtk
             itemsPerSecondDouble: (x2)
             tiles: <x> ubin
     levelCompleteNotification:
@@ -259,7 +259,7 @@ ingame:
         buttonNextLevel: Level Selanjutnya
     notifications:
         newUpgrade: Tingkatan baru tersedia!
-        gameSaved: Permainan Anda telah disimpan.
+        gameSaved: Permainan kamu telah disimpan.
         freeplayLevelComplete: Level <level> telah selesai!
     shop:
         title: Tingkatan-tingkatan
@@ -271,21 +271,19 @@ ingame:
         dataSources:
             stored:
                 title: Tersimpan
-                description: Menunjukan semua bentuk yang tersimpan pada bangunan pusat
-                    Anda.
+                description: Menunjukan semua bentuk yang tersimpan pada bangunan pusatmu.
             produced:
                 title: Terproduksi
-                description: Menunjukkan semua bentuk yang diproduksi pabrik Anda,
+                description: Menunjukkan semua bentuk yang diproduksi pabrikmu,
                     termasuk produk-produk antara.
             delivered:
                 title: Terkirim
-                description: Menunjukkan bentuk-bentuk yang sedang dikirim ke bangunan pusat
-                    Anda.
+                description: Menunjukkan bentuk-bentuk yang sedang dikirim ke bangunan pusatmu.
         noShapesProduced: Sejauh ini belum diproduksi.
         shapesDisplayUnits:
-            second: <shapes> / dtk
-            minute: <shapes> / m
-            hour: <shapes> / j
+            second: <shapes>/dtk
+            minute: <shapes>/m
+            hour: <shapes>/j
     settingsMenu:
         playtime: Waktu bermain
         buildingsPlaced: Bangunan
@@ -308,14 +306,14 @@ ingame:
     shapeViewer:
         title: Lapisan-lapisan
         empty: Kosong
-        copyKey: Tombol Salin
+        copyKey: Tombol Salin (Copy)
     interactiveTutorial:
         title: Tutorial
         hints:
             1_1_extractor: Letakkan <strong>ekstraktor</strong> diatas <strong>bentuk
                 lingkaran</strong> untuk mengekstrak bentuk tersebut!
             1_2_conveyor: "Hubungkan ekstraktor dengan <strong>sabuk konveyor</strong> ke
-                bangunan pusat Anda!<br><br>Tip: <strong>Klik dan
+                bangunan pusatmu!<br><br>Tip: <strong>Klik dan
                 seret</strong> sabuk konveyor dengan mouse!"
             1_3_expand: "Ini <strong>BUKAN</strong> permainan menganggur! Bangun lebih
                 banyak ekstraktor dan sabuk konveyor untuk menyelesaikan
@@ -340,10 +338,10 @@ ingame:
             21_2_switch_to_wires: Pindah ke lapisan kabel dengan menekan tombol
                 <strong>E</strong>!<br><br> Lalu <strong>hubungkan keempat
                 input</strong> dari pengecat dengan menggunakan kabel!
-            21_3_place_button: Mantap! Sekarang letakkan <strong>Saklar</strong> dan hubungkan
+            21_3_place_button: Mantap! Sekarang letakkan <strong>saklar</strong> dan hubungkan
                 dengan menggunakan kabel!
             21_4_press_button: "Tekan saklar untuk <strong>memancarkan sinyal yang
-                benar</strong> dan mengaktifkan pengecat.<br><br> NB: Anda
+                benar</strong> dan mengaktifkan pengecat.<br><br> NB: Kamu
                 tidak perlu menghubungkan semua input! Cobalah hanya menghubungkan dua."
     connectedMiners:
         one_miner: 1 Ekstraktor
@@ -365,19 +363,19 @@ ingame:
                 desc: Untuk membuat pabrik yang otomatis sepenuhnya!
             savegames:
                 title: ∞ Data Simpanan
-                desc: Sebanyak yang Anda mau!
+                desc: Sebanyak yang kamu mau!
             upgrades:
                 title: 20 Tingkatan Upgrade
                 desc: Versi demo ini hanya punya 5!
             markers:
                 title: ∞ Penanda
-                desc: Anda tidak akan tersesat di pabrik Anda!
+                desc: Kamu tidak akan tersesat di pabrikmu sendiri!
             wires:
                 title: Kabel
                 desc: Sebuah dimensi yang benar-benar berbeda!
             darkmode:
                 title: Mode Gelap
-                desc: Berhenti merusak mata Anda!
+                desc: Berhenti merusak matamu!
             support:
                 title: Dukung saya
                 desc: Saya membuat game ini di waktu luang!
@@ -425,23 +423,23 @@ buildings:
     underground_belt:
         default:
             name: Terowongan
-            description: Memungkinkan Anda untuk mengangkut sumber-sumber daya dibawah
+            description: Memungkinkan kamu untuk mengangkut sumber-sumber daya dibawah
                 bangunan-bangunan atau sabuk konveyor.
         tier2:
             name: Terowongan Tingkat II
-            description: Memungkinkan Anda untuk mengangkut sumber-sumber daya dibawah
+            description: Memungkinkan kamu untuk mengangkut sumber-sumber daya dibawah
                 bangunan-bangunan atau sabuk konveyor.
     cutter:
         default:
             name: Pemotong
             description: Memotong bentuk-bentuk secara vertikal dan mengeluarkan kedua
-                bagian. <strong>Apabila Anda hanya menggunakan satu bagian,
-                pastikan Anda lenyapkan bagian lain atau mesin akan tersumbat
+                bagian. <strong>Apabila kamu hanya menggunakan satu bagian,
+                pastikan kamu lenyapkan bagian lain atau mesin akan tersumbat
                 macet!</strong>
         quad:
             name: Pemotong (Empat Bagian)
-            description: Memotong bentuk-bentuk menjadi empat bagian. <strong> Apabila Anda
-                hanya menggunakan satu bagian, pastikan Anda lenyapkan
+            description: Memotong bentuk-bentuk menjadi empat bagian. <strong> Apabila kamu
+                hanya menggunakan satu bagian, pastikan kamu lenyapkan
                 bagian-bagian lain atau mesin akan tersumbat dan macet!</strong>
     rotater:
         default:
@@ -477,29 +475,29 @@ buildings:
                 atas.
         quad:
             name: Pengecat (Empat Bagian)
-            description: Memungkinkan Anda untuk mengecat tiap kuadrannya masing - masing
+            description: Memungkinkan kamu untuk mengecat tiap kuadrannya masing - masing
                 pada bentuk. Hanya menyambung dengan <strong>sinyal yang
                 benar</strong> pada lapisan kabel yang akan dicat!
     trash:
         default:
             name: Tong Sampah
-            description: Menerima input dari semua sisi dan menghancurkannya. Selamanya.
+            description: Menerima input dari segala sisi dan menghancurkannya. Selamanya.
     balancer:
         default:
             name: Penyeimbang
             description: Multifungsional - Mendistribusikan seluruh input secara merata ke
                 seluruh output.
         merger:
-            name: Penggabung Sederhana
+            name: Penggabung Kompak
             description: Menggabungkan dua sabuk konveyor menjadi satu.
         merger-inverse:
-            name: Penggabung Sederhana
+            name: Penggabung Kompak
             description: Menggabungkan dua sabuk konveyor menjadi satu.
         splitter:
-            name: Pemisah Sederhana
+            name: Pemisah Kompak
             description: Memisahkan satu sabuk konveyor menjadi dua.
         splitter-inverse:
-            name: Pemisah Sederhana
+            name: Pemisah Kompak
             description: Memisahkan satu sabuk konveyor menjadi dua.
     storage:
         default:
@@ -603,8 +601,8 @@ storyRewards:
             dua secara vertikal <strong>apapun
             orientasinya</strong>!<br><br>Pastikan untuk membuang sisanya, jika
             tidak <strong>ini dapat tersumbat dan macet</strong> -
-            Oleh karena itu Anda diberikan <strong>tong sampah</strong>, yang
-            menghapus semua yang Anda masukkan!
+            Oleh karena itu kamu diberikan <strong>tong sampah</strong>, yang
+            menghapus semua yang kamu masukkan!
     reward_rotater:
         title: Memutar
         desc: <strong>Pemutar</strong> telah dibuka! Ia memutar bentuk-bentuk searah
@@ -612,161 +610,161 @@ storyRewards:
     reward_painter:
         title: Mengecat
         desc: "<strong>Pengecat</strong> telah dibuka – Ekstrak beberapa warna
-            (seperti yang Anda lakukan dengan bentuk) dan kemudian kombinasikan
+            (seperti yang kamu lakukan dengan bentuk) dan kemudian kombinasikan
             dengan bentuk di dalam pengecat untuk mewarnai mereka!<br><br>
-            NB: Apabila Anda buta warna, terdapat <strong>mode buta
+            NB: Apabila kamu buta warna, terdapat <strong>mode buta
             warna</strong> di dalam pengaturan!"
     reward_mixer:
         title: Mencampur Warna
         desc: <strong>Pencampur Warna</strong> telah dibuka – Ia mencampur dua warna menjadi satu!
     reward_stacker:
         title: Penumpuk
-        desc: Anda sekarang dapat mengombinasikan bentuk-bentuk dengan
+        desc: Kamu sekarang dapat mengombinasikan bentuk-bentuk dengan
             <strong>penumpuk</strong>! Kedua input akan dikombinasikan, dan
             apabila mereka dapat diletakan disebelah satu sama lain, mereka
             akan  <strong>terpadukan</strong>. Apabila tidak bisa, maka input kanan
             akan <strong>diletakkan diatas</strong> input kiri!
     reward_splitter:
         title: Pembagi Sederhana
-        desc: Anda telah membuka varian <strong>pembagi</strong> dari
+        desc: Kamu telah membuka varian <strong>pembagi</strong> dari
             <strong>penyeimbang</strong> - Menerima satu input dan membaginya
             menjadi dua!
     reward_tunnel:
         title: Terowongan
-        desc: <strong>Terowongan</strong> telah dibuka – Sekarang Anda dapat memindahkan
+        desc: <strong>Terowongan</strong> telah dibuka – Sekarang kamu dapat memindahkan
             bentuk-bentuk melalui terowongan di bawah sabuk-sabuk konveyor dan
             bangungan-bangunan dengannya!
     reward_rotater_ccw:
         title: Memutar Berlawanan Arah Jarum Jam
-        desc: Anda telah membuka varian dari <strong>Pemutar</strong> - Ia memungkinkan
-            Anda untuk memutar bentuk-bentuk berlawanan arah jarum jam! Untuk
+        desc: Kamu telah membuka varian dari <strong>Pemutar</strong> - Bangunan ini memungkinkan
+            kamu untuk memutar bentuk-bentuk berlawanan arah jarum jam! Untuk
             membangunnya, pilih pemutar dan <strong>tekan 'T' to memilih
             varian</strong>!
     reward_miner_chainable:
         title: Ekstraktor Merantai
-        desc: "Anda telah membuka <strong>Ekstraktor (Berantai)</strong>! Ia dapat
+        desc: "Kamu telah membuka <strong>Ekstraktor (Berantai)</strong>! Bangunan ini dapat
             <strong>mengoper sumber daya</strong> ke ekstraktor depannya
-            sehingga Anda dapat mengekstrak sumber daya dengan lebih
+            sehingga kamu dapat mengekstrak sumber daya dengan lebih
             efisien!<br><br> NB: Ekstraktor yang lama sudah diganti pada toolbar
-            Anda sekarang!"
+            kamu sekarang!"
     reward_underground_belt_tier_2:
         title: Terowongan Tingkat II
-        desc: Anda telah membuka varian baru <strong>terowongan</strong> - Ia memiliki
-            <strong>jangkauan yang lebih panjang</strong>, dan sekarang Anda
+        desc: Kamu telah membuka varian baru <strong>terowongan</strong> - Bangunan ini memiliki
+            <strong>jangkauan yang lebih panjang</strong>, dan sekarang kamu
             juga dapat memadukan terowongan-terowongan tersebut!
     reward_cutter_quad:
         title: Pemotongan Empat Bagian
-        desc: Anda telah membuka varian dari <strong>pemotong</strong> - Ia memungkinkan
-            Anda memotong bentuk-bentuk ke dalam <strong>empat bagian</strong>
+        desc: Kamu telah membuka varian dari <strong>pemotong</strong> - Bangunan ini memungkinkan
+            kamu untuk memotong bentuk-bentuk menjadi <strong>empat bagian</strong>
             daripada hanya dua bagian!
     reward_painter_double:
         title: Pengecatan Ganda
-        desc: Anda telah membuka varian dari <strong>pengecat</strong> - Ia bekerja
+        desc: Kamu telah membuka varian dari <strong>pengecat</strong> - Bangunan ini bekerja
             seperti pengecat biasa namun dapat memproses <strong>dua bentuk
             sekaligus</strong>, dan mengonsumsi hanya satu warna daripada dua!
     reward_storage:
         title: Tempat Penyimpanan
-        desc: Anda telah membuka <strong>Tempat Penyimpanan</strong> - Ia memungkinkan
-            Anda untuk menyimpan item hingga kapasitas tertentu!<br><br> Ia
-            mengutamakan output kiri, sehingga Anda dapat menggunakannya sebagai
-            <strong>gerbang luapan</strong>!
+        desc: Kamu telah membuka <strong>Tempat Penyimpanan</strong> - Bangunan ini memungkinkan
+            kamu untuk menyimpan item hingga kapasitas tertentu!<br><br> Bangunan ini
+            mengutamakan output kiri, sehingga kamu dapat menggunakannya sebagai
+            <strong>gerbang luapan (overflow gate)</strong>!
     reward_freeplay:
         title: Permainan Bebas
-        desc: Anda berhasil! Anda telah membuka <strong>mode permainan bebas</strong>!
+        desc: Kamu berhasil! Kamu telah membuka <strong>mode permainan bebas</strong>!
             Ini artinya bentuk-bentuk akan dibuat secara
             <strong>acak</strong>!<br><br> Karena bangunan pusat akan
             membutuhkan <strong>penghasilan</strong> dari sekarang, Saya sangat
             menyarankan untuk membangun mesin yang secara otomatis mengirim
             bentuk yang diminta!<br><br> Bangunan pusat mengeluarkan bentuk
-            yang diminta pada lapisan kabel, jadi yang harus Anda lakukan adalah
+            yang diminta pada lapisan kabel, jadi yang harus kamu lakukan adalah
             menganalisa dan membangun pabrik secara otomatis berdasarkan itu.
     reward_blueprints:
         title: Cetak Biru
-        desc: Anda sekarang dapat <strong>menyalin dan menempel</strong> bagian dari
-            pabrik Anda! Pilih sebuah area (tahan CTRL, lalu seret dengan
+        desc: Kamu sekarang dapat <strong>menyalin (copy) dan menempel (paste)</strong> bagian dari
+            pabrikmu! Pilih sebuah area (tahan CTRL, lalu seret dengan
             mouse), dan tekan 'C' untuk menyalinnya.<br><br>Untuk
-            menempelnya <strong>tidak gratis</strong>, Anda harus memproduksi
+            menempelnya <strong>tidak gratis</strong>, Kamu harus memproduksi
             <strong>bentuk cetak biru</strong> untuk dapat melakukannya! (Bentuk
-            yang baru saja Anda kirim).
+            yang baru saja kamu kirim).
     no_reward:
         title: Level Selanjutnya
         desc: "Level ini tidak memiliki hadiah, namun yang selanjutnya akan! <br><br>
-            NB: Sebaiknya Anda jangan hancurkan pabrik yang telah ada –
-            Anda membutuhkan <strong>semua</strong> bentuk-bentuk tersebut lagi
+            NB: Sebaiknya kamu jangan hancurkan pabrik yang telah ada –
+            Kamu akan membutuhkan <strong>semua</strong> bentuk-bentuk tersebut lagi
             nanti untuk <strong>membuka tingkatan-tingkatan
             selanjutnya</strong>!"
     no_reward_freeplay:
         title: Level Selanjutnya
         desc: Selamat! Omong-omong, lebih banyak konten telah direncanakan untuk versi
-            penuh!
+            lengkap!
     reward_balancer:
         title: Penyeimbang
-        desc: <strong>Penyeimbang</strong> multifungsional telah terbuka - Ia dapat
+        desc: <strong>Penyeimbang</strong> multifungsional telah terbuka - Bangunan ini dapat
             digunakan untuk membuat pabrik yang lebih besar lagi dengan <strong>memisahkan
             dan menggabungkan item</strong> ke beberapa sabuk konveyor!
     reward_merger:
         title: Penggabung Sederhana
-        desc: Anda telah membuka varian<strong>penggabung</strong> dari
-            <strong>penyeimbang</strong> - Ia menerima dua input dan
+        desc: Kamu telah membuka varian<strong>penggabung</strong> dari
+            <strong>penyeimbang</strong> - Bangunan ini menerima dua input dan
             menggabungkannya dalam satu sabuk konveyor!
     reward_belt_reader:
         title: Pembaca Sabuk Konveyor
-        desc: Anda telah membuka <strong>pembaca sabuk konveyor</strong>! Ini
-            memungkinkan Anda untuk mengukur penghasilan dalam sebuah sabuk
-            konveyor.<br><br> Dan tunggu sampai Anda membuka kabel - maka ini
+        desc: Kamu telah membuka <strong>pembaca sabuk konveyor</strong>! Bangunan ini
+            memungkinkan kamu untuk mengukur penghasilan dalam sebuah sabuk
+            konveyor.<br><br> Dan tunggu sampai kamu membuka kabel - maka bangunan ini
             akan sangat berguna!
     reward_rotater_180:
         title: Pemutar (180 derajat)
-        desc: Anda telah membuka <strong>pemutar</strong> 180 derajat! - Ini
-            memungkinkan Anda untuk memutar bentuk dalam 180 derajat (Kejutan!
+        desc: Kamu telah membuka <strong>pemutar</strong> 180 derajat! - Bangunan ini
+            memungkinkan kamu untuk memutar bentuk dalam 180 derajat (Kejutan!
             :D)
     reward_display:
         title: Layar
-        desc: "Anda baru saja membuka <strong>Layar</strong> - Hubungkan sebuah sinyal
+        desc: "Kamu baru saja membuka <strong>Layar</strong> - Hubungkan sebuah sinyal
             dalam lapisan kabel untuk memvisualisasikannya!<br><br> NB: Apakah
-            Anda memperhatikan pembaca sabuk dan penyimpanan mengeluarkan item
+            kamu memperhatikan pembaca sabuk dan penyimpanan mengeluarkan item
             bacaan terakhir? Coba tampilkan pada layar!"
     reward_constant_signal:
         title: Sinyal Konstan
-        desc: Anda telah membuka bangunan <strong>sinyal konstan</strong> pada lapisan
-            kabel! Ini berguna untuk menyambungkannya ke <strong>filter item</strong>
+        desc: Kamu telah membuka bangunan <strong>sinyal konstan</strong> pada lapisan
+            kabel! Bangunan ini berguna untuk menyambungkannya ke <strong>filter item</strong>
             contohnya.<br><br> Sinyal konstannya dapat memancarkan
             <strong>bentuk</strong>, <strong>warna</strong> atau
             <strong>boolean</strong> (1 atau 0).
     reward_logic_gates:
         title: Gerbang Logis
-        desc: Anda membuka <strong>gerbang logis</strong>! Anda tidak perlu bersemangat
+        desc: Kamu telah membuka <strong>gerbang logis</strong>! Kamu tidak perlu bersemangat
             tentang ini, tetapi sebenarnya ini sangat keren!<br><br> Dengan gerbang-gerbang tersebut
-            Anda sekarang dapat mengkalkulasi operasi AND, OR, XOR dan NOT.<br><br> Sebagai bonus
-            Anda juga telah mendapatkan <strong>transistor</strong>!
+            kamu sekarang dapat mengkalkulasi operasi AND, OR, XOR dan NOT.<br><br> Sebagai bonus
+            kamu juga telah mendapatkan <strong>transistor</strong>!
     reward_virtual_processing:
         title: Prosesi Virtual
-        desc: Anda baru saja mendapatkan banyak bangunan yang memungkinkan Anda untuk
-            <strong>menstimulasi prosesi pembuatan bentuk</strong>!<br><br> Anda sekarang
+        desc: Kamu baru saja mendapatkan banyak bangunan yang memungkinkan kamu untuk
+            <strong>menstimulasi prosesi pembuatan bentuk</strong>!<br><br> Kamu sekarang
             dapat menstimulasi pemotongan, pemutaran, penumpukan dan masih banyak lagi pada lapisan kabel!
-            Dengan ini Anda sekarang memiliki tiga opsi untuk melanjutkan permainan:<br><br> -
+            Dengan ini kamu sekarang memiliki tiga opsi untuk melanjutkan permainan:<br><br> -
             Membuat sebuah <strong>mesin otomatis</strong> untuk membuat segala bentuk
-            yang diminta oleh PUSAT (Saya sarankan Anda untuk mencobanya!).<br><br> - Membuat
+            yang diminta oleh PUSAT (Saya sarankan kamu untuk mencobanya!).<br><br> - Membuat
             sesuatu yang keren dengan kabel.<br><br> - Melanjutkan permainan seperti
-            biasa.<br><br> Apapun yang Anda pilih, ingatlah untuk bersenang-senang!
+            biasa.<br><br> Apapun yang kamu pilih, ingatlah untuk bersenang-senang!
     reward_wires_painter_and_levers:
         title: Kabel & Pengecat (Empat Bagian)
-        desc: "Anda baru saja membuka <strong>Lapisan Kabel</strong>: Ini adalah sebuah
+        desc: "Kamu baru saja membuka <strong>Lapisan Kabel</strong>: Ini adalah sebuah
             lapisan terpisah diatas lapisan biasa dan memperkenalkan banyak mekanisme
-            baru!<br><br> Untuk permulaan Anda telah membuka <strong>Pengecat (Empat
-            Bagian)</strong> - Hubungkan slot yang ingin Anda cat pada
+            baru!<br><br> Untuk permulaan kamu telah membuka <strong>Pengecat (Empat
+            Bagian)</strong> - Hubungkan slot yang ingin kamu cat pada
             lapisan kabel!<br><br> Untuk mengubah ke lapisan kabel, tekan tombol
             <strong>E</strong>. <br><br> NB: <strong>Nyalakan petunjuk</strong> di
             pengaturan untuk mengaktifkan tutorial kabel!"
     reward_filter:
         title: Filter Item
-        desc: Anda telah membuka <strong>Filter</strong>! Ia akan mengarahkan item baik
+        desc: Kamu telah membuka <strong>Filter</strong>! Bangunan ini akan mengarahkan item baik
             ke output atas atau output kanan tergantung apakah mereka cocok dengan
-            sinyal dari lapisan kabel atau tidak.<br><br> Anda juga bisa memasukkan
+            sinyal dari lapisan kabel atau tidak.<br><br> Kamu juga bisa memasukkan
             sinyal boolean (1 atau 0) untuk mengaktifkan atau menonaktifkannya.
     reward_demo_end:
         title: Akhir dari Demo
-        desc: Anda telah mencapai akhir dari versi demo!
+        desc: Kamu telah mencapai akhir dari versi demo!
 settings:
     title: Pengaturan
     categories:
@@ -783,7 +781,7 @@ settings:
         uiScale:
             title: Skala Antarmuka (User Interface)
             description: Ganti ukuran antarmuka pengguna. Antarmuka tetap akan berskalakan
-                berdasar resolusi perangkat Anda, tetapi pengaturan ini
+                berdasar resolusi perangkatmu, tetapi pengaturan ini
                 mengontrol besar skala.
             scales:
                 super_small: Sangat kecil
@@ -793,7 +791,7 @@ settings:
                 huge: Sangat besar
         autosaveInterval:
             title: Jeda Penyimpanan Otomatis
-            description: Mengatur seberapa sering permainan menyimpan secara otomatis. Anda
+            description: Mengatur seberapa sering permainan menyimpan secara otomatis. Kamu
                 juga dapat menonaktifkannya secara total disini.
             intervals:
                 one_minute: 1 Menit
@@ -803,7 +801,7 @@ settings:
                 twenty_minutes: 20 Menit
                 disabled: Dinonaktifkan
         scrollWheelSensitivity:
-            title: Kepekaan zoom
+            title: Kepekaan Zoom
             description: Mengubah seberapa peka zoom yang dilakukan (baik dengan roda
                 mouse atau trackpad).
             sensitivity:
@@ -828,8 +826,8 @@ settings:
                 mungkin saja tidak lengkap!
         enableColorBlindHelper:
             title: Mode buta warna
-            description: Mengaktifkan berbagai peralatan yang memungkinkan Anda bermain
-                apabila Anda buta warna.
+            description: Mengaktifkan berbagai peralatan yang memungkinkan kamu bermain
+                apabila kamu buta warna.
         fullscreen:
             title: Layar penuh
             description: Direkomendasikan untuk bermain dengan layar penuh untuk mendapatkan
@@ -847,15 +845,15 @@ settings:
                 dark: Gelap
                 light: Terang
         refreshRate:
-            title: Tick Rate
-            description: Apabila Anda memiliki monitor 144hz, ganti laju penyegaran sehingga
+            title: Laju Penyegaran (Tick Rate)
+            description: Apabila kamu memiliki monitor 144hz, ganti laju penyegaran sehingga
                 permainan dapat disimulasikan dengan benar pada laju yang lebih
                 tinggi. Ini mungkin saja mengurangi laju bingkai per detik
-                (frames per second) apabila komputer Anda terlalu lambat.
+                (frames per second) apabila komputer kamu terlalu lambat.
         alwaysMultiplace:
             title: Peletakkan Ganda
             description: Apabila diaktifkan, semua bangunan akan tetap terpilih setelah
-                penempatan sampai Anda membatalkannya. Ini sama saja dengan
+                penempatan sampai kamu membatalkannya. Ini sama saja dengan
                 menahan tombol SHIFT secara permanen.
         offerHints:
             title: Petunjuk & Tutorial
@@ -867,16 +865,16 @@ settings:
             title: Terowongan Cerdas
             description: Ketika diaktifkan, proses penempatan terowongan akan menghapus
                 konveyor yang tidak berguna secara otomatis. Ini juga
-                memungkinkan Anda untuk menyeret terowongan dan kelebihan
+                memungkinkan kamu untuk menyeret terowongan dan kelebihan
                 terowongan akan dihilangkan.
         vignette:
-            title: Vinyet
-            description: Mengaktifkan vinyet, yang menggelapkan sudut-sudut layar dan
+            title: Vignette
+            description: Mengaktifkan vignette, yang menggelapkan sudut-sudut layar dan
                 membuat teks lebih mudah dibaca.
         rotationByBuilding:
             title: Pemutaran masing-masing tipe bangunan
-            description: Setiap tipe bangunan mengingat putaran yang Anda tetapkan
-                kepadanya. Ini mungkin lebih nyaman apabila Anda sering berganti
+            description: Setiap tipe bangunan mengingat putaran atau rotasi yang kamu tetapkan
+                kepadanya. Ini mungkin lebih nyaman apabila kamu sering berganti
                 untuk menempatkan berbagai tipe bangunan.
         compactBuildingInfo:
             title: Pemadatan Informasi Bangunan
@@ -903,24 +901,24 @@ settings:
                 Ini juga membuat game menjadi lebih rapi!
         clearCursorOnDeleteWhilePlacing:
             title: Menghapus Kursor dengan Klik Kanan
-            description: Diaktifkan secara default, menghapus kursor setiap kali Anda mengklik kanan saat Anda memiliki bangunan yang dipilih untuk penempatan. Jika dinonaktifkan, Anda dapat menghapus bangunan dengan mengklik kanan saat meletakkan bangunan.
+            description: Diaktifkan secara default, menghapus kursor setiap kali kamu mengklik kanan saat kamu memiliki bangunan yang dipilih untuk penempatan. Jika dinonaktifkan, kamu dapat menghapus bangunan dengan mengklik kanan saat meletakkan bangunan.
         lowQualityTextures:
             title: Tekstur kualitas rendah (Jelek)
             description: Menggunakan kualitas rendah untuk menyelamatkan performa. 
                 Ini akan membuat penampilan game menjadi jelek!
         displayChunkBorders:
-            title: Tampilkan Chunk Borders
+            title: Tampilkan Batasan Chunk
             description: Game ini dibagi-bagi menjadi ubin 16x16 bagian, jika pengaturan ini
                 diaktifkan maka batas dari tiap chunk akan diperlihatkan.
         pickMinerOnPatch:
             title: Memilih ekstraktor pada tampungan sumber daya
-            description: Diaktifkan secara default, memilih ekstraktor apabila Anda menggunakan pipet ketika
+            description: Diaktifkan secara default, memilih ekstraktor apabila kamu menggunakan pipet ketika
                 mengarahkan pada tampungan sumber daya.
         simplifiedBelts:
             title: Sabuk Sederhana (Jelek)
             description: Tidak merender item pada sabuk konveyor kecuali ketika mengarahkan ke konveyor
                 untuk menyelamatkan performa. Saya tidak merekomendasikan untuk bermain dengan pengaturan ini 
-                jika Anda tidak benar-benar perlu performanya.
+                jika kamu tidak benar-benar perlu performanya.
         enableMousePan:
             title: Bergeser pada Layar Tepi
             description: Memungkinkan untuk memindahkan peta dengan menggerakkan kursor ke tepi layar. Kecepatannya tergantung pada pengaturan Kecepatan Gerakan.
@@ -934,7 +932,7 @@ settings:
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Tombol Pintas
-    hint: "Petunjuk: Pastikan Anda menggunakan CTRL, SHIFT and ALT! Mereka
+    hint: "Petunjuk: Pastikan kamu menggunakan CTRL, SHIFT and ALT! Mereka
         memungkinkan berbagai opsi penempatan."
     resetKeybindings: Setel Ulang Tombol Pintas
     categoryLabels:
@@ -963,7 +961,7 @@ keybindings:
         toggleHud: Aktifkan HUD
         toggleFPSInfo: Aktifkan FPS dan Informasi Debug
         switchLayers: Ganti lapisan
-        exportScreenshot: Ekspor keseluruhan pabrik sebagai Gambar
+        exportScreenshot: Ekspor keseluruhan pabrik sebagai Screenshot
         belt: Sabuk Konveyor
         underground_belt: Terowongan
         miner: Ekstraktor
@@ -991,7 +989,7 @@ keybindings:
         placeMultiple: Tinggal di mode penempatan
         placeInverse: Balikkan orientasi otomatis konveyor
         balancer: Penyeimbang
-        storage: Storage
+        storage: Tempat Penyimpanan
         constant_signal: Sinyal Konstan
         logic_gate: Gerbang Logis
         lever: Saklar
@@ -1012,9 +1010,9 @@ about:
         href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
         (ini adalah saya).<br><br>
 
-        Apabila Anda ingin berkontribusi, periksa <a href="<githublink>" target="_blank">shapez.io di github</a>.<br><br>
+        Apabila kamu ingin berkontribusi, periksa <a href="<githublink>" target="_blank">shapez.io di github</a>.<br><br>
 
-        Permainan ini tidak mungkin ada tanpa komunitas Discord di sekitar game saya – Anda hendaknya bergabung <a href="<discordlink>" target="_blank">server Discord</a>!<br><br>
+        Permainan ini tidak mungkin ada tanpa komunitas Discord di sekitar game saya – Kamu hendaknya bergabung <a href="<discordlink>" target="_blank">server Discord</a>!<br><br>
 
         Lagunya dibuat oleh <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Dia mengagumkan.<br><br>
 
@@ -1031,58 +1029,58 @@ demo:
     settingNotAvailable: Tidak tersedia dalam versi demo.
 tips:
     - Bangunan pusat menerima segala input, tidak hanya bentuk sekarang!
-    - Pastikan pabrik Anda berbentuk modul - akan membantu!
+    - Pastikan pabrikmu berbentuk modul - akan membantu!
     - Jangan membangun terlalu dekat PUSAT, atau akan terjadi kericuhan yang besar!
     - Apabila penumpukkan tidak bekerja, cobalah tukar kedua input.
-    - Anda bisa mengaktifkan Perencana Sabuk Konveyor dengan menekan tombol <b>R</b>.
+    - Kamu bisa mengaktifkan Perencana Sabuk Konveyor dengan menekan tombol <b>R</b>.
     - Menahan <b>CTRL</b> memungkinkan untuk menyeret sabuk konveyor tanpa rotasi otomatis.
     - Rasio akan tetap sama, selama semua upgrade berada pada Tingkatan yang sama.
     - Eksekusi atau pembuatan secara serial lebih efisian daripada paralel.
-    - Anda akan membuka lebih banyak variasi bangunan nanti dalam game!
-    - Anda bisa menggunakan tombol <b>T</b> untuk berganti antara varian.
+    - Kamu akan membuka lebih banyak variasi bangunan nanti dalam game!
+    - Kamu bisa menggunakan tombol <b>T</b> untuk berganti antara varian.
     - Simetri adalah kunci!
-    - Anda dapat menempatkan dua varian terowongan dalam satu baris ubin.
+    - Kamu dapat memadukan dua varian terowongan dalam satu baris ubin.
     - Cobalah untuk membuat pabrik yang kompak dan padat - akan membantu!
-    - Pengecat memiliki varian lain yang bisa Anda pilih dengan menekan tombol <b>T</b>
+    - Pengecat memiliki varian lain yang bisa kamu pilih dengan menekan tombol <b>T</b>
     - Memiliki rasio bangunan yang tepat dapat memaksimalkan efektivitas.
     - Pada level maksimum, 5 ekstraktor akan memenuhi 1 sabuk konveyor.
     - Jangan lupa tentang terowongan!
-    - Anda tidak perlu membagi item secara merata untuk meraih efisiensi penuh.
-    - Menahan <b>SHIFT</b> akan mengaktifkan Perencana Sabuk Konveyor, memungkinkan Anda untuk meletakkan sabuk konveyor yang panjang dengan mudah
+    - Kamu tidak perlu membagi item secara merata untuk meraih efisiensi maksimal.
+    - Menahan <b>SHIFT</b> akan mengaktifkan Perencana Sabuk Konveyor, memungkinkan kamu untuk meletakkan sabuk konveyor yang panjang dengan mudah
     - Pemotong selalu memotong secara vertikal, bagaimanapun orientasinya.
-    - Untuk mendapatkan warna putihh, campurkan ketiga warna.
+    - Untuk mendapatkan warna putih, campurkan ketiga warna.
     - Tempat penyimpanan memprioritaskan output pertama.
     - Gunakan waktu untuk menciptakan desain yang dapat diulang - itu sangat berharga!
     - Menahan <b>CTRL</b> memungkinkan untuk meletakkan beberapa bangunan.
-    - Anda dapat menahan <b>ALT</b> untuk memutar arah pada sabuk konveyor yang sudah diletakkan.
+    - Kamu dapat menahan <b>ALT</b> untuk memutar arah pada sabuk konveyor yang sudah diletakkan.
     - Efisiensi adalah kunci!
     - Tampungan bentuk yang semakin jauh dari pusat maka akan semakin kompleks.
     - Mesin-mesin memiliki kecepatan maksimum, bagilah mereka untuk mendapatkan efisiensi maksimal.
-    - Gunakan penyeimbang untuk memaksimalkan efisiensi pabrik Anda.
+    - Gunakan penyeimbang untuk memaksimalkan efisiensi pabrikmu.
     - Pabrik yang terorganisir itu penting. Cobalah untuk tidak banyak menyebrangi konveyor.
     - Rencanakan terlebih dahulu, atau akan menjadi kericuhan yang besar!
-    - Jangan hapus pabrik-pabrik lama Anda! Anda akan memerlukannya untuk membuka tingkatan.
+    - Jangan hapus pabrik-pabrik lama kamu! Kamu akan memerlukannya untuk membuka tingkatan.
     - Cobalah untuk menyelesaikan level 20 sebelum mencari bantuan!
-    - Jangan mempersulit hal-hal, cobalah untuk tetap simpel dan Anda akan maju.
-    - Anda mungkin perlu menggunakan ulang pabrik-pabrik yang telah Anda buat. Rencanakan pabrik Anda supaya dapat digunakan kembali.
-    - Terkadang, Anda dapat menemukan bentuk yang diperlukan pada peta tanpa harus menumpuknya.
-    - Bentuk penuh windmills / pinwheels tidak akan pernah muncul secara natural.
+    - Jangan mempersulit hal-hal, cobalah untuk tetap simpel dan kamu akan maju.
+    - Kamu mungkin perlu menggunakan ulang pabrik-pabrik yang telah kamu buat. Rencanakan pabrik kamu supaya dapat digunakan kembali.
+    - Terkadang, kamu dapat menemukan bentuk yang diperlukan pada peta tanpa harus menumpuknya.
+    - Bentuk penuh windmills dan pinwheels tidak akan pernah muncul secara natural.
     - Warnai bentuk sebelum memotongnya untuk meningkatkan efisiensi.
     - Dengan modul-modul, ruang hanyalah persepsi; sebuah kekhawatiran untuk seorang yang hidup.
     - Buatlah pabrik Cetak Biru yang terpisah. Mereka sangat penting untuk membuat modul.
-    - Perhatikan lebih dekat pencampur warnanya, dan pertanyaan Anda akan terjawab.
+    - Perhatikan lebih dekat pencampur warnanya, dan pertanyaanmu akan terjawab.
     - Gunakan <b>CTRL</b> + Klik untuk memilih sebuah area.
     - Bangunan yang terlau dekat dengan pusat dapat menghalangi projek yang akan datang.
     - Ikon pin di samping tiap bentuk pada tab upgrade akan mem-pin bentuknya ke layar.
     - Campur semua warna utama untuk menciptakan warna putih!
-    - Anda punya peta yang tak terbatas, jangan memadatkan pabrik Anda, luaskan!
+    - Kamu punya peta yang tak terbatas, jadi jangan memadatkan pabrikmu di pusat, luaskan!
     - Cobalah Factorio juga! Itu game favorit saya.
     - Pemotong (Empat Bagian) memotong searah jarum jam mulai dari bagian kanan atas!
-    - Anda bisa mengunduh data simpanan Anda di main menu!
+    - Kamu bisa mengunduh data simpananmu di menu utama (main menu)!
     - Game ini memiliki banyak tombol pintas yag sangat berguna! Pastikan untuk mengeceknya di pengaturan.
     - Game ini memiliki banyak pengaturan, Pastikan untuk mengeceknya!
-    - Penanda ke bangunan pusat Anda memiliki kompas yang menunjukkan lokasinya!
+    - Penanda ke bangunan pusatmu memiliki kompas yang menunjukkan lokasinya!
     - Untuk membersihkan sabuk konveyor, pindahkan bagian dan tempel di lokasi yang sama.
-    - Tekan F4 untuk menunjukkan FPS dan Tick Rate Anda.
-    - Tekan F4 dua kali untuk menunjukkan ubin mouse dan kamera Anda.
-    - Anda bisa mengklik bentuk yang di-pin di sebelah kiri untuk tidak mem-pinnya lagi.
+    - Tekan F4 untuk menunjukkan FPS dan Tick Rate kamu.
+    - Tekan F4 dua kali untuk menunjukkan ubin mouse dan kameramu.
+    - Kamu bisa mengklik bentuk yang di-pin di sebelah kiri untuk tidak mem-pinnya lagi.
