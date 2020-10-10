@@ -22,13 +22,13 @@ steamPage:
         - Podpořte mě! ❤️
     title_future: Plánovaný obsah
     planned:
-        - Blueprintová knihovna
-        - Steam Achievements
+        - Knihovna blueprintů
+        - Steam Achievementy
         - Puzzle mód
         - Minimapa
         - Módy
         - Sandbox mód
-        - ... a mnohem víc!
+        - ... a mnohem více!
     title_open_source: Tato hra je open source!
     text_open_source: >-
         Kdokoli může přispět, jsem aktivně zapojený do komunity, pokouším se
@@ -89,7 +89,7 @@ mainMenu:
     helpTranslate: Pomozte přeložit hru!
     madeBy: Vytvořil <author-link>
     browserWarning: Promiňte, ale víme, že hra poběží pomalu ve vašem prohlížeči!
-        Pořiďte si samostatnou verzi nebo si stíhněte Google Chrome pro
+        Pořiďte si samostatnou verzi nebo si stáhněte Google Chrome pro
         plnohodnotný zážitek.
     savegameLevel: Úroveň <x>
     savegameLevelUnknown: Neznámá úroveň
@@ -197,13 +197,11 @@ dialogs:
         title: Přejmenovat uloženou hru
         desc: Zde můžete přejmenovat svoji uloženou hru.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Dostupný tutoriál
+        desc: K této úrovni je dostupný tutoriál! Přejete si ho shlédnout?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Dostupný tutoriál
+        desc: K této úrovni je dostupný tutoriál, ale je dostupný pouze v angličtině. Přejete si ho shlédnout?
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -242,7 +240,7 @@ ingame:
         unlockText: "Odemčeno: <reward>!"
         buttonNextLevel: Další úroveň
     notifications:
-        newUpgrade: Nová aktualizace je k dispozici!
+        newUpgrade: Nové vylepšení je k dispozici!
         gameSaved: Hra byla uložena.
         freeplayLevelComplete: Level <level> byl dokončen!
     shop:
@@ -258,10 +256,10 @@ ingame:
                 description: Tvary uložené ve vaší centrální budově.
             produced:
                 title: Vyprodukováno
-                description: Tvary která vaše továrna produkuje, včetně meziproduktů.
+                description: Tvary, která vaše továrna produkuje, včetně meziproduktů.
             delivered:
                 title: Dodáno
-                description: Tvary které jsou dodávány do vaší centrální budovy.
+                description: Tvary, které jsou dodávány do vaší centrální budovy.
         noShapesProduced: Žádné tvary zatím nebyly vyprodukovány.
         shapesDisplayUnits:
             second: <shapes> / s
@@ -294,23 +292,23 @@ ingame:
             1_2_conveyor: "Připojte extraktor pomocí <strong>dopravníkového pásu</strong> k
                 vašemu HUBu!<br><br>Tip: <strong>Klikněte a táhněte</strong>
                 myší pro položení více pásů!"
-            1_3_expand: "Toto <strong>NENÍ</strong> hra o čekání! Sestavte další extraktory
+            1_3_expand: "Toto <strong>NENÍ</strong> hra o čekání! Postavte další extraktory
                 a pásy, abyste dosáhli cíle rychleji.<br><br>Tip: Chcete-li
                 umístit více extraktorů, podržte <strong>SHIFT</strong>. Pomocí
                 <strong>R</strong> je můžete otočit."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
+            2_1_place_cutter: "Teď položte <strong>Pilu</strong> , abyste rozřezali kruhy na dvě
+                poloviny!<br><br> PS: Pila vždy řeže od <strong>shora
+                dolů</strong> bez ohledu na její orientaci."
+            2_2_place_trash: Pila může <strong>clog and stall</strong>!<br><br> Použijte
+                <strong>Koš</strong> ,abyste se zbavili momentálně (!)
+                nepotřebného odpadu.
+            2_3_more_cutters: "Dobrá práce! Teď položte <strong>2 další pily</strong> , abyste urychlili
+                Tento pomalý proces!<br><br> PS: Použijte <strong>
+                klávesy 0-9s</strong> , abyste vybrali budovy rychleji!"
+            3_1_rectangles: "Teď pojďme vytěžit nějaké čtverce! <strong>Postavte 4
+                extraktory</strong> a napojte je k HUBu.<br><br> PS:
+                Podržte <strong>SHIFT</strong> při tahání pásu k aktivování
+                plánovače pásů!"
             21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
                 <strong>circles</strong>, <strong>white</strong> and
                 <strong>red</strong> color!
