@@ -263,7 +263,7 @@ ingame:
         freeplayLevelComplete: Level <level> telah selesai!
     shop:
         title: Tingkatan-tingkatan
-        buttonUnlock: Tingkatan
+        buttonUnlock: Tingkatkan
         tier: Tingkat <x>
         maximumLevel: LEVEL MAKSIMUM (Kecepatan x<currentMult>)
     statistics:
