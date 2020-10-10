@@ -977,14 +977,14 @@ keybindings:
         rotateInverseModifier: "Modifier: Putar berlawanan arah jarum jam sebagai gantinya"
         cycleBuildingVariants: Ganti varian
         confirmMassDelete: Hapus area
-        pasteLastBlueprint: Tempel cetak biru terakhir
+        pasteLastBlueprint: Tempel (paste) cetak biru terakhir
         cycleBuildings: Ganti bangunan
         lockBeltDirection: Aktifkan perencana konveyor
         switchDirectionLockSide: "Planner: Alih sisi"
         massSelectStart: Tahan dan seret untuk memulai
         massSelectSelectMultiple: Pilih berbagai area
-        massSelectCopy: Salin area
-        massSelectCut: Pindahkan area
+        massSelectCopy: Salin (copy) area
+        massSelectCut: Pindahkan (cut) area
         placementDisableAutoOrientation: Nonaktifkan orientasi otomatis
         placeMultiple: Tinggal di mode penempatan
         placeInverse: Balikkan orientasi otomatis konveyor
