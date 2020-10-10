@@ -269,9 +269,9 @@ ingame:
                 description: Merkez binanıza giden bütün şekilleri gösterir.
         noShapesProduced: Henüz hiçbir şekil üretilmedi.
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / sn
+            minute: <shapes> / dk
+            hour: <shapes> / sa
     settingsMenu:
         playtime: Oynama zamanı
         buildingsPlaced: Yapılar
