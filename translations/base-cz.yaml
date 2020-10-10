@@ -242,7 +242,7 @@ ingame:
         unlockText: "Odemčeno: <reward>!"
         buttonNextLevel: Další úroveň
     notifications:
-        newUpgrade: Nová aktualizace je k dispozici!
+        newUpgrade: Nové vylepšení je k dispozici!
         gameSaved: Hra byla uložena.
         freeplayLevelComplete: Level <level> byl dokončen!
     shop:
