@@ -714,7 +714,7 @@ export function startFileChoose(acceptedType = ".bin") {
     });
 }
 
-const MAX_ROMAN_NUMBER = 3999;
+const MAX_ROMAN_NUMBER = 49;
 const romanLiteralsCache = ["0"];
 
 /**
