@@ -232,8 +232,8 @@ ingame:
             speed: Rychlost
             range: Dosah
             storage: Úložný prostor
-            oneItemPerSecond: 1 tvar / sekundu
-            itemsPerSecond: <x> tvarů / s
+            oneItemPerSecond: 1 kus / sekundu
+            itemsPerSecond: <x> kusů / s
             itemsPerSecondDouble: (x2)
             tiles: <x> dílků
     levelCompleteNotification:
@@ -791,9 +791,8 @@ settings:
                 SHIFT.
         offerHints:
             title: Tipy & Nápovědy
-            description: Pokud zapnuté, budou se ve hře zobrazovat tipy a nápovědy. Také
-                schová určité elementy na obrazovce pro jednodušší dostání se do
-                hry.
+            description: Pokud bude zapnuté, budou se ve hře zobrazovat tipy a nápovědy. Také
+                skryje určité elementy na obrazovce pro jednodušší osvojení hry.
         movementSpeed:
             title: Rychlost kamery
             description: Mění, jak rychle se kamera posouvá při použití klávesnice.
@@ -806,7 +805,7 @@ settings:
                 extremely_fast: Extrémně rychlá
         enableTunnelSmartplace:
             title: Chytré tunely
-            description: Pokládání tunelů po zapnutí bude samo odstraňovat nepotřebné pásy.
+            description: Po zapnutí bude vkládání tunelů samo odstraňovat nepotřebné pásy.
                 Umožňuje také potahování tunelů a nadbytečné tunely budou
                 odstraněny.
         vignette:
