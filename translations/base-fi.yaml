@@ -2,51 +2,51 @@ steamPage:
     shortText: shapez.io on peli tehtaiden rakentamisesta, joiden avulla
         automatisoidaan yhä monimutkaisempien muotojen luonti and yhdisteleminen
         loputtomassa maailmassa.
-    discordLinkShort: Official Discord
+    discordLinkShort: Virallinen Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
+        Shapez.io on rento peli, jossa sinun täytyy rakentaa tehtaita geometristen muotojen
+        automatisoituun tuotantoon.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        Kun taso kasvaa, muodot tulevat entistä vaikeammaksi sekä sinun täytyy laajentua loputtomassa kartassa.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        Ja jos tämä ei ollut tarpeeksi, niin sinun täytyy tuottaa eksponentiaalisesti enemmän täyttääksesi tarpeet - ainut asia mikä auttaa on skaalautuminen!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        Vaikka alussa vain prosessoit muotoja, myöhemmin niitä pitää maalata - tätä varten täytyy sinun kaivaa ja sekoittaa värejä
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Pelin ostaminen Steamista antaa sinulle pääsyn pelin kokoversioon, mutta voit myös pelata kokeiluversiota esin sivuillamme shapez.io ja päättää myöhemmin!
+    title_advantages: Kokoversion hyödyt
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - <b>12 uutta tasoa</b> nostaen tasojen määrän 26 tasoon!
+        - <b>18 uutta rakennusta</b> täysin automatisoidulle tehtaalle!
+        - <b>20 päivitystasoa</b> monelle hauskalle pelitunnille!
+        - <b>Johdot -päivitys</b> tuoden täyden uuden ulottuvuuden!
+        - <b>Tumma teema</b>!
+        - Rajattomat tallennukset
+        - Rajattomat merkit
+        - Tue minua! ❤️
+    title_future: Suunniteltu sisältö
     planned:
-        - Blueprint Library (Standalone Exclusive)
+        - Pohjapiirustus kirjasto (Standalone Exclusive)
         - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - Palapelitila
+        - Minikartta
+        - Modit
+        - Hiekkalaatikko -tila
+        - ... ja paljon muuta!
+    title_open_source: Tämä peli on avointa lähdekoodia!
+    title_links: Linkit
     links:
-        discord: Official Discord
+        discord: Virallinen Discord
         roadmap: Roadmap
         subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        source_code: Lähdekoodi (GitHub)
+        translate: Auta kääntämään
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        Kuka tahansa voi osallistua. Olen aktiivisesti mukana yhteisössä ja
+        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä 
+        mahdollista.
 
-        Be sure to check out my trello board for the full roadmap!
+        Muista tarkistaa Trello -lautani, jossa löytyy koko roadmap!
 global:
     loading: Ladataan
     error: Virhe
@@ -60,7 +60,7 @@ global:
     infinite: ∞
     time:
         oneSecondAgo: yksi sekunti sitten
-        xSecondsAgo: <x> sekunttia sitten
+        xSecondsAgo: <x> sekuntia sitten
         oneMinuteAgo: yksi minuutti sitten
         xMinutesAgo: <x> minuuttia sitten
         oneHourAgo: yksi tunti sitten
@@ -76,11 +76,11 @@ global:
         control: CTRL
         alt: ALT
         escape: ESC
-        shift: VAIHTO
+        shift: SHIFT
         space: VÄLILYÖNTI
 demoBanners:
     title: Demoversio
-    intro: Hanki itsenäinen peli avataksesi kaikki omunaisuudet!
+    intro: Hanki pelin kokoversio avataksesi kaikki ominaisuudet!
 mainMenu:
     play: Pelaa
     continue: Jatka
@@ -89,13 +89,13 @@ mainMenu:
     subreddit: Reddit
     importSavegame: Tuo peli
     openSourceHint: Tämä on avoimen lähdekoodin peli!
-    discordLink: Virallinen Discord Palvelin
+    discordLink: Virallinen Discord -palvelin
     helpTranslate: Auta kääntämään!
     madeBy: Pelin on tehnyt <author-link>
     browserWarning: Anteeksi, mutta pelin tiedetään toimivan huonosti selaimellasi!
-        Hanki itsenäinen versio tai lataa Chrome täyttä tukea varten.
+        Hanki pelin kokoversio tai lataa Google Chrome täyttä tukea varten.
     savegameLevel: Taso <x>
-    savegameLevelUnknown: Tuntematon Taso
+    savegameLevelUnknown: Tuntematon taso
     savegameUnnamed: Unnamed
 dialogs:
     buttons:
@@ -105,13 +105,13 @@ dialogs:
         later: Myöhemmin
         restart: Käynnistä uudelleen
         reset: Nollaa
-        getStandalone: Hanki itsenäinen peli
+        getStandalone: Hanki kokoversio
         deleteGame: Tiedän mitä olen tekemässä
         viewUpdate: Näytä päivitys
-        showUpgrades: Näytä Päivitykset
+        showUpgrades: Näytä päivitykset
         showKeybindings: Näytä pikanäppäimet
     importSavegameError:
-        title: Tuonti Virhe
+        title: Tuontivirhe
         text: "Tallennuksen tuonti epäonnistui:"
     importSavegameSuccess:
         title: Tallennus tuotiin
@@ -121,9 +121,9 @@ dialogs:
         text: "Tallennuksen lataus epäonnistui:"
     confirmSavegameDelete:
         title: Varmista poisto
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: Oletko varma, että haluat poistaa valitun pelin?<br><br>
+            '<savegameName>' tasossa <savegameLevel><br><br> Tätä toimintoa ei
+            voida peruuttaa!
     savegameDeletionError:
         title: Poisto epäonnistui
         text: "Tallennuksen poisto epäonnistui:"
@@ -132,8 +132,8 @@ dialogs:
         text: Käynnistä peli uudelleen ottaaksesi asetukset käyttöön.
     editKeybinding:
         title: Vaihda pikanäppäin
-        desc: Paina näppäintä tai hiiren nappia jonka haluat asettaa tai paina escape
-            peruuttaaksesi.
+        desc: Paina näppäintä tai hiiren nappia, jonka haluat asettaa tai paina
+            escape peruuttaaksesi.
     resetKeybindingsConfirmation:
         title: Nollaa pikanäppäimet
         desc: Tämä nollaa kaikki pikanäppäimet oletusarvoihin. Vahvista.
@@ -142,32 +142,32 @@ dialogs:
         desc: Pikanäppäimet nollattiin oletusarvoihin!
     featureRestriction:
         title: Demoversio
-        desc: Yritit käyttää ominaisuutta (<feature>) joka ei ole saatavilla
-            demoversiossa. Harkitse itsenäisen version hankkimista avataksesi
+        desc: Yritit käyttää ominaisuutta (<feature>), joka ei ole saatavilla
+            demoversiossa. Harkitse kokoversio avataksesi
             kaikki ominaisuudet!
     oneSavegameLimit:
         title: Rajoitetut tallennukset
         desc: Sinulla voi olla vain yksi tallennus kerrallaan demoversiossa. Poista
-            vanha tallennus tai hanki itsenäinen versio!
+            vanha tallennus tai hanki kokoversio pelistä!
     updateSummary:
         title: Uusi päivitys!
-        desc: "Tässä on tulleet muutokset sen jälkeen kun viimeksi pelasit:"
+        desc: "Tässä uudet muutokset sen jälkeen kun viimeksi pelasit:"
     upgradesIntroduction:
-        title: Avaa Päivitykset
-        desc: Kaikkia muodoja joita tuotat voi käyttää päivitysten avaamiseen -
+        title: Avaa päivitykset
+        desc: Kaikkia muotoja joita tuotat voidaan käyttää päivitysten avaamiseen -
             <strong>Älä tuhoa vanhoja tehtaitasi!</strong> Löydät
             päivitysikkunan näytön oikeasta yläkulmasta.
     massDeleteConfirm:
         title: Vahvista poisto
-        desc: Olet poistamassa paljon rakennuksia (tasan <count>)! Oletko varma että
+        desc: Olet poistamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma, että
             haluat jatkaa?
     massCutConfirm:
-        title: Vahtista leikkaus
-        desc: Olet leikkaamassa paljon rakennuksia (tasan <count>)! Oletko varma että
+        title: Vahvista leikkaus
+        desc: Olet leikkaamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma, että
             haluat jatkaa?
     blueprintsNotUnlocked:
         title: Ei vielä avattu
-        desc: Suorita taso 12 avataksesi Piirustukset!
+        desc: Suorita taso 12 avataksesi piirustukset!
     keybindingsIntroduction:
         title: Hyödyllisiä pikanäppäimiä
         desc: "Tässä pelissä on paljon pikanäppäimiä, jotka tekevät isojen tehtaiden
@@ -178,13 +178,13 @@ dialogs:
             useita samoja rakennuksia.<br> <code class='keybinding'>ALT</code>:
             Käännä sijoitettavien hihnojen suunta.<br>"
     createMarker:
-        title: Uusi Merkki
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        title: Uusi merkki
+        desc: Anna merkille merkitsevä nimi. Voit myös liittää <strong>lyhyen koodin</strong>
+            muodosta. (Jonka voit luoda <link>täällä</link>.)
         titleEdit: Muokkaa merkkiä
     markerDemoLimit:
-        desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki itsenäinen
-            versio saadaksesi loputtoman määrän merkkejä!
+        desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki kokoversio
+            saadaksesi loputtoman määrän merkkejä!
     exportScreenshotWarning:
         title: Vie kuvakaappaus
         desc: Pyysit tukikohtasi viemistä kuvakaappauksena. Huomaa, että tämä voi olla
@@ -199,16 +199,14 @@ dialogs:
         descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
             can generate <link>here</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Nimeä tallennus uudelleen
+        desc: Voit nimetä tallennuksesi uudelleen täällä.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Ohjevideo saatavilla
+        desc: Tästä tasosta on saatavilla ohjevideo! Haluaisitko katsoa sen?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Ohjevideo saatavilla
+        desc: Tästä tasosta on saatavilla ohjevideo! Haluaisitko katsoa sen?
 ingame:
     keybindingsOverlay:
         moveMap: Liiku
@@ -227,9 +225,9 @@ ingame:
         plannerSwitchSide: Käännä suunnittelijan puoli
         cutSelection: Leikkaa
         copySelection: Kopioi
-        clearSelection: Tyhjennä Valinta
+        clearSelection: Tyhjennä valinta
         pipette: Pipetti
-        switchLayers: Vaihda Tasoa
+        switchLayers: Vaihda tasoa
     colors:
         red: Punainen
         green: Vihreä
@@ -241,7 +239,7 @@ ingame:
         uncolored: Väritön
         black: Musta
     buildingPlacement:
-        cycleBuildingVariants: Paina <key> kiertääksesi muunnoksia.
+        cycleBuildingVariants: Paina <key> selataksesi vaihtoehtoja.
         hotkeyLabel: "Pikanäppäin: <key>"
         infoTexts:
             speed: Nopeus
@@ -259,7 +257,7 @@ ingame:
     notifications:
         newUpgrade: Uusi päivitys on saatavilla!
         gameSaved: Peli on tallennettu.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Taso <level> on saavutettu!
     shop:
         title: Päivitykset
         buttonUnlock: Päivitä
@@ -277,7 +275,7 @@ ingame:
                     välituotteet.
             delivered:
                 title: Toimitettu
-                description: Näyttää muodot jotka on toimitettu keskusrakennukseen.
+                description: Näyttää muodot, jotka on toimitettu keskusrakennukseen.
         noShapesProduced: Toistaiseksi ei muotoja tuotettu.
         shapesDisplayUnits:
             second: <shapes> / s
@@ -296,9 +294,9 @@ ingame:
     waypoints:
         waypoints: Merkit
         hub: Keskusrakennus
-        description: Paina merkkia hiiren vasemmalla mennäksesi siihen, paina oikeaa
+        description: Paina merkkiä hiiren vasemmalla mennäksesi siihen, paina oikeaa
             nappia poistaaksesi sen.<br><br>Paina <keybinding> luodaksesi merkin
-            nykyisestä näkymästä tai <strong>varen nappi</strong> luodaksesi
+            nykyisestä näkymästä tai <strong>vasen nappi</strong> luodaksesi
             merkin valittuun paikkaan.
         creationSuccessNotification: Merkki luotiin onnistuneesti.
     shapeViewer:
@@ -318,9 +316,9 @@ ingame:
                 valmiiksi.<br><br>Vihje: Pidä pohjassa <strong>VAIHTO</strong>
                 laittaaksesi useampia kaivajia ja käytä <strong>R</strong>
                 kääntääksesi niitä."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
+            2_1_place_cutter: "Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
+                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong> 
+                riippumatta sen asennosta."
             2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
                 <strong>trash</strong> to get rid of the currently (!) not
                 needed waste.
@@ -343,72 +341,72 @@ ingame:
                 signal</strong> and thus activate the painter.<br><br> PS: You
                 don't have to connect all inputs! Try wiring only two."
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        one_miner: 1 kaivaja
+        n_miners: <amount> kaivajaa
+        limited_items: Rajoitettu <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: Kokeiluversio
+        desc: Napsauta tästä nähdäksesi Steam version edut!
+        get_on_steam: Hanki Steamista
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Hanki kokoversio!
+        no_thanks: Ei kiitos!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 Uutta tasoa
+                desc: Yhteensä 26 tasoa!
             buildings:
-                title: 18 New Buildings
-                desc: Fully automate your factory!
+                title: 18 Uutta rakennusta
+                desc: Automatisoi tehtaasi täysin!
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: ∞ Tallennukset
+                desc: Niin paljon kuin sielusi kaipaa!
             upgrades:
-                title: 20 Upgrade Tiers
-                desc: This demo version has only 5!
+                title: 20 päivitystasoa
+                desc: Kokeiluversiossa on vain viisi!
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: ∞ Merkit
+                desc: Älä koskaan eksy tehtaassasi!
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: Johdot
+                desc: Täysin uusi ulottuvuus!
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: Tumma teema
+                desc: Jotta silmiisi ei sattuisi!
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: Tue minua
+                desc: Kehitän peliä vapaa-ajallani!
 shopUpgrades:
     belt:
-        name: Hihnat, Jakelija & Tunneli
+        name: Hihnat, jakelija & tunneli
         description: Nopeus x<currentMult> → x<newMult>
     miner:
         name: Kaivuu
         description: Nopeus x<currentMult> → x<newMult>
     processors:
-        name: Leikkaus, Kääntö & Pinoaminen
+        name: Leikkaus, kääntö & pinoaminen
         description: Nopeus x<currentMult> → x<newMult>
     painting:
-        name: Sekoitus & Värjäys
+        name: Sekoitus & värjäys
         description: Nopeus x<currentMult> → x<newMult>
 buildings:
     hub:
         deliver: Toimita
         toUnlock: avataksesi
         levelShortcut: LVL
-        endOfDemo: End of Demo
+        endOfDemo: Kokeiluversion loppu!
     belt:
         default:
             name: Liukuhihna
-            description: Kuljettaa esineitä, pidä pohjassa ja raahaa laittaaksesi useampia.
+            description: Kuljettaa esineitä. Pidä pohjassa ja raahaa laittaaksesi useampia.
     wire:
         default:
             name: Johto
-            description: Sallii sähkön kuljetuksen
+            description: Sallii sähkönkuljetuksen
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: Johto
+            description: Siirtää signaaleja, jotka voivat olla muotoja, värejä, taikka binääriarvoja (1 / 0).
+                Eriväriset johdot eivät yhdisty toisiinsa.
     miner:
         default:
             name: Kaivaja
@@ -422,7 +420,7 @@ buildings:
             name: Tunneli
             description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta.
         tier2:
-            name: Tunneli Taso II
+            name: Tunneli taso II
             description: Sallii resurssien kuljetuksen rakennuksien ja hihnojen alta
                 pidemmältä kantamalta.
     cutter:
@@ -441,11 +439,11 @@ buildings:
             name: Kääntäjä
             description: Kääntää muotoja 90 astetta myötäpäivään.
         ccw:
-            name: Kääntäjä (Vastapäivään)
+            name: Kääntäjä (vastapäivään)
             description: Kääntää muotoja 90 astetta vastapäivään.
         rotate180:
-            name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            name: Kääntäjä (180)
+            description: Kääntää muotoja 180 astetta.
     stacker:
         default:
             name: Pinoaja
@@ -457,19 +455,19 @@ buildings:
             description: Sekoittaa kaksi väriä lisäaineiden avulla.
     painter:
         default:
-            name: Värjääjä
-            description: Värjää vasemmasta sisääntulosta tulevan muodon ylemmästä
+            name: Maalari
+            description: Maalaa vasemmasta sisääntulosta tulevan muodon ylemmästä
                 sisääntulosta tulevalla värillä.
         mirrored:
-            name: Värjääjä
-            description: Värjää vasemmasta sisääntulosta tulevan muodon ylemmästä
+            name: Maalari
+            description: Maalaa vasemmasta sisääntulosta tulevan muodon alemmasta
                 sisääntulosta tulevalla värillä.
         double:
-            name: Värjääjä (Kaksinkertainen)
-            description: Värjää vasemmasta sisääntulosta tulevan muodon ylemmästä
+            name: Maalari (kaksinkertainen)
+            description: Värjää vasemmasta sisääntulosta tulevat muodot ylemmästä
                 sisääntulosta tulevalla värillä.
         quad:
-            name: Painter (Neljännes)
+            name: Maalari (neljännes)
             description: Allows you to color each quadrant of the shape individually. Only
                 slots with a <strong>truthy signal</strong> on the wires layer
                 will be painted!
@@ -479,114 +477,111 @@ buildings:
             description: Sallii sisääntulot kaikilta sivuilta ja tuhoaa ne. Lopullisesti.
     balancer:
         default:
-            name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: Tasaaja
+            description: Monikäyttöinen - Jaa sisääntulot tasaisesti kaikkiin ulostuloihin.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Yhdistäjä (compact)
+            description: Yhdistää kaksi hihnaa yhteen.
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Yhdistäjä (compact)
+            description: Yhdistää kaksi hihnaa yhteen.
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Erottaja (compact)
+            description: Erottaa hihnan kahteen hihnaan.
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Erottaja (compact)
+            description: Erottaa hihnan kahteen hihnaan.
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: Varasto
+            description: Varasotoi ylijäämätavarat tiettyyn kapasiteettiin asti. Priorisoi vasemman ulostulon
+                ja voidaan käyttää ylivuotoporttina.
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: Johdon ylitys
+            description: Antaa johdon ylittää toisen liittämättä niitä.
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: Jatkuva signaali
+            description: Lähettää vakiosignaalin, joka voi olla muoto, väri, taikka binääriarvo (1 / 0).
     lever:
         default:
-            name: Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            name: Kytkin
+            description: Voidaan kytkeä lähettämään binääriarvoa (1 / 0) johtotasolla,
+                jota voidaan sitten käyttää esimerkiksi tavarasuodattimen ohjaukseen.
     logic_gate:
         default:
-            name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
-                color or boolean "1")
+            name: AND portti
+            description: Lähettää totuusarvon "1", jos molemmat sisääntulot ovat totta. (Totuus tarkoittaa,
+                että muoto, väri tai totuusarvo "1")
         not:
-            name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            name: NOT portti
+            description: Lähettää totuusarvon "1", jos sisääntulot eivät ole totta.
+                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
         xor:
-            name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            name: XOR portti
+            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta, mutta kaikki eivät.
+                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
         or:
-            name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
-                shape, color or boolean "1")
+            name: OR portti
+            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta.
+                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
     transistor:
         default:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: Transistori
+            description: Lähettää pohjasignaalin eteenpäin, jos sivusisääntulo on totta.
+                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
         mirrored:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: Transistori
+            description: Lähettää pohjasignaalin eteenpäin, jos sivusisääntulo on totta.
+                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
     filter:
         default:
-            name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            name: Suodatin
+            description: Yhdistä signaali reitittääksesi kaikki vastaavat tavarat ylös,
+                ja jäljelle jäämät vasemmalle. Voidaan ohjata myös binääriarvoilla.
     display:
         default:
-            name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            name: Näyttö
+            description: Yhdistö signaali näyttääksesi sen näytöllä. Voi olla muoto,
+                väri tai binääriarvo.
     reader:
         default:
-            name: Belt Reader
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            name: Hihnanlukija
+            description: Mittaa hihnan keskiarvosuorituskyky. Antaa viimeksi luetun
+                tavaran signaalin johtotasolla (kun saavutettu).
     analyzer:
         default:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            name: Tutkija
+            description: Analysoi ylä oikean neljänneksen alimmasta tavaran tasosta ja
+                palauttaa sen muodon ja värin.
     comparator:
         default:
-            name: Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            name: Vertain
+            description: Palauttaa binääriarvon "1", jos molemmat signaalit ovat täysin samat.
+                Voi verrata värejä, tavaroita, ja binääriarvoja.
     virtual_processor:
         default:
-            name: Virtual Cutter
-            description: Virtually cuts the shape into two halves.
+            name: Virtuaalileikkuri
+            description: Virtuaalisesti leikkaa tavara kahteen puoliskoon.
         rotater:
-            name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            name: Virtuaalikääntäjä Rotater
+            description: Virtuaalisesti käännä tavara, sekä myötäpäivään että vastapäivään.
         unstacker:
-            name: Virtual Unstacker
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            name: Virtuaalierottaja
+            description: Virtuaalisesti erota ylin taso oikeaan ulostuloon ja jäljelle jäävät
+                vasempaan ulostuloon.
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: Virtuaaliyhdistäjä
+            description: Virtuaalisesti yhdistä oikea tavara vasempaan.
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: Virtuaalimaalaaja
+            description: Virtuaalisesti maalaa tavara alhaalta sisääntulosta oikean sisääntulon värillä.
     item_producer:
         default:
             name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            description: Saatavilla vain hiekkalaatikkotilassa. Palauttaa
+                johtotasolla annetun signaalin normaaliin tasoon.
 storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
@@ -744,26 +739,25 @@ storyRewards:
             signal from the wires layer or not.<br><br> You can also pass in a
             boolean signal (1 / 0) to entirely activate or disable it.
     reward_demo_end:
-        title: End of Demo
-        desc: You have reached the end of the demo version!
+        title: Kokeiluversion loppu!
+        desc: Olet läpäissyt kokeiluversion!
 settings:
     title: Asetukset
     categories:
         general: Yleinen
-        userInterface: Käyttöliittyma
-        advanced: Kehittynyt
-        performance: Performance
+        userInterface: Käyttöliittymä
+        advanced: Lisäasetukset
+        performance: Suorityskyky
     versionBadges:
         dev: Kehitys
-        staging: Näyttämö
+        staging: Testaus
         prod: Tuotanto
-    buildDate: Rakennettu <at-date>
+    buildDate: Koottu <at-date>
     labels:
         uiScale:
-            title: Käyttöliittymän Koko
+            title: Käyttöliittymän koko
             description: Muuttaa käyttöliittymän kokoa. Käyttöliittymä skaalataan silti
-                laitteen resoluution perusteella based on your device
-                resolution, mutta tämä asetus määrittää skaalauksen määrän.
+                laitteen resoluution perusteella, mutta tämä asetus määrittää skaalauksen määrän.
             scales:
                 super_small: Erittäin pieni
                 small: Pieni
@@ -771,7 +765,7 @@ settings:
                 large: Iso
                 huge: Valtava
         autosaveInterval:
-            title: Automaattitallennuksen Aikaväli
+            title: Automaattitallennuksen aikaväli
             description: Määrittää kuinka usein peli tallentaa automaattisesti. Voit myös
                 poistaa automaattisen tallennuksen kokonaan käytöstä täällä.
             intervals:
@@ -782,8 +776,8 @@ settings:
                 twenty_minutes: 20 Minuutin välein
                 disabled: Pois käytöstä
         scrollWheelSensitivity:
-            title: Zoomausherkkyys
-            description: Vaihtaa kuinka herkkä zoomi on (Joko hiiren rulla tai ohjauslevy).
+            title: Suurennusherkkyys
+            description: Vaihtaa kuinka herkkä suurennus on (Joko hiiren rulla tai ohjauslevy).
             sensitivity:
                 super_slow: Erittäin hidas
                 slow: Hidas
@@ -791,7 +785,7 @@ settings:
                 fast: Nopea
                 super_fast: Erittäin nopea
         movementSpeed:
-            title: Liikkumis nopeus
+            title: Liikkumisnopeus
             description: Muuttaa kuinka nopeasti näkymä liikkuu kun käytetään näppäimistöä.
             speeds:
                 super_slow: Erittäin hidas
@@ -799,7 +793,7 @@ settings:
                 regular: Normaali
                 fast: Nopea
                 super_fast: Erittäin nopea
-                extremely_fast: Hyper nopea
+                extremely_fast: Supernopea
         language:
             title: Kieli
             description: Vaihda kieltä. Kaikki käännökset ovat käyttäjien tekemiä ja
@@ -813,19 +807,19 @@ settings:
             description: On suositeltava pelata tätä peliä kokonäytön tilassa saadaksesi
                 parhaan kokemuksen. Saatavilla vain itsenäisessä versiossa.
         soundsMuted:
-            title: Mykistä Äänet
+            title: Mykistä äänet
             description: Jos käytössä, mykistää kaikki ääniefektit.
         musicMuted:
-            title: Mykistä Musiikki
+            title: Mykistä musiikki
             description: Jos käytössä, mykistää musiikin.
         theme:
-            title: Pelin Teema
+            title: Pelin teema
             description: Valitse pelin teema (vaalea / tumma).
             themes:
                 dark: Tumma
-                light: Kirkas
+                light: Vaalea
         refreshRate:
-            title: Simulaatiotavoite
+            title: Virkistystaajuus
             description: Jos sinulla on 144hz näyttö, muuta virkistystaajuus täällä jotta
                 pelin simulaatio toimii oikein isommilla virkistystaajuuksilla.
                 Tämä voi laskea FPS nopeutta, jos tietokoneesi on liian hidas.
@@ -835,18 +829,18 @@ settings:
                 jälkeen kunnes peruutat sen. Tämä vastaa SHIFT:in pitämistä
                 pohjassa ikuisesti.
         offerHints:
-            title: Vihjeet & Oppaat
+            title: Vihjeet & oppaat
             description: Tarjoaa pelaamisen aikana vihjeitä ja oppaita. Myös piilottaa
                 tietyt käyttöliittymäelementit tietyn tason mukaan, jotta
                 alkuunpääseminen olisi helpompaa.
         enableTunnelSmartplace:
-            title: Älykkäät Tunnelit
+            title: Älykkäät tunnelit
             description: Kun käytössä, tunnelin sijoittaminen automaattisesti poistaa
                 tarpeettomat liukuhihnat. Tämä myös ottaa käyttöön tunnelien
                 raahaamisen ja ylimääräiset tunnelit poistetaan.
         vignette:
-            title: Vignetti
-            description: Ottaa käyttöön vignetin, joka tummentaa näytön kulmia ja tekee
+            title: Vinjetointi
+            description: Ottaa käyttöön vinjetoinnin, joka tummentaa näytön kulmia ja tekee
                 tekstin lukemisesta helpompaa.
         rotationByBuilding:
             title: Kiertäminen rakennustyypin mukaan
@@ -854,26 +848,26 @@ settings:
                 yksilöllisesti. Tämä voi olla mukavampi vaihtoehto jos usein
                 sijoitat eri rakennustyyppejä.
         compactBuildingInfo:
-            title: Kompaktit Rakennusten Tiedot
+            title: Kompaktit rakennusten tiedot
             description: Lyhentää rakennusten tietolaatikoita näyttämällä vain niiden
                 suhteet. Muuten rakennuksen kuvaus ja kuva näytetään.
         disableCutDeleteWarnings:
-            title: Poista Leikkaus/Poisto Varoitukset
+            title: Poista leikkaus/poisto -varoitukset
             description: Poista varoitusikkunat jotka ilmestyy kun leikkaat/poistat enemmän
                 kuin 100 entiteettiä
         soundVolume:
-            title: Sound Volume
-            description: Set the volume for sound effects
+            title: Efektien äänenvoimakkuus
+            description: Aseta äänenvoimakkuus efekteille
         musicVolume:
-            title: Music Volume
-            description: Set the volume for music
+            title: Musiikin äänenvoimakkuus
+            description: Aseta äänenvoimakkuus musiikille
         lowQualityMapResources:
             title: Low Quality Map Resources
             description: Simplifies the rendering of resources on the map when zoomed in to
                 improve performance. It even looks cleaner, so be sure to try it
                 out!
         disableTileGrid:
-            title: Disable Grid
+            title: Poista ruudukko
             description: Disabling the tile grid can help with the performance. This also
                 makes the game look cleaner!
         clearCursorOnDeleteWhilePlacing:
@@ -883,13 +877,13 @@ settings:
                 you can delete buildings by right-clicking while placing a
                 building.
         lowQualityTextures:
-            title: Low quality textures (Ugly)
-            description: Uses low quality textures to save performance. This will make the
-                game look very ugly!
+            title: Alhaisen tason tekstuurit (ruma)
+            description: Käyttää alhaisen tason tekstuureja tehojen säästämiseksi. Tämä
+                muutta pelin rumaksi!
         displayChunkBorders:
-            title: Display Chunk Borders
-            description: The game is divided into chunks of 16x16 tiles, if this setting is
-                enabled the borders of each chunk are displayed.
+            title: Näytä kimpaleiden reunus Display Chunk Borders
+            description: Pel on jaettu 16x16 kimpaleisiin. Jos tämä asetus on käytössä,
+                reunat jokaiselle kimpaleelle näytetään.
         pickMinerOnPatch:
             title: Pick miner on resource patch
             description: Enabled by default, selects the miner if you use the pipette when
@@ -914,15 +908,15 @@ settings:
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Pikanäppäimet
-    hint: "Tip: Muista käyttää CTRL, VAIHTO ja ALT! Ne ottavat käyttöön erilaisia
+    hint: "Tip: Muista käyttää CTRL, SHIFT ja ALT! Ne ottavat käyttöön erilaisia
         sijoitteluvaihtoehtoja."
-    resetKeybindings: Nollaa Pikanäppäimet
+    resetKeybindings: Nollaa pikanäppäimet
     categoryLabels:
         general: Sovellus
         ingame: Peli
         navigation: Navigointi
         placement: Sijoitus
-        massSelect: Massa Valinta
+        massSelect: Massavalinta
         buildings: Rakennus Pikanäppäimet
         placementModifiers: Sijoittelu Muokkaajat
     mappings:
@@ -992,9 +986,9 @@ about:
         href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
         (tämä on minä).<br><br>
 
-        Jos haluat osallistua, tarkista <a href="<githublink>" target="_blank">shapez.io githubissa</a>.<br><br>
+        Jos haluat osallistua, tarkista <a href="<githublink>" target="_blank">shapez.io GitHubissa</a>.<br><br>
 
-        Tämä peli ei olisi ollut mahdollinen ilman suurta Discord yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
+        Tämä peli ei olisi ollut mahdollista ilman suurta Discord -yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
 
         Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on mahtava.<br><br>
 
@@ -1020,7 +1014,7 @@ tips:
     - Serial execution is more efficient than parallel.
     - You will unlock more variants of buildings later in the game!
     - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
+    - Symmetria on keskeistä!
     - You can weave different tiers of tunnels.
     - Try to build compact factories - it will pay out!
     - The painter has a mirrored variant which you can select with <b>T</b>
@@ -1031,12 +1025,12 @@ tips:
     - Holding <b>SHIFT</b> will activate the belt planner, letting you place
       long lines of belts easily.
     - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
+    - Sekoita kolmea väriä saadaksesi valkoista.
     - The storage buffer priorities the first output.
     - Invest time to build repeatable designs - it's worth it!
     - Holding <b>CTRL</b> allows to place multiple buildings.
     - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
+    - Tehokkuus on keskeistä!
     - Shape patches that are further away from the hub are more complex.
     - Machines have a limited speed, divide them up for maximum efficiency.
     - Use balancers to maximize your efficiency.
@@ -1067,6 +1061,6 @@ tips:
     - This game has a lot of settings, be sure to check them out!
     - The marker to your hub has a small compass to indicate its direction!
     - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
+    - Paina F4 nähdäksesi FPS laskurin ja virkistystaajuuden.
     - Press F4 twice to show the tile of your mouse and camera.
     - You can click a pinned shape on the left side to unpin it.
