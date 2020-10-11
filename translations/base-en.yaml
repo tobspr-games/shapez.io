@@ -1211,7 +1211,7 @@ tips:
     - Cutters always cut vertically, regardless of their orientation.
     - The storage buffer prioritises the left output.
     - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
+    - Holding <b>SHIFT</b> lets you place multiple buildings at a time.
     - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Efficiency is key!
     - Shape patches that are further away from the hub are more complex.
