@@ -3,7 +3,7 @@
 #
 #  Contributing:
 #
-#    If you want to contribute, please make a pull request on this respository
+#    If you want to contribute, please make a pull request on this repository
 #    and I will have a look.
 #
 #  Placeholders:
@@ -79,7 +79,7 @@ global:
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
 
-    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
+    # What symbol to use to separate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: "."
 
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
@@ -850,7 +850,7 @@ storyRewards:
             With this you now have three options to continue the game:<br><br>
             - Build an <strong>automated machine</strong> to create any possible shape requested by the HUB (I recommend to try it!).<br><br>
             - Build something cool with wires.<br><br>
-            - Continue to play regulary.<br><br>
+            - Continue to play regularly.<br><br>
             Whatever you choose, remember to have fun!
 
     # Special reward, which is shown when there is no reward actually
