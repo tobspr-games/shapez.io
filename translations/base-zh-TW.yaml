@@ -10,9 +10,9 @@ steamPage:
         玩家可以在 Steam 購買本游戲的單機版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！
     title_advantages: 單機版優點
     advantages:
-        - <b>12 個新關卡</b> （總共有26關）
-        - <b>18 個新建築</b> 幫助玩家自動化整個工廠！
-        - <b>20 個升級</b> 讓遊玩時間更久！
+        - <b>12個新關卡</b> （總共有26關）
+        - <b>18個新建築</b> 幫助玩家自動化整個工廠！
+        - <b>20個升級</b> 讓遊玩時間更久！
         - <b>電路更新</b> 帶給玩家新次元體驗！
         - <b>深色模式</b>！
         - 無限存檔
@@ -33,7 +33,7 @@ steamPage:
         discord: 官方 Discord 伺服器
         roadmap: Roadmap
         subreddit: Reddit
-        source_code: Source code (GitHub)
+        source_code: 原始碼(GitHub)
         translate: 幫助我們翻譯！
     text_open_source: |-
         任何人都可以幫助我開發遊戲或提供建議，我很活躍於各個社群媒體，也會讀所有的建議與回饋、並嘗試改善。
@@ -168,21 +168,18 @@ dialogs:
         title: 確認剪下
         desc: 你的複製圖形不夠貼上！你確定要剪下嗎？
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: 訊號設定
+        descItems: "選擇一個預先設定的物件"
+        descShortKey: ... 或輸入圖形的<strong>短代碼</strong> (可以由 <link>here</link> 生成)
     renameSavegame:
         title: 重新命名存檔
         desc: 你可以在這裡重新命名存檔
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: 有教學
+        desc: 這個等級有教學影片!你想觀看嗎?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: 有教學
+        desc: 這個等級目前只有英文版教學影片，你想觀看嗎?
 ingame:
     keybindingsOverlay:
         moveMap: 移動
@@ -192,7 +189,7 @@ ingame:
         placeMultiple: 放置多個
         reverseOrientation: 反向放置
         disableAutoOrientation: 關閉自動定向
-        toggleHud: 開關HUD
+        toggleHud: 開關基地
         placeBuilding: 放置建築
         createMarker: 創建地圖標記
         delete: 銷毀
@@ -270,12 +267,10 @@ ingame:
                 <br><br>提示：用你的游標<strong>按下並拖動</strong>傳送帶！
             1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
+            2_1_place_cutter: "現在放置一個<strong>切割機</strong>並利用它把圓圈切成兩半!<br><br>
+                PS: 不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
+            2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>!<br><br>
+                用<strong>垃圾桶</strong>把「目前」不需要的部分處理掉。
             2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
                 up this slow process!<br><br> PS: Use the <strong>0-9
                 hotkeys</strong> to access buildings faster!"
@@ -839,7 +834,7 @@ keybindings:
         createMarker: 創建地圖標記
         menuOpenShop: 升級選單
         menuOpenStats: 統計選單
-        toggleHud: 開關HUD
+        toggleHud: 開關基地
         toggleFPSInfo: 開關幀數與調試信息
         belt: 傳送帶
         underground_belt: 隧道
@@ -933,7 +928,7 @@ tips:
     - 白 = 紅 + 綠 + 藍。
     - 倉庫優先從左側輸出。
     - 花點時間研究可以重複利用的設計，會有回報的!
-    - 按住 <b>CTRL</b> 可以一次放置多個建築。
+    - 按住 <b>SHIFT</b> 可以一次放置多個建築。
     - 按住 <b>ALT</b> 以反轉輸送帶的放置方向。
     - 效率是關鍵!
     - 離基地越遠得圖形叢越複雜。
