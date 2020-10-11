@@ -1189,9 +1189,9 @@ demo:
     settingNotAvailable: Not available in the demo.
 
 tips:
-    - The hub accepts input of any kind, not just the current shape!
+    - The hub will accept any input, not just the current shape!
     - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
+    - Don't build too close to the hub, or it will be a mess!
     - If stacking does not work, try switching the inputs.
     - You can toggle the belt planner direction by pressing <b>R</b>.
     - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
@@ -1209,21 +1209,20 @@ tips:
     - You don't need to divide up items evenly for full efficiency.
     - Holding <b>SHIFT</b> will activate the belt planner, letting you place long lines of belts easily.
     - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
     - The storage buffer prioritises the left output.
     - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
+    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
     - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Efficiency is key!
     - Shape patches that are further away from the hub are more complex.
     - Machines have a limited speed, divide them up for maximum efficiency.
     - Use balancers to maximize your efficiency.
     - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
+    - Plan in advance, or it will be a mess!
     - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
+    - Try beating level 20 or 26 on your own before seeking for help!
     - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to be re-usable.
+    - You may need to reuse factories later in the game. Build your factories to be reusable.
     - Sometimes, you can find a needed shape in the map without creating it with stackers.
     - Full windmills/pinwheels can never spawn naturally.
     - Color your shapes before cutting for maximum efficiency.
@@ -1234,13 +1233,13 @@ tips:
     - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
     - Mix all three primary colors to make white!
-    - You have an infinite map, don't cramp your factory, expand!
+    - You have an infinite map. Don't cramp your factory, expand!
     - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
+    - The quad cutter cuts clockwise, starting from the top right.
     - You can download your savegames in the main menu!
     - This game has a lot of useful keybindings! Be sure to check out the settings page.
     - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
+    - Your hub marker has a small compass that shows which direction it is in!
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
