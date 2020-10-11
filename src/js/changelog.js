@@ -4,6 +4,7 @@ export const CHANGELOG = [
         date: "unreleased",
         entries: [
             "Fixed stacking bug for level 26 which required restarting the game",
+            "Fix reward notification being too long sometimes (by LeopoldTal)",
             "Updated translations",
         ],
     },
