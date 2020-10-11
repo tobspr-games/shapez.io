@@ -209,7 +209,7 @@ dialogs:
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Tersedia
         desc: Ada video tutorial yang tersedia untuk level ini, tetapi hanya dalam Bahasa Inggris. 
-        Apakaha kamu ingin menontonnya?
+            Apakaha kamu ingin menontonnya?
 ingame:
     keybindingsOverlay:
         moveMap: Geser
