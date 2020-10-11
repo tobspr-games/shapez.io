@@ -271,9 +271,8 @@ ingame:
                 PS: 不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
             2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>!<br><br>
                 用<strong>垃圾桶</strong>把「目前」不需要的部分處理掉。
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
+            2_3_more_cutters: "做得好! 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線!<br><br> 
+                PS: 使用<strong>0-9快捷鍵</strong>可以更快選取建築 !"
             3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
                 extractors</strong> and connect them to the hub.<br><br> PS:
                 Hold <strong>SHIFT</strong> while dragging a belt to activate
