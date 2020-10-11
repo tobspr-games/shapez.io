@@ -562,7 +562,7 @@ export function formatSeconds(secs) {
  * @param {number} speed
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
  */
-export function formatApproximateSpeed(speed, separator = T.global.decimalSeparator) {
+export function round1DigitLocalized(speed, separator = T.global.decimalSeparator) {
     return round1Digit(speed).toString().replace(".", separator);
 }
 
