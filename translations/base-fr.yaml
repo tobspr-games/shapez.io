@@ -47,7 +47,7 @@ steamPage:
 global:
     loading: Chargement
     error: Erreur
-    thousandsDivider:  
+    thousandsDivider:
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -184,8 +184,7 @@ dialogs:
         title: Nouvelle balise
         titleEdit: Modifier cette balise
         desc: Donnez-lui un nom. Vous pouvez aussi inclure <strong>le raccourci</strong>
-            d’une forme (que vous pouvez générer <a
-            href="https://viewer.shapez.io" target="_blank">ici</a>).
+            d’une forme (que vous pouvez générer <link>ici</link>).
     editSignal:
         title: Définir le signal
         descItems: "Choisissez un objet prédéfini :"
