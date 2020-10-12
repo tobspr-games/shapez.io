@@ -660,11 +660,11 @@ storyRewards:
         title: Juego libre
         desc: ¡Lo hiciste! Haz desbloqueado el <strong>modo de juego libre</strong>! ¡Esto significa
             que las formas ahora son <strong>aleatoriamente</strong> generadas!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+            Debído a que desde ahora de adelante el HUB pedrirá formas <strong>aleatorias</strong>
+            ¡Te recomiendo encarecidamente que construyas una maquina que automáticamente
+            envíe la forma pedida!<br><br> El HUB emite la forma
+            pedida en la capa de cables, así que todo lo que tienes que hacer es analizarla y
+            automaticamente configurar tu fabrica basada en ello.
     reward_blueprints:
         title: Planos
         desc: ¡Ahora puedes <strong>copiar y pegar</strong> partes de tu fábrica!
@@ -1014,28 +1014,28 @@ demo:
         exportingBase: Exportando la base completa como imagen
     settingNotAvailable: No disponible en la versión de prueba.
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
-    - Ratios stay the same, as long as all upgrades are on the same Tier.
-    - Serial execution is more efficient than parallel.
-    - You will unlock more variants of buildings later in the game!
-    - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
-    - You can weave different tiers of tunnels.
-    - Try to build compact factories - it will pay out!
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
-    - At maximum level, 5 extractors will fill a single belt.
-    - Don't forget about tunnels!
-    - You don't need to divide up items evenly for full efficiency.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
-    - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
+    - El HUB acepta entradas de cualquier tipo ¡No solo la forma actual!
+    - Trata de que tus fábricas sean modulares - ¡Te servirá en el futuro!
+    - No construyas muy cerca del HUB ¡O se volverá todo un caos!
+    - Si apilar las formas no funciona, intenta intercambiar las entradas.
+    - Puedes activar la dirección del planeador de cintas apretando  <b>R</b>.
+    - Mantener apretado <b>CTRL</b> te permite poner cintas sin auto-orientación.
+    - Las proporciones tiempre serán las mismas, siempre y cuando todas las mejoras estén al mismo nivel.
+    - La ejecución en serie es más eficiente que la paralela.
+    - ¡Desbloquearás más variantes de edificios más adelante en el juego!
+    - Puedes usar <b>T</b> para cambiar entre diferentes variantes.
+    - ¡La simetría es clave!
+    - Los túneles de diferentes niveles pueden cruzarse entre sí
+    - Intenta construir fábricas compactas - ¡Me lo agradecerás luego!
+    - El pintor tiene una variante en espejo que puedes seleccionar con la técla <b>T</b>
+    - Tener una buena proporción entre edificion maximizará su eficiencia
+    - A su máximo nivel, 5 extractores llenarán por completo una cinta trasnportadora.
+    - ¡No te olvides de utilizár túneles!
+    - No es necesario dividir los items de manera uniforme para conseguír la mayor eficiencia.
+    - Mantener apretado <b>SHIFT</b> activará el planeador de cintas, permitiendote poner
+      largas lineas de cintas fácilmente.
+    - Los cortadores siempre cortan verticalmente, sin importar su orientación.
+    - Para obtener blanco solo mexcla todos los colores principales.
     - The storage buffer priorities the first output.
     - Invest time to build repeatable designs - it's worth it!
     - Holding <b>CTRL</b> allows to place multiple buildings.
