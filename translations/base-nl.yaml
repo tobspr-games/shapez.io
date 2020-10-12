@@ -912,8 +912,8 @@ settings:
                 te bewegen.
         zoomToCursor:
             title: Zoom naar de Muis
-            description: Wanneer geactiveert: de zoom zal gebeuren in de richting van je
-                muispositie, anders in het midden van het scherm.
+            description: "Wanneer geactiveert: de zoom zal gebeuren in de richting van je
+                muispositie, anders in het midden van het scherm."
         mapResourcesScale:
             title: Kaartbronnen schaal
             description: Controleert de grote van de vormen op het map overzicht (wanneer je
