@@ -640,8 +640,8 @@ storyRewards:
     reward_freeplay:
         title: Volná hra
         desc: Zvládli jste to! Odemkli jste <strong>mód volné hry</strong>! To znamená,
-            budou od teď <strong>náhodně</strong> generovány!<br><br> Vzhledem k
-            tomu, že Hub nadále potřebuje <strong>propustnost</strong> ,
+            že od teď budou tvary <strong>náhodně</strong> generovány!<br><br> Vzhledem k
+            tomu, že Hub nadále potřebuje <strong>propustnost</strong>,
             především doporučuji postavit továrnu, která automaticky doručí
             požadovaný tvar!<br><br> Hub vysílá požadovaný tvar na vrstvu
             kabelů, takže jediné co musíte udělat, je analyzovat tvar a
