@@ -43,7 +43,7 @@ steamPage:
         translate: Auta kääntämään
     text_open_source: >-
         Kuka tahansa voi osallistua. Olen aktiivisesti mukana yhteisössä ja
-        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä 
+        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä
         mahdollista.
 
         Muista tarkistaa Trello -lautani, jossa löytyy koko tiekartta!
@@ -195,7 +195,7 @@ dialogs:
     editSignal:
         title: Aseta signaali
         descItems: "Valitse esivalmisteltu muoto"
-        descShortKey: ... tai käytä muodon <strong>pikanäppäintä</strong> 
+        descShortKey: ... tai käytä muodon <strong>pikanäppäintä</strong>
             (Jonka voit luoda <link>täällä</link>)
     renameSavegame:
         title: Nimeä tallennus uudelleen
@@ -312,11 +312,11 @@ ingame:
                 raahaa</strong> kuljetinta hiirellä!"
             1_3_expand: "Tämä <strong>EI OLE</strong> tyhjäkäyntipeli! Rakenna lisää
                 poimijoita ja kuljettimia saavuttaaksesi tavoitteen nopeammin
-                valmiiksi.<br><br>Vihje: Pidä <strong>SHIFT</strong> pohjassa 
+                valmiiksi.<br><br>Vihje: Pidä <strong>SHIFT</strong> pohjassa
                 laittaaksesi useampia poimijoita ja käytä <strong>R</strong>
                 kääntääksesi niitä."
             2_1_place_cutter: "Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
-                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong> 
+                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong>
                 riippumatta sen asennosta."
             2_2_place_trash: Leikkuri voi <strong>tukkeutua</strong>!<br><br> Käytä
                 <strong>roskakoria</strong> hävittääksesi (vielä!) tarpeeton jäte.
@@ -579,7 +579,7 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
-        desc: Avasit juuri <strong>leikkurin</strong>. Se leikkaa muotoja ylhäältä alaspäin 
+        desc: Avasit juuri <strong>leikkurin</strong>. Se leikkaa muotoja ylhäältä alaspäin
         ja tuottaa muodon molemmat puoliskot. <strong>Jos käytät vain yhden puoliskon, tuhoa toinen
             puolisko tai se jumittaa leikkurin!</strong> - Siksi sinulla on
             <strong>roskakori</strong>, joka tuhoaa kaiken sinne laittamasi!
@@ -643,7 +643,7 @@ storyRewards:
             ja voidaan käyttää <strong> ylivuotoporttina</strong>!
     reward_freeplay:
         title: Vapaapeli
-        desc: Onnistuit! Avasit juuri <strong>vapaapelimuodon</strong>! 
+        desc: Onnistuit! Avasit juuri <strong>vapaapelimuodon</strong>!
             Muodot luodaan nyt <strong>satunnaisesti</strong><br><br>
             Since the hub will require a <strong>throughput</strong> from now
             on, I highly recommend to build a machine which automatically
@@ -655,7 +655,7 @@ storyRewards:
         desc: Nyt voit <strong>Kopioida ja Liittää</strong> paloja tehtaastasi! Valitse
             alue (pidä CTRL pohjassa ja raahaa hiirellä), ja paina 'C'
             kopioidaksesi piirrustuksen.<br><br>Sen liittäminen ei ole
-            <strong>ilmaista</strong>. Sinun täytyy tuottaa <strong>piirustusmuotoja</strong>, 
+            <strong>ilmaista</strong>. Sinun täytyy tuottaa <strong>piirustusmuotoja</strong>,
             jotta sinulla on varaa siihen! (Ne mitkä juuri toimitit).
     no_reward:
         title: Seuraava taso
@@ -684,7 +684,7 @@ storyRewards:
             kääntää muotoa 180 astetta (Ylläripylläri! :D)
     reward_display:
         title: Näyttö
-        desc: Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön 
+        desc: Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön
         Johto-tasolla visualisoidaksesi sen<br><br> PS: Huomasitko, että kuljetinanturi ja varasto näyttävät viimeisimmän esineen? Yritäpä saada se näkyviin näytölle!"
     reward_constant_signal:
         title: Jatkuva Signaali
@@ -696,7 +696,7 @@ storyRewards:
         title: Logiikkaportit
         desc: Avasit <strong>Logiikkaportit</strong> (heh,heh)! Niistä ei tarvitse innostua,
 		    mutta ne ovat oikeasti tosi päheitä!<br><br> Logiikkaporteilla
-            voit suorittaa AND, OR, XOR ja NOT operaatioita.<br><br> Kaupanpäällisiksi sait 
+            voit suorittaa AND, OR, XOR ja NOT operaatioita.<br><br> Kaupanpäällisiksi sait
 		    myös <strong>transistorin</strong>!
     reward_virtual_processing:
         title: Virtuaaliprosessointi
@@ -841,7 +841,7 @@ settings:
                 kuin 100 entiteettiä.
         soundVolume:
             title: Efektien äänenvoimakkuus
-            description: Aseta ääniefektien äänenvoimakkuus 
+            description: Aseta ääniefektien äänenvoimakkuus
         musicVolume:
             title: Musiikin äänenvoimakkuus
             description: Aseta musiikin äänenvoimakkuus

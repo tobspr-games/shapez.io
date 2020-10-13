@@ -1,4 +1,5 @@
 {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": true
 }
