@@ -126,7 +126,7 @@ dialogs:
             voi peruuttaa!
     savegameDeletionError:
         title: Poisto epäonnistui
-        text: Tallennuksen poisto epäonnistui:
+        text: "Tallennuksen poisto epäonnistui:"
     restartRequired:
         title: Uudelleenkäynnistys vaaditaan
         text: Käynnistä peli uudelleen ottaaksesi asetukset käyttöön.
@@ -685,8 +685,8 @@ storyRewards:
             kääntää muotoa 180 astetta (Ylläripylläri! :D)
     reward_display:
         title: Näyttö
-        desc: Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön
-		Johto-tasolla visualisoidaksesi sen<br><br> PS: Huomasitko, että kuljetinanturi ja varasto näyttävät viimeisimmän esineen? Yritäpä saada se näkyviin näytölle!"
+        desc: Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön 
+        Johto-tasolla visualisoidaksesi sen<br><br> PS: Huomasitko, että kuljetinanturi ja varasto näyttävät viimeisimmän esineen? Yritäpä saada se näkyviin näytölle!"
     reward_constant_signal:
         title: Jatkuva Signaali
         desc: Avasit <strong>Jatkuvan Signaalin</strong> laitteen johtotasolla!
@@ -950,19 +950,8 @@ keybindings:
         virtual_processor: Virtuaalileikkuri
         transistor: Transistori
         analyzer: Muotoanalysaattori
-        comparator: Vertaa
-        item_producer: Signaaligeneraattori (Hiekkalaatikko)
-        copyWireValue: "Johdot: Kopioi arvon kursorin kohdalta"
-about:
-    title: Tietoja tästä pelistä
-    body: >-
-        Tämä peli on avointa lähdekoodia ja kehittäjä on <a
-        href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
-        (tämä on minä).<br><br>
 
-        Jos haluat osallistua, tarkista <a href="<githublink>" target="_blank">shapez.io GitHubissa</a>.<br><br>
-
-        Tämän pelin tekeminen ei olisi ollut mahdollista ilman suurta Discord-yhteisöä pelini ympärillä - Sinun kannattaisi liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
+        Tämän pelin tekeminen ei olisi ollut mahdollista ilman suurta Discord-yhteisöä pelini ympärillä - Voisit liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
 
         Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on mahtava.<br><br>
 
