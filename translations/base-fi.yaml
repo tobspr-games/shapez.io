@@ -578,17 +578,16 @@ storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
         desc: Avasit juuri <strong>leikkurin</strong>. Se leikkaa muotoja ylhäältä alaspäin
-        ja tuottaa muodon molemmat puoliskot. <strong>Jos käytät vain yhden puoliskon, tuhoa toinen
+            ja tuottaa muodon molemmat puoliskot. <strong>Jos käytät vain yhden puoliskon, tuhoa toinen
             puolisko tai se jumittaa leikkurin!</strong> - Siksi sinulla on
             <strong>roskakori</strong>, joka tuhoaa kaiken sinne laittamasi!
     reward_rotater:
         title: Kääntö
-        desc: Avasit <strong>Kääntäjän</strong>! Se kääntää muotoja myötäpäivään 90
-            astetta.
+        desc: Avasit <strong>Kääntäjän</strong>! Se kääntää muotoja myötäpäivään 90 astetta.
     reward_painter:
         title: Värjäys
         desc: "Avasit <strong>Maalaimen</strong> - Poimi joitain värialueita
-            (Samanlailla kuin muotoja) ja yhdistä se muotoon maalaimen
+            (Samoin kuin muotoja) ja yhdistä se muotoon maalaimen
             avulla!<br><br>PS: Jos olet värisokea, asetuksissa on <strong> tila
             värisokeille</strong>!"
     reward_mixer:
@@ -698,29 +697,28 @@ storyRewards:
 		    myös <strong>transistorin</strong>!
     reward_virtual_processing:
         title: Virtuaaliprosessointi
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Whatever you choose, remember to have fun!
+        desc: Sait juuri hyvän setin uusia laitteita, joiden avulla
+            <strong>voit simuloida muotojen prosessointia</strong>!<br><br> Nyt voit
+            simuloida leikkuria, kääntäjää, pinoajaa ja muita johtotasolla!
+            Sinulla on nyt kolme vaihtoehtoa pelin jatkamiseen:<br><br> -
+            Rakenna <strong>automatisoitu kone</strong> luodaksesi mikä tahansa
+            keskusrakennuksen vaatima muoto (Suosittelen kokeilemaan!).<br><br> - Rakenna
+            jotakin hienoa johdoilla.<br><br> - Jatka pelaamista
+            tavallisesti.<br><br> Mitä valitsetkin, muista pitää hauskaa!
     reward_wires_painter_and_levers:
-        title: Wires & Quad Painter
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        title: Johdot & Nelimaalain
+        desc: "Avasit juuri <strong>Johtotason</strong>: Se on erillinen
+            taso tavallisen tason päällä ja sieltä löytyy useita uusia
+            mekaniikkoja!<br><br> Aluksi avasin sinulle <strong>Nelimaalaimen</strong>
+            - Yhdistä johtotasolla lokerot, joihin haluat maalia<br><br>
+            Vaihtaaksesi johtotasolle, paina <strong>E</strong>. <br><br>
+            PS: <strong>Aktivoi vinkit</strong> asetuksissa nähdäksesi Johdot-tutoriaalin!"
     reward_filter:
-        title: Item Filter
-        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
-            to the top or the right output depending on whether they match the
-            signal from the wires layer or not.<br><br> You can also pass in a
-            boolean signal (1 / 0) to entirely activate or disable it.
+        title: Esinesuodatin
+        desc: Olet avannut <strong>Esinesuodattimen</strong>! Se lähettää esineet
+            joko ylös tai oikealle riippuen siitä vastaavatko ne
+            signaalia johtotasolla vai eivät.<br><br> Voit myös lähettää
+            binääriarvon (1 / 0) aktivoidaksesi tai sammuttaaksesi sen.
     reward_demo_end:
         title: Kokeiluversion loppu!
         desc: Olet läpäissyt kokeiluversion!
@@ -828,7 +826,7 @@ settings:
         rotationByBuilding:
             title: Kiertäminen laitetyypin mukaan
             description: Muistaa jokaisen laitetyypin viimeisimmän kiertoasetuksen.
-		    Tämä voi olla mukavampi vaihtoehto jos sijoitat usein eri laitetyyppejä.
+		        Tämä voi olla mukavampi vaihtoehto jos sijoitat usein eri laitetyyppejä.
         compactBuildingInfo:
             title: Kompaktit laitetiedot
             description: Lyhentää laitteiden tietolaatikoita näyttämällä vain niiden
@@ -1020,4 +1018,3 @@ tips:
     - Paina F4 nähdäksesi FPS laskurin ja virkistystaajuuden.
     - Press F4 kahdesti nähdäksesi hiiren ja kameran ruudun.
     - Klikkaa kiinnitetyn muodon vasemmalta puolelta irrottaaksesi sen.
-    
