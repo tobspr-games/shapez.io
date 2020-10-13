@@ -693,9 +693,9 @@ storyRewards:
     reward_logic_gates:
         title: Logiikkaportit
         desc: Avasit <strong>Logiikkaportit</strong> (heh,heh)! Niistä ei tarvitse innostua,
-		    mutta ne ovat oikeasti tosi päheitä!<br><br> Logiikkaporteilla
+            mutta ne ovat oikeasti tosi päheitä!<br><br> Logiikkaporteilla
             voit suorittaa AND, OR, XOR ja NOT operaatioita.<br><br> Kaupanpäällisiksi sait
-		    myös <strong>transistorin</strong>!
+            myös <strong>transistorin</strong>!
     reward_virtual_processing:
         title: Virtuaaliprosessointi
         desc: Sait juuri hyvän setin uusia laitteita, joiden avulla
@@ -814,7 +814,7 @@ settings:
             title: Vihjeet & oppaat
             description: Tarjoaa pelaamisen aikana vihjeitä ja oppaita. Myös piilottaa
                 tietyt käyttöliittymäelementit tason mukaan, jotta
-		        alkuunpääseminen olisi helpompaa.
+                alkuunpääseminen olisi helpompaa.
         enableTunnelSmartplace:
             title: Älykkäät tunnelit
             description: Kun käytössä, tunnelin sijoittaminen automaattisesti poistaa
