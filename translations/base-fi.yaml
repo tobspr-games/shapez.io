@@ -43,7 +43,7 @@ steamPage:
         translate: Auta kääntämään
     text_open_source: >-
         Kuka tahansa voi osallistua. Olen aktiivisesti mukana yhteisössä ja
-        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä 
+        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä
         mahdollista.
 
         Muista tarkistaa Trello -lautani, jossa löytyy koko roadmap!
@@ -317,7 +317,7 @@ ingame:
                 laittaaksesi useampia kaivajia ja käytä <strong>R</strong>
                 kääntääksesi niitä."
             2_1_place_cutter: "Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
-                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong> 
+                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong>
                 riippumatta sen asennosta."
             2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
                 <strong>trash</strong> to get rid of the currently (!) not

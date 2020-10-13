@@ -1,6 +1,6 @@
 steamPage:
     shortText: shapez.io adalah game tentang membangun pabrik untuk mengotomatiskan
-        pembuatan dan pemrosesan bentuk-bentuk yang semakin lama semakin kompleks 
+        pembuatan dan pemrosesan bentuk-bentuk yang semakin lama semakin kompleks
         di dalam peta yang meluas tanpa batas.
     discordLinkShort: Server Discord Resmi
     intro: >-
@@ -192,8 +192,8 @@ dialogs:
             lengkap untuk penanda-penanda tak terhingga!
     exportScreenshotWarning:
         title: Ekspor Screenshot
-        desc: Kamu meminta untuk mengekspor pabrikmu sebagai screenshot. 
-            Harap ketahui bahwa ini bisa menjadi lambat untuk pabrik 
+        desc: Kamu meminta untuk mengekspor pabrikmu sebagai screenshot.
+            Harap ketahui bahwa ini bisa menjadi lambat untuk pabrik
             yang besar dan bahkan dapat membuat permainanmu berhenti!
     editSignal:
         title: Atur Tanda
@@ -208,7 +208,7 @@ dialogs:
         desc: Ada video tutorial yang tersedia untuk level ini! Apakah kamu ingin menontonnya?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Tersedia
-        desc: Ada video tutorial yang tersedia untuk level ini, tetapi hanya dalam Bahasa Inggris. 
+        desc: Ada video tutorial yang tersedia untuk level ini, tetapi hanya dalam Bahasa Inggris.
             Apakaha kamu ingin menontonnya?
 ingame:
     keybindingsOverlay:
@@ -893,18 +893,18 @@ settings:
             description: Mengatur volume untuk musik
         lowQualityMapResources:
             title: Kualitas Peta Sumber Daya Rendah
-            description: Menyederhanakan rendering sumber daya pada peta saat diperbesar untuk meningkatkan performa. 
+            description: Menyederhanakan rendering sumber daya pada peta saat diperbesar untuk meningkatkan performa.
                 Bahkan terlihat lebih rapi, jadi pastikan untuk mencobanya!
         disableTileGrid:
             title: Nonaktifkan Grid
-            description: Menonaktifkan ubin grid dapat membantu performa. 
+            description: Menonaktifkan ubin grid dapat membantu performa.
                 Ini juga membuat game menjadi lebih rapi!
         clearCursorOnDeleteWhilePlacing:
             title: Menghapus Kursor dengan Klik Kanan
             description: Diaktifkan secara default, menghapus kursor setiap kali kamu mengklik kanan saat kamu memiliki bangunan yang dipilih untuk penempatan. Jika dinonaktifkan, kamu dapat menghapus bangunan dengan mengklik kanan saat meletakkan bangunan.
         lowQualityTextures:
             title: Tekstur kualitas rendah (Jelek)
-            description: Menggunakan kualitas rendah untuk menyelamatkan performa. 
+            description: Menggunakan kualitas rendah untuk menyelamatkan performa.
                 Ini akan membuat penampilan game menjadi jelek!
         displayChunkBorders:
             title: Tampilkan Batasan Chunk
@@ -917,7 +917,7 @@ settings:
         simplifiedBelts:
             title: Sabuk Sederhana (Jelek)
             description: Tidak merender item pada sabuk konveyor kecuali ketika mengarahkan ke konveyor
-                untuk menyelamatkan performa. Saya tidak merekomendasikan untuk bermain dengan pengaturan ini 
+                untuk menyelamatkan performa. Saya tidak merekomendasikan untuk bermain dengan pengaturan ini
                 jika kamu tidak benar-benar perlu performanya.
         enableMousePan:
             title: Bergeser pada Layar Tepi
