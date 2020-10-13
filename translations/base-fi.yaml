@@ -574,7 +574,7 @@ buildings:
         default:
             name: Signaaligeneraattori
             description: Saatavilla vain hiekkalaatikkotilassa. Lähettää
-            johtotasolla annetun signaalin normaaliin tasoon.
+                johtotasolla annetun signaalin normaaliin tasoon.
 storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
@@ -827,7 +827,7 @@ settings:
         rotationByBuilding:
             title: Kiertäminen laitetyypin mukaan
             description: Muistaa jokaisen laitetyypin viimeisimmän kiertoasetuksen.
-		        Tämä voi olla mukavampi vaihtoehto jos sijoitat usein eri laitetyyppejä.
+                Tämä voi olla mukavampi vaihtoehto jos sijoitat usein eri laitetyyppejä.
         compactBuildingInfo:
             title: Kompaktit laitetiedot
             description: Lyhentää laitteiden tietolaatikoita näyttämällä vain niiden
@@ -845,7 +845,7 @@ settings:
         lowQualityMapResources:
             title: Alhaisen tason resurssit
             description: Yksinkertaistaa resurssikenttien ulkonäön suurennetussa näkymässä
-		        suorituskyvyn parantamiseksi. Näyttää jopa siistimmältä, joten kannattaa kokeilla!
+                suorituskyvyn parantamiseksi. Näyttää jopa siistimmältä, joten kannattaa kokeilla!
         disableTileGrid:
             title: Poista ruudukko
             description: Poistaa ruudukon ja parantaa suorituskykyä. Pelialue näyttää myös siistimmältä!
