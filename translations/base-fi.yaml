@@ -127,7 +127,7 @@ dialogs:
         text: "Tallennuksen poisto epäonnistui:"
     restartRequired:
         title: Uudelleenkäynnistys vaaditaan
-        text: Käynnistä peli uudelleen ottaaksesi asetukset käyttöön.
+        text: "Käynnistä peli uudelleen ottaaksesi asetukset käyttöön."
     editKeybinding:
         title: Vaihda pikanäppäin
         desc: Paina näppäintä tai hiiren nappia, jonka haluat asettaa tai paina
