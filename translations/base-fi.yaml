@@ -331,8 +331,7 @@ ingame:
                 <strong>ympyröitä</strong>, <strong>valkoista</strong> ja
                 <strong>punaista</strong> väriä!
             21_2_switch_to_wires: Vaihda Johdot -tasolle painamalla
-                <strong>E</strong>!<br><br> Sitten <strong>yhdistä kaikki neljän
-				tuloa</strong> maalaimeen johdoilla!
+                <strong>E</strong>!<br><br> Sitten <strong>yhdistä kaikki neljä tuloa</strong> maalaimeen johdoilla!
             21_3_place_button: MahtaVATA! Aseta nyt <strong>kytkin</strong> ja yhdistä
                 se johdoilla!
             21_4_press_button: "Paina kytkintä <strong>lähettääksesi tosi-
@@ -581,7 +580,7 @@ storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
         desc: Avasit juuri <strong>leikkurin</strong>. Se leikkaa muotoja ylhäältä alaspäin 
-		ja tuottaa muodon molemmat puoliskot. <strong>Jos käytät vain yhden puoliskon, tuhoa toinen
+        ja tuottaa muodon molemmat puoliskot. <strong>Jos käytät vain yhden puoliskon, tuhoa toinen
             puolisko tai se jumittaa leikkurin!</strong> - Siksi sinulla on
             <strong>roskakori</strong>, joka tuhoaa kaiken sinne laittamasi!
     reward_rotater:
@@ -656,8 +655,8 @@ storyRewards:
         desc: Nyt voit <strong>Kopioida ja Liittää</strong> paloja tehtaastasi! Valitse
             alue (pidä CTRL pohjassa ja raahaa hiirellä), ja paina 'C'
             kopioidaksesi piirrustuksen.<br><br>Sen liittäminen ei ole
-            <strong>ilmaista</strong>, sinun täytyy tuottaa <strong>piirustusmuotoja</strong> 
-		jotta sinulla on varaa siihen! (Ne mitkä juuri toimitit).
+            <strong>ilmaista</strong>. Sinun täytyy tuottaa <strong>piirustusmuotoja</strong>, 
+            jotta sinulla on varaa siihen! (Ne mitkä juuri toimitit).
     no_reward:
         title: Seuraava taso
         desc: Et saanut palkintoa tältä tasolta, mutta seuraavalta tasolta saat! <br><br> PS: Parempi
@@ -678,7 +677,7 @@ storyRewards:
     reward_belt_reader:
         title: Kuljetinanturi
         desc: Olet avannut <strong>Kuljetinanturin</strong>! Voit mitata kuljettimen
-		tehokkuutta.<br><br>Ja odotahan vain, kunhan saat Johdot auki. Sitten tämä on kätevä!
+            tehokkuutta.<br><br>Ja odotahan vain, kunhan saat Johdot auki. Sitten tämä on kätevä!
     reward_rotater_180:
         title: Kääntäjä (180°)
         desc: Avasit juuri 180-asteen <strong>Kääntäjän</strong>! - Sillä voit
@@ -690,15 +689,15 @@ storyRewards:
     reward_constant_signal:
         title: Jatkuva Signaali
         desc: Avasit <strong>Jatkuvan Signaalin</strong> laitteen johtotasolla!
-		Tämä on hyödyllinen esimerkiksi yhdistettynä
-		<strong>tavarasuodattimeen.</strong><br><br> Jatkuva signaali voi lähettää esim.
+            Tämä on hyödyllinen esimerkiksi yhdistettynä
+            <strong>tavarasuodattimeen.</strong><br><br> Jatkuva signaali voi lähettää esim.
             <strong>muodon</strong>, <strong>värin</strong> tai <strong>binääriarvon</strong> (1 / 0).
     reward_logic_gates:
         title: Logiikkaportit
         desc: Avasit <strong>Logiikkaportit</strong> (heh,heh)! Niistä ei tarvitse innostua,
-		mutta ne ovat oikeasti tosi päheitä!<br><br> Logiikkaporteilla
+		    mutta ne ovat oikeasti tosi päheitä!<br><br> Logiikkaporteilla
             voit suorittaa AND, OR, XOR ja NOT operaatioita.<br><br> Kaupanpäällisiksi sait 
-		myös <strong>transistorin</strong>!
+		    myös <strong>transistorin</strong>!
     reward_virtual_processing:
         title: Virtuaaliprosessointi
         desc: I just gave a whole bunch of new buildings which allow you to
@@ -818,7 +817,7 @@ settings:
             title: Vihjeet & oppaat
             description: Tarjoaa pelaamisen aikana vihjeitä ja oppaita. Myös piilottaa
                 tietyt käyttöliittymäelementit tason mukaan, jotta
-		    alkuunpääseminen olisi helpompaa.
+		        alkuunpääseminen olisi helpompaa.
         enableTunnelSmartplace:
             title: Älykkäät tunnelit
             description: Kun käytössä, tunnelin sijoittaminen automaattisesti poistaa
@@ -831,7 +830,7 @@ settings:
         rotationByBuilding:
             title: Kiertäminen laitetyypin mukaan
             description: Muistaa jokaisen laitetyypin viimeisimmän kiertoasetuksen.
-		Tämä voi olla mukavampi vaihtoehto jos sijoitat usein eri laitetyyppejä.
+		    Tämä voi olla mukavampi vaihtoehto jos sijoitat usein eri laitetyyppejä.
         compactBuildingInfo:
             title: Kompaktit laitetiedot
             description: Lyhentää laitteiden tietolaatikoita näyttämällä vain niiden
@@ -849,7 +848,7 @@ settings:
         lowQualityMapResources:
             title: Alhaisen tason resurssit
             description: Yksinkertaistaa resurssikenttien ulkonäön suurennetussa näkymässä
-		suorituskyvyn parantamiseksi. Näyttää jopa siistimmältä, joten kannattaa kokeilla!
+		        suorituskyvyn parantamiseksi. Näyttää jopa siistimmältä, joten kannattaa kokeilla!
         disableTileGrid:
             title: Poista ruudukko
             description: Poistaa ruudukon ja parantaa suorituskykyä. Pelialue näyttää myös siistimmältä!
