@@ -25,6 +25,7 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 -   Make sure `ffmpeg` is on your path
 -   Install Node.js and Yarn
 -   Install Java (required for textures)
+-   Clone the `shapez.io` repo
 -   Run `yarn` in the root folder
 -   Cd into `gulp` folder
 -   Run `yarn` and then `yarn gulp` - it should now open in your browser
