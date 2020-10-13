@@ -48,8 +48,8 @@ steamPage:
 global:
     loading: Ladataan
     error: Virhe
-    thousandsDivider: ","
-    decimalSeparator: .
+    thousandsDivider: " "
+    decimalSeparator: ","
     suffix:
         thousands: k
         millions: M
