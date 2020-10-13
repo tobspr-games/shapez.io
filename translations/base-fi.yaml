@@ -657,9 +657,9 @@ storyRewards:
             jotta sinulla on varaa siihen! (Ne mitkä juuri toimitit).
     no_reward:
         title: Seuraava taso
-        desc: Et saanut palkintoa tältä tasolta, mutta seuraavalta tasolta saat! <br><br> PS: Parempi
+        desc: "Et saanut palkintoa tältä tasolta, mutta seuraavalta tasolta saat! <br><br> PS: Parempi
             olla tuhoamatta vanhoja tehtaita - Tarvitset <strong>kaikkia</strong>
-            muotoja myöhemmin <strong>avataksesi päivityksiä</strong>!
+            muotoja myöhemmin <strong>avataksesi päivityksiä</strong>!"
     no_reward_freeplay:
         title: Seuraava taso
         desc: Onnittelut! Muuten, lisää sisältöä on suunniteltu täysversioon!
@@ -682,7 +682,7 @@ storyRewards:
             kääntää muotoa 180 astetta (Ylläripylläri! :D)
     reward_display:
         title: Näyttö
-        desc: Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön
+        desc: "Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön
         Johto-tasolla visualisoidaksesi sen<br><br> PS: Huomasitko, että kuljetinanturi ja varasto näyttävät viimeisimmän esineen? Yritäpä saada se näkyviin näytölle!"
     reward_constant_signal:
         title: Jatkuva Signaali
