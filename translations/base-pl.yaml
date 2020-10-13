@@ -322,12 +322,12 @@ ingame:
                 postawić wiele ekstraktorów. Naciśnij <strong>R</strong>, by je
                 obracać.'
             2_1_place_cutter: "Teraz umieść <strong>przecinak</strong> aby przeciąć koła na dwie
-                połowy!<br><br> PS: Przecinak zawsze tnie <strong>pionowo</strong> 
+                połowy!<br><br> PS: Przecinak zawsze tnie <strong>pionowo</strong>
                 niezależnie od swojej orientacji."
             2_2_place_trash: Przecinak może się <strong>zapchać i zablokować</strong>!<br><br> Użyj
                 <strong>śmietnik</strong> aby usunąć obecnie (!) nie potrzebne elementy.
-            2_3_more_cutters: "Dobra robota! Teraz umieść <strong>2 kolejne przecinaki</strong>,aby przyspieszyć 
-                ten wolny proces!<br><br> PS: Użyj <strong>klawiszy 0-9</strong>, 
+            2_3_more_cutters: "Dobra robota! Teraz umieść <strong>2 kolejne przecinaki</strong>,aby przyspieszyć
+                ten wolny proces!<br><br> PS: Użyj <strong>klawiszy 0-9</strong>,
                 aby szybciej uzyskać dostęp do budynków!"
             3_1_rectangles: "Teraz wydobądź kilka kwadratów! <strong>Wybuduj
                 ekstraktory</strong> i połącz je do głównego budynku.<br><br> PS:
@@ -336,12 +336,12 @@ ingame:
             21_1_place_quad_painter: Umieść <strong>malarz poczwórny</strong> i wykonaj kilka
                 biało-czerwonych kółek!
             21_2_switch_to_wires: Przełącz się na warstwę przewodów wciskając
-                <strong>E</strong>!<br><br> Następnie <strong>połącz wszystkie cztery 
+                <strong>E</strong>!<br><br> Następnie <strong>połącz wszystkie cztery
                 wejścia</strong> malarza przewodem!
             21_3_place_button: Świetnie! Teraz umieść <strong>Przełącznik</strong> i połącz go
                 z przewodem!
             21_4_press_button: "Wciśnij przełącznik aby <strong>emitował sygnał
-                "Prawda"</strong> i aktywował malarza.<br><br> PS: Nie 
+                Prawda</strong> i aktywował malarza.<br><br> PS: Nie
                 musisz łączyć wszystkich wejść! Spróbuj połączyć tylko dwa."
     connectedMiners:
         one_miner: 1 ekstraktor
@@ -746,11 +746,10 @@ storyRewards:
     reward_wires_painter_and_levers:
         title: Przewody i poczwórny malarz
         desc: "Właśnie odblokowałeś <strong>Warstwę Przewodów</strong>: Jest to osobna
-            warstwa powyżej zwykłej warstwy i wprowadza wiele nowych możliwości.<br><br> 
-            
-            Na początku odblokowałem dla Ciebie <strong>Poczwórnego Malarza</strong> 
-            - Podłącz ćwiartki, które chcesz pomalować na warstwie przewodów!!<br><br> 
-            Aby przełączyć się na warstwę przewodów, wciśnij 
+            warstwa powyżej zwykłej warstwy i wprowadza wiele nowych możliwości.<br><br>
+            Na początku odblokowałem dla Ciebie <strong>Poczwórnego Malarza</strong>
+            - Podłącz ćwiartki, które chcesz pomalować, na warstwie przewodów!!<br><br>
+            Aby przełączyć się na warstwę przewodów, wciśnij
             <strong>E</strong>. <br><br> PS: <strong>Włącz podpowiedzi</strong> w
             ustawieniach, aby aktywować samouczek przewodów!"
     reward_filter:
