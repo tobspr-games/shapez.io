@@ -271,23 +271,17 @@ ingame:
                 PS: 不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
             2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>!<br><br>
                 用<strong>垃圾桶</strong>把「目前」不需要的部分處理掉。
-            2_3_more_cutters: "做得好! 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線!<br><br> 
+            2_3_more_cutters: "做得好! 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線!<br><br>
                 PS: 使用<strong>0-9快捷鍵</strong>可以更快選取建築 !"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            3_1_rectangles: "現在來開採一些方形吧！<strong>蓋4座開採機</strong>，把形狀收集到基地。<br><br> PS:
+                選擇輸送帶，按住<strong>SHIFT</strong>並拖曳滑鼠可以計畫輸送帶位置！"
+            21_1_place_quad_painter: 放置一個<strong>切割機（四分）</strong>並取得一些
+                <strong>圓形</strong>、<strong>白色</strong>和<strong>紅色</strong>！
+            21_2_switch_to_wires: 按<strong>E</strong>切換到電路層<br><br>
+                然後將上色機的<strong>四個輸入端</strong>用電線<strong>連接</strong>。
+            21_3_place_button: 太棒了！現在放置一個<strong>開關</strong>並將之與電線連接。
+            21_4_press_button: "按下開關使之<strong>輸出真值</strong>並啟動上色機。<br><br>
+                PS: 你不用連接所有的輸入端，試試只連接兩個。"
     colors:
         red: 紅
         green: 綠
@@ -305,10 +299,10 @@ ingame:
     connectedMiners:
         one_miner: 1 個開採機
         n_miners: <amount> 個開採機
-        limited_items: Limited to <max_throughput>
+        limited_items: 上限 <max_throughput>
     watermark:
         title: Demo version
-        desc: Click here to see the Steam version advantages!
+        desc: 按這裡看 Steam 版的優勢！
         get_on_steam: 在 Steam 上取得
     standaloneAdvantages:
         title: 取得單機版！
@@ -446,18 +440,16 @@ buildings:
             description: 儲存多餘的物品，有一定儲存上限。優先從左側輸出，可以被用來作為溢流門。
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: 電線交叉
+            description: 電線彼此交叉但不互相連接。
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: 固定信號
+            description: 輸出固定信號，可以是形狀、顏色或布林值（1或0）。
     lever:
         default:
             name: 信號切換器
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            description: 切換電路層的輸出布林值（1或0），舉例來說，它可以操控物件分類器。
     logic_gate:
         default:
             name: AND 邏輯閘
@@ -482,30 +474,25 @@ buildings:
                 （「真」值代表：形狀正確、顏色正確或布林值為1）
     filter:
         default:
-            name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            name: 物件分類器
+            description: 它會依據電路層收到的訊號分類，符合的會到上方，不符合的到右方。
+                它也可以被布林值訊號控制。
     display:
         default:
-            name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            name: 顯示器
+            description: 連接一個訊號到顯示器上顯示，訊號可以是形狀、物件或布林值。
     reader:
         default:
             name: 傳送帶讀取機
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            description: 它會讀取輸送帶的平均流量，（解鎖後）在電路層輸出最後讀取的物件。
     analyzer:
         default:
             name: 形狀分析機
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            description: 分析最底層右上角的圖形並輸出他的形狀跟顏色。
     comparator:
         default:
             name: 比較機
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            description: 當兩個輸入訊號完全相等時，輸出布林值「1」。它可以比較形狀、物件或布林值。
     virtual_processor:
         default:
             name: 虛擬切割機
@@ -611,7 +598,7 @@ storyRewards:
     reward_display:
         title: 顯示器
         desc: "<strong>顯示器</strong> 已解鎖。
-            - 在電路層上連接一個信號到顯示器上顯示！<br><br>
+            - 在電路層上連接一個訊號到顯示器上顯示！<br><br>
             PS: 你有注意到輸送帶讀取機跟倉庫都會輸出它們最後讀取的物件嗎？
             試試看在顯示器上顯示它吧！"
     reward_constant_signal:
@@ -623,11 +610,11 @@ storyRewards:
     reward_logic_gates:
         title: 邏輯閘
         desc: <strong>邏輯閘</strong>已解鎖。
-            你可以覺得無所謂，但其實邏輯閘其實超酷的！<br><br> 
-            有了這些邏輯閘，你可以運算 AND, OR, XOR 與 NOT。<br><br> 
+            你可以覺得無所謂，但其實邏輯閘其實超酷的！<br><br>
+            有了這些邏輯閘，你可以運算 AND, OR, XOR 與 NOT。<br><br>
             錦上添花，我再送你<strong>電晶體</strong>!
     reward_virtual_processing:
-        title: 虛擬操作Virtual Processing
+        title: 虛擬操作
         desc: <strong>虛擬操作</strong>!<br><br>已解鎖。很多新建築有虛擬版，你可以模擬切割機、旋轉機、推疊機還有更多電路層上的建築。
             繼續遊玩的你現在有三個選項：<br><br>
             - 蓋一個自動生成任何基地要求圖形的<strong>自動機</strong>（推薦！）。<br><br>
@@ -639,13 +626,13 @@ storyRewards:
         desc: "You just unlocked the <strong>電路層</strong>已解鎖。
             它是一個獨立於一般層之外的存在，將帶給你更多玩法！<br><br>
             首先，我為你解鎖<strong>四角上色機</strong>。
-            想要上色的角落記得在電路層通電！<br><br> 
+            想要上色的角落記得在電路層通電！<br><br>
             按<strong>E</strong>切換至電路層。<br><br>
             PS: 設定裡<strong>開啟提示</strong>來啟動教程！"
     reward_filter:
         title: 物件分類器
         desc: <strong>物件分類器</strong>已解鎖。
-            它會依據電路層收到的訊號決定輸出端（右方或上方）。.<br><br>
+            它會依據電路層收到的訊號決定輸出端（右方或上方）。<br><br>
             你也可以送一個固定訊號（1或0）來徹底啟用或不啟用此機器。
     reward_demo_end:
         title: 試玩結束
