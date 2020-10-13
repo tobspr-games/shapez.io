@@ -43,9 +43,7 @@ steamPage:
         translate: Auta kääntämään
     text_open_source: >-
         Kuka tahansa voi osallistua. Olen aktiivisesti mukana yhteisössä ja
-        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä
-        mahdollista.
-
+        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä mahdollista.
         Muista tarkistaa Trello -lautani, jossa löytyy koko tiekartta!
 global:
     loading: Ladataan
