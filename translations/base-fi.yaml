@@ -946,6 +946,15 @@ keybindings:
         virtual_processor: Virtuaalileikkuri
         transistor: Transistori
         analyzer: Muotoanalysaattori
+        comparator: Vertaa
+        item_producer: Signaaligeneraattori (Hiekkalaattikko)
+        copyWireValue: "Johdot: Kopioi arvo kursorin kohdalta"
+about:
+    title: Tietoja tästä pelistä
+    body: >-
+        Tämä peli on avointa lähdekoodia ja kehittäjä on <a
+        href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
+        (tämä on minä).<br><br>
 
         Tämän pelin tekeminen ei olisi ollut mahdollista ilman suurta Discord-yhteisöä pelini ympärillä - Voisit liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
 
