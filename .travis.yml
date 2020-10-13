@@ -107,8 +107,15 @@ jobs:
         ## -> build linux
         # - name: "Standalone Linux on Windows"
         #   os: windows
-        #   env: YARN_GPG=no
+        #   env:
+        #       - YARN_GPG=no
+        #       - GRAVIS_REPO="https://github.com/DanySK/Gravis-CI.git"
+        #       - GRAVIS="$HOME/gravis"
+        #   matrix:
+        #       - JDK="adopt@1.8"
         #   before_install:
+        #       - travis_retry git clone --depth 1 $GRAVIS_REPO $GRAVIS
+        #       - source $GRAVIS/install-jdk
         #       - choco install git-lfs -y -f || echo "0" # choco fails but git-lfs is still installed
         #       - choco install ffmpeg --version=4.2.3
         #       - export PATH=/C/ProgramData/chocolatey/lib/ffmpeg/tools/ffmpeg/bin:$PATH
@@ -125,8 +132,15 @@ jobs:
         ## -> build win
         - name: "Standalone Windows on Windows"
           os: windows
-          env: YARN_GPG=no
+          env:
+              - YARN_GPG=no
+              - GRAVIS_REPO="https://github.com/DanySK/Gravis-CI.git"
+              - GRAVIS="$HOME/gravis"
+          matrix:
+              - JDK="adopt@1.8"
           before_install:
+              - travis_retry git clone --depth 1 $GRAVIS_REPO $GRAVIS
+              - source $GRAVIS/install-jdk
               - choco install git-lfs -y -f || echo "0" # choco fails but git-lfs is still installed
               - choco install ffmpeg --version=4.2.3
               - choco install wget
