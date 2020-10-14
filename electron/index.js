@@ -4,7 +4,7 @@ const { app, BrowserWindow, Menu, MenuItem, session } = require("electron");
 const path = require("path");
 const url = require("url");
 const childProcess = require("child_process");
-const { ipcMain } = require("electron");
+const { ipcMain, shell } = require("electron");
 const fs = require("fs");
 const isDev = process.argv.indexOf("--dev") >= 0;
 const isLocal = process.argv.indexOf("--local") >= 0;
@@ -67,11 +67,7 @@ function createWindow() {
 
     win.webContents.on("new-window", (event, pth) => {
         event.preventDefault();
-        if (process.platform == "win32") {
-            childProcess.execSync("start " + pth);
-        } else if (process.platform == "linux") {
-            childProcess.execSync("xdg-open " + pth);
-        }
+        shell.openExternal(pth);
     });
 
     win.on("closed", () => {
