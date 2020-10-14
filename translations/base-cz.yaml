@@ -4,19 +4,16 @@ steamPage:
     discordLinkShort: Oficiální Discord
     intro: >-
         Máte rádi automatizaci? Tak to jste na správném místě!
-
-        shapez.io je relaxační hra, ve které musíte stavět továrny na automatizaci výroby geometrických tvarů. Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
-
-        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování! Zatímco na začátku tvary pouze zpracováváte, později je musíte obarvit - těžbou a mícháním barev!
-
-        Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale také můžete nejdříve hrát demo verzi na shapez.io a až potom se rozhodnout!
+        Protože shapez.io je relaxační hra, ve které musíš stavět továrny na automatizaci výroby geometrických tvarů. Jak se zvyšuje úroveň, tvary se stávají stále složitějšími na výrobu a ty se musíš rozšířit po až nekonečné mapě.
+        A jako by to nestačilo, musíte jich také produkovat exponenciálně více, aby jsi splnil požadavky. Jediná věc, která pomáhá, je škálování! Zatímco na začátku tvary pouze zpracováváte, později je musíte i obarvit nebo slepit, rozstříhat a mnoho dalšího!
+        Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale nejdříve si můžete zkusit hrát demo verzi na shapez.io a až potom se rozhodnout ke koupi plné verze!
     title_advantages: Výhody samostatné verze hry
     advantages:
         - <b>12 Nových úrovní</b> z celkových 26 úrovní
-        - <b>18 Nových budov</b> pro plně automatizovanou továrnu!
-        - <b>20 Řad vylepšení</b> pro mnoho hodin zábavy!
-        - <b>Wires Update</b> pro zcela novou dimenzi!
-        - <b>Tmavý mód</b>!
+        - <b>18 Nových budov</b> pro plně automatizovanou výrobní linku!
+        - <b>20 Řad vylepšení</b> pro mnoho a mnoho hodin zábavy!
+        - <b>Vylepšení s kabely</b> pro zcela novou dimenzi hraní a zábavy! 
+        - <b>Tmavý mód</b> pro větší komfort nebo na dlouhé večery!
         - Neomezený počet uložených her
         - Neomezené značky
         - Podpořte mě! ❤️
@@ -29,7 +26,7 @@ steamPage:
         - Módy
         - Sandbox mód
         - ... a mnohem více!
-    title_open_source: Tato hra je open source!
+    title_open_source: Tato hra je otevřená na úpravy pro kommunitu!
     text_open_source: >-
         Kdokoli může přispět, jsem aktivně zapojený do komunity, pokouším se
         zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu všude, kde je
@@ -40,12 +37,12 @@ steamPage:
     links:
         discord: Oficiální Discord
         roadmap: Roadmap
-        subreddit: Subreddit
+        subreddit: SubReddit
         source_code: Zdrojový kód (GitHub)
         translate: Pomozte přeložit hru!
 global:
-    loading: Načítání
-    error: Chyba
+    loading: Načítání...
+    error: Chyba!
     thousandsDivider: " "
     decimalSeparator: ","
     suffix:
@@ -55,11 +52,11 @@ global:
         trillions: T
     infinite: nekonečno
     time:
-        oneSecondAgo: před sekundou
+        oneSecondAgo: před 1 sekundou
         xSecondsAgo: před <x> sekundami
-        oneMinuteAgo: před minutou
+        oneMinuteAgo: před 1 minutou
         xMinutesAgo: před <x> minutami
-        oneHourAgo: před hodinou
+        oneHourAgo: před 1 hodinou
         xHoursAgo: před <x> hodinami
         oneDayAgo: včera
         xDaysAgo: před <x> dny
@@ -73,75 +70,75 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
+        space: Mezerník
 demoBanners:
     title: Demo verze
-    intro: Získejte plnou verzi pro odemknutí všech funkcí a obsahu!
+    intro: Získejte plnou verzi pro odemknutí všech funkcí a spoustu nového obsahu!
 mainMenu:
     play: Hrát
     continue: Pokračovat
     newGame: Nová hra
     changelog: Seznam změn
-    subreddit: Reddit
-    importSavegame: Importovat
-    openSourceHint: Tato hra je open source!
+    subreddit: SubReddit
+    importSavegame: Importovat uloženou hru
+    openSourceHint: Tato hra je Otevřená pro kommunitu!
     discordLink: Oficiální Discord Server
     helpTranslate: Pomozte přeložit hru!
-    madeBy: Vytvořil <author-link>
-    browserWarning: Promiňte, ale víme, že hra poběží pomalu ve vašem prohlížeči!
-        Pořiďte si samostatnou verzi nebo si stáhněte Google Chrome pro
+    madeBy: Shapez.io vytvořil <author-link>
+    browserWarning: Omlouváme se, ale hra ve vašem prohlížeči poběží pomalu!
+        Tak si pořiďte plnou verzi nebo si stáhněte internetový prohlížeč Google Chrome pro
         plnohodnotný zážitek.
     savegameLevel: Úroveň <x>
     savegameLevelUnknown: Neznámá úroveň
     savegameUnnamed: Nepojmenovaný
 dialogs:
     buttons:
-        ok: OK
+        ok: Ok
         delete: Smazat
         cancel: Zrušit
         later: Později
-        restart: Restart
-        reset: Reset
+        restart: Restartovat
+        reset: Resetovat
         getStandalone: Získejte plnou verzi
-        deleteGame: Vím, co dělám
-        viewUpdate: Zobrazit aktualizaci
+        deleteGame: Smazat uloženou hru
+        viewUpdate: Zobrazit aktualizace
         showUpgrades: Zobrazit vylepšení
         showKeybindings: Zobrazit klávesové zkratky
     importSavegameError:
-        title: Chyba Importu
-        text: "Nepovedlo se importovat vaši uloženou hru:"
+        title: Nastala chyba při importování hry
+        text: "Nepovedlo se nám importovat vaši uloženou hru:"
     importSavegameSuccess:
-        title: Uložená hra importována
+        title: Uložená hra byla importována
         text: Vaše uložená hra byla úspěšně importována.
     gameLoadFailure:
         title: Uložená hra je poškozená
-        text: "Nepovedlo se načíst vaši uloženou hru:"
+        text: "Nepovedlo se nám načíst vaši uloženou hru:"
     confirmSavegameDelete:
         title: Potvrdit smazání
-        text: Jste si jisti, že chcete smazat tuto uloženou hru?<br><br>
+        text: Jste si jistý/á, že chcete opravdu smazat tuto uloženou hru?<br><br>
             '<savegameName>' s úrovní <savegameLevel><br><br> Tato akce je
-            nevratná!
+            nevratná a o uloženou hru navždy přijdete!
     savegameDeletionError:
         title: Chyba mazání
-        text: "Nepovedlo se smazat vaši uloženou hru:"
+        text: "Nepovedlo se nám smazat vaši uloženou hru:"
     restartRequired:
         title: Vyžadován restart
         text: Pro aplikování nastavení musíte restartovat hru.
     editKeybinding:
         title: Změna klávesové zkratky
-        desc: Zmáčkněte klávesu nebo tlačítko myši pro přiřazení nebo Escape pro
+        desc: Zmáčkněte klávesu nebo tlačítko myši pro přiřazení nebo Esc pro
             zrušení.
     resetKeybindingsConfirmation:
         title: Reset klávesových zkratek
-        desc: Toto vrátí všechny klávesové zkratky do původního nastavení. Prosím
+        desc: Vrátí všechny klávesové zkratky do původního Stavu. Prosím
             potvrďte.
     keybindingsResetOk:
         title: Reset klávesových zkratek
-        desc: Všechny klávesové zkratky byly vráceny do původního nastavení!
+        desc: Všechny klávesové zkratky byly vráceny do původního stavu!
     featureRestriction:
         title: Demo verze
         desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Zvažte
-            pořízení plné verze pro kompletní zážitek!
+            pořízení plné verze na platformě Steam pro kompletní zážitek ze hraní Shapez.io!
     oneSavegameLimit:
         title: Omezené ukládání
         desc: Ve demo verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající
