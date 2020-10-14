@@ -76,16 +76,23 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             const currentCharge = processorComp.ongoingCharges[0];
 
-            if (currentCharge) {
-                // Process next charge
-                if (currentCharge.remainingTime > 0.0) {
-                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds;
-                    if (currentCharge.remainingTime < 0.0) {
+            // Select active charge, prevent process delayd caused when having more outputted items then ejectors (double painter)
+            for (let j = 0; j < processorComp.ongoingCharges.length; ++j) {
+                const charge = processorComp.ongoingCharges[j];
+                if (charge && charge.remainingTime > 0.0) {
+                    // Remove bonus time from charge
+                    charge.remainingTime -= this.root.dynamicTickrate.deltaSeconds + processorComp.bonusTime;
+                    // Reset bonus time
+                    processorComp.bonusTime = 0;
+                    if (charge.remainingTime < 0.0) {
                         // Add bonus time, this is the time we spent too much
-                        processorComp.bonusTime += -currentCharge.remainingTime;
+                        processorComp.bonusTime += -charge.remainingTime;
                     }
+                    break;
                 }
+            }
 
+            if (currentCharge) {
                 // Check if it finished
                 if (currentCharge.remainingTime <= 0.0) {
                     const itemsToEject = currentCharge.items;
