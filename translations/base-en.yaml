@@ -642,8 +642,17 @@ buildings:
 
     wire_tunnel:
         default:
-            name: &wire_tunnel Wire Crossing
+            name: &wire_tunnel Wire Tunnel
             description: Allows two wires to cross without connecting to each other.
+        elbow:
+            name: Elbow Tunnel
+            description: Allows a wire to turn a corner without connecting to anything else
+        straight:
+            name: Straight tunnel
+            description: Allows a wire to go straight without connecting to anything else
+        double_elbow:
+            name: Double Elbow Tunnel
+            description: Allows two wires to turn corners without connecting to each other.
 
     constant_signal:
         default:

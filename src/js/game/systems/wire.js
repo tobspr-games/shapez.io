@@ -314,7 +314,12 @@ export class WireSystem extends GameSystemWithFilter {
                     newSearchDirections = [staticComp.localDirectionToWorld(slot.direction)];
                     newSearchTile = staticComp.localTileToWorld(slot.pos);
                 }
-            }
+			}
+			
+			const tunnelComp = nextEntity.components.WireTunnel;
+			if(tunnelComp){
+				//const outputDir = tunnelComp.GetOutputDirection(staticComp, offset);
+			}
 
             if (newSearchTile) {
                 // Find new surrounding wire targets
@@ -396,17 +401,18 @@ export class WireSystem extends GameSystemWithFilter {
             );
 
             // Link the initial tile to the initial entities, since it may change
-            /** @type {Array<{entity: Entity, tile: Vector}>} */
+            /** @type {Array<{entity: Entity, tile: Vector, dir: Vector}>} */
             const contents = [];
             for (let j = 0; j < initialContents.length; ++j) {
                 contents.push({
                     entity: initialContents[j],
-                    tile: initialSearchTile,
+					tile: initialSearchTile,
+					dir: offset
                 });
             }
 
             for (let k = 0; k < contents.length; ++k) {
-                const { entity, tile } = contents[k];
+                const { entity, tile, dir } = contents[k];
                 const wireComp = entity.components.Wire;
 
                 // Check for wire
@@ -458,14 +464,24 @@ export class WireSystem extends GameSystemWithFilter {
                 // Check if it's a tunnel, if so, go to the forwarded item
                 const tunnelComp = entity.components.WireTunnel;
                 if (tunnelComp) {
+                    //TODO: Add Additional Tunnel Variants
                     if (visitedTunnels.has(entity.uid)) {
                         continue;
                     }
 
-                    const staticComp = entity.components.StaticMapEntity;
+					const staticComp = entity.components.StaticMapEntity;
+					
+					//const localDir = staticComp.worldToLocalTile(tile.sub(offset));
+					//staticComp.localDirectionToWorld();
+					const outputDir = tunnelComp.GetOutputDirection(staticComp, dir);
+					if(!outputDir){
+						continue;
+					}
+					const forwardedTile = staticComp.origin.add(outputDir);
 
+                    //TODO: Alter to Allow for different tunnel Types
                     // Compute where this tunnel connects to
-                    const forwardedTile = staticComp.origin.add(offset);
+                    //const forwardedTile = staticComp.origin.add(offset);
                     VERBOSE_WIRES &&
                         logger.log(
                             "   Found tunnel",
@@ -481,14 +497,15 @@ export class WireSystem extends GameSystemWithFilter {
                         forwardedTile.x,
                         forwardedTile.y
                     );
-
+					
                     // Attach the entities and the tile we search at, because it may change
                     for (let h = 0; h < connectedContents.length; ++h) {
                         contents.push({
                             entity: connectedContents[h],
-                            tile: forwardedTile,
+							tile: forwardedTile,
+							dir: outputDir
                         });
-                    }
+					}
 
                     // Add the tunnel to the network
                     if (tunnelComp.linkedNetworks.indexOf(network) < 0) {

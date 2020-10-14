@@ -25,7 +25,7 @@ import { MetaTrashBuilding } from "./buildings/trash";
 import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
 import { enumVirtualProcessorVariants, MetaVirtualProcessorBuilding } from "./buildings/virtual_processor";
 import { MetaWireBuilding } from "./buildings/wire";
-import { MetaWireTunnelBuilding } from "./buildings/wire_tunnel";
+import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire_tunnel";
 import { buildBuildingCodeCache, gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { enumWireVariant } from "./components/wire";
 import { KEYMAPPINGS } from "./key_action_mapper";
@@ -150,6 +150,9 @@ export function initMetaBuildingRegistry() {
 
     // Wire tunnel
     registerBuildingVariant(39, MetaWireTunnelBuilding);
+    registerBuildingVariant(10000006, MetaWireTunnelBuilding, enumWireTunnelVariants.Elbow);
+    registerBuildingVariant(10000007, MetaWireTunnelBuilding, enumWireTunnelVariants.Straight);
+    registerBuildingVariant(10000008, MetaWireTunnelBuilding, enumWireTunnelVariants.DoubleElbow);
 
     // Display
     registerBuildingVariant(40, MetaDisplayBuilding);

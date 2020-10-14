@@ -193,6 +193,9 @@ export class GameLogic {
      * @param {enumDirection} param0.edge The edge to check for
      */
     computeWireEdgeStatus({ wireVariant, tile, edge }) {
+		/**
+		 * @type {Vector}
+		 */
         const offset = enumDirectionToVector[edge];
         const targetTile = tile.add(offset);
 
@@ -243,7 +246,8 @@ export class GameLogic {
         // Check if its a crossing
         const wireTunnelComp = targetEntity.components.WireTunnel;
         if (wireTunnelComp) {
-            return true;
+            const inputDir = targetStaticComp.unapplyRotationToVector(offset.rotateFastMultipleOf90(270));
+            return wireTunnelComp.CanConnect(inputDir);
         }
 
         // Check if its a wire
