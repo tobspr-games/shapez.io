@@ -17,9 +17,9 @@ steamPage:
     title_advantages: Ventajas del juego
     advantages:
         - <b>12 nuevos niveles</b> de un total de 26 niveles
-        - <b>18 nuevos edificios</b> ¡para una fábrica totalmente automatizada!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>18 nuevos edificios</b> ¡Para una fábrica totalmente automatizada!
+        - <b>20 Nievels de mejoras</b> ¡Parra horas de diversión!
+        - ¡<b>Cables</b> para una dimensión completamente nueva!
         - <b>Modo oscuro</b>!
         - Partidad guardadas ilimitadas
         - Marcadores ilimitados
@@ -92,7 +92,7 @@ mainMenu:
     discordLink: Servidor de Discord oficial
     helpTranslate: ¡Ayuda a traducirlo!
     madeBy: Desarrollado por <author-link>
-    browserWarning: ¡Lo siento, pero el juego funcionará despacio en tu navegador!
+    browserWarning: ¡Lo siento, pero el juego funcionará lento en tu navegador!
         Obtén el juego completo o descarga Chrome para la experiencia completa.
     savegameLevel: Nivel <x>
     savegameLevelUnknown: Nivel desconocido
@@ -258,7 +258,7 @@ ingame:
     notifications:
         newUpgrade: ¡Una nueva mejora está disponible!
         gameSaved: Se ha guardado la partida.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: ¡El nivel <level> ha sido completado!
     shop:
         title: Mejoras
         buttonUnlock: Mejorar
@@ -269,14 +269,14 @@ ingame:
         dataSources:
             stored:
                 title: Almacenado
-                description: Muestra la cantidad de figuras guardadas en tu edificio central.
+                description: Muestra la cantidad de figuras guardadas en tu HUB.
             produced:
                 title: Producido
                 description: Muestra todas las figuras que tu fábrica al completo produce,
                     incluyendo productos intermedios.
             delivered:
                 title: Entregados
-                description: Muestra las figuras que son entregadas a tu edificio central.
+                description: Muestra las figuras que son entregadas a tu HUB.
         noShapesProduced: Todavía no se han producido figuras.
         shapesDisplayUnits:
             second: <shapes> / s
@@ -294,7 +294,7 @@ ingame:
         cost: Coste
     waypoints:
         waypoints: Marcadores
-        hub: Edificio Central
+        hub: HUB
         description: Click izquierdo sobre un marcador para ir ahí, click derecho para
             borrarlo. <br><br> Pulsa <keybinding> para crear un marcador de la
             vista actual o <strong>click derecho</strong> para crear un marcador
@@ -310,7 +310,7 @@ ingame:
             1_1_extractor: ¡Coloca un <strong>extractor</strong> encima de un
                 <strong>círculo</strong> para extraerlo!
             1_2_conveyor: "¡Conecta el extractor con una <strong>cinta
-                transportadora</strong> a tu edificio central!<br><br> Pista:
+                transportadora</strong> a tu HUB!<br><br> Pista:
                 ¡<strong>Pulsa y arrastra</strong> la cinta transportadora con
                 el ratón!"
             1_3_expand: '¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más
@@ -321,14 +321,14 @@ ingame:
             2_1_place_cutter: "¡Ahora pon un <strong>Cortador</strong> para dividir los circulos en dos
                 mitades!<br><br> PD: El cortador siempre corta de <strong>de arriba a
                 abajo</strong> independientemente de su orientación."
-            2_2_place_trash: ¡El cortador se puede <strong>tabar y atorar</strong>!<br><br> Usa un
+            2_2_place_trash: ¡El cortador se puede <strong>trabar y atorar</strong>!<br><br> Usa un
                 <strong>basurero</strong> para deshacerse de la actualmente (!) no
                 necesitada basura.
             2_3_more_cutters: "¡Buen trabajo! ¡Ahora pon <strong>2 cortadores más</strong> para acelerar
                 este lento proceso!<br><br> PD: Usa las teclas <strong>0-9
                 </strong> para acceder a los edificios más rápido!"
             3_1_rectangles: "¡Ahora consigamos unos rectangulos! <strong>construye 4
-                extractores</strong> y conectalos a el edificio central.<br><br> PD:
+                extractores</strong> y conectalos a el HUB.<br><br> PD:
                 Manten apretado <strong>SHIFT</strong> mientrás pones cintas transportadoras para activar
                 el planeador de cintas!"
             21_1_place_quad_painter: ¡Pon el <strong>pintaor cuadruple</strong> y consigue unos
@@ -339,7 +339,7 @@ ingame:
                 entradas</strong> de el pintador con cables!
             21_3_place_button: ¡Genial! ¡Ahora pon un <strong>Interruptor</strong> y conectalo
                 con cables!
-            21_4_press_button: "Presioa el interruptor para hacer que <strong>emita una señal
+            21_4_press_button: "Presiona el interruptor para hacer que <strong>emita una señal
                 verdadera</strong> lo cual activa el piintador.<br><br> PD: ¡No necesitas
                 conectar todas las entradas! Intenta conectando solo dos."
     connectedMiners:
@@ -1070,4 +1070,4 @@ tips:
     - Para despejar las cintas transportadoras, corta el área y luego pégala en el mismo lugar.
     - Presiona F4 para mostrar tu FPS y Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
-    - Puedes hacer clic en una forma fijada en el lado izquierdo para desbloquearla.
+    - Puedes hacer clic en una forma fijada en el lado izquierdo para desfijarla.
