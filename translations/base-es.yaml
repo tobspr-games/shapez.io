@@ -660,7 +660,7 @@ storyRewards:
         title: Juego libre
         desc: ¡Lo hiciste! Haz desbloqueado el <strong>modo de juego libre</strong>! ¡Esto significa
             que las formas ahora son <strong>aleatoriamente</strong> generadas!<br><br>
-            Debído a que desde ahora de adelante el HUB pedrirá formas <strong>aleatorias</strong>
+            Debído a que desde ahora de adelante el HUB pedrirá una cantidad especifica de formas <strong>por segundo</strong>
             ¡Te recomiendo encarecidamente que construyas una maquina que automáticamente
             envíe la forma pedida!<br><br> El HUB emite la forma
             pedida en la capa de cables, así que todo lo que tienes que hacer es analizarla y
@@ -1020,7 +1020,7 @@ tips:
     - Si apilar las formas no funciona, intenta intercambiar las entradas.
     - Puedes activar la dirección del planeador de cintas apretando  <b>R</b>.
     - Mantener apretado <b>CTRL</b> te permite poner cintas sin auto-orientación.
-    - Las proporciones tiempre serán las mismas, siempre y cuando todas las mejoras estén al mismo nivel.
+    - Las proporciones siempre serán las mismas. Siempre y cuando todas las mejoras estén al mismo nivel.
     - La ejecución en serie es más eficiente que la paralela.
     - ¡Desbloquearás más variantes de edificios más adelante en el juego!
     - Puedes usar <b>T</b> para cambiar entre diferentes variantes.
@@ -1035,42 +1035,39 @@ tips:
     - Mantener apretado <b>SHIFT</b> activará el planeador de cintas, permitiendote poner
       largas lineas de cintas fácilmente.
     - Los cortadores siempre cortan verticalmente, sin importar su orientación.
-    - Para obtener blanco solo mexcla todos los colores principales.
-    - The storage buffer priorities the first output.
-    - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
-    - Shape patches that are further away from the hub are more complex.
-    - Machines have a limited speed, divide them up for maximum efficiency.
-    - Use balancers to maximize your efficiency.
-    - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
-    - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
-    - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to
-      be re-usable.
-    - Sometimes, you can find a needed shape in the map without creating it with
-      stackers.
-    - Full windmills / pinwheels can never spawn naturally.
-    - Color your shapes before cutting for maximum efficiency.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
-    - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
+    - Para obtener blanco solo mexcla todos los colores.
+    - El buffer de almacenamiento prioriza la primera salida.
+    - Invierte tiempo en construir diseños repetibles, ¡vale la pena!
+    - Mantener apretado <b>CTRL</b> te permite poner varios edificios a la vez.
+    - Puedes apretar <b>ALT</b> para invertir la dirección a la que van las cintas.
+    - ¡La eficiencia es la clave!
+    - Mientras más lejos del HUB estés más complejas serán las formas que te encuentres.
+    - Las máquinas tienen una velocidad limitada, divídelas para una máxima eficiencia.
+    - Usa balanceadores para maximizar tu eficiencia.
+    - La organización es importante. Trate de no cruzar demasiado las cintas transportadoras.
+    - ¡Planea con anticipación, o será un gran caos!
+    - ¡No saques tus viejas fábricas! Las necesitararás para desbloquear nuevas mejoras.
+    - ¡Intenta superar el nivel 20 por tu cuenta antes de buscar ayuda!
+    - No compliques las cosas, intenta mantenerlo simple y llegarás lejos.
+    - Puede que tengas que reutilizar las fábricas más tarde en el juego. Planea tus fábricas para que sean reutilizables.
+    - A veces puedes encontrar la forma que necesitas en el mapa sin la necesidad de usar apiladores.
+    - Los molinillos no pueden aparecer enteros naturalmente.
+    - Colorear las formas antes de cortarlas para una máxima eficiencia.
+    - Con los módulos, el espacio es sólo una percepción; una preocupación para los mortales.
+    - Haz una fábrica para planos separada. Son importantes para los módulos.
+    - Echa un vistazo más de cerca al mezclador de colores, y tus preguntas serán respondidas.
+    - Usa <b>CTRL</b> + Click izquierdo para seleccionar un área.
+    - Construir demasiado cerca del HUB puede interponerse en el camino de proyectos a futuro.
+    - El icono del alfiler junto a cada forma de la lista de mejoras lo fija a la pantalla.
+    - ¡Mezcla todos los colores primarios para obtener blanco!
+    - Tienes un mapa infinito, no te agobies tu fábrica, ¡expande!
+    - ¡Prueba también Factorio! Es mi juego favorito.
+    - ¡El cortador cuádruple corta en el sentido de las agujas del reloj empezando por la parte superior derecha!
+    - ¡Puedes descargar tus archivos de guardado en el menú principal!
+    - ¡Este juego tiene un montón de atajos útiles! Asegúrate de revisar la página de ajustes.
+    - Este juego tiene muchos ajustes, ¡asegúrate de revisarlos!
+    - ¡El marcador de tu HUB tiene una pequeña brújula para indicar su dirección!
+    - Para despejar las cintas transportadoras, corta el área y luego pégala en el mismo lugar.
+    - Presiona F4 para mostrar tu FPS y Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - Puedes hacer clic en una forma fijada en el lado izquierdo para desbloquearla.
