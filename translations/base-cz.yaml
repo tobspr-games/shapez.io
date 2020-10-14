@@ -129,22 +129,22 @@ dialogs:
         text: Pro aplikování nastavení musíte restartovat hru.
     editKeybinding:
         title: Změna klávesové zkratky
-        desc: Zmáčkněte klávesu nebo tlačítko myši pro přiřazení nebo Escape pro
+        desc: Zmáčkněte klávesu nebo tlačítko myši pro přiřazení nebo Esc pro
             zrušení.
     resetKeybindingsConfirmation:
         title: Reset klávesových zkratek
-        desc: Toto vrátí všechny klávesové zkratky do původního nastavení. Prosím
+        desc: Vrátí všechny klávesové zkratky do původního nastavení! Prosím
             potvrďte.
     keybindingsResetOk:
         title: Reset klávesových zkratek
-        desc: Všechny klávesové zkratky byly vráceny do původního nastavení!
+        desc: Všechny klávesové zkratky byly vráceny do původního stavu!
     featureRestriction:
         title: Demo verze
         desc: Zkoušíte použít funkci (<feature>), která není v demo verzi. Zvažte
             pořízení plné verze pro kompletní zážitek!
     oneSavegameLimit:
         title: Omezené ukládání
-        desc: Ve demo verzi můžete mít pouze jednu uloženou hru. Odstraňte stávající
+        desc: V demo verzi můžete mít pouze jednu uloženou hru, odstraňte stávající
             uloženou hru nebo si pořiďte plnou verzi!
     updateSummary:
         title: Nová aktualizace!
@@ -156,15 +156,15 @@ dialogs:
             najít v pravém horním rohu obrazovky.
     massDeleteConfirm:
         title: Potvrdit smazání
-        desc: Odstraňujete spoustu budov (přesněji <count>)! Opravdu je chcete smazat?
+        desc: Odstraňíš spoustu budov (přesněji <count>)! Opravdu je chceš smazat?
     massCutConfirm:
         title: Potvrdit vyjmutí
-        desc: Vyjímáte spoustu budov (přesněji <count>)! Opravdu je chcete vyjmout?
+        desc: Vyjmeš spoustu budov (přesněji <count>)! Opravdu je chceš vyjmout?
     massCutInsufficientConfirm:
         title: Potvrdit vyjmutí
-        desc: Nemůžete si dovolit vložení této oblasti! Opravdu ji chcete vyjmout?
+        desc: Nemůžeš si dovolit vložení této oblasti! Opravdu ji chceš vyjmout?
     blueprintsNotUnlocked:
-        title: Zatím neodemčeno
+        title: Funkce není odemčena
         desc: Dokončete úroveň 12 pro odemčení Plánů!
     keybindingsIntroduction:
         title: Užitečné klávesové zkratky
@@ -186,7 +186,7 @@ dialogs:
         descShortKey: ... nebo zadejte <strong>krátký klíč</strong> tvaru (Ten můžete
             vygenerovat <link>zde</link>)
     markerDemoLimit:
-        desc: V demo verzi můžete vytvořit pouze dvě značky. Pořiďte si plnou verzi pro
+        desc: V demo verzi můžeš vytvořit pouze dvě značky. Pořiď si plnou verzi pro
             neomezený počet značek!
     exportScreenshotWarning:
         title: Exportuj snímek obrazovky
@@ -198,17 +198,17 @@ dialogs:
         desc: Zde můžete přejmenovat svoji uloženou hru.
     tutorialVideoAvailable:
         title: Dostupný tutoriál
-        desc: Pro tuto úroveň je k dispozici tutoriál! Chtěli byste se na
+        desc: Pro tuto úroveň je k dispozici tutoriál! Chtěl by jsi se na
             něj podívat?
     tutorialVideoAvailableForeignLanguage:
         title: Dostupný tutoriál
         desc: Pro tuto úroveň je k dispozici tutoriál, ale je dostupný
-            pouze v angličtině. Chtěli byste se na něj podívat?
+            pouze v angličtině. Chtěl by jsi se na něj podívat?
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
         selectBuildings: Vybrat oblast
-        stopPlacement: Ukončit pokládání
+        stopPlacement: Zrušit pokládání
         rotateBuilding: Otočit budovu
         placeMultiple: Položit více budov
         reverseOrientation: Změnit orientaci
@@ -957,7 +957,7 @@ keybindings:
         lever: Přepínač (běžný)
         filter: Filtr
         wire_tunnel: Křížení kabelů
-        display: Display
+        display: Displej
         reader: Čtečka pásů
         virtual_processor: Virtuální pila
         transistor: Tranzistor
